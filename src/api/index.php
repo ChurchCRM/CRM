@@ -14,13 +14,13 @@ if (!isset($_SESSION['iUserID'])) {
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 // Instantiate the app
-$settings = require __DIR__ . '/settings.php';
+$settings = require __DIR__ . '/../Include/slim/settings.php';
 $app = new \Slim\App();
 $container = $app->getContainer();
 
 // Set up
 require __DIR__ . '/dependencies.php';
-require __DIR__ . '/error-handler.php';
+require __DIR__ . '/../Include/slim/error-handler.php';
 
 // system routes
 require __DIR__ . '/routes/data.php';
@@ -39,6 +39,15 @@ require __DIR__ . '/routes/payments.php';
 
 // other
 require __DIR__ . '/routes/calendar.php';
+
+//timer jobs
+require __DIR__ . '/routes/timerjobs.php';
+
+//self-upgrade tasks
+require __DIR__ . '/routes/systemupgrade.php';
+
+//registration
+require __DIR__ . '/routes/register.php';
 
 // Run app
 $app->run();

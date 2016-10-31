@@ -43,4 +43,9 @@ $("document").ready(function(){
     });
     $(".multiSearch").on("select2:select",function (e) { window.location.href= e.params.data.uri;});
     
+    $.ajax({
+      url: window.CRM.root + "/api/timerjobs/run",
+      type: "POST"
+    });
+    $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
 });

@@ -255,7 +255,6 @@ $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun
 $rsFunds = RunQuery($sSQL);
 
 if ($sElectronicTransactionProcessor == "Vanco") {
-	include "Include/vancowebservices.php";
 	include "Include/VancoConfig.php";
 	$customerid = "$iAutID"; // This is an optional value that can be used to indicate a unique customer ID that is used in your system
 	// put aut_ID into the $customerid field
@@ -614,7 +613,7 @@ function CreatePaymentMethod()
 
 			<tr>
 				<td class="LabelColumn"><?= gettext("Date:") ?></td>
-				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?= $dNextPayDate ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active"></td>
+				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?= $dNextPayDate ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active date-picker"></td>
 			</tr>
 
 			<tr>
@@ -784,7 +783,4 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 		</tr>
 </table>
 </form>
-<script>
-$("#NextPayDate").datepicker({format:'yyyy-mm-dd'});
-</script>
 <?php require "Include/Footer.php" ?>

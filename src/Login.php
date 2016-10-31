@@ -34,6 +34,11 @@ $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
 // Initialize the variables
 
+use ChurchCRM\Service\SystemService;
+use ChurchCRM\UserQuery;
+
+$systemService = new SystemService();
+
 // Is the user requesting to logoff or timed out?
 if (isset($_GET["Logoff"]) || isset($_GET['Timeout'])) {
     if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == ''))
@@ -44,57 +49,53 @@ if (isset($_GET["Logoff"]) || isset($_GET['Timeout'])) {
         $_SESSION['bSearchFamily'] = 0;
 
    if (!empty($_SESSION['iUserID'])) {
-       $sSQL = "UPDATE user_usr SET usr_showPledges = " . $_SESSION['sshowPledges'] .
-                     ", usr_showPayments = " . $_SESSION['sshowPayments'] .
-                     ", usr_showSince = '" . $_SESSION['sshowSince'] . "'" .
-                     ", usr_defaultFY = '" . $_SESSION['idefaultFY'] . "'" .
-                     ", usr_currentDeposit = '" . $_SESSION['iCurrentDeposit'] . "'";
-        if ($_SESSION['dCalStart'] != '')
-            $sSQL .= ", usr_CalStart = '" . $_SESSION['dCalStart'] . "'";
-        if ($_SESSION['dCalEnd'] != '')
-            $sSQL .= ", usr_CalEnd = '" . $_SESSION['dCalEnd'] . "'";
-        if ($_SESSION['dCalNoSchool1'] != '')
-            $sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool1'] . "'";
-        if ($_SESSION['dCalNoSchool2'] != '')
-            $sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool2'] . "'";
-        if ($_SESSION['dCalNoSchool3'] != '')
-            $sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool3'] . "'";
-        if ($_SESSION['dCalNoSchool4'] != '')
-            $sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool4'] . "'";
-        if ($_SESSION['dCalNoSchool5'] != '')
-            $sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool5'] . "'";
-        if ($_SESSION['dCalNoSchool6'] != '')
-            $sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool6'] . "'";
-        if ($_SESSION['dCalNoSchool7'] != '')
-            $sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool7'] . "'";
-        if ($_SESSION['dCalNoSchool8'] != '')
-            $sSQL .= ", usr_CalNoSchool1 = '" . $_SESSION['dCalNoSchool8'] . "'";
-        $sSQL .= ", usr_SearchFamily = '" . $_SESSION['bSearchFamily'] . "'" .
-                     " WHERE usr_per_ID = " . $_SESSION['iUserID'];
-       RunQuery($sSQL);
+    $currentUser = UserQuery::create()->findOneByPersonId($_SESSION['iUserID']);
+    $currentUser->setShowPledges($_SESSION['sshowPledges']);
+    $currentUser->setShowPayments($_SESSION['sshowPayments']);
+    $currentUser->setShowSince($_SESSION['sshowSince']);
+    $currentUser->setDefaultFY($_SESSION['idefaultFY'] );
+    $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
+
+    if ($_SESSION['dCalStart'] != '')
+        $currentUser->setCalStart ($_SESSION['dCalStart']);
+    if ($_SESSION['dCalEnd'] != '')
+        $currentUser->setCalEnd ($_SESSION['dCalEnd']);
+    if ($_SESSION['dCalNoSchool1'] != '')
+        $currentUser->setCalNoSchool1 ($_SESSION['dCalNoSchool1']);
+    if ($_SESSION['dCalNoSchool2'] != '')
+        $currentUser->dCalNoSchool2 ($_SESSION['dCalNoSchool2']);
+    if ($_SESSION['dCalNoSchool3'] != '')
+        $currentUser->dCalNoSchool3 ($_SESSION['dCalNoSchool3']);
+    if ($_SESSION['dCalNoSchool4'] != '')
+        $currentUser->dCalNoSchool4 ($_SESSION['dCalNoSchool4']);
+    if ($_SESSION['dCalNoSchool5'] != '')
+        $currentUser->dCalNoSchool5 ($_SESSION['dCalNoSchool5']);
+    if ($_SESSION['dCalNoSchool6'] != '')
+        $currentUser->dCalNoSchool6 ($_SESSION['dCalNoSchool6']);
+    if ($_SESSION['dCalNoSchool7'] != '')
+        $currentUser->dCalNoSchool7 ($_SESSION['dCalNoSchool7']);
+    if ($_SESSION['dCalNoSchool8'] != '')
+        $currentUser->dCalNoSchool8 ($_SESSION['dCalNoSchool8']);
+    $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
+    $currentUser->save();
    }
 }
 
-$iUserID = 0;
+$currentUser = 0;
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User']) && !isset($sErrorText)) {
 
     // Get the information for the selected user
     $UserName = FilterInput($_POST['User'],'string',32);
-    $uSQL = "SELECT usr_per_id FROM user_usr WHERE usr_UserName like '$UserName'";
-    $usQueryResult = RunQuery($uSQL);
-    $usQueryResultSet = mysql_fetch_array($usQueryResult);
-    if ($usQueryResultSet == Null){
+    $currentUser = UserQuery::create()->findOneByUserName($UserName);
+    if ($currentUser == Null){
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
-    }else{
-        //Set user Id based on login name provided
-        $iUserID = $usQueryResultSet['usr_per_id'];
     }
 } else {
     // Nothing submitted yet, must be the first time loading this page.
     // Clear out any old session
-    $iUserID = 0;
+    $currentUser = 0;
     $_COOKIE = array();
     $_SESSION = array();
     session_destroy();
@@ -102,33 +103,25 @@ if (isset($_POST['User']) && !isset($sErrorText)) {
 
 
 // Has the form been submitted?
-if ($iUserID > 0)
+if ($currentUser != Null)
 {
-    // Get the information for the selected user
-    $sSQL = "SELECT * FROM user_usr WHERE usr_per_ID = '$iUserID'";
-    extract(mysql_fetch_array(RunQuery($sSQL)));
-
-    $sSQL = "SELECT * FROM person_per WHERE per_ID = '$iUserID'";
-    extract(mysql_fetch_array(RunQuery($sSQL)));
-
     $bPasswordMatch = FALSE;
-
+    
     // Check the user password
-    $sPasswordHashSha256 = hash("sha256", $_POST['Password'].$iUserID);
-
+    $sPasswordHashSha256 = hash("sha256", $_POST['Password'].$currentUser->getPersonId());
+    
     // Block the login if a maximum login failure count has been reached
-    if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins)
+    if ($iMaxFailedLogins > 0 && $currentUser->getFailedLogins() >= $iMaxFailedLogins)
     {
         $sErrorText = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
     }
     // Does the password match?
-    elseif ($usr_Password != $sPasswordHashSha256)
+    elseif ($currentUser->getPassword() != $sPasswordHashSha256)
     {
         // Increment the FailedLogins
-        $sSQL = 'UPDATE user_usr SET usr_FailedLogins = usr_FailedLogins + 1 '.
-                "WHERE usr_per_ID ='$iUserID'";
-        RunQuery($sSQL);
-
+        $currentUser->setFailedLogins($currentUser->getFailedLogins()+1);
+        $currentUser->save();
+        
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
     }
@@ -136,29 +129,31 @@ if ($iUserID > 0)
     {
         // Set the LastLogin and Increment the LoginCount
         $date = new DateTime("now", new DateTimeZone($sTimeZone));
-        $sSQL = "UPDATE user_usr SET usr_LastLogin = '".$date->format('Y-m-d H:i:s')."', usr_LoginCount = usr_LoginCount + 1, usr_FailedLogins = 0 WHERE usr_per_ID ='$iUserID'";
-        RunQuery($sSQL);
+        $currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
+        $currentUser->setLoginCount($currentUser->getLoginCount() +1);
+        $currentUser->setFailedLogins(0);
+        $currentUser->save();       
 
         // Set the User's family id in case EditSelf is enabled
-        $_SESSION['iFamID'] = $per_fam_ID;
+        $_SESSION['iFamID'] = $currentUser->getPerson()->getFamId();
 
         // Set the UserID
-        $_SESSION['iUserID'] = $usr_per_ID;
+        $_SESSION['iUserID'] = $currentUser->getPersonId();
 
         // Set the Actual Name for use in the sidebar
-        $_SESSION['UserFirstName'] = $per_FirstName;
+        $_SESSION['UserFirstName'] = $currentUser->getPerson()->getFirstName();
 
         // Set the Actual Name for use in the sidebar
-        $_SESSION['UserLastName'] = $per_LastName;
+        $_SESSION['UserLastName'] = $currentUser->getPerson()->getLastName();
 
         // Set the pagination Search Limit
-        $_SESSION['SearchLimit'] = $usr_SearchLimit;
+        $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 
         // Set the User's email address
-        $_SESSION['sEmailAddress'] = $per_Email;
+        $_SESSION['sEmailAddress'] = $currentUser->getPerson()->getEmail();
 
         // If user has administrator privilege, override other settings and enable all permissions.
-        if ($usr_Admin)
+        if ($currentUser->getAdmin())
         {
             $_SESSION['bAddRecords'] = true;
             $_SESSION['bEditRecords'] = true;
@@ -175,56 +170,56 @@ if ($iUserID > 0)
         else
         {
             // Set the Add permission
-            $_SESSION['bAddRecords'] = $usr_AddRecords;
+            $_SESSION['bAddRecords'] = $currentUser->getAddRecords();
 
             // Set the Edit permission
-            $_SESSION['bEditRecords'] = $usr_EditRecords;
+            $_SESSION['bEditRecords'] = $currentUser->getEditRecords();
 
             // Set the Delete permission
-            $_SESSION['bDeleteRecords'] = $usr_DeleteRecords;
+            $_SESSION['bDeleteRecords'] = $currentUser->getDeleteRecords();
 
             // Set the Menu Option permission
-            $_SESSION['bMenuOptions'] = $usr_MenuOptions;
+            $_SESSION['bMenuOptions'] = $currentUser->getMenuOptions();
 
             // Set the ManageGroups permission
-            $_SESSION['bManageGroups'] = $usr_ManageGroups;
+            $_SESSION['bManageGroups'] = $currentUser->getManageGroups();
 
             // Set the Donations and Finance permission
-            $_SESSION['bFinance'] = $usr_Finance;
+            $_SESSION['bFinance'] = $currentUser->getFinance();
 
             // Set the Notes permission
-            $_SESSION['bNotes'] = $usr_Notes;
+            $_SESSION['bNotes'] = $currentUser->getNotes();
 
             // Set the Communications permission
-            $_SESSION['bCommunication'] = $usr_Communication;
+            $_SESSION['bCommunication'] = $currentUser->getCommunication();
 
             // Set the EditSelf permission
-            $_SESSION['bEditSelf'] = $usr_EditSelf;
+            $_SESSION['bEditSelf'] = $currentUser->getEditSelf();
 
             // Set the Canvasser permission
-            $_SESSION['bCanvasser'] = $usr_Canvasser;
+            $_SESSION['bCanvasser'] = $currentUser->getCanvasser();
 
             // Set the Admin permission
             $_SESSION['bAdmin'] = false;
         }
 
         // Set the FailedLogins
-        $_SESSION['iFailedLogins'] = $usr_FailedLogins;
+        $_SESSION['iFailedLogins'] = $currentUser->getFailedLogins();
 
         // Set the LoginCount
-        $_SESSION['iLoginCount'] = $usr_LoginCount;
+        $_SESSION['iLoginCount'] = $currentUser->getLoginCount();
 
         // Set the Last Login
-        $_SESSION['dLastLogin'] = $usr_LastLogin;
+        $_SESSION['dLastLogin'] = $currentUser->getLastLogin();
 
         // Set the Workspace Width
-        $_SESSION['iWorkspaceWidth'] = $usr_Workspacewidth;
+        $_SESSION['iWorkspaceWidth'] = $currentUser->getWorkspaceWidth();
 
         // Set the Base Font Size
-        $_SESSION['iBaseFontSize'] = $usr_BaseFontSize;
+        $_SESSION['iBaseFontSize'] = $currentUser->getBaseFontsize();
 
         // Set the Style Sheet
-        $_SESSION['sStyle'] = $usr_Style;
+        $_SESSION['sStyle'] = $currentUser->getStyle();
 
         // Create the Cart
         $_SESSION['aPeopleCart'] = array();
@@ -233,7 +228,7 @@ if ($iUserID > 0)
         $_SESSION['sGlobalMessage'] = '';
 
         // Set whether or not we need a password change
-        $_SESSION['bNeedPasswordChange'] = $usr_NeedPasswordChange;
+        $_SESSION['bNeedPasswordChange'] = $currentUser->getNeedPasswordChange();
 
         // Initialize the last operation time
         $_SESSION['tLastOperation'] = time();
@@ -242,47 +237,31 @@ if ($iUserID > 0)
         $_SESSION['sRootPath'] = $sRootPath;
         $_SESSION['$sEnableGravatarPhotos'] = $sEnableGravatarPhotos;
 
-        // If PHP's magic quotes setting is turned off, we want to use a workaround to ensure security.
-        if (function_exists('get_magic_quotes_gpc'))
-            $_SESSION['bHasMagicQuotes'] = get_magic_quotes_gpc();
-        else
-            $_SESSION['bHasMagicQuotes'] = 0;
+        $_SESSION['bHasMagicQuotes'] = 0;
 
         // Pledge and payment preferences
-        $_SESSION['sshowPledges'] = $usr_showPledges;
-        $_SESSION['sshowPayments'] = $usr_showPayments;
-        $_SESSION['sshowSince'] = $usr_showSince;
+        $_SESSION['sshowPledges'] = $currentUser->getShowPledges();
+        $_SESSION['sshowPayments'] = $currentUser->getShowPayments();
+        $_SESSION['sshowSince'] = $currentUser->getShowSince();
         $_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
-        $_SESSION['iCurrentDeposit'] = $usr_currentDeposit;
+        $_SESSION['iCurrentDeposit'] = $currentUser->getCurrentDeposit();
 
         // Church school calendar preferences
-        $_SESSION['dCalStart'] = $usr_CalStart;
-        $_SESSION['dCalEnd'] = $usr_CalEnd;
-        $_SESSION['dCalNoSchool1'] = $usr_CalNoSchool1;
-        $_SESSION['dCalNoSchool2'] = $usr_CalNoSchool2;
-        $_SESSION['dCalNoSchool3'] = $usr_CalNoSchool3;
-        $_SESSION['dCalNoSchool4'] = $usr_CalNoSchool4;
-        $_SESSION['dCalNoSchool5'] = $usr_CalNoSchool5;
-        $_SESSION['dCalNoSchool6'] = $usr_CalNoSchool6;
-        $_SESSION['dCalNoSchool7'] = $usr_CalNoSchool7;
-        $_SESSION['dCalNoSchool8'] = $usr_CalNoSchool8;
+        $_SESSION['dCalStart'] = $currentUser->getCalStart();
+        $_SESSION['dCalEnd'] = $currentUser->getCalEnd();
+        $_SESSION['dCalNoSchool1'] = $currentUser->getCalNoSchool1();
+        $_SESSION['dCalNoSchool2'] = $currentUser->getCalNoSchool2();
+        $_SESSION['dCalNoSchool3'] = $currentUser->getCalNoSchool3();
+        $_SESSION['dCalNoSchool4'] = $currentUser->getCalNoSchool4();
+        $_SESSION['dCalNoSchool5'] = $currentUser->getCalNoSchool5();
+        $_SESSION['dCalNoSchool6'] = $currentUser->getCalNoSchool6();
+        $_SESSION['dCalNoSchool7'] = $currentUser->getCalNoSchool7();
+        $_SESSION['dCalNoSchool8'] = $currentUser->getCalNoSchool8();
 
         // Search preference
-        $_SESSION['bSearchFamily'] = $usr_SearchFamily;
+        $_SESSION['bSearchFamily'] = $currentUser->getSearchfamily();
 
-        if (isset($bEnableMRBS) && $bEnableMRBS) {
-            // set the session variable recognized by MRBS
-            $_SESSION["UserName"] = $UserName;
-
-            // Update the MRBS user record to match this churchCRM user
-            $iMRBSLevel = 0;
-            if ($usr_AddRecords) $iMRBSLevel = 1;
-            if ($usr_Admin)      $iMRBSLevel = 2;
-
-            $sSQL = "INSERT INTO mrbs_users (id, level, name, email) VALUES ('$iUserID', '$iMRBSLevel', '$UserName', '$per_Email') ON DUPLICATE KEY UPDATE level='$iMRBSLevel', name='$UserName',email='$per_Email'";
-            RunQuery($sSQL);
-        }
-
+        $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         Redirect('CheckVersion.php');
         exit;
     }
@@ -290,6 +269,8 @@ if ($iUserID > 0)
 
 // Turn ON output buffering
 ob_start();
+
+$enableSelfReg = $systemConfig->getRawConfig("sEnableSelfRegistration")->getBooleanValue();
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("ChurchCRM - Login");
@@ -306,7 +287,7 @@ require ("Include/HeaderNotLoggedIn.php");
 
 <?php
 if (isset($_GET['Timeout']))
-    $loginPageMsg = "Your previous session timed out.  Please login again.";
+    $loginPageMsg = gettext('Your previous session timed out.  Please login again.');
 
 // output warning and error messages
 if (isset($sErrorText))
@@ -334,7 +315,7 @@ if (isset($loginPageMsg))
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext('Login') ?></button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
         </div>
     </div>
 </form>
@@ -345,8 +326,11 @@ if (isset($loginPageMsg))
 // An array of authorized URL's is specified in Config.php in the $URL array
 checkAllowedURL();
 ?>
-        <!--<a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>-->
+        <!--<a href="external/user/password">I forgot my password</a><br> -->
+        <?php if ($enableSelfReg) { ?>
+        <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext("Register a new Family");?></a><br>
+        <?php } ?>
+      <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
     <!-- /.login-box-body -->
 </div>

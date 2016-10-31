@@ -29,10 +29,8 @@
                 <include name="**"/>
                 <exclude name="Images/Person/thumbnails/*.jpg"/>
                 <exclude name="composer.lock"/>
+                <exclude name="signatures.json"/>
                 <exclude name="Include/Config.php"/>
-                <exclude name="vendor/almasaeed2010/**"/>
-                <exclude name="vendor/components/**"/>
-                <exclude name="vendor/driftyco/**"/>
                 <exclude name="vendor/propel/propel/tests/**"/>
                 <exclude name="vendor/guzzle/guzzle/tests/**"/>
                 <exclude name="vendor/guzzle/guzzle/docs/**"/>
@@ -41,6 +39,11 @@
                 <exclude name="skin/adminlte/plugins/datatables/extensions/TableTools/images/psd/**"/>
             </fileset>
         </copy>
+
+        <echo message="Generating code signature file..."/>
+        <exec command = "php generateSignatures.php ${sourcedir}/churchcrm" passthru="true"/>
+
+
 
     </target>
 
@@ -74,11 +77,11 @@
 
     <target name="locale-update">
         <echo message="building messages.po"/>
-        <exec command="xgettext --from-code=UTF-8 -o locale/messages.po *.php email/*.php Include/*.php Reports/*.php sundayschool/*.php" dir="src" passthru="true"/>
+        <exec command="npm run locale-gen" dir="." passthru="true"/>
     </target>
 
     <target name="release" depends="locale-update, package, rev-build-number" />
-    
+
     <target name="demosite">
       <if>
         <available file="${builddir}/ChurchCRM-${build.version}.zip" />
@@ -104,5 +107,5 @@
         </else>
       </if>
     </target>
-    
+
 </project>

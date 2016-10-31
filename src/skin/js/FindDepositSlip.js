@@ -1,7 +1,7 @@
 var dataT = 0;
 
 $(document).ready(function() {
-    $("#depositDate").datepicker({format:'yyyy-mm-dd'}).datepicker("setDate", new Date());
+    $("#depositDate").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang}).datepicker("setDate", new Date());
     $("#addNewDeposit").click(function (e){
         var newDeposit = {
             'depositType':$("#depositType option:selected").val(),

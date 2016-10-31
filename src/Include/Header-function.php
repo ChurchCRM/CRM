@@ -117,15 +117,17 @@ function Header_modals() {
 }
 
 function Header_body_scripts() {
-  global $sLanguage, $bExportCSV, $sMetaRefresh, $bRegistered, $sHeader, $sGlobalMessage;
-  global $bLockURL, $URL, $sRootPath;
+  global $sRootPath, $localeInfo;
 
   checkAllowedURL();
   ?>
   <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/IssueReporter.js" type="text/javascript"></script>
 
   <script language="javascript" type="text/javascript">
-    window.CRM = {root: "<?= $sRootPath ?>"};
+    window.CRM = {
+      root: "<?= $sRootPath ?>",
+      lang: "<?= $localeInfo->getLanguageCode() ?>"
+    };
     
     window.CRM.DisplayErrorMessage = function(endpoint, message) {
       $(".modal").modal('hide');
@@ -154,8 +156,8 @@ function Header_body_scripts() {
     }
 
     $(document).ajaxError(function(evt, xhr, settings) {
-      var CRMResponse = JSON.parse(xhr.responseText).error;
-      window.CRM.DisplayErrorMessage("[" + settings.type + "] " + settings.url, " " + CRMResponse.text);
+      var CRMResponse = JSON.parse(xhr.responseText);
+      window.CRM.DisplayErrorMessage("[" + settings.type + "] " + settings.url, " " + CRMResponse.message);
     });
 
     function LimitTextSize(theTextArea, size) {

@@ -1,8 +1,8 @@
 <?php
 /*******************************************************************************
  *
- *  filename    : CSVExport.php
- *  description : options for creating csv file
+ *  filename    : SystemSettings.php
+ *  description : setup de systema settings
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
@@ -27,7 +27,8 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/TranslateMenuOptions.php";
+
+use ChurchCRM\dto\LocaleInfo;
 
 // Security
 if (!$_SESSION['bAdmin']) {
@@ -39,14 +40,15 @@ if (!$_SESSION['bAdmin']) {
 $sPageTitle = gettext("System Settings");
 
 $steps = array(
-  "Step1" => "Church Information",
-  "Step2" => "User setup",
-  "Step3" => "Email Setup",
-  "Step4" => "Member Setup",
-  "Step5" => "System Settings",
-  "Step6" => "Map Settings",
-  "Step7" => "Report Settings",
-  "Step8" => "Other Settings",
+  "Step1" => gettext("Church Information"),
+  "Step2" => gettext("User setup"),
+  "Step3" => gettext("Email Setup"),
+  "Step4" => gettext("Member Setup"),
+  "Step5" => gettext("System Settings"),
+  "Step6" => gettext("Map Settings"),
+  "Step7" => gettext("Report Settings"),
+  "Step9" => gettext("Localization"),
+  "Step8" => gettext("Other Settings")
 );
 
 
@@ -78,8 +80,10 @@ if (isset ($_POST['save'])) {
       $value = FilterInput($new_value[$id], "float");
     elseif ($current_type == 'date')
       $value = FilterInput($new_value[$id], "date");
-     elseif ($current_type == 'json')
+    elseif ($current_type == 'json')
       $value = $new_value[$id];
+    elseif ($current_type == 'choice')
+      $value = FilterInput($new_value[$id]);
     elseif ($current_type == 'boolean') {
       if ($new_value[$id] != "1")
         $value = "";
@@ -88,30 +92,22 @@ if (isset ($_POST['save'])) {
     }
 
     // If changing the locale, translate the menu options
-    if ($id == 39 && $value != $sLanguage) {
-      $sLanguage = $value;
-      if (!(stripos(php_uname('s'), "windows") === false)) {
-        $sLang_Code = $lang_map_windows[strtolower($sLanguage)];
-      } else {
-        $sLang_Code = $sLanguage;
-      }
-      putenv("LANG=$sLang_Code");
-      setlocale(LC_ALL, $sLang_Code);
-
-      TranslateMenuOptions();
+    if ($id == 39 && $value != $localeInfo->getLocale()) {
+      $localeInfo = new LocaleInfo($value);
+      setlocale(LC_ALL, $localeInfo->getLocale());
+      $aLocaleInfo = $localeInfo->getLocaleInfo();
     }
-    
-      if ( $id == 65 && !( in_array ( $value, timezone_identifiers_list()))) 
-      {
-          $value = date_default_timezone_get();
-      }
+
+    if ($id == 65 && !(in_array($value, timezone_identifiers_list()))) {
+      $value = date_default_timezone_get();
+    }
 
     // Save new setting
     $sSQL = "UPDATE config_cfg SET cfg_value='$value' WHERE cfg_id='$id'";
     $rsUpdate = RunQuery($sSQL);
     next($type);
   }
-  $sGlobalMessage = "Setting saved";
+  $sGlobalMessage = gettext("Setting saved");
 }
 
 require "Include/Header.php";
@@ -122,22 +118,22 @@ $rsConfigs = RunQuery($sSQL);
 ?>
 
 <div id="JSONSettingsModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Edit JSON Settings</h4>
-        </div>
-        <div class="modal-body" id="JSONSettingsDiv">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary jsonSettingsClose">Save</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><?= gettext("Edit JSON Settings") ?></h4>
+      </div>
+      <div class="modal-body" id="JSONSettingsDiv">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary jsonSettingsClose">Save</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 
 <div class="row">
   <div class="col-lg-12">
@@ -146,7 +142,9 @@ $rsConfigs = RunQuery($sSQL);
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <?php foreach ($steps as $step => $stepName) { ?>
-              <li class="<?php if ($step == "Step1") echo "active" ?>"><a href="#<?= $step ?>" data-toggle="tab" aria-expanded="false"><?= $stepName ?></a></li>
+              <li class="<?php if ($step == "Step1") echo "active" ?>"><a href="#<?= $step ?>" data-toggle="tab"
+                                                                          aria-expanded="false"><?= $stepName ?></a>
+              </li>
             <?php } ?>
           </ul>
           <div class="tab-content">
@@ -154,14 +152,14 @@ $rsConfigs = RunQuery($sSQL);
               <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
-                  <th width="400px">Value</th>
-                  <th>Default Value</th>
+                  <th width="400px"><?= gettext("Value")?></th>
+                  <th><?= gettext("Default Value")?></th>
                 </tr>
                 <?php
                 $r = 1;
                 $step = "Step" . $r;
                 // List Individual Settings
-                while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_tooltip, $cfg_section, $cfg_category) = mysql_fetch_row($rsConfigs)) {
+                while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_tooltip, $cfg_section, $cfg_category, $cfg_order, $cfg_data) = mysql_fetch_row($rsConfigs)) {
                 if ($cfg_category != $step) {
                 $step = $cfg_category;
                 ?>
@@ -171,8 +169,8 @@ $rsConfigs = RunQuery($sSQL);
               <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext("Variable name") ?></th>
-                  <th width="400px">Current Value</th>
-                  <th>Default Value</th>
+                  <th width="400px"><?= gettext("Current Value") ?></th>
+                  <th><?= gettext("Default Value") ?></th>
                 </tr>
                 <?php } ?>
                 <tr>
@@ -180,21 +178,31 @@ $rsConfigs = RunQuery($sSQL);
                   <input type=hidden name='type[<?= $cfg_id ?>]' value='<?= $cfg_type ?>'>
                   <td>
                     <!--  Current Value -->
-                    <?php if ($cfg_name == "sTimeZone" ) {?>
-                    <select class="input-small" name='new_value[<?= $cfg_id ?>]' id="timeZoneSelectBox">
+                    <?php if ($cfg_name == "sTimeZone") { ?>
+                      <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
                         <?php
-                            foreach (timezone_identifiers_list() as $timeZone)
-                            {
-                                echo "<option value = ". $timeZone." " . ($cfg_value == $timeZone ? "selected" : "") . ">".$timeZone."</option>";
-                            }
+                        foreach (timezone_identifiers_list() as $timeZone) {
+                          echo "<option value = " . $timeZone . " " . ($cfg_value == $timeZone ? "selected" : "") . ">" . $timeZone . "</option>";
+                        }
                         ?>
-                    </select>
+                      </select>
+                    <?php } elseif ($cfg_type == 'choice') { ?>
+                      <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
+                        <?php
+                        foreach (json_decode($cfg_data)->Choices as $choice) {
+                          echo "<option value = " . $choice . " " . ($cfg_value == $choice ? "selected" : "") . ">" . $choice . "</option>";
+                        }
+                        ?>
+                      </select>
                     <?php } elseif ($cfg_type == 'text') { ?>
-                      <input type=text class="col-lg-12" maxlength=255 name='new_value[<?= $cfg_id ?>]' value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>'>
+                      <input type=text size=40 maxlength=255 name='new_value[<?= $cfg_id ?>]'
+                             value='<?= htmlspecialchars($cfg_value, ENT_QUOTES) ?>' class="form-control">
                     <?php } elseif ($cfg_type == 'textarea') { ?>
-                      <textarea rows=4 class="col-lg-12" name='new_value[<?= $cfg_id ?>]'><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
+                      <textarea rows=4 cols=40 name='new_value[<?= $cfg_id ?>]'
+                                class="form-control"><?= htmlspecialchars($cfg_value, ENT_QUOTES) ?></textarea>
                     <?php } elseif ($cfg_type == 'number' || $cfg_type == 'date') { ?>
-                      <input type=text class="col-lg-12" maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
+                      <input type=text size=40 maxlength=15 name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'
+                             class="form-control">
                     <?php } elseif ($cfg_type == 'boolean') {
                       if ($cfg_value) {
                         $sel1 = "";
@@ -203,19 +211,16 @@ $rsConfigs = RunQuery($sSQL);
                         $sel1 = "SELECTED";
                         $sel2 = "";
                       } ?>
-                      <select name='new_value[<?= $cfg_id ?>]'>
-                        <option value='' <?= $sel1 ?>>False
-                        <option value='1' <?= $sel2 ?>>True
+                      <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
+                        <option value='' <?= $sel1 ?>><?= gettext("False")?>
+                        <option value='1' <?= $sel2 ?>><?= gettext("True")?>
                       </select>
-                    <?php } elseif ($cfg_type == 'json') {
-                      ?>
+                    <?php } elseif ($cfg_type == 'json') { ?>
                       <input type="hidden" name='new_value[<?= $cfg_id ?>]' value='<?= $cfg_value ?>'>
-                      <button class="btn-primary jsonSettingsEdit" id="set_value<?= $cfg_id ?>" data-cfgid="<?= $cfg_id ?>">Edit Settings</button>
-                        
-                        
-                      <?php
-                      
-                    } ?>
+                      <button class="btn-primary jsonSettingsEdit" id="set_value<?= $cfg_id ?>"
+                              data-cfgid="<?= $cfg_id ?>"><?= gettext("Edit Settings")?>
+                      </button>
+                    <?php } ?>
                   </td>
                   <?php
                   // Default Value
@@ -229,7 +234,7 @@ $rsConfigs = RunQuery($sSQL);
                   ?>
                   <td>
                     <?php if ($cfg_tooltip != "") { ?>
-                    <i class="fa fa-fw fa-question-circle" data-toggle="tooltip"  title="<?= $cfg_tooltip ?>"></i>
+                      <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="<?= gettext($cfg_tooltip) ?>"></i>
                     <?php } ?>
                     <?= $display_default ?>
                   </td>
@@ -248,9 +253,13 @@ $rsConfigs = RunQuery($sSQL);
 </div>
 
 <script>
-$(document).ready(function(){
-   $("#timeZoneSelectBox").select2();
-}); 
+  $(document).ready(function () {
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      var target = $(e.target).attr("href") // activated tab
+      $(target + " .choiceSelectBox").select2({width: 'resolve'});
+    });
+    $(".choiceSelectBox").select2({width: 'resolve'});
+  });
 </script>
 <script src="skin/js/SystemSettings.js" type="text/javascript"></script>
 

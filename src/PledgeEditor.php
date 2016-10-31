@@ -19,7 +19,7 @@ global $iChecksPerDepositForm;
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/MICRFunctions.php";
+use ChurchCRM\MICRReader;
 
 if ($bUseScannedChecks) { // Instantiate the MICR class
    $micrObj = new MICRReader();
@@ -689,7 +689,7 @@ $(document).ready(function() {
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?>><?= gettext("Date") ?></td>
 <?php	if (!$dDate)	$dDate = $dep_Date ?>
 	
-				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11"><font color="red"><?= $sDateError ?></font></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><font color="red"><?= $sDateError ?></font></td>
 			</tr>
 
 
@@ -780,16 +780,17 @@ $(document).ready(function() {
 				<?php }?>
 
 				<td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Comment") ?></td>
-             </tr>
+     </tr>
 
 			<?php 
       foreach ($fundId2Name as $fun_id => $fun_name) { ?>
-				<tr>
+      <tr>
 				<td class="TextColumn"><b><?= $fun_name ?></b></td>
 				<td class="TextColumn">
           <input type="text" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= $nAmount[$fun_id] ?>"><br>
           <font color="red"><?= $sAmountError[$fun_id] ?></font>
-        </td> <?php
+        </td>
+        <?php
 				if ($bEnableNonDeductible) {
 					echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
 				}
@@ -797,14 +798,11 @@ $(document).ready(function() {
 				echo "</tr>";
 			}
 			?>
-		</td>
 		</table>
-		</tr>
+    </td>
+  </tr>
 	<?php } ?>
 </table>
 </form>
-<script>
-$("#Date").datepicker({format:'yyyy-mm-dd'});
-</script
 
 <?php require "Include/Footer.php" ?>

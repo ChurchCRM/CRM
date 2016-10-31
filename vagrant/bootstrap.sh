@@ -7,6 +7,7 @@ DB_PASS="root"
 DB_HOST="localhost"
 
 CRM_DB_INSTALL_SCRIPT="/vagrant/src/mysql/install/Install.sql"
+CRM_DB_INSTALL_SCRIPT2="/vagrant/src/mysql/upgrade/update_config.sql"
 CRM_DB_VAGRANT_SCRIPT="/vagrant/vagrant/vagrant.sql"
 CRM_DB_USER="churchcrm"
 CRM_DB_PASS="churchcrm"
@@ -23,6 +24,9 @@ echo "==================   Apache Setup  ======================="
 echo "=========================================================="
 sudo sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2G/g' /etc/php5/apache2/php.ini
 sudo sed -i 's/^post_max_size.*$/post_max_size = 2G/g' /etc/php5/apache2/php.ini
+sudo sed -i 's/\/var\/www.*$/\/var\/www\/public/g' /etc/apache2/sites-available/default-ssl.conf
+sudo a2enmod ssl
+sudo a2ensite default-ssl
 sudo service apache2 restart
 
 echo "=========================================================="
@@ -54,6 +58,7 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "FLUSH PRIVILEGES;"
 echo "Database: user created with needed PRIVILEGES"
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT
+sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT2
 
 echo "Database: tables and metadata deployed"
 
@@ -68,11 +73,10 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "INSERT INTO churchcrm.version_ver (ver_
 echo "Database: development seed data deployed"
 
 echo "=========================================================="
-echo "=================   MailCatcher Setup  ==================="
+echo "===============  MV Config.php           ================="
 echo "=========================================================="
 
-sudo pkill mailcatcher
-sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
+cp /vagrant/vagrant/Config.php /vagrant/src/Include/
 
 echo "=========================================================="
 echo "=================   Composer Update    ==================="
@@ -80,26 +84,52 @@ echo "=========================================================="
 
 sudo /usr/local/bin/composer self-update
 
-echo "=========================================================="
-echo "===============   Composer PHP & Skin    ================="
-echo "=========================================================="
+echo "===============   Composer PHP           ================="
 
 cd /vagrant/src
 composer update
-../vagrant/build-skin.sh
 
-echo "=========================================================="
-echo "===============  MV Config.php           ================="
-echo "=========================================================="
-
-cp /vagrant/vagrant/Config.php /vagrant/src/Include/
-
-echo "=========================================================="
 echo "================   Build ORM Classes    =================="
+
+/vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/propel
+composer dump-autoload
+
+echo "=========================================================="
+echo "===============   NPM                    ================="
 echo "=========================================================="
 
-/vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/vagrant
-composer dump-autoload
+cd /vagrant
+npm install --unsafe-perm
+
+echo "=========================================================="
+echo "=================   MailCatcher Setup  ==================="
+echo "=========================================================="
+
+sudo pkill mailcatcher
+sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
+
+echo "=========================================================="
+echo "==========   Add Locals                       ============"
+echo "=========================================================="
+
+sudo locale-gen de_DE
+sudo locale-gen en_AU
+sudo locale-gen en_GB
+sudo locale-gen es_ES
+sudo locale-gen fr_FR
+sudo locale-gen hu_HU
+sudo locale-gen it_IT
+sudo locale-gen nb_NO
+sudo locale-gen nl_NL
+sudo locale-gen pl_PL
+sudo locale-gen pt_BR
+sudo locale-gen ro_RO
+sudo locale-gen ru_RU
+sudo locale-gen se_SE
+sudo locale-gen sq_AL
+sudo locale-gen sv_SE
+sudo locale-gen zh_CN
+sudo locale-gen zh_TW
 
 echo "=========================================================="
 echo "==========   Starting Background Installs     ============"
@@ -110,19 +140,19 @@ echo "Build systems are downloading"
 
 echo "=========================================================="
 echo "=========================================================="
-echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="     
-echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="  
-echo "===  8P      88ooo88 88    88 88oobY' 8P      88ooo88  ==="  
-echo "===  8b      88~~~88 88    88 88'8b   8b      88~~~88  ===" 
-echo "===  Y8b  d8 88   88 88b  d88 88 '88. Y8b  d8 88   88  ===" 
-echo "===   'Y88P' YP   YP ~Y8888P' 88   YD  'Y88P' YP   YP  ===" 
+echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="
+echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="
+echo "===  8P      88ooo88 88    88 88oobY' 8P      88ooo88  ==="
+echo "===  8b      88~~~88 88    88 88'8b   8b      88~~~88  ==="
+echo "===  Y8b  d8 88   88 88b  d88 88 '88. Y8b  d8 88   88  ==="
+echo "===   'Y88P' YP   YP ~Y8888P' 88   YD  'Y88P' YP   YP  ==="
 echo "===                                                    ==="
 echo "===                         .o88b. d8888b. .88b  d88.  ==="
 echo "===                        d8P  Y8 88  '8D 88'YbdP'88  ==="
 echo "===                        8P      88oobY' 88  88  88  ==="
 echo "===                        8b      88'8b   88  88  88  ==="
 echo "===                        Y8b  d8 88 '88. 88  88  88  ==="
-echo "===                         'Y88P' 88   YD YP  YP  YP  ==="                           
+echo "===                         'Y88P' 88   YD YP  YP  YP  ==="
 echo "=========================================================="
 echo "=========================================================="
 echo "====== Visit  http://192.168.33.10/               ========"

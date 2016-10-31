@@ -226,7 +226,7 @@ if ($fam_ID)
 			<td class="LabelColumn"><?= gettext("Family:") ?></td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn">
-			<?php if ($fam_Name != "") { echo $fam_Name; } else { echo "Unassigned"; } ?>
+			<?php if ($fam_Name != "") { echo $fam_Name; } else { echo gettext("Unassigned"); } ?>
 			&nbsp;</td>
 		</tr>
 		<tr>
