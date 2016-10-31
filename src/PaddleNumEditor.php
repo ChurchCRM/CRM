@@ -159,12 +159,12 @@ require "Include/Header.php";
 			<td width="50%" valign="top" align="left">
 			<table cellpadding="3">
 				<tr>
-					<td class="LabelColumn"><?= gettext("Number:") ?></td>
+					<td class="LabelColumn"><?= gettext("Number") ?>:</td>
 					<td class="TextColumn"><input type="text" name="Num" id="Num" value="<?= $iNum ?>"></td>
 				</tr>
 				
 				<tr>
-					<td class="LabelColumn"><?= gettext("Buyer:") ?>
+					<td class="LabelColumn"><?= gettext("Buyer") ?>:
 					</td>
 					<td class="TextColumn">
 						<select name="PerID">

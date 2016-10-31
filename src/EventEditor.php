@@ -433,7 +433,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 <?php if (empty($iTypeID)) { ?>
 
   <tr>
-    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Type:") ?></td>
+    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Type") ?>:</td>
     <td colspan="3" class="TextColumn">
 			<select name='EN_tyid' class='form-control' id='event_type_id'>
 				<option><?= gettext("Select your event type"); ?></option>
@@ -459,7 +459,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
 <?php } else { // if (empty($iTypeID)) ?>
 
   <tr>
-    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Type:") ?></td>
+    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Type") ?>:</td>
     <td colspan="3" class="TextColumn">
     <input type="hidden" name="EventTypeName" value="<?= ($sTypeName) ?>">
     <input type="hidden" name="EventTypeID" value="<?= ($iTypeID) ?>">
@@ -468,14 +468,14 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   </tr>
 
   <tr>
-    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Title:") ?></td>
+    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Title") ?>:</td>
     <td colspan="1" class="TextColumn">
       <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control'>
       <?php if ( $bTitleError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a title.") . "</span></div>"; ?>
     </td>
   </tr>
   <tr>
-    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Desc:") ?></td>
+    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Desc") ?>:</td>
     <td colspan="3" class="TextColumn">
       <textarea name="EventDesc" rows="4" maxlength="100" class='form-control'><?= ($sEventDesc) ?></textarea>
       <?php if ( $bDescError ) echo "<div><span style=\"color: red;\">" . gettext("You must enter a description.") . "</span></div>"; ?>
@@ -487,7 +487,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   ?>
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span>
-      <?= gettext("Date Range:") ?>
+      <?= gettext("Date Range") ?>:
     </td>
     <td class="TextColumn">
       <input type="text" name="EventDateRange" value="<?= $eventStart ." - ". $eventEnd?>"
@@ -532,12 +532,12 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
   </tr>
 
   <tr>
-    <td class="LabelColumn"><?= gettext("Event Sermon:") ?></td>
+    <td class="LabelColumn"><?= gettext("Event Sermon") ?>:</td>
     <td colspan="3" class="TextColumn"><textarea name="EventText" rows="5" cols="80" class='form-control'><?= ($sEventText) ?></textarea></td>
   </tr>
 
   <tr>
-    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Status:") ?></td>
+    <td class="LabelColumn"><span style="color: red">*</span><?= gettext("Event Status") ?>:</td>
     <td colspan="3" class="TextColumn">
       <?php $render->Radio("Active",   "EventStatus", 0, ($iEventStatus == 0)); ?>
       <?php $render->Radio("Inactive", "EventStatus", 1, ($iEventStatus == 1)); ?>

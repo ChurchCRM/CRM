@@ -138,31 +138,31 @@ $("#dangerContinue").click(function(){
 
                 <div class="row">
                   <div class="col-md-4">
-                    <label for="DB_SERVER_NAME"><?= gettext("DB Server Name:") ?></label>
+                    <label for="DB_SERVER_NAME"><?= gettext("DB Server Name") ?>:</label>
                     <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" value="localhost" class="form-control"
                            required>
                   </div>
                   <div class="col-md-4">
-                    <label for="DB_NAME"><?= gettext("DB Name:") ?></label>
+                    <label for="DB_NAME"><?= gettext("DB Name") ?>:</label>
                     <input type="text" name="DB_NAME" id="DB_NAME" value="churchcrm" class="form-control" required>
                   </div>
                   <div class="col-md-4">
-                    <label for="DB_USER"><?= gettext("DB User:") ?></label>
+                    <label for="DB_USER"><?= gettext("DB User") ?>:</label>
                     <input type="text" name="DB_USER" id="DB_USER" value="churchcrm" class="form-control" required>
                   </div>
                   <div class="col-md-4">
-                    <label for="DB_PASSWORD"><?= gettext("DB Password:") ?></label>
+                    <label for="DB_PASSWORD"><?= gettext("DB Password") ?>:</label>
                     <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" value="churchcrm" class="form-control"
                            required>
                   </div>
 
                   <div class="col-md-4">
-                    <label for="ROOT_PATH"><?= gettext("Root Path:") ?></label>
+                    <label for="ROOT_PATH"><?= gettext("Root Path") ?>:</label>
                     <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= $rootPath ?>" class="form-control">
                   </div>
 
                   <div class="col-md-4">
-                    <label for="URL"><?= gettext("Base URL:") ?></label>
+                    <label for="URL"><?= gettext("Base URL") ?>:</label>
                     <input type="text" name="URL" id="URL" value="<?= $URL ?>" class="form-control" required>
                   </div>
                 </div>

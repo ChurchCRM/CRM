@@ -95,7 +95,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu" role="menu">
-           <?php generateGroupRoleEmailDropdown($roleEmails,"mailto:") ?>
+           <?php generateGroupRoleEmailDropdown($roleEmails,"mailto") ?>:
           </ul>
         </div>
        <div class="btn-group">

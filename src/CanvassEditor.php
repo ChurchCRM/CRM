@@ -199,7 +199,7 @@ require "Include/Header.php";
 			?>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Date:") ?></td>
+				<td class="LabelColumn"><?= gettext("Date") ?>:</td>
 				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active" ?><font color="red"><?= $sDateError ?></font></td>
 			</tr>
 

@@ -668,7 +668,7 @@ require "Include/Header.php";
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
-						<label><?= gettext("Family Name:") ?></label>
+						<label><?= gettext("Family Name") ?>:</label>
 						<input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, "UTF-8") ?>" maxlength="48"  class="form-control">
 						<?php if ($sNameError) { ?><font color="red"><?= $sNameError ?></font><?php } ?>
 					</div>
@@ -676,15 +676,15 @@ require "Include/Header.php";
 				<p/>
 				<div class="row">
 					<div class="col-md-6">
-						<label><?= gettext("Address1:") ?></label>
+						<label><?= gettext("Address1") ?>:</label>
 							<input type="text" Name="Address1" value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, "UTF-8") ?>" size="50" maxlength="250"  class="form-control">
 					</div>
 					<div class="col-md-6">
-						<label><?= gettext("Address2:") ?></label>
+						<label><?= gettext("Address2") ?>:</label>
 						<input type="text" Name="Address2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, "UTF-8") ?>" size="50" maxlength="250"  class="form-control">
 					</div>
 					<div class="col-md-6">
-						<label><?= gettext("City:") ?></label>
+						<label><?= gettext("City") ?>:</label>
 						<input type="text" Name="City" value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, "UTF-8") ?>" maxlength="50"  class="form-control">
 					</div>
 				</div>
@@ -702,7 +702,7 @@ require "Include/Header.php";
 						<?php require "Include/StateDropDown.php"; ?>
 					</div>
 					<div class="form-group col-md-3">
-						<label><?= gettext("None US/CND State:") ?></label>
+						<label><?= gettext("None US/CND State") ?>:</label>
 						<input type="text"  class="form-control" name="StateTextbox" value="<?php if ($sCountry != "United States" && $sCountry != "Canada") echo htmlentities(stripslashes($sState),ENT_NOQUOTES, "UTF-8"); ?>" size="20" maxlength="30">
 					</div>
 					<div class="form-group col-md-3">
@@ -718,7 +718,7 @@ require "Include/Header.php";
 							maxlength="10" size="8">
 					</div>
 					<div class="form-group col-md-3">
-						<label> <?= gettext("Country:") ?></label>
+						<label> <?= gettext("Country") ?>:</label>
 						<?php require "Include/CountryDropDown.php" ?>
 					</div>
 				</div>
@@ -726,11 +726,11 @@ require "Include/Header.php";
 					if (!$bHaveXML) { // No point entering if values will just be overwritten ?>
 				<div class="row">
 					<div class="form-group col-md-3">
-						<label><?= gettext("Latitude:") ?></label>
+						<label><?= gettext("Latitude") ?>:</label>
 						<input type="text" class="form-control" Name="Latitude" value="<?= $nLatitude ?>" size="30" maxlength="50">
 					</div>
 					<div class="form-group col-md-3">
-						<label><?= gettext("Longitude:") ?></label>
+						<label><?= gettext("Longitude") ?>:</label>
 						<input type="text" class="form-control" Name="Longitude" value="<?= $nLongitude ?>" size="30" maxlength="50">
 					</div>
 				</div>
@@ -749,7 +749,7 @@ require "Include/Header.php";
 		<div class="box-body">
 			<div class="row">
 				<div class="form-group col-md-6">
-					<label><?= gettext("Home Phone:") ?></label>
+					<label><?= gettext("Home Phone") ?>:</label>
 					<div class="input-group">
 						<div class="input-group-addon">
 							<i class="fa fa-phone"></i>
@@ -759,7 +759,7 @@ require "Include/Header.php";
 					</div>
 				</div>
 				<div class="form-group col-md-6">
-					<label><?= gettext("Work Phone:") ?></label>
+					<label><?= gettext("Work Phone") ?>:</label>
 					<div class="input-group">
 						<div class="input-group-addon">
 							<i class="fa fa-phone"></i>
@@ -769,7 +769,7 @@ require "Include/Header.php";
 					</div>
 				</div>
 				<div class="form-group col-md-6">
-					<label><?= gettext("Mobile Phone:") ?></label>
+					<label><?= gettext("Mobile Phone") ?>:</label>
 					<div class="input-group">
 						<div class="input-group-addon">
 							<i class="fa fa-phone"></i>
@@ -781,7 +781,7 @@ require "Include/Header.php";
 			</div>
 			<div class="row">
 				<div class="form-group col-md-6">
-					<label><?= gettext("Email:") ?></label>
+					<label><?= gettext("Email") ?>:</label>
 					<div class="input-group">
 						<div class="input-group-addon">
 							<i class="fa fa-envelope"></i>
@@ -791,7 +791,7 @@ require "Include/Header.php";
 				</div>
 				<?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
 				<div class="form-group col-md-4">
-					<label><?= gettext("Send Newsletter:") ?></label><br/>
+					<label><?= gettext("Send Newsletter") ?>:</label><br/>
 					<input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>>
 				</div>
 				<?php } ?>
@@ -800,7 +800,7 @@ require "Include/Header.php";
 	</div>
 	<div class="box box-info clearfix">
 		<div class="box-header">
-			<h3 class="box-title"><?= gettext("Other Info:") ?></h3>
+			<h3 class="box-title"><?= gettext("Other Info") ?>:</h3>
 			<div class="pull-right"><br/>
 				<input type="submit" class="form-control" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
@@ -810,7 +810,7 @@ require "Include/Header.php";
 				if ($dWeddingDate == "0000-00-00" || $dWeddingDate == "NULL") $dWeddingDate = ""; ?>
 				<div class="row">
 					<div class="form-group col-md-4">
-						<label><?= gettext("Wedding Date:") ?></label>
+						<label><?= gettext("Wedding Date") ?>:</label>
 						<input type="text" class="form-control" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="12" id="WeddingDate" size="15">
 						<?php if ($sWeddingDateError) { ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php } ?>
 					</div>
@@ -819,14 +819,14 @@ require "Include/Header.php";
 			<div class="row">
 				<?php if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser ?>
 					<div class="form-group col-md-4">
-						<label><?= gettext("Ok To Canvass:") ?> </label><br/>
+						<label><?= gettext("Ok To Canvass") ?>: </label><br/>
 						<input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) echo " checked "; ?> >
 					</div>
 				<?php }
 
 				if ($rsCanvassers <> 0 && mysql_num_rows($rsCanvassers) > 0)  { ?>
 				<div class="form-group col-md-4">
-					<label><?= gettext("Assign a Canvasser:") ?></label>
+					<label><?= gettext("Assign a Canvasser") ?>:</label>
 					<?php // Display all canvassers
 					echo "<select name='Canvasser' class=\"form-control\"><option value=\"0\">None selected</option>";
 					while ($aCanvasser = mysql_fetch_array($rsCanvassers))  {
@@ -842,7 +842,7 @@ require "Include/Header.php";
 
 				if ($rsBraveCanvassers <> 0 && mysql_num_rows($rsBraveCanvassers) > 0)  { ?>
 					<div class="form-group col-md-4">
-						<label><?= gettext("Assign a Brave Canvasser:") ?> </label>
+						<label><?= gettext("Assign a Brave Canvasser") ?>: </label>
 
 						<?php // Display all canvassers
 						echo "<select name='BraveCanvasser' class=\"form-control\"><option value=\"0\">None selected</option>";
@@ -870,7 +870,7 @@ require "Include/Header.php";
 		<div class="box-body">
 			<div class="row">
 				<div class="form-group col-md-4">
-					<label><?= gettext("Envelope number:") ?></label>
+					<label><?= gettext("Envelope number") ?>:</label>
 					<input type="text" Name="Envelope" <?php if($fam_Envelope) echo " value=\"" . $fam_Envelope; ?>" size="30" maxlength="50">
 				</div>
 			</div>

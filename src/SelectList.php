@@ -480,7 +480,7 @@ if ($iMode == 1) {
 ?>
 
 <table align="center"><tr><td align="center">
-<?= gettext("Sort order:") ?>
+<?= gettext("Sort order") ?>:
 <select name="Sort" onchange="this.form.submit()">
 		<option value="name" <?php if ($sSort == "name" || empty($sSort)) echo "selected";?>><?= gettext("By Name") ?></option>
 		<option value="family" <?php if ($sSort == "family") echo "selected";?>><?= gettext("By Family") ?></option>

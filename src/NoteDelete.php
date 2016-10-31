@@ -65,7 +65,7 @@ require "Include/Header.php";
 ?>
 <div class="box box-warning">
   <div class="box-header with-border">
-	<?= gettext("Please confirm deletion of this note:") ?>
+	<?= gettext("Please confirm deletion of this note") ?>:
   </div>
   <div class="box-body">
     <?= $nte_Text ?>

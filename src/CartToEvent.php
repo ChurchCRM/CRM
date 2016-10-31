@@ -64,7 +64,7 @@ $rsEvents = RunQuery($sSQL);
 
 ?>
 <div class="box">
-<p align="center"><?= gettext("Select the event to which you would like to add your cart:") ?></p>
+<p align="center"><?= gettext("Select the event to which you would like to add your cart") ?>:</p>
 <form name="CartToEvent" action="CartToEvent.php" method="POST">
 <table align="center">
         <?php if ($sGlobalMessage) { ?>
@@ -73,7 +73,7 @@ $rsEvents = RunQuery($sSQL);
         </tr>
         <?php } ?>
         <tr>
-                <td class="LabelColumn"><?= gettext("Select Event:") ?></td>
+                <td class="LabelColumn"><?= gettext("Select Event") ?>:</td>
                 <td class="TextColumn">
                         <?php
                         // Create the group select drop-down

@@ -190,11 +190,11 @@ if ($iFamilyID == $fam_ID) {
                 <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
             <?php }
             if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
-              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter:") ?>
+              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter") ?>:
                 <span><?= gettext($fam_SendNewsLetter) ?></span></li>
             <?php }
             if (!$bHideWeddingDate && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
-              <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date:") ?>
+              <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
                 <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
             <?php }
             if ($bUseDonationEnvelopes) { ?>
@@ -202,19 +202,19 @@ if ($iFamilyID == $fam_ID) {
               </li>
             <?php }
             if ($sHomePhone != "") { ?>
-              <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><a href="tel:<?= $sHomePhone ?>"><?= $sHomePhone ?></a></span></li>
+              <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone") ?>: <span><a href="tel:<?= $sHomePhone ?>"><?= $sHomePhone ?></a></span></li>
             <?php }
             if ($sWorkPhone != "") { ?>
-              <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone:") ?> <span><a href="tel:<?= $sWorkPhone ?>"><?= $sWorkPhone ?></a></span></li>
+              <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone") ?>: <span><a href="tel:<?= $sWorkPhone ?>"><?= $sWorkPhone ?></a></span></li>
             <?php }
             if ($sCellPhone != "") { ?>
-              <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone:") ?> <span><a href="tel:<?= $sCellPhone ?>"><?= $sCellPhone ?></a></span></li>
+              <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone") ?>: <span><a href="tel:<?= $sCellPhone ?>"><?= $sCellPhone ?></a></span></li>
             <?php }
             if ($fam_Email != "") { ?>
-            <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?><a href="mailto:<?= $fam_Email ?>">
+            <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email") ?>:<a href="mailto:<?= $fam_Email ?>">
                 <span><?= $fam_Email ?></span></a></li>
             <?php if ($mailchimp->isActive()) { ?>
-            <li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email:") ?>
+            <li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email") ?>:
               <span><?= $mailchimp->isEmailInMailChimp($fam_Email) ?></span>
           </a></li>
             <?php }
@@ -506,7 +506,7 @@ if ($iFamilyID == $fam_ID) {
                 if ($bOkToEdit) { ?>
                   <div class="alert alert-info">
                     <div>
-                      <h4><strong><?= gettext("Assign a New Property:") ?></strong></h4>
+                      <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
 
                       <p><br></p>
 
@@ -625,7 +625,7 @@ if ($iFamilyID == $fam_ID) {
                          value="1" <?php if ($_SESSION['sshowPledges']) echo " checked"; ?>><?= gettext("Show Pledges") ?>
                   <input type="checkbox" name="ShowPayments"
                          value="1" <?php if ($_SESSION['sshowPayments']) echo " checked"; ?>><?= gettext("Show Payments") ?>
-                  <?= gettext(" Since:") ?>
+                  <?= gettext(" Since") ?>:
                   <input type="text" class="TextColumnWithBottomBorder" Name="ShowSinceDate"
                          value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
                   <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable"
@@ -784,7 +784,7 @@ if ($iFamilyID == $fam_ID) {
           </div>
           <div class="modal-body">
             <input type="file" name="file" size="50"/>
-            <?= gettext("Max Photo size:") ?> <?= ini_get('upload_max_filesize') ?>
+            <?= gettext("Max Photo size") ?>: <?= ini_get('upload_max_filesize') ?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>

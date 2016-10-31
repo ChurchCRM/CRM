@@ -68,19 +68,19 @@ require "Include/Header.php";
 		<td>
 		<table cellpadding="3">
 			<tr>
-				<td class="LabelColumn"><?= gettext("Number:") ?></td>
+				<td class="LabelColumn"><?= gettext("Number") ?>:</td>
 				<td class="TextColumn"><input type="text" name="ID" id="ID" value="<?= $iID ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Date Start:") ?></td>
+				<td class="LabelColumn"><?= gettext("Date Start") ?>:</td>
 				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart ?>"></td>
 				<td align="center">
 					<input type="submit" class="btn btn-primary" value="<?= gettext("Apply Filters") ?>" name="FindFundRaiserSubmit">
 				</td>
 			</tr>
 			<tr>
-				<td class="LabelColumn"><?= gettext("Date End:") ?></td>
+				<td class="LabelColumn"><?= gettext("Date End") ?>:</td>
 				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>"></td>
 				<td align="center">
 					<input type="submit" class="btn btn-danger" value="<?= gettext("Clear Filters") ?>" name="FilterClear">

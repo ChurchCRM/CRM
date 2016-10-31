@@ -55,7 +55,7 @@ require "Include/Header.php";
         </ul>
         <BR><BR>
         <form method="post" action="<?= sRootPath ?>/api/database/backup" id="BackupDatabase">
-        <?= gettext("Select archive type:") ?>
+        <?= gettext("Select archive type") ?>:
         <?php if ($hasGZIP) { ?><input type="radio" name="archiveType" value="0"><?= gettext("GZip") ?><?php } ?>
         <!--<?php if ($hasZIP) { ?><input type="radio" name="archiveType" value="1"><?= gettext("Zip") ?><?php } ?>-->
         <input type="radio" name="archiveType" value="2" checked><?= gettext("Uncompressed") ?>
@@ -64,8 +64,8 @@ require "Include/Header.php";
         <?php if ($hasPGP) { ?>
         <input type="checkbox" name="encryptBackup" value="1"><?= gettext("Encrypt backup file with a password?") ?>
         &nbsp;&nbsp;&nbsp;
-        <?= gettext("Password:") ?><input type="password" name="pw1">
-        <?= gettext("Re-type Password:") ?><input type="password" name="pw2">
+        <?= gettext("Password") ?>:<input type="password" name="pw1">
+        <?= gettext("Re-type Password") ?>:<input type="password" name="pw2">
         <BR><span id="passworderror" style="color: red"></span><BR><BR>
         <?php } ?>
         <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="' . gettext("Generate and Download Backup") . '"' ?>>

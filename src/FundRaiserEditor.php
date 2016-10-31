@@ -171,17 +171,17 @@ require "Include/Header.php";
 		<td>
 		<table cellpadding="3">
 			<tr>
-				<td class="LabelColumn"><?= gettext("Date:") ?></td>
+				<td class="LabelColumn"><?= gettext("Date") ?>:</td>
 				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11"><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
 			
 			<tr>
-				<td class="LabelColumn"><?= gettext("Title:") ?></td>
+				<td class="LabelColumn"><?= gettext("Title") ?>:</td>
 				<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?= $sTitle ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Description:") ?></td>
+				<td class="LabelColumn"><?= gettext("Description") ?>:</td>
 				<td class="TextColumn"><input type="text" name="Description" id="Description" value="<?= $sDescription ?>"></td>
 			</tr>
 		</table>
@@ -192,7 +192,7 @@ require "Include/Header.php";
 <br>
 </div>
 <div class="box box-body">
-<b><?= gettext("Donated items for this fundraiser:") ?></b>
+<b><?= gettext("Donated items for this fundraiser") ?>:</b>
 <br>
 
 <table cellpadding="5" cellspacing="0" width="100%">
