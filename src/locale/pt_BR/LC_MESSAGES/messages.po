@@ -5800,11 +5800,11 @@ msgstr "Criar uma lista da classe"
 msgid "Create Attendance Sheet"
 msgstr "Criar controle de freqüência"
 
-#: 
+#:
 msgid "System Users"
 msgstr "Usuários do sistema"
 
-#: 
+#:
 msgid "Calendar"
 msgstr "Calendário"
 
@@ -5812,119 +5812,119 @@ msgstr "Calendário"
 msgid "Sunday School"
 msgstr "Escola Bíblica Dominical"
 
-#: 
+#:
 msgid "Main"
 msgstr "Principal"
 
-#: 
+#:
 msgid "Members"
 msgstr "Membros"
 
-#: 
+#:
 msgid "Add New Person"
 msgstr "Adicionar uma Nova Pessoa"
 
-#: 
+#:
 msgid "View All Persons"
 msgstr "Ver Todas as Pessoas"
 
-#: 
+#:
 msgid "Add New Family"
 msgstr "Adicionar uma Nova Família"
 
-#: 
+#:
 msgid "View All Families"
 msgstr "Ver Todas as Famílias"
 
-#: 
+#:
 msgid "List Groups"
 msgstr "Listar Grupos"
 
-#: 
+#:
 msgid "Edit Group Types"
 msgstr "Editar Tipos de Grupos"
 
-#: 
+#:
 msgid "Events"
 msgstr "Eventos"
 
-#: 
+#:
 msgid "List Church Events"
 msgstr "Listar Eventos da Igreja"
 
-#: 
+#:
 msgid "Add Church Event"
 msgstr "Adicionar Evento da Igreja"
 
-#: 
+#:
 msgid "List Event Types"
 msgstr "Listar Tipos de Eventos"
 
-#: 
+#:
 msgid "Check-in and Check-out"
 msgstr "Entrada e Saída"
 
-#: 
+#:
 msgid "View All Deposits"
 msgstr "Ver todos os Depósitos"
 
-#: 
+#:
 msgid "Deposit Reports"
 msgstr "Relatórios de Depósitos"
 
-#: 
+#:
 msgid "Edit Deposit Slip"
 msgstr "Editar Depósito Errado"
 
-#: 
+#:
 msgid "Fundraiser"
 msgstr "Campanha"
 
-#: 
+#:
 msgid "View All Fundraisers"
 msgstr "Ver Todas as Campanhas"
 
-#: 
+#:
 msgid "Create New Fundraiser"
 msgstr "Criar Nova Campanha"
 
-#: 
+#:
 msgid "Edit Fundraiser"
 msgstr "Editar Campanha"
 
-#: 
+#:
 msgid "View Buyers"
 msgstr "Ver Compradores"
 
-#: 
+#:
 msgid "Add Donors to Buyer List"
 msgstr "Adicionar Doadores para a Lista de Compradores"
 
-#: 
+#:
 msgid "Data/Reports"
 msgstr "Dados/Relatórios"
 
-#: 
+#:
 msgid "Reports Menu"
 msgstr "Menu de Relatórios"
 
-#: 
+#:
 msgid "Query Menu"
 msgstr "Menu de consulta"
 
-#: 
+#:
 msgid "CSV Export Records"
 msgstr "Exportar Registros em CSV"
 
-#: 
+#:
 msgid "People Properties"
 msgstr "Propriedades da Pessoa"
 
-#: 
+#:
 msgid "Family Properties"
 msgstr "Propriedades da Família"
 
-#: 
+#:
 msgid "Property Types"
 msgstr "Tipos de Propriedades"
 
@@ -5932,15 +5932,15 @@ msgstr "Tipos de Propriedades"
 msgid "Edit General Settings"
 msgstr "Editar Configurações Gerais"
 
-#: 
+#:
 msgid "Edit Custom Family Fields"
 msgstr "Editar Campos Personalizados da Família"
 
-#: 
+#:
 msgid "Edit Custom Person Fields"
 msgstr "Editar Campos Personalizados da Pessoa"
 
-#: 
+#:
 msgid "Edit Donation Funds"
 msgstr "Editar Fundos de Doações"
 
@@ -6326,12 +6326,12 @@ msgstr "A verificação de Integridade da Aplicação Falhou"
 msgid "Self Registration"
 msgstr "Auto-registro"
 
-#: 
+#:
 msgctxt "cntx"
 msgid "term"
 msgstr "termo"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Set debug mode\n"
 "This may be helpful for when you're first setting up ChurchCRM, but you should\n"
@@ -6341,1207 +6341,1218 @@ msgid "Set debug mode\n"
 msgstr "Definir o modo de depuração\n"
 "Isto pode ser útil para quando você estiver configurando o ChurchCRM pela primeira vez, mas por outro lado, você deve desligá-lo por questões de segurança. Se você está tendo problemas, por favor, habilite que este modo para saber quais são os erros. Isto é especialmente importante se você precisa para relatar um problema nos fóruns de ajuda."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Include only these classifications in the directory, comma seperated"
 msgstr "Inclua somente estas classificações no diretório, separadas por vírgula"
 
-#: 
+#:
 #, fuzzy
 msgctxt "config_cfg"
 msgid "These are the family role numbers designated as head of house"
 msgstr "Estes são os números de papel da família designados como chefe da casa"
 
-#: 
+#:
 #, fuzzy
 msgctxt "config_cfg"
 msgid "These are the family role numbers designated as spouse"
 msgstr "Estes são os números papel da família designados como esposo"
 
-#: 
+#:
 #, fuzzy
 msgctxt "config_cfg"
 msgid "These are the family role numbers designated as child"
 msgstr "Estes são os números papel da família designados como filhos"
 
-#: 
+#:
 msgctxt "config_cfg"
-msgid "Session timeout length in secondsSet to zero to disable session timeouts."
+msgid "Session timeout length in seconds
+Set to zero to disable session timeouts."
 msgstr "Tempo limite da sessão em segundos\n"
 "Defina como zero para desativar o tempo limite de sessão."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Consultas para a qual o usuário deve ter permissões de finanças para usar:"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Should only administrators have access to the CSV export system and directory report?"
 msgstr "Apenas os administradores deveriam têm acesso ao sistema de exportação CSV e relatório diretório?"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Default password for new users and those with reset passwords"
 msgstr "Senha padrão para novos usuários e para redefinição de senhas"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Minimum length a user may set their password to"
 msgstr "O tamanho mínimo que a senha do usuário deve ter é "
 
-#: 
+#:
 msgctxt "config_cfg"
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)Set to zero to disable this feature"
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)
+Set to zero to disable this feature"
 msgstr "Número mínimo de caracteres diferentes que uma nova senha deve ser diferente da anterior (número de caracteres alterado)\n"
 "Defina como zero para desativar esse recurso"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Uma lista separada por vírgulas não é permitida como senha (muito óbvio)."
 
-#: 
+#:
 msgctxt "config_cfg"
-msgid "Maximum number of failed logins to allow before a user account is locked.Once the maximum has been reached, an administrator must re-enable the account.This feature helps to protect against automated password guessing attacks.Set to zero to disable this feature."
+msgid "Maximum number of failed logins to allow before a user account is locked.
+Once the maximum has been reached, an administrator must re-enable the account.
+This feature helps to protect against automated password guessing attacks.
+Set to zero to disable this feature."
 msgstr "Número máximos de logins falhados antes da conta do usuário ser bloqueada. Uma vez que este número tenha sido alcançado, um administrador deve reabilitar a conta. Esta funcionalidade ajuda a proteger o sistema contra ataques automatizados de adivinhação de senha. Defina como zero para desativar esse recurso."
 
-#: 
+#:
 msgctxt "config_cfg"
-msgid "PDF handling mode.1 = Save File dialog2 = Open in current browser window"
+msgid "PDF handling mode.
+1 = Save File dialog
+2 = Open in current browser window"
 msgstr "Modo de manipulação de PDF.\n"
 "1 = Salvar o arquivo de diálogo\n"
 "2 = Abrir na janela atual do navegador"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Default City"
 msgstr "Cidade padrão"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Estado Padrão - A abrerviação deve ter 2 letras!"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Default Country"
 msgstr "País Padrão"
 
-#: 
+#:
 msgctxt "config_cfg"
-msgid "If you wish to be able to send emails from within ChurchCRM. This requireseither an SMTP server address to send from or sendmail installed in PHP."
+msgid "If you wish to be able to send emails from within ChurchCRM. This requires
+either an SMTP server address to send from or sendmail installed in PHP."
 msgstr "Se você deseja que o ChurchCRM seja capaz de enviar e-mails. É necessário \n"
 "um endereço de servidor SMTP para enviar as mensagens ou do sendmail instalado em PHP."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "The method for sending email. Either \"smtp\" or \"sendmail\""
 msgstr "O método para o envio de e-mail. Ou \"smtp\", ou \"sendmail\""
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Default account for receiving a copy of all emails"
 msgstr "Conta padrão para receber a cópia de todos os e-mails"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Endereço do Servidor SMTP (mail.server.com:25)"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Does your SMTP server require auththentication (username/password)?"
 msgstr "O seu servidor SMTP exige autenticação? (usuário/senha)?"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "SMTP Username"
 msgstr "Usuário do SMTP"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "SMTP Password"
 msgstr "Senha do SMTP"
 
-#: 
+#:
 msgctxt "config_cfg"
-msgid "Unavailable person info inherited from assigned family for display?This option causes certain info from a person's assigned family record to bedisplayed IF the corresponding info has NOT been entered for that person. "
+msgid "Unavailable person info inherited from assigned family for display?
+This option causes certain info from a person's assigned family record to be
+displayed IF the corresponding info has NOT been entered for that person. "
 msgstr "Exibir informações herdadas da família se estiverem indisponíveis para a pessoa?\n"
 "Esta opção faz com que certas informações do registro da família sejam atribuídas a uma pessoa para ser exibidas se as informações correspondentes não tenham sido inseridas para a pessoa.␣"
 
-#: 
+#:
 msgctxt "config_cfg"
-msgid "Internationalization (I18n) supportUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)"
+msgid "Internationalization (I18n) support
+US English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)"
 msgstr "Suporte a internacionalização (I18n) para Inglês Americano (en_US), Italiano (it_IT), Frances (fr_FR), e Alemão (de_DE) "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "First month of the fiscal year"
 msgstr "Primeiro mês do ano fiscal"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Path to RPC.php, required for Lat/Lon address lookup"
 msgstr "Caminho para RPC.php, necessário para pesquisa de endereços por Lat / Lon "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "User ID for rpc.geocoder.us"
 msgstr "Usuário do rpc.geocoder.us "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Password for rpc.geocoder.us"
 msgstr "Senha do rpc.geocoder.us "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key"
 msgstr "A API do Google Maps exige uma única chave para obtida em https://developers.google.com/maps/documentation/javascript/get-api-key "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Latitude of the church, used to center the Google map"
 msgstr "Latitude da igreja, usada para centralizar o mapa do Google"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Longitude da igreja, usada para centralizar o mapa do Google"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
 msgstr "Defina verdadeiro para desabilitar a entrada de endereço no Editor Pessoal. Defina falso habilitar a entrada de endereço no Editor Pessoal."
 
-#: 
+#:
 #, fuzzy
 msgctxt "config_cfg"
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Defina verdadeiro para desabilitar a entrada de endereço no Editor Pessoal. "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
 msgstr "Defina verdadeiro para desabilitar o gerenciamento de inscrições de boletins no Editor de Família."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
 msgstr "Defina verdadeiro para desabilitar a entrada da Data de Casamento no Editor de Família. Defina falso para habilitar a entrada da Data de Casamento no Editor de Família. "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
 msgstr "Defina verdadeiro para desabilitar a entrada da Latitude e Longitude o no Editor de Família. Defina falso habilitar a entrada da Latitude e Longitude o no Editor de Família. Pesquisas continuarão a serem executadas, mas não serão mostradas."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Set true to enable use of donation envelopes"
 msgstr "Defina verdadeiro para habilitar o uso de envelopes de doação"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Digite no código HTML que será exibido como um cabeçalho no topo de cada página. Certifique-se de fechar suas tags! Nota: Você deve ATUALIZAR O SEU NAVEGADOR UMA SEGUNDA VEZ para ver o novo cabeçalho."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.intelligentsearch.com/Hosted/User"
 msgstr "Intelligent Search Technolgy, Ltd. Nome de usuário correto para o endereço https://www.intelligentsearch.com/Hosted/User "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.intelligentsearch.com/Hosted/User"
 msgstr "Intelligent Search Technolgy, Ltd. Senha correta para o endereço https://www.intelligentsearch.com/Hosted/User "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Set true to use the Google geocoder.  Set false to use rpc.geocoder.us."
 msgstr "Defina verdadeiro para usar o Google Geocoder. Defina falso para usar o rpc.geocoder.us."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Número de cheques para Relatório de Recibo de Depósito"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Set true to enable use of scanned checks"
 msgstr "Defina verdadeiro para habilitar o uso de rastreio de cheques"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Unit used to measure distance, miles or km."
 msgstr "Unidade usada para medir distância, milhas ou km."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Time zone- see http://php.net/manual/en/timezones.php for valid choices."
 msgstr "Para Fusos Horários válidos, veja http://php.net/manual/en/timezones.php"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Names of markers for Google Maps in order of classification"
 msgstr "Ordem de Classificação dos Nomes dos Marcadores no Google Maps"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK."
 msgstr "Fazer a entrada de usuário de CEP/Códigos Postais em CAIXA ALTA quando for salvar no banco de dados. Útil no Reino Unido."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Enable non-deductible payments"
 msgstr "Habilitar pagamentos não dedutíveis"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Electronic Transaction Processor"
 msgstr "Processador de Transação Eletrônica"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Set true to enable family self registration."
 msgstr "Defina verdadeiro para habilitar o auto-registro de família."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
 msgstr "ChurchCRM foi registrado. A equipe ChurchCRM usa informações de registro para rastrear o uso. Esta informação é mantida confidencial e nunca revelada ou vendida. Se este campo for assinalado verdadeiro a opção de registro no menu administrador muda para atualizar o registro."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Margem Esquerda (1 = 1/100 da polegada)"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Espessura da Linha (1 = 1/100 da polegada)"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Church Name"
 msgstr "Nome da Igreja"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Church Address"
 msgstr "Endereço da Igreja"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Church City"
 msgstr "Cidade da Igreja"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Church State"
 msgstr "Estado da Igreja"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Church Zip"
 msgstr "CEP da Igreja"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Church Phone"
 msgstr "Telefone da Igreja"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Church Email"
 msgstr "E-mail da Igreja"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Home area code of the church"
 msgstr "Código de área da igreja"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Termo para a linha superior do relatório de taxa. As datas serão acrescentados ao final desta linha."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Verbage for bottom line of tax report."
 msgstr "Termo para a linha inferior do relatório de taxa."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Tax Report signer"
 msgstr "Signatário do Relatório de Taxa"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Verbage for the pledge reminder report"
 msgstr "Termo para o relatório de lembrete de promessas"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Pledge Reminder Signer"
 msgstr "Signatário do Lembrete de Promessas"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Verbage for the pledge reminder report - No record of a pledge"
 msgstr "Termo para o relatório de lembrete de promessas - Nenhum registro de promessa"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Verbage for the pledge reminder report - No record of payments"
 msgstr "Termo para o relatório de lembrete de promessas - Nenhum registro de pagamentos"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Verbage for the database information confirmation and correction report"
 msgstr "Termo para relatório de confirmação de informação de banco de dados e correção."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Database information confirmation and correction report signer"
 msgstr "Signatário do relatório de confirmação de informação de banco de dados e correção."
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Verbage for the pledge summary report"
 msgstr "Termo para um relatório de resumo de promessas"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Verbage for the directory report"
 msgstr "Termo para um relatório de diretório"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Church Letterhead path and file"
 msgstr "Caminho do Arquivo de Cabeçalho de Carta da Igreja"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Church Checking Account Number"
 msgstr "Número de Verificação da Conta da Igreja "
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "lookup user images on Gravatar when no local image is present"
 msgstr "pesquisar imagens de usuário no Gravatar quando nenhuma imagem local está presente"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Enable Remote Backups to Cloud Services"
 msgstr "Habilitar Serviço de Backup Remoto na nuvem"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Cloud Service Type (Supported values: WebDAV, Local)"
 msgstr "Tipo de Serviço de Nuvem (Valores Possíveis: WebDAV, Local)"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Remote Backup Endpoint"
 msgstr "Terminal de Backup Remoto"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Remote Backup Username"
 msgstr "Usuário do Backup Remoto"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Remote Backup Password"
 msgstr "Senha do Backup Remoto"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Interval in Hours for Automatic Remote Backups"
 msgstr "Intervalo de Horas entre Backups Automáticos Remotos"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Last Backup Timestamp"
 msgstr "Timestamp do Último Backup"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Configurações de ingressos de depósito do QuickBooks"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Enable Integrity Check"
 msgstr "Habilitar a Verificação de Integridade"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Interval in Hours for Integrity Check"
 msgstr "Intervalo de Horas para Verificação de Integridade"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "Last Integrity Check Timestamp"
 msgstr "Timestamo da Última Verificação de Integridade"
 
-#: 
+#:
 msgctxt "config_cfg"
 msgid "see http://kb.mailchimp.com/accounts/management/about-api-keys"
 msgstr "veja http://kb.mailchimp.com/accounts/management/about-api-keys "
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Family Member Count"
 msgstr "Contador de Membros da Família"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Person by Age"
 msgstr "Pessoas por Idade"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Total By Gender"
 msgstr "Total por Gênero"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Person by Role and Gender"
 msgstr "Pessoa por Função e Gênero"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Person by Property"
 msgstr "Pessoa por propriedade"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Advanced Search"
 msgstr "Busca Avançada"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Birthdays"
 msgstr "Aniversários"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Registered students"
 msgstr "Alunos Registrados"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Membership anniversaries"
 msgstr "Aniversário dos Membros"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Select database users"
 msgstr "Selecionar os usuários do bando de dados"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Select all members"
 msgstr "selecionar todos membros"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Volunteers"
 msgstr "Voluntários"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Recent friends"
 msgstr "Amigos recentes"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Families to Canvass"
 msgstr "Famílias para Visitação"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Pledge comparison"
 msgstr "Comparação de Promessas"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Missing pledges"
 msgstr "Promessas Perdidas"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Credit Card People"
 msgstr "Cartão de Crédito Pessoais"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Family Pledge by Fiscal Year"
 msgstr "Promessas Familiares por Ano Fiscal"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "CustomSearch"
 msgstr "Busca Personalizada"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Returns each family and the total number of people assigned to them."
 msgstr "Retornar cada família e o total de pessoas atribuídas a elas."
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Returns any person records with ages between two given ages."
 msgstr "Retornar qualquer registro de pessoas com idades entre as duas idades dadas."
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Total of records matching a given gender."
 msgstr "Total de registros casando com o gênero dado."
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Selects person records with the family role and gender specified."
 msgstr "Selecionar registros pessoais com função familiar ou gênero especificados."
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Returns person records which are assigned the given property."
 msgstr "Retornar registros pessoais que estão atribuídas a uma dada propriedade."
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Busque por qualquer parte do Nome, Cidade, Estado, CEP, Telefone de casa, E-mail, ou E-mai de Trabalho."
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "People with birthdays in a particular month"
 msgstr "Pessoas com aniversário em um mês em particular"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Find Registered students"
 msgstr "Encontrar alunos registrados"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Members who joined in a particular month"
 msgstr "Membros que se juntaram em um mês em particular"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "People who are registered as database users"
 msgstr "Pessoas que são registradas como usuários do banco de dados"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "People who are members"
 msgstr "Pessoas que são membros"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Find volunteers for a particular opportunity"
 msgstr "Procurar voluntários para uma determinada oportunidade"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Friends who signed up in previous months"
 msgstr "Amigos que se inscreveram nos meses anteriores"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "People in families that are ok to canvass."
 msgstr "Pessoas nas famílias que estão ok para visitação."
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Compare pledges between two fiscal years"
 msgstr "Comparar Promessas entre dois anos fiscais"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Find people who pledged one year but not another"
 msgstr "Buscar pessoas que prometeram num ano mas não no outro."
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "People who are configured to pay by credit card."
 msgstr "Pessoas com pagamento por cartão de crédito configurado"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr "Resumo de promessas por nome de família para cada fundo para um ano fiscal selecionado"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Find volunteers for who match two specific opportunity codes"
 msgstr "Buscar voluntários que casam com um código específico de oportunidade"
 
-#: 
+#:
 msgctxt "query_qry"
 msgid "Find people with a custom field value"
 msgstr "Buscar pessoas com um valor no campo personalizado"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Main"
 msgstr "Principal"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Calendar"
 msgstr "Calendário"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Members"
 msgstr "membros"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Dashboard"
 msgstr "Painel"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Add New Person"
 msgstr "Adicionar uma nova Pessoa"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "View All Persons"
 msgstr "Ver Todas as Pessoas"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Add New Family"
 msgstr "Adicionar uma Nova Família"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "View All Families"
 msgstr "Ver Todas as Família"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Groups"
 msgstr "Grupos"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "List Groups"
 msgstr "Lista de Grupos"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Edit Group Types"
 msgstr "Editar Tipos dos Grupos"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Group Assignment Helper"
 msgstr "Assistente de Atribuição de Grupo"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Sunday School"
 msgstr "Escola Dominical"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Email"
 msgstr "E-mail"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Events"
 msgstr "Eventos"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "List Church Events"
 msgstr "Lista de Eventos da Igreja"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Add Church Event"
 msgstr "Adicionar um Evento da Igreja"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "List Event Types"
 msgstr "Lista de Tipos de Eventos"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Check-in and Check-out"
 msgstr "Entrada e Saída"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Deposit"
 msgstr "Depósito"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Envelope Manager"
 msgstr "Gerenciador de Envelope"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "View All Deposits"
 msgstr "Ver todos os Depósitos"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Edit Deposit Slip"
 msgstr "Editar Depósito Errado"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Fundraiser"
 msgstr "Campanha"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "View All Fundraisers"
 msgstr "Ver Todas as Campanhas"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Create New Fundraiser"
 msgstr "Criar uma Nova Campanha"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Edit Fundraiser"
 msgstr "Editar Campanha"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "View Buyers"
 msgstr "Ver Compradores"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Add Donors to Buyer List"
 msgstr "Adicionar Doadores a Lista de Compradores"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Data/Reports"
 msgstr "Dados/Relatórios"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Reports Menu"
 msgstr "Menu de Relatórios"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Query Menu"
 msgstr "Menu de Consultas"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "CSV Export Records"
 msgstr "Exportar Registros CSV"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Properties"
 msgstr "Propriedades"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "People Properties"
 msgstr "Propriedades da Pessoa"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Family Properties"
 msgstr "Propriedade da Família"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Group Properties"
 msgstr "Propriedade do Grupo"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Property Types"
 msgstr "Tipos de Propriedades"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Edit General Settings"
 msgstr "Editar Configurações Gerais"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "System Users"
 msgstr "Usuários do Sistema"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Edit Custom Family Fields"
 msgstr "Editar Campos personalizados da Família"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Edit Custom Person Fields"
 msgstr "Editar Campos personalizados da Pessoa"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Edit Donation Funds"
 msgstr "Editar Fundos de Doação"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Backup Database"
 msgstr "Bando de Dados Remoto"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Restore Database"
 msgstr "Restaurar Bando de Dados"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "CSV Import"
 msgstr "Importar CSV"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Generate Seed Data"
 msgstr "Gerar Dados de Exemplo"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Male"
 msgstr "Masculino"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Female"
 msgstr "Feminino"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Name"
 msgstr "Nome"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Zip Code"
 msgstr "CEP"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "State"
 msgstr "Estado"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "City"
 msgstr "Cidade"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Home Phone"
 msgstr "Telefone Residencial"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "2012/2013"
 msgstr "2012/2013"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "2013/2014"
 msgstr "2013/2014"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "2014/2015"
 msgstr "2014/2015"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "2015/2016"
 msgstr "2015/2016"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Email"
 msgstr "E-mail"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "WorkEmail"
 msgstr "E-mail de Trabalho"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Member"
 msgstr "Membro"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Regular Attender"
 msgstr "Frequentador Regular"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Guest"
 msgstr "Visitante"
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Non-Attender"
 msgstr "Não frequentador "
 
-#: 
+#:
 msgctxt "queryparameteroptions_qpo"
 msgid "Non-Attender (staff)"
 msgstr "Não frequentador (pessoal)"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Registered students"
 msgstr "Alunos Matriculados"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Minimum Age"
 msgstr "Idade Mínima"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Maximum Age"
 msgstr "Idade Máxima"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Gender"
 msgstr "Gênero"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Family Role"
 msgstr "Função na Família"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Property"
 msgstr "Propriedade"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Beginning Date"
 msgstr "Data de Início"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Ending Date"
 msgstr "Data de Término"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Search"
 msgstr "Busca"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Field"
 msgstr "campo"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Month"
 msgstr "Mês"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Class"
 msgstr "Classe"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Volunteer opportunities"
 msgstr "Oportunidades de voluntariado"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Months"
 msgstr "Meses"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "First Fiscal Year"
 msgstr "Primeiro Mês do Ano Fiscal"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Second Fiscal Year"
 msgstr "Segundo Ano Fiscal"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Fiscal Year"
 msgstr "Ano Fiscal"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Classification"
 msgstr "Classificação"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Custom field"
 msgstr "Campo Personalizado"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Field value"
 msgstr "Valor do Campo"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "The minimum age for which you want records returned."
 msgstr "Idade mínima da qual você quer obter registros."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "The maximum age for which you want records returned."
 msgstr "Idade máxima da qual você quer obter registros."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "The desired gender to search the database for."
 msgstr "Gênero desejado para buscar no banco de dados:"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Select the desired family role."
 msgstr "Selecione a função na família desejada."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "The gender for which you would like records returned."
 msgstr "Gênero do qual você deseja obter registros."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "The property for which you would like person records returned."
 msgstr "Propriedade da qual você deseja obter registros de pessoas."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
 msgstr "Por favor, escolha a data de início para calcular as contribuições totais para cada membro (isto é AAAA-MM-DD). NOTA: Você só pode escolher as datas que contenham doações."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
 msgstr "Por favor, indique a última data para calcular as contribuições totais para cada membro (isto é AAAA-MM-DD)."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Entre qualquer parte de: Nome, Cidade, Estado, CEP, Telefone de casa, E-mail, ou E-mai de Trabalho."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Select field to search for."
 msgstr "Selecione o campo para a busca."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "The birthday month for which you would like records returned."
 msgstr "O mês de aniversário para o qual você deseja obter registros."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "The sunday school class for which you would like records returned."
 msgstr "A classe da escola bíblica dominical da qual você gostaria de obter os registros."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Group of registered students"
 msgstr "Grupo de alunos registrados"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "O mês de aniversários dos membros do qual você gostaria de obter os registros."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Choose a volunteer opportunity"
 msgstr "Escolha uma oportunidade de voluntariado"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Number of months since becoming a friend"
 msgstr "Número de meses desde que se tornou um amigo"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "First fiscal year for comparison"
 msgstr "Primeiro Ano Fiscal para comparação."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Second fiscal year for comparison"
 msgstr "Segundo Ano Fiscal para comparação."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Pledged this year"
 msgstr "Promessas deste ano"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "but not this year"
 msgstr "mas não neste ano"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Fiscal Year."
 msgstr "Ano Fiscal."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Member, Regular Attender, etc."
 msgstr "Membro, Frequentado Regular, etc."
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "First volunteer opportunity choice"
 msgstr "Primeira escolha de Oportunidade de Voluntariado"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Second volunteer opportunity choice"
 msgstr "Segunda escolha de Oportunidade de Voluntariado"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Choose customer person field"
 msgstr "Escolha o campo pessoal personalizado"
 
-#: 
+#:
 msgctxt "queryparameters_qrp"
 msgid "Match custom field to this value"
 msgstr "Casar o campo personalizado com este valor"
 
-#: 
+#:
 msgctxt "menuconfig_mcf"
 msgid "Deposit Reports"
 msgstr "Relatórios de Depósitos"
