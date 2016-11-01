@@ -67,5 +67,13 @@
       "/mysql/upgrade/2.3.0.sql"
     ],
     "dbVersion": "2.3.0"
+  },
+  "pre-2.4.0" : {
+    "versions": [
+      "2.3.0"
+    ],
+    "scripts": [
+    ],
+    "dbVersion": "2.4.0"
   }
 }
