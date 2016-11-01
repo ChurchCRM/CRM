@@ -226,7 +226,7 @@ if ($fam_ID)
 			<td class="LabelColumn"><?= gettext("Family:") ?></td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn">
-			<?php if ($fam_Name != "") { echo $fam_Name; } else { echo "Unassigned"; } ?>
+			<?php if ($fam_Name != "") { echo $fam_Name; } else { echo gettext("Unassigned"); } ?>
 			&nbsp;</td>
 		</tr>
 		<tr>
@@ -370,7 +370,7 @@ else
 		echo "</tr>";
 
 		// If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
-		if ($grp_hasSpecialProps == 'true')
+		if ($grp_hasSpecialProps)
 		{
 			$firstRow = true;
 			// Get the special properties for this group

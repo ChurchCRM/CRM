@@ -8,21 +8,29 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+  <!-- Custom ChurchCRM styles -->
+  <link rel="stylesheet" href="<?= $sRootPath ?>/skin/churchcrm.min.css">
+
   <!-- Bootstrap 3.3.5 -->
-  <link rel="stylesheet" href="skin/adminlte/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="skin/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?= $sRootPath ?>/skin/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="skin/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?= $sRootPath ?>/skin/ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="skin/adminlte/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/dist/css/AdminLTE.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="skin/adminlte/plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/plugins/iCheck/square/blue.css">
 
   <!-- jQuery JS -->
-  <script src="skin/adminlte/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
   <title>ChurchCRM: <?= $sPageTitle ?></title>
+
 </head>
 <body class="hold-transition login-page">
 
+  <script language="javascript" type="text/javascript">
+    window.CRM = {root: "<?= $sRootPath ?>"};
+  </script>
 

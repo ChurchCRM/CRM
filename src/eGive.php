@@ -11,38 +11,6 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if( !function_exists(json_decode) ) {
-   require_once 'bin/JSON/JSON.php';
-   function json_decode($data, $bool) {
-       if ($bool) {
-           $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
-       } else {
-           $json = new Services_JSON();
-       }
-       return( $json->decode($data) );
-   }
-}
-
-if (!function_exists(json_last_error)) {
-	define("JSON_ERROR_NONE", 0);
-	define("JSON_ERROR_DEPTH", 1);
-	define("JSON_ERROR_CTRL_CHAR", 2);
-	define("JSON_ERROR_SYNTAX", 3);
-  	function json_last_error() {
-		return 0; // nothing
-	}
-}
-
-if (!function_exists(stream_get_contents)) {
-	function stream_get_contents($fp) {
-		$contents = '';
-		while (!feof($fp)) {
-  			$contents .= fread($fp, 8192);
-		}
-		return $contents;
-	}
-}
-
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
     Redirect("Menu.php");
     exit;
@@ -103,7 +71,7 @@ while ($aRow = mysql_fetch_array($rsPlgIDs)) {
 
 
 // Set the page title and include HTML header
-$sPageTitle = "eGive Import";
+$sPageTitle = gettext("eGive Import");
 require "Include/Header.php";
 
 if (isset($_POST["ApiGet"])) {
@@ -293,9 +261,9 @@ if (isset($_POST["ApiGet"])) {
 	<tr><td>
 		<form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
 		<class="LabelColumn"><b><?= gettext("Start Date: ") ?></b>
-			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11"><font color="red"><?php echo $sDateError ?></font><br>
+			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11" class="date-picker"><font color="red"><?php echo $sDateError ?></font><br>
 			<class="LabelColumn"><b><?= gettext("End Date: ") ?></b>
-			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11"><font color="red"><?php echo $sDateError ?></font><br><br>
+			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11" class="date-picker"><font color="red"><?php echo $sDateError ?></font><br><br>
 		<input type="submit" class="btn" value="<?= gettext("Import eGive") ?>" name="ApiGet">
 		<br><br><br>
 		</form>
@@ -426,10 +394,6 @@ function get_api_data($json) {
 	}
 }
 ?>
-<script>
-$("#StartDate").datepicker({format:'yyyy-mm-dd'});
-$("#EndDate").datepicker({format:'yyyy-mm-dd'});
-</script>
 
 <?php
 

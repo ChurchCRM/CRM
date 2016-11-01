@@ -1,11 +1,9 @@
 <?php
 
 
-// Services
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\GroupService;
-use ChurchCRM\Service\NoteService;
 
 use ChurchCRM\Service\CalendarService;
 use ChurchCRM\Service\FinancialService;
@@ -19,7 +17,6 @@ use ChurchCRM\Service\SystemService;
 $container['PersonService'] = new PersonService();
 $container['FamilyService'] = new FamilyService();
 $container['GroupService'] = new GroupService();
-$container['NoteService'] = new NoteService();
 
 $container['FinancialService'] = new FinancialService();
 $container['ReportingService'] = new ReportingService();

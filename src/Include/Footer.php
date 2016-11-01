@@ -43,6 +43,13 @@
   <!-- AdminLTE App -->
   <script src="<?= $sRootPath ?>/skin/adminlte/dist/js/app.min.js"></script>
 
+  <!-- InputMask -->
+  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+
+
   <script src="<?= $sRootPath ?>/skin/js/DataTables.js"></script>
   <script src="<?= $sRootPath ?>/skin/js/Tooltips.js"></script>
   <script src="<?= $sRootPath ?>/skin/js/Events.js"></script>

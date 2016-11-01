@@ -17,7 +17,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-use ChurchCRM\Service\NoteService;
+use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
 
 // Security: User must have Notes permission
@@ -26,8 +26,6 @@ if (!$_SESSION['bNotes']) {
   Redirect("Menu.php");
   exit;
 }
-
-$noteService = new NoteService();
 
 //Set the page title
 $sPageTitle = gettext("Note Editor");
@@ -74,7 +72,14 @@ if (isset($_POST["Submit"])) {
   if (!$bErrorFlag) {
     //Are we adding or editing?
     if ($iNoteID <= 0) {
-      $noteService->addNote($iPersonID, $iFamilyID, $bPrivate, $sNoteText, "note");
+      $note = new Note();
+      $note->setPerId($iPersonID);
+      $note->setFamId($iFamilyID);
+      $note->setPrivate($bPrivate);
+      $note->setText($sNoteText);
+      $note->setType("note");
+      $note->setEntered($_SESSION['iUserID']);
+      $note->save();
     } else {
       $note = NoteQuery::create()->findPk($iNoteID);
       $note->setPrivate($bPrivate);

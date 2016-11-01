@@ -1,7 +1,7 @@
 <?php
 
 if (file_exists ( 'Include/Config.php')) {
-  header("Location: index.php" );
+ header("Location: index.php" );
 } 
 
 if (isset($_POST["Setup"])) {
@@ -17,10 +17,14 @@ if (isset($_POST["Setup"])) {
   exit();
 }
 
+require_once 'Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
+$systemService = new \ChurchCRM\Service\SystemService();
+
+
 $temp = $_SERVER['REQUEST_URI'];
-$rootPath = "/" . str_replace("/Setup.php", "", $temp);
-if ($rootPath = "/") {
-  $rootPath = "";
+$sRootPath = str_replace("/Setup.php", "", $temp);
+if ($sRootPath == "/") {
+  $sRootPath = "";
 }
 $URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . "/";
 
@@ -38,6 +42,22 @@ $required = array(
   'cURL' => function_exists('curl_version'),
   'locale/gettext' => function_exists('bindtextdomain')
 );
+
+$AppIntegrity = $systemService->verifyApplicationIntegrity();
+if ($AppIntegrity['status'] == "success")
+{
+  $required["ChurchCRM File Integrity Check"] = TRUE;
+}
+else
+{
+  $required["ChurchCRM File Integrity Check"] = FALSE;
+}  
+
+if (!function_exists('bindtextdomain')) {
+  function gettext($string){
+     return $string+4;
+  }
+}
 
 foreach ($required as $feature => $pass) {
   if ($pass === FALSE) {
@@ -152,7 +172,7 @@ $("#dangerContinue").click(function(){
 
                   <div class="col-md-4">
                     <label for="ROOT_PATH"><?= gettext("Root Path:") ?></label>
-                    <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= $rootPath ?>" class="form-control">
+                    <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= $sRootPath ?>" class="form-control">
                   </div>
 
                   <div class="col-md-4">

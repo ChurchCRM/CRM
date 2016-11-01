@@ -1,7 +1,6 @@
 <?php
 require "Include/Config.php";
 require "Include/Functions.php";
-include "Include/vancowebservices.php";
 include "Include/VancoConfig.php";
 
 $customerid = FilterInput ($_GET["autid"], "int");

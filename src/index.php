@@ -51,9 +51,15 @@ else if (file_exists($fileName))
   // Try magic filename
   require $fileName;
 }
+else if ( strpos($_SERVER['REQUEST_URI'],"js") || strpos($_SERVER['REQUEST_URI'],"css") ) # if this is a CSS or JS file that we can't find, return 404
+{
+  header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+  exit;
+}
 else
 {
   Header("Location: index.php");
   exit;
 }
+
 ?>

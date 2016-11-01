@@ -32,11 +32,16 @@
  ******************************************************************************/
 
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
-require_once dirname(__FILE__) . '/../orm/conf/config.php';
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Version;
-
+use ChurchCRM\ConfigQuery;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\LocaleInfo;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Propel\Runtime\Propel;
+use Propel\Runtime\Connection\ConnectionManagerSingle;
 
 if (!function_exists("mysql_failure")) {
   function mysql_failure($message)
@@ -47,7 +52,7 @@ if (!function_exists("mysql_failure")) {
       <h3>ChurchCRM – Setup failure</h3>
 
       <div class='alert alert-danger text-center' style='margin-top: 20px;'>
-        <?= $message ?>
+        <?= gettext($message) ?>
       </div>
     </div>
     <?php
@@ -58,34 +63,27 @@ if (!function_exists("mysql_failure")) {
 
 // Establish the database connection
 if (!function_exists('mysql_connect')) {
-   mysql_failure("mysql_connect function is not defined.  Possibly due to unsupported PHP version.  Currently installed version: ".phpversion());
+  mysql_failure("mysql_connect function is not defined.  Possibly due to unsupported PHP version.  Currently installed version: " . phpversion());
 }
 
 $cnInfoCentral = mysql_connect($sSERVERNAME, $sUSER, $sPASSWORD)
-or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ".mysql_error());
+or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
 
 mysql_select_db($sDATABASE)
-or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ".mysql_error());
+or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
 
 $sql = "SHOW TABLES FROM `$sDATABASE`";
 $tablecheck = mysql_num_rows(mysql_query($sql));
 
 if (!$tablecheck) {
   $systemService = new SystemService();
+  $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
+  $systemService->playbackSQLtoDatabase($setupQueries);
+  $configQueries = dirname(__file__) . '/../mysql/upgrade/update_config.sql';
+  $systemService->playbackSQLtoDatabase($configQueries);
   $version = new Version();
   $version->setVersion($systemService->getInstalledVersion());
   $version->setUpdateStart(new DateTime());
-  $query = '';
-  $restoreQueries = file(dirname(__file__). '/../mysql/install/Install.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-  foreach ($restoreQueries as $line) {
-    if ($line != '' && strpos($line, '--') === false) {
-      $query .= " $line";
-      if (substr($query, -1) == ';') {
-        mysql_query($query);
-        $query = '';
-      }
-    }
-  }
   $version->setUpdateEnd(new DateTime());
   $version->save();
 }
@@ -100,8 +98,45 @@ if (strlen($sRootPath) < 2) $sRootPath = '';
 // Some webhosts make it difficult to use DOCUMENT_ROOT.  Define our own!
 $sDocumentRoot = dirname(dirname(__FILE__));
 
+
+// ==== ORM
+$dbClassName = "\\Propel\\Runtime\\Connection\\ConnectionWrapper";
+//DEBUG $dbClassName = "\\Propel\Runtime\Connection\DebugPDO";
+
+$serviceContainer = Propel::getServiceContainer();
+$serviceContainer->checkVersion('2.0.0-dev');
+$serviceContainer->setAdapterClass('default', 'mysql');
+$manager = new ConnectionManagerSingle();
+$manager->setConfiguration(array(
+  'dsn' => 'mysql:host=' . $sSERVERNAME . ';port=3306;dbname=' . $sDATABASE,
+  'user' => $sUSER,
+  'password' => $sPASSWORD,
+  'settings' =>
+    array(
+      'charset' => 'utf8',
+      'queries' =>
+        array(),
+    ),
+  'classname' => $dbClassName,
+  'model_paths' =>
+    array(
+      0 => 'src',
+      1 => 'vendor',
+    ),
+));
+$manager->setName('default');
+$serviceContainer->setConnectionManager('default', $manager);
+$serviceContainer->setDefaultDatasource('default');
+$logger = new Logger('defaultLogger');
+$logger->pushHandler(new StreamHandler('/tmp/ChurchCRM.log'));
+$serviceContainer->setLogger('defaultLogger', $logger);
+
 // Read values from config table into local variables
 // **************************************************
+
+$systemConfig = new SystemConfig();
+$systemConfig->init(ConfigQuery::create()->find());
+
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
   . "FROM config_cfg WHERE cfg_section='General'";
 $rsConfig = mysql_query($sSQL);         // Can't use RunQuery -- not defined yet
@@ -127,46 +162,25 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
 
 $sMetaRefresh = '';  // Initialize to empty
 
-require_once("winlocalelist.php");
-
-if (!function_exists("stripos")) {
-  function stripos($str, $needle)
-  {
-    return strpos(strtolower($str), strtolower($needle));
-  }
-}
-
-if (!(stripos(php_uname('s'), "windows") === false)) {
-  $sLanguage = $lang_map_windows[strtolower($sLanguage)];
-}
-
-$sLang_Code = $sLanguage;
-
-putenv("LANG=$sLang_Code");
-setlocale(LC_ALL, $sLang_Code, $sLang_Code . ".utf8", $sLang_Code . ".UTF8", $sLang_Code . ".utf-8", $sLang_Code . ".UTF-8");
-
 if (isset($sTimeZone)) {
   date_default_timezone_set($sTimeZone);
 }
 
+$localeInfo = new LocaleInfo($sLanguage);
+setlocale(LC_ALL, $localeInfo->getLocale());
+
 // Get numeric and monetary locale settings.
-$aLocaleInfo = localeconv();
+$aLocaleInfo = $localeInfo->getLocaleInfo();
 
 // This is needed to avoid some bugs in various libraries like fpdf.
+// http://www.velanhotels.com/fpdf/FAQ.htm#6
 setlocale(LC_NUMERIC, 'C');
 
-// patch some missing data for Italian.  This shouldn't be necessary!
-if ($sLanguage == 'it_IT') {
-  $aLocaleInfo['thousands_sep'] = '.';
-  $aLocaleInfo['frac_digits'] = '2';
-}
+$domain = 'messages';
+$sLocaleDir = dirname(__FILE__) . '/../locale';
 
-if (function_exists('bindtextdomain')) {
-  $domain = 'messages';
-  $sLocaleDir = dirname(__FILE__). '/../locale';
+bind_textdomain_codeset($domain, 'UTF-8');
+bindtextdomain($domain, $sLocaleDir);
+textdomain($domain);
 
-  bind_textdomain_codeset($domain, 'UTF-8');
-  bindtextdomain($domain, $sLocaleDir);
-  textdomain($domain);
-}
 ?>

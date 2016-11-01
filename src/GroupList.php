@@ -24,6 +24,7 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
 use ChurchCRM\Service\GroupService;
 
 //Set the page title
@@ -51,16 +52,6 @@ if ($_SESSION['bManageGroups'])
 ?>
 
 </div>
-<script>
-    //get the group data from the GroupService.
-    var groupData = <?php $json = $groupService->getGroupJSON($groupService->getGroups()); if ($json) { echo $json; } else { echo 0; } ?>;    
-    //if the data is not an array, make it into one so that the dataTables code can parse it correctly.
-    if (!$.isArray(groupData.groups))
-    {
-        groupData.groups=[groupData.groups];
-    }
-    var dataT = 0; //make a new global variable for the dataTable.
-</script>
 <script src="skin/js/GroupList.js" type="text/javascript"></script>
 <?php
 require 'Include/Footer.php';

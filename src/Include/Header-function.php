@@ -30,7 +30,6 @@
 require_once 'Functions.php';
 
 use ChurchCRM\Service\TaskService;
-use ChurchCRM\Service\PersonService;
 
 function Header_head_metatag() {
   global $sLanguage, $bExportCSV, $sMetaRefresh, $sHeader, $sGlobalMessage;
@@ -118,15 +117,48 @@ function Header_modals() {
 }
 
 function Header_body_scripts() {
-  global $sLanguage, $bExportCSV, $sMetaRefresh, $bRegistered, $sHeader, $sGlobalMessage;
-  global $bLockURL, $URL, $sRootPath;
+  global $sRootPath, $localeInfo;
 
   checkAllowedURL();
   ?>
   <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/IssueReporter.js" type="text/javascript"></script>
 
   <script language="javascript" type="text/javascript">
-    window.CRM = {root: "<?= $sRootPath ?>"};
+    window.CRM = {
+      root: "<?= $sRootPath ?>",
+      lang: "<?= $localeInfo->getLanguageCode() ?>"
+    };
+    
+    window.CRM.DisplayErrorMessage = function(endpoint, message) {
+      $(".modal").modal('hide');
+      $("#APIError").modal('show');
+      $("#APIEndpoint").text(endpoint);
+      $("#APIErrorText").text(message);
+    }
+    
+    window.CRM.VerifyThenLoadAPIContent = function(url) {
+      $.ajax({
+        type: 'HEAD',
+        url: url,
+        async: false,
+        statusCode: {
+          200: function() {
+            window.open(url);
+          },
+          404: function() {
+            window.CRM.DisplayErrorMessage(url, "There was a problem retreiving the requested object");
+          },
+          500: function() {
+            window.CRM.DisplayErrorMessage(url, "There was a problem retreiving the requested object");
+          }
+        }
+      });
+    }
+
+    $(document).ajaxError(function(evt, xhr, settings) {
+      var CRMResponse = JSON.parse(xhr.responseText);
+      window.CRM.DisplayErrorMessage("[" + settings.type + "] " + settings.url, " " + CRMResponse.message);
+    });
 
     function LimitTextSize(theTextArea, size) {
       if(theTextArea.value.length > size) {
@@ -139,7 +171,7 @@ function Header_body_scripts() {
       id = day.getTime();
       eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
     }
-
+    
   </script>
   <?php
 }
@@ -286,7 +318,7 @@ function addMenuItem($aMenu, $mIdx) {
     global $sHeader, $sGlobalMessage, $sGlobalMessageClass;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
-    $loggedInUserPhoto = (new PersonService())->getPhoto($_SESSION['iUserID']);
+    $loggedInUserPhoto = $sRootPath . "/api/persons/" .$_SESSION['iUserID']. "/photo";
 
     $MenuFirst = 1;
 

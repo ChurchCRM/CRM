@@ -16,64 +16,22 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-use ChurchCRM\Service\EmailService;
+global $systemConfig;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Software Registration");
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$domainName = $_SERVER['HTTP_HOST']. str_replace("Register.php", '', $_SERVER['REQUEST_URI']);
+$ChurchCRMURL =  $protocol.$domainName;
 
 require "Include/Header.php";
-
-
-// Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$reportConfig[$cfg_name] = $cfg_value;
-	}
-}
-$sName = $reportConfig["sChurchName"];
-$sAddress = $reportConfig["sChurchAddress"];
-$sCity = $reportConfig["sChurchCity"];
-$sState = $reportConfig["sChurchState"];
-$sZip = $reportConfig["sChurchZip"];
-$sCountry = $sDefaultCountry;
-$sComments = "";
-$sEmail = $reportConfig["sChurchEmail"];
-
-$sEmailMessage =
-	"Church name: " . $sName . "\n\n" .
-
-  "Email: " .$sEmail . "\n\n" .
-
-  "Address: " . $sAddress . "\n" .
-	"City: " .$sCity . "\n" .
-	"State: " .$sState . "\n" .
-	"Zip: " .$sZip . "\n" .
-	"Country:  " .$sCountry . "\n\n" .
-
-	"Additional comments: " . $sComments . "\n";
-
-// Save Settings
-if (isset ($_POST['Submit'])) {
-
-  $emailService = new EmailService();
-
-  $sEmailMessage =  $_POST['emailmessage'];
-
-  $emailService->sentRegistration($sEmailMessage);
-
-  // Turn off the registration flag so the menu option is less obtrusive
-  $sSQL = "UPDATE config_cfg SET cfg_value = 1 WHERE cfg_name='bRegistered'";
-  RunQuery($sSQL);
-  $bRegistered = 1;
-  Redirect("Menu.php?Registered=true");
-}
-
 ?>
 
-<p class="callout callout-info">
-  To Change the info bellow please visit the <a href="SystemSettings.php">sittings page</a> </p>
-</p>
+<div class="box box-warning">
+  <div class="box-body">
+	  <?= gettext ("If you need to make changes to registration data, go to "); ?><a href="<?= $sRootPath ?>/SystemSettings.php"><?= gettext("Admin->Edit General Settings"); ?></a>
+  </div>
+</div>
 
 <div class="box box-primary">
 	<div class="box-header">
@@ -82,22 +40,44 @@ if (isset ($_POST['Submit'])) {
 		echo gettext ("This information is used only to track the usage of this software.  ");
 		?>
 	</div>
-	<form method="post" action="Register.php" name="Register">
+	<form id="registerForm">
 	<div class="box-body">
-		<input type="hidden" name="emaillist[]" class="form-control" value="info@churchcrm.io">
-		<br> <?= gettext('Message:') ?>
+    <?= gettext('Church Name') ?>: <?= $systemConfig->getValue("sChurchName"); ?><br>
+    <?= gettext('Address') ?>: <?= $systemConfig->getValue("sChurchAddress"); ?><br>
+    <?= gettext('City') ?>: <?= $systemConfig->getValue("sChurchCity"); ?><br>
+    <?= gettext('State') ?>: <?= $systemConfig->getValue("sChurchState"); ?><br>
+    <?= gettext('Zip') ?>: <?= $systemConfig->getValue("sChurchZip"); ?><br>
+    <?= gettext('Country') ?>: <?= $systemConfig->getValue("sDefaultCountry"); ?><br>
+    <?= gettext('Church Email') ?>: <?= $systemConfig->getValue("sChurchEmail"); ?><br>
+    <?= gettext('ChurchCRM URL') ?>: <?= $ChurchCRMURL ?><br>
+		<br> <?= gettext('Message') ?>:
 		<br><textarea class="form-control" name="emailmessage" rows="20" cols="72"><?= htmlspecialchars($sEmailMessage) ?> </textarea>
 	</div>
 	<div class="box-footer">
+    <input type="hidden" name="ChurchCRMURL" value="<?= $ChurchCRMURL ?>"/>
 		<input type="submit" class="btn btn-primary" value="<?= gettext("Send") ?>" name="Submit">
 		<input type="button" class="btn btn-default" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='Menu.php';">
 	</div>
 	</form>
 </div>
-<div class="box box-warning">
-  <div class="box-body">
-	  <?= gettext ("If you need to make changes go to Admin->Edit General Settings and Admin->Edit Report Settings.  "); ?>
-  </div>
-</div>
+
+<script>
+$(document).ready(function () {
+  $("#registerForm").on("submit", function (ev) {
+    ev.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: window.CRM.root + "/api/register",
+      data: {
+        emailmessage: $("textarea[name=emailmessage]").val(),
+        ChurchCRMURL: $("input[name=ChurchCRMURL]").val()
+      },
+      success: function (data) {
+        window.location.href = window.CRM.root+"/";
+      }
+    });
+  });
+});
+</script>
 
 <?php require "Include/Footer.php" ?>

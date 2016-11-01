@@ -388,8 +388,8 @@ require "Include/Header.php";
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
-                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="MembershipDate1" type="text" name="MembershipDate1" size="11" maxlength="10">
-                  <?= gettext("To:") ?>&nbsp;</b></td><td><input id="MembershipDate2" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
+                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="MembershipDate1" class="date-picker" type="text" name="MembershipDate1" size="11" maxlength="10">
+                  <?= gettext("To:") ?>&nbsp;</b></td><td><input id="MembershipDate2" class="date-picker" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
               </div>
             </div>
           </div>
@@ -405,8 +405,8 @@ require "Include/Header.php";
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
-                <b><?= gettext("From:") ?>&nbsp;</b><input type="text" name="BirthDate1" size="11" maxlength="10" id="BirthdayDate1">
-                <b><?= gettext("To:") ?>&nbsp;</b><input type="text" name="BirthDate2" size="11" maxlength="10" value="<?= date("Y-m-d") ?>"  id="BirthdayDate2">
+                <b><?= gettext("From:") ?>&nbsp;</b><input type="text" name="BirthDate1" class="date-picker" size="11" maxlength="10" id="BirthdayDate1">
+                <b><?= gettext("To:") ?>&nbsp;</b><input type="text" name="BirthDate2" class="date-picker" size="11" maxlength="10" value="<?= date("Y-m-d") ?>"  id="BirthdayDate2">
               </div>
             </div>
           </div>
@@ -422,8 +422,8 @@ require "Include/Header.php";
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
-                <?= gettext("From:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
-                  <?= gettext("To:") ?>&nbsp;</b></td><td><input type="text" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" id="AnniversaryDate2">
+                <?= gettext("From:") ?>&nbsp;</b></td><td><input type="text" class="date-picker" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
+                  <?= gettext("To:") ?>&nbsp;</b></td><td><input type="text" class="date-picker" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" id="AnniversaryDate2">
               </div>
             </div>
           </div>
@@ -439,8 +439,8 @@ require "Include/Header.php";
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
-                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10">
-                  <?= gettext("To:") ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>">
+                <?= gettext("From:") ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10" class="date-picker">
+                  <?= gettext("To:") ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo(date("Y-m-d")); ?>" class="date-picker">
               </div>
             </div>
           </div>
@@ -472,14 +472,4 @@ require "Include/Header.php";
 
 </form>
 
-<script>
-  $("#MembershipDate1").datepicker({format: 'yyyy-mm-dd'});
-  $("#MembershipDate2").datepicker({format: 'yyyy-mm-dd'});
-  $("#BirthdayDate1").datepicker({format: 'yyyy-mm-dd'});
-  $("#BirthdayDate2").datepicker({format: 'yyyy-mm-dd'});
-  $("#AnniversaryDate1").datepicker({format: 'yyyy-mm-dd'});
-  $("#AnniversaryDate2").datepicker({format: 'yyyy-mm-dd'});
-  $("#EnterDate1").datepicker({format: 'yyyy-mm-dd'});
-  $("#EnterDate2").datepicker({format: 'yyyy-mm-dd'});
-</script>
 <?php require "Include/Footer.php" ?>

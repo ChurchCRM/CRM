@@ -18,7 +18,6 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/PersonFunctions.php";
 
 // Security: User must have add records permission
 if (!$_SESSION['bAddRecords'])
@@ -169,7 +168,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 		echo "<tr class=\"" . $sRowClass . "\">";
 		echo "<td align=\"center\">" . $count++ . "</td>";
-		echo "<td><img src='". $personService->getPhoto($per_ID). "' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=" . $per_ID . "\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . "</a></td>";
+		echo "<td><img src='".$sRootPath. "/api/persons/".$per_ID."/photo' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=" . $per_ID . "\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . "</a></td>";
 
 		echo "<td align=\"center\">";
 		if ($per_fam_ID == 0)
@@ -214,7 +213,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 	<tr>
 		<td class="LabelColumn"><?= gettext("Wedding Date:") ?></td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active"><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
 
 	<tr>
@@ -330,7 +329,4 @@ else
 	echo "<p align=\"center\" class='callout callout-warning'>" . gettext("Your cart is empty!") . "</p>";
 ?>
 </div>
-<script>
-$("#sel1").datepicker({format:'yyyy-mm-dd'});
-</script>
 <?php require "Include/Footer.php"; ?>

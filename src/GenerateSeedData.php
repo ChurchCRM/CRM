@@ -54,7 +54,7 @@ require 'Include/Header.php';
             encode      : true,
             beforeSend  : function () { 
                 $('#results').empty();
-                $('#results').append('<div class="text-center"><i class="fa fa-spinner"></i><h3>Loading Seed Data</h3></div>');
+                $('#results').append('<div class="text-center"><i class="fa fa-spinner fa-spin"></i><h3> <?= gettext("Loading Seed Data") ?> </h3></div>');
             }
         })
 		 .done(function(data) {

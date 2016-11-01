@@ -34,7 +34,7 @@ if ($sReportType == "" && array_key_exists ("ReportType", $_GET))
 // Set the page title and include HTML header
 $sPageTitle = gettext("Financial Reports");
 if ($sReportType)
-    $sPageTitle .= ": $sReportType";
+    $sPageTitle .= ": ".gettext($sReportType);
 require "Include/Header.php";
 ?>
 <div class="box box-body">
@@ -53,7 +53,7 @@ if ($sReportType == "") {
     echo "<td class=TextColumn><select name=ReportType>";
     echo "<option value=0>" . gettext("Select Report Type") ."</option>";
     echo "<option value='Pledge Summary'>" . gettext("Pledge Summary") ."</option>";
-    echo "<option value='Pledge Family Summary'>" . gettext("Pledge FamilySummary") ."</option>";
+    echo "<option value='Pledge Family Summary'>" . gettext("Pledge Family Summary") ."</option>";
     echo "<option value='Pledge Reminders'>" . gettext("Pledge Reminders") ."</option>";
     echo "<option value='Voting Members'>" . gettext("Voting Members") ."</option>";
     echo "<option value='Giving Report'>" . gettext("Giving Report (Tax Statements)") ."</option>";
@@ -131,8 +131,8 @@ if ($sReportType == "") {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllClasses" class="btn">Add All Classes</button>
-        <button type="button" id="clearAllClasses" class="btn">Clear All Classes</button><br/><br/>
+        <button type="button" id="addAllClasses" class="btn"><?= gettext("Add All Classes") ?></button>
+        <button type="button" id="clearAllClasses" class="btn"><?= gettext("Clear All Classes") ?></button><br/><br/>
         </td></tr>
         <?php
 
@@ -176,8 +176,8 @@ if ($sReportType == "") {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFamilies" class="btn">Add All Families</button>
-        <button type="button" id="clearAllFamilies" class="btn">Clear All Families</button><br/><br/>
+        <button type="button" id="addAllFamilies" class="btn"><?= gettext("Add All Families") ?></button>
+        <button type="button" id="clearAllFamilies" class="btn"><?= gettext("Clear All Families") ?></button><br/><br/>
         </td></tr>
         <?php
     }
@@ -186,9 +186,9 @@ if ($sReportType == "") {
     if ($sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report" || $sReportType == "Zero Givers") {
         $today = date("Y-m-d");
         echo "<tr><td class=LabelColumn>".gettext("Report Start Date:")."</td>
-            <td class=TextColumn><input type=text name=DateStart maxlength=10 id=DateStart size=11 value='$today'></td></tr>";
+            <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='$today'></td></tr>";
         echo "<tr><td class=LabelColumn>".gettext("Report End Date:")."</td>
-            <td class=TextColumn><input type=text name=DateEnd maxlength=10 id=DateEnd size=11 value='$today'></td></tr>";
+            <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='$today'></td></tr>";
         if ($sReportType == "Giving Report" || $sReportType == "Advanced Deposit Report") {
             echo "<tr><td class=LabelColumn>".gettext("Apply Report Dates To:")."</td>";
             echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio checked value='Deposit'>".gettext("Deposit Date (Default)");
@@ -243,8 +243,8 @@ if ($sReportType == "") {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFunds" class="btn">Add All Funds</button>
-        <button type="button" id="clearAllFunds" class="btn">Clear All Funds</button><br/><br/>
+        <button type="button" id="addAllFunds" class="btn"><?= gettext("Add All Funds") ?></button>
+        <button type="button" id="clearAllFunds" class="btn"><?= gettext("Clear All Funds") ?></button><br/><br/>
         </td></tr>
         
         <?php
@@ -334,8 +334,6 @@ if ($sReportType == "") {
 }
 ?>
 <script>
-$("#DateStart").datepicker({format:'yyyy-mm-dd'});
-$("#DateEnd").datepicker({format:'yyyy-mm-dd'});
 $("#family").select2();
 $("#addAllFamilies").click(function () {
 var all = [];

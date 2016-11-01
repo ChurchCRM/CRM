@@ -35,9 +35,8 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
 
-require "../Include/class_fpdf_labels.php";
+use ChurchCRM\Reports\PDF_Label;
 
 
 function GroupBySalutation($famID, $aAdultRole, $aChildRole) {

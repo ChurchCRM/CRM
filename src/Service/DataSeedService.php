@@ -40,19 +40,19 @@ class DataSeedService
       
       $hoh = $this->getPerson($rs, $personPointer);
       $family = new Family();
-      $family->setName($hoh->name->last);
-      $family->setAddress1($hoh->location->street);
-      $family->setCity($hoh->location->city);
-      $family->setState($hoh->location->state);
-      $family->setCountry("USA");
+      $family->setName(ucwords ($hoh->name->last));
+      $family->setAddress1(ucwords($hoh->location->street));
+      $family->setCity(ucwords($hoh->location->city));
+      $family->setState($this->getStateAbb(ucwords($hoh->location->state)));
+      $family->setCountry("United States");
       $family->setZip($hoh->location->zip);
-      $family->setHomephone($hoh->phone);
-      $family->setDateEntered(date('Y-m-d h:i:s', $hoh->registered));
+      $family->setHomePhone($hoh->phone);
+      $family->setDateEntered(\DateTime::createFromFormat('Y-m-d H:i:s', $hoh->registered));
       $family->setEnteredBy($_SESSION['iUserID']);
       $family->save();
       $FamilyID = $family->getId();
 
-      $familyName = $hoh->name->last;
+      $familyName = ucwords ($hoh->name->last);
       $hoh->famID = $FamilyID;
       $hoh->per_fmr_id = 1;
 
@@ -119,34 +119,89 @@ class DataSeedService
   function insertPerson($user)
   {
     $person = new Person();
-    $person->setTitle($user->name->title);
-    $person->setFirstName($user->name->first);
-    $person->setLastName($user->name->last);
+    $person->setTitle(ucwords($user->name->title));
+    $person->setFirstName(ucwords ($user->name->first));
+    $person->setLastName(ucwords ($user->name->last));
     if (FilterInput($user->gender) == "male") {
       $person->setGender(1);
     } else {
       $person->setGender(2);
     }
 
-    $person->setAddress1($user->location->street);
-    $person->setCity($user->location->city);
-    $person->setState($user->location->state);
+    $person->setAddress1(ucwords ($user->location->street));
+    $person->setCity(ucwords ($user->location->city));
+    $person->setState($this->getStateAbb(ucwords ($user->location->state)));
     $person->setZip($user->location->zip);
     $person->setCountry("USA");
     $person->setHomePhone($user->phone);
     $person->setCellPhone($user->cell);
     $person->setEmail($user->email);
-    $person->setBirthDay(date('d', $user->dob));
-    $person->setBirthMonth(date('m', $user->dob));
-    $person->setBirthYear(date('Y', $user->dob));
+    $birthdayDate = \DateTime::createFromFormat('Y-m-d H:i:s', $user->dob);
+    $person->setBirthDay($birthdayDate->format("d"));
+    $person->setBirthMonth($birthdayDate->format('m'));
+    $person->setBirthYear($birthdayDate->format('Y'));
     $person->setFamId($user->famID);
     $person->setFmrId($user->per_fmr_id);
     $person->setEnteredBy($_SESSION['iUserID']);
-    $person->setDateEntered(date('Y-m-d h:i:s', $user->registered));
+    $person->setDateEntered(\DateTime::createFromFormat('Y-m-d H:i:s', $user->registered));
     $person->save();
     return $person->getId();
 
   }
 
-
+  function getStateAbb($state) {
+    $states = array(
+      'Alabama'=>'AL',
+      'Alaska'=>'AK',
+      'Arizona'=>'AZ',
+      'Arkansas'=>'AR',
+      'California'=>'CA',
+      'Colorado'=>'CO',
+      'Connecticut'=>'CT',
+      'Delaware'=>'DE',
+      'Florida'=>'FL',
+      'Georgia'=>'GA',
+      'Hawaii'=>'HI',
+      'Idaho'=>'ID',
+      'Illinois'=>'IL',
+      'Indiana'=>'IN',
+      'Iowa'=>'IA',
+      'Kansas'=>'KS',
+      'Kentucky'=>'KY',
+      'Louisiana'=>'LA',
+      'Maine'=>'ME',
+      'Maryland'=>'MD',
+      'Massachusetts'=>'MA',
+      'Michigan'=>'MI',
+      'Minnesota'=>'MN',
+      'Mississippi'=>'MS',
+      'Missouri'=>'MO',
+      'Montana'=>'MT',
+      'Nebraska'=>'NE',
+      'Nevada'=>'NV',
+      'New Hampshire'=>'NH',
+      'New Jersey'=>'NJ',
+      'New Mexico'=>'NM',
+      'New York'=>'NY',
+      'North Carolina'=>'NC',
+      'North Dakota'=>'ND',
+      'Ohio'=>'OH',
+      'Oklahoma'=>'OK',
+      'Oregon'=>'OR',
+      'Pennsylvania'=>'PA',
+      'Rhode Island'=>'RI',
+      'South Carolina'=>'SC',
+      'South Dakota'=>'SD',
+      'Tennessee'=>'TN',
+      'Texas'=>'TX',
+      'Utah'=>'UT',
+      'Vermont'=>'VT',
+      'Virginia'=>'VA',
+      'Washington'=>'WA',
+      'West Virginia'=>'WV',
+      'Wisconsin'=>'WI',
+      'Wyoming'=>'WY'
+    );
+    return $states[$state];
+  }
 }

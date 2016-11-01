@@ -25,7 +25,6 @@ $("document").ready(function()
   $("#setgroupSpecificProperties").click(function(e)
   {
    var action = $("#setgroupSpecificProperties").data("action");
-   console.log(action);
      $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + groupID + "/setGroupSpecificPropertyStatus",
@@ -34,7 +33,6 @@ $("document").ready(function()
        dataType: "json"
     }).done(function(data)
     {
-      console.log(data);
       location.reload(); // this shouldn't be necessary
     });
   });
@@ -101,13 +99,12 @@ $("document").ready(function()
   $(document).on('click', '.deleteRole', function(e)
   {
     var roleID = e.currentTarget.id.split("-")[1];
-
-    console.log("deleting group role: " + roleID);
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + groupID + "/roles/" + roleID,
       encode: true,
-      data: {"_METHOD":"DELETE"}
+      data: {"_METHOD":"DELETE"},
+      dataType: "json"
     }).done(function(data)
     {
       dataT.clear();
@@ -131,11 +128,9 @@ $("document").ready(function()
     {
       if(data.lst_OptionID == roleID)
       {
-        console.log(data);
         return true;
       }
     }, 2).data(); //get the sequence number of the selected role
-    console.log("current sequence: " + currentRoleSequence);
     if(roleSequenceAction == "roleUp")
     {
       newRoleSequence = Number(currentRoleSequence) - 1;  //decrease the role's sequence number
@@ -144,8 +139,7 @@ $("document").ready(function()
     {
       newRoleSequence = Number(currentRoleSequence) + 1; // increase the role's sequenc number
     }
-    //try
-    //{
+   
     replaceRow = dataT.row(function(idx, data, node)
     {
       if(data.lst_OptionSequence == newRoleSequence)
@@ -153,19 +147,11 @@ $("document").ready(function()
         return true;
       }
     });
-    console.log("------------");
     var d = replaceRow.data();
-    console.log(d);
     d.lst_OptionSequence = currentRoleSequence;
     setGroupRoleOrder(groupID, d.lst_OptionID, d.lst_OptionSequence);
-    console.log(d);
     replaceRow.data(d);
-    console.log("************");
-    //}
-    //catch(err)
-    //{
-    //   console.log("no cells to replace - something was funky.");
-    //}
+   
     dataT.cell(function(idx, data, node)
     {
       if(data.lst_OptionID == roleID)
@@ -198,7 +184,6 @@ $("document").ready(function()
 
   $(document).on('click', '.defaultRole', function(e)
   {
-    console.log(e);
     var roleID = e.target.id.split("-")[1];
     $.ajax({
       method: "POST",

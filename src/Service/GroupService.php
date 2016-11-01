@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\PersonQuery;
+
 class GroupService
 {
 
@@ -121,7 +123,6 @@ class GroupService
    */
   function search($searchTerm)
   {
-   requireUserGroupMembership("bManageGroups"); 
     $sSQL = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%' . $searchTerm . '%\'  order by grp_Name LIMIT 15';
     $result = mysql_query($sSQL);
     $return = array();
@@ -162,7 +163,6 @@ class GroupService
    */
   function getGroupRoles($groupID)
   {
-    requireUserGroupMembership("bManageGroups");
     $groupRoles = array ();
     $sSQL = "SELECT grp_ID, lst_OptionName, lst_OptionID, lst_OptionSequence
               FROM group_grp
@@ -174,7 +174,7 @@ class GroupService
     // Validate that this list ID is really for a group roles list. (for security)
     if(mysql_num_rows($rsList) == 0)
     {
-      throw new Exception("invalid request");
+      throw new \Exception("invalid request");
     }
 
     while ($row = mysql_fetch_assoc( $rsList ))
@@ -217,7 +217,6 @@ class GroupService
 
   function getGroupDefaultRole($groupID)
   {
-    requireUserGroupMembership("bManageGroups");
     //Look up the default role name
     $sSQL = "SELECT lst_OptionName from list_lst INNER JOIN group_grp on (group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_DefaultRole = list_lst.lst_OptionID) WHERE group_grp.grp_ID = " . $groupID;
     $aDefaultRole = mysql_fetch_array(RunQuery($sSQL));
@@ -226,7 +225,6 @@ class GroupService
 
   function getGroupRoleOrder($groupID, $groupRoleID)
   {
-    requireUserGroupMembership("bManageGroups");
     $sSQL = 'SELECT list_lst.lst_OptionSequence FROM list_lst
                 INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
@@ -300,7 +298,7 @@ class GroupService
 
       return $this->getGroupRoles($groupID);
     } else {
-      throw new Exception ("You cannont delete the only group");
+      throw new \Exception ("You cannot delete the only group");
     }
   }
 
@@ -308,7 +306,7 @@ class GroupService
   {
     requireUserGroupMembership("bManageGroups");
     if (strlen($groupRoleName) == 0) {
-      throw new Exception ("New field name cannot be blank");
+      throw new \Exception ("New field name cannot be blank");
     } else {
       // Check for a duplicate option name
       $sSQL = 'SELECT \'\' FROM list_lst
@@ -318,7 +316,7 @@ class GroupService
                  lst_OptionName = "' . $groupRoleName . '"';
       $rsCount = RunQuery($sSQL);
       if (mysql_num_rows($rsCount) > 0) {
-        throw new Exception ("Field " . $groupRoleName . " already exists");
+        throw new \Exception ("Field " . $groupRoleName . " already exists");
       } else {
         $sSQL = "SELECT grp_RoleListID FROM group_grp WHERE grp_ID = $groupID";
         $rsTemp = RunQuery($sSQL);
@@ -356,7 +354,6 @@ class GroupService
 
   function getGroupTotalMembers($groupID)
   {
-    requireUserGroupMembership("bManageGroups");
     //Get the count of members
     $sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = ' . $groupID;
     $rsTotalMembers = mysql_fetch_array(RunQuery($sSQL));
@@ -365,7 +362,6 @@ class GroupService
 
   function getGroupTypes()
   {
-    requireUserGroupMembership("bManageGroups");
     $groupTypes = array();
     // Get Group Types for the drop-down
     $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 3 ORDER BY lst_OptionSequence";
@@ -378,7 +374,6 @@ class GroupService
 
   function getGroupRoleTemplateGroups()
   {
-    requireUserGroupMembership("bManageGroups");
     $templateGroups = array();
     $sSQL = "SELECT * FROM group_grp WHERE grp_RoleListID > 0 ORDER BY grp_Name";
     $rsGroupRoleSeed = RunQuery($sSQL);
@@ -434,7 +429,7 @@ class GroupService
   {
     requireUserGroupMembership("bManageGroups");
     if (!$groupName) {   //If there's no group name, throw an exception
-      throw new Exception ("Unable to create a group without a name");
+      throw new \Exception ("Unable to create a group without a name");
     }
     //Get a new Role List ID
     $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
@@ -514,7 +509,6 @@ class GroupService
 
   function getGroups($groupIDs = NULL)
   {
-    requireUserGroupMembership("bManageGroups");
     $whereClause = "";
     if (is_numeric($groupIDs)) {
       $whereClause = "WHERE grp_ID = " . $groupIDs;
@@ -537,7 +531,6 @@ class GroupService
       $values['groupDescription'] = $row['grp_Description'];
       $values['uri'] = $this->getViewURI($row['grp_ID']);
       $values['memberCount'] = $totalMembers;
-      $values['groupCartStatus'] = $this->checkGroupAgainstCart($row['grp_ID']);
       $values['defaultRole'] = $this->getGroupDefaultRole($row['grp_ID']);
       $values['roles'] = $this->getGroupRoles($row['grp_ID']);
       $values['totalMembers'] = $totalMembers;
@@ -553,14 +546,12 @@ class GroupService
 
   function getGroupMembers($groupID, $personID = null)
   {
-    requireUserGroupMembership("bManageGroups");
     $whereClause = "";
     if (is_numeric($personID)) {
       $whereClause = " AND p2g2r_per_ID = " . $personID;
     }
 
     $members = array();
-    $personService = new PersonService();
     // Main select query
     $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
 
@@ -574,7 +565,8 @@ class GroupService
         WHERE p2g2r_grp_ID =" . $groupID . " " . $whereClause;
     $result = mysql_query($sSQL);
     while ($row = mysql_fetch_assoc($result)) {
-      $person = $personService->getPersonByID($row['p2g2r_per_ID']);
+      $dbPerson = PersonQuery::create()->findPk($row['p2g2r_per_ID']);
+      $person['displayName'] = $dbPerson->getFullName();
       $person['groupRole'] = $row['lst_OptionName'];
       array_push($members, $person);
     }
@@ -583,7 +575,6 @@ class GroupService
 
   function getGroupMembersIds($groupID)
   {
-    requireUserGroupMembership("bManageGroups");
     $members = array();
     // Main select query
     $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
@@ -604,34 +595,7 @@ class GroupService
     return $members;
   }
 
-  function checkGroupAgainstCart($groupID)
-  {
-    requireUserGroupMembership("bManageGroups");
-    $members = $this->getGroupMembersIds($groupID);
-    //echo "Members: ".count($members);
-    $bNoneInCart = TRUE;
-    $bAllInCart = TRUE;
-    //Loop through the recordset
-    foreach ($members as $member) {
-      if (!isset ($_SESSION['aPeopleCart']))
-        $bAllInCart = FALSE; // Cart does not exist.  This person is not in cart.
-      elseif (!in_array($member['id'], $_SESSION['aPeopleCart'], false))
-        $bAllInCart = FALSE; // This person is not in cart.
-      elseif (in_array($member['id'], $_SESSION['aPeopleCart'], false))
-        $bNoneInCart = FALSE; // This person is in the cart
-    }
-
-    if (!$bAllInCart) {
-      //there is at least one person in this group who is not in the cart.  Return false
-      return false;
-    }
-    if (!$bNoneInCart) {
-      //every member of this group is in the cart.  Return true
-      return true;
-    }
-    return false;
-  }
-
+ 
   function copyCartToGroup()
   {
     requireUserGroupMembership("bManageGroups");

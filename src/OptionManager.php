@@ -296,7 +296,7 @@ if ($embedded)
 	include "Include/Header-Minimal.php";
 else
 {
-	$sPageTitle = $adj . ' ' . $noun . "s Editor:";
+	$sPageTitle = $adj . ' ' . $noun . "s ".gettext("Editor");
 	include "Include/Header.php";
 }
 
@@ -348,7 +348,7 @@ for ($row=1; $row <= $numRows; $row++)
 		</td>
 		<td class="TextColumn">
 			<span class="SmallText">
-				<input class="form-control input-small" type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="30" maxlength="40">
+				<input class="input-small" type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="30" maxlength="40">
 			</span>
 			<?php
 
@@ -367,6 +367,7 @@ for ($row=1; $row <= $numRows; $row++)
 <?php } ?>
 
 </table>
+  <br/>
 	<input type="submit" class="btn btn-primary" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
 
 
@@ -382,7 +383,7 @@ for ($row=1; $row <= $numRows; $row++)
 
 <div class="box box-primary">
 	<div class="box-body">
-New <?= $noun . " " . gettext("Name:") ?>&nbsp;
+<?=  gettext("New") . " " . $noun . " " . gettext("Name:") ?>&nbsp;
 <span class="SmallText">
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>

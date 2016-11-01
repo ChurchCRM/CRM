@@ -2,12 +2,8 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/PersonFunctions.php";
-require "Include/class.upload.php";
 
-use ChurchCRM\Service\NoteService;
-
-$noteService = new NoteService();
+use ChurchCRM\Note;
 
 $finalFileName = "";
 $redirectURL = "";
@@ -41,7 +37,7 @@ $imageLocationThumb = $imageLocation . "thumbnails/";
 
 $uploaded = false;
 if ($_SESSION['bAddRecords'] || $bOkToEdit) {
-  $foo = new Upload($_FILES['file']);
+  $foo = new upload($_FILES['file']);
   $foo->allowed = array('"image/png"', 'image/jpg', 'image/jpeg');
 
   if ($foo->uploaded) {
@@ -79,10 +75,16 @@ if ($_SESSION['bAddRecords'] || $bOkToEdit) {
     if (!$foo->processed) {
       echo 'error : ' . $foo->error;
     } else {
+      $note = new Note();
+      $note->setText("Profile Image Uploaded");
+      $note->setType("photo");
+      $note->setEntered($_SESSION['iUserID']);
       if (isset($_GET['PersonID'])) {
-        $noteService->addNote($id, "0", 0, "Profile Image Uploaded", "photo");
+        $note->setPerId($id);
+        $note->save();
       } else if (isset($_GET['FamilyID'])) {
-        $noteService->addNote("0", $id, 0, "Profile Image Uploaded", "photo");
+        $note->setFamId($id);
+        $note->save();
       }
       $uploaded = true;
     }

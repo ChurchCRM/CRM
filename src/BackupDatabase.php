@@ -76,7 +76,7 @@ require "Include/Header.php";
 </div>
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Backup Status: </h3>&nbsp;<h3 class="box-title" id="backupstatus" style="color:red">No Backup Running</h3>
+        <h3 class="box-title"><?= gettext("Backup Status:") ?> </h3>&nbsp;<h3 class="box-title" id="backupstatus" style="color:red"> <?= gettext("No Backup Running") ?></h3>
     </div>
      <div class="box-body" id="resultFiles">
      </div>
@@ -129,7 +129,8 @@ function doBackup(isRemote)
       url         : endpointURL, // the url where we want to POST
       data        : JSON.stringify(formData), // our data object
       dataType    : 'json', // what type of data do we expect back from the server
-      encode      : true
+      encode      : true,
+      contentType: "application/json; charset=utf-8"
     })
     .done(function(data) {
       console.log(data);

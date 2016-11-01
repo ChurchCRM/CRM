@@ -65,18 +65,18 @@ DB Password: `churchcrm`
 5. Enter churchcrm for Database Name, Useranme, and Password.  Your connection string should be as follows:
 > jdbc:mysql://192.168.33.10:3306/churchcrm?zeroDateTimeBehavior=convertToNull
 6. Click "Test Connection"
-7. You should now be able to browse the database schema, and execute queries from the NetBeans IDE.
+7. You should now be able to browse the database schema and execute queries from the NetBeans IDE.
 
 ### Vagrant Email
 - All outbound email from ChurchCRM should be directed at the local instance of [MailCatcher](http://mailcatcher.me/).  
-    - MailCatcher prevents messages from actually being delivered over the internet, but still allows you (as a developer) to see all of the headers and content of the messages
+    - MailCatcher prevents messages from actually being delivered over the Internet, but still allows you (as a developer) to see all of the headers and content of the messages
 - The SMTP service listens on 127.0.0.1, port 1025 (You must manually configure your development instance of ChurchCRM to send mail to this address.)
 - The Vagrant bootstrap.sh script will automatically start MailCatcher on all IP addresses owned by the Vagrant VM.
-- You can view (in realtime) the messages sent by ChurchCRM by opening [http://192.168.33.10:1080](http://192.168.33.10:1080) on the machine hosting the Vagrant environment
+- You can view (in real time) the messages sent by ChurchCRM by opening [http://192.168.33.10:1080](http://192.168.33.10:1080) on the machine hosting the Vagrant environment
 
 ### Propel Model update
-- make changes to src/orm/conf/schema.xml
-- start vagrant
+- Make changes to src/orm/conf/schema.xml
+- Start vagrant
 - cd /vagrant/vagrant
 - run ../src/vendor/propel/propel/bin/propel model:build
 

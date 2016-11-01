@@ -4,9 +4,10 @@
 
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/Header.php";
+
 
 $sPageTitle = gettext("Church Event Editor");
+require "Include/Header.php";
 
 $sAction = $_POST['Action'];
 $EventID = $_POST['EID']; // from ListEvents button=Attendees
@@ -25,28 +26,19 @@ if ($sAction=='Delete'){
 }
 // Construct the form
 ?>
-
-<form method="post" action="EditEventAttendees.php" name="AttendeeEditor">
-<input type="hidden" name="EID" value="<?= $EventID  ?>">
-<table cellpadding="0" cellspacing="0" width="75%" align="center">
-  <caption>
-    <h3><?= gettext("Attendees for Event ID: $EventID") ?></h3>
-  </caption>
-  <tr ><td colspan="4">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr>
-        <td align="center"><span class="SmallText"><?= gettext("<strong>Name:</strong> <br>$EvtName") ?></td>
-      <td align="center"><span class="SmallText"><?= gettext("<strong>Description:</strong> <br>$EvtDesc") ?></span></td>
-      <td align="center"><span class="SmallText"><?= gettext("<strong>Date:</strong><br>$EvtDate") ?></span></td>
-    </tr>
-    </table>
-    </td>
-    </tr>
-  <tr><td colspan="4"></td></tr>
-  <tr>
-    <td colspan="4" align="center"><input type="button" class="btn" value="<?= gettext("Back to Menu") ?>" Name="Exit" onclick="javascript:document.location='Menu.php';"></td>
- </tr>
-   <tr><td colspan="4"></td></tr>
+<div class='box'>
+  <div class='box-header'>
+    <h3 class='box-title'><?= gettext("Attendees for Event ID:") . " " . $EventID ?></h3>
+  </div>
+  <div class='box-body'>
+    <strong><?= gettext("Name:")?></strong> <?= $EvtName ?><br/>
+    <strong><?= gettext("Date:")?></strong> <?= $EvtDate ?><br/>
+    <strong><?= gettext("Description:")?></strong><br/>
+    <?= $EvtDesc ?>
+    <p/>
+    <form method="post" action="EditEventAttendees.php" name="AttendeeEditor">
+      <input type="hidden" name="EID" value="<?= $EventID  ?>">
+  <table class="table">
   <tr class="TableHeader">
     <td width="35%"><strong><?= gettext("Name") ?></strong></td>
     <td width="25%"><strong><?= gettext("Email") ?></strong></td>
@@ -85,7 +77,7 @@ if($numAttRows!=0){
           <input type="hidden" name="EName" value="<?= $EvtName ?>">
           <input type="hidden" name="EDesc" value="<?= $EvtDesc ?>">
           <input type="hidden" name="EDate" value="<?= $EvtDate ?>">
-          <input type="submit" name="Action" value="<?= gettext("Delete") ?>" class="btn" onClick="return confirm('Are you sure you want to DELETE this person from Event ID:<?= $EventID ?>')">
+          <input type="submit" name="Action" value="<?= gettext("Delete") ?>" class="btn" onClick="return confirm('<?= gettext("Are you sure you want to DELETE this person from Event ID: ") . $EventID ?>')">
       </form>
      </td>
     </tr>
@@ -99,5 +91,5 @@ if($numAttRows!=0){
 
 ?>
 </table>
-
+</div>
 <?php require "Include/Footer.php" ?>

@@ -6,12 +6,11 @@
  */
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Include/PersonFunctions.php';
 
 use ChurchCRM\Service\DashboardService;
 
 // Set the page title
-$sPageTitle = "Members Dashboard";
+$sPageTitle = gettext("Members Dashboard");
 
 require 'Include/Header.php';
 
@@ -34,7 +33,7 @@ $classifications = new stdClass();
 while (list ($lst_OptionID,$lst_OptionName) = mysql_fetch_row($rsClassification))
 {
   $classifications->$lst_OptionName = $lst_OptionID;
- 
+
 }
 
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
@@ -65,9 +64,6 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
 }
 
 ?>
-
-<!-- this page specific styles -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 
 <!-- Default box -->
 <div class="box">
@@ -136,7 +132,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
 </div>
 <!-- Small boxes (Stat box) -->
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
     <div class="small-box bg-aqua">
       <div class="inner">
@@ -157,7 +153,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
     </div>
   </div>
   <!-- ./col -->
-  <div class="col-lg-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
     <div class="small-box bg-green">
       <div class="inner">
@@ -178,7 +174,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
     </div>
   </div>
   <!-- ./col -->
-  <div class="col-lg-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
@@ -199,7 +195,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
     </div>
   </div>
   <!-- ./col -->
-  <div class="col-lg-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
     <div class="small-box bg-red">
       <div class="inner">

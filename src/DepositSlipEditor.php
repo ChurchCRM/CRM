@@ -66,8 +66,6 @@ $rsUpdate = RunQuery($sSQL);
 
 require "Include/Header.php";
 ?>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
-
 <div class="row">
   <div class="col-lg-7">
     <div class="box">
@@ -79,7 +77,7 @@ require "Include/Header.php";
           <div class="row">
             <div class="col-lg-4">
               <label for="Date"><?php echo gettext("Date:"); ?></label>
-              <input type="text" class="form-control" name="Date" value="<?php echo $thisDeposit->getDate('Y-m-d'); ?>" id="DepositDate" >
+              <input type="text" class="form-control date-picker" name="Date" value="<?php echo $thisDeposit->getDate('Y-m-d'); ?>" id="DepositDate" >
             </div>
             <div class="col-lg-4">
               <label for="Comment"><?php echo gettext("Comment:"); ?></label>
@@ -95,7 +93,7 @@ require "Include/Header.php";
               <input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
             </div>
             <div class="col-lg-6" style="text-align:center">
-              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="javascript:document.location = window.CRM.root + '/api/deposits/<?php echo ($thisDeposit->getId()) ?>/pdf';">
+              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo ($thisDeposit->getId()) ?>/pdf');">
             </div>
           </div>
           <?php
@@ -119,9 +117,9 @@ require "Include/Header.php";
           // Get deposit totals
           echo "<li><b>TOTAL (".$thisDeposit->getPledges()->count(). "):</b> $".$thisDeposit->getVirtualColumn("totalAmount")."</li>";
           if ($thisDeposit->getCountChecks())
-            echo "<li><b>CASH (" . $thisDeposit->getCountChecks() . "):</b> $" . $thisDeposit->getTotalChecks()."</li>";
+            echo "<li><b>CASH (" . $thisDeposit->getCountCash() . "):</b> $" . $thisDeposit->getTotalCash()."</li>";
           if ($thisDeposit->getCountCash())
-            echo "<li><b>CHECKS (" . $thisDeposit->getCountCash() . "):</b> $". $thisDeposit->getTotalCash() . " </li>";
+            echo "<li><b>CHECKS (" . $thisDeposit->getCountChecks() . "):</b> $". $thisDeposit->getTotalChecks() . " </li>";
           ?>
             </ul>
         </div>
@@ -229,9 +227,9 @@ require "Include/Header.php";
   var depositType = '<?php echo $thisDeposit->getType(); ?>';
   var depositSlipID = <?php echo $iDepositSlipID; ?>;
   var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed();  ?>);
-  var fundData = <?= json_encode($fundData) ?>; 
+  var fundData = <?= json_encode($fundData) ?>;
   var pledgeData = <?= json_encode($pledgeTypeData) ?>;
-  
+
   $(document).ready(function() {
     initPaymentTable();
     initCharts(pledgeData, fundData);

@@ -31,7 +31,6 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/PersonFunctions.php";
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 
@@ -989,7 +988,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 			if (isset($fam_Name))
 				echo $fam_Name;
 			else
-				echo "Unassigned";
+				echo gettext("Unassigned");
 
 			echo "</td></tr>";
 			$sRowClass = "RowColorA";
@@ -1016,7 +1015,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 	//Display the row
 	echo "<tr class=\"" .$sRowClass. "\">"; ?>
 	</td>
-    <td><img src="<?= $personService->getPhoto($per_ID); ?>" class="direct-chat-img" width="10px" height="10px" /> </td>
+    <td><img src="<?=$sRootPath?>/api/persons/<?= $per_ID ?>/photo" class="direct-chat-img" width="10px" height="10px" /> </td>
 	<td>
 	    <a href="PersonView.php?PersonID=<?= $per_ID ?>" >
 	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) ?>

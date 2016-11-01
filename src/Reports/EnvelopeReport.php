@@ -10,11 +10,10 @@
 *  (at your option) any later version.
 *
 ******************************************************************************/
-
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
+use ChurchCRM\Reports\ChurchInfoReport;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
@@ -46,13 +45,13 @@ class PDF_EnvelopeReport extends ChurchInfoReport {
 	// Constructor
 	function PDF_EnvelopeReport() {
 		global $paperFormat;
-		parent::FPDF("P", "mm", $this->paperFormat);
+		parent::__construct("P", "mm", $this->paperFormat);
 
 		$this->_Column      = 0;
 		$this->_CurLine     = 2;
 		$this->_Font        = "Times";
 		$this->SetMargins(0,0);
-		$this->Open();
+		
 		$this->Set_Char_Size(12);
 		$this->AddPage();
 		$this->SetAutoPageBreak(false);

@@ -1,0 +1,29 @@
+{
+  "name": "ChurchCRM",
+  "description": "Free Church CRM Software",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChurchCRM/CRM.git"
+  },
+  "keywords": [
+    "Church",
+    "CRM",
+    "LAMP",
+    "Free"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChurchCRM/CRM/issues"
+  },
+  "homepage": "http://www.churchcrm.io",
+  "dependencies": {
+    "admin-lte": "2.3.7",
+    "ionicons": "2.0.1",
+    "font-awesome": "4.6.3",
+    "fullcalendar": "3.0.1"
+  },
+  "scripts": {
+    "install": "/vagrant/scripts/build-skin.sh",
+    "locale-gen": "cd src && find . -iname '*.php' | grep -v ./vendor | xargs xgettext --from-code=UTF-8 -o locale/messages.po -L PHP"
+  }
+}

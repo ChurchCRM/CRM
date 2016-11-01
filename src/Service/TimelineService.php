@@ -1,20 +1,21 @@
 <?php
 
-require_once "EventService.php";
+namespace ChurchCRM\Service;
 
+use ChurchCRM\EventAttendQuery;
+use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
 use ChurchCRM\PersonQuery;
+
 
 class TimelineService
 {
   private $baseURL;
   private $currentUser;
   private $currentUserIsAdmin;
-  private $eventService;
 
   public function __construct()
   {
-    $this->eventService = new EventService();
     $this->currentUser = $_SESSION['iUserID'];
     $this->currentUserIsAdmin = $_SESSION['bAdmin'];
     $this->baseURL = $_SESSION['sRootPath'];
@@ -52,10 +53,11 @@ class TimelineService
       }
     }
 
-    $events = $this->eventService->getEventsByPerson($personID);
-    foreach ($events as $event) {
-      $item = $this->createTimeLineItem("cal", $event["date"],
-        $event["title"], "", $event["desc"], "", "");
+    $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
+    foreach ($eventsByPerson as $personEvent) {
+      $event = $personEvent->getEvent();
+      $item = $this->createTimeLineItem("cal", $event->getStart('Y-m-d h:i:s'), $event->getTitle(), "",
+        $event->getDesc(), "", "");
       $timeline[$item["key"]] = $item;
     }
 
@@ -69,15 +71,22 @@ class TimelineService
     return $sortedTimeline;
   }
 
-
+  /**
+   * @param $dbNote Note
+   * @return mixed|null
+   */
   function noteToTimelineItem($dbNote)
   {
     $item = NULL;
     if ($this->currentUserIsAdmin || $dbNote->isVisable($this->currentUser)) {
-      $displayEditedBy = "unknown?";
-      $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
-      if ($editor != null) {
-        $displayEditedBy = $editor->getFullName();
+      $displayEditedBy = gettext("Unknown");
+      if ($dbNote->getDisplayEditedBy() == -1) {
+        $displayEditedBy = gettext("Self Registration");
+      } else {
+        $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
+        if ($editor != null) {
+          $displayEditedBy = $editor->getFullName();
+        }
       }
       $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
         "by " . $displayEditedBy, "", $dbNote->getText(),
