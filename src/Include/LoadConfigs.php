@@ -122,8 +122,6 @@ $resultset = $statement->execute();
 $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
 if (count($results) == 0) {
-  //echo "db not installed";
-  //exit;
   $systemService = new SystemService();
   $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
   $systemService->playbackSQLtoDatabase($setupQueries);
