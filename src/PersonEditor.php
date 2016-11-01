@@ -1015,7 +1015,7 @@ require "Include/Header.php";
                         if ($iClassification == $lst_OptionID) {
                             echo " selected";
                         }
-                        echo ">" . $lst_OptionName . "&nbsp;";
+                        echo ">" . gettext($lst_OptionName) . "&nbsp;";
                     } ?>
                 </select>
             </div>
