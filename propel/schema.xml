@@ -722,6 +722,36 @@
         </vendor>
     </table>
 
+    <table name="currency_denominations_cdem" idMethod="native" phpName="CurrencyDenominations">
+      <column name="cdem_denominationID" phpName="Id" type="mediumint(9)" primaryKey="true" autoIncrement="true" required="true"/>
+      <column name="cdem_denominationName" phpName="Name" type="VARCHAR" />
+      <column name="cdem_denominationValue" phpName="Value" type="DECIMAL" />
+      <column name="cdem_denominationClass" phpName="Class" type="VARCHAR" />
+      <index name="cdem_denominationID_2">
+        <index-column name="cdem_denominationID"/>
+      </index>
+      <vendor type="mysql">
+        <parameter name="Engine" value="MyISAM"/>
+      </vendor>
+    </table>
+    
+    <table name="pledgesplit_pls" idMethod="native" phpName="CurrencyDenominations">
+      <column name="pls_pledgesplitID" phpName="Id" type="mediumint(9)" primaryKey="true" autoIncrement="true" required="true"/>
+      <column name="pls_plg_ID" phpName="PledgeId" type="INTEGER" />
+      <column name="pls_amount" phpName="Amount" type="DECIMAL" />
+      <column name="pls_comment"  phpName="Comment" type="LONGVARCHAR" />
+      <column name="pls_DateLastEdited"  phpName="Modified" type="DATE"/>
+      <column name="pls_EditedBy"  phpName="ModifiedBy" type="INTEGER"/>
+      <column name="pls_fundID"  phpName="FundId" type="INTEGER"/>
+      <column name="pls_NonDeductible"  phpName="NonDeductable" type="DECIMAL"/>
+      <index name="pdem_pdemID_2">
+        <index-column name="pdem_pdemID"/>
+      </index>
+      <vendor type="mysql">
+        <parameter name="Engine" value="MyISAM"/>
+      </vendor>
+    </table>
+    
     <!--
  <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
    <column name="lu_fam_ID" phpName="LuFamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>

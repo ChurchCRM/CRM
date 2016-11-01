@@ -19,12 +19,8 @@ global $iChecksPerDepositForm;
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Service/FinancialService.php";
 
-$financialService = new FinancialService();
-require_once dirname(__FILE__) . '/vendor/autoload.php';
-require_once dirname(__FILE__) . '/orm/conf/config.php';
-
+$financialService= ChurchCRM\Service\FinancialService::;
 use ChurchCRM\DonationFundQuery;
 
 
