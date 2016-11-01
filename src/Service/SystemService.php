@@ -457,30 +457,36 @@ class SystemService
   {
     $CRMInstallRoot = dirname(__DIR__);
     $signatureFile = $CRMInstallRoot."/signatures.json";
-    $signatureData = json_decode(file_get_contents($signatureFile));
     $signatureFailures = array();
-   
-    if (sha1(json_encode($signatureData->files)) == $signatureData->sha1)
+    if (file_exists($signatureFile))
     {
-      foreach ($signatureData->files as $file)
+      $signatureData = json_decode(file_get_contents($signatureFile));
+      if (sha1(json_encode($signatureData->files)) == $signatureData->sha1)
       {
-        if(file_exists($CRMInstallRoot."/".$file->filename))
+        foreach ($signatureData->files as $file)
         {
-          $actualHash = sha1_file($CRMInstallRoot."/".$file->filename);
-          if ( $actualHash != $file->sha1 )
+          if(file_exists($CRMInstallRoot."/".$file->filename))
           {
-            array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"Hash Mismatch", "expectedhash"=>$file->sha1,"actualhash"=>$actualHash));
+            $actualHash = sha1_file($CRMInstallRoot."/".$file->filename);
+            if ( $actualHash != $file->sha1 )
+            {
+              array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"Hash Mismatch", "expectedhash"=>$file->sha1,"actualhash"=>$actualHash));
+            }
+          }
+          else
+          {
+            array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"File Missing"));
           }
         }
-        else
-        {
-          array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"File Missing"));
-        }
+      }
+      else
+      {
+        return array("status"=>"failure","message"=>"Signature Definition file signature failed validation");
       }
     }
     else
     {
-      return array("status"=>"failure","message"=>"Signature Definition file signature failed validation");
+      return array("status"=>"failure","message"=>"Signature Definition File Missing");
     }
     
     if(count($signatureFailures) > 0 )

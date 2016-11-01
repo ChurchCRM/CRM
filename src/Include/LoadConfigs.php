@@ -72,22 +72,6 @@ or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</st
 mysql_select_db($sDATABASE)
 or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
 
-$sql = "SHOW TABLES FROM `$sDATABASE`";
-$tablecheck = mysql_num_rows(mysql_query($sql));
-
-if (!$tablecheck) {
-  $systemService = new SystemService();
-  $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
-  $systemService->playbackSQLtoDatabase($setupQueries);
-  $configQueries = dirname(__file__) . '/../mysql/upgrade/update_config.sql';
-  $systemService->playbackSQLtoDatabase($configQueries);
-  $version = new Version();
-  $version->setVersion($systemService->getInstalledVersion());
-  $version->setUpdateStart(new DateTime());
-  $version->setUpdateEnd(new DateTime());
-  $version->save();
-}
-
 // Initialize the session
 session_name('CRM@' . $sRootPath);
 session_start();
@@ -130,6 +114,27 @@ $serviceContainer->setDefaultDatasource('default');
 $logger = new Logger('defaultLogger');
 $logger->pushHandler(new StreamHandler('/tmp/ChurchCRM.log'));
 $serviceContainer->setLogger('defaultLogger', $logger);
+
+$connection = Propel::getConnection();
+$query = "SHOW TABLES FROM `$sDATABASE`";
+$statement = $connection->prepare($query);
+$resultset = $statement->execute();
+$results = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+if (count($results) == 0) {
+  //echo "db not installed";
+  //exit;
+  $systemService = new SystemService();
+  $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
+  $systemService->playbackSQLtoDatabase($setupQueries);
+  $configQueries = dirname(__file__) . '/../mysql/upgrade/update_config.sql';
+  $systemService->playbackSQLtoDatabase($configQueries);
+  $version = new Version();
+  $version->setVersion($systemService->getInstalledVersion());
+  $version->setUpdateStart(new DateTime());
+  $version->setUpdateEnd(new DateTime());
+  $version->save();
+}
 
 // Read values from config table into local variables
 // **************************************************
