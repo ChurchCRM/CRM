@@ -32,8 +32,8 @@ require '../Include/Header.php';
         <h3 class="box-title"><?= gettext("Email Export") ?></h3>
       </div>
       <div class="box-body">
-        <?= gettext("You can import the generated CSV file to external email system.
-        For MailChimp see") ?>: <a href="http://kb.mailchimp.com/lists/growth/import-subscribers-to-a-list"
+        <?= gettext("You can import the generated CSV file to external email system.") ?>: 
+            For MailChimp see <a href="http://kb.mailchimp.com/lists/growth/import-subscribers-to-a-list"
                                    target="_blank"><?= gettext("import subscribers to a list.") ?></a>
         <br/><br/>
 
