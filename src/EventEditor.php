@@ -485,7 +485,7 @@ else if ($sAction = gettext('Edit') && !empty($sOpp))
       <?php
       for ($c=0; $c<$nCnts; $c++){
         ?><tr>
-          <td><strong><?= ($aCountName[$c].": ") ?>&nbsp;</strong></td>
+          <td><strong><?= (gettext($aCountName[$c]).":") ?>&nbsp;</strong></td>
         <td>
         <input type="text" name="EventCount[]" value="<?= ($aCount[$c]) ?>" size="8" class='form-control'>
         <input type="hidden" name="EventCountID[]" value="<?= ($aCountID[$c]) ?>">

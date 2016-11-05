@@ -109,7 +109,7 @@ if (isset($_POST["Submit"]) && isset($_POST['EventID']) || isset($_POST['Cancel'
 		<tr>
 		<td>
 			<caption>
-				<h3><?= gettext("Add Attendees for Event: $event_title") ?></h3>
+				<h3><?= gettext("Add Attendees for Event")?>: <?= $event_title ?></h3>
 			</caption>
 		</td>
 		</tr>
@@ -130,12 +130,12 @@ if (isset($_POST["Submit"]) && isset($_POST['EventID']) || isset($_POST['Cancel'
 		</tr>
 		<tr>
 			<td width="33%" align="right">
-			Child's Number
+			<?= gettext("Child's Number") ?>
 			</td>
 			<td width="33%" valign="top" align="center">
 			</td>
 			<td width="33%" valign="top" align="left">
-			Adult Number(Optional)
+			<?= gettext("Adult Number(Optional)") ?>
 			</td>
 		</tr>
 		</table>
