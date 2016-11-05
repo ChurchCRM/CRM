@@ -481,19 +481,19 @@ class SystemService
       }
       else
       {
-        return array("status"=>"failure","message"=>"Signature Definition file signature failed validation");
+        return array("status"=>"failure","message"=>gettext("Signature definition file signature failed validation"));
       }
     }
     else
     {
-      return array("status"=>"failure","message"=>"Signature Definition File Missing");
+      return array("status"=>"failure","message"=>gettext("Signature definition File Missing"));
     }
     
     if(count($signatureFailures) > 0 )
     {
-      return array("status"=>"failure","files"=>$signatureFailures);
+      return array("status"=>"failure","message"=>gettext("One or more files failed signature validation"),"files"=>$signatureFailures);
     }
-    else 
+    else  
     {
        return array("status"=>"success");
     }
