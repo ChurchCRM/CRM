@@ -64,7 +64,7 @@ if (isset($_GET['Warn'])) { ?>
 <?php } ?>
 
 <p align="center" class="MediumLargeText">
-	<?= gettext("Please confirm deletion of this Property Type:") ?> <b><?= $prt_Name ?></b>
+	<?= gettext("Please confirm deletion of this Property Type") ?>: <b><?= $prt_Name ?></b>
 </p>
 
 <p align="center">

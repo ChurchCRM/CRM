@@ -212,7 +212,7 @@ $numRows = mysql_num_rows($rsList);
 $aNameErrors = array();
 for ($row = 1; $row <= $numRows; $row++)
 	$aNameErrors[$row] = 0;
-	
+
 if (isset($_POST["SaveChanges"]))
 {
 	for ($row = 1; $row <= $numRows; $row++)

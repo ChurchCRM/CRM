@@ -179,11 +179,11 @@ require "Include/Header.php";
 		<td><?= $sName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?= gettext("Assigning:") ?></b></td>
+		<td align="right"><b><?= gettext("Assigning") ?>:</b></td>
 		<td><?php echo $sPropertyName ?></td>
 <?php if (strlen($sPrompt)) { ?>
 		<tr>
-			<td align="right" valign="top"><b><?= gettext("Value:") ?></b></td>
+			<td align="right" valign="top"><b><?= gettext("Value") ?>:</b></td>
 			<td><?= $sPrompt ?><br><textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea></td>
 		</tr>
 <?php } ?>

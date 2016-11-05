@@ -192,17 +192,17 @@ else { echo "Menu.php"; } ?>';">
               <td width="50%" valign="top" align="left">
                 <table cellpadding="3">
                   <tr>
-                    <td class="LabelColumn"><?= gettext("Item:") ?></td>
+                    <td class="LabelColumn"><?= gettext("Item") ?>:</td>
                     <td class="TextColumn"><input type="text" name="Item" id="Item" value="<?= $sItem ?>"></td>
                   </tr>
 
                   <tr>
-                    <td class="LabelColumn"><?= gettext("Multiple items:") ?></td>
+                    <td class="LabelColumn"><?= gettext("Multiple items") ?>:</td>
                     <td class="TextColumn"><input type="checkbox" name="Multibuy" value="1" <?php if ($bMultibuy) echo " checked"; ?>><?= gettext("Sell to everyone") ?>
                   </tr>
 
                   <tr>
-                    <td class="LabelColumn"><?= gettext("Donor:") ?>
+                    <td class="LabelColumn"><?= gettext("Donor") ?>:
                     </td>
                     <td class="TextColumn">
                       <select name="Donor">
@@ -223,22 +223,22 @@ while ($aRow = mysql_fetch_array($rsPeople)) {
                   </tr>
 
                   <tr>
-                    <td class="LabelColumn"><?= gettext("Title:") ?></td>
+                    <td class="LabelColumn"><?= gettext("Title") ?>:</td>
                     <td class="TextColumn"><input type="text" name="Title" id="Title" value="<?= htmlentities($sTitle) ?>"/></td>
                   </tr>
 
                   <tr>
-                    <td class="LabelColumn"><?= gettext("Estimated Price:") ?></td>
+                    <td class="LabelColumn"><?= gettext("Estimated Price") ?>:</td>
                     <td class="TextColumn"><input type="text" name="EstPrice" id="EstPrice" value="<?= $nEstPrice ?>"></td>
                   </tr>
 
                   <tr>
-                    <td class="LabelColumn"><?= gettext("Material Value:") ?></td>
+                    <td class="LabelColumn"><?= gettext("Material Value") ?>:</td>
                     <td class="TextColumn"><input type="text" name="MaterialValue" id="MaterialValue" value="<?= $nMaterialValue ?>"></td>
                   </tr>
 
                   <tr>
-                    <td class="LabelColumn"><?= gettext("Minimum Price:") ?></td>
+                    <td class="LabelColumn"><?= gettext("Minimum Price") ?>:</td>
                     <td class="TextColumn"><input type="text" name="MinimumPrice" id="MinimumPrice" value="<?= $nMinimumPrice ?>"></td>
                   </tr>
                 </table> <!-- Table for the left side entries -->
@@ -248,7 +248,7 @@ while ($aRow = mysql_fetch_array($rsPeople)) {
                 <table cellpadding="3"> <!-- Table for the right side entries -->
 
                   <tr>
-                    <td class="LabelColumn"><?= gettext("Buyer:") ?></td>
+                    <td class="LabelColumn"><?= gettext("Buyer") ?>:</td>
                     <td class="TextColumn">
 <?php if ($bMultibuy) echo gettext("Multiple"); else { ?>
                         <select name="Buyer">
@@ -269,7 +269,7 @@ while ($aRow = mysql_fetch_array($rsPeople)) {
                   </tr>
 
                   <tr>
-                    <td class="LabelColumn"><?= gettext("Final Price:") ?></td>
+                    <td class="LabelColumn"><?= gettext("Final Price") ?>:</td>
                     <td class="TextColumn"><input type="text" name="SellPrice" id="SellPrice" value="<?= $nSellPrice ?>"></td>
                   </tr>
 

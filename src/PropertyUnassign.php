@@ -115,7 +115,7 @@ require "Include/Header.php";
 		<td><?= $sName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?= gettext("Unassigning:") ?></b></td>
+		<td align="right"><b><?= gettext("Unassigning") ?>:</b></td>
 		<td><?= $sPropertyName ?></td>
 	</tr>
 </table>

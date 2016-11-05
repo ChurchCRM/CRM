@@ -163,17 +163,17 @@ if ($fam_ID)
 	<td width="33%" valign="top" align="left">
 		<table cellspacing="1" cellpadding="4">
 		<tr>
-			<td class="LabelColumn"><?= gettext("Home Phone:") ?></td>
+			<td class="LabelColumn"><?= gettext("Home Phone") ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn"><?= $sHomePhone ?>&nbsp;</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?= gettext("Work Phone:") ?></td>
+			<td class="LabelColumn"><?= gettext("Work Phone") ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn"><?= $sWorkPhone ?>&nbsp;</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?= gettext("Mobile Phone:") ?></td>
+			<td class="LabelColumn"><?= gettext("Mobile Phone") ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn"><?= $sCellPhone ?>&nbsp;</td>
 		</tr>
@@ -202,7 +202,7 @@ if ($fam_ID)
 	<td width="33%" valign="top" align="left">
 		<table cellspacing="1" cellpadding="4">
 		<tr>
-			<td class="LabelColumn"><?= gettext("Gender:") ?></td>
+			<td class="LabelColumn"><?= gettext("Gender") ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn">
 				<?php
@@ -218,19 +218,19 @@ if ($fam_ID)
 			</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?= gettext("BirthDate:") ?></td>
+			<td class="LabelColumn"><?= gettext("BirthDate") ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn"><?= $dBirthDate ?>&nbsp;</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?= gettext("Family:") ?></td>
+			<td class="LabelColumn"><?= gettext("Family") ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn">
 			<?php if ($fam_Name != "") { echo $fam_Name; } else { echo gettext("Unassigned"); } ?>
 			&nbsp;</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?= gettext("Family Role:") ?></td>
+			<td class="LabelColumn"><?= gettext("Family Role") ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumnWithBottomBorder"><?php if ($sFamRole != "") { echo $sFamRole; } else { echo gettext("Unassigned"); } ?>&nbsp;</td>
 		</tr>
@@ -250,22 +250,22 @@ if ($fam_ID)
 	<td width="33%" valign="top" align="left">
 		<table cellspacing="1" cellpadding="4">
 			<tr>
-				<td class="LabelColumn"><?= gettext("Email:") ?></td>
+				<td class="LabelColumn"><?= gettext("Email") ?>:</td>
 				<td width="<?= $iTableSpacerWidth ?>"></td>
 				<td class="TextColumnWithBottomBorder"><?= $sUnformattedEmail ?>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="LabelColumn"><?= gettext("Work / Other Email:") ?></td>
+				<td class="LabelColumn"><?= gettext("Work / Other Email") ?>:</td>
 				<td width="<?= $iTableSpacerWidth ?>"></td>
 				<td class="TextColumnWithBottomBorder"><?= $sWorkEmail ?>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="LabelColumn"><?= gettext("Membership Date:") ?></td>
+				<td class="LabelColumn"><?= gettext("Membership Date") ?>:</td>
 				<td width="<?= $iTableSpacerWidth ?>"></td>
 				<td class="TextColumn"><?= FormatDate($per_MembershipDate,false) ?>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="LabelColumn"><?= gettext("Classification:") ?></td>
+				<td class="LabelColumn"><?= gettext("Classification") ?>:</td>
 				<td width="<?= $iTableSpacerWidth ?>"></td>
 				<td class="TextColumnWithBottomBorder"><?= $sClassName ?>&nbsp;</td>
 			</tr>
@@ -288,7 +288,7 @@ if ($fam_ID)
 
 <?php if ($fam_ID) {  ?>
 
-<b><?= gettext("Family Members:") ?></b>
+<b><?= gettext("Family Members") ?>:</b>
 <table cellpadding=5 cellspacing=0 width="100%">
 	<tr class="TableHeader">
 		<td><?= gettext("Name") ?></td>
@@ -333,7 +333,7 @@ if ($fam_ID)
 }
 ?>
 <BR>
-<b><?= gettext("Assigned Groups:") ?></b>
+<b><?= gettext("Assigned Groups") ?>:</b>
 
 <?php
 
@@ -408,7 +408,7 @@ else
 }
 ?>
 <BR>
-<b><?= gettext("Assigned Properties:") ?></b>
+<b><?= gettext("Assigned Properties") ?>:</b>
 
 <?php
 

@@ -104,7 +104,7 @@ require 'Include/Header.php';
             </div>
             <div class="modal-body">
               <span style="color: red">
-                <?= gettext("Please confirm deletion of this group record:") ?>
+                <?= gettext("Please confirm deletion of this group record") ?>:
 
                 <p class="ShadedBox">
                   <?= $thisGroup->getName() ?>
@@ -135,7 +135,7 @@ require 'Include/Header.php';
               <h4 class="modal-title" id="upload-Image-label"><?= gettext("Change Member Role") ?></h4>
             </div>
             <div class="modal-body">
-              <span style="color: red"><?= gettext("Please select target role for member:") ?></span>
+              <span style="color: red"><?= gettext("Please select target role for member") ?>:</span>
               <input type="hidden" id="changingMemberID">
               <p class="ShadedBox" id="changingMemberName"></p>
               <select name="newRoleSelection" id="newRoleSelection">
@@ -160,7 +160,7 @@ require 'Include/Header.php';
             </div>
             <div class="modal-body">
               <input type="hidden" id="targetGroupAction">
-              <span style="color: red"><?= gettext("Please select target group for members:") ?></span>
+              <span style="color: red"><?= gettext("Please select target group for members") ?>:</span>
               <select name="targetGroupSelection" id="targetGroupSelection" style="width: 50%">
               </select>
             </div>
@@ -227,7 +227,7 @@ require 'Include/Header.php';
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <?php generateGroupRoleEmailDropdown($roleEmails, "mailto:") ?>
+            <?php generateGroupRoleEmailDropdown($roleEmails, "mailto") ?>:
           </ul>
         </div>
 

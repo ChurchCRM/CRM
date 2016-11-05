@@ -328,7 +328,7 @@ if ($bShowPersonSelect) {
     //Yes, so display the people drop-down
 ?>
     <tr>
-        <td><?= gettext('Person to Make User:') ?></td>
+        <td><?= gettext('Person to Make User') ?>:</td>
         <td>
             <select name="PersonID" size="12">
     <?php
@@ -345,7 +345,7 @@ if ($bShowPersonSelect) {
 <?php } else { // No, just display the user name ?>
     <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
     <tr>
-        <td><?= gettext('User:') ?></td>
+        <td><?= gettext('User') ?>:</td>
         <td><?= $sUser ?></td>
     </tr>
 <?php } ?>
@@ -358,59 +358,59 @@ if ($bShowPersonSelect) {
     </tr>
     <?php } ?>
     <tr>
-        <td><?= gettext('Login Name:') ?></td>
+        <td><?= gettext('Login Name') ?>:</td>
         <td><input type="text" name="UserName" value="<?= $sUserName ?>"></td>
     </tr>
 
     <tr>
-        <td><?= gettext('Add Records:') ?></td>
+        <td><?= gettext('Add Records') ?>:</td>
         <td><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) { echo " checked"; } ?>></td>
     </tr>
 
     <tr>
-        <td><?= gettext('Edit Records:') ?></td>
+        <td><?= gettext('Edit Records') ?>:</td>
         <td><input type="checkbox" name="EditRecords" value="1"<?php if ($usr_EditRecords) { echo " checked"; } ?>></td>
     </tr>
 
     <tr>
-        <td><?= gettext('Delete Records:') ?></td>
+        <td><?= gettext('Delete Records') ?>:</td>
         <td><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?= gettext('Manage Properties and Classifications:') ?></td>
+        <td><?= gettext('Manage Properties and Classifications') ?>:</td>
         <td><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?= gettext('Manage Groups and Roles:') ?></td>
+        <td><?= gettext('Manage Groups and Roles') ?>:</td>
         <td><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?= gettext('Manage Donations and Finance:') ?></td>
+        <td><?= gettext('Manage Donations and Finance') ?>:</td>
         <td><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?= gettext('View, Add and Edit Notes:') ?></td>
+        <td><?= gettext('View, Add and Edit Notes') ?>:</td>
         <td><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) { echo ' checked'; } ?>></td>
     </tr>
 
     <tr>
-        <td><?= gettext("Edit Self:") ?></td>
+        <td><?= gettext("Edit Self") ?>:</td>
         <td><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
     </tr>
     <tr>
-        <td><?= gettext('Canvasser:') ?></td>
+        <td><?= gettext('Canvasser') ?>:</td>
         <td><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?= gettext('(Canvass volunteer.)') ?></span></td>
     </tr>
     <tr>
-        <td><?= gettext('Admin:') ?></td>
+        <td><?= gettext('Admin') ?>:</td>
         <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) { echo ' checked'; } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
     </tr>
     <tr>
-        <td><?= gettext('Style:') ?></td>
+        <td><?= gettext('Style') ?>:</td>
         <td class="TextColumnWithBottomBorder"><select name="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
     </tr>
     <tr>

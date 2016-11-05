@@ -58,12 +58,12 @@ require "Include/Header.php";
 
 <script src="skin/js/GroupRoles.js"></script>
 
-<p align="center"><?= gettext("Select the group to add this person to:") ?></p>
+<p align="center"><?= gettext("Select the group to add this person to") ?>:</p>
 <form method="post" action="PersonToGroup.php?PersonID=<?= $iPersonID ?>">
   <input type="hidden" name="prevquery" value="<?= $sPreviousQuery ?>">
   <table align="center">
     <tr>
-      <td class="LabelColumn"><?= gettext("Select Group:") ?></td>
+      <td class="LabelColumn"><?= gettext("Select Group") ?>:</td>
       <td class="TextColumn">
         <?php
 // Create the group select drop-down
@@ -78,7 +78,7 @@ require "Include/Header.php";
       </td>
     </tr>
     <tr>
-      <td class="LabelColumn"><?= gettext("Select Role:") ?></td>
+      <td class="LabelColumn"><?= gettext("Select Role") ?>:</td>
       <td class="TextColumn"> 
         <select name="GroupRole" id="GroupRole">
           <option><?= gettext("No Group Selected") ?></option>

@@ -583,7 +583,7 @@ function CreatePaymentMethod()
 		<table cellpadding="1" align="center">
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Family:") ?></td>
+				<td class="LabelColumn"><?= gettext("Family") ?>:</td>
 				<td class="TextColumn">
 					<select name="Family" size="8">
 						<option value="0" selected><?= gettext("Unassigned") ?></option>
@@ -612,12 +612,12 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Date:") ?></td>
+                <td class="LabelColumn"><?= gettext("Date") ?>:</td>
 				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?= $dNextPayDate ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active date-picker"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Fiscal Year:") ?></td>
+				<td class="LabelColumn"><?= gettext("Fiscal Year") ?>:</td>
 				<td class="TextColumnWithBottomBorder">
 					<?php PrintFYIDSelect ($iFYID, "FYID") ?>
 				</td>
@@ -634,7 +634,7 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Fund:") ?></td>
+				<td class="LabelColumn"><?= gettext("Fund") ?>:</td>
 				<td class="TextColumn">
 					<select name="Fund">
 					<option value="0"><?= gettext("None") ?></option>
