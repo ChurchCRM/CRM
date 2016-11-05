@@ -26,13 +26,13 @@ if ($IntegrityCheckDetails->status == "failure")
       if(count($IntegrityCheckDetails->files) > 0 )
       {
         ?>
-        <p><?= gettext("Files failing integrity check:") ?>
+        <p><?= gettext("Files failing integrity check") ?>:
         <ul>
           <?php
           foreach ($IntegrityCheckDetails->files as $file)
           {
             ?>
-            <li>FileName: <?= $file->filename ?>
+            <li><?= gettext("Filename")?>: <?= $file->filename ?>
               <?php 
               if($file->status == "File Missing")
               {
@@ -46,8 +46,8 @@ if ($IntegrityCheckDetails->status == "failure")
               {
                 ?>
                 <ul>
-                 <li><?= gettext("Expected Hash:")?> <?= $file->expectedhash ?></li>
-                 <li><?= gettext("Actual Hash:") ?> <?= $file->actualhash ?></li>
+                 <li><?= gettext("Expected Hash")?>: <?= $file->expectedhash ?></li>
+                 <li><?= gettext("Actual Hash") ?>: <?= $file->actualhash ?></li>
                 </ul>
                 <?php
               }

@@ -43,6 +43,7 @@ require "Include/Header.php";
 	<form id="registerForm">
 	<div class="box-body">
     <?= gettext('Church Name') ?>: <?= $systemConfig->getValue("sChurchName"); ?><br>
+    <?= gettext('Version') ?>: <?= $systemService->getInstalledVersion(); ?><br>
     <?= gettext('Address') ?>: <?= $systemConfig->getValue("sChurchAddress"); ?><br>
     <?= gettext('City') ?>: <?= $systemConfig->getValue("sChurchCity"); ?><br>
     <?= gettext('State') ?>: <?= $systemConfig->getValue("sChurchState"); ?><br>
