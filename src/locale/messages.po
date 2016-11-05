@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-05 15:10+0000\n"
+"POT-Creation-Date: 2016-11-05 16:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -782,15 +782,15 @@ msgid ""
 "sEnableExternalBackupTarget setting."
 msgstr ""
 
-#: Service/SystemService.php:484
+#: Service/SystemService.php:485
 msgid "Signature definition file signature failed validation"
 msgstr ""
 
-#: Service/SystemService.php:489
+#: Service/SystemService.php:490
 msgid "Signature definition File Missing"
 msgstr ""
 
-#: Service/SystemService.php:494
+#: Service/SystemService.php:495
 msgid "One or more files failed signature validation"
 msgstr ""
 
@@ -1476,7 +1476,7 @@ msgstr ""
 msgid "Failed Logins"
 msgstr ""
 
-#: UserList.php:67 Login.php:305
+#: UserList.php:67 Login.php:309
 msgid "Password"
 msgstr ""
 
@@ -2475,7 +2475,7 @@ msgid " of the"
 msgstr ""
 
 #: Checkin.php:519
-msgid " family)"
+msgid "family"
 msgstr ""
 
 #: Checkin.php:522 PersonView.php:236
@@ -5313,27 +5313,27 @@ msgid ""
 "administrator."
 msgstr ""
 
-#: Login.php:276
+#: Login.php:280
 msgid "ChurchCRM - Login"
 msgstr ""
 
-#: Login.php:286
+#: Login.php:290
 msgid "Please Login"
 msgstr ""
 
-#: Login.php:290
+#: Login.php:294
 msgid "Your previous session timed out.  Please login again."
 msgstr ""
 
-#: Login.php:301
+#: Login.php:305
 msgid "Email/Username"
 msgstr ""
 
-#: Login.php:318
+#: Login.php:322
 msgid "Login"
 msgstr ""
 
-#: Login.php:331
+#: Login.php:335
 msgid "Register a new Family"
 msgstr ""
 
