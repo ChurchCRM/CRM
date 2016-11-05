@@ -316,6 +316,7 @@ class SystemService
     }
     // always rebuild the menu
     $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
+    $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
     return $upgradeSuccess;
   }
 
