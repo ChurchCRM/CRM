@@ -14,6 +14,7 @@ $app->group('/register', function () {
     $registrationData->sCountry = $systemConfig->getValue("sDefaultCountry");
     $registrationData->sEmail = $systemConfig->getValue("sChurchEmail");
     $registrationData->ChurchCRMURL = $input->ChurchCRMURL;
+    $registrationData->Version = $this->SystemService->getInstalledVersion();
 
     $registrationData->sComments = $input->emailmessage;
     $curlService = curl_init("http://demo.churchcrm.io/register.php");
