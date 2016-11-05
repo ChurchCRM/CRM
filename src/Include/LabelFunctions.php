@@ -43,7 +43,7 @@ function FontSelect($fieldname)
   sort($fontnames);
   
   echo "<tr>";
-  echo "<td class=\"LabelColumn\">" . gettext("Font:") . "</td>";
+  echo "<td class=\"LabelColumn\">" . gettext("Font") . ":</td>";
   echo "<td class=\"TextColumn\">";
   echo "<select name=\"$fieldname\">";
   foreach ($fontnames as $n) {
@@ -61,7 +61,7 @@ function FontSizeSelect($fieldname)
 {
   $sizes = array("default", 6, 7, 8, 9, 10, 11, 12, 14, 16, 18);
   echo "<tr>";
-  echo "<td class=\"LabelColumn\"> " . gettext("Font Size:") . "</td>";
+  echo "<td class=\"LabelColumn\"> " . gettext("Font Size") . ":</td>";
   echo "<td class=\"TextColumn\">";
   echo "<select name=\"$fieldname\">";
   foreach ($sizes as $s) {
@@ -79,7 +79,7 @@ function LabelSelect($fieldname)
 {
   $labels = array("Tractor", "5160", "5161", "5162", "5163", "5164", "8600", "L7163");
   echo "<tr>";
-  echo "<td class=\"LabelColumn\">" . gettext("Label Type:") . "</td>";
+  echo "<td class=\"LabelColumn\">" . gettext("Label Type") . ":</td>";
   echo "<td class=\"TextColumn\">";
   echo "<select name=\"$fieldname\">";
   foreach ($labels as $l) {
@@ -114,7 +114,7 @@ function LabelGroupSelect($fieldname)
 
 function ToParentsOfCheckBox($fieldname)
 {
-  echo "<tr><td class=\"LabelColumn\">" . gettext("To the parents of:") . "</td>";
+  echo "<tr><td class=\"LabelColumn\">" . gettext("To the parents of") . ":</td>";
   echo "<td class=\"TextColumn\">";
   echo "<input name=\"$fieldname\" type=\"checkbox\" ";
   echo "id=\"ToParent\" value=\"1\" ";
@@ -129,14 +129,14 @@ function StartRowStartColumn()
 {
   echo '
 	<tr>
-	<td class="LabelColumn">' . gettext("Start Row:") . '
+	<td class="LabelColumn">' . gettext("Start Row") . ':
 	</td>
 	<td class="TextColumn">
 	<input type="text" name="startrow" id="startrow" maxlength="2" size="3" value="1">
 	</td>
 	</tr>
 	<tr>
-	<td class="LabelColumn">' . gettext("Start Column:") . '
+	<td class="LabelColumn">' . gettext("Start Column") . ':
 	</td>
 	<td class="TextColumn">
 	<input type="text" name="startcol" id="startcol" maxlength="2" size="3" value="1">
@@ -148,7 +148,7 @@ function IgnoreIncompleteAddresses()
 {
   echo '
 	<tr>
-	<td class="LabelColumn">' . gettext("Ignore Incomplete<br>Addresses:") . '
+	<td class="LabelColumn">' . gettext("Ignore Incomplete<br>Addresses") . ':
 	</td>
 	<td class="TextColumn">
 	<input type="checkbox" name="onlyfull" id="onlyfull" value="1" checked>
@@ -160,7 +160,7 @@ function LabelFileType()
 {
   echo '
 	<tr>
-		<td class="LabelColumn">' . gettext("File Type:") . '
+		<td class="LabelColumn">' . gettext("File Type") . ':
 		</td>
 		<td class="TextColumn">
 			<select name="filetype">

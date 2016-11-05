@@ -135,7 +135,7 @@ require "Include/Header.php";
             <?php
             if ($thisGroup->getHasSpecialProps()) {
               echo gettext('Enabled'). "<br/>";
-              echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">Disable Group Specific Properties</button><br/>';
+              echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">' . gettext("Disable Group Specific Properties") . '</button><br/>';
               echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID=' . $iGroupID . '">' . gettext("Edit Group-Specific Properties Form") . ' </a>';
             }
             else {
