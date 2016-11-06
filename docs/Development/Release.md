@@ -78,9 +78,9 @@ https://github.com/ChurchCRM/CRM/releases
 
   After the tag has been created, update the change log.
 
-    ```
-    ./vendor/bin/phing demosite
-    ```
+  ```
+  ./vendor/bin/phing demosite
+  ```
 
   * Commit changes to CHANGELOG.md
   * Update git release so it points to the latest version in the change log
