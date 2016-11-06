@@ -4,28 +4,38 @@
 
   1.  Destroy any existing vagrant boxes
 
-    ```vagrant destroy -f```
+    ```
+    vagrant destroy -f
+    ```
 
   2.  Checkout the branch to be released
 
-    ```git checkout master```
+    ```
+    git checkout master
+    ```
 
   3.  Remove all extra files to ensure a clean build
 
-    ```git reset --hard
-      git clean -xdf```
+    ```
+    git reset --hard
+    git clean -xdf
+    ```
 
 ## 2. Build ChurchCRM
 
   1. Start the vagrant box to build all prerequisites
 
-    ```vagrant up```
+    ```
+    vagrant up
+    ```
 
   2. After the vagrant box is up, ssh into the box and run the build script
 
-    ```vagrant ssh
-      cd /vagrant
-      ./vendor/bin/phing```
+    ```
+    vagrant ssh
+    cd /vagrant
+    ./vendor/bin/phing
+    ```
 
     This will run the following actions:
       * Regenerate messages.po based on the latest files
@@ -38,7 +48,9 @@
     
   1. Update the demosite using 
 
-    ``` ./vendor/bin/phing demosite```
+    ```
+    ./vendor/bin/phing demosite
+    ```
     
     The Demosite push key will be required.  Feel free to kick the tires on the demo site at this point one last time.
 
@@ -66,7 +78,9 @@ https://github.com/ChurchCRM/CRM/releases
 
   After the tag has been created, update the change log.
 
-  ``` ./vendor/bin/phing demosite```
+    ```
+    ./vendor/bin/phing demosite
+    ```
 
   * Commit changes to CHANGELOG.md
   * Update git release so it points to the latest version in the change log
