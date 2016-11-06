@@ -29,5 +29,11 @@
   },
   "require-dev": {
     "phing/phing": "2.*"
+  },
+  "repositories": {
+      "packagist": { 
+        "url": "https://packagist.org", 
+        "type": "composer" 
+      }
   }
 }

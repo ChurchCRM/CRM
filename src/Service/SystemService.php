@@ -316,6 +316,7 @@ class SystemService
     }
     // always rebuild the menu
     $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
+    $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
     return $upgradeSuccess;
   }
 
@@ -374,7 +375,7 @@ class SystemService
         $diff = $previous->diff($now);  // calculate the difference.
         if (!$sLastBackupTimeStamp || $diff->h >= $sExternalBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
         {
-          $systemService->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+          $this->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
           $now = new \DateTime();  // update the LastBackupTimeStamp.
           $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastBackupTimeStamp'";
           $rsUpdate = RunQuery($sSQL);
