@@ -137,6 +137,7 @@ function Header_body_scripts() {
     };
 
     window.CRM.VerifyThenLoadAPIContent = function(url) {
+      var error = '<?=gettext("There was a problem retrieving the requested object") ?>';
       $.ajax({
         type: 'HEAD',
         url: url,
@@ -146,10 +147,10 @@ function Header_body_scripts() {
             window.open(url);
           },
           404: function() {
-            window.CRM.DisplayErrorMessage(url, "There was a problem retrieving the requested object");
+            window.CRM.DisplayErrorMessage(url, error);
           },
           500: function() {
-            window.CRM.DisplayErrorMessage(url, "There was a problem retrieving the requested object");
+            window.CRM.DisplayErrorMessage(url, error);
           }
         }
       });
