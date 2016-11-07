@@ -242,7 +242,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             </a>
 						</span></li>
           <?php if ($dBirthDate) { ?>
-            <li><i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?> <span><?= $dBirthDate ?></span> (<?php PrintAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags); ?>)</li>
+            <li><i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?> <span><?= $dBirthDate ?></span> (<span data-birthdate="<?= $person->getBirthDate() ?>"></span>)</li>
           <?php }
           if (!$bHideFriendDate && $per_FriendDate != "") { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate, false) ?></span></li>
@@ -771,7 +771,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     </div>
   </div>
 </div>
-<script language="javascript">
+<script>
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
     var answer = confirm("<?= gettext("Are you sure you want to remove this person from the Group") ?>");
@@ -794,6 +794,21 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
       location.reload();
     });
   }
+
+  (function($) {
+    $(document).on('ready', function() {
+      $('[data-birthdate]').each(function(idx, element) {
+        var $element = $(element);
+        var birthDate = moment($element.data('birthDate'), "MMM D, YYYY");
+        var now = moment();
+        var ageDisplay = now.diff(birthDate, 'years');
+        if(ageDisplay < 1) {
+          ageDisplay = now.diff(birthDate, 'months');
+        }
+        $element.text(ageDisplay);
+      });
+    });
+  })($);
 </script>
 
 
