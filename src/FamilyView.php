@@ -312,7 +312,7 @@ if ($iFamilyID == $fam_ID) {
                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                   </td>
                   <td>
-                    <?= $person->getBirthDate() ?>
+                    <?= $person->getBirthDate()->format('Y-m-d') ?>
                   </td>
                   <td>
                     <?php $tmpEmail = $person->getEmail();

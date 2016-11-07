@@ -110,9 +110,14 @@ $sCity = SelectWhichInfo($per_City, $fam_City, False);
 $sState = SelectWhichInfo($per_State, $fam_State, False);
 $sZip = SelectWhichInfo($per_Zip, $fam_Zip, False);
 $sCountry = SelectWhichInfo($per_Country, $fam_Country, False);
-$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone,$sCountry,$dummy), ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy), False);
-$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone,$sCountry,$dummy), ExpandPhoneNumber($fam_WorkPhone,$fam_Country,$dummy), False);
-$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone,$sCountry,$dummy), ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy), False);
+
+$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone,$sCountry,$dummy),
+  ExpandPhoneNumber($fam_HomePhone,$fam_Country,$dummy), False);
+$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone,$sCountry,$dummy),
+  ExpandPhoneNumber($fam_WorkPhone,$fam_Country,$dummy), False);
+$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone,$sCountry,$dummy),
+  ExpandPhoneNumber($fam_CellPhone,$fam_Country,$dummy), False);
+
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, False);
 
 // Set the page title and include HTML header
@@ -145,7 +150,7 @@ if ($fam_ID)
 {
 	//Get the family members for this family
 	$sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender,
-		per_BirthMonth, per_BirthDay, per_BirthYear, cls.lst_OptionName AS sClassName,
+		per_BirthMonth, per_BirthDay, per_BirthYear, per_Flags, cls.lst_OptionName AS sClassName,
 		fmr.lst_OptionName AS sFamRole
 		FROM person_per
 		LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
@@ -323,8 +328,8 @@ if ($fam_ID)
 			<td>
 				<?= $sFamRole ?>&nbsp;
 			</td>
-			<td>
-				<?php PrintAge($per_BirthMonth,$per_BirthDay,$per_BirthYear, $per_Flags); ?>
+			<td data-birthdate="<?= $per_Flags == 1 ? "" : date_create($per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay)->format("Y-m-d") ?>">
+
 			</td>
 		</tr>
 	<?php
@@ -472,3 +477,4 @@ if ($_SESSION['bNotes'])
 
 require "Include/Footer-Short.php";
 ?>
+<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>

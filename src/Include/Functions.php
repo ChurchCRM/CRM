@@ -811,24 +811,11 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
   }
 }
 
-
-//
-// Prints age in years, or in months if less than one year old
-//
-function PrintAge($Month, $Day, $Year, $Flags)
-{
-  echo FormatAge($Month, $Day, $Year, $Flags);
-}
-
-//
-// Formats an age string: age in years, or in months if less than one year old
-//
 function FormatAge($Month, $Day, $Year, $Flags)
 {
   if (($Flags & 1)) //||!$_SESSION['bSeePrivacyData']
   {
     return;
-
   }
 
   if ($Year > 0) {
@@ -856,6 +843,47 @@ function FormatAge($Month, $Day, $Year, $Flags)
       return (date("Y") - $Year . " " . gettext("yrs old"));
   } else
     return (gettext("Unknown"));
+}
+
+
+//
+// Prints age in years, or in months if less than one year old
+//
+function PrintAge($Month, $Day, $Year, $Flags)
+{
+  echo FormatAge($Month, $Day, $Year, $Flags);
+}
+
+//
+// Formats an age suffix: age in years, or in months if less than one year old
+//
+function FormatAgeSuffix($birthDate, $Flags)
+{
+  if (($Flags & 1)) //||!$_SESSION['bSeePrivacyData']
+  {
+    return "";
+  }
+
+  $ageSuffix = gettext("Unknown");
+
+  $now = new DateTime();
+  $age = $now->diff($birthDate);
+
+  if($age->y < 1) {
+    if($age->m > 1) {
+      $ageSuffix = gettext("mos old");
+    } else {
+      $ageSuffix = gettext("mo old");
+    }
+  } else {
+    if($age->y > 1) {
+      $ageSuffix = gettext("yrs old");
+    } else {
+      $ageSuffix = gettext("yr old");
+    }
+  }
+
+  return $ageSuffix;
 }
 
 // Returns a string of a person's full name, formatted as specified by $Style
