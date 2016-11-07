@@ -328,7 +328,7 @@ if ($fam_ID)
 			<td>
 				<?= $sFamRole ?>&nbsp;
 			</td>
-			<td data-birthdate="<?= $per_Flags == 1 ? "" : date_create($per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay)->format("Y-m-d") ?>">
+			<td data-birth-date="<?= $per_Flags == 1 ? "" : date_create($per_BirthYear . "-" . $per_BirthMonth . "-" . $per_BirthDay)->format("Y-m-d") ?>">
 
 			</td>
 		</tr>

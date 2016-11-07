@@ -252,7 +252,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               <i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?>
               <span><?= $dBirthDate ?></span>
               <?php if (!$person->hideAge()) { ?>
-              (<span data-birthdate="<?= $person->getBirthDate()->format("Y-m-d") ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
+              (<span data-birth-date="<?= $person->getBirthDate()->format("Y-m-d") ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
               <?php } ?>
             </li>
           <?php }

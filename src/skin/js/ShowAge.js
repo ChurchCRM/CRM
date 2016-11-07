@@ -1,8 +1,8 @@
 (function($) {
   $(document).on('ready', function() {
-    $('[data-birthdate]').each(function(idx, element) {
+    $('[data-birth-date]').each(function(idx, element) {
       var $element = $(element);
-      var birthDate = moment($element.data('birthdate'));
+      var birthDate = moment($element.data('birthDate'));
       var now = moment();
       var ageDisplay = now.diff(birthDate, 'years');
       if(ageDisplay < 1) {

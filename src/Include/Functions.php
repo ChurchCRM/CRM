@@ -845,13 +845,20 @@ function FormatAge($Month, $Day, $Year, $Flags)
     return (gettext("Unknown"));
 }
 
+function BirthDate($year, $month, $day, $hideAge) {
+  if (!is_null($day) && $day != "" &&
+    !is_null($month) && $month != ""
+  ) {
 
-//
-// Prints age in years, or in months if less than one year old
-//
-function PrintAge($Month, $Day, $Year, $Flags)
-{
-  echo FormatAge($Month, $Day, $Year, $Flags);
+    $birthYear = $year;
+    if ($hideAge) {
+      $birthYear = 1900;
+    }
+
+    return date_create($birthYear . "-" . $month . "-" . $day);
+  }
+
+  return date_create();
 }
 
 //

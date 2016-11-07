@@ -182,10 +182,10 @@ require "../Include/Header.php";
 
       foreach ($kidsWithoutClasses as $child) {
         extract($child);
-        $birthDate = "";
-        if ($birthYear != "") {
-          $birthDate = $birthDay . "/" . $birthMonth . "/" . $birthYear;
-        }
+
+        $hideAge = $flags == 1 || $birthYear == "" || $birthYear == "0";
+        $birthDate = FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+        $birthDateDate = BirthDate($birthYear, $birthMonth, $birthDay, $hideAge);
 
         echo "<tr>";
         echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
@@ -196,7 +196,7 @@ require "../Include/Header.php";
         echo "<td>" . $firstName . "</td>";
         echo "<td>" . $LastName . "</td>";
         echo "<td>" . $birthDate . "</td>";
-        echo "<td>" . FormatAge($birthMonth, $birthDay, $birthYear, "") . "</td>";
+        echo "<td data-birth-date='" . ($hideAge ? '' : $birthDateDate->format("Y-m-d")) . "'></td>";
         echo "<td>" . $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip . "</td>";
         echo "</tr>";
       }
@@ -243,7 +243,7 @@ require "../Include/Header.php";
           data: JSON.stringify({
             'groupName':groupName,
             'isSundaySchool':true
-          }) 
+          })
         }).done(function (data) {                               //yippie, we got something good back from the server
           window.location.href = window.CRM.root + "/sundayschool/SundaySchoolClassView.php?groupId="+ data.Id;
         });
@@ -254,5 +254,7 @@ require "../Include/Header.php";
     });
   });
 </script>
+<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
+
 <?php }
 require "../Include/Footer.php" ?>
