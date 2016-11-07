@@ -386,7 +386,7 @@ function FilterInput($sInput, $type = 'string', $size = 1)
         $sInput = mysql_real_escape_string($sInput);
         return $sInput;
       case 'htmltext':
-        $sInput = strip_tags(trim($sInput), '<a><b><i><u>');
+        $sInput = strip_tags(trim($sInput), '<a><b><i><u><h1><h2><h3><h4><h5><h6>');
         if (get_magic_quotes_gpc())
           $sInput = stripslashes($sInput);
         $sInput = mysql_real_escape_string($sInput);

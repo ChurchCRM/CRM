@@ -121,21 +121,21 @@ function Header_body_scripts() {
 
   checkAllowedURL();
   ?>
-  <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/IssueReporter.js" type="text/javascript"></script>
+  <script src="<?= $sRootPath ?>/skin/js/IssueReporter.js"></script>
 
-  <script language="javascript" type="text/javascript">
+  <script>
     window.CRM = {
       root: "<?= $sRootPath ?>",
       lang: "<?= $localeInfo->getLanguageCode() ?>"
     };
-    
+
     window.CRM.DisplayErrorMessage = function(endpoint, message) {
       $(".modal").modal('hide');
       $("#APIError").modal('show');
       $("#APIEndpoint").text(endpoint);
       $("#APIErrorText").text(message);
-    }
-    
+    };
+
     window.CRM.VerifyThenLoadAPIContent = function(url) {
       $.ajax({
         type: 'HEAD',
@@ -146,14 +146,14 @@ function Header_body_scripts() {
             window.open(url);
           },
           404: function() {
-            window.CRM.DisplayErrorMessage(url, "There was a problem retreiving the requested object");
+            window.CRM.DisplayErrorMessage(url, "There was a problem retrieving the requested object");
           },
           500: function() {
-            window.CRM.DisplayErrorMessage(url, "There was a problem retreiving the requested object");
+            window.CRM.DisplayErrorMessage(url, "There was a problem retrieving the requested object");
           }
         }
       });
-    }
+    };
 
     $(document).ajaxError(function(evt, xhr, settings) {
       var CRMResponse = JSON.parse(xhr.responseText);
@@ -167,11 +167,11 @@ function Header_body_scripts() {
     }
 
     function popUp(URL) {
-      day = new Date();
-      id = day.getTime();
+      var day = new Date();
+      var id = day.getTime();
       eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
     }
-    
+
   </script>
   <?php
 }
@@ -192,7 +192,11 @@ function GetSecuritySettings() {
   $aSecurityList[] = "bAddEvent";
   $aSecurityList[] = "bSeePrivacyData";
 
-  $sSQL = "SELECT DISTINCT ucfg_name FROM userconfig_ucfg WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY' ORDER by ucfg_id";
+  $sSQL = "SELECT DISTINCT ucfg_name 
+           FROM userconfig_ucfg 
+           WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY' 
+           ORDER by ucfg_id";
+
   $rsSecGrpList = RunQuery($sSQL);
 
   while ($aRow = mysql_fetch_array($rsSecGrpList)) {
@@ -214,7 +218,11 @@ function GetSecuritySettings() {
 function addMenu($menu) {
   global $security_matrix;
 
-  $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp, icon FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 " . $security_matrix . " ORDER BY sortorder";
+  $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, 
+                  session_var_in_uri, url_parm_name, security_grp, icon 
+           FROM menuconfig_mcf 
+           WHERE parent = '$menu' AND active=1 " . $security_matrix . " 
+           ORDER BY sortorder";
 
   $rsMenu = RunQuery($sSQL);
   $item_cnt = mysql_num_rows($rsMenu);
@@ -253,7 +261,11 @@ function addMenuItem($aMenu, $mIdx) {
     }
   }
   if ($aMenu['ismenu']) {
-    $sSQL = "SELECT name FROM menuconfig_mcf WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . " ORDER BY sortorder";
+    $sSQL = "SELECT name 
+             FROM menuconfig_mcf 
+             WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . " 
+             ORDER BY sortorder";
+
     $rsItemCnt = RunQuery($sSQL);
     $numItems = mysql_num_rows($rsItemCnt);
   }
@@ -550,7 +562,11 @@ function addMenuItem($aMenu, $mIdx) {
           $security_matrix .= " OR security_grp = 'bManageGroups'";
         }
         $security_matrix .= ")";
-        $query = "SELECT name, ismenu, content, uri, statustext, session_var, session_var_in_text, session_var_in_uri, url_parm_name, security_grp FROM menuconfig_mcf WHERE parent = '$menu' AND active=1 " . $security_matrix . " ORDER BY sortorder";
+        $query = "SELECT name, ismenu, content, uri, statustext, session_var, session_var_in_text, 
+                         session_var_in_uri, url_parm_name, security_grp 
+                  FROM menuconfig_mcf 
+                  WHERE parent = '$menu' AND active=1 " . $security_matrix . " 
+                  ORDER BY sortorder";
 
         $rsMenu = mysql_query($query, $cnInfoCentral);
         $item_cnt = mysql_num_rows($rsMenu);
