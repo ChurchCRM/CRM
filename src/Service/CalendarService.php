@@ -50,10 +50,6 @@ class CalendarService
         $year = $year + 1;
       }
       $start = $year . "-" . $anniversary->getWeddingMonth() . "-" . $anniversary->getWeddingDay();
-      error_log("--------------------");
-      error_log($anniversary->getName());
-      error_log($anniversary->getWeddingDay());
-      error_log($anniversary->getWeddingMonth());
 
       $event = $this->createCalendarItem("anniversary", $anniversary->getName(), $start, "", $anniversary->getViewURI());
 
