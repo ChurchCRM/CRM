@@ -47,12 +47,12 @@ else
 $iEventID = 0;
 $iErrors = 0;
 
-if (!$sAction) { $sAction = gettext('Create Event'); }
+if (!$sAction) { $sAction = 'Create Event'; }
 
 //
 // process the action inputs
 //
-if ($sAction==gettext('Create Event') && !empty($tyid)){
+if ($sAction=='Create Event' && !empty($tyid)){
 //
 // user is coming from the event types screen and thus there
 // is no existing event in the event_event table
@@ -233,7 +233,7 @@ if ($sAction==gettext('Create Event') && !empty($tyid)){
   $iEventStatus=0;
   $iTypeID = $type_id;
 }
-else if ($sAction = gettext('Edit') && !empty($sOpp))
+else if ($sAction = 'Edit' && !empty($sOpp))
 {
         // Get data for the form as it now exists..
         $EventExists = 1;
