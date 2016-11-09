@@ -337,6 +337,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext("Assigned Groups") ?></a></li>
         <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
         <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext("Volunteer Opportunities") ?></a></li>
+        <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -736,6 +737,57 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               <?php } ?>
             </div>
           </div>
+        </div>
+        <div role="tab-pane fade" class="tab-pane" id="notes">
+          <ul class="timeline">
+            <!-- note time label -->
+            <li class="time-label">
+              <span class="bg-yellow">
+                <?php echo date_create()->format("Y-m-d") ?>
+              </span>
+            </li>
+            <!-- /.note-label -->
+
+            <!-- note item -->
+            <?php foreach ($timelineService->getNotesForPerson($iPersonID) as $item) { ?>
+              <li>
+                <!-- timeline icon -->
+                <i class="fa <?= $item['style'] ?>"></i>
+
+                <div class="timeline-item">
+                  <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+
+                  <h3 class="timeline-header">
+                    <?php if (in_array('headerlink', $item)) { ?>
+                      <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                    <?php } else { ?>
+                      <?= $item['header'] ?>
+                    <?php } ?>
+                  </h3>
+
+                  <div class="timeline-body">
+                    <?= $item['text'] ?>
+                  </div>
+
+                  <?php if (($_SESSION['bNotes']) && ($item["editLink"] != "" || $item["deleteLink"] != "")) { ?>
+                    <div class="timeline-footer">
+                      <?php if ($item["editLink"] != "") { ?>
+                        <a href="<?= $item["editLink"] ?>">
+                          <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                        </a>
+                      <?php }
+                      if ($item["deleteLink"] != "") { ?>
+                        <a href="<?= $item["deleteLink"] ?>">
+                          <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </a>
+                      <?php } ?>
+                    </div>
+                  <?php } ?>
+                </div>
+              </li>
+            <?php } ?>
+            <!-- END timeline item -->
+          </ul>
         </div>
       </div>
     </div>

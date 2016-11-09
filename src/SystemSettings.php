@@ -59,7 +59,7 @@ while ($aRow = mysql_fetch_array($rsConfigs)) {
   $iRowCount++;
   extract($aRow);
   if ($cfg_name == "sHeader") {
-    $iHTMLHeaderRow = $iRowCount;
+    $iHTMLHeaderRow = intval($cfg_id);
   }
 }
 
@@ -73,7 +73,7 @@ if (isset ($_POST['save'])) {
     $id = key($type);
     // Filter Input
     if ($id == $iHTMLHeaderRow)  // Special handling of header value so HTML doesn't get removed
-      $value = html_entity_decode($new_value[$id]);
+      $value = FilterInput($new_value[$id], "htmltext");
     elseif ($current_type == 'text' || $current_type == "textarea")
       $value = FilterInput($new_value[$id]);
     elseif ($current_type == 'number')
