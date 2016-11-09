@@ -312,7 +312,8 @@ if ($iFamilyID == $fam_ID) {
                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                   </td>
                   <td>
-                    <?= $person->getBirthDate()->format('Y-m-d') ?>
+                    <?= FormatBirthDate($person->getBirthYear(),
+                      $person->getBirthMonth(), $person->getBirthDay(), "-", $person->getFlags()) ?>
                   </td>
                   <td>
                     <?php $tmpEmail = $person->getEmail();

@@ -866,7 +866,7 @@ function BirthDate($year, $month, $day, $hideAge) {
 //
 function FormatAgeSuffix($birthDate, $Flags)
 {
-  if (($Flags & 1)) //||!$_SESSION['bSeePrivacyData']
+  if ($Flags == 1)
   {
     return "";
   }
