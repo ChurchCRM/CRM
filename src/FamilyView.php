@@ -626,8 +626,14 @@ if ($iFamilyID == $fam_ID) {
                   <input type="checkbox" name="ShowPayments"
                          value="1" <?php if ($_SESSION['sshowPayments']) echo " checked"; ?>><?= gettext("Show Payments") ?>
                   <?= gettext(" Since:") ?>
+                  <?php
+                        $showSince = "";
+                        if ($_SESSION['sshowSince'] != null) {
+                          $showSince = $_SESSION['sshowSince']->format('Y-m-d');
+                        }
+                  ?>
                   <input type="text" class="date-picker" Name="ShowSinceDate"
-                         value="<?= $_SESSION['sshowSince']->format('Y-m-d') ?>" maxlength="10" id="ShowSinceDate" size="15">
+                         value="<?= $showSince ?>" maxlength="10" id="ShowSinceDate" size="15">
                   <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable"
                          style="font-size: 8pt;">
                 </form>
