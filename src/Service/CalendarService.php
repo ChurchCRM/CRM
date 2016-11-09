@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\EventQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\FamilyQuery;
 
 class CalendarService
 {
@@ -12,8 +13,9 @@ class CalendarService
   function getEventTypes()
   {
     $eventTypes = array();
-    array_push($eventTypes, array("Name" => "Event", "backgroundColor" =>"#f39c12" ));
-    array_push($eventTypes, array("Name" => "Birthday", "backgroundColor" =>"#f56954" ));
+    array_push($eventTypes, array("Name" => gettext("Event"), "backgroundColor" =>"#f39c12" ));
+    array_push($eventTypes, array("Name" => gettext("Birthday"), "backgroundColor" =>"#f56954" ));
+    array_push($eventTypes, array("Name" => gettext("Anniversary"), "backgroundColor" =>"#0000ff" ));
     return $eventTypes;
   }
 
@@ -64,6 +66,22 @@ class CalendarService
       array_push($events, $event);
     }
 
+    $Anniversaries = FamilyQuery::create()
+      ->filterByWeddingDate(array('min' => '0001-00-00')) // a Wedding Date
+      ->find();
+
+    foreach ($Anniversaries as $anniversary) {
+      $year = $curYear;
+      if ($anniversary->getWeddingMonth() < $curMonth) {
+        $year = $year + 1;
+      }
+      $start = $year . "-" . $anniversary->getWeddingMonth() . "-" . $anniversary->getWeddingDay();
+
+      $event = $this->createCalendarItem("anniversary", $anniversary->getName(), $start, "", $anniversary->getViewURI());
+
+      array_push($events, $event);
+    }
+
     $activeEvents = EventQuery::create()
       ->filterByInActive("false")
       ->orderByStart()
@@ -87,6 +105,9 @@ class CalendarService
         break;
       case "event":
         $event["backgroundColor"] = '#f39c12';
+        break;
+      case "anniversary":
+        $event["backgroundColor"] = '#0000ff';
         break;
       default:
         $event["backgroundColor"] = '#eeeeee';
