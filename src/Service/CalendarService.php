@@ -12,9 +12,9 @@ class CalendarService
   function getEventTypes()
   {
     $eventTypes = array();
-    array_push($eventTypes, array("Name" => "Event", "backgroundColor" =>"#f39c12" ));
-    array_push($eventTypes, array("Name" => "Birthday", "backgroundColor" =>"#f56954" ));
-    array_push($eventTypes, array("Name" => "Anniversary", "backgroundColor" =>"#0000ff" ));
+    array_push($eventTypes, array("Name" => gettext("Event"), "backgroundColor" =>"#f39c12" ));
+    array_push($eventTypes, array("Name" => gettext("Birthday"), "backgroundColor" =>"#f56954" ));
+    array_push($eventTypes, array("Name" => gettext("Anniversary"), "backgroundColor" =>"#0000ff" ));
     return $eventTypes;
   }
 
