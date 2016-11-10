@@ -151,12 +151,18 @@ $sCountry = SelectWhichInfo($per_Country, $fam_Country, True);
 $formattedMailingAddress = getMailingAddress($Address1, $Address2, $sCity, $sState, $sZip, $sCountry);
 
 $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, False);
-$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), True);
-$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
-$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), True);
-$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
-$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), True);
-$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
+$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), True);
+$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
+$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), True);
+$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
+$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), True);
+$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
 $sEmail = SelectWhichInfo($per_Email, $fam_Email, True);
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, False);
 
@@ -242,7 +248,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             </a>
 						</span></li>
           <?php if ($dBirthDate) { ?>
-            <li><i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?> <span><?= $dBirthDate ?></span> (<?php PrintAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags); ?>)</li>
+            <li>
+              <i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?>
+              <span><?= $dBirthDate ?></span>
+              <?php if (!$person->hideAge()) { ?>
+              (<span data-birth-date="<?= $person->getBirthDate()->format("Y-m-d") ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
+              <?php } ?>
+            </li>
           <?php }
           if (!$bHideFriendDate && $per_FriendDate != "") { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate, false) ?></span></li>
@@ -407,7 +419,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                   <?= $familyMember->getFamilyRoleName() ?>
                 </td>
                 <td>
-                  <?= $familyMember->getBirthDate() ?>
+                  <?= FormatBirthDate($familyMember->getBirthYear(), $familyMember->getBirthMonth(), $familyMember->getBirthDay(), "-", $familyMember->getFlags()); ?>
                 </td>
                 <td>
                   <?php $tmpEmail = $familyMember->getEmail();
@@ -823,7 +835,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     </div>
   </div>
 </div>
-<script language="javascript">
+<script>
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
     var answer = confirm("<?= gettext("Are you sure you want to remove this person from the Group") ?>");
@@ -847,7 +859,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     });
   }
 </script>
-
+<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 
 <?php } else { ?>
   <div class="error-page">

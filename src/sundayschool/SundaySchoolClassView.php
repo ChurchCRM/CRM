@@ -206,14 +206,14 @@ require "../Include/Header.php";
       <?php
 
       foreach ($thisClassChildren as $child) {
-        $birthDate = "";
-        if ($child['birthYear'] != "") {
-          $birthDate = $child['birthMonth'] . "/" . $child['birthDay'] . "/" . $child['birthYear'];
-        }
+        $hideAge = $child['flags'] == 1 || $child['birthYear'] == "" || $child['birthYear'] == "0";
+        $birthDate = FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']);
+        $birthDateDate = BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge);
+
         echo "<tr>";
         echo "<td><img src='" . $sRootPath."/api/persons/". $child['kidId']. "/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=" . $child['kidId'] . "'>" . $child['firstName'] . ", " . $child['LastName'] . "</a></td>";
         echo "<td>" . $birthDate . "</td>";
-        echo "<td>" . FormatAge($child['birthMonth'], $child['birthDay'], $child['birthYear'], "") . "</td>";
+        echo "<td data-birth-date='" . ($hideAge ? '' : $birthDateDate->format("Y-m-d")) . "'></td>";
         echo "<td>" . $child['kidEmail'] . "</td>";
         echo "<td>" . $child['mobilePhone'] . "</td>";
         echo "<td>" . $child['homePhone'] . "</td>";
@@ -410,8 +410,7 @@ function implodeUnique($array, $withQuotes)
   }
 
 </script>
-
-
+<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 <?php
 require "../Include/Footer.php";
 ?>
