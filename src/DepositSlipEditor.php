@@ -129,7 +129,7 @@ require "Include/Header.php";
           <?php
           foreach ($thisDeposit->getFundTotals() as $fund)
           {
-            echo "<li><b>". $fund->Name . "</b>: $" . $fund->Total."</li>";
+            echo "<li><b>". $fund['Name'] . "</b>: $" . $fund['Total'] ."</li>";
           }
           ?>
         </div>
@@ -204,8 +204,8 @@ require "Include/Header.php";
     $fund = new StdClass();
     $fund->color = "#".random_color() ;
     $fund->highlight= "#".random_color() ;
-    $fund->label = $tmpfund->Name;
-    $fund->value = $tmpfund->Total;
+    $fund->label = $tmpfund['Name'];
+    $fund->value = $tmpfund['Total'];
     array_push($fundData,$fund);
   }
   $pledgeTypeData = array();
