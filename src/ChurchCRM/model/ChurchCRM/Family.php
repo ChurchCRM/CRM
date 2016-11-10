@@ -17,6 +17,13 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Family extends BaseFamily
 {
+  protected $baseURL;
+
+  public function applyDefaultValues()
+  {
+    parent::applyDefaultValues();
+    $this->baseURL = $_SESSION['sRootPath'];
+  }
 
   function getAddress()
   {
@@ -46,6 +53,29 @@ class Family extends BaseFamily
     }
 
     return implode(" ", $address);
+  }
+  
+  function getViewURI()
+  {
+    return $this->baseURL . "/FamilyView.php?FamilyID=" . $this->getId();
+  } 
+
+  function getWeddingDay()
+  {
+    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "" && $this->getWeddingdate() != "0000-00-00" ) {
+      $day =  $this->getWeddingdate()->format('d');
+      return $day;
+    }
+    return "";
+  }
+
+  function getWeddingMonth()
+  {
+    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "" && $this->getWeddingdate() != "0000-00-00" ) {
+      $month = $this->getWeddingdate()->format('m');
+      return $month;
+    }
+    return "";
   }
 
   public function postInsert(ConnectionInterface $con = null)

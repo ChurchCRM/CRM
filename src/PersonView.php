@@ -151,12 +151,18 @@ $sCountry = SelectWhichInfo($per_Country, $fam_Country, True);
 $formattedMailingAddress = getMailingAddress($Address1, $Address2, $sCity, $sState, $sZip, $sCountry);
 
 $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, False);
-$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), True);
-$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
-$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), True);
-$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
-$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), True);
-$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
+$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), True);
+$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
+$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), True);
+$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
+$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), True);
+$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+  ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
 $sEmail = SelectWhichInfo($per_Email, $fam_Email, True);
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, False);
 
@@ -242,7 +248,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             </a>
 						</span></li>
           <?php if ($dBirthDate) { ?>
-            <li><i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?> <span><?= $dBirthDate ?></span> (<?php PrintAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags); ?>)</li>
+            <li>
+              <i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?>
+              <span><?= $dBirthDate ?></span>
+              <?php if (!$person->hideAge()) { ?>
+              (<span data-birth-date="<?= $person->getBirthDate()->format("Y-m-d") ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
+              <?php } ?>
+            </li>
           <?php }
           if (!$bHideFriendDate && $per_FriendDate != "") { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate, false) ?></span></li>
@@ -325,6 +337,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext("Assigned Groups") ?></a></li>
         <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
         <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext("Volunteer Opportunities") ?></a></li>
+        <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext("Notes") ?></a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -406,7 +419,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                   <?= $familyMember->getFamilyRoleName() ?>
                 </td>
                 <td>
-                  <?= $familyMember->getBirthDate() ?>
+                  <?= FormatBirthDate($familyMember->getBirthYear(), $familyMember->getBirthMonth(), $familyMember->getBirthDay(), "-", $familyMember->getFlags()); ?>
                 </td>
                 <td>
                   <?php $tmpEmail = $familyMember->getEmail();
@@ -725,6 +738,57 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             </div>
           </div>
         </div>
+        <div role="tab-pane fade" class="tab-pane" id="notes">
+          <ul class="timeline">
+            <!-- note time label -->
+            <li class="time-label">
+              <span class="bg-yellow">
+                <?php echo date_create()->format("Y-m-d") ?>
+              </span>
+            </li>
+            <!-- /.note-label -->
+
+            <!-- note item -->
+            <?php foreach ($timelineService->getNotesForPerson($iPersonID) as $item) { ?>
+              <li>
+                <!-- timeline icon -->
+                <i class="fa <?= $item['style'] ?>"></i>
+
+                <div class="timeline-item">
+                  <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+
+                  <h3 class="timeline-header">
+                    <?php if (in_array('headerlink', $item)) { ?>
+                      <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                    <?php } else { ?>
+                      <?= $item['header'] ?>
+                    <?php } ?>
+                  </h3>
+
+                  <div class="timeline-body">
+                    <?= $item['text'] ?>
+                  </div>
+
+                  <?php if (($_SESSION['bNotes']) && ($item["editLink"] != "" || $item["deleteLink"] != "")) { ?>
+                    <div class="timeline-footer">
+                      <?php if ($item["editLink"] != "") { ?>
+                        <a href="<?= $item["editLink"] ?>">
+                          <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                        </a>
+                      <?php }
+                      if ($item["deleteLink"] != "") { ?>
+                        <a href="<?= $item["deleteLink"] ?>">
+                          <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </a>
+                      <?php } ?>
+                    </div>
+                  <?php } ?>
+                </div>
+              </li>
+            <?php } ?>
+            <!-- END timeline item -->
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -771,7 +835,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     </div>
   </div>
 </div>
-<script language="javascript">
+<script>
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
     var answer = confirm("<?= gettext("Are you sure you want to remove this person from the Group") ?>");
@@ -795,7 +859,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     });
   }
 </script>
-
+<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 
 <?php } else { ?>
   <div class="error-page">
