@@ -79,7 +79,7 @@ https://github.com/ChurchCRM/CRM/releases
   After the tag has been created, update the change log.
 
   ```
-  ./vendor/bin/phing demosite
+  ./vendor/bin/phing change-log
   ```
 
   * Commit changes to CHANGELOG.md
