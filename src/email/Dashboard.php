@@ -77,11 +77,11 @@ require '../Include/Header.php';
     <div class="col-lg-4 col-md-2 col-sm-2">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">><?= gettext("MailChimp") ?></h3>
+          <h3 class="box-title">MailChimp</h3>
         </div>
         <div class="box-body">
           <ul>
-            <li><a href="MailChimpMissingReport.php">><?= gettext("Missing emails report") ?> </a> (slow)</li>
+            <li><a href="MailChimpMissingReport.php"><?= gettext("Missing emails report") ?> </a> (slow)</li>
           </ul>
         </div>
       </div>

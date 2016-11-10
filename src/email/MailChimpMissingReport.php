@@ -52,7 +52,7 @@ $rsPeopleWithEmail = RunQuery($sSQL);
             if ($mailchimpList == "") { ?>
               <tr>
                 <td><img class="contacts-list-img" src="<?=$sRootPath?>/api/persons/<?= $per_id ?>/photo"></td>
-                <td><a href=' "<?=$sRootPath?>/PersonView.php?PersonID="<?= $per_id ?>'><?= $per_FirstName . " " . $per_LastName ?></a></td>
+                <td><a href='<?=$sRootPath?>/PersonView.php?PersonID=<?= $per_id ?>'><?= $per_FirstName . " " . $per_LastName ?></a></td>
                 <td><?= $per_Email ?></td>
               </tr>
             <?php }
