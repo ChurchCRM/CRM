@@ -890,7 +890,7 @@ require "Include/Header.php";
                     <label for="WorkPhone">
                         <?php
                         if ($bFamilyWorkPhone)
-                            echo "<span style=\"color: red;\">" . gettext("Work Phone:") . "</span>";
+                            echo "<span style=\"color: red;\">" . gettext("Work Phone") . ":</span>";
                         else
                             echo gettext("Work Phone").":";
                         ?>
@@ -912,7 +912,7 @@ require "Include/Header.php";
                     <label for="CellPhone">
                         <?php
                         if ($bFamilyCellPhone)
-                            echo "<span style=\"color: red;\">" . gettext("Mobile Phone:") . "</span>";
+                            echo "<span style=\"color: red;\">" . gettext("Mobile Phone") . ":</span>";
                         else
                             echo gettext("Mobile Phone").":";
                         ?>
