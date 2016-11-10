@@ -702,9 +702,9 @@ require "Include/Header.php";
 						<label for="StatleTextBox">
 						<?php
 						if($sCountry == "Canada") {
-							echo gettext("Province:");
+							echo gettext("Province").":";
 						}else{
-							echo gettext("State:");
+							echo gettext("State").":";
 						} ?>
 						</label>
 						<?php require "Include/StateDropDown.php"; ?>

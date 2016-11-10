@@ -799,7 +799,7 @@ require "Include/Header.php";
                             <?php if ($bFamilyState)
                                 echo "<span style=\"color: red;\">";
 
-                            echo gettext("State:");
+                            echo gettext("State").":";
 
                             if ($bFamilyState)
                                 echo "</span>";
