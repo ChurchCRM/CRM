@@ -935,7 +935,7 @@ require "Include/Header.php";
                     <label for="Email">
                         <?php
                         if ($bFamilyEmail)
-                            echo "<span style=\"color: red;\">" . gettext("Email:") . "</span></td>";
+                            echo "<span style=\"color: red;\">" . gettext("Email") . ":</span></td>";
                         else
                             echo gettext("Email") . ":</td>";
                         ?>
