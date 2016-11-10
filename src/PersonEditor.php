@@ -870,7 +870,7 @@ require "Include/Header.php";
                     <label for="HomePhone">
                         <?php
                         if ($bFamilyHomePhone)
-                            echo "<span style=\"color: red;\">" . gettext("Home Phone:") . "</span>";
+                            echo "<span style=\"color: red;\">" . gettext("Home Phone") . ":</span>";
                         else
                             echo gettext("Home Phone").":";
                         ?>
