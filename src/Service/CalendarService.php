@@ -58,11 +58,11 @@ class CalendarService
         $year = $firstYear + 1;
       }
 
-      $start = date_create($year . '-' .
-        $person->getBirthMonth() . '-' . $person->getBirthDay());
+      $start = date_create($year . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
 
       $event = $this->createCalendarItem("birthday",
         $person->getFullName(), $start->format(DATE_ATOM), "", $person->getViewURI());
+
       array_push($events, $event);
     }
 
