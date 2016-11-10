@@ -89,7 +89,7 @@ require "Include/Header.php";
             <input type="checkbox" name="Title" value="1">
           </div>
 
-          <div class="col-md-4"> 
+          <div class="col-md-4">
             <label><?= gettext("First Name:") ?></label>
             <input type="checkbox" name="FirstName" value="1" checked>
           </div>
@@ -105,82 +105,82 @@ require "Include/Header.php";
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Address1:") ?></label>
+            <label><?= gettext("Address1") ?>:</label>
             <input type="checkbox" name="Address1" value="1" checked>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Address2:") ?></label>
+            <label><?= gettext("Address2") ?>:</label>
             <input type="checkbox" name="Address2" value="1" checked>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("City:") ?></label>
+            <label><?= gettext("City") ?>:</label>
             <input type="checkbox" name="City" value="1" checked>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("State:") ?></label>
+            <label><?= gettext("State") ?>:</label>
             <input type="checkbox" name="State" value="1" checked>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Zip:") ?></label>
+            <label><?= gettext("Zip") ?>:</label>
             <input type="checkbox" name="Zip" value="1" checked>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Envelope:") ?></label>
+            <label><?= gettext("Envelope") ?>:</label>
             <input type="checkbox" name="Envelope" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Country:") ?></label>
+            <label><?= gettext("Country") ?>:</label>
             <input type="checkbox" name="Country" value="1" checked>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Home Phone:") ?></label>
+            <label><?= gettext("Home Phone") ?>:</label>
             <input type="checkbox" name="HomePhone" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Work Phone:") ?></label>
+            <label><?= gettext("Work Phone") ?>:</label>
             <input type="checkbox" name="WorkPhone" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Mobile Phone:") ?></label>
+            <label><?= gettext("Mobile Phone") ?>:</label>
             <input type="checkbox" name="CellPhone" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Email:") ?></label>
+            <label><?= gettext("Email") ?>:</label>
             <input type="checkbox" name="Email" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Work/Other Email:") ?></label>
+            <label><?= gettext("Work/Other Email") ?>:</label>
             <input type="checkbox" name="WorkEmail" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Membership Date:") ?></label>
+            <label><?= gettext("Membership Date") ?>:</label>
             <input type="checkbox" name="MembershipDate" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("* Birth / Anniversary Date:") ?></label>
+            <label><?= gettext("* Birth / Anniversary Date") ?>:</label>
             <input type="checkbox" name="BirthdayDate" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("* Age / Years Married:") ?></label>
+            <label><?= gettext("* Age / Years Married") ?>:</label>
             <input type="checkbox" name="Age" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Family Role:") ?></label>
+            <label><?= gettext("Family Role") ?>:</label>
             <input type="checkbox" name="PrintFamilyRole" value="1">
           </div>
           <?= gettext("* Depends whether using person or family output method") ?>
@@ -248,7 +248,7 @@ require "Include/Header.php";
             </table>
           </div>
         </div>
-      </div>                  
+      </div>
     </div>
   <?php } ?>
 

@@ -750,7 +750,7 @@ require "Include/Header.php";
                                 <?php if ($bFamilyAddress1)
                                     echo "<span style=\"color: red;\">";
 
-                                echo gettext("Address1:");
+                                echo gettext("Address1").":";
 
                                 if ($bFamilyAddress1)
                                     echo "</span>";
@@ -765,7 +765,7 @@ require "Include/Header.php";
                                 <?php if ($bFamilyAddress2)
                                     echo "<span style=\"color: red;\">";
 
-                                echo gettext("Address2:");
+                                echo gettext("Address2").":";
 
                                 if ($bFamilyAddress2)
                                     echo "</span>";
@@ -780,7 +780,7 @@ require "Include/Header.php";
                                 <?php if ($bFamilyCity)
                                     echo "<span style=\"color: red;\">";
 
-                                echo gettext("City:");
+                                echo gettext("City").":";
 
                                 if ($bFamilyCity)
                                     echo "</span>";
@@ -819,7 +819,7 @@ require "Include/Header.php";
                             <?php if ($bFamilyZip)
                                 echo "<span style=\"color: red;\">";
 
-                            echo gettext("Zip:");
+                            echo gettext("Zip").":";
 
                             if ($bFamilyZip)
                                 echo "</span>";
@@ -839,7 +839,7 @@ require "Include/Header.php";
                             <?php if ($bFamilyCountry)
                                 echo "<span style=\"color: red;\">";
 
-                            echo gettext("Country:");
+                            echo gettext("Country").":";
 
                             if ($bFamilyCountry)
                                 echo "</span>";
@@ -872,7 +872,7 @@ require "Include/Header.php";
                         if ($bFamilyHomePhone)
                             echo "<span style=\"color: red;\">" . gettext("Home Phone:") . "</span>";
                         else
-                            echo gettext("Home Phone:");
+                            echo gettext("Home Phone").":";
                         ?>
                     </label>
                     <div class="input-group">
@@ -892,7 +892,7 @@ require "Include/Header.php";
                         if ($bFamilyWorkPhone)
                             echo "<span style=\"color: red;\">" . gettext("Work Phone:") . "</span>";
                         else
-                            echo gettext("Work Phone:");
+                            echo gettext("Work Phone").":";
                         ?>
                     </label>
                     <div class="input-group">
@@ -914,7 +914,7 @@ require "Include/Header.php";
                         if ($bFamilyCellPhone)
                             echo "<span style=\"color: red;\">" . gettext("Mobile Phone:") . "</span>";
                         else
-                            echo gettext("Mobile Phone:");
+                            echo gettext("Mobile Phone").":";
                         ?>
                     </label>
                     <div class="input-group">
@@ -937,7 +937,7 @@ require "Include/Header.php";
                         if ($bFamilyEmail)
                             echo "<span style=\"color: red;\">" . gettext("Email:") . "</span></td>";
                         else
-                            echo gettext("Email:") . "</td>";
+                            echo gettext("Email") . ":</td>";
                         ?>
                     </label>
                     <div class="input-group">
@@ -951,7 +951,7 @@ require "Include/Header.php";
                     </div>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="WorkEmail"><?= gettext("Work / Other Email:") ?></label>
+                    <label for="WorkEmail"><?= gettext("Work / Other Email") ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class="fa fa-envelope"></i>
@@ -977,7 +977,7 @@ require "Include/Header.php";
             <div class="row">
                 <?php if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
                     <div class="form-group col-md-4">
-                        <label><?= gettext("Friend Date:") ?></label>
+                        <label><?= gettext("Friend Date") ?>:</label>
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
@@ -991,7 +991,7 @@ require "Include/Header.php";
                     </div>
                 <?php } ?>
                 <div class="form-group col-md-4">
-                    <label><?= gettext("Membership Date:") ?></label>
+                    <label><?= gettext("Membership Date") ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
@@ -1005,7 +1005,7 @@ require "Include/Header.php";
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label><?= gettext("Classification:") ?></label>
+                <label><?= gettext("Classification") ?>:</label>
                 <select name="Classification" class="form-control">
                     <option value="0"><?= gettext("Unassigned") ?></option>
                     <option value="0" disabled>-----------------------</option>
