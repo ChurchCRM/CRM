@@ -76,7 +76,7 @@ require "Include/Header.php";
         <form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
           <div class="row">
             <div class="col-lg-4">
-              <label for="Date"><?php echo gettext("Date:"); ?></label>
+              <label for="Date"><?= gettext("Date"); ?>:</label>
               <input type="text" class="form-control date-picker" name="Date" value="<?php echo $thisDeposit->getDate('Y-m-d'); ?>" id="DepositDate" >
             </div>
             <div class="col-lg-4">
