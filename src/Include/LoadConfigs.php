@@ -69,6 +69,8 @@ if (!function_exists('mysql_connect')) {
 $cnInfoCentral = mysql_connect($sSERVERNAME, $sUSER, $sPASSWORD)
 or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
 
+mysql_set_charset("utf8mb4", $cnInfoCentral);
+
 mysql_select_db($sDATABASE)
 or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
 
@@ -97,7 +99,7 @@ $manager->setConfiguration(array(
   'password' => $sPASSWORD,
   'settings' =>
     array(
-      'charset' => 'utf8',
+      'charset' => 'utf8mb4',
       'queries' =>
         array(),
     ),
