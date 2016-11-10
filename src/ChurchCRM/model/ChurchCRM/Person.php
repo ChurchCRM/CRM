@@ -60,15 +60,10 @@ class Person extends BasePerson
         $birthYear = 1900;
       }
 
-      $date = strtotime($this->getBirthDay() . "-" . $this->getBirthMonth() . "-" . $birthYear);
-
-      if (!$this->hideAge()) {
-        return date("M d Y", $date);
-      } else {
-        return date("M d", $date);
-      }
+      return date_create($birthYear . "-" . $this->getBirthMonth() . "-" . $this->getBirthDay());
     }
-    return "";
+
+    return date_create();
   }
 
   function getViewURI()
