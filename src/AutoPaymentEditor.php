@@ -688,7 +688,7 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Zip code") ?></td>
+				<td class="LabelColumn"><?= gettext("Zip") ?></td>
 				<td class="TextColumn"><input type="text" id="Zip" name="Zip" value="<?= $tZip ?>"></td>
 			</tr>
 

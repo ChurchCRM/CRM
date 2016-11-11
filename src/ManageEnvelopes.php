@@ -68,7 +68,7 @@ if (isset($_POST["SortBy"])) {
 } else {
     $sSortBy = "name";
 }
-    
+
 if (isset($_POST["AssignStartNum"])) {
     $iAssignStartNum = $_POST["AssignStartNum"];
 } else {
@@ -162,7 +162,7 @@ if (isset($_POST["PrintReport"])) {
         <input type="radio" Name="SortBy" value="name"
         <?php if ($sSortBy == "name") echo " checked"; ?>><?= gettext("Last Name") ?>
         <input type="radio" Name="SortBy" value="envelope"
-        <?php if ($sSortBy == "envelope") echo " checked"; ?>><?= gettext("Envelope #") ?>
+        <?php if ($sSortBy == "envelope") echo " checked"; ?>><?= gettext("Envelope Number") ?>
     </th>
     <th>
         <b>Envelope</b>
@@ -205,7 +205,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
     </td></tr>
     <?php
 }
-?>    
+?>
 </table><br>
 </form>
 </div>

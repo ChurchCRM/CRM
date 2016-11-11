@@ -264,9 +264,9 @@ if (count($_SESSION['aPeopleCart']) > 0)
 		<td class="LabelColumn">
 			<?php
 			if($sCountry == "Canada")
-			  echo gettext("Postal Code:");
+			  echo gettext("Postal Code").":";
 			else
-			  echo gettext("Zip:");
+			  echo gettext("Zip").":";
 			?>
 		</td>
 		<td class="TextColumn">
