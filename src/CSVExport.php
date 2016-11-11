@@ -262,7 +262,7 @@ require "Include/Header.php";
           <div class="col-lg-4">
             <div class="box box-danger collapsed-box">
               <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Records to export:") ?></h3>
+                <h3 class="box-title"><?= gettext("Records to export") ?>:</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
@@ -281,7 +281,7 @@ require "Include/Header.php";
           <div class="col-lg-4">
             <div class="box box-danger collapsed-box">
               <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Classification:") ?></h3>
+                <h3 class="box-title"><?= gettext("Classification") ?>:</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
@@ -308,7 +308,7 @@ require "Include/Header.php";
           <div class="col-lg-4">
             <div class="box box-danger collapsed-box">
               <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Family Role:") ?></h3>
+                <h3 class="box-title"><?= gettext("Family Role") ?>:</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
@@ -335,7 +335,7 @@ require "Include/Header.php";
           <div class="col-lg-4">
             <div class="box box-danger collapsed-box">
               <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Gender:") ?></h3>
+                <h3 class="box-title"><?= gettext("Gender") ?>:</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
@@ -355,7 +355,7 @@ require "Include/Header.php";
           <div class="col-lg-4">
             <div class="box box-danger collapsed-box">
               <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Group Membership:") ?></h3>
+                <h3 class="box-title"><?= gettext("Group Membership") ?>:</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
@@ -380,7 +380,7 @@ require "Include/Header.php";
           <div class="col-lg-4">
             <div class="box box-danger collapsed-box">
               <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Membership Date:") ?></h3>
+                <h3 class="box-title"><?= gettext("Membership Date") ?>:</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
@@ -397,7 +397,7 @@ require "Include/Header.php";
           <div class="col-lg-4">
             <div class="box box-danger collapsed-box">
               <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Birthday Date:") ?></h3>
+                <h3 class="box-title"><?= gettext("Birthday Date") ?>:</h3>
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
