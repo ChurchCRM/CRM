@@ -557,7 +557,7 @@ require "Include/Header.php";
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-2">
-                        <label><?= gettext("Gender:") ?></label>
+                        <label><?= gettext("Gender") ?>:</label>
                         <select name="Gender" class="form-control">
                             <option value="0"><?= gettext("Select Gender") ?></option>
                             <option value="0" disabled>-----------------------</option>
