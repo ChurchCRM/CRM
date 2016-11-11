@@ -50,7 +50,7 @@ require "Include/Header.php";
     <?= gettext('Zip') ?>: <?= $systemConfig->getValue("sChurchZip"); ?><br>
     <?= gettext('Country') ?>: <?= $systemConfig->getValue("sDefaultCountry"); ?><br>
     <?= gettext('Church Email') ?>: <?= $systemConfig->getValue("sChurchEmail"); ?><br>
-    <?= gettext('ChurchCRM URL') ?>: <?= $ChurchCRMURL ?><br>
+    ChurchCRM <?= gettext('Base URL') ?>: <?= $ChurchCRMURL ?><br>
 		<br> <?= gettext('Message') ?>:
 		<br><textarea class="form-control" name="emailmessage" rows="20" cols="72"><?= htmlspecialchars($sEmailMessage) ?> </textarea>
 	</div>

@@ -321,7 +321,7 @@ require "Include/Header.php"; ?>
                      maxlength="40">
               <?php
               if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row])
-                echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
+                echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name") . " </span>";
               ?>
             </td>
             <td class="TextColumn" align="center">

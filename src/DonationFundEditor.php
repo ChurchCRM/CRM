@@ -207,7 +207,7 @@ else
 				<input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="20" maxlength="30">
 				<?php
 				if ($aNameErrors[$row])
-					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
+					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name") . " .</span>";
 				?>
 			</td>
 
@@ -249,7 +249,7 @@ else
 					<td valign="top">
 						<div><?= gettext("Name") ?>:</div>
 						<input type="text" name="newFieldName" size="30" maxlength="30">
-						<?php if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
+						<?php if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>"; ?>
 						&nbsp;
 					</td>
 					<td valign="top">

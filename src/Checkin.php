@@ -438,7 +438,7 @@ if (isset ($_POST["EventID"]) ) {
 		    <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
 			  <input type="hidden" name="child" value="<?= $person_id ?>">
 			  <input type="hidden" name="EventID" value="<?= $EventID ?>">
-			  <input type="submit" name="Action" value="<?= gettext("Checkout") ?>" class="btn" >
+			  <input type="submit" name="Action" value="<?= gettext("CheckOut") ?>" class="btn" >
 			</form>
 		 </td>
 		</tr>

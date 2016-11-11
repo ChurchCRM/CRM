@@ -106,10 +106,10 @@ if (isset($_POST['User']) && !isset($sErrorText)) {
 if ($currentUser != Null)
 {
     $bPasswordMatch = FALSE;
-    
+
     // Check the user password
     $sPasswordHashSha256 = hash("sha256", $_POST['Password'].$currentUser->getPersonId());
-    
+
     // Block the login if a maximum login failure count has been reached
     if ($iMaxFailedLogins > 0 && $currentUser->getFailedLogins() >= $iMaxFailedLogins)
     {
@@ -121,7 +121,7 @@ if ($currentUser != Null)
         // Increment the FailedLogins
         $currentUser->setFailedLogins($currentUser->getFailedLogins()+1);
         $currentUser->save();
-        
+
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
     }
@@ -132,7 +132,7 @@ if ($currentUser != Null)
         $currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
         $currentUser->setLoginCount($currentUser->getLoginCount() +1);
         $currentUser->setFailedLogins(0);
-        $currentUser->save();       
+        $currentUser->save();
 
         // Set the User's family id in case EditSelf is enabled
         $_SESSION['iFamID'] = $currentUser->getPerson()->getFamId();
@@ -277,7 +277,7 @@ if ( $systemConfig->getRawConfig("sEnableSelfRegistration") )
 }
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("ChurchCRM - Login");
+$sPageTitle = "ChurchCRM " .gettext("Login");
 require ("Include/HeaderNotLoggedIn.php");
 ?>
 

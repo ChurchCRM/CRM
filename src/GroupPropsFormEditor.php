@@ -43,7 +43,7 @@ $sPageTitle = gettext("Group-Specific Properties Form Editor:") . "  " . $grp_Na
 
 require "Include/Header.php"; ?>
 
-<div class="box box-body"> 
+<div class="box box-body">
 
 <?php
 $bErrorFlag = false;
@@ -325,7 +325,7 @@ else
 				if ($row < $numRows)
 					echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
 				?>
-				
+
 				<?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>"; ?>
 			</td>
 			<td class="TextColumn" style="font-size:70%;">
@@ -335,7 +335,7 @@ else
 			<td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="25" maxlength="40">
 				<?php
 				if ( array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] )
-					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
+					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name") . " </span>";
 				?>
 			</td>
 
@@ -415,7 +415,7 @@ else
 						<div><?= gettext("Name") ?>:</div>
 						<input type="text" name="newFieldName" size="25" maxlength="40">
 						<?php
-						if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>";
+						if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>";
 						if ( $bDuplicateNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("That field name already exists.") . "</span></div>";
 						?>
 						&nbsp;
@@ -436,7 +436,7 @@ else
 
 	</table>
 	</form>
-  
+
 </div>
 
 <?php require "Include/Footer.php" ?>
