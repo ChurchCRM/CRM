@@ -249,7 +249,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 						</span></li>
           <?php if ($dBirthDate) { ?>
             <li>
-              <i class="fa-li fa fa-calendar"></i><?= gettext("Birthdate:") ?>
+              <i class="fa-li fa fa-calendar"></i><?= gettext("Birth Date") ?>:
               <span><?= $dBirthDate ?></span>
               <?php if (!$person->hideAge()) { ?>
               (<span data-birth-date="<?= $person->getBirthDate()->format("Y-m-d") ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
@@ -257,28 +257,28 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             </li>
           <?php }
           if (!$bHideFriendDate && $per_FriendDate != "") { /* Friend Date can be hidden - General Settings */ ?>
-            <li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date:") ?> <span><?= FormatDate($per_FriendDate, false) ?></span></li>
+            <li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date") ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
           <?php }
           if ($sCellPhone) { ?>
-            <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone:") ?> <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
+            <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext("Mobile Phone") ?>: <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
           <?php }
           if ($sHomePhone) {
             ?>
-            <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone:") ?> <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
+            <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone") ?>: <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
             <?php
           }
           if ($sEmail != "") { ?>
-            <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email:") ?> <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
+            <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email") ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
             <?php if ($mailchimp->isActive()) { ?>
               <li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
             <?php }
           }
           if ($sWorkPhone) {
             ?>
-            <li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone:") ?> <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
+            <li><i class="fa-li fa fa-phone"></i><?= gettext("Work Phone") ?>: <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
           <?php } ?>
           <?php if ($per_WorkEmail != "") { ?>
-            <li><i class="fa-li fa fa-envelope"></i><?= gettext("Work/Other Email:") ?> <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
+            <li><i class="fa-li fa fa-envelope"></i><?= gettext("Work/Other Email") ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
             <?php if ($mailchimp->isActive()) { ?>
               <li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
               <?php
@@ -639,7 +639,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               <?php if ($bOkToEdit && mysql_num_rows($rsProperties) != 0) { ?>
                 <div class="alert alert-info">
                   <div>
-                    <h4><strong><?= gettext("Assign a New Property:") ?></strong></h4>
+                    <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
 
                     <p><br></p>
 
@@ -714,7 +714,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               <?php if ($_SESSION['bEditRecords']) { ?>
                 <div class="alert alert-info">
                   <div>
-                    <h4><strong><?= gettext("Assign a New Volunteer Opportunity:") ?></strong></h4>
+                    <h4><strong><?= gettext("Assign a New Volunteer Opportunity") ?>:</strong></h4>
 
                     <p><br></p>
 
@@ -804,7 +804,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         </div>
         <div class="modal-body">
           <input type="file" name="file" size="50"/> <br/>
-          <?= gettext("Max Photo size:") ?> <?= ini_get('upload_max_filesize') ?>
+          <?= gettext("Max Photo size") ?>: <?= ini_get('upload_max_filesize') ?>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>

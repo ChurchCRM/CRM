@@ -247,13 +247,13 @@ else
 				<tr>
 					<td width="15%"></td>
 					<td valign="top">
-						<div><?= gettext("Name:") ?></div>
+						<div><?= gettext("Name") ?>:</div>
 						<input type="text" name="newFieldName" size="30" maxlength="30">
 						<?php if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
 						&nbsp;
 					</td>
 					<td valign="top">
-						<div><?= gettext("Description:") ?></div>
+						<div><?= gettext("Description") ?>:</div>
 						<input type="text" name="newFieldDesc" size="40" maxlength="100">
 						&nbsp;
 					</td>

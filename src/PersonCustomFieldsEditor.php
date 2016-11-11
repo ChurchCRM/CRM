@@ -410,7 +410,7 @@ require "Include/Header.php"; ?>
             <tr>
               <td width="15%"></td>
               <td valign="top">
-                <div><?= gettext("Type:") ?></div>
+                <div><?= gettext("Type") ?>:</div>
                 <?php
                 echo "<select name=\"newFieldType\">";
 
@@ -423,7 +423,7 @@ require "Include/Header.php"; ?>
                 <a href="http://docs.churchcrm.io/"><?= gettext("Help on types..") ?></a>
               </td>
               <td valign="top">
-                <div><?= gettext("Name:") ?></div>
+                <div><?= gettext("Name") ?>:</div>
                 <input type="text" name="newFieldName" size="30" maxlength="40">
                 <?php
                 if ($bNewNameError) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>";
@@ -432,7 +432,7 @@ require "Include/Header.php"; ?>
                 &nbsp;
               </td>
               <td valign="top" nowrap>
-                <div><?= gettext("Side:") ?></div>
+                <div><?= gettext("Side") ?>:</div>
                 <input type="radio" name="newFieldSide" value="0" checked><?= gettext("Left") ?>
                 <input type="radio" name="newFieldSide" value="1"><?= gettext("Right") ?>
                 &nbsp;

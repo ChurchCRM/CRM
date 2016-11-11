@@ -56,7 +56,7 @@ $rsEvents = RunQuery($sSQL);
 if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add']) && !isset($_POST['Checkout']) || isset($_POST['Exit']) ) {
 ?>
 
-	<p align="center"><?= gettext("Select the event to which you would like to check people in for:") ?></p>
+	<p align="center"><?= gettext("Select the event to which you would like to check people in for") ?>:</p>
 	<form name="Checkin" action="Checkin.php" method="POST">
 	<table align="center" >
 			<?php if ($sGlobalMessage) { ?>
@@ -65,7 +65,7 @@ if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add'
 			</tr>
 			<?php } ?>
 			<tr>
-					<td class="LabelColumn"><?= gettext("Select Event:") ?></td>
+					<td class="LabelColumn"><?= gettext("Select Event") ?>:</td>
 					<td class="TextColumn">
                       <?php
 							// Create the group select drop-down

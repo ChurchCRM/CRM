@@ -399,7 +399,7 @@ else
 				<tr>
 					<td width="15%"></td>
 					<td valign="top">
-					<div><?= gettext("Type:") ?></div>
+					<div><?= gettext("Type") ?>:</div>
 					<?php
 						echo "<select name=\"newFieldType\">";
 						for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++)
@@ -412,7 +412,7 @@ else
 					<a href="http://docs.churchcrm.io/"><?= gettext("Help on types..") ?></a>
 					</td>
 					<td valign="top">
-						<div><?= gettext("Name:") ?></div>
+						<div><?= gettext("Name") ?>:</div>
 						<input type="text" name="newFieldName" size="25" maxlength="40">
 						<?php
 						if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>";
@@ -421,7 +421,7 @@ else
 						&nbsp;
 					</td>
 					<td valign="top">
-						<div><?= gettext("Description:") ?></div>
+						<div><?= gettext("Description") ?>:</div>
 						<input type="text" name="newFieldDesc" size="30" maxlength="60">
 						&nbsp;
 					</td>

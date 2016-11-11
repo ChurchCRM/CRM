@@ -26,7 +26,7 @@ class PDF_ConfirmReport extends ChurchInfoReport {
 		$this->leftX = 10;
 		$this->SetFont("Times",'',10);
 		$this->SetMargins(10,20);
-		
+
 		$this->SetAutoPageBreak(false);
 	}
 
@@ -84,12 +84,12 @@ $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysql_num_rows($rsCustomFields);
 
-if ($numCustomFields > 0) 
+if ($numCustomFields > 0)
 {
 	$iFieldNum = 0;
     while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) )
     {
-    	extract($rowCustomField); 
+    	extract($rowCustomField);
         $sCustomFieldName[$iFieldNum] = $custom_Name;
         $iFieldNum += 1;
     }
@@ -114,14 +114,14 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     //If this is a report for a single family, name the file accordingly.
     if ($_GET["familyId"]) {
         $filename = "ConfirmReport-".$fam_Name.".pdf";
-    } 
+    }
 
-	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, 
+	$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City,
                                $fam_State, $fam_Zip, $fam_Country);
 	$curY += $pdf->incrementY;
 
 	$pdf->SetFont("Times",'B',10);
-   $pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Family name"));
+   $pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Family Name"));
 	$pdf->SetFont("Times",'',10);
    $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_Name); $curY += $pdf->incrementY;
 	$pdf->SetFont("Times",'B',10);
@@ -137,7 +137,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$pdf->SetFont("Times",'',10);
    $pdf->WriteAtCell ($dataCol, $curY, $dataWid, ($fam_City . ", " . $fam_State . "  " . $fam_Zip)); $curY += $pdf->incrementY;
 	$pdf->SetFont("Times",'B',10);
-   $pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Home phone"));
+   $pdf->WriteAtCell ($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext ("Home Phone"));
 	$pdf->SetFont("Times",'',10);
    $pdf->WriteAtCell ($dataCol, $curY, $dataWid, $fam_HomePhone); $curY += $pdf->incrementY;
 	$pdf->SetFont("Times",'B',10);
@@ -237,7 +237,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
         {
             $hideAgeStr="No";
         }
-        
+
 		$pdf->WriteAtCell ($XBirthday, $curY, $XHideAge - $XBirthday, $birthdayStr);
 		$pdf->WriteAtCell ($XHideAge, $curY, $XCellPhone - $XHideAge,$hideAgeStr);
 		$pdf->WriteAtCell ($XCellPhone, $curY, $XClassification - $XCellPhone, $per_CellPhone);
@@ -254,7 +254,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
 		$xSize = 40;
         $numCustomFields = mysql_num_rows($rsCustomFields);
-        if ($numCustomFields > 0) 
+        if ($numCustomFields > 0)
         {
             extract($aMember);
             $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $per_ID;
@@ -269,15 +269,15 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
             // Calculations (without groups) show 84 mm is needed.
             // For the Letter size of 279 mm, this says that curY can be no bigger than 195 mm.
             // Leaving 12 mm for a bottom margin yields 183 mm.
-            $numWide = 0;	// starting value for columns	
+            $numWide = 0;	// starting value for columns
             while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
             {
                extract($rowCustomField);
                if($sCustomFieldName[$custom_Order - 1])
                 {
 	                $currentFieldData = trim($aCustomData[$custom_Field]);
-						
-	                	
+
+
                     $OutStr = $sCustomFieldName[$custom_Order-1] . " : " . $currentFieldData . "    ";
                     $pdf->WriteAtCell($xInc,$curY, $xSize, $sCustomFieldName[$custom_Order-1]);
 	                if($currentFieldData == "")
@@ -350,5 +350,5 @@ header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1)
 	$pdf->Output($filename, "D");
 else
-	$pdf->Output();	
+	$pdf->Output();
 ?>

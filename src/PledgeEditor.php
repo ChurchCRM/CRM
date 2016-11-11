@@ -91,15 +91,15 @@ if ($sGroupKey) {
 		if (! ($_SESSION['bFinance'] || $_SESSION['iUserID']==$aRow["plg_EditedBy"])) {
 			Redirect("Menu.php");
 			exit;
-		}	
+		}
 	}
 }
 
 // Handle _POST input if the form was up and a button press came in
 if (isset($_POST["PledgeSubmit"]) or
     isset($_POST["PledgeSubmitAndAdd"]) or
-    isset($_POST["MatchFamily"]) or 
-    isset($_POST["MatchEnvelope"]) or 
+    isset($_POST["MatchFamily"]) or
+    isset($_POST["MatchEnvelope"]) or
     isset($_POST["SetDefaultCheck"]) or
     isset($_POST["SetFundTypeSelection"]) or
     isset($_POST["SplitTotal"])) {
@@ -118,7 +118,7 @@ if (isset($_POST["PledgeSubmit"]) or
 	if (isset($_POST["FundSplit"])) {
 		$iSelectedFund = FilterInput($_POST["FundSplit"]);
 		$_SESSION['iSelectedFund'] = $iSelectedFund;
-	} 
+	}
 	$_SESSION['iSelectedFund'] = $iSelectedFund;
 
 	// set from drop-down if set, saved session default, or by calcuation
@@ -130,18 +130,18 @@ if (isset($_POST["PledgeSubmit"]) or
 		$iFYID = CurrentFY();
 	}
 	$_SESSION['idefaultFY'] = $iFYID;
-	
+
 	if (array_key_exists ("CheckNo", $_POST))
 		$iCheckNo = FilterInput($_POST["CheckNo"], 'int');
 	else
 		$iCheckNo = 0;
-	
+
 	if (array_key_exists ("Schedule", $_POST))
 		$iSchedule = FilterInput($_POST["Schedule"]);
 	else
 		$iSchedule='Once';
 	$_SESSION['iDefaultSchedule'] = $iSchedule;
-	
+
 	$iMethod = FilterInput($_POST["Method"]);
 	if (!$iMethod) {
 		if ($sGroupKey) {
@@ -153,7 +153,7 @@ if (isset($_POST["PledgeSubmit"]) or
 			$rsMethod = RunQuery($sSQL);
 			$num = mysql_num_rows($rsMethod);
 			if ($num) {	// set iMethod to last record's setting
-				extract(mysql_fetch_array($rsMethod));  
+				extract(mysql_fetch_array($rsMethod));
 				$iMethod = $plg_method;
 			} else {
 				$iMethod = "CHECK";
@@ -163,7 +163,7 @@ if (isset($_POST["PledgeSubmit"]) or
 		}
 	}
 	$_SESSION['idefaultPaymentMethod'] = $iMethod;
-	
+
 	$iEnvelope = 0;
 	if (array_key_exists ("Envelope", $_POST))
 		$iEnvelope = FilterInput($_POST["Envelope"], 'int');
@@ -186,19 +186,19 @@ if (isset($_POST["PledgeSubmit"]) or
 		} else {
 			$iSelectedFund = $fundId;
 		}
-		
+
 		$iTotalAmount = 0;
 		$sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_date, plg_method, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
 	 	//	don't know if we need plg_date or plg_method here...  leave it here for now
 		$rsFam = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsFam));
-	
+
 		$iFamily = $plg_famID;
 		$iCheckNo = $plg_CheckNo;
 		$iFYID = $plg_FYID;
-	
+
 		$sSQL = "SELECT plg_plgID, plg_fundID, plg_amount, plg_comment from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
-	
+
 		$rsAmounts = RunQuery($sSQL);
 		while ($aRow = mysql_fetch_array($rsAmounts)) {
 			extract($aRow);
@@ -369,7 +369,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
 						$sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
 					} else {
 						$sGroupKey = genGroupKey("cash", $iFamily, $fun_id, $dDate);
-					} 
+					}
 				}
 				$sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
 			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount[$fun_id] . "','" . $iSchedule . "','" . $iMethod  . "','" . $sComment[$fun_id] . "'";
@@ -415,7 +415,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
     	}
 	} elseif (isset($_POST["MatchEnvelope"])) {
 		// Match envelope is similar to match check- use the envelope number to choose a family
-		
+
 		$iEnvelope = FilterInput($_POST["Envelope"], 'int');
 		if ($iEnvelope && strlen($iEnvelope) > 0) {
 			$sSQL = "SELECT fam_ID FROM family_fam WHERE fam_Envelope=" . $iEnvelope;
@@ -488,7 +488,7 @@ if ($PledgeOrPayment == 'Pledge') {
 	$sPageTitle = gettext("Pledge Editor");
 } elseif ($iCurrentDeposit) {
 	$sPageTitle = gettext("Payment Editor: ") . $dep_Type . gettext(" Deposit Slip #") . $iCurrentDeposit . " ($dep_Date)";
-  
+
 	$checksFit = $iChecksPerDepositForm;
 
 	$sSQL = "SELECT plg_FamID, plg_plgID, plg_checkNo, plg_method from pledge_plg where plg_method=\"CHECK\" and plg_depID=" . $iCurrentDeposit;
@@ -520,7 +520,7 @@ if ($PledgeOrPayment == 'Pledge') {
 
 if ($dep_Closed && $sGroupKey && $PledgeOrPayment == 'Payment') {
 	$sPageTitle .= " &nbsp; <font color=red>". gettext("Deposit closed") ."</font>";
-}			
+}
 
 //$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
 $sFamilyName = "";
@@ -553,7 +553,7 @@ require "Include/Header.php";
 				$cancelText = "Cancel";
 			} else {
 				$cancelText = "Return";
-			} ?>	
+			} ?>
 			<input type="button" class="btn" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'Menu.php' ?>';">
 		</td>
 	</tr>
@@ -565,7 +565,7 @@ require "Include/Header.php";
 		<table cellpadding="2">
 			<?php if ($dep_Type == 'Bank' && $bUseDonationEnvelopes) { ?>
 			<tr>
-				<td class="PaymentLabelColumn"><?= gettext("Envelope #") ?></td>
+				<td class="PaymentLabelColumn"><?= gettext("Envelope Number") ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
 				<?php if (!$dep_Closed) { ?>
 				<input type="submit" class="btn" value="<?= gettext("Find family->") ?>" name="MatchEnvelope">
@@ -624,7 +624,7 @@ require "Include/Header.php";
 						<option value=0 <?= !$iSelectedFund ? 'selected' : '' ?>><?= gettext("Split") ?></option>
 						<?php foreach ($fundId2Name as $fun_id => $fun_name) { ?>
 							<option value="<?= $fun_id ?>" <?= $iSelectedFund == $fun_id ? 'selected' : '' ?>><?= gettext($fun_name) ?></option>
-						<?php } ?> 
+						<?php } ?>
 					</select>
 					<?php if (!$dep_Closed) { ?>
 					<input type="submit" class="btn" name="SetFundTypeSelection" value="<-Set">
@@ -688,13 +688,13 @@ $(document).ready(function() {
 			<tr>
 				<td <?php if ($PledgeOrPayment=='Pledge') echo "class=\"LabelColumn\""; else echo "class=\"PaymentLabelColumn\""; ?>><?= gettext("Date") ?></td>
 <?php	if (!$dDate)	$dDate = $dep_Date ?>
-	
+
 				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><font color="red"><?= $sDateError ?></font></td>
 			</tr>
 
 
 
-		<tr> 
+		<tr>
 			<td valign="top" align="left" class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Total $") ?></td>
 			<td class="TextColumnWithBottomBorder"><input type="text" name="TotalAmount" id="TotalAmount" value="<?= $iTotalAmount ?>"></td>
 		    <?php if ($PledgeOrPayment == 'Payment') { ?>
@@ -782,7 +782,7 @@ $(document).ready(function() {
 				<td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Comment") ?></td>
      </tr>
 
-			<?php 
+			<?php
       foreach ($fundId2Name as $fun_id => $fun_name) { ?>
       <tr>
 				<td class="TextColumn"><b><?= $fun_name ?></b></td>

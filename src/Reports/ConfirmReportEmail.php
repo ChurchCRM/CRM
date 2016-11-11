@@ -30,7 +30,7 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
     $this->leftX = 10;
     $this->SetFont("Times", '', 10);
     $this->SetMargins(10, 20);
-    
+
     $this->SetAutoPageBreak(false);
   }
 
@@ -141,7 +141,7 @@ while ($aFam = mysql_fetch_array($rsFamilies))
   $curY += $pdf->incrementY;
 
   $pdf->SetFont("Times", 'B', 10);
-  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Family name"));
+  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Family Name"));
   $pdf->SetFont("Times", '', 10);
   $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_Name); $curY += $pdf->incrementY;
   $pdf->SetFont("Times", 'B', 10);
@@ -157,7 +157,7 @@ while ($aFam = mysql_fetch_array($rsFamilies))
   $pdf->SetFont("Times", '', 10);
   $pdf->WriteAtCell($dataCol, $curY, $dataWid, ($fam_City . ", " . $fam_State . "  " . $fam_Zip)); $curY += $pdf->incrementY;
   $pdf->SetFont("Times", 'B', 10);
-  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Home phone"));
+  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Home Phone"));
   $pdf->SetFont("Times", '', 10);
   $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_HomePhone); $curY += $pdf->incrementY;
   $pdf->SetFont("Times", 'B', 10);
@@ -287,7 +287,7 @@ while ($aFam = mysql_fetch_array($rsFamilies))
       // Calculations (without groups) show 84 mm is needed.
       // For the Letter size of 279 mm, this says that curY can be no bigger than 195 mm.
       // Leaving 12 mm for a bottom margin yields 183 mm.
-      $numWide = 0; // starting value for columns	
+      $numWide = 0; // starting value for columns
       while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH))
       {
         extract($rowCustomField);

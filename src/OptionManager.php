@@ -212,7 +212,7 @@ $numRows = mysql_num_rows($rsList);
 $aNameErrors = array();
 for ($row = 1; $row <= $numRows; $row++)
 	$aNameErrors[$row] = 0;
-	
+
 if (isset($_POST["SaveChanges"]))
 {
 	for ($row = 1; $row <= $numRows; $row++)
@@ -383,7 +383,7 @@ for ($row=1; $row <= $numRows; $row++)
 
 <div class="box box-primary">
 	<div class="box-body">
-<?=  gettext("New") . " " . $noun . " " . gettext("Name:") ?>&nbsp;
+<?=  gettext("New") . " " . $noun . " " . gettext("Name") ?>:&nbsp;
 <span class="SmallText">
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
