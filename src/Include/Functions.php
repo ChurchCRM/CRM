@@ -386,7 +386,7 @@ function FilterInput($sInput, $type = 'string', $size = 1)
         $sInput = mysql_real_escape_string($sInput);
         return $sInput;
       case 'htmltext':
-        $sInput = strip_tags(trim($sInput), '<a><b><i><u>');
+        $sInput = strip_tags(trim($sInput), '<a><b><i><u><h1><h2><h3><h4><h5><h6>');
         if (get_magic_quotes_gpc())
           $sInput = stripslashes($sInput);
         $sInput = mysql_real_escape_string($sInput);
@@ -811,24 +811,11 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
   }
 }
 
-
-//
-// Prints age in years, or in months if less than one year old
-//
-function PrintAge($Month, $Day, $Year, $Flags)
-{
-  echo FormatAge($Month, $Day, $Year, $Flags);
-}
-
-//
-// Formats an age string: age in years, or in months if less than one year old
-//
 function FormatAge($Month, $Day, $Year, $Flags)
 {
   if (($Flags & 1)) //||!$_SESSION['bSeePrivacyData']
   {
     return;
-
   }
 
   if ($Year > 0) {
@@ -856,6 +843,54 @@ function FormatAge($Month, $Day, $Year, $Flags)
       return (date("Y") - $Year . " " . gettext("yrs old"));
   } else
     return (gettext("Unknown"));
+}
+
+function BirthDate($year, $month, $day, $hideAge) {
+  if (!is_null($day) && $day != "" &&
+    !is_null($month) && $month != ""
+  ) {
+
+    $birthYear = $year;
+    if ($hideAge) {
+      $birthYear = 1900;
+    }
+
+    return date_create($birthYear . "-" . $month . "-" . $day);
+  }
+
+  return date_create();
+}
+
+//
+// Formats an age suffix: age in years, or in months if less than one year old
+//
+function FormatAgeSuffix($birthDate, $Flags)
+{
+  if ($Flags == 1)
+  {
+    return "";
+  }
+
+  $ageSuffix = gettext("Unknown");
+
+  $now = new DateTime();
+  $age = $now->diff($birthDate);
+
+  if($age->y < 1) {
+    if($age->m > 1) {
+      $ageSuffix = gettext("mos old");
+    } else {
+      $ageSuffix = gettext("mo old");
+    }
+  } else {
+    if($age->y > 1) {
+      $ageSuffix = gettext("yrs old");
+    } else {
+      $ageSuffix = gettext("yr old");
+    }
+  }
+
+  return $ageSuffix;
 }
 
 // Returns a string of a person's full name, formatted as specified by $Style

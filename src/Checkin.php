@@ -516,7 +516,7 @@ function loadperson($iPersonID){
 		if ($fam_ID != "") {
 			echo "<font size=\"2\">(";
 			if ($sFamRole != "") { echo $sFamRole; } else { echo gettext("Member"); }
-			echo gettext(" of the") . " <a href=\"FamilyView.php?FamilyID=" . $fam_ID . "\">" . $fam_Name . "</a>" . gettext(" family)") . "</font><br><br>";
+			echo gettext(" of the") . " <a href=\"FamilyView.php?FamilyID=" . $fam_ID . "\">" . $fam_Name . "</a> " . gettext("family") . " )</font><br><br>";
 		}
 		else
 			echo gettext("(No assigned family)") . "<br><br>";

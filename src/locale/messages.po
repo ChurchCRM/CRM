@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-04 14:59+0000\n"
+"POT-Creation-Date: 2016-11-05 16:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,159 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: QueryView.php:22
-msgid "Query View"
-msgstr ""
-
-#: QueryView.php:99
-msgid "This value is required."
-msgstr ""
-
-#: QueryView.php:115
-msgid "This value must be numeric."
-msgstr ""
-
-#: QueryView.php:123
-msgid "This value must be at least "
-msgstr ""
-
-#: QueryView.php:129 QueryView.php:143
-msgid "This value cannot be more than "
-msgstr ""
-
-#: QueryView.php:143 QueryView.php:149
-msgid " characters long"
-msgstr ""
-
-#: QueryView.php:149
-msgid "This value cannot be less than "
-msgstr ""
-
-#: QueryView.php:197 QuerySQL.php:136
-msgid " record(s) returned"
-msgstr ""
-
-#: QueryView.php:278 QuerySQL.php:214
-msgid "Add Results To Cart"
-msgstr ""
-
-#: QueryView.php:279 QuerySQL.php:215
-msgid "Intersect Results With Cart"
-msgstr ""
-
-#: QueryView.php:280 QuerySQL.php:216
-msgid "Remove Results From Cart"
-msgstr ""
-
-#: QueryView.php:285
-msgid "Run Query Again"
-msgstr ""
-
-#: QueryView.php:286 QuerySQL.php:220
-msgid "Return to Query Menu"
-msgstr ""
-
-#: QueryView.php:402
-msgid "Execute Query"
-msgstr ""
-
-#: Register.php:22
-msgid "Software Registration"
-msgstr ""
-
-#: Register.php:32
-msgid "If you need to make changes to registration data, go to "
-msgstr ""
-
-#: Register.php:32
-msgid "Admin->Edit General Settings"
-msgstr ""
-
-#: Register.php:39
-msgid ""
-"Please register your copy of ChurchCRM by checking over this information and "
-"pressing the Send button.  "
-msgstr ""
-
-#: Register.php:40
-msgid "This information is used only to track the usage of this software.  "
-msgstr ""
-
-#: Register.php:45 DirectoryReports.php:244
-msgid "Church Name"
-msgstr ""
-
-#: Register.php:46 Include/Footer.php:24
-msgid "Version"
-msgstr ""
-
-#: Register.php:47 DirectoryReports.php:174 DirectoryReports.php:248
-#: external/templates/registration/family-register-done.php:26
-#: external/templates/registration/family-register.php:21 FamilyList.php:25
-#: GeoPage.php:326 GroupReports.php:132 Menu.php:177 Menu.php:207
-msgid "Address"
-msgstr ""
-
-#: Register.php:48 AutoPaymentEditor.php:681 CSVImport.php:238
-#: DirectoryReports.php:252
-#: external/templates/registration/family-register.php:27 FamilyList.php:26
-#: GeoPage.php:327
-msgid "City"
-msgstr ""
-
-#: Register.php:49 AutoPaymentEditor.php:686 CSVImport.php:239
-#: DirectoryReports.php:256
-#: external/templates/registration/family-register.php:30 FamilyList.php:27
-#: GeoPage.php:328
-msgid "State"
-msgstr ""
-
-#: Register.php:50 BackupDatabase.php:60 CSVImport.php:240
-#: DirectoryReports.php:260
-#: external/templates/registration/family-register.php:37 FamilyList.php:28
-#: GeoPage.php:329
-msgid "Zip"
-msgstr ""
-
-#: Register.php:51 AutoPaymentEditor.php:696 CSVImport.php:241
-#: external/templates/registration/family-register.php:40
-msgid "Country"
-msgstr ""
-
-#: Register.php:52
-msgid "Church Email"
-msgstr ""
-
-#: Register.php:53
-msgid "ChurchCRM URL"
-msgstr ""
-
-#: Register.php:54
-msgid "Message"
-msgstr ""
-
-#: Register.php:59
-msgid "Send"
-msgstr ""
-
-#: Register.php:60 ReminderReport.php:57 SettingsIndividual.php:120
-#: SettingsIndividual.php:167 SettingsUser.php:109 SettingsUser.php:171
-#: sundayschool/SundaySchoolDashboard.php:225
-#: sundayschool/SundaySchoolReports.php:217 TaxReport.php:54 UserDelete.php:69
-#: UserEditor.php:418 UserEditor.php:517 WhyCameEditor.php:103
-#: AutoPaymentDelete.php:72 AutoPaymentEditor.php:577 BatchWinnerEntry.php:113
-#: CanvassEditor.php:161 Checkin.php:183 Checkin.php:288 Checkin.php:341
-#: DirectoryReports.php:285 DonatedItemEditor.php:183 EventNames.php:242
-#: FamilyEditor.php:1072 FamilyView.php:813 FamilyView.php:837
-#: FinancialReports.php:67 FundRaiserEditor.php:157 GroupPropsEditor.php:167
-#: GroupReports.php:85 GroupReports.php:161 LettersAndLabels.php:83
-#: ManageEnvelopes.php:140 MemberRoleChange.php:126 MemberRoleChange.php:128
-#: NoteDelete.php:74 NoteEditor.php:135 PersonEditor.php:1061
-#: PersonView.php:768 PledgeDelete.php:56 PropertyEditor.php:184
-#: PropertyTypeEditor.php:116
-msgid "Cancel"
-msgstr ""
 
 #: ReminderReport.php:27
 msgid "Pledge Reminder Report"
@@ -183,6 +30,24 @@ msgstr ""
 #: ReminderReport.php:56 TaxReport.php:53 FinancialReports.php:332
 #: GroupReports.php:160
 msgid "Create Report"
+msgstr ""
+
+#: ReminderReport.php:57 SettingsIndividual.php:120 SettingsIndividual.php:167
+#: SettingsUser.php:109 SettingsUser.php:171
+#: sundayschool/SundaySchoolDashboard.php:225
+#: sundayschool/SundaySchoolReports.php:217 TaxReport.php:54 UserDelete.php:69
+#: UserEditor.php:418 UserEditor.php:517 WhyCameEditor.php:103
+#: AutoPaymentDelete.php:72 AutoPaymentEditor.php:577 BatchWinnerEntry.php:113
+#: CanvassEditor.php:161 Checkin.php:183 Checkin.php:288 Checkin.php:341
+#: DirectoryReports.php:285 DonatedItemEditor.php:183 EventNames.php:242
+#: FamilyEditor.php:1072 FamilyView.php:813 FamilyView.php:837
+#: FinancialReports.php:67 FundRaiserEditor.php:157 GroupPropsEditor.php:167
+#: GroupReports.php:85 GroupReports.php:161 LettersAndLabels.php:83
+#: ManageEnvelopes.php:140 MemberRoleChange.php:126 MemberRoleChange.php:128
+#: NoteDelete.php:74 NoteEditor.php:135 PersonEditor.php:1061
+#: PersonView.php:768 PledgeDelete.php:56 PropertyEditor.php:184
+#: PropertyTypeEditor.php:116 Register.php:60
+msgid "Cancel"
 msgstr ""
 
 #: ReportList.php:20
@@ -917,15 +782,15 @@ msgid ""
 "sEnableExternalBackupTarget setting."
 msgstr ""
 
-#: Service/SystemService.php:484
+#: Service/SystemService.php:485
 msgid "Signature definition file signature failed validation"
 msgstr ""
 
-#: Service/SystemService.php:489
+#: Service/SystemService.php:490
 msgid "Signature definition File Missing"
 msgstr ""
 
-#: Service/SystemService.php:494
+#: Service/SystemService.php:495
 msgid "One or more files failed signature validation"
 msgstr ""
 
@@ -1611,7 +1476,7 @@ msgstr ""
 msgid "Failed Logins"
 msgstr ""
 
-#: UserList.php:67 Login.php:305
+#: UserList.php:67 Login.php:309
 msgid "Password"
 msgstr ""
 
@@ -1884,8 +1749,25 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
+#: AutoPaymentEditor.php:681 CSVImport.php:238 DirectoryReports.php:252
+#: external/templates/registration/family-register.php:27 FamilyList.php:26
+#: GeoPage.php:327 Register.php:48
+msgid "City"
+msgstr ""
+
+#: AutoPaymentEditor.php:686 CSVImport.php:239 DirectoryReports.php:256
+#: external/templates/registration/family-register.php:30 FamilyList.php:27
+#: GeoPage.php:328 Register.php:49
+msgid "State"
+msgstr ""
+
 #: AutoPaymentEditor.php:691
 msgid "Zip code"
+msgstr ""
+
+#: AutoPaymentEditor.php:696 CSVImport.php:241
+#: external/templates/registration/family-register.php:40 Register.php:51
+msgid "Country"
 msgstr ""
 
 #: AutoPaymentEditor.php:711 ElectronicPaymentList.php:207
@@ -1962,6 +1844,12 @@ msgstr ""
 
 #: BackupDatabase.php:59
 msgid "GZip"
+msgstr ""
+
+#: BackupDatabase.php:60 CSVImport.php:240 DirectoryReports.php:260
+#: external/templates/registration/family-register.php:37 FamilyList.php:28
+#: GeoPage.php:329 Register.php:50
+msgid "Zip"
 msgstr ""
 
 #: BackupDatabase.php:61
@@ -2587,7 +2475,7 @@ msgid " of the"
 msgstr ""
 
 #: Checkin.php:519
-msgid " family)"
+msgid "family"
 msgstr ""
 
 #: Checkin.php:522 PersonView.php:236
@@ -3048,6 +2936,14 @@ msgstr ""
 msgid "Information to Include:"
 msgstr ""
 
+#: DirectoryReports.php:174 DirectoryReports.php:248
+#: external/templates/registration/family-register-done.php:26
+#: external/templates/registration/family-register.php:21 FamilyList.php:25
+#: GeoPage.php:326 GroupReports.php:132 Menu.php:177 Menu.php:207
+#: Register.php:47
+msgid "Address"
+msgstr ""
+
 #: DirectoryReports.php:178
 msgid "Family Home Phone"
 msgstr ""
@@ -3106,6 +3002,10 @@ msgstr ""
 
 #: DirectoryReports.php:240
 msgid "Use Title Page"
+msgstr ""
+
+#: DirectoryReports.php:244 Register.php:45
+msgid "Church Name"
 msgstr ""
 
 #: DirectoryReports.php:268
@@ -4989,6 +4889,10 @@ msgstr ""
 msgid "Assigned envelope numbers to all families."
 msgstr ""
 
+#: Include/Footer.php:24 Register.php:46
+msgid "Version"
+msgstr ""
+
 #: Include/Footer.php:26
 msgid "Copyright"
 msgstr ""
@@ -5409,27 +5313,27 @@ msgid ""
 "administrator."
 msgstr ""
 
-#: Login.php:276
+#: Login.php:280
 msgid "ChurchCRM - Login"
 msgstr ""
 
-#: Login.php:286
+#: Login.php:290
 msgid "Please Login"
 msgstr ""
 
-#: Login.php:290
+#: Login.php:294
 msgid "Your previous session timed out.  Please login again."
 msgstr ""
 
-#: Login.php:301
+#: Login.php:305
 msgid "Email/Username"
 msgstr ""
 
-#: Login.php:318
+#: Login.php:322
 msgid "Login"
 msgstr ""
 
-#: Login.php:331
+#: Login.php:335
 msgid "Register a new Family"
 msgstr ""
 
@@ -6318,4 +6222,98 @@ msgstr ""
 
 #: QuerySQL.php:96 QuerySQL.php:154
 msgid "An error occured: "
+msgstr ""
+
+#: QuerySQL.php:136 QueryView.php:197
+msgid " record(s) returned"
+msgstr ""
+
+#: QuerySQL.php:214 QueryView.php:278
+msgid "Add Results To Cart"
+msgstr ""
+
+#: QuerySQL.php:215 QueryView.php:279
+msgid "Intersect Results With Cart"
+msgstr ""
+
+#: QuerySQL.php:216 QueryView.php:280
+msgid "Remove Results From Cart"
+msgstr ""
+
+#: QuerySQL.php:220 QueryView.php:286
+msgid "Return to Query Menu"
+msgstr ""
+
+#: QueryView.php:22
+msgid "Query View"
+msgstr ""
+
+#: QueryView.php:99
+msgid "This value is required."
+msgstr ""
+
+#: QueryView.php:115
+msgid "This value must be numeric."
+msgstr ""
+
+#: QueryView.php:123
+msgid "This value must be at least "
+msgstr ""
+
+#: QueryView.php:129 QueryView.php:143
+msgid "This value cannot be more than "
+msgstr ""
+
+#: QueryView.php:143 QueryView.php:149
+msgid " characters long"
+msgstr ""
+
+#: QueryView.php:149
+msgid "This value cannot be less than "
+msgstr ""
+
+#: QueryView.php:285
+msgid "Run Query Again"
+msgstr ""
+
+#: QueryView.php:402
+msgid "Execute Query"
+msgstr ""
+
+#: Register.php:22
+msgid "Software Registration"
+msgstr ""
+
+#: Register.php:32
+msgid "If you need to make changes to registration data, go to "
+msgstr ""
+
+#: Register.php:32
+msgid "Admin->Edit General Settings"
+msgstr ""
+
+#: Register.php:39
+msgid ""
+"Please register your copy of ChurchCRM by checking over this information and "
+"pressing the Send button.  "
+msgstr ""
+
+#: Register.php:40
+msgid "This information is used only to track the usage of this software.  "
+msgstr ""
+
+#: Register.php:52
+msgid "Church Email"
+msgstr ""
+
+#: Register.php:53
+msgid "ChurchCRM URL"
+msgstr ""
+
+#: Register.php:54
+msgid "Message"
+msgstr ""
+
+#: Register.php:59
+msgid "Send"
 msgstr ""
