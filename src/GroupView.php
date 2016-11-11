@@ -149,7 +149,7 @@ require 'Include/Header.php';
         </div>
       </div>
       <!--END MEMBER ROLE MODAL-->
-      
+
       <!-- TARGET GROP SELECT MODAL-->
       <div class="modal fade" id="selectTargetGroupModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
         <div class="modal-dialog">
@@ -227,7 +227,7 @@ require 'Include/Header.php';
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <?php generateGroupRoleEmailDropdown($roleEmails, "mailto") ?>:
+            <?php generateGroupRoleEmailDropdown($roleEmails, "mailto:") ?>
           </ul>
         </div>
 
