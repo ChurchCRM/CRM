@@ -226,7 +226,7 @@ if($sMode == 'person')
 		echo "<a href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("Return to Person View")."</a></p>";
 	}	else {
 		echo "<div class=\"callout callout-warning\">";
-		echo gettext("Please confirm deletion of:") ." <strong>" . $per_FirstName . " " . $per_LastName. "</strong>";
+		echo gettext("Please confirm deletion of") .": <strong>" . $per_FirstName . " " . $per_LastName. "</strong>";
 		echo gettext(" (This action CANNOT be undone!)"). "<br/>";
 		echo "</div><p class='text-center'>";
 		echo "<a class=\"btn btn-danger\" href=\"SelectDelete.php?mode=person&PersonID=" . $iPersonID . "&Confirmed=Yes\">" . gettext("Yes, delete this record") . "</a> " ;

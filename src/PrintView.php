@@ -218,7 +218,7 @@ if ($fam_ID)
 			</td>
 		</tr>
 		<tr>
-			<td class="LabelColumn"><?= gettext("BirthDate") ?>:</td>
+			<td class="LabelColumn"><?= gettext("Birth Date") ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn"><?= $dBirthDate ?>&nbsp;</td>
 		</tr>
