@@ -625,7 +625,7 @@ if ($iFamilyID == $fam_ID) {
                          value="1" <?php if ($_SESSION['sshowPledges']) echo " checked"; ?>><?= gettext("Show Pledges") ?>
                   <input type="checkbox" name="ShowPayments"
                          value="1" <?php if ($_SESSION['sshowPayments']) echo " checked"; ?>><?= gettext("Show Payments") ?>
-                  <?= gettext(" Since") ?>:
+                  <?= gettext("Since") ?>:
                   <input type="text" class="date-picker" Name="ShowSinceDate"
                          value="<?= $_SESSION['sshowSince'] ?>" maxlength="10" id="ShowSinceDate" size="15">
                   <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable"

@@ -878,7 +878,7 @@ require "Include/Header.php";
 		<div class="box-body">
 			<div class="row">
 				<div class="form-group col-md-4">
-					<label><?= gettext("Envelope number") ?>:</label>
+					<label><?= gettext("Envelope Number") ?>:</label>
 					<input type="text" Name="Envelope" <?php if($fam_Envelope) echo " value=\"" . $fam_Envelope; ?>" size="30" maxlength="50">
 				</div>
 			</div>
