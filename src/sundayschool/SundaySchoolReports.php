@@ -126,7 +126,7 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
 
       <table class="table table-simple-padding" align="left">
         <tr>
-          <td><?= gettext("Select Group: \nTo select multiple hold CTL") ?></td>
+          <td><?= gettext("Select Group")?>: <br/><?=gettext("To select multiple hold CTL") ?></td>
           <td>
             <?php
             // Create the group select drop-down

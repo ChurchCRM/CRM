@@ -570,7 +570,7 @@ require "Include/Header.php";
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label for="Title"><?= gettext("Title:") ?></label>
+                        <label for="Title"><?= gettext("Title") ?>:</label>
                         <input type="text" name="Title" id="Title"
                                value="<?= htmlentities(stripslashes($sTitle), ENT_NOQUOTES, "UTF-8") ?>"
                                class="form-control" placeholder="<?= gettext("Mr., Mrs., Dr., Rev.") ?>">
@@ -579,7 +579,7 @@ require "Include/Header.php";
                 <p/>
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="FirstName"><?= gettext("First Name:") ?></label>
+                        <label for="FirstName"><?= gettext("First Name") ?>:</label>
                         <input type="text" name="FirstName" id="FirstName"
                                value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, "UTF-8") ?>"
                                class="form-control">
@@ -588,7 +588,7 @@ require "Include/Header.php";
                     </div>
 
                     <div class="col-md-2">
-                        <label for="MiddleName"><?= gettext("Middle Name:") ?></label>
+                        <label for="MiddleName"><?= gettext("Middle Name") ?>:</label>
                         <input type="text" name="MiddleName" id="MiddleName"
                                value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, "UTF-8") ?>"
                                class="form-control">
@@ -597,7 +597,7 @@ require "Include/Header.php";
                     </div>
 
                     <div class="col-md-4">
-                        <label for="LastName"><?= gettext("Last Name:") ?></label>
+                        <label for="LastName"><?= gettext("Last Name") ?>:</label>
                         <input type="text" name="LastName" id="LastName"
                                value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, "UTF-8") ?>"
                                class="form-control">
@@ -606,7 +606,7 @@ require "Include/Header.php";
                     </div>
 
                     <div class="col-md-1">
-                        <label for="Suffix"><?= gettext("Suffix:") ?></label>
+                        <label for="Suffix"><?= gettext("Suffix") ?>:</label>
                         <input type="text" name="Suffix" id="Suffix"
                                value="<?= htmlentities(stripslashes($sSuffix), ENT_NOQUOTES, "UTF-8") ?>"
                                placeholder="<?= gettext("Jr., Sr., III") ?>" class="form-control">
@@ -615,7 +615,7 @@ require "Include/Header.php";
                 <p/>
                 <div class="row">
                     <div class="col-md-2">
-                        <label><?= gettext("Birth Month:") ?></label>
+                        <label><?= gettext("Birth Month") ?>:</label>
                         <select name="BirthMonth" class="form-control">
                             <option value="0" <?php if ($iBirthMonth == 0) {
                                 echo "selected";
@@ -659,7 +659,7 @@ require "Include/Header.php";
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label><?= gettext("Birth Day:") ?></label>
+                        <label><?= gettext("Birth Day") ?>:</label>
                         <select name="BirthDay" class="form-control">
                             <option value="0"><?= gettext("Select Day") ?></option>
                             <?php for ($x = 1; $x < 32; $x++) {
@@ -675,7 +675,7 @@ require "Include/Header.php";
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label><?= gettext("Birth Year:") ?></label>
+                        <label><?= gettext("Birth Year") ?>:</label>
                         <input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
                                placeholder="yyyy" class="form-control">
                         <?php if ($sBirthYearError) { ?><font color="red"><br><?php echo $sBirthYearError ?>
@@ -700,7 +700,7 @@ require "Include/Header.php";
         </div><!-- /.box-header -->
         <div class="box-body">
             <div class="form-group col-md-3">
-                <label><?= gettext("Family Role:") ?></label>
+                <label><?= gettext("Family Role") ?>:</label>
                 <select name="FamilyRole" class="form-control">
                     <option value="0"><?= gettext("Unassigned") ?></option>
                     <option value="0" disabled>-----------------------</option>
@@ -716,7 +716,7 @@ require "Include/Header.php";
             </div>
 
             <div class="form-group col-md-6">
-                <label><?= gettext("Family:"); ?></label>
+                <label><?= gettext("Family"); ?>:</label>
                 <select name="Family" size="8" class="form-control">
                     <option value="0" selected><?= gettext("Unassigned") ?></option>
                     <option value="-1"><?= gettext("Create a new family (using last name)") ?></option>

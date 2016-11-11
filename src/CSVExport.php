@@ -79,28 +79,28 @@ require "Include/Header.php";
         </div>
         <div class="box-body">
           <div class="col-md-4">
-            <label><?= gettext("Last Name:") ?></label>
+            <label><?= gettext("Last Name") ?>:</label>
             <?= gettext("Required") ?>
           </div>
 
 
           <div class="col-md-4">
-            <label><?= gettext("Title:") ?></label>
+            <label><?= gettext("Title") ?>:</label>
             <input type="checkbox" name="Title" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("First Name:") ?></label>
+            <label><?= gettext("First Name") ?>:</label>
             <input type="checkbox" name="FirstName" value="1" checked>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Middle Name:") ?></label>
+            <label><?= gettext("Middle Name") ?>:</label>
             <input type="checkbox" name="MiddleName" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Suffix:") ?></label>
+            <label><?= gettext("Suffix") ?>:</label>
             <input type="checkbox" name="Suffix" value="1">
           </div>
 
@@ -170,12 +170,12 @@ require "Include/Header.php";
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("* Birth / Anniversary Date") ?>:</label>
+            <label>* <?= gettext("Birth / Anniversary Date") ?>:</label>
             <input type="checkbox" name="BirthdayDate" value="1">
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("* Age / Years Married") ?>:</label>
+            <label>* <?= gettext("Age / Years Married") ?>:</label>
             <input type="checkbox" name="Age" value="1">
           </div>
 
@@ -183,7 +183,7 @@ require "Include/Header.php";
             <label><?= gettext("Family Role") ?>:</label>
             <input type="checkbox" name="PrintFamilyRole" value="1">
           </div>
-          <?= gettext("* Depends whether using person or family output method") ?>
+          * <?= gettext("Depends whether using person or family output method") ?>
         </div>
       </div>
 
