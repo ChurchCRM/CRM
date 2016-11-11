@@ -1,4 +1,4 @@
-#1.2.14 Vagrant Environment
+# Previous Versions Vagrant Environment
 
 The files in this folder should be placed one level above the "src" folder for the 1.2.14 release of [ChurchInfo](http://sourceforge.net/projects/churchinfo/files/latest/download?source=files)
 

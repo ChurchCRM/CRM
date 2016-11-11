@@ -3,18 +3,33 @@
 #=============================================================================
 # DB Setup
 rm -rf /var/www/public/*
-wget -nv -O /var/www/1.2.14.zip http://downloads.sourceforge.net/project/churchinfo/churchinfo/1.2.14/churchinfo-1.2.14.zip
-unzip -d /var/www/public /var/www/1.2.14.zip
-mv  /var/www/public/churchinfo/* /var/www/public/
+launchversion="$(grep "^[^#;]" VersionToLaunch)"
+
+if [ $launchVersion == "1.2.14" ] ; then
+  wget -nv -O /var/www/1.2.14.zip http://downloads.sourceforge.net/project/churchinfo/churchinfo/1.2.14/churchinfo-1.2.14.zip
+  unzip -d /var/www/public /var/www/1.2.14.zip
+  mv  /var/www/public/churchinfo/* /var/www/public/
+  CRM_DB_INSTALL_SCRIPT="/vagrant/src/SQL/Install.sql"
+  CRM_DB_USER="churchinfo"
+  CRM_DB_PASS="churchinfo"
+  CRM_DB_NAME="churchinfo"
+
+elif [[ $launchVersion =~ [2\.] ]] ; then
+  filename=ChurchCRM-$launchVersion.zip
+  wget -nv -O /var/www/$filename https://github.com/ChurchCRM/CRM/releases/download/$launchVersion/$filename
+  unzip -d /var/www/public /var/www/$filename
+  mv  /var/www/public/churchcrm/* /var/www/public/
+  CRM_DB_INSTALL_SCRIPT="/vagrant/src/mysql/install/Install.sql"
+  CRM_DB_USER="churchcrm"
+  CRM_DB_PASS="churchcrm"
+  CRM_DB_NAME="churchcrm"
+fi
 
 DB_USER="root"
 DB_PASS="root"
 DB_HOST="localhost"
 
-CRM_DB_INSTALL_SCRIPT="/vagrant/src/SQL/Install.sql"
-CRM_DB_USER="churchinfo"
-CRM_DB_PASS="churchinfo"
-CRM_DB_NAME="churchinfo"
+
 
 RET=1
 while [[ RET -ne 0 ]]; do
@@ -45,6 +60,7 @@ echo "Database: tables and metadata deployed"
 
 echo "============================================================================="
 echo "======== ChurchCRM is now hosted @ http://192.168.33.11/       =============="
+echo "======== Version is: $launchversion                            =============="
 echo "======== CRM User Name: admin                                  =============="
 echo "======== 1st time login password for admin: changeme           =============="
 echo "============================================================================="
