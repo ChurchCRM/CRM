@@ -442,14 +442,6 @@ msgstr "Gen"
 msgid "Donation Envelope"
 msgstr "Plic donație"
 
-#: CSVImport.php:228
-msgid "Address1"
-msgstr "Adresa1"
-
-#: CSVImport.php:229
-msgid "Address2"
-msgstr "Adresa2"
-
 #: CSVImport.php:234 EditEventAttendees.php:54 EventAttendance.php:204
 #: GroupMemberList.php:323 GroupReports.php:159 SelectList.php:1160
 #: SelectListFormatted.php:1208
@@ -651,10 +643,6 @@ msgstr "Activați Cercetați pentru toate familiile"
 
 #: CanvassAutomation.php:206
 msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr ""
-
-#: CanvassAutomation.php:206 CanvassAutomation.php:217
-msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
 msgstr ""
 
 #: CanvassAutomation.php:170
@@ -969,14 +957,6 @@ msgstr "Cosul de cumparaturi contine"
 msgid "persons from"
 msgstr "persoane din"
 
-#: CartView.php:185
-msgid "families."
-msgstr "familii."
-
-#: CartView.php:191
-msgid "Email?"
-msgstr "E-mail?"
-
 #: CartView.php:192 CartView.php:243 FamilyView.php:467 FamilyView.php:516
 #: GroupView.php:251 GroupView.php:299 PersonView.php:521 PersonView.php:568
 #: PersonView.php:641 PersonView.php:667 PersonView.php:758 PersonView.php:774
@@ -1097,10 +1077,6 @@ msgstr "Verificat de către"
 #: EventNames.php:197 ListEvents.php:228
 msgid "Action"
 msgstr "Acțiune"
-
-#: Checkin.php:441
-msgid "Checkout"
-msgstr "Verificare"
 
 #: Checkin.php:450 EditEventAttendees.php:97
 msgid "No Attendees Assigned to Event"
@@ -1389,20 +1365,6 @@ msgstr "Nu fonduri au fost încă adăugate"
 #: MenuSetup.php:79
 msgid "Active"
 msgstr "Activ"
-
-#: AddEvent.php:220 AddEvent.php:227 DonationFundEditor.php:218
-#: DonationFundEditor.php:259 FamilyCustomFieldsEditor.php:388
-#: FamilyCustomFieldsEditorSave.php:384 GroupEditor.php:249
-#: GroupPropsFormEditor.php:344 GroupPropsFormEditor.php:426
-#: OptionManager.php:367 OptionManagerSave.php:364
-#: PersonCustomFieldsEditor.php:368 VolunteerOpportunityEditor.php:382
-#: VolunteerOpportunityEditor.php:423
-msgid "You must enter a name."
-msgstr "Trebuie să introduceți un nume."
-
-#: DonationFundEditor.php:211
-msgid "delete"
-msgstr "șterge"
 
 #: DonationFundEditor.php:188 DonationFundEditor.php:239 EventEditor.php:534
 #: EventNames.php:69 EventNames.php:269 FamilyCustomFieldsEditor.php:347
@@ -1891,10 +1853,6 @@ msgstr "Anul invalid: Valorile admisibile sunt 1901-2155"
 #: FamilyEditor.php:223 PersonEditor.php:196
 msgid "Invalid Birth Date."
 msgstr "Data Nasterii invalid."
-
-#: FamilyEditor.php:233
-msgid "You must enter a Name."
-msgstr "Trebuie să introduceți un nume."
 
 #: FamilyEditor.php:243
 msgid "Not a valid Wedding Date"
@@ -2493,10 +2451,6 @@ msgstr "Slip depozit"
 msgid "Deposit Report"
 msgstr "Depozit Raport"
 
-#: FinancialReports.php:300
-msgid "PDF"
-msgstr "PDF"
-
 #: FinancialReports.php:301
 msgid "CSV"
 msgstr "CSV"
@@ -2583,18 +2537,9 @@ msgstr "Display:"
 msgid "Number"
 msgstr "Număr"
 
-#: FundRaiserEditor.php:33
-msgid "Fund Raiser #"
-msgstr "Raiser Fondul #"
-
 #: FundRaiserEditor.php:35
 msgid "Create New Fund Raiser"
 msgstr "Crearea de noi strângerea de fonduri"
-
-#: DepositSlipEditor.php:78 FundRaiserEditor.php:57 GroupMeeting.php:45
-#: PledgeEditor.php:333
-msgid "Not a valid Date"
-msgstr "Nu este o dată validă"
 
 #: FundRaiserEditor.php:160
 msgid "Add Donated Item"
@@ -2628,10 +2573,6 @@ msgstr "Cumpărător"
 #: FundRaiserEditor.php:205
 msgid "Sale Price"
 msgstr "Vanzare Pret"
-
-#: FundRaiserEditor.php:206
-msgid "Est Value"
-msgstr "Est Valoare"
 
 #: FundRaiserEditor.php:207
 msgid "Material Value"
@@ -2870,10 +2811,6 @@ msgstr "Date de membru"
 msgid "Group-Specific Properties Form Editor:"
 msgstr "Specific de grup Form Properties Editor:"
 
-#: GroupPropsFormEditor.php:187
-msgid "'Default Option'"
-msgstr "\"Opțiune Implicit\""
-
 #: GroupPropsFormEditor.php:284
 msgid "No properties have been added yet"
 msgstr "Nici o proprietate au fost încă adăugate"
@@ -2929,11 +2866,6 @@ msgstr "Selectați informațiile pe care doriți să le includeți"
 #, fuzzy
 msgid "Standard Info"
 msgstr "Standard Info"
-
-#: GroupReports.php:161 SelectList.php:1162 SelectListFormatted.php:1214
-#: Reports/CanvassReports.php:262
-msgid "Cell Phone"
-msgstr "Telefon mobil"
 
 #: GroupReports.php:163 Reports/GroupReport.php:280
 msgid "Other Email"
@@ -3131,7 +3063,8 @@ msgid "No Attendance Recorded"
 msgstr "Nu Participarea înregistrate"
 
 #: ListEvents.php:299
-msgid "Attendees("
+#, fuzzy
+msgid "Attendees"
 msgstr "Participanti ("
 
 #: ListEvents.php:329
@@ -3145,10 +3078,6 @@ msgstr "Invalid login sau parola"
 #: Login.php:153
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Prea mulți datele de conectare nu a reușit: contul dvs. a fost blocat. Vă rugăm să contactați un administrator."
-
-#: Login.php:276
-msgid "ChurchCRM - Login"
-msgstr ""
 
 #: Login.php:393
 msgid "Please Login"
@@ -3181,10 +3110,6 @@ msgstr ""
 #: ManageEnvelopes.php:118
 msgid "Confirm"
 msgstr "Confirma"
-
-#: ManageEnvelopes.php:141
-msgid "All"
-msgstr "Toate"
 
 #: ManageEnvelopes.php:150
 msgid "Sort by"
@@ -3352,10 +3277,6 @@ msgstr ""
 msgid "Girls"
 msgstr ""
 
-#: Menu.php:56
-msgid "Welcome to <b>Church</b>CRM"
-msgstr ""
-
 #: sundayschool/SundaySchoolDashboard.php:132 Menu.php:108
 msgid "Sunday School Classes"
 msgstr ""
@@ -3501,10 +3422,6 @@ msgstr "Ieșire"
 #: MenuManager.php:266 OptionManager.php:389 OptionManagerSave.php:386
 msgid "Add New"
 msgstr "Adăugați noi"
-
-#: OptionManager.php:395 OptionManagerSave.php:392
-msgid "Error: You must enter a name."
-msgstr "Eroare: Trebuie să introduceți un nume."
 
 #: OptionManager.php:397 OptionManagerSave.php:394
 msgid "Error: A "
@@ -3814,25 +3731,9 @@ msgstr "Alte"
 msgid "Payment by"
 msgstr "Plata prin"
 
-#: PledgeEditor.php:597
-msgid "CHECK"
-msgstr "CHECK"
-
-#: PledgeEditor.php:598
-msgid "CASH"
-msgstr "NUMERAR"
-
 #: PledgeEditor.php:624
 msgid "Split"
 msgstr "Împărți"
-
-#: DepositSlipEditor.php:577 PledgeEditor.php:668
-msgid "Check #"
-msgstr "Verifica #"
-
-#: PledgeEditor.php:685
-msgid "Total $"
-msgstr "Total $"
 
 #: PledgeEditor.php:691
 msgid "Split to Funds by pledge"
@@ -3946,12 +3847,9 @@ msgstr "Nu, anula această ștergere"
 msgid "Property Editor"
 msgstr "Property Editor"
 
-#: PropertyEditor.php:75
-msgid "You must enter a Name"
-msgstr "Trebuie să introduceți un nume"
-
 #: PropertyEditor.php:82
-msgid "You must select a Type"
+#, fuzzy
+msgid "You must select a type"
 msgstr "Trebuie să selectați un tip de"
 
 #: PropertyEditor.php:147
@@ -3961,10 +3859,6 @@ msgstr "Selectați Tipul de proprietate"
 #: PropertyEditor.php:170 PropertyList.php:63
 msgid "A"
 msgstr "A"
-
-#: PropertyEditor.php:170
-msgid "with this property.."
-msgstr "cu această proprietate .."
 
 #: PropertyEditor.php:178
 msgid "Entering a Prompt value will allow the association of a free-form value."
@@ -3981,10 +3875,6 @@ msgstr "Adauga un nou"
 #: GroupMemberList.php:410 PersonView.php:693 PropertyList.php:56
 msgid "Property"
 msgstr "Proprietate"
-
-#: PropertyList.php:63
-msgid "with this Property..."
-msgstr "cu această proprietate ..."
 
 #: PropertyList.php:64
 msgid "Prompt"
@@ -4245,10 +4135,6 @@ msgstr "Șterge Înregistrare singura familie"
 msgid "Delete Family Record AND Family Members"
 msgstr "Șterge livret de familie și membrii familiilor"
 
-#: SelectDelete.php:389
-msgid "No, cancel this deletion</a>"
-msgstr "Nu, anula această ștergere"
-
 #: SelectList.php:149 SelectListFormatted.php:145
 msgid "Person Listing"
 msgstr "Listarea persoană"
@@ -4344,10 +4230,6 @@ msgstr "Cart"
 msgid "Print"
 msgstr ""
 
-#: SelectList.php:1085 SelectListFormatted.php:1128
-msgid "unassigned"
-msgstr "neatribuit"
-
 #: SettingsIndividual.php:93
 msgid "My User Settings"
 msgstr "Mi Setări utilizator"
@@ -4428,16 +4310,6 @@ msgstr "An calendaristic"
 #: USISTAddressVerification.php:276
 msgid "US Address Verification"
 msgstr "SUA Adresa de verificare"
-
-#: USISTAddressVerification.php:310 USISTAddressVerification.php:327
-#: USISTAddressVerification.php:351 USISTAddressVerification.php:593
-#: USISTAddressVerification.php:605
-msgid "https://www.intelligentsearch.com/Hosted/User/"
-msgstr "https://www.intelligentsearch.com/Hosted/User/"
-
-#: USISTAddressVerification.php:339
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
 
 #: UpdateAllLatLon.php:30
 msgid "Update Latitude & Longitude"
@@ -4664,10 +4536,6 @@ msgstr "Nu, anula această operație"
 #: VolunteerOpportunityEditor.php:78
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Voluntari Ștergere Confirmarea oportunitate"
-
-#: VolunteerOpportunityEditor.php:101
-msgid "Warning!"
-msgstr "Atenție!"
 
 #: VolunteerOpportunityEditor.php:102
 msgid "There are people assigned to this Volunteer Opportunity."
@@ -5156,10 +5024,6 @@ msgstr "Trimite Newsletter"
 msgid "Anniversary Date"
 msgstr "Aniversare Data"
 
-#: Reports/ConfirmReport.php:147
-msgid "Family E-Mail"
-msgstr "Familia E-Mail"
-
 #: Reports/ConfirmReport.php:170 Reports/ConfirmReport.php:189
 msgid "Member Name"
 msgstr "Nume membru"
@@ -5169,7 +5033,8 @@ msgid "Adult/Child"
 msgstr "Adult / copil"
 
 #: Reports/ConfirmReport.php:175 Reports/ConfirmReport.php:194
-msgid "Cell phone"
+#, fuzzy
+msgid "Cell Phone"
 msgstr "Telefon mobil"
 
 #: Reports/ConfirmReport.php:176 Reports/ConfirmReport.php:195
@@ -5302,10 +5167,6 @@ msgstr "Cadou Suma:"
 #: Reports/TaxReport.php:271
 msgid "Gift Designation:"
 msgstr "Cadou Denumire:"
-
-#: Reports/VotingMembers.php:53
-msgid "Voting members "
-msgstr "Membrii cu drept de vot"
 
 #: sundayschool/SundaySchoolClassView.php:36
 msgid "Sunday School"
@@ -5790,10 +5651,6 @@ msgstr ""
 msgid "Extract the upgrade archive, and apply the new files"
 msgstr ""
 
-#: UpgradeCRM.php:56
-msgid "File Name:"
-msgstr ""
-
 #: UpgradeCRM.php:57
 msgid "Full Path:"
 msgstr ""
@@ -5848,10 +5705,6 @@ msgstr ""
 
 #: email/Dashboard.php:68
 msgid "Cleaned count since last send:"
-msgstr ""
-
-#: email/Dashboard.php:80
-msgid "MailChimp"
 msgstr ""
 
 #: email/Dashboard.php:84
@@ -6557,27 +6410,7 @@ msgstr ""
 
 #: 
 msgctxt "menuconfig_mcf"
-msgid "Members"
-msgstr ""
-
-#: 
-msgctxt "menuconfig_mcf"
-msgid "View All Persons"
-msgstr ""
-
-#: 
-msgctxt "menuconfig_mcf"
-msgid "View All Families"
-msgstr ""
-
-#: 
-msgctxt "menuconfig_mcf"
 msgid "Groups"
-msgstr ""
-
-#: 
-msgctxt "menuconfig_mcf"
-msgid "Group Assignment Helper"
 msgstr ""
 
 #: 
@@ -6588,11 +6421,6 @@ msgstr ""
 #: 
 msgctxt "menuconfig_mcf"
 msgid "List Event Types"
-msgstr ""
-
-#: 
-msgctxt "menuconfig_mcf"
-msgid "Deposit"
 msgstr ""
 
 #: 
@@ -6608,11 +6436,6 @@ msgstr ""
 #: 
 msgctxt "menuconfig_mcf"
 msgid "Edit Deposit Slip"
-msgstr ""
-
-#: 
-msgctxt "menuconfig_mcf"
-msgid "Fundraiser"
 msgstr ""
 
 #: 
@@ -6657,52 +6480,12 @@ msgstr ""
 
 #: 
 msgctxt "menuconfig_mcf"
-msgid "System Users"
-msgstr ""
-
-#: 
-msgctxt "menuconfig_mcf"
 msgid "Edit Custom Family Fields"
 msgstr ""
 
 #: 
 msgctxt "menuconfig_mcf"
 msgid "Edit Custom Person Fields"
-msgstr ""
-
-#: 
-msgctxt "menuconfig_mcf"
-msgid "Restore Database"
-msgstr ""
-
-#: 
-msgctxt "menuconfig_mcf"
-msgid "Generate Seed Data"
-msgstr ""
-
-#: 
-msgctxt "queryparameteroptions_qpo"
-msgid "Male"
-msgstr ""
-
-#: 
-msgctxt "queryparameteroptions_qpo"
-msgid "Female"
-msgstr ""
-
-#: 
-msgctxt "queryparameteroptions_qpo"
-msgid "Zip Code"
-msgstr ""
-
-#: 
-msgctxt "queryparameteroptions_qpo"
-msgid "WorkEmail"
-msgstr ""
-
-#: 
-msgctxt "queryparameteroptions_qpo"
-msgid "Member"
 msgstr ""
 
 #: 
@@ -6723,11 +6506,6 @@ msgstr ""
 #: 
 msgctxt "queryparameteroptions_qpo"
 msgid "Non-Attender (staff)"
-msgstr ""
-
-#: 
-msgctxt "queryparameters_qrp"
-msgid "Registered students"
 msgstr ""
 
 #: 
@@ -6758,16 +6536,6 @@ msgstr ""
 #: 
 msgctxt "queryparameters_qrp"
 msgid "Field"
-msgstr ""
-
-#: 
-msgctxt "queryparameters_qrp"
-msgid "Month"
-msgstr ""
-
-#: 
-msgctxt "queryparameters_qrp"
-msgid "Volunteer opportunities"
 msgstr ""
 
 #: 
@@ -6972,10 +6740,6 @@ msgstr ""
 msgid "support docs."
 msgstr ""
 
-#: MenuSetup.php:81
-msgid "Inactive"
-msgstr ""
-
 #: EventNames.php:210
 msgid "Yearly"
 msgstr ""
@@ -7058,10 +6822,6 @@ msgstr ""
 
 #: Register.php:32
 msgid "Admin->Edit General Settings"
-msgstr ""
-
-#: Register.php:53
-msgid "ChurchCRM URL"
 msgstr ""
 
 #: Register.php:54
@@ -7166,18 +6926,6 @@ msgstr ""
 msgid "Fiscal Year:"
 msgstr ""
 
-#: AutoPaymentEditor.php:362
-msgid "First name"
-msgstr ""
-
-#: AutoPaymentEditor.php:367
-msgid "Last name"
-msgstr ""
-
-#: AutoPaymentEditor.php:392
-msgid "Zip code"
-msgstr ""
-
 #: BackupDatabase.php:50
 msgid "Password values entered were not the same! Please re-type them."
 msgstr ""
@@ -7186,16 +6934,8 @@ msgstr ""
 msgid "You must enter a password of at least 8 characters to encrypt this backup."
 msgstr ""
 
-#: BackupDatabase.php:120
-msgid "This tool will assist you in manually backing up the InfoCentral database."
-msgstr ""
-
 #: BackupDatabase.php:122
 msgid "TIPS:"
-msgstr ""
-
-#: BackupDatabase.php:126
-msgid "If you are concerned about confidentiality of data stored in the InfoCentral database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
 msgstr ""
 
 #: BackupDatabase.php:131
@@ -7217,16 +6957,6 @@ msgstr ""
 #: CanvassAutomation.php:150
 msgid "Clear all the canvasser assignments for all families.  <p>Important\n"
 "\t\t\tnote: this will lose any canvasser assignments that have been made by hand.</p>"
-msgstr ""
-
-#: CanvassAutomation.php:162
-msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families.  <p>Important\n"
-"\t\t\tnote: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"
-msgstr ""
-
-#: CanvassAutomation.php:174
-msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families.  <p>Important\n"
-"\t\t\tnote: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand.</p>"
 msgstr ""
 
 #: CanvassEditor.php:162 UserEditor.php:424
@@ -7266,11 +6996,6 @@ msgstr ""
 
 #: CartToFamily.php:269 FamilyEditor.php:720
 msgid "Postal Code:"
-msgstr ""
-
-#: CartToFamily.php:271 CSVExport.php:129 FamilyEditor.php:722
-#: PersonEditor.php:688
-msgid "Zip:"
 msgstr ""
 
 #: CartToFamily.php:281 CSVExport.php:139 FamilyEditor.php:739
@@ -7493,10 +7218,6 @@ msgstr ""
 msgid "Final Price:"
 msgstr ""
 
-#: DonationFundEditor.php:176
-msgid "Warning: Field changes will be lost if you do not Save Changes before using a delete or add new button!"
-msgstr ""
-
 #: DonationFundEditor.php:257 FamilyCustomFieldsEditor.php:473
 #: FamilyCustomFieldsEditorSave.php:469 GroupEditor.php:247
 #: GroupPropsFormEditor.php:423 MenuManager.php:261 OptionManager.php:384
@@ -7516,14 +7237,6 @@ msgstr ""
 msgid "Are you sure you want to delete this event?"
 msgstr ""
 
-#: EditEventTypes.php:192
-msgid "DELETE"
-msgstr ""
-
-#: EditEventTypes.php:208
-msgid "ADD"
-msgstr ""
-
 #: eGive.php:295
 msgid "Start Date: "
 msgstr ""
@@ -7532,28 +7245,12 @@ msgstr ""
 msgid "End Date: "
 msgstr ""
 
-#: EventAttendance.php:70
-msgid " Events"
-msgstr ""
-
 #: EventEditor.php:59 EventNames.php:283
 msgid "Create=>Event"
 msgstr ""
 
 #: EventEditor.php:400
 msgid "Editing Event ID: (ID will be created once saved)"
-msgstr ""
-
-#: EventNames.php:258
-msgid "DEFAULT"
-msgstr ""
-
-#: EventNames.php:258
-msgid "START TIME"
-msgstr ""
-
-#: EventNames.php:266
-msgid "Total,"
 msgstr ""
 
 #: EventNames.php:266
@@ -7577,10 +7274,6 @@ msgstr ""
 #: FamilyCustomFieldsEditor.php:486 FamilyCustomFieldsEditorSave.php:482
 #: PersonCustomFieldsEditor.php:465
 msgid "Side:"
-msgstr ""
-
-#: FamilyEditor.php:779
-msgid "Send Newsletter:"
 msgstr ""
 
 #: FamilyEditor.php:785
@@ -7635,20 +7328,12 @@ msgstr ""
 msgid "General Information:"
 msgstr ""
 
-#: FamilyView.php:402
-msgid "Send newsletter:"
-msgstr ""
-
 #: FamilyView.php:443 GroupView.php:228 PersonView.php:498 PrintView.php:411
 msgid "Assigned Properties:"
 msgstr ""
 
 #: FamilyView.php:535 GroupView.php:321 PersonView.php:585
 msgid "Assign a New Property:"
-msgstr ""
-
-#: FamilyView.php:577 PersonView.php:853
-msgid "Last edited:"
 msgstr ""
 
 #: FamilyView.php:582 PrintView.php:291 SelectDelete.php:378
@@ -7677,10 +7362,6 @@ msgstr ""
 
 #: FinancialReports.php:132
 msgid "Filter by Family:"
-msgstr ""
-
-#: FinancialReports.php:285
-msgid "Voting members must have made a donation within this many years to not require a donation):"
 msgstr ""
 
 #: FindDepositSlip.php:79 FindFundRaiser.php:71 PaddleNumEditor.php:177
@@ -7737,10 +7418,6 @@ msgstr ""
 
 #: GroupEditor.php:286
 msgid "from group:"
-msgstr ""
-
-#: GroupEditor.php:303
-msgid "Group-Specific<br>Properties:"
 msgstr ""
 
 #: GroupEditor.php:305
@@ -7807,18 +7484,6 @@ msgstr ""
 msgid "Group Role"
 msgstr ""
 
-#: GroupMemberList.php:322
-msgid "ZIP"
-msgstr ""
-
-#: GroupMemberList.php:324
-msgid "E-mail"
-msgstr ""
-
-#: GroupPropsFormEditor.php:293
-msgid "Warning: Field changes will be lost if you do not Save Changes before using an up, down, delete, or add new button!"
-msgstr ""
-
 #: GroupReports.php:92
 msgid "Select the group you would like to report:"
 msgstr ""
@@ -7839,10 +7504,6 @@ msgstr ""
 msgid "Print Report"
 msgstr ""
 
-#: ManageEnvelopes.php:154 PledgeEditor.php:568
-msgid "Envelope #"
-msgstr ""
-
 #: MemberRoleChange.php:83
 msgid "Group Name:"
 msgstr ""
@@ -7857,10 +7518,6 @@ msgstr ""
 
 #: MemberRoleChange.php:95
 msgid "New Role:"
-msgstr ""
-
-#: Menu.php:31
-msgid "Welcome to ChurchCRM"
 msgstr ""
 
 #: Menu.php:36
@@ -8069,7 +7726,7 @@ msgid "(Person will be assigned to the Group in the Default Role.)"
 msgstr ""
 
 #: PersonView.php:737
-msgid "Volunteer opportunities:"
+msgid "Volunteer Opportunities:"
 msgstr ""
 
 #: PersonView.php:788
@@ -8078,10 +7735,6 @@ msgstr ""
 
 #: PersonView.php:868
 msgid "Edit Why Came Notes"
-msgstr ""
-
-#: PledgeEditor.php:317
-msgid "Check number not valid for CASH payment"
 msgstr ""
 
 #: PropertyAssign.php:182
@@ -8161,14 +7814,6 @@ msgstr ""
 msgid "Printable Record"
 msgstr ""
 
-#: SelectList.php:1163 SelectListFormatted.php:1217
-msgid "Primary E-mail"
-msgstr ""
-
-#: SelectList.php:1164 SelectListFormatted.php:1220
-msgid "Work / Other E-mail"
-msgstr ""
-
 #: SelectList.php:1165 SelectListFormatted.php:1223
 msgid "Date Entered"
 msgstr ""
@@ -8183,10 +7828,6 @@ msgstr ""
 
 #: SettingsGeneral.php:93
 msgid "General Configuration Settings"
-msgstr ""
-
-#: SundaySchool.php:126
-msgid "Select Group: To select multiple hold CTL"
 msgstr ""
 
 #: SundaySchool.php:150
@@ -8303,10 +7944,6 @@ msgstr ""
 msgid "years old"
 msgstr ""
 
-#: Include/Header-function.php:442
-msgid "Search"
-msgstr ""
-
 #: Include/Header-function.php:447
 msgid "Current deposit slip"
 msgstr ""
@@ -8361,30 +7998,12 @@ msgstr ""
 msgid "item"
 msgstr ""
 
-#: Reports/ConfirmReport.php:112
-msgid "Family name"
-msgstr ""
-
-#: Reports/ConfirmReport.php:128
-msgid "Home phone"
-msgstr ""
-
 #: Reports/PrintDeposit.php:345
 msgid "UNDESIGNATED"
 msgstr ""
 
 #: Reports/TaxReport.php:200
 msgid "Fiscal Year "
-msgstr ""
-
-#: CanvassAutomation.php:126
-msgid "Randomly assign canvassers to all Families.  The Canvassers are \n"
-"\t\t\ttaken from the &quot;Canvassers&quot; Group."
-msgstr ""
-
-#: CanvassAutomation.php:138
-msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are \n"
-"\t\t\ttaken from the &quot;BraveCanvassers&quot; Group."
 msgstr ""
 
 #: CanvassAutomation.php:196
@@ -8400,12 +8019,6 @@ msgstr ""
 #: CanvassAutomation.php:218
 msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; \n"
 "\t\t\t                    by the canvasser."
-msgstr ""
-
-#: FinancialReports.php:285
-msgid "Voting members must have made<br>\n"
-"\t\t\ta donation within this many years<br>\n"
-"\t\t\t(0 to not require a donation):"
 msgstr ""
 
 #: SundaySchool.php:126
