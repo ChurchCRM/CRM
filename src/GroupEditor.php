@@ -167,7 +167,7 @@ require "Include/Header.php";
     </div>
     <table class="table" id="groupRoleTable">
     </table>
-    <label for="newRole"><?= gettext("New Role:")?> </label><input type="text" class="form-control" id="newRole" name="newRole">
+    <label for="newRole"><?= gettext("New Role")?>: </label><input type="text" class="form-control" id="newRole" name="newRole">
     <br>
     <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext("Add New Role")?></button>
   </div>
