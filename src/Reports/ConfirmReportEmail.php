@@ -176,7 +176,7 @@ while ($aFam = mysql_fetch_array($rsFamilies))
   $curY += $pdf->incrementY;
 
   $pdf->SetFont("Times", 'B', 10);
-  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Family E-Mail"));
+  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Family Email"));
   $pdf->SetFont("Times", '', 10);
   $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_Email);
   if ($fam_Email != "")
@@ -209,7 +209,7 @@ while ($aFam = mysql_fetch_array($rsFamilies))
   $pdf->WriteAtCell($XRole, $curY, $XEmail - $XRole, gettext("Adult/Child"));
   $pdf->WriteAtCell($XEmail, $curY, $XBirthday - $XEmail, gettext("Email"));
   $pdf->WriteAtCell($XBirthday, $curY, $XCellPhone - $XBirthday, gettext("Birthday"));
-  $pdf->WriteAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, gettext("Cell phone"));
+  $pdf->WriteAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, gettext("Cell Phone"));
   $pdf->WriteAtCell($XClassification, $curY, $XRight - $XClassification, gettext("Member/Friend"));
   $pdf->SetFont("Times", '', 10);
   $curY += $pdf->incrementY;
@@ -229,7 +229,7 @@ while ($aFam = mysql_fetch_array($rsFamilies))
       $pdf->WriteAtCell($XRole, $curY, $XEmail - $XRole, gettext("Adult/Child"));
       $pdf->WriteAtCell($XEmail, $curY, $XBirthday - $XEmail, gettext("Email"));
       $pdf->WriteAtCell($XBirthday, $curY, $XCellPhone - $XBirthday, gettext("Birthday"));
-      $pdf->WriteAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, gettext("Cell phone"));
+      $pdf->WriteAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, gettext("Cell Phone"));
       $pdf->WriteAtCell($XClassification, $curY, $XRight - $XClassification, gettext("Member/Friend"));
       $pdf->SetFont("Times", '', 10);
       $curY += $pdf->incrementY;

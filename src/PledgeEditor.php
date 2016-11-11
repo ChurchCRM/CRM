@@ -331,7 +331,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
 	if (strlen($dDate) > 0) {
 		list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
 		if ( !checkdate($iMonth,$iDay,$iYear) ) {
-			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid Date") . "</span>";
+			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid date") . "</span>";
 			$bErrorFlag = true;
 		}
 	}

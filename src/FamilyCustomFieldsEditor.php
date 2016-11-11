@@ -411,7 +411,7 @@ else
                 <input type="radio" Name="<?= $row ?>side" value="1" <?= $aSideFields[$row] ? " checked" : ''?>><?= gettext("Right") ?>
             </td>
             <td>
-                <input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>"   name="delete" onclick="return confirmDeleteField('<?= $aFieldFields[$row] ?>');">
+                <input type="button" class="btn btn-danger" value="<?= gettext("Delete") ?>"   name="delete" onclick="return confirmDeleteField('<?= $aFieldFields[$row] ?>');">
             </td>
             <td class="TextColumn" width="5%" nowrap>
                 <?php

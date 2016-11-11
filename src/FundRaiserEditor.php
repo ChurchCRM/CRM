@@ -30,7 +30,7 @@ if ($iFundRaiserID>0) {
 }
 
 if ($iFundRaiserID > 0) {
-	$sPageTitle = gettext("Fund Raiser #") . $iFundRaiserID . " " . $fr_title;
+	$sPageTitle = gettext("Fundraiser"). " #" . $iFundRaiserID . " " . $fr_title;
 } else {
 	$sPageTitle = gettext("Create New Fund Raiser");
 }
@@ -54,7 +54,7 @@ if (isset($_POST["FundRaiserSubmit"]))
 		list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
 		if ( !checkdate($iMonth,$iDay,$iYear) )
 		{
-			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid Date") . "</span>";
+			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid date") . "</span>";
 			$bErrorFlag = true;
 		}
 	}
@@ -204,7 +204,7 @@ require "Include/Header.php";
 	<td><?= gettext("Buyer") ?></td>
 	<td><?= gettext("Title") ?></td>
 	<td><?= gettext("Sale Price") ?></td>
-	<td><?= gettext("Est Value") ?></td>
+	<td><?= gettext("Estimated value") ?></td>
 	<td><?= gettext("Material Value") ?></td>
 	<td><?= gettext("Minimum Price") ?></td>
 	<td><?= gettext("Delete") ?></td>

@@ -389,7 +389,7 @@ if($sMode == 'person')
 		echo "</ul></div>";
 		echo "<p class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record ONLY") . "</a> ";
 		echo "<a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record AND Family Members") . "</a> ";
-		echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion</a>") . "</p>";
+		echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion") . "</a></p>";
 	}
 } ?>
 	</div>

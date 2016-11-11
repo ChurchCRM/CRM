@@ -219,7 +219,7 @@ else
 				<input type="radio" Name="<?= $row ?>active" value="0" <?php if (!$aActiveFields[$row]) echo " checked" ?>><?= gettext("No") ?>
 			</td>
             <td class="TextColumn" width="5%">
-				<input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>" Name="delete" onclick="confirmDeleteFund('<?= $aIDFields[$row] ?>');" >
+				<input type="button" class="btn btn-danger" value="<?= gettext("Delete") ?>" Name="delete" onclick="confirmDeleteFund('<?= $aIDFields[$row] ?>');" >
 			</td>
 
 		</tr>

@@ -368,7 +368,7 @@ require "Include/Header.php"; ?>
                      value="1" <?php if ($aSideFields[$row]) echo " checked" ?>><?= gettext("Right") ?>
             </td>
             <td>
-              <input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>" name="delete"
+              <input type="button" class="btn btn-danger" value="<?= gettext("Delete") ?>" name="delete"
                      onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);" )">
             </td>
             <td class="TextColumn" width="5%" nowrap>
