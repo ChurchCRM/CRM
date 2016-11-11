@@ -190,7 +190,7 @@ if ($iFamilyID == $fam_ID) {
                 <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
             <?php }
             if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
-              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send newsletter") ?>:
+              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
                 <span><?= gettext($fam_SendNewsLetter) ?></span></li>
             <?php }
             if (!$bHideWeddingDate && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>

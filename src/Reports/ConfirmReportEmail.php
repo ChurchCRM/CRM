@@ -141,7 +141,7 @@ while ($aFam = mysql_fetch_array($rsFamilies))
   $curY += $pdf->incrementY;
 
   $pdf->SetFont("Times", 'B', 10);
-  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Family name"));
+  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Family Name"));
   $pdf->SetFont("Times", '', 10);
   $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_Name); $curY += $pdf->incrementY;
   $pdf->SetFont("Times", 'B', 10);

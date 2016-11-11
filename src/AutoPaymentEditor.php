@@ -658,12 +658,12 @@ function CreatePaymentMethod()
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("First name") ?></td>
+				<td class="LabelColumn"><?= gettext("First Name") ?></td>
 				<td class="TextColumn"><input type="text" id="FirstName" name="FirstName" value="<?= $tFirstName ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Last name") ?></td>
+				<td class="LabelColumn"><?= gettext("Last Name") ?></td>
 				<td class="TextColumn"><input type="text" id="LastName" name="LastName" value="<?= $tLastName ?>"></td>
 			</tr>
 
