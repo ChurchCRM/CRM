@@ -89,14 +89,6 @@ msgstr ""
 msgid "inactive"
 msgstr ""
 
-#: AutoPaymentEditor.php:372 Reports/ConfirmReport.php:116
-msgid "Address 1"
-msgstr ""
-
-#: AutoPaymentEditor.php:377 Reports/ConfirmReport.php:120
-msgid "Address 2"
-msgstr ""
-
 #: AutoPaymentEditor.php:382 CSVImport.php:230 DirectoryReports.php:251
 #: GeoPage.php:323 GroupMemberList.php:320 SelectList.php:1438
 #: SelectListFormatted.php:1547
