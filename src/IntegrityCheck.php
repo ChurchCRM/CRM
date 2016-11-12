@@ -11,7 +11,7 @@ if (!$_SESSION['bAdmin'])
   Redirect("index.php");
   exit;
 }
-require 'Include/Header.php'; 
+require 'Include/Header.php';
 $integrityCheckFile =  __DIR__ ."/integrityCheck.json";
 $IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
 
@@ -22,7 +22,7 @@ if ($IntegrityCheckDetails->status == "failure")
     <h4><?= gettext("Integrity Check Failure") ?> </h4>
     <p><?= gettext("The previous integrity check failed") ?></p>
     <p><?= gettext("Details:")?> <?=  $IntegrityCheckDetails->message ?></p>
-    <?php  
+    <?php
       if(count($IntegrityCheckDetails->files) > 0 )
       {
         ?>
@@ -32,8 +32,8 @@ if ($IntegrityCheckDetails->status == "failure")
           foreach ($IntegrityCheckDetails->files as $file)
           {
             ?>
-            <li><?= gettext("Filename")?>: <?= $file->filename ?>
-              <?php 
+            <li><?= gettext("File Name")?>: <?= $file->filename ?>
+              <?php
               if($file->status == "File Missing")
               {
                 ?>
@@ -61,7 +61,7 @@ if ($IntegrityCheckDetails->status == "failure")
       }
     ?>
   </div>
-<?php  
+<?php
 }
 else
 {
@@ -70,7 +70,7 @@ else
     <h4><?= gettext("Integrity Check Passed") ?> </h4>
     <p><?= gettext("The previous integrity check passed") ?></p>
   </div>
-  <?php  
+  <?php
 }
 ?>
 

@@ -212,7 +212,7 @@ $numRows = mysql_num_rows($rsList);
 $aNameErrors = array();
 for ($row = 1; $row <= $numRows; $row++)
 	$aNameErrors[$row] = 0;
-	
+
 if (isset($_POST["SaveChanges"]))
 {
 	for ($row = 1; $row <= $numRows; $row++)
@@ -353,7 +353,7 @@ for ($row=1; $row <= $numRows; $row++)
 			<?php
 
 			if ( $aNameErrors[$row] == 1 )
-				echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
+				echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name") . " </span>";
 			elseif ( $aNameErrors[$row] == 2 )
 				echo "<span style=\"color: red;\"><BR>" . gettext("Duplicate name found.") . " </span>";
 			?>
@@ -383,7 +383,7 @@ for ($row=1; $row <= $numRows; $row++)
 
 <div class="box box-primary">
 	<div class="box-body">
-<?=  gettext("New") . " " . $noun . " " . gettext("Name:") ?>&nbsp;
+<?=  gettext("New") . " " . $noun . " " . gettext("Name") ?>:&nbsp;
 <span class="SmallText">
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
@@ -394,7 +394,7 @@ for ($row=1; $row <= $numRows; $row++)
 	{
 		echo "<div><span style=\"color: red;\"><BR>";
 		if ( $iNewNameError == 1 )
-			echo gettext("Error: You must enter a name.");
+			echo gettext("Error: You must enter a name");
 		else
 			echo gettext("Error: A ") . $noun . gettext(" by that name already exists.");
 		echo "</span></div>";

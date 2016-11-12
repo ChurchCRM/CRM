@@ -159,16 +159,16 @@ else
 
             if (!$bDuplicateNameError)
             {
-                // Find the highest existing field number in the table to 
+                // Find the highest existing field number in the table to
                 // determine the next free one.
-                // This is essentially an auto-incrementing system where 
+                // This is essentially an auto-incrementing system where
                 // deleted numbers are not re-used.
                 $fields = mysql_list_fields($sDATABASE, "family_custom", $cnInfoCentral);
                 $last = mysql_num_fields($fields) - 1;
 
-                // Set the new field number based on the highest existing.  
+                // Set the new field number based on the highest existing.
                 // Chop off the "c" at the beginning of the old one's name.
-                // The "c#" naming scheme is necessary because MySQL 3.23 
+                // The "c#" naming scheme is necessary because MySQL 3.23
                 // doesn't allow numeric-only field (table column) names.
                 $newFieldNum = substr(mysql_field_name($fields, $last), 1) + 1;
 
@@ -177,11 +177,11 @@ else
                 else
                     $newFieldSide = 'right';
 
-                // If we're inserting a new custom-list type field, 
+                // If we're inserting a new custom-list type field,
                 // create a new list and get its ID
                 if ($newFieldType == 12)
                 {
-                    // Get the first available lst_ID for insertion.  
+                    // Get the first available lst_ID for insertion.
                     // lst_ID 0-9 are reserved for permanent lists.
                     $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
                     $aTemp = mysql_fetch_array(RunQuery($sSQL));
@@ -298,9 +298,9 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt='bAll') {
     for ($i = 0; $i<$grp_Count; $i++) {
         $aAryRow = $aSecGrp[$i];
         $sOptList .= "<option value=\"" . $aAryRow['lst_OptionID'] . "\"";
-        if ($aAryRow['lst_OptionName'] == $currOpt) 
-        { 
-            $sOptList .= " selected"; 
+        if ($aAryRow['lst_OptionName'] == $currOpt)
+        {
+            $sOptList .= " selected";
         }
         $sOptList .= ">" . $aAryRow['lst_OptionName']."</option>\n";
     }
@@ -367,7 +367,7 @@ else
                 <input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="35" maxlength="40">
                 <?php
                 if ( $aNameErrors[$row] )
-                    echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
+                    echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name") . " </span>";
                 ?>
             </td>
             <td class="TextColumn" align="center">
@@ -411,7 +411,7 @@ else
                 <input type="radio" Name="<?= $row ?>side" value="1" <?= $aSideFields[$row] ? " checked" : ''?>><?= gettext("Right") ?>
             </td>
             <td>
-                <input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>"   name="delete" onclick="return confirmDeleteField('<?= $aFieldFields[$row] ?>');">
+                <input type="button" class="btn btn-danger" value="<?= gettext("Delete") ?>"   name="delete" onclick="return confirmDeleteField('<?= $aFieldFields[$row] ?>');">
             </td>
             <td class="TextColumn" width="5%" nowrap>
                 <?php
@@ -419,10 +419,10 @@ else
                     echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=up\"><img src=\"Images/uparrow.gif\" border=\"0\"></a>";
                 if ($row < $numRows)
                     echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . "&Action=down\"><img src=\"Images/downarrow.gif\" border=\"0\"></a>";
-		
+
                 ?>
             </td>
-            
+
         </tr>
     <?php } ?>
 
@@ -448,7 +448,7 @@ else
                 <tr>
                     <td width="15%"></td>
                     <td valign="top">
-                    <div><?= gettext("Type:") ?></div>
+                    <div><?= gettext("Type") ?>:</div>
                     <?php
                         echo "<select name=\"newFieldType\">";
 
@@ -462,7 +462,7 @@ else
                     <a href="http://docs.churchcrm.io/"><?= gettext("Help on types..") ?></a>
                     </td>
                     <td valign="top">
-                        <div><?= gettext("Name:") ?></div>
+                        <div><?= gettext("Name") ?>:</div>
                         <input type="text" name="newFieldName" size="30" maxlength="40">
                         <?php
                             if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>";
@@ -475,7 +475,7 @@ else
                         <?= GetSecurityList($aSecurityGrp, "newFieldSec") ?>
                     </td>
                     <td valign="top" nowrap>
-                        <div><?= gettext("Side:") ?></div>
+                        <div><?= gettext("Side") ?>:</div>
                         <input type="radio" name="newFieldSide" value="0" checked><?= gettext("Left") ?>
                         <input type="radio" name="newFieldSide" value="1"><?= gettext("Right") ?>
                         &nbsp;

@@ -141,7 +141,7 @@ if (isset($_GET["Confirmed"]))
 		// Delete all associated Notes associated with this Family record
 		$sSQL = "DELETE FROM note_nte WHERE nte_fam_ID = " . $iFamilyID;
 		RunQuery($sSQL);
-		
+
 		// Delete Family pledges
 		$sSQL = "DELETE FROM pledge_plg WHERE plg_PledgeOrPayment = 'Pledge' AND plg_FamID = " . $iFamilyID;
 		RunQuery($sSQL);
@@ -226,7 +226,7 @@ if($sMode == 'person')
 		echo "<a href=\"PersonView.php?PersonID=" . $iPersonID . "\">" . gettext("Return to Person View")."</a></p>";
 	}	else {
 		echo "<div class=\"callout callout-warning\">";
-		echo gettext("Please confirm deletion of:") ." <strong>" . $per_FirstName . " " . $per_LastName. "</strong>";
+		echo gettext("Please confirm deletion of") .": <strong>" . $per_FirstName . " " . $per_LastName. "</strong>";
 		echo gettext(" (This action CANNOT be undone!)"). "<br/>";
 		echo "</div><p class='text-center'>";
 		echo "<a class=\"btn btn-danger\" href=\"SelectDelete.php?mode=person&PersonID=" . $iPersonID . "&Confirmed=Yes\">" . gettext("Yes, delete this record") . "</a> " ;
@@ -244,19 +244,19 @@ if($sMode == 'person')
 		// Donations from Family. Current user not authorized for Finance
 		echo "<p class=\"LargeText\">" . gettext("Sorry, there are records of donations from this family. This family may not be deleted.") . "<br><br>";
 		echo "<a href=\"FamilyView.php?FamilyID=" . $iFamilyID . "\">" . gettext("Return to Family View") . "</a></p>";
-	
+
 	} elseif ($bIsDonor && $_SESSION['bFinance']) {
-		// Donations from Family. Current user authorized for Finance. 
+		// Donations from Family. Current user authorized for Finance.
 		// Select another family to move donations to.
 		echo "<p class=\"LargeText\">" . gettext("WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.") . "</p>";
 		echo "<form name=SelectFamily method=get action=SelectDelete.php>";
 		echo "<div class=\"ShadedBox\">";
-		echo "<div class=\"LightShadedBox\"><strong>" . gettext("Family Name:") . " $fam_Name</strong></div>";
+		echo "<div class=\"LightShadedBox\"><strong>" . gettext("Family Name") . ":" . " $fam_Name</strong></div>";
 		echo "<p>" . gettext("Please select another family with whom to associate these donations:");
 		echo "<br><b>".gettext("WARNING: This action can not be undone and may have legal implications!")."</b></p>";
 		echo "<input name=FamilyID value=$iFamilyID type=hidden>";
 		echo "<select name=DonationFamilyID><option value=0 selected>". gettext("Unassigned") ."</option>";
-		
+
 		//Get Families for the drop-down
 		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
 		$rsFamilies = RunQuery($sSQL);
@@ -295,7 +295,7 @@ if($sMode == 'person')
 		echo "<input type=submit name=CancelFamily value=\"Cancel and Return to Family View\"> &nbsp; &nbsp; ";
 		echo "<input type=submit name=MoveDonations value=\"Move Donations to Selected Family\">";
 		echo "</div></form>";
-		
+
 		// Show payments connected with family
 		// -----------------------------------
 		echo "<br><br>";
@@ -366,15 +366,15 @@ if($sMode == 'person')
 		}
 		echo "</table>";
 
-	
+
 	} else {
 		// No Donations from family.  Normal delete confirmation
 		echo $DonationMessage;
 		echo "<p class='callout callout-warning'><b>" . gettext("Please confirm deletion of this family record:") . "</b><br/>";
 		echo  gettext("Note: This will also delete all Notes associated with this Family record.");
-		echo  gettext(" (this action cannot be undone)") . "</p>";
+		echo  gettext("(this action cannot be undone)") . "</p>";
 		echo "<div>";
-		echo "<strong>" . gettext("Family Name:") . "</strong>";
+		echo "<strong>" . gettext("Family Name") . ":</strong>";
 		echo "&nbsp;" . $fam_Name;
 		echo "</div><br/>";
 		echo "<div><strong>" . gettext("Family Members:") . "</strong><ul>";
@@ -389,7 +389,7 @@ if($sMode == 'person')
 		echo "</ul></div>";
 		echo "<p class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record ONLY") . "</a> ";
 		echo "<a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record AND Family Members") . "</a> ";
-		echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion</a>") . "</p>";
+		echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion") . "</a></p>";
 	}
 } ?>
 	</div>

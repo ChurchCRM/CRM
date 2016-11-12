@@ -99,7 +99,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?= gettext("Group Membership:") ?></td>
+        <td class="LabelColumn"><?= gettext("Group Membership") ?>:</td>
         <td class="TextColumn">
             <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="GroupID[]" size="5" multiple>
@@ -169,7 +169,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
         </td>
     </tr>
     <tr>
-        <td class="LabelColumn"><?= gettext("Information to Include:") ?></td>
+        <td class="LabelColumn"><?= gettext("Information to Include") ?>:</td>
         <td class="TextColumn">
             <input type="checkbox" Name="bDirAddress" value="1" checked><?= gettext("Address") ?><br>
             <input type="checkbox" Name="bDirWedding" value="1" checked><?= gettext("Wedding Date") ?><br>
@@ -201,7 +201,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
         </td>
     </tr>
 	<tr>
-	 <td class="LabelColumn"><?= gettext("Number of Columns:") ?></td>
+	 <td class="LabelColumn"><?= gettext("Number of Columns") ?>:</td>
  	 <td class="TextColumn">
 		    <input type="radio" Name="NumCols" value=1>1 col<br>
 		    <input type="radio" Name="NumCols" value=2 checked>2 cols<br>
@@ -209,7 +209,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 	</td>
 	</tr>
 	<tr>
-	 <td class="LabelColumn"><?= gettext("Paper Size:") ?></td>
+	 <td class="LabelColumn"><?= gettext("Paper Size") ?>:</td>
  	 <td class="TextColumn">
 		    <input type="radio" name="PageSize" value="letter" checked>Letter (8.5x11)<br>
 		    <input type="radio" name="PageSize" value="legal">Legal (8.5x14)<br>
@@ -217,7 +217,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 	</td>
 	</tr>
 	<tr>
-	 <td class="LabelColumn"><?= gettext("Font Size:") ?></td>
+	 <td class="LabelColumn"><?= gettext("Font Size") ?>:</td>
  	 <td class="TextColumn">
 		<table>
 		<tr>
@@ -233,7 +233,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
 	</td>
 	</tr>
     <tr>
-        <td class="LabelColumn"><?= gettext("Title page:") ?></td>
+        <td class="LabelColumn"><?= gettext("Title page") ?>:</td>
         <td class="TextColumn">
             <table>
                 <tr>

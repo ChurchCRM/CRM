@@ -52,7 +52,7 @@ require "Include/Header.php";
 ?>
 
 <p>
-	<?= gettext("Please confirm deletion of this property:") ?>
+	<?= gettext("Please confirm deletion of this property") ?>:
 </p>
 
 <p class="ShadedBox">

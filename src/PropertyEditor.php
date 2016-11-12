@@ -73,14 +73,14 @@ if (isset($_POST["Submit"]))
 	//Did they enter a name?
 	if (strlen($sName) < 1 )
 	{
-		$sNameError = "<br><font color=\"red\">" . gettext("You must enter a Name") . "</font>";
+		$sNameError = "<br><font color=\"red\">" . gettext("You must enter a name") . "</font>";
 		$bError = True;
 	}
 
 	//Did they select a Type
 	if (strlen($iClass) < 1)
 	{
-		$sClassError = "<br><font color=\"red\">" . gettext("You must select a Type") . "</font>";
+		$sClassError = "<br><font color=\"red\">" . gettext("You must select a type") . "</font>";
 		$bError = True;
 	}
 
@@ -142,7 +142,7 @@ require "Include/Header.php";
     <div class="form-group">
         <div class="row">
             <div class="col-md-6">
-                <label for="Class"><?= gettext("Type:") ?></label>
+                <label for="Class"><?= gettext("Type") ?>:</label>
                 <select  class="form-control input-small" name="Class">
                     <option value=""><?= gettext("Select Property Type") ?></option>
                     <?php
@@ -161,7 +161,7 @@ require "Include/Header.php";
         </div>
         <div class="row">
             <div class="col-md-6">
-                <label for="Name"><?= gettext("Name:") ?></label>
+                <label for="Name"><?= gettext("Name") ?>:</label>
                 <input class="form-control input-small" type="text" name="Name" value="<?= htmlentities(stripslashes($sName),ENT_NOQUOTES, "UTF-8") ?>" size="50">
                 <?php echo $sNameError ?>
            </div>
@@ -174,7 +174,7 @@ require "Include/Header.php";
         </div>
         <div class="row">
             <div class="col-md-6">
-                <label for="Prompt"><?= gettext("Prompt:") ?></label>
+                <label for="Prompt"><?= gettext("Prompt") ?>:</label>
                 <input class="form-control input-small" type="text" name="Prompt" value="<?php echo htmlentities(stripslashes($sPrompt),ENT_NOQUOTES, "UTF-8") ?>" size="50">
                 <span class="SmallText"><?= gettext("Entering a Prompt value will allow the association of a free-form value.") ?></span>
             </div>

@@ -30,7 +30,7 @@ if ($iFundRaiserID>0) {
 }
 
 if ($iFundRaiserID > 0) {
-	$sPageTitle = gettext("Fund Raiser #") . $iFundRaiserID . " " . $fr_title;
+	$sPageTitle = gettext("Fundraiser"). " #" . $iFundRaiserID . " " . $fr_title;
 } else {
 	$sPageTitle = gettext("Create New Fund Raiser");
 }
@@ -44,7 +44,7 @@ if (isset($_POST["FundRaiserSubmit"]))
 	$dDate = FilterInputArr($_POST,"Date");
 	$sTitle = FilterInputArr($_POST,"Title");
 	$sDescription = FilterInputArr($_POST,"Description");
-	
+
 	//Initialize the error flag
 	$bErrorFlag = false;
 
@@ -54,7 +54,7 @@ if (isset($_POST["FundRaiserSubmit"]))
 		list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
 		if ( !checkdate($iMonth,$iDay,$iYear) )
 		{
-			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid Date") . "</span>";
+			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid date") . "</span>";
 			$bErrorFlag = true;
 		}
 	}
@@ -103,7 +103,7 @@ if (isset($_POST["FundRaiserSubmit"]))
 	{
 		//Editing....
 		//Get all the data on this record
-																		
+
 		$sSQL = "SELECT * FROM fundraiser_fr WHERE fr_ID = " . $iFundRaiserID;
 		$rsFundRaiser = RunQuery($sSQL);
 		extract(mysql_fetch_array($rsFundRaiser));
@@ -129,7 +129,7 @@ if ($iFundRaiserID > 0) {
 	         FROM donateditem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-	         WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY di_multibuy,substr(di_item,1,1),cast(substr(di_item,2) as unsigned integer),substr(di_item,4)"; 
+	         WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY di_multibuy,substr(di_item,1,1),cast(substr(di_item,2) as unsigned integer),substr(di_item,4)";
 	 $rsDonatedItems = RunQuery($sSQL);
 } else {
 	$rsDonatedItems = 0;
@@ -171,17 +171,17 @@ require "Include/Header.php";
 		<td>
 		<table cellpadding="3">
 			<tr>
-				<td class="LabelColumn"><?= gettext("Date:") ?></td>
+                <td class="LabelColumn"><?= gettext("Date") ?>:</td>
 				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><font color="red"><?php echo $sDateError ?></font></td>
 			</tr>
-			
+
 			<tr>
-				<td class="LabelColumn"><?= gettext("Title:") ?></td>
+				<td class="LabelColumn"><?= gettext("Title") ?>:</td>
 				<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?= $sTitle ?>"></td>
 			</tr>
 
 			<tr>
-				<td class="LabelColumn"><?= gettext("Description:") ?></td>
+				<td class="LabelColumn"><?= gettext("Description") ?>:</td>
 				<td class="TextColumn"><input type="text" name="Description" id="Description" value="<?= $sDescription ?>"></td>
 			</tr>
 		</table>
@@ -192,19 +192,19 @@ require "Include/Header.php";
 <br>
 </div>
 <div class="box box-body">
-<b><?= gettext("Donated items for this fundraiser:") ?></b>
+<b><?= gettext("Donated items for this fundraiser") ?>:</b>
 <br>
 
 <table cellpadding="5" cellspacing="0" width="100%">
 
 <tr class="TableHeader">
 	<td><?= gettext("Item") ?></td>
-	<td><?= gettext("Multiple") ?></td>	
+	<td><?= gettext("Multiple") ?></td>
 	<td><?= gettext("Donor") ?></td>
 	<td><?= gettext("Buyer") ?></td>
 	<td><?= gettext("Title") ?></td>
 	<td><?= gettext("Sale Price") ?></td>
-	<td><?= gettext("Est Value") ?></td>
+	<td><?= gettext("Estimated value") ?></td>
 	<td><?= gettext("Material Value") ?></td>
 	<td><?= gettext("Minimum Price") ?></td>
 	<td><?= gettext("Delete") ?></td>
@@ -218,11 +218,11 @@ if ($rsDonatedItems != 0) {
 	while ($aRow = mysql_fetch_array($rsDonatedItems))
 	{
 		extract($aRow);
-		
+
 		if ($di_Item == "") {
 			$di_Item = "~";
 		}
-	
+
 		$sRowClass = "RowColorA";
 	?>
 		<tr class="<?= $sRowClass ?>">

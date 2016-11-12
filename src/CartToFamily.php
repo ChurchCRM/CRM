@@ -185,7 +185,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
     <div class="box">
 <table align="center" class="table table-responsive">
 	<tr>
-		<td class="LabelColumn"><?= gettext("Add to Family:") ?></td>
+		<td class="LabelColumn"><?= gettext("Add to Family") ?>:</td>
 		<td class="TextColumn">
 			<?php
 			// Create the family select drop-down
@@ -207,17 +207,17 @@ if (count($_SESSION['aPeopleCart']) > 0)
 
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Family Name:") ?></td>
+		<td class="LabelColumn"><?= gettext("Family Name") ?>:</td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48"><font color="red"><?= $sNameError ?></font></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Wedding Date:") ?></td>
+        <td class="LabelColumn"><?= gettext("Wedding Date") ?>:</td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><font color="red"><?php echo "<BR>" . $sWeddingDateError ?></font></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Use address/contact data from:") ?></td>
+		<td class="LabelColumn"><?= gettext("Use address/contact data from") ?>:</td>
 		<td class="TextColumn">
 			<?php
 			echo "<select name=\"PersonAddress\">";
@@ -236,22 +236,22 @@ if (count($_SESSION['aPeopleCart']) > 0)
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Address1:") ?></td>
+		<td class="LabelColumn"><?= gettext("Address") ?> 1:</td>
 		<td class="TextColumn"><input type="text" Name="Address1" value="<?= $sAddress1 ?>" size="50" maxlength="250"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Address2:") ?></td>
+		<td class="LabelColumn"><?= gettext("Address") ?> 2:</td>
 		<td class="TextColumn"><input type="text" Name="Address2" value="<?= $sAddress2 ?>" size="50" maxlength="250"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("City:") ?></td>
+		<td class="LabelColumn"><?= gettext("City") ?>:</td>
 		<td class="TextColumn"><input type="text" Name="City" value="<?= $sCity ?>" maxlength="50"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("State:") ?></td>
+		<td class="LabelColumn"><?= gettext("State") ?>:</td>
 		<td class="TextColumn">
 			<?php require "Include/StateDropDown.php"; ?>
 			OR
@@ -264,9 +264,9 @@ if (count($_SESSION['aPeopleCart']) > 0)
 		<td class="LabelColumn">
 			<?php
 			if($sCountry == "Canada")
-			  echo gettext("Postal Code:");
+			  echo gettext("Postal Code").":";
 			else
-			  echo gettext("Zip:");
+			  echo gettext("Zip").":";
 			?>
 		</td>
 		<td class="TextColumn">
@@ -276,7 +276,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Country:") ?></td>
+		<td class="LabelColumn"><?= gettext("Country") ?>:</td>
 		<td class="TextColumnWithBottomBorder">
 			<?php require "Include/CountryDropDown.php" ?>
 		</td>
@@ -287,7 +287,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Home Phone:") ?></td>
+		<td class="LabelColumn"><?= gettext("Home Phone") ?>:</td>
 		<td class="TextColumn">
 			<input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30">
 			<input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
@@ -295,7 +295,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Work Phone:") ?></td>
+		<td class="LabelColumn"><?= gettext("Work Phone") ?>:</td>
 		<td class="TextColumn">
 			<input type="text" name="WorkPhone" value="<?php echo $sWorkPhone ?>" size="30" maxlength="30">
 			<input type="checkbox" name="NoFormat_WorkPhone" value="1" <?php if ($bNoFormat_WorkPhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
@@ -303,7 +303,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Mobile Phone:") ?></td>
+		<td class="LabelColumn"><?= gettext("Mobile Phone") ?>:</td>
 		<td class="TextColumn">
 			<input type="text" name="CellPhone" value="<?php echo $sCellPhone ?>" size="30" maxlength="30">
 			<input type="checkbox" name="NoFormat_CellPhone" value="1" <?php if ($bNoFormat_CellPhone) echo " checked";?>><?= gettext("Do not auto-format") ?>
@@ -311,7 +311,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Email:") ?></td>
+		<td class="LabelColumn"><?= gettext("Email") ?>:</td>
 		<td class="TextColumnWithBottomBorder"><input type="text" Name="Email" value="<?= $sEmail ?>" size="30" maxlength="50"></td>
 	</tr>
 

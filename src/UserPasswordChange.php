@@ -219,16 +219,16 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
                 <div class="box-body">
                     <?php if (!$bAdminOtherUser) { ?>
                     <div class="form-group">
-                        <label for="OldPassword"><?= gettext("Old Password:") ?></label>
+                        <label for="OldPassword"><?= gettext("Old Password") ?>:</label>
                         <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?= $sOldPassword ?>" autofocus><?= $sOldPasswordError ?>
                     </div>
                     <?php } ?>
                     <div class="form-group">
-                        <label for="NewPassword1"><?= gettext("New Password:") ?></label>
+                        <label for="NewPassword1"><?= gettext("New Password") ?>:</label>
                         <input type="password" name="NewPassword1" id="NewPassword1" class="form-control" value="<?= $sNewPassword1 ?>">
                     </div>
                     <div class="form-group">
-                        <label for="NewPassword2"><?= gettext("Confirm New Password:") ?></label>
+                        <label for="NewPassword2"><?= gettext("Confirm New Password") ?>:</label>
                         <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?= $sNewPassword2 ?>"><?= $sNewPasswordError ?>
                     </div>
                 </div>

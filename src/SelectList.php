@@ -480,7 +480,7 @@ if ($iMode == 1) {
 ?>
 
 <table align="center"><tr><td align="center">
-<?= gettext("Sort order:") ?>
+<?= gettext("Sort order") ?>:
 <select name="Sort" onchange="this.form.submit()">
 		<option value="name" <?php if ($sSort == "name" || empty($sSort)) echo "selected";?>><?= gettext("By Name") ?></option>
 		<option value="family" <?php if ($sSort == "family") echo "selected";?>><?= gettext("By Family") ?></option>
@@ -1058,7 +1058,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 		if (isset($zip))
 			echo $zip;
 		else
-			echo gettext("unassigned");
+			echo gettext("Unassigned");
 	} ?>
 	</td>
     <td>
