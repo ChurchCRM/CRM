@@ -233,8 +233,8 @@ if (isset($_POST["UploadCSV"]))
                 <option value="5"><?= gettext("Suffix") ?></option>
                 <option value="6"><?= gettext("Gender") ?></option>
                 <option value="7"><?= gettext("Donation Envelope") ?></option>
-                <option value="8"><?= gettext("Address 1") ?></option>
-                <option value="9"><?= gettext("Address 2") ?></option>
+                <option value="8"><?= gettext("Address") ?> 1</option>
+                <option value="9"><?= gettext("Address") ?> 2</option>
                 <option value="10"><?= gettext("City") ?></option>
                 <option value="11"><?= gettext("State") ?></option>
                 <option value="12"><?= gettext("Zip") ?></option>

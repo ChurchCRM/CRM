@@ -684,11 +684,11 @@ require "Include/Header.php";
 				<p/>
 				<div class="row">
 					<div class="col-md-6">
-						<label><?= gettext("Address 1") ?>:</label>
+						<label><?= gettext("Address") ?> 1:</label>
 							<input type="text" Name="Address1" value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, "UTF-8") ?>" size="50" maxlength="250"  class="form-control">
 					</div>
 					<div class="col-md-6">
-						<label><?= gettext("Address 2") ?>:</label>
+						<label><?= gettext("Address") ?> 2:</label>
 						<input type="text" Name="Address2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, "UTF-8") ?>" size="50" maxlength="250"  class="form-control">
 					</div>
 					<div class="col-md-6">

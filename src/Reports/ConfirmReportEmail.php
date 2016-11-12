@@ -145,11 +145,11 @@ while ($aFam = mysql_fetch_array($rsFamilies))
   $pdf->SetFont("Times", '', 10);
   $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_Name); $curY += $pdf->incrementY;
   $pdf->SetFont("Times", 'B', 10);
-  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Address 1"));
+  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Address"). " 1");
   $pdf->SetFont("Times", '', 10);
   $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_Address1); $curY += $pdf->incrementY;
   $pdf->SetFont("Times", 'B', 10);
-  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Address 2"));
+  $pdf->WriteAtCell($pdf->leftX, $curY, $dataCol - $pdf->leftX, gettext("Address"). " 2");
   $pdf->SetFont("Times", '', 10);
   $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_Address2); $curY += $pdf->incrementY;
   $pdf->SetFont("Times", 'B', 10);

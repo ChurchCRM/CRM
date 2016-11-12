@@ -750,7 +750,7 @@ require "Include/Header.php";
                                 <?php if ($bFamilyAddress1)
                                     echo "<span style=\"color: red;\">";
 
-                                echo gettext("Address1").":";
+                                echo gettext("Address")." 1:";
 
                                 if ($bFamilyAddress1)
                                     echo "</span>";
@@ -765,7 +765,7 @@ require "Include/Header.php";
                                 <?php if ($bFamilyAddress2)
                                     echo "<span style=\"color: red;\">";
 
-                                echo gettext("Address2").":";
+                                echo gettext("Address")." 2:";
 
                                 if ($bFamilyAddress2)
                                     echo "</span>";
