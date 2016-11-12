@@ -6,6 +6,7 @@ use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\GroupQuery;
+use ChurchCRM\Person2group2roleP2g2rQuery;
 
 
 $app->group('/kioskdevices', function () {
@@ -19,7 +20,9 @@ $app->group('/kioskdevices', function () {
     });
     
     $this->get('/{guid}/activeClassMembers', function ($request, $response, $args) {
-      $ssClass = GroupQuery::create()->filterById(2)->find();
+     $ssClass = ChurchCRM\Person2group2roleP2g2rQuery::create()
+            ->joinWithPerson()
+            ->findByGroupId(2);
       return $ssClass->toJSON();
      
 
