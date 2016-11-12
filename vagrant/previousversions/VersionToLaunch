@@ -1,3 +1,4 @@
+# Un-comment any of the lines in the file, and then run "vagrant up" to build the "uncommented" version
 #1.2.14
 #2.0.0
 #2.0.1
@@ -14,6 +15,6 @@
 #2.2.1
 #2.2.2
 #2.2.3
-2.2.4
+#2.2.4
 #2.3.1
-#2.3.2
+2.3.2
