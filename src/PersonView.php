@@ -242,7 +242,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 echo gettext("(No assigned family)");
               ?>
 						</span></li>
-          <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext("Address:"); ?> <span>
+          <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext("Address"); ?>: <span>
 						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>

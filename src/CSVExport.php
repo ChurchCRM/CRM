@@ -105,12 +105,12 @@ require "Include/Header.php";
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Address1") ?>:</label>
+            <label><?= gettext("Address") ?> 1:</label>
             <input type="checkbox" name="Address1" value="1" checked>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext("Address2") ?>:</label>
+            <label><?= gettext("Address") ?> 2:</label>
             <input type="checkbox" name="Address2" value="1" checked>
           </div>
 

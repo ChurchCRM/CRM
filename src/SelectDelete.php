@@ -372,7 +372,7 @@ if($sMode == 'person')
 		echo $DonationMessage;
 		echo "<p class='callout callout-warning'><b>" . gettext("Please confirm deletion of this family record:") . "</b><br/>";
 		echo  gettext("Note: This will also delete all Notes associated with this Family record.");
-		echo  gettext(" (this action cannot be undone)") . "</p>";
+		echo  gettext("(this action cannot be undone)") . "</p>";
 		echo "<div>";
 		echo "<strong>" . gettext("Family Name") . ":</strong>";
 		echo "&nbsp;" . $fam_Name;
@@ -389,7 +389,7 @@ if($sMode == 'person')
 		echo "</ul></div>";
 		echo "<p class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record ONLY") . "</a> ";
 		echo "<a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . "\">" . gettext("Delete Family Record AND Family Members") . "</a> ";
-		echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion</a>") . "</p>";
+		echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=".$iFamilyID."\">" . gettext("No, cancel this deletion") . "</a></p>";
 	}
 } ?>
 	</div>

@@ -331,7 +331,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
 	if (strlen($dDate) > 0) {
 		list($iYear, $iMonth, $iDay) = sscanf($dDate,"%04d-%02d-%02d");
 		if ( !checkdate($iMonth,$iDay,$iYear) ) {
-			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid Date") . "</span>";
+			$sDateError = "<span style=\"color: red; \">" . gettext("Not a valid date") . "</span>";
 			$bErrorFlag = true;
 		}
 	}
@@ -594,8 +594,8 @@ require "Include/Header.php";
 				<td class="TextColumnWithBottomBorder">
 					<select name="Method">
 						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "Bank" || !$iCurrentDeposit) { ?>
-						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?= gettext("CHECK"); 						?></option>
-						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?= gettext("CASH"); 						?></option>
+						<option value="CHECK" <?php if ($iMethod == "CHECK") { echo "selected"; } ?>><?= gettext("Check"); 						?></option>
+						<option value="CASH" <?php if ($iMethod == "CASH") { echo "selected"; } ?>><?= gettext("Cash"); 						?></option>
 						<?php } ?>
 						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "CreditCard" || !$iCurrentDeposit) { ?>
 						<option value="CREDITCARD" <?php if ($iMethod == "CREDITCARD") { echo "selected"; } ?>><?= 						gettext("Credit Card") ?></option>
@@ -678,7 +678,7 @@ $(document).ready(function() {
 
 			<?php if ($PledgeOrPayment == 'Payment' && $dep_Type == 'Bank') { ?>
 				<tr>
-					<td class="PaymentLabelColumn"><?= gettext("Check #") ?></td>
+					<td class="PaymentLabelColumn"><?= gettext("Check") ?> #</td>
 					<td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"><font color="red"><?= $sCheckNoError ?></font></td>
 				</tr>
 			<?php } ?>

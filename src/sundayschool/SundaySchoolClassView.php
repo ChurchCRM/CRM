@@ -33,7 +33,7 @@ $genderChartJSON = implode(",", $genderChartArray);
 
 
 $rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, "Teacher");
-$sPageTitle = gettext("Sunday School: ") . $iGroupName;
+$sPageTitle = gettext("Sunday School") . ": " . $iGroupName;
 
 $TeachersEmails = array();
 $KidsEmails = array();

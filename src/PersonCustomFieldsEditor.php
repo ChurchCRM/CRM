@@ -321,7 +321,7 @@ require "Include/Header.php"; ?>
                      maxlength="40">
               <?php
               if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row])
-                echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
+                echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name") . " </span>";
               ?>
             </td>
             <td class="TextColumn" align="center">
@@ -368,7 +368,7 @@ require "Include/Header.php"; ?>
                      value="1" <?php if ($aSideFields[$row]) echo " checked" ?>><?= gettext("Right") ?>
             </td>
             <td>
-              <input type="button" class="btn btn-danger" value="<?= gettext("delete") ?>" name="delete"
+              <input type="button" class="btn btn-danger" value="<?= gettext("Delete") ?>" name="delete"
                      onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);" )">
             </td>
             <td class="TextColumn" width="5%" nowrap>

@@ -236,12 +236,12 @@ if (count($_SESSION['aPeopleCart']) > 0)
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Address1") ?>:</td>
+		<td class="LabelColumn"><?= gettext("Address") ?> 1:</td>
 		<td class="TextColumn"><input type="text" Name="Address1" value="<?= $sAddress1 ?>" size="50" maxlength="250"></td>
 	</tr>
 
 	<tr>
-		<td class="LabelColumn"><?= gettext("Address2") ?>:</td>
+		<td class="LabelColumn"><?= gettext("Address") ?> 2:</td>
 		<td class="TextColumn"><input type="text" Name="Address2" value="<?= $sAddress2 ?>" size="50" maxlength="250"></td>
 	</tr>
 

@@ -1058,7 +1058,7 @@ while ($aRow = mysql_fetch_array($rsPersons)) {
 		if (isset($zip))
 			echo $zip;
 		else
-			echo gettext("unassigned");
+			echo gettext("Unassigned");
 	} ?>
 	</td>
     <td>
