@@ -55,9 +55,9 @@ function Header_modals() {
           <h4 class="modal-title"><?= gettext("ERROR!") ?></h4>
         </div>
         <div class="modal-body">
-          <p><?= gettext("Error making API Call to:") ?> <span id="APIEndpoint"></span></p>
+          <p><?= gettext("Error making API Call to") ?>: <span id="APIEndpoint"></span></p>
 
-          <p><?= gettext("Error text:") ?> <span id="APIErrorText"></span></p>
+          <p><?= gettext("Error text") ?>: <span id="APIErrorText"></span></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal"><?= gettext("Close") ?></button>
@@ -82,7 +82,7 @@ function Header_modals() {
             <div class="container-fluid">
               <div class="row">
                 <div class="col-xl-3">
-                  <label for="issueTitle"><?= gettext("Enter a Title for your bug / feature report:") ?> </label>
+                  <label for="issueTitle"><?= gettext("Enter a Title for your bug / feature report") ?>: </label>
                 </div>
                 <div class="col-xl-3">
                   <input type="text" name="issueTitle" style="width:100%">

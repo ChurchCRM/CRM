@@ -74,19 +74,19 @@ require "Include/Header.php";
       <div class="form-group">
         <div class="row">
           <div class="col-xs-4">
-            <label for="Name"><?= gettext("Name:") ?></label>
+            <label for="Name"><?= gettext("Name") ?>:</label>
             <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup->getName()), ENT_NOQUOTES, "UTF-8") ?>">
           </div>
         </div>
         <div class="row">
           <div class="col-xs-4">
-            <label for="Description"><?= gettext("Description:") ?></label>
+            <label for="Description"><?= gettext("Description") ?>:</label>
             <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup->getDescription()), ENT_NOQUOTES, "UTF-8") ?></textarea></td>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-3">
-            <label for="GroupType"><?= gettext("Type of Group:") ?></label>
+            <label for="GroupType"><?= gettext("Type of Group") ?>:</label>
             <select class="form-control input-small" name="GroupType">
               <option value="0"><?= gettext("Unassigned") ?></option>
               <option value="0">-----------------------</option>
@@ -107,13 +107,13 @@ require "Include/Header.php";
 // Show Role Clone fields only when adding new group
             if (strlen($iGroupID) < 1) {
               ?>
-              <b><?= gettext("Group Member Roles:") ?></b>
+              <b><?= gettext("Group Member Roles") ?>:</b>
 
-              <?= gettext("Clone roles:") ?>
+              <?= gettext("Clone roles") ?>:
               <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
             </div>
             <div class="col-xs-3" id="selectGroupIDDiv">
-              <?= gettext("from group:") ?>
+              <?= gettext("from group") ?>:
               <select class="form-control input-small" name="seedGroupID" id="seedGroupID" >
                 <option value="0"><?php gettext("Select a group"); ?></option>
 
@@ -135,7 +135,7 @@ require "Include/Header.php";
             <?php
             if ($thisGroup->getHasSpecialProps()) {
               echo gettext('Enabled'). "<br/>";
-              echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">Disable Group Specific Properties</button><br/>';
+              echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">' . gettext("Disable Group Specific Properties") . '</button><br/>';
               echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID=' . $iGroupID . '">' . gettext("Edit Group-Specific Properties Form") . ' </a>';
             }
             else {
@@ -157,7 +157,7 @@ require "Include/Header.php";
 </div>
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext("Group Roles:") ?></h3>
+    <h3 class="box-title"><?= gettext("Group Roles") ?>:</h3>
   </div>
   <div class="box-body">
     <div class="alert alert-info alert-dismissable">
@@ -167,7 +167,7 @@ require "Include/Header.php";
     </div>
     <table class="table" id="groupRoleTable">
     </table>
-    <label for="newRole"><?= gettext("New Role:")?> </label><input type="text" class="form-control" id="newRole" name="newRole">
+    <label for="newRole"><?= gettext("New Role")?>: </label><input type="text" class="form-control" id="newRole" name="newRole">
     <br>
     <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext("Add New Role")?></button>
   </div>

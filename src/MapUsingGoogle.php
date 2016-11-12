@@ -160,7 +160,7 @@ if ($nChurchLatitude == "") {
     <div id="mapkey" class="col-lg-2 col-md-2 col-sm-2">
         <table>
             <tr>
-                <th colspan='2'><?= gettext("Key:") ?></th>
+                <th colspan='2'><?= gettext("Key") ?>:</th>
             </tr>
             <?php
                 $sSQL = "SELECT lst_OptionID, lst_OptionName from list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";

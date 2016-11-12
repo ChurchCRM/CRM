@@ -53,7 +53,7 @@ require 'Include/Header.php';
   $('#restoredatabase').submit(function (event) {
     event.preventDefault();
     $("#restorestatus").css("color", "orange");
-    $("#restorestatus").html("Restore Running, Please wait.");
+    $("#restorestatus").html(<?= gettext("Restore Running, Please wait.")?>);
     var formData = new FormData($(this)[0]);
     $.ajax({
       url: window.CRM.root + '/api/database/restore',

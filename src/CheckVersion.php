@@ -71,7 +71,7 @@ if ($systemService->checkDatabaseVersion())  //either the DB is good, or the upg
         <div class="box box-danger">
           <div class="box-body">
             <p>
-              <?= gettext("Please check the following resources for assistance:") ?>
+              <?= gettext("Please check the following resources for assistance") ?>:
             <ul>
               <li><a href="https://github.com/ChurchCRM/CRM/issues" target="_blank"><?= gettext("GitHub issues") ?></a></li>
               <li><a href="https://gitter.im/ChurchCRM/CRM" target="_blank"><?= gettext("Developer Chat") ?></a></li>

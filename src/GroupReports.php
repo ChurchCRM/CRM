@@ -36,13 +36,13 @@ require "Include/Header.php";
         <div class="col-lg-12">
             <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Select the group you would like to report:") ?></h3>
+                <h3 class="box-title"><?= gettext("Select the group you would like to report") ?>:</h3>
             </div>
             <div class="box-body">
                 <form method="POST" action="GroupReports.php">
                     <div class="row">
                         <div class="col-xs-6">
-                            <label for="GroupID"><?= gettext("Select Group:") ?></label>
+                            <label for="GroupID"><?= gettext("Select Group") ?>:</label>
                             <select id="GroupID" name="GroupID" onChange="UpdateRoles();">
                                 <?php
                                 // Create the group select drop-down
@@ -57,7 +57,7 @@ require "Include/Header.php";
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <label for=""><?= gettext("Select Role:") ?></label>
+                            <label for=""><?= gettext("Select Role") ?>:</label>
                             <select name="GroupRole" id="GroupRole">
                                 <option><?= gettext("No Role Selected") ?></option>
                             </select>
@@ -65,13 +65,13 @@ require "Include/Header.php";
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <label for="OnlyCart"><?= gettext("Only cart persons?:") ?></label>
+                            <label for="OnlyCart"><?= gettext("Only cart persons?") ?>:</label>
                             <input type="checkbox" Name="OnlyCart" value="1">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <label for="ReportModel"><?= gettext("Report Model:") ?></label>
+                            <label for="ReportModel"><?= gettext("Report Model") ?>:</label>
                             <input type="radio" Name="ReportModel" value="1" checked><?= gettext("Report for group and role selected") ?>
                             <input type="radio" Name="ReportModel" value="2"><?= gettext("Report for any role in group selected") ?>
                             <?php
@@ -127,7 +127,7 @@ else {
 
                         <table align="center">
                             <tr>
-                                <td class="LabelColumn"><?= gettext("Standard Info:") ?></td>
+                                <td class="LabelColumn"><?= gettext("Standard Info") ?>:</td>
                                 <td class="TextColumn">
                                     <input type="checkbox" Name="AddressEnable" value="1"> <?= gettext("Address") ?> <br>
                                     <input type="checkbox" Name="HomePhoneEnable" value="1"> <?= gettext("Home Phone") ?> <br>
@@ -139,7 +139,7 @@ else {
                                 </td>
                             </tr>
                             <tr>
-                                <td class="LabelColumn"><?= gettext("Group-Specific Property Fields:") ?></td>
+                                <td class="LabelColumn"><?= gettext("Group-Specific Property Fields") ?>:</td>
                                 <td class="TextColumn">
                                     <?php
                                     if (mysql_num_rows($rsPropFields) > 0) {
