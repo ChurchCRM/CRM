@@ -245,7 +245,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$curY += $pdf->incrementY;
 // Missing the following information for the personal record: ??? Is this the place to put this data ???
 // Work Phone
-		$pdf->WriteAtCell ($XWorkPhone, $curY, $XRight - $XWorkPhone, "Work Phone:" . $per_WorkPhone);
+		$pdf->WriteAtCell ($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext("Work Phone"). ":" . $per_WorkPhone);
 		$curY += $pdf->incrementY;
 		$curY += $pdf->incrementY;
 
