@@ -28,6 +28,7 @@ font-awesome
 ionicons
 fullcalendar
 moment
+/src/skin/locale
 
 # Configuration files with passwords
 src/Include/Config.php
