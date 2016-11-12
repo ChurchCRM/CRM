@@ -16,6 +16,10 @@
     "url": "https://github.com/ChurchCRM/CRM/issues"
   },
   "homepage": "http://www.churchcrm.io",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "^1.0.1"
+  },
   "dependencies": {
     "admin-lte": "2.3.7",
     "ionicons": "2.0.1",
