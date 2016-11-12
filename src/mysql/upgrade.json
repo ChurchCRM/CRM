@@ -77,13 +77,5 @@
     "scripts": [
     ],
     "dbVersion": "2.3.3"
-  },
-  "pre-2.4.0" : {
-    "versions": [
-      "2.3.3"
-    ],
-    "scripts": [
-    ],
-    "dbVersion": "2.4.0"
   }
 }
