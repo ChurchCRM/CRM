@@ -16,30 +16,40 @@ use ChurchCRM\Base\Version as BaseVersion;
  */
 class Version extends BaseVersion
 {
+  private function in_array_recursive($needle, $haystack) { 
+    $it = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($haystack)); 
+    foreach($it AS $element) { 
+        if($element == $needle) { 
+            return true; 
+        } 
+    } 
+    return false; 
+} 
   public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null) 
   {
     //before we try to save this version object to the database, ensure that 
     //the database has the correct columns to accomedate the version data
-    $connection = \Propel\Runtime\Propel::getConnection();
+   
     $query = "DESCRIBE version_ver";
-    $statement = $connection->prepare($query);
+    $statement = $con->prepare($query);
     $resultset = $statement->execute();
     $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
     
-    if ( !in_array_recursive( "ver_update_start",$results)) //the versions table does not contain the ver_update_start column.
+    if ( ! $this->in_array_recursive( "ver_update_start",$results)) //the versions table does not contain the ver_update_start column.
     {
       $query = "ALTER TABLE version_ver CHANGE COLUMN ver_date ver_update_start datetime default NULL;";
-      $statement = $connection->prepare($query);
+      $statement = $con->prepare($query);
       $resultset = $statement->execute();
     }
     
-    if ( !in_array_recursive("ver_update_start",$results)) //the versions table does not contain the ver_update_end column.
+    if ( ! $this->in_array_recursive("ver_update_start",$results)) //the versions table does not contain the ver_update_end column.
     {
       $query = "ALTER TABLE version_ver ADD COLUMN ver_update_end datetime default NULL AFTER ver_update_start;";
-      $statement = $connection->prepare($query);
+      $statement = $con->prepare($query);
       $resultset = $statement->execute();
     }
     //then save this version
+    
     return true;
   }
 }
