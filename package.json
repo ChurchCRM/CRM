@@ -18,6 +18,7 @@
   "homepage": "http://www.churchcrm.io",
   "devDependencies": {
     "grunt": "~0.4.1",
+    "grunt-curl": "~2.2.0",
     "grunt-contrib-concat": "^1.0.1"
   },
   "dependencies": {
