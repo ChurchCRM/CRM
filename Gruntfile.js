@@ -85,9 +85,15 @@ module.exports = function (grunt) {
         src: ['node_modules/fullcalendar/dist/locale/zh-tw.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-TW.js'],
         dest: 'src/skin/locale/zh_TW.js'
       }
+    },
+    'curl-dir': {
+      'datatables': {
+        src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{Albanian,Chinese-traditional,Chinese,Dutch,English,French,German,Hungarian,Italian,Norwegian-Bokmal,Polish,Portuguese,Romanian,Russian,Spanish,Swedish,Vietnamese}.json'],
+        dest: 'src/skin/locale/datatables'
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
-
+  grunt.loadNpmTasks('grunt-curl');
 };
