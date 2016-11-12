@@ -10,6 +10,7 @@ if [ $launchversion == "1.2.14" ] ; then
   echo "bootstrapping 1.2.14"
   wget -nv -O /var/www/1.2.14.zip http://downloads.sourceforge.net/project/churchinfo/churchinfo/1.2.14/churchinfo-1.2.14.zip
   unzip -d /var/www/public /var/www/1.2.14.zip
+  shopt -s dotglob
   mv  /var/www/public/churchinfo/* /var/www/public/
   CRM_DB_INSTALL_SCRIPT="/vagrant/src/SQL/Install.sql"
   CRM_DB_USER="churchinfo"
@@ -21,6 +22,7 @@ elif [[ $launchversion =~ [2\.] ]] ; then
   filename=ChurchCRM-$launchversion.zip
   wget -nv -O /var/www/$filename https://github.com/ChurchCRM/CRM/releases/download/$launchversion/$filename
   unzip -d /var/www/public /var/www/$filename
+  shopt -s dotglob  
   mv  /var/www/public/churchcrm/* /var/www/public/
   CRM_DB_INSTALL_SCRIPT="/vagrant/src/mysql/install/Install.sql"
   CRM_DB_USER="churchcrm"
