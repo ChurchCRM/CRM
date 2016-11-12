@@ -17,6 +17,7 @@ $settings = require __DIR__ . '/../Include/slim/settings.php';
 
 // routes
 require __DIR__ . '/routes/register.php';
+require __DIR__ . '/routes/kioskDevices.php';
 
 // Run app
 $app->run();
