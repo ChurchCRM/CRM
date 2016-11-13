@@ -36,6 +36,7 @@
     "install": "grunt curl-dir && grunt copy",
     "postinstall": "grunt concat && grunt rename",
     "locale-gen": "/vagrant/scripts/update-locale.sh",
-    "package": "php generateSignatures.php src && grunt compress"
+    "package": "php generateSignatures.php src && grunt compress",
+    "demosite": "/vagrant/scripts/demosite.sh"
   }
 }

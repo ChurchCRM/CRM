@@ -99,7 +99,8 @@ echo "===============   NPM                    ================="
 echo "=========================================================="
 
 cd /vagrant
-npm install --unsafe-perm --no-bin-links
+sudo npm install -g npm
+sudo npm install --unsafe-perm --no-bin-links
 
 echo "=========================================================="
 echo "=================   MailCatcher Setup  ==================="
