@@ -34,6 +34,6 @@
     "preinstall": "grunt clean",
     "install": "grunt curl-dir && grunt copy",
     "postinstall": "grunt concat && grunt rename",
-    "locale-gen": "cd src && find . -iname '*.php' | grep -v ./vendor | xargs xgettext --from-code=UTF-8 -o locale/messages.po -L PHP"
+    "locale-gen": "/vagrant/scripts/update-locale.sh"
   }
 }
