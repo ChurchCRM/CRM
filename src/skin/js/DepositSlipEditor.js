@@ -136,7 +136,7 @@ function initDepositSlipEditor()
     }
   });
 
-  $(".paymentRow").on('click', function() {
+  $(document).on('click',".paymentRow", function() {
     if (! ($(event.target).hasClass("details-control") || $(event.target).hasClass("fa")))
     {
       $(this).toggleClass('selected');
@@ -159,7 +159,7 @@ function initDepositSlipEditor()
     $.each(deletedRows, function(index, value) {
       $.ajax({
         type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root+'/api/payments/' + value.plg_GroupKey, // the url where we want to POST
+        url: window.CRM.root+'/api/payments/' + value.Groupkey, // the url where we want to POST
         dataType: 'json', // what type of data do we expect back from the server
         data: {"_METHOD":"DELETE"},
         encode: true

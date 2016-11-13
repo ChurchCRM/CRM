@@ -22,6 +22,7 @@ $(document).ready(function () {
       }).done(function (data) {                               //yippie, we got something good back from the server
         dataT.row.add(data);                                //add the group data to the existing DataTable
         dataT.rows().invalidate().draw(true);               //redraw the dataTable
+        $("#groupName").val(null);
       });
     }
     else
