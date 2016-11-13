@@ -17,7 +17,7 @@ require "Include/Header.php";
 <p><br/><br/></p>
 <div class="box">
     <div class="box-body table-responsive">
-        <table id="families" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="families" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th><?= gettext("Name")?></th>
@@ -68,6 +68,9 @@ require "Include/Header.php";
 <script type="text/javascript">
     $(document).ready(function() {
         $('#families').dataTable( {
+          "language": {
+            "url": window.CRM.root + "/skin/locale/datatables/"+ window.CRM.locale + ".json"
+          },
             "dom": 'T<"clear">lfrtip',
             "tableTools": {
                 "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"

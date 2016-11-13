@@ -230,6 +230,11 @@ require "../Include/Header.php";
 </div>
 <script type="application/javascript">
   $(document).ready(function () {
+    $('.data-table').dataTable({
+      "language": {
+        "url": window.CRM.root + "/skin/locale/dataTables/"+ window.CRM.locale + ".json"
+      }
+    });
 
     $("#addNewClassBtn").click(function (e) {
       var groupName = $("#new-class-name").val(); // get the name of the from the textbox
@@ -252,6 +257,7 @@ require "../Include/Header.php";
 
       }
     });
+
   });
 </script>
 <script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
