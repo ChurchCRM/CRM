@@ -405,10 +405,8 @@ class Deposit extends BaseDeposit
       //placeholder for generic deposit ticket.
     }
     //$this->generateBankDepositSlip($Report);
-   
 
-
-   // $this->generateDepositSummary($Report);
+    $this->generateDepositSummary($Report);
 
 
    // Export file
