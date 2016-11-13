@@ -17,7 +17,6 @@ use ChurchCRM;
  */
 class Version extends BaseVersion
 {
- 
   public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null) 
   {
     //before we try to save this version object to the database, ensure that 

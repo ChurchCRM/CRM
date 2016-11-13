@@ -2014,5 +2014,4 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
 }
 
 
-
 ?>
