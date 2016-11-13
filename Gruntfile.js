@@ -167,12 +167,41 @@ module.exports = function (grunt) {
           {src: ['src/skin/locale/datatables/Chinese-traditional.json'], dest: 'src/skin/locale/datatables/zh_TW.json'}
         ]
       }
+    },
+    compress: {
+      package: {
+        options: {
+          archive: 'target/ChurchCRM-<%= composer.version %>.zip',
+          mode: "zip",
+          pretty: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'src/',
+            src: [
+              '**',
+              '**/.*',
+              '!**/.gitignore',
+              '!vendor/**/example/**',
+              '!vendor/**/tests/**',
+              '!vendor/**/docs/**',
+              '!Images/Person/thumbnails/*.jpg',
+              '!composer.lock',
+              '!Include/Config.php',
+              '!integrityCheck.json'
+            ],
+            dest: 'churchcrm/'
+          }
+        ]
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-curl');
 };
