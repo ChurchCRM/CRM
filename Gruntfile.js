@@ -3,7 +3,8 @@ module.exports = function (grunt) {
 
 // Project configuration.
   grunt.initConfig({
-    pkg: grunt.file.readJSON('src/composer.json'),
+    composer: grunt.file.readJSON('src/composer.json'),
+    pkg: grunt.file.readJSON('package.json'),
     clean: {
       locale: ["src/skin/locale"],
       skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
@@ -16,7 +17,13 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: 'node_modules/admin-lte',
-            src: ['{dist,bootstrap,plugins}/**'],
+            src: [
+              '{dist,bootstrap,plugins}/**',
+              '!plugins/fullcalendar',
+              '!plugins/moment',
+              '!plugins/fastclick',
+              '!dist/img/**',
+              '!plugins/**/psd/**'],
             dest: 'src/skin/adminlte/'
           },
           {
@@ -49,7 +56,7 @@ module.exports = function (grunt) {
     concat: {
       options: {
         separator: ';\n\n',
-        banner: '/*! <%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+        banner: '/*! <%= composer.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       de_DE: {
         src: ['node_modules/fullcalendar/dist/locale/de.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.de.js'],
