@@ -29,6 +29,7 @@ ionicons
 fullcalendar
 moment
 /src/skin/locale
+/src/skin/fastclick
 
 # Configuration files with passwords
 src/Include/Config.php

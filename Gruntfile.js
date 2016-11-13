@@ -4,6 +4,48 @@ module.exports = function (grunt) {
 // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('src/composer.json'),
+    clean: {
+      locale: ["src/skin/locale"],
+      skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
+      release: ["target"]
+    },
+    copy: {
+      skin: {
+        files: [
+          // includes files within path and its sub-directories
+          {
+            expand: true,
+            cwd: 'node_modules/admin-lte',
+            src: ['{dist,bootstrap,plugins}/**'],
+            dest: 'src/skin/adminlte/'
+          },
+          {
+            expand: true,
+            cwd: 'node_modules/font-awesome',
+            src: ['{css,fonts,less,scss}/**'],
+            dest: 'src/skin/font-awesome/'
+          },
+          {
+            expand: true,
+            cwd: 'node_modules/ionicons',
+            src: ['{css,fonts,less,png}/**'],
+            dest: 'src/skin/ionicons/'
+          },
+          {
+            expand: true,
+            filter: 'isFile',
+            flatten: true,
+            src: ['node_modules/fullcalendar/dist/*'],
+            dest: 'src/skin/fullcalendar/'},
+          {
+            expand: true,
+            filter: 'isFile',
+            flatten: true,
+            src: ['node_modules/moment/min/*'],
+            dest: 'src/skin/moment/'}
+        ]
+      }
+    },
     concat: {
       options: {
         separator: ';\n\n',
@@ -90,6 +132,10 @@ module.exports = function (grunt) {
       datatables: {
         src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{Albanian,Chinese-traditional,Chinese,Dutch,English,French,German,Hungarian,Italian,Norwegian-Bokmal,Polish,Portuguese,Romanian,Russian,Spanish,Swedish,Vietnamese}.json'],
         dest: 'src/skin/locale/datatables'
+      },
+      fastclick: {
+        src: ['https://raw.githubusercontent.com/ftlabs/fastclick/569732a7aa5861d428731b8db022b2d55abe1a5a/lib/fastclick.js'],
+        dest: 'src/skin/fastclick'
       }
     },
     rename: {
@@ -117,6 +163,8 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-curl');
