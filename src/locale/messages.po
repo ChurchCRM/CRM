@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: strings.php:30
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-12 02:46+0000\n"
+"POT-Creation-Date: 2016-11-13 02:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +18,96 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ReminderReport.php:27
-msgid "Pledge Reminder Report"
+#: Register.php:22
+msgid "Software Registration"
 msgstr ""
 
-#: ReminderReport.php:46 SelectDelete.php:315
-#: sundayschool/SundaySchoolReports.php:147 AutoPaymentEditor.php:620
-#: ElectronicPaymentList.php:196 FamilyView.php:641 PledgeEditor.php:615
-msgid "Fiscal Year"
+#: Register.php:32
+msgid "If you need to make changes to registration data, go to "
 msgstr ""
 
-#: ReminderReport.php:56 TaxReport.php:53 FinancialReports.php:332
-#: GroupReports.php:160
-msgid "Create Report"
+#: Register.php:32
+msgid "Admin->Edit General Settings"
 msgstr ""
 
-#: ReminderReport.php:57 SettingsIndividual.php:120 SettingsIndividual.php:167
-#: SettingsUser.php:109 SettingsUser.php:171
+#: Register.php:39
+msgid ""
+"Please register your copy of ChurchCRM by checking over this information and "
+"pressing the Send button.  "
+msgstr ""
+
+#: Register.php:40
+msgid "This information is used only to track the usage of this software.  "
+msgstr ""
+
+#: Register.php:45 DirectoryReports.php:244 strings.php:61
+msgid "Church Name"
+msgstr ""
+
+#: Register.php:46 Include/Footer.php:24
+msgid "Version"
+msgstr ""
+
+#: Register.php:47 Reports/ConfirmReportEmail.php:148
+#: Reports/ConfirmReportEmail.php:152 AutoPaymentEditor.php:671
+#: AutoPaymentEditor.php:676 CartToFamily.php:239 CartToFamily.php:244
+#: CartView.php:602 CSVExport.php:108 CSVExport.php:113 CSVImport.php:236
+#: CSVImport.php:237 DirectoryReports.php:174 DirectoryReports.php:248
+#: external/templates/registration/family-register-done.php:26
+#: external/templates/registration/family-register.php:21 FamilyEditor.php:687
+#: FamilyEditor.php:691 FamilyList.php:25 FamilyView.php:172 GeoPage.php:326
+#: GroupReports.php:132 Menu.php:177 Menu.php:207 PersonEditor.php:753
+#: PersonEditor.php:768 PersonView.php:245
+msgid "Address"
+msgstr ""
+
+#: Register.php:48 AutoPaymentEditor.php:681 CartToFamily.php:249
+#: CSVExport.php:118 CSVImport.php:238 DirectoryReports.php:252
+#: external/templates/registration/family-register.php:27 FamilyEditor.php:695
+#: FamilyList.php:26 GeoPage.php:327 PersonEditor.php:783 strings.php:139
+msgid "City"
+msgstr ""
+
+#: Register.php:49 AutoPaymentEditor.php:686 CartToFamily.php:254
+#: CSVExport.php:123 CSVImport.php:239 DirectoryReports.php:256
+#: external/templates/registration/family-register.php:30 FamilyEditor.php:707
+#: FamilyList.php:27 GeoPage.php:328 PersonEditor.php:802 strings.php:138
+msgid "State"
+msgstr ""
+
+#: Register.php:50 AutoPaymentEditor.php:691 BackupDatabase.php:60
+#: CartToFamily.php:269 CSVExport.php:128 CSVImport.php:240
+#: DirectoryReports.php:260
+#: external/templates/registration/family-register.php:37 FamilyEditor.php:720
+#: FamilyList.php:28 GeoPage.php:329 PersonEditor.php:822
+msgid "Zip"
+msgstr ""
+
+#: Register.php:51 AutoPaymentEditor.php:696 CartToFamily.php:279
+#: CSVExport.php:138 CSVImport.php:241
+#: external/templates/registration/family-register.php:40 FamilyEditor.php:729
+#: PersonEditor.php:842
+msgid "Country"
+msgstr ""
+
+#: Register.php:52 strings.php:67
+msgid "Church Email"
+msgstr ""
+
+#: Register.php:53 Setup.php:179
+msgid "Base URL"
+msgstr ""
+
+#: Register.php:54
+msgid "Message"
+msgstr ""
+
+#: Register.php:59
+msgid "Send"
+msgstr ""
+
+#: Register.php:60 ReminderReport.php:57 SettingsIndividual.php:120
+#: SettingsIndividual.php:167 SettingsUser.php:109 SettingsUser.php:171
 #: sundayschool/SundaySchoolDashboard.php:225
 #: sundayschool/SundaySchoolReports.php:217 TaxReport.php:54 UserDelete.php:69
 #: UserEditor.php:418 UserEditor.php:517 WhyCameEditor.php:103
@@ -46,8 +120,24 @@ msgstr ""
 #: ManageEnvelopes.php:140 MemberRoleChange.php:126 MemberRoleChange.php:128
 #: NoteDelete.php:74 NoteEditor.php:135 PersonEditor.php:1061
 #: PersonView.php:832 PledgeDelete.php:56 PropertyEditor.php:184
-#: PropertyTypeEditor.php:116 Register.php:60
+#: PropertyTypeEditor.php:116
 msgid "Cancel"
+msgstr ""
+
+#: ReminderReport.php:27
+msgid "Pledge Reminder Report"
+msgstr ""
+
+#: ReminderReport.php:46 SelectDelete.php:315
+#: sundayschool/SundaySchoolReports.php:147 AutoPaymentEditor.php:620
+#: ElectronicPaymentList.php:196 FamilyView.php:641 PledgeEditor.php:615
+#: strings.php:168
+msgid "Fiscal Year"
+msgstr ""
+
+#: ReminderReport.php:56 TaxReport.php:53 FinancialReports.php:332
+#: GroupReports.php:160
+msgid "Create Report"
 msgstr ""
 
 #: ReportList.php:20
@@ -121,6 +211,7 @@ msgstr ""
 #: PersonCustomFieldsEditor.php:426 PersonView.php:581 PersonView.php:685
 #: PrintView.php:299 PrintView.php:434 PropertyEditor.php:164
 #: PropertyList.php:64 PropertyTypeEditor.php:106 PropertyTypeList.php:40
+#: strings.php:136
 msgid "Name"
 msgstr ""
 
@@ -142,7 +233,7 @@ msgid "Age"
 msgstr ""
 
 #: Reports/CanvassReports.php:248 Reports/VotingMembers.php:92 Checkin.php:518
-#: Include/Functions.php:1717 PersonView.php:205
+#: Include/Functions.php:1717 PersonView.php:205 strings.php:147
 msgid "Member"
 msgstr ""
 
@@ -165,7 +256,7 @@ msgstr ""
 #: FamilyEditor.php:792 FamilyView.php:214 FamilyView.php:217
 #: FamilyView.php:291 FamilyView.php:840 GroupReports.php:136
 #: PersonEditor.php:938 PersonEditor.php:940 PersonView.php:271
-#: PersonView.php:406 PrintView.php:258
+#: PersonView.php:406 PrintView.php:258 strings.php:145 strings.php:211
 msgid "Email"
 msgstr ""
 
@@ -209,7 +300,7 @@ msgstr ""
 #: external/templates/registration/family-register.php:45 FamilyEditor.php:760
 #: FamilyList.php:24 FamilyView.php:205 GroupReports.php:133
 #: PersonEditor.php:873 PersonEditor.php:875 PersonView.php:267
-#: PrintView.php:171
+#: PrintView.php:171 strings.php:140
 msgid "Home Phone"
 msgstr ""
 
@@ -257,19 +348,6 @@ msgstr ""
 #: Reports/ConfirmReport.php:190 Reports/ConfirmReport.php:210
 #: Reports/ConfirmReportEmail.php:213 Reports/ConfirmReportEmail.php:233
 msgid "Member/Friend"
-msgstr ""
-
-#: Reports/ConfirmReportEmail.php:148 Reports/ConfirmReportEmail.php:152
-#: AutoPaymentEditor.php:671 AutoPaymentEditor.php:676 CartToFamily.php:239
-#: CartToFamily.php:244 CartView.php:602 CSVExport.php:108 CSVExport.php:113
-#: CSVImport.php:236 CSVImport.php:237 DirectoryReports.php:174
-#: DirectoryReports.php:248
-#: external/templates/registration/family-register-done.php:26
-#: external/templates/registration/family-register.php:21 FamilyEditor.php:687
-#: FamilyEditor.php:691 FamilyList.php:25 FamilyView.php:172 GeoPage.php:326
-#: GroupReports.php:132 Menu.php:177 Menu.php:207 PersonEditor.php:753
-#: PersonEditor.php:768 PersonView.php:245 Register.php:47
-msgid "Address"
 msgstr ""
 
 #: Reports/DirectoryReport.php:186
@@ -417,7 +495,7 @@ msgstr ""
 msgid "Voting members "
 msgstr ""
 
-#: RestoreDatabase.php:25
+#: RestoreDatabase.php:25 strings.php:243
 msgid "Restore Database"
 msgstr ""
 
@@ -630,7 +708,7 @@ msgstr ""
 msgid "Person Listing"
 msgstr ""
 
-#: SelectList.php:171
+#: SelectList.php:171 strings.php:209
 msgid "Group Assignment Helper"
 msgstr ""
 
@@ -677,14 +755,14 @@ msgstr ""
 #: SelectList.php:510 SelectList.php:1032 CSVExport.php:348
 #: external/templates/registration/family-register-members.php:42
 #: FamilyEditor.php:982 PersonEditor.php:566 PrintView.php:217
-#: PrintView.php:326
+#: PrintView.php:326 strings.php:134
 msgid "Male"
 msgstr ""
 
 #: SelectList.php:515 SelectList.php:1033 CSVExport.php:349
 #: external/templates/registration/family-register-members.php:43
 #: FamilyEditor.php:983 PersonEditor.php:569 PrintView.php:220
-#: PrintView.php:326
+#: PrintView.php:326 strings.php:135
 msgid "Female"
 msgstr ""
 
@@ -933,16 +1011,12 @@ msgstr ""
 msgid "Root Path"
 msgstr ""
 
-#: Setup.php:179 Register.php:53
-msgid "Base URL"
-msgstr ""
-
 #: Setup.php:184
 msgid "Setup"
 msgstr ""
 
 #: sundayschool/SundaySchoolClassView.php:36
-#: sundayschool/SundaySchoolDashboard.php:215
+#: sundayschool/SundaySchoolDashboard.php:215 strings.php:210
 msgid "Sunday School"
 msgstr ""
 
@@ -989,7 +1063,7 @@ msgstr ""
 
 #: sundayschool/SundaySchoolClassView.php:169 CSVExport.php:338
 #: CSVImport.php:234 FamilyEditor.php:939 PersonEditor.php:560
-#: PrintView.php:210 PrintView.php:300
+#: PrintView.php:210 PrintView.php:300 strings.php:154
 msgid "Gender"
 msgstr ""
 
@@ -1118,7 +1192,7 @@ msgstr ""
 
 #: sundayschool/SundaySchoolDashboard.php:139
 #: sundayschool/SundaySchoolDashboard.php:215 PropertyTypeEditor.php:96
-#: PropertyTypeList.php:41
+#: PropertyTypeList.php:41 strings.php:162
 msgid "Class"
 msgstr ""
 
@@ -1752,33 +1826,6 @@ msgstr ""
 msgid "inactive"
 msgstr ""
 
-#: AutoPaymentEditor.php:681 CartToFamily.php:249 CSVExport.php:118
-#: CSVImport.php:238 DirectoryReports.php:252
-#: external/templates/registration/family-register.php:27 FamilyEditor.php:695
-#: FamilyList.php:26 GeoPage.php:327 PersonEditor.php:783 Register.php:48
-msgid "City"
-msgstr ""
-
-#: AutoPaymentEditor.php:686 CartToFamily.php:254 CSVExport.php:123
-#: CSVImport.php:239 DirectoryReports.php:256
-#: external/templates/registration/family-register.php:30 FamilyEditor.php:707
-#: FamilyList.php:27 GeoPage.php:328 PersonEditor.php:802 Register.php:49
-msgid "State"
-msgstr ""
-
-#: AutoPaymentEditor.php:691 BackupDatabase.php:60 CartToFamily.php:269
-#: CSVExport.php:128 CSVImport.php:240 DirectoryReports.php:260
-#: external/templates/registration/family-register.php:37 FamilyEditor.php:720
-#: FamilyList.php:28 GeoPage.php:329 PersonEditor.php:822 Register.php:50
-msgid "Zip"
-msgstr ""
-
-#: AutoPaymentEditor.php:696 CartToFamily.php:279 CSVExport.php:138
-#: CSVImport.php:241 external/templates/registration/family-register.php:40
-#: FamilyEditor.php:729 PersonEditor.php:842 Register.php:51
-msgid "Country"
-msgstr ""
-
 #: AutoPaymentEditor.php:711 ElectronicPaymentList.php:207
 #: FinancialReports.php:262 FindDepositSlip.php:76 PledgeEditor.php:601
 msgid "Credit Card"
@@ -1812,7 +1859,7 @@ msgstr ""
 msgid "Vanco Bank Account Method"
 msgstr ""
 
-#: BackupDatabase.php:41
+#: BackupDatabase.php:41 strings.php:242
 msgid "Backup Database"
 msgstr ""
 
@@ -2334,12 +2381,12 @@ msgstr ""
 
 #: CartView.php:605 CSVExport.php:284 CSVImport.php:304 FamilyEditor.php:944
 #: FinancialReports.php:117 MembersDashboard.php:306 OptionManager.php:71
-#: PersonEditor.php:1008 PrintView.php:273
+#: PersonEditor.php:1008 PrintView.php:273 strings.php:169
 msgid "Classification"
 msgstr ""
 
 #: CartView.php:606 CSVExport.php:183 CSVExport.php:311 PersonEditor.php:703
-#: PrintView.php:238
+#: PrintView.php:238 strings.php:155
 msgid "Family Role"
 msgstr ""
 
@@ -2658,7 +2705,7 @@ msgstr ""
 msgid "Create File"
 msgstr ""
 
-#: CSVImport.php:120
+#: CSVImport.php:120 strings.php:244
 msgid "CSV Import"
 msgstr ""
 
@@ -2896,10 +2943,6 @@ msgstr ""
 msgid "Use Title Page"
 msgstr ""
 
-#: DirectoryReports.php:244 Register.php:45
-msgid "Church Name"
-msgstr ""
-
 #: DirectoryReports.php:268
 msgid "Disclaimer"
 msgstr ""
@@ -3118,7 +3161,7 @@ msgstr ""
 msgid "Vanco ACH"
 msgstr ""
 
-#: ElectronicPaymentList.php:208 FamilyEditor.php:941
+#: ElectronicPaymentList.php:208 FamilyEditor.php:941 strings.php:161
 msgid "Month"
 msgstr ""
 
@@ -3195,7 +3238,7 @@ msgstr ""
 msgid "API key in Setting->"
 msgstr ""
 
-#: email/Dashboard.php:96
+#: email/Dashboard.php:96 strings.php:237
 msgid "Edit General Settings"
 msgstr ""
 
@@ -4112,7 +4155,7 @@ msgstr ""
 msgid "Graphic"
 msgstr ""
 
-#: FinancialReports.php:290
+#: FinancialReports.php:290 strings.php:62
 msgid "Church Address"
 msgstr ""
 
@@ -4128,7 +4171,7 @@ msgstr ""
 msgid "Sort Data by:"
 msgstr ""
 
-#: FinancialReports.php:299
+#: FinancialReports.php:299 strings.php:217
 msgid "Deposit"
 msgstr ""
 
@@ -4251,7 +4294,7 @@ msgstr ""
 msgid "Date End"
 msgstr ""
 
-#: FundRaiserEditor.php:33
+#: FundRaiserEditor.php:33 strings.php:222
 msgid "Fundraiser"
 msgstr ""
 
@@ -4295,7 +4338,7 @@ msgstr ""
 msgid "Families to Seed"
 msgstr ""
 
-#: GenerateSeedData.php:36
+#: GenerateSeedData.php:36 strings.php:245
 msgid "Generate Seed Data"
 msgstr ""
 
@@ -4623,7 +4666,7 @@ msgstr ""
 msgid "Text Group"
 msgstr ""
 
-#: GroupView.php:290
+#: GroupView.php:290 strings.php:235
 msgid "Group Properties"
 msgstr ""
 
@@ -4703,10 +4746,6 @@ msgstr ""
 
 #: Include/EnvelopeFunctions.php:41
 msgid "Assigned envelope numbers to all families."
-msgstr ""
-
-#: Include/Footer.php:24 Register.php:46
-msgid "Version"
 msgstr ""
 
 #: Include/Footer.php:26
@@ -4965,6 +5004,7 @@ msgid "There was a problem retrieving the requested object"
 msgstr ""
 
 #: Include/Header-function.php:306 Include/Header-function.php:502
+#: strings.php:201
 msgid "Dashboard"
 msgstr ""
 
@@ -5162,7 +5202,7 @@ msgstr ""
 msgid "Register a new Family"
 msgstr ""
 
-#: ManageEnvelopes.php:23
+#: ManageEnvelopes.php:23 strings.php:218
 msgid "Envelope Manager"
 msgstr ""
 
@@ -5300,7 +5340,7 @@ msgstr ""
 msgid "More info"
 msgstr ""
 
-#: MembersDashboard.php:207 Menu.php:127
+#: MembersDashboard.php:207 Menu.php:127 strings.php:206
 msgid "Groups"
 msgstr ""
 
@@ -5913,7 +5953,7 @@ msgstr ""
 msgid "Add a New"
 msgstr ""
 
-#: PropertyList.php:58
+#: PropertyList.php:58 strings.php:156
 msgid "Property"
 msgstr ""
 
@@ -5953,7 +5993,7 @@ msgstr ""
 msgid "Add a New Property Type"
 msgstr ""
 
-#: PropertyTypeList.php:42
+#: PropertyTypeList.php:42 strings.php:232
 msgid "Properties"
 msgstr ""
 
@@ -6057,36 +6097,879 @@ msgstr ""
 msgid "Execute Query"
 msgstr ""
 
-#: Register.php:22
-msgid "Software Registration"
+#: strings.php:6
+msgid "Include only these classifications in the directory, comma seperated"
 msgstr ""
 
-#: Register.php:32
-msgid "If you need to make changes to registration data, go to "
+#: strings.php:7
+msgid "These are the family role numbers designated as head of house"
 msgstr ""
 
-#: Register.php:32
-msgid "Admin->Edit General Settings"
+#: strings.php:8
+msgid "These are the family role numbers designated as spouse"
 msgstr ""
 
-#: Register.php:39
+#: strings.php:9
+msgid "These are the family role numbers designated as child"
+msgstr ""
+
+#: strings.php:10
 msgid ""
-"Please register your copy of ChurchCRM by checking over this information and "
-"pressing the Send button.  "
+"Session timeout length in seconds\rSet to zero to disable session timeouts."
 msgstr ""
 
-#: Register.php:40
-msgid "This information is used only to track the usage of this software.  "
+#: strings.php:11
+msgid "Queries for which user must have finance permissions to use:"
 msgstr ""
 
-#: Register.php:52
-msgid "Church Email"
+#: strings.php:12
+msgid ""
+"Should only administrators have access to the CSV export system and "
+"directory report?"
 msgstr ""
 
-#: Register.php:54
-msgid "Message"
+#: strings.php:13
+msgid "Default password for new users and those with reset passwords"
 msgstr ""
 
-#: Register.php:59
-msgid "Send"
+#: strings.php:14
+msgid "Minimum length a user may set their password to"
+msgstr ""
+
+#: strings.php:15
+msgid ""
+"Minimum amount that a new password must differ from the old one (# of "
+"characters changed)\rSet to zero to disable this feature"
+msgstr ""
+
+#: strings.php:16
+msgid "A comma-seperated list of disallowed (too obvious) passwords."
+msgstr ""
+
+#: strings.php:17
+msgid ""
+"Maximum number of failed logins to allow before a user account is locked."
+"\rOnce the maximum has been reached, an administrator must re-enable the "
+"account.\rThis feature helps to protect against automated password guessing "
+"attacks.\rSet to zero to disable this feature."
+msgstr ""
+
+#: strings.php:18
+msgid ""
+"PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
+msgstr ""
+
+#: strings.php:19
+msgid "Default City"
+msgstr ""
+
+#: strings.php:20
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr ""
+
+#: strings.php:21
+msgid "Default Country"
+msgstr ""
+
+#: strings.php:22
+msgid ""
+"If you wish to be able to send emails from within ChurchCRM. This requires"
+"\reither an SMTP server address to send from or sendmail installed in PHP."
+msgstr ""
+
+#: strings.php:23
+msgid "The method for sending email. Either \"smtp\" or \"sendmail\""
+msgstr ""
+
+#: strings.php:24
+msgid "Default account for receiving a copy of all emails"
+msgstr ""
+
+#: strings.php:25
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr ""
+
+#: strings.php:26
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr ""
+
+#: strings.php:27
+msgid "SMTP Username"
+msgstr ""
+
+#: strings.php:28
+msgid "SMTP Password"
+msgstr ""
+
+#: strings.php:29
+msgid ""
+"Unavailable person info inherited from assigned family for display?\rThis "
+"option causes certain info from a person\\'s assigned family record to be"
+"\rdisplayed IF the corresponding info has NOT been entered for that person. "
+msgstr ""
+
+#: strings.php:31
+msgid ""
+"Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), "
+"French (fr_FR), and German (de_DE)"
+msgstr ""
+
+#: strings.php:32
+msgid "First month of the fiscal year"
+msgstr ""
+
+#: strings.php:33
+msgid "Path to RPC.php, required for Lat/Lon address lookup"
+msgstr ""
+
+#: strings.php:34
+msgid "User ID for rpc.geocoder.us"
+msgstr ""
+
+#: strings.php:35
+msgid "Password for rpc.geocoder.us"
+msgstr ""
+
+#: strings.php:36
+msgid ""
+"Google map API requires a unique key from https://developers.google.com/maps/"
+"documentation/javascript/get-api-key"
+msgstr ""
+
+#: strings.php:37
+msgid "Latitude of the church, used to center the Google map"
+msgstr ""
+
+#: strings.php:38
+msgid "Longitude of the church, used to center the Google map"
+msgstr ""
+
+#: strings.php:39
+msgid ""
+"Set true to disable entering addresses in Person Editor.  Set false to "
+"enable entering addresses in Person Editor."
+msgstr ""
+
+#: strings.php:40
+msgid ""
+"Set true to disable entering Friend Date in Person Editor.  Set false to "
+"enable entering Friend Date in Person Editor."
+msgstr ""
+
+#: strings.php:41
+msgid ""
+"Set true to disable management of newsletter subscriptions in the Family "
+"Editor."
+msgstr ""
+
+#: strings.php:42
+msgid ""
+"Set true to disable entering Wedding Date in Family Editor.  Set false to "
+"enable entering Wedding Date in Family Editor."
+msgstr ""
+
+#: strings.php:43
+msgid ""
+"Set true to disable entering Latitude and Longitude in Family Editor.  Set "
+"false to enable entering Latitude and Longitude in Family Editor.  Lookups "
+"are still performed, just not displayed."
+msgstr ""
+
+#: strings.php:44
+msgid "Set true to enable use of donation envelopes"
+msgstr ""
+
+#: strings.php:45
+msgid ""
+"Enter in HTML code which will be displayed as a header at the top of each "
+"page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A "
+"SECOND TIME to view the new header."
+msgstr ""
+
+#: strings.php:46
+msgid ""
+"Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www."
+"intelligentsearch.com/Hosted/User"
+msgstr ""
+
+#: strings.php:47
+msgid ""
+"Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www."
+"intelligentsearch.com/Hosted/User"
+msgstr ""
+
+#: strings.php:48
+msgid "Set true to use the Google geocoder.  Set false to use rpc.geocoder.us."
+msgstr ""
+
+#: strings.php:49
+msgid "Number of checks for Deposit Slip Report"
+msgstr ""
+
+#: strings.php:50
+msgid "Set true to enable use of scanned checks"
+msgstr ""
+
+#: strings.php:51
+msgid "Unit used to measure distance, miles or km."
+msgstr ""
+
+#: strings.php:52
+msgid ""
+"Time zone- see http://php.net/manual/en/timezones.php for valid choices."
+msgstr ""
+
+#: strings.php:53
+msgid "Names of markers for Google Maps in order of classification"
+msgstr ""
+
+#: strings.php:54
+msgid ""
+"Make user-entered zip/postcodes UPPERCASE when saving to the database. "
+"Useful in the UK."
+msgstr ""
+
+#: strings.php:55
+msgid "Enable non-deductible payments"
+msgstr ""
+
+#: strings.php:56
+msgid "Electronic Transaction Processor"
+msgstr ""
+
+#: strings.php:57
+msgid "Set true to enable family self registration."
+msgstr ""
+
+#: strings.php:58
+msgid ""
+"ChurchCRM has been registered.  The ChurchCRM team uses registration "
+"information to track usage.  This information is kept confidential and never "
+"released or sold.  If this field is true the registration option in the "
+"admin menu changes to update registration."
+msgstr ""
+
+#: strings.php:59
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr ""
+
+#: strings.php:60
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr ""
+
+#: strings.php:63
+msgid "Church City"
+msgstr ""
+
+#: strings.php:64
+msgid "Church State"
+msgstr ""
+
+#: strings.php:65
+msgid "Church Zip"
+msgstr ""
+
+#: strings.php:66
+msgid "Church Phone"
+msgstr ""
+
+#: strings.php:68
+msgid "Home area code of the church"
+msgstr ""
+
+#: strings.php:69
+msgid ""
+"Verbage for top line of tax report. Dates will be appended to the end of "
+"this line."
+msgstr ""
+
+#: strings.php:70
+msgid "Verbage for bottom line of tax report."
+msgstr ""
+
+#: strings.php:71
+msgid "Tax Report signer"
+msgstr ""
+
+#: strings.php:72
+msgid "Verbage for the pledge reminder report"
+msgstr ""
+
+#: strings.php:73
+msgid "Pledge Reminder Signer"
+msgstr ""
+
+#: strings.php:74
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr ""
+
+#: strings.php:75
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr ""
+
+#: strings.php:76
+msgid "Verbage for the database information confirmation and correction report"
+msgstr ""
+
+#: strings.php:77
+msgid "Database information confirmation and correction report signer"
+msgstr ""
+
+#: strings.php:78
+msgid "Verbage for the pledge summary report"
+msgstr ""
+
+#: strings.php:79
+msgid "Verbage for the directory report"
+msgstr ""
+
+#: strings.php:80
+msgid "Church Letterhead path and file"
+msgstr ""
+
+#: strings.php:81
+msgid "Church Checking Account Number"
+msgstr ""
+
+#: strings.php:82
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr ""
+
+#: strings.php:83
+msgid "Enable Remote Backups to Cloud Services"
+msgstr ""
+
+#: strings.php:84
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr ""
+
+#: strings.php:85
+msgid "Remote Backup Endpoint"
+msgstr ""
+
+#: strings.php:86
+msgid "Remote Backup Username"
+msgstr ""
+
+#: strings.php:87
+msgid "Remote Backup Password"
+msgstr ""
+
+#: strings.php:88
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr ""
+
+#: strings.php:89
+msgid "Last Backup Timestamp"
+msgstr ""
+
+#: strings.php:90
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr ""
+
+#: strings.php:91
+msgid "Enable Integrity Check"
+msgstr ""
+
+#: strings.php:92
+msgid "Interval in Hours for Integrity Check"
+msgstr ""
+
+#: strings.php:93
+msgid "Last Integrity Check Timestamp"
+msgstr ""
+
+#: strings.php:94
+msgid "see http://kb.mailchimp.com/accounts/management/about-api-keys"
+msgstr ""
+
+#: strings.php:95
+msgid "Family Member Count"
+msgstr ""
+
+#: strings.php:96
+msgid "Person by Age"
+msgstr ""
+
+#: strings.php:97
+msgid "Total By Gender"
+msgstr ""
+
+#: strings.php:98
+msgid "Person by Role and Gender"
+msgstr ""
+
+#: strings.php:99
+msgid "Person by Property"
+msgstr ""
+
+#: strings.php:100
+msgid "Advanced Search"
+msgstr ""
+
+#: strings.php:101
+msgid "Birthdays"
+msgstr ""
+
+#: strings.php:102 strings.php:163
+msgid "Registered students"
+msgstr ""
+
+#: strings.php:103
+msgid "Membership anniversaries"
+msgstr ""
+
+#: strings.php:104
+msgid "Select database users"
+msgstr ""
+
+#: strings.php:105
+msgid "Select all members"
+msgstr ""
+
+#: strings.php:106
+msgid "Volunteers"
+msgstr ""
+
+#: strings.php:107
+msgid "Recent friends"
+msgstr ""
+
+#: strings.php:108
+msgid "Families to Canvass"
+msgstr ""
+
+#: strings.php:109
+msgid "Pledge comparison"
+msgstr ""
+
+#: strings.php:110
+msgid "Missing pledges"
+msgstr ""
+
+#: strings.php:111
+msgid "Credit Card People"
+msgstr ""
+
+#: strings.php:112
+msgid "Family Pledge by Fiscal Year"
+msgstr ""
+
+#: strings.php:113
+msgid "CustomSearch"
+msgstr ""
+
+#: strings.php:114
+msgid "Returns each family and the total number of people assigned to them."
+msgstr ""
+
+#: strings.php:115
+msgid "Returns any person records with ages between two given ages."
+msgstr ""
+
+#: strings.php:116
+msgid "Total of records matching a given gender."
+msgstr ""
+
+#: strings.php:117
+msgid "Selects person records with the family role and gender specified."
+msgstr ""
+
+#: strings.php:118
+msgid "Returns person records which are assigned the given property."
+msgstr ""
+
+#: strings.php:119
+msgid ""
+"Search by any part of Name, City, State, Zip, Home Phone, Email, or Work "
+"Email."
+msgstr ""
+
+#: strings.php:120
+msgid "People with birthdays in a particular month"
+msgstr ""
+
+#: strings.php:121
+msgid "Find Registered students"
+msgstr ""
+
+#: strings.php:122
+msgid "Members who joined in a particular month"
+msgstr ""
+
+#: strings.php:123
+msgid "People who are registered as database users"
+msgstr ""
+
+#: strings.php:124
+msgid "People who are members"
+msgstr ""
+
+#: strings.php:125
+msgid "Find volunteers for a particular opportunity"
+msgstr ""
+
+#: strings.php:126
+msgid "Friends who signed up in previous months"
+msgstr ""
+
+#: strings.php:127
+msgid "People in families that are ok to canvass."
+msgstr ""
+
+#: strings.php:128
+msgid "Compare pledges between two fiscal years"
+msgstr ""
+
+#: strings.php:129
+msgid "Find people who pledged one year but not another"
+msgstr ""
+
+#: strings.php:130
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
+#: strings.php:131
+msgid ""
+"Pledge summary by family name for each fund for the selected fiscal year"
+msgstr ""
+
+#: strings.php:132
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr ""
+
+#: strings.php:133
+msgid "Find people with a custom field value"
+msgstr ""
+
+#: strings.php:137
+msgid "Zip Code"
+msgstr ""
+
+#: strings.php:141
+msgid "2012/2013"
+msgstr ""
+
+#: strings.php:142
+msgid "2013/2014"
+msgstr ""
+
+#: strings.php:143
+msgid "2014/2015"
+msgstr ""
+
+#: strings.php:144
+msgid "2015/2016"
+msgstr ""
+
+#: strings.php:146
+msgid "WorkEmail"
+msgstr ""
+
+#: strings.php:148
+msgid "Regular Attender"
+msgstr ""
+
+#: strings.php:149
+msgid "Guest"
+msgstr ""
+
+#: strings.php:150
+msgid "Non-Attender"
+msgstr ""
+
+#: strings.php:151
+msgid "Non-Attender (staff)"
+msgstr ""
+
+#: strings.php:152
+msgid "Minimum Age"
+msgstr ""
+
+#: strings.php:153
+msgid "Maximum Age"
+msgstr ""
+
+#: strings.php:157
+msgid "Beginning Date"
+msgstr ""
+
+#: strings.php:158
+msgid "Ending Date"
+msgstr ""
+
+#: strings.php:159
+msgid "Search"
+msgstr ""
+
+#: strings.php:160
+msgid "Field"
+msgstr ""
+
+#: strings.php:164
+msgid "Volunteer opportunities"
+msgstr ""
+
+#: strings.php:165
+msgid "Months"
+msgstr ""
+
+#: strings.php:166
+msgid "First Fiscal Year"
+msgstr ""
+
+#: strings.php:167
+msgid "Second Fiscal Year"
+msgstr ""
+
+#: strings.php:170
+msgid "Custom field"
+msgstr ""
+
+#: strings.php:171
+msgid "Field value"
+msgstr ""
+
+#: strings.php:172
+msgid "The minimum age for which you want records returned."
+msgstr ""
+
+#: strings.php:173
+msgid "The maximum age for which you want records returned."
+msgstr ""
+
+#: strings.php:174
+msgid "The desired gender to search the database for."
+msgstr ""
+
+#: strings.php:175
+msgid "Select the desired family role."
+msgstr ""
+
+#: strings.php:176
+msgid "The gender for which you would like records returned."
+msgstr ""
+
+#: strings.php:177
+msgid "The property for which you would like person records returned."
+msgstr ""
+
+#: strings.php:178
+msgid ""
+"Please select the beginning date to calculate total contributions for each "
+"member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain "
+"donations."
+msgstr ""
+
+#: strings.php:179
+msgid ""
+"Please enter the last date to calculate total contributions for each member "
+"(i.e. YYYY-MM-DD)."
+msgstr ""
+
+#: strings.php:180
+msgid ""
+"Enter any part of the following: Name, City, State, Zip, Home Phone, Email, "
+"or Work Email."
+msgstr ""
+
+#: strings.php:181
+msgid "Select field to search for."
+msgstr ""
+
+#: strings.php:182
+msgid "The birthday month for which you would like records returned."
+msgstr ""
+
+#: strings.php:183
+msgid "The sunday school class for which you would like records returned."
+msgstr ""
+
+#: strings.php:184
+msgid "Group of registered students"
+msgstr ""
+
+#: strings.php:185
+msgid ""
+"The membership anniversary month for which you would like records returned."
+msgstr ""
+
+#: strings.php:186
+msgid "Choose a volunteer opportunity"
+msgstr ""
+
+#: strings.php:187
+msgid "Number of months since becoming a friend"
+msgstr ""
+
+#: strings.php:188
+msgid "First fiscal year for comparison"
+msgstr ""
+
+#: strings.php:189
+msgid "Second fiscal year for comparison"
+msgstr ""
+
+#: strings.php:190
+msgid "Pledged this year"
+msgstr ""
+
+#: strings.php:191
+msgid "but not this year"
+msgstr ""
+
+#: strings.php:192
+msgid "Fiscal Year."
+msgstr ""
+
+#: strings.php:193
+msgid "Member, Regular Attender, etc."
+msgstr ""
+
+#: strings.php:194
+msgid "First volunteer opportunity choice"
+msgstr ""
+
+#: strings.php:195
+msgid "Second volunteer opportunity choice"
+msgstr ""
+
+#: strings.php:196
+msgid "Choose customer person field"
+msgstr ""
+
+#: strings.php:197
+msgid "Match custom field to this value"
+msgstr ""
+
+#: strings.php:198
+msgid "Main"
+msgstr ""
+
+#: strings.php:199
+msgid "Calendar"
+msgstr ""
+
+#: strings.php:200
+msgid "Members"
+msgstr ""
+
+#: strings.php:202
+msgid "Add New Person"
+msgstr ""
+
+#: strings.php:203
+msgid "View All Persons"
+msgstr ""
+
+#: strings.php:204
+msgid "Add New Family"
+msgstr ""
+
+#: strings.php:205
+msgid "View All Families"
+msgstr ""
+
+#: strings.php:207
+msgid "List Groups"
+msgstr ""
+
+#: strings.php:208
+msgid "Edit Group Types"
+msgstr ""
+
+#: strings.php:212
+msgid "Events"
+msgstr ""
+
+#: strings.php:213
+msgid "List Church Events"
+msgstr ""
+
+#: strings.php:214
+msgid "Add Church Event"
+msgstr ""
+
+#: strings.php:215
+msgid "List Event Types"
+msgstr ""
+
+#: strings.php:216
+msgid "Check-in and Check-out"
+msgstr ""
+
+#: strings.php:219
+msgid "View All Deposits"
+msgstr ""
+
+#: strings.php:220
+msgid "Deposit Reports"
+msgstr ""
+
+#: strings.php:221
+msgid "Edit Deposit Slip"
+msgstr ""
+
+#: strings.php:223
+msgid "View All Fundraisers"
+msgstr ""
+
+#: strings.php:224
+msgid "Create New Fundraiser"
+msgstr ""
+
+#: strings.php:225
+msgid "Edit Fundraiser"
+msgstr ""
+
+#: strings.php:226
+msgid "View Buyers"
+msgstr ""
+
+#: strings.php:227
+msgid "Add Donors to Buyer List"
+msgstr ""
+
+#: strings.php:228
+msgid "Data/Reports"
+msgstr ""
+
+#: strings.php:229
+msgid "Reports Menu"
+msgstr ""
+
+#: strings.php:230
+msgid "Query Menu"
+msgstr ""
+
+#: strings.php:231
+msgid "CSV Export Records"
+msgstr ""
+
+#: strings.php:233
+msgid "People Properties"
+msgstr ""
+
+#: strings.php:234
+msgid "Family Properties"
+msgstr ""
+
+#: strings.php:236
+msgid "Property Types"
+msgstr ""
+
+#: strings.php:238
+msgid "System Users"
+msgstr ""
+
+#: strings.php:239
+msgid "Edit Custom Family Fields"
+msgstr ""
+
+#: strings.php:240
+msgid "Edit Custom Person Fields"
+msgstr ""
+
+#: strings.php:241
+msgid "Edit Donation Funds"
 msgstr ""
