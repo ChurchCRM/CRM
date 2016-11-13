@@ -19,7 +19,8 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-curl": "~2.2.0",
-    "grunt-contrib-concat": "^1.0.1"
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-rename": "^0.0.3"
   },
   "dependencies": {
     "admin-lte": "2.3.7",
