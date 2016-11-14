@@ -470,7 +470,7 @@ if ($_SESSION['bNotes'])
 
 		if (strlen($nte_DateLastEdited))
 		{
-			echo "<span class=\"SmallText\">" . gettext("Last Edited:") . FormatDate($nte_DateLastEdited,True) . ' ' . gettext("by") . ' ' . $EditedFirstName . " " . $EditedLastName . "</span><br>";
+			echo "<span class=\"SmallText\">" . gettext("Last Edited") . FormatDate($nte_DateLastEdited,True) . ' ' . gettext("by") . ' ' . $EditedFirstName . " " . $EditedLastName . "</span><br>";
 		}
 	}
 }
