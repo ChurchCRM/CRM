@@ -38,6 +38,7 @@
     "postinstall": "grunt concat && grunt rename",
     "locale-gen": "/vagrant/scripts/update-locale.sh",
     "package": "grunt generateSignatures && grunt compress",
-    "demosite": "/vagrant/scripts/demosite.sh"
+    "demosite": "/vagrant/scripts/demosite.sh",
+    "postpackage" : "/vagrant/scripts/gen-changelogs.sh && /vagrant/scripts/version-rev.sh"
   }
 }
