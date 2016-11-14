@@ -126,7 +126,8 @@ function Header_body_scripts() {
   <script>
     window.CRM = {
       root: "<?= $sRootPath ?>",
-      lang: "<?= $localeInfo->getLanguageCode() ?>"
+      lang: "<?= $localeInfo->getLanguageCode() ?>",
+      locale: "<?= $localeInfo->getLocale() ?>"
     };
 
     window.CRM.DisplayErrorMessage = function(endpoint, message) {

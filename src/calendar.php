@@ -46,7 +46,6 @@ require "Include/Header.php"; ?>
 
 <!-- fullCalendar 2.2.5 -->
 <script src="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.min.js"></script>
-<script src="<?= $sRootPath ?>/skin/fullcalendar/locale-all.js"></script>
 <script>
   $(function () {
     /* initialize the calendar

@@ -184,7 +184,7 @@ require "../Include/Header.php";
   </div>
   <!-- /.box-header -->
   <div class="box-body table-responsive">
-    <table id="sundayschool" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>
         <th><?= gettext("Name") ?></th>
@@ -316,13 +316,15 @@ function implodeUnique($array, $withQuotes)
 
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function () {
-    $('#sundayschool').dataTable({
+    $('.data-table').dataTable({
       "dom": 'T<"clear">lfrtip',
+      "language": {
+        "url": window.CRM.root + "/skin/locale/datatables/"+ window.CRM.locale + ".json"
+      },
       "tableTools": {
         "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
       }
     });
-
     // turn the element to select2 select style
     $('.email-recepients-kids').select2({
       placeholder: 'Enter recepients',
