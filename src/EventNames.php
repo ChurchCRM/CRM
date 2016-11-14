@@ -163,7 +163,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
         </div>
         <div class='row form-group'>
           <div class='col-sm-4 control-label text-bold'>
-            <?= gettext("RECURRANCE PATTERN") ?>
+            <?= gettext("Recurrence Pattern") ?>
           </div>
           <div class='col-sm-6 event-recurrance-patterns'>
             <div class='row form-radio-list'>
@@ -271,7 +271,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
          <tr>
             <th><?= gettext("Event Type") ?></th>
             <th><?= gettext("Name") ?></th>
-            <th><?= gettext("Recurrance Pattern") ?></th>
+            <th><?= gettext("Recurrence Pattern") ?></th>
             <th><?= gettext("Start Time") ?></th>
             <th><?= gettext("Attendance Counts") ?></th>
             <th><?= gettext("Action") ?></th>

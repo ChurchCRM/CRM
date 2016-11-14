@@ -125,13 +125,13 @@ $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
 if (count($results) == 0) {
   $systemService = new SystemService();
+  $version = new Version();
+  $version->setVersion($systemService->getInstalledVersion());
+  $version->setUpdateStart(new DateTime());
   $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
   $systemService->playbackSQLtoDatabase($setupQueries);
   $configQueries = dirname(__file__) . '/../mysql/upgrade/update_config.sql';
   $systemService->playbackSQLtoDatabase($configQueries);
-  $version = new Version();
-  $version->setVersion($systemService->getInstalledVersion());
-  $version->setUpdateStart(new DateTime());
   $version->setUpdateEnd(new DateTime());
   $version->save();
 }
