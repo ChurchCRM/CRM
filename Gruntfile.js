@@ -195,7 +195,54 @@ module.exports = function (grunt) {
           }
         ]
       }
+    },
+    generateSignatures: {
+      sign:{
+        version: '<%= composer.version %>',
+        files: [{
+          expand: true,
+          cwd: 'src/',
+          src: [
+            '**/*.php',
+            '**/*.js',
+            '!**/.gitignore',
+            '!vendor/**/example/**',
+            '!vendor/**/tests/**',
+            '!vendor/**/docs/**',
+            '!Images/Person/thumbnails/*.jpg',
+            '!composer.lock',
+            '!Include/Config.php',
+            '!integrityCheck.json'
+          ],
+          dest: 'churchcrm/'
+        }]
+      }
     }
+  });
+  
+  grunt.registerTask('hash','gets a file hash',function(arg1){
+     var sha1 = require('node-sha1');
+     grunt.log.writeln(sha1(grunt.file.read(arg1,{encoding:null})));
+  });
+  
+  grunt.registerMultiTask('generateSignatures', 'A sample task that logs stuff.', function() {
+    var sha1 = require('node-sha1');
+    var signatures = {
+      "version":this.data.version,
+      "files":[]
+    }
+    this.files.forEach(function(filePair) {
+      isExpandedPair = filePair.orig.expand || false;
+      
+      filePair.src.forEach(function(src) {
+        if (grunt.file.isFile(src))
+        {
+          signatures.files.push({"filename":src.substring(4),"sha1":sha1(grunt.file.read(src,{encoding:null}))});
+        }
+      });
+    });
+    signatures.sha1=sha1(JSON.stringify(signatures.files).replace(/\//g, "\\/"));
+    grunt.file.write("src/signatures.json",JSON.stringify(signatures));
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -204,4 +251,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-curl');
+  runt.loadNpmTasks('node-sha1');
 };
