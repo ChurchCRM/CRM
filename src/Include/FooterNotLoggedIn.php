@@ -1,3 +1,8 @@
+
+<div style="background-color: white; padding-top: 5px; padding-bottom: 5px; text-align: center">
+  <strong><?= gettext("Copyright") ?> &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext("All rights reserved")?>.
+</div>
+
   <!-- Bootstrap 3.3.5 -->
   <script src="<?= $sRootPath ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
   <!-- iCheck -->
