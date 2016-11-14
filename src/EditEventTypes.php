@@ -144,7 +144,7 @@ if($numCounts)
   </tr>
   <tr>
     <td class="LabelColumn" width="15%">
-      <strong><?= gettext("Recurrance Pattern") ?></strong>
+      <strong><?= gettext("Recurrence Pattern") ?></strong>
     </td>
     <td class="TextColumn" width="35%">
       <?= $recur ?>
