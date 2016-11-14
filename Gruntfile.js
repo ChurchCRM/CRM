@@ -241,7 +241,7 @@ module.exports = function (grunt) {
         }
       });
     });
-    signatures.sha1=sha1(JSON.stringify(signatures.files).replace(/\//g, "\\/"));
+    signatures.sha1=sha1(JSON.stringify(signatures.files));
     grunt.file.write("src/signatures.json",JSON.stringify(signatures));
   });
 
@@ -251,5 +251,4 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-curl');
-  grunt.loadNpmTasks('node-sha1');
 };
