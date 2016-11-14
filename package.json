@@ -16,6 +16,16 @@
     "url": "https://github.com/ChurchCRM/CRM/issues"
   },
   "homepage": "http://www.churchcrm.io",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-curl": "~2.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-compress": "^1.0.3",
+    "grunt-contrib-rename": "^0.0.3",
+    "node-sha1":"1.0.1"
+  },
   "dependencies": {
     "admin-lte": "2.3.7",
     "ionicons": "2.0.1",
@@ -23,7 +33,11 @@
     "fullcalendar": "3.0.1"
   },
   "scripts": {
-    "install": "/vagrant/scripts/build-skin.sh",
-    "locale-gen": "/vagrant/scripts/update-locale.sh"
+    "preinstall": "grunt clean",
+    "install": "grunt curl-dir && grunt copy",
+    "postinstall": "grunt concat && grunt rename",
+    "locale-gen": "/vagrant/scripts/update-locale.sh",
+    "package": "grunt generateSignatures && grunt compress",
+    "demosite": "/vagrant/scripts/demosite.sh"
   }
 }

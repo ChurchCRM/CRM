@@ -4,13 +4,13 @@ $(document).ready(function () {
     method: "GET",
     url: window.CRM.root + "/api/groups/groupsInCart",
     dataType: "json"
-  }).done(function (data) {        
-    window.CRM.groupsInCart = data.groupsInCart;  
+  }).done(function (data) {
+    window.CRM.groupsInCart = data.groupsInCart;
   });
-  
+
   $("#addNewGroup").click(function (e) {
     var groupName = $("#groupName").val(); // get the name of the group from the textbox
-    if (groupName) // ensure that the user entered a group name 
+    if (groupName) // ensure that the user entered a group name
     {
       var newGroup = {'groupName': groupName};    //create a newgroup JSON object, and prepare it for transport
       $.ajax({
@@ -31,6 +31,9 @@ $(document).ready(function () {
   });
 
   dataT = $("#groupsTable").DataTable({
+    "language": {
+      "url": window.CRM.root + "/skin/locale/datatables/"+ window.CRM.locale + ".json"
+    },
     ajax:{
       url :window.CRM.root+"/api/groups/",
       dataSrc:"Groups"
@@ -73,7 +76,7 @@ $(document).ready(function () {
         var objectID = $(element).data("groupid");
         if ($.inArray(objectID,window.CRM.groupsInCart) > -1 ) {
           $(element).html("All members of this group are in the cart<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + objectID + "\">Remove all</a>");
-        } 
+        }
         else {
           $(element).html("Not all members of this group are in the cart<br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + objectID + "\">Add all</a>");
         }
