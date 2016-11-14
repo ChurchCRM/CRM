@@ -36,5 +36,3 @@ if [ -f $file  ]; then
 else
   echo "You must build the source before pushing to demo site"
 fi
-
-
