@@ -30,4 +30,7 @@
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" />
+<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
+
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/daterangepicker.css">
