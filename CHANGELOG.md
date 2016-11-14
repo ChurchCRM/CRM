@@ -1,10 +1,38 @@
 # Change Log
 
+## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
+
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.3.3...HEAD)
+
+**Implemented enhancements:**
+
+- Untranslated terms in 2.30-RC1: [\#1207](https://github.com/ChurchCRM/CRM/issues/1207)
+
+**Fixed bugs:**
+
+- Deposit report [\#1342](https://github.com/ChurchCRM/CRM/issues/1342)
+- RestoreDatabase has syntax error [\#1332](https://github.com/ChurchCRM/CRM/issues/1332)
+- \#1332 Fixed restore JS error [\#1334](https://github.com/ChurchCRM/CRM/pull/1334) ([DawoudIO](https://github.com/DawoudIO))
+
+**Closed issues:**
+
+- Upgrade from website [\#1333](https://github.com/ChurchCRM/CRM/issues/1333)
+- deposit report [\#1286](https://github.com/ChurchCRM/CRM/issues/1286)
+- Update DataTables to latest and include localization files  [\#1237](https://github.com/ChurchCRM/CRM/issues/1237)
+
+**Merged pull requests:**
+
+- fixes \#1286 \#1342 [\#1349](https://github.com/ChurchCRM/CRM/pull/1349) ([crossan007](https://github.com/crossan007))
+- Include DB terms with NPM run locale-gen [\#1340](https://github.com/ChurchCRM/CRM/pull/1340) ([crossan007](https://github.com/crossan007))
+- Grunt for All Skin & New Localization Files [\#1335](https://github.com/ChurchCRM/CRM/pull/1335) ([DawoudIO](https://github.com/DawoudIO))
+- start 2.3.4 [\#1331](https://github.com/ChurchCRM/CRM/pull/1331) ([crossan007](https://github.com/crossan007))
+
 ## [2.3.3](https://github.com/ChurchCRM/CRM/tree/2.3.3) (2016-11-12)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.3.2...2.3.3)
 
 **Implemented enhancements:**
 
+- Spanish Translation [\#1268](https://github.com/ChurchCRM/CRM/issues/1268)
 - Colon Clear \#1  [\#1272](https://github.com/ChurchCRM/CRM/pull/1272) ([DawoudIO](https://github.com/DawoudIO))
 
 **Fixed bugs:**
