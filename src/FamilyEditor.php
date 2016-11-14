@@ -439,15 +439,8 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 								$aBirthYears[$iCount],
 								$aClassification[$iCount])";
 					RunQuery($sSQL);
-          $dbPersonId = mysql_insert_id();
-          $note = new Note();
-          $note->setPerId($dbPersonId);
-          $note->setText("Created");
-          $note->setType("create");
-          $note->setEntered($_SESSION['iUserID']);
-          $note->save();
 					$sSQL = "INSERT INTO person_custom (per_ID) VALUES ("
-								. $dbPersonId . ")";
+								. mysql_insert_id() . ")";
 					RunQuery($sSQL);
 					RunQuery("UNLOCK TABLES");
 				}

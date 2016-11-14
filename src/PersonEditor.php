@@ -345,6 +345,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
 
 
         $note = new Note();
+        $note->setPerId($iPersonID);
         $note->setEntered($_SESSION['iUserID']);
         // If this is a new person, get the key back and insert a blank row into the person_custom table
         if ($bGetKeyBack) {
@@ -353,11 +354,9 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
             extract(mysql_fetch_array($rsPersonID));
             $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('" . $iPersonID . "')";
             RunQuery($sSQL);
-            $note->setPerId($iPersonID);
             $note->setText("Created");
             $note->setType("create");
         } else {
-            $note->setPerId($iPersonID);
             $note->setText("Updated");
             $note->setType("edit");
         }
