@@ -3,6 +3,7 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Version as BaseVersion;
+use ChurchCRM;
 
 /**
  * Skeleton subclass for representing a row from the 'version_ver' table.
@@ -20,26 +21,27 @@ class Version extends BaseVersion
   {
     //before we try to save this version object to the database, ensure that 
     //the database has the correct columns to accomedate the version data
-    $connection = \Propel\Runtime\Propel::getConnection();
+   
     $query = "DESCRIBE version_ver";
-    $statement = $connection->prepare($query);
+    $statement = $con->prepare($query);
     $resultset = $statement->execute();
     $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
     
-    if ( !in_array_recursive( "ver_update_start",$results)) //the versions table does not contain the ver_update_start column.
+    if ( ! ArrayUtils::in_array_recursive( "ver_update_start",$results)) //the versions table does not contain the ver_update_start column.
     {
       $query = "ALTER TABLE version_ver CHANGE COLUMN ver_date ver_update_start datetime default NULL;";
-      $statement = $connection->prepare($query);
+      $statement = $con->prepare($query);
       $resultset = $statement->execute();
     }
     
-    if ( !in_array_recursive("ver_update_start",$results)) //the versions table does not contain the ver_update_end column.
+    if ( ! ArrayUtils::in_array_recursive("ver_update_start",$results)) //the versions table does not contain the ver_update_end column.
     {
       $query = "ALTER TABLE version_ver ADD COLUMN ver_update_end datetime default NULL AFTER ver_update_start;";
-      $statement = $connection->prepare($query);
+      $statement = $con->prepare($query);
       $resultset = $statement->execute();
     }
     //then save this version
+    
     return true;
   }
 }
