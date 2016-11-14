@@ -462,7 +462,7 @@ class SystemService
     if (file_exists($signatureFile))
     {
       $signatureData = json_decode(file_get_contents($signatureFile));
-      if (sha1(json_encode($signatureData->files)) == $signatureData->sha1)
+      if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) == $signatureData->sha1)
       {
         foreach ($signatureData->files as $file)
         {

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+
   $.ajax({
     method:"GET",
     url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/roles",
@@ -17,7 +17,7 @@ $(document).ready(function() {
     initDataTable();
     //echo '<option value="' . $role['lst_OptionID'] . '">' . $role['lst_OptionName'] . '</option>';
   });
-  
+
   $(".personSearch").select2({
     minimumInputLength: 2,
     ajax: {
@@ -79,10 +79,10 @@ $(document).ready(function() {
       var person = data.Person2group2roleP2g2rs[0];
       var node = dataT.row.add(person).node();
       dataT.rows().invalidate().draw(true);
+      $(".personSearch").val(null).trigger('change')
     });
-    $(".personSearch").select2("val", "");
   });
-  
+
   $("#chkClear").change(function(){
     if ($(this).is(":checked"))
     {
@@ -116,7 +116,7 @@ $(document).ready(function() {
         dataType: 'json', // what type of data do we expect back from the server
         data: {"_METHOD":"DELETE"},
         encode: true
-      }).done(function(data) {    
+      }).done(function(data) {
         dataT.row(function(idx, data, node) {
          if(data.PersonId == value.PersonId) {
            return true;
@@ -126,7 +126,7 @@ $(document).ready(function() {
       });
     });
   });
-  
+
   $("#addSelectedToCart").click(function() {
     var selectedRows = dataT.rows('.selected').data()
     $.each(selectedRows, function(index, value) {
@@ -139,22 +139,22 @@ $(document).ready(function() {
     });
      location.reload();
   });
-  
+
   //copy membership
   $("#addSelectedToGroup").click(function() {
     $("#selectTargetGroupModal").modal("show");
     $("#targetGroupAction").val("copy");
-    
+
   });
-  
+
   $("#moveSelectedToGroup").click(function() {
     $("#selectTargetGroupModal").modal("show");
     $("#targetGroupAction").val("move");
-    
+
   });
-  
-  
-  
+
+
+
   $("#confirmTargetGroup").click(function(){
     var selectedRows = dataT.rows('.selected').data()
     var targetGroupId = $("#targetGroupSelection option:selected").val()
@@ -189,7 +189,7 @@ $(document).ready(function() {
       $("#selectTargetGroupModal").modal("hide");
   });
   });
-  
+
 
   $(document).on("click", ".changeMembership", function(e) {
     var userid = $(e.currentTarget).data("personid");
@@ -204,7 +204,7 @@ $(document).ready(function() {
       }
     }).data().firstName);
     $('#changeMembership').modal('show');
-
+    e.stopPropagation();
   });
 
   $(document).on("click", "#confirmMembershipChange", function(e) {
@@ -232,6 +232,9 @@ $(document).ready(function() {
 function initDataTable()
 {
   dataT = $("#membersTable").DataTable({
+    "language": {
+      "url": window.CRM.root + "/skin/locale/dataTables/"+ window.CRM.locale + ".json"
+    },
     ajax: {
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
       dataSrc: "Person2group2roleP2g2rs"
@@ -289,10 +292,13 @@ function initDataTable()
     ],
     "fnDrawCallback":function(oSettings) {
       $("#iTotalMembers").text(oSettings.aoData.length);
+    },
+    "createdRow" : function (row,data,index) {
+      $(row).addClass("groupRow");
     }
   });
 
-  $("#membersTable tbody").on('click', 'tr', function() {
+  $(document).on('click', '.groupRow', function() {
     $(this).toggleClass('selected');
     var selectedRows = dataT.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
@@ -307,5 +313,5 @@ function initDataTable()
     $("#moveSelectedToGroup").prop('disabled', !(selectedRows));
     $("#moveSelectedToGroup").html("Move  (" + selectedRows + ") Members to another group");
   });
- 
+
 }
