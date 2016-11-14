@@ -76,14 +76,16 @@
       "2.3.3"
     ],
     "scripts": [
+
     ],
-    "dbVersion": "2.3.3"
+    "dbVersion": "2.3.4"
   },
   "pre-2.4.0" : {
     "versions": [
       "2.3.3"
     ],
     "scripts": [
+      "/mysql/upgrade/2.4.0/2.4.0-Country.sql"
     ],
     "dbVersion": "2.4.0"
   }
