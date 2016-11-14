@@ -251,5 +251,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-curl');
-  runt.loadNpmTasks('node-sha1');
+  grunt.loadNpmTasks('node-sha1');
 };
