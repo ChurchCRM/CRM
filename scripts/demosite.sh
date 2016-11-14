@@ -11,13 +11,13 @@ commitHash=`git log --pretty=format:'%H' -n 1`
 
 if [ -f $file  ]; then
 
-  if [ -z ${demoKey} ]; then 
+  if [ -z ${demoKey} ]; then
     echo -n "Enter the demo site hook password and press [ENTER]: "
     read demoKey
   fi
 
- 
-  if  ! [[ $publishBranch == "develop" ||  $publishBranch == "develop"  ]]; then
+
+  if  ! [[ $publishBranch == "develop" ||  $publishBranch == "master"  ]]; then
     echo -n "Current branch is not master or develop. Enter branch to emulate:  (develop)"
     read publishBranch
     publishBranch=${publishBranch:-develop}
@@ -37,5 +37,4 @@ else
   echo "You must build the source before pushing to demo site"
 fi
 
-        
-       
+
