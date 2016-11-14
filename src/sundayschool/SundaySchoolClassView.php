@@ -122,7 +122,7 @@ require "../Include/Header.php";
         <div class="box box-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'] . " " . $teacher['per_LastName'] ?></h4>
-            <img src="<?=$sRootPath?>/api/persons/<?= $teacher['per_ID'] ?>/photo" class="img-circle profile-avatar"
+            <img src="<?= $sRootPath ?>/api/persons/<?= $teacher['per_ID'] ?>/photo" class="img-circle profile-avatar"
                  alt="User avatar" width="80" height="80">
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
                 class="fa fa-envelope"></i> <?= gettext("Send Message") ?></a>
@@ -211,7 +211,7 @@ require "../Include/Header.php";
         $birthDateDate = BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge);
 
         echo "<tr>";
-        echo "<td><img src='" . $sRootPath."/api/persons/". $child['kidId']. "/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=" . $child['kidId'] . "'>" . $child['firstName'] . ", " . $child['LastName'] . "</a></td>";
+        echo "<td><img src='" . $sRootPath . "/api/persons/" . $child['kidId'] . "/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=" . $child['kidId'] . "'>" . $child['firstName'] . ", " . $child['LastName'] . "</a></td>";
         echo "<td>" . $birthDate . "</td>";
         echo "<td data-birth-date='" . ($hideAge ? '' : $birthDateDate->format("Y-m-d")) . "'></td>";
         echo "<td>" . $child['kidEmail'] . "</td>";
@@ -318,8 +318,9 @@ function implodeUnique($array, $withQuotes)
   $(document).ready(function () {
     $('.data-table').dataTable({
       "dom": 'T<"clear">lfrtip',
+      responsive: true,
       "language": {
-        "url": window.CRM.root + "/skin/locale/datatables/"+ window.CRM.locale + ".json"
+        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
       },
       "tableTools": {
         "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
