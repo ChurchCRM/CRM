@@ -79,8 +79,8 @@ $(document).ready(function() {
       var person = data.Person2group2roleP2g2rs[0];
       var node = dataT.row.add(person).node();
       dataT.rows().invalidate().draw(true);
+      $(".personSearch").val(null).trigger('change')
     });
-    $(".personSearch").select2("val", "");
   });
 
   $("#chkClear").change(function(){
@@ -204,7 +204,7 @@ $(document).ready(function() {
       }
     }).data().firstName);
     $('#changeMembership').modal('show');
-
+    e.stopPropagation();
   });
 
   $(document).on("click", "#confirmMembershipChange", function(e) {
@@ -292,10 +292,13 @@ function initDataTable()
     ],
     "fnDrawCallback":function(oSettings) {
       $("#iTotalMembers").text(oSettings.aoData.length);
+    },
+    "createdRow" : function (row,data,index) {
+      $(row).addClass("groupRow");
     }
   });
 
-  $("#membersTable tbody").on('click', 'tr', function() {
+  $(document).on('click', '.groupRow', function() {
     $(this).toggleClass('selected');
     var selectedRows = dataT.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
