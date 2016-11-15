@@ -80,7 +80,10 @@ if (isset ($_POST['Action']) && isset ($_POST['EID'])) {
 
 /// top of main form
 //
-$sSQL = "SELECT DISTINCT event_types.* FROM event_types RIGHT JOIN events_event ON event_types.type_id=events_event.event_type ORDER BY type_id ";
+$sSQL = "SELECT DISTINCT event_types.* 
+         FROM event_types 
+         RIGHT JOIN events_event ON event_types.type_id=events_event.event_type 
+         ORDER BY type_id ";
 $rsOpps = RunQuery($sSQL);
 $numRows = mysql_num_rows($rsOpps);
 
@@ -108,9 +111,13 @@ $numRows = mysql_num_rows($rsOpps);
 <?php
 // year selector
 if($eType=="All"){
-  $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) FROM events_event WHERE YEAR(events_event.event_start)";
+  $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) 
+           FROM events_event 
+           WHERE YEAR(events_event.event_start)";
 } else {
-  $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) FROM events_event WHERE events_event.event_type = '$eType' AND YEAR(events_event.event_start)";
+  $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) 
+           FROM events_event 
+           WHERE events_event.event_type = '$eType' AND YEAR(events_event.event_start)";
 }
 $rsOpps = RunQuery($sSQL);
 $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
@@ -245,7 +252,7 @@ if ($numRows > 0)
                       <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
                       <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
                       <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row],1) ?>">
-                      <input type="submit" name="Action" value="<?= gettext("Attendees(".$attNumRows[$row].")") ?>" class="btn btn-info btn-sm btn-block" >
+                      <input type="submit" name="Action" value="<?= gettext("Attendees"). "(".$attNumRows[$row].")" ?>" class="btn btn-info btn-sm btn-block" >
                     </form>
                   </td>
                   <td>

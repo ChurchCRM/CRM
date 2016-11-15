@@ -43,7 +43,7 @@ if (isset($_POST["Submit"])) {
 <table cellpadding="3" align="left">
 
    <tr>
-      <td class="LabelColumn"><?= gettext("Fiscal Year:") ?></td>
+      <td class="LabelColumn"><?= gettext("Fiscal Year") ?>:</td>
       <td class="TextColumnWithBottomBorder">
 		<?php PrintFYIDSelect ($iFYID, "FYID") ?>
       </td>

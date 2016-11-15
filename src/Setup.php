@@ -2,7 +2,7 @@
 
 if (file_exists ( 'Include/Config.php')) {
  header("Location: index.php" );
-} 
+}
 
 if (isset($_POST["Setup"])) {
   $template = file_get_contents("Include/Config.php.example");
@@ -51,7 +51,7 @@ if ($AppIntegrity['status'] == "success")
 else
 {
   $required["ChurchCRM File Integrity Check"] = FALSE;
-}  
+}
 
 if (!function_exists('bindtextdomain')) {
   function gettext($string){
@@ -144,7 +144,7 @@ $("#dangerContinue").click(function(){
       </div>
        <?php if (!$is_ready) { echo '<button class="btn btn-warning" id="dangerContinue">I know what I\'m doing.  Install ChurchCRM Anyway</button>'; } ?>
     </div>
-      <div id="setupPage" class="col-lg-6"  <?php if (!$is_ready) { echo 'style="display:none"'; } ?>> 
+      <div id="setupPage" class="col-lg-6"  <?php if (!$is_ready) { echo 'style="display:none"'; } ?>>
         <div class="box">
           <div class="box-body">
             <form target="_self" method="post">
@@ -152,31 +152,31 @@ $("#dangerContinue").click(function(){
 
                 <div class="row">
                   <div class="col-md-4">
-                    <label for="DB_SERVER_NAME"><?= gettext("DB Server Name:") ?></label>
+                    <label for="DB_SERVER_NAME"><?= gettext("DB Server Name") ?>:</label>
                     <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" value="localhost" class="form-control"
                            required>
                   </div>
                   <div class="col-md-4">
-                    <label for="DB_NAME"><?= gettext("DB Name:") ?></label>
+                    <label for="DB_NAME"><?= gettext("DB Name") ?>:</label>
                     <input type="text" name="DB_NAME" id="DB_NAME" value="churchcrm" class="form-control" required>
                   </div>
                   <div class="col-md-4">
-                    <label for="DB_USER"><?= gettext("DB User:") ?></label>
+                    <label for="DB_USER"><?= gettext("DB User") ?>:</label>
                     <input type="text" name="DB_USER" id="DB_USER" value="churchcrm" class="form-control" required>
                   </div>
                   <div class="col-md-4">
-                    <label for="DB_PASSWORD"><?= gettext("DB Password:") ?></label>
+                    <label for="DB_PASSWORD"><?= gettext("DB Password") ?>:</label>
                     <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" value="churchcrm" class="form-control"
                            required>
                   </div>
 
                   <div class="col-md-4">
-                    <label for="ROOT_PATH"><?= gettext("Root Path:") ?></label>
+                    <label for="ROOT_PATH"><?= gettext("Root Path") ?>:</label>
                     <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= $sRootPath ?>" class="form-control">
                   </div>
 
                   <div class="col-md-4">
-                    <label for="URL"><?= gettext("Base URL:") ?></label>
+                    <label for="URL"><?= gettext("Base URL") ?>:</label>
                     <input type="text" name="URL" id="URL" value="<?= $URL ?>" class="form-control" required>
                   </div>
                 </div>

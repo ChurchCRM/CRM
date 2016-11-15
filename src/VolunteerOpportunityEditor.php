@@ -48,7 +48,7 @@ $iOpp = -1;
 $sAction = "";
 $iRowNum = -1;
 $bErrorFlag = false;
-$aNameErrors = array (); 
+$aNameErrors = array ();
 $bNewNameError = false;
 
 if (array_key_exists ("act", $_GET))
@@ -57,7 +57,7 @@ if (array_key_exists ("Opp", $_GET))
 	$iOpp = FilterInput($_GET["Opp"],'int');
 if (array_key_exists ("row_num", $_GET))
 	$iRowNum = FilterInput($_GET["row_num"], 'int');
-	
+
 $sDeleteError = "";
 
 if (($sAction == 'delete') && $iOpp > 0) {
@@ -79,7 +79,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
     require "Include/Header.php";
 ?>
     <div class="box box-body">
-    <div class="callout callout-danger"><?= gettext("Please confirm deletion of:") ?></div>
+    <div class="callout callout-danger"><?= gettext("Please confirm deletion of") ?>:</div>
     <table class="table">
         <tr><th>&nbsp;</th>
         <th><?= gettext("Name") ?></th>
@@ -107,7 +107,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
     $rsPeople = RunQuery($sSQL);
     $numRows = mysql_num_rows($rsPeople);
     if ($numRows > 0) {
-        echo "\n<br><h3>" . gettext("Warning!") . "</h3>";
+        echo "\n<br><h3>" . gettext("Warning") . "!</h3>";
         echo "\n<h3>" . gettext("There are people assigned to this Volunteer Opportunity.") . "</h3>";
         echo "\n<br>" . gettext("Volunteer Opportunity will be unassigned for the following people.");
         echo "\n<br>";
@@ -135,7 +135,7 @@ if (($sAction == 'ConfDelete') && $iOpp > 0) {
         Redirect("Menu.php");
         exit;
     }
-    
+
     // get the order value for the record being deleted
     $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
     $rsOrder = RunQuery ($sSQL);
@@ -161,9 +161,9 @@ if ($iRowNum == 0) {
     // Also on initial page view
 
     // Data integrity check #1
-    // The default value of `vol_Order` is '0'.  But '0' is not assigned. 
+    // The default value of `vol_Order` is '0'.  But '0' is not assigned.
     // If we find a '0' add it to the end of the list by changing it to
-    // MAX(vol_Order)+1. 
+    // MAX(vol_Order)+1.
 
     $sSQL = "SELECT `vol_ID` FROM `volunteeropportunity_vol` WHERE vol_Order = '0' ";
     $sSQL .= "ORDER BY `vol_ID`";
@@ -220,16 +220,16 @@ if (isset($_POST["SaveChanges"])) {
     	$descName = $iFieldID . "desc";
     	if (array_key_exists ($nameName, $_POST)) {
 	        $aNameFields[$iFieldID] = FilterInput($_POST[$nameName]);
-	
+
 	        if ( strlen($aNameFields[$iFieldID]) == 0 ) {
 	            $aNameErrors[$iFieldID] = true;
 	        $bErrorFlag = true;
 	        } else {
 	            $aNameErrors[$iFieldID] = false;
 	        }
-	
+
 	        $aDescFields[$iFieldID] = FilterInput($_POST[$descName]);
-	
+
 	        $aRow = mysql_fetch_array($rsOpps);
 	        $aIDFields[$iFieldID] = $aRow[0];
     	}
@@ -339,7 +339,7 @@ if ($numRows == 0) {
 	      $aDescFields[$swapRow] = $aDescFields[$newRow];
       }
    }
-} // end if GET  
+} // end if GET
 
 ?>
 <tr>
@@ -387,28 +387,28 @@ for ($row=1; $row <= $numRows; $row++) {
 	    } else {
 	      echo "<a href=\"VolunteerOpportunityEditor.php?act=na&amp;row_num=" . $row . "\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
 	    }
-	    
+
 	    echo "<a href=\"VolunteerOpportunityEditor.php?act=delete&amp;Opp=" . $aIDFields[$row] . "\"> <img src=\"Images/x.gif\" border=\"0\" width=\"15\" alt=''></a></td>";
 	   ?>
-	
+
 	   <td class="TextColumn" align="center">
 	   <input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="20" maxlength="30">
 	   <?php
-	      
+
 	   if (array_key_exists ($row, $aNameErrors) && $aNameErrors[$row] ) {
-	      echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . " </span>";
+	      echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name") . " </span>";
 	   }
 	   ?>
 	   </td>
-	
+
 	   <td class="TextColumn">
 	   <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, "UTF-8") ?>" size="40" maxlength="100">
 	   </td>
-	
+
 	   </tr>
    <?php
-	} 
-} 
+	}
+}
 ?>
 
 <tr>
@@ -435,13 +435,13 @@ for ($row=1; $row <= $numRows; $row++) {
 <tr>
 <td width="15%"></td>
 <td valign="top">
-<div><?= gettext("Name:") ?></div>
+<div><?= gettext("Name") ?>:</div>
 <input type="text" name="newFieldName" size="30" maxlength="30">
-<?php if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name.") . "</span></div>"; ?>
+<?php if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>"; ?>
 &nbsp;
 </td>
 <td valign="top">
-<div><?= gettext("Description:") ?></div>
+<div><?= gettext("Description") ?>:</div>
 <input type="text" name="newFieldDesc" size="40" maxlength="100">
 &nbsp;
 </td>

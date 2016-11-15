@@ -31,9 +31,9 @@ if ($sAction=='Delete'){
     <h3 class='box-title'><?= gettext("Attendees for Event ID:") . " " . $EventID ?></h3>
   </div>
   <div class='box-body'>
-    <strong><?= gettext("Name:")?></strong> <?= $EvtName ?><br/>
-    <strong><?= gettext("Date:")?></strong> <?= $EvtDate ?><br/>
-    <strong><?= gettext("Description:")?></strong><br/>
+    <strong><?= gettext("Name")?>:</strong> <?= $EvtName ?><br/>
+    <strong><?= gettext("Date")?>:</strong> <?= $EvtDate ?><br/>
+    <strong><?= gettext("Description")?>:</strong><br/>
     <?= $EvtDesc ?>
     <p/>
     <form method="post" action="EditEventAttendees.php" name="AttendeeEditor">

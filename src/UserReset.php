@@ -52,7 +52,7 @@ require "Include/Header.php";
 <!-- Default box -->
 <div class="box box-info">
 	<div class="box-header with-border">
-<p><?= gettext("Please confirm the password reset of this user:") ?></p>
+<p><?= gettext("Please confirm the password reset of this user") ?>:</p>
 
 <p class="ShadedBox"><?= $aRow["per_LastName"] . ", " . $aRow["per_FirstName"] ?></p>
 

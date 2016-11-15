@@ -20,7 +20,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">
+    <div class="pull-right">
       <b><?= gettext("Version") ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
     <strong><?= gettext("Copyright") ?> &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext("All rights reserved")?>.
@@ -39,7 +39,7 @@
   <!-- SlimScroll -->
   <script src="<?= $sRootPath ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
   <!-- FastClick -->
-  <script src="<?= $sRootPath ?>/skin/adminlte/plugins/fastclick/fastclick.js"></script>
+  <script src="<?= $sRootPath ?>/skin/fastclick/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="<?= $sRootPath ?>/skin/adminlte/dist/js/app.min.js"></script>
 
@@ -54,6 +54,9 @@
   <script src="<?= $sRootPath ?>/skin/js/Tooltips.js"></script>
   <script src="<?= $sRootPath ?>/skin/js/Events.js"></script>
   <script src="<?= $sRootPath ?>/skin/js/Footer.js"></script>
+
+  <script src="<?= $sRootPath ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
+
   <?php if ($_SESSION['bAdmin']) { ?>
   <script>
     ((window.gitter = {}).chat = {}).options = {

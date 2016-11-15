@@ -80,19 +80,19 @@ require "Include/Header.php"
 
 <table cellpadding="4">
 	<tr>
-		<td align="right"><b><?= gettext("Group Name:") ?></b></td>
+		<td align="right"><b><?= gettext("Group Name") ?>:</b></td>
 		<td><?php echo $grp_Name ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?= gettext("Member's Name:") ?></b></td>
+		<td align="right"><b><?= gettext("Member's Name") ?>:</b></td>
 		<td><?php echo $per_LastName . ", " . $per_FirstName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?= gettext("Current Role:") ?></b></td>
+		<td align="right"><b><?= gettext("Current Role") ?>:</b></td>
 		<td><?php echo $sRoleName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?= gettext("New Role:") ?></b></td>
+		<td align="right"><b><?= gettext("New Role") ?>:</b></td>
 		<td>
 			<select name="NewRole">
 				<?php

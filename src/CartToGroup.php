@@ -70,11 +70,11 @@ if (count($_SESSION['aPeopleCart']) > 0)
   <!-- Default box -->
   <div class="box">
     <div class="box-body">
-      <p align="center"><?= gettext("Select the group to which you would like to add your cart:") ?></p>
+      <p align="center"><?= gettext("Select the group to which you would like to add your cart") ?>:</p>
       <form method="post">
         <table align="center">
           <tr>
-            <td class="LabelColumn"><?= gettext("Select Group:") ?></td>
+            <td class="LabelColumn"><?= gettext("Select Group") ?>:</td>
             <td class="TextColumn">
               <?php
               // Create the group select drop-down
@@ -89,7 +89,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
             </td>
           </tr>
           <tr>
-            <td class="LabelColumn"><?= gettext("Select Role:") ?></td>
+            <td class="LabelColumn"><?= gettext("Select Role") ?>:</td>
             <td class="TextColumn">
               <select name="GroupRole" id="GroupRole">
                 <option><?= gettext("No Group Selected") ?></option>

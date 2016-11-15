@@ -396,8 +396,7 @@ class Deposit extends BaseDeposit
     }
     //$this->generateBankDepositSlip($Report);
 
-
-    // $this->generateDepositSummary($Report);
+    $this->generateDepositSummary($Report);
 
 
     // Export file

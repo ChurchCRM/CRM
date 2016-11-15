@@ -56,7 +56,7 @@ $rsEvents = RunQuery($sSQL);
 if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add']) && !isset($_POST['Checkout']) || isset($_POST['Exit']) ) {
 ?>
 
-	<p align="center"><?= gettext("Select the event to which you would like to check people in for:") ?></p>
+	<p align="center"><?= gettext("Select the event to which you would like to check people in for") ?>:</p>
 	<form name="Checkin" action="Checkin.php" method="POST">
 	<table align="center" >
 			<?php if ($sGlobalMessage) { ?>
@@ -65,7 +65,7 @@ if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add'
 			</tr>
 			<?php } ?>
 			<tr>
-					<td class="LabelColumn"><?= gettext("Select Event:") ?></td>
+					<td class="LabelColumn"><?= gettext("Select Event") ?>:</td>
 					<td class="TextColumn">
                       <?php
 							// Create the group select drop-down
@@ -109,7 +109,7 @@ if (isset($_POST["Submit"]) && isset($_POST['EventID']) || isset($_POST['Cancel'
 		<tr>
 		<td>
 			<caption>
-				<h3><?= gettext("Add Attendees for Event: $event_title") ?></h3>
+				<h3><?= gettext("Add Attendees for Event")?>: <?= $event_title ?></h3>
 			</caption>
 		</td>
 		</tr>
@@ -130,12 +130,12 @@ if (isset($_POST["Submit"]) && isset($_POST['EventID']) || isset($_POST['Cancel'
 		</tr>
 		<tr>
 			<td width="33%" align="right">
-			Child's Number
+			<?= gettext("Child's Number") ?>
 			</td>
 			<td width="33%" valign="top" align="center">
 			</td>
 			<td width="33%" valign="top" align="left">
-			Adult Number(Optional)
+			<?= gettext("Adult Number(Optional)") ?>
 			</td>
 		</tr>
 		</table>
@@ -438,7 +438,7 @@ if (isset ($_POST["EventID"]) ) {
 		    <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
 			  <input type="hidden" name="child" value="<?= $person_id ?>">
 			  <input type="hidden" name="EventID" value="<?= $EventID ?>">
-			  <input type="submit" name="Action" value="<?= gettext("Checkout") ?>" class="btn" >
+			  <input type="submit" name="Action" value="<?= gettext("CheckOut") ?>" class="btn" >
 			</form>
 		 </td>
 		</tr>
