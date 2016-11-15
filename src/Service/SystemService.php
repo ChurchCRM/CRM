@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use Exception;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
@@ -361,7 +362,7 @@ class SystemService
     }
     return $result;
   }
-  
+
   function runTimerJobs()
   {
     global $sEnableExternalBackupTarget, $sExternalBackupAutoInterval, $sLastBackupTimeStamp;
@@ -400,7 +401,7 @@ class SystemService
       }
     }
   }
-  
+
   function downloadLatestRelease()
   {
     $release = $this->getLatestRelese();
@@ -415,7 +416,7 @@ class SystemService
     $returnFile['sha1'] = sha1_file($UpgradeDir."/".basename($url));
     return $returnFile;
   }
-  
+
   function moveDir($src,$dest) {
     $files = array_diff(scandir($src), array('.', '..'));
     foreach ($files as $file) {
@@ -430,15 +431,15 @@ class SystemService
     }
     return rmdir($src);
   }
-  
+
   function doUpgrade($zipFilename,$sha1)
   {
     ini_set('max_execution_time',60);
-    $CRMInstallRoot = dirname(__DIR__); 
+    $CRMInstallRoot = dirname(__DIR__);
     if($sha1 == sha1_file($zipFilename))
     {
       $zip = new \ZipArchive();
-      if ($zip->open($zipFilename) == TRUE) 
+      if ($zip->open($zipFilename) == TRUE)
       {
         $zip->extractTo($CRMInstallRoot."/Upgrade");
         $zip->close();
@@ -451,9 +452,9 @@ class SystemService
     {
        return "hash validation failure";
     }
-   
+
   }
-  
+
   function verifyApplicationIntegrity()
   {
     $CRMInstallRoot = dirname(__DIR__);
@@ -489,15 +490,15 @@ class SystemService
     {
       return array("status"=>"failure","message"=>gettext("Signature definition File Missing"));
     }
-    
+
     if(count($signatureFailures) > 0 )
     {
       return array("status"=>"failure","message"=>gettext("One or more files failed signature validation"),"files"=>$signatureFailures);
     }
-    else  
+    else
     {
        return array("status"=>"success");
     }
-    
+
   }
 }
