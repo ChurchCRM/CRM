@@ -133,13 +133,6 @@ sudo locale-gen zh_CN
 sudo locale-gen zh_TW
 
 echo "=========================================================="
-echo "==========   Starting Background Installs     ============"
-echo "=========================================================="
-
-/vagrant/vagrant/build.sh &
-echo "Build systems are downloading"
-
-echo "=========================================================="
 echo "=========================================================="
 echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="
 echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="
