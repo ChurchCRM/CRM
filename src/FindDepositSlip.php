@@ -100,7 +100,7 @@ require "Include/Header.php";
   </div>
   <div class="box-body">
     <div class="container-fluid">
-      <table class="display responsive nowrap" id="depositsTable" width="100%"></table>
+      <table class="display responsive nowrap data-table" id="depositsTable" width="100%"></table>
 
       <button type="button" id="deleteSelectedRows" class="btn btn-danger"
               disabled> <?= gettext("Delete Selected Rows") ?> </button>
@@ -113,11 +113,6 @@ require "Include/Header.php";
     </div>
   </div>
 </div>
-<link href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"
-      rel="stylesheet" type="text/css"/>
-<script
-  src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"
-  type="text/javascript"></script>
 <script src="<?= $sRootPath; ?>/skin/js/FindDepositSlip.js"></script>
 
 <?php require "Include/Footer.php" ?>

@@ -1,18 +1,18 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
   $.ajax({
-    method:"GET",
+    method: "GET",
     url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/roles",
     dataType: "json"
-  }).done(function(data){
+  }).done(function (data) {
     window.CRM.groupRoles = data.ListOptions;
     $("#newRoleSelection").select2({
-      data:$(window.CRM.groupRoles).map(function(){
-            return {
-              id:this.OptionId,
-              text:this.OptionName
-            };
-          })
+      data: $(window.CRM.groupRoles).map(function () {
+        return {
+          id: this.OptionId,
+          text: this.OptionName
+        };
+      })
     });
     initDataTable();
     //echo '<option value="' . $role['lst_OptionID'] . '">' . $role['lst_OptionName'] . '</option>';
@@ -21,22 +21,22 @@ $(document).ready(function() {
   $(".personSearch").select2({
     minimumInputLength: 2,
     ajax: {
-      url: function(params) {
+      url: function (params) {
         return window.CRM.root + "/api/persons/search/" + params.term;
       },
       dataType: 'json',
       delay: 250,
-      data: function(params) {
+      data: function (params) {
         return {
           q: params.term, // search term
           page: params.page
         };
       },
-      processResults: function(rdata, page) {
+      processResults: function (rdata, page) {
         var idKey = 1;
         var results = new Array();
         data = JSON.parse(rdata);
-        $.each(data[0].persons, function(index, cvalue) {
+        $.each(data[0].persons, function (index, cvalue) {
           var childObject = {
             id: idKey,
             objid: cvalue.id,
@@ -53,29 +53,29 @@ $(document).ready(function() {
   });
 
   $("#targetGroupSelection").select2({
-    ajax : {
+    ajax: {
       url: window.CRM.root + "/api/groups/",
       dataType: 'json',
-      processResults: function(rdata, page) {
-        var p =  $.map(rdata.Groups, function(item) {
+      processResults: function (rdata, page) {
+        var p = $.map(rdata.Groups, function (item) {
           var o = {
-              text: item.Name,
-              id: item.Id
-						};
+            text: item.Name,
+            id: item.Id
+          };
           return o;
         });
-        return {results : p} ;
+        return {results: p};
       }
     },
     minimumResultsForSearch: Infinity
   });
 
-  $(".personSearch").on("select2:select", function(e) {
+  $(".personSearch").on("select2:select", function (e) {
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/adduser/" + e.params.data.objid,
       dataType: "json"
-    }).done(function(data) {
+    }).done(function (data) {
       var person = data.Person2group2roleP2g2rs[0];
       var node = dataT.row.add(person).node();
       dataT.rows().invalidate().draw(true);
@@ -83,123 +83,119 @@ $(document).ready(function() {
     });
   });
 
-  $("#chkClear").change(function(){
-    if ($(this).is(":checked"))
-    {
+  $("#chkClear").change(function () {
+    if ($(this).is(":checked")) {
       $("#deleteGroupButton").removeAttr("disabled");
     }
-    else
-    {
-      $("#deleteGroupButton").attr("disabled","disabled");
+    else {
+      $("#deleteGroupButton").attr("disabled", "disabled");
     }
   });
 
-  $("#deleteGroupButton").on("click", function(e) {
+  $("#deleteGroupButton").on("click", function (e) {
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup,
       dataType: "json",
       encode: true,
       data: {"_METHOD": "DELETE"}
-    }).done(function(data) {
-      if( data.status == "success" )
-        window.location.href = window.CRM.root+"/GroupList.php";
+    }).done(function (data) {
+      if (data.status == "success")
+        window.location.href = window.CRM.root + "/GroupList.php";
     });
   });
 
-  $("#deleteSelectedRows").click(function() {
+  $("#deleteSelectedRows").click(function () {
     var deletedRows = dataT.rows('.selected').data()
-    $.each(deletedRows, function(index, value) {
+    $.each(deletedRows, function (index, value) {
       $.ajax({
         type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root+'/api/groups/' + window.CRM.currentGroup+'/removeuser/'+value.PersonId, // the url where we want to POST
+        url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId, // the url where we want to POST
         dataType: 'json', // what type of data do we expect back from the server
-        data: {"_METHOD":"DELETE"},
+        data: {"_METHOD": "DELETE"},
         encode: true
-      }).done(function(data) {
-        dataT.row(function(idx, data, node) {
-         if(data.PersonId == value.PersonId) {
-           return true;
-         }
-       }).remove();
-       dataT.rows().invalidate().draw(true);
+      }).done(function (data) {
+        dataT.row(function (idx, data, node) {
+          if (data.PersonId == value.PersonId) {
+            return true;
+          }
+        }).remove();
+        dataT.rows().invalidate().draw(true);
       });
     });
   });
 
-  $("#addSelectedToCart").click(function() {
+  $("#addSelectedToCart").click(function () {
     var selectedRows = dataT.rows('.selected').data()
-    $.each(selectedRows, function(index, value) {
+    $.each(selectedRows, function (index, value) {
       $.ajax({
         type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root+'/api/persons/' +value.PersonId + "/addToCart", // the url where we want to POST
+        url: window.CRM.root + '/api/persons/' + value.PersonId + "/addToCart", // the url where we want to POST
         dataType: 'json', // what type of data do we expect back from the server
         encode: true
       });
     });
-     location.reload();
+    location.reload();
   });
 
   //copy membership
-  $("#addSelectedToGroup").click(function() {
+  $("#addSelectedToGroup").click(function () {
     $("#selectTargetGroupModal").modal("show");
     $("#targetGroupAction").val("copy");
 
   });
 
-  $("#moveSelectedToGroup").click(function() {
+  $("#moveSelectedToGroup").click(function () {
     $("#selectTargetGroupModal").modal("show");
     $("#targetGroupAction").val("move");
 
   });
 
 
-
-  $("#confirmTargetGroup").click(function(){
+  $("#confirmTargetGroup").click(function () {
     var selectedRows = dataT.rows('.selected').data()
     var targetGroupId = $("#targetGroupSelection option:selected").val()
     var action = $("#targetGroupAction").val();
 
-    $.each(selectedRows, function(index, value) {
+    $.each(selectedRows, function (index, value) {
       $.ajax({
         type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root+'/api/groups/' + targetGroupId+'/adduser/'+value.PersonId,
+        url: window.CRM.root + '/api/groups/' + targetGroupId + '/adduser/' + value.PersonId,
         dataType: 'json', // what type of data do we expect back from the server
         encode: true
       });
-      if (action == "move")
-      {
+      if (action == "move") {
         $.ajax({
           type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-          url: window.CRM.root+'/api/groups/' + window.CRM.currentGroup +'/removeuser/'+value.PersonId,
+          url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId,
           dataType: 'json', // what type of data do we expect back from the server
           encode: true,
-          data: {"_METHOD":"DELETE"},
-        }).done(function(data) {
-            dataT.row(function(idx, data, node) {
-             if(data.PersonId == value.PersonId) {
-               return true;
-             }
-           }).remove();
-           dataT.rows().invalidate().draw(true);
+          data: {"_METHOD": "DELETE"},
+        }).done(function (data) {
+          dataT.row(function (idx, data, node) {
+            if (data.PersonId == value.PersonId) {
+              return true;
+            }
+          }).remove();
+          dataT.rows().invalidate().draw(true);
         });
       }
     });
-     $(document).ajaxStop(function () {
+    $(document).ajaxStop(function () {
       $("#selectTargetGroupModal").modal("hide");
-  });
+    });
   });
 
 
-  $(document).on("click", ".changeMembership", function(e) {
+  $(document).on("click", ".changeMembership", function (e) {
     var userid = $(e.currentTarget).data("personid");
-    $("#changingMemberID").val(dataT.row(function(idx, data, node) {
-      if(data.PersonId == userid) {
+    $("#changingMemberID").val(dataT.row(function (idx, data, node) {
+      if (data.PersonId == userid) {
         return true;
       }
     }).data().PersonId);
-    $("#changingMemberName").text(dataT.row(function(idx, data, node) {
-      if(data.PersonId == userid) {
+    $("#changingMemberName").text(dataT.row(function (idx, data, node) {
+      if (data.PersonId == userid) {
         return true;
       }
     }).data().firstName);
@@ -207,7 +203,7 @@ $(document).ready(function() {
     e.stopPropagation();
   });
 
-  $(document).on("click", "#confirmMembershipChange", function(e) {
+  $(document).on("click", "#confirmMembershipChange", function (e) {
     var changingMemberID = $("#changingMemberID").val();
     $.ajax({
       method: "POST",
@@ -215,9 +211,9 @@ $(document).ready(function() {
       data: JSON.stringify({'roleID': $("#newRoleSelection option:selected").val()}),
       dataType: "json",
       contentType: "application/json; charset=utf-8",
-    }).done(function(data) {
-      dataT.row(function(idx, data, node) {
-        if(data.PersonId == changingMemberID) {
+    }).done(function (data) {
+      dataT.row(function (idx, data, node) {
+        if (data.PersonId == changingMemberID) {
           data.RoleId = $("#newRoleSelection option:selected").val();
           return true;
         }
@@ -229,12 +225,12 @@ $(document).ready(function() {
 
 });
 
-function initDataTable()
-{
+function initDataTable() {
   dataT = $("#membersTable").DataTable({
     "language": {
-      "url": window.CRM.root + "/skin/locale/dataTables/"+ window.CRM.locale + ".json"
+      "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
     },
+    responsive: true,
     ajax: {
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
       dataSrc: "Person2group2roleP2g2rs"
@@ -244,23 +240,25 @@ function initDataTable()
         width: 'auto',
         title: 'Name',
         data: 'PersonId',
-        render: function(data, type, full, meta) {
-          return '<img src="' + window.CRM.root + '/api/persons/'+full.PersonId+'/photo" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+        render: function (data, type, full, meta) {
+          return '<img src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/photo" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
         }
       },
       {
         width: 'auto',
         title: 'Group Role',
         data: 'RoleId',
-        render: function(data, type, full, meta) {
-          thisRole =  $(window.CRM.groupRoles).filter(function(index,item){return item.OptionId == data })[0];
+        render: function (data, type, full, meta) {
+          thisRole = $(window.CRM.groupRoles).filter(function (index, item) {
+            return item.OptionId == data
+          })[0];
           return thisRole.OptionName + '<button class="changeMembership" data-personid=' + full.PersonId + '><i class="fa fa-pencil"></i></button>';
         }
       },
       {
         width: 'auto',
         title: 'Address',
-        render: function(data, type, full, meta) {
+        render: function (data, type, full, meta) {
           return full.Person.Address1 + " " + full.Person.Address2;
         }
       },
@@ -290,15 +288,15 @@ function initDataTable()
         data: 'Person.Email'
       }
     ],
-    "fnDrawCallback":function(oSettings) {
+    "fnDrawCallback": function (oSettings) {
       $("#iTotalMembers").text(oSettings.aoData.length);
     },
-    "createdRow" : function (row,data,index) {
+    "createdRow": function (row, data, index) {
       $(row).addClass("groupRow");
     }
   });
 
-  $(document).on('click', '.groupRow', function() {
+  $(document).on('click', '.groupRow', function () {
     $(this).toggleClass('selected');
     var selectedRows = dataT.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
