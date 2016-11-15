@@ -51,6 +51,7 @@ class SystemService
   function restoreDatabaseFromBackup()
   {
     requireUserGroupMembership("bAdmin");
+    global $systemConfig;
     $restoreResult = new \stdClass();
     $restoreResult->Messages = array();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
@@ -94,6 +95,7 @@ class SystemService
     $sSQL = 'UPDATE config_cfg SET cfg_value = "0" WHERE cfg_name = "sEnableExternalBackupTarget"';
     $aRow = mysql_fetch_array(RunQuery($sSQL));
     array_push($restoreResult->Messages, gettext("As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."));
+    $systemConfig->setValue("sLastIntegrityCheckTimeStamp",null);
     return $restoreResult;
   }
 
@@ -434,6 +436,7 @@ class SystemService
 
   function doUpgrade($zipFilename,$sha1)
   {
+    global $systemConfig;
     ini_set('max_execution_time',60);
     $CRMInstallRoot = dirname(__DIR__);
     if($sha1 == sha1_file($zipFilename))
@@ -446,6 +449,7 @@ class SystemService
         $this->moveDir($CRMInstallRoot."/Upgrade/churchcrm", $CRMInstallRoot);
       }
       unlink($zipFilename);
+      $systemConfig->setValue("sLastIntegrityCheckTimeStamp",null);
       return "success";
     }
     else
