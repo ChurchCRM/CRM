@@ -723,7 +723,7 @@
     </table>
     
      <table name="kioskdevice_kdev" idMethod="native" phpName="KioskDevices">
-      <column name="kdev_ID" phpName="Id" type="mediumint" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+      <column name="kdev_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
       <column name="kdev_GUID" phpName="GUID" type="VARCHAR" size="36"/>
       <column name="kdev_Name" phpName="Name" type="VARCHAR" size="50"/>
       <column name="kdev_deviceType" phpName="DeviceType" type="LONGVARCHAR"/>
