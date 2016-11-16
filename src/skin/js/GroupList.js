@@ -25,19 +25,19 @@ $(document).ready(function () {
         $("#groupName").val(null);
       });
     }
-    else
-    {
+    else {
 
     }
   });
 
   dataT = $("#groupsTable").DataTable({
     "language": {
-      "url": window.CRM.root + "/skin/locale/datatables/"+ window.CRM.locale + ".json"
+      "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
     },
-    ajax:{
-      url :window.CRM.root+"/api/groups/",
-      dataSrc:"Groups"
+    responsive: true,
+    ajax: {
+      url: window.CRM.root + "/api/groups/",
+      dataSrc: "Groups"
     },
     columns: [
       {
@@ -53,14 +53,14 @@ $(document).ready(function () {
         title: 'Members',
         data: 'memberCount',
         searchable: false,
-        defaultContent:"0"
+        defaultContent: "0"
       },
       {
         width: 'auto',
         title: 'Group Cart Status',
         searchable: false,
         render: function (data, type, full, meta) {
-          return '<span class="cartStatusButton" data-groupid="'+ full.Id + '">Checking Cart Status</span>';
+          return '<span class="cartStatusButton" data-groupid="' + full.Id + '">Checking Cart Status</span>';
 
         }
       },
@@ -68,19 +68,19 @@ $(document).ready(function () {
         width: 'auto',
         title: 'Group Type',
         data: 'groupType',
-        defaultContent:"",
+        defaultContent: "",
         searchable: true
       }
     ]
-    }).on( 'draw.dt', function(){
-      $(".cartStatusButton").each(function(index,element){
-        var objectID = $(element).data("groupid");
-        if ($.inArray(objectID,window.CRM.groupsInCart) > -1 ) {
-          $(element).html("All members of this group are in the cart<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + objectID + "\">Remove all</a>");
-        }
-        else {
-          $(element).html("Not all members of this group are in the cart<br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + objectID + "\">Add all</a>");
-        }
-      });
+  }).on('draw.dt', function () {
+    $(".cartStatusButton").each(function (index, element) {
+      var objectID = $(element).data("groupid");
+      if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
+        $(element).html("All members of this group are in the cart<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + objectID + "\">Remove all</a>");
+      }
+      else {
+        $(element).html("Not all members of this group are in the cart<br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + objectID + "\">Add all</a>");
+      }
     });
+  });
 });

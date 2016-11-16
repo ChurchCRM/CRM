@@ -5,6 +5,26 @@ module.exports = function (grunt) {
   grunt.initConfig({
     composer: grunt.file.readJSON('src/composer.json'),
     pkg: grunt.file.readJSON('package.json'),
+    languages: {
+      'de': 'de_DE',
+      'en-au': 'en_AU',
+      'en' : 'en_GB',
+      'es' : 'es_ES',
+      'fr' : 'fr_FR',
+      'hu' : 'hu_HU',
+      'it' :'it_IT',
+      'nb' : 'nb_NO',
+      'nl' : 'nl_NL',
+      'pl' : 'pl_PL',
+      'pt-br' : 'pt_BR',
+      'ro' : 'ro_RO',
+      'ru' : 'ru_RU',
+      'sq' : 'sq_AL',
+      'sv' : 'sv_SE',
+      'vi' : 'vi_VN',
+      'zh-CN' : 'zh_CN',
+      'zh-TW' : 'zh_TW' 
+    },
     clean: {
       locale: ["src/skin/locale"],
       skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
@@ -217,6 +237,29 @@ module.exports = function (grunt) {
           dest: 'churchcrm/'
         }]
       }
+    },
+    poeditor: {
+      getPOTranslations: {
+        download: {
+          project_id: '<%= poeditor.options.project_id %>',
+          type: 'po', // export type (check out the doc)
+          dest: 'src/locale/?/LC_MESSAGES/messages.po'
+          // grunt style dest files
+        },
+      },
+      getMOTranslations: {
+        download: {
+          project_id: '<%= poeditor.options.project_id %>',
+          type: 'mo', // export type (check out the doc)
+          dest: 'src/locale/?/LC_MESSAGES/messages.mo'
+          // grunt style dest files
+        }
+      },
+      options: {
+        project_id: '77079',
+        languages: '<%= languages %>',
+        api_token: ''
+      }
     }
   });
   
@@ -251,4 +294,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-curl');
+  grunt.loadNpmTasks('grunt-poeditor-ab');
 };
