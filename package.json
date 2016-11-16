@@ -40,6 +40,7 @@
     "locale-download" : "grunt updateFromPOeditor",
     "package": "grunt generateSignatures && grunt compress",
     "demosite": "/vagrant/scripts/demosite.sh",
-    "postpackage" : "/vagrant/scripts/gen-changelogs.sh && /vagrant/scripts/version-rev.sh"
+    "postpackage" : "/vagrant/scripts/gen-changelogs.sh && /vagrant/scripts/version-rev.sh",
+    "orm-gen" : "src/vendor/propel/propel/bin/propel --config-dir=propel model:build "
   }
 }
