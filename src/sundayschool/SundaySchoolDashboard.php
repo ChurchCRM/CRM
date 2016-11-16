@@ -46,10 +46,15 @@ require "../Include/Header.php";
   </div>
   <div class="box-body">
     <?php if ($_SESSION['bManageGroups']) { ?>
-    <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i class="fa fa-plus-square"></i><?= gettext("Add New Class") ?></button>
+      <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
+          class="fa fa-plus-square"></i><?= gettext("Add New Class") ?></button>
     <?php } ?>
-    <a href="SundaySchoolReports.php" class="btn btn-app" title="<?= gettext("Generate class lists and attendance sheets"); ?>"><i class="fa fa-file-pdf-o"></i><?= gettext("Reports"); ?></a>
-    <a href="SundaySchoolClassListExport.php" class="btn btn-app" title="<?= gettext("Export All Classes, Kids, and Parent to CSV file"); ?>"><i class="fa fa-file-excel-o"></i><?= gettext("Export to CSV") ?></a><br/>
+    <a href="SundaySchoolReports.php" class="btn btn-app"
+       title="<?= gettext("Generate class lists and attendance sheets"); ?>"><i
+        class="fa fa-file-pdf-o"></i><?= gettext("Reports"); ?></a>
+    <a href="SundaySchoolClassListExport.php" class="btn btn-app"
+       title="<?= gettext("Export All Classes, Kids, and Parent to CSV file"); ?>"><i
+        class="fa fa-file-excel-o"></i><?= gettext("Export to CSV") ?></a><br/>
   </div>
 </div>
 <!-- Small boxes (Stat box) -->
@@ -170,11 +175,11 @@ require "../Include/Header.php";
       <thead>
       <tr>
         <th></th>
-        <th><?= gettext("First Name")?></th>
-        <th><?= gettext("Last Name")?></th>
-        <th><?= gettext("Birth Date")?></th>
-        <th><?= gettext("Age")?></th>
-        <th><?= gettext("Home Address")?></th>
+        <th><?= gettext("First Name") ?></th>
+        <th><?= gettext("Last Name") ?></th>
+        <th><?= gettext("Birth Date") ?></th>
+        <th><?= gettext("Age") ?></th>
+        <th><?= gettext("Home Address") ?></th>
       </tr>
       </thead>
       <tbody>
@@ -207,54 +212,65 @@ require "../Include/Header.php";
   </div>
 </div>
 <?php if ($_SESSION['bManageGroups']) { ?>
-<div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="delete-Image-label"><?= gettext("Add") ?> <?= gettext("Sunday School") ?> <?= gettext("Class") ?> </h4>
-      </div>
-
-      <div class="modal-body">
-        <div class="form-group">
-          <input type="text" id="new-class-name" class="form-control" placeholder="<?= gettext("Enter Name") ?>" maxlength="20" required>
+  <div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title"
+              id="delete-Image-label"><?= gettext("Add") ?> <?= gettext("Sunday School") ?> <?= gettext("Class") ?> </h4>
         </div>
-      </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-        <button type="button" id="addNewClassBtn"  class="btn btn-primary" data-dismiss="modal"><?= gettext("Add") ?></button>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" id="new-class-name" class="form-control" placeholder="<?= gettext("Enter Name") ?>"
+                   maxlength="20" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+          <button type="button" id="addNewClassBtn" class="btn btn-primary"
+                  data-dismiss="modal"><?= gettext("Add") ?></button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<script type="application/javascript">
-  $(document).ready(function () {
+  <script type="application/javascript">
+    $(document).ready(function () {
+      $('.data-table').dataTable({
+        responsive: true,
+        "language": {
+          "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+        }
+      });
 
-    $("#addNewClassBtn").click(function (e) {
-      var groupName = $("#new-class-name").val(); // get the name of the from the textbox
-      if (groupName) // ensure that the user entered a name
-      {
-        $.ajax({
-          method: "POST",
-          dataType: "json",
-          contentType: "application/json; charset=utf-8",
-          url: window.CRM.root + "/api/groups/",
-          data: JSON.stringify({
-            'groupName':groupName,
-            'isSundaySchool':true
-          })
-        }).done(function (data) {                               //yippie, we got something good back from the server
-          window.location.href = window.CRM.root + "/sundayschool/SundaySchoolClassView.php?groupId="+ data.Id;
-        });
-      }
-      else {
+      $("#addNewClassBtn").click(function (e) {
+        var groupName = $("#new-class-name").val(); // get the name of the from the textbox
+        if (groupName) // ensure that the user entered a name
+        {
+          $.ajax({
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: window.CRM.root + "/api/groups/",
+            data: JSON.stringify({
+              'groupName': groupName,
+              'isSundaySchool': true
+            })
+          }).done(function (data) {                               //yippie, we got something good back from the server
+            window.location.href = window.CRM.root + "/sundayschool/SundaySchoolClassView.php?groupId=" + data.Id;
+          });
+        }
+        else {
 
-      }
+        }
+      });
+
     });
-  });
-</script>
-<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
+  </script>
+  <script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 
 <?php }
 require "../Include/Footer.php" ?>

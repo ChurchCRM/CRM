@@ -99,7 +99,8 @@ echo "===============   NPM                    ================="
 echo "=========================================================="
 
 cd /vagrant
-npm install --unsafe-perm
+sudo npm install -g npm@latest --unsafe-perm --no-bin-links
+sudo npm install --unsafe-perm --no-bin-links
 
 echo "=========================================================="
 echo "=================   MailCatcher Setup  ==================="
@@ -130,13 +131,6 @@ sudo locale-gen sq_AL
 sudo locale-gen sv_SE
 sudo locale-gen zh_CN
 sudo locale-gen zh_TW
-
-echo "=========================================================="
-echo "==========   Starting Background Installs     ============"
-echo "=========================================================="
-
-/vagrant/vagrant/build.sh &
-echo "Build systems are downloading"
 
 echo "=========================================================="
 echo "=========================================================="

@@ -3,8 +3,11 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Deposit as BaseDeposit;
-use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Base\Pledge;
+use ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 
 /**
@@ -19,12 +22,12 @@ use ChurchCRM\PledgeQuery as ChildPledgeQuery;
  */
 class Deposit extends BaseDeposit
 {
-  
+
   public function getOFX()
   {
     $OFXReturn = new \stdClass();
-    if ( $this->getPledges()->count() == 0 ) {
-      throw new \Exception("No Payments on this Deposit",404);
+    if ($this->getPledges()->count() == 0) {
+      throw new \Exception("No Payments on this Deposit", 404);
     }
 
     $orgName = "ChurchCRM Deposit Data";
@@ -46,23 +49,23 @@ class Deposit extends BaseDeposit
       "<CODE>0" .
       "<SEVERITY>INFO" .
       "</STATUS>";
-    
-    foreach ( $this->getFundTotals() as $fund ) {
+
+    foreach ($this->getFundTotals() as $fund) {
       $OFXReturn->content .= "<STMTRS>" .
         "<CURDEF>USD" .
         "<BANKACCTFROM>" .
         "<BANKID>" . $orgName .
-        "<ACCTID>" . $fund->Name .
+        "<ACCTID>" . $fund['Name'] .
         "<ACCTTYPE>SAVINGS" .
         "</BANKACCTFROM>";
       $OFXReturn->content .=
         "<STMTTRN>" .
         "<TRNTYPE>CREDIT" .
         "<DTPOSTED>" . $this->getDate("Ymd") .
-        "<TRNAMT>" . $fund->Total .
+        "<TRNAMT>" . $fund['Total'] .
         "<FITID>" .
         "<NAME>" . $this->getComment() .
-        "<MEMO>" . $fund->Name .
+        "<MEMO>" . $fund['Name'] .
         "</STMTTRN></STMTRS>";
     }
 
@@ -71,38 +74,36 @@ class Deposit extends BaseDeposit
     $OFXReturn->header = "Content-Disposition: attachment; filename=ChurchCRM-Deposit-" . $this->getId() . "-" . date("Ymd-Gis") . ".ofx";
     return $OFXReturn;
   }
-  
-  
-   private function generateCashDenominations($thisReport)
+
+
+  private function generateCashDenominations($thisReport)
   {
     $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    $cashDenominations = ["0.01", "0.05","0.10","0.25","0.50","1.00"];
+    $cashDenominations = ["0.01", "0.05", "0.10", "0.25", "0.50", "1.00"];
     $thisReport->pdf->Cell(10, 10, "Coin", 1, 0, 'L');
     $thisReport->pdf->Cell(20, 10, "Counts", 1, 0, 'L');
     $thisReport->pdf->Cell(20, 10, "Totals", 1, 2, 'L');
     $thisReport->pdf->SetX($thisReport->curX);
-    foreach ($cashDenominations as $denomination)
-    {
-      $thisReport->pdf->Cell(10,10, $denomination,  1, 0, 'L');
-      $thisReport->pdf->Cell(20,10, "",  1, 0, 'L');
-      $thisReport->pdf->Cell(20,10, "",  1, 2, 'L');
+    foreach ($cashDenominations as $denomination) {
+      $thisReport->pdf->Cell(10, 10, $denomination, 1, 0, 'L');
+      $thisReport->pdf->Cell(20, 10, "", 1, 0, 'L');
+      $thisReport->pdf->Cell(20, 10, "", 1, 2, 'L');
       $thisReport->pdf->SetX($thisReport->curX);
     }
     $thisReport->pdf->Cell(50, 10, "Total Coin", 1, 2, 'L');
-    
+
     $thisReport->curX += 70;
     $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-    
-    $cashDenominations = ["$1","$2","$5","$10","$20","$50","$100"];
+
+    $cashDenominations = ["$1", "$2", "$5", "$10", "$20", "$50", "$100"];
     $thisReport->pdf->Cell(10, 10, "Bill", 1, 0, 'L');
     $thisReport->pdf->Cell(20, 10, "Counts", 1, 0, 'L');
     $thisReport->pdf->Cell(20, 10, "Totals", 1, 2, 'L');
     $thisReport->pdf->SetX($thisReport->curX);
-    foreach ($cashDenominations as $denomination)
-    {
-      $thisReport->pdf->Cell(10,10, $denomination,  1, 0, 'L');
-      $thisReport->pdf->Cell(20,10, "",  1, 0, 'L');
-      $thisReport->pdf->Cell(20,10, "",  1, 2, 'L');
+    foreach ($cashDenominations as $denomination) {
+      $thisReport->pdf->Cell(10, 10, $denomination, 1, 0, 'L');
+      $thisReport->pdf->Cell(20, 10, "", 1, 0, 'L');
+      $thisReport->pdf->Cell(20, 10, "", 1, 2, 'L');
       $thisReport->pdf->SetX($thisReport->curX);
     }
     $thisReport->pdf->Cell(50, 10, "Total Cash", 1, 2, 'L');
@@ -123,10 +124,10 @@ class Deposit extends BaseDeposit
     $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
     $thisReport->pdf->Write(8, "Cash: ");
     $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf("%.2f", $this->getTotalCash()));
-    
+
   }
-  
-   private function generateTotalsByFund($thisReport)
+
+  private function generateTotalsByFund($thisReport)
   {
     $thisReport->pdf->SetFont('Times', 'B', 10);
     $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
@@ -137,42 +138,41 @@ class Deposit extends BaseDeposit
 
     foreach ($this->getFundTotals() as $fund) //iterate through the defined funds
     {
-        $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-        $thisReport->pdf->Write(8, $fund->Name);
-        $amountStr = sprintf("%.2f", $fund->Total);
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
-        $thisReport->curY += 4;
-    }    
-    
+      $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+      $thisReport->pdf->Write(8, $fund->Name);
+      $amountStr = sprintf("%.2f", $fund->Total);
+      $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
+      $thisReport->curY += 4;
+    }
+
   }
 
   private function generateQBDepositSlip($thisReport)
   {
     $thisReport->pdf->AddPage();
-    
+
     $thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQBDTSettings);
     $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
     $thisReport->pdf->Write(8, $this->getDate()->format("Y-m-d"));
-    
+
 
     //print_r($thisReport->QBDepositTicketParameters);
-    //logically, we print the cash in the first possible key=value pair column 
+    //logically, we print the cash in the first possible key=value pair column
     if ($this->getTotalCash() > 0) {
       $totalCashStr = sprintf("%.2f", $this->getTotalCash());
       $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->QBDepositTicketParameters->topY, $totalCashStr);
     }
     $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
     $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
-    
+
     $pledges = \ChurchCRM\PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->groupByGroupkey()
-            ->withColumn("SUM(Pledge.Amount)","sumAmount")
-            ->joinFamily(null, Criteria::LEFT_JOIN)
-            ->withColumn("Family.Name")
-            ->find();
-    foreach ($pledges as $pledge)
-    {
+      ->filterByDepid($this->getId())
+      ->groupByGroupkey()
+      ->withColumn("SUM(Pledge.Amount)", "sumAmount")
+      ->joinFamily(null, Criteria::LEFT_JOIN)
+      ->withColumn("Family.Name")
+      ->find();
+    foreach ($pledges as $pledge) {
       // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
       if ($pledge->getMethod() == 'CHECK') {
 
@@ -190,28 +190,28 @@ class Deposit extends BaseDeposit
     $grandTotalStr = sprintf("%.2f", $this->getTotalAmount());
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
-    $numItemsString = sprintf("%d", ( $this->getCountCash() >0 ? 1 : 0 ) + $this->getCountChecks());
+    $numItemsString = sprintf("%d", ($this->getCountCash() > 0 ? 1 : 0) + $this->getCountChecks());
     $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->numberOfItems->x, $thisReport->QBDepositTicketParameters->numberOfItems->y, $numItemsString);
-    
-    $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
-    $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->titleX, $thisReport->curY );
-    $thisReport->pdf->SetFont('Courier','B', 20);
-    $thisReport->pdf->Write (8, "Deposit Summary " . $this->getId());
-    $thisReport->pdf->SetFont('Times','', 10);
-     $thisReport->pdf->SetXY ($thisReport->QBDepositTicketParameters->date2X, $thisReport->curY );
-    $thisReport->pdf->Write (8, $this->getDate()->format("Y-m-d"));
 
-    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x;
-    $thisReport->curY += 2*$thisReport->QBDepositTicketParameters->lineItemInterval->y;
+    $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
+    $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->titleX, $thisReport->curY);
+    $thisReport->pdf->SetFont('Courier', 'B', 20);
+    $thisReport->pdf->Write(8, "Deposit Summary " . $this->getId());
+    $thisReport->pdf->SetFont('Times', '', 10);
+    $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date2X, $thisReport->curY);
+    $thisReport->pdf->Write(8, $this->getDate()->format("Y-m-d"));
+
+    $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x;
+    $thisReport->curY += 2 * $thisReport->QBDepositTicketParameters->lineItemInterval->y;
     $this->generateCashDenominations($thisReport);
-    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
+    $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x + 125;
 
     $this->generateTotalsByCurrencyType($thisReport);
-    $thisReport->curX=$thisReport->QBDepositTicketParameters->date1->x+125;
-    $thisReport->curY=$thisReport->QBDepositTicketParameters->perforationY+30;
+    $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x + 125;
+    $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY + 30;
     $this->generateTotalsByFund($thisReport);
   }
-  
+
   private function generateDepositSummary($thisReport)
   {
     $thisReport->depositSummaryParameters->title->x = 85;
@@ -228,8 +228,8 @@ class Deposit extends BaseDeposit
     $thisReport->depositSummaryParameters->summary->AmountX = 185;
     $thisReport->depositSummaryParameters->aggregateX = 135;
     $thisReport->depositSummaryParameters->displayBillCounts = false;
-    
-    
+
+
     $thisReport->pdf->AddPage();
     $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->date->x, $thisReport->depositSummaryParameters->date->y);
     $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
@@ -273,13 +273,10 @@ class Deposit extends BaseDeposit
       $fundName = DonationFundQuery::create()->findOneById($payment->getFundid())->getName();
       $comment = $payment->getComment();
       //$family = FamilyQuery::create()->findOneById($payment->getFamId());
-      $family=$payment->getFamily();
-      if( ! is_null($family))
-      {
+      $family = $payment->getFamily();
+      if (!is_null($family)) {
         $familyName = $payment->getFamily()->getName();
-      }
-      else
-      {
+      } else {
         $familyName = gettext("Anonymous");
       }
       if (strlen($checkNo) > 8)
@@ -325,47 +322,45 @@ class Deposit extends BaseDeposit
     $grandTotalStr = sprintf("%.2f", $this->getTotalAmount());
     $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
 
-    
+
     // Now print deposit totals by fund
     $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
-    if($thisReport->depositSummaryParameters->displayBillCounts)
-    {
+    if ($thisReport->depositSummaryParameters->displayBillCounts) {
       $this->generateCashDenominations($thisReport);
     }
     $thisReport->curX = $thisReport->depositSummaryParameters->aggregateX;
     $this->generateTotalsByFund($thisReport);
-    
-   
+
+
     $thisReport->curY += $thisReport->summaryIntervalY;
     $this->generateTotalsByCurrencyType($thisReport);
     $thisReport->curY += $thisReport->summaryIntervalY * 2;
-    
-    $thisReport->curY +=130;
+
+    $thisReport->curY += 130;
     $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
-    
+
     $this->generateWitnessSignature($thisReport);
-    
+
   }
-  
-   private function generateWitnessSignature($thisReport)
+
+  private function generateWitnessSignature($thisReport)
   {
-   
-    $thisReport->pdf->setXY($thisReport->curX,$thisReport->curY);
-    $thisReport->pdf->write(8,"Witness 1");
-    $thisReport->pdf->line( $thisReport->curX+17, $thisReport->curY+8, $thisReport->curX+80, $thisReport->curY+8);
-    
-    $thisReport->curY += 10;    
-    $thisReport->pdf->setXY($thisReport->curX,$thisReport->curY);
-    $thisReport->pdf->write(8,"Witness 2");
-    $thisReport->pdf->line( $thisReport->curX+17, $thisReport->curY+8, $thisReport->curX+80, $thisReport->curY+8);
-    
-    $thisReport->curY += 10;    
-    $thisReport->pdf->setXY($thisReport->curX,$thisReport->curY);
-    $thisReport->pdf->write(8,"Witness 3");
-    $thisReport->pdf->line( $thisReport->curX+17, $thisReport->curY+8, $thisReport->curX+80, $thisReport->curY+8);
+
+    $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->write(8, "Witness 1");
+    $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
+
+    $thisReport->curY += 10;
+    $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->write(8, "Witness 2");
+    $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
+
+    $thisReport->curY += 10;
+    $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
+    $thisReport->pdf->write(8, "Witness 3");
+    $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
 
   }
-
 
 
   public function getPDF()
@@ -373,120 +368,112 @@ class Deposit extends BaseDeposit
     requireUserGroupMembership("bFinance");
     $Report = new \stdClass();
     if (count($this->getPledges()) == 0) {
-      throw new \Exception("No Payments on this Deposit",404);
+      throw new \Exception("No Payments on this Deposit", 404);
     }
 
-    
+
     $Report->pdf = new \ChurchCRM\Reports\PDF_DepositReport;
     $Report->funds = DonationFundQuery::create()->find();
- 
+
     // Read in report settings from database
     $settings = ConfigQuery::create()->filterBySection("ChurchInfoReport")->find();
     foreach ($settings as $setting) {
       $name = $setting->getName();
       $Report->ReportSettings->$name = $setting->getValue();
     }
-    
-    
+
+
     //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
     $Report->ReportSettings->sDepositSlipType = "QBDT";
-    
-    if ( $Report->ReportSettings->sDepositSlipType == "QBDT" )
-    { 
+
+    if ($Report->ReportSettings->sDepositSlipType == "QBDT") {
       //Generate a QuickBooks Deposit Ticket.
       $this->generateQBDepositSlip($Report);
-    }
-    elseif ( $Report->ReportSettings->sDepositSlipType == "PTDT" )
-    {
+    } elseif ($Report->ReportSettings->sDepositSlipType == "PTDT") {
       //placeholder for Peachtree Deposit Tickets.
-    }
-    elseif ( $Report->ReportSettings->sDepositSlipType == "GDT" )
-    {
+    } elseif ($Report->ReportSettings->sDepositSlipType == "GDT") {
       //placeholder for generic deposit ticket.
     }
     //$this->generateBankDepositSlip($Report);
-   
+
+    $this->generateDepositSummary($Report);
 
 
-   // $this->generateDepositSummary($Report);
-
-
-   // Export file
-   $Report->pdf->Output("ChurchCRM-DepositReport-" . $this->getId() . "-" . date("Ymd-Gis") . ".pdf","D");
+    // Export file
+    $Report->pdf->Output("ChurchCRM-DepositReport-" . $this->getId() . "-" . date("Ymd-Gis") . ".pdf", "D");
   }
-  
+
   public function getTotalAmount()
   {
     return $this->getVirtualColumn("totalAmount");
   }
-  
+
   public function getTotalChecks()
   {
-     $totalCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->filterByMethod("CHECK")
-            ->withColumn("SUM(Pledge.Amount)","sumAmount")
-            ->find()
-            ->getColumnValues("sumAmount")[0];
+    $totalCash = PledgeQuery::create()
+      ->filterByDepid($this->getId())
+      ->filterByMethod("CHECK")
+      ->withColumn("SUM(Pledge.Amount)", "sumAmount")
+      ->find()
+      ->getColumnValues("sumAmount")[0];
     return $totalCash;
   }
- 
+
   public function getTotalCash()
   {
     $totalCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->filterByMethod("CASH")
-            ->withColumn("SUM(Pledge.Amount)","sumAmount")
-            ->find()
-            ->getColumnValues("sumAmount")[0];
+      ->filterByDepid($this->getId())
+      ->filterByMethod("CASH")
+      ->withColumn("SUM(Pledge.Amount)", "sumAmount")
+      ->find()
+      ->getColumnValues("sumAmount")[0];
     return $totalCash;
   }
-  
+
   public function getCountChecks()
   {
-     $countCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->groupByGroupkey()
-            ->filterByMethod("CHECK")
-            ->find()
-            ->count();
+    $countCash = PledgeQuery::create()
+      ->filterByDepid($this->getId())
+      ->groupByGroupkey()
+      ->filterByMethod("CHECK")
+      ->find()
+      ->count();
     return $countCash;
   }
- 
+
   public function getCountCash()
   {
     $countCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->groupByGroupkey()
-            ->filterByMethod("CASH")
-            ->find()
-            ->count();
+      ->filterByDepid($this->getId())
+      ->groupByGroupkey()
+      ->filterByMethod("CASH")
+      ->find()
+      ->count();
     return $countCash;
   }
-  
-  
+
+
   public function getFundTotals()
   {
-     //there is probably a better way to do this with Propel ORM...
-     $funds = array();
-     foreach( $this->getPledges() as $pledge )
-     {
-       if ( $pledge->getFundid() && is_null($funds[ $pledge->getFundid() ]) )
-       {
-         $funds[ $pledge->getFundid() ] =  new \stdClass();
-       }
-      $funds[ $pledge->getFundid() ]->Total += $pledge->getAmount();
-      $funds[ $pledge->getFundid() ]->Name = $pledge->getDonationFund()->getName();
-    }
+    $funds = PledgeQuery::create()
+      ->filterByDepid($this->getId())
+      ->groupByFundid()
+      ->withColumn('SUM('.PledgeTableMap::COL_PLG_AMOUNT.')', 'Total')
+      ->joinDonationFund()
+      ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
+      ->orderBy(DonationFundTableMap::COL_FUN_NAME)
+      ->select(['Name', 'Total'])
+      ->find();
+
     return $funds;
   }
-  
+
   public function getPledgesJoinAll(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)
   {
-      $query = ChildPledgeQuery::create(null, $criteria);
-      $query->joinWith('Family', Criteria::RIGHT_JOIN);
-      $query->joinWith('DonationFund', Criteria::RIGHT_JOIN);
-      return $this->getPledges($query, $con);
+    $query = ChildPledgeQuery::create(null, $criteria);
+    $query->joinWith('Family', Criteria::RIGHT_JOIN);
+    $query->joinWith('DonationFund', Criteria::RIGHT_JOIN);
+    return $this->getPledges($query, $con);
   }
 
 }

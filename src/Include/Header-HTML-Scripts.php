@@ -13,14 +13,6 @@
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
 <!-- AdminLTE DatePicker -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
-<?php
-$localizationFile = "skin/adminlte/plugins/datepicker/locales/bootstrap-datepicker.".$localeInfo->getLanguageCode().".js";
-if ( file_exists(_DIR__."/../".$localizationFile ) ) {
-  ?>
-  <script src="<?= $sRootPath."/".$localizationFile ?>" charset="UTF-8" type="text/javascript"></script>
-  <?php 
-}
-?>
 
 <script src="<?= $sRootPath ?>/skin/moment/moment-with-locales.min.js"></script>
 <!-- AdminLTE DatePicker -->
@@ -38,4 +30,7 @@ if ( file_exists(_DIR__."/../".$localizationFile ) ) {
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.css">
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.css">
+<link rel="stylesheet" type="text/css" href="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" />
+<script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
+
 <link rel="stylesheet" type="text/css" href="<?= $sRootPath ?>/skin/adminlte/plugins/daterangepicker/daterangepicker.css">

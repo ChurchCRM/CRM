@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use Exception;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
@@ -50,6 +51,7 @@ class SystemService
   function restoreDatabaseFromBackup()
   {
     requireUserGroupMembership("bAdmin");
+    global $systemConfig;
     $restoreResult = new \stdClass();
     $restoreResult->Messages = array();
     global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
@@ -93,6 +95,7 @@ class SystemService
     $sSQL = 'UPDATE config_cfg SET cfg_value = "0" WHERE cfg_name = "sEnableExternalBackupTarget"';
     $aRow = mysql_fetch_array(RunQuery($sSQL));
     array_push($restoreResult->Messages, gettext("As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."));
+    $systemConfig->setValue("sLastIntegrityCheckTimeStamp",null);
     return $restoreResult;
   }
 
@@ -361,7 +364,7 @@ class SystemService
     }
     return $result;
   }
-  
+
   function runTimerJobs()
   {
     global $sEnableExternalBackupTarget, $sExternalBackupAutoInterval, $sLastBackupTimeStamp;
@@ -400,7 +403,7 @@ class SystemService
       }
     }
   }
-  
+
   function downloadLatestRelease()
   {
     $release = $this->getLatestRelese();
@@ -415,7 +418,7 @@ class SystemService
     $returnFile['sha1'] = sha1_file($UpgradeDir."/".basename($url));
     return $returnFile;
   }
-  
+
   function moveDir($src,$dest) {
     $files = array_diff(scandir($src), array('.', '..'));
     foreach ($files as $file) {
@@ -430,30 +433,32 @@ class SystemService
     }
     return rmdir($src);
   }
-  
+
   function doUpgrade($zipFilename,$sha1)
   {
+    global $systemConfig;
     ini_set('max_execution_time',60);
-    $CRMInstallRoot = dirname(__DIR__); 
+    $CRMInstallRoot = dirname(__DIR__);
     if($sha1 == sha1_file($zipFilename))
     {
       $zip = new \ZipArchive();
-      if ($zip->open($zipFilename) == TRUE) 
+      if ($zip->open($zipFilename) == TRUE)
       {
         $zip->extractTo($CRMInstallRoot."/Upgrade");
         $zip->close();
         $this->moveDir($CRMInstallRoot."/Upgrade/churchcrm", $CRMInstallRoot);
       }
       unlink($zipFilename);
+      $systemConfig->setValue("sLastIntegrityCheckTimeStamp",null);
       return "success";
     }
     else
     {
        return "hash validation failure";
     }
-   
+
   }
-  
+
   function verifyApplicationIntegrity()
   {
     $CRMInstallRoot = dirname(__DIR__);
@@ -462,7 +467,7 @@ class SystemService
     if (file_exists($signatureFile))
     {
       $signatureData = json_decode(file_get_contents($signatureFile));
-      if (sha1(json_encode($signatureData->files)) == $signatureData->sha1)
+      if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) == $signatureData->sha1)
       {
         foreach ($signatureData->files as $file)
         {
@@ -489,15 +494,15 @@ class SystemService
     {
       return array("status"=>"failure","message"=>gettext("Signature definition File Missing"));
     }
-    
+
     if(count($signatureFailures) > 0 )
     {
       return array("status"=>"failure","message"=>gettext("One or more files failed signature validation"),"files"=>$signatureFailures);
     }
-    else  
+    else
     {
        return array("status"=>"success");
     }
-    
+
   }
 }

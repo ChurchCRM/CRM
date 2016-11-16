@@ -29,6 +29,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 use ChurchCRM\dto\LocaleInfo;
+use ChurchCRM\data\Countries;
 
 // Security
 if (!$_SESSION['bAdmin']) {
@@ -74,7 +75,7 @@ if (isset ($_POST['save'])) {
     // Filter Input
     if ($id == $iHTMLHeaderRow)  // Special handling of header value so HTML doesn't get removed
       $value = FilterInput($new_value[$id], "htmltext");
-    elseif ($current_type == 'text' || $current_type == "textarea")
+    elseif ($current_type == 'text' || $current_type == "textarea" || $current_type == "country")
       $value = FilterInput($new_value[$id]);
     elseif ($current_type == 'number')
       $value = FilterInput($new_value[$id], "float");
@@ -182,7 +183,15 @@ $rsConfigs = RunQuery($sSQL);
                       <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
                         <?php
                         foreach (timezone_identifiers_list() as $timeZone) {
-                          echo "<option value = " . $timeZone . " " . ($cfg_value == $timeZone ? "selected" : "") . ">" . $timeZone . "</option>";
+                          echo "<option value = '" . $timeZone . "'' " . ($cfg_value == $timeZone ? "selected" : "") . ">" . $timeZone . "</option>";
+                        }
+                        ?>
+                      </select>
+                    <?php } elseif ($cfg_type == 'country') { ?>
+                      <select name='new_value[<?= $cfg_id ?>]' class="choiceSelectBox" style="width: 100%">
+                        <?php
+                        foreach (Countries::getNames() as $country) {
+                          echo "<option value = '" . $country . "'' " . ($cfg_value == $country ? "selected" : "") . ">" . $country . "</option>";
                         }
                         ?>
                       </select>
