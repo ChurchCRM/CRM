@@ -38,7 +38,7 @@
     "install": "grunt curl-dir && grunt copy",
     "postinstall": "grunt concat && grunt rename",
     "locale-gen": "/vagrant/scripts/update-locale.sh",
-    "fetchTranslations" : "grunt poeditor",
+    "locale-download" : "grunt poeditor",
     "package": "grunt generateSignatures && grunt compress",
     "demosite": "/vagrant/scripts/demosite.sh",
     "postpackage" : "/vagrant/scripts/gen-changelogs.sh && /vagrant/scripts/version-rev.sh"
