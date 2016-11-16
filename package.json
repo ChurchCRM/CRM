@@ -30,7 +30,7 @@
   "dependencies": {
     "admin-lte": "2.3.7",
     "ionicons": "2.0.1",
-    "font-awesome": "4.6.3",
+    "font-awesome": "4.7.0",
     "fullcalendar": "3.0.1"
   },
   "scripts": {
