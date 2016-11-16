@@ -34,8 +34,7 @@
     "fullcalendar": "3.0.1"
   },
   "scripts": {
-    "preinstall": "grunt clean",
-    "install": "grunt curl-dir && grunt copy",
+    "install": "grunt clean && grunt curl-dir && grunt copy",
     "postinstall": "grunt concat && grunt rename",
     "locale-gen": "/vagrant/scripts/update-locale.sh",
     "locale-download" : "grunt poeditor",

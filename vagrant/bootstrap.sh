@@ -99,7 +99,7 @@ echo "===============   NPM                    ================="
 echo "=========================================================="
 
 cd /vagrant
-sudo npm install -g npm --unsafe-perm --no-bin-links
+sudo npm install -g npm@latest --unsafe-perm --no-bin-links
 sudo npm install --unsafe-perm --no-bin-links
 
 echo "=========================================================="
