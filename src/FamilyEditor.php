@@ -439,8 +439,15 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 								$aBirthYears[$iCount],
 								$aClassification[$iCount])";
 					RunQuery($sSQL);
+          $dbPersonId = mysql_insert_id();
+          $note = new Note();
+          $note->setPerId($dbPersonId);
+          $note->setText("Created via Family");
+          $note->setType("create");
+          $note->setEntered($_SESSION['iUserID']);
+          $note->save();
 					$sSQL = "INSERT INTO person_custom (per_ID) VALUES ("
-								. mysql_insert_id() . ")";
+								. $dbPersonId . ")";
 					RunQuery($sSQL);
 					RunQuery("UNLOCK TABLES");
 				}
@@ -475,6 +482,12 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					$sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Suffix='" . $aSuffix[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "', " . $sBirthYearScript . "per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
 					RunQuery($sSQL);
 					//RunQuery("UNLOCK TABLES");
+          $note = new Note();
+          $note->setPerId($aPersonIDs[$iCount]);
+          $note->setText("Updated via Family");
+          $note->setType("edit");
+          $note->setEntered($_SESSION['iUserID']);
+          $note->save();
 				}
 			}
 			$note = new Note();

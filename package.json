@@ -24,7 +24,8 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-compress": "^1.0.3",
     "grunt-contrib-rename": "^0.0.3",
-    "node-sha1":"1.0.1"
+    "node-sha1": "1.0.1",
+    "grunt-poeditor-ab": "^0.1.9"
   },
   "dependencies": {
     "admin-lte": "2.3.7",
@@ -33,11 +34,12 @@
     "fullcalendar": "3.0.1"
   },
   "scripts": {
-    "preinstall": "grunt clean",
-    "install": "grunt curl-dir && grunt copy",
+    "install": "grunt clean && grunt curl-dir && grunt copy",
     "postinstall": "grunt concat && grunt rename",
     "locale-gen": "/vagrant/scripts/update-locale.sh",
+    "locale-download" : "grunt poeditor",
     "package": "grunt generateSignatures && grunt compress",
-    "demosite": "/vagrant/scripts/demosite.sh"
+    "demosite": "/vagrant/scripts/demosite.sh",
+    "postpackage" : "/vagrant/scripts/gen-changelogs.sh && /vagrant/scripts/version-rev.sh"
   }
 }
