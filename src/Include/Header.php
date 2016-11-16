@@ -126,7 +126,7 @@ $MenuFirst = 1;
               </li>
             </ul>
           </li>
-          <?php if ($_SESSION['bAdmin']) { ?>
+          <?php if ($_SESSION['user']->isAdmin()) { ?>
             <li class="hidden-xxs">
               <a class="js-gitter-toggle-chat-button">
                 <i class="fa fa-comments"></i>
@@ -215,7 +215,7 @@ $MenuFirst = 1;
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li>
-          <a href="<?= $sRootPath . "/" ?>Menu.php">
+          <a href="<?= $sRootPath ?>/Menu.php">
             <i class="fa fa-dashboard"></i> <span><?= gettext("Dashboard") ?></span>
           </a>
         </li>
@@ -235,19 +235,15 @@ $MenuFirst = 1;
         ?>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i><?= gettext("Home") ?></a></li>
+        <li><a href="<?= $sRootPath ?>/Menu.php"><i class="fa fa-dashboard"></i><?= gettext("Home") ?></a></li>
         <li class="active"><?= $sPageTitle ?></li>
       </ol>
     </section>
     <!-- Main content -->
     <section class="content">
-      <?php if ($sGlobalMessage) { ?>
-        <div class="main-box-body clearfix">
-          <div class="callout callout-<?= $sGlobalMessageClass ?> fade in">
+        <div class="main-box-body clearfix" style="display:none" id="globalMessage">
+          <div class="callout fade in" id="globalMessageCallOut">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
-            <?= $sGlobalMessage ?>
+            <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i><span id="globalMessageText"></span>
           </div>
         </div>
-        <?php
-      } ?>

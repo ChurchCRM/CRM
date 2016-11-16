@@ -57,6 +57,14 @@
 
   <script src="<?= $sRootPath ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
 
+  <?php if ($sGlobalMessage) {?>
+    <script>
+      $("document").ready(function() {
+        showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");
+      });
+    </script>
+  <?php } ?>
+
   <?php if ($_SESSION['bAdmin']) { ?>
   <script>
     ((window.gitter = {}).chat = {}).options = {
