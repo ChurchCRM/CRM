@@ -183,7 +183,7 @@
             </li>
             <li>
               <a href="<?= $sRootPath ?>/UserList.php">
-                <i class="menu-icon fa fa-users bg-gray"></i>
+                <i class="menu-icon fa fa-user-secret bg-gray"></i>
                 <div class="menu-info">
                   <h4 class="control-sidebar-subheading"><?= _("System Users") ?></h4>
                 </div>
