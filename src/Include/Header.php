@@ -126,59 +126,6 @@ $MenuFirst = 1;
               </li>
             </ul>
           </li>
-          <?php if ($_SESSION['user']->isAdmin()) { ?>
-            <li class="hidden-xxs">
-              <a class="js-gitter-toggle-chat-button">
-                <i class="fa fa-comments"></i>
-              </a>
-            </li>
-            <li class="dropdown settings-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-cog"></i>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="user-body">
-                  <?php addMenu("admin"); ?>
-                </li>
-              </ul>
-            </li>
-            <?php
-            $tasks = $taskService->getCurrentUserTasks();
-            $taskSize = count($tasks);
-            ?>
-            <li class="dropdown tasks-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-flag-o"></i>
-                <span class="label label-danger"><?= $taskSize ?></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header"><?= gettext("You have") ?> <?= $taskSize ?> <?= gettext("task(s)") ?></li>
-                <li>
-                  <!-- inner menu: contains the actual data -->
-                  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;">
-                    <ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
-                      <?php foreach ($tasks as $task) { ?>
-                        <li><!-- Task item -->
-                          <a href="<?= $task["link"] ?>">
-                            <h3><?= $task["title"] ?>
-                              <?php if ($task["admin"]) { ?>
-                                <small class="pull-right"><i class="fa fa-fw fa-lock"></i></small>
-                              <?php } ?>
-                            </h3>
-                          </a>
-                        </li>
-                        <!-- end task item -->
-                      <?php } ?>
-                    </ul>
-                    <div class="slimScrollBar"
-                         style="width: 3px; position: absolute; top: 11px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 188.679px; background: rgb(0, 0, 0);"></div>
-                    <div class="slimScrollRail"
-                         style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          <?php } ?>
           <li class="hidden-xxs">
             <a href="http://docs.churchcrm.io" target="_blank">
               <i class="fa fa-support"></i>
@@ -192,6 +139,16 @@ $MenuFirst = 1;
           <li class="hidden-xxs">
             <a href="<?= $sRootPath ?>/Login.php?Logoff=True">
               <i class="fa fa-power-off"></i>
+            </a>
+          </li>
+          <?php
+          $tasks = $taskService->getCurrentUserTasks();
+          $taskSize = count($tasks);
+          ?>
+          <li class="dropdown settings-dropdown">
+            <a href="#" data-toggle="control-sidebar">
+              <i class="fa fa-gears"></i>
+              <span class="label label-danger"><?= $taskSize ?></span>
             </a>
           </li>
         </ul>
