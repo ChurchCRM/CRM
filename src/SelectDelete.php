@@ -17,6 +17,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\UserQuery;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
@@ -101,8 +102,8 @@ function DeletePerson($iPersonID)
 	}
 
 	// Delete any User record
-	// $sSQL = "DELETE FROM user_usr WHERE usr_per_ID = " . $iPersonID;
-	// RunQuery($sSQL);
+	UserQuery::create()->findPk($iPersonID)->delete();
+
 
 	// Make sure person was not in the cart
 	RemoveFromPeopleCart($iPersonID);
