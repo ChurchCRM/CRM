@@ -1242,21 +1242,18 @@ INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_valu
 CREATE TABLE `user_usr` (
   `usr_per_ID` mediumint(9) unsigned NOT NULL default '0',
   `usr_Password` varchar(500) NOT NULL default '',
-  `usr_NeedPasswordChange` tinyint(3) unsigned NOT NULL default '1',
+  `usr_NeedPasswordChange` tinyint(1) unsigned NOT NULL default '1',
   `usr_LastLogin` datetime NOT NULL default '0000-00-00 00:00:00',
   `usr_LoginCount` smallint(5) unsigned NOT NULL default '0',
   `usr_FailedLogins` tinyint(3) unsigned NOT NULL default '0',
-  `usr_AddRecords` tinyint(3) unsigned NOT NULL default '0',
-  `usr_EditRecords` tinyint(3) unsigned NOT NULL default '0',
-  `usr_DeleteRecords` tinyint(3) unsigned NOT NULL default '0',
-  `usr_MenuOptions` tinyint(3) unsigned NOT NULL default '0',
-  `usr_ManageGroups` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Finance` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Communication` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Notes` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Admin` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Workspacewidth` smallint(6) default NULL,
-  `usr_BaseFontSize` tinyint(4) default NULL,
+  `usr_AddRecords` tinyint(1) unsigned NOT NULL default '0',
+  `usr_EditRecords` tinyint(1) unsigned NOT NULL default '0',
+  `usr_DeleteRecords` tinyint(1) unsigned NOT NULL default '0',
+  `usr_MenuOptions` tinyint(1) unsigned NOT NULL default '0',
+  `usr_ManageGroups` tinyint(1) unsigned NOT NULL default '0',
+  `usr_Finance` tinyint(1) unsigned NOT NULL default '0',
+  `usr_Notes` tinyint(1) unsigned NOT NULL default '0',
+  `usr_Admin` tinyint(1) unsigned NOT NULL default '0',
   `usr_SearchLimit` tinyint(4) default '10',
   `usr_Style` varchar(50) default 'Style.css',
   `usr_showPledges` tinyint(1) NOT NULL default '0',
@@ -1264,8 +1261,8 @@ CREATE TABLE `user_usr` (
   `usr_showSince` date NOT NULL default '0000-00-00',
   `usr_defaultFY` mediumint(9) NOT NULL default '10',
   `usr_currentDeposit` mediumint(9) NOT NULL default '0',
-  `usr_UserName` varchar(32) default NULL,
-  `usr_EditSelf` tinyint(3) unsigned NOT NULL default '0',
+  `usr_UserName` varchar(50) default NULL,
+  `usr_EditSelf` tinyint(1) unsigned NOT NULL default '0',
   `usr_CalStart` date default NULL,
   `usr_CalEnd` date default NULL,
   `usr_CalNoSchool1` date default NULL,
@@ -1277,7 +1274,7 @@ CREATE TABLE `user_usr` (
   `usr_CalNoSchool7` date default NULL,
   `usr_CalNoSchool8` date default NULL,
   `usr_SearchFamily` tinyint(3) default NULL,
-  `usr_Canvasser` tinyint(3) NOT NULL default '0',
+  `usr_Canvasser` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   KEY `usr_per_ID` (`usr_per_ID`)
@@ -1289,14 +1286,14 @@ CREATE TABLE `user_usr` (
 
 INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, `usr_LastLogin`,
 `usr_LoginCount`, `usr_FailedLogins`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`,
-`usr_MenuOptions`, `usr_ManageGroups`, `usr_Finance`, `usr_Communication`, `usr_Notes`, `usr_Admin`,
-`usr_Workspacewidth`, `usr_BaseFontSize`, `usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
+`usr_MenuOptions`, `usr_ManageGroups`, `usr_Finance`, `usr_Notes`, `usr_Admin`,
+`usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
 `usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`, `usr_EditSelf`,
 `usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`,
 `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`,
 `usr_Canvasser`)
 VALUES
-(1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '0000-00-00 00:00:00', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 580, 9, 10, 'skin-blue', 0, 0, '0000-00-00', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
+(1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '0000-00-00 00:00:00', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 10, 'skin-blue', 0, 0, '0000-00-00', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
 
 
 -- --------------------------------------------------------
