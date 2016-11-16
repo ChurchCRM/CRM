@@ -45,7 +45,7 @@
     First edit Gruntfile.js, and set ```poeditor.options.api_token``` to your personal POEditor API access token.  Then, run:
 
     ```
-    npm run fetchTranslations
+    npm run locale-download
     ```
 
   4. Check in translation file 
