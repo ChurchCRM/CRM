@@ -153,11 +153,6 @@ else {
   }
 }
 
-// Set Current Deposit setting for user
-//if ($iCurrentFundraiser) {
-//	$sSQL = "UPDATE user_usr SET usr_CurrentFundraiser = '$iCurrentFundraiser' WHERE usr_per_id = \"".$_SESSION['iUserID']."\"";
-//	$rsUpdate = RunQuery($sSQL);
-//}
 //Get People for the drop-down
 $sPeopleSQL = "SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName, per_FirstName";
 
@@ -310,7 +305,7 @@ while ($aRow = mysql_fetch_array($rsPeople)) {
               </td>
             </tr>
           </table> <!-- Table for the whole form -->
-    
+
     </table>
   </form>
   <div>
