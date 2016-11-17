@@ -40,7 +40,7 @@
     "locale-download" : "grunt updateFromPOeditor",
     "package": "grunt generateSignatures && grunt compress",
     "demosite": "scripts/demosite.sh",
-    "postpackage" : "scripts/gen-changelogs.sh && scripts/version-rev.sh",
+    "rev-build" : "scripts/gen-changelogs.sh && scripts/version-rev.sh",
     "orm-gen" : "src/vendor/propel/propel/bin/propel --config-dir=propel model:build "
   }
 }
