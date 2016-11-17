@@ -37,7 +37,7 @@
     "install": "grunt clean && grunt curl-dir && grunt copy",
     "postinstall": "grunt concat && grunt rename",
     "locale-gen": "scripts/update-locale.sh",
-    "locale-download" : "grunt poeditor",
+    "locale-download" : "grunt updateFromPOeditor",
     "package": "grunt generateSignatures && grunt compress",
     "demosite": "scripts/demosite.sh",
     "postpackage" : "scripts/gen-changelogs.sh && scripts/version-rev.sh",
