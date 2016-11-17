@@ -245,7 +245,7 @@ module.exports = function (grunt) {
           type: 'po', // export type (check out the doc)
           dest: 'src/locale/?/LC_MESSAGES/messages.po'
           // grunt style dest files
-        },
+        }
       },
       getMOTranslations: {
         download: {
@@ -273,7 +273,7 @@ module.exports = function (grunt) {
     var signatures = {
       "version":this.data.version,
       "files":[]
-    }
+    };
     this.files.forEach(function(filePair) {
       isExpandedPair = filePair.orig.expand || false;
       
@@ -287,6 +287,13 @@ module.exports = function (grunt) {
     signatures.sha1=sha1(JSON.stringify(signatures.files));
     grunt.file.write("src/signatures.json",JSON.stringify(signatures));
   });
+  
+  grunt.registerTask('updateFromPOeditor', 'Description of the task', function(target) {
+    grunt.config('clean',{pofiles: ["src/locale/*/**/*.po","src/locale/*/**/*.mo"]});
+    grunt.task.run(['clean:pofiles']);
+    grunt.loadNpmTasks('grunt-poeditor-ab');
+    grunt.task.run(['poeditor']);
+  });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -294,5 +301,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-curl');
-  grunt.loadNpmTasks('grunt-poeditor-ab');
+
 };
