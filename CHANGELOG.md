@@ -1,27 +1,68 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
-
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.3.3...HEAD)
+## [2.3.4](https://github.com/ChurchCRM/CRM/tree/2.3.4) (2016-11-16)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.3.3...2.3.4)
 
 **Implemented enhancements:**
 
+- Default Country is not intuitive [\#1327](https://github.com/ChurchCRM/CRM/issues/1327)
+- Sort Donation Funds [\#1233](https://github.com/ChurchCRM/CRM/issues/1233)
+- phone number stored neutrally and then formatted on output \(print or display\) [\#1191](https://github.com/ChurchCRM/CRM/issues/1191)
 - Untranslated terms in 2.30-RC1: [\#1207](https://github.com/ChurchCRM/CRM/issues/1207)
+- System Settings Counties  [\#1339](https://github.com/ChurchCRM/CRM/pull/1339) ([DawoudIO](https://github.com/DawoudIO))
+- Site Footers [\#1360](https://github.com/ChurchCRM/CRM/pull/1360) ([DawoudIO](https://github.com/DawoudIO))
+- Add Data tables now support locale and are responsvie [\#1358](https://github.com/ChurchCRM/CRM/pull/1358) ([DawoudIO](https://github.com/DawoudIO))
+- Sort Donation Funds [\#1313](https://github.com/ChurchCRM/CRM/pull/1313) ([bradgearon](https://github.com/bradgearon))
 
 **Fixed bugs:**
 
+- Integrity check settings are not in correct location [\#1366](https://github.com/ChurchCRM/CRM/issues/1366)
+- Typo: Recurrance [\#1351](https://github.com/ChurchCRM/CRM/issues/1351)
+- Deposit Slip Editor - Can\'t delete [\#1348](https://github.com/ChurchCRM/CRM/issues/1348)
+- Group Editor Row Selection Issue [\#1347](https://github.com/ChurchCRM/CRM/issues/1347)
+- Group view data tables [\#1346](https://github.com/ChurchCRM/CRM/issues/1346)
+- Adding members to group on mobile [\#1345](https://github.com/ChurchCRM/CRM/issues/1345)
+- Adding new group [\#1344](https://github.com/ChurchCRM/CRM/issues/1344)
 - Deposit report [\#1342](https://github.com/ChurchCRM/CRM/issues/1342)
+- Installation of 2.3.3 Failed - "ERR\_TOO\_MANY\_REDIRECTS"  [\#1336](https://github.com/ChurchCRM/CRM/issues/1336)
 - RestoreDatabase has syntax error [\#1332](https://github.com/ChurchCRM/CRM/issues/1332)
+- Create new Member does not create a timeline event [\#1312](https://github.com/ChurchCRM/CRM/issues/1312)
+- In-App Upgrading [\#1303](https://github.com/ChurchCRM/CRM/issues/1303)
+- Changing Group Member Roles Unexpected Behavior [\#987](https://github.com/ChurchCRM/CRM/issues/987)
+- Site Footers [\#1360](https://github.com/ChurchCRM/CRM/pull/1360) ([DawoudIO](https://github.com/DawoudIO))
+- Person/Family Notes [\#1359](https://github.com/ChurchCRM/CRM/pull/1359) ([DawoudIO](https://github.com/DawoudIO))
+- Add Data tables now support locale and are responsvie [\#1358](https://github.com/ChurchCRM/CRM/pull/1358) ([DawoudIO](https://github.com/DawoudIO))
+- fixed typo and case issue [\#1357](https://github.com/ChurchCRM/CRM/pull/1357) ([DawoudIO](https://github.com/DawoudIO))
+- fixes \#1348 \#1347 \#1345 \#1344 [\#1350](https://github.com/ChurchCRM/CRM/pull/1350) ([crossan007](https://github.com/crossan007))
+- 2.3.4 fixes [\#1337](https://github.com/ChurchCRM/CRM/pull/1337) ([crossan007](https://github.com/crossan007))
 - \#1332 Fixed restore JS error [\#1334](https://github.com/ChurchCRM/CRM/pull/1334) ([DawoudIO](https://github.com/DawoudIO))
 
 **Closed issues:**
 
 - Upgrade from website [\#1333](https://github.com/ChurchCRM/CRM/issues/1333)
+- Render JSON Config Parameters Nicely [\#791](https://github.com/ChurchCRM/CRM/issues/791)
+- Convert all links to pretty URLs [\#425](https://github.com/ChurchCRM/CRM/issues/425)
+- Mobile rendering [\#1306](https://github.com/ChurchCRM/CRM/issues/1306)
 - deposit report [\#1286](https://github.com/ChurchCRM/CRM/issues/1286)
+- Skin build should remove unneeded files [\#1244](https://github.com/ChurchCRM/CRM/issues/1244)
 - Update DataTables to latest and include localization files  [\#1237](https://github.com/ChurchCRM/CRM/issues/1237)
+- replace phing with NPM  [\#1206](https://github.com/ChurchCRM/CRM/issues/1206)
+- Add a link to ChurchCRM.io with a trademark on the login page [\#1169](https://github.com/ChurchCRM/CRM/issues/1169)
+- datatable : Internationalisation plug-ins [\#1141](https://github.com/ChurchCRM/CRM/issues/1141)
 
 **Merged pull requests:**
 
+- fix regression issue on family view [\#1372](https://github.com/ChurchCRM/CRM/pull/1372) ([crossan007](https://github.com/crossan007))
+- check in translations from POEditor.com [\#1371](https://github.com/ChurchCRM/CRM/pull/1371) ([crossan007](https://github.com/crossan007))
+- fix grunt & missing npm devDependencies [\#1370](https://github.com/ChurchCRM/CRM/pull/1370) ([crossan007](https://github.com/crossan007))
+- 2.3.4 1313 fixpr [\#1364](https://github.com/ChurchCRM/CRM/pull/1364) ([crossan007](https://github.com/crossan007))
+- Pre 2.3.4 to develop [\#1356](https://github.com/ChurchCRM/CRM/pull/1356) ([DawoudIO](https://github.com/DawoudIO))
+- Update Events.md [\#1354](https://github.com/ChurchCRM/CRM/pull/1354) ([lbridgman](https://github.com/lbridgman))
+- update release docs [\#1367](https://github.com/ChurchCRM/CRM/pull/1367) ([crossan007](https://github.com/crossan007))
+- run integrity check after upgrade and restore [\#1365](https://github.com/ChurchCRM/CRM/pull/1365) ([crossan007](https://github.com/crossan007))
+- grunt POEditor terms [\#1363](https://github.com/ChurchCRM/CRM/pull/1363) ([crossan007](https://github.com/crossan007))
+- fix npm update [\#1362](https://github.com/ChurchCRM/CRM/pull/1362) ([crossan007](https://github.com/crossan007))
+- Remove phing & other NPM fixes [\#1355](https://github.com/ChurchCRM/CRM/pull/1355) ([DawoudIO](https://github.com/DawoudIO))
 - fixes \#1286 \#1342 [\#1349](https://github.com/ChurchCRM/CRM/pull/1349) ([crossan007](https://github.com/crossan007))
 - Include DB terms with NPM run locale-gen [\#1340](https://github.com/ChurchCRM/CRM/pull/1340) ([crossan007](https://github.com/crossan007))
 - Grunt for All Skin & New Localization Files [\#1335](https://github.com/ChurchCRM/CRM/pull/1335) ([DawoudIO](https://github.com/DawoudIO))
@@ -93,7 +134,6 @@
 - Unsure on how to update to new version  [\#1284](https://github.com/ChurchCRM/CRM/issues/1284)
 - Random Photo Added when creat a person [\#1263](https://github.com/ChurchCRM/CRM/issues/1263)
 - date format needs to be configurable [\#1194](https://github.com/ChurchCRM/CRM/issues/1194)
-- datatable : Internationalisation plug-ins [\#1141](https://github.com/ChurchCRM/CRM/issues/1141)
 - Need a system setting for date format [\#1031](https://github.com/ChurchCRM/CRM/issues/1031)
 - PROBLEMS IN THE INSTALLATION . [\#875](https://github.com/ChurchCRM/CRM/issues/875)
 - WeddingDates/Anniversary show up in Calendar [\#1297](https://github.com/ChurchCRM/CRM/issues/1297)
