@@ -373,7 +373,7 @@ function FilterInputArr($arr, $key, $type = 'string', $size = 1)
 
 // Sanitizes user input as a security measure
 // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
-// Note that a database connection must already be established for the mysql_real_escape_string function to work.
+// Note that a database connection must already be established for the mysqli_real_escape_string function to work.
 function FilterInput($sInput, $type = 'string', $size = 1)
 {
   if (strlen($sInput) > 0) {

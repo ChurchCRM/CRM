@@ -124,8 +124,8 @@ require "Include/Header.php"; ?>
         if (!$bDuplicateNameError) {
           // Find the highest existing field number in the table to determine the next free one.
           // This is essentially an auto-incrementing system where deleted numbers are not re-used.
-          $fields = mysql_list_fields($sDATABASE, "person_custom", $cnInfoCentral);
-          $last = mysql_num_fields($fields) - 1;
+          $fields = mysqli_query($cnInfoCentral, "SHOW COLUMNS FROM person_custom");
+          $last = mysqli_num_fields($fields) - 1;
 
           // Set the new field number based on the highest existing.  Chop off the "c" at the beginning of the old one's name.
           // The "c#" naming scheme is necessary because MySQL 3.23 doesn't allow numeric-only field (table column) names.

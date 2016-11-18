@@ -64,7 +64,7 @@ if (!function_exists("mysql_failure")) {
 $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
 or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
 
-mysql_set_charset("utf8mb4", $cnInfoCentral);
+mysqli_set_charset($cnInfoCentral, "utf8mb4");
 
 mysqli_select_db($cnInfoCentral, $sDATABASE)
 or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));

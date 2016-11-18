@@ -157,7 +157,7 @@ if (array_key_exists ('cartdir', $_POST))
     $sWhereExt .= "AND per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
 }
 
-$mysqlinfo = mysql_get_server_info();
+$mysqlinfo = mysqli_get_server_info($cnInfoCentral);
 $mysqltmp = explode(".", $mysqlinfo);
 $mysqlversion = $mysqltmp[0];
 if(count($mysqltmp[1] > 1))
