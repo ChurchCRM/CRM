@@ -23,7 +23,7 @@ if (array_key_exists('Action', $_POST) && $_POST['Action'] == "Retrieve" && !emp
     if ($_POST['Choice'] == "Attendees")
     {
         $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country
-                FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4 
+                FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4
                 WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID IN ('1','2','5')
 		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext("Event Attendees");
@@ -58,7 +58,7 @@ if (array_key_exists('Action', $_POST) && $_POST['Action'] == "Retrieve" && !emp
     {
         $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_HomePhone, t1.per_Country
                 FROM person_per AS t1, events_event AS t2, event_attend AS t3
-                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND per_cls_ID IN ('0','3') 
+                WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$_POST['Event']." AND per_cls_ID IN ('0','3')
 		ORDER BY t1.per_LastName, t1.per_ID";
         $sPageTitle = gettext("Event Guests");
     }
@@ -148,12 +148,12 @@ $cSQL = "SELECT COUNT(per_ID) AS cCount
          FROM person_per as t1, events_event as t2, event_attend as t3
          WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$aEventID[$row]." AND per_cls_ID IN ('1','2','5')";
 $cOpps = RunQuery($cSQL);
-$cNumAttend = mysql_result($cOpps, 0);
+$cNumAttend = mysqli_fetch_row($cOpps)[0];
 $tSQL = "SELECT COUNT(per_ID) AS tCount
          FROM person_per
          WHERE per_cls_ID IN ('1','2','5')";
 $tOpps = RunQuery($tSQL);
-$tNumTotal = mysql_result($tOpps, 0);
+$tNumTotal = mysqli_fetch_row($tOpps)[0];
 ?>
                <input type="submit" name="Type" value="<?= gettext("Attending Members").' ['.$cNumAttend.']' ?>" class="btn">
              </form>
@@ -180,7 +180,7 @@ $gSQL = "SELECT COUNT(per_ID) AS gCount
          FROM person_per as t1, events_event as t2, event_attend as t3
          WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = ".$aEventID[$row]." AND per_cls_ID = 3";
 $gOpps = RunQuery($gSQL);
-$gNumGuestAttend = mysql_result($gOpps, 0);
+$gNumGuestAttend = mysqli_fetch_row($gOpps)[0];
 ?>
                <input <?= ($gNumGuestAttend == 0 ? "type=\"button\"":"type=\"submit\"") ?> name="Type" value="<?= gettext("Guests").' ['.$gNumGuestAttend.']' ?>" class="btn">
              </form>
