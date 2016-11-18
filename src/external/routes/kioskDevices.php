@@ -24,10 +24,12 @@ $app->group('/kioskdevices', function () {
     
     $this->get('/{guid}/activeClassMembers', function ($request, $response, $args) {
      $ssClass = ChurchCRM\Person2group2roleP2g2rQuery::create()
-            ->orderByRoleId()
-            ->addJoin(ChurchCRM\Map\ListOptionTableMap::COL_LST_ID, ChurchCRM\Map\GroupTableMap::COL_GRP_ID,  Propel\Runtime\ActiveQuery\Criteria::INNER_JOIN)
+            ->joinWithGroup()
             ->joinWithPerson()
-            ->findByGroupId(5);
+            ->addJoin(ChurchCRM\Map\GroupTableMap::COL_GRP_ROLELISTID, ChurchCRM\Map\ListOptionTableMap::COL_LST_ID , Propel\Runtime\ActiveQuery\Criteria::INNER_JOIN)
+            ->addJoinCondition(self::RoleId, "ListOptionO.ptionId")
+             ->withColumn(ChurchCRM\Map\ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
+            ->findByGroupId(2);
       return $ssClass->toJSON();
     });
     
