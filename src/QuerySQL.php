@@ -87,7 +87,7 @@ function ExportQueryResults()
 
 
     $sCSVstring = "";
-	
+
 	//Run the SQL
 	$rsQueryResults = RunQuery($sSQL);
 
@@ -101,7 +101,8 @@ function ExportQueryResults()
 		//Loop through the fields and write the header row
 		for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
 		{
-            $sCSVstring .= mysql_field_name($rsQueryResults,$iCount) . ",";
+			$fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
+      $sCSVstring .= $fieldInfo->name . ",";
 		}
 
         $sCSVstring .= "\n";
@@ -125,13 +126,13 @@ function ExportQueryResults()
 	header("Content-Transfer-Encoding: binary");
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-	header('Pragma: public'); 
+	header('Pragma: public');
 	echo $sCSVstring;
     exit;
 
 }
 
-//Display the count of the recordset 	 	
+//Display the count of the recordset
 	echo "<p align=\"center\">";
 	echo mysqli_num_rows($rsQueryResults) . gettext(" record(s) returned");
 	echo "</p>";
@@ -145,7 +146,7 @@ function RunFreeQuery()
 	global $sSQL;
 	global $iQueryID;
 
-	
+
 	//Run the SQL
 	$rsQueryResults = RunQuery($sSQL);
 
@@ -165,12 +166,13 @@ function RunFreeQuery()
 		//Loop through the fields and write the header row
 		for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
 		{
-            		//If this field is called "AddToCart", don't display this field...
-			if (mysql_field_name($rsQueryResults,$iCount) != "AddToCart")
+			//If this field is called "AddToCart", don't display this field...
+			$fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
+			if ($fieldInfo->name != "AddToCart")
 			{
-	            	echo '  <td align="center">
-	                        	<b>' . mysql_field_name($rsQueryResults,$iCount) . '</b>
-	                    	</td>';
+				echo '  <td align="center">
+							<b>' . $fieldInfo->name . '</b>
+							</td>';
 			}
 		}
 
@@ -188,7 +190,8 @@ function RunFreeQuery()
 			for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
 			{
 				//If this field is called "AddToCart", add this to the hidden form field...
-				if (mysql_field_name($rsQueryResults,$iCount) == "AddToCart")
+				$fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
+				if ($fieldInfo->name == "AddToCart")
 				{
 					$aHiddenFormField[] = $aRow[$iCount];
 				}
@@ -206,17 +209,18 @@ function RunFreeQuery()
 		echo '</table>';
 		echo "<p align=\"center\">";
 
-			if (count($aHiddenFormField) > 0)
-			{
-				?>
-				<form method="post" action="CartView.php"><p align="center">
-					<input type="hidden" value="<?= join(",",$aHiddenFormField) ?>" name="BulkAddToCart">
-					<input type="submit" class="btn" name="AddToCartSubmit" value="<?php echo gettext("Add Results To Cart");?>">&nbsp;
-					<input type="submit" class="btn" name="AndToCartSubmit" value="<?php echo gettext("Intersect Results With Cart");?>">&nbsp;
-					<input type="submit" class="btn" name="NotToCartSubmit" value="<?php echo gettext("Remove Results From Cart");?>">
-				</p></form>
-				<?php
-			}
+		if (count($aHiddenFormField) > 0)
+		{
+			?>
+			<form method="post" action="CartView.php"><p align="center">
+				<input type="hidden" value="<?= join(",",$aHiddenFormField) ?>" name="BulkAddToCart">
+				<input type="submit" class="btn" name="AddToCartSubmit" value="<?php echo gettext("Add Results To Cart");?>">&nbsp;
+				<input type="submit" class="btn" name="AndToCartSubmit" value="<?php echo gettext("Intersect Results With Cart");?>">&nbsp;
+				<input type="submit" class="btn" name="NotToCartSubmit" value="<?php echo gettext("Remove Results From Cart");?>">
+			</p></form>
+			<?php
+		}
+
 		echo "<p align=\"center\"><a href=\"QueryList.php\">". gettext("Return to Query Menu") . "</a></p>";
 		echo '<br><p class="ShadedBox" style="border-style: solid; margin-left: 50px; margin-right: 50 px; border-width: 1px;"><span class="SmallText">' . str_replace(Chr(13),"<br>",htmlspecialchars($sSQL)) . '</span></p>';
 	}

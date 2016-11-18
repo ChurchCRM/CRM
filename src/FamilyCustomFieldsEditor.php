@@ -170,7 +170,8 @@ else
                 // Chop off the "c" at the beginning of the old one's name.
                 // The "c#" naming scheme is necessary because MySQL 3.23
                 // doesn't allow numeric-only field (table column) names.
-                $newFieldNum = substr(mysql_field_name($fields, $last), 1) + 1;
+                $fieldInfo = mysqli_fetch_field_direct($fields, $last);
+                $newFieldNum = substr($fieldInfo->name, 1) + 1;
 
                 if ($newFieldSide == 0)
                     $newFieldSide = 'left';
