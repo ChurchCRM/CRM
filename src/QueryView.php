@@ -226,9 +226,10 @@ function DoQuery()
 	for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
 	{
 		//If this field is called "AddToCart", don't display this field...
-		if (mysql_field_name($rsQueryResults,$iCount) != "AddToCart")
+		$fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
+		if ($fieldInfo->name != "AddToCart")
 		{
-			echo "<td>" . mysql_field_name($rsQueryResults,$iCount) . "</td>";
+			echo "<td>" . $fieldInfo->name . "</td>";
 		}
 	}
 
@@ -236,7 +237,7 @@ function DoQuery()
 	echo "</tr>";
 
 	$aHiddenFormField = array ();
-	
+
 	//Loop through the recordset
 	while($aRow = mysqli_fetch_array($rsQueryResults))
 	{
@@ -250,7 +251,8 @@ function DoQuery()
 		for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
 		{
 			//If this field is called "AddToCart", add this to the hidden form field...
-			if (mysql_field_name($rsQueryResults,$iCount) == "AddToCart")
+			$fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
+			if ($fieldInfo->name == "AddToCart")
 			{
 				$aHiddenFormField[] = $aRow[$iCount];
 			}
@@ -389,14 +391,14 @@ function DisplayParameterForm()
 
 		//If we are re-rendering this form due to a validation error, display the error
 		if (isset($aErrorText[$qrp_Alias]))
-		{ 
+		{
 			echo "<tr><td colspan=\"3\" style=\"color: red;\">" . $aErrorText[$qrp_Alias] . "</td></tr>";
 		}
-		
+
 	}
 
 	?>
-	
+
 	<td colspan="3" align="center">
 		<br>
 		<input class="btn" type="Submit" value="<?= gettext("Execute Query") ?>" name="Submit">
