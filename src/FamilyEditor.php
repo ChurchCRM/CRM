@@ -41,7 +41,7 @@ if ($iFamilyID > 0)
 	}
 
 	$sSQL = "SELECT fam_ID FROM family_fam WHERE fam_ID = " . $iFamilyID;
-	if (mysql_num_rows(RunQuery($sSQL)) == 0)
+	if (mysqli_num_rows(RunQuery($sSQL)) == 0)
 	{
 		Redirect("Menu.php");
 		exit;
@@ -64,13 +64,13 @@ $rsBraveCanvassers = CanvassGetCanvassers (gettext ("BraveCanvassers"));
 // Get the list of custom person fields
 $sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
 $rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysql_num_rows($rsCustomFields);
+$numCustomFields = mysqli_num_rows($rsCustomFields);
 
 // Get Field Security List Matrix
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
 $rsSecurityGrp = RunQuery($sSQL);
 
-while ($aRow = mysql_fetch_array($rsSecurityGrp))
+while ($aRow = mysqli_fetch_array($rsSecurityGrp))
 {
 	extract ($aRow);
 	$aSecurityType[$lst_OptionID] = $lst_OptionName;
@@ -265,7 +265,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	// Validate all the custom fields
 	$aCustomData = array();
-	while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
+	while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) )
 	{
 		extract($rowCustomField);
 
@@ -377,7 +377,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			//Get the key back
 			$sSQL = "SELECT MAX(fam_ID) AS iFamilyID FROM family_fam";
 			$rsLastEntry = RunQuery($sSQL);
-			extract(mysql_fetch_array($rsLastEntry));
+			extract(mysqli_fetch_array($rsLastEntry));
 
 			$sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $iFamilyID . "')";
 			RunQuery($sSQL);
@@ -439,7 +439,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 								$aBirthYears[$iCount],
 								$aClassification[$iCount])";
 					RunQuery($sSQL);
-          $dbPersonId = mysql_insert_id();
+          $dbPersonId = mysqli_insert_id($cnInfoCentral);
           $note = new Note();
           $note->setPerId($dbPersonId);
           $note->setText("Created via Family");
@@ -502,9 +502,9 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 		if ($numCustomFields > 0)
 		{
 			$sSQL = "REPLACE INTO family_custom SET ";
-			mysql_data_seek($rsCustomFields,0);
+			mysqli_data_seek($rsCustomFields,0);
 
-			while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
+			while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) )
 			{
 				extract($rowCustomField);
 				if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
@@ -546,7 +546,7 @@ else
 		//Get the information on this family
 		$sSQL = "SELECT * FROM family_fam WHERE fam_ID = " . $iFamilyID;
 		$rsFamily = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsFamily));
+		extract(mysqli_fetch_array($rsFamily));
 
 		$iFamilyID = $fam_ID;
 		$sName = $fam_Name;
@@ -574,13 +574,13 @@ else
 
 		$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
 		$rsCustomData = RunQuery($sSQL);
-		$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
+		$aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
 
 		$aCustomErrors = array();
 
 		if ($numCustomFields >0) {
-			mysql_data_seek($rsCustomFields,0);
-			while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+			mysqli_data_seek($rsCustomFields,0);
+			while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
 				$aCustomErrors[$rowCustomField['fam_custom_Field']] = false;
 			}
 		}
@@ -589,7 +589,7 @@ else
 		$rsMembers = RunQuery($sSQL);
 		$iCount = 0;
 		$iFamilyMemberRows = 0;
-		while ($aRow = mysql_fetch_array($rsMembers))
+		while ($aRow = mysqli_fetch_array($rsMembers))
 		{
 			extract($aRow);
 			$iCount++;
@@ -661,8 +661,8 @@ else
 		$aCustomData = array ();
 		$aCustomErrors = array ();
 		if ($numCustomFields > 0) {
-			mysql_data_seek($rsCustomFields,0);
-			while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+			mysqli_data_seek($rsCustomFields,0);
+			while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
 				extract($rowCustomField);
 				$aCustomData[$fam_custom_Field] = '';
 				$aCustomErrors[$fam_custom_Field] = false;
@@ -845,12 +845,12 @@ require "Include/Header.php";
 					</div>
 				<?php }
 
-				if ($rsCanvassers <> 0 && mysql_num_rows($rsCanvassers) > 0)  { ?>
+				if ($rsCanvassers <> 0 && mysqli_num_rows($rsCanvassers) > 0)  { ?>
 				<div class="form-group col-md-4">
 					<label><?= gettext("Assign a Canvasser") ?>:</label>
 					<?php // Display all canvassers
 					echo "<select name='Canvasser' class=\"form-control\"><option value=\"0\">None selected</option>";
-					while ($aCanvasser = mysql_fetch_array($rsCanvassers))  {
+					while ($aCanvasser = mysqli_fetch_array($rsCanvassers))  {
 						echo "<option value=\"" . $aCanvasser["per_ID"] . "\"";
 						if ($aCanvasser["per_ID"]==$iCanvasser)
 							echo " selected";
@@ -861,13 +861,13 @@ require "Include/Header.php";
 					echo "</select></div>";
 				}
 
-				if ($rsBraveCanvassers <> 0 && mysql_num_rows($rsBraveCanvassers) > 0)  { ?>
+				if ($rsBraveCanvassers <> 0 && mysqli_num_rows($rsBraveCanvassers) > 0)  { ?>
 					<div class="form-group col-md-4">
 						<label><?= gettext("Assign a Brave Canvasser") ?>: </label>
 
 						<?php // Display all canvassers
 						echo "<select name='BraveCanvasser' class=\"form-control\"><option value=\"0\">None selected</option>";
-						while ($aBraveCanvasser = mysql_fetch_array($rsBraveCanvassers)) {
+						while ($aBraveCanvasser = mysqli_fetch_array($rsBraveCanvassers)) {
 							echo "<option value=\"" . $aBraveCanvasser["per_ID"] . "\"";
 							if ($aBraveCanvasser["per_ID"]==$iCanvasser)
 								echo " selected";
@@ -907,8 +907,8 @@ require "Include/Header.php";
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
-		<?php mysql_data_seek($rsCustomFields,0);
-		while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+		<?php mysqli_data_seek($rsCustomFields,0);
+		while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
 			extract($rowCustomField);
 			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) { ?>
 			<div class="row">
@@ -962,10 +962,10 @@ require "Include/Header.php";
 		//Get family roles
 		$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence";
 		$rsFamilyRoles = RunQuery($sSQL);
-		$numFamilyRoles = mysql_num_rows($rsFamilyRoles);
+		$numFamilyRoles = mysqli_num_rows($rsFamilyRoles);
 		for($c=1; $c <= $numFamilyRoles; $c++)
 		{
-			$aRow = mysql_fetch_array($rsFamilyRoles);
+			$aRow = mysqli_fetch_array($rsFamilyRoles);
 			extract($aRow);
 			$aFamilyRoleNames[$c] = $lst_OptionName;
 			$aFamilyRoleIDs[$c] = $lst_OptionID;
@@ -1064,7 +1064,7 @@ require "Include/Header.php";
 					$rsClassifications = RunQuery($sSQL);
 
 					//Display Classifications
-					while ($aRow = mysql_fetch_array($rsClassifications))
+					while ($aRow = mysqli_fetch_array($rsClassifications))
 					{
 						extract($aRow);
 						echo "<option value=\"" . $lst_OptionID . "\"";

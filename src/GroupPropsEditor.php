@@ -34,14 +34,14 @@ $iPersonID = FilterInput($_GET["PersonID"], 'int');
 // Get some info about this person.  per_Country is needed in case there are phone numbers.
 $sSQL = "SELECT per_FirstName, per_LastName, per_Country, per_fam_ID FROM person_per WHERE per_ID = " . $iPersonID;
 $rsPersonInfo = RunQuery($sSQL);
-extract(mysql_fetch_array($rsPersonInfo));
+extract(mysqli_fetch_array($rsPersonInfo));
 
 $fam_Country = "";
 
 if ($per_fam_ID > 0) {
   $sSQL = "SELECT fam_Country FROM family_fam WHERE fam_ID = " . $per_fam_ID;
   $rsFam = RunQuery($sSQL);
-  extract(mysql_fetch_array($rsFam));
+  extract(mysqli_fetch_array($rsFam));
 }
 
 $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
@@ -49,7 +49,7 @@ $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 // Get the name of this group.
 $sSQL = "SELECT grp_Name FROM group_grp WHERE grp_ID = " . $iGroupID;
 $rsGroupInfo = RunQuery($sSQL);
-extract(mysql_fetch_array($rsGroupInfo));
+extract(mysqli_fetch_array($rsGroupInfo));
 
 // We assume that the group selected has a special properties table and that it is populated
 //  with values for each group member.
@@ -69,7 +69,7 @@ if (isset($_POST["GroupPropSubmit"])) {
 
   $bErrorFlag = false;
 
-  while ($rowPropList = mysql_fetch_array($rsPropList, MYSQL_BOTH)) {
+  while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQL_BOTH)) {
     extract($rowPropList);
 
     $currentFieldData = FilterInput($_POST[$prop_Field]);
@@ -82,11 +82,11 @@ if (isset($_POST["GroupPropSubmit"])) {
 
   // If no errors, then update.
   if (!$bErrorFlag) {
-    mysql_data_seek($rsPropList, 0);
+    mysqli_data_seek($rsPropList, 0);
 
     $sSQL = "UPDATE groupprop_" . $iGroupID . " SET ";
 
-    while ($rowPropList = mysql_fetch_array($rsPropList, MYSQL_BOTH)) {
+    while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQL_BOTH)) {
       extract($rowPropList);
       $currentFieldData = trim($aPersonProps[$prop_Field]);
 
@@ -111,12 +111,12 @@ if (isset($_POST["GroupPropSubmit"])) {
   // Get the existing data for this group member
   $sSQL = "SELECT * FROM groupprop_" . $iGroupID . " WHERE per_ID = " . $iPersonID;
   $rsPersonProps = RunQuery($sSQL);
-  $aPersonProps = mysql_fetch_array($rsPersonProps, MYSQL_BOTH);
+  $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQL_BOTH);
 }
 
 require "Include/Header.php";
 
-if (mysql_num_rows($rsPropList) == 0) {
+if (mysqli_num_rows($rsPropList) == 0) {
   ?>
   <form>
     <h3><?= gettext("This group currently has no properties!  You can add them in the Group Editor.") ?></h3>
@@ -137,9 +137,9 @@ if (mysql_num_rows($rsPropList) == 0) {
           <?php
 
           // Make sure we're at the beginning of the properties list resource (2nd pass code used it)
-          mysql_data_seek($rsPropList, 0);
+          mysqli_data_seek($rsPropList, 0);
 
-          while ($rowPropList = mysql_fetch_array($rsPropList, MYSQL_BOTH)) {
+          while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQL_BOTH)) {
             extract($rowPropList);
 
             ?>

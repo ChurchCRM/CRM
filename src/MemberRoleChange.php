@@ -64,7 +64,7 @@ $sSQL = "SELECT per_FirstName, per_LastName, grp_Name, grp_RoleListID, lst_Optio
 		"WHERE per_ID = $iPersonID AND grp_ID = $iGroupID ".
         "AND lst_OptionID=p2g2r_rle_ID ";
 
-$rsCurrentRole = mysql_fetch_array(RunQuery($sSQL));
+$rsCurrentRole = mysqli_fetch_array(RunQuery($sSQL));
 extract($rsCurrentRole);
 
 //Get all the possible roles
@@ -98,7 +98,7 @@ require "Include/Header.php"
 				<?php
 
 				//Loop through all the possible roles
-				while ($aRow = mysql_fetch_array($rsAllRoles))
+				while ($aRow = mysqli_fetch_array($rsAllRoles))
 				{
 					extract($aRow);
 

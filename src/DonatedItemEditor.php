@@ -24,7 +24,7 @@ $iCurrentFundraiser = FilterInputArr($_GET, "CurrentFundraiser");
 if ($iDonatedItemID > 0) {
   $sSQL = "SELECT * FROM donateditem_di WHERE di_ID = '$iDonatedItemID'";
   $rsDonatedItem = RunQuery($sSQL);
-  $theDonatedItem = mysql_fetch_array($rsDonatedItem);
+  $theDonatedItem = mysqli_fetch_array($rsDonatedItem);
   $iCurrentFundraiser = $theDonatedItem["di_FR_ID"];
 }
 
@@ -37,7 +37,7 @@ else
 if ($iCurrentFundraiser) {
   $sSQL = "SELECT * from fundraiser_fr WHERE fr_ID = " . $iCurrentFundraiser;
   $rsDeposit = RunQuery($sSQL);
-  extract(mysql_fetch_array($rsDeposit));
+  extract(mysqli_fetch_array($rsDeposit));
 }
 
 //Set the page title
@@ -67,13 +67,13 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
   // New DonatedItem or deposit
   if (strlen($iDonatedItemID) < 1) {
     $sSQL = "INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_picture, di_EnteredBy, di_EnteredDate)
-		VALUES (" . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" . html_entity_decode($sTitle) . "','" . html_entity_decode($sDescription) . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "','" . $nMinimumPrice . "','" . mysql_real_escape_string($sPictureURL) . "'";
+		VALUES (" . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" . html_entity_decode($sTitle) . "','" . html_entity_decode($sDescription) . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "','" . $nMinimumPrice . "','" . mysqli_real_escape_string($cnInfoCentral, $sPictureURL) . "'";
     $sSQL .= "," . $_SESSION['iUserID'] . ",'" . date("YmdHis") . "')";
     $bGetKeyBack = True;
     // Existing record (update)
   }
   else {
-    $sSQL = "UPDATE donateditem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_Item = '" . $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . html_entity_decode($sTitle) . "', di_description = '" . html_entity_decode($sDescription) . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_minimum = '" . $nMinimumPrice . "', di_picture = '" . mysql_real_escape_string($sPictureURL) . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
+    $sSQL = "UPDATE donateditem_di SET di_FR_ID = " . $iCurrentFundraiser . ", di_Item = '" . $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ", di_buyer_ID = " . $iBuyer . ", di_title = '" . html_entity_decode($sTitle) . "', di_description = '" . html_entity_decode($sDescription) . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_minimum = '" . $nMinimumPrice . "', di_picture = '" . mysqli_real_escape_string($cnInfoCentral, $sPictureURL) . "', di_EnteredBy=" . $_SESSION['iUserID'] . ", di_EnteredDate = '" . date("YmdHis") . "'";
     $sSQL .= " WHERE di_ID = " . $iDonatedItemID;
     echo "<br><br><br><br><br><br>" . $sSQL;
     $bGetKeyBack = false;
@@ -86,7 +86,7 @@ if (isset($_POST["DonatedItemSubmit"]) || isset($_POST["DonatedItemSubmitAndAdd"
   if ($bGetKeyBack) {
     $sSQL = "SELECT MAX(di_ID) AS iDonatedItemID FROM donateditem_di";
     $rsDonatedItemID = RunQuery($sSQL);
-    extract(mysql_fetch_array($rsDonatedItemID));
+    extract(mysqli_fetch_array($rsDonatedItemID));
   }
 
   if (isset($_POST["DonatedItemSubmit"])) {
@@ -122,7 +122,7 @@ else {
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
 	         WHERE di_ID = '" . $iDonatedItemID . "'";
     $rsDonatedItem = RunQuery($sSQL);
-    extract(mysql_fetch_array($rsDonatedItem));
+    extract(mysqli_fetch_array($rsDonatedItem));
 
     $sItem = $di_Item;
     $bMultibuy = $di_multibuy;
@@ -209,7 +209,7 @@ else { echo "Menu.php"; } ?>';">
                         <option value="0" selected><?= gettext("Unassigned") ?></option>
 <?php
 $rsPeople = RunQuery($sPeopleSQL);
-while ($aRow = mysql_fetch_array($rsPeople)) {
+while ($aRow = mysqli_fetch_array($rsPeople)) {
   extract($aRow);
   echo "<option value=\"" . $per_ID . "\"";
   if ($iDonor == $per_ID) { echo " selected"; }
@@ -255,7 +255,7 @@ while ($aRow = mysql_fetch_array($rsPeople)) {
                           <option value="0" selected><?= gettext("Unassigned") ?></option>
   <?php
   $rsBuyers = RunQuery($sPaddleSQL);
-  while ($aRow = mysql_fetch_array($rsBuyers)) {
+  while ($aRow = mysqli_fetch_array($rsBuyers)) {
     extract($aRow);
     echo "<option value=\"" . $pn_per_ID . "\"";
     if ($iBuyer == $pn_per_ID) { echo " selected"; }

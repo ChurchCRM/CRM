@@ -15,7 +15,7 @@ if (isset($_GET['groupId'])) {
 
 $sSQL = "select * from group_grp where grp_ID =" . $iGroupId;
 $rsSundaySchoolClass = RunQuery($sSQL);
-while ($aRow = mysql_fetch_array($rsSundaySchoolClass)) {
+while ($aRow = mysqli_fetch_array($rsSundaySchoolClass)) {
   $iGroupName = $aRow['grp_Name'];
 }
 

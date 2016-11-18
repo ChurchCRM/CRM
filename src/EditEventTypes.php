@@ -72,7 +72,7 @@ if(strpos($_POST['Action'], 'DELETE_', 0) === 0) {
 // Get data for the form as it now exists.
 $sSQL = "SELECT * FROM event_types WHERE type_id='$tyid'";
 $rsOpps = RunQuery($sSQL);
-$aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+$aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
 extract($aRow);
 $aTypeID = $type_id;
 $aTypeName = $type_name;
@@ -104,14 +104,14 @@ switch ($aDefRecurType){
 // Get a list of the attendance counts currently associated with thisevent type
 $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID' ORDER BY evctnm_countid";
 $cOpps = RunQuery($cSQL);
-$numCounts = mysql_num_rows($cOpps);
+$numCounts = mysqli_num_rows($cOpps);
 $nr = $numCounts+2;
 $cCountName="";
 if($numCounts)
      {
      $cCountName="";
      for($c = 1; $c <=$numCounts; $c++){
-        $cRow = mysql_fetch_array($cOpps, MYSQL_BOTH);
+        $cRow = mysqli_fetch_array($cOpps, MYSQL_BOTH);
         extract($cRow);
         $cCountID[$c] = $evctnm_countid;
         $cCountName[$c] = $evctnm_countname;

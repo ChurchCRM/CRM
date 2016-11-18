@@ -72,9 +72,9 @@ $pdf = new PDF_ConfirmReport();
 $filename = "ConfirmReport" . date("Ymd") . ".pdf";
 
 // Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+	while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 		$pdf->$cfg_name = $cfg_value;
 	}
 }
@@ -82,12 +82,12 @@ if ($rsConfig) {
 // Get the list of custom person fields
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order";
 $rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysql_num_rows($rsCustomFields);
+$numCustomFields = mysqli_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0)
 {
 	$iFieldNum = 0;
-    while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) )
+    while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_ASSOC) )
     {
     	extract($rowCustomField);
         $sCustomFieldName[$iFieldNum] = $custom_Name;
@@ -108,7 +108,7 @@ $dataCol = 55;
 $dataWid = 65;
 
 // Loop through families
-while ($aFam = mysql_fetch_array($rsFamilies)) {
+while ($aFam = mysqli_fetch_array($rsFamilies)) {
 	extract ($aFam);
 
     //If this is a report for a single family, name the file accordingly.
@@ -192,7 +192,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$curY += 3*$pdf->incrementY;
 
 	$numFamilyMembers = 0;
-	while ($aMember = mysql_fetch_array($rsFamilyMembers)) {
+	while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
 		$numFamilyMembers++;	// add one to the people count
 		extract ($aMember);
 		// Make sure the person data will display with adequate room for the trailer and group information
@@ -253,15 +253,15 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 // Get the list of custom person fields
 
 		$xSize = 40;
-        $numCustomFields = mysql_num_rows($rsCustomFields);
+        $numCustomFields = mysqli_num_rows($rsCustomFields);
         if ($numCustomFields > 0)
         {
             extract($aMember);
             $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $per_ID;
             $rsCustomData = RunQuery($sSQL);
-            $aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
-            $numCustomData = mysql_num_rows($rsCustomData);
-            mysql_data_seek($rsCustomFields,0);
+            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
+            $numCustomData = mysqli_num_rows($rsCustomData);
+            mysqli_data_seek($rsCustomFields,0);
             $OutStr = "";
             $xInc = $XName;	// Set the starting column for Custom fields
             // Here is where we determine if space is available on the current page to
@@ -270,7 +270,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
             // For the Letter size of 279 mm, this says that curY can be no bigger than 195 mm.
             // Leaving 12 mm for a bottom margin yields 183 mm.
             $numWide = 0;	// starting value for columns
-            while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) )
+            while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) )
             {
                extract($rowCustomField);
                if($sCustomFieldName[$custom_Order - 1])
@@ -315,7 +315,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     }
 	$sSQL = "SELECT * FROM person_per WHERE per_fam_ID = " . $fam_ID . " ORDER BY per_fmr_ID";
 	$rsFamilyMembers = RunQuery ($sSQL);
-	while ($aMember = mysql_fetch_array($rsFamilyMembers)) {
+	while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
 		extract ($aMember);
 
 		// Get the Groups this Person is assigned to
@@ -326,10 +326,10 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 				WHERE person2group2role_p2g2r.p2g2r_per_ID = " . $per_ID . "
 				ORDER BY grp_Name";
 		$rsAssignedGroups = RunQuery($sSQL);
-		if (mysql_num_rows ($rsAssignedGroups) > 0) {
+		if (mysqli_num_rows ($rsAssignedGroups) > 0) {
 			$groupStr = "Assigned groups for " . $per_FirstName . " " . $per_LastName . ": ";
 
-			while ($aGroup = mysql_fetch_array($rsAssignedGroups)) {
+			while ($aGroup = mysqli_fetch_array($rsAssignedGroups)) {
 				extract ($aGroup);
 				$groupStr .= $grp_Name . " (" . $roleName . ") ";
 			}

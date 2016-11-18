@@ -185,7 +185,7 @@ if (isset($_POST["UploadCSV"]))
         $rsCustomFields = RunQuery($sSQL);
 
         $sPerCustomFieldList = "";
-        while ($aRow = mysql_fetch_array($rsCustomFields))
+        while ($aRow = mysqli_fetch_array($rsCustomFields))
         {
             extract($aRow);
             // No easy way to import person-from-group or custom-list types
@@ -199,7 +199,7 @@ if (isset($_POST["UploadCSV"]))
         $rsfamCustomFields = RunQuery($sSQL);
 
         $sFamCustomFieldList = "";
-        while ($aRow = mysql_fetch_array($rsfamCustomFields))
+        while ($aRow = mysqli_fetch_array($rsfamCustomFields))
         {
             extract($aRow);
             if ($type_ID != 9 && $type_ID != 12)
@@ -212,7 +212,7 @@ if (isset($_POST["UploadCSV"]))
         $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
         $rsSecurityGrp = RunQuery($sSQL);
 
-        while ($aRow = mysql_fetch_array($rsSecurityGrp))
+        while ($aRow = mysqli_fetch_array($rsSecurityGrp))
         {
             extract ($aRow);
             $aSecurityType[$lst_OptionID] = $lst_OptionName;
@@ -293,7 +293,7 @@ if (isset($_POST["UploadCSV"]))
             <option value="0">-----------------------</option>
 
             <?php
-                while ($aRow = mysql_fetch_array($rsClassifications))
+                while ($aRow = mysqli_fetch_array($rsClassifications))
                 {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
@@ -373,7 +373,7 @@ if (isset($_POST["DoImport"]))
             $sSQL = "SELECT * FROM person_custom_master";
             $rsCustomFields = RunQuery($sSQL);
 
-            while ($aRow = mysql_fetch_array($rsCustomFields))
+            while ($aRow = mysqli_fetch_array($rsCustomFields))
             {
                 extract($aRow);
                 $aCustomTypes[$custom_Field] = $type_ID;
@@ -382,7 +382,7 @@ if (isset($_POST["DoImport"]))
             $sSQL = "SELECT * FROM family_custom_master";
             $rsfamCustomFields = RunQuery($sSQL);
 
-            while ($aRow = mysql_fetch_array($rsfamCustomFields))
+            while ($aRow = mysqli_fetch_array($rsfamCustomFields))
             {
                 extract($aRow);
                 $afamCustomTypes[$fam_custom_Field] = $type_ID;
@@ -497,7 +497,7 @@ if (isset($_POST["DoImport"]))
                             {
                                 $sSQL = "SELECT '' FROM person_per WHERE per_Envelope = " . $iEnv;
                                 $rsTemp = RunQuery($sSQL);
-                                if (mysql_num_rows($rsTemp) == 0)
+                                if (mysqli_num_rows($rsTemp) == 0)
                                     $iEnvelope = $iEnv;
                                 else
                                     $iEnvelope = 0;
@@ -598,10 +598,10 @@ if (isset($_POST["DoImport"]))
             if (isset($_POST["MakeFamilyRecords"])) {
                 $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
                 $rsPersonID = RunQuery($sSQL);
-                extract(mysql_fetch_array($rsPersonID));
+                extract(mysqli_fetch_array($rsPersonID));
                 $sSQL = "SELECT * FROM person_per WHERE per_ID = " . $iPersonID;
                 $rsNewPerson = RunQuery($sSQL);
-                extract(mysql_fetch_array($rsNewPerson));
+                extract(mysqli_fetch_array($rsNewPerson));
 
                 // see if there is a family...
                 if (!isset($_POST["MakeFamilyRecordsMode"]) || $_POST["MakeFamilyRecordsMode"] == "0")
@@ -627,9 +627,9 @@ if (isset($_POST["DoImport"]))
                 }
                 $rsExistingFamily = RunQuery($sSQL);
                 $famid = 0;
-                if(mysql_num_rows($rsExistingFamily) > 0)
+                if(mysqli_num_rows($rsExistingFamily) > 0)
                 {
-                    extract(mysql_fetch_array($rsExistingFamily));
+                    extract(mysqli_fetch_array($rsExistingFamily));
                     $famid = $fam_ID;
                     if(array_key_exists($famid, $Families))
                         $Families[$famid]->AddMember($per_ID,
@@ -673,7 +673,7 @@ if (isset($_POST["DoImport"]))
 
                     $sSQL = "SELECT LAST_INSERT_ID()";
                     $rsFid = RunQuery($sSQL);
-                    $aFid = mysql_fetch_array($rsFid);
+                    $aFid = mysqli_fetch_array($rsFid);
                     $famid =  $aFid[0];
                     $note = new Note();
                     $note->setFamId($famid);
@@ -701,7 +701,7 @@ if (isset($_POST["DoImport"]))
                     // Check if family_custom record exists
                     $sSQL = "SELECT fam_id FROM family_custom WHERE fam_id = $famid";
                     $rsFamCustomID = RunQuery($sSQL);
-                    if (mysql_num_rows($rsFamCustomID) == 0)
+                    if (mysqli_num_rows($rsFamCustomID) == 0)
                     {
                         $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
                         RunQuery($sSQL);
@@ -752,7 +752,7 @@ if (isset($_POST["DoImport"]))
             // Get the last inserted person ID and insert a dummy row in the person_custom table
             $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
             $rsPersonID = RunQuery($sSQL);
-            extract(mysql_fetch_array($rsPersonID));
+            extract(mysqli_fetch_array($rsPersonID));
             $note = new Note();
             $note->setPerId($iPersonID);
             $note->setText("Imported");

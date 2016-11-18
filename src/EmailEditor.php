@@ -47,7 +47,7 @@ if (array_key_exists ('mysql', $_POST) && $_POST['mysql'] == 'true') {
     $sSQL = "SELECT * FROM email_message_pending_emp ".
             "WHERE emp_usr_id='".$_SESSION['iUserID']."' LIMIT 1";
 
-    $aRow = mysql_fetch_array(RunQuery($sSQL));
+    $aRow = mysqli_fetch_array(RunQuery($sSQL));
     extract($aRow);
 
     $sEmailSubject = $emp_subject;

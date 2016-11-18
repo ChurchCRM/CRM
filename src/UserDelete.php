@@ -48,7 +48,7 @@ if (isset($_GET["Confirmed"])) {
 // Get the data on this user
 $sSQL = "SELECT * FROM user_usr INNER JOIN person_per ON user_usr.usr_per_ID = person_per.per_ID WHERE usr_per_ID = " . $iPersonID;
 $rsPerson = RunQuery($sSQL);
-extract(mysql_fetch_array($rsPerson));
+extract(mysqli_fetch_array($rsPerson));
 
 //Assign everything locally
 $sUserName = $per_LastName . ", " . $per_FirstName;

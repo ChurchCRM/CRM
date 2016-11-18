@@ -61,7 +61,7 @@ if (isset ($_POST['Action'])) {
                      '" . FilterInput($eDOY)   . "')";
 
 	  RunQuery($sSQL);
-    $theID = mysql_insert_id();
+    $theID = mysqli_insert_id($cnInfoCentral);
 
 	  for($j=0; $j<$eCntNum; $j++)
 	  {
@@ -88,12 +88,12 @@ if (isset ($_POST['Action'])) {
 
 $sSQL = "SELECT * FROM event_types ORDER BY type_id";
 $rsOpps = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsOpps);
+$numRows = mysqli_num_rows($rsOpps);
 
         // Create arrays of the event types
         for ($row = 1; $row <= $numRows; $row++)
         {
-                $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+                $aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
                 extract($aRow);
 
                 $aTypeID[$row] = $type_id;
@@ -127,13 +127,13 @@ $numRows = mysql_num_rows($rsOpps);
                 // new - check the count definintions table for a list of count fields
                 $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
                 $cOpps = RunQuery($cSQL);
-                $numCounts = mysql_num_rows($cOpps);
+                $numCounts = mysqli_num_rows($cOpps);
                 $cCountName="";
                 if($numCounts)
                 {
                   $cCountName="";
                   for($c = 1; $c <=$numCounts; $c++){
-                    $cRow = mysql_fetch_array($cOpps, MYSQL_BOTH);
+                    $cRow = mysqli_fetch_array($cOpps, MYSQL_BOTH);
                     extract($cRow);
                     $cCountID[$c] = $evctnm_countid;
                     $cCountName[$c] = $evctnm_countname;

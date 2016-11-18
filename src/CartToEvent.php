@@ -78,7 +78,7 @@ $rsEvents = RunQuery($sSQL);
                         <?php
                         // Create the group select drop-down
                         echo "<select name=\"EventID\">";
-                        while ($aRow = mysql_fetch_array($rsEvents)) {
+                        while ($aRow = mysqli_fetch_array($rsEvents)) {
                                 extract($aRow);
                                 echo "<option value=\"".$event_id."\">".$event_title."</option>";
                         }

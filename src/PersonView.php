@@ -65,7 +65,7 @@ $sSQL = "SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') A
 			LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
 			WHERE a.per_ID = " . $iPersonID;
 $rsPerson = RunQuery($sSQL);
-extract(mysql_fetch_array($rsPerson));
+extract(mysqli_fetch_array($rsPerson));
 
 $person = PersonQuery::create()->findPk($iPersonID);
 
@@ -79,7 +79,7 @@ $rsCustomFields = RunQuery($sSQL);
 // Get the custom field data for this person.
 $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $iPersonID;
 $rsCustomData = RunQuery($sSQL);
-$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
+$aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
 
 // Get the Groups this Person is assigned to
 $sSQL = "SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
@@ -122,7 +122,7 @@ $rsProperties = RunQuery($sSQL);
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
 $rsSecurityGrp = RunQuery($sSQL);
 
-while ($aRow = mysql_fetch_array($rsSecurityGrp)) {
+while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
   extract($aRow);
   $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
@@ -286,7 +286,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           }
 
           // Display the right-side custom fields
-          while ($Row = mysql_fetch_array($rsCustomFields)) {
+          while ($Row = mysqli_fetch_array($rsCustomFields)) {
             extract($Row);
             $currentData = trim($aCustomData[$custom_Field]);
             if ($currentData != "") {
@@ -460,7 +460,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             <div class="main-box-body clearfix">
               <?php
               //Was anything returned?
-              if (mysql_num_rows($rsAssignedGroups) == 0) { ?>
+              if (mysqli_num_rows($rsAssignedGroups) == 0) { ?>
                 <br>
                 <div class="alert alert-warning">
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No group assignments.") ?></span>
@@ -468,7 +468,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               <?php } else {
                 echo "<div class=\"row\">";
                 // Loop through the rows
-                while ($aRow = mysql_fetch_array($rsAssignedGroups)) {
+                while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
                   extract($aRow); ?>
                   <div class="col-md-3">
                     <p><br/></p>
@@ -490,11 +490,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                         $sSQL = "SELECT * FROM groupprop_" . $grp_ID . " WHERE per_ID = " . $iPersonID;
                         $rsPersonProps = RunQuery($sSQL);
-                        $aPersonProps = mysql_fetch_array($rsPersonProps, MYSQL_BOTH);
+                        $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQL_BOTH);
 
                         echo "<div class=\"box-body\">";
 
-                        while ($aProps = mysql_fetch_array($rsPropList)) {
+                        while ($aProps = mysqli_fetch_array($rsPropList)) {
                           extract($aProps);
                           $currentData = trim($aPersonProps[$prop_Field]);
                           if (strlen($currentData) > 0) {
@@ -544,7 +544,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                   <p><br></p>
                   <select style="color:#000000" name="GroupAssignID">
-                    <?php while ($aRow = mysql_fetch_array($rsGroups)) {
+                    <?php while ($aRow = mysqli_fetch_array($rsGroups)) {
                       extract($aRow);
 
                       //If the property doesn't already exist for this Person, write the <OPTION> tag
@@ -568,7 +568,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               $sAssignedProperties = ",";
 
               //Was anything returned?
-              if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
+              if (mysqli_num_rows($rsAssignedProperties) == 0) { ?>
                 <br>
                 <div class="alert alert-warning">
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No property assignments.") ?></span>
@@ -591,7 +591,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 $bIsFirst = true;
 
                 //Loop through the rows
-                while ($aRow = mysql_fetch_array($rsAssignedProperties)) {
+                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
                   $pro_Prompt = "";
                   $r2p_Value = "";
 
@@ -636,7 +636,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
               ?>
 
-              <?php if ($bOkToEdit && mysql_num_rows($rsProperties) != 0) { ?>
+              <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) != 0) { ?>
                 <div class="alert alert-info">
                   <div>
                     <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
@@ -646,7 +646,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     <form method="post" action="PropertyAssign.php?PersonID=<?= $iPersonID ?>">
                       <select name="PropertyID">
                         <?php
-                        while ($aRow = mysql_fetch_array($rsProperties)) {
+                        while ($aRow = mysqli_fetch_array($rsProperties)) {
                           extract($aRow);
                           //If the property doesn't already exist for this Person, write the <OPTION> tag
                           if (strlen(strstr($sAssignedProperties, "," . $pro_ID . ",")) == 0) {
@@ -674,7 +674,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               $sAssignedVolunteerOpps = ",";
 
               //Was anything returned?
-              if (mysql_num_rows($rsAssignedVolunteerOpps) == 0) { ?>
+              if (mysqli_num_rows($rsAssignedVolunteerOpps) == 0) { ?>
                 <br>
                 <div class="alert alert-warning">
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext("No volunteer opportunity assignments.") ?></span>
@@ -690,7 +690,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 echo "</tr>";
 
                 // Loop through the rows
-                while ($aRow = mysql_fetch_array($rsAssignedVolunteerOpps)) {
+                while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
                   extract($aRow);
 
                   // Alternate the row style
@@ -721,7 +721,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
                       <select name="VolunteerOpportunityIDs[]" , size=6, multiple>
                         <?php
-                        while ($aRow = mysql_fetch_array($rsVolunteerOpps)) {
+                        while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
                           extract($aRow);
                           //If the property doesn't already exist for this Person, write the <OPTION> tag
                           if (strlen(strstr($sAssignedVolunteerOpps, "," . $vol_ID . ",")) == 0) {

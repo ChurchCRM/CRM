@@ -38,14 +38,14 @@ require "Include/Header.php";
 //Get the query information
 $sSQL = "SELECT * FROM query_qry WHERE qry_ID = " . $iQueryID;
 $rsSQL = RunQuery($sSQL);
-extract(mysql_fetch_array($rsSQL));
+extract(mysqli_fetch_array($rsSQL));
 
 //Get the parameters for this query
 $sSQL = "SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID = " . $iQueryID . " ORDER BY qrp_ID";
 $rsParameters = RunQuery($sSQL);
 
 //If the form was submitted or there are no parameters, run the query
-if (isset($_POST["Submit"]) || mysql_num_rows($rsParameters) == 0)
+if (isset($_POST["Submit"]) || mysqli_num_rows($rsParameters) == 0)
 {
 	//Check that all validation rules were followed
 	ValidateInput();
@@ -87,8 +87,8 @@ function ValidateInput()
 	$bError = false;
 
 	//Are there any parameters to loop through?
-	if (mysql_num_rows($rsParameters)) { mysql_data_seek($rsParameters,0); }
-	while ($aRow = mysql_fetch_array($rsParameters))
+	if (mysqli_num_rows($rsParameters)) { mysqli_data_seek($rsParameters,0); }
+	while ($aRow = mysqli_fetch_array($rsParameters))
 	{
 		extract($aRow);
 
@@ -169,8 +169,8 @@ function ProcessSQL()
 	global $rsParameters;
 
 	//Loop through the list of parameters
-	if (mysql_num_rows($rsParameters)) {mysql_data_seek($rsParameters,0); }
-	while ($aRow = mysql_fetch_array($rsParameters))
+	if (mysqli_num_rows($rsParameters)) {mysqli_data_seek($rsParameters,0); }
+	while ($aRow = mysqli_fetch_array($rsParameters))
 	{
 		extract($aRow);
 
@@ -194,7 +194,7 @@ function DisplayRecordCount()
 	{
 		//Display the count of the recordset
 		echo "<p align=\"center\">";
-		echo mysql_num_rows($rsQueryResults) . gettext(" record(s) returned");
+		echo mysqli_num_rows($rsQueryResults) . gettext(" record(s) returned");
 		echo "</p>";
 	}
 }
@@ -238,7 +238,7 @@ function DoQuery()
 	$aHiddenFormField = array ();
 	
 	//Loop through the recordset
-	while($aRow = mysql_fetch_array($rsQueryResults))
+	while($aRow = mysqli_fetch_array($rsQueryResults))
 	{
 		//Alternate the background color of the row
 		$sRowClass = AlternateRowStyle($sRowClass);
@@ -319,8 +319,8 @@ function DisplayParameterForm()
     echo '<table align="center" cellpadding="5" cellspacing="1" border="0">';
 
 	//Loop through the parameters and display an entry box for each one
-	if (mysql_num_rows($rsParameters)) {mysql_data_seek($rsParameters,0); }
-	while ($aRow = mysql_fetch_array($rsParameters))
+	if (mysqli_num_rows($rsParameters)) {mysqli_data_seek($rsParameters,0); }
+	while ($aRow = mysqli_fetch_array($rsParameters))
 	{
 		extract($aRow);
 
@@ -350,7 +350,7 @@ function DisplayParameterForm()
 				echo "<select name=\"" . $qrp_Alias . "\">";
 
 				//Loop through the parameter options
-				while ($ThisRow = mysql_Fetch_array($rsParameterOptions))
+				while ($ThisRow = mysqli_fetch_array($rsParameterOptions))
 				{
 					extract($ThisRow);
 
@@ -371,7 +371,7 @@ function DisplayParameterForm()
 				echo "<td class=\"TextColumn\">";
 				echo "<select name=\"" . $qrp_Alias . "\">";
 
-				while ($ThisRow = mysql_Fetch_array($rsParameterOptions))
+				while ($ThisRow = mysqli_fetch_array($rsParameterOptions))
 				{
 					extract($ThisRow);
 					echo "<option value=\"" . $Value . "\">" . $Display . "</option>";

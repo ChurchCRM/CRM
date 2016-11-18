@@ -104,10 +104,10 @@ $pdf = new PDF_Directory($bNumberofColumns, $bPageSize, $bFontSz, $bLineSp);
 // Get the list of custom person fields
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order";
 $rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysql_num_rows($rsCustomFields);
+$numCustomFields = mysqli_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0) {
-    while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) ){
+    while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_ASSOC) ){
         $pdf->AddCustomField($rowCustomField['custom_Order']
                             , isset($_POST["bCustom".$rowCustomField['custom_Order']])
                             );
@@ -115,9 +115,9 @@ if ($numCustomFields > 0) {
 }
 
 // Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 if ($rsConfig) {
-    while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+    while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
         $pdf->$cfg_name = $cfg_value;
     }
 }
@@ -173,13 +173,13 @@ if($mysqlversion >= 4){
 }else if($mysqlversion == 3 && $mysqlsubversion >= 22){
     // If UNION not supported use this query with temporary table.  Prior to version 3.22 no IF EXISTS statement.
     $sSQL = "DROP TABLE IF EXISTS tmp;";
-    $rsRecords = mysql_query($sSQL) or die(mysql_error());
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
     $sSQL = "CREATE TABLE tmp TYPE = MyISAM SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;";
-    $rsRecords = mysql_query($sSQL) or die(mysql_error());
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
     $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;";
-    $rsRecords = mysql_query($sSQL) or die(mysql_error());
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
     $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1;";
-    $rsRecords = mysql_query($sSQL) or die(mysql_error());
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
     $sSQL = "SELECT DISTINCT * FROM tmp ORDER BY SortMe";
 
 }else{
@@ -192,7 +192,7 @@ $rsRecords = RunQuery($sSQL);
 // Start out with something that isn't a letter to force the first one to work
 $sLastLetter = "0";
 
-while ($aRow = mysql_fetch_array($rsRecords))
+while ($aRow = mysqli_fetch_array($rsRecords))
 {
     $OutStr = "";
     extract($aRow);
@@ -217,9 +217,9 @@ while ($aRow = mysql_fetch_array($rsRecords))
             AND per_fmr_ID in ($sDirRoleHeads) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
 
-        if (mysql_num_rows($rsPerson) > 0)
+        if (mysqli_num_rows($rsPerson) > 0)
         {
-            $aHead = mysql_fetch_array($rsPerson);
+            $aHead = mysqli_fetch_array($rsPerson);
             $OutStr .= $pdf->sGetHeadString($rsCustomFields, $aHead);
             $bNoRecordName = false;
         }
@@ -230,9 +230,9 @@ while ($aRow = mysql_fetch_array($rsRecords))
             AND per_fmr_ID in ($sDirRoleSpouses) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
 
-        if (mysql_num_rows($rsPerson) > 0)
+        if (mysqli_num_rows($rsPerson) > 0)
         {
-            $aSpouse = mysql_fetch_array($rsPerson);
+            $aSpouse = mysqli_fetch_array($rsPerson);
             $OutStr .= $pdf->sGetHeadString($rsCustomFields, $aSpouse);
             $bNoRecordName = false;
         }
@@ -247,7 +247,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
             AND !(per_fmr_ID in ($sDirRoleSpouses))  $sWhereExt $sClassQualifier $sGroupBy ORDER BY per_BirthYear,per_FirstName";
         $rsPerson = RunQuery($sSQL);
 
-        while ($aRow = mysql_fetch_array($rsPerson))
+        while ($aRow = mysqli_fetch_array($rsPerson))
         {
            $OutStr .= $pdf->sGetMemberString($aRow);
            $OutStr .= $pdf->sGetCustomString($rsCustomFields, $aRow);
@@ -337,7 +337,7 @@ while ($aRow = mysql_fetch_array($rsRecords))
 
 if($mysqlversion == 3 && $mysqlsubversion >= 22){
     $sSQL = "DROP TABLE IF EXISTS tmp;";
-    mysql_query($sSQL,$cnInfoCentral);
+    mysqli_query($cnInfoCentral, $sSQL);
 }
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
