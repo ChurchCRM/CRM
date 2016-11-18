@@ -47,7 +47,7 @@ require "Include/Header.php";
                                 <?php
                                 // Create the group select drop-down
                                 echo "<option value=\"0\">" . gettext('None') . "</option>";
-                                while ($aRow = mysql_fetch_array($rsGroups)) {
+                                while ($aRow = mysqli_fetch_array($rsGroups)) {
                                     extract($aRow);
                                     echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
                                 }
@@ -142,8 +142,8 @@ else {
                                 <td class="LabelColumn"><?= gettext("Group-Specific Property Fields") ?>:</td>
                                 <td class="TextColumn">
                                     <?php
-                                    if (mysql_num_rows($rsPropFields) > 0) {
-                                        while ($aRow = mysql_fetch_array($rsPropFields)) {
+                                    if (mysqli_num_rows($rsPropFields) > 0) {
+                                        while ($aRow = mysqli_fetch_array($rsPropFields)) {
                                             extract($aRow);
                                             echo "<input type=\"checkbox\" Name=\"" . $prop_Field . "enable\" value=\"1\">" . $prop_Name . "<br>";
                                         }

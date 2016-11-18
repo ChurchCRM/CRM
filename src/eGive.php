@@ -31,7 +31,7 @@ $familySelectHtml = buildFamilySelect(0, 0, 0);
 
 $sSQL = "SELECT fam_ID FROM family_fam";
 $rsFamIDs = RunQuery($sSQL);
-while ($aRow = mysql_fetch_array($rsFamIDs)) {
+while ($aRow = mysqli_fetch_array($rsFamIDs)) {
 	extract($aRow);
 	$famIDs[] = $fam_ID;
 }
@@ -39,7 +39,7 @@ while ($aRow = mysql_fetch_array($rsFamIDs)) {
 // get array of all existing payments into a 'cache' so we don't have to keep querying the DB
 $sSQL = "SELECT egv_egiveID, egv_famID from egive_egv";
 $egiveIDs = RunQuery($sSQL);
-while ($aRow = mysql_fetch_array($egiveIDs)) {
+while ($aRow = mysqli_fetch_array($egiveIDs)) {
 	extract($aRow);
 	if (in_array($egv_famID, $famIDs)) { // make sure the family still exists
 		$egiveID2FamID[$egv_egiveID] = $egv_famID;
@@ -49,7 +49,7 @@ while ($aRow = mysql_fetch_array($egiveIDs)) {
 // get array of all existing donation/fund ids to names so we don't have to keep querying the DB
 $sSQL = "SELECT fun_ID, fun_Name, fun_Description from donationfund_fun";
 $fundData = RunQuery($sSQL);
-while ($aRow = mysql_fetch_array($fundData)) {
+while ($aRow = mysqli_fetch_array($fundData)) {
 	extract($aRow);
 	$fundID2Name[$fun_ID] = $fun_Name;
 	$fundID2Desc[$fun_ID] = $fun_Description;
@@ -61,7 +61,7 @@ while ($aRow = mysql_fetch_array($fundData)) {
 $sSQL = "SELECT plg_date, plg_amount, plg_CheckNo, plg_fundID, plg_FamID, plg_comment, plg_GroupKey from pledge_plg where plg_method=\"EGIVE\" AND plg_PledgeOrPayment=\"Payment\";";
 
 $rsPlgIDs = RunQuery($sSQL);
-while ($aRow = mysql_fetch_array($rsPlgIDs)) {
+while ($aRow = mysqli_fetch_array($rsPlgIDs)) {
 	extract($aRow);
 
 	$key = eGiveExistingKey($plg_CheckNo, $plg_FamID, $plg_date, $plg_fundID, $plg_comment);

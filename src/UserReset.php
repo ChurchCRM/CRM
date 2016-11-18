@@ -42,7 +42,7 @@ if (isset($_GET["Confirmed"]))
 // Get the data on this user
 $sSQL = "SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = " . $iPersonID;
 $rsUser = RunQuery($sSQL);
-$aRow = mysql_fetch_array($rsUser);
+$aRow = mysqli_fetch_array($rsUser);
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("User Reset");

@@ -45,7 +45,7 @@ if ($sFormat == "rollup")
 //Get family roles
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence";
 $rsFamilyRoles = RunQuery($sSQL);
-while ($aRow =mysql_fetch_array($rsFamilyRoles))
+while ($aRow =mysqli_fetch_array($rsFamilyRoles))
 {
 	extract($aRow);
 	$familyRoles[$lst_OptionID] = $lst_OptionName;
@@ -56,7 +56,7 @@ while ($aRow =mysql_fetch_array($rsFamilyRoles))
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
 $rsSecurityGrp = RunQuery($sSQL);
 
-while ($aRow = mysql_fetch_array($rsSecurityGrp))
+while ($aRow = mysqli_fetch_array($rsSecurityGrp))
 {
 	extract ($aRow);
 	$aSecurityType[$lst_OptionID] = $lst_OptionName;
@@ -213,7 +213,7 @@ if ($sFormat == "addtocart")
 	$sSQL = "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
     $sSQL .= " ORDER BY per_LastName";
     $rsLabelsToWrite = RunQuery($sSQL);
-	while($aRow = mysql_fetch_array($rsLabelsToWrite))
+	while($aRow = mysqli_fetch_array($rsLabelsToWrite))
 	{
 		extract($aRow);
         AddToPeopleCart($per_ID);
@@ -283,7 +283,7 @@ else
 	$bUsedCustomFields = false;
 	if ($sFormat == "default")
 	{
-		while($aRow = mysql_fetch_array($rsCustomFields))
+		while($aRow = mysqli_fetch_array($rsCustomFields))
 		{
 			extract($aRow);
 			if (isset($_POST["$custom_Field"]))
@@ -292,7 +292,7 @@ else
 				$headerString .= "\"$custom_Name\",";
 			}
 		}
-		while($aFamRow = mysql_fetch_array($rsFamCustomFields))
+		while($aFamRow = mysqli_fetch_array($rsFamCustomFields))
 		{
 			extract($aFamRow);
 			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
@@ -308,7 +308,7 @@ else
 	// Add any family custom fields names to the header
 	if ($sFormat == "rollup")
 	{
-		while($aFamRow = mysql_fetch_array($rsFamCustomFields))
+		while($aFamRow = mysqli_fetch_array($rsFamCustomFields))
 		{
 			extract($aFamRow);
 			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
@@ -330,7 +330,7 @@ else
 
 	echo $headerString;
 
-	while($aRow = mysql_fetch_array($rsLabelsToWrite))
+	while($aRow = mysqli_fetch_array($rsLabelsToWrite))
 	{
 		$per_Title = "";
 		$per_FirstName = "";
@@ -491,12 +491,12 @@ else
 				{
 					$sSQLcustom = "SELECT * FROM person_custom WHERE per_ID = " . $per_ID;
 					$rsCustomData = RunQuery($sSQLcustom);
-					$aCustomData = mysql_fetch_array($rsCustomData);
+					$aCustomData = mysqli_fetch_array($rsCustomData);
 
-					if (mysql_num_rows($rsCustomData) > 0 ){
+					if (mysqli_num_rows($rsCustomData) > 0 ){
 						// Write custom field data
-						mysql_data_seek($rsCustomFields,0);
-						while($aCustomField = mysql_fetch_array($rsCustomFields))
+						mysqli_data_seek($rsCustomFields,0);
+						while($aCustomField = mysqli_fetch_array($rsCustomFields))
 						{
 							$custom_Field = "";
 							$custom_Special = "";
@@ -516,12 +516,12 @@ else
 
 					$sSQLFamCustom = "SELECT * FROM family_custom WHERE fam_ID = " . $per_fam_ID;
 					$rsFamCustomData = RunQuery($sSQLFamCustom);
-					$aFamCustomData = mysql_fetch_array($rsFamCustomData);
+					$aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 					
-					if (@mysql_num_rows($rsFamCustomData) > 0 ){	
+					if (@mysqli_num_rows($rsFamCustomData) > 0 ){	
 						// Write custom field data
-						mysql_data_seek($rsFamCustomFields,0);
-						while($aFamCustomField = mysql_fetch_array($rsFamCustomFields))
+						mysqli_data_seek($rsFamCustomFields,0);
+						while($aFamCustomField = mysqli_fetch_array($rsFamCustomFields))
 						{
 							$fam_custom_Field = "";
 							$fam_custom_Special = "";
@@ -541,12 +541,12 @@ else
 				{
 					$sSQLFamCustom = "SELECT * FROM family_custom WHERE fam_ID = " . $per_fam_ID;
 					$rsFamCustomData = RunQuery($sSQLFamCustom);
-					$aFamCustomData = mysql_fetch_array($rsFamCustomData);
+					$aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 					
-					if (@mysql_num_rows($rsFamCustomData) > 0 ){	
+					if (@mysqli_num_rows($rsFamCustomData) > 0 ){	
 						// Write custom field data
-						mysql_data_seek($rsFamCustomFields,0);
-						while($aFamCustomField = mysql_fetch_array($rsFamCustomFields))
+						mysqli_data_seek($rsFamCustomFields,0);
+						while($aFamCustomField = mysqli_fetch_array($rsFamCustomFields))
 						{
 							$fam_custom_Field = "";
 							$fam_custom_Special = "";

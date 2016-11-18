@@ -49,7 +49,7 @@ if (!empty($_POST["classList"])) {
 		$inClassList = "(";
 		$notInClassList = "(";
 
-		while ($aRow = mysql_fetch_array($rsClassifications)) {
+		while ($aRow = mysqli_fetch_array($rsClassifications)) {
 			extract($aRow);
 			if (in_array($lst_OptionID, $classList)) {
 				if ($inClassList == "(") {
@@ -158,7 +158,7 @@ $sSQL .= " ORDER BY plg_FamID, plg_date ";
 $rsReport = RunQuery($sSQL);
 
 // Exit if no rows returned
-$iCountRows = mysql_num_rows($rsReport);
+$iCountRows = mysqli_num_rows($rsReport);
 if ($iCountRows < 1){
 	header("Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report");
 }
@@ -200,7 +200,7 @@ if ($output == "pdf") {
 				// Get Deposit Date
 				$sSQL = "SELECT dep_Date, dep_Date FROM deposit_dep WHERE dep_ID='$iDepID'";
 				$rsDep = RunQuery($sSQL);
-				list($sDateStart, $sDateEnd) = mysql_fetch_row($rsDep);
+				list($sDateStart, $sDateEnd) = mysqli_fetch_row($rsDep);
 			}
 			if ($sDateStart == $sDateEnd)
 				$DateString = date("F j, Y",strtotime($sDateStart));
@@ -275,16 +275,16 @@ if ($output == "pdf") {
 	$pdf = new PDF_TaxReport();
 
 	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+	$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
    if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 			$pdf->$cfg_name = $cfg_value;
 		}
    }
 
 	// Loop through result array
 	$currentFamilyID = 0;
-	while ($row = mysql_fetch_array($rsReport)) {
+	while ($row = mysqli_fetch_array($rsReport)) {
 		extract ($row);
 
 		// Check for minimum amount
@@ -292,7 +292,7 @@ if ($output == "pdf") {
 			$temp = "SELECT SUM(plg_amount) AS total_gifts FROM pledge_plg
 				WHERE plg_FamID=$fam_ID AND $aSQLCriteria[1]";
 			$rsMinimum = RunQuery($temp);
-			list ($total_gifts) = mysql_fetch_row($rsMinimum);
+			list ($total_gifts) = mysqli_fetch_row($rsMinimum);
 			if ($iMinimum > $total_gifts)
 				continue;
 		}
@@ -470,7 +470,7 @@ if ($output == "pdf") {
 	$buffer = substr($buffer,0,-1) . $eol;
 
 	// Add data
-	while ($row = mysql_fetch_row($rsReport)) {
+	while ($row = mysqli_fetch_row($rsReport)) {
 		foreach ($row as $field) {
 			$field = str_replace($delimiter, " ", $field);	// Remove any delimiters from data
 			$buffer .= $field . $delimiter;

@@ -243,16 +243,16 @@ class PDF_Directory extends ChurchInfoReport {
     }
 
     function sGetCustomString($rsCustomFields, $aRow){
-        $numCustomFields = mysql_num_rows($rsCustomFields);
+        $numCustomFields = mysqli_num_rows($rsCustomFields);
         if ($numCustomFields > 0) {
             extract($aRow);
             $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $per_ID;
             $rsCustomData = RunQuery($sSQL);
-            $aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
-            $numCustomData = mysql_num_rows($rsCustomData);
-            mysql_data_seek($rsCustomFields,0);
+            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
+            $numCustomData = mysqli_num_rows($rsCustomData);
+            mysqli_data_seek($rsCustomFields,0);
             $OutStr = "";
-            while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH) ){
+            while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) ){
                 extract($rowCustomField);
                 $sCustom = "bCustom".$custom_Order;
                 if($this->_Custom[$custom_Order]){

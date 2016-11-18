@@ -76,15 +76,15 @@ class PDF_FundRaiserStatement extends ChurchInfoReport {
 $pdf = new PDF_FundRaiserStatement();
 
 // Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
    if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+	while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 		$pdf->$cfg_name = $cfg_value;
 	}
    }
 
 // Loop through result array
-while ($row = mysql_fetch_array($rsPaddleNums)) {
+while ($row = mysqli_fetch_array($rsPaddleNums)) {
 	extract ($row);
 
 	// If running for a specific paddle just proceed
@@ -128,7 +128,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		$curY = $pdf->GetY();
 		$pdf->SetFont('Times','', 10);
 		
-		while ($itemRow = mysql_fetch_array($rsDonatedItems)) {
+		while ($itemRow = mysqli_fetch_array($rsDonatedItems)) {
 			extract ($itemRow);
 			$nextY = $curY;
 			$pdf->SetXY($pdf->leftX,$curY);
@@ -172,7 +172,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 		$pdf->SetFont('Times','', 10);
 		$curY += $pdf->incrementY;
 		
-		while ($itemRow = mysql_fetch_array($rsPurchasedItems)) {
+		while ($itemRow = mysqli_fetch_array($rsPurchasedItems)) {
 			extract ($itemRow);
 			$nextY = $curY;
 			$pdf->SetXY($pdf->leftX,$curY);
@@ -200,7 +200,7 @@ while ($row = mysql_fetch_array($rsPaddleNums)) {
 						LEFT JOIN family_fam c ON a.per_fam_id = c.fam_ID
 						WHERE b.di_FR_ID=".$iFundRaiserID." AND mb_per_ID=" . $pn_per_ID;
 		$rsMultiBuy = RunQuery($sqlMultiBuy);
-		while ($mbRow = mysql_fetch_array($rsMultiBuy)) {
+		while ($mbRow = mysqli_fetch_array($rsMultiBuy)) {
 			extract ($mbRow);
 			$nextY = $curY;
 			$pdf->SetXY($pdf->leftX,$curY);

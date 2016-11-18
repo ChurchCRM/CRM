@@ -20,9 +20,9 @@ class TaskService
     $CRMInstallRoot = dirname(__DIR__);
     $integrityCheckData = json_decode(file_get_contents($CRMInstallRoot."/integrityCheck.json"));
     $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg";
-    $rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
+    $rsConfig = mysqli_query($cnInfoCentral, $sSQL);			// Can't use RunQuery -- not defined yet
     if ($rsConfig) {
-      while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+      while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
         $$cfg_name = $cfg_value;
       }
     }

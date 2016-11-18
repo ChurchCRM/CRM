@@ -41,7 +41,7 @@ class SystemService
       if ($line != '' && strpos($line, '--') === false) {
         $query .= " $line";
         if (substr($query, -1) == ';') {
-          $person = mysql_query($query);
+          $person = mysqli_query($cnInfoCentral, $query);
           $query = '';
         }
       }
@@ -93,7 +93,7 @@ class SystemService
     //When restoring a database, do NOT let the database continue to create remote backups.
     //This can be very troublesome for users in a testing environment.
     $sSQL = 'UPDATE config_cfg SET cfg_value = "0" WHERE cfg_name = "sEnableExternalBackupTarget"';
-    $aRow = mysql_fetch_array(RunQuery($sSQL));
+    $aRow = mysqli_fetch_array(RunQuery($sSQL));
     array_push($restoreResult->Messages, gettext("As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."));
     $systemConfig->setValue("sLastIntegrityCheckTimeStamp",null);
     return $restoreResult;

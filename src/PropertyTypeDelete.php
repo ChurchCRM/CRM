@@ -38,7 +38,7 @@ if (isset($_GET["Confirmed"]))
 
 	$sSQL = "SELECT pro_ID FROM property_pro WHERE pro_prt_ID = " . $iPropertyTypeID;
 	$result = RunQuery($sSQL);
-	while ($aRow = mysql_fetch_array($result))
+	while ($aRow = mysqli_fetch_array($result))
 	{
 		$sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $aRow['pro_ID'];
 		RunQuery($sSQL);
@@ -52,7 +52,7 @@ if (isset($_GET["Confirmed"]))
 
 $sSQL = "SELECT * FROM propertytype_prt WHERE prt_ID = " . $iPropertyTypeID;
 $rsProperty = RunQuery($sSQL);
-extract(mysql_fetch_array($rsProperty));
+extract(mysqli_fetch_array($rsProperty));
 $sType = "";
 
 require "Include/Header.php";

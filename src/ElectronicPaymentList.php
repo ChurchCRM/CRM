@@ -219,7 +219,7 @@ function CreatePaymentMethodsForChecked()
 $sRowClass = "RowColorA";
 
 //Loop through the autopayment records
-while ($aRow = mysql_fetch_array($rsAutopayments)) {
+while ($aRow = mysqli_fetch_array($rsAutopayments)) {
 
 	extract($aRow);
 

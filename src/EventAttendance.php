@@ -33,7 +33,7 @@ if (array_key_exists('Action', $_POST) && $_POST['Action'] == "Retrieve" && !emp
         $aSQL = "SELECT DISTINCT(person_id) FROM event_attend WHERE event_id = ".$_POST['Event'];
         $raOpps = RunQuery($aSQL);
         $aArr = array ();
-        while ($aRow = mysql_fetch_row($raOpps))
+        while ($aRow = mysqli_fetch_row($raOpps))
         {
             $aArr[] = $aRow[0];
         }
@@ -79,12 +79,12 @@ require "Include/Header.php";
 <?php
 // Get data for the form as it now exists..
 $rsOpps = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsOpps);
+$numRows = mysqli_num_rows($rsOpps);
 
 // Create arrays of the attendees.
 for ($row = 1; $row <= $numRows; $row++)
 {
-    $aRow = mysql_fetch_assoc($rsOpps);
+    $aRow = mysqli_fetch_assoc($rsOpps);
     extract($aRow);
 
     if (array_key_exists ('Action', $_GET) & $_GET['Action'] == "List")

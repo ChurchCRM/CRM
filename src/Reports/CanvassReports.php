@@ -30,9 +30,9 @@ function TopPledgersLevel ($iFYID, $iPercent)
 	$sSQL = "SELECT plg_Amount FROM pledge_plg 
 			 WHERE plg_FYID = " . $iFYID . " AND plg_PledgeOrPayment=\"Pledge\" ORDER BY plg_Amount DESC";
 	$rsPledges = RunQuery($sSQL);
-	$pledgeCount = mysql_num_rows ($rsPledges);
-	mysql_data_seek ($rsPledges, $pledgeCount * $iPercent / 100);
-	$aLastTop = mysql_fetch_array($rsPledges);
+	$pledgeCount = mysqli_num_rows ($rsPledges);
+	mysqli_data_seek ($rsPledges, $pledgeCount * $iPercent / 100);
+	$aLastTop = mysqli_fetch_array($rsPledges);
 	return ($aLastTop["plg_Amount"]);
 }
 
@@ -44,9 +44,9 @@ function CanvassProgressReport ($iFYID)
 	$pdf = new PDF_CanvassBriefingReport();
 
 	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+	$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 			$pdf->$cfg_name = $cfg_value;
 		}
 	}
@@ -91,21 +91,21 @@ function CanvassProgressReport ($iFYID)
 		if ($rsCanvassers == 0)
 			continue;
 
-		while ($aCanvasser = mysql_fetch_array ($rsCanvassers)) {
+		while ($aCanvasser = mysqli_fetch_array ($rsCanvassers)) {
 			// Get all the families for this canvasser
 			$sSQL = "SELECT fam_ID from family_fam WHERE fam_Canvasser = " . $aCanvasser["per_ID"];
 			$rsCanvassees = RunQuery($sSQL);
 
-			$thisCanvasserToDo = mysql_num_rows ($rsCanvassees);
+			$thisCanvasserToDo = mysqli_num_rows ($rsCanvassees);
 			$thisCanvasserDone = 0;
 
-			while ($aCanvassee = mysql_fetch_array ($rsCanvassees)) {
+			while ($aCanvassee = mysqli_fetch_array ($rsCanvassees)) {
 				// Get all the canvass input entered so far by this canvasser
 				$sSQL = "SELECT can_ID from canvassdata_can WHERE can_famID=" . $aCanvassee["fam_ID"] .
 				            " AND can_FYID=" . $iFYID;
 				$rsCanvassData = RunQuery($sSQL);
 
-				if (mysql_num_rows ($rsCanvassData) == 1) {
+				if (mysqli_num_rows ($rsCanvassData) == 1) {
 					++$thisCanvasserDone;
 				}
 			}
@@ -144,9 +144,9 @@ function CanvassBriefingSheets ($iFYID)
 	$pdf = new PDF_CanvassBriefingReport();
 	
 		// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+	$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 			$pdf->$cfg_name = $cfg_value;
 		}
 	}
@@ -172,7 +172,7 @@ function CanvassBriefingSheets ($iFYID)
 	$memberCellX = $memberClassX + 20;
 	$memberEmailX = $memberCellX + 25;
 
-	while ($aFamily = mysql_fetch_array($rsFamilies)) {
+	while ($aFamily = mysqli_fetch_array($rsFamilies)) {
 		$curY = $topY;
 
 		$pdf->SetFont('Times','', 24);
@@ -204,13 +204,13 @@ function CanvassBriefingSheets ($iFYID)
 				 WHERE plg_FYID = " . $iFYID . " AND plg_PledgeOrPayment=\"Pledge\" AND plg_FamID = " . $aFamily["fam_ID"] . " ORDER BY plg_Amount DESC";
 		$rsPledges = RunQuery($sSQL);
 
-		$pledgeCount = mysql_num_rows ($rsPledges);
+		$pledgeCount = mysqli_num_rows ($rsPledges);
 
 		$sPledgeStatus = "";
 		if ($pledgeCount == 0) {
 			$sPledgeStatus .= gettext ("Did not pledge");
 		} else {
-			$aPledge = mysql_fetch_array ($rsPledges);
+			$aPledge = mysqli_fetch_array ($rsPledges);
 			if ($aPledge["plg_Amount"] >= $topPledgeLevel) {
 				$sPledgeStatus .= gettext ("Top pledger");
 			} else {
@@ -252,7 +252,7 @@ function CanvassBriefingSheets ($iFYID)
 
 		$pdf->SetFont('Times','', 10);
 
-		while ($aFamilyMember = mysql_fetch_array($rsFamilyMembers)) {
+		while ($aFamilyMember = mysqli_fetch_array($rsFamilyMembers)) {
 			if ($aFamilyMember["per_Gender"] == 1)
 				$sGender = "M";
 			else
@@ -269,9 +269,9 @@ function CanvassBriefingSheets ($iFYID)
 		}
 
 		// Go back around to get group affiliations
-		if (mysql_num_rows ($rsFamilyMembers) > 0) {
-			mysql_data_seek ($rsFamilyMembers, 0);
-			while ($aMember = mysql_fetch_array($rsFamilyMembers)) {
+		if (mysqli_num_rows ($rsFamilyMembers) > 0) {
+			mysqli_data_seek ($rsFamilyMembers, 0);
+			while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
 
 				// Get the Groups this Person is assigned to
 				$sSQL = "SELECT grp_Name, role.lst_OptionName AS roleName
@@ -281,11 +281,11 @@ function CanvassBriefingSheets ($iFYID)
 						WHERE person2group2role_p2g2r.p2g2r_per_ID = " . $aMember["per_ID"] . "
 						ORDER BY grp_Name";
 				$rsAssignedGroups = RunQuery($sSQL);
-				if (mysql_num_rows ($rsAssignedGroups) > 0) {
+				if (mysqli_num_rows ($rsAssignedGroups) > 0) {
 					$groupStr = "Assigned groups for " . $aMember["per_FirstName"] . " " . $aMember["per_LastName"] . ": ";
 
 					$countGroups = 0;
-					while ($aGroup = mysql_fetch_array($rsAssignedGroups)) {
+					while ($aGroup = mysqli_fetch_array($rsAssignedGroups)) {
 						$groupStr .= $aGroup["grp_Name"] . " (" . $aGroup["roleName"] . ") ";
 						if ($countGroups == 0)
 							$curY += $pdf->incrementY;
@@ -320,9 +320,9 @@ function CanvassSummaryReport ($iFYID)
 	$pdf = new PDF_CanvassBriefingReport();
 	
 	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+	$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 			$pdf->$cfg_name = $cfg_value;
 		}
 	}
@@ -357,7 +357,7 @@ function CanvassSummaryReport ($iFYID)
 		$pdf->Write (5, $colName . " Comments\n");
 //		$pdf->WriteAt ($pdf->leftX, $curY, $colName . " Comments");
 		$pdf->SetFont('Times','', 12);
-		while ($aDatum = mysql_fetch_array ($rsCanvassData)) {
+		while ($aDatum = mysqli_fetch_array ($rsCanvassData)) {
 			$str = $aDatum["can_" . $colName];
 			if ($str <> "") {
 				$pdf->Write (4, $str . "\n\n");
@@ -365,7 +365,7 @@ function CanvassSummaryReport ($iFYID)
 //				$curY += $pdf->incrementY;
 			}
 		}
-		mysql_data_seek ($rsCanvassData, 0);
+		mysqli_data_seek ($rsCanvassData, 0);
 	}	
 
 	$pdf->Output("CanvassSummary" . date("Ymd") . ".pdf", "D");
@@ -377,9 +377,9 @@ function CanvassNotInterestedReport ($iFYID)
 	$pdf = new PDF_CanvassBriefingReport();
 	
 	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+	$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 			$pdf->$cfg_name = $cfg_value;
 		}
 	}
@@ -410,7 +410,7 @@ function CanvassNotInterestedReport ($iFYID)
 	$rsCanvassData = RunQuery($sSQL);
 
 	$pdf->SetFont('Times','', 12);
-	while ($aDatum = mysql_fetch_array ($rsCanvassData)) {
+	while ($aDatum = mysqli_fetch_array ($rsCanvassData)) {
 		$str = sprintf ("%s : %s\n", $aDatum["fam_Name"], $aDatum["can_WhyNotInterested"]);
 		$pdf->Write (4, $str . "\n\n");
 	}

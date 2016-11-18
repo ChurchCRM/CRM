@@ -37,7 +37,7 @@ if($sFontSize != "default")
 $sSQL = "SELECT * FROM person_per WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY per_LastName";
 $rsPersons = RunQuery($sSQL);
 
-while ($aPer = mysql_fetch_array($rsPersons)) {
+while ($aPer = mysqli_fetch_array($rsPersons)) {
 	extract ($aPer);
 
 	$PosX = $pdf->_Margin_Left+($pdf->_COUNTX*($pdf->_Width+$pdf->_X_Space));

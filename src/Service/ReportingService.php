@@ -34,9 +34,9 @@ class ReportingService
   function search($searchTerm)
   {
     $fetch = 'SELECT * from query_qry WHERE qry_Name LIKE \'%' . FilterInput($searchTerm) . '%\' LIMIT 15';
-    $result = mysql_query($fetch);
+    $result = mysqli_query($cnInfoCentral, $fetch);
     $reports = array();
-    while ($row = mysql_fetch_array($result))
+    while ($row = mysqli_fetch_array($result))
     {
       $row_array['id'] = $row['qry_ID'];
       $row_array['displayName'] = $row['qry_Name'];

@@ -31,7 +31,7 @@ $iGroupID = FilterInput($_GET["GroupID"],'int');
 // Get the group information
 $sSQL = "SELECT * FROM group_grp WHERE grp_ID = " . $iGroupID;
 $rsGroupInfo = RunQuery($sSQL);
-extract(mysql_fetch_array($rsGroupInfo));
+extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false)
@@ -58,11 +58,11 @@ if (isset($_POST["SaveChanges"]))
 	// Fill in the other needed property data arrays not gathered from the form submit
 	$sSQL = "SELECT prop_ID, prop_Field, type_ID, prop_Special, prop_PersonDisplay FROM groupprop_master WHERE grp_ID = " . $iGroupID . " ORDER BY prop_ID";
 	$rsPropList = RunQuery($sSQL);
-	$numRows = mysql_num_rows($rsPropList);
+	$numRows = mysqli_num_rows($rsPropList);
 
 	for ($row = 1; $row <= $numRows; $row++)
 	{
-		$aRow = mysql_fetch_array($rsPropList, MYSQL_BOTH);
+		$aRow = mysqli_fetch_array($rsPropList, MYSQL_BOTH);
 		extract($aRow);
 
 		$aFieldFields[$row] = $prop_Field;
@@ -150,7 +150,7 @@ else
 		{
 			$sSQL = "SELECT prop_Name FROM groupprop_master WHERE grp_ID = " . $iGroupID;
 			$rsPropNames = RunQuery($sSQL);
-			while($aRow = mysql_fetch_array($rsPropNames))
+			while($aRow = mysqli_fetch_array($rsPropNames))
 			{
 				if ($aRow[0] == $newFieldName) {
 					$bDuplicateNameError = true;
@@ -163,7 +163,7 @@ else
 				// Get the new prop_ID (highest existing plus one)
 				$sSQL = "SELECT prop_ID	FROM groupprop_master WHERE grp_ID = " . $iGroupID;
 				$rsPropList = RunQuery($sSQL);
-				$newRowNum = mysql_num_rows($rsPropList) + 1;
+				$newRowNum = mysqli_num_rows($rsPropList) + 1;
 
 				// Find the highest existing field number in the group's table to determine the next free one.
 				// This is essentially an auto-incrementing system where deleted numbers are not re-used.
@@ -180,7 +180,7 @@ else
 				{
 					// Get the first available lst_ID for insertion.  lst_ID 0-9 are reserved for permanent lists.
 					$sSQL = "SELECT MAX(lst_ID) FROM list_lst";
-					$aTemp = mysql_fetch_array(RunQuery($sSQL));
+					$aTemp = mysqli_fetch_array(RunQuery($sSQL));
 					if ($aTemp[0] > 9)
 						$newListID = $aTemp[0] + 1;
 					else
@@ -255,12 +255,12 @@ else
 	$sSQL = "SELECT * FROM groupprop_master WHERE grp_ID = " . $iGroupID . " ORDER BY prop_ID";
 
 	$rsPropList = RunQuery($sSQL);
-	$numRows = mysql_num_rows($rsPropList);
+	$numRows = mysqli_num_rows($rsPropList);
 
 	// Create arrays of the properties.
 	for ($row = 1; $row <= $numRows; $row++)
 	{
-		$aRow = mysql_fetch_array($rsPropList, MYSQL_BOTH);
+		$aRow = mysqli_fetch_array($rsPropList, MYSQL_BOTH);
 		extract($aRow);
 
 		// This is probably more clear than using a multi-dimensional array
@@ -353,7 +353,7 @@ else
 
 				$rsGroupList = RunQuery($sSQL);
 
-				while ($aRow = mysql_fetch_array($rsGroupList))
+				while ($aRow = mysqli_fetch_array($rsGroupList))
 				{
 					extract($aRow);
 

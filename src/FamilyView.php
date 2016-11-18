@@ -60,7 +60,7 @@ $dResults = RunQuery($dSQL);
 $last_id = 0;
 $next_id = 0;
 $capture_next = 0;
-while ($myrow = mysql_fetch_row($dResults)) {
+while ($myrow = mysqli_fetch_row($dResults)) {
   $fid = $myrow[0];
   if ($capture_next == 1) {
     $next_id = $fid;
@@ -81,7 +81,7 @@ $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS Entere
 		LEFT JOIN person_per b ON fam_EditedBy = b.per_ID
 		WHERE fam_ID = " . $iFamilyID;
 $rsFamily = RunQuery($sSQL);
-extract(mysql_fetch_array($rsFamily));
+extract(mysqli_fetch_array($rsFamily));
 
 if ($iFamilyID == $fam_ID) {
 
@@ -92,7 +92,7 @@ if ($iFamilyID == $fam_ID) {
 // Get the custom field data for this person.
   $sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
   $rsFamCustomData = RunQuery($sSQL);
-  $aFamCustomData = mysql_fetch_array($rsFamCustomData, MYSQL_BOTH);
+  $aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQL_BOTH);
 
   $family = FamilyQuery::create()->findPk($iFamilyID);
 
@@ -138,7 +138,7 @@ if ($iFamilyID == $fam_ID) {
   $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
   $rsSecurityGrp = RunQuery($sSQL);
 
-  while ($aRow = mysql_fetch_array($rsSecurityGrp)) {
+  while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     extract($aRow);
     $aSecurityType[$lst_OptionID] = $lst_OptionName;
   }
@@ -220,7 +220,7 @@ if ($iFamilyID == $fam_ID) {
             <?php }
             }
             // Display the left-side custom fields
-            while ($Row = mysql_fetch_array($rsFamCustomFields)) {
+            while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
               extract($Row);
               if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
                 $currentData = trim($aFamCustomData[$fam_custom_Field]);
@@ -432,7 +432,7 @@ if ($iFamilyID == $fam_ID) {
                 <?php
                 $sAssignedProperties = ",";
 
-                if (mysql_num_rows($rsAssignedProperties) == 0) { ?>
+                if (mysqli_num_rows($rsAssignedProperties) == 0) { ?>
                   <br>
                   <div class="alert alert-warning">
                     <i class="fa fa-question-circle fa-fw fa-lg"></i>
@@ -457,7 +457,7 @@ if ($iFamilyID == $fam_ID) {
                   $bIsFirst = true;
 
                   //Loop through the rows
-                  while ($aRow = mysql_fetch_array($rsAssignedProperties)) {
+                  while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
                     $pro_Prompt = "";
                     $r2p_Value = "";
 
@@ -514,7 +514,7 @@ if ($iFamilyID == $fam_ID) {
                       <form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
                         <select name="PropertyID">
                           <?php
-                          while ($aRow = mysql_fetch_array($rsProperties)) {
+                          while ($aRow = mysqli_fetch_array($rsProperties)) {
                             extract($aRow);
                             //If the property doesn't already exist for this Person, write the <OPTION> tag
                             if (strlen(strstr($sAssignedProperties, "," . $pro_ID . ",")) == 0) {
@@ -537,7 +537,7 @@ if ($iFamilyID == $fam_ID) {
           <div role="tab-pane fade" class="tab-pane" id="finance">
             <div class="main-box clearfix">
               <div class="main-box-body clearfix">
-                <?php if (mysql_num_rows($rsAutoPayments) > 0) { ?>
+                <?php if (mysqli_num_rows($rsAutoPayments) > 0) { ?>
                   <table cellpadding="5" cellspacing="0" width="100%">
 
                     <tr class="TableHeader">
@@ -557,7 +557,7 @@ if ($iFamilyID == $fam_ID) {
                     $tog = 0;
 
                     //Loop through all automatic payments
-                    while ($aRow = mysql_fetch_array($rsAutoPayments)) {
+                    while ($aRow = mysqli_fetch_array($rsAutoPayments)) {
                       $tog = (!$tog);
 
                       extract($aRow);
@@ -664,7 +664,7 @@ if ($iFamilyID == $fam_ID) {
 
                   if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments']) {
                     //Loop through all pledges
-                    while ($aRow = mysql_fetch_array($rsPledges)) {
+                    while ($aRow = mysqli_fetch_array($rsPledges)) {
                       $tog = (!$tog);
 
                       $plg_FYID = "";

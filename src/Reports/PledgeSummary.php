@@ -43,7 +43,7 @@ $underpaid = array ();
 $pledgeFundTotal = array ();
 $paymentFundTotal = array ();
 
-while ($row = mysql_fetch_array($rsFunds)) {
+while ($row = mysqli_fetch_array($rsFunds)) {
 	$fun_name = $row["fun_Name"];
 	$overpaid[$fun_name] = 0;
 	$underpaid[$fun_name] = 0;
@@ -110,9 +110,9 @@ if ($output == "pdf") {
 	$pdf = new PDF_PledgeSummaryReport();
 
 	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+	$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 			$pdf->$cfg_name = $cfg_value;
 		}
 	}
@@ -127,14 +127,14 @@ if ($output == "pdf") {
 	$curFam = 0;
 	$paidThisFam = array();
 	$pledgeThisFam = array();
-	$totRows = mysql_num_rows ($rsPledges);
+	$totRows = mysqli_num_rows ($rsPledges);
 	$thisRow = 0;
 	$fundName = "";
 	$plg_famID = 0;
 
 	for ($thisRow = 0; $thisRow <= $totRows; $thisRow+=1) { // go through the loop one extra time
 		if ($thisRow < $totRows) {
-			$aRow = mysql_fetch_array($rsPledges);
+			$aRow = mysqli_fetch_array($rsPledges);
 			extract ($aRow);
 		}
 
@@ -145,8 +145,8 @@ if ($output == "pdf") {
 		if ($plg_famID != $curFam || $thisRow == $totRows) {
 			// Switching families.  Post the results for the previous family and initialize for the new family
 
-			mysql_data_seek($rsFunds,0);
-			while ($row = mysql_fetch_array($rsFunds)) {
+			mysqli_data_seek($rsFunds,0);
+			while ($row = mysqli_fetch_array($rsFunds)) {
 				$fun_name = $row["fun_Name"];
 				if (array_key_exists ($fun_name, $pledgeThisFam) && $pledgeThisFam[$fun_name] > 0)
 					$thisPledge = $pledgeThisFam[$fun_name];
@@ -230,8 +230,8 @@ if ($output == "pdf") {
 	$pdf->SetFont('Times','', 10);
 	$curY += $pdf->incrementY;
 
-	mysql_data_seek($rsFunds,0); // Change this to print out funds in active / alpha order.
-	while ($row = mysql_fetch_array($rsFunds))
+	mysqli_data_seek($rsFunds,0); // Change this to print out funds in active / alpha order.
+	while ($row = mysqli_fetch_array($rsFunds))
 	{
 		$fun_name = $row["fun_Name"];
 		if ($pledgeFundTotal[$fun_name] > 0 || $paymentFundTotal[$fun_name] > 0) {
@@ -292,7 +292,7 @@ if ($output == "pdf") {
 	$buffer = substr($buffer,0,-1) . $eol;
 
 	// Add data
-	while ($row = mysql_fetch_row($rsPledges)) {
+	while ($row = mysqli_fetch_row($rsPledges)) {
 		foreach ($row as $field) {
 			$field = str_replace($delimiter, " ", $field);	// Remove any delimiters from data
 			$buffer .= $field . $delimiter;

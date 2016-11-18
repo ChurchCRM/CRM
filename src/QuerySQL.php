@@ -91,9 +91,9 @@ function ExportQueryResults()
 	//Run the SQL
 	$rsQueryResults = RunQuery($sSQL);
 
-	if (mysql_error() != "")
+	if (mysqli_error($cnInfoCentral) != "")
 	{
-		$sCSVstring = gettext("An error occured: ") . mysql_errno() . "--" . mysql_error();
+		$sCSVstring = gettext("An error occured: ") . mysqli_errno($cnInfoCentral) . "--" . mysqli_error($cnInfoCentral);
 	}
 	else
 	{
@@ -107,7 +107,7 @@ function ExportQueryResults()
         $sCSVstring .= "\n";
 
 		//Loop through the recordsert
-		while($aRow =mysql_fetch_array($rsQueryResults))
+		while($aRow =mysqli_fetch_array($rsQueryResults))
 		{
 			//Loop through the fields and write each one
 			for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
@@ -133,7 +133,7 @@ function ExportQueryResults()
 
 //Display the count of the recordset 	 	
 	echo "<p align=\"center\">";
-	echo mysql_num_rows($rsQueryResults) . gettext(" record(s) returned");
+	echo mysqli_num_rows($rsQueryResults) . gettext(" record(s) returned");
 	echo "</p>";
 
 function RunFreeQuery()
@@ -149,9 +149,9 @@ function RunFreeQuery()
 	//Run the SQL
 	$rsQueryResults = RunQuery($sSQL);
 
-	if (mysql_error() != "")
+	if (mysqli_error($cnInfoCentral) != "")
 	{
-		echo gettext("An error occured: ") . mysql_errno() . "--" . mysql_error();
+		echo gettext("An error occured: ") . mysqli_errno($cnInfoCentral) . "--" . mysqli_error($cnInfoCentral);
 	}
 	else
 	{
@@ -177,7 +177,7 @@ function RunFreeQuery()
 		echo '</tr>';
 
 		//Loop through the recordsert
-		while($aRow =mysql_fetch_array($rsQueryResults))
+		while($aRow =mysqli_fetch_array($rsQueryResults))
 		{
 
 			$sRowClass = AlternateRowStyle($sRowClass);

@@ -32,7 +32,7 @@ $sSQL = "SELECT a.*, family_fam.*, cls.lst_OptionName AS sClassName, fmr.lst_Opt
 			LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
 			WHERE a.per_ID = " . $iPersonID;
 $rsPerson = RunQuery($sSQL);
-extract(mysql_fetch_array($rsPerson));
+extract(mysqli_fetch_array($rsPerson));
 
 // Save for later
 $sWorkEmail = trim($per_WorkEmail);
@@ -40,12 +40,12 @@ $sWorkEmail = trim($per_WorkEmail);
 // Get the list of custom person fields
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order";
 $rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysql_num_rows($rsCustomFields);
+$numCustomFields = mysqli_num_rows($rsCustomFields);
 
 // Get the actual custom field data
 $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $iPersonID;
 $rsCustomData = RunQuery($sSQL);
-$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
+$aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
 
 // Get the notes for this person
 $sSQL = "SELECT nte_Private, nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEdited, nte_EditedBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName ";
@@ -78,7 +78,7 @@ $rsAssignedProperties = RunQuery($sSQL);
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
 $rsSecurityGrp = RunQuery($sSQL);
 
-while ($aRow = mysql_fetch_array($rsSecurityGrp))
+while ($aRow = mysqli_fetch_array($rsSecurityGrp))
 {
 	extract ($aRow);
 	$aSecurityType[$lst_OptionID] = $lst_OptionName;
@@ -190,7 +190,7 @@ if ($fam_ID)
 
 			for($i = 1; $i <= $numColumn1Fields; $i++)
 			{
-				$Row = mysql_fetch_array($rsCustomFields);
+				$Row = mysqli_fetch_array($rsCustomFields);
 				extract($Row);
 				if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
 				{
@@ -242,7 +242,7 @@ if ($fam_ID)
 		<?php
 			for($i = 1; $i <= $numColumn2Fields; $i++)
 			{
-				$Row = mysql_fetch_array($rsCustomFields);
+				$Row = mysqli_fetch_array($rsCustomFields);
 				extract($Row);
 				$currentData = trim($aCustomData[$custom_Field]);
 				if ($type_ID == 11) $custom_Special = $sCountry;
@@ -277,7 +277,7 @@ if ($fam_ID)
 		<?php
 			for($i = 1; $i <= $numColumn3Fields; $i++)
 			{
-				$Row = mysql_fetch_array($rsCustomFields);
+				$Row = mysqli_fetch_array($rsCustomFields);
 				extract($Row);
 				$currentData = trim($aCustomData[$custom_Field]);
 				if ($type_ID == 11) $custom_Special = $sCountry;
@@ -305,7 +305,7 @@ if ($fam_ID)
 	$sRowClass = "RowColorA";
 
 	// Loop through all the family members
-	while ($aRow = mysql_fetch_array($rsFamilyMembers))
+	while ($aRow = mysqli_fetch_array($rsFamilyMembers))
 	{
 		$per_BirthYear = "";
 		$agr_Description = "";
@@ -348,7 +348,7 @@ $sRowClass = "RowColorA";
 $sAssignedGroups = ",";
 
 //Was anything returned?
-if (mysql_num_rows($rsAssignedGroups) == 0)
+if (mysqli_num_rows($rsAssignedGroups) == 0)
 {
 	echo "<p align\"center\">" . gettext("No group assignments.") . "</p>";
 }
@@ -361,7 +361,7 @@ else
 	echo "</tr>";
 
 	//Loop through the rows
-	while ($aRow = mysql_fetch_array($rsAssignedGroups))
+	while ($aRow = mysqli_fetch_array($rsAssignedGroups))
 	{
 		extract($aRow);
 
@@ -385,9 +385,9 @@ else
 
 			$sSQL = "SELECT * FROM groupprop_" . $grp_ID . " WHERE per_ID = " . $iPersonID;
 			$rsPersonProps = RunQuery($sSQL);
-			$aPersonProps = mysql_fetch_array($rsPersonProps, MYSQL_BOTH);
+			$aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQL_BOTH);
 
-			while ($aProps = mysql_fetch_array($rsPropList))
+			while ($aProps = mysqli_fetch_array($rsPropList))
 			{
 				extract($aProps);
 				$currentData = trim($aPersonProps[$prop_Field]);
@@ -423,7 +423,7 @@ $sRowClass = "RowColorA";
 $sAssignedProperties = ",";
 
 //Was anything returned?
-if (mysql_num_rows($rsAssignedProperties) == 0)
+if (mysqli_num_rows($rsAssignedProperties) == 0)
 {
 	echo "<p align\"center\">" . gettext("No property assignments.") . "</p>";
 }
@@ -435,7 +435,7 @@ else
 	echo "<td valign=\"top\"><b>" . gettext("Value") . "</td>";
 	echo "</tr>";
 
-	while ($aRow = mysql_fetch_array($rsAssignedProperties))
+	while ($aRow = mysqli_fetch_array($rsAssignedProperties))
 	{
 		$pro_Prompt = "";
 		$r2p_Value = "";
@@ -462,7 +462,7 @@ if ($_SESSION['bNotes'])
 	echo "<p><b>" . gettext("Notes:") . "</b></p>";
 
 	// Loop through all the notes
-	while($aRow = mysql_fetch_array($rsNotes))
+	while($aRow = mysqli_fetch_array($rsNotes))
 	{
 		extract($aRow);
 		echo "<p class=\"ShadedBox\")>" . $nte_Text . "</p>";

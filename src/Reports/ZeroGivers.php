@@ -62,7 +62,7 @@ $sSQL = "SELECT DISTINCT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City,
 $rsReport = RunQuery($sSQL);
 
 // Exit if no rows returned
-$iCountRows = mysql_num_rows($rsReport);
+$iCountRows = mysqli_num_rows($rsReport);
 if ($iCountRows < 1){
 	header("Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Zero%20Givers"); 
 }
@@ -128,15 +128,15 @@ if ($output == "pdf") {
 	$pdf = new PDF_ZeroGivers();
 	
 	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+	$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
    if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 			$pdf->$cfg_name = $cfg_value;
 		}
    }
 
 	// Loop through result array
-	while ($row = mysql_fetch_array($rsReport)) {
+	while ($row = mysqli_fetch_array($rsReport)) {
 		extract ($row);
 		$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 
@@ -169,7 +169,7 @@ if ($output == "pdf") {
 	$buffer = substr($buffer,0,-1) . $eol;
 	
 	// Add data
-	while ($row = mysql_fetch_row($rsReport)) {
+	while ($row = mysqli_fetch_row($rsReport)) {
 		foreach ($row as $field) {
 			$field = str_replace($delimiter, " ", $field);	// Remove any delimiters from data
 			$buffer .= $field . $delimiter;
