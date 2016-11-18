@@ -99,7 +99,7 @@ function ExportQueryResults()
 	{
 
 		//Loop through the fields and write the header row
-		for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
+		for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++)
 		{
 			$fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
       $sCSVstring .= $fieldInfo->name . ",";
@@ -111,7 +111,7 @@ function ExportQueryResults()
 		while($aRow =mysqli_fetch_array($rsQueryResults))
 		{
 			//Loop through the fields and write each one
-			for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
+			for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++)
 			{
 				$outStr = str_replace ('"', '""', $aRow[$iCount]);
 				$sCSVstring .= "\"" . $outStr . "\",";
@@ -164,7 +164,7 @@ function RunFreeQuery()
 		echo '<tr class="' . $sRowClass . '">';
 
 		//Loop through the fields and write the header row
-		for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
+		for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++)
 		{
 			//If this field is called "AddToCart", don't display this field...
 			$fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
@@ -187,7 +187,7 @@ function RunFreeQuery()
 			echo '<tr class="' . $sRowClass . '">';
 
 			//Loop through the fields and write each one
-			for ($iCount = 0; $iCount < mysql_num_fields($rsQueryResults); $iCount++)
+			for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++)
 			{
 				//If this field is called "AddToCart", add this to the hidden form field...
 				$fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
