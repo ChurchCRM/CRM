@@ -264,7 +264,7 @@ class Deposit extends BaseDeposit
 
     $totalAmount = 0;
 
-    //while ($aRow = mysql_fetch_array($rsPledges))
+    //while ($aRow = mysqli_fetch_array($rsPledges))
     foreach ($this->getPledges() as $payment) {
       $thisReport->pdf->SetFont('Times', '', 10);
 

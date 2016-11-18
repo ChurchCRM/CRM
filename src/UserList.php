@@ -73,7 +73,7 @@ require "Include/Header.php";
 $sRowClass = "RowColorA";
 
 //Loop through the person recordset
-while ($aRow = mysql_fetch_array($rsUsers)) {
+while ($aRow = mysqli_fetch_array($rsUsers)) {
 
 	extract($aRow);
 

@@ -11,7 +11,7 @@ class DashboardService
         (select count(*) from family_fam ) as familyCount
         from dual ;";
     $rsQuickStat = RunQuery($sSQL);
-    $row = mysql_fetch_array($rsQuickStat);
+    $row = mysqli_fetch_array($rsQuickStat);
     $data = ['familyCount' => $row['familyCount']];
     return $data;
   }
@@ -22,7 +22,7 @@ class DashboardService
         (select count(*) from person_per ) as PersonCount
         from dual ;";
     $rsQuickStat = RunQuery($sSQL);
-    $row = mysql_fetch_array($rsQuickStat);
+    $row = mysqli_fetch_array($rsQuickStat);
     $data = ['personCount' => $row['PersonCount']];
     return $data;
   }
@@ -33,7 +33,7 @@ class DashboardService
     $data = array();
     $sSQL = "select lst_OptionName as Classification, count(*) as count from person_per, list_lst where per_cls_ID = lst_OptionID and lst_ID =1 group by per_cls_ID order by count desc;";
     $rsClassification = RunQuery($sSQL);
-    while ($row = mysql_fetch_array($rsClassification)) {
+    while ($row = mysqli_fetch_array($rsClassification)) {
       $data[$row['Classification']] = $row['count'];
     }
     return $data;
@@ -44,7 +44,7 @@ class DashboardService
     $stats = array();
     $sSQL = "select count(*) as numb, per_Gender, per_fmr_ID from person_per group by per_Gender, per_fmr_ID order by per_fmr_ID;";
     $rsGenderAndRole = RunQuery($sSQL);
-    while ($row = mysql_fetch_array($rsGenderAndRole)) {
+    while ($row = mysqli_fetch_array($rsGenderAndRole)) {
       switch ($row['per_Gender']) {
         case 0:
           $gender = "Unknown";
@@ -89,7 +89,7 @@ class DashboardService
         (select count(*) from person_per,group_grp grp, person2group2role_p2g2r person_grp  where person_grp.p2g2r_rle_ID = 2 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = per_ID) as SundaySchoolKidsCount
         from dual ;";
     $rsQuickStat = RunQuery($sSQL);
-    $row = mysql_fetch_array($rsQuickStat);
+    $row = mysqli_fetch_array($rsQuickStat);
     $data = ['groups' => $row['Groups'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
     return $data;
   }

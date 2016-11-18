@@ -118,9 +118,9 @@ class PDF_EnvelopeReport extends ChurchInfoReport {
 $pdf = new PDF_EnvelopeReport();
 
 // Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+	while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 		$pdf->$cfg_name = $cfg_value;
 	}
 }
@@ -128,7 +128,7 @@ if ($rsConfig) {
 $sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam WHERE fam_Envelope>0 ORDER BY fam_Envelope";
 $rsRecords = RunQuery($sSQL);
 
-while ($aRow = mysql_fetch_array($rsRecords))
+while ($aRow = mysqli_fetch_array($rsRecords))
 {
 	$OutStr = "";
 	extract($aRow);

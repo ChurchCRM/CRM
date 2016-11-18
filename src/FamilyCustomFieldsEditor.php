@@ -56,11 +56,11 @@ if (isset($_POST["SaveChanges"]))
     // Fill in the other needed custom field data arrays not gathered from the form submit
     $sSQL = "SELECT * FROM family_custom_master ORDER BY fam_custom_Order";
     $rsCustomFields = RunQuery($sSQL);
-    $numRows = mysql_num_rows($rsCustomFields);
+    $numRows = mysqli_num_rows($rsCustomFields);
 
     for ($row = 1; $row <= $numRows; $row++)
     {
-        $aRow = mysql_fetch_array($rsCustomFields, MYSQL_BOTH);
+        $aRow = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH);
         extract($aRow);
 
         $aFieldFields[$row] = $fam_custom_Field;
@@ -149,7 +149,7 @@ else
         {
             $sSQL = "SELECT fam_custom_Name FROM family_custom_master";
             $rsCustomNames = RunQuery($sSQL);
-            while($aRow = mysql_fetch_array($rsCustomNames))
+            while($aRow = mysqli_fetch_array($rsCustomNames))
             {
                 if ($aRow[0] == $newFieldName) {
                     $bDuplicateNameError = true;
@@ -163,14 +163,15 @@ else
                 // determine the next free one.
                 // This is essentially an auto-incrementing system where
                 // deleted numbers are not re-used.
-                $fields = mysql_list_fields($sDATABASE, "family_custom", $cnInfoCentral);
-                $last = mysql_num_fields($fields) - 1;
+                $fields = mysqli_query($cnInfoCentral, "SHOW COLUMNS FROM family_custom");
+                $last = mysqli_num_fields($fields) - 1;
 
                 // Set the new field number based on the highest existing.
                 // Chop off the "c" at the beginning of the old one's name.
                 // The "c#" naming scheme is necessary because MySQL 3.23
                 // doesn't allow numeric-only field (table column) names.
-                $newFieldNum = substr(mysql_field_name($fields, $last), 1) + 1;
+                $fieldInfo = mysqli_fetch_field_direct($fields, $last);
+                $newFieldNum = substr($fieldInfo->name, 1) + 1;
 
                 if ($newFieldSide == 0)
                     $newFieldSide = 'left';
@@ -184,7 +185,7 @@ else
                     // Get the first available lst_ID for insertion.
                     // lst_ID 0-9 are reserved for permanent lists.
                     $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
-                    $aTemp = mysql_fetch_array(RunQuery($sSQL));
+                    $aTemp = mysqli_fetch_array(RunQuery($sSQL));
                     if ($aTemp[0] > 9)
                         $newListID = $aTemp[0] + 1;
                     else
@@ -260,12 +261,12 @@ else
     $sSQL = "SELECT * FROM family_custom_master ORDER BY fam_custom_Order";
 
     $rsCustomFields = RunQuery($sSQL);
-    $numRows = mysql_num_rows($rsCustomFields);
+    $numRows = mysqli_num_rows($rsCustomFields);
 
     // Create arrays of the fields.
     for ($row = 1; $row <= $numRows; $row++)
     {
-        $aRow = mysql_fetch_array($rsCustomFields, MYSQL_BOTH);
+        $aRow = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH);
         extract($aRow);
 
         $aNameFields[$row] = $fam_custom_Name;
@@ -283,7 +284,7 @@ else
     $rsSecurityGrp = RunQuery($sSQL);
 
     $aSecurityGrp = Array();
-    while ($aRow = mysql_fetch_array($rsSecurityGrp))
+    while ($aRow = mysqli_fetch_array($rsSecurityGrp))
     {
         $aSecurityGrp[] = $aRow;
         extract ($aRow);
@@ -381,7 +382,7 @@ else
                 $sSQL = "SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name";
                 $rsGroupList = RunQuery($sSQL);
 
-                while ($aRow = mysql_fetch_array($rsGroupList))
+                while ($aRow = mysqli_fetch_array($rsGroupList))
                 {
                     extract($aRow);
 

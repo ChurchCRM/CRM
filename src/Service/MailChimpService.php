@@ -13,9 +13,9 @@ class MailChimpService
 
     $apikey = "";
     // Read in report settings from database
-    $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_name='mailChimpApiKey'");
+    $rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_name='mailChimpApiKey'");
     if ($rsConfig) {
-      while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+      while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
         $apikey = $cfg_value;
       }
     }

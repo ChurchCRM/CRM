@@ -352,11 +352,11 @@ function RunQuery($sSQL, $bStopOnError = true)
   global $cnInfoCentral;
   global $debug;
 
-  if ($result = mysql_query($sSQL, $cnInfoCentral))
+  if ($result = mysqli_query($cnInfoCentral, $sSQL))
     return $result;
   elseif ($bStopOnError) {
     if ($debug)
-      die(gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysql_error());
+      die(gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysqli_error($cnInfoCentral));
     else
       die("Database error or invalid data");
   } else
@@ -373,7 +373,7 @@ function FilterInputArr($arr, $key, $type = 'string', $size = 1)
 
 // Sanitizes user input as a security measure
 // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
-// Note that a database connection must already be established for the mysql_real_escape_string function to work.
+// Note that a database connection must already be established for the mysqli_real_escape_string function to work.
 function FilterInput($sInput, $type = 'string', $size = 1)
 {
   if (strlen($sInput) > 0) {
@@ -383,19 +383,19 @@ function FilterInput($sInput, $type = 'string', $size = 1)
         $sInput = strip_tags(trim($sInput));
         if (get_magic_quotes_gpc())
           $sInput = stripslashes($sInput);
-        $sInput = mysql_real_escape_string($sInput);
+        $sInput = mysqli_real_escape_string($cnInfoCentral, $sInput);
         return $sInput;
       case 'htmltext':
         $sInput = strip_tags(trim($sInput), '<a><b><i><u><h1><h2><h3><h4><h5><h6>');
         if (get_magic_quotes_gpc())
           $sInput = stripslashes($sInput);
-        $sInput = mysql_real_escape_string($sInput);
+        $sInput = mysqli_real_escape_string($cnInfoCentral, $sInput);
         return $sInput;
       case 'char':
         $sInput = substr(trim($sInput), 0, $size);
         if (get_magic_quotes_gpc())
           $sInput = stripslashes($sInput);
-        $sInput = mysql_real_escape_string($sInput);
+        $sInput = mysqli_real_escape_string($cnInfoCentral, $sInput);
         return $sInput;
       case 'int':
         return (int)intval(trim($sInput));
@@ -565,7 +565,7 @@ function AddGroupToPeopleCart($iGroupID)
   $rsGroupMembers = RunQuery($sSQL);
 
   //Loop through the recordset
-  while ($aRow = mysql_fetch_array($rsGroupMembers)) {
+  while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
     extract($aRow);
 
     //Add each person to the cart
@@ -579,7 +579,7 @@ function AddFamilyToPeopleCart($iFamID)
   $rsFamilyMembers = RunQuery($sSQL);
 
   //Loop through the recordset
-  while ($aRow = mysql_fetch_array($rsFamilyMembers)) {
+  while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
     extract($aRow);
 
     //Add each person to the cart
@@ -624,7 +624,7 @@ function RemoveGroupFromPeopleCart($iGroupID)
   $rsGroupMembers = RunQuery($sSQL);
 
   //Loop through the recordset
-  while ($aRow = mysql_fetch_array($rsGroupMembers)) {
+  while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
     extract($aRow);
 
     //remove each person from the cart
@@ -663,7 +663,7 @@ function FormatDate($dDate, $bWithTime = FALSE)
     . "DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
     . "DATE_FORMAT('$dDate', '%k') as h, "
     . "DATE_FORMAT('$dDate', ':%i') as m";
-  extract(mysql_fetch_array(RunQuery($sSQL)));
+  extract(mysqli_fetch_array(RunQuery($sSQL)));
 
   $month = gettext("$mn"); // Allow for translation of 3 character month abbr
 
@@ -1013,7 +1013,7 @@ function displayCustomField($type, $data, $special)
       if ($data > 0) {
         $sSQL = "SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID =" . $data;
         $rsTemp = RunQuery($sSQL);
-        extract(mysql_fetch_array($rsTemp));
+        extract(mysqli_fetch_array($rsTemp));
         return $per_FirstName . " " . $per_LastName;
       } else return "";
       break;
@@ -1028,7 +1028,7 @@ function displayCustomField($type, $data, $special)
       if ($data > 0) {
         $sSQL = "SELECT lst_OptionName FROM list_lst WHERE lst_ID = $special AND lst_OptionID = $data";
         $rsTemp = RunQuery($sSQL);
-        extract(mysql_fetch_array($rsTemp));
+        extract(mysqli_fetch_array($rsTemp));
         return $lst_OptionName;
       } else return "";
       break;
@@ -1138,7 +1138,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
       echo ">" . gettext("Unassigned") . "</option>";
       echo "<option value=\"0\">-----------------------</option>";
 
-      while ($aRow = mysql_fetch_array($rsGroupPeople)) {
+      while ($aRow = mysqli_fetch_array($rsGroupPeople)) {
         extract($aRow);
 
         echo "<option value=\"" . $per_ID . "\"";
@@ -1180,7 +1180,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
       echo "<option value=\"0\" selected>" . gettext("Unassigned") . "</option>";
       echo "<option value=\"0\">-----------------------</option>";
 
-      while ($aRow = mysql_fetch_array($rsListOptions)) {
+      while ($aRow = mysqli_fetch_array($rsListOptions)) {
         extract($aRow);
         echo "<option value=\"" . $lst_OptionID . "\"";
         if ($data == $lst_OptionID) echo " selected";
@@ -1712,7 +1712,7 @@ function FindMemberClassID()
   $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
   $rsClassifications = RunQuery($sSQL);
 
-  while ($aRow = mysql_fetch_array($rsClassifications)) {
+  while ($aRow = mysqli_fetch_array($rsClassifications)) {
     extract($aRow);
     if ($lst_OptionName == gettext("Member"))
       return ($lst_OptionID);
@@ -1891,7 +1891,7 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
   $sSQL = "SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (" . $head_criteria . ") ORDER BY per_fam_ID";
   $rs_head = RunQuery($sSQL);
   $aHead = array();
-  while (list ($head_firstname, $head_famid) = mysql_fetch_row($rs_head)) {
+  while (list ($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
     if ($head_firstname && isset ($aHead[$head_famid])) {
       $aHead[$head_famid] .= " & " . $head_firstname;
     } elseif ($head_firstname) {
@@ -1899,7 +1899,7 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
     }
   }
   $familyArray = array();
-  while ($aRow = mysql_fetch_array($rsFamilies)) {
+  while ($aRow = mysqli_fetch_array($rsFamilies)) {
     extract($aRow);
     $name = $fam_Name;
     if (isset ($aHead[$fam_ID])) {
@@ -1934,7 +1934,7 @@ function genGroupKey($methodSpecificID, $famID, $fundIDs, $date)
     $GroupKey = $methodSpecificID . "|" . $uniqueNum . "|" . $famID . "|" . $fundIDs . "|" . $date;
     $sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='" . $GroupKey . "'";
     $rsResults = RunQuery($sSQL);
-    list($numGroupKeys) = mysql_fetch_row($rsResults);
+    list($numGroupKeys) = mysqli_fetch_row($rsResults);
     if ($numGroupKeys) {
       ++$uniqueNum;
     } else {

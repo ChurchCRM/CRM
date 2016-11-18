@@ -51,16 +51,16 @@ $rsGroups = RunQuery($sSQL);
 // Get the list of custom person fields
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order";
 $rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysql_num_rows($rsCustomFields);
+$numCustomFields = mysqli_num_rows($rsCustomFields);
 
 $aDefaultClasses = explode(',', $sDirClassifications);
 $aDirRoleHead = explode(",",$sDirRoleHead);
 $aDirRoleSpouse = explode(",",$sDirRoleSpouse);
 $aDirRoleChild = explode(",",$sDirRoleChild);
 
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 if ($rsConfig) {
-    while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+    while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
         $$cfg_name = $cfg_value;
     }
 }
@@ -69,7 +69,7 @@ if ($rsConfig) {
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
 $rsSecurityGrp = RunQuery($sSQL);
 
-while ($aRow = mysql_fetch_array($rsSecurityGrp))
+while ($aRow = mysqli_fetch_array($rsSecurityGrp))
 {
 	extract ($aRow);
 	$aSecurityType[$lst_OptionID] = $lst_OptionName;
@@ -88,7 +88,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
             <select name="sDirClassifications[]" size="5" multiple>
             <option value="0">Unassigned</option>
             <?php
-                while ($aRow = mysql_fetch_array($rsClassifications)) {
+                while ($aRow = mysqli_fetch_array($rsClassifications)) {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
                     if (in_array($lst_OptionID,$aDefaultClasses)) echo " selected";
@@ -104,7 +104,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
             <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="GroupID[]" size="5" multiple>
                 <?php
-                while ($aRow = mysql_fetch_array($rsGroups))
+                while ($aRow = mysqli_fetch_array($rsGroups))
                 {
                     extract($aRow);
                     echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
@@ -124,7 +124,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
             <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="sDirRoleHead[]" size="5" multiple>
             <?php
-                while ($aRow = mysql_fetch_array($rsFamilyRoles)) {
+                while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
                     if (in_array($lst_OptionID, $aDirRoleHead)) echo " selected";
@@ -140,8 +140,8 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
             <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="sDirRoleSpouse[]" size="5" multiple>
             <?php
-                mysql_data_seek($rsFamilyRoles,0);
-                while ($aRow = mysql_fetch_array($rsFamilyRoles)) {
+                mysqli_data_seek($rsFamilyRoles,0);
+                while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
                     if (in_array($lst_OptionID, $aDirRoleSpouse)) echo " selected";
@@ -157,8 +157,8 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
             <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="sDirRoleChild[]" size="5" multiple>
             <?php
-                mysql_data_seek($rsFamilyRoles,0);
-                while ($aRow = mysql_fetch_array($rsFamilyRoles)) {
+                mysqli_data_seek($rsFamilyRoles,0);
+                while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
                     if (in_array($lst_OptionID, $aDirRoleChild)) echo " selected";
@@ -188,7 +188,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
             <input type="checkbox" Name="bDirPhoto" value="1" checked><?= gettext("Photos") ?><br>
          <?php
          if ($numCustomFields > 0) {
-            while ( $rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_ASSOC) ){
+            while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_ASSOC) ){
 					if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]]))
 					{ ?>
 		            <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>

@@ -55,7 +55,7 @@ $steps = array(
 $sSQL = "SELECT * FROM config_cfg ORDER BY cfg_category, cfg_order";
 $rsConfigs = RunQuery($sSQL);
 $iRowCount = 0;
-while ($aRow = mysql_fetch_array($rsConfigs)) {
+while ($aRow = mysqli_fetch_array($rsConfigs)) {
   $iRowCount++;
   extract($aRow);
   if ($cfg_name == "sHeader") {
@@ -159,7 +159,7 @@ $rsConfigs = RunQuery($sSQL);
                 $r = 1;
                 $step = "Step" . $r;
                 // List Individual Settings
-                while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_tooltip, $cfg_section, $cfg_category, $cfg_order, $cfg_data) = mysql_fetch_row($rsConfigs)) {
+                while (list($cfg_id, $cfg_name, $cfg_value, $cfg_type, $cfg_default, $cfg_tooltip, $cfg_section, $cfg_category, $cfg_order, $cfg_data) = mysqli_fetch_row($rsConfigs)) {
                 if ($cfg_category != $step) {
                 $step = $cfg_category;
                 ?>

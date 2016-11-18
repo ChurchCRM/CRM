@@ -128,7 +128,7 @@ $sSQLTotal = "SELECT COUNT(fr_ID) FROM fundraiser_fr $sCriteria";
 // Execute SQL statement and get total result
 $rsDep = RunQuery($sSQL);
 $rsTotal = RunQuery($sSQLTotal);
-list ($Total) = mysql_fetch_row($rsTotal);
+list ($Total) = mysqli_fetch_row($rsTotal);
 
 echo '<div align="center">';
 echo  '<form action="FindFundRaiser.php" method="get" name="ListNumber">';
@@ -227,7 +227,7 @@ echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n
 	</tr>";
 
 // Display Deposits
-while (list ($fr_ID, $fr_Date, $fr_Title) = mysql_fetch_row($rsDep))
+while (list ($fr_ID, $fr_Date, $fr_Title) = mysqli_fetch_row($rsDep))
 {
 	echo "<tr><td><a href='FundRaiserEditor.php?FundRaiserID=$fr_ID'>" . gettext("Edit") . "</td>";
 	echo "<td>$fr_ID</td>";

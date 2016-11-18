@@ -48,15 +48,15 @@ if ($sAction=='Delete'){
 <?php
 $sSQL = 'SELECT person_id, per_LastName FROM event_attend JOIN person_per ON person_per.per_id = event_attend.person_id WHERE event_id = '.$EventID.' ORDER by per_LastName, per_FirstName';
 $rsOpps = RunQuery($sSQL);
-$numAttRows = mysql_num_rows($rsOpps);
+$numAttRows = mysqli_num_rows($rsOpps);
 if($numAttRows!=0){
   $sRowClass = "RowColorA";
   for($na=0; $na<$numAttRows; $na++){
-    $attRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+    $attRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
     extract($attRow);
     $sSQL = 'SELECT per_Title, per_ID, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Email, per_HomePhone, per_Country, fam_HomePhone, fam_Email, fam_Country FROM person_per LEFT JOIN family_fam ON per_fam_id=fam_id WHERE per_ID = '.$person_id;
     $perOpps = RunQuery($sSQL);
-    $perRow = mysql_fetch_array($perOpps, MYSQL_BOTH);
+    $perRow = mysqli_fetch_array($perOpps, MYSQL_BOTH);
     extract($perRow);
     $sRowClass = AlternateRowStyle($sRowClass);
 

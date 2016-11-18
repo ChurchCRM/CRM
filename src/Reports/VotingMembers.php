@@ -40,9 +40,9 @@ class PDF_VotingMembers extends ChurchInfoReport {
 $pdf = new PDF_VotingMembers();
 
 // Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+	while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 		$pdf->$cfg_name = $cfg_value;
 	}
 }
@@ -60,7 +60,7 @@ $sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE 1 ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
 // Loop through families
-while ($aFam = mysql_fetch_array($rsFamilies)) {
+while ($aFam = mysqli_fetch_array($rsFamilies)) {
 	extract ($aFam);
 	
 	// Get pledge date ranges
@@ -76,7 +76,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 			WHERE plg_FamID = " . $fam_ID . " AND plg_PledgeOrPayment = 'Payment' AND
 				 plg_date >= '$startdate' AND plg_date < '$enddate'";
 		$rsPledges = RunQuery($sSQL);
-		list ($count) = mysql_fetch_row($rsPledges);
+		list ($count) = mysqli_fetch_row($rsPledges);
 		if ($count > 0)
 			$donation = "yes";
 	}
@@ -93,10 +93,10 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 				
 		$rsFamilyMembers = RunQuery($sSQL);
 
-		if (mysql_num_rows ($rsFamilyMembers) == 0)
+		if (mysqli_num_rows ($rsFamilyMembers) == 0)
 			$curY += 5;
 
-		while ($aMember = mysql_fetch_array($rsFamilyMembers)) {
+		while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
 			extract ($aMember);
 			$pdf->WriteAt ($pdf->leftX + 30, $curY, ($per_FirstName . " " . $per_LastName));
 			$curY += 5;

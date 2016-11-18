@@ -98,7 +98,7 @@ if (isset($_POST["Submit"]))
         // Get the data on this user so we can confirm the old password
         $sSQL = "SELECT * FROM user_usr, person_per ".
                 "WHERE per_ID = usr_per_ID AND usr_per_ID = " . $iPersonID;
-        extract(mysql_fetch_array(RunQuery($sSQL)));
+        extract(mysqli_fetch_array(RunQuery($sSQL)));
 
         // Build the array of bad passwords
         $aBadPasswords = explode(",", strtolower($sDisallowedPasswords));

@@ -70,7 +70,7 @@ if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add'
                       <?php
 							// Create the group select drop-down
 							echo "<select name=\"EventID\">";
-							while ($aRow = mysql_fetch_array($rsEvents)) {
+							while ($aRow = mysqli_fetch_array($rsEvents)) {
 									extract($aRow);
 									echo "<option value=\"".$event_id."\">".$event_title."</option>";
 							}
@@ -100,7 +100,7 @@ if (isset($_POST["Submit"]) && isset($_POST['EventID']) || isset($_POST['Cancel'
 	$iEventID = FilterInput($_POST["EventID"],'int');
 	$sSQL = "SELECT * FROM events_event WHERE Event_id ='".$iEventID."';";
 	$rsEvents = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsEvents);
+	$aRow = mysqli_fetch_array($rsEvents);
 	extract($aRow);
 ?>
 	<form method="post" action="Checkin.php" name="Checkin">
@@ -152,7 +152,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Verify']) && isset($_POST['child']
 
 	$sSQL = "SELECT * FROM events_event WHERE Event_id ='".$iEventID."';";
 	$rsEvents = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsEvents);
+	$aRow = mysqli_fetch_array($rsEvents);
 	extract($aRow);
 ?>
 	<form method="post" action="Checkin.php" name="Checkin">
@@ -255,7 +255,7 @@ if (isset($_POST["EventID"]) && isset($_POST['Action']) && isset($_POST['child']
 
 	$sSQL = "SELECT * FROM events_event WHERE Event_id ='".$iEventID."';";
 	$rsEvents = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsEvents);
+	$aRow = mysqli_fetch_array($rsEvents);
 	extract($aRow);
 
 	if(isset($_POST['Action']) ){
@@ -376,18 +376,18 @@ if (isset ($_POST["EventID"]) ) {
   $EventID = FilterInput($_POST["EventID"],'int');
   $sSQL = "SELECT * FROM event_attend WHERE event_id = '$EventID' ";				// ORDER BY person_id";
 	$rsOpps = RunQuery($sSQL);
-  $numAttRows = mysql_num_rows($rsOpps);
+  $numAttRows = mysqli_num_rows($rsOpps);
   if($numAttRows!=0){
 	  $sRowClass = "RowColorA";
 	  for($na=0; $na<$numAttRows; $na++){
-		$attRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+		$attRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
 		extract($attRow);
 
 	//Get Person who is checked in
 		$sSQL = "SELECT * FROM person_per WHERE per_ID = $person_id ";
 		$perOpps = RunQuery($sSQL);
-		if (mysql_num_rows ($perOpps) > 0) {
-			$perRow = mysql_fetch_array($perOpps, MYSQL_BOTH);
+		if (mysqli_num_rows ($perOpps) > 0) {
+			$perRow = mysqli_fetch_array($perOpps, MYSQL_BOTH);
 			extract($perRow);
 			$sPerson = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
 		} else {
@@ -399,8 +399,8 @@ if (isset ($_POST["EventID"]) ) {
 		if ($checkin_id > 0) {
 			$sSQL = "SELECT * FROM person_per WHERE per_ID = $checkin_id";
 			$perCheckin = RunQuery($sSQL);
-			if (mysql_num_rows ($perCheckin) > 0) {
-				$perCheckinRow = mysql_fetch_array($perCheckin, MYSQL_BOTH);
+			if (mysqli_num_rows ($perCheckin) > 0) {
+				$perCheckinRow = mysqli_fetch_array($perCheckin, MYSQL_BOTH);
 				extract($perCheckinRow);
 				$sCheckinby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
 			} else
@@ -415,8 +415,8 @@ if (isset ($_POST["EventID"]) ) {
 			$sSQL = "SELECT * FROM person_per WHERE per_ID = $checkout_id";
 			$perCheckout = RunQuery($sSQL);
 
-			if (mysql_num_rows ($perCheckout) > 0) {
-				$perCheckoutRow = mysql_fetch_array($perCheckout, MYSQL_BOTH);
+			if (mysqli_num_rows ($perCheckout) > 0) {
+				$perCheckoutRow = mysqli_fetch_array($perCheckout, MYSQL_BOTH);
 				extract($perCheckoutRow);
 				$sCheckoutby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
 			} else
@@ -470,10 +470,10 @@ function loadperson($iPersonID){
 				LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
 				WHERE a.per_ID = " . $iPersonID;
 	$rsPerson = RunQuery($sSQL);
-	if ((! $rsPerson) || mysql_num_rows ($rsPerson) == 0)
+	if ((! $rsPerson) || mysqli_num_rows ($rsPerson) == 0)
 		return;
 
-	extract(mysql_fetch_array($rsPerson));
+	extract(mysqli_fetch_array($rsPerson));
 
 	// Get the lists of custom person fields
 	$sSQL = "SELECT person_custom_master.* FROM person_custom_master
@@ -487,7 +487,7 @@ function loadperson($iPersonID){
 	// Get the custom field data for this person.
 	$sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $iPersonID;
 	$rsCustomData = RunQuery($sSQL);
-	$aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
+	$aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
 
 	// Get the notes for this person
 	$sSQL = "SELECT nte_Private, nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEdited, nte_EditedBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName ";

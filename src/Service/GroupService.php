@@ -49,7 +49,7 @@ class GroupService
     // Check if this group has special properties
     $sSQL = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $groupID;
     $rsTemp = RunQuery($sSQL);
-    $rowTemp = mysql_fetch_row($rsTemp);
+    $rowTemp = mysqli_fetch_row($rsTemp);
     $bHasProp = $rowTemp[0];
 
     if ($bHasProp == 'true') {
@@ -60,7 +60,7 @@ class GroupService
     // Reset any group specific property fields of type "Person from Group" with this person assigned
     $sSQL = "SELECT grp_ID, prop_Field FROM groupprop_master WHERE type_ID = 9 AND prop_Special = " . $groupID;
     $result = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_array($result)) {
+    while ($aRow = mysqli_fetch_array($result)) {
       $sSQL = "UPDATE groupprop_" . $aRow['grp_ID'] . " SET " . $aRow['prop_Field'] . " = NULL WHERE " . $aRow['prop_Field'] . " = " . $personID;
       RunQuery($sSQL);
     }
@@ -68,7 +68,7 @@ class GroupService
     // Reset any custom person fields of type "Person from Group" with this person assigned
     $sSQL = "SELECT custom_Field FROM person_custom_master WHERE type_ID = 9 AND custom_Special = " . $groupID;
     $result = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_array($result)) {
+    while ($aRow = mysqli_fetch_array($result)) {
       $sSQL = "UPDATE person_custom SET " . $aRow['custom_Field'] . " = NULL WHERE " . $aRow['custom_Field'] . " = " . $personID;
       RunQuery($sSQL);
     }
@@ -94,7 +94,7 @@ class GroupService
       // No, get the Default Role for this Group
       $sSQL = "SELECT grp_DefaultRole FROM group_grp WHERE grp_ID = " . $iGroupID;
       $rsRoleID = RunQuery($sSQL);
-      $Row = mysql_fetch_row($rsRoleID);
+      $Row = mysqli_fetch_row($rsRoleID);
       $iRoleID = $Row[0];
     }
 
@@ -104,7 +104,7 @@ class GroupService
       // Check if this group has special properties
       $sSQL = "SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = " . $iGroupID;
       $rsTemp = RunQuery($sSQL);
-      $rowTemp = mysql_fetch_row($rsTemp);
+      $rowTemp = mysqli_fetch_row($rsTemp);
       $bHasProp = $rowTemp[0];
 
       if ($bHasProp == 'true') {
@@ -124,9 +124,9 @@ class GroupService
   function search($searchTerm)
   {
     $sSQL = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%' . $searchTerm . '%\'  order by grp_Name LIMIT 15';
-    $result = mysql_query($sSQL);
+    $result = mysqli_query($cnInfoCentral, $sSQL);
     $return = array();
-    while ($row = mysql_fetch_array($result)) {
+    while ($row = mysqli_fetch_array($result)) {
       array_push($return, $this->getGroups($row['grp_ID']));
     }
     return $return;
@@ -172,16 +172,16 @@ class GroupService
     $rsList = RunQuery($sSQL);
 
     // Validate that this list ID is really for a group roles list. (for security)
-    if(mysql_num_rows($rsList) == 0)
+    if(mysqli_num_rows($rsList) == 0)
     {
       throw new \Exception("invalid request");
     }
 
-    while ($row = mysql_fetch_assoc( $rsList ))
+    while ($row = mysqli_fetch_assoc( $rsList ))
     {
       array_push($groupRoles,$row);
     }
-    
+
     return $groupRoles;
   }
 
@@ -219,7 +219,7 @@ class GroupService
   {
     //Look up the default role name
     $sSQL = "SELECT lst_OptionName from list_lst INNER JOIN group_grp on (group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_DefaultRole = list_lst.lst_OptionID) WHERE group_grp.grp_ID = " . $groupID;
-    $aDefaultRole = mysql_fetch_array(RunQuery($sSQL));
+    $aDefaultRole = mysqli_fetch_array(RunQuery($sSQL));
     return $aDefaultRole[0];
   }
 
@@ -232,7 +232,7 @@ class GroupService
                    AND list_lst.lst_OptionID = ' . $groupRoleID;
 
     $rsPropList = RunQuery($sSQL);
-    $rowOrder = mysql_fetch_array($rsPropList);
+    $rowOrder = mysqli_fetch_array($rsPropList);
     return $rowOrder[0];
   }
 
@@ -244,7 +244,7 @@ class GroupService
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
                  WHERE group_grp.grp_ID = "' . $groupID . '"';
     $rsPropList = RunQuery($sSQL);
-    $numRows = mysql_num_rows($rsPropList);
+    $numRows = mysqli_num_rows($rsPropList);
     // Make sure we never delete the only option
     if ($numRows > 1) {
       $thisSequence = $this->getGroupRoleOrder($groupID, $groupRoleID);
@@ -267,7 +267,7 @@ class GroupService
       // This seems backwards, but grp_RoleListID is unique, having a 1-1 relationship with grp_ID.
       $sSQL = "SELECT grp_ID,grp_DefaultRole FROM group_grp WHERE grp_ID = $groupID";
       $rsTemp = RunQuery($sSQL);
-      $aTemp = mysql_fetch_array($rsTemp);
+      $aTemp = mysqli_fetch_array($rsTemp);
 
       $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = 1 WHERE p2g2r_grp_ID = $groupID AND p2g2r_rle_ID = $groupRoleID";
       RunQuery($sSQL);
@@ -315,23 +315,23 @@ class GroupService
                  WHERE group_grp.grp_ID = "' . $groupID . '" AND
                  lst_OptionName = "' . $groupRoleName . '"';
       $rsCount = RunQuery($sSQL);
-      if (mysql_num_rows($rsCount) > 0) {
+      if (mysqli_num_rows($rsCount) > 0) {
         throw new \Exception ("Field " . $groupRoleName . " already exists");
       } else {
         $sSQL = "SELECT grp_RoleListID FROM group_grp WHERE grp_ID = $groupID";
         $rsTemp = RunQuery($sSQL);
-        $listIDTemp = mysql_fetch_array($rsTemp);
+        $listIDTemp = mysqli_fetch_array($rsTemp);
         $listID = $listIDTemp[0];
         // Get count of the options
         $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
         $rsTemp = RunQuery($sSQL);
-        $numRows = mysql_num_rows($rsTemp);
+        $numRows = mysqli_num_rows($rsTemp);
         $newOptionSequence = $numRows + 1;
 
         // Get the new OptionID
         $sSQL = "SELECT MAX(lst_OptionID) FROM list_lst WHERE lst_ID = $listID";
         $rsTemp = RunQuery($sSQL);
-        $aTemp = mysql_fetch_array($rsTemp);
+        $aTemp = mysqli_fetch_array($rsTemp);
         $newOptionID = $aTemp[0] + 1;
 
         // Insert into the appropriate options table
@@ -356,7 +356,7 @@ class GroupService
   {
     //Get the count of members
     $sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = ' . $groupID;
-    $rsTotalMembers = mysql_fetch_array(RunQuery($sSQL));
+    $rsTotalMembers = mysqli_fetch_array(RunQuery($sSQL));
     return $rsTotalMembers[0];
   }
 
@@ -366,7 +366,7 @@ class GroupService
     // Get Group Types for the drop-down
     $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 3 ORDER BY lst_OptionSequence";
     $rsGroupTypes = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_assoc($rsGroupTypes)) {
+    while ($aRow = mysqli_fetch_assoc($rsGroupTypes)) {
       array_push($groupTypes, $aRow);
     }
     return $groupTypes;
@@ -377,7 +377,7 @@ class GroupService
     $templateGroups = array();
     $sSQL = "SELECT * FROM group_grp WHERE grp_RoleListID > 0 ORDER BY grp_Name";
     $rsGroupRoleSeed = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_assoc($rsGroupRoleSeed)) {
+    while ($aRow = mysqli_fetch_assoc($rsGroupRoleSeed)) {
       array_push($templateGroups, $aRow);
     }
     return $templateGroups;
@@ -400,7 +400,7 @@ class GroupService
                           UNIQUE KEY per_ID (per_ID)
                         ) ENGINE=MyISAM;";
     RunQuery($sSQLp);
-    
+
     $groupMembers = $this->getGroupMembers($groupID);
 
     foreach ($groupMembers as $member) {
@@ -418,10 +418,10 @@ class GroupService
     // need to delete the master index stuff
     $sSQLp = "DELETE FROM groupprop_master WHERE grp_ID = " . $groupID;
     RunQuery($sSQLp);
-    
+
      $sSQL = "UPDATE group_grp SET grp_hasSpecialProps = false
             WHERE grp_ID = " . $groupID;
-    
+
      RunQuery($sSQL);
   }
 
@@ -433,7 +433,7 @@ class GroupService
     }
     //Get a new Role List ID
     $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
-    $aTemp = mysql_fetch_array(RunQuery($sSQL));
+    $aTemp = mysqli_fetch_array(RunQuery($sSQL));
     if ($aTemp[0] > 9)
       $newListID = $aTemp[0] + 1;
     else
@@ -444,18 +444,18 @@ class GroupService
       else
       $sUseProps = 'false'; */
     //$sSQL = "INSERT INTO group_grp (grp_Name, grp_Type, grp_Description, grp_hasSpecialProps, grp_DefaultRole, grp_RoleListID) VALUES ('" . $groupData->groupName . "', " . $groupData->groupType . ", '" . $groupData->description . "', '" . $sUseProps . "', '1', " . $newListID . ")";
-    $sSQL = "INSERT INTO group_grp (grp_Name, grp_DefaultRole, grp_RoleListID) VALUES ('" . mysql_real_escape_string($groupName) . "', '1', " . $newListID . ")";
+    $sSQL = "INSERT INTO group_grp (grp_Name, grp_DefaultRole, grp_RoleListID) VALUES ('" . mysqli_real_escape_string($cnInfoCentral, $groupName) . "', '1', " . $newListID . ")";
 
-    $result = mysql_query($sSQL);
+    $result = mysqli_query($cnInfoCentral, $sSQL);
     //Get the key back
-    $iGroupID = mysql_insert_id();
+    $iGroupID = mysqli_insert_id($cnInfoCentral);
 
     if (false) { // ($cloneGroupRole) && ($seedGroupID>0)
       $sSQL = "SELECT list_lst.* FROM list_lst, group_grp WHERE group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_id = $seedGroupID ORDER BY list_lst.lst_OptionID";
       $rsRoleSeed = RunQuery($sSQL);
-      while ($aRow = mysql_fetch_array($rsRoleSeed)) {
+      while ($aRow = mysqli_fetch_array($rsRoleSeed)) {
         extract($aRow);
-        $useOptionName = mysql_real_escape_string($lst_OptionName);
+        $useOptionName = mysqli_real_escape_string($cnInfoCentral, $lst_OptionName);
         $sSQL = "INSERT INTO list_lst VALUES ($newListID, $lst_OptionID, $lst_OptionSequence, '$useOptionName')";
         RunQuery($sSQL);
       }
@@ -472,7 +472,7 @@ class GroupService
     requireUserGroupMembership("bManageGroups");
     $sSQL = "SELECT grp_hasSpecialProps, grp_RoleListID FROM group_grp WHERE grp_ID =" . $iGroupID;
     $rsTemp = RunQuery($sSQL);
-    $aTemp = mysql_fetch_array($rsTemp);
+    $aTemp = mysqli_fetch_array($rsTemp);
     $hasSpecialProps = $aTemp[0];
     $iRoleListID = $aTemp[1];
 
@@ -488,7 +488,7 @@ class GroupService
     $sSQL = "SELECT pro_ID FROM property_pro WHERE pro_Class='g'";
     $rsProps = RunQuery($sSQL);
 
-    while ($aRow = mysql_fetch_row($rsProps)) {
+    while ($aRow = mysqli_fetch_row($rsProps)) {
       $sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $aRow[0] . " AND r2p_record_ID = " . $iGroupID;
       RunQuery($sSQL);
     }
@@ -518,9 +518,9 @@ class GroupService
       $whereClause = "";
     }
     $fetch = 'SELECT * FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type ' . $whereClause . ' ORDER BY grp_Name ';
-    $result = mysql_query($fetch);
+    $result = mysqli_query($cnInfoCentral, $fetch);
     $return = array();
-    while ($row = mysql_fetch_array($result)) {
+    while ($row = mysqli_fetch_array($result)) {
       $totalMembers = $this->getGroupTotalMembers($row['grp_ID']);
       $values['id'] = $row['grp_ID'];
       $values['groupName'] = $row['grp_Name'];
@@ -563,8 +563,8 @@ class GroupService
         person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID
 
         WHERE p2g2r_grp_ID =" . $groupID . " " . $whereClause;
-    $result = mysql_query($sSQL);
-    while ($row = mysql_fetch_assoc($result)) {
+    $result = mysqli_query($cnInfoCentral, $sSQL);
+    while ($row = mysqli_fetch_assoc($result)) {
       $dbPerson = PersonQuery::create()->findPk($row['p2g2r_per_ID']);
       $person['displayName'] = $dbPerson->getFullName();
       $person['groupRole'] = $row['lst_OptionName'];
@@ -587,15 +587,15 @@ class GroupService
         person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID
 
         WHERE p2g2r_grp_ID =" . $groupID;
-    $result = mysql_query($sSQL);
-    while ($row = mysql_fetch_assoc($result)) {
+    $result = mysqli_query($cnInfoCentral, $sSQL);
+    while ($row = mysqli_fetch_assoc($result)) {
       $person = array( "id" => $row['p2g2r_per_ID']);
       array_push($members, $person);
     }
     return $members;
   }
 
- 
+
   function copyCartToGroup()
   {
     requireUserGroupMembership("bManageGroups");

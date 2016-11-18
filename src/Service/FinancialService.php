@@ -147,19 +147,19 @@ class FinancialService
                                     res_reference,
                                     res_status)
                                 VALUES (" .
-        "'" . mysql_real_escape_string($response->response_reason_code) . "'," .
-        "'" . mysql_real_escape_string($response->response_reason_text) . "'," .
-        "'" . mysql_real_escape_string($response->response_code) . "'," .
-        "'" . mysql_real_escape_string($response->response_subcode) . "'," .
-        "'" . mysql_real_escape_string($response->authorization_code) . "'," .
-        "'" . mysql_real_escape_string($response->avs_response) . "'," .
-        "'" . mysql_real_escape_string($response->transaction_id) . "')";
+        "'" . mysqli_real_escape_string($cnInfoCentral, $response->response_reason_code) . "'," .
+        "'" . mysqli_real_escape_string($cnInfoCentral, $response->response_reason_text) . "'," .
+        "'" . mysqli_real_escape_string($cnInfoCentral, $response->response_code) . "'," .
+        "'" . mysqli_real_escape_string($cnInfoCentral, $response->response_subcode) . "'," .
+        "'" . mysqli_real_escape_string($cnInfoCentral, $response->authorization_code) . "'," .
+        "'" . mysqli_real_escape_string($cnInfoCentral, $response->avs_response) . "'," .
+        "'" . mysqli_real_escape_string($cnInfoCentral, $response->transaction_id) . "')";
       RunQuery($sSQL);
 
       // Now get the ID for the newly created record
       $sSQL = "SELECT MAX(res_ID) AS iResID FROM result_res";
       $rsLastEntry = RunQuery($sSQL);
-      extract(mysql_fetch_array($rsLastEntry));
+      extract(mysqli_fetch_array($rsLastEntry));
       $plg_aut_ResultID = $iResID;
 
       // Poke the ID of the new result record back into this pledge (payment) record
@@ -247,17 +247,17 @@ class FinancialService
     if ($plg_aut_ResultID) {
       // Already have a result record, update it.
 
-      $sSQL = "UPDATE result_res SET res_echotype2='" . mysql_real_escape_string($errStr) . "' WHERE res_ID=" . $plg_aut_ResultID;
+      $sSQL = "UPDATE result_res SET res_echotype2='" . mysqli_real_escape_string($cnInfoCentral, $errStr) . "' WHERE res_ID=" . $plg_aut_ResultID;
       RunQuery($sSQL);
     } else {
       // Need to make a new result record
-      $sSQL = "INSERT INTO result_res (res_echotype2) VALUES ('" . mysql_real_escape_string($errStr) . "')";
+      $sSQL = "INSERT INTO result_res (res_echotype2) VALUES ('" . mysqli_real_escape_string($cnInfoCentral, $errStr) . "')";
       RunQuery($sSQL);
 
       // Now get the ID for the newly created record
       $sSQL = "SELECT MAX(res_ID) AS iResID FROM result_res";
       $rsLastEntry = RunQuery($sSQL);
-      extract(mysql_fetch_array($rsLastEntry));
+      extract(mysqli_fetch_array($rsLastEntry));
       $plg_aut_ResultID = $iResID;
 
       // Poke the ID of the new result record back into this pledge (payment) record
@@ -284,7 +284,7 @@ class FinancialService
       if ($routeAndAccount) {
         $sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
         $rsFam = RunQuery($sSQL);
-        extract(mysql_fetch_array($rsFam));
+        extract(mysqli_fetch_array($rsFam));
         $iCheckNo = $micrObj->FindCheckNo($tScanString);
         return '{"ScanString": "' . $tScanString . '" , "RouteAndAccount": "' . $routeAndAccount . '" , "CheckNumber": "' . $iCheckNo . '" ,"fam_ID": "' . $fam_ID . '" , "fam_Name": "' . $fam_Name . '"}';
       } else {
@@ -312,7 +312,7 @@ class FinancialService
       RunQuery($sSQL);
       $sSQL = "SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep";
       $rsDepositSlipID = RunQuery($sSQL);
-      $iDepositSlipID = mysql_fetch_array($rsDepositSlipID)[0];
+      $iDepositSlipID = mysqli_fetch_array($rsDepositSlipID)[0];
     }
     $_SESSION['iCurrentDeposit'] = $iDepositSlipID;
     return $this->getDeposits($iDepositSlipID);
@@ -328,7 +328,7 @@ class FinancialService
     // Get deposit total
     $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' " . $sqlClause;
     $rsDepositTotal = RunQuery($sSQL);
-    list ($deposit_total) = mysql_fetch_row($rsDepositTotal);
+    list ($deposit_total) = mysqli_fetch_row($rsDepositTotal);
     return $deposit_total;
   }
 
@@ -357,7 +357,7 @@ class FinancialService
     $rsDep = RunQuery($sSQL);
 
     $payments = array();
-    while ($aRow = mysql_fetch_array($rsDep)) {
+    while ($aRow = mysqli_fetch_array($rsDep)) {
       extract($aRow);
       $values = new \stdClass();
       $values->plg_plgID = $plg_plgID;
@@ -408,9 +408,9 @@ class FinancialService
             OR
             plg_CheckNo LIKE \'%' . $searchTerm . '%\'
             LIMIT 15';
-    $result = mysql_query($fetch);
+    $result = mysqli_query($cnInfoCentral, $fetch);
     $deposits = array();
-    while ($row = mysql_fetch_array($result)) {
+    while ($row = mysqli_fetch_array($result)) {
       $row_array['id'] = $row['dep_ID'];
       $row_array['displayName'] = $row['dep_Comment'] . " - " . $row['dep_Date'];
       $row_array['uri'] = $this->getViewURI($row['dep_ID']);
@@ -430,9 +430,9 @@ class FinancialService
             WHERE 
             plg_CheckNo LIKE \'%' . $searchTerm . '%\'
             LIMIT 15';
-    $result = mysql_query($fetch);
+    $result = mysqli_query($cnInfoCentral, $fetch);
     $deposits = array();
-    while ($row = mysql_fetch_array($result)) {
+    while ($row = mysqli_fetch_array($result)) {
       $row_array['id'] = $row['dep_ID'];
       $row_array['displayName'] = "Check #" . $row['plg_CheckNo'] . ": " . $this->familyService->getFamilyName($row['plg_FamID']) . " - " . $row['dep_Date'];
       $row_array['uri'] = $this->getPaymentViewURI($row['plg_GroupKey']);
@@ -499,7 +499,7 @@ class FinancialService
                  WHERE plg_CheckNo = " . $checkNumber . " AND
                  plg_FamID = " . $fam_ID;
     $rCount = RunQuery($sSQL);
-    return mysql_fetch_array($rCount)[0];
+    return mysqli_fetch_array($rCount)[0];
   }
 
   function validateChecks($payment)
@@ -629,7 +629,7 @@ class FinancialService
     $rsKeys = RunQuery($sSQL);
     $payment = new \stdClass();
     $payment->funds = array();
-    while ($aRow = mysql_fetch_array($rsKeys)) {
+    while ($aRow = mysqli_fetch_array($rsKeys)) {
       extract($aRow);
       $payment->Family = $FamilyService->getFamilyStringByID($plg_FamID);
       $payment->Date = $plg_date;
@@ -653,9 +653,9 @@ class FinancialService
 
   private function generateBankDepositSlip($thisReport)
   {
-    $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+    $rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
     if ($rsConfig) {
-      while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+      while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
         $$cfg_name = $cfg_value;
       }
     }
@@ -766,7 +766,7 @@ class FinancialService
 
     $totalAmount = 0;
 
-    //while ($aRow = mysql_fetch_array($rsPledges))
+    //while ($aRow = mysqli_fetch_array($rsPledges))
     foreach ($thisReport->payments as $payment) {
       $thisReport->pdf->SetFont('Times', '', 10);
 
@@ -904,7 +904,7 @@ class FinancialService
                  pdem_denominationID = " . $currencyID;
     $rscurrencyDenomination = RunQuery($sSQL);
 
-    return mysql_fetch_array($rscurrencyDenomination)[0];
+    return mysqli_fetch_array($rscurrencyDenomination)[0];
   }
 
   function getCurrency() {
@@ -912,8 +912,8 @@ class FinancialService
     // Get the list of Currency denominations
     $sSQL = "SELECT * FROM currency_denominations_cdem";
     $rscurrencyDenomination = RunQuery($sSQL);
-    mysql_data_seek($rscurrencyDenomination, 0);
-    while ($row = mysql_fetch_array($rscurrencyDenomination)) {
+    mysqli_data_seek($rscurrencyDenomination, 0);
+    while ($row = mysqli_fetch_array($rscurrencyDenomination)) {
       $currency = new \stdClass();
       $currency->id = $row['cdem_denominationID'];
       $currency->Name = $row['cdem_denominationName'];
@@ -931,8 +931,8 @@ class FinancialService
     $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun";
     $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
     $rsFunds = RunQuery($sSQL);
-    mysql_data_seek($rsFunds, 0);
-    while ($aRow = mysql_fetch_array($rsFunds)) {
+    mysqli_data_seek($rsFunds, 0);
+    while ($aRow = mysqli_fetch_array($rsFunds)) {
       $fund = new \stdClass();
       $fund->ID = $aRow['fun_ID'];
       $fund->Name = $aRow['fun_Name'];

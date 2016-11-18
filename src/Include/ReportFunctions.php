@@ -27,20 +27,20 @@ function MakeSalutationUtility($famID)
   $sSQL = "SELECT * FROM family_fam WHERE fam_ID=" . $famID;
   $rsFamInfo = RunQuery($sSQL);
 
-  if (mysql_num_rows($rsFamInfo) == 0)
+  if (mysqli_num_rows($rsFamInfo) == 0)
     return "Invalid Family" . $famID;
 
-  $aFam = mysql_fetch_array($rsFamInfo);
+  $aFam = mysqli_fetch_array($rsFamInfo);
   extract($aFam);
 
   $sSQL = "SELECT * FROM person_per WHERE per_fam_ID=" . $famID . " ORDER BY per_fmr_ID";
   $rsMembers = RunQuery($sSQL);
-  $numMembers = mysql_num_rows($rsMembers);
+  $numMembers = mysqli_num_rows($rsMembers);
 
   $numChildren = 0;
   $indNotChild = 0;
   for ($ind = 0; $ind < $numMembers; $ind++) {
-    $member = mysql_fetch_array($rsMembers);
+    $member = mysqli_fetch_array($rsMembers);
     extract($member);
     if ($per_fmr_ID == 3) {
       $numChildren++;
@@ -55,11 +55,11 @@ function MakeSalutationUtility($famID)
     extract($aNotChildren[0]);
     return ($per_FirstName . " " . $per_LastName);
   } else if ($numNotChildren == 2) {
-    $firstMember = mysql_fetch_array($rsMembers);
+    $firstMember = mysqli_fetch_array($rsMembers);
     extract($aNotChildren[0]);
     $firstFirstName = $per_FirstName;
     $firstLastName = $per_LastName;
-    $secondMember = mysql_fetch_array($rsMembers);
+    $secondMember = mysqli_fetch_array($rsMembers);
     extract($aNotChildren[1]);
     $secondFirstName = $per_FirstName;
     $secondLastName = $per_LastName;

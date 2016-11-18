@@ -20,9 +20,9 @@ class FamilyService
   function search($searchTerm)
   {
     $fetch = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE family_fam.fam_Name LIKE \'%' . $searchTerm . '%\' LIMIT 15';
-    $result = mysql_query($fetch);
+    $result = mysqli_query($cnInfoCentral, $fetch);
     $families = array();
-    while ($row = mysql_fetch_array($result)) {
+    while ($row = mysqli_fetch_array($result)) {
       $row_array['id'] = $row['fam_ID'];
       $row_array['familyName'] = $row['fam_Name'];
       $row_array['street'] = $row['fam_Address1'];
@@ -46,7 +46,7 @@ class FamilyService
     $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
     $rsLastFamilies = RunQuery($sSQL);
     $families = array();
-    while ($row = mysql_fetch_array($rsLastFamilies)) {
+    while ($row = mysqli_fetch_array($rsLastFamilies)) {
       $row_array['id'] = $row['fam_ID'];
       $row_array['name'] = $row['fam_Name'];
       $row_array['address'] = $row['fam_Address1'];
@@ -90,7 +90,7 @@ class FamilyService
   {
     $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID=" . $famID;
     $rsFamilies = RunQuery($sSQL);
-    $aRow = mysql_fetch_array($rsFamilies);
+    $aRow = mysqli_fetch_array($rsFamilies);
     try {
       extract($aRow);
       $name = $fam_Name;
@@ -110,7 +110,7 @@ class FamilyService
     $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_Envelope=" . $iEnvelope;
     $rsFamilies = RunQuery($sSQL);
     $familyArray = array();
-    while ($aRow = mysql_fetch_array($rsFamilies)) {
+    while ($aRow = mysqli_fetch_array($rsFamilies)) {
       extract($aRow);
       $name = $this->getFamilyName($fam_ID);
       $familyArray = array("fam_ID" => $fam_ID, "Name" => $name);
@@ -123,7 +123,7 @@ class FamilyService
     $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID=" . $fam_ID;
     $rsFamilies = RunQuery($sSQL);
     $familyArray = array();
-    while ($aRow = mysql_fetch_array($rsFamilies)) {
+    while ($aRow = mysqli_fetch_array($rsFamilies)) {
       extract($aRow);
       $name = $fam_Name;
       if (isset ($aHead[$fam_ID])) {

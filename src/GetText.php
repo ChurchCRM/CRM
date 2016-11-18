@@ -19,7 +19,7 @@ require "Include/Functions.php";
 
 $sSQL = "SELECT * FROM events_event WHERE event_id = ".$_GET['EID'];
 $rsOpps = RunQuery($sSQL);
-$aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH) or die(mysql_error());
+$aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH) or die(mysqli_error($cnInfoCentral));
 extract($aRow);
 $aEventID = $event_id;
 $aEventTitle = $event_title;
