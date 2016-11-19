@@ -123,6 +123,7 @@ class GroupService
    */
   function search($searchTerm)
   {
+    global $cnInfoCentral;
     $sSQL = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%' . $searchTerm . '%\' OR  grp_Description LIKE \'%' . $searchTerm . '%\' OR lst_OptionName LIKE \'%' . $searchTerm . '%\'  order by grp_Name LIMIT 15';
     $result = mysqli_query($cnInfoCentral, $sSQL);
     $return = array();

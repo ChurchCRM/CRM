@@ -272,7 +272,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmail
             <th>% <?= gettext("of Members") ?></th>
             <th style="width: 40px"><?= gettext("Count") ?></th>
           </tr>
-          <? foreach ($demographicStats as $key => $value) { ?>
+          <?php foreach ($demographicStats as $key => $value) { ?>
             <tr>
               <td><?= gettext($key) ?></td>
               <td>
@@ -283,7 +283,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmail
               </td>
               <td><span class="badge bg-green"><?= $value ?></span></td>
             </tr>
-          <? } ?>
+          <?php } ?>
         </table>
       </div>
     </div>
@@ -307,7 +307,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmail
           <th>% <?= gettext("of Members") ?></th>
           <th style="width: 40px"><?= gettext("Count") ?></th>
         </tr>
-        <? foreach ($personStats as $key => $value) { ?>
+        <?php foreach ($personStats as $key => $value) { ?>
           <tr>
             <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
             <td>
@@ -318,7 +318,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmail
             </td>
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
-        <? } ?>
+        <?php } ?>
       </table>
       <!-- /.box-body-->
     </div>

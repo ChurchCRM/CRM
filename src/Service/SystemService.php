@@ -35,6 +35,7 @@ class SystemService
 
   function playbackSQLtoDatabase($fileName)
   {
+    global $cnInfoCentral;
     $query = '';
     $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($restoreQueries as $line) {

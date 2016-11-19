@@ -190,7 +190,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <img src="<?= $sRootPath . "/api/persons/" .$iPersonID. "/photo" ?>" alt="" class="profile-user-img img-responsive img-circle"/>
 
         <h3 class="profile-username text-center">
-          <? if ($person->isMale()) { ?>
+          <?php if ($person->isMale()) { ?>
           <i class="fa fa-male"></i>
           <?php } else { ?>
             <i class="fa fa-female"></i>
