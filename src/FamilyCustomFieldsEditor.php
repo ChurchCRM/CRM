@@ -159,20 +159,21 @@ else
 
             if (!$bDuplicateNameError)
             {
+              global $cnInfoCentral;
                 // Find the highest existing field number in the table to
                 // determine the next free one.
                 // This is essentially an auto-incrementing system where
                 // deleted numbers are not re-used.
                 $fields = mysqli_query($cnInfoCentral, "SHOW COLUMNS FROM family_custom");
-                $last = mysqli_num_fields($fields) - 1;
-
+                $last = mysqli_num_rows($fields) - 1;
                 // Set the new field number based on the highest existing.
                 // Chop off the "c" at the beginning of the old one's name.
                 // The "c#" naming scheme is necessary because MySQL 3.23
                 // doesn't allow numeric-only field (table column) names.
+                $fields = mysqli_query($cnInfoCentral, "SELECT * FROM family_custom");
                 $fieldInfo = mysqli_fetch_field_direct($fields, $last);
                 $newFieldNum = substr($fieldInfo->name, 1) + 1;
-
+                
                 if ($newFieldSide == 0)
                     $newFieldSide = 'left';
                 else
