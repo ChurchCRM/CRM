@@ -19,6 +19,22 @@ echo "=========================================================="
 
 sudo service mongod stop
 
+if [ $1 == 'php7' ]; then
+  echo "=========================================================="
+  echo "================   Configuring PHP7.0 ===================="
+  echo "=========================================================="
+  sudo service apache2 stop
+  sudo add-apt-repository -y ppa:ondrej/php
+  sudo apt-get update
+  sudo apt-get install php7.0
+  sudo apt-get install php7.0-mysql
+  sudo apt-get install php7.0-xml
+  sudo a2dismod php5
+  sudo a2enmod php7.0
+  sudo service apache2 start
+fi
+
+
 echo "=========================================================="
 echo "==================   Apache Setup  ======================="
 echo "=========================================================="
