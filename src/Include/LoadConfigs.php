@@ -171,7 +171,7 @@ if (SystemConfig::getValue("sTimeZone")) {
   date_default_timezone_set(SystemConfig::getValue("sTimeZone"));
 }
 
-$localeInfo = new LocaleInfo($sLanguage);
+$localeInfo = new LocaleInfo(SystemConfig::getValue("sLanguage"));
 setlocale(LC_ALL, $localeInfo->getLocale());
 
 // Get numeric and monetary locale settings.

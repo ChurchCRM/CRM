@@ -25,6 +25,7 @@ use FPDF;
 
 class ChurchInfoReport extends FPDF
 {
+  use ChurchCRM\dto\SystemConfig;
   //
   // Paper size for all PDF report documents
   // Sizes: A3, A4, A5, Letter, Legal, or a 2-element array for custom size
@@ -35,9 +36,9 @@ class ChurchInfoReport extends FPDF
 
   function StripPhone($phone)
   {
-    if (substr($phone, 0, 3) == $this->sHomeAreaCode)
+    if (substr($phone, 0, 3) == SystemConfig::getValue("sHomeAreaCode"))
       $phone = substr($phone, 3, strlen($phone) - 3);
-    if (substr($phone, 0, 5) == ("(" . $this->sHomeAreaCode . ")"))
+    if (substr($phone, 0, 5) == ("(" . SystemConfig::getValue("sHomeAreaCode") . ")"))
       $phone = substr($phone, 5, strlen($phone) - 5);
     if (substr($phone, 0, 1) == "-")
       $phone = substr($phone, 1, strlen($phone) - 1);

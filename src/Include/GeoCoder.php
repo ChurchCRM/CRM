@@ -201,12 +201,11 @@ class AddressLatLon
 
   function AddressLatLon()
   {
-    global $sGeocoderID, $sGeocoderPW, $bHaveXML;
-    if (!$bHaveXML)
+    if (!SystemConfig::getValue("bHaveXML"))
       return;
-    if (isset ($sGeocoderID) && $sGeocoderID != "") { // Use credentials if available for unthrottled access to the geocoder server
+    if (isset (SystemConfig::getValue("sGeocoderID")) && SystemConfig::getValue("sGeocoderID") != "") { // Use credentials if available for unthrottled access to the geocoder server
       $this->client = new XML_RPC_Client('/member/service/xmlrpc', 'rpc.geocoder.us');
-      $this->client->SetCredentials($sGeocoderID, $sGeocoderPW);
+      $this->client->SetCredentials(SystemConfig::getValue("sGeocoderID"), SystemConfig::getValue("sGeocoderPW"));
     } else {
       $this->client = new XML_RPC_Client('/service/xmlrpc', 'rpc.geocoder.us');
     }
@@ -222,13 +221,12 @@ class AddressLatLon
 
   function Lookup()
   {
-    global $bHaveXML;
-    global $bUseGoogleGeocode;
+
     global $googleMapObj;
 
     $address = $this->street . "," . $this->city . "," . $this->state . "," . $this->zip;
 
-    if ($bUseGoogleGeocode) {
+    if (SystemConfig::getValue("bUseGoogleGeocode")) {
       //$geocode = $googleMapObj->geoGetCoords($address);
       $geocode = $googleMapObj->getGeocode($address);
 
@@ -237,7 +235,7 @@ class AddressLatLon
         $this->lon = $geocode['lon'];
       }
     } else {
-      if (!$bHaveXML)
+      if (!SystemConfig::getValue("bHaveXML"))
         return (-4);
 
       $params = array(new XML_RPC_Value($address, 'string'));

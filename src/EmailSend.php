@@ -36,6 +36,8 @@ $bEmailLog = FALSE;
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemConfig;
+
 $iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
 
 // Security: Both global and user permissions needed to send email.
@@ -339,7 +341,7 @@ $bHavePHPMailerClass = FALSE;
 $bHaveSMTPClass = FALSE;
 $bHavePHPMailerLanguage = FALSE;
 
-$sLangCode = substr($sLanguage, 0, 2); // Strip the language code from the beginning of the language_country code
+$sLangCode = substr(SystemConfig::getValue("sLanguage"), 0, 2); // Strip the language code from the beginning of the language_country code
 
 $sPHPMailerClass = $sPHPMailerPath.'class.phpmailer.php';
 if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {

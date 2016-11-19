@@ -3,6 +3,8 @@ require ("Include/Config.php");
 require ("Include/Functions.php");
 require ("Include/ReportFunctions.php");
 
+use ChurchCRM\dto\SystemConfig;
+
 //Set the page title
 $sPageTitle = gettext("Family View");
 
@@ -45,7 +47,7 @@ if ($nChurchLatitude == "") {
     <?= gettext("Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.") ?>
   </div>
 <?php } else {
-  if ($sGoogleMapKey == "") {
+  if (SystemConfig::getValue("sGoogleMapKey") == "") {
 ?>
     <div class="callout callout-warning">
       <?= gettext("Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.") ?>
@@ -53,7 +55,7 @@ if ($nChurchLatitude == "") {
 <?php }
   ?>
 
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= $sGoogleMapKey ?>&sensor=false"></script>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
 
 <div class="box box-body">
     <div class="col-lg-12">
@@ -116,7 +118,7 @@ if ($nChurchLatitude == "") {
                 $sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( $sDirRoleHead )";
                 $sSQL .= $appendToQuery;
                 $rsFams = RunQuery ($sSQL);
-                $markerIcons =  explode ( "," , $sGMapIcons );
+                $markerIcons =  explode ( "," , SystemConfig::getValue("sGMapIcons") );
                 array_unshift($markerIcons, "red-pushpin");
 
                 while ($aFam = mysql_fetch_array($rsFams)) {
