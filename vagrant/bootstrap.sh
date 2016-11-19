@@ -28,7 +28,7 @@ if [ $1 == 'php7' ]; then
   sudo apt-get update
   sudo apt-get install -y php7.0
   sudo apt-get install -y php7.0-mysql
-  sudo apt-get install -y php7.0-xml php7.0-curl
+  sudo apt-get install -y php7.0-xml php7.0-curl php7.0-zip
   sudo a2dismod php5
   sudo a2enmod php7.0
   sudo service apache2 start
