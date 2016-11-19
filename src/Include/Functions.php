@@ -376,6 +376,7 @@ function FilterInputArr($arr, $key, $type = 'string', $size = 1)
 // Note that a database connection must already be established for the mysqli_real_escape_string function to work.
 function FilterInput($sInput, $type = 'string', $size = 1)
 {
+  global $cnInfoCentral;
   if (strlen($sInput) > 0) {
     switch ($type) {
       case 'string':
