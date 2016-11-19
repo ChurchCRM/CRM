@@ -1,3 +1,4 @@
+DELETE FROM `menuconfig_mcf` WHERE `mid`='23';
 DELETE FROM `menuconfig_mcf` WHERE `mid`='83';
 DELETE FROM `menuconfig_mcf` WHERE `mid`='90';
 DELETE FROM `menuconfig_mcf` WHERE `mid`='91';
