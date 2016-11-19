@@ -32,7 +32,7 @@
   <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
     <li class="active">
       <a href="#control-sidebar-tasks-tab" data-toggle="tab" aria-expanded="true">
-        <i class="fa fa-flag"></i>
+        <i class="fa fa-tasks"></i>
       </a>
     </li>
     <li>
@@ -41,121 +41,111 @@
       </a>
     </li>
     <li>
-      <a href="#control-sidebar-home-tab" data-toggle="tab" aria-expanded="false">
-        <i class="fa fa-home"></i>
+      <a href="#control-sidebar-settings-other-tab" data-toggle="tab" aria-expanded="false">
+        <i class="fa fa-sliders"></i>
       </a>
     </li>
 
   </ul>
   <div class="tab-content">
     <!-- Home tab content -->
-    <div class="tab-pane" id="control-sidebar-home-tab">
-      <h3 class="control-sidebar-heading">Recent Activity</h3>
+    <div class="tab-pane" id="control-sidebar-settings-other-tab">
+      <h3 class="control-sidebar-heading"><?= _("Customize CRM")?></h3>
+      <h4 class="control-sidebar-heading"><?= _("Family")?></h4>
       <ul class="control-sidebar-menu">
         <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
+          <a href="<?= $sRootPath ?>/OptionManager.php?mode=famroles">
+            <i class="menu-icon fa fa-cog bg-gray-light"></i>
             <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-              <p>Will be 23 on April 24th</p>
+              <h4 class="control-sidebar-subheading"><?= _("Family Roles") ?></h4>
             </div>
           </a>
         </li>
         <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-user bg-yellow"></i>
-
+          <a href="<?= $sRootPath ?>/PropertyList.php?Type=f">
+            <i class="menu-icon fa fa-cog bg-gray-light"></i>
             <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-              <p>New phone +1(800)555-1234</p>
+              <h4 class="control-sidebar-subheading"><?= _("Family Properties") ?></h4>
             </div>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-              <p>nora@example.com</p>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-              <p>Execution time 5 seconds</p>
-            </div>
-          </a>
-        </li>
+        <?php if ($_SESSION['user']->isAdmin()) { ?>
+          <li>
+            <a href="<?= $sRootPath ?>/FamilyCustomFieldsEditor.php">
+              <i class="menu-icon fa fa-cog bg-yellow"></i>
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading"><?= _("Edit Custom Family Fields") ?></h4>
+              </div>
+            </a>
+          </li>
+        <?php } ?>
       </ul>
-      <!-- /.control-sidebar-menu -->
-
-      <h3 class="control-sidebar-heading">Tasks Progress</h3>
+      <br/>
+      <h4 class="control-sidebar-heading"><?= _("Person")?></h4>
       <ul class="control-sidebar-menu">
         <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Custom Template Design
-              <span class="label label-danger pull-right">70%</span>
-            </h4>
-
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+          <a href="<?= $sRootPath ?>/PropertyList.php?Type=p">
+            <i class="menu-icon fa fa-cog bg-gray-light"></i>
+            <div class="menu-info">
+              <h4 class="control-sidebar-subheading"><?= _("People Properties") ?></h4>
+            </div>
+          </a>
+        </li>
+        <?php if ($_SESSION['user']->isAdmin()) { ?>
+          <li>
+            <a href="<?= $sRootPath ?>/PersonCustomFieldsEditor.php">
+              <i class="menu-icon fa fa-cog bg-yellow"></i>
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading"><?= _("Edit Custom Person Fields") ?></h4>
+              </div>
+            </a>
+          </li>
+        <?php } ?>
+      </ul>
+      <br/>
+      <h4 class="control-sidebar-heading"><?= _("Other")?></h4>
+      <ul class="control-sidebar-menu">
+        <li>
+          <a href="<?= $sRootPath ?>/PropertyList.php?Type=g">
+            <i class="menu-icon fa fa-cog bg-gray-light"></i>
+            <div class="menu-info">
+              <h4 class="control-sidebar-subheading"><?= _("Group Properties") ?></h4>
             </div>
           </a>
         </li>
         <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Update Resume
-              <span class="label label-success pull-right">95%</span>
-            </h4>
-
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+          <a href="<?= $sRootPath ?>/PropertyTypeList.php">
+            <i class="menu-icon fa fa-cog bg-gray-light"></i>
+            <div class="menu-info">
+              <h4 class="control-sidebar-subheading"><?= _("Property Types") ?></h4>
             </div>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Laravel Integration
-              <span class="label label-warning pull-right">50%</span>
-            </h4>
-
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Back End Framework
-              <span class="label label-primary pull-right">68%</span>
-            </h4>
-
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-            </div>
-          </a>
-        </li>
+        <?php if ($_SESSION['user']->isAdmin()) { ?>
+          <li>
+            <a href="<?= $sRootPath ?>/VolunteerOpportunityEditor.php">
+              <i class="menu-icon fa fa-cog bg-yellow"></i>
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading"><?= _("Volunteer Opportunities") ?></h4>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="<?= $sRootPath ?>/DonationFundEditor.php">
+              <i class="menu-icon fa fa-money bg-yellow"></i>
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading"><?= _("Edit Donation Funds") ?></h4>
+              </div>
+            </a>
+          </li>
+        <?php } ?>
       </ul>
       <!-- /.control-sidebar-menu -->
 
     </div>
     <div id="control-sidebar-settings-tab" class="tab-pane">
+      <div><h4 class="control-sidebar-heading"><?= gettext("System Settings") ?></h4>
       <?php if ($_SESSION['user']->isAdmin()) { ?>
-        <div><h4 class="control-sidebar-heading"><?= gettext("System Settings") ?></h4>
           <ul class="control-sidebar-menu">
             <li>
               <a href="<?= $sRootPath ?>/SystemSettings.php">
@@ -165,6 +155,17 @@
                 </div>
               </a>
             </li>
+            <li>
+              <a href="<?= $sRootPath ?>/UserList.php">
+                <i class="menu-icon fa fa-user-secret bg-gray"></i>
+                <div class="menu-info">
+                  <h4 class="control-sidebar-subheading"><?= _("System Users") ?></h4>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <hr/>
+          <ul class="control-sidebar-menu">
             <li>
               <a href="<?= $sRootPath ?>/BackupDatabase.php">
                 <i class="menu-icon fa fa-database bg-green"></i>
@@ -182,18 +183,37 @@
               </a>
             </li>
             <li>
-              <a href="<?= $sRootPath ?>/UserList.php">
-                <i class="menu-icon fa fa-user-secret bg-gray"></i>
+              <a href="<?= $sRootPath ?>/CSVExport.php">
+                <i class="menu-icon fa fa-download bg-green"></i>
                 <div class="menu-info">
-                  <h4 class="control-sidebar-subheading"><?= _("System Users") ?></h4>
+                  <h4 class="control-sidebar-subheading"><?= _("CSV Export Records") ?></h4>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="<?= $sRootPath ?>/CSVImport.php">
+                <i class="menu-icon fa fa-upload bg-yellow-gradient"></i>
+                <div class="menu-info">
+                  <h4 class="control-sidebar-subheading"><?= _("CSV Import") ?></h4>
                 </div>
               </a>
             </li>
           </ul>
           <hr/>
-          <?php addMenu("admin"); ?>
+          <ul class="control-sidebar-menu">
+            <li>
+              <a href="<?= $sRootPath ?>/GenerateSeedData.php">
+                <i class="menu-icon fa fa-plus-square bg-teal"></i>
+                <div class="menu-info">
+                  <h4 class="control-sidebar-subheading"><?= _("Generate Seed Data") ?></h4>
+                </div>
+              </a>
+            </li>
+          </ul>
+      <?php } else {
+        echo _("Please contact your admin to change the system settings.");
+       }  ?>
         </div>
-      <?php } ?>
     </div>
     <!-- /.tab-pane -->
 
@@ -216,6 +236,24 @@
         <br/>
         <!-- end task item -->
       <?php } ?>
+
+      <h3 class="control-sidebar-heading"><? _("Data Quality")?></h3>
+      <ul class="control-sidebar-menu">
+        <!--li>
+          <a href="javascript:void(0)">
+            <h4 class="control-sidebar-subheading">
+              Custom Template Design
+              <span class="label label-danger pull-right">70%</span>
+            </h4>
+
+            <div class="progress progress-xxs">
+              <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+            </div>
+          </a>
+        </li-->
+      </ul>
+      <!-- /.control-sidebar-menu -->
+
     </div>
     <!-- /.tab-pane -->
   </div>
