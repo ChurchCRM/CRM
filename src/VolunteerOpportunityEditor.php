@@ -274,7 +274,7 @@ if (isset($_POST["SaveChanges"])) {
 
     // Create arrays of Vol Opps.
     for ($row = 1; $row <= $numRows; $row++) {
-        $aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+        $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
         extract($aRow);
         $rowIndex = $vol_Order; // is this dangerous?  the vol_Order field had better be correct.
         $aIDFields[$rowIndex] = $vol_ID;

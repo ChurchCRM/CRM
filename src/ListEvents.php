@@ -40,7 +40,7 @@ if (isset($_POST['WhichType'])){
 if($eType!="All"){
   $sSQL = "SELECT * FROM event_types WHERE type_id=$eType";
   $rsOpps = RunQuery($sSQL);
-  $aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+  $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
   extract($aRow);
   $sPageTitle = gettext("Listing Events of Type = ") .$type_name;
 } else {
@@ -97,7 +97,7 @@ $numRows = mysqli_num_rows($rsOpps);
         <?php
         for ($r = 1; $r <= $numRows; $r++)
         {
-          $aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+          $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
           extract($aRow);
 //          foreach($aRow as $t)echo "$t\n\r";
           ?>
@@ -120,12 +120,12 @@ if($eType=="All"){
            WHERE events_event.event_type = '$eType' AND YEAR(events_event.event_start)";
 }
 $rsOpps = RunQuery($sSQL);
-$aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+$aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
 @extract($aRow); // @ needed to suppress error messages when no church events
 $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
 for($r=1; $r<=$numRows; $r++){
-    $aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+    $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
     extract($aRow);
     $Yr[$r]=$aRow[0];
 }
@@ -182,14 +182,14 @@ foreach ($allMonths as $mKey => $mVal) {
                 $sSQL .= " WHERE t1.event_type = t2.type_id".$eTypeSQL." AND MONTH(t1.event_start) = ".$mVal." AND YEAR(t1.event_start)=$EventYear";
         }
         $sSQL .= " ORDER BY t1.event_start ";
-
+        
         $rsOpps = RunQuery($sSQL);
         $numRows = mysqli_num_rows($rsOpps);
         $aAvgRows = $numRows;
         // Create arrays of the fundss.
         for ($row = 1; $row <= $numRows; $row++)
         {
-                $aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+                $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
                 extract($aRow);
 
                 $aEventID[$row] = $event_id;
@@ -285,7 +285,7 @@ if ($numRows > 0)
 
                     if($aNumCounts) {
                       for($c = 0; $c <$aNumCounts; $c++){
-                        $cRow = mysqli_fetch_array($cvOpps, MYSQL_BOTH);
+                        $cRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
                         extract($cRow);
                         $cCountID[$c] = $evtcnt_countid;
                         $cCountName[$c] = $evtcnt_countname;
@@ -334,7 +334,7 @@ if ($numRows > 0)
                 <?php
                 // calculate and report averages
                 for($c = 0; $c <$aAvgRows; $c++){
-                  $avgRow = mysqli_fetch_array($avgOpps, MYSQL_BOTH);
+                  $avgRow = mysqli_fetch_array($avgOpps, MYSQLI_BOTH);
                   extract($avgRow);
                   $avgName = $avgRow['evtcnt_countname'];
                   $avgAvg = $avgRow[2];

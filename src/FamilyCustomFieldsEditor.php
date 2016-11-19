@@ -60,7 +60,7 @@ if (isset($_POST["SaveChanges"]))
 
     for ($row = 1; $row <= $numRows; $row++)
     {
-        $aRow = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH);
+        $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
         extract($aRow);
 
         $aFieldFields[$row] = $fam_custom_Field;
@@ -266,7 +266,7 @@ else
     // Create arrays of the fields.
     for ($row = 1; $row <= $numRows; $row++)
     {
-        $aRow = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH);
+        $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
         extract($aRow);
 
         $aNameFields[$row] = $fam_custom_Name;

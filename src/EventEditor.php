@@ -65,7 +65,7 @@ if ($sAction=='Create Event' && !empty($tyid)){
   $sSQL = "SELECT * FROM event_types WHERE type_id=$tyid";
   $rsOpps = RunQuery($sSQL);
   $numRows = mysqli_num_rows($rsOpps);
-  $ceRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+  $ceRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
   extract($ceRow);
 
   $iTypeID = $type_id;
@@ -87,7 +87,7 @@ if ($sAction=='Create Event' && !empty($tyid)){
 
   if($iNumCounts) {
     for($c = 0; $c <$iNumCounts; $c++){
-        $cRow = mysqli_fetch_array($cOpps, MYSQL_BOTH);
+        $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
         extract($cRow);
         $aCountID[$c] = $evctnm_countid;
         $aCountName[$c] = $evctnm_countname;
@@ -120,7 +120,7 @@ if ($sAction=='Create Event' && !empty($tyid)){
       $numRows = mysqli_num_rows($ecOpps);
       if($numRows >0){
         // use the most recent event if it exists
-        $ecRow = mysqli_fetch_array($ecOpps, MYSQL_BOTH);
+        $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
         extract($ecRow);
         $aStartTokens = explode(" ", $event_start);
         $ceEventStartDate = $aStartTokens[0];
@@ -154,7 +154,7 @@ if ($sAction=='Create Event' && !empty($tyid)){
       $numRows = mysqli_num_rows($ecOpps);
       if($numRows >0){
         // use the most recent event if it exists
-        $ecRow = mysqli_fetch_array($ecOpps, MYSQL_BOTH);
+        $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
         extract($ecRow);
         $aStartTokens = explode(" ", $event_start);
         $ceEventStartDate = $aStartTokens[0];
@@ -191,7 +191,7 @@ if ($sAction=='Create Event' && !empty($tyid)){
       $numRows = mysqli_num_rows($ecOpps);
       if($numRows >0){
         // use the most recent event if it exists
-        $ecRow = mysqli_fetch_array($ecOpps, MYSQL_BOTH);
+        $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
         extract($ecRow);
         $aStartTokens = explode(" ", $event_start);
         $sEventStartDate = $aStartTokens[0];
@@ -240,7 +240,7 @@ else if ($sAction = 'Edit' && !empty($sOpp))
         $sSQL = "SELECT * FROM events_event as t1, event_types as t2 WHERE t1.event_type = t2.type_id AND t1.event_id ='".$sOpp."' LIMIT 1";
         $rsOpps = RunQuery($sSQL);
 
-        $aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+        $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
         extract($aRow);
 
         $iEventID = $event_id;
@@ -269,7 +269,7 @@ else if ($sAction = 'Edit' && !empty($sOpp))
 //        echo "numcounts = {$aNumCounts}\n\l";
         if($iNumCounts) {
           for($c = 0; $c <$iNumCounts; $c++){
-            $aRow = mysqli_fetch_array($cvOpps, MYSQL_BOTH);
+            $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
             extract($aRow);
             $aCountID[$c] = $evtcnt_countid;
             $aCountName[$c] = $evtcnt_countname;
@@ -291,7 +291,7 @@ else if ($sAction = 'Edit' && !empty($sOpp))
         } else {
 					$sSQL = "SELECT type_name FROM event_types WHERE type_id = '" . FilterInput($iTypeID) . "' LIMIT 1";
 	        $rsOpps = RunQuery($sSQL);
-	        $aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+	        $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
 	        extract($aRow);
 					$sTypeName = $type_name;
 				}

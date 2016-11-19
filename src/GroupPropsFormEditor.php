@@ -62,7 +62,7 @@ if (isset($_POST["SaveChanges"]))
 
 	for ($row = 1; $row <= $numRows; $row++)
 	{
-		$aRow = mysqli_fetch_array($rsPropList, MYSQL_BOTH);
+		$aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
 		extract($aRow);
 
 		$aFieldFields[$row] = $prop_Field;
@@ -261,7 +261,7 @@ else
 	// Create arrays of the properties.
 	for ($row = 1; $row <= $numRows; $row++)
 	{
-		$aRow = mysqli_fetch_array($rsPropList, MYSQL_BOTH);
+		$aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
 		extract($aRow);
 
 		// This is probably more clear than using a multi-dimensional array

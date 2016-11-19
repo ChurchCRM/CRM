@@ -323,7 +323,7 @@ require 'Include/Header.php';
             // Create arrays of the properties.
             for ($row = 1; $row <= $numRows; $row++)
             {
-              $aRow = mysqli_fetch_array($rsPropList, MYSQL_BOTH);
+              $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
               extract($aRow);
 
               $aNameFields[$row] = $prop_Name;

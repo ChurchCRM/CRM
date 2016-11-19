@@ -244,7 +244,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
 
     // Validate all the custom fields
     $aCustomData = array();
-    while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH)) {
+    while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
         extract($rowCustomField);
 
         if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
@@ -367,7 +367,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
         if ($numCustomFields > 0) {
             mysqli_data_seek($rsCustomFields, 0);
             $sSQL = "";
-            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH)) {
+            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
                 if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
                     $currentFieldData = trim($aCustomData[$custom_Field]);
@@ -463,7 +463,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
         $rsCustomData = RunQuery($sSQL);
         $aCustomData = array();
         if (mysqli_num_rows($rsCustomData) >= 1)
-            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
+            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
     } else {
         //Adding....
         //Set defaults
@@ -1033,7 +1033,7 @@ require "Include/Header.php";
             <?php if ($numCustomFields > 0) {
                 mysqli_data_seek($rsCustomFields, 0);
 
-                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH)) {
+                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                     extract($rowCustomField);
 
                     if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {

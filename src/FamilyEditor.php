@@ -265,7 +265,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 
 	// Validate all the custom fields
 	$aCustomData = array();
-	while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) )
+	while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH) )
 	{
 		extract($rowCustomField);
 
@@ -504,7 +504,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			$sSQL = "REPLACE INTO family_custom SET ";
 			mysqli_data_seek($rsCustomFields,0);
 
-			while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) )
+			while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH) )
 			{
 				extract($rowCustomField);
 				if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]]))
@@ -574,13 +574,13 @@ else
 
 		$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
 		$rsCustomData = RunQuery($sSQL);
-		$aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
+		$aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
 		$aCustomErrors = array();
 
 		if ($numCustomFields >0) {
 			mysqli_data_seek($rsCustomFields,0);
-			while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+			while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH) ) {
 				$aCustomErrors[$rowCustomField['fam_custom_Field']] = false;
 			}
 		}
@@ -662,7 +662,7 @@ else
 		$aCustomErrors = array ();
 		if ($numCustomFields > 0) {
 			mysqli_data_seek($rsCustomFields,0);
-			while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+			while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH) ) {
 				extract($rowCustomField);
 				$aCustomData[$fam_custom_Field] = '';
 				$aCustomErrors[$fam_custom_Field] = false;
@@ -908,7 +908,7 @@ require "Include/Header.php";
 		</div><!-- /.box-header -->
 		<div class="box-body">
 		<?php mysqli_data_seek($rsCustomFields,0);
-		while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) ) {
+		while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH) ) {
 			extract($rowCustomField);
 			if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) { ?>
 			<div class="row">

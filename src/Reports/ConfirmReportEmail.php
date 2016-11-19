@@ -277,7 +277,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies))
       extract($aMember);
       $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $per_ID;
       $rsCustomData = RunQuery($sSQL);
-      $aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
+      $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
       $numCustomData = mysqli_num_rows($rsCustomData);
       mysqli_data_seek($rsCustomFields, 0);
       $OutStr = "";
@@ -288,7 +288,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies))
       // For the Letter size of 279 mm, this says that curY can be no bigger than 195 mm.
       // Leaving 12 mm for a bottom margin yields 183 mm.
       $numWide = 0; // starting value for columns
-      while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH))
+      while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH))
       {
         extract($rowCustomField);
         if ($sCustomFieldName[$custom_Order - 1])

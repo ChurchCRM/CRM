@@ -69,7 +69,7 @@ if (isset($_POST["GroupPropSubmit"])) {
 
   $bErrorFlag = false;
 
-  while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQL_BOTH)) {
+  while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
     extract($rowPropList);
 
     $currentFieldData = FilterInput($_POST[$prop_Field]);
@@ -86,7 +86,7 @@ if (isset($_POST["GroupPropSubmit"])) {
 
     $sSQL = "UPDATE groupprop_" . $iGroupID . " SET ";
 
-    while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQL_BOTH)) {
+    while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
       extract($rowPropList);
       $currentFieldData = trim($aPersonProps[$prop_Field]);
 
@@ -111,7 +111,7 @@ if (isset($_POST["GroupPropSubmit"])) {
   // Get the existing data for this group member
   $sSQL = "SELECT * FROM groupprop_" . $iGroupID . " WHERE per_ID = " . $iPersonID;
   $rsPersonProps = RunQuery($sSQL);
-  $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQL_BOTH);
+  $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 }
 
 require "Include/Header.php";
@@ -139,7 +139,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
           // Make sure we're at the beginning of the properties list resource (2nd pass code used it)
           mysqli_data_seek($rsPropList, 0);
 
-          while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQL_BOTH)) {
+          while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
             extract($rowPropList);
 
             ?>

@@ -92,7 +92,7 @@ if ($iFamilyID == $fam_ID) {
 // Get the custom field data for this person.
   $sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
   $rsFamCustomData = RunQuery($sSQL);
-  $aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQL_BOTH);
+  $aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQLI_BOTH);
 
   $family = FamilyQuery::create()->findPk($iFamilyID);
 

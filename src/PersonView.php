@@ -79,7 +79,7 @@ $rsCustomFields = RunQuery($sSQL);
 // Get the custom field data for this person.
 $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $iPersonID;
 $rsCustomData = RunQuery($sSQL);
-$aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
+$aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
 // Get the Groups this Person is assigned to
 $sSQL = "SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
@@ -490,7 +490,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                         $sSQL = "SELECT * FROM groupprop_" . $grp_ID . " WHERE per_ID = " . $iPersonID;
                         $rsPersonProps = RunQuery($sSQL);
-                        $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQL_BOTH);
+                        $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 
                         echo "<div class=\"box-body\">";
 

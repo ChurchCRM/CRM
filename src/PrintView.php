@@ -45,7 +45,7 @@ $numCustomFields = mysqli_num_rows($rsCustomFields);
 // Get the actual custom field data
 $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $iPersonID;
 $rsCustomData = RunQuery($sSQL);
-$aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
+$aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
 // Get the notes for this person
 $sSQL = "SELECT nte_Private, nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEdited, nte_EditedBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName ";
@@ -385,7 +385,7 @@ else
 
 			$sSQL = "SELECT * FROM groupprop_" . $grp_ID . " WHERE per_ID = " . $iPersonID;
 			$rsPersonProps = RunQuery($sSQL);
-			$aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQL_BOTH);
+			$aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 
 			while ($aProps = mysqli_fetch_array($rsPropList))
 			{

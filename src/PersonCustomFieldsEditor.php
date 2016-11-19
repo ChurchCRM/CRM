@@ -45,7 +45,7 @@ require "Include/Header.php"; ?>
     $numRows = mysqli_num_rows($rsCustomFields);
 
     for ($row = 1; $row <= $numRows; $row++) {
-      $aRow = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH);
+      $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
       extract($aRow);
 
       $aFieldFields[$row] = $custom_Field;
@@ -219,7 +219,7 @@ require "Include/Header.php"; ?>
 
     // Create arrays of the fields.
     for ($row = 1; $row <= $numRows; $row++) {
-      $aRow = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH);
+      $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
       extract($aRow);
 
       $aNameFields[$row] = $custom_Name;

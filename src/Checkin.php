@@ -380,14 +380,14 @@ if (isset ($_POST["EventID"]) ) {
   if($numAttRows!=0){
 	  $sRowClass = "RowColorA";
 	  for($na=0; $na<$numAttRows; $na++){
-		$attRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+		$attRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
 		extract($attRow);
 
 	//Get Person who is checked in
 		$sSQL = "SELECT * FROM person_per WHERE per_ID = $person_id ";
 		$perOpps = RunQuery($sSQL);
 		if (mysqli_num_rows ($perOpps) > 0) {
-			$perRow = mysqli_fetch_array($perOpps, MYSQL_BOTH);
+			$perRow = mysqli_fetch_array($perOpps, MYSQLI_BOTH);
 			extract($perRow);
 			$sPerson = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
 		} else {
@@ -400,7 +400,7 @@ if (isset ($_POST["EventID"]) ) {
 			$sSQL = "SELECT * FROM person_per WHERE per_ID = $checkin_id";
 			$perCheckin = RunQuery($sSQL);
 			if (mysqli_num_rows ($perCheckin) > 0) {
-				$perCheckinRow = mysqli_fetch_array($perCheckin, MYSQL_BOTH);
+				$perCheckinRow = mysqli_fetch_array($perCheckin, MYSQLI_BOTH);
 				extract($perCheckinRow);
 				$sCheckinby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
 			} else
@@ -416,7 +416,7 @@ if (isset ($_POST["EventID"]) ) {
 			$perCheckout = RunQuery($sSQL);
 
 			if (mysqli_num_rows ($perCheckout) > 0) {
-				$perCheckoutRow = mysqli_fetch_array($perCheckout, MYSQL_BOTH);
+				$perCheckoutRow = mysqli_fetch_array($perCheckout, MYSQLI_BOTH);
 				extract($perCheckoutRow);
 				$sCheckoutby = FormatFullName($per_Title,$per_FirstName,$per_MiddleName,$per_LastName,$per_Suffix,3);
 			} else
@@ -487,7 +487,7 @@ function loadperson($iPersonID){
 	// Get the custom field data for this person.
 	$sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $iPersonID;
 	$rsCustomData = RunQuery($sSQL);
-	$aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
+	$aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
 	// Get the notes for this person
 	$sSQL = "SELECT nte_Private, nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEdited, nte_EditedBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName ";

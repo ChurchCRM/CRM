@@ -248,11 +248,11 @@ class PDF_Directory extends ChurchInfoReport {
             extract($aRow);
             $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $per_ID;
             $rsCustomData = RunQuery($sSQL);
-            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQL_BOTH);
+            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
             $numCustomData = mysqli_num_rows($rsCustomData);
             mysqli_data_seek($rsCustomFields,0);
             $OutStr = "";
-            while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_BOTH) ){
+            while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH) ){
                 extract($rowCustomField);
                 $sCustom = "bCustom".$custom_Order;
                 if($this->_Custom[$custom_Order]){

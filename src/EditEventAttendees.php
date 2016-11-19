@@ -52,11 +52,11 @@ $numAttRows = mysqli_num_rows($rsOpps);
 if($numAttRows!=0){
   $sRowClass = "RowColorA";
   for($na=0; $na<$numAttRows; $na++){
-    $attRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+    $attRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
     extract($attRow);
     $sSQL = 'SELECT per_Title, per_ID, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Email, per_HomePhone, per_Country, fam_HomePhone, fam_Email, fam_Country FROM person_per LEFT JOIN family_fam ON per_fam_id=fam_id WHERE per_ID = '.$person_id;
     $perOpps = RunQuery($sSQL);
-    $perRow = mysqli_fetch_array($perOpps, MYSQL_BOTH);
+    $perRow = mysqli_fetch_array($perOpps, MYSQLI_BOTH);
     extract($perRow);
     $sRowClass = AlternateRowStyle($sRowClass);
 

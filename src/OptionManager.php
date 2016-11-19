@@ -217,7 +217,7 @@ if (isset($_POST["SaveChanges"]))
 {
 	for ($row = 1; $row <= $numRows; $row++)
 	{
-		$aRow = mysqli_fetch_array($rsList, MYSQL_BOTH);
+		$aRow = mysqli_fetch_array($rsList, MYSQLI_BOTH);
 		$aOldNameFields[$row] = $aRow["lst_OptionName"];
 		$aIDs[$row] =  $aRow["lst_OptionID"];
 
@@ -278,7 +278,7 @@ $numRows = mysqli_num_rows($rsRows);
 // Create arrays of the option names and IDs
 for ($row = 1; $row <= $numRows; $row++)
 {
-	$aRow = mysqli_fetch_array($rsRows, MYSQL_BOTH);
+	$aRow = mysqli_fetch_array($rsRows, MYSQLI_BOTH);
 
 	if (!$bErrorFlag)
 		$aNameFields[$row] = $aRow["lst_OptionName"];

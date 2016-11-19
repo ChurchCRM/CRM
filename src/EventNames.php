@@ -93,7 +93,7 @@ $numRows = mysqli_num_rows($rsOpps);
         // Create arrays of the event types
         for ($row = 1; $row <= $numRows; $row++)
         {
-                $aRow = mysqli_fetch_array($rsOpps, MYSQL_BOTH);
+                $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
                 extract($aRow);
 
                 $aTypeID[$row] = $type_id;
@@ -133,7 +133,7 @@ $numRows = mysqli_num_rows($rsOpps);
                 {
                   $cCountName="";
                   for($c = 1; $c <=$numCounts; $c++){
-                    $cRow = mysqli_fetch_array($cOpps, MYSQL_BOTH);
+                    $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
                     extract($cRow);
                     $cCountID[$c] = $evctnm_countid;
                     $cCountName[$c] = $evctnm_countname;
