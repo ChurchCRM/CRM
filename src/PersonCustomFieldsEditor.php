@@ -129,6 +129,7 @@ require "Include/Header.php"; ?>
 
           // Set the new field number based on the highest existing.  Chop off the "c" at the beginning of the old one's name.
           // The "c#" naming scheme is necessary because MySQL 3.23 doesn't allow numeric-only field (table column) names.
+          $fields = mysqli_query($cnInfoCentral, "SELECT * FROM person_custom");
           $fieldInfo = mysqli_fetch_field_direct($fields, $last);
           $newFieldNum = substr($fieldInfo->name, 1) + 1;
 
