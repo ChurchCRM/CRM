@@ -12,36 +12,25 @@ require ("Include/Header.php");
 
 $iGroupID = FilterInput($_GET["GroupID"],'int');
 
-// Read values from config table into local variables
-// **************************************************
-$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'";
-$rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$$cfg_name = $cfg_value;
-	}
-}
-
-if ($nChurchLatitude == "" || $nChurchLongitude == "") {
+if (SystemConfig::getValue("nChurchLatitude") == "" || SystemConfig::getValue("nChurchLongitude") == "") {
 
 	require ("Include/GeoCoder.php");
 	$myAddressLatLon = new AddressLatLon;
 
 	// Try to look up the church address to center the map.
-	$myAddressLatLon->SetAddress ($sChurchAddress, $sChurchCity, $sChurchState, $sChurchZip);
+	$myAddressLatLon->SetAddress (SystemConfig::getValue("sChurchAddress"), SystemConfig::getValue("sChurchCity"), SystemConfig::getValue("sChurchState"), SystemConfig::getValue("sChurchZip"));
 	$ret = $myAddressLatLon->Lookup ();
 	if ($ret == 0) {
 		$nChurchLatitude = $myAddressLatLon->GetLat ();
 		$nChurchLongitude = $myAddressLatLon->GetLon ();
+    
+    SystemConfig::setValue("nChurchLatitude",$nChurchLatitude);
+    SystemConfig::setValue("nChurchLongitude",$nChurchLongitude);
 
-		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLatitude . "' WHERE cfg_name='nChurchLatitude'";
-		RunQuery ($sSQL);
-		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLongitude . "' WHERE cfg_name='nChurchLongitude'";
-		RunQuery ($sSQL);
 	}
 }
 
-if ($nChurchLatitude == "") {
+if (SystemConfig::getValue("nChurchLatitude") == "") {
 ?>
   <div class="callout callout-danger">
     <?= gettext("Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.") ?>

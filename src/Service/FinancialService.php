@@ -7,6 +7,7 @@ require_once dirname(dirname(__FILE__)) . "/Include/Functions.php";
 
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\MICRReader;
+use ChurchCRM\dto\SystemConfig;
 
 class FinancialService
 {
@@ -653,12 +654,6 @@ class FinancialService
 
   private function generateBankDepositSlip($thisReport)
   {
-    $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-    if ($rsConfig) {
-      while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-        $$cfg_name = $cfg_value;
-      }
-    }
     // --------------------------------
     // BEGIN FRONT OF BANK DEPOSIT SLIP
     $thisReport->pdf->AddPage("L", array(187, 84));
@@ -669,10 +664,10 @@ class FinancialService
     $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
 
     $thisReport->pdf->SetXY($thisReport->customerName1X, $thisReport->customerName1Y);
-    $thisReport->pdf->Write(8, $sChurchName);
+    $thisReport->pdf->Write(8, SystemConfig::getValue("sChurchName"));
 
     $thisReport->pdf->SetXY($thisReport->AccountNumberX, $thisReport->AccountNumberY);
-    $thisReport->pdf->Cell(55, 7, $sChurchChkAcctNum, 1, 1, 'R');
+    $thisReport->pdf->Cell(55, 7, SystemConfig::getValue("sChurchChkAcctNum"), 1, 1, 'R');
 
     if ($thisReport->deposit->totalCash > 0) {
       $totalCashStr = sprintf("%.2f", $thisReport->deposit->totalCash);
