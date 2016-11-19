@@ -15,8 +15,8 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+use ChurchCRM\dto\SystemConfig;
 
-global $systemConfig;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Software Registration");
@@ -42,14 +42,14 @@ require "Include/Header.php";
 	</div>
 	<form id="registerForm">
 	<div class="box-body">
-    <?= gettext('Church Name') ?>: <?= $systemConfig->getValue("sChurchName"); ?><br>
+    <?= gettext('Church Name') ?>: <?= SystemConfig::getValue("sChurchName"); ?><br>
     <?= gettext('Version') ?>: <?= $systemService->getInstalledVersion(); ?><br>
-    <?= gettext('Address') ?>: <?= $systemConfig->getValue("sChurchAddress"); ?><br>
-    <?= gettext('City') ?>: <?= $systemConfig->getValue("sChurchCity"); ?><br>
-    <?= gettext('State') ?>: <?= $systemConfig->getValue("sChurchState"); ?><br>
-    <?= gettext('Zip') ?>: <?= $systemConfig->getValue("sChurchZip"); ?><br>
-    <?= gettext('Country') ?>: <?= $systemConfig->getValue("sDefaultCountry"); ?><br>
-    <?= gettext('Church Email') ?>: <?= $systemConfig->getValue("sChurchEmail"); ?><br>
+    <?= gettext('Address') ?>: <?= SystemConfig::getValue("sChurchAddress"); ?><br>
+    <?= gettext('City') ?>: <?= SystemConfig::getValue("sChurchCity"); ?><br>
+    <?= gettext('State') ?>: <?= SystemConfig::getValue("sChurchState"); ?><br>
+    <?= gettext('Zip') ?>: <?= SystemConfig::getValue("sChurchZip"); ?><br>
+    <?= gettext('Country') ?>: <?= SystemConfig::getValue("sDefaultCountry"); ?><br>
+    <?= gettext('Church Email') ?>: <?= SystemConfig::getValue("sChurchEmail"); ?><br>
     ChurchCRM <?= gettext('Base URL') ?>: <?= $ChurchCRMURL ?><br>
 		<br> <?= gettext('Message') ?>:
 		<br><textarea class="form-control" name="emailmessage" rows="20" cols="72"><?= htmlspecialchars($sEmailMessage) ?> </textarea>

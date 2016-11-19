@@ -139,8 +139,8 @@ if (count($results) == 0) {
 // Read values from config table into local variables
 // **************************************************
 
-$systemConfig = new SystemConfig();
-$systemConfig->init(ConfigQuery::create()->find());
+
+SystemConfig::init(ConfigQuery::create()->find());
 
 $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
   . "FROM config_cfg WHERE cfg_section='General'";
@@ -167,8 +167,8 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
 
 $sMetaRefresh = '';  // Initialize to empty
 
-if (isset($sTimeZone)) {
-  date_default_timezone_set($sTimeZone);
+if (SystemConfig::getValue("sTimeZone")) {
+  date_default_timezone_set(SystemConfig::getValue("sTimeZone"));
 }
 
 $localeInfo = new LocaleInfo($sLanguage);

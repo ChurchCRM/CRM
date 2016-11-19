@@ -212,9 +212,9 @@ if ($output == "pdf") {
 	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchCity . ", " . $pdf->sChurchState . "  " . $pdf->sChurchZip); $curY += $pdf->incrementY;
 	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchPhone . "  " . $pdf->sChurchEmail); $curY += 2 * $pdf->incrementY;
 
-	$blurb = $pdf->sPledgeSummary1 . " ";
+	$blurb = SystemConfig::getValue("sPledgeSummary1") . " ";
 	$blurb .= MakeFYString ($iFYID);
-	$blurb .= $pdf->sPledgeSummary2 . " " . date ("Y-m-d") . ".";
+	$blurb .= SystemConfig::getValue("sPledgeSummary2") . " " . date ("Y-m-d") . ".";
 	$pdf->WriteAt ($nameX, $curY, $blurb);
 
 	$curY += 3 * $pdf->incrementY;

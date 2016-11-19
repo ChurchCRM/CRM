@@ -18,6 +18,8 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+use ChurchCRM\dto\SystemConfig;
+
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
@@ -31,9 +33,9 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
     die ("The Backup Utility will not work on a Windows based Server");
 }
 
-if (isset($sGZIPname)) $hasGZIP = true;
-if (isset($sZIPname)) $hasZIP = true;
-if (isset($sPGPname)) $hasPGP = true;
+if (SystemConfig::getRawConfig("sGZIPname")) $hasGZIP = true;
+if (SystemConfig::getRawConfig("sZIPname")) $hasZIP = true;
+if (SystemConfig::getRawConfig("sPGPname")) $hasPGP = true;
 
 
 

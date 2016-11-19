@@ -18,6 +18,7 @@ require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -101,7 +102,7 @@ if ($output == "pdf") {
 			else
 				$DateString = date("M j, Y",strtotime($sDateStart)) . " - " .  date("M j, Y",strtotime($sDateEnd));
 
-			$blurb = $this->sTaxReport1 . " " . $DateString . " $this->sZeroGivers";
+			$blurb = SystemConfig::getValue("sTaxReport1"). " " . $DateString . " " . SystemConfig::getValue("sZeroGivers");
 			$this->WriteAt ($this->leftX, $curY, $blurb);
 			$curY += 30 * $this->incrementY;
 
@@ -111,15 +112,15 @@ if ($output == "pdf") {
 		function FinishPage ($curY,$fam_ID,$fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
 			global $remittance;
 			$curY += 2 * $this->incrementY;
-			$blurb = $this->sZeroGivers2;
+			$blurb = SystemConfig::getValue("sZeroGivers2");
 			$this->WriteAt ($this->leftX, $curY, $blurb);
 			$curY += 3 * $this->incrementY;
-			$blurb = $this->sZeroGivers3;
+			$blurb = SystemConfig::getValue("sZeroGivers3");
 			$this->WriteAt ($this->leftX, $curY, $blurb);
 			$curY += 3 * $this->incrementY;
 			$this->WriteAt ($this->leftX, $curY, "Sincerely,");
 			$curY += 4 * $this->incrementY;
-			$this->WriteAt ($this->leftX, $curY, $this->sTaxSigner);
+			$this->WriteAt ($this->leftX, $curY, SystemConfig::getValue("sTaxSigner"));
 			
 		}
 	}

@@ -7,6 +7,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
 use Propel\Runtime;
+use ChurchCRM\dto\SystemConfig;
 
 class SystemService
 {
@@ -51,10 +52,9 @@ class SystemService
   function restoreDatabaseFromBackup()
   {
     requireUserGroupMembership("bAdmin");
-    global $systemConfig;
     $restoreResult = new \stdClass();
     $restoreResult->Messages = array();
-    global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
+    global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral;
     $file = $_FILES['restoreFile'];
     $restoreResult->file = $file;
     $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -78,7 +78,7 @@ class SystemService
       } else if ($restoreResult->type2 == "sql") {
         exec("mkdir $restoreResult->backupRoot");
         exec("mv  " . $file['tmp_name'] . " " . $restoreResult->backupRoot . "/" . $file['name']);
-        $restoreResult->uncompressCommand = "$sGZIPname -d $restoreResult->backupRoot/" . $file['name'];
+        $restoreResult->uncompressCommand = SystemConfig::getValue("sGZIPname") . " -d $restoreResult->backupRoot/" . $file['name'];
         exec($restoreResult->uncompressCommand, $rs1, $returnStatus);;
         $restoreResult->SQLfile = $restoreResult->backupRoot . "/" . substr($file['name'], 0, strlen($file['name']) - 3);
         $this->playbackSQLtoDatabase($restoreResult->SQLfile);
@@ -92,17 +92,16 @@ class SystemService
     $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
     //When restoring a database, do NOT let the database continue to create remote backups.
     //This can be very troublesome for users in a testing environment.
-    $sSQL = 'UPDATE config_cfg SET cfg_value = "0" WHERE cfg_name = "sEnableExternalBackupTarget"';
-    $aRow = mysql_fetch_array(RunQuery($sSQL));
+    SystemConfig::setValue("sEnableExternalBackupTarget", "0");
     array_push($restoreResult->Messages, gettext("As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."));
-    $systemConfig->setValue("sLastIntegrityCheckTimeStamp",null);
+    SystemConfig::setValue("sLastIntegrityCheckTimeStamp",null);
     return $restoreResult;
   }
 
   function getDatabaseBackup($params)
   {
     requireUserGroupMembership("bAdmin");
-    global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname;
+    global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME;
 
     $backup = new \stdClass();
     $backup->root = dirname(dirname(__FILE__));
@@ -113,11 +112,11 @@ class SystemService
     exec("rm -rf  $backup->backupRoot");
     exec("mkdir  $backup->backupRoot");
     // Check to see whether this installation has gzip, zip, and gpg
-    if (isset($sGZIPname))
+    if (SystemConfig::getRawConfig("sGZIPname"))
       $hasGZIP = true;
-    if (isset($sZIPname))
+    if (SystemConfig::getRawConfig("sZIPname"))
       $hasZIP = true;
-    if (isset($sPGPname))
+    if (SystemConfig::getRawConfig("sPGPname"))
       $hasPGP = true;
 
     $backup->params = $params;
@@ -140,7 +139,7 @@ class SystemService
         break;
       case 1: #The user wants a .zip file
         $backup->saveTo .= ".zip";
-        $backup->compressCommand = "$sZIPname -r -y -q -9 $backup->saveTo $backup->backupRoot";
+        $backup->compressCommand = SystemConfig::getRawConfig("sZIPname")." -r -y -q -9 $backup->saveTo $backup->backupRoot";
         exec($backup->compressCommand, $returnString, $returnStatus);
         $backup->archiveResult = $returnString;
         break;
@@ -158,7 +157,7 @@ class SystemService
 
     if ($params->bEncryptBackup) {  #the user has selected an encrypted backup
       putenv("GNUPGHOME=/tmp");
-      $backup->encryptCommand = "echo $params->password | $sPGPname -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
+      $backup->encryptCommand = "echo $params->password | " . SystemConfig::getRawConfig("sPGPname") . " -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
       $backup->saveTo .= ".gpg";
       system($backup->encryptCommand);
       $archiveType = 3;
@@ -380,8 +379,7 @@ class SystemService
         {
           $this->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
           $now = new \DateTime();  // update the LastBackupTimeStamp.
-          $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastBackupTimeStamp'";
-          $rsUpdate = RunQuery($sSQL);
+          SystemConfig::setValue("sLastBackupTimeStamp", $now->format('Y-m-d H:i:s'));
         }
       } catch (Exception $exc) {
         // an error in the auto-backup shouldn't prevent the page from loading...
@@ -436,7 +434,6 @@ class SystemService
 
   function doUpgrade($zipFilename,$sha1)
   {
-    global $systemConfig;
     ini_set('max_execution_time',60);
     $CRMInstallRoot = dirname(__DIR__);
     if($sha1 == sha1_file($zipFilename))
@@ -449,7 +446,7 @@ class SystemService
         $this->moveDir($CRMInstallRoot."/Upgrade/churchcrm", $CRMInstallRoot);
       }
       unlink($zipFilename);
-      $systemConfig->setValue("sLastIntegrityCheckTimeStamp",null);
+      SystemConfig::setValue("sLastIntegrityCheckTimeStamp",null);
       return "success";
     }
     else

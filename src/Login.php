@@ -36,6 +36,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
+use ChurchCRM\dto\SystemConfig;
 
 $systemService = new SystemService();
 
@@ -128,7 +129,7 @@ if ($currentUser != Null)
     else
     {
         // Set the LastLogin and Increment the LoginCount
-        $date = new DateTime("now", new DateTimeZone($sTimeZone));
+        $date = new DateTime("now", new DateTimeZone(SystemConfig::getValue("sTimeZone")));
         $currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
         $currentUser->setLoginCount($currentUser->getLoginCount() +1);
         $currentUser->setFailedLogins(0);
@@ -271,9 +272,9 @@ if ($currentUser != Null)
 ob_start();
 
 $enableSelfReg = $false;
-if ( $systemConfig->getRawConfig("sEnableSelfRegistration") )
+if ( SystemConfig::getRawConfig("sEnableSelfRegistration") )
 {
-  $enableSelfReg = $systemConfig->getRawConfig("sEnableSelfRegistration")->getBooleanValue();
+  $enableSelfReg = SystemConfig::getRawConfig("sEnableSelfRegistration")->getBooleanValue();
 }
 
 // Set the page title and include HTML header

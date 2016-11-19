@@ -25,6 +25,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\dto\SystemConfig;
 
 //Get the GroupID out of the querystring
 $iGroupID = FilterInput($_GET['GroupID'], 'int');
@@ -213,8 +214,8 @@ require 'Include/Header.php';
     }
     if ($sEmailLink) {
       // Add default email if default email has been set and is not already in string
-      if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' && !stristr($sEmailLink, $sToEmailAddress))
-        $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
+      if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($sEmailLink, $sToEmailAddress))
+        $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
       $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
       if ($bEmailMailto) { // Does user have permission to email groups

@@ -96,15 +96,10 @@ function AddToEmailLog($sMessage, $iUserID)
 function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 {
 
-    global $sSendType;
     global $sFromEmailAddress;
     global $sFromName;
     global $sLangCode;
     global $sLanguagePath;
-    global $sSMTPAuth;
-    global $sSMTPUser;
-    global $sSMTPPass;
-    global $sSMTPHost;
     global $sSERVERNAME;
     global $sUSER;
     global $sPASSWORD;
@@ -143,23 +138,23 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
     if ($hasAttach)
     	$mail->AddAttachment ("tmp_attach/".$attachName);
 
-    if (strtolower($sSendType)=='smtp') {
+    if (strtolower(SystemConfig::getValue("sSendType"))=='smtp') {
 
         $mail->IsSMTP();                    // tell the class to use SMTP
         $mail->SMTPKeepAlive = true;        // keep connection open until last email sent
-        $mail->SMTPAuth = $sSMTPAuth;       // Server requires authentication
+        $mail->SMTPAuth = SystemConfig::getValue("sSMTPAuth");       // Server requires authentication
 
-        if ($sSMTPAuth) {
-            $mail->Username = $sSMTPUser;   // SMTP username
-            $mail->Password = $sSMTPPass;   // SMTP password
+        if (SystemConfig::getValue("sSMTPAuth")) {
+            $mail->Username = SystemConfig::getValue("sSMTPUser");   // SMTP username
+            $mail->Password = SystemConfig::getValue("sSMTPPass");   // SMTP password
         }
 
-        $delimeter = strpos($sSMTPHost, ':');
+        $delimeter = strpos(SystemConfig::getValue("sSMTPHost"), ':');
         if ($delimeter === FALSE) {
             $sSMTPPort = 25;                // Default port number
         } else {
-            $sSMTPPort = substr($sSMTPHost, $delimeter+1);
-            $sSMTPHost = substr($sSMTPHost, 0, $delimeter);   
+            $sSMTPPort = substr(SystemConfig::getValue("sSMTPHost"), $delimeter+1);
+            $sSMTPHost = substr(SystemConfig::getValue("sSMTPHost"), 0, $delimeter);   
         }
 
         if (is_int($sSMTPPort))
@@ -167,7 +162,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
         else
             $mail->Port = 25;
 
-        $mail->Host = $sSMTPHost;           // SMTP server name
+        $mail->Host = SystemConfig::getValue("sSMTPHost");           // SMTP server name
     } else {
         $mail->IsSendmail();                // tell the class to use Sendmail
     }
@@ -279,7 +274,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
         }
     }
 
-    if (strtolower($sSendType) == 'smtp')
+    if (strtolower(SystemConfig::getValue("sSendType")) == 'smtp')
         $mail->SmtpClose();
 
 } // end of function SendEmail()

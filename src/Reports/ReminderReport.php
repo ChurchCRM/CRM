@@ -199,7 +199,7 @@ class PDF_ReminderReport extends ChurchInfoReport {
     function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fundOnlyString, $iFYID) {
         $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
         $curY += 2 * $this->incrementY;
-        $blurb = $this->sReminder1 . MakeFYString ($iFYID) . $fundOnlyString . ".";
+        $blurb = SystemConfig::getValue("sReminder1") . MakeFYString ($iFYID) . $fundOnlyString . ".";
         $this->WriteAt ($this->leftX, $curY, $blurb);
         $curY += 2 * $this->incrementY;
         return ($curY);
@@ -209,7 +209,7 @@ class PDF_ReminderReport extends ChurchInfoReport {
         $curY += 2 * $this->incrementY;
         $this->WriteAt ($this->leftX, $curY, "Sincerely,");
         $curY += 4 * $this->incrementY;
-        $this->WriteAt ($this->leftX, $curY, $this->sReminderSigner);
+        $this->WriteAt ($this->leftX, $curY, SystemConfig::getValue("sReminderSigner"));
     }
 }
 
@@ -297,7 +297,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
     if (mysql_num_rows ($rsPledges) == 0) {
         $curY += $summaryIntervalY;
-        $noPledgeString = $pdf->sReminderNoPledge . "(" . $fundOnlyString . ")";
+        $noPledgeString = SystemConfig::getValue("sReminderNoPledge") . "(" . $fundOnlyString . ")";
         $pdf->WriteAt ($summaryDateX, $curY, $noPledgeString);
         $curY += 2 * $summaryIntervalY;
     } else {
@@ -363,7 +363,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     $fundPaymentTotal = array ();
     if (mysql_num_rows ($rsPledges) == 0) {
         $curY += $summaryIntervalY;
-        $pdf->WriteAt ($summaryDateX, $curY, $pdf->sReminderNoPayments);
+        $pdf->WriteAt ($summaryDateX, $curY, SystemConfig::getValue("sReminderNoPayments"));
         $curY += 2 * $summaryIntervalY;
     } else {
         $summaryDateX = $pdf->leftX;

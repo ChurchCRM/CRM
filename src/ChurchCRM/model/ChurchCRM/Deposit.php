@@ -151,7 +151,7 @@ class Deposit extends BaseDeposit
   {
     $thisReport->pdf->AddPage();
 
-    $thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQBDTSettings);
+    $thisReport->QBDepositTicketParameters = json_decode(SystemConfig::getValue("sQBDTSettings"));
     $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
     $thisReport->pdf->Write(8, $this->getDate()->format("Y-m-d"));
 

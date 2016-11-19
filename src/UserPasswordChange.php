@@ -143,8 +143,8 @@ if (isset($_POST["Submit"]))
         }
 
         // Is the password valid for length?
-        elseif (strlen($sNewPassword1) < $sMinPasswordLength) {
-            $sNewPasswordError = "<br><font color=\"red\">" . gettext("Your new password must be at least") . " " . $sMinPasswordLength . " " . gettext("characters") . "</font>";
+        elseif (strlen($sNewPassword1) < SystemConfig::getRawConfig("sMinPasswordLength")) {
+            $sNewPasswordError = "<br><font color=\"red\">" . gettext("Your new password must be at least") . " " . SystemConfig::getRawConfig("sMinPasswordLength") . " " . gettext("characters") . "</font>";
             $bError = True;
         }
 
@@ -154,7 +154,7 @@ if (isset($_POST["Submit"]))
             $bError = True;
         }
 
-        elseif (levenshtein(strtolower($sNewPassword1),strtolower($sOldPassword)) < $sMinPasswordChange) {
+        elseif (levenshtein(strtolower($sNewPassword1),strtolower($sOldPassword)) < SystemConfig::getRawConfig("sMinPasswordChange")) {
             $sNewPasswordError = "<br><font color=\"red\">" . gettext("Your new password is too similar to your old one.  Be more creative!") . "</font>";
             $bError = True;
         }
@@ -208,7 +208,7 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
         <div class="box box-primary">
             <div class="box-header with-border">
                 <?php if (!$bAdminOtherUser)
-                    echo "<p>" . gettext("Enter your current password, then your new password twice.  Passwords must be at least") . ' ' . $sMinPasswordLength . ' ' . gettext("characters in length.") . "</p>";
+                    echo "<p>" . gettext("Enter your current password, then your new password twice.  Passwords must be at least") . ' ' . SystemConfig::getRawConfig("sMinPasswordLength") . ' ' . gettext("characters in length.") . "</p>";
                 else
                     echo "<p>" . gettext("Enter a new password for this user.") . "</p>";
                 ?>

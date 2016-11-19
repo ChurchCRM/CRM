@@ -21,25 +21,27 @@
 
 require "bin/google-map/GoogleMap.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 $googleMapObj = new GoogleMapAPI('map');
 $googleMapObj->setLookupService('GOOGLE'); // or 'YAHOO'
 
 
 $bHaveXML = FALSE;
 
-if ($sXML_RPC_PATH) {
+if (SystemConfig::getRawConfig("sXML_RPC_PATH")) {
   $pathArray = explode(PATH_SEPARATOR, get_include_path());
   foreach ($pathArray as $onePath) {
-    $fullpath = $onePath . DIRECTORY_SEPARATOR . $sXML_RPC_PATH;
+    $fullpath = $onePath . DIRECTORY_SEPARATOR . SystemConfig::getValue("sXML_RPC_PATH");
     if (file_exists($fullpath) && is_readable($fullpath)) {
-      require_once("$sXML_RPC_PATH");
+      require_once(SystemConfig::getValue("sXML_RPC_PATH"));
       $bHaveXML = TRUE;
     }
   }
 
   if ($bHaveXML == 0) { // Maybe the user entered absolute path, let's check
-    if (file_exists($sXML_RPC_PATH) && is_readable($sXML_RPC_PATH)) {
-      require_once("$sXML_RPC_PATH");
+    if (file_exists(SystemConfig::getValue("sXML_RPC_PATH")) && is_readable(SystemConfig::getValue("sXML_RPC_PATH"))) {
+      require_once(SystemConfig::getValue("sXML_RPC_PATH"));
       $bHaveXML = TRUE;
     }
   }

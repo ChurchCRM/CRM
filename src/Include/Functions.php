@@ -2,6 +2,7 @@
 
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\dto\SystemConfig;
 
 /*******************************************************************************
  *
@@ -1788,7 +1789,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
           $connect_timeout = 2;
           $errno = 0;
           $errstr = 0;
-          $probe_address = $sToEmailAddress;
+          $probe_address = SystemConfig::getValue("sToEmailAddress");
           # Try to open up socket
           if ($sock = @fsockopen($mailers[$n], 25, $errno, $errstr, $connect_timeout)) {
             $response = fgets($sock);
@@ -2004,8 +2005,8 @@ function random_color()
 function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
   foreach ($roleEmails as $role => $Email) {
-    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' && !stristr($Email, $sToEmailAddress))
-      $Email .= $sMailtoDelimiter . $sToEmailAddress;
+    if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($Email, $sToEmailAddress))
+      $Email .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
     $Email = urlencode($Email);  // Mailto should comply with RFC 2368
     ?>
       <li> <a href="<?= $href. mb_substr($Email,0,-3) ?>"><?=$role?></a></li>
