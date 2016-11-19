@@ -14,6 +14,9 @@
  *  (at your option) any later version.
  *
  ******************************************************************************/
+
+$isAdmin = $_SESSION['user']->isAdmin();
+
 ?>
 </section><!-- /.content -->
 
@@ -50,92 +53,73 @@
   <div class="tab-content">
     <!-- Home tab content -->
     <div class="tab-pane" id="control-sidebar-settings-other-tab">
-      <h3 class="control-sidebar-heading"><?= _("Customize CRM")?></h3>
-      <h4 class="control-sidebar-heading"><?= _("Family")?></h4>
+      <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _("Family") ?></h4>
       <ul class="control-sidebar-menu">
         <li>
           <a href="<?= $sRootPath ?>/OptionManager.php?mode=famroles">
-            <i class="menu-icon fa fa-cog bg-gray-light"></i>
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading"><?= _("Family Roles") ?></h4>
-            </div>
+            <i class="fa fa-cog"></i> <?= _("Family Roles") ?>
           </a>
         </li>
         <li>
           <a href="<?= $sRootPath ?>/PropertyList.php?Type=f">
-            <i class="menu-icon fa fa-cog bg-gray-light"></i>
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading"><?= _("Family Properties") ?></h4>
-            </div>
+            <i class="fa fa-cog"></i> <?= _("Family Properties") ?>
           </a>
         </li>
-        <?php if ($_SESSION['user']->isAdmin()) { ?>
+        <?php if ($isAdmin) { ?>
           <li>
             <a href="<?= $sRootPath ?>/FamilyCustomFieldsEditor.php">
-              <i class="menu-icon fa fa-cog bg-yellow"></i>
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading"><?= _("Edit Custom Family Fields") ?></h4>
-              </div>
+              <i class="fa fa-cog"></i> <?= _("Edit Custom Family Fields") ?>
             </a>
           </li>
         <?php } ?>
       </ul>
       <br/>
-      <h4 class="control-sidebar-heading"><?= _("Person")?></h4>
+      <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _("Person") ?></h4>
       <ul class="control-sidebar-menu">
         <li>
           <a href="<?= $sRootPath ?>/PropertyList.php?Type=p">
-            <i class="menu-icon fa fa-cog bg-gray-light"></i>
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading"><?= _("People Properties") ?></h4>
-            </div>
+            <i class="fa fa-cog"></i> <?= _("People Properties") ?>
           </a>
         </li>
-        <?php if ($_SESSION['user']->isAdmin()) { ?>
+        <?php if ($isAdmin) { ?>
           <li>
             <a href="<?= $sRootPath ?>/PersonCustomFieldsEditor.php">
-              <i class="menu-icon fa fa-cog bg-yellow"></i>
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading"><?= _("Edit Custom Person Fields") ?></h4>
-              </div>
+              <i class="fa fa-cog"></i> <?= _("Edit Custom Person Fields") ?>
             </a>
           </li>
         <?php } ?>
       </ul>
       <br/>
-      <h4 class="control-sidebar-heading"><?= _("Other")?></h4>
+      <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _("Group") ?></h4>
       <ul class="control-sidebar-menu">
         <li>
           <a href="<?= $sRootPath ?>/PropertyList.php?Type=g">
-            <i class="menu-icon fa fa-cog bg-gray-light"></i>
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading"><?= _("Group Properties") ?></h4>
-            </div>
+            <i class="fa fa-cog"></i>  <?= _("Group Properties") ?>
           </a>
         </li>
         <li>
-          <a href="<?= $sRootPath ?>/PropertyTypeList.php">
-            <i class="menu-icon fa fa-cog bg-gray-light"></i>
-            <div class="menu-info">
-              <h4 class="control-sidebar-subheading"><?= _("Property Types") ?></h4>
-            </div>
+          <a href="<?= $sRootPath ?>/OptionManager.php?mode=grptypes">
+            <i class="fa fa-cog"></i>  <?= _("Edit Group Types") ?>
           </a>
         </li>
-        <?php if ($_SESSION['user']->isAdmin()) { ?>
+      </ul>
+      <br/>
+      <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _("Other") ?></h4>
+      <ul class="control-sidebar-menu">
+        <li>
+          <a href="<?= $sRootPath ?>/PropertyTypeList.php">
+            <i class="fa fa-cog"></i> <?= _("Property Types") ?>
+          </a>
+        </li>
+        <?php if ($isAdmin) { ?>
           <li>
             <a href="<?= $sRootPath ?>/VolunteerOpportunityEditor.php">
-              <i class="menu-icon fa fa-cog bg-yellow"></i>
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading"><?= _("Volunteer Opportunities") ?></h4>
-              </div>
+              <i class="fa fa-cog"></i> <?= _("Volunteer Opportunities") ?>
             </a>
           </li>
           <li>
             <a href="<?= $sRootPath ?>/DonationFundEditor.php">
-              <i class="menu-icon fa fa-money bg-yellow"></i>
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading"><?= _("Edit Donation Funds") ?></h4>
-              </div>
+              <i class="fa fa-cog"></i> <?= _("Edit Donation Funds") ?>
             </a>
           </li>
         <?php } ?>
@@ -145,7 +129,7 @@
     </div>
     <div id="control-sidebar-settings-tab" class="tab-pane">
       <div><h4 class="control-sidebar-heading"><?= gettext("System Settings") ?></h4>
-      <?php if ($_SESSION['user']->isAdmin()) { ?>
+        <?php if ($isAdmin) { ?>
           <ul class="control-sidebar-menu">
             <li>
               <a href="<?= $sRootPath ?>/SystemSettings.php">
@@ -165,15 +149,9 @@
             </li>
           </ul>
           <hr/>
-          <ul class="control-sidebar-menu">
-            <li>
-              <a href="<?= $sRootPath ?>/BackupDatabase.php">
-                <i class="menu-icon fa fa-database bg-green"></i>
-                <div class="menu-info">
-                  <h4 class="control-sidebar-subheading"><?= _("Backup Database") ?></h4>
-                </div>
-              </a>
-            </li>
+        <?php } ?>
+        <ul class="control-sidebar-menu">
+          <?php if ($isAdmin) { ?>
             <li>
               <a href="<?= $sRootPath ?>/RestoreDatabase.php">
                 <i class="menu-icon fa fa-database bg-yellow-gradient"></i>
@@ -183,10 +161,10 @@
               </a>
             </li>
             <li>
-              <a href="<?= $sRootPath ?>/CSVExport.php">
-                <i class="menu-icon fa fa-download bg-green"></i>
+              <a href="<?= $sRootPath ?>/BackupDatabase.php">
+                <i class="menu-icon fa fa-database bg-green"></i>
                 <div class="menu-info">
-                  <h4 class="control-sidebar-subheading"><?= _("CSV Export Records") ?></h4>
+                  <h4 class="control-sidebar-subheading"><?= _("Backup Database") ?></h4>
                 </div>
               </a>
             </li>
@@ -198,7 +176,17 @@
                 </div>
               </a>
             </li>
-          </ul>
+          <?php } ?>
+          <li>
+            <a href="<?= $sRootPath ?>/CSVExport.php">
+              <i class="menu-icon fa fa-download bg-green"></i>
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading"><?= _("CSV Export Records") ?></h4>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <?php if ($isAdmin) { ?>
           <hr/>
           <ul class="control-sidebar-menu">
             <li>
@@ -210,10 +198,10 @@
               </a>
             </li>
           </ul>
-      <?php } else {
-        echo _("Please contact your admin to change the system settings.");
-       }  ?>
-        </div>
+        <?php } else {
+          echo _("Please contact your admin to change the system settings.");
+        } ?>
+      </div>
     </div>
     <!-- /.tab-pane -->
 
@@ -237,7 +225,7 @@
         <!-- end task item -->
       <?php } ?>
 
-      <h3 class="control-sidebar-heading"><? _("Data Quality")?></h3>
+      <h3 class="control-sidebar-heading"><? _("Data Quality") ?></h3>
       <ul class="control-sidebar-menu">
         <!--li>
           <a href="javascript:void(0)">
