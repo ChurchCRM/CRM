@@ -188,7 +188,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp))
             <input type="checkbox" Name="bDirPhoto" value="1" checked><?= gettext("Photos") ?><br>
          <?php
          if ($numCustomFields > 0) {
-            while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_ASSOC) ){
+            while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC) ){
 					if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]]))
 					{ ?>
 		            <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>

@@ -94,7 +94,7 @@ $numCustomFields = mysqli_num_rows($rsCustomFields);
 if ($numCustomFields > 0)
 {
   $iFieldNum = 0;
-  while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQL_ASSOC))
+  while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC))
   {
     extract($rowCustomField);
     $sCustomFieldName[$iFieldNum] = $custom_Name;
