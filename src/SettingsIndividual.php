@@ -163,8 +163,8 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 <tr>
     <td>&nbsp;</td>
 	<td>
-        <input type=submit class='btn btn-primary'  name=save value='<?=  gettext("Save Settings") ?>'>
-	    <input type=submit class=btn name=cancel value='<?= gettext("Cancel") ?>'>
+        <input type=submit class='btn btn-primary'  name=save value="<?= gettext("Save Settings") ?>">
+	    <input type=submit class=btn name=cancel value="<?= gettext("Cancel") ?>">
 	</td>
 </tr>
 </table>

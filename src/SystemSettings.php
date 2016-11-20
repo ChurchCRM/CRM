@@ -255,7 +255,7 @@ $rsConfigs = RunQuery($sSQL);
             </div>
           </div>
         </div>
-        <input type=submit class='btn btn-primary' name=save value='<?= gettext("Save Settings") ?>'>
+        <input type=submit class='btn btn-primary' name=save value="<?= gettext("Save Settings") ?>">
     </div>
     </form>
   </div>
