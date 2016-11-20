@@ -1022,6 +1022,7 @@ require "Include/Header.php";
             </div>
         </div>
     </div>
+  <?php if ($numCustomFields > 0) { ?>
     <div class="box box-info clearfix">
         <div class="box-header">
             <h3 class="box-title"><?= gettext("Custom Fields") ?></h3>
@@ -1030,8 +1031,7 @@ require "Include/Header.php";
             </div>
         </div><!-- /.box-header -->
         <div class="box-body">
-            <?php if ($numCustomFields > 0) {
-                mysql_data_seek($rsCustomFields, 0);
+            <?php mysql_data_seek($rsCustomFields, 0);
 
                 while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH)) {
                     extract($rowCustomField);
@@ -1052,9 +1052,10 @@ require "Include/Header.php";
                         echo "</div></div>";
                     }
                 }
-            } ?>
+             ?>
         </div>
     </div>
+  <?php } ?>
     <input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="PersonSubmit">
     <?php if ($_SESSION['bAddRecords']) {
         echo "<input type=\"submit\" class=\"btn btn-primary\" value=\"" . gettext("Save and Add") . "\" name=\"PersonSubmitAndAdd\">";
