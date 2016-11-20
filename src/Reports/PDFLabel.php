@@ -633,13 +633,13 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         }
     }
 
-    $sAdultRole = $sDirRoleHead . "," . $sDirRoleSpouse;
+    $sAdultRole = SystemConfig::getValue("sDirRoleHead") . "," . SystemConfig::getValue("sDirRoleSpouse");
     $sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
     $aAdultRole = explode(",", $sAdultRole);
     $aAdultRole = array_unique($aAdultRole);
     sort($aAdultRole);
 
-    $sChildRole = trim($sDirRoleChild, " ,\t\n\r\0\x0B");
+    $sChildRole = trim(SystemConfig::getValue("sDirRoleChild"), " ,\t\n\r\0\x0B");
     $aChildRole = explode(",", $sChildRole);
     $aChildRole = array_unique($aChildRole);
     sort($aChildRole);
@@ -826,7 +826,7 @@ if ($sFileType == "PDF"){
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
-    if ($iPDFOutputType == 1)
+    if (SystemConfig::getValue("iPDFOutputType")S == 1)
         $pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", 'D');
     else
         $pdf->Output();
