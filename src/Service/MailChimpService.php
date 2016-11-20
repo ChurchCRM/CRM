@@ -1,6 +1,7 @@
 <?php
 
 namespace ChurchCRM\Service;
+use ChurchCRM\dto\SystemConfig;
 
 class MailChimpService
 {
@@ -13,7 +14,7 @@ class MailChimpService
 
    if (SystemConfig::getValue("mailChimpApiKey") != "") {
       $this->isActive = true;
-      $this->myMailchimp = new \Mailchimp($apikey);
+      $this->myMailchimp = new \Mailchimp(SystemConfig::getValue("mailChimpApiKey"));
     }
   }
 

@@ -27,6 +27,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -42,7 +43,7 @@ $pledge_filter = FilterInput($_POST["pledge_filter"]);
 $only_owe = FilterInput($_POST["only_owe"]);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly")) {
     Redirect("Menu.php");
     exit;
 }
@@ -198,31 +199,23 @@ class PDF_ReminderReport extends ChurchInfoReport {
 
     function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fundOnlyString, $iFYID) {
         $curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
-        $curY += 2 * $this->incrementY;
+        $curY += 2 * SystemConfig::getValue("incrementY");
         $blurb = SystemConfig::getValue("sReminder1") . MakeFYString ($iFYID) . $fundOnlyString . ".";
-        $this->WriteAt ($this->leftX, $curY, $blurb);
-        $curY += 2 * $this->incrementY;
+        $this->WriteAt (SystemConfig::getValue("leftX"), $curY, $blurb);
+        $curY += 2 * SystemConfig::getValue("incrementY");
         return ($curY);
     }
 
     function FinishPage ($curY) {
-        $curY += 2 * $this->incrementY;
-        $this->WriteAt ($this->leftX, $curY, "Sincerely,");
-        $curY += 4 * $this->incrementY;
-        $this->WriteAt ($this->leftX, $curY, SystemConfig::getValue("sReminderSigner"));
+        $curY += 2 * SystemConfig::getValue("incrementY");
+        $this->WriteAt (SystemConfig::getValue("leftX"), $curY, "Sincerely,");
+        $curY += 4 * SystemConfig::getValue("incrementY");
+        $this->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sReminderSigner"));
     }
 }
 
 // Instantiate the directory class and build the report.
 $pdf = new PDF_ReminderReport();
-
-// Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-    while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-        $pdf->$cfg_name = $cfg_value;
-    }
-}
 
 // Loop through families
 while ($aFam = mysql_fetch_array($rsFamilies)) {
@@ -285,7 +278,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     $totalAmountPledges = 0;
     $fundPledgeTotal = array ();
 
-    $summaryDateX = $pdf->leftX;
+    $summaryDateX = SystemConfig::getValue("leftX");
     $summaryFundX = 45;
     $summaryAmountX = 80;
 
@@ -366,7 +359,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
         $pdf->WriteAt ($summaryDateX, $curY, SystemConfig::getValue("sReminderNoPayments"));
         $curY += 2 * $summaryIntervalY;
     } else {
-        $summaryDateX = $pdf->leftX;
+        $summaryDateX = SystemConfig::getValue("leftX");
         $summaryCheckNoX = 40;
         $summaryMethodX = 60;
         $summaryFundX = 85;
@@ -464,7 +457,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
                 if ($amountDue < 0)
                     $amountDue = 0;
                 $amountStr = sprintf ("Amount due for %s: %.2f", $fun_name, $amountDue);
-                $pdf->WriteAt ($pdf->leftX, $curY, $amountStr);
+                $pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $amountStr);
                 $curY += $summaryIntervalY;
             }
         }
@@ -472,7 +465,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
     $pdf->FinishPage ($curY);
 }
 
-if ($iPDFOutputType == 1) {
+if (SystemConfig::getValue("iPDFOutputType") == 1) {
     $pdf->Output("ReminderReport" . date("Ymd") . ".pdf", "D");
 } else {
     $pdf->Output();

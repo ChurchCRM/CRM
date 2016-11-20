@@ -203,7 +203,7 @@ class AddressLatLon
   {
     if (!SystemConfig::getValue("bHaveXML"))
       return;
-    if (isset (SystemConfig::getValue("sGeocoderID")) && SystemConfig::getValue("sGeocoderID") != "") { // Use credentials if available for unthrottled access to the geocoder server
+    if (SystemConfig::getValue("sGeocoderID") && SystemConfig::getValue("sGeocoderID") != "") { // Use credentials if available for unthrottled access to the geocoder server
       $this->client = new XML_RPC_Client('/member/service/xmlrpc', 'rpc.geocoder.us');
       $this->client->SetCredentials(SystemConfig::getValue("sGeocoderID"), SystemConfig::getValue("sGeocoderPW"));
     } else {

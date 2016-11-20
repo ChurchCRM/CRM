@@ -16,6 +16,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -75,7 +76,7 @@ if (!$output)
 	$output = "pdf"; 
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly") && $output != "pdf") {
 	Redirect("Menu.php");
 	exit;
 }
@@ -316,14 +317,6 @@ if ($output == "pdf") {
 
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_TaxReport();
-	
-	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-	}
 	
 	$curY = $pdf->StartFirstPage ();
 	$curX = 0;

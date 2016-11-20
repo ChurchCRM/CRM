@@ -280,7 +280,7 @@ if (isset($_POST["UploadCSV"]))
         <?= gettext("NOTE: Separators (dashes, etc.) or lack thereof do not matter") ?>
         <BR><BR>
         <?php
-            $sCountry = $sDefaultCountry;
+            $sCountry = SystemConfig::getValue("sDefaultCountry");
             require "Include/CountryDropDown.php";
             echo gettext("Default country if none specified otherwise");
 
@@ -409,7 +409,7 @@ if (isset($_POST["DoImport"]))
             $iBirthYear = 0; $iBirthMonth = 0; $iBirthDay = 0; $iGender = 0; $dWedding = "0000-00-00";
             $sAddress1 = ""; $sAddress2 = ""; $sCity = ""; $sState = ""; $sZip = "";
             // Use the default country from the mapping form in case we don't find one otherwise
-            $sCountry = $sDefaultCountry;
+            $sCountry = SystemConfig::getValue("sDefaultCountry");
             $iEnvelope = 0;
 
             $sSQLpersonFields = "INSERT INTO person_per (";
@@ -814,9 +814,9 @@ if (isset($_POST["DoImport"]))
         unlink($csvTempFile);
 
         // role assignments from config
-        $aDirRoleHead = explode(",",$sDirRoleHead);
-        $aDirRoleSpouse = explode(",",$sDirRoleSpouse);
-        $aDirRoleChild = explode(",",$sDirRoleChild);
+        $aDirRoleHead = explode(",",SystemConfig::getValue("sDirRoleHead"));
+        $aDirRoleSpouse = explode(",",SystemConfig::getValue("sDirRoleSpouse"));
+        $aDirRoleChild = explode(",",SystemConfig::getValue("sDirRoleChild"));
 
         // update roles now that we have complete family data.
         foreach($Families as $fid=>$family)

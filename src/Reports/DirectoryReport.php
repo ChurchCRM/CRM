@@ -114,14 +114,6 @@ if ($numCustomFields > 0) {
     }
 }
 
-// Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-    while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-        $pdf->$cfg_name = $cfg_value;
-    }
-}
-
 $pdf->AddPage();
 
 if ($bDirUseTitlePage) $pdf->TitlePage();
@@ -286,15 +278,15 @@ while ($aRow = mysql_fetch_array($rsRecords))
             if (strlen($sCity)) { $OutStr .= $sCity . ", " . $sState . " " . $sZip . "\n";  }
         }
         if (($bDirFamilyPhone || $bDirPersonalPhone) && strlen($sHomePhone)) {
-            $TempStr = ExpandPhoneNumber($sHomePhone, $sDefaultCountry, $bWierd);
+            $TempStr = ExpandPhoneNumber($sHomePhone, SystemConfig::getValue("sDefaultCountry"), $bWierd);
             $OutStr .= "   " . gettext("Phone") . ": " . $TempStr . "\n";
         }
         if (($bDirFamilyWork || $bDirPersonalWork) && strlen($sWorkPhone)) {
-            $TempStr = ExpandPhoneNumber($sWorkPhone, $sDefaultCountry, $bWierd);
+            $TempStr = ExpandPhoneNumber($sWorkPhone, SystemConfig::getValue("sDefaultCountry"), $bWierd);
             $OutStr .= "   " . gettext("Work") . ": " . $TempStr . "\n";
         }
         if (($bDirFamilyCell || $bDirPersonalCell) && strlen($sCellPhone)) {
-            $TempStr = ExpandPhoneNumber($sCellPhone, $sDefaultCountry, $bWierd);
+            $TempStr = ExpandPhoneNumber($sCellPhone, SystemConfig::getValue("sDefaultCountry"), $bWierd);
             $OutStr .= "   " . gettext("Cell") . ": " . $TempStr . "\n";
         }
         if (($bDirFamilyEmail || $bDirPersonalEmail) && strlen($sEmail))
@@ -341,7 +333,7 @@ if($mysqlversion == 3 && $mysqlsubversion >= 22){
 }
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
     $pdf->Output("Directory-" . date("Ymd-Gis") . ".pdf", "D");
 else
     $pdf->Output();

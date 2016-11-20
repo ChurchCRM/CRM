@@ -20,6 +20,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 // Check for Create Directory user permission.
 if (!$bCreateDirectory) {
     Redirect("Menu.php");
@@ -53,17 +55,10 @@ $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysql_num_rows($rsCustomFields);
 
-$aDefaultClasses = explode(',', $sDirClassifications);
-$aDirRoleHead = explode(",",$sDirRoleHead);
-$aDirRoleSpouse = explode(",",$sDirRoleSpouse);
-$aDirRoleChild = explode(",",$sDirRoleChild);
-
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-    while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-        $$cfg_name = $cfg_value;
-    }
-}
+$aDefaultClasses = explode(',', SystemConfig::getValue("sDirClassifications"));
+$aDirRoleHead = explode(",",SystemConfig::getValue("sDirRoleHead"));
+$aDirRoleSpouse = explode(",",SystemConfig::getValue("sDirRoleSpouse"));
+$aDirRoleChild = explode(",",SystemConfig::getValue("sDirRoleChild"));
 
 // Get Field Security List Matrix
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
@@ -242,31 +237,31 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp))
                 </tr>
                 <tr>
                     <td><?= gettext("Church Name") ?></td>
-                    <td><input type="text" Name="sChurchName" value="<?= $sChurchName ?>"></td>
+                    <td><input type="text" Name="sChurchName" value="<?= SystemConfig::getValue("sChurchName") ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("Address") ?></td>
-                    <td><input type="text" Name="sChurchAddress" value="<?= $sChurchAddress ?>"></td>
+                    <td><input type="text" Name="sChurchAddress" value="<?= SystemConfig::getValue("sChurchAddress") ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("City") ?></td>
-                    <td><input type="text" Name="sChurchCity" value="<?= $sChurchCity ?>"></td>
+                    <td><input type="text" Name="sChurchCity" value="<?= SystemConfig::getValue("sChurchCity") ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("State") ?></td>
-                    <td><input type="text" Name="sChurchState" value="<?= $sChurchState ?>"></td>
+                    <td><input type="text" Name="sChurchState" value="<?= SystemConfig::getValue("sChurchState") ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("Zip") ?></td>
-                    <td><input type="text" Name="sChurchZip" value="<?= $sChurchZip ?>"></td>
+                    <td><input type="text" Name="sChurchZip" value="<?= SystemConfig::getValue("sChurchZip") ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("Phone") ?></td>
-                    <td><input type="text" Name="sChurchPhone" value="<?= $sChurchPhone ?>"></td>
+                    <td><input type="text" Name="sChurchPhone" value="<?= SystemConfig::getValue("sChurchPhone") ?>"></td>
                 </tr>
                 <tr>
                     <td><?= gettext("Disclaimer") ?></td>
-                    <td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?= "$sDirectoryDisclaimer1 $sDirectoryDisclaimer2" ?></textarea></td>
+                    <td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?= SystemConfig::getValue("sDirectoryDisclaimer1") . " " .  SystemConfig::getValue("sDirectoryDisclaimer2") ?></textarea></td>
                 </tr>
 
             </table>

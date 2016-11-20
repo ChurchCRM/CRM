@@ -33,9 +33,9 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
     die ("The Backup Utility will not work on a Windows based Server");
 }
 
-if (SystemConfig::getRawConfig("sGZIPname")) $hasGZIP = true;
-if (SystemConfig::getRawConfig("sZIPname")) $hasZIP = true;
-if (SystemConfig::getRawConfig("sPGPname")) $hasPGP = true;
+if (SystemConfig::getValue("sGZIPname")) $hasGZIP = true;
+if (SystemConfig::getValue("sZIPname")) $hasZIP = true;
+if (SystemConfig::getValue("sPGPname")) $hasPGP = true;
 
 
 

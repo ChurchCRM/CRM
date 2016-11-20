@@ -30,6 +30,7 @@
 require_once 'Functions.php';
 
 use ChurchCRM\Service\TaskService;
+use ChurchCRM\dto\SystemConfig;
 
 function Header_head_metatag() {
   global $bExportCSV, $sMetaRefresh, $sGlobalMessage;

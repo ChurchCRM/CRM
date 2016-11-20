@@ -17,6 +17,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -68,7 +69,7 @@ if (array_key_exists ("only_owe", $_POST))
 	$only_owe = FilterInput($_POST["only_owe"]);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly")) {
 	Redirect("Menu.php");
 	exit;
 }
@@ -216,14 +217,6 @@ $pdf->WriteAtCell ($famPledgeX, $y, $famPledgeWid, "Pledge");
 $pdf->WriteAtCell ($famPayX, $y, $famPayWid, "Paid");
 $pdf->WriteAtCell ($famOweX, $y, $famOweWid, "Owe");
 $y += $lineInc;
-
-// Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$pdf->$cfg_name = $cfg_value;
-	}
-}
 
 // Loop through families
 while ($aFam = mysql_fetch_array($rsFamilies)) {

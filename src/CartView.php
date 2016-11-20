@@ -261,7 +261,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 
 
 <?php
-    if (($bEmailSend) && ($bSendPHPMail)) {
+    if ((SystemConfig::getValue("bEmailSend")) && ($bSendPHPMail)) {
         if (isset($email_array)) {
             $bcc_list = "";
             foreach ($email_array as $email_address) {

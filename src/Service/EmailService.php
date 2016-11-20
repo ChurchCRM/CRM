@@ -1,6 +1,7 @@
 <?php
 
 namespace ChurchCRM\Service;
+use ChurchCRM\dto\SystemConfig;
 
 class EmailService
 {
