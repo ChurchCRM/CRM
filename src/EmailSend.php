@@ -42,7 +42,7 @@ $iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
 
 // Security: Both global and user permissions needed to send email.
 // Otherwise, re-direct them to the main menu.
-if (!($bEmailSend && $bSendPHPMail))
+if (!(SystemConfig::getValue("bEmailSend") && $bSendPHPMail))
 {
     Redirect('Menu.php');
     exit;

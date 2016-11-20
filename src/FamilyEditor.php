@@ -102,7 +102,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	$sZip = FilterInput($_POST["Zip"]);
 
 	// bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-	if($cfgForceUppercaseZip)$sZip=strtoupper($sZip);
+	if(SystemConfig::getValue("cfgForceUppercaseZip"))$sZip=strtoupper($sZip);
 
 	$sCountry = FilterInput($_POST["Country"]);
 	$iFamilyMemberRows = FilterInput($_POST["FamCount"]);
@@ -615,9 +615,9 @@ else
 	{
 		//Adding....
 		//Set defaults
-		$sCity = $sDefaultCity;
-		$sCountry = $sDefaultCountry;
-		$sState = $sDefaultState;
+		$sCity = SystemConfig::getValue("sDefaultCity");
+		$sCountry = SystemConfig::getValue("sDefaultCountry");
+		$sState = SystemConfig::getValue("sDefaultState");
 		$iClassification = "0";
 		$iFamilyMemberRows = 6;
 		$bOkToCanvass = 1;
@@ -734,7 +734,7 @@ require "Include/Header.php";
 							?></label>
 						<input type="text" Name="Zip"  class="form-control" <?php
 							// bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-							if($cfgForceUppercaseZip)echo 'style="text-transform:uppercase" ';
+							if(SystemConfig::getValue("cfgForceUppercaseZip"))echo 'style="text-transform:uppercase" ';
 							echo 'value="' . htmlentities(stripslashes($sZip), ENT_NOQUOTES, "UTF-8") . '" '; ?>
 							maxlength="10" size="8">
 					</div>
@@ -743,7 +743,7 @@ require "Include/Header.php";
 						<?php require "Include/CountryDropDown.php" ?>
 					</div>
 				</div>
-				<?php if (!$bHideLatLon) { /* Lat/Lon can be hidden - General Settings */
+				<?php if (!SystemConfig::getValue("bHideLatLon")) { /* Lat/Lon can be hidden - General Settings */
 					if (!$bHaveXML) { // No point entering if values will just be overwritten ?>
 				<div class="row">
 					<div class="form-group col-md-3">
@@ -810,7 +810,7 @@ require "Include/Header.php";
 						<input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><font color="red"><?php echo "<BR>" . $sEmailError ?></font>
 					</div>
 				</div>
-				<?php if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
+				<?php if (!SystemConfig::getValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
 				<div class="form-group col-md-4">
 					<label><?= gettext("Send Newsletter") ?>:</label><br/>
 					<input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) echo " checked"; ?>>
@@ -827,7 +827,7 @@ require "Include/Header.php";
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
-			<?php if (!$bHideWeddingDate) { /* Wedding Date can be hidden - General Settings */
+			<?php if (!SystemConfig::getValue("bHideWeddingDate")) { /* Wedding Date can be hidden - General Settings */
 				if ($dWeddingDate == "0000-00-00" || $dWeddingDate == "NULL") $dWeddingDate = ""; ?>
 				<div class="row">
 					<div class="form-group col-md-4">
@@ -880,7 +880,7 @@ require "Include/Header.php";
 			</div>
 		</div>
 	</div>
-	<?php if ($bUseDonationEnvelopes) { /* Donation envelopes can be hidden - General Settings */ ?>
+	<?php if (SystemConfig::getValue("bUseDonationEnvelopes")) { /* Donation envelopes can be hidden - General Settings */ ?>
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3><?= gettext("Envelope Info") ?></h3>
