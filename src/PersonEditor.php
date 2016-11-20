@@ -991,21 +991,6 @@ require "Include/Header.php";
                   } ?>
                 </select>
               </div>
-                <?php if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
-                    <div class="form-group col-md-2">
-                        <label><?= gettext("Friend Date") ?>:</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" name="FriendDate" class="form-control date-picker"
-                                   value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="10"
-                                   placeholder="YYYY-MM-DD">
-                            <?php if ($sFriendDateError) { ?><font
-                                color="red"><?php echo $sFriendDateError ?></font><?php } ?>
-                        </div>
-                    </div>
-                <?php } ?>
                 <div class="form-group col-md-2">
                     <label><?= gettext("Membership Date") ?>:</label>
                     <div class="input-group">
@@ -1019,6 +1004,21 @@ require "Include/Header.php";
                             color="red"><?= $sMembershipDateError ?></font><?php } ?>
                     </div>
                 </div>
+              <?php if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
+                <div class="form-group col-md-2">
+                  <label><?= gettext("Friend Date") ?>:</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" name="FriendDate" class="form-control date-picker"
+                           value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="10"
+                           placeholder="YYYY-MM-DD">
+                    <?php if ($sFriendDateError) { ?><font
+                      color="red"><?php echo $sFriendDateError ?></font><?php } ?>
+                  </div>
+                </div>
+              <?php } ?>
             </div>
         </div>
     </div>
