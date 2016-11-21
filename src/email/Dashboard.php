@@ -58,8 +58,8 @@ require '../Include/Header.php';
             <h3 class="box-title"><?= gettext("List") ?>: <?= $list["name"] ?></h3>
           </div>
           <div class="box-body">
-            <?
-            echo "<table width='300px''>";
+            <?php
+            echo "<table width='300px'>";
             echo "<tr><td><b>" . gettext('Members:') . "</b> </td><td>" . $list["stats"]["member_count"] . "</td></tr>";
             echo "<tr><td><b>" . gettext('Campaigns:') . "</b> </td><td>" . $list["stats"]["campaign_count"] . "</td></tr>";
             echo "<tr><td><b>" . gettext('Unsubscribed count:') . "</b> </td><td>" . $list["stats"]["unsubscribe_count"] . "</td></tr>";

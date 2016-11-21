@@ -977,52 +977,53 @@ require "Include/Header.php";
         </div><!-- /.box-header -->
         <div class="box-body">
             <div class="row">
-                <?php if (!SystemConfig::getValue("bHideFriendDate")) { /* Friend Date can be hidden - General Settings */ ?>
-                    <div class="form-group col-md-4">
-                        <label><?= gettext("Friend Date") ?>:</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" name="FriendDate" class="form-control inputDatePicker date-picker"
-                                   value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="11"
-                                   placeholder="YYYY-MM-DD">
-                            <?php if ($sFriendDateError) { ?><font
-                                color="red"><?php echo $sFriendDateError ?></font><?php } ?>
-                        </div>
-                    </div>
-                <?php } ?>
-                <div class="form-group col-md-4">
+              <div class="form-group col-md-3 col-lg-3">
+                <label><?= gettext("Classification") ?>:</label>
+                <select name="Classification" class="form-control">
+                  <option value="0"><?= gettext("Unassigned") ?></option>
+                  <option value="0" disabled>-----------------------</option>
+                  <?php while ($aRow = mysql_fetch_array($rsClassifications)) {
+                    extract($aRow);
+                    echo "<option value=\"" . $lst_OptionID . "\"";
+                    if ($iClassification == $lst_OptionID) {
+                      echo " selected";
+                    }
+                    echo ">" . $lst_OptionName . "&nbsp;";
+                  } ?>
+                </select>
+              </div>
+                <div class="form-group col-md-3 col-lg-3">
                     <label><?= gettext("Membership Date") ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" name="MembershipDate" class="form-control inputDatePicker date-picker"
+                        <input type="text" name="MembershipDate" class="form-control date-picker"
                                value="<?= $dMembershipDate ?>" maxlength="10" id="sel1" size="11"
                                placeholder="YYYY-MM-DD">
                         <?php if ($sMembershipDateError) { ?><font
                             color="red"><?= $sMembershipDateError ?></font><?php } ?>
                     </div>
                 </div>
-            </div>
-            <div class="form-group col-md-4">
-                <label><?= gettext("Classification") ?>:</label>
-                <select name="Classification" class="form-control">
-                    <option value="0"><?= gettext("Unassigned") ?></option>
-                    <option value="0" disabled>-----------------------</option>
-                    <?php while ($aRow = mysql_fetch_array($rsClassifications)) {
-                        extract($aRow);
-                        echo "<option value=\"" . $lst_OptionID . "\"";
-                        if ($iClassification == $lst_OptionID) {
-                            echo " selected";
-                        }
-                        echo ">" . $lst_OptionName . "&nbsp;";
-                    } ?>
-                </select>
+              <?php if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
+                <div class="form-group col-md-3 col-lg-3">
+                  <label><?= gettext("Friend Date") ?>:</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" name="FriendDate" class="form-control date-picker"
+                           value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="10"
+                           placeholder="YYYY-MM-DD">
+                    <?php if ($sFriendDateError) { ?><font
+                      color="red"><?php echo $sFriendDateError ?></font><?php } ?>
+                  </div>
+                </div>
+              <?php } ?>
             </div>
         </div>
     </div>
+  <?php if ($numCustomFields > 0) { ?>
     <div class="box box-info clearfix">
         <div class="box-header">
             <h3 class="box-title"><?= gettext("Custom Fields") ?></h3>
@@ -1031,8 +1032,7 @@ require "Include/Header.php";
             </div>
         </div><!-- /.box-header -->
         <div class="box-body">
-            <?php if ($numCustomFields > 0) {
-                mysql_data_seek($rsCustomFields, 0);
+            <?php mysql_data_seek($rsCustomFields, 0);
 
                 while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH)) {
                     extract($rowCustomField);
@@ -1053,9 +1053,10 @@ require "Include/Header.php";
                         echo "</div></div>";
                     }
                 }
-            } ?>
+             ?>
         </div>
     </div>
+  <?php } ?>
     <input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="PersonSubmit">
     <?php if ($_SESSION['bAddRecords']) {
         echo "<input type=\"submit\" class=\"btn btn-primary\" value=\"" . gettext("Save and Add") . "\" name=\"PersonSubmitAndAdd\">";
