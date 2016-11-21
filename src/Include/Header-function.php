@@ -138,7 +138,7 @@ function Header_body_scripts() {
     };
 
     window.CRM.VerifyThenLoadAPIContent = function(url) {
-      var error = '<?=gettext("There was a problem retrieving the requested object") ?>';
+      var error = "<?= gettext("There was a problem retrieving the requested object") ?>";
       $.ajax({
         type: 'HEAD',
         url: url,
