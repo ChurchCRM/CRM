@@ -672,7 +672,7 @@ CREATE TABLE `menuconfig_mcf` (
   `sortorder` tinyint(3) NOT NULL,
   `icon` varchar(50) DEFAULT NULL,
   PRIMARY KEY  (`mid`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=102 ;
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=90 ;
 
 --
 -- Dumping data for table `menuconfig_mcf`
