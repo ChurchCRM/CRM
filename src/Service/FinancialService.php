@@ -277,8 +277,8 @@ class FinancialService
   function getMemberByScanString($sstrnig)
   {
     requireUserGroupMembership("bFinance");
-    global $bUseScannedChecks;
-    if ($bUseScannedChecks) {
+    global SystemConfig::getValue("bUseScannedChecks");
+    if (SystemConfig::getValue("bUseScannedChecks")) {
       require "../Include/MICRFunctions.php";
       $micrObj = new MICRReader(); // Instantiate the MICR class
       $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
@@ -478,7 +478,7 @@ class FinancialService
         if ($fund->Amount > 0) {
           ++$nonZeroFundAmountEntered;
         }
-        if ($GLOBALS['bEnableNonDeductible'] && isset($fund->NonDeductible)) {
+        if (SystemConfig::getValue("bEnableNonDeductible") && isset($fund->NonDeductible)) {
           //Validate the NonDeductible Amount
           if ($fund->NonDeductible > $fund->Amount) { //Validate the NonDeductible Amount
             throw new \Exception (gettext("NonDeductible amount can't be greater than total amount."));

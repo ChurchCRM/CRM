@@ -84,7 +84,7 @@ while ($aPer = mysql_fetch_array($rsPersons)) {
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
 	$pdf->Output("NameTags" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();

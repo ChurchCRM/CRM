@@ -224,7 +224,7 @@ if ($output == "pdf") {
 			$curY += 3 * SystemConfig::getValue("incrementY");
 			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, "Sincerely,");
 			$curY += 4 * SystemConfig::getValue("incrementY");
-			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sTaxSigner");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sTaxSigner"));
 
 			if ($remittance == "yes"){
 				// Add remittance slip

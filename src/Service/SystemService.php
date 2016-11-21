@@ -112,11 +112,11 @@ class SystemService
     exec("rm -rf  $backup->backupRoot");
     exec("mkdir  $backup->backupRoot");
     // Check to see whether this installation has gzip, zip, and gpg
-    if (SystemConfig::getRawConfig("sGZIPname"))
+    if (SystemConfig::getValue("sGZIPname"))
       $hasGZIP = true;
-    if (SystemConfig::getRawConfig("sZIPname"))
+    if (SystemConfig::getValue("sZIPname"))
       $hasZIP = true;
-    if (SystemConfig::getRawConfig("sPGPname"))
+    if (SystemConfig::getValue("sPGPname"))
       $hasPGP = true;
 
     $backup->params = $params;
@@ -139,7 +139,7 @@ class SystemService
         break;
       case 1: #The user wants a .zip file
         $backup->saveTo .= ".zip";
-        $backup->compressCommand = SystemConfig::getRawConfig("sZIPname")." -r -y -q -9 $backup->saveTo $backup->backupRoot";
+        $backup->compressCommand = SystemConfig::getValue("sZIPname")." -r -y -q -9 $backup->saveTo $backup->backupRoot";
         exec($backup->compressCommand, $returnString, $returnStatus);
         $backup->archiveResult = $returnString;
         break;
@@ -157,7 +157,7 @@ class SystemService
 
     if ($params->bEncryptBackup) {  #the user has selected an encrypted backup
       putenv("GNUPGHOME=/tmp");
-      $backup->encryptCommand = "echo $params->password | " . SystemConfig::getRawConfig("sPGPname") . " -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
+      $backup->encryptCommand = "echo $params->password | " . SystemConfig::getValue("sPGPname") . " -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
       $backup->saveTo .= ".gpg";
       system($backup->encryptCommand);
       $archiveType = 3;
@@ -182,16 +182,15 @@ class SystemService
 
   function copyBackupToExternalStorage()
   {
-    global $sExternalBackupType, $sExternalBackupUsername, $sExternalBackupPassword, $sExternalBackupEndpoint;
-    if (strcasecmp($sExternalBackupType, "WebDAV") == 0) {
-      if ($sExternalBackupUsername && $sExternalBackupPassword && $sExternalBackupEndpoint) {
+    if (strcasecmp(SystemConfig::getValue("sExternalBackupType"), "WebDAV") == 0) {
+      if (SystemConfig::getValue("sExternalBackupUsername") && SystemConfig::getValue("sExternalBackupPassword") && SystemConfig::getValue("sExternalBackupEndpoint")) {
         $params = new \stdClass();
         $params->iArchiveType = 3;
         $backup = $this->getDatabaseBackup($params);
-        $backup->credentials = $sExternalBackupUsername . ":" . $sExternalBackupPassword;
+        $backup->credentials = SystemConfig::getValue("sExternalBackupUsername") . ":" . SystemConfig::getValue("sExternalBackupPassword");
         $backup->filesize = filesize($backup->saveTo);
         $fh = fopen($backup->saveTo, 'r');
-        $backup->remoteUrl = $sExternalBackupEndpoint;
+        $backup->remoteUrl = SystemConfig::getValue("sExternalBackupEndpoint");
         $ch = curl_init($backup->remoteUrl . $backup->filename);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
         curl_setopt($ch, CURLOPT_USERPWD, $backup->credentials);
@@ -204,13 +203,13 @@ class SystemService
       } else {
         throw new \Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set", 500);
       }
-    } elseif (strcasecmp($sExternalBackupType, "Local") == 0) {
+    } elseif (strcasecmp(SystemConfig::getValue("sExternalBackupType"), "Local") == 0) {
       try {
         $backup = $this->getDatabaseBackup($params);
-        exec("mv " . $backup->saveTo . " " . $sExternalBackupEndpoint);
+        exec("mv " . $backup->saveTo . " " . SystemConfig::getValue("sExternalBackupEndpoint"));
         return ($backup);
       } catch (\Exception $exc) {
-        throw new \Exception("The local path $sExternalBackupEndpoint is not writeable.  Unable to store backup.", 500);
+        throw new \Exception("The local path SystemConfig::getValue("sExternalBackupEndpoint") is not writeable.  Unable to store backup.", 500);
       }
 
     }
@@ -373,7 +372,7 @@ class SystemService
         $now = new \DateTime();  //get the current time
         $previous = new \DateTime(SystemConfig::getValue("sLastBackupTimeStamp")); // get a DateTime object for the last time a backup was done.
         $diff = $previous->diff($now);  // calculate the difference.
-        if (!SystemConfig::getValue("sLastBackupTimeStamp") || $diff->h >= $sExternalBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+        if (!SystemConfig::getValue("sLastBackupTimeStamp") || $diff->h >= SystemConfig::getValue("sExternalBackupAutoInterval"))  // if there was no previous backup, or if the interval suggests we do a backup now.
         {
           $this->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
           $now = new \DateTime();  // update the LastBackupTimeStamp.
