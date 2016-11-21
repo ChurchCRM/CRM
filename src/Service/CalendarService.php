@@ -69,7 +69,8 @@ class CalendarService
     $Anniversaries = FamilyQuery::create()
       ->filterByWeddingDate(array('min' => '0001-00-00')) // a Wedding Date
       ->find();
-
+    $curYear = date("Y");
+    $curMonth = date("m");
     foreach ($Anniversaries as $anniversary) {
       $year = $curYear;
       if ($anniversary->getWeddingMonth() < $curMonth) {

@@ -1,5 +1,5 @@
 
-<div style="background-color: white; padding-top: 5px; padding-bottom: 5px; text-align: center">
+<div style="background-color: white; padding-top: 5px; padding-bottom: 5px; text-align: center; position: fixed; bottom: 0; width: 100%">
   <strong><?= gettext("Copyright") ?> &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext("All rights reserved")?>.
 </div>
 
