@@ -19,6 +19,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bAdmin'])
