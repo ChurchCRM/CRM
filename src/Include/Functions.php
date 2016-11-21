@@ -59,8 +59,8 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
   }
 
   // Check for login timeout.  If login has expired, redirect to login page
-  if ($sSessionTimeout > 0) {
-    if ((time() - $_SESSION['tLastOperation']) > $sSessionTimeout) {
+  if (SystemConfig::getValue("sSessionTimeout") > 0) {
+    if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue("sSessionTimeout")) {
       Redirect("Login.php?Timeout");
       exit;
     } else {
@@ -308,12 +308,11 @@ function Redirect($sRelativeURL)
 // Returns the current fiscal year
 function CurrentFY()
 {
-  global $iFYMonth;
 
   $yearNow = date("Y");
   $monthNow = date("m");
   $FYID = $yearNow - 1996;
-  if ($monthNow >= $iFYMonth && $iFYMonth > 1)
+  if ($monthNow >= SystemConfig::getValue("iFYMonth") && SystemConfig::getValue("iFYMonth") > 1)
     $FYID += 1;
   return ($FYID);
 }
@@ -337,10 +336,10 @@ function PrintFYIDSelect($iFYID, $selectName)
 // Formats a fiscal year string
 function MakeFYString($iFYID)
 {
-  global $iFYMonth;
+  
   $monthNow = date("m");
 
-  if ($iFYMonth == 1)
+  if (SystemConfig::getValue("iFYMonth") == 1)
     return (1996 + $iFYID);
   else
     return (1995 + $iFYID . "/" . substr(1996 + $iFYID, 2, 2));
@@ -351,12 +350,11 @@ function MakeFYString($iFYID)
 function RunQuery($sSQL, $bStopOnError = true)
 {
   global $cnInfoCentral;
-  global $debug;
 
   if ($result = mysql_query($sSQL, $cnInfoCentral))
     return $result;
   elseif ($bStopOnError) {
-    if ($debug)
+    if (SystemConfig::getValue("debug"))
       die(gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysql_error());
     else
       die("Database error or invalid data");
@@ -454,12 +452,11 @@ function ConvertCartToString($aCartArray)
 
 function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
 {
-  global $bShowFamilyData;
 
   $finalData = "";
   $isFamily = false;
 
-  if ($bShowFamilyData) {
+  if (SystemConfig::getValue("bShowFamilyData")) {
     if ($sPersonInfo != "") {
       $finalData = $sPersonInfo;
     } elseif ($sFamilyInfo != "") {
@@ -484,9 +481,8 @@ function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
 //
 function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddress1, $sPersonAddress2, $sFamilyAddress1, $sFamilyAddress2, $bFormat = false)
 {
-  global $bShowFamilyData;
 
-  if ($bShowFamilyData) {
+  if (SystemConfig::getValue("bShowFamilyData")) {
 
     if ($bFormat) {
       $sFamilyInfoBegin = "<span style='color: red;'>";
@@ -1802,7 +1798,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
               echo "$mailers[$n] replied: $response\n";
             }
             $cmds = array(
-              "HELO $sSMTPHost",  # Be sure to set this correctly!
+              "HELO SystemConfig::getValue("sSMTPHost")",  # Be sure to set this correctly!
               "MAIL FROM: <$probe_address>",
               "RCPT TO: <$email>",
               "QUIT",
@@ -2005,7 +2001,7 @@ function random_color()
 function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
   foreach ($roleEmails as $role => $Email) {
-    if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($Email, $sToEmailAddress))
+    if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($Email, SystemConfig::getValue("sToEmailAddress")))
       $Email .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
     $Email = urlencode($Email);  // Mailto should comply with RFC 2368
     ?>

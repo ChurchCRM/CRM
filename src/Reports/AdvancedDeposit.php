@@ -15,6 +15,7 @@
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
+
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
 
@@ -231,15 +232,15 @@ if ($output == "pdf") {
 			$curY = 20;
 			$curX = 60;
 			$this->SetFont('Times','B', 14);
-			$this->WriteAt ($curX, $curY, $this->sChurchName . " Deposit Report");
-			$curY += 2 * $this->incrementY;
+			$this->WriteAt ($curX, $curY, SystemConfig::getValue("sChurchName") . " Deposit Report");
+			$curY += 2 * SystemConfig::getValue("incrementY");
 			$this->SetFont('Times','B', 10);
-			$curX = $this->leftX;
+			$curX = SystemConfig::getValue("leftX");
 			$this->WriteAt ($curX, $curY, "Data sorted by " . ucwords($sort));
-			$curY += $this->incrementY;
+			$curY += SystemConfig::getValue("incrementY");
 			if (!$iDepID) {
 				$this->WriteAt ($curX, $curY, "$datetype Dates: $sDateStart through $sDateEnd");
-				$curY += $this->incrementY;
+				$curY += SystemConfig::getValue("incrementY");
 			}
 			if ($iDepID || $_POST['family'][0] || $_POST['funds'][0] || $_POST['method'][0]){
 				$heading = "Filtered by ";
@@ -256,7 +257,7 @@ if ($output == "pdf") {
 				$heading = "Showing all records for report dates.";
 			}
 			$this->WriteAt ($curX, $curY, $heading);
-			$curY += 2 * $this->incrementY;
+			$curY += 2 * SystemConfig::getValue("incrementY");
 			$this->SetFont("Times",'',10);
 			return ($curY);
 		}
@@ -278,7 +279,7 @@ if ($output == "pdf") {
 		function Headings ($curY) {
 			global $sort, $summaryIntervalY;
 			if ($sort == "deposit"){
-				$curX = $this->leftX;
+				$curX = SystemConfig::getValue("leftX");
 				$this->SetFont('Times','BU', 10);
 				$this->WriteAt ($curX, $curY, "Chk No.");
 				$this->WriteAt (40, $curY, "Fund");
@@ -287,7 +288,7 @@ if ($output == "pdf") {
 				$this->WriteAt (181, $curY, "Amount");
 				$curY += 2 * $summaryIntervalY;
 			} elseif ($sort == "fund") {
-				$curX = $this->leftX;
+				$curX = SystemConfig::getValue("leftX");
 				$this->SetFont('Times','BU', 10);
 				$this->WriteAt ($curX, $curY, "Chk No.");
 				$this->WriteAt (40, $curY, "Deposit No./ Date");
@@ -296,7 +297,7 @@ if ($output == "pdf") {
 				$this->WriteAt (181, $curY, "Amount");
 				$curY += 2 * $summaryIntervalY;
 			} elseif ($sort == "family") {
-				$curX = $this->leftX;
+				$curX = SystemConfig::getValue("leftX");
 				$this->SetFont('Times','BU', 10);
 				$this->WriteAt ($curX, $curY, "Chk No.");
 				$this->WriteAt (40, $curY, "Deposit No./Date");
@@ -424,7 +425,7 @@ if ($output == "pdf") {
 				
 				// Print Data
 				$pdf->SetFont('Times','', 10);
-				$pdf->SetXY($pdf->leftX,$curY);
+				$pdf->SetXY(SystemConfig::getValue("leftX"),$curY);
 				$pdf->Cell (16, $summaryIntervalY, $plg_CheckNo,0,0,"R");
 				$pdf->Cell (40, $summaryIntervalY, $sfun_Name);
 				$pdf->Cell (55, $summaryIntervalY, $fam_Name);
@@ -573,7 +574,7 @@ if ($output == "pdf") {
 				
 				// Print Data
 				$pdf->SetFont('Times','', 10);
-				$pdf->SetXY($pdf->leftX,$curY);
+				$pdf->SetXY(SystemConfig::getValue("leftX"),$curY);
 				$pdf->Cell (16, $summaryIntervalY, $plg_CheckNo,0,0,"R");
 				$pdf->Cell (40, $summaryIntervalY, $sDeposit);
 				$pdf->Cell (55, $summaryIntervalY, $fam_Name);
@@ -723,7 +724,7 @@ if ($output == "pdf") {
 				
 				// Print Data
 				$pdf->SetFont('Times','', 10);
-				$pdf->SetXY($pdf->leftX,$curY);
+				$pdf->SetXY(SystemConfig::getValue("leftX"),$curY);
 				$pdf->Cell (16, $summaryIntervalY, $plg_CheckNo,0,0,"R");
 				$pdf->Cell (40, $summaryIntervalY, $sDeposit);
 				$pdf->Cell (55, $summaryIntervalY, $sFundName);

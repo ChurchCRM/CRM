@@ -112,7 +112,7 @@ if ($currentUser != Null)
     $sPasswordHashSha256 = hash("sha256", $_POST['Password'].$currentUser->getPersonId());
 
     // Block the login if a maximum login failure count has been reached
-    if ($iMaxFailedLogins > 0 && $currentUser->getFailedLogins() >= $iMaxFailedLogins)
+    if (SystemConfig::getValue("iMaxFailedLogins") > 0 && $currentUser->getFailedLogins() >= SystemConfig::getValue("iMaxFailedLogins"))
     {
         $sErrorText = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
     }
@@ -236,7 +236,6 @@ if ($currentUser != Null)
 
         // Set the Root Path ... used in basic security check
         $_SESSION['sRootPath'] = $sRootPath;
-        $_SESSION['$sEnableGravatarPhotos'] = $sEnableGravatarPhotos;
 
         $_SESSION['bHasMagicQuotes'] = 0;
 
@@ -272,9 +271,9 @@ if ($currentUser != Null)
 ob_start();
 
 $enableSelfReg = $false;
-if ( SystemConfig::getRawConfig("sEnableSelfRegistration") )
+if ( SystemConfig::getValue("sEnableSelfRegistration") )
 {
-  $enableSelfReg = SystemConfig::getRawConfig("sEnableSelfRegistration")->getBooleanValue();
+  $enableSelfReg = SystemConfig::getValue("sEnableSelfRegistration");
 }
 
 // Set the page title and include HTML header

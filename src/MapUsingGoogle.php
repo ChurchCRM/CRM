@@ -51,7 +51,7 @@ if (SystemConfig::getValue("nChurchLatitude") == "") {
         <div id="map" class="col-lg-12" style="height: 400px;"></div>
         <script type="text/javascript">
             var mapOptions = {
-               center: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude ?>),
+               center: new google.maps.LatLng(<?= SystemConfig::getValue("nChurchLatitude") . ", " . SystemConfig::getValue("nChurchLongitude") ?>),
                zoom: 4,
                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -66,11 +66,11 @@ if (SystemConfig::getValue("nChurchLatitude") == "") {
             var churchMark = new google.maps.Marker({
                 icon: window.CRM.root + "/skin/icons/church.png",
                 shadow: shadow,
-                position: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude ?>),
+                position: new google.maps.LatLng(<?= SystemConfig::getValue("nChurchLatitude") . ", " . SystemConfig::getValue("nChurchLongitude") ?>),
                 map: map});
 	 
 
-            var churchInfoWin = new google.maps.InfoWindow({content: "<?= $sChurchName . "<p>" . $sChurchAddress . "<p>" . $sChurchCity . ", " . $sChurchState . "  " . $sChurchZip; ?>"});
+            var churchInfoWin = new google.maps.InfoWindow({content: "<?= SystemConfig::getValue("sChurchName") . "<p>" . SystemConfig::getValue("sChurchAddress") . "<p>" . SystemConfig::getValue("sChurchCity") . ", " . SystemConfig::getValue("sChurchState") . "  " . SystemConfig::getValue("sChurchZip"); ?>"});
 
             google.maps.event.addListener(churchMark, "click", function() {
                 churchInfoWin.open(map,churchMark);
@@ -104,7 +104,7 @@ if (SystemConfig::getValue("nChurchLatitude") == "") {
                     $appendToQuery .= ")";
                 }
 
-                $sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( $sDirRoleHead )";
+                $sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( SystemConfig::getValue("sDirRoleHead") )";
                 $sSQL .= $appendToQuery;
                 $rsFams = RunQuery ($sSQL);
                 $markerIcons =  explode ( "," , SystemConfig::getValue("sGMapIcons") );

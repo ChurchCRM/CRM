@@ -14,14 +14,14 @@
  *
  ******************************************************************************/
 
-global $iChecksPerDepositForm;
-
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-use ChurchCRM\MICRReader;
 
-if ($bUseScannedChecks) { // Instantiate the MICR class
+use ChurchCRM\MICRReader;
+use ChurchCRM\dto\SystemConfig;
+
+if (SystemConfig::getValue("bUseScannedChecks")) { // Instantiate the MICR class
    $micrObj = new MICRReader();
 }
 
@@ -397,7 +397,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
 
 	//$iCheckNo = 0;
 	// Take care of match-family first- select the family based on the scanned check
-	if ($bUseScannedChecks && isset($_POST["MatchFamily"])) {
+	if (SystemConfig::getValue("bUseScannedChecks") && isset($_POST["MatchFamily"])) {
 		$tScanString = FilterInput($_POST["ScanInput"]);
 
 		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
@@ -489,7 +489,7 @@ if ($PledgeOrPayment == 'Pledge') {
 } elseif ($iCurrentDeposit) {
 	$sPageTitle = gettext("Payment Editor: ") . $dep_Type . gettext(" Deposit Slip #") . $iCurrentDeposit . " ($dep_Date)";
 
-	$checksFit = $iChecksPerDepositForm;
+	$checksFit = SystemConfig::getValue("iChecksPerDepositForm");
 
 	$sSQL = "SELECT plg_FamID, plg_plgID, plg_checkNo, plg_method from pledge_plg where plg_method=\"CHECK\" and plg_depID=" . $iCurrentDeposit;
 	$rsChecksThisDep = RunQuery ($sSQL);
@@ -563,7 +563,7 @@ require "Include/Header.php";
 		<table border="0" cellspacing="0" cellpadding="2">
 		<td valign="top" align="left">
 		<table cellpadding="2">
-			<?php if ($dep_Type == 'Bank' && $bUseDonationEnvelopes) { ?>
+			<?php if ($dep_Type == 'Bank' && SystemConfig::getValue("bUseDonationEnvelopes")) { ?>
 			<tr>
 				<td class="PaymentLabelColumn"><?= gettext("Envelope Number") ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
@@ -747,13 +747,13 @@ $(document).ready(function() {
 		</td>
 
 		<tr>
-		<?php if ($bUseScannedChecks && ($dep_Type == 'Bank' || $PledgeOrPayment == 'Pledge')) { ?>
+		<?php if (SystemConfig::getValue("bUseScannedChecks") && ($dep_Type == 'Bank' || $PledgeOrPayment == 'Pledge')) { ?>
 			<td align="center" class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Scan check") ?>
 			<textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea></td>
 		<?php } ?>
 
 			<td align="center">
-			<?php if ($bUseScannedChecks && $dep_Type == 'Bank') { ?>
+			<?php if (SystemConfig::getValue("bUseScannedChecks") && $dep_Type == 'Bank') { ?>
 				<input type="submit" class="btn" value="<?= gettext("find family from check account #") ?>" name="MatchFamily">
 				<input type="submit" class="btn" value="<?= gettext("Set default check account number for family") ?>" name="SetDefaultCheck">
 	        <?php } ?>
@@ -791,7 +791,7 @@ $(document).ready(function() {
           <font color="red"><?= $sAmountError[$fun_id] ?></font>
         </td>
         <?php
-				if ($bEnableNonDeductible) {
+				if (SystemConfig::getValue("bEnableNonDeductible")) {
 					echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
 				}
 				echo "<td class=\"TextColumn\"><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";

@@ -21,7 +21,7 @@ require "Include/Functions.php";
 
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
-
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PersonQuery;
 
 $timelineService = new TimelineService();
@@ -256,7 +256,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               <?php } ?>
             </li>
           <?php }
-          if (!$bHideFriendDate && $per_FriendDate != "") { /* Friend Date can be hidden - General Settings */ ?>
+          if (!SystemConfig::getValue("bHideFriendDate") && $per_FriendDate != "") { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext("Friend Date") ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
           <?php }
           if ($sCellPhone) { ?>

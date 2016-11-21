@@ -29,7 +29,7 @@ $googleMapObj->setLookupService('GOOGLE'); // or 'YAHOO'
 
 $bHaveXML = FALSE;
 
-if (SystemConfig::getRawConfig("sXML_RPC_PATH")) {
+if (SystemConfig::getValue("sXML_RPC_PATH")) {
   $pathArray = explode(PATH_SEPARATOR, get_include_path());
   foreach ($pathArray as $onePath) {
     $fullpath = $onePath . DIRECTORY_SEPARATOR . SystemConfig::getValue("sXML_RPC_PATH");
@@ -52,7 +52,6 @@ if (SystemConfig::getRawConfig("sXML_RPC_PATH")) {
 // distance in miles.
 function LatLonDistance($lat1, $lon1, $lat2, $lon2)
 {
-  global $sDistanceUnit;
 
   // Formula for calculating radians between
   // latitude and longitude pairs.
@@ -77,7 +76,7 @@ function LatLonDistance($lat1, $lon1, $lat2, $lon2)
   $distance = $radians * $radius;
 
   // convert to miles
-  if (strtoupper($sDistanceUnit) == 'MILES') {
+  if (strtoupper(SystemConfig::getValue("sDistanceUnit")) == 'MILES') {
     $distance = 0.6213712 * $distance;
   }
 
