@@ -209,7 +209,7 @@ class SystemService
         exec("mv " . $backup->saveTo . " " . SystemConfig::getValue("sExternalBackupEndpoint"));
         return ($backup);
       } catch (\Exception $exc) {
-        throw new \Exception("The local path SystemConfig::getValue("sExternalBackupEndpoint") is not writeable.  Unable to store backup.", 500);
+        throw new \Exception("The local path " . SystemConfig::getValue("sExternalBackupEndpoint") . " is not writeable.  Unable to store backup.", 500);
       }
 
     }

@@ -8,6 +8,7 @@ use ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\SystemConfig;
 
 
 /**

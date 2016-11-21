@@ -277,7 +277,6 @@ class FinancialService
   function getMemberByScanString($sstrnig)
   {
     requireUserGroupMembership("bFinance");
-    global SystemConfig::getValue("bUseScannedChecks");
     if (SystemConfig::getValue("bUseScannedChecks")) {
       require "../Include/MICRFunctions.php";
       $micrObj = new MICRReader(); // Instantiate the MICR class

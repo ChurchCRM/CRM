@@ -270,7 +270,7 @@ if ($currentUser != Null)
 // Turn ON output buffering
 ob_start();
 
-$enableSelfReg = $false;
+$enableSelfReg = false;
 if ( SystemConfig::getValue("sEnableSelfRegistration") )
 {
   $enableSelfReg = SystemConfig::getValue("sEnableSelfRegistration");

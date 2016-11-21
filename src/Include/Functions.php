@@ -1798,7 +1798,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
               echo "$mailers[$n] replied: $response\n";
             }
             $cmds = array(
-              "HELO SystemConfig::getValue("sSMTPHost")",  # Be sure to set this correctly!
+              "HELO " . SystemConfig::getValue("sSMTPHost"), # Be sure to set this correctly!
               "MAIL FROM: <$probe_address>",
               "RCPT TO: <$email>",
               "QUIT",
