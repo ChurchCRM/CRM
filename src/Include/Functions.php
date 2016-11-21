@@ -1064,7 +1064,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
         "<div class=\"input-group-addon\">" .
         "<i class=\"fa fa-calendar\"></i>" .
         "</div>" .
-        "<input class=\"form-control inputDatePicker\" type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" value=\"" . $data . "\"> " .
+        "<input class=\"form-control\" type=\"text\" id=\"" . $fieldname . "\" Name=\"" . $fieldname . "\" value=\"" . $data . "\"> " .
         "</div>";
       break;
 
