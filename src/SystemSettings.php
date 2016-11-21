@@ -53,17 +53,6 @@ $steps = array(
 );
 
 
-$sSQL = "SELECT * FROM config_cfg ORDER BY cfg_category, cfg_order";
-$rsConfigs = RunQuery($sSQL);
-$iRowCount = 0;
-while ($aRow = mysql_fetch_array($rsConfigs)) {
-  $iRowCount++;
-  extract($aRow);
-  if ($cfg_name == "sHeader") {
-    $iHTMLHeaderRow = intval($cfg_id);
-  }
-}
-
 // Save Settings
 if (isset ($_POST['save'])) {
   $new_value = $_POST['new_value'];
@@ -114,8 +103,6 @@ if (isset ($_POST['save'])) {
 require "Include/Header.php";
 
 // Get settings
-$sSQL = "SELECT * FROM config_cfg ORDER BY cfg_category, cfg_order";
-$rsConfigs = RunQuery($sSQL);
 ?>
 
 <div id="JSONSettingsModal" class="modal fade" role="dialog">

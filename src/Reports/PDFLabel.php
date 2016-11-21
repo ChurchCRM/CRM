@@ -624,15 +624,6 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
     unset($didFam);
 
-    $sSQL  = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value ";
-    $sSQL .= "FROM config_cfg WHERE cfg_section='General'";
-    $rsConfig = RunQuery($sSQL);
-    if ($rsConfig) {
-        while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-            $$cfg_name = $cfg_value;
-        }
-    }
-
     $sAdultRole = SystemConfig::getValue("sDirRoleHead") . "," . SystemConfig::getValue("sDirRoleSpouse");
     $sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
     $aAdultRole = explode(",", $sAdultRole);

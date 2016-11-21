@@ -142,15 +142,6 @@ if (count($results) == 0) {
 
 SystemConfig::init(ConfigQuery::create()->find());
 
-$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
-  . "FROM config_cfg WHERE cfg_section='General'";
-$rsConfig = mysql_query($sSQL);         // Can't use RunQuery -- not defined yet
-if ($rsConfig) {
-  while (list($cfg_name, $value) = mysql_fetch_row($rsConfig)) {
-    $$cfg_name = $value;
-  }
-}
-
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
   // Load user variables from user config table.
   // **************************************************
