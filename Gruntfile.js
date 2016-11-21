@@ -42,7 +42,6 @@ module.exports = function (grunt) {
               '!dist/img',
               '!plugins/**/*.md',
               '!plugins/**/examples/**',
-              '!plugins/ckeditor/samples/**',
               '!plugins/fullcalendar/**',
               '!plugins/moment/**',
               '!plugins/fastclick/**',
