@@ -682,7 +682,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Family Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit"  class="form-control">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -823,7 +823,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext("Other Info") ?>:</h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="form-control" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -885,7 +885,7 @@ require "Include/Header.php";
 		<div class="box-header">
 			<h3><?= gettext("Envelope Info") ?></h3>
 			<div class="pull-right"><br/>
-				<input type="submit" class="form-control" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
+				<input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
 		<div class="box-body">
@@ -1080,8 +1080,8 @@ require "Include/Header.php";
 	echo "<td colspan=\"2\" align=\"center\">";
 	echo "<input type=\"hidden\" Name=\"UpdateBirthYear\" value=\"".$UpdateBirthYear."\">";
 
-	echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\"> ";
-	if ($_SESSION['bAddRecords']) { echo " <input type=\"submit\" class=\"btn\" value=\"".gettext("Save and Add")."\" name=\"FamilySubmitAndAdd\"> "; }
+	echo "<input type=\"submit\" class=\"btn btn-primary\" value=\"" . gettext("Save") . "\" Name=\"FamilySubmit\"> ";
+	if ($_SESSION['bAddRecords']) { echo " <input type=\"submit\" class=\"btn btn-info\" value=\"".gettext("Save and Add")."\" name=\"FamilySubmitAndAdd\"> "; }
 	echo " <input type=\"button\" class=\"btn\" value=\"" . gettext("Cancel") . "\" Name=\"FamilyCancel\"";
 	if ($iFamilyID > 0)
 		echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
