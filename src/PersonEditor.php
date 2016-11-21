@@ -976,7 +976,7 @@ require "Include/Header.php";
         </div><!-- /.box-header -->
         <div class="box-body">
             <div class="row">
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-3 col-lg-3">
                 <label><?= gettext("Classification") ?>:</label>
                 <select name="Classification" class="form-control">
                   <option value="0"><?= gettext("Unassigned") ?></option>
@@ -991,7 +991,7 @@ require "Include/Header.php";
                   } ?>
                 </select>
               </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-3 col-lg-3">
                     <label><?= gettext("Membership Date") ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -1005,7 +1005,7 @@ require "Include/Header.php";
                     </div>
                 </div>
               <?php if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-3 col-lg-3">
                   <label><?= gettext("Friend Date") ?>:</label>
                   <div class="input-group">
                     <div class="input-group-addon">
