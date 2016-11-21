@@ -72,8 +72,6 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
   </div>
   <div class="box-body">
     <a href="SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext("All People") ?></a>
-    <a href="OptionManager.php?mode=classes" class="btn btn-app"><i
-        class="fa fa-gears"></i><?= gettext("Classifications Manager") ?></a>
     <?php
     if ($sEmailLink)
     {

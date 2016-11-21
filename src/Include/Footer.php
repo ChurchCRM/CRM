@@ -77,6 +77,11 @@ $isAdmin = $_SESSION['user']->isAdmin();
       <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _("Person") ?></h4>
       <ul class="control-sidebar-menu">
         <li>
+          <a href="<?= $sRootPath ?>/OptionManager.php?mode=classes">
+            <i class="fa fa-cog"></i> <?= _("Classifications Manager") ?>
+          </a>
+        </li>
+        <li>
           <a href="<?= $sRootPath ?>/PropertyList.php?Type=p">
             <i class="fa fa-cog"></i> <?= _("People Properties") ?>
           </a>
