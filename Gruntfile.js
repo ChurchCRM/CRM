@@ -23,7 +23,7 @@ module.exports = function (grunt) {
       'sv' : 'sv_SE',
       'vi' : 'vi_VN',
       'zh-CN' : 'zh_CN',
-      'zh-TW' : 'zh_TW' 
+      'zh-TW' : 'zh_TW'
     },
     clean: {
       locale: ["src/skin/locale"],
@@ -214,6 +214,20 @@ module.exports = function (grunt) {
             dest: 'churchcrm/'
           }
         ]
+      },
+      'demo-data': {
+        options: {
+          archive: 'target/ChurchCRM-<%= composer.version %>-demo.tar.gz'
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'demo/',
+            src: [
+              '**/*'
+            ]
+          }
+        ]
       }
     },
     generateSignatures: {
@@ -262,12 +276,12 @@ module.exports = function (grunt) {
       }
     }
   });
-  
+
   grunt.registerTask('hash','gets a file hash',function(arg1){
      var sha1 = require('node-sha1');
      grunt.log.writeln(sha1(grunt.file.read(arg1,{encoding:null})));
   });
-  
+
   grunt.registerMultiTask('generateSignatures', 'A sample task that logs stuff.', function() {
     var sha1 = require('node-sha1');
     var signatures = {
@@ -276,7 +290,7 @@ module.exports = function (grunt) {
     };
     this.files.forEach(function(filePair) {
       isExpandedPair = filePair.orig.expand || false;
-      
+
       filePair.src.forEach(function(src) {
         if (grunt.file.isFile(src))
         {
@@ -287,7 +301,7 @@ module.exports = function (grunt) {
     signatures.sha1=sha1(JSON.stringify(signatures.files));
     grunt.file.write("src/signatures.json",JSON.stringify(signatures));
   });
-  
+
   grunt.registerTask('updateFromPOeditor', 'Description of the task', function(target) {
     grunt.config('clean',{pofiles: ["src/locale/*/**/*.po","src/locale/*/**/*.mo"]});
     grunt.task.run(['clean:pofiles']);
