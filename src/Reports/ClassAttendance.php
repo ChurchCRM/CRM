@@ -76,14 +76,6 @@ $epd = 3;
 
 $pdf = new PDF_Attendance();
 
-// Read in report settings from database
-$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
-		$pdf->$cfg_name = $cfg_value;
-	}
-}
-
 for($i=0; $i<$nGrps; $i++) {
 	$iGroupID = $aGrp[$i];
 //	uset($aStudents);

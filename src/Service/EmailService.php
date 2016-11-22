@@ -1,6 +1,7 @@
 <?php
 
 namespace ChurchCRM\Service;
+use ChurchCRM\dto\SystemConfig;
 
 class EmailService
 {
@@ -13,21 +14,12 @@ class EmailService
 
   public function __construct()
   {
-    // Read in report settings from database
-    $rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_name like 'sSMTP%' or cfg_name like 'sChurch%'");
-    if ($rsConfig) {
-      while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
-        $$cfg_name = $cfg_value;
-      }
-    }
-
-
-    $this->SMTPHost = $sSMTPHost;
-    $this->SMTPAuth = sSMTPAuth;
-    $this->SMTPUser = $sSMTPUser;
-    $this->SMTPPass = $sSMTPPass;
-    $this->ChurchName = $sChurchName;
-    $this->ChurchEmail = $sChurchEmail;
+    $this->SMTPHost = SystemConfig::getValue("sSMTPHost");
+    $this->SMTPAuth = SystemConfig::getValue("sSMTPAuth");
+    $this->SMTPUser = SystemConfig::getValue("sSMTPUser");
+    $this->SMTPPass = SystemConfig::getValue("sSMTPPass");
+    $this->ChurchName = SystemConfig::getValue("sChurchName");
+    $this->ChurchEmail = SystemConfig::getValue("sChurchEmail");
   }
 
   function getConnection()

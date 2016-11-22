@@ -176,10 +176,10 @@ if ($iFamilyID == $fam_ID) {
             echo getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
             echo "</a></span><br>";
             if ($fam_Latitude && $fam_Longitude) {
-              if ($nChurchLatitude && $nChurchLongitude) {
-                $sDistance = LatLonDistance($nChurchLatitude, $nChurchLongitude, $fam_Latitude, $fam_Longitude);
-                $sDirection = LatLonBearing($nChurchLatitude, $nChurchLongitude, $fam_Latitude, $fam_Longitude);
-                echo $sDistance . " " . strtolower($sDistanceUnit) . " " . $sDirection . " " . gettext(" of church<br>");
+              if (SystemConfig::getValue("nChurchLatitude") && SystemConfig::getValue("nChurchLongitude")) {
+                $sDistance = LatLonDistance(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
+                $sDirection = LatLonBearing(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
+                echo $sDistance . " " . strtolower(SystemConfig::getValue("sDistanceUnit")) . " " . $sDirection . " " . gettext(" of church<br>");
               }
             }   else {
               $bHideLatLon = true;
@@ -189,15 +189,15 @@ if ($iFamilyID == $fam_ID) {
               <li><i class="fa-li fa fa-compass"></i><?= gettext("Latitude/Longitude") ?>
                 <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
             <?php }
-            if (!$bHideFamilyNewsletter) { /* Newsletter can be hidden - General Settings */ ?>
+            if (!SystemConfig::getValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
               <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
                 <span><?= gettext($fam_SendNewsLetter) ?></span></li>
             <?php }
-            if (!$bHideWeddingDate && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
+            if (!SystemConfig::getValue("bHideWeddingDate") && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
               <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
                 <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
             <?php }
-            if ($bUseDonationEnvelopes) { ?>
+            if (SystemConfig::getValue("bUseDonationEnvelopes")) { ?>
               <li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?> <span><?= $fam_Envelope ?></span>
               </li>
             <?php }

@@ -16,6 +16,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -29,7 +30,7 @@ $iFYID = FilterInput($_POST["FYID"],"int");
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly") && $output != "pdf") {
 	Redirect("Menu.php");
 	exit;
 }
@@ -108,14 +109,6 @@ if ($output == "pdf") {
 
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_PledgeSummaryReport();
-
-	// Read in report settings from database
-	$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-	}
 
 	// Total all the pledges and payments by fund.  Compute overpaid and underpaid for each family as
 	// we go through them.
@@ -207,17 +200,17 @@ if ($output == "pdf") {
 	$overpaidX = 170;
 	$curY = 20;
 
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchName); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchAddress); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchCity . ", " . $pdf->sChurchState . "  " . $pdf->sChurchZip); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchPhone . "  " . $pdf->sChurchEmail); $curY += 2 * $pdf->incrementY;
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchName")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchAddress")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchCity") . ", " . SystemConfig::getValue("sChurchState") . "  " . SystemConfig::getValue("sChurchZip")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchPhone") . "  " . SystemConfig::getValue("sChurchEmail")); $curY += 2 * SystemConfig::getValue("incrementY");
 
-	$blurb = $pdf->sPledgeSummary1 . " ";
+	$blurb = SystemConfig::getValue("sPledgeSummary1") . " ";
 	$blurb .= MakeFYString ($iFYID);
-	$blurb .= $pdf->sPledgeSummary2 . " " . date ("Y-m-d") . ".";
+	$blurb .= SystemConfig::getValue("sPledgeSummary2") . " " . date ("Y-m-d") . ".";
 	$pdf->WriteAt ($nameX, $curY, $blurb);
 
-	$curY += 3 * $pdf->incrementY;
+	$curY += 3 * SystemConfig::getValue("incrementY");
 
 	$pdf->SetFont('Times','B', 10);
 	$pdf->WriteAt ($nameX, $curY, "Fund");
@@ -228,7 +221,7 @@ if ($output == "pdf") {
 	$pdf->PrintRightJustified ($underpaidX, $curY, "Overpaid");
 	$pdf->PrintRightJustified ($overpaidX, $curY, "Underpaid");
 	$pdf->SetFont('Times','', 10);
-	$curY += $pdf->incrementY;
+	$curY += SystemConfig::getValue("incrementY");
 
 	mysqli_data_seek($rsFunds,0); // Change this to print out funds in active / alpha order.
 	while ($row = mysqli_fetch_array($rsFunds))
@@ -251,7 +244,7 @@ if ($output == "pdf") {
 	   		$pdf->PrintRightJustified ($underpaidX, $curY, $amountStr);
 			$amountStr = sprintf ("%.2f", $underpaid[$fun_name]);
 	   		$pdf->PrintRightJustified ($overpaidX, $curY, $amountStr);
-			$curY += $pdf->incrementY;
+			$curY += SystemConfig::getValue("incrementY");
 		}
 	}
 
@@ -263,11 +256,11 @@ if ($output == "pdf") {
 	   $pdf->PrintRightJustified ($paymentX, $curY, $amountStr);
 	   	$pdf->PrintRightJustified ($pledgeCountX, $curY, $pledgeCnt["Unassigned"]);
 	   	$pdf->PrintRightJustified ($paymentCountX, $curY, $paymentCnt["Unassigned"]);
-	   $curY += $pdf->incrementY;
+	   $curY += SystemConfig::getValue("incrementY");
 	}
 
 	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-	if ($iPDFOutputType == 1) {
+	if (SystemConfig::getValue("iPDFOutputType") == 1) {
 		$pdf->Output("PledgeSummaryReport" . date("Ymd") . ".pdf", "D");
 	} else {
 		$pdf->Output();

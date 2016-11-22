@@ -16,7 +16,7 @@ require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly")) {
 	Redirect("Menu.php");
 	exit;
 }
@@ -117,14 +117,6 @@ class PDF_EnvelopeReport extends ChurchInfoReport {
 // Instantiate the directory class and build the report.
 $pdf = new PDF_EnvelopeReport();
 
-// Read in report settings from database
-$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
-		$pdf->$cfg_name = $cfg_value;
-	}
-}
-
 $sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam WHERE fam_Envelope>0 ORDER BY fam_Envelope";
 $rsRecords = RunQuery($sSQL);
 
@@ -145,7 +137,7 @@ while ($aRow = mysqli_fetch_array($rsRecords))
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
 	$pdf->Output("EnvelopeAssingments-" . date("Ymd-Gis") . ".pdf", "D");
 else
 	$pdf->Output();	

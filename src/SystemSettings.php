@@ -114,8 +114,6 @@ if (isset ($_POST['save'])) {
 require "Include/Header.php";
 
 // Get settings
-$sSQL = "SELECT * FROM config_cfg ORDER BY cfg_category, cfg_order";
-$rsConfigs = RunQuery($sSQL);
 ?>
 
 <div id="JSONSettingsModal" class="modal fade" role="dialog">

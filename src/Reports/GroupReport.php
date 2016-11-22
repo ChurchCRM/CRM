@@ -19,6 +19,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\PDF_GroupDirectory;
+use ChurchCRM\dto\SystemConfig;
 
 $bOnlyCartMembers = $_POST["OnlyCart"];
 $iGroupID = FilterInput($_POST["GroupID"],'int');
@@ -56,14 +57,6 @@ else
 	}
 
 	$pdf = new PDF_GroupDirectory();
-
-	// Read in report settings from database
-	$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-	}
 
 	// See if this group has special properties.
 	$sSQL = "SELECT * FROM groupprop_master WHERE grp_ID = " . $iGroupID . " ORDER BY prop_ID";
@@ -120,17 +113,17 @@ else
 		}
 
 		if (isset($_POST['HomePhoneEnable']) && strlen($sHomePhone)) {
-			$TempStr = ExpandPhoneNumber($sHomePhone, $sDefaultCountry, $bWierd);
+			$TempStr = ExpandPhoneNumber($sHomePhone, SystemConfig::getValue("sDefaultCountry"), $bWierd);
 			$OutStr .= "  " . gettext("Phone") . ": " . $TempStr . "\n";
 		}
 
 		if (isset($_POST['WorkPhoneEnable']) && strlen($sWorkPhone)) {
-			$TempStr = ExpandPhoneNumber($sWorkPhone, $sDefaultCountry, $bWierd);
+			$TempStr = ExpandPhoneNumber($sWorkPhone, SystemConfig::getValue("sDefaultCountry"), $bWierd);
 			$OutStr .= "  " . gettext("Work") . ": " . $TempStr . "\n";
 		}
 
 		if (isset($_POST['CellPhoneEnable']) && strlen($sCellPhone)) {
-			$TempStr = ExpandPhoneNumber($sCellPhone, $sDefaultCountry, $bWierd);
+			$TempStr = ExpandPhoneNumber($sCellPhone, SystemConfig::getValue("sDefaultCountry"), $bWierd);
 			$OutStr .= "  " . gettext("Cell") . ": " . $TempStr . "\n";
 		}
 
@@ -175,7 +168,7 @@ else
 	}
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
 	$pdf->Output("GroupDirectory-" . date("Ymd-Gis") . ".pdf", "D");
 else
 	$pdf->Output();

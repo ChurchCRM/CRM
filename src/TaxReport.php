@@ -17,7 +17,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly")) {
 	Redirect("Menu.php");
 	exit;
 }

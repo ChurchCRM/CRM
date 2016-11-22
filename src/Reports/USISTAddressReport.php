@@ -17,21 +17,14 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
 use ChurchCRM\Reports\PDF_AddressReport;
+use ChurchCRM\dto\SystemConfig;
 
 // If user does not have permission redirect to the menu.
-if (!$bUSAddressVerification) {
+if (!SystemConfig::getValue("bUSAddressVerification")) {
 	Redirect('Menu.php');
 	exit;
 }
 
-
-// Read in report settings from database
-$rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
-		$pdf->$cfg_name = $cfg_value;
-	}
-}
 
 if ($_POST['MismatchReport']) {
 	$iNum = 1;
@@ -141,7 +134,7 @@ while ($aRow = mysqli_fetch_array($rsFamilies)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
 	$pdf->Output('Addresses-' . date('Ymd-Gis') . '.pdf', 'D');
 else
 	$pdf->Output();	

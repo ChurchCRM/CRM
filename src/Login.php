@@ -36,6 +36,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
+use ChurchCRM\dto\SystemConfig;
 
 $systemService = new SystemService();
 
@@ -111,7 +112,7 @@ if ($currentUser != Null)
     $sPasswordHashSha256 = hash("sha256", $_POST['Password'].$currentUser->getPersonId());
 
     // Block the login if a maximum login failure count has been reached
-    if ($iMaxFailedLogins > 0 && $currentUser->getFailedLogins() >= $iMaxFailedLogins)
+    if (SystemConfig::getValue("iMaxFailedLogins") > 0 && $currentUser->getFailedLogins() >= SystemConfig::getValue("iMaxFailedLogins"))
     {
         $sErrorText = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
     }
@@ -128,7 +129,7 @@ if ($currentUser != Null)
     else
     {
         // Set the LastLogin and Increment the LoginCount
-        $date = new DateTime("now", new DateTimeZone($sTimeZone));
+        $date = new DateTime("now", new DateTimeZone(SystemConfig::getValue("sTimeZone")));
         $currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
         $currentUser->setLoginCount($currentUser->getLoginCount() +1);
         $currentUser->setFailedLogins(0);
@@ -235,7 +236,6 @@ if ($currentUser != Null)
 
         // Set the Root Path ... used in basic security check
         $_SESSION['sRootPath'] = $sRootPath;
-        $_SESSION['$sEnableGravatarPhotos'] = $sEnableGravatarPhotos;
 
         $_SESSION['bHasMagicQuotes'] = 0;
 
@@ -270,10 +270,10 @@ if ($currentUser != Null)
 // Turn ON output buffering
 ob_start();
 
-$enableSelfReg = $false;
-if ( $systemConfig->getRawConfig("sEnableSelfRegistration") )
+$enableSelfReg = false;
+if ( SystemConfig::getValue("sEnableSelfRegistration") )
 {
-  $enableSelfReg = $systemConfig->getRawConfig("sEnableSelfRegistration")->getBooleanValue();
+  $enableSelfReg = SystemConfig::getValue("sEnableSelfRegistration");
 }
 
 // Set the page title and include HTML header

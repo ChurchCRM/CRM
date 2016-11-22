@@ -134,17 +134,8 @@ if (count($results) == 0) {
 // Read values from config table into local variables
 // **************************************************
 
-$systemConfig = new SystemConfig();
-$systemConfig->init(ConfigQuery::create()->find());
 
-$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
-  . "FROM config_cfg WHERE cfg_section='General'";
-$rsConfig = mysqli_query($cnInfoCentral, $sSQL);         // Can't use RunQuery -- not defined yet
-if ($rsConfig) {
-  while (list($cfg_name, $value) = mysqli_fetch_row($rsConfig)) {
-    $$cfg_name = $value;
-  }
-}
+SystemConfig::init(ConfigQuery::create()->find());
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
   // Load user variables from user config table.
@@ -162,11 +153,11 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
 
 $sMetaRefresh = '';  // Initialize to empty
 
-if (isset($sTimeZone)) {
-  date_default_timezone_set($sTimeZone);
+if (SystemConfig::getValue("sTimeZone")) {
+  date_default_timezone_set(SystemConfig::getValue("sTimeZone"));
 }
 
-$localeInfo = new LocaleInfo($sLanguage);
+$localeInfo = new LocaleInfo(SystemConfig::getValue("sLanguage"));
 setlocale(LC_ALL, $localeInfo->getLocale());
 
 // Get numeric and monetary locale settings.

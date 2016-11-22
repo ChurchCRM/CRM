@@ -57,7 +57,7 @@ if (array_key_exists ('mysql', $_POST) && $_POST['mysql'] == 'true') {
 
 // Security: Both global and user permissions needed to send email.
 // Otherwise, re-direct them to the main menu.
-if (!($bEmailSend && $bSendPHPMail))
+if (!(SystemConfig::getValue("bEmailSend") && $bSendPHPMail))
 {
 	Redirect("Menu.php");
 	exit;

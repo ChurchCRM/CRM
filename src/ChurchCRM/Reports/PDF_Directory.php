@@ -31,7 +31,7 @@ class PDF_Directory extends ChurchInfoReport {
             //Move to the right
             $this->SetX($this->_Margin_Left);
             //Framed title
-            $this->Cell($this->w - ($this->_Margin_Left*2),10,$this->sChurchName . " - " . gettext("Directory"),1,0,'C');
+            $this->Cell($this->w - ($this->_Margin_Left*2),10,SystemConfig::getValue("sChurchName") . " - " . gettext("Directory"),1,0,'C');
             $this->SetY(25);
         }
     }
@@ -56,29 +56,22 @@ class PDF_Directory extends ChurchInfoReport {
 
     function TitlePage()
     {
-        global $sChurchName;
         global $sDirectoryDisclaimer;
-        global $sChurchAddress;
-        global $sChurchCity;
-        global $sChurchState;
-        global $sChurchZip;
-        global $sChurchPhone;
-
         //Select Arial bold 15
         $this->SetFont($this->_Font,'B',15);
 
-        if (is_readable($this->bDirLetterHead))
-            $this->Image($this->bDirLetterHead,10,5,190);
+        if (is_readable(SystemConfig::getValue("bDirLetterHead")))
+            $this->Image(SystemConfig::getValue("bDirLetterHead"),10,5,190);
 
         //Line break
         $this->Ln(5);
         //Move to the right
-        $this->MultiCell(197,10,"\n\n\n". $sChurchName . "\n\n" . gettext("Directory") . "\n\n",0,'C');
+        $this->MultiCell(197,10,"\n\n\n". SystemConfig::getValue("sChurchName") . "\n\n" . gettext("Directory") . "\n\n",0,'C');
         $this->Ln(5);
         $today = date("F j, Y");
         $this->MultiCell(197,10,$today . "\n\n",0,'C');
 
-        $sContact = sprintf("%s\n%s, %s  %s\n\n%s\n\n", $sChurchAddress, $sChurchCity, $sChurchState, $sChurchZip, $sChurchPhone);
+        $sContact = sprintf("%s\n%s, %s  %s\n\n%s\n\n", SystemConfig::getValue("sChurchAddress"), SystemConfig::getValue("sChurchCity"), SystemConfig::getValue("sChurchState"), SystemConfig::getValue("sChurchZip"), SystemConfig::getValue("sChurchPhone"));
         $this->MultiCell(197,10,$sContact,0,'C');
         $this->Cell(10);
         $this->MultiCell(197,10,$sDirectoryDisclaimer,0,'C');

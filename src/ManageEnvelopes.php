@@ -19,6 +19,8 @@ require "Include/Functions.php";
 
 require "Include/EnvelopeFunctions.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 //Set the page title
 $sPageTitle = gettext("Envelope Manager");
 
@@ -33,7 +35,7 @@ $envelopesToWrite = array ();
 $envelopesByFamID = getEnvelopes($iClassification);
 
 // get the array of family name/description strings, also indexed by family id
-$familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse, $iClassification);
+$familyArray = getFamilyList(SystemConfig::getValue("sDirRoleHead"), SystemConfig::getValue("sDirRoleSpouse"), $iClassification);
 asort($familyArray);
 
 if (isset($_POST["Confirm"])) {

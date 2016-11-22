@@ -30,6 +30,8 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/LabelFunctions.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 if (isset($_POST["rmEmail"]))
 {
      rmEmail();
@@ -144,9 +146,9 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
             if ($sEmailLink)
             {
                 // Add default email if default email has been set and is not already in string
-                if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress'
-                                           && !stristr($sEmailLink, $sToEmailAddress))
-                    $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
+                if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress'
+                                           && !stristr($sEmailLink, SystemConfig::getValue("sToEmailAddress")))
+                    $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
                 $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
                 if ($bEmailMailto) { // Does user have permission to email groups
@@ -259,19 +261,19 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 
 
 <?php
-    if (($bEmailSend) && ($bSendPHPMail)) {
+    if ((SystemConfig::getValue("bEmailSend")) && ($bSendPHPMail)) {
         if (isset($email_array)) {
             $bcc_list = "";
             foreach ($email_array as $email_address) {
                 // Add all address except the default
                 // avoid sending to this address twice
-                if ($email_address != $sToEmailAddress) {
+                if ($email_address != SystemConfig::getValue("sToEmailAddress")) {
                     $bcc_list .= $email_address . ", ";
                 }
             }
-            if ($sToEmailAddress) {
+            if (SystemConfig::getValue("sToEmailAddress")) {
                 // append $sToEmailAddress
-                $bcc_list .= $sToEmailAddress;
+                $bcc_list .= SystemConfig::getValue("sToEmailAddress");
             } else {
                 // remove the last ", "
                 $bcc_list = substr($bcc_list, 0, strlen($bcc_list) - 2 );
@@ -416,13 +418,13 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
             foreach ($email_array as $email_address) {
                 // Add all address except the default
                 // avoid sending to this address twice
-                if ($email_address != $sToEmailAddress) {
+                if ($email_address != SystemConfig::getValue("sToEmailAddress")) {
                     echo '<input type="hidden" name="emaillist[]" value="' .
                                                             $email_address . '">';
                 }
             }
-            if ($sToEmailAddress) { // The default address gets the last email
-            echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+            if (SystemConfig::getValue("sToEmailAddress")) { // The default address gets the last email
+            echo '<input type="hidden" name="emaillist[]" value="'.SystemConfig::getValue("sToEmailAddress").'">'."\n";
             }
 
             echo '<input type="submit" class="btn" name="submit" '.
@@ -456,13 +458,13 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
             foreach ($email_array as $email_address) {
                 // Add all address except the default
                 // avoid sending to this address twice
-                if ($email_address != $sToEmailAddress) {
+                if ($email_address != SystemConfig::getValue("sToEmailAddress")) {
                     echo '<input type="hidden" name="emaillist[]" value="' .
                                                             $email_address . '">';
                 }
             }
-            if ($sToEmailAddress) {  // The default address gets the last email
-            echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+            if (SystemConfig::getValue("sToEmailAddress")) {  // The default address gets the last email
+            echo '<input type="hidden" name="emaillist[]" value="'.SystemConfig::getValue("sToEmailAddress").'">'."\n";
             }
 
             echo '<input type="hidden" name="mysql" value="true">'."\n";
@@ -478,13 +480,13 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
             foreach ($email_array as $email_address) {
                 // Add all address except the default
                 // avoid sending to this address twice
-                if ($email_address != $sToEmailAddress) {
+                if ($email_address != SystemConfig::getValue("sToEmailAddress")) {
                     echo '<input type="hidden" name="emaillist[]" value="' .
                                                             $email_address . '">';
                 }
             }
-            if ($sToEmailAddress) { // The default address gets the last email
-            echo '<input type="hidden" name="emaillist[]" value="'.$sToEmailAddress.'">'."\n";
+            if (SystemConfig::getValue("sToEmailAddress")) { // The default address gets the last email
+            echo '<input type="hidden" name="emaillist[]" value="'.SystemConfig::getValue("sToEmailAddress").'">'."\n";
             }
 
             echo '<input type="hidden" name="mysql" value="true">'."\n";

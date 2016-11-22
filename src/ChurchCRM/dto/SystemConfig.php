@@ -10,28 +10,28 @@ class SystemConfig
   /**
    * @var Config[]
    */
-  private $configs;
+  private static $configs;
 
   /**
    * @param Config[] $configs
    */
-  function init($configs)
+  public static function init($configs)
   {
-    $this->configs = $configs;
+    SystemConfig::$configs = $configs;
   }
 
-  function getValue($name)
+  public static function getValue($name)
   {
-    $config = $this->getRawConfig($name);
+    $config = SystemConfig::getRawConfig($name);
     if (!is_null($config)) {
       return $config->getValue();
     }
     return NULL;
   }
 
-    function setValue($name, $value)
+  public static function setValue($name, $value)
   {
-    $config = $this->getRawConfig($name);
+    $config = SystemConfig::getRawConfig($name);
     if (!is_null($config)) {
       $config->setValue($value);
       $config->save();
@@ -43,9 +43,9 @@ class SystemConfig
    * @return Config
    *
    */
-  function getRawConfig($name)
+  public static function getRawConfig($name)
   {
-    foreach ($this->configs as $config) {
+    foreach (SystemConfig::$configs as $config) {
       if ($config->getName() == $name) {
         return $config;
       }

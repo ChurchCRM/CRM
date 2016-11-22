@@ -7,6 +7,7 @@ require_once dirname(dirname(__FILE__)) . "/Include/Functions.php";
 
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\MICRReader;
+use ChurchCRM\dto\SystemConfig;
 
 class FinancialService
 {
@@ -276,8 +277,7 @@ class FinancialService
   function getMemberByScanString($sstrnig)
   {
     requireUserGroupMembership("bFinance");
-    global $bUseScannedChecks;
-    if ($bUseScannedChecks) {
+    if (SystemConfig::getValue("bUseScannedChecks")) {
       require "../Include/MICRFunctions.php";
       $micrObj = new MICRReader(); // Instantiate the MICR class
       $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
@@ -477,7 +477,7 @@ class FinancialService
         if ($fund->Amount > 0) {
           ++$nonZeroFundAmountEntered;
         }
-        if ($GLOBALS['bEnableNonDeductible'] && isset($fund->NonDeductible)) {
+        if (SystemConfig::getValue("bEnableNonDeductible") && isset($fund->NonDeductible)) {
           //Validate the NonDeductible Amount
           if ($fund->NonDeductible > $fund->Amount) { //Validate the NonDeductible Amount
             throw new \Exception (gettext("NonDeductible amount can't be greater than total amount."));
@@ -653,12 +653,6 @@ class FinancialService
 
   private function generateBankDepositSlip($thisReport)
   {
-    $rsConfig = mysqli_query($cnInfoCentral, "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-    if ($rsConfig) {
-      while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
-        $$cfg_name = $cfg_value;
-      }
-    }
     // --------------------------------
     // BEGIN FRONT OF BANK DEPOSIT SLIP
     $thisReport->pdf->AddPage("L", array(187, 84));
@@ -669,10 +663,10 @@ class FinancialService
     $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
 
     $thisReport->pdf->SetXY($thisReport->customerName1X, $thisReport->customerName1Y);
-    $thisReport->pdf->Write(8, $sChurchName);
+    $thisReport->pdf->Write(8, SystemConfig::getValue("sChurchName"));
 
     $thisReport->pdf->SetXY($thisReport->AccountNumberX, $thisReport->AccountNumberY);
-    $thisReport->pdf->Cell(55, 7, $sChurchChkAcctNum, 1, 1, 'R');
+    $thisReport->pdf->Cell(55, 7, SystemConfig::getValue("sChurchChkAcctNum"), 1, 1, 'R');
 
     if ($thisReport->deposit->totalCash > 0) {
       $totalCashStr = sprintf("%.2f", $thisReport->deposit->totalCash);

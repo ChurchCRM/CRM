@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemConfig;
+
 class TaskService
 {
   private $baseURL;
@@ -19,16 +21,9 @@ class TaskService
     requireUserGroupMembership("bAdmin");
     $CRMInstallRoot = dirname(__DIR__);
     $integrityCheckData = json_decode(file_get_contents($CRMInstallRoot."/integrityCheck.json"));
-    $sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg";
-    $rsConfig = mysqli_query($cnInfoCentral, $sSQL);			// Can't use RunQuery -- not defined yet
-    if ($rsConfig) {
-      while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
-        $$cfg_name = $cfg_value;
-      }
-    }
 
     $tasks = array();
-    if ($bRegistered != 1) {
+    if (SystemConfig::getValue("bRegistered") != 1) {
       array_push($tasks, $this->addTask(gettext("Register Software"), $this->baseURL."/Register.php", true));
     }
 
@@ -36,15 +31,15 @@ class TaskService
       array_push($tasks, $this->addTask(gettext("Configure HTTPS"), "http://docs.churchcrm.io/en/latest/", true));
     }
     
-    if ($sChurchName == "Some Church") {
+    if (SystemConfig::getValue("sChurchName") == "Some Church") {
       array_push($tasks, $this->addTask(gettext("Update Church Info"), $this->baseURL."/SystemSettings.php", true));
     }
 
-    if ($sChurchAddress == "") {
+    if (SystemConfig::getValue("sChurchAddress") == "") {
       array_push($tasks, $this->addTask(gettext("Set Church Address"), $this->baseURL."/SystemSettings.php", true));
     }
 
-    if ($sSMTPHost == "") {
+    if (SystemConfig::getValue("sSMTPHost") == "") {
       array_push($tasks, $this->addTask(gettext("Set Email Settings"), $this->baseURL."/SystemSettings.php", true));
     }
 

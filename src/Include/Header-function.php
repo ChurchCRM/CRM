@@ -30,9 +30,10 @@
 require_once 'Functions.php';
 
 use ChurchCRM\Service\TaskService;
+use ChurchCRM\dto\SystemConfig;
 
 function Header_head_metatag() {
-  global $sLanguage, $bExportCSV, $sMetaRefresh, $sHeader, $sGlobalMessage;
+  global $bExportCSV, $sMetaRefresh, $sGlobalMessage;
   global $sPageTitle, $sRootPath;
 
   if (strlen($sMetaRefresh)) {
@@ -329,7 +330,7 @@ function addMenuItem($aMenu, $mIdx) {
   }
 
   function Header_body_menu() {
-    global $sHeader, $sGlobalMessage, $sGlobalMessageClass;
+    global $sGlobalMessage, $sGlobalMessageClass;
     global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
 
     $loggedInUserPhoto = $sRootPath . "/api/persons/" .$_SESSION['iUserID']. "/photo";
@@ -345,8 +346,8 @@ function addMenuItem($aMenu, $mIdx) {
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>C</b>RM</span>
         <!-- logo for regular state and mobile devices -->
-        <?php if ($sHeader) { ?>
-          <span class="logo-lg"><?= html_entity_decode($sHeader, ENT_QUOTES) ?></span>
+        <?php if (SystemConfig::getValue("sHeader")) { ?>
+          <span class="logo-lg"><?= html_entity_decode(SystemConfig::getValue("sHeader"), ENT_QUOTES) ?></span>
         <?php }
         Else {
           ?>

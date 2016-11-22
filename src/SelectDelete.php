@@ -261,14 +261,13 @@ if($sMode == 'person')
 		$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
 		$rsFamilies = RunQuery($sSQL);
 		// Build Criteria for Head of Household
-		if (!$sDirRoleHead)
-			$sDirRoleHead = "1";
-		$head_criteria = " per_fmr_ID = " . $sDirRoleHead;
+		
+		$head_criteria = " per_fmr_ID = " . SystemConfig::getValue("sDirRoleHead") ? SystemConfig::getValue("sDirRoleHead") : "1";
 		// If more than one role assigned to Head of Household, add OR
 		$head_criteria = str_replace(",", " OR per_fmr_ID = ", $head_criteria);
 		// Add Spouse to criteria
-		if (intval($sDirRoleSpouse) > 0)
-			$head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
+		if (intval(SystemConfig::getValue("sDirRoleSpouse")) > 0)
+			$head_criteria .= " OR per_fmr_ID = ".SystemConfig::getValue("sDirRoleSpouse");
 		// Build array of Head of Households and Spouses with fam_ID as the key
 		$sSQL = "SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (" . $head_criteria . ") ORDER BY per_fam_ID";
 		$rs_head = RunQuery($sSQL);
