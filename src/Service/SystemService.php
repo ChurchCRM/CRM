@@ -7,6 +7,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
 use Propel\Runtime;
+use ChurchCRM\dto\SystemConfig;
 
 class SystemService
 {
@@ -51,10 +52,9 @@ class SystemService
   function restoreDatabaseFromBackup()
   {
     requireUserGroupMembership("bAdmin");
-    global $systemConfig;
     $restoreResult = new \stdClass();
     $restoreResult->Messages = array();
-    global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral, $sGZIPname;
+    global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral;
     $file = $_FILES['restoreFile'];
     $restoreResult->file = $file;
     $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
@@ -78,7 +78,7 @@ class SystemService
       } else if ($restoreResult->type2 == "sql") {
         exec("mkdir $restoreResult->backupRoot");
         exec("mv  " . $file['tmp_name'] . " " . $restoreResult->backupRoot . "/" . $file['name']);
-        $restoreResult->uncompressCommand = "$sGZIPname -d $restoreResult->backupRoot/" . $file['name'];
+        $restoreResult->uncompressCommand = SystemConfig::getValue("sGZIPname") . " -d $restoreResult->backupRoot/" . $file['name'];
         exec($restoreResult->uncompressCommand, $rs1, $returnStatus);;
         $restoreResult->SQLfile = $restoreResult->backupRoot . "/" . substr($file['name'], 0, strlen($file['name']) - 3);
         $this->playbackSQLtoDatabase($restoreResult->SQLfile);
@@ -92,17 +92,16 @@ class SystemService
     $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
     //When restoring a database, do NOT let the database continue to create remote backups.
     //This can be very troublesome for users in a testing environment.
-    $sSQL = 'UPDATE config_cfg SET cfg_value = "0" WHERE cfg_name = "sEnableExternalBackupTarget"';
-    $aRow = mysql_fetch_array(RunQuery($sSQL));
+    SystemConfig::setValue("sEnableExternalBackupTarget", "0");
     array_push($restoreResult->Messages, gettext("As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."));
-    $systemConfig->setValue("sLastIntegrityCheckTimeStamp",null);
+    SystemConfig::setValue("sLastIntegrityCheckTimeStamp",null);
     return $restoreResult;
   }
 
   function getDatabaseBackup($params)
   {
     requireUserGroupMembership("bAdmin");
-    global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME, $sGZIPname, $sZIPname, $sPGPname;
+    global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME;
 
     $backup = new \stdClass();
     $backup->root = dirname(dirname(__FILE__));
@@ -113,11 +112,11 @@ class SystemService
     exec("rm -rf  $backup->backupRoot");
     exec("mkdir  $backup->backupRoot");
     // Check to see whether this installation has gzip, zip, and gpg
-    if (isset($sGZIPname))
+    if (SystemConfig::getValue("sGZIPname"))
       $hasGZIP = true;
-    if (isset($sZIPname))
+    if (SystemConfig::getValue("sZIPname"))
       $hasZIP = true;
-    if (isset($sPGPname))
+    if (SystemConfig::getValue("sPGPname"))
       $hasPGP = true;
 
     $backup->params = $params;
@@ -133,14 +132,14 @@ class SystemService
       case 0: # The user wants a gzip'd SQL file.
         $backup->saveTo .= ".sql";
         exec("mv $backup->SQLFile  $backup->saveTo");
-        $backup->compressCommand = "$sGZIPname $backup->saveTo";
+        $backup->compressCommand = SystemConfig::getValue("sGZIPname") . " " . $backup->saveTo;
         $backup->saveTo .= ".gz";
         exec($backup->compressCommand, $returnString, $returnStatus);
         $backup->archiveResult = $returnString;
         break;
       case 1: #The user wants a .zip file
         $backup->saveTo .= ".zip";
-        $backup->compressCommand = "$sZIPname -r -y -q -9 $backup->saveTo $backup->backupRoot";
+        $backup->compressCommand = SystemConfig::getValue("sZIPname")." -r -y -q -9 $backup->saveTo $backup->backupRoot";
         exec($backup->compressCommand, $returnString, $returnStatus);
         $backup->archiveResult = $returnString;
         break;
@@ -158,7 +157,7 @@ class SystemService
 
     if ($params->bEncryptBackup) {  #the user has selected an encrypted backup
       putenv("GNUPGHOME=/tmp");
-      $backup->encryptCommand = "echo $params->password | $sPGPname -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
+      $backup->encryptCommand = "echo $params->password | " . SystemConfig::getValue("sPGPname") . " -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
       $backup->saveTo .= ".gpg";
       system($backup->encryptCommand);
       $archiveType = 3;
@@ -183,16 +182,15 @@ class SystemService
 
   function copyBackupToExternalStorage()
   {
-    global $sExternalBackupType, $sExternalBackupUsername, $sExternalBackupPassword, $sExternalBackupEndpoint;
-    if (strcasecmp($sExternalBackupType, "WebDAV") == 0) {
-      if ($sExternalBackupUsername && $sExternalBackupPassword && $sExternalBackupEndpoint) {
+    if (strcasecmp(SystemConfig::getValue("sExternalBackupType"), "WebDAV") == 0) {
+      if (SystemConfig::getValue("sExternalBackupUsername") && SystemConfig::getValue("sExternalBackupPassword") && SystemConfig::getValue("sExternalBackupEndpoint")) {
         $params = new \stdClass();
         $params->iArchiveType = 3;
         $backup = $this->getDatabaseBackup($params);
-        $backup->credentials = $sExternalBackupUsername . ":" . $sExternalBackupPassword;
+        $backup->credentials = SystemConfig::getValue("sExternalBackupUsername") . ":" . SystemConfig::getValue("sExternalBackupPassword");
         $backup->filesize = filesize($backup->saveTo);
         $fh = fopen($backup->saveTo, 'r');
-        $backup->remoteUrl = $sExternalBackupEndpoint;
+        $backup->remoteUrl = SystemConfig::getValue("sExternalBackupEndpoint");
         $ch = curl_init($backup->remoteUrl . $backup->filename);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
         curl_setopt($ch, CURLOPT_USERPWD, $backup->credentials);
@@ -205,13 +203,13 @@ class SystemService
       } else {
         throw new \Exception("WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set", 500);
       }
-    } elseif (strcasecmp($sExternalBackupType, "Local") == 0) {
+    } elseif (strcasecmp(SystemConfig::getValue("sExternalBackupType"), "Local") == 0) {
       try {
         $backup = $this->getDatabaseBackup($params);
-        exec("mv " . $backup->saveTo . " " . $sExternalBackupEndpoint);
+        exec("mv " . $backup->saveTo . " " . SystemConfig::getValue("sExternalBackupEndpoint"));
         return ($backup);
       } catch (\Exception $exc) {
-        throw new \Exception("The local path $sExternalBackupEndpoint is not writeable.  Unable to store backup.", 500);
+        throw new \Exception("The local path " . SystemConfig::getValue("sExternalBackupEndpoint") . " is not writeable.  Unable to store backup.", 500);
       }
 
     }
@@ -367,39 +365,35 @@ class SystemService
 
   function runTimerJobs()
   {
-    global $sEnableExternalBackupTarget, $sExternalBackupAutoInterval, $sLastBackupTimeStamp;
-    global $sEnableIntegrityCheck, $sIntegrityCheckInterval, $sLastIntegrityCheckTimeStamp;
     //start the external backup timer job
-    if ($sEnableExternalBackupTarget && $sExternalBackupAutoInterval > 0)  //if remote backups are enabled, and the interval is greater than zero
+    if (SystemConfig::getValue("sEnableExternalBackupTarget") && SystemConfig::getValue("sExternalBackupAutoInterval") > 0)  //if remote backups are enabled, and the interval is greater than zero
     {
       try {
         $now = new \DateTime();  //get the current time
-        $previous = new \DateTime($sLastBackupTimeStamp); // get a DateTime object for the last time a backup was done.
+        $previous = new \DateTime(SystemConfig::getValue("sLastBackupTimeStamp")); // get a DateTime object for the last time a backup was done.
         $diff = $previous->diff($now);  // calculate the difference.
-        if (!$sLastBackupTimeStamp || $diff->h >= $sExternalBackupAutoInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+        if (!SystemConfig::getValue("sLastBackupTimeStamp") || $diff->h >= SystemConfig::getValue("sExternalBackupAutoInterval"))  // if there was no previous backup, or if the interval suggests we do a backup now.
         {
           $this->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
           $now = new \DateTime();  // update the LastBackupTimeStamp.
-          $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastBackupTimeStamp'";
-          $rsUpdate = RunQuery($sSQL);
+          SystemConfig::setValue("sLastBackupTimeStamp", $now->format('Y-m-d H:i:s'));
         }
       } catch (Exception $exc) {
         // an error in the auto-backup shouldn't prevent the page from loading...
       }
     }
-    if ($sEnableIntegrityCheck && $sIntegrityCheckInterval > 0)
+    if (SystemConfig::getValue("sEnableIntegrityCheck") && SystemConfig::getValue("sIntegrityCheckInterval") > 0)
     {
       $now = new \DateTime();  //get the current time
-      $previous = new \DateTime($sLastIntegrityCheckTimeStamp); // get a DateTime object for the last time a backup was done.
+      $previous = new \DateTime(SystemConfig::getValue("sLastIntegrityCheckTimeStamp")); // get a DateTime object for the last time a backup was done.
       $diff = $previous->diff($now);  // calculate the difference.
-      if (!$sLastIntegrityCheckTimeStamp || $diff->h >= $sIntegrityCheckInterval)  // if there was no previous backup, or if the interval suggests we do a backup now.
+      if (!SystemConfig::getValue("sLastIntegrityCheckTimeStamp") || $diff->h >= SystemConfig::getValue("sIntegrityCheckInterval"))  // if there was no previous backup, or if the interval suggests we do a backup now.
       {
         $integrityCheckFile = dirname(__DIR__) . "/integrityCheck.json";
         $appIntegrity = $this->verifyApplicationIntegrity();
         file_put_contents($integrityCheckFile, json_encode($appIntegrity));
         $now = new \DateTime();  // update the LastBackupTimeStamp.
-        $sSQL = "UPDATE config_cfg SET cfg_value='" . $now->format('Y-m-d H:i:s') . "' WHERE cfg_name='sLastIntegrityCheckTimeStamp'";
-        $rsUpdate = RunQuery($sSQL);
+        SystemConfig::setValue("sLastIntegrityCheckTimeStamp",  $now->format('Y-m-d H:i:s'));
       }
     }
   }
@@ -436,7 +430,6 @@ class SystemService
 
   function doUpgrade($zipFilename,$sha1)
   {
-    global $systemConfig;
     ini_set('max_execution_time',60);
     $CRMInstallRoot = dirname(__DIR__);
     if($sha1 == sha1_file($zipFilename))
@@ -449,7 +442,7 @@ class SystemService
         $this->moveDir($CRMInstallRoot."/Upgrade/churchcrm", $CRMInstallRoot);
       }
       unlink($zipFilename);
-      $systemConfig->setValue("sLastIntegrityCheckTimeStamp",null);
+      SystemConfig::setValue("sLastIntegrityCheckTimeStamp",null);
       return "success";
     }
     else

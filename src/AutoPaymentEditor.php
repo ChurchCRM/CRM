@@ -254,7 +254,7 @@ $rsFamilies = RunQuery($sSQL);
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
 
-if ($sElectronicTransactionProcessor == "Vanco") {
+if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
 	include "Include/VancoConfig.php";
 	$customerid = "$iAutID"; // This is an optional value that can be used to indicate a unique customer ID that is used in your system
 	// put aut_ID into the $customerid field
@@ -269,7 +269,7 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 ?>
 
 <?php
-if ($sElectronicTransactionProcessor == "Vanco") {
+if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
 ?>
 
 <script>
@@ -712,7 +712,7 @@ function CreatePaymentMethod()
 				<td class="TextColumn"><input type="text" id="CreditCard" name="CreditCard" value="<?= $tCreditCard ?>"></td>
 			</tr>
 <?php
-if ($sElectronicTransactionProcessor == "Vanco") {
+if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
 ?>
 			<tr>
 				<td class="LabelColumn"><?= gettext("Vanco Credit Card Method") ?></td>
@@ -747,7 +747,7 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 				<td class="TextColumn"><input type="text" id="Account" name="Account" value="<?= $tAccount ?>"></td>
 			</tr>
 <?php
-if ($sElectronicTransactionProcessor == "Vanco") {
+if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
 ?>
 			<tr>
 				<td class="LabelColumn"><?= gettext("Vanco Bank Account Method") ?></td>
@@ -758,7 +758,7 @@ if ($sElectronicTransactionProcessor == "Vanco") {
 ?>
 
 <?php
-	if ($sElectronicTransactionProcessor == "Vanco") {
+	if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
 ?>
 			<tr>
 				<td>

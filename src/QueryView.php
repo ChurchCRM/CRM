@@ -18,13 +18,15 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 //Set the page title
 $sPageTitle = gettext("Query View");
 
 //Get the QueryID from the querystring
 $iQueryID = FilterInput($_GET["QueryID"],'int');
 
-$aFinanceQueries = explode(',', $aFinanceQueries);
+$aFinanceQueries = explode(',', SystemConfig::getValue("aFinanceQueries"));
 
 if (!$_SESSION['bFinance'] && in_array($iQueryID,$aFinanceQueries))
 {

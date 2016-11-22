@@ -3,6 +3,8 @@ require ("Include/Config.php");
 require ("Include/Functions.php");
 require ("Include/ReportFunctions.php");
 
+use ChurchCRM\dto\SystemConfig;
+
 //Set the page title
 $sPageTitle = gettext("Family View");
 
@@ -10,42 +12,31 @@ require ("Include/Header.php");
 
 $iGroupID = FilterInput($_GET["GroupID"],'int');
 
-// Read values from config table into local variables
-// **************************************************
-$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'";
-$rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$$cfg_name = $cfg_value;
-	}
-}
-
-if ($nChurchLatitude == "" || $nChurchLongitude == "") {
+if (SystemConfig::getValue("nChurchLatitude") == "" || SystemConfig::getValue("nChurchLongitude") == "") {
 
 	require ("Include/GeoCoder.php");
 	$myAddressLatLon = new AddressLatLon;
 
 	// Try to look up the church address to center the map.
-	$myAddressLatLon->SetAddress ($sChurchAddress, $sChurchCity, $sChurchState, $sChurchZip);
+	$myAddressLatLon->SetAddress (SystemConfig::getValue("sChurchAddress"), SystemConfig::getValue("sChurchCity"), SystemConfig::getValue("sChurchState"), SystemConfig::getValue("sChurchZip"));
 	$ret = $myAddressLatLon->Lookup ();
 	if ($ret == 0) {
 		$nChurchLatitude = $myAddressLatLon->GetLat ();
 		$nChurchLongitude = $myAddressLatLon->GetLon ();
+    
+    SystemConfig::setValue("nChurchLatitude",$nChurchLatitude);
+    SystemConfig::setValue("nChurchLongitude",$nChurchLongitude);
 
-		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLatitude . "' WHERE cfg_name='nChurchLatitude'";
-		RunQuery ($sSQL);
-		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLongitude . "' WHERE cfg_name='nChurchLongitude'";
-		RunQuery ($sSQL);
 	}
 }
 
-if ($nChurchLatitude == "") {
+if (SystemConfig::getValue("nChurchLatitude") == "") {
 ?>
   <div class="callout callout-danger">
     <?= gettext("Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.") ?>
   </div>
 <?php } else {
-  if ($sGoogleMapKey == "") {
+  if (SystemConfig::getValue("sGoogleMapKey") == "") {
 ?>
     <div class="callout callout-warning">
       <?= gettext("Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.") ?>
@@ -53,14 +44,14 @@ if ($nChurchLatitude == "") {
 <?php }
   ?>
 
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= $sGoogleMapKey ?>&sensor=false"></script>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
 
 <div class="box box-body">
     <div class="col-lg-12">
         <div id="map" class="col-lg-12" style="height: 400px;"></div>
         <script type="text/javascript">
             var mapOptions = {
-               center: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude ?>),
+               center: new google.maps.LatLng(<?= SystemConfig::getValue("nChurchLatitude") . ", " . SystemConfig::getValue("nChurchLongitude") ?>),
                zoom: 4,
                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -75,11 +66,11 @@ if ($nChurchLatitude == "") {
             var churchMark = new google.maps.Marker({
                 icon: window.CRM.root + "/skin/icons/church.png",
                 shadow: shadow,
-                position: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude ?>),
+                position: new google.maps.LatLng(<?= SystemConfig::getValue("nChurchLatitude") . ", " . SystemConfig::getValue("nChurchLongitude") ?>),
                 map: map});
 	 
 
-            var churchInfoWin = new google.maps.InfoWindow({content: "<?= $sChurchName . "<p>" . $sChurchAddress . "<p>" . $sChurchCity . ", " . $sChurchState . "  " . $sChurchZip; ?>"});
+            var churchInfoWin = new google.maps.InfoWindow({content: "<?= SystemConfig::getValue("sChurchName") . "<p>" . SystemConfig::getValue("sChurchAddress") . "<p>" . SystemConfig::getValue("sChurchCity") . ", " . SystemConfig::getValue("sChurchState") . "  " . SystemConfig::getValue("sChurchZip"); ?>"});
 
             google.maps.event.addListener(churchMark, "click", function() {
                 churchInfoWin.open(map,churchMark);
@@ -113,10 +104,10 @@ if ($nChurchLatitude == "") {
                     $appendToQuery .= ")";
                 }
 
-                $sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( $sDirRoleHead )";
+                $sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( SystemConfig::getValue("sDirRoleHead") )";
                 $sSQL .= $appendToQuery;
                 $rsFams = RunQuery ($sSQL);
-                $markerIcons =  explode ( "," , $sGMapIcons );
+                $markerIcons =  explode ( "," , SystemConfig::getValue("sGMapIcons") );
                 array_unshift($markerIcons, "red-pushpin");
 
                 while ($aFam = mysql_fetch_array($rsFams)) {

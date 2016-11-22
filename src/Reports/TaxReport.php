@@ -16,6 +16,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -34,7 +35,7 @@ $iDepID = FilterInput($_POST["deposit"],"int");
 $iMinimum = FilterInput($_POST["minimum"],"int");
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly") && $output != "pdf") {
 	Redirect("Menu.php");
 	exit;
 }
@@ -189,13 +190,13 @@ if ($output == "pdf") {
 		}
 
 		function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope) {
-			global $letterhead, $sDateStart, $sDateEnd, $iDepID, $bUseDonationEnvelopes;
+			global $letterhead, $sDateStart, $sDateEnd, $iDepID;
 			$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
-			if ($bUseDonationEnvelopes) {
-				$this->WriteAt ($this->leftX, $curY, gettext ("Envelope:").$fam_envelope);
-				$curY += $this->incrementY;
+			if (SystemConfig::getValue("bUseDonationEnvelopes")) {
+				$this->WriteAt (SystemConfig::getValue("leftX"), $curY, gettext ("Envelope:").$fam_envelope);
+				$curY += SystemConfig::getValue("incrementY");
 			}
-			$curY += 2 * $this->incrementY;
+			$curY += 2 * SystemConfig::getValue("incrementY");
 			if ($iDepID) {
 				// Get Deposit Date
 				$sSQL = "SELECT dep_Date, dep_Date FROM deposit_dep WHERE dep_ID='$iDepID'";
@@ -206,81 +207,73 @@ if ($output == "pdf") {
 				$DateString = date("F j, Y",strtotime($sDateStart));
 			else
 				$DateString = date("M j, Y",strtotime($sDateStart)) . " - " .  date("M j, Y",strtotime($sDateEnd));
-			$blurb = $this->sTaxReport1 . " " . $DateString . ".";
-			$this->WriteAt ($this->leftX, $curY, $blurb);
-			$curY += 2 * $this->incrementY;
+			$blurb = SystemConfig::getValue("sTaxReport1") . " " . $DateString . ".";
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $blurb);
+			$curY += 2 * SystemConfig::getValue("incrementY");
 			return ($curY);
 		}
 
 		function FinishPage ($curY,$fam_ID,$fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
 			global $remittance;
-			$curY += 2 * $this->incrementY;
-			$blurb = $this->sTaxReport2;
-			$this->WriteAt ($this->leftX, $curY, $blurb);
-			$curY += 3 * $this->incrementY;
-			$blurb = $this->sTaxReport3;
-			$this->WriteAt ($this->leftX, $curY, $blurb);
-			$curY += 3 * $this->incrementY;
-			$this->WriteAt ($this->leftX, $curY, "Sincerely,");
-			$curY += 4 * $this->incrementY;
-			$this->WriteAt ($this->leftX, $curY, $this->sTaxSigner);
+			$curY += 2 * SystemConfig::getValue("incrementY");
+			$blurb = SystemConfig::getValue("sTaxReport2");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $blurb);
+			$curY += 3 * SystemConfig::getValue("incrementY");
+			$blurb = SystemConfig::getValue("sTaxReport3");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $blurb);
+			$curY += 3 * SystemConfig::getValue("incrementY");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, "Sincerely,");
+			$curY += 4 * SystemConfig::getValue("incrementY");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sTaxSigner"));
 
 			if ($remittance == "yes"){
 				// Add remittance slip
 				$curY = 194;
 				$curX = 60;
 				$this->WriteAt ($curX, $curY, gettext("Please detach this slip and mail with your next gift."));
-				$curY += (1.5 * $this->incrementY);
-				$church_mailing = gettext("Please mail you next gift to ") . $this->sChurchName . ", "
-					. $this->sChurchAddress . ", " . $this->sChurchCity . ", " . $this->sChurchState . "  "
-					. $this->sChurchZip . gettext(", Phone: ") . $this->sChurchPhone;
+				$curY += (1.5 * SystemConfig::getValue("incrementY"));
+				$church_mailing = gettext("Please mail you next gift to ") . SystemConfig::getValue("sChurchName") . ", "
+					. SystemConfig::getValue("sChurchAddress") . ", " . SystemConfig::getValue("sChurchCity") . ", " . SystemConfig::getValue("sChurchState") . "  "
+					. SystemConfig::getValue("sChurchZip") . gettext(", Phone: ") . SystemConfig::getValue("sChurchPhone");
 				$this->SetFont('Times','I', 10);
-				$this->WriteAt ($this->leftX, $curY, $church_mailing);
+				$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $church_mailing);
 				$this->SetFont('Times','', 10);
 				$curY =215;
-				$this->WriteAt ($this->leftX, $curY, $this->MakeSalutation ($fam_ID)); $curY += $this->incrementY;
+				$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $this->MakeSalutation ($fam_ID)); $curY += SystemConfig::getValue("incrementY");
 				if ($fam_Address1 != "") {
-					$this->WriteAt ($this->leftX, $curY, $fam_Address1); $curY += $this->incrementY;
+					$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $fam_Address1); $curY += SystemConfig::getValue("incrementY");
 				}
 				if ($fam_Address2 != "") {
-					$this->WriteAt ($this->leftX, $curY, $fam_Address2); $curY += $this->incrementY;
+					$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $fam_Address2); $curY += SystemConfig::getValue("incrementY");
 				}
-				$this->WriteAt ($this->leftX, $curY, $fam_City . ", " . $fam_State . "  " . $fam_Zip); $curY += $this->incrementY;
+				$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $fam_City . ", " . $fam_State . "  " . $fam_Zip); $curY += SystemConfig::getValue("incrementY");
 				if ($fam_Country != "" && $fam_Country != "USA" && $fam_Country != "United States") {
-					$this->WriteAt ($this->leftX, $curY, $fam_Country); $curY += $this->incrementY;
+					$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $fam_Country); $curY += SystemConfig::getValue("incrementY");
 				}
 				$curX = 30;
 				$curY = 246;
-				$this->WriteAt ($this->leftX+5, $curY, $this->sChurchName); $curY += $this->incrementY;
-				if ($this->sChurchAddress != "") {
-					$this->WriteAt ($this->leftX+5, $curY, $this->sChurchAddress); $curY += $this->incrementY;
+				$this->WriteAt (SystemConfig::getValue("leftX")+5, $curY, SystemConfig::getValue("sChurchName")); $curY += SystemConfig::getValue("incrementY");
+				if (SystemConfig::getValue("sChurchAddress") != "") {
+					$this->WriteAt (SystemConfig::getValue("leftX")+5, $curY, SystemConfig::getValue("sChurchAddress")); $curY += SystemConfig::getValue("incrementY");
 				}
-				$this->WriteAt ($this->leftX+5, $curY, $this->sChurchCity . ", " . $this->sChurchState . "  " . $this->sChurchZip); $curY += $this->incrementY;
+				$this->WriteAt (SystemConfig::getValue("leftX")+5, $curY, SystemConfig::getValue("sChurchCity") . ", " . SystemConfig::getValue("sChurchState") . "  " . SystemConfig::getValue("sChurchZip")); $curY += SystemConfig::getValue("incrementY");
 				if ($fam_Country != "" && $fam_Country != "USA" && $fam_Country != "United States") {
-					$this->WriteAt ($this->leftX+5, $curY, $fam_Country); $curY += $this->incrementY;
+					$this->WriteAt (SystemConfig::getValue("leftX")+5, $curY, $fam_Country); $curY += SystemConfig::getValue("incrementY");
 				}
 				$curX = 100;
 				$curY = 215;
 				$this->WriteAt ($curX, $curY, gettext("Gift Amount:"));
 				$this->WriteAt ($curX + 25, $curY, "_______________________________");
-				$curY += (2 * $this->incrementY);
+				$curY += (2 * SystemConfig::getValue("incrementY"));
 				$this->WriteAt ($curX, $curY, gettext("Gift Designation:"));
 				$this->WriteAt ($curX + 25, $curY, "_______________________________");
-				$curY = 200 + (11 * $this->incrementY);
+				$curY = 200 + (11 * SystemConfig::getValue("incrementY"));
 			}
 		}
 	}
 
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_TaxReport();
-
-	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-   if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-   }
 
 	// Loop through result array
 	$currentFamilyID = 0;
@@ -339,7 +332,7 @@ if ($output == "pdf") {
 		// Start Page for New Family
 		if ($fam_ID != $currentFamilyID) {
 			$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope);
-			$summaryDateX = $pdf->leftX;
+			$summaryDateX = SystemConfig::getValue("leftX");
 			$summaryCheckNoX = 40;
 			$summaryMethodX = 60;
 			$summaryFundX = 85;
@@ -444,7 +437,7 @@ if ($output == "pdf") {
 	}
 
 	header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-	if ($iPDFOutputType == 1)
+	if (SystemConfig::getValue("iPDFOutputType") == 1)
 		$pdf->Output("TaxReport" . date("Ymd") . ".pdf", "D");
 	else
 		$pdf->Output();

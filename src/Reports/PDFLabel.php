@@ -624,22 +624,13 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
     unset($didFam);
 
-    $sSQL  = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value ";
-    $sSQL .= "FROM config_cfg WHERE cfg_section='General'";
-    $rsConfig = RunQuery($sSQL);
-    if ($rsConfig) {
-        while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-            $$cfg_name = $cfg_value;
-        }
-    }
-
-    $sAdultRole = $sDirRoleHead . "," . $sDirRoleSpouse;
+    $sAdultRole = SystemConfig::getValue("sDirRoleHead") . "," . SystemConfig::getValue("sDirRoleSpouse");
     $sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
     $aAdultRole = explode(",", $sAdultRole);
     $aAdultRole = array_unique($aAdultRole);
     sort($aAdultRole);
 
-    $sChildRole = trim($sDirRoleChild, " ,\t\n\r\0\x0B");
+    $sChildRole = trim(SystemConfig::getValue("sDirRoleChild"), " ,\t\n\r\0\x0B");
     $aChildRole = explode(",", $sChildRole);
     $aChildRole = array_unique($aChildRole);
     sort($aChildRole);
@@ -826,7 +817,7 @@ if ($sFileType == "PDF"){
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
-    if ($iPDFOutputType == 1)
+    if (SystemConfig::getValue("iPDFOutputType")S == 1)
         $pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", 'D');
     else
         $pdf->Output();

@@ -101,7 +101,7 @@ if (isset($_POST["Submit"]))
         extract(mysql_fetch_array(RunQuery($sSQL)));
 
         // Build the array of bad passwords
-        $aBadPasswords = explode(",", strtolower($sDisallowedPasswords));
+        $aBadPasswords = explode(",", strtolower(SystemConfig::getValue("sDisallowedPasswords")));
         $aBadPasswords[] = strtolower($per_FirstName);
         $aBadPasswords[] = strtolower($per_MiddleName);
         $aBadPasswords[] = strtolower($per_LastName);
@@ -143,8 +143,8 @@ if (isset($_POST["Submit"]))
         }
 
         // Is the password valid for length?
-        elseif (strlen($sNewPassword1) < $sMinPasswordLength) {
-            $sNewPasswordError = "<br><font color=\"red\">" . gettext("Your new password must be at least") . " " . $sMinPasswordLength . " " . gettext("characters") . "</font>";
+        elseif (strlen($sNewPassword1) < SystemConfig::getValue("sMinPasswordLength")) {
+            $sNewPasswordError = "<br><font color=\"red\">" . gettext("Your new password must be at least") . " " . SystemConfig::getValue("sMinPasswordLength") . " " . gettext("characters") . "</font>";
             $bError = True;
         }
 
@@ -154,7 +154,7 @@ if (isset($_POST["Submit"]))
             $bError = True;
         }
 
-        elseif (levenshtein(strtolower($sNewPassword1),strtolower($sOldPassword)) < $sMinPasswordChange) {
+        elseif (levenshtein(strtolower($sNewPassword1),strtolower($sOldPassword)) < SystemConfig::getValue("sMinPasswordChange")) {
             $sNewPasswordError = "<br><font color=\"red\">" . gettext("Your new password is too similar to your old one.  Be more creative!") . "</font>";
             $bError = True;
         }
@@ -208,7 +208,7 @@ if ($_SESSION['bNeedPasswordChange']) { ?>
         <div class="box box-primary">
             <div class="box-header with-border">
                 <?php if (!$bAdminOtherUser)
-                    echo "<p>" . gettext("Enter your current password, then your new password twice.  Passwords must be at least") . ' ' . $sMinPasswordLength . ' ' . gettext("characters in length.") . "</p>";
+                    echo "<p>" . gettext("Enter your current password, then your new password twice.  Passwords must be at least") . ' ' . SystemConfig::getValue("sMinPasswordLength") . ' ' . gettext("characters in length.") . "</p>";
                 else
                     echo "<p>" . gettext("Enter a new password for this user.") . "</p>";
                 ?>

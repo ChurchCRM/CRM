@@ -26,6 +26,8 @@ require "Include/Functions.php";
 
 require "Include/GeoCoder.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 function CompareDistance ($elem1, $elem2)
 {
   if ($elem1["Distance"] > $elem2["Distance"])
@@ -246,7 +248,7 @@ echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"NumNeighbors\" value
 echo "</tr>\n";
 
 echo "<tr>\n";
-echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance") . " (" . strtolower($sDistanceUnit) . "): </td>\n";
+echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance") . " (" . strtolower(SystemConfig::getValue("sDistanceUnit")) . "): </td>\n";
 echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"MaxDistance\" value=\"" . $nMaxDistance . "\"></td>\n";
 echo "</tr>\n";
 
