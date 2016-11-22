@@ -19,6 +19,7 @@ class FamilyService
 
   function search($searchTerm)
   {
+    global $cnInfoCentral;
     $fetch = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE family_fam.fam_Name LIKE \'%' . $searchTerm . '%\' LIMIT 15';
     $result = mysqli_query($cnInfoCentral, $fetch);
     $families = array();

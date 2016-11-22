@@ -24,6 +24,7 @@ class FinancialService
   function processAuthorizeNet()
   {
     requireUserGroupMembership("bFinance");
+    global $cnInfoCentral;
     $donation = new \AuthorizeNetAIM();
     $donation->amount = "$plg_amount";
     $donation->first_name = $firstName;

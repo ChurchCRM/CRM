@@ -8,6 +8,7 @@ class ReportingService
   function queryDatabase($queryRequest)
   {
     requireUserGroupMembership("bAdmin");
+    global $cnInfoCentral;
     $returnObject = new \stdClass();
     $returnObject->query = $queryRequest;
     $returnObject->sql = $this->getQuerySQL($queryRequest->queryID, $queryRequest->queryParameters);
@@ -33,6 +34,7 @@ class ReportingService
 
   function search($searchTerm)
   {
+    global $cnInfoCentral;
     $fetch = 'SELECT * from query_qry WHERE qry_Name LIKE \'%' . FilterInput($searchTerm) . '%\' LIMIT 15';
     $result = mysqli_query($cnInfoCentral, $fetch);
     $reports = array();

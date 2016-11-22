@@ -426,90 +426,9 @@ class GroupService
      RunQuery($sSQL);
   }
 
-  function createGroup($groupName)
-  {
-    requireUserGroupMembership("bManageGroups");
-    if (!$groupName) {   //If there's no group name, throw an exception
-      throw new \Exception ("Unable to create a group without a name");
-    }
-    //Get a new Role List ID
-    $sSQL = "SELECT MAX(lst_ID) FROM list_lst";
-    $aTemp = mysqli_fetch_array(RunQuery($sSQL));
-    if ($aTemp[0] > 9)
-      $newListID = $aTemp[0] + 1;
-    else
-      $newListID = 10;
-
-    /* if ($groupData->useGroupSpecificProperties)
-      $sUseProps = 'true';
-      else
-      $sUseProps = 'false'; */
-    //$sSQL = "INSERT INTO group_grp (grp_Name, grp_Type, grp_Description, grp_hasSpecialProps, grp_DefaultRole, grp_RoleListID) VALUES ('" . $groupData->groupName . "', " . $groupData->groupType . ", '" . $groupData->description . "', '" . $sUseProps . "', '1', " . $newListID . ")";
-    $sSQL = "INSERT INTO group_grp (grp_Name, grp_DefaultRole, grp_RoleListID) VALUES ('" . mysqli_real_escape_string($cnInfoCentral, $groupName) . "', '1', " . $newListID . ")";
-
-    $result = mysqli_query($cnInfoCentral, $sSQL);
-    //Get the key back
-    $iGroupID = mysqli_insert_id($cnInfoCentral);
-
-    if (false) { // ($cloneGroupRole) && ($seedGroupID>0)
-      $sSQL = "SELECT list_lst.* FROM list_lst, group_grp WHERE group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_id = $seedGroupID ORDER BY list_lst.lst_OptionID";
-      $rsRoleSeed = RunQuery($sSQL);
-      while ($aRow = mysqli_fetch_array($rsRoleSeed)) {
-        extract($aRow);
-        $useOptionName = mysqli_real_escape_string($cnInfoCentral, $lst_OptionName);
-        $sSQL = "INSERT INTO list_lst VALUES ($newListID, $lst_OptionID, $lst_OptionSequence, '$useOptionName')";
-        RunQuery($sSQL);
-      }
-    } else {
-      $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'Member')";
-      RunQuery($sSQL);
-    }
-
-    return $this->getGroups($iGroupID);
-  }
-
-  function deleteGroup($iGroupID)
-  {
-    requireUserGroupMembership("bManageGroups");
-    $sSQL = "SELECT grp_hasSpecialProps, grp_RoleListID FROM group_grp WHERE grp_ID =" . $iGroupID;
-    $rsTemp = RunQuery($sSQL);
-    $aTemp = mysqli_fetch_array($rsTemp);
-    $hasSpecialProps = $aTemp[0];
-    $iRoleListID = $aTemp[1];
-
-    //Delete all Members of this group
-    $sSQL = "DELETE FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = " . $iGroupID;
-    RunQuery($sSQL);
-
-    //Delete all Roles for this Group
-    $sSQL = "DELETE FROM list_lst WHERE lst_ID = " . $iRoleListID;
-    RunQuery($sSQL);
-
-    // Remove group property data
-    $sSQL = "SELECT pro_ID FROM property_pro WHERE pro_Class='g'";
-    $rsProps = RunQuery($sSQL);
-
-    while ($aRow = mysqli_fetch_row($rsProps)) {
-      $sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $aRow[0] . " AND r2p_record_ID = " . $iGroupID;
-      RunQuery($sSQL);
-    }
-
-    if ($hasSpecialProps == 'true') {
-      // Drop the group-specific properties table and all references in the master index
-      $sSQL = "DROP TABLE groupprop_" . $iGroupID;
-      RunQuery($sSQL);
-
-      $sSQL = "DELETE FROM groupprop_master WHERE grp_ID = " . $iGroupID;
-      RunQuery($sSQL);
-    }
-
-    //Delete the Group
-    $sSQL = "DELETE FROM group_grp WHERE grp_ID = " . $iGroupID;
-    RunQuery($sSQL);
-  }
-
   function getGroups($groupIDs = NULL)
   {
+    global $cnInfoCentral;
     $whereClause = "";
     if (is_numeric($groupIDs)) {
       $whereClause = "WHERE grp_ID = " . $groupIDs;
@@ -547,6 +466,7 @@ class GroupService
 
   function getGroupMembers($groupID, $personID = null)
   {
+    global $cnInfoCentral;
     $whereClause = "";
     if (is_numeric($personID)) {
       $whereClause = " AND p2g2r_per_ID = " . $personID;
@@ -573,29 +493,6 @@ class GroupService
     }
     return $members;
   }
-
-  function getGroupMembersIds($groupID)
-  {
-    $members = array();
-    // Main select query
-    $sSQL = "SELECT p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID, lst_OptionName FROM person2group2role_p2g2r
-
-        INNER JOIN group_grp ON
-        person2group2role_p2g2r.p2g2r_grp_ID = group_grp.grp_ID
-
-        INNER JOIN list_lst ON
-        group_grp.grp_RoleListID = list_lst.lst_ID AND
-        person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID
-
-        WHERE p2g2r_grp_ID =" . $groupID;
-    $result = mysqli_query($cnInfoCentral, $sSQL);
-    while ($row = mysqli_fetch_assoc($result)) {
-      $person = array( "id" => $row['p2g2r_per_ID']);
-      array_push($members, $person);
-    }
-    return $members;
-  }
-
 
   function copyCartToGroup()
   {
