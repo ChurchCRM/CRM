@@ -97,9 +97,11 @@ require "Include/Header.php";
 // Save record limit if changed
 if (isset($_GET["Number"]))
 {
-	$_SESSION['SearchLimit'] = FilterInput($_GET["Number"],'int');
-	$uSQL = "UPDATE user_usr SET usr_SearchLimit = " . $_SESSION['SearchLimit'] . " WHERE usr_per_ID = " . $_SESSION['iUserID'];
-	$rsUser = RunQuery($uSQL);
+  /* @var $currentUser \ChurchCRM\User */
+  $currentUser = $_SESSION['user'];
+  $currentUser->setSearchLimit(FilterInput($_GET["Number"],'int'));
+  $currentUser->save();
+  $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 }
 
 // Select the proper sort SQL
