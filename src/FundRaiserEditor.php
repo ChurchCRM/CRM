@@ -139,8 +139,6 @@ if ($iFundRaiserID > 0) {
 // Set Current Deposit setting for user
 if ($iFundRaiserID > 0) {
 	$_SESSION['iCurrentFundraiser'] = $iFundRaiserID;		// Probably redundant
-//	$sSQL = "UPDATE user_usr SET usr_currentDeposit = '$iFundRaiserID' WHERE usr_per_id = \"".$_SESSION['iUserID']."\"";
-//	$rsUpdate = RunQuery($sSQL);
 }
 
 require "Include/Header.php";
