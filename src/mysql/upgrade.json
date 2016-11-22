@@ -86,7 +86,8 @@
       "2.3.5"
     ],
     "scripts": [
-      "/mysql/upgrade/2.4.0/2.4.0-Country.sql"
+      "/mysql/upgrade/2.4.0/2.4.0-Country.sql",
+      "/mysql/upgrade/2.4.0/2.4.0-user.sql"
     ],
     "dbVersion": "2.4.0"
   }
