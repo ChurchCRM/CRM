@@ -61,8 +61,11 @@ else if (isset($_POST["DepositSlipRunTransactions"])) {
 }
 
 $_SESSION['iCurrentDeposit'] = $iDepositSlipID;  // Probably redundant
-$sSQL = "UPDATE user_usr SET usr_currentDeposit = '$iDepositSlipID' WHERE usr_per_id = \"" . $_SESSION['iUserID'] . "\"";
-$rsUpdate = RunQuery($sSQL);
+
+/* @var $currentUser \ChurchCRM\User */
+$currentUser = $_SESSION['user'];
+$currentUser->setCurrentDeposit($iDepositSlipID);
+$currentUser->save();
 
 require "Include/Header.php";
 ?>

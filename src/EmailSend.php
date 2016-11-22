@@ -120,8 +120,8 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
     $sSQL = 'SELECT * FROM email_message_pending_emp';
     extract(mysqli_fetch_array(RunQuery($sSQL)));
 
-    // Keep track of how long this script has been running.  To avoid server 
-    // and browser timeouts break out of loop every $sLoopTimeout seconds and 
+    // Keep track of how long this script has been running.  To avoid server
+    // and browser timeouts break out of loop every $sLoopTimeout seconds and
     // redirect back to EmailSend.php with meta refresh until finished.
     $tStartTime = time();
 
@@ -136,7 +136,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 
     $mail->From = $sFromEmailAddress;   // From email address (User Settings)
     $mail->FromName = $sFromName;       // From name (User Settings)
-    
+
     if ($hasAttach)
     	$mail->AddAttachment ("tmp_attach/".$attachName);
 
@@ -155,8 +155,6 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
         if ($delimeter === FALSE) {
             $sSMTPPort = 25;                // Default port number
         } else {
-            $sSMTPPort = substr(SystemConfig::getValue("sSMTPHost"), $delimeter+1);
-            $sSMTPHost = substr(SystemConfig::getValue("sSMTPHost"), 0, $delimeter);   
         }
 
         if (is_int($sSMTPPort))
@@ -171,12 +169,12 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 
     $bContinue = TRUE;
     $sLoopTimeout = 30; // Break out of loop if this time is exceeded
-    $iMaxAttempts = 3;  // Error out if an email address fails 3 times 
-    while ($bContinue) 
+    $iMaxAttempts = 3;  // Error out if an email address fails 3 times
+    while ($bContinue)
     {   // Three ways to get out of this loop
         // 1.  We're finished sending email
         // 2.  Time exceeds $sLoopTimeout
-        // 3.  Something strange happens 
+        // 3.  Something strange happens
         //        (maybe user tries to send from multiple sessions
         //         causing counts and timestamps to 'misbehave' )
 
@@ -290,7 +288,7 @@ if(mysqli_num_rows(mysqli_query($cnInfoCentral, "SHOW TABLES LIKE 'email_job_log
 
 if (!$bTableExists) {
     // Create a new empty log, this might be cruft
-    ClearEmailLog();  
+    ClearEmailLog();
 }
 
 if (array_key_exists ('resume', $_POST) && $_POST['resume'] == 'true') {
@@ -393,7 +391,7 @@ $sSQL_EMP = 'SELECT * FROM email_message_pending_emp '.
 extract(mysqli_fetch_array(RunQuery($sSQL_EMP)));
 
 if ($emp_to_send==0 && $countrecipients==0) {
-    // If both are zero the email job has not started yet.  
+    // If both are zero the email job has not started yet.
     // Begin by loading the list of recipients into MySQL.
     ClearEmailLog();  // Initialize Log
     $_SESSION['sEmailState'] = 'start';
@@ -404,7 +402,7 @@ if ($emp_to_send==0 && $countrecipients==0) {
 
         $sMsg = 'Error, cannot start. email_array is not an array';
         echo "<br>$sMsg<br>";
-        AddToEmailLog($sMsg, $iUserID); 
+        AddToEmailLog($sMsg, $iUserID);
         $_SESSION['sEmailState'] = 'error';
     }
 
@@ -412,14 +410,14 @@ if ($emp_to_send==0 && $countrecipients==0) {
 
         $sMsg = 'Error, cannot start. email_array is empty';
         echo "<br>$sMsg<br>";
-        AddToEmailLog($sMsg, $iUserID); 
-        $_SESSION['sEmailState'] = 'error'; 
+        AddToEmailLog($sMsg, $iUserID);
+        $_SESSION['sEmailState'] = 'error';
     }
 
     if ($_SESSION['sEmailState'] == 'start') {
 
         foreach($email_array as $email_address) {
-    
+
             $iEmailNum++;
             // Load MySQL with the list of addresses to be sent
             $sSQL = 'INSERT INTO email_recipient_pending_erp '.
@@ -458,7 +456,7 @@ if ($emp_to_send==0 && $countrecipients==0) {
     }
 
 } else {
-    
+
     // Should only get here if we are about to finish by sending the final email
     if ($_SESSION['sEmailState'] != 'finish') {
         $sMsg = 'Error on line '.__LINE__.' of file '.__FILE__;
@@ -484,7 +482,7 @@ if ($sEmailState == 'start') {
 }
 
 // Set a Meta Refresh in the header so this page automatically reloads
-if ($bMetaRefresh) { 
+if ($bMetaRefresh) {
     $sMetaRefresh = '<meta http-equiv="refresh" content="2;URL=EmailSend.php">'."\n";
 }
 
@@ -528,7 +526,7 @@ if ($sEmailState == 'continue') {
     $sMessage = $emp_message;
     $attachName = $emp_attach_name;
     $hasAttach = $emp_attach;
-    
+
 
     // There must be more than one recipient
     if ($countrecipients) {
@@ -551,7 +549,7 @@ if ($sEmailState == 'continue') {
         $sSubject = "Email job started at $tTimeStamp";
 
         $sMessage = "Email job issued by ";
-        $sMessage .= $_SESSION['UserFirstName'].' '.$_SESSION['UserLastName'];
+        $sMessage .= $_SESSION['user']->getName();
         $sMessage .= " using:\n";
         $sMessage .= "From Name = $sFromName\n";
         $sMessage .= "From Address = $sFromEmailAddress\n";
@@ -602,7 +600,7 @@ if ($sEmailState == 'continue') {
     $sSubject = "Email job finished at $tTimeStamp";
 
     $sMessage = "Email job issued by ";
-    $sMessage .= $_SESSION['UserFirstName'].' '.$_SESSION['UserLastName'];
+    $sMessage .= $_SESSION['user']->getName();
     $sMessage .= " using:\n";
     $sMessage .= "From Name = $sFromName\n";
     $sMessage .= "From Address = $sFromEmailAddress\n";
@@ -613,7 +611,7 @@ if ($sEmailState == 'continue') {
 
 	if (strlen($emp_attach_name)>0) // delete the attached file if there is one
     	unlink ("tmp_attach/".$emp_attach_name);
-	
+
     //    $sMessage .= "Email sent to $emp_num_sent email addresses.\n"; // $emp_num_sent not a field in email_message_pending_emp
     $sMessage .= "Email job finished at $tTimeStamp\n\n";
     $sMessage .= "Email job log:\n\n";
@@ -678,7 +676,7 @@ if ($sEmailState == 'continue') {
     $sSubject = "Email job terminated due to error at $tTimeStamp";
 
     $sMessage = "Email job issued by ";
-    $sMessage .= $_SESSION['UserFirstName'].' '.$_SESSION['UserLastName'];
+    $sMessage .= $_SESSION['user']->getName();
     $sMessage .= " using:\n";
     $sMessage .= "From Name = $sFromName\n";
     $sMessage .= "From Address = $sFromEmailAddress\n";
@@ -728,3 +726,5 @@ if ($sEmailState == 'continue') {
 
 require 'Include/Footer.php';
 ?>
+            $sSMTPPort = substr(SystemConfig::getValue("sSMTPHost"), $delimeter+1);
+            $sSMTPHost = substr(SystemConfig::getValue("sSMTPHost"), 0, $delimeter);   

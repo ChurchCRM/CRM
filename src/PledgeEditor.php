@@ -479,8 +479,10 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
 
 // Set Current Deposit setting for user
 if ($iCurrentDeposit) {
-	$sSQL = "UPDATE user_usr SET usr_currentDeposit = '$iCurrentDeposit' WHERE usr_per_id = \"".$_SESSION['iUserID']."\"";
-	$rsUpdate = RunQuery($sSQL);
+  /* @var $currentUser \ChurchCRM\User */
+  $currentUser = $_SESSION['user'];
+  $currentUser->setCurrentDeposit($iCurrentDeposit);
+  $currentUser->save();
 }
 
 //Set the page title
