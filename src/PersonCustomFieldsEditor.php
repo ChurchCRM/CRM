@@ -267,7 +267,7 @@ require "Include/Header.php"; ?>
   <script language="javascript">
 
     function confirmDeleteField(event) {
-      var answer = confirm('<?= gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") ?>')
+      var answer = confirm("<?= gettext("Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!") ?>")
       if (answer) {
         window.location = href = "PersonCustomFieldsRowOps.php?Field=" + event + "&Action=delete"
         return true;
