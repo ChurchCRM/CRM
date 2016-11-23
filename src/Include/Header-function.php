@@ -31,7 +31,7 @@ require_once 'Functions.php';
 
 
 function Header_head_metatag() {
-  global $sLanguage, $bExportCSV, $sMetaRefresh, $sHeader, $sGlobalMessage;
+  global $bExportCSV, $sMetaRefresh, $sGlobalMessage;
   global $sPageTitle, $sRootPath;
 
   if (strlen($sMetaRefresh)) {
@@ -193,14 +193,14 @@ function GetSecuritySettings() {
   $aSecurityList[] = "bAddEvent";
   $aSecurityList[] = "bSeePrivacyData";
 
-  $sSQL = "SELECT DISTINCT ucfg_name 
-           FROM userconfig_ucfg 
-           WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY' 
+  $sSQL = "SELECT DISTINCT ucfg_name
+           FROM userconfig_ucfg
+           WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY'
            ORDER by ucfg_id";
 
   $rsSecGrpList = RunQuery($sSQL);
 
-  while ($aRow = mysql_fetch_array($rsSecGrpList)) {
+  while ($aRow = mysqli_fetch_array($rsSecGrpList)) {
     $aSecurityList[] = $aRow['ucfg_name'];
   }
 
@@ -219,17 +219,17 @@ function GetSecuritySettings() {
 function addMenu($menu) {
   global $security_matrix;
 
-  $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, 
-                  session_var_in_uri, url_parm_name, security_grp, icon 
-           FROM menuconfig_mcf 
-           WHERE parent = '$menu' AND active=1 " . $security_matrix . " 
+  $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text,
+                  session_var_in_uri, url_parm_name, security_grp, icon
+           FROM menuconfig_mcf
+           WHERE parent = '$menu' AND active=1 " . $security_matrix . "
            ORDER BY sortorder";
 
   $rsMenu = RunQuery($sSQL);
-  $item_cnt = mysql_num_rows($rsMenu);
+  $item_cnt = mysqli_num_rows($rsMenu);
   $idx = 1;
   $ptr = 1;
-  while ($aRow = mysql_fetch_array($rsMenu)) {
+  while ($aRow = mysqli_fetch_array($rsMenu)) {
     if (addMenuItem($aRow, $idx)) {
       if ($ptr == $item_cnt) {
         $idx++;
@@ -262,13 +262,13 @@ function addMenuItem($aMenu, $mIdx) {
     }
   }
   if ($aMenu['ismenu']) {
-    $sSQL = "SELECT name 
-             FROM menuconfig_mcf 
-             WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . " 
+    $sSQL = "SELECT name
+             FROM menuconfig_mcf
+             WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . "
              ORDER BY sortorder";
 
     $rsItemCnt = RunQuery($sSQL);
-    $numItems = mysql_num_rows($rsItemCnt);
+    $numItems = mysqli_num_rows($rsItemCnt);
   }
   if (!($aMenu['ismenu']) || ($numItems > 0)) {
     if ($link) {
@@ -306,7 +306,7 @@ function addMenuItem($aMenu, $mIdx) {
           echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>".gettext("Dashboard")."</a></li>";
           $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
           $rsSundaySchoolClasses = RunQuery($sSQL);
-          while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
+          while ($aRow = mysqli_fetch_array($rsSundaySchoolClasses)) {
             echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . "</a></li>";
           }
         }
@@ -360,10 +360,10 @@ function addMenuItem($aMenu, $mIdx) {
                   WHERE parent = '$menu' AND active=1 " . $security_matrix . "
                   ORDER BY sortorder";
 
-        $rsMenu = mysql_query($query, $cnInfoCentral);
-        $item_cnt = mysql_num_rows($rsMenu);
+        $rsMenu = mysqli_query($cnInfoCentral, $query);
+        $item_cnt = mysqli_num_rows($rsMenu);
         $ptr = 1;
-        while ($aRow = mysql_fetch_array($rsMenu)) {
+        while ($aRow = mysqli_fetch_array($rsMenu)) {
           if (isset($aRow['admin_only']) & !$_SESSION['bAdmin']) {
             // hide admin menu
           }

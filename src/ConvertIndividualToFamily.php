@@ -8,7 +8,7 @@
 *  Must be run manually by an administrator.  Type this URL.
 *    http://www.mydomain.com/churchcrm/ConvertIndividualToFamily.php
 *
-*  By default this script does one at a time.  To do all entries 
+*  By default this script does one at a time.  To do all entries
 *  at once use this URL
 *    http://www.mydomain.com/churchcrm/ConvertIndividualToFamily.php?all=true
 *
@@ -52,38 +52,38 @@ $iUserID = $_SESSION['iUserID'];
 // find the family ID so we can associate to person record
 $sSQL = 'SELECT MAX(fam_ID) AS iFamilyID FROM family_fam';
 $rsLastEntry = RunQuery($sSQL);
-extract(mysql_fetch_array($rsLastEntry));
+extract(mysqli_fetch_array($rsLastEntry));
 
 
 // Get list of people that are not assigned to a family
 $sSQL = "SELECT * FROM person_per WHERE per_fam_ID='0' ORDER BY per_LastName, per_FirstName";
 $rsList = RunQuery($sSQL);
-while ($aRow = mysql_fetch_array($rsList)) {
+while ($aRow = mysqli_fetch_array($rsList)) {
     extract($aRow);
 
     echo '<br><br><br>';
     echo '*****************************************';
 
-    $per_LastName = mysql_real_escape_string($per_LastName);
-    $per_Address1 = mysql_real_escape_string($per_Address1);
-    $per_Address2 = mysql_real_escape_string($per_Address2);
-    $per_City = mysql_real_escape_string($per_City);
-    $per_State = mysql_real_escape_string($per_State);
-    $per_Zip = mysql_real_escape_string($per_Zip);
-    $per_Country = mysql_real_escape_string($per_Country);
-    $per_HomePhone = mysql_real_escape_string($per_HomePhone);
+    $per_LastName = mysqli_real_escape_string($cnInfoCentral, $per_LastName);
+    $per_Address1 = mysqli_real_escape_string($cnInfoCentral, $per_Address1);
+    $per_Address2 = mysqli_real_escape_string($cnInfoCentral, $per_Address2);
+    $per_City = mysqli_real_escape_string($cnInfoCentral, $per_City);
+    $per_State = mysqli_real_escape_string($cnInfoCentral, $per_State);
+    $per_Zip = mysqli_real_escape_string($cnInfoCentral, $per_Zip);
+    $per_Country = mysqli_real_escape_string($cnInfoCentral, $per_Country);
+    $per_HomePhone = mysqli_real_escape_string($cnInfoCentral, $per_HomePhone);
 
 
     $sSQL = "INSERT INTO family_fam (
-                fam_Name, 
-                fam_Address1, 
-                fam_Address2, 
-                fam_City, 
-                fam_State, 
-                fam_Zip, 
-                fam_Country, 
-                fam_HomePhone, 
-                fam_DateEntered, 
+                fam_Name,
+                fam_Address1,
+                fam_Address2,
+                fam_City,
+                fam_State,
+                fam_Zip,
+                fam_Country,
+                fam_HomePhone,
+                fam_DateEntered,
                 fam_EnteredBy)
             VALUES ('"                  .
                 $per_LastName           . "','" .
@@ -105,11 +105,11 @@ while ($aRow = mysql_fetch_array($rsList)) {
     //Get the key back
     $sSQL = 'SELECT MAX(fam_ID) AS iNewFamilyID FROM family_fam';
     $rsLastEntry = RunQuery($sSQL);
-    extract(mysql_fetch_array($rsLastEntry));
+    extract(mysqli_fetch_array($rsLastEntry));
 
     if ($iNewFamilyID != $iFamilyID) {
-        echo '<br><br>Error with family ID'; 
-    
+        echo '<br><br>Error with family ID';
+
         break;
     }
 
@@ -139,7 +139,7 @@ while ($aRow = mysql_fetch_array($rsList)) {
     echo "$per_LastName Family (fam_ID = $iFamilyID)<br>";
     echo '*****************************************';
 
-    
+
     if (!$bDoAll)
         break;
 }

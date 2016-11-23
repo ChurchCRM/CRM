@@ -18,6 +18,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\PDF_CanvassBriefingReport;
+use ChurchCRM\dto\SystemConfig;
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = FilterInput($_GET["FYID"],'int');
@@ -30,9 +31,9 @@ function TopPledgersLevel ($iFYID, $iPercent)
 	$sSQL = "SELECT plg_Amount FROM pledge_plg 
 			 WHERE plg_FYID = " . $iFYID . " AND plg_PledgeOrPayment=\"Pledge\" ORDER BY plg_Amount DESC";
 	$rsPledges = RunQuery($sSQL);
-	$pledgeCount = mysql_num_rows ($rsPledges);
-	mysql_data_seek ($rsPledges, $pledgeCount * $iPercent / 100);
-	$aLastTop = mysql_fetch_array($rsPledges);
+	$pledgeCount = mysqli_num_rows ($rsPledges);
+	mysqli_data_seek ($rsPledges, $pledgeCount * $iPercent / 100);
+	$aLastTop = mysqli_fetch_array($rsPledges);
 	return ($aLastTop["plg_Amount"]);
 }
 
@@ -43,27 +44,19 @@ function CanvassProgressReport ($iFYID)
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_CanvassBriefingReport();
 
-	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-	}
-
 	$curY = 10;
 
 	$pdf->SetFont('Times','', 24);
-	$pdf->WriteAt ($pdf->leftX, $curY, "Canvass Progress Report " . date ("Y-m-d"));
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, "Canvass Progress Report " . date ("Y-m-d"));
 	$pdf->SetFont('Times','', 14);
 
 	$curY += 10;
 
 	$pdf->SetFont('Times','', 12);
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchName); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchAddress); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchCity . ", " . $pdf->sChurchState . "  " . $pdf->sChurchZip); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchPhone . "  " . $pdf->sChurchEmail); 
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchName")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchAddress")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchCity") . ", " . SystemConfig::getValue("sChurchState") . "  " . SystemConfig::getValue("sChurchZip")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchPhone") . "  " . SystemConfig::getValue("sChurchEmail")); 
 	$curY += 10;
 	$pdf->SetFont('Times','', 14);
 
@@ -91,21 +84,21 @@ function CanvassProgressReport ($iFYID)
 		if ($rsCanvassers == 0)
 			continue;
 
-		while ($aCanvasser = mysql_fetch_array ($rsCanvassers)) {
+		while ($aCanvasser = mysqli_fetch_array ($rsCanvassers)) {
 			// Get all the families for this canvasser
 			$sSQL = "SELECT fam_ID from family_fam WHERE fam_Canvasser = " . $aCanvasser["per_ID"];
 			$rsCanvassees = RunQuery($sSQL);
 
-			$thisCanvasserToDo = mysql_num_rows ($rsCanvassees);
+			$thisCanvasserToDo = mysqli_num_rows ($rsCanvassees);
 			$thisCanvasserDone = 0;
 
-			while ($aCanvassee = mysql_fetch_array ($rsCanvassees)) {
+			while ($aCanvassee = mysqli_fetch_array ($rsCanvassees)) {
 				// Get all the canvass input entered so far by this canvasser
 				$sSQL = "SELECT can_ID from canvassdata_can WHERE can_famID=" . $aCanvassee["fam_ID"] .
 				            " AND can_FYID=" . $iFYID;
 				$rsCanvassData = RunQuery($sSQL);
 
-				if (mysql_num_rows ($rsCanvassData) == 1) {
+				if (mysqli_num_rows ($rsCanvassData) == 1) {
 					++$thisCanvasserDone;
 				}
 			}
@@ -143,14 +136,6 @@ function CanvassBriefingSheets ($iFYID)
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_CanvassBriefingReport();
 	
-		// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-	}
-
 	$aQuestions = file ("CanvassQuestions.txt");
 	$iNumQuestions = count ($aQuestions);
 
@@ -164,7 +149,7 @@ function CanvassBriefingSheets ($iFYID)
 	$canvasserX = 160;
 
 	$topY = 20;
-	$memberNameX = $pdf->leftX;
+	$memberNameX = SystemConfig::getValue("leftX");
 	$memberGenderX = $memberNameX + 30;
 	$memberRoleX = $memberGenderX + 15;
 	$memberAgeX = $memberRoleX + 30;
@@ -172,12 +157,12 @@ function CanvassBriefingSheets ($iFYID)
 	$memberCellX = $memberClassX + 20;
 	$memberEmailX = $memberCellX + 25;
 
-	while ($aFamily = mysql_fetch_array($rsFamilies)) {
+	while ($aFamily = mysqli_fetch_array($rsFamilies)) {
 		$curY = $topY;
 
 		$pdf->SetFont('Times','', 24);
 
-		$pdf->WriteAt ($pdf->leftX, $curY, $aFamily["fam_Name"]);
+		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $aFamily["fam_Name"]);
 
 		$pdf->SetFont('Times','', 16);
 		$pdf->PrintRightJustified ($canvasserX, $curY, "Canvasser: " . $aFamily["CanvasserFirstName"] . " " . $aFamily["CanvasserLastName"]); 
@@ -186,31 +171,31 @@ function CanvassBriefingSheets ($iFYID)
 
 		$pdf->SetFont('Times','', 14);
 
-		$pdf->WriteAt ($pdf->leftX, $curY, $pdf->MakeSalutation ($aFamily["fam_ID"])); $curY += 5;
+		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $pdf->MakeSalutation ($aFamily["fam_ID"])); $curY += 5;
 		if ($aFamily["fam_Address1"] != "") {
-			$pdf->WriteAt ($pdf->leftX, $curY, $aFamily["fam_Address1"]); $curY += 5;
+			$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $aFamily["fam_Address1"]); $curY += 5;
 		}
 		if ($aFamily["fam_Address2"] != "") {
-			$pdf->WriteAt ($pdf->leftX, $curY, $aFamily["fam_Address2"]); $curY += 5;
+			$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $aFamily["fam_Address2"]); $curY += 5;
 		}
-		$pdf->WriteAt ($pdf->leftX, $curY, $aFamily["fam_City"] . ", " . $aFamily["fam_State"] . "  " . $aFamily["fam_Zip"]); $curY += 5;
+		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $aFamily["fam_City"] . ", " . $aFamily["fam_State"] . "  " . $aFamily["fam_Zip"]); $curY += 5;
 		if ($aFamily["fam_Country"] != "" && $aFamily["fam_Country"] != "United States" && $aFamily["fam_Country"] != "USA") {
-			$pdf->WriteAt ($pdf->leftX, $curY, $aFamily["fam_Country"]); $curY += 5;
+			$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $aFamily["fam_Country"]); $curY += 5;
 		}
-		$pdf->WriteAt ($pdf->leftX, $curY, $pdf->StripPhone ($aFamily["fam_HomePhone"])); $curY += 5;
+		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $pdf->StripPhone ($aFamily["fam_HomePhone"])); $curY += 5;
 
 		// Get pledges for this fiscal year, this family
 		$sSQL = "SELECT plg_Amount FROM pledge_plg 
 				 WHERE plg_FYID = " . $iFYID . " AND plg_PledgeOrPayment=\"Pledge\" AND plg_FamID = " . $aFamily["fam_ID"] . " ORDER BY plg_Amount DESC";
 		$rsPledges = RunQuery($sSQL);
 
-		$pledgeCount = mysql_num_rows ($rsPledges);
+		$pledgeCount = mysqli_num_rows ($rsPledges);
 
 		$sPledgeStatus = "";
 		if ($pledgeCount == 0) {
 			$sPledgeStatus .= gettext ("Did not pledge");
 		} else {
-			$aPledge = mysql_fetch_array ($rsPledges);
+			$aPledge = mysqli_fetch_array ($rsPledges);
 			if ($aPledge["plg_Amount"] >= $topPledgeLevel) {
 				$sPledgeStatus .= gettext ("Top pledger");
 			} else {
@@ -218,15 +203,15 @@ function CanvassBriefingSheets ($iFYID)
 			}
 		}
 
-		$curY += $pdf->incrementY;
+		$curY += SystemConfig::getValue("incrementY");
 
 		$pdf->SetFont('Times','', 12);
-		$pdf->WriteAt ($pdf->leftX, $curY, gettext ("Pledge status: "));
+		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, gettext ("Pledge status: "));
 		$pdf->SetFont('Times','B', 12);
-		$pdf->WriteAt ($pdf->leftX + 25, $curY, $sPledgeStatus);
+		$pdf->WriteAt (SystemConfig::getValue("leftX") + 25, $curY, $sPledgeStatus);
 		$pdf->SetFont('Times','', 12);
 
-		$curY += 2 * $pdf->incrementY;
+		$curY += 2 * SystemConfig::getValue("incrementY");
 
 		//Get the family members for this family
 		$sSQL = "SELECT per_ID, per_Title, per_FirstName, per_LastName, per_Suffix, per_Gender,
@@ -248,11 +233,11 @@ function CanvassBriefingSheets ($iFYID)
 		$pdf->WriteAt ($memberClassX, $curY, gettext ("Member"));
 		$pdf->WriteAt ($memberCellX, $curY, gettext ("Cell Phone"));
 		$pdf->WriteAt ($memberEmailX, $curY, gettext ("Email"));
-		$curY += $pdf->incrementY;
+		$curY += SystemConfig::getValue("incrementY");
 
 		$pdf->SetFont('Times','', 10);
 
-		while ($aFamilyMember = mysql_fetch_array($rsFamilyMembers)) {
+		while ($aFamilyMember = mysqli_fetch_array($rsFamilyMembers)) {
 			if ($aFamilyMember["per_Gender"] == 1)
 				$sGender = "M";
 			else
@@ -265,13 +250,13 @@ function CanvassBriefingSheets ($iFYID)
 			$pdf->WriteAt ($memberClassX, $curY, $aFamilyMember["sClassName"]);
 			$pdf->WriteAt ($memberCellX, $curY, $pdf->StripPhone ($aFamilyMember["per_CellPhone"]));
 			$pdf->WriteAt ($memberEmailX, $curY, $aFamilyMember["per_Email"]);
-			$curY += $pdf->incrementY;
+			$curY += SystemConfig::getValue("incrementY");
 		}
 
 		// Go back around to get group affiliations
-		if (mysql_num_rows ($rsFamilyMembers) > 0) {
-			mysql_data_seek ($rsFamilyMembers, 0);
-			while ($aMember = mysql_fetch_array($rsFamilyMembers)) {
+		if (mysqli_num_rows ($rsFamilyMembers) > 0) {
+			mysqli_data_seek ($rsFamilyMembers, 0);
+			while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
 
 				// Get the Groups this Person is assigned to
 				$sSQL = "SELECT grp_Name, role.lst_OptionName AS roleName
@@ -281,30 +266,30 @@ function CanvassBriefingSheets ($iFYID)
 						WHERE person2group2role_p2g2r.p2g2r_per_ID = " . $aMember["per_ID"] . "
 						ORDER BY grp_Name";
 				$rsAssignedGroups = RunQuery($sSQL);
-				if (mysql_num_rows ($rsAssignedGroups) > 0) {
+				if (mysqli_num_rows ($rsAssignedGroups) > 0) {
 					$groupStr = "Assigned groups for " . $aMember["per_FirstName"] . " " . $aMember["per_LastName"] . ": ";
 
 					$countGroups = 0;
-					while ($aGroup = mysql_fetch_array($rsAssignedGroups)) {
+					while ($aGroup = mysqli_fetch_array($rsAssignedGroups)) {
 						$groupStr .= $aGroup["grp_Name"] . " (" . $aGroup["roleName"] . ") ";
 						if ($countGroups == 0)
-							$curY += $pdf->incrementY;
+							$curY += SystemConfig::getValue("incrementY");
 
 						if (++$countGroups >= 2) {
 							$countGroups = 0;
-							$pdf->WriteAt ($pdf->leftX, $curY, $groupStr);
+							$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $groupStr);
 							$groupStr = "        ";
 						}
 					}
-					$pdf->WriteAt ($pdf->leftX, $curY, $groupStr);
+					$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $groupStr);
 				}
 			}
 		}
-		$curY += 2 * $pdf->incrementY;
+		$curY += 2 * SystemConfig::getValue("incrementY");
 		$spaceLeft = 275 - $curY;
 		$spacePerQuestion = $spaceLeft / $iNumQuestions;
 		for ($i = 0; $i < $iNumQuestions; $i++) {
-			$pdf->WriteAt ($pdf->leftX, $curY, ($i + 1) . ". " . $aQuestions[$i]);
+			$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, ($i + 1) . ". " . $aQuestions[$i]);
 			$curY += $spacePerQuestion;					
 		}
 
@@ -319,29 +304,21 @@ function CanvassSummaryReport ($iFYID)
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_CanvassBriefingReport();
 	
-	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-	}
-	
 	$pdf->SetMargins (20, 20);
 
 	$curY = 10;
 
 	$pdf->SetFont('Times','', 24);
-	$pdf->WriteAt ($pdf->leftX, $curY, "Canvass Summary Report " . date ("Y-m-d"));
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, "Canvass Summary Report " . date ("Y-m-d"));
 	$pdf->SetFont('Times','', 14);
 
 	$curY += 10;
 
 	$pdf->SetFont('Times','', 12);
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchName); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchAddress); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchCity . ", " . $pdf->sChurchState . "  " . $pdf->sChurchZip); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchPhone . "  " . $pdf->sChurchEmail); 
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchName")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchAddress")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchCity") . ", " . SystemConfig::getValue("sChurchState") . "  " . SystemConfig::getValue("sChurchZip")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchPhone") . "  " . SystemConfig::getValue("sChurchEmail")); 
 	$curY += 10;
 	$pdf->SetFont('Times','', 14);
 
@@ -355,17 +332,17 @@ function CanvassSummaryReport ($iFYID)
 	foreach (array ("Positive", "Critical", "Insightful", "Financial", "Suggestion", "WhyNotInterested") as $colName) {
 		$pdf->SetFont('Times','B', 14);
 		$pdf->Write (5, $colName . " Comments\n");
-//		$pdf->WriteAt ($pdf->leftX, $curY, $colName . " Comments");
+//		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $colName . " Comments");
 		$pdf->SetFont('Times','', 12);
-		while ($aDatum = mysql_fetch_array ($rsCanvassData)) {
+		while ($aDatum = mysqli_fetch_array ($rsCanvassData)) {
 			$str = $aDatum["can_" . $colName];
 			if ($str <> "") {
 				$pdf->Write (4, $str . "\n\n");
-//				$pdf->WriteAt ($pdf->leftX, $curY, $str);
-//				$curY += $pdf->incrementY;
+//				$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $str);
+//				$curY += SystemConfig::getValue("incrementY");
 			}
 		}
-		mysql_data_seek ($rsCanvassData, 0);
+		mysqli_data_seek ($rsCanvassData, 0);
 	}	
 
 	$pdf->Output("CanvassSummary" . date("Ymd") . ".pdf", "D");
@@ -376,29 +353,21 @@ function CanvassNotInterestedReport ($iFYID)
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_CanvassBriefingReport();
 	
-	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-	}
-	
 	$pdf->SetMargins (20, 20);
 
 	$curY = 10;
 
 	$pdf->SetFont('Times','', 24);
-	$pdf->WriteAt ($pdf->leftX, $curY, "Canvass Not Interested Report " . date ("Y-m-d"));
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, "Canvass Not Interested Report " . date ("Y-m-d"));
 	$pdf->SetFont('Times','', 14);
 
 	$curY += 10;
 
 	$pdf->SetFont('Times','', 12);
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchName); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchAddress); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchCity . ", " . $pdf->sChurchState . "  " . $pdf->sChurchZip); $curY += $pdf->incrementY;
-	$pdf->WriteAt ($pdf->leftX, $curY, $pdf->sChurchPhone . "  " . $pdf->sChurchEmail); 
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchName")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchAddress")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchCity") . ", " . SystemConfig::getValue("sChurchState") . "  " . SystemConfig::getValue("sChurchZip")); $curY += SystemConfig::getValue("incrementY");
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sChurchPhone") . "  " . SystemConfig::getValue("sChurchEmail")); 
 	$curY += 10;
 	$pdf->SetFont('Times','', 14);
 
@@ -410,7 +379,7 @@ function CanvassNotInterestedReport ($iFYID)
 	$rsCanvassData = RunQuery($sSQL);
 
 	$pdf->SetFont('Times','', 12);
-	while ($aDatum = mysql_fetch_array ($rsCanvassData)) {
+	while ($aDatum = mysqli_fetch_array ($rsCanvassData)) {
 		$str = sprintf ("%s : %s\n", $aDatum["fam_Name"], $aDatum["can_WhyNotInterested"]);
 		$pdf->Write (4, $str . "\n\n");
 	}

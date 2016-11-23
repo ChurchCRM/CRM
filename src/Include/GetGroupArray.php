@@ -25,14 +25,14 @@ function GetGroupArray($iGroupID)
 
   // Get the group's role list ID
   $sSQL = "SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =" . $iGroupID;
-  $aTemp = mysql_fetch_array(RunQuery($sSQL));
+  $aTemp = mysqli_fetch_array(RunQuery($sSQL));
   $iRoleListID = $aTemp[0];
   $bHasSpecialProps = ($aTemp[1] == "true");
 
   // Get the roles
   $sSQL = "SELECT * FROM list_lst WHERE lst_ID = " . $iRoleListID . " ORDER BY lst_OptionSequence";
   $rsRoles = RunQuery($sSQL);
-  $numRoles = mysql_num_rows($rsRoles);
+  $numRoles = mysqli_num_rows($rsRoles);
 
   // Get the members of the groups along with their family data
   $sSQL = "SELECT per_ID, per_FirstName, per_MiddleName, per_LastName, per_Title,
@@ -48,7 +48,7 @@ function GetGroupArray($iGroupID)
 		   WHERE p2g2r_grp_ID = " . $iGroupID . " ORDER BY per_LastName, per_FirstName";
   $rsGroupMembers = RunQuery($sSQL);
   $row = 0;
-  while ($aGroupMember = mysql_fetch_array($rsGroupMembers)) {
+  while ($aGroupMember = mysqli_fetch_array($rsGroupMembers)) {
     $ret[$row++] = $aGroupMember;
   }
   return ($ret);

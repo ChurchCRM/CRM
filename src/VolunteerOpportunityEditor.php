@@ -72,7 +72,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
 
     $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     $rsOpps = RunQuery($sSQL);
-    $aRow = mysql_fetch_array($rsOpps);
+    $aRow = mysqli_fetch_array($rsOpps);
     extract($aRow);
 
     $sPageTitle = gettext("Volunteer Opportunity Delete Confirmation");
@@ -105,14 +105,14 @@ if (($sAction == 'delete') && $iOpp > 0) {
     $sSQL .= "WHERE `p2vo_vol_ID` = '" . $iOpp . "' ";
     $sSQL .= "ORDER BY `per_LastName`, `per_FirstName` ";
     $rsPeople = RunQuery($sSQL);
-    $numRows = mysql_num_rows($rsPeople);
+    $numRows = mysqli_num_rows($rsPeople);
     if ($numRows > 0) {
         echo "\n<br><h3>" . gettext("Warning") . "!</h3>";
         echo "\n<h3>" . gettext("There are people assigned to this Volunteer Opportunity.") . "</h3>";
         echo "\n<br>" . gettext("Volunteer Opportunity will be unassigned for the following people.");
         echo "\n<br>";
         for ( $i=0; $i<$numRows; $i++ ) {
-            $aRow = mysql_fetch_array($rsPeople);
+            $aRow = mysqli_fetch_array($rsPeople);
             extract($aRow);
             echo "\n<br><b> $per_FirstName $per_LastName</b>";
         }
@@ -139,7 +139,7 @@ if (($sAction == 'ConfDelete') && $iOpp > 0) {
     // get the order value for the record being deleted
     $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
     $rsOrder = RunQuery ($sSQL);
-    $aRow = mysql_fetch_array($rsOrder);
+    $aRow = mysqli_fetch_array($rsOrder);
     $orderVal = $aRow[0];
     $sSQL = "DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     RunQuery($sSQL);
@@ -168,14 +168,14 @@ if ($iRowNum == 0) {
     $sSQL = "SELECT `vol_ID` FROM `volunteeropportunity_vol` WHERE vol_Order = '0' ";
     $sSQL .= "ORDER BY `vol_ID`";
     $rsOrder = RunQuery($sSQL);
-    $numRows = mysql_num_rows($rsOrder);
+    $numRows = mysqli_num_rows($rsOrder);
     if ($numRows) {
         $sSQL = "SELECT MAX(`vol_Order`) AS `Max_vol_Order` FROM `volunteeropportunity_vol`";
         $rsMax = RunQuery($sSQL);
-        $aRow = mysql_fetch_array($rsMax);
+        $aRow = mysqli_fetch_array($rsMax);
         extract($aRow);
         for ($row = 1; $row <= $numRows; $row++) {
-            $aRow = mysql_fetch_array($rsOrder);
+            $aRow = mysqli_fetch_array($rsOrder);
             extract($aRow);
             $num_vol_Order = $Max_vol_Order + $row;
             $sSQL = "UPDATE `volunteeropportunity_vol` " .
@@ -189,11 +189,11 @@ if ($iRowNum == 0) {
     // re-order the vol_Order field just in case there is a missing number(s)
     $sSQL = "SELECT * FROM `volunteeropportunity_vol` ORDER by `vol_Order`";
     $rsOpps = RunQuery($sSQL);
-    $numRows = mysql_num_rows($rsOpps);
+    $numRows = mysqli_num_rows($rsOpps);
 
     $orderCounter = 1;
     for ($row = 1; $row <= $numRows; $row++) {
-         $aRow = mysql_fetch_array($rsOpps);
+         $aRow = mysqli_fetch_array($rsOpps);
          extract($aRow);
          if ($orderCounter <> $vol_Order) { // found hole, update all records to the end
          $sSQL = "UPDATE `volunteeropportunity_vol` " .
@@ -213,7 +213,7 @@ require "Include/Header.php";
 if (isset($_POST["SaveChanges"])) {
     $sSQL = "SELECT * FROM `volunteeropportunity_vol`";
     $rsOpps = RunQuery($sSQL);
-    $numRows = mysql_num_rows($rsOpps);
+    $numRows = mysqli_num_rows($rsOpps);
 
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++ ) {
     	$nameName = $iFieldID . "name";
@@ -230,7 +230,7 @@ if (isset($_POST["SaveChanges"])) {
 
 	        $aDescFields[$iFieldID] = FilterInput($_POST[$descName]);
 
-	        $aRow = mysql_fetch_array($rsOpps);
+	        $aRow = mysqli_fetch_array($rsOpps);
 	        $aIDFields[$iFieldID] = $aRow[0];
     	}
     }
@@ -257,7 +257,7 @@ if (isset($_POST["SaveChanges"])) {
         //  there must be an easier way to get the number of rows in order to generate the last order number.
         $sSQL = "SELECT * FROM `volunteeropportunity_vol`";
         $rsOpps = RunQuery($sSQL);
-        $numRows = mysql_num_rows($rsOpps);
+        $numRows = mysqli_num_rows($rsOpps);
         $newOrder = $numRows + 1;
         $sSQL = "INSERT INTO `volunteeropportunity_vol` 
            ( `vol_Order` , `vol_Name` , `vol_Description`)
@@ -270,11 +270,11 @@ if (isset($_POST["SaveChanges"])) {
     $sSQL = "SELECT * FROM `volunteeropportunity_vol`";
 
     $rsOpps = RunQuery($sSQL);
-    $numRows = mysql_num_rows($rsOpps);
+    $numRows = mysqli_num_rows($rsOpps);
 
     // Create arrays of Vol Opps.
     for ($row = 1; $row <= $numRows; $row++) {
-        $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+        $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
         extract($aRow);
         $rowIndex = $vol_Order; // is this dangerous?  the vol_Order field had better be correct.
         $aIDFields[$rowIndex] = $vol_ID;

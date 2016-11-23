@@ -29,7 +29,7 @@ else
 if ($iCurrentFundraiser) {
 	$sSQL = "SELECT * from fundraiser_fr WHERE fr_ID = " . $iCurrentFundraiser;
 	$rsDeposit = RunQuery($sSQL);
-	extract(mysql_fetch_array($rsDeposit));
+	extract(mysqli_fetch_array($rsDeposit));
 }
 
 //Set the page title
@@ -83,8 +83,8 @@ require "Include/Header.php";
 		echo "<select name=\"Item" . $row . "\">\n";
 		echo "<option value=\"0\" selected>" . gettext("Unassigned") . "</option>\n";
 
-		mysql_data_seek ($rsDonatedItems, 0);
-		while ($itemArr = mysql_fetch_array($rsDonatedItems)) {
+		mysqli_data_seek ($rsDonatedItems, 0);
+		while ($itemArr = mysqli_fetch_array($rsDonatedItems)) {
 			extract($itemArr);
 			echo "<option value=\"".$di_ID."\">" . $di_Item . " " . $di_title . "</option>\n";
 		}
@@ -95,8 +95,8 @@ require "Include/Header.php";
 		echo "<select name=\"Paddle" . $row . "\">\n";
 		echo "<option value=\"0\" selected>" . gettext("Unassigned") . "</option>\n";
 
-		mysql_data_seek ($rsPaddles, 0);
-		while ($paddleArr = mysql_fetch_array($rsPaddles)) {
+		mysqli_data_seek ($rsPaddles, 0);
+		while ($paddleArr = mysqli_fetch_array($rsPaddles)) {
 			extract($paddleArr);
 			echo "<option value=\"".$pn_per_ID."\">" . $pn_Num . " " . $buyerFirstName . " " . $buyerLastName .  "</option>\n";
 		}

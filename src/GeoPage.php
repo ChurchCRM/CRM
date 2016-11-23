@@ -26,6 +26,8 @@ require "Include/Functions.php";
 
 require "Include/GeoCoder.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 function CompareDistance ($elem1, $elem2)
 {
   if ($elem1["Distance"] > $elem2["Distance"])
@@ -53,14 +55,14 @@ function FamilyInfoByDistance ($iFamily)
 		// Get info for the selected family
 		$sSQL = "SELECT fam_ID as selected_fam_ID, fam_Name as selected_fam_Name, fam_Address1 as selected_fam_Address1, fam_City as selected_fam_City, fam_State as selected_fam_State, fam_Zip as selected_fam_Zip, fam_Latitude as selected_fam_Latitude, fam_Longitude as selected_fam_Longitude from family_fam WHERE fam_ID=" . $iFamily;
 		$rsFamilies = RunQuery ($sSQL);
-		extract (mysql_fetch_array($rsFamilies));
+		extract (mysqli_fetch_array($rsFamilies));
 	}
 
 	// Compute distance and bearing from the selected family to all other families
 	$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude from family_fam";
 
 	$rsFamilies = RunQuery ($sSQL);
-	while ($aFam = mysql_fetch_array($rsFamilies)) {
+	while ($aFam = mysqli_fetch_array($rsFamilies)) {
 		extract ($aFam);
 
 		if ($iFamily) {
@@ -95,7 +97,7 @@ $sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence
 $rsClassification = RunQuery($sClassSQL);
 unset($aClassificationName);
 $aClassificationName[0] = "Unassigned";
-while ($aRow = mysql_fetch_array($rsClassification))
+while ($aRow = mysqli_fetch_array($rsClassification))
 {
     extract($aRow);
     $aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
@@ -106,7 +108,7 @@ $sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequen
 $rsFamilyRole = RunQuery($sFamRoleSQL);
 unset($aFamilyRoleName);
 $aFamilyRoleName[0] = "Unassigned";
-while ($aRow = mysql_fetch_array($rsFamilyRole))
+while ($aRow = mysqli_fetch_array($rsFamilyRole))
 {
     extract($aRow);
     $aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
@@ -230,7 +232,7 @@ $rsFamilies = RunQuery($sSQL);
 echo "<tr><td class=\"LabelColumn\">" . gettext("Select Family:") . "</td>\n";
 echo "<td class=\"TextColumn\">\n";
 echo "<select name=\"Family\" size=\"8\">";
-while ($aRow = mysql_fetch_array($rsFamilies))
+while ($aRow = mysqli_fetch_array($rsFamilies))
 {
 	extract($aRow);
 
@@ -246,7 +248,7 @@ echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"NumNeighbors\" value
 echo "</tr>\n";
 
 echo "<tr>\n";
-echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance") . " (" . strtolower($sDistanceUnit) . "): </td>\n";
+echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance") . " (" . strtolower(SystemConfig::getValue("sDistanceUnit")) . "): </td>\n";
 echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"MaxDistance\" value=\"" . $nMaxDistance . "\"></td>\n";
 echo "</tr>\n";
 
@@ -348,7 +350,7 @@ if (    $iFamily != 0 &&
             $sSQL .= " AND per_cls_ID IN (".$sClassificationList.")";
         }
         $rsPeople = RunQuery($sSQL);
-        $numListed = mysql_num_rows($rsPeople);
+        $numListed = mysqli_num_rows($rsPeople);
         
         if (!$numListed) // skip familes with zero members
             continue;
@@ -370,7 +372,7 @@ if (    $iFamily != 0 &&
 		echo "</tr>\n";
 
 
-        while ($aRow = mysql_fetch_array($rsPeople)) {
+        while ($aRow = mysqli_fetch_array($rsPeople)) {
             extract($aRow);
 
             if (!in_array($per_ID,$aPersonIDs)) {

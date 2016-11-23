@@ -21,25 +21,27 @@
 
 require "bin/google-map/GoogleMap.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 $googleMapObj = new GoogleMapAPI('map');
 $googleMapObj->setLookupService('GOOGLE'); // or 'YAHOO'
 
 
 $bHaveXML = FALSE;
 
-if ($sXML_RPC_PATH) {
+if (SystemConfig::getValue("sXML_RPC_PATH")) {
   $pathArray = explode(PATH_SEPARATOR, get_include_path());
   foreach ($pathArray as $onePath) {
-    $fullpath = $onePath . DIRECTORY_SEPARATOR . $sXML_RPC_PATH;
+    $fullpath = $onePath . DIRECTORY_SEPARATOR . SystemConfig::getValue("sXML_RPC_PATH");
     if (file_exists($fullpath) && is_readable($fullpath)) {
-      require_once("$sXML_RPC_PATH");
+      require_once(SystemConfig::getValue("sXML_RPC_PATH"));
       $bHaveXML = TRUE;
     }
   }
 
   if ($bHaveXML == 0) { // Maybe the user entered absolute path, let's check
-    if (file_exists($sXML_RPC_PATH) && is_readable($sXML_RPC_PATH)) {
-      require_once("$sXML_RPC_PATH");
+    if (file_exists(SystemConfig::getValue("sXML_RPC_PATH")) && is_readable(SystemConfig::getValue("sXML_RPC_PATH"))) {
+      require_once(SystemConfig::getValue("sXML_RPC_PATH"));
       $bHaveXML = TRUE;
     }
   }
@@ -50,7 +52,6 @@ if ($sXML_RPC_PATH) {
 // distance in miles.
 function LatLonDistance($lat1, $lon1, $lat2, $lon2)
 {
-  global $sDistanceUnit;
 
   // Formula for calculating radians between
   // latitude and longitude pairs.
@@ -75,7 +76,7 @@ function LatLonDistance($lat1, $lon1, $lat2, $lon2)
   $distance = $radians * $radius;
 
   // convert to miles
-  if (strtoupper($sDistanceUnit) == 'MILES') {
+  if (strtoupper(SystemConfig::getValue("sDistanceUnit")) == 'MILES') {
     $distance = 0.6213712 * $distance;
   }
 
@@ -199,12 +200,11 @@ class AddressLatLon
 
   function AddressLatLon()
   {
-    global $sGeocoderID, $sGeocoderPW, $bHaveXML;
-    if (!$bHaveXML)
+    if (!SystemConfig::getValue("bHaveXML"))
       return;
-    if (isset ($sGeocoderID) && $sGeocoderID != "") { // Use credentials if available for unthrottled access to the geocoder server
+    if (SystemConfig::getValue("sGeocoderID") && SystemConfig::getValue("sGeocoderID") != "") { // Use credentials if available for unthrottled access to the geocoder server
       $this->client = new XML_RPC_Client('/member/service/xmlrpc', 'rpc.geocoder.us');
-      $this->client->SetCredentials($sGeocoderID, $sGeocoderPW);
+      $this->client->SetCredentials(SystemConfig::getValue("sGeocoderID"), SystemConfig::getValue("sGeocoderPW"));
     } else {
       $this->client = new XML_RPC_Client('/service/xmlrpc', 'rpc.geocoder.us');
     }
@@ -220,13 +220,12 @@ class AddressLatLon
 
   function Lookup()
   {
-    global $bHaveXML;
-    global $bUseGoogleGeocode;
+
     global $googleMapObj;
 
     $address = $this->street . "," . $this->city . "," . $this->state . "," . $this->zip;
 
-    if ($bUseGoogleGeocode) {
+    if (SystemConfig::getValue("bUseGoogleGeocode")) {
       //$geocode = $googleMapObj->geoGetCoords($address);
       $geocode = $googleMapObj->getGeocode($address);
 
@@ -235,7 +234,7 @@ class AddressLatLon
         $this->lon = $geocode['lon'];
       }
     } else {
-      if (!$bHaveXML)
+      if (!SystemConfig::getValue("bHaveXML"))
         return (-4);
 
       $params = array(new XML_RPC_Value($address, 'string'));

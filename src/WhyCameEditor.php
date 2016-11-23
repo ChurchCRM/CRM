@@ -24,7 +24,7 @@ $iWhyCameID = FilterInput($_GET["WhyCameID"]);
 //Get name
 $sSQL = "SELECT per_FirstName, per_LastName FROM person_per where per_ID = " . $iPerson;
 $rsPerson = RunQuery($sSQL);
-extract(mysql_fetch_array($rsPerson));
+extract(mysqli_fetch_array($rsPerson));
 
 $sPageTitle = gettext("\"Why Came\" notes for ") . $per_FirstName . " " . $per_LastName;
 
@@ -61,8 +61,8 @@ if (isset($_POST["Submit"])) {
 } else {
   $sSQL = "SELECT * FROM whycame_why WHERE why_per_ID = " . $iPerson;
   $rsWhyCame = RunQuery($sSQL);
-  if (mysql_num_rows($rsWhyCame) > 0) {
-    extract(mysql_fetch_array($rsWhyCame));
+  if (mysqli_num_rows($rsWhyCame) > 0) {
+    extract(mysqli_fetch_array($rsWhyCame));
 
     $iWhyCameID = $why_ID;
     $tJoin = $why_join;

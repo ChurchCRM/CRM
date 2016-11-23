@@ -124,14 +124,14 @@ if (isset($_POST['save']) && $iPersonID > 0) {
        // Execute the SQL
        $unQueryResult = RunQuery($unSQL);
        //Extract Value, if greater than 0 for add error, greater than 1 for add then error
-       $unQueryResultSet = mysql_fetch_array($unQueryResult);
+       $unQueryResultSet = mysqli_fetch_array($unQueryResult);
        $undupCount = $unQueryResultSet['dup'];
 
         // Write the SQL depending on whether we're adding or editing
         if ($sAction == 'add'){
 
             if ($undupCount == 0) {
-                $sPasswordHashSha256 = hash ("sha256", $sDefault_Pass.$iPersonID);
+                $sPasswordHashSha256 = hash ("sha256", SystemConfig::getValue("sDefault_Pass").$iPersonID);
                 $sSQL = "INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (" . $iPersonID . ",'" . $sPasswordHashSha256 . "',1,'" . date("Y-m-d H:i:s") . "', " . $AddRecords . ", " . $EditRecords . ", " . $DeleteRecords . ", " . $MenuOptions . ", " . $ManageGroups . ", " . $Finance . ", " . $Notes . ", " . $Admin . ", '" . $Style . "', 10," . $defaultFY . ",\"" . $sUserName . "\"," . $EditSelf . "," . $Canvasser . ")";
                 // Execute the SQL
                 RunQuery($sSQL);
@@ -164,7 +164,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             // Get the data on this user
             $sSQL = "SELECT * FROM user_usr INNER JOIN person_per ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID = " . $iPersonID;
             $rsUser = RunQuery($sSQL);
-            $aUser = mysql_fetch_array($rsUser);
+            $aUser = mysqli_fetch_array($rsUser);
             extract($aUser);
             $sUser = $per_LastName . ", " . $per_FirstName;
             $sUserName = $usr_UserName;
@@ -172,7 +172,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         } else {
             $sSQL = "SELECT per_LastName, per_FirstName, per_Email FROM person_per WHERE per_ID = " . $iPersonID;
             $rsUser = RunQuery($sSQL);
-            $aUser = mysql_fetch_array($rsUser);
+            $aUser = mysqli_fetch_array($rsUser);
             $sUser = $aUser['per_LastName'] . ', ' . $aUser['per_FirstName'];
             if ($aUser['per_Email'] != "") {
                 $sUserName = $aUser['per_Email'];
@@ -265,7 +265,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)){
         $sSQL = "SELECT * FROM userconfig_ucfg "
         .       "WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID ";
         $bRowExists=TRUE;
-        $iNumRows=mysql_num_rows(RunQuery($sSQL));
+        $iNumRows=mysqli_num_rows(RunQuery($sSQL));
         if($iNumRows==0)
             $bRowExists=FALSE;
 
@@ -274,7 +274,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)){
             $sSQL = "SELECT * FROM userconfig_ucfg "
             .       "WHERE ucfg_id=$id AND ucfg_per_id=0 ";
             $rsDefault = RunQuery($sSQL);
-            $aDefaultRow = mysql_fetch_row($rsDefault);
+            $aDefaultRow = mysqli_fetch_row($rsDefault);
             if($aDefaultRow) {
                 list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type,
                     $ucfg_tooltip, $ucfg_permission, $ucfg_cat) = $aDefaultRow;
@@ -329,7 +329,7 @@ if ($bShowPersonSelect) {
             <select name="PersonID" size="12">
     <?php
     // Loop through all the people
-    while ($aRow =mysql_fetch_array($rsPeople)) {
+    while ($aRow =mysqli_fetch_array($rsPeople)) {
         extract($aRow);
     ?>
                 <option value="<?= $per_ID ?>"<?php if ($per_ID == $iPersonID) { echo ' selected'; } ?>><?= $per_LastName . ', ' .  $per_FirstName ?></option>
@@ -441,16 +441,16 @@ $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
 $rsDefault = RunQuery($sSQL);
 $r = 1;
 // List Default Settings
-while ($aDefaultRow = mysql_fetch_row($rsDefault)) {
-    list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type,
+while ($aDefaultRow = mysqli_fetch_row($rsDefault)) {
+    list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, 
         $ucfg_tooltip, $ucfg_permission) = $aDefaultRow;
 
     // Overwrite with user settings if they already exist
     $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='$usr_per_ID' "
     .       "AND ucfg_id='$ucfg_id' ";
     $rsUser = RunQuery($sSQL);
-    while ($aUserRow = mysql_fetch_row($rsUser)) {
-            list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type,
+    while ($aUserRow = mysqli_fetch_row($rsUser)) {
+            list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, 
                 $ucfg_tooltip, $ucfg_permission) = $aUserRow;
     }
 

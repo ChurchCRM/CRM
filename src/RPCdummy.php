@@ -33,11 +33,11 @@ switch($mode)
                                             WHERE per_Envelope=" . $data;
     $rsQuery = RunQuery($sSQL);
 
-    if (mysql_num_rows($rsQuery) == 0)
+    if (mysqli_num_rows($rsQuery) == 0)
       $sGeneratedHTML = "invalid";
     else
     {
-      extract(mysql_fetch_array($rsQuery));
+      extract(mysqli_fetch_array($rsQuery));
 
       $sCity = SelectWhichInfo($per_City, $fam_City, false);
       $sState = SelectWhichInfo($per_State, $fam_State, false);
