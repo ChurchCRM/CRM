@@ -982,7 +982,7 @@ require "Include/Header.php";
                 <select name="Classification" class="form-control">
                   <option value="0"><?= gettext("Unassigned") ?></option>
                   <option value="0" disabled>-----------------------</option>
-                  <?php while ($aRow = mysql_fetch_array($rsClassifications)) {
+                  <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
                     if ($iClassification == $lst_OptionID) {
@@ -1054,7 +1054,7 @@ require "Include/Header.php";
                         echo "</div></div>";
                     }
                 }
-             ?>
+            } ?>
         </div>
     </div>
   <?php } ?>
