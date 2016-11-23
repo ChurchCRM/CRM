@@ -85,7 +85,7 @@ switch ($mode) {
 		// Validate that this list ID is really for a group roles list. (for security)
 		$sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = " . $listID;
 		$rsTemp = RunQuery($sSQL);
-		if (mysql_num_rows($rsTemp) == 0) {
+		if (mysqli_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
 		}
@@ -119,7 +119,7 @@ switch ($sAction)
 	case 'delete':
 		$sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
 		$rsPropList = RunQuery($sSQL);
-		$numRows = mysql_num_rows($rsPropList);
+		$numRows = mysqli_num_rows($rsPropList);
 
 		// Make sure we never delete the only option
 		if ($numRows > 1)
@@ -146,7 +146,7 @@ switch ($sAction)
 				// This seems backwards, but grp_RoleListID is unique, having a 1-1 relationship with grp_ID.
 				$sSQL = "SELECT grp_ID,grp_DefaultRole FROM group_grp WHERE grp_RoleListID = $listID";
 				$rsTemp = RunQuery($sSQL);
-				$aTemp = mysql_fetch_array($rsTemp);
+				$aTemp = mysqli_fetch_array($rsTemp);
 
 				$sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = $aTemp[1] WHERE p2g2r_grp_ID = $aTemp[0] AND p2g2r_rle_ID = $iID";
 				RunQuery($sSQL);

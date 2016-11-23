@@ -8,15 +8,16 @@ class ReportingService
   function queryDatabase($queryRequest)
   {
     requireUserGroupMembership("bAdmin");
+    global $cnInfoCentral;
     $returnObject = new \stdClass();
     $returnObject->query = $queryRequest;
     $returnObject->sql = $this->getQuerySQL($queryRequest->queryID, $queryRequest->queryParameters);
     $returnObject->rows = array();
     $returnObject->headerRow = null;
 
-    $result = mysql_query($returnObject->sql);
-    $returnObject->rowcount = mysql_num_rows($result);
-    while ($row = mysql_fetch_assoc($result))
+    $result = mysqli_query($cnInfoCentral, $returnObject->sql);
+    $returnObject->rowcount = mysqli_num_rows($result);
+    while ($row = mysqli_fetch_assoc($result))
     {
       if (!isset($returnObject->headerRow))
       {
@@ -33,10 +34,11 @@ class ReportingService
 
   function search($searchTerm)
   {
+    global $cnInfoCentral;
     $fetch = 'SELECT * from query_qry WHERE qry_Name LIKE \'%' . FilterInput($searchTerm) . '%\' LIMIT 15';
-    $result = mysql_query($fetch);
+    $result = mysqli_query($cnInfoCentral, $fetch);
     $reports = array();
-    while ($row = mysql_fetch_array($result))
+    while ($row = mysqli_fetch_array($result))
     {
       $row_array['id'] = $row['qry_ID'];
       $row_array['displayName'] = $row['qry_Name'];
@@ -69,7 +71,7 @@ class ReportingService
     requireUserGroupMembership("bAdmin");
     $sSQL = "SELECT qry_SQL FROM query_qry where qry_ID=" . FilterInput($qry_ID,"int");
     $rsQueries = RunQuery($sSQL);
-    $query = mysql_fetch_assoc($rsQueries);
+    $query = mysqli_fetch_assoc($rsQueries);
     $sql = $query['qry_SQL'];
     foreach ($qry_Parameters as $parameter)
     {
@@ -86,7 +88,7 @@ class ReportingService
       $sSQL = "SELECT qry_ID,qry_Name,qry_Description FROM query_qry ORDER BY qry_Name";
       $rsQueries = RunQuery($sSQL);
       $result = array();
-      while ($row = mysql_fetch_assoc($rsQueries))
+      while ($row = mysqli_fetch_assoc($rsQueries))
       {
         array_push($result, $row);
       }
@@ -99,7 +101,7 @@ class ReportingService
         $sSQL = "SELECT qry_ID,qry_Name,qry_Description FROM query_qry where qry_ID=" . FilterInput($qry_ID,"int");
         $rsQueries = RunQuery($sSQL);
         $result = array();
-        while ($row = mysql_fetch_assoc($rsQueries))
+        while ($row = mysqli_fetch_assoc($rsQueries))
         {
           array_push($result, $row);
         }
@@ -107,7 +109,7 @@ class ReportingService
       }
       elseif (is_array($qry_Args))
       {
-        
+
       }
     }
   }
@@ -118,13 +120,13 @@ class ReportingService
     $sSQL = "SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID=" . FilterInput($qry_ID,"int");
     $rsQueries = RunQuery($sSQL);
     $result = array();
-    while ($row = mysql_fetch_assoc($rsQueries))
+    while ($row = mysqli_fetch_assoc($rsQueries))
     {
       if ($row['qrp_OptionSQL'])
       {
         $optionSQLResultArray = array();
         $optionSQLResults = RunQuery($row['qrp_OptionSQL']);
-        while ($r2 = mysql_fetch_assoc($optionSQLResults))
+        while ($r2 = mysqli_fetch_assoc($optionSQLResults))
         {
           array_push($optionSQLResultArray, $r2);
         }

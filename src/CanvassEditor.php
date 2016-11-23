@@ -39,7 +39,7 @@ $bNotInterested = false;
 //Get Family name
 $sSQL = "SELECT fam_Name FROM family_fam where fam_ID = " . $iFamily;
 $rsFamily = RunQuery($sSQL);
-extract(mysql_fetch_array($rsFamily));
+extract(mysqli_fetch_array($rsFamily));
 
 $fyStr = MakeFYString ($iFYID);
 
@@ -82,7 +82,7 @@ if (isset($_POST["Submit"]))
 		RunQuery($sSQL);
 		$sSQL = "SELECT MAX(can_ID) AS iCanvassID FROM canvassdata_can";
 		$rsLastEntry = RunQuery($sSQL);
-		$newRec = mysql_fetch_array($rsLastEntry);
+		$newRec = mysqli_fetch_array($rsLastEntry);
 		$iCanvassID = $newRec["iCanvassID"];
 	} else {
 		$sSQL = "UPDATE canvassdata_can SET can_famID=" . $iFamily . "," .
@@ -114,8 +114,8 @@ if (isset($_POST["Submit"]))
 } else {
 	$sSQL = "SELECT * FROM canvassdata_can WHERE can_famID = " . $iFamily . " AND can_FYID=" . $iFYID;
 	$rsCanvass = RunQuery($sSQL);
-	if (mysql_num_rows ($rsCanvass) > 0) {
-		extract(mysql_fetch_array($rsCanvass));
+	if (mysqli_num_rows ($rsCanvass) > 0) {
+		extract(mysqli_fetch_array($rsCanvass));
 
 		$iCanvassID = $can_ID;
 		$iCanvasser = $can_Canvasser;
@@ -168,14 +168,14 @@ require "Include/Header.php";
 		<table cellpadding="3">
 
 			<?php
-			if (($rsBraveCanvassers <> 0 && mysql_num_rows($rsBraveCanvassers) > 0) ||
-			    ($rsCanvassers <> 0 && mysql_num_rows($rsCanvassers) > 0)) {
+			if (($rsBraveCanvassers <> 0 && mysqli_num_rows($rsBraveCanvassers) > 0) ||
+			    ($rsCanvassers <> 0 && mysqli_num_rows($rsCanvassers) > 0)) {
 				echo "<tr><td class='LabelColumn'>" . gettext("Canvasser:") . "</td>\n";
 				echo "<td class='TextColumnWithBottomBorder'>";
 				// Display all canvassers
 				echo "<select name='Canvasser'><option value=\"0\">None selected</option>";
 				if ($rsBraveCanvassers != 0) {
-					while ($aCanvasser = mysql_fetch_array($rsBraveCanvassers)) {
+					while ($aCanvasser = mysqli_fetch_array($rsBraveCanvassers)) {
 						echo "<option value=\"" . $aCanvasser["per_ID"] . "\"";
 						if ($aCanvasser["per_ID"]==$iCanvasser)
 							echo " selected";
@@ -185,7 +185,7 @@ require "Include/Header.php";
 					}
 				}
 				if ($rsCanvassers != 0) {
-					while ($aCanvasser = mysql_fetch_array($rsCanvassers)) {
+					while ($aCanvasser = mysqli_fetch_array($rsCanvassers)) {
 						echo "<option value=\"" . $aCanvasser["per_ID"] . "\"";
 						if ($aCanvasser["per_ID"]==$iCanvasser)
 							echo " selected";

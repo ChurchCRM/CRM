@@ -94,12 +94,12 @@ switch ($mode) {
 		$rsTemp = RunQuery($sSQL);
 
 		// Validate that this list ID is really for a group roles list. (for security)
-		if (mysql_num_rows($rsTemp) == 0) {
+		if (mysqli_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
 		}
 
-		$aTemp = mysql_fetch_array($rsTemp);
+		$aTemp = mysqli_fetch_array($rsTemp);
 		$iDefaultRole = $aTemp[0];
 
 		break;
@@ -113,7 +113,7 @@ switch ($mode) {
 		$rsTemp = RunQuery($sSQL);
 
 		// Validate that this is a valid person-custom field custom list
-		if (mysql_num_rows($rsTemp) == 0) {
+		if (mysqli_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
 		}
@@ -129,7 +129,7 @@ switch ($mode) {
 		$rsTemp = RunQuery($sSQL);
 
 		// Validate that this is a valid group-specific-property field custom list
-		if (mysql_num_rows($rsTemp) == 0) {
+		if (mysqli_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
 		}
@@ -145,7 +145,7 @@ switch ($mode) {
 		$rsTemp = RunQuery($sSQL);
 
 		// Validate that this is a valid family_custom field custom list
-		if (mysql_num_rows($rsTemp) == 0) {
+		if (mysqli_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
 		}
@@ -172,7 +172,7 @@ if (isset($_POST["AddField"]))
 		// Check for a duplicate option name
 		$sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '" . $newFieldName . "'";
 		$rsCount = RunQuery($sSQL);
-		if (mysql_num_rows($rsCount) > 0)
+		if (mysqli_num_rows($rsCount) > 0)
 		{
 			$iNewNameError = 2;
 		}
@@ -181,13 +181,13 @@ if (isset($_POST["AddField"]))
 			// Get count of the options
 			$sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
 			$rsTemp = RunQuery($sSQL);
-			$numRows = mysql_num_rows($rsTemp);
+			$numRows = mysqli_num_rows($rsTemp);
 			$newOptionSequence = $numRows + 1;
 
 			// Get the new OptionID
 			$sSQL = "SELECT MAX(lst_OptionID) FROM list_lst WHERE lst_ID = $listID";
 			$rsTemp = RunQuery($sSQL);
-			$aTemp = mysql_fetch_array($rsTemp);
+			$aTemp = mysqli_fetch_array($rsTemp);
 			$newOptionID = $aTemp[0] + 1;
 
 			// Insert into the appropriate options table
@@ -207,7 +207,7 @@ $bDuplicateFound = false;
 //ADDITION - get Sequence Also
 $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
 $rsList = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsList);
+$numRows = mysqli_num_rows($rsList);
 
 $aNameErrors = array();
 for ($row = 1; $row <= $numRows; $row++)
@@ -217,7 +217,7 @@ if (isset($_POST["SaveChanges"]))
 {
 	for ($row = 1; $row <= $numRows; $row++)
 	{
-		$aRow = mysql_fetch_array($rsList, MYSQL_BOTH);
+		$aRow = mysqli_fetch_array($rsList, MYSQLI_BOTH);
 		$aOldNameFields[$row] = $aRow["lst_OptionName"];
 		$aIDs[$row] =  $aRow["lst_OptionID"];
 
@@ -273,12 +273,12 @@ if (isset($_POST["SaveChanges"]))
 
 $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID = $listID ORDER BY lst_OptionSequence";
 $rsRows = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsRows);
+$numRows = mysqli_num_rows($rsRows);
 
 // Create arrays of the option names and IDs
 for ($row = 1; $row <= $numRows; $row++)
 {
-	$aRow = mysql_fetch_array($rsRows, MYSQL_BOTH);
+	$aRow = mysqli_fetch_array($rsRows, MYSQLI_BOTH);
 
 	if (!$bErrorFlag)
 		$aNameFields[$row] = $aRow["lst_OptionName"];

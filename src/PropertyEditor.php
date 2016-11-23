@@ -113,7 +113,7 @@ else
 	if ($iPropertyID != 0) {
 		//Get the data on this property
 		$sSQL = "SELECT * FROM property_pro WHERE pro_ID = " . $iPropertyID;
-		$rsProperty = mysql_fetch_array(RunQuery($sSQL));
+		$rsProperty = mysqli_fetch_array(RunQuery($sSQL));
 		extract($rsProperty);
 
 		//Assign values locally
@@ -146,7 +146,7 @@ require "Include/Header.php";
                 <select  class="form-control input-small" name="Class">
                     <option value=""><?= gettext("Select Property Type") ?></option>
                     <?php
-                    while ($aRow = mysql_fetch_array($rsPropertyTypes))
+                    while ($aRow = mysqli_fetch_array($rsPropertyTypes))
                     {
                         extract($aRow);
 

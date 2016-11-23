@@ -20,7 +20,7 @@ class SundaySchoolService
     $classInfo = array();
     $lastClassId = 0;
     $curClass = array();
-    while ($row = mysql_fetch_assoc($rsClassCounts)) {
+    while ($row = mysqli_fetch_assoc($rsClassCounts)) {
       if ($lastClassId != $row["grp_id"]) {
         if ($lastClassId != 0) {
           array_push($classInfo, $curClass);
@@ -60,7 +60,7 @@ class SundaySchoolService
             order by per_FirstName";
     $rsMembers = RunQuery($sql);
     $members = array();
-    while ($row = mysql_fetch_assoc($rsMembers)) {
+    while ($row = mysqli_fetch_assoc($rsMembers)) {
       array_push($members, $row);
     }
     return $members;
@@ -186,7 +186,7 @@ class SundaySchoolService
 
     $rsKids = RunQuery($sSQL);
     $kids = array();
-    while ($row = mysql_fetch_assoc($rsKids)) {
+    while ($row = mysqli_fetch_assoc($rsKids)) {
       array_push($kids, $row);
     }
     return $kids;
@@ -203,7 +203,7 @@ class SundaySchoolService
 		              where person_grp.p2g2r_rle_ID = 2 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID)";
     $rsKidsMissing = RunQuery($sSQL);
     $kids = array();
-    while ($row = mysql_fetch_array($rsKidsMissing)) {
+    while ($row = mysqli_fetch_array($rsKidsMissing)) {
       array_push($kids, $row);
     }
     return $kids;

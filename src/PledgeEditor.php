@@ -14,14 +14,14 @@
  *
  ******************************************************************************/
 
-global $iChecksPerDepositForm;
-
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-use ChurchCRM\MICRReader;
 
-if ($bUseScannedChecks) { // Instantiate the MICR class
+use ChurchCRM\MICRReader;
+use ChurchCRM\dto\SystemConfig;
+
+if (SystemConfig::getValue("bUseScannedChecks")) { // Instantiate the MICR class
    $micrObj = new MICRReader();
 }
 
@@ -49,8 +49,8 @@ $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun
 $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
 
 $rsFunds = RunQuery($sSQL);
-mysql_data_seek($rsFunds,0);
-while ($aRow = mysql_fetch_array($rsFunds)) {
+mysqli_data_seek($rsFunds,0);
+while ($aRow = mysqli_fetch_array($rsFunds)) {
 	extract($aRow);
 	$fundId2Name[$fun_ID] = $fun_Name;
 	$nAmount[$fun_ID] = 0.0;
@@ -81,7 +81,7 @@ $fund2PlgIds = array(); // this will be the array cross-referencing funds to exi
 if ($sGroupKey) {
 	$sSQL = "SELECT plg_plgID, plg_fundID, plg_EditedBy from pledge_plg where plg_GroupKey=\"" . $sGroupKey . "\"";
 	$rsKeys = RunQuery($sSQL);
-	while ($aRow = mysql_fetch_array($rsKeys)) {
+	while ($aRow = mysqli_fetch_array($rsKeys)) {
 		$onePlgID = $aRow["plg_plgID"];
 		$oneFundID = $aRow["plg_fundID"];
 		$iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
@@ -147,13 +147,13 @@ if (isset($_POST["PledgeSubmit"]) or
 		if ($sGroupKey) {
 			$sSQL = "SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "'";
 			$rsResults = RunQuery($sSQL);
-			list($iMethod) = mysql_fetch_row($rsResults);
+			list($iMethod) = mysqli_fetch_row($rsResults);
 		} elseif ($iCurrentDeposit) {
 			$sSQL = "SELECT plg_method from pledge_plg where plg_depID=\"" . $iCurrentDeposit . "\" ORDER by plg_plgID DESC LIMIT 1";
 			$rsMethod = RunQuery($sSQL);
-			$num = mysql_num_rows($rsMethod);
+			$num = mysqli_num_rows($rsMethod);
 			if ($num) {	// set iMethod to last record's setting
-				extract(mysql_fetch_array($rsMethod));
+				extract(mysqli_fetch_array($rsMethod));
 				$iMethod = $plg_method;
 			} else {
 				$iMethod = "CHECK";
@@ -180,7 +180,7 @@ if (isset($_POST["PledgeSubmit"]) or
 	if ($sGroupKey) {
 		$sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "' GROUP BY plg_GroupKey";
 		$rsResults = RunQuery($sSQL);
-		list($numGroupKeys, $PledgeOrPayment, $fundId, $dDate, $iFYID, $iCheckNo, $iSchedule, $iMethod, $iCurrentDeposit) = mysql_fetch_row($rsResults);
+		list($numGroupKeys, $PledgeOrPayment, $fundId, $dDate, $iFYID, $iCheckNo, $iSchedule, $iMethod, $iCurrentDeposit) = mysqli_fetch_row($rsResults);
 		if ($numGroupKeys > 1) {
 			$iSelectedFund = 0;
 		} else {
@@ -191,7 +191,7 @@ if (isset($_POST["PledgeSubmit"]) or
 		$sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_date, plg_method, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
 	 	//	don't know if we need plg_date or plg_method here...  leave it here for now
 		$rsFam = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsFam));
+		extract(mysqli_fetch_array($rsFam));
 
 		$iFamily = $plg_famID;
 		$iCheckNo = $plg_CheckNo;
@@ -200,7 +200,7 @@ if (isset($_POST["PledgeSubmit"]) or
 		$sSQL = "SELECT plg_plgID, plg_fundID, plg_amount, plg_comment from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
 
 		$rsAmounts = RunQuery($sSQL);
-		while ($aRow = mysql_fetch_array($rsAmounts)) {
+		while ($aRow = mysqli_fetch_array($rsAmounts)) {
 			extract($aRow);
 			$nAmount[$plg_fundID] = $plg_amount;
 			$sComment[$plg_fundID] = $plg_comment;
@@ -232,7 +232,7 @@ if (isset($_POST["PledgeSubmit"]) or
 	if (!$iEnvelope && $iFamily) {
 		$sSQL = "SELECT fam_Envelope FROM family_fam WHERE fam_ID=\"" . $iFamily . "\";";
 		$rsEnv = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsEnv));
+		extract(mysqli_fetch_array($rsEnv));
 		if ($fam_Envelope) {
 			$iEnvelope = $fam_Envelope;
 		}
@@ -252,7 +252,7 @@ if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is 
 	if ($iCurrentDeposit) {
 		$sSQL = "SELECT dep_Closed, dep_Date, dep_Type from deposit_dep WHERE dep_ID = " . $iCurrentDeposit;
 		$rsDeposit = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsDeposit));
+		extract(mysqli_fetch_array($rsDeposit));
 	}
 }
 
@@ -397,7 +397,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
 
 	//$iCheckNo = 0;
 	// Take care of match-family first- select the family based on the scanned check
-	if ($bUseScannedChecks && isset($_POST["MatchFamily"])) {
+	if (SystemConfig::getValue("bUseScannedChecks") && isset($_POST["MatchFamily"])) {
 		$tScanString = FilterInput($_POST["ScanInput"]);
 
 		$routeAndAccount = $micrObj->FindRouteAndAccount ($tScanString); // use routing and account number for matching
@@ -405,7 +405,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
     	if ($routeAndAccount) {
 		   $sSQL = "SELECT fam_ID FROM family_fam WHERE fam_scanCheck=\"" . $routeAndAccount . "\"";
 		   $rsFam = RunQuery($sSQL);
-		   extract(mysql_fetch_array($rsFam));
+		   extract(mysqli_fetch_array($rsFam));
 		   $iFamily = $fam_ID;
 
 		   $iCheckNo = $micrObj->FindCheckNo ($tScanString);
@@ -420,9 +420,9 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
 		if ($iEnvelope && strlen($iEnvelope) > 0) {
 			$sSQL = "SELECT fam_ID FROM family_fam WHERE fam_Envelope=" . $iEnvelope;
 			$rsFam = RunQuery($sSQL);
-			$numRows = mysql_num_rows($rsFam);
+			$numRows = mysqli_num_rows($rsFam);
 			if ($numRows) {
-				extract(mysql_fetch_array($rsFam));
+				extract(mysqli_fetch_array($rsFam));
 				$iFamily = $fam_ID;
 			}
 		}
@@ -431,7 +431,7 @@ if (isset($_POST["PledgeSubmit"]) || isset($_POST["PledgeSubmitAndAdd"])) {
 //echo "sSQL: " . $sSQL . "\n";
 		$rsPledge = RunQuery($sSQL);
 		$totalPledgeAmount = 0;
-		while ($row = mysql_fetch_array($rsPledge)) {
+		while ($row = mysqli_fetch_array($rsPledge)) {
 			$fundID = $row["plg_fundID"];
 			$plgAmount = $row["plg_amount"];
 			$fundID2Pledge[$fundID] = $plgAmount;
@@ -491,12 +491,12 @@ if ($PledgeOrPayment == 'Pledge') {
 } elseif ($iCurrentDeposit) {
 	$sPageTitle = gettext("Payment Editor: ") . $dep_Type . gettext(" Deposit Slip #") . $iCurrentDeposit . " ($dep_Date)";
 
-	$checksFit = $iChecksPerDepositForm;
+	$checksFit = SystemConfig::getValue("iChecksPerDepositForm");
 
 	$sSQL = "SELECT plg_FamID, plg_plgID, plg_checkNo, plg_method from pledge_plg where plg_method=\"CHECK\" and plg_depID=" . $iCurrentDeposit;
 	$rsChecksThisDep = RunQuery ($sSQL);
 	$depositCount = 0;
-	while ($aRow = mysql_fetch_array($rsChecksThisDep)) {
+	while ($aRow = mysqli_fetch_array($rsChecksThisDep)) {
 		extract($aRow);
 		$chkKey = $plg_FamID . "|" . $plg_checkNo;
 		if ($plg_method == 'CHECK' && (!array_key_exists($chkKey, $checkHash))) {
@@ -505,7 +505,7 @@ if ($PledgeOrPayment == 'Pledge') {
 		}
 	}
 
-	//$checkCount = mysql_num_rows ($rsChecksThisDep);
+	//$checkCount = mysqli_num_rows ($rsChecksThisDep);
 	$roomForDeposits = $checksFit - $depositCount;
 	if ($roomForDeposits <= 0)
 		$sPageTitle .= "<font color=red>";
@@ -529,7 +529,7 @@ $sFamilyName = "";
 if ($iFamily) {
     $sSQL = "SELECT fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID =" . $iFamily;
     $rsFindFam = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_array($rsFindFam))
+    while ($aRow = mysqli_fetch_array($rsFindFam))
     {
         extract($aRow);
         $sFamilyName = $fam_Name . " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
@@ -565,7 +565,7 @@ require "Include/Header.php";
 		<table border="0" cellspacing="0" cellpadding="2">
 		<td valign="top" align="left">
 		<table cellpadding="2">
-			<?php if ($dep_Type == 'Bank' && $bUseDonationEnvelopes) { ?>
+			<?php if ($dep_Type == 'Bank' && SystemConfig::getValue("bUseDonationEnvelopes")) { ?>
 			<tr>
 				<td class="PaymentLabelColumn"><?= gettext("Envelope Number") ?></td>
 				<td class="TextColumn"><input type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
@@ -725,7 +725,7 @@ $(document).ready(function() {
 					echo ">" . gettext ("Select online payment record") . "</option>\n";
 					$sSQLTmp = "SELECT aut_ID, aut_CreditCard, aut_BankName, aut_Route, aut_Account FROM autopayment_aut WHERE aut_FamID=" . $iFamily;
 					$rsFindAut = RunQuery($sSQLTmp);
-					while ($aRow = mysql_fetch_array($rsFindAut))
+					while ($aRow = mysqli_fetch_array($rsFindAut))
 					{
 						extract($aRow);
 						if ($aut_CreditCard != "") {
@@ -749,13 +749,13 @@ $(document).ready(function() {
 		</td>
 
 		<tr>
-		<?php if ($bUseScannedChecks && ($dep_Type == 'Bank' || $PledgeOrPayment == 'Pledge')) { ?>
+		<?php if (SystemConfig::getValue("bUseScannedChecks") && ($dep_Type == 'Bank' || $PledgeOrPayment == 'Pledge')) { ?>
 			<td align="center" class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Scan check") ?>
 			<textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea></td>
 		<?php } ?>
 
 			<td align="center">
-			<?php if ($bUseScannedChecks && $dep_Type == 'Bank') { ?>
+			<?php if (SystemConfig::getValue("bUseScannedChecks") && $dep_Type == 'Bank') { ?>
 				<input type="submit" class="btn" value="<?= gettext("find family from check account #") ?>" name="MatchFamily">
 				<input type="submit" class="btn" value="<?= gettext("Set default check account number for family") ?>" name="SetDefaultCheck">
 	        <?php } ?>
@@ -793,7 +793,7 @@ $(document).ready(function() {
           <font color="red"><?= $sAmountError[$fun_id] ?></font>
         </td>
         <?php
-				if ($bEnableNonDeductible) {
+				if (SystemConfig::getValue("bEnableNonDeductible")) {
 					echo "<td class=\"TextColumn\"><input type=\"text\" name=\"" . $fun_id . "_NonDeductible\" id=\"" . $fun_id . "_Amount\" value=\"" . $nNonDeductible[$fun_id] . "\"><br><font color=\"red\">" . $sAmountError[$fun_id] . "</font></td>";
 				}
 				echo "<td class=\"TextColumn\"><input type=\"text\" size=40 name=\"" . $fun_id . "_Comment\" id=\"" . $fun_id . "_Comment\" value=\"" . $sComment[$fun_id] . "\"></td>";

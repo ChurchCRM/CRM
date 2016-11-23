@@ -35,7 +35,7 @@ $sSQL = "SELECT * FROM family_fam WHERE 1 ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
 // Loop through families
-while ($aFam = mysql_fetch_array($rsFamilies)) {
+while ($aFam = mysqli_fetch_array($rsFamilies)) {
 	extract ($aFam);
 
    $labelStr = $pdf->MakeSalutation ($fam_ID);

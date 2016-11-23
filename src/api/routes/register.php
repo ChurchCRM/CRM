@@ -32,7 +32,6 @@ $app->group('/register', function () {
 
     // =Turn off the registration flag so the menu option is less obtrusive
     $systemConfig->setValue("bRegistered","1");
-    $bRegistered = 1;
     return $response->withJson(array("status"=>"success"));
 
   });

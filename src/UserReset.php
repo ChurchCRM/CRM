@@ -19,6 +19,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 // Get the PersonID out of the querystring
 $iPersonID = FilterInput($_GET["PersonID"],'int');
 
@@ -33,7 +35,7 @@ if (!$_SESSION['bAdmin'] || $iPersonID == $_SESSION['iUserID'])
 // Do we have confirmation?
 if (isset($_GET["Confirmed"]))
 {
-	$sSQL = "UPDATE user_usr SET usr_Password = '" . md5(strtolower($sDefault_Pass)) . "', usr_NeedPasswordChange = 1 WHERE usr_per_ID = " . $iPersonID;
+	$sSQL = "UPDATE user_usr SET usr_Password = '" . md5(strtolower(SystemConfig::getValue("sDefault_Pass"))) . "', usr_NeedPasswordChange = 1 WHERE usr_per_ID = " . $iPersonID;
 	RunQuery($sSQL);
 
 	Redirect("UserList.php");
@@ -42,7 +44,7 @@ if (isset($_GET["Confirmed"]))
 // Get the data on this user
 $sSQL = "SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = " . $iPersonID;
 $rsUser = RunQuery($sSQL);
-$aRow = mysql_fetch_array($rsUser);
+$aRow = mysqli_fetch_array($rsUser);
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("User Reset");

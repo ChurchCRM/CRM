@@ -49,17 +49,17 @@ $rsGroups = RunQuery($sSQL);
 
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order";
 $rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysql_num_rows($rsCustomFields);
+$numCustomFields = mysqli_num_rows($rsCustomFields);
 
 $sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
 $rsFamCustomFields = RunQuery($sSQL);
-$numFamCustomFields = mysql_num_rows($rsFamCustomFields);
+$numFamCustomFields = mysqli_num_rows($rsFamCustomFields);
 
 // Get Field Security List Matrix
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
 $rsSecurityGrp = RunQuery($sSQL);
 
-while ($aRow = mysql_fetch_array($rsSecurityGrp))
+while ($aRow = mysqli_fetch_array($rsSecurityGrp))
 {
   extract($aRow);
   $aSecurityType[$lst_OptionID] = $lst_OptionName;
@@ -210,7 +210,7 @@ require "Include/Header.php";
                     <table cellpadding="4" align="left">
                       <?php
                       // Display the custom fields
-                      while ($Row = mysql_fetch_array($rsCustomFields))
+                      while ($Row = mysqli_fetch_array($rsCustomFields))
                       {
                         extract($Row);
                         if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]])
@@ -232,7 +232,7 @@ require "Include/Header.php";
                     <table cellpadding="4" align="left">
                       <?php
                       // Display the family custom fields
-                      while ($Row = mysql_fetch_array($rsFamCustomFields))
+                      while ($Row = mysqli_fetch_array($rsFamCustomFields))
                       {
                         extract($Row);
                         if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]])
@@ -291,7 +291,7 @@ require "Include/Header.php";
               <div class="box-body no-padding">
                 <select name="Classification[]" size="5" multiple>
                   <?php
-                  while ($aRow = mysql_fetch_array($rsClassifications))
+                  while ($aRow = mysqli_fetch_array($rsClassifications))
                   {
                     extract($aRow);
                     ?>
@@ -318,7 +318,7 @@ require "Include/Header.php";
               <div class="box-body no-padding">
                 <select name="FamilyRole[]" size="5" multiple>
                   <?php
-                  while ($aRow = mysql_fetch_array($rsFamilyRoles))
+                  while ($aRow = mysqli_fetch_array($rsFamilyRoles))
                   {
                     extract($aRow);
                     ?>
@@ -366,7 +366,7 @@ require "Include/Header.php";
                 <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
                 <select name="GroupID[]" size="5" multiple>
                   <?php
-                  while ($aRow = mysql_fetch_array($rsGroups))
+                  while ($aRow = mysqli_fetch_array($rsGroups))
                   {
                     extract($aRow);
                     echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
