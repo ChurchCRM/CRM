@@ -24,7 +24,7 @@ if ($iFundRaiserID>0) {
 	// Get the current fund raiser record
 	$sSQL = "SELECT * from fundraiser_fr WHERE fr_ID = " . $iFundRaiserID;
 	$rsFRR = RunQuery($sSQL);
-	extract(mysql_fetch_array($rsFRR));
+	extract(mysqli_fetch_array($rsFRR));
 	// Set current fundraiser
 	$_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 }
@@ -81,7 +81,7 @@ if (isset($_POST["FundRaiserSubmit"]))
 		{
 			$sSQL = "SELECT MAX(fr_ID) AS iFundRaiserID FROM fundraiser_fr";
 			$rsFundRaiserID = RunQuery($sSQL);
-			extract(mysql_fetch_array($rsFundRaiserID));
+			extract(mysqli_fetch_array($rsFundRaiserID));
 			$_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 		}
 
@@ -106,7 +106,7 @@ if (isset($_POST["FundRaiserSubmit"]))
 
 		$sSQL = "SELECT * FROM fundraiser_fr WHERE fr_ID = " . $iFundRaiserID;
 		$rsFundRaiser = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsFundRaiser));
+		extract(mysqli_fetch_array($rsFundRaiser));
 
 		$dDate = $fr_date;
 		$sTitle = $fr_title;
@@ -213,7 +213,7 @@ $tog = 0;
 
 //Loop through all donated items
 if ($rsDonatedItems != 0) {
-	while ($aRow = mysql_fetch_array($rsDonatedItems))
+	while ($aRow = mysqli_fetch_array($rsDonatedItems))
 	{
 		extract($aRow);
 

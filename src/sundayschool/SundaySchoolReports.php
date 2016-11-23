@@ -131,7 +131,7 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
             <?php
             // Create the group select drop-down
             echo "<select id=\"GroupID\" name=\"GroupID[]\" multiple size=\"8\" onChange=\"UpdateRoles();\"><option value=\"0\">" . gettext('None') . "</option>";
-            while ($aRow = mysql_fetch_array($rsGroups)) {
+            while ($aRow = mysqli_fetch_array($rsGroups)) {
               extract($aRow);
               echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
             }

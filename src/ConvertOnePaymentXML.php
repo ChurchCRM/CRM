@@ -7,8 +7,8 @@ $customerid = FilterInput ($_GET["autid"], "int");
 $iAutID = $customerid;
 
 $sSQL = "SELECT * FROM autopayment_aut WHERE aut_ID=" . $iAutID;
-$rsAutRec = mysql_query($sSQL, $cnInfoCentral);
-$aRow = mysql_fetch_array($rsAutRec);
+$rsAutRec = mysqli_query($cnInfoCentral, $sSQL);
+$aRow = mysqli_fetch_array($rsAutRec);
 extract($aRow); // Get this autopayment record into local variables
 
 $accountType = "";
@@ -215,7 +215,7 @@ if (gettype($addPaymentMethodXmlResp->Response->Errors->Error) == "object") {
 	} elseif ($aut_EnableCreditCard) {
 		$sSQL = "UPDATE autopayment_aut SET aut_CreditCardVanco=$gotPaymentMethod WHERE aut_ID=" . $iAutID;
 	}
-	mysql_query($sSQL, $cnInfoCentral);
+	mysqli_query($cnInfoCentral, $sSQL);
 	$resArr[] = array('Success'=>True);
 }
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace ChurchCRM\Service;
+use ChurchCRM\dto\SystemConfig;
 
 class MailChimpService
 {
@@ -11,18 +12,9 @@ class MailChimpService
   public function __construct()
   {
 
-    $apikey = "";
-    // Read in report settings from database
-    $rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_name='mailChimpApiKey'");
-    if ($rsConfig) {
-      while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-        $apikey = $cfg_value;
-      }
-    }
-
-    if ($apikey != "") {
+   if (SystemConfig::getValue("mailChimpApiKey") != "") {
       $this->isActive = true;
-      $this->myMailchimp = new \Mailchimp($apikey);
+      $this->myMailchimp = new \Mailchimp(SystemConfig::getValue("mailChimpApiKey"));
     }
   }
 

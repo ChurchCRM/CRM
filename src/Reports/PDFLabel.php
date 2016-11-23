@@ -56,10 +56,10 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
     $sSQL = "SELECT * FROM family_fam WHERE fam_ID=" . $famID;
     $rsFamInfo = RunQuery($sSQL);
 
-    if (mysql_num_rows ($rsFamInfo) == 0)
+    if (mysqli_num_rows ($rsFamInfo) == 0)
         return "Invalid Family" . $famID;
 
-    $aFam = mysql_fetch_array($rsFamInfo);
+    $aFam = mysqli_fetch_array($rsFamInfo);
     extract ($aFam);
 
     // Only get family members that are in the cart
@@ -67,7 +67,7 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
     . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY per_LastName, per_FirstName";
 
     $rsMembers = RunQuery($sSQL);
-    $numMembers = mysql_num_rows ($rsMembers);
+    $numMembers = mysqli_num_rows ($rsMembers);
 
     // Initialize to "Nothing to return"  If this value is returned
     // the calling program knows to skip this mode and try the next
@@ -81,7 +81,7 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
     $numOther = 0;
 
     for ($ind = 0; $ind < $numMembers; $ind++) {
-        $member = mysql_fetch_array($rsMembers);
+        $member = mysqli_fetch_array($rsMembers);
         extract ($member);
 
         $bAdult = FALSE;
@@ -119,11 +119,11 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
         extract ($aAdult[0]);
         $sNameAdult = $per_FirstName . " " . $per_LastName;
     } else if ($numAdult == 2) {
-        $firstMember = mysql_fetch_array($rsMembers);
+        $firstMember = mysqli_fetch_array($rsMembers);
         extract ($aAdult[0]);
         $firstFirstName = $per_FirstName;
         $firstLastName = $per_LastName;
-        $secondMember = mysql_fetch_array($rsMembers);
+        $secondMember = mysqli_fetch_array($rsMembers);
         extract ($aAdult[1]);
         $secondFirstName = $per_FirstName;
         $secondLastName = $per_LastName;
@@ -140,27 +140,27 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
     $bSameLastNames = TRUE;  // Assume all last names are the same
 
     if ($numChild > 0) { // Salutation for children grouped together
-        $firstMember = mysql_fetch_array($rsMembers);
+        $firstMember = mysqli_fetch_array($rsMembers);
         extract ($aChild[0]);
         $firstFirstName = $per_FirstName;
         $firstLastName  = $per_LastName;
     }
     if ($numChild > 1) {
-        $secondMember = mysql_fetch_array($rsMembers);
+        $secondMember = mysqli_fetch_array($rsMembers);
         extract ($aChild[1]);
         $secondFirstName = $per_FirstName;
         $secondLastName = $per_LastName;
         $bSameLastNames = $bSameLastNames && ($firstLastName == $secondLastName);
     }
     if ($numChild > 2) {
-        $thirdMember = mysql_fetch_array($rsMembers);
+        $thirdMember = mysqli_fetch_array($rsMembers);
         extract ($aChild[2]);
         $thirdFirstName = $per_FirstName;
         $thirdLastName = $per_LastName;
         $bSameLastNames = $bSameLastNames && ($secondLastName == $thirdLastName);
     }
     if ($numChild > 3) {
-        $fourthMember = mysql_fetch_array($rsMembers);
+        $fourthMember = mysqli_fetch_array($rsMembers);
         extract ($aChild[3]);
         $fourthFirstName = $per_FirstName;
         $fourthLastName = $per_LastName;
@@ -624,22 +624,13 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
     unset($didFam);
 
-    $sSQL  = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value ";
-    $sSQL .= "FROM config_cfg WHERE cfg_section='General'";
-    $rsConfig = RunQuery($sSQL);
-    if ($rsConfig) {
-        while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-            $$cfg_name = $cfg_value;
-        }
-    }
-
-    $sAdultRole = $sDirRoleHead . "," . $sDirRoleSpouse;
+    $sAdultRole = SystemConfig::getValue("sDirRoleHead") . "," . SystemConfig::getValue("sDirRoleSpouse");
     $sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
     $aAdultRole = explode(",", $sAdultRole);
     $aAdultRole = array_unique($aAdultRole);
     sort($aAdultRole);
 
-    $sChildRole = trim($sDirRoleChild, " ,\t\n\r\0\x0B");
+    $sChildRole = trim(SystemConfig::getValue("sDirRoleChild"), " ,\t\n\r\0\x0B");
     $aChildRole = explode(",", $sChildRole);
     $aChildRole = array_unique($aChildRole);
     sort($aChildRole);
@@ -652,7 +643,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 	$sRowClass = "RowColorA";
 	$didFam = array ();
 	
-    while ($aRow = mysql_fetch_array($rsCartItems))
+    while ($aRow = mysqli_fetch_array($rsCartItems))
     {
 
     // It's possible (but unlikely) that three labels can be generated for a
@@ -826,7 +817,7 @@ if ($sFileType == "PDF"){
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
-    if ($iPDFOutputType == 1)
+    if (SystemConfig::getValue("iPDFOutputType")S == 1)
         $pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", 'D');
     else
         $pdf->Output();

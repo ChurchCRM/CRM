@@ -46,7 +46,7 @@ $rsPeopleWithEmail = RunQuery($sSQL);
             <th>Email</th>
           </tr>
           <?php
-          while ($aRow = mysql_fetch_array($rsPeopleWithEmail)) {
+          while ($aRow = mysqli_fetch_array($rsPeopleWithEmail)) {
             extract($aRow);
             $mailchimpList = $mailchimp->isEmailInMailChimp($per_Email);
             if ($mailchimpList == "") { ?>

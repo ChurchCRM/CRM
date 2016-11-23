@@ -18,6 +18,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 use ChurchCRM\Note;
+use ChurchCRM\dto\SystemConfig;
 
 //Set the page title
 $sPageTitle = gettext("Person Editor");
@@ -37,9 +38,9 @@ if (array_key_exists("previousPage", $_GET))
 if ($iPersonID > 0) {
     $sSQL = "SELECT per_fam_ID FROM person_per WHERE per_ID = " . $iPersonID;
     $rsPerson = RunQuery($sSQL);
-    extract(mysql_fetch_array($rsPerson));
+    extract(mysqli_fetch_array($rsPerson));
 
-    if (mysql_num_rows($rsPerson) == 0) {
+    if (mysqli_num_rows($rsPerson) == 0) {
         Redirect("Menu.php");
         exit;
     }
@@ -61,7 +62,7 @@ if ($iPersonID > 0) {
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
 $rsSecurityGrp = RunQuery($sSQL);
 
-while ($aRow = mysql_fetch_array($rsSecurityGrp)) {
+while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     extract($aRow);
     $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
@@ -70,7 +71,7 @@ while ($aRow = mysql_fetch_array($rsSecurityGrp)) {
 // Get the list of custom person fields
 $sSQL = "SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order";
 $rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysql_num_rows($rsCustomFields);
+$numCustomFields = mysqli_num_rows($rsCustomFields);
 
 //Initialize the error flag
 $bErrorFlag = false;
@@ -118,7 +119,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
         $sZip = FilterInput($_POST["Zip"]);
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-    if ($cfgForceUppercaseZip) $sZip = strtoupper($sZip);
+    if (SystemConfig::getValue("cfgForceUppercaseZip")) $sZip = strtoupper($sZip);
 
     if (array_key_exists("Country", $_POST))
         $sCountry = FilterInput($_POST["Country"]);
@@ -130,7 +131,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
     if ($iFamily > 0) {
         $sSQL = "SELECT fam_Country FROM family_fam WHERE fam_ID = " . $iFamily;
         $rsFamCountry = RunQuery($sSQL);
-        extract(mysql_fetch_array($rsFamCountry));
+        extract(mysqli_fetch_array($rsFamCountry));
     }
 
     $sCountryTest = SelectWhichInfo($sCountry, $fam_Country, false);
@@ -176,7 +177,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
         } else {
             $sSQL = "SELECT fam_Name FROM family_fam WHERE fam_ID = " . $iFamily;
             $rsFamName = RunQuery($sSQL);
-            $aTemp = mysql_fetch_array($rsFamName);
+            $aTemp = mysqli_fetch_array($rsFamName);
             $sLastName = $aTemp[0];
         }
     }
@@ -244,7 +245,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
 
     // Validate all the custom fields
     $aCustomData = array();
-    while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH)) {
+    while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
         extract($rowCustomField);
 
         if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
@@ -282,7 +283,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
             //Get the key back
             $sSQL = "SELECT MAX(fam_ID) AS iFamily FROM family_fam";
             $rsLastEntry = RunQuery($sSQL);
-            extract(mysql_fetch_array($rsLastEntry));
+            extract(mysqli_fetch_array($rsLastEntry));
         }
 
         if ($bHideAge) {
@@ -350,7 +351,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
         if ($bGetKeyBack) {
             $sSQL = "SELECT MAX(per_ID) AS iPersonID FROM person_per";
             $rsPersonID = RunQuery($sSQL);
-            extract(mysql_fetch_array($rsPersonID));
+            extract(mysqli_fetch_array($rsPersonID));
             $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('" . $iPersonID . "')";
             RunQuery($sSQL);
             $note->setPerId($iPersonID);
@@ -365,9 +366,9 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
 
         // Update the custom person fields.
         if ($numCustomFields > 0) {
-            mysql_data_seek($rsCustomFields, 0);
+            mysqli_data_seek($rsCustomFields, 0);
             $sSQL = "";
-            while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH)) {
+            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
                 if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
                     $currentFieldData = trim($aCustomData[$custom_Field]);
@@ -409,7 +410,7 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
 
         $sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_ID = " . $iPersonID;
         $rsPerson = RunQuery($sSQL);
-        extract(mysql_fetch_array($rsPerson));
+        extract(mysqli_fetch_array($rsPerson));
 
         $sTitle = $per_Title;
         $sFirstName = $per_FirstName;
@@ -462,8 +463,8 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
         $sSQL = "SELECT * FROM person_custom WHERE per_ID = " . $iPersonID;
         $rsCustomData = RunQuery($sSQL);
         $aCustomData = array();
-        if (mysql_num_rows($rsCustomData) >= 1)
-            $aCustomData = mysql_fetch_array($rsCustomData, MYSQL_BOTH);
+        if (mysqli_num_rows($rsCustomData) >= 1)
+            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
     } else {
         //Adding....
         //Set defaults
@@ -475,10 +476,10 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
         $iGender = "";
         $sAddress1 = "";
         $sAddress2 = "";
-        $sCity = $sDefaultCity;
-        $sState = $sDefaultState;
+        $sCity = SystemConfig::getValue("sDefaultCity");
+        $sState = SystemConfig::getValue("sDefaultState");
         $sZip = "";
-        $sCountry = $sDefaultCountry;
+        $sCountry = SystemConfig::getValue("sDefaultCountry");
         $sHomePhone = "";
         $sWorkPhone = "";
         $sCellPhone = "";
@@ -705,7 +706,7 @@ require "Include/Header.php";
                 <select name="FamilyRole" class="form-control">
                     <option value="0"><?= gettext("Unassigned") ?></option>
                     <option value="0" disabled>-----------------------</option>
-                    <?php while ($aRow = mysql_fetch_array($rsFamilyRoles)) {
+                    <?php while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                         extract($aRow);
                         echo "<option value=\"" . $lst_OptionID . "\"";
                         if ($iFamilyRole == $lst_OptionID) {
@@ -722,7 +723,7 @@ require "Include/Header.php";
                     <option value="0" selected><?= gettext("Unassigned") ?></option>
                     <option value="-1"><?= gettext("Create a new family (using last name)") ?></option>
                     <option value="0" disabled>-----------------------</option>
-                    <?php while ($aRow = mysql_fetch_array($rsFamilies)) {
+                    <?php while ($aRow = mysqli_fetch_array($rsFamilies)) {
                         extract($aRow);
 
                         echo "<option value=\"" . $fam_ID . "\"";
@@ -743,7 +744,7 @@ require "Include/Header.php";
             </div>
         </div><!-- /.box-header -->
         <div class="box-body">
-            <?php if (!$bHidePersonAddress) { /* Person Address can be hidden - General Settings */ ?>
+            <?php if (!SystemConfig::getValue("bHidePersonAddress")) { /* Person Address can be hidden - General Settings */ ?>
                 <div class="row">
                     <div class="form-group">
                         <div class="col-md-6">
@@ -829,7 +830,7 @@ require "Include/Header.php";
                         <input type="text" name="Zip" class="form-control"
                             <?php
                             // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-                            if ($cfgForceUppercaseZip) echo 'style="text-transform:uppercase" ';
+                            if (SystemConfig::getValue("cfgForceUppercaseZip")) echo 'style="text-transform:uppercase" ';
 
                             echo 'value="' . htmlentities(stripslashes($sZip), ENT_NOQUOTES, "UTF-8") . '" ';
                             ?>
@@ -1031,9 +1032,10 @@ require "Include/Header.php";
             </div>
         </div><!-- /.box-header -->
         <div class="box-body">
-            <?php mysql_data_seek($rsCustomFields, 0);
+            <?php if ($numCustomFields > 0) {
+                mysqli_data_seek($rsCustomFields, 0);
 
-                while ($rowCustomField = mysql_fetch_array($rsCustomFields, MYSQL_BOTH)) {
+                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                     extract($rowCustomField);
 
                     if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {

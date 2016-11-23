@@ -43,7 +43,7 @@ $labelHeight = 26.5;
 $labelLineHeight = 6;
 $labelX = 10;
 
-while ($aFam = mysql_fetch_array($rsFamilies)) {
+while ($aFam = mysqli_fetch_array($rsFamilies)) {
 	extract ($aFam);
 
    $labelText = $pdf->MakeSalutation ($fam_ID);
@@ -63,7 +63,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
 	$pdf->Output("NewsLetterLabels" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();	

@@ -36,11 +36,13 @@ $bEmailLog = FALSE;
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemConfig;
+
 $iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
 
 // Security: Both global and user permissions needed to send email.
 // Otherwise, re-direct them to the main menu.
-if (!($bEmailSend && $bSendPHPMail))
+if (!(SystemConfig::getValue("bEmailSend") && $bSendPHPMail))
 {
     Redirect('Menu.php');
     exit;
@@ -70,8 +72,8 @@ function ClearEmailLog()
             ") ENGINE=MyISAM";
     RunQuery($sSQL);
 
-    $sSQL = "INSERT INTO email_job_log_$iUserID ".
-            "SET ejl_text='".mysql_real_escape_string($sMessage)."', ".
+    $sSQL = "INSERT INTO email_job_log_$iUserID ". 
+            "SET ejl_text='".mysqli_real_escape_string($cnInfoCentral, $sMessage)."', ". 
             "    ejl_time='$tSec', ".
             "    ejl_usec='$tUsec'";
 
@@ -85,8 +87,8 @@ function AddToEmailLog($sMessage, $iUserID)
     $tSec = $tSystem['sec'];
     $tUsec = str_pad($tSystem['usec'], 6, '0');
 
-    $sSQL = "INSERT INTO email_job_log_$iUserID ".
-            "SET ejl_text='".mysql_real_escape_string($sMessage)."', ".
+    $sSQL = "INSERT INTO email_job_log_$iUserID ". 
+            "SET ejl_text='".mysqli_real_escape_string($cnInfoCentral, $sMessage)."', ". 
             "    ejl_time='$tSec', ".
             "    ejl_usec='$tUsec'";
 
@@ -96,15 +98,10 @@ function AddToEmailLog($sMessage, $iUserID)
 function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 {
 
-    global $sSendType;
     global $sFromEmailAddress;
     global $sFromName;
     global $sLangCode;
     global $sLanguagePath;
-    global $sSMTPAuth;
-    global $sSMTPUser;
-    global $sSMTPPass;
-    global $sSMTPHost;
     global $sSERVERNAME;
     global $sUSER;
     global $sPASSWORD;
@@ -121,7 +118,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 
     // Just run this one ahead of time to get the message subject and body
     $sSQL = 'SELECT * FROM email_message_pending_emp';
-    extract(mysql_fetch_array(RunQuery($sSQL)));
+    extract(mysqli_fetch_array(RunQuery($sSQL)));
 
     // Keep track of how long this script has been running.  To avoid server
     // and browser timeouts break out of loop every $sLoopTimeout seconds and
@@ -143,23 +140,21 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
     if ($hasAttach)
     	$mail->AddAttachment ("tmp_attach/".$attachName);
 
-    if (strtolower($sSendType)=='smtp') {
+    if (strtolower(SystemConfig::getValue("sSendType"))=='smtp') {
 
         $mail->IsSMTP();                    // tell the class to use SMTP
         $mail->SMTPKeepAlive = true;        // keep connection open until last email sent
-        $mail->SMTPAuth = $sSMTPAuth;       // Server requires authentication
+        $mail->SMTPAuth = SystemConfig::getValue("sSMTPAuth");       // Server requires authentication
 
-        if ($sSMTPAuth) {
-            $mail->Username = $sSMTPUser;   // SMTP username
-            $mail->Password = $sSMTPPass;   // SMTP password
+        if (SystemConfig::getValue("sSMTPAuth")) {
+            $mail->Username = SystemConfig::getValue("sSMTPUser");   // SMTP username
+            $mail->Password = SystemConfig::getValue("sSMTPPass");   // SMTP password
         }
 
-        $delimeter = strpos($sSMTPHost, ':');
+        $delimeter = strpos(SystemConfig::getValue("sSMTPHost"), ':');
         if ($delimeter === FALSE) {
             $sSMTPPort = 25;                // Default port number
         } else {
-            $sSMTPPort = substr($sSMTPHost, $delimeter+1);
-            $sSMTPHost = substr($sSMTPHost, 0, $delimeter);
         }
 
         if (is_int($sSMTPPort))
@@ -167,7 +162,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
         else
             $mail->Port = 25;
 
-        $mail->Host = $sSMTPHost;           // SMTP server name
+        $mail->Host = SystemConfig::getValue("sSMTPHost");           // SMTP server name
     } else {
         $mail->IsSendmail();                // tell the class to use Sendmail
     }
@@ -190,7 +185,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 
         if ($sRecipient == 'get_recipients_from_mysql') {
             $rsEmailAddress = RunQuery($sSQLGetEmail); // This query has limit one to pick up one recipient
-            $aRow = mysql_fetch_array($rsEmailAddress);
+            $aRow = mysqli_fetch_array($rsEmailAddress);
             extract($aRow);
             $mail->AddAddress($erp_email_address);
         } else {
@@ -263,7 +258,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
         $mail->ClearBCCs();
 
         // Are we done?
-        extract(mysql_fetch_array(RunQuery($sSQL_ERP))); // this query counts remaining recipient records
+        extract(mysqli_fetch_array(RunQuery($sSQL_ERP))); // this query counts remaining recipient records
 
         if (($sRecipient == 'get_recipients_from_mysql') && ($countrecipients == 0)) {
             $bContinue = FALSE;
@@ -279,7 +274,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
         }
     }
 
-    if (strtolower($sSendType) == 'smtp')
+    if (strtolower(SystemConfig::getValue("sSendType")) == 'smtp')
         $mail->SmtpClose();
 
 } // end of function SendEmail()
@@ -287,7 +282,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 
 // Create log table if it does not already exist
 $bTableExists = FALSE;
-if(mysql_num_rows(mysql_query("SHOW TABLES LIKE 'email_job_log_$iUserID'")) == 1 ) {
+if(mysqli_num_rows(mysqli_query($cnInfoCentral, "SHOW TABLES LIKE 'email_job_log_$iUserID'")) == 1 ) {
     $bTableExists = TRUE;
 }
 
@@ -344,7 +339,7 @@ $bHavePHPMailerClass = FALSE;
 $bHaveSMTPClass = FALSE;
 $bHavePHPMailerLanguage = FALSE;
 
-$sLangCode = substr($sLanguage, 0, 2); // Strip the language code from the beginning of the language_country code
+$sLangCode = substr(SystemConfig::getValue("sLanguage"), 0, 2); // Strip the language code from the beginning of the language_country code
 
 $sPHPMailerClass = $sPHPMailerPath.'class.phpmailer.php';
 if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
@@ -380,7 +375,7 @@ $bMetaRefresh = FALSE; // Assume page does not need refreshing
 $sSQL = 'SELECT COUNT(emp_usr_id) as emp_count FROM email_message_pending_emp '.
         "WHERE emp_usr_id='$iUserID'";
 
-extract(mysql_fetch_array(RunQuery($sSQL)));
+extract(mysqli_fetch_array(RunQuery($sSQL)));
 if (!$emp_count) {
     // Can't load this page unless user has a pending message
     Redirect('Menu.php');
@@ -389,11 +384,11 @@ if (!$emp_count) {
 // Check if this is the first time we are attempting to send this email.
 $sSQL_ERP = 'SELECT COUNT(erp_id) as countrecipients FROM email_recipient_pending_erp '.
             "WHERE erp_usr_id='$iUserID'";
-extract(mysql_fetch_array(RunQuery($sSQL_ERP))); // this query counts remaining recipient records
+extract(mysqli_fetch_array(RunQuery($sSQL_ERP))); // this query counts remaining recipient records
 
 $sSQL_EMP = 'SELECT * FROM email_message_pending_emp '.
             "WHERE emp_usr_id='$iUserID'";
-extract(mysql_fetch_array(RunQuery($sSQL_EMP)));
+extract(mysqli_fetch_array(RunQuery($sSQL_EMP)));
 
 if ($emp_to_send==0 && $countrecipients==0) {
     // If both are zero the email job has not started yet.
@@ -427,7 +422,7 @@ if ($emp_to_send==0 && $countrecipients==0) {
             // Load MySQL with the list of addresses to be sent
             $sSQL = 'INSERT INTO email_recipient_pending_erp '.
                     "SET erp_id='$iEmailNum',erp_usr_id='$iUserID',erp_num_attempt='0',erp_email_address='".
-                    mysql_real_escape_string($email_address)."'";
+                    mysqli_real_escape_string($cnInfoCentral, $email_address)."'";
 
             RunQuery($sSQL);
         }
@@ -572,7 +567,7 @@ if ($sEmailState == 'continue') {
                 "ORDER BY erp_id";
 
         $rsERP = RunQuery($sSQL);
-        while ($aRow = mysql_fetch_array($rsERP)) {
+        while ($aRow = mysqli_fetch_array($rsERP)) {
             extract($aRow);
             $sMessage .= $erp_email_address."\n";
         }
@@ -612,7 +607,7 @@ if ($sEmailState == 'continue') {
 
     $sSQL = "SELECT * FROM email_message_pending_emp ".
             "WHERE emp_usr_id='$iUserID'";
-    extract(mysql_fetch_array(RunQuery($sSQL)));
+    extract(mysqli_fetch_array(RunQuery($sSQL)));
 
 	if (strlen($emp_attach_name)>0) // delete the attached file if there is one
     	unlink ("tmp_attach/".$emp_attach_name);
@@ -627,7 +622,7 @@ if ($sEmailState == 'continue') {
     $sHTMLLog = '<br><br><div align="center"><table>';
 
     $rsEJL = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_array($rsEJL)) {
+    while ($aRow = mysqli_fetch_array($rsEJL)) {
         extract($aRow);
 
         $sTime = date('i:s', intval($ejl_time)).'.';
@@ -688,7 +683,7 @@ if ($sEmailState == 'continue') {
 
     $sSQL = "SELECT * FROM email_message_pending_emp ".
             "WHERE emp_usr_id='$iUserID'";
-    extract(mysql_fetch_array(RunQuery($sSQL)));
+    extract(mysqli_fetch_array(RunQuery($sSQL)));
 
 //    $sMessage .= "Email sent to $emp_num_sent email addresses.\n"; // $emp_num_sent not a field in email_message_pending_emp
     $sMessage .= "Email job terminated at $tTimeStamp\n\n";
@@ -700,7 +695,7 @@ if ($sEmailState == 'continue') {
     $sHTMLLog = '<br><br><div align="center"><table>';
 
     $rsEJL = RunQuery($sSQL);
-    while ($aRow = mysql_fetch_array($rsEJL)) {
+    while ($aRow = mysqli_fetch_array($rsEJL)) {
         extract($aRow);
 
         $sTime = date('i:s', intval($ejl_time)).'.';
@@ -731,3 +726,5 @@ if ($sEmailState == 'continue') {
 
 require 'Include/Footer.php';
 ?>
+            $sSMTPPort = substr(SystemConfig::getValue("sSMTPHost"), $delimeter+1);
+            $sSMTPHost = substr(SystemConfig::getValue("sSMTPHost"), 0, $delimeter);   

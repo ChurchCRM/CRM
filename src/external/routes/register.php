@@ -5,11 +5,12 @@ use ChurchCRM\Family;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use Slim\Views\PhpRenderer;
+use ChurchCRM\dto\SystemConfig;
 
 
 $app->group('/register', function () {
 
-  $enableSelfReg = ConfigQuery::create()->filterByName("sEnableSelfRegistration")->findOne();
+  $enableSelfReg = SystemConfig::getValue("sEnableSelfRegistration");
   if ($enableSelfReg->getBooleanValue()) {
 
     $this->get('/', function ($request, $response, $args) {
