@@ -8,6 +8,7 @@ use ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\SystemConfig;
 
 
 /**
@@ -151,7 +152,7 @@ class Deposit extends BaseDeposit
   {
     $thisReport->pdf->AddPage();
 
-    $thisReport->QBDepositTicketParameters = json_decode($thisReport->ReportSettings->sQBDTSettings);
+    $thisReport->QBDepositTicketParameters = json_decode(SystemConfig::getValue("sQBDTSettings"));
     $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
     $thisReport->pdf->Write(8, $this->getDate()->format("Y-m-d"));
 
@@ -264,7 +265,7 @@ class Deposit extends BaseDeposit
 
     $totalAmount = 0;
 
-    //while ($aRow = mysql_fetch_array($rsPledges))
+    //while ($aRow = mysqli_fetch_array($rsPledges))
     foreach ($this->getPledges() as $payment) {
       $thisReport->pdf->SetFont('Times', '', 10);
 

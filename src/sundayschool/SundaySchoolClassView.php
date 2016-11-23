@@ -4,6 +4,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 
 use ChurchCRM\Service\SundaySchoolService;
+use ChurchCRM\dto\SystemConfig;
 
 $sundaySchoolService = new SundaySchoolService();
 
@@ -15,7 +16,7 @@ if (isset($_GET['groupId'])) {
 
 $sSQL = "select * from group_grp where grp_ID =" . $iGroupId;
 $rsSundaySchoolClass = RunQuery($sSQL);
-while ($aRow = mysql_fetch_array($rsSundaySchoolClass)) {
+while ($aRow = mysqli_fetch_array($rsSundaySchoolClass)) {
   $iGroupName = $aRow['grp_Name'];
 }
 
@@ -70,8 +71,8 @@ require "../Include/Header.php";
     $roleEmails->Kids = join($sMailtoDelimiter, $KidsEmails) . ",";
     $sEmailLink = join($sMailtoDelimiter, $allEmails) . ",";
     // Add default email if default email has been set and is not already in string
-    if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' && !stristr($sEmailLink, $sToEmailAddress))
-      $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
+    if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($sEmailLink, SystemConfig::getValue("sToEmailAddress")))
+      $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
     if ($bEmailMailto) { // Does user have permission to email groups

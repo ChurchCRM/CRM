@@ -25,6 +25,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\dto\SystemConfig;
 
 //Get the GroupID out of the querystring
 $iGroupID = FilterInput($_GET['GroupID'], 'int');
@@ -36,7 +37,7 @@ if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'AddGroupToCart') {
   $rsGroupMembers = RunQuery($sSQL);
 
   //Loop through the recordset
-  while ($aRow = mysql_fetch_array($rsGroupMembers)) {
+  while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
     extract($aRow);
 
     //Add each person to the cart
@@ -74,7 +75,7 @@ $rsProperties = RunQuery($sSQL);
 // Get data for the form as it now exists..
 $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
 $rsPropList = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsPropList);
+$numRows = mysqli_num_rows($rsPropList);
 
 //Set the page title
 $sPageTitle = gettext('Group View') . " : " . $thisGroup->getName();
@@ -199,7 +200,7 @@ require 'Include/Header.php';
             AND p2g2r_grp_ID = " . $iGroupID;
     $rsEmailList = RunQuery($sSQL);
     $sEmailLink = '';
-    while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailList)) {
+    while (list ($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
       $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
       if ($sEmail) {
         /* if ($sEmailLink) // Don't put delimiter before first email
@@ -213,8 +214,8 @@ require 'Include/Header.php';
     }
     if ($sEmailLink) {
       // Add default email if default email has been set and is not already in string
-      if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress' && !stristr($sEmailLink, $sToEmailAddress))
-        $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
+      if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($sEmailLink, SystemConfig::getValue("sToEmailAddress")))
+        $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
       $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
       if ($bEmailMailto) { // Does user have permission to email groups
@@ -261,7 +262,7 @@ require 'Include/Header.php';
     $rsPhoneList = RunQuery($sSQL);
     $sPhoneLink = '';
     $sCommaDelimiter = ', ';
-    while (list ($per_CellPhone, $fam_CellPhone) = mysql_fetch_row($rsPhoneList)) {
+    while (list ($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
       $sPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, False);
       if ($sPhone) {
         /* if ($sPhoneLink) // Don't put delimiter before first phone
@@ -323,7 +324,7 @@ require 'Include/Header.php';
             // Create arrays of the properties.
             for ($row = 1; $row <= $numRows; $row++)
             {
-              $aRow = mysql_fetch_array($rsPropList, MYSQL_BOTH);
+              $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
               extract($aRow);
 
               $aNameFields[$row] = $prop_Name;
@@ -368,7 +369,7 @@ require 'Include/Header.php';
             $sAssignedProperties = ',';
 
             //Was anything returned?
-            if (mysql_num_rows($rsAssignedProperties) == 0) {
+            if (mysqli_num_rows($rsAssignedProperties) == 0) {
               // No, indicate nothing returned
               echo '<p align="center">' . gettext('No property assignments.') . '</p>';
             }
@@ -391,7 +392,7 @@ require 'Include/Header.php';
                   $bIsFirst = true;
 
                   //Loop through the rows
-                  while ($aRow = mysql_fetch_array($rsAssignedProperties)) {
+                  while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
                     $pro_Prompt = '';
                     $r2p_Value = '';
 
@@ -448,7 +449,7 @@ require 'Include/Header.php';
                   echo '<span>' . gettext('Assign a New Property:') . '</span>';
                   echo '<select name="PropertyID">';
 
-                  while ($aRow = mysql_fetch_array($rsProperties)) {
+                  while ($aRow = mysqli_fetch_array($rsProperties)) {
                     extract($aRow);
 
                     //If the property doesn't already exist for this Person, write the <OPTION> tag

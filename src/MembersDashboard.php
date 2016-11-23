@@ -8,6 +8,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\dto\SystemConfig;
 
 // Set the page title
 $sPageTitle = gettext("Members Dashboard");
@@ -30,7 +31,7 @@ $rsKidsGender = RunQuery($sSQL);
 $sSQL = "select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;";
 $rsClassification = RunQuery($sSQL);
 $classifications = new stdClass();
-while (list ($lst_OptionID,$lst_OptionName) = mysql_fetch_row($rsClassification))
+while (list ($lst_OptionID,$lst_OptionName) = mysqli_fetch_row($rsClassification))
 {
   $classifications->$lst_OptionName = $lst_OptionID;
 
@@ -47,7 +48,7 @@ $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM perso
 
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
-while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailList))
+while (list ($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList))
 {
     $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
     if ($sEmail)
@@ -76,9 +77,9 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
     if ($sEmailLink)
     {
       // Add default email if default email has been set and is not already in string
-      if ($sToEmailAddress != '' && $sToEmailAddress != 'myReceiveEmailAddress'
-                                 && !stristr($sEmailLink, $sToEmailAddress))
-          $sEmailLink .= $sMailtoDelimiter . $sToEmailAddress;
+      if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress'
+                                 && !stristr($sEmailLink, SystemConfig::getValue("sToEmailAddress")))
+          $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
       $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
        if ($bEmailMailto) { // Does user have permission to email groups
       // Display link
@@ -258,7 +259,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
             <th>% <?= gettext("of Members") ?></th>
             <th style="width: 40px"><?= gettext("Count") ?></th>
           </tr>
-          <? foreach ($demographicStats as $key => $value) { ?>
+          <?php foreach ($demographicStats as $key => $value) { ?>
             <tr>
               <td><?= gettext($key) ?></td>
               <td>
@@ -269,7 +270,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
               </td>
               <td><span class="badge bg-green"><?= $value ?></span></td>
             </tr>
-          <? } ?>
+          <?php } ?>
         </table>
       </div>
     </div>
@@ -293,7 +294,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
           <th>% <?= gettext("of Members") ?></th>
           <th style="width: 40px"><?= gettext("Count") ?></th>
         </tr>
-        <? foreach ($personStats as $key => $value) { ?>
+        <?php foreach ($personStats as $key => $value) { ?>
           <tr>
             <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
             <td>
@@ -304,7 +305,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
             </td>
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
-        <? } ?>
+        <?php } ?>
       </table>
       <!-- /.box-body-->
     </div>
@@ -334,7 +335,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
   //-------------
   // Get context with jQuery - using jQuery's .get() method.
   var PieData = [
-    <?php while ($row = mysql_fetch_array($rsAdultsGender)) {
+    <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
         if ($row['per_Gender'] == 1 ) {
             echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"".gettext("Men")."\" },";
         }
@@ -342,7 +343,7 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysql_fetch_row($rsEmailL
             echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"".gettext("Women")."\"},";
         }
     }
-    while ($row = mysql_fetch_array($rsKidsGender)) {
+    while ($row = mysqli_fetch_array($rsKidsGender)) {
     if ($row['per_Gender'] == 1 ) {
             echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"".gettext("Boys")."\"},";
         }

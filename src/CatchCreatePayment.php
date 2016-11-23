@@ -60,11 +60,11 @@ $sSQL .= " WHERE aut_ID=$iVancoAutID";
 $resultArr = array ();
 
 $bSuccess = false;
-if ($result = mysql_query($sSQL, $cnInfoCentral))
+if ($result = mysqli_query($cnInfoCentral, $sSQL))
     $bSuccess = true;
 
 if (! $bSuccess) {
-	$errStr = gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysql_error();
+	$errStr = gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysqli_error($cnInfoCentral);
 	array_push ($resultArr, array('Query'=>$sSQL));
 	array_push ($resultArr, array ('Error'=>$errStr));
 	$var_str = var_export($_POST, true);

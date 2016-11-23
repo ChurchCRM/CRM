@@ -76,21 +76,13 @@ $epd = 3;
 
 $pdf = new PDF_Attendance();
 
-// Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$pdf->$cfg_name = $cfg_value;
-	}
-}
-
 for($i=0; $i<$nGrps; $i++) {
 	$iGroupID = $aGrp[$i];
 //	uset($aStudents);
 	if($i>0) $pdf->AddPage();
 //Get the data on this group
 	$sSQL = "SELECT * FROM group_grp WHERE grp_ID = " . $iGroupID;
-	$aGroupData = mysql_fetch_array(RunQuery($sSQL));
+	$aGroupData = mysqli_fetch_array(RunQuery($sSQL));
 	extract($aGroupData);
 	$FYString = MakeFYString ($iFYID);
 	$reportHeader = str_pad($grp_Name,95).$FYString;

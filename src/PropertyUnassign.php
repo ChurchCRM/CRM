@@ -40,7 +40,7 @@ if (isset($_GET["PersonID"]) && $_SESSION['bEditRecords'])
 	// Get the name of the person
 	$sSQL = "SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = " . $iPersonID;
 	$rsName = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsName);
+	$aRow = mysqli_fetch_array($rsName);
 	$sName = $aRow["per_LastName"] . ", " . $aRow["per_FirstName"];
 }
 
@@ -56,7 +56,7 @@ elseif (isset($_GET["GroupID"]) && $_SESSION['bManageGroups'])
 	// Get the name of the group
 	$sSQL = "SELECT grp_Name FROM group_grp WHERE grp_ID = " . $iGroupID;
 	$rsName = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsName);
+	$aRow = mysqli_fetch_array($rsName);
 	$sName = $aRow["grp_Name"];
 }
 
@@ -72,7 +72,7 @@ elseif (isset($_GET["FamilyID"]) && $_SESSION['bEditRecords'])
 	// Get the name of the family
 	$sSQL = "SELECT fam_Name FROM family_fam WHERE fam_ID = " . $iFamilyID;
 	$rsName = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsName);
+	$aRow = mysqli_fetch_array($rsName);
 	$sName = $aRow["fam_Name"];
 }
 
@@ -95,7 +95,7 @@ if (isset($_GET["Confirmed"]))
 //Get the name of the property
 $sSQL = "SELECT pro_Name FROM property_pro WHERE pro_ID = " . $iPropertyID;
 $rsProperty = RunQuery($sSQL);
-$aRow = mysql_fetch_array($rsProperty);
+$aRow = mysqli_fetch_array($rsProperty);
 $sPropertyName = $aRow["pro_Name"];
 
 //Set the page title

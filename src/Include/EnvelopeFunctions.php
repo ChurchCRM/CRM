@@ -23,7 +23,7 @@ function EnvelopeAssignAllFamilies($bMembersOnly)
 
   $ind = 0;
   $famArr = array();
-  while ($aRow = mysql_fetch_array($rsPeople)) {
+  while ($aRow = mysqli_fetch_array($rsPeople)) {
     extract($aRow);
     $famArr[$ind++] = $per_fam_ID;
   }

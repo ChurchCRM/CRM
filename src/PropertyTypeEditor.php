@@ -72,7 +72,7 @@ if (isset($_POST["Submit"]))
 } elseif ($iPropertyTypeID > 0) {
 	//Get the data on this property
 	$sSQL = "SELECT * FROM propertytype_prt WHERE prt_ID = " . $iPropertyTypeID;
-	$rsProperty = mysql_fetch_array(RunQuery($sSQL));
+	$rsProperty = mysqli_fetch_array(RunQuery($sSQL));
 	extract($rsProperty);
 
 	//Assign values locally

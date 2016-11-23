@@ -79,7 +79,7 @@ $iPreviousPropertyType = -1;
 $sBlankLine = '';
 
 //Loop through the records
-while ($aRow = mysql_fetch_array($rsProperties))
+while ($aRow = mysqli_fetch_array($rsProperties))
 {
 
 	$pro_Prompt = "";

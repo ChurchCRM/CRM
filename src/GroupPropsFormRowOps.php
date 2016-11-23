@@ -34,7 +34,7 @@ $sAction = $_GET["Action"];
 // Get the group information
 $sSQL = "SELECT * FROM group_grp WHERE grp_ID = " . $iGroupID;
 $rsGroupInfo = RunQuery($sSQL);
-extract(mysql_fetch_array($rsGroupInfo));
+extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false)
@@ -65,7 +65,7 @@ switch ($sAction)
 		// Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
 		$sSQL = "SELECT type_ID,prop_Special FROM groupprop_master WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
 		$rsTemp = RunQuery($sSQL);
-		$aTemp = mysql_fetch_array($rsTemp);
+		$aTemp = mysqli_fetch_array($rsTemp);
 		if ($aTemp[0] == 12)
 		{
 			$sSQL = "DELETE FROM list_lst WHERE lst_ID = $aTemp[1]";
@@ -80,7 +80,7 @@ switch ($sAction)
 
 		$sSQL = "SELECT *	FROM groupprop_master WHERE grp_ID = " . $iGroupID;
 		$rsPropList = RunQuery($sSQL);
-		$numRows = mysql_num_rows($rsPropList);
+		$numRows = mysqli_num_rows($rsPropList);
 
 		// Shift the remaining rows up by one, unless we've just deleted the only row
 		if ($numRows != 0)

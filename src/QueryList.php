@@ -32,7 +32,7 @@ if ($_SESSION['bAdmin'])
 	echo "<p align=\"center\"><a href=\"QuerySQL.php\">" . gettext("Run a Free-Text Query") . "</a></p>";
 }
 
-while ($aRow = mysql_fetch_array($rsQueries))
+while ($aRow = mysqli_fetch_array($rsQueries))
 {
 
 	extract($aRow);

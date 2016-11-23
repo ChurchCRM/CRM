@@ -29,6 +29,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\ISTAddressLookup;
+use ChurchCRM\dto\SystemConfig;
+
 function XMLparseIST($xmlstr, $xmlfield)
 {
   // Function to parse XML data from Intelligent Search Technolgy, Ltd.
@@ -49,301 +52,7 @@ function XMLparseIST($xmlstr, $xmlfield)
   return '';
 }
 
-class ISTAddressLookup
-{
 
-  // This code is written to work with XML lookups provide by
-  // Intelligent Search Technology, Ltd.
-  // https://www.intelligentsearch.com/Hosted/User/
-
-  function GetAddress1()
-  {
-    return $this->DeliveryLine1;
-  }
-
-  function GetAddress2()
-  {
-    return $this->DeliveryLine2;
-  }
-
-  function GetCity()
-  {
-    return $this->City;
-  }
-
-  function GetState()
-  {
-    return $this->State;
-  }
-
-  function GetZip()
-  {
-    return $this->ZipAddon;
-  }
-
-  function GetZip5()
-  {
-    return $this->Zip;
-  }
-
-  function GetZip4()
-  {
-    return $this->Addon;
-  }
-
-  function GetLOTNumber()
-  {
-    return $this->LOTNumber;
-  }
-
-  function GetDPCCheckdigit()
-  {
-    return $this->DPCCheckdigit;
-  }
-
-  function GetRecordType()
-  {
-    return $this->RecordType;
-  }
-
-  function GetLastLine()
-  {
-    return $this->LastLine;
-  }
-
-  function GetCarrierRoute()
-  {
-    return $this->CarrierRoute;
-  }
-
-  function GetReturnCode()
-  {
-    return $this->ReturnCode;
-  }
-
-  function GetReturnCodes()
-  {
-    return $this->ReturnCodes;
-  }
-
-  function GetErrorCodes()
-  {
-    return $this->ErrorCodes;
-  }
-
-  function GetErrorDesc()
-  {
-    return $this->ErrorDesc;
-  }
-
-  function GetSearchesLeft()
-  {
-    return $this->SearchesLeft;
-  }
-
-  function SetAddress($address1, $address2, $city, $state)
-  {
-    $this->address1 = trim($address1);
-    $this->address2 = trim($address2);
-    $this->city = trim($city);
-    $this->state = trim($state);
-  }
-
-  function getAccountInfo($sISTusername, $sISTpassword)
-  {
-    // Returns account related information.  Currently, it is used to retrieve
-    // remaining number of transactions.  Return codes are:
-    // 0 - information retrieved successfully 
-    // 1 - invalid account
-    // 2 - account is disabled
-    // 3 - account does not have access to CorrectAddress(R) XML web services
-    // 4 - unspecified error
-
-    $base = 'https://www.intelligentsearch.com/CorrectAddressWS/';
-    $base .= 'CorrectAddressWebService.asmx/wsGetAccountInfo';
-
-
-    $query_string = '';
-    $XmlArray = NULL;
-
-    //NOTE: Fields with * sign are required.
-    //intializing the parameters
-
-    $username = $sISTusername;                //  * (Type your username)
-    $password = $sISTpassword;                //  * (Type your password)
-
-    $params = array(
-        'username' => $username,
-        'password' => $password
-    );
-
-    $query_string = 'username=' . $username . '&password=' . $password;
-
-    $url = "$base?$query_string";
-
-    $response = file_get_contents($url);
-
-//        $fp = fopen('/path/to/debug/file.txt', 'w+');
-//        fwrite($fp, $response . "\n" . $url);
-//        fclose($fp);
-    // Initialize return values to NULL
-    $this->SearchesLeft = '';
-    $this->ReturnCode = '';
-
-    if (!$response)
-    {
-      $this->ReturnCode = '9';
-      $this->SearchesLeft = 'Connection failure: ' . $base . '<br>';
-      $this->SearchesLeft .= ' Incorrect server name and/or path or server unavailable.<br>';
-
-      // This feature requires that "allow_url_fopen = On" in the php.ini file.
-      if (!ini_get('allow_url_fopen'))
-      {
-        $this->SearchesLeft .= '<br>IMPORTANT: This feature requires "allow_url_fopen = On" in php.ini';
-        $this->SearchesLeft .= '<br>Please check your php.ini file for "allow_url_fopen"<br>';
-      }
-    }
-    else
-    {
-      $this->ReturnCode = XMLparseIST($response, 'ReturnCode');
-
-      switch($this->ReturnCode)
-      {
-        case '0':
-          $this->SearchesLeft = XMLparseIST($response, 'SearchesLeft');
-          break;
-        case '1':
-          $this->SearchesLeft = 'Invalid Account';
-          break;
-        case '2':
-          $this->SearchesLeft = 'Account is disabled';
-          break;
-        case '3':
-          $this->SearchesLeft = 'Account does not have access to CorrectAddress(R)';
-          $this->SearchesLeft .= ' XML web services';
-          break;
-        default:
-          $this->SearchesLeft = 'Error';
-          break;
-      }
-    }
-  }
-
-  function wsCorrectA($sISTusername, $sISTpassword)
-  {
-
-    // Lookup and Correct US address
-
-    $base = 'https://www.intelligentsearch.com/CorrectAddressWS/';
-    $base .= 'CorrectAddressWebService.asmx/wsCorrectA';
-//        $base    .= "CorrectAddressWebService.asmx/wsTigerCA";
-
-
-    $query_string = '';
-    $XmlArray = NULL;
-
-    //NOTE: Fields with * sign are required.
-    //intializing the parameters
-
-    $username = $sISTusername;                //  * (Type your username)
-    $password = $sISTpassword;                //  * (Type your password)
-    $firmname = '';                           // optional
-    $urbanization = '';                           // optional
-    $delivery_line_1 = $this->address1;              //  * (Type the street address1)
-    $delivery_line_2 = $this->address2;                  // optional
-    $city_state_zip = $this->city . ' ' . $this->state; //  *
-    $ca_codes = '128            135         139'; //  * 
-    $ca_filler = '';                              //  *
-    $batchname = '';                               // optional
-
-
-    $params = array(
-        'username' => $username,
-        'password' => $password,
-        'firmname' => $firmname,
-        'urbanization' => $urbanization,
-        'delivery_line_1' => $delivery_line_1,
-        'delivery_line_2' => $delivery_line_2,
-        'city_state_zip' => $city_state_zip,
-        'ca_codes' => $ca_codes,
-        'ca_filler' => $ca_filler,
-        'batchname' => $batchname
-    );
-
-    foreach ($params as $key => $value)
-    {
-      $query_string .= "$key=" . urlencode($value) . "&";
-    }
-
-    $url = "$base?$query_string";
-
-    $response = file_get_contents($url);
-
-//        $fp = fopen('/var/www/html/message.txt', 'w+');
-//        fwrite($fp, $response . "\n" . $url);
-//        fclose($fp);
-    // Initialize return values
-    $this->DeliveryLine1 = '';
-    $this->DeliveryLine2 = '';
-    $this->City = '';
-    $this->State = '';
-    $this->ZipAddon = '';
-    $this->Zip = '';
-    $this->Addon = '';
-    $this->LOTNumber = '';
-    $this->DPCCheckdigit = '';
-    $this->RecordType = '';
-    $this->LastLine = '';
-    $this->CarrierRoute = '';
-    $this->ReturnCodes = '';
-    $this->ErrorCodes = '';
-    $this->ErrorDesc = '';
-    $this->SearchesLeft = '';
-
-    if (!$response)
-    {
-      $this->DeliveryLine1 = "Connection failure.\n";
-      $this->DeliveryLine1 .= $base . "\n";
-      $this->DeliveryLine1 .= 'Incorrect server name and/or path or server unavailable.';
-      $this->ErrorCodes = 'xx';
-      $this->ErrorDesc = 'Incorrect server name and/or path or server unavailable.';
-      $this->SearchesLeft = '0';
-    }
-    else
-    {
-      $this->DeliveryLine1 = XMLparseIST($response, 'DeliveryLine1');
-      $this->DeliveryLine2 = XMLparseIST($response, 'DeliveryLine2');
-      $this->City = XMLparseIST($response, 'City');
-      $this->State = XMLparseIST($response, 'State');
-      $this->ZipAddon = XMLparseIST($response, 'ZipAddon');
-      $this->Zip = XMLparseIST($response, 'Zip');
-      $this->Addon = XMLparseIST($response, 'Addon');
-      $this->LOTNumber = XMLparseIST($response, 'LOTNumber');
-      $this->DPCCheckdigit = XMLparseIST($response, 'DPCCheckdigit');
-      $this->RecordType = XMLparseIST($response, 'RecordType');
-      $this->LastLine = XMLparseIST($response, 'LastLine');
-      $this->CarrierRoute = XMLparseIST($response, 'CarrierRoute');
-      $this->ReturnCodes = XMLparseIST($response, 'ReturnCodes');
-      $this->ErrorCodes = XMLparseIST($response, 'ErrorCodes');
-      $this->ErrorDesc = XMLparseIST($response, 'ErrorDesc');
-      $this->SearchesLeft = XMLparseIST($response, 'SearchesLeft');
-
-//            if(strlen(XMLparseIST($response,"ErrorCodes"))){
-//                if (XMLparseIST($response,"ErrorCodes") != "x1x2") {
-//                    $this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorCodes");
-//                    $this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorDesc");
-//                }
-//            } 
-//            if (XMLparseIST($response,"ReturnCodes") > 1) {    
-//                $this->DeliveryLine1 .= " Multiple matches.  Unable to determine proper match.";
-//            }
-//            if (XMLparseIST($response,"ReturnCodes") < 1) {
-//                $this->DeliveryLine1 .= " No match found.";
-//            }
-    }
-  }
-
-}
 
 // If user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'])
@@ -356,13 +65,11 @@ if (!$_SESSION['bAdmin'])
 $sPageTitle = gettext('US Address Verification');
 require 'Include/Header.php';
 
-if (strlen($sISTusername) && strlen($sISTpassword))
+if (strlen(SystemConfig::getValue("sISTusername")) && strlen(SystemConfig::getValue("sISTpassword")))
 {
 
   $myISTAddressLookup = new ISTAddressLookup;
-
-  $myISTAddressLookup->getAccountInfo($sISTusername, $sISTpassword);
-
+  $myISTAddressLookup->getAccountInfo(SystemConfig::getValue("sISTusername"), SystemConfig::getValue("sISTpassword"));
   $myISTReturnCode = $myISTAddressLookup->GetReturnCode();
   $myISTSearchesLeft = $myISTAddressLookup->GetSearchesLeft();
 }
@@ -457,7 +164,7 @@ else
   $sSQL = 'SELECT lu_fam_ID FROM istlookup_lu ';
   $rsIST = RunQuery($sSQL);
   $iOrphanCount = 0;
-  while ($aRow = mysql_fetch_array($rsIST))
+  while ($aRow = mysqli_fetch_array($rsIST))
   {
     extract($aRow);
     // verify that this ID exists in family_fam with 
@@ -466,7 +173,7 @@ else
     $sSQL .= "WHERE fam_ID='$lu_fam_ID' ";
     $sSQL .= "AND fam_Country='United States'";
     $rsExists = RunQuery($sSQL);
-    extract(mysql_fetch_array($rsExists));
+    extract(mysqli_fetch_array($rsExists));
     if ($idexists == '0')
     {
       $sSQL = "DELETE FROM istlookup_lu WHERE lu_fam_ID='$lu_fam_ID'";
@@ -493,7 +200,7 @@ else
   $sSQL .= 'AND fam_DateLastEdited IS NOT NULL';
   $rsUpdated = RunQuery($sSQL);
   $iUpdatedCount = 0;
-  while ($aRow = mysql_fetch_array($rsUpdated))
+  while ($aRow = mysqli_fetch_array($rsUpdated))
   {
     extract($aRow);
 
@@ -524,7 +231,7 @@ else
   $sSQL .= "WHERE '$twoYearsAgo' > lu_LookupDateTime";
   $rsResult = RunQuery($sSQL);
   $iOutdatedCount = 0;
-  while ($aRow = mysql_fetch_array($rsResult))
+  while ($aRow = mysqli_fetch_array($rsResult))
   {
     extract($aRow);
     $sSQL = "DELETE FROM istlookup_lu WHERE lu_fam_ID='$lu_fam_ID'";
@@ -539,7 +246,7 @@ else
   $sSQL = 'SELECT count(fam_ID) AS nonustotal FROM family_fam ';
   $sSQL .= "WHERE fam_Country NOT IN ('United States')";
   $rsResult = RunQuery($sSQL);
-  extract(mysql_fetch_array($rsResult));
+  extract(mysqli_fetch_array($rsResult));
   $iNonUSCount = intval($nonustotal);
   if ($iNonUSCount)
   {
@@ -550,7 +257,7 @@ else
   $sSQL = "SELECT count(fam_ID) AS ustotal FROM family_fam ";
   $sSQL .= "WHERE fam_Country IN ('United States')";
   $rsResult = RunQuery($sSQL);
-  extract(mysql_fetch_array($rsResult));
+  extract(mysqli_fetch_array($rsResult));
   $iUSCount = intval($ustotal);
   if ($iUSCount)
   {
@@ -560,7 +267,7 @@ else
   // Get count of US addresses that do not require a fresh lookup
   $sSQL = 'SELECT count(lu_fam_ID) AS usokay FROM istlookup_lu';
   $rsResult = RunQuery($sSQL);
-  extract(mysql_fetch_array($rsResult));
+  extract(mysqli_fetch_array($rsResult));
   $iUSOkay = intval($usokay);
   if ($iUSOkay)
   {
@@ -572,7 +279,7 @@ else
   $sSQL .= "WHERE fam_Country IN ('United States') AND fam_ID NOT IN (";
   $sSQL .= "SELECT lu_fam_ID from istlookup_lu)";
   $rs = RunQuery($sSQL);
-  extract(mysql_fetch_array($rs));
+  extract(mysqli_fetch_array($rs));
   $iEligible = intval($newcount);
   if ($iEligible)
     echo $iEligible . " US addresses are eligible for lookup.<br>\n";
@@ -599,7 +306,7 @@ else
     $rsResult = RunQuery($sSQL);
 
     $bNormalFinish = TRUE;
-    while ($aRow = mysql_fetch_array($rsResult))
+    while ($aRow = mysqli_fetch_array($rsResult))
     {
 
       extract($aRow);
@@ -614,7 +321,7 @@ else
       $myISTAddressLookup = new ISTAddressLookup;
       $myISTAddressLookup->SetAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State);
 
-      $ret = $myISTAddressLookup->wsCorrectA($sISTusername, $sISTpassword);
+      $ret = $myISTAddressLookup->wsCorrectA(SystemConfig::getValue("sISTusername"), SystemConfig::getValue("sISTpassword"));
 
       $lu_fam_ID = MySQLquote(addslashes($fam_ID));
       $lu_LookupDateTime = MySQLquote(addslashes(date('Y-m-d H:i:s')));
