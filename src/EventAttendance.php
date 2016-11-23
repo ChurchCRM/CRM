@@ -68,7 +68,7 @@ elseif (array_key_exists('Action', $_GET) && $_GET['Action']== "List" && !empty(
     $sSQL = "SELECT * FROM events_event WHERE event_type = ".$_GET['Event']." ORDER BY event_start";
 	
 	//I change textt from All $_GET['Type'] Events to All Events of type . $_GET['Type'], because it don´t work for protuguese, spanish, french and so on
-    $sPageTitle = gettext("All Events of Type").":" . $_GET['Type'];
+    $sPageTitle = gettext("All Events of Type").": " . $_GET['Type'];
 }
 require "Include/Header.php";
 ?>
@@ -116,7 +116,7 @@ if (array_key_exists ('Action', $_GET) && $_GET['Action'] == "List" && $numRows 
 {
 ?>
        <caption>
-	       <h3><?= ($numRows == 1 ? gettext("There is") : gettext("There are"))." " . $numRows . ($numRows == 1 ? gettext("event") : gettext("events")). gettext(" in this category.") ?></h3>
+	       <h3><?= ($numRows == 1 ? gettext("There is") : gettext("There are"))." " . $numRows ." ". ($numRows == 1 ? gettext("event") : gettext("events")). gettext(" in this category.") ?></h3>
        </caption>
          <tr class="TableHeader">
            <td width="33%"><strong><?= gettext("Event Title") ?></strong></td>
