@@ -62,7 +62,6 @@ switch ($mode) {
 switch ($mode) {
 	case 'famroles':
 		//It don't work for postuguese because in it adjective come after noum
-		//$adj = gettext("Family");
 		$noun = gettext("Role");
 		//In the same way, the plural isn't only add s
 		$adjplusname = gettext("Family Role");
@@ -72,7 +71,6 @@ switch ($mode) {
 		$embedded = false;
 		break;
 	case 'classes':
-		//$adj = gettext("Person");
 		$noun = gettext("Classification");
 		$adjplusname = gettext("Person Classification");
 		$adjplusnameplural = gettext("Person Classifications");
@@ -81,7 +79,6 @@ switch ($mode) {
 		$embedded = false;
 		break;
 	case 'grptypes':
-		//$adj = gettext("Group");
 		$noun = gettext("Type");
 		$adjplusname = gettext("Group Type");
 		$adjplusnameplural = gettext("Group Types");
@@ -90,7 +87,6 @@ switch ($mode) {
 		$embedded = false;
 		break;
 	case 'securitygrp':
-		//$adj = gettext("Security");
 		$noun = gettext("Group");
 		$adjplusname = gettext("Security Group");
 		$adjplusnameplural = gettext("Security Groups");
@@ -99,7 +95,6 @@ switch ($mode) {
 		$embedded = false;
 		break;
 	case 'grproles':
-		//$adj = gettext("Group Member");
 		$noun = gettext("Role");
 		$adjplusname = gettext("Group Member Role");
 		$adjplusnameplural = gettext("Group Member Roles");
@@ -121,7 +116,6 @@ switch ($mode) {
 
 		break;
 	case 'custom':
-		//$adj = gettext("Person Custom List");
 		$noun = gettext("Option");
 		$adjplusname = gettext("Person Custom List Option");
 		$adjplusnameplural = gettext("Person Custom List Options");
@@ -140,7 +134,6 @@ switch ($mode) {
 
 		break;
 	case 'groupcustom':
-		//$adj = gettext("Custom List");
 		$noun = gettext("Option");
 		$adjplusname = gettext("Custom List Option");
 		$adjplusnameplural = gettext("Custom List Options");
@@ -159,7 +152,6 @@ switch ($mode) {
 
 		break;
 	case 'famcustom':
-		//$adj = gettext("Family Custom List");
 		$noun = gettext("Option");
 		$adjplusname = gettext("Family Custom List Option");
 		$adjplusnameplural = gettext("Family Custom List Options");
