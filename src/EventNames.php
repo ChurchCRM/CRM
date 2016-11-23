@@ -107,19 +107,19 @@ $numRows = mysql_num_rows($rsOpps);
 
                 switch ($aDefRecurType[$row]){
                   case "none":
-                    $recur[$row]="None";
+                    $recur[$row]=gettext("None");
                     break;
                   case "weekly":
-                    $recur[$row]="Weekly on ".$aDefRecurDOW[$row];
+                    $recur[$row]=gettext("Weekly on")." ".gettext($aDefRecurDOW[$row]."s");
                     break;
                   case "monthly":
-                    $recur[$row]="Monthly on ".date('dS',mktime(0,0,0,1,$aDefRecurDOM[$row],2000));
+                    $recur[$row]=gettext("Monthly on")." ".date('dS',mktime(0,0,0,1,$aDefRecurDOM[$row],2000));
                     break;
                   case "yearly":
-                    $recur[$row]="Yearly on ".substr($aDefRecurDOY[$row],5);
+                    $recur[$row]=gettext("Yearly on")." ".substr($aDefRecurDOY[$row],5);
                     break;
                   default:
-                    $recur[$row]="None";
+                    $recur[$row]=gettext("None");
                 }
                 // recur types = 1-DOW for weekly, 2-DOM for monthly, 3-DOY for yearly.
                 // repeats on DOW, DOM or DOY
@@ -257,7 +257,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
 <div class="box">
   <div class="box-header">
     <?php if ($numRows > 0) { ?>
-      <h3 class="box-title"><?= gettext("There currently ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." custom event types")) ?></h3>
+      <h3 class="box-title"><?= gettext("There currently ".($numRows == 1 ? "is ":"are ")).$numRows. gettext(($numRows == 1 ? " custom event type":" custom event types")) ?></h3>
     <?php } ?>
   </div>
 

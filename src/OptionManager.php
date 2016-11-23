@@ -61,32 +61,49 @@ switch ($mode) {
 // Select the proper settings for the editor mode
 switch ($mode) {
 	case 'famroles':
-		$adj = gettext("Family");
+		//It don't work for postuguese because in it adjective come after noum
+		//$adj = gettext("Family");
 		$noun = gettext("Role");
+		//In the same way, the plural isn't only add s
+		$adjplusname = gettext("Family Role");
+		$adjplusnameplural = gettext("Family Roles");
+		$sPageTitle = gettext("Family Roles Editor");
 		$listID = 2;
 		$embedded = false;
 		break;
 	case 'classes':
-		$adj = gettext("Person");
+		//$adj = gettext("Person");
 		$noun = gettext("Classification");
+		$adjplusname = gettext("Person Classification");
+		$adjplusnameplural = gettext("Person Classifications");
+		$sPageTitle = gettext("Person Classifications Editor");
 		$listID = 1;
 		$embedded = false;
 		break;
 	case 'grptypes':
-		$adj = gettext("Group");
+		//$adj = gettext("Group");
 		$noun = gettext("Type");
+		$adjplusname = gettext("Group Type");
+		$adjplusnameplural = gettext("Group Types");
+		$sPageTitle = gettext("Group Types Editor");
 		$listID = 3;
 		$embedded = false;
 		break;
 	case 'securitygrp':
-		$adj = gettext("Security");
+		//$adj = gettext("Security");
 		$noun = gettext("Group");
+		$adjplusname = gettext("Security Group");
+		$adjplusnameplural = gettext("Security Groups");
+		$sPageTitle = gettext("Security Groups Editor");
 		$listID = 5;
 		$embedded = false;
 		break;
 	case 'grproles':
-		$adj = gettext("Group Member");
+		//$adj = gettext("Group Member");
 		$noun = gettext("Role");
+		$adjplusname = gettext("Group Member Role");
+		$adjplusnameplural = gettext("Group Member Roles");
+		$sPageTitle = gettext("Group Member Roles Editor");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
 
@@ -104,8 +121,11 @@ switch ($mode) {
 
 		break;
 	case 'custom':
-		$adj = gettext("Person Custom List");
+		//$adj = gettext("Person Custom List");
 		$noun = gettext("Option");
+		$adjplusname = gettext("Person Custom List Option");
+		$adjplusnameplural = gettext("Person Custom List Options");
+		$sPageTitle = gettext("Person Custom List Options Editor");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
 
@@ -120,8 +140,11 @@ switch ($mode) {
 
 		break;
 	case 'groupcustom':
-		$adj = gettext("Custom List");
+		//$adj = gettext("Custom List");
 		$noun = gettext("Option");
+		$adjplusname = gettext("Custom List Option");
+		$adjplusnameplural = gettext("Custom List Options");
+		$sPageTitle = gettext("Custom List Options Editor");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
 
@@ -136,8 +159,11 @@ switch ($mode) {
 
 		break;
 	case 'famcustom':
-		$adj = gettext("Family Custom List");
+		//$adj = gettext("Family Custom List");
 		$noun = gettext("Option");
+		$adjplusname = gettext("Family Custom List Option");
+		$adjplusnameplural = gettext("Family Custom List Options");
+		$sPageTitle = gettext("Family Custom List Options Editor");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
 
@@ -295,8 +321,8 @@ $sRowClass = "RowColorA";
 if ($embedded)
 	include "Include/Header-Minimal.php";
 else
-{
-	$sPageTitle = $adj . ' ' . $noun . "s ".gettext("Editor");
+{	//It don't work for postuguese because in it adjective come after noum
+	//$sPageTitle = $adj . ' ' . $noun . "s ".gettext("Editor");
 	include "Include/Header.php";
 }
 
@@ -312,7 +338,7 @@ else
 if ( $bErrorFlag )
 {
 	echo "<span class=\"MediumLargeText\" style=\"color: red;\">";
-	if ($bDuplicateFound) echo "<br>" . gettext("Error: Duplicate") . " " . $adj . " " . $noun . gettext("s are not allowed.");
+	if ($bDuplicateFound) echo "<br>" . gettext("Error: Duplicate") . " " . $adjplusnameplural . " " . gettext("are not allowed.");
 	echo "<br>" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span><br><br>";
 }
 ?>
@@ -383,12 +409,12 @@ for ($row=1; $row <= $numRows; $row++)
 
 <div class="box box-primary">
 	<div class="box-body">
-<?=  gettext("New") . " " . $noun . " " . gettext("Name") ?>:&nbsp;
+<?=  gettext("Name for New") . " " . $noun ?>:&nbsp;
 <span class="SmallText">
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
 <p>  </p>
-<input type="submit" class="btn" value="<?= gettext("Add New") . ' ' . $adj . ' ' . $noun ?>" Name="AddField">
+<input type="submit" class="btn" value="<?= gettext("Add New") . ' ' . $adjplusname ?>" Name="AddField">
 <?php
 	if ($iNewNameError > 0)
 	{

@@ -215,7 +215,7 @@ if ($numRows > 0)
   ?>
   <div class='box'>
     <div class='box-header'>
-      <h3 class='box-title'><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
+      <h3 class='box-title'><?= gettext("There ".($numRows == 1 ? "is ":"are ")). $numRows . gettext($numRows == 1 ? " event":" events")." for ".gettext(date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
     </div>
     <div class='box-body'>
   <table class='table data-table table-striped table-bordered table-responsive'>

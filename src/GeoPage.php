@@ -246,7 +246,7 @@ echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"NumNeighbors\" value
 echo "</tr>\n";
 
 echo "<tr>\n";
-echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance") . " (" . strtolower($sDistanceUnit) . "): </td>\n";
+echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance") . " (" . gettext(strtolower($sDistanceUnit)) . "): </td>\n";
 echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"MaxDistance\" value=\"" . $nMaxDistance . "\"></td>\n";
 echo "</tr>\n";
 
@@ -281,7 +281,7 @@ echo '<td><input type="submit" class="btn" name="DataFile" value="' . gettext("M
 </div>
 <div class="box">
     <div class="box-header box-info">
-        <h3>Show neighbors with these classifications.</h3>
+        <h3><?= gettext("Show neighbors with these classifications.") ?></h3>
     </div>
     <div class="box-body">
 <table class="table">
