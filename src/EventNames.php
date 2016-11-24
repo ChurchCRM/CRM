@@ -266,7 +266,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
     if ($numRows > 0)
     {
       ?>
-      <table class="table table-striped table-bordered data-table">
+      <table  id="eventNames" class="table table-striped table-bordered data-table">
         <thead>
          <tr>
             <th><?= gettext("Event Type") ?></th>
@@ -344,4 +344,21 @@ if (FilterInput($_POST["Action"]) != "NEW")
   <?php
 }
 ?>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+//Added by @saulowulhynek to translation of datatable nav terms
+    $('#eventNames').dataTable({
+      "language": {
+        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+      },
+      responsive: true,
+      "dom": 'T<"clear">lfrtip',
+      "tableTools": {
+        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
+      }
+    });
+  });
+</script>
+
 <?php require "Include/Footer.php" ?>
