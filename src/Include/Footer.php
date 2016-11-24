@@ -216,23 +216,28 @@ $isAdmin = $_SESSION['user']->isAdmin();
       <?= gettext("You have") ?> &nbsp; <span class="label label-danger"><?= $taskSize ?></span>
       &nbsp; <?= gettext("task(s)") ?>
       <br/><br/>
+      <ul class="control-sidebar-menu">
       <?php foreach ($tasks as $task) {
-        $taskIcon = "fa-info";
+        $taskIcon = "fa-info bg-green";
         if ($task["admin"]) {
-          $taskIcon = "fa-lock";
+          $taskIcon = "fa-lock bg-yellow-gradient";
         } ?>
         <!-- Task item -->
-        <i class="fa fa-fw <?= $taskIcon ?>"></i>
-        <a href="<?= $task["link"] ?>">
-          <?= $task["title"] ?>
-        </a>
-        <br/>
+        <li>
+          <a href="<?= $task["link"] ?>">
+            <i class="menu-icon fa fa-fw <?= $taskIcon ?>"></i>
+            <div class="menu-info">
+              <h4 class="control-sidebar-subheading"><?= $task["title"] ?></h4>
+            </div>
+          </a>
+        </li>
         <!-- end task item -->
       <?php } ?>
-
+      </ul>
+      <!--
       <h3 class="control-sidebar-heading"><?= gettext("Data Quality") ?></h3>
       <ul class="control-sidebar-menu">
-        <!--li>
+        <li>
           <a href="javascript:void(0)">
             <h4 class="control-sidebar-subheading">
               Custom Template Design
@@ -243,8 +248,9 @@ $isAdmin = $_SESSION['user']->isAdmin();
               <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
             </div>
           </a>
-        </li-->
+        </li>
       </ul>
+      -->
       <!-- /.control-sidebar-menu -->
 
     </div>
@@ -302,7 +308,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
   </script>
   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
   <?php
-  } 
+  }
   ?>
 
 </body>
