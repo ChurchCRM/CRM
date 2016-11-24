@@ -20,6 +20,7 @@ require "Include/CanvassUtilities.php";
 require "Include/GeoCoder.php";
 
 use ChurchCRM\Note;
+use ChurchCRM\dto\SystemConfig;
 
 //Set the page title
 $sPageTitle = gettext("Family Editor");
