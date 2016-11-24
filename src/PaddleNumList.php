@@ -62,7 +62,7 @@ $tog = 0;
 
 //Loop through all buyers
 if ($rsPaddleNums) {
-	while ($aRow =mysql_fetch_array($rsPaddleNums))
+	while ($aRow =mysqli_fetch_array($rsPaddleNums))
 	{
 		extract($aRow);
 	

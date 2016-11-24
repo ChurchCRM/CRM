@@ -19,6 +19,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\PDF_GroupDirectory;
+use ChurchCRM\dto\SystemConfig;
 
 $bOnlyCartMembers = $_POST["OnlyCart"];
 $iGroupID = FilterInput($_POST["GroupID"],'int');
@@ -32,7 +33,7 @@ else
 	// Get the group name
 	$sSQL = "SELECT grp_Name, grp_RoleListID FROM group_grp WHERE grp_ID = " . $iGroupID;
 	$rsGroupName = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsGroupName);
+	$aRow = mysqli_fetch_array($rsGroupName);
 	$sGroupName = $aRow[0];
 	$iRoleListID = $aRow[1];
 
@@ -41,7 +42,7 @@ else
 	{
 		$sSQL = "SELECT lst_OptionName FROM list_lst WHERE lst_ID = " . $iRoleListID . " AND lst_OptionID = " . $iRoleID;
 		$rsTemp = RunQuery($sSQL);
-		$aRow = mysql_fetch_array($rsTemp);
+		$aRow = mysqli_fetch_array($rsTemp);
 		$sRoleName = $aRow[0];
 	}
 
@@ -50,25 +51,17 @@ else
 		$sSQL = "SELECT lst_OptionName,lst_OptionID FROM list_lst WHERE lst_ID = " . $iRoleListID;
 		$rsTemp = RunQuery($sSQL);
 
-		while ($aRow = mysql_fetch_array($rsTemp)) {
+		while ($aRow = mysqli_fetch_array($rsTemp)) {
 			$aRoleNames[$aRow[1]] = $aRow[0];
 		}
 	}
 
 	$pdf = new PDF_GroupDirectory();
 
-	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-	}
-
 	// See if this group has special properties.
 	$sSQL = "SELECT * FROM groupprop_master WHERE grp_ID = " . $iGroupID . " ORDER BY prop_ID";
 	$rsProps = RunQuery($sSQL);
-	$bHasProps = (mysql_num_rows($rsProps) > 0);
+	$bHasProps = (mysqli_num_rows($rsProps) > 0);
 
 	$sSQL = "SELECT * FROM person_per
 			LEFT JOIN family_fam ON per_fam_ID = fam_ID ";
@@ -93,7 +86,7 @@ else
 	// Start out with something that isn't a letter to force the first one to work
 	// $sLastLetter = "0";
 
-	while ($aRow = mysql_fetch_array($rsRecords))
+	while ($aRow = mysqli_fetch_array($rsRecords))
 	{
 		$OutStr = "";
 
@@ -120,17 +113,17 @@ else
 		}
 
 		if (isset($_POST['HomePhoneEnable']) && strlen($sHomePhone)) {
-			$TempStr = ExpandPhoneNumber($sHomePhone, $sDefaultCountry, $bWierd);
+			$TempStr = ExpandPhoneNumber($sHomePhone, SystemConfig::getValue("sDefaultCountry"), $bWierd);
 			$OutStr .= "  " . gettext("Phone") . ": " . $TempStr . "\n";
 		}
 
 		if (isset($_POST['WorkPhoneEnable']) && strlen($sWorkPhone)) {
-			$TempStr = ExpandPhoneNumber($sWorkPhone, $sDefaultCountry, $bWierd);
+			$TempStr = ExpandPhoneNumber($sWorkPhone, SystemConfig::getValue("sDefaultCountry"), $bWierd);
 			$OutStr .= "  " . gettext("Work") . ": " . $TempStr . "\n";
 		}
 
 		if (isset($_POST['CellPhoneEnable']) && strlen($sCellPhone)) {
-			$TempStr = ExpandPhoneNumber($sCellPhone, $sDefaultCountry, $bWierd);
+			$TempStr = ExpandPhoneNumber($sCellPhone, SystemConfig::getValue("sDefaultCountry"), $bWierd);
 			$OutStr .= "  " . gettext("Cell") . ": " . $TempStr . "\n";
 		}
 
@@ -142,7 +135,7 @@ else
 
 		if ($bHasProps)
 		{
-			while ($aPropRow = mysql_fetch_array($rsProps))
+			while ($aPropRow = mysqli_fetch_array($rsProps))
 			{
 				if (isset($_POST[$aPropRow['prop_Field'] . 'enable']))
 				{
@@ -150,7 +143,7 @@ else
 					$OutStr .= $aPropRow['prop_Name'] . ": " . displayCustomField($aPropRow['type_ID'], $currentData, $aPropRow['prop_Special']) . "\n";
 				}
 			}
-			mysql_data_seek($rsProps,0);
+			mysqli_data_seek($rsProps,0);
 		}
 
 		// Count the number of lines in the output string
@@ -175,7 +168,7 @@ else
 	}
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
 	$pdf->Output("GroupDirectory-" . date("Ymd-Gis") . ".pdf", "D");
 else
 	$pdf->Output();

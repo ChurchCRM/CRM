@@ -17,6 +17,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -34,7 +35,7 @@ if (!empty($_POST["classList"])) {
 		$inClassList = "(";
 		$notInClassList = "(";
 
-		while ($aRow = mysql_fetch_array($rsClassifications)) {
+		while ($aRow = mysqli_fetch_array($rsClassifications)) {
 			extract($aRow);
 			if (in_array($lst_OptionID, $classList)) {
 				if ($inClassList == "(") {
@@ -68,7 +69,7 @@ if (array_key_exists ("only_owe", $_POST))
 	$only_owe = FilterInput($_POST["only_owe"]);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly")) {
 	Redirect("Menu.php");
 	exit;
 }
@@ -147,7 +148,7 @@ if ($fundCount > 0) {
 	for ($i = 0; $i < $fundCount; $i++) {
 		$sSQL = "SELECT fun_Name FROM donationfund_fun WHERE fun_ID=" . $fund[$i];
 		$rsOneFund = RunQuery($sSQL);
-		$aFundName = mysql_fetch_array($rsOneFund);
+		$aFundName = mysqli_fetch_array($rsOneFund);
 		$fundOnlyString .= $aFundName["fun_Name"];
 		if ($i < $fundCount - 1)
 			$fundOnlyString .= ", ";
@@ -160,7 +161,7 @@ $rsFunds = RunQuery($sSQL);
 
 $fundPaymentTotal = array ();
 $fundPledgeTotal = array ();
-while ($row = mysql_fetch_array($rsFunds))
+while ($row = mysqli_fetch_array($rsFunds))
 {
 	$fun_name = $row["fun_Name"];
 	$fundPaymentTotal[$fun_name] = 0;
@@ -217,16 +218,8 @@ $pdf->WriteAtCell ($famPayX, $y, $famPayWid, "Paid");
 $pdf->WriteAtCell ($famOweX, $y, $famOweWid, "Owe");
 $y += $lineInc;
 
-// Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$pdf->$cfg_name = $cfg_value;
-	}
-}
-
 // Loop through families
-while ($aFam = mysql_fetch_array($rsFamilies)) {
+while ($aFam = mysqli_fetch_array($rsFamilies)) {
 	extract ($aFam);
 
 	// Check for pledges if filtering by pledges
@@ -234,7 +227,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$temp = "SELECT plg_plgID FROM pledge_plg
 			WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID" . $sSQLFundCriteria;
 		$rsPledgeCheck = RunQuery($temp);
-		if (mysql_num_rows ($rsPledgeCheck) == 0)
+		if (mysqli_num_rows ($rsPledgeCheck) == 0)
 			continue;
 	}
 
@@ -246,14 +239,14 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$rsPledges = RunQuery($sSQL);
 
 	// If there is no pledge or a payment go to next family
-	if (mysql_num_rows ($rsPledges) == 0)
+	if (mysqli_num_rows ($rsPledges) == 0)
 		continue;
 
 	if ($only_owe == "yes") {
 		// Run through pledges and payments for this family to see if there are any unpaid pledges
 		$oweByFund = array ();
 		$bOwe = 0;
-		while ($aRow = mysql_fetch_array($rsPledges)) {
+		while ($aRow = mysqli_fetch_array($rsPledges)) {
 			extract ($aRow);
 			if ($plg_PledgeOrPayment=='Pledge')
 				$oweByFund[$plg_fundID] -= $plg_amount;
@@ -275,11 +268,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
 	$totalAmountPledges = 0;
 
-	if (mysql_num_rows ($rsPledges) == 0) {
+	if (mysqli_num_rows ($rsPledges) == 0) {
 	} else {
 		$totalAmount = 0;
 		$cnt = 0;
-		while ($aRow = mysql_fetch_array($rsPledges)) {
+		while ($aRow = mysqli_fetch_array($rsPledges)) {
 			extract ($aRow);
 		
 			if (strlen($fundName) > 19)
@@ -301,11 +294,11 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 	$rsPledges = RunQuery($sSQL);
 
 	$totalAmountPayments = 0;
-	if (mysql_num_rows ($rsPledges) == 0) {
+	if (mysqli_num_rows ($rsPledges) == 0) {
 	} else {
 		$totalAmount = 0;
 		$cnt = 0;
-		while ($aRow = mysql_fetch_array($rsPledges)) {
+		while ($aRow = mysqli_fetch_array($rsPledges)) {
 			extract ($aRow);
 			
 			$totalAmount += $plg_amount;
@@ -315,9 +308,9 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 		$totalAmountPayments = $totalAmount;
 	}
 
-	if (mysql_num_rows ($rsFunds) > 0) {
-		mysql_data_seek($rsFunds,0);
-		while ($row = mysql_fetch_array($rsFunds))
+	if (mysqli_num_rows ($rsFunds) > 0) {
+		mysqli_data_seek($rsFunds,0);
+		while ($row = mysqli_fetch_array($rsFunds))
 		{
 			$fun_name = $row["fun_Name"];
 			if ($fundPledgeTotal[$fun_name] > 0) {
@@ -345,7 +338,7 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1) {
+if (SystemConfig::getValue("iPDFOutputType") == 1) {
 	$pdf->Output("FamilyPledgeSummary" . date("Ymd") . ".pdf", "D");
 } else {
 	$pdf->Output();

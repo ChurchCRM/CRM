@@ -37,14 +37,14 @@ if (isset ($_POST["Back"])) {
 
 $sSQL = "SELECT * FROM pledge_plg WHERE plg_plgID = " . $iPledgeID;
 $rsPledgeRec = RunQuery($sSQL);
-extract (mysql_fetch_array ($rsPledgeRec));
+extract (mysqli_fetch_array ($rsPledgeRec));
 
 $sSQL="SELECT * FROM result_res WHERE res_ID=" . $plg_aut_ResultID;
 $rsResultRec = RunQuery($sSQL);
 
 require "Include/Header.php";
 
-$resArr = mysql_fetch_array ($rsResultRec);
+$resArr = mysqli_fetch_array ($rsResultRec);
 if ($resArr) {
 	extract ($resArr);
 	echo $res_echotype2;

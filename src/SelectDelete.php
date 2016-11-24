@@ -73,7 +73,7 @@ function DeletePerson($iPersonID)
   // Remove person from all groups they belonged to
   $sSQL = "SELECT p2g2r_grp_ID FROM person2group2role_p2g2r WHERE p2g2r_per_ID = " . $iPersonID;
   $rsAssignedGroups = RunQuery($sSQL);
-  while ($aRow = mysql_fetch_array($rsAssignedGroups)) {
+  while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
     extract($aRow);
     $groupService->removeUserFromGroup($p2g2r_grp_ID, $iPersonID);
   }
@@ -94,7 +94,7 @@ function DeletePerson($iPersonID)
   $sSQL = "SELECT pro_ID FROM property_pro WHERE pro_Class='p'";
   $rsProps = RunQuery($sSQL);
 
-  while ($aRow = mysql_fetch_row($rsProps)) {
+  while ($aRow = mysqli_fetch_row($rsProps)) {
     $sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $aRow[0] . " AND r2p_record_ID = " . $iPersonID;
     RunQuery($sSQL);
   }
@@ -125,7 +125,7 @@ if (isset($_GET["Confirmed"])) {
     // Make sure this person is not a user
     $sSQL = "SELECT '' FROM user_usr WHERE usr_per_ID = " . $iPersonID;
     $rsUser = RunQuery($sSQL);
-    $bIsUser = (mysql_num_rows($rsUser) > 0);
+    $bIsUser = (mysqli_num_rows($rsUser) > 0);
 
     if (!$bIsUser) {
       DeletePerson($iPersonID);
@@ -147,7 +147,7 @@ if (isset($_GET["Confirmed"])) {
     $sSQL = "SELECT pro_ID FROM property_pro WHERE pro_Class='f'";
     $rsProps = RunQuery($sSQL);
 
-    while ($aRow = mysql_fetch_row($rsProps)) {
+    while ($aRow = mysqli_fetch_row($rsProps)) {
       $sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $aRow[0] . " AND r2p_record_ID = " . $iFamilyID;
       RunQuery($sSQL);
     }
@@ -156,7 +156,8 @@ if (isset($_GET["Confirmed"])) {
       // Delete all persons that were in this family
       $sSQL = "SELECT per_ID FROM person_per WHERE per_fam_ID = " . $iFamilyID;
       $rsPersons = RunQuery($sSQL);
-      while ($aRow = mysql_fetch_row($rsPersons)) {
+      while ($aRow = mysqli_fetch_row($rsPersons)) 
+      {
         DeletePerson($aRow[0]);
       }
     } else {
@@ -190,17 +191,17 @@ if ($sMode == 'person') {
   // Get the data on this person
   $sSQL = "SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = " . $iPersonID;
   $rsPerson = RunQuery($sSQL);
-  extract(mysql_fetch_array($rsPerson));
+  extract(mysqli_fetch_array($rsPerson));
 
   // See if this person is a user
   $sSQL = "SELECT '' FROM user_usr WHERE usr_per_ID = " . $iPersonID;
   $rsUser = RunQuery($sSQL);
-  $bIsUser = (mysql_num_rows($rsUser) > 0);
+  $bIsUser = (mysqli_num_rows($rsUser) > 0);
 } else {
   //Get the family record in question
   $sSQL = "SELECT * FROM family_fam WHERE fam_ID = " . $iFamilyID;
   $rsFamily = RunQuery($sSQL);
-  extract(mysql_fetch_array($rsFamily));
+  extract(mysqli_fetch_array($rsFamily));
 }
 
 require "Include/Header.php";
@@ -228,7 +229,7 @@ require "Include/Header.php";
     // See if this family has any donations OR an Egive association
     $sSQL = "SELECT plg_plgID FROM pledge_plg WHERE plg_PledgeOrPayment = 'Payment' AND plg_FamID = " . $iFamilyID;
     $rsDonations = RunQuery($sSQL);
-    $bIsDonor = (mysql_num_rows($rsDonations) > 0);
+    $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
 
     if ($bIsDonor && !$_SESSION['bFinance']) {
       // Donations from Family. Current user not authorized for Finance
@@ -251,25 +252,24 @@ require "Include/Header.php";
     $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name";
     $rsFamilies = RunQuery($sSQL);
     // Build Criteria for Head of Household
-    if (!$sDirRoleHead)
-      $sDirRoleHead = "1";
-    $head_criteria = " per_fmr_ID = " . $sDirRoleHead;
-    // If more than one role assigned to Head of Household, add OR
-    $head_criteria = str_replace(",", " OR per_fmr_ID = ", $head_criteria);
-    // Add Spouse to criteria
-    if (intval($sDirRoleSpouse) > 0)
-      $head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
-    // Build array of Head of Households and Spouses with fam_ID as the key
-    $sSQL = "SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (" . $head_criteria . ") ORDER BY per_fam_ID";
-    $rs_head = RunQuery($sSQL);
+    
+   $head_criteria = " per_fmr_ID = " . SystemConfig::getValue("sDirRoleHead") ? SystemConfig::getValue("sDirRoleHead") : "1";
+		// If more than one role assigned to Head of Household, add OR
+		$head_criteria = str_replace(",", " OR per_fmr_ID = ", $head_criteria);
+		// Add Spouse to criteria
+		if (intval(SystemConfig::getValue("sDirRoleSpouse")) > 0)
+			$head_criteria .= " OR per_fmr_ID = ".SystemConfig::getValue("sDirRoleSpouse");
+		// Build array of Head of Households and Spouses with fam_ID as the key
+		$sSQL = "SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (" . $head_criteria . ") ORDER BY per_fam_ID";
+		$rs_head = RunQuery($sSQL);
     $aHead = "";
-    while (list ($head_firstname, $head_famid) = mysql_fetch_row($rs_head)) {
+    while (list ($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
       if ($head_firstname && $aHead[$head_famid])
         $aHead[$head_famid] .= " & " . $head_firstname;
       elseif ($head_firstname)
         $aHead[$head_famid] = $head_firstname;
     }
-    while ($aRow = mysql_fetch_array($rsFamilies)) {
+    while ($aRow = mysqli_fetch_array($rsFamilies)) {
       extract($aRow);
       echo "<option value=\"" . $fam_ID . "\"";
       if ($fam_ID == $iFamilyID) {
@@ -316,7 +316,7 @@ require "Include/Header.php";
       <?php
       $tog = 0;
       //Loop through all pledges
-      while ($aRow = mysql_fetch_array($rsPledges)) {
+      while ($aRow = mysqli_fetch_array($rsPledges)) {
         $tog = (!$tog);
         $plg_FYID = "";
         $plg_date = "";
@@ -373,7 +373,7 @@ require "Include/Header.php";
         //List Family Members
         $sSQL = "SELECT * FROM person_per WHERE per_fam_ID = " . $iFamilyID;
         $rsPerson = RunQuery($sSQL);
-        while ($aRow = mysql_fetch_array($rsPerson)) {
+        while ($aRow = mysqli_fetch_array($rsPerson)) {
           extract($aRow);
           echo "<li>" . $per_FirstName . " " . $per_LastName . "</li>";
           RunQuery($sSQL);

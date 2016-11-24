@@ -25,7 +25,7 @@ $sLetter = 'a';
 
 $sSQL = "SELECT di_item FROM donateditem_di WHERE di_ID=$iDonatedItemID";
 $rsItem = RunQuery ($sSQL);
-$row = mysql_fetch_array($rsItem);
+$row = mysqli_fetch_array($rsItem);
 $startItem = $row[0];
 
 if (strlen($startItem) == 2) { // replicated items will sort better if they have a two-digit number

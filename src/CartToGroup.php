@@ -79,7 +79,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
               <?php
               // Create the group select drop-down
               echo "<select id=\"GroupID\" name=\"GroupID\" onChange=\"UpdateRoles();\"><option value=\"0\">" . gettext("None") . "</option>";
-              while ($aRow = mysql_fetch_array($rsGroups))
+              while ($aRow = mysqli_fetch_array($rsGroups))
               {
                 extract($aRow);
                 echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";

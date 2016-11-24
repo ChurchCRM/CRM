@@ -63,7 +63,7 @@ class PersonService
     $people = array();
     $lastPersonId = 0;
     $person = array();
-    while ($row = mysql_fetch_array($rsPeopleWithEmails)) {
+    while ($row = mysqli_fetch_array($rsPeopleWithEmails)) {
       if ($lastPersonId != $row["per_ID"]) {
         if ($lastPersonId != 0) {
           array_push($people, $person);

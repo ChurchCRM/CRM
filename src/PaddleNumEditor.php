@@ -23,7 +23,7 @@ $linkBack = FilterInputArr($_GET,"linkBack");
 if ($iPaddleNumID > 0) {
 	$sSQL = "SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";
 	$rsPaddleNum = RunQuery($sSQL);
-	$thePaddleNum = mysql_fetch_array($rsPaddleNum);
+	$thePaddleNum = mysqli_fetch_array($rsPaddleNum);
 	$iCurrentFundraiser = $thePaddleNum["pn_fr_ID"];
 } else {
 	$iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
@@ -33,7 +33,7 @@ if ($iPaddleNumID > 0) {
 if ($iCurrentFundraiser) {
 	$sSQL = "SELECT * from fundraiser_fr WHERE fr_ID = " . $iCurrentFundraiser;
 	$rsDeposit = RunQuery($sSQL);
-	extract(mysql_fetch_array($rsDeposit));
+	extract(mysqli_fetch_array($rsDeposit));
 }
 
 // SQL to get multibuy items 
@@ -50,14 +50,14 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]) |
 	$iPerID = FilterInput ($_POST["PerID"]);
 
 	$rsMBItems = RunQuery($sMultibuyItemsSQL); // Go through the multibuy items, see if this person bought any
-	while ($aRow = mysql_fetch_array($rsMBItems)) {
+	while ($aRow = mysqli_fetch_array($rsMBItems)) {
 		extract($aRow);
 		$mbName = "MBItem" . $di_ID;
 		$iMBCount = FilterInput ($_POST[$mbName], 'int');
 		if ($iMBCount > 0) { // count for this item is positive.  If a multibuy record exists, update it.  If not, create it.
 			$sqlNumBought = "SELECT mb_count from multibuy_mb WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
 			$rsNumBought = RunQuery($sqlNumBought);
-			$numBoughtRow = mysql_fetch_array($rsNumBought);
+			$numBoughtRow = mysqli_fetch_array($rsNumBought);
 			if ($numBoughtRow) {
 				$sSQL = "UPDATE multibuy_mb SET mb_count=".$iMBCount." WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
 				RunQuery($sSQL);
@@ -91,7 +91,7 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]) |
 	if ($bGetKeyBack) {
 		$sSQL = "SELECT MAX(pn_ID) AS iPaddleNumID FROM paddlenum_pn";
 		$rsPaddleNumID = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsPaddleNumID));
+		extract(mysqli_fetch_array($rsPaddleNumID));
 	}
 
 	if (isset($_POST["PaddleNumSubmit"])) {
@@ -117,7 +117,7 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]) |
 	         LEFT JOIN person_per a ON pn_per_ID=a.per_ID
 	         WHERE pn_ID = '" . $iPaddleNumID . "'"; 
 		$rsPaddleNum = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsPaddleNum));
+		extract(mysqli_fetch_array($rsPaddleNum));
 
 		$iNum = $pn_Num;
 		$iPerID = $pn_per_ID;
@@ -126,7 +126,7 @@ if (isset($_POST["PaddleNumSubmit"]) || isset($_POST["PaddleNumSubmitAndAdd"]) |
 		//Set defaults
 		$sSQL = "SELECT COUNT(*) AS topNum FROM paddlenum_pn WHERE pn_fr_ID=" . $iCurrentFundraiser;
 		$rsGetMaxNum = RunQuery($sSQL);
-		extract(mysql_fetch_array($rsGetMaxNum));
+		extract(mysqli_fetch_array($rsGetMaxNum));
 
 		$iNum = $topNum+1;
 		$iPerID = 0;
@@ -171,7 +171,7 @@ require "Include/Header.php";
 							<option value="0" selected><?= gettext("Unassigned") ?></option>
 							<?php
 							$rsPeople = RunQuery($sPeopleSQL);
-							while ($aRow = mysql_fetch_array($rsPeople))
+							while ($aRow = mysqli_fetch_array($rsPeople))
 							{
 								extract($aRow);
 								echo "<option value=\"" . $per_ID . "\"";
@@ -191,13 +191,13 @@ require "Include/Header.php";
 			<table cellpadding="3">
 					<?php
 					$rsMBItems = RunQuery($sMultibuyItemsSQL);
-					while ($aRow = mysql_fetch_array($rsMBItems))
+					while ($aRow = mysqli_fetch_array($rsMBItems))
 					{
 						extract($aRow);
 						
 						$sqlNumBought = "SELECT mb_count from multibuy_mb WHERE mb_per_ID=".$iPerID." AND mb_item_ID=".$di_ID;
 						$rsNumBought = RunQuery($sqlNumBought);
-						$numBoughtRow = mysql_fetch_array($rsNumBought);
+						$numBoughtRow = mysqli_fetch_array($rsNumBought);
 						if ($numBoughtRow) {
 							extract($numBoughtRow);
 						} else {

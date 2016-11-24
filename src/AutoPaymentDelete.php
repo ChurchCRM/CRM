@@ -33,7 +33,7 @@ if (strlen($iAutID) > 0)
 		exit;
 	}
 	$sSQL = "SELECT '' FROM autopayment_aut WHERE aut_ID = " . $iAutID;
-	if (mysql_num_rows(RunQuery($sSQL)) == 0)
+	if (mysqli_num_rows(RunQuery($sSQL)) == 0)
 	{
 		Redirect("Menu.php");
 		exit;
