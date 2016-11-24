@@ -131,8 +131,8 @@ $sCoordFileFamilies = "";
 $sCoordFileName = "";
 
 //Is this the second pass?
-if (    isset($_POST["FindNeighbors"]) || 
-        isset($_POST["DataFile"]) || 
+if (    isset($_POST["FindNeighbors"]) ||
+        isset($_POST["DataFile"]) ||
         isset($_POST["PersonIDList"]))
 {
 	//Get all the variables from the request object and assign them locally
@@ -160,7 +160,7 @@ if (    isset($_POST["FindNeighbors"]) ||
 // Check if cart needs to be updated
 if(isset($_POST["PersonIDList"]))
 {
-    $aIDsToProcess = explode(",", $_POST["PersonIDList"]);   
+    $aIDsToProcess = explode(",", $_POST["PersonIDList"]);
 
     //Do we add these people to cart?
     if(isset($_POST["AddAllToCart"]))
@@ -168,7 +168,7 @@ if(isset($_POST["PersonIDList"]))
 
     //Do we intersect these people with cart (keep values that are in both arrays)
     if(isset($_POST["IntersectCart"]))
-    {   IntersectArrayWithPeopleCart($aIDsToProcess); }  
+    {   IntersectArrayWithPeopleCart($aIDsToProcess); }
 
     if(isset($_POST["RemoveFromCart"]))
     {   RemoveArrayFromPeopleCart($aIDsToProcess); }
@@ -185,7 +185,7 @@ if (isset($_POST["DataFile"]))
 		$filename = $sCoordFileName . ".csv";
 	else if ($sCoordFileFormat == "StreetAtlasUSA")
 		$filename = $sCoordFileName . ".txt";
-	
+
 	header("Content-Disposition: attachment; filename=$filename");
 
 	if ($sCoordFileFormat == "GPSVisualizer")
@@ -248,7 +248,7 @@ echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"NumNeighbors\" value
 echo "</tr>\n";
 
 echo "<tr>\n";
-echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance") . " (" . strtolower(SystemConfig::getValue("sDistanceUnit")) . "): </td>\n";
+echo "	<td class=\"LabelColumn\">" . gettext("Maximum distance") . " (" . gettext(strtolower(SystemConfig::getValue("sDistanceUnit"))) . "): </td>\n";
 echo "	<td class=\"TextColumn\"><input type=\"text\" name=\"MaxDistance\" value=\"" . $nMaxDistance . "\"></td>\n";
 echo "</tr>\n";
 
@@ -283,7 +283,7 @@ echo '<td><input type="submit" class="btn" name="DataFile" value="' . gettext("M
 </div>
 <div class="box">
     <div class="box-header box-info">
-        <h3>Show neighbors with these classifications.</h3>
+        <h3><?= gettext("Show neighbors with these classifications.") ?></h3>
     </div>
     <div class="box-body">
 <table class="table">
@@ -345,13 +345,13 @@ if (    $iFamily != 0 &&
 
         // Determine how many people in this family will be listed
         $sSQL = "SELECT * from person_per where per_fam_ID=".$oneResult["fam_ID"];
-        if ($bClassificationPost) 
+        if ($bClassificationPost)
         {
             $sSQL .= " AND per_cls_ID IN (".$sClassificationList.")";
         }
         $rsPeople = RunQuery($sSQL);
         $numListed = mysqli_num_rows($rsPeople);
-        
+
         if (!$numListed) // skip familes with zero members
             continue;
 

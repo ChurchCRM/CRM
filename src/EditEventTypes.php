@@ -86,19 +86,19 @@ $aDefRecurDOY = $type_defrecurDOY;
 $aDefRecurType = $type_defrecurtype;
 switch ($aDefRecurType){
     case "none":
-       $recur="None";
+       $recur=gettext("None");
        break;
     case "weekly":
-       $recur="Weekly on ".$aDefRecurDOW;
+       $recur=gettext("Weekly on")." ".gettext($aDefRecurDOW."s");
        break;
     case "monthly":
-       $recur="Monthly on ".date('dS',mktime(0,0,0,1,$aDefRecurDOM,2000));
+       $recur=gettext("Monthly on")." ".date('dS',mktime(0,0,0,1,$aDefRecurDOM,2000));
        break;
     case "yearly":
-       $recur="Yearly on ".substr($aDefRecurDOY,5);
+       $recur=gettext("Yearly on")." ".substr($aDefRecurDOY,5);
        break;
     default:
-       $recur="None";
+       $recur=gettext("None");
 }
 
 // Get a list of the attendance counts currently associated with thisevent type
