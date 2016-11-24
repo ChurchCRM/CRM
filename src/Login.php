@@ -219,11 +219,7 @@ if ($currentUser != Null)
 // Turn ON output buffering
 ob_start();
 
-$enableSelfReg = false;
-if ( SystemConfig::getValue("sEnableSelfRegistration") )
-{
-  $enableSelfReg = SystemConfig::getValue("sEnableSelfRegistration");
-}
+$enableSelfReg = SystemConfig::getBooleanValue("sEnableSelfRegistration");
 
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM " .gettext("Login");

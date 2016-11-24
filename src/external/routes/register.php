@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\ConfigQuery;
 use ChurchCRM\Family;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
@@ -10,8 +9,8 @@ use ChurchCRM\dto\SystemConfig;
 
 $app->group('/register', function () {
 
-  $enableSelfReg = SystemConfig::getValue("sEnableSelfRegistration");
-  if ($enableSelfReg->getBooleanValue()) {
+  $enableSelfReg = SystemConfig::getBooleanValue("sEnableSelfRegistration");
+  if ($enableSelfReg) {
 
     $this->get('/', function ($request, $response, $args) {
 
