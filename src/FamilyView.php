@@ -31,7 +31,7 @@ require "Include/GeoCoder.php";
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\TimelineService;
-
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 
 $timelineService = new TimelineService();
