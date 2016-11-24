@@ -218,7 +218,7 @@ if ($numRows > 0)
       <h3 class='box-title'><?= ($numRows == 1 ? gettext("There is"):gettext("There are"))." ". $numRows . " ". ($numRows == 1 ? gettext("event"):gettext("events"))." "."for"."  ".gettext(date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
     </div>
     <div class='box-body'>
-  <table class='table data-table table-striped table-bordered table-responsive'>
+  <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
     <thead>
       <tr class="TableHeader">
         <th><?= gettext("Action") ?></th>
@@ -369,6 +369,22 @@ if ($numRows > 0)
     <?= gettext("Add New Event") ?>
   </a>
 </div>
+
+<script type="text/javascript">
+//Added by @saulowulhynek to translation of datatable nav terms
+  $(document).ready(function () {
+    $('#listEvents').dataTable({
+      "language": {
+        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+      },
+      responsive: true,
+      "dom": 'T<"clear">lfrtip',
+      "tableTools": {
+        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
+      }
+    });
+  });
+</script>
 
 <?php
 require 'Include/Footer.php';
