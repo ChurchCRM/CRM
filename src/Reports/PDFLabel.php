@@ -37,7 +37,7 @@ require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 
 use ChurchCRM\Reports\PDF_Label;
-
+use ChurchCRM\dto\SystemConfig;
 
 function GroupBySalutation($famID, $aAdultRole, $aChildRole) {
 // Function to place the name(s) on a label when grouping multiple
@@ -762,7 +762,6 @@ $sLabelType = FilterInput($_GET["labeltype"],'char',8);
 setcookie("labeltype", $sLabelType, time()+60*60*24*90, "/" );
 
 $pdf = new PDF_Label($sLabelType,$startcol,$startrow);
-$pdf->Open();
 
 $sFontInfo = FontFromName($_GET["labelfont"]);
 setcookie("labelfont", $_GET["labelfont"], time()+60*60*24*90, "/" );
@@ -817,7 +816,7 @@ if ($sFileType == "PDF"){
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
-    if (SystemConfig::getValue("iPDFOutputType")S == 1)
+    if (SystemConfig::getValue("iPDFOutputType") == 1)
         $pdf->Output("Labels-" . date("Ymd-Gis") . ".pdf", 'D');
     else
         $pdf->Output();

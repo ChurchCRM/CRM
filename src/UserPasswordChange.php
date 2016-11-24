@@ -28,6 +28,8 @@ require "Include/Config.php";
 $bNoPasswordRedirect = true; // Subdue UserPasswordChange redirect to prevent looping
 require "Include/Functions.php";
 
+use ChurchCRM\dto\SystemConfig;
+
 $bAdminOtherUser = false;
 $bAdminOther = false;
 $bError = false;

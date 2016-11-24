@@ -1,5 +1,7 @@
 <?php
 namespace ChurchCRM\Reports;
+use ChurchCRM\dto\SystemConfig;
+
 class PDF_Directory extends ChurchInfoReport {
 
     // Private properties

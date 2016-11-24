@@ -234,9 +234,10 @@ $isAdmin = $_SESSION['user']->isAdmin();
         <!-- end task item -->
       <?php } ?>
       </ul>
-      <h3 class="control-sidebar-heading"><? _("Data Quality") ?></h3>
+      <!--
+      <h3 class="control-sidebar-heading"><?= gettext("Data Quality") ?></h3>
       <ul class="control-sidebar-menu">
-        <!--li>
+        <li>
           <a href="javascript:void(0)">
             <h4 class="control-sidebar-subheading">
               Custom Template Design
@@ -247,8 +248,9 @@ $isAdmin = $_SESSION['user']->isAdmin();
               <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
             </div>
           </a>
-        </li-->
+        </li>
       </ul>
+      -->
       <!-- /.control-sidebar-menu -->
 
     </div>
@@ -306,7 +308,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
   </script>
   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
   <?php
-  } 
+  }
   ?>
 
 </body>
