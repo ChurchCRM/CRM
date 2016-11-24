@@ -54,7 +54,7 @@ switch ($sAction)
 		// Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
 		$sSQL = "SELECT type_ID,fam_custom_Special FROM family_custom_master WHERE fam_custom_Field = '" . $sField . "'";
 		$rsTemp = RunQuery($sSQL);
-		$aTemp = mysql_fetch_array($rsTemp);
+		$aTemp = mysqli_fetch_array($rsTemp);
 		if ($aTemp[0] == 12)
 		{
 			$sSQL = "DELETE FROM list_lst WHERE lst_ID = $aTemp[1]";
@@ -69,7 +69,7 @@ switch ($sAction)
 
 		$sSQL = "SELECT * FROM family_custom_master";
 		$rsPropList = RunQuery($sSQL);
-		$numRows = mysql_num_rows($rsPropList);
+		$numRows = mysqli_num_rows($rsPropList);
 
 		// Shift the remaining rows up by one, unless we've just deleted the only row
 		if ($numRows > 0)

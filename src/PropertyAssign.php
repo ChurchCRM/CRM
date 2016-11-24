@@ -50,7 +50,7 @@ if (isset($_GET["PersonID"]) && $_SESSION['bEditRecords']) {
 	// Get the name of the person
 	$sSQL = "SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = " . $iPersonID;
 	$rsName = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsName);
+	$aRow = mysqli_fetch_array($rsName);
 	$sName = $aRow["per_LastName"] . ", " . $aRow["per_FirstName"];
 }
 
@@ -66,7 +66,7 @@ elseif (isset($_GET["GroupID"]) && $_SESSION['bManageGroups'])
 	// Get the name of the group
 	$sSQL = "SELECT grp_Name FROM group_grp WHERE grp_ID = " . $iGroupID;
 	$rsName = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsName);
+	$aRow = mysqli_fetch_array($rsName);
 	$sName = $aRow["grp_Name"];
 }
 
@@ -82,7 +82,7 @@ elseif (isset($_GET["FamilyID"]) && $_SESSION['bEditRecords'])
 	// Get the name of the family
 	$sSQL = "SELECT fam_Name FROM family_fam WHERE fam_ID = " . $iFamilyID;
 	$rsName = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsName);
+	$aRow = mysqli_fetch_array($rsName);
 	$sName = $aRow["fam_Name"];
 }
 
@@ -106,7 +106,7 @@ function UpdateProperty($iRecordID,$sValue,$iPropertyID,$sAction)
 		$sSQL = "SELECT * FROM record2property_r2p WHERE r2p_record_ID = $iRecordID AND r2p_pro_ID = $iPropertyID";
 		$rsExistingTest = RunQuery($sSQL);
 
-		if (mysql_num_rows($rsExistingTest) == 0)
+		if (mysqli_num_rows($rsExistingTest) == 0)
 		{
 			$sSQL = "INSERT INTO record2property_r2p (r2p_record_ID,r2p_pro_ID,r2p_Value) VALUES ($iRecordID,$iPropertyID,'$sValue')";
 			RunQuery($sSQL);
@@ -139,7 +139,7 @@ if (isset($_POST["SecondPass"]))
 // Get the name of the property
 $sSQL = "SELECT pro_Name, pro_Prompt FROM property_pro WHERE pro_ID = " . $iPropertyID;
 $rsProperty = RunQuery($sSQL);
-$aRow = mysql_fetch_array($rsProperty);
+$aRow = mysqli_fetch_array($rsProperty);
 $sPropertyName = $aRow["pro_Name"];
 $sPrompt = $aRow["pro_Prompt"];
 
@@ -160,7 +160,7 @@ if (strlen($sPrompt) == 0) {
 if ($sAction == "edit") {
 	$sSQL = "SELECT r2p_Value FROM record2property_r2p WHERE r2p_pro_ID = " . $iPropertyID . " AND r2p_record_ID = " . $iRecordID;
 	$rsValue = RunQuery($sSQL);
-	$aRow = mysql_fetch_array($rsValue);
+	$aRow = mysqli_fetch_array($rsValue);
 	$sValue = $aRow["r2p_Value"];
 }
 

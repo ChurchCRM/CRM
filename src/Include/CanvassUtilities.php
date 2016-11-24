@@ -42,8 +42,8 @@ function CanvassGetCanvassers($groupName)
   // Find the canvassers group
   $sSQL = "SELECT grp_ID AS iCanvassGroup FROM group_grp WHERE grp_Name=\"" . $groupName . "\";";
   $rsGroupData = RunQuery($sSQL);
-  $aGroupData = mysql_fetch_array($rsGroupData);
-  if (mysql_num_rows($rsGroupData) == 0) {
+  $aGroupData = mysqli_fetch_array($rsGroupData);
+  if (mysqli_num_rows($rsGroupData) == 0) {
     return (0);
   }
   extract($aGroupData);
@@ -51,7 +51,7 @@ function CanvassGetCanvassers($groupName)
   // Get the canvassers from the Canvassers group
   $sSQL = "SELECT per_ID, per_FirstName, per_LastName FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = " . $iCanvassGroup . " ORDER BY per_LastName,per_FirstName;";
   $rsCanvassers = RunQuery($sSQL);
-  $numCanvassers = mysql_num_rows($rsCanvassers);
+  $numCanvassers = mysqli_num_rows($rsCanvassers);
   if ($numCanvassers == 0) {
     return (0);
   }
@@ -65,15 +65,15 @@ function CanvassAssignCanvassers($groupName)
   // Get all the families that need canvassers
   $sSQL = "SELECT fam_ID FROM family_fam WHERE fam_OkToCanvass='TRUE' AND fam_Canvasser=0 ORDER BY RAND();";
   $rsFamilies = RunQuery($sSQL);
-  $numFamilies = mysql_num_rows($rsFamilies);
+  $numFamilies = mysqli_num_rows($rsFamilies);
   if ($numFamilies == 0) {
     return (gettext("No families need canvassers assigned"));
   }
 
-  while ($aFamily = mysql_fetch_array($rsFamilies)) {
-    if (!($aCanvasser = mysql_fetch_array($rsCanvassers))) {
-      mysql_data_seek($rsCanvassers, 0);
-      $aCanvasser = mysql_fetch_array($rsCanvassers);
+  while ($aFamily = mysqli_fetch_array($rsFamilies)) {
+    if (!($aCanvasser = mysqli_fetch_array($rsCanvassers))) {
+      mysqli_data_seek($rsCanvassers, 0);
+      $aCanvasser = mysqli_fetch_array($rsCanvassers);
     }
     $sSQL = "UPDATE family_fam SET fam_Canvasser=" . $aCanvasser["per_ID"] . " WHERE fam_ID= " . $aFamily["fam_ID"];
     RunQuery($sSQL);
@@ -95,18 +95,18 @@ function CanvassAssignNonPledging($groupName, $iFYID)
 
   $numFamilies = 0;
 
-  while ($aFamily = mysql_fetch_array($rsFamilies)) {
+  while ($aFamily = mysqli_fetch_array($rsFamilies)) {
     // Get pledges for this fiscal year, this family
     $sSQL = "SELECT plg_Amount FROM pledge_plg
 				 WHERE plg_FYID = " . $iFYID . " AND plg_PledgeOrPayment=\"Pledge\" AND plg_FamID = " . $aFamily["fam_ID"] . " ORDER BY plg_Amount DESC";
     $rsPledges = RunQuery($sSQL);
 
-    $pledgeCount = mysql_num_rows($rsPledges);
+    $pledgeCount = mysqli_num_rows($rsPledges);
     if ($pledgeCount == 0) {
       ++$numFamilies;
-      if (!($aCanvasser = mysql_fetch_array($rsCanvassers))) {
-        mysql_data_seek($rsCanvassers, 0);
-        $aCanvasser = mysql_fetch_array($rsCanvassers);
+      if (!($aCanvasser = mysqli_fetch_array($rsCanvassers))) {
+        mysqli_data_seek($rsCanvassers, 0);
+        $aCanvasser = mysqli_fetch_array($rsCanvassers);
       }
       $sSQL = "UPDATE family_fam SET fam_Canvasser=" . $aCanvasser["per_ID"] . " WHERE fam_ID= " . $aFamily["fam_ID"];
       RunQuery($sSQL);

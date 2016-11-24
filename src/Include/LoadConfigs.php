@@ -61,18 +61,13 @@ if (!function_exists("mysql_failure")) {
   }
 }
 
-// Establish the database connection
-if (!function_exists('mysql_connect')) {
-  mysql_failure("mysql_connect function is not defined.  Possibly due to unsupported PHP version.  Currently installed version: " . phpversion());
-}
+$cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
+or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
 
-$cnInfoCentral = mysql_connect($sSERVERNAME, $sUSER, $sPASSWORD)
-or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
+mysqli_set_charset($cnInfoCentral, "utf8mb4");
 
-mysql_set_charset("utf8mb4", $cnInfoCentral);
-
-mysql_select_db($sDATABASE)
-or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysql_error());
+mysqli_select_db($cnInfoCentral, $sDATABASE)
+or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
 
 // Initialize the session
 session_name('CRM@' . $sRootPath);
@@ -139,26 +134,17 @@ if (count($results) == 0) {
 // Read values from config table into local variables
 // **************************************************
 
-$systemConfig = new SystemConfig();
-$systemConfig->init(ConfigQuery::create()->find());
 
-$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value "
-  . "FROM config_cfg WHERE cfg_section='General'";
-$rsConfig = mysql_query($sSQL);         // Can't use RunQuery -- not defined yet
-if ($rsConfig) {
-  while (list($cfg_name, $value) = mysql_fetch_row($rsConfig)) {
-    $$cfg_name = $value;
-  }
-}
+SystemConfig::init(ConfigQuery::create()->find());
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
   // Load user variables from user config table.
   // **************************************************
   $sSQL = "SELECT ucfg_name, ucfg_value AS value "
     . "FROM userconfig_ucfg WHERE ucfg_per_ID='" . $_SESSION['iUserID'] . "'";
-  $rsConfig = mysql_query($sSQL);     // Can't use RunQuery -- not defined yet
+  $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
   if ($rsConfig) {
-    while (list($ucfg_name, $value) = mysql_fetch_row($rsConfig)) {
+    while (list($ucfg_name, $value) = mysqli_fetch_row($rsConfig)) {
       $$ucfg_name = $value;
       $_SESSION[$ucfg_name] = $value;
     }
@@ -167,11 +153,11 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
 
 $sMetaRefresh = '';  // Initialize to empty
 
-if (isset($sTimeZone)) {
-  date_default_timezone_set($sTimeZone);
+if (SystemConfig::getValue("sTimeZone")) {
+  date_default_timezone_set(SystemConfig::getValue("sTimeZone"));
 }
 
-$localeInfo = new LocaleInfo($sLanguage);
+$localeInfo = new LocaleInfo(SystemConfig::getValue("sLanguage"));
 setlocale(LC_ALL, $localeInfo->getLocale());
 
 // Get numeric and monetary locale settings.

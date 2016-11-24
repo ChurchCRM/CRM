@@ -39,18 +39,10 @@ class PDF_VotingMembers extends ChurchInfoReport {
 
 $pdf = new PDF_VotingMembers();
 
-// Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$pdf->$cfg_name = $cfg_value;
-	}
-}
-
 $topY = 10;
 $curY = $topY;
 
-$pdf->WriteAt ($pdf->leftX, $curY, (gettext ("Voting members ") . MakeFYString ($iFYID)));
+$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, (gettext ("Voting members ") . MakeFYString ($iFYID)));
 $curY += 10;
 
 $votingMemberCount = 0;
@@ -60,30 +52,30 @@ $sSQL = "SELECT fam_ID, fam_Name FROM family_fam WHERE 1 ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
 // Loop through families
-while ($aFam = mysql_fetch_array($rsFamilies)) {
+while ($aFam = mysqli_fetch_array($rsFamilies)) {
 	extract ($aFam);
 	
 	// Get pledge date ranges
 	$donation = "no";
 	if ($iRequireDonationYears > 0) {
 		$startdate = $iFYID + 1995 - $iRequireDonationYears;
-		$startdate .= "-" . $iFYMonth . "-" . "01";
+		$startdate .= "-" . SystemConfig::getValue("iFYMonth") . "-" . "01";
 		$enddate = $iFYID + 1995 + 1;
-		$enddate .= "-" . $iFYMonth . "-" . "01";
+		$enddate .= "-" . SystemConfig::getValue("iFYMonth") . "-" . "01";
 		
 		// Get payments only
 		$sSQL = "SELECT COUNT(plg_plgID) AS count FROM pledge_plg
 			WHERE plg_FamID = " . $fam_ID . " AND plg_PledgeOrPayment = 'Payment' AND
 				 plg_date >= '$startdate' AND plg_date < '$enddate'";
 		$rsPledges = RunQuery($sSQL);
-		list ($count) = mysql_fetch_row($rsPledges);
+		list ($count) = mysqli_fetch_row($rsPledges);
 		if ($count > 0)
 			$donation = "yes";
 	}
 		
 	if (($iRequireDonationYears==0) || $donation == "yes") {
 
-		$pdf->WriteAt ($pdf->leftX, $curY, $fam_Name);
+		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $fam_Name);
 
 		//Get the family members for this family
 		$sSQL = "SELECT per_FirstName, per_LastName, cls.lst_OptionName AS sClassName
@@ -93,12 +85,12 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 				
 		$rsFamilyMembers = RunQuery($sSQL);
 
-		if (mysql_num_rows ($rsFamilyMembers) == 0)
+		if (mysqli_num_rows ($rsFamilyMembers) == 0)
 			$curY += 5;
 
-		while ($aMember = mysql_fetch_array($rsFamilyMembers)) {
+		while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
 			extract ($aMember);
-			$pdf->WriteAt ($pdf->leftX + 30, $curY, ($per_FirstName . " " . $per_LastName));
+			$pdf->WriteAt (SystemConfig::getValue("leftX") + 30, $curY, ($per_FirstName . " " . $per_LastName));
 			$curY += 5;
 			if ($curY > 245) {
 				$pdf->AddPage();
@@ -114,10 +106,10 @@ while ($aFam = mysql_fetch_array($rsFamilies)) {
 }
 
 $curY += 5;
-$pdf->WriteAt ($pdf->leftX, $curY, "Number of Voting Members: " . $votingMemberCount);
+$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, "Number of Voting Members: " . $votingMemberCount);
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
 	$pdf->Output("VotingMembers" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();	

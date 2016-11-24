@@ -4,6 +4,7 @@ namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\UserQuery;
+use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -20,13 +21,11 @@ class Person extends BasePerson
 {
 
   protected $baseURL;
-  protected $showGravatar;
 
   public function applyDefaultValues()
   {
     parent::applyDefaultValues();
     $this->baseURL = $_SESSION['sRootPath'];
-    $this->showGravatar = $_SESSION['$sEnableGravatarPhotos'];
   }
 
   function getFullName()
@@ -141,7 +140,7 @@ class Person extends BasePerson
 
   function getGravatar($s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
   {
-    if ($this->showGravatar && $this->getEmail() != "") {
+    if (SystemConfig::getValue("sEnableGravatarPhotos") && $this->getEmail() != "") {
       $url = 'http://www.gravatar.com/avatar/';
       $url .= md5(strtolower(trim($this->getEmail())));
       $url .= "?s=$s&d=$d&r=$r";

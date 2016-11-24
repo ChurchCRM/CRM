@@ -207,6 +207,7 @@
         <column name="cfg_section" phpName="Section" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <column name="cfg_category" phpName="Category" type="VARCHAR" size="20"/>
         <column name="cfg_order" phpName="Order" type="INTEGER"/>
+        <column name="cfg_data" phpName="Data" type="LONGVARCHAR"/>
         <index name="cfg_id">
             <index-column name="cfg_id"/>
         </index>
