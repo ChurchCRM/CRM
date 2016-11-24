@@ -883,7 +883,7 @@ require "Include/Header.php";
                         </div>
                         <input type="text" name="HomePhone"
                                value="<?= htmlentities(stripslashes($sHomePhone), ENT_NOQUOTES, "UTF-8") ?>" size="30"
-                               maxlength="30" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                               maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue("sPhoneFormat")?>"' data-mask>
                         <br><input type="checkbox" name="NoFormat_HomePhone"
                                    value="1" <?php if ($bNoFormat_HomePhone) echo " checked"; ?>><?= gettext("Do not auto-format") ?>
                     </div>
@@ -904,7 +904,7 @@ require "Include/Header.php";
                         <input type="text" name="WorkPhone"
                                value="<?= htmlentities(stripslashes($sWorkPhone), ENT_NOQUOTES, "UTF-8") ?>" size="30"
                                maxlength="30" class="form-control"
-                               data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask/>
+                               data-inputmask='"mask": "<?= SystemConfig::getValue("sPhoneFormatWithExt")?>"' data-mask/>
                         <br><input type="checkbox" name="NoFormat_WorkPhone"
                                    value="1" <?php if ($bNoFormat_WorkPhone) echo " checked"; ?>><?= gettext("Do not auto-format") ?>
                     </div>
@@ -925,7 +925,7 @@ require "Include/Header.php";
                         </div>
                         <input type="text" name="CellPhone"
                                value="<?= htmlentities(stripslashes($sCellPhone), ENT_NOQUOTES, "UTF-8") ?>" size="30"
-                               maxlength="30" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                               maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue("sPhoneFormat")?>"' data-mask>
                         <br><input type="checkbox" name="NoFormat_CellPhone"
                                    value="1" <?php if ($bNoFormat_CellPhone) echo " checked"; ?>><?= gettext("Do not auto-format") ?>
                     </div>
