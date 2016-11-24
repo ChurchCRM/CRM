@@ -20,6 +20,7 @@ require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
 
 use ChurchCRM\Reports\PDF_Directory;
+use ChurchCRM\dto\SystemConfig;
 
 // Check for Create Directory user permission.
 if (!$bCreateDirectory) {
