@@ -230,7 +230,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
         <!-- end task item -->
       <?php } ?>
 
-      <h3 class="control-sidebar-heading"><? _("Data Quality") ?></h3>
+      <h3 class="control-sidebar-heading"><?= gettext("Data Quality") ?></h3>
       <ul class="control-sidebar-menu">
         <!--li>
           <a href="javascript:void(0)">
