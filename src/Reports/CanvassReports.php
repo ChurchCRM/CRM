@@ -54,7 +54,7 @@ function CanvassProgressReport ($iFYID)
 	$curY = 10;
 
 	$pdf->SetFont('Times','', 24);
-	$pdf->WriteAt ($pdf->leftX, $curY, "Canvass Progress Report " . date ("Y-m-d"));
+	$pdf->WriteAt ($pdf->leftX, $curY, gettext("Canvass Progress Report") ." " . date ("Y-m-d"));
 	$pdf->SetFont('Times','', 14);
 
 	$curY += 10;
@@ -73,10 +73,10 @@ function CanvassProgressReport ($iFYID)
 	$percentX = 110;
 
 	$pdf->SetFont('Times','B', 14);
-	$pdf->WriteAt ($nameX, $curY, "Name");
-	$pdf->WriteAt ($doneX, $curY, "Done");
-	$pdf->WriteAt ($toDoX, $curY, "Assigned");
-	$pdf->WriteAt ($percentX, $curY, "Percent");
+	$pdf->WriteAt ($nameX, $curY, gettext("Name"));
+	$pdf->WriteAt ($doneX, $curY, gettext("Done"));
+	$pdf->WriteAt ($toDoX, $curY, gettext("Assigned"));
+	$pdf->WriteAt ($percentX, $curY, gettext("Percent"));
 	$pdf->SetFont('Times','', 14);
 
 	$curY += 6;
@@ -129,7 +129,7 @@ function CanvassProgressReport ($iFYID)
 	// Summary status
 	$pdf->SetFont('Times','B', 14);
 
-	$pdf->WriteAt ($nameX, $curY, "Total");
+	$pdf->WriteAt ($nameX, $curY, gettext("Total"));
 	$pdf->WriteAt ($doneX, $curY, $totalDone);
 	$pdf->WriteAt ($toDoX, $curY, $totalToDo);
 	$percentStr = sprintf ("%.0f%%", ($totalDone / $totalToDo) * 100);
@@ -180,7 +180,7 @@ function CanvassBriefingSheets ($iFYID)
 		$pdf->WriteAt ($pdf->leftX, $curY, $aFamily["fam_Name"]);
 
 		$pdf->SetFont('Times','', 16);
-		$pdf->PrintRightJustified ($canvasserX, $curY, "Canvasser: " . $aFamily["CanvasserFirstName"] . " " . $aFamily["CanvasserLastName"]); 
+		$pdf->PrintRightJustified ($canvasserX, $curY, gettext("Canvasser").": " . $aFamily["CanvasserFirstName"] . " " . $aFamily["CanvasserLastName"]); 
 
 		$curY += 8;
 
@@ -221,7 +221,7 @@ function CanvassBriefingSheets ($iFYID)
 		$curY += $pdf->incrementY;
 
 		$pdf->SetFont('Times','', 12);
-		$pdf->WriteAt ($pdf->leftX, $curY, gettext ("Pledge status: "));
+		$pdf->WriteAt ($pdf->leftX, $curY, gettext ("Pledge status").": ");
 		$pdf->SetFont('Times','B', 12);
 		$pdf->WriteAt ($pdf->leftX + 25, $curY, $sPledgeStatus);
 		$pdf->SetFont('Times','', 12);
@@ -241,13 +241,13 @@ function CanvassBriefingSheets ($iFYID)
 
 		$pdf->SetFont('Times','B', 10);
 
-		$pdf->WriteAt ($memberNameX, $curY, gettext ("Name"));
-		$pdf->WriteAt ($memberGenderX, $curY, gettext ("M/F"));
-		$pdf->WriteAt ($memberRoleX, $curY, gettext ("Role"));
-		$pdf->WriteAt ($memberAgeX, $curY, gettext ("Age"));
-		$pdf->WriteAt ($memberClassX, $curY, gettext ("Member"));
-		$pdf->WriteAt ($memberCellX, $curY, gettext ("Cell Phone"));
-		$pdf->WriteAt ($memberEmailX, $curY, gettext ("Email"));
+		$pdf->WriteAt ($memberNameX, $curY, gettext("Name"));
+		$pdf->WriteAt ($memberGenderX, $curY, gettext("M/F"));
+		$pdf->WriteAt ($memberRoleX, $curY, gettext("Role"));
+		$pdf->WriteAt ($memberAgeX, $curY, gettext("Age"));
+		$pdf->WriteAt ($memberClassX, $curY, gettext("Member"));
+		$pdf->WriteAt ($memberCellX, $curY, gettext("Cell Phone"));
+		$pdf->WriteAt ($memberEmailX, $curY, gettext("Email"));
 		$curY += $pdf->incrementY;
 
 		$pdf->SetFont('Times','', 10);
@@ -332,7 +332,7 @@ function CanvassSummaryReport ($iFYID)
 	$curY = 10;
 
 	$pdf->SetFont('Times','', 24);
-	$pdf->WriteAt ($pdf->leftX, $curY, "Canvass Summary Report " . date ("Y-m-d"));
+	$pdf->WriteAt ($pdf->leftX, $curY, gettext ("Canvass Summary Report") . " " . date ("Y-m-d"));
 	$pdf->SetFont('Times','', 14);
 
 	$curY += 10;
@@ -352,9 +352,9 @@ function CanvassSummaryReport ($iFYID)
 	$sSQL = "SELECT * FROM canvassdata_can WHERE can_FYID=" . $iFYID;
 	$rsCanvassData = RunQuery($sSQL);
 
-	foreach (array ("Positive", "Critical", "Insightful", "Financial", "Suggestion", "WhyNotInterested") as $colName) {
+	foreach (array (gettext("Positive"), gettext("Critical"), gettext("Insightful"), gettext("Financial"), gettext("Suggestion"), gettext("WhyNotInterested")) as $colName) {
 		$pdf->SetFont('Times','B', 14);
-		$pdf->Write (5, $colName . " Comments\n");
+		$pdf->Write (5, $colName . " ".gettext("Comments")."\n");
 //		$pdf->WriteAt ($pdf->leftX, $curY, $colName . " Comments");
 		$pdf->SetFont('Times','', 12);
 		while ($aDatum = mysql_fetch_array ($rsCanvassData)) {
@@ -389,7 +389,7 @@ function CanvassNotInterestedReport ($iFYID)
 	$curY = 10;
 
 	$pdf->SetFont('Times','', 24);
-	$pdf->WriteAt ($pdf->leftX, $curY, "Canvass Not Interested Report " . date ("Y-m-d"));
+	$pdf->WriteAt ($pdf->leftX, $curY, gettext("Canvass Not Interested Report")." " . date ("Y-m-d"));
 	$pdf->SetFont('Times','', 14);
 
 	$curY += 10;
