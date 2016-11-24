@@ -28,7 +28,16 @@ class SystemConfig
     }
     return NULL;
   }
-  
+
+    public static function getBooleanValue($name)
+    {
+        $config = SystemConfig::getRawConfig($name);
+        if (!is_null($config)) {
+            return $config->getBooleanValue();
+        }
+        return false;
+    }
+
   public static function setValue($name, $value)
   {
     $config = SystemConfig::getRawConfig($name);
