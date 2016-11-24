@@ -762,7 +762,6 @@ $sLabelType = FilterInput($_GET["labeltype"],'char',8);
 setcookie("labeltype", $sLabelType, time()+60*60*24*90, "/" );
 
 $pdf = new PDF_Label($sLabelType,$startcol,$startrow);
-//$pdf->Open();
 
 $sFontInfo = FontFromName($_GET["labelfont"]);
 setcookie("labelfont", $_GET["labelfont"], time()+60*60*24*90, "/" );
