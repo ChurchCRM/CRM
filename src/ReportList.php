@@ -57,7 +57,7 @@ require 'Include/Header.php';
 //$sSQL = "SELECT * FROM event_types";
   $sSQL = "SELECT DISTINCT event_types.* FROM event_types RIGHT JOIN events_event ON event_types.type_id=events_event.event_type ORDER BY type_id ";
   $rsOpps = RunQuery($sSQL);
-  $numRows = mysql_num_rows($rsOpps);
+  $numRows = mysqli_num_rows($rsOpps);
   if ($numRows > 0)
   {
     ?>
@@ -71,7 +71,7 @@ require 'Include/Header.php';
           // List all events
           for ($row = 1; $row <= $numRows; $row++)
           {
-            $aRow = mysql_fetch_array($rsOpps);
+            $aRow = mysqli_fetch_array($rsOpps);
             extract($aRow);
             echo '&nbsp;&nbsp;&nbsp;<a href="EventAttendance.php?Action=List&Event=' .
             $type_id . '&Type=' . gettext($type_name) . '" title="List All ' .

@@ -95,7 +95,7 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
                           <div class="input-group-addon">
                             <i class="fa fa-birthday-cake"></i>
                           </div>
-                          <input type="text" class="form-control inputDatePicker" name="memberBirthday-<?= $x ?>">
+                          <input type="text" class="form-control" name="memberBirthday-<?= $x ?>">
                         </div>
                       </div>
                       <div class="col-lg-6">

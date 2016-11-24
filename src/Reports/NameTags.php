@@ -17,6 +17,7 @@ require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 
 use ChurchCRM\Reports\PDF_Label;
+use ChurchCRM\dto\SystemConfig;
 
 $sLabelFormat = FilterInput($_GET["labeltype"]);
 setcookie("labeltype", $sLabelFormat, time()+60*60*24*90, "/" );
@@ -37,7 +38,7 @@ if($sFontSize != "default")
 $sSQL = "SELECT * FROM person_per WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ") ORDER BY per_LastName";
 $rsPersons = RunQuery($sSQL);
 
-while ($aPer = mysql_fetch_array($rsPersons)) {
+while ($aPer = mysqli_fetch_array($rsPersons)) {
 	extract ($aPer);
 
 	$PosX = $pdf->_Margin_Left+($pdf->_COUNTX*($pdf->_Width+$pdf->_X_Space));
@@ -84,7 +85,7 @@ while ($aPer = mysql_fetch_array($rsPersons)) {
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
 	$pdf->Output("NameTags" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();

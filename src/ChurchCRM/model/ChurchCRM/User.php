@@ -16,5 +16,53 @@ use ChurchCRM\Base\User as BaseUser;
  */
 class User extends BaseUser
 {
+  public function getName()
+  {
+    return $this->getPerson()->getFullName();
+  }
 
+  public function isAddRecordsEnabled()
+  {
+    return ($this->isAdmin() || $this->isAddRecords());
+  }
+
+  public function isEditRecordsEnabled()
+  {
+    return ($this->isAdmin() || $this->isEditRecords());
+  }
+
+  public function isDeleteRecordsEnabled()
+  {
+    return ($this->isAdmin() || $this->isDeleteRecords());
+  }
+
+  public function isMenuOptionsEnabled()
+  {
+    return ($this->isAdmin() || $this->isMenuOptions());
+  }
+
+  public function isManageGroupsEnabled()
+  {
+    return ($this->isAdmin() || $this->isManageGroups());
+  }
+
+  public function isFinanceEnabled()
+  {
+    return ($this->isAdmin() || $this->isFinance());
+  }
+
+  public function isNotesEnabled()
+  {
+    return ($this->isAdmin() || $this->isNotes());
+  }
+
+  public function isEditSelfEnabled()
+  {
+    return ($this->isAdmin() || $this->isEditSelf());
+  }
+
+  public function isCanvasserEnabled()
+  {
+    return ($this->isAdmin() || $this->isCanvasser());
+  }
 }
