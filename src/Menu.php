@@ -28,6 +28,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\DepositQuery;
 
 $financialService = new FinancialService();
 
@@ -49,7 +50,11 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $depositData = false;  //Determine whether or not we should display the deposit line graph
 if ($_SESSION['bFinance']) {  
-  $depositData =  \ChurchCRM\Base\DepositQuery::create()->filterByDate(array('min' =>date('Y-m-d', strtotime('-90 days'))))->find()->toJSON();
+  $deposits = DepositQuery::create()->filterByDate(array('min' =>date('Y-m-d', strtotime('-90 days'))))->find();
+  if ( count($deposits) > 0 )
+  {
+    $depositData =  $deposits->toJSON();
+  }
 }
 
 // Set the page title
