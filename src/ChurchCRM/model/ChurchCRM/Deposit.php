@@ -23,6 +23,12 @@ use ChurchCRM\dto\SystemConfig;
  */
 class Deposit extends BaseDeposit
 {
+    
+  public function preDelete()
+  {
+      $this->getPledges()->delete();
+      return true;
+  }
 
   public function getOFX()
   {
