@@ -814,9 +814,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 </div>
                 <div style="display:none" id="photoCapture">
                      <?= gettext("Capture a new Image") ?>
-                    <video id="video" autoplay></video>
-                    <button id="snap">Snap Photo</button>
-                    <canvas id="canvas" ></canvas>
+                    <video id="video" width="640" height="480" autoplay></video>                    
+                    <canvas id="canvas" style="display:none" width="640" height="480" ></canvas><br>
+                    <button class="btn btn-primary" type="button" id="snap">Snap Photo</button>
                 </div>
             </div>
         </div>
@@ -877,26 +877,36 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
   $("#upload-image").on("shown.bs.modal", function () {
         // Get access to the camera!
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            $("#photoModal").addClass("modal-lg");
-            $("#photoSelect").removeClass("col-md-12").addClass("col-md-5");
-            $("#photoOr").addClass("col-md-2").css("display","");
-            $("#photoCapture").addClass("col-md-5").css("display","");
-            // Grab elements, create settings, etc.
-            window.CRM.video = document.getElementById('video');
+            
             // Not adding `{ audio: true }` since we only want video now
             navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                $("#photoModal").addClass("modal-lg");
+                $("#photoOr").addClass("col-md-12").css("display","");
+                $("#photoCapture").addClass("col-md-12").css("display","");
+                // Grab elements, create settings, etc.
+                window.CRM.video = document.getElementById('video');
                 window.CRM.stream = stream;
+                window.CRM.canvas = document.getElementById('canvas');
+                window.CRM.context = window.CRM.canvas.getContext('2d');
                 window.CRM.video.src = window.URL.createObjectURL(stream);
                 window.CRM.video.play();
             });
         }
     });
+    
     $("#upload-image").on("hidden.bs.modal", function() {
         window.CRM.video.pause();
         window.CRM.video.src='';
         window.CRM.stream.getTracks()[0].stop();
         
     });
+    
+    $("#snap").click(function () {
+        window.CRM.context.drawImage(window.CRM.video,0,0,640,480);
+        $(window.CRM.canvas).css("display","");
+        $(window.CRM.video).css("display","none");
+        console.log("test");
+    })
   
 
 </script>
