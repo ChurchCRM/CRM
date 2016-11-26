@@ -17,6 +17,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 $iPaddleNumID = FilterInputArr($_GET,"PaddleNumID",'int');
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
