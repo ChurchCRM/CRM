@@ -16,6 +16,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 $iCurrentFundraiser = $_GET["CurrentFundraiser"];
 

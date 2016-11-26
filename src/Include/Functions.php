@@ -355,7 +355,7 @@ function RunQuery($sSQL, $bStopOnError = true)
     return $result;
   elseif ($bStopOnError) {
     if (SystemConfig::getValue("debug"))
-      die(gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysql_error());
+      die(gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysqli_error());
     else
       die("Database error or invalid data");
   } else
