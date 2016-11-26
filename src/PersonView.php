@@ -817,6 +817,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     <video id="video" width="640" height="480" autoplay></video>                    
                     <canvas id="canvas" style="display:none" width="640" height="480" ></canvas><br>
                     <button class="btn btn-primary" type="button" id="snap">Snap Photo</button>
+                    <button class="btn btn-warning" type="button" id="retake" style="display:none" >Re-Take Photo</button>
                 </div>
             </div>
         </div>
@@ -905,8 +906,17 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         window.CRM.context.drawImage(window.CRM.video,0,0,640,480);
         $(window.CRM.canvas).css("display","");
         $(window.CRM.video).css("display","none");
+        $("#retake").show();
+        $("#snap").hide();
         console.log("test");
     })
+    
+    $("#retake").click(function () {
+        $("#retake").hide();
+        $("#snap").show();
+        $(window.CRM.canvas).css("display","none");
+        $(window.CRM.video).css("display","");
+    });
   
 
 </script>
