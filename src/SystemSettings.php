@@ -170,7 +170,7 @@ require "Include/Header.php";
                       <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
                         <?php
                         foreach (Countries::getNames() as $country) {
-                          echo "<option value = '" . $country . "'' " . ($setting->getValue() == $country ? "selected" : "") . ">" . $country . "</option>";
+                          echo "<option value = '" . $country . "'' " . ($setting->getValue() == $country ? "selected" : "") . ">" . gettext($country) . "</option>";
                         }
                         ?>
                       </select>
