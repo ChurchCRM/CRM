@@ -795,7 +795,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 </div>
 <!-- Modal -->
 <div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" id="photoModal">
     <form action="ImageUpload.php?PersonID=<?= $iPersonID ?>" method="post" enctype="multipart/form-data" id="UploadForm">
       <div class="modal-content">
         <div class="modal-header">
@@ -803,8 +803,22 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           <h4 class="modal-title" id="upload-Image-label"><?= gettext("Upload Photo") ?></h4>
         </div>
         <div class="modal-body">
-          <input type="file" name="file" size="50"/> <br/>
-          <?= gettext("Max Photo size") ?>: <?= ini_get('upload_max_filesize') ?>
+            <div class="container">
+                <div class="col-md-12" id="photoSelect">
+                     <?= gettext("Upload an existing Photo") ?>:
+                    <input type="file" name="file" size="50"/> <br/>
+                    <?= gettext("Max Photo size") ?>: <?= ini_get('upload_max_filesize') ?>
+                </div>
+                <div  style="display:none" id="photoOr">
+                    <p> ~OR~ </p>
+                </div>
+                <div style="display:none" id="photoCapture">
+                     <?= gettext("Capture a new Image") ?>
+                    <video id="video" autoplay></video>
+                    <button id="snap">Snap Photo</button>
+                    <canvas id="canvas" ></canvas>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
@@ -814,6 +828,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     </form>
   </div>
 </div>
+
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -858,6 +873,32 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
       location.reload();
     });
   }
+  
+  $("#upload-image").on("shown.bs.modal", function () {
+        // Get access to the camera!
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            $("#photoModal").addClass("modal-lg");
+            $("#photoSelect").removeClass("col-md-12").addClass("col-md-5");
+            $("#photoOr").addClass("col-md-2").css("display","");
+            $("#photoCapture").addClass("col-md-5").css("display","");
+            // Grab elements, create settings, etc.
+            window.CRM.video = document.getElementById('video');
+            // Not adding `{ audio: true }` since we only want video now
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                window.CRM.stream = stream;
+                window.CRM.video.src = window.URL.createObjectURL(stream);
+                window.CRM.video.play();
+            });
+        }
+    });
+    $("#upload-image").on("hidden.bs.modal", function() {
+        window.CRM.video.pause();
+        window.CRM.video.src='';
+        window.CRM.stream.getTracks()[0].stop();
+        
+    });
+  
+
 </script>
 <script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 
