@@ -34,7 +34,7 @@ use ChurchCRM\dto\SystemConfig;
 
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
-
+use ChurchCRM\dto\SystemURLs;
 $personService = new PersonService();
 $systemService = new SystemService();
 $_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
@@ -266,7 +266,6 @@ if (isset($_POST["BulkAddToCart"])) {
 function RedirectURL($sRelativeURL)
 {
   global $sRootPath;
-  global $sDocumentRoot;
 
   // Test if file exists before redirecting.  May need to remove
   // query string first.
@@ -281,7 +280,7 @@ function RedirectURL($sRelativeURL)
   //     $sFullPath = $sDocumentRoot . $sRootPath . $sPathExtension
   // The Redirect URL is then in this form:
   //     $sRedirectURL = $sRootPath . $sPathExtension
-  $sFullPath = str_replace('\\', '/', $sDocumentRoot . '/' . $sPathExtension);
+  $sFullPath = str_replace('\\', '/', SystemURLs::getDocumentRoot() . '/' . $sPathExtension);
 
   // With the query string removed we can test if file exists
   if (file_exists($sFullPath) && is_readable($sFullPath)) {
@@ -289,7 +288,7 @@ function RedirectURL($sRelativeURL)
   } else {
     $sErrorMessage = 'Fatal Error: Cannot access file: ' . $sFullPath . "<br>\n"
       . "\$sPathExtension = $sPathExtension<br>\n"
-      . "\$sDocumentRoot = $sDocumentRoot<br>\n"
+      . "\$sDocumentRoot = SystemURLs::getDocumentRoot()<br>\n"
       . "\$_SESSION['sRootPath'] = "
       . $sRootPath . "<br>\n";
 
