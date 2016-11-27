@@ -846,7 +846,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-        <a href="ImageDelete.php?PersonID=<?= $iPersonID ?>" class="btn btn-danger danger"><?= gettext("Delete") ?></a>
+        <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
       </div>
     </div>
   </div>
@@ -876,67 +876,75 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
   }
   
   $("#upload-image").on("shown.bs.modal", function () {
-        // Get access to the camera!
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            
-            // Not adding `{ audio: true }` since we only want video now
-            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-                $("#photoModal").addClass("modal-lg");
-                $("#photoOr").addClass("col-md-12").css("display","");
-                $("#photoCapture").addClass("col-md-12").css("display","");
-                // Grab elements, create settings, etc.
-                window.CRM.video = document.getElementById('video');
-                window.CRM.stream = stream;
-                window.CRM.canvas = document.getElementById('canvas');
-                window.CRM.context = window.CRM.canvas.getContext('2d');
-                window.CRM.video.src = window.URL.createObjectURL(stream);
-                window.CRM.video.play();
-            });
-        }
-    });
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        $("#photoModal").addClass("modal-lg");
+        $("#photoOr").addClass("col-md-12").css("display","");
+        $("#photoCapture").addClass("col-md-12").css("display","");
+        // Grab elements, create settings, etc.
+        window.CRM.video = document.getElementById('video');
+        window.CRM.stream = stream;
+        window.CRM.canvas = document.getElementById('canvas');
+        window.CRM.context = window.CRM.canvas.getContext('2d');
+        window.CRM.video.src = window.URL.createObjectURL(stream);
+        window.CRM.video.play();
+      });
+    }
+  });
     
-    $("#upload-image").on("hidden.bs.modal", function() {
-        window.CRM.video.pause();
-        window.CRM.video.src='';
-        window.CRM.stream.getTracks()[0].stop();
-        
-    });
-    
-    $("#snap").click(function () {
-        window.CRM.context.drawImage(window.CRM.video,0,0,640,480);
-        $(window.CRM.canvas).css("display","");
-        $(window.CRM.video).css("display","none");
-        $("#retake").show();
-        $("#snap").hide();
-        console.log("test");
-    })
-    
-    $("#retake").click(function () {
-        $("#retake").hide();
-        $("#snap").show();
-        $(window.CRM.canvas).css("display","none");
-        $(window.CRM.video).css("display","");
-    });
-    
-    $("#uploadImage").click(function (event) {
-        event.preventDefault();
-        var dataURL = window.CRM.canvas.toDataURL();
-        $.ajax({
-            method: "POST",
-            url: window.CRM.root + "/persons/<?= $iPersonID ?>/photo",
-            data: { 
-               imgBase64: dataURL
-            }
-        }).done(function(o) {
-            console.log('saved'); 
-            // If you want the file to be visible in the browser 
-            // - please modify the callback in javascript. All you
-            // need is to return the url to the file, you just saved 
-            // and than put the image in your browser.
-        });
-    });
-  
+  $("#upload-image").on("hidden.bs.modal", function() {
+    window.CRM.video.pause();
+    window.CRM.video.src='';
+    window.CRM.stream.getTracks()[0].stop();
+  });
 
+  $("#snap").click(function () {
+    window.CRM.context.drawImage(window.CRM.video,0,0,640,480);
+    $(window.CRM.canvas).css("display","");
+    $(window.CRM.video).css("display","none");
+    $("#retake").show();
+    $("#snap").hide();
+  });
+    
+  $("#retake").click(function () {
+    $("#retake").hide();
+    $("#snap").show();
+    $(window.CRM.canvas).css("display","none");
+    $(window.CRM.video).css("display","");
+  });
+    
+  $("#deletePhoto").click (function () {
+    $.ajax({
+    type: "POST",
+    url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
+    encode: true,
+    dataType: 'json',
+    data: { 
+      "_METHOD": "DELETE"
+    }
+    }).done(function(data) {
+      location.reload();
+    });
+  });
+
+  $("#uploadImage").click(function (event) {
+    if ( ! $('input[type="file"]').val() )
+    {
+      event.preventDefault();
+      var dataURL = window.CRM.canvas.toDataURL();
+      $.ajax({
+        method: "POST",
+        url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
+        data: { 
+          imgBase64: dataURL
+        }
+      }).done(function(o) {
+        location.reload();
+        $("#upload-image").modal("hide");
+      });
+    }
+  });
 </script>
 <script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 

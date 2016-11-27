@@ -118,29 +118,6 @@ function checkAllowedURL()
   }
 }
 
-function deletePhotos($type, $id)
-{
-  $validExtensions = array("jpeg", "jpg", "png");
-  $finalFileName = "Images/" . $type . "/" . $id;
-  $finalFileNameThumb = "Images/" . $type . "/thumbnails/" . $id;
-
-  $deleted = false;
-  while (list(, $ext) = each($validExtensions)) {
-    $tmpFile = $finalFileName . "." . $ext;
-    if (file_exists($tmpFile)) {
-      unlink($tmpFile);
-      $deleted = true;
-    }
-    $tmpFile = $finalFileNameThumb . "." . $ext;
-    if (file_exists($tmpFile)) {
-      unlink($tmpFile);
-      $deleted = true;
-    }
-  }
-
-  return $deleted;
-}
-
 // if magic_quotes off and array
 function addslashes_deep($value)
 {
