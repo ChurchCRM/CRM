@@ -780,7 +780,7 @@ if ($iFamilyID == $fam_ID) {
   <!-- Modal -->
   <div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label"
        aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" id="photoModal">
       <form action="ImageUpload.php?FamilyID=<?= $iFamilyID ?>" method="post" enctype="multipart/form-data"
             id="UploadForm">
         <div class="modal-content">
@@ -790,12 +790,29 @@ if ($iFamilyID == $fam_ID) {
             <h4 class="modal-title" id="upload-Image-label"><?= gettext("Upload Photo") ?></h4>
           </div>
           <div class="modal-body">
-            <input type="file" name="file" size="50"/>
-            <?= gettext("Max Photo size") ?>: <?= ini_get('upload_max_filesize') ?>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12" style="text-align: center" id="photoSelect">
+                     <?= gettext("Upload an existing Photo") ?>:
+                    <input style="margin: 0 auto" type="file" name="file" size="50"/> <br/>
+                    <?= gettext("Max Photo size") ?>: <?= ini_get('upload_max_filesize') ?>
+                </div>
+                <div  style="display:none; text-align: center;" class="col-md-12" id="photoOr" >
+                    <p> ~OR~ </p>
+                </div>
+                <div style="display:none; text-align: center" class="col-md-12" id="photoCapture" >
+                     <?= gettext("Capture a new Image") ?><br/>
+                    <video id="video" width="640" height="480" autoplay></video>                    
+                    <canvas id="canvas" style="display:none" width="640" height="480" ></canvas><br>
+                    <button class="btn btn-primary" type="button" id="snap">Snap Photo</button>
+                    <button class="btn btn-warning" type="button" id="retake" style="display:none" >Re-Take Photo</button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
-            <input type="submit" class="btn btn-primary" value="<?= gettext("Upload Image") ?>">
+             <input type="submit" class="btn btn-primary" id="uploadImage" value="<?= gettext("Upload Image") ?>">
           </div>
         </div>
       </form>
@@ -875,7 +892,7 @@ if ($iFamilyID == $fam_ID) {
 }
 ?>
 <script>
-$("#deletePhoto").click (function () {
+  $("#deletePhoto").click (function () {
     $.ajax({
     type: "POST",
     url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
@@ -887,6 +904,63 @@ $("#deletePhoto").click (function () {
     }).done(function(data) {
       location.reload();
     });
+  });
+  
+  $("#uploadImage").click(function (event) {
+    if ( ! $('input[type="file"]').val() )
+    {
+      event.preventDefault();
+      var dataURL = window.CRM.canvas.toDataURL();
+      $.ajax({
+        method: "POST",
+        url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+        data: { 
+          imgBase64: dataURL
+        }
+      }).done(function(o) {
+        location.reload();
+        $("#upload-image").modal("hide");
+      });
+    }
+  });
+  
+  $("#upload-image").on("shown.bs.modal", function () {
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        $("#photoModal").addClass("modal-lg");
+        $("#photoOr").show();
+        $("#photoCapture").show();
+        // Grab elements, create settings, etc.
+        window.CRM.video = document.getElementById('video');
+        window.CRM.stream = stream;
+        window.CRM.canvas = document.getElementById('canvas');
+        window.CRM.context = window.CRM.canvas.getContext('2d');
+        window.CRM.video.src = window.URL.createObjectURL(stream);
+        window.CRM.video.play();
+      });
+    }
+  });
+    
+  $("#upload-image").on("hidden.bs.modal", function() {
+    window.CRM.video.pause();
+    window.CRM.video.src='';
+    window.CRM.stream.getTracks()[0].stop();
+  });
+
+  $("#snap").click(function () {
+    window.CRM.context.drawImage(window.CRM.video,0,0,640,480);
+    $(window.CRM.canvas).css("display","");
+    $(window.CRM.video).css("display","none");
+    $("#retake").show();
+    $("#snap").hide();
+  });
+    
+  $("#retake").click(function () {
+    $("#retake").hide();
+    $("#snap").show();
+    $(window.CRM.canvas).css("display","none");
+    $(window.CRM.video).css("display","");
   });
 
 </script>

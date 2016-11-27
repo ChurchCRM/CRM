@@ -2,6 +2,7 @@
 // Routes
 
 use ChurchCRM\FamilyQuery;
+use ChurchCRM\PhotoUtils;
 
 $app->group('/families', function () {
 
@@ -22,6 +23,16 @@ $app->group('/families', function () {
   $this->get('/byEnvelopeNumber/{envelopeNumber:[0-9]+}', function ($request, $response, $args) {
     $envelopeNumber = $args['envelopeNumber'];
     echo $this->FamilyService->getFamilyStringByEnvelope($envelopeNumber);
+  });
+  
+  $this->post('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
+    $familyId =$args['familyId'];
+    $input = (object)$request->getParsedBody();
+    PhotoUtils::setPhotosDir(dirname(dirname(__DIR__))."/Images");
+    PhotoUtils::deletePhotos("Family", $familyId);
+    $upload = PhotoUtils::setImageFromBase64("Family", $familyId, $input->imgBase64);
+    
+    $response->withJSON(array("status"=>"success","upload"=>$upload));
   });
   
    $this->delete('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
