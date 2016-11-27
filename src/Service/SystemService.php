@@ -44,7 +44,7 @@ class SystemService
         $query .= " $line";
         if (substr($query, -1) == ';') {
           if (mysqli_query($cnInfoCentral, $query)) {
-              system_failure(_("Can't play back sql file") . " " . $fileName);
+              system_failure(_("Can not run the following sql file") . " " . $fileName, "Database Script Failure");
           }
           $query = '';
         }
