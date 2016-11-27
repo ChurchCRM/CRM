@@ -823,7 +823,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
-          <input type="submit" class="btn btn-primary" value="<?= gettext("Upload Image") ?>">
+          <input type="submit" class="btn btn-primary" id="uploadImage" value="<?= gettext("Upload Image") ?>">
         </div>
       </div>
     </form>
@@ -916,6 +916,24 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         $("#snap").show();
         $(window.CRM.canvas).css("display","none");
         $(window.CRM.video).css("display","");
+    });
+    
+    $("#uploadImage").click(function (event) {
+        event.preventDefault();
+        var dataURL = window.CRM.canvas.toDataURL();
+        $.ajax({
+            method: "POST",
+            url: window.CRM.root + "/persons/<?= $iPersonID ?>/photo",
+            data: { 
+               imgBase64: dataURL
+            }
+        }).done(function(o) {
+            console.log('saved'); 
+            // If you want the file to be visible in the browser 
+            // - please modify the callback in javascript. All you
+            // need is to return the url to the file, you just saved 
+            // and than put the image in your browser.
+        });
     });
   
 
