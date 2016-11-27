@@ -803,22 +803,24 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
           <h4 class="modal-title" id="upload-Image-label"><?= gettext("Upload Photo") ?></h4>
         </div>
         <div class="modal-body">
-            <div class="container">
-                <div class="col-md-12" id="photoSelect">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12" style="text-align: center" id="photoSelect">
                      <?= gettext("Upload an existing Photo") ?>:
-                    <input type="file" name="file" size="50"/> <br/>
+                    <input style="margin: 0 auto" type="file" name="file" size="50"/> <br/>
                     <?= gettext("Max Photo size") ?>: <?= ini_get('upload_max_filesize') ?>
                 </div>
-                <div  style="display:none" id="photoOr">
+                <div  style="display:none; text-align: center;" class="col-md-12" id="photoOr" >
                     <p> ~OR~ </p>
                 </div>
-                <div style="display:none" id="photoCapture">
-                     <?= gettext("Capture a new Image") ?>
+                <div style="display:none; text-align: center" class="col-md-12" id="photoCapture" >
+                     <?= gettext("Capture a new Image") ?><br/>
                     <video id="video" width="640" height="480" autoplay></video>                    
                     <canvas id="canvas" style="display:none" width="640" height="480" ></canvas><br>
                     <button class="btn btn-primary" type="button" id="snap">Snap Photo</button>
                     <button class="btn btn-warning" type="button" id="retake" style="display:none" >Re-Take Photo</button>
                 </div>
+              </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -880,8 +882,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
         $("#photoModal").addClass("modal-lg");
-        $("#photoOr").addClass("col-md-12").css("display","");
-        $("#photoCapture").addClass("col-md-12").css("display","");
+        $("#photoOr").show();
+        $("#photoCapture").show();
         // Grab elements, create settings, etc.
         window.CRM.video = document.getElementById('video');
         window.CRM.stream = stream;

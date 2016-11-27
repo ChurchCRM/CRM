@@ -15,7 +15,8 @@ namespace ChurchCRM
         private static function processFile($type,$id,$filename)
         {
             $finalFileName = $id;
-            $imageLocationThumb = PhotoUtils::$images."/".$type."/thumbnails";
+            $imageLocationMain = PhotoUtils::$images."/".$type."/";
+            $imageLocationThumb = PhotoUtils::$images."/".$type."/thumbnails/";
             
             $foo = new \upload($filename);
             $foo->allowed = array('image/png', 'image/jpg', 'image/jpeg');
@@ -23,7 +24,7 @@ namespace ChurchCRM
             if ($foo->uploaded) {
               $foo->file_new_name_body = $id;
               $foo->file_overwrite = true;
-              $foo->Process($finalFileName);
+              $foo->Process($imageLocationMain);
               if (!$foo->processed) {
                 return 'error 1 : ' . $foo->error. " MIME Type: ". $foo->file_src_mime;
               }
