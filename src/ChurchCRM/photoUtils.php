@@ -82,7 +82,7 @@ namespace ChurchCRM
         
         public static function setImageFromUplad($type, $id,  $upload)
         {
-            PhotoUtils::processFile($type, $id, $upload);
+           return PhotoUtils::processFile($type, $id, $upload);
         }
         
         public static function setImageFromBase64($type, $id, $base64)

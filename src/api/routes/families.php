@@ -1,6 +1,7 @@
 <?php
 // Routes
 
+use ChurchCRM\FamilyQuery;
 
 $app->group('/families', function () {
 
@@ -22,4 +23,10 @@ $app->group('/families', function () {
     $envelopeNumber = $args['envelopeNumber'];
     echo $this->FamilyService->getFamilyStringByEnvelope($envelopeNumber);
   });
+  
+   $this->delete('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
+    $family = FamilyQuery::create()->findPk($args['familyId']);
+    return json_encode(array("status"=>$family->deletePhoto()));
+  });
+  
 });

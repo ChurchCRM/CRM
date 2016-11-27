@@ -107,5 +107,21 @@ class Family extends BaseFamily
 
     $note->save();
   }
+  
+  public function deletePhoto()
+  {
+    if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+    $note = new Note();
+    $note->setText("Profile Image Deleted");
+    $note->setType("photo");
+    $note->setEntered($_SESSION['iUserID']);
+    PhotoUtils::setPhotosDir(dirname(dirname(dirname(__DIR__)))."/Images");
+    PhotoUtils::deletePhotos("Family", $this->getId());
+    $note->setPerId($this->getId());
+    $note->save();
+    return true;
+    }
+    return false;
+  }
 
 }

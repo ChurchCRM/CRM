@@ -818,8 +818,7 @@ if ($iFamilyID == $fam_ID) {
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-          <a href="ImageDelete.php?FamilyID=<?= $iFamilyID ?>"
-             class="btn btn-danger danger"><?= gettext("Delete") ?></a>
+         <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
         </div>
       </div>
     </div>
@@ -874,4 +873,22 @@ if ($iFamilyID == $fam_ID) {
   </div>
   <?php
 }
+?>
+<script>
+$("#deletePhoto").click (function () {
+    $.ajax({
+    type: "POST",
+    url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+    encode: true,
+    dataType: 'json',
+    data: { 
+      "_METHOD": "DELETE"
+    }
+    }).done(function(data) {
+      location.reload();
+    });
+  });
+
+</script>
+<?php
 require "Include/Footer.php" ?>
