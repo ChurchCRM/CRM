@@ -49,6 +49,7 @@ $required = array(
   'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
   'cURL' => function_exists('curl_version'),
   'locale/gettext' => function_exists('bindtextdomain'),
+  'Include file is writeable' => is_writable("Include/Config.php.example"),
   'ChurchCRM File Integrity Check' => FALSE
 );
 
@@ -204,6 +205,8 @@ $("document").ready(function(){
           </div>
         </div>
       </div>
+  </div>
+</div>
     <?php
     require("Include/FooterNotLoggedIn.php");
     ?>
