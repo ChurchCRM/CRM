@@ -37,13 +37,11 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\Version;
 use ChurchCRM\ConfigQuery;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\LocaleInfo;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Propel\Runtime\Propel;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
-
 
 if (!function_exists("mysql_failure")) {
   function mysql_failure($message)
@@ -62,13 +60,6 @@ if (!function_exists("mysql_failure")) {
     exit();
   }
 }
-try {
-    SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
-    $sRootPath = SystemURLs::getRootPath();
-} catch (\Exception $e) {
-    mysql_failure($e->getMessage());
-}
-
 
 $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
 or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
@@ -81,6 +72,13 @@ or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE
 // Initialize the session
 session_name('CRM@' . $sRootPath);
 session_start();
+
+// Avoid consecutive slashes when $sRootPath = '/'
+if (strlen($sRootPath) < 2) $sRootPath = '';
+
+// Some webhosts make it difficult to use DOCUMENT_ROOT.  Define our own!
+$sDocumentRoot = dirname(dirname(__FILE__));
+
 
 // ==== ORM
 $dbClassName = "\\Propel\\Runtime\\Connection\\ConnectionWrapper";
