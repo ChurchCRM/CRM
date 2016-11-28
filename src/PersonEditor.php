@@ -355,11 +355,11 @@ if (isset($_POST["PersonSubmit"]) || isset($_POST["PersonSubmitAndAdd"])) {
             $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('" . $iPersonID . "')";
             RunQuery($sSQL);
             $note->setPerId($iPersonID);
-            $note->setText("Created");
+            $note->setText(gettext("Created"));
             $note->setType("create");
         } else {
             $note->setPerId($iPersonID);
-            $note->setText("Updated");
+            $note->setText(gettext("Updated"));
             $note->setType("edit");
         }
         $note->save();
