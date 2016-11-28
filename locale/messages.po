@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-25 15:33+0000\n"
+"POT-Creation-Date: 2016-11-27 18:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,7 @@ msgid "This information is used only to track the usage of this software.  "
 msgstr ""
 
 #: Register.php:45 DirectoryReports.php:239 config_cfg.php:62
+#: config_cfg.php:62
 msgid "Church Name"
 msgstr ""
 
@@ -65,7 +66,7 @@ msgstr ""
 #: CSVExport.php:118 CSVImport.php:238 DirectoryReports.php:247
 #: external/templates/registration/family-register.php:27 FamilyEditor.php:709
 #: FamilyList.php:28 GeoPage.php:329 PersonEditor.php:785
-#: queryparameteroptions_qpo.php:7
+#: queryparameteroptions_qpo.php:7 queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr ""
 
@@ -73,7 +74,7 @@ msgstr ""
 #: CSVExport.php:123 CSVImport.php:239 DirectoryReports.php:251
 #: external/templates/registration/family-register.php:30 FamilyEditor.php:721
 #: FamilyList.php:29 GeoPage.php:330 PersonEditor.php:804
-#: queryparameteroptions_qpo.php:6
+#: queryparameteroptions_qpo.php:6 queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr ""
 
@@ -92,7 +93,7 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: Register.php:52 config_cfg.php:68
+#: Register.php:52 config_cfg.php:68 config_cfg.php:68
 msgid "Church Email"
 msgstr ""
 
@@ -133,7 +134,7 @@ msgstr ""
 #: ReminderReport.php:48 SelectDelete.php:307
 #: sundayschool/SundaySchoolReports.php:147 AutoPaymentEditor.php:620
 #: ElectronicPaymentList.php:198 FamilyView.php:647 PledgeEditor.php:617
-#: queryparameters_qrp.php:18
+#: queryparameters_qrp.php:18 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr ""
 
@@ -201,6 +202,7 @@ msgstr ""
 #: PersonView.php:581 PersonView.php:685 PrintView.php:299 PrintView.php:434
 #: PropertyEditor.php:164 PropertyList.php:64 PropertyTypeEditor.php:106
 #: PropertyTypeList.php:40 queryparameteroptions_qpo.php:4
+#: queryparameteroptions_qpo.php:4
 msgid "Name"
 msgstr ""
 
@@ -259,7 +261,7 @@ msgstr ""
 
 #: Reports/CanvassReports.php:233 Reports/VotingMembers.php:84 Checkin.php:518
 #: Include/Functions.php:1715 PersonView.php:205
-#: queryparameteroptions_qpo.php:15
+#: queryparameteroptions_qpo.php:15 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr ""
 
@@ -283,6 +285,7 @@ msgstr ""
 #: FamilyView.php:291 FamilyView.php:846 GroupReports.php:136
 #: PersonEditor.php:940 PersonEditor.php:942 PersonView.php:271
 #: PersonView.php:406 PrintView.php:258 menuconfig_mcf.php:14
+#: queryparameteroptions_qpo.php:13 menuconfig_mcf.php:14
 #: queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr ""
@@ -364,6 +367,7 @@ msgstr ""
 #: FamilyList.php:26 FamilyView.php:205 GroupReports.php:133
 #: PersonEditor.php:875 PersonEditor.php:877 PersonView.php:267
 #: PrintView.php:171 queryparameteroptions_qpo.php:8
+#: queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr ""
 
@@ -779,7 +783,7 @@ msgstr ""
 msgid "Person Listing"
 msgstr ""
 
-#: SelectList.php:171 menuconfig_mcf.php:12
+#: SelectList.php:171 menuconfig_mcf.php:12 menuconfig_mcf.php:12
 msgid "Group Assignment Helper"
 msgstr ""
 
@@ -827,6 +831,7 @@ msgstr ""
 #: external/templates/registration/family-register-members.php:42
 #: FamilyEditor.php:996 PersonEditor.php:568 PrintView.php:217
 #: PrintView.php:326 queryparameteroptions_qpo.php:2
+#: queryparameteroptions_qpo.php:2
 msgid "Male"
 msgstr ""
 
@@ -834,6 +839,7 @@ msgstr ""
 #: external/templates/registration/family-register-members.php:43
 #: FamilyEditor.php:997 PersonEditor.php:571 PrintView.php:220
 #: PrintView.php:326 queryparameteroptions_qpo.php:3
+#: queryparameteroptions_qpo.php:3
 msgid "Female"
 msgstr ""
 
@@ -1088,6 +1094,7 @@ msgstr ""
 
 #: sundayschool/SundaySchoolClassView.php:37
 #: sundayschool/SundaySchoolDashboard.php:222 menuconfig_mcf.php:13
+#: menuconfig_mcf.php:13
 msgid "Sunday School"
 msgstr ""
 
@@ -1135,6 +1142,7 @@ msgstr ""
 #: sundayschool/SundaySchoolClassView.php:170 CSVExport.php:338
 #: CSVImport.php:234 FamilyEditor.php:953 PersonEditor.php:562
 #: PrintView.php:210 PrintView.php:300 queryparameters_qrp.php:4
+#: queryparameters_qrp.php:4
 msgid "Gender"
 msgstr ""
 
@@ -1264,6 +1272,7 @@ msgstr ""
 #: sundayschool/SundaySchoolDashboard.php:144
 #: sundayschool/SundaySchoolDashboard.php:222 PropertyTypeEditor.php:96
 #: PropertyTypeList.php:41 queryparameters_qrp.php:12
+#: queryparameters_qrp.php:12
 msgid "Class"
 msgstr ""
 
@@ -2396,11 +2405,13 @@ msgstr ""
 #: CartView.php:607 CSVExport.php:284 CSVImport.php:304 FamilyEditor.php:958
 #: FinancialReports.php:117 MembersDashboard.php:293 OptionManager.php:74
 #: PersonEditor.php:981 PrintView.php:273 queryparameters_qrp.php:19
+#: queryparameters_qrp.php:19
 msgid "Classification"
 msgstr ""
 
 #: CartView.php:608 CSVExport.php:183 CSVExport.php:311 OptionManager.php:67
 #: PersonEditor.php:705 PrintView.php:238 queryparameters_qrp.php:5
+#: queryparameters_qrp.php:5
 msgid "Family Role"
 msgstr ""
 
@@ -3224,7 +3235,7 @@ msgid "Vanco ACH"
 msgstr ""
 
 #: ElectronicPaymentList.php:210 FamilyEditor.php:955
-#: queryparameters_qrp.php:11
+#: queryparameters_qrp.php:11 queryparameters_qrp.php:11
 msgid "Month"
 msgstr ""
 
@@ -4246,7 +4257,7 @@ msgstr ""
 msgid "Graphic"
 msgstr ""
 
-#: FinancialReports.php:290 config_cfg.php:63
+#: FinancialReports.php:290 config_cfg.php:63 config_cfg.php:63
 msgid "Church Address"
 msgstr ""
 
@@ -4262,7 +4273,7 @@ msgstr ""
 msgid "Sort Data by:"
 msgstr ""
 
-#: FinancialReports.php:299 menuconfig_mcf.php:20
+#: FinancialReports.php:299 menuconfig_mcf.php:20 menuconfig_mcf.php:20
 msgid "Deposit"
 msgstr ""
 
@@ -4385,7 +4396,7 @@ msgstr ""
 msgid "Date End"
 msgstr ""
 
-#: FundRaiserEditor.php:33 menuconfig_mcf.php:25
+#: FundRaiserEditor.php:33 menuconfig_mcf.php:25 menuconfig_mcf.php:25
 msgid "Fundraiser"
 msgstr ""
 
@@ -5186,6 +5197,7 @@ msgid "There was a problem retrieving the requested object"
 msgstr ""
 
 #: Include/Header-function.php:306 Include/Header.php:176 menuconfig_mcf.php:5
+#: menuconfig_mcf.php:5
 msgid "Dashboard"
 msgstr ""
 
@@ -5375,7 +5387,7 @@ msgstr ""
 msgid "Register a new Family"
 msgstr ""
 
-#: ManageEnvelopes.php:25 menuconfig_mcf.php:21
+#: ManageEnvelopes.php:25 menuconfig_mcf.php:21 menuconfig_mcf.php:21
 msgid "Envelope Manager"
 msgstr ""
 
@@ -5502,6 +5514,7 @@ msgid "More info"
 msgstr ""
 
 #: MembersDashboard.php:194 Menu.php:127 menuconfig_mcf.php:10
+#: menuconfig_mcf.php:10
 msgid "Groups"
 msgstr ""
 
@@ -6159,7 +6172,7 @@ msgstr ""
 msgid "Add a New"
 msgstr ""
 
-#: PropertyList.php:58 queryparameters_qrp.php:6
+#: PropertyList.php:58 queryparameters_qrp.php:6 queryparameters_qrp.php:6
 msgid "Property"
 msgstr ""
 
@@ -6303,7 +6316,7 @@ msgstr ""
 msgid "Execute Query"
 msgstr ""
 
-#: config_cfg.php:2
+#: config_cfg.php:2 config_cfg.php:2
 msgid ""
 "Set debug mode\r\n"
 "This may be helpful for when you\\'re first setting up ChurchCRM, but you "
@@ -6315,56 +6328,56 @@ msgid ""
 "important if you need to report a problem on the help forums."
 msgstr ""
 
-#: config_cfg.php:7
+#: config_cfg.php:7 config_cfg.php:7
 msgid "Include only these classifications in the directory, comma seperated"
 msgstr ""
 
-#: config_cfg.php:8
+#: config_cfg.php:8 config_cfg.php:8
 msgid "These are the family role numbers designated as head of house"
 msgstr ""
 
-#: config_cfg.php:9
+#: config_cfg.php:9 config_cfg.php:9
 msgid "These are the family role numbers designated as spouse"
 msgstr ""
 
-#: config_cfg.php:10
+#: config_cfg.php:10 config_cfg.php:10
 msgid "These are the family role numbers designated as child"
 msgstr ""
 
-#: config_cfg.php:11
+#: config_cfg.php:11 config_cfg.php:11
 msgid ""
 "Session timeout length in seconds\rSet to zero to disable session timeouts."
 msgstr ""
 
-#: config_cfg.php:12
+#: config_cfg.php:12 config_cfg.php:12
 msgid "Queries for which user must have finance permissions to use:"
 msgstr ""
 
-#: config_cfg.php:13
+#: config_cfg.php:13 config_cfg.php:13
 msgid ""
 "Should only administrators have access to the CSV export system and "
 "directory report?"
 msgstr ""
 
-#: config_cfg.php:14
+#: config_cfg.php:14 config_cfg.php:14
 msgid "Default password for new users and those with reset passwords"
 msgstr ""
 
-#: config_cfg.php:15
+#: config_cfg.php:15 config_cfg.php:15
 msgid "Minimum length a user may set their password to"
 msgstr ""
 
-#: config_cfg.php:16
+#: config_cfg.php:16 config_cfg.php:16
 msgid ""
 "Minimum amount that a new password must differ from the old one (# of "
 "characters changed)\rSet to zero to disable this feature"
 msgstr ""
 
-#: config_cfg.php:17
+#: config_cfg.php:17 config_cfg.php:17
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr ""
 
-#: config_cfg.php:18
+#: config_cfg.php:18 config_cfg.php:18
 msgid ""
 "Maximum number of failed logins to allow before a user account is locked."
 "\rOnce the maximum has been reached, an administrator must re-enable the "
@@ -6372,194 +6385,194 @@ msgid ""
 "attacks.\rSet to zero to disable this feature."
 msgstr ""
 
-#: config_cfg.php:19
+#: config_cfg.php:19 config_cfg.php:19
 msgid ""
 "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
 msgstr ""
 
-#: config_cfg.php:20
+#: config_cfg.php:20 config_cfg.php:20
 msgid "Default City"
 msgstr ""
 
-#: config_cfg.php:21
+#: config_cfg.php:21 config_cfg.php:21
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr ""
 
-#: config_cfg.php:22
+#: config_cfg.php:22 config_cfg.php:22
 msgid "Default Country"
 msgstr ""
 
-#: config_cfg.php:23
+#: config_cfg.php:23 config_cfg.php:23
 msgid ""
 "If you wish to be able to send emails from within ChurchCRM. This requires"
 "\reither an SMTP server address to send from or sendmail installed in PHP."
 msgstr ""
 
-#: config_cfg.php:24
+#: config_cfg.php:24 config_cfg.php:24
 msgid "The method for sending email. Either \"smtp\" or \"sendmail\""
 msgstr ""
 
-#: config_cfg.php:25
+#: config_cfg.php:25 config_cfg.php:25
 msgid "Default account for receiving a copy of all emails"
 msgstr ""
 
-#: config_cfg.php:26
+#: config_cfg.php:26 config_cfg.php:26
 msgid "SMTP Server Address (mail.server.com:25)"
 msgstr ""
 
-#: config_cfg.php:27
+#: config_cfg.php:27 config_cfg.php:27
 msgid "Does your SMTP server require auththentication (username/password)?"
 msgstr ""
 
-#: config_cfg.php:28
+#: config_cfg.php:28 config_cfg.php:28
 msgid "SMTP Username"
 msgstr ""
 
-#: config_cfg.php:29
+#: config_cfg.php:29 config_cfg.php:29
 msgid "SMTP Password"
 msgstr ""
 
-#: config_cfg.php:30
+#: config_cfg.php:30 config_cfg.php:30
 msgid ""
 "Unavailable person info inherited from assigned family for display?\rThis "
 "option causes certain info from a person\\'s assigned family record to be"
 "\rdisplayed IF the corresponding info has NOT been entered for that person. "
 msgstr ""
 
-#: config_cfg.php:32
+#: config_cfg.php:32 config_cfg.php:32
 msgid ""
 "Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), "
 "French (fr_FR), and German (de_DE)"
 msgstr ""
 
-#: config_cfg.php:33
+#: config_cfg.php:33 config_cfg.php:33
 msgid "First month of the fiscal year"
 msgstr ""
 
-#: config_cfg.php:34
+#: config_cfg.php:34 config_cfg.php:34
 msgid "Path to RPC.php, required for Lat/Lon address lookup"
 msgstr ""
 
-#: config_cfg.php:35
+#: config_cfg.php:35 config_cfg.php:35
 msgid "User ID for rpc.geocoder.us"
 msgstr ""
 
-#: config_cfg.php:36
+#: config_cfg.php:36 config_cfg.php:36
 msgid "Password for rpc.geocoder.us"
 msgstr ""
 
-#: config_cfg.php:37
+#: config_cfg.php:37 config_cfg.php:37
 msgid ""
 "Google map API requires a unique key from https://developers.google.com/maps/"
 "documentation/javascript/get-api-key"
 msgstr ""
 
-#: config_cfg.php:38
+#: config_cfg.php:38 config_cfg.php:38
 msgid "Latitude of the church, used to center the Google map"
 msgstr ""
 
-#: config_cfg.php:39
+#: config_cfg.php:39 config_cfg.php:39
 msgid "Longitude of the church, used to center the Google map"
 msgstr ""
 
-#: config_cfg.php:40
+#: config_cfg.php:40 config_cfg.php:40
 msgid ""
 "Set true to disable entering addresses in Person Editor.  Set false to "
 "enable entering addresses in Person Editor."
 msgstr ""
 
-#: config_cfg.php:41
+#: config_cfg.php:41 config_cfg.php:41
 msgid ""
 "Set true to disable entering Friend Date in Person Editor.  Set false to "
 "enable entering Friend Date in Person Editor."
 msgstr ""
 
-#: config_cfg.php:42
+#: config_cfg.php:42 config_cfg.php:42
 msgid ""
 "Set true to disable management of newsletter subscriptions in the Family "
 "Editor."
 msgstr ""
 
-#: config_cfg.php:43
+#: config_cfg.php:43 config_cfg.php:43
 msgid ""
 "Set true to disable entering Wedding Date in Family Editor.  Set false to "
 "enable entering Wedding Date in Family Editor."
 msgstr ""
 
-#: config_cfg.php:44
+#: config_cfg.php:44 config_cfg.php:44
 msgid ""
 "Set true to disable entering Latitude and Longitude in Family Editor.  Set "
 "false to enable entering Latitude and Longitude in Family Editor.  Lookups "
 "are still performed, just not displayed."
 msgstr ""
 
-#: config_cfg.php:45
+#: config_cfg.php:45 config_cfg.php:45
 msgid "Set true to enable use of donation envelopes"
 msgstr ""
 
-#: config_cfg.php:46
+#: config_cfg.php:46 config_cfg.php:46
 msgid ""
 "Enter in HTML code which will be displayed as a header at the top of each "
 "page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A "
 "SECOND TIME to view the new header."
 msgstr ""
 
-#: config_cfg.php:47
+#: config_cfg.php:47 config_cfg.php:47
 msgid ""
 "Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www."
 "intelligentsearch.com/Hosted/User"
 msgstr ""
 
-#: config_cfg.php:48
+#: config_cfg.php:48 config_cfg.php:48
 msgid ""
 "Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www."
 "intelligentsearch.com/Hosted/User"
 msgstr ""
 
-#: config_cfg.php:49
+#: config_cfg.php:49 config_cfg.php:49
 msgid "Set true to use the Google geocoder.  Set false to use rpc.geocoder.us."
 msgstr ""
 
-#: config_cfg.php:50
+#: config_cfg.php:50 config_cfg.php:50
 msgid "Number of checks for Deposit Slip Report"
 msgstr ""
 
-#: config_cfg.php:51
+#: config_cfg.php:51 config_cfg.php:51
 msgid "Set true to enable use of scanned checks"
 msgstr ""
 
-#: config_cfg.php:52
+#: config_cfg.php:52 config_cfg.php:52
 msgid "Unit used to measure distance, miles or km."
 msgstr ""
 
-#: config_cfg.php:53
+#: config_cfg.php:53 config_cfg.php:53
 msgid ""
 "Time zone- see http://php.net/manual/en/timezones.php for valid choices."
 msgstr ""
 
-#: config_cfg.php:54
+#: config_cfg.php:54 config_cfg.php:54
 msgid "Names of markers for Google Maps in order of classification"
 msgstr ""
 
-#: config_cfg.php:55
+#: config_cfg.php:55 config_cfg.php:55
 msgid ""
 "Make user-entered zip/postcodes UPPERCASE when saving to the database. "
 "Useful in the UK."
 msgstr ""
 
-#: config_cfg.php:56
+#: config_cfg.php:56 config_cfg.php:56
 msgid "Enable non-deductible payments"
 msgstr ""
 
-#: config_cfg.php:57
+#: config_cfg.php:57 config_cfg.php:57
 msgid "Electronic Transaction Processor"
 msgstr ""
 
-#: config_cfg.php:58
+#: config_cfg.php:58 config_cfg.php:58
 msgid "Set true to enable family self registration."
 msgstr ""
 
-#: config_cfg.php:59
+#: config_cfg.php:59 config_cfg.php:59
 msgid ""
 "ChurchCRM has been registered.  The ChurchCRM team uses registration "
 "information to track usage.  This information is kept confidential and never "
@@ -6567,643 +6580,644 @@ msgid ""
 "admin menu changes to update registration."
 msgstr ""
 
-#: config_cfg.php:60
+#: config_cfg.php:60 config_cfg.php:60
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr ""
 
-#: config_cfg.php:61
+#: config_cfg.php:61 config_cfg.php:61
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr ""
 
-#: config_cfg.php:64
+#: config_cfg.php:64 config_cfg.php:64
 msgid "Church City"
 msgstr ""
 
-#: config_cfg.php:65
+#: config_cfg.php:65 config_cfg.php:65
 msgid "Church State"
 msgstr ""
 
-#: config_cfg.php:66
+#: config_cfg.php:66 config_cfg.php:66
 msgid "Church Zip"
 msgstr ""
 
-#: config_cfg.php:67
+#: config_cfg.php:67 config_cfg.php:67
 msgid "Church Phone"
 msgstr ""
 
-#: config_cfg.php:69
+#: config_cfg.php:69 config_cfg.php:69
 msgid "Home area code of the church"
 msgstr ""
 
-#: config_cfg.php:70
+#: config_cfg.php:70 config_cfg.php:70
 msgid ""
 "Verbage for top line of tax report. Dates will be appended to the end of "
 "this line."
 msgstr ""
 
-#: config_cfg.php:71
+#: config_cfg.php:71 config_cfg.php:71
 msgid "Verbage for bottom line of tax report."
 msgstr ""
 
-#: config_cfg.php:72
+#: config_cfg.php:72 config_cfg.php:72
 msgid "Tax Report signer"
 msgstr ""
 
-#: config_cfg.php:73
+#: config_cfg.php:73 config_cfg.php:73
 msgid "Verbage for the pledge reminder report"
 msgstr ""
 
-#: config_cfg.php:74
+#: config_cfg.php:74 config_cfg.php:74
 msgid "Pledge Reminder Signer"
 msgstr ""
 
-#: config_cfg.php:75
+#: config_cfg.php:75 config_cfg.php:75
 msgid "Verbage for the pledge reminder report - No record of a pledge"
 msgstr ""
 
-#: config_cfg.php:76
+#: config_cfg.php:76 config_cfg.php:76
 msgid "Verbage for the pledge reminder report - No record of payments"
 msgstr ""
 
-#: config_cfg.php:77
+#: config_cfg.php:77 config_cfg.php:77
 msgid "Verbage for the database information confirmation and correction report"
 msgstr ""
 
-#: config_cfg.php:78
+#: config_cfg.php:78 config_cfg.php:78
 msgid "Database information confirmation and correction report signer"
 msgstr ""
 
-#: config_cfg.php:79
+#: config_cfg.php:79 config_cfg.php:79
 msgid "Verbage for the pledge summary report"
 msgstr ""
 
-#: config_cfg.php:80
+#: config_cfg.php:80 config_cfg.php:80
 msgid "Verbage for the directory report"
 msgstr ""
 
-#: config_cfg.php:81
+#: config_cfg.php:81 config_cfg.php:81
 msgid "Church Letterhead path and file"
 msgstr ""
 
-#: config_cfg.php:82
+#: config_cfg.php:82 config_cfg.php:82
 msgid "Church Checking Account Number"
 msgstr ""
 
-#: config_cfg.php:83
+#: config_cfg.php:83 config_cfg.php:83
 msgid "lookup user images on Gravatar when no local image is present"
 msgstr ""
 
-#: config_cfg.php:84
+#: config_cfg.php:84 config_cfg.php:84
 msgid "Enable Remote Backups to Cloud Services"
 msgstr ""
 
-#: config_cfg.php:85
+#: config_cfg.php:85 config_cfg.php:85
 msgid "Cloud Service Type (Supported values: WebDAV, Local)"
 msgstr ""
 
-#: config_cfg.php:86
+#: config_cfg.php:86 config_cfg.php:86
 msgid "Remote Backup Endpoint"
 msgstr ""
 
-#: config_cfg.php:87
+#: config_cfg.php:87 config_cfg.php:87
 msgid "Remote Backup Username"
 msgstr ""
 
-#: config_cfg.php:88
+#: config_cfg.php:88 config_cfg.php:88
 msgid "Remote Backup Password"
 msgstr ""
 
-#: config_cfg.php:89
+#: config_cfg.php:89 config_cfg.php:89
 msgid "Interval in Hours for Automatic Remote Backups"
 msgstr ""
 
-#: config_cfg.php:90
+#: config_cfg.php:90 config_cfg.php:90
 msgid "Last Backup Timestamp"
 msgstr ""
 
-#: config_cfg.php:91
+#: config_cfg.php:91 config_cfg.php:91
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr ""
 
-#: config_cfg.php:92
+#: config_cfg.php:92 config_cfg.php:92
 msgid "Enable Integrity Check"
 msgstr ""
 
-#: config_cfg.php:93
+#: config_cfg.php:93 config_cfg.php:93
 msgid "Interval in Hours for Integrity Check"
 msgstr ""
 
-#: config_cfg.php:94
+#: config_cfg.php:94 config_cfg.php:94
 msgid "Last Integrity Check Timestamp"
 msgstr ""
 
-#: config_cfg.php:95
+#: config_cfg.php:95 config_cfg.php:95
 msgid "Church Country"
 msgstr ""
 
-#: config_cfg.php:96
+#: config_cfg.php:96 config_cfg.php:96
 msgid "see http://kb.mailchimp.com/accounts/management/about-api-keys"
 msgstr ""
 
-#: menuconfig_mcf.php:2
+#: menuconfig_mcf.php:2 menuconfig_mcf.php:2
 msgid "Main"
 msgstr ""
 
-#: menuconfig_mcf.php:3
+#: menuconfig_mcf.php:3 menuconfig_mcf.php:3
 msgid "Calendar"
 msgstr ""
 
-#: menuconfig_mcf.php:4
+#: menuconfig_mcf.php:4 menuconfig_mcf.php:4
 msgid "Members"
 msgstr ""
 
-#: menuconfig_mcf.php:6
+#: menuconfig_mcf.php:6 menuconfig_mcf.php:6
 msgid "Add New Person"
 msgstr ""
 
-#: menuconfig_mcf.php:7
+#: menuconfig_mcf.php:7 menuconfig_mcf.php:7
 msgid "View All Persons"
 msgstr ""
 
-#: menuconfig_mcf.php:8
+#: menuconfig_mcf.php:8 menuconfig_mcf.php:8
 msgid "Add New Family"
 msgstr ""
 
-#: menuconfig_mcf.php:9
+#: menuconfig_mcf.php:9 menuconfig_mcf.php:9
 msgid "View All Families"
 msgstr ""
 
-#: menuconfig_mcf.php:11
+#: menuconfig_mcf.php:11 menuconfig_mcf.php:11
 msgid "List Groups"
 msgstr ""
 
-#: menuconfig_mcf.php:15
+#: menuconfig_mcf.php:15 menuconfig_mcf.php:15
 msgid "Events"
 msgstr ""
 
-#: menuconfig_mcf.php:16
+#: menuconfig_mcf.php:16 menuconfig_mcf.php:16
 msgid "List Church Events"
 msgstr ""
 
-#: menuconfig_mcf.php:17
+#: menuconfig_mcf.php:17 menuconfig_mcf.php:17
 msgid "Add Church Event"
 msgstr ""
 
-#: menuconfig_mcf.php:18
+#: menuconfig_mcf.php:18 menuconfig_mcf.php:18
 msgid "List Event Types"
 msgstr ""
 
-#: menuconfig_mcf.php:19
+#: menuconfig_mcf.php:19 menuconfig_mcf.php:19
 msgid "Check-in and Check-out"
 msgstr ""
 
-#: menuconfig_mcf.php:22
+#: menuconfig_mcf.php:22 menuconfig_mcf.php:22
 msgid "View All Deposits"
 msgstr ""
 
-#: menuconfig_mcf.php:23
+#: menuconfig_mcf.php:23 menuconfig_mcf.php:23
 msgid "Deposit Reports"
 msgstr ""
 
-#: menuconfig_mcf.php:24
+#: menuconfig_mcf.php:24 menuconfig_mcf.php:24
 msgid "Edit Deposit Slip"
 msgstr ""
 
-#: menuconfig_mcf.php:26
+#: menuconfig_mcf.php:26 menuconfig_mcf.php:26
 msgid "View All Fundraisers"
 msgstr ""
 
-#: menuconfig_mcf.php:27
+#: menuconfig_mcf.php:27 menuconfig_mcf.php:27
 msgid "Create New Fundraiser"
 msgstr ""
 
-#: menuconfig_mcf.php:28
+#: menuconfig_mcf.php:28 menuconfig_mcf.php:28
 msgid "Edit Fundraiser"
 msgstr ""
 
-#: menuconfig_mcf.php:29
+#: menuconfig_mcf.php:29 menuconfig_mcf.php:29
 msgid "View Buyers"
 msgstr ""
 
-#: menuconfig_mcf.php:30
+#: menuconfig_mcf.php:30 menuconfig_mcf.php:30
 msgid "Add Donors to Buyer List"
 msgstr ""
 
-#: menuconfig_mcf.php:31
+#: menuconfig_mcf.php:31 menuconfig_mcf.php:31
 msgid "Data/Reports"
 msgstr ""
 
-#: menuconfig_mcf.php:32
+#: menuconfig_mcf.php:32 menuconfig_mcf.php:32
 msgid "Reports Menu"
 msgstr ""
 
-#: menuconfig_mcf.php:33
+#: menuconfig_mcf.php:33 menuconfig_mcf.php:33
 msgid "Query Menu"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:5
+#: queryparameteroptions_qpo.php:5 queryparameteroptions_qpo.php:5
 msgid "Zip Code"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:9
+#: queryparameteroptions_qpo.php:9 queryparameteroptions_qpo.php:9
 msgid "2012/2013"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:10
+#: queryparameteroptions_qpo.php:10 queryparameteroptions_qpo.php:10
 msgid "2013/2014"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:11
+#: queryparameteroptions_qpo.php:11 queryparameteroptions_qpo.php:11
 msgid "2014/2015"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:12
+#: queryparameteroptions_qpo.php:12 queryparameteroptions_qpo.php:12
 msgid "2015/2016"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:14
+#: queryparameteroptions_qpo.php:14 queryparameteroptions_qpo.php:14
 msgid "WorkEmail"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:16
+#: queryparameteroptions_qpo.php:16 queryparameteroptions_qpo.php:16
 msgid "Regular Attender"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:17
+#: queryparameteroptions_qpo.php:17 queryparameteroptions_qpo.php:17
 msgid "Guest"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:18
+#: queryparameteroptions_qpo.php:18 queryparameteroptions_qpo.php:18
 msgid "Non-Attender"
 msgstr ""
 
-#: queryparameteroptions_qpo.php:19
+#: queryparameteroptions_qpo.php:19 queryparameteroptions_qpo.php:19
 msgid "Non-Attender (staff)"
 msgstr ""
 
-#: queryparameters_qrp.php:2
+#: queryparameters_qrp.php:2 queryparameters_qrp.php:2
 msgid "Minimum Age"
 msgstr ""
 
-#: queryparameters_qrp.php:3
+#: queryparameters_qrp.php:3 queryparameters_qrp.php:3
 msgid "Maximum Age"
 msgstr ""
 
-#: queryparameters_qrp.php:7
+#: queryparameters_qrp.php:7 queryparameters_qrp.php:7
 msgid "Beginning Date"
 msgstr ""
 
-#: queryparameters_qrp.php:8
+#: queryparameters_qrp.php:8 queryparameters_qrp.php:8
 msgid "Ending Date"
 msgstr ""
 
-#: queryparameters_qrp.php:9
+#: queryparameters_qrp.php:9 queryparameters_qrp.php:9
 msgid "Search"
 msgstr ""
 
-#: queryparameters_qrp.php:10
+#: queryparameters_qrp.php:10 queryparameters_qrp.php:10
 msgid "Field"
 msgstr ""
 
 #: queryparameters_qrp.php:13 query_qry.php:9 query_qry.php:48
+#: queryparameters_qrp.php:13 query_qry.php:9 query_qry.php:48
 msgid "Registered students"
 msgstr ""
 
-#: queryparameters_qrp.php:14
+#: queryparameters_qrp.php:14 queryparameters_qrp.php:14
 msgid "Volunteer opportunities"
 msgstr ""
 
-#: queryparameters_qrp.php:15
+#: queryparameters_qrp.php:15 queryparameters_qrp.php:15
 msgid "Months"
 msgstr ""
 
-#: queryparameters_qrp.php:16
+#: queryparameters_qrp.php:16 queryparameters_qrp.php:16
 msgid "First Fiscal Year"
 msgstr ""
 
-#: queryparameters_qrp.php:17
+#: queryparameters_qrp.php:17 queryparameters_qrp.php:17
 msgid "Second Fiscal Year"
 msgstr ""
 
-#: queryparameters_qrp.php:20
+#: queryparameters_qrp.php:20 queryparameters_qrp.php:20
 msgid "Custom field"
 msgstr ""
 
-#: queryparameters_qrp.php:21
+#: queryparameters_qrp.php:21 queryparameters_qrp.php:21
 msgid "Field value"
 msgstr ""
 
-#: queryparameters_qrp.php:22
+#: queryparameters_qrp.php:22 queryparameters_qrp.php:22
 msgid "The minimum age for which you want records returned."
 msgstr ""
 
-#: queryparameters_qrp.php:23
+#: queryparameters_qrp.php:23 queryparameters_qrp.php:23
 msgid "The maximum age for which you want records returned."
 msgstr ""
 
-#: queryparameters_qrp.php:24
+#: queryparameters_qrp.php:24 queryparameters_qrp.php:24
 msgid "The desired gender to search the database for."
 msgstr ""
 
-#: queryparameters_qrp.php:25
+#: queryparameters_qrp.php:25 queryparameters_qrp.php:25
 msgid "Select the desired family role."
 msgstr ""
 
-#: queryparameters_qrp.php:26
+#: queryparameters_qrp.php:26 queryparameters_qrp.php:26
 msgid "The gender for which you would like records returned."
 msgstr ""
 
-#: queryparameters_qrp.php:27
+#: queryparameters_qrp.php:27 queryparameters_qrp.php:27
 msgid "The property for which you would like person records returned."
 msgstr ""
 
-#: queryparameters_qrp.php:28
+#: queryparameters_qrp.php:28 queryparameters_qrp.php:28
 msgid ""
 "Please select the beginning date to calculate total contributions for each "
 "member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain "
 "donations."
 msgstr ""
 
-#: queryparameters_qrp.php:29
+#: queryparameters_qrp.php:29 queryparameters_qrp.php:29
 msgid ""
 "Please enter the last date to calculate total contributions for each member "
 "(i.e. YYYY-MM-DD)."
 msgstr ""
 
-#: queryparameters_qrp.php:30
+#: queryparameters_qrp.php:30 queryparameters_qrp.php:30
 msgid ""
 "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, "
 "or Work Email."
 msgstr ""
 
-#: queryparameters_qrp.php:31
+#: queryparameters_qrp.php:31 queryparameters_qrp.php:31
 msgid "Select field to search for."
 msgstr ""
 
-#: queryparameters_qrp.php:32
+#: queryparameters_qrp.php:32 queryparameters_qrp.php:32
 msgid "The birthday month for which you would like records returned."
 msgstr ""
 
-#: queryparameters_qrp.php:33
+#: queryparameters_qrp.php:33 queryparameters_qrp.php:33
 msgid "The sunday school class for which you would like records returned."
 msgstr ""
 
-#: queryparameters_qrp.php:34
+#: queryparameters_qrp.php:34 queryparameters_qrp.php:34
 msgid "Group of registered students"
 msgstr ""
 
-#: queryparameters_qrp.php:35
+#: queryparameters_qrp.php:35 queryparameters_qrp.php:35
 msgid ""
 "The membership anniversary month for which you would like records returned."
 msgstr ""
 
-#: queryparameters_qrp.php:36
+#: queryparameters_qrp.php:36 queryparameters_qrp.php:36
 msgid "Choose a volunteer opportunity"
 msgstr ""
 
-#: queryparameters_qrp.php:37
+#: queryparameters_qrp.php:37 queryparameters_qrp.php:37
 msgid "Number of months since becoming a friend"
 msgstr ""
 
-#: queryparameters_qrp.php:38
+#: queryparameters_qrp.php:38 queryparameters_qrp.php:38
 msgid "First fiscal year for comparison"
 msgstr ""
 
-#: queryparameters_qrp.php:39
+#: queryparameters_qrp.php:39 queryparameters_qrp.php:39
 msgid "Second fiscal year for comparison"
 msgstr ""
 
-#: queryparameters_qrp.php:40
+#: queryparameters_qrp.php:40 queryparameters_qrp.php:40
 msgid "Pledged this year"
 msgstr ""
 
-#: queryparameters_qrp.php:41
+#: queryparameters_qrp.php:41 queryparameters_qrp.php:41
 msgid "but not this year"
 msgstr ""
 
-#: queryparameters_qrp.php:42
+#: queryparameters_qrp.php:42 queryparameters_qrp.php:42
 msgid "Fiscal Year."
 msgstr ""
 
-#: queryparameters_qrp.php:43
+#: queryparameters_qrp.php:43 queryparameters_qrp.php:43
 msgid "Member, Regular Attender, etc."
 msgstr ""
 
-#: queryparameters_qrp.php:44
+#: queryparameters_qrp.php:44 queryparameters_qrp.php:44
 msgid "First volunteer opportunity choice"
 msgstr ""
 
-#: queryparameters_qrp.php:45
+#: queryparameters_qrp.php:45 queryparameters_qrp.php:45
 msgid "Second volunteer opportunity choice"
 msgstr ""
 
-#: queryparameters_qrp.php:46
+#: queryparameters_qrp.php:46 queryparameters_qrp.php:46
 msgid "Choose customer person field"
 msgstr ""
 
-#: queryparameters_qrp.php:47
+#: queryparameters_qrp.php:47 queryparameters_qrp.php:47
 msgid "Match custom field to this value"
 msgstr ""
 
-#: query_qry.php:2 query_qry.php:41
+#: query_qry.php:2 query_qry.php:41 query_qry.php:2 query_qry.php:41
 msgid "Family Member Count"
 msgstr ""
 
-#: query_qry.php:3 query_qry.php:42
+#: query_qry.php:3 query_qry.php:42 query_qry.php:3 query_qry.php:42
 msgid "Person by Age"
 msgstr ""
 
-#: query_qry.php:4 query_qry.php:43
+#: query_qry.php:4 query_qry.php:43 query_qry.php:4 query_qry.php:43
 msgid "Total By Gender"
 msgstr ""
 
-#: query_qry.php:5 query_qry.php:44
+#: query_qry.php:5 query_qry.php:44 query_qry.php:5 query_qry.php:44
 msgid "Person by Role and Gender"
 msgstr ""
 
-#: query_qry.php:6 query_qry.php:45
+#: query_qry.php:6 query_qry.php:45 query_qry.php:6 query_qry.php:45
 msgid "Person by Property"
 msgstr ""
 
-#: query_qry.php:7 query_qry.php:46
+#: query_qry.php:7 query_qry.php:46 query_qry.php:7 query_qry.php:46
 msgid "Advanced Search"
 msgstr ""
 
-#: query_qry.php:8 query_qry.php:47
+#: query_qry.php:8 query_qry.php:47 query_qry.php:8 query_qry.php:47
 msgid "Birthdays"
 msgstr ""
 
-#: query_qry.php:10 query_qry.php:49
+#: query_qry.php:10 query_qry.php:49 query_qry.php:10 query_qry.php:49
 msgid "Membership anniversaries"
 msgstr ""
 
-#: query_qry.php:11 query_qry.php:50
+#: query_qry.php:11 query_qry.php:50 query_qry.php:11 query_qry.php:50
 msgid "Select database users"
 msgstr ""
 
-#: query_qry.php:12 query_qry.php:51
+#: query_qry.php:12 query_qry.php:51 query_qry.php:12 query_qry.php:51
 msgid "Select all members"
 msgstr ""
 
-#: query_qry.php:13 query_qry.php:52
+#: query_qry.php:13 query_qry.php:52 query_qry.php:13 query_qry.php:52
 msgid "Volunteers"
 msgstr ""
 
-#: query_qry.php:14 query_qry.php:53
+#: query_qry.php:14 query_qry.php:53 query_qry.php:14 query_qry.php:53
 msgid "Recent friends"
 msgstr ""
 
-#: query_qry.php:15 query_qry.php:54
+#: query_qry.php:15 query_qry.php:54 query_qry.php:15 query_qry.php:54
 msgid "Families to Canvass"
 msgstr ""
 
-#: query_qry.php:16 query_qry.php:55
+#: query_qry.php:16 query_qry.php:55 query_qry.php:16 query_qry.php:55
 msgid "Pledge comparison"
 msgstr ""
 
-#: query_qry.php:17 query_qry.php:56
+#: query_qry.php:17 query_qry.php:56 query_qry.php:17 query_qry.php:56
 msgid "Missing pledges"
 msgstr ""
 
-#: query_qry.php:18 query_qry.php:57
+#: query_qry.php:18 query_qry.php:57 query_qry.php:18 query_qry.php:57
 msgid "Credit Card People"
 msgstr ""
 
-#: query_qry.php:19 query_qry.php:58
+#: query_qry.php:19 query_qry.php:58 query_qry.php:19 query_qry.php:58
 msgid "Family Pledge by Fiscal Year"
 msgstr ""
 
-#: query_qry.php:20 query_qry.php:59
+#: query_qry.php:20 query_qry.php:59 query_qry.php:20 query_qry.php:59
 msgid "CustomSearch"
 msgstr ""
 
-#: query_qry.php:21 query_qry.php:60
+#: query_qry.php:21 query_qry.php:60 query_qry.php:21 query_qry.php:60
 msgid "Returns each family and the total number of people assigned to them."
 msgstr ""
 
-#: query_qry.php:22 query_qry.php:61
+#: query_qry.php:22 query_qry.php:61 query_qry.php:22 query_qry.php:61
 msgid "Returns any person records with ages between two given ages."
 msgstr ""
 
-#: query_qry.php:23 query_qry.php:62
+#: query_qry.php:23 query_qry.php:62 query_qry.php:23 query_qry.php:62
 msgid "Total of records matching a given gender."
 msgstr ""
 
-#: query_qry.php:24 query_qry.php:63
+#: query_qry.php:24 query_qry.php:63 query_qry.php:24 query_qry.php:63
 msgid "Selects person records with the family role and gender specified."
 msgstr ""
 
-#: query_qry.php:25 query_qry.php:64
+#: query_qry.php:25 query_qry.php:64 query_qry.php:25 query_qry.php:64
 msgid "Returns person records which are assigned the given property."
 msgstr ""
 
-#: query_qry.php:26 query_qry.php:65
+#: query_qry.php:26 query_qry.php:65 query_qry.php:26 query_qry.php:65
 msgid ""
 "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work "
 "Email."
 msgstr ""
 
-#: query_qry.php:27 query_qry.php:66
+#: query_qry.php:27 query_qry.php:66 query_qry.php:27 query_qry.php:66
 msgid "People with birthdays in a particular month"
 msgstr ""
 
-#: query_qry.php:28 query_qry.php:67
+#: query_qry.php:28 query_qry.php:67 query_qry.php:28 query_qry.php:67
 msgid "Find Registered students"
 msgstr ""
 
-#: query_qry.php:29 query_qry.php:68
+#: query_qry.php:29 query_qry.php:68 query_qry.php:29 query_qry.php:68
 msgid "Members who joined in a particular month"
 msgstr ""
 
-#: query_qry.php:30 query_qry.php:69
+#: query_qry.php:30 query_qry.php:69 query_qry.php:30 query_qry.php:69
 msgid "People who are registered as database users"
 msgstr ""
 
-#: query_qry.php:31 query_qry.php:70
+#: query_qry.php:31 query_qry.php:70 query_qry.php:31 query_qry.php:70
 msgid "People who are members"
 msgstr ""
 
-#: query_qry.php:32 query_qry.php:71
+#: query_qry.php:32 query_qry.php:71 query_qry.php:32 query_qry.php:71
 msgid "Find volunteers for a particular opportunity"
 msgstr ""
 
-#: query_qry.php:33 query_qry.php:72
+#: query_qry.php:33 query_qry.php:72 query_qry.php:33 query_qry.php:72
 msgid "Friends who signed up in previous months"
 msgstr ""
 
-#: query_qry.php:34 query_qry.php:73
+#: query_qry.php:34 query_qry.php:73 query_qry.php:34 query_qry.php:73
 msgid "People in families that are ok to canvass."
 msgstr ""
 
-#: query_qry.php:35 query_qry.php:74
+#: query_qry.php:35 query_qry.php:74 query_qry.php:35 query_qry.php:74
 msgid "Compare pledges between two fiscal years"
 msgstr ""
 
-#: query_qry.php:36 query_qry.php:75
+#: query_qry.php:36 query_qry.php:75 query_qry.php:36 query_qry.php:75
 msgid "Find people who pledged one year but not another"
 msgstr ""
 
-#: query_qry.php:37 query_qry.php:76
+#: query_qry.php:37 query_qry.php:76 query_qry.php:37 query_qry.php:76
 msgid "People who are configured to pay by credit card."
 msgstr ""
 
-#: query_qry.php:38 query_qry.php:77
+#: query_qry.php:38 query_qry.php:77 query_qry.php:38 query_qry.php:77
 msgid ""
 "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr ""
 
-#: query_qry.php:39 query_qry.php:78
+#: query_qry.php:39 query_qry.php:78 query_qry.php:39 query_qry.php:78
 msgid "Find volunteers for who match two specific opportunity codes"
 msgstr ""
 
-#: query_qry.php:40 query_qry.php:79
+#: query_qry.php:40 query_qry.php:79 query_qry.php:40 query_qry.php:79
 msgid "Find people with a custom field value"
 msgstr ""
 
-#: userconfig_ucfg.php:2
+#: userconfig_ucfg.php:2 userconfig_ucfg.php:2
 msgid "User permission to send email via mailto: links"
 msgstr ""
 
-#: userconfig_ucfg.php:3
+#: userconfig_ucfg.php:3 userconfig_ucfg.php:3
 msgid "Delimiter to separate emails in mailto: links"
 msgstr ""
 
-#: userconfig_ucfg.php:4
+#: userconfig_ucfg.php:4 userconfig_ucfg.php:4
 msgid "User permission to send email using PHPMailer"
 msgstr ""
 
-#: userconfig_ucfg.php:5
+#: userconfig_ucfg.php:5 userconfig_ucfg.php:5
 msgid "Reply email address: PHPMailer"
 msgstr ""
 
-#: userconfig_ucfg.php:6
+#: userconfig_ucfg.php:6 userconfig_ucfg.php:6
 msgid "Name that appears in From field: PHPMailer"
 msgstr ""
 
-#: userconfig_ucfg.php:7
+#: userconfig_ucfg.php:7 userconfig_ucfg.php:7
 msgid "User permission to create directories"
 msgstr ""
 
-#: userconfig_ucfg.php:8
+#: userconfig_ucfg.php:8 userconfig_ucfg.php:8
 msgid "User permission to export CSV files"
 msgstr ""
 
-#: userconfig_ucfg.php:9
+#: userconfig_ucfg.php:9 userconfig_ucfg.php:9
 msgid "User permission to use IST Address Verification"
 msgstr ""
 
-#: userconfig_ucfg.php:10
+#: userconfig_ucfg.php:10 userconfig_ucfg.php:10
 msgid "Reply email address for PHPMailer"
 msgstr ""
 
-#: userconfig_ucfg.php:11
+#: userconfig_ucfg.php:11 userconfig_ucfg.php:11
 msgid "Name that appears in From field"
 msgstr ""
 
-#: userconfig_ucfg.php:12
+#: userconfig_ucfg.php:12 userconfig_ucfg.php:12
 msgid "Allow user to add new event"
 msgstr ""
 
-#: userconfig_ucfg.php:13
+#: userconfig_ucfg.php:13 userconfig_ucfg.php:13
 msgid "Allow user to see member privacy data, e.g. Birth Year, Age."
 msgstr ""
