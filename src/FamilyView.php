@@ -161,8 +161,20 @@ if ($iFamilyID == $fam_ID) {
         <div class="box-body">
           <img src="<?= $familyService->getFamilyPhoto($fam_ID) ?>" alt=""
                class="img-circle img-responsive profile-user-img"/>
-
-          <h3 class="profile-username text-center"><?= gettext("The") . " $fam_Name " . gettext("Family") ?></h3>
+			
+			<?php switch ($fam_Country) {
+					case "United States":
+						echo "<h3 class=\"profile-username text-center\">". gettext("The") . " " . $fam_Name  . " " . gettext("Family") ."</h3>";
+						break;
+				//Others ountries may be added here
+				
+				//Default countries works for portuguese, spanish and french
+				
+					default:
+						echo "<h3 class=\"profile-username text-center\">". gettext("The Family") . " ". $fam_Name ."</h3>";
+      
+					} ?>
+    
           <?php if ($bOkToEdit) { ?>
             <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"
                class="btn btn-primary btn-block"><b><?= gettext("Edit") ?></b></a>
@@ -191,7 +203,7 @@ if ($iFamilyID == $fam_ID) {
             <?php }
             if (!SystemConfig::getValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
               <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
-                <span><?= gettext($fam_SendNewsLetter) ?></span></li>
+                <span><?= ($fam_SendNewsLetter=="TRUE" ? "✔" : "✖" ) ?></span></li>
             <?php }
             if (!SystemConfig::getValue("bHideWeddingDate") && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
               <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
