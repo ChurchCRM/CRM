@@ -61,7 +61,7 @@ class PDF_ConfirmReport extends ChurchInfoReport {
         //If the Reports Settings Menu's SystemConfig::getValue("sConfirmSigner") is set, then display the closing statement.  Hide it otherwise.
         if (SystemConfig::getValue("sConfirmSigner")) {
             $curY += 4 * SystemConfig::getValue("incrementY");
-            $this->WriteAt (SystemConfig::getValue("leftX"), $curY, "Sincerely,");
+            $this->WriteAt (SystemConfig::getValue("leftX"), $curY, gettext("Sincerely").",");
             $curY += 4 * SystemConfig::getValue("incrementY");
             $this->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sConfirmSigner"));
         }
@@ -224,11 +224,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         //If the "HideAge" check box is true, then create a Yes/No representation of the check box.
         if ($per_Flags)
         {
-            $hideAgeStr="Yes";
+            $hideAgeStr=gettext("Yes");
         }
         else
         {
-            $hideAgeStr="No";
+            $hideAgeStr=gettext("No");
         }
 
 		$pdf->WriteAtCell ($XBirthday, $curY, $XHideAge - $XBirthday, $birthdayStr);
