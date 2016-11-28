@@ -42,7 +42,7 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
             <div class="col-lg-9">
                 <select name="familyCountry" class="form-control">
                     <?php foreach (Countries::getNames() as $county) { ?>
-                    <option value="<?= $county ?>" <?php if (SystemConfig::getValue("sDefaultCountry") == $county) { echo "selected"; } ?>><?= $county ?>
+                    <option value="<?= $county ?>" <?php if (SystemConfig::getValue("sDefaultCountry") == $county) { echo "selected"; } ?>><?= gettext($county) ?>
                         <?php } ?>
                 </select>
 

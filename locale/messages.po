@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-25 15:33+0000\n"
+"POT-Creation-Date: 2016-11-28 01:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,16 +54,16 @@ msgstr ""
 #: CartView.php:604 CSVExport.php:108 CSVExport.php:113 CSVImport.php:236
 #: CSVImport.php:237 DirectoryReports.php:169 DirectoryReports.php:243
 #: external/templates/registration/family-register-done.php:26
-#: external/templates/registration/family-register.php:21 FamilyEditor.php:701
+#: external/templates/registration/family-register.php:24 FamilyEditor.php:701
 #: FamilyEditor.php:705 FamilyList.php:27 FamilyView.php:172 GeoPage.php:328
-#: GroupReports.php:132 Menu.php:177 Menu.php:207 PersonEditor.php:755
+#: GroupReports.php:132 Menu.php:182 Menu.php:212 PersonEditor.php:755
 #: PersonEditor.php:770 PersonView.php:245
 msgid "Address"
 msgstr ""
 
 #: Register.php:48 AutoPaymentEditor.php:681 CartToFamily.php:249
 #: CSVExport.php:118 CSVImport.php:238 DirectoryReports.php:247
-#: external/templates/registration/family-register.php:27 FamilyEditor.php:709
+#: external/templates/registration/family-register.php:30 FamilyEditor.php:709
 #: FamilyList.php:28 GeoPage.php:329 PersonEditor.php:785
 #: queryparameteroptions_qpo.php:7
 msgid "City"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: Register.php:49 AutoPaymentEditor.php:686 CartToFamily.php:254
 #: CSVExport.php:123 CSVImport.php:239 DirectoryReports.php:251
-#: external/templates/registration/family-register.php:30 FamilyEditor.php:721
+#: external/templates/registration/family-register.php:33 FamilyEditor.php:721
 #: FamilyList.php:29 GeoPage.php:330 PersonEditor.php:804
 #: queryparameteroptions_qpo.php:6
 msgid "State"
@@ -80,14 +80,13 @@ msgstr ""
 #: Register.php:50 AutoPaymentEditor.php:691 BackupDatabase.php:62
 #: CartToFamily.php:269 CSVExport.php:128 CSVImport.php:240
 #: DirectoryReports.php:255
-#: external/templates/registration/family-register.php:37 FamilyEditor.php:734
+#: external/templates/registration/family-register.php:40 FamilyEditor.php:734
 #: FamilyList.php:30 GeoPage.php:331 PersonEditor.php:824
 msgid "Zip"
 msgstr ""
 
 #: Register.php:51 AutoPaymentEditor.php:696 CartToFamily.php:279
-#: CSVExport.php:138 CSVImport.php:241
-#: external/templates/registration/family-register.php:40 FamilyEditor.php:743
+#: CSVExport.php:138 CSVImport.php:241 FamilyEditor.php:743
 #: PersonEditor.php:844
 msgid "Country"
 msgstr ""
@@ -96,7 +95,7 @@ msgstr ""
 msgid "Church Email"
 msgstr ""
 
-#: Register.php:53 Setup.php:197
+#: Register.php:53 Setup.php:198
 msgid "Base URL"
 msgstr ""
 
@@ -187,7 +186,7 @@ msgid "Canvass Progress Report"
 msgstr ""
 
 #: Reports/CanvassReports.php:69 Reports/CanvassReports.php:229
-#: Reports/FRBidSheets.php:88 SelectList.php:894
+#: Reports/FRBidSheets.php:89 SelectList.php:894
 #: sundayschool/SundaySchoolClassView.php:191 UserList.php:64
 #: VolunteerOpportunityEditor.php:85 VolunteerOpportunityEditor.php:369
 #: VolunteerOpportunityEditor.php:438 CartToFamily.php:159 CartView.php:603
@@ -338,8 +337,8 @@ msgstr ""
 
 #: Reports/ConfirmReport.php:117 Reports/ConfirmReportEmail.php:135
 #: SelectDelete.php:245 SelectDelete.php:369 CartToFamily.php:210
-#: external/templates/registration/family-register.php:17 FamilyEditor.php:693
-#: Menu.php:176 Menu.php:206
+#: external/templates/registration/family-register.php:20 FamilyEditor.php:693
+#: Menu.php:181 Menu.php:211
 msgid "Family Name"
 msgstr ""
 
@@ -360,7 +359,7 @@ msgstr ""
 #: CSVExport.php:143 CSVImport.php:242 EditEventAttendees.php:45
 #: EventAttendance.php:205
 #: external/templates/registration/family-register-done.php:27
-#: external/templates/registration/family-register.php:45 FamilyEditor.php:774
+#: external/templates/registration/family-register.php:53 FamilyEditor.php:774
 #: FamilyList.php:26 FamilyView.php:205 GroupReports.php:133
 #: PersonEditor.php:875 PersonEditor.php:877 PersonView.php:267
 #: PrintView.php:171 queryparameteroptions_qpo.php:8
@@ -472,63 +471,63 @@ msgstr ""
 msgid "for funds "
 msgstr ""
 
-#: Reports/FRBidSheets.php:77 Reports/FRCatalog.php:96
-#: Reports/FRCertificates.php:48
+#: Reports/FRBidSheets.php:78 Reports/FRCatalog.php:97
+#: Reports/FRCertificates.php:49
 msgid "Estimated value "
 msgstr ""
 
-#: Reports/FRBidSheets.php:79 Reports/FRCatalog.php:98
-#: Reports/FRCertificates.php:50
+#: Reports/FRBidSheets.php:80 Reports/FRCatalog.php:99
+#: Reports/FRCertificates.php:51
 msgid "Donated by "
 msgstr ""
 
-#: Reports/FRBidSheets.php:89
+#: Reports/FRBidSheets.php:90
 msgid "Paddle"
 msgstr ""
 
-#: Reports/FRBidSheets.php:90
+#: Reports/FRBidSheets.php:91
 msgid "Bid"
 msgstr ""
 
-#: Reports/FRCatalog.php:94
+#: Reports/FRCatalog.php:95
 msgid "Minimum bid "
 msgstr ""
 
-#: Reports/FundRaiserStatement.php:88
+#: Reports/FundRaiserStatement.php:89
 msgid "Donated Items:"
 msgstr ""
 
-#: Reports/FundRaiserStatement.php:139
+#: Reports/FundRaiserStatement.php:140
 msgid "Purchased Items:"
 msgstr ""
 
-#: Reports/FundRaiserStatement.php:211
+#: Reports/FundRaiserStatement.php:212
 msgid "Total of all purchases: $"
 msgstr ""
 
-#: Reports/FundRaiserStatement.php:216
+#: Reports/FundRaiserStatement.php:217
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
 msgstr ""
 
-#: Reports/FundRaiserStatement.php:218
+#: Reports/FundRaiserStatement.php:219
 msgid "Buyer # "
 msgstr ""
 
-#: Reports/FundRaiserStatement.php:218
+#: Reports/FundRaiserStatement.php:219
 msgid "Total purchases: $"
 msgstr ""
 
-#: Reports/FundRaiserStatement.php:218
+#: Reports/FundRaiserStatement.php:219
 msgid "Amount paid: ________________"
 msgstr ""
 
-#: Reports/FundRaiserStatement.php:220
+#: Reports/FundRaiserStatement.php:221
 msgid ""
 "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ "
 "__    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr ""
 
-#: Reports/FundRaiserStatement.php:222
+#: Reports/FundRaiserStatement.php:223
 msgid ""
 "                                        Signature "
 "________________________________________________________________"
@@ -691,10 +690,10 @@ msgstr ""
 #: SelectList.php:991 SelectList.php:1061 AutoPaymentEditor.php:589
 #: BatchWinnerEntry.php:84 BatchWinnerEntry.php:96 CSVImport.php:292
 #: DonatedItemEditor.php:204 DonatedItemEditor.php:250 eGive.php:342
-#: FamilyEditor.php:1060 GroupEditor.php:91 Include/Functions.php:1136
-#: Include/Functions.php:1178 PaddleNumEditor.php:171 PersonEditor.php:707
-#: PersonEditor.php:723 PersonEditor.php:983 PrintView.php:234
-#: PrintView.php:240
+#: FamilyEditor.php:1060 GroupEditor.php:91 Include/CountryDropDown.php:5
+#: Include/Functions.php:1136 Include/Functions.php:1178
+#: PaddleNumEditor.php:171 PersonEditor.php:707 PersonEditor.php:723
+#: PersonEditor.php:983 PrintView.php:234 PrintView.php:240
 msgid "Unassigned"
 msgstr ""
 
@@ -1062,27 +1061,27 @@ msgstr ""
 msgid "Permission"
 msgstr ""
 
-#: Setup.php:173
+#: Setup.php:174
 msgid "DB Server Name"
 msgstr ""
 
-#: Setup.php:178
+#: Setup.php:179
 msgid "DB Name"
 msgstr ""
 
-#: Setup.php:182
+#: Setup.php:183
 msgid "DB User"
 msgstr ""
 
-#: Setup.php:186
+#: Setup.php:187
 msgid "DB Password"
 msgstr ""
 
-#: Setup.php:192
+#: Setup.php:193
 msgid "Root Path"
 msgstr ""
 
-#: Setup.php:202
+#: Setup.php:203
 msgid "Setup"
 msgstr ""
 
@@ -1245,7 +1244,7 @@ msgid "Classes"
 msgstr ""
 
 #: sundayschool/SundaySchoolDashboard.php:102 MembersDashboard.php:131
-#: Menu.php:70
+#: Menu.php:75
 msgid "Families"
 msgstr ""
 
@@ -1257,7 +1256,7 @@ msgstr ""
 msgid "Girls"
 msgstr ""
 
-#: sundayschool/SundaySchoolDashboard.php:137 Menu.php:108
+#: sundayschool/SundaySchoolDashboard.php:137 Menu.php:113
 msgid "Sunday School Classes"
 msgstr ""
 
@@ -1584,11 +1583,11 @@ msgstr ""
 #: DonatedItemEditor.php:176 FamilyEditor.php:686 FamilyEditor.php:768
 #: FamilyEditor.php:827 FamilyEditor.php:889 FamilyEditor.php:907
 #: FamilyEditor.php:934 FamilyEditor.php:1084 FundRaiserEditor.php:154
-#: GroupEditor.php:151 GroupPropsEditor.php:165 locale/test.php:6
-#: NoteEditor.php:133 PaddleNumEditor.php:148 PersonEditor.php:555
-#: PersonEditor.php:700 PersonEditor.php:743 PersonEditor.php:975
-#: PersonEditor.php:1031 PersonEditor.php:1061 PledgeEditor.php:551
-#: PropertyEditor.php:184 PropertyTypeEditor.php:116
+#: GroupEditor.php:151 GroupPropsEditor.php:165 NoteEditor.php:133
+#: PaddleNumEditor.php:148 PersonEditor.php:555 PersonEditor.php:700
+#: PersonEditor.php:743 PersonEditor.php:975 PersonEditor.php:1031
+#: PersonEditor.php:1061 PledgeEditor.php:551 PropertyEditor.php:184
+#: PropertyTypeEditor.php:116
 msgid "Save"
 msgstr ""
 
@@ -2580,7 +2579,7 @@ msgstr ""
 msgid "Other Settings"
 msgstr ""
 
-#: ChurchCRM/model/ChurchCRM/Deposit.php:281
+#: ChurchCRM/model/ChurchCRM/Deposit.php:287
 msgid "Anonymous"
 msgstr ""
 
@@ -3614,20 +3613,20 @@ msgid "Home"
 msgstr ""
 
 #: external/templates/registration/family-register-members.php:113
-#: external/templates/registration/family-register.php:74
+#: external/templates/registration/family-register.php:82
 #: FinancialReports.php:69 GroupReports.php:84
 msgid "Next"
 msgstr ""
 
-#: external/templates/registration/family-register.php:13
+#: external/templates/registration/family-register.php:16
 msgid "Register your family"
 msgstr ""
 
-#: external/templates/registration/family-register.php:49
+#: external/templates/registration/family-register.php:57
 msgid "How many people are in your family"
 msgstr ""
 
-#: external/templates/registration/family-register.php:68
+#: external/templates/registration/family-register.php:76
 msgid "This will be my primary church."
 msgstr ""
 
@@ -3871,7 +3870,7 @@ msgstr ""
 msgid "Add Family"
 msgstr ""
 
-#: FamilyList.php:31 Menu.php:178
+#: FamilyList.php:31 Menu.php:183
 msgid "Created"
 msgstr ""
 
@@ -5481,15 +5480,15 @@ msgstr ""
 msgid "Update All Family Coordinates"
 msgstr ""
 
-#: MembersDashboard.php:138 Menu.php:77
+#: MembersDashboard.php:138 Menu.php:82
 msgid "See all Families"
 msgstr ""
 
-#: MembersDashboard.php:152 Menu.php:89
+#: MembersDashboard.php:152 Menu.php:94
 msgid "People"
 msgstr ""
 
-#: MembersDashboard.php:159 Menu.php:96
+#: MembersDashboard.php:159 Menu.php:101
 msgid "See All People"
 msgstr ""
 
@@ -5497,11 +5496,11 @@ msgstr ""
 msgid "Sunday School Kids"
 msgstr ""
 
-#: MembersDashboard.php:180 MembersDashboard.php:201 Menu.php:115 Menu.php:134
+#: MembersDashboard.php:180 MembersDashboard.php:201 Menu.php:120 Menu.php:139
 msgid "More info"
 msgstr ""
 
-#: MembersDashboard.php:194 Menu.php:127 menuconfig_mcf.php:10
+#: MembersDashboard.php:194 Menu.php:132 menuconfig_mcf.php:10
 msgid "Groups"
 msgstr ""
 
@@ -5563,31 +5562,31 @@ msgstr ""
 msgid "Women"
 msgstr ""
 
-#: Menu.php:56
+#: Menu.php:61
 msgid "Welcome to"
 msgstr ""
 
-#: Menu.php:149
+#: Menu.php:154
 msgid "Deposit Tracking"
 msgstr ""
 
-#: Menu.php:169
+#: Menu.php:174
 msgid "Latest Families"
 msgstr ""
 
-#: Menu.php:199
+#: Menu.php:204
 msgid "Updated Families"
 msgstr ""
 
-#: Menu.php:208
+#: Menu.php:213
 msgid "Updated"
 msgstr ""
 
-#: Menu.php:231
+#: Menu.php:236
 msgid "Latest Members"
 msgstr ""
 
-#: Menu.php:260
+#: Menu.php:265
 msgid "Updated Members"
 msgstr ""
 
