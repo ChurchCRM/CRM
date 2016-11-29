@@ -17,12 +17,12 @@ class SystemConfig
    */
   public static function init($configs)
   {
-    SystemConfig::$configs = $configs;
+      self::$configs = $configs;
   }
 
   public static function getValue($name)
   {
-    $config = SystemConfig::getRawConfig($name);
+    $config = self::getRawConfig($name);
     if (!is_null($config)) {
       return $config->getValue();
     }
@@ -31,7 +31,7 @@ class SystemConfig
 
     public static function getBooleanValue($name)
     {
-        $config = SystemConfig::getRawConfig($name);
+        $config = self::getRawConfig($name);
         if (!is_null($config)) {
             return $config->getBooleanValue();
         }
@@ -40,7 +40,7 @@ class SystemConfig
 
   public static function setValue($name, $value)
   {
-    $config = SystemConfig::getRawConfig($name);
+    $config = self::getRawConfig($name);
     if (!is_null($config)) {
       $config->setValue($value);
       $config->save();
@@ -49,7 +49,7 @@ class SystemConfig
   
   public static function setValueById($Id, $value)
   {
-    $config = SystemConfig::getRawConfigById($Id);
+    $config = self::getRawConfigById($Id);
     if (!is_null($config)) {
       $config->setValue($value);
       $config->save();
@@ -63,7 +63,7 @@ class SystemConfig
    */
   public static function getRawConfig($name)
   {
-    foreach (SystemConfig::$configs as $config) {
+    foreach (self::$configs as $config) {
       if ($config->getName() == $name) {
         return $config;
       }
@@ -73,7 +73,7 @@ class SystemConfig
   
   public static function getRawConfigById($Id)
   {
-    foreach (SystemConfig::$configs as $config) {
+    foreach (self::$configs as $config) {
       if ($config->getId() == $Id) {
         return $config;
       }
