@@ -443,7 +443,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
           $dbPersonId = mysqli_insert_id($cnInfoCentral);
           $note = new Note();
           $note->setPerId($dbPersonId);
-          $note->setText("Created via Family");
+          $note->setText(gettext("Created via Family"));
           $note->setType("create");
           $note->setEntered($_SESSION['iUserID']);
           $note->save();
@@ -455,7 +455,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			}
 			$note = new Note();
 			$note->setFamId($iFamilyID);
-			$note->setText("Created");
+			$note->setText(gettext("Created"));
 			$note->setType("create");
 			$note->setEntered($_SESSION['iUserID']);
 			$note->save();
@@ -485,7 +485,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					//RunQuery("UNLOCK TABLES");
           $note = new Note();
           $note->setPerId($aPersonIDs[$iCount]);
-          $note->setText("Updated via Family");
+          $note->setText(gettext("Updated via Family"));
           $note->setType("edit");
           $note->setEntered($_SESSION['iUserID']);
           $note->save();
@@ -493,7 +493,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			}
 			$note = new Note();
 			$note->setFamId($iFamilyID);
-			$note->setText("Updated");
+			$note->setText(gettext("Updated"));
 			$note->setType("edit");
 			$note->setEntered($_SESSION['iUserID']);
 			$note->save();

@@ -76,7 +76,7 @@ if ($_SESSION['bAddRecords'] || $bOkToEdit) {
       echo 'error : ' . $foo->error;
     } else {
       $note = new Note();
-      $note->setText("Profile Image Uploaded");
+      $note->setText(gettext("Profile Image Uploaded"));
       $note->setType("photo");
       $note->setEntered($_SESSION['iUserID']);
       if (isset($_GET['PersonID'])) {

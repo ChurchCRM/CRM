@@ -677,7 +677,7 @@ if (isset($_POST["DoImport"]))
                     $famid =  $aFid[0];
                     $note = new Note();
                     $note->setFamId($famid);
-                    $note->setText("Imported");
+                    $note->setText(gettext("Imported"));
                     $note->setType("create");
                     $note->setEntered($_SESSION['iUserID']);
                     $note->save();
@@ -755,7 +755,7 @@ if (isset($_POST["DoImport"]))
             extract(mysqli_fetch_array($rsPersonID));
             $note = new Note();
             $note->setPerId($iPersonID);
-            $note->setText("Imported");
+            $note->setText(gettext("Imported"));
             $note->setType("create");
             $note->setEntered($_SESSION['iUserID']);
             $note->save();
