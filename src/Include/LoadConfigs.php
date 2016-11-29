@@ -44,24 +44,21 @@ use Monolog\Handler\StreamHandler;
 use Propel\Runtime\Propel;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 
-
-if (!function_exists("mysql_failure")) {
-  function mysql_failure($message)
-  {
+function system_failure($message, $header = 'Setup failure')
+{
     require("Include/HeaderNotLoggedIn.php");
     ?>
     <div class='container'>
-      <h3>ChurchCRM – Setup failure</h3>
-
-      <div class='alert alert-danger text-center' style='margin-top: 20px;'>
-        <?= gettext($message) ?>
-      </div>
+        <h3>ChurchCRM – <?= _($header) ?></h3>
+        <div class='alert alert-danger text-center' style='margin-top: 20px;'>
+            <?= gettext($message) ?>
+        </div>
     </div>
     <?php
     require("Include/FooterNotLoggedIn.php");
     exit();
-  }
 }
+
 try {
     SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
     $sRootPath = SystemURLs::getRootPath();
@@ -71,12 +68,12 @@ try {
 
 
 $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
-or mysql_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
+or system_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
 
 mysqli_set_charset($cnInfoCentral, "utf8mb4");
 
 mysqli_select_db($cnInfoCentral, $sDATABASE)
-or mysql_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
+or system_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
 
 // Initialize the session
 session_name('CRM@' . $sRootPath);
@@ -91,21 +88,21 @@ $serviceContainer->checkVersion('2.0.0-dev');
 $serviceContainer->setAdapterClass('default', 'mysql');
 $manager = new ConnectionManagerSingle();
 $manager->setConfiguration(array(
-  'dsn' => 'mysql:host=' . $sSERVERNAME . ';port=3306;dbname=' . $sDATABASE,
-  'user' => $sUSER,
-  'password' => $sPASSWORD,
-  'settings' =>
-    array(
-      'charset' => 'utf8mb4',
-      'queries' =>
-        array(),
-    ),
-  'classname' => $dbClassName,
-  'model_paths' =>
-    array(
-      0 => 'src',
-      1 => 'vendor',
-    ),
+    'dsn' => 'mysql:host=' . $sSERVERNAME . ';port=3306;dbname=' . $sDATABASE,
+    'user' => $sUSER,
+    'password' => $sPASSWORD,
+    'settings' =>
+        array(
+            'charset' => 'utf8mb4',
+            'queries' =>
+                array(),
+        ),
+    'classname' => $dbClassName,
+    'model_paths' =>
+        array(
+            0 => 'src',
+            1 => 'vendor',
+        ),
 ));
 $manager->setName('default');
 $serviceContainer->setConnectionManager('default', $manager);
@@ -121,16 +118,16 @@ $resultset = $statement->execute();
 $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
 if (count($results) == 0) {
-  $systemService = new SystemService();
-  $version = new Version();
-  $version->setVersion($systemService->getInstalledVersion());
-  $version->setUpdateStart(new DateTime());
-  $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
-  $systemService->playbackSQLtoDatabase($setupQueries);
-  $configQueries = dirname(__file__) . '/../mysql/upgrade/update_config.sql';
-  $systemService->playbackSQLtoDatabase($configQueries);
-  $version->setUpdateEnd(new DateTime());
-  $version->save();
+    $systemService = new SystemService();
+    $version = new Version();
+    $version->setVersion($systemService->getInstalledVersion());
+    $version->setUpdateStart(new DateTime());
+    $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
+    $systemService->playbackSQLtoDatabase($setupQueries);
+    $configQueries = dirname(__file__) . '/../mysql/upgrade/update_config.sql';
+    $systemService->playbackSQLtoDatabase($configQueries);
+    $version->setUpdateEnd(new DateTime());
+    $version->save();
 }
 
 // Read values from config table into local variables
@@ -140,23 +137,23 @@ if (count($results) == 0) {
 SystemConfig::init(ConfigQuery::create()->find());
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
-  // Load user variables from user config table.
-  // **************************************************
-  $sSQL = "SELECT ucfg_name, ucfg_value AS value "
-    . "FROM userconfig_ucfg WHERE ucfg_per_ID='" . $_SESSION['iUserID'] . "'";
-  $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
-  if ($rsConfig) {
-    while (list($ucfg_name, $value) = mysqli_fetch_row($rsConfig)) {
-      $$ucfg_name = $value;
-      $_SESSION[$ucfg_name] = $value;
+    // Load user variables from user config table.
+    // **************************************************
+    $sSQL = "SELECT ucfg_name, ucfg_value AS value "
+        . "FROM userconfig_ucfg WHERE ucfg_per_ID='" . $_SESSION['iUserID'] . "'";
+    $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
+    if ($rsConfig) {
+        while (list($ucfg_name, $value) = mysqli_fetch_row($rsConfig)) {
+            $$ucfg_name = $value;
+            $_SESSION[$ucfg_name] = $value;
+        }
     }
-  }
 }
 
 $sMetaRefresh = '';  // Initialize to empty
 
 if (SystemConfig::getValue("sTimeZone")) {
-  date_default_timezone_set(SystemConfig::getValue("sTimeZone"));
+    date_default_timezone_set(SystemConfig::getValue("sTimeZone"));
 }
 
 $localeInfo = new LocaleInfo(SystemConfig::getValue("sLanguage"));
