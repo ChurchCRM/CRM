@@ -60,7 +60,7 @@ done
 
 echo "Database: mysql started"
 
-sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "DROP DATABASE $CRM_DB_NAME;"
+sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "DROP DATABASE IF EXISTS $CRM_DB_NAME;"
 sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "DROP USER '$CRM_DB_USER';"
 echo "Database: cleared"
 
