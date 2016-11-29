@@ -16,5 +16,5 @@ checkout [GNU gettext Manual](http://www.gnu.org/software/gettext/manual/)
  
 ## Change the Language
 
-- See [Localization] (../Installation/Localization.md) 
+- See [Localization](../Installation/Localization.md) 
 
