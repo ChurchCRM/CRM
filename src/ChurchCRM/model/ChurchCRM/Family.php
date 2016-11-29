@@ -62,7 +62,7 @@ class Family extends BaseFamily
 
   function getWeddingDay()
   {
-    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "" && $this->getWeddingdate() != "0000-00-00" ) {
+    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "") {
       $day =  $this->getWeddingdate()->format('d');
       return $day;
     }
@@ -71,7 +71,7 @@ class Family extends BaseFamily
 
   function getWeddingMonth()
   {
-    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "" && $this->getWeddingdate() != "0000-00-00" ) {
+    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "") {
       $month = $this->getWeddingdate()->format('m');
       return $month;
     }
