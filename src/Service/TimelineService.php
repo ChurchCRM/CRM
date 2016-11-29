@@ -114,7 +114,7 @@ class TimelineService
         }
       }
       $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
-        "by " . $displayEditedBy, "", $dbNote->getText(),
+        gettext("by") . " " . $displayEditedBy, "", $dbNote->getText(),
         $dbNote->getEditLink($this->baseURL), $dbNote->getDeleteLink($this->baseURL));
 
     }
