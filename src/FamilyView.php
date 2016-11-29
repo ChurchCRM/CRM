@@ -164,16 +164,17 @@ if ($iFamilyID == $fam_ID) {
 			
 			<?php switch ($fam_Country) {
 					case "United States":
-						echo "<h3 class=\"profile-username text-center\">". gettext("The") . " " . $fam_Name  . " " . gettext("Family") ."</h3>";
+						$familyName = gettext("The") . " " . $fam_Name  . " " . gettext("Family") ;
 						break;
 				//Others ountries may be added here
 				
 				//Default countries works for portuguese, spanish and french
 				
 					default:
-						echo "<h3 class=\"profile-username text-center\">". gettext("The Family") . " ". $fam_Name ."</h3>";
+						$familyName =  gettext("The Family") . " ". $fam_Name;
       
 					} ?>
+					<h3 class="profile-username text-center"><?= $familyName ?></h3>
     
           <?php if ($bOkToEdit) { ?>
             <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"
@@ -202,8 +203,8 @@ if ($iFamilyID == $fam_ID) {
                 <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
             <?php }
             if (!SystemConfig::getValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
-              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
-                <span><?= ($fam_SendNewsLetter=="TRUE" ? "✔" : "✖" ) ?></span></li>
+              <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>: 
+                <span style="color:<?= ($fam_SendNewsLetter=="TRUE" ? "green" : "red" ) ?>"><i class="fa fa-<?= ($fam_SendNewsLetter=="TRUE" ? "check" : "times" ) ?>"></i></span></li>
             <?php }
             if (!SystemConfig::getValue("bHideWeddingDate") && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
               <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
