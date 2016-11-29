@@ -29,6 +29,10 @@ if ($iPaddleNumID > 0) {
 	$iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
 }
 
+if ($iCurrentFundraiser == "") {
+    system_failure("No active Fundraiser", "System Error");
+}
+
 // Get the current fundraiser data
 if ($iCurrentFundraiser) {
 	$sSQL = "SELECT * from fundraiser_fr WHERE fr_ID = " . $iCurrentFundraiser;
