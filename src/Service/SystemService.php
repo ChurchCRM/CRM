@@ -43,9 +43,7 @@ class SystemService
       if ($line != '' && strpos($line, '--') === false) {
         $query .= " $line";
         if (substr($query, -1) == ';') {
-          if (mysqli_query($cnInfoCentral, $query)) {
-              system_failure(_("Can not run the following sql file") . " " . $fileName, "Database Script Failure");
-          }
+          $person = mysqli_query($cnInfoCentral, $query);
           $query = '';
         }
       }
