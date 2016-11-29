@@ -239,7 +239,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	}
 
 	// Validate Wedding Date if one was entered
-	if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != "0000-00-00")) {
+	if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != "")) {
 		$dateString = parseAndValidateDate($dWeddingDate, $locale = "<?= $localeInfo->getCountryCode() ?>", $pasfut = "past");
 		if ( $dateString === FALSE ) {
 			$sWeddingDateError = "<span style=\"color: red; \">"
@@ -829,7 +829,7 @@ require "Include/Header.php";
 		</div><!-- /.box-header -->
 		<div class="box-body">
 			<?php if (!SystemConfig::getValue("bHideWeddingDate")) { /* Wedding Date can be hidden - General Settings */
-				if ($dWeddingDate == "0000-00-00" || $dWeddingDate == "NULL") $dWeddingDate = ""; ?>
+				if ($dWeddingDate == "NULL") $dWeddingDate = ""; ?>
 				<div class="row">
 					<div class="form-group col-md-4">
                         <label><?= gettext("Wedding Date") ?>:</label>
