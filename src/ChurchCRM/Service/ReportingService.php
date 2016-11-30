@@ -50,8 +50,7 @@ class ReportingService
 
   function getViewURI($Id)
   {
-    //return  $_SESSION['sRootPath']."/FamilyView.php?FamilyID=".$Id;
-    return $_SESSION['sRootPath'] . "/ReportList.php";
+    return SystemURLs::getRootPath() . "/ReportList.php";
   }
 
   function getReportJSON($reports)

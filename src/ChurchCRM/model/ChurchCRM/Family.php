@@ -17,13 +17,6 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Family extends BaseFamily
 {
-  protected $baseURL;
-
-  public function applyDefaultValues()
-  {
-    parent::applyDefaultValues();
-    $this->baseURL = $_SESSION['sRootPath'];
-  }
 
   function getAddress()
   {
@@ -57,7 +50,7 @@ class Family extends BaseFamily
   
   function getViewURI()
   {
-    return $this->baseURL . "/FamilyView.php?FamilyID=" . $this->getId();
+    return SystemURLs::getRootPath() . "/FamilyView.php?FamilyID=" . $this->getId();
   } 
 
   function getWeddingDay()
