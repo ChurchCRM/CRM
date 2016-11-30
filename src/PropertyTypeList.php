@@ -27,8 +27,7 @@ $rsPropertyTypes = RunQuery($sSQL);
 require "Include/Header.php";
 ?>
 <div class="box box-body">
-<?
-//Display the new property link
+<?php //Display the new property link
 if ($_SESSION['bMenuOptions'])
 {
 	echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">" . gettext("Add a New Property Type") . "</a></p>";

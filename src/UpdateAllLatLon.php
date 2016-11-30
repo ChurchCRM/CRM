@@ -94,7 +94,7 @@ echo '<br/><p>' . gettext('Update Finished') . '</p>';
     <b><?= gettext("No coordinates found") ?></b>
 </div>
 <div class="box-body ">
-<?
+<?php
 $sSQL =  "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude ";
 $sSQL .= "FROM family_fam WHERE fam_Latitude = 0";
 $rsFamilies = RunQuery ($sSQL);
