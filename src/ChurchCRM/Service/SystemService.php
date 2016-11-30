@@ -23,7 +23,7 @@ class SystemService
     $release = null;
     try {
       $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
 
     }
 
@@ -44,7 +44,6 @@ class SystemService
     requireUserGroupMembership("bAdmin");
     $restoreResult = new \stdClass();
     $restoreResult->Messages = array();
-    global $sUSER, $sPASSWORD, $sDATABASE;
     $connection = Propel::getConnection();
     $restoreResult->file = $file;
     $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);

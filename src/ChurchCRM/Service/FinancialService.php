@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Service;
 
-require_once dirname(dirname(__FILE__)) . "/Include/ReportFunctions.php";
-require_once dirname(dirname(__FILE__)) . "/Include/Functions.php";
+require_once dirname(dirname(__FILE__)) . "/../Include/ReportFunctions.php";
+require_once dirname(dirname(__FILE__)) . "/../Include/Functions.php";
 
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\MICRReader;
@@ -12,12 +12,10 @@ use ChurchCRM\dto\SystemConfig;
 class FinancialService
 {
 
-  private $baseURL;
   private $familyService;
 
   public function __construct()
   {
-    $this->baseURL = $_SESSION['sRootPath'];
     $this->familyService = new FamilyService();
   }
 
@@ -445,12 +443,12 @@ class FinancialService
 
   function getPaymentViewURI($groupKey)
   {
-    return $this->baseURL . "/PledgeEditor.php?GroupKey=" . $groupKey;
+    return SystemURLs::getRootPath() . "/PledgeEditor.php?GroupKey=" . $groupKey;
   }
 
   function getViewURI($Id)
   {
-    return $this->baseURL . "/DepositSlipEditor.php?DepositSlipID=" . $Id;
+    return SystemURLs::getRootPath() . "/DepositSlipEditor.php?DepositSlipID=" . $Id;
   }
 
   private function validateDate($payment)

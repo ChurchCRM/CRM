@@ -2,19 +2,15 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemURLs;
+
+
 class FamilyService
 {
 
-  private $baseURL;
-
-  public function __construct()
-  {
-    $this->baseURL = $_SESSION['sRootPath'];
-  }
-
   function getViewURI($Id)
   {
-    return $this->baseURL . "/FamilyView.php?FamilyID=" . $Id;
+    return SystemURLs::getRootPath() . "/FamilyView.php?FamilyID=" . $Id;
   }
 
   function search($searchTerm)
@@ -99,7 +95,7 @@ class FamilyService
         $name .= ", " . $aHead[$fam_ID];
       }
       $name .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $name = "";
     }
     return $name;
