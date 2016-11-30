@@ -286,7 +286,8 @@ echo '<td><input type="submit" class="btn" name="DataFile" value="' . gettext("M
     </div>
     <div class="box-body">
 <table class="table">
-<?phpecho '<tr><td><br></td><td><input type="submit" class="btn" name="FindNeighbors" value="' . gettext("Show Neighbors") . '"></td></tr>'."\n";
+<?php
+echo '<tr><td><br></td><td><input type="submit" class="btn" name="FindNeighbors" value="' . gettext("Show Neighbors") . '"></td></tr>'."\n";
 
 foreach ($aClassificationName as $key => $value) {
     echo '<tr><td class="LabelColumn">'.$value.'</td>';

@@ -174,5 +174,5 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 </table>
 </form>
 <?php
-  require "Include/Footer.php";
+require "Include/Footer.php";
 ?>
