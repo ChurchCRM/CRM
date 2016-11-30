@@ -47,7 +47,9 @@ Please familiarize yourself with the [documentation](http://docs.churchcrm.io/en
 ### Environment Variables (dto classes)
 
   Beginning in 2.4.0, we began converting global variables to static classes.  This gives us more flexibility and clarity when referring to these necessary variables.  
-  
+
+  If you find yourself tempted to add to the legacy ```Include/Functions.php``` file, please evaluate whether the function would be better placed in a static class.
+
   *  SystemURLs
      *  Document Root - The physical path of ChurchCRM on the server. i.e. /var/www/html/ChurchCRM
      *  Root Path - The path of ChurchCRM relative to the current domain.  i.e. http://www.domain.com**/churchCRM**
