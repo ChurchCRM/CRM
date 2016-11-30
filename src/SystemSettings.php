@@ -178,7 +178,7 @@ require "Include/Header.php";
                       <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
                         <?php
                         foreach (json_decode($setting->getData())->Choices as $choice) {
-                          echo "<option value = " . $choice . " " . ($setting->getValue() == $choice ? "selected" : "") . ">" . $choice . "</option>";
+                          echo "<option value = " . $choice . " " . ($setting->getValue() == $choice ? "selected" : "") . ">" . gettext($choice) . "</option>";
                         }
                         ?>
                       </select>
