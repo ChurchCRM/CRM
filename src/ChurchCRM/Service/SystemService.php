@@ -259,11 +259,6 @@ class SystemService
     requireUserGroupMembership("bAdmin");
   }
 
-  function rebuildWithSQL($SQLFile)
-  {
-    $this->playbackSQLtoDatabase(SystemURLs::getDocumentRoot() . $SQLFile);
-  }
-
   function getDBVersion() {
     $connection = Propel::getConnection();
     $query = "Select * from version_ver";
