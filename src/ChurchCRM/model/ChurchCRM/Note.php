@@ -22,9 +22,9 @@ class Note extends BaseNote
       $this->setEnteredBy($enteredBy);
   }
 
-  function getEditLink($rootPath)
+  function getEditLink()
   {
-    $url = $rootPath . "/NoteEditor.php?NoteID=" . $this->getId() . "&";
+    $url = SystemURLs::getRootPath() . "/NoteEditor.php?NoteID=" . $this->getId() . "&";
 
     if ($this->getPerId() != "") {
       $url = $url . "PersonID=" . $this->getPerId();
@@ -34,9 +34,9 @@ class Note extends BaseNote
     return $url;
   }
 
-  function getDeleteLink($rootPath)
+  function getDeleteLink()
   {
-    return $rootPath . "/NoteDelete.php?NoteID=" . $this->getId();
+    return SystemURLs::getRootPath() . "/NoteDelete.php?NoteID=" . $this->getId();
   }
 
 
