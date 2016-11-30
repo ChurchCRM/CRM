@@ -40,7 +40,7 @@ if (isset($_POST['WhichType'])){
 if($eType!="All"){
   $sSQL = "SELECT * FROM event_types WHERE type_id=$eType";
   $rsOpps = RunQuery($sSQL);
-  $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+  $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
   extract($aRow);
   $sPageTitle = gettext("Listing Events of Type = ") .$type_name;
 } else {
@@ -85,7 +85,7 @@ $sSQL = "SELECT DISTINCT event_types.*
          RIGHT JOIN events_event ON event_types.type_id=events_event.event_type 
          ORDER BY type_id ";
 $rsOpps = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsOpps);
+$numRows = mysqli_num_rows($rsOpps);
 
 ?>
 <table cellpadding="1" align="center" cellspacing="0" class='table'>
@@ -97,7 +97,7 @@ $numRows = mysql_num_rows($rsOpps);
         <?php
         for ($r = 1; $r <= $numRows; $r++)
         {
-          $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+          $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
           extract($aRow);
 //          foreach($aRow as $t)echo "$t\n\r";
           ?>
@@ -120,12 +120,12 @@ if($eType=="All"){
            WHERE events_event.event_type = '$eType' AND YEAR(events_event.event_start)";
 }
 $rsOpps = RunQuery($sSQL);
-$aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+$aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
 @extract($aRow); // @ needed to suppress error messages when no church events
 $rsOpps = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsOpps);
+$numRows = mysqli_num_rows($rsOpps);
 for($r=1; $r<=$numRows; $r++){
-    $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+    $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
     extract($aRow);
     $Yr[$r]=$aRow[0];
 }
@@ -182,14 +182,14 @@ foreach ($allMonths as $mKey => $mVal) {
                 $sSQL .= " WHERE t1.event_type = t2.type_id".$eTypeSQL." AND MONTH(t1.event_start) = ".$mVal." AND YEAR(t1.event_start)=$EventYear";
         }
         $sSQL .= " ORDER BY t1.event_start ";
-
+        
         $rsOpps = RunQuery($sSQL);
-        $numRows = mysql_num_rows($rsOpps);
+        $numRows = mysqli_num_rows($rsOpps);
         $aAvgRows = $numRows;
         // Create arrays of the fundss.
         for ($row = 1; $row <= $numRows; $row++)
         {
-                $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+                $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
                 extract($aRow);
 
                 $aEventID[$row] = $event_id;
@@ -204,7 +204,7 @@ foreach ($allMonths as $mKey => $mVal) {
                 $attendSQL="SELECT * FROM event_attend WHERE event_id=$event_id";
                 $attOpps = RunQuery($attendSQL);
                 if($attOpps)
-                  $attNumRows[$row] = mysql_num_rows($attOpps);
+                  $attNumRows[$row] = mysqli_num_rows($attOpps);
                 else
                   $attNumRows[$row]=0;
 
@@ -215,10 +215,10 @@ if ($numRows > 0)
   ?>
   <div class='box'>
     <div class='box-header'>
-      <h3 class='box-title'><?= gettext("There ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." events")." for ".date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
+      <h3 class='box-title'><?= ($numRows == 1 ? gettext("There is"):gettext("There are"))." ". $numRows . " ". ($numRows == 1 ? gettext("event"):gettext("events"))." "."for"."  ".gettext(date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
     </div>
     <div class='box-body'>
-  <table class='table data-table table-striped table-bordered table-responsive'>
+  <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
     <thead>
       <tr class="TableHeader">
         <th><?= gettext("Action") ?></th>
@@ -281,11 +281,11 @@ if ($numRows > 0)
                     // RETRIEVE THE list of counts associated with the current event
                     $cvSQL= "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID[$row]' ORDER BY evtcnt_countid ASC";
                     $cvOpps = RunQuery($cvSQL);
-                    $aNumCounts = mysql_num_rows($cvOpps);
+                    $aNumCounts = mysqli_num_rows($cvOpps);
 
                     if($aNumCounts) {
                       for($c = 0; $c <$aNumCounts; $c++){
-                        $cRow = mysql_fetch_array($cvOpps, MYSQL_BOTH);
+                        $cRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
                         extract($cRow);
                         $cCountID[$c] = $evtcnt_countid;
                         $cCountName[$c] = $evtcnt_countname;
@@ -325,7 +325,7 @@ if ($numRows > 0)
         {
           $avgSQL="SELECT evtcnt_countid, evtcnt_countname, AVG(evtcnt_countcount) from eventcounts_evtcnt, events_event WHERE eventcounts_evtcnt.evtcnt_eventid=events_event.event_id AND events_event.event_type='$eType' AND MONTH(events_event.event_start)='$mVal' GROUP BY eventcounts_evtcnt.evtcnt_countid ASC ";
           $avgOpps = RunQuery($avgSQL);
-          $aAvgRows = mysql_num_rows($avgOpps);
+          $aAvgRows = mysqli_num_rows($avgOpps);
           ?>
           <tr>
             <td class="LabelColumn" colspan="2"><?= gettext(" Monthly Averages") ?></td>
@@ -334,7 +334,7 @@ if ($numRows > 0)
                 <?php
                 // calculate and report averages
                 for($c = 0; $c <$aAvgRows; $c++){
-                  $avgRow = mysql_fetch_array($avgOpps, MYSQL_BOTH);
+                  $avgRow = mysqli_fetch_array($avgOpps, MYSQLI_BOTH);
                   extract($avgRow);
                   $avgName = $avgRow['evtcnt_countname'];
                   $avgAvg = $avgRow[2];
@@ -369,6 +369,22 @@ if ($numRows > 0)
     <?= gettext("Add New Event") ?>
   </a>
 </div>
+
+<script type="text/javascript">
+//Added by @saulowulhynek to translation of datatable nav terms
+  $(document).ready(function () {
+    $('#listEvents').dataTable({
+      "language": {
+        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+      },
+      responsive: true,
+      "dom": 'T<"clear">lfrtip',
+      "tableTools": {
+        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
+      }
+    });
+  });
+</script>
 
 <?php
 require 'Include/Footer.php';

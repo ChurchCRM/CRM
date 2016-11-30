@@ -62,7 +62,7 @@ $myAddressLatLon = new AddressLatLon;
 // If the users database is large this loop does not finish before something times out.
 // This results in an ungraceful ending when $sLimit is large.
 // At least the unknown coordinates are first in the queue.
-while ($aFam = mysql_fetch_array($rsFamilies)) {
+while ($aFam = mysqli_fetch_array($rsFamilies)) {
     extract ($aFam);
 
     $myAddressLatLon->SetAddress ($fam_Address1, $fam_City, $fam_State, $fam_Zip);
@@ -94,11 +94,11 @@ echo '<br/><p>' . gettext('Update Finished') . '</p>';
     <b><?= gettext("No coordinates found") ?></b>
 </div>
 <div class="box-body ">
-<?
+<?php
 $sSQL =  "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude ";
 $sSQL .= "FROM family_fam WHERE fam_Latitude = 0";
 $rsFamilies = RunQuery ($sSQL);
-while ($aFam = mysql_fetch_array($rsFamilies)) {
+while ($aFam = mysqli_fetch_array($rsFamilies)) {
     extract ($aFam);
     echo "<li>". $fam_Name . " " . $fam_Address1 .
     "," . $fam_City . "," . $fam_State . "," . $fam_Zip . "</li>";

@@ -32,7 +32,7 @@ fputcsv($out, array("Class",
   "Dad Name", "Dad Mobile", "Dad Email",
   "Mom Name", "Mom Mobile", "Mom Email"));
 
-while ($aRow = mysql_fetch_array($rsKids)) {
+while ($aRow = mysqli_fetch_array($rsKids)) {
   extract($aRow);
   $birthDate = "";
   if ($birthYear != "") {

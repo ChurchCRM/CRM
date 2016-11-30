@@ -1,22 +1,22 @@
 <?php
 
-use ChurchCRM\ConfigQuery;
 use ChurchCRM\Family;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use Slim\Views\PhpRenderer;
-
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 $app->group('/register', function () {
 
-  $enableSelfReg = ConfigQuery::create()->filterByName("sEnableSelfRegistration")->findOne();
-  if ($enableSelfReg->getBooleanValue()) {
+  $enableSelfReg = SystemConfig::getBooleanValue("sEnableSelfRegistration");
+  if ($enableSelfReg) {
 
     $this->get('/', function ($request, $response, $args) {
 
       $renderer = new PhpRenderer("templates/registration/");
 
-      return $renderer->render($response, "family-register.php", array("sRootPath" => $_SESSION['sRootPath']));
+      return $renderer->render($response, "family-register.php", array("sRootPath" => SystemURLs::getRootPath()));
 
     });
 
@@ -49,7 +49,7 @@ $app->group('/register', function () {
 
       $familyRoles = ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find();
 
-      $pageObjects = array("sRootPath" => $_SESSION['sRootPath'], "family" => $family, "familyCount" => $_SESSION['regFamilyCount'], "familyRoles" => $familyRoles);
+      $pageObjects = array("sRootPath" => SystemURLs::getRootPath(), "family" => $family, "familyCount" => $_SESSION['regFamilyCount'], "familyRoles" => $familyRoles);
 
       return $renderer->render($response, "family-register-members.php", $pageObjects);
 
@@ -103,7 +103,7 @@ $app->group('/register', function () {
     }
     $_SESSION['familyMembers'] = $familyMembers;
 
-    $pageObjects = array("sRootPath" => $_SESSION['sRootPath'], "family" => $family, "familyClass" => $_SESSION['regFamilyClass']);
+    $pageObjects = array("sRootPath" => SystemURLs::getRootPath(), "family" => $family, "familyClass" => $_SESSION['regFamilyClass']);
     return $renderer->render($response, "family-register-done.php", $pageObjects);
 
   });

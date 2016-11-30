@@ -95,10 +95,10 @@ $rsConfigs = RunQuery($sSQL);
 			<th><?= gettext("Current Value") ?></th>
 			<th><?=gettext("Notes") ?></th>
 		</tr>
-<?
+<?php
 $r = 1;
 // List Individual Settings
-while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysql_fetch_row($rsConfigs)) {
+while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysqli_fetch_row($rsConfigs)) {
 	
 	// Cancel, Save Buttons every 13 rows
 	if ($r == 13) {
@@ -173,6 +173,6 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 </tr>
 </table>
 </form>
-<?
+<?php
 require "Include/Footer.php";
 ?>

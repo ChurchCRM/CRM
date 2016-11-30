@@ -30,13 +30,13 @@
   "dependencies": {
     "admin-lte": "2.3.7",
     "ionicons": "2.0.1",
-    "font-awesome": "4.6.3",
+    "font-awesome": "4.7.0",
     "fullcalendar": "3.0.1"
   },
   "scripts": {
     "install": "grunt clean && grunt curl-dir && grunt copy",
     "postinstall": "grunt concat && grunt rename",
-    "locale-gen": "/vagrant/scripts/update-locale.sh",
+    "locale-gen": "locale/update-locale.sh",
     "locale-download" : "grunt updateFromPOeditor",
     "package": "grunt generateSignatures && grunt compress",
     "demosite": "scripts/demosite.sh",

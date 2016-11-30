@@ -18,6 +18,7 @@
 // Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
+use ChurchCRM\dto\SystemConfig;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
@@ -73,7 +74,7 @@ require "Include/Header.php";
 $sRowClass = "RowColorA";
 
 //Loop through the person recordset
-while ($aRow = mysql_fetch_array($rsUsers)) {
+while ($aRow = mysqli_fetch_array($rsUsers)) {
 
 	extract($aRow);
 
@@ -93,7 +94,7 @@ while ($aRow = mysql_fetch_array($rsUsers)) {
 		<td align="center"><?= $usr_LoginCount ?></td>
 		<td align="center">
 		<?php
-			if ($iMaxFailedLogins > 0 && $usr_FailedLogins >= $iMaxFailedLogins)
+			if (SystemConfig::getValue("iMaxFailedLogins") > 0 && $usr_FailedLogins >= SystemConfig::getValue("iMaxFailedLogins"))
 				echo "<span style=\"color: red;\">" . $usr_FailedLogins . "<br></span><a href=\"UserList.php?ResetLoginCount=$per_ID\">" . gettext("Reset") . "</a>";
 			else
 				echo $usr_FailedLogins;

@@ -17,6 +17,7 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 $iCurrentFundraiser = $_GET["CurrentFundraiser"];
 
@@ -52,7 +53,7 @@ class PDF_FRCatalogReport extends ChurchInfoReport {
 // Get the information about this fundraiser
 $sSQL = "SELECT * FROM fundraiser_fr WHERE fr_ID=".$iCurrentFundraiser;
 $rsFR = RunQuery($sSQL);
-$thisFR = mysql_fetch_array($rsFR);
+$thisFR = mysqli_fetch_array($rsFR);
 extract ($thisFR);
 
 // Get all the donated items
@@ -63,18 +64,10 @@ $rsItems = RunQuery($sSQL);
 $pdf = new PDF_FRCatalogReport();
 $pdf->SetTitle ($fr_title);
 
-// Read in report settings from database
-$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$pdf->$cfg_name = $cfg_value;
-	}
-}
-
 // Loop through items
 $idFirstChar = '';
 
-while ($oneItem = mysql_fetch_array($rsItems)) {
+while ($oneItem = mysqli_fetch_array($rsItems)) {
 	extract ($oneItem);
 
 	$newIdFirstChar = substr($di_item,0,1);
@@ -108,7 +101,7 @@ while ($oneItem = mysql_fetch_array($rsItems)) {
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1)
+if (SystemConfig::getValue("iPDFOutputType") == 1)
 	$pdf->Output("FRCatalog" . date("Ymd") . ".pdf", "D");
 else
 	$pdf->Output();	

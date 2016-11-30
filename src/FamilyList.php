@@ -35,7 +35,7 @@ require "Include/Header.php";
       <tbody>
       <?php
 
-      while ($aRow = mysql_fetch_array($rsFamilies)) {
+      while ($aRow = mysqli_fetch_array($rsFamilies)) {
       extract($aRow);
       ?>
       <tr>

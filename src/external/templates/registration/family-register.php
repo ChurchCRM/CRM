@@ -1,4 +1,7 @@
 <?php
+use ChurchCRM\data\Countries;
+use ChurchCRM\dto\SystemConfig;
+
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Family Registration";
 require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
@@ -37,7 +40,12 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
               <input name="familyZip" class="form-control" placeholder="<?= gettext("Zip") ?>" required>
             </div>
             <div class="col-lg-9">
-              <input name="familyCountry" class="form-control" placeholder="<?= gettext("Country") ?>" required>
+                <select name="familyCountry" class="form-control">
+                    <?php foreach (Countries::getNames() as $county) { ?>
+                    <option value="<?= $county ?>" <?php if (SystemConfig::getValue("sDefaultCountry") == $county) { echo "selected"; } ?>><?= gettext($county) ?>
+                        <?php } ?>
+                </select>
+
             </div>
           </div>
         </div>

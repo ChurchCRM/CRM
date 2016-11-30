@@ -11,7 +11,7 @@ $app->group('/register', function () {
     $registrationData->sCity = $systemConfig->getValue("sChurchCity");
     $registrationData->sState = $systemConfig->getValue("sChurchState");
     $registrationData->sZip = $systemConfig->getValue("sChurchZip");
-    $registrationData->sCountry = $systemConfig->getValue("sDefaultCountry");
+    $registrationData->sCountry = $systemConfig->getValue("sChurchCountry");
     $registrationData->sEmail = $systemConfig->getValue("sChurchEmail");
     $registrationData->ChurchCRMURL = $input->ChurchCRMURL;
     $registrationData->Version = $this->SystemService->getInstalledVersion();
@@ -32,7 +32,6 @@ $app->group('/register', function () {
 
     // =Turn off the registration flag so the menu option is less obtrusive
     $systemConfig->setValue("bRegistered","1");
-    $bRegistered = 1;
     return $response->withJson(array("status"=>"success"));
 
   });

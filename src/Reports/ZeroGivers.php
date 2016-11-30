@@ -18,6 +18,7 @@ require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -34,7 +35,7 @@ $letterhead = FilterInput($_POST["letterhead"]);
 $remittance = FilterInput($_POST["remittance"]);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") {
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly") && $output != "pdf") {
 	Redirect("Menu.php");
 	exit;
 }
@@ -62,7 +63,7 @@ $sSQL = "SELECT DISTINCT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City,
 $rsReport = RunQuery($sSQL);
 
 // Exit if no rows returned
-$iCountRows = mysql_num_rows($rsReport);
+$iCountRows = mysqli_num_rows($rsReport);
 if ($iCountRows < 1){
 	header("Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Zero%20Givers"); 
 }
@@ -95,31 +96,31 @@ if ($output == "pdf") {
 		function StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
 			global $letterhead, $sDateStart, $sDateEnd;
 			$curY = $this->StartLetterPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
-			$curY += 2 * $this->incrementY;
+			$curY += 2 * SystemConfig::getValue("incrementY");
 			if ($sDateStart == $sDateEnd)
 				$DateString = date("F j, Y",strtotime($sDateStart));
 			else
 				$DateString = date("M j, Y",strtotime($sDateStart)) . " - " .  date("M j, Y",strtotime($sDateEnd));
 
-			$blurb = $this->sTaxReport1 . " " . $DateString . " $this->sZeroGivers";
-			$this->WriteAt ($this->leftX, $curY, $blurb);
-			$curY += 30 * $this->incrementY;
+			$blurb = SystemConfig::getValue("sTaxReport1"). " " . $DateString . " " . SystemConfig::getValue("sZeroGivers");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $blurb);
+			$curY += 30 * SystemConfig::getValue("incrementY");
 
 			return ($curY);
 		}
 
 		function FinishPage ($curY,$fam_ID,$fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) {
 			global $remittance;
-			$curY += 2 * $this->incrementY;
-			$blurb = $this->sZeroGivers2;
-			$this->WriteAt ($this->leftX, $curY, $blurb);
-			$curY += 3 * $this->incrementY;
-			$blurb = $this->sZeroGivers3;
-			$this->WriteAt ($this->leftX, $curY, $blurb);
-			$curY += 3 * $this->incrementY;
-			$this->WriteAt ($this->leftX, $curY, "Sincerely,");
-			$curY += 4 * $this->incrementY;
-			$this->WriteAt ($this->leftX, $curY, $this->sTaxSigner);
+			$curY += 2 * SystemConfig::getValue("incrementY");
+			$blurb = SystemConfig::getValue("sZeroGivers2");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $blurb);
+			$curY += 3 * SystemConfig::getValue("incrementY");
+			$blurb = SystemConfig::getValue("sZeroGivers3");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, $blurb);
+			$curY += 3 * SystemConfig::getValue("incrementY");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, "Sincerely,");
+			$curY += 4 * SystemConfig::getValue("incrementY");
+			$this->WriteAt (SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sTaxSigner"));
 			
 		}
 	}
@@ -127,23 +128,15 @@ if ($output == "pdf") {
 	// Instantiate the directory class and build the report.
 	$pdf = new PDF_ZeroGivers();
 	
-	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
-   if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-			$pdf->$cfg_name = $cfg_value;
-		}
-   }
-
 	// Loop through result array
-	while ($row = mysql_fetch_array($rsReport)) {
+	while ($row = mysqli_fetch_array($rsReport)) {
 		extract ($row);
 		$curY = $pdf->StartNewPage ($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 
 		$pdf->FinishPage ($curY,$fam_ID,$fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 	}
 
-	if ($iPDFOutputType == 1)
+	if (SystemConfig::getValue("iPDFOutputType") == 1)
 		$pdf->Output("ZeroGivers" . date("Ymd") . ".pdf", "D");
 	else
 		$pdf->Output();
@@ -169,7 +162,7 @@ if ($output == "pdf") {
 	$buffer = substr($buffer,0,-1) . $eol;
 	
 	// Add data
-	while ($row = mysql_fetch_row($rsReport)) {
+	while ($row = mysqli_fetch_row($rsReport)) {
 		foreach ($row as $field) {
 			$field = str_replace($delimiter, " ", $field);	// Remove any delimiters from data
 			$buffer .= $field . $delimiter;

@@ -39,7 +39,7 @@ $sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence
 $rsClassification = RunQuery($sClassSQL);
 unset($aClassificationName);
 $aClassificationName[0] = gettext("Unassigned");
-while ($aRow = mysql_fetch_array($rsClassification)) {
+while ($aRow = mysqli_fetch_array($rsClassification)) {
 	extract($aRow);
 	$aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
 }
@@ -49,7 +49,7 @@ $sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequen
 $rsFamilyRole = RunQuery($sFamRoleSQL);
 unset($aFamilyRoleName);
 $aFamilyRoleName[0] = gettext("Unassigned");
-while ($aRow = mysql_fetch_array($rsFamilyRole)) {
+while ($aRow = mysqli_fetch_array($rsFamilyRole)) {
 	extract($aRow);
 	$aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
 }
@@ -59,7 +59,7 @@ while ($aRow = mysql_fetch_array($rsFamilyRole)) {
  // Get the total number of Person Properties (p) in table Property_pro
 $sSQL = "SELECT * FROM property_pro WHERE pro_Class=\"p\"";
 $rsPro = RunQuery($sSQL);
-$ProRows = mysql_num_rows($rsPro);
+$ProRows = mysqli_num_rows($rsPro);
 
 $sPersonPropertySQL  = "SELECT * FROM property_pro WHERE pro_Class=\"p\" ORDER BY pro_Name";
 $rsPersonProperty = RunQuery($sPersonPropertySQL);
@@ -67,7 +67,7 @@ unset($aPersonPropertyName);
 $aPersonPropertyName[0] = gettext("Unassigned");
 $i = 1;
 while ( $i <= $ProRows ) {
-	$aRow = mysql_fetch_array($rsPersonProperty);
+	$aRow = mysqli_fetch_array($rsPersonProperty);
 	extract($aRow);
 	$aPersonPropertyName[intval($pro_ID)]=$pro_Name;
 	$i++;
@@ -77,7 +77,7 @@ while ( $i <= $ProRows ) {
 $sGroupTypeSQL  = "SELECT * FROM list_lst WHERE lst_ID=3 ORDER BY lst_OptionSequence";
 $rsGroupTypes = RunQuery($sGroupTypeSQL);
 unset($aGroupTypes);
-while ($aRow = mysql_fetch_array($rsGroupTypes)) {
+while ($aRow = mysqli_fetch_array($rsGroupTypes)) {
 	extract($aRow);
 	$aGroupTypes[intval($lst_OptionID)]=$lst_OptionName;
 }
@@ -208,9 +208,9 @@ if ($iMode == 2) {
 				"WHERE grp_Type = $iGroupTypeMissing GROUP BY per_ID";
 	$rsSub = RunQuery($sSQLsub);
 
-	if (mysql_num_rows($rsSub) > 0) {
+	if (mysqli_num_rows($rsSub) > 0) {
 		$sExcludedIDs = "";
-		while ($aTemp = mysql_fetch_row($rsSub)) {
+		while ($aTemp = mysqli_fetch_row($rsSub)) {
 			$sExcludedIDs .= $aTemp[0] . ",";
 		}
 		$sExcludedIDs = mb_substr($sExcludedIDs,0,-1);
@@ -351,13 +351,13 @@ $sRedirect = mb_substr($sRedirect,0,-5); // Chop off last &amp;
 // If AddToCart submit button was used, run the query, add people to cart, and view cart
 if (array_key_exists ("AddAllToCart", $_GET)) {
 	$rsPersons = RunQuery($sSQL);
-	while ($aRow = mysql_fetch_row($rsPersons)) {
+	while ($aRow = mysqli_fetch_row($rsPersons)) {
 		AddToPeopleCart($aRow[0]);
 	}
 
 } elseif (array_key_exists ("IntersectCart", $_GET)) {
 	$rsPersons = RunQuery($sSQL);
-	while ($aRow = mysql_fetch_row($rsPersons))
+	while ($aRow = mysqli_fetch_row($rsPersons))
 		$aItemsToProcess[] = $aRow[0];
 
 	if (array_key_exists ('aPeopleCart', $_SESSION))
@@ -365,7 +365,7 @@ if (array_key_exists ("AddAllToCart", $_GET)) {
 
 } elseif (array_key_exists ("RemoveFromCart", $_GET)) {
 	$rsPersons = RunQuery($sSQL);
-	while ($aRow = mysql_fetch_row($rsPersons))
+	while ($aRow = mysqli_fetch_row($rsPersons))
 		$aItemsToProcess[] = $aRow[0];
 
 	if (array_key_exists ('aPeopleCart', $_SESSION))
@@ -374,7 +374,7 @@ if (array_key_exists ("AddAllToCart", $_GET)) {
 
 // Get the total number of persons
 $rsPer = RunQuery($sSQL);
-$Total = mysql_num_rows($rsPer);
+$Total = mysqli_num_rows($rsPer);
 
 // Select the proper sort SQL
 switch($sSort) {
@@ -466,7 +466,7 @@ if ($iMode == 1) {
 	$rsGroupTypes = RunQuery($sSQLtemp);
 	echo '<p align="center" class="MediumText">' . gettext("Show people <b>not</b> in this group type:");
 	echo '<select name="type" onchange="this.form.submit()">';
-	while ($aRow = mysql_fetch_array($rsGroupTypes)) {
+	while ($aRow = mysqli_fetch_array($rsGroupTypes)) {
 		extract($aRow);
 		echo '<option value="' . $lst_OptionID . '"';
 		if ($iGroupTypeMissing == $lst_OptionID) {
@@ -619,7 +619,7 @@ if ($iMode == 1) {
 
 		$rsGroups = RunQuery($sGroupsSQL);
 		$aGroupNames = array();
-		while ($aRow = mysql_fetch_array($rsGroups)) {
+		while ($aRow = mysqli_fetch_array($rsGroups)) {
 			extract($aRow);
 			$aGroupNames[intval($grp_ID)]=$grp_Name;
 		}
@@ -654,7 +654,7 @@ if ($iMode == 1) {
 		// Get the group's role list ID
 		$sSQL = "SELECT grp_RoleListID ".
 				"FROM group_grp WHERE grp_ID =" . $iGroupID;
-		$aTemp = mysql_fetch_array(RunQuery($sSQL));
+		$aTemp = mysqli_fetch_array(RunQuery($sSQL));
 		$iRoleListID = $aTemp[0];
 
 		// Get the roles
@@ -662,7 +662,7 @@ if ($iMode == 1) {
 				" ORDER BY lst_OptionSequence";
 		$rsRoles = RunQuery($sSQL);
 		unset($aGroupRoles);
-		while ($aRow = mysql_fetch_array($rsRoles))	{
+		while ($aRow = mysqli_fetch_array($rsRoles))	{
 			extract($aRow);
 			$aGroupRoles[intval($lst_OptionID)]=$lst_OptionName;
 		}
@@ -704,7 +704,7 @@ echo '<div align="center">';
 echo "<a href=\"SelectList.php?mode=$sMode&amp;type=$iGroupTypeMissing&amp;Filter=$sFilter&amp;Classification=$iClassificationStr&amp;FamilyRole=$iFamilyRoleStr&amp;Gender=$iGenderStr&amp;grouptype=$iGroupTypeStr&amp;groupid=$iGroupIDStr&amp;grouproleid=$iRoleIDStr&amp;PersonProperties=$iPersonPropertyStr";
 if($sSort) echo "&amp;Sort=$sSort";
 	echo "\">" . gettext("View All") . "</a>";
-while ($aLetter = mysql_fetch_row($rsLetters)) {
+while ($aLetter = mysqli_fetch_row($rsLetters)) {
 	$aLetter[0] = mb_strtoupper($aLetter[0]);
 	if ($aLetter[0] == $sLetter) {
 		echo " &nbsp;|&nbsp; " . $aLetter[0];
@@ -961,7 +961,7 @@ $sRowClass = "RowColorA";
 $iPrevFamily = -1;
 
 //Loop through the person recordset
-while ($aRow = mysql_fetch_array($rsPersons)) {
+while ($aRow = mysqli_fetch_array($rsPersons)) {
 	$per_Title = "";
 	$per_FirstName = "";
 	$per_MiddleName = "";

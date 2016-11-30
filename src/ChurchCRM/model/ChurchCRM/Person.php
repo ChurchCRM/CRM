@@ -3,8 +3,9 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
-use ChurchCRM\UserQuery;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -18,16 +19,6 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Person extends BasePerson
 {
-
-  protected $baseURL;
-  protected $showGravatar;
-
-  public function applyDefaultValues()
-  {
-    parent::applyDefaultValues();
-    $this->baseURL = $_SESSION['sRootPath'];
-    $this->showGravatar = $_SESSION['$sEnableGravatarPhotos'];
-  }
 
   function getFullName()
   {
@@ -68,7 +59,7 @@ class Person extends BasePerson
 
   function getViewURI()
   {
-    return $this->baseURL . "/PersonView.php?PersonID=" . $this->getId();
+    return SystemURLs::getRootPath() . "/PersonView.php?PersonID=" . $this->getId();
   }
 
   function getUploadedPhoto()
@@ -76,10 +67,10 @@ class Person extends BasePerson
     $validextensions = array("jpeg", "jpg", "png");
     $hasFile = false;
     while (list(, $ext) = each($validextensions)) {
-      $photoFile = dirname(__FILE__) . "/../../../Images/Person/thumbnails/" . $this->getId() . "." . $ext;
+      $photoFile = SystemURLs::getDocumentRoot()."/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
       if (file_exists($photoFile)) {
         $hasFile = true;
-        $photoFile = $this->baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
+        $photoFile = SystemURLs::getRootPath() . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
         break;
       }
     }
@@ -126,14 +117,14 @@ class Person extends BasePerson
 
   function getDefaultPhoto()
   {
-    $photoFile = $this->baseURL . "/Images/Person/man-128.png";
+    $photoFile = SystemURLs::getRootPath() . "/Images/Person/man-128.png";
     $isChild = "Child" == $this->getFamilyRoleName();
     if ($this->isMale() && $isChild) {
-      $photoFile = $this->baseURL . "/Images/Person/kid_boy-128.png";
+      $photoFile = SystemURLs::getRootPath() . "/Images/Person/kid_boy-128.png";
     } else if ($this->isFemale() && $isChild) {
-      $photoFile = $this->baseURL . "/Images/Person/kid_girl-128.png";
+      $photoFile = SystemURLs::getRootPath() . "/Images/Person/kid_girl-128.png";
     } else if ($this->isFemale() && !$isChild) {
-      $photoFile = $this->baseURL . "/Images/Person/woman-128.png";
+      $photoFile = SystemURLs::getRootPath() . "/Images/Person/woman-128.png";
     }
     return $photoFile;
   }
@@ -141,7 +132,7 @@ class Person extends BasePerson
 
   function getGravatar($s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
   {
-    if ($this->showGravatar && $this->getEmail() != "") {
+    if (SystemConfig::getValue("sEnableGravatarPhotos") && $this->getEmail() != "") {
       $url = 'http://www.gravatar.com/avatar/';
       $url .= md5(strtolower(trim($this->getEmail())));
       $url .= "?s=$s&d=$d&r=$r";

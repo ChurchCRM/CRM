@@ -23,7 +23,7 @@ if (!$_SESSION['bAdmin'])
 }
 
 //Set the page title
-$sPageTitle = "Generate Seed Data";
+$sPageTitle = gettext("Generate Seed Data");
 require 'Include/Header.php';
 ?>
 

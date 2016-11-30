@@ -28,6 +28,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\DepositQuery;
 
 $financialService = new FinancialService();
 
@@ -49,7 +50,11 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $depositData = false;  //Determine whether or not we should display the deposit line graph
 if ($_SESSION['bFinance']) {  
-  $depositData =  \ChurchCRM\Base\DepositQuery::create()->filterByDate(array('min' =>date('Y-m-d', strtotime('-90 days'))))->find()->toJSON();
+  $deposits = DepositQuery::create()->filterByDate(array('min' =>date('Y-m-d', strtotime('-90 days'))))->find();
+  if ( count($deposits) > 0 )
+  {
+    $depositData =  $deposits->toJSON();
+  }
 }
 
 // Set the page title
@@ -179,7 +184,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                         </tr>
                         </thead>
                         <tbody>
-                        <?php while ($row = mysql_fetch_array($rsNewFamilies)) { ?>
+                        <?php while ($row = mysqli_fetch_array($rsNewFamilies)) { ?>
                         <tr>
                             <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
                             <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; } ?></td>
@@ -209,7 +214,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                         </tr>
                         </thead>
                         <tbody>
-                        <?php while ($row = mysql_fetch_array($rsLastFamilies)) { ?>
+                        <?php while ($row = mysqli_fetch_array($rsLastFamilies)) { ?>
                             <tr>
                                 <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
                                 <td><?= $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'] ?></td>
@@ -239,7 +244,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
-                        <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
+                        <?php while ($row = mysqli_fetch_array($rsNewPeople)) { ?>
                         <li>
                             <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
                             <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>
@@ -268,7 +273,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
-                        <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
+                        <?php while ($row = mysqli_fetch_array($rsLastPeople)) { ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
                                 <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>

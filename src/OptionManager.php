@@ -61,32 +61,44 @@ switch ($mode) {
 // Select the proper settings for the editor mode
 switch ($mode) {
 	case 'famroles':
-		$adj = gettext("Family");
+		//It don't work for postuguese because in it adjective come after noum
 		$noun = gettext("Role");
+		//In the same way, the plural isn't only add s
+		$adjplusname = gettext("Family Role");
+		$adjplusnameplural = gettext("Family Roles");
+		$sPageTitle = gettext("Family Roles Editor");
 		$listID = 2;
 		$embedded = false;
 		break;
 	case 'classes':
-		$adj = gettext("Person");
 		$noun = gettext("Classification");
+		$adjplusname = gettext("Person Classification");
+		$adjplusnameplural = gettext("Person Classifications");
+		$sPageTitle = gettext("Person Classifications Editor");
 		$listID = 1;
 		$embedded = false;
 		break;
 	case 'grptypes':
-		$adj = gettext("Group");
 		$noun = gettext("Type");
+		$adjplusname = gettext("Group Type");
+		$adjplusnameplural = gettext("Group Types");
+		$sPageTitle = gettext("Group Types Editor");
 		$listID = 3;
 		$embedded = false;
 		break;
 	case 'securitygrp':
-		$adj = gettext("Security");
 		$noun = gettext("Group");
+		$adjplusname = gettext("Security Group");
+		$adjplusnameplural = gettext("Security Groups");
+		$sPageTitle = gettext("Security Groups Editor");
 		$listID = 5;
 		$embedded = false;
 		break;
 	case 'grproles':
-		$adj = gettext("Group Member");
 		$noun = gettext("Role");
+		$adjplusname = gettext("Group Member Role");
+		$adjplusnameplural = gettext("Group Member Roles");
+		$sPageTitle = gettext("Group Member Roles Editor");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
 
@@ -94,18 +106,20 @@ switch ($mode) {
 		$rsTemp = RunQuery($sSQL);
 
 		// Validate that this list ID is really for a group roles list. (for security)
-		if (mysql_num_rows($rsTemp) == 0) {
+		if (mysqli_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
 		}
 
-		$aTemp = mysql_fetch_array($rsTemp);
+		$aTemp = mysqli_fetch_array($rsTemp);
 		$iDefaultRole = $aTemp[0];
 
 		break;
 	case 'custom':
-		$adj = gettext("Person Custom List");
 		$noun = gettext("Option");
+		$adjplusname = gettext("Person Custom List Option");
+		$adjplusnameplural = gettext("Person Custom List Options");
+		$sPageTitle = gettext("Person Custom List Options Editor");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
 
@@ -113,15 +127,17 @@ switch ($mode) {
 		$rsTemp = RunQuery($sSQL);
 
 		// Validate that this is a valid person-custom field custom list
-		if (mysql_num_rows($rsTemp) == 0) {
+		if (mysqli_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
 		}
 
 		break;
 	case 'groupcustom':
-		$adj = gettext("Custom List");
 		$noun = gettext("Option");
+		$adjplusname = gettext("Custom List Option");
+		$adjplusnameplural = gettext("Custom List Options");
+		$sPageTitle = gettext("Custom List Options Editor");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
 
@@ -129,15 +145,17 @@ switch ($mode) {
 		$rsTemp = RunQuery($sSQL);
 
 		// Validate that this is a valid group-specific-property field custom list
-		if (mysql_num_rows($rsTemp) == 0) {
+		if (mysqli_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
 		}
 
 		break;
 	case 'famcustom':
-		$adj = gettext("Family Custom List");
 		$noun = gettext("Option");
+		$adjplusname = gettext("Family Custom List Option");
+		$adjplusnameplural = gettext("Family Custom List Options");
+		$sPageTitle = gettext("Family Custom List Options Editor");
 		$listID = FilterInput($_GET["ListID"],'int');
 		$embedded = true;
 
@@ -145,7 +163,7 @@ switch ($mode) {
 		$rsTemp = RunQuery($sSQL);
 
 		// Validate that this is a valid family_custom field custom list
-		if (mysql_num_rows($rsTemp) == 0) {
+		if (mysqli_num_rows($rsTemp) == 0) {
 			Redirect("Menu.php");
 			break;
 		}
@@ -172,7 +190,7 @@ if (isset($_POST["AddField"]))
 		// Check for a duplicate option name
 		$sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '" . $newFieldName . "'";
 		$rsCount = RunQuery($sSQL);
-		if (mysql_num_rows($rsCount) > 0)
+		if (mysqli_num_rows($rsCount) > 0)
 		{
 			$iNewNameError = 2;
 		}
@@ -181,13 +199,13 @@ if (isset($_POST["AddField"]))
 			// Get count of the options
 			$sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
 			$rsTemp = RunQuery($sSQL);
-			$numRows = mysql_num_rows($rsTemp);
+			$numRows = mysqli_num_rows($rsTemp);
 			$newOptionSequence = $numRows + 1;
 
 			// Get the new OptionID
 			$sSQL = "SELECT MAX(lst_OptionID) FROM list_lst WHERE lst_ID = $listID";
 			$rsTemp = RunQuery($sSQL);
-			$aTemp = mysql_fetch_array($rsTemp);
+			$aTemp = mysqli_fetch_array($rsTemp);
 			$newOptionID = $aTemp[0] + 1;
 
 			// Insert into the appropriate options table
@@ -207,7 +225,7 @@ $bDuplicateFound = false;
 //ADDITION - get Sequence Also
 $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
 $rsList = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsList);
+$numRows = mysqli_num_rows($rsList);
 
 $aNameErrors = array();
 for ($row = 1; $row <= $numRows; $row++)
@@ -217,7 +235,7 @@ if (isset($_POST["SaveChanges"]))
 {
 	for ($row = 1; $row <= $numRows; $row++)
 	{
-		$aRow = mysql_fetch_array($rsList, MYSQL_BOTH);
+		$aRow = mysqli_fetch_array($rsList, MYSQLI_BOTH);
 		$aOldNameFields[$row] = $aRow["lst_OptionName"];
 		$aIDs[$row] =  $aRow["lst_OptionID"];
 
@@ -273,12 +291,12 @@ if (isset($_POST["SaveChanges"]))
 
 $sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID = $listID ORDER BY lst_OptionSequence";
 $rsRows = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsRows);
+$numRows = mysqli_num_rows($rsRows);
 
 // Create arrays of the option names and IDs
 for ($row = 1; $row <= $numRows; $row++)
 {
-	$aRow = mysql_fetch_array($rsRows, MYSQL_BOTH);
+	$aRow = mysqli_fetch_array($rsRows, MYSQLI_BOTH);
 
 	if (!$bErrorFlag)
 		$aNameFields[$row] = $aRow["lst_OptionName"];
@@ -295,8 +313,8 @@ $sRowClass = "RowColorA";
 if ($embedded)
 	include "Include/Header-Minimal.php";
 else
-{
-	$sPageTitle = $adj . ' ' . $noun . "s ".gettext("Editor");
+{	//It don't work for postuguese because in it adjective come after noum
+	//$sPageTitle = $adj . ' ' . $noun . "s ".gettext("Editor");
 	include "Include/Header.php";
 }
 
@@ -312,7 +330,7 @@ else
 if ( $bErrorFlag )
 {
 	echo "<span class=\"MediumLargeText\" style=\"color: red;\">";
-	if ($bDuplicateFound) echo "<br>" . gettext("Error: Duplicate") . " " . $adj . " " . $noun . gettext("s are not allowed.");
+	if ($bDuplicateFound) echo "<br>" . gettext("Error: Duplicate") . " " . $adjplusnameplural . " " . gettext("are not allowed.");
 	echo "<br>" . gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") . "</span><br><br>";
 }
 ?>
@@ -383,12 +401,12 @@ for ($row=1; $row <= $numRows; $row++)
 
 <div class="box box-primary">
 	<div class="box-body">
-<?=  gettext("New") . " " . $noun . " " . gettext("Name") ?>:&nbsp;
+<?=  gettext("Name for New") . " " . $noun ?>:&nbsp;
 <span class="SmallText">
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
 <p>  </p>
-<input type="submit" class="btn" value="<?= gettext("Add New") . ' ' . $adj . ' ' . $noun ?>" Name="AddField">
+<input type="submit" class="btn" value="<?= gettext("Add New") . ' ' . $adjplusname ?>" Name="AddField">
 <?php
 	if ($iNewNameError > 0)
 	{

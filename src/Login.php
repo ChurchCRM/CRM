@@ -36,6 +36,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
+use ChurchCRM\dto\SystemConfig;
 
 $systemService = new SystemService();
 
@@ -111,7 +112,7 @@ if ($currentUser != Null)
     $sPasswordHashSha256 = hash("sha256", $_POST['Password'].$currentUser->getPersonId());
 
     // Block the login if a maximum login failure count has been reached
-    if ($iMaxFailedLogins > 0 && $currentUser->getFailedLogins() >= $iMaxFailedLogins)
+    if (SystemConfig::getValue("iMaxFailedLogins") > 0 && $currentUser->getFailedLogins() >= SystemConfig::getValue("iMaxFailedLogins"))
     {
         $sErrorText = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
     }
@@ -128,11 +129,12 @@ if ($currentUser != Null)
     else
     {
         // Set the LastLogin and Increment the LoginCount
-        $date = new DateTime("now", new DateTimeZone($sTimeZone));
+        $date = new DateTime("now", new DateTimeZone(SystemConfig::getValue("sTimeZone")));
         $currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
         $currentUser->setLoginCount($currentUser->getLoginCount() +1);
         $currentUser->setFailedLogins(0);
         $currentUser->save();
+        $_SESSION['user'] = $currentUser;
 
         // Set the User's family id in case EditSelf is enabled
         $_SESSION['iFamID'] = $currentUser->getPerson()->getFamId();
@@ -140,68 +142,22 @@ if ($currentUser != Null)
         // Set the UserID
         $_SESSION['iUserID'] = $currentUser->getPersonId();
 
-        // Set the Actual Name for use in the sidebar
-        $_SESSION['UserFirstName'] = $currentUser->getPerson()->getFirstName();
-
-        // Set the Actual Name for use in the sidebar
-        $_SESSION['UserLastName'] = $currentUser->getPerson()->getLastName();
-
         // Set the pagination Search Limit
         $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 
-        // Set the User's email address
-        $_SESSION['sEmailAddress'] = $currentUser->getPerson()->getEmail();
-
         // If user has administrator privilege, override other settings and enable all permissions.
-        if ($currentUser->getAdmin())
-        {
-            $_SESSION['bAddRecords'] = true;
-            $_SESSION['bEditRecords'] = true;
-            $_SESSION['bDeleteRecords'] = true;
-            $_SESSION['bMenuOptions'] = true;
-            $_SESSION['bManageGroups'] = true;
-            $_SESSION['bFinance'] = true;
-            $_SESSION['bNotes'] = true;
-            $_SESSION['bCommunication'] = true;
-            $_SESSION['bCanvasser'] = true;
-            $_SESSION['bAdmin'] = true;
-        }
-        // Otherwise, set the individual permissions.
-        else
-        {
-            // Set the Add permission
-            $_SESSION['bAddRecords'] = $currentUser->getAddRecords();
+      $_SESSION['bAdmin'] = $currentUser->isAdmin();
 
-            // Set the Edit permission
-            $_SESSION['bEditRecords'] = $currentUser->getEditRecords();
+      $_SESSION['bAddRecords'] = $currentUser->isAddRecordsEnabled();
+      $_SESSION['bEditRecords'] = $currentUser->isEditRecordsEnabled();
+      $_SESSION['bDeleteRecords'] = $currentUser->isDeleteRecordsEnabled();
+      $_SESSION['bMenuOptions'] = $currentUser->isMenuOptionsEnabled();
+      $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
+      $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
+      $_SESSION['bNotes'] = $currentUser->isNotesEnabled();
+      $_SESSION['bEditSelf'] = $currentUser->isEditSelfEnabled();
+      $_SESSION['bCanvasser'] = $currentUser->isCanvasserEnabled();
 
-            // Set the Delete permission
-            $_SESSION['bDeleteRecords'] = $currentUser->getDeleteRecords();
-
-            // Set the Menu Option permission
-            $_SESSION['bMenuOptions'] = $currentUser->getMenuOptions();
-
-            // Set the ManageGroups permission
-            $_SESSION['bManageGroups'] = $currentUser->getManageGroups();
-
-            // Set the Donations and Finance permission
-            $_SESSION['bFinance'] = $currentUser->getFinance();
-
-            // Set the Notes permission
-            $_SESSION['bNotes'] = $currentUser->getNotes();
-
-            // Set the Communications permission
-            $_SESSION['bCommunication'] = $currentUser->getCommunication();
-
-            // Set the EditSelf permission
-            $_SESSION['bEditSelf'] = $currentUser->getEditSelf();
-
-            // Set the Canvasser permission
-            $_SESSION['bCanvasser'] = $currentUser->getCanvasser();
-
-            // Set the Admin permission
-            $_SESSION['bAdmin'] = false;
-        }
 
         // Set the FailedLogins
         $_SESSION['iFailedLogins'] = $currentUser->getFailedLogins();
@@ -211,12 +167,6 @@ if ($currentUser != Null)
 
         // Set the Last Login
         $_SESSION['dLastLogin'] = $currentUser->getLastLogin();
-
-        // Set the Workspace Width
-        $_SESSION['iWorkspaceWidth'] = $currentUser->getWorkspaceWidth();
-
-        // Set the Base Font Size
-        $_SESSION['iBaseFontSize'] = $currentUser->getBaseFontsize();
 
         // Set the Style Sheet
         $_SESSION['sStyle'] = $currentUser->getStyle();
@@ -232,10 +182,6 @@ if ($currentUser != Null)
 
         // Initialize the last operation time
         $_SESSION['tLastOperation'] = time();
-
-        // Set the Root Path ... used in basic security check
-        $_SESSION['sRootPath'] = $sRootPath;
-        $_SESSION['$sEnableGravatarPhotos'] = $sEnableGravatarPhotos;
 
         $_SESSION['bHasMagicQuotes'] = 0;
 
@@ -270,11 +216,7 @@ if ($currentUser != Null)
 // Turn ON output buffering
 ob_start();
 
-$enableSelfReg = $false;
-if ( $systemConfig->getRawConfig("sEnableSelfRegistration") )
-{
-  $enableSelfReg = $systemConfig->getRawConfig("sEnableSelfRegistration")->getBooleanValue();
-}
+$enableSelfReg = SystemConfig::getBooleanValue("sEnableSelfRegistration");
 
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM " .gettext("Login");

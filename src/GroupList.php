@@ -53,6 +53,8 @@ if ($_SESSION['bManageGroups'])
 
 </div>
 <script src="skin/js/GroupList.js" type="text/javascript"></script>
+
+
 <?php
 require 'Include/Footer.php';
 ?>

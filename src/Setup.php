@@ -17,8 +17,16 @@ if (isset($_POST["Setup"])) {
   exit();
 }
 
+if (isset($_GET['SystemIntegrityCheck']))
+{
 require_once 'Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
 $systemService = new \ChurchCRM\Service\SystemService();
+$AppIntegrity = $systemService->verifyApplicationIntegrity();
+echo $AppIntegrity['status'];
+exit();
+}
+
+
 
 
 $temp = $_SERVER['REQUEST_URI'];
@@ -40,18 +48,12 @@ $required = array(
   'GD Library for image manipulation' => (extension_loaded('gd') && function_exists('gd_info')),
   'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
   'cURL' => function_exists('curl_version'),
-  'locale/gettext' => function_exists('bindtextdomain')
+  'locale/gettext' => function_exists('bindtextdomain'),
+  'Include file is writeable' => is_writable("Include/Config.php.example"),
+  'ChurchCRM File Integrity Check' => FALSE
 );
 
-$AppIntegrity = $systemService->verifyApplicationIntegrity();
-if ($AppIntegrity['status'] == "success")
-{
-  $required["ChurchCRM File Integrity Check"] = TRUE;
-}
-else
-{
-  $required["ChurchCRM File Integrity Check"] = FALSE;
-}
+
 
 if (!function_exists('bindtextdomain')) {
   function gettext($string){
@@ -90,9 +92,26 @@ require("Include/HeaderNotLoggedIn.php");
 ?>
 <script>
 $("document").ready(function(){
-$("#dangerContinue").click(function(){
-  $("#setupPage").css("display","");
-})
+    $("#dangerContinue").click(function(){
+      $("#setupPage").css("display","");
+    });
+    $.ajax({
+        url: "<?= $sRootPath ?>/Setup.php?SystemIntegrityCheck=1",
+        method: "GET"
+    }).done(function(data){
+        if (data == "success" ) 
+        {
+            $("#ChurchCRMFileIntegrityCheck-status").removeClass("text-red");
+            $("#ChurchCRMFileIntegrityCheck-status").addClass("text-blue");
+            $("#ChurchCRMFileIntegrityCheck-status").html("&check;")
+        }
+        else
+        {
+            $("#ChurchCRMFileIntegrityCheck-status").html("&#x2717;");
+        }
+       
+    });
+    $("#ChurchCRMFileIntegrityCheck-status").html('<i class="fa fa-spinner fa-spin"></i>');
 });
 </script>
 <div class='container'>
@@ -119,7 +138,7 @@ $("#dangerContinue").click(function(){
               <tr>
                 <td><?php echo $label ?></td>
                 <td
-                  class="<?php echo ($passed) ? 'text-blue' : 'text-red' ?>"><?php echo ($passed) ? '&check;' : '&#x2717;' ?></td>
+                  id="<?php echo preg_replace('/\s+/', '', $label) ?>-status" class="<?php echo ($passed) ? 'text-blue' : 'text-red' ?>"><?php echo ($passed) ? '&check;' : '&#x2717;' ?></td>
               </tr>
             <?php endforeach ?>
           </table>
@@ -186,6 +205,8 @@ $("#dangerContinue").click(function(){
           </div>
         </div>
       </div>
+  </div>
+</div>
     <?php
     require("Include/FooterNotLoggedIn.php");
     ?>

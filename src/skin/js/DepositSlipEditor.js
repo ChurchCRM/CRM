@@ -1,7 +1,7 @@
 function initPaymentTable()
 {
   var colDef = [
-    {
+     {
       "className":      'details-control',
       "orderable":      false,
       "data":           null,
@@ -155,7 +155,8 @@ function initDepositSlipEditor()
   });
 
   $("#deleteConfirmed").click(function() {
-    var deletedRows = dataT.rows('.selected').data()
+    var deletedRows = dataT.rows('.selected').data();
+    window.CRM.deletesRemaining = deletedRows.length;
     $.each(deletedRows, function(index, value) {
       $.ajax({
         type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -164,12 +165,16 @@ function initDepositSlipEditor()
         data: {"_METHOD":"DELETE"},
         encode: true
       })
-              .done(function(data) {
-                $('#confirmDelete').modal('hide');
-                dataT.rows('.selected').remove().draw(false);
-                location.reload();
-              });
-    });
+      .done(function(data) {
+        $('#confirmDelete').modal('hide');
+        dataT.rows('.selected').remove().draw(false);
+        window.CRM.deletesRemaining --;
+        if ( window.CRM.deletesRemaining == 0 )
+        {
+          location.reload();
+        }
+      });
+      });
   });
 
 }

@@ -61,7 +61,7 @@ if (isset ($_POST['Action'])) {
                      '" . FilterInput($eDOY)   . "')";
 
 	  RunQuery($sSQL);
-    $theID = mysql_insert_id();
+    $theID = mysqli_insert_id($cnInfoCentral);
 
 	  for($j=0; $j<$eCntNum; $j++)
 	  {
@@ -88,12 +88,12 @@ if (isset ($_POST['Action'])) {
 
 $sSQL = "SELECT * FROM event_types ORDER BY type_id";
 $rsOpps = RunQuery($sSQL);
-$numRows = mysql_num_rows($rsOpps);
+$numRows = mysqli_num_rows($rsOpps);
 
         // Create arrays of the event types
         for ($row = 1; $row <= $numRows; $row++)
         {
-                $aRow = mysql_fetch_array($rsOpps, MYSQL_BOTH);
+                $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
                 extract($aRow);
 
                 $aTypeID[$row] = $type_id;
@@ -107,19 +107,19 @@ $numRows = mysql_num_rows($rsOpps);
 
                 switch ($aDefRecurType[$row]){
                   case "none":
-                    $recur[$row]="None";
+                    $recur[$row]=gettext("None");
                     break;
                   case "weekly":
-                    $recur[$row]="Weekly on ".$aDefRecurDOW[$row];
+                    $recur[$row]=gettext("Weekly on")." ".gettext($aDefRecurDOW[$row]."s");
                     break;
                   case "monthly":
-                    $recur[$row]="Monthly on ".date('dS',mktime(0,0,0,1,$aDefRecurDOM[$row],2000));
+                    $recur[$row]=gettext("Monthly on")." ".date('dS',mktime(0,0,0,1,$aDefRecurDOM[$row],2000));
                     break;
                   case "yearly":
-                    $recur[$row]="Yearly on ".substr($aDefRecurDOY[$row],5);
+                    $recur[$row]=gettext("Yearly on")." ".substr($aDefRecurDOY[$row],5);
                     break;
                   default:
-                    $recur[$row]="None";
+                    $recur[$row]=gettext("None");
                 }
                 // recur types = 1-DOW for weekly, 2-DOM for monthly, 3-DOY for yearly.
                 // repeats on DOW, DOM or DOY
@@ -127,13 +127,13 @@ $numRows = mysql_num_rows($rsOpps);
                 // new - check the count definintions table for a list of count fields
                 $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
                 $cOpps = RunQuery($cSQL);
-                $numCounts = mysql_num_rows($cOpps);
+                $numCounts = mysqli_num_rows($cOpps);
                 $cCountName="";
                 if($numCounts)
                 {
                   $cCountName="";
                   for($c = 1; $c <=$numCounts; $c++){
-                    $cRow = mysql_fetch_array($cOpps, MYSQL_BOTH);
+                    $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
                     extract($cRow);
                     $cCountID[$c] = $evctnm_countid;
                     $cCountName[$c] = $evctnm_countname;
@@ -257,7 +257,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
 <div class="box">
   <div class="box-header">
     <?php if ($numRows > 0) { ?>
-      <h3 class="box-title"><?= gettext("There currently ".($numRows == 1 ? "is ".$numRows." event":"are ".$numRows." custom event types")) ?></h3>
+      <h3 class="box-title"><?= ($numRows == 1 ? gettext("There currently is"):gettext("There currently are"))." ".$numRows." ". ($numRows == 1 ? gettext("custom event type"):gettext("custom event types")) ?></h3>
     <?php } ?>
   </div>
 
@@ -266,7 +266,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
     if ($numRows > 0)
     {
       ?>
-      <table class="table table-striped table-bordered data-table">
+      <table  id="eventNames" class="table table-striped table-bordered data-table">
         <thead>
          <tr>
             <th><?= gettext("Event Type") ?></th>
@@ -310,7 +310,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
                     <td>
                       <form name="ProcessEventType" action="EventNames.php" method="POST" class="pull-left">
                         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
-                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext("Delete") ?>" data-tooltip name="Action" value="DELETE" onClick="return confirm('<?= gettext("Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: ") .  $aTypeID[$row] ?>')">
+                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext("Delete") ?>" data-tooltip name="Action" value="DELETE" onClick="return confirm("<?= gettext("Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: ") .  $aTypeID[$row] ?>")">
                           <i class='fa fa-trash'></i>
                         </button>
                       </form>
@@ -344,4 +344,21 @@ if (FilterInput($_POST["Action"]) != "NEW")
   <?php
 }
 ?>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+//Added by @saulowulhynek to translation of datatable nav terms
+    $('#eventNames').dataTable({
+      "language": {
+        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+      },
+      responsive: true,
+      "dom": 'T<"clear">lfrtip',
+      "tableTools": {
+        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
+      }
+    });
+  });
+</script>
+
 <?php require "Include/Footer.php" ?>

@@ -10,7 +10,7 @@ $deleted = false;
 
 if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
     $note = new Note();
-    $note->setText("Profile Image Deleted");
+    $note->setText(gettext("Profile Image Deleted"));
     $note->setType("photo");
     $note->setEntered($_SESSION['iUserID']);
     if (isset($_GET['PersonID'])) {

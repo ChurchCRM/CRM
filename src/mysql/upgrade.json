@@ -68,17 +68,27 @@
     ],
     "dbVersion": "2.3.0"
   },
-  "pre-2.3.6" : {
+  "pre-2.3.5" : {
     "versions": [
       "2.3.0",
       "2.3.1",
       "2.3.2",
       "2.3.3",
-      "2.3.4",
+      "2.3.4"
+    ],
+    "scripts": [
+
+    ],
+    "dbVersion": "2.3.5"
+  },
+  "pre-2.4.0" : {
+    "versions": [
       "2.3.5"
     ],
     "scripts": [
+      "/mysql/upgrade/2.4.0/2.4.0-Country.sql",
+      "/mysql/upgrade/2.4.0/2.4.0-user.sql"
     ],
-    "dbVersion": "2.3.6"
+    "dbVersion": "2.4.0"
   }
 }
