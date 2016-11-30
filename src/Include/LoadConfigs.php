@@ -166,7 +166,7 @@ $aLocaleInfo = $localeInfo->getLocaleInfo();
 setlocale(LC_NUMERIC, 'C');
 
 $domain = 'messages';
-$sLocaleDir = dirname(__FILE__) . '/../locale';
+$sLocaleDir = SystemURLs::getDocumentRoot() . '/locale';
 
 bind_textdomain_codeset($domain, 'UTF-8');
 bindtextdomain($domain, $sLocaleDir);
