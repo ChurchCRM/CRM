@@ -223,8 +223,7 @@ require "Include/Header.php";
 	<div class="box-body">
 <form method="POST" action="GeoPage.php" name="GeoPage">
 <table class="table">
-<?
-//Get Families for the list
+<?php //Get Families for the list
 $sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
@@ -287,7 +286,7 @@ echo '<td><input type="submit" class="btn" name="DataFile" value="' . gettext("M
     </div>
     <div class="box-body">
 <table class="table">
-<?
+<?php
 echo '<tr><td><br></td><td><input type="submit" class="btn" name="FindNeighbors" value="' . gettext("Show Neighbors") . '"></td></tr>'."\n";
 
 foreach ($aClassificationName as $key => $value) {
