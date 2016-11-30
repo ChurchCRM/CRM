@@ -28,10 +28,10 @@ class SystemURLs
 
     public static function getRootPath()
     {
-        //if (self::isValidRootPath()) {
+        if (self::isValidRootPath()) {
             return self::$rootPath;
-        //}
-        //throw new \Exception("Please check the value for '\$sRootPath' in <b>`Include\\Config.php`</b>, the following is not valid [". self::$rootPath . "]");
+        }
+        throw new \Exception("Please check the value for '\$sRootPath' in <b>`Include\\Config.php`</b>, the following is not valid [". self::$rootPath . "]");
     }
 
     public static function getDocumentRoot()
@@ -51,9 +51,9 @@ class SystemURLs
 
     private static function isValidRootPath()
     {
-        if (stripos(self::$rootPath, "http") !== true ) {
-            return false;
-        }
+        //if (stripos(self::$rootPath, "http") !== true ) {
+        //    return false;
+        //}
         return true;
 
     }
