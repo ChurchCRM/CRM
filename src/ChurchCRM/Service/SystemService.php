@@ -3,23 +3,21 @@
 namespace ChurchCRM\Service;
 
 use Exception;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
-use Propel\Runtime;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\SQLUtils;
 use ChurchCRM\FileSystemUtils;
 use Propel\Runtime\Propel;
 use PharData;
+use Github\Client;
 
 class SystemService
 {
 
   function getLatestRelese()
   {
-    $client = new \Github\Client();
+    $client = new Client();
     $release = null;
     try {
       $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
@@ -32,7 +30,7 @@ class SystemService
 
   function getInstalledVersion()
   {
-    $composerFile = file_get_contents(dirname(__FILE__) . "/../composer.json");
+    $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . "/composer.json");
     $composerJson = json_decode($composerFile, true);
     $version = $composerJson["version"];
 
@@ -48,7 +46,7 @@ class SystemService
     $restoreResult->file = $file;
     $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
     $restoreResult->type2 = pathinfo(substr($file['name'], 0, strlen($file['name']) - 3), PATHINFO_EXTENSION);
-    $restoreResult->root = dirname(dirname(__FILE__));
+    $restoreResult->root = SystemURLs::getDocumentRoot();
     $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups";
     $restoreResult->imagesRoot = "Images";
     $restoreResult->headers = array();
@@ -91,7 +89,7 @@ class SystemService
     global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME;
 
     $backup = new \stdClass();
-    $backup->root = dirname(dirname(__FILE__));
+    $backup->root = SystemURLs::getDocumentRoot();
     $backup->backupRoot = "$backup->root/tmp_attach/ChurchCRMBackups";
     $backup->imagesRoot = "Images";
     $backup->headers = array();
@@ -206,7 +204,7 @@ class SystemService
   {
     requireUserGroupMembership("bAdmin");
     set_time_limit(0);
-    $path = dirname(dirname(__FILE__)) . "/tmp_attach/ChurchCRMBackups/$filename";
+    $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
     if (file_exists($path)) {
       if ($fd = fopen($path, "r")) {
         $fsize = filesize($path);
@@ -247,7 +245,7 @@ class SystemService
         }
       }
       fclose($fd);
-      exec("rm -rf  " . dirname(dirname(__FILE__)) . "/tmp_attach/ChurchCRMBackups");
+      exec("rm -rf  " . SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups");
     }
   }
 
@@ -263,8 +261,7 @@ class SystemService
 
   function rebuildWithSQL($SQLFile)
   {
-    $root = dirname(dirname(__FILE__));
-    $this->playbackSQLtoDatabase($root . $SQLFile);
+    $this->playbackSQLtoDatabase(SystemURLs::getDocumentRoot() . $SQLFile);
   }
 
   function getDBVersion() {
