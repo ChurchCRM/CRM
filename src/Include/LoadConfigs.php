@@ -63,7 +63,7 @@ try {
     SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
     $sRootPath = SystemURLs::getRootPath();
 } catch (\Exception $e) {
-    mysql_failure($e->getMessage());
+    system_failure($e->getMessage());
 }
 
 
