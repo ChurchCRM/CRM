@@ -174,6 +174,6 @@ if (mysqli_num_rows($rsPropList) == 0) {
   <?php
 } ?>
 
-<?
-require "Include/Footer.php";
+<?php 
+  require "Include/Footer.php";
 ?>
