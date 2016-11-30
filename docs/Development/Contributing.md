@@ -41,6 +41,36 @@ Please familiarize yourself with the [documentation](http://docs.churchcrm.io/en
 
 * If you're changing anything in the API, please update the API documentation.  
 * If you are changing something that affects the user interface, please update the appropriate documentation and help files to ensure continued user friendliness of the application.
+
+## Functional References
+
+### Environment Variables (dto classes)
+
+  Beginning in 2.4.0, we began converting global variables to static classes.  This gives us more flexibility and clarity when referring to these necessary variables.  
+  
+  *  SystemURLs
+     *  Document Root - The physical path of ChurchCRM on the server. i.e. /var/www/html/ChurchCRM
+     *  Root Path - The path of ChurchCRM relative to the current domain.  i.e. http://www.domain.com**/churchCRM**
+
+  *  SystemConfig
+     * Read / Write access to all of the system configuration options found in System Settings | General Settings
+
+### Object Model / SQL
+
+  *  We use PropelORM to provide a PHP object model for database entities.  
+    *  These classes are automatically generated at build time, and are located at src/ChurchCRM/model/*
+  *  As of 2.4.0, there is still a lot of legacy code that relies on direct calls to SQL.  These should all be replaced by ORM calls.
+
+
+### Legacy Code
+
+  There is a lot of legacy code that obscures the line between logic and page rendering.  Wherever possible, program / business logic shoudl be separate from page rendering.
+
+### JavaScript
+
+* We have a window.CRM object
+    *window.CRM.root represents the  $sRootPath path as defined in Include/Config.php
+
   
 ## Code / Style Guide
 
@@ -110,8 +140,3 @@ Please familiarize yourself with the [documentation](http://docs.churchcrm.io/en
 
 * We don't use PHP short tags
 * We do use <?= in place of <?php echo.
-
-### JavaScript
-
-* We have a window.CRM object
-    *window.CRM.root represents the  $sRootPath path as defined in Include/Config.php
