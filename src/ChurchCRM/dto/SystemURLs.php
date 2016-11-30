@@ -51,9 +51,9 @@ class SystemURLs
 
     private static function isValidRootPath()
     {
-        if (stripos(self::$rootPath, "http") !== true ) {
-            return false;
-        }
+        //if (stripos(self::$rootPath, "http") !== true ) {
+        //    return false;
+        //}
         return true;
 
     }

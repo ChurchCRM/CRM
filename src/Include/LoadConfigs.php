@@ -63,7 +63,7 @@ try {
     SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
     $sRootPath = SystemURLs::getRootPath();
 } catch (\Exception $e) {
-    mysql_failure($e->getMessage());
+    system_failure($e->getMessage());
 }
 
 
@@ -122,9 +122,9 @@ if (count($results) == 0) {
     $version = new Version();
     $version->setVersion($systemService->getInstalledVersion());
     $version->setUpdateStart(new DateTime());
-    $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
+    $setupQueries = SystemURLs::getDocumentRoot() . '/mysql/install/Install.sql';
     $systemService->playbackSQLtoDatabase($setupQueries);
-    $configQueries = dirname(__file__) . '/../mysql/upgrade/update_config.sql';
+    $configQueries = SystemURLs::getDocumentRoot() . '/mysql/upgrade/update_config.sql';
     $systemService->playbackSQLtoDatabase($configQueries);
     $version->setUpdateEnd(new DateTime());
     $version->save();
@@ -167,7 +167,7 @@ $aLocaleInfo = $localeInfo->getLocaleInfo();
 setlocale(LC_NUMERIC, 'C');
 
 $domain = 'messages';
-$sLocaleDir = dirname(__FILE__) . '/../locale';
+$sLocaleDir = SystemURLs::getDocumentRoot() . '/locale';
 
 bind_textdomain_codeset($domain, 'UTF-8');
 bindtextdomain($domain, $sLocaleDir);
