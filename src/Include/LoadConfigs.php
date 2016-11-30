@@ -43,6 +43,7 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Propel\Runtime\Propel;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
+use ChurchCRM\SQLUtils;
 
 function system_failure($message, $header = 'Setup failure')
 {
@@ -63,7 +64,7 @@ try {
     SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
     $sRootPath = SystemURLs::getRootPath();
 } catch (\Exception $e) {
-    mysql_failure($e->getMessage());
+    system_failure($e->getMessage());
 }
 
 
@@ -122,10 +123,8 @@ if (count($results) == 0) {
     $version = new Version();
     $version->setVersion($systemService->getInstalledVersion());
     $version->setUpdateStart(new DateTime());
-    $setupQueries = dirname(__file__) . '/../mysql/install/Install.sql';
-    $systemService->playbackSQLtoDatabase($setupQueries);
-    $configQueries = dirname(__file__) . '/../mysql/upgrade/update_config.sql';
-    $systemService->playbackSQLtoDatabase($configQueries);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/install/Install.sql",$connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/update_config.sql",$connection);
     $version->setUpdateEnd(new DateTime());
     $version->save();
 }

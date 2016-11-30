@@ -8,6 +8,11 @@ use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
 use Propel\Runtime;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\SQLUtils;
+use ChurchCRM\FileSystemUtils;
+use Propel\Runtime\Propel;
+use PharData;
 
 class SystemService
 {
@@ -34,63 +39,45 @@ class SystemService
     return $version;
   }
 
-  function playbackSQLtoDatabase($fileName)
-  {
-    global $cnInfoCentral;
-    $query = '';
-    $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($restoreQueries as $line) {
-      if ($line != '' && strpos($line, '--') === false) {
-        $query .= " $line";
-        if (substr($query, -1) == ';') {
-          $person = mysqli_query($cnInfoCentral, $query);
-          $query = '';
-        }
-      }
-    }
-  }
-
-  function restoreDatabaseFromBackup()
+  function restoreDatabaseFromBackup($file)
   {
     requireUserGroupMembership("bAdmin");
     $restoreResult = new \stdClass();
     $restoreResult->Messages = array();
-    global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral;
-    $file = $_FILES['restoreFile'];
+    global $sUSER, $sPASSWORD, $sDATABASE;
+    $connection = Propel::getConnection();
     $restoreResult->file = $file;
     $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
     $restoreResult->type2 = pathinfo(substr($file['name'], 0, strlen($file['name']) - 3), PATHINFO_EXTENSION);
     $restoreResult->root = dirname(dirname(__FILE__));
-    $restoreResult->backupRoot = "$restoreResult->root/tmp_attach/ChurchCRMBackups";
+    $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups";
     $restoreResult->imagesRoot = "Images";
     $restoreResult->headers = array();
+    $restoreResult->uploadedFileDestination = SystemURLs::getDocumentRoot()."/tmp_attach/".$file['name'];
     // Delete any old backup files
-    exec("rm -rf  $restoreResult->backupRoot");
-    exec("mkdir  $restoreResult->backupRoot");
+    FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
+    mkdir ($restoreResult->backupRoot);
+    move_uploaded_file($file['tmp_name'], $restoreResult->uploadedFileDestination );
     if ($restoreResult->type == "gz") {
       if ($restoreResult->type2 == "tar") {
-        exec("mkdir $restoreResult->backupRoot");
-        $restoreResult->uncompressCommand = "tar -zxvf " . $file['tmp_name'] . " --directory $restoreResult->backupRoot";
-        exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
+        $phar = new PharData($restoreResult->uploadedFileDestination);
+        $phar->extractTo($restoreResult->backupRoot);
         $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
-        $this->playbackSQLtoDatabase($restoreResult->SQLfile);
-        exec("rm -rf $restoreResult->root/Images/*");
-        exec("mv -f $restoreResult->backupRoot/Images/* $restoreResult->root/Images");
+        SQLUtils::sqlImport($restoreResult->SQLfile,$connection);
+        FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . "/Images");
+        FileSystemUtils::recursiveCopyDirectory($restoreResult->backupRoot."/Images/", SystemURLs::getDocumentRoot() . "/Images");
       } else if ($restoreResult->type2 == "sql") {
-        exec("mkdir $restoreResult->backupRoot");
-        exec("mv  " . $file['tmp_name'] . " " . $restoreResult->backupRoot . "/" . $file['name']);
-        $restoreResult->uncompressCommand = SystemConfig::getValue("sGZIPname") . " -d $restoreResult->backupRoot/" . $file['name'];
-        exec($restoreResult->uncompressCommand, $rs1, $returnStatus);;
+        file_put_contents(substr($restoreResult->uploadedFileDestination, 0, strlen($file['name']) - 3), gzopen(SystemURLs::getDocumentRoot()."/tmp_attach/".$file['name'], r));
         $restoreResult->SQLfile = $restoreResult->backupRoot . "/" . substr($file['name'], 0, strlen($file['name']) - 3);
-        $this->playbackSQLtoDatabase($restoreResult->SQLfile);
+        SQLUtils::sqlImport($restoreResult->SQLfile,$connection);
       }
     } else if ($restoreResult->type == "sql") {
-      $this->playbackSQLtoDatabase($file['tmp_name']);
+      SQLUtils::sqlImport($restoreResult->uploadedFileDestination,$connection);
     }
-    exec("rm -rf $restoreResult->backupRoot");
+    FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
     $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
-    $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
-    $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/rebuild_nav_menus.sql",$connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/update_config.sql",$connection);
     //When restoring a database, do NOT let the database continue to create remote backups.
     //This can be very troublesome for users in a testing environment.
     SystemConfig::setValue("sEnableExternalBackupTarget", "0");
@@ -282,7 +269,7 @@ class SystemService
   }
 
   function getDBVersion() {
-    $connection = Runtime\Propel::getConnection();
+    $connection = Propel::getConnection();
     $query = "Select * from version_ver";
     $statement = $connection->prepare($query);
     $resultset = $statement->execute();
@@ -293,14 +280,14 @@ class SystemService
 
   function checkDatabaseVersion()
   {
-
+    $connection = Propel::getConnection();
     $db_version = $this->getDBVersion();
     if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
     }
 
     //the database isn't at the current version.  Start the upgrade
-    $dbUpdatesFile = file_get_contents(dirname(__FILE__) . "/../mysql/upgrade.json");
+    $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot()."/mysql/upgrade.json");
     $dbUpdates = json_decode($dbUpdatesFile, true);
     $upgradeSuccess = false;
     foreach ($dbUpdates as $dbUpdate) {
@@ -309,7 +296,13 @@ class SystemService
         $version->setVersion($dbUpdate["dbVersion"]);
         $version->setUpdateStart(new \DateTime());
         foreach ($dbUpdate["scripts"] as $dbScript) {
-          $this->rebuildWithSQL($dbScript);
+          try{
+            SQLUtils::sqlImport(SystemURLs::getDocumentRoot()."/".$dbScript, $connection);
+          }
+          catch (Exception $e)
+          {
+            return $e;
+          }
         }
         $version->setUpdateEnd(new \DateTime());
         $version->save();
@@ -317,8 +310,8 @@ class SystemService
       }
     }
     // always rebuild the menu
-    $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
-    $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
+    SQLUtils::sqlImport("/mysql/upgrade/rebuild_nav_menus.sql", $connection);
+    SQLUtils::sqlImport("/mysql/upgrade/update_config.sql", $connection);
     return $upgradeSuccess;
   }
 
