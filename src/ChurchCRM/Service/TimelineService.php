@@ -10,15 +10,12 @@ use ChurchCRM\PersonQuery;
 
 class TimelineService
 {
-  private $baseURL;
+    /* @var $currentUser \ChurchCRM\User */
   private $currentUser;
-  private $currentUserIsAdmin;
 
   public function __construct()
   {
-    $this->currentUser = $_SESSION['iUserID'];
-    $this->currentUserIsAdmin = $_SESSION['bAdmin'];
-    $this->baseURL = $_SESSION['sRootPath'];
+    $this->currentUser = $_SESSION['user'];
   }
 
   function getForFamily($familyID)
@@ -103,7 +100,7 @@ class TimelineService
   function noteToTimelineItem($dbNote)
   {
     $item = NULL;
-    if ($this->currentUserIsAdmin || $dbNote->isVisable($this->currentUser)) {
+    if ($this->currentUser->isAdmin() || $dbNote->isVisable($this->currentUser->getPersonId())) {
       $displayEditedBy = gettext("Unknown");
       if ($dbNote->getDisplayEditedBy() == -1) {
         $displayEditedBy = gettext("Self Registration");
@@ -115,7 +112,7 @@ class TimelineService
       }
       $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
         gettext("by") . " " . $displayEditedBy, "", $dbNote->getText(),
-        $dbNote->getEditLink($this->baseURL), $dbNote->getDeleteLink($this->baseURL));
+        $dbNote->getEditLink(), $dbNote->getDeleteLink());
 
     }
     return $item;

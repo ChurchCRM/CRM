@@ -183,9 +183,6 @@ if ($currentUser != Null)
         // Initialize the last operation time
         $_SESSION['tLastOperation'] = time();
 
-        // Set the Root Path ... used in basic security check
-        $_SESSION['sRootPath'] = $sRootPath;
-
         $_SESSION['bHasMagicQuotes'] = 0;
 
         // Pledge and payment preferences

@@ -47,8 +47,7 @@
     ],
     "psr-4": {
       "\\": "bin/",
-      "ChurchCRM\\": "ChurchCRM/",
-      "ChurchCRM\\Service\\": "Service/"
+      "ChurchCRM\\": "ChurchCRM/"
     }
   },
   "repositories": {

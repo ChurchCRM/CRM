@@ -3,9 +3,8 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
-use ChurchCRM\UserQuery;
-use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 /**
