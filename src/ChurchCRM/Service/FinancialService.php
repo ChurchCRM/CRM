@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Service;
 
-require_once SystemURLs::getDocumentRoot() . "/Include/ReportFunctions.php";
-require_once SystemURLs::getDocumentRoot() . "/Include/Functions.php";
+require_once dirname(dirname(__FILE__)) . "/../Include/ReportFunctions.php";
+require_once dirname(dirname(__FILE__)) . "/../Include/Functions.php";
 
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\MICRReader;
