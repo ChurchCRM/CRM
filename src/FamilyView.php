@@ -161,21 +161,7 @@ if ($iFamilyID == $fam_ID) {
         <div class="box-body">
           <img src="<?= $familyService->getFamilyPhoto($fam_ID) ?>" alt=""
                class="img-circle img-responsive profile-user-img"/>
-			
-			<?php switch ($fam_Country) {
-					case "United States":
-						$familyName = gettext("The") . " " . $fam_Name  . " " . gettext("Family") ;
-						break;
-				//Others ountries may be added here
-				
-				//Default countries works for portuguese, spanish and french
-				
-					default:
-						$familyName =  gettext("The Family") . " ". $fam_Name;
-      
-					} ?>
-					<h3 class="profile-username text-center"><?= $familyName ?></h3>
-    
+					<h3 class="profile-username text-center"><?=  gettext("Family") .": ". $fam_Name ?></h3>
           <?php if ($bOkToEdit) { ?>
             <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"
                class="btn btn-primary btn-block"><b><?= gettext("Edit") ?></b></a>
