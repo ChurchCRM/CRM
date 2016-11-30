@@ -309,8 +309,8 @@ class SystemService
       }
     }
     // always rebuild the menu
-    SQLUtils::sqlImport("/mysql/upgrade/rebuild_nav_menus.sql", $connection);
-    SQLUtils::sqlImport("/mysql/upgrade/update_config.sql", $connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot()."/mysql/upgrade/rebuild_nav_menus.sql", $connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot()."/mysql/upgrade/update_config.sql", $connection);
     return $upgradeSuccess;
   }
 
