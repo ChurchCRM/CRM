@@ -2,6 +2,7 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Base\Note as BaseNote;
 
 /**

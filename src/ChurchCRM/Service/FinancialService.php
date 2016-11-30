@@ -8,6 +8,7 @@ require_once dirname(dirname(__FILE__)) . "/../Include/Functions.php";
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\MICRReader;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 class FinancialService
 {

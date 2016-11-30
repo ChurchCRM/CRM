@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemURLs;
+
 class ReportingService
 {
 

@@ -3,7 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemURLs;
-
+use Exception;
 
 class FamilyService
 {
@@ -95,7 +95,7 @@ class FamilyService
         $name .= ", " . $aHead[$fam_ID];
       }
       $name .= " " . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
       $name = "";
     }
     return $name;
