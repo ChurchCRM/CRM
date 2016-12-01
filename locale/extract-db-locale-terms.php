@@ -40,3 +40,29 @@ foreach ($stringFiles as $stringFile)
 {
   file_put_contents($stringFile, "\r\n?>",FILE_APPEND);
 }
+
+$stringFile = $stringsDir."/settings-choices.php";
+file_put_contents($stringFile, "<?php\r\n",FILE_APPEND);
+$query = 'select cfg_data as choices, "" as translation, "config_cfg" as cntx from config_cfg 
+WHERE cfg_type = "choice";';
+foreach ($db->query($query) as $row)
+{
+ foreach (json_decode($row['choices'])->Choices as $choice)
+ {
+   file_put_contents($stringFile, "gettext(\"".addslashes($choice)."\");\r\n",FILE_APPEND);
+ }
+}
+file_put_contents($stringFile, "\r\n?>",FILE_APPEND);
+
+$stringFile = $stringsDir."/settings-countries.php";
+require "../src/ChurchCRM/data/Countries.php";
+file_put_contents($stringFile, "<?php\r\n",FILE_APPEND);
+
+foreach (ChurchCRM\data\Countries::getNames() as $country)
+{
+
+   file_put_contents($stringFile, "gettext(\"".addslashes($country)."\");\r\n",FILE_APPEND);
+
+}
+file_put_contents($stringFile, "\r\n?>",FILE_APPEND);
+
