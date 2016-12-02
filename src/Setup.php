@@ -17,6 +17,19 @@ if (isset($_POST["Setup"])) {
   exit();
 }
 
+elseif ( isset( getenv('MARIADB_USER') )) {
+  $template = file_get_contents("Include/Config.php.example");
+  $template = str_replace("||DB_SERVER_NAME||", "crm-mariadb", $template);
+  $template = str_replace("||DB_NAME||", getenv("MARIADB_DATABASE") , $template);
+  $template = str_replace("||DB_USER||", getenv("MARIADB_USER"), $template);
+  $template = str_replace("||DB_PASSWORD||", getenv("MARIADB_PASSWORD"), $template);
+  $template = str_replace("||ROOT_PATH||", "", $template);
+  $template = str_replace("||URL||", "", $template);
+  file_put_contents("Include/Config.php", $template);
+  header("Location: index.php" );
+  exit();
+}
+
 if (isset($_GET['SystemIntegrityCheck']))
 {
 require_once 'Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
