@@ -74,6 +74,7 @@ class SystemService
       SQLUtils::sqlImport($restoreResult->uploadedFileDestination,$connection);
     }
     FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
+    unlink($restoreResult->uploadedFileDestination);
     $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
     SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/rebuild_nav_menus.sql",$connection);
     SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/update_config.sql",$connection);
