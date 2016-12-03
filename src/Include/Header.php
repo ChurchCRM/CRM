@@ -25,7 +25,7 @@
  *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
  ******************************************************************************/
-if (!$systemService->checkDatabaseVersion())  //either the DB is good, or the upgrade was successful.
+if ( ! $systemService->isDBCurrent())  //either the DB is good, or the upgrade was successful.
 {
   Redirect('CheckVersion.php');
   exit;

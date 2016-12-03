@@ -75,7 +75,7 @@ class SystemService
     }
     FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
     unlink($restoreResult->uploadedFileDestination);
-    $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
+    $restoreResult->UpgradeStatus = $this->upgradeDatabaseVersion();
     SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/rebuild_nav_menus.sql",$connection);
     SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/update_config.sql",$connection);
     //When restoring a database, do NOT let the database continue to create remote backups.
@@ -209,8 +209,11 @@ class SystemService
     requireUserGroupMembership("bAdmin");
     set_time_limit(0);
     $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
+    echo $path;
     if (file_exists($path)) {
+      echo $path;
       if ($fd = fopen($path, "r")) {
+        
         $fsize = filesize($path);
         $path_parts = pathinfo($path);
         $ext = strtolower($path_parts["extension"]);
@@ -249,7 +252,7 @@ class SystemService
         }
       }
       fclose($fd);
-      exec("rm -rf  " . SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups");
+      FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups");
     }
   }
 
@@ -272,8 +275,13 @@ class SystemService
     rsort($results);
     return $results[0]['ver_version'];
   }
+  
+  function isDBCurrent()
+  {
+    return $this->getDBVersion() ==  $_SESSION['sSoftwareInstalledVersion'];
+  }
 
-  function checkDatabaseVersion()
+  function upgradeDatabaseVersion()
   {
     $connection = Propel::getConnection();
     $db_version = $this->getDBVersion();
@@ -284,30 +292,27 @@ class SystemService
     //the database isn't at the current version.  Start the upgrade
     $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot()."/mysql/upgrade.json");
     $dbUpdates = json_decode($dbUpdatesFile, true);
-    $upgradeSuccess = false;
+    $errorFlag = false;
     foreach ($dbUpdates as $dbUpdate) {
       if (in_array($this->getDBVersion(), $dbUpdate["versions"])) {
         $version = new Version();
         $version->setVersion($dbUpdate["dbVersion"]);
         $version->setUpdateStart(new \DateTime());
         foreach ($dbUpdate["scripts"] as $dbScript) {
-          try{
             SQLUtils::sqlImport(SystemURLs::getDocumentRoot()."/".$dbScript, $connection);
-          }
-          catch (Exception $e)
-          {
-            return $e;
-          }
         }
-        $version->setUpdateEnd(new \DateTime());
-        $version->save();
-        $upgradeSuccess = true;
+        if (!$errorFlag)
+        {
+          $version->setUpdateEnd(new \DateTime());
+          $version->save();
+        }
+       
       }
     }
     // always rebuild the menu
     SQLUtils::sqlImport(SystemURLs::getDocumentRoot()."/mysql/upgrade/rebuild_nav_menus.sql", $connection);
     SQLUtils::sqlImport(SystemURLs::getDocumentRoot()."/mysql/upgrade/update_config.sql", $connection);
-    return $upgradeSuccess;
+    return "success";
   }
 
   function reportIssue($data)
