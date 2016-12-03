@@ -11,6 +11,8 @@ use ChurchCRM\FileSystemUtils;
 use Propel\Runtime\Propel;
 use PharData;
 use Github\Client;
+require SystemURLs::getDocumentRoot()."/vendor/ifsnop/mysqldump-php/src/Mysqldump.php";
+use Ifsnop\Mysqldump\Mysqldump;
 
 class SystemService
 {
@@ -64,8 +66,8 @@ class SystemService
         FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . "/Images");
         FileSystemUtils::recursiveCopyDirectory($restoreResult->backupRoot."/Images/", SystemURLs::getDocumentRoot() . "/Images");
       } else if ($restoreResult->type2 == "sql") {
-        file_put_contents(substr($restoreResult->uploadedFileDestination, 0, strlen($file['name']) - 3), gzopen(SystemURLs::getDocumentRoot()."/tmp_attach/".$file['name'], r));
-        $restoreResult->SQLfile = $restoreResult->backupRoot . "/" . substr($file['name'], 0, strlen($file['name']) - 3);
+        $restoreResult->SQLfile = SystemURLs::getDocumentRoot()."/tmp_attach/".str_replace(".gz", '', $file['name']);
+        file_put_contents($restoreResult->SQLfile, gzopen($restoreResult->uploadedFileDestination , r));
         SQLUtils::sqlImport($restoreResult->SQLfile,$connection);
       }
     } else if ($restoreResult->type == "sql") {
@@ -86,57 +88,58 @@ class SystemService
   function getDatabaseBackup($params)
   {
     requireUserGroupMembership("bAdmin");
-    global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME;
-
+    global $sSERVERNAME,$sDATABASE,$sUSER,$sPASSWORD;
     $backup = new \stdClass();
     $backup->root = SystemURLs::getDocumentRoot();
     $backup->backupRoot = "$backup->root/tmp_attach/ChurchCRMBackups";
-    $backup->imagesRoot = "Images";
+    $backup->imagesRoot = "$backup->root/Images";
     $backup->headers = array();
     // Delete any old backup files
-    exec("rm -rf  $backup->backupRoot");
-    exec("mkdir  $backup->backupRoot");
-    // Check to see whether this installation has gzip, zip, and gpg
-    if (SystemConfig::getValue("sGZIPname"))
-      $hasGZIP = true;
-    if (SystemConfig::getValue("sZIPname"))
-      $hasZIP = true;
-    if (SystemConfig::getValue("sPGPname"))
-      $hasPGP = true;
+    FileSystemUtils::recursiveRemoveDirectory($backup->backupRoot);
+    mkdir ($backup->backupRoot);
 
     $backup->params = $params;
     $bNoErrors = true;
 
     $backup->saveTo = "$backup->backupRoot/ChurchCRM-" . date("Ymd-Gis");
     $backup->SQLFile = "$backup->backupRoot/ChurchCRM-Database.sql";
-
-    $backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD --host=$sSERVERNAME $sDATABASE > $backup->SQLFile";
-    exec($backupCommand, $returnString, $returnStatus);
+    
+    try {
+      $dump = new Mysqldump('mysql:host='.$sSERVERNAME.';dbname='.$sDATABASE, $sUSER, $sPASSWORD);
+      $dump->start($backup->SQLFile);
+    } catch (\Exception $e) {
+      //echo 'mysqldump-php error: ' . $e->getMessage();
+    }
 
     switch ($params->iArchiveType) {
       case 0: # The user wants a gzip'd SQL file.
-        $backup->saveTo .= ".sql";
-        exec("mv $backup->SQLFile  $backup->saveTo");
-        $backup->compressCommand = SystemConfig::getValue("sGZIPname") . " " . $backup->saveTo;
-        $backup->saveTo .= ".gz";
-        exec($backup->compressCommand, $returnString, $returnStatus);
-        $backup->archiveResult = $returnString;
-        break;
-      case 1: #The user wants a .zip file
-        $backup->saveTo .= ".zip";
-        $backup->compressCommand = SystemConfig::getValue("sZIPname")." -r -y -q -9 $backup->saveTo $backup->backupRoot";
-        exec($backup->compressCommand, $returnString, $returnStatus);
-        $backup->archiveResult = $returnString;
+        $backup->saveTo .= ".sql.gz";
+        $gzf = gzopen($backup->saveTo, "w6");
+        gzwrite($gzf,  file_get_contents($backup->SQLFile));
+        gzclose($gzf);
         break;
       case 2: #The user wants a plain ol' SQL file
         $backup->saveTo .= ".sql";
-        exec("mv $backup->SQLFile  $backup->saveTo");
+        rename($backup->SQLFile ,$backup->saveTo);
         break;
       case 3: #the user wants a .tar.gz file
-        $backup->saveTo .= ".tar.gz";
-        $backup->compressCommand = "tar -zcvf $backup->saveTo -C $backup->backupRoot ChurchCRM-Database.sql -C $backup->root $backup->imagesRoot";
-        exec($backup->compressCommand, $returnString, $returnStatus);
-        $backup->archiveResult = $returnString;
+        $backup->saveTo .= ".tar";
+        $phar = new \PharData($backup->saveTo);
+        $phar->startBuffering();
+        $phar->addFile($backup->SQLFile,"ChurchCRM-Database.sql");
+        $imageFiles = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($backup->imagesRoot));
+        foreach ( $imageFiles as $imageFile)
+        {
+          if (! $imageFile->isDir() )  {
+            
+           $localName = str_replace(SystemURLs::getDocumentRoot()."/", "",$imageFile->getRealPath());
+           $phar->addFile($imageFile->getRealPath(),  $localName);
+          }
+        }
+        $phar->stopBuffering();
+        $phar->compress(\Phar::GZ);
+        unlink($backup->saveTo);
+        $backup->saveTo .= ".gz";
         break;
     }
 
