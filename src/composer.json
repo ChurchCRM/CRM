@@ -39,7 +39,8 @@
     "propel/propel": "~2.0@dev",
     "setasign/fpdf": "1.8.1",
     "phpmailer/phpmailer": "5.2.*",
-    "verot/class.upload.php": "dev-master"
+    "verot/class.upload.php": "dev-master",
+    "ifsnop/mysqldump-php":"2.*"
   },
   "autoload": {
     "classmap": [
