@@ -347,8 +347,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             <!-- timeline time label -->
             <li class="time-label">
                     <span class="bg-red">
-                      <?php $now = new DateTime('');
-                      echo $now->format("Y-m-d") ?>
+                      <?php echo strftime(strftimeDateFormat(SystemConfig::getValue("sDateFormatLong")), strtotime("now"));?>
                     </span>
             </li>
             <!-- /.timeline-label -->
@@ -360,7 +359,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <i class="fa <?= $item['style'] ?>"></i>
 
                 <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+                  <span class="time"><i class="fa fa-clock-o"></i> <?= datetime2sDateformat($item['datetime'],dateFormat(SystemConfig::getValue("sDateFormatLong"))) ?></span>
 
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) { ?>
@@ -743,7 +742,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             <!-- note time label -->
             <li class="time-label">
               <span class="bg-yellow">
-                <?php echo date_create()->format("Y-m-d") ?>
+                <?php echo strftime(strftimeDateFormat(SystemConfig::getValue("sDateFormatLong")), strtotime("now"));?>
               </span>
             </li>
             <!-- /.note-label -->
@@ -755,7 +754,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <i class="fa <?= $item['style'] ?>"></i>
 
                 <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+                  <span class="time"><i class="fa fa-clock-o"></i> <?= datetime2sDateformat($item['datetime'],dateFormat(SystemConfig::getValue("sDateFormatLong"))) ?></span>
 
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) { ?>
