@@ -209,11 +209,8 @@ class SystemService
     requireUserGroupMembership("bAdmin");
     set_time_limit(0);
     $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
-    echo $path;
     if (file_exists($path)) {
-      echo $path;
       if ($fd = fopen($path, "r")) {
-        
         $fsize = filesize($path);
         $path_parts = pathinfo($path);
         $ext = strtolower($path_parts["extension"]);
