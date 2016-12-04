@@ -123,7 +123,7 @@ $("document").ready(function(){
     <div class="col-lg-6">
       <div class="box">
         <div class="box-header">
-            <?php if ($is_ready): ?>
+          <?php if ($is_ready): ?>
             <h3>This server is ChurchCRM ready!</h3>
           <?php else: ?>
             <h3>This server isn't quite ready for ChurchCRM.</h3>
