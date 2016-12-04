@@ -106,7 +106,7 @@ class SystemService
     $backup->SQLFile = "$backup->backupRoot/ChurchCRM-Database.sql";
     
     try {
-      $dump = new Mysqldump('mysql:host='.$sSERVERNAME.';dbname='.$sDATABASE, $sUSER, $sPASSWORD);
+      $dump = new Mysqldump('mysql:host='.$sSERVERNAME.';dbname='.$sDATABASE, $sUSER, $sPASSWORD, array('add-drop-table' => true));
       $dump->start($backup->SQLFile);
     } catch (\Exception $e) {
       //echo 'mysqldump-php error: ' . $e->getMessage();
