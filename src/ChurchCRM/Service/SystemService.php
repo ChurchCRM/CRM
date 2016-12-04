@@ -454,9 +454,10 @@ class SystemService
       {
         foreach ($signatureData->files as $file)
         {
-          if(file_exists(SystemURLs::getDocumentRoot()."/".$file->filename))
+          $currentFile = SystemURLs::getDocumentRoot()."/".$file->filename;
+          if(file_exists($currentFile))
           {
-            $actualHash = sha1_file(SystemURLs::getDocumentRoot()."/".$file->filename);
+            $actualHash = sha1_file($currentFile);
             if ( $actualHash != $file->sha1 )
             {
               array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"Hash Mismatch", "expectedhash"=>$file->sha1,"actualhash"=>$actualHash));
