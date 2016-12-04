@@ -19,11 +19,13 @@ if (isset($_POST["Setup"])) {
 
 if (isset($_GET['SystemIntegrityCheck']))
 {
-require_once 'Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
-$systemService = new \ChurchCRM\Service\SystemService();
-$AppIntegrity = $systemService->verifyApplicationIntegrity();
-echo $AppIntegrity['status'];
-exit();
+  require_once 'ChurchCRM/dto/SystemURLs.php'; 
+  ChurchCRM\dto\SystemURLs::init("", "", dirname(__FILE__));
+  require_once 'ChurchCRM/Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
+  $systemService = new \ChurchCRM\Service\SystemService();
+  $AppIntegrity = $systemService->verifyApplicationIntegrity();
+  echo $AppIntegrity['status'];
+  exit();
 }
 
 
@@ -121,7 +123,7 @@ $("document").ready(function(){
     <div class="col-lg-6">
       <div class="box">
         <div class="box-header">
-          <?php if ($is_ready): ?>
+            <?php if ($is_ready): ?>
             <h3>This server is ChurchCRM ready!</h3>
           <?php else: ?>
             <h3>This server isn't quite ready for ChurchCRM.</h3>
