@@ -11,7 +11,7 @@ use ChurchCRM\FileSystemUtils;
 use Propel\Runtime\Propel;
 use PharData;
 use Github\Client;
-require SystemURLs::getDocumentRoot()."/vendor/ifsnop/mysqldump-php/src/Mysqldump.php";
+require SystemURLs::getDocumentRoot()."/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php";
 use Ifsnop\Mysqldump\Mysqldump;
 
 class SystemService
