@@ -445,8 +445,7 @@ class SystemService
 
   function verifyApplicationIntegrity()
   {
-    $CRMInstallRoot = dirname(__DIR__);
-    $signatureFile = $CRMInstallRoot."/signatures.json";
+    $signatureFile = SystemURLs::getDocumentRoot()."/signatures.json";
     $signatureFailures = array();
     if (file_exists($signatureFile))
     {
@@ -455,9 +454,10 @@ class SystemService
       {
         foreach ($signatureData->files as $file)
         {
-          if(file_exists($CRMInstallRoot."/".$file->filename))
+          $currentFile = SystemURLs::getDocumentRoot()."/".$file->filename;
+          if(file_exists($currentFile))
           {
-            $actualHash = sha1_file($CRMInstallRoot."/".$file->filename);
+            $actualHash = sha1_file($currentFile);
             if ( $actualHash != $file->sha1 )
             {
               array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"Hash Mismatch", "expectedhash"=>$file->sha1,"actualhash"=>$actualHash));

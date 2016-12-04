@@ -19,11 +19,13 @@ if (isset($_POST["Setup"])) {
 
 if (isset($_GET['SystemIntegrityCheck']))
 {
-require_once 'Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
-$systemService = new \ChurchCRM\Service\SystemService();
-$AppIntegrity = $systemService->verifyApplicationIntegrity();
-echo $AppIntegrity['status'];
-exit();
+  require_once 'ChurchCRM/dto/SystemURLs.php'; 
+  ChurchCRM\dto\SystemURLs::init("", "", dirname(__FILE__));
+  require_once 'ChurchCRM/Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
+  $systemService = new \ChurchCRM\Service\SystemService();
+  $AppIntegrity = $systemService->verifyApplicationIntegrity();
+  echo $AppIntegrity['status'];
+  exit();
 }
 
 
