@@ -3,6 +3,10 @@ box: php
 build:
   steps:
     - script:
+        name: update box
+        code: |
+          sudo apt-get update
+    - script:
         name: setup composer
         code: |
           # Install Composer
@@ -14,7 +18,8 @@ build:
         name: echo node/grunt information
         code: |
           # Install JS tools
-          sudo apt-get install -y nodejs
+          #sudo apt-get install -y nodejs
+          sudo apt-get install -y npm          
           sudo npm install -g grunt
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
