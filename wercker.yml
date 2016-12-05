@@ -17,7 +17,8 @@ build:
         name: Skin install
         code: |
           echo "npm version $(npm -v) running"
-          npm install
+          sudo npm install -g npm@latest --unsafe-perm --no-bin-links
+          sudo npm install --unsafe-perm --no-bin-links
           echo "grunt version $(grunt --version) running"
           
     - script:
