@@ -9,27 +9,28 @@ keywords:
     - mysql
     - nodejs
     - grunt
-script: |
-    # Install launchpad repositories
-    sudo add-apt-repository ppa:ondrej/php7 -y
-    sudo add-apt-repository ppa:chris-lea/node.js -y
-    sudo apt-get update -y
-
-    # Install PHP
-    sudo apt-get install php7-cli php7-curl php7-dev php7-gd php7-intl php7-mcrypt php7-mysql -y
-
-    # Install Composer
-    curl -sS https://getcomposer.org/installer | php
-    sudo mv composer.phar /usr/local/bin/composer
-
-    # Install PHPUnit
-    # wget https://phar.phpunit.de/phpunit.phar
-    # chmod +x phpunit.phar
-    # sudo mv phpunit.phar /usr/local/bin/phpunit
-
-    # Install JS tools
-    sudo npm install -g grunt
-
-    # Install Sass
-    sudo apt-get install rubygems -y
-    sudo gem install github_changelog_generator 
+setup:
+    script: 
+        name: update php and node
+        code: |-
+            # Install launchpad repositories
+            sudo add-apt-repository ppa:ondrej/php7 -y
+            sudo add-apt-repository ppa:chris-lea/node.js -y
+            sudo apt-get update -y
+            # Install PHP
+            sudo apt-get install php7-cli php7-curl php7-dev php7-gd php7-intl php7-mcrypt php7-mysql -y
+            # Install Composer
+            curl -sS https://getcomposer.org/installer | php
+            sudo mv composer.phar /usr/local/bin/composer
+            # Install JS tools
+            sudo npm install -g grunt
+            # Install Sass
+            sudo apt-get install rubygems -y
+            sudo gem install github_changelog_generator 
+build:
+    script: 
+        name: build software
+        code: |-
+            npm install
+            cd src
+            composer update
