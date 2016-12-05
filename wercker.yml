@@ -4,7 +4,7 @@ build:
   steps:
     - install-packages:
         checkpoint: pkgs  
-        packages: git npm
+        packages: git npm node
     
     - script:
         name: setup composer
