@@ -5,6 +5,7 @@ build:
     - script:
         name: update box
         code: |
+          sudo apt-add-repository ppa:brightbox/ruby-ng
           sudo apt-get update
     - script:
         name: setup composer
@@ -15,19 +16,20 @@ build:
           composer self-update
           echo "composer version $(composer --version) running"
     - script:
-        name: echo node/grunt information
+        name: setup node/grunt information
         code: |
           # Install JS tools
           #sudo apt-get install -y nodejs
           sudo apt-get install -y npm          
           sudo npm install -g grunt
-          echo "node version $(node -v) running"
+          #echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
           echo "grunt version $(grunt --version) running"
     - script:
-        name: echo rubygems information
+        name: setup ruby gems information
         code: |
           # Install Sass
+          sudo apt-get install ruby2.2
           sudo apt-get install rubygems -y
           sudo gem install github_changelog_generator
     - script:
