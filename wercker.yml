@@ -25,18 +25,22 @@ build:
           echo "npm version $(npm -v) running"
           echo "grunt version $(grunt --version) running"
     - script:
-        name: setup ruby gems information
-        code: |
-          # Install Sass
-          sudo apt-get install -y ruby
-          gem install multi_json github_changelog_generator
-    - script:
         name: run installs
         code: |
           npm install
           cd src
           composer update
+gen-changelog:
+  steps:          
     - script:
+        name: setup ruby gems information
+        code: |
+          # Install Sass
+          sudo apt-get install -y ruby
+          gem install multi_json github_changelog_generator          
+unused:
+  steps:          
+  - script:
         name: Not used yet
         code: |
           # Install launchpad repositories
