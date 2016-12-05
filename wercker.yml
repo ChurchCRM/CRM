@@ -6,8 +6,8 @@ build:
         name: setup composer
         code: |
           # Install Composer
-          # curl -sS https://getcomposer.org/installer | php
-          # sudo mv composer.phar /usr/local/bin/composer
+          curl -sS https://getcomposer.org/installer | php
+          sudo mv composer.phar /usr/local/bin/composer
           echo "composer version $(composer --version) running"
     - script:
         name: echo node/grunt information
