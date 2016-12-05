@@ -28,7 +28,7 @@ build:
         name: setup ruby gems information
         code: |
           # Install Sass
-          sudo apt-get install ruby
+          sudo apt-get install -y ruby
           gem install multi_json github_changelog_generator
     - script:
         name: run installs
