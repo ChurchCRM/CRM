@@ -2,13 +2,15 @@ box: php
 
 build:
   steps:
-   - install-packages:
+    - install-packages:
         checkpoint: pkgs  
         packages: git npm
+        
     #- script:
     #    name: update box
     #    code: |
     #      sudo apt-get update
+    
     - script:
         name: setup composer
         code: |
@@ -17,6 +19,7 @@ build:
           sudo mv composer.phar /usr/local/bin/composer
           composer self-update
           echo "composer version $(composer --version) running"
+          
     - script:
         name: setup node/grunt information
         code: |
@@ -27,28 +30,31 @@ build:
           #echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
           echo "grunt version $(grunt --version) running"
+          
     - script:
         name: run installs
         code: |
           npm install
           cd src
           composer update
+          
 gen-changelog:
   steps:          
     - script:
-        name: setup ruby gems information
-        code: |
-          # Install Sass
-          sudo apt-get install -y ruby
-          gem install multi_json github_changelog_generator          
+      name: setup ruby gems information
+      code: |
+        # Install Sass
+        sudo apt-get install -y ruby
+        gem install multi_json github_changelog_generator          
+
 unused:
   steps:          
-  - script:
-        name: Not used yet
-        code: |
-          # Install launchpad repositories
-          #sudo add-apt-repository ppa:ondrej/php7 -y
-          #sudo add-apt-repository ppa:chris-lea/node.js -y
-          #sudo apt-get update -y
-          # Install PHP
-          #sudo apt-get install php7-cli php7-curl php7-dev php7-gd php7-intl php7-mcrypt php7-mysql -y
+    - script:
+      name: Not used yet
+      code: |
+        # Install launchpad repositories
+        #sudo add-apt-repository ppa:ondrej/php7 -y
+        #sudo add-apt-repository ppa:chris-lea/node.js -y
+        #sudo apt-get update -y
+        # Install PHP
+        #sudo apt-get install php7-cli php7-curl php7-dev php7-gd php7-intl php7-mcrypt php7-mysql -y
