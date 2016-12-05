@@ -16,7 +16,7 @@ build:
     - script:
         name: setup node/grunt information
         code: |
-          sudo npm install -g grunt
+          sudo npm install grunt
           echo "npm version $(npm -v) running"
           echo "grunt version $(grunt --version) running"
 
