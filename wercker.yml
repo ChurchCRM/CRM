@@ -1,4 +1,4 @@
-box: php
+box: node
 
 build:
   steps:
