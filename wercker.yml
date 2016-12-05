@@ -19,11 +19,15 @@ build:
           sudo npm install -g grunt
           echo "npm version $(npm -v) running"
           echo "grunt version $(grunt --version) running"
-          
+
     - script:
-        name: run installs
+        name: UI install
         code: |
           npm install
+          
+    - script:
+        name: Composer installs
+        code: |
           cd src
           composer update
           
