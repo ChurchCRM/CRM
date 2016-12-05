@@ -17,7 +17,6 @@ build:
         name: Skin install
         code: |
           echo "npm version $(npm -v) running"
-          sudo npm install -g
           sudo npm install
           echo "grunt version $(grunt --version) running"
           
