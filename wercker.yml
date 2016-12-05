@@ -4,12 +4,12 @@ build:
   steps:
     - install-packages:
         checkpoint: pkgs  
-        packages: git npm node zip unzip
+        packages: git npm node zip unzip grunt-cli
 
     - npm-install
     
     - grunt:
-        tasks: clean curl-dir copy concat rename    
+        tasks: clean curl-dir copy concat rename
     
     - script:
         name: setup composer
@@ -23,6 +23,7 @@ build:
         code: |
           cd src
           composer update
+          
     - script:
         name: propel setup
         code: |         
