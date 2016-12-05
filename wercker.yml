@@ -25,6 +25,8 @@ build:
         code: |
           cd src
           composer update
+          vendor/bin/propel model:build --config-dir=propel
+          composer dump-autoload
           
 gen-changelog:
   steps:          
