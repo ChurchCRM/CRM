@@ -5,7 +5,6 @@ build:
     - script:
         name: update box
         code: |
-          sudo apt-add-repository ppa:brightbox/ruby-ng
           sudo apt-get update
     - script:
         name: setup composer
