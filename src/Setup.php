@@ -45,6 +45,7 @@ $required = array(
   'PHP 5.6+' => version_compare(PHP_VERSION, '5.6.0', '>='),
   'PCRE and UTF-8 Support' => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'),
   'Multibyte Encoding' => extension_loaded('mbstring'),
+  'PHP Phar' => extension_loaded('phar'),
   'Mcrypt' => extension_loaded('mcrypt'),
   'Mod Rewrite' => hasModRewrite('mod_rewrite'),
   'GD Library for image manipulation' => (extension_loaded('gd') && function_exists('gd_info')),
