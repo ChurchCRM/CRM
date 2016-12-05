@@ -196,7 +196,7 @@ function GetSecuritySettings() {
   $aSecurityList[] = "bAddEvent";
   $aSecurityList[] = "bSeePrivacyData";
 
-  $sSQL = "SELECT DISTINCT ucfg_name
+  $sSQL = "SELECT DISTINCT ucfg_name, ucfg_id
            FROM userconfig_ucfg
            WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY'
            ORDER by ucfg_id";
