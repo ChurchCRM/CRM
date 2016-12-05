@@ -275,7 +275,7 @@ class SystemService
   
   function isDBCurrent()
   {
-    return $this->getDBVersion() ==  $_SESSION['sSoftwareInstalledVersion'];
+    return $this->getDBVersion() ==  $this->getInstalledVersion();
   }
 
   function upgradeDatabaseVersion()
