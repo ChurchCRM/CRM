@@ -1,18 +1,19 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
+
 $app->group('/register', function () {
   $this->post('', function ($request, $response, $args) {
-    global $systemConfig;
     $input = (object)$request->getParsedBody();
 
     $registrationData = new \stdClass();
-    $registrationData->sName = $systemConfig->getValue("sChurchName");
-    $registrationData->sAddress = $systemConfig->getValue("sChurchAddress");
-    $registrationData->sCity = $systemConfig->getValue("sChurchCity");
-    $registrationData->sState = $systemConfig->getValue("sChurchState");
-    $registrationData->sZip = $systemConfig->getValue("sChurchZip");
-    $registrationData->sCountry = $systemConfig->getValue("sChurchCountry");
-    $registrationData->sEmail = $systemConfig->getValue("sChurchEmail");
+    $registrationData->sName = SystemConfig::getValue("sChurchName");
+    $registrationData->sAddress = SystemConfig::getValue("sChurchAddress");
+    $registrationData->sCity = SystemConfig::getValue("sChurchCity");
+    $registrationData->sState = SystemConfig::getValue("sChurchState");
+    $registrationData->sZip = SystemConfig::getValue("sChurchZip");
+    $registrationData->sCountry = SystemConfig::getValue("sChurchCountry");
+    $registrationData->sEmail = SystemConfig::getValue("sChurchEmail");
     $registrationData->ChurchCRMURL = $input->ChurchCRMURL;
     $registrationData->Version = $this->SystemService->getInstalledVersion();
 
@@ -31,7 +32,7 @@ $app->group('/register', function () {
     }
 
     // =Turn off the registration flag so the menu option is less obtrusive
-    $systemConfig->setValue("bRegistered","1");
+    SystemConfig::setValue("bRegistered","1");
     return $response->withJson(array("status"=>"success"));
 
   });
