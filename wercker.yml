@@ -18,7 +18,11 @@ build:
         code: |
           cd src
           composer update
-          vendor/bin/propel model:build --config-dir=../propel
+    - script:
+        name: propel setup
+        code: |          
+          cd src
+          vendor/bin/propel model:build --config-dir=propel
           composer dump-autoload
           
     - script:
