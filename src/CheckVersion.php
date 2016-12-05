@@ -48,7 +48,12 @@ if ($systemService->isDBCurrent())  //either the DB is good, or the upgrade was 
   $UpgradeException = "null";
   try 
   {
-    $systemService->upgradeDatabaseVersion();
+    if ($systemService->upgradeDatabaseVersion() )
+    {
+      $_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
+      Redirect('Menu.php');
+      exit;
+    }
   } catch (Exception $ex) {
     $UpgradeException  = $ex;
   }
