@@ -8,6 +8,9 @@ build:
 
     - npm-install
     
+    - grunt:
+        tasks: clean curl-dir copy concat rename    
+    
     - script:
         name: setup composer
         code: |
