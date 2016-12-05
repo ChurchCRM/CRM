@@ -14,19 +14,20 @@ build:
           echo "composer version $(composer --version) running"
           
     - script:
-        name: Skin install
-        code: |
-          echo "npm version $(npm -v) running"
-          sudo npm install
-          echo "grunt version $(grunt --version) running"
-          
-    - script:
         name: Composer installs
         code: |
           cd src
           composer update
           vendor/bin/propel model:build --config-dir=../propel
           composer dump-autoload
+          
+    - script:
+        name: Skin install
+        code: |
+          echo "npm version $(npm -v) running"
+          sudo npm install
+          echo "grunt version $(grunt --version) running"
+
           
 gen-changelog:
   steps:          
