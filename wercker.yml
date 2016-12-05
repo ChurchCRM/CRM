@@ -14,16 +14,11 @@ build:
           echo "composer version $(composer --version) running"
           
     - script:
-        name: setup node/grunt information
+        name: Skin install
         code: |
-          sudo npm install grunt
           echo "npm version $(npm -v) running"
-          echo "grunt version $(grunt --version) running"
-
-    - script:
-        name: UI install
-        code: |
           npm install
+          echo "grunt version $(grunt --version) running"
           
     - script:
         name: Composer installs
