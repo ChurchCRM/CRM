@@ -22,7 +22,7 @@ build:
         name: propel setup
         code: |          
           cd src
-          vendor/bin/propel model:build --config-dir=propel
+          vendor/bin/propel model:build --schema-dir=propel --output-dir=ChurchCRM/model
           composer dump-autoload
           
     - script:
