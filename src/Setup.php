@@ -4,6 +4,26 @@ if (file_exists ( 'Include/Config.php')) {
  header("Location: index.php" );
 }
 
+function hasApacheModule($module)
+{
+  if (function_exists('apache_get_modules')) {
+    return in_array($module, apache_get_modules());
+  }
+
+  return false;
+}
+
+function hasModRewrite()
+{
+  $check = hasApacheModule('mod_rewrite');
+
+  if (!$check && function_exists('shell_exec')) {
+    $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== FALSE;
+  }
+
+  return $check;
+}
+
 if (isset($_POST["Setup"])) {
   $template = file_get_contents("Include/Config.php.example");
   $template = str_replace("||DB_SERVER_NAME||", $_POST["DB_SERVER_NAME"], $template);
@@ -29,19 +49,9 @@ if (isset($_GET['SystemIntegrityCheck']))
 }
 
 
-
-
-$temp = $_SERVER['REQUEST_URI'];
-$sRootPath = str_replace("/Setup.php", "", $temp);
-if ($sRootPath == "/") {
-  $sRootPath = "";
-}
-$URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . "/";
-
-$is_ready = TRUE;
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', '1');
-$required = array(
+if ( isset($_GET['SystemPrerequisiteCheck']))
+{
+  $required = array(
   'PHP 5.6+' => version_compare(PHP_VERSION, '5.6.0', '>='),
   'PCRE and UTF-8 Support' => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'),
   'Multibyte Encoding' => extension_loaded('mbstring'),
@@ -51,11 +61,25 @@ $required = array(
   'GD Library for image manipulation' => (extension_loaded('gd') && function_exists('gd_info')),
   'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
   'cURL' => function_exists('curl_version'),
-  'locale/gettext' => function_exists('bindtextdomain'),
-  'Include file is writeable' => is_writable("Include/Config.php.example"),
-  'ChurchCRM File Integrity Check' => FALSE
-);
+  'locale gettext' => function_exists('bindtextdomain'),
+  'Include file is writeable' => is_writable("Include/Config.php.example")
+  );
+  header("Content-Type: application/json");
+  echo json_encode($required);
+  exit;
+  
+}
 
+$temp = $_SERVER['REQUEST_URI'];
+$sRootPath = str_replace("/Setup.php", "", $temp);
+if ($sRootPath == "/") {
+  $sRootPath = "";
+}
+
+$URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . "/";
+
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', '1');
 
 
 if (!function_exists('bindtextdomain')) {
@@ -64,57 +88,136 @@ if (!function_exists('bindtextdomain')) {
   }
 }
 
-foreach ($required as $feature => $pass) {
-  if ($pass === FALSE) {
-    $is_ready = FALSE;
-  }
-}
 
-function hasApacheModule($module)
-{
-  if (function_exists('apache_get_modules')) {
-    return in_array($module, apache_get_modules());
-  }
 
-  return false;
-}
-
-function hasModRewrite()
-{
-  $check = hasApacheModule('mod_rewrite');
-
-  if (!$check && function_exists('shell_exec')) {
-    $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== FALSE;
-  }
-
-  return $check;
-}
-
-$sPageTitle = "ChurchCRM – Setup";
+$sPageTitle = gettext("ChurchCRM – Setup");
 require("Include/HeaderNotLoggedIn.php");
 ?>
 <script>
+window.CRM = {};
+window.CRM.prerequisites = [];
+window.CRM.checkIntegrity = function () {
+  window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","pending");
+  $.ajax({
+    url: "<?= $sRootPath ?>/Setup.php?SystemIntegrityCheck=1",
+    method: "GET"
+  }).done(function(data){
+    if (data == "success" ) 
+    {
+        window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","pass");
+    }
+    else
+    {
+        window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","fail");
+    }
+   window.CRM.evaluateReadyness();
+  });
+};
+window.CRM.checkPrerequisites = function () {
+  $.ajax({
+    url: "<?= $sRootPath ?>/Setup.php?SystemPrerequisiteCheck=1",
+    method: "GET",
+    contentType: "application/json"
+  }).done(function(data){
+    $.each(data, function (key,value) {
+      if (value)
+      {
+        status="pass";
+      }
+      else
+      {
+        status="fail";
+      }
+      window.CRM.renderPrerequisite(key,status);
+    });
+  });
+};
+window.CRM.renderPrerequisite = function (name, status) {
+  var td = {};
+  if (status == "pass")
+  {
+     td = {
+      class: 'text-blue',
+      html: '&check;'
+    };
+  }
+  else if(status =="pending")
+  {
+    td = {
+      class: 'text-orange',
+      html: '<i class="fa fa-spinner fa-spin"></i>'
+    };
+  }
+  else if (status == "fail")
+  {
+     td = {
+      class: 'text-red',
+      html: '&#x2717;'
+    };
+  }
+  var id = name.replace(/[^A-z0-9]/g,'');
+  window.CRM.prerequisites[id] = status;
+  var domElement = "#"+id;
+  var prerequisite = $("<tr>",{ id: id }).append(
+    $("<td>",{text:name})).append(
+      $("<td>",td));
+
+  if ($(domElement).length != 0 )
+  {
+    $(domElement).replaceWith(prerequisite);
+  }
+  else
+  {
+    $("#prerequisites").append(prerequisite);
+  }
+  
+  
+};
+window.CRM.evaluateReadyness = function () {
+  window.CRM.setupCheckStatus = "pass";
+  
+  for (key in window.CRM.prerequisites) {
+   
+    if (window.CRM.prerequisites[key] == "pending")
+    {
+      window.CRM.setupCheckStatus = "pending";
+      break; //if there are still checks pending, leave the global state at pending.
+    }
+    else if (window.CRM.prerequisites[key] == "fail")
+    {
+      window.CRM.setupCheckStatus = "fail";  // if a check fails, then the whole server fails.
+      break;
+    }
+  };
+  
+  if (window.CRM.setupCheckStatus == "pass") 
+  {
+    $(".box-header h3").text("<?= gettext("This server is ChurchCRM ready!") ?>");
+    $("#setupPage").css("display","");
+    $("#dangerContinue").css("display","none");
+  }
+  else if (window.CRM.setupCheckStatus == "pending") 
+  {
+    $(".box-header h3").text("<?= gettext("We're still determining if this server is ready for ChurchCRM.") ?>");
+    $("#setupPage").css("display","none");
+    $("#dangerContinue").css("display","");
+  }
+  else 
+  {
+    $(".box-header h3").text("<?= gettext("This server isn't quite ready for ChurchCRM.") ?>");
+    $("#setupPage").css("display","none");
+    $("#dangerContinue").css("display","");
+  }
+};
+
 $("document").ready(function(){
-    $("#dangerContinue").click(function(){
-      $("#setupPage").css("display","");
-    });
-    $.ajax({
-        url: "<?= $sRootPath ?>/Setup.php?SystemIntegrityCheck=1",
-        method: "GET"
-    }).done(function(data){
-        if (data == "success" ) 
-        {
-            $("#ChurchCRMFileIntegrityCheck-status").removeClass("text-red");
-            $("#ChurchCRMFileIntegrityCheck-status").addClass("text-blue");
-            $("#ChurchCRMFileIntegrityCheck-status").html("&check;")
-        }
-        else
-        {
-            $("#ChurchCRMFileIntegrityCheck-status").html("&#x2717;");
-        }
-       
-    });
-    $("#ChurchCRMFileIntegrityCheck-status").html('<i class="fa fa-spinner fa-spin"></i>');
+  $("#dangerContinue").click(function(){
+    $("#setupPage").css("display","");
+  });
+  window.CRM.checkIntegrity();
+  window.CRM.checkPrerequisites();
+  window.CRM.evaluateReadyness();
+  
 });
 </script>
 <div class='container'>
@@ -124,26 +227,18 @@ $("document").ready(function(){
     <div class="col-lg-6">
       <div class="box">
         <div class="box-header">
-          <?php if ($is_ready): ?>
-            <h3>This server is ChurchCRM ready!</h3>
-          <?php else: ?>
             <h3>This server isn't quite ready for ChurchCRM.</h3>
-          <?php endif; ?>
         </div>
         <div class="box-body">
           <p>In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like
             dating, but more technical.</p>
-
+          <div style="width:100%; text-align:center">
+            <button class="btn btn-warning" syle="text-align:center" id="dangerContinue"><?= gettext("I know what I'm doing.  Install ChurchCRM Anyway") ?></button>
+          </div>
           <h3>Requirements</h3>
 
-          <table class="table">
-            <?php foreach ($required as $label => $passed): ?>
-              <tr>
-                <td><?php echo $label ?></td>
-                <td
-                  id="<?php echo preg_replace('/\s+/', '', $label) ?>-status" class="<?php echo ($passed) ? 'text-blue' : 'text-red' ?>"><?php echo ($passed) ? '&check;' : '&#x2717;' ?></td>
-              </tr>
-            <?php endforeach ?>
+          <table class="table" id="prerequisites">
+           
           </table>
 
           <h3>Useful Server Info</h3>
@@ -164,9 +259,9 @@ $("document").ready(function(){
           </table>
         </div>
       </div>
-       <?php if (!$is_ready) { echo '<button class="btn btn-warning" id="dangerContinue">I know what I\'m doing.  Install ChurchCRM Anyway</button>'; } ?>
+     
     </div>
-      <div id="setupPage" class="col-lg-6"  <?php if (!$is_ready) { echo 'style="display:none"'; } ?>>
+      <div id="setupPage" class="col-lg-6" >
         <div class="box">
           <div class="box-body">
             <form target="_self" method="post">
@@ -210,6 +305,6 @@ $("document").ready(function(){
       </div>
   </div>
 </div>
-    <?php
-    require("Include/FooterNotLoggedIn.php");
-    ?>
+<?php
+  require("Include/FooterNotLoggedIn.php");
+?>
