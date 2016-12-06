@@ -14,6 +14,7 @@ if [ -f /vagrant/$launchversion ] ; then
   CRM_DB_USER="churchcrm"
   CRM_DB_PASS="churchcrm"
   CRM_DB_NAME="churchcrm"
+  CRM_DB_RESTORE_SCRIPT="/vagrant/ChurchCRM-Database.sql"
 
 elif [ $launchversion == "1.2.14" ] ; then
   echo "bootstrapping 1.2.14"
@@ -74,6 +75,10 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "CREATE USER '$CRM_DB_USER'@'%' IDENTIFI
 sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "GRANT ALL PRIVILEGES ON $CRM_DB_NAME.* TO '$CRM_DB_NAME'@'%' WITH GRANT OPTION;"
 sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "FLUSH PRIVILEGES;"
 echo "Database: user created with needed PRIVILEGES"
+
+if [ -f "$CRM_DB_RESTORE_SCRIPT" ]; then
+  sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_RESTORE_SCRIPT
+fi
 
 
 #=============================================================================
