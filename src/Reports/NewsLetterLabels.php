@@ -18,7 +18,7 @@ require "../Include/ReportFunctions.php";
 
 
 use ChurchCRM\Reports\PDF_NewsletterLabels;
-
+use ChurchCRM\dto\SystemConfig;
 
 $sLabelFormat = FilterInput($_GET["labeltype"]);
 setcookie("labeltype", $sLabelFormat, time()+60*60*24*90, "/" );
