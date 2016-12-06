@@ -96,7 +96,7 @@ $sPageTitle = gettext("Family Geographic Utilities");
 $sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence";
 $rsClassification = RunQuery($sClassSQL);
 unset($aClassificationName);
-$aClassificationName[0] = "Unassigned";
+$aClassificationName[0] = gettext("Unassigned");
 while ($aRow = mysqli_fetch_array($rsClassification))
 {
     extract($aRow);
@@ -107,7 +107,7 @@ while ($aRow = mysqli_fetch_array($rsClassification))
 $sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence";
 $rsFamilyRole = RunQuery($sFamRoleSQL);
 unset($aFamilyRoleName);
-$aFamilyRoleName[0] = "Unassigned";
+$aFamilyRoleName[0] = gettext("Unassigned");
 while ($aRow = mysqli_fetch_array($rsFamilyRole))
 {
     extract($aRow);
