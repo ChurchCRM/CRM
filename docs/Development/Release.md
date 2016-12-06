@@ -91,6 +91,14 @@
 
     4. A new Vagrant VM wil be started on http://192.168.10.12 with the contents of the release zip.  Test major functionality in this QA environment
 
+    5. After testing a clean install of the release, test an in-place upgrade of the release.
+
+      1.  Place a restore of a previous version of ChurchCRM in the /vagrant-qa directory.  The file must be named ```ChurchCRM-Database.sql```.  
+
+      2.  Run ```vagrant provision```, and the vagrant VM will be re-loaded with the database pre-staged
+
+      3.  Attempt to log into the vagrant-qa box.  The in-place upgrade routines should upgrade the database.
+
   3. Test the release package on your own testing server
 
 
