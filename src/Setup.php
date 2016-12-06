@@ -220,7 +220,7 @@ $("document").ready(function(){
   
 });
 </script>
-<div class='container'>
+<div class='container' style="padding-bottom:40px;">
   <h3>ChurchCRM – Setup</h3>
 
   <div class="row">
@@ -230,11 +230,11 @@ $("document").ready(function(){
             <h3>This server isn't quite ready for ChurchCRM.</h3>
         </div>
         <div class="box-body">
-          <p>In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like
-            dating, but more technical.</p>
           <div style="width:100%; text-align:center">
             <button class="btn btn-warning" syle="text-align:center" id="dangerContinue"><?= gettext("I know what I'm doing.  Install ChurchCRM Anyway") ?></button>
           </div>
+          <p><?= gettext("In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical.") ?></p>
+          
           <h3>Requirements</h3>
 
           <table class="table" id="prerequisites">
