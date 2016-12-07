@@ -4,6 +4,7 @@
 require 'Include/Config.php';
 $bSuppressSessionTests = TRUE;
 require 'Include/Functions.php';
+require_once('Include/Header-function.php');
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Upgrade ChurchCRM");
@@ -15,6 +16,9 @@ if (!$_SESSION['bAdmin'])
 }
 
 require ("Include/HeaderNotLoggedIn.php");
+Header_modals();
+Header_body_scripts();
+
 ?>
 <div class="col-lg-8 col-lg-offset-2" style="margin-top: 10px">
   <ul class="timeline">
