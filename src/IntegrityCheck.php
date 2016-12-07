@@ -4,6 +4,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 //Set the page title
 $sPageTitle = gettext('Integrity Check Results');
 if (!$_SESSION['bAdmin'])
@@ -12,8 +14,16 @@ if (!$_SESSION['bAdmin'])
   exit;
 }
 require 'Include/Header.php';
-$integrityCheckFile =  __DIR__ ."/integrityCheck.json";
-$IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
+$integrityCheckFile = SystemURLs::getDocumentRoot() ."/integrityCheck.json";
+
+if (file_exists($integrityCheckFile))
+{
+  $IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
+}
+else {
+ $IntegrityCheckDetails->status = "failure";
+ $IntegrityCheckDetails->message = "integrityCheck.json file missing";
+}
 
 if ($IntegrityCheckDetails->status == "failure")
 {
