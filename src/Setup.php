@@ -235,7 +235,7 @@ $("document").ready(function(){
         </div>
         <div class="box-body">
           <div style="width:100%; text-align:center">
-            <button class="btn btn-warning" syle="text-align:center" id="dangerContinue"><?= gettext("I know what I'm doing.  Install ChurchCRM Anyway") ?></button>
+            <button class="btn btn-warning" syle="margin-top:-10px, margin-bottom: 15px" id="dangerContinue"><?= gettext("I know what I'm doing.  Install ChurchCRM Anyway") ?></button>
           </div>
           <p><?= gettext("In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical.") ?></p>
           
