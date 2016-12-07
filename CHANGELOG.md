@@ -1,5 +1,43 @@
 # Change Log
 
+## [2.4.1](https://github.com/ChurchCRM/CRM/tree/2.4.1) (2016-12-07)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.4.0...2.4.1)
+
+**Fixed bugs:**
+
+- GroupList fails when there are no groups [\#1542](https://github.com/ChurchCRM/CRM/issues/1542)
+- TaskService.php calling integrityCheck.json [\#1521](https://github.com/ChurchCRM/CRM/issues/1521)
+- register software is broken [\#1515](https://github.com/ChurchCRM/CRM/issues/1515)
+- In place upgrade says failure, but actually succeeds [\#1511](https://github.com/ChurchCRM/CRM/issues/1511)
+- Deposit Listing "Family Name" is broken [\#1159](https://github.com/ChurchCRM/CRM/issues/1159)
+
+**Closed issues:**
+
+- changelog generator not working [\#1508](https://github.com/ChurchCRM/CRM/issues/1508)
+- update ionicons in package.json [\#1501](https://github.com/ChurchCRM/CRM/issues/1501)
+- Family Map is broken [\#1539](https://github.com/ChurchCRM/CRM/issues/1539)
+- Unable to create lables [\#1538](https://github.com/ChurchCRM/CRM/issues/1538)
+- Unable to import CSV [\#1535](https://github.com/ChurchCRM/CRM/issues/1535)
+- Unable to add system user [\#1533](https://github.com/ChurchCRM/CRM/issues/1533)
+- Need Vagrant-QA for in-place upgrade [\#1527](https://github.com/ChurchCRM/CRM/issues/1527)
+- Error on Registering Software [\#1526](https://github.com/ChurchCRM/CRM/issues/1526)
+- Setup.php needs more checks and is not automatically passing people to the database setup boxes. [\#1524](https://github.com/ChurchCRM/CRM/issues/1524)
+- In place upgrade backup failure doesn't show errors [\#1514](https://github.com/ChurchCRM/CRM/issues/1514)
+- 2.4.0 upgrade notification persists after upgrade. [\#1513](https://github.com/ChurchCRM/CRM/issues/1513)
+- Can't backup or restore DB from web ui [\#1512](https://github.com/ChurchCRM/CRM/issues/1512)
+
+**Merged pull requests:**
+
+- 2.4.1 Many Small Fixes [\#1534](https://github.com/ChurchCRM/CRM/pull/1534) ([crossan007](https://github.com/crossan007))
+- 2.4.1 1514 backup error modal [\#1531](https://github.com/ChurchCRM/CRM/pull/1531) ([crossan007](https://github.com/crossan007))
+- 2.4.1 1521 integrity check [\#1530](https://github.com/ChurchCRM/CRM/pull/1530) ([crossan007](https://github.com/crossan007))
+- 2.4.1 1524 prerequisite check [\#1529](https://github.com/ChurchCRM/CRM/pull/1529) ([crossan007](https://github.com/crossan007))
+- 2.4.1 enchance vagrant qa [\#1528](https://github.com/ChurchCRM/CRM/pull/1528) ([crossan007](https://github.com/crossan007))
+- 2.4.1 fix upgrade [\#1519](https://github.com/ChurchCRM/CRM/pull/1519) ([crossan007](https://github.com/crossan007))
+- 2.4.1 fix phar [\#1518](https://github.com/ChurchCRM/CRM/pull/1518) ([crossan007](https://github.com/crossan007))
+- 2.4.1 fix register [\#1517](https://github.com/ChurchCRM/CRM/pull/1517) ([crossan007](https://github.com/crossan007))
+- move to 2.4.1 [\#1516](https://github.com/ChurchCRM/CRM/pull/1516) ([crossan007](https://github.com/crossan007))
+
 ## [2.4.0](https://github.com/ChurchCRM/CRM/tree/2.4.0) (2016-12-05)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.4.0-RC3...2.4.0)
 
