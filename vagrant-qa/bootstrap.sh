@@ -2,6 +2,11 @@
 
 #=============================================================================
 # DB Setup
+
+if [[ ! -d /var/www/public ]]; then
+  mkdir /var/www/public
+fi 
+
 rm -rf /var/www/public/*
 launchversion=`grep -i '^[^#;]' /vagrant/VersionToLaunch`
 
@@ -43,6 +48,9 @@ else
   echo "version string not valid"
   exit 1
 fi
+
+sudo chown -R vagrant:vagrant /var/www/public
+sudo chmod a+rwx /var/www/public
 
 DB_USER="root"
 DB_PASS="root"
