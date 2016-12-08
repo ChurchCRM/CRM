@@ -1,5 +1,24 @@
 # Change Log
 
+## [2.4.2](https://github.com/ChurchCRM/CRM/tree/2.4.2) (2016-12-08)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.4.1...2.4.2)
+
+**Fixed bugs:**
+
+- Auto-Upgrade is broken [\#1549](https://github.com/ChurchCRM/CRM/issues/1549)
+- "Confirm data letter" and "Confirm data email" in LettersAndLabels.php are broken in PHP 7.0 [\#1546](https://github.com/ChurchCRM/CRM/issues/1546)
+
+**Closed issues:**
+
+- Upgrade on production site failed [\#1523](https://github.com/ChurchCRM/CRM/issues/1523)
+
+**Merged pull requests:**
+
+- Cleanup Vagrant-QA [\#1551](https://github.com/ChurchCRM/CRM/pull/1551) ([crossan007](https://github.com/crossan007))
+- Some gettext more [\#1545](https://github.com/ChurchCRM/CRM/pull/1545) ([saulowulhynek](https://github.com/saulowulhynek))
+- Fix self upgrade  [\#1550](https://github.com/ChurchCRM/CRM/pull/1550) ([crossan007](https://github.com/crossan007))
+- 2.4.2-starting [\#1548](https://github.com/ChurchCRM/CRM/pull/1548) ([crossan007](https://github.com/crossan007))
+
 ## [2.4.1](https://github.com/ChurchCRM/CRM/tree/2.4.1) (2016-12-07)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.4.0...2.4.1)
 

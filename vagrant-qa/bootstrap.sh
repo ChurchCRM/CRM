@@ -7,6 +7,9 @@ if [[ ! -d /var/www/public ]]; then
   mkdir /var/www/public
 fi 
 
+sudo chown -R vagrant:vagrant /var/www/public
+sudo chmod a+rwx /var/www/public
+
 rm -rf /var/www/public/*
 launchversion=`grep -i '^[^#;]' /vagrant/VersionToLaunch`
 
@@ -15,7 +18,7 @@ if [ -f /vagrant/$launchversion ] ; then
   unzip -d /tmp/churchcrm /vagrant/$launchversion
   shopt -s dotglob  
   mv  /tmp/churchcrm/churchcrm/* /var/www/public/
-  CRM_DB_INSTALL_SCRIPT="/vagrant/src/mysql/install/Install.sql"
+  CRM_DB_INSTALL_SCRIPT="/var/www/public/mysql/install/Install.sql"
   CRM_DB_USER="churchcrm"
   CRM_DB_PASS="churchcrm"
   CRM_DB_NAME="churchcrm"
@@ -27,7 +30,7 @@ elif [ $launchversion == "1.2.14" ] ; then
   unzip -d /var/www/public /var/www/1.2.14.zip
   shopt -s dotglob
   mv  /var/www/public/churchinfo/* /var/www/public/
-  CRM_DB_INSTALL_SCRIPT="/vagrant/src/SQL/Install.sql"
+  CRM_DB_INSTALL_SCRIPT="/var/www/public/SQL/Install.sql"
   CRM_DB_USER="churchinfo"
   CRM_DB_PASS="churchinfo"
   CRM_DB_NAME="churchinfo"
@@ -39,7 +42,7 @@ elif [[ $launchversion =~ [2\.] ]] ; then
   unzip -d /tmp/churchcrm /tmp/$filename
   shopt -s dotglob  
   mv  /tmp/churchcrm/churchcrm/* /var/www/public/
-  CRM_DB_INSTALL_SCRIPT="/vagrant/src/mysql/install/Install.sql"
+  CRM_DB_INSTALL_SCRIPT="/var/www/public/mysql/install/Install.sql"
   CRM_DB_USER="churchcrm"
   CRM_DB_PASS="churchcrm"
   CRM_DB_NAME="churchcrm"
@@ -48,9 +51,6 @@ else
   echo "version string not valid"
   exit 1
 fi
-
-sudo chown -R vagrant:vagrant /var/www/public
-sudo chmod a+rwx /var/www/public
 
 DB_USER="root"
 DB_PASS="root"
@@ -88,6 +88,9 @@ if [ -f "$CRM_DB_RESTORE_SCRIPT" ]; then
   sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_RESTORE_SCRIPT
 fi
 
+if [ -f "$CRM_DB_INSTALL_SCRIPT" ]; then
+  sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SCRIPT
+fi
 
 #=============================================================================
 # Help info
