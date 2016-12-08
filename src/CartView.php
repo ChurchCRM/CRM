@@ -100,7 +100,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 <?php if (count($_SESSION['aPeopleCart']) > 0) { ?>
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Cart Functions</h3>
+        <h3 class="box-title"><?= gettext("Cart Functions") ?></h3>
     </div>
     <div class="box-body">
         <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext("Empty Cart") ?></a>
