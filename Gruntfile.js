@@ -195,7 +195,7 @@ module.exports = function (grunt) {
       }
     },
     compress: {
-      package: {
+      'zip': {
         options: {
           archive: 'target/ChurchCRM-<%= composer.version %>.zip',
           mode: "zip",
@@ -221,7 +221,7 @@ module.exports = function (grunt) {
           }
         ]
       },
-      package: {
+      'tar': {
         options: {
           archive: 'target/ChurchCRM-<%= composer.version %>.tar.gz',
           mode: "tar",
