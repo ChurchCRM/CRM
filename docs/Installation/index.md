@@ -23,17 +23,16 @@ For Debian GNU/Linux users, you should install these packages:
 + php-mysql
 + php-mbstring
 + php-pear
++ php-phar
 
 ChurchCRM can be run entirely with free software.  In fact, that's
 half the point of why it was written!
 
 ## What type of server do I need?
 
-The computer can be running almost any operating system: 
-Windows 9x/2000/XP,Linux, BSD, Solaris, MacOS, etc. so long as 
-the OS can support a PHP-compatible Web server (such as Apache), 
-and can run a MySQL database server.  We highly recommend Linux 
-or FreeBSD but the choice is yours. As for PHP and MySQL, we do
+ChurchCRM requires a PHP-compatible Web server (such as Apache), 
+and can run a MySQL database server.  We highly recommend Linux, but the choice is yours. 
+As for PHP and MySQL, we do
 have the following requirements:
 
 1. PHP   
@@ -42,6 +41,8 @@ have the following requirements:
       * PEAR enabled
       * gettext enabled
       * register_globals turned OFF (see below)
+      * Phar extension must be enabled.
+
 2. MySQL 
       * Version 5.1 or greater
 
@@ -52,6 +53,16 @@ turned off. Create a file called ".htaccess" with a simple text editor and
 insert the following line into that new file:
 	php_flag register_globals off
 Save this file and upload this file into the main ChurchCRM directory.
+
+## How can I enable the Phar extension?
+
+Some web hosts allow you to selectively enable PHP extensions by the use of a [phprc](http://php.net/manual/en/configuration.php) file.
+If your web host does not enable Phar by default, and allows the use of phprc files,
+you can add the following to your phprc file:
+```
+extension=phar.so
+```
+
 
 ## Where do I get a Web server?
 

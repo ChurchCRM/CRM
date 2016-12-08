@@ -56,7 +56,9 @@ function Header_modals() {
         <div class="modal-body">
           <p><?= gettext("Error making API Call to") ?>: <span id="APIEndpoint"></span></p>
 
-          <p><?= gettext("Error text") ?>: <span id="APIErrorText"></span></p>
+          <p><?= gettext("Error text") ?>: <span style="font-style: bold" id="APIErrorText"></span></p>
+          
+          <p><?= gettext("Stack Trace") ?>: <pre id="APITrace"></pre></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal"><?= gettext("Close") ?></button>
@@ -129,11 +131,12 @@ function Header_body_scripts() {
       locale: "<?= $localeInfo->getLocale() ?>"
     };
 
-    window.CRM.DisplayErrorMessage = function(endpoint, message) {
+    window.CRM.DisplayErrorMessage = function(endpoint, error) {
       $(".modal").modal('hide');
       $("#APIError").modal('show');
       $("#APIEndpoint").text(endpoint);
-      $("#APIErrorText").text(message);
+      $("#APIErrorText").text(error.message);
+      $("#APITrace").text(JSON.stringify(error.trace, undefined, 2));
     };
 
     window.CRM.VerifyThenLoadAPIContent = function(url) {
@@ -147,10 +150,10 @@ function Header_body_scripts() {
             window.open(url);
           },
           404: function() {
-            window.CRM.DisplayErrorMessage(url, error);
+            window.CRM.DisplayErrorMessage(url, {message: error});
           },
           500: function() {
-            window.CRM.DisplayErrorMessage(url, error);
+            window.CRM.DisplayErrorMessage(url, {message: error});
           }
         }
       });
@@ -158,7 +161,7 @@ function Header_body_scripts() {
 
     $(document).ajaxError(function(evt, xhr, settings) {
       var CRMResponse = JSON.parse(xhr.responseText);
-      window.CRM.DisplayErrorMessage("[" + settings.type + "] " + settings.url, " " + CRMResponse.message);
+      window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
     });
 
     function LimitTextSize(theTextArea, size) {
@@ -193,7 +196,7 @@ function GetSecuritySettings() {
   $aSecurityList[] = "bAddEvent";
   $aSecurityList[] = "bSeePrivacyData";
 
-  $sSQL = "SELECT DISTINCT ucfg_name
+  $sSQL = "SELECT DISTINCT ucfg_name, ucfg_id
            FROM userconfig_ucfg
            WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY'
            ORDER by ucfg_id";

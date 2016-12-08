@@ -19,6 +19,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 use ChurchCRM\Note;
+use ChurchCRM\dto\SystemConfig;
 
 if (!$_SESSION['bAdmin']) {
     Redirect("Menu.php");

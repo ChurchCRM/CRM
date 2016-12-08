@@ -18,7 +18,10 @@ class TaskService
 
   function getAdminTasks() {
     requireUserGroupMembership("bAdmin");
-    $integrityCheckData = json_decode(file_get_contents(SystemURLs::getDocumentRoot()."/integrityCheck.json"));
+    if (file_exists(SystemURLs::getDocumentRoot()."/integrityCheck.json"))
+    {
+      $integrityCheckData = json_decode(file_get_contents(SystemURLs::getDocumentRoot()."/integrityCheck.json"));
+    }
 
     $tasks = array();
     if (SystemConfig::getValue("bRegistered") != 1) {
@@ -45,7 +48,7 @@ class TaskService
       array_push($tasks, $this->addTask(gettext("New Release") . " " . $this->latestVersion["name"], SystemURLs::getRootPath()."/UpgradeCRM.php", true));
     }
     
-    if($integrityCheckData->status == "failure") {
+    if($integrityCheckData == null || $integrityCheckData->status == "failure") {
       array_push($tasks, $this->addTask(gettext("Application Integrity Check Failed"), SystemURLs::getRootPath()."/IntegrityCheck.php", true));
     }
 
