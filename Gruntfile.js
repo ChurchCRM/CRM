@@ -221,6 +221,32 @@ module.exports = function (grunt) {
           }
         ]
       },
+      package: {
+        options: {
+          archive: 'target/ChurchCRM-<%= composer.version %>.tar.gz',
+          mode: "tar",
+          pretty: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'src/',
+            src: [
+              '**',
+              '**/.*',
+              '!**/.gitignore',
+              '!vendor/**/example/**',
+              '!vendor/**/tests/**',
+              '!vendor/**/docs/**',
+              '!Images/Person/thumbnails/*.jpg',
+              '!composer.lock',
+              '!Include/Config.php',
+              '!integrityCheck.json'
+            ],
+            dest: 'churchcrm/'
+          }
+        ]
+      },
       'demo-data': {
         options: {
           archive: 'target/ChurchCRM-<%= composer.version %>-demo.tar.gz'
