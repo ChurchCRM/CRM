@@ -8468,23 +8468,23 @@ msgstr "Zimbabwe"
 
 #: Setup.php:97
 msgid "ChurchCRM – Setup"
-msgstr ""
+msgstr "Réglages - ChurchCRM"
 
 #: Setup.php:199
 msgid "This server is ChurchCRM ready!"
-msgstr ""
+msgstr "Ce serveur est compatible ChurchCRM!"
 
 #: Setup.php:205
 msgid "We're still determining if this server is ready for ChurchCRM."
-msgstr ""
+msgstr "Nous déterminons toujours si ce serveur est prêt pour ChurchCRM."
 
 #: Setup.php:211
 msgid "This server isn't quite ready for ChurchCRM."
-msgstr ""
+msgstr "Ce serveur n'est pas prêt pour ChurchCRM."
 
 #: Setup.php:238
 msgid "I know what I'm doing.  Install ChurchCRM Anyway"
-msgstr ""
+msgstr "Je sais ce que je fais. Installer de toute façon ChurchCRM"
 
 #: Setup.php:240
 msgid "In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical."
@@ -8492,7 +8492,7 @@ msgstr ""
 
 #: Include/Header-function.php:61
 msgid "Stack Trace"
-msgstr ""
+msgstr "Trace de Pile"
 
 #: config_cfg.php:14
 msgid "Show family member firstnames in Family Listing?"
@@ -8504,35 +8504,35 @@ msgstr ""
 
 #: config_cfg.php:29
 msgid "Use vCard 2.1 rather than vCard 3.0 standard."
-msgstr ""
+msgstr "Utiliser vCard 2.1 plutôt que vCard 3.0."
 
 #: config_cfg.php:38
 msgid "Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html"
-msgstr ""
+msgstr "L'API google map requiert une clé unique sur http://maps.google.com/apis/maps/signup.html"
 
 #: query_qry.php:2 query_qry.php:51
 msgid "Person Count"
-msgstr ""
+msgstr "Nombre de personnes"
 
 #: query_qry.php:9 query_qry.php:58
 msgid "Find Teachers"
-msgstr ""
+msgstr "Rechercher Moniteurs"
 
 #: query_qry.php:10 query_qry.php:59
 msgid "Find Students"
-msgstr ""
+msgstr "Rechercher Eleves"
 
 #: query_qry.php:12 query_qry.php:61
 msgid "Class Students"
-msgstr ""
+msgstr "Classe des Eleves"
 
 #: query_qry.php:13 query_qry.php:62
 msgid "Class Teachers"
-msgstr ""
+msgstr "Classe des Moniteurs"
 
 #: query_qry.php:26 query_qry.php:75
 msgid "Returns the total number of people in the database."
-msgstr ""
+msgstr "Retourne nombre total de personnes dans la BDD."
 
 #: query_qry.php:33 query_qry.php:82
 msgid "Find all people assigned to Sunday school classes as teachers"
@@ -8544,9 +8544,9 @@ msgstr ""
 
 #: query_qry.php:36 query_qry.php:85
 msgid "Find students for a particular class"
-msgstr ""
+msgstr "Rechercher Eleves pour une classe particulière"
 
 #: query_qry.php:37 query_qry.php:86
 msgid "Find teachers for a particular class"
-msgstr ""
+msgstr "Rechercher Moniteurs pour une classe particulière"
 

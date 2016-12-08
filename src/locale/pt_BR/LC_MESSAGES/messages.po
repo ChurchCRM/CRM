@@ -8362,85 +8362,85 @@ msgstr "Zimbábue"
 
 #: Setup.php:97
 msgid "ChurchCRM – Setup"
-msgstr ""
+msgstr "ChurchCRM - Configurações"
 
 #: Setup.php:199
 msgid "This server is ChurchCRM ready!"
-msgstr ""
+msgstr "Este servidor está pronto para o ChurchCRM!"
 
 #: Setup.php:205
 msgid "We're still determining if this server is ready for ChurchCRM."
-msgstr ""
+msgstr "Nós ainda estamos verificando se este servidor está pronto para o ChurchCRM!"
 
 #: Setup.php:211
 msgid "This server isn't quite ready for ChurchCRM."
-msgstr ""
+msgstr "Este servidor não está completamente pronto para o ChurchCRM."
 
 #: Setup.php:238
 msgid "I know what I'm doing.  Install ChurchCRM Anyway"
-msgstr ""
+msgstr "Eu sei o que eu estou fazendo. Instale o ChurchCRM assim mesmo"
 
 #: Setup.php:240
 msgid "In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical."
-msgstr ""
+msgstr "No caso de você desejar saber dos detalhes na essência, aqui está o que procuramos em um servidor. É tipo de condicionantes, mas mais técnico."
 
 #: Include/Header-function.php:61
 msgid "Stack Trace"
-msgstr ""
+msgstr "Rastreamento de pilha"
 
 #: config_cfg.php:14
 msgid "Show family member firstnames in Family Listing?"
-msgstr ""
+msgstr "Mostrar os primeiros nomes dos membros da família na Lista de Famílias?"
 
 #: config_cfg.php:25
 msgid "Word Wrap point. Default for most email programs is 72"
-msgstr ""
+msgstr "Ponto de quebra de linha. O padrão para a maioria dos programas de e-mail é 72"
 
 #: config_cfg.php:29
 msgid "Use vCard 2.1 rather than vCard 3.0 standard."
-msgstr ""
+msgstr "Use o padrão vCard 2.1 no lugar do vCard 3.0"
 
 #: config_cfg.php:38
 msgid "Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html"
-msgstr ""
+msgstr "A API do Google Maps requer uma única chave obtida em http://maps.google.com/apis/maps/signup.html"
 
 #: query_qry.php:2 query_qry.php:51
 msgid "Person Count"
-msgstr ""
+msgstr "Contador de Pessoas"
 
 #: query_qry.php:9 query_qry.php:58
 msgid "Find Teachers"
-msgstr ""
+msgstr "Encontrar professores"
 
 #: query_qry.php:10 query_qry.php:59
 msgid "Find Students"
-msgstr ""
+msgstr "Encontrar alunos"
 
 #: query_qry.php:12 query_qry.php:61
 msgid "Class Students"
-msgstr ""
+msgstr "Alunos da classe"
 
 #: query_qry.php:13 query_qry.php:62
 msgid "Class Teachers"
-msgstr ""
+msgstr "Professores da Classe"
 
 #: query_qry.php:26 query_qry.php:75
 msgid "Returns the total number of people in the database."
-msgstr ""
+msgstr "Retorna o número total de pessoas no banco de dados"
 
 #: query_qry.php:33 query_qry.php:82
 msgid "Find all people assigned to Sunday school classes as teachers"
-msgstr ""
+msgstr "Encontrar todas as pessoas marcadas como professores de classes da Escola Bíblica Dominical"
 
 #: query_qry.php:34 query_qry.php:83
 msgid "Find all people assigned to Sunday school classes as students"
-msgstr ""
+msgstr "Encontrar todas as pessoas marcadas como alunos de classes da Escola Bíblica Dominical"
 
 #: query_qry.php:36 query_qry.php:85
 msgid "Find students for a particular class"
-msgstr ""
+msgstr "Encontrar alunos de uma classe particular"
 
 #: query_qry.php:37 query_qry.php:86
 msgid "Find teachers for a particular class"
-msgstr ""
+msgstr "Encontrar professores de uma classe particular"
 
