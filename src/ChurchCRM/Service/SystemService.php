@@ -392,8 +392,7 @@ class SystemService
   function downloadLatestRelease()
   {
     $release = $this->getLatestRelese();
-    $CRMInstallRoot = dirname(__DIR__);
-    $UpgradeDir = $CRMInstallRoot."/Upgrade";
+    $UpgradeDir = SystemURLs::getDocumentRoot()."/Upgrade";
     $url = $release['assets'][0]['browser_download_url'];
     mkdir($UpgradeDir);
     file_put_contents($UpgradeDir."/".basename($url), file_get_contents($url));
@@ -422,15 +421,14 @@ class SystemService
   function doUpgrade($zipFilename,$sha1)
   {
     ini_set('max_execution_time',60);
-    $CRMInstallRoot = dirname(__DIR__);
     if($sha1 == sha1_file($zipFilename))
     {
       $zip = new \ZipArchive();
       if ($zip->open($zipFilename) == TRUE)
       {
-        $zip->extractTo($CRMInstallRoot."/Upgrade");
+        $zip->extractTo(SystemURLs::getDocumentRoot()."/Upgrade");
         $zip->close();
-        $this->moveDir($CRMInstallRoot."/Upgrade/churchcrm", $CRMInstallRoot);
+        $this->moveDir(SystemURLs::getDocumentRoot()."/Upgrade/churchcrm", SystemURLs::getDocumentRoot());
       }
       unlink($zipFilename);
       SystemConfig::setValue("sLastIntegrityCheckTimeStamp",null);
