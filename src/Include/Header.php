@@ -25,7 +25,10 @@
  *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
  ******************************************************************************/
-if ( ! $systemService->isDBCurrent())  //either the DB is good, or the upgrade was successful.
+
+ use ChurchCRM\dto\SystemConfig;
+ 
+ if ( ! $systemService->isDBCurrent())  //either the DB is good, or the upgrade was successful.
 {
   Redirect('CheckVersion.php');
   exit;
@@ -76,6 +79,7 @@ $MenuFirst = 1;
       <!-- logo for regular state and mobile devices -->
       <?php
       $headerHTML = "<b>Church</b>CRM";
+	  $sHeader = SystemConfig::getValue("sHeader");
       if ($sHeader) {
         $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
       }
