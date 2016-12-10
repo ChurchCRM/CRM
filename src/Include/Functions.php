@@ -81,35 +81,6 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
 }
 // End of basic security checks
 
-// check if bLockURL is set and if so if the current page is accessed via an allowed URL
-function checkAllowedURL()
-{
-  global $bLockURL, $URL;
-
-  if (isset($bLockURL) && ($bLockURL === TRUE)) {
-    // get the URL of this page
-    $currentURL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-
-    // chop off the query string
-    $currentURL = explode('?', $currentURL)[0];
-
-    // check if this matches any one of teh whitelisted login URLS
-    $validURL = false;
-    foreach ($URL as $value) {
-      $base = substr($value, 0, -strlen('/'));
-      if (strpos($currentURL, $value) === 0) {
-        $validURL = true;
-        break;
-      }
-    }
-
-    // jump to the first whitelisted url (TODO: maybe pick a ranodm URL?)
-    if (!$validURL) {
-      header('Location: ' . $URL[0]);
-      exit;
-    }
-  }
-}
 
 function deletePhotos($type, $id)
 {

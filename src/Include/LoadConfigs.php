@@ -67,6 +67,8 @@ try {
     system_failure($e->getMessage());
 }
 
+SystemURLs::checkAllowedURL($bLockURL, $URL);
+
 
 $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
 or system_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
