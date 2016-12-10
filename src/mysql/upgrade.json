@@ -91,5 +91,13 @@
     "scripts": [
     ],
     "dbVersion": "2.4.3"
+  },
+  "pre-2.5.0" : {
+    "versions": [
+      "2.4.3"
+    ],
+    "scripts": [
+    ],
+    "dbVersion": "2.5.0"
   }
 }
