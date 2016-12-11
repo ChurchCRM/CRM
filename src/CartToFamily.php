@@ -254,7 +254,7 @@ if (count($_SESSION['aPeopleCart']) > 0)
 		<td class="LabelColumn"><?= gettext("State") ?>:</td>
 		<td class="TextColumn">
 			<?php require "Include/StateDropDown.php"; ?>
-			OR
+			<?= echo gettext("OR") ?>
 			<input type="text" name="StateTextbox" value="<?php if ($sCountry != "United States" && $sCountry != "Canada") echo $sState ?>" size="20" maxlength="30">
 			<BR><?= gettext("(Use the textbox for countries other than US and Canada)") ?>
 		</td>

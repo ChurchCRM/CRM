@@ -183,9 +183,6 @@ if ($currentUser != Null)
         // Initialize the last operation time
         $_SESSION['tLastOperation'] = time();
 
-        // Set the Root Path ... used in basic security check
-        $_SESSION['sRootPath'] = $sRootPath;
-
         $_SESSION['bHasMagicQuotes'] = 0;
 
         // Pledge and payment preferences
@@ -268,13 +265,6 @@ if (isset($loginPageMsg))
         </div>
     </div>
 </form>
-<?php
-// Check if the login page is following thre required URL schema
-// including the desired protocol, hiotsname, and path.
-// Otherwise redirect to login page.
-// An array of authorized URL's is specified in Config.php in the $URL array
-checkAllowedURL();
-?>
         <!--<a href="external/user/password">I forgot my password</a><br> -->
         <?php if ($enableSelfReg) { ?>
         <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext("Register a new Family");?></a><br>

@@ -4,19 +4,11 @@ namespace ChurchCRM
 {
     class PhotoUtils
     {
-        private static $images;
-        
-        public static function setPhotosDir ($photoDir)
-        {
-            PhotoUtils::$images = $photoDir;
-          
-        }
-        
         private static function processFile($type,$id,$filename)
         {
             $finalFileName = $id;
-            $imageLocationMain = PhotoUtils::$images."/".$type."/";
-            $imageLocationThumb = PhotoUtils::$images."/".$type."/thumbnails/";
+            $imageLocationMain = SystemURLs::getImagesRoot() . "/" . $type . "/";
+            $imageLocationThumb = SystemURLs::getImagesRoot() . "/" . $type . "/thumbnails/";
             
             $foo = new \upload($filename);
             $foo->allowed = array('image/png', 'image/jpg', 'image/jpeg');
@@ -90,18 +82,18 @@ namespace ChurchCRM
             $img = str_replace('data:image/png;base64,', '', $base64);
             $img = str_replace(' ', '+', $img);
             $fileData = base64_decode($img);
-            $temp_file = PhotoUtils::$images."/temp.png";
+            $temp_file = SystemURLs::getImagesRoot() . "/temp.png";
             file_put_contents($temp_file , $fileData);
             return PhotoUtils::processFile($type, $id, $temp_file);
-            //unlink($temp_file);
+            unlink($temp_file);
             
         }
         
         public static function deletePhotos($type,$id)
         {
             $validExtensions = array("jpeg", "jpg", "png");
-            $finalFileName =  PhotoUtils::$images ."/".$type . "/" . $id;
-            $finalFileNameThumb =  PhotoUtils::$images ."/". $type . "/thumbnails/" . $id;
+            $finalFileName = SystemURLs::getImagesRoot() . "/".$type . "/" . $id;
+            $finalFileNameThumb =  SystemURLs::getImagesRoot() . "/" . $type . "/thumbnails/" . $id;
 
             $deleted = false;
             while (list(, $ext) = each($validExtensions)) {

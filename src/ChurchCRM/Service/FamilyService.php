@@ -2,19 +2,15 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemURLs;
+use Exception;
+
 class FamilyService
 {
 
-  private $baseURL;
-
-  public function __construct()
-  {
-    $this->baseURL = $_SESSION['sRootPath'];
-  }
-
   function getViewURI($Id)
   {
-    return $this->baseURL . "/FamilyView.php?FamilyID=" . $Id;
+    return SystemURLs::getRootPath() . "/FamilyView.php?FamilyID=" . $Id;
   }
 
   function search($searchTerm)

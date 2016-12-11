@@ -14,42 +14,8 @@ CRM_DB_PASS="churchcrm"
 CRM_DB_NAME="churchcrm"
 
 echo "=========================================================="
-echo "==================   Stop unused stuff===================="
-echo "=========================================================="
-
-sudo service mongod stop
-
-if [ $1 == 'php7' ]; then
-  echo "=========================================================="
-  echo "================   Configuring PHP7.0 ===================="
-  echo "=========================================================="
-  sudo service apache2 stop
-  sudo add-apt-repository -y ppa:ondrej/php
-  sudo apt-get update
-  sudo apt-get install -y php7.0
-  sudo apt-get install -y php7.0-mysql
-  sudo apt-get install -y php7.0-xml php7.0-curl php7.0-zip
-  sudo a2dismod php5
-  sudo a2enmod php7.0
-  sudo service apache2 start
-fi
-
-
-echo "=========================================================="
-echo "==================   Apache Setup  ======================="
-echo "=========================================================="
-sudo sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2G/g' /etc/php5/apache2/php.ini
-sudo sed -i 's/^post_max_size.*$/post_max_size = 2G/g' /etc/php5/apache2/php.ini
-sudo sed -i 's/\/var\/www.*$/\/var\/www\/public/g' /etc/apache2/sites-available/default-ssl.conf
-sudo a2enmod ssl
-sudo a2ensite default-ssl
-sudo service apache2 restart
-
-echo "=========================================================="
 echo "====================   DB Setup  ========================="
 echo "=========================================================="
-sudo sed -i 's/^bind-address.*$/bind-address=0.0.0.0/g' /etc/mysql/my.cnf
-sudo service mysql restart
 RET=1
 while [[ RET -ne 0 ]]; do
     echo "Database: Waiting for confirmation of MySQL service startup"
@@ -60,7 +26,7 @@ done
 
 echo "Database: mysql started"
 
-sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "DROP DATABASE $CRM_DB_NAME;"
+sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "DROP DATABASE IF EXISTS $CRM_DB_NAME;"
 sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "DROP USER '$CRM_DB_USER';"
 echo "Database: cleared"
 
@@ -95,13 +61,8 @@ echo "=========================================================="
 cp /vagrant/vagrant/Config.php /vagrant/src/Include/
 
 echo "=========================================================="
-echo "=================   Composer Update    ==================="
-echo "=========================================================="
-
-sudo /usr/local/bin/composer self-update
-
 echo "===============   Composer PHP           ================="
-
+echo "=========================================================="
 cd /vagrant/src
 composer update
 
@@ -117,36 +78,6 @@ echo "=========================================================="
 cd /vagrant
 sudo npm install -g npm@latest --unsafe-perm --no-bin-links
 sudo npm install --unsafe-perm --no-bin-links
-
-echo "=========================================================="
-echo "=================   MailCatcher Setup  ==================="
-echo "=========================================================="
-
-sudo pkill mailcatcher
-sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
-
-echo "=========================================================="
-echo "==========   Add Locals                       ============"
-echo "=========================================================="
-
-sudo locale-gen de_DE
-sudo locale-gen en_AU
-sudo locale-gen en_GB
-sudo locale-gen es_ES
-sudo locale-gen fr_FR
-sudo locale-gen hu_HU
-sudo locale-gen it_IT
-sudo locale-gen nb_NO
-sudo locale-gen nl_NL
-sudo locale-gen pl_PL
-sudo locale-gen pt_BR
-sudo locale-gen ro_RO
-sudo locale-gen ru_RU
-sudo locale-gen se_SE
-sudo locale-gen sq_AL
-sudo locale-gen sv_SE
-sudo locale-gen zh_CN
-sudo locale-gen zh_TW
 
 echo "=========================================================="
 echo "=========================================================="

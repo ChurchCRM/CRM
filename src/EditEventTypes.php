@@ -176,7 +176,7 @@ if($numCounts)
      ?>
       <tr>
         <td class="TextColumn" width="35%">
-           <input class='form-control' type="text" name="newCountName" length="20" placeholder="New Attendance Count" />
+           <input class='form-control' type="text" name="newCountName" length="20" placeholder="<?= gettext("New Attendance Count") ?>"/> 
         </td>
         <td class="TextColumn" width="50%">
            <button type="submit" name="Action" value="ADD" class="btn btn-default"><?= gettext("Add counter") ?></button>

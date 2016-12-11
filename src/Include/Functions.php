@@ -34,7 +34,7 @@ use ChurchCRM\dto\SystemConfig;
 
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
-
+use ChurchCRM\dto\SystemURLs;
 $personService = new PersonService();
 $systemService = new SystemService();
 $_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
@@ -47,13 +47,6 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
 {
   // Basic security: If the UserID isn't set (no session), redirect to the login page
   if (!isset($_SESSION['iUserID'])) {
-    Redirect("Login.php");
-    exit;
-  }
-
-  // Basic security: If $sRootPath has changed we have changed databases without logging in
-  // redirect to the login page
-  if ($_SESSION['sRootPath'] !== $sRootPath) {
     Redirect("Login.php");
     exit;
   }
@@ -88,35 +81,6 @@ if (empty($bSuppressSessionTests))  // This is used for the login page only.
 }
 // End of basic security checks
 
-// check if bLockURL is set and if so if the current page is accessed via an allowed URL
-function checkAllowedURL()
-{
-  global $bLockURL, $URL;
-
-  if (isset($bLockURL) && ($bLockURL === TRUE)) {
-    // get the URL of this page
-    $currentURL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-
-    // chop off the query string
-    $currentURL = explode('?', $currentURL)[0];
-
-    // check if this matches any one of teh whitelisted login URLS
-    $validURL = false;
-    foreach ($URL as $value) {
-      $base = substr($value, 0, -strlen('/'));
-      if (strpos($currentURL, $value) === 0) {
-        $validURL = true;
-        break;
-      }
-    }
-
-    // jump to the first whitelisted url (TODO: maybe pick a ranodm URL?)
-    if (!$validURL) {
-      header('Location: ' . $URL[0]);
-      exit;
-    }
-  }
-}
 
 // if magic_quotes off and array
 function addslashes_deep($value)
@@ -156,7 +120,7 @@ if (isset($_GET["Registered"])) {
 }
 
 if (isset($_GET["AllPDFsEmailed"])) {
-  $sGlobalMessage = gettext("PDFs successfully emailed " . $_GET["AllPDFsEmailed"] . " families.");
+  $sGlobalMessage = gettext("PDFs successfully emailed ") . $_GET["AllPDFsEmailed"] . " " . gettext("families.");
 }
 
 if (isset($_GET["PDFEmailed"])) {
@@ -243,7 +207,6 @@ if (isset($_POST["BulkAddToCart"])) {
 function RedirectURL($sRelativeURL)
 {
   global $sRootPath;
-  global $sDocumentRoot;
 
   // Test if file exists before redirecting.  May need to remove
   // query string first.
@@ -258,7 +221,7 @@ function RedirectURL($sRelativeURL)
   //     $sFullPath = $sDocumentRoot . $sRootPath . $sPathExtension
   // The Redirect URL is then in this form:
   //     $sRedirectURL = $sRootPath . $sPathExtension
-  $sFullPath = str_replace('\\', '/', $sDocumentRoot . '/' . $sPathExtension);
+  $sFullPath = str_replace('\\', '/', SystemURLs::getDocumentRoot() . '/' . $sPathExtension);
 
   // With the query string removed we can test if file exists
   if (file_exists($sFullPath) && is_readable($sFullPath)) {
@@ -266,8 +229,8 @@ function RedirectURL($sRelativeURL)
   } else {
     $sErrorMessage = 'Fatal Error: Cannot access file: ' . $sFullPath . "<br>\n"
       . "\$sPathExtension = $sPathExtension<br>\n"
-      . "\$sDocumentRoot = $sDocumentRoot<br>\n"
-      . "\$_SESSION['sRootPath'] = "
+      . "\$sDocumentRoot = SystemURLs::getDocumentRoot()<br>\n"
+      . "\$sRootPath = "
       . $sRootPath . "<br>\n";
 
     die ($sErrorMessage);

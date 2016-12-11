@@ -36,6 +36,7 @@ src/skin/fastclick
 src/Include/Config.php
 
 target
+temp_attach
 src/ChurchCRM/model/ChurchCRM/Base
 src/ChurchCRM/model/ChurchCRM/Map
 src/signatures.json

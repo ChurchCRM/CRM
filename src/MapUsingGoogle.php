@@ -104,7 +104,7 @@ if (SystemConfig::getValue("nChurchLatitude") == "") {
                     $appendToQuery .= ")";
                 }
 
-                $sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( SystemConfig::getValue("sDirRoleHead") )";
+                $sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( " . SystemConfig::getValue("sDirRoleHead") .")";
                 $sSQL .= $appendToQuery;
                 $rsFams = RunQuery ($sSQL);
                 $markerIcons =  explode ( "," , SystemConfig::getValue("sGMapIcons") );

@@ -19,6 +19,7 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 use ChurchCRM\Note;
+use ChurchCRM\dto\SystemConfig;
 
 if (!$_SESSION['bAdmin']) {
     Redirect("Menu.php");
@@ -48,7 +49,7 @@ class Family
         $this->_nAdultMale = 0;
         $this->_nAdultFemale = 0;
         $this->Members = array();
-        $this->WeddingDate = "0000-00-00";
+        $this->WeddingDate = "";
         $this->Phone = "";
     }
 
@@ -62,7 +63,7 @@ class Family
                                  'role'=> 0,
                                  'phone'=> $Phone,
                                  'envelope'=>$Envelope);
-        if($Wedding != "0000-00-00")
+        if($Wedding != "")
             $this->WeddingDate = $Wedding;
         if($Envelope != 0)
             $this->Envelope = $Envelope;
@@ -406,7 +407,7 @@ if (isset($_POST["DoImport"]))
 
         while ($aData = fgetcsv($pFile, 2048, ","))
         {
-            $iBirthYear = 0; $iBirthMonth = 0; $iBirthDay = 0; $iGender = 0; $dWedding = "0000-00-00";
+            $iBirthYear = 0; $iBirthMonth = 0; $iBirthDay = 0; $iGender = 0; $dWedding = "";
             $sAddress1 = ""; $sAddress2 = ""; $sCity = ""; $sState = ""; $sZip = "";
             // Use the default country from the mapping form in case we don't find one otherwise
             $sCountry = SystemConfig::getValue("sDefaultCountry");
@@ -677,7 +678,7 @@ if (isset($_POST["DoImport"]))
                     $famid =  $aFid[0];
                     $note = new Note();
                     $note->setFamId($famid);
-                    $note->setText("Imported");
+                    $note->setText(gettext("Imported"));
                     $note->setType("create");
                     $note->setEntered($_SESSION['iUserID']);
                     $note->save();
@@ -755,7 +756,7 @@ if (isset($_POST["DoImport"]))
             extract(mysqli_fetch_array($rsPersonID));
             $note = new Note();
             $note->setPerId($iPersonID);
-            $note->setText("Imported");
+            $note->setText(gettext("Imported"));
             $note->setType("create");
             $note->setEntered($_SESSION['iUserID']);
             $note->save();

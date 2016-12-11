@@ -96,7 +96,7 @@ $sPageTitle = gettext("Family Geographic Utilities");
 $sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence";
 $rsClassification = RunQuery($sClassSQL);
 unset($aClassificationName);
-$aClassificationName[0] = "Unassigned";
+$aClassificationName[0] = gettext("Unassigned");
 while ($aRow = mysqli_fetch_array($rsClassification))
 {
     extract($aRow);
@@ -107,7 +107,7 @@ while ($aRow = mysqli_fetch_array($rsClassification))
 $sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence";
 $rsFamilyRole = RunQuery($sFamRoleSQL);
 unset($aFamilyRoleName);
-$aFamilyRoleName[0] = "Unassigned";
+$aFamilyRoleName[0] = gettext("Unassigned");
 while ($aRow = mysqli_fetch_array($rsFamilyRole))
 {
     extract($aRow);
@@ -223,8 +223,7 @@ require "Include/Header.php";
 	<div class="box-body">
 <form method="POST" action="GeoPage.php" name="GeoPage">
 <table class="table">
-<?
-//Get Families for the list
+<?php //Get Families for the list
 $sSQL = "SELECT * FROM family_fam ORDER BY fam_Name";
 $rsFamilies = RunQuery($sSQL);
 
@@ -287,7 +286,7 @@ echo '<td><input type="submit" class="btn" name="DataFile" value="' . gettext("M
     </div>
     <div class="box-body">
 <table class="table">
-<?
+<?php
 echo '<tr><td><br></td><td><input type="submit" class="btn" name="FindNeighbors" value="' . gettext("Show Neighbors") . '"></td></tr>'."\n";
 
 foreach ($aClassificationName as $key => $value) {

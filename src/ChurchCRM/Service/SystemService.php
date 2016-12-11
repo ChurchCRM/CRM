@@ -3,22 +3,27 @@
 namespace ChurchCRM\Service;
 
 use Exception;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\VersionQuery;
 use ChurchCRM\Version;
-use Propel\Runtime;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\SQLUtils;
+use ChurchCRM\FileSystemUtils;
+use Propel\Runtime\Propel;
+use PharData;
+use Github\Client;
+require SystemURLs::getDocumentRoot()."/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php";
+use Ifsnop\Mysqldump\Mysqldump;
 
 class SystemService
 {
 
   function getLatestRelese()
   {
-    $client = new \Github\Client();
+    $client = new Client();
     $release = null;
     try {
       $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
 
     }
 
@@ -27,70 +32,52 @@ class SystemService
 
   function getInstalledVersion()
   {
-    $composerFile = file_get_contents(dirname(__FILE__) . "/../composer.json");
+    $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . "/composer.json");
     $composerJson = json_decode($composerFile, true);
     $version = $composerJson["version"];
 
     return $version;
   }
 
-  function playbackSQLtoDatabase($fileName)
-  {
-    global $cnInfoCentral;
-    $query = '';
-    $restoreQueries = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($restoreQueries as $line) {
-      if ($line != '' && strpos($line, '--') === false) {
-        $query .= " $line";
-        if (substr($query, -1) == ';') {
-          $person = mysqli_query($cnInfoCentral, $query);
-          $query = '';
-        }
-      }
-    }
-  }
-
-  function restoreDatabaseFromBackup()
+  function restoreDatabaseFromBackup($file)
   {
     requireUserGroupMembership("bAdmin");
     $restoreResult = new \stdClass();
     $restoreResult->Messages = array();
-    global $sUSER, $sPASSWORD, $sDATABASE, $cnInfoCentral;
-    $file = $_FILES['restoreFile'];
+    $connection = Propel::getConnection();
     $restoreResult->file = $file;
     $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
     $restoreResult->type2 = pathinfo(substr($file['name'], 0, strlen($file['name']) - 3), PATHINFO_EXTENSION);
-    $restoreResult->root = dirname(dirname(__FILE__));
-    $restoreResult->backupRoot = "$restoreResult->root/tmp_attach/ChurchCRMBackups";
+    $restoreResult->root = SystemURLs::getDocumentRoot();
+    $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups";
     $restoreResult->imagesRoot = "Images";
     $restoreResult->headers = array();
+    $restoreResult->uploadedFileDestination = SystemURLs::getDocumentRoot()."/tmp_attach/".$file['name'];
     // Delete any old backup files
-    exec("rm -rf  $restoreResult->backupRoot");
-    exec("mkdir  $restoreResult->backupRoot");
+    FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
+    mkdir ($restoreResult->backupRoot);
+    move_uploaded_file($file['tmp_name'], $restoreResult->uploadedFileDestination );
     if ($restoreResult->type == "gz") {
       if ($restoreResult->type2 == "tar") {
-        exec("mkdir $restoreResult->backupRoot");
-        $restoreResult->uncompressCommand = "tar -zxvf " . $file['tmp_name'] . " --directory $restoreResult->backupRoot";
-        exec($restoreResult->uncompressCommand, $rs1, $returnStatus);
+        $phar = new PharData($restoreResult->uploadedFileDestination);
+        $phar->extractTo($restoreResult->backupRoot);
         $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
-        $this->playbackSQLtoDatabase($restoreResult->SQLfile);
-        exec("rm -rf $restoreResult->root/Images/*");
-        exec("mv -f $restoreResult->backupRoot/Images/* $restoreResult->root/Images");
+        SQLUtils::sqlImport($restoreResult->SQLfile,$connection);
+        FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . "/Images");
+        FileSystemUtils::recursiveCopyDirectory($restoreResult->backupRoot."/Images/", SystemURLs::getDocumentRoot() . "/Images");
       } else if ($restoreResult->type2 == "sql") {
-        exec("mkdir $restoreResult->backupRoot");
-        exec("mv  " . $file['tmp_name'] . " " . $restoreResult->backupRoot . "/" . $file['name']);
-        $restoreResult->uncompressCommand = SystemConfig::getValue("sGZIPname") . " -d $restoreResult->backupRoot/" . $file['name'];
-        exec($restoreResult->uncompressCommand, $rs1, $returnStatus);;
-        $restoreResult->SQLfile = $restoreResult->backupRoot . "/" . substr($file['name'], 0, strlen($file['name']) - 3);
-        $this->playbackSQLtoDatabase($restoreResult->SQLfile);
+        $restoreResult->SQLfile = SystemURLs::getDocumentRoot()."/tmp_attach/".str_replace(".gz", '', $file['name']);
+        file_put_contents($restoreResult->SQLfile, gzopen($restoreResult->uploadedFileDestination , r));
+        SQLUtils::sqlImport($restoreResult->SQLfile,$connection);
       }
     } else if ($restoreResult->type == "sql") {
-      $this->playbackSQLtoDatabase($file['tmp_name']);
+      SQLUtils::sqlImport($restoreResult->uploadedFileDestination,$connection);
     }
-    exec("rm -rf $restoreResult->backupRoot");
-    $restoreResult->UpgradeStatus = $this->checkDatabaseVersion();
-    $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
-    $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
+    FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
+    unlink($restoreResult->uploadedFileDestination);
+    $restoreResult->UpgradeStatus = $this->upgradeDatabaseVersion();
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/rebuild_nav_menus.sql",$connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/update_config.sql",$connection);
     //When restoring a database, do NOT let the database continue to create remote backups.
     //This can be very troublesome for users in a testing environment.
     SystemConfig::setValue("sEnableExternalBackupTarget", "0");
@@ -102,57 +89,58 @@ class SystemService
   function getDatabaseBackup($params)
   {
     requireUserGroupMembership("bAdmin");
-    global $sUSER, $sPASSWORD, $sDATABASE, $sSERVERNAME;
-
+    global $sSERVERNAME,$sDATABASE,$sUSER,$sPASSWORD;
     $backup = new \stdClass();
-    $backup->root = dirname(dirname(__FILE__));
+    $backup->root = SystemURLs::getDocumentRoot();
     $backup->backupRoot = "$backup->root/tmp_attach/ChurchCRMBackups";
-    $backup->imagesRoot = "Images";
+    $backup->imagesRoot = "$backup->root/Images";
     $backup->headers = array();
     // Delete any old backup files
-    exec("rm -rf  $backup->backupRoot");
-    exec("mkdir  $backup->backupRoot");
-    // Check to see whether this installation has gzip, zip, and gpg
-    if (SystemConfig::getValue("sGZIPname"))
-      $hasGZIP = true;
-    if (SystemConfig::getValue("sZIPname"))
-      $hasZIP = true;
-    if (SystemConfig::getValue("sPGPname"))
-      $hasPGP = true;
+    FileSystemUtils::recursiveRemoveDirectory($backup->backupRoot);
+    mkdir ($backup->backupRoot);
 
     $backup->params = $params;
     $bNoErrors = true;
 
     $backup->saveTo = "$backup->backupRoot/ChurchCRM-" . date("Ymd-Gis");
     $backup->SQLFile = "$backup->backupRoot/ChurchCRM-Database.sql";
-
-    $backupCommand = "mysqldump -u $sUSER --password=$sPASSWORD --host=$sSERVERNAME $sDATABASE > $backup->SQLFile";
-    exec($backupCommand, $returnString, $returnStatus);
+    
+    try {
+      $dump = new Mysqldump('mysql:host='.$sSERVERNAME.';dbname='.$sDATABASE, $sUSER, $sPASSWORD, array('add-drop-table' => true));
+      $dump->start($backup->SQLFile);
+    } catch (\Exception $e) {
+      //echo 'mysqldump-php error: ' . $e->getMessage();
+    }
 
     switch ($params->iArchiveType) {
       case 0: # The user wants a gzip'd SQL file.
-        $backup->saveTo .= ".sql";
-        exec("mv $backup->SQLFile  $backup->saveTo");
-        $backup->compressCommand = SystemConfig::getValue("sGZIPname") . " " . $backup->saveTo;
-        $backup->saveTo .= ".gz";
-        exec($backup->compressCommand, $returnString, $returnStatus);
-        $backup->archiveResult = $returnString;
-        break;
-      case 1: #The user wants a .zip file
-        $backup->saveTo .= ".zip";
-        $backup->compressCommand = SystemConfig::getValue("sZIPname")." -r -y -q -9 $backup->saveTo $backup->backupRoot";
-        exec($backup->compressCommand, $returnString, $returnStatus);
-        $backup->archiveResult = $returnString;
+        $backup->saveTo .= ".sql.gz";
+        $gzf = gzopen($backup->saveTo, "w6");
+        gzwrite($gzf,  file_get_contents($backup->SQLFile));
+        gzclose($gzf);
         break;
       case 2: #The user wants a plain ol' SQL file
         $backup->saveTo .= ".sql";
-        exec("mv $backup->SQLFile  $backup->saveTo");
+        rename($backup->SQLFile ,$backup->saveTo);
         break;
       case 3: #the user wants a .tar.gz file
-        $backup->saveTo .= ".tar.gz";
-        $backup->compressCommand = "tar -zcvf $backup->saveTo -C $backup->backupRoot ChurchCRM-Database.sql -C $backup->root $backup->imagesRoot";
-        exec($backup->compressCommand, $returnString, $returnStatus);
-        $backup->archiveResult = $returnString;
+        $backup->saveTo .= ".tar";
+        $phar = new \PharData($backup->saveTo);
+        $phar->startBuffering();
+        $phar->addFile($backup->SQLFile,"ChurchCRM-Database.sql");
+        $imageFiles = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($backup->imagesRoot));
+        foreach ( $imageFiles as $imageFile)
+        {
+          if (! $imageFile->isDir() )  {
+            
+           $localName = str_replace(SystemURLs::getDocumentRoot()."/", "",$imageFile->getRealPath());
+           $phar->addFile($imageFile->getRealPath(),  $localName);
+          }
+        }
+        $phar->stopBuffering();
+        $phar->compress(\Phar::GZ);
+        unlink($backup->saveTo);
+        $backup->saveTo .= ".gz";
         break;
     }
 
@@ -220,7 +208,7 @@ class SystemService
   {
     requireUserGroupMembership("bAdmin");
     set_time_limit(0);
-    $path = dirname(dirname(__FILE__)) . "/tmp_attach/ChurchCRMBackups/$filename";
+    $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
     if (file_exists($path)) {
       if ($fd = fopen($path, "r")) {
         $fsize = filesize($path);
@@ -261,7 +249,7 @@ class SystemService
         }
       }
       fclose($fd);
-      exec("rm -rf  " . dirname(dirname(__FILE__)) . "/tmp_attach/ChurchCRMBackups");
+      FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups");
     }
   }
 
@@ -275,14 +263,8 @@ class SystemService
     requireUserGroupMembership("bAdmin");
   }
 
-  function rebuildWithSQL($SQLFile)
-  {
-    $root = dirname(dirname(__FILE__));
-    $this->playbackSQLtoDatabase($root . $SQLFile);
-  }
-
   function getDBVersion() {
-    $connection = Runtime\Propel::getConnection();
+    $connection = Propel::getConnection();
     $query = "Select * from version_ver";
     $statement = $connection->prepare($query);
     $resultset = $statement->execute();
@@ -290,36 +272,44 @@ class SystemService
     rsort($results);
     return $results[0]['ver_version'];
   }
-
-  function checkDatabaseVersion()
+  
+  function isDBCurrent()
   {
+    return $this->getDBVersion() ==  $this->getInstalledVersion();
+  }
 
+  function upgradeDatabaseVersion()
+  {
+    $connection = Propel::getConnection();
     $db_version = $this->getDBVersion();
     if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
       return true;
     }
 
     //the database isn't at the current version.  Start the upgrade
-    $dbUpdatesFile = file_get_contents(dirname(__FILE__) . "/../mysql/upgrade.json");
+    $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot()."/mysql/upgrade.json");
     $dbUpdates = json_decode($dbUpdatesFile, true);
-    $upgradeSuccess = false;
+    $errorFlag = false;
     foreach ($dbUpdates as $dbUpdate) {
       if (in_array($this->getDBVersion(), $dbUpdate["versions"])) {
         $version = new Version();
         $version->setVersion($dbUpdate["dbVersion"]);
         $version->setUpdateStart(new \DateTime());
         foreach ($dbUpdate["scripts"] as $dbScript) {
-          $this->rebuildWithSQL($dbScript);
+            SQLUtils::sqlImport(SystemURLs::getDocumentRoot()."/".$dbScript, $connection);
         }
-        $version->setUpdateEnd(new \DateTime());
-        $version->save();
-        $upgradeSuccess = true;
+        if (!$errorFlag)
+        {
+          $version->setUpdateEnd(new \DateTime());
+          $version->save();
+        }
+       
       }
     }
     // always rebuild the menu
-    $this->rebuildWithSQL("/mysql/upgrade/rebuild_nav_menus.sql");
-    $this->rebuildWithSQL("/mysql/upgrade/update_config.sql");
-    return $upgradeSuccess;
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot()."/mysql/upgrade/rebuild_nav_menus.sql", $connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot()."/mysql/upgrade/update_config.sql", $connection);
+    return "success";
   }
 
   function reportIssue($data)
@@ -390,7 +380,7 @@ class SystemService
       $diff = $previous->diff($now);  // calculate the difference.
       if (!SystemConfig::getValue("sLastIntegrityCheckTimeStamp") || $diff->h >= SystemConfig::getValue("sIntegrityCheckInterval"))  // if there was no previous backup, or if the interval suggests we do a backup now.
       {
-        $integrityCheckFile = dirname(__DIR__) . "/integrityCheck.json";
+        $integrityCheckFile = SystemURLs::getDocumentRoot() . "/integrityCheck.json";
         $appIntegrity = $this->verifyApplicationIntegrity();
         file_put_contents($integrityCheckFile, json_encode($appIntegrity));
         $now = new \DateTime();  // update the LastBackupTimeStamp.
@@ -402,8 +392,7 @@ class SystemService
   function downloadLatestRelease()
   {
     $release = $this->getLatestRelese();
-    $CRMInstallRoot = dirname(__DIR__);
-    $UpgradeDir = $CRMInstallRoot."/Upgrade";
+    $UpgradeDir = SystemURLs::getDocumentRoot()."/Upgrade";
     $url = $release['assets'][0]['browser_download_url'];
     mkdir($UpgradeDir);
     file_put_contents($UpgradeDir."/".basename($url), file_get_contents($url));
@@ -432,15 +421,14 @@ class SystemService
   function doUpgrade($zipFilename,$sha1)
   {
     ini_set('max_execution_time',60);
-    $CRMInstallRoot = dirname(__DIR__);
     if($sha1 == sha1_file($zipFilename))
     {
       $zip = new \ZipArchive();
       if ($zip->open($zipFilename) == TRUE)
       {
-        $zip->extractTo($CRMInstallRoot."/Upgrade");
+        $zip->extractTo(SystemURLs::getDocumentRoot()."/Upgrade");
         $zip->close();
-        $this->moveDir($CRMInstallRoot."/Upgrade/churchcrm", $CRMInstallRoot);
+        $this->moveDir(SystemURLs::getDocumentRoot()."/Upgrade/churchcrm", SystemURLs::getDocumentRoot());
       }
       unlink($zipFilename);
       SystemConfig::setValue("sLastIntegrityCheckTimeStamp",null);
@@ -455,8 +443,7 @@ class SystemService
 
   function verifyApplicationIntegrity()
   {
-    $CRMInstallRoot = dirname(__DIR__);
-    $signatureFile = $CRMInstallRoot."/signatures.json";
+    $signatureFile = SystemURLs::getDocumentRoot()."/signatures.json";
     $signatureFailures = array();
     if (file_exists($signatureFile))
     {
@@ -465,9 +452,10 @@ class SystemService
       {
         foreach ($signatureData->files as $file)
         {
-          if(file_exists($CRMInstallRoot."/".$file->filename))
+          $currentFile = SystemURLs::getDocumentRoot()."/".$file->filename;
+          if(file_exists($currentFile))
           {
-            $actualHash = sha1_file($CRMInstallRoot."/".$file->filename);
+            $actualHash = sha1_file($currentFile);
             if ( $actualHash != $file->sha1 )
             {
               array_push($signatureFailures, array("filename"=>$file->filename,"status"=>"Hash Mismatch", "expectedhash"=>$file->sha1,"actualhash"=>$actualHash));

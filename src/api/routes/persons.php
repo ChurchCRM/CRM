@@ -20,7 +20,6 @@ $app->group('/persons', function ()  {
   $this->post('/{personId:[0-9]+}/photo', function($request, $response, $args)  {
     $personId =$args['personId'];
     $input = (object)$request->getParsedBody();
-    PhotoUtils::setPhotosDir(dirname(dirname(__DIR__))."/Images");
     PhotoUtils::deletePhotos("Person", $personId);
     $upload = PhotoUtils::setImageFromBase64("Person", $personId, $input->imgBase64);
     

@@ -10,7 +10,8 @@ $app->group('/database', function () {
   });
 
   $this->post('/restore', function ($request, $response, $args) {
-    $restore = $this->SystemService->restoreDatabaseFromBackup();
+    $fileName = $_FILES['restoreFile'];
+    $restore = $this->SystemService->restoreDatabaseFromBackup($fileName);
     echo json_encode($restore);
   });
 

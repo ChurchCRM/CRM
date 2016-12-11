@@ -13,7 +13,7 @@ $iFamilyID = FilterInput($_GET["FamilyID"], 'int');
 
 $note = new Note();
 $note->setFamId($iFamilyID);
-$note->setText("Family Data Verified");
+$note->setText(gettext("Family Data Verified"));
 $note->setType("verify");
 $note->setEntered($_SESSION['iUserID']);
 $note->save();

@@ -6,18 +6,11 @@ use ChurchCRM\dto\SystemConfig;
 class EmailService
 {
 
-  private $SMTPHost;
-  private $SMTPUser;
-  private $SMTPPass;
   private $ChurchName;
   private $ChurchEmail;
 
   public function __construct()
   {
-    $this->SMTPHost = SystemConfig::getValue("sSMTPHost");
-    $this->SMTPAuth = SystemConfig::getValue("sSMTPAuth");
-    $this->SMTPUser = SystemConfig::getValue("sSMTPUser");
-    $this->SMTPPass = SystemConfig::getValue("sSMTPPass");
     $this->ChurchName = SystemConfig::getValue("sChurchName");
     $this->ChurchEmail = SystemConfig::getValue("sChurchEmail");
   }
@@ -28,11 +21,11 @@ class EmailService
     $mail = new \PHPMailer();
     $mail->IsSMTP();
     $mail->CharSet = 'UTF-8';
-    $mail->Host = $this->SMTPHost;
-    if ($this->SMTPAuth == 1) {
+    $mail->Host = SystemConfig::getValue("sSMTPHost");
+    if (SystemConfig::getBooleanValue("sSMTPAuth")) {
       $mail->SMTPAuth = true;
-      $mail->Username = $this->SMTPUser;
-      $mail->Password = $this->SMTPPass;
+      $mail->Username = SystemConfig::getValue("sSMTPUser");
+      $mail->Password = SystemConfig::getValue("sSMTPPass");
     }
 
     //$mail->SMTPDebug = 2;

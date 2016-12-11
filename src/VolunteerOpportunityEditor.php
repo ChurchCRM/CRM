@@ -92,8 +92,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
     </tr>
     </table>
 
-<?
-
+<?php
     // Do some error checking before deleting this Opportunity.
     // Notify user if there are currently people assigned to this
     // Volunteer Opportunity.

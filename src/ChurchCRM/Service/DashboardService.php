@@ -31,7 +31,7 @@ class DashboardService
   function getPersonStats()
   {
     $data = array();
-    $sSQL = "select lst_OptionName as Classification, count(*) as count from person_per, list_lst where per_cls_ID = lst_OptionID and lst_ID =1 group by per_cls_ID order by count desc;";
+    $sSQL = "select lst_OptionName as Classification, count(*) as count from person_per, list_lst where per_cls_ID = lst_OptionID and lst_ID =1 group by per_cls_ID, lst_OptionName order by count desc;";
     $rsClassification = RunQuery($sSQL);
     while ($row = mysqli_fetch_array($rsClassification)) {
       $data[$row['Classification']] = $row['count'];

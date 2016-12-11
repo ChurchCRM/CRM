@@ -239,7 +239,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 	}
 
 	// Validate Wedding Date if one was entered
-	if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != "0000-00-00")) {
+	if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != "")) {
 		$dateString = parseAndValidateDate($dWeddingDate, $locale = "<?= $localeInfo->getCountryCode() ?>", $pasfut = "past");
 		if ( $dateString === FALSE ) {
 			$sWeddingDateError = "<span style=\"color: red; \">"
@@ -443,7 +443,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
           $dbPersonId = mysqli_insert_id($cnInfoCentral);
           $note = new Note();
           $note->setPerId($dbPersonId);
-          $note->setText("Created via Family");
+          $note->setText(gettext("Created via Family"));
           $note->setType("create");
           $note->setEntered($_SESSION['iUserID']);
           $note->save();
@@ -455,7 +455,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			}
 			$note = new Note();
 			$note->setFamId($iFamilyID);
-			$note->setText("Created");
+			$note->setText(gettext("Created"));
 			$note->setType("create");
 			$note->setEntered($_SESSION['iUserID']);
 			$note->save();
@@ -485,7 +485,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 					//RunQuery("UNLOCK TABLES");
           $note = new Note();
           $note->setPerId($aPersonIDs[$iCount]);
-          $note->setText("Updated via Family");
+          $note->setText(gettext("Updated via Family"));
           $note->setType("edit");
           $note->setEntered($_SESSION['iUserID']);
           $note->save();
@@ -493,7 +493,7 @@ if (isset($_POST["FamilySubmit"]) || isset($_POST["FamilySubmitAndAdd"]))
 			}
 			$note = new Note();
 			$note->setFamId($iFamilyID);
-			$note->setText("Updated");
+			$note->setText(gettext("Updated"));
 			$note->setType("edit");
 			$note->setEntered($_SESSION['iUserID']);
 			$note->save();
@@ -829,7 +829,7 @@ require "Include/Header.php";
 		</div><!-- /.box-header -->
 		<div class="box-body">
 			<?php if (!SystemConfig::getValue("bHideWeddingDate")) { /* Wedding Date can be hidden - General Settings */
-				if ($dWeddingDate == "0000-00-00" || $dWeddingDate == "NULL") $dWeddingDate = ""; ?>
+				if ($dWeddingDate == "NULL") $dWeddingDate = ""; ?>
 				<div class="row">
 					<div class="form-group col-md-4">
                         <label><?= gettext("Wedding Date") ?>:</label>

@@ -2,6 +2,7 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Base\Family as BaseFamily;
 use Propel\Runtime\Connection\ConnectionInterface;
 
@@ -17,13 +18,6 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Family extends BaseFamily
 {
-  protected $baseURL;
-
-  public function applyDefaultValues()
-  {
-    parent::applyDefaultValues();
-    $this->baseURL = $_SESSION['sRootPath'];
-  }
 
   function getAddress()
   {
@@ -57,12 +51,12 @@ class Family extends BaseFamily
   
   function getViewURI()
   {
-    return $this->baseURL . "/FamilyView.php?FamilyID=" . $this->getId();
+    return SystemURLs::getRootPath() . "/FamilyView.php?FamilyID=" . $this->getId();
   } 
 
   function getWeddingDay()
   {
-    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "" && $this->getWeddingdate() != "0000-00-00" ) {
+    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "") {
       $day =  $this->getWeddingdate()->format('d');
       return $day;
     }
@@ -71,7 +65,7 @@ class Family extends BaseFamily
 
   function getWeddingMonth()
   {
-    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "" && $this->getWeddingdate() != "0000-00-00" ) {
+    if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != "") {
       $month = $this->getWeddingdate()->format('m');
       return $month;
     }
@@ -111,15 +105,14 @@ class Family extends BaseFamily
   public function deletePhoto()
   {
     if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
-    $note = new Note();
-    $note->setText("Profile Image Deleted");
-    $note->setType("photo");
-    $note->setEntered($_SESSION['iUserID']);
-    PhotoUtils::setPhotosDir(dirname(dirname(dirname(__DIR__)))."/Images");
-    PhotoUtils::deletePhotos("Family", $this->getId());
-    $note->setPerId($this->getId());
-    $note->save();
-    return true;
+      $note = new Note();
+      $note->setText("Profile Image Deleted");
+      $note->setType("photo");
+      $note->setEntered($_SESSION['iUserID']);
+      PhotoUtils::deletePhotos("Family", $this->getId());
+      $note->setPerId($this->getId());
+      $note->save();
+      return true;
     }
     return false;
   }
