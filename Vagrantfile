@@ -10,7 +10,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "ChurchCRM/box"
-  config.vm.box_url = "http://box.churchcrm.io/churchcrm.box"
+  config.vm.box_url = "https://box.churchcrm.io/churchcrm.box"
   config.vm.network "private_network", ip: "192.168.33.10"
   config.vm.hostname = "scotchbox"
   config.vm.synced_folder "src", "/var/www/public", :mount_options => ["dmode=777", "fmode=666"]
