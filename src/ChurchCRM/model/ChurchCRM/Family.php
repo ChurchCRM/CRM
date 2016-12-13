@@ -2,6 +2,7 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Base\Family as BaseFamily;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -48,11 +49,11 @@ class Family extends BaseFamily
 
     return implode(" ", $address);
   }
-  
+
   function getViewURI()
   {
     return SystemURLs::getRootPath() . "/FamilyView.php?FamilyID=" . $this->getId();
-  } 
+  }
 
   function getWeddingDay()
   {
@@ -100,6 +101,43 @@ class Family extends BaseFamily
     }
 
     $note->save();
+  }
+
+
+  public function getHeadPeople() {
+    return $this->getPeopleByRole("sDirRoleHead");
+  }
+
+  public function getSpousePeople() {
+    return $this->getPeopleByRole("sDirRoleSpouse");
+  }
+
+  public function getChildPeople() {
+    return $this->getPeopleByRole("sDirRoleChild");
+  }
+
+  public function getOtherPeople() {
+    $roleIds = array_merge (explode(",", SystemConfig::getValue("sDirRoleHead")), explode(",",
+      SystemConfig::getValue("sDirRoleSpouse")),
+      explode(",", SystemConfig::getValue("sDirRoleChild")));
+    $foundPeople = array();
+    foreach ($this->getPeople() as $person) {
+      if (!in_array($person->getFmrId(), $roleIds)) {
+        array_push($foundPeople, $person);
+      }
+    }
+    return $foundPeople;
+  }
+
+  private function getPeopleByRole($roleConfigName) {
+    $roleIds = explode(",", SystemConfig::getValue($roleConfigName));
+    $foundPeople = array();
+    foreach ($this->getPeople() as $person) {
+      if (in_array($person->getFmrId(), $roleIds)) {
+          array_push($foundPeople, $person);
+      }
+    }
+    return $foundPeople;
   }
 
 }
