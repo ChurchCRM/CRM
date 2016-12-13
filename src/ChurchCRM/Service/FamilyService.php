@@ -76,7 +76,7 @@ class FamilyService
     $validExtensions = array("jpeg", "jpg", "png");
     while (list(, $ext) = each($validExtensions)) {
       $photoFile = "Images/Family/thumbnails/" . $iFamilyID . "." . $ext;
-      if (file_exists($photoFile)) {
+      if (file_exists(SystemURLs::getDocumentRoot()."/".$photoFile)) {
         return $photoFile;
       }
     }
