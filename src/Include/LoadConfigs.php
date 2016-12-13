@@ -82,7 +82,7 @@ session_start();
 
 // ==== ORM
 $dbClassName = "\\Propel\\Runtime\\Connection\\ConnectionWrapper";
-//DEBUG $dbClassName = "\\Propel\Runtime\Connection\DebugPDO";
+//DEBUG $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
 
 $serviceContainer = Propel::getServiceContainer();
 $serviceContainer->checkVersion('2.0.0-dev');
