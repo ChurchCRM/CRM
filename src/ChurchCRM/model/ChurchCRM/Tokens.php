@@ -16,5 +16,7 @@ use ChurchCRM\Base\Tokens as BaseTokens;
  */
 class Tokens extends BaseTokens
 {
-
+  public function isVerifyToken() {
+    return "verify" === $this->getType();
+  }
 }
