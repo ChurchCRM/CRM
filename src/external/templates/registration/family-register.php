@@ -4,7 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Family Registration";
-require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
 
   <div class="register-box" style="width: 600px;">
@@ -90,4 +90,4 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
 
 <?php
 // Add the page footer
-require(__DIR__ ."/../../../Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");
