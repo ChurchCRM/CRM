@@ -1,4 +1,7 @@
 <?php
+
+use ChurchCRM\dto\SystemURLs;
+
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Family Registration";
 require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
