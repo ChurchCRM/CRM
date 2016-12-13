@@ -16,7 +16,7 @@ $app->group('/register', function () {
 
       $renderer = new PhpRenderer("templates/registration/");
 
-      return $renderer->render($response, "family-register.php", array("sRootPath" => SystemURLs::getRootPath()));
+      return $renderer->render($response, "family-register.php", array());
 
     });
 
@@ -49,7 +49,7 @@ $app->group('/register', function () {
 
       $familyRoles = ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find();
 
-      $pageObjects = array("sRootPath" => SystemURLs::getRootPath(), "family" => $family, "familyCount" => $_SESSION['regFamilyCount'], "familyRoles" => $familyRoles);
+      $pageObjects = array("family" => $family, "familyCount" => $_SESSION['regFamilyCount'], "familyRoles" => $familyRoles);
 
       return $renderer->render($response, "family-register-members.php", $pageObjects);
 
@@ -103,7 +103,7 @@ $app->group('/register', function () {
     }
     $_SESSION['familyMembers'] = $familyMembers;
 
-    $pageObjects = array("sRootPath" => SystemURLs::getRootPath(), "family" => $family, "familyClass" => $_SESSION['regFamilyClass']);
+    $pageObjects = array("family" => $family, "familyClass" => $_SESSION['regFamilyClass']);
     return $renderer->render($response, "family-register-done.php", $pageObjects);
 
   });
