@@ -16,7 +16,23 @@ use ChurchCRM\Base\Tokens as BaseTokens;
  */
 class Tokens extends BaseTokens
 {
-  public function isVerifyToken() {
+  public function isVerifyToken()
+  {
     return "verify" === $this->getType();
   }
+
+  public function isValid()
+  {
+    $valid = true;
+    if ($this->getUseCount() !== null) {
+      $valid = $this->getUseCount() > 0;
+    }
+
+    if ($this->getValidUntilDate() !== null) {
+      $today = new \DateTime();
+      $valid = $this->getValidUntilDate() > $today;
+    }
+    return $valid;
+  }
+
 }
