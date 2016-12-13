@@ -103,6 +103,12 @@ class Family extends BaseFamily
     $note->save();
   }
 
+  public function getPeopleSorted() {
+    $familyMembersParents = array_merge($this->getHeadPeople(), $this->getSpousePeople());
+    $familyMembersChildren = $this->getChildPeople();
+    $familyMembersOther = $this->getOtherPeople();
+    return array_merge($familyMembersParents, $familyMembersChildren, $familyMembersOther);
+  }
 
   public function getHeadPeople() {
     return $this->getPeopleByRole("sDirRoleHead");
