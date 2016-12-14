@@ -25,6 +25,19 @@ $app->group('/families', function () {
     echo $this->FamilyService->getFamilyStringByEnvelope($envelopeNumber);
   });
   
+  $this->get('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
+    $family = FamilyQuery::create()->findPk($args['familyId']);
+    $photo = $family->getPhoto();
+    if ( $photo->type=="localFile" ) 
+    {
+      return $response->write(file_get_contents($photo->path));
+    }
+    else
+    {
+      return $response->withRedirect($photo->path);
+    }
+  });
+  
   $this->post('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
     $familyId =$args['familyId'];
     $input = (object)$request->getParsedBody();

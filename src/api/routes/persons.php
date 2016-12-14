@@ -14,7 +14,15 @@ $app->group('/persons', function ()  {
   
   $this->get('/{personId:[0-9]+}/photo', function($request, $response, $args)  {
     $person = PersonQuery::create()->findPk($args['personId']);
-    return $response->withRedirect($person->getPhoto());
+    $photo = $person->getPhoto();
+    if ( $photo->type=="localFile" ) 
+    {
+      return $response->write(file_get_contents($photo->path));
+    }
+    else
+    {
+      return $response->withRedirect($photo->path);
+    }
   });
   
   $this->post('/{personId:[0-9]+}/photo', function($request, $response, $args)  {

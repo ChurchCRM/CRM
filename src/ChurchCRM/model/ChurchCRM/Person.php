@@ -67,10 +67,10 @@ class Person extends BasePerson
     $validextensions = array("jpeg", "jpg", "png");
     $hasFile = false;
     while (list(, $ext) = each($validextensions)) {
-      $photoFile = SystemURLs::getImagesRoot."/Person/thumbnails/" . $this->getId() . "." . $ext;
+      $photoFile = SystemURLs::getImagesRoot() ."/Person/thumbnails/" . $this->getId() . "." . $ext;
       if (file_exists($photoFile)) {
         $hasFile = true;
-        $photoFile = SystemURLs::getImagesRoot."/Person/thumbnails/" . $this->getId() . "." . $ext;
+        $photoFile = SystemURLs::getImagesRoot() ."/Person/thumbnails/" . $this->getId() . "." . $ext;
         break;
       }
     }
@@ -84,14 +84,17 @@ class Person extends BasePerson
 
   function getPhoto()
   {
-    $photoFile = $this->getUploadedPhoto();
-    if ($photoFile == "") {
-      $photoFile = $this->getGravatar();
-      if ($photoFile == "") {
-        $photoFile = $this->getDefaultPhoto();
+    $personPhoto = new \stdClass();
+    $personPhoto->type = "localFile";
+    $personPhoto->path = $this->getUploadedPhoto();
+    if ($personPhoto->path == "") {
+       $personPhoto->type = "remoteFile";
+       $personPhoto->path = $this->getGravatar();
+      if ($personPhoto->path == "") {
+        $personPhoto->path = $this->getDefaultPhoto();
       }
     }
-    return $photoFile;
+    return $personPhoto;
   }
 
   function getFamilyRole()

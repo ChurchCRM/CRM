@@ -2,6 +2,9 @@
 
 namespace ChurchCRM
 {
+  
+  use ChurchCRM\dto\SystemURLs;
+  
     class PhotoUtils
     {
         private static function processFile($type,$id,$filename)

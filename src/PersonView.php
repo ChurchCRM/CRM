@@ -23,6 +23,7 @@ use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\dto\SystemURLs;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -413,7 +414,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               ?>
               <tr>
                 <td>
-                  <img src="<?= $familyMember->getPhoto() ?>" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
+                  <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $familyMember->getId() ?>/photo" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
                 </td>
                 <td class="text-center">
                   <?= $familyMember->getFamilyRoleName() ?>
