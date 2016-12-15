@@ -2,7 +2,7 @@
 
 namespace ChurchCRM;
 
-use ChurchCRM\Base\Tokens as BaseTokens;
+use ChurchCRM\Base\Token as BaseToken;
 
 /**
  * Skeleton subclass for representing a row from the 'tokens' table.
@@ -14,7 +14,7 @@ use ChurchCRM\Base\Tokens as BaseTokens;
  * long as it does not already exist in the output directory.
  *
  */
-class Tokens extends BaseTokens
+class Token extends BaseToken
 {
   public function isVerifyToken()
   {

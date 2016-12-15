@@ -717,7 +717,7 @@
         </vendor>
     </table>
 
-    <table name="tokens" idMethod="native" phpName="Tokens">
+    <table name="tokens" idMethod="native" phpName="Token">
         <column name="token" phpName="Token" type="VARCHAR" primaryKey="true" required="true"/>
         <column name="type" phpName="Type" type="VARCHAR" required="true"/>
         <column name="valid_until_date" phpName="ValidUntilDate" type="DATE"/>

@@ -3,13 +3,13 @@
 use Slim\Views\PhpRenderer;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\TokensQuery;
+use ChurchCRM\TokenQuery;
 
 $app->group('/verify', function () {
 
     $this->get('/{token}', function ($request, $response, $args) {
         $renderer = new PhpRenderer("templates/verify/");
-        $token = TokensQuery::create()->findPk($args['token']);
+        $token = TokenQuery::create()->findPk($args['token']);
         if ($token != null && $token->isVerifyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());
             return $renderer->render($response, "verify-family-info.php", array("family" => $family));
