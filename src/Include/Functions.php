@@ -1974,5 +1974,137 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
   }
 }
 
+function dateFormat ($oldDateFormat) 
+{
+// This function convert data format stored in system to  PHP DateTime::format format 
+// Added by Saulo Wulhynek nov/2016
+
+	$sizeofvar = strlen($oldDateFormat);
+	$newDateFormat = "";
+	$d=0;
+	$m=0;
+	$y=0;
+	$posy=0;
+	$posm=0;
+
+	for ($i=0 ; $i < $sizeofvar; $i++) {
+		switch ($oldDateFormat[$i]) {
+
+		case "D":
+		case "d":
+			$d++;
+			if ($d == 1) { 
+				$newDateFormat = $newDateFormat . "d";
+				$posy++;
+				$posm++;
+			}
+			break;
+		case "M":
+		case "m":
+			$m++;
+			if ($m == 1) {
+				$newDateFormat = $newDateFormat . "m";
+				$posy++;
+			}
+			if ($m == 3) {
+				$newDateFormat [$posm] = "M";
+			}
+			break;
+		case "Y":
+		case "y":
+			$y++;
+			if ($y == 1) {
+				$newDateFormat = $newDateFormat . "y";
+				$posm++;
+			}
+			if ($y == 3) {
+				$newDateFormat [$posy] = "Y";
+				$posm++;
+			}
+			break;
+		default:
+			$newDateFormat = $newDateFormat . $oldDateFormat[$i];
+			$posy++;
+			$posm++;
+	}	
+		}
+
+	return $newDateFormat;
+
+}
+
+function strftimeDateFormat ($oldDateFormat) 
+{
+// This function convert data format stored in system to  PHP strftime string format  
+// Added by Saulo Wulhynek nov/2016
+
+	$sizeofvar = strlen($oldDateFormat);
+	$newDateFormat = "";
+	$d=0;
+	$m=0;
+	$y=0;
+	$pos=0;
+	
+	for ($i=0 ; $i < $sizeofvar; $i++) {
+		switch ($oldDateFormat{$i}) {
+
+		case "D":
+		case "d":
+			$d++;
+			if ($d == 1) { 
+				$newDateFormat = $newDateFormat . "%d";
+				$pos=$pos+2;
+			}
+			break;
+		case "M":
+		case "m":
+			$m++;
+			if ($m == 1) {
+				$newDateFormat = $newDateFormat . "%m";
+				$pos=$pos+2;
+			}
+			if ($m == 3) {
+				//$newDateFormat {$pos-2} = "%";
+				$newDateFormat {$pos-1} = "b";
+				
+			}
+			break;
+		case "Y":
+		case "y":
+			$y++;
+			if ($y == 1) {
+				$newDateFormat = $newDateFormat . "%y";
+				$pos=$pos+2;
+			}
+			if ($y == 3) {
+				//$newDateFormat {$pos-2} = "%";
+				$newDateFormat {$pos-1} = "Y";
+				
+			}
+			break;
+		default:
+			$newDateFormat = $newDateFormat . $oldDateFormat{$i};
+			$pos++;
+	}	
+		}
+
+	return $newDateFormat;
+
+}
+
+function datetime2sDateformat ($dateTime,$format) 
+{
+	//Convert datetime format stored in Database to sDateFormatLong + time
+	$dt = new DateTime($dateTime);
+
+	$date = $dt->format($format);
+	$time = $dt->format('H:i:s');
+	$newFormat=$date . " " . $time;
+
+	return $newFormat;
+
+}
+
+
 
 ?>
