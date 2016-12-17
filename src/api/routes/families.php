@@ -2,6 +2,7 @@
 
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Token;
+use ChurchCRM\Note;
 
 
 $app->group('/families', function () {
@@ -32,9 +33,26 @@ $app->group('/families', function () {
       $token = new Token();
       $token->build("verify", $family->getId());
       $token->save();
-      $response->withStatus(200);
+      $response = $response->withStatus(200);
     } else {
-      $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
+      $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
+    }
+    return $response;
+  });
+
+  $this->post('/verify/{familyId}/now', function ($request, $response, $args) {
+    $familyId = $args["familyId"];
+    $family = FamilyQuery::create()->findPk($familyId);
+    if ($family != null) {
+      $note = new Note();
+      $note->setFamId($family->getId());
+      $note->setText(gettext("Family Data Verified"));
+      $note->setType("verify");
+      $note->setEntered($_SESSION['user']->getId());
+      $note->save();
+      $response = $response->withStatus(200);
+    } else {
+      $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
     }
     return $response;
   });
