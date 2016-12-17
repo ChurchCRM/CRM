@@ -18,8 +18,8 @@ require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
 use ChurchCRM\Reports\ChurchInfoReport;
-use \ChurchCRM\Service\EmailService;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Emails\FamilyVerificationPDFEmail;
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -73,15 +73,6 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
     $curY += 4 * SystemConfig::getValue("incrementY");
     $this->WriteAt(SystemConfig::getValue("leftX"), $curY, SystemConfig::getValue("sConfirmSigner"));
   }
-
-  function getEmailConnection()
-  {
-
-    $emailSerice = new EmailService();
-
-    return $emailSerice->getConnection();
-  }
-
 }
 
 $familyEmailSent = false;
@@ -122,8 +113,6 @@ while ($aFam = mysqli_fetch_array($rsFamilies))
   // Instantiate the directory class and build the report.
   $pdf = new EmailPDF_ConfirmReport();
 
-  $mail = $pdf->getEmailConnection();
-  $mail->SetFrom(SystemConfig::getValue("sChurchEmail"), SystemConfig::getValue("sChurchName"));
   extract($aFam);
 
   $emaillist = "";
@@ -364,25 +353,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies))
 
     $doc = $pdf->Output("ConfirmReportEmail-" . $fam_ID . "-" . date("Ymd") . ".pdf", "S");
 
-    $subject = $fam_Name . ' Family Information Review';
-
-    if ($_GET["updated"])
-    {
-      $subject = $subject . " ** Updated **";
-    }
-
-    $message = "Dear " . $fam_Name . " Family <p>" . SystemConfig::getValue("sConfirm1") . "</p>Sincerely, <br/>" . SystemConfig::getValue("sConfirmSigner");
-
-    $mail->Subject = $subject;
-    $mail->msgHTML($message);
-    $mail->isHTML(true);
+    $email = new FamilyVerificationPDFEmail(explode(',', $emaillist), $fam_Name);
     $filename = "ConfirmReportEmail-" . $fam_Name . "-" . date("Ymd") . ".pdf";
-    $mail->addStringAttachment($doc, $filename);
-    foreach ($myArray = explode(',', $emaillist) as $address)
-    {
-      $mail->addAddress($address);
-    }
-    $familyEmailSent = $mail->send();
+    $email->addStringAttachment($doc, $filename);
+
+    $familyEmailSent = $email->send();
     if ($familyEmailSent)
     {
       $familiesEmailed = $familiesEmailed + 1;
@@ -395,4 +370,4 @@ if ($_GET["familyId"]) {
 } else {
   Redirect("FamilyList.php?AllPDFsEmailed=".$familiesEmailed);
 }
-?>
+
