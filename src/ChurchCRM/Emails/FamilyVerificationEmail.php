@@ -9,7 +9,7 @@ class FamilyVerificationEmail extends BaseFamilyVerification
 
   public function __construct($emails, $familyName, $token)
   {
-    $this->link = SystemURLs::getURL(0) . "external/verify/" . $token;
+    $this->link = SystemURLs::getURL() . "external/verify/" . $token;
     parent::__construct($emails, $familyName);
   }
 
