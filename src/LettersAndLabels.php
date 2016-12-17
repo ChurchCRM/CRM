@@ -69,8 +69,6 @@ FontSizeSelect("labelfontsize");
 
             <tr>
               <td><input type="submit" class="btn" name="SubmitNewsLetter" value="<?= gettext("Newsletter labels") ?>"></td>
-              <td><input type="submit" class="btn" name="SubmitConfirmReport" value="<?= gettext("Confirm data letter") ?>"></td>
-              <td><input type="submit" class="btn" name="SubmitConfirmReportEmail" value="<?= gettext("Confirm data Email") ?>"></td>
               <td><input type="submit" class="btn" name="SubmitConfirmLabels" value="<?= gettext("Confirm data labels") ?>"></td>
               <td><input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location = 'Menu.php';"></td>
             </tr>
