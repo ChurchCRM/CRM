@@ -16,6 +16,21 @@ use ChurchCRM\Base\Token as BaseToken;
  */
 class Token extends BaseToken
 {
+
+  public function build($type, $referenceId)
+  {
+    $this->setReferenceId($referenceId);
+    $this->setToken(uniqid());
+    switch ($type) {
+      case "verify":
+        $this->setValidUntilDate(strtotime("+1 week"));
+        $this->setUseCount(5);
+        $this->setType($type);
+        break;
+    }
+  }
+
+
   public function isVerifyToken()
   {
     return "verify" === $this->getType();
@@ -23,16 +38,17 @@ class Token extends BaseToken
 
   public function isValid()
   {
-    $valid = true;
+    $hasUses = true;
     if ($this->getUseCount() !== null) {
-      $valid = $this->getUseCount() > 0;
+      $hasUses = $this->getUseCount() > 0;
     }
 
+    $stillValidDate = true;
     if ($this->getValidUntilDate() !== null) {
       $today = new \DateTime();
-      $valid = $this->getValidUntilDate() > $today;
+      $stillValidDate = $this->getValidUntilDate() > $today;
     }
-    return $valid;
+    return $stillValidDate && $hasUses;
   }
 
 }
