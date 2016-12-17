@@ -15,6 +15,10 @@ $app->group('/verify', function () {
         if ($token != null && $token->isVerifyToken() && $token->isValid()) {
           $family = FamilyQuery::create()->findPk($token->getReferenceId());
           $haveFamily = ($family != null);
+          if ($token->getUseCount()>0) {
+            $token->setUseCount($token->getUseCount()-1);
+            $token->save();
+          }
         }
 
         if ($haveFamily) {
