@@ -2,7 +2,7 @@
 
 namespace ChurchCRM;
 
-use ChurchCRM\Base\TokensQuery as BaseTokensQuery;
+use ChurchCRM\Base\TokenQuery as BaseTokenQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'tokens' table.
@@ -14,7 +14,7 @@ use ChurchCRM\Base\TokensQuery as BaseTokensQuery;
  * long as it does not already exist in the output directory.
  *
  */
-class TokensQuery extends BaseTokensQuery
+class TokenQuery extends BaseTokenQuery
 {
 
 }
