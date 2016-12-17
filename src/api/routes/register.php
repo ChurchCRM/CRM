@@ -37,4 +37,3 @@ $app->group('/register', function () {
 
   });
 });
- ?>
