@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: georg
- * Date: 12/17/2016
- * Time: 9:22 AM
- */
-
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\SystemConfig;
