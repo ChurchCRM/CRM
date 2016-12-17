@@ -849,13 +849,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
       <?php } ?>
       <div class="modal-footer text-center">
         <?php if (count($sFamilyEmails) > 0) { ?>
-          <a href="Reports/ConfirmReportEmail.php?familyId=<?= $iFamilyID ?>"
-             class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("PDF") ?></a>
-        <button type="button" id="onlineVerify"
-                class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("Online Verification") ?></button>
+          <button type="button" id="onlineVerify"
+                  class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
+          </button>
         <?php } ?>
-        <a href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"
-           class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></a>
+        <button type="button" id="verifyDownloadPDF"
+                class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
         <button type="button" id="verifyNow"
                 class="btn btn-success"><i class="fa fa-check"></i> <?= gettext("Verified In Person") ?></button>
       </div>
@@ -876,8 +875,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
       </div>
     </div>
     <?php
-  }?>
+  } ?>
 
   <script src="<?= $sRootPath; ?>/skin/js/FamilyView.js"></script>
 
-  <?php   require "Include/Footer.php" ?>
+  <?php require "Include/Footer.php" ?>

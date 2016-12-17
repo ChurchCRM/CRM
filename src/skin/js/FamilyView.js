@@ -27,8 +27,12 @@ $(document).ready(function () {
         } else {
           showGlobalMessage("Failed to add verification", "danger")
         }
-
-
       });
+  });
+
+
+  $("#verifyDownloadPDF").click(function () {
+    window.open(window.CRM.root + 'Reports/ConfirmReport.php?familyId=' + familyId, '_blank');
+    $('#confirm-verify').modal('hide');
   });
 });
