@@ -41,14 +41,6 @@ if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) ||
   {
     Redirect("Reports/NewsLetterLabels.php?labeltype=" . $sLabelFormat . $sLabelInfo);
   }
-  else if (isset($_POST["SubmitConfirmReport"]))
-  {
-    Redirect("Reports/ConfirmReport.php");
-  }
-  else if (isset($_POST["SubmitConfirmReportEmail"]))
-  {
-    Redirect("Reports/ConfirmReportEmail.php");
-  }
   else if (isset($_POST["SubmitConfirmLabels"]))
   {
     Redirect("Reports/ConfirmLabels.php?labeltype=" . $sLabelFormat . $sLabelInfo);

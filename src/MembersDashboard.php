@@ -110,6 +110,8 @@ while (list ($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmail
      ?>
     <br/>
     <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("All Families") ?></a>
+    <a href="Reports/ConfirmReport.php" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext("Download Families Letters") ?></a>
+    <a href="Reports/ConfirmReportEmail.php" class="btn btn-app"><i class="fa fa-envelope-open"></i><?= gettext("Email Families Letters") ?></a>
     <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext("Family Geographic") ?></a>
     <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext("Family Map") ?>
     </a>
