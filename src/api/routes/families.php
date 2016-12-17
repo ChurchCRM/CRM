@@ -3,7 +3,7 @@
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Token;
 use ChurchCRM\Note;
-
+use ChurchCRM\Emails\FamilyVerificationEmail;
 
 $app->group('/families', function () {
 
@@ -33,7 +33,12 @@ $app->group('/families', function () {
       $token = new Token();
       $token->build("verify", $family->getId());
       $token->save();
-      $response = $response->withStatus(200);
+      $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
+      if ($email->send()) {
+        $response = $response->withStatus(200);
+      } else {
+        $response = $response->withStatus(404)->getBody()->write($email->getError());
+      }
     } else {
       $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
     }
