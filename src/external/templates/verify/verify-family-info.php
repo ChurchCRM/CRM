@@ -2,6 +2,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\dto\SystemConfig;
 
 $familyService = new FamilyService();
 // Set the page title and include HTML header
@@ -10,8 +11,14 @@ $sRootPath = SystemURLs::getRootPath();
 
 require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
-
-  <div class="box box-info">
+  <div class="row">
+    <div id="right-buttons" class="btn-group" role="group">
+      <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify" title="Looks Good"><i class="fa fa-check fa-5x"></i></button>
+      <button type="button" id="verifyWithUpdates" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Update" title="Have Updates"><i class="fa fa-pencil fa-5x" ></i></button>
+      <button type="button" id="verifyRemove" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Unlink" title="Remove From Church"><i class="fa fa-chain-broken fa-5x" ></i></button>
+    </div>
+  </div>
+  <div class="box box-info" id="verifyBox">
     <div class="panel-body">
       <img class="img-circle center-block pull-right img-responsive" width="200" height="200"
            src="<?= $sRootPath ?>/<?= $familyService->getFamilyPhoto($family->getId()) ?>">
@@ -36,7 +43,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       </div>
       <div class="row">
         <?php foreach ($family->getPeopleSorted() as $person) { ?>
-          <div class="col-sm-3">
+          <div class="col-md-3 col-sm-4">
             <div class="box box-primary">
               <div class="box-body box-profile">
                 <img class="profile-user-img img-responsive img-circle" src="<?= $person->getPhoto() ?>">
@@ -83,63 +90,107 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   </div>
 
 
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
 
   <script>
-
-    // When the window has finished loading google map
-    google.maps.event.addDomListener(window, 'load', init);
-
-    function init() {
-      // Options for Google map
-      // More info see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-      var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
-      var mapOptions1 = {
-        zoom: 14,
-        center: LatLng,
-        scrollwheel: false,
-        disableDefaultUI: true,
-        draggable: false,
-        // Style for Google Maps
-        styles: [{
-          "featureType": "landscape",
-          "stylers": [{"saturation": -100}, {"lightness": 65}, {"visibility": "on"}]
-        }, {
-          "featureType": "poi",
-          "stylers": [{"saturation": -100}, {"lightness": 51}, {"visibility": "simplified"}]
-        }, {
-          "featureType": "road.highway",
-          "stylers": [{"saturation": -100}, {"visibility": "simplified"}]
-        }, {
-          "featureType": "road.arterial",
-          "stylers": [{"saturation": -100}, {"lightness": 30}, {"visibility": "on"}]
-        }, {
-          "featureType": "road.local",
-          "stylers": [{"saturation": -100}, {"lightness": 40}, {"visibility": "on"}]
-        }, {
-          "featureType": "transit",
-          "stylers": [{"saturation": -100}, {"visibility": "simplified"}]
-        }, {"featureType": "administrative.province", "stylers": [{"visibility": "off"}]}, {
-          "featureType": "water",
-          "elementType": "labels",
-          "stylers": [{"visibility": "on"}, {"lightness": -25}, {"saturation": -100}]
-        }, {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [{"hue": "#ffff00"}, {"lightness": -25}, {"saturation": -97}]
-        }]
-      };
-
-      // Get all html elements for map
-      var mapElement1 = document.getElementById('map1');
-
-      // Create the Google Map using elements
-      var map1 = new google.maps.Map(mapElement1, mapOptions1);
-
-      marker = new google.maps.Marker({position: LatLng, map: map1});
-    }
-
+    var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+    var token = '<?= $token->getToken()?>';
   </script>
+
+  <div class="modal fade" id="confirm-Unlink" tabindex="888" role="dialog" aria-labelledby="Unlink-label"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm") ?></h4>
+        </div>
+
+        <div class="modal-body">
+          <p><?= gettext("You are about to request to be removed from the church.") ?></p>
+
+          <p><?= gettext("Do you want to proceed?") ?></p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+          <a href="#"
+             class="btn btn-danger danger"><?= gettext("Request") ?></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="confirm-Verify" tabindex="888" role="dialog" aria-labelledby="Verify-label"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm") ?></h4>
+        </div>
+
+        <div class="modal-body">
+          <p><?= gettext("You are about to confirm that all data is correct") ?></p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+          <a href="#" class="btn btn-success"><?= gettext("Verify") ?></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="confirm-Update" tabindex="888" role="dialog" aria-labelledby="Update-label"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm") ?></h4>
+        </div>
+
+        <div class="modal-body">
+          <p><?= gettext("Please let us know what information to update") ?></p>
+          <textarea id="confirm-info-data" class="form-control" rows="10"></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+          <a href="#" class="btn btn-success"><?= gettext("Verify") ?></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<style>
+  #verifyBox {
+    padding: 5px;
+  }
+
+  .btn-sm {
+    vertical-align: center;
+    position: relative;
+    margin: 0px;
+    padding: 20px 20px;
+    font-size: 4px;
+    color: white;
+    text-align: center;
+    background: #62b1d0;
+  }
+
+  #right-buttons {
+    z-index: 999;
+    position: fixed;
+    left: 35%;
+  }
+
+</style>
+
+  <script src="<?= $sRootPath; ?>/skin/js/FamilyVerify.js"></script>
 
 <?php
 // Add the page footer
