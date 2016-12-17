@@ -10,8 +10,13 @@ $app->group('/verify', function () {
     $this->get('/{token}', function ($request, $response, $args) {
         $renderer = new PhpRenderer("templates/verify/");
         $token = TokenQuery::create()->findPk($args['token']);
+        $haveFamily = false;
         if ($token != null && $token->isVerifyToken() && $token->isValid()) {
-            $family = FamilyQuery::create()->findPk($token->getReferenceId());
+          $family = FamilyQuery::create()->findPk($token->getReferenceId());
+          $haveFamily = ($family != null);
+        }
+
+        if ($haveFamily) {
             return $renderer->render($response, "verify-family-info.php", array("family" => $family));
         } else {
             return $renderer->render($response, "enter-info.php", array("token" => $token));
