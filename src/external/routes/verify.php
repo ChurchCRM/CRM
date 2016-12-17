@@ -4,6 +4,7 @@ use Slim\Views\PhpRenderer;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\TokenQuery;
+use ChurchCRM\dto\SystemURLs;
 
 $app->group('/verify', function () {
 
@@ -19,16 +20,17 @@ $app->group('/verify', function () {
         if ($haveFamily) {
             return $renderer->render($response, "verify-family-info.php", array("family" => $family));
         } else {
-            return $renderer->render($response, "enter-info.php", array("token" => $token));
+            // return $renderer->render($response, "enter-info.php", array("token" => $token));
+          return $response->withStatus(302)->withHeader('Location', SystemURLs::getURL());
         }
     });
 
-    $this->post('/', function ($request, $response, $args) {
+    /*$this->post('/', function ($request, $response, $args) {
         $body = $request->getParsedBody();
         $renderer = new PhpRenderer("templates/verify/");
         $family = PersonQuery::create()->findByEmail($body["email"]);
         return $renderer->render($response, "view-info.php", array("family" => $family));
-    });
+    });*/
 });
 
 
