@@ -3,7 +3,7 @@ $(document).ready(function () {
   $("#onlineVerify").click(function () {
     $.ajax({
       type: 'POST',
-      url: window.CRM.root + '/api/families/verify/' + familyId
+      url: window.CRM.root + '/api/families/' + familyId + "/verify"
     })
       .done(function(data, textStatus, xhr) {
         $('#confirm-verify').modal('hide');

@@ -26,7 +26,7 @@ $app->group('/families', function () {
     echo $this->FamilyService->getFamilyStringByEnvelope($envelopeNumber);
   });
 
-  $this->post('/verify/{familyId}', function ($request, $response, $args) {
+  $this->post('/{familyId}/verify', function ($request, $response, $args) {
     $familyId = $args["familyId"];
     $family = FamilyQuery::create()->findPk($familyId);
     if ($family != null) {
