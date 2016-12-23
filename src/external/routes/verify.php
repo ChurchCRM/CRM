@@ -15,7 +15,7 @@ $app->group('/verify', function () {
         if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
           $family = FamilyQuery::create()->findPk($token->getReferenceId());
           $haveFamily = ($family != null);
-          if ($token->getUseCount()>0) {
+          if ($token->getRemainingUses()>0) {
             $token->setRemainingUses($token->getRemainingUses()-1);
             $token->save();
           }
