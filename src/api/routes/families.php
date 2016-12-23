@@ -31,7 +31,7 @@ $app->group('/families', function () {
     $family = FamilyQuery::create()->findPk($familyId);
     if ($family != null) {
       $token = new Token();
-      $token->build("verify", $family->getId());
+      $token->build("verifyFamily", $family->getId());
       $token->save();
       $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
       if ($email->send()) {

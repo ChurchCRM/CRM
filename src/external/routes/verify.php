@@ -12,11 +12,11 @@ $app->group('/verify', function () {
         $renderer = new PhpRenderer("templates/verify/");
         $token = TokenQuery::create()->findPk($args['token']);
         $haveFamily = false;
-        if ($token != null && $token->isVerifyToken() && $token->isValid()) {
+        if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
           $family = FamilyQuery::create()->findPk($token->getReferenceId());
           $haveFamily = ($family != null);
           if ($token->getUseCount()>0) {
-            $token->setUseCount($token->getUseCount()-1);
+            $token->setRemainingUses($token->getRemainingUses()-1);
             $token->save();
           }
         }

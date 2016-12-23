@@ -722,7 +722,7 @@
         <column name="type" phpName="Type" type="VARCHAR" required="true"/>
         <column name="valid_until_date" phpName="ValidUntilDate" type="DATE"/>
         <column name="reference_id" phpName="ReferenceId" type="INTEGER" defaultValue=""/>
-        <column name="use_count" phpName="UseCount" type="INTEGER" defaultValue="0"/>
+        <column name="remainingUses" phpName="RemainingUses" type="INTEGER" defaultValue="0"/>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>

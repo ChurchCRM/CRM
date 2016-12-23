@@ -24,23 +24,23 @@ class Token extends BaseToken
     switch ($type) {
       case "verify":
         $this->setValidUntilDate(strtotime("+1 week"));
-        $this->setUseCount(5);
+        $this->setRemainingUses(5);
         $this->setType($type);
         break;
     }
   }
 
 
-  public function isVerifyToken()
+  public function isVerifyFamilyToken()
   {
-    return "verify" === $this->getType();
+    return "verifyFamily" === $this->getType();
   }
 
   public function isValid()
   {
     $hasUses = true;
-    if ($this->getUseCount() !== null) {
-      $hasUses = $this->getUseCount() > 0;
+    if ($this->getRemainingUses() !== null) {
+      $hasUses = $this->getRemainingUses() > 0;
     }
 
     $stillValidDate = true;
