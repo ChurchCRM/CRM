@@ -33,6 +33,7 @@ use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
+use ChurchCRM\dto\SystemURLs;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -159,7 +160,7 @@ if ($iFamilyID == $fam_ID) {
     <div class="col-lg-3 col-md-4 col-sm-4">
       <div class="box box-primary">
         <div class="box-body">
-          <img src="<?= $familyService->getFamilyPhoto($fam_ID) ?>" alt=""
+          <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" alt=""
                class="img-circle img-responsive profile-user-img"/>
 					<h3 class="profile-username text-center"><?=  gettext("Family") .": ". $fam_Name ?></h3>
           <?php if ($bOkToEdit) { ?>
@@ -295,7 +296,7 @@ if ($iFamilyID == $fam_ID) {
               <?php foreach ($family->getPeople() as $person) { ?>
                 <tr>
                   <td>
-                    <img src="<?= $person->getPhoto() ?>" width="40" height="40" class="img-circle"/>
+                    <img src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/photo" width="40" height="40" class="img-circle"/>
                     <a href="<?= $person->getViewURI() ?>" class="user-link"><?= $person->getFullName() ?> </a>
                   </td>
                   <td class="text-center">
