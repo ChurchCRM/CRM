@@ -14,8 +14,6 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   <div class="row">
     <div id="right-buttons" class="btn-group" role="group">
       <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify" title="Looks Good"><i class="fa fa-check fa-5x"></i></button>
-      <button type="button" id="verifyWithUpdates" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Update" title="Have Updates"><i class="fa fa-pencil fa-5x" ></i></button>
-      <button type="button" id="verifyRemove" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Unlink" title="Remove From Church"><i class="fa fa-chain-broken fa-5x" ></i></button>
     </div>
   </div>
   <div class="box box-info" id="verifyBox">
@@ -97,30 +95,6 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     var token = '<?= $token->getToken()?>';
   </script>
 
-  <div class="modal fade" id="confirm-Unlink" tabindex="888" role="dialog" aria-labelledby="Unlink-label"
-       aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm") ?></h4>
-        </div>
-
-        <div class="modal-body">
-          <p><?= gettext("You are about to request to be removed from the church.") ?></p>
-
-          <p><?= gettext("Do you want to proceed?") ?></p>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-          <a href="#"
-             class="btn btn-danger danger"><?= gettext("Request") ?></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="modal fade" id="confirm-Verify" tabindex="888" role="dialog" aria-labelledby="Verify-label"
        aria-hidden="true">
     <div class="modal-dialog">
@@ -131,29 +105,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         </div>
 
         <div class="modal-body">
-          <p><?= gettext("You are about to confirm that all data is correct") ?></p>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-          <a href="#" class="btn btn-success"><?= gettext("Verify") ?></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="modal fade" id="confirm-Update" tabindex="888" role="dialog" aria-labelledby="Update-label"
-       aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm") ?></h4>
-        </div>
-
-        <div class="modal-body">
-          <p><?= gettext("Please let us know what information to update") ?></p>
+          <p><?= gettext("Please let us know what information to update if any") ?></p>
           <textarea id="confirm-info-data" class="form-control" rows="10"></textarea>
         </div>
 
@@ -185,7 +137,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   #right-buttons {
     z-index: 999;
     position: fixed;
-    left: 35%;
+    left: 45%;
   }
 
 </style>
