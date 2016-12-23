@@ -9,12 +9,12 @@ class BaseEmail
   /** @var \PHPMailer */
   protected $mail;
 
-  public function __construct($emails)
+  public function __construct($toAddresses)
   {
     $this->setConnection();
     $this->ChurchName = SystemConfig::getValue("sChurchName");
     $this->mail->setFrom(SystemConfig::getValue("sChurchEmail"), $this->ChurchEmail);
-    foreach ($emails as $email) {
+    foreach ($toAddresses as $email) {
       $this->mail->addAddress($email);
     }
   }
