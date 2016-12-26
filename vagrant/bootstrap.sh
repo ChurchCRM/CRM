@@ -80,6 +80,13 @@ sudo npm install -g npm@latest --unsafe-perm --no-bin-links
 sudo npm install --unsafe-perm --no-bin-links
 
 echo "=========================================================="
+echo "=================   MailCatcher Setup  ==================="
+echo "=========================================================="
+
+sudo pkill mailcatcher
+sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
+
+echo "=========================================================="
 echo "=========================================================="
 echo "===   .o88b. db   db db    db d8888b.  .o88b. db   db  ==="
 echo "===  d8P  Y8 88   88 88    88 88  '8D d8P  Y8 88   88  ==="
