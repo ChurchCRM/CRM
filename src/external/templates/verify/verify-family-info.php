@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 
 $familyService = new FamilyService();
 // Set the page title and include HTML header
-$sPageTitle = "ChurchCRM - Family Verification";
+$sPageTitle = gettext("Family Verification");
 $sRootPath = SystemURLs::getRootPath();
 
 require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
@@ -22,22 +22,22 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
            src="<?= $sRootPath ?>/<?= $familyService->getFamilyPhoto($family->getId()) ?>">
       <h2><a href=""><?= $family->getName() ?></a></h2>
       <div class="text-muted font-bold m-b-xs">
-        <i class="fa fa-fw fa-map-marker" title="Home Address"></i><?= $family->getAddress() ?><br/>
-        <i class="fa fa-fw fa-phone" title="Home Phone"></i><?= $family->getHomePhone() ?><br/>
-        <i class="fa fa-fw fa-envelope" title="Family Email"></i><?= $family->getEmail() ?><br/>
-        <i class="fa fa-fw fa-heart" title="Wedding Date"></i><?= $family->getWeddingDate() ?><br/>
-        <i class="fa fa-fw fa-newspaper-o" title="Send Newsletter"></i><?= $family->getWeddingDate() ?><br/>
+        <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
+        <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i><?= $family->getHomePhone() ?><br/>
+        <i class="fa fa-fw fa-envelope" title="<?= gettext("Family Email")?>"></i><?= $family->getEmail() ?><br/>
+        <i class="fa fa-fw fa-heart" title="<?= gettext("Wedding Date")?>"></i><?= $family->getWeddingDate() ?><br/>
+        <i class="fa fa-fw fa-newspaper-o" title="<?= gettext("Send Newsletter")?>"></i><?= $family->getWeddingDate() ?><br/>
       </div>
     </div>
     <div class="border-right border-left">
       <section id="map">
-        <div id="map1" style="height: 200px"></div>
+        <div id="map1"></div>
       </section>
     </div>
     <div class="box box-solid">
       <div class="box-header">
         <i class="fa fa-users"></i>
-        <h3 class="box-title">Family Member(s)</h3>
+        <h3 class="box-title"><?= gettext("Family Member(s)")?></h3>
       </div>
       <div class="row">
         <?php foreach ($family->getPeopleSorted() as $person) { ?>
@@ -54,14 +54,14 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
                 <ul class="list-group list-group-unbordered">
                   <li class="list-group-item">
-                    <i class="fa fa-fw fa-phone" title="Home Phone"></i><?= $person->getHomePhone() ?><br/>
-                    <i class="fa fa-fw fa-briefcase" title="Work Phone"></i><?= $person->getWorkPhone() ?><br/>
-                    <i class="fa fa-fw fa-mobile" title="Mobile Phone"></i><?= $person->getCellPhone() ?><br/>
-                    <i class="fa fa-fw fa-envelope" title="Email"></i><?= $person->getEmail() ?><br/>
-                    <i class="fa fa-fw fa-envelope-o" title="Work Email"></i><?= $person->getWorkEmail() ?><br/>
+                    <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"></i><?= $person->getHomePhone() ?><br/>
+                    <i class="fa fa-fw fa-briefcase" title="<?= gettext("Work Phone")?>"></i><?= $person->getWorkPhone() ?><br/>
+                    <i class="fa fa-fw fa-mobile" title="<?= gettext("Mobile Phone")?>"></i><?= $person->getCellPhone() ?><br/>
+                    <i class="fa fa-fw fa-envelope" title="<?= gettext("Email")?>"></i><?= $person->getEmail() ?><br/>
+                    <i class="fa fa-fw fa-envelope-o" title="<?= gettext("Work Email")?>"></i><?= $person->getWorkEmail() ?><br/>
                     <i class="fa fa-fw fa-birthday-cake"
                        title="Birthday"></i><?= $person->getBirthDate()->format("M d Y") ?> <?php if ($person->hideAge()) { ?>
-                      <i class="fa fa-fw fa-eye-slash" title="Age Hidden"></i><?php } ?><br/>
+                      <i class="fa fa-fw fa-eye-slash" title="<?= gettext("Age Hidden")?>"></i><?php } ?><br/>
                   </li>
                   <li class="list-group-item">
                     <?php $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($person->getClsId())->findOne()->getOptionName(); ?>
@@ -121,6 +121,10 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 <style>
   #verifyBox {
     padding: 5px;
+  }
+
+  #map1 {
+    height: 200px;
   }
 
   .btn-sm {
