@@ -67,6 +67,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                     <?php $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($person->getClsId())->findOne()->getOptionName(); ?>
                     <b>Classification:</b> <?= $classification ?>
                   </li>
+                  <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) {?>
                   <li class="list-group-item">
                     <h4>Groups</h4>
                     <?php foreach ($person->getPerson2group2roleP2g2rs() as $groupMembership) {
@@ -76,6 +77,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                         class="pull-right"><?= $listOption ?></span>
                     <?php } ?>
                   </li>
+                  <?php } ?>
                 </ul>
               </div>
               <!-- /.box-body -->
