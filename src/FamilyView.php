@@ -852,7 +852,7 @@ if ($iFamilyID == $fam_ID) {
   <?php
 }
 ?>
-<script src="<?= SystemURLs::getRootPath() ?>/vendor/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
 <script>
   $("#deletePhoto").click (function () {
     $.ajax({

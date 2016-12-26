@@ -820,7 +820,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     </div>
   </div>
 </div>
-<script src="<?= SystemURLs::getRootPath() ?>/vendor/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
 <script>
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
