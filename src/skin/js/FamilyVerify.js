@@ -1,6 +1,10 @@
 $(document).ready(function () {
 
-// When the window has finished loading google map
+  $('#onlineVerifySiteBtn').hide();
+  $("#confirm-modal-done").hide();
+  $("#confirm-modal-error").hide();
+
+  // When the window has finished loading google map
   google.maps.event.addDomListener(window, 'load', init);
 
   function init() {
@@ -51,5 +55,24 @@ $(document).ready(function () {
 
     marker = new google.maps.Marker({position: LatLng, map: map1});
   }
+
+
+  $("#onlineVerifyBtn").click(function () {
+    $.post(window.CRM.root + '/external/verify/' + token,
+      {
+        message: $("#confirm-info-data").val()
+      },
+      function (data, status) {
+        $('#confirm-modal-collect').hide();
+        $("#onlineVerifyCancelBtn").hide();
+        $("#onlineVerifyBtn").hide();
+        $("#onlineVerifySiteBtn").show();
+        if (status == "success") {
+          $("#confirm-modal-done").show();
+        } else {
+          $("#confirm-modal-error").show();
+        }
+      });
+  });
 
 });

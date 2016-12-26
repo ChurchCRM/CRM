@@ -13,14 +13,14 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
   <div class="row">
     <div id="right-buttons" class="btn-group" role="group">
-      <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify" title="Looks Good"><i class="fa fa-check fa-5x"></i></button>
+      <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify"><i class="fa fa-check fa-5x"></i></button>
     </div>
   </div>
   <div class="box box-info" id="verifyBox">
     <div class="panel-body">
       <img class="img-circle center-block pull-right img-responsive" width="200" height="200"
            src="<?= $sRootPath ?>/<?= $familyService->getFamilyPhoto($family->getId()) ?>">
-      <h2><a href=""><?= $family->getName() ?></a></h2>
+      <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
         <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i><?= $family->getHomePhone() ?><br/>
@@ -106,21 +106,32 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
           <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm") ?></h4>
         </div>
 
-        <div class="modal-body">
+        <div class="modal-body" id="confirm-modal-collect">
           <p><?= gettext("Please let us know what information to update if any") ?></p>
           <textarea id="confirm-info-data" class="form-control" rows="10"></textarea>
         </div>
 
+        <div class="modal-body" id="confirm-modal-done">
+          <p><?= gettext("Your verification request is complete") ?></p>
+        </div>
+
+        <div class="modal-body" id="confirm-modal-error">
+          <p><?= gettext("We encountered an error submitting with your verification data") ?></p>
+        </div>
+
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-          <a href="#" class="btn btn-success"><?= gettext("Verify") ?></a>
+          <button id="onlineVerifyCancelBtn" type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+          <button id="onlineVerifyBtn" class="btn btn-success"><?= gettext("Verify") ?></button>
+          <a href="<?= SystemURLs::getURL()?>" id="onlineVerifySiteBtn" class="btn btn-success"><?= gettext("Visit our Site") ?></a>
         </div>
       </div>
     </div>
   </div>
 
 
+
 <style>
+
   #verifyBox {
     padding: 5px;
   }
@@ -144,6 +155,10 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     z-index: 999;
     position: fixed;
     left: 45%;
+  }
+
+  #success-alert, #error-alert {
+    z-index: 888;
   }
 
 </style>
