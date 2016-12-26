@@ -24,8 +24,7 @@ $app->group('/verify', function () {
         if ($haveFamily) {
             return $renderer->render($response, "verify-family-info.php", array("family" => $family, "token" => $token ));
         } else {
-            // return $renderer->render($response, "enter-info.php", array("token" => $token));
-          return $response->withStatus(302)->withHeader('Location', SystemURLs::getURL());
+            return $renderer->render($response, "/../404.php", array("message" => gettext("Unable to load verification info")));
         }
     });
 
