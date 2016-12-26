@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM
+namespace ChurchCRM\util
 {
   
   use ChurchCRM\dto\SystemURLs;

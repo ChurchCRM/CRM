@@ -2,7 +2,7 @@
 // Routes
 
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\PhotoUtils;
+use ChurchCRM\util\PhotoUtils;
 
 $app->group('/families', function () {
 

@@ -1,7 +1,7 @@
 <?php
 // Person APIs
 use ChurchCRM\PersonQuery;
-use ChurchCRM\PhotoUtils;
+use ChurchCRM\util\PhotoUtils;
 
 $app->group('/persons', function ()  {
 

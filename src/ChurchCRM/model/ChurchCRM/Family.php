@@ -5,6 +5,7 @@ namespace ChurchCRM;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Base\Family as BaseFamily;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\util\PhotoUtils;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.

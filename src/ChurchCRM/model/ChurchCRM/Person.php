@@ -6,6 +6,7 @@ use ChurchCRM\Base\Person as BasePerson;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\util\PhotoUtils;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -67,10 +68,10 @@ class Person extends BasePerson
     $validextensions = array("jpeg", "jpg", "png");
     $hasFile = false;
     while (list(, $ext) = each($validextensions)) {
-      $photoFile = SystemURLs::getImagesRoot() ."/Person/thumbnails/" . $this->getId() . "." . $ext;
+      $photoFile = SystemURLs::getImagesRoot() . "/Person/thumbnails/" . $this->getId() . "." . $ext;
       if (file_exists($photoFile)) {
         $hasFile = true;
-        $photoFile = SystemURLs::getImagesRoot() ."/Person/thumbnails/" . $this->getId() . "." . $ext;
+        $photoFile = SystemURLs::getImagesRoot() . "/Person/thumbnails/" . $this->getId() . "." . $ext;
         break;
       }
     }

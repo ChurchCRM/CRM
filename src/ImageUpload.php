@@ -4,7 +4,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 use ChurchCRM\Note;
-use ChurchCRM\PhotoUtils;
+use ChurchCRM\util\PhotoUtils;
 
 $finalFileName = "";
 $redirectURL = "";
