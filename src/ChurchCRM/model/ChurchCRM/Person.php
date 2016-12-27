@@ -63,8 +63,6 @@ class Person extends BasePerson
     return SystemURLs::getRootPath() . "/PersonView.php?PersonID=" . $this->getId();
   }
 
- 
-
   function getPhoto()
   {
     $personPhoto = new \stdClass();
