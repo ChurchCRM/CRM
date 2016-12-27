@@ -258,7 +258,7 @@ if ($iFamilyID == $fam_ID) {
           <?php if ($bOkToEdit) { ?>
             <a class="btn btn-app" href="#" id="uploadImageButton"><i
                 class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
-            <?php if ($family->getUploadedPhoto()) { ?>
+            <?php if ($family->getPhoto()->type == "localFile") { ?>
               <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
                   class="fa fa-remove"></i> <?= gettext("Delete Photo") ?> </a>
             <?php }

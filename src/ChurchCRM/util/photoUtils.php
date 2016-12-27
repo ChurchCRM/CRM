@@ -115,5 +115,25 @@ namespace ChurchCRM\util
 
             return $deleted;
         }
+        
+        public static function getUploadedPhoto($type,$id)
+        {
+          $validextensions = array("jpeg", "jpg", "png");
+          $hasFile = false;
+          while (list(, $ext) = each($validextensions)) {
+            $photoFile = SystemURLs::getImagesRoot() . "/" . $type . "/thumbnails/" . $id . "." . $ext;
+            if (file_exists($photoFile)) {
+              $hasFile = true;
+              $photoFile = SystemURLs::getImagesRoot() . "/" . $type . "/thumbnails/" . $id . "." . $ext;
+              break;
+            }
+          }
+
+          if ($hasFile) {
+            return $photoFile;
+          } else {
+            return "";
+          }
+        }
     }
 }

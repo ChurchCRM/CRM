@@ -63,31 +63,13 @@ class Person extends BasePerson
     return SystemURLs::getRootPath() . "/PersonView.php?PersonID=" . $this->getId();
   }
 
-  function getUploadedPhoto()
-  {
-    $validextensions = array("jpeg", "jpg", "png");
-    $hasFile = false;
-    while (list(, $ext) = each($validextensions)) {
-      $photoFile = SystemURLs::getImagesRoot() . "/Person/thumbnails/" . $this->getId() . "." . $ext;
-      if (file_exists($photoFile)) {
-        $hasFile = true;
-        $photoFile = SystemURLs::getImagesRoot() . "/Person/thumbnails/" . $this->getId() . "." . $ext;
-        break;
-      }
-    }
-
-    if ($hasFile) {
-      return $photoFile;
-    } else {
-      return "";
-    }
-  }
+ 
 
   function getPhoto()
   {
     $personPhoto = new \stdClass();
     $personPhoto->type = "localFile";
-    $personPhoto->path = $this->getUploadedPhoto();
+    $personPhoto->path = PhotoUtils::getUploadedPhoto("Person",$this->getId());
     if ($personPhoto->path == "") {
        $personPhoto->type = "remoteFile";
        $personPhoto->path = $this->getGravatar();

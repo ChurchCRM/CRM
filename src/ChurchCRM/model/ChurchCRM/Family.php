@@ -103,31 +103,12 @@ class Family extends BaseFamily
     $note->save();
   }
   
-  function getUploadedPhoto()
-  {
-    $validextensions = array("jpeg", "jpg", "png");
-    $hasFile = false;
-    while (list(, $ext) = each($validextensions)) {
-      $photoFile = SystemURLs::getImagesRoot() ."/Family/thumbnails/" . $this->getId() . "." . $ext;
-      if (file_exists($photoFile)) {
-        $hasFile = true;
-        $photoFile = SystemURLs::getImagesRoot() ."/Family/thumbnails/" . $this->getId() . "." . $ext;
-        break;
-      }
-    }
-
-    if ($hasFile) {
-      return $photoFile;
-    } else {
-      return "";
-    }
-  }
   
   function getPhoto()
   {
     $familyPhoto = new \stdClass();
     $familyPhoto->type = "localFile";
-    $familyPhoto->path = $this->getUploadedPhoto();
+    $familyPhoto->path = PhotoUtils::getUploadedPhoto("Family",$this->getId());
     if ($familyPhoto->path == "") {
       $familyPhoto->type = "remoteFile";
       $familyPhoto->path =   $photoFile = SystemURLs::getRootPath() . "/Images/Family/family-128.png";
