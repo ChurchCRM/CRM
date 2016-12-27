@@ -853,6 +853,7 @@ if ($iFamilyID == $fam_ID) {
 }
 ?>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
+<link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
 <script>
   $("#deletePhoto").click (function () {
     $.ajax({
@@ -871,7 +872,10 @@ if ($iFamilyID == $fam_ID) {
 $(document).ready( function() {
   window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
     url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
-    maxPhotoSize: "2MB"
+    maxPhotoSize: "2MB",
+    done: function(e) {
+      location.reload();
+    }
    });
    
   $("#uploadImageButton").click(function(){

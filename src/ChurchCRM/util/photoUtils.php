@@ -4,6 +4,7 @@ namespace ChurchCRM\util
 {
   
   use ChurchCRM\dto\SystemURLs;
+  use ChurchCRM\Note;
   
     class PhotoUtils
     {

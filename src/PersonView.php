@@ -821,6 +821,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
   </div>
 </div>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
+<link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
 <script>
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
@@ -859,12 +860,15 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     });
   });
 
-  $("#photoUploader").PhotoUploader({
+  window.CRM.photoUploader =  $("#photoUploader").PhotoUploader({
     url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
-    maxPhotoSize: "2MB"
-   });
+    maxPhotoSize: "2MB",
+    done: function(e) {
+      location.reload();
+    }
+  });
 
-   $("#uploadImageButton").click(function(){
+  $("#uploadImageButton").click(function(){
     window.CRM.photoUploader.show();
   });
 </script>
