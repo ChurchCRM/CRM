@@ -31,32 +31,6 @@ if (!$_SESSION['bFinance']) {
 require "Include/Header.php";
 ?>
 
-<!-- Delete Confirm Modal -->
-<div id="confirmDelete" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><?= gettext("Confirm Delete") ?></h4>
-      </div>
-      <div class="modal-body">
-        <p><?= gettext("Are you sure you want to delete the selected"); ?> <span
-            id="deleteNumber"></span> <?= gettext("Deposit(s)"); ?>?
-        </p>
-        <p><?= gettext("This will also delete all payments associated with this deposit"); ?></p>
-        <p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>
-        <p><?= gettext("Please ensure this what you want to do.") ?></p>
-        <button type="button" class="btn btn-danger" id="deleteConfirmed"><?php echo gettext("Delete"); ?></button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal"><?= gettext("Close"); ?></button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Delete Confirm Modal -->
-
 <div class="box">
   <div class="box-header with-border">
     <h3 class="box-title"><?php echo gettext("Add New Deposit: "); ?></h3>
@@ -114,5 +88,44 @@ require "Include/Header.php";
   </div>
 </div>
 <script src="<?= $sRootPath; ?>/skin/js/FindDepositSlip.js"></script>
+
+<script>
+  $('#deleteSelectedRows').click(function () {
+    var deletedRows = dataT.rows('.selected').data()
+    bootbox.confirm({
+      title:'<?= gettext("Confirm Delete") ?>',
+      message: '<p><?= gettext("Are you sure you want to delete the selected"); ?> '+ deletedRows.length + ' <?= gettext("Deposit(s)"); ?>?' +
+        '</p><p><?= gettext("This will also delete all payments associated with this deposit"); ?></p>'+
+        '<p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>'+
+        '<p><?= gettext("Please ensure this what you want to do.") ?></p>',
+      buttons: {
+        cancel : {
+          label: '<?= gettext("Close"); ?>'
+        },
+        confirm: { 
+          label: '<?php echo gettext("Delete"); ?>'
+        }
+      },
+      callback: function ( result ) {
+        if ( result ) 
+        {
+          $.each(deletedRows, function (index, value) {
+            $.ajax({
+              type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+              url: window.CRM.root + '/api/deposits/' + value.Id, // the url where we want to POST
+              dataType: 'json', // what type of data do we expect back from the server
+              encode: true,
+              data: {"_METHOD": "DELETE"}
+            })
+              .done(function (data) {
+                $('#confirmDelete').modal('hide');
+                dataT.rows('.selected').remove().draw(false);
+              });
+          });
+        }
+      }
+    });
+  });
+</script>
 
 <?php require "Include/Footer.php" ?>
