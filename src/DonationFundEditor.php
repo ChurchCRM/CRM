@@ -62,9 +62,10 @@ require "Include/Header.php"; ?>
 <?php
 
 // Get data for the form as it now exists..
-$donationFundQuery = DonationFundQuery::create()
-  ->orderByName();
-$donationFunds = $donationFundQuery->find();
+
+$donationFunds = DonationFundQuery::create()
+  ->orderByName()
+  ->find();
 
 // Does the user want to save changes to text fields?
 if (isset($_POST["SaveChanges"]))
@@ -92,18 +93,20 @@ else
 	// Check if we're adding a fund
 	if (isset($_POST["AddField"]))
 	{
-    $donation = new DonationFund();
-		$donation->setName(FilterInput($_POST["newFieldName"]));
-		$donation->setDescription(FilterInput($_POST["newFieldDesc"]));
-
-		if (!$donation->validate())
+    $checkExisting = DonationFundQuery::create()->filterByName($_POST["newFieldName"])->findOne();
+		if (count($checkExisting) > 0)
 		{
 			$bNewNameError = true;
 		}
 		else
 		{
+      $donation = new DonationFund();
+      $donation->setName(FilterInput($_POST["newFieldName"]));
+      $donation->setDescription(FilterInput($_POST["newFieldDesc"]));
 			$donation->save();
-      $donationFunds = $donationFundQuery->find();
+      $donationFunds = DonationFundQuery::create()
+        ->orderByName()
+        ->find();
 		}
 	}
 }
