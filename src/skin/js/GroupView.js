@@ -107,22 +107,42 @@ $(document).ready(function () {
 
   $("#deleteSelectedRows").click(function () {
     var deletedRows = dataT.rows('.selected').data()
-    $.each(deletedRows, function (index, value) {
-      $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId, // the url where we want to POST
-        dataType: 'json', // what type of data do we expect back from the server
-        data: {"_METHOD": "DELETE"},
-        encode: true
-      }).done(function (data) {
-        dataT.row(function (idx, data, node) {
-          if (data.PersonId == value.PersonId) {
-            return true;
-          }
-        }).remove();
-        dataT.rows().invalidate().draw(true);
-      });
+    bootbox.confirm({
+      message: "Are you sure you want to remove the " + deletedRows.length + " selected group members?",
+      buttons: {
+        confirm: {
+          label: 'Yes',
+            className: 'btn-success'
+        },
+        cancel: {
+          label: 'No',
+          className: 'btn-danger'
+        }
+      },
+      callback: function (result)
+      {
+        if (result) 
+        {
+          $.each(deletedRows, function (index, value) {
+            $.ajax({
+              type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+              url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId, // the url where we want to POST
+              dataType: 'json', // what type of data do we expect back from the server
+              data: {"_METHOD": "DELETE"},
+              encode: true
+            }).done(function (data) {
+              dataT.row(function (idx, data, node) {
+                if (data.PersonId == value.PersonId) {
+                  return true;
+                }
+              }).remove();
+              dataT.rows().invalidate().draw(true);
+            });
+          });
+        }
+       }
     });
+
   });
 
   $("#addSelectedToCart").click(function () {

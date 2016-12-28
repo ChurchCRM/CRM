@@ -31,6 +31,7 @@ src/skin/fullcalendar
 src/skin/moment
 src/skin/locale
 src/skin/fastclick
+src/skin/bootbox
 
 # Configuration files with passwords
 src/Include/Config.php
