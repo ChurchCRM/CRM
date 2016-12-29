@@ -118,7 +118,6 @@ require "Include/Header.php";
               data: {"_METHOD": "DELETE"}
             })
               .done(function (data) {
-                $('#confirmDelete').modal('hide');
                 dataT.rows('.selected').remove().draw(false);
               });
           });

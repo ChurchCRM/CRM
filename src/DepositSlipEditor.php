@@ -244,7 +244,6 @@ require "Include/Header.php";
                 encode: true
               })
               .done(function(data) {
-                $('#confirmDelete').modal('hide');
                 dataT.rows('.selected').remove().draw(false);
                 window.CRM.deletesRemaining --;
                 if ( window.CRM.deletesRemaining == 0 )

@@ -83,28 +83,6 @@ $(document).ready(function () {
     });
   });
 
-  $("#chkClear").change(function () {
-    if ($(this).is(":checked")) {
-      $("#deleteGroupButton").removeAttr("disabled");
-    }
-    else {
-      $("#deleteGroupButton").attr("disabled", "disabled");
-    }
-  });
-
-  $("#deleteGroupButton").on("click", function (e) {
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup,
-      dataType: "json",
-      encode: true,
-      data: {"_METHOD": "DELETE"}
-    }).done(function (data) {
-      if (data.status == "success")
-        window.location.href = window.CRM.root + "/GroupList.php";
-    });
-  });
-
   $("#deleteSelectedRows").click(function () {
     var deletedRows = dataT.rows('.selected').data()
     bootbox.confirm({
