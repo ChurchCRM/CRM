@@ -118,7 +118,7 @@
   After the tag has been created, update the change log and version number
 
   ```
-  npm run postpackage
+  npm run rev-build
   ```
 
   * Also, edit ```/src/mysql/upgrade.json``` to reflect the current upgrade path.

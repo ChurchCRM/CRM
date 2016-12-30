@@ -52,7 +52,7 @@ $rsFunds = RunQuery($sSQL);
 if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['bFinance']) {
   $_SESSION['sshowPledges'] = isset($_POST["ShowPledges"]);
   $_SESSION['sshowPayments'] = isset($_POST["ShowPayments"]);
-  $_SESSION['sshowSince'] = FilterInput($_POST["ShowSinceDate"]);
+  $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d",FilterInput($_POST["ShowSinceDate"]) ) ;
 }
 
 $dSQL = "SELECT fam_ID FROM family_fam order by fam_Name";
@@ -683,7 +683,7 @@ if ($iFamilyID == $fam_ID) {
                       if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
                           ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
                         ) &&
-                        ($_SESSION['sshowSince'] == "" || $plg_date > $_SESSION['sshowSince'])
+                        ($_SESSION['sshowSince'] == "" ||  DateTime::createFromFormat("Y-m-d",$plg_date) > $_SESSION['sshowSince']  )
                       ) {
                         //Alternate the row style
                         if ($tog)
