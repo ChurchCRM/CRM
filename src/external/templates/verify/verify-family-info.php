@@ -13,7 +13,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
   <div class="row">
     <div id="right-buttons" class="btn-group" role="group">
-      <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify"><i class="fa fa-check fa-5x"></i></button>
+      <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify"><div class="btn-txt"><?=gettext("Confirm")?></div><i class="fa fa-check fa-5x"></i>  </button>
     </div>
   </div>
   <div class="box box-info" id="verifyBox">
@@ -149,6 +149,9 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     color: white;
     text-align: center;
     background: #62b1d0;
+  }
+  .btn-txt {
+    font-size: 15px;
   }
 
   #right-buttons {
