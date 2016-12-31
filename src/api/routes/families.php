@@ -4,6 +4,7 @@ use ChurchCRM\FamilyQuery;
 use ChurchCRM\Token;
 use ChurchCRM\Note;
 use ChurchCRM\Emails\FamilyVerificationEmail;
+use ChurchCRM\TokenQuery;
 
 $app->group('/families', function () {
 
@@ -30,6 +31,7 @@ $app->group('/families', function () {
     $familyId = $args["familyId"];
     $family = FamilyQuery::create()->findPk($familyId);
     if ($family != null) {
+      TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($family->getId())->delete();
       $token = new Token();
       $token->build("verifyFamily", $family->getId());
       $token->save();
