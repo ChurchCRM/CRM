@@ -47,18 +47,24 @@ echo "Database: tables and metadata deployed"
 CODE_VER=`grep version /vagrant/src/composer.json | cut -d ',' -f1 | cut -d'"' -f4`
 
 echo "=========================================================="
-echo "==============   Development DB Setup $CODE_VER ============="
+echo "===========  Setup Dev to version: $CODE_VER ============="
 echo "=========================================================="
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_VAGRANT_SCRIPT
 sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "INSERT INTO churchcrm.version_ver (ver_version, ver_update_start) VALUES ('$CODE_VER', now());"
 echo "Database: development seed data deployed"
 
+cp /vagrant/vagrant/Config.php /vagrant/src/Include/
+echo "copied Config.php "
+
 echo "=========================================================="
-echo "===============  MV Config.php           ================="
+echo "=================   ruby               ==================="
 echo "=========================================================="
 
-cp /vagrant/vagrant/Config.php /vagrant/src/Include/
+sudo apt-get install -y ruby-full
+gem install sass
+
+#gem install multi_json github_changelog_generator
 
 echo "=========================================================="
 echo "===============   Composer PHP           ================="
