@@ -1,5 +1,47 @@
 # Change Log
 
+## [2.4.3](https://github.com/ChurchCRM/CRM/tree/2.4.3) (2016-12-28)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.4.2...2.4.3)
+
+**Implemented enhancements:**
+
+- login is very slow [\#1060](https://github.com/ChurchCRM/CRM/issues/1060)
+
+**Fixed bugs:**
+
+- Deposit Graph Conditional Visibility [\#1019](https://github.com/ChurchCRM/CRM/issues/1019)
+- Adding new Group Roles Default Behavior [\#1016](https://github.com/ChurchCRM/CRM/issues/1016)
+- Deleting Group Members Button Doesn't update [\#988](https://github.com/ChurchCRM/CRM/issues/988)
+- Group Schedule a Meeting is broken\(ish\) [\#975](https://github.com/ChurchCRM/CRM/issues/975)
+- Events: Edit Event Type has no Save for Recurrence Pattrern [\#463](https://github.com/ChurchCRM/CRM/issues/463)
+- Cannot add new fund [\#1585](https://github.com/ChurchCRM/CRM/issues/1585)
+- Family View Broken [\#1583](https://github.com/ChurchCRM/CRM/issues/1583)
+- sHeader don't work in version 2.4.2 [\#1552](https://github.com/ChurchCRM/CRM/issues/1552)
+- Header.php Undefined variables [\#1445](https://github.com/ChurchCRM/CRM/issues/1445)
+- Fix \#1552 [\#1559](https://github.com/ChurchCRM/CRM/pull/1559) ([saulowulhynek](https://github.com/saulowulhynek))
+
+**Closed issues:**
+
+- MailCatcher not started in vagrant build [\#1578](https://github.com/ChurchCRM/CRM/issues/1578)
+- Can't Find classification manager [\#1572](https://github.com/ChurchCRM/CRM/issues/1572)
+- Upgrade from a new 2.4.1 installations to 2.4.2 failed [\#1555](https://github.com/ChurchCRM/CRM/issues/1555)
+- Create ChurchCRM vagrant box [\#1509](https://github.com/ChurchCRM/CRM/issues/1509)
+- Check the value of checkAllowedURL & URL\[0\] [\#1469](https://github.com/ChurchCRM/CRM/issues/1469)
+- Convert Service Classes to ORM [\#1150](https://github.com/ChurchCRM/CRM/issues/1150)
+- Unable to install  [\#1041](https://github.com/ChurchCRM/CRM/issues/1041)
+
+**Merged pull requests:**
+
+- use new vagrant box [\#1589](https://github.com/ChurchCRM/CRM/pull/1589) ([crossan007](https://github.com/crossan007))
+- start mailcatcher with vagrant [\#1580](https://github.com/ChurchCRM/CRM/pull/1580) ([crossan007](https://github.com/crossan007))
+- Moved checkAllowedURL to SystemURLs  [\#1568](https://github.com/ChurchCRM/CRM/pull/1568) ([DawoudIO](https://github.com/DawoudIO))
+- New ChurchCRM Vagrant Box [\#1565](https://github.com/ChurchCRM/CRM/pull/1565) ([DawoudIO](https://github.com/DawoudIO))
+- 2.4.3 fix show since date on family view [\#1587](https://github.com/ChurchCRM/CRM/pull/1587) ([crossan007](https://github.com/crossan007))
+- 2.4.3 1585 donation fund adds [\#1586](https://github.com/ChurchCRM/CRM/pull/1586) ([crossan007](https://github.com/crossan007))
+- Using isset for $sPageTitleSub [\#1566](https://github.com/ChurchCRM/CRM/pull/1566) ([DawoudIO](https://github.com/DawoudIO))
+- Adding tar.gz to releases [\#1554](https://github.com/ChurchCRM/CRM/pull/1554) ([jaskipper](https://github.com/jaskipper))
+- 2.4.3 starting [\#1553](https://github.com/ChurchCRM/CRM/pull/1553) ([crossan007](https://github.com/crossan007))
+
 ## [2.4.2](https://github.com/ChurchCRM/CRM/tree/2.4.2) (2016-12-08)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.4.1...2.4.2)
 
@@ -364,6 +406,7 @@
 - sReader don't store a html code [\#1262](https://github.com/ChurchCRM/CRM/issues/1262)
 - Bug of 2.3.0-RC2 - Error to add a event [\#1257](https://github.com/ChurchCRM/CRM/issues/1257)
 - People Not In MailChimp Broken Links [\#1156](https://github.com/ChurchCRM/CRM/issues/1156)
+- API Error Handler [\#1035](https://github.com/ChurchCRM/CRM/issues/1035)
 - un-localize the conditional statement [\#1296](https://github.com/ChurchCRM/CRM/pull/1296) ([crossan007](https://github.com/crossan007))
 - standardize on utf8mb4 [\#1294](https://github.com/ChurchCRM/CRM/pull/1294) ([crossan007](https://github.com/crossan007))
 - Header HTML \#1262 [\#1288](https://github.com/ChurchCRM/CRM/pull/1288) ([bradgearon](https://github.com/bradgearon))

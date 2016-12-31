@@ -195,10 +195,36 @@ module.exports = function (grunt) {
       }
     },
     compress: {
-      package: {
+      'zip': {
         options: {
           archive: 'target/ChurchCRM-<%= composer.version %>.zip',
           mode: "zip",
+          pretty: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'src/',
+            src: [
+              '**',
+              '**/.*',
+              '!**/.gitignore',
+              '!vendor/**/example/**',
+              '!vendor/**/tests/**',
+              '!vendor/**/docs/**',
+              '!Images/Person/thumbnails/*.jpg',
+              '!composer.lock',
+              '!Include/Config.php',
+              '!integrityCheck.json'
+            ],
+            dest: 'churchcrm/'
+          }
+        ]
+      },
+      'tar': {
+        options: {
+          archive: 'target/ChurchCRM-<%= composer.version %>.tar.gz',
+          mode: "tar",
           pretty: true
         },
         files: [

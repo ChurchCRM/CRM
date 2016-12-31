@@ -190,7 +190,7 @@ $MenuFirst = 1;
       <h1>
         <?php
         echo $sPageTitle . "\n";
-        if ($sPageTitleSub != "") {
+        if (isset($sPageTitleSub)) {
           echo "<small>" . $sPageTitleSub . "</small>";
         }
         ?>

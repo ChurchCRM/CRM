@@ -51,7 +51,7 @@ $rsFunds = RunQuery($sSQL);
 if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['bFinance']) {
   $_SESSION['sshowPledges'] = isset($_POST["ShowPledges"]);
   $_SESSION['sshowPayments'] = isset($_POST["ShowPayments"]);
-  $_SESSION['sshowSince'] = FilterInput($_POST["ShowSinceDate"]);
+  $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d",FilterInput($_POST["ShowSinceDate"]) ) ;
 }
 
 $dSQL = "SELECT fam_ID FROM family_fam order by fam_Name";
@@ -681,73 +681,73 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 
                     extract($aRow);
 
-                    //Display the pledge or payment if appropriate
-                    if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
-                        ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
-                      ) &&
-                      ($_SESSION['sshowSince'] == "" || $plg_date > $_SESSION['sshowSince'])
-                    ) {
-                      //Alternate the row style
-                      if ($tog)
-                        $sRowClass = "RowColorA";
-                      else
-                        $sRowClass = "RowColorB";
-
-                      if ($plg_PledgeOrPayment == 'Payment') {
+                      //Display the pledge or payment if appropriate
+                      if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
+                          ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
+                        ) &&
+                        ($_SESSION['sshowSince'] == "" ||  DateTime::createFromFormat("Y-m-d",$plg_date) > $_SESSION['sshowSince']  )
+                      ) {
+                        //Alternate the row style
                         if ($tog)
-                          $sRowClass = "PaymentRowColorA";
+                          $sRowClass = "RowColorA";
                         else
-                          $sRowClass = "PaymentRowColorB";
+                          $sRowClass = "RowColorB";
+
+                        if ($plg_PledgeOrPayment == 'Payment') {
+                          if ($tog)
+                            $sRowClass = "PaymentRowColorA";
+                          else
+                            $sRowClass = "PaymentRowColorB";
+                        }
+
+                        ?>
+
+                        <tr class="<?= $sRowClass ?>" align="center">
+                          <td>
+                            <?= $plg_PledgeOrPayment ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $fundName ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= MakeFYString($plg_FYID) ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $plg_date ?>&nbsp;
+                          </td>
+                          <td align=center>
+                            <?= $plg_amount ?>&nbsp;
+                          </td>
+                          <td align=center>
+                            <?= $plg_NonDeductible ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $plg_schedule ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $plg_method ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $plg_comment ?>&nbsp;
+                          </td>
+                          <td>
+                            <a
+                              href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
+                          </td>
+                          <td>
+                            <a
+                              href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+                          </td>
+                          <td>
+                            <?= $plg_DateLastEdited ?>&nbsp;
+                          </td>
+                          <td>
+                            <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
+                          </td>
+                        </tr>
+                        <?php
                       }
-
-                      ?>
-
-                      <tr class="<?= $sRowClass ?>" align="center">
-                        <td>
-                          <?= $plg_PledgeOrPayment ?>&nbsp;
-                        </td>
-                        <td>
-                          <?= $fundName ?>&nbsp;
-                        </td>
-                        <td>
-                          <?= MakeFYString($plg_FYID) ?>&nbsp;
-                        </td>
-                        <td>
-                          <?= $plg_date ?>&nbsp;
-                        </td>
-                        <td align=center>
-                          <?= $plg_amount ?>&nbsp;
-                        </td>
-                        <td align=center>
-                          <?= $plg_NonDeductible ?>&nbsp;
-                        </td>
-                        <td>
-                          <?= $plg_schedule ?>&nbsp;
-                        </td>
-                        <td>
-                          <?= $plg_method ?>&nbsp;
-                        </td>
-                        <td>
-                          <?= $plg_comment ?>&nbsp;
-                        </td>
-                        <td>
-                          <a
-                            href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
-                        </td>
-                        <td>
-                          <a
-                            href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
-                        </td>
-                        <td>
-                          <?= $plg_DateLastEdited ?>&nbsp;
-                        </td>
-                        <td>
-                          <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
-                        </td>
-                      </tr>
-                      <?php
                     }
-                  }
                 } // if bShowPledges
 
                 ?>
