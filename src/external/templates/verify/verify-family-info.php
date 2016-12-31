@@ -26,7 +26,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i><?= $family->getHomePhone() ?><br/>
         <i class="fa fa-fw fa-envelope" title="<?= gettext("Family Email")?>"></i><?= $family->getEmail() ?><br/>
         <i class="fa fa-fw fa-heart" title="<?= gettext("Wedding Date")?>"></i><?= $family->getWeddingDate() ?><br/>
-        <i class="fa fa-fw fa-newspaper-o" title="<?= gettext("Send Newsletter")?>"></i><?= $family->getWeddingDate() ?><br/>
+        <i class="fa fa-fw fa-newspaper-o" title="<?= gettext("Send Newsletter")?>"></i><?= $family->getSendNewsletter() ?><br/>
       </div>
     </div>
     <div class="border-right border-left">
