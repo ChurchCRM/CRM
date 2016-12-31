@@ -35,6 +35,8 @@ $sRootPath = SystemURLs::getRootPath();
 <body class="hold-transition login-page">
 
   <script language="javascript" type="text/javascript">
-    window.CRM = {root: "<?= $sRootPath ?>"};
+    window.CRM = {
+      root: "<?= $sRootPath ?>"
+    };
   </script>
 
