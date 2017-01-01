@@ -361,7 +361,7 @@ function CanvassNotInterestedReport ($iFYID)
 	$curY = 10;
 
 	$pdf->SetFont('Times','', 24);
-	$pdf->WriteAt ( (SystemConfig::getValue("leftX"), $curY, gettext("Canvass Not Interested Report")." " . date ("Y-m-d"));
+	$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, gettext("Canvass Not Interested Report")." " . date ("Y-m-d"));
 	$pdf->SetFont('Times','', 14);
 
 	$curY += 10;
