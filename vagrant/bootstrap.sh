@@ -16,6 +16,7 @@ CRM_DB_NAME="churchcrm"
 echo "=========================================================="
 echo "====================   DB Setup  ========================="
 echo "=========================================================="
+
 RET=1
 while [[ RET -ne 0 ]]; do
     echo "Database: Waiting for confirmation of MySQL service startup"
@@ -58,15 +59,6 @@ cp /vagrant/vagrant/Config.php /vagrant/src/Include/
 echo "copied Config.php "
 
 echo "=========================================================="
-echo "=================   ruby               ==================="
-echo "=========================================================="
-
-sudo apt-get install -y ruby-full
-gem install sass
-
-#gem install multi_json github_changelog_generator
-
-echo "=========================================================="
 echo "===============   Composer PHP           ================="
 echo "=========================================================="
 cd /vagrant/src
@@ -83,14 +75,14 @@ echo "=========================================================="
 
 cd /vagrant
 sudo npm install -g npm@latest --unsafe-perm --no-bin-links
-sudo npm install --unsafe-perm --no-bin-links
+npm install --unsafe-perm --no-bin-links
 
 echo "=========================================================="
 echo "=================   MailCatcher Setup  ==================="
 echo "=========================================================="
 
 sudo pkill mailcatcher
-sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
+mailcatcher --ip 0.0.0.0
 
 echo "=========================================================="
 echo "=========================================================="
