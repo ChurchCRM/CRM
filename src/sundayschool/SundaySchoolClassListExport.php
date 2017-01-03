@@ -1,16 +1,16 @@
 <?php
-require "../Include/Config.php";
-require "../Include/Functions.php";
+require '../Include/Config.php';
+require '../Include/Functions.php';
 
-header("Content-type: text/csv");
-header("Content-Disposition: attachment; filename=SundaySchool-" . date("Ymd") . ".csv");
-header("Pragma: no-cache");
-header("Expires: 0");
+header('Content-type: text/csv');
+header('Content-Disposition: attachment; filename=SundaySchool-'.date('Ymd').'.csv');
+header('Pragma: no-cache');
+header('Expires: 0');
 
 $out = fopen('php://output', 'w');
 
 // Get all the groups
-$sSQL = "select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
+$sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
 fam.fam_HomePhone homePhone,
 dad.per_FirstName dadFirstName, dad.per_LastName dadLastName, dad.per_CellPhone dadCellPhone, dad.per_Email dadEmail,
 mom.per_FirstName momFirstName, mom.per_LastName momLastName, mom.per_CellPhone momCellPhone, mom.per_Email momEmail,
@@ -23,24 +23,24 @@ left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 a
 
 where kid.per_fam_id = fam.fam_ID and person_grp.p2g2r_rle_ID = 2 and
 grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID
-order by grp.grp_Name, fam.fam_Name";
+order by grp.grp_Name, fam.fam_Name';
 $rsKids = RunQuery($sSQL);
 
-fputcsv($out, array("Class",
-  "First Name", "Last Name", "Birth Date", "Mobile",
-  "Home Phone", "Home Address",
-  "Dad Name", "Dad Mobile", "Dad Email",
-  "Mom Name", "Mom Mobile", "Mom Email"));
+fputcsv($out, ['Class',
+  'First Name', 'Last Name', 'Birth Date', 'Mobile',
+  'Home Phone', 'Home Address',
+  'Dad Name', 'Dad Mobile', 'Dad Email',
+  'Mom Name', 'Mom Mobile', 'Mom Email', ]);
 
 while ($aRow = mysqli_fetch_array($rsKids)) {
-  extract($aRow);
-  $birthDate = "";
-  if ($birthYear != "") {
-    $birthDate = $birthDay . "/" . $birthMonth . "/" . $birthYear;
-  }
-  fputcsv($out, array($sundayschoolClass, $firstName, $LastName, $birthDate, $mobilePhone, $homePhone, $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip,
-    $dadFirstName . " " . $dadLastName, $dadCellPhone, $dadEmail,
-    $momFirstName . " " . $momLastName, $momCellPhone, $momEmail));
+    extract($aRow);
+    $birthDate = '';
+    if ($birthYear != '') {
+        $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
+    }
+    fputcsv($out, [$sundayschoolClass, $firstName, $LastName, $birthDate, $mobilePhone, $homePhone, $Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip,
+    $dadFirstName.' '.$dadLastName, $dadCellPhone, $dadEmail,
+    $momFirstName.' '.$momLastName, $momCellPhone, $momEmail, ]);
 }
 
 fclose($out);

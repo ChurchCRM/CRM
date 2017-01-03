@@ -8,22 +8,22 @@ module.exports = function (grunt) {
     languages: {
       'de': 'de_DE',
       'en-au': 'en_AU',
-      'en' : 'en_GB',
-      'es' : 'es_ES',
-      'fr' : 'fr_FR',
-      'hu' : 'hu_HU',
-      'it' :'it_IT',
-      'nb' : 'nb_NO',
-      'nl' : 'nl_NL',
-      'pl' : 'pl_PL',
-      'pt-br' : 'pt_BR',
-      'ro' : 'ro_RO',
-      'ru' : 'ru_RU',
-      'sq' : 'sq_AL',
-      'sv' : 'sv_SE',
-      'vi' : 'vi_VN',
-      'zh-CN' : 'zh_CN',
-      'zh-TW' : 'zh_TW'
+      'en': 'en_GB',
+      'es': 'es_ES',
+      'fr': 'fr_FR',
+      'hu': 'hu_HU',
+      'it': 'it_IT',
+      'nb': 'nb_NO',
+      'nl': 'nl_NL',
+      'pl': 'pl_PL',
+      'pt-br': 'pt_BR',
+      'ro': 'ro_RO',
+      'ru': 'ru_RU',
+      'sq': 'sq_AL',
+      'sv': 'sv_SE',
+      'vi': 'vi_VN',
+      'zh-CN': 'zh_CN',
+      'zh-TW': 'zh_TW'
     },
     clean: {
       locale: ["src/skin/locale"],
@@ -69,7 +69,8 @@ module.exports = function (grunt) {
             filter: 'isFile',
             flatten: true,
             src: ['node_modules/fullcalendar/dist/*'],
-            dest: 'src/skin/fullcalendar/'},
+            dest: 'src/skin/fullcalendar/'
+          },
           {
             expand: true,
             filter: 'isFile',
@@ -177,6 +178,13 @@ module.exports = function (grunt) {
         dest: 'src/skin/fastclick'
       }
     },
+    sass: {
+      dist: {
+        files: {
+          'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
+        }
+      }
+    },
     rename: {
       datatables: {
         files: [
@@ -186,17 +194,29 @@ module.exports = function (grunt) {
           {src: ['src/skin/locale/datatables/French.json'], dest: 'src/skin/locale/datatables/fr_FR.json'},
           {src: ['src/skin/locale/datatables/Hungarian.json'], dest: 'src/skin/locale/datatables/hu_HU.json'},
           {src: ['src/skin/locale/datatables/Italian.json'], dest: 'src/skin/locale/datatables/it_IT.json'},
-          {src: ['src/skin/locale/datatables/Norwegian-Bokmal.json'], dest: 'src/skin/locale/datatables/nb_NO.json'},
+          {
+            src: ['src/skin/locale/datatables/Norwegian-Bokmal.json'],
+            dest: 'src/skin/locale/datatables/nb_NO.json'
+          },
           {src: ['src/skin/locale/datatables/Dutch.json'], dest: 'src/skin/locale/datatables/nl_NL.json'},
           {src: ['src/skin/locale/datatables/Polish.json'], dest: 'src/skin/locale/datatables/pl_PL.json'},
-          {src: ['src/skin/locale/datatables/Portuguese.json'], dest: 'src/skin/locale/datatables/pt_BR.json'},
+          {
+            src: ['src/skin/locale/datatables/Portuguese.json'],
+            dest: 'src/skin/locale/datatables/pt_BR.json'
+          },
           {src: ['src/skin/locale/datatables/Romanian.json'], dest: 'src/skin/locale/datatables/ro_RO.json'},
           {src: ['src/skin/locale/datatables/Russian.json'], dest: 'src/skin/locale/datatables/ru_RU.json'},
           {src: ['src/skin/locale/datatables/Albanian.json'], dest: 'src/skin/locale/datatables/sq_AL.json'},
           {src: ['src/skin/locale/datatables/Swedish.json'], dest: 'src/skin/locale/datatables/sv_SE.json'},
-          {src: ['src/skin/locale/datatables/Vietnamese.json'], dest: 'src/skin/locale/datatables/vi_VN.json'},
+          {
+            src: ['src/skin/locale/datatables/Vietnamese.json'],
+            dest: 'src/skin/locale/datatables/vi_VN.json'
+          },
           {src: ['src/skin/locale/datatables/Chinese.json'], dest: 'src/skin/locale/datatables/zh_CN.json'},
-          {src: ['src/skin/locale/datatables/Chinese-traditional.json'], dest: 'src/skin/locale/datatables/zh_TW.json'}
+          {
+            src: ['src/skin/locale/datatables/Chinese-traditional.json'],
+            dest: 'src/skin/locale/datatables/zh_TW.json'
+          }
         ]
       }
     },
@@ -269,7 +289,7 @@ module.exports = function (grunt) {
       }
     },
     generateSignatures: {
-      sign:{
+      sign: {
         version: '<%= composer.version %>',
         files: [{
           expand: true,
@@ -315,38 +335,41 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('hash','gets a file hash',function(arg1){
-     var sha1 = require('node-sha1');
-     grunt.log.writeln(sha1(grunt.file.read(arg1,{encoding:null})));
+  grunt.registerTask('hash', 'gets a file hash', function (arg1) {
+    var sha1 = require('node-sha1');
+    grunt.log.writeln(sha1(grunt.file.read(arg1, {encoding: null})));
   });
 
-  grunt.registerMultiTask('generateSignatures', 'A sample task that logs stuff.', function() {
+  grunt.registerMultiTask('generateSignatures', 'A sample task that logs stuff.', function () {
     var sha1 = require('node-sha1');
     var signatures = {
-      "version":this.data.version,
-      "files":[]
+      "version": this.data.version,
+      "files": []
     };
-    this.files.forEach(function(filePair) {
+    this.files.forEach(function (filePair) {
       isExpandedPair = filePair.orig.expand || false;
 
-      filePair.src.forEach(function(src) {
-        if (grunt.file.isFile(src))
-        {
-          signatures.files.push({"filename":src.substring(4),"sha1":sha1(grunt.file.read(src,{encoding:null}))});
+      filePair.src.forEach(function (src) {
+        if (grunt.file.isFile(src)) {
+          signatures.files.push({
+            "filename": src.substring(4),
+            "sha1": sha1(grunt.file.read(src, {encoding: null}))
+          });
         }
       });
     });
-    signatures.sha1=sha1(JSON.stringify(signatures.files));
-    grunt.file.write("src/signatures.json",JSON.stringify(signatures));
+    signatures.sha1 = sha1(JSON.stringify(signatures.files));
+    grunt.file.write("src/signatures.json", JSON.stringify(signatures));
   });
 
-  grunt.registerTask('updateFromPOeditor', 'Description of the task', function(target) {
-    grunt.config('clean',{pofiles: ["src/locale/*/**/*.po","src/locale/*/**/*.mo"]});
+  grunt.registerTask('updateFromPOeditor', 'Description of the task', function (target) {
+    grunt.config('clean', {pofiles: ["src/locale/*/**/*.po", "src/locale/*/**/*.mo"]});
     grunt.task.run(['clean:pofiles']);
     grunt.loadNpmTasks('grunt-poeditor-ab');
     grunt.task.run(['poeditor']);
   });
 
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');

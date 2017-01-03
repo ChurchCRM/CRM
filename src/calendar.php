@@ -1,16 +1,14 @@
 <?php
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 use ChurchCRM\Service\CalendarService;
 
 $calenderService = new CalendarService();
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("Church Calendar");
-require "Include/Header.php"; ?>
+$sPageTitle = gettext('Church Calendar');
+require 'Include/Header.php'; ?>
 
-<link rel="stylesheet" href="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.min.css">
-<link rel="stylesheet" href="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.print.css" media="print">
 <style>
   @media print {
     a[href]:after {
@@ -21,11 +19,13 @@ require "Include/Header.php"; ?>
 <div class="col-lg-12">
   <div class="box box-primary">
     <div class="box-body">
-      <?php foreach ($calenderService->getEventTypes() as $type) { ?>
-      <div class="fc-event-container fc-day-grid-event" style="background-color:<?= $type["backgroundColor"]?>;border-color:<?= $type["backgroundColor"]?>;color: white; width: 100px">
-          <div class="fc-title"><?= gettext($type["Name"])?></div>
+      <?php foreach ($calenderService->getEventTypes() as $type) {
+    ?>
+      <div class="fc-event-container fc-day-grid-event" style="background-color:<?= $type['backgroundColor']?>;border-color:<?= $type['backgroundColor']?>;color: white; width: 100px">
+          <div class="fc-title"><?= gettext($type['Name'])?></div>
       </div>
-      <?php }?>
+      <?php 
+}?>
     </div>
   </div>
 </div>
@@ -57,4 +57,4 @@ require "Include/Header.php"; ?>
  });
 </script>
 
-<?php require "Include/Footer.php"; ?>
+<?php require 'Include/Footer.php'; ?>
