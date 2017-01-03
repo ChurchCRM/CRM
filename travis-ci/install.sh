@@ -7,12 +7,15 @@ sudo rm -rf ~/.nvm
 curl -sL "https://deb.nodesource.com/setup_6.x" | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# install global npm dependencies
-sudo npm install
-
 # composer install
 cd src
 composer install
 cd ../
 src/vendor/bin/propel model:build --config-dir=propel
+cd src
 composer dump-autoload
+
+cd ../
+# install global npm dependencies
+sudo npm install -g npm@latest --unsafe-perm --no-bin-links
+sudo npm install --unsafe-perm --no-bin-links
