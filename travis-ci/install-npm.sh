@@ -10,7 +10,7 @@ sudo rm -rf ~/.nvm
 curl -sL "https://deb.nodesource.com/setup_7.x" | sudo -E bash -
 sudo apt-get install -y nodejs
 echo "===============   npm  install -g       ================="
-cd ../
+
 # install global npm dependencies
 sudo npm install -g npm@latest --unsafe-perm
 echo "===============   npm  install          ================="
