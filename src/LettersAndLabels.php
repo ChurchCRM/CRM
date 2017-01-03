@@ -30,25 +30,19 @@ $sPageTitle = gettext("Letters and Mailing Labels");
 require "Include/Header.php";
 
 // Is this the second pass?
-if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) || isset($_POST["SubmitConfirmLabels"]) || isset($_POST["SubmitConfirmReportEmail"]))
-{
-  $sLabelFormat = FilterInput($_POST['labeltype']);
-  $sFontInfo = $_POST["labelfont"];
-  $sFontSize = $_POST["labelfontsize"];
-  $sLabelInfo = "&labelfont=" . urlencode($sFontInfo) . "&labelfontsize=" . $sFontSize;
+if (isset($_POST["SubmitNewsLetter"]) || isset($_POST["SubmitConfirmReport"]) || isset($_POST["SubmitConfirmLabels"]) || isset($_POST["SubmitConfirmReportEmail"])) {
+    $sLabelFormat = FilterInput($_POST['labeltype']);
+    $sFontInfo = $_POST["labelfont"];
+    $sFontSize = $_POST["labelfontsize"];
+    $sLabelInfo = "&labelfont=" . urlencode($sFontInfo) . "&labelfontsize=" . $sFontSize;
 
-  if (isset($_POST["SubmitNewsLetter"]))
-  {
-    Redirect("Reports/NewsLetterLabels.php?labeltype=" . $sLabelFormat . $sLabelInfo);
-  }
-  else if (isset($_POST["SubmitConfirmLabels"]))
-  {
-    Redirect("Reports/ConfirmLabels.php?labeltype=" . $sLabelFormat . $sLabelInfo);
-  }
-}
-else
-{
-  $sLabelFormat = 'Tractor';
+    if (isset($_POST["SubmitNewsLetter"])) {
+        Redirect("Reports/NewsLetterLabels.php?labeltype=" . $sLabelFormat . $sLabelInfo);
+    } elseif (isset($_POST["SubmitConfirmLabels"])) {
+        Redirect("Reports/ConfirmLabels.php?labeltype=" . $sLabelFormat . $sLabelInfo);
+    }
+} else {
+    $sLabelFormat = 'Tractor';
 }
 ?>
 <div class="row">
