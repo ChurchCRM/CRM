@@ -8,9 +8,6 @@ sudo: required
 dist: trusty
 group: edge
 
-env:
-  - NODE_VERSION=5.x
-
 notifications:
   webhooks:
     urls:
