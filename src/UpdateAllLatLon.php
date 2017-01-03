@@ -63,28 +63,27 @@ $myAddressLatLon = new AddressLatLon;
 // This results in an ungraceful ending when $sLimit is large.
 // At least the unknown coordinates are first in the queue.
 while ($aFam = mysqli_fetch_array($rsFamilies)) {
-    extract ($aFam);
+    extract($aFam);
 
-    $myAddressLatLon->SetAddress ($fam_Address1, $fam_City, $fam_State, $fam_Zip);
-    $ret = $myAddressLatLon->Lookup ();
-        
+    $myAddressLatLon->SetAddress($fam_Address1, $fam_City, $fam_State, $fam_Zip);
+    $ret = $myAddressLatLon->Lookup();
+
     if ($ret == 0) {
-
-            $sNewLatitude = $myAddressLatLon->GetLat ();
-            $sNewLongitude = $myAddressLatLon->GetLon ();
-            if ($sNewLatitude === NULL) {
-                $sNewLatitude = 0;
-            }
+        $sNewLatitude = $myAddressLatLon->GetLat();
+        $sNewLongitude = $myAddressLatLon->GetLon();
+        if ($sNewLatitude === null) {
+            $sNewLatitude = 0;
+        }
             // if a lookup returned zero skip this.  Don't overwrite with 0,0
             if ($sNewLatitude != 0) {
-        echo "<li>" . $fam_Name, " Latitude " .  $sNewLatitude . " Longitude " . $sNewLongitude . "</li>";
-        $sSQL = "UPDATE family_fam SET fam_Latitude='" . $sNewLatitude . "',fam_Longitude='" . $sNewLongitude . "' WHERE fam_ID=" . $fam_ID;
-        RunQuery ($sSQL);
+                echo "<li>" . $fam_Name, " Latitude " .  $sNewLatitude . " Longitude " . $sNewLongitude . "</li>";
+                $sSQL = "UPDATE family_fam SET fam_Latitude='" . $sNewLatitude . "',fam_Longitude='" . $sNewLongitude . "' WHERE fam_ID=" . $fam_ID;
+                RunQuery($sSQL);
             }
     } else {
-        echo "<p>" . $fam_Name . ": " . $myAddressLatLon->GetError () . "</p>";
+        echo "<p>" . $fam_Name . ": " . $myAddressLatLon->GetError() . "</p>";
     }
-    flush ();
+    flush();
 }
 echo '<br/><p>' . gettext('Update Finished') . '</p>';
 ?>
@@ -97,13 +96,13 @@ echo '<br/><p>' . gettext('Update Finished') . '</p>';
 <?php
 $sSQL =  "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude ";
 $sSQL .= "FROM family_fam WHERE fam_Latitude = 0";
-$rsFamilies = RunQuery ($sSQL);
+$rsFamilies = RunQuery($sSQL);
 while ($aFam = mysqli_fetch_array($rsFamilies)) {
-    extract ($aFam);
+    extract($aFam);
     echo "<li>". $fam_Name . " " . $fam_Address1 .
     "," . $fam_City . "," . $fam_State . "," . $fam_Zip . "</li>";
 }
-ob_flush ();
+ob_flush();
 
 echo '</div></div>';
 

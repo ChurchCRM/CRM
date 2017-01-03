@@ -1,56 +1,60 @@
 <?php
-// vancoWebServices.php   
-//                                                           
-// Original Author: Vanco Services, LLC                               
-// Original Date: 2014-07-14                                                                   
-//                                                           
-// Copyright   Vanco Services, LLC                           
-//             12600 Whitewater Drive,                       
-//             Suite 200,                                    
-//             Minnetonka, MN 55343                          
-//             800-774-9355 (Phone)                          
-//             952-983-8665 (Fax)                            
-//                                                           
-// 
+// vancoWebServices.php
+//
+// Original Author: Vanco Services, LLC
+// Original Date: 2014-07-14
+//
+// Copyright   Vanco Services, LLC
+//             12600 Whitewater Drive,
+//             Suite 200,
+//             Minnetonka, MN 55343
+//             800-774-9355 (Phone)
+//             952-983-8665 (Fax)
+//
+//
 
 class VancoTools
 {
-  private $userid, $password, $clientid, $enc_key, $test;
+    private $userid;
+    private $password;
+    private $clientid;
+    private $enc_key;
+    private $test;
 
-  function __construct($setUserid, $setPassword, $setClientid, $setEnckey, $setTest)
-  {
-    $this->userid = $setUserid;
-    $this->password = $setPassword;
-    $this->clientid = $setClientid;
-    $this->enc_key = $setEnckey;
-    $this->test = $setTest;
-  }
+    public function __construct($setUserid, $setPassword, $setClientid, $setEnckey, $setTest)
+    {
+        $this->userid = $setUserid;
+        $this->password = $setPassword;
+        $this->clientid = $setClientid;
+        $this->enc_key = $setEnckey;
+        $this->test = $setTest;
+    }
 
-  function vancoLoginRequest()
-  {
-    /*
+    public function vancoLoginRequest()
+    {
+        /*
         Function:    vancoLoginRequest()
         Description: Post a login request to obtain a session ID
         Parameters:  None
         Returns:     SessionID to be used in consecutive posts, or errors if login fails
         */
     $requestid = $this->generateRequestID();
-    $postdata = "nvpvar=requesttype=login&requestid=$requestid&userid=" . $this->userid . "&password=" . $this->password;
-    $response = $this->post($postdata);
-    $data = explode("&", $response);
-    $sessionid = "";
-    foreach ($data as $item) {
-      if (substr($item, 0, 9) === "sessionid") {
-        $sessionid = substr("$item", 10);
-      }
+        $postdata = "nvpvar=requesttype=login&requestid=$requestid&userid=" . $this->userid . "&password=" . $this->password;
+        $response = $this->post($postdata);
+        $data = explode("&", $response);
+        $sessionid = "";
+        foreach ($data as $item) {
+            if (substr($item, 0, 9) === "sessionid") {
+                $sessionid = substr("$item", 10);
+            }
+        }
+        return $sessionid;
     }
-    return $sessionid;
-  }
 
 
-  function vancoEFTTransparentRedirectNVPGenerator($urltoredirect, $customerid, $customerref, $isdebitcardonly)
-  {
-    /*
+    public function vancoEFTTransparentRedirectNVPGenerator($urltoredirect, $customerid, $customerref, $isdebitcardonly)
+    {
+        /*
         Function:    vancoEFTTransparentRedirectNVPGenerator($urltoredirect,$customerid,$customerref,$isdebitcardonly)
         Description: Create an encrypted string for nvpvar used in transparent redirect requests
         Parameters:  $urltoredirect: String to be used as the redirect URL for transparent redirect
@@ -60,22 +64,22 @@ class VancoTools
         Returns:     Encrypted string to be used as nvpvar variable in a transparent redirect request
         */
     $requestid = $this->generateRequestID();
-    $nvpstring = "requesttype=efttransparentredirect&requestid=$requestid&clientid=" . $this->clientid . "&urltoredirect=$urltoredirect&isdebitcardonly=$isdebitcardonly";
-    if ($customerid != "") {
-      $nvpstring .= '&customerid=' . $customerid;
+        $nvpstring = "requesttype=efttransparentredirect&requestid=$requestid&clientid=" . $this->clientid . "&urltoredirect=$urltoredirect&isdebitcardonly=$isdebitcardonly";
+        if ($customerid != "") {
+            $nvpstring .= '&customerid=' . $customerid;
+        }
+        if ($customerref != "") {
+            $nvpstring .= '&customerref=' . $customerref;
+        }
+        $encryptednvp = $this->encryptNVPString($nvpstring);
+        return $encryptednvp;
     }
-    if ($customerref != "") {
-      $nvpstring .= '&customerref=' . $customerref;
-    }
-    $encryptednvp = $this->encryptNVPString($nvpstring);
-    return $encryptednvp;
-  }
 
 
-  function vancoEFTAddCompleteTransactionRequest($sessionid, $paymentmethodref, $startdate, $frequencycode, $customerid = "", $customerref = "", $name = "", $address1 = "", $address2 = "", $city = "",
+    public function vancoEFTAddCompleteTransactionRequest($sessionid, $paymentmethodref, $startdate, $frequencycode, $customerid = "", $customerref = "", $name = "", $address1 = "", $address2 = "", $city = "",
                                                  $state = "", $czip = "", $phone = "", $isdebitcardonly = "", $enddate = "", $transactiontypecode = "", $funddict = "", $amount = "")
-  {
-    /*
+    {
+        /*
         Function:    vancoEFTAddCompleteTransactionRequest($sessionid,$paymentmethodref,$startdate,$frequencycode,$customerid,$customerref,$name,$address1,$address2,$city,$state,\
                  $czip,$phone,$isdebitcardonly,$enddate,$transactiontypecode,$funddict,$amount)
         Description: Post a eftaddcompletetransaction request to add a transaction
@@ -101,162 +105,162 @@ class VancoTools
         */
     $requestid = $this->generateRequestID();
 
-    $nvpstring = "requesttype=eftaddcompletetransaction&requestid=$requestid&clientid=" . $this->clientid;
+        $nvpstring = "requesttype=eftaddcompletetransaction&requestid=$requestid&clientid=" . $this->clientid;
     // Adding any inputed values to the nvpvar
     if ($paymentmethodref != "") {
-      $nvpstring .= '&paymentmethodref=' . $paymentmethodref;
+        $nvpstring .= '&paymentmethodref=' . $paymentmethodref;
     }
-    if ($startdate != "") {
-      $nvpstring .= '&startdate=' . $startdate;
-    }
-    if ($frequencycode != "") {
-      $nvpstring .= '&frequencycode=' . $frequencycode;
-    }
-    if ($customerid != "") {
-      $nvpstring .= '&customerid=' . $customerid;
-    }
-    if ($customerref != "") {
-      $nvpstring .= '&customerref=' . $customerref;
-    }
-    if ($name != "") {
-      $nvpstring .= '&customername=' . $name;
-    }
-    if ($address1 != "") {
-      $nvpstring .= '&customeraddress1=' . $address1;
-    }
-    if ($address2 != "") {
-      $nvpstring .= '&customeraddress2=' . $address2;
-    }
-    if ($city != "") {
-      $nvpstring .= '&customercity=' . $city;
-    }
-    if ($state != "") {
-      $nvpstring .= '&customerstate=' . $state;
-    }
-    if ($czip != "") {
-      $nvpstring .= '&customerzip=' . $czip;
-    }
-    if ($phone != "") {
-      $nvpstring .= '&customerphone=' . $phone;
-    }
-    if ($isdebitcardonly != "") {
-      $nvpstring .= '&isdebitcardonly=' . $isdebitcardonly;
-    }
-    if ($enddate != "") {
-      $nvpstring .= '&enddate=' . $enddate;
-    }
-    if ($transactiontypecode != "") {
-      $nvpstring .= '&transactiontypecode=' . $transactiontypecode;
-    }
+        if ($startdate != "") {
+            $nvpstring .= '&startdate=' . $startdate;
+        }
+        if ($frequencycode != "") {
+            $nvpstring .= '&frequencycode=' . $frequencycode;
+        }
+        if ($customerid != "") {
+            $nvpstring .= '&customerid=' . $customerid;
+        }
+        if ($customerref != "") {
+            $nvpstring .= '&customerref=' . $customerref;
+        }
+        if ($name != "") {
+            $nvpstring .= '&customername=' . $name;
+        }
+        if ($address1 != "") {
+            $nvpstring .= '&customeraddress1=' . $address1;
+        }
+        if ($address2 != "") {
+            $nvpstring .= '&customeraddress2=' . $address2;
+        }
+        if ($city != "") {
+            $nvpstring .= '&customercity=' . $city;
+        }
+        if ($state != "") {
+            $nvpstring .= '&customerstate=' . $state;
+        }
+        if ($czip != "") {
+            $nvpstring .= '&customerzip=' . $czip;
+        }
+        if ($phone != "") {
+            $nvpstring .= '&customerphone=' . $phone;
+        }
+        if ($isdebitcardonly != "") {
+            $nvpstring .= '&isdebitcardonly=' . $isdebitcardonly;
+        }
+        if ($enddate != "") {
+            $nvpstring .= '&enddate=' . $enddate;
+        }
+        if ($transactiontypecode != "") {
+            $nvpstring .= '&transactiontypecode=' . $transactiontypecode;
+        }
     //define amount fields
     if ($funddict != "") {
-      foreach ($funddict as $key => $value) {
-        $nvpstring .= '&' . $key . '=' . $value;
-      }
+        foreach ($funddict as $key => $value) {
+            $nvpstring .= '&' . $key . '=' . $value;
+        }
     } else {
-      $nvpstring .= '&amount=' . $amount;
+        $nvpstring .= '&amount=' . $amount;
     }
-    $responsedata = $this->encryptNVPString($nvpstring);
-    $postdata = "sessionid=$sessionid&nvpvar=$responsedata";
-    return $this->post($postdata);
-  }
+        $responsedata = $this->encryptNVPString($nvpstring);
+        $postdata = "sessionid=$sessionid&nvpvar=$responsedata";
+        return $this->post($postdata);
+    }
 
 
-  function post($postdata)
-  {
-    /*
+    public function post($postdata)
+    {
+        /*
         Function:    post($postdata)
         Description: Post a Web Services request to vancoservices or vancodev
         Parameters:  $postdata: String to use in CGI variables in HTTPS post
         Returns:     Response to Web Services post
         */
-    if ($this->test == True) {
-      $ip = "https://www.vancodev.com";
-      $filepath = "/cgi-bin/wsnvptest.vps";
+    if ($this->test == true) {
+        $ip = "https://www.vancodev.com";
+        $filepath = "/cgi-bin/wsnvptest.vps";
     } else {
-      $ip = "https://www.vancoservices.com";
-      $filepath = "/cgi-bin/wsnvp.vps";
+        $ip = "https://www.vancoservices.com";
+        $filepath = "/cgi-bin/wsnvp.vps";
     }
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "$ip$filepath");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    $res = curl_exec($ch);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "$ip$filepath");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $res = curl_exec($ch);
 
-    $results = explode('nvpvar=', $res);
+        $results = explode('nvpvar=', $res);
 
-    foreach ($results as $item) {
-      $result = $item;
+        foreach ($results as $item) {
+            $result = $item;
+        }
+        $result = str_replace('"></html>', "", $result);
+
+        return $this->decryptResponseString($result);
     }
-    $result = str_replace('"></html>', "", $result);
-
-    return $this->decryptResponseString($result);
-  }
 
 
-  function encryptNVPString($nvpstring)
-  {
-    /*
+    public function encryptNVPString($nvpstring)
+    {
+        /*
         Function:    encryptNVPString($nvpstring)
         Description: Encrypt a string to be used in the nvpvar variable
         Parameters:  $nvpstring: Unencrypted string that needs to be encrypted
         Returns:     Encrypted string to use in nvpvar variable
         */
     $deflated = gzdeflate($nvpstring);
-    $padded = $this->pad_msg($deflated);
-    $encrypted = $this->encrypt($padded, $this->enc_key);
-    $encoded = $this->urlsafe_b64encode($encrypted);
-    return $encoded;
-  }
+        $padded = $this->pad_msg($deflated);
+        $encrypted = $this->encrypt($padded, $this->enc_key);
+        $encoded = $this->urlsafe_b64encode($encrypted);
+        return $encoded;
+    }
 
-  function urlsafe_b64encode($string)
-  {
-    return rtrim(strtr(base64_encode($string), '+/', '-_'));
-  }
+    public function urlsafe_b64encode($string)
+    {
+        return rtrim(strtr(base64_encode($string), '+/', '-_'));
+    }
 
-  function encrypt($data, $key)
-  {
-    return mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB);
-  }
+    public function encrypt($data, $key)
+    {
+        return mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB);
+    }
 
-  function pad_msg($data)
-  {
-    return $data . str_repeat(' ', strlen($data) % 16);
-  }
+    public function pad_msg($data)
+    {
+        return $data . str_repeat(' ', strlen($data) % 16);
+    }
 
 
-  function decryptResponseString($response)
-  {
-    /*
+    public function decryptResponseString($response)
+    {
+        /*
         Function:    decryptResponseString($response)
         Description: Decrypt an encrypted string from a Web Services response
         Parameters:  $response: String returned from the Web Services response
         Returns:     Decrypted string of the response variables
         */
     $encrypted = $this->urlsafe_b64decode($response);
-    $decrypted = $this->decrypt($encrypted, $this->enc_key);
-    $inflated = gzinflate($decrypted);
-    return $inflated;
-  }
+        $decrypted = $this->decrypt($encrypted, $this->enc_key);
+        $inflated = gzinflate($decrypted);
+        return $inflated;
+    }
 
-  function urlsafe_b64decode($data)
-  {
-    return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));
-  }
+    public function urlsafe_b64decode($data)
+    {
+        return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));
+    }
 
-  function decrypt($data, $key)
-  {
-    return mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB);
-  }
+    public function decrypt($data, $key)
+    {
+        return mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB);
+    }
 
 
   //Function to generate a unique requestid for the request.
-  function generateRequestID()
+  public function generateRequestID()
   {
-    /*
+      /*
         Function:    generateRequestID()
         Description: Used to generate a unique request ID to be used in a Web Services request
         Parameters:  None
@@ -264,13 +268,13 @@ class VancoTools
         */
 //		date_default_timezone_set('America/Chicago');
     $currenttime = date("YmdHis");
-    $randomnumber = rand(0, 9999);
-    return $currenttime . $randomnumber;
+      $randomnumber = rand(0, 9999);
+      return $currenttime . $randomnumber;
   }
 
-  function errorString($errNo)
-  {
-    switch ($errNo) {
+    public function errorString($errNo)
+    {
+        switch ($errNo) {
       case 10:
         return "Invalid UserID/password combination";
       case 11:
@@ -682,7 +686,5 @@ class VancoTools
       case 1128:
         return "Unable To Process, Please Try Again";
     }
-  }
+    }
 }
-
-?>

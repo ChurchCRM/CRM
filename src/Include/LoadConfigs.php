@@ -47,8 +47,7 @@ use ChurchCRM\SQLUtils;
 
 function system_failure($message, $header = 'Setup failure')
 {
-    require("Include/HeaderNotLoggedIn.php");
-    ?>
+    require("Include/HeaderNotLoggedIn.php"); ?>
     <div class='container'>
         <h3>ChurchCRM – <?= _($header) ?></h3>
         <div class='alert alert-danger text-center' style='margin-top: 20px;'>
@@ -125,8 +124,8 @@ if (count($results) == 0) {
     $version = new Version();
     $version->setVersion($systemService->getInstalledVersion());
     $version->setUpdateStart(new DateTime());
-    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/install/Install.sql",$connection);
-    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/update_config.sql",$connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/install/Install.sql", $connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/update_config.sql", $connection);
     $version->setUpdateEnd(new DateTime());
     $version->save();
 }

@@ -17,10 +17,9 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (!$_SESSION['bMenuOptions'])
-{
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bMenuOptions']) {
+    Redirect("Menu.php");
+    exit;
 }
 
 //Set the page title
@@ -28,18 +27,17 @@ $sPageTitle = gettext("Property Delete Confirmation");
 
 // Get the Type and Property
 $sType = $_GET["Type"];
-$iPropertyID = FilterInput($_GET["PropertyID"],'int');
+$iPropertyID = FilterInput($_GET["PropertyID"], 'int');
 
 //Do we have deletion confirmation?
-if (isset($_GET["Confirmed"]))
-{
-	$sSQL = "DELETE FROM property_pro WHERE pro_ID = " . $iPropertyID;
-	RunQuery($sSQL);
+if (isset($_GET["Confirmed"])) {
+    $sSQL = "DELETE FROM property_pro WHERE pro_ID = " . $iPropertyID;
+    RunQuery($sSQL);
 
-	$sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $iPropertyID;
-	RunQuery($sSQL);
+    $sSQL = "DELETE FROM record2property_r2p WHERE r2p_pro_ID = " . $iPropertyID;
+    RunQuery($sSQL);
 
-	Redirect("PropertyList.php?Type=" . $sType);
+    Redirect("PropertyList.php?Type=" . $sType);
 }
 
 //Get the family record in question

@@ -49,12 +49,11 @@ $personCount = $dashboardService->getPersonCount();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $depositData = false;  //Determine whether or not we should display the deposit line graph
-if ($_SESSION['bFinance']) {  
-  $deposits = DepositQuery::create()->filterByDate(array('min' =>date('Y-m-d', strtotime('-90 days'))))->find();
-  if ( count($deposits) > 0 )
-  {
-    $depositData =  $deposits->toJSON();
-  }
+if ($_SESSION['bFinance']) {
+    $deposits = DepositQuery::create()->filterByDate(array('min' =>date('Y-m-d', strtotime('-90 days'))))->find();
+    if (count($deposits) > 0) {
+        $depositData =  $deposits->toJSON();
+    }
 }
 
 // Set the page title
@@ -143,8 +142,7 @@ require 'Include/Header.php';
 </div><!-- /.row -->
 
 <?php
-if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
-{
+if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
 ?>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -163,6 +161,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
     </div>
 </div>
 <?php
+
 }  //END IF block for Finance permissions to include HTML for Deposit Chart
  ?>
 
@@ -184,13 +183,18 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                         </tr>
                         </thead>
                         <tbody>
-                        <?php while ($row = mysqli_fetch_array($rsNewFamilies)) { ?>
+                        <?php while ($row = mysqli_fetch_array($rsNewFamilies)) {
+     ?>
                         <tr>
                             <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
-                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; } ?></td>
+                            <td><?php if ($row['fam_Address1'] != "") {
+         echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'];
+     } ?></td>
                             <td><?= FormatDate($row['fam_DateEntered'], false) ?></td>
                         </tr>
-                        <?php } ?>
+                        <?php
+
+ } ?>
                         </tbody>
                     </table>
                 </div>
@@ -214,13 +218,16 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                         </tr>
                         </thead>
                         <tbody>
-                        <?php while ($row = mysqli_fetch_array($rsLastFamilies)) { ?>
+                        <?php while ($row = mysqli_fetch_array($rsLastFamilies)) {
+     ?>
                             <tr>
                                 <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
                                 <td><?= $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'] ?></td>
                                 <td><?= FormatDate($row['fam_DateLastEdited'], false) ?></td>
                             </tr>
-                        <?php } ?>
+                        <?php
+
+ } ?>
                         </tbody>
                     </table>
                 </div>
@@ -244,14 +251,17 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
-                        <?php while ($row = mysqli_fetch_array($rsNewPeople)) { ?>
+                        <?php while ($row = mysqli_fetch_array($rsNewPeople)) {
+     ?>
                         <li>
                             <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
                             <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                            <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
+                            <?= $row['per_FirstName']." ".substr($row['per_LastName'], 0, 1) ?></a>
                             <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false) ?></span>
                         </li>
-                        <?php } ?>
+                        <?php
+
+ } ?>
                     </ul>
                     <!-- /.users-list -->
                 </div>
@@ -273,14 +283,17 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
-                        <?php while ($row = mysqli_fetch_array($rsLastPeople)) { ?>
+                        <?php while ($row = mysqli_fetch_array($rsLastPeople)) {
+     ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
                                 <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                                <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
+                                <?= $row['per_FirstName']." ".substr($row['per_LastName'], 0, 1) ?></a>
                                 <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
                             </li>
-                        <?php } ?>
+                        <?php
+
+ } ?>
                     </ul>
                     <!-- /.users-list -->
                 </div>
@@ -292,8 +305,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
 <!-- this page specific inline scripts -->
 <script>
 <?php
-if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
-{
+if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
 ?>
     //---------------
     //- LINE CHART  -
@@ -321,10 +333,11 @@ if ($depositData) // If the user has Finance permissions, then let's display the
     };
     var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
     var lineChart = new Chart(lineChartCanvas).Line(lineData,options);
-    
+
   });
 <?php
-}  //END IF block for Finance permissions to include JS for Deposit Chart
+
+ }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>
 </script>
 

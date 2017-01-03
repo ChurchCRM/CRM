@@ -1,57 +1,55 @@
 <?php
 
-if (file_exists ( 'Include/Config.php')) {
- header("Location: index.php" );
+if (file_exists('Include/Config.php')) {
+    header("Location: index.php");
 }
 
 function hasApacheModule($module)
 {
-  if (function_exists('apache_get_modules')) {
-    return in_array($module, apache_get_modules());
-  }
+    if (function_exists('apache_get_modules')) {
+        return in_array($module, apache_get_modules());
+    }
 
-  return false;
+    return false;
 }
 
 function hasModRewrite()
 {
-  $check = hasApacheModule('mod_rewrite');
+    $check = hasApacheModule('mod_rewrite');
 
-  if (!$check && function_exists('shell_exec')) {
-    $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== FALSE;
-  }
+    if (!$check && function_exists('shell_exec')) {
+        $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
+    }
 
-  return $check;
+    return $check;
 }
 
 if (isset($_POST["Setup"])) {
-  $template = file_get_contents("Include/Config.php.example");
-  $template = str_replace("||DB_SERVER_NAME||", $_POST["DB_SERVER_NAME"], $template);
-  $template = str_replace("||DB_NAME||", $_POST["DB_NAME"], $template);
-  $template = str_replace("||DB_USER||", $_POST["DB_USER"], $template);
-  $template = str_replace("||DB_PASSWORD||", $_POST["DB_PASSWORD"], $template);
-  $template = str_replace("||ROOT_PATH||", $_POST["ROOT_PATH"], $template);
-  $template = str_replace("||URL||", $_POST["URL"], $template);
-  file_put_contents("Include/Config.php", $template);
-  header("Location: index.php" );
-  exit();
+    $template = file_get_contents("Include/Config.php.example");
+    $template = str_replace("||DB_SERVER_NAME||", $_POST["DB_SERVER_NAME"], $template);
+    $template = str_replace("||DB_NAME||", $_POST["DB_NAME"], $template);
+    $template = str_replace("||DB_USER||", $_POST["DB_USER"], $template);
+    $template = str_replace("||DB_PASSWORD||", $_POST["DB_PASSWORD"], $template);
+    $template = str_replace("||ROOT_PATH||", $_POST["ROOT_PATH"], $template);
+    $template = str_replace("||URL||", $_POST["URL"], $template);
+    file_put_contents("Include/Config.php", $template);
+    header("Location: index.php");
+    exit();
 }
 
-if (isset($_GET['SystemIntegrityCheck']))
-{
-  require_once 'ChurchCRM/dto/SystemURLs.php'; 
-  ChurchCRM\dto\SystemURLs::init("", "", dirname(__FILE__));
-  require_once 'ChurchCRM/Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
+if (isset($_GET['SystemIntegrityCheck'])) {
+    require_once 'ChurchCRM/dto/SystemURLs.php';
+    ChurchCRM\dto\SystemURLs::init("", "", dirname(__FILE__));
+    require_once 'ChurchCRM/Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
   $systemService = new \ChurchCRM\Service\SystemService();
-  $AppIntegrity = $systemService->verifyApplicationIntegrity();
-  echo $AppIntegrity['status'];
-  exit();
+    $AppIntegrity = $systemService->verifyApplicationIntegrity();
+    echo $AppIntegrity['status'];
+    exit();
 }
 
 
-if ( isset($_GET['SystemPrerequisiteCheck']))
-{
-  $required = array(
+if (isset($_GET['SystemPrerequisiteCheck'])) {
+    $required = array(
   'PHP 5.6+' => version_compare(PHP_VERSION, '5.6.0', '>='),
   'PCRE and UTF-8 Support' => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'),
   'Multibyte Encoding' => extension_loaded('mbstring'),
@@ -59,7 +57,7 @@ if ( isset($_GET['SystemPrerequisiteCheck']))
   'PHP Session' => extension_loaded('session'),
   'PHP XML' => extension_loaded('xml'),
   'PHP EXIF' => extension_loaded('exif'),
-  'PHP iconv' => extension_loaded('iconv'),   
+  'PHP iconv' => extension_loaded('iconv'),
   'Mcrypt' => extension_loaded('mcrypt'),
   'Mod Rewrite' => hasModRewrite('mod_rewrite'),
   'GD Library for image manipulation' => (extension_loaded('gd') && function_exists('gd_info')),
@@ -68,16 +66,15 @@ if ( isset($_GET['SystemPrerequisiteCheck']))
   'locale gettext' => function_exists('bindtextdomain'),
   'Include file is writeable' => is_writable("Include/Config.php.example")
   );
-  header("Content-Type: application/json");
-  echo json_encode($required);
-  exit;
-  
+    header("Content-Type: application/json");
+    echo json_encode($required);
+    exit;
 }
 
 $temp = $_SERVER['REQUEST_URI'];
 $sRootPath = str_replace("/Setup.php", "", $temp);
 if ($sRootPath == "/") {
-  $sRootPath = "";
+    $sRootPath = "";
 }
 
 $URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . "/";
@@ -87,9 +84,10 @@ ini_set('display_errors', '1');
 
 
 if (!function_exists('bindtextdomain')) {
-  function gettext($string){
-     return $string+4;
-  }
+    function gettext($string)
+    {
+        return $string+4;
+    }
 }
 
 
@@ -106,7 +104,7 @@ window.CRM.checkIntegrity = function () {
     url: "<?= $sRootPath ?>/Setup.php?SystemIntegrityCheck=1",
     method: "GET"
   }).done(function(data){
-    if (data == "success" ) 
+    if (data == "success" )
     {
         window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","pass");
     }
@@ -174,14 +172,14 @@ window.CRM.renderPrerequisite = function (name, status) {
   {
     $("#prerequisites").append(prerequisite);
   }
-  
-  
+
+
 };
 window.CRM.evaluateReadyness = function () {
   window.CRM.setupCheckStatus = "pass";
-  
+
   for (key in window.CRM.prerequisites) {
-   
+
     if (window.CRM.prerequisites[key] == "pending")
     {
       window.CRM.setupCheckStatus = "pending";
@@ -193,20 +191,20 @@ window.CRM.evaluateReadyness = function () {
       break;
     }
   };
-  
-  if (window.CRM.setupCheckStatus == "pass") 
+
+  if (window.CRM.setupCheckStatus == "pass")
   {
     $(".box-header h3").text("<?= gettext("This server is ChurchCRM ready!") ?>");
     $("#setupPage").css("display","");
     $("#dangerContinue").css("display","none");
   }
-  else if (window.CRM.setupCheckStatus == "pending") 
+  else if (window.CRM.setupCheckStatus == "pending")
   {
     $(".box-header h3").text("<?= gettext("We're still determining if this server is ready for ChurchCRM.") ?>");
     $("#setupPage").css("display","none");
     $("#dangerContinue").css("display","");
   }
-  else 
+  else
   {
     $(".box-header h3").text("<?= gettext("This server isn't quite ready for ChurchCRM.") ?>");
     $("#setupPage").css("display","none");
@@ -221,7 +219,7 @@ $("document").ready(function(){
   window.CRM.checkIntegrity();
   window.CRM.checkPrerequisites();
   window.CRM.evaluateReadyness();
-  
+
 });
 </script>
 <div class='container' style="padding-bottom:40px;">
@@ -238,11 +236,11 @@ $("document").ready(function(){
             <button class="btn btn-warning" syle="margin-top:-10px, margin-bottom: 15px" id="dangerContinue"><?= gettext("I know what I'm doing.  Install ChurchCRM Anyway") ?></button>
           </div>
           <p><?= gettext("In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical.") ?></p>
-          
+
           <h3>Requirements</h3>
 
           <table class="table" id="prerequisites">
-           
+
           </table>
 
           <h3>Useful Server Info</h3>
@@ -263,7 +261,7 @@ $("document").ready(function(){
           </table>
         </div>
       </div>
-     
+
     </div>
       <div id="setupPage" class="col-lg-6" >
         <div class="box">

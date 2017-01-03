@@ -22,23 +22,21 @@ require "Include/Functions.php";
 use ChurchCRM\dto\SystemConfig;
 
 // Get the PersonID out of the querystring
-$iPersonID = FilterInput($_GET["PersonID"],'int');
+$iPersonID = FilterInput($_GET["PersonID"], 'int');
 
 // Security: User must be an Admin to access this page.
 // Admins may not reset their own passwords either. (should use 'change' instead)
-if (!$_SESSION['bAdmin'] || $iPersonID == $_SESSION['iUserID'])
-{
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bAdmin'] || $iPersonID == $_SESSION['iUserID']) {
+    Redirect("Menu.php");
+    exit;
 }
 
 // Do we have confirmation?
-if (isset($_GET["Confirmed"]))
-{
-	$sSQL = "UPDATE user_usr SET usr_Password = '" . md5(strtolower(SystemConfig::getValue("sDefault_Pass"))) . "', usr_NeedPasswordChange = 1 WHERE usr_per_ID = " . $iPersonID;
-	RunQuery($sSQL);
+if (isset($_GET["Confirmed"])) {
+    $sSQL = "UPDATE user_usr SET usr_Password = '" . md5(strtolower(SystemConfig::getValue("sDefault_Pass"))) . "', usr_NeedPasswordChange = 1 WHERE usr_per_ID = " . $iPersonID;
+    RunQuery($sSQL);
 
-	Redirect("UserList.php");
+    Redirect("UserList.php");
 }
 
 // Get the data on this user

@@ -36,8 +36,8 @@ require 'Include/Header.php'; ?>
 <table class="table" id="groupsTable">
 </table>
 <?php
-if ($_SESSION['bManageGroups'])
-{ ?>
+if ($_SESSION['bManageGroups']) {
+    ?>
 
 
 <br>
@@ -48,6 +48,7 @@ if ($_SESSION['bManageGroups'])
     <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext("Add New Group") ?></button>
 </form>
 <?php
+
 }
 ?>
 

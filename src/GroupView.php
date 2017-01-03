@@ -32,13 +32,13 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
 
 //Do they want to add this group to their cart?
 if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'AddGroupToCart') {
-  //Get all the members of this group
+    //Get all the members of this group
   $sSQL = 'SELECT per_ID FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = ' . $iGroupID;
-  $rsGroupMembers = RunQuery($sSQL);
+    $rsGroupMembers = RunQuery($sSQL);
 
   //Loop through the recordset
   while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
-    extract($aRow);
+      extract($aRow);
 
     //Add each person to the cart
     AddToPeopleCart($per_ID);
@@ -54,10 +54,10 @@ $defaultRole = ListOptionQuery::create()->filterById($thisGroup->getRoleListId()
 
 //Get the group's type name
 if ($thisGroup->getType() > 0) {
-  $sGroupType = ListOptionQuery::create()->filterById(3)->filterByOptionId($thisGroup->getType())->findOne()->getOptionName();
+    $sGroupType = ListOptionQuery::create()->filterById(3)->filterByOptionId($thisGroup->getType())->findOne()->getOptionName();
+} else {
+    $sGroupType = gettext('Undefined');
 }
-else
-  $sGroupType = gettext('Undefined');
 
 //Get the Properties assigned to this Group
 $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
@@ -92,9 +92,8 @@ require 'Include/Header.php';
 
     <?php
     if ($_SESSION['bManageGroups']) {
-      echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
-      echo '<a class="btn btn-app" data-toggle="modal" data-target="#deleteGroup"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</a>';
-      ?>
+        echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
+        echo '<a class="btn btn-app" data-toggle="modal" data-target="#deleteGroup"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</a>'; ?>
       <!-- GROUP DELETE MODAL-->
       <div class="modal fade" id="deleteGroup" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
         <div class="modal-dialog">
@@ -177,7 +176,7 @@ require 'Include/Header.php';
 
       <?php
       if ($thisGroup->getHasSpecialProps()) {
-        echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-list-alt"></i>' . gettext("Edit Group-Specific Properties Form") . '</a>';
+          echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-list-alt"></i>' . gettext("Edit Group-Specific Properties Form") . '</a>';
       }
     }
     echo '<a class="btn btn-app" href="GroupView.php?Action=AddGroupToCart&amp;GroupID=' . $thisGroup->getId() . '"><i class="fa fa-users"></i>' . gettext("Add Group Members to Cart") . '</a>';
@@ -200,23 +199,24 @@ require 'Include/Header.php';
             AND p2g2r_grp_ID = " . $iGroupID;
     $rsEmailList = RunQuery($sSQL);
     $sEmailLink = '';
-    while (list ($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
-      $sEmail = SelectWhichInfo($per_Email, $fam_Email, False);
-      if ($sEmail) {
-        /* if ($sEmailLink) // Don't put delimiter before first email
+    while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
+        $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+        if ($sEmail) {
+            /* if ($sEmailLink) // Don't put delimiter before first email
           $sEmailLink .= $sMailtoDelimiter; */
         // Add email only if email address is not already in string
         if (!stristr($sEmailLink, $sEmail)) {
-          $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-          $roleEmails->$virt_RoleName .= $sEmail.= $sMailtoDelimiter;
+            $sEmailLink .= $sEmail .= $sMailtoDelimiter;
+            $roleEmails->$virt_RoleName .= $sEmail.= $sMailtoDelimiter;
         }
-      }
+        }
     }
     if ($sEmailLink) {
-      // Add default email if default email has been set and is not already in string
-      if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($sEmailLink, SystemConfig::getValue("sToEmailAddress")))
-        $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
-      $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
+        // Add default email if default email has been set and is not already in string
+      if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($sEmailLink, SystemConfig::getValue("sToEmailAddress"))) {
+          $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
+      }
+        $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
       if ($bEmailMailto) { // Does user have permission to email groups
         // Display link
@@ -244,6 +244,7 @@ require 'Include/Header.php';
         </div>
 
         <?php
+
       }
     }
 // Group Text Message Comma Delimited - added by RSBC
@@ -262,22 +263,23 @@ require 'Include/Header.php';
     $rsPhoneList = RunQuery($sSQL);
     $sPhoneLink = '';
     $sCommaDelimiter = ', ';
-    while (list ($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
-      $sPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, False);
-      if ($sPhone) {
-        /* if ($sPhoneLink) // Don't put delimiter before first phone
+    while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
+        $sPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, false);
+        if ($sPhone) {
+            /* if ($sPhoneLink) // Don't put delimiter before first phone
           $sPhoneLink .= $sCommaDelimiter; */
         // Add phone only if phone is not already in string
-        if (!stristr($sPhoneLink, $sPhone))
-          $sPhoneLink .= $sPhone .= $sCommaDelimiter;
-      }
+        if (!stristr($sPhoneLink, $sPhone)) {
+            $sPhoneLink .= $sPhone .= $sCommaDelimiter;
+        }
+        }
     }
     if ($sPhoneLink) {
-      if ($bEmailMailto) { // Does user have permission to email groups
+        if ($bEmailMailto) { // Does user have permission to email groups
         // Display link
         echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>' . gettext("Text Group") . '</a>';
-        echo '<script>function allPhonesCommaD() {prompt("' . gettext("Press CTRL + C to copy all group members\' phone numbers") . '", "' . mb_substr($sPhoneLink, 0, -2) . '")};</script>';
-      }
+            echo '<script>function allPhonesCommaD() {prompt("' . gettext("Press CTRL + C to copy all group members\' phone numbers") . '", "' . mb_substr($sPhoneLink, 0, -2) . '")};</script>';
+        }
     }
     ?>
   </div>
@@ -307,9 +309,12 @@ require 'Include/Header.php';
                     <br>
                     <?= gettext('Type of Group:') ?> <?= $sGroupType ?>
                     <br>
-                    <?php if (!is_null($defaultRole)) { ?>
+                    <?php if (!is_null($defaultRole)) {
+        ?>
                     <?= gettext('Default Role:') ?> <?= $defaultRole->getOptionName() ?>
-                    <?php } ?>
+                    <?php
+
+    } ?>
                     </font></div></td>
               </tr>
             </table>
@@ -321,25 +326,23 @@ require 'Include/Header.php';
 
           <?php
           if ($thisGroup->getHasSpecialProps()) {
-            // Create arrays of the properties.
-            for ($row = 1; $row <= $numRows; $row++)
-            {
-              $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
-              extract($aRow);
+              // Create arrays of the properties.
+            for ($row = 1; $row <= $numRows; $row++) {
+                $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
+                extract($aRow);
 
-              $aNameFields[$row] = $prop_Name;
-              $aDescFields[$row] = $prop_Description;
-              $aFieldFields[$row] = $prop_Field;
-              $aTypeFields[$row] = $type_ID;
+                $aNameFields[$row] = $prop_Name;
+                $aDescFields[$row] = $prop_Description;
+                $aFieldFields[$row] = $prop_Field;
+                $aTypeFields[$row] = $type_ID;
             }
 
             // Construct the table
 
             if (!$numRows) {
-              echo '<p><?= gettext("No member properties have been created")?></p>';
-            }
-            else {
-              ?>
+                echo '<p><?= gettext("No member properties have been created")?></p>';
+            } else {
+                ?>
               <table width="100%" cellpadding="2" cellspacing="0">
                 <tr class="TableHeader">
                   <td><?= gettext('Type') ?></td>
@@ -348,20 +351,19 @@ require 'Include/Header.php';
                 </tr>
                 <?php
                 $sRowClass = 'RowColorA';
-                for ($row = 1; $row <= $numRows; $row++)
-                {
-                  $sRowClass = AlternateRowStyle($sRowClass);
-                  echo '<tr class="' . $sRowClass . '">';
-                  echo '<td>' . $aPropTypes[$aTypeFields[$row]] . '</td>';
-                  echo '<td>' . $aNameFields[$row] . '</td>';
-                  echo '<td>' . $aDescFields[$row] . '&nbsp;</td>';
-                  echo '</tr>';
+                for ($row = 1; $row <= $numRows; $row++) {
+                    $sRowClass = AlternateRowStyle($sRowClass);
+                    echo '<tr class="' . $sRowClass . '">';
+                    echo '<td>' . $aPropTypes[$aTypeFields[$row]] . '</td>';
+                    echo '<td>' . $aNameFields[$row] . '</td>';
+                    echo '<td>' . $aDescFields[$row] . '&nbsp;</td>';
+                    echo '</tr>';
                 }
                 echo '</table>';
-              }
             }
-            else
+          } else {
               echo '<p>' . gettext('Disabled for this group.') . '</p>';
+          }
 
             //Print Assigned Properties
             echo '<br>';
@@ -370,11 +372,10 @@ require 'Include/Header.php';
 
             //Was anything returned?
             if (mysqli_num_rows($rsAssignedProperties) == 0) {
-              // No, indicate nothing returned
+                // No, indicate nothing returned
               echo '<p align="center">' . gettext('No property assignments.') . '</p>';
-            }
-            else {
-              // Display table of properties
+            } else {
+                // Display table of properties
               ?>
               <table width="100%" cellpadding="2" cellspacing="0">
                 <tr class="TableHeader">
@@ -383,87 +384,84 @@ require 'Include/Header.php';
                   <td valign="top"><b><?= gettext('Value') ?></td>
                   <?php
                   if ($_SESSION['bManageGroups']) {
-                    echo '<td valign="top"><b>' . gettext('Edit Value') . '</td>';
-                    echo '<td valign="top"><b>' . gettext('Remove') . '</td>';
+                      echo '<td valign="top"><b>' . gettext('Edit Value') . '</td>';
+                      echo '<td valign="top"><b>' . gettext('Remove') . '</td>';
                   }
-                  echo '</tr>';
+                echo '</tr>';
 
-                  $last_pro_prt_ID = '';
-                  $bIsFirst = true;
+                $last_pro_prt_ID = '';
+                $bIsFirst = true;
 
                   //Loop through the rows
                   while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                    $pro_Prompt = '';
-                    $r2p_Value = '';
+                      $pro_Prompt = '';
+                      $r2p_Value = '';
 
-                    extract($aRow);
+                      extract($aRow);
 
-                    if ($pro_prt_ID != $last_pro_prt_ID) {
-                      echo '<tr class="';
-                      if ($bIsFirst)
-                        echo 'RowColorB';
-                      else
-                        echo 'RowColorC';
-                      echo '"><td><b>' . $prt_Name . '</b></td>';
+                      if ($pro_prt_ID != $last_pro_prt_ID) {
+                          echo '<tr class="';
+                          if ($bIsFirst) {
+                              echo 'RowColorB';
+                          } else {
+                              echo 'RowColorC';
+                          }
+                          echo '"><td><b>' . $prt_Name . '</b></td>';
 
-                      $bIsFirst = false;
-                      $last_pro_prt_ID = $pro_prt_ID;
-                      $sRowClass = 'RowColorB';
-                    }
-                    else {
-                      echo '<tr class="' . $sRowClass . '">';
-                      echo '<td valign="top">&nbsp;</td>';
-                    }
+                          $bIsFirst = false;
+                          $last_pro_prt_ID = $pro_prt_ID;
+                          $sRowClass = 'RowColorB';
+                      } else {
+                          echo '<tr class="' . $sRowClass . '">';
+                          echo '<td valign="top">&nbsp;</td>';
+                      }
 
-                    echo '<td valign="top">' . $pro_Name . '&nbsp;</td>';
-                    echo '<td valign="top">' . $r2p_Value . '&nbsp;</td>';
+                      echo '<td valign="top">' . $pro_Name . '&nbsp;</td>';
+                      echo '<td valign="top">' . $r2p_Value . '&nbsp;</td>';
 
-                    if (strlen($pro_Prompt) > 0 && $_SESSION['bManageGroups']) {
-                      echo '<td valign="top"><a href="PropertyAssign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Edit Value') . '</a></td>';
-                    }
-                    else {
-                      echo '<td>&nbsp;</td>';
-                    }
+                      if (strlen($pro_Prompt) > 0 && $_SESSION['bManageGroups']) {
+                          echo '<td valign="top"><a href="PropertyAssign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Edit Value') . '</a></td>';
+                      } else {
+                          echo '<td>&nbsp;</td>';
+                      }
 
-                    if ($_SESSION['bManageGroups']) {
-                      echo '<td valign="top"><a href="PropertyUnassign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Remove') . '</a>';
-                    }
-                    else {
-                      echo '<td>&nbsp;</td>';
-                    }
+                      if ($_SESSION['bManageGroups']) {
+                          echo '<td valign="top"><a href="PropertyUnassign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Remove') . '</a>';
+                      } else {
+                          echo '<td>&nbsp;</td>';
+                      }
 
-                    echo '</tr>';
+                      echo '</tr>';
 
                     //Alternate the row style
                     $sRowClass = AlternateRowStyle($sRowClass);
 
-                    $sAssignedProperties .= $pro_ID . ",";
+                      $sAssignedProperties .= $pro_ID . ",";
                   }
 
-                  echo '</table>';
-                }
+                echo '</table>';
+            }
 
                 if ($_SESSION['bManageGroups']) {
-                  echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
-                  echo '<p align="center">';
-                  echo '<span>' . gettext('Assign a New Property:') . '</span>';
-                  echo '<select name="PropertyID">';
+                    echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
+                    echo '<p align="center">';
+                    echo '<span>' . gettext('Assign a New Property:') . '</span>';
+                    echo '<select name="PropertyID">';
 
-                  while ($aRow = mysqli_fetch_array($rsProperties)) {
-                    extract($aRow);
+                    while ($aRow = mysqli_fetch_array($rsProperties)) {
+                        extract($aRow);
 
                     //If the property doesn't already exist for this Person, write the <OPTION> tag
                     if (strlen(strstr($sAssignedProperties, ',' . $pro_ID . ',')) == 0) {
-                      echo '<option value="' . $pro_ID . '">' . $pro_Name . '</option>';
+                        echo '<option value="' . $pro_ID . '">' . $pro_Name . '</option>';
                     }
-                  }
+                    }
 
-                  echo '</select>';
-                  echo '<input type="submit" class="btn" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
-                  echo '</p></form>';
-                }
-                else {
-                  echo '<br><br><br>';
+                    echo '</select>';
+                    echo '<input type="submit" class="btn" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
+                    echo '</p></form>';
+                } else {
+                    echo '<br><br><br>';
                 }
                 ?>
 

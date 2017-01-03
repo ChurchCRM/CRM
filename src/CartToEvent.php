@@ -22,8 +22,7 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 // Security: User must have Manage Groups & Roles permission
-if (!$_SESSION['bManageGroups'])
-{
+if (!$_SESSION['bManageGroups']) {
     Redirect("Menu.php");
     exit;
 }
@@ -32,22 +31,21 @@ if (!$_SESSION['bManageGroups'])
 if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0 && isset($_POST['EventID'])) {
 
         // Get the PersonID
-        $iEventID = FilterInput($_POST["EventID"],'int');
+        $iEventID = FilterInput($_POST["EventID"], 'int');
 
         // Loop through the session array
         $iCount = 0;
-        while ($element = each($_SESSION['aPeopleCart'])) {
-            // Enter ID into event
+    while ($element = each($_SESSION['aPeopleCart'])) {
+        // Enter ID into event
             $sSQL = "INSERT IGNORE INTO event_attend (event_id, person_id)";
-            $sSQL .= " VALUES ('".$iEventID."','".$_SESSION['aPeopleCart'][$element['key']]."')";
-            RunQuery($sSQL);
-            $iCount++;
-        }
+        $sSQL .= " VALUES ('".$iEventID."','".$_SESSION['aPeopleCart'][$element['key']]."')";
+        RunQuery($sSQL);
+        $iCount++;
+    }
 
-        $sGlobalMessage = $iCount . " records(s) successfully added to selected Event.";
+    $sGlobalMessage = $iCount . " records(s) successfully added to selected Event.";
 
-        Redirect("CartView.php?Action=EmptyCart&Message=aMessage&iCount=".$iCount.'&iEID='.$iEventID);
-
+    Redirect("CartView.php?Action=EmptyCart&Message=aMessage&iCount=".$iCount.'&iEID='.$iEventID);
 }
 
 
@@ -56,34 +54,32 @@ if (isset($_POST["Submit"]) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
 $sPageTitle = gettext("Add Cart to Event");
 require "Include/Header.php";
 
-if (count($_SESSION['aPeopleCart']) > 0)
-{
-
-$sSQL = "SELECT * FROM events_event";
-$rsEvents = RunQuery($sSQL);
-
-?>
+if (count($_SESSION['aPeopleCart']) > 0) {
+    $sSQL = "SELECT * FROM events_event";
+    $rsEvents = RunQuery($sSQL); ?>
 <div class="box">
 <p align="center"><?= gettext("Select the event to which you would like to add your cart") ?>:</p>
 <form name="CartToEvent" action="CartToEvent.php" method="POST">
 <table align="center">
-        <?php if ($sGlobalMessage) { ?>
+        <?php if ($sGlobalMessage) {
+        ?>
         <tr>
           <td colspan="2"><?= $sGlobalMessage ?></td>
         </tr>
-        <?php } ?>
+        <?php
+
+    } ?>
         <tr>
                 <td class="LabelColumn"><?= gettext("Select Event") ?>:</td>
                 <td class="TextColumn">
                         <?php
                         // Create the group select drop-down
                         echo "<select name=\"EventID\">";
-                        while ($aRow = mysqli_fetch_array($rsEvents)) {
-                                extract($aRow);
-                                echo "<option value=\"".$event_id."\">".$event_title."</option>";
-                        }
-                        echo "</select>";
-                        ?>
+    while ($aRow = mysqli_fetch_array($rsEvents)) {
+        extract($aRow);
+        echo "<option value=\"".$event_id."\">".$event_title."</option>";
+    }
+    echo "</select>"; ?>
                 </td>
         </tr>
 </table>
@@ -97,9 +93,10 @@ $rsEvents = RunQuery($sSQL);
 </form>
 </div>
 <?php
-}
-else
+
+} else {
     echo "<p align=\"center\" class=\"callout callout-warning\">" . gettext("Your cart is empty!") . "</p>";
+}
 
 require "Include/Footer.php";
 ?>

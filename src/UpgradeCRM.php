@@ -2,20 +2,19 @@
 
 // Include the function library
 require 'Include/Config.php';
-$bSuppressSessionTests = TRUE;
+$bSuppressSessionTests = true;
 require 'Include/Functions.php';
 require_once('Include/Header-function.php');
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Upgrade ChurchCRM");
 
-if (!$_SESSION['bAdmin'])
-{
-  Redirect("index.php");
-  exit;
+if (!$_SESSION['bAdmin']) {
+    Redirect("index.php");
+    exit;
 }
 
-require ("Include/HeaderNotLoggedIn.php");
+require("Include/HeaderNotLoggedIn.php");
 Header_modals();
 Header_body_scripts();
 
@@ -154,7 +153,7 @@ function downloadbutton(filename) {
 
 <?php
 // Add the page footer
-require ("Include/FooterNotLoggedIn.php");
+require("Include/FooterNotLoggedIn.php");
 
 // Turn OFF output buffering
 ob_end_flush();
