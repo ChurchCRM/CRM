@@ -17,8 +17,8 @@ require "Include/Functions.php";
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bAdmin']) {
-  Redirect("Menu.php");
-  exit;
+    Redirect("Menu.php");
+    exit;
 }
 
 //Set the page title

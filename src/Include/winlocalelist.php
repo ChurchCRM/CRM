@@ -1,6 +1,5 @@
 <?php
-$lang_map_windows = array
-(
+$lang_map_windows = array(
   'cs' => 'csy',
   'cs_cs' => 'csy',
   'cs_cz' => 'csy',
@@ -66,4 +65,3 @@ $lang_map_windows = array
   'zh_sg' => 'cht',
   'zh_zh' => 'chinese',
 );
-?>

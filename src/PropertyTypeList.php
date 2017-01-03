@@ -28,9 +28,8 @@ require "Include/Header.php";
 ?>
 <div class="box box-body">
 <?php //Display the new property link
-if ($_SESSION['bMenuOptions'])
-{
-	echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">" . gettext("Add a New Property Type") . "</a></p>";
+if ($_SESSION['bMenuOptions']) {
+    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">" . gettext("Add a New Property Type") . "</a></p>";
 }
 
 //Start the table
@@ -39,10 +38,9 @@ echo "<tr>";
 echo "<th>" . gettext("Name") . "</th>";
 echo "<th>" . gettext("Class") . "</th>";
 echo "<th align=\"center\">" . gettext("Properties") . "</th>";
-if ($_SESSION['bMenuOptions'])
-{
-	echo "<th>" . gettext("Edit") . "</th>";
-	echo "<th>" . gettext("Delete") . "</th>";
+if ($_SESSION['bMenuOptions']) {
+    echo "<th>" . gettext("Edit") . "</th>";
+    echo "<th>" . gettext("Delete") . "</th>";
 }
 echo "</tr>";
 
@@ -50,26 +48,25 @@ echo "</tr>";
 $sRowClass = "RowColorA";
 
 //Loop through the records
-while ($aRow = mysqli_fetch_array($rsPropertyTypes))
-{
-	extract($aRow);
+while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
+    extract($aRow);
 
-	$sRowClass = AlternateRowStyle($sRowClass);
+    $sRowClass = AlternateRowStyle($sRowClass);
 
-	echo "<tr class=\"" . $sRowClass . "\">";
-	echo "<td>" . $prt_Name . "</td>";
-	echo "<td>";
-	switch($prt_Class) { case "p": echo gettext("Person"); break; case "f": echo gettext("Family"); break; case "g": echo gettext("Group"); break;}
-	echo "<td align=\"center\">" . $Properties . "</td>";
-	if ($_SESSION['bMenuOptions'])
-	{
-		echo "<td><a class='btn btn-info' href=\"PropertyTypeEditor.php?PropertyTypeID=" . $prt_ID . "\">" . gettext("Edit") . "</a></td>";
-		if ($Properties == 0)
-			echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . "\">" . gettext("Delete") . "</a></td>";
-		else
-			echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . "&Warn\">" . gettext("Delete") . "</a></td>";
-	}
-	echo "</tr>";
+    echo "<tr class=\"" . $sRowClass . "\">";
+    echo "<td>" . $prt_Name . "</td>";
+    echo "<td>";
+    switch ($prt_Class) { case "p": echo gettext("Person"); break; case "f": echo gettext("Family"); break; case "g": echo gettext("Group"); break;}
+    echo "<td align=\"center\">" . $Properties . "</td>";
+    if ($_SESSION['bMenuOptions']) {
+        echo "<td><a class='btn btn-info' href=\"PropertyTypeEditor.php?PropertyTypeID=" . $prt_ID . "\">" . gettext("Edit") . "</a></td>";
+        if ($Properties == 0) {
+            echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . "\">" . gettext("Delete") . "</a></td>";
+        } else {
+            echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . "&Warn\">" . gettext("Delete") . "</a></td>";
+        }
+    }
+    echo "</tr>";
 }
 
 //End the table

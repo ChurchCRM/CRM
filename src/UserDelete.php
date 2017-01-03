@@ -21,28 +21,26 @@ require "Include/Functions.php";
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bAdmin'])
-{
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bAdmin']) {
+    Redirect("Menu.php");
+    exit;
 }
 
 // Get the PersonID from the querystring
-$iPersonID = FilterInput($_GET["PersonID"],'int');
+$iPersonID = FilterInput($_GET["PersonID"], 'int');
 
 // Do we have confirmation?
 if (isset($_GET["Confirmed"])) {
 
-	// Delete the specified User record
-	$sSQL = "DELETE FROM user_usr WHERE usr_per_ID = " . $iPersonID;
-	RunQuery($sSQL);
+    // Delete the specified User record
+    $sSQL = "DELETE FROM user_usr WHERE usr_per_ID = " . $iPersonID;
+    RunQuery($sSQL);
 
-	$sSQL = "DELETE FROM userconfig_ucfg WHERE ucfg_per_ID = " . $iPersonID;
-	RunQuery($sSQL);
+    $sSQL = "DELETE FROM userconfig_ucfg WHERE ucfg_per_ID = " . $iPersonID;
+    RunQuery($sSQL);
 
-	// Redirect back to the list
-	Redirect("UserList.php");
-
+    // Redirect back to the list
+    Redirect("UserList.php");
 }
 
 // Get the data on this user

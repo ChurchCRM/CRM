@@ -21,4 +21,3 @@ require __DIR__ . '/routes/verify.php';
 
 // Run app
 $app->run();
-
