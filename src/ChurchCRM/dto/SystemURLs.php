@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: dawoudio
  * Date: 11/27/2016
- * Time: 9:33 AM
+ * Time: 9:33 AM.
  */
 
 namespace ChurchCRM\dto;
-
 
 class SystemURLs
 {
@@ -18,8 +17,8 @@ class SystemURLs
     public static function init($rootPath, $urls, $documentRoot)
     {
         // Avoid consecutive slashes when $sRootPath = '/'
-        if ($rootPath == "/") {
-            $rootPath = "";
+        if ($rootPath == '/') {
+            $rootPath = '';
         }
         self::$rootPath = $rootPath;
         self::$urls = $urls;
@@ -31,7 +30,7 @@ class SystemURLs
         if (self::isValidRootPath()) {
             return self::$rootPath;
         }
-        throw new \Exception("Please check the value for '\$sRootPath' in <b>`Include\\Config.php`</b>, the following is not valid [". self::$rootPath . "]");
+        throw new \Exception("Please check the value for '\$sRootPath' in <b>`Include\\Config.php`</b>, the following is not valid [".self::$rootPath.']');
     }
 
     public static function getDocumentRoot()
@@ -55,6 +54,5 @@ class SystemURLs
         //    return false;
         //}
         return true;
-
     }
 }

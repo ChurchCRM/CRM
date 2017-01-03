@@ -34,13 +34,14 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 // Security
-if (!$_SESSION['bAdmin'])
-{
+if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
     exit;
 }
 
-if ($_GET['all'] == 'true') $bDoAll = TRUE;
+if ($_GET['all'] == 'true') {
+    $bDoAll = true;
+}
 
 //Set the page title
 $sPageTitle = gettext('Convert Individuals to Families');
@@ -53,7 +54,6 @@ $iUserID = $_SESSION['iUserID'];
 $sSQL = 'SELECT MAX(fam_ID) AS iFamilyID FROM family_fam';
 $rsLastEntry = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsLastEntry));
-
 
 // Get list of people that are not assigned to a family
 $sSQL = "SELECT * FROM person_per WHERE per_fam_ID='0' ORDER BY per_LastName, per_FirstName";
@@ -73,7 +73,6 @@ while ($aRow = mysqli_fetch_array($rsList)) {
     $per_Country = mysqli_real_escape_string($cnInfoCentral, $per_Country);
     $per_HomePhone = mysqli_real_escape_string($cnInfoCentral, $per_HomePhone);
 
-
     $sSQL = "INSERT INTO family_fam (
                 fam_Name,
                 fam_Address1,
@@ -85,19 +84,19 @@ while ($aRow = mysqli_fetch_array($rsList)) {
                 fam_HomePhone,
                 fam_DateEntered,
                 fam_EnteredBy)
-            VALUES ('"                  .
-                $per_LastName           . "','" .
-                $per_Address1           . "','" .
-                $per_Address2           . "','" .
-                $per_City               . "','" .
-                $per_State              . "','" .
-                $per_Zip                . "','" .
-                $per_Country            . "','" .
-                $per_HomePhone          . "'," .
-                "NOW()"                 . ",'" .
-                $iUserID                . "')";
+            VALUES ('".
+                $per_LastName."','".
+                $per_Address1."','".
+                $per_Address2."','".
+                $per_City."','".
+                $per_State."','".
+                $per_Zip."','".
+                $per_Country."','".
+                $per_HomePhone."',".
+                'NOW()'.",'".
+                $iUserID."')";
 
-    echo '<br>' . $sSQL;
+    echo '<br>'.$sSQL;
     // RunQuery to add family record
     RunQuery($sSQL);
     $iFamilyID++; // increment family ID
@@ -113,25 +112,23 @@ while ($aRow = mysqli_fetch_array($rsList)) {
         break;
     }
 
-
     echo '<br><br>';
 
-
     // Now update person record
-    $sSQL = "UPDATE person_per ".
+    $sSQL = 'UPDATE person_per '.
             "SET per_fam_ID='$iFamilyID',".
-            "    per_Address1=NULL,".
-            "    per_Address2=NULL,".
-            "    per_City=NULL,".
-            "    per_State=NULL,".
-            "    per_Zip=NULL,".
-            "    per_Country=NULL,".
-            "    per_HomePhone=NULL,".
-            "    per_DateLastEdited=NOW(),".
+            '    per_Address1=NULL,'.
+            '    per_Address2=NULL,'.
+            '    per_City=NULL,'.
+            '    per_State=NULL,'.
+            '    per_Zip=NULL,'.
+            '    per_Country=NULL,'.
+            '    per_HomePhone=NULL,'.
+            '    per_DateLastEdited=NOW(),'.
             "    per_EditedBy='$iUserID' ".
             "WHERE per_ID='$per_ID'";
 
-    echo '<br>' . $sSQL;
+    echo '<br>'.$sSQL;
     RunQuery($sSQL);
 
     echo '<br><br><br>';
@@ -139,14 +136,13 @@ while ($aRow = mysqli_fetch_array($rsList)) {
     echo "$per_LastName Family (fam_ID = $iFamilyID)<br>";
     echo '*****************************************';
 
-
-    if (!$bDoAll)
+    if (!$bDoAll) {
         break;
+    }
 }
 echo '<br><br>';
 
-echo '<a href="ConvertIndividualToFamily.php">' . gettext('Convert Next') . '</a><br><br>';
-echo '<a href="ConvertIndividualToFamily.php?all=true">' . gettext('Convert All') . '</a><br>';
+echo '<a href="ConvertIndividualToFamily.php">'.gettext('Convert Next').'</a><br><br>';
+echo '<a href="ConvertIndividualToFamily.php?all=true">'.gettext('Convert All').'</a><br>';
 
 require 'Include/Footer.php';
-?>

@@ -15,35 +15,33 @@
  ******************************************************************************/
 
 //Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
-use ChurchCRM\Service\GroupService;
-
+require 'Include/Config.php';
+require 'Include/Functions.php';
 use ChurchCRM\Group;
 use ChurchCRM\GroupQuery;
-use ChurchCRM\ListOption;
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\Service\GroupService;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups']) {
-  Redirect("Menu.php");
-  exit;
+    Redirect('Menu.php');
+    exit;
 }
 
 //Set the page title
-$sPageTitle = gettext("Group Editor");
+$sPageTitle = gettext('Group Editor');
 $groupService = new GroupService();
 //Get the GroupID from the querystring.  Redirect to Menu if no groupID is present, since this is an edit-only form.
-if (array_key_exists("GroupID", $_GET))
-  $iGroupID = FilterInput($_GET["GroupID"], 'int');
-else {
-  Redirect("GroupList.php");
+if (array_key_exists('GroupID', $_GET)) {
+    $iGroupID = FilterInput($_GET['GroupID'], 'int');
+} else {
+    Redirect('GroupList.php');
 }
 
 $thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.
-$rsGroupTypes = ListOptionQuery::create()->filterById("3") ->find();     // Get Group Types for the drop-down
-$rsGroupRoleSeed =  GroupQuery::create()->filterByRoleListId(array("min"=>0), $comparison)->find();     //Group Group Role List
-require "Include/Header.php";
+$rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();     // Get Group Types for the drop-down
+$rsGroupRoleSeed = GroupQuery::create()->filterByRoleListId(['min'=>0], $comparison)->find();     //Group Group Role List
+require 'Include/Header.php';
 ?>
 <!-- GROUP SPECIFIC PROPERTIES MODAL-->
 <div class="modal fade" id="groupSpecificPropertiesModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
@@ -57,7 +55,7 @@ require "Include/Header.php";
         <span style="color: red"></span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close")?></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close')?></button>
         <button name="setgroupSpecificProperties" id="setgroupSpecificProperties" type="button" class="btn btn-danger"></button>
       </div>
     </div>
@@ -67,35 +65,36 @@ require "Include/Header.php";
 
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext("Group Settings")?></h3>
+    <h3 class="box-title"><?= gettext('Group Settings')?></h3>
   </div>
   <div class="box-body">
     <form name="groupEditForm" id="groupEditForm">
       <div class="form-group">
         <div class="row">
           <div class="col-xs-4">
-            <label for="Name"><?= gettext("Name") ?>:</label>
-            <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup->getName()), ENT_NOQUOTES, "UTF-8") ?>">
+            <label for="Name"><?= gettext('Name') ?>:</label>
+            <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup->getName()), ENT_NOQUOTES, 'UTF-8') ?>">
           </div>
         </div>
         <div class="row">
           <div class="col-xs-4">
-            <label for="Description"><?= gettext("Description") ?>:</label>
-            <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup->getDescription()), ENT_NOQUOTES, "UTF-8") ?></textarea></td>
+            <label for="Description"><?= gettext('Description') ?>:</label>
+            <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup->getDescription()), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-3">
-            <label for="GroupType"><?= gettext("Type of Group") ?>:</label>
+            <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
             <select class="form-control input-small" name="GroupType">
-              <option value="0"><?= gettext("Unassigned") ?></option>
+              <option value="0"><?= gettext('Unassigned') ?></option>
               <option value="0">-----------------------</option>
               <?php
               foreach ($rsGroupTypes as $groupType) {
-                echo "<option value=\"" . $groupType->getOptionId() . "\"";
-                if ($thisGroup->getType() == $groupType->getOptionId())
-                  echo " selected";
-                echo ">" . $groupType->getOptionName() . "</option>";
+                  echo '<option value="'.$groupType->getOptionId().'"';
+                  if ($thisGroup->getType() == $groupType->getOptionId()) {
+                      echo ' selected';
+                  }
+                  echo '>'.$groupType->getOptionName().'</option>';
               }
               ?>
             </select>
@@ -106,23 +105,23 @@ require "Include/Header.php";
             <?php
 // Show Role Clone fields only when adding new group
             if (strlen($iGroupID) < 1) {
-              ?>
-              <b><?= gettext("Group Member Roles") ?>:</b>
+                ?>
+              <b><?= gettext('Group Member Roles') ?>:</b>
 
-              <?= gettext("Clone roles") ?>:
+              <?= gettext('Clone roles') ?>:
               <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
             </div>
             <div class="col-xs-3" id="selectGroupIDDiv">
-              <?= gettext("from group") ?>:
+              <?= gettext('from group') ?>:
               <select class="form-control input-small" name="seedGroupID" id="seedGroupID" >
-                <option value="0"><?php gettext("Select a group"); ?></option>
+                <option value="0"><?php gettext('Select a group'); ?></option>
 
                 <?php
                 foreach ($rsGroupRoleSeed as $groupRoleTemplate) {
-                  echo "<option value=\"" . $groupRoleTemplate['grp_ID'] . "\">" . $groupRoleTemplate['grp_Name'] . "</option>";
-                }
-                ?>
+                    echo '<option value="'.$groupRoleTemplate['grp_ID'].'">'.$groupRoleTemplate['grp_Name'].'</option>';
+                } ?>
               </select><?php
+
             }
             ?>
           </div>
@@ -130,17 +129,16 @@ require "Include/Header.php";
         <br>
         <div class="row">
           <div class="col-xs-6">
-            <label for="UseGroupProps"><?= gettext("Group Specific Properties: ") ?></label>
+            <label for="UseGroupProps"><?= gettext('Group Specific Properties: ') ?></label>
 
             <?php
             if ($thisGroup->getHasSpecialProps()) {
-              echo gettext('Enabled'). "<br/>";
-              echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">' . gettext("Disable Group Specific Properties") . '</button><br/>';
-              echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID=' . $iGroupID . '">' . gettext("Edit Group-Specific Properties Form") . ' </a>';
-            }
-            else {
-              echo gettext('Disabled'). "<br/>";
-              echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">'.gettext("Enable Group Specific Properties").'</button>&nbsp;';
+                echo gettext('Enabled').'<br/>';
+                echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">'.gettext('Disable Group Specific Properties').'</button><br/>';
+                echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID='.$iGroupID.'">'.gettext('Edit Group-Specific Properties Form').' </a>';
+            } else {
+                echo gettext('Disabled').'<br/>';
+                echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">'.gettext('Enable Group Specific Properties').'</button>&nbsp;';
             }
             ?>
           </div>
@@ -148,7 +146,7 @@ require "Include/Header.php";
         <br>
         <div class="row">
           <div class="col-xs-3">
-            <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="' . gettext("Save") . '"' ?> Name="GroupSubmit">
+            <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="'.gettext('Save').'"' ?> Name="GroupSubmit">
           </div>
         </div>
       </div>
@@ -157,19 +155,19 @@ require "Include/Header.php";
 </div>
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext("Group Roles") ?>:</h3>
+    <h3 class="box-title"><?= gettext('Group Roles') ?>:</h3>
   </div>
   <div class="box-body">
     <div class="alert alert-info alert-dismissable">
       <i class="fa fa-info"></i>
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-      <strong></strong><?= gettext("Group role name changes are saved as soon as the box loses focus")?>
+      <strong></strong><?= gettext('Group role name changes are saved as soon as the box loses focus')?>
     </div>
     <table class="table" id="groupRoleTable">
     </table>
-    <label for="newRole"><?= gettext("New Role")?>: </label><input type="text" class="form-control" id="newRole" name="newRole">
+    <label for="newRole"><?= gettext('New Role')?>: </label><input type="text" class="form-control" id="newRole" name="newRole">
     <br>
-    <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext("Add New Role")?></button>
+    <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext('Add New Role')?></button>
   </div>
 </div>
 <script>
@@ -182,4 +180,4 @@ require "Include/Header.php";
 </script>
 <script src="<?= $sRootPath ?>/skin/js/GroupEditor.js"></script>
 
-<?php require "Include/Footer.php" ?>
+<?php require 'Include/Footer.php' ?>

@@ -26,25 +26,26 @@
 ******************************************************************************/
 
 // Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
-if (array_key_exists ('emaillist', $_POST))
-	$email_array = $_POST['emaillist'];
-else
-	$email_array = array ();
+if (array_key_exists('emaillist', $_POST)) {
+    $email_array = $_POST['emaillist'];
+} else {
+    $email_array = [];
+}
 
-$bcc_list = implode(", ", $email_array);
+$bcc_list = implode(', ', $email_array);
 
 // If editing, get Title and Message
-$sEmailSubject = "";
-$sEmailMessage = "";
-$sEmailAttachName = "";
+$sEmailSubject = '';
+$sEmailMessage = '';
+$sEmailAttachName = '';
 
-if (array_key_exists ('mysql', $_POST) && $_POST['mysql'] == 'true') {
+if (array_key_exists('mysql', $_POST) && $_POST['mysql'] == 'true') {
 
     // There is a subject and message already stored in mysql
-    $sSQL = "SELECT * FROM email_message_pending_emp ".
+    $sSQL = 'SELECT * FROM email_message_pending_emp '.
             "WHERE emp_usr_id='".$_SESSION['iUserID']."' LIMIT 1";
 
     $aRow = mysqli_fetch_array(RunQuery($sSQL));
@@ -57,23 +58,20 @@ if (array_key_exists ('mysql', $_POST) && $_POST['mysql'] == 'true') {
 
 // Security: Both global and user permissions needed to send email.
 // Otherwise, re-direct them to the main menu.
-if (!(SystemConfig::getValue("bEmailSend") && $bSendPHPMail))
-{
-	Redirect("Menu.php");
-	exit;
+if (!(SystemConfig::getValue('bEmailSend') && $bSendPHPMail)) {
+    Redirect('Menu.php');
+    exit;
 }
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("Compose Email");
-require "Include/Header.php";
-
+$sPageTitle = gettext('Compose Email');
+require 'Include/Header.php';
 
 //Print the From, To, and Email
 echo "<hr>\r\n";
-echo '<p class="MediumText"><b>' . gettext("From:") . '</b> "' . $sFromName . '"'
-. ' &lt;' . $sFromEmailAddress . '&gt;<br>';
-echo '<b>' . gettext("To (blind):") . '</b> '  . $bcc_list . '<br>';
-
+echo '<p class="MediumText"><b>'.gettext('From:').'</b> "'.$sFromName.'"'
+.' &lt;'.$sFromEmailAddress.'&gt;<br>';
+echo '<b>'.gettext('To (blind):').'</b> '.$bcc_list.'<br>';
 
 echo "\n<hr>";
 echo '<div align="left"><table><tr><td align="left">';
@@ -82,18 +80,16 @@ echo '<form action="CartView.php#email" method="post" enctype="multipart/form-da
 
 echo gettext('Subject:');
 echo '<input type="text" name="emailsubject" size="80" value="';
-echo htmlspecialchars($sEmailSubject) . '">'."<br>\n";
+echo htmlspecialchars($sEmailSubject).'">'."<br>\n";
 
 echo gettext('Attach file:');
-echo "<input class=\"icTinyButton\" type=\"file\" name=\"Attach\"".(strlen($sEmailAttachName)>0?" value=\"$sEmailAttachName\"":"").">";
+echo '<input class="icTinyButton" type="file" name="Attach"'.(strlen($sEmailAttachName) > 0 ? " value=\"$sEmailAttachName\"" : '').'>';
 
-echo '<br>' . gettext('Message:');
+echo '<br>'.gettext('Message:');
 echo '<br><textarea name="emailmessage" rows="20" cols="72">';
-echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
+echo htmlspecialchars($sEmailMessage).'</textarea>'."\n";
 
 echo '<br><input class="btn" type="submit" name="submit" value="';
-echo gettext('Save Email') . '"></form></td></tr></table></div>'."\n";
+echo gettext('Save Email').'"></form></td></tr></table></div>'."\n";
 
-require "Include/Footer.php"; 
-
-?>
+require 'Include/Footer.php';

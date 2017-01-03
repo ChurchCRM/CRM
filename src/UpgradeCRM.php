@@ -2,20 +2,19 @@
 
 // Include the function library
 require 'Include/Config.php';
-$bSuppressSessionTests = TRUE;
+$bSuppressSessionTests = true;
 require 'Include/Functions.php';
-require_once('Include/Header-function.php');
+require_once 'Include/Header-function.php';
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("Upgrade ChurchCRM");
+$sPageTitle = gettext('Upgrade ChurchCRM');
 
-if (!$_SESSION['bAdmin'])
-{
-  Redirect("index.php");
-  exit;
+if (!$_SESSION['bAdmin']) {
+    Redirect('index.php');
+    exit;
 }
 
-require ("Include/HeaderNotLoggedIn.php");
+require 'Include/HeaderNotLoggedIn.php';
 Header_modals();
 Header_body_scripts();
 
@@ -24,7 +23,7 @@ Header_body_scripts();
   <ul class="timeline">
     <li class="time-label">
         <span class="bg-red">
-            <?= gettext("Upgrade ChurchCRM") ?>
+            <?= gettext('Upgrade ChurchCRM') ?>
         </span>
     </li>
     <li>
@@ -32,8 +31,8 @@ Header_body_scripts();
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 1: Backup Database') ?> <span id="status1"></span></h3>
         <div class="timeline-body" id="backupPhase">
-          <p><?= gettext("Please create a database backup before beginning the upgrade process.")?></p>
-          <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="' . gettext("Generate Database Backup") . '"' ?>>
+          <p><?= gettext('Please create a database backup before beginning the upgrade process.')?></p>
+          <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate Database Backup').'"' ?>>
           <span id="backupStatus"></span>
           <div id="resultFiles" style="margin-top:10px">
           </div>
@@ -45,8 +44,8 @@ Header_body_scripts();
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 2: Fetch Update Package on Server') ?> <span id="status2"></span></h3>
         <div class="timeline-body" id="fetchPhase" style="display: none">
-          <p><?= gettext("Fetch the latest files from the ChurchCRM GitHub release page")?></p>
-          <input type="button" class="btn btn-primary" id="fetchUpdate" <?= 'value="' . gettext("Fetch Update Files") . '"' ?> >
+          <p><?= gettext('Fetch the latest files from the ChurchCRM GitHub release page')?></p>
+          <input type="button" class="btn btn-primary" id="fetchUpdate" <?= 'value="'.gettext('Fetch Update Files').'"' ?> >
         </div>
       </div>
     </li>
@@ -55,13 +54,13 @@ Header_body_scripts();
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 3: Apply Update Package on Server') ?> <span id="status3"></span></h3>
         <div class="timeline-body" id="updatePhase" style="display: none">
-          <p><?= gettext("Extract the upgrade archive, and apply the new files")?></p>
+          <p><?= gettext('Extract the upgrade archive, and apply the new files')?></p>
           <ul>
-            <li><?= gettext("File Name:")?> <span id="updateFileName"> </span></li>
-            <li><?= gettext("Full Path:")?> <span id="updateFullPath"> </span></li>
-            <li><?= gettext("SHA1:")?> <span id="updateSHA1"> </span></li>
+            <li><?= gettext('File Name:')?> <span id="updateFileName"> </span></li>
+            <li><?= gettext('Full Path:')?> <span id="updateFullPath"> </span></li>
+            <li><?= gettext('SHA1:')?> <span id="updateSHA1"> </span></li>
           </ul>
-          <input type="button" class="btn btn-warning" id="applyUpdate" value="<?= gettext("Upgrade System") ?>">
+          <input type="button" class="btn btn-warning" id="applyUpdate" value="<?= gettext('Upgrade System') ?>">
         </div>
       </div>
     </li>
@@ -70,7 +69,7 @@ Header_body_scripts();
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 4: Login') ?></h3>
         <div class="timeline-body" id="finalPhase" style="display: none">
-          <a href="Login.php?Logoff=True" class="btn btn-primary"><?= gettext("Login to Upgraded System") ?> </a>
+          <a href="Login.php?Logoff=True" class="btn btn-primary"><?= gettext('Login to Upgraded System') ?> </a>
         </div>
       </div>
     </li>
@@ -92,7 +91,7 @@ Header_body_scripts();
     .done(function(data) {
       var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
       $("#backupstatus").css("color","green");
-      $("#backupstatus").html("<?= gettext("Backup Complete, Ready for Download.") ?>");
+      $("#backupstatus").html("<?= gettext('Backup Complete, Ready for Download.') ?>");
       $("#resultFiles").html(downloadButton);
       $("#status1").html('<i class="fa fa-check" style="color:orange"></i>');
       $("#downloadbutton").click(function(){
@@ -102,7 +101,7 @@ Header_body_scripts();
       });
     }).fail(function()  {
       $("#backupstatus").css("color","red");
-      $("#backupstatus").html("<?= gettext("Backup Error.") ?>");
+      $("#backupstatus").html("<?= gettext('Backup Error.') ?>");
     });
    
  });
@@ -147,14 +146,14 @@ Header_body_scripts();
 function downloadbutton(filename) {
     window.location = window.CRM.root +"/api/database/download/"+filename;
     $("#backupstatus").css("color","green");
-    $("#backupstatus").html("<?= gettext("Backup Downloaded, Copy on server removed") ?>");
+    $("#backupstatus").html("<?= gettext('Backup Downloaded, Copy on server removed') ?>");
     $("#downloadbutton").attr("disabled","true");
 }
 </script>
 
 <?php
 // Add the page footer
-require ("Include/FooterNotLoggedIn.php");
+require 'Include/FooterNotLoggedIn.php';
 
 // Turn OFF output buffering
 ob_end_flush();
