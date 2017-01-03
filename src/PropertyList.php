@@ -18,27 +18,26 @@ require "Include/Config.php";
 require "Include/Functions.php";
 
 //Get the type to display
-$sType = FilterInput($_GET["Type"],'char',1);
+$sType = FilterInput($_GET["Type"], 'char', 1);
 
 //Based on the type, set the TypeName
-switch($sType)
-{
-	case "p":
-		$sTypeName = gettext("Person");
-		break;
+switch ($sType) {
+    case "p":
+        $sTypeName = gettext("Person");
+        break;
 
-	case "f":
-		$sTypeName = gettext("Family");
-		break;
+    case "f":
+        $sTypeName = gettext("Family");
+        break;
 
-	case "g":
-		$sTypeName = gettext("Group");
-		break;
+    case "g":
+        $sTypeName = gettext("Group");
+        break;
 
-	default:
-		Redirect("Menu.php");
-		exit;
-		break;
+    default:
+        Redirect("Menu.php");
+        exit;
+        break;
 }
 
 //Set the page title
@@ -52,10 +51,9 @@ require "Include/Header.php"; ?>
 
 <div class="box box-body">
 
-<?php if ($_SESSION['bMenuOptions'])
-{
-	//Display the new property link
-	echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=" . $sType . "\">" . gettext("Add a New") . " " . $sTypeName . " " . gettext("Property") . "</a></p>";
+<?php if ($_SESSION['bMenuOptions']) {
+    //Display the new property link
+    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=" . $sType . "\">" . gettext("Add a New") . " " . $sTypeName . " " . gettext("Property") . "</a></p>";
 }
 
 //Start the table
@@ -64,10 +62,9 @@ echo "<tr>";
 echo "<th valign=\"top\">" . gettext("Name") . "</th>";
 echo "<th valign=\"top\">" . gettext("A") . " " . $sTypeName . " " . gettext("with this Property...") . "</b></th>";
 echo "<th valign=\"top\">" . gettext("Prompt") . "</th>";
-if ($_SESSION['bMenuOptions'])
-{
-	echo "<td valign=\"top\"><b>" . gettext("Edit") . "</b></td>";
-	echo "<td valign=\"top\"><b>" . gettext("Delete") . "</b></td>";
+if ($_SESSION['bMenuOptions']) {
+    echo "<td valign=\"top\"><b>" . gettext("Edit") . "</b></td>";
+    echo "<td valign=\"top\"><b>" . gettext("Delete") . "</b></td>";
 }
 echo "</tr>";
 
@@ -79,43 +76,42 @@ $iPreviousPropertyType = -1;
 $sBlankLine = '';
 
 //Loop through the records
-while ($aRow = mysqli_fetch_array($rsProperties))
-{
-
-	$pro_Prompt = "";
-	$pro_Description = "";
-	extract($aRow);
+while ($aRow = mysqli_fetch_array($rsProperties)) {
+    $pro_Prompt = "";
+    $pro_Description = "";
+    extract($aRow);
 
 
-	//Did the Type change?
-	if ($iPreviousPropertyType != $prt_ID)
-	{
+    //Did the Type change?
+    if ($iPreviousPropertyType != $prt_ID) {
 
-		//Write the header row
-		echo $sBlankLine;
-		echo "<tr class=\"RowColorA\"><td colspan=\"5\"><b>" . $prt_Name . "</b></td></tr>";
-		$sBlankLine = "<tr><td>&nbsp;</td></tr>";
+        //Write the header row
+        echo $sBlankLine;
+        echo "<tr class=\"RowColorA\"><td colspan=\"5\"><b>" . $prt_Name . "</b></td></tr>";
+        $sBlankLine = "<tr><td>&nbsp;</td></tr>";
 
-		//Reset the row color
-		$sRowClass = "RowColorA";
-	}
+        //Reset the row color
+        $sRowClass = "RowColorA";
+    }
 
-	$sRowClass = AlternateRowStyle($sRowClass);
+    $sRowClass = AlternateRowStyle($sRowClass);
 
-	echo "<tr class=\"" . $sRowClass . "\">";
-	echo "<td valign=\"top\">" . $pro_Name . "&nbsp;</td>";
-	echo "<td valign=\"top\">"; if (strlen($pro_Description) > 0) { echo "..." . $pro_Description; }; echo "&nbsp;</td>";
-	echo "<td valign=\"top\">" . $pro_Prompt . "&nbsp;</td>";
-	if ($_SESSION['bMenuOptions'])
-	{
-		echo "<td valign=\"top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Edit") . "</a></td>";
-		echo "<td valign=\"top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Delete") . "</a></td>";
-	}
-	echo "</tr>";
+    echo "<tr class=\"" . $sRowClass . "\">";
+    echo "<td valign=\"top\">" . $pro_Name . "&nbsp;</td>";
+    echo "<td valign=\"top\">";
+    if (strlen($pro_Description) > 0) {
+        echo "..." . $pro_Description;
+    };
+    echo "&nbsp;</td>";
+    echo "<td valign=\"top\">" . $pro_Prompt . "&nbsp;</td>";
+    if ($_SESSION['bMenuOptions']) {
+        echo "<td valign=\"top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Edit") . "</a></td>";
+        echo "<td valign=\"top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Delete") . "</a></td>";
+    }
+    echo "</tr>";
 
-	//Store the PropertyType
-	$iPreviousPropertyType = $prt_ID;
-
+    //Store the PropertyType
+    $iPreviousPropertyType = $prt_ID;
 }
 
 //End the table

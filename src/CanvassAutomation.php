@@ -23,120 +23,93 @@ require "Include/CanvassUtilities.php";
 $sPageTitle = gettext("Canvass Automation");
 
 // Security: User must have canvasser permission to use this form
-if (!$_SESSION['bCanvasser'])
-{
-  Redirect("Menu.php");
-  exit;
+if (!$_SESSION['bCanvasser']) {
+    Redirect("Menu.php");
+    exit;
 }
 
 $iFYID = CurrentFY();
-if (array_key_exists('idefaultFY', $_SESSION))
-  $iFYID = $_SESSION['idefaultFY'];
-if (array_key_exists("FYID", $_POST))
-  $iFYID = FilterInput($_POST["FYID"], 'int'); // Use FY from the form if it was set
+if (array_key_exists('idefaultFY', $_SESSION)) {
+    $iFYID = $_SESSION['idefaultFY'];
+}
+if (array_key_exists("FYID", $_POST)) {
+    $iFYID = FilterInput($_POST["FYID"], 'int');
+} // Use FY from the form if it was set
 
 $_SESSION['idefaultFY'] = $iFYID; // Remember default fiscal year
 
 $processNews = "";
 
 // Service the action buttons
-if (isset($_POST["SetDefaultFY"]))
-{
-  if (isset($_POST["SetDefaultFYConfirm"]))
-  {
-    $processNews = CanvassSetDefaultFY($iFYID);
-  }
-  else
-  {
-    $processNews = gettext("Not confirmed.");
-  }
+if (isset($_POST["SetDefaultFY"])) {
+    if (isset($_POST["SetDefaultFYConfirm"])) {
+        $processNews = CanvassSetDefaultFY($iFYID);
+    } else {
+        $processNews = gettext("Not confirmed.");
+    }
 }
-if (isset($_POST["AssignCanvassers"]))
-{
-  if (isset($_POST["AssignCanvassersConfirm"]))
-  {
-    $processNews = CanvassAssignCanvassers(gettext("Canvassers"));
-  }
-  else
-  {
-    $processNews = gettext("Not confirmed.");
-  }
+if (isset($_POST["AssignCanvassers"])) {
+    if (isset($_POST["AssignCanvassersConfirm"])) {
+        $processNews = CanvassAssignCanvassers(gettext("Canvassers"));
+    } else {
+        $processNews = gettext("Not confirmed.");
+    }
 }
-if (isset($_POST["AssignNonPledging"]))
-{
-  if (isset($_POST["AssignNonPledgingConfirm"]))
-  {
-    $processNews = CanvassAssignNonPledging(gettext("BraveCanvassers"), $iFYID);
-  }
-  else
-  {
-    $processNews = gettext("Not confirmed.");
-  }
+if (isset($_POST["AssignNonPledging"])) {
+    if (isset($_POST["AssignNonPledgingConfirm"])) {
+        $processNews = CanvassAssignNonPledging(gettext("BraveCanvassers"), $iFYID);
+    } else {
+        $processNews = gettext("Not confirmed.");
+    }
 }
-if (isset($_POST["ClearCanvasserAssignments"]))
-{
-  if (isset($_POST["ClearCanvasserAssignmentsConfirm"]))
-  {
-    CanvassClearCanvasserAssignments();
-    $processNews = gettext("Cleared all canvasser assignments.");
-  }
-  else
-  {
-    $processNews = gettext("Not confirmed.");
-  }
+if (isset($_POST["ClearCanvasserAssignments"])) {
+    if (isset($_POST["ClearCanvasserAssignmentsConfirm"])) {
+        CanvassClearCanvasserAssignments();
+        $processNews = gettext("Cleared all canvasser assignments.");
+    } else {
+        $processNews = gettext("Not confirmed.");
+    }
 }
-if (isset($_POST["SetAllOkToCanvass"]))
-{
-  if (isset($_POST["SetAllOkToCanvassConfirm"]))
-  {
-    CanvassSetAllOkToCanvass();
-    $processNews = gettext("Set Ok To Canvass for all families.");
-  }
-  else
-  {
-    $processNews = gettext("Not confirmed.");
-  }
+if (isset($_POST["SetAllOkToCanvass"])) {
+    if (isset($_POST["SetAllOkToCanvassConfirm"])) {
+        CanvassSetAllOkToCanvass();
+        $processNews = gettext("Set Ok To Canvass for all families.");
+    } else {
+        $processNews = gettext("Not confirmed.");
+    }
 }
-if (isset($_POST["ClearAllOkToCanvass"]))
-{
-  if (isset($_POST["ClearAllOkToCanvassConfirm"]))
-  {
-    CanvassClearAllOkToCanvass();
-    $processNews = gettext("Disabled Ok To Canvass for all families.");
-  }
-  else
-  {
-    $processNews = gettext("ClearAllOkToCanvass button not confimed.");
-  }
+if (isset($_POST["ClearAllOkToCanvass"])) {
+    if (isset($_POST["ClearAllOkToCanvassConfirm"])) {
+        CanvassClearAllOkToCanvass();
+        $processNews = gettext("Disabled Ok To Canvass for all families.");
+    } else {
+        $processNews = gettext("ClearAllOkToCanvass button not confimed.");
+    }
 }
-if (isset($_POST["BriefingSheets"]))
-{
-  redirect("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Briefing");
+if (isset($_POST["BriefingSheets"])) {
+    redirect("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Briefing");
 }
-if (isset($_POST["ProgressReport"]))
-{
-  redirect("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Progress");
+if (isset($_POST["ProgressReport"])) {
+    redirect("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Progress");
 }
-if (isset($_POST["SummaryReport"]))
-{
-  redirect("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Summary");
+if (isset($_POST["SummaryReport"])) {
+    redirect("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=Summary");
 }
-if (isset($_POST["NotInterestedReport"]))
-{
-  redirect("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=NotInterested");
+if (isset($_POST["NotInterestedReport"])) {
+    redirect("Reports/CanvassReports.php?FYID=" . $iFYID . "&WhichReport=NotInterested");
 }
 
 require "Include/Header.php";
 
-if ($processNews != "")
-{
-  ?>
+if ($processNews != "") {
+    ?>
   <div class="alert alert-warning alert-dismissable">
     <i class="fa fa-info"></i>
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <strong><span style="color: red;"><?= $processNews ?></span></strong>
   </div>
   <?php
+
 }
 ?>
 

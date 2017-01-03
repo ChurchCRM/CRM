@@ -22,5 +22,3 @@ $familyURI = $familyService->getViewURI($iFamilyID);
 
 Header("Location: " . $familyURI);
 exit;
-
-

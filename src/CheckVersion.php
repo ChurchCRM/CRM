@@ -31,38 +31,31 @@ require 'Include/Functions.php';
 use ChurchCRM\Service\SystemService;
 
 $systemService = new SystemService();
-try
-{
-  $_SESSION['latestVersion'] = $systemService->getLatestRelese();
+try {
+    $_SESSION['latestVersion'] = $systemService->getLatestRelese();
 } catch (Exception $ex) {
-  //there was an error checking for the latest release.  The user probably
+    //there was an error checking for the latest release.  The user probably
   //doesn't need to know, and it should NOT prevent the app from loading.
 }
-if ($systemService->isDBCurrent())  //either the DB is good, or the upgrade was successful.
-{
+if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
   Redirect('Menu.php');
-  exit;
-} else        //the upgrade failed!
-{
+    exit;
+} else {        //the upgrade failed!
  
   $UpgradeException = "null";
-  try 
-  {
-    if ($systemService->upgradeDatabaseVersion() )
-    {
-      $_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
-      Redirect('Menu.php');
-      exit;
+    try {
+        if ($systemService->upgradeDatabaseVersion()) {
+            $_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
+            Redirect('Menu.php');
+            exit;
+        }
+    } catch (Exception $ex) {
+        $UpgradeException  = $ex;
     }
-  } catch (Exception $ex) {
-    $UpgradeException  = $ex;
-  }
-  $dbVersion = $systemService->getDBVersion();
+    $dbVersion = $systemService->getDBVersion();
   //Set the page title
   $sPageTitle = gettext("Software Version Check");
-  require("Include/HeaderNotLoggedIn.php");
-
-  ?>
+    require("Include/HeaderNotLoggedIn.php"); ?>
 
   <!-- Main content -->
   <section class="content">
@@ -84,17 +77,16 @@ if ($systemService->isDBCurrent())  //either the DB is good, or the upgrade was 
         <div class="box box-danger">
           <div class="box-body">
             <?php
-              if ($UpgradeException)
-              {
-                ?>
+              if ($UpgradeException) {
+                  ?>
             <h3>There was an error upgrading your ChurchCRM database:</h3>
             <p><b><?php echo $UpgradeException->getMessage(); ?></b></p>
             <pre style="max-height:200px; overflow:scroll"> <?php print_r($UpgradeException->getTrace()); ?></pre>
                 
             
                 <?php
-              }
-              ?>
+
+              } ?>
             <p>
               <?= gettext("Please check the following resources for assistance") ?>:
             <ul>
@@ -118,6 +110,7 @@ if ($systemService->isDBCurrent())  //either the DB is good, or the upgrade was 
 
 
   <?php
+
 }
 
 require("Include/FooterNotLoggedIn.php");

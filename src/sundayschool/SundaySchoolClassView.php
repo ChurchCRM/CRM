@@ -11,24 +11,24 @@ $sundaySchoolService = new SundaySchoolService();
 $iGroupId = "-1";
 $iGroupName = "Unknown";
 if (isset($_GET['groupId'])) {
-  $iGroupId = FilterInput($_GET["groupId"], "int");
+    $iGroupId = FilterInput($_GET["groupId"], "int");
 }
 
 $sSQL = "select * from group_grp where grp_ID =" . $iGroupId;
 $rsSundaySchoolClass = RunQuery($sSQL);
 while ($aRow = mysqli_fetch_array($rsSundaySchoolClass)) {
-  $iGroupName = $aRow['grp_Name'];
+    $iGroupName = $aRow['grp_Name'];
 }
 
 $birthDayMonthChartArray = array();
 foreach ($sundaySchoolService->getKidsBirthdayMonth($iGroupId) as $birthDayMonth => $kidsCount) {
-  array_push($birthDayMonthChartArray, "['" . gettext($birthDayMonth) . "', " . $kidsCount . " ]");
+    array_push($birthDayMonthChartArray, "['" . gettext($birthDayMonth) . "', " . $kidsCount . " ]");
 }
 $birthDayMonthChartJSON = implode(",", $birthDayMonthChartArray);
 
 $genderChartArray = array();
 foreach ($sundaySchoolService->getKidsGender($iGroupId) as $gender => $kidsCount) {
-  array_push($genderChartArray, "{label: '" . gettext($gender) . "', data: " . $kidsCount . "}");
+    array_push($genderChartArray, "{label: '" . gettext($gender) . "', data: " . $kidsCount . "}");
 }
 $genderChartJSON = implode(",", $genderChartArray);
 
@@ -43,16 +43,19 @@ $ParentsEmails = array();
 $thisClassChildren = $sundaySchoolService->getKidsFullDetails($iGroupId);
 
 foreach ($thisClassChildren as $child) {
-  if ($child['dadEmail'] != "")
-    array_push($ParentsEmails, $child['dadEmail']);
-  if ($child['momEmail'] != "")
-    array_push($ParentsEmails, $child['momEmail']);
-  if ($child['kidEmail'] != "")
-    array_push($KidsEmails, $child['kidEmail']);
+    if ($child['dadEmail'] != "") {
+        array_push($ParentsEmails, $child['dadEmail']);
+    }
+    if ($child['momEmail'] != "") {
+        array_push($ParentsEmails, $child['momEmail']);
+    }
+    if ($child['kidEmail'] != "") {
+        array_push($KidsEmails, $child['kidEmail']);
+    }
 }
 
 foreach ($rsTeachers as $teacher) {
-  array_push($TeachersEmails, $teacher['per_Email']);
+    array_push($TeachersEmails, $teacher['per_Email']);
 }
 
 require "../Include/Header.php";
@@ -71,8 +74,9 @@ require "../Include/Header.php";
     $roleEmails->Kids = join($sMailtoDelimiter, $KidsEmails) . ",";
     $sEmailLink = join($sMailtoDelimiter, $allEmails) . ",";
     // Add default email if default email has been set and is not already in string
-    if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($sEmailLink, SystemConfig::getValue("sToEmailAddress")))
-      $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
+    if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress' && !stristr($sEmailLink, SystemConfig::getValue("sToEmailAddress"))) {
+        $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
+    }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
     if ($bEmailMailto) { // Does user have permission to email groups
@@ -102,6 +106,7 @@ require "../Include/Header.php";
         </ul>
       </div>
       <?php
+
     }
     ?>
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
@@ -117,7 +122,7 @@ require "../Include/Header.php";
   <!-- /.box-header -->
   <div class="box-body row">
     <?php foreach ($rsTeachers as $teacher) {
-      ?>
+        ?>
       <div class="col-sm-2">
         <!-- Begin user profile -->
         <div class="box box-info text-center user-profile-2">
@@ -132,7 +137,8 @@ require "../Include/Header.php";
           </div>
         </div>
       </div>
-    <?php } ?>
+    <?php 
+    } ?>
   </div>
 </div>
 
@@ -207,25 +213,25 @@ require "../Include/Header.php";
       <?php
 
       foreach ($thisClassChildren as $child) {
-        $hideAge = $child['flags'] == 1 || $child['birthYear'] == "" || $child['birthYear'] == "0";
-        $birthDate = FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']);
-        $birthDateDate = BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge);
+          $hideAge = $child['flags'] == 1 || $child['birthYear'] == "" || $child['birthYear'] == "0";
+          $birthDate = FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']);
+          $birthDateDate = BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge);
 
-        echo "<tr>";
-        echo "<td><img src='" . $sRootPath . "/api/persons/" . $child['kidId'] . "/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=" . $child['kidId'] . "'>" . $child['firstName'] . ", " . $child['LastName'] . "</a></td>";
-        echo "<td>" . $birthDate . "</td>";
-        echo "<td data-birth-date='" . ($hideAge ? '' : $birthDateDate->format("Y-m-d")) . "'></td>";
-        echo "<td>" . $child['kidEmail'] . "</td>";
-        echo "<td>" . $child['mobilePhone'] . "</td>";
-        echo "<td>" . $child['homePhone'] . "</td>";
-        echo "<td>" . $child['Address1'] . " " . $child['Address2'] . " " . $child['city'] . " " . $child['state'] . " " . $child['zip'] . "</td>";
-        echo "<td><a href='../PersonView.php?PersonID=" . $child['dadId'] . "'>" . $child['dadFirstName'] . " " . $child['dadLastName'] . "</a></td>";
-        echo "<td>" . $child['dadCellPhone'] . "</td>";
-        echo "<td>" . $child['dadEmail'] . "</td>";
-        echo "<td><a href='../PersonView.php?PersonID=" . $child['momId'] . "'>" . $child['momFirstName'] . " " . $child['momLastName'] . "</td>";
-        echo "<td>" . $child['momCellPhone'] . "</td>";
-        echo "<td>" . $child['momEmail'] . "</td>";
-        echo "</tr>";
+          echo "<tr>";
+          echo "<td><img src='" . $sRootPath . "/api/persons/" . $child['kidId'] . "/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=" . $child['kidId'] . "'>" . $child['firstName'] . ", " . $child['LastName'] . "</a></td>";
+          echo "<td>" . $birthDate . "</td>";
+          echo "<td data-birth-date='" . ($hideAge ? '' : $birthDateDate->format("Y-m-d")) . "'></td>";
+          echo "<td>" . $child['kidEmail'] . "</td>";
+          echo "<td>" . $child['mobilePhone'] . "</td>";
+          echo "<td>" . $child['homePhone'] . "</td>";
+          echo "<td>" . $child['Address1'] . " " . $child['Address2'] . " " . $child['city'] . " " . $child['state'] . " " . $child['zip'] . "</td>";
+          echo "<td><a href='../PersonView.php?PersonID=" . $child['dadId'] . "'>" . $child['dadFirstName'] . " " . $child['dadLastName'] . "</a></td>";
+          echo "<td>" . $child['dadCellPhone'] . "</td>";
+          echo "<td>" . $child['dadEmail'] . "</td>";
+          echo "<td><a href='../PersonView.php?PersonID=" . $child['momId'] . "'>" . $child['momFirstName'] . " " . $child['momLastName'] . "</td>";
+          echo "<td>" . $child['momCellPhone'] . "</td>";
+          echo "<td>" . $child['momEmail'] . "</td>";
+          echo "</tr>";
       }
 
       ?>
@@ -236,19 +242,19 @@ require "../Include/Header.php";
 
 <?php
 function implodeUnique($array, $withQuotes)
-{
-  array_unique($array);
-  asort($array);
-  if (count($array) > 0) {
-    if ($withQuotes) {
-      $string = implode("','", $array);
-      return "'" . $string . "'";
-    } else {
-      return implode(",", $array);
-    }
-  }
-  return "";
-}
+      {
+          array_unique($array);
+          asort($array);
+          if (count($array) > 0) {
+              if ($withQuotes) {
+                  $string = implode("','", $array);
+                  return "'" . $string . "'";
+              } else {
+                  return implode(",", $array);
+              }
+          }
+          return "";
+      }
 
 ?>
 

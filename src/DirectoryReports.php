@@ -56,26 +56,24 @@ $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
 $aDefaultClasses = explode(',', SystemConfig::getValue("sDirClassifications"));
-$aDirRoleHead = explode(",",SystemConfig::getValue("sDirRoleHead"));
-$aDirRoleSpouse = explode(",",SystemConfig::getValue("sDirRoleSpouse"));
-$aDirRoleChild = explode(",",SystemConfig::getValue("sDirRoleChild"));
+$aDirRoleHead = explode(",", SystemConfig::getValue("sDirRoleHead"));
+$aDirRoleSpouse = explode(",", SystemConfig::getValue("sDirRoleSpouse"));
+$aDirRoleChild = explode(",", SystemConfig::getValue("sDirRoleChild"));
 
 // Get Field Security List Matrix
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
 $rsSecurityGrp = RunQuery($sSQL);
 
-while ($aRow = mysqli_fetch_array($rsSecurityGrp))
-{
-	extract ($aRow);
-	$aSecurityType[$lst_OptionID] = $lst_OptionName;
+while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
+    extract($aRow);
+    $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
 
 ?>
 
 <table align="center" class="table">
-<?php if (!array_key_exists ('cartdir', $_GET))
-{
-?>
+<?php if (!array_key_exists('cartdir', $_GET)) {
+    ?>
     <tr>
         <td class="LabelColumn"><?= gettext("Select classifications to include") ?></td>
         <td class="TextColumn">
@@ -86,10 +84,11 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp))
                 while ($aRow = mysqli_fetch_array($rsClassifications)) {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
-                    if (in_array($lst_OptionID,$aDefaultClasses)) echo " selected";
+                    if (in_array($lst_OptionID, $aDefaultClasses)) {
+                        echo " selected";
+                    }
                     echo ">" . gettext($lst_OptionName) . "</option>";
-                }
-            ?>
+                } ?>
             </select>
         </td>
     </tr>
@@ -99,17 +98,16 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp))
             <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="GroupID[]" size="5" multiple>
                 <?php
-                while ($aRow = mysqli_fetch_array($rsGroups))
-                {
+                while ($aRow = mysqli_fetch_array($rsGroups)) {
                     extract($aRow);
                     echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
-                }
-                ?>
+                } ?>
             </select>
         </td>
     </tr>
 
 <?php
+
 }
 ?>
 
@@ -122,7 +120,9 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp))
                 while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
-                    if (in_array($lst_OptionID, $aDirRoleHead)) echo " selected";
+                    if (in_array($lst_OptionID, $aDirRoleHead)) {
+                        echo " selected";
+                    }
                     echo ">" . gettext($lst_OptionName) . "</option>";
                 }
             ?>
@@ -135,11 +135,13 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp))
             <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="sDirRoleSpouse[]" size="5" multiple>
             <?php
-                mysqli_data_seek($rsFamilyRoles,0);
+                mysqli_data_seek($rsFamilyRoles, 0);
                 while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
-                    if (in_array($lst_OptionID, $aDirRoleSpouse)) echo " selected";
+                    if (in_array($lst_OptionID, $aDirRoleSpouse)) {
+                        echo " selected";
+                    }
                     echo ">" . gettext($lst_OptionName) . "</option>";
                 }
             ?>
@@ -152,11 +154,13 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp))
             <div class="SmallText"><?= gettext("Use Ctrl Key to select multiple") ?></div>
             <select name="sDirRoleChild[]" size="5" multiple>
             <?php
-                mysqli_data_seek($rsFamilyRoles,0);
+                mysqli_data_seek($rsFamilyRoles, 0);
                 while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                     extract($aRow);
                     echo "<option value=\"" . $lst_OptionID . "\"";
-                    if (in_array($lst_OptionID, $aDirRoleChild)) echo " selected";
+                    if (in_array($lst_OptionID, $aDirRoleChild)) {
+                        echo " selected";
+                    }
                     echo ">" . gettext($lst_OptionName) . "</option>";
                 }
             ?>
@@ -183,13 +187,14 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp))
             <input type="checkbox" Name="bDirPhoto" value="1" checked><?= gettext("Photos") ?><br>
          <?php
          if ($numCustomFields > 0) {
-            while ( $rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC) ){
-					if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]]))
-					{ ?>
+             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
+                 if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]])) {
+                     ?>
 		            <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>
          <?php
-	            }
-	         }
+
+                 }
+             }
          }
          ?>
 
@@ -271,7 +276,9 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp))
 
 </table>
 
-<?php if (array_key_exists ('cartdir', $_GET)) echo '<input type="hidden" name="cartdir" value="M">'; ?>
+<?php if (array_key_exists('cartdir', $_GET)) {
+             echo '<input type="hidden" name="cartdir" value="M">';
+         } ?>
 
 
 <p align="center">

@@ -30,20 +30,22 @@
 require_once 'Functions.php';
 
 
-function Header_head_metatag() {
-  global $bExportCSV, $sMetaRefresh, $sGlobalMessage;
-  global $sPageTitle, $sRootPath;
+function Header_head_metatag()
+{
+    global $bExportCSV, $sMetaRefresh, $sGlobalMessage;
+    global $sPageTitle, $sRootPath;
 
-  if (strlen($sMetaRefresh)) {
-    echo $sMetaRefresh;
-  }
-  ?>
+    if (strlen($sMetaRefresh)) {
+        echo $sMetaRefresh;
+    } ?>
   <title>ChurchCRM: <?= $sPageTitle ?></title>
   <?php
+
 }
 
-function Header_modals() {
-  ?>
+function Header_modals()
+{
+    ?>
   <!-- API Call Error Modal -->
   <div id="APIError" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -115,11 +117,12 @@ function Header_modals() {
   <!-- End Issue Report Modal -->
 
   <?php
+
 }
 
-function Header_body_scripts() {
-  global $sRootPath, $localeInfo;
-?>
+function Header_body_scripts()
+{
+    global $sRootPath, $localeInfo; ?>
   <script src="<?= $sRootPath ?>/skin/js/IssueReporter.js"></script>
 
   <script>
@@ -176,234 +179,231 @@ function Header_body_scripts() {
 
   </script>
   <?php
+
 }
 
 $security_matrix = GetSecuritySettings();
 
-function GetSecuritySettings() {
-  $aSecurityList[] = "bAdmin";
-  $aSecurityList[] = "bAddRecords";
-  $aSecurityList[] = "bEditRecords";
-  $aSecurityList[] = "bDeleteRecords";
-  $aSecurityList[] = "bMenuOptions";
-  $aSecurityList[] = "bManageGroups";
-  $aSecurityList[] = "bFinance";
-  $aSecurityList[] = "bNotes";
-  $aSecurityList[] = "bCommunication";
-  $aSecurityList[] = "bCanvasser";
-  $aSecurityList[] = "bAddEvent";
-  $aSecurityList[] = "bSeePrivacyData";
+function GetSecuritySettings()
+{
+    $aSecurityList[] = "bAdmin";
+    $aSecurityList[] = "bAddRecords";
+    $aSecurityList[] = "bEditRecords";
+    $aSecurityList[] = "bDeleteRecords";
+    $aSecurityList[] = "bMenuOptions";
+    $aSecurityList[] = "bManageGroups";
+    $aSecurityList[] = "bFinance";
+    $aSecurityList[] = "bNotes";
+    $aSecurityList[] = "bCommunication";
+    $aSecurityList[] = "bCanvasser";
+    $aSecurityList[] = "bAddEvent";
+    $aSecurityList[] = "bSeePrivacyData";
 
-  $sSQL = "SELECT DISTINCT ucfg_name, ucfg_id
+    $sSQL = "SELECT DISTINCT ucfg_name, ucfg_id
            FROM userconfig_ucfg
            WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY'
            ORDER by ucfg_id";
 
-  $rsSecGrpList = RunQuery($sSQL);
+    $rsSecGrpList = RunQuery($sSQL);
 
-  while ($aRow = mysqli_fetch_array($rsSecGrpList)) {
-    $aSecurityList[] = $aRow['ucfg_name'];
-  }
-
-  asort($aSecurityList);
-
-  $sSecurityCond = " AND (security_grp = 'bALL'";
-  for ($i = 0; $i < count($aSecurityList); $i++) {
-    if (array_key_exists($aSecurityList[$i], $_SESSION) && $_SESSION[$aSecurityList[$i]]) {
-      $sSecurityCond .= " OR security_grp = '" . $aSecurityList[$i] . "'";
+    while ($aRow = mysqli_fetch_array($rsSecGrpList)) {
+        $aSecurityList[] = $aRow['ucfg_name'];
     }
-  }
-  $sSecurityCond .= ")";
-  return $sSecurityCond;
+
+    asort($aSecurityList);
+
+    $sSecurityCond = " AND (security_grp = 'bALL'";
+    for ($i = 0; $i < count($aSecurityList); $i++) {
+        if (array_key_exists($aSecurityList[$i], $_SESSION) && $_SESSION[$aSecurityList[$i]]) {
+            $sSecurityCond .= " OR security_grp = '" . $aSecurityList[$i] . "'";
+        }
+    }
+    $sSecurityCond .= ")";
+    return $sSecurityCond;
 }
 
-function addMenu($menu) {
-  global $security_matrix;
+function addMenu($menu)
+{
+    global $security_matrix;
 
-  $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text,
+    $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text,
                   session_var_in_uri, url_parm_name, security_grp, icon
            FROM menuconfig_mcf
            WHERE parent = '$menu' AND active=1 " . $security_matrix . "
            ORDER BY sortorder";
 
-  $rsMenu = RunQuery($sSQL);
-  $item_cnt = mysqli_num_rows($rsMenu);
-  $idx = 1;
-  $ptr = 1;
-  while ($aRow = mysqli_fetch_array($rsMenu)) {
-    if (addMenuItem($aRow, $idx)) {
-      if ($ptr == $item_cnt) {
-        $idx++;
-      }
-      $ptr++;
+    $rsMenu = RunQuery($sSQL);
+    $item_cnt = mysqli_num_rows($rsMenu);
+    $idx = 1;
+    $ptr = 1;
+    while ($aRow = mysqli_fetch_array($rsMenu)) {
+        if (addMenuItem($aRow, $idx)) {
+            if ($ptr == $item_cnt) {
+                $idx++;
+            }
+            $ptr++;
+        } else {
+            $item_cnt--;
+        }
     }
-    else {
-      $item_cnt--;
-    }
-  }
 }
 
-function addMenuItem($aMenu, $mIdx) {
-  global $security_matrix, $sRootPath;
+function addMenuItem($aMenu, $mIdx)
+{
+    global $security_matrix, $sRootPath;
 
-  $link = ($aMenu['uri'] == "") ? "" : $sRootPath . "/" . $aMenu['uri'];
-  $text = $aMenu['statustext'];
-  if (!is_null($aMenu['session_var'])) {
-    if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
-      if (strstr($link, "?") && true) {
-        $cConnector = "&";
-      }
-      else {
-        $cConnector = "?";
-      }
-      $link .= $cConnector . $aMenu['url_parm_name'] . "=" . $_SESSION[$aMenu['session_var']];
+    $link = ($aMenu['uri'] == "") ? "" : $sRootPath . "/" . $aMenu['uri'];
+    $text = $aMenu['statustext'];
+    if (!is_null($aMenu['session_var'])) {
+        if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
+            if (strstr($link, "?") && true) {
+                $cConnector = "&";
+            } else {
+                $cConnector = "?";
+            }
+            $link .= $cConnector . $aMenu['url_parm_name'] . "=" . $_SESSION[$aMenu['session_var']];
+        }
+        if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
+            $text .= " " . $_SESSION[$aMenu['session_var']];
+        }
     }
-    if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
-      $text .= " " . $_SESSION[$aMenu['session_var']];
-    }
-  }
-  if ($aMenu['ismenu']) {
-    $sSQL = "SELECT name
+    if ($aMenu['ismenu']) {
+        $sSQL = "SELECT name
              FROM menuconfig_mcf
              WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . "
              ORDER BY sortorder";
 
-    $rsItemCnt = RunQuery($sSQL);
-    $numItems = mysqli_num_rows($rsItemCnt);
-  }
-  if (!($aMenu['ismenu']) || ($numItems > 0)) {
-    if ($link) {
-      if ($aMenu['name'] != "sundayschool-dash") { # HACK to remove the sunday school 2nd dashboard
-        echo "<li><a href='$link'>";
-        if ($aMenu['icon'] != "") {
-          echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>";
-        }
-        if ($aMenu['parent'] != "root") {
-          echo "<i class=\"fa fa-angle-double-right\"></i> ";
-        }
-        if ($aMenu['parent'] == "root") {
-          echo "<span>" . gettext($aMenu['content']) . "</span></a>";
-        }
-        else {
-          echo gettext($aMenu['content']) . "</a>";
-        }
-      }
+        $rsItemCnt = RunQuery($sSQL);
+        $numItems = mysqli_num_rows($rsItemCnt);
     }
-    else {
-      echo "<li class=\"treeview\">\n";
-      echo "    <a href=\"#\">\n";
-      if ($aMenu['icon'] != "") {
-        echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>\n";
-      }
-      echo "<span>" . gettext($aMenu['content']) . "</span>\n";
-      echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
-      if ($aMenu['name'] == "deposit") {
-        echo "<small class=\"badge pull-right bg-green\">" . $_SESSION['iCurrentDeposit'] . "</small>\n";
-      }
-      ?>  </a>
+    if (!($aMenu['ismenu']) || ($numItems > 0)) {
+        if ($link) {
+            if ($aMenu['name'] != "sundayschool-dash") { # HACK to remove the sunday school 2nd dashboard
+        echo "<li><a href='$link'>";
+                if ($aMenu['icon'] != "") {
+                    echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>";
+                }
+                if ($aMenu['parent'] != "root") {
+                    echo "<i class=\"fa fa-angle-double-right\"></i> ";
+                }
+                if ($aMenu['parent'] == "root") {
+                    echo "<span>" . gettext($aMenu['content']) . "</span></a>";
+                } else {
+                    echo gettext($aMenu['content']) . "</a>";
+                }
+            }
+        } else {
+            echo "<li class=\"treeview\">\n";
+            echo "    <a href=\"#\">\n";
+            if ($aMenu['icon'] != "") {
+                echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>\n";
+            }
+            echo "<span>" . gettext($aMenu['content']) . "</span>\n";
+            echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
+            if ($aMenu['name'] == "deposit") {
+                echo "<small class=\"badge pull-right bg-green\">" . $_SESSION['iCurrentDeposit'] . "</small>\n";
+            } ?>  </a>
       <ul class="treeview-menu">
         <?php
         if ($aMenu['name'] == "sundayschool") {
-          echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>".gettext("Dashboard")."</a></li>";
-          $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
-          $rsSundaySchoolClasses = RunQuery($sSQL);
-          while ($aRow = mysqli_fetch_array($rsSundaySchoolClasses)) {
-            echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . "</a></li>";
+            echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>".gettext("Dashboard")."</a></li>";
+            $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
+            $rsSundaySchoolClasses = RunQuery($sSQL);
+            while ($aRow = mysqli_fetch_array($rsSundaySchoolClasses)) {
+                echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . "</a></li>";
+            }
+        }
+        }
+        if (($aMenu['ismenu']) && ($numItems > 0)) {
+            echo "\n";
+            addMenu($aMenu['name']);
+            echo "</ul>\n</li>\n";
+        } else {
+            echo "</li>\n";
+        }
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
+      function create_side_nav($menu)
+      {
+          echo "<p>";
+          addSection($menu);
+          echo "</p>\n";
+      }
+
+      function addSection($menu)
+      {
+          global $cnInfoCentral;
+
+          $security_matrix = " AND (security_grp = 'bALL'";
+          if ($_SESSION['bAdmin']) {
+              $security_matrix .= " OR security_grp = 'bAdmin'";
           }
-        }
-      }
-      if (($aMenu['ismenu']) && ($numItems > 0)) {
-        echo "\n";
-        addMenu($aMenu['name']);
-        echo "</ul>\n</li>\n";
-      }
-      else {
-        echo "</li>\n";
-      }
-
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-      function create_side_nav($menu) {
-
-        echo "<p>";
-        addSection($menu);
-        echo "</p>\n";
-      }
-
-      function addSection($menu) {
-        global $cnInfoCentral;
-
-        $security_matrix = " AND (security_grp = 'bALL'";
-        if ($_SESSION['bAdmin']) {
-          $security_matrix .= " OR security_grp = 'bAdmin'";
-        }
-        if ($_SESSION['bAddRecords']) {
-          $security_matrix .= " OR security_grp = 'bAddRecords'";
-        }
-        if ($_SESSION['bMenuOptions']) {
-          $security_matrix .= " OR security_grp = 'bMenuOptions'";
-        }
-        if ($_SESSION['bFinance']) {
-          $security_matrix .= " OR security_grp = 'bFinance'";
-        }
-        if ($_SESSION['bManageGroups']) {
-          $security_matrix .= " OR security_grp = 'bManageGroups'";
-        }
-        $security_matrix .= ")";
-        $query = "SELECT name, ismenu, content, uri, statustext, session_var, session_var_in_text,
+          if ($_SESSION['bAddRecords']) {
+              $security_matrix .= " OR security_grp = 'bAddRecords'";
+          }
+          if ($_SESSION['bMenuOptions']) {
+              $security_matrix .= " OR security_grp = 'bMenuOptions'";
+          }
+          if ($_SESSION['bFinance']) {
+              $security_matrix .= " OR security_grp = 'bFinance'";
+          }
+          if ($_SESSION['bManageGroups']) {
+              $security_matrix .= " OR security_grp = 'bManageGroups'";
+          }
+          $security_matrix .= ")";
+          $query = "SELECT name, ismenu, content, uri, statustext, session_var, session_var_in_text,
                          session_var_in_uri, url_parm_name, security_grp
                   FROM menuconfig_mcf
                   WHERE parent = '$menu' AND active=1 " . $security_matrix . "
                   ORDER BY sortorder";
 
-        $rsMenu = mysqli_query($cnInfoCentral, $query);
-        $item_cnt = mysqli_num_rows($rsMenu);
-        $ptr = 1;
-        while ($aRow = mysqli_fetch_array($rsMenu)) {
-          if (isset($aRow['admin_only']) & !$_SESSION['bAdmin']) {
-            // hide admin menu
+          $rsMenu = mysqli_query($cnInfoCentral, $query);
+          $item_cnt = mysqli_num_rows($rsMenu);
+          $ptr = 1;
+          while ($aRow = mysqli_fetch_array($rsMenu)) {
+              if (isset($aRow['admin_only']) & !$_SESSION['bAdmin']) {
+                  // hide admin menu
+              } else {
+                  addEntry($aRow);
+              }
+              $ptr++;
           }
-          else {
-            addEntry($aRow);
-          }
-          $ptr++;
-        }
       }
 
-      function addEntry($aMenu) {
-        global $sRootPath;
+      function addEntry($aMenu)
+      {
+          global $sRootPath;
 
-        $link = ($aMenu['uri'] == "") ? "" : $sRootPath . "/" . $aMenu['uri'];
-        $text = $aMenu['statustext'];
-        $content = $aMenu['content'];
-        if (!is_null($aMenu['session_var'])) {
-          if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
-            $link .= "?" . $aMenu['url_parm_name'] . "=" . $_SESSION[$aMenu['session_var']];
+          $link = ($aMenu['uri'] == "") ? "" : $sRootPath . "/" . $aMenu['uri'];
+          $text = $aMenu['statustext'];
+          $content = $aMenu['content'];
+          if (!is_null($aMenu['session_var'])) {
+              if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
+                  $link .= "?" . $aMenu['url_parm_name'] . "=" . $_SESSION[$aMenu['session_var']];
+              }
+              if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
+                  $text .= " " . $_SESSION[$aMenu['session_var']];
+              }
           }
-          if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
-            $text .= " " . $_SESSION[$aMenu['session_var']];
+          if (substr($content, 1, 10) == '----------') {
+              $content = "--------------------";
           }
-        }
-        if (substr($content, 1, 10) == '----------') {
-          $content = "--------------------";
-        }
-        if ($aMenu['ismenu']) {
-          echo "</p>\n<p>\n";
-        }
-        if ($link > "") {
-          echo "<a class=\"SmallText\" href=\"" . $link . "\">" . $content . "</a>";
-        }
-        else {
-          echo $content;
-        }
-        echo "<br>\n";
-        if ($aMenu['ismenu']) {
-          addSection($aMenu['name']);
-        }
+          if ($aMenu['ismenu']) {
+              echo "</p>\n<p>\n";
+          }
+          if ($link > "") {
+              echo "<a class=\"SmallText\" href=\"" . $link . "\">" . $content . "</a>";
+          } else {
+              echo $content;
+          }
+          echo "<br>\n";
+          if ($aMenu['ismenu']) {
+              addSection($aMenu['name']);
+          }
       }
       ?>

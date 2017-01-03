@@ -23,10 +23,9 @@ use ChurchCRM\dto\SystemConfig;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bAdmin'])
-{
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bAdmin']) {
+    Redirect("Menu.php");
+    exit;
 }
 
 // Get all the electronic payment records
@@ -121,7 +120,8 @@ function ClearAccountsChecked()
 	}
 }
 
-<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") { ?>
+<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
+    ?>
 function CreatePaymentMethodsForChecked()
 {
 	var checkboxes = document.getElementsByName("SelectForAction");
@@ -174,7 +174,8 @@ function CreatePaymentMethodsForChecked()
 	    }
 	}
 }
-<?php } ?>
+<?php 
+} ?>
 </script>
 
 <script language="javascript">
@@ -203,15 +204,19 @@ function CreatePaymentMethodsForChecked()
 		<td align="center"><b><?= gettext("Bank") ?></b></td>
 		<td align="center"><b><?= gettext("Routing") ?></b></td>
 		<td align="center"><b><?= gettext("Account") ?></b></td>
-		<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {?> 
+		<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
+    ?> 
 		<td align="center"><b><?= gettext("Vanco ACH") ?></b></td>
-		<?php }?>
+		<?php 
+}?>
 		<td align="center"><b><?= gettext("Credit Card") ?></b></td>
 		<td align="center"><b><?= gettext("Month") ?></b></td>
 		<td align="center"><b><?= gettext("Year") ?></b></td>
-		<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {?> 
+		<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
+    ?> 
 		<td align="center"><b><?= gettext("Vanco CC") ?></b></td>
-		<?php }?>
+		<?php 
+}?>
 		<td><b><?= gettext("Edit") ?></b></td>
 		<td><b><?= gettext("Delete") ?></b></td>
 	</tr>
@@ -222,66 +227,76 @@ $sRowClass = "RowColorA";
 
 //Loop through the autopayment records
 while ($aRow = mysqli_fetch_array($rsAutopayments)) {
+    extract($aRow);
 
-	extract($aRow);
+    //Alternate the row color
+    $sRowClass = AlternateRowStyle($sRowClass);
 
-	//Alternate the row color
-	$sRowClass = AlternateRowStyle($sRowClass);
-
-	//Display the row
+    //Display the row
 ?>
 	<tr id="PaymentMethodRow<?= $aut_ID ?>" class="<?= $sRowClass ?>">
 		<td>
 		<?php
-			echo "<input type=checkbox id=Select$aut_ID name=SelectForAction />"; 
-		?>
+            echo "<input type=checkbox id=Select$aut_ID name=SelectForAction />"; ?>
 		</td>
 		
 		<td>
 		<?php
-			echo "<a id=\"FamName$aut_ID\" href=\"FamilyView.php?FamilyID=" . $fam_ID . "\">" . $fam_Name . " " . $fam_Address1 . ", " . $fam_City . ", " . $fam_State . "</a>";
-		?>
+            echo "<a id=\"FamName$aut_ID\" href=\"FamilyView.php?FamilyID=" . $fam_ID . "\">" . $fam_Name . " " . $fam_Address1 . ", " . $fam_City . ", " . $fam_State . "</a>"; ?>
 		</td>
 
 		<td>
 		<?php 
-			if ($aut_EnableBankDraft) 
-		        echo "Bank ACH";
-		    elseif ($aut_EnableCreditCard)
-		    	echo "Credit Card";
-		    else
-		    	echo "Disabled";
-		?>
+            if ($aut_EnableBankDraft) {
+                echo "Bank ACH";
+            } elseif ($aut_EnableCreditCard) {
+                echo "Credit Card";
+            } else {
+                echo "Disabled";
+            } ?>
 		</td>
 
-		<td><?= MakeFYString ($aut_FYID) ?></td>
+		<td><?= MakeFYString($aut_FYID) ?></td>
 		<td><?= $aut_NextPayDate ?></td>
 		<td><?= $aut_Amount ?></td>
 		<td><?= $aut_Interval ?></td>
 		<td><?= $fun_Name ?></td>
 		<td><?= $aut_BankName ?></td>
-		<td><?php if (strlen($aut_Route)==9) echo "*****".substr($aut_Route,5,4);?></td>
-		<td id="Account<?= $aut_ID ?>"><?php if (strlen($aut_Account)>4) echo "*****".substr($aut_Account,strlen($aut_Account)-4,4);?></td>
-		<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {?> 
+		<td><?php if (strlen($aut_Route)==9) {
+                echo "*****".substr($aut_Route, 5, 4);
+            } ?></td>
+		<td id="Account<?= $aut_ID ?>"><?php if (strlen($aut_Account)>4) {
+                echo "*****".substr($aut_Account, strlen($aut_Account)-4, 4);
+            } ?></td>
+		<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
+                ?> 
 		<td align="center" id="AccountVanco<?= $aut_ID ?>"><?= $aut_AccountVanco ?></td>
-		<?php }?>
-		<td id="CreditCard<?= $aut_ID ?>"><?php if (strlen($aut_CreditCard)==16) echo "*************".substr($aut_CreditCard,12,4);?></td>
+		<?php 
+            } ?>
+		<td id="CreditCard<?= $aut_ID ?>"><?php if (strlen($aut_CreditCard)==16) {
+                echo "*************".substr($aut_CreditCard, 12, 4);
+            } ?></td>
 		<td><?= $aut_ExpMonth ?></td>
 		<td><?= $aut_ExpYear ?></td>
-		<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {?> 
+		<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
+                ?> 
 		<td align="center" id="CreditCardVanco<?= $aut_ID ?>"><?= $aut_CreditCardVanco ?></td>
-		<?php }?>
+		<?php 
+            } ?>
 		<td><a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?php echo $fam_ID?>&amp;linkBack=ElectronicPaymentList.php"><?= gettext("Edit") ?></a></td>
 		<td><button onclick="ConfirmDeleteAutoPayment(<?= $aut_ID ?>)"><?= gettext("Delete") ?></button></td>
 	</tr>
 	<?php
+
 }
 ?>
 </table>
 <b>With checked:</b>
-<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") { ?>
+<?php if (SystemConfig::getValue("sElectronicTransactionProcessor") == "Vanco") {
+    ?>
 <input type="button" id="CreatePaymentMethodsForChecked" value="Store Private Data at Vanco" onclick="CreatePaymentMethodsForChecked();" />
-<?php } ?>
+<?php 
+} ?>
 <input type="button" id="DeleteChecked" value="Delete" onclick="DeleteChecked();" />
 <input type="button" id="DeleteChecked" value="Clear Account Numbers" onclick="ClearAccountsChecked();" />
 

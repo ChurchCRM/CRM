@@ -22,22 +22,20 @@ use ChurchCRM\dto\SystemConfig;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bAdmin'])
-{
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bAdmin']) {
+    Redirect("Menu.php");
+    exit;
 }
 
-if (isset ($_GET["ResetLoginCount"])) {
-	$iResetLoginCount = FilterInput($_GET["ResetLoginCount"],'int');
+if (isset($_GET["ResetLoginCount"])) {
+    $iResetLoginCount = FilterInput($_GET["ResetLoginCount"], 'int');
 } else {
-	$iResetLoginCount = 0;
+    $iResetLoginCount = 0;
 }
 
-if ($iResetLoginCount > 0)
-{
-	$sSQL = "UPDATE user_usr SET usr_FailedLogins = 0 WHERE usr_per_ID = " . $iResetLoginCount;
-	RunQuery($sSQL);
+if ($iResetLoginCount > 0) {
+    $sSQL = "UPDATE user_usr SET usr_FailedLogins = 0 WHERE usr_per_ID = " . $iResetLoginCount;
+    RunQuery($sSQL);
 }
 
 // Get all the User records
@@ -75,36 +73,39 @@ $sRowClass = "RowColorA";
 
 //Loop through the person recordset
 while ($aRow = mysqli_fetch_array($rsUsers)) {
+    extract($aRow);
 
-	extract($aRow);
+    //Alternate the row color
+    $sRowClass = AlternateRowStyle($sRowClass);
 
-	//Alternate the row color
-	$sRowClass = AlternateRowStyle($sRowClass);
-
-	//Display the row
+    //Display the row
 ?>
 	<tr>
         <td><a href="UserEditor.php?PersonID=<?= $per_ID ?>"><?= gettext("Edit") ?></a></td>
 		<td>
 		<?php
-			echo "<a href=\"PersonView.php?PersonID=" . $per_ID . "\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . "</a>";
-		?>
+            echo "<a href=\"PersonView.php?PersonID=" . $per_ID . "\">" . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . "</a>"; ?>
 		</td>
 		<td align="center"><?= $usr_LastLogin ?></td>
 		<td align="center"><?= $usr_LoginCount ?></td>
 		<td align="center">
 		<?php
-			if (SystemConfig::getValue("iMaxFailedLogins") > 0 && $usr_FailedLogins >= SystemConfig::getValue("iMaxFailedLogins"))
-				echo "<span style=\"color: red;\">" . $usr_FailedLogins . "<br></span><a href=\"UserList.php?ResetLoginCount=$per_ID\">" . gettext("Reset") . "</a>";
-			else
-				echo $usr_FailedLogins;
-		?>
+            if (SystemConfig::getValue("iMaxFailedLogins") > 0 && $usr_FailedLogins >= SystemConfig::getValue("iMaxFailedLogins")) {
+                echo "<span style=\"color: red;\">" . $usr_FailedLogins . "<br></span><a href=\"UserList.php?ResetLoginCount=$per_ID\">" . gettext("Reset") . "</a>";
+            } else {
+                echo $usr_FailedLogins;
+            } ?>
 		</td>
 		<td align="right"><a href="UserPasswordChange.php?PersonID=<?= $per_ID ?>&FromUserList=True"><?= gettext("Change") ?></a></td>
-		<td align="left"><?php if ($per_ID != $_SESSION['iUserID']) echo "<a href=\"UserReset.php?PersonID=$per_ID&FromUserList=True\">" . gettext("Reset") . "</a>"; else echo "&nbsp;"; ?></td>
+		<td align="left"><?php if ($per_ID != $_SESSION['iUserID']) {
+                echo "<a href=\"UserReset.php?PersonID=$per_ID&FromUserList=True\">" . gettext("Reset") . "</a>";
+            } else {
+                echo "&nbsp;";
+            } ?></td>
 		<td><a href="UserDelete.php?PersonID=<?= $per_ID ?>"><?= gettext("Delete") ?></a></td>
 	</tr>
 <?php
+
 }
 ?>
 </table>

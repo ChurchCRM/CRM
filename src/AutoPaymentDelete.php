@@ -20,42 +20,36 @@ require "Include/Functions.php";
 //Set the page title
 $sPageTitle = gettext("Confirm Delete Automatic payment");
 
-$iAutID = FilterInput($_GET["AutID"],'int');
+$iAutID = FilterInput($_GET["AutID"], 'int');
 $linkBack = FilterInput($_GET["linkBack"]);
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (strlen($iAutID) > 0)
-{
-	if (!$_SESSION['bEditRecords'])
-	{
-		Redirect("Menu.php");
-		exit;
-	}
-	$sSQL = "SELECT '' FROM autopayment_aut WHERE aut_ID = " . $iAutID;
-	if (mysqli_num_rows(RunQuery($sSQL)) == 0)
-	{
-		Redirect("Menu.php");
-		exit;
-	}
-}
-elseif (!$_SESSION['bAddRecords'])
-{
-	Redirect("Menu.php");
-	exit;
+if (strlen($iAutID) > 0) {
+    if (!$_SESSION['bEditRecords']) {
+        Redirect("Menu.php");
+        exit;
+    }
+    $sSQL = "SELECT '' FROM autopayment_aut WHERE aut_ID = " . $iAutID;
+    if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
+        Redirect("Menu.php");
+        exit;
+    }
+} elseif (!$_SESSION['bAddRecords']) {
+    Redirect("Menu.php");
+    exit;
 }
 
 //Is this the second pass?
-if (isset($_POST["Delete"]))
-{
-	$sSQL = "DELETE FROM `autopayment_aut` WHERE `aut_ID` = '" . $iAutID . "' LIMIT 1;";
-	//Execute the SQL
-	RunQuery($sSQL);
-	if ($linkBack <> "") {
-		Redirect ($linkBack);
-	}
-} else if (isset ($_POST["Cancel"])) {
-	Redirect ($linkBack);
+if (isset($_POST["Delete"])) {
+    $sSQL = "DELETE FROM `autopayment_aut` WHERE `aut_ID` = '" . $iAutID . "' LIMIT 1;";
+    //Execute the SQL
+    RunQuery($sSQL);
+    if ($linkBack <> "") {
+        Redirect($linkBack);
+    }
+} elseif (isset($_POST["Cancel"])) {
+    Redirect($linkBack);
 }
 
 require "Include/Header.php";

@@ -27,94 +27,104 @@ require "../Include/Header.php";
 
 // Is this the second pass?
 if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) {
-  $iFYID = FilterInput($_POST["FYID"], 'int');
-  $dFirstSunday = FilterInput($_POST["FirstSunday"]);
-  $dLastSunday = FilterInput($_POST["LastSunday"]);
-  $dNoSchool1 = FilterInput($_POST["NoSchool1"]);
-  $dNoSchool2 = FilterInput($_POST["NoSchool2"]);
-  $dNoSchool3 = FilterInput($_POST["NoSchool3"]);
-  $dNoSchool4 = FilterInput($_POST["NoSchool4"]);
-  $dNoSchool5 = FilterInput($_POST["NoSchool5"]);
-  $dNoSchool6 = FilterInput($_POST["NoSchool6"]);
-  $dNoSchool7 = FilterInput($_POST["NoSchool7"]);
-  $dNoSchool8 = FilterInput($_POST["NoSchool8"]);
-  $iExtraStudents = FilterInput($_POST["ExtraStudents"], 'int');
-  $iExtraTeachers = FilterInput($_POST["ExtraTeachers"], 'int');
-  $_SESSION['idefaultFY'] = $iFYID;
+    $iFYID = FilterInput($_POST["FYID"], 'int');
+    $dFirstSunday = FilterInput($_POST["FirstSunday"]);
+    $dLastSunday = FilterInput($_POST["LastSunday"]);
+    $dNoSchool1 = FilterInput($_POST["NoSchool1"]);
+    $dNoSchool2 = FilterInput($_POST["NoSchool2"]);
+    $dNoSchool3 = FilterInput($_POST["NoSchool3"]);
+    $dNoSchool4 = FilterInput($_POST["NoSchool4"]);
+    $dNoSchool5 = FilterInput($_POST["NoSchool5"]);
+    $dNoSchool6 = FilterInput($_POST["NoSchool6"]);
+    $dNoSchool7 = FilterInput($_POST["NoSchool7"]);
+    $dNoSchool8 = FilterInput($_POST["NoSchool8"]);
+    $iExtraStudents = FilterInput($_POST["ExtraStudents"], 'int');
+    $iExtraTeachers = FilterInput($_POST["ExtraTeachers"], 'int');
+    $_SESSION['idefaultFY'] = $iFYID;
 
-  $bAtLeastOneGroup = false;
+    $bAtLeastOneGroup = false;
 
-  if (!empty($_POST["GroupID"])) {
-    $count = 0;
-    foreach ($_POST["GroupID"] as $Grp) {
-      $aGroups[$count++] = FilterInput($Grp, 'int');
+    if (!empty($_POST["GroupID"])) {
+        $count = 0;
+        foreach ($_POST["GroupID"] as $Grp) {
+            $aGroups[$count++] = FilterInput($Grp, 'int');
+        }
+        $aGrpID = implode(",", $aGroups);
+        $bAtLeastOneGroup = true;
     }
-    $aGrpID = implode(",", $aGroups);
-    $bAtLeastOneGroup = true;
-  }
-  $allroles = FilterInput($_POST["allroles"]);
+    $allroles = FilterInput($_POST["allroles"]);
 
-  $_SESSION['dCalStart'] = $dFirstSunday;
-  $_SESSION['dCalEnd'] = $dLastSunday;
-  $_SESSION['dCalNoSchool1'] = $dNoSchool1;
-  $_SESSION['dCalNoSchool2'] = $dNoSchool2;
-  $_SESSION['dCalNoSchool3'] = $dNoSchool3;
-  $_SESSION['dCalNoSchool4'] = $dNoSchool4;
-  $_SESSION['dCalNoSchool5'] = $dNoSchool5;
-  $_SESSION['dCalNoSchool6'] = $dNoSchool6;
-  $_SESSION['dCalNoSchool7'] = $dNoSchool7;
-  $_SESSION['dCalNoSchool8'] = $dNoSchool8;
+    $_SESSION['dCalStart'] = $dFirstSunday;
+    $_SESSION['dCalEnd'] = $dLastSunday;
+    $_SESSION['dCalNoSchool1'] = $dNoSchool1;
+    $_SESSION['dCalNoSchool2'] = $dNoSchool2;
+    $_SESSION['dCalNoSchool3'] = $dNoSchool3;
+    $_SESSION['dCalNoSchool4'] = $dNoSchool4;
+    $_SESSION['dCalNoSchool5'] = $dNoSchool5;
+    $_SESSION['dCalNoSchool6'] = $dNoSchool6;
+    $_SESSION['dCalNoSchool7'] = $dNoSchool7;
+    $_SESSION['dCalNoSchool8'] = $dNoSchool8;
 
-  if ($bAtLeastOneGroup && isset($_POST["SubmitClassList"])) {
-//		Redirect ("Reports/ClassList.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday);
+    if ($bAtLeastOneGroup && isset($_POST["SubmitClassList"])) {
+        //		Redirect ("Reports/ClassList.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday);
     Redirect("Reports/ClassList.php?GroupID=" . $aGrpID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday . "&AllRoles=" . $allroles);
-  } else if ($bAtLeastOneGroup && isset($_POST["SubmitClassAttendance"])) {
-    $toStr = "Reports/ClassAttendance.php?";
+    } elseif ($bAtLeastOneGroup && isset($_POST["SubmitClassAttendance"])) {
+        $toStr = "Reports/ClassAttendance.php?";
 //	      $toStr .= "GroupID=" . $iGroupID;
     $toStr .= "GroupID=" . $aGrpID;
-    $toStr .= "&FYID=" . $iFYID;
-    $toStr .= "&FirstSunday=" . $dFirstSunday;
-    $toStr .= "&LastSunday=" . $dLastSunday;
-    $toStr .= "&AllRoles=" . $allroles;
-    if ($dNoSchool1)
-      $toStr .= "&NoSchool1=" . $dNoSchool1;
-    if ($dNoSchool2)
-      $toStr .= "&NoSchool2=" . $dNoSchool2;
-    if ($dNoSchool3)
-      $toStr .= "&NoSchool3=" . $dNoSchool3;
-    if ($dNoSchool4)
-      $toStr .= "&NoSchool4=" . $dNoSchool4;
-    if ($dNoSchool5)
-      $toStr .= "&NoSchool5=" . $dNoSchool5;
-    if ($dNoSchool6)
-      $toStr .= "&NoSchool6=" . $dNoSchool6;
-    if ($dNoSchool7)
-      $toStr .= "&NoSchool7=" . $dNoSchool7;
-    if ($dNoSchool8)
-      $toStr .= "&NoSchool8=" . $dNoSchool8;
-    if ($iExtraStudents)
-      $toStr .= "&ExtraStudents=" . $iExtraStudents;
-    if ($iExtraTeachers)
-      $toStr .= "&ExtraTeachers=" . $iExtraTeachers;
-    Redirect($toStr);
-  } else if (!$bAtLeastOneGroup) {
-    echo gettext("At least one group must be selected to make class lists or attendance sheets.");
-  }
+        $toStr .= "&FYID=" . $iFYID;
+        $toStr .= "&FirstSunday=" . $dFirstSunday;
+        $toStr .= "&LastSunday=" . $dLastSunday;
+        $toStr .= "&AllRoles=" . $allroles;
+        if ($dNoSchool1) {
+            $toStr .= "&NoSchool1=" . $dNoSchool1;
+        }
+        if ($dNoSchool2) {
+            $toStr .= "&NoSchool2=" . $dNoSchool2;
+        }
+        if ($dNoSchool3) {
+            $toStr .= "&NoSchool3=" . $dNoSchool3;
+        }
+        if ($dNoSchool4) {
+            $toStr .= "&NoSchool4=" . $dNoSchool4;
+        }
+        if ($dNoSchool5) {
+            $toStr .= "&NoSchool5=" . $dNoSchool5;
+        }
+        if ($dNoSchool6) {
+            $toStr .= "&NoSchool6=" . $dNoSchool6;
+        }
+        if ($dNoSchool7) {
+            $toStr .= "&NoSchool7=" . $dNoSchool7;
+        }
+        if ($dNoSchool8) {
+            $toStr .= "&NoSchool8=" . $dNoSchool8;
+        }
+        if ($iExtraStudents) {
+            $toStr .= "&ExtraStudents=" . $iExtraStudents;
+        }
+        if ($iExtraTeachers) {
+            $toStr .= "&ExtraTeachers=" . $iExtraTeachers;
+        }
+        Redirect($toStr);
+    } elseif (!$bAtLeastOneGroup) {
+        echo gettext("At least one group must be selected to make class lists or attendance sheets.");
+    }
 } else {
-  $iFYID = $_SESSION['idefaultFY'];
-  $iGroupID = 0;
-  $dFirstSunday = $_SESSION['dCalStart'];
-  $dLastSunday = $_SESSION['dCalEnd'];
-  $dNoSchool1 = $_SESSION['dCalNoSchool1'];
-  $dNoSchool2 = $_SESSION['dCalNoSchool2'];
-  $dNoSchool3 = $_SESSION['dCalNoSchool3'];
-  $dNoSchool4 = $_SESSION['dCalNoSchool4'];
-  $dNoSchool5 = $_SESSION['dCalNoSchool5'];
-  $dNoSchool6 = $_SESSION['dCalNoSchool6'];
-  $dNoSchool7 = $_SESSION['dCalNoSchool7'];
-  $dNoSchool8 = $_SESSION['dCalNoSchool8'];
-  $iExtraStudents = 0;
-  $iExtraTeachers = 0;
+    $iFYID = $_SESSION['idefaultFY'];
+    $iGroupID = 0;
+    $dFirstSunday = $_SESSION['dCalStart'];
+    $dLastSunday = $_SESSION['dCalEnd'];
+    $dNoSchool1 = $_SESSION['dCalNoSchool1'];
+    $dNoSchool2 = $_SESSION['dCalNoSchool2'];
+    $dNoSchool3 = $_SESSION['dCalNoSchool3'];
+    $dNoSchool4 = $_SESSION['dCalNoSchool4'];
+    $dNoSchool5 = $_SESSION['dCalNoSchool5'];
+    $dNoSchool6 = $_SESSION['dCalNoSchool6'];
+    $dNoSchool7 = $_SESSION['dCalNoSchool7'];
+    $dNoSchool8 = $_SESSION['dCalNoSchool8'];
+    $iExtraStudents = 0;
+    $iExtraTeachers = 0;
 }
 ?>
 <div class="box">
@@ -132,8 +142,8 @@ if (isset($_POST["SubmitClassList"]) || isset($_POST["SubmitClassAttendance"])) 
             // Create the group select drop-down
             echo "<select id=\"GroupID\" name=\"GroupID[]\" multiple size=\"8\" onChange=\"UpdateRoles();\"><option value=\"0\">" . gettext('None') . "</option>";
             while ($aRow = mysqli_fetch_array($rsGroups)) {
-              extract($aRow);
-              echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
+                extract($aRow);
+                echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
             }
             echo "</select><br>";
             echo gettext("Multiple groups will have a Page Break between Groups<br>");

@@ -21,17 +21,17 @@ $maleKids = 0;
 $femaleKids = 0;
 $familyIds = array();
 foreach ($classStats as $class) {
-  $kids = $kids + $class['kids'];
-  $teachers = $teachers + $class['teachers'];
-  $classKids = $sundaySchoolService->getKidsFullDetails($class["id"]);
-  foreach ($classKids as $kid) {
-    array_push($familyIds, $kid["fam_id"]);
-    if ($kid["kidGender"] == "1") {
-      $maleKids++;
-    } else if ($kid["kidGender"] == "2") {
-      $femaleKids++;
+    $kids = $kids + $class['kids'];
+    $teachers = $teachers + $class['teachers'];
+    $classKids = $sundaySchoolService->getKidsFullDetails($class["id"]);
+    foreach ($classKids as $kid) {
+        array_push($familyIds, $kid["fam_id"]);
+        if ($kid["kidGender"] == "1") {
+            $maleKids++;
+        } elseif ($kid["kidGender"] == "2") {
+            $femaleKids++;
+        }
     }
-  }
 }
 
 
@@ -45,10 +45,12 @@ require "../Include/Header.php";
     <h3 class="box-title"><?= gettext("Functions") ?></h3>
   </div>
   <div class="box-body">
-    <?php if ($_SESSION['bManageGroups']) { ?>
+    <?php if ($_SESSION['bManageGroups']) {
+    ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
           class="fa fa-plus-square"></i><?= gettext("Add New Class") ?></button>
-    <?php } ?>
+    <?php 
+} ?>
     <a href="SundaySchoolReports.php" class="btn btn-app"
        title="<?= gettext("Generate class lists and attendance sheets"); ?>"><i
         class="fa fa-file-pdf-o"></i><?= gettext("Reports"); ?></a>
@@ -147,7 +149,8 @@ require "../Include/Header.php";
       </tr>
       </thead>
       <tbody>
-      <?php foreach ($classStats as $class) { ?>
+      <?php foreach ($classStats as $class) {
+    ?>
         <tr>
           <td><a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
             <span class="fa-stack">
@@ -158,7 +161,8 @@ require "../Include/Header.php";
           <td><?= $class['teachers'] ?></td>
           <td><?= $class['kids'] ?></td>
         </tr>
-      <?php } ?>
+      <?php 
+} ?>
       </tbody>
     </table>
   </div>
@@ -186,24 +190,24 @@ require "../Include/Header.php";
       <?php
 
       foreach ($kidsWithoutClasses as $child) {
-        extract($child);
+          extract($child);
 
-        $hideAge = $flags == 1 || $birthYear == "" || $birthYear == "0";
-        $birthDate = FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
-        $birthDateDate = BirthDate($birthYear, $birthMonth, $birthDay, $hideAge);
+          $hideAge = $flags == 1 || $birthYear == "" || $birthYear == "0";
+          $birthDate = FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+          $birthDateDate = BirthDate($birthYear, $birthMonth, $birthDay, $hideAge);
 
-        echo "<tr>";
-        echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
-        echo "	<span class=\"fa-stack\">";
-        echo "	<i class=\"fa fa-square fa-stack-2x\"></i>";
-        echo "	<i class=\"fa fa-search-plus fa-stack-1x fa-inverse\"></i>";
-        echo "	</span></a></td>";
-        echo "<td>" . $firstName . "</td>";
-        echo "<td>" . $LastName . "</td>";
-        echo "<td>" . $birthDate . "</td>";
-        echo "<td data-birth-date='" . ($hideAge ? '' : $birthDateDate->format("Y-m-d")) . "'></td>";
-        echo "<td>" . $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip . "</td>";
-        echo "</tr>";
+          echo "<tr>";
+          echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
+          echo "	<span class=\"fa-stack\">";
+          echo "	<i class=\"fa fa-square fa-stack-2x\"></i>";
+          echo "	<i class=\"fa fa-search-plus fa-stack-1x fa-inverse\"></i>";
+          echo "	</span></a></td>";
+          echo "<td>" . $firstName . "</td>";
+          echo "<td>" . $LastName . "</td>";
+          echo "<td>" . $birthDate . "</td>";
+          echo "<td data-birth-date='" . ($hideAge ? '' : $birthDateDate->format("Y-m-d")) . "'></td>";
+          echo "<td>" . $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip . "</td>";
+          echo "</tr>";
       }
 
       ?>
@@ -211,7 +215,8 @@ require "../Include/Header.php";
     </table>
   </div>
 </div>
-<?php if ($_SESSION['bManageGroups']) { ?>
+<?php if ($_SESSION['bManageGroups']) {
+          ?>
   <div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label"
        aria-hidden="true">
     <div class="modal-dialog">
@@ -272,5 +277,6 @@ require "../Include/Header.php";
   </script>
   <script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 
-<?php }
+<?php 
+      }
 require "../Include/Footer.php" ?>
