@@ -74,7 +74,8 @@ composer update
 
 echo "================   Build ORM Classes    =================="
 
-/vagrant/src/vendor/bin/propel model:build --config-dir=/vagrant/propel
+cd /vagrant
+src/vendor/bin/propel model:build --config-dir=propel
 composer dump-autoload
 
 echo "=========================================================="
