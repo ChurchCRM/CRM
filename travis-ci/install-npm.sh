@@ -12,6 +12,5 @@ sudo apt-get install -y nodejs
 echo "===============   npm  install -g       ================="
 cd ../
 # install global npm dependencies
-sudo npm install -g npm@latest --unsafe-perm --no-bin-links
 echo "===============   npm  install          ================="
 npm install
