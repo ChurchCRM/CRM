@@ -12,18 +12,17 @@
  ******************************************************************************/
 
 //Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 // Security: User must have Manage Groups permission
-if (!$_SESSION['bAdmin'])
-{
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bAdmin']) {
+    Redirect('Menu.php');
+    exit;
 }
 
 //Set the page title
-$sPageTitle = gettext("Generate Seed Data");
+$sPageTitle = gettext('Generate Seed Data');
 require 'Include/Header.php';
 ?>
 
@@ -31,13 +30,13 @@ require 'Include/Header.php';
 <div class="box">
 	<div class="box-body">
 		<div class="form-group">
-			<label for="Num_Families"><?= gettext("Families to Seed")?></label>
+			<label for="Num_Families"><?= gettext('Families to Seed')?></label>
 			<input type="text" name="Num_Families" id="Num_Families" value="20">
-			<button type="submit" class="btn btn-primary ajax" value="<?= gettext("Generate Seed Data")?>" id="SeedSubmit" name="SeedSubmit"><?= gettext("Generate Seed Data")?></button>
+			<button type="submit" class="btn btn-primary ajax" value="<?= gettext('Generate Seed Data')?>" id="SeedSubmit" name="SeedSubmit"><?= gettext('Generate Seed Data')?></button>
 		</div>
 	</div>
     <div class="box box-footer">
-        <button type="button" class="btn btn-primary" value="Clear Results" name="ClearResults" onclick="javascript:$('#results').empty();"><?= gettext("Clear Results")?></button>
+        <button type="button" class="btn btn-primary" value="Clear Results" name="ClearResults" onclick="javascript:$('#results').empty();"><?= gettext('Clear Results')?></button>
         <div id="results"></div>
     </div>
 </div>
@@ -54,7 +53,7 @@ require 'Include/Header.php';
             encode      : true,
             beforeSend  : function () { 
                 $('#results').empty();
-                $('#results').append('<div class="text-center"><i class="fa fa-spinner fa-spin"></i><h3> <?= gettext("Loading Seed Data") ?> </h3></div>');
+                $('#results').append('<div class="text-center"><i class="fa fa-spinner fa-spin"></i><h3> <?= gettext('Loading Seed Data') ?> </h3></div>');
             }
         })
 		 .done(function(data) {
@@ -75,5 +74,5 @@ require 'Include/Header.php';
 <!-- PACE -->
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
 <?php
-require "Include/Footer.php";
+require 'Include/Footer.php';
 ?>

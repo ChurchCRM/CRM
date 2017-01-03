@@ -13,29 +13,28 @@
  ******************************************************************************/
 
 // Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly")) {
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
+    Redirect('Menu.php');
+    exit;
 }
 
-
 // Set the page title and include HTML header
-$sPageTitle = gettext("Pledge Reminder Report");
-require "Include/Header.php";
+$sPageTitle = gettext('Pledge Reminder Report');
+require 'Include/Header.php';
 
 // Is this the second pass?
-if (isset($_POST["Submit"])) {
-	$iFYID = FilterInput($_POST["FYID"], 'int');
-   $_SESSION['idefaultFY'] = $iFYID;
-   Redirect ("Reports/ReminderReport.php?FYID=" . $_SESSION['idefaultFY']);
+if (isset($_POST['Submit'])) {
+    $iFYID = FilterInput($_POST['FYID'], 'int');
+    $_SESSION['idefaultFY'] = $iFYID;
+    Redirect('Reports/ReminderReport.php?FYID='.$_SESSION['idefaultFY']);
 } else {
-   $iFYID = $_SESSION['idefaultFY'];
+    $iFYID = $_SESSION['idefaultFY'];
 }
 
 ?>
@@ -45,9 +44,9 @@ if (isset($_POST["Submit"])) {
 <table cellpadding="3" align="left">
 
    <tr>
-      <td class="LabelColumn"><?= gettext("Fiscal Year") ?>:</td>
+      <td class="LabelColumn"><?= gettext('Fiscal Year') ?>:</td>
       <td class="TextColumnWithBottomBorder">
-		<?php PrintFYIDSelect ($iFYID, "FYID") ?>
+		<?php PrintFYIDSelect($iFYID, 'FYID') ?>
       </td>
    </tr>
 
@@ -55,8 +54,8 @@ if (isset($_POST["Submit"])) {
 
 <table cellpadding="3" align="left">
    <tr>
-      <input type="submit" class="btn" name="Submit" value="<?= gettext("Create Report") ?>">
-      <input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='Menu.php';">
+      <input type="submit" class="btn" name="Submit" value="<?= gettext('Create Report') ?>">
+      <input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='Menu.php';">
    </tr>
 </table>
 
@@ -65,5 +64,5 @@ if (isset($_POST["Submit"])) {
 </form>
 
 <?php
-require "Include/Footer.php";
+require 'Include/Footer.php';
 ?>

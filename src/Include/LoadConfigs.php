@@ -31,24 +31,23 @@
  *
  ******************************************************************************/
 
-require_once dirname(__FILE__) . '/../vendor/autoload.php';
+require_once dirname(__FILE__).'/../vendor/autoload.php';
 
-use ChurchCRM\Service\SystemService;
-use ChurchCRM\Version;
 use ChurchCRM\ConfigQuery;
+use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\LocaleInfo;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-use Propel\Runtime\Propel;
-use Propel\Runtime\Connection\ConnectionManagerSingle;
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\SQLUtils;
+use ChurchCRM\Version;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use Propel\Runtime\Connection\ConnectionManagerSingle;
+use Propel\Runtime\Propel;
 
 function system_failure($message, $header = 'Setup failure')
 {
-    require("Include/HeaderNotLoggedIn.php");
-    ?>
+    require 'Include/HeaderNotLoggedIn.php'; ?>
     <div class='container'>
         <h3>ChurchCRM – <?= _($header) ?></h3>
         <div class='alert alert-danger text-center' style='margin-top: 20px;'>
@@ -56,7 +55,7 @@ function system_failure($message, $header = 'Setup failure')
         </div>
     </div>
     <?php
-    require("Include/FooterNotLoggedIn.php");
+    require 'Include/FooterNotLoggedIn.php';
     exit();
 }
 
@@ -69,44 +68,40 @@ try {
 
 SystemURLs::checkAllowedURL($bLockURL, $URL);
 
-
 $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
-or system_failure("Could not connect to MySQL on <strong>" . $sSERVERNAME . "</strong> as <strong>" . $sUSER . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
+or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
 
-mysqli_set_charset($cnInfoCentral, "utf8mb4");
+mysqli_set_charset($cnInfoCentral, 'utf8mb4');
 
 mysqli_select_db($cnInfoCentral, $sDATABASE)
-or system_failure("Could not connect to the MySQL database <strong>" . $sDATABASE . "</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: " . mysqli_error($cnInfoCentral));
+or system_failure('Could not connect to the MySQL database <strong>'.$sDATABASE.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
 
 // Initialize the session
-session_name('CRM@' . $sRootPath);
+session_name('CRM@'.$sRootPath);
 session_start();
 
 // ==== ORM
-$dbClassName = "\\Propel\\Runtime\\Connection\\ConnectionWrapper";
+$dbClassName = '\\Propel\\Runtime\\Connection\\ConnectionWrapper';
 //DEBUG $dbClassName = "\\Propel\Runtime\Connection\DebugPDO";
 
 $serviceContainer = Propel::getServiceContainer();
 $serviceContainer->checkVersion('2.0.0-dev');
 $serviceContainer->setAdapterClass('default', 'mysql');
 $manager = new ConnectionManagerSingle();
-$manager->setConfiguration(array(
-    'dsn' => 'mysql:host=' . $sSERVERNAME . ';port=3306;dbname=' . $sDATABASE,
-    'user' => $sUSER,
+$manager->setConfiguration([
+    'dsn'      => 'mysql:host='.$sSERVERNAME.';port=3306;dbname='.$sDATABASE,
+    'user'     => $sUSER,
     'password' => $sPASSWORD,
-    'settings' =>
-        array(
+    'settings' => [
             'charset' => 'utf8mb4',
-            'queries' =>
-                array(),
-        ),
-    'classname' => $dbClassName,
-    'model_paths' =>
-        array(
+            'queries' => [],
+        ],
+    'classname'   => $dbClassName,
+    'model_paths' => [
             0 => 'src',
             1 => 'vendor',
-        ),
-));
+        ],
+]);
 $manager->setName('default');
 $serviceContainer->setConnectionManager('default', $manager);
 $serviceContainer->setDefaultDatasource('default');
@@ -125,8 +120,8 @@ if (count($results) == 0) {
     $version = new Version();
     $version->setVersion($systemService->getInstalledVersion());
     $version->setUpdateStart(new DateTime());
-    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/install/Install.sql",$connection);
-    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . "/mysql/upgrade/update_config.sql",$connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/install/Install.sql', $connection);
+    SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/upgrade/update_config.sql', $connection);
     $version->setUpdateEnd(new DateTime());
     $version->save();
 }
@@ -134,14 +129,13 @@ if (count($results) == 0) {
 // Read values from config table into local variables
 // **************************************************
 
-
 SystemConfig::init(ConfigQuery::create()->find());
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
     // Load user variables from user config table.
     // **************************************************
-    $sSQL = "SELECT ucfg_name, ucfg_value AS value "
-        . "FROM userconfig_ucfg WHERE ucfg_per_ID='" . $_SESSION['iUserID'] . "'";
+    $sSQL = 'SELECT ucfg_name, ucfg_value AS value '
+        ."FROM userconfig_ucfg WHERE ucfg_per_ID='".$_SESSION['iUserID']."'";
     $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
     if ($rsConfig) {
         while (list($ucfg_name, $value) = mysqli_fetch_row($rsConfig)) {
@@ -153,11 +147,11 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
 
 $sMetaRefresh = '';  // Initialize to empty
 
-if (SystemConfig::getValue("sTimeZone")) {
-    date_default_timezone_set(SystemConfig::getValue("sTimeZone"));
+if (SystemConfig::getValue('sTimeZone')) {
+    date_default_timezone_set(SystemConfig::getValue('sTimeZone'));
 }
 
-$localeInfo = new LocaleInfo(SystemConfig::getValue("sLanguage"));
+$localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
 setlocale(LC_ALL, $localeInfo->getLocale());
 
 // Get numeric and monetary locale settings.
@@ -168,7 +162,7 @@ $aLocaleInfo = $localeInfo->getLocaleInfo();
 setlocale(LC_NUMERIC, 'C');
 
 $domain = 'messages';
-$sLocaleDir = SystemURLs::getDocumentRoot() . '/locale';
+$sLocaleDir = SystemURLs::getDocumentRoot().'/locale';
 
 bind_textdomain_codeset($domain, 'UTF-8');
 bindtextdomain($domain, $sLocaleDir);
