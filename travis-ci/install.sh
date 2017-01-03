@@ -13,3 +13,6 @@ sudo npm install
 # composer install
 cd src
 composer install
+cd ../
+src/vendor/bin/propel model:build --config-dir=propel
+composer dump-autoload
