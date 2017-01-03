@@ -18,4 +18,4 @@ composer dump-autoload
 cd ../
 # install global npm dependencies
 sudo npm install -g npm@latest --unsafe-perm --no-bin-links
-sudo npm install --unsafe-perm --no-bin-links
+npm install
