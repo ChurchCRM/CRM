@@ -72,7 +72,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
               <i class="fa fa-cog"></i> <?= _('Edit Custom Family Fields') ?>
             </a>
           </li>
-        <?php 
+        <?php
 } ?>
       </ul>
       <br/>
@@ -95,7 +95,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
               <i class="fa fa-cog"></i> <?= _('Edit Custom Person Fields') ?>
             </a>
           </li>
-        <?php 
+        <?php
 } ?>
       </ul>
       <br/>
@@ -132,7 +132,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
               <i class="fa fa-cog"></i> <?= _('Edit Donation Funds') ?>
             </a>
           </li>
-        <?php 
+        <?php
 } ?>
       </ul>
       <!-- /.control-sidebar-menu -->
@@ -161,7 +161,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
             </li>
           </ul>
           <hr/>
-        <?php 
+        <?php
 } ?>
         <ul class="control-sidebar-menu">
           <?php if ($isAdmin) {
@@ -190,7 +190,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                 </div>
               </a>
             </li>
-          <?php 
+          <?php
 } ?>
           <li>
             <a href="<?= $sRootPath ?>/CSVExport.php">
@@ -214,7 +214,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
               </a>
             </li>
           </ul>
-        <?php 
+        <?php
 } else {
     echo _('Please contact your admin to change the system settings.');
 } ?>
@@ -239,12 +239,13 @@ $isAdmin = $_SESSION['user']->isAdmin();
           <a href="<?= $task['link'] ?>">
             <i class="menu-icon fa fa-fw <?= $taskIcon ?>"></i>
             <div class="menu-info">
-              <h4 class="control-sidebar-subheading"><?= $task['title'] ?></h4>
+              <h4 class="control-sidebar-subheading" title="<?= $task['desc'] ?>"><?= $task['title'] ?></h4>
             </div>
           </a>
+
         </li>
         <!-- end task item -->
-      <?php 
+      <?php
 } ?>
       </ul>
       <!--
@@ -311,7 +312,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
       showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");
     });
   </script>
-<?php 
+<?php
 } ?>
 
 <?php if ($_SESSION['bAdmin']) {
