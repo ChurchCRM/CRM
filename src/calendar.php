@@ -9,8 +9,6 @@ $calenderService = new CalendarService();
 $sPageTitle = gettext("Church Calendar");
 require "Include/Header.php"; ?>
 
-<link rel="stylesheet" href="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.min.css">
-<link rel="stylesheet" href="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.print.css" media="print">
 <style>
   @media print {
     a[href]:after {
