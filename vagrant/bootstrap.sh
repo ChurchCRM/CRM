@@ -16,6 +16,7 @@ CRM_DB_NAME="churchcrm"
 echo "=========================================================="
 echo "====================   DB Setup  ========================="
 echo "=========================================================="
+
 RET=1
 while [[ RET -ne 0 ]]; do
     echo "Database: Waiting for confirmation of MySQL service startup"
@@ -47,18 +48,15 @@ echo "Database: tables and metadata deployed"
 CODE_VER=`grep version /vagrant/src/composer.json | cut -d ',' -f1 | cut -d'"' -f4`
 
 echo "=========================================================="
-echo "==============   Development DB Setup $CODE_VER ============="
+echo "===========  Setup Dev to version: $CODE_VER ============="
 echo "=========================================================="
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_VAGRANT_SCRIPT
 sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "INSERT INTO churchcrm.version_ver (ver_version, ver_update_start) VALUES ('$CODE_VER', now());"
 echo "Database: development seed data deployed"
 
-echo "=========================================================="
-echo "===============  MV Config.php           ================="
-echo "=========================================================="
-
 cp /vagrant/vagrant/Config.php /vagrant/src/Include/
+echo "copied Config.php "
 
 echo "=========================================================="
 echo "===============   Composer PHP           ================="
@@ -77,14 +75,14 @@ echo "=========================================================="
 
 cd /vagrant
 sudo npm install -g npm@latest --unsafe-perm --no-bin-links
-sudo npm install --unsafe-perm --no-bin-links
+npm install --unsafe-perm --no-bin-links
 
 echo "=========================================================="
 echo "=================   MailCatcher Setup  ==================="
 echo "=========================================================="
 
 sudo pkill mailcatcher
-sudo /home/vagrant/.rbenv/versions/2.2.2/bin/mailcatcher --ip 0.0.0.0
+mailcatcher --ip 0.0.0.0
 
 echo "=========================================================="
 echo "=========================================================="
