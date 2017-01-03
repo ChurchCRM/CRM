@@ -34,13 +34,14 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 // Security
-if (!$_SESSION['bAdmin'])
-{
+if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
     exit;
 }
 
-if ($_GET['all'] == 'true') $bDoAll = TRUE;
+if ($_GET['all'] == 'true') {
+    $bDoAll = true;
+}
 
 //Set the page title
 $sPageTitle = gettext('Convert Individuals to Families');
@@ -140,8 +141,9 @@ while ($aRow = mysqli_fetch_array($rsList)) {
     echo '*****************************************';
 
 
-    if (!$bDoAll)
+    if (!$bDoAll) {
         break;
+    }
 }
 echo '<br><br>';
 
@@ -149,4 +151,3 @@ echo '<a href="ConvertIndividualToFamily.php">' . gettext('Convert Next') . '</a
 echo '<a href="ConvertIndividualToFamily.php?all=true">' . gettext('Convert All') . '</a><br>';
 
 require 'Include/Footer.php';
-?>

@@ -26,18 +26,18 @@ use ChurchCRM\ListOptionQuery;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups']) {
-  Redirect("Menu.php");
-  exit;
+    Redirect("Menu.php");
+    exit;
 }
 
 //Set the page title
 $sPageTitle = gettext("Group Editor");
 $groupService = new GroupService();
 //Get the GroupID from the querystring.  Redirect to Menu if no groupID is present, since this is an edit-only form.
-if (array_key_exists("GroupID", $_GET))
-  $iGroupID = FilterInput($_GET["GroupID"], 'int');
-else {
-  Redirect("GroupList.php");
+if (array_key_exists("GroupID", $_GET)) {
+    $iGroupID = FilterInput($_GET["GroupID"], 'int');
+} else {
+    Redirect("GroupList.php");
 }
 
 $thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.
@@ -92,10 +92,11 @@ require "Include/Header.php";
               <option value="0">-----------------------</option>
               <?php
               foreach ($rsGroupTypes as $groupType) {
-                echo "<option value=\"" . $groupType->getOptionId() . "\"";
-                if ($thisGroup->getType() == $groupType->getOptionId())
-                  echo " selected";
-                echo ">" . $groupType->getOptionName() . "</option>";
+                  echo "<option value=\"" . $groupType->getOptionId() . "\"";
+                  if ($thisGroup->getType() == $groupType->getOptionId()) {
+                      echo " selected";
+                  }
+                  echo ">" . $groupType->getOptionName() . "</option>";
               }
               ?>
             </select>
@@ -106,7 +107,7 @@ require "Include/Header.php";
             <?php
 // Show Role Clone fields only when adding new group
             if (strlen($iGroupID) < 1) {
-              ?>
+                ?>
               <b><?= gettext("Group Member Roles") ?>:</b>
 
               <?= gettext("Clone roles") ?>:
@@ -119,10 +120,10 @@ require "Include/Header.php";
 
                 <?php
                 foreach ($rsGroupRoleSeed as $groupRoleTemplate) {
-                  echo "<option value=\"" . $groupRoleTemplate['grp_ID'] . "\">" . $groupRoleTemplate['grp_Name'] . "</option>";
-                }
-                ?>
+                    echo "<option value=\"" . $groupRoleTemplate['grp_ID'] . "\">" . $groupRoleTemplate['grp_Name'] . "</option>";
+                } ?>
               </select><?php
+
             }
             ?>
           </div>
@@ -134,13 +135,12 @@ require "Include/Header.php";
 
             <?php
             if ($thisGroup->getHasSpecialProps()) {
-              echo gettext('Enabled'). "<br/>";
-              echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">' . gettext("Disable Group Specific Properties") . '</button><br/>';
-              echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID=' . $iGroupID . '">' . gettext("Edit Group-Specific Properties Form") . ' </a>';
-            }
-            else {
-              echo gettext('Disabled'). "<br/>";
-              echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">'.gettext("Enable Group Specific Properties").'</button>&nbsp;';
+                echo gettext('Enabled'). "<br/>";
+                echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">' . gettext("Disable Group Specific Properties") . '</button><br/>';
+                echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID=' . $iGroupID . '">' . gettext("Edit Group-Specific Properties Form") . ' </a>';
+            } else {
+                echo gettext('Disabled'). "<br/>";
+                echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">'.gettext("Enable Group Specific Properties").'</button>&nbsp;';
             }
             ?>
           </div>

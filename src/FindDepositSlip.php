@@ -24,8 +24,8 @@ $sPageTitle = gettext("Deposit Listing");
 
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance']) {
-  Redirect("index.php");
-  exit;
+    Redirect("index.php");
+    exit;
 }
 
 require "Include/Header.php";

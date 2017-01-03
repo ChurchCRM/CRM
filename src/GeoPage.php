@@ -28,63 +28,64 @@ require "Include/GeoCoder.php";
 
 use ChurchCRM\dto\SystemConfig;
 
-function CompareDistance ($elem1, $elem2)
+function CompareDistance($elem1, $elem2)
 {
-  if ($elem1["Distance"] > $elem2["Distance"])
-    return (1);
-  else if ($elem1["Distance"] == $elem2["Distance"])
-    return (0);
-  else
-    return (-1);
+    if ($elem1["Distance"] > $elem2["Distance"]) {
+        return (1);
+    } elseif ($elem1["Distance"] == $elem2["Distance"]) {
+        return (0);
+    } else {
+        return (-1);
+    }
 }
 
-function SortByDistance ($array)
+function SortByDistance($array)
 {
-  $newArr = $array;
-  usort ($newArr, 'CompareDistance');
-  return ($newArr);
+    $newArr = $array;
+    usort($newArr, 'CompareDistance');
+    return ($newArr);
 }
 
 // Create an associated array of family information sorted by distance from
 // a particular family.
-function FamilyInfoByDistance ($iFamily)
+function FamilyInfoByDistance($iFamily)
 {
-	// Handle the degenerate case of no family selected by just making the array without
-	// distance and bearing data, and don't bother to sort it.
-	if ($iFamily) {
-		// Get info for the selected family
-		$sSQL = "SELECT fam_ID as selected_fam_ID, fam_Name as selected_fam_Name, fam_Address1 as selected_fam_Address1, fam_City as selected_fam_City, fam_State as selected_fam_State, fam_Zip as selected_fam_Zip, fam_Latitude as selected_fam_Latitude, fam_Longitude as selected_fam_Longitude from family_fam WHERE fam_ID=" . $iFamily;
-		$rsFamilies = RunQuery ($sSQL);
-		extract (mysqli_fetch_array($rsFamilies));
-	}
+    // Handle the degenerate case of no family selected by just making the array without
+    // distance and bearing data, and don't bother to sort it.
+    if ($iFamily) {
+        // Get info for the selected family
+        $sSQL = "SELECT fam_ID as selected_fam_ID, fam_Name as selected_fam_Name, fam_Address1 as selected_fam_Address1, fam_City as selected_fam_City, fam_State as selected_fam_State, fam_Zip as selected_fam_Zip, fam_Latitude as selected_fam_Latitude, fam_Longitude as selected_fam_Longitude from family_fam WHERE fam_ID=" . $iFamily;
+        $rsFamilies = RunQuery($sSQL);
+        extract(mysqli_fetch_array($rsFamilies));
+    }
 
-	// Compute distance and bearing from the selected family to all other families
-	$sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude from family_fam";
+    // Compute distance and bearing from the selected family to all other families
+    $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude from family_fam";
 
-	$rsFamilies = RunQuery ($sSQL);
-	while ($aFam = mysqli_fetch_array($rsFamilies)) {
-		extract ($aFam);
+    $rsFamilies = RunQuery($sSQL);
+    while ($aFam = mysqli_fetch_array($rsFamilies)) {
+        extract($aFam);
 
-		if ($iFamily) {
-			$results[$fam_ID]["Distance"] = floatval(LatLonDistance ($selected_fam_Latitude, $selected_fam_Longitude, $fam_Latitude, $fam_Longitude));
-			$results[$fam_ID]["Bearing"] = LatLonBearing ($selected_fam_Latitude, $selected_fam_Longitude, $fam_Latitude, $fam_Longitude);
-		}
-		$results[$fam_ID]["fam_Name"] = $fam_Name;
-		$results[$fam_ID]["fam_Address1"] = $fam_Address1;
-		$results[$fam_ID]["fam_City"] = $fam_City;
-		$results[$fam_ID]["fam_State"] = $fam_State;
-		$results[$fam_ID]["fam_Zip"] = $fam_Zip;
-		$results[$fam_ID]["fam_Latitude"] = $fam_Latitude;
-		$results[$fam_ID]["fam_Longitude"] = $fam_Longitude;
+        if ($iFamily) {
+            $results[$fam_ID]["Distance"] = floatval(LatLonDistance($selected_fam_Latitude, $selected_fam_Longitude, $fam_Latitude, $fam_Longitude));
+            $results[$fam_ID]["Bearing"] = LatLonBearing($selected_fam_Latitude, $selected_fam_Longitude, $fam_Latitude, $fam_Longitude);
+        }
+        $results[$fam_ID]["fam_Name"] = $fam_Name;
+        $results[$fam_ID]["fam_Address1"] = $fam_Address1;
+        $results[$fam_ID]["fam_City"] = $fam_City;
+        $results[$fam_ID]["fam_State"] = $fam_State;
+        $results[$fam_ID]["fam_Zip"] = $fam_Zip;
+        $results[$fam_ID]["fam_Latitude"] = $fam_Latitude;
+        $results[$fam_ID]["fam_Longitude"] = $fam_Longitude;
         $results[$fam_ID]["fam_ID"] = $fam_ID;
-	}
+    }
 
-	if ($iFamily) {
-		$resultsByDistance = SortByDistance($results);
-	} else {
-		$resultsByDistance = $results;
-	}
-	return ($resultsByDistance);
+    if ($iFamily) {
+        $resultsByDistance = SortByDistance($results);
+    } else {
+        $resultsByDistance = $results;
+    }
+    return ($resultsByDistance);
 }
 
 /* End of functions ... code starts here */
@@ -97,8 +98,7 @@ $sClassSQL  = "SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence
 $rsClassification = RunQuery($sClassSQL);
 unset($aClassificationName);
 $aClassificationName[0] = gettext("Unassigned");
-while ($aRow = mysqli_fetch_array($rsClassification))
-{
+while ($aRow = mysqli_fetch_array($rsClassification)) {
     extract($aRow);
     $aClassificationName[intval($lst_OptionID)]=$lst_OptionName;
 }
@@ -108,8 +108,7 @@ $sFamRoleSQL  = "SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequen
 $rsFamilyRole = RunQuery($sFamRoleSQL);
 unset($aFamilyRoleName);
 $aFamilyRoleName[0] = gettext("Unassigned");
-while ($aRow = mysqli_fetch_array($rsFamilyRole))
-{
+while ($aRow = mysqli_fetch_array($rsFamilyRole)) {
     extract($aRow);
     $aFamilyRoleName[intval($lst_OptionID)]=$lst_OptionName;
 }
@@ -117,104 +116,113 @@ while ($aRow = mysqli_fetch_array($rsFamilyRole))
 // Get the Family if specified in the query string
 $iFamily = -1;
 $iNumNeighbors = 15;
-if (array_key_exists ("Family", $_GET))
-	$iFamily = FilterInput($_GET["Family"],'int');
-if (array_key_exists ("NumNeighbors", $_GET))
-	$iNumNeighbors = FilterInput ($_GET["NumNeighbors"],'int');
+if (array_key_exists("Family", $_GET)) {
+    $iFamily = FilterInput($_GET["Family"], 'int');
+}
+if (array_key_exists("NumNeighbors", $_GET)) {
+    $iNumNeighbors = FilterInput($_GET["NumNeighbors"], 'int');
+}
 
 $nMaxDistance = 10; // miles, default value
 
-$bClassificationPost = FALSE;
+$bClassificationPost = false;
 $sClassificationList = "";
 $sCoordFileFormat = "";
 $sCoordFileFamilies = "";
 $sCoordFileName = "";
 
 //Is this the second pass?
-if (    isset($_POST["FindNeighbors"]) ||
+if (isset($_POST["FindNeighbors"]) ||
         isset($_POST["DataFile"]) ||
-        isset($_POST["PersonIDList"]))
-{
-	//Get all the variables from the request object and assign them locally
-	$iFamily = FilterInput($_POST["Family"]);
-	$iNumNeighbors = FilterInput ($_POST["NumNeighbors"]);
-	$nMaxDistance = FilterInput ($_POST["MaxDistance"]);
-	$sCoordFileName = FilterInput ($_POST["CoordFileName"]);
-	if (array_key_exists ("CoordFileFormat", $_POST))
-		$sCoordFileFormat = FilterInput ($_POST["CoordFileFormat"]);
-	if (array_key_exists ("CoordFileFamilies", $_POST))
-		$sCoordFileFamilies = FilterInput ($_POST["CoordFileFamilies"]);
+        isset($_POST["PersonIDList"])) {
+    //Get all the variables from the request object and assign them locally
+    $iFamily = FilterInput($_POST["Family"]);
+    $iNumNeighbors = FilterInput($_POST["NumNeighbors"]);
+    $nMaxDistance = FilterInput($_POST["MaxDistance"]);
+    $sCoordFileName = FilterInput($_POST["CoordFileName"]);
+    if (array_key_exists("CoordFileFormat", $_POST)) {
+        $sCoordFileFormat = FilterInput($_POST["CoordFileFormat"]);
+    }
+    if (array_key_exists("CoordFileFamilies", $_POST)) {
+        $sCoordFileFamilies = FilterInput($_POST["CoordFileFamilies"]);
+    }
 
     foreach ($aClassificationName as $key => $value) {
         $sClassNum = "Classification" . $key;
-        if (isset($_POST["$sClassNum"]))
-        {
-            $bClassificationPost = TRUE;
-            if (strlen($sClassificationList))
+        if (isset($_POST["$sClassNum"])) {
+            $bClassificationPost = true;
+            if (strlen($sClassificationList)) {
                 $sClassificationList .= ",";
+            }
             $sClassificationList .= $key;
         }
     }
 }
 
 // Check if cart needs to be updated
-if(isset($_POST["PersonIDList"]))
-{
+if (isset($_POST["PersonIDList"])) {
     $aIDsToProcess = explode(",", $_POST["PersonIDList"]);
 
     //Do we add these people to cart?
-    if(isset($_POST["AddAllToCart"]))
-    {   AddArrayToPeopleCart($aIDsToProcess); }
+    if (isset($_POST["AddAllToCart"])) {
+        AddArrayToPeopleCart($aIDsToProcess);
+    }
 
     //Do we intersect these people with cart (keep values that are in both arrays)
-    if(isset($_POST["IntersectCart"]))
-    {   IntersectArrayWithPeopleCart($aIDsToProcess); }
+    if (isset($_POST["IntersectCart"])) {
+        IntersectArrayWithPeopleCart($aIDsToProcess);
+    }
 
-    if(isset($_POST["RemoveFromCart"]))
-    {   RemoveArrayFromPeopleCart($aIDsToProcess); }
+    if (isset($_POST["RemoveFromCart"])) {
+        RemoveArrayFromPeopleCart($aIDsToProcess);
+    }
 
     //sort the cart
     sort($_SESSION['aPeopleCart']);
 }
 
-if (isset($_POST["DataFile"]))
-{
-	$resultsByDistance = FamilyInfoByDistance ($iFamily);
+if (isset($_POST["DataFile"])) {
+    $resultsByDistance = FamilyInfoByDistance($iFamily);
 
-	if ($sCoordFileFormat == "GPSVisualizer")
-		$filename = $sCoordFileName . ".csv";
-	else if ($sCoordFileFormat == "StreetAtlasUSA")
-		$filename = $sCoordFileName . ".txt";
+    if ($sCoordFileFormat == "GPSVisualizer") {
+        $filename = $sCoordFileName . ".csv";
+    } elseif ($sCoordFileFormat == "StreetAtlasUSA") {
+        $filename = $sCoordFileName . ".txt";
+    }
 
-	header("Content-Disposition: attachment; filename=$filename");
+    header("Content-Disposition: attachment; filename=$filename");
 
-	if ($sCoordFileFormat == "GPSVisualizer")
-		echo "Name,Latitude,Longitude\n";
+    if ($sCoordFileFormat == "GPSVisualizer") {
+        echo "Name,Latitude,Longitude\n";
+    }
 
-	$counter = 0;
+    $counter = 0;
 
-	foreach ($resultsByDistance as $oneResult) {
-		if ($sCoordFileFamilies == "NeighborFamilies") {
-			if ($counter++ == $iNumNeighbors)
-				break;
-			if ($oneResult["Distance"] > $nMaxDistance)
-				break;
-		}
+    foreach ($resultsByDistance as $oneResult) {
+        if ($sCoordFileFamilies == "NeighborFamilies") {
+            if ($counter++ == $iNumNeighbors) {
+                break;
+            }
+            if ($oneResult["Distance"] > $nMaxDistance) {
+                break;
+            }
+        }
 
-		// Skip over the ones with no data
-		if ($oneResult["fam_Latitude"] == 0)
-			continue;
+        // Skip over the ones with no data
+        if ($oneResult["fam_Latitude"] == 0) {
+            continue;
+        }
 
-		if ($sCoordFileFormat == "GPSVisualizer") {
-			echo $oneResult["fam_Name"] . "," . $oneResult["fam_Latitude"] . "," . $oneResult["fam_Longitude"] . "\n";
-		} else if ($sCoordFileFormat == "StreetAtlasUSA") {
-			echo "BEGIN SYMBOL\n";
-			echo $oneResult["fam_Latitude"] . "," . $oneResult["fam_Longitude"] . "," . $oneResult["fam_Name"] . "," . "Green Star\n";
-			echo "END\n";
-		}
-	}
+        if ($sCoordFileFormat == "GPSVisualizer") {
+            echo $oneResult["fam_Name"] . "," . $oneResult["fam_Latitude"] . "," . $oneResult["fam_Longitude"] . "\n";
+        } elseif ($sCoordFileFormat == "StreetAtlasUSA") {
+            echo "BEGIN SYMBOL\n";
+            echo $oneResult["fam_Latitude"] . "," . $oneResult["fam_Longitude"] . "," . $oneResult["fam_Name"] . "," . "Green Star\n";
+            echo "END\n";
+        }
+    }
 
-	exit;
+    exit;
 }
 
 require "Include/Header.php";
@@ -231,13 +239,14 @@ $rsFamilies = RunQuery($sSQL);
 echo "<tr><td class=\"LabelColumn\">" . gettext("Select Family:") . "</td>\n";
 echo "<td class=\"TextColumn\">\n";
 echo "<select name=\"Family\" size=\"8\">";
-while ($aRow = mysqli_fetch_array($rsFamilies))
-{
-	extract($aRow);
+while ($aRow = mysqli_fetch_array($rsFamilies)) {
+    extract($aRow);
 
-	echo "\n<option value=\"" . $fam_ID . "\"";
-	if ($iFamily == $fam_ID) { echo " selected"; }
-	echo ">" . $fam_Name . "&nbsp;" . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+    echo "\n<option value=\"" . $fam_ID . "\"";
+    if ($iFamily == $fam_ID) {
+        echo " selected";
+    }
+    echo ">" . $fam_Name . "&nbsp;" . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 }
 echo "</select></td></tr>\n";
 
@@ -254,16 +263,16 @@ echo "</tr>\n";
 echo "<tr>\n";
 echo "	<td class=\"LabelColumn\">" . gettext("Data file format:") . "</td>\n";
 echo "	<td class=\"TextColumn\">\n";
-echo "      <input type=\"radio\" name=\"CoordFileFormat\" value=\"GPSVisualizer\"" . ($sCoordFileFormat=="GPSVisualizer" ? " checked" : "") . ">" . gettext ("GPS Visualizer");
-echo "      <input type=\"radio\" name=\"CoordFileFormat\" value=\"StreetAtlasUSA\"" . ($sCoordFileFormat=="StreetAtlasUSA" ? " checked" : "") . ">" . gettext ("Street Atlas USA");
+echo "      <input type=\"radio\" name=\"CoordFileFormat\" value=\"GPSVisualizer\"" . ($sCoordFileFormat=="GPSVisualizer" ? " checked" : "") . ">" . gettext("GPS Visualizer");
+echo "      <input type=\"radio\" name=\"CoordFileFormat\" value=\"StreetAtlasUSA\"" . ($sCoordFileFormat=="StreetAtlasUSA" ? " checked" : "") . ">" . gettext("Street Atlas USA");
 echo "  </td>\n";
 echo "</tr>\n";
 
 echo "<tr>\n";
 echo "	<td class=\"LabelColumn\">" . gettext("Include families in coordinate file:") . "</td>\n";
 echo "	<td class=\"TextColumn\">\n";
-echo "      <input type=\"radio\" name=\"CoordFileFamilies\" value=\"AllFamilies\"" . ($sCoordFileFamilies=="AllFamilies" ? " checked" : "") . ">" . gettext ("All Families");
-echo "      <input type=\"radio\" name=\"CoordFileFamilies\" value=\"NeighborFamilies\"" . ($sCoordFileFamilies=="NeighborFamilies" ? " checked" : "") . ">" . gettext ("Neighbor Families");
+echo "      <input type=\"radio\" name=\"CoordFileFamilies\" value=\"AllFamilies\"" . ($sCoordFileFamilies=="AllFamilies" ? " checked" : "") . ">" . gettext("All Families");
+echo "      <input type=\"radio\" name=\"CoordFileFamilies\" value=\"NeighborFamilies\"" . ($sCoordFileFamilies=="NeighborFamilies" ? " checked" : "") . ">" . gettext("Neighbor Families");
 echo "  </td>\n";
 echo "</tr>\n";
 
@@ -295,86 +304,86 @@ foreach ($aClassificationName as $key => $value) {
     echo '<input name="Classification'.$key.'" type="checkbox" ';
     echo 'id="'.$value.'" value="1" ';
     $sClassNum = "Classification" . $key;
-    if (!$bClassificationPost || isset($_POST["$sClassNum"]))
+    if (!$bClassificationPost || isset($_POST["$sClassNum"])) {
         echo "checked";
+    }
     echo "><br></td></tr>\n";
 }
 
 
 echo '</table></CENTER>';
 
-if (isset($_POST["FindNeighbors"]) && !$iFamily)
-{
+if (isset($_POST["FindNeighbors"]) && !$iFamily) {
     echo "<center><h2>Please select a Family</h2></center>";
 }
 
 $aPersonIDs = array();
 
-if (    $iFamily != 0 &&
+if ($iFamily != 0 &&
         (isset($_POST["FindNeighbors"]) ||
-        isset($_POST["PersonIDList"])))
-{
-	$resultsByDistance = FamilyInfoByDistance ($iFamily);
+        isset($_POST["PersonIDList"]))) {
+    $resultsByDistance = FamilyInfoByDistance($iFamily);
 
-	$counter = 0;
+    $counter = 0;
 
-	// Column Headings
-	echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n";
-	echo "<tr class='TableHeader'>\n";
-	echo "<td width='25'>".gettext("Distance") . "</td>\n";
-	echo "<td>".gettext("Direction")."</a></td>\n";
-	echo "<td>".gettext("Name")."</a></td>\n";
-	echo "<td>".gettext("Address")."</td>\n";
-	echo "<td>".gettext("City")."</td>\n";
-	echo "<td>".gettext("State")."</td>\n";
-	echo "<td>".gettext("Zip")."</td>\n";
-	echo "<td>".gettext("Latitude")."</td>\n";
-	echo "<td>".gettext("Longitude")."</td>\n";
-	echo "</tr>\n";
+    // Column Headings
+    echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n";
+    echo "<tr class='TableHeader'>\n";
+    echo "<td width='25'>".gettext("Distance") . "</td>\n";
+    echo "<td>".gettext("Direction")."</a></td>\n";
+    echo "<td>".gettext("Name")."</a></td>\n";
+    echo "<td>".gettext("Address")."</td>\n";
+    echo "<td>".gettext("City")."</td>\n";
+    echo "<td>".gettext("State")."</td>\n";
+    echo "<td>".gettext("Zip")."</td>\n";
+    echo "<td>".gettext("Latitude")."</td>\n";
+    echo "<td>".gettext("Longitude")."</td>\n";
+    echo "</tr>\n";
 
-	$sRowClass = 'RowColorA';
+    $sRowClass = 'RowColorA';
 
-	foreach ($resultsByDistance as $oneResult) {
+    foreach ($resultsByDistance as $oneResult) {
+        if ($counter >= $iNumNeighbors) {
+            break;
+        }
 
-		if ($counter >= $iNumNeighbors)
-			break;
-
-		if ($oneResult["Distance"] > $nMaxDistance)
-			break;
+        if ($oneResult["Distance"] > $nMaxDistance) {
+            break;
+        }
 
         // Determine how many people in this family will be listed
         $sSQL = "SELECT * from person_per where per_fam_ID=".$oneResult["fam_ID"];
-        if ($bClassificationPost)
-        {
+        if ($bClassificationPost) {
             $sSQL .= " AND per_cls_ID IN (".$sClassificationList.")";
         }
         $rsPeople = RunQuery($sSQL);
         $numListed = mysqli_num_rows($rsPeople);
 
-        if (!$numListed) // skip familes with zero members
+        if (!$numListed) { // skip familes with zero members
             continue;
+        }
 
         $counter++;
         //Alternate the row color
         $sRowClass = AlternateRowStyle($sRowClass);
 
         echo "\n".'<tr class="' .$sRowClass. '">';
-		echo "<td>" . $oneResult["Distance"] . "</td>";
-		echo "<td>" . $oneResult["Bearing"] . "</td>";
-		echo "<td><B>" . $oneResult["fam_Name"] . "</B></td>";
-		echo "<td>" . $oneResult["fam_Address1"] . "</td>";
-		echo "<td>" . $oneResult["fam_City"] . "</td>";
-		echo "<td>" . $oneResult["fam_State"] . "</td>";
-		echo "<td>" . $oneResult["fam_Zip"] . "</td>";
-		echo "<td>" . $oneResult["fam_Latitude"] . "</td>";
-		echo "<td>" . $oneResult["fam_Longitude"] . "</td>";
-		echo "</tr>\n";
+        echo "<td>" . $oneResult["Distance"] . "</td>";
+        echo "<td>" . $oneResult["Bearing"] . "</td>";
+        echo "<td><B>" . $oneResult["fam_Name"] . "</B></td>";
+        echo "<td>" . $oneResult["fam_Address1"] . "</td>";
+        echo "<td>" . $oneResult["fam_City"] . "</td>";
+        echo "<td>" . $oneResult["fam_State"] . "</td>";
+        echo "<td>" . $oneResult["fam_Zip"] . "</td>";
+        echo "<td>" . $oneResult["fam_Latitude"] . "</td>";
+        echo "<td>" . $oneResult["fam_Longitude"] . "</td>";
+        echo "</tr>\n";
 
 
         while ($aRow = mysqli_fetch_array($rsPeople)) {
             extract($aRow);
 
-            if (!in_array($per_ID,$aPersonIDs)) {
+            if (!in_array($per_ID, $aPersonIDs)) {
                 $aPersonIDs[] = $per_ID;
             }
 
@@ -384,8 +393,8 @@ if (    $iFamily != 0 &&
             echo '<td><br></td><td<br></td><td><br></td><td><br></td><td><br></td></tr>';
             echo "\n";
         }
-	}
-	echo '</table>' . "\n";
+    }
+    echo '</table>' . "\n";
 
     $sPersonIDList = implode(",", $aPersonIDs);
     echo '<input type="hidden" name="PersonIDList" value="'.$sPersonIDList.'">';
@@ -394,7 +403,6 @@ if (    $iFamily != 0 &&
     echo '<input name="IntersectCart" type="submit" class="btn" value="' . gettext("Intersect with Cart") . '">&nbsp';
     echo '<input name="RemoveFromCart" type="submit" class="btn" value="' . gettext("Remove from Cart") . '">';
     echo '</center><br>';
-
 }
 echo '</form></div></div>';
 require 'Include/Footer.php';

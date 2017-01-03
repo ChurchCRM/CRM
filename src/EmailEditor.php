@@ -29,10 +29,11 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (array_key_exists ('emaillist', $_POST))
-	$email_array = $_POST['emaillist'];
-else
-	$email_array = array ();
+if (array_key_exists('emaillist', $_POST)) {
+    $email_array = $_POST['emaillist'];
+} else {
+    $email_array = array();
+}
 
 $bcc_list = implode(", ", $email_array);
 
@@ -41,7 +42,7 @@ $sEmailSubject = "";
 $sEmailMessage = "";
 $sEmailAttachName = "";
 
-if (array_key_exists ('mysql', $_POST) && $_POST['mysql'] == 'true') {
+if (array_key_exists('mysql', $_POST) && $_POST['mysql'] == 'true') {
 
     // There is a subject and message already stored in mysql
     $sSQL = "SELECT * FROM email_message_pending_emp ".
@@ -57,10 +58,9 @@ if (array_key_exists ('mysql', $_POST) && $_POST['mysql'] == 'true') {
 
 // Security: Both global and user permissions needed to send email.
 // Otherwise, re-direct them to the main menu.
-if (!(SystemConfig::getValue("bEmailSend") && $bSendPHPMail))
-{
-	Redirect("Menu.php");
-	exit;
+if (!(SystemConfig::getValue("bEmailSend") && $bSendPHPMail)) {
+    Redirect("Menu.php");
+    exit;
 }
 
 // Set the page title and include HTML header
@@ -94,6 +94,4 @@ echo htmlspecialchars($sEmailMessage) . '</textarea>'."\n";
 echo '<br><input class="btn" type="submit" name="submit" value="';
 echo gettext('Save Email') . '"></form></td></tr></table></div>'."\n";
 
-require "Include/Footer.php"; 
-
-?>
+require "Include/Footer.php";

@@ -20,8 +20,8 @@ use ChurchCRM\dto\SystemConfig;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly")) {
-	Redirect("Menu.php");
-	exit;
+    Redirect("Menu.php");
+    exit;
 }
 
 
@@ -31,11 +31,11 @@ require "Include/Header.php";
 
 // Is this the second pass?
 if (isset($_POST["Submit"])) {
-	$iFYID = FilterInput($_POST["FYID"], 'int');
-   $_SESSION['idefaultFY'] = $iFYID;
-   Redirect ("Reports/ReminderReport.php?FYID=" . $_SESSION['idefaultFY']);
+    $iFYID = FilterInput($_POST["FYID"], 'int');
+    $_SESSION['idefaultFY'] = $iFYID;
+    Redirect("Reports/ReminderReport.php?FYID=" . $_SESSION['idefaultFY']);
 } else {
-   $iFYID = $_SESSION['idefaultFY'];
+    $iFYID = $_SESSION['idefaultFY'];
 }
 
 ?>
@@ -47,7 +47,7 @@ if (isset($_POST["Submit"])) {
    <tr>
       <td class="LabelColumn"><?= gettext("Fiscal Year") ?>:</td>
       <td class="TextColumnWithBottomBorder">
-		<?php PrintFYIDSelect ($iFYID, "FYID") ?>
+		<?php PrintFYIDSelect($iFYID, "FYID") ?>
       </td>
    </tr>
 

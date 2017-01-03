@@ -30,7 +30,7 @@
 
 // Include the function library
 require 'Include/Config.php';
-$bSuppressSessionTests = TRUE;
+$bSuppressSessionTests = true;
 require 'Include/Functions.php';
 // Initialize the variables
 
@@ -42,44 +42,57 @@ $systemService = new SystemService();
 
 // Is the user requesting to logoff or timed out?
 if (isset($_GET["Logoff"]) || isset($_GET['Timeout'])) {
-    if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == ''))
+    if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == '')) {
         $_SESSION['sshowPledges'] = 0;
-    if (!isset($_SESSION['sshowPayments']) || ($_SESSION['sshowPayments'] == ''))
+    }
+    if (!isset($_SESSION['sshowPayments']) || ($_SESSION['sshowPayments'] == '')) {
         $_SESSION['sshowPayments'] = 0;
-    if (!isset($_SESSION['bSearchFamily']) || ($_SESSION['bSearchFamily'] == ''))
+    }
+    if (!isset($_SESSION['bSearchFamily']) || ($_SESSION['bSearchFamily'] == '')) {
         $_SESSION['bSearchFamily'] = 0;
+    }
 
-   if (!empty($_SESSION['iUserID'])) {
-    $currentUser = UserQuery::create()->findOneByPersonId($_SESSION['iUserID']);
-    $currentUser->setShowPledges($_SESSION['sshowPledges']);
-    $currentUser->setShowPayments($_SESSION['sshowPayments']);
-    $currentUser->setShowSince($_SESSION['sshowSince']);
-    $currentUser->setDefaultFY($_SESSION['idefaultFY'] );
-    $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
+    if (!empty($_SESSION['iUserID'])) {
+        $currentUser = UserQuery::create()->findOneByPersonId($_SESSION['iUserID']);
+        $currentUser->setShowPledges($_SESSION['sshowPledges']);
+        $currentUser->setShowPayments($_SESSION['sshowPayments']);
+        $currentUser->setShowSince($_SESSION['sshowSince']);
+        $currentUser->setDefaultFY($_SESSION['idefaultFY']);
+        $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
 
-    if ($_SESSION['dCalStart'] != '')
-        $currentUser->setCalStart ($_SESSION['dCalStart']);
-    if ($_SESSION['dCalEnd'] != '')
-        $currentUser->setCalEnd ($_SESSION['dCalEnd']);
-    if ($_SESSION['dCalNoSchool1'] != '')
-        $currentUser->setCalNoSchool1 ($_SESSION['dCalNoSchool1']);
-    if ($_SESSION['dCalNoSchool2'] != '')
-        $currentUser->dCalNoSchool2 ($_SESSION['dCalNoSchool2']);
-    if ($_SESSION['dCalNoSchool3'] != '')
-        $currentUser->dCalNoSchool3 ($_SESSION['dCalNoSchool3']);
-    if ($_SESSION['dCalNoSchool4'] != '')
-        $currentUser->dCalNoSchool4 ($_SESSION['dCalNoSchool4']);
-    if ($_SESSION['dCalNoSchool5'] != '')
-        $currentUser->dCalNoSchool5 ($_SESSION['dCalNoSchool5']);
-    if ($_SESSION['dCalNoSchool6'] != '')
-        $currentUser->dCalNoSchool6 ($_SESSION['dCalNoSchool6']);
-    if ($_SESSION['dCalNoSchool7'] != '')
-        $currentUser->dCalNoSchool7 ($_SESSION['dCalNoSchool7']);
-    if ($_SESSION['dCalNoSchool8'] != '')
-        $currentUser->dCalNoSchool8 ($_SESSION['dCalNoSchool8']);
-    $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
-    $currentUser->save();
-   }
+        if ($_SESSION['dCalStart'] != '') {
+            $currentUser->setCalStart($_SESSION['dCalStart']);
+        }
+        if ($_SESSION['dCalEnd'] != '') {
+            $currentUser->setCalEnd($_SESSION['dCalEnd']);
+        }
+        if ($_SESSION['dCalNoSchool1'] != '') {
+            $currentUser->setCalNoSchool1($_SESSION['dCalNoSchool1']);
+        }
+        if ($_SESSION['dCalNoSchool2'] != '') {
+            $currentUser->dCalNoSchool2($_SESSION['dCalNoSchool2']);
+        }
+        if ($_SESSION['dCalNoSchool3'] != '') {
+            $currentUser->dCalNoSchool3($_SESSION['dCalNoSchool3']);
+        }
+        if ($_SESSION['dCalNoSchool4'] != '') {
+            $currentUser->dCalNoSchool4($_SESSION['dCalNoSchool4']);
+        }
+        if ($_SESSION['dCalNoSchool5'] != '') {
+            $currentUser->dCalNoSchool5($_SESSION['dCalNoSchool5']);
+        }
+        if ($_SESSION['dCalNoSchool6'] != '') {
+            $currentUser->dCalNoSchool6($_SESSION['dCalNoSchool6']);
+        }
+        if ($_SESSION['dCalNoSchool7'] != '') {
+            $currentUser->dCalNoSchool7($_SESSION['dCalNoSchool7']);
+        }
+        if ($_SESSION['dCalNoSchool8'] != '') {
+            $currentUser->dCalNoSchool8($_SESSION['dCalNoSchool8']);
+        }
+        $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
+        $currentUser->save();
+    }
 }
 
 $currentUser = 0;
@@ -87,9 +100,9 @@ $currentUser = 0;
 if (isset($_POST['User']) && !isset($sErrorText)) {
 
     // Get the information for the selected user
-    $UserName = FilterInput($_POST['User'],'string',32);
+    $UserName = FilterInput($_POST['User'], 'string', 32);
     $currentUser = UserQuery::create()->findOneByUserName($UserName);
-    if ($currentUser == Null){
+    if ($currentUser == null) {
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
     }
@@ -104,30 +117,25 @@ if (isset($_POST['User']) && !isset($sErrorText)) {
 
 
 // Has the form been submitted?
-if ($currentUser != Null)
-{
-    $bPasswordMatch = FALSE;
+if ($currentUser != null) {
+    $bPasswordMatch = false;
 
     // Check the user password
     $sPasswordHashSha256 = hash("sha256", $_POST['Password'].$currentUser->getPersonId());
 
     // Block the login if a maximum login failure count has been reached
-    if (SystemConfig::getValue("iMaxFailedLogins") > 0 && $currentUser->getFailedLogins() >= SystemConfig::getValue("iMaxFailedLogins"))
-    {
+    if (SystemConfig::getValue("iMaxFailedLogins") > 0 && $currentUser->getFailedLogins() >= SystemConfig::getValue("iMaxFailedLogins")) {
         $sErrorText = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
     }
     // Does the password match?
-    elseif ($currentUser->getPassword() != $sPasswordHashSha256)
-    {
+    elseif ($currentUser->getPassword() != $sPasswordHashSha256) {
         // Increment the FailedLogins
         $currentUser->setFailedLogins($currentUser->getFailedLogins()+1);
         $currentUser->save();
 
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
-    }
-    else
-    {
+    } else {
         // Set the LastLogin and Increment the LoginCount
         $date = new DateTime("now", new DateTimeZone(SystemConfig::getValue("sTimeZone")));
         $currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
@@ -148,15 +156,15 @@ if ($currentUser != Null)
         // If user has administrator privilege, override other settings and enable all permissions.
       $_SESSION['bAdmin'] = $currentUser->isAdmin();
 
-      $_SESSION['bAddRecords'] = $currentUser->isAddRecordsEnabled();
-      $_SESSION['bEditRecords'] = $currentUser->isEditRecordsEnabled();
-      $_SESSION['bDeleteRecords'] = $currentUser->isDeleteRecordsEnabled();
-      $_SESSION['bMenuOptions'] = $currentUser->isMenuOptionsEnabled();
-      $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
-      $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
-      $_SESSION['bNotes'] = $currentUser->isNotesEnabled();
-      $_SESSION['bEditSelf'] = $currentUser->isEditSelfEnabled();
-      $_SESSION['bCanvasser'] = $currentUser->isCanvasserEnabled();
+        $_SESSION['bAddRecords'] = $currentUser->isAddRecordsEnabled();
+        $_SESSION['bEditRecords'] = $currentUser->isEditRecordsEnabled();
+        $_SESSION['bDeleteRecords'] = $currentUser->isDeleteRecordsEnabled();
+        $_SESSION['bMenuOptions'] = $currentUser->isMenuOptionsEnabled();
+        $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
+        $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
+        $_SESSION['bNotes'] = $currentUser->isNotesEnabled();
+        $_SESSION['bEditSelf'] = $currentUser->isEditSelfEnabled();
+        $_SESSION['bCanvasser'] = $currentUser->isCanvasserEnabled();
 
 
         // Set the FailedLogins
@@ -220,7 +228,7 @@ $enableSelfReg = SystemConfig::getBooleanValue("sEnableSelfRegistration");
 
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM " .gettext("Login");
-require ("Include/HeaderNotLoggedIn.php");
+require("Include/HeaderNotLoggedIn.php");
 ?>
 
 <div class="login-box">
@@ -232,14 +240,17 @@ require ("Include/HeaderNotLoggedIn.php");
         <p class="login-box-msg"><?= gettext('Please Login') ?></p>
 
 <?php
-if (isset($_GET['Timeout']))
+if (isset($_GET['Timeout'])) {
     $loginPageMsg = gettext('Your previous session timed out.  Please login again.');
+}
 
 // output warning and error messages
-if (isset($sErrorText))
+if (isset($sErrorText)) {
     echo '<div class="alert alert-error">' . $sErrorText . '</div>';
-if (isset($loginPageMsg))
+}
+if (isset($loginPageMsg)) {
     echo '<div class="alert alert-warning">' . $loginPageMsg . '</div>';
+}
 ?>
 
 <form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
@@ -266,9 +277,11 @@ if (isset($loginPageMsg))
     </div>
 </form>
         <!--<a href="external/user/password">I forgot my password</a><br> -->
-        <?php if ($enableSelfReg) { ?>
-        <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext("Register a new Family");?></a><br>
-        <?php } ?>
+        <?php if ($enableSelfReg) {
+    ?>
+        <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext("Register a new Family"); ?></a><br>
+        <?php 
+} ?>
       <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
     <!-- /.login-box-body -->
@@ -288,7 +301,7 @@ if (isset($loginPageMsg))
 
 <?php
 // Add the page footer
-require ("Include/FooterNotLoggedIn.php");
+require("Include/FooterNotLoggedIn.php");
 
 // Turn OFF output buffering
 ob_end_flush();

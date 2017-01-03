@@ -26,35 +26,42 @@ $dDateEnd = "";
 $iID = "";
 $sSort = "";
 
-if (array_key_exists ("DateStart", $_GET))
-	$dDateStart = FilterInput($_GET["DateStart"]);
-if (array_key_exists ("DateEnd", $_GET))
-	$dDateEnd = FilterInput($_GET["DateEnd"]);
-if (array_key_exists ("ID", $_GET))
-	$iID = FilterInput($_GET["ID"]);
-if (array_key_exists ("Sort", $_GET))
-	$sSort = FilterInput($_GET["Sort"]);
+if (array_key_exists("DateStart", $_GET)) {
+    $dDateStart = FilterInput($_GET["DateStart"]);
+}
+if (array_key_exists("DateEnd", $_GET)) {
+    $dDateEnd = FilterInput($_GET["DateEnd"]);
+}
+if (array_key_exists("ID", $_GET)) {
+    $iID = FilterInput($_GET["ID"]);
+}
+if (array_key_exists("Sort", $_GET)) {
+    $sSort = FilterInput($_GET["Sort"]);
+}
 
 // Build SQL Criteria
 $sCriteria = "";
 if ($dDateStart || $dDateEnd) {
-	if (!$dDateStart && $dDateEnd)
-		$dDateStart = $dDateEnd;
-	if (!$dDateEnd && $dDateStart)
-		$dDateEnd = $dDateStart;
-	$sCriteria .= " WHERE fr_Date BETWEEN '$dDateStart' AND '$dDateEnd' ";
+    if (!$dDateStart && $dDateEnd) {
+        $dDateStart = $dDateEnd;
+    }
+    if (!$dDateEnd && $dDateStart) {
+        $dDateEnd = $dDateStart;
+    }
+    $sCriteria .= " WHERE fr_Date BETWEEN '$dDateStart' AND '$dDateEnd' ";
 }
 if ($iID) {
-	if ($sCriteria)
-		$sCrieria .= "OR fr_ID = '$iID' ";
-	else
-		$sCriteria = " WHERE fr_ID = '$iID' ";
+    if ($sCriteria) {
+        $sCrieria .= "OR fr_ID = '$iID' ";
+    } else {
+        $sCriteria = " WHERE fr_ID = '$iID' ";
+    }
 }
-if (array_key_exists ("FilterClear", $_GET) && $_GET["FilterClear"]) {
-	$sCriteria = "";
-	$dDateStart = "";
-	$dDateEnd = "";
-	$iID = "";
+if (array_key_exists("FilterClear", $_GET) && $_GET["FilterClear"]) {
+    $sCriteria = "";
+    $dDateStart = "";
+    $dDateEnd = "";
+    $iID = "";
 }
 require "Include/Header.php";
 
@@ -95,32 +102,31 @@ require "Include/Header.php";
 <?php
 // List Fundraisers
 // Save record limit if changed
-if (isset($_GET["Number"]))
-{
-  /* @var $currentUser \ChurchCRM\User */
+if (isset($_GET["Number"])) {
+    /* @var $currentUser \ChurchCRM\User */
   $currentUser = $_SESSION['user'];
-  $currentUser->setSearchLimit(FilterInput($_GET["Number"],'int'));
-  $currentUser->save();
-  $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
+    $currentUser->setSearchLimit(FilterInput($_GET["Number"], 'int'));
+    $currentUser->save();
+    $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 }
 
 // Select the proper sort SQL
-switch($sSort)
-{
-	case "number":
-		$sOrderSQL = "ORDER BY fr_ID DESC";
-		break;
-	default:
-		$sOrderSQL = " ORDER BY fr_Date DESC, fr_ID DESC";
-		break;
+switch ($sSort) {
+    case "number":
+        $sOrderSQL = "ORDER BY fr_ID DESC";
+        break;
+    default:
+        $sOrderSQL = " ORDER BY fr_Date DESC, fr_ID DESC";
+        break;
 }
 
 // Append a LIMIT clause to the SQL statement
 $iPerPage = $_SESSION['SearchLimit'];
-if (empty($_GET['Result_Set']))
-	$Result_Set = 0;
-else
-	$Result_Set = FilterInput($_GET['Result_Set'],'int');
+if (empty($_GET['Result_Set'])) {
+    $Result_Set = 0;
+} else {
+    $Result_Set = FilterInput($_GET['Result_Set'], 'int');
+}
 $sLimitSQL = " LIMIT $Result_Set, $iPerPage";
 
 // Build SQL query
@@ -130,66 +136,68 @@ $sSQLTotal = "SELECT COUNT(fr_ID) FROM fundraiser_fr $sCriteria";
 // Execute SQL statement and get total result
 $rsDep = RunQuery($sSQL);
 $rsTotal = RunQuery($sSQLTotal);
-list ($Total) = mysqli_fetch_row($rsTotal);
+list($Total) = mysqli_fetch_row($rsTotal);
 
 echo '<div align="center">';
 echo  '<form action="FindFundRaiser.php" method="get" name="ListNumber">';
 // Show previous-page link unless we're at the first page
-if ($Result_Set < $Total && $Result_Set > 0)
-{
-	$thisLinkResult = $Result_Set - $iPerPage;
-	if ($thisLinkResult < 0)
-		$thisLinkResult = 0;
-	echo '<a href="FindFundRaiser.php?Result_Set='.$thisLinkResult.'&Sort='.$sSort.'">'. gettext("Previous Page") . '</a>&nbsp;&nbsp;';
+if ($Result_Set < $Total && $Result_Set > 0) {
+    $thisLinkResult = $Result_Set - $iPerPage;
+    if ($thisLinkResult < 0) {
+        $thisLinkResult = 0;
+    }
+    echo '<a href="FindFundRaiser.php?Result_Set='.$thisLinkResult.'&Sort='.$sSort.'">'. gettext("Previous Page") . '</a>&nbsp;&nbsp;';
 }
 
 // Calculate starting and ending Page-Number Links
 $Pages = ceil($Total / $iPerPage);
 $startpage =  (ceil($Result_Set / $iPerPage)) - 6;
-if ($startpage <= 2)
-	$startpage = 1;
+if ($startpage <= 2) {
+    $startpage = 1;
+}
 $endpage = (ceil($Result_Set / $iPerPage)) + 9;
-if ($endpage >= ($Pages - 1))
-	$endpage = $Pages;
+if ($endpage >= ($Pages - 1)) {
+    $endpage = $Pages;
+}
 
 // Show Link "1 ..." if startpage does not start at 1
-if ($startpage != 1)
-	echo "<a href=\"FindFundRaiser.php?Result_Set=0&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">1</a> ... ";
+if ($startpage != 1) {
+    echo "<a href=\"FindFundRaiser.php?Result_Set=0&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">1</a> ... ";
+}
 
 // Display page links
-if ($Pages > 1)
-{
-	for ($c = $startpage; $c <= $endpage; $c++)
-	{
-		$b = $c - 1;
-		$thisLinkResult = $iPerPage * $b;
-		if ($thisLinkResult != $Result_Set)
-			echo "<a href=\"FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$c</a>&nbsp;";
-		else
-			echo "&nbsp;&nbsp;[ " . $c . " ]&nbsp;&nbsp;";
-	}
+if ($Pages > 1) {
+    for ($c = $startpage; $c <= $endpage; $c++) {
+        $b = $c - 1;
+        $thisLinkResult = $iPerPage * $b;
+        if ($thisLinkResult != $Result_Set) {
+            echo "<a href=\"FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$c</a>&nbsp;";
+        } else {
+            echo "&nbsp;&nbsp;[ " . $c . " ]&nbsp;&nbsp;";
+        }
+    }
 }
 
 // Show Link "... xx" if endpage is not the maximum number of pages
-if ($endpage != $Pages)
-{
-	$thisLinkResult = ($Pages - 1) * $iPerPage;
-		echo " <a href=\"FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$Pages</a>";
+if ($endpage != $Pages) {
+    $thisLinkResult = ($Pages - 1) * $iPerPage;
+    echo " <a href=\"FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$Pages</a>";
 }
 
 // Show next-page link unless we're at the last page
-if ($Result_Set >= 0 && $Result_Set < $Total)
-{
-	$thisLinkResult=$Result_Set+$iPerPage;
-	if ($thisLinkResult<$Total)
-		echo "&nbsp;&nbsp;<a href='FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort'>". gettext("Next Page") . "</a>&nbsp;&nbsp;";
+if ($Result_Set >= 0 && $Result_Set < $Total) {
+    $thisLinkResult=$Result_Set+$iPerPage;
+    if ($thisLinkResult<$Total) {
+        echo "&nbsp;&nbsp;<a href='FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort'>". gettext("Next Page") . "</a>&nbsp;&nbsp;";
+    }
 }
 
 
 // Display Record Limit
 echo "<input type=\"hidden\" name=\"Result_Set\" value=\"" . $Result_Set . "\">";
-if(isset($sSort))
-	echo "<input type=\"hidden\" name=\"Sort\" value=\"" . $sSort . "\">";
+if (isset($sSort)) {
+    echo "<input type=\"hidden\" name=\"Sort\" value=\"" . $sSort . "\">";
+}
 
 $sLimit5 = "";
 $sLimit10 = "";
@@ -197,16 +205,21 @@ $sLimit20 = "";
 $sLimit25 = "";
 $sLimit50 = "";
 
-if ($_SESSION['SearchLimit'] == "5")
-	$sLimit5 = "selected";
-if ($_SESSION['SearchLimit'] == "10")
-	$sLimit10 = "selected";
-if ($_SESSION['SearchLimit'] == "20")
-	$sLimit20 = "selected";
-if ($_SESSION['SearchLimit'] == "25")
-	$sLimit25 = "selected";
-if ($_SESSION['SearchLimit'] == "50")
-	$sLimit50 = "selected";
+if ($_SESSION['SearchLimit'] == "5") {
+    $sLimit5 = "selected";
+}
+if ($_SESSION['SearchLimit'] == "10") {
+    $sLimit10 = "selected";
+}
+if ($_SESSION['SearchLimit'] == "20") {
+    $sLimit20 = "selected";
+}
+if ($_SESSION['SearchLimit'] == "25") {
+    $sLimit25 = "selected";
+}
+if ($_SESSION['SearchLimit'] == "50") {
+    $sLimit50 = "selected";
+}
 
 echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;". gettext("Display:") . "&nbsp;
 	<select class=\"SmallText\" name=\"Number\">
@@ -229,13 +242,12 @@ echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n
 	</tr>";
 
 // Display Deposits
-while (list ($fr_ID, $fr_Date, $fr_Title) = mysqli_fetch_row($rsDep))
-{
-	echo "<tr><td><a href='FundRaiserEditor.php?FundRaiserID=$fr_ID'>" . gettext("Edit") . "</td>";
-	echo "<td>$fr_ID</td>";
-	echo "<td>$fr_Date</td>";
-	// Get deposit total
-	echo "<td>$fr_Title</td>";
+while (list($fr_ID, $fr_Date, $fr_Title) = mysqli_fetch_row($rsDep)) {
+    echo "<tr><td><a href='FundRaiserEditor.php?FundRaiserID=$fr_ID'>" . gettext("Edit") . "</td>";
+    echo "<td>$fr_ID</td>";
+    echo "<td>$fr_Date</td>";
+    // Get deposit total
+    echo "<td>$fr_Title</td>";
 }
 echo "</table>";
 ?>
