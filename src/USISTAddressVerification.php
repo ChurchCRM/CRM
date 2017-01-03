@@ -422,7 +422,6 @@ if ($myISTReturnCode == '4') {
             <input type=submit class=btn name=DoLookup value="Perform Lookups">
           </form></td>
   <?php
-
   } ?>
 
   <?php if ($iUSOkay) {
@@ -431,7 +430,6 @@ if ($myISTReturnCode == '4') {
             <input type=submit class=btn name=MismatchReport value="View Mismatch Report">
           </form></td>
   <?php
-
   } ?>
 
   <?php if ($iNonUSCount) {
@@ -440,7 +438,6 @@ if ($myISTReturnCode == '4') {
             <input type=submit class=btn name=NonUSReport value="View Non-US Address Report">
           </form></td>
   <?php
-
   } ?>
 
     </tr></table>

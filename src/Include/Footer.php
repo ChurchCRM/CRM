@@ -73,7 +73,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
             </a>
           </li>
         <?php
-
 } ?>
       </ul>
       <br/>
@@ -97,7 +96,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
             </a>
           </li>
         <?php
-
 } ?>
       </ul>
       <br/>
@@ -135,7 +133,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
             </a>
           </li>
         <?php
-
 } ?>
       </ul>
       <!-- /.control-sidebar-menu -->
@@ -165,7 +162,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
           </ul>
           <hr/>
         <?php
-
 } ?>
         <ul class="control-sidebar-menu">
           <?php if ($isAdmin) {
@@ -195,7 +191,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
               </a>
             </li>
           <?php
-
 } ?>
           <li>
             <a href="<?= $sRootPath ?>/CSVExport.php">
@@ -220,7 +215,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
             </li>
           </ul>
         <?php
-
 } else {
     echo _("Please contact your admin to change the system settings.");
 } ?>
@@ -251,7 +245,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
         </li>
         <!-- end task item -->
       <?php
-
 } ?>
       </ul>
       <!--
@@ -319,7 +312,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
     });
   </script>
 <?php
-
 } ?>
 
 <?php if ($_SESSION['bAdmin']) {

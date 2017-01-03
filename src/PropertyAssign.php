@@ -179,7 +179,6 @@ require "Include/Header.php";
 			<td><?= $sPrompt ?><br><textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea></td>
 		</tr>
 <?php
-
 } ?>
 </table>
 

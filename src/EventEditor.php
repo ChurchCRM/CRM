@@ -444,7 +444,6 @@ if ($sAction=='Create Event' && !empty($tyid)) {
   </tr>
 
 <?php
-
         } else { // if (empty($iTypeID))?>
 
   <tr>
@@ -538,7 +537,6 @@ if ($sAction=='Create Event' && !empty($tyid)) {
     <td><input type="submit" name="SaveChanges" value="<?= gettext("Save Changes") ?>" class="btn btn-primary"></td>
   </tr>
 <?php
-
         } // if (empty($iTypeID))?>
 </table>
 </form>

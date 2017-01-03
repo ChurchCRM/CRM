@@ -11,6 +11,5 @@ use ChurchCRM\data\Countries;
         echo "selected";
     } ?>><?= gettext($county) ?>
     <?php
-
 } ?>
 </select>

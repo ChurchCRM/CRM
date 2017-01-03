@@ -573,7 +573,6 @@ require "Include/Header.php";
         echo "<input type=\"submit\" class=\"btn\" value=\"" . gettext("Save and Add") . "\" name=\"PledgeSubmitAndAdd\">";
     } ?>
 		<?php
-
 } ?>
 			<?php if (!$dep_Closed) {
     $cancelText = "Cancel";
@@ -598,12 +597,10 @@ require "Include/Header.php";
         ?>
 				<input type="submit" class="btn" value="<?= gettext("Find family->") ?>" name="MatchEnvelope">
 				<?php
-
     } ?>
 			</td>
 			</tr>
 			<?php
-
 } ?>
 			<tr>
 				<?php if ($PledgeOrPayment=='Pledge') {
@@ -630,7 +627,6 @@ require "Include/Header.php";
 						</select>
 					</td>
 				<?php
-
 } ?>
 
 			</tr>
@@ -647,7 +643,6 @@ require "Include/Header.php";
         echo "selected";
     } ?>><?= gettext("Cash"); ?></option>
 						<?php
-
 } ?>
 						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "CreditCard" || !$iCurrentDeposit) {
     ?>
@@ -655,7 +650,6 @@ require "Include/Header.php";
         echo "selected";
     } ?>><?=                        gettext("Credit Card") ?></option>
 						<?php
-
 } ?>
 						<?php if ($PledgeOrPayment=='Pledge' || $dep_Type == "BankDraft" || !$iCurrentDeposit) {
     ?>
@@ -663,14 +657,12 @@ require "Include/Header.php";
         echo "selected";
     } ?>><?=                        gettext("Bank Draft") ?></option>
 						<?php
-
 } ?>
                                                 <?php if ($PledgeOrPayment == 'Pledge') {
     ?>
                                                 <option value="EGIVE" <?= $iMethod == "EGIVE" ? 'selected' : '' ?>><?=
                           gettext("eGive") ?></option>
                                                 <?php
-
 } ?>
 					</select>
 				</td>
@@ -691,14 +683,12 @@ require "Include/Header.php";
     ?>
 							<option value="<?= $fun_id ?>" <?= $iSelectedFund == $fun_id ? 'selected' : '' ?>><?= gettext($fun_name) ?></option>
 						<?php
-
 } ?>
 					</select>
 					<?php if (!$dep_Closed) {
     ?>
 					<input type="submit" class="btn" name="SetFundTypeSelection" value="<-Set">
 					<?php
-
 } ?>
 				</td>
 			</tr>
@@ -708,7 +698,6 @@ require "Include/Header.php";
 				<td valign="top" align="left" class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Comment") ?></td>
 				<td class="TextColumnWithBottomBorder"><input type="text" name="OneComment" id="OneComment" value="<?= $sComment[$iSelectedFund] ?>">
 			<?php
-
 } ?>
 			</tr>
 		</table>
@@ -757,7 +746,6 @@ $(document).ready(function() {
 					<td class="TextColumn"><input type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"><font color="red"><?= $sCheckNoError ?></font></td>
 				</tr>
 			<?php
-
 } ?>
 
 
@@ -789,11 +777,9 @@ $(document).ready(function() {
 				<input type="submit" class="btn" value="<?= gettext("Split to Funds by pledge") ?>" name="SplitTotal"></td>
 
 			<?php
-
     } ?>
 
 		<?php
-
 } ?>
 		</tr>
 			<td valign="top" align="left">
@@ -830,7 +816,6 @@ $(document).ready(function() {
 				</td>
 			</tr>
 			<?php
-
             } ?>
 		</td>
 		</tr>
@@ -843,7 +828,6 @@ $(document).ready(function() {
 			<td align="center" class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Scan check") ?>
 			<textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea></td>
 		<?php
-
             } ?>
 
 			<td align="center">
@@ -852,7 +836,6 @@ $(document).ready(function() {
 				<input type="submit" class="btn" value="<?= gettext("find family from check account #") ?>" name="MatchFamily">
 				<input type="submit" class="btn" value="<?= gettext("Set default check account number for family") ?>" name="SetDefaultCheck">
 	        <?php
-
             } ?>
 			</td>
 		</tr>
@@ -877,7 +860,6 @@ $(document).ready(function() {
                     ?>
 					<td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Non-deductible amount") ?></td>
 				<?php
-
                 } ?>
 
 				<td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext("Comment") ?></td>
@@ -903,7 +885,6 @@ $(document).ready(function() {
     </td>
   </tr>
 	<?php
-
             } ?>
 </table>
 </form>

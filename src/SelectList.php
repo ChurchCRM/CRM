@@ -1197,7 +1197,6 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
             </span>
         </a>
 	<?php
-
     } ?>
     </td>
 	<td>
@@ -1218,7 +1217,6 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
         </a>
     </td>
 	<?php
-
     } else {
         // Remove from cart option
         if (mb_substr($sRedirect, -1, 1) == '?') {
@@ -1234,7 +1232,6 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
             </span>
         </a>
 	<?php
-
     }
 
     if ($iMode == 1) {
@@ -1245,7 +1242,6 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
             </span>
         </a>
 	<?php
-
     } else {
         echo "<td><a href=\"PersonToGroup.php?PersonID=" .$per_ID;
         echo "&amp;prevquery=" . rawurlencode($_SERVER["QUERY_STRING"]) . "\">";

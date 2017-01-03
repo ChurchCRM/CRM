@@ -129,7 +129,6 @@ require "Include/Header.php";
                                                                           aria-expanded="false"><?= $stepName ?></a>
               </li>
             <?php
-
 } ?>
           </ul>
           <div class="tab-content">
@@ -158,7 +157,6 @@ require "Include/Header.php";
                   <th><?= gettext("Default Value") ?></th>
                 </tr>
                 <?php
-
                     } ?>
                 <tr>
                   <td><?= $setting->getName() ?></td>
@@ -174,7 +172,6 @@ require "Include/Header.php";
                         } ?>
                       </select>
                     <?php
-
                     } elseif ($setting->getType() == 'country') {
                         ?>
                       <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
@@ -184,7 +181,6 @@ require "Include/Header.php";
                         } ?>
                       </select>
                     <?php
-
                     } elseif ($setting->getType() == 'choice') {
                         ?>
                       <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
@@ -194,25 +190,21 @@ require "Include/Header.php";
                         } ?>
                       </select>
                     <?php
-
                     } elseif ($setting->getType() == 'text') {
                         ?>
                       <input type=text size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]'
                              value='<?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?>' class="form-control">
                     <?php
-
                     } elseif ($setting->getType() == 'textarea') {
                         ?>
                       <textarea rows=4 cols=40 name='new_value[<?= $setting->getId() ?>]'
                                 class="form-control"><?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?></textarea>
                     <?php
-
                     } elseif ($setting->getType() == 'number' || $setting->getType() == 'date') {
                         ?>
                       <input type=text size=40 maxlength=15 name='new_value[<?= $setting->getId() ?>]' value='<?= $setting->getValue() ?>'
                              class="form-control">
                     <?php
-
                     } elseif ($setting->getType() == 'boolean') {
                         if ($setting->getValue()) {
                             $sel1 = "";
@@ -226,7 +218,6 @@ require "Include/Header.php";
                         <option value='1' <?= $sel2 ?>><?= gettext("True")?>
                       </select>
                     <?php
-
                     } elseif ($setting->getType() == 'json') {
                         ?>
                       <input type="hidden" name='new_value[<?= $setting->getId() ?>]' value='<?= $setting->getValue() ?>'>
@@ -234,7 +225,6 @@ require "Include/Header.php";
                               data-cfgid="<?= $setting->getId() ?>"><?= gettext("Edit Settings")?>
                       </button>
                     <?php
-
                     } ?>
                   </td>
                   <?php
@@ -252,7 +242,6 @@ require "Include/Header.php";
                         ?>
                       <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="<?= gettext($setting->getTooltip()) ?>"></i>
                     <?php
-
                     } ?>
                     <?= $display_default ?>
                   </td>
@@ -260,7 +249,6 @@ require "Include/Header.php";
                 <?php $r++; ?>
                 </tr>
                 <?php
-
                 } ?>
               </table>
             </div>

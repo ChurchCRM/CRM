@@ -235,7 +235,6 @@ require "Include/Header.php";
                     </table>
                   </td></tr>
               <?php
-
       } ?>
             </table>
           </div>
@@ -243,7 +242,6 @@ require "Include/Header.php";
       </div>
     </div>
   <?php
-
   } ?>
 
   <div class="row">

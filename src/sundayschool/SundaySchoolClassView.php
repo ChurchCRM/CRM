@@ -138,7 +138,6 @@ require "../Include/Header.php";
         </div>
       </div>
     <?php
-
     } ?>
   </div>
 </div>

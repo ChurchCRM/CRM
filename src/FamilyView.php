@@ -166,7 +166,6 @@ if ($iFamilyID == $fam_ID) {
             <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"
                class="btn btn-primary btn-block"><b><?= gettext("Edit") ?></b></a>
           <?php
-
     } ?>
           <hr/>
           <ul class="fa-ul">
@@ -189,44 +188,37 @@ if ($iFamilyID == $fam_ID) {
               <li><i class="fa-li fa fa-compass"></i><?= gettext("Latitude/Longitude") ?>
                 <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
             <?php
-
     }
     if (!SystemConfig::getValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
               <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
                 <span style="color:<?= ($fam_SendNewsLetter=="TRUE" ? "green" : "red") ?>"><i class="fa fa-<?= ($fam_SendNewsLetter=="TRUE" ? "check" : "times") ?>"></i></span></li>
             <?php
-
     }
     if (!SystemConfig::getValue("bHideWeddingDate") && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
               <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
                 <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
             <?php
-
     }
     if (SystemConfig::getValue("bUseDonationEnvelopes")) {
         ?>
               <li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?> <span><?= $fam_Envelope ?></span>
               </li>
             <?php
-
     }
     if ($sHomePhone != "") {
         ?>
               <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone") ?>: <span><a href="tel:<?= $sHomePhone ?>"><?= $sHomePhone ?></a></span></li>
             <?php
-
     }
     if ($sWorkPhone != "") {
         ?>
               <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone") ?>: <span><a href="tel:<?= $sWorkPhone ?>"><?= $sWorkPhone ?></a></span></li>
             <?php
-
     }
     if ($sCellPhone != "") {
         ?>
               <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone") ?>: <span><a href="tel:<?= $sCellPhone ?>"><?= $sCellPhone ?></a></span></li>
             <?php
-
     }
     if ($fam_Email != "") {
         ?>
@@ -238,7 +230,6 @@ if ($iFamilyID == $fam_ID) {
               <span><?= $mailchimp->isEmailInMailChimp($fam_Email) ?></span>
           </a></li>
             <?php
-
         }
     }
             // Display the left-side custom fields
@@ -268,7 +259,6 @@ if ($iFamilyID == $fam_ID) {
             <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
                 class="fa fa-hand-o-left"></i><?= gettext("Previous Family") ?></a>
           <?php
-
             } ?>
           <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
               class="fa fa-list-ul"></i><?= gettext("Family List") ?></a>
@@ -277,14 +267,12 @@ if ($iFamilyID == $fam_ID) {
             <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
                 class="fa fa-hand-o-right"></i><?= gettext("Next Family") ?> </a>
           <?php
-
             } ?>
           <?php if ($_SESSION['bDeleteRecords']) {
                 ?>
             <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
                 class="fa fa-trash-o"></i><?= gettext("Delete this Family") ?></a>
           <?php
-
             } ?>
           <br/>
           <?php if ($bOkToEdit) {
@@ -296,7 +284,6 @@ if ($iFamilyID == $fam_ID) {
               <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
                   class="fa fa-remove"></i> <?= gettext("Delete Photo") ?> </a>
             <?php
-
                 }
             }
     if ($_SESSION['bNotes']) {
@@ -304,7 +291,6 @@ if ($iFamilyID == $fam_ID) {
             <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
                 class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
           <?php
-
     } ?>
           <a class="btn btn-app" href="Reports/ConfirmReport.php?familyId=<?= $iFamilyID ?>"><i
               class="fa fa-download"></i><?= gettext("Download PDF Report") ?></a>
@@ -361,7 +347,6 @@ if ($iFamilyID == $fam_ID) {
             array_push($sFamilyEmails, $tmpEmail); ?>
                       <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
                     <?php
-
         } ?>
                   </td>
                   <td style="width: 20%;">
@@ -386,12 +371,10 @@ if ($iFamilyID == $fam_ID) {
                                     </span>
                       </a>
                     <?php
-
         } ?>
                   </td>
                 </tr>
               <?php
-
     } ?>
               </tbody>
             </table>
@@ -416,7 +399,6 @@ if ($iFamilyID == $fam_ID) {
             <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab"
                                        data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
           <?php
-
     } ?>
 
         </ul>
@@ -449,12 +431,10 @@ if ($iFamilyID == $fam_ID) {
             ?>
                         <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                       <?php
-
         } else {
             ?>
                         <?= gettext($item['header']) ?>
                       <?php
-
         } ?>
                     </h3>
 
@@ -471,7 +451,6 @@ if ($iFamilyID == $fam_ID) {
                             <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                           </a>
                         <?php
-
             }
             if ($item["deleteLink"] != "") {
                 ?>
@@ -479,16 +458,13 @@ if ($iFamilyID == $fam_ID) {
                             <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                           </a>
                         <?php
-
             } ?>
                       </div>
                     <?php
-
         } ?>
                   </div>
                 </li>
               <?php
-
     } ?>
               <!-- END timeline item -->
             </ul>
@@ -507,7 +483,6 @@ if ($iFamilyID == $fam_ID) {
                     <span><?= gettext("No property assignments.") ?></span>
                   </div>
                 <?php
-
     } else {
         //Yes, start the table
                   echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
@@ -600,7 +575,6 @@ if ($iFamilyID == $fam_ID) {
                     </div>
                   </div>
                 <?php
-
     } ?>
               </div>
             </div>
@@ -687,7 +661,6 @@ if ($iFamilyID == $fam_ID) {
                     } ?>
                   </table>
                 <?php
-
         } ?>
                 <p align="center">
                   <a class="SmallText"
@@ -842,7 +815,6 @@ if ($iFamilyID == $fam_ID) {
                 </p>
 
                 <?php
-
     } ?>
 
                 <?php if ($_SESSION['bCanvasser']) {
@@ -856,7 +828,6 @@ if ($iFamilyID == $fam_ID) {
             </div>
           </div>
         <?php
-
     } ?>
 
         </div>
@@ -936,7 +907,6 @@ if ($iFamilyID == $fam_ID) {
                class="btn btn-warning warning"><?= gettext("Email Updated") ?></a>
           </div>
         <?php
-
     } else {
         ?>
           <div class="modal-body">
@@ -946,14 +916,12 @@ if ($iFamilyID == $fam_ID) {
             <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
           </div>
         <?php
-
     } ?>
       </div>
     </div>
   </div>
 
 <?php
-
 } else {
     ?>
   <div class="error-page">

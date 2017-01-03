@@ -356,7 +356,6 @@ if ($numRows == 0) {
 			</td>
 		</tr>
 	<?php
-
     } ?>
 
 		<tr>
@@ -374,7 +373,6 @@ if ($numRows == 0) {
 			<td>
 		</tr>
 <?php
-
 } ?>
 		<tr><td colspan="7"><hr></td></tr>
 		<tr>
