@@ -573,6 +573,7 @@ require "Include/Header.php";
             <?= gettext("Invalid fields or selections. Changes not saved! Please correct and try again!") ?>
         </div>
     <?php
+
 } ?>
     <div class="box box-info clearfix">
         <div class="box-header">
@@ -614,6 +615,7 @@ require "Include/Header.php";
                         <?php if ($sFirstNameError) {
     ?><br><font
                             color="red"><?php echo $sFirstNameError ?></font><?php
+
 } ?>
                     </div>
 
@@ -625,6 +627,7 @@ require "Include/Header.php";
                         <?php if ($sMiddleNameError) {
     ?><br><font
                             color="red"><?php echo $sMiddleNameError ?></font><?php
+
 } ?>
                     </div>
 
@@ -636,6 +639,7 @@ require "Include/Header.php";
                         <?php if ($sLastNameError) {
     ?><br><font
                             color="red"><?php echo $sLastNameError ?></font><?php
+
 } ?>
                     </div>
 
@@ -706,6 +710,7 @@ require "Include/Header.php";
         echo "selected";
     } ?>><?= $x ?></option>
                             <?php
+
 } ?>
                         </select>
                     </div>
@@ -716,10 +721,12 @@ require "Include/Header.php";
                         <?php if ($sBirthYearError) {
     ?><font color="red"><br><?php echo $sBirthYearError ?>
                             </font><?php
+
 } ?>
                         <?php if ($sBirthDateError) {
     ?><font
                             color="red"><?php echo $sBirthDateError ?></font><?php
+
 } ?>
                     </div>
                     <div class="col-md-2">
@@ -900,6 +907,7 @@ require "Include/Header.php";
                 </div>
                 <p/>
             <?php
+
 } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
                 <input type="hidden" name="Address1"
                        value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, "UTF-8") ?>"></input>
@@ -916,6 +924,7 @@ require "Include/Header.php";
                 <input type="hidden" name="Country"
                        value="<?= htmlentities(stripslashes($sCountry), ENT_NOQUOTES, "UTF-8") ?>"></input>
             <?php
+
 } ?>
             <div class="row">
                 <div class="form-group col-md-3">
@@ -1011,6 +1020,7 @@ require "Include/Header.php";
                                maxlength="100" class="form-control">
                         <?php if ($sEmailError) {
                             ?><font color="red"><?php echo $sEmailError ?></font><?php
+
                         } ?>
                     </div>
                 </div>
@@ -1026,6 +1036,7 @@ require "Include/Header.php";
                         <?php if ($sWorkEmailError) {
                             ?><font
                             color="red"><?php echo $sWorkEmailError ?></font></td><?php
+
                         } ?>
                     </div>
                 </div>
@@ -1068,6 +1079,7 @@ require "Include/Header.php";
                         <?php if ($sMembershipDateError) {
                             ?><font
                             color="red"><?= $sMembershipDateError ?></font><?php
+
                         } ?>
                     </div>
                 </div>
@@ -1084,10 +1096,12 @@ require "Include/Header.php";
                     <?php if ($sFriendDateError) {
                             ?><font
                       color="red"><?php echo $sFriendDateError ?></font><?php
+
                         } ?>
                   </div>
                 </div>
               <?php
+
                         } ?>
             </div>
         </div>
@@ -1132,6 +1146,7 @@ require "Include/Header.php";
         </div>
     </div>
   <?php
+
                         } ?>
     <input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="PersonSubmit">
     <?php if ($_SESSION['bAddRecords']) {

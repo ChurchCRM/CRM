@@ -262,6 +262,7 @@ foreach ($allMonths as $mKey => $mVal) {
                 ?>
                 <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')">Sermon Text</a></div>
               <?php
+
             } ?>
             </td>
             <td><?= $aEventType[$row] ?></td>

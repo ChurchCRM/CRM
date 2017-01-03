@@ -313,6 +313,7 @@ require 'Include/Header.php';
         ?>
                     <?= gettext('Default Role:') ?> <?= $defaultRole->getOptionName() ?>
                     <?php
+
     } ?>
                     </font></div></td>
               </tr>
@@ -361,8 +362,8 @@ require 'Include/Header.php';
                 echo '</table>';
             }
           } else {
-                echo '<p>' . gettext('Disabled for this group.') . '</p>';
-            }
+              echo '<p>' . gettext('Disabled for this group.') . '</p>';
+          }
 
             //Print Assigned Properties
             echo '<br>';
