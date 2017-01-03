@@ -148,7 +148,7 @@ if ($donationFunds->count() == 0) {
 <?php
 
         } else {
-    ?>
+            ?>
 		<tr>
 			<th><?= gettext('Name') ?></th>
 			<th><?= gettext('Description') ?></th>
@@ -205,7 +205,7 @@ if ($donationFunds->count() == 0) {
 			<td>
 		</tr>
 <?php 
-} ?>
+        } ?>
 		<tr><td colspan="5"><hr></td></tr>
 		<tr>
 			<td colspan="5">
@@ -216,8 +216,8 @@ if ($donationFunds->count() == 0) {
 						<div><?= gettext('Name') ?>:</div>
 						<input type="text" name="newFieldName" size="30" maxlength="30">
 						<?php if ($bNewNameError) {
-    echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
-} ?>
+            echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
+        } ?>
 						&nbsp;
 					</td>
 					<td valign="top">

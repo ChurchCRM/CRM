@@ -147,17 +147,17 @@ class SundaySchoolService
         }
 
         return ['Jan' => $Jan,
-      'Feb'       => $Feb,
-      'Mar'       => $Mar,
-      'Apr'       => $Apr,
-      'May'       => $May,
-      'June'      => $June,
-      'July'      => $July,
-      'Aug'       => $Aug,
-      'Sept'      => $Sept,
-      'Oct'       => $Oct,
-      'Nov'       => $Nov,
-      'Dec'       => $Dec,
+      'Feb'           => $Feb,
+      'Mar'           => $Mar,
+      'Apr'           => $Apr,
+      'May'           => $May,
+      'June'          => $June,
+      'July'          => $July,
+      'Aug'           => $Aug,
+      'Sept'          => $Sept,
+      'Oct'           => $Oct,
+      'Nov'           => $Nov,
+      'Dec'           => $Dec,
     ];
     }
 
