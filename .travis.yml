@@ -13,7 +13,7 @@ notifications:
     on_success: change  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: never     # options: [always|never|change] default: always
-  
+
 # optionally specify a list of environments, for example to test different RDBMS
 env:
   - DB=mysql
@@ -22,12 +22,11 @@ env:
 before_script:
   - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS churchcrm_test;" -uroot; fi
   - cd ./src
-  - composer install  
+  - composer install
   - cd ..
 
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
-script: 
+script:
   - if [[ "$DB" == "mysql" ]]; then mysql churchcrm_test < src/mysql/install/Install.sql -uroot; fi
-  - tests/LineEndings.sh
   ##- phpunit --configuration phpunit_$DB.xml --coverage-text
