@@ -33,12 +33,12 @@ fputcsv($out, array("Class",
   "Mom Name", "Mom Mobile", "Mom Email"));
 
 while ($aRow = mysqli_fetch_array($rsKids)) {
-  extract($aRow);
-  $birthDate = "";
-  if ($birthYear != "") {
-    $birthDate = $birthDay . "/" . $birthMonth . "/" . $birthYear;
-  }
-  fputcsv($out, array($sundayschoolClass, $firstName, $LastName, $birthDate, $mobilePhone, $homePhone, $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip,
+    extract($aRow);
+    $birthDate = "";
+    if ($birthYear != "") {
+        $birthDate = $birthDay . "/" . $birthMonth . "/" . $birthYear;
+    }
+    fputcsv($out, array($sundayschoolClass, $firstName, $LastName, $birthDate, $mobilePhone, $homePhone, $Address1 . " " . $Address2 . " " . $city . " " . $state . " " . $zip,
     $dadFirstName . " " . $dadLastName, $dadCellPhone, $dadEmail,
     $momFirstName . " " . $momLastName, $momCellPhone, $momEmail));
 }

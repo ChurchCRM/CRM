@@ -20,22 +20,26 @@ require "Include/Config.php";
 require "Include/Functions.php";
 use ChurchCRM\dto\SystemConfig;
 
-
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bAdmin'])
-{
-  Redirect("Menu.php");
-  exit;
+if (!$_SESSION['bAdmin']) {
+    Redirect("Menu.php");
+    exit;
 }
 
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-    die ("The Backup Utility will not work on a Windows based Server");
+    die("The Backup Utility will not work on a Windows based Server");
 }
 
-if (SystemConfig::getValue("sGZIPname")) $hasGZIP = true;
-if (SystemConfig::getValue("sZIPname")) $hasZIP = true;
-if (SystemConfig::getValue("sPGPname")) $hasPGP = true;
+if (SystemConfig::getValue("sGZIPname")) {
+    $hasGZIP = true;
+}
+if (SystemConfig::getValue("sZIPname")) {
+    $hasZIP = true;
+}
+if (SystemConfig::getValue("sPGPname")) {
+    $hasPGP = true;
+}
 
 
 
@@ -58,18 +62,24 @@ require "Include/Header.php";
         <BR><BR>
         <form method="post" action="<?= sRootPath ?>/api/database/backup" id="BackupDatabase">
         <?= gettext("Select archive type") ?>:
-        <?php if ($hasGZIP) { ?><input type="radio" name="archiveType" value="0"><?= gettext("GZip") ?><?php } ?>
-        <!--<?php if ($hasZIP) { ?><input type="radio" name="archiveType" value="1"><?= gettext("Zip") ?><?php } ?>-->
+        <?php if ($hasGZIP) {
+    ?><input type="radio" name="archiveType" value="0"><?= gettext("GZip") ?><?php 
+} ?>
+        <!--<?php if ($hasZIP) {
+    ?><input type="radio" name="archiveType" value="1"><?= gettext("Zip") ?><?php 
+} ?>-->
         <input type="radio" name="archiveType" value="2" checked><?= gettext("Uncompressed") ?>
         <input type="radio" name="archiveType" value="3" checked><?= gettext("tar.gz (Include Photos)") ?>
         <BR><BR>
-        <?php if ($hasPGP) { ?>
+        <?php if ($hasPGP) {
+    ?>
         <input type="checkbox" name="encryptBackup" value="1"><?= gettext("Encrypt backup file with a password?") ?>
         &nbsp;&nbsp;&nbsp;
         <?= gettext("Password") ?>:<input type="password" name="pw1">
         <?= gettext("Re-type Password") ?>:<input type="password" name="pw2">
         <BR><span id="passworderror" style="color: red"></span><BR><BR>
-        <?php } ?>
+        <?php 
+} ?>
         <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="' . gettext("Generate and Download Backup") . '"' ?>>
         <input type="button" class="btn btn-primary" id="doRemoteBackup" <?= 'value="' . gettext("Generate and Ship Backup to External Storage") . '"' ?>>
 

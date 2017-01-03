@@ -36,8 +36,7 @@ require "Include/Header.php";
       <?php
 
       while ($aRow = mysqli_fetch_array($rsFamilies)) {
-      extract($aRow);
-      ?>
+          extract($aRow); ?>
       <tr>
         <td><a href='FamilyView.php?FamilyID=<?= $fam_ID ?>'>
                         <span class="fa-stack">
@@ -54,14 +53,14 @@ require "Include/Header.php";
           <?= $fam_Name ?></td>
         <?php
         echo "<td>" . $fam_HomePhone . "</td>";
-        echo "<td>" . $fam_Address1 . " " . $fam_Address2 . " </td>";
-        echo "<td>" . $fam_City . " </td>";
-        echo "<td>" . $fam_State . " </td>";
-        echo "<td>" . $fam_Zip . "</td>";
-        echo "<td>" . FormatDate($fam_DateEntered, false) . "</td>";
-        echo "<td>" . FormatDate($fam_DateLastEdited, false) . "</td>";
-        echo "</tr>";
-        } ?>
+          echo "<td>" . $fam_Address1 . " " . $fam_Address2 . " </td>";
+          echo "<td>" . $fam_City . " </td>";
+          echo "<td>" . $fam_State . " </td>";
+          echo "<td>" . $fam_Zip . "</td>";
+          echo "<td>" . FormatDate($fam_DateEntered, false) . "</td>";
+          echo "<td>" . FormatDate($fam_DateLastEdited, false) . "</td>";
+          echo "</tr>";
+      } ?>
       </tbody>
     </table>
   </div>

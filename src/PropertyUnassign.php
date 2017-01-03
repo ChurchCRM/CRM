@@ -19,77 +19,71 @@ require "Include/Functions.php";
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords'])
-{
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords']) {
+    Redirect("Menu.php");
+    exit;
 }
 
 //Get the new property value from the post collection
-$iPropertyID = FilterInput($_GET["PropertyID"],'int');
+$iPropertyID = FilterInput($_GET["PropertyID"], 'int');
 
 // Is there a PersonID in the querystring?
-if (isset($_GET["PersonID"]) && $_SESSION['bEditRecords'])
-{
-	$iPersonID = FilterInput($_GET["PersonID"],'int');
-	$iRecordID = $iPersonID;
-	$sQuerystring = "?PersonID=" . $iPersonID;
-	$sTypeName = "Person";
-	$sBackPage = "PersonView.php?PersonID=" . $iPersonID;
+if (isset($_GET["PersonID"]) && $_SESSION['bEditRecords']) {
+    $iPersonID = FilterInput($_GET["PersonID"], 'int');
+    $iRecordID = $iPersonID;
+    $sQuerystring = "?PersonID=" . $iPersonID;
+    $sTypeName = "Person";
+    $sBackPage = "PersonView.php?PersonID=" . $iPersonID;
 
-	// Get the name of the person
-	$sSQL = "SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = " . $iPersonID;
-	$rsName = RunQuery($sSQL);
-	$aRow = mysqli_fetch_array($rsName);
-	$sName = $aRow["per_LastName"] . ", " . $aRow["per_FirstName"];
+    // Get the name of the person
+    $sSQL = "SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = " . $iPersonID;
+    $rsName = RunQuery($sSQL);
+    $aRow = mysqli_fetch_array($rsName);
+    $sName = $aRow["per_LastName"] . ", " . $aRow["per_FirstName"];
 }
 
 // Is there a GroupID in the querystring?
-elseif (isset($_GET["GroupID"]) && $_SESSION['bManageGroups'])
-{
-	$iGroupID = FilterInput($_GET["GroupID"],'int');
-	$iRecordID = $iGroupID;
-	$sQuerystring = "?GroupID=" . $iGroupID;
-	$sTypeName = "Group";
-	$sBackPage = "GroupView.php?GroupID=" . $iGroupID;
+elseif (isset($_GET["GroupID"]) && $_SESSION['bManageGroups']) {
+    $iGroupID = FilterInput($_GET["GroupID"], 'int');
+    $iRecordID = $iGroupID;
+    $sQuerystring = "?GroupID=" . $iGroupID;
+    $sTypeName = "Group";
+    $sBackPage = "GroupView.php?GroupID=" . $iGroupID;
 
-	// Get the name of the group
-	$sSQL = "SELECT grp_Name FROM group_grp WHERE grp_ID = " . $iGroupID;
-	$rsName = RunQuery($sSQL);
-	$aRow = mysqli_fetch_array($rsName);
-	$sName = $aRow["grp_Name"];
+    // Get the name of the group
+    $sSQL = "SELECT grp_Name FROM group_grp WHERE grp_ID = " . $iGroupID;
+    $rsName = RunQuery($sSQL);
+    $aRow = mysqli_fetch_array($rsName);
+    $sName = $aRow["grp_Name"];
 }
 
 // Is there a FamilyID in the querystring?
-elseif (isset($_GET["FamilyID"]) && $_SESSION['bEditRecords'])
-{
-	$iFamilyID = FilterInput($_GET["FamilyID"],'int');
-	$iRecordID = $iFamilyID;
-	$sQuerystring = "?FamilyID=" . $iFamilyID;
-	$sTypeName = "Family";
-	$sBackPage = "FamilyView.php?FamilyID=" . $iFamilyID;
+elseif (isset($_GET["FamilyID"]) && $_SESSION['bEditRecords']) {
+    $iFamilyID = FilterInput($_GET["FamilyID"], 'int');
+    $iRecordID = $iFamilyID;
+    $sQuerystring = "?FamilyID=" . $iFamilyID;
+    $sTypeName = "Family";
+    $sBackPage = "FamilyView.php?FamilyID=" . $iFamilyID;
 
-	// Get the name of the family
-	$sSQL = "SELECT fam_Name FROM family_fam WHERE fam_ID = " . $iFamilyID;
-	$rsName = RunQuery($sSQL);
-	$aRow = mysqli_fetch_array($rsName);
-	$sName = $aRow["fam_Name"];
+    // Get the name of the family
+    $sSQL = "SELECT fam_Name FROM family_fam WHERE fam_ID = " . $iFamilyID;
+    $rsName = RunQuery($sSQL);
+    $aRow = mysqli_fetch_array($rsName);
+    $sName = $aRow["fam_Name"];
 }
 
 // Somebody tried to call the script with no options
-else
-{
-	Redirect("Menu.php");
-	exit;
+else {
+    Redirect("Menu.php");
+    exit;
 }
 
 //Do we have confirmation?
-if (isset($_GET["Confirmed"]))
-{
-	$sSQL = "DELETE FROM record2property_r2p WHERE r2p_record_ID = " . $iRecordID . " AND r2p_pro_ID = " . $iPropertyID;
-	RunQuery($sSQL);
-	Redirect($sBackPage);
-	exit;
+if (isset($_GET["Confirmed"])) {
+    $sSQL = "DELETE FROM record2property_r2p WHERE r2p_record_ID = " . $iRecordID . " AND r2p_pro_ID = " . $iPropertyID;
+    RunQuery($sSQL);
+    Redirect($sBackPage);
+    exit;
 }
 
 //Get the name of the property

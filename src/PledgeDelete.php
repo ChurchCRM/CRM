@@ -21,25 +21,25 @@ require "Include/Functions.php";
 $sPageTitle = gettext("Confirm Delete");
 
 $linkBack = FilterInput($_GET["linkBack"]);
-$sGroupKey = FilterInput($_GET["GroupKey"],'string'); 
+$sGroupKey = FilterInput($_GET["GroupKey"], 'string');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if (!$_SESSION['bAddRecords']) {
-	Redirect("Menu.php");
-	exit;
+    Redirect("Menu.php");
+    exit;
 }
 
 //Is this the second pass?
 if (isset($_POST["Delete"])) {
-	$sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $sGroupKey . "';";
-	RunQuery($sSQL);
+    $sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $sGroupKey . "';";
+    RunQuery($sSQL);
 
-	if ($linkBack <> "") {
-		Redirect ($linkBack);
-	}
-} elseif (isset ($_POST["Cancel"])) {
-	Redirect ($linkBack);
+    if ($linkBack <> "") {
+        Redirect($linkBack);
+    }
+} elseif (isset($_POST["Cancel"])) {
+    Redirect($linkBack);
 }
 
 require "Include/Header.php";

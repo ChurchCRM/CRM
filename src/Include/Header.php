@@ -27,12 +27,11 @@
  ******************************************************************************/
 
  use ChurchCRM\dto\SystemConfig;
- 
- if ( ! $systemService->isDBCurrent())  //either the DB is good, or the upgrade was successful.
-{
+
+ if (! $systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
   Redirect('CheckVersion.php');
-  exit;
-}
+     exit;
+ }
 
 use ChurchCRM\Service\TaskService;
 
@@ -79,9 +78,9 @@ $MenuFirst = 1;
       <!-- logo for regular state and mobile devices -->
       <?php
       $headerHTML = "<b>Church</b>CRM";
-	  $sHeader = SystemConfig::getValue("sHeader");
+      $sHeader = SystemConfig::getValue("sHeader");
       if ($sHeader) {
-        $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
+          $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
       }
       ?>
       <span class="logo-lg"><?= $headerHTML ?></span>
@@ -191,7 +190,7 @@ $MenuFirst = 1;
         <?php
         echo $sPageTitle . "\n";
         if (isset($sPageTitleSub)) {
-          echo "<small>" . $sPageTitleSub . "</small>";
+            echo "<small>" . $sPageTitleSub . "</small>";
         }
         ?>
       </h1>

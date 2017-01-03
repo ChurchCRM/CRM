@@ -23,7 +23,7 @@ $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH) or die(mysqli_error($cnInfoCent
 extract($aRow);
 $aEventID = $event_id;
 $aEventTitle = $event_title;
-$aEventText = nl2br(htmlentities(stripslashes($event_text),ENT_NOQUOTES, "UTF-8"));
+$aEventText = nl2br(htmlentities(stripslashes($event_text), ENT_NOQUOTES, "UTF-8"));
 ?>
 <html>
 <head><title>Text from <?= $aEventID ?></title></head>

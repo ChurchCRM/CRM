@@ -30,47 +30,46 @@ $sPageTitle = gettext("\"Why Came\" notes for ") . $per_FirstName . " " . $per_L
 
 //Is this the second pass?
 if (isset($_POST["Submit"])) {
-  $tJoin = FilterInput($_POST["Join"]);
-  $tCome = FilterInput($_POST["Come"]);
-  $tSuggest = FilterInput($_POST["Suggest"]);
-  $tHearOfUs = FilterInput($_POST["HearOfUs"]);
+    $tJoin = FilterInput($_POST["Join"]);
+    $tCome = FilterInput($_POST["Come"]);
+    $tSuggest = FilterInput($_POST["Suggest"]);
+    $tHearOfUs = FilterInput($_POST["HearOfUs"]);
 
   // New input (add)
   if (strlen($iWhyCameID) < 1) {
-    $sSQL = "INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs)
+      $sSQL = "INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs)
 				VALUES (" . $iPerson . ", \"" . $tJoin . "\", \"" . $tCome . "\", \"" . $tSuggest . "\", \"" . $tHearOfUs . "\")";
 
     // Existing record (update)
   } else {
-    $sSQL = "UPDATE whycame_why SET why_join = \"" . $tJoin . "\", why_come = \"" . $tCome . "\", why_suggest = \"" . $tSuggest . "\", why_hearOfUs = \"" . $tHearOfUs . "\" WHERE why_per_ID = " . $iPerson;
+      $sSQL = "UPDATE whycame_why SET why_join = \"" . $tJoin . "\", why_come = \"" . $tCome . "\", why_suggest = \"" . $tSuggest . "\", why_hearOfUs = \"" . $tHearOfUs . "\" WHERE why_per_ID = " . $iPerson;
   }
 
   //Execute the SQL
   RunQuery($sSQL);
 
-  if (isset($_POST["Submit"])) {
-    // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
+    if (isset($_POST["Submit"])) {
+        // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
     if ($linkBack != "") {
-      Redirect($linkBack);
+        Redirect($linkBack);
     } else {
-      //Send to the view of this pledge
+        //Send to the view of this pledge
       Redirect("WhyCameEditor.php?PersonID=" . $iPerson . "&WhyCameID=" . $iWhyCameID . "&linkBack=", $linkBack);
     }
-  }
-
+    }
 } else {
-  $sSQL = "SELECT * FROM whycame_why WHERE why_per_ID = " . $iPerson;
-  $rsWhyCame = RunQuery($sSQL);
-  if (mysqli_num_rows($rsWhyCame) > 0) {
-    extract(mysqli_fetch_array($rsWhyCame));
+    $sSQL = "SELECT * FROM whycame_why WHERE why_per_ID = " . $iPerson;
+    $rsWhyCame = RunQuery($sSQL);
+    if (mysqli_num_rows($rsWhyCame) > 0) {
+        extract(mysqli_fetch_array($rsWhyCame));
 
-    $iWhyCameID = $why_ID;
-    $tJoin = $why_join;
-    $tCome = $why_come;
-    $tSuggest = $why_suggest;
-    $tHearOfUs = $why_hearOfUs;
-  } else {
-  }
+        $iWhyCameID = $why_ID;
+        $tJoin = $why_join;
+        $tCome = $why_come;
+        $tSuggest = $why_suggest;
+        $tHearOfUs = $why_hearOfUs;
+    } else {
+    }
 }
 
 require "Include/Header.php";
@@ -101,10 +100,10 @@ require "Include/Header.php";
           <td colspan="2" align="center">
             <input type="submit" class="btn btn-primary" value="<?= gettext("Save") ?>" name="Submit">
             <input type="button" class="btn" value="<?= gettext("Cancel") ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-              echo $linkBack;
-            } else {
-              echo "PersonView.php?PersonID=".$iPerson;
-            } ?>';">
+    echo $linkBack;
+} else {
+    echo "PersonView.php?PersonID=".$iPerson;
+} ?>';">
           </td>
         </tr>
     </form>
