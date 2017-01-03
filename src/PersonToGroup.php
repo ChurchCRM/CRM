@@ -24,28 +24,26 @@ use ChurchCRM\Service\GroupService;
 $groupService = new GroupService();
 
 // Security: User must have Manage Groups & Roles permission
-if (!$_SESSION['bManageGroups'])
-{
-  Redirect("Menu.php");
-  exit;
+if (!$_SESSION['bManageGroups']) {
+    Redirect("Menu.php");
+    exit;
 }
 
 $iPersonID = FilterInput($_GET["PersonID"], 'int');
 
 // Was the form submitted?
-if (isset($_POST["Submit"]))
-{
-  // Get the GroupID
+if (isset($_POST["Submit"])) {
+    // Get the GroupID
   $iGroupID = FilterInput($_POST["GroupID"], 'int');
-  $iGroupRole = FilterInput($_POST["GroupRole"], 'int');
+    $iGroupRole = FilterInput($_POST["GroupRole"], 'int');
 
-  $sPreviousQuery = strip_tags($_POST["prevquery"]);
-  $groupService->addUserToGroup($iGroupID, $iPersonID, $iGroupRole);
+    $sPreviousQuery = strip_tags($_POST["prevquery"]);
+    $groupService->addUserToGroup($iGroupID, $iPersonID, $iGroupRole);
 
-  Redirect("SelectList.php?$sPreviousQuery");
+    Redirect("SelectList.php?$sPreviousQuery");
+} else {
+    $sPreviousQuery = strip_tags(rawurldecode($_GET["prevquery"]));
 }
-else
-  $sPreviousQuery = strip_tags(rawurldecode($_GET["prevquery"]));
 
 // Get all the groups
 $sSQL = "SELECT * FROM group_grp ORDER BY grp_Name";
@@ -68,10 +66,9 @@ require "Include/Header.php";
         <?php
 // Create the group select drop-down
         echo "<select id=\"GroupID\" name=\"GroupID\" onChange=\"UpdateRoles();\"><option value=\"0\">" . gettext("None") . "</option>";
-        while ($aRow = mysqli_fetch_array($rsGroups))
-        {
-          extract($aRow);
-          echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
+        while ($aRow = mysqli_fetch_array($rsGroups)) {
+            extract($aRow);
+            echo "<option value=\"" . $grp_ID . "\">" . $grp_Name . "</option>";
         }
         echo "</select>";
         ?>
@@ -79,7 +76,7 @@ require "Include/Header.php";
     </tr>
     <tr>
       <td class="LabelColumn"><?= gettext("Select Role") ?>:</td>
-      <td class="TextColumn"> 
+      <td class="TextColumn">
         <select name="GroupRole" id="GroupRole">
           <option><?= gettext("No Group Selected") ?></option>
         </select>

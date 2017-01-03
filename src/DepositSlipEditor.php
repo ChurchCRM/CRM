@@ -23,30 +23,30 @@ use ChurchCRM\DepositQuery;
 $iDepositSlipID = 0;
 $thisDeposit = 0;
 
-if (array_key_exists("DepositSlipID", $_GET))
-  $iDepositSlipID = FilterInput($_GET["DepositSlipID"], 'int');
+if (array_key_exists("DepositSlipID", $_GET)) {
+    $iDepositSlipID = FilterInput($_GET["DepositSlipID"], 'int');
+}
 
 if ($iDepositSlipID) {
-
-  $thisDeposit = DepositQuery::create()->findOneById($iDepositSlipID);
+    $thisDeposit = DepositQuery::create()->findOneById($iDepositSlipID);
   // Set the session variable for default payment type so the new payment form will come up correctly
-  if ($thisDeposit->getType() == "Bank")
-    $_SESSION['idefaultPaymentMethod'] = "CHECK";
-  else if ($thisDeposit->getType() == "CreditCard")
-    $_SESSION['idefaultPaymentMethod'] = "CREDITCARD";
-  else if ($thisDeposit->getType()== "BankDraft")
-    $_SESSION['idefaultPaymentMethod'] = "BANKDRAFT";
-  else if ($thisDeposit->getType() == "eGive")
-    $_SESSION['idefaultPaymentMethod'] = "EGIVE";
+  if ($thisDeposit->getType() == "Bank") {
+      $_SESSION['idefaultPaymentMethod'] = "CHECK";
+  } elseif ($thisDeposit->getType() == "CreditCard") {
+      $_SESSION['idefaultPaymentMethod'] = "CREDITCARD";
+  } elseif ($thisDeposit->getType()== "BankDraft") {
+      $_SESSION['idefaultPaymentMethod'] = "BANKDRAFT";
+  } elseif ($thisDeposit->getType() == "eGive") {
+      $_SESSION['idefaultPaymentMethod'] = "EGIVE";
+  }
 
   // Security: User must have finance permission or be the one who created this deposit
   if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $thisDeposit->getEnteredby())) {
-    Redirect("Menu.php");
-    exit;
+      Redirect("Menu.php");
+      exit;
   }
-}
-else {
-  Redirect("Menu.php");
+} else {
+    Redirect("Menu.php");
 }
 
 //Set the page title
@@ -54,10 +54,9 @@ $sPageTitle = $thisDeposit->getType() . " " . gettext("Deposit Slip Number: ") .
 
 //Is this the second pass?
 if (isset($_POST["DepositSlipLoadAuthorized"])) {
-  $thisDeposit->loadAuthorized();
-}
-else if (isset($_POST["DepositSlipRunTransactions"])) {
-  $thisDeposit->runTransactions();
+    $thisDeposit->loadAuthorized();
+} elseif (isset($_POST["DepositSlipRunTransactions"])) {
+    $thisDeposit->runTransactions();
 }
 
 $_SESSION['iCurrentDeposit'] = $iDepositSlipID;  // Probably redundant
@@ -88,7 +87,9 @@ require "Include/Header.php";
             </div>
             <div class="col-lg-4">
               <label for="Closed"><?php echo gettext("Closed:"); ?></label>
-              <input type="checkbox"  name="Closed" id="Closed" value="1" <?php if ($thisDeposit->getClosed()) echo " checked"; ?>/><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
+              <input type="checkbox"  name="Closed" id="Closed" value="1" <?php if ($thisDeposit->getClosed()) {
+    echo " checked";
+} ?>/><?php echo gettext("Close deposit slip (remember to press Save)"); ?>
             </div>
           </div>
           <div class="row">
@@ -96,12 +97,12 @@ require "Include/Header.php";
               <input type="submit" class="btn" value="<?php echo gettext("Save"); ?>" name="DepositSlipSubmit">
             </div>
             <div class="col-lg-6" style="text-align:center">
-              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo ($thisDeposit->getId()) ?>/pdf');">
+              <input type="button" class="btn" value="<?php echo gettext("Deposit Slip Report"); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo($thisDeposit->getId()) ?>/pdf');">
             </div>
           </div>
           <?php
           if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
-            echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
+              echo "<p>" . gettext("Important note: failed transactions will be deleted permanantly when the deposit slip is closed.") . "</p>";
           }
           ?>
       </div>
@@ -119,10 +120,12 @@ require "Include/Header.php";
           <?php
           // Get deposit totals
           echo "<li><b>TOTAL (".$thisDeposit->getPledges()->count(). "):</b> $".$thisDeposit->getVirtualColumn("totalAmount")."</li>";
-          if ($thisDeposit->getCountChecks())
-            echo "<li><b>CASH (" . $thisDeposit->getCountCash() . "):</b> $" . $thisDeposit->getTotalCash()."</li>";
-          if ($thisDeposit->getCountCash())
-            echo "<li><b>CHECKS (" . $thisDeposit->getCountChecks() . "):</b> $". $thisDeposit->getTotalChecks() . " </li>";
+          if ($thisDeposit->getCountChecks()) {
+              echo "<li><b>CASH (" . $thisDeposit->getCountCash() . "):</b> $" . $thisDeposit->getTotalCash()."</li>";
+          }
+          if ($thisDeposit->getCountCash()) {
+              echo "<li><b>CHECKS (" . $thisDeposit->getCountChecks() . "):</b> $". $thisDeposit->getTotalChecks() . " </li>";
+          }
           ?>
             </ul>
         </div>
@@ -130,9 +133,8 @@ require "Include/Header.php";
           <canvas id="fund-donut" style="height:250px"></canvas>
           <ul style="margin:0px; border:0px; padding:0px;">
           <?php
-          foreach ($thisDeposit->getFundTotals() as $fund)
-          {
-            echo "<li><b>". $fund['Name'] . "</b>: $" . $fund['Total'] ."</li>";
+          foreach ($thisDeposit->getFundTotals() as $fund) {
+              echo "<li><b>". $fund['Name'] . "</b>: $" . $fund['Total'] ."</li>";
           }
           ?>
         </div>
@@ -146,18 +148,18 @@ require "Include/Header.php";
     <div class="pull-right">
       <?php
       if ($iDepositSlipID and $thisDeposit->getType() and ! $thisDeposit->getClosed()) {
-        if ($thisDeposit->getType() == "eGive") {
-          echo "<input type=button class=btn value=\"" . gettext("Import eGive") . "\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
-        }
-        else {
-          echo "<input type=button class=\"btn btn-success\" value=\"" . gettext("Add Payment") . "\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
-        }
-        if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
-          ?>
+          if ($thisDeposit->getType() == "eGive") {
+              echo "<input type=button class=btn value=\"" . gettext("Import eGive") . "\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+          } else {
+              echo "<input type=button class=\"btn btn-success\" value=\"" . gettext("Add Payment") . "\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+          }
+          if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
+              ?>
           <input type="submit" class="btn btn-success" value="<?php echo gettext("Load Authorized Transactions"); ?>" name="DepositSlipLoadAuthorized">
           <input type="submit" class="btn btn-warning" value="<?php echo gettext("Run Transactions"); ?>" name="DepositSlipRunTransactions">
           <?php
-        }
+
+          }
       }
       ?>
     </div>
@@ -166,11 +168,12 @@ require "Include/Header.php";
     <table class="table" id="paymentsTable"></table>
     <?php
     if ($iDepositSlipID and $thisDeposit->getType() and !$thisDeposit->getClosed()) {
-      if ($thisDeposit->getType() == "Bank") {
-        ?>
+        if ($thisDeposit->getType() == "Bank") {
+            ?>
         <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
         <?php
-      }
+
+        }
     }
     ?>
   </div>
@@ -202,14 +205,13 @@ require "Include/Header.php";
 <script type="text/javascript" src="<?= $sRootPath ?>/skin/js/DepositSlipEditor.js"></script>
 <?php
   $fundData = array() ;
-  foreach ($thisDeposit->getFundTotals() as $tmpfund)
-  {
-    $fund = new StdClass();
-    $fund->color = "#".random_color() ;
-    $fund->highlight= "#".random_color() ;
-    $fund->label = $tmpfund['Name'];
-    $fund->value = $tmpfund['Total'];
-    array_push($fundData,$fund);
+  foreach ($thisDeposit->getFundTotals() as $tmpfund) {
+      $fund = new StdClass();
+      $fund->color = "#".random_color() ;
+      $fund->highlight= "#".random_color() ;
+      $fund->label = $tmpfund['Name'];
+      $fund->value = $tmpfund['Total'];
+      array_push($fundData, $fund);
   }
   $pledgeTypeData = array();
   $t1 = new stdClass();

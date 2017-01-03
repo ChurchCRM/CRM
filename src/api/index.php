@@ -5,8 +5,8 @@ require '../Include/Functions.php';
 
 //Security
 if (!isset($_SESSION['iUserID'])) {
-  Redirect("Login.php");
-  exit;
+    Redirect("Login.php");
+    exit;
 }
 
 
@@ -51,4 +51,3 @@ require __DIR__ . '/routes/register.php';
 
 // Run app
 $app->run();
-

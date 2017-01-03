@@ -20,4 +20,3 @@ require __DIR__ . '/routes/register.php';
 
 // Run app
 $app->run();
-

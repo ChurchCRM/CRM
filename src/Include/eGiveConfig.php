@@ -8,4 +8,3 @@ $eGiveURL = "https://www.egive-usa.com";
 
 // specific number for your church
 $eGiveOrgID = 13821;
-?>
