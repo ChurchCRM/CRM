@@ -2,71 +2,48 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Tasks\ChurchAddress;
+use ChurchCRM\Tasks\ChurchNameTask;
+use ChurchCRM\Tasks\EmailTask;
+use ChurchCRM\Tasks\HttpsTask;
+use ChurchCRM\Tasks\IntegrityCheckTask;
+use ChurchCRM\Tasks\iTask;
+use ChurchCRM\Tasks\LatestReleaseTask;
+use ChurchCRM\Tasks\RegisteredTask;
 
 class TaskService
 {
-    private $installedVersion;
-    private $latestVersion;
+  /**
+   * @var ObjectCollection|iTask[]
+   */
+  private $taskClasses;
 
-    public function __construct()
-    {
-        $this->latestVersion = $_SESSION['latestVersion'];
-        $this->installedVersion = $_SESSION['sSoftwareInstalledVersion'];
+  public function __construct()
+  {
+
+    $this->taskClasses = [
+      new ChurchNameTask(),
+      new ChurchAddress(),
+      new EmailTask(),
+      new HttpsTask(),
+      new IntegrityCheckTask(),
+      new LatestReleaseTask(),
+      new RegisteredTask()
+    ];
+  }
+
+  public function getCurrentUserTasks()
+  {
+    $tasks = [];
+    foreach ($this->taskClasses as $taskClass) {
+      if ($taskClass->isActive()) {
+        array_push($tasks, ['title' => $taskClass->getTitle(),
+          'link' => $taskClass->getLink(),
+          'admin' => $taskClass->isAdmin(),
+          'desc' => $taskClass->getDesc()]);
+      }
     }
+    return $tasks;
+  }
 
-    public function getAdminTasks()
-    {
-        requireUserGroupMembership('bAdmin');
-        if (file_exists(SystemURLs::getDocumentRoot().'/integrityCheck.json')) {
-            $integrityCheckData = json_decode(file_get_contents(SystemURLs::getDocumentRoot().'/integrityCheck.json'));
-        }
-
-        $tasks = [];
-        if (SystemConfig::getValue('bRegistered') != 1) {
-            array_push($tasks, $this->addTask(gettext('Register Software'), SystemURLs::getRootPath().'/Register.php', true));
-        }
-
-        if (!isset($_SERVER['HTTPS'])) {
-            array_push($tasks, $this->addTask(gettext('Configure HTTPS'), 'http://docs.churchcrm.io/en/latest/', true));
-        }
-
-        if (SystemConfig::getValue('sChurchName') == 'Some Church') {
-            array_push($tasks, $this->addTask(gettext('Update Church Info'), SystemURLs::getRootPath().'/SystemSettings.php', true));
-        }
-
-        if (SystemConfig::getValue('sChurchAddress') == '') {
-            array_push($tasks, $this->addTask(gettext('Set Church Address'), SystemURLs::getRootPath().'/SystemSettings.php', true));
-        }
-
-        if (SystemConfig::getValue('sSMTPHost') == '') {
-            array_push($tasks, $this->addTask(gettext('Set Email Settings'), SystemURLs::getRootPath().'/SystemSettings.php', true));
-        }
-
-        if ($this->latestVersion != null && $this->latestVersion['name'] != $this->installedVersion) {
-            array_push($tasks, $this->addTask(gettext('New Release').' '.$this->latestVersion['name'], SystemURLs::getRootPath().'/UpgradeCRM.php', true));
-        }
-
-        if ($integrityCheckData == null || $integrityCheckData->status == 'failure') {
-            array_push($tasks, $this->addTask(gettext('Application Integrity Check Failed'), SystemURLs::getRootPath().'/IntegrityCheck.php', true));
-        }
-
-        return $tasks;
-    }
-
-    public function getCurrentUserTasks()
-    {
-        $tasks = [];
-        if ($_SESSION['bAdmin']) {
-            $tasks = $this->getAdminTasks();
-        }
-
-        return $tasks;
-    }
-
-    public function addTask($title, $link, $admin = false)
-    {
-        return  ['title' => $title, 'link' => $link, 'admin' => $admin];
-    }
 }
