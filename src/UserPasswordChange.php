@@ -208,8 +208,8 @@ if ($_SESSION['bNeedPasswordChange']) {
                 <?php if (!$bAdminOtherUser) {
     echo "<p>" . gettext("Enter your current password, then your new password twice.  Passwords must be at least") . ' ' . SystemConfig::getValue("sMinPasswordLength") . ' ' . gettext("characters in length.") . "</p>";
 } else {
-                    echo "<p>" . gettext("Enter a new password for this user.") . "</p>";
-                }
+    echo "<p>" . gettext("Enter a new password for this user.") . "</p>";
+}
                 ?>
             </div>
             <!-- /.box-header -->

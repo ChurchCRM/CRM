@@ -712,8 +712,8 @@ require "Include/Header.php";
 						<label> <?php if ($sCountry == "Canada") {
                             echo gettext("Postal Code").":";
                         } else {
-                                echo gettext("Zip").":";
-                            }
+                            echo gettext("Zip").":";
+                        }
                             ?></label>
 						<input type="text" Name="Zip"  class="form-control" <?php
                             // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
