@@ -25,7 +25,7 @@ before_install:
 
 # prepare travis ci for the build process
 install:
- - ./travis-ci/install-composer.sh
+#- ./travis-ci/install-composer.sh
  - ./travis-ci/install-npm.sh
 
 # linters
@@ -33,4 +33,5 @@ before_script:
  - ./travis-ci/setup-db.sh
 
 # execute tests
-# script: ./travis-ci/tests.sh
+script:
+ - ./travis-ci/tests.sh
