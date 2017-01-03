@@ -1,0 +1,11 @@
+preset: psr2
+
+risky: false
+
+finder:
+  name:
+    - "*.php"
+  path:
+    - "src/"
+  depth:
+    - "< 3"
