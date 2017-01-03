@@ -252,6 +252,7 @@ if (FilterInput($_POST["Action"]) == "NEW") {
     ?>
       <h3 class="box-title"><?= ($numRows == 1 ? gettext("There currently is"):gettext("There currently are"))." ".$numRows." ". ($numRows == 1 ? gettext("custom event type"):gettext("custom event types")) ?></h3>
     <?php
+
 } ?>
   </div>
 

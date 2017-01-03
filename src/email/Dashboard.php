@@ -70,6 +70,7 @@ require '../Include/Header.php';
         </div>
       </div>
     <?php
+
     } ?>
   </div>
   <div class="row">
@@ -87,6 +88,7 @@ require '../Include/Header.php';
     </div>
   </div>
 <?php
+
 } else {
     ?>
   <div class="row">
@@ -101,6 +103,7 @@ require '../Include/Header.php';
     </div>
   </div>
 <?php
+
 }
 
 require "../Include/Footer.php";

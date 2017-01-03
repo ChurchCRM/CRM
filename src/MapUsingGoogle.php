@@ -34,6 +34,7 @@ if (SystemConfig::getValue("nChurchLatitude") == "") {
     <?= gettext("Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.") ?>
   </div>
 <?php
+
 } else {
     if (SystemConfig::getValue("sGoogleMapKey") == "") {
         ?>
@@ -41,6 +42,7 @@ if (SystemConfig::getValue("nChurchLatitude") == "") {
       <?= gettext("Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.") ?>
     </div>
 <?php
+
     } ?>
 
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
@@ -167,6 +169,7 @@ if (SystemConfig::getValue("nChurchLatitude") == "") {
 </div>
 
 <?php
+
 }
 
 require "Include/Footer.php" ?>

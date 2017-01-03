@@ -60,6 +60,7 @@ if (isset($_GET['Warn'])) {
 		<?= "<b>" . gettext("Warning") . ": </b>" . gettext("This property type is still being used by at least one property.") . "<BR>" . gettext("If you delete this type, you will also remove all properties using") . "<BR>" . gettext("it and lose any corresponding property assignments."); ?>
 	</p>
 <?php
+
 } ?>
 
 <p align="center" class="MediumLargeText">

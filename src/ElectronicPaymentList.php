@@ -175,6 +175,7 @@ function CreatePaymentMethodsForChecked()
 	}
 }
 <?php
+
 } ?>
 </script>
 
@@ -208,6 +209,7 @@ function CreatePaymentMethodsForChecked()
     ?>
 		<td align="center"><b><?= gettext("Vanco ACH") ?></b></td>
 		<?php
+
 }?>
 		<td align="center"><b><?= gettext("Credit Card") ?></b></td>
 		<td align="center"><b><?= gettext("Month") ?></b></td>
@@ -216,6 +218,7 @@ function CreatePaymentMethodsForChecked()
     ?>
 		<td align="center"><b><?= gettext("Vanco CC") ?></b></td>
 		<?php
+
 }?>
 		<td><b><?= gettext("Edit") ?></b></td>
 		<td><b><?= gettext("Delete") ?></b></td>
@@ -272,6 +275,7 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
                 ?>
 		<td align="center" id="AccountVanco<?= $aut_ID ?>"><?= $aut_AccountVanco ?></td>
 		<?php
+
             } ?>
 		<td id="CreditCard<?= $aut_ID ?>"><?php if (strlen($aut_CreditCard)==16) {
                 echo "*************".substr($aut_CreditCard, 12, 4);
@@ -282,6 +286,7 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
                 ?>
 		<td align="center" id="CreditCardVanco<?= $aut_ID ?>"><?= $aut_CreditCardVanco ?></td>
 		<?php
+
             } ?>
 		<td><a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?php echo $fam_ID?>&amp;linkBack=ElectronicPaymentList.php"><?= gettext("Edit") ?></a></td>
 		<td><button onclick="ConfirmDeleteAutoPayment(<?= $aut_ID ?>)"><?= gettext("Delete") ?></button></td>
@@ -296,6 +301,7 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
     ?>
 <input type="button" id="CreatePaymentMethodsForChecked" value="Store Private Data at Vanco" onclick="CreatePaymentMethodsForChecked();" />
 <?php
+
 } ?>
 <input type="button" id="DeleteChecked" value="Delete" onclick="DeleteChecked();" />
 <input type="button" id="DeleteChecked" value="Clear Account Numbers" onclick="ClearAccountsChecked();" />

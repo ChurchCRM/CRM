@@ -162,6 +162,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
               <td><?= $prop_Description ?></td>
             </tr>
           <?php
+
     } ?>
           <tr>
             <td align="center" colspan="3">

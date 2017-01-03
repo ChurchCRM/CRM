@@ -362,6 +362,7 @@ for ($row=1; $row <= $numRows; $row++) {
 
 	</tr>
 <?php
+
 } ?>
 
 </table>
@@ -373,11 +374,13 @@ for ($row=1; $row <= $numRows; $row++) {
     ?>
 		<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:window.close();">
 	<?php
+
 } elseif ($mode != "grproles") {
     ?>
 		<input type="button" class="btn" value="<?= gettext("Exit") ?>" Name="Exit" onclick="javascript:document.location='<?php
         echo "Menu.php"; ?>';">
 	<?php
+
 } ?>
 	</div>
 </div>

@@ -70,6 +70,7 @@ if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add'
 			  <td colspan="2"><?= $sGlobalMessage ?></td>
 			</tr>
 			<?php
+
     } ?>
 			<tr>
 					<td class="LabelColumn"><?= gettext("Select Event") ?>:</td>
