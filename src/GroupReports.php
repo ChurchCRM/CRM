@@ -162,6 +162,7 @@ require "Include/Header.php";
     </div>
 
             <?php
+
 } ?>
 
 <?php require "Include/Footer.php" ?>

@@ -150,8 +150,8 @@ $mysqlversion = $mysqltmp[0];
 if (count($mysqltmp[1] > 1)) {
     $mysqlsubversion = $mysqltmp[1];
 } else {
-        $mysqlsubversion = 0;
-    }
+    $mysqlsubversion = 0;
+}
 if ($mysqlversion >= 4) {
     // This query is similar to that of the CSV export with family roll-up.
     // Here we want to gather all unique families, and those that are not attached to a family.

@@ -67,6 +67,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
           <td colspan="2"><?= $sGlobalMessage ?></td>
         </tr>
         <?php
+
     } ?>
         <tr>
                 <td class="LabelColumn"><?= gettext("Select Event") ?>:</td>

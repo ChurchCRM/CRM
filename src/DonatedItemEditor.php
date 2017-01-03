@@ -311,6 +311,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                       <td colspan="2" width="100%"><img src="<?= htmlentities($sPictureURL) ?>"/></td>
                     </tr>
 <?php
+
 } ?>
 
                 </table> <!-- Table for the bottom full-width entries -->
