@@ -23,9 +23,8 @@
 require "Include/Config.php";
 require "Include/Functions.php";
 
-if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent'])
-{
-    header ("Location: Menu.php");
+if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent']) {
+    header("Location: Menu.php");
 }
 
 $sPageTitle = gettext("Edit Event Types");
@@ -36,23 +35,23 @@ require "Include/Header.php";
 //  process the ACTION button inputs from the form page
 //
 
-if (isset ($_POST['Action'])) {
-	switch (FilterInput($_POST['Action'])){
+if (isset($_POST['Action'])) {
+    switch (FilterInput($_POST['Action'])) {
     case "CREATE":
     // Insert into the event_name table
-	  $eName = $_POST["newEvtName"];
-	  $eTime = $_POST["newEvtStartTime"];
-	  $eDOM = $_POST["newEvtRecurDOM"];
-	  $eDOW = $_POST["newEvtRecurDOW"];
-	  $eDOY = $_POST["newEvtRecurDOY"];
-	  $eRecur=$_POST["newEvtTypeRecur"];
-	  $eCntLst = $_POST["newEvtTypeCntLst"];
-	  $eCntArray = array_filter(array_map('trim', explode(",", $eCntLst)));
-	  $eCntArray[] = "Total";
-	  $eCntNum = count($eCntArray);
-	  $theID=$_POST["theID"];
+      $eName = $_POST["newEvtName"];
+      $eTime = $_POST["newEvtStartTime"];
+      $eDOM = $_POST["newEvtRecurDOM"];
+      $eDOW = $_POST["newEvtRecurDOW"];
+      $eDOY = $_POST["newEvtRecurDOY"];
+      $eRecur=$_POST["newEvtTypeRecur"];
+      $eCntLst = $_POST["newEvtTypeCntLst"];
+      $eCntArray = array_filter(array_map('trim', explode(",", $eCntLst)));
+      $eCntArray[] = "Total";
+      $eCntNum = count($eCntArray);
+      $theID=$_POST["theID"];
 
-	  $sSQL = "INSERT INTO event_types (type_name, type_defstarttime, type_defrecurtype, type_defrecurDOW, type_defrecurDOM, type_defrecurDOY)
+      $sSQL = "INSERT INTO event_types (type_name, type_defstarttime, type_defrecurtype, type_defrecurDOW, type_defrecurDOM, type_defrecurDOY)
              VALUES ('" . FilterInput($eName)  . "',
                      '" . FilterInput($eTime)  . "',
                      '" . FilterInput($eRecur) . "',
@@ -60,28 +59,27 @@ if (isset ($_POST['Action'])) {
                      '" . FilterInput($eDOM)   . "',
                      '" . FilterInput($eDOY)   . "')";
 
-	  RunQuery($sSQL);
+      RunQuery($sSQL);
     $theID = mysqli_insert_id($cnInfoCentral);
 
-	  for($j=0; $j<$eCntNum; $j++)
-	  {
-	    $cCnt = ltrim(rtrim($eCntArray[$j]));
-	    $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".FilterInput($theID)."','".FilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
-	    RunQuery($sSQL);
-	  }
+      for ($j=0; $j<$eCntNum; $j++) {
+          $cCnt = ltrim(rtrim($eCntArray[$j]));
+          $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".FilterInput($theID)."','".FilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
+          RunQuery($sSQL);
+      }
     Redirect("EventNames.php"); // clear POST
     break;
 
-	case "DELETE":
-	  $theID = $_POST["theID"];
-	  $sSQL = "DELETE FROM event_types WHERE type_id='" . FilterInput($theID) . "' LIMIT 1";
-	  RunQuery($sSQL);
-	  $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . FilterInput($theID) . "'";
-	  RunQuery($sSQL);
-	  $theID='';
-	  $_POST['Action']='';
-	  break;
-	}
+    case "DELETE":
+      $theID = $_POST["theID"];
+      $sSQL = "DELETE FROM event_types WHERE type_id='" . FilterInput($theID) . "' LIMIT 1";
+      RunQuery($sSQL);
+      $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . FilterInput($theID) . "'";
+      RunQuery($sSQL);
+      $theID='';
+      $_POST['Action']='';
+      break;
+    }
 }
 
 // Get data for the form as it now exists.
@@ -91,21 +89,20 @@ $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
 
         // Create arrays of the event types
-        for ($row = 1; $row <= $numRows; $row++)
-        {
-                $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-                extract($aRow);
+        for ($row = 1; $row <= $numRows; $row++) {
+            $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
+            extract($aRow);
 
-                $aTypeID[$row] = $type_id;
-                $aTypeName[$row] = $type_name;
-                $aDefStartTime[$row] = $type_defstarttime;
-                $aDefRecurDOW[$row] = $type_defrecurDOW;
-                $aDefRecurDOM[$row] = $type_defrecurDOM;
-                $aDefRecurDOY[$row] = $type_defrecurDOY;
-                $aDefRecurType[$row] = $type_defrecurtype;
+            $aTypeID[$row] = $type_id;
+            $aTypeName[$row] = $type_name;
+            $aDefStartTime[$row] = $type_defstarttime;
+            $aDefRecurDOW[$row] = $type_defrecurDOW;
+            $aDefRecurDOM[$row] = $type_defrecurDOM;
+            $aDefRecurDOY[$row] = $type_defrecurDOY;
+            $aDefRecurType[$row] = $type_defrecurtype;
 //                echo "$row:::DOW = $aDefRecurDOW[$row], DOM=$aDefRecurDOM[$row], DOY=$adefRecurDOY[$row] type=$aDefRecurType[$row]\n\r\n<br>";
 
-                switch ($aDefRecurType[$row]){
+                switch ($aDefRecurType[$row]) {
                   case "none":
                     $recur[$row]=gettext("None");
                     break;
@@ -113,10 +110,10 @@ $numRows = mysqli_num_rows($rsOpps);
                     $recur[$row]=gettext("Weekly on")." ".gettext($aDefRecurDOW[$row]."s");
                     break;
                   case "monthly":
-                    $recur[$row]=gettext("Monthly on")." ".date('dS',mktime(0,0,0,1,$aDefRecurDOM[$row],2000));
+                    $recur[$row]=gettext("Monthly on")." ".date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM[$row], 2000));
                     break;
                   case "yearly":
-                    $recur[$row]=gettext("Yearly on")." ".substr($aDefRecurDOY[$row],5);
+                    $recur[$row]=gettext("Yearly on")." ".substr($aDefRecurDOY[$row], 5);
                     break;
                   default:
                     $recur[$row]=gettext("None");
@@ -126,29 +123,25 @@ $numRows = mysqli_num_rows($rsOpps);
                 //
                 // new - check the count definintions table for a list of count fields
                 $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
-                $cOpps = RunQuery($cSQL);
-                $numCounts = mysqli_num_rows($cOpps);
+            $cOpps = RunQuery($cSQL);
+            $numCounts = mysqli_num_rows($cOpps);
+            $cCountName="";
+            if ($numCounts) {
                 $cCountName="";
-                if($numCounts)
-                {
-                  $cCountName="";
-                  for($c = 1; $c <=$numCounts; $c++){
+                for ($c = 1; $c <=$numCounts; $c++) {
                     $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
                     extract($cRow);
                     $cCountID[$c] = $evctnm_countid;
                     $cCountName[$c] = $evctnm_countname;
-                  }
-                  $cCountList[$row] = implode(", ",$cCountName);
-                 }
-                 else
-                 {
-                  $cCountList[$row]="";
-                 }
+                }
+                $cCountList[$row] = implode(", ", $cCountName);
+            } else {
+                $cCountList[$row]="";
+            }
         }
 
-if (FilterInput($_POST["Action"]) == "NEW")
-{
-  ?>
+if (FilterInput($_POST["Action"]) == "NEW") {
+    ?>
   <div class='box box-primary'>
     <div class='box-body'>
       <form name="UpdateEventNames" action="EventNames.php" method="POST" class='form-horizontal'>
@@ -194,14 +187,12 @@ if (FilterInput($_POST["Action"]) == "NEW")
               <div class='col-xs-7'>
                 <select name="newEvtRecurDOM" size="1" class='form-control pull-left' disabled>
                   <?php
-                    for($kk=1; $kk<=31; $kk++)
-                    {
-                      $DOM = date('dS',mktime(0,0,0,1,$kk,2000));
-                      ?>
+                    for ($kk=1; $kk<=31; $kk++) {
+                        $DOM = date('dS', mktime(0, 0, 0, 1, $kk, 2000)); ?>
                       <option class="SmallText" value=<?= $kk ?>><?= $DOM ?></option>
                       <?php
-                    }
-                  ?>
+
+                    } ?>
                  </select>
                </div>
             </div>
@@ -221,7 +212,7 @@ if (FilterInput($_POST["Action"]) == "NEW")
           </div>
           <div class='col-sm-6'>
             <select class="form-control" name="newEvtStartTime">
-              <?php createTimeDropdown(7,22,15,'',''); ?>
+              <?php createTimeDropdown(7, 22, 15, '', ''); ?>
             </select>
           </div>
         </div>
@@ -250,22 +241,24 @@ if (FilterInput($_POST["Action"]) == "NEW")
     </div>
   </div>
   <?php
+
 }
 
 // Construct the form
 ?>
 <div class="box">
   <div class="box-header">
-    <?php if ($numRows > 0) { ?>
+    <?php if ($numRows > 0) {
+    ?>
       <h3 class="box-title"><?= ($numRows == 1 ? gettext("There currently is"):gettext("There currently are"))." ".$numRows." ". ($numRows == 1 ? gettext("custom event type"):gettext("custom event types")) ?></h3>
-    <?php } ?>
+    <?php
+} ?>
   </div>
 
   <div class='box-body'>
     <?php
-    if ($numRows > 0)
-    {
-      ?>
+    if ($numRows > 0) {
+        ?>
       <table  id="eventNames" class="table table-striped table-bordered data-table">
         <thead>
          <tr>
@@ -279,9 +272,8 @@ if (FilterInput($_POST["Action"]) == "NEW")
         </thead>
         <tbody>
           <?php
-          for ($row=1; $row <= $numRows; $row++)
-          {
-            ?>
+          for ($row=1; $row <= $numRows; $row++) {
+              ?>
             <tr>
               <td><?= $aTypeID[$row] ?></td>
               <td><?= $aTypeName[$row] ?></td>
@@ -320,20 +312,20 @@ if (FilterInput($_POST["Action"]) == "NEW")
               </td>
             </tr>
             <?php
-          }
-          ?>
+
+          } ?>
         </tbody>
       </table>
       <?php
+
     }
     ?>
   </div>
 </div>
 
 <?php
-if (FilterInput($_POST["Action"]) != "NEW")
-{
-  ?>
+if (FilterInput($_POST["Action"]) != "NEW") {
+        ?>
   <div class="text-center">
     <form name="AddEventNames" action="EventNames.php" method="POST">
       <button type="submit" Name="Action" value="NEW" class="btn btn-primary">
@@ -342,7 +334,8 @@ if (FilterInput($_POST["Action"]) != "NEW")
     </form>
   </div>
   <?php
-}
+
+    }
 ?>
 
 <script type="text/javascript">

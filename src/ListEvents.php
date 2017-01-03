@@ -31,26 +31,25 @@ require 'Include/Functions.php';
 $eType="All";
 $ThisYear=date("Y");
 
-if (isset($_POST['WhichType'])){
-  $eType = FilterInput($_POST['WhichType']);
+if (isset($_POST['WhichType'])) {
+    $eType = FilterInput($_POST['WhichType']);
 } else {
-  $eType ="All";
+    $eType ="All";
 }
 
-if($eType!="All"){
-  $sSQL = "SELECT * FROM event_types WHERE type_id=$eType";
-  $rsOpps = RunQuery($sSQL);
-  $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-  extract($aRow);
-  $sPageTitle = gettext("Listing Events of Type = ") .$type_name;
+if ($eType!="All") {
+    $sSQL = "SELECT * FROM event_types WHERE type_id=$eType";
+    $rsOpps = RunQuery($sSQL);
+    $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
+    extract($aRow);
+    $sPageTitle = gettext("Listing Events of Type = ") .$type_name;
 } else {
-  $sPageTitle = gettext("Listing All Church Events");
+    $sPageTitle = gettext("Listing All Church Events");
 }
 
 // retrieve the year selector
 
-if(isset($_POST['WhichYear']))
-{
+if (isset($_POST['WhichYear'])) {
     $EventYear=FilterInput($_POST['WhichYear'], 'int');
 } else {
     $EventYear=date("Y");
@@ -60,22 +59,19 @@ if(isset($_POST['WhichYear']))
 ///////////////////////
 require 'Include/Header.php';
 
-if (isset ($_POST['Action']) && isset ($_POST['EID'])) {
-	$eID = FilterInput($_POST['EID'], 'int');
-	$action = FilterInput($_POST['Action']);
-	if ($action== "Delete" && $eID)
-	{
-	    $sSQL = "DELETE FROM events_event WHERE event_id = ".$eID." LIMIT 1";
-	    RunQuery($sSQL);
+if (isset($_POST['Action']) && isset($_POST['EID'])) {
+    $eID = FilterInput($_POST['EID'], 'int');
+    $action = FilterInput($_POST['Action']);
+    if ($action== "Delete" && $eID) {
+        $sSQL = "DELETE FROM events_event WHERE event_id = ".$eID." LIMIT 1";
+        RunQuery($sSQL);
 
-	    $sSQL = "DELETE FROM eventcounts_evtcnt WHERE evtcnt_eventid = ".$eID;
-	    RunQuery($sSQL);
-	}
-	elseif ($action == "Activate" && $eID)
-	{
-	    $sSQL = "UPDATE events_event SET inactive = 0 WHERE event_id = ".$eID." LIMIT 1";
-	    RunQuery($sSQL);
-	}
+        $sSQL = "DELETE FROM eventcounts_evtcnt WHERE evtcnt_eventid = ".$eID;
+        RunQuery($sSQL);
+    } elseif ($action == "Activate" && $eID) {
+        $sSQL = "UPDATE events_event SET inactive = 0 WHERE event_id = ".$eID." LIMIT 1";
+        RunQuery($sSQL);
+    }
 }
 
 /// top of main form
@@ -95,27 +91,29 @@ $numRows = mysqli_num_rows($rsOpps);
        <select name="WhichType" onchange="javascript:this.form.submit()" class='form-control'>
         <option value="All"><?= gettext("All") ?></option>
         <?php
-        for ($r = 1; $r <= $numRows; $r++)
-        {
-          $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-          extract($aRow);
+        for ($r = 1; $r <= $numRows; $r++) {
+            $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
+            extract($aRow);
 //          foreach($aRow as $t)echo "$t\n\r";
           ?>
-          <option value="<?php echo $type_id ?>" <?php if($type_id==$eType) echo "selected" ?>><?= $type_name ?></option>
+          <option value="<?php echo $type_id ?>" <?php if ($type_id==$eType) {
+              echo "selected";
+          } ?>><?= $type_name ?></option>
           <?php
-         }
+
+        }
          ?>
          </select>
 </td>
 
 <?php
 // year selector
-if($eType=="All"){
-  $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) 
+if ($eType=="All") {
+    $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) 
            FROM events_event 
            WHERE YEAR(events_event.event_start)";
 } else {
-  $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) 
+    $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) 
            FROM events_event 
            WHERE events_event.event_type = '$eType' AND YEAR(events_event.event_start)";
 }
@@ -124,7 +122,7 @@ $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
 @extract($aRow); // @ needed to suppress error messages when no church events
 $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
-for($r=1; $r<=$numRows; $r++){
+for ($r=1; $r<=$numRows; $r++) {
     $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
     extract($aRow);
     $Yr[$r]=$aRow[0];
@@ -135,12 +133,14 @@ for($r=1; $r<=$numRows; $r++){
 <td align="center" width="50%"><p><strong><?= gettext("Display Events in Year") ?></strong></p>
        <select name="WhichYear" onchange="javascript:this.form.submit()" class='form-control'>
         <?php
-        for ($r = 1; $r <= $numRows; $r++)
-        {
-          ?>
-          <option value="<?php echo $Yr[$r] ?>" <?php if($Yr[$r]==$EventYear) echo "selected" ?>><?= $Yr[$r] ?></option>
+        for ($r = 1; $r <= $numRows; $r++) {
+            ?>
+          <option value="<?php echo $Yr[$r] ?>" <?php if ($Yr[$r]==$EventYear) {
+                echo "selected";
+            } ?>><?= $Yr[$r] ?></option>
           <?php
-         }
+
+        }
          ?>
          </select>
     </form>
@@ -155,64 +155,54 @@ $currYear = date("Y");
 $currMonth = date("m");
 $allMonths = array("12","11","10","9","8","7","6","5","4","3","2","1");
 if ($eType=="All") {
-  $eTypeSQL=" ";
+    $eTypeSQL=" ";
 } else {
-  $eTypeSQL = " AND t1.event_type=$eType";
-
+    $eTypeSQL = " AND t1.event_type=$eType";
 }
 
 foreach ($allMonths as $mKey => $mVal) {
-        unset($cCountSum);
-        $sSQL = "SELECT * FROM events_event as t1, event_types as t2 ";
-        if (isset($previousMonth))
-        {
-                // $sSQL .= " WHERE previous month stuff";
-        }
-        elseif (isset($nextMonth))
-        {
-                 // $sSQL .= " WHERE next month stuff";
-        }
-        elseif (isset($showAll))
-        {
-                $sSQL .="";
-        }
-        else
-        {
-                //$sSQL .= " WHERE (TO_DAYS(event_start_date) - TO_DAYS(now()) < 30)";
+    unset($cCountSum);
+    $sSQL = "SELECT * FROM events_event as t1, event_types as t2 ";
+    if (isset($previousMonth)) {
+        // $sSQL .= " WHERE previous month stuff";
+    } elseif (isset($nextMonth)) {
+        // $sSQL .= " WHERE next month stuff";
+    } elseif (isset($showAll)) {
+        $sSQL .="";
+    } else {
+        //$sSQL .= " WHERE (TO_DAYS(event_start_date) - TO_DAYS(now()) < 30)";
                 $sSQL .= " WHERE t1.event_type = t2.type_id".$eTypeSQL." AND MONTH(t1.event_start) = ".$mVal." AND YEAR(t1.event_start)=$EventYear";
-        }
-        $sSQL .= " ORDER BY t1.event_start ";
-        
-        $rsOpps = RunQuery($sSQL);
-        $numRows = mysqli_num_rows($rsOpps);
-        $aAvgRows = $numRows;
-        // Create arrays of the fundss.
-        for ($row = 1; $row <= $numRows; $row++)
-        {
-                $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-                extract($aRow);
+    }
+    $sSQL .= " ORDER BY t1.event_start ";
 
-                $aEventID[$row] = $event_id;
-                $aEventType[$row] = $event_typename;
-                $aEventTitle[$row] = htmlentities(stripslashes($event_title),ENT_NOQUOTES, "UTF-8");
-                $aEventDesc[$row] = htmlentities(stripslashes($event_desc),ENT_NOQUOTES, "UTF-8");
-                $aEventText[$row] = htmlentities(stripslashes($event_text),ENT_NOQUOTES, "UTF-8");
-                $aEventStartDateTime[$row] = $event_start;
-                $aEventEndDateTime[$row] = $event_end;
-                $aEventStatus[$row] = $inactive;
+    $rsOpps = RunQuery($sSQL);
+    $numRows = mysqli_num_rows($rsOpps);
+    $aAvgRows = $numRows;
+        // Create arrays of the fundss.
+        for ($row = 1; $row <= $numRows; $row++) {
+            $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
+            extract($aRow);
+
+            $aEventID[$row] = $event_id;
+            $aEventType[$row] = $event_typename;
+            $aEventTitle[$row] = htmlentities(stripslashes($event_title), ENT_NOQUOTES, "UTF-8");
+            $aEventDesc[$row] = htmlentities(stripslashes($event_desc), ENT_NOQUOTES, "UTF-8");
+            $aEventText[$row] = htmlentities(stripslashes($event_text), ENT_NOQUOTES, "UTF-8");
+            $aEventStartDateTime[$row] = $event_start;
+            $aEventEndDateTime[$row] = $event_end;
+            $aEventStatus[$row] = $inactive;
                 // get the list of attend-counts that exists in event_attend for this
                 $attendSQL="SELECT * FROM event_attend WHERE event_id=$event_id";
-                $attOpps = RunQuery($attendSQL);
-                if($attOpps)
-                  $attNumRows[$row] = mysqli_num_rows($attOpps);
-                else
-                  $attNumRows[$row]=0;
-
+            $attOpps = RunQuery($attendSQL);
+            if ($attOpps) {
+                $attNumRows[$row] = mysqli_num_rows($attOpps);
+            } else {
+                $attNumRows[$row]=0;
+            }
         }
 
-if ($numRows > 0)
-{
-  ?>
+    if ($numRows > 0) {
+        ?>
   <div class='box'>
     <div class='box-header'>
       <h3 class='box-title'><?= ($numRows == 1 ? gettext("There is"):gettext("There are"))." ". $numRows . " ". ($numRows == 1 ? gettext("event"):gettext("events"))." "."for"."  ".gettext(date("F", mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
@@ -231,9 +221,8 @@ if ($numRows > 0)
     </thead>
     <tbody>
       <?php
-        for ($row=1; $row <= $numRows; $row++)
-        {
-          ?>
+        for ($row=1; $row <= $numRows; $row++) {
+            ?>
           <tr>
             <td>
               <table class='table-responsive'>
@@ -251,7 +240,7 @@ if ($numRows > 0)
                       <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
                       <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
                       <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
-                      <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row],1) ?>">
+                      <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row], 1) ?>">
                       <input type="submit" name="Action" value="<?= gettext("Attendees"). "(".$attNumRows[$row].")" ?>" class="btn btn-info btn-sm btn-block" >
                     </form>
                   </td>
@@ -269,9 +258,11 @@ if ($numRows > 0)
             <td>
               <?= $aEventTitle[$row] ?>
               <?= ($aEventDesc[$row] == '' ? "&nbsp;":$aEventDesc[$row]) ?>
-              <?php if ($aEventText[$row] != '') { ?>
+              <?php if ($aEventText[$row] != '') {
+                ?>
                 <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')">Sermon Text</a></div>
-              <?php } ?>
+              <?php
+            } ?>
             </td>
             <td><?= $aEventType[$row] ?></td>
             <td>
@@ -280,37 +271,37 @@ if ($numRows > 0)
                   <?php
                     // RETRIEVE THE list of counts associated with the current event
                     $cvSQL= "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID[$row]' ORDER BY evtcnt_countid ASC";
-                    $cvOpps = RunQuery($cvSQL);
-                    $aNumCounts = mysqli_num_rows($cvOpps);
+            $cvOpps = RunQuery($cvSQL);
+            $aNumCounts = mysqli_num_rows($cvOpps);
 
-                    if($aNumCounts) {
-                      for($c = 0; $c <$aNumCounts; $c++){
-                        $cRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
-                        extract($cRow);
-                        $cCountID[$c] = $evtcnt_countid;
-                        $cCountName[$c] = $evtcnt_countname;
-                        $cCount[$c]= $evtcnt_countcount;
-                        $cCountNotes = $evtcnt_notes;
-                        ?>
+            if ($aNumCounts) {
+                for ($c = 0; $c <$aNumCounts; $c++) {
+                    $cRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
+                    extract($cRow);
+                    $cCountID[$c] = $evtcnt_countid;
+                    $cCountName[$c] = $evtcnt_countname;
+                    $cCount[$c]= $evtcnt_countcount;
+                    $cCountNotes = $evtcnt_notes; ?>
                         <td>
                           <div class='text-bold'><?= $evtcnt_countname ?></div>
                           <div><?= $evtcnt_countcount ?></div>
                         </td>
                         <?php
-                      }
-                    } else {
-                      ?>
+
+                }
+            } else {
+                ?>
                       <td>
                         <?= gettext("No Attendance Recorded") ?>
                       </td>
                       <?php
-                    }
-                  ?>
+
+            } ?>
                 </tr>
               </table>
             </td>
             <td>
-              <?= FormatDate($aEventStartDateTime[$row],1) ?>
+              <?= FormatDate($aEventStartDateTime[$row], 1) ?>
             </td>
             <td>
               <?= ($aEventStatus[$row] != 0 ? "No":"Yes") ?>
@@ -318,48 +309,47 @@ if ($numRows > 0)
 
           </tr>
           <?php
+
         } // end of for loop for # rows for this month
 
         // calculate averages if this is a single type list
-        if ($eType != "All" && $aNumCounts >0)
-        {
-          $avgSQL="SELECT evtcnt_countid, evtcnt_countname, AVG(evtcnt_countcount) from eventcounts_evtcnt, events_event WHERE eventcounts_evtcnt.evtcnt_eventid=events_event.event_id AND events_event.event_type='$eType' AND MONTH(events_event.event_start)='$mVal' GROUP BY eventcounts_evtcnt.evtcnt_countid ASC ";
-          $avgOpps = RunQuery($avgSQL);
-          $aAvgRows = mysqli_num_rows($avgOpps);
-          ?>
+        if ($eType != "All" && $aNumCounts >0) {
+            $avgSQL="SELECT evtcnt_countid, evtcnt_countname, AVG(evtcnt_countcount) from eventcounts_evtcnt, events_event WHERE eventcounts_evtcnt.evtcnt_eventid=events_event.event_id AND events_event.event_type='$eType' AND MONTH(events_event.event_start)='$mVal' GROUP BY eventcounts_evtcnt.evtcnt_countid ASC ";
+            $avgOpps = RunQuery($avgSQL);
+            $aAvgRows = mysqli_num_rows($avgOpps); ?>
           <tr>
             <td class="LabelColumn" colspan="2"><?= gettext(" Monthly Averages") ?></td>
             <td>
               <div class='row'>
                 <?php
                 // calculate and report averages
-                for($c = 0; $c <$aAvgRows; $c++){
-                  $avgRow = mysqli_fetch_array($avgOpps, MYSQLI_BOTH);
-                  extract($avgRow);
-                  $avgName = $avgRow['evtcnt_countname'];
-                  $avgAvg = $avgRow[2];
-                  ?>
+                for ($c = 0; $c <$aAvgRows; $c++) {
+                    $avgRow = mysqli_fetch_array($avgOpps, MYSQLI_BOTH);
+                    extract($avgRow);
+                    $avgName = $avgRow['evtcnt_countname'];
+                    $avgAvg = $avgRow[2]; ?>
                   <td align="center">
                     <span class="SmallText">
                     <strong>AVG<br><?= $avgName ?></strong>
-                    <br><?= sprintf("%01.2f",$avgAvg) ?></span>
+                    <br><?= sprintf("%01.2f", $avgAvg) ?></span>
                   </td>
                   <?php
-                }
-                ?>
+
+                } ?>
               </div>
             </td>
             <td class="TextColumn" colspan="3"></td>
           </tr>
           <?php
-        }
-        ?>
+
+        } ?>
       </tbody>
     </table>
   </div>
   </div>
   <?php
-}
+
+    }
 } // end for-each month loop
 ?>
 
