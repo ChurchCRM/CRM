@@ -42,7 +42,7 @@ class FamilyService
   {
     $sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
     $rsLastFamilies = RunQuery($sSQL);
-    $families = array();
+        $families = [];
     while ($row = mysqli_fetch_array($rsLastFamilies)) {
       $row_array['id'] = $row['fam_ID'];
       $row_array['name'] = $row['fam_Name'];
@@ -144,5 +144,3 @@ class FamilyService
   }
 
 }
-
-?>

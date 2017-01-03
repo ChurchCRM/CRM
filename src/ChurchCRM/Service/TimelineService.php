@@ -20,7 +20,7 @@ class TimelineService
 
   function getForFamily($familyID)
   {
-    $timeline = array();
+        $timeline = [];
     $familyNotes = NoteQuery::create()->findByFamId($familyID);
     foreach ($familyNotes as $dbNote) {
       $item = $this->noteToTimelineItem($dbNote);
@@ -31,7 +31,7 @@ class TimelineService
 
     krsort($timeline);
 
-    $sortedTimeline = array();
+        $sortedTimeline = [];
     foreach ($timeline as $date => $item) {
       array_push($sortedTimeline, $item);
     }
@@ -40,7 +40,7 @@ class TimelineService
   }
 
   private function eventsForPerson($personID) {
-    $timeline = array();
+        $timeline = [];
     $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
     foreach ($eventsByPerson as $personEvent) {
       $event = $personEvent->getEvent();
@@ -52,7 +52,7 @@ class TimelineService
   }
 
   private function notesForPerson($personID, $noteType) {
-    $timeline = array();
+        $timeline = [];
     $personQuery = NoteQuery::create()
       ->filterByPerId($personID);
     if($noteType != null) {
@@ -70,7 +70,7 @@ class TimelineService
   private function sortTimeline($timeline) {
     krsort($timeline);
 
-    $sortedTimeline = array();
+        $sortedTimeline = [];
     foreach ($timeline as $date => $item) {
       array_push($sortedTimeline, $item);
     }

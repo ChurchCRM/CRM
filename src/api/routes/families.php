@@ -7,7 +7,6 @@ use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\TokenQuery;
 
 $app->group('/families', function () {
-
   $this->get('/search/{query}', function ($request, $response, $args) {
     $query = $args['query'];
     echo $this->FamilyService->getFamiliesJSON($this->FamilyService->search($query));
@@ -21,6 +20,7 @@ $app->group('/families', function () {
     $scanString = $args['scanString'];
     echo $this->FinancialService->getMemberByScanString($scanString);
   });
+
 
   $this->get('/byEnvelopeNumber/{envelopeNumber:[0-9]+}', function ($request, $response, $args) {
     $envelopeNumber = $args['envelopeNumber'];

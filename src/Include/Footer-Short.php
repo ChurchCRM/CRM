@@ -32,6 +32,6 @@
 ob_end_flush();
 
 // Reset the Global Message
-$_SESSION['sGlobalMessage'] = "";
+$_SESSION['sGlobalMessage'] = '';
 
 ?>

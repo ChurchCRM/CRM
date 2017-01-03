@@ -14,41 +14,35 @@
  ******************************************************************************/
 
 //Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 //Set the page title
-$sPageTitle = gettext("Query Listing");
+$sPageTitle = gettext('Query Listing');
 
-$sSQL = "SELECT * FROM query_qry ORDER BY qry_Name";
+$sSQL = 'SELECT * FROM query_qry ORDER BY qry_Name';
 $rsQueries = RunQuery($sSQL);
 
 $aFinanceQueries = explode(',', $aFinanceQueries);
 
-require "Include/Header.php";
+require 'Include/Header.php';
 
-if ($_SESSION['bAdmin'])
-{
-	echo "<p align=\"center\"><a href=\"QuerySQL.php\">" . gettext("Run a Free-Text Query") . "</a></p>";
+if ($_SESSION['bAdmin']) {
+    echo '<p align="center"><a href="QuerySQL.php">'.gettext('Run a Free-Text Query').'</a></p>';
 }
 
-while ($aRow = mysqli_fetch_array($rsQueries))
-{
+while ($aRow = mysqli_fetch_array($rsQueries)) {
+    extract($aRow);
 
-	extract($aRow);
-
-	// Filter out finance-related queries if the user doesn't have finance permissions
-	if ($_SESSION['bFinance'] || !in_array($qry_ID,$aFinanceQueries))
-	{
-		// Display the query name and description
-		echo "<p>";
-		echo "<a href=\"QueryView.php?QueryID=" . $qry_ID . "\">" . gettext($qry_Name) . "</a>";
-		echo "<br>";
-		echo gettext($qry_Description);
-		echo "</p>";
-	}
+    // Filter out finance-related queries if the user doesn't have finance permissions
+    if ($_SESSION['bFinance'] || !in_array($qry_ID, $aFinanceQueries)) {
+        // Display the query name and description
+        echo '<p>';
+        echo '<a href="QueryView.php?QueryID='.$qry_ID.'">'.gettext($qry_Name).'</a>';
+        echo '<br>';
+        echo gettext($qry_Description);
+        echo '</p>';
+    }
 }
 
-require "Include/Footer.php";
-
-?>
+require 'Include/Footer.php';

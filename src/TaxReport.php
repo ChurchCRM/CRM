@@ -13,26 +13,25 @@
  ******************************************************************************/
 
 // Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && SystemConfig::getValue("bCSVAdminOnly")) {
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
+    Redirect('Menu.php');
+    exit;
 }
 
-
 // Set the page title and include HTML header
-$sPageTitle = gettext("Tax Report");
-require "Include/Header.php";
+$sPageTitle = gettext('Tax Report');
+require 'Include/Header.php';
 
 // Is this the second pass?
-if (isset($_POST["Submit"])) {
-	$iYear = FilterInput($_POST["Year"], 'int');
-   Redirect ("Reports/TaxReport.php?Year=" . $iYear);
+if (isset($_POST['Submit'])) {
+    $iYear = FilterInput($_POST['Year'], 'int');
+    Redirect('Reports/TaxReport.php?Year='.$iYear);
 } else {
-   $iYear = date ("Y") - 1;
+    $iYear = date('Y') - 1;
 }
 
 ?>
@@ -42,7 +41,7 @@ if (isset($_POST["Submit"])) {
 <table cellpadding="3" align="left">
 
    <tr>
-      <td class="LabelColumn"><?= gettext("Calendar Year") ?>:</td>
+      <td class="LabelColumn"><?= gettext('Calendar Year') ?>:</td>
 		<td class="TextColumn"><input type="text" name="Year" id="Year" value="<?= $iYear ?>"></td>
    </tr>
 
@@ -50,8 +49,8 @@ if (isset($_POST["Submit"])) {
 
 <table cellpadding="3" align="left">
    <tr>
-      <input type="submit" class="btn" name="Submit" value="<?= gettext("Create Report") ?>">
-      <input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='Menu.php';">
+      <input type="submit" class="btn" name="Submit" value="<?= gettext('Create Report') ?>">
+      <input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='Menu.php';">
    </tr>
 </table>
 
@@ -59,4 +58,4 @@ if (isset($_POST["Submit"])) {
 </p>
 </form>
 
-<?php require "Include/Footer.php" ?>
+<?php require 'Include/Footer.php' ?>
