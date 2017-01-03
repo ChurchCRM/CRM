@@ -2,18 +2,6 @@
 
 set -e
 
-
-echo "=========================================================="
-echo "===============   Composer Install/Setup ================="
-echo "=========================================================="
-# composer install
-cd src
-composer install
-cd ../
-src/vendor/bin/propel model:build --config-dir=propel
-cd src
-composer dump-autoload
-
 echo "=========================================================="
 echo "===============   nodejs install         ================="
 echo "=========================================================="

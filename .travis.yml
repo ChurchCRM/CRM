@@ -24,7 +24,9 @@ before_install:
  - chmod +x ./travis-ci/*.sh
 
 # prepare travis ci for the build process
-install: ./travis-ci/install.sh
+install:
+- ./travis-ci/install-composer.sh
+- ./travis-ci/install-npm.sh
 
 # linters
 before_script: ./travis-ci/lint.sh
