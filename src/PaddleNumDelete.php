@@ -13,16 +13,14 @@
 *
 ******************************************************************************/
 
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
-$iPaddleNumID = FilterInput($_GET["PaddleNumID"],'int');
-$linkBack = FilterInput($_GET["linkBack"],'string');
+$iPaddleNumID = FilterInput($_GET['PaddleNumID'], 'int');
+$linkBack = FilterInput($_GET['linkBack'], 'string');
 
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
 $sSQL = "DELETE FROM paddlenum_pn WHERE pn_id=$iPaddleNumID AND pn_fr_id=$iFundRaiserID";
 RunQuery($sSQL);
-redirect ($linkBack);
-
-?>
+redirect($linkBack);

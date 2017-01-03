@@ -1,101 +1,95 @@
 <?php
 
-if (file_exists ( 'Include/Config.php')) {
- header("Location: index.php" );
+if (file_exists('Include/Config.php')) {
+    header('Location: index.php');
 }
 
 function hasApacheModule($module)
 {
-  if (function_exists('apache_get_modules')) {
-    return in_array($module, apache_get_modules());
-  }
+    if (function_exists('apache_get_modules')) {
+        return in_array($module, apache_get_modules());
+    }
 
-  return false;
+    return false;
 }
 
 function hasModRewrite()
 {
-  $check = hasApacheModule('mod_rewrite');
+    $check = hasApacheModule('mod_rewrite');
 
-  if (!$check && function_exists('shell_exec')) {
-    $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== FALSE;
-  }
+    if (!$check && function_exists('shell_exec')) {
+        $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
+    }
 
-  return $check;
+    return $check;
 }
 
-if (isset($_POST["Setup"])) {
-  $template = file_get_contents("Include/Config.php.example");
-  $template = str_replace("||DB_SERVER_NAME||", $_POST["DB_SERVER_NAME"], $template);
-  $template = str_replace("||DB_NAME||", $_POST["DB_NAME"], $template);
-  $template = str_replace("||DB_USER||", $_POST["DB_USER"], $template);
-  $template = str_replace("||DB_PASSWORD||", $_POST["DB_PASSWORD"], $template);
-  $template = str_replace("||ROOT_PATH||", $_POST["ROOT_PATH"], $template);
-  $template = str_replace("||URL||", $_POST["URL"], $template);
-  file_put_contents("Include/Config.php", $template);
-  header("Location: index.php" );
-  exit();
+if (isset($_POST['Setup'])) {
+    $template = file_get_contents('Include/Config.php.example');
+    $template = str_replace('||DB_SERVER_NAME||', $_POST['DB_SERVER_NAME'], $template);
+    $template = str_replace('||DB_NAME||', $_POST['DB_NAME'], $template);
+    $template = str_replace('||DB_USER||', $_POST['DB_USER'], $template);
+    $template = str_replace('||DB_PASSWORD||', $_POST['DB_PASSWORD'], $template);
+    $template = str_replace('||ROOT_PATH||', $_POST['ROOT_PATH'], $template);
+    $template = str_replace('||URL||', $_POST['URL'], $template);
+    file_put_contents('Include/Config.php', $template);
+    header('Location: index.php');
+    exit();
 }
 
-if (isset($_GET['SystemIntegrityCheck']))
-{
-  require_once 'ChurchCRM/dto/SystemURLs.php'; 
-  ChurchCRM\dto\SystemURLs::init("", "", dirname(__FILE__));
-  require_once 'ChurchCRM/Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
+if (isset($_GET['SystemIntegrityCheck'])) {
+    require_once 'ChurchCRM/dto/SystemURLs.php';
+    ChurchCRM\dto\SystemURLs::init('', '', dirname(__FILE__));
+    require_once 'ChurchCRM/Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
   $systemService = new \ChurchCRM\Service\SystemService();
-  $AppIntegrity = $systemService->verifyApplicationIntegrity();
-  echo $AppIntegrity['status'];
-  exit();
+    $AppIntegrity = $systemService->verifyApplicationIntegrity();
+    echo $AppIntegrity['status'];
+    exit();
 }
 
-
-if ( isset($_GET['SystemPrerequisiteCheck']))
-{
-  $required = array(
-  'PHP 5.6+' => version_compare(PHP_VERSION, '5.6.0', '>='),
-  'PCRE and UTF-8 Support' => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'),
-  'Multibyte Encoding' => extension_loaded('mbstring'),
-  'PHP Phar' => extension_loaded('phar'),
-  'PHP Session' => extension_loaded('session'),
-  'PHP XML' => extension_loaded('xml'),
-  'PHP EXIF' => extension_loaded('exif'),
-  'PHP iconv' => extension_loaded('iconv'),   
-  'Mcrypt' => extension_loaded('mcrypt'),
-  'Mod Rewrite' => hasModRewrite('mod_rewrite'),
-  'GD Library for image manipulation' => (extension_loaded('gd') && function_exists('gd_info')),
+if (isset($_GET['SystemPrerequisiteCheck'])) {
+    $required = [
+  'PHP 5.6+'                                  => version_compare(PHP_VERSION, '5.6.0', '>='),
+  'PCRE and UTF-8 Support'                    => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'),
+  'Multibyte Encoding'                        => extension_loaded('mbstring'),
+  'PHP Phar'                                  => extension_loaded('phar'),
+  'PHP Session'                               => extension_loaded('session'),
+  'PHP XML'                                   => extension_loaded('xml'),
+  'PHP EXIF'                                  => extension_loaded('exif'),
+  'PHP iconv'                                 => extension_loaded('iconv'),
+  'Mcrypt'                                    => extension_loaded('mcrypt'),
+  'Mod Rewrite'                               => hasModRewrite('mod_rewrite'),
+  'GD Library for image manipulation'         => (extension_loaded('gd') && function_exists('gd_info')),
   'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
-  'cURL' => function_exists('curl_version'),
-  'locale gettext' => function_exists('bindtextdomain'),
-  'Include file is writeable' => is_writable("Include/Config.php.example")
-  );
-  header("Content-Type: application/json");
-  echo json_encode($required);
-  exit;
-  
+  'cURL'                                      => function_exists('curl_version'),
+  'locale gettext'                            => function_exists('bindtextdomain'),
+  'Include file is writeable'                 => is_writable('Include/Config.php.example'),
+  ];
+    header('Content-Type: application/json');
+    echo json_encode($required);
+    exit;
 }
 
 $temp = $_SERVER['REQUEST_URI'];
-$sRootPath = str_replace("/Setup.php", "", $temp);
-if ($sRootPath == "/") {
-  $sRootPath = "";
+$sRootPath = str_replace('/Setup.php', '', $temp);
+if ($sRootPath == '/') {
+    $sRootPath = '';
 }
 
-$URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . "/";
+$URL = 'http'.(isset($_SERVER['HTTPS']) ? 's' : '').'://'.$_SERVER['HTTP_HOST'].'/';
 
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', '1');
 
-
 if (!function_exists('bindtextdomain')) {
-  function gettext($string){
-     return $string+4;
-  }
+    function gettext($string)
+    {
+        return $string + 4;
+    }
 }
 
-
-
-$sPageTitle = gettext("ChurchCRM – Setup");
-require("Include/HeaderNotLoggedIn.php");
+$sPageTitle = gettext('ChurchCRM – Setup');
+require 'Include/HeaderNotLoggedIn.php';
 ?>
 <script>
 window.CRM = {};
@@ -196,7 +190,7 @@ window.CRM.evaluateReadyness = function () {
   
   if (window.CRM.setupCheckStatus == "pass") 
   {
-    $(".box-header h3").text("<?= gettext("This server is ChurchCRM ready!") ?>");
+    $(".box-header h3").text("<?= gettext('This server is ChurchCRM ready!') ?>");
     $("#setupPage").css("display","");
     $("#dangerContinue").css("display","none");
   }
@@ -273,36 +267,36 @@ $("document").ready(function(){
 
                 <div class="row">
                   <div class="col-md-4">
-                    <label for="DB_SERVER_NAME"><?= gettext("DB Server Name") ?>:</label>
+                    <label for="DB_SERVER_NAME"><?= gettext('DB Server Name') ?>:</label>
                     <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" value="localhost" class="form-control"
                            required>
                   </div>
                   <div class="col-md-4">
-                    <label for="DB_NAME"><?= gettext("DB Name") ?>:</label>
+                    <label for="DB_NAME"><?= gettext('DB Name') ?>:</label>
                     <input type="text" name="DB_NAME" id="DB_NAME" value="churchcrm" class="form-control" required>
                   </div>
                   <div class="col-md-4">
-                    <label for="DB_USER"><?= gettext("DB User") ?>:</label>
+                    <label for="DB_USER"><?= gettext('DB User') ?>:</label>
                     <input type="text" name="DB_USER" id="DB_USER" value="churchcrm" class="form-control" required>
                   </div>
                   <div class="col-md-4">
-                    <label for="DB_PASSWORD"><?= gettext("DB Password") ?>:</label>
+                    <label for="DB_PASSWORD"><?= gettext('DB Password') ?>:</label>
                     <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" value="churchcrm" class="form-control"
                            required>
                   </div>
 
                   <div class="col-md-4">
-                    <label for="ROOT_PATH"><?= gettext("Root Path") ?>:</label>
+                    <label for="ROOT_PATH"><?= gettext('Root Path') ?>:</label>
                     <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= $sRootPath ?>" class="form-control">
                   </div>
 
                   <div class="col-md-4">
-                    <label for="URL"><?= gettext("Base URL") ?>:</label>
+                    <label for="URL"><?= gettext('Base URL') ?>:</label>
                     <input type="text" name="URL" id="URL" value="<?= $URL ?>" class="form-control" required>
                   </div>
                 </div>
               </div>
-              <input type="submit" class="btn btn-primary" value="<?= gettext("Setup") ?>" name="Setup">
+              <input type="submit" class="btn btn-primary" value="<?= gettext('Setup') ?>" name="Setup">
             </form>
           </div>
         </div>
@@ -310,5 +304,5 @@ $("document").ready(function(){
   </div>
 </div>
 <?php
-  require("Include/FooterNotLoggedIn.php");
+  require 'Include/FooterNotLoggedIn.php';
 ?>

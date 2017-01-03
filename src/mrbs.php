@@ -30,4 +30,3 @@ require 'Include/Header.php';
 echo "<object data=$sMRBSPath/web/day.php width=100% height=1024> <embed src=$sMRBSPath/web/day.php width=100% height=1024> </embed> Error: Embedded data could not be displayed. </object>";
 
 require 'Include/Footer.php';
-?>

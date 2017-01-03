@@ -12,27 +12,27 @@
 *
 ******************************************************************************/
 
-require "../Include/Config.php";
-require "../Include/Functions.php";
-require "../Include/ReportFunctions.php";
+require '../Include/Config.php';
+require '../Include/Functions.php';
+require '../Include/ReportFunctions.php';
 
-
-use ChurchCRM\Reports\PDF_NewsletterLabels;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Reports\PDF_NewsletterLabels;
 
-
-$sLabelFormat = FilterInput($_GET["labeltype"]);
-setcookie("labeltype", $sLabelFormat, time()+60*60*24*90, "/" );
+$sLabelFormat = FilterInput($_GET['labeltype']);
+setcookie('labeltype', $sLabelFormat, time() + 60 * 60 * 24 * 90, '/');
 
 // Instantiate the directory class and build the report.
 $pdf = new PDF_NewsletterLabels($sLabelFormat);
 
-$sFontInfo = FontFromName($_GET["labelfont"]);
-setcookie("labelfont", $_GET["labelfont"], time()+60*60*24*90, "/" );
-$sFontSize = $_GET["labelfontsize"];
-setcookie("labelfontsize", $sFontSize, time()+60*60*24*90, "/");
-$pdf->SetFont($sFontInfo[0],$sFontInfo[1]);
-if($sFontSize != "default") $pdf->Set_Char_Size($sFontSize);
+$sFontInfo = FontFromName($_GET['labelfont']);
+setcookie('labelfont', $_GET['labelfont'], time() + 60 * 60 * 24 * 90, '/');
+$sFontSize = $_GET['labelfontsize'];
+setcookie('labelfontsize', $sFontSize, time() + 60 * 60 * 24 * 90, '/');
+$pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
+if ($sFontSize != 'default') {
+    $pdf->Set_Char_Size($sFontSize);
+}
 
 // Get all the families which receive the newsletter by mail
 $sSQL = "SELECT * FROM family_fam WHERE fam_SendNewsLetter='TRUE' ORDER BY fam_Zip";
@@ -45,27 +45,27 @@ $labelLineHeight = 6;
 $labelX = 10;
 
 while ($aFam = mysqli_fetch_array($rsFamilies)) {
-	extract ($aFam);
+    extract($aFam);
 
-   $labelText = $pdf->MakeSalutation ($fam_ID);
-	if ($fam_Address1 != "") {
-		$labelText .= "\n" . $fam_Address1;
-	}
-	if ($fam_Address2 != "") {
-		$labelText .= "\n" . $fam_Address2;
-	}
-	$labelText .= sprintf ("\n%s, %s  %s", $fam_City, $fam_State, $fam_Zip);
+    $labelText = $pdf->MakeSalutation($fam_ID);
+    if ($fam_Address1 != '') {
+        $labelText .= "\n".$fam_Address1;
+    }
+    if ($fam_Address2 != '') {
+        $labelText .= "\n".$fam_Address2;
+    }
+    $labelText .= sprintf("\n%s, %s  %s", $fam_City, $fam_State, $fam_Zip);
 
-	if ($fam_Country != "" && $fam_Country != "USA" && $fam_Country != "United States") {
-		$labelText .= "\n" . $fam_Country;
-   }
+    if ($fam_Country != '' && $fam_Country != 'USA' && $fam_Country != 'United States') {
+        $labelText .= "\n".$fam_Country;
+    }
 
-	$pdf->Add_PDF_Label($labelText);
+    $pdf->Add_PDF_Label($labelText);
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if (SystemConfig::getValue("iPDFOutputType") == 1)
-	$pdf->Output("NewsLetterLabels" . date("Ymd") . ".pdf", "D");
-else
-	$pdf->Output();	
-?>
+if (SystemConfig::getValue('iPDFOutputType') == 1) {
+    $pdf->Output('NewsLetterLabels'.date('Ymd').'.pdf', 'D');
+} else {
+    $pdf->Output();
+}

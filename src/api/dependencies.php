@@ -1,15 +1,13 @@
 <?php
 
 
-use ChurchCRM\Service\PersonService;
-use ChurchCRM\Service\FamilyService;
-use ChurchCRM\Service\GroupService;
-
 use ChurchCRM\Service\CalendarService;
-use ChurchCRM\Service\FinancialService;
-use ChurchCRM\Service\ReportingService;
-
 use ChurchCRM\Service\DataSeedService;
+use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\ReportingService;
 use ChurchCRM\Service\SystemService;
 
 // DIC configuration
@@ -25,4 +23,3 @@ $container['DataSeedService'] = new DataSeedService();
 $container['SystemService'] = new SystemService();
 
 $container['CalendarService'] = new CalendarService();
-
