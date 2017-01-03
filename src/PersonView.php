@@ -327,28 +327,40 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="box box-primary box-body">
-      <?php if ($bOkToEdit) { ?>
+      <?php if ($bOkToEdit) {
+              ?>
         <a href="#" class="btn btn-app" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i><?= gettext("Upload Photo") ?></a>
-        <?php if ($person->getPhoto()->type == "localFile") { ?>
+        <?php if ($person->getPhoto()->type == "localFile") {
+                  ?>
           <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext("Delete Photo") ?></a>
-        <?php } ?>
-      <?php } ?>
+        <?php 
+              } ?>
+      <?php 
+          } ?>
       <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
       <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
-      <?php if ($_SESSION['bNotes']) { ?>
+      <?php if ($_SESSION['bNotes']) {
+              ?>
         <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
         <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
-      <?php }
-      if ($_SESSION['bDeleteRecords']) { ?>
+      <?php 
+          }
+    if ($_SESSION['bDeleteRecords']) {
+        ?>
         <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
-      <?php }
-      if ($_SESSION['bAdmin']) {
-        if (!$person->isUser()) { ?>
+      <?php 
+    }
+    if ($_SESSION['bAdmin']) {
+        if (!$person->isUser()) {
+            ?>
           <a class="btn btn-app" href="UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Make User") ?></a>
-        <?php } else { ?>
+        <?php 
+        } else {
+            ?>
           <a class="btn btn-app" href="UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext("Edit User") ?></a>
-        <?php }
-      } ?>
+        <?php 
+        }
+    } ?>
       <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
     </div>
   </div>
