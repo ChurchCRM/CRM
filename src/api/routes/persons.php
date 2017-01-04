@@ -16,22 +16,22 @@ $app->group('/persons', function () {
   $this->get('/{personId:[0-9]+}/photo', function($request, $response, $args)  {
     $person = PersonQuery::create()->findPk($args['personId']);
     $photo = $person->getPhoto();
-    if ( $photo->type=="localFile" ) 
+    if ( $photo->isPhotoLocal()) 
     {
-      return $response->write(file_get_contents($photo->path));
+      return $response->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
     }
     else
     {
-      return $response->withRedirect($photo->path);
+      return $response->withRedirect($photo->getThumbnailURI());
     }
   });
   
   $this->post('/{personId:[0-9]+}/photo', function($request, $response, $args)  {
     $personId =$args['personId'];
     $input = (object)$request->getParsedBody();
-    PhotoUtils::deletePhotos("Person", $personId);
-    $upload = PhotoUtils::setImageFromBase64("Person", $personId, $input->imgBase64);
-    
+    $person = PersonQuery::create()->findPk($args['personId']);
+    $photo = $person->getPhoto();
+    $photo->setImageFromBase64($input->imgBase64);
     $response->withJSON(array("status"=>"success","upload"=>$upload));
   });
   
@@ -43,14 +43,5 @@ $app->group('/persons', function () {
   $this->post('/{personId:[0-9]+}/addToCart', function($request, $response, $args)  {
     AddToPeopleCart($args['personId']);
   });
-
-    $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
-        $person = PersonQuery::create()->findPk($args['personId']);
-
-        return $response->withRedirect($person->getPhoto());
-    });
-
-    $this->post('/{personId:[0-9]+}/addToCart', function ($request, $response, $args) {
-        AddToPeopleCart($args['personId']);
-    });
+  
 });

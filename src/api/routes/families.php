@@ -27,14 +27,11 @@ $app->group('/families', function () {
     $this->get('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
       $family = FamilyQuery::create()->findPk($args['familyId']);
       $photo = $family->getPhoto();
-      if ( $photo->type=="localFile" ) 
+      if ( $photo->isPhotoLocal() ) 
       {
-        return $response->write(file_get_contents($photo->path));
+        return $response->write($photo->getPhotoBytes());
       }
-      else
-      {
-        return $response->withRedirect($photo->path);
-      }
+      return $response->withStatus(404);
     });
   
     $this->post('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {

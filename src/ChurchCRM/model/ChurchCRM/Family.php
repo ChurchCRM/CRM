@@ -6,6 +6,7 @@ use ChurchCRM\Base\Family as BaseFamily;
 use ChurchCRM\dto\SystemURLs;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\util\PhotoUtils;
+use ChurchCRM\dto\Photo;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -86,14 +87,9 @@ class Family extends BaseFamily
 
     function getPhoto()
     {
-      $familyPhoto = new \stdClass();
-      $familyPhoto->type = "localFile";
-      $familyPhoto->path = PhotoUtils::getUploadedPhoto("Family",$this->getId());
-      if ($familyPhoto->path == "") {
-        $familyPhoto->type = "remoteFile";
-        $familyPhoto->path =   $photoFile = SystemURLs::getRootPath() . "/Images/Family/family-128.png";
-      }
-      return $familyPhoto;
+      
+      $photo = new Photo("Family",  $this->getId());
+      return $photo;
     }
 
     public function deletePhoto()

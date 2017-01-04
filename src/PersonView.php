@@ -187,7 +187,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img src="<?= $sRootPath.'/api/persons/'.$iPersonID.'/photo' ?>" alt="" class="profile-user-img img-responsive img-circle"/>
+        
+        <canvas id="personInitials" class="profile-user-img img-responsive img-circle"  width="100" height="100"></canvas>
+        <img id="personPhoto" style="display:none" src="<?= $sRootPath.'/api/persons/'.$iPersonID.'/photo' ?>" alt="" class="profile-user-img img-responsive img-circle"/>
+
+        
 
         <h3 class="profile-username text-center">
           <?php if ($person->isMale()) {
@@ -931,14 +935,64 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   window.CRM.photoUploader =  $("#photoUploader").PhotoUploader({
     url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
     maxPhotoSize: "2MB",
+    photoHeight:250,
+    photoWidth:250,
     done: function(e) {
-      location.reload();
+      //location.reload();
     }
   });
 
   $("#uploadImageButton").click(function(){
     window.CRM.photoUploader.show();
   });
+  
+  $(document).ready(function(){
+    renderInitials();
+    
+  $("#personPhoto").load(function() {
+      $("#personInitials").hide();
+      $("#personPhoto").show();
+  });
+    
+   
+  });
+  
+  
+  function renderInitials()
+  {
+    var colours = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", "#f1c40f", "#e67e22", "#e74c3c", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"];
+
+    var name = "Lee Crossley",
+        nameSplit = name.split(" "),
+        initials = nameSplit[0].charAt(0).toUpperCase() + nameSplit[1].charAt(0).toUpperCase();
+
+    var charIndex = initials.charCodeAt(0) - 65,
+        colourIndex = charIndex % 19;
+
+    var canvas = document.getElementById("personInitials");
+    var context = canvas.getContext("2d");
+
+    var canvasWidth = $(canvas).attr("width"),
+        canvasHeight = $(canvas).attr("height"),
+        canvasCssWidth = canvasWidth,
+        canvasCssHeight = canvasHeight;
+
+    if (window.devicePixelRatio) {
+        $(canvas).attr("width", canvasWidth * window.devicePixelRatio);
+        $(canvas).attr("height", canvasHeight * window.devicePixelRatio);
+        $(canvas).css("width", canvasCssWidth);
+        $(canvas).css("height", canvasCssHeight);
+        context.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    context.fillStyle = colours[colourIndex];
+    context.fillRect (0, 0, canvas.width, canvas.height);
+    context.font = "56px Arial";
+    context.textAlign = "center";
+    context.fillStyle = "#FFF";
+    context.fillText(initials, canvasCssWidth / 2, canvasCssHeight / 1.5);
+    
+  }
 </script>
 <script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 

@@ -6,6 +6,7 @@ use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\util\PhotoUtils;
+use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -82,17 +83,12 @@ class Person extends BasePerson
 
   function getPhoto()
   {
-    $personPhoto = new \stdClass();
-    $personPhoto->type = "localFile";
-    $personPhoto->path = PhotoUtils::getUploadedPhoto("Person",$this->getId());
-    if ($personPhoto->path == "") {
-       $personPhoto->type = "remoteFile";
-       $personPhoto->path = $this->getGravatar();
-      if ($personPhoto->path == "") {
-        $personPhoto->path = $this->getDefaultPhoto();
-      }
-    }
-    return $personPhoto;
+   
+    $photo = new Photo("Person",  $this->getId());
+     if (!$photo->isPhotoLocal() && SystemConfig::getValue('sEnableGravatarPhotos') && $this->getEmail() != '') {
+       $photo->loadFromGravatar($this->getEmail());
+     }
+     return $photo;
   }
 
     public function getFamilyRole()
@@ -114,36 +110,6 @@ class Person extends BasePerson
         }
 
         return $roleName;
-    }
-
-    function getDefaultPhoto()
-    {
-      $photoFile = SystemURLs::getRootPath() . "/Images/Person/man-128.png";
-      $isChild = "Child" == $this->getFamilyRoleName();
-      if ($this->isMale() && $isChild) {
-        $photoFile = SystemURLs::getRootPath() . "/Images/Person/kid_boy-128.png";
-      } else if ($this->isFemale() && $isChild) {
-        $photoFile = SystemURLs::getRootPath() . "/Images/Person/kid_girl-128.png";
-      } else if ($this->isFemale() && !$isChild) {
-        $photoFile = SystemURLs::getRootPath() . "/Images/Person/woman-128.png";
-      }
-      return $photoFile;
-    }
-
-    public function getGravatar($s = 60, $d = '404', $r = 'g', $img = false, $atts = [])
-    {
-        if (SystemConfig::getValue('sEnableGravatarPhotos') && $this->getEmail() != '') {
-            $url = 'http://www.gravatar.com/avatar/';
-            $url .= md5(strtolower(trim($this->getEmail())));
-            $url .= "?s=$s&d=$d&r=$r";
-
-            $headers = @get_headers($url);
-            if (strpos($headers[0], '404') === false) {
-                return $url;
-            }
-        }
-
-        return '';
     }
 
     public function postInsert(ConnectionInterface $con = null)
