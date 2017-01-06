@@ -35,7 +35,6 @@ use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 
-
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
 $familyService = new FamilyService();
@@ -277,10 +276,12 @@ if ($iFamilyID == $fam_ID) {
           <?php 
             } ?>
           <br/>
-          <?php if ($bOkToEdit) { ?>
+          <?php if ($bOkToEdit) {
+                ?>
             <a class="btn btn-app" href="#" id="uploadImageButton"><i
                 class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
-            <?php if ($family->getPhoto()->type == "localFile") { ?>
+            <?php if ($family->getPhoto()->type == "localFile") {
+                    ?>
               <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
                   class="fa fa-remove"></i> <?= gettext('Delete Photo') ?> </a>
             <?php 
