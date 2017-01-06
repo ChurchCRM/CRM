@@ -22,6 +22,19 @@ $app->group('/persons', function () {
     }
     else
     {
+      return $response->withRedirect($photo->getPhotoURI());
+    }
+  });
+  
+   $this->get('/{personId:[0-9]+}/thumbnail', function($request, $response, $args)  {
+    $person = PersonQuery::create()->findPk($args['personId']);
+    $photo = $person->getPhoto();
+    if ( $photo->isPhotoLocal()) 
+    {
+      return $response->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getPhotoContentType());
+    }
+    else
+    {
       return $response->withRedirect($photo->getThumbnailURI());
     }
   });

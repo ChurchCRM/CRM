@@ -11,7 +11,6 @@ class Photo
   private $photoLocation;
   private $photoType;
   private $id;
-  private $photoBytes;
   private $photoURI;
   private $photoThumbURI;
   private $photoContentType;
@@ -40,8 +39,26 @@ class Photo
     return null;
   }
   
+  private function createThumbnail()      
+  {
+    $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/thumbnails/" . $this->id.".png";
+    $thumbWidth = 100;
+    $img =  imagecreatefrompng($this->photoURI); 
+    $width = imagesx( $img );
+    $height = imagesy( $img );
+    $new_width = $thumbWidth;
+    $new_height = floor( $height * ( $thumbWidth / $width ) );
+    $tmp_img = imagecreatetruecolor( $new_width, $new_height );
+    imagecopyresized( $tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height );
+    imagepng($tmp_img, $this->photoThumbURI);
+  }
+  
   public function getThumbnailBytes()
   {
+    if (!file_exists($this->photoThumbURI))
+    {
+      $this->createThumbnail();
+    }
     return file_get_contents($this->photoThumbURI);
   }
   
@@ -93,6 +110,7 @@ class Photo
   
   public function setImageFromBase64($base64)
   {
+      $this->delete();
       $fileName = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/" . $this->id.".png";
       $img = str_replace('data:image/png;base64,', '', $base64);
       $img = str_replace(' ', '+', $img);
@@ -100,13 +118,16 @@ class Photo
       $finfo = new \finfo(FILEINFO_MIME);
       if ($finfo->buffer($fileData) == "image/png; charset=binary")
       {
-        file_put_contents( $fileName , $fileData);
+        //file_put_contents( $fileName , $fileData);
       }
 
   }
   
   public function delete()
   {
+    echo "deleting";
+    print_r($this);
+    exit;
     $deleted = false;
     if ($this->isPhotoLocal())
     {
@@ -117,7 +138,7 @@ class Photo
       }
       if (file_exists($this->photoThumbURI))
       {
-        unlink($this->photoURI);
+        unlink($this->photoThumbURI);
         $deleted = true;
       }
     }

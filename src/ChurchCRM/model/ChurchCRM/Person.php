@@ -61,25 +61,6 @@ class Person extends BasePerson
         return SystemURLs::getRootPath().'/PersonView.php?PersonID='.$this->getId();
     }
 
-    public function getUploadedPhoto()
-    {
-        $validextensions = ['jpeg', 'jpg', 'png'];
-        $hasFile = false;
-        while (list(, $ext) = each($validextensions)) {
-            $photoFile = SystemURLs::getDocumentRoot().'/Images/Person/thumbnails/'.$this->getId().'.'.$ext;
-            if (file_exists($photoFile)) {
-                $hasFile = true;
-                $photoFile = SystemURLs::getRootPath().'/Images/Person/thumbnails/'.$this->getId().'.'.$ext;
-                break;
-            }
-        }
-
-        if ($hasFile) {
-            return $photoFile;
-        } else {
-            return '';
-        }
-    }
 
   function getPhoto()
   {
