@@ -32,9 +32,10 @@ before_install:
 
 # prepare travis ci for the build process
 install:
+ - npm install
  - ./travis-ci/install-composer.sh
  #- ./travis-ci/install-nodejs.sh
- - ./travis-ci/install-npm.sh
+ #- ./travis-ci/install-npm.sh
 
 # linters
 before_script:
