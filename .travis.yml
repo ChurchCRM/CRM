@@ -25,9 +25,6 @@ env:
   - DB=mysql
 
 before_install:
- - nvm install node 6.9
- - nvm alias default 6.9
- - npm install npm -g
  - chmod +x ./travis-ci/*.sh
 
 # prepare travis ci for the build process
