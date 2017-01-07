@@ -8488,7 +8488,7 @@ msgstr "Je sais ce que je fais. Installer de toute façon ChurchCRM"
 
 #: Setup.php:240
 msgid "In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical."
-msgstr ""
+msgstr "Dans le cas où vous aimez connaître les détails d'essentiel, voici ce que nous recherchons au niveau serveur. C'est pareil à de la datation, mais en plus technique."
 
 #: Include/Header-function.php:61
 msgid "Stack Trace"
@@ -8496,11 +8496,11 @@ msgstr "Trace de Pile"
 
 #: config_cfg.php:14
 msgid "Show family member firstnames in Family Listing?"
-msgstr ""
+msgstr "Voir prénoms membre de la famille  dans la Liste Familiale ?"
 
 #: config_cfg.php:25
 msgid "Word Wrap point. Default for most email programs is 72"
-msgstr ""
+msgstr "Point d'Enveloppe de mot. Valeur par défaut pour l'email est 72"
 
 #: config_cfg.php:29
 msgid "Use vCard 2.1 rather than vCard 3.0 standard."
@@ -8536,11 +8536,11 @@ msgstr "Retourne nombre total de personnes dans la BDD."
 
 #: query_qry.php:33 query_qry.php:82
 msgid "Find all people assigned to Sunday school classes as teachers"
-msgstr ""
+msgstr "Rechercher toutes les personnes assignés à la classe d'école du dimanche comme moniteur"
 
 #: query_qry.php:34 query_qry.php:83
 msgid "Find all people assigned to Sunday school classes as students"
-msgstr ""
+msgstr "Rechercher toutes les personnes assignés à la classe d'école du dimanche comme élève"
 
 #: query_qry.php:36 query_qry.php:85
 msgid "Find students for a particular class"
