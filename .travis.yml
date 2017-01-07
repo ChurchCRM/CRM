@@ -29,12 +29,13 @@ env:
   - DB=mysql
 
 before_install:
+  - nvm install node
  - chmod +x ./travis-ci/*.sh
 
 # prepare travis ci for the build process
 install:
  - ./travis-ci/install-composer.sh
- - ./travis-ci/install-nodejs.sh
+ #- ./travis-ci/install-nodejs.sh
  - ./travis-ci/install-npm.sh
 
 # linters
