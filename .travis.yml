@@ -1,10 +1,15 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
-
-# list any PHP version you want to test against
 php:
-# aliased to a recent 5.6.x version
   - 5.6
+  - 7.0
+
+rvm:
+  - 1.9.3
+  
+sudo: required
+dist: trusty
+group: edge
 
 notifications:
   webhooks:
@@ -18,15 +23,18 @@ notifications:
 env:
   - DB=mysql
 
-# execute any number of scripts before the test run, custom env's are available as variables
-before_script:
-  - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS churchcrm_test;" -uroot; fi
-  - cd ./src
-  - composer install
-  - cd ..
+before_install:
+ - chmod +x ./travis-ci/*.sh
 
-# omitting "script:" will default to phpunit
-# use the $DB env variable to determine the phpunit.xml to use
+# prepare travis ci for the build process
+install:
+ - ./travis-ci/install-composer.sh
+ - npm install
+ 
+# linters
+before_script:
+ - ./travis-ci/setup-db.sh
+
+# execute tests
 script:
-  - if [[ "$DB" == "mysql" ]]; then mysql churchcrm_test < src/mysql/install/Install.sql -uroot; fi
-  ##- phpunit --configuration phpunit_$DB.xml --coverage-text
+ - ./travis-ci/tests.sh
