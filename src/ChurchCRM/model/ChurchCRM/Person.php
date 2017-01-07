@@ -163,7 +163,7 @@ class Person extends BasePerson
             $note->setText('Created');
             $note->setType('create');
             $note->setEnteredBy($this->getEnteredBy());
-            $note->setDateLastEdited($this->getDateEntered());
+            $note->setDateEntered($this->getDateEntered());
         } else {
             $note->setText('Updated');
             $note->setType('edit');
