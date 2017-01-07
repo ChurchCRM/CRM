@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-echo "===============   npm  install -g       ================="
-npm install -g npm@latest --unsafe-perm
+echo "===============   Node & NPM       ================="
+nvm install node 6.9
+nvm alias default 6.9
+npm install npm -g
 echo "===============   npm  install          ================="
-npm install --unsafe-perm
+npm install -g
+npm install
