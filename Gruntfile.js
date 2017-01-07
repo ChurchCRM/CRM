@@ -304,7 +304,7 @@ module.exports = function (grunt) {
       options: {
         project_id: '77079',
         languages: '<%= languages %>',
-        api_token: '93923bd06816153a0df1de62e39e4991'
+        api_token: ''
       }
     }
   });
