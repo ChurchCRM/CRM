@@ -7,6 +7,6 @@ echo "===============   nodejs install         ================="
 echo "=========================================================="
 # setup for node 6/7 (v6.9 is an LTS release, so we'll support it for the next time)
 sudo rm -rf ~/.nvm
-curl -sL "https://deb.nodesource.com/setup_7.x" | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo apt-get install -y build-essential
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+nvm install 6.9
+nvm alias default 6.9
