@@ -26,7 +26,8 @@ env:
 
 before_install:
  - nvm install node 6.9
- - sudo npm install npm -g
+ - nvm use 6.9
+ - npm install npm -g
  - chmod +x ./travis-ci/*.sh
 
 # prepare travis ci for the build process
