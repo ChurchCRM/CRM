@@ -4,6 +4,14 @@ php:
   - 5.6
 #  - 7.0
 
+rvm:
+  - 2.2.3
+  - 1.9.3
+  
+env:
+- TRAVIS_NODE_VERSION="0.12"
+- TRAVIS_NODE_VERSION="4"
+
 sudo: required
 dist: trusty
 group: edge
