@@ -118,16 +118,13 @@ class Photo
       $finfo = new \finfo(FILEINFO_MIME);
       if ($finfo->buffer($fileData) == "image/png; charset=binary")
       {
-        //file_put_contents( $fileName , $fileData);
+        file_put_contents( $fileName , $fileData);
       }
 
   }
   
   public function delete()
   {
-    echo "deleting";
-    print_r($this);
-    exit;
     $deleted = false;
     if ($this->isPhotoLocal())
     {

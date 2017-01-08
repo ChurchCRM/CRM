@@ -15,27 +15,25 @@ $app->group('/persons', function () {
   
   $this->get('/{personId:[0-9]+}/photo', function($request, $response, $args)  {
     $person = PersonQuery::create()->findPk($args['personId']);
-    $photo = $person->getPhoto();
-    if ( $photo->isPhotoLocal()) 
+    if ($person->isPhotoLocal()) 
     {
-      return $response->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
+      return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
     }
     else
     {
-      return $response->withRedirect($photo->getPhotoURI());
+      return $response->withRedirect($person->getPhotoURI());
     }
   });
   
    $this->get('/{personId:[0-9]+}/thumbnail', function($request, $response, $args)  {
     $person = PersonQuery::create()->findPk($args['personId']);
-    $photo = $person->getPhoto();
-    if ( $photo->isPhotoLocal()) 
+    if ( $person->isPhotoLocal()) 
     {
-      return $response->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getPhotoContentType());
+      return $response->write($person->getThumbnailBytes())->withHeader('Content-type', $person->getPhotoContentType());
     }
     else
     {
-      return $response->withRedirect($photo->getThumbnailURI());
+      return $response->withRedirect($person->getThumbnailURI());
     }
   });
   
@@ -43,8 +41,7 @@ $app->group('/persons', function () {
     $personId =$args['personId'];
     $input = (object)$request->getParsedBody();
     $person = PersonQuery::create()->findPk($args['personId']);
-    $photo = $person->getPhoto();
-    $photo->setImageFromBase64($input->imgBase64);
+    $person->setImageFromBase64($input->imgBase64);
     $response->withJSON(array("status"=>"success","upload"=>$upload));
   });
   

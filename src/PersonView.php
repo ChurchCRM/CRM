@@ -189,7 +189,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
       <div class="box-body box-profile">
         
         <canvas id="personInitials" class="profile-user-img img-responsive img-circle"  width="100" height="100"></canvas>
-        <img id="personPhoto" style="display:none" src="<?= $sRootPath.'/api/persons/'.$iPersonID.'/photo' ?>" alt="" class="profile-user-img img-responsive img-circle"/>
+        <img id="personPhoto" style="display:none" src="<?= $sRootPath.'/api/persons/'.$iPersonID.'/thumbnail' ?>" alt="" class="profile-user-img img-responsive img-circle"/>
 
         
 
@@ -334,7 +334,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
       <?php if ($bOkToEdit) {
               ?>
         <a href="#" class="btn btn-app" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i><?= gettext("Upload Photo") ?></a>
-        <?php if ($person->getPhoto()->type == "localFile") {
+        <?php if ($person->isPhotoLocal()) {
                   ?>
           <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext("Delete Photo") ?></a>
         <?php 
@@ -465,7 +465,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             $tmpPersonId = $familyMember->getId(); ?>
               <tr>
                 <td>
-                  <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $familyMember->getId() ?>/photo" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
+                  <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $familyMember->getId() ?>/thumbnail" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
                 </td>
                 <td class="text-center">
                   <?= $familyMember->getFamilyRoleName() ?>

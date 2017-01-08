@@ -159,7 +159,7 @@ if ($iFamilyID == $fam_ID) {
     <div class="col-lg-3 col-md-4 col-sm-4">
       <div class="box box-primary">
         <div class="box-body">
-          <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" alt=""
+          <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail" alt=""
                class="img-circle img-responsive profile-user-img"/>
 					<h3 class="profile-username text-center"><?=  gettext('Family').': '.$fam_Name ?></h3>
           <?php if ($bOkToEdit) {
@@ -280,7 +280,7 @@ if ($iFamilyID == $fam_ID) {
                 ?>
             <a class="btn btn-app" href="#" id="uploadImageButton"><i
                 class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
-            <?php if ($family->getPhoto()->type == "localFile") {
+            <?php if ($family->isPhotoLocal()) {
                     ?>
               <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
                   class="fa fa-remove"></i> <?= gettext('Delete Photo') ?> </a>
@@ -323,7 +323,7 @@ if ($iFamilyID == $fam_ID) {
         ?>
                 <tr>
                   <td>
-                    <img src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/photo" width="40" height="40" class="img-circle"/>
+                    <img src="<?= SystemURLs::getRootPath() ?>/api/person/<?= $person->getId() ?>/thumbnail" width="40" height="40" class="img-circle"/>
                     <a href="<?= $person->getViewURI() ?>" class="user-link"><?= $person->getFullName() ?> </a>
                   </td>
                   <td class="text-center">

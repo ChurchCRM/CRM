@@ -26,19 +26,25 @@ $app->group('/families', function () {
   
     $this->get('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
       $family = FamilyQuery::create()->findPk($args['familyId']);
-      $photo = $family->getPhoto();
-      if ( $photo->isPhotoLocal() ) 
+      if ( $family->isPhotoLocal() ) 
       {
-        return $response->write($photo->getPhotoBytes());
+        return $response->write($family->getPhotoBytes());
       }
       return $response->withStatus(404);
     });
+    
+    $this->get('/{familyId:[0-9]+}/thumbnail', function($request, $response, $args)  {
+      $family = FamilyQuery::create()->findPk($args['familyId']);
+      if ( $family->isPhotoLocal()) 
+      {
+        return $response->write($family->getThumbnailBytes())->withHeader('Content-type', $family->getPhotoContentType());
+      }
+    });
   
     $this->post('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
-      $familyId =$args['familyId'];
       $input = (object)$request->getParsedBody();
-      PhotoUtils::deletePhotos("Family", $familyId);
-      $upload = PhotoUtils::setImageFromBase64("Family", $familyId, $input->imgBase64);
+      $family = FamilyQuery::create()->findPk($args['familyId']);
+      $family->setImageFromBase64($input->imgBase64);
 
       $response->withJSON(array("status"=>"success","upload"=>$upload));
     });

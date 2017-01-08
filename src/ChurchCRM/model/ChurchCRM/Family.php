@@ -17,7 +17,7 @@ use ChurchCRM\dto\Photo;
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class Family extends BaseFamily
+class Family extends BaseFamily implements iPhoto
 {
     public function getAddress()
     {
@@ -85,7 +85,27 @@ class Family extends BaseFamily
         $this->createTimeLineNote(false);
     }
 
-    function getPhoto()
+    private function createTimeLineNote($new)
+    {
+      $note = new Note();
+      $note->setFamId($this->getId());
+
+      if ($new) {
+          $note->setText('Created');
+          $note->setType('create');
+          $note->setEnteredBy($this->getEnteredBy());
+          $note->setDateLastEdited($this->getDateEntered());
+      } else {
+          $note->setText('Updated');
+          $note->setType('edit');
+          $note->setEnteredBy($this->getEditedBy());
+          $note->setDateLastEdited($this->getDateLastEdited());
+      }
+
+      $note->save();
+    }
+    
+    private function getPhoto()
     {
       
       $photo = new Photo("Family",  $this->getId());
@@ -107,23 +127,39 @@ class Family extends BaseFamily
       return false;
     }
 
-    private function createTimeLineNote($new)
-    {
-      $note = new Note();
-      $note->setFamId($this->getId());
-
-      if ($new) {
-          $note->setText('Created');
-          $note->setType('create');
-          $note->setEnteredBy($this->getEnteredBy());
-          $note->setDateLastEdited($this->getDateEntered());
-      } else {
-          $note->setText('Updated');
-          $note->setType('edit');
-          $note->setEnteredBy($this->getEditedBy());
-          $note->setDateLastEdited($this->getDateLastEdited());
-      }
-
-      $note->save();
+    public function getPhotoBytes() {
+      return $this->getPhoto()->getPhotoBytes();
     }
+
+    public function getPhotoURI() {
+      return $this->getPhoto()->getPhotoURI();
+    }
+
+    public function getThumbnailBytes() {
+      return $this->getPhoto()->getThumbnailBytes();
+    }
+
+    public function getThumbnailURI() {
+       return $this->getPhoto()->getThumbnailURI();
+    }
+
+    public function setImageFromBase64($base64) {
+      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+        $note = new Note();
+        $note->setText("Profile Image uploaded");
+        $note->setType("photo");
+        $note->setEntered($_SESSION['iUserID']);
+        $this->getPhoto()->setImageFromBase64($base64);
+        $note->setFamId($this->getId());
+        $note->save();
+        return true;
+      }
+      return false;
+      
+    }
+
+    public function isPhotoLocal() {
+      return $this->getPhoto()->isPhotoLocal();
+    }
+
 }
