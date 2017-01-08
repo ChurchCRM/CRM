@@ -227,7 +227,7 @@ if ($iMode == 2) {
         while ($aTemp = mysqli_fetch_row($rsSub)) {
             $sExcludedIDs .= $aTemp[0].',';
         }
-        $sExcludedIDs = mb_mb_substr($sExcludedIDs, 0, -1);
+        $sExcludedIDs = mb_substr($sExcludedIDs, 0, -1);
         $sGroupWhereExt = ' AND per_ID NOT IN ('.$sExcludedIDs.')';
     }
 }
@@ -390,7 +390,7 @@ if (array_key_exists('PersonProperties', $_GET)) {
     $sRedirect .= 'PersonProperties='.$_GET['PersonProperties'].'&amp;';
 }
 
-$sRedirect = mb_mb_substr($sRedirect, 0, -5); // Chop off last &amp;
+$sRedirect = mb_substr($sRedirect, 0, -5); // Chop off last &amp;
 
 // If AddToCart submit button was used, run the query, add people to cart, and view cart
 if (array_key_exists('AddAllToCart', $_GET)) {
@@ -1120,10 +1120,10 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
         break;
 
     case 'name':
-        if (mb_strtoupper(mb_mb_substr($per_LastName, 0, 1, 'UTF-8')) != $sPrevLetter) {
+        if (mb_strtoupper(mb_substr($per_LastName, 0, 1, 'UTF-8')) != $sPrevLetter) {
             echo $sBlankLine;
             echo '<tr><td></td>';
-            echo '<td class="ControlBreak">'.mb_strtoupper(mb_mb_substr($per_LastName, 0, 1, 'UTF-8'));
+            echo '<td class="ControlBreak">'.mb_strtoupper(mb_substr($per_LastName, 0, 1, 'UTF-8'));
             echo '</td></tr>';
             $sRowClass = 'RowColorA';
         }
@@ -1202,9 +1202,9 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 	<?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
 
         // Add to cart option
-        if (mb_mb_substr($sRedirect, -1, 1) == '?') {
+        if (mb_substr($sRedirect, -1, 1) == '?') {
             echo '<a href="'.$sRedirect.'AddToPeopleCart='.$per_ID.'">';
-        } elseif (mb_mb_substr($sRedirect, -1, 1) == '&') {
+        } elseif (mb_substr($sRedirect, -1, 1) == '&') {
             echo '<a href="'.$sRedirect.'AddToPeopleCart='.$per_ID.'">';
         } else {
             echo '<a href="'.$sRedirect.'&amp;AddToPeopleCart='.$per_ID.'">';
@@ -1218,9 +1218,9 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 	<?php 
     } else {
         // Remove from cart option
-        if (mb_mb_substr($sRedirect, -1, 1) == '?') {
+        if (mb_substr($sRedirect, -1, 1) == '?') {
             echo '<a href="'.$sRedirect.'RemoveFromPeopleCart='.$per_ID.'">';
-        } elseif (mb_mb_substr($sRedirect, -1, 1) == '&') {
+        } elseif (mb_substr($sRedirect, -1, 1) == '&') {
             echo '<a href="'.$sRedirect.'RemoveFromPeopleCart='.$per_ID.'">';
         } else {
             echo '<a href="'.$sRedirect.'&amp;RemoveFromPeopleCart='.$per_ID.'">';
@@ -1258,7 +1258,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     }
 
     //Store the first letter of this record to enable the control break
-    $sPrevLetter = mb_strtoupper(mb_mb_substr($per_LastName, 0, 1, 'UTF-8'));
+    $sPrevLetter = mb_strtoupper(mb_substr($per_LastName, 0, 1, 'UTF-8'));
 } // end of while loop
 ?>
 

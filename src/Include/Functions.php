@@ -936,7 +936,7 @@ function FormatFullName($Title, $FirstName, $MiddleName, $LastName, $Suffix, $St
       }
       $nameString .= $FirstName;
       if ($MiddleName) {
-          $nameString .= ' '.strtoupper(mb_mb_substr($MiddleName, 0, 1, 'UTF-8')).'.';
+          $nameString .= ' '.strtoupper(mb_substr($MiddleName, 0, 1, 'UTF-8')).'.';
       }
       if ($LastName) {
           $nameString .= ' '.$LastName;
@@ -971,7 +971,7 @@ function FormatFullName($Title, $FirstName, $MiddleName, $LastName, $Suffix, $St
       }
       $nameString .= $FirstName;
       if ($MiddleName) {
-          $nameString .= ' '.strtoupper(mb_mb_substr($MiddleName, 0, 1, 'UTF-8')).'.';
+          $nameString .= ' '.strtoupper(mb_substr($MiddleName, 0, 1, 'UTF-8')).'.';
       }
       if ($Suffix) {
           $nameString .= ', '.$Suffix;
@@ -2073,7 +2073,7 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
         }
         $Email = urlencode($Email);  // Mailto should comply with RFC 2368
     ?>
-      <li> <a href="<?= $href.mb_mb_substr($Email, 0, -3) ?>"><?=$role?></a></li>
+      <li> <a href="<?= $href.mb_substr($Email, 0, -3) ?>"><?=$role?></a></li>
     <?php
 
     }

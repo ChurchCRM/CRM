@@ -82,7 +82,7 @@ require '../Include/Header.php';
       // Display link
       ?>
       <div class="btn-group">
-        <a class="btn btn-app" href="mailto:<?= mb_mb_substr($sEmailLink, 0, -3) ?>"><i
+        <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i
             class="fa fa-send-o"></i><?= gettext('Email') ?></a>
         <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>
@@ -94,7 +94,7 @@ require '../Include/Header.php';
       </div>
 
       <div class="btn-group">
-        <a class="btn btn-app" href="mailto:?bcc=<?= mb_mb_substr($sEmailLink, 0, -3) ?>"><i
+        <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i
             class="fa fa-send"></i><?= gettext('Email (BCC)') ?></a>
         <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>

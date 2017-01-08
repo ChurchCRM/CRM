@@ -220,7 +220,7 @@ require 'Include/Header.php';
         // Display link
         ?>
         <div class="btn-group">
-          <a  class="btn btn-app" href="mailto:<?= mb_mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-send-o"></i><?= gettext('Email Group') ?></a>
+          <a  class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-send-o"></i><?= gettext('Email Group') ?></a>
           <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
@@ -231,7 +231,7 @@ require 'Include/Header.php';
         </div>
 
         <div class="btn-group">
-          <a class="btn btn-app" href="mailto:?bcc=<?= mb_mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-send"></i><?= gettext('Email (BCC)') ?></a>
+          <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-send"></i><?= gettext('Email (BCC)') ?></a>
           <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
@@ -276,7 +276,7 @@ require 'Include/Header.php';
         if ($bEmailMailto) { // Does user have permission to email groups
         // Display link
         echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>'.gettext('Text Group').'</a>';
-            echo '<script>function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_mb_substr($sPhoneLink, 0, -2).'")};</script>';
+            echo '<script>function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
         }
     }
     ?>
