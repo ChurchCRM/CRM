@@ -42,5 +42,5 @@ script:
 before_deploy:
  - npm run package
  
- deploy:
+deploy:
   skip_cleanup: true
