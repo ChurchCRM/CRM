@@ -318,7 +318,7 @@ class SystemService
         $headers = [];
         $headers[] = 'Content-type: application/json';
 
-        $issueDescription = FilterInput($data->issueDescription)."\r\n\r\n\r\n".
+        $issueDescription = $data->issueDescription ."\r\n\r\n\r\n".
       "Collected Value Title |  Data \r\n".
       "----------------------|----------------\r\n".
       'Page Name |'.$data->pageName."\r\n".
