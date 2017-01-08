@@ -388,7 +388,13 @@ class SystemService
     {
         $release = $this->getLatestRelese();
         $UpgradeDir = SystemURLs::getDocumentRoot().'/Upgrade';
-        $url = $release['assets'][0]['browser_download_url'];
+        foreach ($release['assets'] as $asset)
+        {
+          if ($asset['name'] == "ChurchCRM-".$release['name'].".zip")
+          {
+            $url = $asset['browser_download_url'];
+          }
+        }
         mkdir($UpgradeDir);
         file_put_contents($UpgradeDir.'/'.basename($url), file_get_contents($url));
         $returnFile = [];
