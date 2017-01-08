@@ -141,9 +141,9 @@ class Deposit extends BaseDeposit
         $thisReport->curY += 4;
 
         foreach ($this->getFundTotals() as $fund) { //iterate through the defined funds
-      $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-            $thisReport->pdf->Write(8, $fund->Name);
-            $amountStr = sprintf('%.2f', $fund->Total);
+            $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $fund['Name']);
+            $amountStr = sprintf('%.2f', $fund['Total']);
             $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
             $thisReport->curY += 4;
         }
@@ -210,6 +210,14 @@ class Deposit extends BaseDeposit
         $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x + 125;
         $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY + 30;
         $this->generateTotalsByFund($thisReport);
+        
+        $thisReport->curY += $thisReport->QBDepositTicketParameters->lineItemInterval->y;
+        $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->SetFont('Times', 'B', 10);
+        $thisReport->pdf->Write(8, 'Deposit total');
+        $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
+        $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $grandTotalStr);
+        $thisReport->pdf->SetFont('Courier', '', 8);
     }
 
     private function generateDepositSummary($thisReport)
@@ -461,7 +469,7 @@ class Deposit extends BaseDeposit
       ->orderBy(DonationFundTableMap::COL_FUN_NAME)
       ->select(['Name', 'Total'])
       ->find();
-
+        
         return $funds;
     }
 
