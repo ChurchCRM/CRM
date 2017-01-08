@@ -94,7 +94,7 @@ if (isset($_POST['GroupPropSubmit'])) {
       }
 
     // chop off the last 2 characters (comma and space) added in the last while loop iteration.
-    $sSQL = substr($sSQL, 0, -2);
+    $sSQL = mb_substr($sSQL, 0, -2);
 
       $sSQL .= ' WHERE per_ID = '.$iPersonID;
 

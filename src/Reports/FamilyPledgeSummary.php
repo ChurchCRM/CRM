@@ -288,7 +288,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             extract($aRow);
 
             if (strlen($fundName) > 19) {
-                $fundName = substr($fundName, 0, 18).'...';
+                $fundName = mb_substr($fundName, 0, 18).'...';
             }
 
             $fundPledgeTotal[$fundName] += $plg_amount;

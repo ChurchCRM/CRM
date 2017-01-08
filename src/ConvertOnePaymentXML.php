@@ -110,7 +110,7 @@ class VancoToolsXML
             }
             fclose($socket);
 
-            $rets = substr($rets, strpos($rets, '?'.'>') + 2); // Skip over the header and the xml tag
+            $rets = mb_substr($rets, strpos($rets, '?'.'>') + 2); // Skip over the header and the xml tag
 
 //		    printf ("Got string '%s'", $rets);
 

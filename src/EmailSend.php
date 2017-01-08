@@ -330,7 +330,7 @@ $bHavePHPMailerClass = false;
 $bHaveSMTPClass = false;
 $bHavePHPMailerLanguage = false;
 
-$sLangCode = substr(SystemConfig::getValue('sLanguage'), 0, 2); // Strip the language code from the beginning of the language_country code
+$sLangCode = mb_substr(SystemConfig::getValue('sLanguage'), 0, 2); // Strip the language code from the beginning of the language_country code
 
 $sPHPMailerClass = $sPHPMailerPath.'class.phpmailer.php';
 if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
@@ -601,7 +601,7 @@ if ($sEmailState == 'continue') {
         extract($aRow);
 
         $sTime = date('i:s', intval($ejl_time)).'.';
-        $sTime .= substr($ejl_usec, 0, 3);
+        $sTime .= mb_substr($ejl_usec, 0, 3);
         $sMsg = $ejl_text;
         $sMessage .= $sTime.' '.$sMsg."\n";
         $sHTMLLog .= "<tr><td>$sTime</td><td>$sMsg</td></tr>\n";
@@ -672,7 +672,7 @@ if ($sEmailState == 'continue') {
         extract($aRow);
 
         $sTime = date('i:s', intval($ejl_time)).'.';
-        $sTime .= substr($ejl_usec, 0, 3);
+        $sTime .= mb_substr($ejl_usec, 0, 3);
         $sMsg = $ejl_text;
         $sMessage .= $sTime.' '.$sMsg."\n";
         $sHTMLLog .= "<tr><td>$sTime</td><td>$sMsg</td></tr>\n";
@@ -696,5 +696,5 @@ if ($sEmailState == 'continue') {
 
 require 'Include/Footer.php';
 ?>
-            $sSMTPPort = substr(SystemConfig::getValue("sSMTPHost"), $delimeter+1);
-            $sSMTPHost = substr(SystemConfig::getValue("sSMTPHost"), 0, $delimeter);   
+            $sSMTPPort = mb_substr(SystemConfig::getValue("sSMTPHost"), $delimeter+1);
+            $sSMTPHost = mb_substr(SystemConfig::getValue("sSMTPHost"), 0, $delimeter);   

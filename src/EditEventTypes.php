@@ -34,7 +34,7 @@ $editing = 'FALSE';
 $tyid = $_POST['EN_tyid'];
 
 if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
-    $ctid = substr($_POST['Action'], 7);
+    $ctid = mb_substr($_POST['Action'], 7);
     $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_countid='$ctid' LIMIT 1";
     RunQuery($sSQL);
 } else {
@@ -94,7 +94,7 @@ switch ($aDefRecurType) {
        $recur = gettext('Monthly on').' '.date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM, 2000));
        break;
     case 'yearly':
-       $recur = gettext('Yearly on').' '.substr($aDefRecurDOY, 5);
+       $recur = gettext('Yearly on').' '.mb_substr($aDefRecurDOY, 5);
        break;
     default:
        $recur = gettext('None');

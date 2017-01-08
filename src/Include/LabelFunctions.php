@@ -31,9 +31,9 @@ function FontSelect($fieldname)
     foreach ($d as $entry) {
         $len = strlen($entry);
         if ($len > 3) {
-            if (strtoupper(substr($entry, $len - 3)) == 'PHP') { // php files only
-        $filename = substr($entry, 0, $len - 4);
-                if (substr($filename, 0, strlen($family)) != $family) {
+            if (strtoupper(mb_substr($entry, $len - 3)) == 'PHP') { // php files only
+        $filename = mb_substr($entry, 0, $len - 4);
+                if (mb_substr($filename, 0, strlen($family)) != $family) {
                     $family = $filename;
                 }
                 $fontnames[] = FilenameToFontname($filename, $family);

@@ -158,8 +158,8 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 
                 if ($bEmailMailto) { // Does user have permission to email groups
                 // Display link
-                echo "<a href='mailto:".mb_substr($sEmailLink, 0, -3)."' class='btn btn-app'><i class='fa fa-send-o'></i>".gettext('Email Cart').'</a>';
-                    echo "<a href='mailto:?bcc=".mb_substr($sEmailLink, 0, -3)."' class='btn btn-app'><i class='fa fa-send'></i>".gettext('Email (BCC)').'</a>';
+                echo "<a href='mailto:".mb_mb_substr($sEmailLink, 0, -3)."' class='btn btn-app'><i class='fa fa-send-o'></i>".gettext('Email Cart').'</a>';
+                    echo "<a href='mailto:?bcc=".mb_mb_substr($sEmailLink, 0, -3)."' class='btn btn-app'><i class='fa fa-send'></i>".gettext('Email (BCC)').'</a>';
                 }
             }
 
@@ -185,7 +185,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 
                 // Display link
                 echo '<a href="javascript:void(0)" onclick="allPhonesCommaD()" class="btn btn-app"><i class="fa fa-mobile-phone"></i>Text Cart';
-                    echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
+                    echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "'.mb_mb_substr($sPhoneLink, 0, -2).'")};</script>';
                 }
             } ?>
         <a href="DirectoryReports.php?cartdir=Cart+Directory" class="btn btn-app"><i class="fa fa-book"></i><?= gettext('Create Directory From Cart') ?></a>
@@ -280,7 +280,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                 $bcc_list .= SystemConfig::getValue('sToEmailAddress');
             } else {
                 // remove the last ", "
-                $bcc_list = substr($bcc_list, 0, strlen($bcc_list) - 2);
+                $bcc_list = mb_substr($bcc_list, 0, strlen($bcc_list) - 2);
             }
         }
 
@@ -566,7 +566,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                     extract($aRow);
 
                     $sTime = date('i:s', intval($ejl_time)).'.';
-                    $sTime .= substr($ejl_usec, 0, 3);
+                    $sTime .= mb_substr($ejl_usec, 0, 3);
                     $sMsg = stripslashes($ejl_text);
                     $sHTMLLog .= '<tr><td>'.$sTime.'</td><td>'.$sMsg.'</td></tr>'."\n";
                 }
