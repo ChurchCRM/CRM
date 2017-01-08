@@ -90,6 +90,7 @@
       "2.4.3"
     ],
     "scripts": [
+      "/mysql/upgrade/2.4.4.sql"
     ],
     "dbVersion": "2.4.4"
   }
