@@ -43,5 +43,6 @@ before_deploy:
  - npm run package
  
 deploy:
-  skip_cleanup: true
-  all_branches: true
+  skip_cleanup: true  
+  on:
+    branch: master
