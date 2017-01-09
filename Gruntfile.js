@@ -323,7 +323,6 @@ module.exports = function (grunt) {
         },
         updateVersions: {
             update: {
-                src: ['src/composer.json', 'src/mysql/upgrade.json'],
                 version: '<%= package.version %>'
             }
         }
@@ -366,18 +365,31 @@ module.exports = function (grunt) {
 
     grunt.registerMultiTask('updateVersions', 'Update Files to match NPM version', function () {
         var version = this.data.version;
-        this.data.src.forEach(function (file) {
-            var curFile = grunt.file.readJSON(file);
-            var stringFile = JSON.stringify(curFile, null, 4);
-            stringFile = stringFile.replace("<<VER>>", version);
-            grunt.file.write(file, stringFile);
-        })
-    });
 
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-compress');
-    grunt.loadNpmTasks('grunt-contrib-rename');
-    grunt.loadNpmTasks('grunt-curl');
-};
+        // php composer
+        var file = 'src/composer.json';
+        var curFile = grunt.file.readJSON(file);
+        curFile.version = version;
+        var stringFile = JSON.stringify(curFile, null, 4);
+        grunt.file.write(file, stringFile);
+
+        // db update file
+        file = 'src/mysql/upgrade.json';
+        curFile = grunt.file.readJSON(file);
+        curFile.current.dbVersion = version;
+        stringFile = JSON.stringify(curFile, null, 4);
+        grunt.file.write(file, stringFile);
+
+    })
+}
+)
+;
+
+grunt.loadNpmTasks('grunt-contrib-copy');
+grunt.loadNpmTasks('grunt-contrib-clean');
+grunt.loadNpmTasks('grunt-contrib-concat');
+grunt.loadNpmTasks('grunt-contrib-compress');
+grunt.loadNpmTasks('grunt-contrib-rename');
+grunt.loadNpmTasks('grunt-curl');
+}
+;

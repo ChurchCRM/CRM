@@ -93,6 +93,6 @@
         "scripts": [
             "/mysql/upgrade/2.5.0/tasks.sql"
         ],
-        "dbVersion": "<<VER>>"
+        "dbVersion": "2.5.0"
     }
 }
