@@ -365,9 +365,11 @@ module.exports = function (grunt) {
 
     grunt.registerMultiTask('updateVersions', 'Update Files to match NPM version', function () {
         var version = this.data.version;
+        console.log("updating to: " + version);
 
         // php composer
         var file = 'src/composer.json';
+        console.log(file);
         var curFile = grunt.file.readJSON(file);
         curFile.version = version;
         var stringFile = JSON.stringify(curFile, null, 4);
@@ -375,6 +377,7 @@ module.exports = function (grunt) {
 
         // db update file
         file = 'src/mysql/upgrade.json';
+        console.log(file);
         curFile = grunt.file.readJSON(file);
         curFile.current.dbVersion = version;
         stringFile = JSON.stringify(curFile, null, 4);
