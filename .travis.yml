@@ -5,7 +5,7 @@ php:
   - 7.0
 
 rvm:
-  - 1.9.3
+  - 2.2
 
 sudo: required
 dist: trusty
@@ -25,6 +25,7 @@ env:
 
 before_install:
  - sudo apt-get install ruby-full
+ - sudo gem install sass
  - chmod +x ./travis-ci/*.sh
 
 # prepare travis ci for the build process
