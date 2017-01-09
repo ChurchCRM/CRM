@@ -38,3 +38,11 @@ before_script:
 # execute tests
 script:
  - ./travis-ci/tests.sh
+ 
+before_deploy:
+ - npm run package
+ 
+deploy:
+  skip_cleanup: true  
+  on:
+    branch: master
