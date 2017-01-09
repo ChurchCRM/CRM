@@ -380,16 +380,13 @@ module.exports = function (grunt) {
         stringFile = JSON.stringify(curFile, null, 4);
         grunt.file.write(file, stringFile);
 
-    })
-}
-)
-;
+    });
 
-grunt.loadNpmTasks('grunt-contrib-copy');
-grunt.loadNpmTasks('grunt-contrib-clean');
-grunt.loadNpmTasks('grunt-contrib-concat');
-grunt.loadNpmTasks('grunt-contrib-compress');
-grunt.loadNpmTasks('grunt-contrib-rename');
-grunt.loadNpmTasks('grunt-curl');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-rename');
+    grunt.loadNpmTasks('grunt-curl');
 }
 ;
