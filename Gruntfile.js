@@ -173,6 +173,13 @@ module.exports = function (grunt) {
                 dest: 'src/skin/fastclick'
             }
         },
+        sass: {
+            dist: {
+                files: {
+                    'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
+                }
+            }
+        },
         rename: {
             datatables: {
                 files: [
@@ -385,6 +392,7 @@ module.exports = function (grunt) {
 
     });
 
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');

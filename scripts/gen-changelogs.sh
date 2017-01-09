@@ -10,7 +10,6 @@ fi
 
 if  [ "${hasGem}" == "false" ]; then
     echo "********** Installing missing gem: Started"
-    sudo apt-get install -y ruby
     gem install multi_json github_changelog_generator
     echo "********** Installing missing gem: Done"
 fi

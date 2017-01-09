@@ -1,7 +1,9 @@
 <?php
+use ChurchCRM\dto\SystemURLs;
+
 // Set the page title and include HTML header
-$sPageTitle = 'ChurchCRM - Family Registration';
-require __DIR__.'/../../../Include/HeaderNotLoggedIn.php';
+$sPageTitle = gettext("Family Registration");
+require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
   <form action="<?= $sRootPath ?>/external/register/confirm" method="post">
     <div class="register-box" style="width: 600px;">
@@ -36,7 +38,7 @@ require __DIR__.'/../../../Include/HeaderNotLoggedIn.php';
                           <?php foreach ($familyRoles as $role) {
         ?>
                             <option value="<?= $role->getOptionId() ?>"><?= $role->getOptionName() ?></option>
-                          <?php 
+                          <?php
     } ?>
                         </select>
                       </div>
@@ -110,7 +112,7 @@ require __DIR__.'/../../../Include/HeaderNotLoggedIn.php';
                   </div>
                 </div>
               </div>
-            <?php 
+            <?php
 } ?>
           </div>
           <div class="box-footer">
@@ -130,4 +132,4 @@ require __DIR__.'/../../../Include/HeaderNotLoggedIn.php';
   </script>
 <?php
 // Add the page footer
-require __DIR__.'/../../../Include/FooterNotLoggedIn.php';
+require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");
