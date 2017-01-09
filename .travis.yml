@@ -24,7 +24,7 @@ env:
   - DB=mysql
 
 before_install:
- - sudo apt-get ruby-full
+ - sudo apt-get install ruby-full
  - chmod +x ./travis-ci/*.sh
 
 # prepare travis ci for the build process
