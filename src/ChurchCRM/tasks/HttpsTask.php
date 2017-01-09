@@ -7,7 +7,6 @@ class HttpsTask implements iTask
 {
   public function isActive(){
     return $_SESSION['user']->isAdmin() && !isset($_SERVER['HTTPS']);
-
   }
   public function isAdmin(){
     return true;
