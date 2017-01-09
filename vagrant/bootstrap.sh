@@ -48,27 +48,19 @@ echo "Database: tables and metadata deployed"
 CODE_VER=`grep version /vagrant/package.json | cut -d ',' -f1 | cut -d'"' -f4`
 
 echo "=========================================================="
-echo "==============   Development DB Setup $CODE_VER ============="
+echo "===========  Setup Dev to version: $CODE_VER ============="
 echo "=========================================================="
 
 sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_VAGRANT_SCRIPT
 sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "INSERT INTO churchcrm.version_ver (ver_version, ver_update_start) VALUES ('$CODE_VER', now());"
 echo "Database: development seed data deployed"
 
-echo "=========================================================="
-echo "===============  MV Config.php           ================="
-echo "=========================================================="
-
 cp /vagrant/vagrant/Config.php /vagrant/src/Include/
+echo "copied Config.php "
 
 echo "=========================================================="
-echo "=================   Composer Update    ==================="
-echo "=========================================================="
-
-sudo /usr/local/bin/composer self-update
-
 echo "===============   Composer PHP           ================="
-
+echo "=========================================================="
 cd /vagrant/src
 composer update
 
@@ -84,7 +76,7 @@ echo "=========================================================="
 
 cd /vagrant
 sudo npm install -g npm@latest --unsafe-perm --no-bin-links
-sudo npm install --unsafe-perm --no-bin-links
+npm install --unsafe-perm --no-bin-links
 
 echo "=========================================================="
 echo "=================   MailCatcher Setup  ==================="
@@ -92,29 +84,6 @@ echo "=========================================================="
 
 sudo pkill mailcatcher
 mailcatcher --ip 0.0.0.0
-
-echo "=========================================================="
-echo "==========   Add Locals                       ============"
-echo "=========================================================="
-
-sudo locale-gen de_DE
-sudo locale-gen en_AU
-sudo locale-gen en_GB
-sudo locale-gen es_ES
-sudo locale-gen fr_FR
-sudo locale-gen hu_HU
-sudo locale-gen it_IT
-sudo locale-gen nb_NO
-sudo locale-gen nl_NL
-sudo locale-gen pl_PL
-sudo locale-gen pt_BR
-sudo locale-gen ro_RO
-sudo locale-gen ru_RU
-sudo locale-gen se_SE
-sudo locale-gen sq_AL
-sudo locale-gen sv_SE
-sudo locale-gen zh_CN
-sudo locale-gen zh_TW
 
 echo "=========================================================="
 echo "=========================================================="

@@ -2,8 +2,9 @@
 
 namespace ChurchCRM;
 
-use ChurchCRM\Base\Family as BaseFamily;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Base\Family as BaseFamily;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -82,6 +83,65 @@ class Family extends BaseFamily
     {
         $this->createTimeLineNote(false);
     }
+
+
+  public function getPeopleSorted() {
+    $familyMembersParents = array_merge($this->getHeadPeople(), $this->getSpousePeople());
+    $familyMembersChildren = $this->getChildPeople();
+    $familyMembersOther = $this->getOtherPeople();
+    return array_merge($familyMembersParents, $familyMembersChildren, $familyMembersOther);
+  }
+
+  public function getHeadPeople() {
+    return $this->getPeopleByRole("sDirRoleHead");
+  }
+
+  public function getSpousePeople() {
+    return $this->getPeopleByRole("sDirRoleSpouse");
+  }
+
+  public function getChildPeople() {
+    return $this->getPeopleByRole("sDirRoleChild");
+  }
+
+  public function getOtherPeople() {
+    $roleIds = array_merge (explode(",", SystemConfig::getValue("sDirRoleHead")), explode(",",
+      SystemConfig::getValue("sDirRoleSpouse")),
+      explode(",", SystemConfig::getValue("sDirRoleChild")));
+    $foundPeople = array();
+    foreach ($this->getPeople() as $person) {
+      if (!in_array($person->getFmrId(), $roleIds)) {
+        array_push($foundPeople, $person);
+      }
+    }
+    return $foundPeople;
+  }
+
+  private function getPeopleByRole($roleConfigName) {
+    $roleIds = explode(",", SystemConfig::getValue($roleConfigName));
+    $foundPeople = array();
+    foreach ($this->getPeople() as $person) {
+      if (in_array($person->getFmrId(), $roleIds)) {
+          array_push($foundPeople, $person);
+      }
+    }
+    return $foundPeople;
+  }
+
+  public function getEmails() {
+    $emails = array();
+    foreach ($this->getPeople() as $person) {
+      $email = $person->getEmail();
+      if ($email != null) {
+        array_push($emails, $email);
+      }
+      $email = $person->getWorkEmail();
+      if ($email != null) {
+        array_push($emails, $email);
+      }
+    }
+    return $emails;
+  }
 
     private function createTimeLineNote($new)
     {

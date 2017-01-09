@@ -58,7 +58,7 @@ function Header_modals()
           <p><?= gettext('Error making API Call to') ?>: <span id="APIEndpoint"></span></p>
 
           <p><?= gettext('Error text') ?>: <span style="font-style: bold" id="APIErrorText"></span></p>
-          
+
           <p><?= gettext('Stack Trace') ?>: <pre id="APITrace"></pre></p>
         </div>
         <div class="modal-footer">
@@ -121,9 +121,7 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $sRootPath, $localeInfo;
-
-    checkAllowedURL(); ?>
+    global $sRootPath, $localeInfo; ?>
   <script src="<?= $sRootPath ?>/skin/js/IssueReporter.js"></script>
 
   <script>

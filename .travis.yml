@@ -5,8 +5,8 @@ php:
   - 7.0
 
 rvm:
-  - 1.9.3
-  
+  - 2.2
+
 sudo: required
 dist: trusty
 group: edge
@@ -24,13 +24,15 @@ env:
   - DB=mysql
 
 before_install:
+ - sudo apt-get install ruby-full
+ - sudo gem install sass
  - chmod +x ./travis-ci/*.sh
 
 # prepare travis ci for the build process
 install:
  - ./travis-ci/install-composer.sh
  - npm install
- 
+
 # linters
 before_script:
  - ./travis-ci/setup-db.sh
@@ -38,11 +40,11 @@ before_script:
 # execute tests
 script:
  - ./travis-ci/tests.sh
- 
+
 before_deploy:
  - npm run package
- 
+
 #deploy:
-#  skip_cleanup: true  
+#  skip_cleanup: true
 #  on:
 #    branch: master

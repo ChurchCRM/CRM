@@ -274,13 +274,6 @@ if (isset($loginPageMsg)) {
         </div>
     </div>
 </form>
-<?php
-// Check if the login page is following thre required URL schema
-// including the desired protocol, hiotsname, and path.
-// Otherwise redirect to login page.
-// An array of authorized URL's is specified in Config.php in the $URL array
-checkAllowedURL();
-?>
         <!--<a href="external/user/password">I forgot my password</a><br> -->
         <?php if ($enableSelfReg) {
     ?>
