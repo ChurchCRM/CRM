@@ -15,53 +15,59 @@ use ChurchCRM\Base\User as BaseUser;
  */
 class User extends BaseUser
 {
-    public function getName()
-    {
-        return $this->getPerson()->getFullName();
-    }
 
-    public function isAddRecordsEnabled()
-    {
-        return $this->isAdmin() || $this->isAddRecords();
-    }
+  public function getId()
+  {
+    return $this->getPersonId();
+  }
 
-    public function isEditRecordsEnabled()
-    {
-        return $this->isAdmin() || $this->isEditRecords();
-    }
+  public function getName()
+  {
+    return $this->getPerson()->getFullName();
+  }
 
-    public function isDeleteRecordsEnabled()
-    {
-        return $this->isAdmin() || $this->isDeleteRecords();
-    }
+  public function isAddRecordsEnabled()
+  {
+    return $this->isAdmin() || $this->isAddRecords();
+  }
 
-    public function isMenuOptionsEnabled()
-    {
-        return $this->isAdmin() || $this->isMenuOptions();
-    }
+  public function isEditRecordsEnabled()
+  {
+    return $this->isAdmin() || $this->isEditRecords();
+  }
 
-    public function isManageGroupsEnabled()
-    {
-        return $this->isAdmin() || $this->isManageGroups();
-    }
+  public function isDeleteRecordsEnabled()
+  {
+    return $this->isAdmin() || $this->isDeleteRecords();
+  }
 
-    public function isFinanceEnabled()
-    {
-        return $this->isAdmin() || $this->isFinance();
-    }
+  public function isMenuOptionsEnabled()
+  {
+    return $this->isAdmin() || $this->isMenuOptions();
+  }
 
-    public function isNotesEnabled()
-    {
-        return $this->isAdmin() || $this->isNotes();
-    }
+  public function isManageGroupsEnabled()
+  {
+    return $this->isAdmin() || $this->isManageGroups();
+  }
 
-    public function isEditSelfEnabled()
-    {
-        return $this->isAdmin() || $this->isEditSelf();
-    }
+  public function isFinanceEnabled()
+  {
+    return $this->isAdmin() || $this->isFinance();
+  }
 
-    public function isCanvasserEnabled()
-    {
-        return $this->isAdmin() || $this->isCanvasser();
-    }
+  public function isNotesEnabled()
+  {
+    return $this->isAdmin() || $this->isNotes();
+  }
+
+  public function isEditSelfEnabled()
+  {
+    return $this->isAdmin() || $this->isEditSelf();
+  }
+
+  public function isCanvasserEnabled()
+  {
+    return $this->isAdmin() || $this->isCanvasser();
+  }
 }

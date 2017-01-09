@@ -2,16 +2,16 @@
 /**
  * User: George Dawoud
  * Date: 1/17/2016
- * Time: 8:01 AM.
+ * Time: 8:01 AM
  */
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\dto\SystemConfig;
 
 // Set the page title
-$sPageTitle = gettext('Members Dashboard');
+$sPageTitle = gettext("Members Dashboard");
 
 require 'Include/Header.php';
 
@@ -22,13 +22,13 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $demographicStats = $dashboardService->getDemographic();
 
-$sSQL = 'select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;';
+$sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;";
 $rsAdultsGender = RunQuery($sSQL);
 
-$sSQL = 'select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;';
+$sSQL = "select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;";
 $rsKidsGender = RunQuery($sSQL);
 
-$sSQL = 'select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;';
+$sSQL = "select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;";
 $rsClassification = RunQuery($sSQL);
 $classifications = new stdClass();
 while (list($lst_OptionID, $lst_OptionName) = mysqli_fetch_row($rsClassification)) {
@@ -54,7 +54,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         // Add email only if email address is not already in string
         if (!stristr($sEmailLink, $sEmail)) {
             $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-            $roleEmails->$virt_RoleName .= $sEmail .= $sMailtoDelimiter;
+            $roleEmails->$virt_RoleName .= $sEmail.= $sMailtoDelimiter;
         }
     }
 }
@@ -64,16 +64,16 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 <!-- Default box -->
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('Members Functions') ?></h3>
+    <h3 class="box-title"><?= gettext("Members Functions") ?></h3>
   </div>
   <div class="box-body">
-    <a href="SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext('All People') ?></a>
+    <a href="SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext("All People") ?></a>
     <?php
     if ($sEmailLink) {
         // Add default email if default email has been set and is not already in string
-      if (SystemConfig::getValue('sToEmailAddress') != '' && SystemConfig::getValue('sToEmailAddress') != 'myReceiveEmailAddress'
-                                 && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
-          $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
+      if (SystemConfig::getValue("sToEmailAddress") != '' && SystemConfig::getValue("sToEmailAddress") != 'myReceiveEmailAddress'
+                                 && !stristr($sEmailLink, SystemConfig::getValue("sToEmailAddress"))) {
+          $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue("sToEmailAddress");
       }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
        if ($bEmailMailto) { // Does user have permission to email groups
@@ -86,7 +86,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu" role="menu">
-           <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
+           <?php generateGroupRoleEmailDropdown($roleEmails, "mailto:") ?>
           </ul>
         </div>
        <div class="btn-group">
@@ -96,7 +96,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu" role="menu">
-           <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
+           <?php generateGroupRoleEmailDropdown($roleEmails, "mailto:?bcc=") ?>
           </ul>
         </div>
        <?php
@@ -105,12 +105,14 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     }
      ?>
     <br/>
-    <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
-    <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext('Family Geographic') ?></a>
-    <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext('Family Map') ?>
+    <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext("All Families") ?></a>
+    <a href="Reports/ConfirmReport.php" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext("Download Families Letters") ?></a>
+    <a href="Reports/ConfirmReportEmail.php" class="btn btn-app"><i class="fa fa-envelope-open"></i><?= gettext("Email Families Letters") ?></a>
+    <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext("Family Geographic") ?></a>
+    <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext("Family Map") ?>
     </a>
     <a href="UpdateAllLatLon.php" class="btn btn-app"><i
-        class="fa fa-map-pin"></i><?= gettext('Update All Family Coordinates') ?></a>
+        class="fa fa-map-pin"></i><?= gettext("Update All Family Coordinates") ?></a>
   </div>
 </div>
 <!-- Small boxes (Stat box) -->
@@ -124,14 +126,14 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         </h3>
 
         <p>
-          <?= gettext('Families') ?>
+          <?= gettext("Families") ?>
         </p>
       </div>
       <div class="icon">
         <i class="ion ion-person-stalker"></i>
       </div>
-      <a href="<?= $sRootPath.'/' ?>FamilyList.php" class="small-box-footer">
-        <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
+      <a href="<?= $sRootPath . "/" ?>FamilyList.php" class="small-box-footer">
+        <?= gettext("See all Families") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -145,14 +147,14 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         </h3>
 
         <p>
-          <?= gettext('People') ?>
+          <?= gettext("People") ?>
         </p>
       </div>
       <div class="icon">
         <i class="ion ion-person"></i>
       </div>
-      <a href="<?= $sRootPath.'/' ?>SelectList.php?mode=person" class="small-box-footer">
-        <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
+      <a href="<?= $sRootPath . "/" ?>SelectList.php?mode=person" class="small-box-footer">
+        <?= gettext("See All People") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -166,14 +168,14 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         </h3>
 
         <p>
-          <?= gettext('Sunday School Kids') ?>
+          <?= gettext("Sunday School Kids") ?>
         </p>
       </div>
       <div class="icon">
         <i class="fa fa-child"></i>
       </div>
       <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
-        <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("More info") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -187,14 +189,14 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         </h3>
 
         <p>
-          <?= gettext('Groups') ?>
+          <?= gettext("Groups") ?>
         </p>
       </div>
       <div class="icon">
         <i class="fa fa-gg"></i>
       </div>
       <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
-        <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
+        <?= gettext("More info") ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -205,7 +207,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
   <div class="col-lg-12">
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Reports') ?></h3>
+        <h3 class="box-title"><?= gettext("Reports") ?></h3>
       </div>
       <div class="box-body">
         <a class="MediumText" href="GroupReports.php"><?php echo gettext('Reports on groups and roles'); ?></a>
@@ -226,9 +228,9 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         if ($bUSAddressVerification) {
             echo '<p>';
             echo '<a class="MediumText" href="USISTAddressVerification.php">';
-            echo gettext('US Address Verification Report')."</a><br>\n";
-            echo gettext('Generate report comparing all US family addresses '.
-              'with United States Postal Service Standard Address Format.<br>')."\n";
+            echo gettext('US Address Verification Report') . "</a><br>\n";
+            echo gettext('Generate report comparing all US family addresses ' .
+              'with United States Postal Service Standard Address Format.<br>') . "\n";
         }
         ?>
       </div>
@@ -241,7 +243,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="box-header with-border">
         <i class="fa fa-pie-chart"></i>
 
-        <h3 class="box-title"><?= gettext('Family Roles') ?></h3>
+        <h3 class="box-title"><?= gettext("Family Roles") ?></h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -252,9 +254,9 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="box-body no-padding">
         <table class="table table-condensed">
           <tr>
-            <th><?= gettext('Role / Gender') ?></th>
-            <th>% <?= gettext('of Members') ?></th>
-            <th style="width: 40px"><?= gettext('Count') ?></th>
+            <th><?= gettext("Role / Gender") ?></th>
+            <th>% <?= gettext("of Members") ?></th>
+            <th style="width: 40px"><?= gettext("Count") ?></th>
           </tr>
           <?php foreach ($demographicStats as $key => $value) {
             ?>
@@ -279,7 +281,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="box-header with-border">
         <i class="fa fa-bar-chart-o"></i>
 
-        <h3 class="box-title"><?= gettext('People Classification') ?></h3>
+        <h3 class="box-title"><?= gettext("People Classification") ?></h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -289,9 +291,9 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       </div>
       <table class="table table-condensed">
         <tr>
-          <th><?= gettext('Classification') ?></th>
-          <th>% <?= gettext('of Members') ?></th>
-          <th style="width: 40px"><?= gettext('Count') ?></th>
+          <th><?= gettext("Classification") ?></th>
+          <th>% <?= gettext("of Members") ?></th>
+          <th style="width: 40px"><?= gettext("Count") ?></th>
         </tr>
         <?php foreach ($personStats as $key => $value) {
             ?>
@@ -314,7 +316,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="box-header">
         <i class="ion ion-android-contacts"></i>
 
-        <h3 class="box-title"><?= gettext('Gender Demographics') ?></h3>
+        <h3 class="box-title"><?= gettext("Gender Demographics") ?></h3>
 
         <div class="box-tools pull-right">
           <div id="gender-donut-legend" class="chart-legend"></div>
@@ -338,18 +340,18 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
   var PieData = [
     <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
             if ($row['per_Gender'] == 1) {
-                echo '{value: '.$row['numb'].' , color: "#003399", highlight: "#3366ff", label: "'.gettext('Men').'" },';
+                echo "{value: ". $row['numb'] ." , color: \"#003399\", highlight: \"#3366ff\", label: \"".gettext("Men")."\" },";
             }
             if ($row['per_Gender'] == 2) {
-                echo '{value: '.$row['numb'].' , color: "#9900ff", highlight: "#ff66cc", label: "'.gettext('Women').'"},';
+                echo "{value: ". $row['numb'] ." , color: \"#9900ff\", highlight: \"#ff66cc\", label: \"".gettext("Women")."\"},";
             }
         }
     while ($row = mysqli_fetch_array($rsKidsGender)) {
         if ($row['per_Gender'] == 1) {
-            echo '{value: '.$row['numb'].' , color: "#3399ff", highlight: "#99ccff", label: "'.gettext('Boys').'"},';
+            echo "{value: ". $row['numb'] ." , color: \"#3399ff\", highlight: \"#99ccff\", label: \"".gettext("Boys")."\"},";
         }
         if ($row['per_Gender'] == 2) {
-            echo '{value: '.$row['numb'].' , color: "#009933", highlight: "#99cc00", label: "'.gettext('Girls').'",}';
+            echo "{value: ". $row['numb'] ." , color: \"#009933\", highlight: \"#99cc00\", label: \"".gettext("Girls")."\",}";
         }
     }
     ?>

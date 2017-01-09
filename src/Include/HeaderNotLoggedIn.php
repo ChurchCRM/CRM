@@ -1,3 +1,8 @@
+<?php
+use ChurchCRM\dto\SystemURLs;
+
+$sRootPath = SystemURLs::getRootPath();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -21,7 +26,8 @@
 </head>
 <body class="hold-transition login-page">
 
-<script language="javascript" type="text/javascript">
-    window.CRM = {root: "<?= $sRootPath ?>"};
-</script>
-
+  <script language="javascript" type="text/javascript">
+    window.CRM = {
+      root: "<?= $sRootPath ?>"
+    };
+  </script>

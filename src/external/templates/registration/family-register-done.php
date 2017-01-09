@@ -1,7 +1,11 @@
 <?php
+
+use ChurchCRM\dto\SystemURLs;
+
 // Set the page title and include HTML header
-$sPageTitle = 'ChurchCRM - Family Registration';
-require __DIR__.'/../../../Include/HeaderNotLoggedIn.php';
+
+$sPageTitle = gettext("Family Registration");
+require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
 
 <form action="<?= $sRootPath ?>/external/register/done" method="post">
@@ -29,7 +33,7 @@ require __DIR__.'/../../../Include/HeaderNotLoggedIn.php';
           <?php foreach ($family->getPeople() as $person) {
     ?>
                 <?= $person->getFamilyRoleName().' - '.$person->getFullName(); ?><br/>
-           <?php 
+           <?php
 } ?>
         </div>
 
@@ -48,4 +52,4 @@ require __DIR__.'/../../../Include/HeaderNotLoggedIn.php';
 </form>
 <?php
 // Add the page footer
-require __DIR__.'/../../../Include/FooterNotLoggedIn.php';
+require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");

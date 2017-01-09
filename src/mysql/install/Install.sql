@@ -122,7 +122,7 @@ CREATE TABLE `config_cfg` (
 INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`, `cfg_data`) VALUES
 (2, 'debug', '1', 'boolean', '1', 'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.', 'General', NULL, NULL),
 (5, 'sDirClassifications', '1,2,4,5', 'text', '1,2,4,5', 'Include only these classifications in the directory, comma seperated', 'General', NULL, NULL),
-(6, 'sDirRoleHead', '1,7', 'text', '1,7', 'These are the family role numbers designated as head of house', 'General', NULL, NULL),
+(6, 'sDirRoleHead', '1', 'text', '1', 'These are the family role numbers designated as head of house', 'General', NULL, NULL),
 (7, 'sDirRoleSpouse', '2', 'text', '2', 'These are the family role numbers designated as spouse', 'General', NULL, NULL),
 (8, 'sDirRoleChild', '3', 'text', '3', 'These are the family role numbers designated as child', 'General', NULL, NULL),
 (9, 'sSessionTimeout', '3600', 'number', '3600', 'Session timeout length in seconds\rSet to zero to disable session timeouts.', 'General', NULL, NULL),
@@ -141,7 +141,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (25, 'sSendType', 'smtp', 'choice', 'smtp', 'The method for sending email. Either "smtp" or "sendmail"', 'General', NULL, '{"Choices":["smtp","SendMail"]}'),
 (26, 'sToEmailAddress', '', 'text', '', 'Default account for receiving a copy of all emails', 'General', NULL, NULL),
 (27, 'sSMTPHost', '', 'text', '', 'SMTP Server Address (mail.server.com:25)', 'General', NULL, NULL),
-(28, 'sSMTPAuth', '1', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL, NULL),
+(28, 'sSMTPAuth', '0', 'boolean', '0', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL, NULL),
 (29, 'sSMTPUser', '', 'text', '', 'SMTP Username', 'General', NULL, NULL),
 (30, 'sSMTPPass', '', 'text', '', 'SMTP Password', 'General', NULL, NULL),
 (33, 'bShowFamilyData', '1', 'boolean', '1', 'Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person''s assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ', 'General', NULL, NULL),
@@ -1376,5 +1376,14 @@ CREATE TABLE `egive_egv` (
   `egv_EditedBy` smallint(6) NOT NULL default '0'
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+
+CREATE TABLE `tokens` (
+  `token` VARCHAR(99) NOT NULL,
+  `type` ENUM('verifyFamily', 'verifyPerson') NOT NULL,
+  `reference_id` INT(9) NOT NULL,
+  `valid_until_date` datetime NULL,
+  `remainingUses` INT(2) NULL,
+  PRIMARY KEY (`token`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 update version_ver set ver_update_end = now();
