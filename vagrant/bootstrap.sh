@@ -45,7 +45,7 @@ sudo mysql -u"$CRM_DB_USER" -p"$CRM_DB_PASS" "$CRM_DB_NAME" < $CRM_DB_INSTALL_SC
 
 echo "Database: tables and metadata deployed"
 
-CODE_VER=`grep version /vagrant/src/composer.json | cut -d ',' -f1 | cut -d'"' -f4`
+CODE_VER=`grep version /vagrant/package.json | cut -d ',' -f1 | cut -d'"' -f4`
 
 echo "=========================================================="
 echo "==============   Development DB Setup $CODE_VER ============="
