@@ -13,6 +13,7 @@ use ChurchCRM\Tasks\LatestReleaseTask;
 use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\PersonGenderDataCheck;
 use ChurchCRM\Tasks\PersonClassificationDataCheck;
+use ChurchCRM\Tasks\PersonRoleDataCheck;
 
 class TaskService
 {
@@ -34,7 +35,8 @@ class TaskService
             new RegisteredTask(),
             new FamilyWorkPhoneTask(),
             new PersonGenderDataCheck(),
-            new PersonClassificationDataCheck()
+            new PersonClassificationDataCheck(),
+            new PersonRoleDataCheck()
         ];
     }
 
