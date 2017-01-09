@@ -31,12 +31,6 @@ require 'Include/Functions.php';
 use ChurchCRM\Service\SystemService;
 
 $systemService = new SystemService();
-try {
-    $_SESSION['latestVersion'] = $systemService->getLatestRelese();
-} catch (Exception $ex) {
-    //there was an error checking for the latest release.  The user probably
-  //doesn't need to know, and it should NOT prevent the app from loading.
-}
 if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
   Redirect('Menu.php');
     exit;
@@ -82,8 +76,8 @@ if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade wa
             <h3>There was an error upgrading your ChurchCRM database:</h3>
             <p><b><?php echo $UpgradeException->getMessage(); ?></b></p>
             <pre style="max-height:200px; overflow:scroll"> <?php print_r($UpgradeException->getTrace()); ?></pre>
-                
-            
+
+
                 <?php
 
               } ?>
