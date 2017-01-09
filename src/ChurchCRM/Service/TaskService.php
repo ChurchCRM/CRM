@@ -11,6 +11,7 @@ use ChurchCRM\Tasks\IntegrityCheckTask;
 use ChurchCRM\Tasks\iTask;
 use ChurchCRM\Tasks\LatestReleaseTask;
 use ChurchCRM\Tasks\RegisteredTask;
+use ChurchCRM\Tasks\PersonGenderDataCheck;
 
 class TaskService
 {
@@ -30,7 +31,8 @@ class TaskService
       new IntegrityCheckTask(),
       new LatestReleaseTask(),
       new RegisteredTask(),
-      new FamilyWorkPhoneTask()
+      new FamilyWorkPhoneTask(),
+      new PersonGenderDataCheck()
     ];
   }
 
