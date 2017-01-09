@@ -20,6 +20,7 @@ class SystemService
     public function getLatestRelese()
     {
         $client = new Client();
+        //$client->authenticate('', null, Client::AUTH_HTTP_TOKEN);
         $release = null;
         try {
             $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
