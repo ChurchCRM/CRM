@@ -287,16 +287,16 @@ class Deposit extends BaseDeposit
             $familyName = gettext('Anonymous');
         }
         if (strlen($checkNo) > 8) {
-            $checkNo = '...'.substr($checkNo, -8, 8);
+            $checkNo = '...'.mb_substr($checkNo, -8, 8);
         }
         if (strlen($fundName) > 20) {
-            $fundName = substr($fundName, 0, 20).'...';
+            $fundName = mb_substr($fundName, 0, 20).'...';
         }
         if (strlen($comment) > 40) {
-            $comment = substr($comment, 0, 38).'...';
+            $comment = mb_substr($comment, 0, 38).'...';
         }
         if (strlen($familyName) > 25) {
-            $familyName = substr($familyName, 0, 24).'...';
+            $familyName = mb_substr($familyName, 0, 24).'...';
         }
 
         $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $checkNo);

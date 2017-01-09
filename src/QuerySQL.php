@@ -62,7 +62,7 @@ require 'Include/Header.php';
 
 
 if (isset($_POST['SQL'])) {
-    if (strtolower(substr($sSQL, 0, 6)) == 'select') {
+    if (strtolower(mb_substr($sSQL, 0, 6)) == 'select') {
         RunFreeQuery();
     }
 }

@@ -205,9 +205,9 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole)
 
     unset($aName);
 
-    $aName['adult'] = substr($sNameAdult, 0, 33);
-    $aName['child'] = substr($sNameChild, 0, 33);
-    $aName['other'] = substr($sNameOther, 0, 33);
+    $aName['adult'] = mb_substr($sNameAdult, 0, 33);
+    $aName['child'] = mb_substr($sNameChild, 0, 33);
+    $aName['other'] = mb_substr($sNameOther, 0, 33);
 
     return $aName;
 }
@@ -218,28 +218,28 @@ function MakeADCArray($sADClist)
 
 // The end of each row is marked with the pipe | symbol
 // keep fetching rows until gone
-while (substr_count($sADClist, '|')) {
+while (mb_substr_count($sADClist, '|')) {
 
     // find end of current row
     $endOfRow = strpos($sADClist, '|');
     if ($endOfRow) {
-        $currentRow = substr($sADClist, 0, $endOfRow);
-        $sADClist = substr($sADClist, ($endOfRow + 1));
+        $currentRow = mb_substr($sADClist, 0, $endOfRow);
+        $sADClist = mb_substr($sADClist, ($endOfRow + 1));
 
         // find the current adc (hint, last item listed)
         $currentRow = trim($currentRow);
-        $adc = substr($currentRow, strrpos($currentRow, ' '));
+        $adc = mb_substr($currentRow, strrpos($currentRow, ' '));
         $adc = trim($adc, " ,\t\n\r\0\x0B");
 
         // Now get a list of the three digit codes associated
         // with this adc.  They are all before the "_" character
 
-        $currentRow = substr($currentRow, 0, strpos($currentRow, '_'));
+        $currentRow = mb_substr($currentRow, 0, strpos($currentRow, '_'));
         $currentRow = trim($currentRow, " ,\t\n\r\0\x0B");
         while (strlen($currentRow)) {
             if (strpos($currentRow, ',')) {
-                $nugget = trim(substr($currentRow, 0, strpos($currentRow, ',')));
-                $currentRow = trim(substr($currentRow, strpos($currentRow, ',') + 1));
+                $nugget = trim(mb_substr($currentRow, 0, strpos($currentRow, ',')));
+                $currentRow = trim(mb_substr($currentRow, strpos($currentRow, ',') + 1));
             } else {  // parsing last element
                 $nugget = trim($currentRow, " ,\t\n\r\0\x0B");
                 $currentRow = '';
@@ -247,8 +247,8 @@ while (substr_count($sADClist, '|')) {
 
             $dash = strpos($nugget, '-');
             if ($dash) {   // range of
-                $start = intval(substr($nugget, 0, $dash));
-                $end = intval(substr($nugget, $dash + 1));
+                $start = intval(mb_substr($nugget, 0, $dash));
+                $end = intval(mb_substr($nugget, $dash + 1));
                 if ($end >= $start) {
                     for ($i = $start; $i <= $end; $i++) {
                         $aReturnArray[$i] = $adc;
@@ -440,7 +440,7 @@ $n = count($inLabels);
     }
 
     for ($i = 0; $i < $n; $i++) {
-        $Zips[$i] = intval(substr($inLabels[$i]['Zip'], 0, 5));
+        $Zips[$i] = intval(mb_substr($inLabels[$i]['Zip'], 0, 5));
     }
 
 //
@@ -463,7 +463,7 @@ $nz5 = 0;
             $CityText = ['City'=>'******* Presort ZIP-5 '.$z.'  '];
             $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
             for ($i = 0; $i < $n; $i++) {
-                if (intval(substr($inLabels[$i]['Zip'], 0, 5)) == $z) {
+                if (intval(mb_substr($inLabels[$i]['Zip'], 0, 5)) == $z) {
                     $outList[] = array_merge($inLabels[$i], $NoteText);
                     $inLabels[$i]['Zip'] = -1; // done
                 $nz5++;
@@ -500,7 +500,7 @@ unset($Zips);
 //print_r($inLabels);
 
 for ($i = 0; $i < $n; $i++) {
-    $Zips[$i] = intval(substr($inLabels[$i]['Zip'], 0, 3));
+    $Zips[$i] = intval(mb_substr($inLabels[$i]['Zip'], 0, 3));
 }
 
 //
@@ -522,7 +522,7 @@ $nz3 = 0;
             $CityText = ['City'=>'******* Presort ZIP-3 '.$z.'  '];
             $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
             for ($i = 0; $i < $n; $i++) {
-                if (intval(substr($inLabels[$i]['Zip'], 0, 3)) == $z) {
+                if (intval(mb_substr($inLabels[$i]['Zip'], 0, 3)) == $z) {
                     $outList[] = array_merge($inLabels[$i], $NoteText);
                     $inLabels[$i]['Zip'] = -1;
                     $nz3++;
@@ -554,8 +554,8 @@ unset($Zips);
     }
 
     for ($i = 0; $i < $n; $i++) {
-        if (isset($adc[intval(substr($inLabels[$i]['Zip'], 0, 3))])) {
-            $Zips[$i] = $adc[intval(substr($inLabels[$i]['Zip'], 0, 3))];
+        if (isset($adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))])) {
+            $Zips[$i] = $adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))];
         }
     }
 //
@@ -584,7 +584,7 @@ $ncounts = 0;
                 $CityText = ['City'=>'******* Presort ADC '.$z.'  '];
                 $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
                 for ($i = 0; $i < $n; $i++) {
-                    if ($adc[intval(substr($inLabels[$i]['Zip'], 0, 3))] == $z) {
+                    if ($adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))] == $z) {
                         $outList[] = array_merge($inLabels[$i], $NoteText);
                         $inLabels[$i]['Zip'] = -1; // done
                 $nadc++;
@@ -710,9 +710,9 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             }
 
             if ($bChild) {
-                $aName['child'] = substr($sName, 0, 33);
+                $aName['child'] = mb_substr($sName, 0, 33);
             } else {
-                $aName['indiv'] = substr($sName, 0, 33);
+                $aName['indiv'] = mb_substr($sName, 0, 33);
             }
         }
 
@@ -877,16 +877,16 @@ if ($sFileType == 'PDF') {
         if ($iNewline === false) { // There is no newline character
             $sCSVOutput .= '"","'.$sLT['Name'].'",';
         } else {
-            $sCSVOutput .= '"'.substr($sLT['Name'], 0, $iNewline).'",'.
-                            '"'.substr($sLT['Name'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.mb_substr($sLT['Name'], 0, $iNewline).'",'.
+                            '"'.mb_substr($sLT['Name'], $iNewline + 1).'",';
         }
 
         $iNewline = (strpos($sLT['Address'], "\n"));
         if ($iNewline === false) { // There is no newline character
             $sCSVOutput .= '"'.$sLT['Address'].'","",';
         } else {
-            $sCSVOutput .= '"'.substr($sLT['Address'], 0, $iNewline).'",'.
-                            '"'.substr($sLT['Address'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.mb_substr($sLT['Address'], 0, $iNewline).'",'.
+                            '"'.mb_substr($sLT['Address'], $iNewline + 1).'",';
         }
 
         $sCSVOutput .= '"'.$sLT['City'].'",'.

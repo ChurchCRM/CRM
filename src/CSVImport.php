@@ -325,13 +325,13 @@ if (isset($_POST['DoImport'])) {
 
         // Put the column types from the mapping form into an array
         for ($col = 0; $col < $numCol; $col++) {
-            if (substr($_POST['col'.$col], 0, 1) == 'c') {
+            if (mb_substr($_POST['col'.$col], 0, 1) == 'c') {
                 $aColumnCustom[$col] = 1;
                 $aFamColumnCustom[$col] = 0;
                 $bHasCustom = true;
             } else {
                 $aColumnCustom[$col] = 0;
-                if (substr($_POST['col'.$col], 0, 2) == 'fc') {
+                if (mb_substr($_POST['col'.$col], 0, 2) == 'fc') {
                     $aFamColumnCustom[$col] = 1;
                     $bHasFamCustom = true;
                 } else {
@@ -584,7 +584,7 @@ if (isset($_POST['DoImport'])) {
                         }
                     }
                     $sSQL = 'SELECT f.fam_ID FROM family_fam f, family_custom c
-                             WHERE f.fam_ID = c.fam_ID AND c.'.addslashes(substr($field, 1))." = '".addslashes($field_value)."'";
+                             WHERE f.fam_ID = c.fam_ID AND c.'.addslashes(mb_substr($field, 1))." = '".addslashes($field_value)."'";
                 }
                 $rsExistingFamily = RunQuery($sSQL);
                 $famid = 0;
@@ -669,7 +669,7 @@ if (isset($_POST['DoImport'])) {
                     for ($col = 0; $col < $numCol; $col++) {
                         // Is it a custom field?
                         if ($aFamColumnCustom[$col]) {
-                            $colID = substr($aColumnID[$col], 1);
+                            $colID = mb_substr($aColumnID[$col], 1);
                             $currentType = $afamCustomTypes[$colID];
                             $currentFieldData = trim($aData[$col]);
 
@@ -697,7 +697,7 @@ if (isset($_POST['DoImport'])) {
                     }
 
                     // Finalize and run the update for the person_custom table.
-                    $sSQLFamCustom = substr($sSQLFamCustom, 0, -2);
+                    $sSQLFamCustom = mb_substr($sSQLFamCustom, 0, -2);
                     $sSQLFamCustom .= ' WHERE fam_ID = '.$famid;
                     RunQuery($sSQLFamCustom);
                 }
@@ -748,7 +748,7 @@ if (isset($_POST['DoImport'])) {
                 }
 
                 // Finalize and run the update for the person_custom table.
-                $sSQLcustom = substr($sSQLcustom, 0, -2);
+                $sSQLcustom = mb_substr($sSQLcustom, 0, -2);
                 $sSQLcustom .= ' WHERE per_ID = '.$iPersonID;
                 RunQuery($sSQLcustom);
             }
@@ -882,10 +882,10 @@ function ParseDate($sDate, $iDateMode)
     $cSeparator = '';
     $sDate = trim($sDate);
     for ($i = 0; $i < strlen($sDate); $i++) {
-        if (is_numeric(substr($sDate, $i, 1))) {
+        if (is_numeric(mb_substr($sDate, $i, 1))) {
             continue;
         }
-        $cSeparator = substr($sDate, $i, 1);
+        $cSeparator = mb_substr($sDate, $i, 1);
         break;
     }
     $aDate[0] = '0000';
@@ -900,9 +900,9 @@ function ParseDate($sDate, $iDateMode)
                 $sDate = str_replace($cSeparator, '', $sDate);
             }
              if (strlen($sDate) == 8) {
-                 $aDate[0] = substr($sDate, 0, 4);
-                 $aDate[1] = substr($sDate, 4, 2);
-                 $aDate[2] = substr($sDate, 6, 2);
+                 $aDate[0] = mb_substr($sDate, 0, 4);
+                 $aDate[1] = mb_substr($sDate, 4, 2);
+                 $aDate[2] = mb_substr($sDate, 6, 2);
              }
             break;
 
@@ -916,9 +916,9 @@ function ParseDate($sDate, $iDateMode)
                 $aDate[2] = strlen($tmpDate[1]) == 2 ? $tmpDate[1] : '0'.$tmpDate[1];
             } else {
                 if (strlen($sDate) == 8) {
-                    $aDate[0] = substr($sDate, 4, 4);
-                    $aDate[1] = substr($sDate, 0, 2);
-                    $aDate[2] = substr($sDate, 2, 2);
+                    $aDate[0] = mb_substr($sDate, 4, 4);
+                    $aDate[1] = mb_substr($sDate, 0, 2);
+                    $aDate[2] = mb_substr($sDate, 2, 2);
                 }
             }
             break;
@@ -933,9 +933,9 @@ function ParseDate($sDate, $iDateMode)
                 $aDate[2] = strlen($tmpDate[0]) == 2 ? $tmpDate[0] : '0'.$tmpDate[0];
             } else {
                 if (strlen($sDate) == 8) {
-                    $aDate[0] = substr($sDate, 4, 4);
-                    $aDate[1] = substr($sDate, 2, 2);
-                    $aDate[2] = substr($sDate, 0, 2);
+                    $aDate[0] = mb_substr($sDate, 4, 4);
+                    $aDate[1] = mb_substr($sDate, 2, 2);
+                    $aDate[2] = mb_substr($sDate, 0, 2);
                 }
             }
             break;

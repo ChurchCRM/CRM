@@ -280,7 +280,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                 $bcc_list .= SystemConfig::getValue('sToEmailAddress');
             } else {
                 // remove the last ", "
-                $bcc_list = substr($bcc_list, 0, strlen($bcc_list) - 2);
+                $bcc_list = mb_substr($bcc_list, 0, strlen($bcc_list) - 2);
             }
         }
 
@@ -566,7 +566,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                     extract($aRow);
 
                     $sTime = date('i:s', intval($ejl_time)).'.';
-                    $sTime .= substr($ejl_usec, 0, 3);
+                    $sTime .= mb_substr($ejl_usec, 0, 3);
                     $sMsg = stripslashes($ejl_text);
                     $sHTMLLog .= '<tr><td>'.$sTime.'</td><td>'.$sMsg.'</td></tr>'."\n";
                 }

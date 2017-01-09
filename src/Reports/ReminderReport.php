@@ -329,7 +329,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             extract($aRow);
 
             if (strlen($fundName) > 19) {
-                $fundName = substr($fundName, 0, 18).'...';
+                $fundName = mb_substr($fundName, 0, 18).'...';
             }
 
             $pdf->SetFont('Times', '', 10);
@@ -413,13 +413,13 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
             // Format Data
             if (strlen($plg_CheckNo) > 8) {
-                $plg_CheckNo = '...'.substr($plg_CheckNo, -8, 8);
+                $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
             }
             if (strlen($fundName) > 19) {
-                $fundName = substr($fundName, 0, 18).'...';
+                $fundName = mb_substr($fundName, 0, 18).'...';
             }
             if (strlen($plg_comment) > 30) {
-                $plg_comment = substr($plg_comment, 0, 30).'...';
+                $plg_comment = mb_substr($plg_comment, 0, 30).'...';
             }
 
             $pdf->SetFont('Times', '', 10);

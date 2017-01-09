@@ -802,7 +802,7 @@ $(document).ready(function() {
                 while ($aRow = mysqli_fetch_array($rsFindAut)) {
                     extract($aRow);
                     if ($aut_CreditCard != '') {
-                        $showStr = gettext('Credit card ...').substr($aut_CreditCard, strlen($aut_CreditCard) - 4, 4);
+                        $showStr = gettext('Credit card ...').mb_substr($aut_CreditCard, strlen($aut_CreditCard) - 4, 4);
                     } else {
                         $showStr = gettext('Bank account ').$aut_BankName.' '.$aut_Route.' '.$aut_Account;
                     }
