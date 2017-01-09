@@ -368,7 +368,7 @@ module.exports = function (grunt) {
         var version = this.data.version;
         this.data.src.forEach(function (file) {
             var curFile = grunt.file.readJSON(file);
-            var stringFile = JSON.stringify(curFile, null, 2);
+            var stringFile = JSON.stringify(curFile, null, 4);
             stringFile = stringFile.replace("<<VER>>", version);
             grunt.file.write(file, stringFile);
         })
