@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `tokens`;
 CREATE TABLE `tokens` (
   `token` VARCHAR(99) NOT NULL,
   `type` ENUM('verifyFamily', 'verifyPerson') NOT NULL,
