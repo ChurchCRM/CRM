@@ -160,10 +160,10 @@ if ($iMode == 1) {
 
         //if ($numlines > 1)
         //{
-            /* if (strtoupper($sLastLetter) != strtoupper(substr($pdf->sFamily,0,1)))
+            /* if (strtoupper($sLastLetter) != strtoupper(mb_substr($pdf->sFamily,0,1)))
             {
                 $pdf->Check_Lines($numlines+2);
-                $sLastLetter = strtoupper(substr($pdf->sFamily,0,1));
+                $sLastLetter = strtoupper(mb_substr($pdf->sFamily,0,1));
                 $pdf->Add_Header($sLastLetter);
             } */
             $pdf->Add_Record($pdf->sFamily, $OutStr, $numlines);

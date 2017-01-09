@@ -68,9 +68,9 @@ function ClearAccounts (AutID)
 		if (this.readyState==4 && this.status==200) { // Hide them as the requests come back, deleting would mess up the outside loop
             document.getElementById("Select"+this.PaymentID).checked = false;
         	ccVal = document.getElementById("CreditCard"+this.PaymentID).innerHTML;
-        	document.getElementById("CreditCard"+this.PaymentID).innerHTML = "************" + ccVal.substr (ccVal.length-4,4);
+        	document.getElementById("CreditCard"+this.PaymentID).innerHTML = "************" + ccVal.mb_substr (ccVal.length-4,4);
         	aVal = document.getElementById("Account"+this.PaymentID).innerHTML;
-        	document.getElementById("Account"+this.PaymentID).innerHTML = "*****" + aVal.substr (aVal.length-4,4);
+        	document.getElementById("Account"+this.PaymentID).innerHTML = "*****" + aVal.mb_substr (aVal.length-4,4);
         }
     };
     xmlhttp.send();
@@ -263,10 +263,10 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
 		<td><?= $fun_Name ?></td>
 		<td><?= $aut_BankName ?></td>
 		<td><?php if (strlen($aut_Route) == 9) {
-                echo '*****'.substr($aut_Route, 5, 4);
+                echo '*****'.mb_substr($aut_Route, 5, 4);
             } ?></td>
 		<td id="Account<?= $aut_ID ?>"><?php if (strlen($aut_Account) > 4) {
-                echo '*****'.substr($aut_Account, strlen($aut_Account) - 4, 4);
+                echo '*****'.mb_substr($aut_Account, strlen($aut_Account) - 4, 4);
             } ?></td>
 		<?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
                 ?> 
@@ -274,7 +274,7 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
 		<?php 
             } ?>
 		<td id="CreditCard<?= $aut_ID ?>"><?php if (strlen($aut_CreditCard) == 16) {
-                echo '*************'.substr($aut_CreditCard, 12, 4);
+                echo '*************'.mb_substr($aut_CreditCard, 12, 4);
             } ?></td>
 		<td><?= $aut_ExpMonth ?></td>
 		<td><?= $aut_ExpYear ?></td>

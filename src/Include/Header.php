@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 
- use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemConfig;
 
- if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
+if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
   Redirect('CheckVersion.php');
-     exit;
- }
+    exit;
+}
 
 use ChurchCRM\Service\TaskService;
 
@@ -78,8 +78,8 @@ $MenuFirst = 1;
       <!-- logo for regular state and mobile devices -->
       <?php
       $headerHTML = '<b>Church</b>CRM';
-      $sHeader = SystemConfig::getValue('sHeader');
-      if ($sHeader) {
+      $sHeader = SystemConfig::getValue("sHeader");
+      if (!empty($sHeader)) {
           $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
       }
       ?>

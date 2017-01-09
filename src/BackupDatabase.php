@@ -27,7 +27,7 @@ if (!$_SESSION['bAdmin']) {
     exit;
 }
 
-if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+if (strtoupper(mb_substr(PHP_OS, 0, 3)) === 'WIN') {
     die('The Backup Utility will not work on a Windows based Server');
 }
 

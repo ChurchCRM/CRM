@@ -21,53 +21,53 @@ class User extends BaseUser
     return $this->getPersonId();
   }
 
-  public function getName()
-  {
-    return $this->getPerson()->getFullName();
-  }
+    public function getName()
+    {
+        return $this->getPerson()->getFullName();
+    }
 
-  public function isAddRecordsEnabled()
-  {
-    return $this->isAdmin() || $this->isAddRecords();
-  }
+    public function isAddRecordsEnabled()
+    {
+        return $this->isAdmin() || $this->isAddRecords();
+    }
 
-  public function isEditRecordsEnabled()
-  {
-    return $this->isAdmin() || $this->isEditRecords();
-  }
+    public function isEditRecordsEnabled()
+    {
+        return $this->isAdmin() || $this->isEditRecords();
+    }
 
-  public function isDeleteRecordsEnabled()
-  {
-    return $this->isAdmin() || $this->isDeleteRecords();
-  }
+    public function isDeleteRecordsEnabled()
+    {
+        return $this->isAdmin() || $this->isDeleteRecords();
+    }
 
-  public function isMenuOptionsEnabled()
-  {
-    return $this->isAdmin() || $this->isMenuOptions();
-  }
+    public function isMenuOptionsEnabled()
+    {
+        return $this->isAdmin() || $this->isMenuOptions();
+    }
 
-  public function isManageGroupsEnabled()
-  {
-    return $this->isAdmin() || $this->isManageGroups();
-  }
+    public function isManageGroupsEnabled()
+    {
+        return $this->isAdmin() || $this->isManageGroups();
+    }
 
-  public function isFinanceEnabled()
-  {
-    return $this->isAdmin() || $this->isFinance();
-  }
+    public function isFinanceEnabled()
+    {
+        return $this->isAdmin() || $this->isFinance();
+    }
 
-  public function isNotesEnabled()
-  {
-    return $this->isAdmin() || $this->isNotes();
-  }
+    public function isNotesEnabled()
+    {
+        return $this->isAdmin() || $this->isNotes();
+    }
 
-  public function isEditSelfEnabled()
-  {
-    return $this->isAdmin() || $this->isEditSelf();
-  }
+    public function isEditSelfEnabled()
+    {
+        return $this->isAdmin() || $this->isEditSelf();
+    }
 
-  public function isCanvasserEnabled()
-  {
-    return $this->isAdmin() || $this->isCanvasser();
-  }
+    public function isCanvasserEnabled()
+    {
+        return $this->isAdmin() || $this->isCanvasser();
+    }
 }

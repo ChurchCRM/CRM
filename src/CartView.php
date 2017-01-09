@@ -101,7 +101,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
         ?>
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Cart Functions') ?></h3>
+        <h3 class="box-title">Cart Functions</h3>
     </div>
     <div class="box-body">
         <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
@@ -280,7 +280,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                 $bcc_list .= SystemConfig::getValue('sToEmailAddress');
             } else {
                 // remove the last ", "
-                $bcc_list = substr($bcc_list, 0, strlen($bcc_list) - 2);
+                $bcc_list = mb_substr($bcc_list, 0, strlen($bcc_list) - 2);
             }
         }
 
@@ -566,7 +566,7 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                     extract($aRow);
 
                     $sTime = date('i:s', intval($ejl_time)).'.';
-                    $sTime .= substr($ejl_usec, 0, 3);
+                    $sTime .= mb_substr($ejl_usec, 0, 3);
                     $sMsg = stripslashes($ejl_text);
                     $sHTMLLog .= '<tr><td>'.$sTime.'</td><td>'.$sMsg.'</td></tr>'."\n";
                 }

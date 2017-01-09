@@ -45,8 +45,8 @@ class VancoTools
         $data = explode('&', $response);
         $sessionid = '';
         foreach ($data as $item) {
-            if (substr($item, 0, 9) === 'sessionid') {
-                $sessionid = substr("$item", 10);
+            if (mb_substr($item, 0, 9) === 'sessionid') {
+                $sessionid = mb_substr("$item", 10);
             }
         }
 

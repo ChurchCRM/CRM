@@ -324,7 +324,7 @@ if ($sFormat == 'addtocart') {
         }
     }
 
-    $headerString = substr($headerString, 0, -1);
+    $headerString = mb_substr($headerString, 0, -1);
     $headerString .= "\n";
 
     header('Content-type: text/x-csv');

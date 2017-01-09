@@ -48,9 +48,9 @@ namespace ChurchCRM
                 if (self::isQuoted($delimiterOffset, $row)) {
                     $offset = $delimiterOffset + strlen($delimiter);
                 } else {
-                    $sql = trim($sql.' '.trim(substr($row, 0, $delimiterOffset)));
+                    $sql = trim($sql.' '.trim(mb_substr($row, 0, $delimiterOffset)));
                     self::query($sql, $mysqli);
-                    $row = substr($row, $delimiterOffset + strlen($delimiter));
+                    $row = mb_substr($row, $delimiterOffset + strlen($delimiter));
                     $offset = 0;
                     $sql = '';
                 }
@@ -92,16 +92,16 @@ namespace ChurchCRM
             if (self::isQuoted($foundOn, $sql)) {
                 $offset = $foundOn + strlen($comment);
             } else {
-                if (substr($comment, 0, 2) == '/*') {
+                if (mb_substr($comment, 0, 2) == '/*') {
                     $closedOn = strpos($sql, '*/', $foundOn);
                     if ($closedOn !== false) {
-                        $sql = substr($sql, 0, $foundOn).substr($sql, $closedOn + 2);
+                        $sql = mb_substr($sql, 0, $foundOn).mb_substr($sql, $closedOn + 2);
                     } else {
-                        $sql = substr($sql, 0, $foundOn);
+                        $sql = mb_substr($sql, 0, $foundOn);
                         $isMultiComment = true;
                     }
                 } else {
-                    $sql = substr($sql, 0, $foundOn);
+                    $sql = mb_substr($sql, 0, $foundOn);
                     break;
                 }
             }

@@ -1,61 +1,60 @@
 {
-  "name": "ChurchCRM/CRM",
-  "version": "2.5.0",
-  "type": "project",
-  "keywords": [
-    "church",
-    "crm"
-  ],
-  "homepage": "http://www.churchcrm.io",
-  "time": "2014-10-01",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "George Dawoud",
-      "homepage": "http://blog.dawouds.com",
-      "role": "Lead Developer"
-    },
-    {
-      "name": "Charles Crossan",
-      "homepage": "http://www.ccrossan.com",
-      "role": "Developer"
-    }
-  ],
-  "support": {
-    "email": "info@churchcrm.io",
-    "issues": "https://github.com/ChurchCRM/CRM/issues",
-    "irc": "http://webchat.freenode.net/?randomnick=1&channels=ChurchCRM&prompt=1&uio=d4",
-    "source": "https://github.com/ChurchCRM/CRM",
-    "docs": "http://docs.churchcrm.io"
-  },
-  "require": {
-    "php": ">=5.6.0",
-    "mailchimp/mailchimp": "2.0.6",
-    "slim/slim": "3.4.1",
-    "slim/php-view": "2.1",
-    "monolog/monolog": "^1.17",
-    "authorizenet/authorizenet": "1.8.0",
-    "knplabs/github-api": "~1.4",
-    "propel/propel": "~2.0@dev",
-    "setasign/fpdf": "1.8.1",
-    "phpmailer/phpmailer": "5.2.*",
-    "verot/class.upload.php": "dev-master",
-    "ifsnop/mysqldump-php":"2.*"
-  },
-  "autoload": {
-    "classmap": [
-      "ChurchCRM/"
+    "name": "ChurchCRM/CRM",
+    "version": "2.5.0",
+    "type": "project",
+    "keywords": [
+        "church",
+        "crm"
     ],
-    "psr-4": {
-      "\\": "bin/",
-      "ChurchCRM\\": "ChurchCRM/"
+    "homepage": "http://www.churchcrm.io",
+    "time": "2014-10-01",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "George Dawoud",
+            "homepage": "http://blog.dawouds.com",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "Charles Crossan",
+            "homepage": "http://www.ccrossan.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "info@churchcrm.io",
+        "issues": "https://github.com/ChurchCRM/CRM/issues",
+        "irc": "http://webchat.freenode.net/?randomnick=1&channels=ChurchCRM&prompt=1&uio=d4",
+        "source": "https://github.com/ChurchCRM/CRM",
+        "docs": "http://docs.churchcrm.io"
+    },
+    "require": {
+        "php": ">=5.6.0",
+        "mailchimp/mailchimp": "2.0.6",
+        "slim/slim": "3.4.1",
+        "slim/php-view": "2.1",
+        "monolog/monolog": "^1.17",
+        "authorizenet/authorizenet": "1.8.0",
+        "knplabs/github-api": "~1.4",
+        "propel/propel": "~2.0@dev",
+        "setasign/fpdf": "1.8.1",
+        "phpmailer/phpmailer": "5.2.*",
+        "verot/class.upload.php": "dev-master",
+        "ifsnop/mysqldump-php": "2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "ChurchCRM/"
+        ],
+        "psr-4": {
+            "\\": "bin/",
+            "ChurchCRM\\": "ChurchCRM/"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "url": "https://packagist.org",
+            "type": "composer"
+        }
     }
-  },
-  "repositories": {
-      "packagist": {
-        "url": "https://packagist.org",
-        "type": "composer"
-      }
-  }
-
 }

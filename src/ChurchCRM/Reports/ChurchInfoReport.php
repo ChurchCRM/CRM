@@ -37,18 +37,18 @@ class ChurchInfoReport extends FPDF
 
     public function StripPhone($phone)
     {
-        if (substr($phone, 0, 3) == SystemConfig::getValue('sHomeAreaCode')) {
-            $phone = substr($phone, 3, strlen($phone) - 3);
+        if (mb_substr($phone, 0, 3) == SystemConfig::getValue('sHomeAreaCode')) {
+            $phone = mb_substr($phone, 3, strlen($phone) - 3);
         }
-        if (substr($phone, 0, 5) == ('('.SystemConfig::getValue('sHomeAreaCode').')')) {
-            $phone = substr($phone, 5, strlen($phone) - 5);
+        if (mb_substr($phone, 0, 5) == ('('.SystemConfig::getValue('sHomeAreaCode').')')) {
+            $phone = mb_substr($phone, 5, strlen($phone) - 5);
         }
-        if (substr($phone, 0, 1) == '-') {
-            $phone = substr($phone, 1, strlen($phone) - 1);
+        if (mb_substr($phone, 0, 1) == '-') {
+            $phone = mb_substr($phone, 1, strlen($phone) - 1);
         }
         if (strlen($phone) == 7) {
             // Fix the missing -
-      $phone = substr($phone, 0, 3).'-'.substr($phone, 3, 4);
+      $phone = mb_substr($phone, 0, 3).'-'.mb_substr($phone, 3, 4);
         }
 
         return $phone;

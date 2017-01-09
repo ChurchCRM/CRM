@@ -141,9 +141,9 @@ class Deposit extends BaseDeposit
         $thisReport->curY += 4;
 
         foreach ($this->getFundTotals() as $fund) { //iterate through the defined funds
-      $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
-            $thisReport->pdf->Write(8, $fund->Name);
-            $amountStr = sprintf('%.2f', $fund->Total);
+            $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $fund['Name']);
+            $amountStr = sprintf('%.2f', $fund['Total']);
             $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
             $thisReport->curY += 4;
         }
@@ -210,6 +210,14 @@ class Deposit extends BaseDeposit
         $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x + 125;
         $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY + 30;
         $this->generateTotalsByFund($thisReport);
+        
+        $thisReport->curY += $thisReport->QBDepositTicketParameters->lineItemInterval->y;
+        $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+        $thisReport->pdf->SetFont('Times', 'B', 10);
+        $thisReport->pdf->Write(8, 'Deposit total');
+        $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
+        $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $grandTotalStr);
+        $thisReport->pdf->SetFont('Courier', '', 8);
     }
 
     private function generateDepositSummary($thisReport)
@@ -279,16 +287,16 @@ class Deposit extends BaseDeposit
             $familyName = gettext('Anonymous');
         }
         if (strlen($checkNo) > 8) {
-            $checkNo = '...'.substr($checkNo, -8, 8);
+            $checkNo = '...'.mb_substr($checkNo, -8, 8);
         }
         if (strlen($fundName) > 20) {
-            $fundName = substr($fundName, 0, 20).'...';
+            $fundName = mb_substr($fundName, 0, 20).'...';
         }
         if (strlen($comment) > 40) {
-            $comment = substr($comment, 0, 38).'...';
+            $comment = mb_substr($comment, 0, 38).'...';
         }
         if (strlen($familyName) > 25) {
-            $familyName = substr($familyName, 0, 24).'...';
+            $familyName = mb_substr($familyName, 0, 24).'...';
         }
 
         $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $checkNo);
@@ -461,7 +469,7 @@ class Deposit extends BaseDeposit
       ->orderBy(DonationFundTableMap::COL_FUN_NAME)
       ->select(['Name', 'Total'])
       ->find();
-
+        
         return $funds;
     }
 

@@ -268,7 +268,7 @@ if ($output == 'pdf') {
                 if ($_POST['method'][0]) {
                     $heading .= 'Selected Payment Methods, ';
                 }
-                $heading = substr($heading, 0, -2);
+                $heading = mb_substr($heading, 0, -2);
             } else {
                 $heading = 'Showing all records for report dates.';
             }
@@ -442,19 +442,19 @@ if ($output == 'pdf') {
                     $plg_CheckNo = $plg_method;
                 }
                 if (strlen($plg_CheckNo) > 8) {
-                    $plg_CheckNo = '...'.substr($plg_CheckNo, -8, 8);
+                    $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
                 }
                 if (strlen($fun_Name) > 22) {
-                    $sfun_Name = substr($fun_Name, 0, 21).'...';
+                    $sfun_Name = mb_substr($fun_Name, 0, 21).'...';
                 } else {
                     $sfun_Name = $fun_Name;
                 }
                 if (strlen($plg_comment) > 29) {
-                    $plg_comment = substr($plg_comment, 0, 28).'...';
+                    $plg_comment = mb_substr($plg_comment, 0, 28).'...';
                 }
                 $fam_Name = $fam_Name.' - '.$fam_Address1;
                 if (strlen($fam_Name) > 31) {
-                    $fam_Name = substr($fam_Name, 0, 30).'...';
+                    $fam_Name = mb_substr($fam_Name, 0, 30).'...';
                 }
 
                 // Print Data
@@ -604,18 +604,18 @@ if ($output == 'pdf') {
                     $plg_CheckNo = $plg_method;
                 }
                 if (strlen($plg_CheckNo) > 8) {
-                    $plg_CheckNo = '...'.substr($plg_CheckNo, -8, 8);
+                    $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
                 }
                 $sDeposit = "Dep #$plg_depID $dep_Date";
                 if (strlen($sDeposit) > 22) {
-                    $sDeposit = substr($sDeposit, 0, 21).'...';
+                    $sDeposit = mb_substr($sDeposit, 0, 21).'...';
                 }
                 if (strlen($plg_comment) > 29) {
-                    $plg_comment = substr($plg_comment, 0, 28).'...';
+                    $plg_comment = mb_substr($plg_comment, 0, 28).'...';
                 }
                 $fam_Name = $fam_Name.' - '.$fam_Address1;
                 if (strlen($fam_Name) > 31) {
-                    $fam_Name = substr($fam_Name, 0, 30).'...';
+                    $fam_Name = mb_substr($fam_Name, 0, 30).'...';
                 }
 
                 // Print Data
@@ -766,18 +766,18 @@ if ($output == 'pdf') {
                     $plg_CheckNo = $plg_method;
                 }
                 if (strlen($plg_CheckNo) > 8) {
-                    $plg_CheckNo = '...'.substr($plg_CheckNo, -8, 8);
+                    $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
                 }
                 $sDeposit = "Dep #$plg_depID $dep_Date";
                 if (strlen($sDeposit) > 22) {
-                    $sDeposit = substr($sDeposit, 0, 21).'...';
+                    $sDeposit = mb_substr($sDeposit, 0, 21).'...';
                 }
                 if (strlen($plg_comment) > 29) {
-                    $plg_comment = substr($plg_comment, 0, 28).'...';
+                    $plg_comment = mb_substr($plg_comment, 0, 28).'...';
                 }
                 $sFundName = $fun_Name;
                 if (strlen($sFundName) > 31) {
-                    $sFundName = substr($sFundName, 0, 30).'...';
+                    $sFundName = mb_substr($sFundName, 0, 30).'...';
                 }
 
                 // Print Data
@@ -870,7 +870,7 @@ if ($output == 'pdf') {
     reset($totalFund);
     while ($FundTotal = current($totalFund)) {
         if (strlen(key($totalFund) > 22)) {
-            $sfun_Name = substr(key($totalFund), 0, 21).'...';
+            $sfun_Name = mb_substr(key($totalFund), 0, 21).'...';
         } else {
             $sfun_Name = key($totalFund);
         }
@@ -901,7 +901,7 @@ if ($output == 'pdf') {
         $buffer .= trim($heading).$delimiter;
     }
     // Remove trailing delimiter and add eol
-    $buffer = substr($buffer, 0, -1).$eol;
+    $buffer = mb_substr($buffer, 0, -1).$eol;
 
     // Add data
     while ($row = mysqli_fetch_row($rsReport)) {
@@ -910,7 +910,7 @@ if ($output == 'pdf') {
             $buffer .= $field.$delimiter;
         }
         // Remove trailing delimiter and add eol
-        $buffer = substr($buffer, 0, -1).$eol;
+        $buffer = mb_substr($buffer, 0, -1).$eol;
     }
 
     // Export file

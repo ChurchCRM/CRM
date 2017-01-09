@@ -58,7 +58,7 @@ function Header_modals()
           <p><?= gettext('Error making API Call to') ?>: <span id="APIEndpoint"></span></p>
 
           <p><?= gettext('Error text') ?>: <span style="font-style: bold" id="APIErrorText"></span></p>
-          
+
           <p><?= gettext('Stack Trace') ?>: <pre id="APITrace"></pre></p>
         </div>
         <div class="modal-footer">
@@ -166,7 +166,7 @@ function Header_body_scripts()
 
     function LimitTextSize(theTextArea, size) {
       if(theTextArea.value.length > size) {
-        theTextArea.value = theTextArea.value.substr(0, size);
+        theTextArea.value = theTextArea.value.mb_substr(0, size);
       }
     }
 
@@ -390,7 +390,7 @@ function addMenuItem($aMenu, $mIdx)
                   $text .= ' '.$_SESSION[$aMenu['session_var']];
               }
           }
-          if (substr($content, 1, 10) == '----------') {
+          if (mb_substr($content, 1, 10) == '----------') {
               $content = '--------------------';
           }
           if ($aMenu['ismenu']) {
