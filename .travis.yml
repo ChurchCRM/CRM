@@ -1,7 +1,6 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
 php:
-  - 5.6
   - 7.0
 
 rvm:
@@ -27,6 +26,7 @@ before_install:
  - sudo apt-get install ruby-full
  - sudo gem install sass
  - chmod +x ./travis-ci/*.sh
+ - chmod +x ./scripts/*.sh
 
 # prepare travis ci for the build process
 install:
@@ -44,7 +44,9 @@ script:
 before_deploy:
  - npm run package
 
-#deploy:
-#  skip_cleanup: true
-#  on:
-#    branch: master
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: npm run demosite ${demokey}
+  on:
+    branch: master
