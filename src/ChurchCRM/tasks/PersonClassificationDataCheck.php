@@ -6,13 +6,13 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 
-class PersonGenderDataCheck implements iTask
+class PersonClassificationDataCheck implements iTask
 {
     private $count;
 
     private function dbHasMissingGenders()
     {
-        $personQuery = PersonQuery::create()->filterByGender(0)->find();
+        $personQuery = PersonQuery::create()->filterByClsId(0)->find();
         $this->count = $personQuery->count();
         return $this->count > 0;
     }
@@ -29,17 +29,17 @@ class PersonGenderDataCheck implements iTask
 
     public function getLink()
     {
-        return SystemURLs::getRootPath() . '/SelectList.php?Gender=0&PersonColumn3=Gender';
+        return SystemURLs::getRootPath() . '/SelectList.php?Classification=0&PersonColumn3=Classification';
     }
 
     public function getTitle()
     {
-        return gettext('Missing Gender Data' . " (" . $this->count . ")");
+        return gettext('Missing Classification Data' . " (" . $this->count . ")");
     }
 
     public function getDesc()
     {
-        return gettext("Missing Gender Data for Some People");
+        return gettext("Missing Classification Data for Some People");
     }
 
 }
