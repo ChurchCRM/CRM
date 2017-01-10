@@ -1,5 +1,6 @@
 <?php
 namespace ChurchCRM;
+
 interface iPhoto
 {
   public function getPhotoBytes();
@@ -12,3 +13,5 @@ interface iPhoto
   public function isPhotoRemote();
   public function getPhotoContentType();
 }
+
+?>
