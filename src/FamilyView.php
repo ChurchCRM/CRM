@@ -275,37 +275,37 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
           <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
               class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
           <?php if (($previous_id > 0)) {
-                ?>
+                        ?>
             <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
                 class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
           <?php 
-            } ?>
+                    } ?>
           <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
               class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
           <?php if (($next_id > 0)) {
-                ?>
+                        ?>
             <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
                 class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
           <?php 
-            } ?>
+                    } ?>
           <?php if ($_SESSION['bDeleteRecords']) {
-                ?>
+                        ?>
             <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
                 class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
           <?php 
-            } ?>
+                    } ?>
           <br/>
           <?php if ($bOkToEdit) {
-                ?>
+                        ?>
             <a class="btn btn-app" href="#" id="uploadImageButton"><i
                 class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
             <?php if ($family->isPhotoLocal()) {
-                    ?>
+                            ?>
               <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
                   class="fa fa-remove"></i> <?= gettext('Delete Photo') ?> </a>
             <?php 
-                }
-            }
+                        }
+                    }
     if ($_SESSION['bNotes']) {
         ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i

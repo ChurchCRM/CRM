@@ -30,10 +30,10 @@
  use ChurchCRM\dto\SystemConfig;
  use ChurchCRM\dto\SystemURLs;
 
-if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
+ if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
   Redirect('CheckVersion.php');
-    exit;
-}
+     exit;
+ }
 
 use ChurchCRM\Service\TaskService;
 
