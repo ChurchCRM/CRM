@@ -211,7 +211,7 @@ function RedirectURL($sRelativeURL)
   // query string first.
   $iQueryString = strpos($sRelativeURL, '?');
     if ($iQueryString) {
-        $sPathExtension = substr($sRelativeURL, 0, $iQueryString);
+        $sPathExtension = mb_substr($sRelativeURL, 0, $iQueryString);
     } else {
         $sPathExtension = $sRelativeURL;
     }
@@ -282,7 +282,7 @@ function MakeFYString($iFYID)
     if (SystemConfig::getValue('iFYMonth') == 1) {
         return 1996 + $iFYID;
     } else {
-        return 1995 + $iFYID.'/'.substr(1996 + $iFYID, 2, 2);
+        return 1995 + $iFYID.'/'.mb_substr(1996 + $iFYID, 2, 2);
     }
 }
 
@@ -340,7 +340,7 @@ function FilterInput($sInput, $type = 'string', $size = 1)
 
         return $sInput;
       case 'char':
-        $sInput = substr(trim($sInput), 0, $size);
+        $sInput = mb_substr(trim($sInput), 0, $size);
         if (get_magic_quotes_gpc()) {
             $sInput = stripslashes($sInput);
         }
@@ -383,8 +383,8 @@ function ConvertCartToString($aCartArray)
   $sCartString = implode(',', $aCartArray);
 
   // Make sure the comma is chopped off the end
-  if (substr($sCartString, strlen($sCartString) - 1, 1) == ',') {
-      $sCartString = substr($sCartString, 0, strlen($sCartString) - 1);
+  if (mb_substr($sCartString, strlen($sCartString) - 1, 1) == ',') {
+      $sCartString = mb_substr($sCartString, 0, strlen($sCartString) - 1);
   }
 
   // Make sure there are no duplicate commas
@@ -484,7 +484,7 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
 
 function ChopLastCharacter($sText)
 {
-    return substr($sText, 0, strlen($sText) - 1);
+    return mb_substr($sText, 0, strlen($sText) - 1);
 }
 
 function AddToPeopleCart($sID)
@@ -602,7 +602,7 @@ function FormatDate($dDate, $bWithTime = false)
   }
 
   // Verify it is a valid date
-  $sScanString = substr($dDate, 0, 10);
+  $sScanString = mb_substr($dDate, 0, 10);
     list($iYear, $iMonth, $iDay) = sscanf($sScanString, '%04d-%02d-%02d');
 
     if (!checkdate($iMonth, $iDay, $iYear)) {
@@ -697,7 +697,7 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
       for ($iCount = 0; $iCount <= strlen($sPhoneNumber); $iCount++) {
 
         // Take one character...
-        $sThisCharacter = substr($sPhoneNumber, $iCount, 1);
+        $sThisCharacter = mb_substr($sPhoneNumber, $iCount, 1);
 
         // Is it a number?
         if (ord($sThisCharacter) >= 48 && ord($sThisCharacter) <= 57) {
@@ -741,15 +741,15 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
       if ($length == 0) {
           return '';
       } // 7 digit phone # with extension
-      elseif (substr($sPhoneNumber, 7, 1) == 'e') {
-          return substr($sPhoneNumber, 0, 3).'-'.substr($sPhoneNumber, 3, 4).' Ext.'.substr($sPhoneNumber, 8, 6);
+      elseif (mb_substr($sPhoneNumber, 7, 1) == 'e') {
+          return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 4).' Ext.'.mb_substr($sPhoneNumber, 8, 6);
       } // 10 digit phone # with extension
-      elseif (substr($sPhoneNumber, 10, 1) == 'e') {
-          return substr($sPhoneNumber, 0, 3).'-'.substr($sPhoneNumber, 3, 3).'-'.substr($sPhoneNumber, 6, 4).' Ext.'.substr($sPhoneNumber, 11, 6);
+      elseif (mb_substr($sPhoneNumber, 10, 1) == 'e') {
+          return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 3).'-'.mb_substr($sPhoneNumber, 6, 4).' Ext.'.mb_substr($sPhoneNumber, 11, 6);
       } elseif ($length == 7) {
-          return substr($sPhoneNumber, 0, 3).'-'.substr($sPhoneNumber, 3, 4);
+          return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 4);
       } elseif ($length == 10) {
-          return substr($sPhoneNumber, 0, 3).'-'.substr($sPhoneNumber, 3, 3).'-'.substr($sPhoneNumber, 6, 4);
+          return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 3).'-'.mb_substr($sPhoneNumber, 6, 4);
       } // Otherwise, there is something weird stored, so just leave it untouched and set the flag
       else {
           $bWeird = true;
@@ -984,7 +984,7 @@ function displayCustomField($type, $data, $special)
     // Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
     case 5:
       /*if (strlen($data) > 100) {
-          return substr($data, 0, 100) . "...";
+          return mb_substr($data, 0, 100) . "...";
       }else{
           return $data;
       }
@@ -1215,25 +1215,25 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
   // two digit year maps to past or future 4 digit year.
   if (strlen($sYear) == 2) {
       $thisYear = date('Y');
-      $twoDigit = substr($thisYear, 2, 2);
+      $twoDigit = mb_substr($thisYear, 2, 2);
       if ($sYear == $twoDigit) {
           // Assume 2 digit year is this year
-      $sYear = substr($thisYear, 0, 4);
+      $sYear = mb_substr($thisYear, 0, 4);
       } elseif ($pasfut == 'future') {
           // Assume 2 digit year is in next 99 years
       if ($sYear > $twoDigit) {
-          $sYear = substr($thisYear, 0, 2).$sYear;
+          $sYear = mb_substr($thisYear, 0, 2).$sYear;
       } else {
           $sNextCentury = $thisYear + 100;
-          $sYear = substr($sNextCentury, 0, 2).$sYear;
+          $sYear = mb_substr($sNextCentury, 0, 2).$sYear;
       }
       } else {
           // Assume 2 digit year was is last 99 years
       if ($sYear < $twoDigit) {
-          $sYear = substr($thisYear, 0, 2).$sYear;
+          $sYear = mb_substr($thisYear, 0, 2).$sYear;
       } else {
           $sLastCentury = $thisYear - 100;
-          $sYear = substr($sLastCentury, 0, 2).$sYear;
+          $sYear = mb_substr($sLastCentury, 0, 2).$sYear;
       }
       }
   } elseif (strlen($sYear) == 4) {
@@ -1294,51 +1294,51 @@ function parseAndValidateDate($data, $locale = 'US', $pasfut = 'future')
   // Determine if the delimiter is "-" or "/".  The delimiter must appear
   // twice or a FALSE will be returned.
 
-  if (substr_count($data, '-') == 2) {
+  if (mb_substr_count($data, '-') == 2) {
       // Assume format is Y-M-D
     $iFirstDelimiter = strpos($data, '-');
       $iSecondDelimiter = strpos($data, '-', $iFirstDelimiter + 1);
 
     // Parse the year.
-    $sYear = substr($data, 0, $iFirstDelimiter);
+    $sYear = mb_substr($data, 0, $iFirstDelimiter);
 
     // Parse the month
-    $sMonth = substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
+    $sMonth = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
 
     // Parse the day
-    $sDay = substr($data, $iSecondDelimiter + 1);
+    $sDay = mb_substr($data, $iSecondDelimiter + 1);
 
     // Put into YYYY-MM-DD form
     return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
-  } elseif ((substr_count($data, '/') == 2) && ($locale == 'US')) {
+  } elseif ((mb_substr_count($data, '/') == 2) && ($locale == 'US')) {
       // Assume format is M/D/Y
     $iFirstDelimiter = strpos($data, '/');
       $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
 
     // Parse the month
-    $sMonth = substr($data, 0, $iFirstDelimiter);
+    $sMonth = mb_substr($data, 0, $iFirstDelimiter);
 
     // Parse the day
-    $sDay = substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
+    $sDay = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
 
     // Parse the year
-    $sYear = substr($data, $iSecondDelimiter + 1);
+    $sYear = mb_substr($data, $iSecondDelimiter + 1);
 
     // Put into YYYY-MM-DD form
     return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
-  } elseif (substr_count($data, '/') == 2) {
+  } elseif (mb_substr_count($data, '/') == 2) {
       // Assume format is D/M/Y
     $iFirstDelimiter = strpos($data, '/');
       $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
 
     // Parse the day
-    $sDay = substr($data, 0, $iFirstDelimiter);
+    $sDay = mb_substr($data, 0, $iFirstDelimiter);
 
     // Parse the month
-    $sMonth = substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
+    $sMonth = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
 
     // Parse the year
-    $sYear = substr($data, $iSecondDelimiter + 1);
+    $sYear = mb_substr($data, $iSecondDelimiter + 1);
 
     // Put into YYYY-MM-DD form
     return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
@@ -1605,7 +1605,7 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
             $dBirthDate = $birthYear.$sSeparator.$dBirthDate;
             if (checkdate($dBirthMonth, $dBirthDay, $birthYear)) {
                 $dBirthDate = FormatDate($dBirthDate);
-                if (substr($dBirthDate, -6, 6) == ', 1000') {
+                if (mb_substr($dBirthDate, -6, 6) == ', 1000') {
                     $dBirthDate = str_replace(', 1000', '', $dBirthDate);
                 }
             }
@@ -1627,7 +1627,7 @@ function FilenameToFontname($filename, $family)
         if (strlen($filename) - strlen($family) == 2) {
             return ucfirst($family).gettext(' Bold Italic');
         } else {
-            if (substr($filename, strlen($filename) - 1) == 'i') {
+            if (mb_substr($filename, strlen($filename) - 1) == 'i') {
                 return ucfirst($family).gettext(' Italic');
             } else {
                 return ucfirst($family).gettext(' Bold');
@@ -1643,9 +1643,9 @@ function FontFromName($fontname)
     case 1:
       return [$fontinfo[0], ''];
     case 2:
-      return [$fontinfo[0], substr($fontinfo[1], 0, 1)];
+      return [$fontinfo[0], mb_substr($fontinfo[1], 0, 1)];
     case 3:
-      return [$fontinfo[0], substr($fontinfo[1], 0, 1).substr($fontinfo[2], 0, 1)];
+      return [$fontinfo[0], mb_substr($fontinfo[1], 0, 1).mb_substr($fontinfo[2], 0, 1)];
   }
 }
 
@@ -1742,7 +1742,7 @@ function MySQLquote($sfield)
     } elseif ($sfield == "''") {
         return 'NULL';
     } else {
-        if ((substr($sfield, 0, 1) == "'") && (substr($sfield, strlen($sfield) - 1, 1)) == "'") {
+        if ((mb_substr($sfield, 0, 1) == "'") && (mb_substr($sfield, strlen($sfield) - 1, 1)) == "'") {
             return $sfield;
         } else {
             return "'".$sfield."'";

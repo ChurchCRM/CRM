@@ -2,7 +2,11 @@
 
 // Routes
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\util\PhotoUtils;
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\Token;
+use ChurchCRM\Note;
+use ChurchCRM\Emails\FamilyVerificationEmail;
+use ChurchCRM\TokenQuery;
 
 $app->group('/families', function () {
     $this->get('/search/{query}', function ($request, $response, $args) {
@@ -60,5 +64,42 @@ $app->group('/families', function () {
      $family = FamilyQuery::create()->findPk($args['familyId']);
      return json_encode(array("status"=>$family->deletePhoto()));
    });
+
+  $this->post('/{familyId}/verify', function ($request, $response, $args) {
+    $familyId = $args["familyId"];
+    $family = FamilyQuery::create()->findPk($familyId);
+    if ($family != null) {
+      TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($family->getId())->delete();
+      $token = new Token();
+      $token->build("verifyFamily", $family->getId());
+      $token->save();
+      $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
+      if ($email->send()) {
+        $response = $response->withStatus(200);
+      } else {
+        $response = $response->withStatus(404)->getBody()->write($email->getError());
+      }
+    } else {
+      $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
+    }
+    return $response;
+  });
+
+  $this->post('/verify/{familyId}/now', function ($request, $response, $args) {
+    $familyId = $args["familyId"];
+    $family = FamilyQuery::create()->findPk($familyId);
+    if ($family != null) {
+      $note = new Note();
+      $note->setFamId($family->getId());
+      $note->setText(gettext("Family Data Verified"));
+      $note->setType("verify");
+      $note->setEntered($_SESSION['user']->getId());
+      $note->save();
+      $response = $response->withStatus(200);
+    } else {
+      $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
+    }
+    return $response;
+  });
 
 });

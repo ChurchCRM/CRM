@@ -766,16 +766,16 @@ class FinancialService
 
       // Format Data
       if (strlen($payment->plg_CheckNo) > 8) {
-          $payment->plg_CheckNo = '...'.substr($payment->plg_CheckNo, -8, 8);
+          $payment->plg_CheckNo = '...'.mb_substr($payment->plg_CheckNo, -8, 8);
       }
         if (strlen($payment->fun_Name) > 20) {
-            $payment->fun_Name = substr($payment->fun_Name, 0, 20).'...';
+            $payment->fun_Name = mb_substr($payment->fun_Name, 0, 20).'...';
         }
         if (strlen($payment->plg_comment) > 40) {
-            $payment->plg_comment = substr($payment->plg_comment, 0, 38).'...';
+            $payment->plg_comment = mb_substr($payment->plg_comment, 0, 38).'...';
         }
         if (strlen($payment->familyName) > 25) {
-            $payment->familyName = substr($payment->familyName, 0, 24).'...';
+            $payment->familyName = mb_substr($payment->familyName, 0, 24).'...';
         }
 
         $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);

@@ -81,8 +81,8 @@ session_name('CRM@'.$sRootPath);
 session_start();
 
 // ==== ORM
-$dbClassName = '\\Propel\\Runtime\\Connection\\ConnectionWrapper';
-//DEBUG $dbClassName = "\\Propel\Runtime\Connection\DebugPDO";
+$dbClassName = "\\Propel\\Runtime\\Connection\\ConnectionWrapper";
+//DEBUG $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
 
 $serviceContainer = Propel::getServiceContainer();
 $serviceContainer->checkVersion('2.0.0-dev');

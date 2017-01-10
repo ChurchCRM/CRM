@@ -88,7 +88,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             extract($aPerFam);
             $appendToQuery .= $per_fam_ID.',';
         }
-        $appendToQuery = substr($appendToQuery, 0, strlen($appendToQuery) - 1);
+        $appendToQuery = mb_substr($appendToQuery, 0, strlen($appendToQuery) - 1);
         $appendToQuery .= ')';
     } elseif ($iGroupID > -1) {
         // group zero means map the cart
@@ -99,7 +99,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             extract($aPerFam);
             $appendToQuery .= $per_fam_ID.',';
         }
-        $appendToQuery = substr($appendToQuery, 0, strlen($appendToQuery) - 1);
+        $appendToQuery = mb_substr($appendToQuery, 0, strlen($appendToQuery) - 1);
         $appendToQuery .= ')';
     }
 

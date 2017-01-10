@@ -376,15 +376,15 @@ if ($output == 'pdf') {
         }
         // Format Data
         if (strlen($plg_CheckNo) > 8) {
-            $plg_CheckNo = '...'.substr($plg_CheckNo, -8, 8);
+            $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
         } else {
             $plg_CheckNo .= '    ';
         }
         if (strlen($fun_Name) > 25) {
-            $fun_Name = substr($fun_Name, 0, 25).'...';
+            $fun_Name = mb_substr($fun_Name, 0, 25).'...';
         }
         if (strlen($plg_comment) > 25) {
-            $plg_comment = substr($plg_comment, 0, 25).'...';
+            $plg_comment = mb_substr($plg_comment, 0, 25).'...';
         }
         // Print Gift Data
         $pdf->SetFont('Times', '', 10);
@@ -482,7 +482,7 @@ if ($output == 'pdf') {
         $buffer .= trim($heading).$delimiter;
     }
     // Remove trailing delimiter and add eol
-    $buffer = substr($buffer, 0, -1).$eol;
+    $buffer = mb_substr($buffer, 0, -1).$eol;
 
     // Add data
     while ($row = mysqli_fetch_row($rsReport)) {
@@ -491,7 +491,7 @@ if ($output == 'pdf') {
             $buffer .= $field.$delimiter;
         }
         // Remove trailing delimiter and add eol
-        $buffer = substr($buffer, 0, -1).$eol;
+        $buffer = mb_substr($buffer, 0, -1).$eol;
     }
 
     // Export file

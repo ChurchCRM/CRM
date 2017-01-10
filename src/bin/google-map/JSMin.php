@@ -202,7 +202,7 @@ class JSMin
                     return true;
                 }
                 // make sure it's a keyword, not end of an identifier
-                $charBeforeKeyword = substr($this->output, $length - strlen($m[0]) - 1, 1);
+                $charBeforeKeyword = mb_substr($this->output, $length - strlen($m[0]) - 1, 1);
                 if (!$this->isAlphaNum($charBeforeKeyword)) {
                     return true;
                 }
@@ -283,7 +283,7 @@ class JSMin
                     $this->get();
                     // if comment preserved by YUI Compressor
                     if (0 === strpos($comment, '!')) {
-                        return "\n/*".substr($comment, 1)."*/\n";
+                        return "\n/*".mb_substr($comment, 1)."*/\n";
                     }
                     // if IE conditional comment
                     if (preg_match('/^@(?:cc_on|if|elif|else|end)\\b/', $comment)) {

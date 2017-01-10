@@ -48,7 +48,7 @@ class SystemURLs
         return self::$urls;
     }
 
-    public static function getURL($index)
+  public static function getURL($index = 0)
     {
         return self::$urls[$index];
     }

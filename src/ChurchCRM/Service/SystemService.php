@@ -46,7 +46,7 @@ class SystemService
         $connection = Propel::getConnection();
         $restoreResult->file = $file;
         $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $restoreResult->type2 = pathinfo(substr($file['name'], 0, strlen($file['name']) - 3), PATHINFO_EXTENSION);
+        $restoreResult->type2 = pathinfo(mb_substr($file['name'], 0, strlen($file['name']) - 3), PATHINFO_EXTENSION);
         $restoreResult->root = SystemURLs::getDocumentRoot();
         $restoreResult->backupRoot = SystemURLs::getDocumentRoot().'/tmp_attach/ChurchCRMBackups';
         $restoreResult->imagesRoot = 'Images';
@@ -161,7 +161,7 @@ class SystemService
         array_push($backup->headers, 'Content-type: application/pgp-encrypted');
     }
 
-        $backup->filename = substr($backup->saveTo, strrpos($backup->saveTo, '/', -1) + 1);
+        $backup->filename = mb_substr($backup->saveTo, strrpos($backup->saveTo, '/', -1) + 1);
         array_push($backup->headers, "Content-Disposition: attachment; filename=$backup->filename");
 
         return $backup;
@@ -318,7 +318,7 @@ class SystemService
         $headers = [];
         $headers[] = 'Content-type: application/json';
 
-        $issueDescription = FilterInput($data->issueDescription)."\r\n\r\n\r\n".
+        $issueDescription = $data->issueDescription ."\r\n\r\n\r\n".
       "Collected Value Title |  Data \r\n".
       "----------------------|----------------\r\n".
       'Page Name |'.$data->pageName."\r\n".

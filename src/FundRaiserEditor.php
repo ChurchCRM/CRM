@@ -119,7 +119,7 @@ if ($iFundRaiserID > 0) {
 	         FROM donateditem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-	         WHERE di_FR_ID = '".$iFundRaiserID."' ORDER BY di_multibuy,substr(di_item,1,1),cast(substr(di_item,2) as unsigned integer),substr(di_item,4)";
+	         WHERE di_FR_ID = '".$iFundRaiserID."' ORDER BY di_multibuy,mb_substr(di_item,1,1),cast(mb_substr(di_item,2) as unsigned integer),mb_substr(di_item,4)";
     $rsDonatedItems = RunQuery($sSQL);
 } else {
     $rsDonatedItems = 0;

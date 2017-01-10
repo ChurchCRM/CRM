@@ -45,7 +45,7 @@ function XMLparseIST($xmlstr, $xmlfield)
           return '';
       }
 
-      return substr($xmlstr, $startpos, $endpos - $startpos);
+      return mb_substr($xmlstr, $startpos, $endpos - $startpos);
   }
 
     return '';

@@ -235,7 +235,7 @@ if ($output == 'pdf') {
         $fun_name = $row['fun_Name'];
         if ($pledgeFundTotal[$fun_name] > 0 || $paymentFundTotal[$fun_name] > 0) {
             if (strlen($fun_name) > 30) {
-                $short_fun_name = substr($fun_name, 0, 30).'...';
+                $short_fun_name = mb_substr($fun_name, 0, 30).'...';
             } else {
                 $short_fun_name = $fun_name;
             }
@@ -289,7 +289,7 @@ if ($output == 'pdf') {
         $buffer .= trim($heading).$delimiter;
     }
     // Remove trailing delimiter and add eol
-    $buffer = substr($buffer, 0, -1).$eol;
+    $buffer = mb_substr($buffer, 0, -1).$eol;
 
     // Add data
     while ($row = mysqli_fetch_row($rsPledges)) {
@@ -298,7 +298,7 @@ if ($output == 'pdf') {
             $buffer .= $field.$delimiter;
         }
         // Remove trailing delimiter and add eol
-        $buffer = substr($buffer, 0, -1).$eol;
+        $buffer = mb_substr($buffer, 0, -1).$eol;
     }
 
     // Export file

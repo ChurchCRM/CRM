@@ -305,9 +305,9 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
     }
 
     if ($numlines > 0) {
-        if (strtoupper($sLastLetter) != strtoupper(substr($pdf->sSortBy, 0, 1))) {
+        if (strtoupper($sLastLetter) != strtoupper(mb_substr($pdf->sSortBy, 0, 1))) {
             $pdf->Check_Lines($numlines + 2, 0, 0);
-            $sLastLetter = strtoupper(substr($pdf->sSortBy, 0, 1));
+            $sLastLetter = strtoupper(mb_substr($pdf->sSortBy, 0, 1));
             $pdf->Add_Header($sLastLetter);
         }
 

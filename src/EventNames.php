@@ -113,7 +113,7 @@ $numRows = mysqli_num_rows($rsOpps);
                     $recur[$row] = gettext('Monthly on').' '.date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM[$row], 2000));
                     break;
                   case 'yearly':
-                    $recur[$row] = gettext('Yearly on').' '.substr($aDefRecurDOY[$row], 5);
+                    $recur[$row] = gettext('Yearly on').' '.mb_substr($aDefRecurDOY[$row], 5);
                     break;
                   default:
                     $recur[$row] = gettext('None');
