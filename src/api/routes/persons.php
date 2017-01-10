@@ -2,7 +2,6 @@
 
 // Person APIs
 use ChurchCRM\PersonQuery;
-use ChurchCRM\util\PhotoUtils;
 
 $app->group('/persons', function () {
 
@@ -50,7 +49,7 @@ $app->group('/persons', function () {
     $input = (object)$request->getParsedBody();
     $person = PersonQuery::create()->findPk($args['personId']);
     $person->setImageFromBase64($input->imgBase64);
-    $response->withJSON(array("status"=>"success","upload"=>$upload));
+    $response->withJSON(array("status"=>"success"));
   });
   
   $this->delete('/{personId:[0-9]+}/photo', function($request, $response, $args)  {

@@ -29,6 +29,8 @@
 
 require_once 'Functions.php';
 
+use ChurchCRM\Service\SystemService;
+
 function Header_head_metatag()
 {
     global $bExportCSV, $sMetaRefresh, $sGlobalMessage;
@@ -121,14 +123,16 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $sRootPath, $localeInfo; ?>
+    global $sRootPath, $localeInfo; 
+    $systemService = new SystemService();?>
   <script src="<?= $sRootPath ?>/skin/js/IssueReporter.js"></script>
 
   <script>
     window.CRM = {
       root: "<?= $sRootPath ?>",
       lang: "<?= $localeInfo->getLanguageCode() ?>",
-      locale: "<?= $localeInfo->getLocale() ?>"
+      locale: "<?= $localeInfo->getLocale() ?>",
+      maxUploadSize: "<?= $systemService->getMaxUploadFileSize() ?>"
     };
 
     window.CRM.DisplayErrorMessage = function(endpoint, error) {
