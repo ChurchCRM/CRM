@@ -47,3 +47,5 @@ deploy:
   skip_cleanup: true
   provider: script
   script: npm run demosite ${demokey}
+  on:
+    branch: develop
