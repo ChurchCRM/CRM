@@ -33,10 +33,7 @@ use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\MailChimpService;
-use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\TimelineService;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\FamilyQuery;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();

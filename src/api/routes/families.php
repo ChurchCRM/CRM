@@ -2,7 +2,6 @@
 
 // Routes
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\FamilyQuery;
 use ChurchCRM\Token;
 use ChurchCRM\Note;
 use ChurchCRM\Emails\FamilyVerificationEmail;

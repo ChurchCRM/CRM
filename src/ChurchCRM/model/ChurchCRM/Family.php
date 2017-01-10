@@ -175,14 +175,16 @@ class Family extends BaseFamily implements iPhoto
     public function deletePhoto()
     {
       if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
-        $note = new Note();
-        $note->setText("Profile Image Deleted");
-        $note->setType("photo");
-        $note->setEntered($_SESSION['iUserID']);
-        PhotoUtils::deletePhotos("Family", $this->getId());
-        $note->setPerId($this->getId());
-        $note->save();
-        return true;
+        if ( $this->getPhoto()->delete() )
+        {
+          $note = new Note();
+          $note->setText("Profile Image Deleted");
+          $note->setType("photo");
+          $note->setEntered($_SESSION['iUserID']);
+          $note->setPerId($this->getId());
+          $note->save();
+          return true;
+        }
       }
       return false;
     }

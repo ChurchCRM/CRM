@@ -285,7 +285,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
                                 <img data-name="<?= $row['per_FirstName'].' '.$row['per_LastName'] ?>" data-src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/thumbnail" alt="User Image" class="initials-image user-image" width="85" height="85" /><br/>
-                                <?= $row['per_FirstName'].' '.substr($row['per_LastName'], 0, 1) ?></a>p
+                                <?= $row['per_FirstName'].' '.substr($row['per_LastName'], 0, 1) ?></a>
                                 <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
                             </li>
                         <?php 
