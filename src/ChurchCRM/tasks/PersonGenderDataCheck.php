@@ -10,21 +10,20 @@ class PersonGenderDataCheck implements iTask
 {
     private $count;
 
-    private function dbHasMissingGenders()
+    public function __construct()
     {
         $personQuery = PersonQuery::create()->filterByGender(0)->find();
         $this->count = $personQuery->count();
-        return $this->count > 0;
     }
 
     public function isActive()
     {
-        return $this->dbHasMissingGenders();
+        return $this->count > 0;
     }
 
     public function isAdmin()
     {
-        return true;
+        return false;
     }
 
     public function getLink()
