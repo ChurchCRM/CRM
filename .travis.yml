@@ -26,6 +26,7 @@ before_install:
  - sudo apt-get install ruby-full
  - sudo gem install sass
  - chmod +x ./travis-ci/*.sh
+ - chmod +x ./scripts/*.sh
 
 # prepare travis ci for the build process
 install:
