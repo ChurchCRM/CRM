@@ -30,7 +30,10 @@ $app->group('/families', function () {
       {
         return $response->write($family->getPhotoBytes());
       }
-      return $response->withStatus(404);
+      else
+      {
+        return $response->withStatus(404);
+      }
     });
     
     $this->get('/{familyId:[0-9]+}/thumbnail', function($request, $response, $args)  {
@@ -38,6 +41,10 @@ $app->group('/families', function () {
       if ( $family->isPhotoLocal()) 
       {
         return $response->write($family->getThumbnailBytes())->withHeader('Content-type', $family->getPhotoContentType());
+      }
+      else
+      {
+        return $response->withStatus(404);
       }
     });
   

@@ -24,7 +24,7 @@ class Person extends BasePerson implements iPhoto
     {
         return $this->getFirstName().' '.$this->getLastName();
     }
-
+    
     public function isMale()
     {
         return $this->getGender() == 1;
@@ -193,6 +193,14 @@ class Person extends BasePerson implements iPhoto
 
     public function isPhotoLocal() {
       return $this->getPhoto()->isPhotoLocal();
+    }
+    
+    public function isPhotoRemote() {
+      return $this->getPhoto()->isPhotoRemote();
+    }
+    
+    public function getPhotoContentType() {
+      return $this->getPhoto()->getPhotoContentType();
     }
 
 }

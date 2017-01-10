@@ -48,6 +48,8 @@ $("document").ready(function(){
       type: "POST"
     });
     $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
+    
+    $(".initials-image").initial();
 });
 
 function showGlobalMessage(message, callOutClass) {

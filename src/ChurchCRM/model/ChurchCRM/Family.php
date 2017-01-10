@@ -161,5 +161,13 @@ class Family extends BaseFamily implements iPhoto
     public function isPhotoLocal() {
       return $this->getPhoto()->isPhotoLocal();
     }
+    
+    public function isPhotoRemote() {
+      return $this->getPhoto()->isPhotoRemote();
+    }
+    
+    public function getPhotoContentType() {
+      return $this->getPhoto()->getPhotoContentType();
+    }
 
 }

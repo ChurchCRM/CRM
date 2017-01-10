@@ -33,16 +33,17 @@
     "ionicons": "2.0.1",
     "font-awesome": "4.7.0",
     "fullcalendar": "3.0.1",
-    "jquery-photo-uploader": "^1.0.4"
+    "jquery-photo-uploader": "^1.0.4",
+    "initial-js": "~0.3.4"
   },
   "scripts": {
     "install": "grunt clean && grunt curl-dir && grunt copy && grunt sass",
     "postinstall": "grunt concat && grunt rename",
     "locale-gen": "locale/update-locale.sh",
-    "locale-download" : "grunt updateFromPOeditor",
+    "locale-download": "grunt updateFromPOeditor",
     "package": "grunt generateSignatures && grunt compress",
     "demosite": "scripts/demosite.sh",
-    "rev-build" : "scripts/gen-changelogs.sh && scripts/version-rev.sh",
-    "orm-gen" : "src/vendor/propel/propel/bin/propel --config-dir=propel model:build "
+    "rev-build": "scripts/gen-changelogs.sh && scripts/version-rev.sh",
+    "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build "
   }
 }

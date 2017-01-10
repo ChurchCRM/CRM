@@ -159,8 +159,8 @@ if ($iFamilyID == $fam_ID) {
     <div class="col-lg-3 col-md-4 col-sm-4">
       <div class="box box-primary">
         <div class="box-body">
-          <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail" alt=""
-               class="img-circle img-responsive profile-user-img"/>
+          <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail" data-name="<?= $family->getName()?>" alt=""
+               class="initials-image img-circle img-responsive profile-user-img"/>
 					<h3 class="profile-username text-center"><?=  gettext('Family').': '.$fam_Name ?></h3>
           <?php if ($bOkToEdit) {
         ?>
@@ -323,7 +323,7 @@ if ($iFamilyID == $fam_ID) {
         ?>
                 <tr>
                   <td>
-                    <img src="<?= SystemURLs::getRootPath() ?>/api/person/<?= $person->getId() ?>/thumbnail" width="40" height="40" class="img-circle"/>
+                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail" data-name="<?= $person->getFullName() ?>" width="40" height="40" class="initials-image img-circle"/>
                     <a href="<?= $person->getViewURI() ?>" class="user-link"><?= $person->getFullName() ?> </a>
                   </td>
                   <td class="text-center">

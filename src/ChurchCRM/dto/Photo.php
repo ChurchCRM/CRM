@@ -69,9 +69,9 @@ class Photo
   
   public function getPhotoContentType()
   {
-    if ($this->photoContentType)
+    if ($this->isPhotoRemote())
     {
-      return ;
+      return;
     }
     else
     {
@@ -93,10 +93,14 @@ class Photo
     return ($this->photoLocation == "local");
   }
   
+   public function isPhotoRemote() {
+      return ($this->photoLocation == "remote");
+   }
+  
   public function loadFromGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = [])
   {
 
-    $url = 'http://www.gravatar.com/avatar/';
+    $url = 'https://www.gravatar.com/avatar/';
     $url .= md5(strtolower(trim($email)));
     $url .= "?s=$s&d=$d&r=$r";
 

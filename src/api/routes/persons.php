@@ -19,9 +19,13 @@ $app->group('/persons', function () {
     {
       return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
     }
-    else
+    else if( $person->isPhotoRemote())
     {
       return $response->withRedirect($person->getPhotoURI());
+    }
+    else
+    {
+      return $response->withStatus(404);
     }
   });
   
@@ -31,9 +35,13 @@ $app->group('/persons', function () {
     {
       return $response->write($person->getThumbnailBytes())->withHeader('Content-type', $person->getPhotoContentType());
     }
-    else
+    else if( $person->isPhotoRemote())
     {
       return $response->withRedirect($person->getThumbnailURI());
+    }
+    else
+    {
+      return $response->withStatus(404);
     }
   });
   

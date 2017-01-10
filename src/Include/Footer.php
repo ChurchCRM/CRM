@@ -308,7 +308,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     ?>
   <script>
     $("document").ready(function () {
-      showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");
+      showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");     
     });
   </script>
 <?php 
