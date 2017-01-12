@@ -37,4 +37,9 @@ error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 error_log = /var/log/php/error.log
 max_input_time = 30
 ```
+```
+sudo mkdir /var/log/php
+sudo chown apache /var/log/php
+```
 
+`service httpd restart`
