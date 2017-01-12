@@ -469,13 +469,13 @@ class SystemService
     // and post_max_size
     public function getMaxUploadFileSize() {
       //select maximum upload size
-      $max_upload = parse_size(ini_get('upload_max_filesize'));
+      $max_upload = $this->parse_size(ini_get('upload_max_filesize'));
       //select post limit
-      $max_post = parse_size(ini_get('post_max_size'));
+      $max_post = $this->parse_size(ini_get('post_max_size'));
       //select memory limit
-      $memory_limit = parse_size(ini_get('memory_limit'));
+      $memory_limit = $this->parse_size(ini_get('memory_limit'));
       // return the smallest of them, this defines the real limit
-      return min($max_upload, $max_post, $memory_limit);
+      return $this->human_filesize(min($max_upload, $max_post, $memory_limit));
     }
 
     private function parse_size($size) {
@@ -488,5 +488,11 @@ class SystemService
       else {
         return round($size);
       }
+    }
+    
+    function human_filesize($bytes, $decimals = 2) {
+      $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+      $factor = floor((strlen($bytes) - 1) / 3);
+      return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
     }
 }
