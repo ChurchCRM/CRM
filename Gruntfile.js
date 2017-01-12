@@ -84,6 +84,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/jquery-photo-uploader/dist/*'],
                         dest: 'src/skin/jquery-photo-uploader/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/initial-js/node_modules/randomcolor/randomColor.js'],
+                        dest: 'src/skin/randomcolor/'
                     }
                 ]
             }

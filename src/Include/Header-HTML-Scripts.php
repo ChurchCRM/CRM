@@ -29,5 +29,5 @@
 
 <script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
 
-<script src="<?= $sRootPath ?>/skin/js/randomColor.js"></script>
+<script src="<?= $sRootPath ?>/skin/randomcolor/randomColor.js"></script>
 <script src="<?= $sRootPath ?>/skin/js/initial.js"></script>
