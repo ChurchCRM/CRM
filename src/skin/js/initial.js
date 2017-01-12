@@ -48,9 +48,7 @@
         }
         });
       }
-
-      settings.name = settings.name || 'DaMaVaNd';
-
+      
       // making the text object
       var c = settings.name.split(" ", settings.wordCount).map(function(str) {
         return str.substr(0, settings.charCount).toUpperCase();
