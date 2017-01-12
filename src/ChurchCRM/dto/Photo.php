@@ -14,7 +14,7 @@ class Photo
   private $photoURI;
   private $photoThumbURI;
   private $photoContentType;
-  public static $validExtensions = array("jpeg", "jpg", "png");
+  public static $validExtensions = ["png", "jpeg", "jpg"];
   
   public function __construct($photoType,$id) {
     $this->photoType = $photoType;
@@ -30,7 +30,8 @@ class Photo
   private function photoHunt($baseName)
   {
     $extensions = Photo::$validExtensions;
-    while (list(, $ext) = each($extensions)) {
+    foreach($extensions as $ext) 
+    {
       $photoFile = $baseName . "." . $ext;
       if (file_exists($photoFile)) {
        return $photoFile;
