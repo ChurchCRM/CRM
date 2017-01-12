@@ -975,7 +975,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 $(document).ready( function() {
   window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
     url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
-    maxPhotoSize: "2MB",
+    maxPhotoSize: window.CRM.maxUploadSize,
     done: function(e) {
       location.reload();
     }
