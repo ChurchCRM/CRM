@@ -15,7 +15,7 @@ class Photo
   private $photoThumbURI;
   private $photoContentType;
   public static $validExtensions = ["png", "jpeg", "jpg"];
-  
+
   public function __construct($photoType,$id) {
     $this->photoType = $photoType;
     $this->id = $id;
@@ -40,11 +40,29 @@ class Photo
     return null;
   }
   
+  private function getGDImage($sourceImagePath)
+  {
+    $sourceImageType = exif_imagetype($sourceImagePath);
+    switch ($sourceImageType) 
+    {
+        case IMAGETYPE_GIF:
+            $sourceGDImage = imagecreatefromgif($sourceImagePath);
+            break;
+        case IMAGETYPE_JPEG:
+            $sourceGDImage = imagecreatefromjpeg($sourceImagePath);
+            break;
+        case IMAGETYPE_PNG:
+            $sourceGDImage = imagecreatefrompng($sourceImagePath);
+            break;
+    }
+    return $sourceGDImage;
+  }
+  
   private function createThumbnail()      
   {
     $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/thumbnails/" . $this->id.".png";
     $thumbWidth = 100;
-    $img =  imagecreatefrompng($this->photoURI); 
+    $img =  $this->getGDImage($this->photoURI); //just in case we have legacy JPG/GIF that don't have a thumbnail.
     $width = imagesx( $img );
     $height = imagesy( $img );
     $new_width = $thumbWidth;
@@ -53,7 +71,7 @@ class Photo
     imagecopyresized( $tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height );
     imagepng($tmp_img, $this->photoThumbURI);
   }
-  
+
   public function getThumbnailBytes()
   {
     if (!file_exists($this->photoThumbURI))
@@ -62,12 +80,12 @@ class Photo
     }
     return file_get_contents($this->photoThumbURI);
   }
-  
+
   public function getPhotoBytes()
   {
     return file_get_contents($this->photoURI);
   }
-  
+
   public function getPhotoContentType()
   {
     if ($this->isPhotoRemote())
@@ -80,10 +98,8 @@ class Photo
       $this->photoContentType = $finfo->file($this->photoURI);
       return $this->photoContentType;
     }
-    
   }
-  
-  
+
   public function getThumbnailURI()
   {
     return $this->photoThumbURI;
@@ -145,13 +161,5 @@ class Photo
       }
     }
     return $deleted;
-  }
-  
-  private static function processFile($type,$id,$filename)
-  {
-      
-
-  }
-  
-  
+  }  
 }
