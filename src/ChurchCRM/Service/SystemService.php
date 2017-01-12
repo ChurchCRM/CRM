@@ -468,20 +468,14 @@ class SystemService
     // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size
     public function getMaxUploadFileSize() {
-      static $max_size = -1;
-
-      if ($max_size < 0) {
-        // Start with post_max_size.
-        $max_size = $this->parse_size(ini_get('post_max_size'));
-
-        // If upload_max_size is less, then reduce. Except if upload_max_size is
-        // zero, which indicates no limit.
-        $upload_max = $this->parse_size(ini_get('upload_max_filesize'));
-        if ($upload_max > 0 && $upload_max < $max_size) {
-          $max_size = $upload_max;
-        }
-      }
-      return $max_size;
+      //select maximum upload size
+      $max_upload = parse_size(ini_get('upload_max_filesize'));
+      //select post limit
+      $max_post = parse_size(ini_get('post_max_size'));
+      //select memory limit
+      $memory_limit = parse_size(ini_get('memory_limit'));
+      // return the smallest of them, this defines the real limit
+      return min($max_upload, $max_post, $memory_limit);
     }
 
     private function parse_size($size) {
