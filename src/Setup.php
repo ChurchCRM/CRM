@@ -12,6 +12,18 @@ function hasApacheModule($module)
 
     return false;
 }
+elseif (getenv('CRM_MARIADB_NAME')) {
+  $template = file_get_contents("Include/Config.php.example");
+  $template = str_replace("||DB_SERVER_NAME||", "crm-mariadb", $template);
+  $template = str_replace("||DB_NAME||", getenv("CRM_MARIADB_ENV_MARIADB_DATABASE") , $template);
+  $template = str_replace("||DB_USER||", getenv("CRM_MARIADB_ENV_MARIADB_USER"), $template);
+  $template = str_replace("||DB_PASSWORD||", getenv("CRM_MARIADB_ENV_MARIADB_PASSWORD"), $template);
+  $template = str_replace("||ROOT_PATH||", "", $template);
+  $template = str_replace("||URL||", "", $template);
+  file_put_contents("Include/Config.php", $template);
+  header("Location: index.php" );
+  exit();
+}
 
 function hasModRewrite()
 {
