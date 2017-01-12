@@ -178,7 +178,7 @@ class Family extends BaseFamily implements iPhoto
         if ( $this->getPhoto()->delete() )
         {
           $note = new Note();
-          $note->setText("Profile Image Deleted");
+          $note->setText(gettext("Profile Image Deleted"));
           $note->setType("photo");
           $note->setEntered($_SESSION['iUserID']);
           $note->setPerId($this->getId());
@@ -208,7 +208,7 @@ class Family extends BaseFamily implements iPhoto
     public function setImageFromBase64($base64) {
       if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
         $note = new Note();
-        $note->setText("Profile Image uploaded");
+        $note->setText(gettext("Profile Image uploaded"));
         $note->setType("photo");
         $note->setEntered($_SESSION['iUserID']);
         $this->getPhoto()->setImageFromBase64($base64);
