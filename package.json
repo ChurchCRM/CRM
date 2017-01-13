@@ -1,5 +1,6 @@
 {
   "name": "ChurchCRM",
+  "version": "2.5.0",
   "description": "Free Church CRM Software",
   "repository": {
     "type": "git",
