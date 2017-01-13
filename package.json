@@ -24,6 +24,7 @@
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-compress": "^1.0.3",
+    "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-rename": "^0.0.3",
     "node-sha1": "1.0.1",
     "grunt-poeditor-ab": "^0.1.9"
