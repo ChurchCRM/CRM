@@ -14,46 +14,46 @@
  ******************************************************************************/
 
 //Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
 //Set the page title
-$sPageTitle = gettext("Deposit Listing");
+$sPageTitle = gettext('Deposit Listing');
 
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance']) {
-  Redirect("index.php");
-  exit;
+    Redirect('index.php');
+    exit;
 }
 
-require "Include/Header.php";
+require 'Include/Header.php';
 ?>
 
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext("Add New Deposit: "); ?></h3>
+    <h3 class="box-title"><?php echo gettext('Add New Deposit: '); ?></h3>
   </div>
   <div class="box-body">
     <form action="#" method="get" class="form">
       <div class="row">
         <div class="container-fluid">
           <div class="col-lg-4">
-            <label for="addNewGruop"><?= gettext("Deposit Comment") ?></label>
+            <label for="addNewGruop"><?= gettext('Deposit Comment') ?></label>
             <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
           </div>
           <div class="col-lg-3">
-            <label for="depositType"><?= gettext("Deposit Type") ?></label>
+            <label for="depositType"><?= gettext('Deposit Type') ?></label>
             <select class="form-control" id="depositType" name="depositType">
-              <option value="Bank"><?= gettext("Bank") ?></option>
-              <option value="CreditCard"><?= gettext("Credit Card") ?></option>
-              <option value="BankDraft"><?= gettext("Bank Draft") ?></option>
-              <option value="eGive"><?= gettext("eGive") ?></option>
+              <option value="Bank"><?= gettext('Bank') ?></option>
+              <option value="CreditCard"><?= gettext('Credit Card') ?></option>
+              <option value="BankDraft"><?= gettext('Bank Draft') ?></option>
+              <option value="eGive"><?= gettext('eGive') ?></option>
             </select>
           </div>
           <div class="col-lg-3">
-            <label for="addNewGruop"><?= gettext("Deposit Date") ?></label>
+            <label for="addNewGruop"><?= gettext('Deposit Date') ?></label>
             <input class="form-control" name="depositDate" id="depositDate" style="width:100%" class="date-picker">
           </div>
         </div>
@@ -61,7 +61,7 @@ require "Include/Header.php";
       <p>
       <div class="row">
         <div class="col-xs-3">
-          <button type="button" class="btn btn-primary" id="addNewDeposit"><?= gettext("Add New Deposit") ?></button>
+          <button type="button" class="btn btn-primary" id="addNewDeposit"><?= gettext('Add New Deposit') ?></button>
         </div>
       </div>
     </form>
@@ -70,20 +70,20 @@ require "Include/Header.php";
 
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext("Deposits: "); ?></h3>
+    <h3 class="box-title"><?php echo gettext('Deposits: '); ?></h3>
   </div>
   <div class="box-body">
     <div class="container-fluid">
       <table class="display responsive nowrap data-table" id="depositsTable" width="100%"></table>
 
       <button type="button" id="deleteSelectedRows" class="btn btn-danger"
-              disabled> <?= gettext("Delete Selected Rows") ?> </button>
+              disabled> <?= gettext('Delete Selected Rows') ?> </button>
       <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
-              disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (OFX)") ?></button>
+              disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (OFX)') ?></button>
       <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
-              disabled><i class="fa fa-download"></i> <?= gettext("Export Selected Rows (CSV)") ?></button>
+              disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
       <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
-              disabled> <?= gettext("Generate Deposit Split for Selected Rows (PDF)") ?></button>
+              disabled> <?= gettext('Generate Deposit Split for Selected Rows (PDF)') ?></button>
     </div>
   </div>
 </div>

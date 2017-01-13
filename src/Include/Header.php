@@ -25,10 +25,12 @@
  *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
  ******************************************************************************/
-if ( ! $systemService->isDBCurrent())  //either the DB is good, or the upgrade was successful.
-{
+
+use ChurchCRM\dto\SystemConfig;
+
+if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
   Redirect('CheckVersion.php');
-  exit;
+    exit;
 }
 
 use ChurchCRM\Service\TaskService;
@@ -39,7 +41,7 @@ $taskService = new TaskService();
 // Turn ON output buffering
 ob_start();
 
-require_once('Header-function.php');
+require_once 'Header-function.php';
 
 // Top level menu index counter
 $MenuFirst = 1;
@@ -64,7 +66,7 @@ $MenuFirst = 1;
   Header_modals();
   Header_body_scripts();
 
-  $loggedInUserPhoto = $sRootPath . "/api/persons/" . $_SESSION['iUserID'] . "/photo";
+  $loggedInUserPhoto = $sRootPath.'/api/persons/'.$_SESSION['iUserID'].'/photo';
   $MenuFirst = 1;
   ?>
 
@@ -75,9 +77,10 @@ $MenuFirst = 1;
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
       <?php
-      $headerHTML = "<b>Church</b>CRM";
-      if ($sHeader) {
-        $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
+      $headerHTML = '<b>Church</b>CRM';
+      $sHeader = SystemConfig::getValue("sHeader");
+      if (!empty($sHeader)) {
+          $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
       }
       ?>
       <span class="logo-lg"><?= $headerHTML ?></span>
@@ -86,7 +89,7 @@ $MenuFirst = 1;
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only"><?= gettext("Toggle navigation") ?></span>
+        <span class="sr-only"><?= gettext('Toggle navigation') ?></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -117,11 +120,11 @@ $MenuFirst = 1;
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="<?= $sRootPath?>/UserPasswordChange.php"
-                     class="btn btn-default btn-flat"><?= gettext("Change Password") ?></a>
+                     class="btn btn-default btn-flat"><?= gettext('Change Password') ?></a>
                 </div>
                 <div class="pull-right">
                   <a href="<?= $sRootPath?>/SettingsIndividual.php"
-                     class="btn btn-default btn-flat"><?= gettext("My Settings") ?></a>
+                     class="btn btn-default btn-flat"><?= gettext('My Settings') ?></a>
                 </div>
               </li>
             </ul>
@@ -173,10 +176,10 @@ $MenuFirst = 1;
       <ul class="sidebar-menu">
         <li>
           <a href="<?= $sRootPath ?>/Menu.php">
-            <i class="fa fa-dashboard"></i> <span><?= gettext("Dashboard") ?></span>
+            <i class="fa fa-dashboard"></i> <span><?= gettext('Dashboard') ?></span>
           </a>
         </li>
-        <?php addMenu("root"); ?>
+        <?php addMenu('root'); ?>
       </ul>
     </section>
   </aside>
@@ -185,14 +188,14 @@ $MenuFirst = 1;
     <section class="content-header">
       <h1>
         <?php
-        echo $sPageTitle . "\n";
+        echo $sPageTitle."\n";
         if (isset($sPageTitleSub)) {
-          echo "<small>" . $sPageTitleSub . "</small>";
+            echo '<small>'.$sPageTitleSub.'</small>';
         }
         ?>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?= $sRootPath ?>/Menu.php"><i class="fa fa-dashboard"></i><?= gettext("Home") ?></a></li>
+        <li><a href="<?= $sRootPath ?>/Menu.php"><i class="fa fa-dashboard"></i><?= gettext('Home') ?></a></li>
         <li class="active"><?= $sPageTitle ?></li>
       </ol>
     </section>

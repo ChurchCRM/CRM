@@ -1,7 +1,12 @@
 <?php
+
+use ChurchCRM\dto\SystemURLs;
+
 // Set the page title and include HTML header
-$sPageTitle = "ChurchCRM - Family Registration";
-require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
+
+
+$sPageTitle = gettext("Family Registration");
+require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
 
 <form action="<?= $sRootPath ?>/external/register/done" method="post">
@@ -14,21 +19,23 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
 
       <div class="box box-solid">
 
-        <h3><?= gettext("Registration Complete") ?></h3>
+        <h3><?= gettext('Registration Complete') ?></h3>
 
 
         <div class="box-header with-border">
           <h3
-            class="box-title"><?= gettext("Thank you for registering your family."); ?></h3>
+            class="box-title"><?= gettext('Thank you for registering your family.'); ?></h3>
         </div>
         <div class="box-body">
-          <h3><?= $family->getName() . " " . gettext("Family")?></h3>
-          <b><?= gettext("Address") ?></b>: <?= $family->getAddress(); ?><br/>
-          <b><?= gettext("Home Phone")?></b>: <?= $family->getHomePhone(); ?>
-          <h3><?= gettext("Member(s)")?></h3>
-          <?php foreach ($family->getPeople() as $person) { ?>
-                <?= $person->getFamilyRoleName() ." - ". $person->getFullName(); ?><br/>
-           <?php } ?>
+          <h3><?= $family->getName().' '.gettext('Family')?></h3>
+          <b><?= gettext('Address') ?></b>: <?= $family->getAddress(); ?><br/>
+          <b><?= gettext('Home Phone')?></b>: <?= $family->getHomePhone(); ?>
+          <h3><?= gettext('Member(s)')?></h3>
+          <?php foreach ($family->getPeople() as $person) {
+    ?>
+                <?= $person->getFamilyRoleName().' - '.$person->getFullName(); ?><br/>
+           <?php
+} ?>
         </div>
 
 
@@ -46,4 +53,4 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
 </form>
 <?php
 // Add the page footer
-require(__DIR__ . "/../../../Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");

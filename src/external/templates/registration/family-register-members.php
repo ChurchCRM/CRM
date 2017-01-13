@@ -1,7 +1,9 @@
 <?php
+use ChurchCRM\dto\SystemURLs;
+
 // Set the page title and include HTML header
-$sPageTitle = "ChurchCRM - Family Registration";
-require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
+$sPageTitle = gettext("Family Registration");
+require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
   <form action="<?= $sRootPath ?>/external/register/confirm" method="post">
     <div class="register-box" style="width: 600px;">
@@ -14,13 +16,14 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
         <div class="box box-solid">
           <div class="box-header with-border">
             <h3
-              class="box-title"><?= gettext("Register") . " <b>" . $family->getName() . "</b> " . gettext("Family Members") ?></h3>
+              class="box-title"><?= gettext('Register').' <b>'.$family->getName().'</b> '.gettext('Family Members') ?></h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
             <?php for ($x = 1;
                        $x <= $familyCount;
-                       $x++) { ?>
+                       $x++) {
+    ?>
               <div class="box">
                 <div class="box-header with-border">
                   <h4 class="box-title">
@@ -32,15 +35,17 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
                     <div class="row">
                       <div class="col-lg-8">
                         <select name="memberRole-<?= $x ?>" class="form-control">
-                          <?php foreach ($familyRoles as $role) { ?>
+                          <?php foreach ($familyRoles as $role) {
+        ?>
                             <option value="<?= $role->getOptionId() ?>"><?= $role->getOptionName() ?></option>
-                          <?php } ?>
+                          <?php
+    } ?>
                         </select>
                       </div>
                       <div class="col-lg-4">
                         <select name="memberGender-<?= $x ?>" class="form-control">
-                          <option value="1"><?= gettext("Male") ?></option>
-                          <option value="2"><?= gettext("Female") ?></option>
+                          <option value="1"><?= gettext('Male') ?></option>
+                          <option value="2"><?= gettext('Female') ?></option>
                         </select>
                       </div>
                     </div>
@@ -49,11 +54,11 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
                     <div class="row">
                       <div class="col-lg-6">
                         <input name="memberFirstName-<?= $x ?>" class="form-control" maxlength="50"
-                               placeholder="<?= gettext("First Name") ?>" required>
+                               placeholder="<?= gettext('First Name') ?>" required>
                       </div>
                       <div class="col-lg-6">
                         <input name="memberLastName-<?= $x ?>" class="form-control" value="<?= $family->getName() ?>" maxlength="50"
-                               placeholder="<?= gettext("Last Name") ?>" required>
+                               placeholder="<?= gettext('Last Name') ?>" required>
                       </div>
                     </div>
                   </div>
@@ -63,7 +68,7 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
                         <i class="fa fa-envelope"></i>
                       </div>
                       <input name="memberEmail-<?= $x ?>" class="form-control" maxlength="50"
-                             placeholder="<?= gettext("Email") ?>">
+                             placeholder="<?= gettext('Email') ?>">
                     </div>
                   </div>
                   <div class="form-group has-feedback">
@@ -74,16 +79,16 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
                             <i class="fa fa-phone"></i>
                           </div>
                           <select name="memberPhoneType-<?= $x ?>" class="form-control">
-                            <option value="mobile"><?= gettext("Mobile") ?></option>
-                            <option value="home"><?= gettext("Home") ?></option>
-                            <option value="work"><?= gettext("Work") ?></option>
+                            <option value="mobile"><?= gettext('Mobile') ?></option>
+                            <option value="home"><?= gettext('Home') ?></option>
+                            <option value="work"><?= gettext('Work') ?></option>
                           </select>
                         </div>
                       </div>
                       <div class="col-lg-8">
                         <div class="input-group">
                           <input name="memberPhone-<?= $x ?>" class="form-control" maxlength="30"
-                                 placeholder="<?= gettext("Phone") ?>">
+                                 placeholder="<?= gettext('Phone') ?>">
                         </div>
                       </div>
                     </div>
@@ -100,17 +105,18 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
                       </div>
                       <div class="col-lg-6">
                           <label>
-                            <input type="checkbox" name="memberHideAge-<?= $x ?>">&nbsp; <?= gettext("Hide Age") ?>
+                            <input type="checkbox" name="memberHideAge-<?= $x ?>">&nbsp; <?= gettext('Hide Age') ?>
                           </label>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            <?php } ?>
+            <?php
+} ?>
           </div>
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext("Next"); ?></button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext('Next'); ?></button>
           </div>
         </div>
       </div>
@@ -126,4 +132,4 @@ require(__DIR__ . "/../../../Include/HeaderNotLoggedIn.php");
   </script>
 <?php
 // Add the page footer
-require(__DIR__ . "/../../../Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");

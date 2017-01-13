@@ -4462,7 +4462,7 @@ msgstr "Wie haben sie die Kirche kennengelernt?"
 
 #: calendar.php:9
 msgid "Church Calendar"
-msgstr ""
+msgstr "Kirchenkalender"
 
 #: eGive.php:74
 msgid "eGive Import"
@@ -5243,7 +5243,7 @@ msgstr ""
 
 #: menuconfig_mcf.php:3
 msgid "Calendar"
-msgstr ""
+msgstr "Kalender"
 
 #: menuconfig_mcf.php:4
 msgid "Members"
@@ -5848,7 +5848,7 @@ msgstr ""
 
 #: ChurchCRM/Service/CalendarService.php:18
 msgid "Anniversary"
-msgstr ""
+msgstr "Jahrestag"
 
 #: SettingsIndividual.php:106 SettingsUser.php:96 UserEditor.php:432
 #: PersonView.php:340
@@ -5907,7 +5907,7 @@ msgstr ""
 
 #: CSVExport.php:417
 msgid "Anniversary Date:"
-msgstr ""
+msgstr "Jahrestag Datum:"
 
 #: CSVExport.php:434
 msgid "Date Entered:"

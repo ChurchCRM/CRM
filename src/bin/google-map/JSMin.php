@@ -6,7 +6,7 @@
  * modifications to preserve some comments (see below). Also, rather than using
  * stdin/stdout, JSMin::minify() accepts a string as input and returns another
  * string as output.
- * 
+ *
  * Comments containing IE conditional compilation are preserved, as are multi-line
  * comments that begin with "/*!" (for documentation purposes). In the latter case
  * newlines are inserted around the comment to enhance readability.
@@ -40,54 +40,56 @@
  * SOFTWARE.
  * --
  *
- * @package JSMin
  * @author Ryan Grove <ryan@wonko.com> (PHP port)
  * @author Steve Clay <steve@mrclay.org> (modifications + cleanup)
  * @author Andrea Giammarchi <http://www.3site.eu> (spaceBeforeRegExp)
  * @copyright 2002 Douglas Crockford <douglas@crockford.com> (jsmin.c)
  * @copyright 2008 Ryan Grove <ryan@wonko.com> (PHP port)
  * @license http://opensource.org/licenses/mit-license.php MIT License
+ *
  * @link http://code.google.com/p/jsmin-php/
  */
-
-class JSMin {
-    const ORD_LF            = 10;
-    const ORD_SPACE         = 32;
-    const ACTION_KEEP_A     = 1;
-    const ACTION_DELETE_A   = 2;
+class JSMin
+{
+    const ORD_LF = 10;
+    const ORD_SPACE = 32;
+    const ACTION_KEEP_A = 1;
+    const ACTION_DELETE_A = 2;
     const ACTION_DELETE_A_B = 3;
-    
-    protected $a           = "\n";
-    protected $b           = '';
-    protected $input       = '';
-    protected $inputIndex  = 0;
+
+    protected $a = "\n";
+    protected $b = '';
+    protected $input = '';
+    protected $inputIndex = 0;
     protected $inputLength = 0;
-    protected $lookAhead   = null;
-    protected $output      = '';
-    
+    protected $lookAhead = null;
+    protected $output = '';
+
     /**
-     * Minify Javascript
+     * Minify Javascript.
      *
      * @param string $js Javascript to be minified
+     *
      * @return string
      */
     public static function minify($js)
     {
-        $jsmin = new JSMin($js);
+        $jsmin = new self($js);
+
         return $jsmin->min();
     }
-    
+
     /**
-     * Setup process
+     * Setup process.
      */
     public function __construct($input)
     {
-        $this->input       = str_replace("\r\n", "\n", $input);
+        $this->input = str_replace("\r\n", "\n", $input);
         $this->inputLength = strlen($this->input);
     }
-    
+
     /**
-     * Perform minification, return result
+     * Perform minification, return result.
      */
     public function min()
     {
@@ -95,24 +97,24 @@ class JSMin {
             return $this->output;
         }
         $this->action(self::ACTION_DELETE_A_B);
-        
+
         while ($this->a !== null) {
             // determine next command
             $command = self::ACTION_KEEP_A; // default
             if ($this->a === ' ') {
-                if (! $this->isAlphaNum($this->b)) {
+                if (!$this->isAlphaNum($this->b)) {
                     $command = self::ACTION_DELETE_A;
                 }
             } elseif ($this->a === "\n") {
                 if ($this->b === ' ') {
                     $command = self::ACTION_DELETE_A_B;
-                } elseif (false === strpos('{[(+-', $this->b) 
-                          && ! $this->isAlphaNum($this->b)) {
+                } elseif (false === strpos('{[(+-', $this->b)
+                          && !$this->isAlphaNum($this->b)) {
                     $command = self::ACTION_DELETE_A;
                 }
-            } elseif (! $this->isAlphaNum($this->a)) {
+            } elseif (!$this->isAlphaNum($this->a)) {
                 if ($this->b === ' '
-                    || ($this->b === "\n" 
+                    || ($this->b === "\n"
                         && (false === strpos('}])+-"\'', $this->a)))) {
                     $command = self::ACTION_DELETE_A_B;
                 }
@@ -120,9 +122,10 @@ class JSMin {
             $this->action($command);
         }
         $this->output = trim($this->output);
+
         return $this->output;
     }
-    
+
     /**
      * ACTION_KEEP_A = Output A. Copy B to A. Get the next B.
      * ACTION_DELETE_A = Copy B to A. Get the next B.
@@ -140,18 +143,18 @@ class JSMin {
                     $str = $this->a; // in case needed for exception
                     while (true) {
                         $this->output .= $this->a;
-                        $this->a       = $this->get();
+                        $this->a = $this->get();
                         if ($this->a === $this->b) { // end quote
                             break;
                         }
                         if (ord($this->a) <= self::ORD_LF) {
                             throw new JSMin_UnterminatedStringException(
-                                'Unterminated String: ' . var_export($str, true));
+                                'Unterminated String: '.var_export($str, true));
                         }
                         $str .= $this->a;
                         if ($this->a === '\\') {
                             $this->output .= $this->a;
-                            $this->a       = $this->get();
+                            $this->a = $this->get();
                             $str .= $this->a;
                         }
                     }
@@ -160,7 +163,7 @@ class JSMin {
             case self::ACTION_DELETE_A_B:
                 $this->b = $this->next();
                 if ($this->b === '/' && $this->isRegexpLiteral()) { // RegExp literal
-                    $this->output .= $this->a . $this->b;
+                    $this->output .= $this->a.$this->b;
                     $pattern = '/'; // in case needed for exception
                     while (true) {
                         $this->a = $this->get();
@@ -169,11 +172,11 @@ class JSMin {
                             break; // while (true)
                         } elseif ($this->a === '\\') {
                             $this->output .= $this->a;
-                            $this->a       = $this->get();
-                            $pattern      .= $this->a;
+                            $this->a = $this->get();
+                            $pattern .= $this->a;
                         } elseif (ord($this->a) <= self::ORD_LF) {
                             throw new JSMin_UnterminatedRegExpException(
-                                'Unterminated RegExp: '. var_export($pattern, true));
+                                'Unterminated RegExp: '.var_export($pattern, true));
                         }
                         $this->output .= $this->a;
                     }
@@ -182,7 +185,7 @@ class JSMin {
             // end case ACTION_DELETE_A_B
         }
     }
-    
+
     protected function isRegexpLiteral()
     {
         if (false !== strpos("\n{;(,=:[!&|?", $this->a)) { // we aren't dividing
@@ -199,15 +202,16 @@ class JSMin {
                     return true;
                 }
                 // make sure it's a keyword, not end of an identifier
-                $charBeforeKeyword = substr($this->output, $length - strlen($m[0]) - 1, 1);
-                if (! $this->isAlphaNum($charBeforeKeyword)) {
+                $charBeforeKeyword = mb_substr($this->output, $length - strlen($m[0]) - 1, 1);
+                if (!$this->isAlphaNum($charBeforeKeyword)) {
                     return true;
                 }
             }
         }
+
         return false;
     }
-    
+
     /**
      * Get next char. Convert ctrl char to space.
      */
@@ -220,7 +224,7 @@ class JSMin {
                 $c = $this->input[$this->inputIndex];
                 $this->inputIndex += 1;
             } else {
-                return null;
+                return;
             }
         }
         if ($c === "\r" || $c === "\n") {
@@ -229,26 +233,28 @@ class JSMin {
         if (ord($c) < self::ORD_SPACE) { // control char
             return ' ';
         }
+
         return $c;
     }
-    
+
     /**
      * Get next char. If is ctrl character, translate to a space or newline.
      */
     protected function peek()
     {
         $this->lookAhead = $this->get();
+
         return $this->lookAhead;
     }
-    
+
     /**
      * Is $c a letter, digit, underscore, dollar sign, escape, or non-ASCII?
      */
     protected function isAlphaNum($c)
     {
-        return (preg_match('/^[0-9a-zA-Z_\\$\\\\]$/', $c) || ord($c) > 126);
+        return preg_match('/^[0-9a-zA-Z_\\$\\\\]$/', $c) || ord($c) > 126;
     }
-    
+
     protected function singleLineComment()
     {
         $comment = '';
@@ -260,11 +266,12 @@ class JSMin {
                 if (preg_match('/^\\/@(?:cc_on|if|elif|else|end)\\b/', $comment)) {
                     return "/{$comment}";
                 }
+
                 return $get;
             }
         }
     }
-    
+
     protected function multipleLineComment()
     {
         $this->get();
@@ -276,21 +283,22 @@ class JSMin {
                     $this->get();
                     // if comment preserved by YUI Compressor
                     if (0 === strpos($comment, '!')) {
-                        return "\n/*" . substr($comment, 1) . "*/\n";
+                        return "\n/*".mb_substr($comment, 1)."*/\n";
                     }
                     // if IE conditional comment
                     if (preg_match('/^@(?:cc_on|if|elif|else|end)\\b/', $comment)) {
                         return "/*{$comment}*/";
                     }
+
                     return ' ';
                 }
             } elseif ($get === null) {
-                throw new JSMin_UnterminatedCommentException('Unterminated Comment: ' . var_export('/*' . $comment, true));
+                throw new JSMin_UnterminatedCommentException('Unterminated Comment: '.var_export('/*'.$comment, true));
             }
             $comment .= $get;
         }
     }
-    
+
     /**
      * Get the next character, skipping over comments.
      * Some comments may be preserved.
@@ -309,6 +317,12 @@ class JSMin {
     }
 }
 
-class JSMin_UnterminatedStringException extends Exception {}
-class JSMin_UnterminatedCommentException extends Exception {}
-class JSMin_UnterminatedRegExpException extends Exception {}
+class JSMin_UnterminatedStringException extends Exception
+{
+}
+class JSMin_UnterminatedCommentException extends Exception
+{
+}
+class JSMin_UnterminatedRegExpException extends Exception
+{
+}

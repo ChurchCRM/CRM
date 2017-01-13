@@ -4,120 +4,118 @@ namespace ChurchCRM;
 
 class ISTAddressLookup
 {
-
-  // This code is written to work with XML lookups provide by
+    // This code is written to work with XML lookups provide by
   // Intelligent Search Technology, Ltd.
   // https://www.intelligentsearch.com/Hosted/User/
 
-  function GetAddress1()
+  public function GetAddress1()
   {
-    return $this->DeliveryLine1;
+      return $this->DeliveryLine1;
   }
 
-  function GetAddress2()
-  {
-    return $this->DeliveryLine2;
-  }
+    public function GetAddress2()
+    {
+        return $this->DeliveryLine2;
+    }
 
-  function GetCity()
-  {
-    return $this->City;
-  }
+    public function GetCity()
+    {
+        return $this->City;
+    }
 
-  function GetState()
-  {
-    return $this->State;
-  }
+    public function GetState()
+    {
+        return $this->State;
+    }
 
-  function GetZip()
-  {
-    return $this->ZipAddon;
-  }
+    public function GetZip()
+    {
+        return $this->ZipAddon;
+    }
 
-  function GetZip5()
-  {
-    return $this->Zip;
-  }
+    public function GetZip5()
+    {
+        return $this->Zip;
+    }
 
-  function GetZip4()
-  {
-    return $this->Addon;
-  }
+    public function GetZip4()
+    {
+        return $this->Addon;
+    }
 
-  function GetLOTNumber()
-  {
-    return $this->LOTNumber;
-  }
+    public function GetLOTNumber()
+    {
+        return $this->LOTNumber;
+    }
 
-  function GetDPCCheckdigit()
-  {
-    return $this->DPCCheckdigit;
-  }
+    public function GetDPCCheckdigit()
+    {
+        return $this->DPCCheckdigit;
+    }
 
-  function GetRecordType()
-  {
-    return $this->RecordType;
-  }
+    public function GetRecordType()
+    {
+        return $this->RecordType;
+    }
 
-  function GetLastLine()
-  {
-    return $this->LastLine;
-  }
+    public function GetLastLine()
+    {
+        return $this->LastLine;
+    }
 
-  function GetCarrierRoute()
-  {
-    return $this->CarrierRoute;
-  }
+    public function GetCarrierRoute()
+    {
+        return $this->CarrierRoute;
+    }
 
-  function GetReturnCode()
-  {
-    return $this->ReturnCode;
-  }
+    public function GetReturnCode()
+    {
+        return $this->ReturnCode;
+    }
 
-  function GetReturnCodes()
-  {
-    return $this->ReturnCodes;
-  }
+    public function GetReturnCodes()
+    {
+        return $this->ReturnCodes;
+    }
 
-  function GetErrorCodes()
-  {
-    return $this->ErrorCodes;
-  }
+    public function GetErrorCodes()
+    {
+        return $this->ErrorCodes;
+    }
 
-  function GetErrorDesc()
-  {
-    return $this->ErrorDesc;
-  }
+    public function GetErrorDesc()
+    {
+        return $this->ErrorDesc;
+    }
 
-  function GetSearchesLeft()
-  {
-    return $this->SearchesLeft;
-  }
+    public function GetSearchesLeft()
+    {
+        return $this->SearchesLeft;
+    }
 
-  function SetAddress($address1, $address2, $city, $state)
-  {
-    $this->address1 = trim($address1);
-    $this->address2 = trim($address2);
-    $this->city = trim($city);
-    $this->state = trim($state);
-  }
+    public function SetAddress($address1, $address2, $city, $state)
+    {
+        $this->address1 = trim($address1);
+        $this->address2 = trim($address2);
+        $this->city = trim($city);
+        $this->state = trim($state);
+    }
 
-  function getAccountInfo($sISTusername, $sISTpassword)
-  {
-    // Returns account related information.  Currently, it is used to retrieve
+    public function getAccountInfo($sISTusername, $sISTpassword)
+    {
+        // Returns account related information.  Currently, it is used to retrieve
     // remaining number of transactions.  Return codes are:
-    // 0 - information retrieved successfully 
+    // 0 - information retrieved successfully
     // 1 - invalid account
     // 2 - account is disabled
     // 3 - account does not have access to CorrectAddress(R) XML web services
     // 4 - unspecified error
 
     $base = 'https://www.intelligentsearch.com/CorrectAddressWS/';
-    $base .= 'CorrectAddressWebService.asmx/wsGetAccountInfo';
+        $base .= 'CorrectAddressWebService.asmx/wsGetAccountInfo';
 
-
-    $query_string = '';
-    $XmlArray = NULL;
+        $query_string = '';
+        $XmlArray = null;
 
     //NOTE: Fields with * sign are required.
     //intializing the parameters
@@ -125,43 +123,38 @@ class ISTAddressLookup
     $username = $sISTusername;                //  * (Type your username)
     $password = $sISTpassword;                //  * (Type your password)
 
-    $params = array(
+    $params = [
         'username' => $username,
-        'password' => $password
-    );
+        'password' => $password,
+    ];
 
-    $query_string = 'username=' . $username . '&password=' . $password;
+        $query_string = 'username='.$username.'&password='.$password;
 
-    $url = "$base?$query_string";
+        $url = "$base?$query_string";
 
-    $response = file_get_contents($url);
+        $response = file_get_contents($url);
 
 //        $fp = fopen('/path/to/debug/file.txt', 'w+');
 //        fwrite($fp, $response . "\n" . $url);
 //        fclose($fp);
     // Initialize return values to NULL
     $this->SearchesLeft = '';
-    $this->ReturnCode = '';
+        $this->ReturnCode = '';
 
-    if (!$response)
-    {
-      $this->ReturnCode = '9';
-      $this->SearchesLeft = 'Connection failure: ' . $base . '<br>';
-      $this->SearchesLeft .= ' Incorrect server name and/or path or server unavailable.<br>';
+        if (!$response) {
+            $this->ReturnCode = '9';
+            $this->SearchesLeft = 'Connection failure: '.$base.'<br>';
+            $this->SearchesLeft .= ' Incorrect server name and/or path or server unavailable.<br>';
 
       // This feature requires that "allow_url_fopen = On" in the php.ini file.
-      if (!ini_get('allow_url_fopen'))
-      {
-        $this->SearchesLeft .= '<br>IMPORTANT: This feature requires "allow_url_fopen = On" in php.ini';
-        $this->SearchesLeft .= '<br>Please check your php.ini file for "allow_url_fopen"<br>';
+      if (!ini_get('allow_url_fopen')) {
+          $this->SearchesLeft .= '<br>IMPORTANT: This feature requires "allow_url_fopen = On" in php.ini';
+          $this->SearchesLeft .= '<br>Please check your php.ini file for "allow_url_fopen"<br>';
       }
-    }
-    else
-    {
-      $this->ReturnCode = XMLparseIST($response, 'ReturnCode');
+        } else {
+            $this->ReturnCode = XMLparseIST($response, 'ReturnCode');
 
-      switch($this->ReturnCode)
-      {
+            switch ($this->ReturnCode) {
         case '0':
           $this->SearchesLeft = XMLparseIST($response, 'SearchesLeft');
           break;
@@ -179,21 +172,20 @@ class ISTAddressLookup
           $this->SearchesLeft = 'Error';
           break;
       }
+        }
     }
-  }
 
-  function wsCorrectA($sISTusername, $sISTpassword)
-  {
+    public function wsCorrectA($sISTusername, $sISTpassword)
+    {
 
     // Lookup and Correct US address
 
     $base = 'https://www.intelligentsearch.com/CorrectAddressWS/';
-    $base .= 'CorrectAddressWebService.asmx/wsCorrectA';
+        $base .= 'CorrectAddressWebService.asmx/wsCorrectA';
 //        $base    .= "CorrectAddressWebService.asmx/wsTigerCA";
 
-
     $query_string = '';
-    $XmlArray = NULL;
+        $XmlArray = null;
 
     //NOTE: Fields with * sign are required.
     //intializing the parameters
@@ -204,97 +196,90 @@ class ISTAddressLookup
     $urbanization = '';                           // optional
     $delivery_line_1 = $this->address1;              //  * (Type the street address1)
     $delivery_line_2 = $this->address2;                  // optional
-    $city_state_zip = $this->city . ' ' . $this->state; //  *
-    $ca_codes = '128            135         139'; //  * 
+    $city_state_zip = $this->city.' '.$this->state; //  *
+    $ca_codes = '128            135         139'; //  *
     $ca_filler = '';                              //  *
     $batchname = '';                               // optional
 
-
-    $params = array(
-        'username' => $username,
-        'password' => $password,
-        'firmname' => $firmname,
-        'urbanization' => $urbanization,
+    $params = [
+        'username'        => $username,
+        'password'        => $password,
+        'firmname'        => $firmname,
+        'urbanization'    => $urbanization,
         'delivery_line_1' => $delivery_line_1,
         'delivery_line_2' => $delivery_line_2,
-        'city_state_zip' => $city_state_zip,
-        'ca_codes' => $ca_codes,
-        'ca_filler' => $ca_filler,
-        'batchname' => $batchname
-    );
+        'city_state_zip'  => $city_state_zip,
+        'ca_codes'        => $ca_codes,
+        'ca_filler'       => $ca_filler,
+        'batchname'       => $batchname,
+    ];
 
-    foreach ($params as $key => $value)
-    {
-      $query_string .= "$key=" . urlencode($value) . "&";
-    }
+        foreach ($params as $key => $value) {
+            $query_string .= "$key=".urlencode($value).'&';
+        }
 
-    $url = "$base?$query_string";
+        $url = "$base?$query_string";
 
-    $response = file_get_contents($url);
+        $response = file_get_contents($url);
 
 //        $fp = fopen('/var/www/html/message.txt', 'w+');
 //        fwrite($fp, $response . "\n" . $url);
 //        fclose($fp);
     // Initialize return values
     $this->DeliveryLine1 = '';
-    $this->DeliveryLine2 = '';
-    $this->City = '';
-    $this->State = '';
-    $this->ZipAddon = '';
-    $this->Zip = '';
-    $this->Addon = '';
-    $this->LOTNumber = '';
-    $this->DPCCheckdigit = '';
-    $this->RecordType = '';
-    $this->LastLine = '';
-    $this->CarrierRoute = '';
-    $this->ReturnCodes = '';
-    $this->ErrorCodes = '';
-    $this->ErrorDesc = '';
-    $this->SearchesLeft = '';
+        $this->DeliveryLine2 = '';
+        $this->City = '';
+        $this->State = '';
+        $this->ZipAddon = '';
+        $this->Zip = '';
+        $this->Addon = '';
+        $this->LOTNumber = '';
+        $this->DPCCheckdigit = '';
+        $this->RecordType = '';
+        $this->LastLine = '';
+        $this->CarrierRoute = '';
+        $this->ReturnCodes = '';
+        $this->ErrorCodes = '';
+        $this->ErrorDesc = '';
+        $this->SearchesLeft = '';
 
-    if (!$response)
-    {
-      $this->DeliveryLine1 = "Connection failure.\n";
-      $this->DeliveryLine1 .= $base . "\n";
-      $this->DeliveryLine1 .= 'Incorrect server name and/or path or server unavailable.';
-      $this->ErrorCodes = 'xx';
-      $this->ErrorDesc = 'Incorrect server name and/or path or server unavailable.';
-      $this->SearchesLeft = '0';
-    }
-    else
-    {
-      $this->DeliveryLine1 = XMLparseIST($response, 'DeliveryLine1');
-      $this->DeliveryLine2 = XMLparseIST($response, 'DeliveryLine2');
-      $this->City = XMLparseIST($response, 'City');
-      $this->State = XMLparseIST($response, 'State');
-      $this->ZipAddon = XMLparseIST($response, 'ZipAddon');
-      $this->Zip = XMLparseIST($response, 'Zip');
-      $this->Addon = XMLparseIST($response, 'Addon');
-      $this->LOTNumber = XMLparseIST($response, 'LOTNumber');
-      $this->DPCCheckdigit = XMLparseIST($response, 'DPCCheckdigit');
-      $this->RecordType = XMLparseIST($response, 'RecordType');
-      $this->LastLine = XMLparseIST($response, 'LastLine');
-      $this->CarrierRoute = XMLparseIST($response, 'CarrierRoute');
-      $this->ReturnCodes = XMLparseIST($response, 'ReturnCodes');
-      $this->ErrorCodes = XMLparseIST($response, 'ErrorCodes');
-      $this->ErrorDesc = XMLparseIST($response, 'ErrorDesc');
-      $this->SearchesLeft = XMLparseIST($response, 'SearchesLeft');
+        if (!$response) {
+            $this->DeliveryLine1 = "Connection failure.\n";
+            $this->DeliveryLine1 .= $base."\n";
+            $this->DeliveryLine1 .= 'Incorrect server name and/or path or server unavailable.';
+            $this->ErrorCodes = 'xx';
+            $this->ErrorDesc = 'Incorrect server name and/or path or server unavailable.';
+            $this->SearchesLeft = '0';
+        } else {
+            $this->DeliveryLine1 = XMLparseIST($response, 'DeliveryLine1');
+            $this->DeliveryLine2 = XMLparseIST($response, 'DeliveryLine2');
+            $this->City = XMLparseIST($response, 'City');
+            $this->State = XMLparseIST($response, 'State');
+            $this->ZipAddon = XMLparseIST($response, 'ZipAddon');
+            $this->Zip = XMLparseIST($response, 'Zip');
+            $this->Addon = XMLparseIST($response, 'Addon');
+            $this->LOTNumber = XMLparseIST($response, 'LOTNumber');
+            $this->DPCCheckdigit = XMLparseIST($response, 'DPCCheckdigit');
+            $this->RecordType = XMLparseIST($response, 'RecordType');
+            $this->LastLine = XMLparseIST($response, 'LastLine');
+            $this->CarrierRoute = XMLparseIST($response, 'CarrierRoute');
+            $this->ReturnCodes = XMLparseIST($response, 'ReturnCodes');
+            $this->ErrorCodes = XMLparseIST($response, 'ErrorCodes');
+            $this->ErrorDesc = XMLparseIST($response, 'ErrorDesc');
+            $this->SearchesLeft = XMLparseIST($response, 'SearchesLeft');
 
 //            if(strlen(XMLparseIST($response,"ErrorCodes"))){
 //                if (XMLparseIST($response,"ErrorCodes") != "x1x2") {
 //                    $this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorCodes");
 //                    $this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorDesc");
 //                }
-//            } 
-//            if (XMLparseIST($response,"ReturnCodes") > 1) {    
+//            }
+//            if (XMLparseIST($response,"ReturnCodes") > 1) {
 //                $this->DeliveryLine1 .= " Multiple matches.  Unable to determine proper match.";
 //            }
 //            if (XMLparseIST($response,"ReturnCodes") < 1) {
 //                $this->DeliveryLine1 .= " No match found.";
 //            }
+        }
     }
-  }
-
 }
-?>

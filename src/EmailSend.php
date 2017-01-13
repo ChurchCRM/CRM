@@ -30,7 +30,7 @@
 
 // The log files are useful when debugging email problems.  In particular, problems
 // with SMTP servers.
-$bEmailLog = FALSE;
+$bEmailLog = false;
 
 // Include the function library
 require 'Include/Config.php';
@@ -42,8 +42,7 @@ $iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
 
 // Security: Both global and user permissions needed to send email.
 // Otherwise, re-direct them to the main menu.
-if (!(SystemConfig::getValue("bEmailSend") && $bSendPHPMail))
-{
+if (!(SystemConfig::getValue('bEmailSend') && $bSendPHPMail)) {
     Redirect('Menu.php');
     exit;
 }
@@ -65,15 +64,15 @@ function ClearEmailLog()
     $tUsec = str_pad($tSystem['usec'], 6, '0');
 
     $sSQL = "CREATE TABLE IF NOT EXISTS email_job_log_$iUserID ( ".
-            " ejl_id mediumint(9) unsigned NOT NULL auto_increment, ".
+            ' ejl_id mediumint(9) unsigned NOT NULL auto_increment, '.
             " ejl_time varchar(20) NOT NULL DEFAULT '', ".
             " ejl_usec varchar(6) NOT NULL DEFAULT '', ".
             " ejl_text text NOT NULL DEFAULT '', PRIMARY KEY (ejl_id) ".
-            ") ENGINE=MyISAM";
+            ') ENGINE=MyISAM';
     RunQuery($sSQL);
 
-    $sSQL = "INSERT INTO email_job_log_$iUserID ". 
-            "SET ejl_text='".mysqli_real_escape_string($cnInfoCentral, $sMessage)."', ". 
+    $sSQL = "INSERT INTO email_job_log_$iUserID ".
+            "SET ejl_text='".mysqli_real_escape_string($cnInfoCentral, $sMessage)."', ".
             "    ejl_time='$tSec', ".
             "    ejl_usec='$tUsec'";
 
@@ -87,8 +86,8 @@ function AddToEmailLog($sMessage, $iUserID)
     $tSec = $tSystem['sec'];
     $tUsec = str_pad($tSystem['usec'], 6, '0');
 
-    $sSQL = "INSERT INTO email_job_log_$iUserID ". 
-            "SET ejl_text='".mysqli_real_escape_string($cnInfoCentral, $sMessage)."', ". 
+    $sSQL = "INSERT INTO email_job_log_$iUserID ".
+            "SET ejl_text='".mysqli_real_escape_string($cnInfoCentral, $sMessage)."', ".
             "    ejl_time='$tSec', ".
             "    ejl_usec='$tUsec'";
 
@@ -97,7 +96,6 @@ function AddToEmailLog($sMessage, $iUserID)
 
 function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 {
-
     global $sFromEmailAddress;
     global $sFromName;
     global $sLangCode;
@@ -129,49 +127,50 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
 
     // Set the language for PHPMailer
     $mail->SetLanguage($sLangCode, $sLanguagePath);
-    if($mail->IsError())
+    if ($mail->IsError()) {
         echo 'PHPMailer Error with SetLanguage().  Other errors (if any) may not report.<br>';
+    }
 
     $mail->CharSet = 'utf-8';
 
     $mail->From = $sFromEmailAddress;   // From email address (User Settings)
     $mail->FromName = $sFromName;       // From name (User Settings)
 
-    if ($hasAttach)
-    	$mail->AddAttachment ("tmp_attach/".$attachName);
+    if ($hasAttach) {
+        $mail->AddAttachment('tmp_attach/'.$attachName);
+    }
 
-    if (strtolower(SystemConfig::getValue("sSendType"))=='smtp') {
-
+    if (strtolower(SystemConfig::getValue('sSendType')) == 'smtp') {
         $mail->IsSMTP();                    // tell the class to use SMTP
         $mail->SMTPKeepAlive = true;        // keep connection open until last email sent
-        $mail->SMTPAuth = SystemConfig::getValue("sSMTPAuth");       // Server requires authentication
+        $mail->SMTPAuth = SystemConfig::getValue('sSMTPAuth');       // Server requires authentication
 
-        if (SystemConfig::getValue("sSMTPAuth")) {
-            $mail->Username = SystemConfig::getValue("sSMTPUser");   // SMTP username
-            $mail->Password = SystemConfig::getValue("sSMTPPass");   // SMTP password
+        if (SystemConfig::getValue('sSMTPAuth')) {
+            $mail->Username = SystemConfig::getValue('sSMTPUser');   // SMTP username
+            $mail->Password = SystemConfig::getValue('sSMTPPass');   // SMTP password
         }
 
-        $delimeter = strpos(SystemConfig::getValue("sSMTPHost"), ':');
-        if ($delimeter === FALSE) {
+        $delimeter = strpos(SystemConfig::getValue('sSMTPHost'), ':');
+        if ($delimeter === false) {
             $sSMTPPort = 25;                // Default port number
         } else {
         }
 
-        if (is_int($sSMTPPort))
+        if (is_int($sSMTPPort)) {
             $mail->Port = $sSMTPPort;
-        else
+        } else {
             $mail->Port = 25;
+        }
 
-        $mail->Host = SystemConfig::getValue("sSMTPHost");           // SMTP server name
+        $mail->Host = SystemConfig::getValue('sSMTPHost');           // SMTP server name
     } else {
         $mail->IsSendmail();                // tell the class to use Sendmail
     }
 
-    $bContinue = TRUE;
+    $bContinue = true;
     $sLoopTimeout = 30; // Break out of loop if this time is exceeded
     $iMaxAttempts = 3;  // Error out if an email address fails 3 times
-    while ($bContinue)
-    {   // Three ways to get out of this loop
+    while ($bContinue) {   // Three ways to get out of this loop
         // 1.  We're finished sending email
         // 2.  Time exceeds $sLoopTimeout
         // 3.  Something strange happens
@@ -191,14 +190,13 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
         } else {
             $erp_email_address = $sRecipient;
             $mail->AddAddress($erp_email_address);
-            $bContinue = FALSE; // Just sending one email
+            $bContinue = false; // Just sending one email
         }
 
-        if(!$mail->Send()) {
+        if (!$mail->Send()) {
 
             // failed- make a note in the log and the recipient record
             if ($sRecipient == 'get_recipients_from_mysql') {
-
                 $sMsg = "Failed sending to: $erp_email_address ";
                 $sMsg .= $mail->ErrorInfo;
                 echo "$sMsg<br>\n";
@@ -220,22 +218,18 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
                                 // The mail server may be having a temporary problem
                 } else {
                     $_SESSION['sEmailState'] = 'error';
-                    $bContinue = FALSE;
+                    $bContinue = false;
                     $sMsg = 'Too many failures. Giving up. You may try to resume later.';
                     AddToEmailLog($sMsg, $iUserID);
                 }
-
             } else {
-
                 $sMsg = "Failed sending to: $sRecipient ";
                 $sMsg .= $mail->ErrorInfo;
                 echo "$sMsg<br>\n";
                 AddToEmailLog($sMsg, $iUserID);
             }
         } else {
-
             if ($sRecipient == 'get_recipients_from_mysql') {
-
                 echo "<b>$erp_email_address</b> Sent! <br>\n";
 
                 $sMsg = "Email sent to: $erp_email_address";
@@ -246,12 +240,10 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
                         "WHERE erp_email_address='$erp_email_address'";
                 RunQuery($sSQL);
             } else {
-
                 echo "<b>$sRecipient</b> Sent! <br>\n";
 
                 $sMsg = "Email sent to: $erp_email_address";
                 AddToEmailLog($sMsg, $iUserID);
-
             }
         }
         $mail->ClearAddresses();
@@ -261,7 +253,7 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
         extract(mysqli_fetch_array(RunQuery($sSQL_ERP))); // this query counts remaining recipient records
 
         if (($sRecipient == 'get_recipients_from_mysql') && ($countrecipients == 0)) {
-            $bContinue = FALSE;
+            $bContinue = false;
             $_SESSION['sEmailState'] = 'finish';
             AddToEmailLog('Job Finished', $iUserID);
         }
@@ -270,20 +262,19 @@ function SendEmail($sSubject, $sMessage, $attachName, $hasAttach, $sRecipient)
             // bail out of this loop if we've taken more than $sLoopTimeout seconds.
             // The meta refresh will reload this page so we can pick up where
             // we left off
-            $bContinue = FALSE;
+            $bContinue = false;
         }
     }
 
-    if (strtolower(SystemConfig::getValue("sSendType")) == 'smtp')
+    if (strtolower(SystemConfig::getValue('sSendType')) == 'smtp') {
         $mail->SmtpClose();
-
+    }
 } // end of function SendEmail()
 
-
 // Create log table if it does not already exist
-$bTableExists = FALSE;
-if(mysqli_num_rows(mysqli_query($cnInfoCentral, "SHOW TABLES LIKE 'email_job_log_$iUserID'")) == 1 ) {
-    $bTableExists = TRUE;
+$bTableExists = false;
+if (mysqli_num_rows(mysqli_query($cnInfoCentral, "SHOW TABLES LIKE 'email_job_log_$iUserID'")) == 1) {
+    $bTableExists = true;
 }
 
 if (!$bTableExists) {
@@ -291,7 +282,7 @@ if (!$bTableExists) {
     ClearEmailLog();
 }
 
-if (array_key_exists ('resume', $_POST) && $_POST['resume'] == 'true') {
+if (array_key_exists('resume', $_POST) && $_POST['resume'] == 'true') {
     // If we are resuming skip the 'start' state and go straight to 'continue'
     $_SESSION['sEmailState'] = 'continue';
 
@@ -306,7 +297,7 @@ if (array_key_exists ('resume', $_POST) && $_POST['resume'] == 'true') {
     RunQuery($sSQL);
 }
 
-if (array_key_exists ('abort', $_POST) && $_POST['abort'] == 'true') {
+if (array_key_exists('abort', $_POST) && $_POST['abort'] == 'true') {
     // If user chooses to abort the print job be sure to erase all evidence and
     // Redirect to main menu
 
@@ -331,46 +322,45 @@ if (array_key_exists ('abort', $_POST) && $_POST['abort'] == 'true') {
 $sPHPMailerPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'Include'
 .DIRECTORY_SEPARATOR.'phpmailer'.DIRECTORY_SEPARATOR;
 $sIncludePath = '.'.PATH_SEPARATOR.$sPHPMailerPath;
-ini_set('include_path',$sIncludePath);
+ini_set('include_path', $sIncludePath);
 // The include_path will automatically be restored upon completion of this script
 // *****
 
-$bHavePHPMailerClass = FALSE;
-$bHaveSMTPClass = FALSE;
-$bHavePHPMailerLanguage = FALSE;
+$bHavePHPMailerClass = false;
+$bHaveSMTPClass = false;
+$bHavePHPMailerLanguage = false;
 
-$sLangCode = substr(SystemConfig::getValue("sLanguage"), 0, 2); // Strip the language code from the beginning of the language_country code
+$sLangCode = mb_substr(SystemConfig::getValue('sLanguage'), 0, 2); // Strip the language code from the beginning of the language_country code
 
 $sPHPMailerClass = $sPHPMailerPath.'class.phpmailer.php';
 if (file_exists($sPHPMailerClass) && is_readable($sPHPMailerClass)) {
-    require_once ($sPHPMailerClass);
-    $bHavePHPMailerClass = TRUE;
+    require_once $sPHPMailerClass;
+    $bHavePHPMailerClass = true;
     $sFoundPHPMailerClass = $sPHPMailerClass;
 }
 
 $sSMTPClass = $sPHPMailerPath.'class.smtp.php';
 if (file_exists($sSMTPClass) && is_readable($sSMTPClass)) {
-    require_once ($sSMTPClass);
-    $bHaveSMTPClass = TRUE;
+    require_once $sSMTPClass;
+    $bHaveSMTPClass = true;
     $sFoundSMTPClass = $sSMTPClass;
 }
 
 $sTestLanguageFile = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR
 .'phpmailer.lang-'.$sLangCode.'.php';
-if (!strcmp($sLangCode, "en")) {
-    $bHavePHPMailerLanguage = TRUE;
-    $sFoundLanguageFile = "Not needed for English";
+if (!strcmp($sLangCode, 'en')) {
+    $bHavePHPMailerLanguage = true;
+    $sFoundLanguageFile = 'Not needed for English';
 } elseif (file_exists($sTestLanguageFile) && is_readable($sTestLanguageFile)) {
     $sLanguagePath = $sPHPMailerPath.'language'.DIRECTORY_SEPARATOR;
-    $bHavePHPMailerLanguage = TRUE;
+    $bHavePHPMailerLanguage = true;
     $sFoundLanguageFile = $sTestLanguageFile;
 }
 
 // This value is checked after the header is printed
 $bPHPMAILER_Installed = $bHavePHPMailerClass && $bHaveSMTPClass && $bHavePHPMailerLanguage;
 
-$bMetaRefresh = FALSE; // Assume page does not need refreshing
-
+$bMetaRefresh = false; // Assume page does not need refreshing
 
 $sSQL = 'SELECT COUNT(emp_usr_id) as emp_count FROM email_message_pending_emp '.
         "WHERE emp_usr_id='$iUserID'";
@@ -390,7 +380,7 @@ $sSQL_EMP = 'SELECT * FROM email_message_pending_emp '.
             "WHERE emp_usr_id='$iUserID'";
 extract(mysqli_fetch_array(RunQuery($sSQL_EMP)));
 
-if ($emp_to_send==0 && $countrecipients==0) {
+if ($emp_to_send == 0 && $countrecipients == 0) {
     // If both are zero the email job has not started yet.
     // Begin by loading the list of recipients into MySQL.
     ClearEmailLog();  // Initialize Log
@@ -398,16 +388,14 @@ if ($emp_to_send==0 && $countrecipients==0) {
     $iEmailNum = 0;
     $email_array = $_POST['emaillist'];
 
-    if ( !is_array($email_array) ) {
-
+    if (!is_array($email_array)) {
         $sMsg = 'Error, cannot start. email_array is not an array';
         echo "<br>$sMsg<br>";
         AddToEmailLog($sMsg, $iUserID);
         $_SESSION['sEmailState'] = 'error';
     }
 
-    if ( !count($email_array) ) {
-
+    if (!count($email_array)) {
         $sMsg = 'Error, cannot start. email_array is empty';
         echo "<br>$sMsg<br>";
         AddToEmailLog($sMsg, $iUserID);
@@ -415,9 +403,7 @@ if ($emp_to_send==0 && $countrecipients==0) {
     }
 
     if ($_SESSION['sEmailState'] == 'start') {
-
-        foreach($email_array as $email_address) {
-
+        foreach ($email_array as $email_address) {
             $iEmailNum++;
             // Load MySQL with the list of addresses to be sent
             $sSQL = 'INSERT INTO email_recipient_pending_erp '.
@@ -437,16 +423,13 @@ if ($emp_to_send==0 && $countrecipients==0) {
         $countrecipients = $iEmailNum;
         AddToEmailLog('Job Started', $iUserID); // Initialize the log
     }
-
 } elseif ($countrecipients) {
-
-    if (!(array_key_exists ('viewlog', $_POST))) { // not ready to view the log so must be continuing
+    if (!(array_key_exists('viewlog', $_POST))) { // not ready to view the log so must be continuing
 
         $sMsg = 'Job continuing after page reload at '.date('Y-m-d H:i:s');
         AddToEmailLog($sMsg, $iUserID);
 
         if ($_SESSION['sEmailState'] != 'continue') {
-
             if ($_SESSION['sEmailState'] != 'error') {
                 $sMsg = 'Error on line '.__LINE__.' of file '.__FILE__;
                 AddToEmailLog($sMsg, $iUserID);
@@ -454,7 +437,6 @@ if ($emp_to_send==0 && $countrecipients==0) {
             }
         }
     }
-
 } else {
 
     // Should only get here if we are about to finish by sending the final email
@@ -468,17 +450,17 @@ if ($emp_to_send==0 && $countrecipients==0) {
 // Decide if we want this page to reload again
 $sEmailState = $_SESSION['sEmailState'];
 if ($sEmailState == 'start') {
-    $bMetaRefresh = TRUE;
+    $bMetaRefresh = true;
 } elseif ($sEmailState == 'continue') {
-    $bMetaRefresh = TRUE;
+    $bMetaRefresh = true;
 } elseif ($sEmailState == 'finish') {
     // Send the final email (don't load page again)
-    $bMetaRefresh = FALSE;
+    $bMetaRefresh = false;
 } else {
     // Don't load page again.
     // We are either in the error state or some other unknown state.
     $_SESSION['sEmailState'] = 'error';
-    $bMetaRefresh = FALSE;
+    $bMetaRefresh = false;
 }
 
 // Set a Meta Refresh in the header so this page automatically reloads
@@ -490,27 +472,29 @@ if ($bMetaRefresh) {
 $sPageTitle = gettext('Email Sent');
 require 'Include/Header.php';
 
-if(!$bPHPMAILER_Installed) {
-    echo    '<br>' . gettext('ERROR: PHPMailer is not properly installed on this server.')
-    .       '<br>' . gettext('PHPMailer is required in order to send emails from this server.');
+if (!$bPHPMAILER_Installed) {
+    echo    '<br>'.gettext('ERROR: PHPMailer is not properly installed on this server.')
+    .'<br>'.gettext('PHPMailer is required in order to send emails from this server.');
 
-    echo '<br><br>include_path = ' . ini_get('include_path');
+    echo '<br><br>include_path = '.ini_get('include_path');
 
-    if ($bHavePHPMailerClass)
-        echo '<br><br>Found: ' . $sFoundPHPMailerClass;
-    else
+    if ($bHavePHPMailerClass) {
+        echo '<br><br>Found: '.$sFoundPHPMailerClass;
+    } else {
         echo '<br><br>Unable to find file: class.phpmailer.php';
+    }
 
-
-    if ($bHaveSMTPClass)
-        echo '<br>Found: ' . $sFoundSMTPClass;
-    else
+    if ($bHaveSMTPClass) {
+        echo '<br>Found: '.$sFoundSMTPClass;
+    } else {
         echo '<br>Unable to find file: class.smtp.php';
+    }
 
-    if ($bHavePHPMailerLanguage)
-        echo '<br>Found: ' . $sFoundLanguageFile;
-    else
+    if ($bHavePHPMailerLanguage) {
+        echo '<br>Found: '.$sFoundLanguageFile;
+    } else {
         echo "<br>Unable to find file: phpmailer.lang-$sLangCode.php";
+    }
 
     exit;
 }
@@ -527,28 +511,23 @@ if ($sEmailState == 'continue') {
     $attachName = $emp_attach_name;
     $hasAttach = $emp_attach;
 
-
     // There must be more than one recipient
     if ($countrecipients) {
-
         echo '<br>Please be patient. Job is not finished.<br><br>';
         echo '<b>Please allow up to 60 seconds for page to reload.</b><br><br>';
 
         SendEmail($sSubject, $sMessage, $attachName, $hasAttach, 'get_recipients_from_mysql');
-
     } else {
         $_SESSION['sEmailState'] = 'finish';
     }
-
 } elseif ($sEmailState == 'start') {
 
     // send start message
 
     if ($countrecipients) {
-
         $sSubject = "Email job started at $tTimeStamp";
 
-        $sMessage = "Email job issued by ";
+        $sMessage = 'Email job issued by ';
         $sMessage .= $_SESSION['user']->getName();
         $sMessage .= " using:\n";
         $sMessage .= "From Name = $sFromName\n";
@@ -559,12 +538,12 @@ if ($sEmailState == 'continue') {
         $sMessage .= "\n\n";
 
         $sMessage .= "Job will attempt to send email to the following $countrecipients addresses ";
-        $sMessage .= "in this order";
+        $sMessage .= 'in this order';
         $sMessage .= "\n\n";
 
-        $sSQL = "SELECT * FROM email_recipient_pending_erp ".
+        $sSQL = 'SELECT * FROM email_recipient_pending_erp '.
                 "WHERE erp_usr_id='$iUserID' ".
-                "ORDER BY erp_id";
+                'ORDER BY erp_id';
 
         $rsERP = RunQuery($sSQL);
         while ($aRow = mysqli_fetch_array($rsERP)) {
@@ -579,45 +558,41 @@ if ($sEmailState == 'continue') {
             echo $sMsg.'<br><br>';
             AddToEmailLog($sMsg, $iUserID);
 
-            SendEmail($sSubject, $sMessage, "", 0, $sFromEmailAddress);
+            SendEmail($sSubject, $sMessage, '', 0, $sFromEmailAddress);
         }
 
         $_SESSION['sEmailState'] = 'continue';
 
         echo '<br><br>Please be patient. Job will begin when page reloads.<br><br>';
         echo '<b>Please allow up to 60 seconds for page to reload.</b><br>';
-
     } else {
-
         $_SESSION['sEmailState'] = 'error';
         $sSubject = "Email job aborted at $tTimeStamp";
         AddToEmailLog('Error: Attempted to send to empty distribution list', $iUserID);
-
     }
-
 } elseif ($sEmailState == 'finish') {
-
     $sSubject = "Email job finished at $tTimeStamp";
 
-    $sMessage = "Email job issued by ";
+    $sMessage = 'Email job issued by ';
     $sMessage .= $_SESSION['user']->getName();
     $sMessage .= " using:\n";
     $sMessage .= "From Name = $sFromName\n";
     $sMessage .= "From Address = $sFromEmailAddress\n";
 
-    $sSQL = "SELECT * FROM email_message_pending_emp ".
+    $sSQL = 'SELECT * FROM email_message_pending_emp '.
             "WHERE emp_usr_id='$iUserID'";
     extract(mysqli_fetch_array(RunQuery($sSQL)));
 
-	if (strlen($emp_attach_name)>0) // delete the attached file if there is one
-    	unlink ("tmp_attach/".$emp_attach_name);
+    if (strlen($emp_attach_name) > 0) { // delete the attached file if there is one
+        unlink('tmp_attach/'.$emp_attach_name);
+    }
 
     //    $sMessage .= "Email sent to $emp_num_sent email addresses.\n"; // $emp_num_sent not a field in email_message_pending_emp
     $sMessage .= "Email job finished at $tTimeStamp\n\n";
     $sMessage .= "Email job log:\n\n";
 
     $sSQL = "SELECT * FROM email_job_log_$iUserID ".
-            "ORDER BY ejl_id";
+            'ORDER BY ejl_id';
 
     $sHTMLLog = '<br><br><div align="center"><table>';
 
@@ -626,7 +601,7 @@ if ($sEmailState == 'continue') {
         extract($aRow);
 
         $sTime = date('i:s', intval($ejl_time)).'.';
-        $sTime .= substr($ejl_usec,0,3);
+        $sTime .= mb_substr($ejl_usec, 0, 3);
         $sMsg = $ejl_text;
         $sMessage .= $sTime.' '.$sMsg."\n";
         $sHTMLLog .= "<tr><td>$sTime</td><td>$sMsg</td></tr>\n";
@@ -639,20 +614,20 @@ if ($sEmailState == 'continue') {
         AddToEmailLog($sMsg, $iUserID);
 
         // Send end message
-        SendEmail($sSubject, $sMessage, "", 0, $sFromEmailAddress);
+        SendEmail($sSubject, $sMessage, '', 0, $sFromEmailAddress);
     }
     echo "<br><b>The job is finished!</b><br>\n";
 
     echo $sHTMLLog;
 
     // Delete message from emp
-    $sSQL = "DELETE FROM email_message_pending_emp ".
+    $sSQL = 'DELETE FROM email_message_pending_emp '.
             "WHERE emp_usr_id='$iUserID'";
     RunQuery($sSQL);
 
     // Delete recipients from erp (not really needed, this should have already happened)
     // (no harm in trying again)
-    $sSQL = "DELETE FROM email_recipient_pending_erp ".
+    $sSQL = 'DELETE FROM email_recipient_pending_erp '.
             "WHERE erp_usr_id='$iUserID'";
     RunQuery($sSQL);
 
@@ -660,13 +635,12 @@ if ($sEmailState == 'continue') {
     // $sSQL = "DROP TABLE IF EXISTS email_job_log_".$iUserID;
     // RunQuery($sSQL);
     // Don't do this, it will be dropped before this person sends the next email
-
 } elseif ($sEmailState == 'error') {
 
     // we're having trouble sending email.  Terminate, but leave
     // message and distribution list in MySQL
 
-    if (!(array_key_exists ('viewlog', $_POST) && $_POST['viewlog'] == 'true')) { // Don't add log entry if user is viewing the log
+    if (!(array_key_exists('viewlog', $_POST) && $_POST['viewlog'] == 'true')) { // Don't add log entry if user is viewing the log
         $sMsg = 'Job terminating due to error. You may try to resume later.';
         AddToEmailLog($sMsg, $iUserID);
     }
@@ -675,20 +649,19 @@ if ($sEmailState == 'continue') {
 
     $sSubject = "Email job terminated due to error at $tTimeStamp";
 
-    $sMessage = "Email job issued by ";
+    $sMessage = 'Email job issued by ';
     $sMessage .= $_SESSION['user']->getName();
     $sMessage .= " using:\n";
     $sMessage .= "From Name = $sFromName\n";
     $sMessage .= "From Address = $sFromEmailAddress\n";
 
-    $sSQL = "SELECT * FROM email_message_pending_emp ".
+    $sSQL = 'SELECT * FROM email_message_pending_emp '.
             "WHERE emp_usr_id='$iUserID'";
     extract(mysqli_fetch_array(RunQuery($sSQL)));
 
 //    $sMessage .= "Email sent to $emp_num_sent email addresses.\n"; // $emp_num_sent not a field in email_message_pending_emp
     $sMessage .= "Email job terminated at $tTimeStamp\n\n";
     $sMessage .= "Email job log:\n\n";
-
 
     $sSQL = "SELECT * FROM email_job_log_$iUserID ORDER BY ejl_id";
 
@@ -699,7 +672,7 @@ if ($sEmailState == 'continue') {
         extract($aRow);
 
         $sTime = date('i:s', intval($ejl_time)).'.';
-        $sTime .= substr($ejl_usec,0,3);
+        $sTime .= mb_substr($ejl_usec, 0, 3);
         $sMsg = $ejl_text;
         $sMessage .= $sTime.' '.$sMsg."\n";
         $sHTMLLog .= "<tr><td>$sTime</td><td>$sMsg</td></tr>\n";
@@ -711,9 +684,7 @@ if ($sEmailState == 'continue') {
 
     $sMsg = "Attempting to email log to $sFromEmailAddress\n";
     echo $sMsg.'<br>';
-    SendEmail($sSubject, $sMessage, "", 0, $sFromEmailAddress);
-
-
+    SendEmail($sSubject, $sMessage, '', 0, $sFromEmailAddress);
 } else {
 
     // we're in an undefined state
@@ -721,10 +692,9 @@ if ($sEmailState == 'continue') {
 
     $_SESSION['sEmailState'] = 'error';
     AddToEmailLog('Job in undefined state, attempt to save data and exit', $iUserID);
-
 }
 
 require 'Include/Footer.php';
 ?>
-            $sSMTPPort = substr(SystemConfig::getValue("sSMTPHost"), $delimeter+1);
-            $sSMTPHost = substr(SystemConfig::getValue("sSMTPHost"), 0, $delimeter);   
+            $sSMTPPort = mb_substr(SystemConfig::getValue("sSMTPHost"), $delimeter+1);
+            $sSMTPHost = mb_substr(SystemConfig::getValue("sSMTPHost"), 0, $delimeter);   

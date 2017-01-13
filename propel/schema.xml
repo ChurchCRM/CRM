@@ -717,6 +717,17 @@
         </vendor>
     </table>
 
+    <table name="tokens" idMethod="native" phpName="Token">
+        <column name="token" phpName="Token" type="VARCHAR" primaryKey="true" required="true"/>
+        <column name="type" phpName="Type" type="VARCHAR" required="true"/>
+        <column name="valid_until_date" phpName="ValidUntilDate" type="DATE"/>
+        <column name="reference_id" phpName="ReferenceId" type="INTEGER" defaultValue=""/>
+        <column name="remainingUses" phpName="RemainingUses" type="INTEGER" defaultValue="0"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+
     <!--
  <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
    <column name="lu_fam_ID" phpName="LuFamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>
