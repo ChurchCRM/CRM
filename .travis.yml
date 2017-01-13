@@ -50,3 +50,5 @@ deploy:
   script: npm run demosite
   on:
     branch: master
+  on:
+    branch: develop
