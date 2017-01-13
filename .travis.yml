@@ -49,4 +49,4 @@ deploy:
   provider: script
   script: npm run demosite
   on:
-    condition: "$TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH == 'develop'"
+    condition: " [ $TRAVIS_BRANCH == 'master' ] ||[ $TRAVIS_BRANCH = 'develop' ] "
