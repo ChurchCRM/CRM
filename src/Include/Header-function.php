@@ -42,8 +42,9 @@ function Header_head_metatag()
 
 }
 
-function Header_modals() {
-  ?>
+function Header_modals()
+{
+    ?>
 
   <!-- Issue Report Modal -->
   <div id="IssueReportModal" class="modal fade" role="dialog">
