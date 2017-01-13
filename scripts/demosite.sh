@@ -12,10 +12,15 @@ commitHash=`git log --pretty=format:'%H' -n 1`
 if [ -f $file  ]; then
 
   if [ -z ${demoKey} ]; then
+    demoKey=$demokey  
+  fi
+
+  if [ -z ${demoKey} ]; then
     echo -n "Enter the demo site hook password and press [ENTER]: "
     read demoKey
   fi
 
+  echo -n "Current branch is: $publishBranch"
 
   if  ! [[ $publishBranch == "develop" ||  $publishBranch == "master"  ]]; then
     echo -n "Current branch is not master or develop. Enter branch to emulate:  (develop)"

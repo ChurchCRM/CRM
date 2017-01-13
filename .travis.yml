@@ -47,6 +47,6 @@ before_deploy:
 deploy:
   skip_cleanup: true
   provider: script
-  script: npm run demosite ${demokey}
+  script: npm run demosite
   on:
     branch: master
