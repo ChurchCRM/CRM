@@ -20,6 +20,7 @@ class SystemService
     public function getLatestRelese()
     {
         $client = new Client();
+        //$client->authenticate('', null, Client::AUTH_HTTP_TOKEN);
         $release = null;
         try {
             $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
@@ -388,7 +389,13 @@ class SystemService
     {
         $release = $this->getLatestRelese();
         $UpgradeDir = SystemURLs::getDocumentRoot().'/Upgrade';
-        $url = $release['assets'][0]['browser_download_url'];
+        foreach ($release['assets'] as $asset)
+        {
+          if ($asset['name'] == "ChurchCRM-".$release['name'].".zip")
+          {
+            $url = $asset['browser_download_url'];
+          }
+        }
         mkdir($UpgradeDir);
         file_put_contents($UpgradeDir.'/'.basename($url), file_get_contents($url));
         $returnFile = [];
