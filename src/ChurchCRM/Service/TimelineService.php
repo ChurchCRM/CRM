@@ -10,7 +10,7 @@ use ChurchCRM\PersonQuery;
 class TimelineService
 {
     /* @var $currentUser \ChurchCRM\User */
-  private $currentUser;
+    private $currentUser;
 
     public function __construct()
     {
@@ -44,11 +44,14 @@ class TimelineService
         $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
         foreach ($eventsByPerson as $personEvent) {
             $event = $personEvent->getEvent();
-            $item = $this->createTimeLineItem('cal', $event->getStart('Y-m-d h:i:s'), $event->getTitle(), '',
-        $event->getDesc(), '', '');
-            $timeline[$item['key']] = $item;
+            if ($event != null) {
+                $item = $this->createTimeLineItem('cal',
+                    $event->getStart('Y-m-d h:i:s'),
+                    $event->getTitle(), '',
+                    $event->getDesc(), '', '');
+                $timeline[$item['key']] = $item;
+            }
         }
-
         return $timeline;
     }
 
@@ -56,7 +59,7 @@ class TimelineService
     {
         $timeline = [];
         $personQuery = NoteQuery::create()
-      ->filterByPerId($personID);
+            ->filterByPerId($personID);
         if ($noteType != null) {
             $personQuery->filterByType($noteType);
         }
@@ -92,62 +95,62 @@ class TimelineService
     public function getForPerson($personID)
     {
         $timeline = array_merge(
-      $this->notesForPerson($personID, null),
-      $this->eventsForPerson($personID)
-    );
+            $this->notesForPerson($personID, null),
+            $this->eventsForPerson($personID)
+        );
 
         return $this->sortTimeline($timeline);
     }
 
-  /**
-   * @param $dbNote Note
-   *
-   * @return mixed|null
-   */
-  public function noteToTimelineItem($dbNote)
-  {
-      $item = null;
-      if ($this->currentUser->isAdmin() || $dbNote->isVisable($this->currentUser->getPersonId())) {
-          $displayEditedBy = gettext('Unknown');
-          if ($dbNote->getDisplayEditedBy() == -1) {
-              $displayEditedBy = gettext('Self Registration');
-          } else {
-              $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
-              if ($editor != null) {
-                  $displayEditedBy = $editor->getFullName();
-              }
-          }
-          $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
-        gettext('by').' '.$displayEditedBy, '', $dbNote->getText(),
-        $dbNote->getEditLink(), $dbNote->getDeleteLink());
-      }
+    /**
+     * @param $dbNote Note
+     *
+     * @return mixed|null
+     */
+    public function noteToTimelineItem($dbNote)
+    {
+        $item = null;
+        if ($this->currentUser->isAdmin() || $dbNote->isVisable($this->currentUser->getPersonId())) {
+            $displayEditedBy = gettext('Unknown');
+            if ($dbNote->getDisplayEditedBy() == -1) {
+                $displayEditedBy = gettext('Self Registration');
+            } else {
+                $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
+                if ($editor != null) {
+                    $displayEditedBy = $editor->getFullName();
+                }
+            }
+            $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
+                gettext('by') . ' ' . $displayEditedBy, '', $dbNote->getText(),
+                $dbNote->getEditLink(), $dbNote->getDeleteLink());
+        }
 
-      return $item;
-  }
+        return $item;
+    }
 
     public function createTimeLineItem($type, $datetime, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
     {
         switch ($type) {
-      case 'create':
-        $item['style'] = 'fa-plus-circle bg-blue';
-        break;
-      case 'edit':
-        $item['style'] = 'fa-pencil bg-blue';
-        break;
-      case 'photo':
-        $item['style'] = 'fa-camera bg-green';
-        break;
-      case 'cal':
-        $item['style'] = 'fa-calendar bg-green';
-        break;
-      case 'verify':
-        $item['style'] = 'fa-check-circle-o bg-teal';
-        break;
-      default:
-        $item['style'] = 'fa-sticky-note bg-green';
-        $item['editLink'] = $editLink;
-        $item['deleteLink'] = $deleteLink;
-    }
+            case 'create':
+                $item['style'] = 'fa-plus-circle bg-blue';
+                break;
+            case 'edit':
+                $item['style'] = 'fa-pencil bg-blue';
+                break;
+            case 'photo':
+                $item['style'] = 'fa-camera bg-green';
+                break;
+            case 'cal':
+                $item['style'] = 'fa-calendar bg-green';
+                break;
+            case 'verify':
+                $item['style'] = 'fa-check-circle-o bg-teal';
+                break;
+            default:
+                $item['style'] = 'fa-sticky-note bg-green';
+                $item['editLink'] = $editLink;
+                $item['deleteLink'] = $deleteLink;
+        }
         $item['header'] = $header;
         $item['headerLink'] = $headerLink;
         $item['text'] = $text;
