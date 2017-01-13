@@ -20,6 +20,10 @@ if [ -f $file  ]; then
     read demoKey
   fi
 
+  if [ -n ${TRAVIS_BRANCH} ]; then
+    publishBranch=$TRAVIS_BRANCH
+  fi
+
   echo -n "Current branch is: $publishBranch"
 
   if  ! [[ $publishBranch == "develop" ||  $publishBranch == "master"  ]]; then
