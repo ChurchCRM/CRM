@@ -50,4 +50,4 @@ deploy:
   script: npm run demosite
   on:
     all_branches: true
-    condition: " [ $TRAVIS_BRANCH == 'master' ] || [ $TRAVIS_BRANCH = 'develop' ] "
+    condition: "$TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH = 'develop'"
