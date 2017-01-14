@@ -258,14 +258,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 	</tr>
 
 	<tr>
-		<td class="LabelColumn">
-			<?php
-            if ($sCountry == 'Canada') {
-                echo gettext('Postal Code').':';
-            } else {
-                echo gettext('Zip').':';
-            } ?>
-		</td>
+		<td class="LabelColumn"><?= gettext('Zip')?>:</td>
 		<td class="TextColumn">
 			<input type="text" Name="Zip" value="<?= $sZip ?>" maxlength="10" size="8">
 		</td>

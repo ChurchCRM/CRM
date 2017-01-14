@@ -666,7 +666,7 @@ require 'Include/Header.php';
 						<label><?= gettext('Family Name') ?>:</label>
 						<input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="48"  class="form-control">
 						<?php if ($sNameError) {
-    ?><font color="red"><?= $sNameError ?></font><?php 
+    ?><font color="red"><?= $sNameError ?></font><?php
 } ?>
 					</div>
 				</div>
@@ -705,12 +705,7 @@ require 'Include/Header.php';
                         } ?>" size="20" maxlength="30">
 					</div>
 					<div class="form-group col-md-3">
-						<label> <?php if ($sCountry == 'Canada') {
-                            echo gettext('Postal Code').':';
-                        } else {
-                            echo gettext('Zip').':';
-                        }
-                            ?></label>
+						<label><?= gettext('Zip')?>:</label>
 						<input type="text" Name="Zip"  class="form-control" <?php
                             // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
                             if (SystemConfig::getValue('cfgForceUppercaseZip')) {
@@ -736,7 +731,7 @@ require 'Include/Header.php';
 						<input type="text" class="form-control" Name="Longitude" value="<?= $nLongitude ?>" size="30" maxlength="50">
 					</div>
 				</div>
-				<?php	
+				<?php
                     }
                             } /* Lat/Lon can be hidden - General Settings */ ?>
 			</div>
@@ -801,7 +796,7 @@ require 'Include/Header.php';
                                 echo ' checked';
                             } ?>>
 				</div>
-				<?php 
+				<?php
                             } ?>
 			</div>
 		</div>
@@ -823,11 +818,11 @@ require 'Include/Header.php';
                         <label><?= gettext('Wedding Date') ?>:</label>
 						<input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="12" id="WeddingDate" size="15">
 						<?php if ($sWeddingDateError) {
-                    ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php 
+                    ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php
                 } ?>
 					</div>
 				</div>
-			<?php 
+			<?php
                             } /* Wedding date can be hidden - General Settings */ ?>
 			<div class="row">
 				<?php if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser?>
@@ -837,7 +832,7 @@ require 'Include/Header.php';
                                 echo ' checked ';
                             } ?> >
 					</div>
-				<?php 
+				<?php
                             }
 
                 if ($rsCanvassers != 0 && mysqli_num_rows($rsCanvassers) > 0) {
@@ -898,7 +893,7 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
-	<?php 
+	<?php
                 }
     if ($numCustomFields > 0) {
         ?>
@@ -931,7 +926,7 @@ require 'Include/Header.php';
         } ?>
 		</div>
 	</div>
-	<?php 
+	<?php
     } ?>
 	<div class="box box-info clearfix">
 		<div class="box-header">
@@ -1082,7 +1077,7 @@ require 'Include/Header.php';
 					<option value="<?= $sDay ?>" <?php if ($aBirthDays[$iCount] == $x) {
                         echo 'selected';
                     } ?>><?= $x ?></option>
-				<?php 
+				<?php
                 } ?>
 				</select>
 			</td>
@@ -1093,7 +1088,7 @@ require 'Include/Header.php';
 				<div><font color="red"><?php if (array_key_exists($iCount, $aBirthDateError)) {
                         echo $aBirthDateError[$iCount];
                     } ?></font></div>
-			<?php 
+			<?php
                 } else {
                     $UpdateBirthYear = 0;
                 } ?>
