@@ -148,7 +148,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (36, 'sGZIPname', 'gzip', 'text', 'gzip', '', 'General', NULL, NULL),
 (37, 'sZIPname', 'zip', 'text', 'zip', '', 'General', NULL, NULL),
 (38, 'sPGPname', 'gpg', 'text', 'gpg', '', 'General', NULL, NULL),
-(39, 'sLanguage', 'en_US', 'choice', 'en_US', 'Internationalization (I18n) support', 'General', NULL, '{"Choices":["English - United States:en_US", "English - Australia:en_AU", "English - Great Britain:en_GB", "German - Germany:de_DE", "Spanish - Spain:es_ES", "French - France:fr_FR", "Hungarian:hu_HU", "Italian - Italy:it_IT", "Norwegian:nb_NO", "Dutch - Netherlands:nl_NL", "Polish:pl_PL", "Portuguese - Brazil:pt_BR", "Romanian - Romania:ro_RO", "Russian:ru_RU", "Sami (Northern) (Sweden):se_SE", "Albanian:sq_AL", "Swedish - Sweden:sv_SE", "Vietnamese:vi_VN", "Chinese - China:zh_CN", "Chinese - Taiwan:zh_TW"]}'),
+(39, 'sLanguage', 'en_US', 'choice', 'en_US', 'Internationalization (I18n) support\rUS English (en_US), Italian (it_IT), French (fr_FR), and German (de_DE)', 'General', NULL, '{"Choices":["en_US","de_DE","en_AU","en_GB","es_ES","fr_FR","hu_HU","it_IT","nb_NO","nl_NL","pl_PL","pt_BR","ro_RO","ru_RU","se_SE","sq_AL","sv_SE","vi_VN","zh_CN","zh_TW"]}'),
 (40, 'iFYMonth', '1', 'number', '1', 'First month of the fiscal year', 'General', NULL, NULL),
 (41, 'sXML_RPC_PATH', 'XML/RPC.php', 'text', 'XML/RPC.php', 'Path to RPC.php, required for Lat/Lon address lookup', 'General', NULL, NULL),
 (42, 'sGeocoderID', '', 'text', '', 'User ID for rpc.geocoder.us', 'General', NULL, NULL),
