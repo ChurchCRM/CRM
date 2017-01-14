@@ -228,7 +228,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1045, 'sIntegrityCheckInterval', '168', 'Text', '168', 'Interval in Hours for Integrity Check', 'General', "Step5", NULL),
 (1046, 'sLastIntegrityCheckTimeStamp', '', 'Text', '', 'Last Integrity Check Timestamp', 'General', "Step5", NULL),
 (1047, 'sChurchCountry', '', 'country', '', 'Church Country', 'ChurchInfoReport', NULL, NULL),
-(1050, 'googleTrackingID', '', 'Text', '', 'Google Analytics Tracking Code', 'ChurchInfoReport', NULL, NULL),
+(1050, 'googleTrackingID', '', 'Text', '', 'Google Analytics Tracking Code', 'General', NULL, NULL),
 (2000, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL, NULL);
 -- --------------------------------------------------------
 
