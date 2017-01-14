@@ -22,4 +22,5 @@ if (!empty($googleTrackingID)) {
         ga('send', 'pageview');
 
     </script>
-<?php } ?>
+<?php 
+} ?>

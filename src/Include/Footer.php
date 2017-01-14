@@ -66,7 +66,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </a>
                 </li>
                 <?php if ($isAdmin) {
-                    ?>
+    ?>
                     <li>
                         <a href="<?= $sRootPath ?>/FamilyCustomFieldsEditor.php">
                             <i class="fa fa-cog"></i> <?= _('Edit Custom Family Fields') ?>
@@ -74,7 +74,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </li>
                     <?php
 
-                } ?>
+} ?>
             </ul>
             <br/>
             <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Person') ?></h4>
@@ -90,7 +90,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </a>
                 </li>
                 <?php if ($isAdmin) {
-                    ?>
+    ?>
                     <li>
                         <a href="<?= $sRootPath ?>/PersonCustomFieldsEditor.php">
                             <i class="fa fa-cog"></i> <?= _('Edit Custom Person Fields') ?>
@@ -98,7 +98,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </li>
                     <?php
 
-                } ?>
+} ?>
             </ul>
             <br/>
             <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Group') ?></h4>
@@ -123,7 +123,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </a>
                 </li>
                 <?php if ($isAdmin) {
-                    ?>
+    ?>
                     <li>
                         <a href="<?= $sRootPath ?>/VolunteerOpportunityEditor.php">
                             <i class="fa fa-cog"></i> <?= _('Volunteer Opportunities') ?>
@@ -136,7 +136,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </li>
                     <?php
 
-                } ?>
+} ?>
             </ul>
             <!-- /.control-sidebar-menu -->
 
@@ -144,7 +144,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
         <div id="control-sidebar-settings-tab" class="tab-pane">
             <div><h4 class="control-sidebar-heading"><?= gettext('System Settings') ?></h4>
                 <?php if ($isAdmin) {
-                    ?>
+    ?>
                     <ul class="control-sidebar-menu">
                         <li>
                             <a href="<?= $sRootPath ?>/SystemSettings.php">
@@ -166,10 +166,10 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     <hr/>
                     <?php
 
-                } ?>
+} ?>
                 <ul class="control-sidebar-menu">
                     <?php if ($isAdmin) {
-                        ?>
+    ?>
                         <li>
                             <a href="<?= $sRootPath ?>/RestoreDatabase.php">
                                 <i class="menu-icon fa fa-database bg-yellow-gradient"></i>
@@ -196,7 +196,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                         </li>
                         <?php
 
-                    } ?>
+} ?>
                     <li>
                         <a href="<?= $sRootPath ?>/CSVExport.php">
                             <i class="menu-icon fa fa-download bg-green"></i>
@@ -207,7 +207,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </li>
                 </ul>
                 <?php if ($isAdmin) {
-                    ?>
+    ?>
                     <hr/>
                     <ul class="control-sidebar-menu">
                         <li>
@@ -221,9 +221,9 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </ul>
                     <?php
 
-                } else {
-                    echo _('Please contact your admin to change the system settings.');
-                } ?>
+} else {
+    echo _('Please contact your admin to change the system settings.');
+} ?>
             </div>
         </div>
         <!-- /.tab-pane -->
@@ -236,10 +236,10 @@ $isAdmin = $_SESSION['user']->isAdmin();
             <br/><br/>
             <ul class="control-sidebar-menu">
                 <?php foreach ($tasks as $task) {
-                    $taskIcon = 'fa-info bg-green';
-                    if ($task['admin']) {
-                        $taskIcon = 'fa-lock bg-yellow-gradient';
-                    } ?>
+    $taskIcon = 'fa-info bg-green';
+    if ($task['admin']) {
+        $taskIcon = 'fa-lock bg-yellow-gradient';
+    } ?>
                     <!-- Task item -->
                     <li>
                         <a href="<?= $task['link'] ?>">
@@ -254,7 +254,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     <!-- end task item -->
                     <?php
 
-                } ?>
+} ?>
             </ul>
             <!--
       <h3 class="control-sidebar-heading"><?= gettext('Data Quality') ?></h3>
@@ -334,6 +334,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     </script>
     <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
     <?php
+
 }
 
 include_once('analyticstracking.php');
