@@ -44,9 +44,10 @@ script:
 before_deploy:
  - npm run package
 
-#deploy:
- # skip_cleanup: true
-  #provider: script
-  #script: npm run demosite ${demokey}
-  #on:
-    #branch: develop
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: npm run demosite
+  on:
+    all_branches: true
+    condition: "$TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH = 'develop'"
