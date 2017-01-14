@@ -818,11 +818,6 @@ msgstr "只有以下的新數據"
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "（美國和加拿大以外的國家使用的文本框）"
 
-#: CartToFamily.php:267 FamilyEditor.php:732
-#, fuzzy
-msgid "Postal Code"
-msgstr "郵政編碼"
-
 #: CartToFamily.php:293 CartToFamily.php:301 CartToFamily.php:309
 #: FamilyEditor.php:780 FamilyEditor.php:790 FamilyEditor.php:800
 #: Include/Functions.php:1161 PersonEditor.php:888 PersonEditor.php:909
@@ -4031,10 +4026,6 @@ msgstr "按產品名稱"
 msgid "By Family"
 msgstr "通過家庭"
 
-#: SelectList.php:487
-msgid "By ZIP/Postal Code"
-msgstr "通過郵政編碼/"
-
 #: SelectList.php:488
 msgid "By Newest Entries"
 msgstr "通過最新文章"
@@ -6021,10 +6012,6 @@ msgstr ""
 msgid "Error: You must enter a name"
 msgstr ""
 
-#: PersonEditor.php:813
-msgid "None US/CND State:"
-msgstr ""
-
 #: PersonView.php:212
 msgid " Since:"
 msgstr ""
@@ -6242,7 +6229,7 @@ msgid "Names of markers for Google Maps in order of classification"
 msgstr ""
 
 #: config_cfg.php:56
-msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK."
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr ""
 
 #: config_cfg.php:58

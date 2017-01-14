@@ -799,10 +799,6 @@ msgstr "Sólo los nuevos datos a continuación"
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Use el cuadro de texto para otros países fuera de EE.UU. y Canadá)"
 
-#: CartToFamily.php:267 FamilyEditor.php:732
-msgid "Postal Code"
-msgstr "Código Postal"
-
 #: CartToFamily.php:293 CartToFamily.php:301 CartToFamily.php:309
 #: FamilyEditor.php:780 FamilyEditor.php:790 FamilyEditor.php:800
 #: Include/Functions.php:1161 PersonEditor.php:888 PersonEditor.php:909
@@ -1791,7 +1787,7 @@ msgstr "Información Familiar"
 
 #: FamilyEditor.php:727
 msgid "None US/CND State"
-msgstr "Estado No US/CND"
+msgstr "Estado No"
 
 #: FamilyEditor.php:766 PersonEditor.php:741
 msgid "Contact Info"
@@ -3955,10 +3951,6 @@ msgstr "Por Nombre"
 msgid "By Family"
 msgstr "Por Familia"
 
-#: SelectList.php:487
-msgid "By ZIP/Postal Code"
-msgstr "Por ZIP/Código Postal"
-
 #: SelectList.php:488
 msgid "By Newest Entries"
 msgstr "Por Entradas Más Recientes"
@@ -5913,10 +5905,6 @@ msgstr "ChurchCRM: Portal MRBS"
 msgid "Error: You must enter a name"
 msgstr "Error: Debe ingresar un nombre"
 
-#: PersonEditor.php:813
-msgid "None US/CND State:"
-msgstr "Estado No US/CND"
-
 #: PersonView.php:212
 msgid " Since:"
 msgstr " Desde:"
@@ -6139,7 +6127,8 @@ msgid "Names of markers for Google Maps in order of classification"
 msgstr "Nombres de marcadores para Google Maps en orden de clasificación"
 
 #: config_cfg.php:56
-msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK."
+#, fuzzy
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Hacer que los códigos postales ingresados por usuarios estén en mayúsculas cuando se guarden en la base de datos. Útil en Reino Unido."
 
 #: config_cfg.php:58
