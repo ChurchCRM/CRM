@@ -192,7 +192,7 @@ require 'Include/Header.php';
                             } else {
                                 $keyValue = explode(":", $choice);
                                 $value = $keyValue[1];
-                                $text = $keyValue[0] . ' ['. $value .']';;
+                                $text = $keyValue[0] . ' ['. $value .']';
                             }
                             echo '<option value = '.$value.' '.($setting->getValue() == $value ? 'selected' : '').'>'.gettext($text).'</option>';
                         } ?>
