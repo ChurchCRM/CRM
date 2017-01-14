@@ -569,7 +569,7 @@ require 'Include/Header.php';
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <?= gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') ?>
         </div>
-    <?php 
+    <?php
 } ?>
     <div class="box box-info clearfix">
         <div class="box-header">
@@ -610,7 +610,7 @@ require 'Include/Header.php';
                                class="form-control">
                         <?php if ($sFirstNameError) {
     ?><br><font
-                            color="red"><?php echo $sFirstNameError ?></font><?php 
+                            color="red"><?php echo $sFirstNameError ?></font><?php
 } ?>
                     </div>
 
@@ -621,7 +621,7 @@ require 'Include/Header.php';
                                class="form-control">
                         <?php if ($sMiddleNameError) {
     ?><br><font
-                            color="red"><?php echo $sMiddleNameError ?></font><?php 
+                            color="red"><?php echo $sMiddleNameError ?></font><?php
 } ?>
                     </div>
 
@@ -632,7 +632,7 @@ require 'Include/Header.php';
                                class="form-control">
                         <?php if ($sLastNameError) {
     ?><br><font
-                            color="red"><?php echo $sLastNameError ?></font><?php 
+                            color="red"><?php echo $sLastNameError ?></font><?php
 } ?>
                     </div>
 
@@ -702,7 +702,7 @@ require 'Include/Header.php';
                                 <option value="<?= $sDay ?>" <?php if ($iBirthDay == $x) {
         echo 'selected';
     } ?>><?= $x ?></option>
-                            <?php 
+                            <?php
 } ?>
                         </select>
                     </div>
@@ -712,11 +712,11 @@ require 'Include/Header.php';
                                placeholder="yyyy" class="form-control">
                         <?php if ($sBirthYearError) {
     ?><font color="red"><br><?php echo $sBirthYearError ?>
-                            </font><?php 
+                            </font><?php
 } ?>
                         <?php if ($sBirthDateError) {
     ?><font
-                            color="red"><?php echo $sBirthDateError ?></font><?php 
+                            color="red"><?php echo $sBirthDateError ?></font><?php
 } ?>
                     </div>
                     <div class="col-md-2">
@@ -850,7 +850,7 @@ require 'Include/Header.php';
                         <?php require 'Include/StateDropDown.php'; ?>
                     </div>
                     <div class="form-group col-md-2">
-                        <label><?= gettext('None US/CND State:') ?></label>
+                        <label><?= gettext('None State') ?>:</label>
                         <input type="text" name="StateTextbox"
                                value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
         echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
@@ -896,7 +896,7 @@ require 'Include/Header.php';
                     </div>
                 </div>
                 <p/>
-            <?php 
+            <?php
 } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
                 <input type="hidden" name="Address1"
                        value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"></input>
@@ -912,7 +912,7 @@ require 'Include/Header.php';
                        value="<?= htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="Country"
                        value="<?= htmlentities(stripslashes($sCountry), ENT_NOQUOTES, 'UTF-8') ?>"></input>
-            <?php 
+            <?php
 } ?>
             <div class="row">
                 <div class="form-group col-md-3">
@@ -1007,7 +1007,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sEmailError) {
-                            ?><font color="red"><?php echo $sEmailError ?></font><?php 
+                            ?><font color="red"><?php echo $sEmailError ?></font><?php
                         } ?>
                     </div>
                 </div>
@@ -1022,7 +1022,7 @@ require 'Include/Header.php';
                                maxlength="100" class="form-control">
                         <?php if ($sWorkEmailError) {
                             ?><font
-                            color="red"><?php echo $sWorkEmailError ?></font></td><?php 
+                            color="red"><?php echo $sWorkEmailError ?></font></td><?php
                         } ?>
                     </div>
                 </div>
@@ -1064,7 +1064,7 @@ require 'Include/Header.php';
                                placeholder="YYYY-MM-DD">
                         <?php if ($sMembershipDateError) {
                             ?><font
-                            color="red"><?= $sMembershipDateError ?></font><?php 
+                            color="red"><?= $sMembershipDateError ?></font><?php
                         } ?>
                     </div>
                 </div>
@@ -1080,11 +1080,11 @@ require 'Include/Header.php';
                            placeholder="YYYY-MM-DD">
                     <?php if ($sFriendDateError) {
                             ?><font
-                      color="red"><?php echo $sFriendDateError ?></font><?php 
+                      color="red"><?php echo $sFriendDateError ?></font><?php
                         } ?>
                   </div>
                 </div>
-              <?php 
+              <?php
                         } ?>
             </div>
         </div>
@@ -1128,7 +1128,7 @@ require 'Include/Header.php';
                             } ?>
         </div>
     </div>
-  <?php 
+  <?php
                         } ?>
     <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
     <?php if ($_SESSION['bAddRecords']) {

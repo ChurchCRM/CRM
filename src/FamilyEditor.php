@@ -688,14 +688,7 @@ require 'Include/Header.php';
 				<p/>
 				<div class="row">
 					<div class="form-group col-md-3">
-						<label for="StatleTextBox">
-						<?php
-                        if ($sCountry == 'Canada') {
-                            echo gettext('Province').':';
-                        } else {
-                            echo gettext('State').':';
-                        } ?>
-						</label>
+						<label for="StatleTextBox"><?= gettext('State')?>: </label>
 						<?php require 'Include/StateDropDown.php'; ?>
 					</div>
 					<div class="form-group col-md-3">
