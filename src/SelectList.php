@@ -1054,7 +1054,7 @@ echo '&amp;Sort=family&amp;Filter='.$sFilter.'">'.gettext('Family').'</a></th>';
 
 echo '<th>';
 echo '<select class="SmallText" name="PersonColumn5" onchange="this.form.submit()">';
-$aPersonCol5 = ['Home Phone', 'Work Phone', 'Mobile Phone', 'Zip/Postal Code'];
+$aPersonCol5 = [gettext('Home Phone'), gettext('Work Phone'), gettext('Mobile Phone'), gettext('Zip/Postal Code')];
 foreach ($aPersonCol5 as $s) {
     $sel = '';
     if ($sPersonColumn5 == $s) {
@@ -1195,7 +1195,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<?php 
+	<?php
     } ?>
     </td>
 	<td>
@@ -1215,7 +1215,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
             </span>
         </a>
     </td>
-	<?php 
+	<?php
     } else {
         // Remove from cart option
         if (mb_substr($sRedirect, -1, 1) == '?') {
@@ -1230,7 +1230,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
                 <i class="fa fa-remove fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<?php 
+	<?php
     }
 
     if ($iMode == 1) {
@@ -1240,7 +1240,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
                 <i class="fa fa-print fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<?php 
+	<?php
     } else {
         echo '<td><a href="PersonToGroup.php?PersonID='.$per_ID;
         echo '&amp;prevquery='.rawurlencode($_SERVER['QUERY_STRING']).'">';
