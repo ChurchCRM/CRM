@@ -8,6 +8,7 @@ module.exports = function (grunt) {
         languages: {
             'de': 'de_DE',
             'en-au': 'en_AU',
+            'en-ca': 'en_CA',
             'en': 'en_GB',
             'es': 'es_ES',
             'fr': 'fr_FR',
@@ -93,6 +94,10 @@ module.exports = function (grunt) {
             en_AU: {
                 src: ['node_modules/fullcalendar/dist/locale/en-au.js'],
                 dest: 'src/skin/locale/en_AU.js'
+            },
+            en_CA: {
+                src: ['node_modules/fullcalendar/dist/locale/en-ca.js'],
+                dest: 'src/skin/locale/en_CA.js'
             },
             en_GB: {
                 src: ['node_modules/fullcalendar/dist/locale/en-gb.js'],
