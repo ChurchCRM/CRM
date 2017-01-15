@@ -171,7 +171,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (64, 'sDistanceUnit', 'miles', 'choice', 'miles', 'Unit used to measure distance, miles or km.', 'General', NULL, '{"Choices":["miles","kilometers"]}'),
 (65, 'sTimeZone', 'America/New_York', 'text', 'America/New_York', 'Time zone- see http://php.net/manual/en/timezones.php for valid choices.', 'General', NULL, NULL),
 (66, 'sGMapIcons', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'text', 'red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue', 'Names of markers for Google Maps in order of classification', 'General', NULL, NULL),
-(67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK.', 'General', NULL, NULL),
+(67, 'cfgForceUppercaseZip', '0', 'boolean', '0', 'Make user-entered zip/postcodes UPPERCASE when saving to the database.', 'General', NULL, NULL),
 (72, 'bEnableNonDeductible', '0', 'boolean', '0', 'Enable non-deductible payments', 'General', NULL, NULL),
 (73, 'sElectronicTransactionProcessor', 'Vanco', 'choice', 'Vanco', 'Electronic Transaction Processor', 'General', NULL, '{"Choices":["Vanco","Authorize.NET"]}'),
 (80, 'sEnableSelfRegistration', '0', 'boolean', '0', 'Set true to enable family self registration.', 'General', NULL, NULL),
