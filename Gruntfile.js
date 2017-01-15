@@ -305,6 +305,7 @@ module.exports = function (grunt) {
             getPOTranslations: {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
+                    filters: ["translated"],
                     type: 'po', // export type (check out the doc)
                     dest: 'src/locale/?/LC_MESSAGES/messages.po'
                     // grunt style dest files
@@ -313,6 +314,7 @@ module.exports = function (grunt) {
             getMOTranslations: {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
+                    filters: ["translated"],
                     type: 'mo', // export type (check out the doc)
                     dest: 'src/locale/?/LC_MESSAGES/messages.mo'
                     // grunt style dest files
