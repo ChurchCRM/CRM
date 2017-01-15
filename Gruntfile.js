@@ -25,6 +25,19 @@ module.exports = function (grunt) {
             'zh-CN': 'zh_CN',
             'zh-TW': 'zh_TW'
         },
+        projectFiles: [
+            '**',
+            '**/.*',
+            '!**/.gitignore',
+            '!vendor/**/example/**',
+            '!vendor/**/tests/**',
+            '!vendor/**/docs/**',
+            '!Images/{Family,Person}/thumbnails/*.{jpg,jpeg,png}',
+        //    '!Images/{Family,Person}/*.{jpg,jpeg,png}',
+            '!composer.lock',
+            '!Include/Config.php',
+            '!integrityCheck.json'
+        ],
         clean: {
             locale: ["src/skin/locale"],
             skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
@@ -226,18 +239,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'src/',
-                        src: [
-                            '**',
-                            '**/.*',
-                            '!**/.gitignore',
-                            '!vendor/**/example/**',
-                            '!vendor/**/tests/**',
-                            '!vendor/**/docs/**',
-                            '!Images/Person/thumbnails/*.jpg',
-                            '!composer.lock',
-                            '!Include/Config.php',
-                            '!integrityCheck.json'
-                        ],
+                        src: '<%= projectFiles %>',
                         dest: 'churchcrm/'
                     }
                 ]
@@ -245,32 +247,21 @@ module.exports = function (grunt) {
             'tar': {
                 options: {
                     archive: 'target/ChurchCRM-<%= package.version %>.tar.gz',
-                    mode: "tar",
+                    mode: "tgz",
                     pretty: true
                 },
                 files: [
                     {
                         expand: true,
                         cwd: 'src/',
-                        src: [
-                            '**',
-                            '**/.*',
-                            '!**/.gitignore',
-                            '!vendor/**/example/**',
-                            '!vendor/**/tests/**',
-                            '!vendor/**/docs/**',
-                            '!Images/Person/thumbnails/*.jpg',
-                            '!composer.lock',
-                            '!Include/Config.php',
-                            '!integrityCheck.json'
-                        ],
+                        src: '<%= projectFiles %>',
                         dest: 'churchcrm/'
                     }
                 ]
             },
             'demo-data': {
                 options: {
-                    archive: 'target/ChurchCRM-<%= package.version %>-demo.tar.gz'
+                    archive: 'target/Demo-ChurchCRM-<%= package.version %>.tar.gz'
                 },
                 files: [
                     {
@@ -400,4 +391,3 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-curl');
 }
-;
