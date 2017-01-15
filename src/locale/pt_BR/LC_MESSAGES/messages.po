@@ -820,11 +820,6 @@ msgstr "Somente as novas informações abaixo"
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Use a caixa de texto para paises diferentes de EUA e Canadá)"
 
-#: CartToFamily.php:267 FamilyEditor.php:732
-#, fuzzy
-msgid "Postal Code"
-msgstr "Código postal"
-
 #: CartToFamily.php:293 CartToFamily.php:301 CartToFamily.php:309
 #: FamilyEditor.php:780 FamilyEditor.php:790 FamilyEditor.php:800
 #: Include/Functions.php:1161 PersonEditor.php:888 PersonEditor.php:909
@@ -1839,7 +1834,7 @@ msgstr "Informação da Família"
 #: FamilyEditor.php:727
 #, fuzzy
 msgid "None US/CND State"
-msgstr "Nenhum Estado do EUA/Canadá"
+msgstr "Nenhum Estado"
 
 #: FamilyEditor.php:766 PersonEditor.php:741
 msgid "Contact Info"
@@ -4078,10 +4073,6 @@ msgstr "Por nome"
 msgid "By Family"
 msgstr "Por família"
 
-#: SelectList.php:487
-msgid "By ZIP/Postal Code"
-msgstr "Por CEP"
-
 #: SelectList.php:488
 msgid "By Newest Entries"
 msgstr "Por novas entradas"
@@ -4684,7 +4675,7 @@ msgstr "pm"
 
 #: Include/Functions.php:666
 msgid "am"
-msgstr "sou"
+msgstr "am"
 
 #: Include/Functions.php:817 Include/Functions.php:827
 msgid "1 m old"
@@ -6105,10 +6096,6 @@ msgstr "ChurchCRM: Login"
 msgid "Error: You must enter a name"
 msgstr "Erro: Você deve entrar um nome"
 
-#: PersonEditor.php:813
-msgid "None US/CND State:"
-msgstr "Nenhum Estado do EUA/Canadá:"
-
 #: PersonView.php:212
 msgid " Since:"
 msgstr " Desde:"
@@ -6332,7 +6319,8 @@ msgid "Names of markers for Google Maps in order of classification"
 msgstr "Nomes dos Marcadores no Google Maps em ordem de classificação"
 
 #: config_cfg.php:56
-msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK."
+#, fuzzy
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Fazer a entrada de usuário de CEP/Códigos Postais em CAIXA ALTA quando for salvar no banco de dados. Útil no Reino Unido."
 
 #: config_cfg.php:58

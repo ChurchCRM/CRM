@@ -67,7 +67,7 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
 
         $curY += 4 * SystemConfig::getValue('incrementY');
 
-        $this->WriteAt(SystemConfig::getValue('leftX'), $curY, 'Sincerely,');
+        $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely'). ",");
         $curY += 4 * SystemConfig::getValue('incrementY');
         $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSigner'));
     }
@@ -346,7 +346,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             $subject = $subject.' ** Updated **';
         }
 
-        $message = 'Dear '.$fam_Name.' Family <p>'.SystemConfig::getValue('sConfirm1').'</p>Sincerely, <br/>'.SystemConfig::getValue('sConfirmSigner');
+        $message = 'Dear '.$fam_Name.' Family <p>'.SystemConfig::getValue('sConfirm1').'</p>'.SystemConfig::getValue('sConfirmSincerely').', <br/>'.SystemConfig::getValue('sConfirmSigner');
 
         $mail->Subject = $subject;
         $mail->msgHTML($message);

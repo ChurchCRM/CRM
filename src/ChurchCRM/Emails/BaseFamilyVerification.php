@@ -32,7 +32,7 @@ abstract class BaseFamilyVerification extends BaseEmail
 
   protected function buildMessageFooter()
   {
-    return gettext("Sincerely") . "<br/>" . SystemConfig::getValue("sConfirmSigner");
+    return SystemConfig::getValue('sConfirmSincerely') . ",<br/>" . SystemConfig::getValue("sConfirmSigner");
   }
 
   protected abstract function buildMessageBody();

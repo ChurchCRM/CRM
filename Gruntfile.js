@@ -8,6 +8,7 @@ module.exports = function (grunt) {
         languages: {
             'de': 'de_DE',
             'en-au': 'en_AU',
+            'en-ca': 'en_CA',
             'en': 'en_GB',
             'es': 'es_ES',
             'fr': 'fr_FR',
@@ -25,6 +26,19 @@ module.exports = function (grunt) {
             'zh-CN': 'zh_CN',
             'zh-TW': 'zh_TW'
         },
+        projectFiles: [
+            '**',
+            '**/.*',
+            '!**/.gitignore',
+            '!vendor/**/example/**',
+            '!vendor/**/tests/**',
+            '!vendor/**/docs/**',
+            '!Images/{Family,Person}/thumbnails/*.{jpg,jpeg,png}',
+        //    '!Images/{Family,Person}/*.{jpg,jpeg,png}',
+            '!composer.lock',
+            '!Include/Config.php',
+            '!integrityCheck.json'
+        ],
         clean: {
             locale: ["src/skin/locale"],
             skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
@@ -93,6 +107,10 @@ module.exports = function (grunt) {
             en_AU: {
                 src: ['node_modules/fullcalendar/dist/locale/en-au.js'],
                 dest: 'src/skin/locale/en_AU.js'
+            },
+            en_CA: {
+                src: ['node_modules/fullcalendar/dist/locale/en-ca.js'],
+                dest: 'src/skin/locale/en_CA.js'
             },
             en_GB: {
                 src: ['node_modules/fullcalendar/dist/locale/en-gb.js'],
@@ -226,18 +244,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'src/',
-                        src: [
-                            '**',
-                            '**/.*',
-                            '!**/.gitignore',
-                            '!vendor/**/example/**',
-                            '!vendor/**/tests/**',
-                            '!vendor/**/docs/**',
-                            '!Images/Person/thumbnails/*.jpg',
-                            '!composer.lock',
-                            '!Include/Config.php',
-                            '!integrityCheck.json'
-                        ],
+                        src: '<%= projectFiles %>',
                         dest: 'churchcrm/'
                     }
                 ]
@@ -245,32 +252,21 @@ module.exports = function (grunt) {
             'tar': {
                 options: {
                     archive: 'target/ChurchCRM-<%= package.version %>.tar.gz',
-                    mode: "tar",
+                    mode: "tgz",
                     pretty: true
                 },
                 files: [
                     {
                         expand: true,
                         cwd: 'src/',
-                        src: [
-                            '**',
-                            '**/.*',
-                            '!**/.gitignore',
-                            '!vendor/**/example/**',
-                            '!vendor/**/tests/**',
-                            '!vendor/**/docs/**',
-                            '!Images/Person/thumbnails/*.jpg',
-                            '!composer.lock',
-                            '!Include/Config.php',
-                            '!integrityCheck.json'
-                        ],
+                        src: '<%= projectFiles %>',
                         dest: 'churchcrm/'
                     }
                 ]
             },
             'demo-data': {
                 options: {
-                    archive: 'target/ChurchCRM-<%= package.version %>-demo.tar.gz'
+                    archive: 'target/Demo-ChurchCRM-<%= package.version %>.tar.gz'
                 },
                 files: [
                     {
@@ -309,6 +305,7 @@ module.exports = function (grunt) {
             getPOTranslations: {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
+                    filters: ["translated"],
                     type: 'po', // export type (check out the doc)
                     dest: 'src/locale/?/LC_MESSAGES/messages.po'
                     // grunt style dest files
@@ -317,6 +314,7 @@ module.exports = function (grunt) {
             getMOTranslations: {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
+                    filters: ["translated"],
                     type: 'mo', // export type (check out the doc)
                     dest: 'src/locale/?/LC_MESSAGES/messages.mo'
                     // grunt style dest files
@@ -400,4 +398,3 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-curl');
 }
-;

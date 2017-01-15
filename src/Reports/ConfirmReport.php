@@ -65,7 +65,7 @@ class PDF_ConfirmReport extends ChurchInfoReport
         //If the Reports Settings Menu's SystemConfig::getValue("sConfirmSigner") is set, then display the closing statement.  Hide it otherwise.
         if (SystemConfig::getValue('sConfirmSigner')) {
             $curY += 4 * SystemConfig::getValue('incrementY');
-            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Sincerely').',');
+            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
             $curY += 4 * SystemConfig::getValue('incrementY');
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSigner'));
         }
