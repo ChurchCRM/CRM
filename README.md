@@ -40,7 +40,7 @@ see [Checkout our Change Log] (CHANGELOG.md)
 To test out the demo, you may login to the http://demo.churchcrm.io  with the following:
 
 - **Username:** admin
-- **Password:** george
+- **Password:** changeme
 
 ## New UI
 
