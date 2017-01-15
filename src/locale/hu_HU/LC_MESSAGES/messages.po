@@ -815,11 +815,6 @@ msgstr "Csak az új adatok az alábbi"
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Használja a szövegdobozba a más országokban, mint az USA és Kanada)"
 
-#: CartToFamily.php:267 FamilyEditor.php:732
-#, fuzzy
-msgid "Postal Code"
-msgstr "Postal Code"
-
 #: CartToFamily.php:293 CartToFamily.php:301 CartToFamily.php:309
 #: FamilyEditor.php:780 FamilyEditor.php:790 FamilyEditor.php:800
 #: Include/Functions.php:1161 PersonEditor.php:888 PersonEditor.php:909
@@ -4026,10 +4021,6 @@ msgstr "Név szerint"
 msgid "By Family"
 msgstr "By Family"
 
-#: SelectList.php:487
-msgid "By ZIP/Postal Code"
-msgstr "Azáltal, ZIP / Postal Code"
-
 #: SelectList.php:488
 msgid "By Newest Entries"
 msgstr "By Új bejegyzések"
@@ -6014,10 +6005,6 @@ msgstr ""
 msgid "Error: You must enter a name"
 msgstr ""
 
-#: PersonEditor.php:813
-msgid "None US/CND State:"
-msgstr ""
-
 #: PersonView.php:212
 msgid " Since:"
 msgstr ""
@@ -6235,7 +6222,7 @@ msgid "Names of markers for Google Maps in order of classification"
 msgstr ""
 
 #: config_cfg.php:56
-msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK."
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr ""
 
 #: config_cfg.php:58

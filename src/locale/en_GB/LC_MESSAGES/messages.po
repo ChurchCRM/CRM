@@ -799,11 +799,6 @@ msgstr ""
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Use the textbox for countries other than the UK)"
 
-#: CartToFamily.php:267 FamilyEditor.php:732
-#, fuzzy
-msgid "Postal Code"
-msgstr "Postcode"
-
 #: CartToFamily.php:293 CartToFamily.php:301 CartToFamily.php:309
 #: FamilyEditor.php:780 FamilyEditor.php:790 FamilyEditor.php:800
 #: Include/Functions.php:1161 PersonEditor.php:888 PersonEditor.php:909
@@ -3565,7 +3560,7 @@ msgstr ""
 
 #: PledgeEditor.php:753
 msgid "Scan check"
-msgstr "scan cheque"
+msgstr "Scan cheque"
 
 #: PledgeEditor.php:759
 msgid "find family from check account #"
@@ -3955,10 +3950,6 @@ msgstr ""
 #: SelectList.php:486
 msgid "By Family"
 msgstr ""
-
-#: SelectList.php:487
-msgid "By ZIP/Postal Code"
-msgstr "By Postcode"
 
 #: SelectList.php:488
 msgid "By Newest Entries"
@@ -4765,7 +4756,7 @@ msgstr ""
 
 #: Reports/ConfirmReport.php:129 Reports/ConfirmReportEmail.php:147
 msgid "City, State, Zip"
-msgstr "City, Pcode"
+msgstr "City, Postcode"
 
 #: Reports/ConfirmReport.php:137 Reports/ConfirmReportEmail.php:155
 #: FamilyEditor.php:816 FamilyView.php:192
@@ -5915,10 +5906,6 @@ msgstr ""
 msgid "Error: You must enter a name"
 msgstr ""
 
-#: PersonEditor.php:813
-msgid "None US/CND State:"
-msgstr ""
-
 #: PersonView.php:212
 msgid " Since:"
 msgstr ""
@@ -6136,7 +6123,7 @@ msgid "Names of markers for Google Maps in order of classification"
 msgstr ""
 
 #: config_cfg.php:56
-msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK."
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr ""
 
 #: config_cfg.php:58

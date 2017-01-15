@@ -817,11 +817,6 @@ msgstr "Numai noile date mai jos"
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Utilizați caseta de text în alte scopuri decât SUA și Canada)"
 
-#: CartToFamily.php:267 FamilyEditor.php:732
-#, fuzzy
-msgid "Postal Code"
-msgstr "Cod Postal"
-
 #: CartToFamily.php:293 CartToFamily.php:301 CartToFamily.php:309
 #: FamilyEditor.php:780 FamilyEditor.php:790 FamilyEditor.php:800
 #: Include/Functions.php:1161 PersonEditor.php:888 PersonEditor.php:909
@@ -4028,10 +4023,6 @@ msgstr "După nume"
 msgid "By Family"
 msgstr "De familie"
 
-#: SelectList.php:487
-msgid "By ZIP/Postal Code"
-msgstr "De ZIP / Cod poștal"
-
 #: SelectList.php:488
 msgid "By Newest Entries"
 msgstr "Dupa cele mai noi intrări"
@@ -6014,10 +6005,6 @@ msgstr ""
 msgid "Error: You must enter a name"
 msgstr ""
 
-#: PersonEditor.php:813
-msgid "None US/CND State:"
-msgstr ""
-
 #: PersonView.php:212
 msgid " Since:"
 msgstr ""
@@ -6235,7 +6222,7 @@ msgid "Names of markers for Google Maps in order of classification"
 msgstr ""
 
 #: config_cfg.php:56
-msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK."
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr ""
 
 #: config_cfg.php:58

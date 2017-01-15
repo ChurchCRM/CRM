@@ -799,10 +799,6 @@ msgstr "Onderstaand alleen de nieuwe gegevens"
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Gebruik de tekstbox voor landen anders dan de US en Canada)"
 
-#: CartToFamily.php:267 FamilyEditor.php:732
-msgid "Postal Code"
-msgstr "Postcode"
-
 #: CartToFamily.php:293 CartToFamily.php:301 CartToFamily.php:309
 #: FamilyEditor.php:780 FamilyEditor.php:790 FamilyEditor.php:800
 #: Include/Functions.php:1161 PersonEditor.php:888 PersonEditor.php:909
@@ -3959,10 +3955,6 @@ msgstr "Op Naam"
 msgid "By Family"
 msgstr "Op Familie"
 
-#: SelectList.php:487
-msgid "By ZIP/Postal Code"
-msgstr "Op Postcode"
-
 #: SelectList.php:488
 msgid "By Newest Entries"
 msgstr "Op Nieuwste toevoegingen"
@@ -5918,10 +5910,6 @@ msgstr ""
 msgid "Error: You must enter a name"
 msgstr ""
 
-#: PersonEditor.php:813
-msgid "None US/CND State:"
-msgstr ""
-
 #: PersonView.php:212
 msgid " Since:"
 msgstr ""
@@ -6139,7 +6127,7 @@ msgid "Names of markers for Google Maps in order of classification"
 msgstr ""
 
 #: config_cfg.php:56
-msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK."
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr ""
 
 #: config_cfg.php:58
