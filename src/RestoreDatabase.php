@@ -54,10 +54,10 @@ require 'Include/Header.php';
     event.preventDefault();
    
     var formData = new FormData($(this)[0]);
-    if (window.FileReader) {
+    if (window.FileReader) { // if the browser supports FileReader, validate the flie locally before uploading.
        var file = document.getElementById('restoreFile').files[0];
        if (file.size > window.CRM.maxUploadSizeBytes){
-         window.CRM.DisplayErrorMessage("/api/database/restore",{message: "<?= gettext("The file you selected is too large") ?>"});
+         window.CRM.DisplayErrorMessage("/api/database/restore",{message: "<?= gettext('The selected file exceeds this servers maximum upload size of') ?>: " + window.CRM.maxUploadSize});
          return false;
        }
     }
