@@ -5,6 +5,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         package: grunt.file.readJSON('package.json'),
         pkg: grunt.file.readJSON('package.json'),
+        buildConfig: grunt.file.readJSON('BuildConfig.json'),
         languages: {
             'de': 'de_DE',
             'en-au': 'en_AU',
@@ -325,7 +326,7 @@ module.exports = function (grunt) {
             options: {
                 project_id: '77079',
                 languages: '<%= languages %>',
-                api_token: ''
+                api_token: '<%= buildConfig.POEditor.token %>'
             }
         },
         updateVersions: {
