@@ -124,7 +124,7 @@ function Header_modals()
 function Header_body_scripts()
 {
     global $sRootPath, $localeInfo;
-    $systemService = new SystemService(); ?> ?>
+    $systemService = new SystemService(); ?>
   <script src="<?= $sRootPath ?>/skin/js/IssueReporter.js"></script>
 
   <script>
