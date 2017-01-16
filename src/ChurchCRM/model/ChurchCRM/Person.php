@@ -3,7 +3,8 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
-use ChurchCRM\UserQuery;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -14,202 +15,182 @@ use Propel\Runtime\Connection\ConnectionInterface;
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
- *
  */
 class Person extends BasePerson
 {
+    public function getFullName()
+    {
+        return $this->getFirstName().' '.$this->getLastName();
+    }
 
-  protected $baseURL;
-  protected $showGravatar;
+    public function isMale()
+    {
+        return $this->getGender() == 1;
+    }
 
-  public function applyDefaultValues()
-  {
-    parent::applyDefaultValues();
-    $this->baseURL = $_SESSION['sRootPath'];
-    $this->showGravatar = $_SESSION['$sEnableGravatarPhotos'];
-  }
+    public function isFemale()
+    {
+        return $this->getGender() == 2;
+    }
 
-  function getFullName()
-  {
-    return $this->getFirstName() . " " . $this->getLastName();
-  }
+    public function hideAge()
+    {
+        return $this->getFlags() == 1 || $this->getBirthYear() == '' || $this->getBirthYear() == '0';
+    }
 
-  function isMale()
-  {
-    return $this->getGender() == 1;
-  }
-
-  function isFemale()
-  {
-    return $this->getGender() == 2;
-  }
-
-  function hideAge()
-  {
-    return $this->getFlags() == 1 || $this->getBirthYear() == "" || $this->getBirthYear() == "0";
-  }
-
-  function getBirthDate()
-  {
-    if (!is_null($this->getBirthDay()) && $this->getBirthDay() != "" &&
-      !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ""
+    public function getBirthDate()
+    {
+        if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
+      !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
     ) {
+            $birthYear = $this->getBirthYear();
+            if ($this->hideAge()) {
+                $birthYear = 1900;
+            }
 
-      $birthYear = $this->getBirthYear();
-      if ($this->hideAge()) {
-        $birthYear = 1900;
-      }
+            return date_create($birthYear.'-'.$this->getBirthMonth().'-'.$this->getBirthDay());
+        }
 
-      $date = strtotime($this->getBirthDay() . "-" . $this->getBirthMonth() . "-" . $birthYear);
-
-      if (!$this->hideAge()) {
-        return date("M d Y", $date);
-      } else {
-        return date("M d", $date);
-      }
-    }
-    return "";
-  }
-
-  function getViewURI()
-  {
-    return $this->baseURL . "/PersonView.php?PersonID=" . $this->getId();
-  }
-
-  function getUploadedPhoto()
-  {
-    $validextensions = array("jpeg", "jpg", "png");
-    $hasFile = false;
-    while (list(, $ext) = each($validextensions)) {
-      $photoFile = dirname(__FILE__) . "/../../../Images/Person/thumbnails/" . $this->getId() . "." . $ext;
-      if (file_exists($photoFile)) {
-        $hasFile = true;
-        $photoFile = $this->baseURL . "/Images/Person/thumbnails/" . $this->getId() . "." . $ext;
-        break;
-      }
+        return date_create();
     }
 
-    if ($hasFile) {
-      return $photoFile;
-    } else {
-      return "";
-    }
-  }
-
-  function getPhoto()
-  {
-    $photoFile = $this->getUploadedPhoto();
-    if ($photoFile == "") {
-      $photoFile = $this->getGravatar();
-      if ($photoFile == "") {
-        $photoFile = $this->getDefaultPhoto();
-      }
-    }
-    return $photoFile;
-  }
-
-  function getFamilyRole()
-  {
-
-    $roleId = $this->getFmrId();
-    if (isset($roleId) && $roleId !== 0) {
-      $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
-      return $familyRole;
-    }
-    return null;
-  }
-
-  function getFamilyRoleName()
-  {
-    $roleName = "";
-    $role = $this->getFamilyRole();
-    if (!is_null($role)) {
-      $roleName = $this->getFamilyRole()->getOptionName();
-    }
-    return $roleName;
-  }
-
-  function getDefaultPhoto()
-  {
-    $photoFile = $this->baseURL . "/Images/Person/man-128.png";
-    $isChild = "Child" == $this->getFamilyRoleName();
-    if ($this->isMale() && $isChild) {
-      $photoFile = $this->baseURL . "/Images/Person/kid_boy-128.png";
-    } else if ($this->isFemale() && $isChild) {
-      $photoFile = $this->baseURL . "/Images/Person/kid_girl-128.png";
-    } else if ($this->isFemale() && !$isChild) {
-      $photoFile = $this->baseURL . "/Images/Person/woman-128.png";
-    }
-    return $photoFile;
-  }
-
-
-  function getGravatar($s = 60, $d = '404', $r = 'g', $img = false, $atts = array())
-  {
-    if ($this->showGravatar && $this->getEmail() != "") {
-      $url = 'http://www.gravatar.com/avatar/';
-      $url .= md5(strtolower(trim($this->getEmail())));
-      $url .= "?s=$s&d=$d&r=$r";
-
-      $headers = @get_headers($url);
-      if (strpos($headers[0], '404') === false) {
-        return $url;
-      }
-    }
-    return "";
-  }
-
-  public
-  function postInsert(ConnectionInterface $con = null)
-  {
-    $this->createTimeLineNote(true);
-  }
-
-  public
-  function postUpdate(ConnectionInterface $con = null)
-  {
-    $this->createTimeLineNote(false);
-  }
-
-  private
-  function createTimeLineNote($new)
-  {
-    $note = new Note();
-    $note->setPerId($this->getId());
-
-    if ($new) {
-      $note->setText("Created");
-      $note->setType("create");
-      $note->setEnteredBy($this->getEnteredBy());
-      $note->setDateLastEdited($this->getDateEntered());
-    } else {
-      $note->setText("Updated");
-      $note->setType("edit");
-      $note->setEnteredBy($this->getEditedBy());
-      $note->setDateLastEdited($this->getDateLastEdited());
+    public function getViewURI()
+    {
+        return SystemURLs::getRootPath().'/PersonView.php?PersonID='.$this->getId();
     }
 
-    $note->save();
-  }
+    public function getUploadedPhoto()
+    {
+        $validextensions = ['jpeg', 'jpg', 'png'];
+        $hasFile = false;
+        while (list(, $ext) = each($validextensions)) {
+            $photoFile = SystemURLs::getDocumentRoot().'/Images/Person/thumbnails/'.$this->getId().'.'.$ext;
+            if (file_exists($photoFile)) {
+                $hasFile = true;
+                $photoFile = SystemURLs::getRootPath().'/Images/Person/thumbnails/'.$this->getId().'.'.$ext;
+                break;
+            }
+        }
 
-  public
-  function isUser()
-  {
-    $user = UserQuery::create()->findPk($this->getId());
-    return !is_null($user);
-  }
-
-  public
-  function getOtherFamilyMembers()
-  {
-    $familyMembers = $this->getFamily()->getPeople();
-    $otherFamilyMembers = array();
-    foreach ($familyMembers as $member) {
-      if ($member->getId() != $this->getId()) {
-        array_push($otherFamilyMembers, $member);
-      }
+        if ($hasFile) {
+            return $photoFile;
+        } else {
+            return '';
+        }
     }
-    return $otherFamilyMembers;
-  }
 
+    public function getPhoto()
+    {
+        $photoFile = $this->getUploadedPhoto();
+        if ($photoFile == '') {
+            $photoFile = $this->getGravatar();
+            if ($photoFile == '') {
+                $photoFile = $this->getDefaultPhoto();
+            }
+        }
+
+        return $photoFile;
+    }
+
+    public function getFamilyRole()
+    {
+        $roleId = $this->getFmrId();
+        if (isset($roleId) && $roleId !== 0) {
+            $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
+
+            return $familyRole;
+        }
+    }
+
+    public function getFamilyRoleName()
+    {
+        $roleName = '';
+        $role = $this->getFamilyRole();
+        if (!is_null($role)) {
+            $roleName = $this->getFamilyRole()->getOptionName();
+        }
+
+        return $roleName;
+    }
+
+    public function getDefaultPhoto()
+    {
+        $photoFile = SystemURLs::getRootPath().'/Images/Person/man-128.png';
+        $isChild = 'Child' == $this->getFamilyRoleName();
+        if ($this->isMale() && $isChild) {
+            $photoFile = SystemURLs::getRootPath().'/Images/Person/kid_boy-128.png';
+        } elseif ($this->isFemale() && $isChild) {
+            $photoFile = SystemURLs::getRootPath().'/Images/Person/kid_girl-128.png';
+        } elseif ($this->isFemale() && !$isChild) {
+            $photoFile = SystemURLs::getRootPath().'/Images/Person/woman-128.png';
+        }
+
+        return $photoFile;
+    }
+
+    public function getGravatar($s = 60, $d = '404', $r = 'g', $img = false, $atts = [])
+    {
+        if (SystemConfig::getValue('sEnableGravatarPhotos') && $this->getEmail() != '') {
+            $url = 'http://www.gravatar.com/avatar/';
+            $url .= md5(strtolower(trim($this->getEmail())));
+            $url .= "?s=$s&d=$d&r=$r";
+
+            $headers = @get_headers($url);
+            if (strpos($headers[0], '404') === false) {
+                return $url;
+            }
+        }
+
+        return '';
+    }
+
+    public function postInsert(ConnectionInterface $con = null)
+    {
+        $this->createTimeLineNote(true);
+    }
+
+    public function postUpdate(ConnectionInterface $con = null)
+    {
+        $this->createTimeLineNote(false);
+    }
+
+    private function createTimeLineNote($new)
+    {
+        $note = new Note();
+        $note->setPerId($this->getId());
+
+        if ($new) {
+            $note->setText('Created');
+            $note->setType('create');
+            $note->setEnteredBy($this->getEnteredBy());
+            $note->setDateEntered($this->getDateEntered());
+        } else {
+            $note->setText('Updated');
+            $note->setType('edit');
+            $note->setEnteredBy($this->getEditedBy());
+            $note->setDateLastEdited($this->getDateLastEdited());
+        }
+
+        $note->save();
+    }
+
+    public function isUser()
+    {
+        $user = UserQuery::create()->findPk($this->getId());
+
+        return !is_null($user);
+    }
+
+    public function getOtherFamilyMembers()
+    {
+        $familyMembers = $this->getFamily()->getPeople();
+        $otherFamilyMembers = [];
+        foreach ($familyMembers as $member) {
+            if ($member->getId() != $this->getId()) {
+                array_push($otherFamilyMembers, $member);
+            }
+        }
+
+        return $otherFamilyMembers;
+    }
 }

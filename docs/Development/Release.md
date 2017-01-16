@@ -1,67 +1,141 @@
-# Create a release
+# Process for creating a ChurchCRM Release
 
-## Do a clean clone of the branch 
- * Start the vagrant box (this will download all the third party files)
- * ssh into the vagrant box
- * 'cd /vagrant'
- * 'composer install'
- * 'vendor/bin/phing' this will do the following
-   * Regenerate messages.po based on the latest files
-   * Build zip package
-   * Generate the change log
-   * Update the version #s to next version
+## 1. Clean and update the local working copy
 
+  1.  Change to the ChurchCRM working directory, and destroy any existing vagrant boxes
 
-## Update the demo site
- * Git checkout the branch you want to push to demo site
- * start the vagrant box (this will download all the 3rd party files)
- * ssh into the vagrant box
- * 'cd /vagrant'
- * 'composer install'
- * 'vendor/bin/phing package' this will do the following
-   * build zip package
- * 'vendor/bin/phing demosite' this will do the following
-   * upload the zip file to the demo site
-   * run server-side scripts to unpack the zip file
-   * copy a pre-configured config.php file 
-   * reset the demo database
-   * set the demo password to admin / george
+    ```
+    vagrant destroy -f
+    ```
 
-## Check in translation file 
+  2.  Checkout the branch to be released, and pull any updates
 
- * Commit changes to messages.po 
- * Push to master 
+    ```
+    git checkout master
+    git pull
+    ```
 
-##  Create a GitHub release   
+  3.  Remove all extra files to ensure a clean build
 
-https://github.com/ChurchCRM/CRM/releases
+    ```
+    git reset --hard
+    git clean -xdf
+    ```
 
- * Ensure you select the correct branch
- * Enter version # as the tag and subject 
- * Point to the change log 
- * Upload zip file
- * Publish the release 
+## 2. Build ChurchCRM
 
-## Update release notes 
- * 'vendor/bin/phing change-log' this will generate the logs after the tags are created
- * Commit changes to CHANGELOG.md
- * Update git release so it points to the latest version in the change log
+  1. Start the vagrant box to build all prerequisites.  When build is complete, log into the box on SSH and cd to /vagrant
 
-## Update milestones
+    ```
+    vagrant up
+    vagrant ssh
+    cd /vagrant
+    ```
+    
+  2. Update the Languages files by running: 
+  
+    ```
+    npm run locale-gen
+    ```
+    
+    This will create a new /src/locale/messages.po file.  If you have access rights, upload this file to POEditor.com
 
-https://github.com/ChurchCRM/CRM/milestones
+  3. Pull updated translation strings from POEditor.com
+  
+    First edit Gruntfile.js, and set ```poeditor.options.api_token``` to your personal POEditor API access token.  Then, run:
 
- * Close version milestone 
- * Create next version milestone 
- 
-## Merge into develop 
- * Create PR
- * Approve and merge PR
+    ```
+    npm run locale-download
+    ```
+
+  4. Check in translation file 
+
+    1. Create a new branch from master
+    2. Commit changes to messages.po 
+    3. Push the branch to GitHub
+    4. Merge the branch to Master.  Note the commit hash - we'll want to compare this against the demosite later.
+
+  5. After checking in translation updates, run the NPM build script
+
+    ```
+    npm run package
+    ```
+
+    This will run the following actions:
+      * Generate code signatures
+      * Build zip package
+
+## 3. Test the build!
    
-## Rev to the next version 
- * Update app version in build.xml
- * Create new version  db scripts 
+  This testing should be done to ensure there are no last-minute "showstopper" bugs or a bad build
+    
+  1. Update the demosite using 
+
+    ```
+    npm run demosite
+    ```
+    
+    The Demosite push key will be required.  Feel free to kick the tires on the demo site at this point one last time.  The commit hash on the demo site landing page should match the commit hash from step 4.4
+
+  2. Test the zip file in the vagrant QA environment:
+    
+    1. After creating the release zip archive, copy it to /vagrant-qa
+
+    2. Edit /vagrant-qa/VersionToLaunch.  Place the filename as the only uncommented line of the file
+
+    3. From the /vagrant-qa directory, run 
+
+    ```
+     vagrant up
+    ```
+
+    4. A new Vagrant VM wil be started on http://192.168.10.12 with the contents of the release zip.  Test major functionality in this QA environment
+
+    5. After testing a clean install of the release, test an in-place upgrade of the release.
+
+      1.  Place a restore of a previous version of ChurchCRM in the /vagrant-qa directory.  The file must be named ```ChurchCRM-Database.sql```.  
+
+      2.  Run ```vagrant provision```, and the vagrant VM will be re-loaded with the database pre-staged
+
+      3.  Attempt to log into the vagrant-qa box.  The in-place upgrade routines should upgrade the database.
+
+  3. Test the release package on your own testing server
+
+
+
+## 5.  Create a GitHub release/tag
+
+  https://github.com/ChurchCRM/CRM/releases
+
+  * Ensure you select the correct branch, and that the current commit hash matches the commit you created in step 4.4
+  * Enter version # as the tag and subject 
+  * Point to the change log 
+  * Upload zip file
+  * Save the release as pre-release
+
+## 6. Update release notes and version number
+
+  After the tag has been created, update the change log and version number
+
+  ```
+  npm run rev-build
+  ```
+
+  * Also, edit ```/src/mysql/upgrade.json``` to reflect the current upgrade path.
+  * Commit the changes to a new branch titled ```<new-version-number>-starting```
+  * Update git release so it points to the latest version in the change log
+
+## 7. Update milestones
+
+  https://github.com/ChurchCRM/CRM/milestones
+
+  * Close version milestone 
+  * Create next version milestone 
  
+## 8. Merge master into develop 
+
+  * Create a new branch to merge master into develop
+  * Create a PR to get approval for the merge - sometimes regressions can sneak in here, so be careful!
  
   
 

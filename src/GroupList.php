@@ -36,23 +36,26 @@ require 'Include/Header.php'; ?>
 <table class="table" id="groupsTable">
 </table>
 <?php
-if ($_SESSION['bManageGroups'])
-{ ?>
+if ($_SESSION['bManageGroups']) {
+    ?>
 
 
 <br>
 <form action="#" method="get" class="form">
-    <label for="addNewGruop"><?= gettext("Add New Group") ?> :</label>
+    <label for="addNewGruop"><?= gettext('Add New Group') ?> :</label>
     <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
     <br>
-    <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext("Add New Group") ?></button>
+    <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext('Add New Group') ?></button>
 </form>
 <?php
+
 }
 ?>
 
 </div>
 <script src="skin/js/GroupList.js" type="text/javascript"></script>
+
+
 <?php
 require 'Include/Footer.php';
 ?>

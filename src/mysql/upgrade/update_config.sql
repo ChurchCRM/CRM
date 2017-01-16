@@ -12,12 +12,13 @@ UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='1' WHERE `cfg_id`='
 UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='2' WHERE `cfg_id`='1005';
 UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='3' WHERE `cfg_id`='1006';
 UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='4' WHERE `cfg_id`='1007';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='5' WHERE `cfg_id`='1008';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='5' WHERE `cfg_id`='1047';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='6' WHERE `cfg_id`='1008';
 UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='7' WHERE `cfg_id`='1009';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='6' WHERE `cfg_id`='1010';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='8' WHERE `cfg_id`='65';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='9' WHERE `cfg_id`='45';
-UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='10' WHERE `cfg_id`='46';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='8' WHERE `cfg_id`='1010';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='9' WHERE `cfg_id`='65';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='10' WHERE `cfg_id`='45';
+UPDATE `config_cfg` SET `cfg_category`='Step1', `cfg_order`='11' WHERE `cfg_id`='46';
 
 UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='0' WHERE `cfg_id`='12';
 UPDATE `config_cfg` SET `cfg_category`='Step2', `cfg_order`='1' WHERE `cfg_id`='13';
@@ -66,6 +67,8 @@ UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='9' WHERE `cfg_id`='
 UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='11' WHERE `cfg_id`='11';
 UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='12' WHERE `cfg_id`='1';
 UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='13' WHERE `cfg_id`='53';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='14' WHERE `cfg_id`='1045';
+UPDATE `config_cfg` SET `cfg_category`='Step5', `cfg_order`='15' WHERE `cfg_id`='1046';
 
 UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='0' WHERE `cfg_id`='44';
 UPDATE `config_cfg` SET `cfg_category`='Step6', `cfg_order`='1' WHERE `cfg_id`='56';

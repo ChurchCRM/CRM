@@ -15,7 +15,7 @@
  *
  ******************************************************************************/
 
-require_once('Header-function.php');
+require_once 'Header-function.php';
 
 // Turn ON output buffering
 ob_start();

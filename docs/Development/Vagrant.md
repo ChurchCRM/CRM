@@ -75,8 +75,7 @@ DB Password: `churchcrm`
 - You can view (in real time) the messages sent by ChurchCRM by opening [http://192.168.33.10:1080](http://192.168.33.10:1080) on the machine hosting the Vagrant environment
 
 ### Propel Model update
-- Make changes to src/orm/conf/schema.xml
-- Start vagrant
-- cd /vagrant/vagrant
-- run ../src/vendor/propel/propel/bin/propel model:build
+- Make changes to propel/schema.xml
+- change dir to the project root or in vagrant /vagrant
+- npm run orm-gen
 

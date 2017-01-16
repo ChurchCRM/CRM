@@ -103,7 +103,7 @@ CREATE TABLE `config_cfg` (
   `cfg_id` int(11) NOT NULL default '0',
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
-  `cfg_type` ENUM('text','number','date','boolean','textarea','json','choice') NOT NULL default 'text',
+  `cfg_type` ENUM('text','number','date','boolean','textarea','json','choice', 'country') NOT NULL default 'text',
   `cfg_default` text NOT NULL,
   `cfg_tooltip` text NOT NULL,
   `cfg_section` varchar(50) NOT NULL default '',
@@ -122,7 +122,7 @@ CREATE TABLE `config_cfg` (
 INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_default`, `cfg_tooltip`, `cfg_section`, `cfg_category`, `cfg_data`) VALUES
 (2, 'debug', '1', 'boolean', '1', 'Set debug mode\r\nThis may be helpful for when you''re first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you''ll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.', 'General', NULL, NULL),
 (5, 'sDirClassifications', '1,2,4,5', 'text', '1,2,4,5', 'Include only these classifications in the directory, comma seperated', 'General', NULL, NULL),
-(6, 'sDirRoleHead', '1,7', 'text', '1,7', 'These are the family role numbers designated as head of house', 'General', NULL, NULL),
+(6, 'sDirRoleHead', '1', 'text', '1', 'These are the family role numbers designated as head of house', 'General', NULL, NULL),
 (7, 'sDirRoleSpouse', '2', 'text', '2', 'These are the family role numbers designated as spouse', 'General', NULL, NULL),
 (8, 'sDirRoleChild', '3', 'text', '3', 'These are the family role numbers designated as child', 'General', NULL, NULL),
 (9, 'sSessionTimeout', '3600', 'number', '3600', 'Session timeout length in seconds\rSet to zero to disable session timeouts.', 'General', NULL, NULL),
@@ -136,12 +136,12 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (20, 'iPDFOutputType', '1', 'number', '1', 'PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window', 'General', NULL, NULL),
 (21, 'sDefaultCity', '', 'text', '', 'Default City', 'General', NULL, NULL),
 (22, 'sDefaultState', '', 'text', '', 'Default State - Must be 2-letter abbreviation!', 'General', NULL, NULL),
-(23, 'sDefaultCountry', 'United States', 'text', 'United States', 'Default Country', 'General', NULL, NULL),
+(23, 'sDefaultCountry', 'United States', 'country', 'United States', 'Default Country', 'General', NULL, NULL),
 (24, 'bEmailSend', '', 'boolean', '', 'If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP.', 'General', NULL, NULL),
 (25, 'sSendType', 'smtp', 'choice', 'smtp', 'The method for sending email. Either "smtp" or "sendmail"', 'General', NULL, '{"Choices":["smtp","SendMail"]}'),
 (26, 'sToEmailAddress', '', 'text', '', 'Default account for receiving a copy of all emails', 'General', NULL, NULL),
 (27, 'sSMTPHost', '', 'text', '', 'SMTP Server Address (mail.server.com:25)', 'General', NULL, NULL),
-(28, 'sSMTPAuth', '1', 'boolean', '1', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL, NULL),
+(28, 'sSMTPAuth', '0', 'boolean', '0', 'Does your SMTP server require auththentication (username/password)?', 'General', NULL, NULL),
 (29, 'sSMTPUser', '', 'text', '', 'SMTP Username', 'General', NULL, NULL),
 (30, 'sSMTPPass', '', 'text', '', 'SMTP Password', 'General', NULL, NULL),
 (33, 'bShowFamilyData', '1', 'boolean', '1', 'Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person''s assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ', 'General', NULL, NULL),
@@ -227,6 +227,7 @@ INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`, `cfg_type`, `cfg_de
 (1044, 'sEnableIntegrityCheck', '1', 'boolean', '1', 'Enable Integrity Check', 'General', "Step5", NULL),
 (1045, 'sIntegrityCheckInterval', '168', 'Text', '168', 'Interval in Hours for Integrity Check', 'General', "Step5", NULL),
 (1046, 'sLastIntegrityCheckTimeStamp', '', 'Text', '', 'Last Integrity Check Timestamp', 'General', "Step5", NULL),
+(1047, 'sChurchCountry', '', 'country', '', 'Church Country', 'ChurchInfoReport', NULL, NULL),
 (2000, 'mailChimpApiKey', '', 'text', '', 'see http://kb.mailchimp.com/accounts/management/about-api-keys', 'General', NULL, NULL);
 -- --------------------------------------------------------
 
@@ -369,8 +370,8 @@ CREATE TABLE `events_event` (
   `event_title` varchar(255) NOT NULL default '',
   `event_desc` varchar(255) default NULL,
   `event_text` text,
-  `event_start` datetime NOT NULL default '0000-00-00 00:00:00',
-  `event_end` datetime NOT NULL default '0000-00-00 00:00:00',
+  `event_start` datetime NOT NULL,
+  `event_end` datetime NOT NULL,
   `inactive` int(1) NOT NULL default '0',
   `event_typename` varchar(40) NOT NULL default '',
   PRIMARY KEY  (`event_id`),
@@ -416,7 +417,7 @@ CREATE TABLE `event_types` (
   `type_defrecurtype` enum('none','weekly','monthly','yearly') NOT NULL default 'none',
   `type_defrecurDOW` enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday') NOT NULL default 'Sunday',
   `type_defrecurDOM` char(2) NOT NULL default '0',
-  `type_defrecurDOY` date NOT NULL default '0000-00-00',
+  `type_defrecurDOY` date NOT NULL default '2000-01-01',
   `type_active` int(1) NOT NULL default '1',
   PRIMARY KEY  (`type_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=3 ;
@@ -426,8 +427,8 @@ CREATE TABLE `event_types` (
 --
 
 INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_defrecurtype`, `type_defrecurDOW`, `type_defrecurDOM`, `type_defrecurDOY`, `type_active`) VALUES
-(1, 'Church Service', '10:30:00', 'weekly', 'Sunday', '', '0000-00-00', 1),
-(2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '0000-00-00', 1);
+(1, 'Church Service', '10:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1),
+(2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -486,7 +487,7 @@ CREATE TABLE `family_fam` (
   `fam_CellPhone` varchar(30) default NULL,
   `fam_Email` varchar(100) default NULL,
   `fam_WeddingDate` date default NULL,
-  `fam_DateEntered` datetime NOT NULL default '0000-00-00 00:00:00',
+  `fam_DateEntered` datetime NOT NULL,
   `fam_DateLastEdited` datetime default NULL,
   `fam_EnteredBy` smallint(5) NOT NULL default '0',
   `fam_EditedBy` smallint(5) unsigned default '0',
@@ -562,7 +563,7 @@ CREATE TABLE `group_grp` (
 
 CREATE TABLE `istlookup_lu` (
   `lu_fam_ID` mediumint(9) NOT NULL default '0',
-  `lu_LookupDateTime` datetime NOT NULL default '0000-00-00 00:00:00',
+  `lu_LookupDateTime` datetime NOT NULL default '2000-01-01 00:00:00',
   `lu_DeliveryLine1` varchar(255) default NULL,
   `lu_DeliveryLine2` varchar(255) default NULL,
   `lu_City` varchar(50) default NULL,
@@ -671,7 +672,7 @@ CREATE TABLE `menuconfig_mcf` (
   `sortorder` tinyint(3) NOT NULL,
   `icon` varchar(50) DEFAULT NULL,
   PRIMARY KEY  (`mid`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=102 ;
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=90 ;
 
 --
 -- Dumping data for table `menuconfig_mcf`
@@ -692,7 +693,6 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 (20, 'groups', 'root', 1, 'Groups', 'Groups', '', '', 'bAll', NULL, 0, 0, NULL, 1, 3, 'fa-tag'),
 (21, 'listgroups', 'groups', 0, 'List Groups', 'List Groups', 'GroupList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
 
-(23, 'editgroup', 'groups', 0, 'Edit Group Types', 'Edit Group Types', 'OptionManager.php?mode=grptypes', '', 'bMenuOptions', NULL, 0, 0, NULL, 1, 3, NULL),
 (24, 'assigngroup', 'groups', 0, 'Group Assignment Helper', 'Group Assignment Helper', 'SelectList.php?mode=groupassign', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
 
 (30, 'sundayschool', 'root', 1, 'Sunday School', 'Sunday School', '', '', 'bAll', NULL, 0, 0, NULL, 1, 4, 'fa-child'),
@@ -721,24 +721,7 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 
 (80, 'report', 'root', 1, 'Data/Reports', 'Data/Reports', '', '', 'bAll', NULL, 0, 0, NULL, 1, 9, 'fa-file-pdf-o'),
 (81, 'reportmenu', 'report', 0, 'Reports Menu', 'Reports Menu', 'ReportList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-(82, 'querymenu', 'report', 0, 'Query Menu', 'Query Menu', 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
-(83, 'cvsexport', 'report', 0, 'CSV Export Records', 'CSV Export Records', 'CSVExport.php', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
-
-(90, 'properties', 'root', 1, 'Properties', 'Properties', '', '', 'bAll', NULL, 0, 0, NULL, 1, 10, 'fa-cogs'),
-(91, 'peopleproperty', 'properties', 0, 'People Properties', 'People Properties', 'PropertyList.php?Type=p', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-(92, 'familyproperty', 'properties', 0, 'Family Properties', 'Family Properties', 'PropertyList.php?Type=f', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
-(93, 'groupproperty', 'properties', 0, 'Group Properties', 'Group Properties', 'PropertyList.php?Type=g', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
-(94, 'propertytype', 'properties', 0, 'Property Types', 'Property Types', 'PropertyTypeList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
-
-(100, 'generalsetting', 'admin', 0, 'Edit General Settings', 'Edit General Settings', 'SystemSettings.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
-(101, 'editusers', 'admin', 0, 'System Users', 'System Users', 'UserList.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 2, NULL),
-(104, 'customfamilyfld', 'admin', 0, 'Edit Custom Family Fields', 'Edit Custom Family Fields', 'FamilyCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 5, NULL),
-(105, 'custompersonfld', 'admin', 0, 'Edit Custom Person Fields', 'Edit Custom Person Fields', 'PersonCustomFieldsEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 6, NULL),
-(106, 'donationfund', 'admin', 0, 'Edit Donation Funds', 'Edit Donation Funds', 'DonationFundEditor.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 7, NULL),
-(107, 'dbbackup', 'admin', 0, 'Backup Database', 'Backup Database', 'BackupDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 8, NULL),
-(108, 'dbrestore', 'admin', 0, 'Restore Database', 'Restore Database', 'RestoreDatabase.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 9, NULL),
-(109, 'cvsimport', 'admin', 0, 'CSV Import', 'CSV Import', 'CSVImport.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 10, NULL),
-(110, 'seeddata', 'admin', 0, 'Generate Seed Data', 'Generate Seed Data', 'GenerateSeedData.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 11, NULL);
+(82, 'querymenu', 'report', 0, 'Query Menu', 'Query Menu', 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -752,7 +735,7 @@ CREATE TABLE `note_nte` (
   `nte_fam_ID` mediumint(8) unsigned NOT NULL default '0',
   `nte_Private` mediumint(8) unsigned NOT NULL default '0',
   `nte_Text` text,
-  `nte_DateEntered` datetime NOT NULL default '0000-00-00 00:00:00',
+  `nte_DateEntered` datetime NOT NULL,
   `nte_DateLastEdited` datetime default NULL,
   `nte_EnteredBy` mediumint(8) NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
@@ -874,7 +857,7 @@ CREATE TABLE `person_per` (
   `per_fam_ID` smallint(5) unsigned NOT NULL default '0',
   `per_Envelope` smallint(5) unsigned default NULL,
   `per_DateLastEdited` datetime default NULL,
-  `per_DateEntered` datetime NOT NULL default '0000-00-00 00:00:00',
+  `per_DateEntered` datetime NOT NULL,
   `per_EnteredBy` smallint(5)  NOT NULL default '0',
   `per_EditedBy` smallint(5) unsigned default '0',
   `per_FriendDate` date default NULL,
@@ -905,7 +888,7 @@ CREATE TABLE `pledge_plg` (
   `plg_schedule` enum('Weekly', 'Monthly','Quarterly','Once','Other') default NULL,
   `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') default NULL,
   `plg_comment` text,
-  `plg_DateLastEdited` date NOT NULL default '0000-00-00',
+  `plg_DateLastEdited` date NOT NULL default '2016-01-01',
   `plg_EditedBy` mediumint(9) NOT NULL default '0',
   `plg_PledgeOrPayment` enum('Pledge','Payment') NOT NULL default 'Pledge',
   `plg_fundID` tinyint(3) unsigned default NULL,
@@ -1165,6 +1148,7 @@ CREATE TABLE `query_qry` (
 --
 
 INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qry_Count`) VALUES
+(1, 'SELECT CONCAT(''<a href=FamilyView.php?FamilyID='',fam_ID,''>'',fam_Name,''</a>'') AS ''Family Name''   FROM family_fam Where fam_WorkPhone != ""', 'Family Member Count', 'Returns each family and the total number of people assigned to them.', 0),
 (3, 'SELECT CONCAT(''<a href=FamilyView.php?FamilyID='',fam_ID,''>'',fam_Name,''</a>'') AS ''Family Name'', COUNT(*) AS ''No.''\nFROM person_per\nINNER JOIN family_fam\nON fam_ID = per_fam_ID\nGROUP BY per_fam_ID\nORDER BY ''No.'' DESC', 'Family Member Count', 'Returns each family and the total number of people assigned to them.', 0),
 (4, 'SELECT per_ID as AddToCart,CONCAT(''<a\r\nhref=PersonView.php?PersonID='',per_ID,''>'',per_FirstName,''\r\n'',per_LastName,''</a>'') AS Name,\r\nCONCAT(per_BirthMonth,''/'',per_BirthDay,''/'',per_BirthYear) AS ''Birth Date'',\r\nDATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay))),''%Y'')+0 AS  ''Age''\r\nFROM person_per\r\nWHERE\r\nDATE_ADD(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay),INTERVAL\r\n~min~ YEAR) <= CURDATE()\r\nAND\r\nDATE_ADD(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay),INTERVAL\r\n(~max~ + 1) YEAR) >= CURDATE()', 'Person by Age', 'Returns any person records with ages between two given ages.', 1),
 (6, 'SELECT COUNT(per_ID) AS Total FROM person_per WHERE per_Gender = ~gender~', 'Total By Gender', 'Total of records matching a given gender.', 0),
@@ -1285,30 +1269,27 @@ INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_valu
 CREATE TABLE `user_usr` (
   `usr_per_ID` mediumint(9) unsigned NOT NULL default '0',
   `usr_Password` varchar(500) NOT NULL default '',
-  `usr_NeedPasswordChange` tinyint(3) unsigned NOT NULL default '1',
-  `usr_LastLogin` datetime NOT NULL default '0000-00-00 00:00:00',
+  `usr_NeedPasswordChange` tinyint(1) unsigned NOT NULL default '1',
+  `usr_LastLogin` datetime NOT NULL default '2000-01-01 00:00:00',
   `usr_LoginCount` smallint(5) unsigned NOT NULL default '0',
   `usr_FailedLogins` tinyint(3) unsigned NOT NULL default '0',
-  `usr_AddRecords` tinyint(3) unsigned NOT NULL default '0',
-  `usr_EditRecords` tinyint(3) unsigned NOT NULL default '0',
-  `usr_DeleteRecords` tinyint(3) unsigned NOT NULL default '0',
-  `usr_MenuOptions` tinyint(3) unsigned NOT NULL default '0',
-  `usr_ManageGroups` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Finance` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Communication` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Notes` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Admin` tinyint(3) unsigned NOT NULL default '0',
-  `usr_Workspacewidth` smallint(6) default NULL,
-  `usr_BaseFontSize` tinyint(4) default NULL,
+  `usr_AddRecords` tinyint(1) unsigned NOT NULL default '0',
+  `usr_EditRecords` tinyint(1) unsigned NOT NULL default '0',
+  `usr_DeleteRecords` tinyint(1) unsigned NOT NULL default '0',
+  `usr_MenuOptions` tinyint(1) unsigned NOT NULL default '0',
+  `usr_ManageGroups` tinyint(1) unsigned NOT NULL default '0',
+  `usr_Finance` tinyint(1) unsigned NOT NULL default '0',
+  `usr_Notes` tinyint(1) unsigned NOT NULL default '0',
+  `usr_Admin` tinyint(1) unsigned NOT NULL default '0',
   `usr_SearchLimit` tinyint(4) default '10',
   `usr_Style` varchar(50) default 'Style.css',
   `usr_showPledges` tinyint(1) NOT NULL default '0',
   `usr_showPayments` tinyint(1) NOT NULL default '0',
-  `usr_showSince` date NOT NULL default '0000-00-00',
+  `usr_showSince` date NOT NULL default '2016-01-01',
   `usr_defaultFY` mediumint(9) NOT NULL default '10',
   `usr_currentDeposit` mediumint(9) NOT NULL default '0',
-  `usr_UserName` varchar(32) default NULL,
-  `usr_EditSelf` tinyint(3) unsigned NOT NULL default '0',
+  `usr_UserName` varchar(50) default NULL,
+  `usr_EditSelf` tinyint(1) unsigned NOT NULL default '0',
   `usr_CalStart` date default NULL,
   `usr_CalEnd` date default NULL,
   `usr_CalNoSchool1` date default NULL,
@@ -1320,7 +1301,7 @@ CREATE TABLE `user_usr` (
   `usr_CalNoSchool7` date default NULL,
   `usr_CalNoSchool8` date default NULL,
   `usr_SearchFamily` tinyint(3) default NULL,
-  `usr_Canvasser` tinyint(3) NOT NULL default '0',
+  `usr_Canvasser` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   KEY `usr_per_ID` (`usr_per_ID`)
@@ -1332,14 +1313,14 @@ CREATE TABLE `user_usr` (
 
 INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, `usr_LastLogin`,
 `usr_LoginCount`, `usr_FailedLogins`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`,
-`usr_MenuOptions`, `usr_ManageGroups`, `usr_Finance`, `usr_Communication`, `usr_Notes`, `usr_Admin`,
-`usr_Workspacewidth`, `usr_BaseFontSize`, `usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
+`usr_MenuOptions`, `usr_ManageGroups`, `usr_Finance`, `usr_Notes`, `usr_Admin`,
+`usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
 `usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`, `usr_EditSelf`,
 `usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`,
 `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`,
 `usr_Canvasser`)
 VALUES
-(1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '0000-00-00 00:00:00', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 580, 9, 10, 'skin-blue', 0, 0, '0000-00-00', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
+(1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 10, 'skin-blue', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
 
 
 -- --------------------------------------------------------
@@ -1441,6 +1422,15 @@ CREATE TABLE `egive_egv` (
   `egv_EditedBy` smallint(6) NOT NULL default '0'
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+
+CREATE TABLE `tokens` (
+  `token` VARCHAR(99) NOT NULL,
+  `type` ENUM('verifyFamily', 'verifyPerson') NOT NULL,
+  `reference_id` INT(9) NOT NULL,
+  `valid_until_date` datetime NULL,
+  `remainingUses` INT(2) NULL,
+  PRIMARY KEY (`token`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 update version_ver set ver_update_end = now();
 DELIMITER $$ 
