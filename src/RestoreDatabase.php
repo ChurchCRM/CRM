@@ -15,6 +15,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Service\SystemService;
+
+$systemService  = new SystemService();
+
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -33,7 +37,7 @@ require 'Include/Header.php';
     <p><?= gettext('Select a backup file to restore') ?></p>
     <p><?= gettext('CAUTION: This will completely erase the existing database, and replace it with the backup') ?></p>
     <p><?= gettext('If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema') ?></p>
-
+    <p><?= gettext("Maximum file size")?>: <?= $systemService->getMaxUploadFileSize() ?></p>
     <form id="restoredatabase" action="<?= sRootPath ?>/api/database/restore" method="POST"
           enctype="multipart/form-data">
       <input type="file" name="restoreFile" id="restoreFile" multiple=""><br>
