@@ -52,9 +52,17 @@ require 'Include/Header.php';
 <script>
   $('#restoredatabase').submit(function (event) {
     event.preventDefault();
-    $("#restorestatus").css("color", "orange");
-    $("#restorestatus").html("<?= gettext('Restore Running, Please wait.')?>");
+   
     var formData = new FormData($(this)[0]);
+    if (window.FileReader) {
+       var file = document.getElementById('restoreFile').files[0];
+       if (file.size > window.CRM.maxUploadSizeBytes){
+         window.CRM.DisplayErrorMessage("/api/database/restore",{message: "<?= gettext("The file you selected is too large") ?>"});
+         return false;
+       }
+    }
+     $("#restorestatus").css("color", "orange");
+    $("#restorestatus").html("<?= gettext('Restore Running, Please wait.')?>");
     $.ajax({
       url: window.CRM.root + '/api/database/restore',
       type: 'POST',

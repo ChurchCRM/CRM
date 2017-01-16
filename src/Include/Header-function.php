@@ -132,7 +132,8 @@ function Header_body_scripts()
       root: "<?= $sRootPath ?>",
       lang: "<?= $localeInfo->getLanguageCode() ?>",
       locale: "<?= $localeInfo->getLocale() ?>",
-      maxUploadSize: "<?= $systemService->getMaxUploadFileSize() ?>"
+      maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
+      maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>"
     };
 
     window.CRM.DisplayErrorMessage = function(endpoint, error) {
@@ -140,7 +141,14 @@ function Header_body_scripts()
       $("#APIError").modal('show');
       $("#APIEndpoint").text(endpoint);
       $("#APIErrorText").text(error.message);
-      $("#APITrace").text(JSON.stringify(error.trace, undefined, 2));
+      if (error.trace)
+      {
+        $("#APITrace").text(JSON.stringify(error.trace, undefined, 2));
+      }
+      else
+      {
+        $("#APITrace").hide();
+      }
     };
 
     window.CRM.VerifyThenLoadAPIContent = function(url) {
