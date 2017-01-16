@@ -60,8 +60,9 @@ function Header_modals()
           <p><?= gettext('Error making API Call to') ?>: <span id="APIEndpoint"></span></p>
 
           <p><?= gettext('Error text') ?>: <span style="font-style: bold" id="APIErrorText"></span></p>
-
+          <div id="traceDiv">
           <p><?= gettext('Stack Trace') ?>: <pre id="APITrace"></pre></p>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal"><?= gettext('Close') ?></button>
@@ -143,11 +144,12 @@ function Header_body_scripts()
       $("#APIErrorText").text(error.message);
       if (error.trace)
       {
+        $("#traceDiv").show();
         $("#APITrace").text(JSON.stringify(error.trace, undefined, 2));
       }
       else
       {
-        $("#APITrace").hide();
+        $("#traceDiv").hide();
       }
     };
 
