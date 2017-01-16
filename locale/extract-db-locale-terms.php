@@ -32,7 +32,9 @@ foreach ($db->query($query) as $row) {
         file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
         array_push($stringFiles, $stringFile);
     }
-    file_put_contents($stringFile, 'gettext("'.addslashes($row['term'])."\");\r\n", FILE_APPEND);
+    $rawDBTerm = $row['term'];
+    $dbTerm = addslashes($rawDBTerm);
+    file_put_contents($stringFile, "gettext('".$dbTerm."');\n", FILE_APPEND);
 }
 foreach ($stringFiles as $stringFile) {
     file_put_contents($stringFile, "\r\n?>", FILE_APPEND);

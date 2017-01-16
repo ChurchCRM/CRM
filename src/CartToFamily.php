@@ -258,14 +258,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 	</tr>
 
 	<tr>
-		<td class="LabelColumn">
-			<?php
-            if ($sCountry == 'Canada') {
-                echo gettext('Postal Code').':';
-            } else {
-                echo gettext('Zip').':';
-            } ?>
-		</td>
+		<td class="LabelColumn"><?= gettext('Zip')?>:</td>
 		<td class="TextColumn">
 			<input type="text" Name="Zip" value="<?= $sZip ?>" maxlength="10" size="8">
 		</td>
@@ -288,8 +281,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 		<td class="TextColumn">
 			<input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30">
 			<input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
-                echo ' checked';
-            } ?>><?= gettext('Do not auto-format') ?>
+        echo ' checked';
+    } ?>><?= gettext('Do not auto-format') ?>
 		</td>
 	</tr>
 
@@ -298,8 +291,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 		<td class="TextColumn">
 			<input type="text" name="WorkPhone" value="<?php echo $sWorkPhone ?>" size="30" maxlength="30">
 			<input type="checkbox" name="NoFormat_WorkPhone" value="1" <?php if ($bNoFormat_WorkPhone) {
-                echo ' checked';
-            } ?>><?= gettext('Do not auto-format') ?>
+        echo ' checked';
+    } ?>><?= gettext('Do not auto-format') ?>
 		</td>
 	</tr>
 
@@ -308,8 +301,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 		<td class="TextColumn">
 			<input type="text" name="CellPhone" value="<?php echo $sCellPhone ?>" size="30" maxlength="30">
 			<input type="checkbox" name="NoFormat_CellPhone" value="1" <?php if ($bNoFormat_CellPhone) {
-                echo ' checked';
-            } ?>><?= gettext('Do not auto-format') ?>
+        echo ' checked';
+    } ?>><?= gettext('Do not auto-format') ?>
 		</td>
 	</tr>
 

@@ -216,7 +216,7 @@ class PDF_ReminderReport extends ChurchInfoReport
     public function FinishPage($curY)
     {
         $curY += 2 * SystemConfig::getValue('incrementY');
-        $this->WriteAt(SystemConfig::getValue('leftX'), $curY, 'Sincerely,');
+        $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
         $curY += 4 * SystemConfig::getValue('incrementY');
         $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sReminderSigner'));
     }

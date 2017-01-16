@@ -124,7 +124,7 @@ if ($output == 'pdf') {
             $blurb = SystemConfig::getValue('sZeroGivers3');
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, $blurb);
             $curY += 3 * SystemConfig::getValue('incrementY');
-            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, 'Sincerely,');
+            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
             $curY += 4 * SystemConfig::getValue('incrementY');
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxSigner'));
         }

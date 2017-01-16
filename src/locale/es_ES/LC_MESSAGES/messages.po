@@ -799,10 +799,6 @@ msgstr "Sólo los nuevos datos a continuación"
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Use el cuadro de texto para otros países fuera de EE.UU. y Canadá)"
 
-#: CartToFamily.php:267 FamilyEditor.php:732
-msgid "Postal Code"
-msgstr "Código Postal"
-
 #: CartToFamily.php:293 CartToFamily.php:301 CartToFamily.php:309
 #: FamilyEditor.php:780 FamilyEditor.php:790 FamilyEditor.php:800
 #: Include/Functions.php:1161 PersonEditor.php:888 PersonEditor.php:909
@@ -1791,7 +1787,7 @@ msgstr "Información Familiar"
 
 #: FamilyEditor.php:727
 msgid "None US/CND State"
-msgstr "Estado No US/CND"
+msgstr "Estado No"
 
 #: FamilyEditor.php:766 PersonEditor.php:741
 msgid "Contact Info"
@@ -3955,10 +3951,6 @@ msgstr "Por Nombre"
 msgid "By Family"
 msgstr "Por Familia"
 
-#: SelectList.php:487
-msgid "By ZIP/Postal Code"
-msgstr "Por ZIP/Código Postal"
-
 #: SelectList.php:488
 msgid "By Newest Entries"
 msgstr "Por Entradas Más Recientes"
@@ -5913,10 +5905,6 @@ msgstr "ChurchCRM: Portal MRBS"
 msgid "Error: You must enter a name"
 msgstr "Error: Debe ingresar un nombre"
 
-#: PersonEditor.php:813
-msgid "None US/CND State:"
-msgstr "Estado No US/CND"
-
 #: PersonView.php:212
 msgid " Since:"
 msgstr " Desde:"
@@ -6139,7 +6127,8 @@ msgid "Names of markers for Google Maps in order of classification"
 msgstr "Nombres de marcadores para Google Maps en orden de clasificación"
 
 #: config_cfg.php:56
-msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database. Useful in the UK."
+#, fuzzy
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Hacer que los códigos postales ingresados por usuarios estén en mayúsculas cuando se guarden en la base de datos. Útil en Reino Unido."
 
 #: config_cfg.php:58
@@ -8169,88 +8158,4 @@ msgstr "Zambia"
 #: settings-countries.php:257
 msgid "Zimbabwe"
 msgstr "Zimbabue"
-
-#: Setup.php:97
-msgid "ChurchCRM – Setup"
-msgstr ""
-
-#: Setup.php:199
-msgid "This server is ChurchCRM ready!"
-msgstr ""
-
-#: Setup.php:205
-msgid "We're still determining if this server is ready for ChurchCRM."
-msgstr ""
-
-#: Setup.php:211
-msgid "This server isn't quite ready for ChurchCRM."
-msgstr ""
-
-#: Setup.php:238
-msgid "I know what I'm doing.  Install ChurchCRM Anyway"
-msgstr ""
-
-#: Setup.php:240
-msgid "In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical."
-msgstr ""
-
-#: Include/Header-function.php:61
-msgid "Stack Trace"
-msgstr ""
-
-#: config_cfg.php:14
-msgid "Show family member firstnames in Family Listing?"
-msgstr ""
-
-#: config_cfg.php:25
-msgid "Word Wrap point. Default for most email programs is 72"
-msgstr ""
-
-#: config_cfg.php:29
-msgid "Use vCard 2.1 rather than vCard 3.0 standard."
-msgstr ""
-
-#: config_cfg.php:38
-msgid "Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html"
-msgstr ""
-
-#: query_qry.php:2 query_qry.php:51
-msgid "Person Count"
-msgstr ""
-
-#: query_qry.php:9 query_qry.php:58
-msgid "Find Teachers"
-msgstr ""
-
-#: query_qry.php:10 query_qry.php:59
-msgid "Find Students"
-msgstr ""
-
-#: query_qry.php:12 query_qry.php:61
-msgid "Class Students"
-msgstr ""
-
-#: query_qry.php:13 query_qry.php:62
-msgid "Class Teachers"
-msgstr ""
-
-#: query_qry.php:26 query_qry.php:75
-msgid "Returns the total number of people in the database."
-msgstr ""
-
-#: query_qry.php:33 query_qry.php:82
-msgid "Find all people assigned to Sunday school classes as teachers"
-msgstr ""
-
-#: query_qry.php:34 query_qry.php:83
-msgid "Find all people assigned to Sunday school classes as students"
-msgstr ""
-
-#: query_qry.php:36 query_qry.php:85
-msgid "Find students for a particular class"
-msgstr ""
-
-#: query_qry.php:37 query_qry.php:86
-msgid "Find teachers for a particular class"
-msgstr ""
 
