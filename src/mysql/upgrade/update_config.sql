@@ -128,26 +128,3 @@ UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='4' WHERE `cfg_id`='
 UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='5' WHERE `cfg_id`='102';
 UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='6' WHERE `cfg_id`='103';
 UPDATE `config_cfg` SET `cfg_category`='Step9', `cfg_order`='7' WHERE `cfg_id`='104';
-
-delete from config_cfg where cfg_id ='18';
-delete from config_cfg where cfg_id ='2001';
-
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1011';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1012';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1013';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1015';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1017';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1018';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1019';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1020';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1021';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1022';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1023';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1024';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1026';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1027';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1028';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1029';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1031';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1032';
-UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1033';
