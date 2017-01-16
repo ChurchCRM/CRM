@@ -19,3 +19,26 @@ update config_cfg set cfg_tooltip = 'Make user-entered zip/postcodes UPPERCASE w
 INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qry_Count`) VALUES
 (1, 'SELECT CONCAT(''<a href=FamilyView.php?FamilyID='',fam_ID,''>'',fam_Name,''</a>'') AS ''Family Name''   FROM family_fam Where fam_WorkPhone != ""', 'Family Member Count', 'Returns each family and the total number of people assigned to them.', 0);
 
+delete from config_cfg where cfg_id ='18';
+delete from config_cfg where cfg_id ='2001';
+
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1011';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1012';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1013';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1015';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1017';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1018';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1019';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1020';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1021';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1022';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1023';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1024';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1026';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1027';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1028';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1029';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1031';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1032';
+UPDATE `config_cfg` SET `cfg_type`='textarea' WHERE `cfg_id`='1033';
+

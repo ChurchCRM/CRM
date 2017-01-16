@@ -28,7 +28,6 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Config;
 use ChurchCRM\ConfigQuery;
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\LocaleInfo;
@@ -50,7 +49,7 @@ if (isset($_POST['save'])) {
     ksort($type);
     reset($type);
 
-    $iHTMLHeaderRow = ConfigQuery::create()->filterByName('sHeader')->findOne()->getId();
+    $iHTMLHeaderRow = SystemConfig::getValue('sHeader');
 
     while ($current_type = current($type)) {
         $id = key($type);
