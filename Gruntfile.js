@@ -34,7 +34,7 @@ module.exports = function (grunt) {
             '!vendor/**/tests/**',
             '!vendor/**/docs/**',
             '!Images/{Family,Person}/thumbnails/*.{jpg,jpeg,png}',
-        //    '!Images/{Family,Person}/*.{jpg,jpeg,png}',
+            //'!Images/{Family,Person}/*.{jpg,jpeg,png}',
             '!composer.lock',
             '!Include/Config.php',
             '!integrityCheck.json'
@@ -266,7 +266,9 @@ module.exports = function (grunt) {
             },
             'demo-data': {
                 options: {
-                    archive: 'target/Demo-ChurchCRM-<%= package.version %>.tar.gz'
+                    archive: 'target/Demo-ChurchCRM-<%= package.version %>.tar.gz',
+                    mode: "tar",
+                    pretty: true
                 },
                 files: [
                     {
