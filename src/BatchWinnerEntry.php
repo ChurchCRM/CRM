@@ -53,7 +53,7 @@ if (isset($_POST['EnterWinners'])) {
 // Get Items for the drop-down
 $sDonatedItemsSQL = "SELECT di_ID, di_Item, di_title, di_multibuy
                      FROM donateditem_di
-                     WHERE di_FR_ID = '".$iCurrentFundraiser."' ORDER BY mb_substr(di_Item,1,1), CONVERT(mb_substr(di_Item,2,3),SIGNED)";
+                     WHERE di_FR_ID = '".$iCurrentFundraiser."' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR_Item,2,3),SIGNED)";
 $rsDonatedItems = RunQuery($sDonatedItemsSQL);
 
 //Get Paddles for the drop-down
