@@ -14,6 +14,7 @@ use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\PersonGenderDataCheck;
 use ChurchCRM\Tasks\PersonClassificationDataCheck;
 use ChurchCRM\Tasks\PersonRoleDataCheck;
+use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 
 class TaskService
 {
@@ -36,7 +37,8 @@ class TaskService
             new FamilyWorkPhoneTask(),
             new PersonGenderDataCheck(),
             new PersonClassificationDataCheck(),
-            new PersonRoleDataCheck()
+            new PersonRoleDataCheck(),
+            new UpdateFamilyCoordinatesTask()
         ];
     }
 
