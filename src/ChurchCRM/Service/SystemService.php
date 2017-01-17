@@ -49,7 +49,7 @@ class SystemService
         $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
         $restoreResult->type2 = pathinfo(mb_substr($file['name'], 0, strlen($file['name']) - 3), PATHINFO_EXTENSION);
         $restoreResult->root = SystemURLs::getDocumentRoot();
-        $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . '/tmp_attach/ChurchCRMBackups';
+        $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . '/tmp_attach/';
         $restoreResult->imagesRoot = 'Images';
         $restoreResult->headers = [];
         $restoreResult->uploadedFileDestination = SystemURLs::getDocumentRoot() . '/tmp_attach/' . $file['name'];
@@ -70,6 +70,7 @@ class SystemService
                 }
                 else
                 {
+                  FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
                   throw new Exception(gettext("Backup archive does not contain a database").": " . $file['name']);
                 }
               
@@ -81,10 +82,10 @@ class SystemService
         } elseif ($restoreResult->type == 'sql') {
             SQLUtils::sqlImport($restoreResult->uploadedFileDestination, $connection);
         } else {
+            FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
             throw new Exception(gettext("Unknown File Type").": " . $restoreResult->type . " ".gettext("from file").": " . $file['name']);
         }
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
-        unlink($restoreResult->uploadedFileDestination);
         $restoreResult->UpgradeStatus = $this->upgradeDatabaseVersion();
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/update_config.sql', $connection);
