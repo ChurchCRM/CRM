@@ -62,9 +62,17 @@ class SystemService
                 $phar = new PharData($restoreResult->uploadedFileDestination);
                 $phar->extractTo($restoreResult->backupRoot);
                 $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
-                SQLUtils::sqlImport($restoreResult->SQLfile, $connection);
-                FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
-                FileSystemUtils::recursiveCopyDirectory($restoreResult->backupRoot . '/Images/', SystemURLs::getDocumentRoot() . '/Images');
+                if (file_exists($restoreResult->SQLfile))
+                {
+                  SQLUtils::sqlImport($restoreResult->SQLfile, $connection);
+                  FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
+                  FileSystemUtils::recursiveCopyDirectory($restoreResult->backupRoot . '/Images/', SystemURLs::getDocumentRoot() . '/Images');
+                }
+                else
+                {
+                  throw new Exception(gettext("Backup archive does not contain a database").": " . $file['name']);
+                }
+              
             } elseif ($restoreResult->type2 == 'sql') {
                 $restoreResult->SQLfile = SystemURLs::getDocumentRoot() . '/tmp_attach/' . str_replace('.gz', '', $file['name']);
                 file_put_contents($restoreResult->SQLfile, gzopen($restoreResult->uploadedFileDestination, r));
@@ -73,7 +81,7 @@ class SystemService
         } elseif ($restoreResult->type == 'sql') {
             SQLUtils::sqlImport($restoreResult->uploadedFileDestination, $connection);
         } else {
-            throw new Exception("Unknown File Type: " . $restoreResult->type . " from file: " . $file);
+            throw new Exception(gettext("Unknown File Type").": " . $restoreResult->type . " ".gettext("from file").": " . $file['name']);
         }
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
         unlink($restoreResult->uploadedFileDestination);
