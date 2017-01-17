@@ -60,7 +60,7 @@ extract($thisFR);
 
 // Get all the donated items
 $sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID='.$iCurrentFundraiser.
-' ORDER BY mb_substr(di_item,1,1),cast(mb_substr(di_item,2) as unsigned integer),mb_substr(di_item,4)';
+' ORDER BY SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)';
 $rsItems = RunQuery($sSQL);
 
 $pdf = new PDF_FRCatalogReport();

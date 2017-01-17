@@ -166,7 +166,7 @@ function Header_body_scripts()
 
     function LimitTextSize(theTextArea, size) {
       if(theTextArea.value.length > size) {
-        theTextArea.value = theTextArea.value.mb_substr(0, size);
+        theTextArea.value = theTextArea.value.substr(0, size);
       }
     }
 
