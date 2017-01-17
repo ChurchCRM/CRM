@@ -389,7 +389,7 @@ for ($row = 1; $row <= $numRows; $row++) {
         echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp='.$aIDFields[$row]."\"> <img src=\"Images/x.gif\" border=\"0\" width=\"15\" alt=''></a></td>"; ?>
 
 	   <td class="TextColumn" align="center">
-	   <input type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
+	   <input type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
 	   <?php
 
        if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
@@ -398,7 +398,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 	   </td>
 
 	   <td class="TextColumn">
-	   <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="40" maxlength="100">
+	   <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="40" maxlength="100">
 	   </td>
 
 	   </tr>
@@ -414,7 +414,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 <tr>
 <td width="30%"></td>
 <td width="40%" align="center" valign="bottom">
-<input type="submit" class="btn" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
+<input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
 &nbsp;
 <input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='Menu.php'">
 </td>
@@ -433,7 +433,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 <td width="15%"></td>
 <td valign="top">
 <div><?= gettext('Name') ?>:</div>
-<input type="text" name="newFieldName" size="30" maxlength="30">
+<input type="text" name="newFieldName" size="30" maxlength="30" class="form-control">
 <?php if ($bNewNameError) {
     echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
 } ?>
@@ -441,11 +441,11 @@ for ($row = 1; $row <= $numRows; $row++) {
 </td>
 <td valign="top">
 <div><?= gettext('Description') ?>:</div>
-<input type="text" name="newFieldDesc" size="40" maxlength="100">
+<input type="text" name="newFieldDesc" size="40" maxlength="100" class="form-control">
 &nbsp;
 </td>
 <td>
-<input type="submit" class="btn" value="<?= gettext('Add New Opportunity') ?>" name="AddField">
+<input type="submit" class="btn btn-primary" value="<?= gettext('Add New Opportunity') ?>" name="AddField">
 </td>
 <td width="15%"></td>
 </tr>
