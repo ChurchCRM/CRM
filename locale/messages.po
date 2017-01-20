@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-18 15:45+0000\n"
+"POT-Creation-Date: 2017-01-20 04:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3725,7 +3725,7 @@ msgid "No Changes"
 msgstr ""
 
 #: external/templates/404.php:5
-msgid "Page Not fond"
+msgid "Page not fond"
 msgstr ""
 
 #: external/templates/404.php:15
