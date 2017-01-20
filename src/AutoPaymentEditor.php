@@ -537,11 +537,11 @@ function CreatePaymentMethod()
                 	if (gotPaymentRef > 0) {
         	        	if (document.getElementById("EnableBankDraft").checked) {
             	        	accountVal = document.getElementById("Account").value;
-        	            	document.getElementById("Account").value = "*****" + accountVal.mb_substr (accountVal.length-4,4);
+        	            	document.getElementById("Account").value = "*****" + accountVal.substr (accountVal.length-4,4);
      		           		document.getElementById ("AccountVanco").value = gotPaymentRef;
         	        	} else if (document.getElementById("EnableCreditCard").checked) {
             	        	ccVal = document.getElementById("CreditCard").value;
-        	            	document.getElementById("CreditCard").value = "************" + ccVal.mb_substr(ccVal.length-4,4) ;
+        	            	document.getElementById("CreditCard").value = "************" + ccVal.substr(ccVal.length-4,4) ;
                     		document.getElementById ("CreditCardVanco").value = gotPaymentRef;
         	        	}
                 	} else {
