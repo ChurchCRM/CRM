@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-20 04:54+0000\n"
+"POT-Creation-Date: 2017-01-20 05:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -608,6 +608,10 @@ msgid ""
 "it will be automatically upgraded to the current database schema"
 msgstr ""
 
+#: RestoreDatabase.php:36
+msgid "Maximum upload size"
+msgstr ""
+
 #: RestoreDatabase.php:40
 msgid "Upload Files"
 msgstr ""
@@ -620,19 +624,23 @@ msgstr ""
 msgid "No Restore Running"
 msgstr ""
 
-#: RestoreDatabase.php:56
+#: RestoreDatabase.php:60 api/routes/database.php:18
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr ""
+
+#: RestoreDatabase.php:65
 msgid "Restore Running, Please wait."
 msgstr ""
 
-#: RestoreDatabase.php:76
+#: RestoreDatabase.php:84
 msgid "Restore Complete"
 msgstr ""
 
-#: RestoreDatabase.php:77
+#: RestoreDatabase.php:85
 msgid "Login to restored Database"
 msgstr ""
 
-#: RestoreDatabase.php:80
+#: RestoreDatabase.php:88
 msgid "Restore Error."
 msgstr ""
 
@@ -4212,7 +4220,7 @@ msgstr ""
 
 #: FamilyView.php:887 FindDepositSlip.php:53 GroupEditor.php:58
 #: GroupView.php:119 GroupView.php:143 GroupView.php:166
-#: Include/Header-function.php:65 PersonView.php:890
+#: Include/Header-function.php:68 PersonView.php:890
 msgid "Close"
 msgstr ""
 
@@ -5338,65 +5346,65 @@ msgstr ""
 msgid " Bold"
 msgstr ""
 
-#: Include/Header-function.php:55
+#: Include/Header-function.php:57
 msgid "ERROR!"
 msgstr ""
 
-#: Include/Header-function.php:58
+#: Include/Header-function.php:60
 msgid "Error making API Call to"
 msgstr ""
 
-#: Include/Header-function.php:60
+#: Include/Header-function.php:62
 msgid "Error text"
 msgstr ""
 
-#: Include/Header-function.php:62
+#: Include/Header-function.php:64
 msgid "Stack Trace"
 msgstr ""
 
-#: Include/Header-function.php:81
+#: Include/Header-function.php:84
 msgid "Issue Report!"
 msgstr ""
 
-#: Include/Header-function.php:87
+#: Include/Header-function.php:90
 msgid "Enter a Title for your bug / feature report"
 msgstr ""
 
-#: Include/Header-function.php:95
+#: Include/Header-function.php:98
 msgid "What were you doing when you noticed the bug / feature opportunity?"
 msgstr ""
 
-#: Include/Header-function.php:103
+#: Include/Header-function.php:106
 msgid ""
 "When you click \"submit,\" an error report will be posted to the ChurchCRM "
 "GitHub Issue tracker."
 msgstr ""
 
-#: Include/Header-function.php:104
+#: Include/Header-function.php:107
 msgid "Please do not include any confidential information."
 msgstr ""
 
-#: Include/Header-function.php:105
+#: Include/Header-function.php:108
 msgid ""
 "Some general information about your system will be submitted along with the "
 "request such as Server version and browser headers."
 msgstr ""
 
-#: Include/Header-function.php:106
+#: Include/Header-function.php:109
 msgid ""
 "No personally identifiable information will be submitted unless you "
 "purposefully include it."
 msgstr ""
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr ""
 
-#: Include/Header-function.php:143
+#: Include/Header-function.php:157
 msgid "There was a problem retrieving the requested object"
 msgstr ""
 
-#: Include/Header-function.php:309 Include/Header.php:179 menuconfig_mcf.php:5
+#: Include/Header-function.php:323 Include/Header.php:179 menuconfig_mcf.php:5
 msgid "Dashboard"
 msgstr ""
 
