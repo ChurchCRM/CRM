@@ -8373,3 +8373,276 @@ msgstr "Dans le cas où vous aimez connaître les détails d'essentiel, voici ce
 msgid "Stack Trace"
 msgstr "Trace de Pile"
 
+#: SelectList.php:547
+msgid "By Zip Code"
+msgstr "Par code postal"
+
+#: ChurchCRM/Emails/BaseFamilyVerification.php:15
+msgid "Please verify your family's information"
+msgstr "Vérifiez vos informations familiales"
+
+#: ChurchCRM/Emails/BaseFamilyVerification.php:30
+msgid "Dear"
+msgstr "Cher"
+
+#: ChurchCRM/tasks/ChurchAddress.php:22
+msgid "Church Address is not Set."
+msgstr "L'adresse de l'église n'est pas fixée."
+
+#: ChurchCRM/tasks/ChurchNameTask.php:22
+msgid "Church Name is set to default value"
+msgstr "Le nom de l'église est à sa valeur par défaut."
+
+#: ChurchCRM/tasks/EmailTask.php:32
+msgid "SMTP Server info are blank"
+msgstr "Serveur SMTP est vide"
+
+#: ChurchCRM/tasks/FamilyWorkPhoneTask.php:35
+msgid "In Church CRM 2.6.0 we will no longer support a work phone for a family"
+msgstr "Dans la version 2.6.0, le téléphone  professionnel pour la famille ne sera plus supporté"
+
+#: ChurchCRM/tasks/HttpsTask.php:21
+msgid "Your system could be more secure by installing an TLS/SSL Cert."
+msgstr "Votre système serait plus sécurisé avec un certificat TLS/SSL."
+
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:36
+msgid "Missing Classification Data ("
+msgstr "Données de classification manquante ("
+
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:41
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:42
+msgid "Missing Classification Data for Some People"
+msgstr "Données de classification manquante pour certaine personne"
+
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:36
+msgid "Missing Gender Data ("
+msgstr "Données de genre manquante ("
+
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:41
+msgid "Missing Gender Data for Some People"
+msgstr "Données de genre manquante pour certaine personne"
+
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:37
+msgid "Missing Role Data ("
+msgstr "Données de rôle manquant ("
+
+#: ChurchCRM/tasks/RegisteredTask.php:33
+msgid "Let us know that you are using the software"
+msgstr "Faîtes nous part du fait que vous utilisez ChurchCRM"
+
+#: external/routes/verify.php:28
+msgid "Unable to load verification info"
+msgstr "Impossible de charger infos de vérification"
+
+#: external/routes/verify.php:42
+msgid "No Changes"
+msgstr "Pas de changements"
+
+#: external/templates/404.php:5
+#, fuzzy
+msgid "Page not fond"
+msgstr "Page non trouvée"
+
+#: external/templates/404.php:15
+msgid "Oops! Page not found."
+msgstr "Oh ! Page non trouvée"
+
+#: external/templates/registration/family-register-done.php:8
+#: external/templates/registration/family-register-members.php:5
+#: external/templates/registration/family-register.php:7
+msgid "Family Registration"
+msgstr "Enregistrement de la famille."
+
+#: external/templates/verify/enter-info.php:17
+msgid "Please enter the following to start your family's verification"
+msgstr "Entrez les champs suivants pour vérification de la famille"
+
+#: external/templates/verify/enter-info.php:33
+msgid "email"
+msgstr "email"
+
+#: external/templates/verify/verify-family-info.php:9
+msgid "Family Verification"
+msgstr "Vérification Famille"
+
+#: external/templates/verify/verify-family-info.php:40
+msgid "Family Member(s)"
+msgstr "Membres Famille"
+
+#: external/templates/verify/verify-family-info.php:61
+msgid "Work Email"
+msgstr "Email Travail"
+
+#: external/templates/verify/verify-family-info.php:64
+msgid "Age Hidden"
+msgstr "Age masqué"
+
+#: external/templates/verify/verify-family-info.php:110
+msgid "Please let us know what information to update if any"
+msgstr "Faîtes nous part des informations éventuelles à mettre à jour"
+
+#: external/templates/verify/verify-family-info.php:115
+msgid "Your verification request is complete"
+msgstr "La requête de vérification est terminée"
+
+#: external/templates/verify/verify-family-info.php:119
+msgid "We encountered an error submitting with your verification data"
+msgstr "Nous rencontrons une erreur pour vérifier vos données"
+
+#: external/templates/verify/verify-family-info.php:125
+msgid "Visit our Site"
+msgstr "Visiter notre site"
+
+#: FamilyView.php:923
+msgid "Request Family Info Verification"
+msgstr "Reqêtes de vérification des infos famille"
+
+#: FamilyView.php:948
+msgid "Online Verification"
+msgstr "Vérification en ligne"
+
+#: FamilyView.php:954
+msgid "PDF Report"
+msgstr "Rapport PDF"
+
+#: FamilyView.php:956
+msgid "Verified In Person"
+msgstr "Vérifier En personne"
+
+#: PersonEditor.php:860
+msgid "None State"
+msgstr "Statut inconnu"
+
+#: config_cfg.php:2
+msgid "Set debug mode\r\n"
+"This may be helpful for when you're first setting up ChurchCRM, but you should\r\n"
+"probably turn it off for maximum security otherwise.  If you are having trouble,\r\n"
+"please enable this so that you'll know what the errors are.  This is especially\r\n"
+"important if you need to report a problem on the help forums."
+msgstr "Activer le mode debug\r\n"
+"Cela peut être utile durant la première mise en place, \n"
+"mais vous devriez\r\n"
+"le désactiver pour un maximum de sécurité ensuite. Si vous rencontrez des problèmes,\r\n"
+"Activez le pour récupérer les erreurs. C'est particulièrement\r\n"
+"important si vous devez nous faire remonter un erreur sur nos forums."
+
+#: config_cfg.php:24
+msgid "The method for sending email. Either \\\"smtp\\\" or \\\"sendmail\\\""
+msgstr "La méthode pour envoyer un email. Soit \\\"smtp\\\" ou \\\"sendmail\\\""
+
+#: config_cfg.php:30
+msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person.␣ "
+
+#: config_cfg.php:37
+msgid "Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key"
+msgstr "L'api Google map requière une clé unique provenant de : https://developers.google.com/maps/documentation/javascript/get-api-key "
+
+#: config_cfg.php:82
+msgid "Church Checking Account Number"
+msgstr "Numéro de Compte courant d'Église"
+
+#: ChurchCRM/Service/SystemService.php:74
+msgid "Backup archive does not contain a database"
+msgstr "L'archive de sauvegarde ne contient pas de base de données"
+
+#: ChurchCRM/Service/SystemService.php:86
+msgid "Unknown File Type"
+msgstr "Type de fichier inconnu"
+
+#: ChurchCRM/Service/SystemService.php:86
+msgid "from file"
+msgstr "Du fichier"
+
+#: ChurchCRM/tasks/UpdateFamilyCoordinatesTask.php:36
+msgid "Missing Coordinates ("
+msgstr "Cordonnées manquantes ("
+
+#: ChurchCRM/tasks/UpdateFamilyCoordinatesTask.php:41
+msgid "Family Coordinates Data for Some Families"
+msgstr "Données de coordonnées de famille pour certaines familles"
+
+#: settings-choices.php:4
+msgid "English - United States:en_US"
+msgstr "English - USA:en_US"
+
+#: settings-choices.php:5
+msgid "English - Canada:en_CA"
+msgstr "Anglais - Canada:en_CA"
+
+#: settings-choices.php:6
+msgid "English - Australia:en_AU"
+msgstr "Anglais - Australien:en_AU"
+
+#: settings-choices.php:7
+msgid "English - Great Britain:en_GB"
+msgstr "Anglais - Grande Bretagne:en_GB"
+
+#: settings-choices.php:8
+msgid "German - Germany:de_DE"
+msgstr "Allemagne - Germany:de_DE"
+
+#: settings-choices.php:9
+msgid "Spanish - Spain:es_ES"
+msgstr "Spanish - Spain:es_ES"
+
+#: settings-choices.php:10
+msgid "French - France:fr_FR"
+msgstr "Français - France:fr_FR"
+
+#: settings-choices.php:11
+msgid "Hungarian:hu_HU"
+msgstr "Hongrie:hu_HU"
+
+#: settings-choices.php:12
+msgid "Italian - Italy:it_IT"
+msgstr "Italie - Italy:it_IT"
+
+#: settings-choices.php:13
+msgid "Norwegian:nb_NO"
+msgstr "Norvegien:nb_NO"
+
+#: settings-choices.php:14
+msgid "Dutch - Netherlands:nl_NL"
+msgstr "Hollandais - Netherlands:nl_NL"
+
+#: settings-choices.php:15
+msgid "Polish:pl_PL"
+msgstr "Polonais:pl_PL"
+
+#: settings-choices.php:16
+msgid "Portuguese - Brazil:pt_BR"
+msgstr "Portugais - Brésil:pt_BR"
+
+#: settings-choices.php:17
+msgid "Romanian - Romania:ro_RO"
+msgstr "Roumain - Roumanie:ro_RO"
+
+#: settings-choices.php:18
+msgid "Russian:ru_RU"
+msgstr "Russe:ru_RU"
+
+#: settings-choices.php:19
+msgid "Sami (Northern) (Sweden):se_SE"
+msgstr "Sami (Northern) (Sweden):se_SE"
+
+#: settings-choices.php:20
+msgid "Albanian:sq_AL"
+msgstr "Albanais:sq_AL"
+
+#: settings-choices.php:21
+msgid "Swedish - Sweden:sv_SE"
+msgstr "Suédois - Suède:sv_SE"
+
+#: settings-choices.php:22
+msgid "Vietnamese:vi_VN"
+msgstr "Vietnamien:vi_VN"
+
+#: settings-choices.php:23
+msgid "Chinese - China:zh_CN"
+msgstr "Chinois - Chine:zh_CN"
+
+#: settings-choices.php:24
+msgid "Chinese - Taiwan:zh_TW"
+msgstr "Chinois - Taiwan:zh_TW"
+
