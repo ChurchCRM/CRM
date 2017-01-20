@@ -42,7 +42,7 @@
 
   3. Pull updated translation strings from POEditor.com
   
-    First edit Gruntfile.js, and set ```poeditor.options.api_token``` to your personal POEditor API access token.  Then, run:
+    First edit BuildConfig.json, and set ```POEditor.token``` to your personal POEditor API access token.  Then, run:
 
     ```
     npm run locale-download
