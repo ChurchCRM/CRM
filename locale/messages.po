@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-20 04:37+0000\n"
+"POT-Creation-Date: 2017-01-20 04:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2545,10 +2545,6 @@ msgstr ""
 
 #: ChurchCRM/Emails/BaseFamilyVerification.php:15
 msgid "Please verify your family's information"
-msgstr ""
-
-#: ChurchCRM/Emails/BaseFamilyVerification.php:15
-msgid ": "
 msgstr ""
 
 #: ChurchCRM/Emails/BaseFamilyVerification.php:30
