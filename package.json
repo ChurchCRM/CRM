@@ -27,7 +27,8 @@
         "grunt-contrib-sass": "^1.0.0",
         "grunt-contrib-rename": "^0.0.3",
         "node-sha1": "1.0.1",
-        "grunt-poeditor-ab": "^0.1.9"
+        "grunt-poeditor-ab": "^0.1.9",
+        "grunt-github-release-notes": "0.4.0"
     },
     "dependencies": {
         "admin-lte": "2.3.7",
