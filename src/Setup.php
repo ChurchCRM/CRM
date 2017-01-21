@@ -4,6 +4,18 @@ if (file_exists('Include/Config.php')) {
     header('Location: index.php');
 }
 
+// don't depend on autoloader here, just in case validation doesn't pass.
+if (! (file_exists('ChurchCRM/dto/SystemURLs.php') && file_exists('ChurchCRM/Service/AppIntegrityService.php')))
+{
+  echo gettext("One or more required setup files are missing.  Please verify you downloaded the correct ChurchCRM package");
+  exit;
+}
+
+require_once 'ChurchCRM/dto/SystemURLs.php';
+ChurchCRM\dto\SystemURLs::init('', '', dirname(__FILE__));
+require_once 'ChurchCRM/Service/AppIntegrityService.php';
+
+
 function hasApacheModule($module)
 {
     if (function_exists('apache_get_modules')) {
@@ -38,11 +50,7 @@ if (isset($_POST['Setup'])) {
 }
 
 if (isset($_GET['SystemIntegrityCheck'])) {
-    require_once 'ChurchCRM/dto/SystemURLs.php';
-    ChurchCRM\dto\SystemURLs::init('', '', dirname(__FILE__));
-    require_once 'ChurchCRM/Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
-  $systemService = new \ChurchCRM\Service\SystemService();
-    $AppIntegrity = $systemService->verifyApplicationIntegrity();
+    $AppIntegrity = ChurchCRM\Service\AppIntegrityService::verifyApplicationIntegrity();
     echo $AppIntegrity['status'];
     exit();
 }
@@ -109,8 +117,11 @@ window.CRM.checkIntegrity = function () {
         window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","fail");
     }
    window.CRM.evaluateReadyness();
+  }).fail(function(){
+    window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","fail");
   });
 };
+
 window.CRM.checkPrerequisites = function () {
   $.ajax({
     url: "<?= $sRootPath ?>/Setup.php?SystemPrerequisiteCheck=1",
