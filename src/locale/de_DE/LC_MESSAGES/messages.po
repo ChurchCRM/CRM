@@ -2321,7 +2321,7 @@ msgstr "Neue Rolle"
 msgid "Group Listing"
 msgstr "Gruppenauflistung"
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr "Versende"
 

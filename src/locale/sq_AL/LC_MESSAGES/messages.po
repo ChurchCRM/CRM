@@ -2244,7 +2244,7 @@ msgstr "Roli i ri"
 msgid "Group Listing"
 msgstr "Listing Group"
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr "Konfirmo"
 

@@ -2168,7 +2168,7 @@ msgstr "Tamanho Máximo da Foto"
 
 #: FamilyView.php:887 FindDepositSlip.php:53 GroupEditor.php:58
 #: GroupView.php:119 GroupView.php:143 GroupView.php:166
-#: Include/Header-function.php:65 PersonView.php:890
+#: Include/Header-function.php:68 PersonView.php:890
 msgid "Close"
 msgstr "Fechar"
 
@@ -2714,7 +2714,7 @@ msgstr "Listagem do grupo"
 msgid "Add New Group"
 msgstr "Adicionar um Novo Grupo"
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr "Enviar"
 
@@ -4157,37 +4157,37 @@ msgstr "Definir permissão verdadeira para dar novos usuários a capacidade de a
 msgid "Permission"
 msgstr "Pessoa"
 
-#: Setup.php:270
+#: Setup.php:280
 #, fuzzy
 msgid "DB Server Name"
 msgstr "Nome do Servidor do BD"
 
-#: Setup.php:275
+#: Setup.php:285
 #, fuzzy
 msgid "DB Name"
 msgstr "Nome do BD"
 
-#: Setup.php:279
+#: Setup.php:289
 #, fuzzy
 msgid "DB User"
 msgstr "Usuário do BD"
 
-#: Setup.php:283
+#: Setup.php:293
 #, fuzzy
 msgid "DB Password"
 msgstr "Senha do BD"
 
-#: Setup.php:289
+#: Setup.php:299
 #, fuzzy
 msgid "Root Path"
 msgstr "Diretório Raiz"
 
-#: Register.php:52 Setup.php:294
+#: Register.php:52 Setup.php:304
 #, fuzzy
 msgid "Base URL"
 msgstr "URL base"
 
-#: Setup.php:299
+#: Setup.php:309
 msgid "Setup"
 msgstr "Configuração"
 
@@ -4757,51 +4757,51 @@ msgstr "Itálico"
 msgid " Bold"
 msgstr "Negrito"
 
-#: Include/Header-function.php:55
+#: Include/Header-function.php:57
 msgid "ERROR!"
 msgstr "ERRO!"
 
-#: Include/Header-function.php:58
+#: Include/Header-function.php:60
 #, fuzzy
 msgid "Error making API Call to"
 msgstr "Erro de API ao chamar"
 
-#: Include/Header-function.php:60
+#: Include/Header-function.php:62
 #, fuzzy
 msgid "Error text"
 msgstr "Texto de Erro"
 
-#: Include/Header-function.php:81
+#: Include/Header-function.php:84
 msgid "Issue Report!"
 msgstr "Reportar Questão!"
 
-#: Include/Header-function.php:87
+#: Include/Header-function.php:90
 #, fuzzy
 msgid "Enter a Title for your bug / feature report"
 msgstr "Digite um Título para o seu relatório de bug/ funcionalidade\n"
 ""
 
-#: Include/Header-function.php:95
+#: Include/Header-function.php:98
 msgid "What were you doing when you noticed the bug / feature opportunity?"
 msgstr "O que você estava fazendo na ocasião em que foi informado do bug/ funcionalidade?"
 
-#: Include/Header-function.php:103
+#: Include/Header-function.php:106
 msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
 msgstr "Quando você clicar em \"enviar\", um relatório de erro será postado no ChurchCRM GitHub Issue Tracker."
 
-#: Include/Header-function.php:104
+#: Include/Header-function.php:107
 msgid "Please do not include any confidential information."
 msgstr "Por favor não inclua nenhuma informação confidencial."
 
-#: Include/Header-function.php:105
+#: Include/Header-function.php:108
 msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
 msgstr "Algumas informações gerais sobre o seu sistema vai serão enviadas juntamente com o pedido, tais como a versão do servidor e cabeçalhos do navegador."
 
-#: Include/Header-function.php:106
+#: Include/Header-function.php:109
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr "Nenhuma informação pessoal identificável será submetida a menos que você inclua-a propositadamente."
 
-#: Include/Header-function.php:309 Include/Header.php:179 menuconfig_mcf.php:5
+#: Include/Header-function.php:323 Include/Header.php:179 menuconfig_mcf.php:5
 msgid "Dashboard"
 msgstr "Painel"
 
@@ -5457,15 +5457,15 @@ msgstr "Carregar Arquivos"
 msgid "No Restore Running"
 msgstr "Nenhuma Restauração Rodando"
 
-#: RestoreDatabase.php:76
+#: RestoreDatabase.php:84
 msgid "Restore Complete"
 msgstr "Restauração Completa"
 
-#: RestoreDatabase.php:77
+#: RestoreDatabase.php:85
 msgid "Login to restored Database"
 msgstr "Faça o Login para restaurar o Banco de Dados"
 
-#: RestoreDatabase.php:80
+#: RestoreDatabase.php:88
 msgid "Restore Error."
 msgstr "Erro de Restauração"
 
@@ -5642,7 +5642,7 @@ msgstr "Adicionar"
 msgid "Enter Name"
 msgstr "Inserir o Nome"
 
-#: ChurchCRM/Service/SystemService.php:95
+#: ChurchCRM/Service/SystemService.php:96
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."
 msgstr "Como parte da restauração, backups externos foram desativados. Se você quiser continuar fazendo backups automáticos, você deve re-habilitar manualmente a configuração de destino de backup em sEnableExternal."
 
@@ -5807,15 +5807,15 @@ msgstr "Se você precisar fazer mudanças nos dados de registro, vá para "
 msgid "Admin->Edit General Settings"
 msgstr "Admin->Editar Configurações Gerais"
 
-#: ChurchCRM/Service/SystemService.php:471
+#: ChurchCRM/Service/AppIntegrityService.php:28
 msgid "Signature definition file signature failed validation"
 msgstr "Falha na validação da assinatura do arquivo de definição de assinaturas"
 
-#: ChurchCRM/Service/SystemService.php:474
+#: ChurchCRM/Service/AppIntegrityService.php:31
 msgid "Signature definition File Missing"
 msgstr "Arquivo de definição de assinatura não encontrado"
 
-#: ChurchCRM/Service/SystemService.php:478
+#: ChurchCRM/Service/AppIntegrityService.php:35
 msgid "One or more files failed signature validation"
 msgstr "Um ou mais arquivos falharam na validação da assinatura"
 
@@ -5878,7 +5878,7 @@ msgstr ", Telefone:"
 msgid "Voting members "
 msgstr "Membros votantes"
 
-#: RestoreDatabase.php:56
+#: RestoreDatabase.php:65
 msgid "Restore Running, Please wait."
 msgstr "Restauração Rodando, por favor espere."
 
@@ -6060,7 +6060,7 @@ msgstr "mês de idade"
 msgid "yr old"
 msgstr "anos de idade"
 
-#: Include/Header-function.php:143
+#: Include/Header-function.php:157
 msgid "There was a problem retrieving the requested object"
 msgstr "Ocorreu um problema ao recuperar o objeto solicitado"
 
@@ -8235,31 +8235,318 @@ msgstr "Zâmbia"
 msgid "Zimbabwe"
 msgstr "Zimbábue"
 
-#: Setup.php:91
+#: Setup.php:98
 msgid "ChurchCRM – Setup"
 msgstr "ChurchCRM - Configurações"
 
-#: Setup.php:193
+#: Setup.php:203
 msgid "This server is ChurchCRM ready!"
 msgstr "Este servidor está pronto para o ChurchCRM!"
 
-#: Setup.php:199
+#: Setup.php:209
 msgid "We're still determining if this server is ready for ChurchCRM."
 msgstr "Nós ainda estamos verificando se este servidor está pronto para o ChurchCRM!"
 
-#: Setup.php:205
+#: Setup.php:215
 msgid "This server isn't quite ready for ChurchCRM."
 msgstr "Este servidor não está completamente pronto para o ChurchCRM."
 
-#: Setup.php:232
+#: Setup.php:242
 msgid "I know what I'm doing.  Install ChurchCRM Anyway"
 msgstr "Eu sei o que eu estou fazendo. Instale o ChurchCRM assim mesmo"
 
-#: Setup.php:234
+#: Setup.php:244
 msgid "In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical."
 msgstr "No caso de você desejar saber dos detalhes na essência, aqui está o que procuramos em um servidor. É tipo de condicionantes, mas mais técnico."
 
-#: Include/Header-function.php:62
+#: Include/Header-function.php:64
 msgid "Stack Trace"
 msgstr "Rastreamento de pilha"
+
+#: SelectList.php:547
+msgid "By Zip Code"
+msgstr "Pelo Código Postal"
+
+#: ChurchCRM/Emails/BaseFamilyVerification.php:15
+msgid "Please verify your family's information"
+msgstr "Por favor, verifique a informação da sua família"
+
+#: ChurchCRM/Emails/BaseFamilyVerification.php:30
+msgid "Dear"
+msgstr "Caro"
+
+#: ChurchCRM/tasks/ChurchAddress.php:22
+msgid "Church Address is not Set."
+msgstr "O endereço da igreja não está configurado"
+
+#: ChurchCRM/tasks/ChurchNameTask.php:22
+msgid "Church Name is set to default value"
+msgstr "O nome da Igreja está configurado com o valor padrão"
+
+#: ChurchCRM/tasks/EmailTask.php:32
+msgid "SMTP Server info are blank"
+msgstr "Informação do servidor SMTP em branco"
+
+#: ChurchCRM/tasks/FamilyWorkPhoneTask.php:35
+msgid "In Church CRM 2.6.0 we will no longer support a work phone for a family"
+msgstr "No ChurchCRM 2.6.0 nós não suportaremos um telefone de trabalho para uma família"
+
+#: ChurchCRM/tasks/HttpsTask.php:21
+msgid "Your system could be more secure by installing an TLS/SSL Cert."
+msgstr "O seu sistema podria ser mais seguro com a instalação de um certificado TLS/SSL."
+
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:36
+msgid "Missing Classification Data ("
+msgstr "Classificação de dados perdida ("
+
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:41
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:42
+msgid "Missing Classification Data for Some People"
+msgstr "Classificação de dados perdida para algumas pessoas"
+
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:36
+msgid "Missing Gender Data ("
+msgstr "Dado de gênero perdido ("
+
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:41
+msgid "Missing Gender Data for Some People"
+msgstr "Dado de gênero perdido para algumas pessoas"
+
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:37
+msgid "Missing Role Data ("
+msgstr "Dado do papel perdido ("
+
+#: ChurchCRM/tasks/RegisteredTask.php:33
+msgid "Let us know that you are using the software"
+msgstr "Nos deixe saber como você está usando o software"
+
+#: external/routes/verify.php:28
+msgid "Unable to load verification info"
+msgstr "Não foi possível carregar as informações de verificação"
+
+#: external/routes/verify.php:42
+msgid "No Changes"
+msgstr "Nenhuma mudança"
+
+#: external/templates/404.php:5
+msgid "Page not fond"
+msgstr "Página não encontrada"
+
+#: external/templates/404.php:15
+msgid "Oops! Page not found."
+msgstr "Opa! Página não encontrada"
+
+#: external/templates/registration/family-register-done.php:8
+#: external/templates/registration/family-register-members.php:5
+#: external/templates/registration/family-register.php:7
+msgid "Family Registration"
+msgstr "Registro da Família"
+
+#: external/templates/verify/enter-info.php:17
+msgid "Please enter the following to start your family's verification"
+msgstr "Por favor, digite a informação a seguir para iniciar a verificação da sua família"
+
+#: external/templates/verify/enter-info.php:33
+msgid "email"
+msgstr "e-mail"
+
+#: external/templates/verify/verify-family-info.php:9
+msgid "Family Verification"
+msgstr "Verificação da família"
+
+#: external/templates/verify/verify-family-info.php:40
+msgid "Family Member(s)"
+msgstr "Membro(s) da Família"
+
+#: external/templates/verify/verify-family-info.php:61
+msgid "Work Email"
+msgstr "E-mail de Trabalho"
+
+#: external/templates/verify/verify-family-info.php:64
+msgid "Age Hidden"
+msgstr "Idade Oculta"
+
+#: external/templates/verify/verify-family-info.php:110
+msgid "Please let us know what information to update if any"
+msgstr "Por favor, nos deixe saber quais informações atualizar se houver"
+
+#: external/templates/verify/verify-family-info.php:115
+msgid "Your verification request is complete"
+msgstr "Seu pedido de verificação está completo"
+
+#: external/templates/verify/verify-family-info.php:119
+msgid "We encountered an error submitting with your verification data"
+msgstr "Encontramos um erro ao enviar os seus dados de verificação"
+
+#: external/templates/verify/verify-family-info.php:125
+msgid "Visit our Site"
+msgstr "Visite nosso site"
+
+#: FamilyView.php:923
+msgid "Request Family Info Verification"
+msgstr "Solicitar Confirmação de Informações da Família"
+
+#: FamilyView.php:926
+msgid "Select how do you want to request the family information to be verified"
+msgstr "Selecione como deseja solicitar que as informações da família sejam verificadas"
+
+#: FamilyView.php:948
+msgid "Online Verification"
+msgstr "Verificação On-line"
+
+#: FamilyView.php:954
+msgid "PDF Report"
+msgstr "Relatório PDF"
+
+#: FamilyView.php:956
+msgid "Verified In Person"
+msgstr "Verificada na Pessoa"
+
+#: PersonEditor.php:860
+msgid "None State"
+msgstr "Nenhum Estado"
+
+#: config_cfg.php:2
+msgid "Set debug mode\r\n"
+"This may be helpful for when you're first setting up ChurchCRM, but you should\r\n"
+"probably turn it off for maximum security otherwise.  If you are having trouble,\r\n"
+"please enable this so that you'll know what the errors are.  This is especially\r\n"
+"important if you need to report a problem on the help forums."
+msgstr "Isso pode ser útil para quando você estiver configurando o ChurchCRM, mas você deve\r\n"
+"provavelmente deve ter desligado para a máxima segurança. Caso contrário, se você estiver tendo problemas,\r\n"
+"por favor, habilite-o para que você saiba quais são os erros. Isto é especialmente\r\n"
+"importante se você precisar relatar um problema nos fóruns de ajuda."
+
+#: config_cfg.php:24
+msgid "The method for sending email. Either \\\"smtp\\\" or \\\"sendmail\\\""
+msgstr "O método de envio de e-mails. Tanto \\\"smtp\\\" ou \\\"sendmail\\\" "
+
+#: config_cfg.php:30
+msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Informação de pessoa indisponível herdada da família atribuída para exibição?\rEsta opção faz com que determinadas informações do registro familiar atribuído a uma pessoa sejam exibidas SE a informação correspondente NÃO tiver sido inserida para essa pessoa. "
+
+#: config_cfg.php:37
+msgid "Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key"
+msgstr "A API do Google Map requer uma chave única obtida em https://developers.google.com/maps/documentation/javascript/get-api-key "
+
+#: config_cfg.php:82
+msgid "Church Checking Account Number"
+msgstr "Número da Conta de Verificação da Igreja"
+
+#: ChurchCRM/Service/SystemService.php:75
+msgid "Backup archive does not contain a database"
+msgstr "O arquivo de backup não contém um banco de dados"
+
+#: ChurchCRM/Service/SystemService.php:87
+msgid "Unknown File Type"
+msgstr "Tipo de arquivo desconhecido"
+
+#: ChurchCRM/Service/SystemService.php:87
+msgid "from file"
+msgstr "do arquivo"
+
+#: ChurchCRM/tasks/UpdateFamilyCoordinatesTask.php:36
+msgid "Missing Coordinates ("
+msgstr "Faltam Coordenadas ("
+
+#: ChurchCRM/tasks/UpdateFamilyCoordinatesTask.php:41
+msgid "Family Coordinates Data for Some Families"
+msgstr "Dados de coordenadas para algumas famílias"
+
+#: config_cfg.php:55
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "Faça com que o usuário digite CEP/ Códigos Postais com MAIÚSCULAS ao salvar no banco de dados."
+
+#: config_cfg.php:96
+msgid "Used to end a letter before Signer"
+msgstr "Usado para terminar uma carta, antes da assinatura"
+
+#: config_cfg.php:97
+msgid "Google Analytics Tracking Code"
+msgstr "Código de rastreio do Google Analytics "
+
+#: settings-choices.php:4
+#, fuzzy
+msgid "English - United States:en_US"
+msgstr "Inglês - Estados Unidos:en_US"
+
+#: settings-choices.php:5
+msgid "English - Canada:en_CA"
+msgstr "Inglês - Canadá:en_CA"
+
+#: settings-choices.php:6
+msgid "English - Australia:en_AU"
+msgstr "Inglês - Austrália:en_AU"
+
+#: settings-choices.php:7
+msgid "English - Great Britain:en_GB"
+msgstr "Inglês - Grã Bretanha:en_GB"
+
+#: settings-choices.php:8
+msgid "German - Germany:de_DE"
+msgstr "Alemão - Alemanha - Germany:de_DE"
+
+#: settings-choices.php:9
+msgid "Spanish - Spain:es_ES"
+msgstr "Espanhol - Espanha:es_ES"
+
+#: settings-choices.php:10
+msgid "French - France:fr_FR"
+msgstr "Francês - França:fr_FR"
+
+#: settings-choices.php:11
+msgid "Hungarian:hu_HU"
+msgstr "Húngaro:hu_HU"
+
+#: settings-choices.php:12
+msgid "Italian - Italy:it_IT"
+msgstr "Italiano - Itália:it_IT"
+
+#: settings-choices.php:13
+msgid "Norwegian:nb_NO"
+msgstr "Norueguês:nb_NO"
+
+#: settings-choices.php:14
+msgid "Dutch - Netherlands:nl_NL"
+msgstr "Holandês - Países Baixos:nl_NL"
+
+#: settings-choices.php:15
+msgid "Polish:pl_PL"
+msgstr "Polonês:pl_PL"
+
+#: settings-choices.php:16
+msgid "Portuguese - Brazil:pt_BR"
+msgstr "Português - Brasil:pt_BR"
+
+#: settings-choices.php:17
+msgid "Romanian - Romania:ro_RO"
+msgstr "Romeno - Roménia:ro_RO"
+
+#: settings-choices.php:18
+msgid "Russian:ru_RU"
+msgstr "Russo:ru_RU"
+
+#: settings-choices.php:19
+msgid "Sami (Northern) (Sweden):se_SE"
+msgstr "Sami (Norte) (Suécia):se_SE"
+
+#: settings-choices.php:20
+msgid "Albanian:sq_AL"
+msgstr "Albanês:sq_AL"
+
+#: settings-choices.php:21
+msgid "Swedish - Sweden:sv_SE"
+msgstr "Sueco - Suécia:sv_SE"
+
+#: settings-choices.php:22
+msgid "Vietnamese:vi_VN"
+msgstr "Vietnamita:vi_VN"
+
+#: settings-choices.php:23
+msgid "Chinese - China:zh_CN"
+msgstr "Chinês - China:zh_CN"
+
+#: settings-choices.php:24
+msgid "Chinese - Taiwan:zh_TW"
+msgstr "Chinês - Taiwan:zh_TW"
 

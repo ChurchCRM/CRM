@@ -1962,7 +1962,7 @@ msgstr "Max ảnh kích thước"
 
 #: FamilyView.php:887 FindDepositSlip.php:53 GroupEditor.php:58
 #: GroupView.php:119 GroupView.php:143 GroupView.php:166
-#: Include/Header-function.php:65 PersonView.php:890
+#: Include/Header-function.php:68 PersonView.php:890
 msgid "Close"
 msgstr "Đóng"
 
@@ -2493,7 +2493,7 @@ msgstr "nhóm Liệt kê"
 msgid "Add New Group"
 msgstr "Thêm Nhóm mới"
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr "Chấp nhận"
 
@@ -3838,27 +3838,27 @@ msgstr "Đặt Permission True để cung cấp cho người dùng mới có kh�
 msgid "Permission"
 msgstr "Cho phép"
 
-#: Setup.php:275
+#: Setup.php:285
 #, fuzzy
 msgid "DB Name"
 msgstr "Tên DB"
 
-#: Setup.php:283
+#: Setup.php:293
 #, fuzzy
 msgid "DB Password"
 msgstr "DB Mật khẩu"
 
-#: Setup.php:289
+#: Setup.php:299
 #, fuzzy
 msgid "Root Path"
 msgstr "Đường dẫn gốc"
 
-#: Register.php:52 Setup.php:294
+#: Register.php:52 Setup.php:304
 #, fuzzy
 msgid "Base URL"
 msgstr "URL cơ sở"
 
-#: Setup.php:299
+#: Setup.php:309
 msgid "Setup"
 msgstr "Cài đặt"
 
@@ -4406,7 +4406,7 @@ msgstr " nghiêng"
 msgid " Bold"
 msgstr " Dũng cảm"
 
-#: Include/Header-function.php:309 Include/Header.php:179 menuconfig_mcf.php:5
+#: Include/Header-function.php:323 Include/Header.php:179 menuconfig_mcf.php:5
 msgid "Dashboard"
 msgstr "Trang Chủ"
 

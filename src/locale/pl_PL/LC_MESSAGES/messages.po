@@ -2310,7 +2310,7 @@ msgstr "Nowa Rola"
 msgid "Group Listing"
 msgstr "Lista Grup"
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr "Zapisz"
 

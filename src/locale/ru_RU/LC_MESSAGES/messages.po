@@ -2296,7 +2296,7 @@ msgstr "Новая роль"
 msgid "Group Listing"
 msgstr "Группа Листинг"
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr "Представлять"
 
