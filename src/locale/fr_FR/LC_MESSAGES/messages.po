@@ -2247,7 +2247,7 @@ msgstr "Taille maximale de la photo"
 
 #: FamilyView.php:887 FindDepositSlip.php:53 GroupEditor.php:58
 #: GroupView.php:119 GroupView.php:143 GroupView.php:166
-#: Include/Header-function.php:65 PersonView.php:890
+#: Include/Header-function.php:68 PersonView.php:890
 msgid "Close"
 msgstr "Fermer"
 
@@ -2815,7 +2815,7 @@ msgstr "Listing Groupes"
 msgid "Add New Group"
 msgstr "Ajouter Nouveau Groupe"
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -4263,37 +4263,37 @@ msgstr "Fixer les permissions à \"True\" pour donner aux nouveaux utilisateurs 
 msgid "Permission"
 msgstr "Permission"
 
-#: Setup.php:270
+#: Setup.php:280
 #, fuzzy
 msgid "DB Server Name"
 msgstr "BD Nom du serveur"
 
-#: Setup.php:275
+#: Setup.php:285
 #, fuzzy
 msgid "DB Name"
 msgstr "BD Nom"
 
-#: Setup.php:279
+#: Setup.php:289
 #, fuzzy
 msgid "DB User"
 msgstr "BD Utilisateur "
 
-#: Setup.php:283
+#: Setup.php:293
 #, fuzzy
 msgid "DB Password"
 msgstr "BD Mot de passe"
 
-#: Setup.php:289
+#: Setup.php:299
 #, fuzzy
 msgid "Root Path"
 msgstr "chemin d'accès Root"
 
-#: Register.php:52 Setup.php:294
+#: Register.php:52 Setup.php:304
 #, fuzzy
 msgid "Base URL"
 msgstr "URL de base"
 
-#: Setup.php:299
+#: Setup.php:309
 msgid "Setup"
 msgstr "Configuration"
 
@@ -4860,47 +4860,47 @@ msgstr " Italique"
 msgid " Bold"
 msgstr " Gras"
 
-#: Include/Header-function.php:55
+#: Include/Header-function.php:57
 msgid "ERROR!"
 msgstr "ERREUR !"
 
-#: Include/Header-function.php:58
+#: Include/Header-function.php:60
 msgid "Error making API Call to"
 msgstr "Erreur de communication de l'API avec"
 
-#: Include/Header-function.php:60
+#: Include/Header-function.php:62
 msgid "Error text"
 msgstr "Erreur du texte"
 
-#: Include/Header-function.php:81
+#: Include/Header-function.php:84
 msgid "Issue Report!"
 msgstr "Problème de rapport !"
 
-#: Include/Header-function.php:87
+#: Include/Header-function.php:90
 msgid "Enter a Title for your bug / feature report"
 msgstr "Entrer un titre pour votre Bug/fonctionnallité à rajouter"
 
-#: Include/Header-function.php:95
+#: Include/Header-function.php:98
 msgid "What were you doing when you noticed the bug / feature opportunity?"
 msgstr "Qu'avez vous fait quand le bug est apparu/des fonctionnalités à rajouter ?"
 
-#: Include/Header-function.php:103
+#: Include/Header-function.php:106
 msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
 msgstr "Quand vous cliquez \"Soumettre\", une rapport d'erreur sera envoyé au groupe ChurchCRM."
 
-#: Include/Header-function.php:104
+#: Include/Header-function.php:107
 msgid "Please do not include any confidential information."
 msgstr "Ne pas inclure d'information personnelle."
 
-#: Include/Header-function.php:105
+#: Include/Header-function.php:108
 msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
 msgstr "Quelque information d'ordre général à propos de votre système seront transmises  avec les requêtes comme la version de serveur et les entêtes de navigateurs internet."
 
-#: Include/Header-function.php:106
+#: Include/Header-function.php:109
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr "Aucune information d'identifications personnels ne seront transmise à moins que vous ne l'incluiez constamment."
 
-#: Include/Header-function.php:309 Include/Header.php:179 menuconfig_mcf.php:5
+#: Include/Header-function.php:323 Include/Header.php:179 menuconfig_mcf.php:5
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
@@ -5566,15 +5566,15 @@ msgstr "Télécharger les fichiers"
 msgid "No Restore Running"
 msgstr "Aucune restauration en cours"
 
-#: RestoreDatabase.php:76
+#: RestoreDatabase.php:84
 msgid "Restore Complete"
 msgstr "Restauration terminée"
 
-#: RestoreDatabase.php:77
+#: RestoreDatabase.php:85
 msgid "Login to restored Database"
 msgstr "Se connecter à la base de données restaurée"
 
-#: RestoreDatabase.php:80
+#: RestoreDatabase.php:88
 msgid "Restore Error."
 msgstr "Erreur de restauration."
 
@@ -5749,7 +5749,7 @@ msgstr "Ajouter"
 msgid "Enter Name"
 msgstr "Entrer le Nom"
 
-#: ChurchCRM/Service/SystemService.php:95
+#: ChurchCRM/Service/SystemService.php:96
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."
 msgstr "Comme faisant partie de la restauration, les backups externes sont désactivées. Si vous voulez continuer à utiliser les backups automatiques, vous devrez manuellement ré-activer le paramètre sEnableExternalBackupTarget."
 
@@ -5914,15 +5914,15 @@ msgstr "Si vous devez modifier à des données enregistrées, aller vers"
 msgid "Admin->Edit General Settings"
 msgstr "Admin->Editer les réglages généraux"
 
-#: ChurchCRM/Service/SystemService.php:471
+#: ChurchCRM/Service/AppIntegrityService.php:28
 msgid "Signature definition file signature failed validation"
 msgstr "Le fichier de définition à signer n'a pu être validé correctement."
 
-#: ChurchCRM/Service/SystemService.php:474
+#: ChurchCRM/Service/AppIntegrityService.php:31
 msgid "Signature definition File Missing"
 msgstr "Le fichier de définition à signer est manquant."
 
-#: ChurchCRM/Service/SystemService.php:478
+#: ChurchCRM/Service/AppIntegrityService.php:35
 msgid "One or more files failed signature validation"
 msgstr "Un ou plusieurs fichiers à signer n'ont pu être validé."
 
@@ -5989,7 +5989,7 @@ msgstr "T&eacute;l&eacute;phone"
 msgid "Voting members "
 msgstr "Tous les Membres:"
 
-#: RestoreDatabase.php:56
+#: RestoreDatabase.php:65
 msgid "Restore Running, Please wait."
 msgstr "Restauration en cours, Veuillez patienter."
 
@@ -6174,7 +6174,7 @@ msgstr "mois"
 msgid "yr old"
 msgstr "année"
 
-#: Include/Header-function.php:143
+#: Include/Header-function.php:157
 msgid "There was a problem retrieving the requested object"
 msgstr "Il y a problème pour retrouver l'objet requis"
 
@@ -8345,31 +8345,31 @@ msgstr "Zambie"
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
-#: Setup.php:91
+#: Setup.php:98
 msgid "ChurchCRM – Setup"
 msgstr "Réglages - ChurchCRM"
 
-#: Setup.php:193
+#: Setup.php:203
 msgid "This server is ChurchCRM ready!"
 msgstr "Ce serveur est compatible ChurchCRM!"
 
-#: Setup.php:199
+#: Setup.php:209
 msgid "We're still determining if this server is ready for ChurchCRM."
 msgstr "Nous déterminons toujours si ce serveur est prêt pour ChurchCRM."
 
-#: Setup.php:205
+#: Setup.php:215
 msgid "This server isn't quite ready for ChurchCRM."
 msgstr "Ce serveur n'est pas prêt pour ChurchCRM."
 
-#: Setup.php:232
+#: Setup.php:242
 msgid "I know what I'm doing.  Install ChurchCRM Anyway"
 msgstr "Je sais ce que je fais. Installer de toute façon ChurchCRM"
 
-#: Setup.php:234
+#: Setup.php:244
 msgid "In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical."
 msgstr "Dans le cas où vous aimez connaître les détails d'essentiel, voici ce que nous recherchons au niveau serveur. C'est pareil à de la datation, mais en plus technique."
 
-#: Include/Header-function.php:62
+#: Include/Header-function.php:64
 msgid "Stack Trace"
 msgstr "Trace de Pile"
 
@@ -8542,15 +8542,15 @@ msgstr "L'api Google map requière une clé unique provenant de : https://develo
 msgid "Church Checking Account Number"
 msgstr "Numéro de Compte courant d'Église"
 
-#: ChurchCRM/Service/SystemService.php:74
+#: ChurchCRM/Service/SystemService.php:75
 msgid "Backup archive does not contain a database"
 msgstr "L'archive de sauvegarde ne contient pas de base de données"
 
-#: ChurchCRM/Service/SystemService.php:86
+#: ChurchCRM/Service/SystemService.php:87
 msgid "Unknown File Type"
 msgstr "Type de fichier inconnu"
 
-#: ChurchCRM/Service/SystemService.php:86
+#: ChurchCRM/Service/SystemService.php:87
 msgid "from file"
 msgstr "Du fichier"
 

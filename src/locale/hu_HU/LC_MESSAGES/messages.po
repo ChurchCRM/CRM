@@ -2277,7 +2277,7 @@ msgstr "Új Szerep"
 msgid "Group Listing"
 msgstr "Group Listing"
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr "Küldés"
 
