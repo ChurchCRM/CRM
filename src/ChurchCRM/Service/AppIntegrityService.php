@@ -37,7 +37,7 @@ class AppIntegrityService
       return ['status' => 'success'];
     }
   }
-  
+
   public static function getApplicationPrerequisiteStatus()
   {
     $prerequisites = array(
@@ -55,24 +55,24 @@ class AppIntegrityService
       'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
       'cURL'                                      => function_exists('curl_version'),
       'locale gettext'                            => function_exists('bindtextdomain'),
-      'Include file is writeable'                 => is_writable('Include/Config.php.example'),
+      'Include file is writeable'                 => is_writable('Include/Config.php'),
     );
     return $prerequisites;
   }
-  
+
   public static function arePrerequisitesMet()
   {
     $prerequisites = AppIntegrityService::getApplicationPrerequisiteStatus();
     foreach ($prerequisites as $prerequisiteName => $prerequisiteMet)
     {
       if (!$prerequisiteMet)
-      { 
+      {
         return false;
       }
     }
     return true;
   }
-  
+
   public static function hasApacheModule($module)
   {
       if (function_exists('apache_get_modules')) {

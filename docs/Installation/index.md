@@ -20,7 +20,7 @@ have the following requirements:
       * Phar extension must be enabled.
 
 2. MySQL 
-      * Version 5.1 or greater
+      * Version 5.5 or greater
 
 Certain PHP modules (sometimes referred to as extensions) must be enabled:
 'mysql' and 'gd' version 2 or higher.  On some platforms, you may need to
