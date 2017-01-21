@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-20 05:11+0000\n"
+"POT-Creation-Date: 2017-01-21 16:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Church Email"
 msgstr ""
 
-#: Register.php:52 Setup.php:294
+#: Register.php:52 Setup.php:304
 msgid "Base URL"
 msgstr ""
 
@@ -1022,53 +1022,59 @@ msgstr ""
 msgid "Permission"
 msgstr ""
 
-#: Setup.php:91
+#: Setup.php:9
+msgid ""
+"One or more required setup files are missing.  Please verify you downloaded "
+"the correct ChurchCRM package"
+msgstr ""
+
+#: Setup.php:98
 msgid "ChurchCRM – Setup"
 msgstr ""
 
-#: Setup.php:193
+#: Setup.php:203
 msgid "This server is ChurchCRM ready!"
 msgstr ""
 
-#: Setup.php:199
+#: Setup.php:209
 msgid "We're still determining if this server is ready for ChurchCRM."
 msgstr ""
 
-#: Setup.php:205
+#: Setup.php:215
 msgid "This server isn't quite ready for ChurchCRM."
 msgstr ""
 
-#: Setup.php:232
+#: Setup.php:242
 msgid "I know what I'm doing.  Install ChurchCRM Anyway"
 msgstr ""
 
-#: Setup.php:234
+#: Setup.php:244
 msgid ""
 "In case you like to know the nitty gritty details, here's what we look for "
 "in a server. It's kind of like dating, but more technical."
 msgstr ""
 
-#: Setup.php:270
+#: Setup.php:280
 msgid "DB Server Name"
 msgstr ""
 
-#: Setup.php:275
+#: Setup.php:285
 msgid "DB Name"
 msgstr ""
 
-#: Setup.php:279
+#: Setup.php:289
 msgid "DB User"
 msgstr ""
 
-#: Setup.php:283
+#: Setup.php:293
 msgid "DB Password"
 msgstr ""
 
-#: Setup.php:289
+#: Setup.php:299
 msgid "Root Path"
 msgstr ""
 
-#: Setup.php:299
+#: Setup.php:309
 msgid "Setup"
 msgstr ""
 
@@ -2592,6 +2598,18 @@ msgstr ""
 msgid "Group Directory"
 msgstr ""
 
+#: ChurchCRM/Service/AppIntegrityService.php:28
+msgid "Signature definition file signature failed validation"
+msgstr ""
+
+#: ChurchCRM/Service/AppIntegrityService.php:31
+msgid "Signature definition File Missing"
+msgstr ""
+
+#: ChurchCRM/Service/AppIntegrityService.php:35
+msgid "One or more files failed signature validation"
+msgstr ""
+
 #: ChurchCRM/Service/CalendarService.php:15
 msgid "Event"
 msgstr ""
@@ -2616,35 +2634,23 @@ msgstr ""
 msgid "Check number not valid for 'CASH' payment"
 msgstr ""
 
-#: ChurchCRM/Service/SystemService.php:74
+#: ChurchCRM/Service/SystemService.php:75
 msgid "Backup archive does not contain a database"
 msgstr ""
 
-#: ChurchCRM/Service/SystemService.php:86
+#: ChurchCRM/Service/SystemService.php:87
 msgid "Unknown File Type"
 msgstr ""
 
-#: ChurchCRM/Service/SystemService.php:86
+#: ChurchCRM/Service/SystemService.php:87
 msgid "from file"
 msgstr ""
 
-#: ChurchCRM/Service/SystemService.php:95
+#: ChurchCRM/Service/SystemService.php:96
 msgid ""
 "As part of the restore, external backups have been disabled.  If you wish to "
 "continue automatic backups, you must manuall re-enable the "
 "sEnableExternalBackupTarget setting."
-msgstr ""
-
-#: ChurchCRM/Service/SystemService.php:471
-msgid "Signature definition file signature failed validation"
-msgstr ""
-
-#: ChurchCRM/Service/SystemService.php:474
-msgid "Signature definition File Missing"
-msgstr ""
-
-#: ChurchCRM/Service/SystemService.php:478
-msgid "One or more files failed signature validation"
 msgstr ""
 
 #: ChurchCRM/Service/TimelineService.php:114 FamilyEditor.php:1030

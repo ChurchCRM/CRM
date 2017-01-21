@@ -8563,6 +8563,7 @@ msgid "Family Coordinates Data for Some Families"
 msgstr "Données de coordonnées de famille pour certaines familles"
 
 #: settings-choices.php:4
+#, fuzzy
 msgid "English - United States:en_US"
 msgstr "English - USA:en_US"
 

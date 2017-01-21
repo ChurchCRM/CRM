@@ -8280,6 +8280,7 @@ msgid "Google Analytics Tracking Code"
 msgstr "Código de Seguimiento de Google Analytics"
 
 #: settings-choices.php:4
+#, fuzzy
 msgid "English - United States:en_US"
 msgstr "Inglés - Estados Unidos:en_US"
 
