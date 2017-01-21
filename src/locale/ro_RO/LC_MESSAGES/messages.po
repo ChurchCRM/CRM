@@ -2295,7 +2295,7 @@ msgstr "Noul rol"
 msgid "Group Listing"
 msgstr "Listarea grup"
 
-#: Include/Header-function.php:110
+#: Include/Header-function.php:113
 msgid "Submit"
 msgstr "Prezenta"
 
