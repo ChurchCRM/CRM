@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
@@ -388,7 +389,7 @@ class SystemService
             $diff = $previous->diff($now);  // calculate the difference.
             if (!SystemConfig::getValue('sLastIntegrityCheckTimeStamp') || $diff->h >= SystemConfig::getValue('sIntegrityCheckInterval')) {  // if there was no previous backup, or if the interval suggests we do a backup now.
                 $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
-                $appIntegrity = $this->verifyApplicationIntegrity();
+                $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity));
                 $now = new \DateTime();  // update the LastBackupTimeStamp.
                 SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format('Y-m-d H:i:s'));
@@ -449,39 +450,7 @@ class SystemService
         }
     }
 
-    public function verifyApplicationIntegrity()
-    {
-        $signatureFile = SystemURLs::getDocumentRoot() . '/signatures.json';
-        $signatureFailures = [];
-        if (file_exists($signatureFile)) {
-            $signatureData = json_decode(file_get_contents($signatureFile));
-            if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) == $signatureData->sha1) {
-                foreach ($signatureData->files as $file) {
-                    $currentFile = SystemURLs::getDocumentRoot() . '/' . $file->filename;
-                    if (file_exists($currentFile)) {
-                        $actualHash = sha1_file($currentFile);
-                        if ($actualHash != $file->sha1) {
-                            array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'Hash Mismatch', 'expectedhash' => $file->sha1, 'actualhash' => $actualHash]);
-                        }
-                    } else {
-                        array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'File Missing']);
-                    }
-                }
-            } else {
-                return ['status' => 'failure', 'message' => gettext('Signature definition file signature failed validation')];
-            }
-        } else {
-            return ['status' => 'failure', 'message' => gettext('Signature definition File Missing')];
-        }
-
-        if (count($signatureFailures) > 0) {
-            return ['status' => 'failure', 'message' => gettext('One or more files failed signature validation'), 'files' => $signatureFailures];
-        } else {
-            return ['status' => 'success'];
-        }
-    }
-    
-    // Returns a file size limit in bytes based on the PHP upload_max_filesize
+        // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size
     public function getMaxUploadFileSize($humanFormat=true) {
       //select maximum upload size
