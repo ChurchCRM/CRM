@@ -5,7 +5,7 @@ if (file_exists('Include/Config.php')) {
 }
 
 // don't depend on autoloader here, just in case validation doesn't pass.
-if (! (file_exists('ChurchCRM/dto/SystemURLs.php') && file_exists('ChurchCRM/Service/AppIntegrityService.php')))
+if (!(file_exists('ChurchCRM/dto/SystemURLs.php') && file_exists('ChurchCRM/Service/AppIntegrityService.php')))
 {
   echo gettext("One or more required setup files are missing.  Please verify you downloaded the correct ChurchCRM package");
   exit;
