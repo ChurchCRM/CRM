@@ -5,6 +5,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\AppIntegrityService;
 
 //Set the page title
 $sPageTitle = gettext('Integrity Check Results');
@@ -22,8 +23,38 @@ if (file_exists($integrityCheckFile)) {
     $IntegrityCheckDetails->message = 'integrityCheck.json file missing';
 }
 
-if ($IntegrityCheckDetails->status == 'failure') {
-    ?>
+if (AppIntegrityService::arePrerequisitesMet())
+{
+  ?>
+  <div class="callout callout-success">
+    <h4><?= gettext('All Application Prerequisites Satisfied') ?> </h4>
+    <p><?= gettext('All components that ChurchCRM relies upon are present and correctly configured on this server') ?></p>
+  </div>
+  <?php
+}
+else
+{ 
+  ?>
+  <div class="callout callout-danger">
+    <h4><?= gettext('Unmet Application Prerequisites') ?> </h4>
+    <p><?= gettext('Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior.') ?></p>
+    <ul>
+      <?php
+      foreach (AppIntegrityService::getApplicationPrerequisiteStatus() as $prerequisiteName=>$prerequisiteValue)
+      {
+        if ( !$prerequisiteValue)
+        {
+          echo "<li>".$prerequisiteName.": ".gettext("Failed")."</li>";
+        }
+      }
+      ?>
+    </ul>
+  </div>
+<?php
+}
+if ($IntegrityCheckDetails->status == 'failure') 
+{
+  ?>
   <div class="callout callout-danger">
     <h4><?= gettext('Integrity Check Failure') ?> </h4>
     <p><?= gettext('The previous integrity check failed') ?></p>
@@ -63,16 +94,16 @@ if ($IntegrityCheckDetails->status == 'failure') {
 
       } ?>
   </div>
-<?php
-
-} else {
-    ?>
+  <?php
+} 
+else 
+{
+  ?>
   <div class="callout callout-success">
     <h4><?= gettext('Integrity Check Passed') ?> </h4>
-    <p><?= gettext('The previous integrity check passed') ?></p>
+    <p><?= gettext('The previous integrity check passed.  All system file hashes match the expected values.') ?></p>
   </div>
   <?php
-
 }
 ?>
 

@@ -3,22 +3,14 @@
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\AppIntegrityService;
 
 
-class IntegrityCheckTask implements iTask
+class PrerequisiteCheckTask implements iTask
 {
-  private $integrityCheckData;
-
-  public function __construct()
-  {
-    if (file_exists(SystemURLs::getDocumentRoot() . '/integrityCheck.json')) {
-      $this->integrityCheckData = json_decode(file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json'));
-    }
-  }
-
   public function isActive()
   {
-    return $_SESSION['user']->isAdmin() && ($this->integrityCheckData == null || $this->integrityCheckData->status == 'failure');
+    return ! AppIntegrityService::arePrerequisitesMet();
   }
 
   public function isAdmin()
@@ -33,12 +25,12 @@ class IntegrityCheckTask implements iTask
 
   public function getTitle()
   {
-    return gettext('Application Integrity Check Failed');
+    return gettext('Unmet Application Prerequisites');
   }
 
   public function getDesc()
   {
-    return gettext('Application Integrity Check Failed');
+    return gettext('Unmet Application Prerequisites');
   }
 
 }
