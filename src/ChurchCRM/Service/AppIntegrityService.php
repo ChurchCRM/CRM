@@ -55,7 +55,7 @@ class AppIntegrityService
       'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
       'cURL'                                      => function_exists('curl_version'),
       'locale gettext'                            => function_exists('bindtextdomain'),
-      'Include file is writeable'                 => is_writable('Include/Config.php'),
+      'Include/Config file is writeable'                 => is_writable('Include/Config.php'),
     );
     return $prerequisites;
   }
