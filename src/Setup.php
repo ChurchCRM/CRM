@@ -14,27 +14,6 @@ require_once 'ChurchCRM/dto/SystemURLs.php';
 ChurchCRM\dto\SystemURLs::init('', '', dirname(__FILE__));
 require_once 'ChurchCRM/Service/AppIntegrityService.php';
 
-
-function hasApacheModule($module)
-{
-    if (function_exists('apache_get_modules')) {
-        return in_array($module, apache_get_modules());
-    }
-
-    return false;
-}
-
-function hasModRewrite()
-{
-    $check = hasApacheModule('mod_rewrite');
-
-    if (!$check && function_exists('shell_exec')) {
-        $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
-    }
-
-    return $check;
-}
-
 if (isset($_POST['Setup'])) {
     $template = file_get_contents('Include/Config.php.example');
     $template = str_replace('||DB_SERVER_NAME||', $_POST['DB_SERVER_NAME'], $template);
@@ -55,23 +34,7 @@ if (isset($_GET['SystemIntegrityCheck'])) {
 }
 
 if (isset($_GET['SystemPrerequisiteCheck'])) {
-    $required = [
-  'PHP 5.6+'                                  => version_compare(PHP_VERSION, '5.6.0', '>='),
-  'PCRE and UTF-8 Support'                    => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'),
-  'Multibyte Encoding'                        => extension_loaded('mbstring'),
-  'PHP Phar'                                  => extension_loaded('phar'),
-  'PHP Session'                               => extension_loaded('session'),
-  'PHP XML'                                   => extension_loaded('xml'),
-  'PHP EXIF'                                  => extension_loaded('exif'),
-  'PHP iconv'                                 => extension_loaded('iconv'),
-  'Mcrypt'                                    => extension_loaded('mcrypt'),
-  'Mod Rewrite'                               => hasModRewrite('mod_rewrite'),
-  'GD Library for image manipulation'         => (extension_loaded('gd') && function_exists('gd_info')),
-  'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
-  'cURL'                                      => function_exists('curl_version'),
-  'locale gettext'                            => function_exists('bindtextdomain'),
-  'Include file is writeable'                 => is_writable('Include/Config.php.example'),
-  ];
+    $required = ChurchCRM\Service\AppIntegrityService::getApplicationPrerequisiteStatus();
     header('Content-Type: application/json');
     echo json_encode($required);
     exit;

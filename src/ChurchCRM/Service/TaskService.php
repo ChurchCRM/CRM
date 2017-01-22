@@ -8,6 +8,7 @@ use ChurchCRM\Tasks\EmailTask;
 use ChurchCRM\Tasks\FamilyWorkPhoneTask;
 use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
+use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\iTask;
 use ChurchCRM\Tasks\LatestReleaseTask;
 use ChurchCRM\Tasks\RegisteredTask;
@@ -27,6 +28,7 @@ class TaskService
     {
 
         $this->taskClasses = [
+            new PrerequisiteCheckTask(),
             new ChurchNameTask(),
             new ChurchAddress(),
             new EmailTask(),
