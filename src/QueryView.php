@@ -195,8 +195,7 @@ function DoQuery()
     global $qry_Count;
 
     //Run the SQL
-    $rsQueryResults = RunQuery($qry_SQL);
-?>
+    $rsQueryResults = RunQuery($qry_SQL); ?>
 <div class="box box-primary">
     
     <div class="box-body">
@@ -214,8 +213,7 @@ function DoQuery()
                         if ($fieldInfo->name != 'AddToCart') {
                             echo '<th>'.$fieldInfo->name.'</th>';
                         }
-                    }        
-                ?>
+                    } ?>
             </thead>
             <tbody>
                 <?php
@@ -242,8 +240,7 @@ function DoQuery()
                         }
 
                         echo '</tr>';
-                    }
-                ?>
+                    } ?>
             </tbody>
         </table>
     </div>
@@ -278,6 +275,7 @@ function DoQuery()
     </div>
 </div>
 <?php
+
 }
 
 
@@ -285,18 +283,15 @@ function DoQuery()
 function DisplayQueryInfo()
 {
     global $qry_Name;
-    global $qry_Description;
-
-?>
-
+    global $qry_Description; ?>
 <div class="box box-info">
     <div class="box-body">
         <p><strong><?= gettext($qry_Name); ?></strong></p>
         <p><?= gettext($qry_Description); ?></p>
     </div>
 </div>
+<?php
 
-<?php    
 }
 
 
@@ -366,9 +361,7 @@ function getQueryFormInput($queryParameters)
 function DisplayParameterForm()
 {
     global $rsParameters;
-    global $iQueryID;
-    
-?>
+    global $iQueryID; ?>
 <div class="row">
     <div class="col-md-8">
         
@@ -384,8 +377,7 @@ function DisplayParameterForm()
                         }
                         while ($aRow = mysqli_fetch_array($rsParameters)) {
                             echo getQueryFormInput($aRow);
-                        }
-                    ?>
+                        } ?>
                     
                     <div class="form-group text-right">
                         <input class="btn btn-primary" type="Submit" value="Execute Query" name="Submit">
@@ -399,6 +391,7 @@ function DisplayParameterForm()
     
 </div>
 <?php
+
 }
 
 require 'Include/Footer.php';
