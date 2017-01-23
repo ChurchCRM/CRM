@@ -11,7 +11,7 @@ if (!(file_exists('ChurchCRM/dto/SystemURLs.php') && file_exists('ChurchCRM/Serv
 }
 
 require_once 'ChurchCRM/dto/SystemURLs.php';
-ChurchCRM\dto\SystemURLs::init('', '', dirname(__FILE__));
+ChurchCRM\dto\SystemURLs::init(str_replace('/Setup.php', '', $_SERVER['REQUEST_URI']), '', dirname(__FILE__));
 require_once 'ChurchCRM/Service/AppIntegrityService.php';
 
 if (isset($_POST['Setup'])) {
@@ -40,12 +40,6 @@ if (isset($_GET['SystemPrerequisiteCheck'])) {
     exit;
 }
 
-$temp = $_SERVER['REQUEST_URI'];
-$sRootPath = str_replace('/Setup.php', '', $temp);
-if ($sRootPath == '/') {
-    $sRootPath = '';
-}
-
 $URL = 'http'.(isset($_SERVER['HTTPS']) ? 's' : '').'://'.$_SERVER['HTTP_HOST'].'/';
 
 error_reporting(E_ALL | E_STRICT);
@@ -67,7 +61,7 @@ window.CRM.prerequisites = [];
 window.CRM.checkIntegrity = function () {
   window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","pending");
   $.ajax({
-    url: "<?= $sRootPath ?>/Setup.php?SystemIntegrityCheck=1",
+    url: "<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>/Setup.php?SystemIntegrityCheck=1",
     method: "GET"
   }).done(function(data){
     if (data == "success" ) 
@@ -86,7 +80,7 @@ window.CRM.checkIntegrity = function () {
 
 window.CRM.checkPrerequisites = function () {
   $.ajax({
-    url: "<?= $sRootPath ?>/Setup.php?SystemPrerequisiteCheck=1",
+    url: "<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>/Setup.php?SystemPrerequisiteCheck=1",
     method: "GET",
     contentType: "application/json"
   }).done(function(data){
@@ -260,7 +254,7 @@ $("document").ready(function(){
 
                   <div class="col-md-4">
                     <label for="ROOT_PATH"><?= gettext('Root Path') ?>:</label>
-                    <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= $sRootPath ?>" class="form-control">
+                    <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>" class="form-control">
                   </div>
 
                   <div class="col-md-4">
