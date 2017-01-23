@@ -544,7 +544,7 @@ if ($iMode == 1) {
 } ?>><?= gettext('By Family') ?></option>
 		<option value="zip" <?php if ($sSort == 'zip') {
     echo 'selected';
-} ?>><?= gettext('By ZIP/Postal Code') ?></option>
+} ?>><?= gettext('By Zip Code') ?></option>
 		<option value="entered" <?php if ($sSort == 'entered') {
     echo 'selected';
 } ?>><?= gettext('By Newest Entries') ?></option>
@@ -979,21 +979,21 @@ if (!isset($sPersonColumn3)) {
 if (!isset($sPersonColumn5)) {
     if (array_key_exists('sPersonColumn5', $_SESSION)) {
         switch ($_SESSION['sPersonColumn5']) {
-        case 'Home Phone':
-            $sPersonColumn5 = 'Home Phone';
+        case gettext('Home Phone'):
+            $sPersonColumn5 = gettext('Home Phone');
             break;
-        case 'Work Phone':
-            $sPersonColumn5 = 'Work Phone';
+        case gettext('Work Phone'):
+            $sPersonColumn5 = gettext('Work Phone');
             break;
-        case 'Mobile Phone':
-            $sPersonColumn5 = 'Mobile Phone';
+        case gettext('Mobile Phone'):
+            $sPersonColumn5 = gettext('Mobile Phone');
         break;
         default:
-            $sPersonColumn5 = 'Zip/Postal Code';
+            $sPersonColumn5 = gettext('Zip Code');
         break;
         }
     } else {
-        $sPersonColumn5 = 'Zip/Postal Code';
+        $sPersonColumn5 = gettext('Zip Code');
     }
 }
 
@@ -1054,7 +1054,7 @@ echo '&amp;Sort=family&amp;Filter='.$sFilter.'">'.gettext('Family').'</a></th>';
 
 echo '<th>';
 echo '<select class="SmallText" name="PersonColumn5" onchange="this.form.submit()">';
-$aPersonCol5 = ['Home Phone', 'Work Phone', 'Mobile Phone', 'Zip/Postal Code'];
+$aPersonCol5 = [gettext('Home Phone'), gettext('Work Phone'), gettext('Mobile Phone'), gettext('Zip Code')];
 foreach ($aPersonCol5 as $s) {
     $sel = '';
     if ($sPersonColumn5 == $s) {
@@ -1195,7 +1195,8 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<?php 
+	<?php
+
     } ?>
     </td>
 	<td>
@@ -1215,7 +1216,8 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
             </span>
         </a>
     </td>
-	<?php 
+	<?php
+
     } else {
         // Remove from cart option
         if (mb_substr($sRedirect, -1, 1) == '?') {
@@ -1230,7 +1232,8 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
                 <i class="fa fa-remove fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<?php 
+	<?php
+
     }
 
     if ($iMode == 1) {
@@ -1240,7 +1243,8 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
                 <i class="fa fa-print fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-	<?php 
+	<?php
+
     } else {
         echo '<td><a href="PersonToGroup.php?PersonID='.$per_ID;
         echo '&amp;prevquery='.rawurlencode($_SERVER['QUERY_STRING']).'">';

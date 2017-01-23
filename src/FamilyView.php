@@ -593,7 +593,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                     }
                                                 } ?>
                                             </select>
-                                            <input type="submit" class="btn btn-default" value="<?= gettext("Assign") ?>" name="Submit2"
+                                            <input type="submit" class="btn btn-primary" value="<?= gettext("Assign") ?>" name="Submit2"
                                                    style="font-size: 8pt;">
                                             </p>
                                         </form>

@@ -33,7 +33,7 @@ require 'Include/Header.php';
     <p><?= gettext('Select a backup file to restore') ?></p>
     <p><?= gettext('CAUTION: This will completely erase the existing database, and replace it with the backup') ?></p>
     <p><?= gettext('If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema') ?></p>
-
+    <p><?= gettext("Maximum upload size")?>: <span class="maxUploadSize"></span></p>
     <form id="restoredatabase" action="<?= sRootPath ?>/api/database/restore" method="POST"
           enctype="multipart/form-data">
       <input type="file" name="restoreFile" id="restoreFile" multiple=""><br>
@@ -52,9 +52,17 @@ require 'Include/Header.php';
 <script>
   $('#restoredatabase').submit(function (event) {
     event.preventDefault();
-    $("#restorestatus").css("color", "orange");
-    $("#restorestatus").html("<?= gettext('Restore Running, Please wait.')?>");
+   
     var formData = new FormData($(this)[0]);
+    if (window.FileReader) { // if the browser supports FileReader, validate the flie locally before uploading.
+       var file = document.getElementById('restoreFile').files[0];
+       if (file.size > window.CRM.maxUploadSizeBytes){
+         window.CRM.DisplayErrorMessage("/api/database/restore",{message: "<?= gettext('The selected file exceeds this servers maximum upload size of') ?>: " + window.CRM.maxUploadSize});
+         return false;
+       }
+    }
+     $("#restorestatus").css("color", "orange");
+    $("#restorestatus").html("<?= gettext('Restore Running, Please wait.')?>");
     $.ajax({
       url: window.CRM.root + '/api/database/restore',
       type: 'POST',

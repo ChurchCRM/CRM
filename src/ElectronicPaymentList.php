@@ -68,9 +68,9 @@ function ClearAccounts (AutID)
 		if (this.readyState==4 && this.status==200) { // Hide them as the requests come back, deleting would mess up the outside loop
             document.getElementById("Select"+this.PaymentID).checked = false;
         	ccVal = document.getElementById("CreditCard"+this.PaymentID).innerHTML;
-        	document.getElementById("CreditCard"+this.PaymentID).innerHTML = "************" + ccVal.mb_substr (ccVal.length-4,4);
+        	document.getElementById("CreditCard"+this.PaymentID).innerHTML = "************" + ccVal.substr (ccVal.length-4,4);
         	aVal = document.getElementById("Account"+this.PaymentID).innerHTML;
-        	document.getElementById("Account"+this.PaymentID).innerHTML = "*****" + aVal.mb_substr (aVal.length-4,4);
+        	document.getElementById("Account"+this.PaymentID).innerHTML = "*****" + aVal.substr (aVal.length-4,4);
         }
     };
     xmlhttp.send();

@@ -12,7 +12,7 @@ abstract class BaseFamilyVerification extends BaseEmail
   {
     parent::__construct($emails);
     $this->familyName = $familyName;
-    $this->mail->Subject = gettext($familyName . ": " . gettext("Please verify your family's information"));
+    $this->mail->Subject = $familyName . ": " . gettext("Please verify your family's information");
     $this->mail->isHTML(true);
     $this->mail->msgHTML($this->buildMessage());
   }
@@ -32,7 +32,7 @@ abstract class BaseFamilyVerification extends BaseEmail
 
   protected function buildMessageFooter()
   {
-    return gettext("Sincerely") . "<br/>" . SystemConfig::getValue("sConfirmSigner");
+    return SystemConfig::getValue('sConfirmSincerely') . ",<br/>" . SystemConfig::getValue("sConfirmSigner");
   }
 
   protected abstract function buildMessageBody();
