@@ -28,9 +28,8 @@
   </script>
   <?php 
     //If this is a first-run setup, do not include google analytics code.
-    if(basename($_SERVER['SCRIPT_FILENAME']) != 'Setup.php')
-    {
-      include_once('analyticstracking.php');
+    if (basename($_SERVER['SCRIPT_FILENAME']) != 'Setup.php') {
+        include_once('analyticstracking.php');
     }
  ?>
 </body>
