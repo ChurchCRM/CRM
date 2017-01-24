@@ -25,7 +25,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
         <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i><?= $family->getHomePhone() ?><br/>
         <i class="fa fa-fw fa-envelope" title="<?= gettext("Family Email")?>"></i><?= $family->getEmail() ?><br/>
-        <i class="fa fa-fw fa-heart" title="<?= gettext("Wedding Date")?>"></i><?= $family->getWeddingDate() ?><br/>
+        <i class="fa fa-fw fa-heart" title="<?= gettext("Wedding Date")?>"></i><?= $family->getWeddingDate()->format('Y-m-d') ?><br/>
         <i class="fa fa-fw fa-newspaper-o" title="<?= gettext("Send Newsletter")?>"></i><?= $family->getSendNewsletter() ?><br/>
       </div>
     </div>
