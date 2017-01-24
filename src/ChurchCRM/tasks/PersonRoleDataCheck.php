@@ -29,7 +29,7 @@ class PersonRoleDataCheck implements iTask
 
     public function getLink()
     {
-        return SystemURLs::getRootPath() . '/SelectList.php?FamilyRole=0&PersonColumn3=Family+Role';
+        return SystemURLs::getRootPath() . '/SelectList.php?mode=person&FamilyRole=0&PersonColumn3=Family+Role';
     }
 
     public function getTitle()

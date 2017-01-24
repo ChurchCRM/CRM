@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "2.5.0",
+    "version": "2.6.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -45,6 +45,8 @@
         "package": "grunt generateSignatures && grunt compress",
         "demosite": "scripts/demosite.sh",
         "changelogs": "scripts/gen-changelogs.sh",
-        "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build "
+        "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
+        "composer-install": "cd src/ && composer install",
+        "composer-update": " cd src/ && composer update"
     }
 }
