@@ -38,10 +38,8 @@ if (AppIntegrityService::arePrerequisitesMet()) {
     <p><?= gettext('Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior.') ?></p>
     <ul>
       <?php
-      foreach (AppIntegrityService::getApplicationPrerequisiteStatus() as $prerequisiteName=>$prerequisiteValue) {
-          if (!$prerequisiteValue) {
-              echo "<li>".$prerequisiteName.": ".gettext("Failed")."</li>";
-          }
+      foreach (AppIntegrityService::getUnmetPrerequisites() as $prerequisiteName=>$prerequisiteValue) {
+        echo "<li>".$prerequisiteName.": ".gettext("Failed")."</li>";
       } ?>
     </ul>
   </div>

@@ -38,7 +38,7 @@ class AppIntegrityService
     }
   }
 
-  public static function getApplicationPrerequisiteStatus()
+  public static function getApplicationPrerequisites()
   {
     $prerequisites = array(
       'PHP 7.0+'                                  => version_compare(PHP_VERSION, '7.0.0', '>='),
@@ -55,14 +55,25 @@ class AppIntegrityService
       'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
       'cURL'                                      => function_exists('curl_version'),
       'locale gettext'                            => function_exists('bindtextdomain'),
-      'Include/Config file is writeable'                 => is_writable('Include/Config.php'),
+      'Include/Config file is writeable'                 => is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php'),
     );
     return $prerequisites;
+  }
+  
+  public static function getUnmetPrerequisites()
+  {
+    $unmet = array();
+    foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite=>$status) {
+          if (!$status) {
+              array_push($unmet,$prerequisite);
+          }
+      }
+    return $unmet;
   }
 
   public static function arePrerequisitesMet()
   {
-    $prerequisites = AppIntegrityService::getApplicationPrerequisiteStatus();
+    $prerequisites = AppIntegrityService::getApplicationPrerequisites();
     foreach ($prerequisites as $prerequisiteName => $prerequisiteMet)
     {
       if (!$prerequisiteMet)
