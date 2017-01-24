@@ -82,7 +82,7 @@
         ],
         "dbVersion": "2.4.0"
     },
-    "current": {
+    "pre-2.5.0": {
         "versions": [
             "2.5.0"
         ],

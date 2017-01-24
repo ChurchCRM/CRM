@@ -28,7 +28,7 @@ class PersonGenderDataCheck implements iTask
 
     public function getLink()
     {
-        return SystemURLs::getRootPath() . '/SelectList.php?Gender=0&PersonColumn3=Gender';
+        return SystemURLs::getRootPath() . '/SelectList.php?mode=person&Gender=0&PersonColumn3=Gender';
     }
 
     public function getTitle()
