@@ -70,7 +70,6 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
         $curY += 4 * SystemConfig::getValue('incrementY');
         $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSigner'));
     }
-
 }
 
 $familyEmailSent = false;
