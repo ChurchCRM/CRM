@@ -8463,7 +8463,7 @@ msgstr "Usado para terminar uma carta, antes da assinatura"
 
 #: config_cfg.php:97
 msgid "Google Analytics Tracking Code"
-msgstr "Código de rastreio do Google Analytics "
+msgstr "Código de rastreio do Google Analytics"
 
 #: settings-choices.php:4
 #, fuzzy
@@ -8549,4 +8549,16 @@ msgstr "Chinês - China:zh_CN"
 #: settings-choices.php:24
 msgid "Chinese - Taiwan:zh_TW"
 msgstr "Chinês - Taiwan:zh_TW"
+
+#: RestoreDatabase.php:36
+msgid "Maximum upload size"
+msgstr "Tamanho Máximo para upload"
+
+#: RestoreDatabase.php:60 api/routes/database.php:18
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "O arquivo selecionado excede o tamanho máximo para upload deste servidor de"
+
+#: Setup.php:9
+msgid "One or more required setup files are missing.  Please verify you downloaded the correct ChurchCRM package"
+msgstr "Um ou mais arquivos de configuração necessários não foram encontrados. Por favor verifique se você baixou o pacote correto do ChurchCRM"
 
