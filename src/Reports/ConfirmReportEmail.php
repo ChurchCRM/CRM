@@ -17,7 +17,6 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
-use \ChurchCRM\Service\EmailService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 
@@ -72,12 +71,6 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
         $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSigner'));
     }
 
-    public function getEmailConnection()
-    {
-        $emailSerice = new EmailService();
-
-        return $emailSerice->getConnection();
-    }
 }
 
 $familyEmailSent = false;
