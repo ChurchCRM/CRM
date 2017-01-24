@@ -39,7 +39,7 @@ if (AppIntegrityService::arePrerequisitesMet()) {
     <ul>
       <?php
       foreach (AppIntegrityService::getUnmetPrerequisites() as $prerequisiteName) {
-        echo "<li>".$prerequisiteName.": ".gettext("Failed")."</li>";
+          echo "<li>".$prerequisiteName.": ".gettext("Failed")."</li>";
       } ?>
     </ul>
   </div>
