@@ -62,7 +62,7 @@ class AppIntegrityService
   
   public static function getUnmetPrerequisites()
   {
-    $unmet = array();
+    $unmet = [];
     foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite=>$status) {
           if (!$status) {
               array_push($unmet,$prerequisite);
