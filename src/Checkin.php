@@ -258,7 +258,7 @@ if (isset($_POST['EventID'])) {
              </td>
             </tr>
         <?php
-        
+
         }
     }
 } else {
