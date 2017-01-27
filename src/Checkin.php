@@ -258,6 +258,7 @@ if (isset($_POST['EventID'])) {
              </td>
             </tr>
         <?php
+        
         }
     }
 } else {
@@ -414,7 +415,8 @@ function addAtendeesForm($event)
 
 
 function verifyCheckForm($eventId, $eventTitle, $childId, $adultId)
-{ ?>
+{
+    ?>
 <form method="post" action="Checkin.php" name="Checkin">
     <input type="hidden" name="EventID" value="<?= $eventId  ?>">
     <input type="hidden" name="child" value="<?= $childId  ?>">
@@ -460,7 +462,8 @@ function verifyCheckForm($eventId, $eventTitle, $childId, $adultId)
 }
 
 function finalizeCheckForm($eventId, $eventTitle, $childId, $adultId)
-{ ?>
+{
+    ?>
 <form method="post" action="Checkin.php" name="Checkin">
     <input type="hidden" name="EventID" value="<?= $eventId ?>">
     <input type="hidden" name="child" value="<?= $childId ?>">
