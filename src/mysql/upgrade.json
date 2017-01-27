@@ -97,9 +97,10 @@
     },
     "current": {
         "versions": [
-          "2.5.0"
+          "2.5.0",
+          "2.5.1"
         ],
         "scripts":[],
-        "dbVersion": "2.5.1"
+        "dbVersion": "2.5.2"
     }
 }
