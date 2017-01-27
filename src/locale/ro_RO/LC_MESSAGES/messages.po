@@ -1169,7 +1169,7 @@ msgstr "Pagina de titlu"
 msgid "Use Title Page"
 msgstr "Utilizați titlu Page"
 
-#: Register.php:44 DirectoryReports.php:244 config_cfg.php:62
+#: Register.php:44 DirectoryReports.php:244 config_cfg.php:67
 msgid "Church Name"
 msgstr "Numele Bisericii"
 
@@ -2027,7 +2027,7 @@ msgstr "Raport Titlu:"
 msgid "Graphic"
 msgstr "Grafic"
 
-#: FinancialReports.php:295 config_cfg.php:63
+#: FinancialReports.php:295 config_cfg.php:68
 msgid "Church Address"
 msgstr "Adresa bisericii"
 

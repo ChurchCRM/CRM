@@ -1228,7 +1228,7 @@ msgstr "Titolo della pagina"
 msgid "Use Title Page"
 msgstr "Usa il titolo della pagina"
 
-#: Register.php:44 DirectoryReports.php:244 config_cfg.php:62
+#: Register.php:44 DirectoryReports.php:244 config_cfg.php:67
 msgid "Church Name"
 msgstr "Nome della parrocchia"
 
@@ -2134,7 +2134,7 @@ msgstr "Menu dei rapporti"
 msgid "Graphic"
 msgstr "Grafico"
 
-#: FinancialReports.php:295 config_cfg.php:63
+#: FinancialReports.php:295 config_cfg.php:68
 #, fuzzy
 msgid "Church Address"
 msgstr "Indirizzo"

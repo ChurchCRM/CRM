@@ -1173,7 +1173,7 @@ msgstr "Название страницы:"
 msgid "Use Title Page"
 msgstr "Используйте титульный лист"
 
-#: Register.php:44 DirectoryReports.php:244 config_cfg.php:62
+#: Register.php:44 DirectoryReports.php:244 config_cfg.php:67
 msgid "Church Name"
 msgstr "Церковь Имя"
 
@@ -2028,7 +2028,7 @@ msgstr "Сообщить Рубрика:"
 msgid "Graphic"
 msgstr "Графика"
 
-#: FinancialReports.php:295 config_cfg.php:63
+#: FinancialReports.php:295 config_cfg.php:68
 msgid "Church Address"
 msgstr "Церковь Адрес"
 

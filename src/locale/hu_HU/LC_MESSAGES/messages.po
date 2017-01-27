@@ -1156,7 +1156,7 @@ msgstr "Oldal címe"
 msgid "Use Title Page"
 msgstr "Használja Címoldal"
 
-#: Register.php:44 DirectoryReports.php:244 config_cfg.php:62
+#: Register.php:44 DirectoryReports.php:244 config_cfg.php:67
 msgid "Church Name"
 msgstr "Church neve"
 
@@ -2014,7 +2014,7 @@ msgstr "Jelentés Jogcím:"
 msgid "Graphic"
 msgstr "Grafikus"
 
-#: FinancialReports.php:295 config_cfg.php:63
+#: FinancialReports.php:295 config_cfg.php:68
 msgid "Church Address"
 msgstr "Templom Cím"
 
