@@ -1179,7 +1179,7 @@ msgstr "扉頁"
 msgid "Use Title Page"
 msgstr "使用標題頁"
 
-#: Register.php:44 DirectoryReports.php:244 config_cfg.php:62
+#: Register.php:44 DirectoryReports.php:244 config_cfg.php:67
 msgid "Church Name"
 msgstr "教會名稱"
 
@@ -2042,7 +2042,7 @@ msgstr "報告標題："
 msgid "Graphic"
 msgstr "圖形"
 
-#: FinancialReports.php:295 config_cfg.php:63
+#: FinancialReports.php:295 config_cfg.php:68
 msgid "Church Address"
 msgstr "教會地址"
 

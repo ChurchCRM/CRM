@@ -1095,7 +1095,7 @@ msgstr "Trang tiêu đề"
 msgid "Use Title Page"
 msgstr "Sử dụng Page Title"
 
-#: Register.php:44 DirectoryReports.php:244 config_cfg.php:62
+#: Register.php:44 DirectoryReports.php:244 config_cfg.php:67
 msgid "Church Name"
 msgstr "Tên Giáo Hội"
 
@@ -2160,7 +2160,7 @@ msgstr "Báo cáo Tiêu đề:"
 msgid "Graphic"
 msgstr "Đồ họa"
 
-#: FinancialReports.php:295 config_cfg.php:63
+#: FinancialReports.php:295 config_cfg.php:68
 msgid "Church Address"
 msgstr "Giáo Hội Địa chỉ"
 
@@ -3838,27 +3838,27 @@ msgstr "Đặt Permission True để cung cấp cho người dùng mới có kh�
 msgid "Permission"
 msgstr "Cho phép"
 
-#: Setup.php:285
+#: Setup.php:242
 #, fuzzy
 msgid "DB Name"
 msgstr "Tên DB"
 
-#: Setup.php:293
+#: Setup.php:250
 #, fuzzy
 msgid "DB Password"
 msgstr "DB Mật khẩu"
 
-#: Setup.php:299
+#: Setup.php:256
 #, fuzzy
 msgid "Root Path"
 msgstr "Đường dẫn gốc"
 
-#: Register.php:52 Setup.php:304
+#: Register.php:52 Setup.php:261
 #, fuzzy
 msgid "Base URL"
 msgstr "URL cơ sở"
 
-#: Setup.php:309
+#: Setup.php:266
 msgid "Setup"
 msgstr "Cài đặt"
 
@@ -4217,7 +4217,7 @@ msgstr "Giao số phong bì cho tất cả các gia đình có ít nhất một 
 msgid "Assigned envelope numbers to all families."
 msgstr "Giao số phong bì cho tất cả các gia đình."
 
-#: Include/Footer.php:29 Include/FooterNotLoggedIn.php:3
+#: Include/Footer.php:29 Include/FooterNotLoggedIn.php:6
 msgid "All rights reserved"
 msgstr "Tất cả các quyền được bảo lưu."
 

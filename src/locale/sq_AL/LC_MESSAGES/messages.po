@@ -1148,7 +1148,7 @@ msgstr "Faqja Titulli"
 msgid "Use Title Page"
 msgstr "Përdorni titull në faqe"
 
-#: Register.php:44 DirectoryReports.php:244 config_cfg.php:62
+#: Register.php:44 DirectoryReports.php:244 config_cfg.php:67
 msgid "Church Name"
 msgstr "Emri Kisha"
 
@@ -1985,7 +1985,7 @@ msgstr "Raporti Titulli:"
 msgid "Graphic"
 msgstr "Grafik"
 
-#: FinancialReports.php:295 config_cfg.php:63
+#: FinancialReports.php:295 config_cfg.php:68
 msgid "Church Address"
 msgstr "Kisha Adresa"
 

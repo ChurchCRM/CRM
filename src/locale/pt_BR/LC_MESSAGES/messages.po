@@ -1295,7 +1295,7 @@ msgstr "Título da página"
 msgid "Use Title Page"
 msgstr "Use título na página"
 
-#: Register.php:44 DirectoryReports.php:244 config_cfg.php:62
+#: Register.php:44 DirectoryReports.php:244 config_cfg.php:67
 msgid "Church Name"
 msgstr "Nome da igreja"
 
@@ -2366,7 +2366,7 @@ msgstr "Cabeçalho do relatório:"
 msgid "Graphic"
 msgstr "Gráfico"
 
-#: FinancialReports.php:295 config_cfg.php:63
+#: FinancialReports.php:295 config_cfg.php:68
 msgid "Church Address"
 msgstr "Endereço da igreja"
 
@@ -4157,37 +4157,37 @@ msgstr "Definir permissão verdadeira para dar novos usuários a capacidade de a
 msgid "Permission"
 msgstr "Pessoa"
 
-#: Setup.php:280
+#: Setup.php:237
 #, fuzzy
 msgid "DB Server Name"
 msgstr "Nome do Servidor do BD"
 
-#: Setup.php:285
+#: Setup.php:242
 #, fuzzy
 msgid "DB Name"
 msgstr "Nome do BD"
 
-#: Setup.php:289
+#: Setup.php:246
 #, fuzzy
 msgid "DB User"
 msgstr "Usuário do BD"
 
-#: Setup.php:293
+#: Setup.php:250
 #, fuzzy
 msgid "DB Password"
 msgstr "Senha do BD"
 
-#: Setup.php:299
+#: Setup.php:256
 #, fuzzy
 msgid "Root Path"
 msgstr "Diretório Raiz"
 
-#: Register.php:52 Setup.php:304
+#: Register.php:52 Setup.php:261
 #, fuzzy
 msgid "Base URL"
 msgstr "URL base"
 
-#: Setup.php:309
+#: Setup.php:266
 msgid "Setup"
 msgstr "Configuração"
 
@@ -4560,11 +4560,11 @@ msgstr "Atribuídos números envelope para todas as famílias."
 msgid "Version"
 msgstr "Versão"
 
-#: Include/Footer.php:29 Include/FooterNotLoggedIn.php:3
+#: Include/Footer.php:29 Include/FooterNotLoggedIn.php:6
 msgid "Copyright"
 msgstr "Direitos Autorais"
 
-#: Include/Footer.php:29 Include/FooterNotLoggedIn.php:3
+#: Include/Footer.php:29 Include/FooterNotLoggedIn.php:6
 msgid "All rights reserved"
 msgstr "Todos os Direitos Reservados"
 
@@ -5384,38 +5384,34 @@ msgstr "Tipos de Depósitos"
 msgid "Deposit Date"
 msgstr "Data do Depósito"
 
-#: IntegrityCheck.php:10
+#: IntegrityCheck.php:11
 msgid "Integrity Check Results"
 msgstr "Resultados da Verificação de Integridade"
 
-#: IntegrityCheck.php:28
+#: IntegrityCheck.php:54
 msgid "Integrity Check Failure"
 msgstr "Falha da Verificação de Integridade"
 
-#: IntegrityCheck.php:29
+#: IntegrityCheck.php:55
 msgid "The previous integrity check failed"
 msgstr "A verificação de integridade anterior foi mal sucedida"
 
-#: IntegrityCheck.php:30
+#: IntegrityCheck.php:56
 msgid "Details:"
 msgstr "Detalhes:"
 
-#: IntegrityCheck.php:44
+#: IntegrityCheck.php:70
 msgid "File Missing"
 msgstr "Arquivos Faltando"
 
-#: IntegrityCheck.php:51
+#: IntegrityCheck.php:77
 #, fuzzy
 msgid "Expected Hash"
 msgstr "Hash Esperado"
 
-#: IntegrityCheck.php:71
+#: IntegrityCheck.php:97
 msgid "Integrity Check Passed"
 msgstr "Verificação de Integridade bem sucedida"
-
-#: IntegrityCheck.php:72
-msgid "The previous integrity check passed"
-msgstr "A verificação de Integridade foi bem sucedida"
 
 #: ManageEnvelopes.php:135
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
@@ -5823,11 +5819,11 @@ msgstr "Um ou mais arquivos falharam na validação da assinatura"
 msgid "Configure HTTPS"
 msgstr "Configurar HTTPS"
 
-#: IntegrityCheck.php:34
+#: IntegrityCheck.php:60
 msgid "Files failing integrity check"
 msgstr "Aruqivos que falharam na verificação de integridade"
 
-#: IntegrityCheck.php:52
+#: IntegrityCheck.php:78
 msgid "Actual Hash"
 msgstr "Hash encontrado"
 
@@ -6064,7 +6060,7 @@ msgstr "anos de idade"
 msgid "There was a problem retrieving the requested object"
 msgstr "Ocorreu um problema ao recuperar o objeto solicitado"
 
-#: IntegrityCheck.php:39
+#: IntegrityCheck.php:65
 msgid "File Name"
 msgstr "Nome o Arquivo"
 
@@ -6111,329 +6107,329 @@ msgstr "com esta propriedade."
 msgid "with this Property..."
 msgstr "com esta propriedade..."
 
-#: Register.php:51 config_cfg.php:68
+#: Register.php:51 config_cfg.php:73
 msgid "Church Email"
 msgstr "E-mail da Igreja"
 
-#: config_cfg.php:7
+#: config_cfg.php:3
 msgid "Include only these classifications in the directory, comma seperated"
 msgstr "Inclua apenas essas classificações no diretório, separadas por vírgulas"
 
-#: config_cfg.php:8
+#: config_cfg.php:4
 msgid "These are the family role numbers designated as head of house"
 msgstr "Estes são os números papel familiar designados como chefe da casa"
 
-#: config_cfg.php:9
+#: config_cfg.php:5
 msgid "These are the family role numbers designated as spouse"
 msgstr "Estes são os números papel familiar designados como esposa"
 
-#: config_cfg.php:10
+#: config_cfg.php:6
 msgid "These are the family role numbers designated as child"
 msgstr "Estes são os números de papíes famíliares designados como filhos"
 
-#: config_cfg.php:11
+#: config_cfg.php:7
 msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
 msgstr "Tempo limite de sessão em segundos \ rDefina como zero para desativar o tempo limite da sessão."
 
-#: config_cfg.php:12
+#: config_cfg.php:8
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Consultas para as quais o usuário deve ter permissões de para acessar finanças:"
 
-#: config_cfg.php:13
+#: config_cfg.php:9
 msgid "Should only administrators have access to the CSV export system and directory report?"
 msgstr "Só os administradores terão acesso ao sistema de exportação CSV e ao relatório de diretório?"
 
-#: config_cfg.php:14
+#: config_cfg.php:10
 msgid "Default password for new users and those with reset passwords"
 msgstr "Senha padrão para novos usuários e aqueles com a senha resetada."
 
-#: config_cfg.php:15
+#: config_cfg.php:11
 msgid "Minimum length a user may set their password to"
 msgstr "O tamanho mínimo da senha de um usuário pode é"
 
-#: config_cfg.php:16
+#: config_cfg.php:12
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature"
 msgstr "Número mínimo de caracteres diferentes que uma nova senha deve ser diferente da anterior (número de caracteres alterado)\rDefina como zero para desativar esse recurso"
 
-#: config_cfg.php:17
+#: config_cfg.php:31
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Uma lista separada por vírgulas não é permitida como senha (muito óbvio)."
 
-#: config_cfg.php:18
+#: config_cfg.php:13
 msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
 msgstr "Número máximos de logins falhados antes da conta do usuário ser bloqueada.\r Uma vez que este número tenha sido alcançado, um administrador deve reabilitar a conta.\rEsta funcionalidade ajuda a proteger o sistema contra ataques automatizados de adivinhação de senha. Defina como zero para desativar esse recurso."
 
-#: config_cfg.php:19
+#: config_cfg.php:15
 msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
 msgstr "Modo de manipulação de PDF.\r1 = Salvar o arquivo de diálogo\r2 = Abrir na janela atual do navegador"
 
-#: config_cfg.php:20
+#: config_cfg.php:16
 msgid "Default City"
 msgstr "Cidade Padrão"
 
-#: config_cfg.php:21
+#: config_cfg.php:17
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Estado Padrão - Deve ter uma abreviatura de 2 letras"
 
-#: config_cfg.php:22
+#: config_cfg.php:18
 msgid "Default Country"
 msgstr "País Padrão"
 
-#: config_cfg.php:23
+#: config_cfg.php:26
 msgid "If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP."
 msgstr "Se você deseja que o ChurchCRM seja capaz de enviar e-mails. É necessário\r \n"
 "um endereço de servidor SMTP para enviar as mensagens ou do sendmail instalado em PHP."
 
-#: config_cfg.php:25
+#: config_cfg.php:20
 msgid "Default account for receiving a copy of all emails"
 msgstr "Conta padrão para receber a cópia de todos os e-mails"
 
-#: config_cfg.php:26
+#: config_cfg.php:21
 msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Endereço do Servidor SMTP (mail.server.com:25)"
 
-#: config_cfg.php:27
+#: config_cfg.php:22
 msgid "Does your SMTP server require auththentication (username/password)?"
 msgstr "O seu servidor SMTP exige autenticação? (usuário/senha)?"
 
-#: config_cfg.php:28
+#: config_cfg.php:23
 msgid "SMTP Username"
 msgstr "Usuário do SMTP"
 
-#: config_cfg.php:29
+#: config_cfg.php:24
 msgid "SMTP Password"
 msgstr "Senha do SMTP"
 
-#: config_cfg.php:32
+#: config_cfg.php:33
 #, fuzzy
 msgid "Internationalization (I18n) support"
 msgstr "Suporte a internacionalização (I18n)"
 
-#: config_cfg.php:33
+#: config_cfg.php:34
 msgid "First month of the fiscal year"
 msgstr "Primeiro mês do ano fiscal"
 
-#: config_cfg.php:34
+#: config_cfg.php:35
 msgid "Path to RPC.php, required for Lat/Lon address lookup"
 msgstr "Caminho para RPC.php, necessário para busca de endereço pelo  Lat/Long"
 
-#: config_cfg.php:35
+#: config_cfg.php:36
 msgid "User ID for rpc.geocoder.us"
 msgstr "Id de usuário para rpc.geocoder.us"
 
-#: config_cfg.php:36
+#: config_cfg.php:37
 msgid "Password for rpc.geocoder.us"
 msgstr "Senha para rpc.geocoder.us"
 
-#: config_cfg.php:38
+#: config_cfg.php:39
 msgid "Latitude of the church, used to center the Google map"
 msgstr "Latitude da igreja, usada para centralizar o mapa do Google "
 
-#: config_cfg.php:39
+#: config_cfg.php:40
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Longitude da igreja, usada para centralizar o mapa do Google"
 
-#: config_cfg.php:40
+#: config_cfg.php:41
 msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
 msgstr "Defina verdadeiro para desabilitar a entrada de endereço no Editor Pessoal. Defina falso habilitar a entrada de endereço no Editor Pessoal."
 
-#: config_cfg.php:41
+#: config_cfg.php:42
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Defina verdadeiro para desabilitar a entrada de endereço no Editor Pessoal. "
 
-#: config_cfg.php:42
+#: config_cfg.php:43
 msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
 msgstr "Defina verdadeiro para desabilitar o gerenciamento de inscrições de boletins no Editor de Família."
 
-#: config_cfg.php:43
+#: config_cfg.php:44
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
 msgstr "Defina verdadeiro para desabilitar a entrada da Data de Casamento no Editor de Família. Defina falso para habilitar a entrada da Data de Casamento no Editor de Família. "
 
-#: config_cfg.php:44
+#: config_cfg.php:45
 msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
 msgstr "Defina verdadeiro para desabilitar a entrada da Latitude e Longitude o no Editor de Família. Defina falso habilitar a entrada da Latitude e Longitude o no Editor de Família. Pesquisas continuarão a serem executadas, mas não serão mostradas."
 
-#: config_cfg.php:45
+#: config_cfg.php:46
 msgid "Set true to enable use of donation envelopes"
 msgstr "Defina verdadeiro para habilitar o uso de envelopes de doação"
 
-#: config_cfg.php:46
+#: config_cfg.php:47
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Digite no código HTML que será exibido como um cabeçalho no topo de cada página. Certifique-se de fechar suas tags! Nota: Você deve ATUALIZAR O SEU NAVEGADOR UMA SEGUNDA VEZ para ver o novo cabeçalho."
 
-#: config_cfg.php:47
+#: config_cfg.php:48
 msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.intelligentsearch.com/Hosted/User"
 msgstr "Intelligent Search Technolgy, Ltd. Nome de usuário correto para o endereço https://www.intelligentsearch.com/Hosted/User "
 
-#: config_cfg.php:48
+#: config_cfg.php:49
 msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.intelligentsearch.com/Hosted/User"
 msgstr "Intelligent Search Technolgy, Ltd. Senha correta para o endereço https://www.intelligentsearch.com/Hosted/User "
 
-#: config_cfg.php:49
+#: config_cfg.php:50
 msgid "Set true to use the Google geocoder.  Set false to use rpc.geocoder.us."
 msgstr "Defina verdadeiro para usar o Google Geocoder. Defina falso para usar o rpc.geocoder.us."
 
-#: config_cfg.php:50
+#: config_cfg.php:51
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Número de cheques para Relatório de Recibo de Depósito"
 
-#: config_cfg.php:51
+#: config_cfg.php:52
 msgid "Set true to enable use of scanned checks"
 msgstr "Defina verdadeiro para habilitar o uso de rastreio de cheques"
 
-#: config_cfg.php:52
+#: config_cfg.php:53
 msgid "Unit used to measure distance, miles or km."
 msgstr "Unidade usada para medir distância, milhas ou km."
 
-#: config_cfg.php:53
+#: config_cfg.php:54
 msgid "Time zone- see http://php.net/manual/en/timezones.php for valid choices."
 msgstr "Para Fusos Horários válidos, veja http://php.net/manual/en/timezones.php"
 
-#: config_cfg.php:54
+#: config_cfg.php:55
 msgid "Names of markers for Google Maps in order of classification"
 msgstr "Nomes dos Marcadores no Google Maps em ordem de classificação"
 
-#: config_cfg.php:56
+#: config_cfg.php:58
 msgid "Enable non-deductible payments"
 msgstr "Habilitar pagamentos não dedutíveis"
 
-#: config_cfg.php:57
+#: config_cfg.php:59
 msgid "Electronic Transaction Processor"
 msgstr "Processador de Transação Eletrônica"
 
-#: config_cfg.php:58
+#: config_cfg.php:2
 msgid "Set true to enable family self registration."
 msgstr "Defina verdadeiro para habilitar o auto-registro de família."
 
-#: config_cfg.php:59
+#: config_cfg.php:27
 msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
 msgstr "ChurchCRM foi registrado. A equipe ChurchCRM usa informações de registro para rastrear o uso. Esta informação é mantida confidencial e nunca revelada ou vendida. Se este campo for assinalado verdadeiro a opção de registro no menu administrador muda para atualizar o registro."
 
-#: config_cfg.php:60
+#: config_cfg.php:65
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Margem Esquerda (1 = 1/100 da polegada)"
 
-#: config_cfg.php:61
+#: config_cfg.php:66
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Espessura da Linha (1 = 1/100da polegada"
 
-#: config_cfg.php:64
+#: config_cfg.php:69
 msgid "Church City"
 msgstr "Cidade da Igreja"
 
-#: config_cfg.php:65
+#: config_cfg.php:70
 msgid "Church State"
 msgstr "Estado  da Igreja"
 
-#: config_cfg.php:66
+#: config_cfg.php:71
 msgid "Church Zip"
 msgstr "CEP  da Igreja"
 
-#: config_cfg.php:67
+#: config_cfg.php:72
 msgid "Church Phone"
 msgstr "Telefone  da Igreja"
 
-#: config_cfg.php:69
+#: config_cfg.php:74
 msgid "Home area code of the church"
 msgstr "Código de área  da Igreja"
 
-#: config_cfg.php:70
+#: config_cfg.php:75
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Termo para a linha superior do relatório de taxa. As datas serão acrescentados ao final desta linha."
 
-#: config_cfg.php:71
+#: config_cfg.php:76
 msgid "Verbage for bottom line of tax report."
 msgstr "Termo para a linha inferior do relatório de taxa."
 
-#: config_cfg.php:72
+#: config_cfg.php:77
 msgid "Tax Report signer"
 msgstr "Signatário do Relatório de Taxa"
 
-#: config_cfg.php:73
+#: config_cfg.php:78
 msgid "Verbage for the pledge reminder report"
 msgstr "Termo para o relatório de lembrete de promessas"
 
-#: config_cfg.php:74
+#: config_cfg.php:79
 msgid "Pledge Reminder Signer"
 msgstr "Signatário do Lembrete de Promessas"
 
-#: config_cfg.php:75
+#: config_cfg.php:80
 msgid "Verbage for the pledge reminder report - No record of a pledge"
 msgstr "Termo para o relatório de lembrete de promessas - Nenhum registro de promessa"
 
-#: config_cfg.php:76
+#: config_cfg.php:81
 msgid "Verbage for the pledge reminder report - No record of payments"
 msgstr "Termo para o relatório de lembrete de promessas - Nenhum registro de pagamentos"
 
-#: config_cfg.php:77
+#: config_cfg.php:82
 msgid "Verbage for the database information confirmation and correction report"
 msgstr "Termo para relatório de confirmação de informação de banco de dados e correção. "
 
-#: config_cfg.php:78
+#: config_cfg.php:83
 msgid "Database information confirmation and correction report signer"
 msgstr "Signatário do relatório de confirmação de informação de banco de dados e correção."
 
-#: config_cfg.php:79
+#: config_cfg.php:84
 msgid "Verbage for the pledge summary report"
 msgstr "Termo para um relatório de resumo de promessas"
 
-#: config_cfg.php:80
+#: config_cfg.php:85
 msgid "Verbage for the directory report"
 msgstr "Termo para um relatório de diretório"
 
-#: config_cfg.php:81
+#: config_cfg.php:86
 msgid "Church Letterhead path and file"
 msgstr "Caminho do Arquivo de Cabeçalho de Carta da Igreja"
 
-#: config_cfg.php:83
+#: config_cfg.php:30
 msgid "lookup user images on Gravatar when no local image is present"
 msgstr "pesquisar imagens de usuário no Gravatar quando nenhuma imagem local está presente "
 
-#: config_cfg.php:84
+#: config_cfg.php:87
 msgid "Enable Remote Backups to Cloud Services"
 msgstr "Habilitar Serviço de Backup Remoto na nuvem"
 
-#: config_cfg.php:85
+#: config_cfg.php:88
 msgid "Cloud Service Type (Supported values: WebDAV, Local)"
 msgstr "Tipo de Serviço de Nuvem (Valores Possíveis: WebDAV, Local)"
 
-#: config_cfg.php:86
+#: config_cfg.php:89
 msgid "Remote Backup Endpoint"
 msgstr "Terminal de backup remoto"
 
-#: config_cfg.php:87
+#: config_cfg.php:90
 msgid "Remote Backup Username"
 msgstr "Usuário para backup remoto"
 
-#: config_cfg.php:88
+#: config_cfg.php:91
 msgid "Remote Backup Password"
 msgstr "Senha para backup remoto"
 
-#: config_cfg.php:89
+#: config_cfg.php:92
 msgid "Interval in Hours for Automatic Remote Backups"
 msgstr "Intervalo em horas para backups automáticos remotos"
 
-#: config_cfg.php:90
+#: config_cfg.php:93
 msgid "Last Backup Timestamp"
 msgstr "Data e hora do último backup"
 
-#: config_cfg.php:91
+#: config_cfg.php:94
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Configurações de ingressos de depósito do QuickBooks"
 
-#: config_cfg.php:92
+#: config_cfg.php:95
 msgid "Enable Integrity Check"
 msgstr "Habilitar verificação de integridade"
 
-#: config_cfg.php:93
+#: config_cfg.php:96
 msgid "Interval in Hours for Integrity Check"
 msgstr "Intervalo em horas para verificação de integridade"
 
-#: config_cfg.php:94
+#: config_cfg.php:97
 msgid "Last Integrity Check Timestamp"
 msgstr "Data e hora da última verificação de integridade"
 
-#: config_cfg.php:98
+#: config_cfg.php:57
 msgid "see http://kb.mailchimp.com/accounts/management/about-api-keys"
 msgstr "veja http://kb.mailchimp.com/accounts/management/about-api-keys "
 
@@ -6603,7 +6599,7 @@ msgstr "Busca"
 msgid "Field"
 msgstr "Campo"
 
-#: queryparameters_qrp.php:13 query_qry.php:9 query_qry.php:48
+#: queryparameters_qrp.php:13 query_qry.php:14 query_qry.php:63
 msgid "Registered students"
 msgstr "Alunos Registrados"
 
@@ -6735,155 +6731,155 @@ msgstr "Escolher campo personalizado das pessoas"
 msgid "Match custom field to this value"
 msgstr "Casar campo personalizado com este valor"
 
-#: query_qry.php:2 query_qry.php:41
+#: query_qry.php:3 query_qry.php:52
 msgid "Family Member Count"
 msgstr "Contador de Membro da Família"
 
-#: query_qry.php:3 query_qry.php:42
+#: query_qry.php:4 query_qry.php:53
 msgid "Person by Age"
 msgstr "Pessoas por idade"
 
-#: query_qry.php:4 query_qry.php:43
+#: query_qry.php:5 query_qry.php:54
 msgid "Total By Gender"
 msgstr "Total por Gênero"
 
-#: query_qry.php:5 query_qry.php:44
+#: query_qry.php:6 query_qry.php:55
 msgid "Person by Role and Gender"
 msgstr "Pessoas por Papel e Gênero"
 
-#: query_qry.php:6 query_qry.php:45
+#: query_qry.php:7 query_qry.php:56
 msgid "Person by Property"
 msgstr "Pessoas por Propriedade"
 
-#: query_qry.php:7 query_qry.php:46
+#: query_qry.php:8 query_qry.php:57
 msgid "Advanced Search"
 msgstr "Busca Avançada"
 
-#: query_qry.php:8 query_qry.php:47
+#: query_qry.php:11 query_qry.php:60
 msgid "Birthdays"
 msgstr "Aniversários"
 
-#: query_qry.php:10 query_qry.php:49
+#: query_qry.php:15 query_qry.php:64
 msgid "Membership anniversaries"
 msgstr "Aniversários de membros"
 
-#: query_qry.php:11 query_qry.php:50
+#: query_qry.php:16 query_qry.php:65
 msgid "Select database users"
 msgstr "Selecionar usuários do banco de dados"
 
-#: query_qry.php:12 query_qry.php:51
+#: query_qry.php:17 query_qry.php:66
 msgid "Select all members"
 msgstr "Selecionar todos os membros"
 
-#: query_qry.php:13 query_qry.php:52
+#: query_qry.php:18 query_qry.php:67
 msgid "Volunteers"
 msgstr "Voluntários"
 
-#: query_qry.php:14 query_qry.php:53
+#: query_qry.php:19 query_qry.php:68
 msgid "Recent friends"
 msgstr "Amigos Recentes"
 
-#: query_qry.php:15 query_qry.php:54
+#: query_qry.php:20 query_qry.php:69
 msgid "Families to Canvass"
 msgstr "Famílias para visitação"
 
-#: query_qry.php:16 query_qry.php:55
+#: query_qry.php:21 query_qry.php:70
 msgid "Pledge comparison"
 msgstr "Comparação de Promessas"
 
-#: query_qry.php:17 query_qry.php:56
+#: query_qry.php:22 query_qry.php:71
 msgid "Missing pledges"
 msgstr "Promessas Perdidas"
 
-#: query_qry.php:18 query_qry.php:57
+#: query_qry.php:23 query_qry.php:72
 msgid "Credit Card People"
 msgstr "Cartão de Crédito da Pessoa"
 
-#: query_qry.php:19 query_qry.php:58
+#: query_qry.php:24 query_qry.php:73
 msgid "Family Pledge by Fiscal Year"
 msgstr "Promessas Familiares por Ano Fiscal"
 
-#: query_qry.php:20 query_qry.php:59
+#: query_qry.php:25 query_qry.php:74
 msgid "CustomSearch"
 msgstr "Busca Personalizada"
 
-#: query_qry.php:21 query_qry.php:60
+#: query_qry.php:27 query_qry.php:76
 msgid "Returns each family and the total number of people assigned to them."
 msgstr "Retornar cada família e o total de pessoas atribuídas a elas."
 
-#: query_qry.php:22 query_qry.php:61
+#: query_qry.php:28 query_qry.php:77
 msgid "Returns any person records with ages between two given ages."
 msgstr "Retornar qualquer registro de pessoas com idades entre as duas idades dadas."
 
-#: query_qry.php:23 query_qry.php:62
+#: query_qry.php:29 query_qry.php:78
 msgid "Total of records matching a given gender."
 msgstr "Total de registros combinando com um dado gênero"
 
-#: query_qry.php:24 query_qry.php:63
+#: query_qry.php:30 query_qry.php:79
 msgid "Selects person records with the family role and gender specified."
 msgstr "Selecionar registros pessoais com função familiar ou gênero especificados."
 
-#: query_qry.php:25 query_qry.php:64
+#: query_qry.php:31 query_qry.php:80
 msgid "Returns person records which are assigned the given property."
 msgstr "Selecionar registros pessoais com função familiar ou gênero especificados."
 
-#: query_qry.php:26 query_qry.php:65
+#: query_qry.php:32 query_qry.php:81
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Buscar por qualquer parte do Nome, Cidade, Estado, CEP, Telefone Residencial, e-mail ou e-mail de serviço"
 
-#: query_qry.php:27 query_qry.php:66
+#: query_qry.php:35 query_qry.php:84
 msgid "People with birthdays in a particular month"
 msgstr "Pessoas com aniversário em um mês em particular"
 
-#: query_qry.php:28 query_qry.php:67
+#: query_qry.php:38 query_qry.php:87
 msgid "Find Registered students"
 msgstr "Encontrar alunos Registrados"
 
-#: query_qry.php:29 query_qry.php:68
+#: query_qry.php:39 query_qry.php:88
 msgid "Members who joined in a particular month"
 msgstr "Membros que se juntaram em um mês particular"
 
-#: query_qry.php:30 query_qry.php:69
+#: query_qry.php:40 query_qry.php:89
 msgid "People who are registered as database users"
 msgstr "Pessoas que são registradas como usuários do banco de dados"
 
-#: query_qry.php:31 query_qry.php:70
+#: query_qry.php:41 query_qry.php:90
 msgid "People who are members"
 msgstr "Pessoas que são membros"
 
-#: query_qry.php:32 query_qry.php:71
+#: query_qry.php:42 query_qry.php:91
 msgid "Find volunteers for a particular opportunity"
 msgstr "Procurar voluntários para um oportunidade em particular"
 
-#: query_qry.php:33 query_qry.php:72
+#: query_qry.php:43 query_qry.php:92
 msgid "Friends who signed up in previous months"
 msgstr "Amigos que se inscreveram em meses anteriores"
 
-#: query_qry.php:34 query_qry.php:73
+#: query_qry.php:44 query_qry.php:93
 msgid "People in families that are ok to canvass."
 msgstr "Pessoas em famílias que aceitam visitação."
 
-#: query_qry.php:35 query_qry.php:74
+#: query_qry.php:45 query_qry.php:94
 msgid "Compare pledges between two fiscal years"
 msgstr "Comparar promessas entre dois anos fiscais"
 
-#: query_qry.php:36 query_qry.php:75
+#: query_qry.php:46 query_qry.php:95
 msgid "Find people who pledged one year but not another"
 msgstr "Encontrar pessoas que prometeram em um ano mas não no outro"
 
-#: query_qry.php:37 query_qry.php:76
+#: query_qry.php:47 query_qry.php:96
 msgid "People who are configured to pay by credit card."
 msgstr "Pessoas que configuraram para pagar pelo cartão de crédito."
 
-#: query_qry.php:38 query_qry.php:77
+#: query_qry.php:48 query_qry.php:97
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr "Resumo das promessas por nome de família por fundo por ano fiscal"
 
-#: query_qry.php:39 query_qry.php:78
+#: query_qry.php:49 query_qry.php:98
 msgid "Find volunteers for who match two specific opportunity codes"
 msgstr "Encontrar voluntários que combinam com dois códigos específicos de oportunidades"
 
-#: query_qry.php:40 query_qry.php:79
+#: query_qry.php:50 query_qry.php:99
 msgid "Find people with a custom field value"
 msgstr "Procurar pessoa com um valor de campo personalizado"
 
@@ -7151,7 +7147,7 @@ msgstr "não são permitidos."
 msgid "Name for New"
 msgstr "Nome para novo"
 
-#: config_cfg.php:95
+#: config_cfg.php:98
 msgid "Church Country"
 msgstr "Cidade da Igreja"
 
@@ -8235,27 +8231,27 @@ msgstr "Zâmbia"
 msgid "Zimbabwe"
 msgstr "Zimbábue"
 
-#: Setup.php:98
+#: Setup.php:55
 msgid "ChurchCRM – Setup"
 msgstr "ChurchCRM - Configurações"
 
-#: Setup.php:203
+#: Setup.php:160
 msgid "This server is ChurchCRM ready!"
 msgstr "Este servidor está pronto para o ChurchCRM!"
 
-#: Setup.php:209
+#: Setup.php:166
 msgid "We're still determining if this server is ready for ChurchCRM."
 msgstr "Nós ainda estamos verificando se este servidor está pronto para o ChurchCRM!"
 
-#: Setup.php:215
+#: Setup.php:172
 msgid "This server isn't quite ready for ChurchCRM."
 msgstr "Este servidor não está completamente pronto para o ChurchCRM."
 
-#: Setup.php:242
+#: Setup.php:199
 msgid "I know what I'm doing.  Install ChurchCRM Anyway"
 msgstr "Eu sei o que eu estou fazendo. Instale o ChurchCRM assim mesmo"
 
-#: Setup.php:244
+#: Setup.php:201
 msgid "In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical."
 msgstr "No caso de você desejar saber dos detalhes na essência, aqui está o que procuramos em um servidor. É tipo de condicionantes, mas mais técnico."
 
@@ -8406,7 +8402,7 @@ msgstr "Verificada na Pessoa"
 msgid "None State"
 msgstr "Nenhum Estado"
 
-#: config_cfg.php:2
+#: config_cfg.php:60
 msgid "Set debug mode\r\n"
 "This may be helpful for when you're first setting up ChurchCRM, but you should\r\n"
 "probably turn it off for maximum security otherwise.  If you are having trouble,\r\n"
@@ -8417,21 +8413,13 @@ msgstr "Isso pode ser útil para quando você estiver configurando o ChurchCRM, 
 "por favor, habilite-o para que você saiba quais são os erros. Isto é especialmente\r\n"
 "importante se você precisar relatar um problema nos fóruns de ajuda."
 
-#: config_cfg.php:24
+#: config_cfg.php:19
 msgid "The method for sending email. Either \\\"smtp\\\" or \\\"sendmail\\\""
 msgstr "O método de envio de e-mails. Tanto \\\"smtp\\\" ou \\\"sendmail\\\" "
 
-#: config_cfg.php:30
+#: config_cfg.php:28
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
 msgstr "Informação de pessoa indisponível herdada da família atribuída para exibição?\rEsta opção faz com que determinadas informações do registro familiar atribuído a uma pessoa sejam exibidas SE a informação correspondente NÃO tiver sido inserida para essa pessoa. "
-
-#: config_cfg.php:37
-msgid "Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key"
-msgstr "A API do Google Map requer uma chave única obtida em https://developers.google.com/maps/documentation/javascript/get-api-key "
-
-#: config_cfg.php:82
-msgid "Church Checking Account Number"
-msgstr "Número da Conta de Verificação da Igreja"
 
 #: ChurchCRM/Service/SystemService.php:75
 msgid "Backup archive does not contain a database"
@@ -8453,15 +8441,15 @@ msgstr "Faltam Coordenadas ("
 msgid "Family Coordinates Data for Some Families"
 msgstr "Dados de coordenadas para algumas famílias"
 
-#: config_cfg.php:55
+#: config_cfg.php:56
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Faça com que o usuário digite CEP/ Códigos Postais com MAIÚSCULAS ao salvar no banco de dados."
 
-#: config_cfg.php:96
+#: config_cfg.php:99
 msgid "Used to end a letter before Signer"
 msgstr "Usado para terminar uma carta, antes da assinatura"
 
-#: config_cfg.php:97
+#: config_cfg.php:100
 msgid "Google Analytics Tracking Code"
 msgstr "Código de rastreio do Google Analytics"
 
@@ -8561,4 +8549,85 @@ msgstr "O arquivo selecionado excede o tamanho máximo para upload deste servido
 #: Setup.php:9
 msgid "One or more required setup files are missing.  Please verify you downloaded the correct ChurchCRM package"
 msgstr "Um ou mais arquivos de configuração necessários não foram encontrados. Por favor verifique se você baixou o pacote correto do ChurchCRM"
+
+#: ChurchCRM/tasks/PrerequisiteCheckTask.php:28
+#: ChurchCRM/tasks/PrerequisiteCheckTask.php:33 IntegrityCheck.php:37
+msgid "Unmet Application Prerequisites"
+msgstr "Pré-requisitos da aplicação não satisfeitos"
+
+#: IntegrityCheck.php:29
+msgid "All Application Prerequisites Satisfied"
+msgstr "Todos os pré-requisitos da aplicação foram satisfeitos"
+
+#: IntegrityCheck.php:30
+msgid "All components that ChurchCRM relies upon are present and correctly configured on this server"
+msgstr "Todos os componentes nos quais o ChurchCRM se baseia estão presentes e configurados corretamente neste servidor"
+
+#: IntegrityCheck.php:38
+msgid "Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior."
+msgstr "Alguns componentes sobre nos quais o ChurchCRM se baseia estão ausentes ou configurados incorretamente neste servidor. A aplicação pode continuar a funcionar, mas pode causar comportamentos inesperados."
+
+#: IntegrityCheck.php:43
+msgid "Failed"
+msgstr "Falhou"
+
+#: IntegrityCheck.php:98
+msgid "The previous integrity check passed.  All system file hashes match the expected values."
+msgstr "A verificação de integridade anterior passou. Todos os hashes de arquivos de sistema correspondem aos valores esperados."
+
+#: config_cfg.php:14
+msgid "Show family member firstnames in Family Listing?"
+msgstr "Mostrar os primeiros nomes dos membros na Listagem da Família?"
+
+#: config_cfg.php:25
+msgid "Word Wrap point. Default for most email programs is 72"
+msgstr "Ponto de quebra de linha. O padrão para a maioria dos programas de e-mail é 72"
+
+#: config_cfg.php:29
+msgid "Use vCard 2.1 rather than vCard 3.0 standard."
+msgstr "Usar padrão vCard 2.1 no lugar de vCard 3.0"
+
+#: config_cfg.php:38
+msgid "Google map API requires a unique key from http://maps.google.com/apis/maps/signup.html"
+msgstr "A API do Google Map requer uma chave única que pode ser obtida em http://maps.google.com/apis/maps/signup.html "
+
+#: query_qry.php:2 query_qry.php:51
+msgid "Person Count"
+msgstr "Contagem de Pessoas"
+
+#: query_qry.php:9 query_qry.php:58
+msgid "Find Teachers"
+msgstr "Encontrar Professores"
+
+#: query_qry.php:10 query_qry.php:59
+msgid "Find Students"
+msgstr "Encontrar Alunos"
+
+#: query_qry.php:12 query_qry.php:61
+msgid "Class Students"
+msgstr "Alunos"
+
+#: query_qry.php:13 query_qry.php:62
+msgid "Class Teachers"
+msgstr "Professores"
+
+#: query_qry.php:26 query_qry.php:75
+msgid "Returns the total number of people in the database."
+msgstr "Retorna o número total de pessoas no banco de dados"
+
+#: query_qry.php:33 query_qry.php:82
+msgid "Find all people assigned to Sunday school classes as teachers"
+msgstr "Encontrar todas as pessoas atribuídas como professores de classe da Escola Bíblica Dominical"
+
+#: query_qry.php:34 query_qry.php:83
+msgid "Find all people assigned to Sunday school classes as students"
+msgstr "Encontrar todas as pessoas atribuídas como alunos de classes da Escola Bíblica Dominical"
+
+#: query_qry.php:36 query_qry.php:85
+msgid "Find students for a particular class"
+msgstr "Encontrar alunos de uma classe em particular"
+
+#: query_qry.php:37 query_qry.php:86
+msgid "Find teachers for a particular class"
+msgstr "Encontrar professores de uma classe em particular"
 
