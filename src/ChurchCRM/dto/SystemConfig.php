@@ -13,6 +13,38 @@ class SystemConfig
   private static $configs;
   private static $categories;
   
+  private static function getSupportedLocales()
+  {
+    $languages = [
+        "Choices" => [
+            gettext("English - United States:en_US"),
+            gettext("English - Canada:en_CA"),
+            gettext("English - Australia:en_AU"),
+            gettext("English - Great Britain:en_GB"),
+            gettext("German - Germany:de_DE"),
+            gettext("Spanish - Spain:es_ES"),
+            gettext("French - France:fr_FR"),
+            gettext("Hungarian:hu_HU"),
+            gettext("Italian - Italy:it_IT"),
+            gettext("Norwegian:nb_NO"),
+            gettext("Dutch - Netherlands:nl_NL"),
+            gettext("Polish:pl_PL"),
+            gettext("Portuguese - Brazil:pt_BR"),
+            gettext("Romanian - Romania:ro_RO"),
+            gettext("Russian:ru_RU"),
+            gettext("Sami (Northern) (Sweden):se_SE"),
+            gettext("Albanian:sq_AL"),
+            gettext("Swedish - Sweden:sv_SE"),
+            gettext("Vietnamese:vi_VN"),
+            gettext("Chinese - China:zh_CN"),
+            gettext("Chinese - Taiwan:zh_TW")
+        ]
+    ];
+            
+    return $languages;
+
+  }
+  
   private static function buildConfigs()
   {
     return array(
@@ -34,7 +66,7 @@ class SystemConfig
         "sDefaultState" => new ConfigItem(22, "sDefaultState", "text", "", gettext("Default State - Must be 2-letter abbreviation!")),
         "sDefaultCountry" => new ConfigItem(23, "sDefaultCountry", "country", "United States", gettext("Default Country")),
         "bEmailSend" => new ConfigItem(24, "bEmailSend", "boolean", "", gettext("If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP.")),
-        "sSendType" => new ConfigItem(25, "sSendType", "choice", "smtp", gettext("The method for sending email. Either 'smtp' or 'sendmail'"), '{"Choices":["smtp","SendMail"]}'),
+        "sSendType" => new ConfigItem(25, "sSendType", "choice", "smtp", gettext("The method for sending email. Either 'smtp' or 'sendmail'"), '{"Choices":["'.gettext("smtp").'","'.gettext("SendMail").'"]}'),
         "sToEmailAddress" => new ConfigItem(26, "sToEmailAddress", "text", "", gettext("Default account for receiving a copy of all emails")),
         "sSMTPHost" => new ConfigItem(27, "sSMTPHost", "text", "", gettext("SMTP Server Address (mail.server.com:25)")),
         "sSMTPAuth" => new ConfigItem(28, "sSMTPAuth", "boolean", "0", gettext("Does your SMTP server require auththentication (username/password)?")),
@@ -44,7 +76,7 @@ class SystemConfig
         "sGZIPname" => new ConfigItem(36, "sGZIPname", "text", "gzip", ""),
         "sZIPname" => new ConfigItem(37, "sZIPname", "text", "zip", ""),
         "sPGPname" => new ConfigItem(38, "sPGPname", "text", "gpg", ""),
-        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), '{"Choices":["English - United States:en_US","English - Canada:en_CA", "English - Australia:en_AU", "English - Great Britain:en_GB", "German - Germany:de_DE", "Spanish - Spain:es_ES", "French - France:fr_FR", "Hungarian:hu_HU", "Italian - Italy:it_IT", "Norwegian:nb_NO", "Dutch - Netherlands:nl_NL", "Polish:pl_PL", "Portuguese - Brazil:pt_BR", "Romanian - Romania:ro_RO", "Russian:ru_RU", "Sami (Northern) (Sweden):se_SE", "Albanian:sq_AL", "Swedish - Sweden:sv_SE", "Vietnamese:vi_VN", "Chinese - China:zh_CN", "Chinese - Taiwan:zh_TW"]}'),
+        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), json_encode(SystemConfig::getSupportedLocales())),
         "iFYMonth" => new ConfigItem(40, "iFYMonth", "number", "1", gettext("First month of the fiscal year")),
         "sXML_RPC_PATH" => new ConfigItem(41, "sXML_RPC_PATH", "text", "XML/RPC.php", gettext("Path to RPC.php, required for Lat/Lon address lookup")),
         "sGeocoderID" => new ConfigItem(42, "sGeocoderID", "text", "", gettext("User ID for rpc.geocoder.us")),
@@ -64,12 +96,12 @@ class SystemConfig
         "bUseGoogleGeocode" => new ConfigItem(56, "bUseGoogleGeocode", "boolean", "1", gettext("Set true to use the Google geocoder.  Set false to use rpc.geocoder.us.")),
         "iChecksPerDepositForm" => new ConfigItem(57, "iChecksPerDepositForm", "number", "14", gettext("Number of checks for Deposit Slip Report")),
         "bUseScannedChecks" => new ConfigItem(58, "bUseScannedChecks", "boolean", "0", gettext("Set true to enable use of scanned checks")),
-        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), '{"Choices":["miles","kilometers"]}'),
+        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), '{"Choices":["'.gettext("miles").'","'.gettext("kilometers").'"]}'),
         "sTimeZone" => new ConfigItem(65, "sTimeZone", "text", "America/New_York", gettext("Time zone- see http://php.net/manual/en/timezones.php for valid choices.")),
         "sGMapIcons" => new ConfigItem(66, "sGMapIcons","text", "green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", "text", "red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", gettext("Names of markers for Google Maps in order of classification")),
         "cfgForceUppercaseZip" => new ConfigItem(67, "cfgForceUppercaseZip", "boolean", "0", gettext("Make user-entered zip/postcodes UPPERCASE when saving to the database.")),
         "bEnableNonDeductible" => new ConfigItem(72, "bEnableNonDeductible", "boolean", "0", gettext("Enable non-deductible payments")),
-        "sElectronicTransactionProcessor" => new ConfigItem(73, "sElectronicTransactionProcessor", "choice", "Vanco", gettext("Electronic Transaction Processor"), '{"Choices":["Vanco","Authorize.NET"]}'),
+        "sElectronicTransactionProcessor" => new ConfigItem(73, "sElectronicTransactionProcessor", "choice", "Vanco", gettext("Electronic Transaction Processor"), '{"Choices":["'.gettext("Vanco").'","'.gettext("Authorize.NET").'"]}'),
         "sEnableSelfRegistration" => new ConfigItem(80, "sEnableSelfRegistration", "boolean", "0", gettext("Set true to enable family self registration.")),
         "sPhoneFormat" => new ConfigItem(100, "sPhoneFormat", "text", "(999) 999-9999", ""),
         "sPhoneFormatWithExt" => new ConfigItem(101, "sPhoneFormatWithExt", "text", "(999) 999-9999 x99999", ""),
@@ -113,7 +145,7 @@ class SystemConfig
         "sChurchChkAcctNum" => new ConfigItem(1034, "sChurchChkAcctNum", "text", "", gettext("Church Checking Account Number")),
         "sEnableGravatarPhotos" => new ConfigItem(1035, "sEnableGravatarPhotos", "boolean", "0", gettext("lookup user images on Gravatar when no local image is present")),
         "sEnableExternalBackupTarget" => new ConfigItem(1036, "sEnableExternalBackupTarget", "boolean", "0", gettext("Enable Remote Backups to Cloud Services")),
-        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), '{"Choices":["WebDAV","Local"]}'),
+        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), '{"Choices":["'.gettext("WebDAV").'","'.gettext("Local").'"]}'),
         "sExternalBackupEndpoint" => new ConfigItem(1038, "sExternalBackupEndpoint", "text", "", gettext("Remote Backup Endpoint")),
         "sExternalBackupUsername" => new ConfigItem(1039, "sExternalBackupUsername", "text", "", gettext("Remote Backup Username")),
         "sExternalBackupPassword" => new ConfigItem(1040, "sExternalBackupPassword", "text", "", gettext("Remote Backup Password")),
@@ -131,7 +163,6 @@ class SystemConfig
       );
   }
 
-  
   private static function buildCategories()
   {
     return array (
