@@ -28,10 +28,10 @@ msgstr "Personal Mobile"
 msgid "Check"
 msgstr "Cheque"
 
-#: Reports/DirectoryReport.php:287 Reports/GroupReport.php:132
 #: ChurchCRM/Reports/PDF_Directory.php:305
 #: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:457
+#: ChurchCRM/Reports/PDF_Directory.php:457 Reports/DirectoryReport.php:287
+#: Reports/GroupReport.php:132
 msgid "Cell"
 msgstr "Mobile"
 

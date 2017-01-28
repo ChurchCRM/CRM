@@ -35,7 +35,7 @@ msgstr "Cheque"
 msgid "Scan check"
 msgstr "Scan cheque"
 
-#: Reports/ConfirmReport.php:134 Reports/ConfirmReportEmail.php:134
+#: Reports/ConfirmReportEmail.php:134 Reports/ConfirmReport.php:134
 msgid "City, State, Zip"
 msgstr "City, Province, Postal Code"
 

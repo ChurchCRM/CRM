@@ -48,20 +48,20 @@ msgstr "Scan cheque"
 msgid "Fall"
 msgstr "Autumn"
 
-#: Reports/ConfirmReport.php:134 Reports/ConfirmReportEmail.php:134
+#: Reports/ConfirmReportEmail.php:134 Reports/ConfirmReport.php:134
 msgid "City, State, Zip"
 msgstr "City, Postcode"
 
-#: Reports/CanvassReports.php:244 Reports/ConfirmReportEmail.php:192
-#: Reports/ConfirmReportEmail.php:210 GroupReports.php:130
+#: GroupReports.php:130 Reports/CanvassReports.php:244
+#: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Mobile Phone"
 
-#: Reports/DirectoryReport.php:287 Reports/GroupReport.php:132
 #: ChurchCRM/Reports/PDF_Directory.php:305
 #: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:457
+#: ChurchCRM/Reports/PDF_Directory.php:457 Reports/DirectoryReport.php:287
+#: Reports/GroupReport.php:132
 msgid "Cell"
 msgstr "Mobile"
 
