@@ -18,16 +18,17 @@
     },
     "homepage": "http://www.churchcrm.io",
     "devDependencies": {
-        "grunt": "~0.4.1",
-        "grunt-curl": "~2.2.0",
-        "grunt-contrib-concat": "^1.0.1",
-        "grunt-contrib-clean": "^1.0.0",
-        "grunt-contrib-copy": "^1.0.0",
-        "grunt-contrib-compress": "^1.0.3",
-        "grunt-contrib-sass": "^1.0.0",
-        "grunt-contrib-rename": "^0.0.3",
+        "grunt": "1.0.1",
+        "grunt-curl": "2.2.0",
+        "grunt-contrib-concat": "1.0.1",
+        "grunt-contrib-clean": "1.0.0",
+        "grunt-contrib-copy": "1.0.0",
+        "grunt-contrib-compress": "1.4.1",
+        "grunt-contrib-sass": "1.0.0",
+        "grunt-contrib-rename": "0.0.3",
         "node-sha1": "1.0.1",
-        "grunt-poeditor-ab": "^0.1.9",
+        "grunt-poeditor-ab": "0.1.9",
+        "github-release-notes": "0.5.0",
         "grunt-github-release-notes": "0.4.0"
     },
     "dependencies": {
@@ -43,7 +44,7 @@
         "locale-download": "grunt updateFromPOeditor",
         "package": "grunt generateSignatures && grunt compress",
         "demosite": "scripts/demosite.sh",
-        "changelogs": "scripts/gen-changelogs.sh",
+        "changelogs-gen": "grunt gren",
         "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build "
     }
 }
