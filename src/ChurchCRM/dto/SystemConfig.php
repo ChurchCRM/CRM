@@ -134,15 +134,16 @@ class SystemConfig
   private static function buildCategories()
   {
     return array (
-      gettext('Church Information') =>["nChurchLatitude","nChurchLongitude","sTimeZone","sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchPhone","sChurchEmail","sHomeAreaCode","sChurchCountry"],
-      gettext('User setup') => ["sSessionTimeout","sDefault_Pass","sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sDisallowedPasswords"],
-      gettext('Email Setup')  => ["sSendType","sToEmailAddress","sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass","bEmailSend","mailChimpApiKey"],
-      gettext('Member Setup')  => ["sEnableSelfRegistration","sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","sEnableGravatarPhotos","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip"],
-      gettext('System Settings')  => ["bCSVAdminOnly","bRegistered","sGZIPname","sZIPname","sPGPname","sXML_RPC_PATH","sHeader","debug","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword","sExternalBackupAutoInterval","sLastBackupTimeStamp","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
-      gettext('Map Settings')  => ["sGeocoderID","sGeocoderPW","sGoogleMapKey","sISTusername","sISTpassword","bUseGoogleGeocode","sGMapIcons"],
-      gettext('Report Settings')  => ["leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3","sQBDTSettings","sConfirmSincerely"],
+      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","nChurchLatitude","nChurchLongitude"],
+      gettext('User setup') => ["sDefault_Pass","sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords"],
+      gettext('Email Setup')  => ["bEmailSend","sSendType","sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass","sToEmailAddress","mailChimpApiKey"],
+      gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip","sEnableGravatarPhotos","sEnableSelfRegistration"],
+      gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","debug","bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
+      gettext('Map Settings')  => ["sGoogleMapKey","bUseGoogleGeocode","sGMapIcons","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
+      gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort"],
-      gettext('Other Settings')  => ["aFinanceQueries","iPDFOutputType","iFYMonth","bUseDonationEnvelopes","iChecksPerDepositForm","bUseScannedChecks","bEnableNonDeductible","sElectronicTransactionProcessor","sEnableIntegrityCheck","googleTrackingID"]
+      gettext('Financial Settings') => ["iChecksPerDepositForm","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
+      gettext('Other Settings')  => ["iPDFOutputType","googleTrackingID"]
     );
   }
   
@@ -201,11 +202,13 @@ class SystemConfig
 
     public static function setValueById($Id, $value)
     {
-        $config = self::getRawConfigById($Id);
-        if (!is_null($config)) {
-            $config->setValue($value);
-            $config->save();
+      foreach (self::$configs as $configItem)
+      {
+        if ($configItem->getId() == $Id)
+        {
+          $configItem->setValue($value);
         }
+      }
     }
 
    

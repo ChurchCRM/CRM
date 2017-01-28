@@ -50,15 +50,30 @@ class ConfigItem
   
   public function setValue($value)
   {
-    if ( ! isset ($this->dbConfigItem) )
+    if ( $value == $this->getDefault() )
     {
-      $this->dbConfigItem = new Config();
-      $this->dbConfigItem->setId($this->getId());
-      $this->dbConfigItem->setName($this->getName());
+      //if the value is being set to the default value
+      if ( isset ($this->dbConfigItem) ) //and the item exists
+      {
+        //delete the item
+        $this->dbConfigItem->delete();
+      }
     }
-    $this->dbConfigItem->setValue($value);
-    $this->dbConfigItem->save();
-    $this->value=$value;
+    else
+    {
+      //if the value is being set to a non-default value
+      if ( ! isset ($this->dbConfigItem) )
+      {
+        //create the item if it doesnt exist
+        $this->dbConfigItem = new Config();
+        $this->dbConfigItem->setId($this->getId());
+        $this->dbConfigItem->setName($this->getName());
+      }
+      //set the values, and seve it
+      $this->dbConfigItem->setValue($value);
+      $this->dbConfigItem->save();
+      $this->value=$value;
+    }
   }
   
   public function getDefault()
