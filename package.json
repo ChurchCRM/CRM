@@ -34,7 +34,7 @@
         "ionicons": "2.0.1",
         "font-awesome": "4.7.0",
         "fullcalendar": "3.0.1",
-        "jquery-photo-uploader": "^1.0.4",
+        "jquery-photo-uploader": "^1.0.6",
         "initial-js": "~0.3.4"
     },
     "scripts": {

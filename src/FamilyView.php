@@ -976,6 +976,8 @@ $(document).ready( function() {
   window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
     url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
     maxPhotoSize: window.CRM.maxUploadSize,
+    photoHeight: 400,
+    photoWidth: 400,
     done: function(e) {
       location.reload();
     }

@@ -946,6 +946,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   window.CRM.photoUploader =  $("#photoUploader").PhotoUploader({
     url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
     maxPhotoSize: window.CRM.maxUploadSize,
+    photoHeight: 400,
+    photoWidth: 400,
     done: function(e) {
       window.location.reload();
     }
