@@ -33,7 +33,7 @@ class UpdateFamilyCoordinatesTask
 
     public function getTitle()
     {
-        return gettext('Missing Coordinates' . " (" . $this->count . ")");
+        return gettext('Missing Coordinates') . " (" . $this->count . ")";
     }
 
     public function getDesc()

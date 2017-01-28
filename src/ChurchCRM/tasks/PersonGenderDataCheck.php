@@ -33,7 +33,7 @@ class PersonGenderDataCheck implements iTask
 
     public function getTitle()
     {
-        return gettext('Missing Gender Data' . " (" . $this->count . ")");
+        return gettext('Missing Gender Data') . " (" . $this->count . ")";
     }
 
     public function getDesc()
