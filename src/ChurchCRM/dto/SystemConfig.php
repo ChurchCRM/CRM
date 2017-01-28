@@ -113,7 +113,7 @@ class SystemConfig
         "sChurchChkAcctNum" => new ConfigItem(1034, "sChurchChkAcctNum", "text", "", "Church Checking Account Number"),
         "sEnableGravatarPhotos" => new ConfigItem(1035, "sEnableGravatarPhotos", "boolean", "0", "lookup user images on Gravatar when no local image is present"),
         "sEnableExternalBackupTarget" => new ConfigItem(1036, "sEnableExternalBackupTarget", "boolean", "0", "Enable Remote Backups to Cloud Services"),
-        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", "Cloud Service Type (Supported values: WebDAV, Local)", "Step5", '{"Choices":["WebDAV","Local"]}'),
+        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", "Cloud Service Type (Supported values: WebDAV, Local)", '{"Choices":["WebDAV","Local"]}'),
         "sExternalBackupEndpoint" => new ConfigItem(1038, "sExternalBackupEndpoint", "text", "", "Remote Backup Endpoint"),
         "sExternalBackupUsername" => new ConfigItem(1039, "sExternalBackupUsername", "text", "", "Remote Backup Username"),
         "sExternalBackupPassword" => new ConfigItem(1040, "sExternalBackupPassword", "text", "", "Remote Backup Password"),
@@ -126,7 +126,8 @@ class SystemConfig
         "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "country", "", "Church Country"),
         "sConfirmSincerely" => new ConfigItem(1048, "sConfirmSincerely", "text", "Sincerely", "Used to end a letter before Signer"),
         "googleTrackingID" => new ConfigItem(1050, "googleTrackingID", "text", "", "Google Analytics Tracking Code"),
-        "mailChimpApiKey" => new ConfigItem(2000, "mailChimpApiKey", "text", "", "see http://kb.mailchimp.com/accounts/management/about-api-keys")
+        "mailChimpApiKey" => new ConfigItem(2000, "mailChimpApiKey", "text", "", "see http://kb.mailchimp.com/accounts/management/about-api-keys"),
+        "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT","Deposit ticket type.  QBDT - Quickbooks", '{"Choices":["QBDT"]}')
       );
   }
 
@@ -142,7 +143,7 @@ class SystemConfig
       gettext('Map Settings')  => ["sGoogleMapKey","bUseGoogleGeocode","sGMapIcons","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort"],
-      gettext('Financial Settings') => ["iChecksPerDepositForm","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
+      gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('Other Settings')  => ["iPDFOutputType","googleTrackingID"]
     );
   }
