@@ -487,35 +487,4 @@ class SystemService
       $factor = floor((strlen($bytes) - 1) / 3);
       return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
     }
-    
-    // Returns a file size limit in bytes based on the PHP upload_max_filesize
-    // and post_max_size
-    public function getMaxUploadFileSize() {
-      //select maximum upload size
-      $max_upload = $this->parse_size(ini_get('upload_max_filesize'));
-      //select post limit
-      $max_post = $this->parse_size(ini_get('post_max_size'));
-      //select memory limit
-      $memory_limit = $this->parse_size(ini_get('memory_limit'));
-      // return the smallest of them, this defines the real limit
-      return $this->human_filesize(min($max_upload, $max_post, $memory_limit));
-    }
-
-    private function parse_size($size) {
-      $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
-      $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
-      if ($unit) {
-        // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
-        return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
-      }
-      else {
-        return round($size);
-      }
-    }
-    
-    function human_filesize($bytes, $decimals = 2) {
-      $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
-      $factor = floor((strlen($bytes) - 1) / 3);
-      return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
-    }
 }
