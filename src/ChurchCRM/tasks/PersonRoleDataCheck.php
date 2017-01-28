@@ -39,7 +39,7 @@ class PersonRoleDataCheck implements iTask
 
     public function getDesc()
     {
-        return gettext("Missing Classification Data for Some People");
+        return gettext("Missing Role Data for Some People");
     }
 
 }
