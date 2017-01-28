@@ -99,7 +99,9 @@
         "versions": [
           "2.5.0"
         ],
-        "scripts":[],
+        "scripts":[
+          "/mysql/upgrade/2.6.0-configs.sql"
+        ],
         "dbVersion": "2.6.0"
     }
 }
