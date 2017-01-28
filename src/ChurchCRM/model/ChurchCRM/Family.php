@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Base\Family as BaseFamily;
 use Propel\Runtime\Connection\ConnectionInterface;
-use ChurchCRM\util\PhotoUtils;
 use ChurchCRM\dto\Photo;
 
 /**

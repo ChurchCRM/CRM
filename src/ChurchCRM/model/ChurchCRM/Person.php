@@ -5,7 +5,6 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\util\PhotoUtils;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 
