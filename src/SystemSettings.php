@@ -124,7 +124,7 @@ require 'Include/Header.php';
     ?>
               <li class="<?php if ($category == 'Church Information') {
         echo 'active';
-    } ?>"><a href="#<?= str_replace(" ",'',$category) ?>" data-toggle="tab"
+    } ?>"><a href="#<?= str_replace(" ", '', $category) ?>" data-toggle="tab"
                                                                           aria-expanded="false"><?= $category ?></a>
               </li>
             <?php
@@ -136,10 +136,11 @@ require 'Include/Header.php';
            <?php
             // Build Category Pages
             foreach (SystemConfig::getCategories() as  $category=>$settings) {
-              
-          ?>
+                ?>
          
-            <div class="tab-pane <?php if ($category == 'Church Information') { echo 'active';} ?>" id="<?= str_replace(" ",'',$category) ?>">
+            <div class="tab-pane <?php if ($category == 'Church Information') {
+                    echo 'active';
+                } ?>" id="<?= str_replace(" ", '', $category) ?>">
               <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext('Variable name') ?></th>
@@ -147,9 +148,8 @@ require 'Include/Header.php';
                   <th><?= gettext('Default Value')?></th>
                 </tr>
                 <?php 
-                  foreach ($settings as $settingName)
-                  {
-                    $setting = SystemConfig::getConfigItem($settingName)
+                  foreach ($settings as $settingName) {
+                      $setting = SystemConfig::getConfigItem($settingName)
                 ?>
                     <tr>
                       <td><?= $setting->getName() ?></td>
@@ -157,7 +157,7 @@ require 'Include/Header.php';
                       <td>
                         <!--  Current Value -->
                         <?php if ($setting->getName() == 'sTimeZone') {
-                            ?>
+                    ?>
                           <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
                             <?php
                             foreach (timezone_identifiers_list() as $timeZone) {
@@ -166,8 +166,8 @@ require 'Include/Header.php';
                           </select>
                         <?php
 
-                        } elseif ($setting->getType() == 'country') {
-                            ?>
+                } elseif ($setting->getType() == 'country') {
+                    ?>
                           <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
                             <?php
                             foreach (Countries::getNames() as $country) {
@@ -176,8 +176,8 @@ require 'Include/Header.php';
                           </select>
                         <?php
 
-                        } elseif ($setting->getType() == 'choice') {
-                            ?>
+                } elseif ($setting->getType() == 'choice') {
+                    ?>
                           <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
                             <?php
                             foreach (json_decode($setting->getData())->Choices as $choice) {
@@ -194,75 +194,76 @@ require 'Include/Header.php';
                           </select>
                         <?php
 
-                        } elseif ($setting->getType() == 'text') {
-                            ?>
+                } elseif ($setting->getType() == 'text') {
+                    ?>
                           <input type=text size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]'
                                  value='<?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?>' class="form-control">
                         <?php
 
-                        } elseif ($setting->getType() == 'textarea') {
-                            ?>
+                } elseif ($setting->getType() == 'textarea') {
+                    ?>
                           <textarea rows=4 cols=40 name='new_value[<?= $setting->getId() ?>]'
                                     class="form-control"><?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?></textarea>
                         <?php
 
-                        } elseif ($setting->getType() == 'number' || $setting->getType() == 'date') {
-                            ?>
+                } elseif ($setting->getType() == 'number' || $setting->getType() == 'date') {
+                    ?>
                           <input type=text size=40 maxlength=15 name='new_value[<?= $setting->getId() ?>]' value='<?= $setting->getValue() ?>'
                                  class="form-control">
                         <?php
 
-                        } elseif ($setting->getType() == 'boolean') {
-                            if ($setting->getValue()) {
-                                $sel1 = '';
-                                $sel2 = 'SELECTED';
-                            } else {
-                                $sel1 = 'SELECTED';
-                                $sel2 = '';
-                            } ?>
+                } elseif ($setting->getType() == 'boolean') {
+                    if ($setting->getValue()) {
+                        $sel1 = '';
+                        $sel2 = 'SELECTED';
+                    } else {
+                        $sel1 = 'SELECTED';
+                        $sel2 = '';
+                    } ?>
                           <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
                             <option value='' <?= $sel1 ?>><?= gettext('False')?>
                             <option value='1' <?= $sel2 ?>><?= gettext('True')?>
                           </select>
                         <?php
 
-                        } elseif ($setting->getType() == 'json') {
-                            ?>
+                } elseif ($setting->getType() == 'json') {
+                    ?>
                           <input type="hidden" name='new_value[<?= $setting->getId() ?>]' value='<?= $setting->getValue() ?>'>
                           <button class="btn-primary jsonSettingsEdit" id="set_value<?= $setting->getId() ?>"
                                   data-cfgid="<?= $setting->getId() ?>"><?= gettext('Edit Settings')?>
                           </button>
                         <?php
 
-                        } ?>
+                } ?>
                       </td>
                       <?php
                       // Default Value
                       $display_default = $setting->getDefault();
-                        if ($setting->getType() == 'boolean') {
-                            if ($setting->getDefault()) {
-                                $display_default = 'True';
-                            } else {
-                                $display_default = 'False';
-                            }
-                        } ?>
+                      if ($setting->getType() == 'boolean') {
+                          if ($setting->getDefault()) {
+                              $display_default = 'True';
+                          } else {
+                              $display_default = 'False';
+                          }
+                      } ?>
                       <td>
                         <?php if ($setting->getTooltip() != '') {
-                            ?>
+                          ?>
                           <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="<?= gettext($setting->getTooltip()) ?>"></i>
                         <?php
 
-                        } ?>
+                      } ?>
                         <?= $display_default ?>
                       </td>
                     </tr>
                   <?php
-                  }
-                  ?>
+
+                  } ?>
               </table>
             </div>
           
           <?php
+
             }
             ?>
           </div>
