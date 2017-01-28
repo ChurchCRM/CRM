@@ -92,7 +92,7 @@ if (isset($_POST['save'])) {
 }
 
 if (isset($_GET['saved'])) {
-  $sGlobalMessage = gettext('Setting saved');
+    $sGlobalMessage = gettext('Setting saved');
 }
 
 require 'Include/Header.php';
