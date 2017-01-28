@@ -31,21 +31,21 @@ msgstr "确认删除自动付款"
 msgid "Delete"
 msgstr "删除"
 
-#: Register.php:59 ReminderReport.php:58 SettingsIndividual.php:120
-#: SettingsIndividual.php:166 SettingsUser.php:108 SettingsUser.php:168
-#: sundayschool/SundaySchoolDashboard.php:236
+#: SettingsIndividual.php:120 SettingsIndividual.php:166 SettingsUser.php:108
+#: SettingsUser.php:168 sundayschool/SundaySchoolDashboard.php:236
 #: sundayschool/SundaySchoolReports.php:227 TaxReport.php:53 UserDelete.php:67
 #: UserEditor.php:470 UserEditor.php:568 WhyCameEditor.php:102
 #: AutoPaymentDelete.php:66 AutoPaymentEditor.php:581 BatchWinnerEntry.php:114
 #: CanvassEditor.php:160 Checkin.php:187 Checkin.php:288 Checkin.php:340
 #: DirectoryReports.php:287 DonatedItemEditor.php:176 EventNames.php:233
-#: external/templates/verify/verify-family-info.php:123 FamilyEditor.php:1133
+#: external/templates/verify/verify-family-info.php:130 FamilyEditor.php:1133
 #: FamilyView.php:910 FinancialReports.php:70 FundRaiserEditor.php:145
 #: GroupPropsEditor.php:171 GroupReports.php:85 GroupReports.php:155
 #: LettersAndLabels.php:72 ManageEnvelopes.php:139 MemberRoleChange.php:121
 #: MemberRoleChange.php:123 NoteDelete.php:70 NoteEditor.php:138
 #: PersonEditor.php:1152 PersonView.php:912 PledgeDelete.php:56
-#: PropertyEditor.php:171 PropertyTypeEditor.php:116
+#: PropertyEditor.php:171 PropertyTypeEditor.php:116 Register.php:59
+#: ReminderReport.php:58
 msgid "Cancel"
 msgstr "取消"
 
@@ -100,25 +100,24 @@ msgstr "无"
 msgid "inactive"
 msgstr "待用"
 
-#: Register.php:47 AutoPaymentEditor.php:698 CartToFamily.php:244
-#: CSVExport.php:115 CSVImport.php:221 DirectoryReports.php:252
+#: AutoPaymentEditor.php:698 CartToFamily.php:244 CSVExport.php:115
+#: CSVImport.php:221 DirectoryReports.php:252
 #: external/templates/registration/family-register.php:31 FamilyEditor.php:685
-#: FamilyList.php:28 GeoPage.php:337 PersonEditor.php:831
+#: FamilyList.php:28 GeoPage.php:337 PersonEditor.php:831 Register.php:47
 #: queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "城市"
 
-#: Register.php:48 AutoPaymentEditor.php:703 CartToFamily.php:249
-#: CSVExport.php:120 CSVImport.php:222 DirectoryReports.php:256
+#: AutoPaymentEditor.php:703 CartToFamily.php:249 CSVExport.php:120
+#: CSVImport.php:222 DirectoryReports.php:256
 #: external/templates/registration/family-register.php:34 FamilyEditor.php:692
-#: FamilyList.php:29 GeoPage.php:338 PersonEditor.php:851
+#: FamilyList.php:29 GeoPage.php:338 PersonEditor.php:851 Register.php:48
 #: queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "国"
 
-#: Register.php:50 AutoPaymentEditor.php:713 CartToFamily.php:269
-#: CSVExport.php:135 CSVImport.php:224 FamilyEditor.php:712
-#: PersonEditor.php:896
+#: AutoPaymentEditor.php:713 CartToFamily.php:269 CSVExport.php:135
+#: CSVImport.php:224 FamilyEditor.php:712 PersonEditor.php:896 Register.php:50
 msgid "Country"
 msgstr "国家"
 
@@ -131,17 +130,17 @@ msgid "Phone"
 msgstr "电话"
 
 #: Reports/CanvassReports.php:245 Reports/ConfirmReport.php:187
-#: Reports/ConfirmReport.php:206 Reports/ConfirmReportEmail.php:198
-#: Reports/ConfirmReportEmail.php:216 Reports/DirectoryReport.php:290
+#: Reports/ConfirmReport.php:206 Reports/ConfirmReportEmail.php:190
+#: Reports/ConfirmReportEmail.php:208 Reports/DirectoryReport.php:290
 #: Reports/GroupReport.php:136 sundayschool/SundaySchoolClassView.php:86
 #: sundayschool/SundaySchoolClassView.php:199 AutoPaymentEditor.php:723
-#: CartToFamily.php:310 CartView.php:595
+#: CartToFamily.php:310 CartView.php:284
 #: ChurchCRM/Reports/PDF_Directory.php:308
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:460 CSVExport.php:155 CSVImport.php:228
 #: EditEventAttendees.php:42 EventAttendance.php:183
 #: external/templates/registration/family-register-members.php:71
-#: external/templates/verify/verify-family-info.php:60 FamilyEditor.php:779
+#: external/templates/verify/verify-family-info.php:67 FamilyEditor.php:779
 #: FamilyView.php:240 FamilyView.php:244 FamilyView.php:333
 #: GroupReports.php:131 PersonEditor.php:1005 PersonEditor.php:1007
 #: PersonView.php:287 PersonView.php:454 PrintView.php:276
@@ -232,7 +231,7 @@ msgstr "价格"
 msgid "Enter Winners"
 msgstr "输入获奖者"
 
-#: CartView.php:122 CSVExport.php:67
+#: CartView.php:123 CSVExport.php:67
 msgid "CSV Export"
 msgstr "CSV出口"
 
@@ -262,12 +261,11 @@ msgstr "产品名称"
 msgid "Middle Name"
 msgstr "中间名"
 
-#: Register.php:49 AutoPaymentEditor.php:708 BackupDatabase.php:67
-#: CartToFamily.php:261 CSVExport.php:125 CSVImport.php:223
-#: DirectoryReports.php:260
+#: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:261
+#: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
 #: external/templates/registration/family-register.php:41
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
-#: FamilyList.php:30 GeoPage.php:339 PersonEditor.php:874
+#: FamilyList.php:30 GeoPage.php:339 PersonEditor.php:874 Register.php:49
 #, fuzzy
 msgid "Zip"
 msgstr "邮编"
@@ -300,7 +298,7 @@ msgstr "生日/纪念日日期"
 msgid "Age / Years Married"
 msgstr "年龄/年结婚"
 
-#: CartView.php:598 CSVExport.php:180 CSVExport.php:303 OptionManager.php:64
+#: CartView.php:287 CSVExport.php:180 CSVExport.php:303 OptionManager.php:64
 #: PersonEditor.php:748 PrintView.php:251 queryparameters_qrp.php:5
 #, fuzzy
 msgid "Family Role"
@@ -365,8 +363,7 @@ msgstr "女"
 msgid "Group Membership"
 msgstr "集团成员"
 
-#: CartView.php:440 CSVExport.php:381 CSVExport.php:398 CSVExport.php:415
-#: CSVExport.php:432 EmailEditor.php:72
+#: CSVExport.php:381 CSVExport.php:398 CSVExport.php:415 CSVExport.php:432
 msgid "From:"
 msgstr "来自："
 
@@ -379,7 +376,7 @@ msgstr "要："
 msgid "Birthday Date"
 msgstr "生日日期"
 
-#: Reports/ConfirmReport.php:154 Reports/ConfirmReportEmail.php:162
+#: Reports/ConfirmReport.php:154 Reports/ConfirmReportEmail.php:154
 #, fuzzy
 msgid "Anniversary Date"
 msgstr "周年日期"
@@ -441,7 +438,7 @@ msgstr "性别"
 msgid "Donation Envelope"
 msgstr "捐款信封"
 
-#: Reports/ConfirmReport.php:139 Reports/ConfirmReportEmail.php:147
+#: Reports/ConfirmReport.php:139 Reports/ConfirmReportEmail.php:139
 #: SelectList.php:982 SelectList.php:983 SelectList.php:1057
 #: sundayschool/SundaySchoolClassView.php:201 CartToFamily.php:280
 #: CSVExport.php:140 CSVImport.php:225 EditEventAttendees.php:43
@@ -449,17 +446,17 @@ msgstr "捐款信封"
 #: external/templates/registration/family-register-done.php:32
 #: external/templates/registration/family-register.php:58
 #: external/templates/verify/verify-family-info.php:26
-#: external/templates/verify/verify-family-info.php:57 FamilyEditor.php:745
+#: external/templates/verify/verify-family-info.php:64 FamilyEditor.php:745
 #: FamilyList.php:26 FamilyView.php:219 GroupReports.php:128
 #: PersonEditor.php:931 PersonEditor.php:933 PersonView.php:281
 #: PrintView.php:181 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr "家庭电话"
 
-#: Reports/ConfirmReport.php:243 Reports/ConfirmReportEmail.php:249
+#: Reports/ConfirmReport.php:243 Reports/ConfirmReportEmail.php:241
 #: SelectList.php:985 SelectList.php:986 SelectList.php:1057
 #: CartToFamily.php:290 CSVExport.php:145 CSVImport.php:226
-#: external/templates/verify/verify-family-info.php:58 FamilyEditor.php:757
+#: external/templates/verify/verify-family-info.php:65 FamilyEditor.php:757
 #: FamilyView.php:226 GroupReports.php:129 PersonEditor.php:954
 #: PersonEditor.php:956 PersonView.php:296 PrintView.php:186
 msgid "Work Phone"
@@ -467,7 +464,7 @@ msgstr "工作电话"
 
 #: SelectList.php:988 SelectList.php:989 SelectList.php:1057
 #: CartToFamily.php:300 CSVExport.php:150 CSVImport.php:227
-#: external/templates/verify/verify-family-info.php:59 FamilyEditor.php:767
+#: external/templates/verify/verify-family-info.php:66 FamilyEditor.php:767
 #: FamilyView.php:233 PersonEditor.php:979 PersonEditor.php:981
 #: PersonView.php:276 PrintView.php:191
 msgid "Mobile Phone"
@@ -484,7 +481,7 @@ msgid "Birth Date"
 msgstr "出生日期"
 
 #: CartToFamily.php:210 CSVImport.php:232 DirectoryReports.php:174
-#: external/templates/verify/verify-family-info.php:28 FamilyEditor.php:814
+#: external/templates/verify/verify-family-info.php:31 FamilyEditor.php:814
 #: FamilyView.php:205
 msgid "Wedding Date"
 msgstr "婚礼日期"
@@ -517,7 +514,7 @@ msgstr "注：分离器（破折号等）或缺乏无所谓"
 msgid "Default country if none specified otherwise"
 msgstr "默认情况下，如果没有国家另有规定"
 
-#: CartView.php:597 CSVExport.php:277 CSVImport.php:284 FamilyEditor.php:961
+#: CartView.php:286 CSVExport.php:277 CSVImport.php:284 FamilyEditor.php:961
 #: FinancialReports.php:118 MembersDashboard.php:292 OptionManager.php:71
 #: PersonEditor.php:1053 PrintView.php:291 queryparameters_qrp.php:19
 msgid "Classification"
@@ -563,7 +560,7 @@ msgstr "数据导入成功。"
 msgid "persons were imported"
 msgstr "人进口"
 
-#: ReportList.php:44 CanvassAutomation.php:23
+#: CanvassAutomation.php:23 ReportList.php:44
 msgid "Canvass Automation"
 msgstr "招商自动化"
 
@@ -716,7 +713,7 @@ msgstr "加入购物车家庭"
 #: Reports/FRBidSheets.php:92 SelectList.php:1004
 #: sundayschool/SundaySchoolClassView.php:196 UserList.php:62
 #: VolunteerOpportunityEditor.php:87 VolunteerOpportunityEditor.php:367
-#: VolunteerOpportunityEditor.php:435 CartToFamily.php:156 CartView.php:593
+#: VolunteerOpportunityEditor.php:435 CartToFamily.php:156 CartView.php:282
 #: Checkin.php:365 DonationFundEditor.php:153 DonationFundEditor.php:216
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:182
 #: EventNames.php:266 FamilyCustomFieldsEditor.php:328
@@ -813,120 +810,76 @@ msgstr "返回目录"
 msgid "Go To Labels"
 msgstr "转至标签"
 
-#: CartView.php:107
+#: CartView.php:108
 msgid "Empty Cart"
 msgstr "清空购物车"
 
-#: CartView.php:110
+#: CartView.php:111
 msgid "Empty Cart to Group"
 msgstr "清空购物车集团"
 
-#: CartView.php:115
+#: CartView.php:116
 msgid "Empty Cart to Family"
 msgstr "清空购物车家庭"
 
-#: CartView.php:118
+#: CartView.php:119
 msgid "Empty Cart to Event"
 msgstr "清空购物车事件"
 
-#: CartView.php:125
+#: CartView.php:126
 msgid "Map Cart"
 msgstr "地图购物车"
 
-#: CartView.php:126
+#: CartView.php:127
 msgid "Name Tags"
 msgstr "名称标签"
 
-#: CartView.php:161
+#: CartView.php:162
 msgid "Email Cart"
 msgstr "电子邮件的购物车"
 
-#: sundayschool/SundaySchoolClassView.php:98 CartView.php:162
+#: sundayschool/SundaySchoolClassView.php:98 CartView.php:163
 #: GroupView.php:234
 msgid "Email (BCC)"
 msgstr "电子邮件（BCC）"
 
-#: CartView.php:191
+#: CartView.php:192
 msgid "Create Directory From Cart"
 msgstr "创建目录从购物车中"
 
-#: CartView.php:218 CartView.php:259
+#: CartView.php:219 CartView.php:260
 msgid "Generate Labels"
 msgstr "生成标签"
 
-#: CartView.php:226
+#: CartView.php:227
 msgid "Bulk Mail Presort"
 msgstr "群发邮件预先分类"
 
-#: CartView.php:235
+#: CartView.php:236
 msgid "Quiet Presort"
 msgstr "安静预先分类"
 
-#: CartView.php:290
-msgid "Send Email To People in Cart"
-msgstr "发送电​​子邮件至购物车的人"
-
-#: CartView.php:432 EmailEditor.php:67
-msgid "Compose Email"
-msgstr "撰写电子邮件"
-
-#: CartView.php:442 EmailEditor.php:74
-msgid "To (blind):"
-msgstr "（盲人）："
-
-#: CartView.php:444 EmailEditor.php:81
-msgid "Subject:"
-msgstr "主题："
-
-#: CartView.php:447 EmailEditor.php:85
-msgid "Attach file:"
-msgstr "附加文件："
-
-#: CartView.php:473
-msgid "Edit Email"
-msgstr "编辑电子邮件"
-
-#: CartView.php:494
-msgid "Send Email"
-msgstr "发送电​​邮"
-
-#: CartView.php:500
-msgid "Delete Email"
-msgstr "删除电子邮件"
-
-#: CartView.php:521
-msgid "Resume"
-msgstr "恢复"
-
-#: CartView.php:532
-msgid "Abort"
-msgstr "退出"
-
-#: CartView.php:543
-msgid "View Log"
-msgstr "查看日志"
-
-#: CartView.php:588
+#: CartView.php:277
 msgid "Your cart contains"
 msgstr "您的购物车中包含"
 
-#: CartView.php:588
+#: CartView.php:277
 msgid "persons from"
 msgstr "人从"
 
-#: CartView.php:596 CartView.php:648 EditEventTypes.php:168 FamilyView.php:524
+#: CartView.php:285 CartView.php:337 EditEventTypes.php:168 FamilyView.php:524
 #: FamilyView.php:566 GroupView.php:385 GroupView.php:426 PersonView.php:650
 #: PersonView.php:690 PersonView.php:754 PersonView.php:770
 msgid "Remove"
 msgstr "清除"
 
-#: Reports/ConfirmReport.php:231 CartView.php:617 CartView.php:637
+#: Reports/ConfirmReport.php:231 CartView.php:306 CartView.php:326
 #: DonationFundEditor.php:180 FinancialReports.php:298
 #: Include/Functions.php:987 Include/Functions.php:1071
 msgid "Yes"
 msgstr "是"
 
-#: Reports/ConfirmReport.php:233 CartView.php:630 CartView.php:639
+#: Reports/ConfirmReport.php:233 CartView.php:319 CartView.php:328
 #: DonationFundEditor.php:183 FinancialReports.php:299
 #: Include/Functions.php:989 Include/Functions.php:1072
 msgid "No"
@@ -945,7 +898,7 @@ msgstr "选择事件时，你要检查的人"
 msgid "Select Event"
 msgstr "选择事件"
 
-#: Checkin.php:128 external/templates/verify/verify-family-info.php:124
+#: Checkin.php:128 external/templates/verify/verify-family-info.php:131
 msgid "Verify"
 msgstr "验证"
 
@@ -1093,21 +1046,21 @@ msgstr "哪个角色是个孩子吗？"
 msgid "Information to Include"
 msgstr "信息包括"
 
-#: Register.php:46 Reports/ConfirmReportEmail.php:132
-#: Reports/ConfirmReportEmail.php:137 AutoPaymentEditor.php:688
-#: AutoPaymentEditor.php:693 CartToFamily.php:234 CartToFamily.php:239
-#: CartView.php:594 CSVExport.php:105 CSVExport.php:110 CSVImport.php:219
-#: CSVImport.php:220 DirectoryReports.php:173 DirectoryReports.php:248
+#: Reports/ConfirmReportEmail.php:124 Reports/ConfirmReportEmail.php:129
+#: AutoPaymentEditor.php:688 AutoPaymentEditor.php:693 CartToFamily.php:234
+#: CartToFamily.php:239 CartView.php:283 CSVExport.php:105 CSVExport.php:110
+#: CSVImport.php:219 CSVImport.php:220 DirectoryReports.php:173
+#: DirectoryReports.php:248
 #: external/templates/registration/family-register-done.php:31
 #: external/templates/registration/family-register.php:25 FamilyEditor.php:677
 #: FamilyEditor.php:681 FamilyList.php:27 FamilyView.php:176 GeoPage.php:336
 #: GroupReports.php:127 Menu.php:181 Menu.php:215 PersonEditor.php:799
-#: PersonEditor.php:815 PersonView.php:252
+#: PersonEditor.php:815 PersonView.php:252 Register.php:46
 msgid "Address"
 msgstr "地址"
 
 #: Reports/ConfirmReport.php:188 Reports/ConfirmReport.php:207
-#: Reports/ConfirmReportEmail.php:199 Reports/ConfirmReportEmail.php:217
+#: Reports/ConfirmReportEmail.php:191 Reports/ConfirmReportEmail.php:209
 #: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:175
 #: FamilyView.php:332 PersonView.php:453
 msgid "Birthday"
@@ -1125,7 +1078,7 @@ msgstr "家庭办公电话"
 msgid "Family Cell Phone"
 msgstr "家庭手机"
 
-#: Reports/ConfirmReport.php:160 Reports/ConfirmReportEmail.php:168
+#: Reports/ConfirmReport.php:160 Reports/ConfirmReportEmail.php:160
 #: DirectoryReports.php:180
 #: external/templates/verify/verify-family-info.php:27
 msgid "Family Email"
@@ -1179,7 +1132,7 @@ msgstr "扉页"
 msgid "Use Title Page"
 msgstr "使用标题页"
 
-#: Register.php:44 DirectoryReports.php:244 config_cfg.php:67
+#: DirectoryReports.php:244 Register.php:44 config_cfg.php:62
 msgid "Church Name"
 msgstr "教会名称"
 
@@ -1329,10 +1282,9 @@ msgstr "家庭"
 msgid "Type"
 msgstr "类型"
 
-#: ReminderReport.php:47 SelectDelete.php:319
-#: sundayschool/SundaySchoolReports.php:157 AutoPaymentEditor.php:635
-#: ElectronicPaymentList.php:199 FamilyView.php:731 PledgeEditor.php:672
-#: queryparameters_qrp.php:18
+#: SelectDelete.php:319 sundayschool/SundaySchoolReports.php:157
+#: AutoPaymentEditor.php:635 ElectronicPaymentList.php:199 FamilyView.php:731
+#: PledgeEditor.php:672 ReminderReport.php:47 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "财政年度"
 
@@ -1375,22 +1327,6 @@ msgstr "编辑"
 #, fuzzy
 msgid "Message"
 msgstr "信息"
-
-#: EmailEditor.php:93
-msgid "Save Email"
-msgstr "保存电子邮件"
-
-#: EmailSend.php:472
-msgid "Email Sent"
-msgstr "电子邮件已发送"
-
-#: EmailSend.php:476
-msgid "ERROR: PHPMailer is not properly installed on this server."
-msgstr "错误：在此服务器上PHPMailer的安装不正确。"
-
-#: EmailSend.php:477
-msgid "PHPMailer is required in order to send emails from this server."
-msgstr "PHPMailer的要求是为了从该服务器发送电子邮件。"
 
 #: EventAttendance.php:27
 msgid "Event Attendees"
@@ -1881,7 +1817,7 @@ msgstr "招商入口"
 msgid "Confirm Delete"
 msgstr "确认删除"
 
-#: ReportList.php:34 FinancialReports.php:36
+#: FinancialReports.php:36 ReportList.php:34
 msgid "Financial Reports"
 msgstr "财务报告"
 
@@ -2042,7 +1978,7 @@ msgstr "报告标题："
 msgid "Graphic"
 msgstr "图形"
 
-#: FinancialReports.php:295 config_cfg.php:68
+#: FinancialReports.php:295 config_cfg.php:63
 msgid "Church Address"
 msgstr "教会地址"
 
@@ -2090,8 +2026,8 @@ msgstr "CSV"
 msgid "Back"
 msgstr "背面"
 
-#: ReminderReport.php:57 TaxReport.php:52 FinancialReports.php:337
-#: GroupReports.php:154
+#: TaxReport.php:52 FinancialReports.php:337 GroupReports.php:154
+#: ReminderReport.php:57
 msgid "Create Report"
 msgstr "创建报告"
 
@@ -2539,7 +2475,7 @@ msgid "Update Family Records"
 msgstr "更新家庭记录"
 
 #: external/templates/verify/verify-family-info.php:16
-#: external/templates/verify/verify-family-info.php:106
+#: external/templates/verify/verify-family-info.php:113
 #: ManageEnvelopes.php:138
 msgid "Confirm"
 msgstr "确认"
@@ -2607,7 +2543,7 @@ msgstr "生成信函和邮寄标签。"
 msgid "US Address Verification Report"
 msgstr "美国地址验证报告的"
 
-#: Reports/ConfirmReport.php:119 Reports/ConfirmReportEmail.php:127
+#: Reports/ConfirmReport.php:119 Reports/ConfirmReportEmail.php:119
 #: SelectDelete.php:254 SelectDelete.php:381 CartToFamily.php:205
 #: external/templates/registration/family-register.php:21 FamilyEditor.php:666
 #: Menu.php:180 Menu.php:214
@@ -3922,8 +3858,8 @@ msgid "Pledged"
 msgstr "已抵押"
 
 #: Reports/CanvassReports.php:240 Reports/ConfirmReport.php:185
-#: Reports/ConfirmReport.php:204 Reports/ConfirmReportEmail.php:196
-#: Reports/ConfirmReportEmail.php:214
+#: Reports/ConfirmReport.php:204 Reports/ConfirmReportEmail.php:188
+#: Reports/ConfirmReportEmail.php:206
 msgid "M/F"
 msgstr "M / F"
 
@@ -3940,34 +3876,34 @@ msgstr "学生"
 msgid "Liaison"
 msgstr "联络"
 
-#: Reports/ConfirmReport.php:134 Reports/ConfirmReportEmail.php:142
+#: Reports/ConfirmReport.php:134 Reports/ConfirmReportEmail.php:134
 msgid "City, State, Zip"
 msgstr "市，州，邮政编码"
 
-#: Reports/ConfirmReport.php:144 Reports/ConfirmReportEmail.php:152
-#: external/templates/verify/verify-family-info.php:29 FamilyEditor.php:789
+#: Reports/ConfirmReport.php:144 Reports/ConfirmReportEmail.php:144
+#: external/templates/verify/verify-family-info.php:36 FamilyEditor.php:789
 #: FamilyView.php:198
 msgid "Send Newsletter"
 msgstr "发送通讯"
 
 #: Reports/ConfirmReport.php:184 Reports/ConfirmReport.php:203
-#: Reports/ConfirmReportEmail.php:195 Reports/ConfirmReportEmail.php:213
+#: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
 msgid "Member Name"
 msgstr "会员名称"
 
 #: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
-#: Reports/ConfirmReportEmail.php:197 Reports/ConfirmReportEmail.php:215
+#: Reports/ConfirmReportEmail.php:189 Reports/ConfirmReportEmail.php:207
 msgid "Adult/Child"
 msgstr "成人/儿童"
 
-#: Reports/CanvassReports.php:244 Reports/ConfirmReportEmail.php:200
-#: Reports/ConfirmReportEmail.php:218 GroupReports.php:130
+#: Reports/CanvassReports.php:244 Reports/ConfirmReportEmail.php:192
+#: Reports/ConfirmReportEmail.php:210 GroupReports.php:130
 #, fuzzy
 msgid "Cell Phone"
 msgstr "手机"
 
 #: Reports/ConfirmReport.php:191 Reports/ConfirmReport.php:210
-#: Reports/ConfirmReportEmail.php:201 Reports/ConfirmReportEmail.php:219
+#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
 msgid "Member/Friend"
 msgstr "会员/朋友"
 
