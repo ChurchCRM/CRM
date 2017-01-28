@@ -97,8 +97,9 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
      <!-- BEGIN CART FUNCTIONS -->
 
 
-<?php if (count($_SESSION['aPeopleCart']) > 0) {
-        ?>
+<?php 
+if (count($_SESSION['aPeopleCart']) > 0) {
+    ?>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">Cart Functions</h3>
@@ -106,22 +107,22 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
     <div class="box-body">
         <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
         <?php if ($_SESSION['bManageGroups']) {
-            ?>
+        ?>
             <a href="CartToGroup.php" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
         <?php 
-        } ?>
+    } ?>
         <?php if ($_SESSION['bAddRecords']) {
-            ?>
+        ?>
             <a href="CartToFamily.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
         <?php 
-        } ?>
+    } ?>
         <a href="CartToEvent.php" class="btn btn-app"><i class="fa fa-ticket"></i><?=  gettext('Empty Cart to Event') ?></a>
 
         <?php  if ($bExportCSV) {
-            ?>
+        ?>
             <a href="CSVExport.php?Source=cart" class="btn btn-app"><i class="fa fa-file-excel-o"></i><?=  gettext('CSV Export') ?></a>
         <?php 
-        } ?>
+    } ?>
         <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i class="fa fa-map-marker"></i><?= gettext('Map Cart') ?></a>
         <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
         <?php
@@ -223,36 +224,36 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
                 <?php
                 LabelGroupSelect('groupbymode');
 
-        echo '  <tr><td>'.gettext('Bulk Mail Presort').'</td>';
-        echo '  <td>';
-        echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
-        echo '  id="BulkMailPresort" value="1" ';
-        if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-            echo 'checked';
-        }
-        echo '  ><br></td></tr>';
+    echo '  <tr><td>'.gettext('Bulk Mail Presort').'</td>';
+    echo '  <td>';
+    echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
+    echo '  id="BulkMailPresort" value="1" ';
+    if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
+        echo 'checked';
+    }
+    echo '  ><br></td></tr>';
 
-        echo '  <tr><td>'.gettext('Quiet Presort').'</td>';
-        echo '  <td>';
-        echo '  <input ';
-        if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
-            echo 'disabled ';
-        }   // This would be better with $_SESSION variable
+    echo '  <tr><td>'.gettext('Quiet Presort').'</td>';
+    echo '  <td>';
+    echo '  <input ';
+    if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
+        echo 'disabled ';
+    }   // This would be better with $_SESSION variable
                                         // instead of cookie ... (save $_SESSION in MySQL)
                 echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
-        echo '  id="QuietBulkMail" value="1" ';
-        if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-            echo 'checked';
-        }
-        echo '  ><br></td></tr>';
+    echo '  id="QuietBulkMail" value="1" ';
+    if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
+        echo 'checked';
+    }
+    echo '  ><br></td></tr>';
 
-        ToParentsOfCheckBox('toparents');
-        LabelSelect('labeltype');
-        FontSelect('labelfont');
-        FontSizeSelect('labelfontsize');
-        StartRowStartColumn();
-        IgnoreIncompleteAddresses();
-        LabelFileType(); ?>
+    ToParentsOfCheckBox('toparents');
+    LabelSelect('labeltype');
+    FontSelect('labelfont');
+    FontSizeSelect('labelfontsize');
+    StartRowStartColumn();
+    IgnoreIncompleteAddresses();
+    LabelFileType(); ?>
 
                 <tr>
                         <td></td>
@@ -265,322 +266,10 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
 
 
 <?php
-    if ((SystemConfig::getValue('bEmailSend')) && ($bSendPHPMail)) {
-        if (isset($email_array)) {
-            $bcc_list = '';
-            foreach ($email_array as $email_address) {
-                // Add all address except the default
-                // avoid sending to this address twice
-                if ($email_address != SystemConfig::getValue('sToEmailAddress')) {
-                    $bcc_list .= $email_address.', ';
-                }
-            }
-            if (SystemConfig::getValue('sToEmailAddress')) {
-                // append $sToEmailAddress
-                $bcc_list .= SystemConfig::getValue('sToEmailAddress');
-            } else {
-                // remove the last ", "
-                $bcc_list = mb_substr($bcc_list, 0, strlen($bcc_list) - 2);
-            }
-        }
 
-        $sEmailForm = ''; // Initialize to empty
+} ?>
 
-        ?><div align="center"><table class="table"><tr><td align="center"><?php
-        echo '<br><h2>'.gettext('Send Email To People in Cart').'</h2>';
-
-        // Check if there are pending emails that have not been delivered
-        // A user cannot send a new email until the previous email has been sent
-
-        $sSQL = 'SELECT COUNT(emp_usr_id) as countjobs '
-               .'FROM email_message_pending_emp '
-               ."WHERE emp_usr_id='".$_SESSION['iUserID']."'";
-
-        $rsPendingEmail = RunQuery($sSQL);
-        $aRow = mysqli_fetch_array($rsPendingEmail);
-        extract($aRow);
-
-        $sSQL = 'SELECT COUNT(erp_usr_id) as countrecipients '
-               .'FROM email_recipient_pending_erp '
-               ."WHERE erp_usr_id='".$_SESSION['iUserID']."'";
-        $rsCountRecipients = RunQuery($sSQL);
-        $aRow = mysqli_fetch_array($rsCountRecipients);
-        extract($aRow);
-
-        if ($countjobs) {
-            // There is already a message composed in MySQL
-            // Let's check and make sure it has not been sent.
-            $sSQL = 'SELECT * FROM email_message_pending_emp '
-                  ."WHERE emp_usr_id='".$_SESSION['iUserID']."'";
-
-            $rsPendingEmail = RunQuery($sSQL);
-            $aRow = mysqli_fetch_array($rsPendingEmail);
-            extract($aRow);
-
-            if ($emp_to_send == 0 && $countrecipients == 0) {
-                // if both are zero the email job has not started.  In this
-                // case the user may edit the email and/or change the distribution
-
-                // This user has no email messages stored MySQL
-
-                $sEmailSubject = '';
-                if (array_key_exists('emailsubject', $_POST)) {
-                    $sEmailSubject = stripslashes($_POST['emailsubject']);
-                }
-                $sEmailMessage = '';
-                if (array_key_exists('emailmessage', $_POST)) {
-                    $sEmailMessage = stripslashes($_POST['emailmessage']);
-                }
-                $hasAttach = 0;
-                $attachName = '';
-
-                if (array_key_exists('Attach', $_FILES)) {
-                    $attachName = $_FILES['Attach']['name'];
-                    $hasAttach = 1;
-                    move_uploaded_file($_FILES['Attach']['tmp_name'], 'tmp_attach/'.$attachName);
-                }
-
-                if (strlen($sEmailSubject.$sEmailMessage)) {
-
-                    // User has edited a message.  Update MySQL.
-                    $sSQLu = 'UPDATE email_message_pending_emp '.
-                             "SET emp_subject='".mysqli_real_escape_string($cnInfoCentral, $sEmailSubject)."',".
-                             "    emp_message='".mysqli_real_escape_string($cnInfoCentral, $sEmailMessage)."', ".
-                             "    emp_attach_name='".$attachName."',".
-                             "    emp_attach='".$hasAttach."' ".
-                             "WHERE emp_usr_id='".$_SESSION['iUserID']."'";
-
-                    RunQuery($sSQLu);
-                } else {
-
-                    // Retrieve subject and message from MySQL
-
-                    $rsPendingEmail = RunQuery($sSQL);
-                    $aRow = mysqli_fetch_array($rsPendingEmail);
-                    extract($aRow);
-
-                    $sEmailSubject = $emp_subject;
-                    $sEmailMessage = $emp_message;
-                    $attachName = $emp_attach_name;
-                }
-
-                $sEmailForm = 'sendoredit';
-            } else {
-                // This job has already started.  The user may not change the message
-                // or the distribution once emails have actually been sent.
-                $sEmailForm = 'resumeorabort';
-            }
-        } elseif (isset($email_array)) {
-
-            // This user has no email messages stored MySQL
-            $sEmailSubject = '';
-            $sEmailMessage = '';
-            $hasAttach = 0;
-            $attachName = '';
-
-            if (array_key_exists('emailsubject', $_POST)) {
-                $sEmailSubject = stripslashes($_POST['emailsubject']);
-            }
-            if (array_key_exists('emailmessage', $_POST)) {
-                $sEmailMessage = stripslashes($_POST['emailmessage']);
-            }
-            if (array_key_exists('Attach', $_FILES)) {
-                $attachName = $_FILES['Attach']['name'];
-                $hasAttach = 1;
-                move_uploaded_file($_FILES['Attach']['tmp_name'], 'tmp_attach/'.$attachName);
-            }
-
-            if (strlen($sEmailSubject.$sEmailMessage)) {
-
-                // User has written a message.  Store it in MySQL.
-                // Since this is the first time use INSERT instead of UPDATE
-                $sSQL = 'INSERT INTO email_message_pending_emp '.
-                        'SET '.
-                            "emp_usr_id='".$_SESSION['iUserID']."',".
-                            "emp_to_send='0',".
-                            "emp_subject='".mysqli_real_escape_string($cnInfoCentral, $sEmailSubject)."',".
-                            "emp_message='".mysqli_real_escape_string($cnInfoCentral, $sEmailMessage)."',".
-                            "emp_attach_name='".$attachName."',".
-                            "emp_attach='".$hasAttach."'";
-
-                RunQuery($sSQL);
-
-                $sEmailForm = 'sendoredit';
-            } else {
-
-                // There is no pending message.  User may compose a new message.
-                $sEmailForm = 'compose';
-            }
-        }
-
-        if ($sEmailForm == 'compose') {
-            echo '<form method="post" action="EmailEditor.php">'."\n";
-
-            foreach ($email_array as $email_address) {
-                // Add all address except the default
-                // avoid sending to this address twice
-                if ($email_address != SystemConfig::getValue('sToEmailAddress')) {
-                    echo '<input type="hidden" name="emaillist[]" value="'.
-                                                            $email_address.'">';
-                }
-            }
-            if (SystemConfig::getValue('sToEmailAddress')) { // The default address gets the last email
-            echo '<input type="hidden" name="emaillist[]" value="'.SystemConfig::getValue('sToEmailAddress').'">'."\n";
-            }
-
-            echo '<input type="submit" class="btn" name="submit" '.
-                 'value ="'.gettext('Compose Email').'">'."\n</form>";
-        } elseif ($sEmailForm == 'sendoredit') {
-
-            //Print the From, To, and Email List with the Subject and Message
-
-            echo "\n</td></tr></table></div>\n";
-
-            echo "<hr>\r\n";
-            echo '<p class="MediumText"><b>'.gettext('From:').'</b> "'.$sFromName.'"';
-            echo ' &lt;'.$sFromEmailAddress.'&gt;<br>'."\n";
-            echo '<b>'.gettext('To (blind):').'</b> '.$bcc_list.'<br>'."\n";
-
-            echo '<b>'.gettext('Subject:').'</b> '.htmlspecialchars($sEmailSubject).'<br>';
-
-            if (strlen($attachName) > 0) {
-                echo '<b>'.gettext('Attach file:').'</b> '.htmlspecialchars($attachName).'<br>';
-            }
-
-            echo '</p><hr><textarea cols="72" rows="20" readonly class="MediumText" ';
-            echo 'style="border:0px;">'.htmlspecialchars($sEmailMessage).'</textarea><br>';
-            echo "<hr>\n";
-
-            // Create button to edit this message.
-            echo '<div align="center"><table class="table"><tr><td>'."\n";
-            echo '<form method="post" action="EmailEditor.php">'."\n";
-
-            foreach ($email_array as $email_address) {
-                // Add all address except the default
-                // avoid sending to this address twice
-                if ($email_address != SystemConfig::getValue('sToEmailAddress')) {
-                    echo '<input type="hidden" name="emaillist[]" value="'.
-                                                            $email_address.'">';
-                }
-            }
-            if (SystemConfig::getValue('sToEmailAddress')) {  // The default address gets the last email
-            echo '<input type="hidden" name="emaillist[]" value="'.SystemConfig::getValue('sToEmailAddress').'">'."\n";
-            }
-
-            echo '<input type="hidden" name="mysql" value="true">'."\n";
-
-            echo '<input type="submit" class="btn" name="submit" '.
-                     'value ="'.gettext('Edit Email').'">'."\n</form>";
-
-            // Create button to send this message
-            echo "</td>\n<td>";
-
-            echo '<form method="post" action="EmailSend.php">'."\n";
-
-            foreach ($email_array as $email_address) {
-                // Add all address except the default
-                // avoid sending to this address twice
-                if ($email_address != SystemConfig::getValue('sToEmailAddress')) {
-                    echo '<input type="hidden" name="emaillist[]" value="'.
-                                                            $email_address.'">';
-                }
-            }
-            if (SystemConfig::getValue('sToEmailAddress')) { // The default address gets the last email
-            echo '<input type="hidden" name="emaillist[]" value="'.SystemConfig::getValue('sToEmailAddress').'">'."\n";
-            }
-
-            echo '<input type="hidden" name="mysql" value="true">'."\n";
-            echo '<input type="submit" class="btn" name="submit" '.
-                     'value ="'.gettext('Send Email').'">'."\n</form>";
-            // Create button to Delete this message
-            echo "</td>\n<td>";
-            echo '<form method="post" action="CartView.php">'."\n";
-            echo '<input type="hidden" name="rmEmail" value="true">'."\n";
-            echo '<input type="submit" class="btn" name="rmEail" '.
-                 'value ="'.gettext('Delete Email').'">'."\n</form>";
-        } elseif ($sEmailForm == 'resumeorabort') {
-
-            // The user has two choices
-            echo "<table>\n<tr><td>";
-            echo 'The previous email did not succesfully complete. You may';
-            echo "</td></tr>\n<tr><td>";
-            echo '1 Resume at point of failure (no duplicates will be sent)';
-            echo "</td></tr>\n<tr><td>";
-            echo '2 Abort (discard everything)';
-            echo "</td></tr>\n<tr><td>";
-            echo '3 View Log';
-            echo "</td></tr>\n</table>";
-
-            // Create button to resume this job.
-            echo '<div align="center"><table><tr><td>'."\n";
-            echo '<form method="post" action="EmailSend.php">'."\n";
-
-            echo '<input type="hidden" name="resume" value="true">'."\n";
-
-            echo '<input type="submit" class="btn" name="submit" '.
-                     'value ="'.gettext('Resume').'">'."\n</form>";
-
-            // Create button to abort
-            echo "</td>\n<td>";
-
-            echo '<form method="post" action="EmailSend.php">'."\n";
-
-            // The default address gets the last email
-            echo '<input type="hidden" name="abort" value="true">'."\n";
-
-            echo '<input type="submit" class="btn" name="submit" '.
-                     'value ="'.gettext('Abort').'">'."\n</form>";
-
-            // Create button to view log
-            echo "</td>\n<td>";
-
-            echo '<form method="post" action="EmailSend.php">'."\n";
-
-            // The default address gets the last email
-            echo '<input type="hidden" name="viewlog" value="true">'."\n";
-
-            echo '<input type="submit" class="btn" name="submit" '.
-                     'value ="'.gettext('View Log').'">'."\n</form>";
-        } else { // ($sEmailForm == 'viewjobstatus')
-            //echo '<br>job status form goes here<br>';
-            echo '<br><br>';
-            echo "It has been $tTimeSinceLastAttempt seconds since the last email ";
-            echo "was attempted<br>\n";
-            echo "$iWaitTime seconds must elapse before sending another email.<br>\n";
-
-            $iComeBack = $iWaitTime - $tTimeSinceLastAttempt;
-            echo "Refresh this page in $iComeBack seconds.<br>\n";
-
-            $sSQL = 'SELECT * FROM email_job_log_'.$_SESSION['iUserID'].' '.
-                    'ORDER BY ejl_id';
-
-            $rsEJL = RunQuery($sSQL, false); // FALSE means do not stop on error
-            $sError = mysqli_error($cnInfoCentral);
-
-            if ($sError) {
-                echo '<br>'.$sError;
-                echo '<br>'.$sSQL;
-            } else {
-                $sHTMLLog = '<br><br><div align="center"><table>';
-                while ($aRow = mysqli_fetch_array($rsEJL)) {
-                    extract($aRow);
-
-                    $sTime = date('i:s', intval($ejl_time)).'.';
-                    $sTime .= mb_substr($ejl_usec, 0, 3);
-                    $sMsg = stripslashes($ejl_text);
-                    $sHTMLLog .= '<tr><td>'.$sTime.'</td><td>'.$sMsg.'</td></tr>'."\n";
-                }
-                $sHTMLLog .= '</table></div>';
-                echo $sHTMLLog;
-            }
-        }
-        echo '<a name="email"></a>'; // anchor used by EmailEditor.php
-        echo "</td></tr></table></div>\n";
-    }
-    } ?>
-
-
-    <!-- END CART FUNCTIONS -->
+<!-- END CART FUNCTIONS -->
 
 <!-- BEGIN CART LISTING -->
 <div class="box box-primary">

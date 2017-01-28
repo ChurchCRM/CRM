@@ -34,7 +34,7 @@ if (isset($_GET['SystemIntegrityCheck'])) {
 }
 
 if (isset($_GET['SystemPrerequisiteCheck'])) {
-    $required = ChurchCRM\Service\AppIntegrityService::getApplicationPrerequisiteStatus();
+    $required = ChurchCRM\Service\AppIntegrityService::getApplicationPrerequisites();
     header('Content-Type: application/json');
     echo json_encode($required);
     exit;

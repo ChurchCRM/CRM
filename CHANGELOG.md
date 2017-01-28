@@ -1,5 +1,46 @@
 # Change Log
 
+## [2.5.1](https://github.com/ChurchCRM/CRM/tree/2.5.1) (2017-01-27)
+[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.5.0...2.5.1)
+
+**Implemented enhancements:**
+
+- In-App Issue reports Include more data [\#1754](https://github.com/ChurchCRM/CRM/issues/1754)
+
+**Fixed bugs:**
+
+- Invalid prerequisite [\#1779](https://github.com/ChurchCRM/CRM/issues/1779)
+- Family online verification is broken [\#1773](https://github.com/ChurchCRM/CRM/issues/1773)
+- First visit to a Task fails with database error or invalid data [\#1771](https://github.com/ChurchCRM/CRM/issues/1771)
+- Error with Data Validation Tasks [\#1715](https://github.com/ChurchCRM/CRM/issues/1715)
+
+**Closed issues:**
+
+- test 4 [\#1782](https://github.com/ChurchCRM/CRM/issues/1782)
+- test 3 [\#1781](https://github.com/ChurchCRM/CRM/issues/1781)
+- test2 [\#1780](https://github.com/ChurchCRM/CRM/issues/1780)
+- test [\#1778](https://github.com/ChurchCRM/CRM/issues/1778)
+- Upload to Demo site should store files into a daily builds dir for people to download RC build.  [\#1740](https://github.com/ChurchCRM/CRM/issues/1740)
+- Setup POEditor Auto-commit [\#1341](https://github.com/ChurchCRM/CRM/issues/1341)
+- move sass to NPM  [\#1210](https://github.com/ChurchCRM/CRM/issues/1210)
+- Review EmailSend.php [\#1064](https://github.com/ChurchCRM/CRM/issues/1064)
+- Investigate jqPlot [\#788](https://github.com/ChurchCRM/CRM/issues/788)
+- Vagrant: Maximum Upload size is 2MB [\#763](https://github.com/ChurchCRM/CRM/issues/763)
+
+**Merged pull requests:**
+
+- Update Translations [\#1796](https://github.com/ChurchCRM/CRM/pull/1796) ([crossan007](https://github.com/crossan007))
+- update messages.po, and sync with poeditor [\#1786](https://github.com/ChurchCRM/CRM/pull/1786) ([crossan007](https://github.com/crossan007))
+- Apply fixes from StyleCI [\#1785](https://github.com/ChurchCRM/CRM/pull/1785) ([DawoudIO](https://github.com/DawoudIO))
+- add more detail to the bug reports. [\#1784](https://github.com/ChurchCRM/CRM/pull/1784) ([crossan007](https://github.com/crossan007))
+- fix upgrade json [\#1776](https://github.com/ChurchCRM/CRM/pull/1776) ([crossan007](https://github.com/crossan007))
+- 2.5.1 1731 cleanup dead email code [\#1775](https://github.com/ChurchCRM/CRM/pull/1775) ([crossan007](https://github.com/crossan007))
+- Apply fixes from StyleCI [\#1774](https://github.com/ChurchCRM/CRM/pull/1774) ([DawoudIO](https://github.com/DawoudIO))
+- fix \#1771 [\#1772](https://github.com/ChurchCRM/CRM/pull/1772) ([crossan007](https://github.com/crossan007))
+- starting 2.5.1 [\#1767](https://github.com/ChurchCRM/CRM/pull/1767) ([crossan007](https://github.com/crossan007))
+- fix date formatting [\#1777](https://github.com/ChurchCRM/CRM/pull/1777) ([crossan007](https://github.com/crossan007))
+- Modify php.ini for Vagrant Uploads [\#767](https://github.com/ChurchCRM/CRM/pull/767) ([crossan007](https://github.com/crossan007))
+
 ## [2.5.0](https://github.com/ChurchCRM/CRM/tree/2.5.0) (2017-01-23)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.5.0-RC4...2.5.0)
 
@@ -1241,7 +1282,6 @@
 
 **Merged pull requests:**
 
-- Modify php.ini for Vagrant Uploads [\#767](https://github.com/ChurchCRM/CRM/pull/767) ([crossan007](https://github.com/crossan007))
 - Small fix for A4 paper [\#759](https://github.com/ChurchCRM/CRM/pull/759) ([dschwen](https://github.com/dschwen))
 - fix 2.2.0 rev [\#739](https://github.com/ChurchCRM/CRM/pull/739) ([crossan007](https://github.com/crossan007))
 - Merge master \(2.1.3\) into develop \(2.2.0\) [\#737](https://github.com/ChurchCRM/CRM/pull/737) ([crossan007](https://github.com/crossan007))
