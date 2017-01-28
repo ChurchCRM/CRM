@@ -88,7 +88,11 @@ if (isset($_POST['save'])) {
         SystemConfig::setValueById($id, $value);
         next($type);
     }
-    $sGlobalMessage = gettext('Setting saved');
+    Redirect("SystemSettings.php?saved=true");
+}
+
+if (isset($_GET['saved'])) {
+  $sGlobalMessage = gettext('Setting saved');
 }
 
 require 'Include/Header.php';
