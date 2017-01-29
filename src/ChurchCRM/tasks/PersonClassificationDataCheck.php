@@ -33,7 +33,7 @@ class PersonClassificationDataCheck implements iTask
 
     public function getTitle()
     {
-        return gettext('Missing Classification Data' . " (" . $this->count . ")");
+        return gettext('Missing Classification Data') . " (" . $this->count . ")";
     }
 
     public function getDesc()
