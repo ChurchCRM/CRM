@@ -7,20 +7,19 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en\n"
 
-#: Register.php:48 AutoPaymentEditor.php:703 CartToFamily.php:249
-#: CSVExport.php:120 CSVImport.php:222 DirectoryReports.php:256
+#: AutoPaymentEditor.php:703 CartToFamily.php:249 CSVExport.php:120
+#: CSVImport.php:222 DirectoryReports.php:256
 #: external/templates/registration/family-register.php:34 FamilyEditor.php:692
-#: FamilyList.php:29 GeoPage.php:338 PersonEditor.php:851
+#: FamilyList.php:29 GeoPage.php:338 PersonEditor.php:851 Register.php:48
 #: queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "County"
 
-#: Register.php:49 AutoPaymentEditor.php:708 BackupDatabase.php:67
-#: CartToFamily.php:261 CSVExport.php:125 CSVImport.php:223
-#: DirectoryReports.php:260
+#: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:261
+#: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
 #: external/templates/registration/family-register.php:41
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
-#: FamilyList.php:30 GeoPage.php:339 PersonEditor.php:874
+#: FamilyList.php:30 GeoPage.php:339 PersonEditor.php:874 Register.php:49
 #, fuzzy
 msgid "Zip"
 msgstr "Postcode"
@@ -49,20 +48,20 @@ msgstr "Scan cheque"
 msgid "Fall"
 msgstr "Autumn"
 
-#: Reports/ConfirmReport.php:134 Reports/ConfirmReportEmail.php:142
+#: Reports/ConfirmReportEmail.php:134 Reports/ConfirmReport.php:134
 msgid "City, State, Zip"
 msgstr "City, Postcode"
 
-#: Reports/CanvassReports.php:244 Reports/ConfirmReportEmail.php:200
-#: Reports/ConfirmReportEmail.php:218 GroupReports.php:130
+#: GroupReports.php:130 Reports/CanvassReports.php:244
+#: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Mobile Phone"
 
-#: Reports/DirectoryReport.php:287 Reports/GroupReport.php:132
 #: ChurchCRM/Reports/PDF_Directory.php:305
 #: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:457
+#: ChurchCRM/Reports/PDF_Directory.php:457 Reports/DirectoryReport.php:287
+#: Reports/GroupReport.php:132
 msgid "Cell"
 msgstr "Mobile"
 

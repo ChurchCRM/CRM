@@ -16,6 +16,7 @@ use ChurchCRM\Tasks\PersonGenderDataCheck;
 use ChurchCRM\Tasks\PersonClassificationDataCheck;
 use ChurchCRM\Tasks\PersonRoleDataCheck;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
+use ChurchCRM\Tasks\CheckUploadSizeTask;
 
 class TaskService
 {
@@ -40,7 +41,8 @@ class TaskService
             new PersonGenderDataCheck(),
             new PersonClassificationDataCheck(),
             new PersonRoleDataCheck(),
-            new UpdateFamilyCoordinatesTask()
+            new UpdateFamilyCoordinatesTask(),
+            new CheckUploadSizeTask()
         ];
     }
 
