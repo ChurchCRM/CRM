@@ -339,7 +339,10 @@ class SystemService
             'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
             'PHP Version | ' . phpversion() . "\r\n" .
             'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
-            'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n";
+            'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
+            'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
+            'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json')."\r\n";
+        
         if (function_exists('apache_get_modules')) {
             $issueDescription .= 'Apache Modules    |' . implode(',', apache_get_modules());
         }
@@ -355,7 +358,7 @@ class SystemService
         curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata));
         curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curlService, CURLOPT_CONNECTTIMEOUT, 1);
-
+        
         $result = curl_exec($curlService);
         if ($result === false) {
             throw new \Exception('Unable to reach the issue bridge', 500);
