@@ -42,7 +42,29 @@ $sPageTitle = gettext("Family View");
 require "Include/Header.php";
 
 //Get the FamilyID out of the querystring
-$iFamilyID = FilterInput($_GET["FamilyID"], 'int');
+if (!empty($_GET['FamilyID'])) {
+    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+}
+if (!$_SESSION['bDeleteRecords']) {
+    Redirect('Menu.php');
+    exit;
+}
+
+//Deactivate/Activate Family
+if ($_POST['Action']== "Deactivate" && !empty($_POST['FID']))
+{
+    $sSQL = "UPDATE family_fam SET fam_DateDeactivated = '" . date('YmdHis'). "' WHERE fam_ID = ".$_POST['FID']." LIMIT 1";
+    RunQuery($sSQL);
+    Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
+    exit;
+}
+elseif ($_POST['Action']== "Activate" && !empty($_POST['FID']))
+{
+    $sSQL = "UPDATE family_fam SET fam_DateDeactivated = Null WHERE fam_ID = ".$_POST['FID']." LIMIT 1";
+    RunQuery($sSQL);
+    Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
+    exit;
+}
 
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
@@ -98,10 +120,10 @@ $sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
 
 //Get the pledges for this family
 $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
-         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, 
+         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName,
          a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible,
          plg_GroupKey
-		 FROM pledge_plg 
+		 FROM pledge_plg
 		 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
 		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 		 WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
@@ -109,7 +131,7 @@ $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_met
 
 //Get the automatic payments for this family
 $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
-                   a.Per_LastName AS EnteredLastName, 
+                   a.Per_LastName AS EnteredLastName,
                    b.fun_Name AS fundName
 		 FROM autopayment_aut
 		 LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
@@ -157,6 +179,14 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 <script>
     var familyId = <?= $fam_ID ?>;
 </script>
+
+ <?php if (!empty($fam_DateDeactivated)) {
+ ?>
+    <div class="alert alert-warning">
+        <strong><?= gettext(" This Family is Deactivated") ?> </strong>
+    </div>
+    <?php
+} ?>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-4">
         <div class="box box-primary">
@@ -306,16 +336,31 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
                         }
                     }
-    if ($_SESSION['bNotes']) {
-        ?>
+                if ($_SESSION['bNotes']) {
+                ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
                             class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                     <?php
 
-    } ?>
+                } ?>
                 <a class="btn btn-app"
                    href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
                         class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
+
+                <?php if ($bOkToEdit) {
+                    if (empty($fam_DateDeactivated)) {
+                        ?>
+                        <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-activate-deactivate-family"><i
+                                class="fa fa-times-circle-o"></i><?= gettext("Deactivate this Family") ?></a>
+                        <?php
+                    } else {
+                        ?>
+                        <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-activate-deactivate-family"><i
+                                class="fa fa-check-circle-o"></i><?= gettext("Activate this Family") ?></a>
+                        <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -886,6 +931,44 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
                     <input type="submit" class="btn btn-primary" value="<?= gettext("Upload Image") ?>">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="confirm-activate-deactivate-family" tabindex="-1" role="dialog" aria-labelledby="confirm-activate-deactivate-family"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="FamilyView.php?FamilyID=<?= $iFamilyID ?>" method="post" enctype="multipart/form-data"
+              id="ActivateDeactivateFamily">
+            <input type="hidden" name="FID" value="<?php echo $iFamilyID; ?>">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="deactivate-family-label"><?= gettext((empty($fam_DateDeactivated)?"Deactivate":"Activate") . " Family") ?></h4>
+                </div>
+                <div class="modal-body">
+
+                    <p><?php
+                        if (empty($fam_DateDeactivated)) {
+                            $confirmMessage = GetText("Are you sure you want to DEACTIVATE Family ID: " . $iFamilyID . " ( " . $fam_Name . ")?");
+                        }
+                        else {
+                            $confirmMessage = GetText("Are you sure you want to Activate Family ID: ". $iFamilyID ." ( " . $fam_Name . ")?");
+                        }
+                        echo $confirmMessage;
+                        ?>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
+                    <?php if (empty($fam_DateDeactivated)) {
+                        ?>
+                        <input type="submit" name="Action" value="<?php echo gettext("Deactivate"); ?>" class="btn btn-warning" >
+                    <?php } else { ?>
+                        <input type="submit" name="Action" value="<?php echo gettext("Activate"); ?>" class="btn btn-success">
+                    <?php } ?>
                 </div>
             </div>
         </form>
