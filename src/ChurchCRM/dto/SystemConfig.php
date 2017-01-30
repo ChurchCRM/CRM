@@ -65,7 +65,7 @@ class SystemConfig
         "iPDFOutputType" => new ConfigItem(20, "iPDFOutputType", "number", "1", gettext("PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window")),
         "sDefaultCity" => new ConfigItem(21, "sDefaultCity", "text", "", gettext("Default City")),
         "sDefaultState" => new ConfigItem(22, "sDefaultState", "text", "", gettext("Default State - Must be 2-letter abbreviation!")),
-        "sDefaultCountry" => new ConfigItem(23, "sDefaultCountry", "country", "United States", gettext("Default Country")),
+        "sDefaultCountry" => new ConfigItem(23, "sDefaultCountry", "choice", "", "", json_encode(["Choices" => Countries::getNames()])),
         "bEmailSend" => new ConfigItem(24, "bEmailSend", "boolean", "", gettext("If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP.")),
         "sSendType" => new ConfigItem(25, "sSendType", "choice", "smtp", gettext("The method for sending email. Either 'smtp' or 'sendmail'"), '{"Choices":["'.gettext("smtp").'","'.gettext("SendMail").'"]}'),
         "sToEmailAddress" => new ConfigItem(26, "sToEmailAddress", "text", "", gettext("Default account for receiving a copy of all emails")),
