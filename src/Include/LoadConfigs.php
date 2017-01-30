@@ -121,7 +121,6 @@ if (count($results) == 0) {
     $version->setVersion($systemService->getInstalledVersion());
     $version->setUpdateStart(new DateTime());
     SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/install/Install.sql', $connection);
-    SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/upgrade/update_config.sql', $connection);
     $version->setUpdateEnd(new DateTime());
     $version->save();
 }
