@@ -265,6 +265,19 @@ class PDF_Directory extends ChurchInfoReport
             return '';
         }
     }
+    
+    public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
+    {
+      if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
+            $formatString = SystemConfig::getValue("sDateFormatShort");
+            if (!$per_BirthYear || $per_Flags) {  // if the year is not present, or the user does not want year shown
+              $formatString =  preg_replace('/(\W?[C|g|Y|y]\W?)/i', '', $formatString); //remove any Year data from the format string
+            }
+            return  date($formatString, mktime(0,0,0,$per_BirthMonth,$per_BirthDay,$per_BirthYear));
+        } else {
+            return '';
+        }
+    }
 
     // This function formats the string for the family info
     public function sGetFamilyString($aRow)
@@ -363,16 +376,8 @@ class PDF_Directory extends ChurchInfoReport
         }
 
         $iTempLen = strlen($sHeadStr);
-
-        if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $formatString = SystemConfig::getValue("sDateFormatShort");
-            if (!$per_BirthYear || $per_Flags) {  // if the year is not present, or the user does not want year shown
-              $formatString =  preg_replace('/(\W?[C|g|Y|y]\W?)/i', '', $formatString); //remove any Year data from the format string
-            }
-            $sHeadStr .= " " . date($formatString, mktime(0,0,0,$per_BirthMonth,$per_BirthDay,$per_BirthYear)) . "\n";
-        } else {
-            $sHeadStr .= "\n";
-        }
+        
+        $sHeadStr .= " " . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
         $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 
@@ -429,17 +434,7 @@ class PDF_Directory extends ChurchInfoReport
             $sMemberStr .= ' '.$per_Suffix;
         }
 
-        if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $formatString = SystemConfig::getValue("sDateFormatShort");
-            if (!$per_BirthYear || $per_Flags) {  // if the year is not present, or the user does not want year shown
-              $formatString =  preg_replace('/(\W?[C|g|Y|y]\W?)/i', '', $formatString); //remove any Year data from the format string
-            }
-            $sMemberStr .= " " . date($formatString, mktime(0,0,0,$per_BirthMonth,$per_BirthDay,$per_BirthYear)) . "\n";
-        } else {
-            $sMemberStr .= "\n";
-        }
-        
-        
+        $sMemberStr .= " " . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
         $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 
