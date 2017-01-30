@@ -173,7 +173,7 @@ require 'Include/Header.php';
                                     $value = $keyValue[1];
                                     $text = $keyValue[0] . ' ['. $value .']';
                                 }
-                                echo '<option value = '.$value.' '.($setting->getValue() == $value ? 'selected' : '').'>'.$text.'</option>';
+                                echo '<option value = "'.$value.'" '.($setting->getValue() == $value ? 'selected' : '').'>'.$text.'</option>';
                             } ?>
                           </select>
                         <?php
