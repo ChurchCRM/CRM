@@ -29,7 +29,6 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\ConfigQuery;
-use ChurchCRM\data\Countries;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 
@@ -56,7 +55,7 @@ if (isset($_POST['save'])) {
     // Filter Input
     if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
       $value = FilterInput($new_value[$id], 'htmltext');
-    } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'country') {
+    } elseif ($current_type == 'text' || $current_type == 'textarea') {
         $value = FilterInput($new_value[$id]);
     } elseif ($current_type == 'number') {
         $value = FilterInput($new_value[$id], 'float');
@@ -160,27 +159,8 @@ require 'Include/Header.php';
                       <input type=hidden name='type[<?= $setting->getId() ?>]' value='<?= $setting->getType() ?>'>
                       <td>
                         <!--  Current Value -->
-                        <?php if ($setting->getName() == 'sTimeZone') {
-                    ?>
-                          <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
-                            <?php
-                            foreach (timezone_identifiers_list() as $timeZone) {
-                                echo "<option value = '".$timeZone."'' ".($setting->getValue() == $timeZone ? 'selected' : '').'>'.$timeZone.'</option>';
-                            } ?>
-                          </select>
                         <?php
-
-                } elseif ($setting->getType() == 'country') {
-                    ?>
-                          <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
-                            <?php
-                            foreach (Countries::getNames() as $country) {
-                                echo "<option value = '".$country."'' ".($setting->getValue() == $country ? 'selected' : '').'>'.gettext($country).'</option>';
-                            } ?>
-                          </select>
-                        <?php
-
-                } elseif ($setting->getType() == 'choice') {
+                        if ($setting->getType() == 'choice') {
                     ?>
                           <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox" style="width: 100%">
                             <?php

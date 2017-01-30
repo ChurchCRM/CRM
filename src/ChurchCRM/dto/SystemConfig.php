@@ -3,7 +3,8 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Config;
-Use ChurchCRM\dto\ConfigItem;
+use ChurchCRM\dto\ConfigItem;
+use ChurchCRM\data\Countries;
 
 class SystemConfig
 {
@@ -97,7 +98,7 @@ class SystemConfig
         "iChecksPerDepositForm" => new ConfigItem(57, "iChecksPerDepositForm", "number", "14", gettext("Number of checks for Deposit Slip Report")),
         "bUseScannedChecks" => new ConfigItem(58, "bUseScannedChecks", "boolean", "0", gettext("Set true to enable use of scanned checks")),
         "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), '{"Choices":["'.gettext("miles").'","'.gettext("kilometers").'"]}'),
-        "sTimeZone" => new ConfigItem(65, "sTimeZone", "text", "America/New_York", gettext("Time zone- see http://php.net/manual/en/timezones.php for valid choices.")),
+        "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone- see http://php.net/manual/en/timezones.php for valid choices."), json_encode(["Choices"=>timezone_identifiers_list()])),
         "sGMapIcons" => new ConfigItem(66, "sGMapIcons","text", "green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", "text", "red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", gettext("Names of markers for Google Maps in order of classification")),
         "cfgForceUppercaseZip" => new ConfigItem(67, "cfgForceUppercaseZip", "boolean", "0", gettext("Make user-entered zip/postcodes UPPERCASE when saving to the database.")),
         "bEnableNonDeductible" => new ConfigItem(72, "bEnableNonDeductible", "boolean", "0", gettext("Enable non-deductible payments")),
@@ -155,7 +156,7 @@ class SystemConfig
         "sEnableIntegrityCheck" => new ConfigItem(1044, "sEnableIntegrityCheck", "boolean", "1", gettext("Enable Integrity Check")),
         "sIntegrityCheckInterval" => new ConfigItem(1045, "sIntegrityCheckInterval", "text", "168", gettext("Interval in Hours for Integrity Check")),
         "sLastIntegrityCheckTimeStamp" => new ConfigItem(1046, "sLastIntegrityCheckTimeStamp", "text", "", gettext("Last Integrity Check Timestamp")),
-        "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "country", "", gettext("Church Country")),
+        "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "choice", "", "", json_encode(["Choices" => Countries::getNames()])),
         "sConfirmSincerely" => new ConfigItem(1048, "sConfirmSincerely", "text", "Sincerely", gettext("Used to end a letter before Signer")),
         "googleTrackingID" => new ConfigItem(1050, "googleTrackingID", "text", "", gettext("Google Analytics Tracking Code")),
         "mailChimpApiKey" => new ConfigItem(2000, "mailChimpApiKey", "text", "", gettext("see http://kb.mailchimp.com/accounts/management/about-api-keys")),
@@ -263,7 +264,7 @@ class SystemConfig
         if ($configItem->getId() == $Id)
         {
           $configItem->setValue($value);
-          $success = $true;
+          $success = true;
         }
       }
       if (! $success )
