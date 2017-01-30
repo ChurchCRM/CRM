@@ -82,7 +82,7 @@
         ],
         "dbVersion": "2.4.0"
     },
-    "current": {
+    "pre-2.5.0": {
         "versions": [
             "2.4.0",
             "2.4.1",
@@ -91,9 +91,17 @@
             "2.4.4"
         ],
         "scripts": [
-            "/mysql/upgrade/2.5.0/2.5.0-tokens.sql",
-            "/mysql/upgrade/2.5.0/2.5.0-tasks.sql"
+            "/mysql/upgrade/2.5.0.sql"
         ],
-        "dbVersion": "2.5.0"
+        "dbVersion":"2.5.0"
+    },
+    "current": {
+        "versions": [
+          "2.5.0",
+          "2.5.1",
+          "2.5.2"
+        ],
+        "scripts":[],
+        "dbVersion": "2.6.0"
     }
 }

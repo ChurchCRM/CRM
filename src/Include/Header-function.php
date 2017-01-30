@@ -29,6 +29,8 @@
 
 require_once 'Functions.php';
 
+use ChurchCRM\Service\SystemService;
+
 function Header_head_metatag()
 {
     global $bExportCSV, $sMetaRefresh, $sGlobalMessage;
@@ -45,7 +47,6 @@ function Header_head_metatag()
 function Header_modals()
 {
     ?>
-
   <!-- Issue Report Modal -->
   <div id="IssueReportModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -98,22 +99,30 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $sRootPath, $localeInfo; ?>
+    global $sRootPath, $localeInfo;
+    $systemService = new SystemService(); ?>
   <script src="<?= $sRootPath ?>/skin/js/IssueReporter.js"></script>
 
   <script>
     window.CRM = {
       root: "<?= $sRootPath ?>",
       lang: "<?= $localeInfo->getLanguageCode() ?>",
-      locale: "<?= $localeInfo->getLocale() ?>"
+      locale: "<?= $localeInfo->getLocale() ?>",
+      maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
+      maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>"
     };
 
     window.CRM.DisplayErrorMessage = function(endpoint, error) {
+
+      message = "<p><?= gettext("Error making API Call to") ?>: " + endpoint + 
+        "</p><p><?= gettext("Error text") ?>: " + error.message;
+      if (error.trace)
+      {
+        message += "</p><?= gettext("Stack Trace") ?>: <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
+      }
       bootbox.alert({
         title: "<?= gettext("ERROR!") ?>",
-        message:"<p><?= gettext("Error making API Call to") ?>: " + endpoint + 
-        "</p><p><?= gettext("Error text") ?>: " + error.message +
-        "</p><?= gettext("Stack Trace") ?>: <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>"
+        message: message
       });
     };
 
@@ -144,7 +153,7 @@ function Header_body_scripts()
 
     function LimitTextSize(theTextArea, size) {
       if(theTextArea.value.length > size) {
-        theTextArea.value = theTextArea.value.mb_substr(0, size);
+        theTextArea.value = theTextArea.value.substr(0, size);
       }
     }
 

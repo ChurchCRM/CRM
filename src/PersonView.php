@@ -718,7 +718,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           }
                         } ?>
                       </select>
-                      <input type="submit" class="btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
+                      <input type="submit" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
                     </form>
                   </div>
                 </div>
