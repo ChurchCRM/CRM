@@ -193,7 +193,7 @@ require 'Include/Header.php';
                                     $value = $keyValue[1];
                                     $text = $keyValue[0] . ' ['. $value .']';
                                 }
-                                echo '<option value = '.$value.' '.($setting->getValue() == $value ? 'selected' : '').'>'.gettext($text).'</option>';
+                                echo '<option value = '.$value.' '.($setting->getValue() == $value ? 'selected' : '').'>'.$text.'</option>';
                             } ?>
                           </select>
                         <?php
@@ -253,7 +253,7 @@ require 'Include/Header.php';
                       <td>
                         <?php if ($setting->getTooltip() != '') {
                           ?>
-                          <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="<?= gettext($setting->getTooltip()) ?>"></i>
+                          <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="<?= $setting->getTooltip() ?>"></i>
                         <?php
 
                       } ?>

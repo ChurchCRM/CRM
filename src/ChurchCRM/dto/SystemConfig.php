@@ -219,27 +219,56 @@ class SystemConfig
 
     public static function getValue($name)
     {
-      return self::$configs[$name]->getValue();
+      if ( isset(self::$configs[$name]) )
+      {
+        return self::$configs[$name]->getValue();
+      }
+      else
+      {
+        throw new \Exception (gettext("An invalid configuration name has been requested").": ".$name);
+      }
     }
 
     public static function getBooleanValue($name)
     {
-        return self::$configs[$name]->getValue();
+      if ( isset(self::$configs[$name]) )
+      {
+        return self::$configs[$name]->getBooleanValue();
+      }
+      else
+      {
+        throw new \Exception (gettext("An invalid configuration name has been requested").": ".$name);
+      }
+        
     }
 
     public static function setValue($name, $value)
     {
-       self::$configs[$name]->setValue($value);
+      if ( isset(self::$configs[$name]) )
+      {
+        self::$configs[$name]->setValue($value);
+      }
+      else
+      {
+        throw new \Exception (gettext("An invalid configuration name has been requested").": ".$name);
+      }
+       
     }
 
     public static function setValueById($Id, $value)
     {
+      $success = false;
       foreach (self::$configs as $configItem)
       {
         if ($configItem->getId() == $Id)
         {
           $configItem->setValue($value);
+          $success = $true;
         }
+      }
+      if (! $success )
+      {
+        throw new \Exception (gettext("An invalid configuration id has been requested").": ".$Id);
       }
     }
 

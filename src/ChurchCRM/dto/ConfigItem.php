@@ -47,6 +47,11 @@ class ConfigItem
       return $this->default;
     }
   }
+
+  public function getBooleanValue()
+  {
+    return boolval($this->getValue());
+  }
   
   public function setValue($value)
   {
