@@ -51,15 +51,12 @@ if (!$_SESSION['bDeleteRecords']) {
 }
 
 //Deactivate/Activate Family
-if ($_POST['Action']== "Deactivate" && !empty($_POST['FID']))
-{
+if ($_POST['Action']== "Deactivate" && !empty($_POST['FID'])) {
     $sSQL = "UPDATE family_fam SET fam_DateDeactivated = '" . date('YmdHis'). "' WHERE fam_ID = ".$_POST['FID']." LIMIT 1";
     RunQuery($sSQL);
     Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
     exit;
-}
-elseif ($_POST['Action']== "Activate" && !empty($_POST['FID']))
-{
+} elseif ($_POST['Action']== "Activate" && !empty($_POST['FID'])) {
     $sSQL = "UPDATE family_fam SET fam_DateDeactivated = Null WHERE fam_ID = ".$_POST['FID']." LIMIT 1";
     RunQuery($sSQL);
     Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
@@ -181,12 +178,13 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 </script>
 
  <?php if (!empty($fam_DateDeactivated)) {
- ?>
+    ?>
     <div class="alert alert-warning">
         <strong><?= gettext(" This Family is Deactivated") ?> </strong>
     </div>
     <?php
-} ?>
+
+    } ?>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-4">
         <div class="box box-primary">
@@ -337,7 +335,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                         }
                     }
                 if ($_SESSION['bNotes']) {
-                ?>
+                    ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
                             class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                     <?php
@@ -953,12 +951,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <p><?php
                         if (empty($fam_DateDeactivated)) {
                             $confirmMessage = GetText("Are you sure you want to DEACTIVATE Family ID: " . $iFamilyID . " ( " . $fam_Name . ")?");
-                        }
-                        else {
+                        } else {
                             $confirmMessage = GetText("Are you sure you want to Activate Family ID: ". $iFamilyID ." ( " . $fam_Name . ")?");
                         }
-                        echo $confirmMessage;
-                        ?>
+                        echo $confirmMessage; ?>
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -966,9 +962,12 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <?php if (empty($fam_DateDeactivated)) {
                         ?>
                         <input type="submit" name="Action" value="<?php echo gettext("Deactivate"); ?>" class="btn btn-warning" >
-                    <?php } else { ?>
+                    <?php
+                    } else {
+                        ?>
                         <input type="submit" name="Action" value="<?php echo gettext("Activate"); ?>" class="btn btn-success">
-                    <?php } ?>
+                    <?php
+                    } ?>
                 </div>
             </div>
         </form>
