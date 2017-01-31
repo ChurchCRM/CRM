@@ -375,9 +375,9 @@ function DisplayParameterForm()
 if (mysqli_num_rows($rsParameters)) {
     mysqli_data_seek($rsParameters, 0);
 }
-while ($aRow = mysqli_fetch_array($rsParameters)) {
-    echo getQueryFormInput($aRow);
-} ?>
+    while ($aRow = mysqli_fetch_array($rsParameters)) {
+        echo getQueryFormInput($aRow);
+    } ?>
                     
                     <div class="form-group text-right">
                         <input class="btn btn-primary" type="Submit" value="Execute Query" name="Submit">
