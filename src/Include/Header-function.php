@@ -30,11 +30,12 @@
 require_once 'Functions.php';
 
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\dto\SystemURLs;
 
 function Header_head_metatag()
 {
     global $bExportCSV, $sMetaRefresh, $sGlobalMessage;
-    global $sPageTitle, $sRootPath;
+    global $sPageTitle
 
     if (strlen($sMetaRefresh)) {
         echo $sMetaRefresh;
@@ -124,13 +125,13 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $sRootPath, $localeInfo;
+    global $localeInfo;
     $systemService = new SystemService(); ?>
-  <script src="<?= $sRootPath ?>/skin/js/IssueReporter.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
 
   <script>
     window.CRM = {
-      root: "<?= $sRootPath ?>",
+      root: "<?= SystemURLs::getRootPath() ?>",
       lang: "<?= $localeInfo->getLanguageCode() ?>",
       locale: "<?= $localeInfo->getLocale() ?>",
       maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
@@ -264,9 +265,9 @@ function addMenu($menu)
 
 function addMenuItem($aMenu, $mIdx)
 {
-    global $security_matrix, $sRootPath;
+    global $security_matrix;
 
-    $link = ($aMenu['uri'] == '') ? '' : $sRootPath.'/'.$aMenu['uri'];
+    $link = ($aMenu['uri'] == '') ? '' : SystemURLs::getRootPath().'/'.$aMenu['uri'];
     $text = $aMenu['statustext'];
     if (!is_null($aMenu['session_var'])) {
         if (($link > '') && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
@@ -320,11 +321,11 @@ function addMenuItem($aMenu, $mIdx)
       <ul class="treeview-menu">
         <?php
         if ($aMenu['name'] == 'sundayschool') {
-            echo "<li><a href='".$sRootPath."/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>".gettext('Dashboard').'</a></li>';
+            echo "<li><a href='".SystemURLs::getRootPath()."/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>".gettext('Dashboard').'</a></li>';
             $sSQL = 'select * from group_grp where grp_Type = 4 order by grp_name';
             $rsSundaySchoolClasses = RunQuery($sSQL);
             while ($aRow = mysqli_fetch_array($rsSundaySchoolClasses)) {
-                echo "<li><a href='".$sRootPath.'/sundayschool/SundaySchoolClassView.php?groupId='.$aRow[grp_ID]."'><i class='fa fa-angle-double-right'></i> ".gettext($aRow[grp_Name]).'</a></li>';
+                echo "<li><a href='".SystemURLs::getRootPath().'/sundayschool/SundaySchoolClassView.php?groupId='.$aRow[grp_ID]."'><i class='fa fa-angle-double-right'></i> ".gettext($aRow[grp_Name]).'</a></li>';
             }
         }
         }
@@ -391,9 +392,7 @@ function addMenuItem($aMenu, $mIdx)
 
       function addEntry($aMenu)
       {
-          global $sRootPath;
-
-          $link = ($aMenu['uri'] == '') ? '' : $sRootPath.'/'.$aMenu['uri'];
+          $link = ($aMenu['uri'] == '') ? '' : SystemURLs::getRootPath().'/'.$aMenu['uri'];
           $text = $aMenu['statustext'];
           $content = $aMenu['content'];
           if (!is_null($aMenu['session_var'])) {

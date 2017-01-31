@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
 //Set the page title
@@ -113,6 +115,6 @@ require 'Include/Header.php';
     </div>
   </div>
 </div>
-<script src="<?= $sRootPath; ?>/skin/js/FindDepositSlip.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
 
 <?php require 'Include/Footer.php' ?>

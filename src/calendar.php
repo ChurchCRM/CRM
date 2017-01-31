@@ -4,6 +4,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Service\CalendarService;
 
 $calenderService = new CalendarService();
+use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Church Calendar');
@@ -24,7 +25,7 @@ require 'Include/Header.php'; ?>
       <div class="fc-event-container fc-day-grid-event" style="background-color:<?= $type['backgroundColor']?>;border-color:<?= $type['backgroundColor']?>;color: white; width: 100px">
           <div class="fc-title"><?= gettext($type['Name'])?></div>
       </div>
-      <?php 
+      <?php
 }?>
     </div>
   </div>
@@ -45,7 +46,7 @@ require 'Include/Header.php'; ?>
 &nbsp;
 
 <!-- fullCalendar 2.2.5 -->
-<script src="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.min.js"></script>
+<script src="<?= SystemURLs::getRootPath()  ?>/skin/fullcalendar/fullcalendar.min.js"></script>
 <script>
   $(function () {
     /* initialize the calendar

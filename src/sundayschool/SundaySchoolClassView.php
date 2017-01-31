@@ -5,6 +5,7 @@ require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SundaySchoolService;
+use ChurchCRM\dto\SystemURLs;
 
 $sundaySchoolService = new SundaySchoolService();
 
@@ -136,7 +137,7 @@ require '../Include/Header.php';
           </div>
         </div>
       </div>
-    <?php 
+    <?php
     } ?>
   </div>
 </div>
@@ -313,13 +314,13 @@ function implodeUnique($array, $withQuotes)
 </div><!-- /.modal -->
 
 <!-- FLOT CHARTS -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"
         type="text/javascript"></script>
 
 <script type="text/javascript" charset="utf-8">
@@ -421,7 +422,7 @@ function implodeUnique($array, $withQuotes)
   }
 
 </script>
-<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
 <?php
 require '../Include/Footer.php';
 ?>

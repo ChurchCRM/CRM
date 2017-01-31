@@ -34,6 +34,7 @@ use ChurchCRM\Service\PersonService;
 // Set the current version of this PHP file
 // Important!  These must be updated before every software release.
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\dto\SystemURLs;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -227,8 +228,6 @@ if (isset($_POST['BulkAddToCart'])) {
 // Convert a relative URL into an absolute URL and return absolute URL.
 function RedirectURL($sRelativeURL)
 {
-    global $sRootPath;
-
   // Test if file exists before redirecting.  May need to remove
   // query string first.
   $iQueryString = strpos($sRelativeURL, '?');
@@ -246,13 +245,12 @@ function RedirectURL($sRelativeURL)
 
   // With the query string removed we can test if file exists
   if (file_exists($sFullPath) && is_readable($sFullPath)) {
-      return $sRootPath.'/'.$sRelativeURL;
+      return SystemURLs::getRootPath().'/'.$sRelativeURL;
   } else {
       $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n"
       ."\$sPathExtension = $sPathExtension<br>\n"
-      ."\$sDocumentRoot = SystemURLs::getDocumentRoot()<br>\n"
-      .'$sRootPath = '
-      .$sRootPath."<br>\n";
+      ."\$sDocumentRoot = ".SystemURLs::getDocumentRoot()."<br>\n"
+      .'$sRootPath = ' .SystemURLs::getRootPath()."<br>\n";
 
       die($sErrorMessage);
   }

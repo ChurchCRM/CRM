@@ -33,6 +33,7 @@ use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
+use ChurchCRM\dto\SystemURLs;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -978,6 +979,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
 } ?>
 
-    <script src="<?= $sRootPath; ?>/skin/js/FamilyView.js"></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
 
     <?php require "Include/Footer.php" ?>
