@@ -216,31 +216,31 @@ function DoQuery()
                     } ?>
             </thead>
             <tbody>
-                <?php
-                    $aHiddenFormField = [];
+<?php
+    $aHiddenFormField = [];
 
-                    while ($aRow = mysqli_fetch_array($rsQueryResults)) {
-                        //Alternate the background color of the row
-                        $sRowClass = AlternateRowStyle($sRowClass);
+    while ($aRow = mysqli_fetch_array($rsQueryResults)) {
+        //Alternate the background color of the row
+        $sRowClass = AlternateRowStyle($sRowClass);
 
-                        echo '<tr class="'.$sRowClass.'">';
+        echo '<tr class="'.$sRowClass.'">';
 
-                        //Loop through the fields and write each one
-                        for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-                            //If this field is called "AddToCart", add this to the hidden form field...
-                            $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
-                            if ($fieldInfo->name == 'AddToCart') {
-                                $aHiddenFormField[] = $aRow[$iCount];
-                            }
-                            //...otherwise just render the field
-                            else {
-                                //Write the actual value of this row
-                                echo '<td>'.$aRow[$iCount].'</td>';
-                            }
-                        }
+        //Loop through the fields and write each one
+        for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
+            //If this field is called "AddToCart", add this to the hidden form field...
+            $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
+            if ($fieldInfo->name == 'AddToCart') {
+                $aHiddenFormField[] = $aRow[$iCount];
+            }
+            //...otherwise just render the field
+            else {
+                //Write the actual value of this row
+                echo '<td>'.$aRow[$iCount].'</td>';
+            }
+        }
 
-                        echo '</tr>';
-                    } ?>
+        echo '</tr>';
+    } ?>
             </tbody>
         </table>
     </div>
@@ -370,14 +370,14 @@ function DisplayParameterForm()
             <div class="box-body">
             
                 <form method="post" action="QueryView.php?QueryID=<?= $iQueryID ?>">
-                    <?php
-                        //Loop through the parameters and display an entry box for each one
-                        if (mysqli_num_rows($rsParameters)) {
-                            mysqli_data_seek($rsParameters, 0);
-                        }
-                        while ($aRow = mysqli_fetch_array($rsParameters)) {
-                            echo getQueryFormInput($aRow);
-                        } ?>
+<?php
+//Loop through the parameters and display an entry box for each one
+if (mysqli_num_rows($rsParameters)) {
+    mysqli_data_seek($rsParameters, 0);
+}
+while ($aRow = mysqli_fetch_array($rsParameters)) {
+    echo getQueryFormInput($aRow);
+} ?>
                     
                     <div class="form-group text-right">
                         <input class="btn btn-primary" type="Submit" value="Execute Query" name="Submit">
