@@ -228,7 +228,7 @@ if (isset($_POST['BulkAddToCart'])) {
 // Convert a relative URL into an absolute URL and return absolute URL.
 function RedirectURL($sRelativeURL)
 {
-  // Test if file exists before redirecting.  May need to remove
+    // Test if file exists before redirecting.  May need to remove
   // query string first.
   $iQueryString = strpos($sRelativeURL, '?');
     if ($iQueryString) {

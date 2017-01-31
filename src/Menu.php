@@ -194,6 +194,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                             <td><?= FormatDate($row['fam_DateEntered'], false) ?></td>
                         </tr>
                         <?php
+
  } ?>
                         </tbody>
                     </table>
@@ -226,6 +227,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <td><?= FormatDate($row['fam_DateLastEdited'], false) ?></td>
                             </tr>
                         <?php
+
  } ?>
                         </tbody>
                     </table>
@@ -259,6 +261,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                             <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false) ?></span>
                         </li>
                         <?php
+
  } ?>
                     </ul>
                     <!-- /.users-list -->
@@ -290,6 +293,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
                             </li>
                         <?php
+
  } ?>
                     </ul>
                     <!-- /.users-list -->

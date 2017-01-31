@@ -26,6 +26,7 @@ require 'Include/Header.php'; ?>
           <div class="fc-title"><?= gettext($type['Name'])?></div>
       </div>
       <?php
+
 }?>
     </div>
   </div>
