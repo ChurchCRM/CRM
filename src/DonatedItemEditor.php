@@ -237,7 +237,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
 <?php if ($bMultibuy) {
     echo gettext('Multiple');
 } else {
-?>
+    ?>
                         <select name="Buyer" class="form-control">
                           <option value="0" selected><?= gettext('Unassigned') ?></option>
 <?php
