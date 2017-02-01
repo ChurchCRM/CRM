@@ -172,7 +172,7 @@ if (isset($_POST['EventID']) && isset($_POST['Verify']) && isset($_POST['child']
         
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Event: $event_title") ?></h3>
+                <h3 class="box-title"><?= gettext("Event"). ": " .$event_title ?></h3>
             </div>
             
             <div class="box-body">
@@ -274,7 +274,7 @@ if (isset($_POST['EventID']) && isset($_POST['Action']) && isset($_POST['child']
         <div class="col-md-8 col-xs-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext("Event: $event_title"); ?></h3>
+                    <h3 class="box-title"><?= gettext("Event") .": ".$event_title ?></h3>
                 </div>
                 
                 <div class="box-body">
@@ -322,7 +322,7 @@ if (isset($_POST['EventID']) && isset($_POST['Action']) && isset($_POST['child']
         
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext("Event: $event_title") ?></h3>
+                    <h3 class="box-title"><?= gettext("Event"). ": ".$event_title ?></h3>
                 </div>
                 
                 <div class="box-body">
@@ -650,33 +650,8 @@ function loadperson($iPersonID)
     if (file_exists($photoFile)) {
         echo '<a target="_blank" href="Images/Person/'.$iPersonID.'.jpg">';
         echo '<img border="1" src="'.$photoFile.'"></a>';
-/*			if ($bOkToEdit) {
-                echo '
-                    <form method="post"
-                    action="PersonView.php?PersonID=' . $iPersonID . '">
-                    <br>
-                    <input type="submit" class="icTinyButton"
-                    value="' . gettext("Delete Photo") . '" name="DeletePhoto">
-                    </form>';
-                }
-*/
     } else {
         echo '<img border="0" src="Images/NoPhoto.png"><br><br><br>';
-/*
-            if ($bOkToEdit) {
-                if (isset($PhotoError))
-                    echo '<span style="color: red;">' . $PhotoError . '</span><br>';
-
-                echo '
-                    <form method="post"
-                    action="PersonView.php?PersonID=' . $iPersonID . '"
-                    enctype="multipart/form-data">
-                    <input class="icTinyButton" type="file" name="Photo">
-                    <input type="submit" class="icTinyButton"
-                    value="' . gettext("Upload Photo") . '" name="UploadPhoto">
-                    </form>';
-            }
-*/
     }
 }
 ?>
