@@ -45,24 +45,19 @@ require "Include/Header.php";
 if (!empty($_GET['FamilyID'])) {
     $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
 }
-if (!$_SESSION['bDeleteRecords']) {
-    Redirect('Menu.php');
-    exit;
-}
 
 //Deactivate/Activate Family
-if ($_POST['Action']== "Deactivate" && !empty($_POST['FID'])) {
-    $sSQL = "UPDATE family_fam SET fam_DateDeactivated = '" . date('YmdHis'). "' WHERE fam_ID = ".$_POST['FID']." LIMIT 1";
-    RunQuery($sSQL);
-    Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
-    exit;
-} elseif ($_POST['Action']== "Activate" && !empty($_POST['FID'])) {
-    $sSQL = "UPDATE family_fam SET fam_DateDeactivated = Null WHERE fam_ID = ".$_POST['FID']." LIMIT 1";
-    RunQuery($sSQL);
-    Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
-    exit;
+if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Action'])) {
+  $family = FamilyQuery::create()->findOneById($_POST['FID']);
+  if ($_POST['Action'] == "Deactivate") {
+    $family->setDateDeactivated(date('YmdHis'));
+  } elseif ($_POST['Action'] == "Activate") {
+    $family->setDateDeactivated(Null);
+  }
+  $family->save();
+  Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
+  exit;
 }
-
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
@@ -939,6 +934,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     <div class="modal-dialog">
         <form action="FamilyView.php?FamilyID=<?= $iFamilyID ?>" method="post" enctype="multipart/form-data"
               id="ActivateDeactivateFamily">
+        <!--form action="api/families/<?= $iFamilyID ?>/updatestatus" method="post" enctype="multipart/form-data"
+                id="ActivateDeactivateFamily"-->
             <input type="hidden" name="FID" value="<?php echo $iFamilyID; ?>">
             <div class="modal-content">
                 <div class="modal-header">
@@ -947,7 +944,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <h4 class="modal-title" id="deactivate-family-label"><?= gettext((empty($fam_DateDeactivated)?"Deactivate":"Activate") . " Family") ?></h4>
                 </div>
                 <div class="modal-body">
-
                     <p><?php
                         if (empty($fam_DateDeactivated)) {
                             $confirmMessage = GetText("Are you sure you want to DEACTIVATE Family ID: " . $iFamilyID . " ( " . $fam_Name . ")?");
