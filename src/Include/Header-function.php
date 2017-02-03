@@ -37,7 +37,7 @@ function Header_head_metatag()
     global $bExportCSV, $sMetaRefresh, $sGlobalMessage;
     global $sPageTitle
 
-    if (strlen($sMetaRefresh)) {
+    if (strlen($sMetaRefresh) > 0) {
         echo $sMetaRefresh;
     } ?>
   <title>ChurchCRM: <?= $sPageTitle ?></title>
