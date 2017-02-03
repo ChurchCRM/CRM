@@ -53,7 +53,7 @@ class PDF_Directory extends ChurchInfoReport
             if ($bDirUseTitlePage) {
                 $iPageNumber--;
             }
-            $this->Cell(0, 10, gettext('Page').' '.$iPageNumber.'    '.date('M d, Y g:i a', time()), 0, 0, 'C');
+            $this->Cell(0, 10, gettext('Page').' '.$iPageNumber.'    '.date(SystemConfig::getValue("sDateFormatShort").' g:i a', time()), 0, 0, 'C');  // in 2.6.0, create a new config for time formatting also
         }
     }
 
@@ -72,7 +72,7 @@ class PDF_Directory extends ChurchInfoReport
         //Move to the right
         $this->MultiCell(197, 10, "\n\n\n".SystemConfig::getValue('sChurchName')."\n\n".gettext('Directory')."\n\n", 0, 'C');
         $this->Ln(5);
-        $today = date('F j, Y');
+        $today = date(SystemConfig::getValue("sDateFormatLong"));
         $this->MultiCell(197, 10, $today."\n\n", 0, 'C');
 
         $sContact = sprintf("%s\n%s, %s  %s\n\n%s\n\n", SystemConfig::getValue('sChurchAddress'), SystemConfig::getValue('sChurchCity'), SystemConfig::getValue('sChurchState'), SystemConfig::getValue('sChurchZip'), SystemConfig::getValue('sChurchPhone'));
@@ -265,6 +265,19 @@ class PDF_Directory extends ChurchInfoReport
             return '';
         }
     }
+    
+    public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
+    {
+      if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
+            $formatString = SystemConfig::getValue("sDateFormatShort");
+            if (!$per_BirthYear || $per_Flags) {  // if the year is not present, or the user does not want year shown
+              $formatString =  preg_replace('/(\W?[C|g|Y|y]\W?)/i', '', $formatString); //remove any Year data from the format string
+            }
+            return  date($formatString, mktime(0,0,0,$per_BirthMonth,$per_BirthDay,$per_BirthYear));
+        } else {
+            return '';
+        }
+    }
 
     // This function formats the string for the family info
     public function sGetFamilyString($aRow)
@@ -308,7 +321,7 @@ class PDF_Directory extends ChurchInfoReport
             $sFamilyStr .= '   '.gettext('Email').': '.$fam_Email."\n";
         }
         if ($bDirWedding && ($fam_WeddingDate > 0)) {
-            $sFamilyStr .= '   '.gettext('Wedding').': '.date('m/d/Y', strtotime($fam_WeddingDate))."\n";
+            $sFamilyStr .= '   '.gettext('Wedding').': '.date(SystemConfig::getValue("sDateFormatShort"), strtotime($fam_WeddingDate))."\n";
         }
 
         return $sFamilyStr;
@@ -363,18 +376,8 @@ class PDF_Directory extends ChurchInfoReport
         }
 
         $iTempLen = strlen($sHeadStr);
-
-        if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $sHeadStr .= sprintf(' (%d/%d', $per_BirthMonth, $per_BirthDay);
-            if ($per_BirthYear && !$per_Flags) {
-                $sHeadStr .= sprintf("/%d)\n", $per_BirthYear);
-            } else {
-                $sHeadStr .= ")\n";
-            }
-        } else {
-            $sHeadStr .= "\n";
-            $iTempLen = strlen($sHeadStr);
-        }
+        
+        $sHeadStr .= " " . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
         $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 
@@ -431,16 +434,7 @@ class PDF_Directory extends ChurchInfoReport
             $sMemberStr .= ' '.$per_Suffix;
         }
 
-        if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $sMemberStr .= sprintf(' (%d/%d', $per_BirthMonth, $per_BirthDay);
-            if ($per_BirthYear && !$per_Flags) {
-                $sMemberStr .= sprintf("/%d)\n", $per_BirthYear);
-            } else {
-                $sMemberStr .= ")\n";
-            }
-        } else {
-            $sMemberStr .= "\n";
-        }
+        $sMemberStr .= " " . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
         $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 
