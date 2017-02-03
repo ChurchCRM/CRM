@@ -166,15 +166,6 @@ require 'Include/Header.php';
 <form method="post" action="DonatedItemEditor.php?<?= 'CurrentFundraiser='.$iCurrentFundraiser.'&DonatedItemID='.$iDonatedItemID.'&linkBack='.$linkBack; ?>" name="DonatedItemEditor">
     <div class="box box-primary">
         <div class="box-body">
-            <div class="form-group text-center">
-                <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="DonatedItemSubmit">
-                <?php if ($_SESSION['bAddRecords']): ?>
-                    <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
-                <?php endif; ?>
-                <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel"
-                onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'Menu.php'; ?>';">
-            </div>
-            
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-4 col-md-offset-2 col-xs-6">
@@ -192,7 +183,7 @@ require 'Include/Header.php';
                         
                         <div class="form-group">
                             <label><?= gettext('Donor'); ?>:</label>
-                            <select name="Donor" class="form-control">
+                            <select name="Donor" id="Donor" class="form-control select2">
                                 <option value="0" selected><?= gettext('Unassigned') ?></option>
 <?php
 $rsPeople = RunQuery($sPeopleSQL);
@@ -208,6 +199,11 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
 ?>
                             </select>
                         </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $("#Donor").select2();
+});
+</script>
                         
                         <div class="form-group">
                             <label><?= gettext('Title') ?>:</label>
@@ -293,6 +289,16 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                     
                 </div> <!-- row -->
             </div>
+            
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="DonatedItemSubmit">
+                <?php if ($_SESSION['bAddRecords']): ?>
+                    <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
+                <?php endif; ?>
+                <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel"
+                onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'Menu.php'; ?>';">
+            </div>
+            
         </div>
     </div>
 </form>
