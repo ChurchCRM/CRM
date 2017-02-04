@@ -50,9 +50,9 @@ if (!empty($_GET['FamilyID'])) {
 if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Action'])) {
   $family = FamilyQuery::create()->findOneById($_POST['FID']);
   if ($_POST['Action'] == "Deactivate") {
-    $family->setDateDeactivated(date('YmdHis'));
+    $family->deactivate();
   } elseif ($_POST['Action'] == "Activate") {
-    $family->setDateDeactivated(Null);
+    $family->activate();
   }
   $family->save();
   Redirect("FamilyView.php?FamilyID=". $_POST['FID']);

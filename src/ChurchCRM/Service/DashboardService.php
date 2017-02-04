@@ -2,28 +2,29 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\ListOptionQuery;
 class DashboardService
 {
     public function getFamilyCount()
     {
-        $sSQL = 'select
-        (select count(*) from family_fam where fam_DateDeactivated is NULL) as familyCount
-        from dual ;';
-        $rsQuickStat = RunQuery($sSQL);
-        $row = mysqli_fetch_array($rsQuickStat);
-        $data = ['familyCount' => $row['familyCount']];
+        $familyCount = FamilyQuery::Create()
+            ->filterByDateDeactivated()
+            ->count();
+        $data = ['familyCount' => $familyCount];
 
         return $data;
     }
 
     public function getPersonCount()
     {
-        $sSQL = 'select
-        (select count(*) from person_per JOIN family_fam ON family_fam.fam_ID = person_per.per_fam_ID where family_fam.fam_DateDeactivated is null ) as PersonCount
-        from dual ;';
-        $rsQuickStat = RunQuery($sSQL);
-        $row = mysqli_fetch_array($rsQuickStat);
-        $data = ['personCount' => $row['PersonCount']];
+        $personCount = PersonQuery::Create('per')
+            ->useFamilyQuery('fam','left join')
+                ->filterByDateDeactivated(null)
+            ->endUse()
+            ->count();
+        $data = ['personCount' => $personCount];
 
         return $data;
     }
