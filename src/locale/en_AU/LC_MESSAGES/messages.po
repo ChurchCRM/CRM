@@ -7,31 +7,31 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en-au\n"
 
-#: Register.php:50 AutoPaymentEditor.php:691 BackupDatabase.php:62
-#: CartToFamily.php:269 CSVExport.php:128 CSVImport.php:241
-#: DirectoryReports.php:255
-#: external/templates/registration/family-register.php:40 FamilyEditor.php:734
-#: FamilyList.php:30 GeoPage.php:330 PersonEditor.php:824
+#: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:261
+#: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
+#: external/templates/registration/family-register.php:41
+#: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
+#: FamilyList.php:30 GeoPage.php:339 PersonEditor.php:874 Register.php:49
 #, fuzzy
 msgid "Zip"
 msgstr "Postcode"
 
-#: DirectoryReports.php:175
+#: DirectoryReports.php:179
 msgid "Family Cell Phone"
 msgstr "Family Mobile"
 
-#: DirectoryReports.php:180
+#: DirectoryReports.php:184
 msgid "Personal Cell Phone"
 msgstr "Personal Mobile"
 
-#: FinancialReports.php:260 PledgeEditor.php:599 PledgeEditor.php:683
+#: FinancialReports.php:265 PledgeEditor.php:641 PledgeEditor.php:745
 msgid "Check"
 msgstr "Cheque"
 
-#: Reports/DirectoryReport.php:291 Reports/GroupReport.php:127
-#: ChurchCRM/Reports/PDF_Directory.php:299
-#: ChurchCRM/Reports/PDF_Directory.php:378
-#: ChurchCRM/Reports/PDF_Directory.php:441
+#: ChurchCRM/Reports/PDF_Directory.php:305
+#: ChurchCRM/Reports/PDF_Directory.php:391
+#: ChurchCRM/Reports/PDF_Directory.php:457 Reports/DirectoryReport.php:287
+#: Reports/GroupReport.php:132
 msgid "Cell"
 msgstr "Mobile"
 

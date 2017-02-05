@@ -18,6 +18,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 // Get the person ID from the querystring
 $iPersonID = FilterInput($_GET['PersonID'], 'int');
 
@@ -486,4 +488,4 @@ if ($_SESSION['bNotes']) {
 
 require 'Include/Footer-Short.php';
 ?>
-<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>

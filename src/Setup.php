@@ -4,25 +4,15 @@ if (file_exists('Include/Config.php')) {
     header('Location: index.php');
 }
 
-function hasApacheModule($module)
-{
-    if (function_exists('apache_get_modules')) {
-        return in_array($module, apache_get_modules());
-    }
-
-    return false;
+// don't depend on autoloader here, just in case validation doesn't pass.
+if (!(file_exists('ChurchCRM/dto/SystemURLs.php') && file_exists('ChurchCRM/Service/AppIntegrityService.php'))) {
+    echo gettext("One or more required setup files are missing.  Please verify you downloaded the correct ChurchCRM package");
+    exit;
 }
 
-function hasModRewrite()
-{
-    $check = hasApacheModule('mod_rewrite');
-
-    if (!$check && function_exists('shell_exec')) {
-        $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
-    }
-
-    return $check;
-}
+require_once 'ChurchCRM/dto/SystemURLs.php';
+ChurchCRM\dto\SystemURLs::init(str_replace('/Setup.php', '', $_SERVER['REQUEST_URI']), '', dirname(__FILE__));
+require_once 'ChurchCRM/Service/AppIntegrityService.php';
 
 if (isset($_POST['Setup'])) {
     $template = file_get_contents('Include/Config.php.example');
@@ -38,42 +28,16 @@ if (isset($_POST['Setup'])) {
 }
 
 if (isset($_GET['SystemIntegrityCheck'])) {
-    require_once 'ChurchCRM/dto/SystemURLs.php';
-    ChurchCRM\dto\SystemURLs::init('', '', dirname(__FILE__));
-    require_once 'ChurchCRM/Service/SystemService.php';  // don't depend on autoloader here, just in case validation doesn't pass.
-  $systemService = new \ChurchCRM\Service\SystemService();
-    $AppIntegrity = $systemService->verifyApplicationIntegrity();
+    $AppIntegrity = ChurchCRM\Service\AppIntegrityService::verifyApplicationIntegrity();
     echo $AppIntegrity['status'];
     exit();
 }
 
 if (isset($_GET['SystemPrerequisiteCheck'])) {
-    $required = [
-  'PHP 5.6+'                                  => version_compare(PHP_VERSION, '5.6.0', '>='),
-  'PCRE and UTF-8 Support'                    => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'),
-  'Multibyte Encoding'                        => extension_loaded('mbstring'),
-  'PHP Phar'                                  => extension_loaded('phar'),
-  'PHP Session'                               => extension_loaded('session'),
-  'PHP XML'                                   => extension_loaded('xml'),
-  'PHP EXIF'                                  => extension_loaded('exif'),
-  'PHP iconv'                                 => extension_loaded('iconv'),
-  'Mcrypt'                                    => extension_loaded('mcrypt'),
-  'Mod Rewrite'                               => hasModRewrite('mod_rewrite'),
-  'GD Library for image manipulation'         => (extension_loaded('gd') && function_exists('gd_info')),
-  'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
-  'cURL'                                      => function_exists('curl_version'),
-  'locale gettext'                            => function_exists('bindtextdomain'),
-  'Include file is writeable'                 => is_writable('Include/Config.php.example'),
-  ];
+    $required = ChurchCRM\Service\AppIntegrityService::getApplicationPrerequisites();
     header('Content-Type: application/json');
     echo json_encode($required);
     exit;
-}
-
-$temp = $_SERVER['REQUEST_URI'];
-$sRootPath = str_replace('/Setup.php', '', $temp);
-if ($sRootPath == '/') {
-    $sRootPath = '';
 }
 
 $URL = 'http'.(isset($_SERVER['HTTPS']) ? 's' : '').'://'.$_SERVER['HTTP_HOST'].'/';
@@ -97,7 +61,7 @@ window.CRM.prerequisites = [];
 window.CRM.checkIntegrity = function () {
   window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","pending");
   $.ajax({
-    url: "<?= $sRootPath ?>/Setup.php?SystemIntegrityCheck=1",
+    url: "<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>/Setup.php?SystemIntegrityCheck=1",
     method: "GET"
   }).done(function(data){
     if (data == "success" ) 
@@ -109,11 +73,14 @@ window.CRM.checkIntegrity = function () {
         window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","fail");
     }
    window.CRM.evaluateReadyness();
+  }).fail(function(){
+    window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","fail");
   });
 };
+
 window.CRM.checkPrerequisites = function () {
   $.ajax({
-    url: "<?= $sRootPath ?>/Setup.php?SystemPrerequisiteCheck=1",
+    url: "<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>/Setup.php?SystemPrerequisiteCheck=1",
     method: "GET",
     contentType: "application/json"
   }).done(function(data){
@@ -287,7 +254,7 @@ $("document").ready(function(){
 
                   <div class="col-md-4">
                     <label for="ROOT_PATH"><?= gettext('Root Path') ?>:</label>
-                    <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= $sRootPath ?>" class="form-control">
+                    <input type="text" name="ROOT_PATH" id="ROOT_PATH" value="<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>" class="form-control">
                   </div>
 
                   <div class="col-md-4">

@@ -3,16 +3,14 @@
 use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
-
-
 $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
 
-<form action="<?= $sRootPath ?>/external/register/done" method="post">
+<form action="<?= SystemURLs::getRootPath() ?>/external/register/done" method="post">
   <div class="register-box" style="width: 600px;">
     <div class="register-logo">
-      <a href="<?= $sRootPath ?>/"><b>Church</b>CRM</a>
+      <a href="<?= SystemURLs::getRootPath() ?>/"><b>Church</b>CRM</a>
     </div>
 
     <div class="register-box-body">
@@ -42,7 +40,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         <p/>
 
         <div class="text-center">
-          <a href="<?= $sRootPath ?>/" class="btn btn-success">Done</a>
+          <a href="<?= SystemURLs::getRootPath() ?>/" class="btn btn-success">Done</a>
         </div>
       </div>
 

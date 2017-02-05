@@ -197,14 +197,6 @@
         <column name="cfg_id" phpName="Id" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
         <column name="cfg_name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <column name="cfg_value" phpName="Value" type="LONGVARCHAR"/>
-        <column name="cfg_type" phpName="Type" type="CHAR" sqlType="enum('text','number','date','boolean','textarea')"
-                required="true" defaultValue="text"/>
-        <column name="cfg_default" phpName="Default" type="LONGVARCHAR" required="true"/>
-        <column name="cfg_tooltip" phpName="Tooltip" type="LONGVARCHAR" required="true"/>
-        <column name="cfg_section" phpName="Section" type="VARCHAR" size="50" required="true" defaultValue=""/>
-        <column name="cfg_category" phpName="Category" type="VARCHAR" size="20"/>
-        <column name="cfg_order" phpName="Order" type="INTEGER"/>
-        <column name="cfg_data" phpName="Data" type="LONGVARCHAR"/>
         <index name="cfg_id">
             <index-column name="cfg_id"/>
         </index>
