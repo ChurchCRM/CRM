@@ -104,7 +104,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/initial-js/node_modules/randomcolor/randomColor.js'],
+                        src: ['node_modules/randomcolor/randomColor.js'],
                         dest: 'src/skin/randomcolor/'
                     }
                 ]
