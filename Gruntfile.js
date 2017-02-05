@@ -92,6 +92,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/moment/min/*'],
                         dest: 'src/skin/moment/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootbox/bootbox.min.js'],
+                        dest: 'src/skin/bootbox/'
                     }
                 ]
             }

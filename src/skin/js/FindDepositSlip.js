@@ -98,13 +98,6 @@ $(document).ready(function () {
     $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i> Generate Deposit Split for Selected (" + selectedRows + ") Rows (PDF)");
   });
 
-  $('#deleteSelectedRows').click(function () {
-    var deletedRows = dataT.rows('.selected').data()
-    $("#deleteNumber").text(deletedRows.length);
-    $("#confirmDelete").modal('show');
-  });
-
-
   $('.exportButton').click(function (sender) {
     var selectedRows = dataT.rows('.selected').data()
     var type = this.getAttribute("data-exportType");
@@ -113,20 +106,4 @@ $(document).ready(function () {
     });
   });
 
-  $("#deleteConfirmed").click(function () {
-    var deletedRows = dataT.rows('.selected').data()
-    $.each(deletedRows, function (index, value) {
-      $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root + '/api/deposits/' + value.Id, // the url where we want to POST
-        dataType: 'json', // what type of data do we expect back from the server
-        encode: true,
-        data: {"_METHOD": "DELETE"}
-      })
-        .done(function (data) {
-          $('#confirmDelete').modal('hide');
-          dataT.rows('.selected').remove().draw(false);
-        });
-    });
-  });
 });
