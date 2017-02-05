@@ -27,6 +27,7 @@
  ******************************************************************************/
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
   Redirect('CheckVersion.php');
@@ -72,7 +73,7 @@ $MenuFirst = 1;
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?= $sRootPath ?>/Menu.php" class="logo">
+    <a href="<?= SystemURLs::getRootPath() ?>/Menu.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
@@ -98,7 +99,7 @@ $MenuFirst = 1;
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown settings-dropdown">
-            <a href="<?= $sRootPath ?>/CartView.php">
+            <a href="<?= SystemURLs::getRootPath() ?>/CartView.php">
               <i class="fa fa-shopping-cart"></i>
               <span class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
             </a>
@@ -140,7 +141,7 @@ $MenuFirst = 1;
             </a>
           </li>
           <li class="hidden-xxs">
-            <a href="<?= $sRootPath ?>/Login.php?Logoff=True">
+            <a href="<?= SystemURLs::getRootPath() ?>/Login.php?Logoff=True">
               <i class="fa fa-power-off"></i>
             </a>
           </li>
@@ -175,7 +176,7 @@ $MenuFirst = 1;
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li>
-          <a href="<?= $sRootPath ?>/Menu.php">
+          <a href="<?= SystemURLs::getRootPath() ?>/Menu.php">
             <i class="fa fa-dashboard"></i> <span><?= gettext('Dashboard') ?></span>
           </a>
         </li>
@@ -195,7 +196,7 @@ $MenuFirst = 1;
         ?>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?= $sRootPath ?>/Menu.php"><i class="fa fa-dashboard"></i><?= gettext('Home') ?></a></li>
+        <li><a href="<?= SystemURLs::getRootPath() ?>/Menu.php"><i class="fa fa-dashboard"></i><?= gettext('Home') ?></a></li>
         <li class="active"><?= $sPageTitle ?></li>
       </ol>
     </section>
