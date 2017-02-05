@@ -15,6 +15,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -51,7 +53,7 @@ require 'Include/Header.php';
          url: window.CRM.root + '/api/data/seed/families/' + $("#Num_Families").val(), // the url where we want to POST
             dataType    : 'json', // what type of data do we expect back from the server
             encode      : true,
-            beforeSend  : function () { 
+            beforeSend  : function () {
                 $('#results').empty();
                 $('#results').append('<div class="text-center"><i class="fa fa-spinner fa-spin"></i><h3> <?= gettext('Loading Seed Data') ?> </h3></div>');
             }
@@ -59,12 +61,12 @@ require 'Include/Header.php';
 		 .done(function(data) {
 			console.log(data);
              $('#results').empty();
-			$('#results').append('<pre>'+JSON.stringify(data,null,4) +'</pre>');          
+			$('#results').append('<pre>'+JSON.stringify(data,null,4) +'</pre>');
 		  });
-		 
-		
 
-        
+
+
+
     });
 
 
@@ -72,7 +74,7 @@ require 'Include/Header.php';
 </script>
 
 <!-- PACE -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
 <?php
 require 'Include/Footer.php';
 ?>

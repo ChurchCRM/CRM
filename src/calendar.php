@@ -4,6 +4,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Service\CalendarService;
 
 $calenderService = new CalendarService();
+use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Church Calendar');
@@ -16,21 +17,22 @@ require 'Include/Header.php'; ?>
     }
   }
 </style>
-<div class="col-lg-12">
+<div class="col">
   <div class="box box-primary">
     <div class="box-body">
       <?php foreach ($calenderService->getEventTypes() as $type) {
     ?>
-      <div class="fc-event-container fc-day-grid-event" style="background-color:<?= $type['backgroundColor']?>;border-color:<?= $type['backgroundColor']?>;color: white; width: 100px">
+        <div class="col-xs-3 fc-event-container fc-day-grid-event" style="background-color:<?= $type['backgroundColor']?>;border-color:<?= $type['backgroundColor']?>;color: white; ">
           <div class="fc-title"><?= gettext($type['Name'])?></div>
       </div>
-      <?php 
+      <?php
+
 }?>
     </div>
   </div>
 </div>
 
-<div class="col-lg-12">
+<div class="col">
   <div class="box box-info">
     <div class="box-body no-padding">
       <!-- THE CALENDAR -->
@@ -45,12 +47,18 @@ require 'Include/Header.php'; ?>
 &nbsp;
 
 <!-- fullCalendar 2.2.5 -->
-<script src="<?= $sRootPath ?>/skin/fullcalendar/fullcalendar.min.js"></script>
+<script src="<?= SystemURLs::getRootPath()  ?>/skin/fullcalendar/fullcalendar.min.js"></script>
 <script>
   $(function () {
     /* initialize the calendar
      -----------------------------------------------------------------*/
     $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicDay,listMonth'
+      },
+      height: 500,
       locale: '<?= $localeInfo->getLanguageCode() ?>',
       events: window.CRM.root + '/api/calendar/events'
     });
