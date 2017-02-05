@@ -97,9 +97,13 @@
     },
     "current": {
         "versions": [
-          "2.5.0"
+          "2.5.0",
+          "2.5.1",
+          "2.5.2"
         ],
-        "scripts":[],
+        "scripts":[
+          "/mysql/upgrade/2.6.0-configs.sql"
+        ],
         "dbVersion": "2.6.0"
     }
 }

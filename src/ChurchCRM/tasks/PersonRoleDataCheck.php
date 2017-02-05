@@ -34,12 +34,12 @@ class PersonRoleDataCheck implements iTask
 
     public function getTitle()
     {
-        return gettext('Missing Role Data' . " (" . $this->count . ")");
+        return gettext('Missing Role Data') . " (" . $this->count . ")";
     }
 
     public function getDesc()
     {
-        return gettext("Missing Classification Data for Some People");
+        return gettext("Missing Role Data for Some People");
     }
 
 }
