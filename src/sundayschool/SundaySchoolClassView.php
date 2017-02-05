@@ -217,8 +217,7 @@ require '../Include/Header.php';
       foreach ($thisClassChildren as $child) {
           $hideAge = $child['flags'] == 1 || $child['birthYear'] == '' || $child['birthYear'] == '0';
           $birthDate = FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']);
-          $birthDateDate = BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge);
-        ?>
+          $birthDateDate = BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge); ?>
 
           <tr>
           <td>
@@ -242,7 +241,7 @@ require '../Include/Header.php';
           </tr>
       
       <?php
-      
+
       }
 
       ?>
