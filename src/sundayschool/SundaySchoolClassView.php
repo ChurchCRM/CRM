@@ -219,7 +219,7 @@ require '../Include/Header.php';
           $birthDateDate = BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge);
 
           echo '<tr>';
-          echo "<td><img src='".$sRootPath.'/api/persons/'.$child['kidId']."/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=".$child['kidId']."'>".$child['firstName'].', '.$child['LastName'].'</a></td>';
+          echo "<td><img src='".SystemURLs::getRootPath().'/api/persons/'.$child['kidId']."/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=".$child['kidId']."'>".$child['firstName'].', '.$child['LastName'].'</a></td>';
           echo '<td>'.$birthDate.'</td>';
           echo "<td data-birth-date='".($hideAge ? '' : $birthDateDate->format('Y-m-d'))."'></td>";
           echo '<td>'.$child['kidEmail'].'</td>';

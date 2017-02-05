@@ -61,7 +61,6 @@ function system_failure($message, $header = 'Setup failure')
 
 try {
     SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
-    $sRootPath = SystemURLs::getRootPath();
 } catch (\Exception $e) {
     system_failure($e->getMessage());
 }
