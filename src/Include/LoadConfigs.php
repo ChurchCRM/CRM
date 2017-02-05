@@ -61,7 +61,6 @@ function system_failure($message, $header = 'Setup failure')
 
 try {
     SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
-    $sRootPath = SystemURLs::getRootPath();
 } catch (\Exception $e) {
     system_failure($e->getMessage());
 }
@@ -77,7 +76,7 @@ mysqli_select_db($cnInfoCentral, $sDATABASE)
 or system_failure('Could not connect to the MySQL database <strong>'.$sDATABASE.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
 
 // Initialize the session
-session_name('CRM@'.$sRootPath);
+session_name('CRM@'.SystemURLs::getRootPath());
 session_start();
 
 // ==== ORM

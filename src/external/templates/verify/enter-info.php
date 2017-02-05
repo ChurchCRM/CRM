@@ -9,14 +9,14 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
     <div class="register-box">
         <div class="register-logo">
-            <a href="<?= $sRootPath ?>/"><b>Church</b>CRM</a><br/>
+            <a href="<?= SystemURLs::getRootPath() ?>/"><b>Church</b>CRM</a><br/>
             <span><?= SystemConfig::getValue("sChurchName") .  $token ?></span>
         </div>
 
         <div class="register-box-body">
             <p class="login-box-msg"><?= gettext("Please enter the following to start your family's verification") ?></p>
 
-            <form action="<?= $sRootPath ?>/external/verify/" method="post">
+            <form action="<?= SystemURLs::getRootPath() ?>/external/verify/" method="post">
                 <div class="form-group has-feedback">
                     <input name="firstName" type="text" class="form-control" placeholder="<?= gettext("First Name") ?>" required>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>

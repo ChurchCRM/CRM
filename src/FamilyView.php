@@ -37,7 +37,7 @@ use ChurchCRM\Service\TimelineService;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
-$familyService = new FamilyService();
+
 //Set the page title
 $sPageTitle = gettext("Family View");
 require "Include/Header.php";

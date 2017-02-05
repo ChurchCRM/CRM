@@ -9,6 +9,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\dto\SystemURLs;
 
 // Set the page title
 $sPageTitle = gettext('Members Dashboard');
@@ -130,7 +131,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person-stalker"></i>
       </div>
-      <a href="<?= $sRootPath.'/' ?>FamilyList.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath().'/' ?>FamilyList.php" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -151,7 +152,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person"></i>
       </div>
-      <a href="<?= $sRootPath.'/' ?>SelectList.php?mode=person" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath().'/' ?>SelectList.php?mode=person" class="small-box-footer">
         <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -172,7 +173,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-child"></i>
       </div>
-      <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
         <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -193,7 +194,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-gg"></i>
       </div>
-      <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/grouplist" class="small-box-footer">
         <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -217,7 +218,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <p><a class="MediumText"
                 href="DirectoryReports.php"><?= gettext('Members Directory') ?></a><br><?= gettext('Printable directory of all members, grouped by family where assigned') ?>
           </p>
-        <?php 
+        <?php
+
      } ?>
         <a class="MediumText" href="LettersAndLabels.php"><?php echo gettext('Letters and Mailing Labels'); ?></a>
         <br><?php echo gettext('Generate letters and mailing labels.'); ?>
@@ -268,7 +270,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
               </td>
               <td><span class="badge bg-green"><?= $value ?></span></td>
             </tr>
-          <?php 
+          <?php
+
         } ?>
         </table>
       </div>
@@ -305,7 +308,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             </td>
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
-        <?php 
+        <?php
+
         } ?>
       </table>
       <!-- /.box-body-->

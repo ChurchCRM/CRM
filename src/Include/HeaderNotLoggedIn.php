@@ -1,7 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
 
-$sRootPath = SystemURLs::getRootPath();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -14,12 +13,12 @@ $sRootPath = SystemURLs::getRootPath();
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="<?= $sRootPath ?>/skin/adminlte/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/css/bootstrap.min.css">
     <!-- Custom ChurchCRM styles -->
-    <link rel="stylesheet" href="<?= $sRootPath ?>/skin/churchcrm.min.css">
+    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/churchcrm.min.css">
 
     <!-- jQuery JS -->
-    <script src="<?= $sRootPath ?>/skin/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
@@ -28,6 +27,6 @@ $sRootPath = SystemURLs::getRootPath();
 
   <script language="javascript" type="text/javascript">
     window.CRM = {
-      root: "<?= $sRootPath ?>"
+      root: "<?= SystemURLs::getRootPath() ?>"
     };
   </script>
