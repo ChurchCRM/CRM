@@ -120,11 +120,11 @@ $MenuFirst = 1;
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= $sRootPath?>/UserPasswordChange.php"
+                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php"
                      class="btn btn-default btn-flat"><?= gettext('Change Password') ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= $sRootPath?>/SettingsIndividual.php"
+                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"
                      class="btn btn-default btn-flat"><?= gettext('My Settings') ?></a>
                 </div>
               </li>
