@@ -1,8 +1,6 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\PersonService;
+
 /*******************************************************************************
  *
  *  filename    : /Include/Functions.php
@@ -29,12 +27,10 @@ use ChurchCRM\Service\PersonService;
  *
  ******************************************************************************/
 
-// Initialization common to all ChurchCRM scripts
-
-// Set the current version of this PHP file
-// Important!  These must be updated before every software release.
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\SystemService;
 
 $personService = new PersonService();
 $systemService = new SystemService();
