@@ -16,6 +16,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Software Registration');
@@ -28,7 +29,7 @@ require 'Include/Header.php';
 
 <div class="box box-warning">
   <div class="box-body">
-	  <?= gettext('If you need to make changes to registration data, go to '); ?><a href="<?= $sRootPath ?>/SystemSettings.php"><?= gettext('Admin->Edit General Settings'); ?></a>
+	  <?= gettext('If you need to make changes to registration data, go to '); ?><a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Admin->Edit General Settings'); ?></a>
   </div>
 </div>
 

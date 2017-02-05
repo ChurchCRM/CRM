@@ -1,5 +1,5 @@
 <?php
-
+use ChurchCRM\dto\SystemURLs;
 // Routes search
 
 // search for a string in Persons, families, groups, Financial Deposits and Payments
@@ -18,7 +18,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         ->filterByEnvelope($query)
         ->limit(5)
         ->withColumn('fam_Name', 'displayName')
-        ->withColumn('CONCAT("'.$sRootPath.'FamilyView.php?FamilyID=",Family.Id)', 'uri')
+        ->withColumn('CONCAT("'.SystemURLs::getRootPath().'FamilyView.php?FamilyID=",Family.Id)', 'uri')
         ->select(['displayName', 'uri'])
         ->find();
             array_push($resultsArray, str_replace('Families', 'Donation Envelopes', $q->toJSON()));
@@ -46,7 +46,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
           ->filterByCheckno("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
         ->endUse()
         ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
-        ->withColumn('CONCAT("'.$sRootPath.'DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
+        ->withColumn('CONCAT("'.SystemURLs::getRootPath().'DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
         ->limit(5);
         array_push($resultsArray, $q->find()->toJSON());
     } catch (Exception $e) {

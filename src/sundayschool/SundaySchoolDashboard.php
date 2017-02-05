@@ -4,6 +4,7 @@ require '../Include/Functions.php';
 
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\SundaySchoolService;
+use ChurchCRM\dto\SystemURLs;
 
 $dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
@@ -47,7 +48,8 @@ require '../Include/Header.php';
     ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
           class="fa fa-plus-square"></i><?= gettext('Add New Class') ?></button>
-    <?php 
+    <?php
+
 } ?>
     <a href="SundaySchoolReports.php" class="btn btn-app"
        title="<?= gettext('Generate class lists and attendance sheets'); ?>"><i
@@ -159,7 +161,8 @@ require '../Include/Header.php';
           <td><?= $class['teachers'] ?></td>
           <td><?= $class['kids'] ?></td>
         </tr>
-      <?php 
+      <?php
+
 } ?>
       </tbody>
     </table>
@@ -273,8 +276,9 @@ require '../Include/Header.php';
 
     });
   </script>
-  <script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
 
-<?php 
+<?php
+
       }
 require '../Include/Footer.php' ?>
