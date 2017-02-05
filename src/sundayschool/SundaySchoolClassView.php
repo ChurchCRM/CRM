@@ -233,10 +233,10 @@ require '../Include/Header.php';
           <td><?= $child['mobilePhone'] ?></td>
           <td><?= $child['homePhone'] ?></td>
           <td><?= $child['Address1'].' '.$child['Address2'].' '.$child['city'].' '.$child['state'].' '.$child['zip'] ?></td>
-          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID="<?= $child['dadId'] ?>'><?= $child['dadFirstName'].' '.$child['dadLastName'] ?></a></td>
+          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['dadId'] ?>'><?= $child['dadFirstName'].' '.$child['dadLastName'] ?></a></td>
           <td><?= $child['dadCellPhone'] ?></td>
           <td><?= $child['dadEmail'] ?></td>
-          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID="<?= $child['momId'] ?>'><?= $child['momFirstName'].' '.$child['momLastName'] ?></td>
+          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['momId'] ?>'><?= $child['momFirstName'].' '.$child['momLastName'] ?></td>
           <td><?= $child['momCellPhone'] ?></td>
           <td><?= $child['momEmail'] ?></td>
           </tr>
