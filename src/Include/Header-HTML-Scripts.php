@@ -29,11 +29,12 @@ use ChurchCRM\dto\SystemURLs;
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<script src="<?= SystemURLs::getRootPath(); ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 
-
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
-
 <script src="<?= SystemURLs::getRootPath(); ?>/skin/randomcolor/randomColor.js"></script>
 <script src="<?= SystemURLs::getRootPath(); ?>/skin/js/initial.js"></script>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
+

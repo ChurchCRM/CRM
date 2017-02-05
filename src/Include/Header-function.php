@@ -47,33 +47,6 @@ function Header_head_metatag()
 function Header_modals()
 {
     ?>
-    <!-- API Call Error Modal -->
-    <div id="APIError" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><?= gettext('ERROR!') ?></h4>
-                </div>
-                <div class="modal-body">
-                    <p><?= gettext('Error making API Call to') ?>: <span id="APIEndpoint"></span></p>
-
-                    <p><?= gettext('Error text') ?>: <span style="font-style: bold" id="APIErrorText"></span></p>
-                    <div id="traceDiv">
-                        <p><?= gettext('Stack Trace') ?>:
-                        <pre id="APITrace"></pre>
-                        </p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"><?= gettext('Close') ?></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End API Call Error Modal -->
-
     <!-- Issue Report Modal -->
     <div id="IssueReportModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -133,67 +106,67 @@ function Header_body_scripts()
 {
     global $localeInfo;
     $systemService = new SystemService(); ?>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
 
-    <script>
-        window.CRM = {
-            root: "<?= SystemURLs::getRootPath() ?>",
-            lang: "<?= $localeInfo->getLanguageCode() ?>",
-            locale: "<?= $localeInfo->getLocale() ?>",
-            maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
-            maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>"
-        };
+  <script>
+    window.CRM = {
+      root: "<?= SystemURLs::getRootPath() ?>",
+      lang: "<?= $localeInfo->getLanguageCode() ?>",
+      locale: "<?= $localeInfo->getLocale() ?>",
+      maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
+      maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>"
+    };
 
-        window.CRM.DisplayErrorMessage = function (endpoint, error) {
-            $(".modal").modal('hide');
-            $("#APIError").modal('show');
-            $("#APIEndpoint").text(endpoint);
-            $("#APIErrorText").text(error.message);
-            if (error.trace) {
-                $("#traceDiv").show();
-                $("#APITrace").text(JSON.stringify(error.trace, undefined, 2));
-            }
-            else {
-                $("#traceDiv").hide();
-            }
-        };
+    window.CRM.DisplayErrorMessage = function(endpoint, error) {
 
-        window.CRM.VerifyThenLoadAPIContent = function (url) {
-            var error = "<?= gettext('There was a problem retrieving the requested object') ?>";
-            $.ajax({
-                type: 'HEAD',
-                url: url,
-                async: false,
-                statusCode: {
-                    200: function () {
-                        window.open(url);
-                    },
-                    404: function () {
-                        window.CRM.DisplayErrorMessage(url, {message: error});
-                    },
-                    500: function () {
-                        window.CRM.DisplayErrorMessage(url, {message: error});
-                    }
-                }
-            });
-        };
+      message = "<p><?= gettext("Error making API Call to") ?>: " + endpoint + 
+        "</p><p><?= gettext("Error text") ?>: " + error.message;
+      if (error.trace)
+      {
+        message += "</p><?= gettext("Stack Trace") ?>: <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
+      }
+      bootbox.alert({
+        title: "<?= gettext("ERROR!") ?>",
+        message: message
+      });
+    };
 
-        $(document).ajaxError(function (evt, xhr, settings) {
-            var CRMResponse = JSON.parse(xhr.responseText);
-            window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
-        });
-
-        function LimitTextSize(theTextArea, size) {
-            if (theTextArea.value.length > size) {
-                theTextArea.value = theTextArea.value.substr(0, size);
-            }
+    window.CRM.VerifyThenLoadAPIContent = function(url) {
+      var error = "<?= gettext('There was a problem retrieving the requested object') ?>";
+      $.ajax({
+        type: 'HEAD',
+        url: url,
+        async: false,
+        statusCode: {
+          200: function() {
+            window.open(url);
+          },
+          404: function() {
+            window.CRM.DisplayErrorMessage(url, {message: error});
+          },
+          500: function() {
+            window.CRM.DisplayErrorMessage(url, {message: error});
+          }
         }
+      });
+    }
 
-        function popUp(URL) {
-            var day = new Date();
-            var id = day.getTime();
-            eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
+    $(document).ajaxError(function (evt, xhr, settings) {
+        var CRMResponse = JSON.parse(xhr.responseText);
+        window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
+    });
+
+    function LimitTextSize(theTextArea, size) {
+        if (theTextArea.value.length > size) {
+            theTextArea.value = theTextArea.value.substr(0, size);
         }
+    }
+
+    function popUp(URL) {
+        var day = new Date();
+        var id = day.getTime();
+        eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
+    }
 
     </script>
     <?php
