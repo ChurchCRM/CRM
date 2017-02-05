@@ -269,59 +269,59 @@ function addMenu($menu)
 
 function addMenuItem($aMenu, $mIdx)
 {
-global $security_matrix;
+    global $security_matrix;
 
-$link = ($aMenu['uri'] == '') ? '' : SystemURLs::getRootPath() . '/' . $aMenu['uri'];
-$text = $aMenu['statustext'];
-if (!is_null($aMenu['session_var'])) {
-    if (($link > '') && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
-        if (strstr($link, '?') && true) {
-            $cConnector = '&';
-        } else {
-            $cConnector = '?';
+    $link = ($aMenu['uri'] == '') ? '' : SystemURLs::getRootPath() . '/' . $aMenu['uri'];
+    $text = $aMenu['statustext'];
+    if (!is_null($aMenu['session_var'])) {
+        if (($link > '') && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
+            if (strstr($link, '?') && true) {
+                $cConnector = '&';
+            } else {
+                $cConnector = '?';
+            }
+            $link .= $cConnector . $aMenu['url_parm_name'] . '=' . $_SESSION[$aMenu['session_var']];
         }
-        $link .= $cConnector . $aMenu['url_parm_name'] . '=' . $_SESSION[$aMenu['session_var']];
+        if (($text > '') && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
+            $text .= ' ' . $_SESSION[$aMenu['session_var']];
+        }
     }
-    if (($text > '') && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
-        $text .= ' ' . $_SESSION[$aMenu['session_var']];
-    }
-}
-if ($aMenu['ismenu']) {
-    $sSQL = "SELECT name
+    if ($aMenu['ismenu']) {
+        $sSQL = "SELECT name
              FROM menuconfig_mcf
              WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . '
              ORDER BY sortorder';
 
-    $rsItemCnt = RunQuery($sSQL);
-    $numItems = mysqli_num_rows($rsItemCnt);
-}
-if (!($aMenu['ismenu']) || ($numItems > 0)) {
-if ($link) {
-    if ($aMenu['name'] != 'sundayschool-dash') { // HACK to remove the sunday school 2nd dashboard
-        echo "<li><a href='$link'>";
-        if ($aMenu['icon'] != '') {
-            echo '<i class="fa ' . $aMenu['icon'] . '"></i>';
-        }
-        if ($aMenu['parent'] != 'root') {
-            echo '<i class="fa fa-angle-double-right"></i> ';
-        }
-        if ($aMenu['parent'] == 'root') {
-            echo '<span>' . gettext($aMenu['content']) . '</span></a>';
-        } else {
-            echo gettext($aMenu['content']) . '</a>';
-        }
+        $rsItemCnt = RunQuery($sSQL);
+        $numItems = mysqli_num_rows($rsItemCnt);
     }
-} else {
-echo "<li class=\"treeview\">\n";
-echo "    <a href=\"#\">\n";
-if ($aMenu['icon'] != '') {
-    echo '<i class="fa ' . $aMenu['icon'] . "\"></i>\n";
-}
-echo '<span>' . gettext($aMenu['content']) . "</span>\n";
-echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
-if ($aMenu['name'] == 'deposit') {
-    echo '<small class="badge pull-right bg-green">' . $_SESSION['iCurrentDeposit'] . "</small>\n";
-} ?>  </a>
+    if (!($aMenu['ismenu']) || ($numItems > 0)) {
+        if ($link) {
+            if ($aMenu['name'] != 'sundayschool-dash') { // HACK to remove the sunday school 2nd dashboard
+        echo "<li><a href='$link'>";
+                if ($aMenu['icon'] != '') {
+                    echo '<i class="fa ' . $aMenu['icon'] . '"></i>';
+                }
+                if ($aMenu['parent'] != 'root') {
+                    echo '<i class="fa fa-angle-double-right"></i> ';
+                }
+                if ($aMenu['parent'] == 'root') {
+                    echo '<span>' . gettext($aMenu['content']) . '</span></a>';
+                } else {
+                    echo gettext($aMenu['content']) . '</a>';
+                }
+            }
+        } else {
+            echo "<li class=\"treeview\">\n";
+            echo "    <a href=\"#\">\n";
+            if ($aMenu['icon'] != '') {
+                echo '<i class="fa ' . $aMenu['icon'] . "\"></i>\n";
+            }
+            echo '<span>' . gettext($aMenu['content']) . "</span>\n";
+            echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
+            if ($aMenu['name'] == 'deposit') {
+                echo '<small class="badge pull-right bg-green">' . $_SESSION['iCurrentDeposit'] . "</small>\n";
+            } ?>  </a>
 <ul class="treeview-menu">
     <?php
     if ($aMenu['name'] == 'sundayschool') {
@@ -332,20 +332,20 @@ if ($aMenu['name'] == 'deposit') {
             echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . '</a></li>';
         }
     }
-    }
-    if (($aMenu['ismenu']) && ($numItems > 0)) {
-        echo "\n";
-        addMenu($aMenu['name']);
-        echo "</ul>\n</li>\n";
-    } else {
-        echo "</li>\n";
-    }
+        }
+        if (($aMenu['ismenu']) && ($numItems > 0)) {
+            echo "\n";
+            addMenu($aMenu['name']);
+            echo "</ul>\n</li>\n";
+        } else {
+            echo "</li>\n";
+        }
 
-    return true;
+        return true;
     } else {
         return false;
     }
-    }
+}
 
     function create_side_nav($menu)
     {
