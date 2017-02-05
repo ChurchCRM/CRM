@@ -106,9 +106,10 @@ class SystemConfig
         "sEnableSelfRegistration" => new ConfigItem(80, "sEnableSelfRegistration", "boolean", "0", gettext("Set true to enable family self registration.")),
         "sPhoneFormat" => new ConfigItem(100, "sPhoneFormat", "text", "(999) 999-9999", ""),
         "sPhoneFormatWithExt" => new ConfigItem(101, "sPhoneFormatWithExt", "text", "(999) 999-9999 x99999", ""),
-        "sDateFormatLong" => new ConfigItem(102, "sDateFormatLong", "text", "yyyy-mm-dd", ""),
-        "sDateFormatNoYear" => new ConfigItem(103, "sDateFormatNoYear", "text", "DD/MM", ""),
-        "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "yy-mm-dd", ""),
+        "sDateFormatLong" => new ConfigItem(102, "sDateFormatLong", "text", "m/d/Y", ""),
+        "sDateFormatNoYear" => new ConfigItem(103, "sDateFormatNoYear", "text", "m/d", ""),
+        "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y", ""),
+        "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a", ""),
         "bRegistered" => new ConfigItem(999, "bRegistered", "boolean", "0", gettext("ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.")),
         "leftX" => new ConfigItem(1001, "leftX", "number", "20", gettext("Left Margin (1 = 1/100th inch)")),
         "incrementY" => new ConfigItem(1002, "incrementY", "number", "4", gettext("Line Thickness (1 = 1/100th inch")),
@@ -174,7 +175,7 @@ class SystemConfig
       gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","debug","bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Map Settings')  => ["sGoogleMapKey","bUseGoogleGeocode","sGMapIcons","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
-      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort"],
+      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('Other Settings')  => ["iPDFOutputType","googleTrackingID"]
     );
