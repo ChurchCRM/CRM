@@ -18,6 +18,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\DepositQuery;
+use ChurchCRM\dto\SystemURLs;
 
 $iDepositSlipID = 0;
 $thisDeposit = 0;
@@ -201,7 +202,7 @@ require 'Include/Header.php';
 </div>
 <!-- End Delete Confirm Modal -->
 
-<script type="text/javascript" src="<?= $sRootPath ?>/skin/js/DepositSlipEditor.js"></script>
+<script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/js/DepositSlipEditor.js"></script>
 <?php
   $fundData = [];
   foreach ($thisDeposit->getFundTotals() as $tmpfund) {

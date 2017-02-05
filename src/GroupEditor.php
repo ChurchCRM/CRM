@@ -17,7 +17,7 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-use ChurchCRM\Group;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\GroupService;
@@ -178,6 +178,6 @@ require 'Include/Header.php';
   var roleCount = groupRoleData.length;
   var groupID =<?= $iGroupID ?>;
 </script>
-<script src="<?= $sRootPath ?>/skin/js/GroupEditor.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupEditor.js"></script>
 
 <?php require 'Include/Footer.php' ?>
