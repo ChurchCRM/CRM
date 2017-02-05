@@ -106,11 +106,11 @@ function Header_body_scripts()
 {
     global $localeInfo;
     $systemService = new SystemService(); ?>
-  <script src="<?= $sRootPath ?>/skin/js/IssueReporter.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
 
   <script>
     window.CRM = {
-      root: "<?= $sRootPath ?>",
+      root: "<?= SystemURLs::getRootPath() ?>",
       lang: "<?= $localeInfo->getLanguageCode() ?>",
       locale: "<?= $localeInfo->getLocale() ?>",
       maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
