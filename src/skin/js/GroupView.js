@@ -126,16 +126,21 @@ $(document).ready(function () {
   });
 
   $("#addSelectedToCart").click(function () {
-    var selectedRows = dataT.rows('.selected').data()
-    $.each(selectedRows, function (index, value) {
-      $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root + '/api/persons/' + value.PersonId + "/addToCart", // the url where we want to POST
-        dataType: 'json', // what type of data do we expect back from the server
-        encode: true
-      });
+    var selectedPersons = {
+      "Persons" : $.map(dataT.rows('.selected').data(), function(val,i){
+                    return val.PersonId;
+                  })
+    };
+    $.ajax({
+      type: 'POST', 
+      url: window.CRM.root + '/api/cart/',
+      dataType: 'json',
+      contentType: "application/json",
+      data: JSON.stringify(selectedPersons)
+    }).done(function(data) {
+        location.reload();
     });
-    location.reload();
+
   });
 
   //copy membership
