@@ -276,7 +276,6 @@ require '../Include/Header.php';
 
     });
   </script>
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
 
 <?php
 

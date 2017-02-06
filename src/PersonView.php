@@ -980,7 +980,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     });
   }
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
+
 
 <?php
 
