@@ -16,8 +16,6 @@ use ChurchCRM\dto\SystemURLs;
 
 <!-- AdminLTE Select2 -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
-<!-- AdminLTE DatePicker -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/moment/moment-with-locales.min.js"></script>
 <!-- AdminLTE DatePicker -->
