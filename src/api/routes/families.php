@@ -63,36 +63,19 @@ $app->group('/families', function () {
     return $response;
   });
 
-  $this->post('/{familyId}/updatestatus', function ($request, $response, $args) {
-    //Deactivate/Activate Family
-    $data = $request->getParsedBody();
-    $action = filter_var($data['Action'], FILTER_SANITIZE_STRING);
+    $this->post('/{familyId:[0-9]+}/activate/{status}', function ($request, $response, $args) {
+        $familyId = $args["familyId"];
+        $status = $args["status"];
 
-    $familyId = $args["familyId"];
-    $family = FamilyQuery::create()->findPk($familyId);
-    if ($family != null) {
-      if ($action == "Deactivate") {
-        $family->setDateDeactivated(date('YmdHis'));
-      } elseif ($action == "Activate") {
-        $family->setDateDeactivated(Null);
-      }
-      $family->save();
-      $response = $response->withStatus(200);
-    } else {
-      $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
-    }
-    return $response;
-  });
-  $this->get('/{familyId}/active', function ($request, $response, $args) {
-    $familyId = $args["familyId"];
-    $family = FamilyQuery::create()->findPk($familyId);
-    if ($family != null) {
-      $active = ($family->getDateDeactivated() == Null);
-      return $response->withJson($active);
-    } else {
-      $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
-    }
-    return $response;
-  });
+        $family = FamilyQuery::create()->findPk($familyId);
+        if ($status == "false") {
+            $family->setDateDeactivated(date('YmdHis'));
+        } elseif ($status == "true") {
+            $family->setDateDeactivated(Null);
+        }
+        $family->save();
+        return json_encode(['success' => true]);
+
+    });
 
 });

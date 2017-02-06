@@ -340,20 +340,14 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                    href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
                         class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
 
+
+
                 <?php if ($bOkToEdit) {
-                    if (empty($fam_DateDeactivated)) {
-                        ?>
-                        <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-activate-deactivate-family"><i
-                                class="fa fa-times-circle-o"></i><?= gettext("Deactivate this Family") ?></a>
-                        <?php
-                    } else {
-                        ?>
-                        <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-activate-deactivate-family"><i
-                                class="fa fa-check-circle-o"></i><?= gettext("Activate this Family") ?></a>
-                        <?php
-                    }
-                }
-                ?>
+                    ?>
+                    <button class="btn btn-app bg-orange"  id="activateDeactivate">
+                        <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?= gettext((empty($fam_DateDeactivated) ? 'Deactivate' : 'Activate') . ' this Family') ?></button>
+                <?php
+                } ?>
             </div>
         </div>
     </div>
@@ -442,7 +436,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12 col-md-6 col-sm-3">
+    <div class="col-lg-12">
         <div class="nav-tabs-custom">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
@@ -929,46 +923,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         </form>
     </div>
 </div>
-<div class="modal fade" id="confirm-activate-deactivate-family" tabindex="-1" role="dialog" aria-labelledby="confirm-activate-deactivate-family"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="FamilyView.php?FamilyID=<?= $iFamilyID ?>" method="post" enctype="multipart/form-data"
-              id="ActivateDeactivateFamily">
-        <!--form action="api/families/<?= $iFamilyID ?>/updatestatus" method="post" enctype="multipart/form-data"
-                id="ActivateDeactivateFamily"-->
-            <input type="hidden" name="FID" value="<?php echo $iFamilyID; ?>">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="deactivate-family-label"><?= gettext((empty($fam_DateDeactivated)?"Deactivate":"Activate") . " Family") ?></h4>
-                </div>
-                <div class="modal-body">
-                    <p><?php
-                        if (empty($fam_DateDeactivated)) {
-                            $confirmMessage = GetText("Are you sure you want to DEACTIVATE Family ID: " . $iFamilyID . " ( " . $fam_Name . ")?");
-                        } else {
-                            $confirmMessage = GetText("Are you sure you want to Activate Family ID: ". $iFamilyID ." ( " . $fam_Name . ")?");
-                        }
-                        echo $confirmMessage; ?>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
-                    <?php if (empty($fam_DateDeactivated)) {
-                        ?>
-                        <input type="submit" name="Action" value="<?php echo gettext("Deactivate"); ?>" class="btn btn-warning" >
-                    <?php
-                    } else {
-                        ?>
-                        <input type="submit" name="Action" value="<?php echo gettext("Activate"); ?>" class="btn btn-success">
-                    <?php
-                    } ?>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -1055,6 +1009,44 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         <?php
 
 } ?>
+
+    <script>
+        window.CRM.currentFamily = <?= $iFamilyID ?>;
+        window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
+        var dataT = 0;
+        $(document).ready(function() {
+            $("#activateDeactivate").click(function() {
+                console.log("click activateDeactivate");
+                popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
+                if(window.CRM.currentActive == true) {
+                    popupMessage = "<?= gettext('Please confirm Deactivation of family') . ': ' . $iFamilyID . '\n '. "($fam_Name)" ?>";
+                }
+                else {
+                    popupMessage = "<?= gettext('Please confirm Activation of family') . ': ' . $iFamilyID . '\n ' . "($fam_Name)"  ?>";
+                }
+
+                bootbox.confirm({
+                    title: popupTitle,
+                    message: '<p style="color: red">'+ popupMessage + '</p>',
+                    callback: function (result) {
+                        if (result)
+                        {
+                            $.ajax({
+                                method: "POST",
+                                url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
+                                dataType: "json",
+                                encode: true
+                            }).done(function (data) {
+                                if (data.success == true)
+                                    window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
+
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
     <script src="<?= $sRootPath; ?>/skin/js/FamilyView.js"></script>
 
