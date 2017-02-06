@@ -48,5 +48,9 @@ require __DIR__.'/routes/systemupgrade.php';
 //registration
 require __DIR__.'/routes/register.php';
 
+//cart
+require __DIR__.'/routes/cart.php';
+
+
 // Run app
 $app->run();
