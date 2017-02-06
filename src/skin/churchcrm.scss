@@ -13,9 +13,9 @@
 // and we don't want to incur IE's CSS limits.
 // ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
 
+@import 'adminlte/plugins/select2/select2.min.css';
 @import 'adminlte/dist/css/AdminLTE.min.css';
 @import 'adminlte/dist/css/skins/_all-skins.min.css';
-@import 'adminlte/plugins/select2/select2.min.css';
 @import 'adminlte/plugins/datepicker/datepicker3.css';
 @import 'adminlte/plugins/daterangepicker/daterangepicker.css';
 @import 'adminlte/plugins/timepicker/bootstrap-timepicker.min.css';
@@ -27,7 +27,7 @@
 
 
 @import 'fullcalendar/fullcalendar.min.css';
-@import 'fullcalendar/fullcalendar.print.css';
+@import 'fullcalendar/fullcalendar.print.css' print;
 
 @import 'font-awesome/css/font-awesome.min.css';
 
@@ -39,3 +39,5 @@
 @import 'scss/dropdowns';
 @import 'scss/forms';
 @import 'scss/tables';
+@import 'scss/shortConfig';
+@import 'scss/leftNav';

@@ -30,7 +30,8 @@ before_install:
 
 # prepare travis ci for the build process
 install:
- - ./travis-ci/install-composer.sh
+ - npm run composer-install
+ - npm run orm-gen
  - npm install
 
 # linters
