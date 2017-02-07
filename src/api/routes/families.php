@@ -5,6 +5,7 @@ use ChurchCRM\Token;
 use ChurchCRM\Note;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\TokenQuery;
+use ChurchCRM\dto\SystemConfig;
 
 $app->group('/families', function () {
     $this->get('/search/{query}', function ($request, $response, $args) {
@@ -65,16 +66,34 @@ $app->group('/families', function () {
 
     $this->post('/{familyId:[0-9]+}/activate/{status}', function ($request, $response, $args) {
         $familyId = $args["familyId"];
-        $status = $args["status"];
+        $newStatus = $args["status"];
 
         $family = FamilyQuery::create()->findPk($familyId);
-        if ($status == "false") {
-            $family->setDateDeactivated(date('YmdHis'));
-        } elseif ($status == "true") {
-            $family->setDateDeactivated(Null);
+        $currentStatus = (empty($family->getDateDeactivated()) ? 'true' : 'false');
+
+        //update only if the value is different
+        if($currentStatus != $newStatus) {
+            if ($newStatus == "false") {
+                $family->setDateDeactivated(date('YmdHis'));
+            } elseif ($newStatus == "true") {
+                $family->setDateDeactivated(Null);
+            }
+            $family->save();
+
+            //Create a note to record the status change
+            $note = new Note();
+            $note->setFamId($familyId);
+            if($newStatus == 'false') {
+                $note->setText(gettext('Deactivated the Family'));
+            }
+            else {
+                $note->setText(gettext('Activated the Family'));
+            }
+            $note->setType('edit');
+            $note->setEntered($_SESSION['iUserID']);
+            $note->save();
         }
-        $family->save();
-        return json_encode(['success' => true]);
+        return $response->withJson(['success'=> true]);
 
     });
 

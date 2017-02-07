@@ -1037,7 +1037,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                 dataType: "json",
                                 encode: true
                             }).done(function (data) {
-                                if (data.success == true)
+                                if(data.success == true)
                                     window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
 
                             });
