@@ -48,15 +48,15 @@ if (!empty($_GET['FamilyID'])) {
 
 //Deactivate/Activate Family
 if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Action'])) {
-  $family = FamilyQuery::create()->findOneById($_POST['FID']);
-  if ($_POST['Action'] == "Deactivate") {
-    $family->deactivate();
-  } elseif ($_POST['Action'] == "Activate") {
-    $family->activate();
-  }
-  $family->save();
-  Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
-  exit;
+    $family = FamilyQuery::create()->findOneById($_POST['FID']);
+    if ($_POST['Action'] == "Deactivate") {
+        $family->deactivate();
+    } elseif ($_POST['Action'] == "Activate") {
+        $family->activate();
+    }
+    $family->save();
+    Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
+    exit;
 }
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
@@ -173,7 +173,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 </script>
 
  <?php if (!empty($fam_DateDeactivated)) {
-    ?>
+        ?>
     <div class="alert alert-warning">
         <strong><?= gettext(" This Family is Deactivated") ?> </strong>
     </div>
@@ -329,13 +329,13 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
                         }
                     }
-                if ($_SESSION['bNotes']) {
-                    ?>
+    if ($_SESSION['bNotes']) {
+        ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
                             class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                     <?php
 
-                } ?>
+    } ?>
                 <a class="btn btn-app"
                    href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
                         class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
@@ -343,11 +343,11 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
 
                 <?php if ($bOkToEdit) {
-                    ?>
+        ?>
                     <button class="btn btn-app bg-orange"  id="activateDeactivate">
                         <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?= gettext((empty($fam_DateDeactivated) ? 'Deactivate' : 'Activate') . ' this Family') ?></button>
                 <?php
-                } ?>
+    } ?>
             </div>
         </div>
     </div>

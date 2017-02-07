@@ -189,10 +189,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     ?>
           <i class="fa fa-male"></i>
           <?php
+
 } else {
     ?>
             <i class="fa fa-female"></i>
           <?php
+
 } ?>
           <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
@@ -215,6 +217,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         ?>
           <a href="PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
         <?php
+
     } ?>
       </div>
       <!-- /.box-body -->
@@ -241,6 +244,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 									</span>
                 </a>
               <?php
+
               } else {
                   echo gettext('(No assigned family)');
               } ?>
@@ -259,18 +263,22 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                       ?>
               (<span data-birth-date="<?= $person->getBirthDate()->format('Y-m-d') ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
               <?php
+
                   } ?>
             </li>
           <?php
+
               }
     if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext('Friend Date') ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
           <?php
+
     }
     if ($sCellPhone) {
         ?>
             <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext('Mobile Phone') ?>: <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
           <?php
+
     }
     if ($sHomePhone) {
         ?>
@@ -285,12 +293,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             ?>
               <li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
             <?php
+
         }
     }
     if ($sWorkPhone) {
         ?>
             <li><i class="fa-li fa fa-phone"></i><?= gettext('Work Phone') ?>: <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
           <?php
+
     } ?>
           <?php if ($per_WorkEmail != '') {
         ?>
@@ -332,8 +342,10 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   ?>
           <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext('Delete Photo') ?></a>
         <?php
+
               } ?>
       <?php
+
           } ?>
       <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext('Printable Page') ?></a>
       <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext('Add to Cart') ?></a>
@@ -342,21 +354,25 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext('Edit "Why Came" Notes') ?></a>
         <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext('Add a Note') ?></a>
       <?php
+
           }
     if ($_SESSION['bDeleteRecords']) {
         ?>
         <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext('Delete this Record') ?></a>
       <?php
+
     }
     if ($_SESSION['bAdmin']) {
         if (!$person->isUser()) {
             ?>
           <a class="btn btn-app" href="UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Make User') ?></a>
         <?php
+
         } else {
             ?>
           <a class="btn btn-app" href="UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
         <?php
+
         }
     } ?>
       <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext('List Members') ?></span></a>
@@ -402,10 +418,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             ?>
                       <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                     <?php
+
         } else {
             ?>
                       <?= $item['header'] ?>
                     <?php
+
         } ?>
                   </h3>
 
@@ -422,6 +440,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                         </a>
                       <?php
+
             }
             if ($item['deleteLink'] != '') {
                 ?>
@@ -429,13 +448,16 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </a>
                       <?php
+
             } ?>
                     </div>
                   <?php
+
         } ?>
                 </div>
               </li>
             <?php
+
     } ?>
             <!-- END timeline item -->
           </ul>
@@ -473,6 +495,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                 ?>
                     <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
                   <?php
+
             } ?>
                 </td>
                 <td style="width: 20%;">
@@ -497,14 +520,17 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                       </span>
                     </a>
                   <?php
+
             } ?>
                 </td>
               </tr>
             <?php
+
         } ?>
             </tbody>
           </table>
           <?php
+
     } ?>
         </div>
         <div role="tab-pane fade" class="tab-pane" id="groups">
@@ -519,6 +545,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No group assignments.') ?></span>
                 </div>
               <?php
+
               } else {
                   echo '<div class="row">';
                 // Loop through the rows
@@ -579,11 +606,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                               ?>
                                   <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
                                 <?php
+
                           } ?>
                               </ul>
                             </div>
                             <a href="#" onclick="GroupRemove(<?= $grp_ID.', '.$iPersonID ?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
                           <?php
+
                       } ?>
                         </code>
                       </div>
@@ -618,6 +647,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   <br>
                 </div>
               <?php
+
     } ?>
             </div>
           </div>
@@ -636,6 +666,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
                 </div>
               <?php
+
               } else {
                   //Yes, start the table
                 echo '<table width="100%" cellpadding="4" cellspacing="0">';
@@ -722,6 +753,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   </div>
                 </div>
               <?php
+
               } ?>
             </div>
           </div>
@@ -744,6 +776,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
                 </div>
               <?php
+
               } else {
                   echo '<table width="100%" cellpadding="4" cellspacing="0">';
                   echo '<tr class="TableHeader">';
@@ -801,6 +834,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   </div>
                 </div>
               <?php
+
               } ?>
             </div>
           </div>
@@ -830,10 +864,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                       ?>
                       <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                     <?php
+
                   } else {
                       ?>
                       <?= $item['header'] ?>
                     <?php
+
                   } ?>
                   </h3>
 
@@ -850,6 +886,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                         </a>
                       <?php
+
                       }
                       if ($item['deleteLink'] != '') {
                           ?>
@@ -857,13 +894,16 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </a>
                       <?php
+
                       } ?>
                     </div>
                   <?php
+
                   } ?>
                 </div>
               </li>
             <?php
+
               } ?>
             <!-- END timeline item -->
           </ul>
@@ -941,6 +981,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 <script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 
 <?php
+
 } else {
     ?>
   <div class="error-page">

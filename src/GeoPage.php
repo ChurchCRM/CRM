@@ -277,6 +277,7 @@ $rsFamilies = RunQuery($sSQL); ?>
                             </label>
                         </div>
                         <?php
+
                     } ?>
                 </div>
             </div>
@@ -289,11 +290,13 @@ $rsFamilies = RunQuery($sSQL); ?>
     </div>
 
     <?php
-    if (isset($_POST['FindNeighbors']) && !$iFamily) { ?>
+    if (isset($_POST['FindNeighbors']) && !$iFamily) {
+        ?>
     <div class="alert alert-warning">
         <?= gettext("Please select a Family.") ?>
     </div>
     <?php
+
     } ?>
 
     <!--Datafile section -->
@@ -370,8 +373,8 @@ if ($iFamily != 0 &&
         <tbody>
         <?php
         foreach ($resultsByDistance as $oneResult) {
-            if ($counter >= $iNumNeighbors || $oneResult['Distance'] > $nMaxDistance ) {
-            break;
+            if ($counter >= $iNumNeighbors || $oneResult['Distance'] > $nMaxDistance) {
+                break;
             } // Determine how many people in this family will be listed
             $sSQL = 'SELECT * from person_per where per_fam_ID='.$oneResult['fam_ID'];
             if ($bClassificationPost) {
@@ -410,6 +413,7 @@ if ($iFamily != 0 &&
                 <td><BR></td>
             </tr>
                 <?php
+
             }
         } ?>
         </tbody>
@@ -433,6 +437,7 @@ if ($iFamily != 0 &&
         </div>
     </div>
     <?php
+
 } ?>
 </form>
 
