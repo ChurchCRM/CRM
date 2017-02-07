@@ -140,9 +140,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                             (!empty($fam_City) && (!empty($fam_State)) ? ',': ''). $fam_State.
                             (!empty($fam_State) ? '  ': '') .$fam_Zip . '</p>';
             $famDescription .= "<p style='text-align: center'><a href='FamilyView.php?FamilyID=" . $fam_ID . "'>";
-            $famDescription .= "<img class='img-circle img-responsive profile-user-img' border='1' src='" . $photoFileThumb . "'></a></p>";
-
-                        ?>
+            $famDescription .= "<img class='img-circle img-responsive profile-user-img' border='1' src='" . $photoFileThumb . "'></a></p>"; ?>
                                     var fam<?= $fam_ID ?>InfoWin = new google.maps.InfoWindow({content: "<?= $famDescription ?>"});
                         google.maps.event.addListener(famMark<?= $fam_ID ?>, "click", function() {
                                                                   fam<?= $fam_ID ?>InfoWin.open(map,famMark<?php echo $fam_ID; ?>);
@@ -150,7 +148,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             <?php
 
         }
-                
+
     } ?>
 
     //]]>
