@@ -33,25 +33,25 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
   <div class="callout callout-danger">
     <?= gettext('Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.') ?>
   </div>
-<?php 
+<?php
 } else {
     if (SystemConfig::getValue('sGoogleMapKey') == '') {
         ?>
     <div class="callout callout-warning">
       <?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?>
     </div>
-<?php 
+<?php
     } ?>
 
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue('sGoogleMapKey') ?>&sensor=false"></script>
 
 <div class="box box-body">
     <div class="col-lg-12">
-        <div id="map" class="col-lg-12" style="height: 400px;"></div>
+        <div id="map" class="col-lg-12" style="height: 600px;"></div>
         <script type="text/javascript">
             var mapOptions = {
                center: new google.maps.LatLng(<?= SystemConfig::getValue('nChurchLatitude').', '.SystemConfig::getValue('nChurchLongitude') ?>),
-               zoom: 4,
+               zoom: 10, //move this to systemconfig
                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
@@ -67,7 +67,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                 shadow: shadow,
                 position: new google.maps.LatLng(<?= SystemConfig::getValue('nChurchLatitude').', '.SystemConfig::getValue('nChurchLongitude') ?>),
                 map: map});
-	 
+
 
             var churchInfoWin = new google.maps.InfoWindow({content: "<?= SystemConfig::getValue('sChurchName').'<p>'.SystemConfig::getValue('sChurchAddress').'<p>'.SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'); ?>"});
 
@@ -103,7 +103,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
         $appendToQuery .= ')';
     }
 
-    $sSQL = 'SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( '.SystemConfig::getValue('sDirRoleHead').')';
+    $sSQL = 'SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( '.SystemConfig::getValue('sDirRoleHead').')';
     $sSQL .= $appendToQuery;
     $rsFams = RunQuery($sSQL);
     $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
@@ -130,8 +130,18 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                                                                                 map: map
                                                                                                });
                         <?php
-                            $famDescription = MakeSalutationUtility($fam_ID);
-            $famDescription .= '<p>'.$fam_Address1.'<p>'.$fam_City.', '.$fam_State.'  '.$fam_Zip; ?>
+                        $photoFileThumb = "Images/Family/thumbnails/" . $fam_ID . ".jpg";
+                        if (!file_exists($photoFileThumb))
+                            $photoFileThumb = "Images/Family/family-128.png";
+
+                        $famDescription = "<b><a href='FamilyView.php?FamilyID=" . $fam_ID . "'>" . MakeSalutationUtility($fam_ID) . "</a></b>";
+                        $famDescription .= '<p>'.$fam_Address1.'<br/>'. $fam_Address2 .'<br/>'. $fam_City.
+                            (!empty($fam_City) && (!empty($fam_State)) ? ',': ''). $fam_State.
+                            (!empty($fam_State) ? '  ': '') .$fam_Zip . '</p>';
+                        $famDescription .= "<p style='text-align: center'><a href='FamilyView.php?FamilyID=" . $fam_ID . "'>";
+                        $famDescription .= "<img class='img-circle img-responsive profile-user-img' border='1' src='" . $photoFileThumb . "'></a></p>";
+
+                        ?>
                                     var fam<?= $fam_ID ?>InfoWin = new google.maps.InfoWindow({content: "<?= $famDescription ?>"});
                         google.maps.event.addListener(famMark<?= $fam_ID ?>, "click", function() {
                                                                   fam<?= $fam_ID ?>InfoWin.open(map,famMark<?php echo $fam_ID; ?>);
@@ -166,7 +176,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
     </div>
 </div>
 
-<?php 
+<?php
 }
 
 require 'Include/Footer.php' ?>
