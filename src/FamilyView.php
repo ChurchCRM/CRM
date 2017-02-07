@@ -347,7 +347,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <button class="btn btn-app bg-orange"  id="activateDeactivate">
                         <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?= gettext((empty($fam_DateDeactivated) ? 'Deactivate' : 'Activate') . ' this Family') ?></button>
                 <?php
-                    
+
     } ?>
             </div>
         </div>
