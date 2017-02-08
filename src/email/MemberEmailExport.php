@@ -22,20 +22,20 @@ foreach ($groups as $group) {
 
 $sundaySchoolsParents = [];
 foreach ($groups as $group) {
-    if ($group->isSundaySchool() {
-    $sundaySchoolParents = [];
-    $kids = $sundaySchoolService->getKidsFullDetails($group->getId());
-    $parentIds = [];
-    foreach ($kids as $kid) {
-        if ($kid['dadId'] != '') {
-            array_push($parentIds, $kid['dadId']);
+    if ($group->isSundaySchool()) {
+        $sundaySchoolParents = [];
+        $kids = $sundaySchoolService->getKidsFullDetails($group->getId());
+        $parentIds = [];
+        foreach ($kids as $kid) {
+            if ($kid['dadId'] != '') {
+                array_push($parentIds, $kid['dadId']);
+            }
+            if ($kid['momId'] != '') {
+                array_push($parentIds, $kid['momId']);
+            }
         }
-        if ($kid['momId'] != '') {
-            array_push($parentIds, $kid['momId']);
-        }
+        $sundaySchoolsParents[$group['id']] = $parentIds;
     }
-    $sundaySchoolsParents[$group['id']] = $parentIds;
-}
 }
 
 header('Content-type: text/csv');
