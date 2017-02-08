@@ -240,6 +240,8 @@
         <column name="grp_Name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <column name="grp_Description" phpName="Description" type="LONGVARCHAR"/>
         <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="BOOLEAN" defaultValue="0"/>
+        <column name="grp_active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
+        <column name="grp_enable_email_export" phpName="EmailExportEnabled" type="BOOLEAN" size="1" required="true"/>
         <foreign-key foreignTable="list_lst">
             <reference local="grp_Type" foreign="lst_OptionID"/>
         </foreign-key>
