@@ -423,10 +423,10 @@ CREATE TABLE `group_grp` (
   `grp_Description` text,
   `grp_hasSpecialProps` BOOLEAN NOT NULL default 0,
   `grp_active` BOOLEAN NOT NULL default 1,
-  `grp_enable_email_export` BOOLEAN NOT NULL default 1
+  `grp_enable_email_export` BOOLEAN NOT NULL default 1,
   PRIMARY KEY  (`grp_ID`),
   UNIQUE KEY `grp_ID` (`grp_ID`),
-  KEY `grp_ID_2` (`grp_ID`),
+  KEY `grp_ID_2` (`grp_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
