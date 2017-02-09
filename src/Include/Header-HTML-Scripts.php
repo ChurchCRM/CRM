@@ -27,4 +27,6 @@
 
 <script src="<?= $sRootPath ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 
+<script src="<?= $sRootPath ?>/skin/bootbox/bootbox.min.js"></script>
+
 <script src="<?= $sRootPath; ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
