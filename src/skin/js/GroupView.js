@@ -124,18 +124,29 @@ $(document).ready(function () {
   });
 
   $("#addSelectedToCart").click(function () {
-    var selectedRows = dataT.rows('.selected').data()
-    $.each(selectedRows, function (index, value) {
+    if (dataT.rows('.selected').length > 0)
+    {
+      var selectedPersons = {
+        "Persons" : $.map(dataT.rows('.selected').data(), function(val,i){
+                      return val.PersonId;
+                    })
+      };
       $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root + '/api/persons/' + value.PersonId + "/addToCart", // the url where we want to POST
-        dataType: 'json', // what type of data do we expect back from the server
-        encode: true
+        type: 'POST', 
+        url: window.CRM.root + '/api/cart/',
+        dataType: 'json',
+        contentType: "application/json",
+        data: JSON.stringify(selectedPersons)
+      }).done(function(data) {
+          if ( data.status == "success" )
+          {
+            location.reload();
+          }
       });
-    });
-    location.reload();
-  });
+    }
 
+  });
+  
   //copy membership
   $("#addSelectedToGroup").click(function () {
     $("#selectTargetGroupModal").modal("show");
