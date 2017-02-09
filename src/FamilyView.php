@@ -1020,10 +1020,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 console.log("click activateDeactivate");
                 popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
                 if(window.CRM.currentActive == true) {
-                    popupMessage = "<?= gettext('Please confirm Deactivation of family') . ': ' . $iFamilyID . '\n '. "($fam_Name)" ?>";
+                    popupMessage = "<?= gettext('Please confirm deactivation of family') . ': ' . $fam_Name ?>";
                 }
                 else {
-                    popupMessage = "<?= gettext('Please confirm Activation of family') . ': ' . $iFamilyID . '\n ' . "($fam_Name)"  ?>";
+                    popupMessage = "<?= gettext('Please confirm activation of family') . ': ' . $fam_Name  ?>";
                 }
 
                 bootbox.confirm({
