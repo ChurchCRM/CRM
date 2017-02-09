@@ -262,7 +262,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <?php foreach ($demographicStats as $key => $value) {
             ?>
             <tr>
-              <td><?= gettext($key) ?></td>
+              <td> <?= $key ?></td>
               <td>
                 <div class="progress progress-xs progress-striped active">
                   <div class="progress-bar progress-bar-success"
