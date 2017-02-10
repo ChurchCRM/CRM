@@ -29,25 +29,22 @@ require 'Include/Functions.php';
 use ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\dto\SystemConfig;
 
 $financialService = new FinancialService();
-
-$sSQL = 'select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;';
-$rsLastFamilies = RunQuery($sSQL);
-
-$sSQL = 'select * from family_fam where fam_DateLastEdited is null order by fam_DateEntered desc LIMIT 10;';
-$rsNewFamilies = RunQuery($sSQL);
-
-$sSQL = 'select * from person_per order by per_DateLastEdited desc  LIMIT 10;';
-$rsLastPeople = RunQuery($sSQL);
-
-$sSQL = 'select * from person_per where per_DateLastEdited is null order by per_DateEntered desc LIMIT 10;';
-$rsNewPeople = RunQuery($sSQL);
-
 $dashboardService = new DashboardService();
 $personCount = $dashboardService->getPersonCount();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
+//Last edited active families
+$updatedFamilies = $dashboardService->getUpdatedFamilies(10);
+//Newly added active families
+$latestFamilies = $dashboardService->getLatestFamilies(10);
+//last Edited members from Active families
+$updatedMembers = $dashboardService->getUpdatedMembers(12);
+//Newly added members from Active families
+$latestMembers = $dashboardService->getLatestMembers(12);
+
 $depositData = false;  //Determine whether or not we should display the deposit line graph
 if ($_SESSION['bFinance']) {
     $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
@@ -183,17 +180,21 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php while ($row = mysqli_fetch_array($rsNewFamilies)) {
-     ?>
-                        <tr>
-                            <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
-                            <td><?php if ($row['fam_Address1'] != '') {
-         echo $row['fam_Address1'].', '.$row['fam_City'].' '.$row['fam_Zip'];
-     } ?></td>
-                            <td><?= FormatDate($row['fam_DateEntered'], false) ?></td>
-                        </tr>
-                        <?php 
- } ?>
+                        <?php foreach ($latestFamilies as $family) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
+                                </td>
+                                <td><?= $family->getAddress() ?></td>
+                                <td><?= $family->getDateEntered('M d, Y') ?></td>
+                                <!--formats seem to be very different from current formats? revisit...
+                                <td><?= $family->getDateEntered(SystemConfig::getValue('sDateFormatLong')) ?></td-->
+                            </tr>
+                            <?php
+
+                        }
+                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -217,15 +218,21 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php while ($row = mysqli_fetch_array($rsLastFamilies)) {
-     ?>
+                        <?php foreach ($updatedFamilies as $family) {
+                            ?>
                             <tr>
-                                <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
-                                <td><?= $row['fam_Address1'].', '.$row['fam_City'].' '.$row['fam_Zip'] ?></td>
-                                <td><?= FormatDate($row['fam_DateLastEdited'], false) ?></td>
+                                <td>
+                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
+                                </td>
+                                <td><?= $family->getAddress() ?></td>
+                                <td><?= $family->getDateLastEdited('M d, Y') ?></td>
+                                <!--formats seem to be very different from current formats? revisit...
+                                <td><?= $family->getDateLastEdited(SystemConfig::getValue('sDateFormatLong')) ?></td-->
                             </tr>
-                        <?php 
- } ?>
+                            <?php
+
+                        }
+                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -249,16 +256,21 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
-                        <?php while ($row = mysqli_fetch_array($rsNewPeople)) {
-     ?>
-                        <li>
-                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
-                            <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                            <?= $row['per_FirstName'].' '.mb_substr($row['per_LastName'], 0, 1) ?></a>
-                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false) ?></span>
-                        </li>
-                        <?php 
- } ?>
+                        <?php foreach ($latestMembers as $person) {
+                            ?>
+                            <li>
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
+                                    <img src="<?= $sRootPath ?>/api/persons/<?= $person->getId() ?>/photo"
+                                         alt="<?= $person->getFullName() ?>" class="user-image" width="85" height="85"/><br/>
+                                    <?= $person->getFullName() ?></a>
+                                <span class="users-list-date"><?= $person->getDateEntered('M d, Y') ?></span>
+                                <!--formats seem to be very different from current formats? revisit...
+                                <span-- class="users-list-date"><?= $person->getDateEntered(SystemConfig::getValue('sDateFormatLong')) ?></span-->
+                            </li>
+                            <?php
+
+                        }
+                        ?>
                     </ul>
                     <!-- /.users-list -->
                 </div>
@@ -280,16 +292,21 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
-                        <?php while ($row = mysqli_fetch_array($rsLastPeople)) {
-     ?>
+                        <?php foreach ($updatedMembers as $person) {
+                            ?>
                             <li>
-                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
-                                <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                                <?= $row['per_FirstName'].' '.mb_substr($row['per_LastName'], 0, 1) ?></a>
-                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
+                                    <img src="<?= $sRootPath ?>/api/persons/<?= $person->getId() ?>/photo"
+                                         alt="<?= $person->getFullName() ?>" class="user-image" width="85" height="85"/><br/>
+                                    <?= $person->getFullName() ?></a>
+                                <span class="users-list-date"><?= $person->getDateLastEdited('M d, Y') ?></span>
+                                <!--formats seem to be very different from current formats? revisit...
+                                <span-- class="users-list-date"><?= $person->getDateLastEdited(SystemConfig::getValue('sDateFormatLong')) ?></span-->
                             </li>
-                        <?php 
- } ?>
+                            <?php
+
+                        }
+                        ?>
                     </ul>
                     <!-- /.users-list -->
                 </div>
@@ -329,7 +346,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     };
     var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
     var lineChart = new Chart(lineChartCanvas).Line(lineData,options);
-    
+
   });
 <?php
 
