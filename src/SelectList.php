@@ -212,7 +212,7 @@ $sLimit500 = '';
 if ($iMode == 2) {
     $sBaseSQL = 'SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip '.
                 'FROM person_per LEFT JOIN family_fam '.
-                'ON person_per.per_fam_ID = family_fam.fam_ID ';
+                'ON person_per.per_fam_ID = family_fam.fam_ID';
 
     // Find people who are part of a group of the specified type.
     // MySQL doesn't have subqueries until version 4.1.. for now, do it the hard way
@@ -340,8 +340,9 @@ if (isset($sLetter)) {
 
 $sGroupBySQL = ' GROUP BY per_ID';
 
- $sWhereExt = $sGroupWhereExt.$sFilterWhereExt.$sClassificationWhereExt.
-                $sFamilyRoleWhereExt.$sGenderWhereExt.$sLetterWhereExt.$sPersonPropertyWhereExt;
+$activeFamiliesWhereExt = ' AND fam_DateDeactivated is null';
+$sWhereExt = $sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt .
+    $sFamilyRoleWhereExt . $sGenderWhereExt . $sLetterWhereExt . $sPersonPropertyWhereExt . $activeFamiliesWhereExt;
 
 $sSQL = $sBaseSQL.$sJoinExt.' WHERE 1'.$sWhereExt.$sGroupBySQL;
 
@@ -500,7 +501,7 @@ $finalSQL = $sSQL.$sOrderSQL.$sLimitSQL;
 $rsPersons = RunQuery($finalSQL);
 
 // Run query to get first letters of last name.
-$sSQL = 'SELECT DISTINCT LEFT(per_LastName,1) AS letter FROM person_per '.
+$sSQL = 'SELECT DISTINCT LEFT(per_LastName,1) AS letter FROM person_per LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID '.
         $sJoinExt." WHERE 1 $sWhereExt ORDER BY letter";
 $rsLetters = RunQuery($sSQL);
 
