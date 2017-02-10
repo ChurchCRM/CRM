@@ -265,7 +265,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                     <?= $person->getFullName() ?></a>
                                 <span class="users-list-date"><?= $person->getDateEntered('M d, Y') ?></span>
                                 <!--formats seem to be very different from current formats? revisit...
-                                <span-- class="users-list-date"><?= $person->getDateEntered(SystemConfig::getValue('sDateFormatLong')) ?></span-->
+                                <span class="users-list-date"><?= $person->getDateEntered(SystemConfig::getValue('sDateFormatLong')) ?></span-->
                             </li>
                             <?php
 
@@ -301,7 +301,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                     <?= $person->getFullName() ?></a>
                                 <span class="users-list-date"><?= $person->getDateLastEdited('M d, Y') ?></span>
                                 <!--formats seem to be very different from current formats? revisit...
-                                <span-- class="users-list-date"><?= $person->getDateLastEdited(SystemConfig::getValue('sDateFormatLong')) ?></span-->
+                                <span class="users-list-date"><?= $person->getDateLastEdited(SystemConfig::getValue('sDateFormatLong')) ?></span-->
                             </li>
                             <?php
 
