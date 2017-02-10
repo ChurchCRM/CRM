@@ -106,7 +106,6 @@ function Header_body_scripts()
 {
     global $localeInfo;
     $systemService = new SystemService(); ?>
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
 
   <script>
     window.CRM = {
@@ -119,7 +118,7 @@ function Header_body_scripts()
 
     window.CRM.DisplayErrorMessage = function(endpoint, error) {
 
-      message = "<p><?= gettext("Error making API Call to") ?>: " + endpoint + 
+      message = "<p><?= gettext("Error making API Call to") ?>: " + endpoint +
         "</p><p><?= gettext("Error text") ?>: " + error.message;
       if (error.trace)
       {
