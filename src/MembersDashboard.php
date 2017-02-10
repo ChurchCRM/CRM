@@ -23,10 +23,12 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $demographicStats = $dashboardService->getDemographic();
 
-$sSQL = 'select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;';
+$sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
+        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;';
 $rsAdultsGender = RunQuery($sSQL);
 
-$sSQL = 'select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;';
+$sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
+        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;';
 $rsKidsGender = RunQuery($sSQL);
 
 $sSQL = 'select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;';
@@ -39,7 +41,8 @@ while (list($lst_OptionID, $lst_OptionName) = mysqli_fetch_row($rsClassification
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
           LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
           INNER JOIN list_lst on lst_ID=1 AND per_cls_ID = lst_OptionID
-          WHERE per_ID NOT IN
+          WHERE fam_DateDeactivated is  null
+			 AND per_ID NOT IN
           (SELECT per_ID
               FROM person_per
               INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
@@ -261,7 +264,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <?php foreach ($demographicStats as $key => $value) {
             ?>
             <tr>
-              <td><?= gettext($key) ?></td>
+              <td> <?= $key ?></td>
               <td>
                 <div class="progress progress-xs progress-striped active">
                   <div class="progress-bar progress-bar-success"

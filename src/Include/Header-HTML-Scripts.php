@@ -1,10 +1,10 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
-
 ?>
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" type="text/css" href="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+      href="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/css/bootstrap.min.css">
 
 <!-- Custom ChurchCRM styles -->
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/churchcrm.min.css">
@@ -26,9 +26,10 @@ use ChurchCRM\dto\SystemURLs;
 <!-- AdminLTE DataTables -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<script
+    src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
-
+<script
+    src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>

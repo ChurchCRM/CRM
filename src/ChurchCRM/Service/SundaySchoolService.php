@@ -181,6 +181,7 @@ class SundaySchoolService
                 left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and mom.per_fmr_ID = 2,`group_grp` grp, `person2group2role_p2g2r` person_grp
 
             where kid.per_fam_id = fam.fam_ID and grp.grp_ID = '.$groupId."
+              and fam.fam_DateDeactivated is null
               and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID
               and lst.lst_OptionID = person_grp.p2g2r_rle_ID and lst.lst_ID = grp.grp_RoleListID and lst.lst_OptionName = 'Student'
 
@@ -201,6 +202,7 @@ class SundaySchoolService
               fam.fam_Address1 Address1, fam.fam_Address2 Address2, fam.fam_City city, fam.fam_State state, fam.fam_Zip zip
             from person_per kid, family_fam fam
             where per_fam_id = fam.fam_ID and per_cls_ID in (1,2) and kid.per_fmr_ID = 3 and
+              fam.fam_DateDeactivated is null and
               per_ID not in
 	              (select per_id from person_per,group_grp grp, person2group2role_p2g2r person_grp
 		              where person_grp.p2g2r_rle_ID = 2 and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID)';
