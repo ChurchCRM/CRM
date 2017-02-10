@@ -50,6 +50,30 @@ There are two ways to view a family:
 
 3. Confirm the deletion
 
+## How do I deactivate a Family?
+
+1. Search/Filter for the desired family, and bring up the Family View.
+
+2. Select _"Deactivate this family"_
+> If this link doesn't appear, then either you don't have permissions to Edit records, or the Family is already deactivated.
+
+3. Confirm the deactivation
+
+4. Once the page refreshes, You will see a banner on top with message "This family is deactivated."
+
+## How do I Activate a Deactivated Family?
+
+1. Search for the desired family, and bring up the Family View.
+
+2. If the family is deactivated, you will see a banner on top with message "This family is deactivated."
+
+3. Select _"Activate this family"_
+> If this link doesn't appear, then either you don't have permissions to Edit records, or the Family is already Active.
+
+3. Confirm the Activation
+
+4. Once the page refreshes, the banner on top with message "This family is deactivated" will disappear and the family is active now.
+
 ## How do I assign a Property to a Family?
 
 See the [Properties](Properties.md) help topic.
