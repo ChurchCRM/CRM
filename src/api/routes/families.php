@@ -64,6 +64,10 @@ $app->group('/families', function () {
     return $response;
   });
 
+    /**
+     * Update the family status to activated or deactivated with :familyId and :status true/false.
+     * Pass true to activate and false to deactivate.     *
+     */
     $this->post('/{familyId:[0-9]+}/activate/{status}', function ($request, $response, $args) {
         $familyId = $args["familyId"];
         $newStatus = $args["status"];
