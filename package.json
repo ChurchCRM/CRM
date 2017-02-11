@@ -34,7 +34,9 @@
         "bootbox": "^4.4.0",
         "ionicons": "2.0.1",
         "font-awesome": "4.7.0",
-        "fullcalendar": "3.0.1"
+        "fullcalendar": "3.0.1",
+        "jquery-photo-uploader": "^1.0.9",
+        "initial-js": "~0.3.4"
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",

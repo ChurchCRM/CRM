@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Base\Family as BaseFamily;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\dto\Photo;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -16,7 +17,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class Family extends BaseFamily
+class Family extends BaseFamily implements iPhoto
 {
     public function getAddress()
     {
@@ -78,7 +79,7 @@ class Family extends BaseFamily
     {
         $this->createTimeLineNote(true);
     }
-
+    
     public function postUpdate(ConnectionInterface $con = null)
     {
         $this->createTimeLineNote(false);
@@ -145,21 +146,89 @@ class Family extends BaseFamily
 
     private function createTimeLineNote($new)
     {
-        $note = new Note();
-        $note->setFamId($this->getId());
+      $note = new Note();
+      $note->setFamId($this->getId());
 
-        if ($new) {
-            $note->setText('Created');
-            $note->setType('create');
-            $note->setEnteredBy($this->getEnteredBy());
-            $note->setDateEntered($this->getDateEntered());
-        } else {
-            $note->setText('Updated');
-            $note->setType('edit');
-            $note->setEnteredBy($this->getEditedBy());
-            $note->setDateLastEdited($this->getDateLastEdited());
-        }
+      if ($new) {
+          $note->setText('Created');
+          $note->setType('create');
+          $note->setEnteredBy($this->getEnteredBy());
+          $note->setDateLastEdited($this->getDateEntered());
+      } else {
+          $note->setText('Updated');
+          $note->setType('edit');
+          $note->setEnteredBy($this->getEditedBy());
+          $note->setDateLastEdited($this->getDateLastEdited());
+      }
 
-        $note->save();
+      $note->save();
     }
+    
+    private function getPhoto()
+    {
+      
+      $photo = new Photo("Family",  $this->getId());
+      return $photo;
+    }
+
+    public function deletePhoto()
+    {
+      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+        if ( $this->getPhoto()->delete() )
+        {
+          $note = new Note();
+          $note->setText(gettext("Profile Image Deleted"));
+          $note->setType("photo");
+          $note->setEntered($_SESSION['iUserID']);
+          $note->setPerId($this->getId());
+          $note->save();
+          return true;
+        }
+      }
+      return false;
+    }
+
+    public function getPhotoBytes() {
+      return $this->getPhoto()->getPhotoBytes();
+    }
+
+    public function getPhotoURI() {
+      return $this->getPhoto()->getPhotoURI();
+    }
+
+    public function getThumbnailBytes() {
+      return $this->getPhoto()->getThumbnailBytes();
+    }
+
+    public function getThumbnailURI() {
+       return $this->getPhoto()->getThumbnailURI();
+    }
+
+    public function setImageFromBase64($base64) {
+      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+        $note = new Note();
+        $note->setText(gettext("Profile Image uploaded"));
+        $note->setType("photo");
+        $note->setEntered($_SESSION['iUserID']);
+        $this->getPhoto()->setImageFromBase64($base64);
+        $note->setFamId($this->getId());
+        $note->save();
+        return true;
+      }
+      return false;
+      
+    }
+
+    public function isPhotoLocal() {
+      return $this->getPhoto()->isPhotoLocal();
+    }
+    
+    public function isPhotoRemote() {
+      return $this->getPhoto()->isPhotoRemote();
+    }
+    
+    public function getPhotoContentType() {
+      return $this->getPhoto()->getPhotoContentType();
+    }
+
 }
