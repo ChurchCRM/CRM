@@ -67,6 +67,7 @@ echo "=========================================================="
 
 sudo npm install -g npm@latest --unsafe-perm --no-bin-links
 npm install --unsafe-perm --no-bin-links
+grunt compress:demo
 
 echo "=========================================================="
 echo "===============   Composer PHP           ================="
