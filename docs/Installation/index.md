@@ -6,9 +6,21 @@
 
 ## ChurchCRM Requirements?
 
-* A PHP-compatible Web server (Apache is recommended)
-* MySQL database server (version 5.1 or higher)
-* PHP (version 5.6 or higher)
+ChurchCRM requires a PHP-compatible Web server (such as Apache), 
+and can run a MySQL database server.  We highly recommend Linux, but the choice is yours. 
+As for PHP and MySQL, we do
+have the following requirements:
+
+1. PHP   
+      * Version 7.0 or greater
+      * GD enabled
+      * PEAR enabled
+      * gettext enabled
+      * register_globals turned OFF (see below)
+      * Phar extension must be enabled.
+
+2. MySQL 
+      * Version 5.5 or greater
 
 Certain PHP modules (sometimes referred to as extensions) must be enabled:
 'mysql' and 'gd' version 2 or higher.  On some platforms, you may need to
@@ -27,24 +39,6 @@ For Debian GNU/Linux users, you should install these packages:
 
 ChurchCRM can be run entirely with free software.  In fact, that's
 half the point of why it was written!
-
-## What type of server do I need?
-
-ChurchCRM requires a PHP-compatible Web server (such as Apache), 
-and can run a MySQL database server.  We highly recommend Linux, but the choice is yours. 
-As for PHP and MySQL, we do
-have the following requirements:
-
-1. PHP   
-      * Version 5.6 or greater
-      * GD enabled
-      * PEAR enabled
-      * gettext enabled
-      * register_globals turned OFF (see below)
-      * Phar extension must be enabled.
-
-2. MySQL 
-      * Version 5.1 or greater
 
 ## What if my host doesn't have register_globals turned OFF?
 

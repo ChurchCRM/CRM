@@ -9,6 +9,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\dto\SystemURLs;
 
 // Set the page title
 $sPageTitle = gettext('Members Dashboard');
@@ -22,10 +23,12 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $demographicStats = $dashboardService->getDemographic();
 
-$sSQL = 'select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;';
+$sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
+        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;';
 $rsAdultsGender = RunQuery($sSQL);
 
-$sSQL = 'select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;';
+$sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
+        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;';
 $rsKidsGender = RunQuery($sSQL);
 
 $sSQL = 'select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;';
@@ -38,7 +41,8 @@ while (list($lst_OptionID, $lst_OptionName) = mysqli_fetch_row($rsClassification
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
           LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
           INNER JOIN list_lst on lst_ID=1 AND per_cls_ID = lst_OptionID
-          WHERE per_ID NOT IN
+          WHERE fam_DateDeactivated is  null
+			 AND per_ID NOT IN
           (SELECT per_ID
               FROM person_per
               INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
@@ -130,7 +134,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person-stalker"></i>
       </div>
-      <a href="<?= $sRootPath.'/' ?>FamilyList.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath().'/' ?>FamilyList.php" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -151,7 +155,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person"></i>
       </div>
-      <a href="<?= $sRootPath.'/' ?>SelectList.php?mode=person" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath().'/' ?>SelectList.php?mode=person" class="small-box-footer">
         <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -172,7 +176,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-child"></i>
       </div>
-      <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
         <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -193,7 +197,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-gg"></i>
       </div>
-      <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/grouplist" class="small-box-footer">
         <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -217,7 +221,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <p><a class="MediumText"
                 href="DirectoryReports.php"><?= gettext('Members Directory') ?></a><br><?= gettext('Printable directory of all members, grouped by family where assigned') ?>
           </p>
-        <?php 
+        <?php
+
      } ?>
         <a class="MediumText" href="LettersAndLabels.php"><?php echo gettext('Letters and Mailing Labels'); ?></a>
         <br><?php echo gettext('Generate letters and mailing labels.'); ?>
@@ -259,7 +264,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <?php foreach ($demographicStats as $key => $value) {
             ?>
             <tr>
-              <td><?= gettext($key) ?></td>
+              <td> <?= $key ?></td>
               <td>
                 <div class="progress progress-xs progress-striped active">
                   <div class="progress-bar progress-bar-success"
@@ -268,7 +273,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
               </td>
               <td><span class="badge bg-green"><?= $value ?></span></td>
             </tr>
-          <?php 
+          <?php
+
         } ?>
         </table>
       </div>
@@ -305,7 +311,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             </td>
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
-        <?php 
+        <?php
+
         } ?>
       </table>
       <!-- /.box-body-->

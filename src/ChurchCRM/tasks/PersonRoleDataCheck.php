@@ -29,17 +29,17 @@ class PersonRoleDataCheck implements iTask
 
     public function getLink()
     {
-        return SystemURLs::getRootPath() . '/SelectList.php?FamilyRole=0&PersonColumn3=Family+Role';
+        return SystemURLs::getRootPath() . '/SelectList.php?mode=person&FamilyRole=0&PersonColumn3=Family+Role';
     }
 
     public function getTitle()
     {
-        return gettext('Missing Role Data' . " (" . $this->count . ")");
+        return gettext('Missing Role Data') . " (" . $this->count . ")";
     }
 
     public function getDesc()
     {
-        return gettext("Missing Classification Data for Some People");
+        return gettext("Missing Role Data for Some People");
     }
 
 }

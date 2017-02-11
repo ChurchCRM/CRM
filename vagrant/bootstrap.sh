@@ -56,27 +56,27 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "INSERT INTO churchcrm.version_ver (ver_
 echo "Database: development seed data deployed"
 
 cp /vagrant/vagrant/Config.php /vagrant/src/Include/
+cp /vagrant/BuildConfig.json.example /vagrant/BuildConfig.json
 echo "copied Config.php "
 
-echo "=========================================================="
-echo "===============   Composer PHP           ================="
-echo "=========================================================="
-cd /vagrant/src
-composer update
-
-echo "================   Build ORM Classes    =================="
-
 cd /vagrant
-src/vendor/bin/propel model:build --config-dir=propel
-composer dump-autoload
 
 echo "=========================================================="
 echo "===============   NPM                    ================="
 echo "=========================================================="
 
-cd /vagrant
 sudo npm install -g npm@latest --unsafe-perm --no-bin-links
 npm install --unsafe-perm --no-bin-links
+
+echo "=========================================================="
+echo "===============   Composer PHP           ================="
+echo "=========================================================="
+
+npm run composer-update
+
+echo "================   Build ORM Classes    =================="
+
+npm run orm-gen
 
 echo "=========================================================="
 echo "=================   MailCatcher Setup  ==================="

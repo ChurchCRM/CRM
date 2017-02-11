@@ -27,10 +27,12 @@ before_install:
  - sudo gem install sass
  - chmod +x ./travis-ci/*.sh
  - chmod +x ./scripts/*.sh
+ - cp BuildConfig.json.example BuildConfig.json
 
 # prepare travis ci for the build process
 install:
- - ./travis-ci/install-composer.sh
+ - npm run composer-install
+ - npm run orm-gen
  - npm install
 
 # linters

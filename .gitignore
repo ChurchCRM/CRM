@@ -15,6 +15,7 @@ vendor
 composer.lock
 node_modules
 npm-debug.log*
+BuildConfig.json
 
 # Uploaded Images
 src/Images/Family/thumbnails
@@ -33,6 +34,7 @@ src/skin/locale
 src/skin/fastclick
 src/skin/churchcrm.min.css.map
 src/skin/churchcrm.min.css
+src/skin/bootbox
 
 # Configuration files with passwords
 src/Include/Config.php

@@ -15,6 +15,8 @@
  *
  ******************************************************************************/
 
+use ChurchCRM\dto\SystemURLs;
+
 $isAdmin = $_SESSION['user']->isAdmin();
 
 ?>
@@ -56,19 +58,19 @@ $isAdmin = $_SESSION['user']->isAdmin();
             <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Family') ?></h4>
             <ul class="control-sidebar-menu">
                 <li>
-                    <a href="<?= $sRootPath ?>/OptionManager.php?mode=famroles">
+                    <a href="<?= SystemURLs::getRootPath() ?>/OptionManager.php?mode=famroles">
                         <i class="fa fa-cog"></i> <?= _('Family Roles') ?>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= $sRootPath ?>/PropertyList.php?Type=f">
+                    <a href="<?= SystemURLs::getRootPath() ?>/PropertyList.php?Type=f">
                         <i class="fa fa-cog"></i> <?= _('Family Properties') ?>
                     </a>
                 </li>
                 <?php if ($isAdmin) {
     ?>
                     <li>
-                        <a href="<?= $sRootPath ?>/FamilyCustomFieldsEditor.php">
+                        <a href="<?= SystemURLs::getRootPath() ?>/FamilyCustomFieldsEditor.php">
                             <i class="fa fa-cog"></i> <?= _('Edit Custom Family Fields') ?>
                         </a>
                     </li>
@@ -80,19 +82,19 @@ $isAdmin = $_SESSION['user']->isAdmin();
             <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Person') ?></h4>
             <ul class="control-sidebar-menu">
                 <li>
-                    <a href="<?= $sRootPath ?>/OptionManager.php?mode=classes">
+                    <a href="<?= SystemURLs::getRootPath() ?>/OptionManager.php?mode=classes">
                         <i class="fa fa-cog"></i> <?= _('Classifications Manager') ?>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= $sRootPath ?>/PropertyList.php?Type=p">
+                    <a href="<?= SystemURLs::getRootPath() ?>/PropertyList.php?Type=p">
                         <i class="fa fa-cog"></i> <?= _('People Properties') ?>
                     </a>
                 </li>
                 <?php if ($isAdmin) {
     ?>
                     <li>
-                        <a href="<?= $sRootPath ?>/PersonCustomFieldsEditor.php">
+                        <a href="<?= SystemURLs::getRootPath() ?>/PersonCustomFieldsEditor.php">
                             <i class="fa fa-cog"></i> <?= _('Edit Custom Person Fields') ?>
                         </a>
                     </li>
@@ -104,12 +106,12 @@ $isAdmin = $_SESSION['user']->isAdmin();
             <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Group') ?></h4>
             <ul class="control-sidebar-menu">
                 <li>
-                    <a href="<?= $sRootPath ?>/PropertyList.php?Type=g">
+                    <a href="<?= SystemURLs::getRootPath() ?>/PropertyList.php?Type=g">
                         <i class="fa fa-cog"></i> <?= _('Group Properties') ?>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= $sRootPath ?>/OptionManager.php?mode=grptypes">
+                    <a href="<?= SystemURLs::getRootPath() ?>/OptionManager.php?mode=grptypes">
                         <i class="fa fa-cog"></i> <?= _('Edit Group Types') ?>
                     </a>
                 </li>
@@ -118,19 +120,19 @@ $isAdmin = $_SESSION['user']->isAdmin();
             <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Other') ?></h4>
             <ul class="control-sidebar-menu">
                 <li>
-                    <a href="<?= $sRootPath ?>/PropertyTypeList.php">
+                    <a href="<?= SystemURLs::getRootPath() ?>/PropertyTypeList.php">
                         <i class="fa fa-cog"></i> <?= _('Property Types') ?>
                     </a>
                 </li>
                 <?php if ($isAdmin) {
     ?>
                     <li>
-                        <a href="<?= $sRootPath ?>/VolunteerOpportunityEditor.php">
+                        <a href="<?= SystemURLs::getRootPath() ?>/VolunteerOpportunityEditor.php">
                             <i class="fa fa-cog"></i> <?= _('Volunteer Opportunities') ?>
                         </a>
                     </li>
                     <li>
-                        <a href="<?= $sRootPath ?>/DonationFundEditor.php">
+                        <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php">
                             <i class="fa fa-cog"></i> <?= _('Edit Donation Funds') ?>
                         </a>
                     </li>
@@ -147,7 +149,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     ?>
                     <ul class="control-sidebar-menu">
                         <li>
-                            <a href="<?= $sRootPath ?>/SystemSettings.php">
+                            <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php">
                                 <i class="menu-icon fa fa-gears bg-red"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading"><?= _('Edit General Settings') ?></h4>
@@ -155,7 +157,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                             </a>
                         </li>
                         <li>
-                            <a href="<?= $sRootPath ?>/UserList.php">
+                            <a href="<?= SystemURLs::getRootPath() ?>/UserList.php">
                                 <i class="menu-icon fa fa-user-secret bg-gray"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading"><?= _('System Users') ?></h4>
@@ -171,7 +173,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     <?php if ($isAdmin) {
     ?>
                         <li>
-                            <a href="<?= $sRootPath ?>/RestoreDatabase.php">
+                            <a href="<?= SystemURLs::getRootPath() ?>/RestoreDatabase.php">
                                 <i class="menu-icon fa fa-database bg-yellow-gradient"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading"><?= _('Restore Database') ?></h4>
@@ -179,7 +181,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                             </a>
                         </li>
                         <li>
-                            <a href="<?= $sRootPath ?>/BackupDatabase.php">
+                            <a href="<?= SystemURLs::getRootPath() ?>/BackupDatabase.php">
                                 <i class="menu-icon fa fa-database bg-green"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading"><?= _('Backup Database') ?></h4>
@@ -187,7 +189,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                             </a>
                         </li>
                         <li>
-                            <a href="<?= $sRootPath ?>/CSVImport.php">
+                            <a href="<?= SystemURLs::getRootPath() ?>/CSVImport.php">
                                 <i class="menu-icon fa fa-upload bg-yellow-gradient"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading"><?= _('CSV Import') ?></h4>
@@ -198,7 +200,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 } ?>
                     <li>
-                        <a href="<?= $sRootPath ?>/CSVExport.php">
+                        <a href="<?= SystemURLs::getRootPath() ?>/CSVExport.php">
                             <i class="menu-icon fa fa-download bg-green"></i>
                             <div class="menu-info">
                                 <h4 class="control-sidebar-subheading"><?= _('CSV Export Records') ?></h4>
@@ -211,7 +213,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     <hr/>
                     <ul class="control-sidebar-menu">
                         <li>
-                            <a href="<?= $sRootPath ?>/GenerateSeedData.php">
+                            <a href="<?= SystemURLs::getRootPath() ?>/GenerateSeedData.php">
                                 <i class="menu-icon fa fa-plus-square bg-teal"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading"><?= _('Generate Seed Data') ?></h4>
@@ -288,30 +290,37 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 <!-- Bootstrap 3.3.5 -->
 
-<script src="<?= $sRootPath ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="<?= $sRootPath ?>/skin/fastclick/fastclick.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="<?= $sRootPath ?>/skin/adminlte/dist/js/app.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/dist/js/app.min.js"></script>
 
 <!-- InputMask -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"
         type="text/javascript"></script>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js"
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js"
         type="text/javascript"></script>
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"
         type="text/javascript"></script>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
 
-<script src="<?= $sRootPath ?>/skin/js/DataTables.js"></script>
-<script src="<?= $sRootPath ?>/skin/js/Tooltips.js"></script>
-<script src="<?= $sRootPath ?>/skin/js/Events.js"></script>
-<script src="<?= $sRootPath ?>/skin/js/Footer.js"></script>
+<!-- PACE -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
 
-<script src="<?= $sRootPath ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Tooltips.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
 
 <?php if ($sGlobalMessage) {
     ?>

@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
@@ -88,7 +89,6 @@ class SystemService
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
         $restoreResult->UpgradeStatus = $this->upgradeDatabaseVersion();
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/update_config.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
         SystemConfig::setValue('sEnableExternalBackupTarget', '0');
@@ -319,7 +319,6 @@ class SystemService
         }
         // always rebuild the menu
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/update_config.sql', $connection);
 
         return 'success';
     }
@@ -340,7 +339,10 @@ class SystemService
             'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
             'PHP Version | ' . phpversion() . "\r\n" .
             'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
-            'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n";
+            'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
+            'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
+            'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json')."\r\n";
+        
         if (function_exists('apache_get_modules')) {
             $issueDescription .= 'Apache Modules    |' . implode(',', apache_get_modules());
         }
@@ -356,7 +358,7 @@ class SystemService
         curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata));
         curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curlService, CURLOPT_CONNECTTIMEOUT, 1);
-
+        
         $result = curl_exec($curlService);
         if ($result === false) {
             throw new \Exception('Unable to reach the issue bridge', 500);
@@ -388,7 +390,7 @@ class SystemService
             $diff = $previous->diff($now);  // calculate the difference.
             if (!SystemConfig::getValue('sLastIntegrityCheckTimeStamp') || $diff->h >= SystemConfig::getValue('sIntegrityCheckInterval')) {  // if there was no previous backup, or if the interval suggests we do a backup now.
                 $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
-                $appIntegrity = $this->verifyApplicationIntegrity();
+                $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity));
                 $now = new \DateTime();  // update the LastBackupTimeStamp.
                 SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format('Y-m-d H:i:s'));
@@ -449,39 +451,7 @@ class SystemService
         }
     }
 
-    public function verifyApplicationIntegrity()
-    {
-        $signatureFile = SystemURLs::getDocumentRoot() . '/signatures.json';
-        $signatureFailures = [];
-        if (file_exists($signatureFile)) {
-            $signatureData = json_decode(file_get_contents($signatureFile));
-            if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) == $signatureData->sha1) {
-                foreach ($signatureData->files as $file) {
-                    $currentFile = SystemURLs::getDocumentRoot() . '/' . $file->filename;
-                    if (file_exists($currentFile)) {
-                        $actualHash = sha1_file($currentFile);
-                        if ($actualHash != $file->sha1) {
-                            array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'Hash Mismatch', 'expectedhash' => $file->sha1, 'actualhash' => $actualHash]);
-                        }
-                    } else {
-                        array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'File Missing']);
-                    }
-                }
-            } else {
-                return ['status' => 'failure', 'message' => gettext('Signature definition file signature failed validation')];
-            }
-        } else {
-            return ['status' => 'failure', 'message' => gettext('Signature definition File Missing')];
-        }
-
-        if (count($signatureFailures) > 0) {
-            return ['status' => 'failure', 'message' => gettext('One or more files failed signature validation'), 'files' => $signatureFailures];
-        } else {
-            return ['status' => 'success'];
-        }
-    }
-    
-    // Returns a file size limit in bytes based on the PHP upload_max_filesize
+        // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size
     public function getMaxUploadFileSize($humanFormat=true) {
       //select maximum upload size
