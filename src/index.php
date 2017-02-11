@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\dto\SystemURLs;
+
 if (file_exists('Include/Config.php')) {
     require_once 'Include/Config.php';
 } else {
@@ -29,12 +31,12 @@ $redirectTo = ($hasSession) ? '/menu' : '/login';
 
 // Get the current request path and convert it into a magic filename
 // e.g. /list-events => /ListEvents.php
-$shortName = str_replace($sRootPath.'/', '', $_SERVER['REQUEST_URI']);
+$shortName = str_replace(SystemURLs::getRootPath().'/', '', $_SERVER['REQUEST_URI']);
 $fileName = dashesToCamelCase($shortName, true).'.php';
 
 if (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php') {
     // Index.php -> Menu.php or Login.php
-  header('Location: '.$sRootPath.$redirectTo);
+  header('Location: '.SystemURLs::getRootPath().$redirectTo);
     exit;
 } elseif (!$hasSession) {
     // Must show login form if no session

@@ -23,6 +23,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\dto\SystemURLs;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -182,7 +183,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img src="<?= $sRootPath.'/api/persons/'.$iPersonID.'/photo' ?>" alt="" class="profile-user-img img-responsive img-circle"/>
+        <img src="<?= SystemURLs::getRootPath().'/api/persons/'.$iPersonID.'/photo' ?>" alt="" class="profile-user-img img-responsive img-circle"/>
 
         <h3 class="profile-username text-center">
           <?php if ($person->isMale()) {
@@ -978,7 +979,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     });
   }
 </script>
-<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 
 <?php
 

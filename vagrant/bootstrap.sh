@@ -56,6 +56,7 @@ sudo mysql -u"$DB_USER" -p"$DB_PASS" -e "INSERT INTO churchcrm.version_ver (ver_
 echo "Database: development seed data deployed"
 
 cp /vagrant/vagrant/Config.php /vagrant/src/Include/
+cp /vagrant/BuildConfig.json.example /vagrant/BuildConfig.json
 echo "copied Config.php "
 
 cd /vagrant
