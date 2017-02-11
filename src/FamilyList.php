@@ -9,9 +9,6 @@ $familyService = new FamilyService();
 
 $activeFamilies = $familyService->getActiveFamilies();
 
-$sSQL = 'select * from family_fam fam order by fam_Name';
-$rsFamilies = RunQuery($sSQL);
-
 // Set the page title and include HTML header
 $sPageTitle = gettext('Family List');
 require 'Include/Header.php';
