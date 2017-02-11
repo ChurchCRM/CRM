@@ -325,6 +325,9 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
 
+<script src="<?= SystemURLs::getRootPath(); ?>/skin/randomcolor/randomColor.js"></script>
+<script src="<?= SystemURLs::getRootPath(); ?>/skin/js/initial.js"></script>
+
 <script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
 
 <?php if ($sGlobalMessage) {
