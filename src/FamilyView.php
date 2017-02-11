@@ -1012,7 +1012,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
 } ?>
 
-
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
     <script>
         window.CRM.currentFamily = <?= $iFamilyID ?>;
