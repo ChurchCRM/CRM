@@ -15,22 +15,3 @@ use ChurchCRM\dto\SystemURLs;
 <!-- jQuery UI -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/jQueryUI/jquery-ui.min.js"></script>
 
-<!-- AdminLTE Select2 -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/moment/moment-with-locales.min.js"></script>
-<!-- AdminLTE DatePicker -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- AdminLTE TimePicker -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
-
-<!-- AdminLTE DataTables -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-<script
-    src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
-<script
-    src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
