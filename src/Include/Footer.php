@@ -313,7 +313,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/moment/moment-with-locales.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/fastclick/fastclick.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
