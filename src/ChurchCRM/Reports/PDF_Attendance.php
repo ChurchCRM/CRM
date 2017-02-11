@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
+use ChurchCRM\dto\SystemConfig;
+
 class PDF_Attendance extends ChurchInfoReport
 {
     /////////////////////////////////////////////////////////////////////////////
@@ -200,7 +202,7 @@ class PDF_Attendance extends ChurchInfoReport
             $sundayMonth = date('m', $dWhichSunday);
             $sundayYear = date('Y', $dWhichSunday);
             $dWhichSunday = mktime(0, 0, 0, $sundayMonth, $sundayDay + 7, $sundayYear);
-            $tWhichSunday = date('Y-m-d', $dWhichSunday);
+            $tWhichSunday = date(SystemConfig::getValue("sDateFormatLong"), $dWhichSunday);
         }
         $aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;
         $this->WriteAt($monthX, $yMonths + 1, date('F', $dWhichMonthDate));

@@ -16,6 +16,7 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_Label;
 
 $sLabelFormat = FilterInput($_GET['labeltype']);
@@ -56,7 +57,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
-    $pdf->Output('ConfirmDataLabels'.date('Ymd').'.pdf', 'D');
+    $pdf->Output('ConfirmDataLabels'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 } else {
     $pdf->Output();
 }
