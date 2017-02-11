@@ -102,7 +102,7 @@
           "2.5.2"
         ],
         "scripts":[
-          "/mysql/upgrade/2.6.0-configs.sql"
+          "/mysql/upgrade/2.6.0.sql"
         ],
         "dbVersion": "2.6.0"
     }
