@@ -2161,10 +2161,6 @@ msgstr "包括家庭中的坐标文件："
 msgid "Neighbor Families"
 msgstr "邻居的家庭"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "协调数据库文件名"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "数据文件"
@@ -3139,10 +3135,6 @@ msgstr "这个值不能小于"
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "再次运行查询"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "执行查询"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

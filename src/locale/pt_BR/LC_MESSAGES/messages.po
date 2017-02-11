@@ -2102,19 +2102,10 @@ msgstr "Incluir novo pagamento"
 msgid " Canvass Entry"
 msgstr " Entrada de Visitadores"
 
-#: FamilyView.php:884 PersonView.php:887
-#, fuzzy
-msgid "Max Photo size"
-msgstr "Tamanho Máximo da Foto"
-
 #: DepositSlipEditor.php:230 FindDepositSlip.php:105 GroupEditor.php:58
 #: GroupView.php:113 GroupView.php:136
 msgid "Close"
 msgstr "Fechar"
-
-#: FamilyView.php:888 PersonView.php:891
-msgid "Upload Image"
-msgstr "Enviar Imagem"
 
 #: DepositSlipEditor.php:224 FamilyView.php:908 FindDepositSlip.php:98
 #: PersonView.php:924 PledgeDelete.php:21
@@ -2531,10 +2522,6 @@ msgstr "incluir familiares no arquivo de coordenadas:"
 msgid "Neighbor Families"
 msgstr "Famílias vizinhas"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Coordenar dados nome do arquivo base"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Criar arquivo de dados"
@@ -2787,14 +2774,6 @@ msgstr "Isso também irá excluir todos os papéis e dados do Grupo de proprieda
 #: GroupView.php:496
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
 msgstr "Todos os "
-
-#: GroupView.php:116
-msgid "I Understand"
-msgstr "Eu Entendo "
-
-#: GroupView.php:120
-msgid "Delete Group"
-msgstr "Apagar o Grupo"
 
 #: GroupView.php:103
 msgid "Change Member Role"
@@ -3869,10 +3848,6 @@ msgstr "Este valor não pode ser menor que "
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Rodar a consulta novamente"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Rodar a pesquisa"
 
 #: RPCdummy.php:48
 msgid "Address Info:"
@@ -5871,10 +5846,6 @@ msgstr "Nota importante: esta ação acarretará a perda de qualquer campo &quot
 msgid "Canvasser:"
 msgstr "Visitador:"
 
-#: CartView.php:277 Include/Functions.php:145
-msgid "families."
-msgstr "famílias."
-
 #: Checkin.php:123
 msgid "Add Attendees for Event"
 msgstr "Adicionar Participantes ao Evento"
@@ -6108,10 +6079,6 @@ msgstr "Cidade Padrão"
 #: ChurchCRM/dto/SystemConfig.php:67
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Estado Padrão - Deve ter uma abreviatura de 2 letras"
-
-#: config_cfg.php:22
-msgid "Default Country"
-msgstr "País Padrão"
 
 #: ChurchCRM/dto/SystemConfig.php:69
 msgid "If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP."
@@ -6988,10 +6955,6 @@ msgstr "tipo de evento personalizado"
 msgid "custom event types"
 msgstr "tipos de eventos personalizados"
 
-#: GeoPage.php:296
-msgid "Show neighbors with these classifications."
-msgstr "Mostrar vizinhos com estas classificações."
-
 #: GroupView.php:249
 msgid "Press CTRL + C to copy all group members\\' phone numbers"
 msgstr "Pressione CTRL + C para copiar todos os telefones dos membros do grupo"
@@ -7088,10 +7051,6 @@ msgstr "não são permitidos."
 msgid "Name for New"
 msgstr "Nome para novo"
 
-#: config_cfg.php:95
-msgid "Church Country"
-msgstr "Cidade da Igreja"
-
 #: CSVImport.php:639 CSVImport.php:712
 msgid "Imported"
 msgstr "Importado"
@@ -7112,10 +7071,6 @@ msgstr "Dados da Família Verificados"
 #: ChurchCRM/model/ChurchCRM/Person.php:140
 msgid "Profile Image Deleted"
 msgstr "Imagem do Perfil Removida"
-
-#: ImageUpload.php:79
-msgid "Profile Image Uploaded"
-msgstr "Imagem do Perfil Enviada"
 
 #: ChurchCRM/dto/SystemConfig.php:70
 msgid "smtp"
@@ -8356,10 +8311,6 @@ msgstr "Isso pode ser útil para quando você estiver configurando o ChurchCRM, 
 "provavelmente deve ter desligado para a máxima segurança. Caso contrário, se você estiver tendo problemas,\r\n"
 "por favor, habilite-o para que você saiba quais são os erros. Isto é especialmente\r\n"
 "importante se você precisar relatar um problema nos fóruns de ajuda."
-
-#: config_cfg.php:24
-msgid "The method for sending email. Either \\\"smtp\\\" or \\\"sendmail\\\""
-msgstr "O método de envio de e-mails. Tanto \\\"smtp\\\" ou \\\"sendmail\\\" "
 
 #: ChurchCRM/dto/SystemConfig.php:76
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "

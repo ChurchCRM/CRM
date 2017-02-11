@@ -2161,10 +2161,6 @@ msgstr "Dołącz rodziny z pliku ze współżędnymi "
 msgid "Neighbor Families"
 msgstr "Sąsiadujące Rodziny"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Nazwa pliku ze współżędnymi"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Utwórz plik z danymi"
@@ -3139,10 +3135,6 @@ msgstr "To pole nie może być krótsze niż "
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Wyszukaj Ponownie"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Wyszukaj"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

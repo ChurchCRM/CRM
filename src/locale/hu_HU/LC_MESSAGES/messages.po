@@ -2129,10 +2129,6 @@ msgstr "Beleértve a családok koordináta fájlban:"
 msgid "Neighbor Families"
 msgstr "Szomszéd családok"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Koordináta adatbázis fájl neve"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Gyártó Data File"
@@ -3107,10 +3103,6 @@ msgstr "Ez az érték nem lehet kisebb, mint"
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Lekérdezés futtatása Again"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Execute Query"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

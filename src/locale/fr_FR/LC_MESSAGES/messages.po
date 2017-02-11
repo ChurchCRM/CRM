@@ -2173,19 +2173,10 @@ msgstr "Ajouter un nouveau paiement"
 msgid " Canvass Entry"
 msgstr " début de campagne"
 
-#: FamilyView.php:884 PersonView.php:887
-#, fuzzy
-msgid "Max Photo size"
-msgstr "Taille maximale de la photo"
-
 #: DepositSlipEditor.php:230 FindDepositSlip.php:105 GroupEditor.php:58
 #: GroupView.php:113 GroupView.php:136
 msgid "Close"
 msgstr "Fermer"
-
-#: FamilyView.php:888 PersonView.php:891
-msgid "Upload Image"
-msgstr "Envoyer l'image"
 
 #: DepositSlipEditor.php:224 FamilyView.php:908 FindDepositSlip.php:98
 #: PersonView.php:924 PledgeDelete.php:21
@@ -2621,10 +2612,6 @@ msgstr "Inclure les familles dans le fichier de coordonnées:"
 msgid "Neighbor Families"
 msgstr "Familles voisines"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Nom de fichier de base de données de coordonnée"
-
 #: GeoPage.php:305 GeoPage.php:342
 #, fuzzy
 msgid "Make Data File"
@@ -2880,14 +2867,6 @@ msgstr "Ceci supprimera &eacute;galement tous les r&ocirc;les et donn&eacute;es 
 #: GroupView.php:496
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
 msgstr "Tous les adhésions et propriétés du groupe seront détruites. Les membres du groupes seront modifiés également."
-
-#: GroupView.php:116
-msgid "I Understand"
-msgstr "J'ai compris"
-
-#: GroupView.php:120
-msgid "Delete Group"
-msgstr "Supprimer le groupe"
 
 #: GroupView.php:103
 msgid "Change Member Role"
@@ -3966,10 +3945,6 @@ msgstr "Cette valeur ne peut pas &ecirc;tre  inf&eacute;rieure &agrave; "
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Ex&eacute;cuter Requ&ecirc;te  &agrave; Nouveau"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Ex&eacute;cutez la Requ&ecirc;te "
 
 #: RPCdummy.php:48
 msgid "Address Info:"
@@ -5975,11 +5950,6 @@ msgstr "Note importante : cette action va effacer les champs &quot;Ok pour campa
 msgid "Canvasser:"
 msgstr "Démarcheur:"
 
-#: CartView.php:277 Include/Functions.php:145
-#, fuzzy
-msgid "families."
-msgstr "Familles."
-
 #: Checkin.php:123
 msgid "Add Attendees for Event"
 msgstr "Ajouter des "
@@ -6212,10 +6182,6 @@ msgstr "Ville par défaut"
 #: ChurchCRM/dto/SystemConfig.php:67
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Etat par défaut - Abréviation de 2 lettres !"
-
-#: config_cfg.php:22
-msgid "Default Country"
-msgstr "Pays par défaut"
 
 #: ChurchCRM/dto/SystemConfig.php:69
 msgid "If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP."
@@ -7091,10 +7057,6 @@ msgstr "type d'événement personnalisable"
 msgid "custom event types"
 msgstr "types d'événement personnalisable"
 
-#: GeoPage.php:296
-msgid "Show neighbors with these classifications."
-msgstr "Voir les voisins avec cette classification."
-
 #: GroupView.php:249
 msgid "Press CTRL + C to copy all group members\\' phone numbers"
 msgstr "Press CTRL + C to copy all group members\\' phone numbers"
@@ -7191,10 +7153,6 @@ msgstr "ne sont pas autorisés"
 msgid "Name for New"
 msgstr "Nom pour nouveau"
 
-#: config_cfg.php:95
-msgid "Church Country"
-msgstr "Pays de l'Église"
-
 #: CSVImport.php:639 CSVImport.php:712
 msgid "Imported"
 msgstr "Importé"
@@ -7215,10 +7173,6 @@ msgstr "Données Famille vérifiées"
 #: ChurchCRM/model/ChurchCRM/Person.php:140
 msgid "Profile Image Deleted"
 msgstr "Image Profile Effacée"
-
-#: ImageUpload.php:79
-msgid "Profile Image Uploaded"
-msgstr "Image Profile Téléchargée"
 
 #: ChurchCRM/dto/SystemConfig.php:70
 msgid "smtp"
@@ -8458,10 +8412,6 @@ msgstr "Activer le mode debug\r\n"
 "le désactiver pour un maximum de sécurité ensuite. Si vous rencontrez des problèmes,\r\n"
 "Activez le pour récupérer les erreurs. C'est particulièrement\r\n"
 "important si vous devez nous faire remonter un erreur sur nos forums."
-
-#: config_cfg.php:24
-msgid "The method for sending email. Either \\\"smtp\\\" or \\\"sendmail\\\""
-msgstr "La méthode pour envoyer un email. Soit \\\"smtp\\\" ou \\\"sendmail\\\""
 
 #: ChurchCRM/dto/SystemConfig.php:76
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "

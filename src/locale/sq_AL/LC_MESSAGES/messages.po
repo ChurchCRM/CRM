@@ -2101,10 +2101,6 @@ msgstr "Përfshijnë familjet në koordinojnë skedë:"
 msgid "Neighbor Families"
 msgstr "Familjet fqinje"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Koordinimi emrin Baza e të dhënave skedarëve"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Bëni dhënat e file"
@@ -3038,10 +3034,6 @@ msgstr "Kjo vlerë nuk mund të jetë më pak se "
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Run Query Përsëri"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Execute Query"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

@@ -2147,10 +2147,6 @@ msgstr "Includeți familii din fișierul de coordonate:"
 msgid "Neighbor Families"
 msgstr "Familiile vecine"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Coordonarea date nume de fișier de bază"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Face fișier de date"
@@ -3120,10 +3116,6 @@ msgstr "Această valoare nu poate fi mai mică"
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Rulați din nou interogarea"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Executa interogări"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

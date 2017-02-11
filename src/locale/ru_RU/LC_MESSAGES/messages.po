@@ -2147,10 +2147,6 @@ msgstr "Включить семьи, в координации файл:"
 msgid "Neighbor Families"
 msgstr "Сосед семьи"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Координация БАЗА ДАННЫХ имя файла"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Сделайте файл данных"
@@ -3113,10 +3109,6 @@ msgstr "Это значение не может быть меньше, чем "
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Запустите запрос снова,"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Выполнить запрос"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

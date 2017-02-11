@@ -2173,10 +2173,6 @@ msgstr "Inkludera familjer i koordinat fil:"
 msgid "Neighbor Families"
 msgstr "Granfamiljer"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Koordinat databas filnamn"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Skapa informationsfil"
@@ -3169,10 +3165,6 @@ msgstr "Denna inmatning får inte vara mindra än "
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Kör förfrågan igen"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Gör förfrågan"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

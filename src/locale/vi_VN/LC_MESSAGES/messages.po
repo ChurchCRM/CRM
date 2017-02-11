@@ -1897,19 +1897,10 @@ msgstr "Thêm một thanh toán mới"
 msgid " Canvass Entry"
 msgstr " canvass nhập"
 
-#: FamilyView.php:884 PersonView.php:887
-#, fuzzy
-msgid "Max Photo size"
-msgstr "Max ảnh kích thước"
-
 #: DepositSlipEditor.php:230 FindDepositSlip.php:105 GroupEditor.php:58
 #: GroupView.php:113 GroupView.php:136
 msgid "Close"
 msgstr "Đóng"
-
-#: FamilyView.php:888 PersonView.php:891
-msgid "Upload Image"
-msgstr "Tải lên Hình ảnh"
 
 #: DepositSlipEditor.php:224 FamilyView.php:908 FindDepositSlip.php:98
 #: PersonView.php:924 PledgeDelete.php:21
@@ -2312,10 +2303,6 @@ msgstr "Bao gồm các gia đình trong phối hợp tập tin:"
 msgid "Neighbor Families"
 msgstr "Các gia đình hàng xóm"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Phối hợp dữ liệu tên tập tin cơ sở"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Hãy tập tin dữ liệu"
@@ -2567,14 +2554,6 @@ msgstr "This will also delete all Roles and Group-Specific Property data associa
 #: GroupView.php:496
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
 msgstr "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-
-#: GroupView.php:116
-msgid "I Understand"
-msgstr "Tôi hiểu rồi"
-
-#: GroupView.php:120
-msgid "Delete Group"
-msgstr "Delete Group"
 
 #: GroupView.php:103
 msgid "Change Member Role"
@@ -3555,10 +3534,6 @@ msgstr "Giá trị này không thể ít hơn "
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Run Query Một lần nữa"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Thực hiện truy vấn"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

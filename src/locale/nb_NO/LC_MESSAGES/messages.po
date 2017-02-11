@@ -2154,10 +2154,6 @@ msgstr "Inkludere familier i koordinatsystem fil:"
 msgid "Neighbor Families"
 msgstr "Nabo Familier"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Koordinere data basisfilnavnet"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Gjør datafil"
@@ -3150,10 +3146,6 @@ msgstr "Denne verdien kan ikke være mindre enn"
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Kjør spørringen på nytt"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Utfør Query"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

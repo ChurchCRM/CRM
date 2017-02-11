@@ -2172,10 +2172,6 @@ msgstr "Schließe Familien in Koordinatenfile ein:"
 msgid "Neighbor Families"
 msgstr "Nachbarfamilien"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Koordiniere Datenbasis Filename"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Erstelle Datendatei"
@@ -3152,10 +3148,6 @@ msgstr "Dieser Wert darf nicht kleiner als"
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Erneute Abfrage"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Abrage starten"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

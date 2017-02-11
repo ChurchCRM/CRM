@@ -2084,10 +2084,6 @@ msgstr "Inclusief gezinnen in coördinaten bestand:"
 msgid "Neighbor Families"
 msgstr "Neighbor Gezinnen"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "Coördineren database bestandsnaam"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Maak Data File"
@@ -3037,10 +3033,6 @@ msgstr "Deze waarde kan niet minder zijn dan "
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Draai Query opnieuw"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Execute Query"
 
 #: RPCdummy.php:48
 msgid "Address Info:"

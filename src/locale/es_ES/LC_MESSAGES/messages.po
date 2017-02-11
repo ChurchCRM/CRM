@@ -2048,18 +2048,10 @@ msgstr "Añadir un nuevo pago"
 msgid " Canvass Entry"
 msgstr " Entrada de Sondeo"
 
-#: FamilyView.php:884 PersonView.php:887
-msgid "Max Photo size"
-msgstr "Tamaño Máximo de Foto"
-
 #: DepositSlipEditor.php:230 FindDepositSlip.php:105 GroupEditor.php:58
 #: GroupView.php:113 GroupView.php:136
 msgid "Close"
 msgstr "Cerrar"
-
-#: FamilyView.php:888 PersonView.php:891
-msgid "Upload Image"
-msgstr "Cargar Imagen"
 
 #: DepositSlipEditor.php:224 FamilyView.php:908 FindDepositSlip.php:98
 #: PersonView.php:924 PledgeDelete.php:21
@@ -2464,10 +2456,6 @@ msgstr "Incluir familias en archivo de coordenadas"
 msgid "Neighbor Families"
 msgstr "Familias vecinas"
 
-#: GeoPage.php:282
-msgid "Coordinate data base file name"
-msgstr "nombre de archivo de coordenadas"
-
 #: GeoPage.php:305 GeoPage.php:342
 msgid "Make Data File"
 msgstr "Crear archivo de datos"
@@ -2707,14 +2695,6 @@ msgstr "Esto también borrará todos los roles y propiedades específicas de gru
 #: GroupView.php:496
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
 msgstr "Todas las membrecías y propiedades del grupo serán destruidas. Los miembros del grupo en sí no serán alterados."
-
-#: GroupView.php:116
-msgid "I Understand"
-msgstr "Entiendo"
-
-#: GroupView.php:120
-msgid "Delete Group"
-msgstr "Borrar Grupo"
 
 #: GroupView.php:103
 msgid "Change Member Role"
@@ -3751,10 +3731,6 @@ msgstr "Este valor no puede ser menor que "
 #: QueryView.php:263
 msgid "Run Query Again"
 msgstr "Correr búsqueda de nuevo"
-
-#: QueryView.php:370
-msgid "Execute Query"
-msgstr "Ejecutar búsqueda"
 
 #: RPCdummy.php:48
 msgid "Address Info:"
@@ -5685,10 +5661,6 @@ msgstr "Nota importante: Esto hará perder cualquier campo &quot;Ok para Sondear
 msgid "Canvasser:"
 msgstr "Escrutador:"
 
-#: CartView.php:277 Include/Functions.php:145
-msgid "families."
-msgstr "familias."
-
 #: Checkin.php:123
 msgid "Add Attendees for Event"
 msgstr "Agregar Asistentes para Evento"
@@ -5916,10 +5888,6 @@ msgstr "Ciudad por Defecto"
 #: ChurchCRM/dto/SystemConfig.php:67
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Estado por Defecto - Debe ser una abreviación de 2 letras!"
-
-#: config_cfg.php:22
-msgid "Default Country"
-msgstr "País por Defecto"
 
 #: ChurchCRM/dto/SystemConfig.php:69
 msgid "If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP."
@@ -6798,10 +6766,6 @@ msgstr "tipo de evento personalizado"
 msgid "custom event types"
 msgstr "tipos de evento personalizados"
 
-#: GeoPage.php:296
-msgid "Show neighbors with these classifications."
-msgstr "Mostrar vecinos con estas clasificaciones."
-
 #: GroupView.php:249
 msgid "Press CTRL + C to copy all group members\\' phone numbers"
 msgstr "Presione CTRL + C para copiar todos teléfonos de los miembros del grupo"
@@ -6898,10 +6862,6 @@ msgstr "no son permitidos."
 msgid "Name for New"
 msgstr "Nombre para Nuevo"
 
-#: config_cfg.php:95
-msgid "Church Country"
-msgstr "País de Iglesia"
-
 #: CSVImport.php:639 CSVImport.php:712
 msgid "Imported"
 msgstr "Importado"
@@ -6922,10 +6882,6 @@ msgstr "Datos de Familia Verificados"
 #: ChurchCRM/model/ChurchCRM/Person.php:140
 msgid "Profile Image Deleted"
 msgstr "Imagen de Perfil Eliminada"
-
-#: ImageUpload.php:79
-msgid "Profile Image Uploaded"
-msgstr "Imagen de Perfil Cargada"
 
 #: ChurchCRM/dto/SystemConfig.php:70
 msgid "smtp"
@@ -8169,10 +8125,6 @@ msgstr "Establecer modo de depuración\r\n"
 "en caso contrario debería apagarlo para máxima seguridad. Si está teniendo\r\n"
 "problemas, por favor activelo para que así pueda saber que errores son. Esto\r\n"
 "es especialmente importante si necesita reportar un problema en los fotos de ayuda."
-
-#: config_cfg.php:24
-msgid "The method for sending email. Either \\\"smtp\\\" or \\\"sendmail\\\""
-msgstr "El método para enviar correos. \\\"smtp\\\" o \\\"sendmail\\\""
 
 #: ChurchCRM/dto/SystemConfig.php:76
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
