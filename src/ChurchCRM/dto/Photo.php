@@ -21,6 +21,12 @@ class Photo
     $this->id = $id;
     $this->photoURI = $this->photoHunt(SystemURLs::getImagesRoot() . "/" . $photoType . "/" . $id); 
     $this->photoThumbURI = $this->photoHunt(SystemURLs::getImagesRoot() . "/" . $photoType . "/thumbnails/" . $id);
+    if (isset ( $this->photoThumbURI) && !isset($this->photoURI) )
+    {
+      # If there is a thumbnail photo, but no normal photo,
+      # Use the existing thumbnail as both normal and thumbnail photos.
+      $this->photoURI = $this->photoThumbURI;
+    }
     if ($this->photoURI)
     {
       $this->photoLocation = "local";
