@@ -179,10 +179,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   ($_SESSION['bEditSelf'] && $per_ID == $_SESSION['iUserID']) ||
   ($_SESSION['bEditSelf'] && $per_fam_ID == $_SESSION['iFamID'])
 ); ?>
-<div class="alert alert-warning alert-dismissable">
-  <i class="fa fa-fw fa-tree"></i>
-  <?php echo gettext('indicates items inherited from the associated family record.'); ?>
-</div>
 <div class="row">
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
@@ -333,6 +329,9 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         </ul>
       </div>
     </div>
+      <div class="alert alert-info alert-dismissable">
+          <i class="fa fa-fw fa-tree"></i> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
+      </div>
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="box box-primary box-body">
@@ -997,7 +996,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   
   
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
 
 <?php
 

@@ -48,7 +48,7 @@ require 'Include/Header.php';
     <?= gettext('City') ?>: <?= SystemConfig::getValue('sChurchCity'); ?><br>
     <?= gettext('State') ?>: <?= SystemConfig::getValue('sChurchState'); ?><br>
     <?= gettext('Zip') ?>: <?= SystemConfig::getValue('sChurchZip'); ?><br>
-    <?= gettext('Country') ?>: <?= SystemConfig::getValue('sDefaultCountry'); ?><br>
+    <?= gettext('Country') ?>: <?= SystemConfig::getValue('sChurchCountry'); ?><br>
     <?= gettext('Church Email') ?>: <?= SystemConfig::getValue('sChurchEmail'); ?><br>
     ChurchCRM <?= gettext('Base URL') ?>: <?= $ChurchCRMURL ?><br>
 		<br> <?= gettext('Message') ?>:

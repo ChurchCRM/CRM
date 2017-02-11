@@ -43,8 +43,22 @@ $sPageTitle = gettext("Family View");
 require "Include/Header.php";
 
 //Get the FamilyID out of the querystring
-$iFamilyID = FilterInput($_GET["FamilyID"], 'int');
+if (!empty($_GET['FamilyID'])) {
+    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+}
 
+//Deactivate/Activate Family
+if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Action'])) {
+    $family = FamilyQuery::create()->findOneById($_POST['FID']);
+    if ($_POST['Action'] == "Deactivate") {
+        $family->deactivate();
+    } elseif ($_POST['Action'] == "Activate") {
+        $family->activate();
+    }
+    $family->save();
+    Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
+    exit;
+}
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
@@ -99,10 +113,10 @@ $sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
 
 //Get the pledges for this family
 $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
-         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, 
+         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName,
          a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible,
          plg_GroupKey
-		 FROM pledge_plg 
+		 FROM pledge_plg
 		 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
 		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 		 WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
@@ -110,7 +124,7 @@ $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_met
 
 //Get the automatic payments for this family
 $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
-                   a.Per_LastName AS EnteredLastName, 
+                   a.Per_LastName AS EnteredLastName,
                    b.fun_Name AS fundName
 		 FROM autopayment_aut
 		 LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
@@ -158,6 +172,15 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 <script>
     var familyId = <?= $fam_ID ?>;
 </script>
+
+ <?php if (!empty($fam_DateDeactivated)) {
+        ?>
+    <div class="alert alert-warning">
+        <strong><?= gettext(" This Family is Deactivated") ?> </strong>
+    </div>
+    <?php
+
+    } ?>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-4">
       <div class="box box-primary">
@@ -313,6 +336,16 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <a class="btn btn-app"
                    href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
                         class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
+
+
+
+                <?php if ($bOkToEdit) {
+        ?>
+                    <button class="btn btn-app bg-orange"  id="activateDeactivate">
+                        <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?= gettext((empty($fam_DateDeactivated) ? 'Deactivate' : 'Activate') . ' this Family') ?></button>
+                <?php
+
+    } ?>
             </div>
         </div>
     </div>
@@ -401,7 +434,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12 col-md-6 col-sm-3">
+    <div class="col-lg-12">
         <div class="nav-tabs-custom">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
@@ -953,40 +986,75 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         </div>
         <?php
 
-}
-?>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
-<link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
-<script>
-  $("#deletePhoto").click (function () {
-    $.ajax({
-    type: "POST",
-    url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
-    encode: true,
-    dataType: 'json',
-    data: { 
-      "_METHOD": "DELETE"
-    }
-    }).done(function(data) {
-      location.reload();
-    });
-  });
+} ?>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
+    <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
+    <script>
+        window.CRM.currentFamily = <?= $iFamilyID ?>;
+        window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
+        var dataT = 0;
+        $(document).ready(function() {
+            $("#activateDeactivate").click(function() {
+                console.log("click activateDeactivate");
+                popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
+                if(window.CRM.currentActive == true) {
+                    popupMessage = "<?= gettext('Please confirm deactivation of family') . ': ' . $fam_Name ?>";
+                }
+                else {
+                    popupMessage = "<?= gettext('Please confirm activation of family') . ': ' . $fam_Name  ?>";
+                }
 
-$(document).ready( function() {
-  window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-    url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
-    maxPhotoSize: window.CRM.maxUploadSize,
-    photoHeight: 400,
-    photoWidth: 400,
-    done: function(e) {
-      location.reload();
-    }
-   });
-   
-  $("#uploadImageButton").click(function(){
-    window.CRM.photoUploader.show();
-  })
-});
-</script>
-<?php
-require "Include/Footer.php" ?>
+                bootbox.confirm({
+                    title: popupTitle,
+                    message: '<p style="color: red">'+ popupMessage + '</p>',
+                    callback: function (result) {
+                        if (result)
+                        {
+                            $.ajax({
+                                method: "POST",
+                                url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
+                                dataType: "json",
+                                encode: true
+                            }).done(function (data) {
+                                if(data.success == true)
+                                    window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
+
+                            });
+                        }
+                    }
+                });
+            });
+        
+            $("#deletePhoto").click (function () {
+              $.ajax({
+              type: "POST",
+              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              encode: true,
+              dataType: 'json',
+              data: { 
+                "_METHOD": "DELETE"
+              }
+              }).done(function(data) {
+                location.reload();
+              });
+            });
+            
+            window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
+              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              maxPhotoSize: window.CRM.maxUploadSize,
+              photoHeight: 400,
+              photoWidth: 400,
+              done: function(e) {
+                location.reload();
+              }
+            });
+
+            $("#uploadImageButton").click(function(){
+              window.CRM.photoUploader.show();
+            });
+        
+        });
+    </script>
+
+    <?php require "Include/Footer.php" ?>

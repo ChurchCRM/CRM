@@ -117,7 +117,7 @@ if (isset($_GET['Registered'])) {
 }
 
 if (isset($_GET['AllPDFsEmailed'])) {
-    $sGlobalMessage = gettext('PDFs successfully emailed ').$_GET['AllPDFsEmailed'].' '.gettext('families.');
+    $sGlobalMessage = gettext('PDFs successfully emailed ').$_GET['AllPDFsEmailed'].' '.gettext('families').".";
 }
 
 if (isset($_GET['PDFEmailed'])) {

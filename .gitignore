@@ -15,6 +15,7 @@ vendor
 composer.lock
 node_modules
 npm-debug.log*
+BuildConfig.json
 
 # Uploaded Images
 src/Images/Family/thumbnails
