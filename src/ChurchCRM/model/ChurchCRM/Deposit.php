@@ -379,22 +379,15 @@ class Deposit extends BaseDeposit
         $Report->pdf = new \ChurchCRM\Reports\PDF_DepositReport();
         $Report->funds = DonationFundQuery::create()->find();
 
-    // Read in report settings from database
-    $settings = ConfigQuery::create()->filterBySection('ChurchInfoReport')->find();
-        foreach ($settings as $setting) {
-            $name = $setting->getName();
-            $Report->ReportSettings->$name = $setting->getValue();
-        }
-
     //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
-    $Report->ReportSettings->sDepositSlipType = 'QBDT';
+    $sDepositSlipType = SystemConfig::getValue('sDepositSlipType');
 
-        if ($Report->ReportSettings->sDepositSlipType == 'QBDT') {
+        if ($sDepositSlipType == 'QBDT') {
             //Generate a QuickBooks Deposit Ticket.
-      $this->generateQBDepositSlip($Report);
-        } elseif ($Report->ReportSettings->sDepositSlipType == 'PTDT') {
+          $this->generateQBDepositSlip($Report);
+        } elseif ($sDepositSlipType == 'PTDT') {
             //placeholder for Peachtree Deposit Tickets.
-        } elseif ($Report->ReportSettings->sDepositSlipType == 'GDT') {
+        } elseif ($sDepositSlipType == 'GDT') {
             //placeholder for generic deposit ticket.
         }
     //$this->generateBankDepositSlip($Report);

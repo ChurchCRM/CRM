@@ -5,6 +5,7 @@ require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SundaySchoolService;
+use ChurchCRM\dto\SystemURLs;
 
 $sundaySchoolService = new SundaySchoolService();
 
@@ -127,7 +128,7 @@ require '../Include/Header.php';
         <div class="box box-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?></h4>
-            <img src="<?= $sRootPath ?>/api/persons/<?= $teacher['per_ID'] ?>/photo" class="img-circle profile-avatar"
+            <img src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $teacher['per_ID'] ?>/photo" class="img-circle profile-avatar"
                  alt="User avatar" width="80" height="80">
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
                 class="fa fa-envelope"></i> <?= gettext('Send Message') ?></a>
@@ -136,7 +137,8 @@ require '../Include/Header.php';
           </div>
         </div>
       </div>
-    <?php 
+    <?php
+
     } ?>
   </div>
 </div>
@@ -217,7 +219,7 @@ require '../Include/Header.php';
           $birthDateDate = BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge);
 
           echo '<tr>';
-          echo "<td><img src='".$sRootPath.'/api/persons/'.$child['kidId']."/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=".$child['kidId']."'>".$child['firstName'].', '.$child['LastName'].'</a></td>';
+          echo "<td><img src='".SystemURLs::getRootPath().'/api/persons/'.$child['kidId']."/photo' hight='30' width='30' > <a href='../PersonView.php?PersonID=".$child['kidId']."'>".$child['firstName'].', '.$child['LastName'].'</a></td>';
           echo '<td>'.$birthDate.'</td>';
           echo "<td data-birth-date='".($hideAge ? '' : $birthDateDate->format('Y-m-d'))."'></td>";
           echo '<td>'.$child['kidEmail'].'</td>';
@@ -313,13 +315,13 @@ function implodeUnique($array, $withQuotes)
 </div><!-- /.modal -->
 
 <!-- FLOT CHARTS -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"
         type="text/javascript"></script>
 
 <script type="text/javascript" charset="utf-8">
@@ -421,7 +423,6 @@ function implodeUnique($array, $withQuotes)
   }
 
 </script>
-<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 <?php
 require '../Include/Footer.php';
 ?>

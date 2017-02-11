@@ -20,7 +20,6 @@ $app->group('/register', function () {
         $registrationData->sComments = $input->emailmessage;
         $curlService = curl_init('http://demo.churchcrm.io/register.php');
 
-        curl_setopt($curlService, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curlService, CURLOPT_POST, true);
         curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($registrationData));
         curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
