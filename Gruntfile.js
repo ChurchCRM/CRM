@@ -330,6 +330,7 @@ module.exports = function (grunt) {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
                     filters: ["translated"],
+                    tags: '<%= package.version %>',
                     type: 'po', // export type (check out the doc)
                     dest: 'src/locale/?/LC_MESSAGES/messages.po'
                     // grunt style dest files
