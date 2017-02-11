@@ -5,6 +5,7 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -16,13 +17,13 @@ use Propel\Runtime\Connection\ConnectionInterface;
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class Person extends BasePerson
+class Person extends BasePerson implements iPhoto
 {
     public function getFullName()
     {
         return $this->getFirstName().' '.$this->getLastName();
     }
-
+    
     public function isMale()
     {
         return $this->getGender() == 1;
@@ -59,39 +60,6 @@ class Person extends BasePerson
         return SystemURLs::getRootPath().'/PersonView.php?PersonID='.$this->getId();
     }
 
-    public function getUploadedPhoto()
-    {
-        $validextensions = ['jpeg', 'jpg', 'png'];
-        $hasFile = false;
-        while (list(, $ext) = each($validextensions)) {
-            $photoFile = SystemURLs::getDocumentRoot().'/Images/Person/thumbnails/'.$this->getId().'.'.$ext;
-            if (file_exists($photoFile)) {
-                $hasFile = true;
-                $photoFile = SystemURLs::getRootPath().'/Images/Person/thumbnails/'.$this->getId().'.'.$ext;
-                break;
-            }
-        }
-
-        if ($hasFile) {
-            return $photoFile;
-        } else {
-            return '';
-        }
-    }
-
-    public function getPhoto()
-    {
-        $photoFile = $this->getUploadedPhoto();
-        if ($photoFile == '') {
-            $photoFile = $this->getGravatar();
-            if ($photoFile == '') {
-                $photoFile = $this->getDefaultPhoto();
-            }
-        }
-
-        return $photoFile;
-    }
-
     public function getFamilyRole()
     {
         $roleId = $this->getFmrId();
@@ -111,37 +79,6 @@ class Person extends BasePerson
         }
 
         return $roleName;
-    }
-
-    public function getDefaultPhoto()
-    {
-        $photoFile = SystemURLs::getRootPath().'/Images/Person/man-128.png';
-        $isChild = 'Child' == $this->getFamilyRoleName();
-        if ($this->isMale() && $isChild) {
-            $photoFile = SystemURLs::getRootPath().'/Images/Person/kid_boy-128.png';
-        } elseif ($this->isFemale() && $isChild) {
-            $photoFile = SystemURLs::getRootPath().'/Images/Person/kid_girl-128.png';
-        } elseif ($this->isFemale() && !$isChild) {
-            $photoFile = SystemURLs::getRootPath().'/Images/Person/woman-128.png';
-        }
-
-        return $photoFile;
-    }
-
-    public function getGravatar($s = 60, $d = '404', $r = 'g', $img = false, $atts = [])
-    {
-        if (SystemConfig::getValue('sEnableGravatarPhotos') && $this->getEmail() != '') {
-            $url = 'http://www.gravatar.com/avatar/';
-            $url .= md5(strtolower(trim($this->getEmail())));
-            $url .= "?s=$s&d=$d&r=$r";
-
-            $headers = @get_headers($url);
-            if (strpos($headers[0], '404') === false) {
-                return $url;
-            }
-        }
-
-        return '';
     }
 
     public function postInsert(ConnectionInterface $con = null)
@@ -193,4 +130,75 @@ class Person extends BasePerson
 
         return $otherFamilyMembers;
     }
+    
+    public function deletePhoto()
+    {
+      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+        if ( $this->getPhoto()->delete() )
+        {
+          $note = new Note();
+          $note->setText(gettext("Profile Image Deleted"));
+          $note->setType("photo");
+          $note->setEntered($_SESSION['iUserID']);
+          $note->setPerId($this->getId());
+          $note->save();
+          return true;
+        }
+      }
+      return false;
+    }
+    
+    private function getPhoto()
+    {
+
+      $photo = new Photo("Person",  $this->getId());
+       if (!$photo->isPhotoLocal() && SystemConfig::getValue('sEnableGravatarPhotos') && $this->getEmail() != '') {
+         $photo->loadFromGravatar($this->getEmail());
+       }
+       return $photo;
+    }
+
+    public function getPhotoBytes() {
+      return $this->getPhoto()->getPhotoBytes();
+    }
+
+    public function getPhotoURI() {
+      return $this->getPhoto()->getPhotoURI();
+    }
+
+    public function getThumbnailBytes() {
+      return $this->getPhoto()->getThumbnailBytes();
+    }
+
+    public function getThumbnailURI() {
+       return $this->getPhoto()->getThumbnailURI();
+    }
+
+    public function setImageFromBase64($base64) {
+      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+        $note = new Note();
+        $note->setText(gettext("Profile Image uploaded"));
+        $note->setType("photo");
+        $note->setEntered($_SESSION['iUserID']);
+        $this->getPhoto()->setImageFromBase64($base64);
+        $note->setPerId($this->getId());
+        $note->save();
+        return true;
+      }
+      return false;
+      
+    }
+
+    public function isPhotoLocal() {
+      return $this->getPhoto()->isPhotoLocal();
+    }
+    
+    public function isPhotoRemote() {
+      return $this->getPhoto()->isPhotoRemote();
+    }
+    
+    public function getPhotoContentType() {
+      return $this->getPhoto()->getPhotoContentType();
+    }
+
 }

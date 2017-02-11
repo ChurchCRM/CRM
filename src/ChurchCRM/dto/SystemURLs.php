@@ -37,6 +37,11 @@ class SystemURLs
     {
         return self::$documentRoot;
     }
+    
+    public static function getImagesRoot()
+    {
+      return self::$documentRoot."/Images";
+    }
 
     public static function getURLs()
     {

@@ -34,6 +34,8 @@ src/skin/locale
 src/skin/fastclick
 src/skin/churchcrm.min.css.map
 src/skin/churchcrm.min.css
+src/skin/jquery-photo-uploader
+src/skin/randomcolor
 src/skin/bootbox
 
 # Configuration files with passwords
