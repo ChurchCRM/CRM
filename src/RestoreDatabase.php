@@ -92,8 +92,7 @@ require 'Include/Header.php';
     return false;
   });
 </script>
-<!-- PACE -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
+
 <?php
 require 'Include/Footer.php';
 ?>

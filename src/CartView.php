@@ -282,7 +282,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 <!-- BEGIN CART LISTING -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Your cart contains').' '.$iNumPersons.' '.gettext('persons from').' '.$iNumFamilies.' '.gettext('families.') ?></h3>
+        <h3 class="box-title"><?= gettext('Your cart contains').' '.$iNumPersons.' '.gettext('persons from').' '.$iNumFamilies.' '.gettext('families') ?>.</h3>
     </div>
     <div class="box-body">
         <table class="table table-hover">

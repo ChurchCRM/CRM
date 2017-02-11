@@ -73,8 +73,6 @@ require 'Include/Header.php';
 
 </script>
 
-<!-- PACE -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
 <?php
 require 'Include/Footer.php';
 ?>

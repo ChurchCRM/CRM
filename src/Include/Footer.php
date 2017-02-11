@@ -307,8 +307,15 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"
         type="text/javascript"></script>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
 
+<!-- PACE -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Tooltips.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>

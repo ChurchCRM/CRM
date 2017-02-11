@@ -423,7 +423,6 @@ function implodeUnique($array, $withQuotes)
   }
 
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
 <?php
 require '../Include/Footer.php';
 ?>

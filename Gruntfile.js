@@ -272,7 +272,7 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            'demo-data': {
+            'demo': {
                 options: {
                     archive: 'target/Demo-ChurchCRM-<%= package.version %>.tar.gz',
                     mode: "tar",
