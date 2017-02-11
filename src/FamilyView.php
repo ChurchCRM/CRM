@@ -28,16 +28,16 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/GeoCoder.php";
 
-use ChurchCRM\Service\MailChimpService;
-use ChurchCRM\Service\FamilyService;
-use ChurchCRM\Service\TimelineService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Service\TimelineService;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
-$familyService = new FamilyService();
+
 //Set the page title
 $sPageTitle = gettext("Family View");
 require "Include/Header.php";
@@ -183,12 +183,12 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     } ?>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-4">
-        <div class="box box-primary">
-            <div class="box-body">
-                <img src="<?= $familyService->getFamilyPhoto($fam_ID) ?>" alt=""
-                     class="img-circle img-responsive profile-user-img"/>
-                <h3 class="profile-username text-center"><?= gettext("Family") . ": " . $fam_Name ?></h3>
-                <?php if ($bOkToEdit) {
+      <div class="box box-primary">
+        <div class="box-body">
+          <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail" data-name="<?= $family->getName()?>" alt=""
+               class="initials-image img-circle img-responsive profile-user-img"/>
+					<h3 class="profile-username text-center"><?=  gettext('Family').': '.$fam_Name ?></h3>
+          <?php if ($bOkToEdit) {
         ?>
                     <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"
                        class="btn btn-primary btn-block"><b><?= gettext("Edit") ?></b></a>
@@ -288,46 +288,42 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         </div>
     </div>
     <div class="col-lg-9 col-md-8 col-sm-8">
-        <div class="row">
-            <div class="box"><br/>
-                <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
-                        class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
-                <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
-                        class="fa fa-plus-square"></i> <?= gettext("Add New Member") ?></a>
-                <?php if (($previous_id > 0)) {
+      <div class="row">
+        <div class="box"><br/>
+          <a class="btn btn-app bg-aqua-active" href="FamilyVerify.php?FamilyID=<?= $iFamilyID ?>"><i
+              class="fa fa-check-square"></i> <?= gettext('Verify Info') ?></a>
+          <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
+              class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
+          <?php if (($previous_id > 0)) {
                         ?>
-                    <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
-                            class="fa fa-hand-o-left"></i><?= gettext("Previous Family") ?></a>
-                    <?php
-
+            <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
+                class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
+          <?php 
                     } ?>
-                <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
-                        class="fa fa-list-ul"></i><?= gettext("Family List") ?></a>
-                <?php if (($next_id > 0)) {
+          <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
+              class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
+          <?php if (($next_id > 0)) {
                         ?>
-                    <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
-                            class="fa fa-hand-o-right"></i><?= gettext("Next Family") ?> </a>
-                    <?php
-
+            <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
+                class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
+          <?php 
                     } ?>
-                <?php if ($_SESSION['bDeleteRecords']) {
+          <?php if ($_SESSION['bDeleteRecords']) {
                         ?>
-                    <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
-                            class="fa fa-trash-o"></i><?= gettext("Delete this Family") ?></a>
-                    <?php
-
+            <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
+                class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
+          <?php 
                     } ?>
-                <br/>
-                <?php if ($bOkToEdit) {
+          <br/>
+          <?php if ($bOkToEdit) {
                         ?>
-                    <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i
-                            class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
-                    <?php if ($familyService->getUploadedPhoto($iFamilyID) != "") {
+            <a class="btn btn-app" href="#" id="uploadImageButton"><i
+                class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
+            <?php if ($family->isPhotoLocal()) {
                             ?>
-                        <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
-                                class="fa fa-remove"></i> <?= gettext("Delete Photo") ?> </a>
-                        <?php
-
+              <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
+                  class="fa fa-remove"></i> <?= gettext('Delete Photo') ?> </a>
+            <?php 
                         }
                     }
     if ($_SESSION['bNotes']) {
@@ -371,20 +367,20 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                         <tbody>
                         <?php foreach ($family->getPeople() as $person) {
         ?>
-                            <tr>
-                                <td>
-                                    <img src="<?= $person->getPhoto() ?>" width="40" height="40" class="img-circle"/>
-                                    <a href="<?= $person->getViewURI() ?>" class="user-link"><?= $person->getFullName() ?> </a>
-                                </td>
-                                <td class="text-center">
-                                    <?php
-                                    $famRole = $person->getFamilyRoleName();
-        $labelColor = "label-default";
-        if ($famRole == "Head of Household") {
-        } elseif ($famRole == "Spouse") {
-            $labelColor = "label-info";
-        } elseif ($famRole == "Child") {
-            $labelColor = "label-warning";
+                <tr>
+                  <td>
+                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail" data-name="<?= $person->getFullName() ?>" width="40" height="40" class="initials-image img-circle"/>
+                    <a href="<?= $person->getViewURI() ?>" class="user-link"><?= $person->getFullName() ?> </a>
+                  </td>
+                  <td class="text-center">
+                    <?php
+                    $famRole = $person->getFamilyRoleName();
+        $labelColor = 'label-default';
+        if ($famRole == 'Head of Household') {
+        } elseif ($famRole == 'Spouse') {
+            $labelColor = 'label-info';
+        } elseif ($famRole == 'Child') {
+            $labelColor = 'label-warning';
         } ?>
                                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                                 </td>
@@ -901,32 +897,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="ImageUpload.php?FamilyID=<?= $iFamilyID ?>" method="post" enctype="multipart/form-data"
-              id="UploadForm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="upload-Image-label"><?= gettext("Upload Photo") ?></h4>
-                </div>
-                <div class="modal-body">
-                    <input type="file" name="file" size="50"/>
-                    <?= gettext("Max Photo size") ?>: <?= ini_get('upload_max_filesize') ?>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
-                    <input type="submit" class="btn btn-primary" value="<?= gettext("Upload Image") ?>">
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
-     aria-hidden="true">
+  <!-- Modal -->
+  <div id="photoUploader"></div>
+  <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
+       aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -940,14 +914,16 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <p><?= gettext("Do you want to proceed?") ?></p>
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-                <a href="ImageDelete.php?FamilyID=<?= $iFamilyID ?>"
-                   class="btn btn-danger danger"><?= gettext("Delete") ?></a>
-            </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+         <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
+
+        </div>
         </div>
     </div>
-</div>
+  </div>
+    
 <div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -1011,7 +987,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         <?php
 
 } ?>
-
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
+    <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
     <script>
         window.CRM.currentFamily = <?= $iFamilyID ?>;
@@ -1048,6 +1025,35 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     }
                 });
             });
+        
+            $("#deletePhoto").click (function () {
+              $.ajax({
+              type: "POST",
+              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              encode: true,
+              dataType: 'json',
+              data: { 
+                "_METHOD": "DELETE"
+              }
+              }).done(function(data) {
+                location.reload();
+              });
+            });
+            
+            window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
+              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              maxPhotoSize: window.CRM.maxUploadSize,
+              photoHeight: 400,
+              photoWidth: 400,
+              done: function(e) {
+                location.reload();
+              }
+            });
+
+            $("#uploadImageButton").click(function(){
+              window.CRM.photoUploader.show();
+            });
+        
         });
     </script>
 
