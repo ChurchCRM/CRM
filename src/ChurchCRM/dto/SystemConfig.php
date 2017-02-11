@@ -110,7 +110,7 @@ class SystemConfig
         "sDateFormatNoYear" => new ConfigItem(103, "sDateFormatNoYear", "text", "m/d", ""),
         "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y", ""),
         "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a", ""),
-        "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd", ""),
+        "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd-Gis", ""),
         "bRegistered" => new ConfigItem(999, "bRegistered", "boolean", "0", gettext("ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.")),
         "leftX" => new ConfigItem(1001, "leftX", "number", "20", gettext("Left Margin (1 = 1/100th inch)")),
         "incrementY" => new ConfigItem(1002, "incrementY", "number", "4", gettext("Line Thickness (1 = 1/100th inch")),
