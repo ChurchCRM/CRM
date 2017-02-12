@@ -1,10 +1,8 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\FamilyService;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
 
-$familyService = new FamilyService();
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
 
@@ -18,7 +16,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   <div class="box box-info" id="verifyBox">
     <div class="panel-body">
       <img class="img-circle center-block pull-right img-responsive" width="200" height="200"
-           src="<?= SystemURLs::getRootPath() ?>/<?= $familyService->getFamilyPhoto($family->getId()) ?>">
+           src="<?= $family->getThumbnailURI(); ?>">
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
