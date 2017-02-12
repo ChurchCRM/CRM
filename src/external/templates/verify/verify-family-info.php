@@ -4,7 +4,6 @@ use ChurchCRM\Service\FamilyService;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
 
-$familyService = new FamilyService();
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
 
