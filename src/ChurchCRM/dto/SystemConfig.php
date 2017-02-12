@@ -66,7 +66,6 @@ class SystemConfig
         "sDefaultCity" => new ConfigItem(21, "sDefaultCity", "text", "", gettext("Default City")),
         "sDefaultState" => new ConfigItem(22, "sDefaultState", "text", "", gettext("Default State - Must be 2-letter abbreviation!")),
         "sDefaultCountry" => new ConfigItem(23, "sDefaultCountry", "choice", "", "", json_encode(["Choices" => Countries::getNames()])),
-        "sSendType" => new ConfigItem(25, "sSendType", "choice", "smtp", gettext("The method for sending email. Either 'smtp' or 'sendmail'"), '{"Choices":["'.gettext("smtp").'","'.gettext("SendMail").'"]}'),
         "sToEmailAddress" => new ConfigItem(26, "sToEmailAddress", "text", "", gettext("Default account for receiving a copy of all emails")),
         "sSMTPHost" => new ConfigItem(27, "sSMTPHost", "text", "", gettext("SMTP Server Address (mail.server.com:25)")),
         "sSMTPAuth" => new ConfigItem(28, "sSMTPAuth", "boolean", "0", gettext("Does your SMTP server require auththentication (username/password)?")),
@@ -169,7 +168,7 @@ class SystemConfig
     return array (
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","nChurchLatitude","nChurchLongitude"],
       gettext('User setup') => ["sDefault_Pass","sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords"],
-      gettext('Email Setup')  => ["sSendType","sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass","sToEmailAddress","mailChimpApiKey"],
+      gettext('Email Setup')  => ["sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass","sToEmailAddress","mailChimpApiKey"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip","sEnableGravatarPhotos","sEnableSelfRegistration"],
       gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","debug","bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Map Settings')  => ["sGoogleMapKey","bUseGoogleGeocode","sGMapIcons","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
