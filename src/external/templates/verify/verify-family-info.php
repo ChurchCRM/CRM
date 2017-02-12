@@ -18,7 +18,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   <div class="box box-info" id="verifyBox">
     <div class="panel-body">
       <img class="img-circle center-block pull-right img-responsive" width="200" height="200"
-           src="<?= SystemURLs::getRootPath() ?>/<?= $familyService->getFamilyPhoto($family->getId()) ?>">
+           src="data:image/png;base64,<?= base64_encode($family->getThumbnailBytes()) ?>">
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
@@ -49,8 +49,10 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         <?php foreach ($family->getPeopleSorted() as $person) { ?>
           <div class="col-md-3 col-sm-4">
             <div class="box box-primary">
-              <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="<?= $person->getPhoto() ?>">
+              <div class="box-body box-profile">  
+                 <img class="profile-user-img img-responsive img-circle" 
+                      src="data:image/png;base64,<?= base64_encode($person->getThumbnailBytes()) ?>">
+                
 
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
 
