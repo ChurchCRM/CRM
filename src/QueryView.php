@@ -302,8 +302,8 @@ function getQueryFormInput($queryParameters)
     extract($queryParameters);
     
     $input = '';
-    $label = '<label>' . gettext ($qrp_Name) . '</label>';
-    $helpMsg = '<div>' . gettext ($qrp_Description) . '</div>';
+    $label = '<label>' . gettext($qrp_Name) . '</label>';
+    $helpMsg = '<div>' . gettext($qrp_Description) . '</div>';
 
     switch ($qrp_Type) {
         //Standard INPUT box
@@ -380,7 +380,7 @@ if (mysqli_num_rows($rsParameters)) {
     } ?>
                     
                     <div class="form-group text-right">
-                        <input class="btn btn-primary" type="Submit" value="<?= gettext ("Execute Query") ?>" name="Submit">
+                        <input class="btn btn-primary" type="Submit" value="<?= gettext("Execute Query") ?>" name="Submit">
                     </div>
                 </form>
                 
