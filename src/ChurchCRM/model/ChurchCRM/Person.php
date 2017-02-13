@@ -193,4 +193,84 @@ class Person extends BasePerson
 
         return $otherFamilyMembers;
     }
+
+    /**
+     * Get address of  a person. If empty, return family address.
+     * @return string
+     */
+    public function getAddress()
+    {
+        $address = [];
+        if (!empty($this->getAddress1())) {
+            $tmp = $this->getAddress1();
+            if (!empty($this->getAddress2())) {
+                $tmp = $tmp.' '.$this->getAddress2();
+            }
+            array_push($address, $tmp);
+            if (!empty($this->getCity())) {
+                array_push($address, $this->getCity().',');
+            }
+
+            if (!empty($this->getState())) {
+                array_push($address, $this->getState());
+            }
+
+            if (!empty($this->getZip())) {
+                array_push($address, $this->getZip());
+            }
+            if (!empty($this->getCountry())) {
+                array_push($address, $this->getCountry());
+            }
+            return implode(' ', $address);
+
+        } else {
+            return $this->getFamily()
+                ->getAddress();
+        }
+
+    }
+
+    /**
+     * If person address found, return latitude of person address
+     * else return family latitude
+     * @return float|int
+     */
+    public function getLatitude()
+    {
+        $address = $this->getAddress(); //if person address empty, this will get Family address
+        $lat = 0;
+        if (!empty($this->getAddress1())) {
+            $prepAddr = str_replace(' ','+',$address);
+            $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
+            $output= json_decode($geocode);
+            $lat = $output->results[0]->geometry->location->lat;
+        } else {
+            $lat = $this->getFamily()->getLatitude();
+        }
+        return $lat;
+
+    }
+
+    /**
+     * * If person address found, return longitude of person address
+     * else return family longitude
+     *
+     * @return float|int
+     */
+    public function getLongitude()
+    {
+        $address = $this->getAddress(); //if person address empty, this will get Family address
+        $lng = 0;
+        if (!empty($this->getAddress1())) {
+            $prepAddr = str_replace(' ','+',$address);
+            $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
+            $output= json_decode($geocode);
+            $lng = $output->results[0]->geometry->location->lng;
+        } else {
+            $lng = $this->getFamily()->getLongitude();
+        }
+        return $lng;
+
+    }
 }
+

@@ -6,9 +6,10 @@ require 'Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Base\FamilyQuery;
 use ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\PersonQuery;
 
 //Set the page title
-$sPageTitle = gettext('Family View');
+$sPageTitle = gettext('View on Map');
 
 require 'Include/Header.php';
 
@@ -47,44 +48,39 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
 
     }
 
+    $plotFamily = false;
     //Get the details from DB
+    $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
+    if (empty($dirRoleHead)) {
+        $dirRoleHead = 1;
+    }
+
     if ($iGroupID > 0) {
         //Get all the members of this group
-        if (!empty(SystemConfig::getValue('sDirRoleHead'))) {
-            $families = FamilyQuery::create()
-                ->filterByDateDeactivated(null)
-                ->usePersonQuery('per')
-                ->usePerson2group2roleP2g2rQuery()
-                ->filterByGroupId($iGroupID)
-                ->endUse()
-                ->filterByFmrId(SystemConfig::getValue('sDirRoleHead'))
-                ->endUse()
-                ->find();
+        $persons = PersonQuery::create()
+            ->usePerson2group2roleP2g2rQuery()
+            ->filterByGroupId($iGroupID)
+            ->endUse()
+            ->find();
 
-        }
     } elseif ($iGroupID == 0) {
         // group zero means map the cart
-        if (!empty($_SESSION['aPeopleCart']) && !empty(SystemConfig::getValue('sDirRoleHead'))) {
-            $families = FamilyQuery::create()
-                ->filterByDateDeactivated(null)
-                ->usePersonQuery('per')
+        if (!empty($_SESSION['aPeopleCart'])) {
+            $persons = PersonQuery::create()
                 ->filterById($_SESSION['aPeopleCart'])
-                ->filterByFmrId(SystemConfig::getValue('sDirRoleHead'))
-                ->endUse()
                 ->find();
 
         }
     } else {
         //Map all the families
-        if (!empty(SystemConfig::getValue('sDirRoleHead'))) {
-            $families = FamilyQuery::create()
-                ->filterByDateDeactivated(null)
-                ->usePersonQuery('per')
-                ->filterByFmrId(SystemConfig::getValue('sDirRoleHead'))
-                ->endUse()
-                ->find();
+        $families = FamilyQuery::create()
+            ->filterByDateDeactivated(null)
+            ->usePersonQuery('per')
+            ->filterByFmrId($dirRoleHead)
+            ->endUse()
+            ->find();
+        $plotFamily = true;
 
-        }
     }
 
     //Markericons list
@@ -139,14 +135,13 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                 visibility: hidden;
             }
         }
-
-        }
     </style>
 
     <div class="box">
         <div class="col-lg-12">
             <!-- Google map div -->
             <div id="map" style="height: 700px;"></div>
+            <!-- map legend, only Show for persons plot -->
             <div id="maplegend"><h4>Legend</h4></div>
 
             <!--Google Map Scripts -->
@@ -161,15 +156,14 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
 
                 <?php
                 $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
-                array_unshift($markerIcons, 'red-pushpin');
+                array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification
                 ?>
 
                 var markerIcons = <?= json_encode($markerIcons) ?>;
                 var iconsJSON = <?= $icons->toJSON() ?>;
                 var icons = iconsJSON.ListOptions;
-
-
                 var iconBase = 'https://www.google.com/intl/en_us/mapfiles/ms/micons/';
+
                 var map = null;
                 var infowindow = new google.maps.InfoWindow({
                     maxWidth: 200
@@ -201,50 +195,74 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                     //Churchmark
                     var churchMark = new google.maps.Marker({
                         icon: window.CRM.root + "/skin/icons/church.png",
-                        position: new google.maps.LatLng(<?= SystemConfig::getValue('nChurchLatitude') . ', ' . SystemConfig::getValue('nChurchLongitude') ?>),
+                        position: new google.maps.LatLng(churchloc),
                         map: map
                     });
-
 
                     google.maps.event.addListener(map, 'click', function () {
                         infowindow.close();
                     });
 
                     <?php
-
                     $arr = array();
-                    $arrFamily = array();
-                    foreach ($families as $family) {
-                        //this helps to add head people persons details: otherwise doesn't seems to populate
-                        $family->getHeadPeople()[0];
-
-                        $photoFileThumb = "Images/Family/thumbnails/" . $family->getId() . ".jpg";
-                        if (!file_exists($photoFileThumb)) {
-                            $photoFileThumb = "Images/Family/family-128.png";
+                    $arrPlotItems = array();
+                    if ($plotFamily) {
+                        foreach ($families as $family) {
+                            //this helps to add head people persons details: otherwise doesn't seems to populate
+                            $class = $family->getHeadPeople()[0];
+                            $family->getHeadPeople()[0];
+                            //echo $class['per_cls_Id'];
+                            $photoFileThumb = "Images/Family/thumbnails/" . $family->getId() . ".jpg";
+                            if (!file_exists($photoFileThumb)) {
+                                $photoFileThumb = "";
+                            }
+                            $arr['ID'] = $family->getId();
+                            $arr['Salutation'] = MakeSalutationUtility($family->getId());
+                            $arr['Address'] = $family->getAddress();
+                            $arr['Thumbnail'] = $photoFileThumb;
+                            $arr['Latitude'] = $family->getLatitude();
+                            $arr['Longitude'] = $family->getLongitude();
+                            $arr['Name'] = $family->getName();
+                            $arr['Classification'] = $class->GetClsId();
+                            array_push($arrPlotItems, $arr);
                         }
-                        $arr['ID'] = $family->getId();
-                        $arr['Salutation'] = MakeSalutationUtility($family->getId());
-                        $arr['Address'] = $family->getAddress();
-                        $arr['Thumbnail'] = $photoFileThumb;
-                        array_push($arrFamily, $arr);
-                    }
+                    } else {
+                        //plot Person
+                        foreach ($persons as $member) {
+                            $photoFileThumb = "Images/Person/thumbnails/" . $member->getId() . ".jpg";
+                            if (!file_exists($photoFileThumb)) {
+                                $photoFileThumb = "";
+                            }
+                            $arr['ID'] = $member->getId();
+                            $arr['Salutation'] = $member->getFullName();
+                            $arr['Address'] = $member->getAddress();
+                            $arr['Thumbnail'] = $photoFileThumb;
+                            $arr['Latitude'] = $member->getLatitude();
+                            $arr['Longitude'] = $member->getLongitude();
+                            $arr['Name'] = $member->getFullName();
+                            $arr['Classification'] = $member->getClsId();
+                            array_push($arrPlotItems, $arr);
+                        }
+                    } //end IF $plotFamily
+
                     ?>
 
-                    var familyArray = <?= json_encode($arrFamily) ?>;
-                    //convert Propel object to JS array
-                    var familiesJSON = <?= $families->toJSON() ?>;
-                    var families = familiesJSON.Families;
-
-                    //loop through the families and add markers
-                    for (var i = 0; i < families.length; i++) {
-                        if (families[i].Latitude + families[i].Latitude == 0)
+                    var plotArray = <?= json_encode($arrPlotItems) ?>;
+                    var bPlotFamily = <?= ($plotFamily) ? 'true' : 'false' ?>;
+                    if (plotArray.length == 0) {
+                        return;
+                    }
+                    //loop through the families/persons and add markers
+                    for (var i = 0; i < plotArray.length; i++) {
+                        if (plotArray[i].Latitude + plotArray[i].Longitude == 0)
                             continue;
 
                         //icon image
-                        var clsid = families[i].People["0"].ClsId;
+                        var clsid = plotArray[i].Classification;
                         var markerIcon = markerIcons[clsid];
+                        var iconurl = iconBase + markerIcon + '.png';
                         var image = {
-                            url: iconBase + markerIcon + '.png',
+                            url: iconurl,
                             // This marker is 37 pixels wide by 34 pixels high.
                             size: new google.maps.Size(37, 34),
                             // The origin for this image is (0, 0).
@@ -254,40 +272,51 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                         };
 
                         //Latlng object
-                        var latlng = new google.maps.LatLng(families[i].Latitude, families[i].Longitude);
+                        var latlng = new google.maps.LatLng(plotArray[i].Latitude, plotArray[i].Longitude);
 
                         //Infowindow Content
-                        var contentString = "<b><a href='FamilyView.php?FamilyID=" + families[i].Id + "'>" + familyArray[i].Salutation + "</a></b>";
-                        contentString += "<p>" + familyArray[i].Address + "</p>";
-                        contentString += "<p style='text-align: center'><a href='FamilyView.php?FamilyID=" + familyArray[i].ID + "'>";
-                        contentString += "<img class='img-circle img-responsive profile-user-img' border='1' src='" + familyArray[i].Thumbnail + "'></a></p>";
+                        var imghref, contentString;
+                        if (bPlotFamily) {
+                            imghref = "FamilyView.php?FamilyID=" + plotArray[i].ID;
+                        } else {
+                            imghref = "PersonView.php?PersonID=" + plotArray[i].ID;
+                        }
 
-                        //contentString="Hello";
+                        contentString = "<b><a href='" + imghref + "'>" + plotArray[i].Salutation + "</a></b>";
+                        contentString += "<p>" + plotArray[i].Address + "</p>";
+                        if (plotArray[i].Thumbnail.length > 0) {
+                            contentString += "<p style='text-align: center'><a href='" + imghref + "'>";
+                            contentString += "<img class='img-circle img-responsive profile-user-img' border='1' src='" + plotArray[i].Thumbnail + "'></a></p>";
+                        }
 
                         //Add marker and infowindow
-                        addMarkerWithInfowindow(map, latlng, image, families[i].Name, contentString);
+                        addMarkerWithInfowindow(map, latlng, image, plotArray[i].Name, contentString);
                     }
-                    //Add Legend
+                    //Add Legend for person
+
                     var legend = document.getElementById('maplegend');
-                    var i = 0;
-                    for (var i = 0; i < icons.length; i++) {
-                        var type = icons[i];
-                        var name = type['OptionName'];
-                        var icon = iconBase + markerIcons[i + 1] + '.png';
-                        var div = document.createElement('div');
-                        div.innerHTML = '<img src="' + icon + '"> ' + name;
+                    for (var j = 0; j <= icons.length; j++) {
+                        var type, name, icon, div;
+                        if (j == 0) {
+                            name = 'Unassigned';
+                            icon = iconBase + markerIcons[0] + '.png';
+                        } else {
+                            type = icons[j - 1];
+                            name = type['OptionName'];
+                            icon = iconBase + markerIcons[type['OptionId']] + '.png';
+                        }
+                        div = document.createElement('div');
+                        div.innerHTML = '<img src="' + icon + '">' + name;
                         legend.appendChild(div);
                     }
                     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
                 }
 
                 initialize();
 
             </script>
-
         </div>
-
-
         <br>
         <div id="maplegend-mobile">
             <label><b>Key:</b></label>
@@ -311,7 +340,6 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             </div>
         </div>
     </div>
-
     <?php
 
 }
