@@ -732,6 +732,12 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#country-input").select2();
+            $("#state-input").select2();
+        });
+    </script>
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext('Contact Info') ?></h3>
