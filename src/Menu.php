@@ -187,9 +187,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                     <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
                                 </td>
                                 <td><?= $family->getAddress() ?></td>
-                                <td><?= $family->getDateEntered('M d, Y') ?></td>
-                                <!--formats seem to be very different from current formats? revisit...
-                                <td><?= $family->getDateEntered(SystemConfig::getValue('sDateFormatLong')) ?></td-->
+                                <td><?= FormatDate($family->getDateEntered(),false) ?></td>
                             </tr>
                             <?php
 
@@ -225,9 +223,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                     <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
                                 </td>
                                 <td><?= $family->getAddress() ?></td>
-                                <td><?= $family->getDateLastEdited('M d, Y') ?></td>
-                                <!--formats seem to be very different from current formats? revisit...
-                                <td><?= $family->getDateLastEdited(SystemConfig::getValue('sDateFormatLong')) ?></td-->
+                                <td><?= FormatDate($family->getDateLastEdited(),false) ?></td>
                             </tr>
                             <?php
 
