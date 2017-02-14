@@ -23,11 +23,17 @@ $groupStats = $dashboardService->getGroupStats();
 $demographicStats = $dashboardService->getDemographic();
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
-        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;';
+        where fam_ID =per_fam_ID and fam_DateDeactivated is  null
+        and per_Gender in (1,2) and
+        per_fmr_ID not in (' . SystemConfig::getValue('sDirRoleChild') . ')
+        group by per_Gender ;';
 $rsAdultsGender = RunQuery($sSQL);
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
-        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID in (3) group by per_Gender ;';
+          where fam_ID =per_fam_ID and fam_DateDeactivated is  null
+          and per_Gender in (1,2)
+          and per_fmr_ID in (' . SystemConfig::getValue('sDirRoleChild') . ')
+          group by per_Gender ;';
 $rsKidsGender = RunQuery($sSQL);
 
 $sSQL = 'select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;';
