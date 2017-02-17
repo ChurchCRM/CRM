@@ -3104,6 +3104,10 @@ msgstr "Ez az érték nem lehet kisebb, mint"
 msgid "Run Query Again"
 msgstr "Lekérdezés futtatása Again"
 
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr "Execute Query"
+
 #: RPCdummy.php:48
 msgid "Address Info:"
 msgstr "Cím Info:"

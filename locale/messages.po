@@ -8,6 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-17 18:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2911,6 +2912,11 @@ msgstr ""
 msgid "Member(s)"
 msgstr ""
 
+#: external/templates/registration/family-register-done.php:43
+#: Reports/CanvassReports.php:72
+msgid "Done"
+msgstr ""
+
 #: external/templates/registration/family-register-members.php:19
 msgid "Register"
 msgstr ""
@@ -2919,6 +2925,10 @@ msgstr ""
 #: FamilyEditor.php:934 FamilyView.php:360 PersonView.php:467
 #: PrintView.php:318
 msgid "Family Members"
+msgstr ""
+
+#: external/templates/registration/family-register-members.php:30
+msgid "Family Member"
 msgstr ""
 
 #: external/templates/registration/family-register-members.php:82
@@ -5846,6 +5856,14 @@ msgstr ""
 msgid "Run Query Again"
 msgstr ""
 
+#: QueryView.php:321
+msgid "select an option"
+msgstr ""
+
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr ""
+
 #: Register.php:22
 msgid "Software Registration"
 msgstr ""
@@ -5918,10 +5936,6 @@ msgstr ""
 
 #: Reports/CanvassReports.php:49
 msgid "Canvass Progress Report"
-msgstr ""
-
-#: Reports/CanvassReports.php:72
-msgid "Done"
 msgstr ""
 
 #: Reports/CanvassReports.php:73

@@ -3535,6 +3535,10 @@ msgstr "Giá trị này không thể ít hơn "
 msgid "Run Query Again"
 msgstr "Run Query Một lần nữa"
 
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr "Thực hiện truy vấn"
+
 #: RPCdummy.php:48
 msgid "Address Info:"
 msgstr "Địa chỉ Thông tin:"

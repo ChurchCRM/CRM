@@ -3136,6 +3136,10 @@ msgstr "这个值不能小于"
 msgid "Run Query Again"
 msgstr "再次运行查询"
 
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr "执行查询"
+
 #: RPCdummy.php:48
 msgid "Address Info:"
 msgstr "地址信息："

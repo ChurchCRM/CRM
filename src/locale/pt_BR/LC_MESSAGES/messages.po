@@ -3849,6 +3849,10 @@ msgstr "Este valor não pode ser menor que "
 msgid "Run Query Again"
 msgstr "Rodar a consulta novamente"
 
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr "Rodar a pesquisa"
+
 #: RPCdummy.php:48
 msgid "Address Info:"
 msgstr "Informações Endereço:"
@@ -6850,6 +6854,7 @@ msgstr "Permite ao usuário ver dados privativos dos membros, como ano de nascim
 msgid "Canvass Progress Report"
 msgstr "Relatório de Progresso de Visitação"
 
+#: external/templates/registration/family-register-done.php:43
 #: Reports/CanvassReports.php:72
 msgid "Done"
 msgstr "Feito"

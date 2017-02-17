@@ -3117,6 +3117,10 @@ msgstr "Această valoare nu poate fi mai mică"
 msgid "Run Query Again"
 msgstr "Rulați din nou interogarea"
 
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr "Executa interogări"
+
 #: RPCdummy.php:48
 msgid "Address Info:"
 msgstr "Adresa Info:"

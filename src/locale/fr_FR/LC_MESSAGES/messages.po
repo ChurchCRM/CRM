@@ -3946,6 +3946,10 @@ msgstr "Cette valeur ne peut pas &ecirc;tre  inf&eacute;rieure &agrave; "
 msgid "Run Query Again"
 msgstr "Ex&eacute;cuter Requ&ecirc;te  &agrave; Nouveau"
 
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr "Ex&eacute;cutez la Requ&ecirc;te "
+
 #: RPCdummy.php:48
 msgid "Address Info:"
 msgstr "Info Adresse:"
@@ -6953,6 +6957,7 @@ msgstr "Autoriser utilisateur à voir les données privées utilisateur, ie Ann�
 msgid "Canvass Progress Report"
 msgstr "Rapport Progression sondage"
 
+#: external/templates/registration/family-register-done.php:43
 #: Reports/CanvassReports.php:72
 msgid "Done"
 msgstr "Fait"

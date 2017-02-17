@@ -3136,6 +3136,10 @@ msgstr "To pole nie może być krótsze niż "
 msgid "Run Query Again"
 msgstr "Wyszukaj Ponownie"
 
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr "Wyszukaj"
+
 #: RPCdummy.php:48
 msgid "Address Info:"
 msgstr "Informacja o Adresie:"

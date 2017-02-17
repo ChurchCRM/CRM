@@ -3166,6 +3166,10 @@ msgstr "Denna inmatning får inte vara mindra än "
 msgid "Run Query Again"
 msgstr "Kör förfrågan igen"
 
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr "Gör förfrågan"
+
 #: RPCdummy.php:48
 msgid "Address Info:"
 msgstr "Adress info:"

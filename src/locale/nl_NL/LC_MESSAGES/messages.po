@@ -3034,6 +3034,10 @@ msgstr "Deze waarde kan niet minder zijn dan "
 msgid "Run Query Again"
 msgstr "Draai Query opnieuw"
 
+#: QueryView.php:383
+msgid "Execute Query"
+msgstr "Execute Query"
+
 #: RPCdummy.php:48
 msgid "Address Info:"
 msgstr "Adres Informatie:"
