@@ -34,7 +34,7 @@ msgstr "Radera"
 #: AutoPaymentDelete.php:66 AutoPaymentEditor.php:581 BatchWinnerEntry.php:114
 #: CanvassEditor.php:160 Checkin.php:201 Checkin.php:298 Checkin.php:350
 #: DirectoryReports.php:287 DonatedItemEditor.php:298 EventNames.php:233
-#: external/templates/verify/verify-family-info.php:129 FamilyEditor.php:1133
+#: external/templates/verify/verify-family-info.php:138 FamilyEditor.php:1133
 #: FamilyView.php:919 FinancialReports.php:70 FundRaiserEditor.php:145
 #: GroupPropsEditor.php:171 GroupReports.php:85 GroupReports.php:155
 #: LettersAndLabels.php:72 ManageEnvelopes.php:139 MemberRoleChange.php:121
@@ -135,7 +135,7 @@ msgstr "Telefon"
 #: ChurchCRM/Reports/PDF_Directory.php:454 CSVExport.php:155 CSVImport.php:228
 #: EditEventAttendees.php:42 EventAttendance.php:183
 #: external/templates/registration/family-register-members.php:71
-#: external/templates/verify/verify-family-info.php:66 FamilyEditor.php:779
+#: external/templates/verify/verify-family-info.php:75 FamilyEditor.php:779
 #: FamilyView.php:264 FamilyView.php:268 FamilyView.php:363
 #: GroupReports.php:131 PersonEditor.php:1005 PersonEditor.php:1007
 #: PersonView.php:291 PersonView.php:470 PrintView.php:278
@@ -445,8 +445,8 @@ msgstr "Insamlingskuvert"
 #: EditEventAttendees.php:43 EventAttendance.php:184
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:58
-#: external/templates/verify/verify-family-info.php:25
-#: external/templates/verify/verify-family-info.php:63 FamilyEditor.php:745
+#: external/templates/verify/verify-family-info.php:28
+#: external/templates/verify/verify-family-info.php:72 FamilyEditor.php:745
 #: FamilyList.php:26 FamilyView.php:243 GroupReports.php:128
 #: PersonEditor.php:931 PersonEditor.php:933 PersonView.php:285
 #: PrintView.php:183 Reports/ConfirmReportEmail.php:139
@@ -457,7 +457,7 @@ msgid "Home Phone"
 msgstr "Hemtelefon"
 
 #: CartToFamily.php:292 CSVExport.php:145 CSVImport.php:226
-#: external/templates/verify/verify-family-info.php:64 FamilyEditor.php:757
+#: external/templates/verify/verify-family-info.php:73 FamilyEditor.php:757
 #: FamilyView.php:250 GroupReports.php:129 PersonEditor.php:954
 #: PersonEditor.php:956 PersonView.php:301 PrintView.php:188
 #: Reports/ConfirmReportEmail.php:241 Reports/ConfirmReport.php:243
@@ -466,7 +466,7 @@ msgid "Work Phone"
 msgstr "Arbetstelefon"
 
 #: CartToFamily.php:302 CSVExport.php:150 CSVImport.php:227
-#: external/templates/verify/verify-family-info.php:65 FamilyEditor.php:767
+#: external/templates/verify/verify-family-info.php:74 FamilyEditor.php:767
 #: FamilyView.php:257 PersonEditor.php:979 PersonEditor.php:981
 #: PersonView.php:279 PrintView.php:193 SelectList.php:989 SelectList.php:990
 #: SelectList.php:1058
@@ -484,7 +484,7 @@ msgid "Birth Date"
 msgstr "Födelsedatum"
 
 #: CartToFamily.php:212 CSVImport.php:232 DirectoryReports.php:174
-#: external/templates/verify/verify-family-info.php:30 FamilyEditor.php:814
+#: external/templates/verify/verify-family-info.php:33 FamilyEditor.php:814
 #: FamilyView.php:229
 msgid "Wedding Date"
 msgstr "Bröllopsdatum"
@@ -903,7 +903,7 @@ msgstr "Välj evenemang som du vill checka in personer till"
 msgid "Select Event"
 msgstr "Välj evenemang"
 
-#: Checkin.php:139 external/templates/verify/verify-family-info.php:130
+#: Checkin.php:139 external/templates/verify/verify-family-info.php:139
 msgid "Verify"
 msgstr "Bekräfta"
 
@@ -1084,7 +1084,7 @@ msgid "Family Cell Phone"
 msgstr "Familjens mobiltelefon"
 
 #: DirectoryReports.php:180
-#: external/templates/verify/verify-family-info.php:26
+#: external/templates/verify/verify-family-info.php:29
 #: Reports/ConfirmReportEmail.php:160 Reports/ConfirmReport.php:160
 msgid "Family Email"
 msgstr "Familjens epost"
@@ -1137,7 +1137,7 @@ msgstr "Titel sida"
 msgid "Use Title Page"
 msgstr "Använd titel sida"
 
-#: ChurchCRM/dto/SystemConfig.php:116 DirectoryReports.php:244 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:114 DirectoryReports.php:244 Register.php:45
 msgid "Church Name"
 msgstr "Kyrkans namn"
 
@@ -1953,7 +1953,7 @@ msgstr "Minimala summa:"
 msgid "0 - No Minimum"
 msgstr "0 - inga minimum"
 
-#: ChurchCRM/dto/SystemConfig.php:180 FinancialReports.php:281
+#: ChurchCRM/dto/SystemConfig.php:178 FinancialReports.php:281
 msgid "Other Settings"
 msgstr "Övriga inställningar"
 
@@ -1989,7 +1989,7 @@ msgstr "Rapporthuvud:"
 msgid "Graphic"
 msgstr "Grafisk"
 
-#: ChurchCRM/dto/SystemConfig.php:117 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:115 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Kyrkans adress"
 
@@ -2488,8 +2488,8 @@ msgstr "Kuvert skötare"
 msgid "Update Family Records"
 msgstr "Lägg till en ny familj post"
 
-#: external/templates/verify/verify-family-info.php:15
-#: external/templates/verify/verify-family-info.php:112
+#: external/templates/verify/verify-family-info.php:14
+#: external/templates/verify/verify-family-info.php:121
 #: ManageEnvelopes.php:138
 #, fuzzy
 msgid "Confirm"
@@ -3911,7 +3911,7 @@ msgstr "Förknippat med"
 msgid "City, State, Zip"
 msgstr "Stad, län, postkod"
 
-#: external/templates/verify/verify-family-info.php:35 FamilyEditor.php:789
+#: external/templates/verify/verify-family-info.php:38 FamilyEditor.php:789
 #: FamilyView.php:222 Reports/ConfirmReportEmail.php:144
 #: Reports/ConfirmReport.php:144
 msgid "Send Newsletter"
