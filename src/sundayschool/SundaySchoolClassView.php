@@ -128,8 +128,8 @@ require '../Include/Header.php';
         <div class="box box-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?></h4>
-            <img data-name="<?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?>" 
-                  data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $teacher['per_ID'] ?>/thumbnail" 
+            <img data-name="<?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?>"
+                  data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $teacher['per_ID'] ?>/thumbnail"
                   alt="User Image" class="user-image initials-image" width="85" height="85" />
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
                 class="fa fa-envelope"></i> <?= gettext('Send Message') ?></a>
@@ -144,7 +144,7 @@ require '../Include/Header.php';
   </div>
 </div>
 
-<div class="box box-info collapsed-box">
+<div class="box box-info">
   <div class="box-header">
     <h3 class="box-title"><?= gettext('Quick Status') ?></h3>
 
@@ -163,7 +163,7 @@ require '../Include/Header.php';
           <h3 class="box-title"><?= gettext('Birthdays by Month') ?></h3>
         </div>
         <div class="box-body">
-          <div id="bar-chart" style="height: 300px;"></div>
+          <div id="bar-chart" style="width: 100%; height: 300px;"></div>
         </div>
         <!-- /.box-body-->
       </div>
@@ -178,7 +178,7 @@ require '../Include/Header.php';
           <h3 class="box-title"><?= gettext('Gender') ?></h3>
         </div>
         <div class="box-body">
-          <div id="donut-chart" style="height: 300px;"></div>
+          <div id="donut-chart" style="width: 100%; height: 300px;"></div>
         </div>
         <!-- /.box-body-->
       </div>
@@ -221,8 +221,8 @@ require '../Include/Header.php';
 
           <tr>
           <td>
-            <img data-name="<?= $child['firstName'].' '.$child['LastName'] ?>" 
-                data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail" 
+            <img data-name="<?= $child['firstName'].' '.$child['LastName'] ?>"
+                data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
                 alt="User Image" class="user-image initials-image" width="30" height="30" />
             <a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['firstName'].', '.$child['LastName'] ?></a>
           </td>
@@ -239,7 +239,7 @@ require '../Include/Header.php';
           <td><?= $child['momCellPhone'] ?></td>
           <td><?= $child['momEmail'] ?></td>
           </tr>
-      
+
       <?php
 
       }

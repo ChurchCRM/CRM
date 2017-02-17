@@ -290,8 +290,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     <div class="col-lg-9 col-md-8 col-sm-8">
       <div class="row">
         <div class="box"><br/>
-          <a class="btn btn-app bg-aqua-active" href="FamilyVerify.php?FamilyID=<?= $iFamilyID ?>"><i
-              class="fa fa-check-square"></i> <?= gettext('Verify Info') ?></a>
+        <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
+                        class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
           <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
               class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
           <?php if (($previous_id > 0)) {
