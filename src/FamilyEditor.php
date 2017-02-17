@@ -946,7 +946,7 @@ require 'Include/Header.php';
 		<div class="MediumText">
 			<center><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later.  All entries will become <i>new</i> person records.') : '' ?></center>
 		</div><br><br>
-		<table cellpadding="3" cellspacing="0" width="100%">
+		<table class="horizontal-scroll" cellpadding="3" cellspacing="0" width="100%">
 		<thead>
 		<tr class="TableHeader" align="center">
 			<th><?= gettext('First') ?></th>
