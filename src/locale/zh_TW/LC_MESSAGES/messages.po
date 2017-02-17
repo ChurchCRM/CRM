@@ -34,7 +34,7 @@ msgstr "刪除"
 #: AutoPaymentDelete.php:66 AutoPaymentEditor.php:581 BatchWinnerEntry.php:114
 #: CanvassEditor.php:160 Checkin.php:201 Checkin.php:298 Checkin.php:350
 #: DirectoryReports.php:287 DonatedItemEditor.php:298 EventNames.php:233
-#: external/templates/verify/verify-family-info.php:129 FamilyEditor.php:1133
+#: external/templates/verify/verify-family-info.php:138 FamilyEditor.php:1133
 #: FamilyView.php:919 FinancialReports.php:70 FundRaiserEditor.php:145
 #: GroupPropsEditor.php:171 GroupReports.php:85 GroupReports.php:155
 #: LettersAndLabels.php:72 ManageEnvelopes.php:139 MemberRoleChange.php:121
@@ -135,7 +135,7 @@ msgstr "電話"
 #: ChurchCRM/Reports/PDF_Directory.php:454 CSVExport.php:155 CSVImport.php:228
 #: EditEventAttendees.php:42 EventAttendance.php:183
 #: external/templates/registration/family-register-members.php:71
-#: external/templates/verify/verify-family-info.php:66 FamilyEditor.php:779
+#: external/templates/verify/verify-family-info.php:75 FamilyEditor.php:779
 #: FamilyView.php:264 FamilyView.php:268 FamilyView.php:363
 #: GroupReports.php:131 PersonEditor.php:1005 PersonEditor.php:1007
 #: PersonView.php:291 PersonView.php:470 PrintView.php:278
@@ -443,8 +443,8 @@ msgstr "捐款信封"
 #: EditEventAttendees.php:43 EventAttendance.php:184
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:58
-#: external/templates/verify/verify-family-info.php:25
-#: external/templates/verify/verify-family-info.php:63 FamilyEditor.php:745
+#: external/templates/verify/verify-family-info.php:28
+#: external/templates/verify/verify-family-info.php:72 FamilyEditor.php:745
 #: FamilyList.php:26 FamilyView.php:243 GroupReports.php:128
 #: PersonEditor.php:931 PersonEditor.php:933 PersonView.php:285
 #: PrintView.php:183 Reports/ConfirmReportEmail.php:139
@@ -455,7 +455,7 @@ msgid "Home Phone"
 msgstr "家庭電話"
 
 #: CartToFamily.php:292 CSVExport.php:145 CSVImport.php:226
-#: external/templates/verify/verify-family-info.php:64 FamilyEditor.php:757
+#: external/templates/verify/verify-family-info.php:73 FamilyEditor.php:757
 #: FamilyView.php:250 GroupReports.php:129 PersonEditor.php:954
 #: PersonEditor.php:956 PersonView.php:301 PrintView.php:188
 #: Reports/ConfirmReportEmail.php:241 Reports/ConfirmReport.php:243
@@ -464,7 +464,7 @@ msgid "Work Phone"
 msgstr "工作電話"
 
 #: CartToFamily.php:302 CSVExport.php:150 CSVImport.php:227
-#: external/templates/verify/verify-family-info.php:65 FamilyEditor.php:767
+#: external/templates/verify/verify-family-info.php:74 FamilyEditor.php:767
 #: FamilyView.php:257 PersonEditor.php:979 PersonEditor.php:981
 #: PersonView.php:279 PrintView.php:193 SelectList.php:989 SelectList.php:990
 #: SelectList.php:1058
@@ -482,7 +482,7 @@ msgid "Birth Date"
 msgstr "出生日期"
 
 #: CartToFamily.php:212 CSVImport.php:232 DirectoryReports.php:174
-#: external/templates/verify/verify-family-info.php:30 FamilyEditor.php:814
+#: external/templates/verify/verify-family-info.php:33 FamilyEditor.php:814
 #: FamilyView.php:229
 msgid "Wedding Date"
 msgstr "婚禮日期"
@@ -900,7 +900,7 @@ msgstr "選擇事件時，你要檢查的人"
 msgid "Select Event"
 msgstr "選擇事件"
 
-#: Checkin.php:139 external/templates/verify/verify-family-info.php:130
+#: Checkin.php:139 external/templates/verify/verify-family-info.php:139
 msgid "Verify"
 msgstr "確認"
 
@@ -1081,7 +1081,7 @@ msgid "Family Cell Phone"
 msgstr "家庭手機"
 
 #: DirectoryReports.php:180
-#: external/templates/verify/verify-family-info.php:26
+#: external/templates/verify/verify-family-info.php:29
 #: Reports/ConfirmReportEmail.php:160 Reports/ConfirmReport.php:160
 msgid "Family Email"
 msgstr "家庭電子郵件"
@@ -1134,7 +1134,7 @@ msgstr "扉頁"
 msgid "Use Title Page"
 msgstr "使用標題頁"
 
-#: ChurchCRM/dto/SystemConfig.php:116 DirectoryReports.php:244 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:114 DirectoryReports.php:244 Register.php:45
 msgid "Church Name"
 msgstr "教會名稱"
 
@@ -1947,7 +1947,7 @@ msgstr "最小起總金額："
 msgid "0 - No Minimum"
 msgstr "0  - 不設最低"
 
-#: ChurchCRM/dto/SystemConfig.php:180 FinancialReports.php:281
+#: ChurchCRM/dto/SystemConfig.php:178 FinancialReports.php:281
 msgid "Other Settings"
 msgstr "其他設置"
 
@@ -1983,7 +1983,7 @@ msgstr "報告標題："
 msgid "Graphic"
 msgstr "圖形"
 
-#: ChurchCRM/dto/SystemConfig.php:117 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:115 FinancialReports.php:295
 msgid "Church Address"
 msgstr "教會地址"
 
@@ -2475,8 +2475,8 @@ msgstr "信封經理"
 msgid "Update Family Records"
 msgstr "更新家庭記錄"
 
-#: external/templates/verify/verify-family-info.php:15
-#: external/templates/verify/verify-family-info.php:112
+#: external/templates/verify/verify-family-info.php:14
+#: external/templates/verify/verify-family-info.php:121
 #: ManageEnvelopes.php:138
 msgid "Confirm"
 msgstr "確認"
@@ -3878,7 +3878,7 @@ msgstr "聯絡"
 msgid "City, State, Zip"
 msgstr "市，州，郵政編碼"
 
-#: external/templates/verify/verify-family-info.php:35 FamilyEditor.php:789
+#: external/templates/verify/verify-family-info.php:38 FamilyEditor.php:789
 #: FamilyView.php:222 Reports/ConfirmReportEmail.php:144
 #: Reports/ConfirmReport.php:144
 msgid "Send Newsletter"
