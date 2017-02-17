@@ -1,8 +1,6 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\PersonService;
+
 /*******************************************************************************
  *
  *  filename    : /Include/Functions.php
@@ -29,10 +27,9 @@ use ChurchCRM\Service\PersonService;
  *
  ******************************************************************************/
 
-// Initialization common to all ChurchCRM scripts
-
-// Set the current version of this PHP file
-// Important!  These must be updated before every software release.
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 
 $personService = new PersonService();
@@ -79,28 +76,6 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
 }
 // End of basic security checks
 
-function deletePhotos($type, $id)
-{
-    $validExtensions = ['jpeg', 'jpg', 'png'];
-    $finalFileName = 'Images/'.$type.'/'.$id;
-    $finalFileNameThumb = 'Images/'.$type.'/thumbnails/'.$id;
-
-    $deleted = false;
-    while (list(, $ext) = each($validExtensions)) {
-        $tmpFile = $finalFileName.'.'.$ext;
-        if (file_exists($tmpFile)) {
-            unlink($tmpFile);
-            $deleted = true;
-        }
-        $tmpFile = $finalFileNameThumb.'.'.$ext;
-        if (file_exists($tmpFile)) {
-            unlink($tmpFile);
-            $deleted = true;
-        }
-    }
-
-    return $deleted;
-}
 
 // if magic_quotes off and array
 function addslashes_deep($value)
@@ -142,7 +117,7 @@ if (isset($_GET['Registered'])) {
 }
 
 if (isset($_GET['AllPDFsEmailed'])) {
-    $sGlobalMessage = gettext('PDFs successfully emailed ').$_GET['AllPDFsEmailed'].' '.gettext('families.');
+    $sGlobalMessage = gettext('PDFs successfully emailed ').$_GET['AllPDFsEmailed'].' '.gettext('families').".";
 }
 
 if (isset($_GET['PDFEmailed'])) {
@@ -227,9 +202,7 @@ if (isset($_POST['BulkAddToCart'])) {
 // Convert a relative URL into an absolute URL and return absolute URL.
 function RedirectURL($sRelativeURL)
 {
-    global $sRootPath;
-
-  // Test if file exists before redirecting.  May need to remove
+    // Test if file exists before redirecting.  May need to remove
   // query string first.
   $iQueryString = strpos($sRelativeURL, '?');
     if ($iQueryString) {
@@ -246,13 +219,12 @@ function RedirectURL($sRelativeURL)
 
   // With the query string removed we can test if file exists
   if (file_exists($sFullPath) && is_readable($sFullPath)) {
-      return $sRootPath.'/'.$sRelativeURL;
+      return SystemURLs::getRootPath().'/'.$sRelativeURL;
   } else {
       $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n"
       ."\$sPathExtension = $sPathExtension<br>\n"
-      ."\$sDocumentRoot = SystemURLs::getDocumentRoot()<br>\n"
-      .'$sRootPath = '
-      .$sRootPath."<br>\n";
+      ."\$sDocumentRoot = ".SystemURLs::getDocumentRoot()."<br>\n"
+      .'$sRootPath = ' .SystemURLs::getRootPath()."<br>\n";
 
       die($sErrorMessage);
   }

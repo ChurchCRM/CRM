@@ -142,7 +142,7 @@ if ($output == 'pdf') {
     }
 
     if (SystemConfig::getValue('iPDFOutputType') == 1) {
-        $pdf->Output('ZeroGivers'.date('Ymd').'.pdf', 'D');
+        $pdf->Output('ZeroGivers'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
     } else {
         $pdf->Output();
     }
@@ -177,6 +177,6 @@ if ($output == 'pdf') {
 
     // Export file
     header('Content-type: text/x-csv');
-    header('Content-Disposition: attachment; filename=ChurchCRM-'.date('Ymd-Gis').'.csv');
+    header('Content-Disposition: attachment; filename=ChurchCRM-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     echo $buffer;
 }

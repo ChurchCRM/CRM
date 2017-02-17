@@ -15,6 +15,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -52,7 +54,7 @@ require 'Include/Header.php';
 <script>
   $('#restoredatabase').submit(function (event) {
     event.preventDefault();
-   
+
     var formData = new FormData($(this)[0]);
     if (window.FileReader) { // if the browser supports FileReader, validate the flie locally before uploading.
        var file = document.getElementById('restoreFile').files[0];
@@ -90,8 +92,7 @@ require 'Include/Header.php';
     return false;
   });
 </script>
-<!-- PACE -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
+
 <?php
 require 'Include/Footer.php';
 ?>

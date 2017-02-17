@@ -9,6 +9,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\dto\SystemURLs;
 
 // Set the page title
 $sPageTitle = gettext('Members Dashboard');
@@ -133,7 +134,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person-stalker"></i>
       </div>
-      <a href="<?= $sRootPath.'/' ?>FamilyList.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath().'/' ?>FamilyList.php" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -154,7 +155,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person"></i>
       </div>
-      <a href="<?= $sRootPath.'/' ?>SelectList.php?mode=person" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath().'/' ?>SelectList.php?mode=person" class="small-box-footer">
         <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -175,7 +176,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-child"></i>
       </div>
-      <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
         <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -196,7 +197,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-gg"></i>
       </div>
-      <a href="<?= $sRootPath ?>/grouplist" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/grouplist" class="small-box-footer">
         <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -220,7 +221,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <p><a class="MediumText"
                 href="DirectoryReports.php"><?= gettext('Members Directory') ?></a><br><?= gettext('Printable directory of all members, grouped by family where assigned') ?>
           </p>
-        <?php 
+        <?php
+
      } ?>
         <a class="MediumText" href="LettersAndLabels.php"><?php echo gettext('Letters and Mailing Labels'); ?></a>
         <br><?php echo gettext('Generate letters and mailing labels.'); ?>
@@ -262,7 +264,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <?php foreach ($demographicStats as $key => $value) {
             ?>
             <tr>
-              <td><?= gettext($key) ?></td>
+              <td> <?= $key ?></td>
               <td>
                 <div class="progress progress-xs progress-striped active">
                   <div class="progress-bar progress-bar-success"
@@ -271,7 +273,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
               </td>
               <td><span class="badge bg-green"><?= $value ?></span></td>
             </tr>
-          <?php 
+          <?php
+
         } ?>
         </table>
       </div>
@@ -308,7 +311,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             </td>
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
-        <?php 
+        <?php
+
         } ?>
       </table>
       <!-- /.box-body-->
@@ -333,65 +337,66 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 
 <!-- this page specific inline scripts -->
 <script>
-
-  //-------------
-  //- PIE CHART -
-  //-------------
-  // Get context with jQuery - using jQuery's .get() method.
-  var PieData = [
-    <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
+    $(document).ready(function () {
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var PieData = [
+            <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
             if ($row['per_Gender'] == 1) {
-                echo '{value: '.$row['numb'].' , color: "#003399", highlight: "#3366ff", label: "'.gettext('Men').'" },';
+                echo '{value: ' . $row['numb'] . ' , color: "#003399", highlight: "#3366ff", label: "' . gettext('Men') . '" },';
             }
             if ($row['per_Gender'] == 2) {
-                echo '{value: '.$row['numb'].' , color: "#9900ff", highlight: "#ff66cc", label: "'.gettext('Women').'"},';
+                echo '{value: ' . $row['numb'] . ' , color: "#9900ff", highlight: "#ff66cc", label: "' . gettext('Women') . '"},';
             }
         }
-    while ($row = mysqli_fetch_array($rsKidsGender)) {
-        if ($row['per_Gender'] == 1) {
-            echo '{value: '.$row['numb'].' , color: "#3399ff", highlight: "#99ccff", label: "'.gettext('Boys').'"},';
-        }
-        if ($row['per_Gender'] == 2) {
-            echo '{value: '.$row['numb'].' , color: "#009933", highlight: "#99cc00", label: "'.gettext('Girls').'",}';
-        }
-    }
-    ?>
-  ];
-  var pieOptions = {
+            while ($row = mysqli_fetch_array($rsKidsGender)) {
+                if ($row['per_Gender'] == 1) {
+                    echo '{value: ' . $row['numb'] . ' , color: "#3399ff", highlight: "#99ccff", label: "' . gettext('Boys') . '"},';
+                }
+                if ($row['per_Gender'] == 2) {
+                    echo '{value: ' . $row['numb'] . ' , color: "#009933", highlight: "#99cc00", label: "' . gettext('Girls') . '",}';
+                }
+            }
+            ?>
+        ];
+        var pieOptions = {
 
-    //String - Point label font colour
-    pointLabelFontColor: "#666",
+            //String - Point label font colour
+            pointLabelFontColor: "#666",
 
-    //Boolean - Whether we should show a stroke on each segment
-    segmentShowStroke: true,
-    //String - The colour of each segment stroke
-    segmentStrokeColor: "#fff",
-    //Number - The width of each segment stroke
-    segmentStrokeWidth: 2,
-    //Number - The percentage of the chart that we cut out of the middle
-    percentageInnerCutout: 50, // This is 0 for Pie charts
-    //Boolean - Whether we animate the rotation of the Doughnut
-    animateRotate: false,
-    //Boolean - whether to make the chart responsive to window resizing
-    responsive: true,
-    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-    maintainAspectRatio: true,
-    //String - A legend template
-    legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
-  };
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke: true,
+            //String - The colour of each segment stroke
+            segmentStrokeColor: "#fff",
+            //Number - The width of each segment stroke
+            segmentStrokeWidth: 2,
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout: 50, // This is 0 for Pie charts
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate: false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive: true,
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: true,
+            //String - A legend template
+            legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
+        };
 
-  var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
-  var pieChart = new Chart(pieChartCanvas);
+        var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
+        var pieChart = new Chart(pieChartCanvas);
 
-  //Create pie or douhnut chart
-  // You can switch between pie and douhnut using the method below.
-  pieChart = pieChart.Doughnut(PieData, pieOptions);
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        pieChart = pieChart.Doughnut(PieData, pieOptions);
 
-  //then you just need to generate the legend
-  var legend = pieChart.generateLegend();
+        //then you just need to generate the legend
+        var legend = pieChart.generateLegend();
 
-  //and append it to your page somewhere
-  $('#gender-donut-legend').append(legend);
+        //and append it to your page somewhere
+        $('#gender-donut-legend').append(legend);
+    });
 </script>
 
 <?php require 'Include/Footer.php' ?>

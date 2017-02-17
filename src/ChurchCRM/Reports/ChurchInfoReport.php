@@ -100,14 +100,14 @@ class ChurchInfoReport extends FPDF
         if ($letterhead == 'graphic' && is_readable(SystemConfig::getValue('bDirLetterHead'))) {
             $this->Image(SystemConfig::getValue('bDirLetterHead'), 12, 15, 185);
             $curY = 20 + (SystemConfig::getValue('incrementY') * 3) + 25;
-            $this->WriteAt(170, $curY, date('m/d/Y'));
+            $this->WriteAt(170, $curY, date(SystemConfig::getValue("sDateFormatLong")));
         } elseif ($letterhead == 'none') {
             $curY = 20 + (SystemConfig::getValue('incrementY') * 3) + 25;
-            $this->WriteAt(170, $curY, date('m/d/Y'));
+            $this->WriteAt(170, $curY, date(SystemConfig::getValue("sDateFormatLong")));
         } else {
             $dateX = 170;
             $dateY = 25;
-            $this->WriteAt($dateX, $dateY, date('m/d/Y'));
+            $this->WriteAt($dateX, $dateY, date(SystemConfig::getValue("sDateFormatLong")));
             $curY = 20;
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
             $curY += SystemConfig::getValue('incrementY');

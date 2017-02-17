@@ -90,39 +90,9 @@ require 'Include/Header.php';
 
     <?php
     if ($_SESSION['bManageGroups']) {
-        echo '<a class="btn btn-app" href="GroupEditor.php?GroupID='.$thisGroup->getId().'"><i class="fa fa-pencil"></i>'.gettext('Edit this Group').'</a>';
-        echo '<a class="btn btn-app" data-toggle="modal" data-target="#deleteGroup"><i class="fa fa-trash"></i>'.gettext('Delete this Group').'</a>'; ?>
-      <!-- GROUP DELETE MODAL-->
-      <div class="modal fade" id="deleteGroup" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="upload-Image-label"><?= gettext('Confirm Delete Group') ?></h4>
-            </div>
-            <div class="modal-body">
-              <span style="color: red">
-                <?= gettext('Please confirm deletion of this group record') ?>:
-
-                <p class="ShadedBox">
-                  <?= $thisGroup->getName() ?>
-                </p>
-
-                <p class="LargeError">
-                  <?= gettext('This will also delete all Roles and Group-Specific Property data associated with this Group record.') ?>
-                </p>
-                <?= gettext('All group membership and properties will be destroyed.  The group members themselves will not be altered.') ?>
-                <br><br>
-                <span style="color:black"><?= gettext('I Understand') ?> &nbsp;<input type="checkbox" name="chkClear"id="chkClear" ></span>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
-              <button name="deleteGroupButton" id="deleteGroupButton" type="button" class="btn btn-danger" disabled><?= gettext('Delete Group') ?></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--END GROUP DELETE MODAL-->
+        echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
+        echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
+      
 
       <!-- MEMBER ROLE MODAL-->
       <div class="modal fade" id="changeMembership" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
@@ -513,6 +483,35 @@ require 'Include/Header.php';
             <script>
               window.CRM.currentGroup = <?= $iGroupID ?>;
               var dataT = 0;
+              $(document).ready(function() {
+                $("#deleteGroupButton").click(function() {
+                  console.log("click");
+                  bootbox.confirm({
+                    title: "<?= gettext("Confirm Delete Group") ?>",
+                    message: '<p style="color: red">'+
+                      '<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>'+
+                      '<p>'+
+                      '<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>'+
+                      '</p><p>'+
+                      '<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>',
+                    callback: function (result) {
+                      if (result)
+                      {
+                         $.ajax({
+                            method: "POST",
+                            url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup,
+                            dataType: "json",
+                            encode: true,
+                            data: {"_METHOD": "DELETE"}
+                          }).done(function (data) {
+                            if (data.status == "success")
+                              window.location.href = window.CRM.root + "/GroupList.php";
+                          });
+                      }
+                    }
+                  });
+                });
+              });
             </script>
             <script src="skin/js/GroupView.js" type="text/javascript"></script>
 
