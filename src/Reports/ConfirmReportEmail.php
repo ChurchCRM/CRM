@@ -17,6 +17,7 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 
@@ -330,7 +331,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     if ($emaillist != '') {
         header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
-    $doc = $pdf->Output('ConfirmReportEmail-'.$fam_ID.'-'.date('Ymd').'.pdf', 'S');
+    $doc = $pdf->Output('ConfirmReportEmail-'.$fam_ID.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'S');
 
         $subject = $fam_Name.' Family Information Review';
 
@@ -343,7 +344,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $mail->Subject = $subject;
         $mail->msgHTML($message);
         $mail->isHTML(true);
-        $filename = 'ConfirmReportEmail-'.$fam_Name.'-'.date('Ymd').'.pdf';
+        $filename = 'ConfirmReportEmail-'.$fam_Name.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf';
         $mail->addStringAttachment($doc, $filename);
         foreach ($myArray = explode(',', $emaillist) as $address) {
             $mail->addAddress($address);

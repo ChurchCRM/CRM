@@ -18,6 +18,7 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_GroupDirectory;
 
@@ -172,7 +173,7 @@ if ($iMode == 1) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('GroupDirectory-'.date('Ymd-Gis').'.pdf', 'D');
+    $pdf->Output('GroupDirectory-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

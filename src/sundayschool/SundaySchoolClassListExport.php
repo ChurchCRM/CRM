@@ -2,8 +2,10 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
+use ChurchCRM\dto\SystemConfig;
+
 header('Content-type: text/csv');
-header('Content-Disposition: attachment; filename=SundaySchool-'.date('Ymd').'.csv');
+header('Content-Disposition: attachment; filename=SundaySchool-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
 header('Pragma: no-cache');
 header('Expires: 0');
 

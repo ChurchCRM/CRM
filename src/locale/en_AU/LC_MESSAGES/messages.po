@@ -7,11 +7,11 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en-au\n"
 
-#: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:261
+#: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:263
 #: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
 #: external/templates/registration/family-register.php:41
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
-#: FamilyList.php:30 GeoPage.php:339 PersonEditor.php:874 Register.php:49
+#: FamilyList.php:30 GeoPage.php:370 PersonEditor.php:874 Register.php:50
 #, fuzzy
 msgid "Zip"
 msgstr "Postcode"
@@ -28,9 +28,9 @@ msgstr "Personal Mobile"
 msgid "Check"
 msgstr "Cheque"
 
-#: ChurchCRM/Reports/PDF_Directory.php:305
-#: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:457 Reports/DirectoryReport.php:287
+#: ChurchCRM/Reports/PDF_Directory.php:318
+#: ChurchCRM/Reports/PDF_Directory.php:394
+#: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:287
 #: Reports/GroupReport.php:132
 msgid "Cell"
 msgstr "Mobile"

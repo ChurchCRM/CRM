@@ -1,5 +1,6 @@
 $(document).ready(function () {
-
+  
+  $(".initials-image").initial();
   $('#onlineVerifySiteBtn').hide();
   $("#confirm-modal-done").hide();
   $("#confirm-modal-error").hide();
@@ -74,5 +75,7 @@ $(document).ready(function () {
         }
       });
   });
+  
+ 
 
 });
