@@ -13,6 +13,8 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
@@ -135,7 +137,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('EnvelopeAssingments-'.date('Ymd-Gis').'.pdf', 'D');
+    $pdf->Output('EnvelopeAssingments-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 } else {
     $pdf->Output();
 }
