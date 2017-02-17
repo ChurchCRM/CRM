@@ -198,7 +198,7 @@ class AddressLatLon
     public function AddressLatLon()
     {
         global $bHaveXML;
-        if (!$bHaveXML)  {
+        if (!$bHaveXML) {
             return;
         }
         if (SystemConfig::getValue('sGeocoderID') && SystemConfig::getValue('sGeocoderID') != '') { // Use credentials if available for unthrottled access to the geocoder server
