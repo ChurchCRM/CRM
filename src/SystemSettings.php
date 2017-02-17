@@ -128,7 +128,7 @@ require 'Include/Header.php';
               <li class="<?php if ($category == 'Church Information') {
         echo 'active';
     } ?>"><a href="#<?= str_replace(" ", '', $category) ?>" data-toggle="tab"
-                                                                          aria-expanded="false"><?= gettext($category) ?></a>
+                                                                          aria-expanded="false"><?= $category ?></a>
               </li>
             <?php
 
