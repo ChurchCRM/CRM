@@ -10,8 +10,13 @@
 }(function($, randomColor) {
   $.fn.initial = function(options) {
     return this.each(function() {
-
+      
       var e = $(this);
+      if (e.attr("src"))
+      {
+        //do not process images which already have a SRC attribute
+        return;
+      }
       var settings = $.extend({
         // Default settings
         name: 'Name',
@@ -48,7 +53,7 @@
         }
         });
       }
-      
+
       // making the text object
       var c = settings.name.split(" ", settings.wordCount).map(function(str) {
         return str.substr(0, settings.charCount).toUpperCase();

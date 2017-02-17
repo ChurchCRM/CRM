@@ -4,7 +4,6 @@ use ChurchCRM\Service\FamilyService;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
 
-$familyService = new FamilyService();
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
 
@@ -17,8 +16,12 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   </div>
   <div class="box box-info" id="verifyBox">
     <div class="panel-body">
-      <img class="img-circle center-block pull-right img-responsive" width="200" height="200"
-           src="<?= SystemURLs::getRootPath() ?>/<?= $familyService->getFamilyPhoto($family->getId()) ?>">
+      <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200"
+           data-name="<?= $family->getName() ?>"
+           <?php if ( $family->getThumbnailBytes() != FALSE ) 
+           { ?>
+           src="data:image/png;base64,<?= base64_encode($family->getThumbnailBytes()) ?>">
+           <?php } ?>
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
@@ -49,8 +52,14 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         <?php foreach ($family->getPeopleSorted() as $person) { ?>
           <div class="col-md-3 col-sm-4">
             <div class="box box-primary">
-              <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="<?= $person->getPhoto() ?>">
+              <div class="box-body box-profile">  
+                 <img class="profile-user-img img-responsive img-circle initials-image"
+                      data-name="<?= $person->getFullName() ?>"
+                       <?php if ( $person->getThumbnailBytes() != FALSE)
+                        {?>
+                      src="data:image/png;base64,<?= base64_encode($person->getThumbnailBytes()) ?>">
+                        <?php } ?>
+                
 
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
 
@@ -134,8 +143,8 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     </div>
   </div>
 
-
-
+  
+  
 <style>
 
   #verifyBox {
@@ -172,7 +181,9 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
 </style>
 
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyVerify.js"></script>
+<script src="<?= SystemURLs::getRootPath(); ?>/skin/randomcolor/randomColor.js"></script>
+<script src="<?= SystemURLs::getRootPath(); ?>/skin/js/initial.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyVerify.js"></script>
 
 <?php
 // Add the page footer

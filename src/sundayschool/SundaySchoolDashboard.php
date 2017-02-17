@@ -248,7 +248,7 @@ require '../Include/Header.php';
       $('.data-table').dataTable({
         responsive: true,
         "language": {
-          "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+          "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
         }
       });
 
