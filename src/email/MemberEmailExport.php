@@ -5,6 +5,7 @@ require '../Include/Functions.php';
 
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\SundaySchoolService;
+use ChurchCRM\dto\SystemConfig;
 
 $groupService = new GroupService();
 $sundaySchoolService = new SundaySchoolService();
@@ -38,7 +39,7 @@ foreach ($groups as $group) {
 }
 
 header('Content-type: text/csv');
-header('Content-Disposition: attachment; filename=EmailExport-'.date('Ymd').'.csv');
+header('Content-Disposition: attachment; filename=EmailExport-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
 header('Pragma: no-cache');
 header('Expires: 0');
 

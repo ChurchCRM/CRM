@@ -114,7 +114,7 @@ class SystemService
         $backup->params = $params;
         $bNoErrors = true;
 
-        $backup->saveTo = "$backup->backupRoot/ChurchCRM-" . date('Ymd-Gis');
+        $backup->saveTo = "$backup->backupRoot/ChurchCRM-" . date(SystemConfig::getValue("sDateFilenameFormat"));
         $backup->SQLFile = "$backup->backupRoot/ChurchCRM-Database.sql";
 
         try {
