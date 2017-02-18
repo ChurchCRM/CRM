@@ -6,11 +6,23 @@ use ChurchCRM\Service\FamilyService;
 use ChurchCRM\dto\SystemConfig;
 
 $familyService = new FamilyService();
+// Filter received user input as needed
 
-$activeFamilies = $familyService->getActiveFamilies();
+if (isset($_GET['mode'])) {
+    $sMode = FilterInput($_GET['mode']);
+} else {
+    $sMode = 'Active';
+}
+
+if (strtolower($sMode) == 'inactive'){
+    $families = $familyService->getDeactivatedFamilies();
+} else {
+    $sMode = 'Active';
+    $families = $familyService->getActiveFamilies();
+}
 
 // Set the page title and include HTML header
-$sPageTitle = gettext('Family List');
+$sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Family List');
 require 'Include/Header.php';
 ?>
 
@@ -36,7 +48,7 @@ require 'Include/Header.php';
             </thead>
             <tbody>
             <!--Populate the table with family details -->
-            <?php foreach ($activeFamilies as $family) {
+            <?php foreach ($families as $family) {
             ?>
             <tr>
                 <td><a href='FamilyView.php?FamilyID=<?= $family->getId() ?>'>
