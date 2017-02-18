@@ -31,7 +31,7 @@ msgstr "Cheque"
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:287
-#: Reports/GroupReport.php:132
+#: Reports/GroupReport.php:133
 msgid "Cell"
 msgstr "Mobile"
 
