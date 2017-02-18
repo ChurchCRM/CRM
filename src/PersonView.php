@@ -183,7 +183,21 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img  data-name="<?= $person->getFullName()?>" data-src = "<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
+        <div class="image-container">
+            <img  data-name="<?= $person->getFullName()?>" data-src = "<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
+            <div class="after">
+            <div class="buttons">
+                <a href="#" class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
+                    <i class="fa fa-camera"></i>
+                </a>&nbsp;
+                <?php if ($person->isPhotoLocal()): ?>
+                    <a href="#" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                <?php endif; ?>
+            </div>
+            </div>
+        </div>
         <h3 class="profile-username text-center">
           <?php if ($person->isMale()) {
     ?>

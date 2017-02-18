@@ -185,8 +185,24 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     <div class="col-lg-3 col-md-4 col-sm-4">
       <div class="box box-primary">
         <div class="box-body">
-          <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail" data-name="<?= $family->getName()?>" alt=""
-               class="initials-image img-circle img-responsive profile-user-img"/>
+            <div class="image-container">
+                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail" 
+                data-name="<?= $family->getName()?>" alt="" class="initials-image img-circle img-responsive profile-user-img"/>
+                <?php if ($bOkToEdit): ?>
+                    <div class="after">
+                        <div class="buttons">
+                            <a href="#" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
+                                <i class="fa fa-camera"></i>
+                            </a>&nbsp;
+                            <?php if ($family->isPhotoLocal()): ?>
+                                <a href="#" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
 					<h3 class="profile-username text-center"><?=  gettext('Family').': '.$fam_Name ?></h3>
           <?php if ($bOkToEdit) {
         ?>
@@ -315,17 +331,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
           <?php 
                     } ?>
           <br/>
-          <?php if ($bOkToEdit) {
-                        ?>
-            <a class="btn btn-app" href="#" id="uploadImageButton"><i
-                class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
-            <?php if ($family->isPhotoLocal()) {
-                            ?>
-              <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
-                  class="fa fa-remove"></i> <?= gettext('Delete Photo') ?> </a>
-            <?php 
-                        }
-                    }
+            
+            <?php
     if ($_SESSION['bNotes']) {
         ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
@@ -1048,10 +1055,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
               done: function(e) {
                 location.reload();
               }
-            });
-
-            $("#uploadImageButton").click(function(){
-              window.CRM.photoUploader.show();
             });
         
         });
