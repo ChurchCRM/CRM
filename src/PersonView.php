@@ -183,7 +183,23 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img  data-name="<?= $person->getFullName()?>" data-src = "<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
+        <div class="image-container">
+            <img  data-name="<?= $person->getFullName()?>" data-src = "<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
+            <?php if ($bOkToEdit): ?>
+                <div class="after">
+                <div class="buttons">
+                    <a href="#" class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
+                        <i class="fa fa-camera"></i>
+                    </a>&nbsp;
+                    <?php if ($person->isPhotoLocal()): ?>
+                        <a href="#" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    <?php endif; ?>
+                </div>
+                </div>
+            <?php endif; ?>
+        </div>
         <h3 class="profile-username text-center">
           <?php if ($person->isMale()) {
     ?>
@@ -335,15 +351,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="box box-primary box-body">
-      <?php if ($bOkToEdit) {
-              ?>
-        <a href="#" class="btn btn-app" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i><?= gettext("Upload Photo") ?></a>
-        <?php if ($person->isPhotoLocal()) {
-                  ?>
-          <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext("Delete Photo") ?></a>
-        <?php 
-              }
-          } ?>
       <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
       <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
       <?php if ($_SESSION['bNotes']) {
