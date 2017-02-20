@@ -23,6 +23,7 @@ env:
   - DB=mysql
 
 before_install:
+ - sudo apt-get update
  - sudo apt-get install ruby-full
  - sudo gem install sass
  - chmod +x ./travis-ci/*.sh
