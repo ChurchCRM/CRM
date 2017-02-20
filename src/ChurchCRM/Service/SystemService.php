@@ -76,7 +76,7 @@ class SystemService
                 }
               
             } elseif ($restoreResult->type2 == 'sql') {
-                $restoreResult->SQLfile = SystemURLs::getDocumentRoot() . '/tmp_attach/' . str_replace('.gz', '', $file['name']);
+                $restoreResult->SQLfile = $restoreResult->backupDir . str_replace('.gz', '', $file['name']);
                 file_put_contents($restoreResult->SQLfile, gzopen($restoreResult->uploadedFileDestination, r));
                 SQLUtils::sqlImport($restoreResult->SQLfile, $connection);
             }
