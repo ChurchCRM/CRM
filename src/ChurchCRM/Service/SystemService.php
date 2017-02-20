@@ -50,27 +50,28 @@ class SystemService
         $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
         $restoreResult->type2 = pathinfo(mb_substr($file['name'], 0, strlen($file['name']) - 3), PATHINFO_EXTENSION);
         $restoreResult->root = SystemURLs::getDocumentRoot();
-        $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . '/tmp_attach/';
         $restoreResult->headers = [];
-        $restoreResult->uploadedFileDestination = SystemURLs::getDocumentRoot() . '/tmp_attach/' . $file['name'];
+        $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . '/tmp_attach/';
+        $restoreResult->backupDir = $restoreResult->backupRoot  . '/ChurchCRMRestores/';
+        $restoreResult->uploadedFileDestination =  $restoreResult->backupDir . '/' . $file['name'];
         // Delete any old backup files
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
-        mkdir($restoreResult->backupRoot);
+        mkdir($restoreResult->backupDir);
         move_uploaded_file($file['tmp_name'], $restoreResult->uploadedFileDestination);
         if ($restoreResult->type == 'gz') {
             if ($restoreResult->type2 == 'tar') {
                 $phar = new PharData($restoreResult->uploadedFileDestination);
-                $phar->extractTo($restoreResult->backupRoot);
-                $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
+                $phar->extractTo($restoreResult->backupDir);
+                $restoreResult->SQLfile = "$restoreResult->backupDir/ChurchCRM-Database.sql";
                 if (file_exists($restoreResult->SQLfile))
                 {
                   SQLUtils::sqlImport($restoreResult->SQLfile, $connection);
                   FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
-                  FileSystemUtils::recursiveCopyDirectory($restoreResult->backupRoot . '/Images/', SystemURLs::getImagesRoot());
+                  FileSystemUtils::recursiveCopyDirectory($restoreResult->backupDir . '/Images/', SystemURLs::getImagesRoot());
                 }
                 else
                 {
-                  FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
+                  FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir,true);
                   throw new Exception(gettext("Backup archive does not contain a database").": " . $file['name']);
                 }
               
@@ -82,7 +83,7 @@ class SystemService
         } elseif ($restoreResult->type == 'sql') {
             SQLUtils::sqlImport($restoreResult->uploadedFileDestination, $connection);
         } else {
-            FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
+            FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir,true);
             throw new Exception(gettext("Unknown File Type").": " . $restoreResult->type . " ".gettext("from file").": " . $file['name']);
         }
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
