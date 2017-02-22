@@ -16,6 +16,7 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 
@@ -233,4 +234,4 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-$pdf->Output('FundRaiserStatement'.date('Ymd').'.pdf', 'D');
+$pdf->Output('FundRaiserStatement'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');

@@ -3,6 +3,7 @@
 // Routes
 use ChurchCRM\Deposit;
 use ChurchCRM\DepositQuery;
+use ChurchCRM\dto\SystemConfig;
 
 $app->group('/deposits', function () {
     $this->post('', function ($request, $response, $args) {
@@ -51,7 +52,7 @@ $app->group('/deposits', function () {
     $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
         $id = $args['id'];
     //echo DepositQuery::create()->findOneById($id)->toCSV();
-    header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$id.'-'.date('Ymd-Gis').'.csv');
+    header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$id.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
         echo ChurchCRM\PledgeQuery::create()->filterByDepid($id)
             ->joinDonationFund()->useDonationFundQuery()
             ->withColumn('DonationFund.Name', 'DonationFundName')

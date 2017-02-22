@@ -83,61 +83,70 @@ $(document).ready(function () {
     });
   });
 
-  $("#chkClear").change(function () {
-    if ($(this).is(":checked")) {
-      $("#deleteGroupButton").removeAttr("disabled");
-    }
-    else {
-      $("#deleteGroupButton").attr("disabled", "disabled");
-    }
-  });
-
-  $("#deleteGroupButton").on("click", function (e) {
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup,
-      dataType: "json",
-      encode: true,
-      data: {"_METHOD": "DELETE"}
-    }).done(function (data) {
-      if (data.status == "success")
-        window.location.href = window.CRM.root + "/GroupList.php";
-    });
-  });
-
   $("#deleteSelectedRows").click(function () {
     var deletedRows = dataT.rows('.selected').data()
-    $.each(deletedRows, function (index, value) {
-      $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId, // the url where we want to POST
-        dataType: 'json', // what type of data do we expect back from the server
-        data: {"_METHOD": "DELETE"},
-        encode: true
-      }).done(function (data) {
-        dataT.row(function (idx, data, node) {
-          if (data.PersonId == value.PersonId) {
-            return true;
-          }
-        }).remove();
-        dataT.rows().invalidate().draw(true);
-      });
+    bootbox.confirm({
+      message: "Are you sure you want to remove the " + deletedRows.length + " selected group members?",
+      buttons: {
+        confirm: {
+          label: 'Yes',
+            className: 'btn-success'
+        },
+        cancel: {
+          label: 'No',
+          className: 'btn-danger'
+        }
+      },
+      callback: function (result)
+      {
+        if (result) 
+        {
+          $.each(deletedRows, function (index, value) {
+            $.ajax({
+              type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+              url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId, // the url where we want to POST
+              dataType: 'json', // what type of data do we expect back from the server
+              data: {"_METHOD": "DELETE"},
+              encode: true
+            }).done(function (data) {
+              dataT.row(function (idx, data, node) {
+                if (data.PersonId == value.PersonId) {
+                  return true;
+                }
+              }).remove();
+              dataT.rows().invalidate().draw(true);
+            });
+          });
+        }
+       }
     });
+
   });
 
   $("#addSelectedToCart").click(function () {
-    var selectedRows = dataT.rows('.selected').data()
-    $.each(selectedRows, function (index, value) {
+    if (dataT.rows('.selected').length > 0)
+    {
+      var selectedPersons = {
+        "Persons" : $.map(dataT.rows('.selected').data(), function(val,i){
+                      return val.PersonId;
+                    })
+      };
       $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root + '/api/persons/' + value.PersonId + "/addToCart", // the url where we want to POST
-        dataType: 'json', // what type of data do we expect back from the server
-        encode: true
+        type: 'POST', 
+        url: window.CRM.root + '/api/cart/',
+        dataType: 'json',
+        contentType: "application/json",
+        data: JSON.stringify(selectedPersons)
+      }).done(function(data) {
+          if ( data.status == "success" )
+          {
+            location.reload();
+          }
       });
-    });
-    location.reload();
-  });
+    }
 
+  });
+  
   //copy membership
   $("#addSelectedToGroup").click(function () {
     $("#selectTargetGroupModal").modal("show");
@@ -241,7 +250,7 @@ function initDataTable() {
         title: 'Name',
         data: 'PersonId',
         render: function (data, type, full, meta) {
-          return '<img src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/photo" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+          return '<img data-name="'+full.Person.FirstName + ' ' + full.Person.LastName + '" data-src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
         }
       },
       {
@@ -290,6 +299,7 @@ function initDataTable() {
     ],
     "fnDrawCallback": function (oSettings) {
       $("#iTotalMembers").text(oSettings.aoData.length);
+      $("#membersTable .initials-image").initial();
     },
     "createdRow": function (row, data, index) {
       $(row).addClass("groupRow");
