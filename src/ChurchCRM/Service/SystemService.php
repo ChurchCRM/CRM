@@ -50,43 +50,43 @@ class SystemService
         $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
         $restoreResult->type2 = pathinfo(mb_substr($file['name'], 0, strlen($file['name']) - 3), PATHINFO_EXTENSION);
         $restoreResult->root = SystemURLs::getDocumentRoot();
-        $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . '/tmp_attach/';
-        $restoreResult->imagesRoot = 'Images';
         $restoreResult->headers = [];
-        $restoreResult->uploadedFileDestination = SystemURLs::getDocumentRoot() . '/tmp_attach/' . $file['name'];
+        $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . '/tmp_attach/';
+        $restoreResult->backupDir = $restoreResult->backupRoot  . '/ChurchCRMRestores/';
+        $restoreResult->uploadedFileDestination =  $restoreResult->backupDir . '/' . $file['name'];
         // Delete any old backup files
-        FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
-        mkdir($restoreResult->backupRoot);
+        FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
+        mkdir($restoreResult->backupDir);
         move_uploaded_file($file['tmp_name'], $restoreResult->uploadedFileDestination);
         if ($restoreResult->type == 'gz') {
             if ($restoreResult->type2 == 'tar') {
                 $phar = new PharData($restoreResult->uploadedFileDestination);
-                $phar->extractTo($restoreResult->backupRoot);
-                $restoreResult->SQLfile = "$restoreResult->backupRoot/ChurchCRM-Database.sql";
+                $phar->extractTo($restoreResult->backupDir);
+                $restoreResult->SQLfile = "$restoreResult->backupDir/ChurchCRM-Database.sql";
                 if (file_exists($restoreResult->SQLfile))
                 {
                   SQLUtils::sqlImport($restoreResult->SQLfile, $connection);
                   FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
-                  FileSystemUtils::recursiveCopyDirectory($restoreResult->backupRoot . '/Images/', SystemURLs::getDocumentRoot() . '/Images');
+                  FileSystemUtils::recursiveCopyDirectory($restoreResult->backupDir . '/Images/', SystemURLs::getImagesRoot());
                 }
                 else
                 {
-                  FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
+                  FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir,true);
                   throw new Exception(gettext("Backup archive does not contain a database").": " . $file['name']);
                 }
               
             } elseif ($restoreResult->type2 == 'sql') {
-                $restoreResult->SQLfile = SystemURLs::getDocumentRoot() . '/tmp_attach/' . str_replace('.gz', '', $file['name']);
+                $restoreResult->SQLfile = $restoreResult->backupDir . str_replace('.gz', '', $file['name']);
                 file_put_contents($restoreResult->SQLfile, gzopen($restoreResult->uploadedFileDestination, r));
                 SQLUtils::sqlImport($restoreResult->SQLfile, $connection);
             }
         } elseif ($restoreResult->type == 'sql') {
             SQLUtils::sqlImport($restoreResult->uploadedFileDestination, $connection);
         } else {
-            FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
+            FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir,true);
             throw new Exception(gettext("Unknown File Type").": " . $restoreResult->type . " ".gettext("from file").": " . $file['name']);
         }
-        FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
+        FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
         $restoreResult->UpgradeStatus = $this->upgradeDatabaseVersion();
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
@@ -103,19 +103,14 @@ class SystemService
         requireUserGroupMembership('bAdmin');
         global $sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD;
         $backup = new \stdClass();
-        $backup->root = SystemURLs::getDocumentRoot();
-        $backup->backupRoot = "$backup->root/tmp_attach/ChurchCRMBackups";
-        $backup->imagesRoot = "$backup->root/Images";
+        $backup->backupRoot = SystemURLs::getDocumentRoot() . "/tmp_attach";
+        $backup->backupDir = $backup->backupRoot."/ChurchCRMBackups";
+        FileSystemUtils::recursiveRemoveDirectory($backup->backupRoot,true);
+        mkdir($backup->backupDir,077,true);
         $backup->headers = [];
-        // Delete any old backup files
-        FileSystemUtils::recursiveRemoveDirectory($backup->backupRoot);
-        mkdir($backup->backupRoot);
-
         $backup->params = $params;
-        $bNoErrors = true;
-
-        $backup->saveTo = "$backup->backupRoot/ChurchCRM-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-        $backup->SQLFile = "$backup->backupRoot/ChurchCRM-Database.sql";
+        $backup->saveTo = "$backup->backupDir/ChurchCRM-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $backup->SQLFile = "$backup->backupDir/ChurchCRM-Database.sql";
 
         try {
             $dump = new Mysqldump('mysql:host=' . $sSERVERNAME . ';dbname=' . $sDATABASE, $sUSER, $sPASSWORD, ['add-drop-table' => true]);
@@ -140,7 +135,7 @@ class SystemService
                 $phar = new \PharData($backup->saveTo);
                 $phar->startBuffering();
                 $phar->addFile($backup->SQLFile, 'ChurchCRM-Database.sql');
-                $imageFiles = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($backup->imagesRoot));
+                $imageFiles = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator(SystemURLs::getImagesRoot()));
                 foreach ($imageFiles as $imageFile) {
                     if (!$imageFile->isDir()) {
                         $localName = str_replace(SystemURLs::getDocumentRoot() . '/', '', $imageFile->getRealPath());
@@ -260,7 +255,7 @@ class SystemService
                 }
             }
             fclose($fd);
-            FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/tmp_attach/ChurchCRMBackups');
+            FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/tmp_attach/',true);
         }
     }
 
