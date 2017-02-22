@@ -784,14 +784,17 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               <?php
 
               } else {
-                  echo '<table class="table">';
+                  echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
+                  echo '<thead>';
                   echo '<tr class="TableHeader">';
-                  echo '<th class="col-md-4 col-xs-4">'.gettext('Name').'</th>';
-                  echo '<th class="col-md-5 col-xs-5">'.gettext('Description').'</th>';
+                  echo '<th>'.gettext('Name').'</th>';
+                  echo '<th>'.gettext('Description').'</th>';
                   if ($_SESSION['bEditRecords']) {
-                      echo '<th class="col-md-2 col-xs-2">'.gettext('Remove').'</th>';
+                      echo '<th>'.gettext('Remove').'</th>';
                   }
                   echo '</tr>';
+                  echo '</thead>';
+                  echo '<tbody>';
 
                 // Loop through the rows
                 while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
@@ -801,11 +804,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   $sRowClass = AlternateRowStyle($sRowClass);
 
                     echo '<tr class="'.$sRowClass.'">';
-                    echo '<td class="col-md-4 col-xs-4">'.$vol_Name.'</a></td>';
-                    echo '<td class="col-md-5 col-xs-5">'.$vol_Description.'</a></td>';
+                    echo '<td>'.$vol_Name.'</a></td>';
+                    echo '<td>'.$vol_Description.'</a></td>';
 
                     if ($_SESSION['bEditRecords']) {
-                        echo '<td class="col-md-2 col-xs-2"><a class="SmallText" href="PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
+                        echo '<td><a class="SmallText" href="PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
                     }
 
                     echo '</tr>';
@@ -813,20 +816,25 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   // NOTE: this method is crude.  Need to replace this with use of an array.
                   $sAssignedVolunteerOpps .= $vol_ID.',';
                 }
+                  echo '</tbody>';
                   echo '</table>';
               } ?>
+            <script>
+                $(document).ready(function() {
+                    $("#assigned-volunteer-opps-table").DataTable();
+                });
+            </script>
 
                 <?php if ($_SESSION['bEditRecords'] && $rsVolunteerOpps->num_rows): ?>
                 <div class="alert alert-info">
                     <div>
                         <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>
-                        <p><br></p>
                         
                         <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
                         <div class="row">
                             <div class="form-group col-xs-12 col-md-7">
                                 <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple 
-                                    class="form-control select2" style="width:100%">
+                                    class="form-control select2" style="width:100%" data-placeholder="Select ...">
                                     <?php
                                     while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
                                         extract($aRow);
