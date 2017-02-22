@@ -7,6 +7,9 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Base\FamilyQuery;
 use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Service\FamilyService;
+
+$familyService = new FamilyService();
 
 //Set the page title
 $sPageTitle = gettext('View on Map');
@@ -212,10 +215,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                             $class = $family->getHeadPeople()[0];
                             $family->getHeadPeople()[0];
                             //echo $class['per_cls_Id'];
-                            $photoFileThumb = "Images/Family/thumbnails/" . $family->getId() . ".jpg";
-                            if (!file_exists($photoFileThumb)) {
-                                $photoFileThumb = "";
-                            }
+                            $photoFileThumb = $familyService->getFamilyPhoto($family->getId());
                             $arr['ID'] = $family->getId();
                             $arr['Salutation'] = MakeSalutationUtility($family->getId());
                             $arr['Address'] = $family->getAddress();
@@ -229,10 +229,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                     } else {
                         //plot Person
                         foreach ($persons as $member) {
-                            $photoFileThumb = "Images/Person/thumbnails/" . $member->getId() . ".jpg";
-                            if (!file_exists($photoFileThumb)) {
-                                $photoFileThumb = "";
-                            }
+                            $photoFileThumb = '/api/persons/' . $member->getId() . '/photo';
                             $arr['ID'] = $member->getId();
                             $arr['Salutation'] = $member->getFullName();
                             $arr['Address'] = $member->getAddress();
