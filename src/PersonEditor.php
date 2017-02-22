@@ -183,7 +183,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     //Validate the Last Name.  If family selected, but no last name, inherit from family.
-    if (strlen($sLastName) < 1) {
+    if (strlen($sLastName) < 1 && !SystemConfig::getValue('bAllowEmptyLastName')) {
         if ($iFamily < 1) {
             $sLastNameError = gettext('You must enter a Last Name if no Family is selected.');
             $bErrorFlag = true;
