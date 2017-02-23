@@ -839,7 +839,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
             <!-- note item -->
             <?php foreach ($timelineService->getNotesForPerson($iPersonID) as $item) {
-                  ?>
+                                        ?>
               <li>
                 <!-- timeline icon -->
                 <i class="fa <?= $item['style'] ?>"></i>
@@ -849,16 +849,16 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) {
-                      ?>
+                                            ?>
                       <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                     <?php
 
-                  } else {
-                      ?>
+                                        } else {
+                                            ?>
                       <?= $item['header'] ?>
                     <?php
 
-                  } ?>
+                                        } ?>
                   </h3>
 
                   <div class="timeline-body">
@@ -866,33 +866,33 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   </div>
 
                   <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
-                      ?>
+                                            ?>
                     <div class="timeline-footer">
                       <?php if ($item['editLink'] != '') {
-                          ?>
+                                                ?>
                         <a href="<?= $item['editLink'] ?>">
                           <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                         </a>
                       <?php
 
-                      }
-                      if ($item['deleteLink'] != '') {
-                          ?>
+                                            }
+                                            if ($item['deleteLink'] != '') {
+                                                ?>
                         <a href="<?= $item['deleteLink'] ?>">
                           <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </a>
                       <?php
 
-                      } ?>
+                                            } ?>
                     </div>
                   <?php
 
-                  } ?>
+                                        } ?>
                 </div>
               </li>
             <?php
 
-              } ?>
+                                    } ?>
             <!-- END timeline item -->
           </ul>
         </div>
