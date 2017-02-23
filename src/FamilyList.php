@@ -2,7 +2,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$sSQL = 'select * from family_fam fam order by fam_Name';
+$sSQL = 'select * from family_fam fam
+         where fam_DateDeactivated IS NULL OR fam_DateDeactivated > NOW()
+         order by fam_Name';
+
 $rsFamilies = RunQuery($sSQL);
 
 // Set the page title and include HTML header
