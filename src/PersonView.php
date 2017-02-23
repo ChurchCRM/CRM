@@ -661,106 +661,82 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         <div role="tab-pane fade" class="tab-pane" id="properties">
           <div class="main-box clearfix">
             <div class="main-box-body clearfix">
-              <?php
-              $sAssignedProperties = ',';
-
-              //Was anything returned?
-              if (mysqli_num_rows($rsAssignedProperties) == 0) {
-                  ?>
+            <?php
+            $sAssignedProperties = ','; ?>
+            <?php if (mysqli_num_rows($rsAssignedProperties) == 0): ?>
                 <br>
                 <div class="alert alert-warning">
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
                 </div>
-              <?php
+            <?php else: ?>
+                <table class="table table-condensed dt-responsive" id="assigned-properties-table" width="100%">
+                    <thead>
+                        <tr class="TableHeader">
+                            <th><?= gettext('Type') ?></th>;
+                            <th><?= gettext('Name') ?></th>;
+                            <th><?= gettext('Value') ?></th>;
+                            <?php if ($bOkToEdit): ?>
+                                <th><?= gettext('Edit') ?></th>;
+                                <th><?= gettext('Remove') ?></th>';
+                            <?php endif; ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        //Loop through the rows
+                        while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                            $pro_Prompt = '';
+                            $r2p_Value = '';
+                            extract($aRow);
 
-              } else {
-                  //Yes, start the table
-                echo '<table width="100%" cellpadding="4" cellspacing="0">';
-                  echo '<tr class="TableHeader">';
-                  echo '<td width="10%" valign="top"><b>'.gettext('Type').'</b>';
-                  echo '<td width="15%" valign="top"><b>'.gettext('Name').'</b>';
-                  echo '<td valign="top"><b>'.gettext('Value').'</b></td>';
+                            echo '<tr>';
+                            echo '<td>'.$prt_Name.'</td>';
+                            echo '<td>'.$pro_Name.'</td>';
+                            echo '<td>'.$r2p_Value.'</td>';
+                            if ($bOkToEdit) {
+                                if (strlen($pro_Prompt) > 0) {
+                                    echo '<td><a href="PropertyAssign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Edit').'</a></td>';
+                                } else {
+                                    echo '<td>&nbsp;</td>';
+                                }
+                                echo '<td><a href="PropertyUnassign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Remove').'</a></td>';
+                            }
+                            echo '</tr>';
+                            
+                            $sAssignedProperties .= $pro_ID.',';
+                        } ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
 
-                  if ($bOkToEdit) {
-                      echo '<td valign="top"><b>'.gettext('Edit').'</b></td>';
-                      echo '<td valign="top"><b>'.gettext('Remove').'</b></td>';
-                  }
-                  echo '</tr>';
-
-                  $last_pro_prt_ID = '';
-                  $bIsFirst = true;
-
-                //Loop through the rows
-                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                    $pro_Prompt = '';
-                    $r2p_Value = '';
-
-                    extract($aRow);
-
-                    if ($pro_prt_ID != $last_pro_prt_ID) {
-                        echo '<tr class="';
-                        if ($bIsFirst) {
-                            echo 'RowColorB';
-                        } else {
-                            echo 'RowColorC';
-                        }
-                        echo '"><td><b>'.$prt_Name.'</b></td>';
-
-                        $bIsFirst = false;
-                        $last_pro_prt_ID = $pro_prt_ID;
-                        $sRowClass = 'RowColorB';
-                    } else {
-                        echo '<tr class="'.$sRowClass.'">';
-                        echo '<td valign="top">&nbsp;</td>';
-                    }
-
-                    echo '<td valign="center">'.$pro_Name.'&nbsp;</td>';
-                    echo '<td valign="center">'.$r2p_Value.'&nbsp;</td>';
-
-                    if ($bOkToEdit) {
-                        if (strlen($pro_Prompt) > 0) {
-                            echo '<td valign="center"><a href="PropertyAssign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Edit').'</a></td>';
-                        } else {
-                            echo '<td>&nbsp;</td>';
-                        }
-                        echo '<td valign="center"><a href="PropertyUnassign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Remove').'</a></td>';
-                    }
-                    echo '</tr>';
-
-                  //Alternate the row style
-                  $sRowClass = AlternateRowStyle($sRowClass);
-
-                    $sAssignedProperties .= $pro_ID.',';
-                }
-                  echo '</table>';
-              } ?>
-
-              <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) != 0) {
-                  ?>
+              <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) != 0): ?>
                 <div class="alert alert-info">
                   <div>
                     <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
 
-                    <p><br></p>
-
                     <form method="post" action="PropertyAssign.php?PersonID=<?= $iPersonID ?>">
-                      <select name="PropertyID">
-                        <?php
-                        while ($aRow = mysqli_fetch_array($rsProperties)) {
-                            extract($aRow);
-                          //If the property doesn't already exist for this Person, write the <OPTION> tag
-                          if (strlen(strstr($sAssignedProperties, ','.$pro_ID.',')) == 0) {
-                              echo '<option value="'.$pro_ID.'">'.$pro_Name.'</option>';
-                          }
-                        } ?>
-                      </select>
-                      <input type="submit" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-7">
+                                <select name="PropertyID" id="input-person-properties" class="form-control select2"
+                                    style="width:100%" data-placeholder="Select ...">
+                                <?php
+                                while ($aRow = mysqli_fetch_array($rsProperties)) {
+                                    extract($aRow);
+                                    //If the property doesn't already exist for this Person, write the <OPTION> tag
+                                    if (strlen(strstr($sAssignedProperties, ','.$pro_ID.',')) == 0) {
+                                        echo '<option value="'.$pro_ID.'">'.$pro_Name.'</option>';
+                                    }
+                                } ?>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-7">
+                                <input type="submit" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
+                            </div>
+                        </div>
                     </form>
                   </div>
                 </div>
-              <?php
-
-              } ?>
+              <?php endif; ?>
             </div>
           </div>
         </div>
@@ -784,14 +760,17 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               <?php
 
               } else {
-                  echo '<table width="100%" cellpadding="4" cellspacing="0">';
+                  echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
+                  echo '<thead>';
                   echo '<tr class="TableHeader">';
-                  echo '<td>'.gettext('Name').'</td>';
-                  echo '<td>'.gettext('Description').'</td>';
+                  echo '<th>'.gettext('Name').'</th>';
+                  echo '<th>'.gettext('Description').'</th>';
                   if ($_SESSION['bEditRecords']) {
-                      echo '<td width="10%">'.gettext('Remove').'</td>';
+                      echo '<th>'.gettext('Remove').'</th>';
                   }
                   echo '</tr>';
+                  echo '</thead>';
+                  echo '<tbody>';
 
                 // Loop through the rows
                 while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
@@ -813,35 +792,38 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   // NOTE: this method is crude.  Need to replace this with use of an array.
                   $sAssignedVolunteerOpps .= $vol_ID.',';
                 }
+                  echo '</tbody>';
                   echo '</table>';
               } ?>
 
-              <?php if ($_SESSION['bEditRecords']) {
-                  ?>
+                <?php if ($_SESSION['bEditRecords'] && $rsVolunteerOpps->num_rows): ?>
                 <div class="alert alert-info">
-                  <div>
-                    <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>
-
-                    <p><br></p>
-
-                    <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
-                      <select name="VolunteerOpportunityIDs[]" , size=6, multiple>
-                        <?php
-                        while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
-                            extract($aRow);
-                          //If the property doesn't already exist for this Person, write the <OPTION> tag
-                          if (strlen(strstr($sAssignedVolunteerOpps, ','.$vol_ID.',')) == 0) {
-                              echo '<option value="'.$vol_ID.'">'.$vol_Name.'</option>';
-                          }
-                        } ?>
-                      </select>
-                      <input type="submit" value="<?= gettext('Assign') ?>" name="VolunteerOpportunityAssign" class="btn-primary">
-                    </form>
-                  </div>
+                    <div>
+                        <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>
+                        
+                        <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-7">
+                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple 
+                                    class="form-control select2" style="width:100%" data-placeholder="Select ...">
+                                    <?php
+                                    while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
+                                        extract($aRow);
+                                      //If the property doesn't already exist for this Person, write the <OPTION> tag
+                                      if (strlen(strstr($sAssignedVolunteerOpps, ','.$vol_ID.',')) == 0) {
+                                          echo '<option value="'.$vol_ID.'">'.$vol_Name.'</option>';
+                                      }
+                                    } ?>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-7">
+                                <input type="submit" value="<?= gettext('Assign') ?>" name="VolunteerOpportunityAssign" class="btn btn-primary">
+                            </div>
+                        </div>
+                        </form>
+                    </div>
                 </div>
-              <?php
-
-              } ?>
+                <?php endif; ?>
             </div>
           </div>
         </div>
@@ -999,7 +981,19 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   });
   
 
-  
+    $(document).ready(function() {
+        $("#input-volunteer-opportunities").select2();
+        $("#input-person-properties").select2();
+        
+        var options = {
+            "language": {
+                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+            },
+            "responsive": true
+        };
+        $("#assigned-volunteer-opps-table").DataTable(options);
+        $("#assigned-properties-table").DataTable(options);
+    });
   
   
 </script>
