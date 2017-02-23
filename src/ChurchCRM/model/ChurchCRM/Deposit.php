@@ -120,15 +120,22 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write(8, 'Deposit totals by Currency Type');
         $thisReport->pdf->SetFont('Courier', '', 8);
+
+        if($this->getCountChecks()) {
         $thisReport->curY += 4;
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write(8, 'Checks: ');
         $thisReport->pdf->write(8, '('.$this->getCountChecks().')');
         $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalChecks()));
+        }
+
+        if($this->getCountCash()) {
         $thisReport->curY += 4;
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write(8, 'Cash: ');
         $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalCash()));
+    }
+
     }
 
     private function generateTotalsByFund($thisReport)
@@ -147,6 +154,7 @@ class Deposit extends BaseDeposit
             $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
             $thisReport->curY += 4;
         }
+
     }
 
     private function generateQBDepositSlip($thisReport)
@@ -332,18 +340,19 @@ class Deposit extends BaseDeposit
 
         $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
         $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
+        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
-    // Now print deposit totals by fund
-    $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
         if ($thisReport->depositSummaryParameters->displayBillCounts) {
             $this->generateCashDenominations($thisReport);
         }
+
+        // Now print deposit totals by fund
         $thisReport->curX = $thisReport->depositSummaryParameters->aggregateX;
         $this->generateTotalsByFund($thisReport);
+        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
-        $thisReport->curY += $thisReport->summaryIntervalY;
         $this->generateTotalsByCurrencyType($thisReport);
-        $thisReport->curY += $thisReport->summaryIntervalY * 2;
+        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
         $thisReport->curY += 130;
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;

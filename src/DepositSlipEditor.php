@@ -120,10 +120,10 @@ require 'Include/Header.php';
           <?php
           // Get deposit totals
           echo '<li><b>TOTAL ('.$thisDeposit->getPledges()->count().'):</b> $'.$thisDeposit->getVirtualColumn('totalAmount').'</li>';
-          if ($thisDeposit->getCountChecks()) {
+                        if ($thisDeposit->getCountCash()) {
               echo '<li><b>CASH ('.$thisDeposit->getCountCash().'):</b> $'.$thisDeposit->getTotalCash().'</li>';
           }
-          if ($thisDeposit->getCountCash()) {
+                        if ($thisDeposit->getCountChecks()) {
               echo '<li><b>CHECKS ('.$thisDeposit->getCountChecks().'):</b> $'.$thisDeposit->getTotalChecks().' </li>';
           }
           ?>
