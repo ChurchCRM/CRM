@@ -84,7 +84,6 @@ function FamilyInfoByDistance($iFamily)
         $resultsByDistance = $results;
     }
     return $resultsByDistance;
-
 }
 
 /* End of functions ... code starts here */
@@ -249,7 +248,6 @@ $families = FamilyQuery::create()
                                 echo ' selected';
                             }
                             echo '>' . $family->getName() . '&nbsp;-&nbsp;' . $family->getAddress();
-
                         }
                         ?>
                     </select>
@@ -375,9 +373,9 @@ $families = FamilyQuery::create()
         (isset($_POST['FindNeighbors']) ||
             isset($_POST['PersonIDList']))
         ) {
-        $resultsByDistance = FamilyInfoByDistance($iFamily);
+            $resultsByDistance = FamilyInfoByDistance($iFamily);
 
-        $counter = 0; ?>
+            $counter = 0; ?>
         <!-- Column Headings -->
         <table id="neighbours" class="table table-striped table-bordered data-table dataTable no-footer"
                cellspacing="0" role="grid">
@@ -425,9 +423,7 @@ $families = FamilyQuery::create()
 
                     if (!in_array($per_ID, $aPersonIDs)) {
                         $aPersonIDs[] = $per_ID;
-
-                    }
-                    ?>
+                    } ?>
                     <tr>
                         <td><BR></td>
                         <td><BR></td>
@@ -437,9 +433,7 @@ $families = FamilyQuery::create()
                     <?php
 
                 }
-
-            }
-            ?>
+            } ?>
             </tbody>
         </table>
     </div><!-- /.box -->
@@ -464,7 +458,7 @@ $families = FamilyQuery::create()
     </div>
     <?php
 
-    }
+        }
     ?>
 </form>
 
