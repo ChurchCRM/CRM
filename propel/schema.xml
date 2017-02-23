@@ -57,6 +57,7 @@
                 defaultValue="0"/>
         <column name="per_FriendDate" phpName="FriendDate" type="DATE"/>
         <column name="per_Flags" phpName="Flags" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="per_DeathDate" phpName="DeathDate" type="TIMESTAMP"/>
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>

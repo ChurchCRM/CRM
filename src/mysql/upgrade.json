@@ -111,6 +111,7 @@
           "2.6.0"
         ],
         "scripts":[
+            "/mysql/upgrade/2.7.0.sql"
         ],
         "dbVersion": "2.7.0"
     }
