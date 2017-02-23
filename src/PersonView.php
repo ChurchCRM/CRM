@@ -661,66 +661,53 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         <div role="tab-pane fade" class="tab-pane" id="properties">
           <div class="main-box clearfix">
             <div class="main-box-body clearfix">
-              <?php
-              $sAssignedProperties = ',';
-
-              //Was anything returned?
-              if (mysqli_num_rows($rsAssignedProperties) == 0) {
-                  ?>
+            <?php
+            $sAssignedProperties = ','; ?>
+            <?php if (mysqli_num_rows($rsAssignedProperties) == 0): ?>
                 <br>
                 <div class="alert alert-warning">
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
                 </div>
-              <?php
+            <?php else: ?>
+                <table class="table table-condensed dt-responsive" id="assigned-properties-table" width="100%">
+                    <thead>
+                        <tr class="TableHeader">
+                            <th><?= gettext('Type') ?></th>;
+                            <th><?= gettext('Name') ?></th>;
+                            <th><?= gettext('Value') ?></th>;
+                            <?php if ($bOkToEdit): ?>
+                                <th><?= gettext('Edit') ?></th>;
+                                <th><?= gettext('Remove') ?></th>';
+                            <?php endif; ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        //Loop through the rows
+                        while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                            $pro_Prompt = '';
+                            $r2p_Value = '';
+                            extract($aRow);
 
-              } else {
-                  //Yes, start the table
-                echo '<table class="table table-condensed dt-responsive" id="assigned-properties-table" width="100%">';
-                  echo '<thead>';
-                  echo '<tr class="TableHeader">';
-                  echo '<th>'.gettext('Type').'</th>';
-                  echo '<th>'.gettext('Name').'</th>';
-                  echo '<th>'.gettext('Value').'</th>';
-
-                  if ($bOkToEdit) {
-                      echo '<th>'.gettext('Edit').'</th>';
-                      echo '<th>'.gettext('Remove').'</th>';
-                  }
-                  echo '</tr>';
-                  echo '</thead>';
-
-                //Loop through the rows
-                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                    $pro_Prompt = '';
-                    $r2p_Value = '';
-
-                    extract($aRow);
-
-                    echo '<tbody>';
-                    echo '<tr>';
-                    echo '<td>'.$prt_Name.'</td>';
-
-                    echo '<td>'.$pro_Name.'</td>';
-                    echo '<td>'.$r2p_Value.'</td>';
-
-                    if ($bOkToEdit) {
-                        if (strlen($pro_Prompt) > 0) {
-                            echo '<td><a href="PropertyAssign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Edit').'</a></td>';
-                        } else {
-                            echo '<td>&nbsp;</td>';
-                        }
-                        echo '<td><a href="PropertyUnassign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Remove').'</a></td>';
-                    }
-                    echo '</tr>';
-
-                  //Alternate the row style
-                  $sRowClass = AlternateRowStyle($sRowClass);
-
-                    $sAssignedProperties .= $pro_ID.',';
-                }
-                  echo '</tbody>';
-                  echo '</table>';
-              } ?>
+                            echo '<tr>';
+                            echo '<td>'.$prt_Name.'</td>';
+                            echo '<td>'.$pro_Name.'</td>';
+                            echo '<td>'.$r2p_Value.'</td>';
+                            if ($bOkToEdit) {
+                                if (strlen($pro_Prompt) > 0) {
+                                    echo '<td><a href="PropertyAssign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Edit').'</a></td>';
+                                } else {
+                                    echo '<td>&nbsp;</td>';
+                                }
+                                echo '<td><a href="PropertyUnassign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Remove').'</a></td>';
+                            }
+                            echo '</tr>';
+                            
+                            $sAssignedProperties .= $pro_ID.',';
+                        } ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
 
               <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) != 0): ?>
                 <div class="alert alert-info">
@@ -808,12 +795,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   echo '</tbody>';
                   echo '</table>';
               } ?>
-            <script>
-                $(document).ready(function() {
-                    $("#assigned-volunteer-opps-table").DataTable();
-                    $("#assigned-properties-table").DataTable();
-                });
-            </script>
 
                 <?php if ($_SESSION['bEditRecords'] && $rsVolunteerOpps->num_rows): ?>
                 <div class="alert alert-info">
@@ -840,12 +821,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                             </div>
                         </div>
                         </form>
-                        <script type="text/javascript">
-                            $(document).ready(function() {
-                                $("#input-volunteer-opportunities").select2();
-                                $("#input-person-properties").select2();
-                            });
-                        </script>
                     </div>
                 </div>
                 <?php endif; ?>
@@ -1006,7 +981,19 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   });
   
 
-  
+    $(document).ready(function() {
+        $("#input-volunteer-opportunities").select2();
+        $("#input-person-properties").select2();
+        
+        var options = {
+            "language": {
+                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+            },
+            "responsive": true
+        };
+        $("#assigned-volunteer-opps-table").DataTable(options);
+        $("#assigned-properties-table").DataTable(options);
+    });
   
   
 </script>
