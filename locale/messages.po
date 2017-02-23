@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-18 15:58+0000\n"
+"POT-Creation-Date: 2017-02-23 15:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,7 @@ msgstr ""
 #: FamilyView.php:664 FamilyView.php:716 FamilyView.php:776 FamilyView.php:927
 #: FindDepositSlip.php:108 FundRaiserEditor.php:202 ListEvents.php:249
 #: PaddleNumList.php:58 PersonCustomFieldsEditor.php:317
-#: PersonCustomFieldsEditor.php:386 PersonView.php:942 PledgeDelete.php:55
+#: PersonCustomFieldsEditor.php:386 PersonView.php:924 PledgeDelete.php:55
 #: PropertyList.php:67 PropertyList.php:108 PropertyTypeList.php:43
 #: PropertyTypeList.php:64 PropertyTypeList.php:66 UserDelete.php:66
 #: UserList.php:67 UserList.php:105
@@ -69,7 +69,7 @@ msgstr ""
 #: GroupPropsEditor.php:171 GroupReports.php:85 GroupReports.php:155
 #: LettersAndLabels.php:72 ManageEnvelopes.php:139 MemberRoleChange.php:121
 #: MemberRoleChange.php:123 NoteDelete.php:70 NoteEditor.php:138
-#: PersonEditor.php:1152 PersonView.php:941 PledgeDelete.php:56
+#: PersonEditor.php:1152 PersonView.php:923 PledgeDelete.php:56
 #: PropertyEditor.php:171 PropertyTypeEditor.php:116 Register.php:60
 #: ReminderReport.php:58 SettingsIndividual.php:120 SettingsIndividual.php:166
 #: SettingsUser.php:108 SettingsUser.php:168
@@ -603,7 +603,7 @@ msgstr ""
 #: GeoPage.php:366 GroupEditor.php:75 GroupPropsFormEditor.php:282
 #: GroupPropsFormEditor.php:394 GroupView.php:316 GroupView.php:350
 #: PersonCustomFieldsEditor.php:313 PersonCustomFieldsEditor.php:444
-#: PersonView.php:681 PersonView.php:789 PrintView.php:321 PrintView.php:450
+#: PersonView.php:676 PersonView.php:766 PrintView.php:321 PrintView.php:450
 #: PropertyEditor.php:151 PropertyList.php:62 PropertyTypeEditor.php:106
 #: PropertyTypeList.php:38 Reports/CanvassReports.php:71
 #: Reports/CanvassReports.php:239 Reports/FRBidSheets.php:93
@@ -810,8 +810,8 @@ msgid "families"
 msgstr ""
 
 #: CartView.php:293 CartView.php:344 EditEventTypes.php:168 FamilyView.php:561
-#: FamilyView.php:603 GroupView.php:355 GroupView.php:396 PersonView.php:686
-#: PersonView.php:726 PersonView.php:792 PersonView.php:808
+#: FamilyView.php:603 GroupView.php:355 GroupView.php:396 PersonView.php:680
+#: PersonView.php:702 PersonView.php:769 PersonView.php:787
 msgid "Remove"
 msgstr ""
 
@@ -2135,7 +2135,7 @@ msgid "Run Transactions"
 msgstr ""
 
 #: DepositSlipEditor.php:224 FamilyView.php:915 FindDepositSlip.php:98
-#: PersonView.php:931 PledgeDelete.php:21
+#: PersonView.php:913 PledgeDelete.php:21
 msgid "Confirm Delete"
 msgstr ""
 
@@ -2303,7 +2303,7 @@ msgstr ""
 #: DonationFundEditor.php:224 EditEventAttendees.php:34
 #: FundRaiserEditor.php:176 GroupEditor.php:81 GroupPropsFormEditor.php:283
 #: GroupPropsFormEditor.php:407 GroupView.php:317 ListEvents.php:214
-#: PersonView.php:790 PropertyTypeEditor.php:111
+#: PersonView.php:767 PropertyTypeEditor.php:111
 #: VolunteerOpportunityEditor.php:88 VolunteerOpportunityEditor.php:368
 #: VolunteerOpportunityEditor.php:443
 msgid "Description"
@@ -2492,7 +2492,7 @@ msgstr ""
 #: FamilyCustomFieldsEditor.php:429 FamilyView.php:555 FamilyView.php:658
 #: GroupPropsFormEditor.php:281 GroupPropsFormEditor.php:382 GroupView.php:315
 #: GroupView.php:349 OptionManager.php:79 PersonCustomFieldsEditor.php:312
-#: PersonCustomFieldsEditor.php:431 PersonView.php:680 PropertyEditor.php:131
+#: PersonCustomFieldsEditor.php:431 PersonView.php:675 PropertyEditor.php:131
 #: SelectDelete.php:317
 msgid "Type"
 msgstr ""
@@ -2543,7 +2543,7 @@ msgstr ""
 #: ElectronicPaymentList.php:220 ElectronicPaymentList.php:286
 #: EventNames.php:297 FamilyView.php:210 FamilyView.php:663 FamilyView.php:712
 #: FamilyView.php:775 FindFundRaiser.php:237 FindFundRaiser.php:245
-#: ListEvents.php:232 PersonView.php:234 PersonView.php:685 PersonView.php:722
+#: ListEvents.php:232 PersonView.php:234 PersonView.php:679 PersonView.php:698
 #: PropertyList.php:66 PropertyList.php:107 PropertyTypeList.php:42
 #: PropertyTypeList.php:62 SelectList.php:1069 UserList.php:61 UserList.php:84
 msgid "Edit"
@@ -3358,11 +3358,11 @@ msgstr ""
 msgid "Pledges and Payments"
 msgstr ""
 
-#: FamilyView.php:547 GroupView.php:343 PersonView.php:672 PrintView.php:446
+#: FamilyView.php:547 GroupView.php:343 PersonView.php:669 PrintView.php:446
 msgid "No property assignments."
 msgstr ""
 
-#: FamilyView.php:557 GroupView.php:351 PersonView.php:682 PrintView.php:451
+#: FamilyView.php:557 GroupView.php:351 PersonView.php:677 PrintView.php:451
 #: PropertyAssign.php:178 SystemSettings.php:151
 msgid "Value"
 msgstr ""
@@ -3371,11 +3371,11 @@ msgstr ""
 msgid "Edit Value"
 msgstr ""
 
-#: FamilyView.php:621 PersonView.php:742
+#: FamilyView.php:621 PersonView.php:715
 msgid "Assign a New Property"
 msgstr ""
 
-#: FamilyView.php:636 GroupView.php:428 PersonView.php:757 PersonView.php:838
+#: FamilyView.php:636 GroupView.php:428 PersonView.php:733 PersonView.php:820
 #: PropertyAssign.php:186 SelectList.php:1077
 msgid "Assign"
 msgstr ""
@@ -3449,12 +3449,12 @@ msgstr ""
 msgid " Canvass Entry"
 msgstr ""
 
-#: FamilyView.php:919 PersonView.php:935
+#: FamilyView.php:919 PersonView.php:917
 msgid ""
 "You are about to delete the profile photo, this procedure is irreversible."
 msgstr ""
 
-#: FamilyView.php:921 PersonView.php:937
+#: FamilyView.php:921 PersonView.php:919
 msgid "Do you want to proceed?"
 msgstr ""
 
@@ -3493,7 +3493,7 @@ msgid ""
 "We could not find the family you were looking for.<br>Meanwhile, you may"
 msgstr ""
 
-#: FamilyView.php:990 PersonView.php:1018
+#: FamilyView.php:990 PersonView.php:1012
 msgid "return to member dashboard"
 msgstr ""
 
@@ -5479,23 +5479,23 @@ msgstr ""
 msgid "Assign User to Group"
 msgstr ""
 
-#: PersonView.php:782
+#: PersonView.php:758
 msgid "No volunteer opportunity assignments."
 msgstr ""
 
-#: PersonView.php:823
+#: PersonView.php:802
 msgid "Assign a New Volunteer Opportunity"
 msgstr ""
 
-#: PersonView.php:952
+#: PersonView.php:934
 msgid "Are you sure you want to remove this person from the Group"
 msgstr ""
 
-#: PersonView.php:1015
+#: PersonView.php:1009
 msgid "Oops! Person not found."
 msgstr ""
 
-#: PersonView.php:1018
+#: PersonView.php:1012
 msgid ""
 "We could not find the person you were looking for.<br>Meanwhile, you may"
 msgstr ""
