@@ -203,7 +203,11 @@ class Deposit extends BaseDeposit
 
         $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x;
         $thisReport->curY += 2 * $thisReport->QBDepositTicketParameters->lineItemInterval->y;
-        $this->generateCashDenominations($thisReport);
+
+        if ($thisReport->displayBillCounts) {
+            $this->generateCashDenominations($thisReport);
+        }
+
         $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x + 125;
 
         $this->generateTotalsByCurrencyType($thisReport);
@@ -235,7 +239,6 @@ class Deposit extends BaseDeposit
         $thisReport->depositSummaryParameters->summary->MemoX = 120;
         $thisReport->depositSummaryParameters->summary->AmountX = 185;
         $thisReport->depositSummaryParameters->aggregateX = 135;
-        $thisReport->depositSummaryParameters->displayBillCounts = false;
 
         $thisReport->pdf->AddPage();
         $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->date->x, $thisReport->depositSummaryParameters->date->y);
@@ -368,7 +371,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
     }
 
-    public function getPDF()
+    public function getPDF($displayBillCounts = true)
     {
         requireUserGroupMembership('bFinance');
         $Report = new \stdClass();
@@ -376,6 +379,7 @@ class Deposit extends BaseDeposit
             throw new \Exception('No Payments on this Deposit', 404);
         }
 
+        $Report->displayBillCounts = $displayBillCounts;
         $Report->pdf = new \ChurchCRM\Reports\PDF_DepositReport();
         $Report->funds = DonationFundQuery::create()->find();
 
