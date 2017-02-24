@@ -56,6 +56,7 @@ require 'Include/Header.php';
     </div>
 <div class="box">
     <div class="box-body no-padding">
+        <div class="table-responsive">
         <table class="table table-hover">
             <tr>
                 <td><b><?= gettext('Edit') ?></b></td>
@@ -109,6 +110,7 @@ while ($aRow = mysqli_fetch_array($rsUsers)) {
 }
 ?>
 </table>
+        </div>
 	</div>
 	<!-- /.box-body -->
 </div>

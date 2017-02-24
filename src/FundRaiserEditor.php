@@ -186,8 +186,8 @@ require 'Include/Header.php';
 <div class="box box-body">
 <b><?= gettext('Donated items for this fundraiser') ?>:</b>
 <br>
-
-<table cellpadding="5" cellspacing="0" width="100%">
+<div class="table-responsive">
+<table class="table" cellpadding="5" cellspacing="0" width="100%">
 
 <tr class="TableHeader">
 	<td><?= gettext('Item') ?></td>
@@ -260,6 +260,6 @@ if ($rsDonatedItems != 0) {
 ?>
 
 </table>
-
+</div>
 </div>
 <?php require 'Include/Footer.php' ?>

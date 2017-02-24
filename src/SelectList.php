@@ -1000,6 +1000,7 @@ if (!isset($sPersonColumn5)) {
 
 // Header Row for results table
 echo '<form method="get" action="SelectList.php" name="ColumnOptions">';
+echo '<div class="table-responsive">';
 echo '<table cellpadding="4" align="center" cellspacing="0" width="100%">';
 echo '<tr><th></th><th><a href="SelectList.php?mode='.$sMode.'&amp;type='.$iGroupTypeMissing;
 echo '&amp;Sort=name&amp;Filter='.$sFilter.'">'.gettext('Name').'</a></th>';
@@ -1268,6 +1269,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 ?>
 
 		</table>
+        </div>
 		</form>
 	</div>
 </div>

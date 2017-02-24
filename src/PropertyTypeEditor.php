@@ -83,41 +83,40 @@ require 'Include/Header.php';
 
 ?>
 <div class="box box-body">
-<form method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?= $iPropertyTypeID ?>">
+<form class="form-horizontal" method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?= $iPropertyTypeID ?>">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="class"><?= gettext('Class') ?>:</label>
+        <div class="col-sm-4">
+            <select class="form-control" id="class" name="Class">
+                <option value="p" <?= ($sClass == 'p' ? 'selected' : '') ?>><?= gettext('Person') ?></option>
+                <option value="f" <?= ($sClass == 'f' ? 'selected' : '') ?>><?= gettext('Family') ?></option>
+                <option value="g" <?= ($sClass == 'g' ? 'selected' : '') ?>><?= gettext('Group') ?></option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="name"><?= gettext('Name') ?>:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="name" name="Name"
+                   value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" size="40"><?= $sNameError ?>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="description"><?= gettext('Description') ?>:</label>
+        <div class="col-sm-4">
+            <textarea class="form-control" id="description" name="Description"
+                      rows="10"><?= htmlentities(stripslashes($sDescription), ENT_NOQUOTES, 'UTF-8') ?></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+            <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Save') ?></button>
+            <button type="button" class="btn btn-default" name="Cancel"
+                    onclick="document.location='PropertyTypeList.php';"><?= gettext('Cancel') ?></button>
+        </div>
 
-<table class="table">
-	<tr>
-		<td align="right"><b><?= gettext('Class') ?>:</b></td>
-		<td>
-			<select name="Class">
-				<option value="p" <?php if ($sClass == 'p') {
-    echo 'selected';
-} ?>><?= gettext('Person') ?></option>
-				<option value="f" <?php if ($sClass == 'f') {
-    echo 'selected';
-} ?>><?= gettext('Family') ?></option>
-				<option value="g" <?php if ($sClass == 'g') {
-    echo 'selected';
-} ?>><?= gettext('Group') ?></option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td align="right"><b><?= gettext('Name') ?>:</b></td>
-		<td><input type="text" name="Name" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" size="40"> 			<?= $sNameError ?>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" valign="top"><b><?= gettext('Description') ?>:</b></td>
-		<td><textarea name="Description" cols="60" rows="10"><?= htmlentities(stripslashes($sDescription), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
-	</tr>
-	<tr>
-		<td colspan="2" align="center">
-			<input type="submit" class="btn btn-primary" name="Submit" <?= 'value="'.gettext('Save').'"' ?>>&nbsp;<input type="button" class="btn btn-default" name="Cancel" <?= 'value="'.gettext('Cancel').'"' ?> onclick="document.location='PropertyTypeList.php';">
-		</td>
-	</tr>
-</table>
-
+    </div>
 </form>
 </div>
 

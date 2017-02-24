@@ -163,7 +163,7 @@ require 'Include/Header.php';
 <form method="post" action="PropertyAssign.php<?= $sQuerystring.'&PropertyID='.$iPropertyID ?>">
 <input type="hidden" name="SecondPass" value="True">
 <input type="hidden" name="Action" value="<?= $sAction ?>">
-
+<div class="table-responsive">
 <table cellpadding="4">
 	<tr>
 		<td align="right"><b><?= $sTypeName ?>:</b></td>
@@ -178,9 +178,11 @@ require 'Include/Header.php';
 			<td align="right" valign="top"><b><?= gettext('Value') ?>:</b></td>
 			<td><?= $sPrompt ?><br><textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea></td>
 		</tr>
-<?php 
+<?php
+
 } ?>
 </table>
+</div>
 
 <p align="center"><input type="submit" class="btn" <?= 'value="'; if ($sAction == 'add') {
     echo gettext('Assign');
