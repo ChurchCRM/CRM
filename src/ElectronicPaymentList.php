@@ -186,10 +186,11 @@ function CreatePaymentMethodsForChecked()
   }
 }
 </script>
+<div class="box box-body">
 
 <p align="center"><a href="AutoPaymentEditor.php?linkBack=ElectronicPaymentList.php"><?= gettext('Add a New Electronic Payment Method') ?></a></p>
-
-<table id="PaymentMethodTable" cellpadding="4" align="center" cellspacing="0" width="100%">
+<div class="table-responsive">
+<table class="table" id="PaymentMethodTable" cellpadding="4" align="center" cellspacing="0" width="100%">
 	<tr class="TableHeader">
 		<td>
 		<input type=checkbox onclick="toggle(this, 'SelectForAction')" />
@@ -291,13 +292,17 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
 }
 ?>
 </table>
-<b>With checked:</b>
+</div>
+    <div>
+
+<b>With checked:</b><br>
 <?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
     ?>
-<input type="button" id="CreatePaymentMethodsForChecked" value="Store Private Data at Vanco" onclick="CreatePaymentMethodsForChecked();" />
-<?php 
+<input type="button" class="btn" id="CreatePaymentMethodsForChecked" value="Store Private Data at Vanco" onclick="CreatePaymentMethodsForChecked();" />
+<?php
 } ?>
-<input type="button" id="DeleteChecked" value="Delete" onclick="DeleteChecked();" />
-<input type="button" id="DeleteChecked" value="Clear Account Numbers" onclick="ClearAccountsChecked();" />
-
+<input type="button" class="btn btn-warning" id="DeleteChecked" value="Delete" onclick="DeleteChecked();" />
+<input type="button" class="btn" id="DeleteChecked" value="Clear Account Numbers" onclick="ClearAccountsChecked();" />
+    </div>
+</div>
 <?php require 'Include/Footer.php' ?>

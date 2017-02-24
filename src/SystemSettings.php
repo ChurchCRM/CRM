@@ -144,6 +144,7 @@ require 'Include/Header.php';
             <div class="tab-pane <?php if ($category == 'Church Information') {
                     echo 'active';
                 } ?>" id="<?= str_replace(" ", '', $category) ?>">
+                <div class="table-responsive">
               <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext('Variable name') ?></th>
@@ -244,6 +245,7 @@ require 'Include/Header.php';
 
                   } ?>
               </table>
+                </div>
             </div>
           
           <?php
