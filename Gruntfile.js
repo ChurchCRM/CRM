@@ -92,6 +92,27 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/moment/min/*'],
                         dest: 'src/skin/moment/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/jquery-photo-uploader/dist/*'],
+                        dest: 'src/skin/jquery-photo-uploader/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/randomcolor/randomColor.js'],
+                        dest: 'src/skin/randomcolor/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootbox/bootbox.min.js'],
+                        dest: 'src/skin/bootbox/'
                     }
                 ]
             }
@@ -265,7 +286,7 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            'demo-data': {
+            'demo': {
                 options: {
                     archive: 'target/Demo-ChurchCRM-<%= package.version %>.tar.gz',
                     mode: "tar",
@@ -309,6 +330,7 @@ module.exports = function (grunt) {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
                     filters: ["translated"],
+                    tags: '<%= package.version %>',
                     type: 'po', // export type (check out the doc)
                     dest: 'src/locale/?/LC_MESSAGES/messages.po'
                     // grunt style dest files

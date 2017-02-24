@@ -14,7 +14,9 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
 * [GET] /api/families/search/:query
   * Returns a list of the families who's name matches the :query parameter
 * [GET] /api/families/lastedited
-  * Returns a the last 10 updated families 
+  * Returns a the last 10 updated families
+* [POST]  /api/families/:familyId/activate/:status
+  * Update the family status to activated or deactivated with :familyId and :status true/false. Pass true to activate and false to deactivate.
 
 ## Groups
 *  [POST] /api/groups
@@ -26,42 +28,42 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
     }
   ```
   *  if ```isSundaySchool``` is specified, the group will be marked as a Sunday School class, and the ```Teacher``` and ```Student``` roles will be created.
-  
+
 *  [POST] /api/groups/:groupID/removeuser/:userID
   * Removes the user with ID :userID from group with ID :groupID
-  
+
 *  [POST] /api/groups/:groupID/adduser/:userID
   * Adds the user with ID :userID to the group with ID :groupID
-  
+
 *  [DELETE] /api/groups/:groupID
   * Deletes the group with ID :groupID
-  
+
 *  [GET] /api/groups/:groupID
   * Returns a JSON objecte representing the group with ID :groupID
-  
+
 *  [POST] /api/groups/:groupID/roles/:roleID
   * Alters the role with ID :roleID for group with ID :groupID/adduser/
   * Requires JSON with either "groupRoleName", or "groupRoleOrder" properties set
-  
+
 *  [DELETE] /api/groups/:groupID/roles/:roleID
   *  Deletes the specified roleID in the group
 
 *  [POST]  /api/groups/:groupID/defaultRole
-  *  Sets the default role fo the group with ID :groupID 
+  *  Sets the default role fo the group with ID :groupID
   *  Requres JSON in the POST body with the "roleID"  property set
-  
+
 *  [POST] /api/groups/:groupID/roles/
   * Creates a new group role for group with ID :groupID
   * requires JSON in the POST body with roleName set to the new role's name
-  
-*  [POST] /api/groups/:groupID/userRole/:userID 
+
+*  [POST] /api/groups/:groupID/userRole/:userID
   *  Sets the role of a user in a group
   *  requires JSON in the POST body with roleID set to the ID of the user's role in the specified group
 *  [POST]  /api/:groupID/setGroupSpecificPropertyStatus
   *  requires JSON property GroupSpecificPropertyStatus either true or false
-  
 
-  
+
+
 ## Deposits
 *  [GET] /
   * Returns all deposits
@@ -69,7 +71,7 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
 *  [POST] /
   *  Creates a new deposit
   *  Requires JSON body with properties: depositType, depositComment, depositDate
-  
+
 *  [GET] /:id
   * Returns the deposit with the selected ID
 
@@ -79,39 +81,39 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
 
 *  [GET] /:id/ofx
   *  Returns an OFX file representing the requested deposit
-  
+
 *  [GET] /:id/pdf
   *  Returns a PDF file representing the requested deposit
-  
+
 *  [GET]  /:id/csv
   *  Returns a CSV file representing the requested deposit
-  
+
 *  [DELETE] /:id
   * Deletes the selected deposit
-  
+
 *  [GET] /:id/payments
   * Returns all payments associated with the supplied deposit ID
 
 ## Payments
 * [GET] /
   * Returns all payments
-  
-* [POST] / 
+
+* [POST] /
   * Posts a new payment.  Validates the input
 
 * [GET] /:id
   * Gets the specified payment by ID
-  
+
 * [GET] /byFamily/:familyID(/:fyid)
   * Gets all payments be family, and optionally by the fiscal year ID
-  
+
 * [DELETE] /:groupKey
-  * Deleted the payment with the specified GroupKey 
+  * Deleted the payment with the specified GroupKey
 
 ## Search
 *  [GET]  /api/search/:query
   *  a search query.  Returns all instances of Persons, Families, Groups, Deposits, Checks, Payments that match the search query
- 
+
 
 ## Events
 No API Calls yet for Events

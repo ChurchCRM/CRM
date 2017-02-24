@@ -7,9 +7,7 @@ $stringsDir = 'db-strings';
 $stringFiles = [];
 
 $db = new PDO('mysql:host=localhost;dbname='.$db_name.';charset=utf8mb4', $db_username, $db_password);
-$query = 'select DISTINCT cfg_tooltip as term, "" as translation, "config_cfg" as cntx from config_cfg 
-union all
-select DISTINCT ucfg_tooltip as term, "" as translation, "userconfig_ucfg" as cntx from userconfig_ucfg
+$query = 'select DISTINCT ucfg_tooltip as term, "" as translation, "userconfig_ucfg" as cntx from userconfig_ucfg
 union all
 select DISTINCT qry_Name as term, "" as translation, "query_qry" as cntx   from query_qry
 union all
@@ -39,17 +37,6 @@ foreach ($db->query($query) as $row) {
 foreach ($stringFiles as $stringFile) {
     file_put_contents($stringFile, "\r\n?>", FILE_APPEND);
 }
-
-$stringFile = $stringsDir.'/settings-choices.php';
-file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
-$query = 'select cfg_data as choices, "" as translation, "config_cfg" as cntx from config_cfg 
-WHERE cfg_type = "choice";';
-foreach ($db->query($query) as $row) {
-    foreach (json_decode($row['choices'])->Choices as $choice) {
-        file_put_contents($stringFile, 'gettext("'.addslashes($choice)."\");\r\n", FILE_APPEND);
-    }
-}
-file_put_contents($stringFile, "\r\n?>", FILE_APPEND);
 
 $stringFile = $stringsDir.'/settings-countries.php';
 require '../src/ChurchCRM/data/Countries.php';

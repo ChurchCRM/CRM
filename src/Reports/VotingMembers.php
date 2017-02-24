@@ -15,6 +15,8 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 
 //Get the Fiscal Year ID out of the querystring
@@ -112,7 +114,7 @@ $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, 'Number of Voting Members:
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('VotingMembers'.date('Ymd').'.pdf', 'D');
+    $pdf->Output('VotingMembers'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

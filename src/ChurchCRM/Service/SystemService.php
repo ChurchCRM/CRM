@@ -89,7 +89,6 @@ class SystemService
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot);
         $restoreResult->UpgradeStatus = $this->upgradeDatabaseVersion();
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/update_config.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
         SystemConfig::setValue('sEnableExternalBackupTarget', '0');
@@ -115,7 +114,7 @@ class SystemService
         $backup->params = $params;
         $bNoErrors = true;
 
-        $backup->saveTo = "$backup->backupRoot/ChurchCRM-" . date('Ymd-Gis');
+        $backup->saveTo = "$backup->backupRoot/ChurchCRM-" . date(SystemConfig::getValue("sDateFilenameFormat"));
         $backup->SQLFile = "$backup->backupRoot/ChurchCRM-Database.sql";
 
         try {
@@ -320,7 +319,6 @@ class SystemService
         }
         // always rebuild the menu
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/update_config.sql', $connection);
 
         return 'success';
     }

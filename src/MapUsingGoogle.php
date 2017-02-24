@@ -51,7 +51,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
         <script type="text/javascript">
             var mapOptions = {
                center: new google.maps.LatLng(<?= SystemConfig::getValue('nChurchLatitude').', '.SystemConfig::getValue('nChurchLongitude') ?>),
-               zoom: 4,
+               zoom: 10,
                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
@@ -101,9 +101,12 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
         }
         $appendToQuery = mb_substr($appendToQuery, 0, strlen($appendToQuery) - 1);
         $appendToQuery .= ')';
+    } else {
+        //All Families
+        $appendToQuery = ' WHERE fam_DateDeactivated is  null';
     }
 
-    $sSQL = 'SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( '.SystemConfig::getValue('sDirRoleHead').')';
+    $sSQL = 'SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_Address2, fam_City, fam_State, fam_Country, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( '.SystemConfig::getValue('sDirRoleHead').')';
     $sSQL .= $appendToQuery;
     $rsFams = RunQuery($sSQL);
     $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));

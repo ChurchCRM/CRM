@@ -19,6 +19,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 // Security: User must have add records permission
 if (!$_SESSION['bAddRecords']) {
     Redirect('Menu.php');
@@ -127,7 +129,7 @@ require 'Include/Header.php';
 echo $sError;
 ?>
 <div class="box">
-    <form method="post">
+
 <?php
 if (count($_SESSION['aPeopleCart']) > 0) {
 
@@ -164,7 +166,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
         echo '<tr class="'.$sRowClass.'">';
         echo '<td align="center">'.$count++.'</td>';
-        echo "<td><img src='".$sRootPath.'/api/persons/'.$per_ID."/photo' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=".$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a></td>';
+        echo "<td><img src='".SystemURLs::getRootPath().'/api/persons/'.$per_ID."/thumbnail' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=".$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a></td>';
 
         echo '<td align="center">';
         if ($per_fam_ID == 0) {
@@ -179,8 +181,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     echo '</table>'; ?>
     </div>
     <div class="box">
-<table align="center" class="table table-responsive">
-	<tr>
+<form method="post">
+<div class="table-responsive">
+<table align="center" class="table table-hover">
+    <tr>
 		<td class="LabelColumn"><?= gettext('Add to Family') ?>:</td>
 		<td class="TextColumn">
 			<?php
@@ -312,7 +316,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 	</tr>
 
 </table>
-
+</div>
 <p align="center">
 <BR>
 <input type="submit" class="btn" name="Submit" value="<?= gettext('Add to Family') ?>">

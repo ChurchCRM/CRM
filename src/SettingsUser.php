@@ -87,7 +87,8 @@ $rsConfigs = RunQuery($sSQL);
 
 	<form method=post action=SettingsUser.php'>
 		<div class="callout callout-info"> <?= gettext('Set Permission True to give new users the ability to change their current value.<BR>'); ?></div>
-		<table class='table table-responsive'>
+        <div class="table-responsive">
+        <table class='table table-responsive'>
 		<tr>
 			<th> <?= gettext('Permission') ?></th>
 			<th><?= gettext('Variable name') ?></th>
@@ -163,13 +164,18 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 
 ?>
 <tr>
-	<td colspan='4' class='text-center'>
+	<td colspan='3' class='text-center'>
 		<input type=submit class='btn btn-primary' name=save value="<?=  gettext('Save Settings') ?> ">
 		<input type=submit class=btn name=cancel value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
 	</td>
 </tr>
 </table>
+        </div>
 </form>
+
+        </div>
+</div>
+
 <?php
 require 'Include/Footer.php';
 ?>

@@ -29,6 +29,7 @@ require 'Include/Functions.php';
 use ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\dto\SystemURLs;
 
 $financialService = new FinancialService();
 
@@ -77,7 +78,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?= $sRootPath ?>/FamilyList.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
                 <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -96,7 +97,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="<?= $sRootPath ?>/SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
                 <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -115,7 +116,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="fa fa-child"></i>
             </div>
-            <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
                 <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -134,7 +135,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="fa fa-gg"></i>
             </div>
-            <a href="<?= $sRootPath ?>/GroupList.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
                 <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -192,7 +193,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
      } ?></td>
                             <td><?= FormatDate($row['fam_DateEntered'], false) ?></td>
                         </tr>
-                        <?php 
+                        <?php
+
  } ?>
                         </tbody>
                     </table>
@@ -224,7 +226,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <td><?= $row['fam_Address1'].', '.$row['fam_City'].' '.$row['fam_Zip'] ?></td>
                                 <td><?= FormatDate($row['fam_DateLastEdited'], false) ?></td>
                             </tr>
-                        <?php 
+                        <?php
+
  } ?>
                         </tbody>
                     </table>
@@ -253,11 +256,12 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
      ?>
                         <li>
                             <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
-                            <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>
+                            <img data-name="<?= $row['per_FirstName'].' '.$row['per_LastName'] ?>" data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $row['per_ID'] ?>/thumbnail" alt="User Image" class="user-image initials-image" width="85" height="85" /><br/>
                             <?= $row['per_FirstName'].' '.mb_substr($row['per_LastName'], 0, 1) ?></a>
                             <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false) ?></span>
                         </li>
-                        <?php 
+                        <?php
+
  } ?>
                     </ul>
                     <!-- /.users-list -->
@@ -284,11 +288,12 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
      ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
-                                <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>
+                                <img data-name="<?= $row['per_FirstName'].' '.$row['per_LastName'] ?>" data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $row['per_ID'] ?>/thumbnail" alt="User Image" class="initials-image user-image" width="85" height="85" /><br/>
                                 <?= $row['per_FirstName'].' '.mb_substr($row['per_LastName'], 0, 1) ?></a>
                                 <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
                             </li>
-                        <?php 
+                        <?php
+
  } ?>
                     </ul>
                     <!-- /.users-list -->
@@ -329,7 +334,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     };
     var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
     var lineChart = new Chart(lineChartCanvas).Line(lineData,options);
-    
+
   });
 <?php
 

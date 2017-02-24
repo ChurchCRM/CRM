@@ -53,7 +53,7 @@ class PDF_Directory extends ChurchInfoReport
             if ($bDirUseTitlePage) {
                 $iPageNumber--;
             }
-            $this->Cell(0, 10, gettext('Page').' '.$iPageNumber.'    '.date(SystemConfig::getValue("sDateFormatShort").' g:i a', time()), 0, 0, 'C');  // in 2.6.0, create a new config for time formatting also
+            $this->Cell(0, 10, gettext('Page').' '.$iPageNumber.'    '.date(SystemConfig::getValue("sDateTimeFormat"), time()), 0, 0, 'C');  // in 2.6.0, create a new config for time formatting also
         }
     }
 

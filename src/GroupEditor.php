@@ -17,7 +17,7 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-use ChurchCRM\Group;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\GroupService;
@@ -71,19 +71,19 @@ require 'Include/Header.php';
     <form name="groupEditForm" id="groupEditForm">
       <div class="form-group">
         <div class="row">
-          <div class="col-xs-4">
+          <div class="col-sm-4">
             <label for="Name"><?= gettext('Name') ?>:</label>
             <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup->getName()), ENT_NOQUOTES, 'UTF-8') ?>">
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-4">
+          <div class="col-sm-4">
             <label for="Description"><?= gettext('Description') ?>:</label>
             <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup->getDescription()), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-sm-3">
             <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
             <select class="form-control input-small" name="GroupType">
               <option value="0"><?= gettext('Unassigned') ?></option>
@@ -101,7 +101,7 @@ require 'Include/Header.php';
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-sm-3">
             <?php
 // Show Role Clone fields only when adding new group
             if (strlen($iGroupID) < 1) {
@@ -111,7 +111,7 @@ require 'Include/Header.php';
               <?= gettext('Clone roles') ?>:
               <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
             </div>
-            <div class="col-xs-3" id="selectGroupIDDiv">
+            <div class="col-sm-3" id="selectGroupIDDiv">
               <?= gettext('from group') ?>:
               <select class="form-control input-small" name="seedGroupID" id="seedGroupID" >
                 <option value="0"><?php gettext('Select a group'); ?></option>
@@ -128,7 +128,7 @@ require 'Include/Header.php';
         </div>
         <br>
         <div class="row">
-          <div class="col-xs-6">
+          <div class="col-sm-6">
             <label for="UseGroupProps"><?= gettext('Group Specific Properties: ') ?></label>
 
             <?php
@@ -145,7 +145,7 @@ require 'Include/Header.php';
         </div>
         <br>
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-sm-3">
             <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="'.gettext('Save').'"' ?> Name="GroupSubmit">
           </div>
         </div>
@@ -163,8 +163,10 @@ require 'Include/Header.php';
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
       <strong></strong><?= gettext('Group role name changes are saved as soon as the box loses focus')?>
     </div>
-    <table class="table" id="groupRoleTable">
+      <div class="table-responsive">
+    <table class="table" class="table" id="groupRoleTable">
     </table>
+      </div>
     <label for="newRole"><?= gettext('New Role')?>: </label><input type="text" class="form-control" id="newRole" name="newRole">
     <br>
     <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext('Add New Role')?></button>
@@ -178,6 +180,6 @@ require 'Include/Header.php';
   var roleCount = groupRoleData.length;
   var groupID =<?= $iGroupID ?>;
 </script>
-<script src="<?= $sRootPath ?>/skin/js/GroupEditor.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupEditor.js"></script>
 
 <?php require 'Include/Footer.php' ?>
