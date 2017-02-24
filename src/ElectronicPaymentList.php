@@ -300,6 +300,7 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
     ?>
 <input type="button" class="btn" id="CreatePaymentMethodsForChecked" value="Store Private Data at Vanco" onclick="CreatePaymentMethodsForChecked();" />
 <?php
+
 } ?>
 <input type="button" class="btn btn-warning" id="DeleteChecked" value="Delete" onclick="DeleteChecked();" />
 <input type="button" class="btn" id="DeleteChecked" value="Clear Account Numbers" onclick="ClearAccountsChecked();" />
