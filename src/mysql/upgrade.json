@@ -93,14 +93,17 @@
         "scripts": [
             "/mysql/upgrade/2.5.0.sql"
         ],
-        "dbVersion":"2.5.0"
+        "dbVersion": "2.5.0"
     },
     "current": {
         "versions": [
-          "2.5.0",
-          "2.5.1"
+            "2.5.0",
+            "2.5.1",
+            "2.5.2"
         ],
-        "scripts":[],
-        "dbVersion": "2.5.2"
+        "scripts": [
+            "/mysql/upgrade/2.6.0.sql"
+        ],
+        "dbVersion": "2.6.0"
     }
 }

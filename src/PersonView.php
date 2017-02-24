@@ -21,6 +21,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 
@@ -182,8 +183,23 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img src="<?= $sRootPath.'/api/persons/'.$iPersonID.'/photo' ?>" alt="" class="profile-user-img img-responsive img-circle"/>
-
+        <div class="image-container">
+            <img  data-name="<?= $person->getFullName()?>" data-src = "<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
+            <?php if ($bOkToEdit): ?>
+                <div class="after">
+                <div class="buttons">
+                    <a href="#" class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
+                        <i class="fa fa-camera"></i>
+                    </a>&nbsp;
+                    <?php if ($person->isPhotoLocal()): ?>
+                        <a href="#" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                    <?php endif; ?>
+                </div>
+                </div>
+            <?php endif; ?>
+        </div>
         <h3 class="profile-username text-center">
           <?php if ($person->isMale()) {
     ?>
@@ -335,32 +351,18 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="box box-primary box-body">
-      <?php if ($bOkToEdit) {
-              ?>
-        <a href="#" class="btn btn-app" data-toggle="modal" data-target="#upload-image"><i class="fa fa-camera"></i><?= gettext('Upload Photo') ?></a>
-        <?php if ($person->getUploadedPhoto() !== '') {
-                  ?>
-          <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i class="fa fa-remove"></i> <?= gettext('Delete Photo') ?></a>
-        <?php
-
-              } ?>
-      <?php
-
-          } ?>
-      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext('Printable Page') ?></a>
-      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext('Add to Cart') ?></a>
+      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
+      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
       <?php if ($_SESSION['bNotes']) {
               ?>
-        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext('Edit "Why Came" Notes') ?></a>
-        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext('Add a Note') ?></a>
-      <?php
-
+        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
+        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+      <?php 
           }
     if ($_SESSION['bDeleteRecords']) {
         ?>
-        <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext('Delete this Record') ?></a>
-      <?php
-
+        <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
+      <?php 
     }
     if ($_SESSION['bAdmin']) {
         if (!$person->isUser()) {
@@ -375,7 +377,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
         }
     } ?>
-      <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext('List Members') ?></span></a>
+      <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
     </div>
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
@@ -481,7 +483,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             $tmpPersonId = $familyMember->getId(); ?>
               <tr>
                 <td>
-                  <img src="<?= $familyMember->getPhoto() ?>" width="40" height="40" class="img-circle img-bordered-sm"/> <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
+                 
+                 <img style="width:40px; height:40px;display:inline-block" data-name="<?= $familyMember->getFullName()?>" data-src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
+                  <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
+                  
+
                 </td>
                 <td class="text-center">
                   <?= $familyMember->getFamilyRoleName() ?>
@@ -655,106 +661,82 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         <div role="tab-pane fade" class="tab-pane" id="properties">
           <div class="main-box clearfix">
             <div class="main-box-body clearfix">
-              <?php
-              $sAssignedProperties = ',';
-
-              //Was anything returned?
-              if (mysqli_num_rows($rsAssignedProperties) == 0) {
-                  ?>
+            <?php
+            $sAssignedProperties = ','; ?>
+            <?php if (mysqli_num_rows($rsAssignedProperties) == 0): ?>
                 <br>
                 <div class="alert alert-warning">
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
                 </div>
-              <?php
+            <?php else: ?>
+                <table class="table table-condensed dt-responsive" id="assigned-properties-table" width="100%">
+                    <thead>
+                        <tr class="TableHeader">
+                            <th><?= gettext('Type') ?></th>;
+                            <th><?= gettext('Name') ?></th>;
+                            <th><?= gettext('Value') ?></th>;
+                            <?php if ($bOkToEdit): ?>
+                                <th><?= gettext('Edit') ?></th>;
+                                <th><?= gettext('Remove') ?></th>';
+                            <?php endif; ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        //Loop through the rows
+                        while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                            $pro_Prompt = '';
+                            $r2p_Value = '';
+                            extract($aRow);
 
-              } else {
-                  //Yes, start the table
-                echo '<table width="100%" cellpadding="4" cellspacing="0">';
-                  echo '<tr class="TableHeader">';
-                  echo '<td width="10%" valign="top"><b>'.gettext('Type').'</b>';
-                  echo '<td width="15%" valign="top"><b>'.gettext('Name').'</b>';
-                  echo '<td valign="top"><b>'.gettext('Value').'</b></td>';
+                            echo '<tr>';
+                            echo '<td>'.$prt_Name.'</td>';
+                            echo '<td>'.$pro_Name.'</td>';
+                            echo '<td>'.$r2p_Value.'</td>';
+                            if ($bOkToEdit) {
+                                if (strlen($pro_Prompt) > 0) {
+                                    echo '<td><a href="PropertyAssign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Edit').'</a></td>';
+                                } else {
+                                    echo '<td>&nbsp;</td>';
+                                }
+                                echo '<td><a href="PropertyUnassign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Remove').'</a></td>';
+                            }
+                            echo '</tr>';
+                            
+                            $sAssignedProperties .= $pro_ID.',';
+                        } ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
 
-                  if ($bOkToEdit) {
-                      echo '<td valign="top"><b>'.gettext('Edit').'</b></td>';
-                      echo '<td valign="top"><b>'.gettext('Remove').'</b></td>';
-                  }
-                  echo '</tr>';
-
-                  $last_pro_prt_ID = '';
-                  $bIsFirst = true;
-
-                //Loop through the rows
-                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                    $pro_Prompt = '';
-                    $r2p_Value = '';
-
-                    extract($aRow);
-
-                    if ($pro_prt_ID != $last_pro_prt_ID) {
-                        echo '<tr class="';
-                        if ($bIsFirst) {
-                            echo 'RowColorB';
-                        } else {
-                            echo 'RowColorC';
-                        }
-                        echo '"><td><b>'.$prt_Name.'</b></td>';
-
-                        $bIsFirst = false;
-                        $last_pro_prt_ID = $pro_prt_ID;
-                        $sRowClass = 'RowColorB';
-                    } else {
-                        echo '<tr class="'.$sRowClass.'">';
-                        echo '<td valign="top">&nbsp;</td>';
-                    }
-
-                    echo '<td valign="center">'.$pro_Name.'&nbsp;</td>';
-                    echo '<td valign="center">'.$r2p_Value.'&nbsp;</td>';
-
-                    if ($bOkToEdit) {
-                        if (strlen($pro_Prompt) > 0) {
-                            echo '<td valign="center"><a href="PropertyAssign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Edit').'</a></td>';
-                        } else {
-                            echo '<td>&nbsp;</td>';
-                        }
-                        echo '<td valign="center"><a href="PropertyUnassign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Remove').'</a></td>';
-                    }
-                    echo '</tr>';
-
-                  //Alternate the row style
-                  $sRowClass = AlternateRowStyle($sRowClass);
-
-                    $sAssignedProperties .= $pro_ID.',';
-                }
-                  echo '</table>';
-              } ?>
-
-              <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) != 0) {
-                  ?>
+              <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) != 0): ?>
                 <div class="alert alert-info">
                   <div>
                     <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
 
-                    <p><br></p>
-
                     <form method="post" action="PropertyAssign.php?PersonID=<?= $iPersonID ?>">
-                      <select name="PropertyID">
-                        <?php
-                        while ($aRow = mysqli_fetch_array($rsProperties)) {
-                            extract($aRow);
-                          //If the property doesn't already exist for this Person, write the <OPTION> tag
-                          if (strlen(strstr($sAssignedProperties, ','.$pro_ID.',')) == 0) {
-                              echo '<option value="'.$pro_ID.'">'.$pro_Name.'</option>';
-                          }
-                        } ?>
-                      </select>
-                      <input type="submit" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-7">
+                                <select name="PropertyID" id="input-person-properties" class="form-control select2"
+                                    style="width:100%" data-placeholder="Select ...">
+                                <?php
+                                while ($aRow = mysqli_fetch_array($rsProperties)) {
+                                    extract($aRow);
+                                    //If the property doesn't already exist for this Person, write the <OPTION> tag
+                                    if (strlen(strstr($sAssignedProperties, ','.$pro_ID.',')) == 0) {
+                                        echo '<option value="'.$pro_ID.'">'.$pro_Name.'</option>';
+                                    }
+                                } ?>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-7">
+                                <input type="submit" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
+                            </div>
+                        </div>
                     </form>
                   </div>
                 </div>
-              <?php
-
-              } ?>
+              <?php endif; ?>
             </div>
           </div>
         </div>
@@ -778,14 +760,17 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               <?php
 
               } else {
-                  echo '<table width="100%" cellpadding="4" cellspacing="0">';
+                  echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
+                  echo '<thead>';
                   echo '<tr class="TableHeader">';
-                  echo '<td>'.gettext('Name').'</td>';
-                  echo '<td>'.gettext('Description').'</td>';
+                  echo '<th>'.gettext('Name').'</th>';
+                  echo '<th>'.gettext('Description').'</th>';
                   if ($_SESSION['bEditRecords']) {
-                      echo '<td width="10%">'.gettext('Remove').'</td>';
+                      echo '<th>'.gettext('Remove').'</th>';
                   }
                   echo '</tr>';
+                  echo '</thead>';
+                  echo '<tbody>';
 
                 // Loop through the rows
                 while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
@@ -807,35 +792,38 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   // NOTE: this method is crude.  Need to replace this with use of an array.
                   $sAssignedVolunteerOpps .= $vol_ID.',';
                 }
+                  echo '</tbody>';
                   echo '</table>';
               } ?>
 
-              <?php if ($_SESSION['bEditRecords']) {
-                  ?>
+                <?php if ($_SESSION['bEditRecords'] && $rsVolunteerOpps->num_rows): ?>
                 <div class="alert alert-info">
-                  <div>
-                    <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>
-
-                    <p><br></p>
-
-                    <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
-                      <select name="VolunteerOpportunityIDs[]" , size=6, multiple>
-                        <?php
-                        while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
-                            extract($aRow);
-                          //If the property doesn't already exist for this Person, write the <OPTION> tag
-                          if (strlen(strstr($sAssignedVolunteerOpps, ','.$vol_ID.',')) == 0) {
-                              echo '<option value="'.$vol_ID.'">'.$vol_Name.'</option>';
-                          }
-                        } ?>
-                      </select>
-                      <input type="submit" value="<?= gettext('Assign') ?>" name="VolunteerOpportunityAssign" class="btn-primary">
-                    </form>
-                  </div>
+                    <div>
+                        <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>
+                        
+                        <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-md-7">
+                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple 
+                                    class="form-control select2" style="width:100%" data-placeholder="Select ...">
+                                    <?php
+                                    while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
+                                        extract($aRow);
+                                      //If the property doesn't already exist for this Person, write the <OPTION> tag
+                                      if (strlen(strstr($sAssignedVolunteerOpps, ','.$vol_ID.',')) == 0) {
+                                          echo '<option value="'.$vol_ID.'">'.$vol_Name.'</option>';
+                                      }
+                                    } ?>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-12 col-md-7">
+                                <input type="submit" value="<?= gettext('Assign') ?>" name="VolunteerOpportunityAssign" class="btn btn-primary">
+                            </div>
+                        </div>
+                        </form>
+                    </div>
                 </div>
-              <?php
-
-              } ?>
+                <?php endif; ?>
             </div>
           </div>
         </div>
@@ -851,7 +839,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
             <!-- note item -->
             <?php foreach ($timelineService->getNotesForPerson($iPersonID) as $item) {
-                  ?>
+                                        ?>
               <li>
                 <!-- timeline icon -->
                 <i class="fa <?= $item['style'] ?>"></i>
@@ -861,16 +849,16 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) {
-                      ?>
+                                            ?>
                       <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                     <?php
 
-                  } else {
-                      ?>
+                                        } else {
+                                            ?>
                       <?= $item['header'] ?>
                     <?php
 
-                  } ?>
+                                        } ?>
                   </h3>
 
                   <div class="timeline-body">
@@ -878,33 +866,33 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   </div>
 
                   <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
-                      ?>
+                                            ?>
                     <div class="timeline-footer">
                       <?php if ($item['editLink'] != '') {
-                          ?>
+                                                ?>
                         <a href="<?= $item['editLink'] ?>">
                           <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                         </a>
                       <?php
 
-                      }
-                      if ($item['deleteLink'] != '') {
-                          ?>
+                                            }
+                                            if ($item['deleteLink'] != '') {
+                                                ?>
                         <a href="<?= $item['deleteLink'] ?>">
                           <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </a>
                       <?php
 
-                      } ?>
+                                            } ?>
                     </div>
                   <?php
 
-                  } ?>
+                                        } ?>
                 </div>
               </li>
             <?php
 
-              } ?>
+                                    } ?>
             <!-- END timeline item -->
           </ul>
         </div>
@@ -913,26 +901,10 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label" aria-hidden="true">
-  <div class="modal-dialog">
-    <form action="ImageUpload.php?PersonID=<?= $iPersonID ?>" method="post" enctype="multipart/form-data" id="UploadForm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="upload-Image-label"><?= gettext('Upload Photo') ?></h4>
-        </div>
-        <div class="modal-body">
-          <input type="file" name="file" size="50"/> <br/>
-          <?= gettext('Max Photo size') ?>: <?= ini_get('upload_max_filesize') ?>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
-          <input type="submit" class="btn btn-primary" value="<?= gettext('Upload Image') ?>">
-        </div>
-      </div>
-    </form>
-  </div>
+<div id="photoUploader">
+  
 </div>
+
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -948,12 +920,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Cancel') ?></button>
-        <a href="ImageDelete.php?PersonID=<?= $iPersonID ?>" class="btn btn-danger danger"><?= gettext('Delete') ?></a>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+        <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
       </div>
     </div>
   </div>
 </div>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
+<link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
 <script>
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
@@ -977,8 +951,52 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
       location.reload();
     });
   }
+
+  $("#deletePhoto").click (function () {
+    $.ajax({
+    type: "POST",
+    url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
+    encode: true,
+    dataType: 'json',
+    data: { 
+      "_METHOD": "DELETE"
+    }
+    }).done(function(data) {
+      location.reload();
+    });
+  });
+
+  window.CRM.photoUploader =  $("#photoUploader").PhotoUploader({
+    url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
+    maxPhotoSize: window.CRM.maxUploadSize,
+    photoHeight: 400,
+    photoWidth: 400,
+    done: function(e) {
+      window.location.reload();
+    }
+  });
+
+  $("#uploadImageButton").click(function(){
+    window.CRM.photoUploader.show();
+  });
+  
+
+    $(document).ready(function() {
+        $("#input-volunteer-opportunities").select2();
+        $("#input-person-properties").select2();
+        
+        var options = {
+            "language": {
+                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+            },
+            "responsive": true
+        };
+        $("#assigned-volunteer-opps-table").DataTable(options);
+        $("#assigned-properties-table").DataTable(options);
+    });
+  
+  
 </script>
-<script src="<?= $sRootPath ?>/skin/js/ShowAge.js"></script>
 
 <?php
 

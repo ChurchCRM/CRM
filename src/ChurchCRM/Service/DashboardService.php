@@ -56,21 +56,21 @@ class DashboardService
         while ($row = mysqli_fetch_array($rsGenderAndRole)) {
             switch ($row['per_Gender']) {
         case 0:
-          $gender = 'Unknown';
+          $gender = gettext('Unknown');
           break;
         case 1:
-          $gender = 'Male';
+          $gender = gettext('Male');
           break;
         case 2:
-          $gender = 'Female';
+          $gender = gettext('Female');
           break;
         default:
-          $gender = 'Other';
+          $gender = gettext('Other');
       }
 
             switch ($row['per_fmr_ID']) {
         case 0:
-          $role = 'Unknown';
+          $role = gettext('Unknown');
           break;
         case 1:
           $role = 'Head of Household';
@@ -82,7 +82,7 @@ class DashboardService
           $role = 'Child';
           break;
         default:
-          $role = 'Other';
+          $role = gettext('Other');
       }
 
             $stats["$role - $gender"] = $row['numb'];

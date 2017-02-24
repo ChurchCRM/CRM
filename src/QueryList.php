@@ -27,22 +27,39 @@ $aFinanceQueries = explode(',', $aFinanceQueries);
 
 require 'Include/Header.php';
 
-if ($_SESSION['bAdmin']) {
-    echo '<p align="center"><a href="QuerySQL.php">'.gettext('Run a Free-Text Query').'</a></p>';
-}
-
-while ($aRow = mysqli_fetch_array($rsQueries)) {
-    extract($aRow);
-
-    // Filter out finance-related queries if the user doesn't have finance permissions
-    if ($_SESSION['bFinance'] || !in_array($qry_ID, $aFinanceQueries)) {
-        // Display the query name and description
-        echo '<p>';
-        echo '<a href="QueryView.php?QueryID='.$qry_ID.'">'.gettext($qry_Name).'</a>';
-        echo '<br>';
-        echo gettext($qry_Description);
-        echo '</p>';
-    }
-}
+?>
+<div class="box box-primary">
+    <div class="box-body">
+        <p class="text-right">
+            <?php
+                if ($_SESSION['bAdmin']) {
+                    echo '<a href="QuerySQL.php" class="text-red">'.gettext('Run a Free-Text Query').'</a>';
+                }
+            ?>
+        </p>
+        
+        <ul>
+            <?php while ($aRow = mysqli_fetch_array($rsQueries)): ?>
+            <li>
+                <p>
+                <?php
+                    extract($aRow);
+                    
+                    // Filter out finance-related queries if the user doesn't have finance permissions
+                    if ($_SESSION['bFinance'] || !in_array($qry_ID, $aFinanceQueries)) {
+                        // Display the query name and description
+                        echo '<a href="QueryView.php?QueryID='.$qry_ID.'">'.gettext($qry_Name).'</a>:';
+                        echo '<br>';
+                        echo gettext($qry_Description);
+                    }
+                ?>
+                </p>
+            </li>
+            <?php endwhile; ?>
+        </ul>
+    </div>
+    
+</div>
+<?php
 
 require 'Include/Footer.php';

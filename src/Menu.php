@@ -30,6 +30,7 @@ use ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 $financialService = new FinancialService();
 $dashboardService = new DashboardService();
@@ -74,7 +75,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>
             </div>
-            <a href="<?= $sRootPath ?>/FamilyList.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
                 <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -93,7 +94,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="<?= $sRootPath ?>/SelectList.php?mode=person" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
                 <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -112,7 +113,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="fa fa-child"></i>
             </div>
-            <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
                 <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -131,7 +132,7 @@ require 'Include/Header.php';
             <div class="icon">
                 <i class="fa fa-gg"></i>
             </div>
-            <a href="<?= $sRootPath ?>/GroupList.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
                 <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -225,6 +226,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <td><?= $family->getAddress() ?></td>
                                 <td><?= FormatDate($family->getDateLastEdited(),false) ?></td>
                             </tr>
+
                             <?php
 
                         }

@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "2.5.2",
+    "version": "2.6.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -18,22 +18,25 @@
     },
     "homepage": "http://www.churchcrm.io",
     "devDependencies": {
-        "grunt": "~0.4.1",
-        "grunt-curl": "~2.2.0",
-        "grunt-contrib-concat": "^1.0.1",
-        "grunt-contrib-clean": "^1.0.0",
-        "grunt-contrib-copy": "^1.0.0",
-        "grunt-contrib-compress": "^1.0.3",
-        "grunt-contrib-sass": "^1.0.0",
-        "grunt-contrib-rename": "^0.0.3",
+        "grunt": "1.0.1",
+        "grunt-curl": "2.2.0",
+        "grunt-contrib-concat": "1.0.1",
+        "grunt-contrib-clean": "1.0.0",
+        "grunt-contrib-copy": "1.0.0",
+        "grunt-contrib-compress": "1.4.1",
+        "grunt-contrib-sass": "1.0.0",
+        "grunt-contrib-rename": "0.0.3",
         "node-sha1": "1.0.1",
-        "grunt-poeditor-ab": "^0.1.9"
+        "grunt-poeditor-ab": "0.1.9"
     },
     "dependencies": {
         "admin-lte": "2.3.7",
+        "bootbox": "4.4.0",
         "ionicons": "2.0.1",
         "font-awesome": "4.7.0",
-        "fullcalendar": "3.0.1"
+        "fullcalendar": "3.0.1",
+        "jquery-photo-uploader": "1.0.9",
+        "initial-js": "0.3.4"
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",

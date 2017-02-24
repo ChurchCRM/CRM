@@ -5,10 +5,10 @@ use ChurchCRM\dto\SystemURLs;
 $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
-  <form action="<?= $sRootPath ?>/external/register/confirm" method="post">
+  <form action="<?= SystemURLs::getRootPath() ?>/external/register/confirm" method="post">
     <div class="register-box" style="width: 600px;">
       <div class="register-logo">
-        <a href="<?= $sRootPath ?>/"><b>Church</b>CRM</a>
+        <a href="<?= SystemURLs::getRootPath() ?>/"><b>Church</b>CRM</a>
       </div>
 
       <div class="register-box-body">
@@ -27,7 +27,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
               <div class="box">
                 <div class="box-header with-border">
                   <h4 class="box-title">
-                    Family Member #<?= $x ?>
+                    <?= gettext ("Family Member") . " #". $x ?>
                   </h4>
                 </div>
                 <div class="box-body">

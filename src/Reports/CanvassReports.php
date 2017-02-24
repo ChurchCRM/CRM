@@ -46,7 +46,7 @@ function CanvassProgressReport($iFYID)
     $curY = 10;
 
     $pdf->SetFont('Times', '', 24);
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Progress Report').' '.date('Y-m-d'));
+    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Progress Report').' '.date(SystemConfig::getValue("sDateFormatLong")));
     $pdf->SetFont('Times', '', 14);
 
     $curY += 10;
@@ -132,7 +132,7 @@ function CanvassProgressReport($iFYID)
     $percentStr = sprintf('%.0f%%', ($totalDone / $totalToDo) * 100);
     $pdf->WriteAt($percentX, $curY, $percentStr);
 
-    $pdf->Output('CanvassProgress'.date('Ymd').'.pdf', 'D');
+    $pdf->Output('CanvassProgress'.date(SystemConfig::getValue("sDateFormatLong")).'.pdf', 'D');
 }
 
 function CanvassBriefingSheets($iFYID)
@@ -308,7 +308,7 @@ function CanvassBriefingSheets($iFYID)
         $pdf->AddPage();
     }
 
-    $pdf->Output('CanvassBriefing'.date('Ymd').'.pdf', 'D');
+    $pdf->Output('CanvassBriefing'.date(SystemConfig::getValue("sDateFormatLong")).'.pdf', 'D');
 }
 
 function CanvassSummaryReport($iFYID)
@@ -322,7 +322,7 @@ function CanvassSummaryReport($iFYID)
 
     $pdf->SetFont('Times', '', 24);
 
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Summary Report').' '.date('Y-m-d'));
+    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Summary Report').' '.date(SystemConfig::getValue("sDateFormatLong")));
 
     $pdf->SetFont('Times', '', 14);
 
@@ -363,7 +363,7 @@ function CanvassSummaryReport($iFYID)
         mysqli_data_seek($rsCanvassData, 0);
     }
 
-    $pdf->Output('CanvassSummary'.date('Ymd').'.pdf', 'D');
+    $pdf->Output('CanvassSummary'.date(SystemConfig::getValue("sDateFormatLong")).'.pdf', 'D');
 }
 
 function CanvassNotInterestedReport($iFYID)
@@ -376,7 +376,7 @@ function CanvassNotInterestedReport($iFYID)
     $curY = 10;
 
     $pdf->SetFont('Times', '', 24);
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Not Interested Report').' '.date('Y-m-d'));
+    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Not Interested Report').' '.date(SystemConfig::getValue("sDateFormatLong")));
     $pdf->SetFont('Times', '', 14);
 
     $curY += 10;
@@ -406,7 +406,7 @@ function CanvassNotInterestedReport($iFYID)
     }
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-    $pdf->Output('CanvassNotInterested'.date('Ymd').'.pdf', 'D');
+    $pdf->Output('CanvassNotInterested'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 }
 
 if ($sWhichReport == 'Briefing') {

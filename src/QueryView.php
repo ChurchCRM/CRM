@@ -53,6 +53,7 @@ if (isset($_POST['Submit']) || mysqli_num_rows($rsParameters) == 0) {
     //Any errors?
     if (count($aErrorText) == 0) {
         //No errors; process the SQL, run the query, and display the results
+        DisplayQueryInfo();
         ProcessSQL();
         DoQuery();
     } else {
@@ -190,40 +191,38 @@ function DoQuery()
     global $rsQueryResults;
     global $qry_SQL;
     global $iQueryID;
+    global $qry_Name;
+    global $qry_Count;
 
     //Run the SQL
-    $rsQueryResults = RunQuery($qry_SQL);
-
-    //Set the first row style
-    $sRowClass = 'RowColorA';
-
-    //Check for a count display
-    DisplayRecordCount();
-
-    //Start the table and the header row
-    echo '<table align="center" cellpadding="5" cellspacing="0">';
-    echo '<tr class="TableHeader">';
-
-    //Loop through the fields and write the header row
-    for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-        //If this field is called "AddToCart", don't display this field...
-        $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
-        if ($fieldInfo->name != 'AddToCart') {
-            echo '<td>'.$fieldInfo->name.'</td>';
-        }
-    }
-
-    //Close the header row
-    echo '</tr>';
-
+    $rsQueryResults = RunQuery($qry_SQL); ?>
+<div class="box box-primary">
+    
+    <div class="box-body">
+        <p class="text-right">
+            <?= $qry_Count ? mysqli_num_rows($rsQueryResults).gettext(' record(s) returned') : ''; ?>
+        </p>
+        
+        <table class="table table-striped">
+            <thead>
+                <?php
+                    //Loop through the fields and write the header row
+                    for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
+                        //If this field is called "AddToCart", don't display this field...
+                        $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
+                        if ($fieldInfo->name != 'AddToCart') {
+                            echo '<th>'.$fieldInfo->name.'</th>';
+                        }
+                    } ?>
+            </thead>
+            <tbody>
+<?php
     $aHiddenFormField = [];
 
-    //Loop through the recordset
     while ($aRow = mysqli_fetch_array($rsQueryResults)) {
         //Alternate the background color of the row
         $sRowClass = AlternateRowStyle($sRowClass);
 
-        //Begin the row
         echo '<tr class="'.$sRowClass.'">';
 
         //Loop through the fields and write each one
@@ -236,145 +235,162 @@ function DoQuery()
             //...otherwise just render the field
             else {
                 //Write the actual value of this row
-                echo '<td>'.$aRow[$iCount].'&nbsp;</td>';
+                echo '<td>'.$aRow[$iCount].'</td>';
             }
         }
 
-        //Close the row
         echo '</tr>';
-    }
+    } ?>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="box-footer">
+        <p>
+        <?php if (count($aHiddenFormField)): ?>
+            <form method="post" action="CartView.php">
+            <div class="btn-group">
+                <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
+                <input type="submit" class="btn btn-primary btn-sm" name="AddToCartSubmit" value="<?= gettext('Add To Cart') ?>">
+                <input type="submit" class="btn btn-warning btn-sm" name="AndToCartSubmit" value="<?= gettext('Intersect With Cart') ?>">
+                <input type="submit" class="btn btn-danger btn-sm" name="NotToCartSubmit" value="<?= gettext('Remove From Cart') ?>">
+            </div>
+            </form>
+        <?php endif; ?>
+        </p>
+        
+        <p class="text-right">
+            <?= '<a href="QueryView.php?QueryID='.$iQueryID.'">'.gettext('Run Query Again').'</a>'; ?>
+        </p>
+    </div>
 
-    //Close the table and allow a link to run the query again
-    echo '</table>';
-    echo '<p align="center">';
+</div>
 
-    if (count($aHiddenFormField) > 0) {
-        ?>
-		<form method="post" action="CartView.php"><p align="center">
-			<input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
-			<input type="submit" class="btn" name="AddToCartSubmit" value="<?= gettext('Add Results To Cart') ?>">&nbsp;
-			<input type="submit" class="btn" name="AndToCartSubmit" value="<?= gettext('Intersect Results With Cart') ?>">&nbsp;
-			<input type="submit" class="btn" name="NotToCartSubmit" value="<?= gettext('Remove Results From Cart') ?>">
-		</p></form>
-		<?php
+<div class="box box-info">
+    <div class="box-header with-border">
+        <div class="box-title">Query</div>
+    </div>
+    <div class="box-body">
+        <code><?= str_replace(chr(13), '<br>', htmlspecialchars($qry_SQL)); ?></code>
+    </div>
+</div>
+<?php
 
-    }
-
-    echo '<p align="center"><a href="QueryView.php?QueryID='.$iQueryID.'">'.gettext('Run Query Again').'</a></p>';
-    echo '<p align="center"><a href="QueryList.php">'.gettext('Return to Query Menu').'</a></p>';
-
-    //Print the SQL to make debugging easier
-    echo '<br><p class="ShadedBox"><span class="SmallText">'.str_replace(chr(13), '<br>', htmlspecialchars($qry_SQL)).'</span></p>';
 }
+
 
 //Displays the name and description of the query
 function DisplayQueryInfo()
 {
-    global $rsSQL;
     global $qry_Name;
-    global $qry_Description;
+    global $qry_Description; ?>
+<div class="box box-info">
+    <div class="box-body">
+        <p><strong><?= gettext($qry_Name); ?></strong></p>
+        <p><?= gettext($qry_Description); ?></p>
+    </div>
+</div>
+<?php
 
-    //Display the information about this query
-    echo '<p align="center">';
-    echo '<b>'.gettext($qry_Name).'</b><br>'.gettext($qry_Description);
-    echo '</p>';
+}
+
+
+function getQueryFormInput($queryParameters)
+{
+    global $aErrorText;
+    
+    extract($queryParameters);
+    
+    $input = '';
+    $label = '<label>' . gettext($qrp_Name) . '</label>';
+    $helpMsg = '<div>' . gettext($qrp_Description) . '</div>';
+
+    switch ($qrp_Type) {
+        //Standard INPUT box
+        case 0:
+            $input = '<input size="'.$qrp_InputBoxSize.'" name="'.$qrp_Alias.'" type="text" value="'.$qrp_Default.'" class="form-control">';
+            break;
+
+        //SELECT box with OPTION tags supplied in the queryparameteroptions_qpo table
+        case 1:
+            //Get the query parameter options for this parameter
+            $sSQL = 'SELECT * FROM queryparameteroptions_qpo WHERE qpo_qrp_ID = '.$qrp_ID;
+            $rsParameterOptions = RunQuery($sSQL);
+
+            $input = '<select name="'.$qrp_Alias.'" class="form-control">';
+            $input .= '<option disabled selected value> -- ' . gettext("select an option"). ' -- </option>';
+            
+            //Loop through the parameter options
+            while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
+                extract($ThisRow);
+                $input .= '<option value="'.$qpo_Value.'">'.gettext($qpo_Display).'</option>';
+            }
+
+            $input .= '</select>';
+            break;
+
+        //SELECT box with OPTION tags provided via a SQL query
+        case 2:
+            //Run the SQL to get the options
+            $rsParameterOptions = RunQuery($qrp_OptionSQL);
+
+            $input .= '<select name="'.$qrp_Alias.'" class="form-control">';
+            $input .= '<option disabled selected value> -- select an option -- </option>';
+
+            while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
+                extract($ThisRow);
+                $input .= '<option value="'.$Value.'">'.$Display.'</option>';
+            }
+
+            $input .= '</select>';
+            break;
+    }
+    
+    $helpBlock = '<div class="help-block">' . $helpMsg . '</div>';
+    
+    if ($aErrorText[$qrp_Alias]) {
+        $errorMsg = '<div>' . $aErrorText[$qrp_Alias] . '</div>';
+        $helpBlock = '<div class="help-block">' . $helpMsg . $errorMsg . '</div>';
+        return '<div class="form-group has-error">' . $label . $input . $helpBlock . '</div>';
+    }
+    
+    return '<div class="form-group">' . $label . $input . $helpBlock . '</div>';
 }
 
 //Displays a form to enter values for each parameter, creating INPUT boxes and SELECT drop-downs as necessary
 function DisplayParameterForm()
 {
     global $rsParameters;
-    global $iQueryID;
-    global $aErrorText;
-    global $cnInfoCentral;
-
-    //Start the form and the table
-    echo '<form method="post" action="QueryView.php?QueryID='.$iQueryID.'">';
-    echo '<table align="center" cellpadding="5" cellspacing="1" border="0">';
-
-    //Loop through the parameters and display an entry box for each one
-    if (mysqli_num_rows($rsParameters)) {
-        mysqli_data_seek($rsParameters, 0);
-    }
+    global $iQueryID; ?>
+<div class="row">
+    <div class="col-md-8">
+        
+        <div class="box box-primary">
+            
+            <div class="box-body">
+            
+                <form method="post" action="QueryView.php?QueryID=<?= $iQueryID ?>">
+<?php
+//Loop through the parameters and display an entry box for each one
+if (mysqli_num_rows($rsParameters)) {
+    mysqli_data_seek($rsParameters, 0);
+}
     while ($aRow = mysqli_fetch_array($rsParameters)) {
-        extract($aRow);
-
-        //Begin the row, giving the name of the parameter
-        echo '<tr>';
-        echo '<td class="LabelColumn">'.gettext($qrp_Name).':</td>';
-
-        //Determine the type of parameter we're dealing with
-        switch ($qrp_Type) {
-            //Standard INPUT box
-            case 0:
-                //Begin the table cell, disoplay the INPUT tag, close the table cell
-                echo '<td class="TextColumn">';
-                echo '<input size="'.$qrp_InputBoxSize.'" name="'.$qrp_Alias.'" type="text" value="'.$qrp_Default.'">';
-                echo '</td>';
-                break;
-
-            //SELECT box with OPTION tags supplied in the queryparameteroptions_qpo table
-            case 1:
-                //Get the query parameter options for this parameter
-                $sSQL = 'SELECT * FROM queryparameteroptions_qpo WHERE qpo_qrp_ID = '.$qrp_ID;
-                $rsParameterOptions = RunQuery($sSQL);
-
-                //Begin the table cell and the SELECT tag
-                echo '<td class="TextColumn">';
-                echo '<select name="'.$qrp_Alias.'">';
-
-                //Loop through the parameter options
-                while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
-                    extract($ThisRow);
-
-                    //Display the OPTION tag
-                    echo '<option value="'.$qpo_Value.'">'.gettext($qpo_Display).'</option>';
-                }
-
-                //Close the SELECT tag and table cell
-                echo '</select>';
-                echo '</td>';
-                break;
-
-            //SELECT box with OPTION tags provided via a SQL query
-            case 2:
-                //Run the SQL to get the options
-                $rsParameterOptions = RunQuery($qrp_OptionSQL);
-
-                echo '<td class="TextColumn">';
-                echo '<select name="'.$qrp_Alias.'">';
-
-                while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
-                    extract($ThisRow);
-                    echo '<option value="'.$Value.'">'.$Display.'</option>';
-                }
-
-                //Close the SELECT tag and table cell
-                echo '</select>';
-                echo '</td>';
-                break;
-        }
-
-        //Display the query description and close the row
-        echo '<td  valign="top" class="SmallText">'.gettext($qrp_Description).'</td>';
-        echo '</tr>';
-
-        //If we are re-rendering this form due to a validation error, display the error
-        if (isset($aErrorText[$qrp_Alias])) {
-            echo '<tr><td colspan="3" style="color: red;">'.$aErrorText[$qrp_Alias].'</td></tr>';
-        }
+        echo getQueryFormInput($aRow);
     } ?>
-
-	<td colspan="3" align="center">
-		<br>
-		<input class="btn" type="Submit" value="<?= gettext('Execute Query') ?>" name="Submit">
-	</p>
-
-	</table>
-
-	</form>
-
-	<?php
+                    
+                    <div class="form-group text-right">
+                        <input class="btn btn-primary" type="Submit" value="<?= gettext("Execute Query") ?>" name="Submit">
+                    </div>
+                </form>
+                
+            </div>
+        </div> <!-- box -->
+        
+    </div>
+    
+</div>
+<?php
 
 }
 

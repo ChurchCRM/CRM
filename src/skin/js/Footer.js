@@ -49,6 +49,8 @@ $("document").ready(function(){
     });
     $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
     
+
+    $(".initials-image").initial();
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
 });
 
