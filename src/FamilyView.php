@@ -315,6 +315,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
                 class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
           <?php
+
                     } ?>
           <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
               class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
@@ -323,12 +324,14 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
                 class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
           <?php
+
                     } ?>
           <?php if ($_SESSION['bDeleteRecords']) {
                         ?>
             <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
                 class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
           <?php
+
                     } ?>
           <br/>
 
@@ -959,11 +962,13 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
     } ?>
             <div class="modal-footer text-center">
-                <?php if (count($sFamilyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) { ?>
+                <?php if (count($sFamilyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
+        ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
-                <?php } ?>
+                <?php 
+    } ?>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
                 <button type="button" id="verifyNow"
