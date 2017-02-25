@@ -10,7 +10,7 @@ msgstr ""
 #: AutoPaymentEditor.php:703 CartToFamily.php:251 CSVExport.php:120
 #: CSVImport.php:222 DirectoryReports.php:256
 #: external/templates/registration/family-register.php:34 FamilyEditor.php:692
-#: FamilyList.php:29 GeoPage.php:369 PersonEditor.php:851 Register.php:49
+#: FamilyList.php:29 PersonEditor.php:851 Register.php:49
 #: queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "County"
@@ -19,7 +19,7 @@ msgstr "County"
 #: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
 #: external/templates/registration/family-register.php:41
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
-#: FamilyList.php:30 GeoPage.php:370 PersonEditor.php:874 Register.php:50
+#: FamilyList.php:30 PersonEditor.php:874 Register.php:50
 #, fuzzy
 msgid "Zip"
 msgstr "Postcode"
@@ -48,12 +48,12 @@ msgstr "Scan cheque"
 msgid "Fall"
 msgstr "Autumn"
 
-#: Reports/ConfirmReportEmail.php:134 Reports/ConfirmReport.php:134
+#: Reports/ConfirmReportEmail.php:135 Reports/ConfirmReport.php:135
 msgid "City, State, Zip"
 msgstr "City, Postcode"
 
 #: GroupReports.php:130 Reports/CanvassReports.php:244
-#: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
+#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Mobile Phone"
@@ -61,7 +61,7 @@ msgstr "Mobile Phone"
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:287
-#: Reports/GroupReport.php:132
+#: Reports/GroupReport.php:133
 msgid "Cell"
 msgstr "Mobile"
 
