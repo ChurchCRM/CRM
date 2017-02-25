@@ -142,8 +142,8 @@ require 'Include/Header.php';
 ?>
 <div class="box box-body">
 <form method="post" action="PaddleNumEditor.php?<?= 'CurrentFundraiser='.$iCurrentFundraiser.'&PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack ?>" name="PaddleNumEditor">
-
-<table cellpadding="3" align="center">
+<div class="table-responsive">
+<table class="table" cellpadding="3" align="center">
 	<tr>
 		<td align="center">
 			<input type="submit" class="btn" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
@@ -226,7 +226,7 @@ require 'Include/Header.php';
 			</table>
 			</tr>
 	</table>
-
+</div>
 </form>
 </div>
 <?php require 'Include/Footer.php' ?>

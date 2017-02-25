@@ -13,7 +13,7 @@ class SystemConfig
    */
   private static $configs;
   private static $categories;
-  
+
   private static function getSupportedLocales()
   {
     $languages = [
@@ -41,11 +41,11 @@ class SystemConfig
             gettext("Chinese - Taiwan:zh_TW")
         ]
     ];
-            
+
     return $languages;
 
   }
-  
+
   private static function buildConfigs()
   {
     return array(
@@ -66,8 +66,6 @@ class SystemConfig
         "sDefaultCity" => new ConfigItem(21, "sDefaultCity", "text", "", gettext("Default City")),
         "sDefaultState" => new ConfigItem(22, "sDefaultState", "text", "", gettext("Default State - Must be 2-letter abbreviation!")),
         "sDefaultCountry" => new ConfigItem(23, "sDefaultCountry", "choice", "", "", json_encode(["Choices" => Countries::getNames()])),
-        "bEmailSend" => new ConfigItem(24, "bEmailSend", "boolean", "", gettext("If you wish to be able to send emails from within ChurchCRM. This requires\reither an SMTP server address to send from or sendmail installed in PHP.")),
-        "sSendType" => new ConfigItem(25, "sSendType", "choice", "smtp", gettext("The method for sending email. Either 'smtp' or 'sendmail'"), '{"Choices":["'.gettext("smtp").'","'.gettext("SendMail").'"]}'),
         "sToEmailAddress" => new ConfigItem(26, "sToEmailAddress", "text", "", gettext("Default account for receiving a copy of all emails")),
         "sSMTPHost" => new ConfigItem(27, "sSMTPHost", "text", "", gettext("SMTP Server Address (mail.server.com:25)")),
         "sSMTPAuth" => new ConfigItem(28, "sSMTPAuth", "boolean", "0", gettext("Does your SMTP server require auththentication (username/password)?")),
@@ -110,6 +108,7 @@ class SystemConfig
         "sDateFormatNoYear" => new ConfigItem(103, "sDateFormatNoYear", "text", "m/d", ""),
         "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y", ""),
         "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a", ""),
+        "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd-Gis", ""),
         "bRegistered" => new ConfigItem(999, "bRegistered", "boolean", "0", gettext("ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.")),
         "leftX" => new ConfigItem(1001, "leftX", "number", "20", gettext("Left Margin (1 = 1/100th inch)")),
         "incrementY" => new ConfigItem(1002, "incrementY", "number", "4", gettext("Line Thickness (1 = 1/100th inch")),
@@ -170,17 +169,17 @@ class SystemConfig
     return array (
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","nChurchLatitude","nChurchLongitude"],
       gettext('User setup') => ["sDefault_Pass","sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords"],
-      gettext('Email Setup')  => ["bEmailSend","sSendType","sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass","sToEmailAddress","mailChimpApiKey"],
+      gettext('Email Setup')  => ["sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass","sToEmailAddress","mailChimpApiKey"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip","sEnableGravatarPhotos","sEnableSelfRegistration"],
       gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","debug","bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Map Settings')  => ["sGoogleMapKey","bUseGoogleGeocode","sGMapIcons","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
-      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat"],
+      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('Other Settings')  => ["iPDFOutputType","googleTrackingID"]
     );
   }
-  
+
   /**
    * @param Config[] $configs
    */
@@ -190,19 +189,19 @@ class SystemConfig
       self::$categories = self::buildCategories();
       self::scrapeDBConfigs($configs);
   }
-  
+
   public static function getCategories()
   {
     return self::$categories;
   }
-  
+
   private static function scrapeDBConfigs($configs)
   {
     foreach ($configs as $config)
     {
       if ( isset( self::$configs[$config->getName()]))
       {
-        //if the current config set defined by code contains the current config retreived from the db, then cache it 
+        //if the current config set defined by code contains the current config retreived from the db, then cache it
         self::$configs[$config->getName()]->setDBConfigObject($config);
       }
       else
@@ -213,7 +212,7 @@ class SystemConfig
       }
     }
   }
-  
+
     public static function getConfigItem($name)
     {
       return self::$configs[$name];
@@ -241,7 +240,7 @@ class SystemConfig
       {
         throw new \Exception (gettext("An invalid configuration name has been requested").": ".$name);
       }
-        
+
     }
 
     public static function setValue($name, $value)
@@ -254,7 +253,7 @@ class SystemConfig
       {
         throw new \Exception (gettext("An invalid configuration name has been requested").": ".$name);
       }
-       
+
     }
 
     public static function setValueById($Id, $value)
@@ -274,5 +273,5 @@ class SystemConfig
       }
     }
 
-   
+
 }

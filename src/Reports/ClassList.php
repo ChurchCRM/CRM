@@ -18,6 +18,7 @@ require '../Include/ReportFunctions.php';
 require '../Include/GetGroupArray.php';
 
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
 
 $iGroupID = FilterInput($_GET['GroupID'], 'int');
 $iFYID = FilterInput($_GET['FYID'], 'int');
@@ -165,7 +166,7 @@ $pdf->WriteAt($phoneX, $y, date('d-M-Y'));
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
-    $pdf->Output('ClassList'.date('Ymd').'.pdf', 'D');
+    $pdf->Output('ClassList'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

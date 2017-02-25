@@ -346,6 +346,7 @@ require 'Include/Header.php';
         <form method="post" action="UserEditor.php">
         <input type="hidden" name="Action" value="<?= $sAction ?>">
         <input type="hidden" name="NewUser" value="<?= $vNewUser ?>">
+            <div class="table-responsive">
         <table class="table table-hover">
 <?php
 
@@ -471,6 +472,7 @@ if ($bShowPersonSelect) {
         </td>
     </tr>
 </table>
+            </div>
     </div>
     <!-- /.box-body -->
 </div>
@@ -479,6 +481,7 @@ if ($bShowPersonSelect) {
 <div class="box">
     <div class="box-body box-danger">
         <div class="callout callout-info"><?= gettext('Set Permission True to give this user the ability to change their current value.') ?></div>
+        <div class="table-responsive">
         <table class="table">
             <tr>
                 <th><?= gettext('Permission') ?></h3></th>
@@ -563,12 +566,13 @@ while ($aDefaultRow = mysqli_fetch_row($rsDefault)) {
 ?>
 
     <tr>
-        <td colspan="4" class="text-center">
+        <td colspan="3" class="text-center">
             <input type="submit" class="btn btn-primary" name="save" value="<?= gettext('Save Settings') ?>">
             <input type="submit" class="btn" name="cancel" value="<?= gettext('Cancel') ?>">
         </td>
     </tr>
     </table>
+        </div>
 </form>
     </div>
     <!-- /.box-body -->

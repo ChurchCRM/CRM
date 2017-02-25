@@ -203,6 +203,7 @@ function DoQuery()
             <?= $qry_Count ? mysqli_num_rows($rsQueryResults).gettext(' record(s) returned') : ''; ?>
         </p>
         
+        <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <?php
@@ -243,13 +244,14 @@ function DoQuery()
     } ?>
             </tbody>
         </table>
+        </div>
     </div>
     
     <div class="box-footer">
         <p>
         <?php if (count($aHiddenFormField)): ?>
             <form method="post" action="CartView.php">
-            <div class="btn-group">
+            <div class="col-sm-offset-1">
                 <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
                 <input type="submit" class="btn btn-primary btn-sm" name="AddToCartSubmit" value="<?= gettext('Add To Cart') ?>">
                 <input type="submit" class="btn btn-warning btn-sm" name="AndToCartSubmit" value="<?= gettext('Intersect With Cart') ?>">

@@ -873,7 +873,7 @@ class FinancialService
         $CSVReturn = new \stdClass();
         $CSVReturn->content = $retstring;
     // Export file
-    $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-'.$depID.'-'.date('Ymd-Gis').'.csv';
+    $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-'.$depID.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv';
 
         return $CSVReturn;
     }

@@ -18,6 +18,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/ReportFunctions.php';
 
+use ChurchCRM\dto\SystemConfig;
+
 // Turn ON output buffering
 ob_start();
 
@@ -328,7 +330,7 @@ if ($sFormat == 'addtocart') {
     $headerString .= "\n";
 
     header('Content-type: text/x-csv');
-    header('Content-Disposition: attachment; filename=churchcrm-export-'.date('Ymd-Gis').'.csv');
+    header('Content-Disposition: attachment; filename=churchcrm-export-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
 
     echo $headerString;
 
