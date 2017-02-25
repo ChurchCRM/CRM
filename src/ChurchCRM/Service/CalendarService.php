@@ -45,11 +45,13 @@ class CalendarService
     ];
 
         $peopleWithBirthDays = PersonQuery::create('per')
+      ->join('Family')
       ->condition('thisYear', $perBirthDayThisYear.' BETWEEN ? AND ?', $dateRange)
       ->condition('nextYear', $perBirthDayNextYear.' BETWEEN ? AND ?', $dateRange)
       ->combine(['thisYear', 'nextYear'], Criteria::LOGICAL_OR, 'birthDates')
       ->condition('greaterThanZero', 'per_BirthDay > 0 AND per_BirthMonth > 0')
-      ->where(['greaterThanZero', 'birthDates'], Criteria::LOGICAL_AND)
+      ->condition('active', 'Family.fam_DateDeactivated is null' )
+      ->where(['greaterThanZero', 'birthDates', 'active'], Criteria::LOGICAL_AND)
       ->find();
 
         foreach ($peopleWithBirthDays as $person) {
@@ -68,6 +70,7 @@ class CalendarService
 
         $Anniversaries = FamilyQuery::create()
       ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
+      ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
       ->find();
         $curYear = date('Y');
         $curMonth = date('m');

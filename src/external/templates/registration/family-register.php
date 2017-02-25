@@ -10,13 +10,23 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
   <div class="register-box" style="width: 600px;">
     <div class="register-logo">
-      <a href="<?= $sRootPath ?>/"><b>Church</b>CRM</a>
+      <?php
+        $headerHTML = '<b>Church</b>CRM';
+        $sHeader = SystemConfig::getValue("sHeader");
+        $sChurchName = SystemConfig::getValue("sChurchName");
+        if (!empty($sHeader)) {
+          $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
+        } else if(!empty($sChurchName)) {
+            $headerHTML = $sChurchName;
+        }
+      ?>
+      <a href="<?= SystemURLs::getRootPath() ?>/"><?= $headerHTML ?></a>
     </div>
 
     <div class="register-box-body">
       <p class="login-box-msg"><?= gettext('Register your family') ?></p>
 
-      <form action="<?= $sRootPath ?>/external/register/" method="post">
+      <form action="<?= SystemURLs::getRootPath() ?>/external/register/" method="post">
         <div class="form-group has-feedback">
           <input name="familyName" type="text" class="form-control" placeholder="<?= gettext('Family Name') ?>" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>

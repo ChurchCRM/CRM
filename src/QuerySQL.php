@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemConfig;
+
 //Set the page title
 $sPageTitle = gettext('Free-Text Query');
 
@@ -105,7 +107,7 @@ function ExportQueryResults()
     }
 
     header('Content-type: application/csv');
-    header('Content-Disposition: attachment; filename=Query-'.date('Ymd-Gis').'.csv');
+    header('Content-Disposition: attachment; filename=Query-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

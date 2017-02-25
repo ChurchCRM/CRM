@@ -30,6 +30,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/LabelFunctions.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 use ChurchCRM\dto\SystemConfig;
 
 if (isset($_POST['rmEmail'])) {
@@ -46,7 +48,8 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
     if (!array_key_exists('Message', $_GET)) {
         ?>
              <p class="text-center callout callout-warning"><?= gettext('You have no items in your cart.') ?> </p>
-        <?php 
+        <?php
+
     } else {
         switch ($_GET['Message']) {
                 case 'aMessage': ?>
@@ -91,15 +94,16 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
         <input type="submit" class="btn" name="gotolabels"
         value="<?= gettext('Go To Labels') ?>">
         </form>
-        <?php 
+        <?php
+
     } ?>
 
      <!-- BEGIN CART FUNCTIONS -->
 
 
-<?php 
+<?php
 if (count($_SESSION['aPeopleCart']) > 0) {
-    ?>
+        ?>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">Cart Functions</h3>
@@ -107,22 +111,25 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <div class="box-body">
         <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
         <?php if ($_SESSION['bManageGroups']) {
-        ?>
+            ?>
             <a href="CartToGroup.php" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
-        <?php 
-    } ?>
+        <?php
+
+        } ?>
         <?php if ($_SESSION['bAddRecords']) {
-        ?>
+            ?>
             <a href="CartToFamily.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
-        <?php 
-    } ?>
+        <?php
+
+        } ?>
         <a href="CartToEvent.php" class="btn btn-app"><i class="fa fa-ticket"></i><?=  gettext('Empty Cart to Event') ?></a>
 
         <?php  if ($bExportCSV) {
-        ?>
+            ?>
             <a href="CSVExport.php?Source=cart" class="btn btn-app"><i class="fa fa-file-excel-o"></i><?=  gettext('CSV Export') ?></a>
-        <?php 
-    } ?>
+        <?php
+
+        } ?>
         <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i class="fa fa-map-marker"></i><?= gettext('Map Cart') ?></a>
         <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
         <?php
@@ -211,7 +218,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <!-- /.box-body -->
 </div>
 <!-- /.box -->
-<?php 
+<?php
+
         } ?>
 <!-- Default box -->
 <div class="box">
@@ -224,36 +232,36 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                 <?php
                 LabelGroupSelect('groupbymode');
 
-    echo '  <tr><td>'.gettext('Bulk Mail Presort').'</td>';
-    echo '  <td>';
-    echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
-    echo '  id="BulkMailPresort" value="1" ';
-    if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-        echo 'checked';
-    }
-    echo '  ><br></td></tr>';
+        echo '  <tr><td>'.gettext('Bulk Mail Presort').'</td>';
+        echo '  <td>';
+        echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
+        echo '  id="BulkMailPresort" value="1" ';
+        if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
+            echo 'checked';
+        }
+        echo '  ><br></td></tr>';
 
-    echo '  <tr><td>'.gettext('Quiet Presort').'</td>';
-    echo '  <td>';
-    echo '  <input ';
-    if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
-        echo 'disabled ';
-    }   // This would be better with $_SESSION variable
+        echo '  <tr><td>'.gettext('Quiet Presort').'</td>';
+        echo '  <td>';
+        echo '  <input ';
+        if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
+            echo 'disabled ';
+        }   // This would be better with $_SESSION variable
                                         // instead of cookie ... (save $_SESSION in MySQL)
                 echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
-    echo '  id="QuietBulkMail" value="1" ';
-    if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-        echo 'checked';
-    }
-    echo '  ><br></td></tr>';
+        echo '  id="QuietBulkMail" value="1" ';
+        if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
+            echo 'checked';
+        }
+        echo '  ><br></td></tr>';
 
-    ToParentsOfCheckBox('toparents');
-    LabelSelect('labeltype');
-    FontSelect('labelfont');
-    FontSizeSelect('labelfontsize');
-    StartRowStartColumn();
-    IgnoreIncompleteAddresses();
-    LabelFileType(); ?>
+        ToParentsOfCheckBox('toparents');
+        LabelSelect('labeltype');
+        FontSelect('labelfont');
+        FontSizeSelect('labelfontsize');
+        StartRowStartColumn();
+        IgnoreIncompleteAddresses();
+        LabelFileType(); ?>
 
                 <tr>
                         <td></td>
@@ -267,14 +275,14 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
 <?php
 
-} ?>
+    } ?>
 
 <!-- END CART FUNCTIONS -->
 
 <!-- BEGIN CART LISTING -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Your cart contains').' '.$iNumPersons.' '.gettext('persons from').' '.$iNumFamilies.' '.gettext('families.') ?></h3>
+        <h3 class="box-title"><?= gettext('Your cart contains').' '.$iNumPersons.' '.gettext('persons from').' '.$iNumFamilies.' '.gettext('families') ?>.</h3>
     </div>
     <div class="box-body">
         <table class="table table-hover">
@@ -329,8 +337,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         }
 
         echo '<tr class="'.$sRowClass.'">';
-        echo '<td><img src="'.$sRootPath.'/api/persons/'.$per_ID.'/photo" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID='.$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a></td>';
-
+        echo '<td><img data-name="'.$per_FirstName.' '.$per_LastName.'"data-src="'.SystemURLs::getRootPath().'/api/persons/'.$per_ID.'/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID='.$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a></td>';
         echo '<td align="center">'.$sValidAddy.'</td>';
         echo '<td align="center">'.$sValidEmail.'</td>';
         echo '<td><a href="CartView.php?RemoveFromPeopleCart='.

@@ -26,6 +26,7 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 
@@ -486,7 +487,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 }
 
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('ReminderReport'.date('Ymd').'.pdf', 'D');
+    $pdf->Output('ReminderReport'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 } else {
     $pdf->Output();
 }

@@ -333,7 +333,7 @@ if ($output == 'pdf') {
 
         public function FinishPage($page)
         {
-            $footer = "Page $page   Generated on ".date('Y-m-d H:i:s');
+            $footer = "Page $page   Generated on ".date(SystemConfig::getValue("sDateTimeFormat"));
             $this->SetFont('Times', 'I', 9);
             $this->WriteAt(80, 258, $footer);
         }
@@ -883,7 +883,7 @@ if ($output == 'pdf') {
     }
 
     $pdf->FinishPage($page);
-    $pdf->Output('DepositReport-'.date('Ymd-Gis').'.pdf', 'D');
+    $pdf->Output('DepositReport-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 
 // Output a text file
 // ##################
@@ -915,6 +915,6 @@ if ($output == 'pdf') {
 
     // Export file
     header('Content-type: text/x-csv');
-    header("Content-Disposition: attachment; filename='ChurchCRM".date('Ymd-Gis').'.csv');
+    header("Content-Disposition: attachment; filename='ChurchCRM".date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     echo $buffer;
 }
