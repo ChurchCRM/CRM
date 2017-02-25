@@ -4,8 +4,9 @@ Feature: Login
   I am able to authenticate with a username and a password
 
   Scenario: Login to a system
-    Given I visit '/Login.php'
+    Given I am on the homepage
     Then I should see "Please Login"
-    When I supply a username and password
-    And I click submit
-    Then I should see the Main Menu
+    When I fill in "UserBox" with "admin"
+    When I fill in "PasswordBox" with "changeme"
+    And I press "Login"
+    Then I should see "Welcome to ChurchCRM"
