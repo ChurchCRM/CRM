@@ -279,10 +279,30 @@ require 'Include/Header.php';
     <h3 class="box-title"><?= gettext('Group Properties') ?></h3>
   </div>
   <div class="box-body">
+      <div>
+          <b><?= gettext('Quick Settings') ?>:</b>
+          <p/>
+          <form>
+              <b><?= gettext('Status') ?>:</b> <br/> <input id="isGroupActive" type="checkbox" data-toggle="toggle" data-on="<?= _('Active') ?>" data-off="<?= _('Disabled') ?>"> <br/>
+              <b><?= gettext('Include in email export') ?>:</b> <br/> <input id="isGroupEmailExport" type="checkbox" data-toggle="toggle" data-on="<?= _('Include') ?>" data-off="<?= _('Exclude') ?>">
+          </form>
+          <hr/>
+          <br/>
+          <script>
+              $(document).ready(function () {
+                  $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ?>).change();
+                  $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isEmailExportEnabled() ?>).change();
+                  /*$('#isGroupActive').change(function() {
+                      alert('Toggle: ' + $(this).prop('checked'));
+                  })*/
+              });
+          </script>
+      </div>
+      <hr/>
       <table width="100%">
       <tr>
         <td>
-          <b><?= gettext('Group-Specific Properties:') ?></b>
+          <b><?= gettext('Group-Specific Properties') ?>:</b>
 
           <?php
           if ($thisGroup->getHasSpecialProps()) {
@@ -327,7 +347,7 @@ require 'Include/Header.php';
 
             //Print Assigned Properties
             echo '<br><hr/>';
-            echo '<b>'.gettext('Assigned Properties:').'</b>';
+            echo '<b>'.gettext('Assigned Properties').':</b>';
             $sAssignedProperties = ',';
 
             //Was anything returned?
