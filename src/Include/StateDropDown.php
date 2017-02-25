@@ -1,4 +1,4 @@
-<select name="State" class="form-control">
+<select name="State" class="form-control select2" id="state-input">
 	<option value="">No Selection</option>
 	<option value="" disabled>--------------------</option>
 	<option value="AL"<?php if ($sState == 'AL') {
