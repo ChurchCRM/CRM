@@ -279,7 +279,7 @@ require 'Include/Header.php';
     <h3 class="box-title"><?= gettext('Group Properties') ?></h3>
   </div>
   <div class="box-body">
-      <table class="table">
+      <table width="100%">
       <tr>
         <td>
           <b><?= gettext('Group-Specific Properties:') ?></b>
@@ -326,14 +326,14 @@ require 'Include/Header.php';
           }
 
             //Print Assigned Properties
-            echo '<br>';
+            echo '<br><hr/>';
             echo '<b>'.gettext('Assigned Properties:').'</b>';
             $sAssignedProperties = ',';
 
             //Was anything returned?
             if (mysqli_num_rows($rsAssignedProperties) == 0) {
                 // No, indicate nothing returned
-              echo '<p align="center">'.gettext('No property assignments.').'</p>';
+              echo '<p>'.gettext('No property assignments.').'</p>';
             } else {
                 // Display table of properties
               ?>
@@ -404,7 +404,7 @@ require 'Include/Header.php';
 
                 if ($_SESSION['bManageGroups']) {
                     echo '<form method="post" action="PropertyAssign.php?GroupID='.$iGroupID.'">';
-                    echo '<p align="center">';
+                    echo '<p>';
                     echo '<span>'.gettext('Assign a New Property:').'</span>';
                     echo '<select name="PropertyID">';
 
