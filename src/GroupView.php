@@ -264,7 +264,7 @@ require 'Include/Header.php';
         <?php if (!is_null($defaultRole)) {
         ?>
             <?= gettext('Default Role') ?> <span class="badge"><?= $defaultRole->getOptionName() ?></span>
-        <?php 
+        <?php
     } ?>
         </button>
         <button class="btn btn-primary" type="button">
@@ -286,8 +286,6 @@ require 'Include/Header.php';
               <b><?= gettext('Status') ?>:</b> <br/> <input id="isGroupActive" type="checkbox" data-toggle="toggle" data-on="<?= _('Active') ?>" data-off="<?= _('Disabled') ?>"> <br/>
               <b><?= gettext('Include in email export') ?>:</b> <br/> <input id="isGroupEmailExport" type="checkbox" data-toggle="toggle" data-on="<?= _('Include') ?>" data-off="<?= _('Exclude') ?>">
           </form>
-          <hr/>
-          <br/>
           <script>
               $(document).ready(function () {
                   $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ?>).change();
