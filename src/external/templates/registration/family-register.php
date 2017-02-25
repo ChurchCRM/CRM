@@ -38,10 +38,10 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         <div class="form-group has-feedback">
           <div class="row">
             <div class="col-lg-6">
-              <input name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>" required>
+              <input name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>" required value="<?= SystemConfig::getValue('sDefaultCity') ?>">
             </div>
             <div class="col-lg-6">
-              <input name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" required>
+              <input name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" required value="<?= SystemConfig::getValue('sDefaultState') ?>">
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
               <input name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" required>
             </div>
             <div class="col-lg-9">
-                <select name="familyCountry" class="form-control">
+                <select id="familyCountry" class="form-control select2">
                     <?php foreach (Countries::getNames() as $county) {
     ?>
                     <option value="<?= $county ?>" <?php if (SystemConfig::getValue('sDefaultCountry') == $county) {
@@ -102,7 +102,11 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     </div>
     <!-- /.form-box -->
   </div>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#familyCountry").select2();
+        });
+    </script>
 <?php
 // Add the page footer
 require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");
