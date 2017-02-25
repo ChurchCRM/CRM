@@ -261,9 +261,11 @@ require 'Include/Header.php';
             <?= gettext('Type of Group') ?> <span class="badge"> <?= $sGroupType ?> </span>
         </button>
         <button class="btn btn-info" type="button">
-        <?php if (!is_null($defaultRole)) { ?>
+        <?php if (!is_null($defaultRole)) {
+        ?>
             <?= gettext('Default Role') ?> <span class="badge"><?= $defaultRole->getOptionName() ?></span>
-        <?php } ?>
+        <?php 
+    } ?>
         </button>
         <button class="btn btn-primary" type="button">
             <?= gettext('Total Members') ?> <span class="badge" id="iTotalMembers"></span>
