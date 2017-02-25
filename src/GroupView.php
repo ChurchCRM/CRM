@@ -92,7 +92,7 @@ require 'Include/Header.php';
     if ($_SESSION['bManageGroups']) {
         echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
         echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
-      
+
 
       <!-- MEMBER ROLE MODAL-->
       <div class="modal fade" id="changeMembership" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
@@ -253,7 +253,23 @@ require 'Include/Header.php';
   </div>
 </div>
 
-
+<div class="box">
+    <div class="box-body">
+        <?= $thisGroup->getDescription() ?>
+        <p/><p/><p/>
+        <button class="btn btn-success" type="button">
+            <?= gettext('Type of Group') ?> <span class="badge"> <?= $sGroupType ?> </span>
+        </button>
+        <button class="btn btn-info" type="button">
+        <?php if (!is_null($defaultRole)) { ?>
+            <?= gettext('Default Role') ?> <span class="badge"><?= $defaultRole->getOptionName() ?></span>
+        <?php } ?>
+        </button>
+        <button class="btn btn-primary" type="button">
+            <?= gettext('Total Members') ?> <span class="badge" id="iTotalMembers"></span>
+        </button>
+    </div>
+</div>
 
 
 <div class="box">
@@ -261,34 +277,9 @@ require 'Include/Header.php';
     <h3 class="box-title"><?= gettext('Group Properties') ?></h3>
   </div>
   <div class="box-body">
-
-    <table border="0" width="100%" cellspacing="0" cellpadding="5">
+      <table class="table">
       <tr>
-        <td width="25%" valign="top" align="center">
-          <div class="LightShadedBox">
-            <b class="LargeText"><?= $thisGroup->getName() ?></b>
-            <br>
-            <?= $thisGroup->getDescription(); ?>
-            <br><br>
-            <table width="98%">
-              <tr>
-                <td align="center"><div class="TinyShadedBox"><font size="3">
-                    <?= gettext('Total Members:') ?><span id="iTotalMembers"></span>
-                    <br>
-                    <?= gettext('Type of Group:') ?> <?= $sGroupType ?>
-                    <br>
-                    <?php if (!is_null($defaultRole)) {
-        ?>
-                    <?= gettext('Default Role:') ?> <?= $defaultRole->getOptionName() ?>
-                    <?php 
-    } ?>
-                    </font></div></td>
-              </tr>
-            </table>
-          </div>
-        </td>
-        <td width="75%" valign="top" align="left">
-
+        <td>
           <b><?= gettext('Group-Specific Properties:') ?></b>
 
           <?php
@@ -425,7 +416,7 @@ require 'Include/Header.php';
                     }
 
                     echo '</select>';
-                    echo '<input type="submit" class="btn" value="'.gettext('Assign').'" name="Submit" style="font-size: 8pt;">';
+                    echo ' <input type="submit" class="btn btn-success" value="'.gettext('Assign').'" name="Submit" style="font-size: 8pt;">';
                     echo '</p></form>';
                 } else {
                     echo '<br><br><br>';
