@@ -28,23 +28,37 @@ require "Include/Config.php";
 require "Include/Functions.php";
 require "Include/GeoCoder.php";
 
-use ChurchCRM\Service\MailChimpService;
-use ChurchCRM\Service\FamilyService;
-use ChurchCRM\Service\TimelineService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Service\TimelineService;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
-$familyService = new FamilyService();
+
 //Set the page title
 $sPageTitle = gettext("Family View");
 require "Include/Header.php";
 
 //Get the FamilyID out of the querystring
-$iFamilyID = FilterInput($_GET["FamilyID"], 'int');
+if (!empty($_GET['FamilyID'])) {
+    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+}
 
+//Deactivate/Activate Family
+if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Action'])) {
+    $family = FamilyQuery::create()->findOneById($_POST['FID']);
+    if ($_POST['Action'] == "Deactivate") {
+        $family->deactivate();
+    } elseif ($_POST['Action'] == "Activate") {
+        $family->activate();
+    }
+    $family->save();
+    Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
+    exit;
+}
 // Get the list of funds
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
@@ -99,10 +113,10 @@ $sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
 
 //Get the pledges for this family
 $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
-         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, 
+         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName,
          a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible,
          plg_GroupKey
-		 FROM pledge_plg 
+		 FROM pledge_plg
 		 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
 		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 		 WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
@@ -110,7 +124,7 @@ $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_met
 
 //Get the automatic payments for this family
 $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
-                   a.Per_LastName AS EnteredLastName, 
+                   a.Per_LastName AS EnteredLastName,
                    b.fun_Name AS fundName
 		 FROM autopayment_aut
 		 LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
@@ -158,14 +172,23 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 <script>
     var familyId = <?= $fam_ID ?>;
 </script>
+
+ <?php if (!empty($fam_DateDeactivated)) {
+        ?>
+    <div class="alert alert-warning">
+        <strong><?= gettext(" This Family is Deactivated") ?> </strong>
+    </div>
+    <?php
+
+    } ?>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-4">
-        <div class="box box-primary">
-            <div class="box-body">
-                <img src="<?= $familyService->getFamilyPhoto($fam_ID) ?>" alt=""
-                     class="img-circle img-responsive profile-user-img"/>
-                <h3 class="profile-username text-center"><?= gettext("Family") . ": " . $fam_Name ?></h3>
-                <?php if ($bOkToEdit) {
+      <div class="box box-primary">
+        <div class="box-body">
+          <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail" data-name="<?= $family->getName()?>" alt=""
+               class="initials-image img-circle img-responsive profile-user-img"/>
+					<h3 class="profile-username text-center"><?=  gettext('Family').': '.$fam_Name ?></h3>
+          <?php if ($bOkToEdit) {
         ?>
                     <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"
                        class="btn btn-primary btn-block"><b><?= gettext("Edit") ?></b></a>
@@ -265,46 +288,42 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         </div>
     </div>
     <div class="col-lg-9 col-md-8 col-sm-8">
-        <div class="row">
-            <div class="box"><br/>
-                <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
+      <div class="row">
+        <div class="box"><br/>
+        <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
                         class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
-                <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
-                        class="fa fa-plus-square"></i> <?= gettext("Add New Member") ?></a>
-                <?php if (($previous_id > 0)) {
+          <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
+              class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
+          <?php if (($previous_id > 0)) {
                         ?>
-                    <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
-                            class="fa fa-hand-o-left"></i><?= gettext("Previous Family") ?></a>
-                    <?php
-
+            <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
+                class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
+          <?php 
                     } ?>
-                <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
-                        class="fa fa-list-ul"></i><?= gettext("Family List") ?></a>
-                <?php if (($next_id > 0)) {
+          <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
+              class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
+          <?php if (($next_id > 0)) {
                         ?>
-                    <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
-                            class="fa fa-hand-o-right"></i><?= gettext("Next Family") ?> </a>
-                    <?php
-
+            <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
+                class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
+          <?php 
                     } ?>
-                <?php if ($_SESSION['bDeleteRecords']) {
+          <?php if ($_SESSION['bDeleteRecords']) {
                         ?>
-                    <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
-                            class="fa fa-trash-o"></i><?= gettext("Delete this Family") ?></a>
-                    <?php
-
+            <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
+                class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
+          <?php 
                     } ?>
-                <br/>
-                <?php if ($bOkToEdit) {
+          <br/>
+          <?php if ($bOkToEdit) {
                         ?>
-                    <a class="btn btn-app" href="#" data-toggle="modal" data-target="#upload-image"><i
-                            class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
-                    <?php if ($familyService->getUploadedPhoto($iFamilyID) != "") {
+            <a class="btn btn-app" href="#" id="uploadImageButton"><i
+                class="fa fa-camera"></i> <?= gettext("Upload Photo") ?> </a>
+            <?php if ($family->isPhotoLocal()) {
                             ?>
-                        <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
-                                class="fa fa-remove"></i> <?= gettext("Delete Photo") ?> </a>
-                        <?php
-
+              <a class="btn btn-app bg-orange" href="#" data-toggle="modal" data-target="#confirm-delete-image"><i
+                  class="fa fa-remove"></i> <?= gettext('Delete Photo') ?> </a>
+            <?php 
                         }
                     }
     if ($_SESSION['bNotes']) {
@@ -317,6 +336,16 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <a class="btn btn-app"
                    href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
                         class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
+
+
+
+                <?php if ($bOkToEdit) {
+        ?>
+                    <button class="btn btn-app bg-orange"  id="activateDeactivate">
+                        <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?= gettext((empty($fam_DateDeactivated) ? 'Deactivate' : 'Activate') . ' this Family') ?></button>
+                <?php
+
+    } ?>
             </div>
         </div>
     </div>
@@ -338,20 +367,20 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                         <tbody>
                         <?php foreach ($family->getPeople() as $person) {
         ?>
-                            <tr>
-                                <td>
-                                    <img src="<?= $person->getPhoto() ?>" width="40" height="40" class="img-circle"/>
-                                    <a href="<?= $person->getViewURI() ?>" class="user-link"><?= $person->getFullName() ?> </a>
-                                </td>
-                                <td class="text-center">
-                                    <?php
-                                    $famRole = $person->getFamilyRoleName();
-        $labelColor = "label-default";
-        if ($famRole == "Head of Household") {
-        } elseif ($famRole == "Spouse") {
-            $labelColor = "label-info";
-        } elseif ($famRole == "Child") {
-            $labelColor = "label-warning";
+                <tr>
+                  <td>
+                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail" data-name="<?= $person->getFullName() ?>" width="40" height="40" class="initials-image img-circle"/>
+                    <a href="<?= $person->getViewURI() ?>" class="user-link"><?= $person->getFullName() ?> </a>
+                  </td>
+                  <td class="text-center">
+                    <?php
+                    $famRole = $person->getFamilyRoleName();
+        $labelColor = 'label-default';
+        if ($famRole == 'Head of Household') {
+        } elseif ($famRole == 'Spouse') {
+            $labelColor = 'label-info';
+        } elseif ($famRole == 'Child') {
+            $labelColor = 'label-warning';
         } ?>
                                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                                 </td>
@@ -405,7 +434,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12 col-md-6 col-sm-3">
+    <div class="col-lg-12">
         <div class="nav-tabs-custom">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
@@ -868,32 +897,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="upload-image" tabindex="-1" role="dialog" aria-labelledby="upload-Image-label"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="ImageUpload.php?FamilyID=<?= $iFamilyID ?>" method="post" enctype="multipart/form-data"
-              id="UploadForm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="upload-Image-label"><?= gettext("Upload Photo") ?></h4>
-                </div>
-                <div class="modal-body">
-                    <input type="file" name="file" size="50"/>
-                    <?= gettext("Max Photo size") ?>: <?= ini_get('upload_max_filesize') ?>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Close") ?></button>
-                    <input type="submit" class="btn btn-primary" value="<?= gettext("Upload Image") ?>">
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
-     aria-hidden="true">
+  <!-- Modal -->
+  <div id="photoUploader"></div>
+  <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
+       aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -907,14 +914,16 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <p><?= gettext("Do you want to proceed?") ?></p>
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-                <a href="ImageDelete.php?FamilyID=<?= $iFamilyID ?>"
-                   class="btn btn-danger danger"><?= gettext("Delete") ?></a>
-            </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+         <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
+
+        </div>
         </div>
     </div>
-</div>
+  </div>
+    
 <div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -978,7 +987,74 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         <?php
 
 } ?>
-
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
+    <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
+    <script>
+        window.CRM.currentFamily = <?= $iFamilyID ?>;
+        window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
+        var dataT = 0;
+        $(document).ready(function() {
+            $("#activateDeactivate").click(function() {
+                console.log("click activateDeactivate");
+                popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
+                if(window.CRM.currentActive == true) {
+                    popupMessage = "<?= gettext('Please confirm deactivation of family') . ': ' . $fam_Name ?>";
+                }
+                else {
+                    popupMessage = "<?= gettext('Please confirm activation of family') . ': ' . $fam_Name  ?>";
+                }
+
+                bootbox.confirm({
+                    title: popupTitle,
+                    message: '<p style="color: red">'+ popupMessage + '</p>',
+                    callback: function (result) {
+                        if (result)
+                        {
+                            $.ajax({
+                                method: "POST",
+                                url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
+                                dataType: "json",
+                                encode: true
+                            }).done(function (data) {
+                                if(data.success == true)
+                                    window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
+
+                            });
+                        }
+                    }
+                });
+            });
+        
+            $("#deletePhoto").click (function () {
+              $.ajax({
+              type: "POST",
+              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              encode: true,
+              dataType: 'json',
+              data: { 
+                "_METHOD": "DELETE"
+              }
+              }).done(function(data) {
+                location.reload();
+              });
+            });
+            
+            window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
+              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              maxPhotoSize: window.CRM.maxUploadSize,
+              photoHeight: 400,
+              photoWidth: 400,
+              done: function(e) {
+                location.reload();
+              }
+            });
+
+            $("#uploadImageButton").click(function(){
+              window.CRM.photoUploader.show();
+            });
+        
+        });
+    </script>
 
     <?php require "Include/Footer.php" ?>

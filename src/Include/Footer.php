@@ -28,7 +28,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     <div class="pull-right">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
-    <strong><?= gettext('Copyright') ?> &copy; 2015-2016 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>
+    <strong><?= gettext('Copyright') ?> &copy; 2015-2017 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>
     .
 </footer>
 
@@ -258,23 +258,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 } ?>
             </ul>
-            <!--
-      <h3 class="control-sidebar-heading"><?= gettext('Data Quality') ?></h3>
-      <ul class="control-sidebar-menu">
-        <li>
-          <a href="javascript:void(0)">
-            <h4 class="control-sidebar-subheading">
-              Custom Template Design
-              <span class="label label-danger pull-right">70%</span>
-            </h4>
-
-            <div class="progress progress-xxs">
-              <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-            </div>
-          </a>
-        </li>
-      </ul>
-      -->
             <!-- /.control-sidebar-menu -->
 
         </div>
@@ -290,28 +273,42 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 <!-- Bootstrap 3.3.5 -->
 
+
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/dist/js/app.min.js"></script>
 
 <!-- InputMask -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"
-        type="text/javascript"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js"
-        type="text/javascript"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"
-        type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/fastclick/fastclick.js"></script>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Tooltips.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/randomcolor/randomColor.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/initial.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
 

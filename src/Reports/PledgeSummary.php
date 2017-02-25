@@ -15,6 +15,7 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 
@@ -268,7 +269,7 @@ if ($output == 'pdf') {
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
     if (SystemConfig::getValue('iPDFOutputType') == 1) {
-        $pdf->Output('PledgeSummaryReport'.date('Ymd').'.pdf', 'D');
+        $pdf->Output('PledgeSummaryReport'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
     } else {
         $pdf->Output();
     }
@@ -303,6 +304,6 @@ if ($output == 'pdf') {
 
     // Export file
     header('Content-type: text/x-csv');
-    header('Content-Disposition: attachment; filename=ChurchInfo-'.date('Ymd-Gis').'.csv');
+    header('Content-Disposition: attachment; filename=ChurchInfo-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     echo $buffer;
 }

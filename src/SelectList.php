@@ -1000,6 +1000,7 @@ if (!isset($sPersonColumn5)) {
 
 // Header Row for results table
 echo '<form method="get" action="SelectList.php" name="ColumnOptions">';
+echo '<div class="table-responsive">';
 echo '<table cellpadding="4" align="center" cellspacing="0" width="100%">';
 echo '<tr><th></th><th><a href="SelectList.php?mode='.$sMode.'&amp;type='.$iGroupTypeMissing;
 echo '&amp;Sort=name&amp;Filter='.$sFilter.'">'.gettext('Name').'</a></th>';
@@ -1140,7 +1141,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     //Display the row
     echo '<tr class="'.$sRowClass.'">'; ?>
 	</td>
-    <td><img src="<?=SystemURLs::getRootPath()?>/api/persons/<?= $per_ID ?>/photo" class="direct-chat-img" width="10px" height="10px" /> </td>
+    <td><img data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $per_ID ?>/thumbnail" data-name="<?= $per_FirstName.' '.$per_LastName ?>" class="initials-image direct-chat-img " width="10px" height="10px" /> </td>
 	<td>
 	    <a href="PersonView.php?PersonID=<?= $per_ID ?>" >
 	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) ?>
@@ -1268,6 +1269,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 ?>
 
 		</table>
+        </div>
 		</form>
 	</div>
 </div>

@@ -282,11 +282,12 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 <!-- BEGIN CART LISTING -->
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Your cart contains').' '.$iNumPersons.' '.gettext('persons from').' '.$iNumFamilies.' '.gettext('families.') ?></h3>
+        <h3 class="box-title"><?= gettext('Your cart contains').' '.$iNumPersons.' '.gettext('persons from').' '.$iNumFamilies.' '.gettext('families') ?>.</h3>
     </div>
     <div class="box-body">
+        <div class="table-responsive">
         <table class="table table-hover">
-        <tr>
+            <tr>
             <th><?= gettext('Name') ?></th>
             <th><?=  gettext('Address') ?>?</th>
             <th><?=  gettext('Email') ?>?</th>
@@ -337,8 +338,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         }
 
         echo '<tr class="'.$sRowClass.'">';
-        echo '<td><img src="'.SystemURLs::getRootPath().'/api/persons/'.$per_ID.'/photo" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID='.$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a></td>';
-
+        echo '<td><img src="'.SystemURLs::getRootPath().'/api/persons/'.$per_ID.'/thumbnail" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID='.$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a></td>';
         echo '<td align="center">'.$sValidAddy.'</td>';
         echo '<td align="center">'.$sValidEmail.'</td>';
         echo '<td><a href="CartView.php?RemoveFromPeopleCart='.
@@ -351,6 +351,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
     echo '</table>';
 } ?>
+</div>
 <!-- END CART LISTING -->
 
 <?php

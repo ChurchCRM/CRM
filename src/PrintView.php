@@ -488,4 +488,3 @@ if ($_SESSION['bNotes']) {
 
 require 'Include/Footer-Short.php';
 ?>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>

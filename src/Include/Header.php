@@ -26,11 +26,12 @@
  *
  ******************************************************************************/
 
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-  Redirect('CheckVersion.php');
+ Redirect('CheckVersion.php');
     exit;
 }
 
@@ -67,7 +68,7 @@ $MenuFirst = 1;
   Header_modals();
   Header_body_scripts();
 
-  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/persons/'.$_SESSION['iUserID'].'/photo';
+  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/persons/'.$_SESSION['iUserID'].'/thumbnail';
   $MenuFirst = 1;
   ?>
 
@@ -107,14 +108,14 @@ $MenuFirst = 1;
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?= $loggedInUserPhoto ?>" class="user-image" alt="User Image">
+              <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?= $loggedInUserPhoto ?>" class="img-circle" alt="User Image">
+                <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="initials-image img-circle" alt="User Image">
                 <p><?= $_SESSION['user']->getName() ?></p>
               </li>
               <!-- Menu Footer-->

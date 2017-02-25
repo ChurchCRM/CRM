@@ -76,7 +76,7 @@ class Deposit extends BaseDeposit
 
         $OFXReturn->content .= '</STMTTRNRS></BANKTRANLIST></OFX>';
     // Export file
-    $OFXReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$this->getId().'-'.date('Ymd-Gis').'.ofx';
+    $OFXReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$this->getId().'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.ofx';
 
         return $OFXReturn;
     }
@@ -395,7 +395,7 @@ class Deposit extends BaseDeposit
     $this->generateDepositSummary($Report);
 
     // Export file
-    $Report->pdf->Output('ChurchCRM-DepositReport-'.$this->getId().'-'.date('Ymd-Gis').'.pdf', 'D');
+    $Report->pdf->Output('ChurchCRM-DepositReport-'.$this->getId().'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
     }
 
     public function getTotalAmount()

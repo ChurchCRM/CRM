@@ -16,6 +16,7 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 
@@ -74,7 +75,7 @@ class PDF_ConfirmReport extends ChurchInfoReport
 
 // Instantiate the directory class and build the report.
 $pdf = new PDF_ConfirmReport();
-$filename = 'ConfirmReport'.date('Ymd').'.pdf';
+$filename = 'ConfirmReport'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf';
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';

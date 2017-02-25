@@ -55,13 +55,13 @@ function FamilyInfoByDistance($iFamily)
     // distance and bearing data, and don't bother to sort it.
     if ($iFamily) {
         // Get info for the selected family
-        $sSQL = 'SELECT fam_ID as selected_fam_ID, fam_Name as selected_fam_Name, fam_Address1 as selected_fam_Address1, fam_City as selected_fam_City, fam_State as selected_fam_State, fam_Zip as selected_fam_Zip, fam_Latitude as selected_fam_Latitude, fam_Longitude as selected_fam_Longitude from family_fam WHERE fam_ID='.$iFamily;
+        $sSQL = 'SELECT fam_ID as selected_fam_ID, fam_Name as selected_fam_Name, fam_Address1 as selected_fam_Address1, fam_Address2 as selected_fam_Address2, fam_City as selected_fam_City, fam_State as selected_fam_State, fam_Zip as selected_fam_Zip, fam_Latitude as selected_fam_Latitude, fam_Longitude as selected_fam_Longitude from family_fam WHERE fam_ID='.$iFamily;
         $rsFamilies = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsFamilies));
     }
 
     // Compute distance and bearing from the selected family to all other families
-    $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude from family_fam';
+    $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1,fam_Address2, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude from family_fam WHERE fam_DateDeactivated is  null';
 
     $rsFamilies = RunQuery($sSQL);
     while ($aFam = mysqli_fetch_array($rsFamilies)) {
@@ -73,6 +73,7 @@ function FamilyInfoByDistance($iFamily)
         }
         $results[$fam_ID]['fam_Name'] = $fam_Name;
         $results[$fam_ID]['fam_Address1'] = $fam_Address1;
+        $results[$fam_ID]['fam_Address2'] = $fam_Address2;
         $results[$fam_ID]['fam_City'] = $fam_City;
         $results[$fam_ID]['fam_State'] = $fam_State;
         $results[$fam_ID]['fam_Zip'] = $fam_Zip;
@@ -228,96 +229,124 @@ if (isset($_POST['DataFile'])) {
 }
 
 require 'Include/Header.php';
-?>
-<div class="box">
-	<div class="box-body">
-<form method="POST" action="GeoPage.php" name="GeoPage">
-<table class="table">
-<?php //Get Families for the list
-$sSQL = 'SELECT * FROM family_fam ORDER BY fam_Name';
-$rsFamilies = RunQuery($sSQL);
 
-// Make the family list
-echo '<tr><td class="LabelColumn">'.gettext('Select Family:')."</td>\n";
-echo "<td class=\"TextColumn\">\n";
-echo '<select name="Family" size="8">';
-while ($aRow = mysqli_fetch_array($rsFamilies)) {
-    extract($aRow);
+//Get Families for the list
+$sSQL = 'SELECT * FROM family_fam WHERE fam_DateDeactivated is null ORDER BY fam_Name';
+$rsFamilies = RunQuery($sSQL); ?>
+<form class="form-horizontal" method="POST" action="GeoPage.php" name="GeoPage">
+    <div class="box container">
+	    <div class="box-body">
+            <div class="form-group">
+                <label for="Family" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3" ><?= gettext('Select Family:') ?></label>
+                <div class="col-xs-12 col-sm-9">
+                    <select class="form-control" name="Family" size="8">
+                        <?php
+                        while ($aRow = mysqli_fetch_array($rsFamilies)) {
+                            extract($aRow);
+                            echo "\n<option value=\"".$fam_ID.'"';
+                            if ($iFamily == $fam_ID) {
+                                echo ' selected';
+                            }
+                            echo '>'.$fam_Name.'&nbsp;'.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                        } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="NumNeighbors" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Maximum number of neighbors:') ?></label>
+                <div class="col-xs-12 col-sm-9">
+                    <input type="text" class="form-control" name="NumNeighbors" value="<?= $iNumNeighbors ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="MaxDistance" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Maximum distance').' ('.strtolower(SystemConfig::getValue('sDistanceUnit')) ."): " ?></label>
+                <div class="col-xs-12 col-sm-9">
+                    <input type="text" class="form-control" name="MaxDistance" value="<?= $nMaxDistance ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Classification0" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Show neighbors with these classifications:') ?></label>
+                <div class="row col-xs-offset-1 col-sm-offset-3">
+                    <?php
+                    foreach ($aClassificationName as $key => $value) {
+                        $sClassNum = 'Classification'.$key;
+                        $checked = (!$bClassificationPost || isset($_POST["$sClassNum"])); ?>
+                        <div class="col-sm-5">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="Guardian" value="1" name="Classification<?= $key ?>" id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?> > <?= $value ?>
+                            </label>
+                        </div>
+                        <?php
 
-    echo "\n<option value=\"".$fam_ID.'"';
-    if ($iFamily == $fam_ID) {
-        echo ' selected';
-    }
-    echo '>'.$fam_Name.'&nbsp;'.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-}
-echo "</select></td></tr>\n";
-
-echo "<tr>\n";
-echo '	<td class="LabelColumn">'.gettext('Maximum number of neighbors:')."</td>\n";
-echo '	<td class="TextColumn"><input type="text" name="NumNeighbors" value="'.$iNumNeighbors."\"></td>\n";
-echo "</tr>\n";
-
-echo "<tr>\n";
-echo '	<td class="LabelColumn">'.gettext('Maximum distance').' ('.gettext(strtolower(SystemConfig::getValue('sDistanceUnit')))."): </td>\n";
-echo '	<td class="TextColumn"><input type="text" name="MaxDistance" value="'.$nMaxDistance."\"></td>\n";
-echo "</tr>\n";
-
-echo "<tr>\n";
-echo '	<td class="LabelColumn">'.gettext('Data file format:')."</td>\n";
-echo "	<td class=\"TextColumn\">\n";
-echo '      <input type="radio" name="CoordFileFormat" value="GPSVisualizer"'.($sCoordFileFormat == 'GPSVisualizer' ? ' checked' : '').'>'.gettext('GPS Visualizer');
-echo '      <input type="radio" name="CoordFileFormat" value="StreetAtlasUSA"'.($sCoordFileFormat == 'StreetAtlasUSA' ? ' checked' : '').'>'.gettext('Street Atlas USA');
-echo "  </td>\n";
-echo "</tr>\n";
-
-echo "<tr>\n";
-echo '	<td class="LabelColumn">'.gettext('Include families in coordinate file:')."</td>\n";
-echo "	<td class=\"TextColumn\">\n";
-echo '      <input type="radio" name="CoordFileFamilies" value="AllFamilies"'.($sCoordFileFamilies == 'AllFamilies' ? ' checked' : '').'>'.gettext('All Families');
-echo '      <input type="radio" name="CoordFileFamilies" value="NeighborFamilies"'.($sCoordFileFamilies == 'NeighborFamilies' ? ' checked' : '').'>'.gettext('Neighbor Families');
-echo "  </td>\n";
-echo "</tr>\n";
-
-echo '<tr>';
-echo '	<td class="LabelColumn">'.gettext('Coordinate data base file name').'</td>';
-echo '	<td class="TextColumn"><input type="text" name="CoordFileName" value="'.$sCoordFileName.'"></td>';
-echo '</tr>';
-
-echo '<tr>';
-echo '<td></td>';
-echo '<td><input type="submit" class="btn" name="DataFile" value="'.gettext('Make Data File').'"></td>';
-?>
-        </tr>
-    </table>
+                    } ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-8">
+                    <input type="submit" class="btn btn-primary" name="FindNeighbors" value="<?= gettext('Show Neighbors') ?>">
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="box">
-    <div class="box-header box-info">
-        <h3><?= gettext('Show neighbors with these classifications.') ?></h3>
+
+    <?php
+    if (isset($_POST['FindNeighbors']) && !$iFamily) {
+        ?>
+    <div class="alert alert-warning">
+        <?= gettext("Please select a Family.") ?>
     </div>
-    <div class="box-body">
-<table class="table">
+    <?php
+
+    } ?>
+
+    <!--Datafile section -->
+    <div class="box">
+        <div class="box-header box-info">
+            <h3><?= gettext('Make Data File') ?></h3>
+        </div>
+        <div class="box-body">
+            <div class="form-group">
+                <label for="CoordFileFormat" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Data file format:') ?></label>
+                <div class="col-xs-12 col-sm-9">
+                    <label class="radio-inline">
+                        <input type="radio" name="CoordFileFormat" value="GPSVisualizer" <?= ($sCoordFileFormat == 'GPSVisualizer' ? ' checked' : '') ?> >
+                        <?= gettext('GPS Visualizer') ?>
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="CoordFileFormat" value="StreetAtlasUSA" <?= ($sCoordFileFormat == 'StreetAtlasUSA' ? ' checked' : '') ?> >
+                        <?= gettext('Street Atlas USA') ?>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="CoordFileFamilies" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Include families in coordinate file:') ?></label>
+                <div class="col-xs-12 col-sm-9">
+                    <label class="radio-inline">
+                        <input type="radio" name="CoordFileFamilies" value="AllFamilies" <?= ($sCoordFileFamilies == 'AllFamilies' ? ' checked' : '') ?> >
+                        <?= gettext('All Families') ?>
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="CoordFileFamilies" value="NeighborFamilies" <?= ($sCoordFileFamilies == 'NeighborFamilies' ? ' checked' : '') ?> >
+                        <?= gettext('Neighbor Families') ?>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="CoordFileName" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Coordinate data base file name:') ?></label>
+                <div class="col-xs-12 col-sm-9">
+                    <input type="text" class="form-control" name="CoordFileName" value="<?= $sCoordFileName ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-8">
+                    <input type="submit" class="btn btn-primary" name="DataFile" value="<?= gettext('Make Data File') ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 <?php
-echo '<tr><td><br></td><td><input type="submit" class="btn" name="FindNeighbors" value="'.gettext('Show Neighbors').'"></td></tr>'."\n";
-
-foreach ($aClassificationName as $key => $value) {
-    echo '<tr><td class="LabelColumn">'.$value.'</td>';
-    echo '<td class="TextColumn">';
-    echo '<input name="Classification'.$key.'" type="checkbox" ';
-    echo 'id="'.$value.'" value="1" ';
-    $sClassNum = 'Classification'.$key;
-    if (!$bClassificationPost || isset($_POST["$sClassNum"])) {
-        echo 'checked';
-    }
-    echo "><br></td></tr>\n";
-}
-
-echo '</table></CENTER>';
-
-if (isset($_POST['FindNeighbors']) && !$iFamily) {
-    echo '<center><h2>Please select a Family</h2></center>';
-}
-
 $aPersonIDs = [];
 
 if ($iFamily != 0 &&
@@ -325,85 +354,93 @@ if ($iFamily != 0 &&
         isset($_POST['PersonIDList']))) {
     $resultsByDistance = FamilyInfoByDistance($iFamily);
 
-    $counter = 0;
-
-    // Column Headings
-    echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n";
-    echo "<tr class='TableHeader'>\n";
-    echo "<td width='25'>".gettext('Distance')."</td>\n";
-    echo '<td>'.gettext('Direction')."</a></td>\n";
-    echo '<td>'.gettext('Name')."</a></td>\n";
-    echo '<td>'.gettext('Address')."</td>\n";
-    echo '<td>'.gettext('City')."</td>\n";
-    echo '<td>'.gettext('State')."</td>\n";
-    echo '<td>'.gettext('Zip')."</td>\n";
-    echo '<td>'.gettext('Latitude')."</td>\n";
-    echo '<td>'.gettext('Longitude')."</td>\n";
-    echo "</tr>\n";
-
-    $sRowClass = 'RowColorA';
-
-    foreach ($resultsByDistance as $oneResult) {
-        if ($counter >= $iNumNeighbors) {
-            break;
-        }
-
-        if ($oneResult['Distance'] > $nMaxDistance) {
-            break;
-        }
-
-        // Determine how many people in this family will be listed
-        $sSQL = 'SELECT * from person_per where per_fam_ID='.$oneResult['fam_ID'];
-        if ($bClassificationPost) {
-            $sSQL .= ' AND per_cls_ID IN ('.$sClassificationList.')';
-        }
-        $rsPeople = RunQuery($sSQL);
-        $numListed = mysqli_num_rows($rsPeople);
-
-        if (!$numListed) { // skip familes with zero members
-            continue;
-        }
-
-        $counter++;
-        //Alternate the row color
-        $sRowClass = AlternateRowStyle($sRowClass);
-
-        echo "\n".'<tr class="'.$sRowClass.'">';
-        echo '<td>'.$oneResult['Distance'].'</td>';
-        echo '<td>'.$oneResult['Bearing'].'</td>';
-        echo '<td><B>'.$oneResult['fam_Name'].'</B></td>';
-        echo '<td>'.$oneResult['fam_Address1'].'</td>';
-        echo '<td>'.$oneResult['fam_City'].'</td>';
-        echo '<td>'.$oneResult['fam_State'].'</td>';
-        echo '<td>'.$oneResult['fam_Zip'].'</td>';
-        echo '<td>'.$oneResult['fam_Latitude'].'</td>';
-        echo '<td>'.$oneResult['fam_Longitude'].'</td>';
-        echo "</tr>\n";
-
-        while ($aRow = mysqli_fetch_array($rsPeople)) {
-            extract($aRow);
-
-            if (!in_array($per_ID, $aPersonIDs)) {
-                $aPersonIDs[] = $per_ID;
+    $counter = 0; ?>
+<div class="row">
+    <!-- Column Headings -->
+    <table id="neighbours" class="table table-striped table-bordered data-table dataTable no-footer dtr-inline" cellspacing="0" role="grid">
+    <!--table class="table table-striped"-->
+        <thead>
+            <tr class="success">
+                    <td><strong><?= gettext('Distance') ?> </strong></td>
+                    <td><strong><?= gettext('Direction') ?></strong></td>
+                    <td><strong><?= gettext('Name') ?>     </strong></td>
+                    <td><strong><?= gettext('Address') ?>  </strong></td>
+                    <td><strong><?= gettext('City') ?>     </strong></td>
+                    <td><strong><?= gettext('State') ?>    </strong></td>
+                    <td><strong><?= gettext('Zip') ?>      </strong></td>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach ($resultsByDistance as $oneResult) {
+            if ($counter >= $iNumNeighbors || $oneResult['Distance'] > $nMaxDistance) {
+                break;
+            } // Determine how many people in this family will be listed
+            $sSQL = 'SELECT * from person_per where per_fam_ID='.$oneResult['fam_ID'];
+            if ($bClassificationPost) {
+                $sSQL .= ' AND per_cls_ID IN ('.$sClassificationList.')';
             }
+            $rsPeople = RunQuery($sSQL);
+            $numListed = mysqli_num_rows($rsPeople);
 
-            echo '<tr class="'.$sRowClass.'"><td><BR></td>';
-            echo '<td><BR></td><td align="RIGHT">'.$per_FirstName.' '.$per_LastName.'</td>';
-            echo '<td align="RIGHT">'.$aClassificationName[$per_cls_ID].'</td>';
-            echo '<td><br></td><td<br></td><td><br></td><td><br></td><td><br></td></tr>';
-            echo "\n";
-        }
-    }
-    echo '</table>'."\n";
+            if (!$numListed) { // skip familes with zero members
+                continue;
+            }
+            $counter++; ?>
+            <tr class="info">
+                <td><?= $oneResult['Distance'] ?> </td>
+                <td><?= $oneResult['Bearing'] ?> </td>
+                <td><B><?= $oneResult['fam_Name'] ?> </B></td>
+                <td><?= $oneResult['fam_Address1'] . ($oneResult['fam_Address2'] ? ', ':'') . $oneResult['fam_Address2']  ?> </td>
+                <td><?= $oneResult['fam_City'] ?> </td>
+                <td><?= $oneResult['fam_State'] ?> </td>
+                <td><?= $oneResult['fam_Zip'] ?> </td>
+            </tr>
+            <?php
+            while ($aRow = mysqli_fetch_array($rsPeople)) {
+                extract($aRow);
 
-    $sPersonIDList = implode(',', $aPersonIDs);
-    echo '<input type="hidden" name="PersonIDList" value="'.$sPersonIDList.'">';
-    echo '<br><center>';
-    echo '<input name="AddAllToCart" type="submit" class="btn" value="'.gettext('Add to Cart').'">&nbsp';
-    echo '<input name="IntersectCart" type="submit" class="btn" value="'.gettext('Intersect with Cart').'">&nbsp';
-    echo '<input name="RemoveFromCart" type="submit" class="btn" value="'.gettext('Remove from Cart').'">';
-    echo '</center><br>';
-}
-echo '</form></div></div>';
+                if (!in_array($per_ID, $aPersonIDs)) {
+                    $aPersonIDs[] = $per_ID;
+                } ?>
+            <tr>
+                <td><BR></td>
+                <td><BR></td>
+                <td align="right"><?= $per_FirstName.' '.$per_LastName ?> </td>
+                <td align="left"><?= $aClassificationName[$per_cls_ID] ?></td>
+                <td><BR></td>
+                <td><BR></td>
+                <td><BR></td>
+            </tr>
+                <?php
+
+            }
+        } ?>
+        </tbody>
+    </table>
+    </div>
+
+    <?php
+    $sPersonIDList = implode(',', $aPersonIDs); ?>
+
+    <input type="hidden" name="PersonIDList" value="<?= $sPersonIDList ?>">
+
+    <div class="row">
+        <div class="col-xs-7 col-md-4">
+            <input name="AddAllToCart"   type="submit" class="btn btn-primary" value="<?= gettext('Add to Cart') ?>">
+        </div>
+        <div class="col-xs-7 col-md-4">
+            <input name="IntersectCart"  type="submit" class="btn btn-primary" value="<?= gettext('Intersect with Cart') ?>">
+        </div>
+        <div class="col-xs-7 col-md-4">
+            <input name="RemoveFromCart" type="submit" class="btn btn-primary" value="<?= gettext('Remove from Cart') ?>">
+        </div>
+    </div>
+    <?php
+
+} ?>
+</form>
+
+<?php
 require 'Include/Footer.php';
 ?>

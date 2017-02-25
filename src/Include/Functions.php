@@ -76,28 +76,6 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
 }
 // End of basic security checks
 
-function deletePhotos($type, $id)
-{
-    $validExtensions = ['jpeg', 'jpg', 'png'];
-    $finalFileName = 'Images/'.$type.'/'.$id;
-    $finalFileNameThumb = 'Images/'.$type.'/thumbnails/'.$id;
-
-    $deleted = false;
-    while (list(, $ext) = each($validExtensions)) {
-        $tmpFile = $finalFileName.'.'.$ext;
-        if (file_exists($tmpFile)) {
-            unlink($tmpFile);
-            $deleted = true;
-        }
-        $tmpFile = $finalFileNameThumb.'.'.$ext;
-        if (file_exists($tmpFile)) {
-            unlink($tmpFile);
-            $deleted = true;
-        }
-    }
-
-    return $deleted;
-}
 
 // if magic_quotes off and array
 function addslashes_deep($value)
@@ -139,7 +117,7 @@ if (isset($_GET['Registered'])) {
 }
 
 if (isset($_GET['AllPDFsEmailed'])) {
-    $sGlobalMessage = gettext('PDFs successfully emailed ').$_GET['AllPDFsEmailed'].' '.gettext('families.');
+    $sGlobalMessage = gettext('PDFs successfully emailed ').$_GET['AllPDFsEmailed'].' '.gettext('families').".";
 }
 
 if (isset($_GET['PDFEmailed'])) {
@@ -276,7 +254,7 @@ function CurrentFY()
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect($iFYID, $selectName)
 {
-    echo '<select name="'.$selectName.'">';
+    echo '<select class="form-control" name="'.$selectName.'">';
     echo '<option value="0">'.gettext('Select Fiscal Year').'</option>';
 
     for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {

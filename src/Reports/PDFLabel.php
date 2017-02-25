@@ -855,7 +855,7 @@ if ($sFileType == 'PDF') {
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
     if (SystemConfig::getValue('iPDFOutputType') == 1) {
-        $pdf->Output('Labels-'.date('Ymd-Gis').'.pdf', 'D');
+        $pdf->Output('Labels-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
     } else {
         $pdf->Output();
     }
@@ -895,7 +895,7 @@ if ($sFileType == 'PDF') {
     }
 
     header('Content-type: application/csv');
-    header('Content-Disposition: attachment; filename=Labels-'.date('Ymd-Gis').'.csv');
+    header('Content-Disposition: attachment; filename=Labels-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

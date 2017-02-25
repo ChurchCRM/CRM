@@ -23,10 +23,12 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $demographicStats = $dashboardService->getDemographic();
 
-$sSQL = 'select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;';
+$sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
+        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;';
 $rsAdultsGender = RunQuery($sSQL);
 
-$sSQL = 'select count(*) as numb, per_Gender from person_per where per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;';
+$sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
+        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;';
 $rsKidsGender = RunQuery($sSQL);
 
 $sSQL = 'select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;';
@@ -39,7 +41,8 @@ while (list($lst_OptionID, $lst_OptionName) = mysqli_fetch_row($rsClassification
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
           LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
           INNER JOIN list_lst on lst_ID=1 AND per_cls_ID = lst_OptionID
-          WHERE per_ID NOT IN
+          WHERE fam_DateDeactivated is  null
+			 AND per_ID NOT IN
           (SELECT per_ID
               FROM person_per
               INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
@@ -261,7 +264,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <?php foreach ($demographicStats as $key => $value) {
             ?>
             <tr>
-              <td><?= gettext($key) ?></td>
+              <td> <?= $key ?></td>
               <td>
                 <div class="progress progress-xs progress-striped active">
                   <div class="progress-bar progress-bar-success"
@@ -334,65 +337,66 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 
 <!-- this page specific inline scripts -->
 <script>
-
-  //-------------
-  //- PIE CHART -
-  //-------------
-  // Get context with jQuery - using jQuery's .get() method.
-  var PieData = [
-    <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
+    $(document).ready(function () {
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var PieData = [
+            <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
             if ($row['per_Gender'] == 1) {
-                echo '{value: '.$row['numb'].' , color: "#003399", highlight: "#3366ff", label: "'.gettext('Men').'" },';
+                echo '{value: ' . $row['numb'] . ' , color: "#003399", highlight: "#3366ff", label: "' . gettext('Men') . '" },';
             }
             if ($row['per_Gender'] == 2) {
-                echo '{value: '.$row['numb'].' , color: "#9900ff", highlight: "#ff66cc", label: "'.gettext('Women').'"},';
+                echo '{value: ' . $row['numb'] . ' , color: "#9900ff", highlight: "#ff66cc", label: "' . gettext('Women') . '"},';
             }
         }
-    while ($row = mysqli_fetch_array($rsKidsGender)) {
-        if ($row['per_Gender'] == 1) {
-            echo '{value: '.$row['numb'].' , color: "#3399ff", highlight: "#99ccff", label: "'.gettext('Boys').'"},';
-        }
-        if ($row['per_Gender'] == 2) {
-            echo '{value: '.$row['numb'].' , color: "#009933", highlight: "#99cc00", label: "'.gettext('Girls').'",}';
-        }
-    }
-    ?>
-  ];
-  var pieOptions = {
+            while ($row = mysqli_fetch_array($rsKidsGender)) {
+                if ($row['per_Gender'] == 1) {
+                    echo '{value: ' . $row['numb'] . ' , color: "#3399ff", highlight: "#99ccff", label: "' . gettext('Boys') . '"},';
+                }
+                if ($row['per_Gender'] == 2) {
+                    echo '{value: ' . $row['numb'] . ' , color: "#009933", highlight: "#99cc00", label: "' . gettext('Girls') . '",}';
+                }
+            }
+            ?>
+        ];
+        var pieOptions = {
 
-    //String - Point label font colour
-    pointLabelFontColor: "#666",
+            //String - Point label font colour
+            pointLabelFontColor: "#666",
 
-    //Boolean - Whether we should show a stroke on each segment
-    segmentShowStroke: true,
-    //String - The colour of each segment stroke
-    segmentStrokeColor: "#fff",
-    //Number - The width of each segment stroke
-    segmentStrokeWidth: 2,
-    //Number - The percentage of the chart that we cut out of the middle
-    percentageInnerCutout: 50, // This is 0 for Pie charts
-    //Boolean - Whether we animate the rotation of the Doughnut
-    animateRotate: false,
-    //Boolean - whether to make the chart responsive to window resizing
-    responsive: true,
-    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-    maintainAspectRatio: true,
-    //String - A legend template
-    legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
-  };
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke: true,
+            //String - The colour of each segment stroke
+            segmentStrokeColor: "#fff",
+            //Number - The width of each segment stroke
+            segmentStrokeWidth: 2,
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout: 50, // This is 0 for Pie charts
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate: false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive: true,
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: true,
+            //String - A legend template
+            legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
+        };
 
-  var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
-  var pieChart = new Chart(pieChartCanvas);
+        var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
+        var pieChart = new Chart(pieChartCanvas);
 
-  //Create pie or douhnut chart
-  // You can switch between pie and douhnut using the method below.
-  pieChart = pieChart.Doughnut(PieData, pieOptions);
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        pieChart = pieChart.Doughnut(PieData, pieOptions);
 
-  //then you just need to generate the legend
-  var legend = pieChart.generateLegend();
+        //then you just need to generate the legend
+        var legend = pieChart.generateLegend();
 
-  //and append it to your page somewhere
-  $('#gender-donut-legend').append(legend);
+        //and append it to your page somewhere
+        $('#gender-donut-legend').append(legend);
+    });
 </script>
 
 <?php require 'Include/Footer.php' ?>
