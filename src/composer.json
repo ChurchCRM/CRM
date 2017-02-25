@@ -42,6 +42,13 @@
         "verot/class.upload.php": "dev-master",
         "ifsnop/mysqldump-php": "2.*"
     },
+    "require-dev":{
+      "behat/symfony2-extension": "*",
+      "behat/mink-goutte-driver": "*",
+      "behat/mink-selenium2-driver": "1.2.*@dev",
+      "behat/mink-extension": "*",
+      "behat/mink-browserkit-driver": "*"
+    },
     "autoload": {
         "classmap": [
             "ChurchCRM/"
