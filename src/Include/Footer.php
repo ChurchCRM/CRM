@@ -299,6 +299,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/fastclick/fastclick.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/bootstrap-toggle/bootstrap-toggle.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
