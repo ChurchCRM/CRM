@@ -287,15 +287,6 @@ require 'Include/Header.php';
               <b><?= gettext('Status') ?>:</b> <br/> <input id="isGroupActive" type="checkbox" data-toggle="toggle" data-on="<?= _('Active') ?>" data-off="<?= _('Disabled') ?>"> <br/>
               <b><?= gettext('Include in email export') ?>:</b> <br/> <input id="isGroupEmailExport" type="checkbox" data-toggle="toggle" data-on="<?= _('Include') ?>" data-off="<?= _('Exclude') ?>">
           </form>
-          <script>
-              $(document).ready(function () {
-                  $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ?>).change();
-                  $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isEmailExportEnabled() ?>).change();
-                  /*$('#isGroupActive').change(function() {
-                      alert('Toggle: ' + $(this).prop('checked'));
-                  })*/
-              });
-          </script>
       </div>
       <hr/>
       <table width="100%">
@@ -491,11 +482,12 @@ require 'Include/Header.php';
                 </form>
               </div>
             </div>
-
             <script>
               window.CRM.currentGroup = <?= $iGroupID ?>;
               var dataT = 0;
-              $(document).ready(function() {
+              $(document).ready(function () {
+                $('#isGroupActive').prop('checked', <?= $thisGroup->isActive()? 'true': 'false' ?>).change();
+                $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isEmailExportEnabled()? 'true': 'false' ?>).change();
                 $("#deleteGroupButton").click(function() {
                   console.log("click");
                   bootbox.confirm({
