@@ -99,7 +99,7 @@ $(document).ready(function () {
       },
       callback: function (result)
       {
-        if (result) 
+        if (result)
         {
           $.each(deletedRows, function (index, value) {
             $.ajax({
@@ -132,7 +132,7 @@ $(document).ready(function () {
                     })
       };
       $.ajax({
-        type: 'POST', 
+        type: 'POST',
         url: window.CRM.root + '/api/cart/',
         dataType: 'json',
         contentType: "application/json",
@@ -146,7 +146,7 @@ $(document).ready(function () {
     }
 
   });
-  
+
   //copy membership
   $("#addSelectedToGroup").click(function () {
     $("#selectTargetGroupModal").modal("show");
@@ -304,6 +304,24 @@ function initDataTable() {
       $(row).addClass("groupRow");
     }
   });
+
+    $('#isGroupActive').change(function() {
+        $.ajax({
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/status/' + $(this).prop('checked'),
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+        });
+    });
+
+    $('#isGroupEmailExport').change(function() {
+        $.ajax({
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/email/export/' + $(this).prop('checked'),
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+        });
+    });
 
   $(document).on('click', '.groupRow', function () {
     $(this).toggleClass('selected');

@@ -162,4 +162,38 @@ $app->group('/groups', function () {
             echo json_encode(['status' => 'group specific properties disabled']);
         }
     });
+
+    $this->post('/{groupID:[0-9]+}/settings/status/{value}', function ($request, $response, $args) {
+        $groupID = $args['groupID'];
+        $flag = $args['value'];
+        if ($flag == "true" || $flag == "false") {
+            $group = GroupQuery::create()->findOneById($groupID);
+            if ($group != null) {
+                $group->setActive($flag);
+                $group->save();
+            } else {
+                return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid group id']);
+            }
+            return $response->withJson(['status' => "success"]);
+        } else {
+            return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid status value']);
+        }
+    });
+
+    $this->post('/{groupID:[0-9]+}/settings/email/export/{value}', function ($request, $response, $args) {
+        $groupID = $args['groupID'];
+        $flag = $args['value'];
+        if ($flag == "true" || $flag == "false") {
+            $group = GroupQuery::create()->findOneById($groupID);
+            if ($group != null) {
+                $group->setEmailExportEnabled($flag);
+                $group->save();
+            } else {
+                return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid group id']);
+            }
+            return $response->withJson(['status' => "success"]);
+        } else {
+            return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid export value']);
+        }
+    });
 });
