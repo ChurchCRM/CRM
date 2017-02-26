@@ -306,7 +306,8 @@ function confirmDeleteField( Field ) {
 		<?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
 </div>
 <form method="post" action="FamilyCustomFieldsEditor.php" name="FamilyCustomFieldsEditor">
-<table class="table">
+    <div class="table-responsive">
+<table class="table" class="table">
 
 <?php
 if ($numRows == 0) {
@@ -471,6 +472,7 @@ if ($numRows == 0) {
         </tr>
 
     </table>
+    </div>
     </form>
 </div>
 

@@ -150,25 +150,14 @@ $rsBraveCanvassers = CanvassGetCanvassers(gettext('BraveCanvassers'));
 require 'Include/Header.php';
 ?>
 
+<div class="box box-body">
 <form method="post" action="CanvassEditor.php?<?= 'FamilyID='.$iFamily.'&FYID='.$iFYID.'&CanvassID='.$iCanvassID.'&linkBack='.$linkBack ?>" name="CanvassEditor">
-
-<table cellpadding="3" align="center">
-
-	<tr>
-		<td align="center">
-			<input type="submit" class="btn" value="<?= gettext('Save') ?>" name="Submit">
-			<input type="button" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-    echo $linkBack;
-} else {
-    echo 'Menu.php';
-} ?>';">
-		</td>
-	</tr>
+<div class="table-responsive">
+<table class="table" cellpadding="3" align="center">
 
 	<tr>
 
 		<td>
-		<table cellpadding="3">
 
 			<?php
             if (($rsBraveCanvassers != 0 && mysqli_num_rows($rsBraveCanvassers) > 0) ||
@@ -245,9 +234,19 @@ require 'Include/Header.php';
 				<td class="LabelColumn"><?= gettext('Why Not Interested?') ?></td>
 				<td><textarea name="WhyNotInterested" rows="1" cols="90"><?= $tWhyNotInterested ?></textarea></td>
 			</tr>
+    </table>
+</div>
+    <div>
+            <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
+            <input type="button" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+                echo $linkBack;
+            } else {
+                echo 'Menu.php';
+            } ?>';">
 
-		</table>
-		</td>
+    </div>
+
 	</form>
-</table>
+</div>
+
 <?php require 'Include/Footer.php'; ?>

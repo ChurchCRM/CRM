@@ -26,6 +26,12 @@ We love to hear ideas from other ChurchInfo and ChurchCRM users!  It's what make
 * "Develop" is less strict.  If code is not perfect, but provides adequate functionality, it may be merged into develop.  All known bugs are should have new issues opened so that the issues are tracked.
 *  Features should be developed in a separate branch named accordingly
 
+## Testing
+
+  All PRs require appropriate tests of each piece of code that is modified.  PRs lacking proper tests will not be merged.  Please see our [testing documentation](http://docs.churchcrm.io/en/develop/Development/Tests/)  
+  
+  *We are happy to help you write tests, but tests are required.* 
+
 ## Submitting Changes
 
 * Push your changes to a topic branch in your fork of the repository.
@@ -41,6 +47,9 @@ Please familiarize yourself with the [documentation](http://docs.churchcrm.io/en
 
 * If you're changing anything in the API, please update the API documentation.  
 * If you are changing something that affects the user interface, please update the appropriate documentation and help files to ensure continued user friendliness of the application.
+
+
+
 
 ## Functional References
 
