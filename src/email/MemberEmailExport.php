@@ -5,12 +5,11 @@ require '../Include/Functions.php';
 
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\SundaySchoolService;
-use ChurchCRM\GroupQuery;
 use ChurchCRM\dto\SystemConfig;
 
 $groupService = new GroupService();
 $sundaySchoolService = new SundaySchoolService();
-$groups = GroupQuery::create()->find();
+$groups = $groupService->getGroups();
 
 $colNames = [];
 array_push($colNames, 'CRM ID');
@@ -18,14 +17,14 @@ array_push($colNames, 'FirstName');
 array_push($colNames, 'LastName');
 array_push($colNames, 'Email');
 foreach ($groups as $group) {
-    array_push($colNames, $group->getName());
+    array_push($colNames, $group['groupName']);
 }
 
 $sundaySchoolsParents = [];
 foreach ($groups as $group) {
-    if ($group->isSundaySchool()) {
+    if ($group['grp_Type'] == 4) {
         $sundaySchoolParents = [];
-        $kids = $sundaySchoolService->getKidsFullDetails($group->getId());
+        $kids = $sundaySchoolService->getKidsFullDetails($group['id']);
         $parentIds = [];
         foreach ($kids as $kid) {
             if ($kid['dadId'] != '') {
@@ -53,9 +52,9 @@ foreach ($personService->getPeopleEmailsAndGroups() as $person) {
     array_push($row, $person['lastName']);
     array_push($row, $person['email']);
     foreach ($groups as $group) {
-        $groupRole = $person[$group->getName()];
-        if ($groupRole == '' && $group->isSundaySchool()) {
-            if (in_array($person['id'], $sundaySchoolsParents[$group->getId()])) {
+        $groupRole = $person[$group['groupName']];
+        if ($groupRole == '' && $group['grp_Type'] == 4) {
+            if (in_array($person['id'], $sundaySchoolsParents[$group['id']])) {
                 $groupRole = 'Parent';
             }
         }
