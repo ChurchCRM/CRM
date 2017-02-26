@@ -104,7 +104,7 @@
         "scripts":[
           "/mysql/upgrade/2.6.0.sql"
         ],
-        "dbVersion": "2.6.0"
+        "dbVersion":"2.6.0"
     },
     "current": {
         "versions": [
