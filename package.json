@@ -50,6 +50,6 @@
         "composer-install": "cd src/ && composer install",
         "composer-update": " cd src/ && composer update",
         "tests-install": "cd tests/ && composer install",
-        "tests-run": "cd tests/behat/ && ../vendor/bin/behat"
+        "test": "cd tests/behat/ && ../vendor/bin/behat"
     }
 }
