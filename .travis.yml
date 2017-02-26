@@ -35,6 +35,7 @@ install:
  - npm run composer-install
  - npm run orm-gen
  - npm install
+ - npm run tests-install
 
 # linters
 before_script:
@@ -43,6 +44,7 @@ before_script:
 # execute tests
 script:
  - ./travis-ci/tests.sh
+ - npm test
 
 before_deploy:
  - npm run package
