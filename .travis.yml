@@ -35,7 +35,6 @@ install:
  - npm run composer-install
  - npm run orm-gen
  - npm install
- - npm run tests-install
 
 # linters
 before_script:
