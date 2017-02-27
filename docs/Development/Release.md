@@ -1,3 +1,28 @@
+# Release Rules
+
+1. ChurchCRM Major (0.x.x) and Minor (x.0.x) builds will only be released on Monday nights.
+
+  1.  If a Monday night build is blocked by a P0 bug, then that major or minor release will be delayed until the following Monday.
+
+2. ChurchCRM patch builds (x.x.0) may be released at any time, upon validation that the patch:
+
+  a.  Fixes the issue for which it is intended
+
+  b.  Does not introduce any new issues (or features)
+
+  c.  Does not significantly alter the code base
+
+# Bug Definitions
+ 
+## P0
+
+  * Cause database corruption.
+  * Prevents backup or restore the databse
+  * Expose sensitive data
+  * Prevents User Login
+  * App crashes
+
+
 # Process for creating a ChurchCRM Release
 
 ## 1. Clean and update the local working copy
