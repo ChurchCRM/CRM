@@ -3,12 +3,10 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
-use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\dto\SystemConfig;
 
-$groupService = new GroupService();
 $sundaySchoolService = new SundaySchoolService();
 $groups = GroupQuery::create()->filterByActive(true)->filterByIncludeInEmailExport(true)->find();
 
