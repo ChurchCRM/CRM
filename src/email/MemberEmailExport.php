@@ -10,7 +10,7 @@ use ChurchCRM\dto\SystemConfig;
 
 $groupService = new GroupService();
 $sundaySchoolService = new SundaySchoolService();
-$groups = GroupQuery::create()->find();
+$groups = GroupQuery::create()->filterByActive(true)->filterByIncludeInEmailExport(true)->find();
 
 $colNames = [];
 array_push($colNames, 'CRM ID');
