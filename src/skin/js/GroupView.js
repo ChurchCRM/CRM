@@ -309,7 +309,7 @@ function initDataTable() {
     $('#isGroupActive').change(function() {
         $.ajax({
             type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/status/' + $(this).prop('checked'),
+            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/active/' + $(this).prop('checked'),
             dataType: 'json', // what type of data do we expect back from the server
             encode: true
         });

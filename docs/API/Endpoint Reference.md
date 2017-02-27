@@ -61,6 +61,10 @@ ChurchCRM leverages Slim 2.6.2 to provide REST access to the data elements.
   *  requires JSON in the POST body with roleID set to the ID of the user's role in the specified group
 *  [POST]  /api/:groupID/setGroupSpecificPropertyStatus
   *  requires JSON property GroupSpecificPropertyStatus either true or false
+*  [POST]  /api/:groupID/settings/active/{true/false}
+  *  sets the status to true or false
+*  [POST]  /api/:groupID/settings/email/export/{true/false}
+  *  sets the email export status to true or false
 
 
 
