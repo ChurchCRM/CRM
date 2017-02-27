@@ -127,8 +127,9 @@ require 'Include/Header.php';
     ?>
               <li class="<?php if ($category == 'Church Information') {
         echo 'active';
-    } ?>"><a href="#<?= str_replace(" ", '', $category) ?>" data-toggle="tab"
-                                                                          aria-expanded="false"><?= $category ?></a>
+    } ?>"><a href="#<?= str_replace(" ", '', $category) ?>" data-toggle="tab" aria-expanded="false">
+                      <?= gettext($category) ?>
+                  </a>
               </li>
             <?php
 
@@ -140,17 +141,18 @@ require 'Include/Header.php';
             // Build Category Pages
             foreach (SystemConfig::getCategories() as  $category=>$settings) {
                 ?>
-         
+
             <div class="tab-pane <?php if ($category == 'Church Information') {
                     echo 'active';
                 } ?>" id="<?= str_replace(" ", '', $category) ?>">
+                <div class="table-responsive">
               <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext('Variable name') ?></th>
                   <th width="400px"><?= gettext('Value')?></th>
                   <th><?= gettext('Default Value')?></th>
                 </tr>
-                <?php 
+                <?php
                   foreach ($settings as $settingName) {
                       $setting = SystemConfig::getConfigItem($settingName)
                 ?>
@@ -244,8 +246,9 @@ require 'Include/Header.php';
 
                   } ?>
               </table>
+                </div>
             </div>
-          
+
           <?php
 
             }

@@ -203,6 +203,7 @@ function DoQuery()
             <?= $qry_Count ? mysqli_num_rows($rsQueryResults).gettext(' record(s) returned') : ''; ?>
         </p>
         
+        <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <?php
@@ -243,13 +244,14 @@ function DoQuery()
     } ?>
             </tbody>
         </table>
+        </div>
     </div>
     
     <div class="box-footer">
         <p>
         <?php if (count($aHiddenFormField)): ?>
             <form method="post" action="CartView.php">
-            <div class="btn-group">
+            <div class="col-sm-offset-1">
                 <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
                 <input type="submit" class="btn btn-primary btn-sm" name="AddToCartSubmit" value="<?= gettext('Add To Cart') ?>">
                 <input type="submit" class="btn btn-warning btn-sm" name="AndToCartSubmit" value="<?= gettext('Intersect With Cart') ?>">
@@ -302,8 +304,8 @@ function getQueryFormInput($queryParameters)
     extract($queryParameters);
     
     $input = '';
-    $label = '<label>' . $qrp_Name . '</label>';
-    $helpMsg = '<div>' . $qrp_Description . '</div>';
+    $label = '<label>' . gettext($qrp_Name) . '</label>';
+    $helpMsg = '<div>' . gettext($qrp_Description) . '</div>';
 
     switch ($qrp_Type) {
         //Standard INPUT box
@@ -318,7 +320,7 @@ function getQueryFormInput($queryParameters)
             $rsParameterOptions = RunQuery($sSQL);
 
             $input = '<select name="'.$qrp_Alias.'" class="form-control">';
-            $input .= '<option disabled selected value> -- select an option -- </option>';
+            $input .= '<option disabled selected value> -- ' . gettext("select an option"). ' -- </option>';
             
             //Loop through the parameter options
             while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
@@ -380,7 +382,7 @@ if (mysqli_num_rows($rsParameters)) {
     } ?>
                     
                     <div class="form-group text-right">
-                        <input class="btn btn-primary" type="Submit" value="Execute Query" name="Submit">
+                        <input class="btn btn-primary" type="Submit" value="<?= gettext("Execute Query") ?>" name="Submit">
                     </div>
                 </form>
                 

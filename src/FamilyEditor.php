@@ -732,6 +732,12 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#country-input").select2();
+            $("#state-input").select2();
+        });
+    </script>
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext('Contact Info') ?></h3>
@@ -946,7 +952,8 @@ require 'Include/Header.php';
 		<div class="MediumText">
 			<center><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later.  All entries will become <i>new</i> person records.') : '' ?></center>
 		</div><br><br>
-		<table class="horizontal-scroll" cellpadding="3" cellspacing="0" width="100%">
+            <div class="table-responsive">
+		<table cellpadding="3" cellspacing="0" width="100%">
 		<thead>
 		<tr class="TableHeader" align="center">
 			<th><?= gettext('First') ?></th>
@@ -1119,7 +1126,8 @@ require 'Include/Header.php';
                     }
             echo '</select></td></tr>';
         }
-        echo '</table>';
+        echo '</table></div>';
+
         echo '</div></div>';
     }
 

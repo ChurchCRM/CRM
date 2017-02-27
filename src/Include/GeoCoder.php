@@ -197,7 +197,8 @@ class AddressLatLon
 
     public function AddressLatLon()
     {
-        if (!SystemConfig::getValue('bHaveXML')) {
+        global $bHaveXML;
+        if (!$bHaveXML) {
             return;
         }
         if (SystemConfig::getValue('sGeocoderID') && SystemConfig::getValue('sGeocoderID') != '') { // Use credentials if available for unthrottled access to the geocoder server
@@ -218,6 +219,7 @@ class AddressLatLon
 
     public function Lookup()
     {
+        global $bHaveXML;
         global $googleMapObj;
 
         $address = $this->street.','.$this->city.','.$this->state.','.$this->zip;
@@ -231,7 +233,7 @@ class AddressLatLon
                 $this->lon = $geocode['lon'];
             }
         } else {
-            if (!SystemConfig::getValue('bHaveXML')) {
+            if (!$bHaveXML) {
                 return -4;
             }
 

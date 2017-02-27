@@ -99,7 +99,7 @@ $(document).ready(function () {
       },
       callback: function (result)
       {
-        if (result) 
+        if (result)
         {
           $.each(deletedRows, function (index, value) {
             $.ajax({
@@ -132,7 +132,7 @@ $(document).ready(function () {
                     })
       };
       $.ajax({
-        type: 'POST', 
+        type: 'POST',
         url: window.CRM.root + '/api/cart/',
         dataType: 'json',
         contentType: "application/json",
@@ -146,7 +146,7 @@ $(document).ready(function () {
     }
 
   });
-  
+
   //copy membership
   $("#addSelectedToGroup").click(function () {
     $("#selectTargetGroupModal").modal("show");
@@ -250,7 +250,7 @@ function initDataTable() {
         title: 'Name',
         data: 'PersonId',
         render: function (data, type, full, meta) {
-          return '<img src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/photo" class="direct-chat-img"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+          return '<img data-name="'+full.Person.FirstName + ' ' + full.Person.LastName + '" data-src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
         }
       },
       {
@@ -299,11 +299,30 @@ function initDataTable() {
     ],
     "fnDrawCallback": function (oSettings) {
       $("#iTotalMembers").text(oSettings.aoData.length);
+      $("#membersTable .initials-image").initial();
     },
     "createdRow": function (row, data, index) {
       $(row).addClass("groupRow");
     }
   });
+
+    $('#isGroupActive').change(function() {
+        $.ajax({
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/active/' + $(this).prop('checked'),
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+        });
+    });
+
+    $('#isGroupEmailExport').change(function() {
+        $.ajax({
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/email/export/' + $(this).prop('checked'),
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+        });
+    });
 
   $(document).on('click', '.groupRow', function () {
     $(this).toggleClass('selected');

@@ -11,7 +11,7 @@ msgstr ""
 #: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
 #: external/templates/registration/family-register.php:41
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
-#: FamilyList.php:30 GeoPage.php:370 PersonEditor.php:874 Register.php:50
+#: FamilyList.php:30 PersonEditor.php:874 Register.php:50
 #, fuzzy
 msgid "Zip"
 msgstr "Postcode"
@@ -31,7 +31,7 @@ msgstr "Cheque"
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:287
-#: Reports/GroupReport.php:132
+#: Reports/GroupReport.php:133
 msgid "Cell"
 msgstr "Mobile"
 

@@ -27,7 +27,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
               <div class="box">
                 <div class="box-header with-border">
                   <h4 class="box-title">
-                    Family Member #<?= $x ?>
+                    <?= gettext ("Family Member") . " #". $x ?>
                   </h4>
                 </div>
                 <div class="box-body">

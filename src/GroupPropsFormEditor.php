@@ -253,6 +253,7 @@ if (isset($_POST['SaveChanges'])) {
 
 <form method="post" action="GroupPropsFormEditor.php?GroupID=<?= $iGroupID ?>" name="GroupPropFormEditor">
 
+    <div class="table-responsive">
 <table class="table">
 
 <?php
@@ -418,6 +419,7 @@ if ($numRows == 0) {
 		</tr>
 
 	</table>
+    </div>
 	</form>
 
 </div>
