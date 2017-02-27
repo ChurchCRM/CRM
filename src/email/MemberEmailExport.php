@@ -35,7 +35,7 @@ foreach ($groups as $group) {
                 array_push($parentIds, $kid['momId']);
             }
         }
-        $sundaySchoolsParents[$group['id']] = $parentIds;
+        $sundaySchoolsParents[$group->getId()] = $parentIds;
     }
 }
 
