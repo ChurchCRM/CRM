@@ -92,7 +92,7 @@ require 'Include/Header.php';
     if ($_SESSION['bManageGroups']) {
         echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
         echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
-      
+
 
       <!-- MEMBER ROLE MODAL-->
       <div class="modal fade" id="changeMembership" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
@@ -253,43 +253,49 @@ require 'Include/Header.php';
   </div>
 </div>
 
+<div class="box">
+    <div class="box-body">
+        <?= $thisGroup->getDescription() ?>
+        <p/><p/><p/>
+        <button class="btn btn-success" type="button">
+            <?= gettext('Type of Group') ?> <span class="badge"> <?= $sGroupType ?> </span>
+        </button>
+        <button class="btn btn-info" type="button">
+        <?php if (!is_null($defaultRole)) {
+        ?>
+            <?= gettext('Default Role') ?> <span class="badge"><?= $defaultRole->getOptionName() ?></span>
+        <?php
 
+    } ?>
+        </button>
+        <button class="btn btn-primary" type="button">
+            <?= gettext('Total Members') ?> <span class="badge" id="iTotalMembers"></span>
+        </button>
+    </div>
+</div>
 
 
 <div class="box">
   <div class="box-header with-border">
+    <h3 class="box-title"><?= gettext('Quick Settings') ?></h3>
+  </div>
+  <div class="box-body">
+      <form>
+          <div class="col-sm-3"> <b><?= gettext('Status') ?>:</b> <input data-size="small" id="isGroupActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Active') ?>" data-off="<?= gettext('Disabled') ?>"> </div>
+          <div class="col-sm-3"> <b><?= gettext('Email export') ?>:</b> <input data-size="small" id="isGroupEmailExport" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Include') ?>" data-off="<?= gettext('Exclude') ?>"></div>
+      </form>
+  </div>
+</div>
+
+      <div class="box">
+  <div class="box-header with-border">
     <h3 class="box-title"><?= gettext('Group Properties') ?></h3>
   </div>
   <div class="box-body">
-
-    <table border="0" width="100%" cellspacing="0" cellpadding="5">
+      <table width="100%">
       <tr>
-        <td width="25%" valign="top" align="center">
-          <div class="LightShadedBox">
-            <b class="LargeText"><?= $thisGroup->getName() ?></b>
-            <br>
-            <?= $thisGroup->getDescription(); ?>
-            <br><br>
-            <table width="98%">
-              <tr>
-                <td align="center"><div class="TinyShadedBox"><font size="3">
-                    <?= gettext('Total Members:') ?><span id="iTotalMembers"></span>
-                    <br>
-                    <?= gettext('Type of Group:') ?> <?= $sGroupType ?>
-                    <br>
-                    <?php if (!is_null($defaultRole)) {
-        ?>
-                    <?= gettext('Default Role:') ?> <?= $defaultRole->getOptionName() ?>
-                    <?php 
-    } ?>
-                    </font></div></td>
-              </tr>
-            </table>
-          </div>
-        </td>
-        <td width="75%" valign="top" align="left">
-
-          <b><?= gettext('Group-Specific Properties:') ?></b>
+        <td>
+          <b><?= gettext('Group-Specific Properties') ?>:</b>
 
           <?php
           if ($thisGroup->getHasSpecialProps()) {
@@ -333,14 +339,14 @@ require 'Include/Header.php';
           }
 
             //Print Assigned Properties
-            echo '<br>';
-            echo '<b>'.gettext('Assigned Properties:').'</b>';
+            echo '<br><hr/>';
+            echo '<b>'.gettext('Assigned Properties').':</b>';
             $sAssignedProperties = ',';
 
             //Was anything returned?
             if (mysqli_num_rows($rsAssignedProperties) == 0) {
                 // No, indicate nothing returned
-              echo '<p align="center">'.gettext('No property assignments.').'</p>';
+              echo '<p>'.gettext('No property assignments').'.</p>';
             } else {
                 // Display table of properties
               ?>
@@ -411,7 +417,7 @@ require 'Include/Header.php';
 
                 if ($_SESSION['bManageGroups']) {
                     echo '<form method="post" action="PropertyAssign.php?GroupID='.$iGroupID.'">';
-                    echo '<p align="center">';
+                    echo '<p>';
                     echo '<span>'.gettext('Assign a New Property:').'</span>';
                     echo '<select name="PropertyID">';
 
@@ -425,7 +431,7 @@ require 'Include/Header.php';
                     }
 
                     echo '</select>';
-                    echo '<input type="submit" class="btn" value="'.gettext('Assign').'" name="Submit" style="font-size: 8pt;">';
+                    echo ' <input type="submit" class="btn btn-success" value="'.gettext('Assign').'" name="Submit" style="font-size: 8pt;">';
                     echo '</p></form>';
                 } else {
                     echo '<br><br><br>';
@@ -479,11 +485,12 @@ require 'Include/Header.php';
                 </form>
               </div>
             </div>
-
             <script>
               window.CRM.currentGroup = <?= $iGroupID ?>;
               var dataT = 0;
-              $(document).ready(function() {
+              $(document).ready(function () {
+                $('#isGroupActive').prop('checked', <?= $thisGroup->isActive()? 'true': 'false' ?>).change();
+                $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport()? 'true': 'false' ?>).change();
                 $("#deleteGroupButton").click(function() {
                   console.log("click");
                   bootbox.confirm({
