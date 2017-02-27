@@ -163,7 +163,7 @@ $app->group('/groups', function () {
         }
     });
 
-    $this->post('/{groupID:[0-9]+}/settings/status/{value}', function ($request, $response, $args) {
+    $this->post('/{groupID:[0-9]+}/settings/active/{value}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $flag = $args['value'];
         if ($flag == "true" || $flag == "false") {
@@ -186,7 +186,7 @@ $app->group('/groups', function () {
         if ($flag == "true" || $flag == "false") {
             $group = GroupQuery::create()->findOneById($groupID);
             if ($group != null) {
-                $group->setEmailExportEnabled($flag);
+                $group->setIncludeInEmailExport($flag);
                 $group->save();
             } else {
                 return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid group id']);

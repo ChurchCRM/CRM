@@ -277,18 +277,21 @@ require 'Include/Header.php';
 
 <div class="box">
   <div class="box-header with-border">
+    <h3 class="box-title"><?= gettext('Quick Settings') ?></h3>
+  </div>
+  <div class="box-body">
+      <form>
+          <div class="col-sm-3"> <b><?= gettext('Status') ?>:</b> <input data-size="small" id="isGroupActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Active') ?>" data-off="<?= gettext('Disabled') ?>"> </div>
+          <div class="col-sm-3"> <b><?= gettext('Email export') ?>:</b> <input data-size="small" id="isGroupEmailExport" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Include') ?>" data-off="<?= gettext('Exclude') ?>"></div>
+      </form>
+  </div>
+</div>
+
+      <div class="box">
+  <div class="box-header with-border">
     <h3 class="box-title"><?= gettext('Group Properties') ?></h3>
   </div>
   <div class="box-body">
-      <div>
-          <b><?= gettext('Quick Settings') ?>:</b>
-          <p/>
-          <form>
-              <b><?= gettext('Status') ?>:</b> <br/> <input id="isGroupActive" type="checkbox" data-toggle="toggle" data-on="<?= _('Active') ?>" data-off="<?= _('Disabled') ?>"> <br/>
-              <b><?= gettext('Include in email export') ?>:</b> <br/> <input id="isGroupEmailExport" type="checkbox" data-toggle="toggle" data-on="<?= _('Include') ?>" data-off="<?= _('Exclude') ?>">
-          </form>
-      </div>
-      <hr/>
       <table width="100%">
       <tr>
         <td>
@@ -343,7 +346,7 @@ require 'Include/Header.php';
             //Was anything returned?
             if (mysqli_num_rows($rsAssignedProperties) == 0) {
                 // No, indicate nothing returned
-              echo '<p>'.gettext('No property assignments.').'</p>';
+              echo '<p>'.gettext('No property assignments').'.</p>';
             } else {
                 // Display table of properties
               ?>
@@ -487,7 +490,7 @@ require 'Include/Header.php';
               var dataT = 0;
               $(document).ready(function () {
                 $('#isGroupActive').prop('checked', <?= $thisGroup->isActive()? 'true': 'false' ?>).change();
-                $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isEmailExportEnabled()? 'true': 'false' ?>).change();
+                $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport()? 'true': 'false' ?>).change();
                 $("#deleteGroupButton").click(function() {
                   console.log("click");
                   bootbox.confirm({
