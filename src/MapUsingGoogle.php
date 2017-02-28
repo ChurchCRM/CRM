@@ -14,8 +14,39 @@ $familyService = new FamilyService();
 //Set the page title
 $sPageTitle = gettext('View on Map');
 
-require 'Include/Header.php';
+require 'Include/Header.php'; ?>
 
+<style>
+    @media screen
+    and (max-device-width: 600px) {
+        #maplegend {
+            visibility: hidden;
+        }
+    }
+
+    @media screen
+    and (min-device-width: 599px) {
+        #maplegend {
+            display: block;
+        }
+    }
+
+    @media screen
+    and (max-device-width: 600px) {
+        #maplegend-mobile {
+            display: block;
+        }
+    }
+
+    @media screen
+    and (min-device-width: 599px) {
+        #maplegend-mobile {
+            visibility: hidden;
+        }
+    }
+</style>
+
+<?php
 $iGroupID = FilterInput($_GET['GroupID'], 'int');
 
 //update SystemConfig with coordinates if nChurchLatitude or nChurchLongitude is not set by using address lookup
@@ -93,57 +124,11 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
         ->find();
 
     ?>
-    <style>
-        #maplegend {
-            font-family: Arial, sans-serif;
-            background: #fff;
-            padding: 5px;
-            margin: 5px;
-            border: 1px solid #000;
-            opacity: 0.7;
-        }
-
-        #maplegend h4 {
-            margin-top: 0;
-        }
-
-        #maplegend img {
-            vertical-align: middle;
-        }
-
-        @media screen
-        and (max-device-width: 600px) {
-            #maplegend {
-                visibility: hidden;
-            }
-        }
-
-        @media screen
-        and (min-device-width: 599px) {
-            #maplegend {
-                display: block;
-            }
-        }
-
-        @media screen
-        and (max-device-width: 600px) {
-            #maplegend-mobile {
-                display: block;
-            }
-        }
-
-        @media screen
-        and (min-device-width: 599px) {
-            #maplegend-mobile {
-                visibility: hidden;
-            }
-        }
-    </style>
 
     <div class="box">
         <div class="col-lg-12">
             <!-- Google map div -->
-            <div id="map" style="height: 700px;"></div>
+            <div id="map" class="map-div" ></div>
             <!-- map legend, only Show for persons plot -->
             <div id="maplegend"><h4>Legend</h4></div>
 
@@ -324,8 +309,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
 
                     ?>
                     <div class="col-xs-6 col-sm-4 col-md-3">
-                        <img style="vertical-align:middle;"
-                             src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                        <img
+                            src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
                         <?= $icon->getOptionName() ?>
                     </div>
                     <?php
