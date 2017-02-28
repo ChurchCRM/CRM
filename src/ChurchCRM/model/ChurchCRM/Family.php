@@ -231,4 +231,22 @@ class Family extends BaseFamily implements iPhoto
       return $this->getPhoto()->getPhotoContentType();
     }
 
+    /**
+     * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
+     * @return array of Lat/Lng
+     */
+    public function getLatLng() {
+        if ($this->getLatitude() == 0 || $this->getLongitude() == 0 ) {
+            $prepAddr = str_replace(' ','+',$this->getAddress());
+            $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
+            $output= json_decode($geocode);
+            $this->setLatitude($output->results[0]->geometry->location->lat);
+            $this->setLongitude($output->results[0]->geometry->location->lng);
+        }
+        return array(
+            'Latitude' => $this->getLatitude(),
+            'Longitude' => $this->getLongitude()
+        );
+    }
+
 }

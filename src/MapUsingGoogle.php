@@ -196,6 +196,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                     $arrPlotItems = array();
                     if ($plotFamily) {
                         foreach ($families as $family) {
+                            $latLng = $family->getLatLng();
                             //this helps to add head people persons details: otherwise doesn't seems to populate
                             $class = $family->getHeadPeople()[0];
                             $family->getHeadPeople()[0];
@@ -205,8 +206,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                             $arr['Salutation'] = MakeSalutationUtility($family->getId());
                             $arr['Address'] = $family->getAddress();
                             $arr['Thumbnail'] = $photoFileThumb;
-                            $arr['Latitude'] = $family->getLatitude();
-                            $arr['Longitude'] = $family->getLongitude();
+                            $arr['Latitude'] = $latLng['Latitude'];
+                            $arr['Longitude'] = $latLng['Longitude'];
                             $arr['Name'] = $family->getName();
                             $arr['Classification'] = $class->GetClsId();
                             array_push($arrPlotItems, $arr);
@@ -215,12 +216,13 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                         //plot Person
                         foreach ($persons as $member) {
                             $photoFileThumb = '/api/persons/' . $member->getId() . '/photo';
+                            $latLng = $member->getLatLng();
                             $arr['ID'] = $member->getId();
                             $arr['Salutation'] = $member->getFullName();
                             $arr['Address'] = $member->getAddress();
                             $arr['Thumbnail'] = $photoFileThumb;
-                            $arr['Latitude'] = $member->getLatitude();
-                            $arr['Longitude'] = $member->getLongitude();
+                            $arr['Latitude'] = $latLng['Latitude'];
+                            $arr['Longitude'] = $latLng['Longitude'];
                             $arr['Name'] = $member->getFullName();
                             $arr['Classification'] = $member->getClsId();
                             array_push($arrPlotItems, $arr);

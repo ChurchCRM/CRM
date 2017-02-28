@@ -168,45 +168,29 @@ class Person extends BasePerson implements iPhoto
     }
 
     /**
-     * If person address found, return latitude of person address
-     * else return family latitude
-     * @return float|int
+     * * If person address found, return latitude and Longitude of person address
+     * else return family latitude and Longitude
+     * @return array
      */
-    public function getLatitude()
+    public function getLatLng()
     {
         $address = $this->getAddress(); //if person address empty, this will get Family address
-        $lat = 0;
+        $lat = 0; $lng = 0;
         if (!empty($this->getAddress1())) {
             $prepAddr = str_replace(' ','+',$address);
             $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
             $output= json_decode($geocode);
             $lat = $output->results[0]->geometry->location->lat;
-        } else {
-            $lat = $this->getFamily()->getLatitude();
-        }
-        return $lat;
-
-    }
-
-    /**
-     * * If person address found, return longitude of person address
-     * else return family longitude
-     *
-     * @return float|int
-     */
-    public function getLongitude()
-    {
-        $address = $this->getAddress(); //if person address empty, this will get Family address
-        $lng = 0;
-        if (!empty($this->getAddress1())) {
-            $prepAddr = str_replace(' ','+',$address);
-            $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
-            $output= json_decode($geocode);
             $lng = $output->results[0]->geometry->location->lng;
         } else {
+            $lat = $this->getFamily()->getLatitude();
             $lng = $this->getFamily()->getLongitude();
         }
-        return $lng;
+        return array(
+            'Latitude' => $lat,
+            'Longitude' => $lng
+        );
+
 
     }
     
