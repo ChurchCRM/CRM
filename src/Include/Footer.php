@@ -198,9 +198,9 @@ $isAdmin = $_SESSION['user']->isAdmin();
                         </li>
                         <?php
 
-                    } else {
-                        echo _('Please contact your admin to change the system settings.');
-                    } ?>
+} else {
+    echo _('Please contact your admin to change the system settings.');
+} ?>
                     <li>
                         <a href="<?= SystemURLs::getRootPath() ?>/CSVExport.php">
                             <i class="menu-icon fa fa-download bg-green"></i>
