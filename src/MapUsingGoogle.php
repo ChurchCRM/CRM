@@ -8,6 +8,7 @@ use ChurchCRM\Base\FamilyQuery;
 use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\dto\SystemURLs;
 
 $familyService = new FamilyService();
 
@@ -169,6 +170,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                     google.maps.event.addListener(marker, 'click', function () {
                         infowindow.setContent(infowindow_content);
                         infowindow.open(map, marker);
+                        //set image/gravtar
+                        $('.profile-user-img').initial();
                     });
                 }
 
@@ -200,9 +203,9 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                             //this helps to add head people persons details: otherwise doesn't seems to populate
                             $class = $family->getHeadPeople()[0];
                             $family->getHeadPeople()[0];
-                            //echo $class['per_cls_Id'];
-                            $photoFileThumb = $familyService->getFamilyPhoto($family->getId());
+                            $photoFileThumb = SystemURLs::getRootPath().'/api/family/' . $family->getId() . '/thumbnail';
                             $arr['ID'] = $family->getId();
+                            $arr['Name'] = $family->getName();
                             $arr['Salutation'] = MakeSalutationUtility($family->getId());
                             $arr['Address'] = $family->getAddress();
                             $arr['Thumbnail'] = $photoFileThumb;
@@ -215,10 +218,11 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                     } else {
                         //plot Person
                         foreach ($persons as $member) {
-                            $photoFileThumb = '/api/persons/' . $member->getId() . '/photo';
                             $latLng = $member->getLatLng();
+                            $photoFileThumb = SystemURLs::getRootPath().'/api/persons/' . $member->getId() . '/thumbnail';
                             $arr['ID'] = $member->getId();
                             $arr['Salutation'] = $member->getFullName();
+                            $arr['Name'] = $member->getFullName();
                             $arr['Address'] = $member->getAddress();
                             $arr['Thumbnail'] = $photoFileThumb;
                             $arr['Latitude'] = $latLng['Latitude'];
@@ -269,8 +273,9 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                         contentString = "<b><a href='" + imghref + "'>" + plotArray[i].Salutation + "</a></b>";
                         contentString += "<p>" + plotArray[i].Address + "</p>";
                         if (plotArray[i].Thumbnail.length > 0) {
-                            contentString += "<p style='text-align: center'><a href='" + imghref + "'>";
-                            contentString += "<img class='img-circle img-responsive profile-user-img' border='1' src='" + plotArray[i].Thumbnail + "'></a></p>";
+                            //contentString += "<div class='image-container'><p class='text-center'><a href='" + imghref + "'>";
+                            contentString += "<div class='image-container'>";
+                            contentString += "<img data-name='"+ plotArray[i].Name + " ' class='profile-user-img img-responsive img-circle' border='1' data-src='" + plotArray[i].Thumbnail + "'></div>";
                         }
 
                         //Add marker and infowindow
