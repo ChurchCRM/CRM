@@ -184,10 +184,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     <div class="box box-primary">
       <div class="box-body box-profile">
         <div class="image-container">
-            <img  data-name="<?= $person->getFullName()?>" data-src = "<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
+            <img  data-name="<?= $person->getFullName()?>" data-src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>" 
+            class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
             <?php if ($bOkToEdit): ?>
                 <div class="after">
                 <div class="buttons">
+                    <a id="view-larger-image-btn" class="hide" href="#" data-toggle="modal" data-target="#view-image" title="<?= gettext("View Photo") ?>">
+                        <i class="fa fa-search-plus"></i>
+                    </a>&nbsp;
                     <a href="#" class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
                         <i class="fa fa-camera"></i>
                     </a>&nbsp;
@@ -905,6 +909,21 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   
 </div>
 
+<div id="view-image" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><?= gettext('My Photo') ?></h4>
+            </div>
+            
+            <div class="modal-body">
+                <img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/photo" />
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -993,6 +1012,19 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         };
         $("#assigned-volunteer-opps-table").DataTable(options);
         $("#assigned-properties-table").DataTable(options);
+        
+        
+        $.ajax({
+            method :"HEAD",
+            url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
+            processData: false,
+            global:false,
+            success: function(d){
+                $("#view-larger-image-btn").removeClass('hide');
+            },
+            error: function(event) {
+            }
+        });
     });
   
   
