@@ -558,6 +558,8 @@ if ($iFamily) {
 require 'Include/Header.php';
 
 ?>
+<div class="box">
+    <div class="box-body table-responsive">
 <form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= $sGroupKey ?>&PledgeOrPayment=<?= $PledgeOrPayment ?>&linkBack=<?= $linkBack ?>" name="PledgeEditor">
 
 <input type="hidden" name="FamilyID" id="FamilyID" value="<?= $iFamily ?>">
@@ -888,5 +890,7 @@ $(document).ready(function() {
             } ?>
 </table>
 </form>
+</div>
+</div>
 
 <?php require 'Include/Footer.php' ?>

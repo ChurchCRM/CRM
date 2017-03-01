@@ -53,7 +53,7 @@ if (isset($_POST['EnterWinners'])) {
 // Get Items for the drop-down
 $sDonatedItemsSQL = "SELECT di_ID, di_Item, di_title, di_multibuy
                      FROM donateditem_di
-                     WHERE di_FR_ID = '".$iCurrentFundraiser."' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR_Item,2,3),SIGNED)";
+                     WHERE di_FR_ID = '".$iCurrentFundraiser."' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)";
 $rsDonatedItems = RunQuery($sDonatedItemsSQL);
 
 //Get Paddles for the drop-down
@@ -68,10 +68,10 @@ $rsPaddles = RunQuery($sPaddleSQL);
 require 'Include/Header.php';
 
 ?>
-
+<div class="box box-body">
 <form method="post" action="BatchWinnerEntry.php?<?= 'CurrentFundraiser='.'&linkBack='.$linkBack ?>" name="BatchWinnerEntry">
-
-<table cellpadding="3" align="center">
+<div class="table-responsive">
+<table class="table" cellpadding="2" align="center">
 	<tr>
 		<td class="LabelColumn"><?= gettext('Item') ?></td>
 		<td class="LabelColumn"><?= gettext('Winner') ?></td>
@@ -109,8 +109,8 @@ require 'Include/Header.php';
     }
 ?>
 	<tr>
-		<td align="center">
-			<input type="submit" class="btn" value="<?= gettext('Enter Winners') ?>" name="EnterWinners">
+		<td colspan="2" align="center">
+			<input type="submit" class="btn btn-primary" value="<?= gettext('Enter Winners') ?>" name="EnterWinners">
 			<input type="button" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
     echo $linkBack;
 } else {
@@ -119,6 +119,8 @@ require 'Include/Header.php';
 		</td>
 	</tr>
 	</table>
+</div>
 </form>
+</div>
 
 <?php require 'Include/Footer.php' ?>

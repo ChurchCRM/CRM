@@ -70,8 +70,8 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 ?>
-
-<table align="center" class="table">
+<div class="table-responsive">
+<table class="table" align="center" class="table">
 <?php if (!array_key_exists('cartdir', $_GET)) {
     ?>
     <tr>
@@ -275,6 +275,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 
 </table>
+</div>
 
 <?php if (array_key_exists('cartdir', $_GET)) {
              echo '<input type="hidden" name="cartdir" value="M">';
