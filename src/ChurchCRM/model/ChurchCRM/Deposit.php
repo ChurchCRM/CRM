@@ -214,7 +214,7 @@ class Deposit extends BaseDeposit
         $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x + 125;
         $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY + 30;
         $this->generateTotalsByFund($thisReport);
-        
+
         $thisReport->curY += $thisReport->QBDepositTicketParameters->lineItemInterval->y;
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->SetFont('Times', 'B', 10);
@@ -371,7 +371,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);
     }
 
-    public function getPDF($displayBillCounts = true)
+    public function getPDF()
     {
         requireUserGroupMembership('bFinance');
         $Report = new \stdClass();
@@ -379,7 +379,7 @@ class Deposit extends BaseDeposit
             throw new \Exception('No Payments on this Deposit', 404);
         }
 
-        $Report->displayBillCounts = $displayBillCounts;
+        $Report->displayBillCounts = SystemConfig::getBooleanValue('bDisplayBillCounts');
         $Report->pdf = new \ChurchCRM\Reports\PDF_DepositReport();
         $Report->funds = DonationFundQuery::create()->find();
 
@@ -466,7 +466,7 @@ class Deposit extends BaseDeposit
       ->orderBy(DonationFundTableMap::COL_FUN_NAME)
       ->select(['Name', 'Total'])
       ->find();
-        
+
         return $funds;
     }
 

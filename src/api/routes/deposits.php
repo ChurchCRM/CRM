@@ -44,10 +44,9 @@ $app->group('/deposits', function () {
         echo $OFX->content;
     });
 
-    $this->get('/{id:[0-9]+}/pdf[/{displayBillCounts}]', function ($request, $response, $args) {
+    $this->get('/{id:[0-9]+}/pdf', function ($request, $response, $args) {
         $id = $args['id'];
-        $displayBillCounts = ($args['displayBillCounts'] !== 'false');
-        DepositQuery::create()->findOneById($id)->getPDF($displayBillCounts);
+        DepositQuery::create()->findOneById($id)->getPDF();
     });
 
     $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
