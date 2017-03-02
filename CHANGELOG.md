@@ -1,24 +1,5 @@
 # Change Log
 
-## [Unreleased](https://github.com/ChurchCRM/CRM/tree/HEAD)
-
-[Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.6.0...HEAD)
-
-**Implemented enhancements:**
-
-- New Group settings - Active/Email Export [\#2009](https://github.com/ChurchCRM/CRM/pull/2009) ([DawoudIO](https://github.com/DawoudIO))
-- Lastname validation disable option \#1953 [\#1971](https://github.com/ChurchCRM/CRM/pull/1971) ([simonkp](https://github.com/simonkp))
-
-**Closed issues:**
-
-- tes [\#2030](https://github.com/ChurchCRM/CRM/issues/2030)
-- Deposit Buttons smashed together [\#2019](https://github.com/ChurchCRM/CRM/issues/2019)
-- Deposit Buttons smashed together [\#2018](https://github.com/ChurchCRM/CRM/issues/2018)
-
-**Merged pull requests:**
-
-- Apply fixes from StyleCI [\#2023](https://github.com/ChurchCRM/CRM/pull/2023) ([DawoudIO](https://github.com/DawoudIO))
-
 ## [2.6.0](https://github.com/ChurchCRM/CRM/tree/2.6.0) (2017-02-27)
 [Full Changelog](https://github.com/ChurchCRM/CRM/compare/2.6.0-RC3...2.6.0)
 
