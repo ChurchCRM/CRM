@@ -330,8 +330,6 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         $sEmailLink .= $sMailtoDelimiter.$sEmail;
                     }
                 }
-                
-
             } else {
                 $sValidEmail = gettext('No');
             }
