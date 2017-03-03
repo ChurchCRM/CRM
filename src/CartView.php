@@ -284,7 +284,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 } ?>
 
 <!-- BEGIN CART LISTING -->
-<?php if ($iNumPersons > 0): ?>
+<?php if (isset($iNumPersons) && $iNumPersons > 0): ?>
     <div class="box box-primary">
         <div class="box-header with-border">
             <h3 class="box-title">
@@ -330,6 +330,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         $sEmailLink .= $sMailtoDelimiter.$sEmail;
                     }
                 }
+                
 
             } else {
                 $sValidEmail = gettext('No');
