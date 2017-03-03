@@ -23,7 +23,7 @@ env:
   - DB=mysql
 
 before_install:
-  - ./travis-ci/install-tests.sh
+ - ./travis-ci/install-tests.sh
  - pwd
  - sudo apt-get update
  - sudo apt-get install ruby-full
