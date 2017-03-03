@@ -23,9 +23,12 @@ env:
   - DB=mysql
 
 before_install:
+ - pwd
  - sudo apt-get update
  - sudo apt-get install ruby-full apache2
  - sudo a2enmod rewrite
+ - sudo sed -i 's/^\s*DocumentRoot.*$/DocumentRoot \/var\/www/public/g' /etc/apache2/sites-enabled/000-default.conf
+ - sudo service apache2 restart
  - sudo gem install sass
  - chmod +x ./travis-ci/*.sh
  - chmod +x ./scripts/*.sh
