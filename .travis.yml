@@ -23,6 +23,7 @@ env:
   - DB=mysql
 
 before_install:
+  - ./travis-ci/install-tests.sh
  - pwd
  - sudo apt-get update
  - sudo apt-get install ruby-full
@@ -30,7 +31,7 @@ before_install:
  - chmod +x ./travis-ci/*.sh
  - chmod +x ./scripts/*.sh
  - cp BuildConfig.json.example BuildConfig.json
- - ./travis-ci/install-tests.sh
+ 
 
 # prepare travis ci for the build process
 install:
