@@ -23,13 +23,13 @@ env:
   - DB=mysql
 
 before_install:
- - ./travis-ci/install-tests.sh
+ - chmod +x ./travis-ci/*.sh
+ - chmod +x ./scripts/*.sh
+ - sudo ./travis-ci/install-tests.sh
  - pwd
  - sudo apt-get update
  - sudo apt-get install ruby-full
  - sudo gem install sass
- - chmod +x ./travis-ci/*.sh
- - chmod +x ./scripts/*.sh
  - cp BuildConfig.json.example BuildConfig.json
  
 
