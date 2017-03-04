@@ -105,4 +105,67 @@ class DashboardService
 
         return $data;
     }
+
+
+    /**
+     * //Return last edited families. only active families selected
+     * @param int $limit
+     * @return array|\ChurchCRM\Family[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
+     */
+    public function getUpdatedFamilies($limit = 12)
+    {
+        return FamilyQuery::create()
+            ->filterByDateDeactivated(null)
+            ->orderByDateLastEdited('DESC')
+            ->limit($limit)
+            ->find();
+
+    }
+
+    /**
+     * Return newly added families. Only active families selected
+     * @param int $limit
+     * @return array|\ChurchCRM\Family[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
+     */
+    public function getLatestFamilies($limit = 12)
+    {
+
+        return FamilyQuery::create()
+            ->filterByDateDeactivated(null)
+            ->filterByDateLastEdited(null)
+            ->orderByDateEntered('DESC')
+            ->limit($limit)
+            ->find();
+    }
+
+    /**
+     * Return last edited members. Only from active families selected
+     * @param int $limit
+     * @return array|\ChurchCRM\Person[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
+     */
+    public function getUpdatedMembers($limit = 12)
+    {
+        return PersonQuery::create()
+            ->leftJoinWithFamily()
+            ->where('Family.DateDeactivated is null')
+            ->orderByDateLastEdited('DESC')
+            ->limit($limit)
+            ->find();
+    }
+
+    /**
+     * Newly added members. Only from Active families selected
+     * @param int $limit
+     * @return array|\ChurchCRM\Person[]|mixed|\Propel\Runtime\ActiveRecord\ActiveRecordInterface[]|\Propel\Runtime\Collection\ObjectCollection
+     */
+    public function getLatestMembers($limit = 12)
+    {
+        return PersonQuery::create()
+            ->leftJoinWithFamily()
+            ->where('Family.DateDeactivated is null')
+            ->filterByDateLastEdited(null)
+            ->orderByDateEntered('DESC')
+            ->limit($limit)
+            ->find();
+    }
 }
