@@ -32,12 +32,6 @@ In addition to the above roles, the following actions are controlled granularly 
 
 ###sMailtoDelimiter
 
-###bSendPHPMail
-
-###sFromEmailAddress
-
-###sFromName
-
 ###bCreateDirectory
 
 ###bExportCSV
