@@ -70,4 +70,8 @@ class User extends BaseUser
     {
         return $this->isAdmin() || $this->isCanvasser();
     }
+
+    public function updatePassword($password) {
+        $this->setPassword(md5(strtolower($password)));
+    }
 }
