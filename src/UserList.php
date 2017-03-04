@@ -58,36 +58,45 @@ require 'Include/Header.php';
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($rsUsers as $user) { //Loop through the person ?>
+            <?php foreach ($rsUsers as $user) { //Loop through the person?>
                 <tr>
                     <td>
                         <a href="UserEditor.php?PersonID=<?= $user->getId() ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                        <?php if ($user->getId() != $_SESSION['user']->getId()) {?>
+                        <?php if ($user->getId() != $_SESSION['user']->getId()) {
+    ?>
                         <a onclick="deleteUser(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                        <?php } ?>
+                        <?php 
+} ?>
                     </td>
                     <td><a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a></td>
                     <td align="center"><?= $user->getLastLogin(SystemConfig::getValue('sDateFormatShort')) ?></td>
                     <td align="center"><?= $user->getLoginCount() ?></td>
                     <td align="center">
-                        <?php if ($user->isLocked()) { ?>
+                        <?php if ($user->isLocked()) {
+    ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
-                        <?php } else {
-                            echo $user->getFailedLogins();
-                        }
-                        if ($user->getFailedLogins()> 0){ ?>
+                        <?php 
+} else {
+    echo $user->getFailedLogins();
+}
+    if ($user->getFailedLogins()> 0) {
+        ?>
                             <a onclick="restUserLoginCount(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-eraser" aria-hidden="true"></i></a>
-                        <?php } ?>
+                        <?php 
+    } ?>
                     </td>
                     <td>
                         <a href="UserPasswordChange.php?PersonID=<?= $user->getId() ?>&FromUserList=True"><i class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                        <?php if ($user->getId() != $_SESSION['user']->getId()) {?>
+                        <?php if ($user->getId() != $_SESSION['user']->getId()) {
+        ?>
                             <a onclick="resetUserPassword(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-send-o" aria-hidden="true"></i></a>
-                        <?php } ?>
+                        <?php 
+    } ?>
                     </td>
 
                 </tr>
-            <?php } ?>
+            <?php 
+} ?>
             </tbody>
         </table>
     </div>
