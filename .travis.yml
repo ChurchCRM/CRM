@@ -51,7 +51,7 @@ before_script:
  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
  # configure apache virtual hosts
  - sudo cp -f travis-ci/000-default.conf /etc/apache2/sites-available/000-default.conf
- - sudo chmod -R a+rwx $(pwd)/src
+ - sudo chmod -R a+rwx $(pwd)
  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/src?g" --in-place /etc/apache2/sites-available/000-default.conf
  - sudo service apache2 restart
  - cat /etc/apache2/sites-available/000-default.conf
