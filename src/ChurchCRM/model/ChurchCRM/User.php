@@ -74,4 +74,13 @@ class User extends BaseUser
     public function updatePassword($password) {
         $this->setPassword(md5(strtolower($password)));
     }
+
+    public function isPasswordValid($password) {
+        $passwordHashSha256 = hash('sha256', $password.$this->getPersonId());
+        return $this->getPassword() == $passwordHashSha256;
+    }
+
+    public function hasReachedMaxFailedLogin() {
+        return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
+    }
 }
