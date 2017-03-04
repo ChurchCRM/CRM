@@ -13,8 +13,8 @@ echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php
 sudo a2enmod rewrite
 
 # configure apache virtual hosts
-sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/default
-sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
+sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/000-default.conf
+sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/000-default.conf
 sudo service apache2 restart
 
 cat /etc/apache2/sites-enabled/000-default.conf
