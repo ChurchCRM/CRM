@@ -17,6 +17,17 @@
     height:700px;
 }
 
+div {
+    .legenditem {
+        padding: 4px 4px;
+        margin-bottom: 4px;
+        box-shadow: 1px 1px 1px 1px darkgrey;
+    }
+    .legendbox {
+        margin: 7px 10px 10px 10px ;
+    }
+}
+
 @media screen and (max-device-width: 600px) {
     #maplegend {
         visibility: hidden;

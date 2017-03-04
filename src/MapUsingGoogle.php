@@ -7,21 +7,14 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Base\FamilyQuery;
 use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Service\FamilyService;
 use ChurchCRM\dto\SystemURLs;
 
-$familyService = new FamilyService();
 
 //Set the page title
 $sPageTitle = gettext('View on Map');
 
-require 'Include/Header.php'; ?>
+require 'Include/Header.php';
 
-<style>
-
-</style>
-
-<?php
 $iGroupID = FilterInput($_GET['GroupID'], 'int');
 
 //update SystemConfig with coordinates if nChurchLatitude or nChurchLongitude is not set by using address lookup
@@ -105,7 +98,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             <!-- Google map div -->
             <div id="map" class="map-div" ></div>
             <!-- map legend, only Show for persons plot -->
-            <div id="maplegend"><h4>Legend</h4></div>
+            <div id="maplegend"><h4><?= gettext('Legend') ?></h4></div>
 
             <!--Google Map Scripts -->
             <script
@@ -280,27 +273,28 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
 
             </script>
         </div>
-        <br>
-        <div id="maplegend-mobile">
-            <label><b>Key:</b></label>
-            <div class="row">
-                <?php
-                $i = 0;
-                foreach ($icons as $icon) {
+    </div> <!--Box-->
+    <div id="maplegend-mobile" class="box">
+        <div class="row legendbox">
+            <div class="btn bg-primary col-xs-12"><?= gettext('Legend') ?></div>
+        </div>
+        <div class="row legendbox">
+            <?php
+            $i = 0;
+            foreach ($icons as $icon) {
 
-                    ?>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <img
-                            src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
-                        <?= $icon->getOptionName() ?>
-                    </div>
-                    <?php
-                    $i += 1;
-
-                }
                 ?>
+                <div class="col-xs-6 legenditem">
+                    <img
+                        src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                    <?= $icon->getOptionName() ?>
+                </div>
 
-            </div>
+                <?php
+                $i += 1;
+
+            }
+            ?>
         </div>
     </div>
     <?php
