@@ -70,7 +70,7 @@ require 'Include/Header.php';
                     <td align="center"><?= $user->getLastLogin(SystemConfig::getValue('sDateFormatShort')) ?></td>
                     <td align="center"><?= $user->getLoginCount() ?></td>
                     <td align="center">
-                        <?php if ($user->hasReachedMaxFailedLogin()) { ?>
+                        <?php if ($user->isLocked()) { ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
                         <?php } else {
                             echo $user->getFailedLogins();

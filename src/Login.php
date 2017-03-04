@@ -46,7 +46,7 @@ if (isset($_POST['User'])) {
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
     } // Block the login if a maximum login failure count has been reached
-    elseif ($currentUser->hasReachedMaxFailedLogin()) {
+    elseif ($currentUser->isLocked()) {
         $sErrorText = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
     } // Does the password match?
     elseif (!$currentUser->isPasswordValid($_POST['Password'])) {

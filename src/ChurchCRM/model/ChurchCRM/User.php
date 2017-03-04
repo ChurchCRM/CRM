@@ -81,7 +81,7 @@ class User extends BaseUser
         return $this->getPassword() == $passwordHashSha256;
     }
 
-    public function hasReachedMaxFailedLogin() {
+    public function isLocked() {
         return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
     }
 }
