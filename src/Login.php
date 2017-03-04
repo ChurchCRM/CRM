@@ -29,9 +29,9 @@
  ******************************************************************************/
 
 // Include the function library
-require dirname(__FILE__).'/Include/Config.php';
+require 'Include/Config.php';
 $bSuppressSessionTests = true;
-require dirname(__FILE__).'/Include/Functions.php';
+require 'Include/Functions.php';
 // Initialize the variables
 
 use ChurchCRM\dto\SystemConfig;
