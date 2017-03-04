@@ -5,7 +5,6 @@ require 'Include/Functions.php';
 
 use ChurchCRM\UserQuery;
 
-
 if (!empty($_SESSION['iUserID'])) {
     if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == '')) {
         $_SESSION['sshowPledges'] = 0;
