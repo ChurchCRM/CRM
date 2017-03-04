@@ -120,7 +120,7 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
     $dLastSunday = $currentUser->getCalEnd();
     $dNoSchool1 = $currentUser->getCalNoSchool1();
     $dNoSchool2 = $currentUser->getCalNoSchool2();
-    $dNoSchool3 = $currentUser->getCalNoSchool3();;
+    $dNoSchool3 = $currentUser->getCalNoSchool3();
     $dNoSchool4 = $currentUser->getCalNoSchool4();
     $dNoSchool5 = $currentUser->getCalNoSchool5();
     $dNoSchool6 = $currentUser->getCalNoSchool6();
