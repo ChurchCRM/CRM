@@ -1,7 +1,7 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
 php:
-  - 7.0
+  - '7.0'
 
 rvm:
   - 2.2
