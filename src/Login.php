@@ -30,74 +30,26 @@
 
 // Include the function library
 require 'Include/Config.php';
-$bSuppressSessionTests = true;
+$bSuppressSessionTests = true; // DO NOT MOVE
 require 'Include/Functions.php';
-// Initialize the variables
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
 
-$systemService = new SystemService();
-
-// Is the user requesting to logoff or timed out?
-if (isset($_GET['Logoff']) || isset($_GET['Timeout'])) {
-    if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == '')) {
-        $_SESSION['sshowPledges'] = 0;
-    }
-    if (!isset($_SESSION['sshowPayments']) || ($_SESSION['sshowPayments'] == '')) {
-        $_SESSION['sshowPayments'] = 0;
-    }
-    if (!isset($_SESSION['bSearchFamily']) || ($_SESSION['bSearchFamily'] == '')) {
-        $_SESSION['bSearchFamily'] = 0;
-    }
-
-    if (!empty($_SESSION['iUserID'])) {
-        $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
-        $currentUser->setShowPledges($_SESSION['sshowPledges']);
-        $currentUser->setShowPayments($_SESSION['sshowPayments']);
-        $currentUser->setShowSince($_SESSION['sshowSince']);
-        $currentUser->setDefaultFY($_SESSION['idefaultFY']);
-        $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
-
-        $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
-        $currentUser->save();
-    }
-}
-
-$currentUser = 0;
 // Get the UserID out of user name submitted in form results
-if (isset($_POST['User']) && !isset($sErrorText)) {
-
+if (isset($_POST['User'])) {
     // Get the information for the selected user
     $UserName = FilterInput($_POST['User'], 'string', 32);
     $currentUser = UserQuery::create()->findOneByUserName($UserName);
     if ($currentUser == null) {
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
-    }
-} else {
-    // Nothing submitted yet, must be the first time loading this page.
-    // Clear out any old session
-    $currentUser = 0;
-    $_COOKIE = [];
-    $_SESSION = [];
-    session_destroy();
-}
-
-// Has the form been submitted?
-if ($currentUser != null) {
-    $bPasswordMatch = false;
-
-    // Check the user password
-    $sPasswordHashSha256 = hash('sha256', $_POST['Password'].$currentUser->getPersonId());
-
-    // Block the login if a maximum login failure count has been reached
-    if (SystemConfig::getValue('iMaxFailedLogins') > 0 && $currentUser->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins')) {
+    } // Block the login if a maximum login failure count has been reached
+    elseif ($currentUser->hasReachedMaxFailedLogin()) {
         $sErrorText = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
-    }
-    // Does the password match?
-    elseif ($currentUser->getPassword() != $sPasswordHashSha256) {
+    } // Does the password match?
+    elseif (!$currentUser->isPasswordValid($_POST['Password'])) {
         // Increment the FailedLogins
         $currentUser->setFailedLogins($currentUser->getFailedLogins() + 1);
         $currentUser->save();
@@ -111,6 +63,7 @@ if ($currentUser != null) {
         $currentUser->setLoginCount($currentUser->getLoginCount() + 1);
         $currentUser->setFailedLogins(0);
         $currentUser->save();
+
         $_SESSION['user'] = $currentUser;
 
         // Set the User's family id in case EditSelf is enabled
@@ -123,7 +76,7 @@ if ($currentUser != null) {
         $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 
         // If user has administrator privilege, override other settings and enable all permissions.
-      $_SESSION['bAdmin'] = $currentUser->isAdmin();
+        $_SESSION['bAdmin'] = $currentUser->isAdmin();
 
         $_SESSION['bAddRecords'] = $currentUser->isAddRecordsEnabled();
         $_SESSION['bEditRecords'] = $currentUser->isEditRecordsEnabled();
@@ -171,19 +124,19 @@ if ($currentUser != null) {
         // Search preference
         $_SESSION['bSearchFamily'] = $currentUser->getSearchfamily();
 
+        $systemService = new SystemService();
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         Redirect('CheckVersion.php');
         exit;
     }
 }
 
-// Turn ON output buffering
-ob_start();
 
-$enableSelfReg = SystemConfig::getBooleanValue('sEnableSelfRegistration');
+
+
 
 // Set the page title and include HTML header
-$sPageTitle = 'ChurchCRM '.gettext('Login');
+$sPageTitle = 'ChurchCRM ' . gettext('Login');
 require 'Include/HeaderNotLoggedIn.php';
 ?>
 
@@ -195,70 +148,73 @@ require 'Include/HeaderNotLoggedIn.php';
     <div class="login-box-body">
         <p class="login-box-msg"><?= gettext('Please Login') ?></p>
 
-<?php
-if (isset($_GET['Timeout'])) {
-    $loginPageMsg = gettext('Your previous session timed out.  Please login again.');
-}
-
-// output warning and error messages
-if (isset($sErrorText)) {
-    echo '<div class="alert alert-error">'.$sErrorText.'</div>';
-}
-if (isset($loginPageMsg)) {
-    echo '<div class="alert alert-warning">'.$loginPageMsg.'</div>';
-}
-?>
-
-<form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
-    <div class="form-group has-feedback">
-        <input type="text" id="UserBox" name="User" class="form-control" placeholder="<?= gettext('Email/Username')?>" required autofocus>
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-    </div>
-    <div class="form-group has-feedback">
-        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext('Password') ?>" required autofocus>
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-    </div>
-    <div class="row">
-        <div class="col-xs-8">
-            <!--<div class="checkbox icheck">
-                <label>
-                    <input type="checkbox"> Remember Me
-                </label>
-            </div>-->
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
-        </div>
-    </div>
-</form>
-        <!--<a href="external/user/password">I forgot my password</a><br> -->
-        <?php if ($enableSelfReg) {
-    ?>
-        <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
         <?php
-} ?>
-      <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
+        if (isset($_GET['Timeout'])) {
+            $loginPageMsg = gettext('Your previous session timed out.  Please login again.');
+        }
+
+        // output warning and error messages
+        if (isset($sErrorText)) {
+            echo '<div class="alert alert-error">' . $sErrorText . '</div>';
+        }
+        if (isset($loginPageMsg)) {
+            echo '<div class="alert alert-warning">' . $loginPageMsg . '</div>';
+        }
+        ?>
+
+        <form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
+            <div class="form-group has-feedback">
+                <input type="text" id="UserBox" name="User" class="form-control"
+                       placeholder="<?= gettext('Email/Username') ?>" required autofocus>
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" id="PasswordBox" name="Password" class="form-control"
+                       placeholder="<?= gettext('Password') ?>" required autofocus>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <!--<div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> Remember Me
+                        </label>
+                    </div>-->
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat"><i
+                            class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
+                </div>
+            </div>
+        </form>
+        <!--<a href="external/user/password">I forgot my password</a><br> -->
+        <?php if (SystemConfig::getBooleanValue('sEnableSelfRegistration')) {
+            ?>
+            <a href="external/register/" class="text-center btn bg-olive"><i
+                    class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
+            <?php
+        } ?>
+        <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
 
 <script>
-  var $buoop = {vs:{i:11,f:30,o:25,s:7},c:2};
-  function $buo_f(){
-    var e = document.createElement("script");
-    e.src = "//browser-update.org/update.min.js";
-    document.body.appendChild(e);
-  };
-  try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
-  catch(e){window.attachEvent("onload", $buo_f)}
+    var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
+    function $buo_f() {
+        var e = document.createElement("script");
+        e.src = "//browser-update.org/update.min.js";
+        document.body.appendChild(e);
+    }
+
+    try {
+        document.addEventListener("DOMContentLoaded", $buo_f, false)
+    }
+    catch (e) {
+        window.attachEvent("onload", $buo_f)
+    }
 </script>
 
-<?php
-// Add the page footer
-require 'Include/FooterNotLoggedIn.php';
-
-// Turn OFF output buffering
-ob_end_flush();
-?>
+<?php require 'Include/FooterNotLoggedIn.php'; ?>
