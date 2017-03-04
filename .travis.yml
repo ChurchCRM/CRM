@@ -32,7 +32,7 @@ before_install:
  
 
  #prepare travis ci for the build process
- install:
+install:
  - npm run composer-install
  - npm run orm-gen
  - npm install
