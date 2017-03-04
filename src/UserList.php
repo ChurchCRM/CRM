@@ -19,6 +19,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\UserQuery;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
@@ -27,20 +28,8 @@ if (!$_SESSION['bAdmin']) {
     exit;
 }
 
-if (isset($_GET['ResetLoginCount'])) {
-    $iResetLoginCount = FilterInput($_GET['ResetLoginCount'], 'int');
-} else {
-    $iResetLoginCount = 0;
-}
-
-if ($iResetLoginCount > 0) {
-    $sSQL = 'UPDATE user_usr SET usr_FailedLogins = 0 WHERE usr_per_ID = '.$iResetLoginCount;
-    RunQuery($sSQL);
-}
-
 // Get all the User records
-$sSQL = 'SELECT * FROM user_usr INNER JOIN person_per ON user_usr.usr_per_ID = person_per.per_ID ORDER BY per_LastName';
-$rsUsers = RunQuery($sSQL);
+$rsUsers = UserQuery::create()->find();
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('User Listing');
@@ -48,72 +37,136 @@ require 'Include/Header.php';
 
 ?>
 <!-- Default box -->
-    <div class="box">
-        <div class="box-body">
-            <a href="UserEditor.php" class="btn btn-app"><i class="fa fa-user-plus"></i><?= gettext('New User')?></a>
-            <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i><?= gettext('User Settings')?></a>
-        </div>
-    </div>
 <div class="box">
-    <div class="box-body no-padding">
-        <div class="table-responsive">
-        <table class="table table-hover">
+    <div class="box-header">
+        <a href="UserEditor.php" class="btn btn-app"><i class="fa fa-user-plus"></i><?= gettext('New User') ?></a>
+        <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i><?= gettext('User Settings') ?></a>
+    </div>
+</div>
+<div class="box">
+    <div class="box-body">
+        <table class="table table-hover dt-responsive" id="user-listing-table" style="width:100%;">
+            <thead>
             <tr>
-                <td><b><?= gettext('Edit') ?></b></td>
-                <td><b><?= gettext('Name') ?></b></td>
-                <td align="center"><b><?= gettext('Last Login') ?></b></td>
-                <td align="center"><b><?= gettext('Total Logins') ?></b></td>
-                <td align="center"><b><?= gettext('Failed Logins') ?></b></td>
-                <td align="center" colspan="2"><b><?= gettext('Password') ?></b></td>
-                <td><b><?= gettext('Delete') ?></b></td>
+                <th><?= gettext('Actions') ?></th>
+                <th><?= gettext('Name') ?></th>
+                <th align="center"><?= gettext('Last Login') ?></th>
+                <th align="center"><?= gettext('Total Logins') ?></th>
+                <th align="center"><?= gettext('Failed Logins') ?></th>
+                <th align="center"><?= gettext('Password') ?></th>
+
             </tr>
-<?php
+            </thead>
+            <tbody>
+            <?php foreach ($rsUsers as $user) { //Loop through the person ?>
+                <tr>
+                    <td>
+                        <a href="UserEditor.php?PersonID=<?= $user->getId() ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <?php if ($user->getId() != $_SESSION['user']->getId()) {?>
+                        <a onclick="deleteUser(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        <?php } ?>
+                    </td>
+                    <td><a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a></td>
+                    <td align="center"><?= $user->getLastLogin(SystemConfig::getValue('sDateFormatShort')) ?></td>
+                    <td align="center"><?= $user->getLoginCount() ?></td>
+                    <td align="center">
+                        <?php if (SystemConfig::getValue('iMaxFailedLogins') > 0 && $user->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins')) { ?>
+                            <span class="text-red"><?= $user->getFailedLogins() ?></span>
+                        <?php } else {
+                            echo $user->getFailedLogins();
+                        }
+                        if ($user->getFailedLogins()> 0){ ?>
+                            <a onclick="restUserLoginCount(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-eraser" aria-hidden="true"></i></a>
+                        <?php } ?>
+                    </td>
+                    <td>
+                        <a href="UserPasswordChange.php?PersonID=<?= $user->getId() ?>&FromUserList=True"><i class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <?php if ($user->getId() != $_SESSION['user']->getId()) {?>
+                            <a onclick="resetUserPassword(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-send-o" aria-hidden="true"></i></a>
+                        <?php } ?>
+                    </td>
 
-//Set the initial row color
-$sRowClass = 'RowColorA';
-
-//Loop through the person recordset
-while ($aRow = mysqli_fetch_array($rsUsers)) {
-    extract($aRow);
-
-    //Alternate the row color
-    $sRowClass = AlternateRowStyle($sRowClass);
-
-    //Display the row
-?>
-	<tr>
-        <td><a href="UserEditor.php?PersonID=<?= $per_ID ?>"><?= gettext('Edit') ?></a></td>
-		<td>
-		<?php
-            echo '<a href="PersonView.php?PersonID='.$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a>'; ?>
-		</td>
-		<td align="center"><?= $usr_LastLogin ?></td>
-		<td align="center"><?= $usr_LoginCount ?></td>
-		<td align="center">
-		<?php
-            if (SystemConfig::getValue('iMaxFailedLogins') > 0 && $usr_FailedLogins >= SystemConfig::getValue('iMaxFailedLogins')) {
-                echo '<span style="color: red;">'.$usr_FailedLogins."<br></span><a href=\"UserList.php?ResetLoginCount=$per_ID\">".gettext('Reset').'</a>';
-            } else {
-                echo $usr_FailedLogins;
-            } ?>
-		</td>
-		<td align="right"><a href="UserPasswordChange.php?PersonID=<?= $per_ID ?>&FromUserList=True"><?= gettext('Change') ?></a></td>
-		<td align="left"><?php if ($per_ID != $_SESSION['iUserID']) {
-                echo "<a href=\"UserReset.php?PersonID=$per_ID&FromUserList=True\">".gettext('Reset').'</a>';
-            } else {
-                echo '&nbsp;';
-            } ?></td>
-		<td><a href="UserDelete.php?PersonID=<?= $per_ID ?>"><?= gettext('Delete') ?></a></td>
-	</tr>
-<?php
-
-}
-?>
-</table>
-        </div>
-	</div>
-	<!-- /.box-body -->
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
 </div>
 <!-- /.box -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#user-listing-table").DataTable({
+            "language": {
+                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+            }
+        });
+    });
+
+    function deleteUser(userId, userName) {
+        bootbox.confirm({
+            title: "<?= gettext("User Delete Confirmation") ?>",
+            message: '<p style="color: red">' +
+            '<?= gettext("Please confirm removal of user status from:") ?> <b>'+ userName +'</b></p>',
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        method: "POST",
+                        url: window.CRM.root + "/api/users/" + userId,
+                        dataType: "json",
+                        encode: true,
+                        data: {"_METHOD": "DELETE"}
+                    }).done(function (data) {
+                        if (data.status == "success")
+                            window.location.href = window.CRM.root + "/UserList.php";
+                    });
+                }
+            }
+        });
+    }
+
+    function restUserLoginCount(userId, userName) {
+        bootbox.confirm({
+            title: "<?= gettext("Action Confirmation") ?>",
+            message: '<p style="color: red">' +
+            '<?= gettext("Please confirm reset failed login count") ?>: <b>'+ userName +'</b></p>',
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        method: "POST",
+                        url: window.CRM.root + "/api/users/" + userId + "/login/reset",
+                        dataType: "json",
+                        encode: true,
+                    }).done(function (data) {
+                        if (data.status == "success")
+                            window.location.href = window.CRM.root + "/UserList.php";
+                    });
+                }
+            }
+        });
+    }
+
+    function resetUserPassword(userId, userName) {
+        bootbox.confirm({
+            title: "<?= gettext("Action Confirmation") ?>",
+            message: '<p style="color: red">' +
+            '<?= gettext("Please confirm the password reset of this user") ?>: <b>'+ userName +'</b></p>',
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        method: "POST",
+                        url: window.CRM.root + "/api/users/" + userId + "/login/reset",
+                        dataType: "json",
+                        encode: true,
+                    }).done(function (data) {
+                        if (data.status == "success")
+                            window.location.href = window.CRM.root + "/UserList.php";
+                    });
+                }
+            }
+        });
+    }
+</script>
 
 <?php require 'Include/Footer.php' ?>
