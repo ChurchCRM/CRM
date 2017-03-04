@@ -41,6 +41,7 @@ install:
 # linters
 before_script:
  - ./travis-ci/setup-db.sh
+ - cp $TRAVIS_BUILD_DIR/travis-ci/Config.php $TRAVIS_BUILD_DIR/src/Include/Config.php
  - sudo apt-get update
  - sudo apt-get install apache2 libapache2-mod-fastcgi
  # enable php-fpm
