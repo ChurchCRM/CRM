@@ -17,10 +17,10 @@ use ChurchCRM\dto\SystemConfig;
 class User extends BaseUser
 {
 
-  public function getId()
-  {
-    return $this->getPersonId();
-  }
+    public function getId()
+    {
+        return $this->getPersonId();
+    }
 
     public function getName()
     {
@@ -72,16 +72,26 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isCanvasser();
     }
 
-    public function updatePassword($password) {
-        $this->setPassword(md5(strtolower($password)));
+    public function updatePassword($password)
+    {
+        $sPasswordHashSha256 = hash('sha256', $password . $this->getId());
+        $this->setPassword($sPasswordHashSha256);
     }
 
-    public function isPasswordValid($password) {
-        $passwordHashSha256 = hash('sha256', $password.$this->getPersonId());
+    public function updatePasswordDefault()
+    {
+        $this->updatePassword(SystemConfig::getValue('sDefault_Pass'));
+        $this->setNeedPasswordChange(true);
+    }
+
+    public function isPasswordValid($password)
+    {
+        $passwordHashSha256 = hash('sha256', $password . $this->getPersonId());
         return $this->getPassword() == $passwordHashSha256;
     }
-
-    public function isLocked() {
+    
+    public function isLocked()
+    {
         return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
     }
 }

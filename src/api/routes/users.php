@@ -13,8 +13,7 @@ $app->group('/users', function () {
         }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
-            $user->updatePassword(SystemConfig::getValue('sDefault_Pass'));
-            $user->setNeedPasswordChange(true);
+            $user->updatePasswordDefault();
             $user->save();
             return $response->withStatus(200)->withJson(['status' => "success"]);
         } else {
