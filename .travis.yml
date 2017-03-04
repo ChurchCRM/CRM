@@ -55,7 +55,7 @@ before_script:
  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/src?g" --in-place /etc/apache2/sites-available/000-default.conf
  - sudo service apache2 restart
  - cat /etc/apache2/sites-available/000-default.conf
- - curl http://localhost
+ - curl http://localhost/Login.php
 
 # execute tests
 script:
