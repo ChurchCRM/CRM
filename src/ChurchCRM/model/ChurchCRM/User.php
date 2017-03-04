@@ -3,6 +3,7 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\User as BaseUser;
+use ChurchCRM\dto\SystemConfig;
 
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
