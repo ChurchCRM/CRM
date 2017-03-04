@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo source /etc/profile.d/phpenv.sh
 
 # details here https://docs.travis-ci.com/user/languages/php/#Apache-%2B-PHP
 sudo apt-get update
@@ -13,7 +14,7 @@ echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php
 sudo a2enmod rewrite
 
 # configure apache virtual hosts
-sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/000-default.conf
+sudo cp /home/travis/build/ChurchCRM/CRM/travis-ci/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/000-default.conf
 sudo service apache2 restart
 
