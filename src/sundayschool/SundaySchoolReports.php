@@ -16,6 +16,7 @@
 // Include the function library
 require '../Include/Config.php';
 require '../Include/Functions.php';
+use ChurchCRM\UserQuery;
 
 // Get all the groups
 $sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
@@ -54,20 +55,21 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
     }
     $allroles = FilterInput($_POST['allroles']);
 
-    $_SESSION['dCalStart'] = $dFirstSunday;
-    $_SESSION['dCalEnd'] = $dLastSunday;
-    $_SESSION['dCalNoSchool1'] = $dNoSchool1;
-    $_SESSION['dCalNoSchool2'] = $dNoSchool2;
-    $_SESSION['dCalNoSchool3'] = $dNoSchool3;
-    $_SESSION['dCalNoSchool4'] = $dNoSchool4;
-    $_SESSION['dCalNoSchool5'] = $dNoSchool5;
-    $_SESSION['dCalNoSchool6'] = $dNoSchool6;
-    $_SESSION['dCalNoSchool7'] = $dNoSchool7;
-    $_SESSION['dCalNoSchool8'] = $dNoSchool8;
+    $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
+    $currentUser->setCalStart($dFirstSunday);
+    $currentUser->setCalEnd($dLastSunday);
+    $currentUser->setCalNoSchool1($dNoSchool1);
+    $currentUser->setCalNoSchool2($dNoSchool2);
+    $currentUser->setCalNoSchool3($dNoSchool3);
+    $currentUser->setCalNoSchool4($dNoSchool4);
+    $currentUser->setCalNoSchool5($dNoSchool5);
+    $currentUser->setCalNoSchool6($dNoSchool6);
+    $currentUser->setCalNoSchool7($dNoSchool7);
+    $currentUser->setCalNoSchool7($dNoSchool8);
+    $currentUser->save();
 
     if ($bAtLeastOneGroup && isset($_POST['SubmitClassList'])) {
-        //		Redirect ("Reports/ClassList.php?GroupID=" . $iGroupID . "&FYID=" . $iFYID . "&FirstSunday=" . $dFirstSunday . "&LastSunday=" . $dLastSunday);
-    Redirect('Reports/ClassList.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles);
+        Redirect('Reports/ClassList.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles);
     } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance'])) {
         $toStr = 'Reports/ClassAttendance.php?';
 //	      $toStr .= "GroupID=" . $iGroupID;
@@ -113,16 +115,17 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
 } else {
     $iFYID = $_SESSION['idefaultFY'];
     $iGroupID = 0;
-    $dFirstSunday = $_SESSION['dCalStart'];
-    $dLastSunday = $_SESSION['dCalEnd'];
-    $dNoSchool1 = $_SESSION['dCalNoSchool1'];
-    $dNoSchool2 = $_SESSION['dCalNoSchool2'];
-    $dNoSchool3 = $_SESSION['dCalNoSchool3'];
-    $dNoSchool4 = $_SESSION['dCalNoSchool4'];
-    $dNoSchool5 = $_SESSION['dCalNoSchool5'];
-    $dNoSchool6 = $_SESSION['dCalNoSchool6'];
-    $dNoSchool7 = $_SESSION['dCalNoSchool7'];
-    $dNoSchool8 = $_SESSION['dCalNoSchool8'];
+    $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
+    $dFirstSunday = $currentUser->getCalStart();
+    $dLastSunday = $currentUser->getCalEnd();
+    $dNoSchool1 = $currentUser->getCalNoSchool1();
+    $dNoSchool2 = $currentUser->getCalNoSchool2();
+    $dNoSchool3 = $currentUser->getCalNoSchool3();;
+    $dNoSchool4 = $currentUser->getCalNoSchool4();
+    $dNoSchool5 = $currentUser->getCalNoSchool5();
+    $dNoSchool6 = $currentUser->getCalNoSchool6();
+    $dNoSchool7 = $currentUser->getCalNoSchool7();
+    $dNoSchool8 = $currentUser->getCalNoSchool8();
     $iExtraStudents = 0;
     $iExtraTeachers = 0;
 }

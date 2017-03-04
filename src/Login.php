@@ -53,43 +53,13 @@ if (isset($_GET['Logoff']) || isset($_GET['Timeout'])) {
     }
 
     if (!empty($_SESSION['iUserID'])) {
-        $currentUser = UserQuery::create()->findOneByPersonId($_SESSION['iUserID']);
+        $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
         $currentUser->setShowPledges($_SESSION['sshowPledges']);
         $currentUser->setShowPayments($_SESSION['sshowPayments']);
         $currentUser->setShowSince($_SESSION['sshowSince']);
         $currentUser->setDefaultFY($_SESSION['idefaultFY']);
         $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
 
-        if ($_SESSION['dCalStart'] != '') {
-            $currentUser->setCalStart($_SESSION['dCalStart']);
-        }
-        if ($_SESSION['dCalEnd'] != '') {
-            $currentUser->setCalEnd($_SESSION['dCalEnd']);
-        }
-        if ($_SESSION['dCalNoSchool1'] != '') {
-            $currentUser->setCalNoSchool1($_SESSION['dCalNoSchool1']);
-        }
-        if ($_SESSION['dCalNoSchool2'] != '') {
-            $currentUser->dCalNoSchool2($_SESSION['dCalNoSchool2']);
-        }
-        if ($_SESSION['dCalNoSchool3'] != '') {
-            $currentUser->dCalNoSchool3($_SESSION['dCalNoSchool3']);
-        }
-        if ($_SESSION['dCalNoSchool4'] != '') {
-            $currentUser->dCalNoSchool4($_SESSION['dCalNoSchool4']);
-        }
-        if ($_SESSION['dCalNoSchool5'] != '') {
-            $currentUser->dCalNoSchool5($_SESSION['dCalNoSchool5']);
-        }
-        if ($_SESSION['dCalNoSchool6'] != '') {
-            $currentUser->dCalNoSchool6($_SESSION['dCalNoSchool6']);
-        }
-        if ($_SESSION['dCalNoSchool7'] != '') {
-            $currentUser->dCalNoSchool7($_SESSION['dCalNoSchool7']);
-        }
-        if ($_SESSION['dCalNoSchool8'] != '') {
-            $currentUser->dCalNoSchool8($_SESSION['dCalNoSchool8']);
-        }
         $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
         $currentUser->save();
     }
@@ -198,18 +168,6 @@ if ($currentUser != null) {
         $_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
         $_SESSION['iCurrentDeposit'] = $currentUser->getCurrentDeposit();
 
-        // Church school calendar preferences
-        $_SESSION['dCalStart'] = $currentUser->getCalStart();
-        $_SESSION['dCalEnd'] = $currentUser->getCalEnd();
-        $_SESSION['dCalNoSchool1'] = $currentUser->getCalNoSchool1();
-        $_SESSION['dCalNoSchool2'] = $currentUser->getCalNoSchool2();
-        $_SESSION['dCalNoSchool3'] = $currentUser->getCalNoSchool3();
-        $_SESSION['dCalNoSchool4'] = $currentUser->getCalNoSchool4();
-        $_SESSION['dCalNoSchool5'] = $currentUser->getCalNoSchool5();
-        $_SESSION['dCalNoSchool6'] = $currentUser->getCalNoSchool6();
-        $_SESSION['dCalNoSchool7'] = $currentUser->getCalNoSchool7();
-        $_SESSION['dCalNoSchool8'] = $currentUser->getCalNoSchool8();
-
         // Search preference
         $_SESSION['bSearchFamily'] = $currentUser->getSearchfamily();
 
@@ -278,7 +236,7 @@ if (isset($loginPageMsg)) {
         <?php if ($enableSelfReg) {
     ?>
         <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
-        <?php 
+        <?php
 } ?>
       <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
