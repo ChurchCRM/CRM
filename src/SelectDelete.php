@@ -132,13 +132,9 @@ function DeletePerson($iPersonID)
 if (isset($_GET['Confirmed'])) {
     if ($sMode == 'person') {
         // Delete Person
-    // Make sure this person is not a user
-    $sSQL = "SELECT '' FROM user_usr WHERE usr_per_ID = ".$iPersonID;
-        $rsUser = RunQuery($sSQL);
-        $bIsUser = (mysqli_num_rows($rsUser) > 0);
-
-        if (!$bIsUser) {
-            DeletePerson($iPersonID);
+        // Make sure this person is not a user
+        UserQuery::create()->findPk($iPersonID)->delete();
+        DeletePerson($iPersonID);
 
       // Redirect back to the list
       Redirect('SelectList.php?mode=person');
@@ -205,9 +201,8 @@ if ($sMode == 'person') {
     extract(mysqli_fetch_array($rsPerson));
 
   // See if this person is a user
-  $sSQL = "SELECT '' FROM user_usr WHERE usr_per_ID = ".$iPersonID;
-    $rsUser = RunQuery($sSQL);
-    $bIsUser = (mysqli_num_rows($rsUser) > 0);
+    $rsUser = UserQuery::create()->findPk($iPersonID);
+    $bIsUser = !is_null($rsUser);
 } else {
     //Get the family record in question
   $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = '.$iFamilyID;
