@@ -254,7 +254,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                     for (var j = 0; j <= icons.length; j++) {
                         var type, name, icon, div;
                         if (j == 0) {
-                            name = 'Unassigned';
+                            name = '<?gettext("Unassigned") ?>';
                             icon = iconBase + markerIcons[0] + '.png';
                         } else {
                             type = icons[j - 1];
@@ -279,26 +279,24 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             <div class="btn bg-primary col-xs-12"><?= gettext('Legend') ?></div>
         </div>
         <div class="row legendbox">
+            <div class="col-xs-6 legenditem">
+                <img
+                    src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                <?= gettext('Unassigned') ?>
+            </div>
             <?php
-            $i = 0;
-            foreach ($icons as $icon) {
-
-                ?>
+            foreach ($icons as $icon) { ?>
                 <div class="col-xs-6 legenditem">
                     <img
                         src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
                     <?= $icon->getOptionName() ?>
                 </div>
-
                 <?php
-                $i += 1;
 
-            }
-            ?>
+            } ?>
         </div>
     </div>
     <?php
 
 }
-
 require 'Include/Footer.php' ?>
