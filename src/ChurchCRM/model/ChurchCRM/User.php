@@ -74,8 +74,7 @@ class User extends BaseUser
 
     public function updatePassword($password)
     {
-        $sPasswordHashSha256 = hash('sha256', $password . $this->getId());
-        $this->setPassword($sPasswordHashSha256);
+        $this->setPassword(hashPassword($password));
     }
 
     public function updatePasswordDefault()
@@ -86,10 +85,15 @@ class User extends BaseUser
 
     public function isPasswordValid($password)
     {
-        $passwordHashSha256 = hash('sha256', $password . $this->getPersonId());
-        return $this->getPassword() == $passwordHashSha256;
+        return $this->getPassword() == hashPassword($password);
     }
-    
+
+    private function hashPassword($password)
+    {
+        return hash('sha256', $password . $this->getPersonId());
+    }
+
+
     public function isLocked()
     {
         return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
