@@ -45,8 +45,6 @@ before_script:
  - sudo apt-get update
  - sudo apt-get install apache2 libapache2-mod-fastcgi
  # enable php-fpm
- - sudo touch /var/run/php-fpm.sock
- - sudo chmod a+rw /var/run/php-fpm.sock
  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
  - sudo cp $TRAVIS_BUILD_DIR/travis-ci/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf
  - sudo a2enmod rewrite actions fastcgi alias
