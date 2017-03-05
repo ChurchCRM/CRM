@@ -22,7 +22,6 @@ require __DIR__.'/dependencies.php';
 require __DIR__.'/../Include/slim/error-handler.php';
 
 // system routes
-require __DIR__.'/routes/data.php';
 require __DIR__.'/routes/database.php';
 require __DIR__.'/routes/issues.php';
 
