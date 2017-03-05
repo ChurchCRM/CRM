@@ -27,7 +27,7 @@ class FeatureContext extends MinkContext
     public function iAmAuthenticatedAs($username, $password) 
     {
       #borrowed from https://vivait.co.uk/labs/handling-authentication-when-using-behat-mink
-      $this->visit('/Login.php');
+      $this->visit('/Login');
       $this->fillField('UserBox', $username);
       $this->fillField('PasswordBox', $password);
       $this->pressButton('Login');
