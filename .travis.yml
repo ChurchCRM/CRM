@@ -43,6 +43,8 @@ before_script:
  - ./travis-ci/setup-db.sh
  - cp $TRAVIS_BUILD_DIR/travis-ci/Config.php $TRAVIS_BUILD_DIR/src/Include/Config.php
  - sudo apt-get update
+ - sudo mkdir /run/php
+ - sudo chmod a+rwx /run/php
  - sudo apt-get install apache2 libapache2-mod-fastcgi
  # enable php-fpm
  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
