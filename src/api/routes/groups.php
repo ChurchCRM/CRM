@@ -147,7 +147,9 @@ $app->group('/groups', function () {
     $this->post('/{groupID:[0-9]+}/defaultRole', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $request->getParsedBody()['roleID'];
-        $this->GroupService->setGroupRoleAsDefault($groupID, $roleID);
+        $group = GroupQuery::create()->findPk($groupID);
+        $group->setDefaultRole($roleID);
+        $group->save();
         echo json_encode(['success' => true]);
     });
 

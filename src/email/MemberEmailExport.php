@@ -3,13 +3,12 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
-use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\SundaySchoolService;
+use ChurchCRM\GroupQuery;
 use ChurchCRM\dto\SystemConfig;
 
-$groupService = new GroupService();
 $sundaySchoolService = new SundaySchoolService();
-$groups = $groupService->getGroups();
+$groups = GroupQuery::create()->filterByActive(true)->filterByIncludeInEmailExport(true)->find();
 
 $colNames = [];
 array_push($colNames, 'CRM ID');
@@ -17,14 +16,14 @@ array_push($colNames, 'FirstName');
 array_push($colNames, 'LastName');
 array_push($colNames, 'Email');
 foreach ($groups as $group) {
-    array_push($colNames, $group['groupName']);
+    array_push($colNames, $group->getName());
 }
 
 $sundaySchoolsParents = [];
 foreach ($groups as $group) {
-    if ($group['grp_Type'] == 4) {
+    if ($group->isSundaySchool()) {
         $sundaySchoolParents = [];
-        $kids = $sundaySchoolService->getKidsFullDetails($group['id']);
+        $kids = $sundaySchoolService->getKidsFullDetails($group->getId());
         $parentIds = [];
         foreach ($kids as $kid) {
             if ($kid['dadId'] != '') {
@@ -34,7 +33,7 @@ foreach ($groups as $group) {
                 array_push($parentIds, $kid['momId']);
             }
         }
-        $sundaySchoolsParents[$group['id']] = $parentIds;
+        $sundaySchoolsParents[$group->getId()] = $parentIds;
     }
 }
 
@@ -52,9 +51,9 @@ foreach ($personService->getPeopleEmailsAndGroups() as $person) {
     array_push($row, $person['lastName']);
     array_push($row, $person['email']);
     foreach ($groups as $group) {
-        $groupRole = $person[$group['groupName']];
-        if ($groupRole == '' && $group['grp_Type'] == 4) {
-            if (in_array($person['id'], $sundaySchoolsParents[$group['id']])) {
+        $groupRole = $person[$group->getName()];
+        if ($groupRole == '' && $group->isSundaySchool()) {
+            if (in_array($person['id'], $sundaySchoolsParents[$group->getId()])) {
                 $groupRole = 'Parent';
             }
         }
