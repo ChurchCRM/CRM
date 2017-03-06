@@ -14,7 +14,8 @@
 }
 
 .map-div {
-    height:700px;
+    height:750px;
+    margin: 2px;
 }
 
 div {
@@ -22,9 +23,10 @@ div {
         padding: 4px 4px;
         margin-bottom: 4px;
         box-shadow: 1px 1px 1px 1px darkgrey;
+
     }
     .legendbox {
-        margin: 7px 10px 10px 10px ;
+        margin: 7px 3px 0px 3px ;
     }
 }
 
@@ -35,6 +37,9 @@ div {
     #maplegend-mobile {
         display: block;
     }
+    .map-div {
+        height: 500px;
+    }
 }
 @media screen and (min-device-width: 599px) {
     #maplegend {
@@ -42,5 +47,8 @@ div {
     }
     #maplegend-mobile {
         visibility: hidden;
+    }
+    .map-div {
+        height: 750px;
     }
 }

@@ -91,14 +91,33 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
         ->orderByOptionSequence()
         ->find();
 
-    ?>
+    $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
+    array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification   ?>
 
     <div class="box">
-        <div class="col-lg-12">
+        <div>
             <!-- Google map div -->
             <div id="map" class="map-div" ></div>
-            <!-- map legend, only Show for persons plot -->
-            <div id="maplegend"><h4><?= gettext('Legend') ?></h4></div>
+            <!-- map Desktop legend -->
+            <div id="maplegend"><h4><?= gettext('Legend') ?></h4>
+                <div class="row legendbox">
+                    <div class="legenditem">
+                        <img
+                            src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                        <?= gettext('Unassigned') ?>
+                    </div>
+                    <?php
+                    foreach ($icons as $icon) { ?>
+                        <div class="legenditem">
+                            <img
+                                src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                            <?= $icon->getOptionName() ?>
+                        </div>
+                        <?php
+
+                    } ?>
+                </div>
+            </div>
 
             <!--Google Map Scripts -->
             <script
@@ -248,23 +267,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                         //Add marker and infowindow
                         addMarkerWithInfowindow(map, latlng, image, plotArray[i].Name, contentString);
                     }
-                    //Add Legend for person
-
+                    //push Legend to right bottom
                     var legend = document.getElementById('maplegend');
-                    for (var j = 0; j <= icons.length; j++) {
-                        var type, name, icon, div;
-                        if (j == 0) {
-                            name = '<?gettext("Unassigned") ?>';
-                            icon = iconBase + markerIcons[0] + '.png';
-                        } else {
-                            type = icons[j - 1];
-                            name = type['OptionName'];
-                            icon = iconBase + markerIcons[type['OptionId']] + '.png';
-                        }
-                        div = document.createElement('div');
-                        div.innerHTML = '<img src="' + icon + '">' + name;
-                        legend.appendChild(div);
-                    }
                     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 
                 }
@@ -272,9 +276,9 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                 initialize();
 
             </script>
-        </div>
-    </div> <!--Box-->
-    <div id="maplegend-mobile" class="box">
+
+
+    <div id="maplegend-mobile" class="box visible-xs-block">
         <div class="row legendbox">
             <div class="btn bg-primary col-xs-12"><?= gettext('Legend') ?></div>
         </div>
@@ -296,6 +300,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             } ?>
         </div>
     </div>
+        </div>
+    </div> <!--Box-->
     <?php
 
 }
