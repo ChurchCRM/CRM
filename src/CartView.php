@@ -275,13 +275,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
 <?php
 
-    } ?>
+    }
+} ?>
 
 <!-- END CART FUNCTIONS -->
-
-<?php
-
-} ?>
 
 <!-- BEGIN CART LISTING -->
 <?php if (isset($iNumPersons) && $iNumPersons > 0): ?>
@@ -374,7 +371,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     $(document).ready(function() {
         $("#cart-listing-table").DataTable({
             "language": {
-                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.local + ".json"
+                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
             }
         });
     });
