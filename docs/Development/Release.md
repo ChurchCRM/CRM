@@ -4,6 +4,8 @@
 
   1.  If the release is blocked by a P0 bug, then the release will be delayed until the next release window.
 
+  2.  Release Candidates will be made available one week before the targeted release date.
+
 2. ChurchCRM patch builds (x.x.0) may be released at any time, upon validation that the patch:
 
   a.  Fixes the issue for which it is intended
