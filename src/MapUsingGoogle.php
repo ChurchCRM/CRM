@@ -9,7 +9,6 @@ use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
 
-
 //Set the page title
 $sPageTitle = gettext('View on Map');
 
@@ -40,9 +39,9 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
         <?= gettext('Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.') ?>
     </div>
     <?php
+
 } else {
-    if (SystemConfig::getValue('sGoogleMapKey') == '') {
-        ?>
+    if (SystemConfig::getValue('sGoogleMapKey') == '') { ?>
         <div class="callout callout-warning">
             <?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?>
         </div>
@@ -61,14 +60,12 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             ->filterByGroupId($iGroupID)
             ->endUse()
             ->find();
-
     } elseif ($iGroupID == 0) {
         // group zero means map the cart
         if (!empty($_SESSION['aPeopleCart'])) {
             $persons = PersonQuery::create()
                 ->filterById($_SESSION['aPeopleCart'])
                 ->find();
-
         }
     } else {
         //Map all the families
@@ -79,7 +76,6 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             ->endUse()
             ->find();
         $plotFamily = true;
-
     }
 
     //Markericons list
@@ -88,9 +84,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
         ->orderByOptionSequence()
         ->find();
 
-
     $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
-    array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification ?>
+    array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification?>
 
     <!--Google Map Scripts -->
     <script
@@ -110,7 +105,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                     <?= gettext('Unassigned') ?>
                 </div>
                 <?php
-                foreach ($icons as $icon) { ?>
+                foreach ($icons as $icon) {
+                    ?>
                     <div class="legenditem">
                         <img
                             src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
@@ -134,7 +130,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                     <?= gettext('Unassigned') ?>
                 </div>
                 <?php
-                foreach ($icons as $icon) { ?>
+                foreach ($icons as $icon) {
+                    ?>
                     <div class="col-xs-6 legenditem">
                         <img
                             src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
