@@ -240,9 +240,12 @@ class Family extends BaseFamily implements iPhoto
             $prepAddr = str_replace(' ','+',$this->getAddress());
             $geocode=file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=".$prepAddr."&key=". SystemConfig::getValue('sGoogleMapKey'));
             $output= json_decode($geocode);
-            $this->setLatitude($output->results[0]->geometry->location->lat);
-            $this->setLongitude($output->results[0]->geometry->location->lng);
-            $this->save();
+            if($output->results[0]->geometry->location->lat && $output->results[0]->geometry->location->lng) {
+                $this->setLatitude($output->results[0]->geometry->location->lat);
+                $this->setLongitude($output->results[0]->geometry->location->lng);
+                $this->save();
+            }
+
         }
         return array(
             'Latitude' => $this->getLatitude(),

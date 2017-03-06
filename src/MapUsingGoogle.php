@@ -53,9 +53,6 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
     $plotFamily = false;
     //Get the details from DB
     $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
-    if (empty($dirRoleHead)) {
-        $dirRoleHead = 1;
-    }
 
     if ($iGroupID > 0) {
         //Get all the members of this group
