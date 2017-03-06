@@ -1,8 +1,8 @@
 # Release Rules
 
-1. ChurchCRM Major (0.x.x) and Minor (x.0.x) builds will only be released on Monday nights.
+1. ChurchCRM Major (0.x.x) and Minor (x.0.x) releases will only occur on Monday, Tuesday, or Wednesday nights.
 
-  1.  If a Monday night build is blocked by a P0 bug, then that major or minor release will be delayed until the following Monday.
+  1.  If the release is blocked by a P0 bug, then the release will be delayed until the next release window.
 
 2. ChurchCRM patch builds (x.x.0) may be released at any time, upon validation that the patch:
 
