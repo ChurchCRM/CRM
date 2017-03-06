@@ -59,6 +59,10 @@ before_script:
  - sudo service apache2 restart
  - cat /etc/apache2/sites-available/000-default.conf
  - curl -L http://localhost
+ - curl -L http://localhost/Login
+ - curl -L http://localhost/Login.php
+
+
 
 # execute tests
 script:
