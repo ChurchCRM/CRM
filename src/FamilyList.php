@@ -6,13 +6,12 @@ use ChurchCRM\Service\FamilyService;
 use ChurchCRM\dto\SystemConfig;
 $familyService = new FamilyService();
 
+$sMode = 'Active';
 // Filter received user input as needed
 if (isset($_GET['mode'])) {
     $sMode = FilterInput($_GET['mode']);
-} else {
-    $sMode = 'Active';
 }
-if (strtolower($sMode) == 'Inactive'){
+if (strtolower($sMode) == 'inactive'){
     $families = $familyService->getDeactivatedFamilies();
 } else {
     $sMode = 'Active';
