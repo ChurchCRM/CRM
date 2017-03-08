@@ -147,7 +147,9 @@ $app->group('/groups', function () {
     $this->post('/{groupID:[0-9]+}/defaultRole', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $request->getParsedBody()['roleID'];
-        $this->GroupService->setGroupRoleAsDefault($groupID, $roleID);
+        $group = GroupQuery::create()->findPk($groupID);
+        $group->setDefaultRole($roleID);
+        $group->save();
         echo json_encode(['success' => true]);
     });
 
@@ -160,6 +162,40 @@ $app->group('/groups', function () {
         } else {
             $this->GroupService->disableGroupSpecificProperties($groupID);
             echo json_encode(['status' => 'group specific properties disabled']);
+        }
+    });
+
+    $this->post('/{groupID:[0-9]+}/settings/active/{value}', function ($request, $response, $args) {
+        $groupID = $args['groupID'];
+        $flag = $args['value'];
+        if ($flag == "true" || $flag == "false") {
+            $group = GroupQuery::create()->findOneById($groupID);
+            if ($group != null) {
+                $group->setActive($flag);
+                $group->save();
+            } else {
+                return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid group id']);
+            }
+            return $response->withJson(['status' => "success"]);
+        } else {
+            return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid status value']);
+        }
+    });
+
+    $this->post('/{groupID:[0-9]+}/settings/email/export/{value}', function ($request, $response, $args) {
+        $groupID = $args['groupID'];
+        $flag = $args['value'];
+        if ($flag == "true" || $flag == "false") {
+            $group = GroupQuery::create()->findOneById($groupID);
+            if ($group != null) {
+                $group->setIncludeInEmailExport($flag);
+                $group->save();
+            } else {
+                return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid group id']);
+            }
+            return $response->withJson(['status' => "success"]);
+        } else {
+            return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid export value']);
         }
     });
 });

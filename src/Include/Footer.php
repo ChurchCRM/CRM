@@ -198,6 +198,8 @@ $isAdmin = $_SESSION['user']->isAdmin();
                         </li>
                         <?php
 
+} else {
+    echo _('Please contact your admin to change the system settings.');
 } ?>
                     <li>
                         <a href="<?= SystemURLs::getRootPath() ?>/CSVExport.php">
@@ -208,24 +210,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
                         </a>
                     </li>
                 </ul>
-                <?php if ($isAdmin) {
-    ?>
-                    <hr/>
-                    <ul class="control-sidebar-menu">
-                        <li>
-                            <a href="<?= SystemURLs::getRootPath() ?>/GenerateSeedData.php">
-                                <i class="menu-icon fa fa-plus-square bg-teal"></i>
-                                <div class="menu-info">
-                                    <h4 class="control-sidebar-subheading"><?= _('Generate Seed Data') ?></h4>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <?php
-
-} else {
-    echo _('Please contact your admin to change the system settings.');
-} ?>
             </div>
         </div>
         <!-- /.tab-pane -->
@@ -299,6 +283,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/fastclick/fastclick.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/bootstrap-toggle/bootstrap-toggle.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
