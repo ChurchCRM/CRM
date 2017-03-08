@@ -186,7 +186,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
       <div class="box box-primary">
         <div class="box-body">
             <div class="image-container">
-                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail" 
+                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail"
                 data-name="<?= $family->getName()?>" alt="" class="initials-image img-circle img-responsive profile-user-img"/>
                 <?php if ($bOkToEdit): ?>
                     <div class="after">
@@ -314,7 +314,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                         ?>
             <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
                 class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
-          <?php 
+          <?php
+
                     } ?>
           <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
               class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
@@ -322,16 +323,18 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                         ?>
             <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
                 class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
-          <?php 
+          <?php
+
                     } ?>
           <?php if ($_SESSION['bDeleteRecords']) {
                         ?>
             <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
                 class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
-          <?php 
+          <?php
+
                     } ?>
           <br/>
-            
+
             <?php
     if ($_SESSION['bNotes']) {
         ?>
@@ -930,7 +933,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         </div>
     </div>
   </div>
-    
+
 <div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -959,13 +962,12 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
     } ?>
             <div class="modal-footer text-center">
-                <?php if (count($sFamilyEmails) > 0) {
+                <?php if (count($sFamilyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
         ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
-                    <?php
-
+                <?php 
     } ?>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
@@ -1032,21 +1034,21 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     }
                 });
             });
-        
+
             $("#deletePhoto").click (function () {
               $.ajax({
               type: "POST",
               url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
               encode: true,
               dataType: 'json',
-              data: { 
+              data: {
                 "_METHOD": "DELETE"
               }
               }).done(function(data) {
                 location.reload();
               });
             });
-            
+
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
               url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
               maxPhotoSize: window.CRM.maxUploadSize,
@@ -1056,7 +1058,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 location.reload();
               }
             });
-        
+
         });
     </script>
 

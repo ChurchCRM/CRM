@@ -24,7 +24,7 @@ msgstr "确认删除自动付款"
 #: FamilyView.php:664 FamilyView.php:716 FamilyView.php:776 FamilyView.php:927
 #: FindDepositSlip.php:108 FundRaiserEditor.php:202 ListEvents.php:249
 #: PaddleNumList.php:58 PersonCustomFieldsEditor.php:317
-#: PersonCustomFieldsEditor.php:386 PersonView.php:942 PledgeDelete.php:55
+#: PersonCustomFieldsEditor.php:386 PersonView.php:924 PledgeDelete.php:55
 #: PropertyList.php:67 PropertyList.php:108 PropertyTypeList.php:43
 #: PropertyTypeList.php:64 PropertyTypeList.php:66 UserDelete.php:66
 #: UserList.php:67 UserList.php:105
@@ -39,7 +39,7 @@ msgstr "删除"
 #: GroupPropsEditor.php:171 GroupReports.php:85 GroupReports.php:155
 #: LettersAndLabels.php:72 ManageEnvelopes.php:139 MemberRoleChange.php:121
 #: MemberRoleChange.php:123 NoteDelete.php:70 NoteEditor.php:138
-#: PersonEditor.php:1152 PersonView.php:941 PledgeDelete.php:56
+#: PersonEditor.php:1152 PersonView.php:923 PledgeDelete.php:56
 #: PropertyEditor.php:171 PropertyTypeEditor.php:116 Register.php:60
 #: ReminderReport.php:58 SettingsIndividual.php:120 SettingsIndividual.php:166
 #: SettingsUser.php:108 SettingsUser.php:168
@@ -103,7 +103,7 @@ msgstr "待用"
 #: AutoPaymentEditor.php:698 CartToFamily.php:246 CSVExport.php:115
 #: CSVImport.php:221 DirectoryReports.php:252
 #: external/templates/registration/family-register.php:31 FamilyEditor.php:685
-#: FamilyList.php:28 GeoPage.php:368 PersonEditor.php:831 Register.php:48
+#: FamilyList.php:28 PersonEditor.php:831 Register.php:48
 #: queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "城市"
@@ -111,7 +111,7 @@ msgstr "城市"
 #: AutoPaymentEditor.php:703 CartToFamily.php:251 CSVExport.php:120
 #: CSVImport.php:222 DirectoryReports.php:256
 #: external/templates/registration/family-register.php:34 FamilyEditor.php:692
-#: FamilyList.php:29 GeoPage.php:369 PersonEditor.php:851 Register.php:49
+#: FamilyList.php:29 PersonEditor.php:851 Register.php:49
 #: queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "国"
@@ -264,7 +264,7 @@ msgstr "中间名"
 #: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
 #: external/templates/registration/family-register.php:41
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
-#: FamilyList.php:30 GeoPage.php:370 PersonEditor.php:874 Register.php:50
+#: FamilyList.php:30 PersonEditor.php:874 Register.php:50
 #, fuzzy
 msgid "Zip"
 msgstr "邮编"
@@ -715,10 +715,10 @@ msgstr "加入购物车家庭"
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:182
 #: EventNames.php:266 FamilyCustomFieldsEditor.php:328
 #: FamilyCustomFieldsEditor.php:442 FamilyList.php:25 FamilyView.php:556
-#: GeoPage.php:366 GroupEditor.php:75 GroupPropsFormEditor.php:282
+#: GeoPage.php:387 GroupEditor.php:75 GroupPropsFormEditor.php:282
 #: GroupPropsFormEditor.php:394 GroupView.php:316 GroupView.php:350
 #: PersonCustomFieldsEditor.php:313 PersonCustomFieldsEditor.php:444
-#: PersonView.php:681 PersonView.php:789 PrintView.php:321 PrintView.php:450
+#: PersonView.php:676 PersonView.php:766 PrintView.php:321 PrintView.php:450
 #: PropertyEditor.php:151 PropertyList.php:62 PropertyTypeEditor.php:106
 #: PropertyTypeList.php:38 Reports/CanvassReports.php:71
 #: Reports/CanvassReports.php:239 Reports/FRBidSheets.php:93
@@ -870,8 +870,8 @@ msgid "persons from"
 msgstr "人从"
 
 #: CartView.php:293 CartView.php:344 EditEventTypes.php:168 FamilyView.php:561
-#: FamilyView.php:603 GroupView.php:355 GroupView.php:396 PersonView.php:686
-#: PersonView.php:726 PersonView.php:792 PersonView.php:808
+#: FamilyView.php:603 GroupView.php:355 GroupView.php:396 PersonView.php:680
+#: PersonView.php:702 PersonView.php:769 PersonView.php:787
 msgid "Remove"
 msgstr "清除"
 
@@ -1054,7 +1054,7 @@ msgstr "信息包括"
 #: DirectoryReports.php:248
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:25 FamilyEditor.php:677
-#: FamilyEditor.php:681 FamilyList.php:27 FamilyView.php:216 GeoPage.php:367
+#: FamilyEditor.php:681 FamilyList.php:27 FamilyView.php:216 GeoPage.php:388
 #: GroupReports.php:127 Menu.php:182 Menu.php:217 PersonEditor.php:799
 #: PersonEditor.php:815 PersonView.php:268 Register.php:47
 #: Reports/ConfirmReportEmail.php:125 Reports/ConfirmReportEmail.php:130
@@ -1191,7 +1191,7 @@ msgstr "去"
 #: DonationFundEditor.php:224 EditEventAttendees.php:34
 #: FundRaiserEditor.php:176 GroupEditor.php:81 GroupPropsFormEditor.php:283
 #: GroupPropsFormEditor.php:407 GroupView.php:317 ListEvents.php:214
-#: PersonView.php:790 PropertyTypeEditor.php:111
+#: PersonView.php:767 PropertyTypeEditor.php:111
 #: VolunteerOpportunityEditor.php:88 VolunteerOpportunityEditor.php:368
 #: VolunteerOpportunityEditor.php:443
 msgid "Description"
@@ -1281,7 +1281,7 @@ msgstr "家庭"
 #: FamilyCustomFieldsEditor.php:429 FamilyView.php:555 FamilyView.php:658
 #: GroupPropsFormEditor.php:281 GroupPropsFormEditor.php:382 GroupView.php:315
 #: GroupView.php:349 OptionManager.php:79 PersonCustomFieldsEditor.php:312
-#: PersonCustomFieldsEditor.php:431 PersonView.php:680 PropertyEditor.php:131
+#: PersonCustomFieldsEditor.php:431 PersonView.php:675 PropertyEditor.php:131
 #: SelectDelete.php:317
 msgid "Type"
 msgstr "类型"
@@ -1320,7 +1320,7 @@ msgstr "年"
 #: ElectronicPaymentList.php:220 ElectronicPaymentList.php:286
 #: EventNames.php:297 FamilyView.php:210 FamilyView.php:663 FamilyView.php:712
 #: FamilyView.php:775 FindFundRaiser.php:237 FindFundRaiser.php:245
-#: ListEvents.php:232 PersonView.php:234 PersonView.php:685 PersonView.php:722
+#: ListEvents.php:232 PersonView.php:234 PersonView.php:679 PersonView.php:698
 #: PropertyList.php:66 PropertyList.php:107 PropertyTypeList.php:42
 #: PropertyTypeList.php:62 SelectList.php:1069 UserList.php:61 UserList.php:84
 msgid "Edit"
@@ -1722,11 +1722,11 @@ msgstr "删除照片"
 msgid "Pledges and Payments"
 msgstr "认捐和实付"
 
-#: FamilyView.php:547 GroupView.php:343 PersonView.php:672 PrintView.php:446
+#: FamilyView.php:547 GroupView.php:343 PersonView.php:669 PrintView.php:446
 msgid "No property assignments."
 msgstr "没有财产的分配。"
 
-#: FamilyView.php:557 GroupView.php:351 PersonView.php:682 PrintView.php:451
+#: FamilyView.php:557 GroupView.php:351 PersonView.php:677 PrintView.php:451
 #: PropertyAssign.php:178 SystemSettings.php:151
 msgid "Value"
 msgstr "值"
@@ -1735,12 +1735,12 @@ msgstr "值"
 msgid "Edit Value"
 msgstr "编辑值"
 
-#: FamilyView.php:621 PersonView.php:742
+#: FamilyView.php:621 PersonView.php:715
 #, fuzzy
 msgid "Assign a New Property"
 msgstr "分配一个新的属性"
 
-#: FamilyView.php:636 GroupView.php:428 PersonView.php:757 PersonView.php:838
+#: FamilyView.php:636 GroupView.php:428 PersonView.php:733 PersonView.php:820
 #: PropertyAssign.php:186 SelectList.php:1077
 msgid "Assign"
 msgstr "分配"
@@ -1818,7 +1818,7 @@ msgid " Canvass Entry"
 msgstr "招商入口"
 
 #: DepositSlipEditor.php:224 FamilyView.php:915 FindDepositSlip.php:98
-#: PersonView.php:931 PledgeDelete.php:21
+#: PersonView.php:913 PledgeDelete.php:21
 msgid "Confirm Delete"
 msgstr "确认删除"
 
@@ -1971,7 +1971,7 @@ msgstr "生成："
 msgid "Only Families with unpaid pledges"
 msgstr "只有未付认捐的家庭"
 
-#: FinancialReports.php:289 GeoPage.php:326 MembersDashboard.php:112
+#: FinancialReports.php:289 GeoPage.php:342 MembersDashboard.php:112
 msgid "All Families"
 msgstr "所有的家庭"
 
@@ -2125,55 +2125,55 @@ msgstr "的史料价值"
 msgid "Minimum Price"
 msgstr "最低价格"
 
-#: GeoPage.php:97
+#: GeoPage.php:92
 msgid "Family Geographic Utilities"
 msgstr "家庭地理公用事业"
 
-#: GeoPage.php:240
+#: GeoPage.php:239
 msgid "Select Family:"
 msgstr "选择家庭："
 
-#: GeoPage.php:256
+#: GeoPage.php:258
 msgid "Maximum number of neighbors:"
 msgstr "邻居的最大数量："
 
-#: GeoPage.php:262
+#: GeoPage.php:265
 msgid "Maximum distance"
 msgstr "最大距离"
 
-#: GeoPage.php:309
+#: GeoPage.php:321
 msgid "Data file format:"
 msgstr "数据文件格式："
 
-#: GeoPage.php:313
+#: GeoPage.php:326
 msgid "GPS Visualizer"
 msgstr "GPS可视化"
 
-#: GeoPage.php:317
+#: GeoPage.php:331
 msgid "Street Atlas USA"
 msgstr "街道地图集美国"
 
-#: GeoPage.php:322
+#: GeoPage.php:337
 msgid "Include families in coordinate file:"
 msgstr "包括家庭中的坐标文件："
 
-#: GeoPage.php:330
+#: GeoPage.php:347
 msgid "Neighbor Families"
 msgstr "邻居的家庭"
 
-#: GeoPage.php:305 GeoPage.php:342
+#: GeoPage.php:313 GeoPage.php:361
 msgid "Make Data File"
 msgstr "数据文件"
 
-#: GeoPage.php:286
+#: GeoPage.php:294
 msgid "Show Neighbors"
 msgstr "显示邻居"
 
-#: GeoPage.php:364
+#: GeoPage.php:385
 msgid "Distance"
 msgstr "距离"
 
-#: GeoPage.php:365
+#: GeoPage.php:386
 msgid "Direction"
 msgstr "方向"
 
@@ -2185,15 +2185,15 @@ msgstr "纬度"
 msgid "Longitude"
 msgstr "经度"
 
-#: GeoPage.php:430 PersonView.php:355 SelectList.php:781
+#: GeoPage.php:448 PersonView.php:355 SelectList.php:781
 msgid "Add to Cart"
 msgstr "添加到购物车"
 
-#: GeoPage.php:433 SelectList.php:782
+#: GeoPage.php:452 SelectList.php:782
 msgid "Intersect with Cart"
 msgstr "相交的购物车"
 
-#: GeoPage.php:436 SelectList.php:783
+#: GeoPage.php:456 SelectList.php:783
 msgid "Remove from Cart"
 msgstr "从购物车中删除"
 
@@ -2762,11 +2762,11 @@ msgstr "编辑用户"
 msgid "No group assignments."
 msgstr "组分配。"
 
-#: PersonView.php:782
+#: PersonView.php:758
 msgid "No volunteer opportunity assignments."
 msgstr "没有志愿者的机会分配。"
 
-#: PersonView.php:823
+#: PersonView.php:802
 #, fuzzy
 msgid "Assign a New Volunteer Opportunity"
 msgstr "分配一个新的义工机会"

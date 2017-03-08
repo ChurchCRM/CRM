@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "2.6.0",
+    "version": "2.6.1",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -35,7 +35,7 @@
         "ionicons": "2.0.1",
         "font-awesome": "4.7.0",
         "fullcalendar": "3.0.1",
-        "jquery-photo-uploader": "1.0.9",
+        "jquery-photo-uploader": "1.0.10",
         "initial-js": "0.3.4"
     },
     "scripts": {
@@ -48,6 +48,8 @@
         "changelogs": "scripts/gen-changelogs.sh",
         "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "composer-install": "cd src/ && composer install",
-        "composer-update": " cd src/ && composer update"
+        "composer-update": " cd src/ && composer update",
+        "tests-install": "cd tests/ && composer install",
+        "test": "cd tests/behat/ && ../vendor/bin/behat"
     }
 }
