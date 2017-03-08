@@ -191,7 +191,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <?php if ($bOkToEdit): ?>
                     <div class="after">
                         <div class="buttons">
-                            <a class="hide" id="view-larger-image-btn" href="#" data-toggle="modal" data-target="#view-image" title="<?= gettext("View Photo") ?>">
+                            <a class="hide" id="view-larger-image-btn" href="#" title="<?= gettext("View Photo") ?>">
                                 <i class="fa fa-search-plus"></i>
                             </a>&nbsp;
                             <a href="#" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
@@ -913,21 +913,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
   <!-- Modal -->
   <div id="photoUploader"></div>
   
-    <div id="view-image" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><?= gettext('Family Photo') ?></h4>
-                </div>
-                
-                <div class="modal-body">
-                    <img class="img-rounded img-responsive center-block" 
-                    src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" />
-                </div>
-            </div>
-        </div>
-    </div>
   <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
        aria-hidden="true">
     <div class="modal-dialog">
@@ -1017,7 +1002,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 } ?>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
     <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
     <script>
         window.CRM.currentFamily = <?= $iFamilyID ?>;
         window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
@@ -1069,7 +1055,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             });
 
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              url: window.CRM.root + "/api/families/" + familyId + "/photo",
               maxPhotoSize: window.CRM.maxUploadSize,
               photoHeight: 400,
               photoWidth: 400,
@@ -1078,15 +1064,18 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
               }
             });
             
-        $.ajax({
-            method :"HEAD",
-            url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
-            processData: false,
-            global:false,
-            success: function(d){
+
+        contentExists(window.CRM.root + "/api/families/" + familyId + "/photo", function(success) {
+            if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
-            },
-            error: function(event) {
+                
+                $("#view-larger-image-btn").click(function() {
+                    bootbox.alert({
+                        title: "<?= gettext('Family Photo') ?>",
+                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + familyId + '/photo" />',
+                        backdrop: true
+                    });
+                });
             }
         });
 
