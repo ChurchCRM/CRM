@@ -204,7 +204,7 @@ class Deposit extends BaseDeposit
         $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x;
         $thisReport->curY += 2 * $thisReport->QBDepositTicketParameters->lineItemInterval->y;
 
-        if ($thisReport->displayBillCounts) {
+        if (SystemConfig::getBooleanValue('bDisplayBillCounts')) {
             $this->generateCashDenominations($thisReport);
         }
 
@@ -336,9 +336,9 @@ class Deposit extends BaseDeposit
         $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
         $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
 
-    // Now print deposit totals by fund
-    $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
-        if ($thisReport->depositSummaryParameters->displayBillCounts) {
+        // Now print deposit totals by fund
+        $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
+        if (SystemConfig::getBooleanValue('bDisplayBillCounts')) {
             $this->generateCashDenominations($thisReport);
         }
         $thisReport->curX = $thisReport->depositSummaryParameters->aggregateX;
@@ -379,7 +379,6 @@ class Deposit extends BaseDeposit
             throw new \Exception('No Payments on this Deposit', 404);
         }
 
-        $Report->displayBillCounts = SystemConfig::getBooleanValue('bDisplayBillCounts');
         $Report->pdf = new \ChurchCRM\Reports\PDF_DepositReport();
         $Report->funds = DonationFundQuery::create()->find();
 
