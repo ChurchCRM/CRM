@@ -28,7 +28,17 @@ div {
     .legendbox {
         margin: 7px 3px 0px 3px ;
     }
+
+    .legenditemtext {
+        display: block;
+        overflow: hidden;
+    }
 }
+
+img.legendicon {
+    float: left;
+}
+
 
 @media screen and (max-device-width: 600px) {
     #maplegend {

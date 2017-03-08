@@ -126,16 +126,16 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             <div class="row legendbox">
                 <div class="col-xs-6 legenditem">
                     <img
-                        src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
-                    <?= gettext('Unassigned') ?>
+                        class="legendicon" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                    <div class="legenditemtext"><?= gettext('Unassigned') ?></div>
                 </div>
                 <?php
                 foreach ($icons as $icon) {
                     ?>
                     <div class="col-xs-6 legenditem">
                         <img
-                            src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
-                        <?= $icon->getOptionName() ?>
+                            class="legendicon" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                        <div class="legenditemtext"><?= $icon->getOptionName() ?></div>
                     </div>
                     <?php
 
