@@ -17,7 +17,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '' || SystemConfig::getValue('n
     $myAddressLatLon = new AddressLatLon();
 
     // Try to look up the church address to center the map.
-    $myAddressLatLon->SetAddress(SystemConfig::getValue('sChurchAddress'), SystemConfig::getValue('sChurchCity'), SystemConfig::getValue('sChurchState'), SystemConfig::getValue('sChurchZip'));
+    $myAddressLatLon->SetAddress(SystemConfig::getValue('sChurchAddress'), SystemConfig::getValue('sChurchCity'), SystemConfig::getValue('sChurchState'), SystemConfig::getValue('sChurchZip'), SystemConfig::getValue('sChurchCountry'));
     $ret = $myAddressLatLon->Lookup();
     if ($ret == 0) {
         $nChurchLatitude = $myAddressLatLon->GetLat();
