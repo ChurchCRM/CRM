@@ -4,6 +4,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\dto\SystemConfig;
+
 $familyService = new FamilyService();
 
 $sMode = 'Active';
@@ -11,7 +12,7 @@ $sMode = 'Active';
 if (isset($_GET['mode'])) {
     $sMode = FilterInput($_GET['mode']);
 }
-if (strtolower($sMode) == 'inactive'){
+if (strtolower($sMode) == 'inactive') {
     $families = $familyService->getDeactivatedFamilies();
 } else {
     $sMode = 'Active';
@@ -46,7 +47,7 @@ require 'Include/Header.php'; ?>
 
             <!--Populate the table with family details -->
             <?php foreach ($families as $family) {
-            ?>
+    ?>
             <tr>
                 <td><a href='FamilyView.php?FamilyID=<?= $family->getId() ?>'>
                         <span class="fa-stack">
@@ -64,9 +65,10 @@ require 'Include/Header.php'; ?>
                 <td><?= $family->getHomePhone() ?></td>
                 <td><?= $family->getCellPhone() ?></td>
                 <td><?= $family->getEmail() ?></td>
-                <td><?= date_format($family->getDateEntered(),SystemConfig::getValue('sDateFormatLong')) ?></td>
-                <td><?= date_format($family->getDateLastEdited(),SystemConfig::getValue('sDateFormatLong')) ?></td>
+                <td><?= date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
+                <td><?= date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                 <?php
+
                 }
                 ?>
             </tr>

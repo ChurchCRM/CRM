@@ -161,7 +161,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 <?php
 
 }  //END IF block for Finance permissions to include HTML for Deposit Chart
- ?>
+?>
 
 <div class="row">
     <div class="col-lg-6">
@@ -188,9 +188,10 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                     <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
                                 </td>
                                 <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateEntered(),SystemConfig::getValue('sDateFormatLong')) ?></td>
+                                <td><?=  date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                             </tr>
                             <?php
+
                         }
                         ?>
                         </tbody>
@@ -223,9 +224,10 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                     <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
                                 </td>
                                 <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateLastEdited(),SystemConfig::getValue('sDateFormatLong')) ?></td>
+                                <td><?=  date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                             </tr>
                             <?php
+
                         }
                         ?>
                         </tbody>
@@ -263,6 +265,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(),SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
+
                         }
                         ?>
                     </ul>
@@ -299,6 +302,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                     class="users-list-date"><?= date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
+
                         }
                         ?>
                     </ul>
