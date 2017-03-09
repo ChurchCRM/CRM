@@ -41,7 +41,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
     <?php
 
 } else {
-    if (SystemConfig::getValue('sGoogleMapKey') == '') { ?>
+    if (SystemConfig::getValue('sGoogleMapKey') == '') {
+        ?>
         <div class="callout callout-warning">
             <?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?>
         </div>
