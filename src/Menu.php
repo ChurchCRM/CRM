@@ -262,7 +262,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
                                          width="85" height="85"/><br/>
                                     <?= $person->getFullName() ?></a>
-                                <span class="users-list-date"><?= date_format($person->getDateEntered(),SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
+                                <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
 
