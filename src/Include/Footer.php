@@ -294,6 +294,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/randomcolor/randomColor.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/initial.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/validator.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
 

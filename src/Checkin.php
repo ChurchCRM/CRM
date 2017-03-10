@@ -24,27 +24,34 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/Header.php';
 
+use ChurchCRM\EventQuery;
+use ChurchCRM\EventAttendQuery;
+use ChurchCRM\EventAttend;
+use ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\SystemURLs;
+use Propel\Runtime\Propel;
 
-$sAction = '';
 $EventID = 0;
-$EvtName = '';
-$EvtDesc = '';
-$EvtDate = '';
+$CheckoutOrDelete = false;
+$event = null;
+$iChildID = 0 ;
+$iAdultID = 0;
 
-if (array_key_exists('Action', $_POST)) {
-    $sAction = $_POST['Action'];
-}
+
 if (array_key_exists('EventID', $_POST)) {
-    $EventID = $_POST['EventID'];
+    $EventID = FilterInput($_POST['EventID'], 'int');
+    echo  'eventID';
 } // from ListEvents button=Attendees
-if (array_key_exists('EName', $_POST)) {
-    $EvtName = $_POST['EName'];
+if (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn'])) {
+    $CheckoutOrDelete =  true;
 }
-if (array_key_exists('EDesc', $_POST)) {
-    $EvtDesc = $_POST['EDesc'];
+
+if(isset($_POST['child-id'])) {
+    $iChildID = FilterInput($_POST['child-id'], 'int');
 }
-if (array_key_exists('EDate', $_POST)) {
-    $EvtDate = $_POST['EDate'];
+if(isset($_POST['adult-id'])) {
+    $iAdultID = FilterInput($_POST['adult-id'], 'int');
 }
 
 //
@@ -52,338 +59,265 @@ if (array_key_exists('EDate', $_POST)) {
 //
 
 //Start off by first picking the event to check people in for
-//include "show_post_info.php";
-//include "show_session_info.php";
+$activeEvents = EventQuery::Create()
+    ->filterByInActive(1, Criteria::NOT_EQUAL)
+    ->find();
 
-$sSQL = 'SELECT * FROM events_event';
-$rsEvents = RunQuery($sSQL);
+if($EventID > 0) {
+    //get Event Details
+    $event = EventQuery::Create()
+        ->findOneById($EventID);
+}
 
-//Page loading for the first time
-if (!isset($_POST['EventID']) && !isset($_POST['Verify']) && !isset($_POST['Add']) && !isset($_POST['Checkout']) || isset($_POST['Exit'])) {
-    ?>
-<div class="row">
-    <div class="col-md-8 col-xs-12">
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title"><?= gettext('Select the event to which you would like to check people in for') ?>:</h3>
-            </div>
-            
-            <div class="box-body">      
-                <form name="Checkin" action="Checkin.php" method="POST">
-                    <?php if ($sGlobalMessage): ?>
-                        <p><?= $sGlobalMessage ?></p>
-                    <?php endif; ?>
-                    
-                    <div class="form-group">
-                        <label><?= gettext('Select Event'); ?>:</label>
-                        <select name="EventID" class="form-control">
-                        <?php while ($aRow = mysqli_fetch_array($rsEvents)): ?>
-                            <option value="<?= $aRow['event_id']; ?>"><?= $aRow['event_title']; ?></option>
-                        <?php endwhile; ?>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-7 col-xs-7">
-                                <input type="submit" name="Submit" value="<?= gettext('Select Event'); ?>" class="btn btn-primary">
-                            </div>
-                            <div class="col-md-5 col-xs-5 text-right">
-                                <a href="EventEditor.php"><?= gettext('Add New Event'); ?></a>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-
+if($iChildID > 0){
+    //Get the Child Details
+    $person = PersonQuery::create()
+        ->findOneById($iChildID);
+}
+if($iAdultID > 0){
+    //Get the Child Details
+    $checkedInByPerson = PersonQuery::create()
+        ->findOneById($iAdultID);
 }
 ?>
 
-<!-- Add Atendees Here -->
-<?php
-// If event is known, then show 2 text boxes, person being checked in and the person checking them in.
-// Show a verify button and a button to add new visitor in dbase.
-if (isset($_POST['Submit']) && isset($_POST['EventID']) || isset($_POST['Cancel'])) {
-    $iEventID = FilterInput($_POST['EventID'], 'int');
-    $sSQL = "SELECT * FROM events_event WHERE Event_id ='".$iEventID."';";
-    $rsEvents = RunQuery($sSQL);
-    $aRow = mysqli_fetch_array($rsEvents);
-    extract($aRow); ?>
-<form method="post" action="Checkin.php" name="Checkin">
-	<input type="hidden" name="EventID" value="<?= $event_id; ?>">
-
+<!--Select Event Form -->
+<form class="well form-horizontal" name="selectEvent" action="Checkin.php" method="POST">
     <div class="row">
-        <div class="col-md-8 col-xs-12">
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title"><?= gettext('Add Attendees for Event'); ?>: <?= $event_title; ?></h3>
-            </div>
-        
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-md-6 col-xs-6">
-                        <input type="textbox" class="form-control" name="child" placeholder="<?= gettext("Child's Number"); ?>">
+        <div class="col-md-10 col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title"><?= gettext('Select the event to which you would like to check people in for') ?>
+                        :</h3>
+                </div>
+                <div class="box-body">
+                    <?php if ($sGlobalMessage): ?>
+                        <p><?= $sGlobalMessage ?></p>
+                    <?php endif; ?>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label"><?= gettext('Select Event'); ?></label>
+                        <div class="col-md-10 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
+                                <select name="EventID" class="form-control" onchange="this.form.submit()">
+                                    <option value="<?= $EventID; ?>"
+                                            disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?> ><?= gettext('Select event') ?></option>
+                                    <?php foreach ($activeEvents as $event) {
+                                        ?>
+                                        <option
+                                            value="<?= $event->getId(); ?>" <?= ($EventID == $event->getId()) ? " Selected='selected'" : "" ?> >
+                                            <?= $event->getTitle(); ?></option>
+                                        <?php
+
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="col-md-6 col-xs-6">
-                        <input type="textbox" class="form-control" name="adult" placeholder="<?= gettext('Adult Number(Optional)'); ?>">
+                    <div class="form-group">
+                        <div class="col-xs-12 text-right">
+                            <a href="EventEditor.php"><?= gettext('Add New Event'); ?></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="box-footer text-center">
-                <input type="submit" class="btn btn-primary" value="<?= gettext('Verify'); ?>" Name="Verify"
-                onclick="javascript:document.location='Checkin.php';">
-				<input type="submit" class="btn btn-default" value="<?= gettext('Back to Menu'); ?>" name="Exit"
-                onClick="javascript:document.location='Checkin.php';">
-				<input type="button" class="btn btn-primary" value="<?= gettext('Add Visitor'); ?>" name="Add"
-                onClick="javascript:document.location='PersonEditor.php';">
-            </div>
-        </div>
         </div>
     </div>
-</form>
+</form> <!-- end selectEvent form -->
+
+<!-- Add Attendees Form -->
 <?php
+// If event is known, then show 2 text boxes, person being checked in and the person checking them in.
+// Show a verify button and a button to add new visitor in dbase.
+if (!$CheckoutOrDelete &&  $EventID > 0) {
+    ?>
 
-}
-//End Entry
+    <form class="well form-horizontal" method="post" action="Checkin.php" id="AddAttendees" data-toggle="validator"
+          role="form">
+        <input type="hidden" id="EventID" name="EventID" value="<?= $EventID; ?>">
+        <input type="hidden" id="child-id" name="child-id">
+        <input type="hidden" id="adult-id" name="adult-id">
 
-//Verify Section - get the picture and name of both people.  Display Add or Cancel (back to add people)"
-if (isset($_POST['EventID']) && isset($_POST['Verify']) && isset($_POST['child'])) {
-    $iEventID = FilterInput($_POST['EventID'], 'int');
-    $iChildID = FilterInput($_POST['child'], 'int');
-    $iAdultID = FilterInput($_POST['adult'], 'int');
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title"><?= gettext('Add Attendees for Event'); ?>: <?= $event->getTitle() ?></h3>
+                    </div>
+                    <div class="box-body">
 
-    $sSQL = "SELECT * FROM events_event WHERE Event_id ='".$iEventID."';";
-    $rsEvents = RunQuery($sSQL);
-    $aRow = mysqli_fetch_array($rsEvents);
-    extract($aRow); ?>
-<form method="post" action="Checkin.php" name="Checkin">
-	<input type="hidden" name="EventID" value="<?= $event_id; ?>">
-	<input type="hidden" name="child" value="<?= $iChildID; ?>">
-	<input type="hidden" name="adult" value="<?= $iAdultID; ?>">
-    
-    <div class="row">
-        <div class="col-md-8 col-xs-12">
-        
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext("Event"). ": " .$event_title ?></h3>
-            </div>
-            
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-md-6 col-xs-6">
-                        <div class="LightShadedBox text-center">
-                        <?php
-                            loadperson($iChildID); ?>
+                        <div class="form-group">
+                            <label for="child" class="col-sm-2 control-label"><?= gettext("Person's Name") ?></label>
+                            <div class="col-sm-5 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                                    <input type="text" class="form-control" id="child"
+                                           placeholder="<?= gettext("Person's Name"); ?>" required tabindex=1>
+                                </div>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div id="childDetails" class="col-sm-5 text-center"></div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="adult"
+                                   class="col-sm-2 control-label"><?= gettext('Adult Name(Optional)') ?></label>
+                            <div class="col-sm-5 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" id="adult"
+                                           placeholder="<?= gettext('Checked in By(Optional)'); ?>" tabindex=2>
+                                </div>
+                            </div>
+                            <div id="adultDetails" class="col-sm-5 text-center"></div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="box-footer text-center col-md-4  col-xs-8">
+                                <input type="submit" class="btn btn-primary" value="<?= gettext('CheckIn'); ?>"
+                                       name="CheckIn" tabindex=3>
+                                <input type="reset" class="btn btn-default" value="<?= gettext('Cancel'); ?>"
+                                       name="Cancel" tabindex=4 onClick="SetPersonHtml($('#childDetails'),null);SetPersonHtml($('#adultDetails'),null);">
+                            </div>
+
+                            <div class="text-right col-md-8 col-xs-4">
+                                <a href="PersonEditor.php"><?= gettext('Add Visitor'); ?></a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="col-md-6 col-xs-6">
-                        <div class="LightShadedBox text-center">
-                        <?php
-                            if ($iAdultID != null) {
-                                loadperson($iAdultID);
+                </div>
+            </div>
+        </div>
+    </form> <!-- end AddAttendees form -->
+
+    <?php
+}
+
+// Checkin/Checkout Section update db
+if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['CheckIn']) || isset($_POST['CheckOut']) || isset($_POST['Delete']))) {
+    //Fields -> event_id, person_id, checkin_date, checkin_id, checkout_date, checkout_id
+
+    if (isset($_POST['CheckIn']) && $iChildID > 0 ) {
+        $attendee = new EventAttend();
+        $attendee->setEventId($EventID);
+        $attendee->setPersonId($iChildID);
+        $attendee->setCheckinDate(date("Y-m-d H:i:s"));
+        if ($iAdultID) {
+            $attendee->setCheckinId($iAdultID);
+        }
+        $attendee->save();
+    }
+
+    //Unable to use ORM for update as there is no primary key
+    if (isset($_POST['CheckOut'])) {
+        $values = "checkout_date=NOW(), checkout_id=" . ($iAdultID ? "'" . $iAdultID . "'" : 'null');
+        $sSQL = "UPDATE event_attend SET $values WHERE (person_id = '" . $iChildID . "' AND event_id='" . $EventID . "') ;";
+        RunQuery($sSQL);
+    }
+
+
+    //delete
+    if (isset($_POST['Delete'])) {
+        $sSQL = "DELETE FROM event_attend WHERE (person_id = '" . $iChildID . "' AND event_id='" . $EventID . "') ;";
+        RunQuery($sSQL);
+    }
+}
+
+//-- End checkin
+
+//  Checkout / Delete section
+if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
+    (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn']))
+) {
+
+    $iChildID = FilterInput($_POST['child-id'], 'int');
+
+    $formTitle = (isset($_POST['CheckOutBtn']) ? gettext("CheckOut Person") : gettext("Delete Checkin in Entry")); ?>
+
+    <form class="well form-horizontal" method="post" action="Checkin.php" id="CheckOut" data-toggle="validator"
+          role="form">
+        <input type="hidden" name="EventID" value="<?= $EventID ?>">
+        <input type="hidden" name="child-id" value="<?= $iChildID ?>">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><?= gettext("CheckOut Person") ?></h3>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div id="child" class="col-sm-4 text-center" onload="SetPersonHtml(this,perArr)">
+                                <?php
+                                loadperson($iChildID); ?>
+                            </div>
+                            <?php
+                            if (isset($_POST['CheckOutBtn'])) {
+                                ?>
+                                <div class="col-sm-4 col-xs-6">
+                                    <div class="form-group">
+                                        <label><?= gettext('Adult Checking Out Person') ?>:</label>
+                                        <input type="text" id="adultout" name="adult" class="form-control"
+                                               placeholder="<?= gettext('Adult Name (Optional)') ?>">
+                                        <input type="hidden" id="adultout-id" name="adult-id">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary"
+                                               value="<?= gettext('CheckOut') ?>" name="CheckOut">
+                                        <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>"
+                                               name="CheckoutCancel">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 text-center">
+                                    <div id="adultoutDetails" class="box box-solid box-default hidden"></div>
+                                </div>
+                                <?php
+
+                            } else { // DeleteBtn ?>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-danger"
+                                           value="<?= gettext('Delete') ?>" name="Delete">
+                                    <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>"
+                                           name="DeleteCancel">
+                                </div>
+                                <?php
                             } ?>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="box-footer text-center">
-                <input type="submit" class="btn btn-primary" value="<?= gettext('CheckIn'); ?>" name="CheckIn" 
-                onClick="javascript:document.location='Checkin.php';">
-                <input type="submit" class="btn btn-default" value="<?= gettext('Cancel'); ?>" name="Cancel"
-                onClick="javascript:document.location='Checkin.php';">
-            </div>
         </div>
-        
-        </div>
-    </div>
-</form>
-<?php
-
-}
-
-// End Verify section.
-
-// Checkin Section
-if (isset($_POST['EventID']) && isset($_POST['child']) && (isset($_POST['CheckIn']) || isset($_POST['VerifyCheckOut']))) {
-    //Fields -> event_id, person_id, checkin_date, checkin_id, checkout_date, checkout_id
-    $iEventID = FilterInput($_POST['EventID'], 'int');
-    $iChildID = FilterInput($_POST['child'], 'int');
-    if (isset($_POST['CheckIn'])) {
-        if ($_POST['adult'] != '') {
-            $iCheckinID = FilterInput($_POST['adult'], 'int');
-            $fields = '(event_id, person_id, checkin_date, checkin_id)';
-            $values = "'".$iEventID."', '".$iChildID."', NOW(), '".$iCheckinID."'";
-        } else {
-            $fields = '(event_id, person_id, checkin_date)';
-            $values = "'".$iEventID."', '".$iChildID."', NOW() ";
-        }
-        $sSQL = "INSERT IGNORE INTO event_attend $fields VALUES ( $values ) ;";
-        RunQuery($sSQL);
-    }
-    if (isset($_POST['VerifyCheckOut'])) {
-        if ($_POST['adult'] != '') {
-            $iCheckoutID = FilterInput($_POST['adult'], 'int');
-            $fields = 'checkout_date, checkout_id';
-            $values = "checkout_date=NOW(), checkout_id='".$iCheckoutID."' ";
-        } else {
-            $fields = 'checkout_date';
-            $values = 'checkout_date=NOW() ';
-        }
-        $sSQL = "UPDATE event_attend SET $values WHERE (person_id = '".$iChildID."' AND event_id='".$iEventID."') ;";
-//        die($sSQL);
-        RunQuery($sSQL);
-    } ?>
-	<form method="post" action="Checkin.php" name="Checkin">
-        <input type="hidden" name="EventID" value="<?= $iEventID  ?>">
-        <div class="form-group">
-            <input type="submit" name="Submit" value="<?= gettext('Continue checkin') ?>" class="btn btn-primary">
-        </div>
-	</form>
-<?php
-
-}
-
-//-- End checkin
-
-//  Checkout section
-if (isset($_POST['EventID']) && isset($_POST['Action']) && isset($_POST['child']) || isset($_POST['VerifyCheck'])) {
-    $iEventID = FilterInput($_POST['EventID'], 'int');
-    $iChildID = FilterInput($_POST['child'], 'int');
-
-    $sSQL = "SELECT * FROM events_event WHERE Event_id ='".$iEventID."';";
-    $rsEvents = RunQuery($sSQL);
-    $aRow = mysqli_fetch_array($rsEvents);
-    extract($aRow);
-
-    if (isset($_POST['Action'])) {
-        ?>
-<form method="post" action="Checkin.php" name="Checkin">
-    <input type="hidden" name="EventID" value="<?= $iEventID  ?>">
-    <input type="hidden" name="child" value="<?= $iChildID  ?>">
-    
-    <div class="row">
-        <div class="col-md-8 col-xs-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext("Event") .": ".$event_title ?></h3>
-                </div>
-                
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-6 col-xs-6">
-                            <div class="LightShadedBox text-center">
-                                <?php
-                                    loadperson($iChildID); ?>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6 col-xs-6">
-                            <div class="form-group">
-                                <label>Person Checking Out Child:</label>
-                                <input type="textbox" name="adult" class="form-control" placeholder="(Number)">
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary" value="<?= gettext('Verify CheckOut') ?>" name="VerifyCheck"
-                                onClick="javascript:document.location='Checkin.php';">
-                                <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel"
-                                onClick="javascript:document.location='Checkin.php';">
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
+    </form>
     <?php
-
-    }
-    
-    if (isset($_POST['VerifyCheck'])) {
-        $iAdultID = FilterInput($_POST['adult'], 'int'); ?>
-<form method="post" action="Checkin.php" name="Checkin">
-    <input type="hidden" name="EventID" value="<?= $iEventID ?>">
-    <input type="hidden" name="child" value="<?= $iChildID ?>">
-    <input type="hidden" name="adult" value="<?= $iAdultID ?>">
-    
-    <div class="row">
-        <div class="col-md-8 col-xs-12">
-        
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext("Event"). ": ".$event_title ?></h3>
-                </div>
-                
-                <div class="box-body">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-6">
-                                <div class="LightShadedBox text-center">
-                                <?php
-                                    loadperson($iChildID); ?>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6 col-xs-6">
-                                <div class="LightShadedBox text-center">
-                                <?php
-                                    loadperson($iAdultID); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group text-center">
-                        <input type="submit" class="btn btn-primary" value="<?= gettext('Finalize CheckOut') ?>" name="VerifyCheckOut"
-                        onClick="javascript:document.location='Checkin.php';">
-                        <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel"
-                        onClick="javascript:document.location='Checkin.php';">
-                    </div>
-                </div>
-            </div>
-        
-        </div>
-    </div>
-</form>
-    <?php
-
-    }
 }
 //End checkout
-?>
+//**********************************************************************************************************
 
-<!-- ********************************************************************************************************** -->
-<div class="box box-primary">
-    <div class="box-body">
-    <div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <td width="20%"><?= gettext('Name') ?></td>
-                <td width="15%"><?= gettext('Checked In Time') ?></td>
-                <td width="20%"><?= gettext('Checked In By') ?></td>
-                <td width="15%"><?= gettext('Checked Out Time') ?></td>
-                <td width="20%"><?= gettext('Checked Out By') ?></td>
-                <td width="10%" nowrap><?= gettext('Action') ?></td>
-            </tr>
-        </thead>
-        
-        <tbody>
-            
-<?php
 if (isset($_POST['EventID'])) {
-    $EventID = FilterInput($_POST['EventID'], 'int');
+?>
+<div class="box box-primary">
+    <div class="box-body table-responsive">
+            <table id="checkedinTable" class="table data-table table-striped ">
+                <thead>
+                <tr>
+                    <th><?= gettext('Name') ?></th>
+                    <th><?= gettext('Checked In Time') ?></th>
+                    <th><?= gettext('Checked In By') ?></th>
+                    <th><?= gettext('Checked Out Time') ?></th>
+                    <th><?= gettext('Checked Out By') ?></th>
+                    <th nowrap><?= gettext('Action') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+
+    <?php
+
     $sSQL = "SELECT * FROM event_attend WHERE event_id = '$EventID' ";                // ORDER BY person_id";
     $rsOpps = RunQuery($sSQL);
     $numAttRows = mysqli_num_rows($rsOpps);
@@ -448,210 +382,144 @@ if (isset($_POST['EventID'])) {
             $per_FirstName = '';
             $per_MiddleName = '';
             $per_LastName = '';
-            $per_Suffix = '';
-            $sRowClass = AlternateRowStyle($sRowClass); ?>
-            <tr class="<?= $sRowClass ?>">
-                <td class="TextColumn"><?= $sPerson ?></td>
-                <td class="TextColumn"><?= $checkin_date ?></td>
-                <td class="TextColumn"><?= $sCheckinby ?></td>
-                <td class="TextColumn"><?= $checkout_date ?></td>
-                <td class="TextColumn"><?= $sCheckoutby ?></td>
-                <td  class="TextColumn" align="center">
+            $per_Suffix = ''; ?>
+                        <tr>
+                            <td><img data-name="<?= $sPerson; ?>" data-src="<?= SystemURLs::getRootPath().'/api/persons/'.$person_id.'/thumbnail' ?>" class="direct-chat-img initials-image">&nbsp
+                                <a href="PersonView.php?PersonID=<?= $person_id ?>"><?= $sPerson ?></a></td>
+                            <td><?= $checkin_date ?></td>
+                            <td><?= $sCheckinby ?></td>
+                            <td><?= $checkout_date ?></td>
+                            <td><?= $sCheckoutby ?></td>
+                            <td align="center">
+                                <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
+                                    <input type="hidden" name="child-id" value="<?= $person_id ?>">
+                                    <input type="hidden" name="EventID" value="<?= $EventID ?>">
+                                    <?php
+                                    if(!$checkout_date) { ?>
+                                        <input class="btn btn-primary btn-sm" type="submit" name="CheckOutBtn"
+                                               value="<?= gettext('CheckOut') ?>">
+                                        <input class="btn btn-danger btn-xs" type="submit" name="DeleteBtn"
+                                               value="<?= gettext('Delete') ?>">
 
-                <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
-                  <input type="hidden" name="child" value="<?= $person_id ?>">
-                  <input type="hidden" name="EventID" value="<?= $EventID ?>">
-                  <input type="submit" name="Action" value="<?= gettext('CheckOut') ?>" class="btn btn-primary" >
-                </form>
-             </td>
-            </tr>
-        <?php
+                                        <?php
 
-        }
-    }
-} else {
-    echo '<tr><td colspan="6" align="center">' . gettext('No Attendees Assigned to Event') . '</td></tr>';
+                                    } else { ?>
+                                        <i class="fa fa-check-circle"></i>
+                                        <?php
+                                    }?>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php
+
+                    }
+                }
 }
-?>
-            
-        </tbody>
-    </table>
-    </div>
+                ?>
+
+                </tbody>
+            </table>
     </div>
 </div>
 
+<script language="javascript" type="text/javascript">
+    var perArr;
+    $(document).ready(function () {
+        $('#checkedinTable').dataTable({
+            "language": {
+                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+            },
+            responsive: true,
+            "dom": "<'row'<'col-md-6'i><'col-md-6'f>>" +
+            'rt<"bottom"lp><"clear">'
+
+        });
+    });
+
+    $(document).ready(function() {
+        var $input = $("#child, #adult, #adultout");
+        $input.autocomplete({
+            source: function (request, response) {
+                console.log('empty');
+                $.ajax({
+                    url: window.CRM.root + '/api/persons/search/'+request.term,
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function (rdata) {
+                        console.log(rdata);
+                        data = JSON.parse(rdata);
+                        if(data.length > 0) {
+                            data = data[0];
+                            response($.map(data.persons, function (item) {
+                                var val=item.displayName + (item.role ? '- (' + item.role + ')':'');
+                                return {
+                                    value: val,
+                                    id: item.id,
+                                    obj:item
+                                }
+                            }));
+                        }
+
+                    }
+                })
+            },
+            minLength: 2,
+            select: function(event,ui) {
+                $('[id=' + event.target.id + ']' ).val(ui.item.value);
+                $('[id=' + event.target.id + '-id]').val(ui.item.id);
+                SetPersonHtml($('#' + event.target.id + 'Details'),ui.item.obj);
+            }
+        });
+
+    });
+
+    function SetPersonHtml(element, perArr) {
+        if(perArr) {
+            element.html(
+                '<div class="text-center">' +
+                '<a target="_top" href="PersonView.php?PersonID=' + perArr.id + '"><h4>' + perArr.title + ' ' + perArr.displayName + '</h4></a>' +
+                '<div class="">' + perArr.familyRole + '</div>' +
+                '<div class="text-center">' + perArr.address + '</div>' +
+                '<img data-name="' + perArr.displayName + '" data-src="' + window.CRM.root + '/api/persons/' + perArr.id + '/thumbnail" ' +
+                'class="initials-image profile-user-img img-responsive img-circle"> </div>'
+            );
+            element.removeClass('hidden');
+            $(".initials-image").initial();
+        } else {
+            element.html('');
+            element.addClass('hidden');
+        }
+    }
+</script>
 <?php require 'Include/Footer.php';
 
-function loadperson($iPersonID)
+function loadPerson($iPersonID)
 {
-    if ($iPersonID == 0) {
-        return;
+   if ($iPersonID == 0) {
+        echo "";
     }
-
-    $sSQL = 'SELECT a.*, family_fam.*, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole, b.per_FirstName AS EnteredFirstName,
-					b.Per_LastName AS EnteredLastName, c.per_FirstName AS EditedFirstName, c.per_LastName AS EditedLastName
-				FROM person_per a
-				LEFT JOIN family_fam ON a.per_fam_ID = family_fam.fam_ID
-				LEFT JOIN list_lst cls ON a.per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-				LEFT JOIN list_lst fmr ON a.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-				LEFT JOIN person_per b ON a.per_EnteredBy = b.per_ID
-				LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
-				WHERE a.per_ID = '.$iPersonID;
-    $rsPerson = RunQuery($sSQL);
-    if ((!$rsPerson) || mysqli_num_rows($rsPerson) == 0) {
-        return;
-    }
-
-    extract(mysqli_fetch_array($rsPerson));
-
-    // Get the lists of custom person fields
-    $sSQL = "SELECT person_custom_master.* FROM person_custom_master
-				WHERE custom_Side = 'left' ORDER BY custom_Order";
-    $rsLeftCustomFields = RunQuery($sSQL);
-
-    $sSQL = "SELECT person_custom_master.* FROM person_custom_master
-				WHERE custom_Side = 'right' ORDER BY custom_Order";
-    $rsRightCustomFields = RunQuery($sSQL);
-
-    // Get the custom field data for this person.
-    $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
-    $rsCustomData = RunQuery($sSQL);
-    $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
-
-    // Get the notes for this person
-    $sSQL = 'SELECT nte_Private, nte_ID, nte_Text, nte_DateEntered, nte_EnteredBy, nte_DateLastEdited, nte_EditedBy, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.per_FirstName AS EditedFirstName, b.per_LastName AS EditedLastName ';
-    $sSQL .= 'FROM note_nte ';
-    $sSQL .= 'LEFT JOIN person_per a ON nte_EnteredBy = a.per_ID ';
-    $sSQL .= 'LEFT JOIN person_per b ON nte_EditedBy = b.per_ID ';
-    $sSQL .= 'WHERE nte_per_ID = '.$iPersonID;
-
-    // Admins should see all notes, private or not.  Otherwise, only get notes marked non-private or private to the current user.
-    if (!$_SESSION['bAdmin']) {
-        $sSQL .= ' AND (nte_Private = 0 OR nte_Private = '.$_SESSION['iUserID'].')';
-    }
-
-    $rsNotes = RunQuery($sSQL);
-
-    SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
-    $sAddress2 = SelectWhichInfo($per_Address2, $fam_Address2, false);
-    $sCity = SelectWhichInfo($per_City, $fam_City, false);
-    $sState = SelectWhichInfo($per_State, $fam_State, false);
-    $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
-    $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-
-    echo '<font size="4"><b>';
-    echo FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0);
-    echo '</font></b><br>';
-
-    if ($fam_ID != '') {
-        echo '<font size="2">(';
-        if ($sFamRole != '') {
-            echo $sFamRole;
+    $person = PersonQuery::create()
+        ->findOneById($iPersonID);
+    $familyRole="(";
+    if($person->getFamId()) {
+        if ($person->getFamilyRole()) {
+            $familyRole .= $person->getFamilyRoleName();
         } else {
-            echo gettext('Member');
+            $familyRole .=  gettext('Member');
         }
-        echo gettext(' of the').' <a href="FamilyView.php?FamilyID='.$fam_ID.'">'.$fam_Name.'</a> '.gettext('family').' )</font><br><br>';
+        $familyRole .= gettext(' of the').' <a href="FamilyView.php?FamilyID='. $person->getFamId().'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
     } else {
-        echo gettext('(No assigned family)').'<br><br>';
+        $familyRole = gettext('(No assigned family)');
     }
 
-    echo '<div class="TinyShadedBox">';
-    echo '<font size="3">';
-    if ($sAddress1 != '') {
-        echo $sAddress1.'<br>';
-    }
-    if ($sAddress2 != '') {
-        echo $sAddress2.'<br>';
-    }
-    if ($sCity != '') {
-        echo $sCity.', ';
-    }
-    if ($sState != '') {
-        echo $sState;
-    }
-    if ($sZip != '') {
-        echo ' '.$sZip;
-    }
-    if ($sCountry != '') {
-        echo '<br>'.$sCountry;
-    }
-    echo '</font>';
-    echo '</div>';
 
-        // Strip tags in case they were added for family inherited data
-        $sAddress1 = strip_tags($sAddress1);
-    $sCity = strip_tags($sCity);
-    $sState = strip_tags($sState);
-    $sCountry = strip_tags($sCountry);
+    $html = '<div class="text-center">' .
+        '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle(). ' ' . $person->getFullName() . '</h4></a>' .
+        '<div class="">' . $familyRole . '</div>' .
+        '<div class="text-center">' . $person->getAddress() . '</div>' .
+        '<img data-name="' . $person->getFullName() . '" data-src="' . SystemURLs::getRootPath() . '/api/persons/' . $iPersonID . '/thumbnail" ' .
+        'class="initials-image profile-user-img img-responsive img-circle"> </div>';
+    echo $html;
 
-        // Upload photo
-        if (isset($_POST['UploadPhoto']) && ($_SESSION['bAddRecords'] || $bOkToEdit)) {
-            if ($_FILES['Photo']['name'] == '') {
-                $PhotoError = gettext('No photo selected for uploading.');
-            } elseif ($_FILES['Photo']['type'] != 'image/pjpeg' && $_FILES['Photo']['type'] != 'image/jpeg') {
-                $PhotoError = gettext('Only jpeg photos can be uploaded.');
-            } else {
-                // Create the thumbnail used by PersonView
-
-            chmod($_FILES['Photo']['tmp_name'], 0777);
-
-                $srcImage = imagecreatefromjpeg($_FILES['Photo']['tmp_name']);
-                $src_w = imagesx($srcImage);
-                $src_h = imagesy($srcImage);
-
-                // Calculate thumbnail's height and width (a "maxpect" algorithm)
-                $dst_max_w = 200;
-                $dst_max_h = 350;
-                if ($src_w > $dst_max_w) {
-                    $thumb_w = $dst_max_w;
-                    $thumb_h = $src_h * ($dst_max_w / $src_w);
-                    if ($thumb_h > $dst_max_h) {
-                        $thumb_h = $dst_max_h;
-                        $thumb_w = $src_w * ($dst_max_h / $src_h);
-                    }
-                } elseif ($src_h > $dst_max_h) {
-                    $thumb_h = $dst_max_h;
-                    $thumb_w = $src_w * ($dst_max_h / $src_h);
-                    if ($thumb_w > $dst_max_w) {
-                        $thumb_w = $dst_max_w;
-                        $thumb_h = $src_h * ($dst_max_w / $src_w);
-                    }
-                } else {
-                    if ($src_w > $src_h) {
-                        $thumb_w = $dst_max_w;
-                        $thumb_h = $src_h * ($dst_max_w / $src_w);
-                    } elseif ($src_w < $src_h) {
-                        $thumb_h = $dst_max_h;
-                        $thumb_w = $src_w * ($dst_max_h / $src_h);
-                    } else {
-                        if ($dst_max_w >= $dst_max_h) {
-                            $thumb_w = $dst_max_h;
-                            $thumb_h = $dst_max_h;
-                        } else {
-                            $thumb_w = $dst_max_w;
-                            $thumb_h = $dst_max_w;
-                        }
-                    }
-                }
-                $dstImage = imagecreatetruecolor($thumb_w, $thumb_h);
-                imagecopyresampled($dstImage, $srcImage, 0, 0, 0, 0, $thumb_w, $thumb_h, $src_w, $src_h);
-                imagejpeg($dstImage, 'Images/Person/thumbnails/'.$iPersonID.'.jpg');
-                imagedestroy($dstImage);
-                imagedestroy($srcImage);
-                move_uploaded_file($_FILES['Photo']['tmp_name'], 'Images/Person/'.$iPersonID.'.jpg');
-            }
-        } elseif (isset($_POST['DeletePhoto']) && $_SESSION['bDeleteRecords']) {
-            unlink('Images/Person/'.$iPersonID.'.jpg');
-            unlink('Images/Person/thumbnails/'.$iPersonID.'.jpg');
-        }
-
-        // Display photo or upload from file
-        $photoFile = 'Images/Person/thumbnails/'.$iPersonID.'.jpg';
-    if (file_exists($photoFile)) {
-        echo '<a target="_blank" href="Images/Person/'.$iPersonID.'.jpg">';
-        echo '<img border="1" src="'.$photoFile.'"></a>';
-    } else {
-        echo '<img border="0" src="Images/NoPhoto.png"><br><br><br>';
-    }
 }
 ?>
