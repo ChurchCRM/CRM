@@ -105,8 +105,7 @@ if (isset($_POST['PledgeSubmit']) or
     isset($_POST['MatchFamily']) or
     isset($_POST['MatchEnvelope']) or
     isset($_POST['SetDefaultCheck']) or
-    isset($_POST['SetFundTypeSelection']) or
-    isset($_POST['SplitTotal'])) {
+    isset($_POST['SetFundTypeSelection'])) {
     $iFamily = FilterInput($_POST['FamilyID'], 'int');
 
     $dDate = FilterInput($_POST['Date']);
@@ -175,15 +174,7 @@ if (isset($_POST['PledgeSubmit']) or
         $iEnvelope = FilterInput($_POST['Envelope'], 'int');
     }
     $iTotalAmount = FilterInput($_POST['TotalAmount']);
-    if (array_key_exists('OneComment', $_POST)) {
-        $sOneComment = FilterInput($_POST['OneComment']);
-    } else {
-        $sOneComment = '';
-    }
-    if ($iSelectedFund) {
-        $nAmount[$iSelectedFund] = $iTotalAmount;
-        $sComment[$iSelectedFund] = $sOneComment;
-    }
+
 } else { // Form was not up previously, take data from existing records or make default values
     if ($sGroupKey) {
         $sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='".$sGroupKey."' GROUP BY plg_GroupKey";
@@ -444,37 +435,6 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                 $iFamily = $fam_ID;
             }
         }
-    } elseif (isset($_POST['SplitTotal'])) { // split total button pressed
-        $sSQL = 'SELECT plg_fundID, plg_amount from pledge_plg where plg_famID="'.$iFamily.'" AND plg_PledgeOrPayment="Pledge" AND plg_FYID="'.$iFYID.'";';
-//echo "sSQL: " . $sSQL . "\n";
-        $rsPledge = RunQuery($sSQL);
-        $totalPledgeAmount = 0;
-        while ($row = mysqli_fetch_array($rsPledge)) {
-            $fundID = $row['plg_fundID'];
-            $plgAmount = $row['plg_amount'];
-            $fundID2Pledge[$fundID] = $plgAmount;
-            $totalPledgeAmount = $totalPledgeAmount + $plgAmount;
-        } // end while
-        if ($fundID2Pledge) {
-            // division rounding can cause total of calculations to not equal total.  Keep track of running total, and asssign any rounding error to 'default' fund
-            $calcTotal = 0;
-            $calcOtherFunds = 0;
-            foreach ($fundID2Pledge as $fundID => $plgAmount) {
-                $calcAmount = round($iTotalAmount * ($plgAmount / $totalPledgeAmount), 2);
-
-                $nAmount[$fundID] = number_format($calcAmount, 2, '.', '');
-                if ($fundID != $defaultFundID) {
-                    $calcOtherFunds = $calcOtherFunds + $calcAmount;
-                }
-
-                $calcTotal += $calcAmount;
-            }
-            if ($calcTotal != $iTotalAmount) {
-                $nAmount[$defaultFundID] = number_format($iTotalAmount - $calcOtherFunds, 2, '.', '');
-            }
-        } else {
-            $nAmount[$defaultFundID] = number_format($iTotalAmount, 2, '.', '');
-        }
     } elseif (!$iSelectedFund) { // We have a total amount set and fund set to split
         if ($iOriginalSelectedFund) { // put all in the originally assigned fund if there was one
             $nAmount[$iOriginalSelectedFund] = number_format($iTotalAmount, 2, '.', '');
@@ -630,21 +590,6 @@ require 'Include/Header.php';
           <label for="FYID"><?= gettext('Fiscal Year') ?></label>
            <?php PrintFYIDSelect($iFYID, 'FYID') ?>
 
-          <label for="FundSplit"><?= gettext('Fund') ?></label>
-          <select class="form-control"  name="FundSplit">
-            <option value=0 <?= !$iSelectedFund ? 'selected' : '' ?>><?= gettext('Split') ?></option>
-            <?php foreach ($fundId2Name as $fun_id => $fun_name) {
-  ?>
-              <option value="<?= $fun_id ?>" <?= $iSelectedFund == $fun_id ? 'selected' : '' ?>><?= gettext($fun_name) ?></option>
-            <?php 
-  } ?>
-          </select>
-          <?php if (!$dep_Closed) {
-  ?>
-          <br />
-            <input type="submit" class="btn" name="SetFundTypeSelection" value="<-Set">
-          <?php 
-  } ?>
       </div>
 
               
@@ -693,43 +638,13 @@ require 'Include/Header.php';
                 <input  class="form-control" type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"/><font color="red"><?= $sCheckNoError ?></font>
                 <?php 
 } ?>
-                <?php if ($iSelectedFund) {
-    ?>
-                  <label for="OneComment"><?= gettext('Comment') ?></label>
-                  <input  class="form-control" type="text" name="OneComment" id="OneComment" value="<?= $sComment[$iSelectedFund] ?>"/>
-                <?php 
-} ?>
+                
                   
                       <label for="TotalAmount"><?= gettext('Total $') ?></label>
                   <input class="form-control"  type="text" name="TotalAmount" id="TotalAmount" value="<?= $iTotalAmount ?>"/>
                 
               </div>
-              
-
-
-              
-      
-      
-              
-      
-      
-              
-              <div class="col-lg-6">
-                <?php if ($PledgeOrPayment == 'Payment') {
-    ?>
-
-                    <?php if (!$iSelectedFund && !$dep_Closed) {
-        ?>
-
-                    <input type="submit" class="btn" value="<?= gettext('Split to Funds by pledge') ?>" name="SplitTotal"></td>
-
-                    <?php 
-    } ?>
-
-                  <?php 
-} ?>
-              </div>
-      
+                    
               <div class="col-lg-6">
                 <?php
                           if ($dep_Type == 'CreditCard' || $dep_Type == 'BankDraft') {
@@ -785,13 +700,26 @@ require 'Include/Header.php';
                           } ?>
               </div>
 
+              <div class="col-lg-12">
+              <?php if (!$dep_Closed) {
+                ?>
+                  <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
+                  <?php if ($_SESSION['bAddRecords']) {
+                                  echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
+                              } ?>
+                    <?php 
+              } ?>
+              <?php if (!$dep_Closed) {
+                      $cancelText = 'Cancel';
+                  } else {
+                      $cancelText = 'Return';
+                  } ?>
+              <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'Menu.php' ?>';">
+              </div>
           </div>
     </div>
   </div>
 
-
-<?php if (!$iSelectedFund) {
-?>
   <div class="col-lg-6">
     <div class="box">
       <div class="box-header with-border">
@@ -845,28 +773,7 @@ require 'Include/Header.php';
     </div>
   </div>
 </div>
-<?php 
-} ?>
 
-
-<div class="clearfix"></div>
-<div>
-  <?php if (!$dep_Closed) {
-                ?>
-    <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
-    <?php if ($_SESSION['bAddRecords']) {
-                    echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
-                } ?>
-      <?php 
-            } ?>
-        <?php if (!$dep_Closed) {
-                $cancelText = 'Cancel';
-            } else {
-                $cancelText = 'Return';
-            } ?>
-        <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'Menu.php' ?>';">
-
-</div>
 
 </form>
 
