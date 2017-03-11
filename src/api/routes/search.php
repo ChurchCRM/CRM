@@ -1,6 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
-
+use ChurchCRM\DepositQuery;
 use ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemConfig;
