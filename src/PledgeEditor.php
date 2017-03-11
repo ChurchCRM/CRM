@@ -580,40 +580,40 @@ require 'Include/Header.php';
           <input type="hidden" id="FamilyID" name="FamilyID" value='<?= $iFamily ?>'>
         </div>
         <?php if ($dep_Type == 'Bank' && SystemConfig::getValue('bUseDonationEnvelopes')) {
-        ?>
+    ?>
           <div class="col-lg-6">
             <?= gettext('Envelope Number') ?>
             <input  class="form-control" type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
             <?php if (!$dep_Closed) {
-            ?>
+        ?>
               <input class="form-control" type="submit" class="btn" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
             <?php 
-            } ?>
+    } ?>
           </div>
         <?php 
-        } ?>
+} ?>
         
         <?php if ($PledgeOrPayment == 'Pledge') {
-        ?>
+    ?>
           <div class="col-lg-6">
             <?= gettext('Payment Schedule') ?>
               <select name="Schedule">
                 <option value="0"><?= gettext('Select Schedule') ?></option>
                 <option value="Weekly" <?php if ($iSchedule == 'Weekly') {
-  echo 'selected';
-  } ?>><?= gettext('Weekly') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Weekly') ?></option>
                           <option value="Monthly" <?php if ($iSchedule == 'Monthly') {
-  echo 'selected';
-  } ?>><?= gettext('Monthly') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Monthly') ?></option>
                           <option value="Quarterly" <?php if ($iSchedule == 'Quarterly') {
-  echo 'selected';
-  } ?>><?= gettext('Quarterly') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Quarterly') ?></option>
                           <option value="Once" <?php if ($iSchedule == 'Once') {
-  echo 'selected';
-  } ?>><?= gettext('Once') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Once') ?></option>
                           <option value="Other" <?php if ($iSchedule == 'Other') {
-  echo 'selected';
-  } ?>><?= gettext('Other') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Other') ?></option>
               </select>
           </div>
                <?php 
@@ -623,8 +623,8 @@ require 'Include/Header.php';
 
         <div class="col-lg-6">
           <?php	if (!$dDate) {
-            $dDate = $dep_Date;
-          } ?>
+    $dDate = $dep_Date;
+} ?>
           <label for="Date"><?= gettext('Date') ?></label>
           <input  class="form-control" type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><font color="red"><?= $sDateError ?></font>
           <label for="FYID"><?= gettext('Fiscal Year') ?></label>
@@ -634,17 +634,17 @@ require 'Include/Header.php';
           <select class="form-control"  name="FundSplit">
             <option value=0 <?= !$iSelectedFund ? 'selected' : '' ?>><?= gettext('Split') ?></option>
             <?php foreach ($fundId2Name as $fun_id => $fun_name) {
-  ?>
+    ?>
               <option value="<?= $fun_id ?>" <?= $iSelectedFund == $fun_id ? 'selected' : '' ?>><?= gettext($fun_name) ?></option>
             <?php 
-  } ?>
+} ?>
           </select>
           <?php if (!$dep_Closed) {
-  ?>
+    ?>
           <br />
             <input type="submit" class="btn" name="SetFundTypeSelection" value="<-Set">
           <?php 
-  } ?>
+} ?>
       </div>
 
               
@@ -791,7 +791,7 @@ require 'Include/Header.php';
 
 
 <?php if (!$iSelectedFund) {
-?>
+                              ?>
   <div class="col-lg-6">
     <div class="box">
       <div class="box-header with-border">
@@ -805,10 +805,10 @@ require 'Include/Header.php';
             <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Amount') ?></th>
 
             <?php if ($bEnableNonDeductible) {
-                        ?>
+                                  ?>
               <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Non-deductible amount') ?></th>
             <?php 
-                    } ?>
+                              } ?>
 
             <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Comment') ?></th>
          </tr>
@@ -816,7 +816,7 @@ require 'Include/Header.php';
         <tbody>
           <?php
           foreach ($fundId2Name as $fun_id => $fun_name) {
-          ?>
+              ?>
             <tr>
               <td class="TextColumn"><b><?= $fun_name ?></b></td>
               <td class="TextColumn">
@@ -825,7 +825,7 @@ require 'Include/Header.php';
               </td>
               <?php
                 if (SystemConfig::getValue('bEnableNonDeductible')) {
-                ?>
+                    ?>
                   <td class="TextColumn">
                     <input  class="form-control" type="text" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_Amount" value="<?= $nNonDeductible[$fun_id]?>" />
                     <br>
@@ -838,6 +838,7 @@ require 'Include/Header.php';
                 </td>
             </tr>
           <?php
+
           } ?>
         </tbody>
         </table>
@@ -846,24 +847,24 @@ require 'Include/Header.php';
   </div>
 </div>
 <?php 
-} ?>
+                          } ?>
 
 
 <div class="clearfix"></div>
 <div>
   <?php if (!$dep_Closed) {
-                ?>
+                              ?>
     <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
     <?php if ($_SESSION['bAddRecords']) {
-                    echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
-                } ?>
+                                  echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
+                              } ?>
       <?php 
-            } ?>
+                          } ?>
         <?php if (!$dep_Closed) {
-                $cancelText = 'Cancel';
-            } else {
-                $cancelText = 'Return';
-            } ?>
+                              $cancelText = 'Cancel';
+                          } else {
+                              $cancelText = 'Return';
+                          } ?>
         <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'Menu.php' ?>';">
 
 </div>
