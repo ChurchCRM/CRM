@@ -251,7 +251,7 @@ if ($iMethod == 'CASH' || $iMethod == 'CHECK') {
 }
 
 if ($PledgeOrPayment == 'Payment') {
-    $bEnableNonDeductible = 1; // this could/should be a config parm?  regardless, having a non-deductible amount for a pledge doesn't seem possible
+    $bEnableNonDeductible = SystemConfig::getValue('bEnableNonDeductible'); // this could/should be a config parm?  regardless, having a non-deductible amount for a pledge doesn't seem possible
 }
 
 if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
@@ -597,7 +597,7 @@ require 'Include/Header.php';
 } ?>
                       <?php if ($PledgeOrPayment == 'Pledge') {
     ?>
-                          <opti
+                          <option>
                         </select>
               </div>on value="EGIVE" <?= $iMethod == 'EGIVE' ? 'selected' : '' ?>><?=
                            gettext('eGive') ?></option>
@@ -610,12 +610,12 @@ require 'Include/Header.php';
                          <?php if ($PledgeOrPayment == 'Payment' && $dep_Type == 'Bank') {
     ?>
                 <label for="CheckNo"><?= gettext('Check') ?> #</label>
-                <input  class="form-control" type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"/><font color="red"><?= $sCheckNoError ?></font>
+                <input class="form-control" type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"/><font color="red"><?= $sCheckNoError ?></font>
                 <?php 
 } ?>
                 
                   
-                      <label for="TotalAmount"><?= gettext('Total $') ?></label>
+                  <label for="TotalAmount"><?= gettext('Total $') ?></label>
                   <input class="form-control"  type="text" name="TotalAmount" id="TotalAmount" disabled />
                 
               </div>
@@ -701,7 +701,7 @@ require 'Include/Header.php';
         <h3 class="box-title"><?= gettext("Fund Split") ?></h3>
       </div>
         <div class="box-body">
-      <table id="FundTable" cellpadding="2">
+      <table id="FundTable">
         <thead>
           <tr>
             <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Fund Name') ?></th>
@@ -727,7 +727,7 @@ require 'Include/Header.php';
                 <font color="red"><?= $sAmountError[$fun_id] ?></font>
               </td>
               <?php
-                if (SystemConfig::getValue('bEnableNonDeductible')) {
+                if ($bEnableNonDeductible) {
                 ?>
                   <td class="TextColumn">
                     <input  class="form-control" type="text" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_Amount" value="<?= $nNonDeductible[$fun_id]?>" />
