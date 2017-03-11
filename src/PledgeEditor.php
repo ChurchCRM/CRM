@@ -166,8 +166,6 @@ if (isset($_POST['PledgeSubmit']) or
     if (array_key_exists('Envelope', $_POST)) {
         $iEnvelope = FilterInput($_POST['Envelope'], 'int');
     }
-
-
 } else { // Form was not up previously, take data from existing records or make default values
     if ($sGroupKey) {
         $sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='".$sGroupKey."' GROUP BY plg_GroupKey";
@@ -383,7 +381,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=".$PledgeOrPayment.'&linkBack=', $linkBack);
         }
     } // end if !$bErrorFlag
-} elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck']) ) {
+} elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck'])) {
 
     //$iCheckNo = 0;
     // Take care of match-family first- select the family based on the scanned check
@@ -680,18 +678,18 @@ require 'Include/Header.php';
 
               <div class="col-lg-12">
               <?php if (!$dep_Closed) {
-                ?>
+                              ?>
                   <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
                   <?php if ($_SESSION['bAddRecords']) {
                                   echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
                               } ?>
                     <?php 
-              } ?>
+                          } ?>
               <?php if (!$dep_Closed) {
-                      $cancelText = 'Cancel';
-                  } else {
-                      $cancelText = 'Return';
-                  } ?>
+                              $cancelText = 'Cancel';
+                          } else {
+                              $cancelText = 'Return';
+                          } ?>
               <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'Menu.php' ?>';">
               </div>
           </div>
@@ -711,10 +709,10 @@ require 'Include/Header.php';
                 <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Amount') ?></th>
 
                 <?php if ($bEnableNonDeductible) {
-                            ?>
+                              ?>
                   <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Non-deductible amount') ?></th>
                 <?php 
-                        } ?>
+                          } ?>
 
                 <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Comment') ?></th>
              </tr>
@@ -722,7 +720,7 @@ require 'Include/Header.php';
             <tbody>
               <?php
               foreach ($fundId2Name as $fun_id => $fun_name) {
-              ?>
+                  ?>
                 <tr>
                   <td class="TextColumn"><b><?= $fun_name ?></b></td>
                   <td class="TextColumn">
@@ -731,7 +729,7 @@ require 'Include/Header.php';
                   </td>
                   <?php
                     if ($bEnableNonDeductible) {
-                    ?>
+                        ?>
                       <td class="TextColumn">
                         <input  class="form-control" type="text" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= $nNonDeductible[$fun_id]?>" />
                         <br>
@@ -744,6 +742,7 @@ require 'Include/Header.php';
                     </td>
                 </tr>
               <?php
+
               } ?>
             </tbody>
           </table>
