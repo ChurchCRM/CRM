@@ -562,7 +562,7 @@ require 'Include/Header.php';
             $dDate = $dep_Date;
           } ?>
           <label for="Date"><?= gettext('Date') ?></label>
-          <input  class="form-control" type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><font color="red"><?= $sDateError ?></font>
+          <input class="form-control" data-provide="datepicker" data-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>" ><font color="red"><?= $sDateError ?></font>
           <label for="FYID"><?= gettext('Fiscal Year') ?></label>
            <?php PrintFYIDSelect($iFYID, 'FYID') ?>
 
@@ -571,7 +571,7 @@ require 'Include/Header.php';
               
               <div class="col-lg-6">
                 <label for="Method"><?= gettext('Payment by') ?></label>
-                <select  class="form-control"  name="Method">
+                <select class="form-control" name="Method" id="Method">
                   <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'Bank' || !$iCurrentDeposit) {
     ?>
                     <option value="CHECK" <?php if ($iMethod == 'CHECK') {
@@ -610,9 +610,11 @@ require 'Include/Header.php';
                         
                          <?php if ($PledgeOrPayment == 'Payment' && $dep_Type == 'Bank') {
     ?>
+                <div id="checkNumberGroup">
                 <label for="CheckNo"><?= gettext('Check') ?> #</label>
                 <input class="form-control" type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"/><font color="red"><?= $sCheckNoError ?></font>
-                <?php 
+                </div>
+                  <?php 
 } ?>
                 
                   
@@ -702,49 +704,49 @@ require 'Include/Header.php';
         <h3 class="box-title"><?= gettext("Fund Split") ?></h3>
       </div>
         <div class="box-body">
-      <table id="FundTable">
-        <thead>
-          <tr>
-            <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Fund Name') ?></th>
-            <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Amount') ?></th>
+          <table id="FundTable">
+            <thead>
+              <tr>
+                <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Fund Name') ?></th>
+                <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Amount') ?></th>
 
-            <?php if ($bEnableNonDeductible) {
-                        ?>
-              <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Non-deductible amount') ?></th>
-            <?php 
-                    } ?>
-
-            <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Comment') ?></th>
-         </tr>
-        </thead>
-        <tbody>
-          <?php
-          foreach ($fundId2Name as $fun_id => $fun_name) {
-          ?>
-            <tr>
-              <td class="TextColumn"><b><?= $fun_name ?></b></td>
-              <td class="TextColumn">
-                <input class="form-control FundAmount" type="text" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= $nAmount[$fun_id] ?>"><br>
-                <font color="red"><?= $sAmountError[$fun_id] ?></font>
-              </td>
-              <?php
-                if ($bEnableNonDeductible) {
-                ?>
-                  <td class="TextColumn">
-                    <input  class="form-control" type="text" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= $nNonDeductible[$fun_id]?>" />
-                    <br>
-                    <font color="red"><?= $sNonDeductibleError[$fun_id]?></font>
-                  </td>
+                <?php if ($bEnableNonDeductible) {
+                            ?>
+                  <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Non-deductible amount') ?></th>
                 <?php 
-                } ?>
-                <td class="TextColumn">
-                  <input class="form-control"  type="text" size=40 name="<?= $fun_id ?>_Comment" id="<?= $fun_id ?>_Comment" value="<?= $sComment[$fun_id] ?>">
-                </td>
-            </tr>
-          <?php
-          } ?>
-        </tbody>
-        </table>
+                        } ?>
+
+                <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Comment') ?></th>
+             </tr>
+            </thead>
+            <tbody>
+              <?php
+              foreach ($fundId2Name as $fun_id => $fun_name) {
+              ?>
+                <tr>
+                  <td class="TextColumn"><b><?= $fun_name ?></b></td>
+                  <td class="TextColumn">
+                    <input class="form-control FundAmount" type="text" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= $nAmount[$fun_id] ?>"><br>
+                    <font color="red"><?= $sAmountError[$fun_id] ?></font>
+                  </td>
+                  <?php
+                    if ($bEnableNonDeductible) {
+                    ?>
+                      <td class="TextColumn">
+                        <input  class="form-control" type="text" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= $nNonDeductible[$fun_id]?>" />
+                        <br>
+                        <font color="red"><?= $sNonDeductibleError[$fun_id]?></font>
+                      </td>
+                    <?php 
+                    } ?>
+                    <td class="TextColumn">
+                      <input class="form-control"  type="text" size=40 name="<?= $fun_id ?>_Comment" id="<?= $fun_id ?>_Comment" value="<?= $sComment[$fun_id] ?>">
+                    </td>
+                </tr>
+              <?php
+              } ?>
+            </tbody>
+          </table>
         </div>
     </div>
   </div>
@@ -799,9 +801,24 @@ require 'Include/Header.php';
       CalculateTotal();
     });
     
+    $("#Method").change(function() {
+      EvalCheckNumberGroup();
+    });
+    
+    EvalCheckNumberGroup();
     CalculateTotal();
   });
   
+  function EvalCheckNumberGroup()
+  {
+    if ($("#Method option:selected").val()==="CHECK") {
+      $("#checkNumberGroup").show();
+    }
+    else
+    {
+      $("#checkNumberGroup").hide();
+    } 
+  }
   function CalculateTotal() {
     var Total = 0;
       $(".FundAmount").each(function(object){
