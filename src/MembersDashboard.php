@@ -24,11 +24,17 @@ $groupStats = $dashboardService->getGroupStats();
 $demographicStats = $dashboardService->getDemographic();
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
-        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID in (1,2) group by per_Gender ;';
+        where fam_ID =per_fam_ID and fam_DateDeactivated is  null
+        and per_Gender in (1,2) and
+        per_fmr_ID not in (' . SystemConfig::getValue('sDirRoleChild') . ')
+        group by per_Gender ;';
 $rsAdultsGender = RunQuery($sSQL);
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
-        where fam_ID =per_fam_ID and fam_DateDeactivated is  null and per_Gender in (1,2) and per_fmr_ID not in (1,2) group by per_Gender ;';
+          where fam_ID =per_fam_ID and fam_DateDeactivated is  null
+          and per_Gender in (1,2)
+          and per_fmr_ID in (' . SystemConfig::getValue('sDirRoleChild') . ')
+          group by per_Gender ;';
 $rsKidsGender = RunQuery($sSQL);
 
 $sSQL = 'select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;';
@@ -222,7 +228,6 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
                 href="DirectoryReports.php"><?= gettext('Members Directory') ?></a><br><?= gettext('Printable directory of all members, grouped by family where assigned') ?>
           </p>
         <?php
-
      } ?>
         <a class="MediumText" href="LettersAndLabels.php"><?php echo gettext('Letters and Mailing Labels'); ?></a>
         <br><?php echo gettext('Generate letters and mailing labels.'); ?>
@@ -261,20 +266,21 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <th>% <?= gettext('of Members') ?></th>
             <th style="width: 40px"><?= gettext('Count') ?></th>
           </tr>
-          <?php foreach ($demographicStats as $key => $value) {
+            <?php foreach($demographicStats as $demStat){
             ?>
             <tr>
-              <td> <?= $key ?></td>
+                <td>
+                    <a href="SelectList.php?mode=person&Gender=<?= $demStat['gender'] ?>&FamilyRole=<?= $demStat['role'] ?>"><?= gettext($demStat['key']) ?></a>
+                </td>
               <td>
                 <div class="progress progress-xs progress-striped active">
                   <div class="progress-bar progress-bar-success"
-                       style="width: <?= round($value / $personCount['personCount'] * 100) ?>%"></div>
+                       style="width: <?= round($demStat['value'] / $personCount['personCount'] * 100) ?>%"></div>
                 </div>
               </td>
-              <td><span class="badge bg-green"><?= $value ?></span></td>
+              <td><span class="badge bg-green"><?= $demStat['value'] ?></span></td>
             </tr>
           <?php
-
         } ?>
         </table>
       </div>
@@ -312,7 +318,6 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
         <?php
-
         } ?>
       </table>
       <!-- /.box-body-->
