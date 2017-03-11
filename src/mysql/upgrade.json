@@ -111,7 +111,8 @@
           "2.6.0"
         ],
         "scripts":[
-            "/mysql/upgrade/2.7.0-groups.sql"
+            "/mysql/upgrade/2.7.0-groups.sql",
+            "/mysql/upgrade/2.7.0-add primarykey_to_event_attend.sql"
         ],
         "dbVersion": "2.7.0"
     }
