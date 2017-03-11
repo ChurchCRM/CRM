@@ -184,12 +184,13 @@ if (isset($_POST['PledgeSubmit']) or
         $iCheckNo = $plg_CheckNo;
         $iFYID = $plg_FYID;
 
-        $sSQL = "SELECT plg_plgID, plg_fundID, plg_amount, plg_comment from pledge_plg where plg_GroupKey='".$sGroupKey."'";
+        $sSQL = "SELECT plg_plgID, plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='".$sGroupKey."'";
 
         $rsAmounts = RunQuery($sSQL);
         while ($aRow = mysqli_fetch_array($rsAmounts)) {
             extract($aRow);
             $nAmount[$plg_fundID] = $plg_amount;
+            $nNonDeductible[$plg_fundID] = $plg_NonDeductible;
             $sComment[$plg_fundID] = $plg_comment;
         }
     } else {
@@ -730,9 +731,9 @@ require 'Include/Header.php';
                 if ($bEnableNonDeductible) {
                 ?>
                   <td class="TextColumn">
-                    <input  class="form-control" type="text" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_Amount" value="<?= $nNonDeductible[$fun_id]?>" />
+                    <input  class="form-control" type="text" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= $nNonDeductible[$fun_id]?>" />
                     <br>
-                    <font color="red"><?= $sAmountError[$fun_id]?></font>
+                    <font color="red"><?= $sNonDeductibleError[$fun_id]?></font>
                   </td>
                 <?php 
                 } ?>
