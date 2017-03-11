@@ -339,15 +339,14 @@ if (isset($_POST['EventID'])) {
                     $checkedInPerson = PersonQuery::create()
                         ->findOneById($per->getPersonId());
 
-                    $nameStyle = SystemConfig::getValue('iPersonNameStyle'); //add to and get from config later
-                    $sPerson = $checkedInPerson->getFormattedName($nameStyle);
+                    $sPerson = $checkedInPerson->getFullName();
 
                     //Get Person who checked person in
                     $sCheckinby = "";
                     if ($per->getCheckinId()) {
                         $checkedInBy = PersonQuery::create()
                             ->findOneById($per->getCheckinId());
-                        $sCheckinby = $checkedInBy->getFormattedName($nameStyle);
+                        $sCheckinby = $checkedInBy->getFullName();
                     }
 
                     //Get Person who checked person out
@@ -355,7 +354,7 @@ if (isset($_POST['EventID'])) {
                     if ($per->getCheckoutId()) {
                         $checkedOutBy = PersonQuery::create()
                             ->findOneById($per->getCheckoutId());
-                        $sCheckoutby = $checkedOutBy->getFormattedName($nameStyle);
+                        $sCheckoutby = $checkedOutBy->getFullName();
 
                     }
 

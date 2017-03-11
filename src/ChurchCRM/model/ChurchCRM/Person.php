@@ -21,7 +21,7 @@ class Person extends BasePerson implements iPhoto
 {
     public function getFullName()
     {
-        return $this->getFirstName().' '.$this->getLastName();
+        return $this->getFormattedName(SystemConfig::getValue('iPersonNameStyle'));
     }
 
     public function isMale()
@@ -353,7 +353,10 @@ class Person extends BasePerson implements iPhoto
                 if ($this->getTitle()) {
                     $nameString .= $this->getTitle() . ' ';
                 }
-                $nameString .= $this->getFullName();
+                $nameString .= $this->getFirstName();
+                if ($this->getLastName()) {
+                    $nameString .= ' ' . $this->getLastName();
+                }
                 break;
             case 6:
                 if ($this->getLastName()) {
