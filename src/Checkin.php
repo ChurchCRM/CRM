@@ -30,7 +30,8 @@ use ChurchCRM\EventAttend;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
-use Propel\Runtime\Propel;
+use ChurchCRM\dto\SystemConfig;
+
 
 $EventID = 0;
 $CheckoutOrDelete = false;
@@ -41,7 +42,6 @@ $iAdultID = 0;
 
 if (array_key_exists('EventID', $_POST)) {
     $EventID = FilterInput($_POST['EventID'], 'int');
-    echo  'eventID';
 } // from ListEvents button=Attendees
 if (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn'])) {
     $CheckoutOrDelete =  true;
@@ -68,18 +68,8 @@ if($EventID > 0) {
     $event = EventQuery::Create()
         ->findOneById($EventID);
 }
-
-if($iChildID > 0){
-    //Get the Child Details
-    $person = PersonQuery::create()
-        ->findOneById($iChildID);
-}
-if($iAdultID > 0){
-    //Get the Child Details
-    $checkedInByPerson = PersonQuery::create()
-        ->findOneById($iAdultID);
-}
 ?>
+<div id="errorcallout" class="callout callout-danger" hidden></div>
 
 <!--Select Event Form -->
 <form class="well form-horizontal" name="selectEvent" action="Checkin.php" method="POST">
@@ -200,30 +190,51 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
 // Checkin/Checkout Section update db
 if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['CheckIn']) || isset($_POST['CheckOut']) || isset($_POST['Delete']))) {
     //Fields -> event_id, person_id, checkin_date, checkin_id, checkout_date, checkout_id
-
     if (isset($_POST['CheckIn']) && $iChildID > 0 ) {
-        $attendee = new EventAttend();
-        $attendee->setEventId($EventID);
-        $attendee->setPersonId($iChildID);
-        $attendee->setCheckinDate(date("Y-m-d H:i:s"));
-        if ($iAdultID) {
-            $attendee->setCheckinId($iAdultID);
+
+        $attendee = EventAttendQuery::create()
+            ->filterByEventId($EventID)
+            ->findOneByPersonId($iChildID);
+        if($attendee)
+        { ?>
+            <script>
+                $('#errorcallout').text('<?= gettext("Person has been already checked in for this event") ?>').fadeIn();
+            </script>
+            <?php
+        } else {
+
+            $attendee = new EventAttend();
+            $attendee->setEventId($EventID);
+            $attendee->setPersonId($iChildID);
+            $attendee->setCheckinDate(date("Y-m-d H:i:s"));
+            if ($iAdultID) {
+                $attendee->setCheckinId($iAdultID);
+            }
+            $attendee->save();
         }
-        $attendee->save();
     }
 
-    //Unable to use ORM for update as there is no primary key
+    //Checkout Update
     if (isset($_POST['CheckOut'])) {
         $values = "checkout_date=NOW(), checkout_id=" . ($iAdultID ? "'" . $iAdultID . "'" : 'null');
-        $sSQL = "UPDATE event_attend SET $values WHERE (person_id = '" . $iChildID . "' AND event_id='" . $EventID . "') ;";
-        RunQuery($sSQL);
+        $attendee = EventAttendQuery::create()
+            ->filterByEventId($EventID)
+            ->findOneByPersonId($iChildID);
+        $attendee->setCheckoutDate(date("Y-m-d H:i:s"));
+        if ($iAdultID) {
+            $attendee->setCheckoutId($iAdultID);
+        }
+        $attendee->save();
     }
 
 
     //delete
     if (isset($_POST['Delete'])) {
-        $sSQL = "DELETE FROM event_attend WHERE (person_id = '" . $iChildID . "' AND event_id='" . $EventID . "') ;";
-        RunQuery($sSQL);
+        EventAttendQuery::create()
+            ->filterByEventId($EventID)
+            ->findOneByPersonId($iChildID)
+            ->delete();
+
     }
 }
 
@@ -247,7 +258,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
             <div class="col-xs-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><?= gettext("CheckOut Person") ?></h3>
+                        <h3 class="box-title"><?= $formTitle ?></h3>
                     </div>
 
                     <div class="box-body">
@@ -299,10 +310,11 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
 //End checkout
 //**********************************************************************************************************
 
+//Populate data table
 if (isset($_POST['EventID'])) {
-?>
-<div class="box box-primary">
-    <div class="box-body table-responsive">
+    ?>
+    <div class="box box-primary">
+        <div class="box-body table-responsive">
             <table id="checkedinTable" class="table data-table table-striped ">
                 <thead>
                 <tr>
@@ -316,111 +328,79 @@ if (isset($_POST['EventID'])) {
                 </thead>
                 <tbody>
 
-    <?php
+                <?php
+                //Get Event Attendees details
+                $eventAttendees = EventAttendQuery::create()
+                    ->filterByEventId($EventID)
+                    ->find();
 
-    $sSQL = "SELECT * FROM event_attend WHERE event_id = '$EventID' ";                // ORDER BY person_id";
-    $rsOpps = RunQuery($sSQL);
-    $numAttRows = mysqli_num_rows($rsOpps);
-    if ($numAttRows != 0) {
-        $sRowClass = 'RowColorA';
-        for ($na = 0; $na < $numAttRows; $na++) {
-            $attRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-            extract($attRow);
+                foreach ($eventAttendees as $per) {
+                    //Get Person who is checked in
+                    $checkedInPerson = PersonQuery::create()
+                        ->findOneById($per->getPersonId());
 
-            //Get Person who is checked in
-            $sSQL = "SELECT * FROM person_per WHERE per_ID = $person_id ";
-            $perOpps = RunQuery($sSQL);
-            if (mysqli_num_rows($perOpps) > 0) {
-                $perRow = mysqli_fetch_array($perOpps, MYSQLI_BOTH);
-                extract($perRow);
-                $sPerson = FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3);
-            } else {
-                $sPerson = '';
-            }
-            $per_Title = '';
-            $per_FirstName = '';
-            $per_MiddleName = '';
-            $per_LastName = '';
-            $per_Suffix = '';
+                    $nameStyle = 3; //add to and get from config later
+                    $sPerson = $checkedInPerson->getFormattedName($nameStyle);
 
-            //Get Person who checked person in
-            if ($checkin_id > 0) {
-                $sSQL = "SELECT * FROM person_per WHERE per_ID = $checkin_id";
-                $perCheckin = RunQuery($sSQL);
-                if (mysqli_num_rows($perCheckin) > 0) {
-                    $perCheckinRow = mysqli_fetch_array($perCheckin, MYSQLI_BOTH);
-                    extract($perCheckinRow);
-                    $sCheckinby = FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3);
-                } else {
-                    $sCheckinby = '';
-                }
-            } else {
-                $sCheckinby = '';
-            }
-            $per_Title = '';
-            $per_FirstName = '';
-            $per_MiddleName = '';
-            $per_LastName = '';
-            $per_Suffix = '';
+                    //Get Person who checked person in
+                    $sCheckinby = "";
+                    if ($per->getCheckinId()) {
+                        $checkedInBy = PersonQuery::create()
+                            ->findOneById($per->getCheckinId());
+                        $sCheckinby = $checkedInBy->getFormattedName($nameStyle);
+                    }
 
-            //Get Person who checked person out
-            if ($checkout_id > 0) {
-                $sSQL = "SELECT * FROM person_per WHERE per_ID = $checkout_id";
-                $perCheckout = RunQuery($sSQL);
-
-                if (mysqli_num_rows($perCheckout) > 0) {
-                    $perCheckoutRow = mysqli_fetch_array($perCheckout, MYSQLI_BOTH);
-                    extract($perCheckoutRow);
-                    $sCheckoutby = FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3);
-                } else {
-                    $sCheckoutby = '';
-                }
-            } else {
-                $sCheckoutby = '';
-            }
-            $per_Title = '';
-            $per_FirstName = '';
-            $per_MiddleName = '';
-            $per_LastName = '';
-            $per_Suffix = ''; ?>
-                        <tr>
-                            <td><img data-name="<?= $sPerson; ?>" data-src="<?= SystemURLs::getRootPath().'/api/persons/'.$person_id.'/thumbnail' ?>" class="direct-chat-img initials-image">&nbsp
-                                <a href="PersonView.php?PersonID=<?= $person_id ?>"><?= $sPerson ?></a></td>
-                            <td><?= $checkin_date ?></td>
-                            <td><?= $sCheckinby ?></td>
-                            <td><?= $checkout_date ?></td>
-                            <td><?= $sCheckoutby ?></td>
-                            <td align="center">
-                                <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
-                                    <input type="hidden" name="child-id" value="<?= $person_id ?>">
-                                    <input type="hidden" name="EventID" value="<?= $EventID ?>">
-                                    <?php
-                                    if(!$checkout_date) { ?>
-                                        <input class="btn btn-primary btn-sm" type="submit" name="CheckOutBtn"
-                                               value="<?= gettext('CheckOut') ?>">
-                                        <input class="btn btn-danger btn-xs" type="submit" name="DeleteBtn"
-                                               value="<?= gettext('Delete') ?>">
-
-                                        <?php
-
-                                    } else { ?>
-                                        <i class="fa fa-check-circle"></i>
-                                        <?php
-                                    }?>
-                                </form>
-                            </td>
-                        </tr>
-                        <?php
+                    //Get Person who checked person out
+                    $sCheckoutby = "";
+                    if ($per->getCheckoutId()) {
+                        $checkedOutBy = PersonQuery::create()
+                            ->findOneById($per->getCheckoutId());
+                        $sCheckoutby = $checkedOutBy->getFormattedName($nameStyle);
 
                     }
-                }
-}
-                ?>
 
+                    ?>
+                    <tr>
+                        <td><img data-name="<?= $sPerson; ?>"
+                                 data-src="<?= SystemURLs::getRootPath() . '/api/persons/' . $per->getPersonId() . '/thumbnail' ?>"
+                                 class="direct-chat-img initials-image">&nbsp
+                            <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a></td>
+                        <td><?= date_format($per->getCheckinDate(), SystemConfig::getValue('sDateFormatLong')) ?></td>
+                        <td><?= $sCheckinby ?></td>
+                        <td><?= date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateFormatLong')) ?></td>
+                        <td><?= $sCheckoutby ?></td>
+
+                        <td align="center">
+                            <form method="POST" action="Checkin.php" name="DeletePersonFromEvent">
+                                <input type="hidden" name="child-id" value="<?= $per->getPersonId() ?>">
+                                <input type="hidden" name="EventID" value="<?= $EventID ?>">
+                                <?php
+                                if (!$per->getCheckoutDate()) { ?>
+                                    <input class="btn btn-primary btn-sm" type="submit" name="CheckOutBtn"
+                                           value="<?= gettext('CheckOut') ?>">
+                                    <input class="btn btn-danger btn-xs" type="submit" name="DeleteBtn"
+                                           value="<?= gettext('Delete') ?>">
+
+                                    <?php
+
+                                } else { ?>
+                                    <i class="fa fa-check-circle"></i>
+                                    <?php
+                                } ?>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php
+
+                } ?>
                 </tbody>
             </table>
+        </div>
     </div>
-</div>
+    <?php
+
+}
+?>
 
 <script language="javascript" type="text/javascript">
     var perArr;
