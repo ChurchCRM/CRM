@@ -516,40 +516,40 @@ require 'Include/Header.php';
           <input type="hidden" id="FamilyID" name="FamilyID" value='<?= $iFamily ?>'>
         </div>
         <?php if ($dep_Type == 'Bank' && SystemConfig::getValue('bUseDonationEnvelopes')) {
-        ?>
+    ?>
           <div class="col-lg-6">
             <?= gettext('Envelope Number') ?>
             <input  class="form-control" type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
             <?php if (!$dep_Closed) {
-            ?>
+        ?>
               <input class="form-control" type="submit" class="btn" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
             <?php 
-            } ?>
+    } ?>
           </div>
         <?php 
-        } ?>
+} ?>
         
         <?php if ($PledgeOrPayment == 'Pledge') {
-        ?>
+    ?>
           <div class="col-lg-6">
             <?= gettext('Payment Schedule') ?>
               <select name="Schedule">
                 <option value="0"><?= gettext('Select Schedule') ?></option>
                 <option value="Weekly" <?php if ($iSchedule == 'Weekly') {
-  echo 'selected';
-  } ?>><?= gettext('Weekly') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Weekly') ?></option>
                           <option value="Monthly" <?php if ($iSchedule == 'Monthly') {
-  echo 'selected';
-  } ?>><?= gettext('Monthly') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Monthly') ?></option>
                           <option value="Quarterly" <?php if ($iSchedule == 'Quarterly') {
-  echo 'selected';
-  } ?>><?= gettext('Quarterly') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Quarterly') ?></option>
                           <option value="Once" <?php if ($iSchedule == 'Once') {
-  echo 'selected';
-  } ?>><?= gettext('Once') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Once') ?></option>
                           <option value="Other" <?php if ($iSchedule == 'Other') {
-  echo 'selected';
-  } ?>><?= gettext('Other') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Other') ?></option>
               </select>
           </div>
                <?php 
@@ -559,8 +559,8 @@ require 'Include/Header.php';
 
         <div class="col-lg-6">
           <?php	if (!$dDate) {
-            $dDate = $dep_Date;
-          } ?>
+    $dDate = $dep_Date;
+} ?>
           <label for="Date"><?= gettext('Date') ?></label>
           <input class="form-control" data-provide="datepicker" data-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>" ><font color="red"><?= $sDateError ?></font>
           <label for="FYID"><?= gettext('Fiscal Year') ?></label>
