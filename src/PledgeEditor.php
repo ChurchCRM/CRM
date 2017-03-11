@@ -575,79 +575,79 @@ require 'Include/Header.php';
               <input type="hidden" name="FamilyID" id="FamilyID" value="<?= $iFamily ?>">
               <input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?= $PledgeOrPayment ?>">
               <?php if ($dep_Type == 'Bank' && SystemConfig::getValue('bUseDonationEnvelopes')) {
-      ?>
+    ?>
         <div class="col-lg-3">
 
           <?= gettext('Envelope Number') ?>
           <input type="text" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
           <?php if (!$dep_Closed) {
-          ?>
+        ?>
             <input type="submit" class="btn" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
           <?php 
-          } ?>
+    } ?>
 
         </div>
       <?php 
-      } ?>
+} ?>
               <?php if ($PledgeOrPayment == 'Pledge') {
-                 ?>
+    ?>
                  <div class="col-lg-3">
                      <?= gettext('Payment Schedule') ?>
                        <select name="Schedule">
                          <option value="0"><?= gettext('Select Schedule') ?></option>
                          <option value="Weekly" <?php if ($iSchedule == 'Weekly') {
-                             echo 'selected';
-                         } ?>><?= gettext('Weekly') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Weekly') ?></option>
                                    <option value="Monthly" <?php if ($iSchedule == 'Monthly') {
-                             echo 'selected';
-                         } ?>><?= gettext('Monthly') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Monthly') ?></option>
                                    <option value="Quarterly" <?php if ($iSchedule == 'Quarterly') {
-                             echo 'selected';
-                         } ?>><?= gettext('Quarterly') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Quarterly') ?></option>
                                    <option value="Once" <?php if ($iSchedule == 'Once') {
-                             echo 'selected';
-                         } ?>><?= gettext('Once') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Once') ?></option>
                                    <option value="Other" <?php if ($iSchedule == 'Other') {
-                             echo 'selected';
-                         } ?>><?= gettext('Other') ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Other') ?></option>
                        </select>
                  </div>
                <?php 
-               } ?>
+} ?>
 
               <div class="col-lg-3">
                 <label for="Method"><?= gettext('Payment by') ?></label>
                 <select name="Method">
                   <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'Bank' || !$iCurrentDeposit) {
-                  ?>
+    ?>
                     <option value="CHECK" <?php if ($iMethod == 'CHECK') {
-                      echo 'selected';
-                  } ?>><?= gettext('Check'); ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Check'); ?></option>
                     <option value="CASH" <?php if ($iMethod == 'CASH') {
-                      echo 'selected';
-                  } ?>><?= gettext('Cash'); ?></option>
+        echo 'selected';
+    } ?>><?= gettext('Cash'); ?></option>
                       <?php 
-                  } ?>
+} ?>
                       <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'CreditCard' || !$iCurrentDeposit) {
-                      ?>
+    ?>
                               <option value="CREDITCARD" <?php if ($iMethod == 'CREDITCARD') {
-                          echo 'selected';
-                      } ?>><?=                        gettext('Credit Card') ?></option>
+        echo 'selected';
+    } ?>><?=                        gettext('Credit Card') ?></option>
                               <?php 
-                  } ?>
+} ?>
                           <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'BankDraft' || !$iCurrentDeposit) {
-                  ?>
+    ?>
                           <option value="BANKDRAFT" <?php if ($iMethod == 'BANKDRAFT') {
-                      echo 'selected';
-                  } ?>><?=                        gettext('Bank Draft') ?></option>
+        echo 'selected';
+    } ?>><?=                        gettext('Bank Draft') ?></option>
                                   <?php 
-                      } ?>
+} ?>
                       <?php if ($PledgeOrPayment == 'Pledge') {
-                          ?>
+    ?>
                           <option value="EGIVE" <?= $iMethod == 'EGIVE' ? 'selected' : '' ?>><?=
                            gettext('eGive') ?></option>
                         <?php 
-                      } ?>
+} ?>
                         </select>
               </div>
 
@@ -661,25 +661,25 @@ require 'Include/Header.php';
                 <select name="FundSplit">
                   <option value=0 <?= !$iSelectedFund ? 'selected' : '' ?>><?= gettext('Split') ?></option>
                   <?php foreach ($fundId2Name as $fun_id => $fun_name) {
-                  ?>
+    ?>
                     <option value="<?= $fun_id ?>" <?= $iSelectedFund == $fun_id ? 'selected' : '' ?>><?= gettext($fun_name) ?></option>
                   <?php 
-                  } ?>
+} ?>
                 </select>
                 <?php if (!$dep_Closed) {
-                ?>
+    ?>
                   <input type="submit" class="btn" name="SetFundTypeSelection" value="<-Set">
                 <?php 
-                } ?>
+} ?>
               </div>
 
               <div class="col-lg-3">
                 <?php if ($iSelectedFund) {
-                ?>
+    ?>
                   <label for="OneComment"><?= gettext('Comment') ?></label>
                   <input type="text" name="OneComment" id="OneComment" value="<?= $sComment[$iSelectedFund] ?>"/>
                 <?php 
-                } ?>
+} ?>
               </div>
 
               <div class="col-lg-3">
@@ -691,17 +691,17 @@ require 'Include/Header.php';
       
               <div class="col-lg-3">
                 <?php if ($PledgeOrPayment == 'Payment' && $dep_Type == 'Bank') {
-                ?>
+    ?>
                 <label for="CheckNo"><?= gettext('Check') ?> #</label>
                 <input type="text" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"><font color="red"><?= $sCheckNoError ?></font>
                 <?php 
-                } ?>
+} ?>
               </div>
       
               <div class="col-lg-3">
                 <?php	if (!$dDate) {
-                  $dDate = $dep_Date;
-                } ?>
+    $dDate = $dep_Date;
+} ?>
                 <label for="Date"><?= gettext('Date') ?></label>
                 <input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><font color="red"><?= $sDateError ?></font>
               </div>
@@ -713,18 +713,18 @@ require 'Include/Header.php';
               
               <div class="col-lg-3">
                 <?php if ($PledgeOrPayment == 'Payment') {
-                  ?>
+    ?>
 
                     <?php if (!$iSelectedFund && !$dep_Closed) {
-                    ?>
+        ?>
 
                     <input type="submit" class="btn" value="<?= gettext('Split to Funds by pledge') ?>" name="SplitTotal"></td>
 
                     <?php 
-                  } ?>
+    } ?>
 
                   <?php 
-              } ?>
+} ?>
               </div>
       
               <div class="col-lg-3">
@@ -766,20 +766,20 @@ require 'Include/Header.php';
               
               <div class="col-lg-3">
                  <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type == 'Bank' || $PledgeOrPayment == 'Pledge')) {
-                  ?>
+                              ?>
                     <td align="center" class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
                     <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea></td>
                   <?php 
-                  } ?>
+                          } ?>
               </div>
               
               <div class="col-lg-3">
                 <?php if (SystemConfig::getValue('bUseScannedChecks') && $dep_Type == 'Bank') {
-                ?>
+                              ?>
                   <input type="submit" class="btn" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
                   <input type="submit" class="btn" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
                 <?php 
-                } ?>
+                          } ?>
               </div>
               
                  <?php if (!$iSelectedFund) {
@@ -825,18 +825,18 @@ require 'Include/Header.php';
  
               <div style="float:right">
                 <?php if (!$dep_Closed) {
-                ?>
+                              ?>
                   <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
                   <?php if ($_SESSION['bAddRecords']) {
-                    echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
-                } ?>
+                                  echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
+                              } ?>
                     <?php 
-                } ?>
+                          } ?>
                       <?php if (!$dep_Closed) {
-                    $cancelText = 'Cancel';
-                } else {
-                    $cancelText = 'Return';
-                } ?>
+                              $cancelText = 'Cancel';
+                          } else {
+                              $cancelText = 'Return';
+                          } ?>
                       <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'Menu.php' ?>';">
 
               </div>
