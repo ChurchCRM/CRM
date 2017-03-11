@@ -30,7 +30,6 @@ $sCheckNoError = '';
 $iCheckNo = '';
 $sDateError = '';
 $sAmountError = '';
-$iTotalAmount = 0;
 $nNonDeductible = [];
 $sComment = '';
 $tScanString = '';
@@ -118,12 +117,6 @@ if (isset($_POST['PledgeSubmit']) or
     }
     $_SESSION['idefaultDate'] = $dDate;
 
-    if (isset($_POST['FundSplit'])) {
-        $iSelectedFund = FilterInput($_POST['FundSplit']);
-        $_SESSION['iSelectedFund'] = $iSelectedFund;
-    }
-    $_SESSION['iSelectedFund'] = $iSelectedFund;
-
     // set from drop-down if set, saved session default, or by calcuation
     $iFYID = FilterInput($_POST['FYID'], 'int');
     if (!$iFYID) {
@@ -173,20 +166,15 @@ if (isset($_POST['PledgeSubmit']) or
     if (array_key_exists('Envelope', $_POST)) {
         $iEnvelope = FilterInput($_POST['Envelope'], 'int');
     }
-    $iTotalAmount = FilterInput($_POST['TotalAmount']);
+
 
 } else { // Form was not up previously, take data from existing records or make default values
     if ($sGroupKey) {
         $sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='".$sGroupKey."' GROUP BY plg_GroupKey";
         $rsResults = RunQuery($sSQL);
         list($numGroupKeys, $PledgeOrPayment, $fundId, $dDate, $iFYID, $iCheckNo, $iSchedule, $iMethod, $iCurrentDeposit) = mysqli_fetch_row($rsResults);
-        if ($numGroupKeys > 1) {
-            $iSelectedFund = 0;
-        } else {
-            $iSelectedFund = $fundId;
-        }
+        
 
-        $iTotalAmount = 0;
         $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_date, plg_method, plg_FYID from pledge_plg where plg_GroupKey='".$sGroupKey."'";
         //	don't know if we need plg_date or plg_method here...  leave it here for now
         $rsFam = RunQuery($sSQL);
@@ -203,7 +191,6 @@ if (isset($_POST['PledgeSubmit']) or
             extract($aRow);
             $nAmount[$plg_fundID] = $plg_amount;
             $sComment[$plg_fundID] = $plg_comment;
-            $iTotalAmount += $plg_amount;
         }
     } else {
         if (array_key_exists('idefaultDate', $_SESSION)) {
@@ -211,12 +198,7 @@ if (isset($_POST['PledgeSubmit']) or
         } else {
             $dDate = date('Y-m-d');
         }
-        if (array_key_exists('iSelectedFund', $_SESSION)) {
-            $iSelectedFund = $_SESSION['iSelectedFund'];
-        } else {
-            $iSelectedFund = 0;
-        }
-        $fundId = $iSelectedFund;
+               
         if (array_key_exists('idefaultFY', $_SESSION)) {
             $iFYID = $_SESSION['idefaultFY'];
         } else {
@@ -275,33 +257,31 @@ if ($PledgeOrPayment == 'Payment') {
 if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     //Initialize the error flag
     $bErrorFlag = false;
-
-    if (!$iSelectedFund) { // split
-        // make sure at least one fund has a non-zero numer
-        $nonZeroFundAmountEntered = 0;
-        foreach ($fundId2Name as $fun_id => $fun_name) {
-            //$fun_active = $fundActive[$fun_id];
-            $nAmount[$fun_id] = FilterInput($_POST[$fun_id.'_Amount']);
-            $sComment[$fun_id] = FilterInput($_POST[$fun_id.'_Comment']);
-            if ($nAmount[$fun_id] > 0) {
-                ++$nonZeroFundAmountEntered;
-            }
-
-            if ($bEnableNonDeductible) {
-                $nNonDeductible[$fun_id] = FilterInput($_POST[$fun_id.'_NonDeductible']);
-                //Validate the NonDeductible Amount
-                if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
-                    $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
-                    $bErrorFlag = true;
-                }
-            }
-        } // end foreach
-
-        if (!$nonZeroFundAmountEntered) {
-            $sAmountError[$fun_id] = gettext('At least one fund must have a non-zero amount.');
-            $bErrorFlag = true;
+    // make sure at least one fund has a non-zero numer
+    $nonZeroFundAmountEntered = 0;
+    foreach ($fundId2Name as $fun_id => $fun_name) {
+        //$fun_active = $fundActive[$fun_id];
+        $nAmount[$fun_id] = FilterInput($_POST[$fun_id.'_Amount']);
+        $sComment[$fun_id] = FilterInput($_POST[$fun_id.'_Comment']);
+        if ($nAmount[$fun_id] > 0) {
+            ++$nonZeroFundAmountEntered;
         }
+
+        if ($bEnableNonDeductible) {
+            $nNonDeductible[$fun_id] = FilterInput($_POST[$fun_id.'_NonDeductible']);
+            //Validate the NonDeductible Amount
+            if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
+                $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
+                $bErrorFlag = true;
+            }
+        }
+    } // end foreach
+
+    if (!$nonZeroFundAmountEntered) {
+        $sAmountError[$fun_id] = gettext('At least one fund must have a non-zero amount.');
+        $bErrorFlag = true;
     }
+    
 
     if (array_key_exists('ScanInput', $_POST)) {
         $tScanString = FilterInput($_POST['ScanInput']);
@@ -402,7 +382,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=".$PledgeOrPayment.'&linkBack=', $linkBack);
         }
     } // end if !$bErrorFlag
-} elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck']) || isset($_POST['TotalAmount'])) {
+} elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck']) ) {
 
     //$iCheckNo = 0;
     // Take care of match-family first- select the family based on the scanned check
@@ -434,11 +414,6 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                 extract(mysqli_fetch_array($rsFam));
                 $iFamily = $fam_ID;
             }
-        }
-    } elseif (!$iSelectedFund) { // We have a total amount set and fund set to split
-        if ($iOriginalSelectedFund) { // put all in the originally assigned fund if there was one
-            $nAmount[$iOriginalSelectedFund] = number_format($iTotalAmount, 2, '.', '');
-            $sComment[$iOriginalSelectedFund] = $sOneComment;
         }
     } else {
         $iFamily = FilterInput($_POST['FamilyID']);
@@ -641,7 +616,7 @@ require 'Include/Header.php';
                 
                   
                       <label for="TotalAmount"><?= gettext('Total $') ?></label>
-                  <input class="form-control"  type="text" name="TotalAmount" id="TotalAmount" value="<?= $iTotalAmount ?>"/>
+                  <input class="form-control"  type="text" name="TotalAmount" id="TotalAmount" disabled />
                 
               </div>
                     
@@ -748,7 +723,7 @@ require 'Include/Header.php';
             <tr>
               <td class="TextColumn"><b><?= $fun_name ?></b></td>
               <td class="TextColumn">
-                <input class="form-control" type="text" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= $nAmount[$fun_id] ?>"><br>
+                <input class="form-control FundAmount" type="text" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= $nAmount[$fun_id] ?>"><br>
                 <font color="red"><?= $sAmountError[$fun_id] ?></font>
               </td>
               <?php
@@ -810,15 +785,33 @@ require 'Include/Header.php';
       console.log(e);
         $('[name=FamilyName]').val(e.params.data.text);
         $('[name=FamilyID]:eq(1)').val(e.params.data.id);
-    })
+    });
     
     $("#FundTable").DataTable({
       responsive:true,
       paging: false,
       searching: false
     });
-    ;
+    
+    
+    $(".FundAmount").change(function(){
+      CalculateTotal();
+    });
+    
+    CalculateTotal();
   });
+  
+  function CalculateTotal() {
+    var Total = 0;
+      $(".FundAmount").each(function(object){
+        var FundAmount = Number($(this).val());
+        if (FundAmount >0 )
+        {
+          Total += FundAmount;
+        }
+      });
+      $("#TotalAmount").val(Total);
+  }
 </script>
 
 
