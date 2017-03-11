@@ -339,7 +339,7 @@ if (isset($_POST['EventID'])) {
                     $checkedInPerson = PersonQuery::create()
                         ->findOneById($per->getPersonId());
 
-                    $nameStyle = 3; //add to and get from config later
+                    $nameStyle = SystemConfig::getValue('iPersonNameStyle'); //add to and get from config later
                     $sPerson = $checkedInPerson->getFormattedName($nameStyle);
 
                     //Get Person who checked person in
