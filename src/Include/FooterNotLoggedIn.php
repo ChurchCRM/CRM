@@ -6,6 +6,9 @@ use ChurchCRM\dto\SystemURLs;
       <strong><?= gettext('Copyright') ?> &copy; 2015-2017 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved')?>.
     </div>
 
+
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
+
   <!-- Bootstrap 3.3.5 -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
   <!-- iCheck -->
