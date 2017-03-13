@@ -339,9 +339,11 @@ if (isset($sLetter)) {
     $sLetterWhereExt = '';
 }
 
+$sFamilyActiveWhereExt = ' AND (fam_DateDeactivated IS NULL OR fam_DateDeactivated > NOW()) ';
+
 $sGroupBySQL = ' GROUP BY per_ID';
 
- $sWhereExt = $sGroupWhereExt.$sFilterWhereExt.$sClassificationWhereExt.
+ $sWhereExt = $sGroupWhereExt.$sFilterWhereExt.$sClassificationWhereExt.$sFamilyActiveWhereExt.
                 $sFamilyRoleWhereExt.$sGenderWhereExt.$sLetterWhereExt.$sPersonPropertyWhereExt;
 
 $sSQL = $sBaseSQL.$sJoinExt.' WHERE 1'.$sWhereExt.$sGroupBySQL;
@@ -501,7 +503,9 @@ $finalSQL = $sSQL.$sOrderSQL.$sLimitSQL;
 $rsPersons = RunQuery($finalSQL);
 
 // Run query to get first letters of last name.
-$sSQL = 'SELECT DISTINCT LEFT(per_LastName,1) AS letter FROM person_per '.
+$sSQL = 'SELECT DISTINCT LEFT(per_LastName,1) AS letter 
+         FROM person_per
+         LEFT JOIN family_fam on per_fam_ID = fam_ID'.
         $sJoinExt." WHERE 1 $sWhereExt ORDER BY letter";
 $rsLetters = RunQuery($sSQL);
 
