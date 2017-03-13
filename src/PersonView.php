@@ -184,10 +184,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     <div class="box box-primary">
       <div class="box-body box-profile">
         <div class="image-container">
-            <img  data-name="<?= $person->getFullName()?>" data-src = "<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
+            <img  data-name="<?= $person->getFullName()?>" data-src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>" 
+            class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
             <?php if ($bOkToEdit): ?>
                 <div class="after">
                 <div class="buttons">
+                    <a id="view-larger-image-btn" class="hide" href="#" title="<?= gettext("View Photo") ?>">
+                        <i class="fa fa-search-plus"></i>
+                    </a>&nbsp;
                     <a href="#" class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
                         <i class="fa fa-camera"></i>
                     </a>&nbsp;
@@ -928,6 +932,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 </div>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
 <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
 <script>
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
@@ -993,6 +998,25 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         };
         $("#assigned-volunteer-opps-table").DataTable(options);
         $("#assigned-properties-table").DataTable(options);
+        
+        
+        contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {
+            if (success) {
+                $("#view-larger-image-btn").removeClass('hide');
+                 
+                $("#view-larger-image-btn").click(function() {
+                    bootbox.alert({
+                        title: "<?= gettext('Photo') ?>",
+                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + person_ID + '/photo" />',
+                        backdrop: true
+                    });
+                });
+            }
+        });
+        
+
+        
+        
     });
   
   
