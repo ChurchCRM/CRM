@@ -199,27 +199,27 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
 
             <?php
             $arr = array();
-            $arrPlotItems = array();
-            if ($plotFamily) {
-                foreach ($families as $family) {
-                    $latLng = $family->getLatLng();
+    $arrPlotItems = array();
+    if ($plotFamily) {
+        foreach ($families as $family) {
+            $latLng = $family->getLatLng();
                     //this helps to add head people persons details: otherwise doesn't seems to populate
                     $class = $family->getHeadPeople()[0];
-                    $family->getHeadPeople()[0];
-                    $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
-                    $arr['ID'] = $family->getId();
-                    $arr['Name'] = $family->getName();
-                    $arr['Salutation'] = MakeSalutationUtility($family->getId());
-                    $arr['Address'] = $family->getAddress();
-                    $arr['Thumbnail'] = $photoFileThumb;
-                    $arr['Latitude'] = $latLng['Latitude'];
-                    $arr['Longitude'] = $latLng['Longitude'];
-                    $arr['Name'] = $family->getName();
-                    $arr['Classification'] = $class->GetClsId();
-                    array_push($arrPlotItems, $arr);
-                }
-            } else {
-                //plot Person
+            $family->getHeadPeople()[0];
+            $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
+            $arr['ID'] = $family->getId();
+            $arr['Name'] = $family->getName();
+            $arr['Salutation'] = MakeSalutationUtility($family->getId());
+            $arr['Address'] = $family->getAddress();
+            $arr['Thumbnail'] = $photoFileThumb;
+            $arr['Latitude'] = $latLng['Latitude'];
+            $arr['Longitude'] = $latLng['Longitude'];
+            $arr['Name'] = $family->getName();
+            $arr['Classification'] = $class->GetClsId();
+            array_push($arrPlotItems, $arr);
+        }
+    } else {
+        //plot Person
                 foreach ($persons as $member) {
                     $latLng = $member->getLatLng();
                     $photoFileThumb = SystemURLs::getRootPath() . '/api/persons/' . $member->getId() . '/thumbnail';
@@ -234,7 +234,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
                     $arr['Classification'] = $member->getClsId();
                     array_push($arrPlotItems, $arr);
                 }
-            } //end IF $plotFamily
+    } //end IF $plotFamily
 
             ?>
 
