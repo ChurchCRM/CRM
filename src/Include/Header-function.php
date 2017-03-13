@@ -151,8 +151,10 @@ function Header_body_scripts()
     }
 
     $(document).ajaxError(function (evt, xhr, settings) {
-        var CRMResponse = JSON.parse(xhr.responseText);
-        window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
+        try {
+            var CRMResponse = JSON.parse(xhr.responseText);
+            window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
+        } catch(err) {}
     });
 
     function LimitTextSize(theTextArea, size) {
