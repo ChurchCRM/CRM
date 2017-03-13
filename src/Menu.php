@@ -182,7 +182,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </thead>
                         <tbody>
                         <?php foreach ($latestFamilies as $family) {
-                            ?>
+    ?>
                             <tr>
                                 <td>
                                     <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
@@ -192,7 +192,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                             </tr>
                             <?php
 
-                        }
+}
                         ?>
                         </tbody>
                     </table>
@@ -348,7 +348,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
   });
 <?php
 
- }  //END IF block for Finance permissions to include JS for Deposit Chart
+                        }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>
 </script>
 
