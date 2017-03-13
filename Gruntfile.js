@@ -120,6 +120,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-toggle/css/bootstrap-toggle.css', 'node_modules/bootstrap-toggle/js/bootstrap-toggle.js'],
                         dest: 'src/skin/bootstrap-toggle/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-validator/dist/validator.min.js'],
+                        dest: 'src/skin/bootstrap-validator/'
                     }
                 ]
             }

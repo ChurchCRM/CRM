@@ -33,7 +33,7 @@ class PersonService
                 if ($person->getFamilyRole()) {
                     $familyRole .= $person->getFamilyRoleName();
                 } else {
-                    $familyRole .=  gettext('Member');
+                    $familyRole .=  gettext('Part');
                 }
                 $familyRole .= gettext(' of the').' <a href="FamilyView.php?FamilyID='. $values['familyID'].'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
             } else {
