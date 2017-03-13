@@ -31,7 +31,6 @@ require "Include/GeoCoder.php";
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 
@@ -186,7 +185,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
       <div class="box box-primary">
         <div class="box-body">
             <div class="image-container">
-                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" 
+                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
                 data-name="<?= $family->getName()?>" alt="" class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
                 <?php if ($bOkToEdit): ?>
                     <div class="after">
@@ -912,7 +911,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
   <!-- Modal -->
   <div id="photoUploader"></div>
-  
+
   <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
        aria-hidden="true">
     <div class="modal-dialog">
@@ -971,7 +970,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
-                <?php 
+                <?php
     } ?>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
@@ -1063,12 +1062,12 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 location.reload();
               }
             });
-            
+
 
         contentExists(window.CRM.root + "/api/families/" + familyId + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
-                
+
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Family Photo') ?>",
