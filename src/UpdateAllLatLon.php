@@ -40,7 +40,7 @@ $sSQL = 'UPDATE family_fam SET fam_Latitude = -99 WHERE fam_Latitude = 0';
 RunQuery($sSQL);
 
 // ORDER BY fam_Latitude forces the -99 records to the top of the queue
-$sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude ';
+$sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Country, fam_Latitude, fam_Longitude ';
 //$sSQL .= "FROM family_fam ORDER BY fam_Latitude";
 
 // Need to come back and fix this someday. Server timeouts are a problem.
@@ -64,7 +64,7 @@ $myAddressLatLon = new AddressLatLon();
 while ($aFam = mysqli_fetch_array($rsFamilies)) {
     extract($aFam);
 
-    $myAddressLatLon->SetAddress($fam_Address1, $fam_City, $fam_State, $fam_Zip);
+    $myAddressLatLon->SetAddress($fam_Address1, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     $ret = $myAddressLatLon->Lookup();
 
     if ($ret == 0) {
@@ -93,13 +93,13 @@ echo '<br/><p>'.gettext('Update Finished').'</p>';
 </div>
 <div class="box-body ">
 <?php
-$sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude ';
+$sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Country, fam_Latitude, fam_Longitude ';
 $sSQL .= 'FROM family_fam WHERE fam_Latitude = 0';
 $rsFamilies = RunQuery($sSQL);
 while ($aFam = mysqli_fetch_array($rsFamilies)) {
     extract($aFam);
     echo '<li>'.$fam_Name.' '.$fam_Address1.
-    ','.$fam_City.','.$fam_State.','.$fam_Zip.'</li>';
+    ','.$fam_City.','.$fam_State.','.$fam_Zip. ','. $fam_Country .'</li>';
 }
 ob_flush();
 

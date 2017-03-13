@@ -15,4 +15,20 @@ $app->group('/cart', function () {
         return $response->withJson(['status' => "success"]);
     });
 
+    /**
+     * delete. This will empty the cart
+     */
+    $this->delete('/', function ($request, $response, $args) {
+        $sMessage = gettext('Your cart is empty');
+        if(sizeof($_SESSION['aPeopleCart'])>0) {
+            $_SESSION['aPeopleCart'] = [];
+            $sMessage = gettext('Your cart has been successfully emptied');
+        }
+        return $response->withJson([
+            'status' => "success",
+            'message' =>$sMessage
+        ]);
+
+    });
+
 });

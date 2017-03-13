@@ -3,7 +3,7 @@
 -- Host: localhost	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	5.5.46-0ubuntu0.14.04.2
--- Date: Sun, 15 Jan 2017 19:40:49 -0500
+-- Date: Sat, 25 Feb 2017 09:54:45 -0500
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -130,7 +130,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (6,'sDirRoleHead','1'),(10,'aFinanceQueries','28,30,31,32'),(27,'sSMTPHost','127.0.0.1:1025'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'cfgForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'sEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Demo Church'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City,'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64105'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'sEnableGravatarPhotos',''),(1036,'sEnableExternalBackupTarget',''),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','2017-02-11 13:15:26'),(1047,'sChurchCountry','United States');
+INSERT INTO `config_cfg` VALUES (23,'sDefaultCountry','United States'),(27,'sSMTPHost','127.0.0.1:1025'),(10,'aFinanceQueries','28,30,31,32'),(28,'sSMTPAuth',''),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'cfgForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'sEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'sEnableGravatarPhotos','1'),(1036,'sEnableExternalBackupTarget',''),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','2017-02-11 13:15:26'),(1047,'sChurchCountry','United States'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1520,4 +1520,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sat, 11 Feb 2017 13:16:32 -0500
+-- Dump completed on: Sat, 25 Feb 2017 09:54:45 -0500
