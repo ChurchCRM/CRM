@@ -108,9 +108,7 @@ $MenuFirst = 1;
                 <ul class="dropdown-menu">
                     <?php
                     if (count($_SESSION['aPeopleCart']) > 0) {
-                        $isCartPage = (basename($_SERVER['PHP_SELF']) == 'CartView.php');
-
-                        ?>
+                        $isCartPage = (basename($_SERVER['PHP_SELF']) == 'CartView.php'); ?>
                         <li id="showWhenCartNotEmpty">
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
