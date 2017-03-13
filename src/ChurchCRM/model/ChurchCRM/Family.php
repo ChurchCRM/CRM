@@ -79,7 +79,7 @@ class Family extends BaseFamily implements iPhoto
     {
         $this->createTimeLineNote(true);
     }
-    
+
     public function postUpdate(ConnectionInterface $con = null)
     {
         $this->createTimeLineNote(false);
@@ -163,10 +163,10 @@ class Family extends BaseFamily implements iPhoto
 
       $note->save();
     }
-    
+
     private function getPhoto()
     {
-      
+
       $photo = new Photo("Family",  $this->getId());
       return $photo;
     }
@@ -216,19 +216,33 @@ class Family extends BaseFamily implements iPhoto
         return true;
       }
       return false;
-      
     }
 
     public function isPhotoLocal() {
       return $this->getPhoto()->isPhotoLocal();
     }
-    
+
     public function isPhotoRemote() {
       return $this->getPhoto()->isPhotoRemote();
     }
-    
+
     public function getPhotoContentType() {
       return $this->getPhoto()->getPhotoContentType();
+    }
+
+    public function verify()
+    {
+        $note = new Note();
+        $note->setFamId($this->getId());
+        $note->setText(gettext('Family Data Verified'));
+        $note->setType('verify');
+        $note->setEntered($_SESSION['user']->getId());
+        $note->save();
+    }
+
+    public function getFamilyString()
+    {
+        return $this->getName(). " " . $this->getAddress();
     }
 
 }
