@@ -18,8 +18,8 @@ npm-debug.log*
 BuildConfig.json
 
 # Uploaded Images
-src/Images/Family/thumbnails
-src/Images/Person/thumbnails
+src/Images/Family
+src/Images/Person
 
 # SASS
 .sass-cache
