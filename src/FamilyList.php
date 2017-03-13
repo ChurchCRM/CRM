@@ -69,7 +69,7 @@ require 'Include/Header.php'; ?>
                 <td><?= date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                 <?php
 
-                }
+}
                 ?>
             </tr>
             </tbody>
