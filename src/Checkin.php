@@ -273,8 +273,11 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                 <div class="col-sm-4 col-xs-6">
                                     <div class="form-group">
                                         <label><?= gettext('Adult Checking Out Person') ?>:</label>
-                                        <input type="text" id="adultout" name="adult" class="form-control"
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input type="text" id="adultout" name="adult" class="form-control"
                                                placeholder="<?= gettext('Adult Name (Optional)') ?>">
+                                            </div>
                                         <input type="hidden" id="adultout-id" name="adult-id">
                                     </div>
                                     <div class="form-group">
@@ -456,7 +459,7 @@ if (isset($_POST['EventID'])) {
         if(perArr) {
             element.html(
                 '<div class="text-center">' +
-                '<a target="_top" href="PersonView.php?PersonID=' + perArr.id + '"><h4>' + perArr.title + ' ' + perArr.displayName + '</h4></a>' +
+                '<a target="_top" href="PersonView.php?PersonID=' + perArr.id + '"><h4>' + perArr.displayName + '</h4></a>' +
                 '<div class="">' + perArr.familyRole + '</div>' +
                 '<div class="text-center">' + perArr.address + '</div>' +
                 '<img data-name="' + perArr.displayName + '" data-src="' + window.CRM.root + '/api/persons/' + perArr.id + '/thumbnail" ' +

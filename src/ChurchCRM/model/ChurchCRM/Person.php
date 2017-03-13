@@ -158,9 +158,13 @@ class Person extends BasePerson implements iPhoto
             }
             return implode(' ', $address);
         } else {
-            return $this->getFamily()
-                ->getAddress();
+            if($this->getFamily()) {
+                return $this->getFamily()
+                    ->getAddress();
+            }
         }
+        //if it reaches here, no address found. return empty $address
+        return $address;
     }
     /**
      * * If person address found, return latitude and Longitude of person address

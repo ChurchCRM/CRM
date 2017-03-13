@@ -39,6 +39,7 @@ src/skin/randomcolor
 src/skin/bootbox
 src/skin/bootstrap-toggle
 src/skin/bootstrap-validator
+src/skin/jquery-ui
 
 # Configuration files with passwords
 src/Include/Config.php
