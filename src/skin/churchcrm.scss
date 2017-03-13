@@ -13,7 +13,6 @@
 // and we don't want to incur IE's CSS limits.
 // ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
 
-@import 'adminlte/plugins/select2/select2.min.css';
 @import 'adminlte/plugins/datepicker/datepicker3.css';
 @import 'adminlte/plugins/daterangepicker/daterangepicker.css';
 @import 'adminlte/plugins/timepicker/bootstrap-timepicker.min.css';
@@ -33,7 +32,7 @@
 
 @import 'adminlte/dist/css/AdminLTE.min.css';
 @import 'adminlte/dist/css/skins/_all-skins.min.css';
-
+@import 'adminlte/plugins/select2/select2.min.css';
 // Import ChurchCRM custom styles
 
 @import 'scss/dropdowns';
@@ -43,3 +42,4 @@
 @import 'scss/shortConfig';
 @import 'scss/leftNav';
 @import 'scss/imageOverlay';
+@import 'scss/maps';
