@@ -139,7 +139,7 @@ function ValidateInput()
                     break;
 
                 default:
-                    $vPOST[$qrp_Alias] = FilterInput($_POST[$qrp_Alias]);
+                    $vPOST[$qrp_Alias] = $_POST[$qrp_Alias];
                     break;
             }
         }
