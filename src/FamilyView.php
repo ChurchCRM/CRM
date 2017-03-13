@@ -971,6 +971,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                             class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
                 <?php
+
     } ?>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
