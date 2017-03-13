@@ -113,8 +113,8 @@
         ],
         "scripts":[
             "/mysql/upgrade/2.7.0-groups.sql",
+            "/mysql/upgrade/2.7.0-menu-inactive-families.sql",
             "/mysql/upgrade/2.7.0-queryparamoptions.sql"
-
         ],
         "dbVersion": "2.7.0"
     }
