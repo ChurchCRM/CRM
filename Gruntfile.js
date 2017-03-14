@@ -355,16 +355,6 @@ module.exports = function (grunt) {
             update: {
                 version: '<%= package.version %>'
             }
-        },
-        gren: {
-            changelog: {
-                options: {
-                    username: 'ChurchCRM',
-                    repo: 'CRM',
-                    token: '<%= buildConfig.GitHub.token %>',
-                    changelogFilename: 'CHANGELOG.md'
-                }
-            }
         }
     });
 
@@ -437,5 +427,4 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-curl');
-    grunt.loadNpmTasks('grunt-github-release-notes');
 }
