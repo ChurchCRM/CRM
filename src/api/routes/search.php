@@ -1,7 +1,7 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\DepositQuery;
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\GroupQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemConfig;
 
@@ -24,39 +24,35 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     } catch (Exception $e) {
     }
 
-    //Envelopes Search
-    if ($_SESSION['bFinance'] && SystemConfig::getValue('bUseDonationEnvelopes') && is_numeric($query)) {
-        try {
-            $q = FamilyQuery::create()
-                ->filterByEnvelope($query)
-                ->limit(5)
-                ->withColumn('fam_Name', 'displayName')
-                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'FamilyView.php?FamilyID=",Family.Id)', 'uri')
-                ->select(['displayName', 'uri'])
-                ->find();
-            array_push($resultsArray, str_replace('Families', 'Donation Envelopes', $q->toJSON()));
-        } catch (Exception $ex) {
-        }
-    }
 
     //Group Search
     try {
-        $dbGroups = GroupQuery::create()
-            ->filterByName("%$query%", Criteria::LIKE)
-            ->_or()
-            ->filterByDescription("%$query%", Criteria::LIKE)
-            ->orderByName()
-            ->withColumn('grp_Name', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'GroupView.php?GroupID=",grp_Id)', 'uri')
-            ->find();
-        array_push($resultsArray, $dbGroups->toJSON());
+        array_push($resultsArray, $this->GroupService->getGroupJSON($this->GroupService->search($query)));
     } catch (Exception $e) {
     }
 
+
     //Deposits Search
     if ($_SESSION['bFinance']) {
+
+        //Envelopes Search
+        if (SystemConfig::getValue('bUseDonationEnvelopes') && is_numeric($query)) {
+            try {
+                $q = FamilyQuery::create()
+                    ->filterByEnvelope($query)
+                    ->limit(5)
+                    ->withColumn('fam_Name', 'displayName')
+                    ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'FamilyView.php?FamilyID=",Family.Id)', 'uri')
+                    ->select(['displayName', 'uri'])
+                    ->find();
+                array_push($resultsArray, str_replace('Families', 'Donation Envelopes', $q->toJSON()));
+            } catch (Exception $ex) {
+            }
+        }
+
+
         try {
-            $q = \ChurchCRM\DepositQuery::create();
+            $q = DepositQuery::create();
             $q->filterByComment("%$query%", Criteria::LIKE)
                 ->_or()
                 ->filterById($query)

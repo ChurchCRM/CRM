@@ -170,7 +170,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
     $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID']))); ?>
 <script>
-    var familyId = <?= $fam_ID ?>;
+    window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
  <?php if (!empty($fam_DateDeactivated)) {
@@ -186,11 +186,14 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
       <div class="box box-primary">
         <div class="box-body">
             <div class="image-container">
-                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/thumbnail"
-                data-name="<?= $family->getName()?>" alt="" class="initials-image img-circle img-responsive profile-user-img"/>
+                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" 
+                data-name="<?= $family->getName()?>" alt="" class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
                 <?php if ($bOkToEdit): ?>
                     <div class="after">
                         <div class="buttons">
+                            <a class="hide" id="view-larger-image-btn" href="#" title="<?= gettext("View Photo") ?>">
+                                <i class="fa fa-search-plus"></i>
+                            </a>&nbsp;
                             <a href="#" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
                                 <i class="fa fa-camera"></i>
                             </a>&nbsp;
@@ -909,6 +912,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
   <!-- Modal -->
   <div id="photoUploader"></div>
+  
   <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
        aria-hidden="true">
     <div class="modal-dialog">
@@ -998,9 +1002,9 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 } ?>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
     <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
     <script>
-        window.CRM.currentFamily = <?= $iFamilyID ?>;
         window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
         var dataT = 0;
         $(document).ready(function() {
@@ -1038,7 +1042,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             $("#deletePhoto").click (function () {
               $.ajax({
               type: "POST",
-              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
               encode: true,
               dataType: 'json',
               data: {
@@ -1050,7 +1054,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             });
 
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
               maxPhotoSize: window.CRM.maxUploadSize,
               photoHeight: 400,
               photoWidth: 400,
@@ -1058,6 +1062,21 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 location.reload();
               }
             });
+            
+
+        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
+            if (success) {
+                $("#view-larger-image-btn").removeClass('hide');
+                
+                $("#view-larger-image-btn").click(function() {
+                    bootbox.alert({
+                        title: "<?= gettext('Family Photo') ?>",
+                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
+                        backdrop: true
+                    });
+                });
+            }
+        });
 
         });
     </script>
