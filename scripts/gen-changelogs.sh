@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-currentBranch=`git rev-parse --abbrev-ref HEAD`
 githubToken=$1
 
 if [ -z ${githubToken} ]; then
@@ -7,9 +6,5 @@ if [ -z ${githubToken} ]; then
     read githubToken
 fi
 
-echo "**************************************"
-echo "Generating Change-Log for  Branch: $currentBranch"
-echo "**************************************"
-gren --username=ChurchCRM --repo=CRM --token=${githubToken} --action=changelog --override=true --time-wrap=history
-echo "**************************************"
+gren --username=ChurchCRM --ignore-issues-with=wontfix,duplicate,norepro --repo=CRM --action=changelog --override=true --time-wrap=history --token=${githubToken}
 
