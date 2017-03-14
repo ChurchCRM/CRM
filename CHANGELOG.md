@@ -2,20 +2,13 @@
 
 ## 2.6.1 (11/03/2017)
 
-- [**Web Report**] tes [#2030](https://github.com/ChurchCRM/CRM/issues/2030)
 - [**Web Report**] Photo capture can\'t switch cameras [#2021](https://github.com/ChurchCRM/CRM/issues/2021)
-- [**Web Report**] Deposit Buttons smashed together [#2019](https://github.com/ChurchCRM/CRM/issues/2019)
-- [**Web Report**] Deposit Buttons smashed together [#2018](https://github.com/ChurchCRM/CRM/issues/2018)
 - [**Web Report**] Mobile photo capture [#2016](https://github.com/ChurchCRM/CRM/issues/2016)
 - [**Financial**][**Good first bug**][**Web Report**] Donation Envelopes in Search [#2013](https://github.com/ChurchCRM/CRM/issues/2013)
 - [**bug**][**enhancement**] Search results issues [#1959](https://github.com/ChurchCRM/CRM/issues/1959)
 - [**Good first bug**][**Web Report**] Global search box style changed [#1943](https://github.com/ChurchCRM/CRM/issues/1943)
 - [**bug**]  BUG - 2.6.0-RC1: Member Count Error in Member Dashboard [#1924](https://github.com/ChurchCRM/CRM/issues/1924)
-- [**Documentation**] search function in documentation not working [#1880](https://github.com/ChurchCRM/CRM/issues/1880)
 - [**enhancement**][**Members**] Update Family Editor dropdowns to use select2 [#1407](https://github.com/ChurchCRM/CRM/issues/1407)
-- [**question**] Error I am getting is "The page isn’t redirecting properly" [#1209](https://github.com/ChurchCRM/CRM/issues/1209)
-- [**question**] failing to loging. [#1114](https://github.com/ChurchCRM/CRM/issues/1114)
-- [**bug**][**Financial**] Theme: AutoPaymentEditor [#943](https://github.com/ChurchCRM/CRM/issues/943)
 - [**enhancement**][**Good first bug**] View Cart needs pagination [#249](https://github.com/ChurchCRM/CRM/issues/249)
 
 
