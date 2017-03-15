@@ -22,6 +22,9 @@ use ChurchCRM\dto\SystemURLs;
   <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" ></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js" ></script>
+  
+  <!-- Bootbox -->
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
 
   <script>
     $(function () {
