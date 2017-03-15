@@ -1,21 +1,29 @@
 <?php
 
 // Users APIs
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\UserQuery;
 use ChurchCRM\UserConfigQuery;
+use ChurchCRM\Emails\NewPasswordEmail;
+use ChurchCRM\dto\SystemConfig;
 
 $app->group('/users', function () {
 
-    $this->post('/{userId:[0-9]+}/password/rest', function ($request, $response, $args) {
+    $this->post('/{userId:[0-9]+}/password/reset', function ($request, $response, $args) {
         if (!$_SESSION['user']->isAdmin()) {
             return $response->withStatus(401);
         }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
-            $user->updatePasswordDefault();
+            $password = SystemConfig::getValue('sDefault_Pass');
+            $user->updatePassword($password);
+            $user->setNeedPasswordChange(true);;
             $user->save();
-            return $response->withStatus(200)->withJson(['status' => "success"]);
+            $email = new NewPasswordEmail($user, $password);
+            if ($email->send()) {
+                return $response->withStatus(200)->withJson(['status' => "success"]);
+            } else {
+                return $response->withStatus(404)->getBody()->write($email->getError());
+            }
         } else {
             return $response->withStatus(404);
         }
