@@ -359,13 +359,14 @@ module.exports = function (grunt) {
         gren: {
             changelog: {
                 options: {
+                    changelogFilename: 'CHANGELOG.md',
                     username: 'ChurchCRM',
                     repo: 'CRM',
                     token: '<%= buildConfig.GitHub.token %>',
-                    changelogFilename: 'CHANGELOG.md',
-                    override: true,
-                    action: 'changelog',
-                    timeWrap: 'history'
+                    timeWrap: 'history',
+                    dataSource: 'issues',
+                    ignoreIssuesWith: ['wontfix','duplicate','norepro'],
+                    override: 'true'
                 }
             }
         }
