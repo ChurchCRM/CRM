@@ -129,6 +129,8 @@ if (isset($_POST['User'])) {
         Redirect('CheckVersion.php');
         exit;
     }
+} elseif (isset($_GET['username'])) {
+    $urlUserName = $_GET['username'];
 }
 
 
@@ -164,7 +166,7 @@ require 'Include/HeaderNotLoggedIn.php';
 
         <form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
             <div class="form-group has-feedback">
-                <input type="text" id="UserBox" name="User" class="form-control"
+                <input type="text" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>"
                        placeholder="<?= gettext('Email/Username') ?>" required autofocus>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
