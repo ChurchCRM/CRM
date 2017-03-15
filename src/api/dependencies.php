@@ -2,7 +2,6 @@
 
 
 use ChurchCRM\Service\CalendarService;
-use ChurchCRM\Service\DataSeedService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
@@ -17,7 +16,6 @@ $container['GroupService'] = new GroupService();
 $container['FinancialService'] = new FinancialService();
 $container['ReportingService'] = new ReportingService();
 
-$container['DataSeedService'] = new DataSeedService();
 $container['SystemService'] = new SystemService();
 
 $container['CalendarService'] = new CalendarService();

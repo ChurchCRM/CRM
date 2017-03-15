@@ -3,7 +3,6 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Note;
 use ChurchCRM\FamilyQuery;
 
 //Get the FamilyID out of the querystring
@@ -13,6 +12,6 @@ $family =  FamilyQuery::create()
         ->findOneById($iFamilyID);
 
 $family->verify();
-        
+
 header('Location: '.$family->getViewURI());
 exit;

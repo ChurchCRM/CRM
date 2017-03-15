@@ -2,33 +2,10 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 
 class GroupService
 {
-    /**
-     *  setGroupMemberRole.
-     *
-     * @param int $groupID  group id in which to set the member's role
-     * @param int $personID ID of the person who'se role to set
-     * @param int $roleID   Role ID to set to the person
-     *                      return array containing the group member
-     */
-    public function setGroupMemberRole($groupID, $personID, $roleID)
-    {
-        requireUserGroupMembership('bManageGroups');
-        $sSQL = 'UPDATE person2group2role_p2g2r
-            SET p2g2r_rle_ID = '.$roleID.'
-            WHERE
-            p2g2r_per_ID ='.$personID.'
-            AND
-             p2g2r_grp_ID ='.$groupID;
-
-        $update = RunQuery($sSQL);
-
-        return $this->getGroupMembers($groupID, $personID);
-    }
 
     /**
      *  removeUserFromGroup.
@@ -114,54 +91,6 @@ class GroupService
     }
 
     /**
-     *  search.
-     *
-     * @param string $searchTerm the string of text to search
-     *
-     * @return array containing group objects of all of the gropus which match the search term.
-     */
-    public function search($searchTerm)
-    {
-        global $cnInfoCentral;
-        $sSQL = 'SELECT grp_ID FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type WHERE grp_Name LIKE \'%'.$searchTerm.'%\' OR  grp_Description LIKE \'%'.$searchTerm.'%\' OR lst_OptionName LIKE \'%'.$searchTerm.'%\'  order by grp_Name LIMIT 15';
-        $result = mysqli_query($cnInfoCentral, $sSQL);
-        $return = [];
-        while ($row = mysqli_fetch_array($result)) {
-            array_push($return, $this->getGroups($row['grp_ID']));
-        }
-
-        return $return;
-    }
-
-    /**
-     *  getGroupJSON.
-     *
-     * @param array $groups array containing group objects
-     *
-     * @return string represnting the JSON of the given array, with key
-     */
-    public function getGroupJSON($groups)
-    {
-        if ($groups) {
-            return '{"groups": '.json_encode($groups).'}';
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     *  getViewURI.
-     *
-     * @param int $id ID of the group for which to return the view URI
-     *
-     * @return string represnting the view page URI for the given group
-     */
-    public function getViewURI($Id)
-    {
-        return SystemURLs::getRootPath().'/GroupView.php?GroupID='.$Id;
-    }
-
-    /**
      *  getGroupRoles.
      *
      * @param int $groupID ID of the group
@@ -190,24 +119,7 @@ class GroupService
         return $groupRoles;
     }
 
-    /**
-     *  setGroupRoleName.
-     *
-     * @param int    $groupID       ID of the group
-     * @param int    $groupRole     ID of the  role in the group
-     * @param string $groupRoleName Name of the group role
-     */
-    public function setGroupRoleName($groupID, $groupRoleID, $groupRoleName)
-    {
-        requireUserGroupMembership('bManageGroups');
-        $sSQL = 'UPDATE list_lst
-                 INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID
-                 SET list_lst.lst_OptionName = "'.$groupRoleName.'"
-                 WHERE group_grp.grp_ID = "'.$groupID.'"
-                    AND list_lst.lst_OptionID = '.$groupRoleID;
-        RunQuery($sSQL);
-    }
+
 
     public function setGroupRoleOrder($groupID, $groupRoleID, $groupRoleOrder)
     {
@@ -219,15 +131,6 @@ class GroupService
                  WHERE group_grp.grp_ID = "'.$groupID.'"
                     AND list_lst.lst_OptionID = '.$groupRoleID;
         RunQuery($sSQL);
-    }
-
-    public function getGroupDefaultRole($groupID)
-    {
-        //Look up the default role name
-        $sSQL = 'SELECT lst_OptionName from list_lst INNER JOIN group_grp on (group_grp.grp_RoleListID = list_lst.lst_ID AND group_grp.grp_DefaultRole = list_lst.lst_OptionID) WHERE group_grp.grp_ID = '.$groupID;
-        $aDefaultRole = mysqli_fetch_array(RunQuery($sSQL));
-
-        return $aDefaultRole[0];
     }
 
     public function getGroupRoleOrder($groupID, $groupRoleID)
@@ -353,52 +256,6 @@ class GroupService
         return '{"newRole":{"roleID":"'.$newOptionID.'", "roleName":"'.$groupRoleName.'", "sequence":"'.$newOptionSequence.'"}}';
     }
 
-    public function setGroupRoleAsDefault($groupID, $roleID)
-    {
-        requireUserGroupMembership('bManageGroups');
-        $sSQL = 'UPDATE group_grp SET grp_DefaultRole = '.$roleID.' WHERE grp_ID = '.$groupID;
-        RunQuery($sSQL);
-    }
-
-    public function getGroupTotalMembers($groupID)
-    {
-        //Get the count of members
-        $sSQL = 'SELECT COUNT(*) AS iTotalMembers FROM person2group2role_p2g2r WHERE p2g2r_grp_ID = '.$groupID;
-        $rsTotalMembers = mysqli_fetch_array(RunQuery($sSQL));
-
-        return $rsTotalMembers[0];
-    }
-
-    public function getGroupTypes()
-    {
-        $groupTypes = [];
-        // Get Group Types for the drop-down
-        $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 3 ORDER BY lst_OptionSequence';
-        $rsGroupTypes = RunQuery($sSQL);
-        while ($aRow = mysqli_fetch_assoc($rsGroupTypes)) {
-            array_push($groupTypes, $aRow);
-        }
-
-        return $groupTypes;
-    }
-
-    public function getGroupRoleTemplateGroups()
-    {
-        $templateGroups = [];
-        $sSQL = 'SELECT * FROM group_grp WHERE grp_RoleListID > 0 ORDER BY grp_Name';
-        $rsGroupRoleSeed = RunQuery($sSQL);
-        while ($aRow = mysqli_fetch_assoc($rsGroupRoleSeed)) {
-            array_push($templateGroups, $aRow);
-        }
-
-        return $templateGroups;
-    }
-
-    public function setGroupName($groupID, $groupName)
-    {
-        requireUserGroupMembership('bManageGroups');
-    }
-
     public function enableGroupSpecificProperties($groupID)
     {
         requireUserGroupMembership('bManageGroups');
@@ -436,44 +293,6 @@ class GroupService
         RunQuery($sSQL);
     }
 
-    public function getGroups($groupIDs = null)
-    {
-        global $cnInfoCentral;
-        $whereClause = '';
-        if (is_numeric($groupIDs)) {
-            $whereClause = 'WHERE grp_ID = '.$groupIDs;
-        } elseif (is_array($groupIDs)) {
-            $whereClause = 'WHERE grp_ID in ('.implode(',', $groupIDs).')';
-        } elseif (is_null($groupIDs)) {
-            $whereClause = '';
-        }
-        $fetch = 'SELECT * FROM group_grp LEFT JOIN list_lst on lst_ID = 3 AND lst_OptionID = grp_Type '.$whereClause.' ORDER BY grp_Name ';
-        $result = mysqli_query($cnInfoCentral, $fetch);
-        $return = [];
-        while ($row = mysqli_fetch_array($result)) {
-            $totalMembers = $this->getGroupTotalMembers($row['grp_ID']);
-            $values['id'] = $row['grp_ID'];
-            $values['groupName'] = $row['grp_Name'];
-            $values['displayName'] = $row['grp_Name'];
-            $values['grp_Type'] = $row['grp_Type'];
-            $values['groupType'] = $row['lst_OptionName'];
-            $values['grp_DefaultRole'] = $row['grp_DefaultRole'];
-            $values['groupDescription'] = $row['grp_Description'];
-            $values['uri'] = $this->getViewURI($row['grp_ID']);
-            $values['memberCount'] = $totalMembers;
-            $values['defaultRole'] = $this->getGroupDefaultRole($row['grp_ID']);
-            $values['roles'] = $this->getGroupRoles($row['grp_ID']);
-            $values['totalMembers'] = $totalMembers;
-            $values['grp_hasSpecialProps'] = $row['grp_hasSpecialProps'] == 'true';
-            array_push($return, $values);
-        }
-        if (count($return) == 1) {
-            return $return[0];
-        } else {
-            return $return;
-        }
-    }
-
     public function getGroupMembers($groupID, $personID = null)
     {
         global $cnInfoCentral;
@@ -505,21 +324,4 @@ class GroupService
         return $members;
     }
 
-    public function copyCartToGroup()
-    {
-        requireUserGroupMembership('bManageGroups');
-        if (array_key_exists('EmptyCart', $_POST) && $_POST['EmptyCart'] && count($_SESSION['aPeopleCart']) > 0) {
-            $iCount = 0;
-            while ($element = each($_SESSION['aPeopleCart'])) {
-                AddUsertoGroup($_SESSION['aPeopleCart'][$element['key']], $iGroupID, $thisGroup['grp_DefaultRole']);
-                $iCount += 1;
-            }
-
-            $sGlobalMessage = $iCount.' records(s) successfully added to selected Group.';
-
-            Redirect('GroupEditor.php?GroupID='.$iGroupID.'&Action=EmptyCart');
-        } else {
-            Redirect("GroupEditor.php?GroupID=$iGroupID");
-        }
-    }
 }

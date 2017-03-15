@@ -1,0 +1,64 @@
+#maplegend {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #000;
+    opacity: 0.7;
+    h4 {
+        margin-top: 0;
+    }
+    img {
+        vertical-align: middle;
+    }
+}
+
+.map-div {
+    height:750px;
+    margin: 2px;
+}
+
+div {
+    .legenditem {
+        padding: 4px 4px;
+        margin-bottom: 4px;
+        box-shadow: 1px 1px 1px 1px darkgrey;
+
+    }
+    .legendbox {
+        margin: 7px 3px 0px 3px ;
+    }
+
+    .legenditemtext {
+        display: block;
+        overflow: hidden;
+    }
+}
+
+img.legendicon {
+    float: left;
+}
+
+
+@media screen and (max-device-width: 600px) {
+    #maplegend {
+        visibility: hidden;
+    }
+    #maplegend-mobile {
+        display: block;
+    }
+    .map-div {
+        height: 500px;
+    }
+}
+@media screen and (min-device-width: 599px) {
+    #maplegend {
+        display: block;
+    }
+    #maplegend-mobile {
+        visibility: hidden;
+    }
+    .map-div {
+        height: 750px;
+    }
+}
