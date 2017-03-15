@@ -355,6 +355,19 @@ module.exports = function (grunt) {
             update: {
                 version: '<%= package.version %>'
             }
+        },
+        gren: {
+            changelog: {
+                options: {
+                    username: 'ChurchCRM',
+                    repo: 'CRM',
+                    token: '<%= buildConfig.GitHub.token %>',
+                    changelogFilename: 'CHANGELOG.md',
+                    override: true,
+                    action: 'changelog',
+                    timeWrap: 'history'
+                }
+            }
         }
     });
 
@@ -396,26 +409,24 @@ module.exports = function (grunt) {
     grunt.registerMultiTask('updateVersions', 'Update Files to match NPM version', function () {
         var version = this.data.version;
 
-      // php composer
+        // php composer
         var file = 'src/composer.json';
         var curFile = grunt.file.readJSON(file);
-        if (curFile.version !== version)
-        {
-          console.log("updating composer file to: " + version);
-          curFile.version = version;
-          var stringFile = JSON.stringify(curFile, null, 4);
-          grunt.file.write(file, stringFile);
+        if (curFile.version !== version) {
+            console.log("updating composer file to: " + version);
+            curFile.version = version;
+            var stringFile = JSON.stringify(curFile, null, 4);
+            grunt.file.write(file, stringFile);
         }
 
         // db update file
         file = 'src/mysql/upgrade.json';
         curFile = grunt.file.readJSON(file);
-        if (curFile.current.dbVersion !== version)
-        {
-          console.log("updating database upgrade file to: " + version);
-          curFile.current.dbVersion = version;
-          stringFile = JSON.stringify(curFile, null, 4);
-          grunt.file.write(file, stringFile);
+        if (curFile.current.dbVersion !== version) {
+            console.log("updating database upgrade file to: " + version);
+            curFile.current.dbVersion = version;
+            stringFile = JSON.stringify(curFile, null, 4);
+            grunt.file.write(file, stringFile);
         }
 
     });
@@ -427,4 +438,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-curl');
+    grunt.loadNpmTasks('grunt-github-release-notes');
 }
