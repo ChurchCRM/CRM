@@ -85,7 +85,7 @@ class User extends BaseUser
 
     public function isPasswordValid($password)
     {
-        return $this->getPassword() == hashPassword($password);
+        return $this->getPassword() == $this->hashPassword($password);
     }
 
     private function hashPassword($password)
