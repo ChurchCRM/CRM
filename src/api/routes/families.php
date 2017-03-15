@@ -6,7 +6,6 @@ use ChurchCRM\Token;
 use ChurchCRM\Note;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\TokenQuery;
-use ChurchCRM\dto\SystemConfig;
 
 $app->group('/families', function () {
     $this->get('/search/{query}', function ($request, $response, $args) {
@@ -27,10 +26,10 @@ $app->group('/families', function () {
       $envelopeNumber = $args['envelopeNumber'];
       echo $this->FamilyService->getFamilyStringByEnvelope($envelopeNumber);
     });
-  
+
     $this->get('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
       $family = FamilyQuery::create()->findPk($args['familyId']);
-      if ( $family->isPhotoLocal() ) 
+      if ( $family->isPhotoLocal() )
       {
         return $response->write($family->getPhotoBytes());
       }
@@ -39,10 +38,10 @@ $app->group('/families', function () {
         return $response->withStatus(404);
       }
     });
-    
+
     $this->get('/{familyId:[0-9]+}/thumbnail', function($request, $response, $args)  {
       $family = FamilyQuery::create()->findPk($args['familyId']);
-      if ( $family->isPhotoLocal()) 
+      if ( $family->isPhotoLocal())
       {
         return $response->write($family->getThumbnailBytes())->withHeader('Content-type', $family->getPhotoContentType());
       }
@@ -51,7 +50,7 @@ $app->group('/families', function () {
         return $response->withStatus(404);
       }
     });
-  
+
     $this->post('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
       $input = (object)$request->getParsedBody();
       $family = FamilyQuery::create()->findPk($args['familyId']);
@@ -59,7 +58,7 @@ $app->group('/families', function () {
 
       $response->withJSON(array("status"=>"success","upload"=>$upload));
     });
-  
+
     $this->delete('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
      $family = FamilyQuery::create()->findPk($args['familyId']);
      return json_encode(array("status"=>$family->deletePhoto()));
