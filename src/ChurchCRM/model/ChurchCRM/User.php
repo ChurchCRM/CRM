@@ -27,6 +27,14 @@ class User extends BaseUser
         return $this->getPerson()->getFullName();
     }
 
+    public function getEmail() {
+        return $this->getPerson()->getEmail();
+    }
+
+    public function getFullName() {
+        return $this->getPerson()->getFullName();
+    }
+
     public function isAddRecordsEnabled()
     {
         return $this->isAdmin() || $this->isAddRecords();
@@ -74,13 +82,7 @@ class User extends BaseUser
 
     public function updatePassword($password)
     {
-        $this->setPassword(hashPassword($password));
-    }
-
-    public function updatePasswordDefault()
-    {
-        $this->updatePassword(SystemConfig::getValue('sDefault_Pass'));
-        $this->setNeedPasswordChange(true);
+        $this->setPassword($this->hashPassword($password));
     }
 
     public function isPasswordValid($password)
