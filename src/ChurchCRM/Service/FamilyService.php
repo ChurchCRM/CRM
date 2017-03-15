@@ -3,7 +3,9 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\FamilyQuery;
 use Exception;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class FamilyService
 {
@@ -144,4 +146,30 @@ class FamilyService
     $sSQL = 'UPDATE family_fam SET fam_scanCheck="'.$routeAndAccount.'" WHERE fam_ID = '.$iFamily;
         RunQuery($sSQL);
     }
+
+    /**
+     * Function to get all Active families where DateDeactivated field is set to null.
+     * @return \ChurchCRM\Family[]|\Propel\Runtime\Collection\ObjectCollection
+     */
+    public function getActiveFamilies()
+    {
+        return FamilyQuery::create()
+            ->filterByDateDeactivated(null)
+            ->orderByName()
+            ->find();
+
+    }
+    /**
+     * Function to get all deactivated families where DateDeactivated field is set to not null.
+     * @return string
+     */
+    public function getDeactivatedFamilies()
+    {
+        return FamilyQuery::create()
+            ->filterByDateDeactivated(null,Criteria::ISNOTNULL)
+            ->orderByName()
+            ->find();
+
+    }
+
 }

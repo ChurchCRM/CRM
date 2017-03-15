@@ -169,7 +169,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
     $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID']))); ?>
 <script>
-    var familyId = <?= $fam_ID ?>;
+    window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
  <?php if (!empty($fam_DateDeactivated)) {
@@ -1005,7 +1005,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
     <script>
-        window.CRM.currentFamily = <?= $iFamilyID ?>;
         window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
         var dataT = 0;
         $(document).ready(function() {
@@ -1043,7 +1042,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             $("#deletePhoto").click (function () {
               $.ajax({
               type: "POST",
-              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
               encode: true,
               dataType: 'json',
               data: {
@@ -1055,7 +1054,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             });
 
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-              url: window.CRM.root + "/api/families/" + familyId + "/photo",
+              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
               maxPhotoSize: window.CRM.maxUploadSize,
               photoHeight: 400,
               photoWidth: 400,
@@ -1065,14 +1064,14 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             });
 
 
-        contentExists(window.CRM.root + "/api/families/" + familyId + "/photo", function(success) {
+        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
 
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Family Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + familyId + '/photo" />',
+                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
                         backdrop: true
                     });
                 });
