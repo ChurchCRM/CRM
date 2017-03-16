@@ -106,7 +106,7 @@ class SystemService
         $backup->backupRoot = SystemURLs::getDocumentRoot() . "/tmp_attach";
         $backup->backupDir = $backup->backupRoot."/ChurchCRMBackups";
         FileSystemUtils::recursiveRemoveDirectory($backup->backupRoot,true);
-        mkdir($backup->backupDir,0644,true);
+        mkdir($backup->backupDir,0750,true);
         $backup->headers = [];
         $backup->params = $params;
         $backup->saveTo = "$backup->backupDir/ChurchCRM-" . date(SystemConfig::getValue("sDateFilenameFormat"));
