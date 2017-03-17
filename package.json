@@ -28,7 +28,7 @@
         "grunt-contrib-rename": "0.0.3",
         "node-sha1": "1.0.1",
         "grunt-poeditor-ab": "0.1.9",
-        "grunt-github-release-notes": "0.5.0"
+        "grunt-github-release-notes": "0.6.0"
     },
     "dependencies": {
         "admin-lte": "2.3.7",
@@ -46,7 +46,7 @@
         "locale-download": "grunt updateFromPOeditor",
         "package": "grunt generateSignatures && grunt compress",
         "demosite": "scripts/demosite.sh",
-        "changelog-gen": "grunt gren:changelog",
+        "changelog-gen": "rm -rf CHANGELOG.md && grunt gren:changelog",
         "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "composer-install": "cd src/ && composer install",
         "composer-update": " cd src/ && composer update",

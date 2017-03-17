@@ -366,7 +366,7 @@ module.exports = function (grunt) {
                     timeWrap: 'history',
                     dataSource: 'issues',
                     ignoreIssuesWith: ['wontfix','duplicate','norepro'],
-                    override: 'true'
+                    override: true
                 }
             }
         }
