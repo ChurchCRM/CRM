@@ -109,9 +109,10 @@
     "current": {
         "versions": [
             "2.6.0",
-            "2.6.1"
+            "2.6.1",
+            "2.6.2"
         ],
         "scripts": [],
-        "dbVersion": "2.6.2"
+        "dbVersion": "2.6.3"
     }
 }
