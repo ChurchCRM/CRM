@@ -363,7 +363,6 @@ module.exports = function (grunt) {
                     username: 'ChurchCRM',
                     repo: 'CRM',
                     token: '<%= buildConfig.GitHub.token %>',
-                    timeWrap: 'history',
                     dataSource: 'issues',
                     ignoreIssuesWith: ['wontfix','duplicate','norepro'],
                     override: true
