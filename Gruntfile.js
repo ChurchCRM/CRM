@@ -364,8 +364,7 @@ module.exports = function (grunt) {
                     repo: 'CRM',
                     token: '<%= buildConfig.GitHub.token %>',
                     dataSource: 'issues',
-                    ignoreIssuesWith: ['wontfix','duplicate','norepro'],
-                    override: true
+                    ignoreIssuesWith: ['wontfix','duplicate','norepro']
                 }
             }
         }
