@@ -106,7 +106,7 @@ class SystemService
         $backup->backupRoot = SystemURLs::getDocumentRoot() . "/tmp_attach";
         $backup->backupDir = $backup->backupRoot."/ChurchCRMBackups";
         FileSystemUtils::recursiveRemoveDirectory($backup->backupRoot,true);
-        mkdir($backup->backupDir,077,true);
+        mkdir($backup->backupDir,0750,true);
         $backup->headers = [];
         $backup->params = $params;
         $backup->saveTo = "$backup->backupDir/ChurchCRM-" . date(SystemConfig::getValue("sDateFilenameFormat"));
@@ -116,7 +116,7 @@ class SystemService
             $dump = new Mysqldump('mysql:host=' . $sSERVERNAME . ';dbname=' . $sDATABASE, $sUSER, $sPASSWORD, ['add-drop-table' => true]);
             $dump->start($backup->SQLFile);
         } catch (\Exception $e) {
-            //echo 'mysqldump-php error: ' . $e->getMessage();
+           throw new Exception("Unable to create backup archive at ". $backup->SQLFile,500);
         }
 
         switch ($params->iArchiveType) {
