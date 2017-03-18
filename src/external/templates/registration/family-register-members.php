@@ -1,5 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Registration");
@@ -35,11 +36,22 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                     <div class="row">
                       <div class="col-lg-8">
                         <select name="memberRole-<?= $x ?>" class="form-control">
-                          <?php foreach ($familyRoles as $role) {
-        ?>
-                            <option value="<?= $role->getOptionId() ?>"><?= $role->getOptionName() ?></option>
                           <?php
-    } ?>
+                          switch ($x) {
+                              case 1:
+                                  $defaultRole = SystemConfig::getValue('sDirRoleHead');
+                                  break;
+                              case 2:
+                                  $defaultRole = SystemConfig::getValue('sDirRoleSpouse');
+                                  break;
+                              default:
+                                  $defaultRole = SystemConfig::getValue('sDirRoleChild');
+                                  break;
+                          }
+
+                          foreach ($familyRoles as $role) { ?>
+                            <option value="<?= $role->getOptionId() ?>" <?php if ( $role->getOptionId() == $defaultRole) { echo "selected"; } ?>><?= $role->getOptionName() ?></option>
+                          <?php } ?>
                         </select>
                       </div>
                       <div class="col-lg-4">
@@ -87,7 +99,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                       </div>
                       <div class="col-lg-8">
                         <div class="input-group">
-                          <input name="memberPhone-<?= $x ?>" class="form-control" maxlength="30"
+                          <input name="memberPhone-<?= $x ?>" class="form-control" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask
                                  placeholder="<?= gettext('Phone') ?>">
                         </div>
                       </div>
@@ -100,7 +112,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                           <div class="input-group-addon">
                             <i class="fa fa-birthday-cake"></i>
                           </div>
-                          <input type="text" class="form-control" name="memberBirthday-<?= $x ?>">
+                          <input type="text" class="form-control inputDatePicker" name="memberBirthday-<?= $x ?>">
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -128,6 +140,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       $(".inputDatePicker").datepicker({
         autoclose: true
       });
+        $("[data-mask]").inputmask();
     });
   </script>
 <?php

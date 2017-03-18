@@ -553,21 +553,23 @@ $eventStart = $sEventStartDate.' '.$iEventStartHour.':'.$iEventStartMins;
 $eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
 ?>
 <script>
-  var startDate = moment("<?= $eventStart?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
-  var endDate = moment("<?= $eventEnd?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
-  $('#EventDateRange').val(startDate + " - "+ endDate);
-  $('#EventDateRange').daterangepicker({
-    timePicker: true,
-    timePickerIncrement: 30,
-    linkedCalendars: true,
-    showDropdowns: true,
-    locale: {
-      format: 'YYYY-MM-DD h:mm A'
-    },
-    minDate: 1/1/1900,
-    startDate: startDate,
-    endDate: endDate
-  });
+    $( document ).ready(function() {
+        var startDate = moment("<?= $eventStart?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
+        var endDate = moment("<?= $eventEnd?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
+        $('#EventDateRange').val(startDate + " - " + endDate);
+        $('#EventDateRange').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            linkedCalendars: true,
+            showDropdowns: true,
+            locale: {
+                format: 'YYYY-MM-DD h:mm A'
+            },
+            minDate: 1 / 1 / 1900,
+            startDate: startDate,
+            endDate: endDate
+        });
+    });
 </script>
 
 <?php require 'Include/Footer.php' ?>
