@@ -51,7 +51,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
               <input name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" required>
             </div>
             <div class="col-lg-9">
-                <select id="familyCountry" class="form-control select2">
+                <select id="familyCountry" name="familyCountry" class="form-control select2">
                     <?php foreach (Countries::getNames() as $county) {
     ?>
                     <option value="<?= $county ?>" <?php if (SystemConfig::getValue('sDefaultCountry') == $county) {
@@ -65,7 +65,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
           </div>
         </div>
         <div class="form-group has-feedback">
-          <input name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home Phone') ?>">
+          <input name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home Phone') ?>" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask>
           <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
@@ -105,6 +105,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     <script type="text/javascript">
         $(document).ready(function() {
             $("#familyCountry").select2();
+            $("[data-mask]").inputmask();
         });
     </script>
 <?php
