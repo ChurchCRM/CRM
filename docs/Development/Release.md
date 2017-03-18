@@ -49,7 +49,7 @@
     git clean -xdf
     ```
 
-## 2. Build ChurchCRM
+## 2. Review Locales
 
   1. Start the vagrant box to build all prerequisites.  When build is complete, log into the box on SSH and cd to /vagrant
 
@@ -82,28 +82,12 @@
     3. Push the branch to GitHub
     4. Merge the branch to Master.  Note the commit hash - we'll want to compare this against the demosite later.
 
-  5. After checking in translation updates, run the NPM build script
-
-    ```
-    npm run package
-    ```
-
-    This will run the following actions:
-      * Generate code signatures
-      * Build zip package
-
 ## 3. Test the build!
    
   This testing should be done to ensure there are no last-minute "showstopper" bugs or a bad build
+  
+  1. Test Build on Master http://demo.churchcrm.com/master  
     
-  1. Update the demosite using 
-
-    ```
-    npm run demosite
-    ```
-    
-    The Demosite push key will be required.  Feel free to kick the tires on the demo site at this point one last time.  The commit hash on the demo site landing page should match the commit hash from step 4.4
-
   2. Test the zip file in the vagrant QA environment:
     
     1. After creating the release zip archive, copy it to /vagrant-qa
@@ -126,18 +110,17 @@
 
       3.  Attempt to log into the vagrant-qa box.  The in-place upgrade routines should upgrade the database.
 
-  3. Test the release package on your own testing server
-
-
 
 ## 5.  Create a GitHub release/tag
 
   https://github.com/ChurchCRM/CRM/releases
 
   * Ensure you select the correct branch, and that the current commit hash matches the commit you created in step 4.4
-  * Enter version # as the tag and subject 
+  * Enter version # subject
+  * Select tag as commit 
   * Point to the change log 
-  * Upload zip file
+  * download zip from http://demo.churchcrm.io master list
+  * Upload zip file 
   * Save the release as pre-release
 
 ## 6. Update release notes and version number
@@ -145,6 +128,7 @@
   After the tag has been created, update the change log and version number
 
   ```
+  npm run changelog-gen
   npm run rev-build
   ```
 
