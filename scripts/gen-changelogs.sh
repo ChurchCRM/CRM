@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-currentBranch=`git rev-parse --abbrev-ref HEAD`
-hasGem=`gem list github_changelog_generator -i`
 githubToken=$1
 
 if [ -z ${githubToken} ]; then
@@ -8,15 +6,7 @@ if [ -z ${githubToken} ]; then
     read githubToken
 fi
 
-if  [ "${hasGem}" == "false" ]; then
-    echo "********** Installing missing gem: Started"
-    gem install multi_json github_changelog_generator
-    echo "********** Installing missing gem: Done"
-fi
+sudo npm install github-release-notes -g
 
-echo "**************************************"
-echo "Generating Change-Log for  Branch: $currentBranch"
-echo "**************************************"
-github_changelog_generator -t ${githubToken}
-echo "**************************************"
+gren --username=ChurchCRM --repo=CRM --action=changelog --override=true --time-wrap=history --ignore-issues-with=wontfix,duplicate,norepro --token=${githubToken}
 
