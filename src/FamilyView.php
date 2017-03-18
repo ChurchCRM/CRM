@@ -31,7 +31,6 @@ require "Include/GeoCoder.php";
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 
@@ -170,7 +169,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
     $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID']))); ?>
 <script>
-    var familyId = <?= $fam_ID ?>;
+    window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
  <?php if (!empty($fam_DateDeactivated)) {
@@ -186,7 +185,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
       <div class="box box-primary">
         <div class="box-body">
             <div class="image-container">
-                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" 
+                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
                 data-name="<?= $family->getName()?>" alt="" class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
                 <?php if ($bOkToEdit): ?>
                     <div class="after">
@@ -912,7 +911,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
   <!-- Modal -->
   <div id="photoUploader"></div>
-  
   <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
        aria-hidden="true">
     <div class="modal-dialog">
@@ -971,7 +969,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
-                <?php 
+                <?php
+
     } ?>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
@@ -1005,7 +1004,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
     <script>
-        window.CRM.currentFamily = <?= $iFamilyID ?>;
         window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
         var dataT = 0;
         $(document).ready(function() {
@@ -1043,7 +1041,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             $("#deletePhoto").click (function () {
               $.ajax({
               type: "POST",
-              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
               encode: true,
               dataType: 'json',
               data: {
@@ -1055,7 +1053,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             });
 
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-              url: window.CRM.root + "/api/families/" + familyId + "/photo",
+              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
               maxPhotoSize: window.CRM.maxUploadSize,
               photoHeight: 400,
               photoWidth: 400,
@@ -1063,16 +1061,31 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 location.reload();
               }
             });
-            
+
 
         contentExists(window.CRM.root + "/api/families/" + familyId + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
-                
+
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Family Photo') ?>",
                         message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + familyId + '/photo" />',
+                        backdrop: true
+                    });
+                });
+            }
+        });
+
+
+        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
+            if (success) {
+                $("#view-larger-image-btn").removeClass('hide');
+
+                $("#view-larger-image-btn").click(function() {
+                    bootbox.alert({
+                        title: "<?= gettext('Family Photo') ?>",
+                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
                         backdrop: true
                     });
                 });

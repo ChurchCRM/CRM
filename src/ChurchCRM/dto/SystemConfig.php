@@ -161,8 +161,9 @@ class SystemConfig
         "googleTrackingID" => new ConfigItem(1050, "googleTrackingID", "text", "", gettext("Google Analytics Tracking Code")),
         "mailChimpApiKey" => new ConfigItem(2000, "mailChimpApiKey", "text", "", gettext("see http://kb.mailchimp.com/accounts/management/about-api-keys")),
         "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), '{"Choices":["QBDT"]}'),
-        "bAllowEmptyLastName" => new ConfigItem(2010, "bAllowEmptyLastName", "boolean", "0", gettext("Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."))
-    );
+        "bAllowEmptyLastName" => new ConfigItem(2010, "bAllowEmptyLastName", "boolean", "0", gettext("Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.")),
+        "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip"))
+      );
   }
 
   private static function buildCategories()
@@ -176,7 +177,7 @@ class SystemConfig
       gettext('Map Settings')  => ["sGoogleMapKey","bUseGoogleGeocode","sGMapIcons","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
-      gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
+      gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('Other Settings')  => ["iPDFOutputType","googleTrackingID"]
     );
   }

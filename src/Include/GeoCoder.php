@@ -171,6 +171,7 @@ class AddressLatLon
     public $street;
     public $city;
     public $state;
+    public $country;
     public $zip;
 
     public $lat;
@@ -209,11 +210,12 @@ class AddressLatLon
         }
     }
 
-    public function SetAddress($newStreet, $newCity, $newState, $newZip)
+    public function SetAddress($newStreet, $newCity, $newState, $newZip, $newCountry)
     {
         $this->street = $newStreet;
         $this->city = $newCity;
         $this->state = $newState;
+        $this->country = $newCountry;
         $this->zip = $newZip;
     }
 
@@ -222,7 +224,7 @@ class AddressLatLon
         global $bHaveXML;
         global $googleMapObj;
 
-        $address = $this->street.','.$this->city.','.$this->state.','.$this->zip;
+        $address = $this->street.','.$this->city.','.$this->state.',' .$this->zip . ',' . $this->country;
 
         if (SystemConfig::getValue('bUseGoogleGeocode')) {
             //$geocode = $googleMapObj->geoGetCoords($address);

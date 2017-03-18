@@ -52,6 +52,20 @@ $("document").ready(function(){
 
     $(".initials-image").initial();
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
+
+
+    $("#emptyCart").click(function (e) {
+            $.ajax({
+                method: "DELETE",
+                url: window.CRM.root + "/api/cart/",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).done(function (data) {
+                $('#iconCount').text('0');
+            });
+
+    });
+
 });
 
 function showGlobalMessage(message, callOutClass) {

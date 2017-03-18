@@ -147,6 +147,7 @@ class Deposit extends BaseDeposit
             $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
             $thisReport->curY += 4;
         }
+
     }
 
     private function generateQBDepositSlip($thisReport)
@@ -203,14 +204,18 @@ class Deposit extends BaseDeposit
 
         $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x;
         $thisReport->curY += 2 * $thisReport->QBDepositTicketParameters->lineItemInterval->y;
-        $this->generateCashDenominations($thisReport);
+
+        if (SystemConfig::getBooleanValue('bDisplayBillCounts')) {
+            $this->generateCashDenominations($thisReport);
+        }
+
         $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x + 125;
 
         $this->generateTotalsByCurrencyType($thisReport);
         $thisReport->curX = $thisReport->QBDepositTicketParameters->date1->x + 125;
         $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY + 30;
         $this->generateTotalsByFund($thisReport);
-        
+
         $thisReport->curY += $thisReport->QBDepositTicketParameters->lineItemInterval->y;
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->SetFont('Times', 'B', 10);
@@ -235,7 +240,6 @@ class Deposit extends BaseDeposit
         $thisReport->depositSummaryParameters->summary->MemoX = 120;
         $thisReport->depositSummaryParameters->summary->AmountX = 185;
         $thisReport->depositSummaryParameters->aggregateX = 135;
-        $thisReport->depositSummaryParameters->displayBillCounts = false;
 
         $thisReport->pdf->AddPage();
         $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->date->x, $thisReport->depositSummaryParameters->date->y);
@@ -332,18 +336,21 @@ class Deposit extends BaseDeposit
 
         $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
         $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
+        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
-    // Now print deposit totals by fund
-    $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
-        if ($thisReport->depositSummaryParameters->displayBillCounts) {
+        // Now print deposit totals by fund
+        $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
+        if (SystemConfig::getBooleanValue('bDisplayBillCounts')) {
             $this->generateCashDenominations($thisReport);
         }
+
+        // Now print deposit totals by fund
         $thisReport->curX = $thisReport->depositSummaryParameters->aggregateX;
         $this->generateTotalsByFund($thisReport);
+        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
-        $thisReport->curY += $thisReport->summaryIntervalY;
         $this->generateTotalsByCurrencyType($thisReport);
-        $thisReport->curY += $thisReport->summaryIntervalY * 2;
+        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
         $thisReport->curY += 130;
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
@@ -462,7 +469,7 @@ class Deposit extends BaseDeposit
       ->orderBy(DonationFundTableMap::COL_FUN_NAME)
       ->select(['Name', 'Total'])
       ->find();
-        
+
         return $funds;
     }
 

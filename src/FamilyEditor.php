@@ -128,7 +128,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 //	if ($bHaveXML) {
     // Try to get Lat/Lon based on the address
         $myAddressLatLon = new AddressLatLon();
-    $myAddressLatLon->SetAddress($sAddress1, $sCity, $sState, $sZip);
+    $myAddressLatLon->SetAddress($sAddress1, $sCity, $sState, $sZip, $sCountry);
     $ret = $myAddressLatLon->Lookup();
     if ($ret == 0) {
         $nLatitude = $myAddressLatLon->GetLat();
