@@ -65,7 +65,7 @@ require 'Include/Header.php';
                         <?php if ($user->getId() != $_SESSION['user']->getId()) {
     ?>
                         <a onclick="deleteUser(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                        <?php 
+                        <?php
 } ?>
                     </td>
                     <td><a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a></td>
@@ -75,14 +75,14 @@ require 'Include/Header.php';
                         <?php if ($user->isLocked()) {
     ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
-                        <?php 
+                        <?php
 } else {
     echo $user->getFailedLogins();
 }
     if ($user->getFailedLogins()> 0) {
         ?>
                             <a onclick="restUserLoginCount(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-eraser" aria-hidden="true"></i></a>
-                        <?php 
+                        <?php
     } ?>
                     </td>
                     <td>
@@ -90,12 +90,12 @@ require 'Include/Header.php';
                         <?php if ($user->getId() != $_SESSION['user']->getId()) {
         ?>
                             <a onclick="resetUserPassword(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-send-o" aria-hidden="true"></i></a>
-                        <?php 
+                        <?php
     } ?>
                     </td>
 
                 </tr>
-            <?php 
+            <?php
 } ?>
             </tbody>
         </table>
@@ -170,7 +170,7 @@ require 'Include/Header.php';
                         encode: true,
                     }).done(function (data) {
                         if (data.status == "success")
-                            window.location.href = window.CRM.root + "/UserList.php";
+                            showGlobalMessage('<?= gettext("Password reset for") ?> ' + userName, "success");
                     });
                 }
             }
