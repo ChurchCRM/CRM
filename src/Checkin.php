@@ -32,7 +32,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 
-
 $EventID = 0;
 $CheckoutOrDelete = false;
 $event = null;
@@ -47,10 +46,10 @@ if (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn'])) {
     $CheckoutOrDelete =  true;
 }
 
-if(isset($_POST['child-id'])) {
+if (isset($_POST['child-id'])) {
     $iChildID = FilterInput($_POST['child-id'], 'int');
 }
-if(isset($_POST['adult-id'])) {
+if (isset($_POST['adult-id'])) {
     $iAdultID = FilterInput($_POST['adult-id'], 'int');
 }
 
@@ -63,7 +62,7 @@ $activeEvents = EventQuery::Create()
     ->filterByInActive(1, Criteria::NOT_EQUAL)
     ->find();
 
-if($EventID > 0) {
+if ($EventID > 0) {
     //get Event Details
     $event = EventQuery::Create()
         ->findOneById($EventID);
@@ -94,13 +93,13 @@ if($EventID > 0) {
                                     <option value="<?= $EventID; ?>"
                                             disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?> ><?= gettext('Select event') ?></option>
                                     <?php foreach ($activeEvents as $event) {
-                                        ?>
+    ?>
                                         <option
                                             value="<?= $event->getId(); ?>" <?= ($EventID == $event->getId()) ? " Selected='selected'" : "" ?> >
                                             <?= $event->getTitle(); ?></option>
                                         <?php
 
-                                    }
+}
                                     ?>
                                 </select>
                             </div>
@@ -185,24 +184,24 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
     </form> <!-- end AddAttendees form -->
 
     <?php
+
 }
 
 // Checkin/Checkout Section update db
 if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['CheckIn']) || isset($_POST['CheckOut']) || isset($_POST['Delete']))) {
     //Fields -> event_id, person_id, checkin_date, checkin_id, checkout_date, checkout_id
-    if (isset($_POST['CheckIn']) && $iChildID > 0 ) {
-
+    if (isset($_POST['CheckIn']) && $iChildID > 0) {
         $attendee = EventAttendQuery::create()
             ->filterByEventId($EventID)
             ->findOneByPersonId($iChildID);
-        if($attendee)
-        { ?>
+        if ($attendee) {
+            ?>
             <script>
                 $('#errorcallout').text('<?= gettext("Person has been already checked in for this event") ?>').fadeIn();
             </script>
             <?php
-        } else {
 
+        } else {
             $attendee = new EventAttend();
             $attendee->setEventId($EventID);
             $attendee->setPersonId($iChildID);
@@ -234,7 +233,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
             ->filterByEventId($EventID)
             ->findOneByPersonId($iChildID)
             ->delete();
-
     }
 }
 
@@ -244,7 +242,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
 if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
     (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn']))
 ) {
-
     $iChildID = FilterInput($_POST['child-id'], 'int');
 
     $formTitle = (isset($_POST['CheckOutBtn']) ? gettext("CheckOut Person") : gettext("Delete Checkin in Entry")); ?>
@@ -293,7 +290,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                 </div>
                                 <?php
 
-                            } else { // DeleteBtn ?>
+                            } else { // DeleteBtn?>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-danger"
                                            value="<?= gettext('Delete') ?>" name="Delete">
@@ -301,6 +298,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                            name="DeleteCancel">
                                 </div>
                                 <?php
+
                             } ?>
                         </div>
                     </div>
@@ -309,6 +307,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
         </div>
     </form>
     <?php
+
 }
 //End checkout
 //**********************************************************************************************************
@@ -337,31 +336,28 @@ if (isset($_POST['EventID'])) {
                     ->filterByEventId($EventID)
                     ->find();
 
-                foreach ($eventAttendees as $per) {
-                    //Get Person who is checked in
+    foreach ($eventAttendees as $per) {
+        //Get Person who is checked in
                     $checkedInPerson = PersonQuery::create()
                         ->findOneById($per->getPersonId());
 
-                    $sPerson = $checkedInPerson->getFullName();
+        $sPerson = $checkedInPerson->getFullName();
 
                     //Get Person who checked person in
                     $sCheckinby = "";
-                    if ($per->getCheckinId()) {
-                        $checkedInBy = PersonQuery::create()
+        if ($per->getCheckinId()) {
+            $checkedInBy = PersonQuery::create()
                             ->findOneById($per->getCheckinId());
-                        $sCheckinby = $checkedInBy->getFullName();
-                    }
+            $sCheckinby = $checkedInBy->getFullName();
+        }
 
                     //Get Person who checked person out
                     $sCheckoutby = "";
-                    if ($per->getCheckoutId()) {
-                        $checkedOutBy = PersonQuery::create()
+        if ($per->getCheckoutId()) {
+            $checkedOutBy = PersonQuery::create()
                             ->findOneById($per->getCheckoutId());
-                        $sCheckoutby = $checkedOutBy->getFullName();
-
-                    }
-
-                    ?>
+            $sCheckoutby = $checkedOutBy->getFullName();
+        } ?>
                     <tr>
                         <td><img data-name="<?= $sPerson; ?>"
                                  data-src="<?= SystemURLs::getRootPath() . '/api/persons/' . $per->getPersonId() . '/thumbnail' ?>"
@@ -377,7 +373,8 @@ if (isset($_POST['EventID'])) {
                                 <input type="hidden" name="child-id" value="<?= $per->getPersonId() ?>">
                                 <input type="hidden" name="EventID" value="<?= $EventID ?>">
                                 <?php
-                                if (!$per->getCheckoutDate()) { ?>
+                                if (!$per->getCheckoutDate()) {
+                                    ?>
                                     <input class="btn btn-primary btn-sm" type="submit" name="CheckOutBtn"
                                            value="<?= gettext('CheckOut') ?>">
                                     <input class="btn btn-danger btn-xs" type="submit" name="DeleteBtn"
@@ -385,16 +382,18 @@ if (isset($_POST['EventID'])) {
 
                                     <?php
 
-                                } else { ?>
+                                } else {
+                                    ?>
                                     <i class="fa fa-check-circle"></i>
                                     <?php
+
                                 } ?>
                             </form>
                         </td>
                     </tr>
                     <?php
 
-                } ?>
+    } ?>
                 </tbody>
             </table>
         </div>
@@ -477,13 +476,13 @@ if (isset($_POST['EventID'])) {
 
 function loadPerson($iPersonID)
 {
-   if ($iPersonID == 0) {
+    if ($iPersonID == 0) {
         echo "";
     }
     $person = PersonQuery::create()
         ->findOneById($iPersonID);
     $familyRole="(";
-    if($person->getFamId()) {
+    if ($person->getFamId()) {
         if ($person->getFamilyRole()) {
             $familyRole .= $person->getFamilyRoleName();
         } else {
@@ -502,6 +501,5 @@ function loadPerson($iPersonID)
         '<img data-name="' . $person->getFullName() . '" data-src="' . SystemURLs::getRootPath() . '/api/persons/' . $iPersonID . '/thumbnail" ' .
         'class="initials-image profile-user-img img-responsive img-circle"> </div>';
     echo $html;
-
 }
 ?>
