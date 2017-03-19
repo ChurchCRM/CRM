@@ -147,6 +147,7 @@ class Deposit extends BaseDeposit
             $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
             $thisReport->curY += 4;
         }
+
     }
 
     private function generateQBDepositSlip($thisReport)
@@ -335,18 +336,21 @@ class Deposit extends BaseDeposit
 
         $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
         $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
+        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
         // Now print deposit totals by fund
         $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
         if (SystemConfig::getBooleanValue('bDisplayBillCounts')) {
             $this->generateCashDenominations($thisReport);
         }
+
+        // Now print deposit totals by fund
         $thisReport->curX = $thisReport->depositSummaryParameters->aggregateX;
         $this->generateTotalsByFund($thisReport);
+        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
-        $thisReport->curY += $thisReport->summaryIntervalY;
         $this->generateTotalsByCurrencyType($thisReport);
-        $thisReport->curY += $thisReport->summaryIntervalY * 2;
+        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
         $thisReport->curY += 130;
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;

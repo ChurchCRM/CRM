@@ -109,7 +109,8 @@
     "current": {
         "versions": [
           "2.6.0",
-          "2.6.1"
+          "2.6.1",
+          "2.6.2"
         ],
         "scripts":[
             "/mysql/upgrade/2.7.0-groups.sql",

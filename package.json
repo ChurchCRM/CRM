@@ -46,7 +46,7 @@
         "locale-download": "grunt updateFromPOeditor",
         "package": "grunt generateSignatures && grunt compress",
         "demosite": "scripts/demosite.sh",
-        "changelogs": "scripts/gen-changelogs.sh",
+        "changelog-gen": "scripts/gen-changelogs.sh",
         "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "composer-install": "cd src/ && composer install",
         "composer-update": " cd src/ && composer update",
