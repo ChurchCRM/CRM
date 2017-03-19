@@ -90,7 +90,7 @@ class User extends BaseUser
         return $this->getPassword() == $this->hashPassword($password);
     }
 
-    private function hashPassword($password)
+    public function hashPassword($password)
     {
         return hash('sha256', $password . $this->getPersonId());
     }
