@@ -28,7 +28,9 @@ require 'Include/Config.php';
 $bNoPasswordRedirect = true; // Subdue UserPasswordChange redirect to prevent looping
 require 'Include/Functions.php';
 
+use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Emails\PasswordChangeEmail;
 
 $bAdminOtherUser = false;
 $bAdminOther = false;
@@ -72,15 +74,15 @@ if (isset($_POST['Submit'])) {
             $bError = true;
         } else {
             // Update the user record with the password hash
-            $tmp = $sNewPassword1.$iPersonID;
-            $sPasswordHashSha256 = hash('sha256', $tmp);
+            $curUser = UserQuery::create()->findPk($iPersonID);
+            $curUser->updatePassword($sNewPassword1);
+            $curUser->save();
 
-            $sSQL = 'UPDATE user_usr SET'.
-                    " usr_Password='".$sPasswordHashSha256."',".
-                    " usr_NeedPasswordChange='0' ".
-                    "WHERE usr_per_ID ='".$iPersonID."'";
+            // Set the session variable so they don't get sent back here
+            $_SESSION['bNeedPasswordChange'] = false;
 
-            RunQuery($sSQL);
+            $email = new PasswordChangeEmail($curUser);
+            $email->send();
 
             // Route back to the list
             if (array_key_exists('FromUserList', $_GET) and $_GET['FromUserList'] == 'True') {
@@ -93,28 +95,15 @@ if (isset($_POST['Submit'])) {
 
     // Otherwise, a user must know their own existing password to change it.
     else {
-        // Get the data on this user so we can confirm the old password
-        $sSQL = 'SELECT * FROM user_usr, person_per '.
-                'WHERE per_ID = usr_per_ID AND usr_per_ID = '.$iPersonID;
-        extract(mysqli_fetch_array(RunQuery($sSQL)));
+        $curUser = UserQuery::create()->findPk($iPersonID);
 
         // Build the array of bad passwords
         $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('sDisallowedPasswords')));
-        $aBadPasswords[] = strtolower($per_FirstName);
-        $aBadPasswords[] = strtolower($per_MiddleName);
-        $aBadPasswords[] = strtolower($per_LastName);
+        $aBadPasswords[] = strtolower($curUser->getPerson()->getFirstName());
+        $aBadPasswords[] = strtolower($curUser->getPerson()->getMiddleName());
+        $aBadPasswords[] = strtolower($curUser->getPerson()->getLastName());
 
-        // Note that there are several possible encodings for the password in the database
-        $tmp = $sOldPassword;
-        $sPasswordHashMd5 = md5($tmp);
-
-        $tmp = $sOldPassword.$usr_per_ID;
-        $sPasswordHash40 = sha1(sha1($tmp).$tmp);
-
-        $tmp = $sOldPassword.$usr_per_ID;
-        $sPasswordHashSha256 = hash('sha256', $tmp);
-
-        $bPasswordMatch = ($usr_Password == $sPasswordHashMd5 || $usr_Password == $sPasswordHash40 || $usr_Password == $sPasswordHashSha256);
+        $bPasswordMatch = $curUser->isPasswordValid($sOldPassword);
 
         // Does the old password match?
         if (!$bPasswordMatch) {
@@ -158,17 +147,14 @@ if (isset($_POST['Submit'])) {
         // If no errors, update
         if (!$bError) {
             // Update the user record with the password hash
-            $tmp = $sNewPassword1.$usr_per_ID;
-            $sPasswordHashSha256 = hash('sha256', $tmp);
-
-            $sSQL = 'UPDATE user_usr SET'.
-                    " usr_Password='".$sPasswordHashSha256."',".
-                    " usr_NeedPasswordChange='0' ".
-                    "WHERE usr_per_ID ='".$iPersonID."'";
-            RunQuery($sSQL);
+            $curUser->updatePassword($sNewPassword1);
+            $curUser->save();
 
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
+
+            $email = new PasswordChangeEmail($curUser);
+            $email->send();
 
             // Route back to the list
             if ($_GET['FromUserList'] == 'True') {
@@ -196,7 +182,7 @@ if ($_SESSION['bNeedPasswordChange']) {
         <h4><i class="icon fa fa-ban"></i> Alert!</h4>
         <?= gettext('Your account record indicates that you need to change your password before proceding.') ?>
         </div>
-<?php 
+<?php
 } ?>
 
 <div class="row">
@@ -222,10 +208,10 @@ if ($_SESSION['bNeedPasswordChange']) {
                         <label for="OldPassword"><?= gettext('Old Password') ?>:</label>
                         <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?= $sOldPassword ?>" autofocus><?= $sOldPasswordError ?>
                     </div>
-                    <?php 
+                    <?php
                 } ?>
                     <div class="form-group">
-                        <label for="NewPassword1"><?= gettext('New Password') ?>:</label>
+                            <label for="NewPassword1"><?= gettext('New Password') ?>:</label>
                         <input type="password" name="NewPassword1" id="NewPassword1" class="form-control" value="<?= $sNewPassword1 ?>">
                     </div>
                     <div class="form-group">
