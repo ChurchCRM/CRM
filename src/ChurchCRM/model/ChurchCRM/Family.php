@@ -267,21 +267,6 @@ class Family extends BaseFamily implements iPhoto
     public function getPhotoContentType() {
       return $this->getPhoto()->getPhotoContentType();
     }
-    
-    public function verify()
-    {
-      $note = new Note();
-      $note->setFamId($this->getId());
-      $note->setText(gettext('Family Data Verified'));
-      $note->setType('verify');
-      $note->setEntered($_SESSION['iUserID']);
-      $note->save();
-    }
-    
-    public function getFamilyString()
-    {
-      return $this->getName(). " " . $this->getAddress();
-    }
 
     public function verify()
     {
