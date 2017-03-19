@@ -193,7 +193,7 @@ require '../Include/Header.php';
   </div>
   <!-- /.box-header -->
   <div class="box-body table-responsive">
-    <h4 class="birthday-filter" style="display:none;">Showing students with birthdays in <span class="month"></span> <i style="cursor:pointer; color:red;" class="icon fa fa-close"></i></h4>
+    <h4 class="birthday-filter" style="display:none;"><?= gettext('Showing students with birthdays in') ?><span class="month"></span> <i style="cursor:pointer; color:red;" class="icon fa fa-close"></i></h4>
     <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>
