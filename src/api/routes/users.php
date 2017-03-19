@@ -3,7 +3,8 @@
 // Users APIs
 use ChurchCRM\UserQuery;
 use ChurchCRM\UserConfigQuery;
-use ChurchCRM\Emails\NewPasswordEmail;
+use ChurchCRM\Emails\ResetPasswordEmail;
+use ChurchCRM\Emails\UnlockedEmail;
 use ChurchCRM\dto\SystemConfig;
 
 $app->group('/users', function () {
@@ -18,7 +19,7 @@ $app->group('/users', function () {
             $user->updatePassword($password);
             $user->setNeedPasswordChange(true);;
             $user->save();
-            $email = new NewPasswordEmail($user, $password);
+            $email = new ResetPasswordEmail($user, $password);
             if ($email->send()) {
                 return $response->withStatus(200)->withJson(['status' => "success"]);
             } else {
@@ -37,7 +38,12 @@ $app->group('/users', function () {
         if (!is_null($user)) {
             $user->setFailedLogins(0);
             $user->save();
-            return $response->withStatus(200)->withJson(['status' => "success"]);
+            $email = new UnlockedEmail($user);
+            if ($email->send()) {
+                return $response->withStatus(200)->withJson(['status' => "success"]);
+            } else {
+                return $response->withStatus(404)->getBody()->write($email->getError());
+            }
         } else {
             return $response->withStatus(404);
         }
