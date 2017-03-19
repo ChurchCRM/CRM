@@ -9,7 +9,7 @@ use ChurchCRM\FamilyQuery;
 $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
 
 $family =  FamilyQuery::create()
-     ->findOneById($iFamilyID);
+    ->findOneById($iFamilyID);
 
 $family->verify();
 
