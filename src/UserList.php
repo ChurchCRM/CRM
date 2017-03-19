@@ -66,6 +66,7 @@ require 'Include/Header.php';
     ?>
                         <a onclick="deleteUser(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         <?php
+
 } ?>
                     </td>
                     <td><a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a></td>
@@ -76,6 +77,7 @@ require 'Include/Header.php';
     ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
                         <?php
+
 } else {
     echo $user->getFailedLogins();
 }
@@ -83,6 +85,7 @@ require 'Include/Header.php';
         ?>
                             <a onclick="restUserLoginCount(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-eraser" aria-hidden="true"></i></a>
                         <?php
+
     } ?>
                     </td>
                     <td>
@@ -91,11 +94,13 @@ require 'Include/Header.php';
         ?>
                             <a onclick="resetUserPassword(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-send-o" aria-hidden="true"></i></a>
                         <?php
+
     } ?>
                     </td>
 
                 </tr>
             <?php
+
 } ?>
             </tbody>
         </table>
