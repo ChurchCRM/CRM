@@ -15,7 +15,6 @@ class PersonService
     _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
     _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
       limit(15)->find();
-
         $return = [];
         foreach ($people as $person) {
             $values['id'] = $person->getId();
@@ -24,6 +23,23 @@ class PersonService
             $values['lastName'] = $person->getLastName();
             $values['displayName'] = $person->getFullName();
             $values['uri'] = $person->getViewURI();
+            $values['thumbnailURI'] = $person->getThumbnailURI();
+            $values['title'] = $person->getTitle();
+            $values['address'] = $person->getAddress();
+            $values['role'] = $person->getFamilyRoleName();
+
+            $familyRole="(";
+            if($values['familyID']) {
+                if ($person->getFamilyRole()) {
+                    $familyRole .= $person->getFamilyRoleName();
+                } else {
+                    $familyRole .=  gettext('Part');
+                }
+                $familyRole .= gettext(' of the').' <a href="FamilyView.php?FamilyID='. $values['familyID'].'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
+            } else {
+                $familyRole = gettext('(No assigned family)');
+            }
+            $values['familyRole'] = $familyRole;
 
             array_push($return, $values);
         }
