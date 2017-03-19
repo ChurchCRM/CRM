@@ -455,6 +455,7 @@
         </vendor>
     </table>
     <table name="event_attend" idMethod="native" phpName="EventAttend">
+        <column name="attend_id" phpName="AttendId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="event_id" phpName="EventId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="person_id" phpName="PersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="checkin_date" phpName="CheckinDate" type="TIMESTAMP"/>

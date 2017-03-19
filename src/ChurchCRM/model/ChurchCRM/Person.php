@@ -21,9 +21,9 @@ class Person extends BasePerson implements iPhoto
 {
     public function getFullName()
     {
-        return $this->getFirstName().' '.$this->getLastName();
+        return $this->getFormattedName(SystemConfig::getValue('iPersonNameStyle'));
     }
-    
+
     public function isMale()
     {
         return $this->getGender() == 1;
@@ -158,9 +158,13 @@ class Person extends BasePerson implements iPhoto
             }
             return implode(' ', $address);
         } else {
-            return $this->getFamily()
-                ->getAddress();
+            if($this->getFamily()) {
+                return $this->getFamily()
+                    ->getAddress();
+            }
         }
+        //if it reaches here, no address found. return empty $address
+        return $address;
     }
     /**
      * * If person address found, return latitude and Longitude of person address
@@ -203,7 +207,7 @@ class Person extends BasePerson implements iPhoto
       }
       return false;
     }
-    
+
     private function getPhoto()
     {
 
@@ -242,19 +246,136 @@ class Person extends BasePerson implements iPhoto
         return true;
       }
       return false;
-      
+
     }
 
     public function isPhotoLocal() {
       return $this->getPhoto()->isPhotoLocal();
     }
-    
+
     public function isPhotoRemote() {
       return $this->getPhoto()->isPhotoRemote();
     }
-    
+
     public function getPhotoContentType() {
       return $this->getPhoto()->getPhotoContentType();
+    }
+
+    /**
+     * Returns a string of a person's full name, formatted as specified by $Style
+     * $Style = 0  :  "Title FirstName MiddleName LastName, Suffix"
+     * $Style = 1  :  "Title FirstName MiddleInitial. LastName, Suffix"
+     * $Style = 2  :  "LastName, Title FirstName MiddleName, Suffix"
+     * $Style = 3  :  "LastName, Title FirstName MiddleInitial., Suffix"
+     * $Style = 4  :  "FirstName MiddleName LastName"
+     * $Style = 5  :  "Title FirstName LastName"
+     * $Style = 6  :  "LastName, Title FirstName"
+     *
+     * @param $Style
+     * @return string
+     */
+    public function getFormattedName($Style)
+    {
+        $nameString = '';
+        switch ($Style) {
+            case 0:
+                if ($this->getTitle()) {
+                    $nameString .= $this->getTitle() . ' ';
+                }
+                $nameString .= $this->getFirstName();
+                if ($this->getMiddleName()) {
+                    $nameString .= ' ' . $this->getMiddleName();
+                }
+                if ($this->getLastName()) {
+                    $nameString .= ' ' . $this->getLastName();
+                }
+                if ($this->getSuffix()) {
+                    $nameString .= ', ' . $this->getSuffix();
+                }
+                break;
+
+            case 1:
+                if ($this->getTitle()) {
+                    $nameString .= $this->getTitle() . ' ';
+                }
+                $nameString .= $this->getFirstName();
+                if ($this->getMiddleName()) {
+                    $nameString .= ' ' . strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')) . '.';
+                }
+                if ($this->getLastName()) {
+                    $nameString .= ' ' . $this->getLastName();
+                }
+                if ($this->getSuffix()) {
+                    $nameString .= ', ' . $this->getSuffix();
+                }
+                break;
+
+            case 2:
+                if ($this->getLastName()) {
+                    $nameString .= $this->getLastName() . ', ';
+                }
+                if ($this->getTitle()) {
+                    $nameString .= $this->getTitle() . ' ';
+                }
+                $nameString .= $this->getFirstName();
+                if ($this->getMiddleName()) {
+                    $nameString .= ' ' . $this->getMiddleName();
+                }
+                if ($this->getSuffix()) {
+                    $nameString .= ', ' . $this->getSuffix();
+                }
+                break;
+
+            case 3:
+                if ($this->getLastName()) {
+                    $nameString .= $this->getLastName() . ', ';
+                }
+                if ($this->getTitle()) {
+                    $nameString .= $this->getTitle() . ' ';
+                }
+                $nameString .= $this->getFirstName();
+                if ($this->getMiddleName()) {
+                    $nameString .= ' ' . strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')) . '.';
+                }
+                if ($this->getSuffix()) {
+                    $nameString .= ', ' . $this->getSuffix();
+                }
+                break;
+
+            case 4:
+                $nameString .= $this->getFirstName();
+                if ($this->getMiddleName()) {
+                    $nameString .= ' ' . $this->getMiddleName();
+                }
+                if ($this->getLastName()) {
+                    $nameString .= ' ' . $this->getLastName();
+                }
+                break;
+
+            case 5:
+
+                if ($this->getTitle()) {
+                    $nameString .= $this->getTitle() . ' ';
+                }
+                $nameString .= $this->getFirstName();
+                if ($this->getLastName()) {
+                    $nameString .= ' ' . $this->getLastName();
+                }
+                break;
+            case 6:
+                if ($this->getLastName()) {
+                    $nameString .= $this->getLastName() . ', ';
+                }
+                if ($this->getTitle()) {
+                    $nameString .= $this->getTitle() . ' ';
+                }
+                $nameString .= $this->getFirstName();
+                break;
+            default:
+                $nameString = $this->getFullName();
+
+        }
+        return $nameString;
     }
 
 }
