@@ -120,6 +120,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-toggle/css/bootstrap-toggle.css', 'node_modules/bootstrap-toggle/js/bootstrap-toggle.js'],
                         dest: 'src/skin/bootstrap-toggle/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-validator/dist/validator.min.js'],
+                        dest: 'src/skin/bootstrap-validator/'
                     }
                 ]
             }
@@ -218,6 +225,10 @@ module.exports = function (grunt) {
             fastclick: {
                 src: ['https://raw.githubusercontent.com/ftlabs/fastclick/569732a7aa5861d428731b8db022b2d55abe1a5a/lib/fastclick.js'],
                 dest: 'src/skin/fastclick'
+            },
+            jqueryuicss: {
+                src: ['https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'],
+                dest: 'src/skin/jquery-ui/'
             }
         },
         sass: {
