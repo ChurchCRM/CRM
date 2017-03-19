@@ -4,6 +4,7 @@
 use ChurchCRM\UserQuery;
 use ChurchCRM\UserConfigQuery;
 use ChurchCRM\Emails\ResetPasswordEmail;
+use ChurchCRM\Emails\AccountDeletedEmail;
 use ChurchCRM\Emails\UnlockedEmail;
 use ChurchCRM\dto\SystemConfig;
 
@@ -59,7 +60,9 @@ $app->group('/users', function () {
             if (!is_null($userConfig)) {
                 $userConfig->delete();
             }
+            $email = new AccountDeletedEmail($user);
             $user->delete();
+            $email->send();
             return $response->withStatus(200)->withJson(['status' => "success"]);
         } else {
             return $response->withStatus(404);
