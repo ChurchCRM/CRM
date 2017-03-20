@@ -211,7 +211,7 @@ require 'Include/HeaderNotLoggedIn.php';
         e.src = "//browser-update.org/update.min.js";
         document.body.appendChild(e);
     }
-
+  
     try {
         document.addEventListener("DOMContentLoaded", $buo_f, false)
     }
