@@ -267,12 +267,14 @@ CREATE TABLE `events_event` (
 --
 
 CREATE TABLE `event_attend` (
+  `attend_id` int(11) NOT NULL auto_increment,
   `event_id` int(11) NOT NULL default '0',
   `person_id` int(11) NOT NULL default '0',
   `checkin_date` datetime default NULL,
   `checkin_id` int(11) default NULL,
   `checkout_date` datetime default NULL,
   `checkout_id` int(11) default NULL,
+  PRIMARY KEY  (`attend_id`),
   UNIQUE KEY `event_id` (`event_id`,`person_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 

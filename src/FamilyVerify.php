@@ -3,22 +3,15 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Note;
-use ChurchCRM\Service\FamilyService;
-
-$familyService = new FamilyService();
+use ChurchCRM\FamilyQuery;
 
 //Get the FamilyID out of the querystring
 $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
 
-$note = new Note();
-$note->setFamId($iFamilyID);
-$note->setText(gettext('Family Data Verified'));
-$note->setType('verify');
-$note->setEntered($_SESSION['iUserID']);
-$note->save();
+$family =  FamilyQuery::create()
+    ->findOneById($iFamilyID);
 
-$familyURI = $familyService->getViewURI($iFamilyID);
+$family->verify();
 
-header('Location: '.$familyURI);
+header('Location: '.$family->getViewURI());
 exit;
