@@ -1177,7 +1177,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
                 ExpandPhoneNumber($per_HomePhone, $fam_Country, $dummy), true);
     } elseif ($sPersonColumn5 == 'Work Phone') {
         echo SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $fam_Country, $dummy),
-                ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
+                "", true);
     } elseif ($sPersonColumn5 == 'Mobile Phone') {
         echo SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $fam_Country, $dummy),
                 ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);

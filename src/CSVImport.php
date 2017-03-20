@@ -609,7 +609,6 @@ if (isset($_POST['DoImport'])) {
                                                      fam_Zip,
                                                      fam_Country,
                                                      fam_HomePhone,
-                                                     fam_WorkPhone,
                                                      fam_CellPhone,
                                                      fam_Email,
                                                      fam_DateEntered,
@@ -623,7 +622,6 @@ if (isset($_POST['DoImport'])) {
                                      '"'.$sZip.'", '.
                                      '"'.$per_Country.'", '.
                                      '"'.$per_HomePhone.'", '.
-                                     '"'.$per_WorkPhone.'", '.
                                      '"'.$per_CellPhone.'", '.
                                      '"'.$per_Email.'",'.
                                      '"'.date('YmdHis').'",'.

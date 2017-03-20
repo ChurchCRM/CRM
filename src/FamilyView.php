@@ -162,7 +162,6 @@ $iTableSpacerWidth = 10;
 
 // Format the phone numbers
 $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
-    $sWorkPhone = ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy);
     $sCellPhone = ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy);
 
     $sFamilyEmails = array();

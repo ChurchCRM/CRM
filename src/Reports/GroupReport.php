@@ -98,7 +98,7 @@ if ($iMode == 1) {
         $sState = SelectWhichInfo($aRow['per_State'], $aRow['fam_State'], false);
         $sZip = SelectWhichInfo($aRow['per_Zip'], $aRow['fam_Zip'], false);
         $sHomePhone = SelectWhichInfo($aRow['per_HomePhone'], $aRow['fam_HomePhone'], false);
-        $sWorkPhone = SelectWhichInfo($aRow['per_WorkPhone'], $aRow['fam_WorkPhone'], false);
+        $sWorkPhone = SelectWhichInfo($aRow['per_WorkPhone'], "", false);
         $sCellPhone = SelectWhichInfo($aRow['per_CellPhone'], $aRow['fam_CellPhone'], false);
         $sEmail = SelectWhichInfo($aRow['per_Email'], $aRow['fam_Email'], false);
 
