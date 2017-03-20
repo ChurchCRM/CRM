@@ -1,10 +1,10 @@
 <?php
 
 // Routes
-use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\Note;
 use ChurchCRM\Token;
+use ChurchCRM\Note;
+use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\TokenQuery;
 
 $app->group('/families', function () {
@@ -27,35 +27,41 @@ $app->group('/families', function () {
         echo $this->FamilyService->getFamilyStringByEnvelope($envelopeNumber);
     });
 
-    $this->get('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
+    $this->get('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
-        if ($family->isPhotoLocal()) {
+        if ( $family->isPhotoLocal() )
+        {
             return $response->write($family->getPhotoBytes());
-        } else {
+        }
+        else
+        {
             return $response->withStatus(404);
         }
     });
 
-    $this->get('/{familyId:[0-9]+}/thumbnail', function ($request, $response, $args) {
+    $this->get('/{familyId:[0-9]+}/thumbnail', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
-        if ($family->isPhotoLocal()) {
+        if ( $family->isPhotoLocal())
+        {
             return $response->write($family->getThumbnailBytes())->withHeader('Content-type', $family->getPhotoContentType());
-        } else {
+        }
+        else
+        {
             return $response->withStatus(404);
         }
     });
 
-    $this->post('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
+    $this->post('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
         $input = (object)$request->getParsedBody();
         $family = FamilyQuery::create()->findPk($args['familyId']);
         $family->setImageFromBase64($input->imgBase64);
 
-        $response->withJSON(array("status" => "success", "upload" => $upload));
+        $response->withJSON(array("status"=>"success","upload"=>$upload));
     });
 
-    $this->delete('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
+    $this->delete('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
-        return json_encode(array("status" => $family->deletePhoto()));
+        return json_encode(array("status"=>$family->deletePhoto()));
     });
 
     $this->post('/{familyId}/verify', function ($request, $response, $args) {
@@ -107,7 +113,7 @@ $app->group('/families', function () {
         $currentStatus = (empty($family->getDateDeactivated()) ? 'true' : 'false');
 
         //update only if the value is different
-        if ($currentStatus != $newStatus) {
+        if($currentStatus != $newStatus) {
             if ($newStatus == "false") {
                 $family->setDateDeactivated(date('YmdHis'));
             } elseif ($newStatus == "true") {
@@ -118,16 +124,17 @@ $app->group('/families', function () {
             //Create a note to record the status change
             $note = new Note();
             $note->setFamId($familyId);
-            if ($newStatus == 'false') {
+            if($newStatus == 'false') {
                 $note->setText(gettext('Deactivated the Family'));
-            } else {
+            }
+            else {
                 $note->setText(gettext('Activated the Family'));
             }
             $note->setType('edit');
             $note->setEntered($_SESSION['iUserID']);
             $note->save();
         }
-        return $response->withJson(['success' => true]);
+        return $response->withJson(['success'=> true]);
 
     });
 
