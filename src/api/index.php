@@ -30,6 +30,7 @@ require __DIR__.'/routes/search.php';
 require __DIR__.'/routes/persons.php';
 require __DIR__.'/routes/families.php';
 require __DIR__.'/routes/groups.php';
+require __DIR__.'/routes/properties.php';
 
 // finance routes
 require __DIR__.'/routes/deposits.php';
