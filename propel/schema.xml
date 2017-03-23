@@ -722,6 +722,63 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
+    
+    <table name="record2property_r2p" idMethod="native" phpName="PersonProperty" isCrossRef="true">
+        <column name="r2p_pro_ID" phpName="PropertyId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+        <column name="r2p_record_ID" phpName="PersonId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+        <column name="r2p_Value" phpName="PropertyValue" type="LONGVARCHAR" required="true"  defaultValue=""/>
+        
+        <foreign-key foreignTable="property_pro">
+            <reference local="r2p_pro_ID" foreign="pro_ID"/>
+        </foreign-key>
+        
+        <foreign-key foreignTable="person_per">
+            <reference local="r2p_record_ID" foreign="per_ID"/>
+        </foreign-key>
+        
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    
+    <table name="property_pro" idMethod="native" phpName="Property" >
+        <column name="pro_ID" phpName="ProId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" 
+        autoIncrement="true" required="true"/>
+        <column name="pro_Class" phpName="ProClass" type="VARCHAR" size="10" required="true" defaultValue=""/>
+        <column name="pro_prt_ID" phpName="ProPrtId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+        <column name="pro_Name" phpName="ProName" type="VARCHAR" size="200" required="true" defaultValue="0"/>
+        <column name="pro_Description" phpName="ProDescription" type="LONGVARCHAR" required="true"/>
+        <column name="pro_Prompt" phpName="ProPrompt" type="VARCHAR" size="255"/>
+        <foreign-key foreignTable="propertytype_prt">
+            <reference local="pro_prt_ID" foreign="prt_ID"/>
+        </foreign-key>
+        <index name="pro_ID_2">
+            <index-column name="pro_ID"/>
+        </index>
+        <unique name="pro_ID">
+            <unique-column name="pro_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+
+    <table name="propertytype_prt" idMethod="native" phpName="PropertyType" >
+        <column name="prt_ID" phpName="PrtId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="prt_Class" phpName="PrtClass" type="VARCHAR" size="10" required="true" defaultValue=""/>
+        <column name="prt_Name" phpName="PrtName" type="VARCHAR" size="50" required="true" defaultValue=""/>
+        <column name="prt_Description" phpName="PrtDescription" type="LONGVARCHAR" required="true"/>
+        <index name="prt_ID_2">
+            <index-column name="prt_ID"/>
+        </index>
+        <unique name="prt_ID">
+            <unique-column name="prt_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    
 
     <!--
  <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
@@ -783,38 +840,8 @@
    </vendor>
  </table>
 
- <table name="property_pro" idMethod="native" phpName="PropertyPro" >
-   <column name="pro_ID" phpName="ProId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-   <column name="pro_Class" phpName="ProClass" type="VARCHAR" size="10" required="true" defaultValue=""/>
-   <column name="pro_prt_ID" phpName="ProPrtId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
-   <column name="pro_Name" phpName="ProName" type="VARCHAR" size="200" required="true" defaultValue="0"/>
-   <column name="pro_Description" phpName="ProDescription" type="LONGVARCHAR" required="true"/>
-   <column name="pro_Prompt" phpName="ProPrompt" type="VARCHAR" size="255"/>
-   <index name="pro_ID_2">
-     <index-column name="pro_ID"/>
-   </index>
-   <unique name="pro_ID">
-     <unique-column name="pro_ID"/>
-   </unique>
-   <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
-   </vendor>
- </table>
- <table name="propertytype_prt" idMethod="native" phpName="PropertytypePrt" >
-   <column name="prt_ID" phpName="PrtId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
-   <column name="prt_Class" phpName="PrtClass" type="VARCHAR" size="10" required="true" defaultValue=""/>
-   <column name="prt_Name" phpName="PrtName" type="VARCHAR" size="50" required="true" defaultValue=""/>
-   <column name="prt_Description" phpName="PrtDescription" type="LONGVARCHAR" required="true"/>
-   <index name="prt_ID_2">
-     <index-column name="prt_ID"/>
-   </index>
-   <unique name="prt_ID">
-     <unique-column name="prt_ID"/>
-   </unique>
-   <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
-   </vendor>
- </table>
+
+
  <table name="query_qry" idMethod="native" phpName="QueryQry" >
    <column name="qry_ID" phpName="QryId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
    <column name="qry_SQL" phpName="QrySql" type="LONGVARCHAR" required="true"/>
@@ -843,14 +870,7 @@
      <parameter name="Engine" value="MyISAM"/>
    </vendor>
  </table>
- <table name="record2property_r2p" idMethod="native" phpName="Record2propertyR2p" >
-   <column name="r2p_pro_ID" phpName="R2pProId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
-   <column name="r2p_record_ID" phpName="R2pRecordId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
-   <column name="r2p_Value" phpName="R2pValue" type="LONGVARCHAR" required="true"/>
-   <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
-   </vendor>
- </table>
+
  <table name="result_res" idMethod="native" phpName="ResultRes" >
    <column name="res_ID" phpName="ResId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
    <column name="res_echotype1" phpName="ResEchotype1" type="LONGVARCHAR" required="true"/>
