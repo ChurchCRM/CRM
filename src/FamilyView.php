@@ -1063,7 +1063,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             });
 
 
-        contentExists(window.CRM.root + "/api/families/" + familyId + "/photo", function(success) {
+        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
 
