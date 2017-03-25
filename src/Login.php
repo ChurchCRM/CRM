@@ -56,6 +56,10 @@ if (isset($_POST['User'])) {
         // Increment the FailedLogins
         $currentUser->setFailedLogins($currentUser->getFailedLogins() + 1);
         $currentUser->save();
+        if (!empty($currentUser->getEmail()) && $currentUser->isLocked()) {
+            $lockedEmail = new LockedEmail($currentUser);
+            $lockedEmail->send();
+        }
 
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
@@ -194,14 +198,15 @@ require 'Include/HeaderNotLoggedIn.php';
             </div>
         </form>
         <!--<a href="external/user/password">I forgot my password</a><br> -->
-        <?php if (SystemConfig::getBooleanValue('sEnableSelfRegistration')) {
-            ?>
-            <a href="external/register/" class="text-center btn bg-olive"><i
-                    class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
-            <?php
 
-        } ?>
-        <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
+        <?php if ($enableSelfReg) {
+    ?>
+        <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
+        <?php
+
+} ?>
+      <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
+
     </div>
     <!-- /.login-box-body -->
 </div>

@@ -158,7 +158,7 @@ class SystemConfig
         "sLastIntegrityCheckTimeStamp" => new ConfigItem(1046, "sLastIntegrityCheckTimeStamp", "text", "", gettext("Last Integrity Check Timestamp")),
         "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "choice", "", "", json_encode(["Choices" => Countries::getNames()])),
         "sConfirmSincerely" => new ConfigItem(1048, "sConfirmSincerely", "text", "Sincerely", gettext("Used to end a letter before Signer")),
-        "sDear" => new ConfigItem(104, "sDear", "text", "Dear", gettext("Text before name in emails/reports")),
+        "sDear" => new ConfigItem(1049, "sDear", "text", "Dear", gettext("Text before name in emails/reports")),
         "googleTrackingID" => new ConfigItem(1050, "googleTrackingID", "text", "", gettext("Google Analytics Tracking Code")),
         "mailChimpApiKey" => new ConfigItem(2000, "mailChimpApiKey", "text", "", gettext("see http://kb.mailchimp.com/accounts/management/about-api-keys")),
         "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), '{"Choices":["QBDT"]}'),
