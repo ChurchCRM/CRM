@@ -9,6 +9,10 @@ use ChurchCRM\PropertyQuery;
 $app->group('/properties', function() {
 
     $this->post('/persons/assign', function($request, $response, $args) {
+        if (!$_SESSION['user']->isAdmin()) {
+            return $response->withStatus(401);
+        }
+ 
         $data = $request->getParsedBody();
         $personId = empty($data['PersonId']) ? null : $data['PersonId'];
         $propertyId = empty($data['PropertyId']) ? null : $data['PropertyId'];
@@ -17,7 +21,7 @@ $app->group('/properties', function() {
         $person = PersonQuery::create()->findPk($personId);
         $property = PropertyQuery::create()->findPk($propertyId);
         if (!$person || !$property) {
-            return $response->withStatus(404);
+            return $response->withStatus(404, 'The record could not be found.');
         }
         
         $personProperty = PersonPropertyQuery::create()
@@ -27,14 +31,14 @@ $app->group('/properties', function() {
 
         if ($personProperty) {
             if (empty($property->getProPrompt()) || $personProperty->getPropertyValue() == $propertyValue) {
-                return $response->withJson(['success' => true, 'msg' => 'assigned']);
+                return $response->withJson(['success' => true, 'msg' => 'The property is already assigned.']);
             }
 
             $personProperty->setPropertyValue($propertyValue);
             if ($personProperty->save()) {
-                return $response->withJson(['success' => true, 'msg' => 'assigned']);
+                return $response->withJson(['success' => true, 'msg' => 'The property is successfully assigned.']);
             } else {
-                return $response->withJson(['success' => false, 'msg' => 'could not assign']);
+                return $response->withJson(['success' => false, 'msg' => 'The property could not be assigned.']);
             }
         }
 
@@ -48,19 +52,23 @@ $app->group('/properties', function() {
                     ->findOne();
                 $personProperty->setPropertyValue($propertyValue);
                 if (!$personProperty->save()) {
-                    return $response->withJson(['success' => false, 'msg' => 'could not assign']);
+                    return $response->withJson(['success' => false, 'msg' => 'The property could not be assigned.']);
                 }
             }
 
-            return $response->withJson(['success' => true, 'msg' => 'assigned']);
+            return $response->withJson(['success' => true, 'msg' => 'The property is successfully assigned.']);
         }
 
-        $response->withJson(['success' => false, 'msg' => 'could not assign']);
+        $response->withJson(['success' => false, 'msg' => 'The property could not be assigned.']);
 
     });
     
     
-    $this->post('/persons/unassign', function($request, $response, $args) {
+    $this->delete('/persons/unassign', function($request, $response, $args) {
+        if (!$_SESSION['user']->isAdmin()) {
+            return $response->withStatus(401);
+        }
+        
         $data = $request->getParsedBody();
         $personId = empty($data['PersonId']) ? null : $data['PersonId'];
         $propertyId = empty($data['PropertyId']) ? null : $data['PropertyId'];
@@ -70,15 +78,15 @@ $app->group('/properties', function() {
             ->filterByPropertyId($propertyId)
             ->findOne();        
         
-        if (!$personProperty) {
-            return $response->withStatus(404);
+        if ($personProperty == null) {
+            return $response->withStatus(404, 'The record could not be found.');
         }
         
         $personProperty->delete();
         if ($personProperty->isDeleted()) {
-            return $response->withJson(['success' => true, 'msg' => 'deleted']);
+            return $response->withJson(['success' => true, 'msg' => 'The property is successfully unassigned.']);
         } else {
-           return $response->withJson(['success' => false, 'msg' => 'could not delete']); 
+           return $response->withJson(['success' => false, 'msg' => 'The property could not be unassigned.']); 
         }
 
     });

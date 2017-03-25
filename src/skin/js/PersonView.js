@@ -51,7 +51,7 @@ $(document).ready(function () {
         bootbox.confirm('Are you sure you want to unassign this property?', function (result) {
             if (result) {
                 $.ajax({
-                    type: 'POST',
+                    type: 'DELETE',
                     url: url,
                     data: dataToSend,
                     dataType: 'json',
