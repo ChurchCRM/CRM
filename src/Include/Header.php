@@ -64,18 +64,16 @@ $MenuFirst = 1;
 
 <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
 <?php 
-  if (NotificationService::testActiveNotifications())
-  {
-    ?>
+  if (NotificationService::testActiveNotifications()) {
+      ?>
   <div class="systemNotificationBar">
     <?php
-    foreach (NotificationService::getNotifications() as $notification)
-    {
-      echo "<a href=\"".$notification->link."\">".$notification->title."</a>";
-    }
-    ?>
+    foreach (NotificationService::getNotifications() as $notification) {
+        echo "<a href=\"".$notification->link."\">".$notification->title."</a>";
+    } ?>
   </div>
     <?php
+
   }
   ?>
 <!-- Site wrapper -->
