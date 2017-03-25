@@ -284,6 +284,7 @@ if (isset($loginPageMsg)) {
     ?>
         <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
         <?php
+
 } ?>
       <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
