@@ -31,6 +31,24 @@ require_once 'Functions.php';
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\NotificationService;
+
+function Header_system_notifications()
+{
+  if (NotificationService::testActiveNotifications())
+  {
+    ?>
+  <div class="systemNotificationBar">
+    <?php
+    foreach (NotificationService::getNotifications() as $notification)
+    {
+      echo "<a href=\"".$notification->link."\">".$notification->title."</a>";
+    }
+    ?>
+  </div>
+    <?php
+  }
+}
 
 function Header_head_metatag()
 {
