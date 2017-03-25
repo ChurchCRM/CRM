@@ -36,6 +36,7 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
+use ChurchCRM\Emails\LockedEmail;
 
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
@@ -47,6 +48,8 @@ if (isset($_POST['User'])) {
         $sErrorText = gettext('Invalid login or password');
     } // Block the login if a maximum login failure count has been reached
     elseif ($currentUser->isLocked()) {
+        $lockedEmail = new LockedEmail($currentUser);
+        $lockedEmail->send();
         $sErrorText = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
     } // Does the password match?
     elseif (!$currentUser->isPasswordValid($_POST['Password'])) {
@@ -211,7 +214,7 @@ require 'Include/HeaderNotLoggedIn.php';
         e.src = "//browser-update.org/update.min.js";
         document.body.appendChild(e);
     }
-  
+
     try {
         document.addEventListener("DOMContentLoaded", $buo_f, false)
     }
