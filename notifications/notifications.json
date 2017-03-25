@@ -1,0 +1,14 @@
+{
+  "messages" : [
+    {
+      "targetVersion":"2.6.4",
+      "title":"Test",
+      "link":"https://www.github.com"
+    },
+    {
+      "targetVersion":"2.6.3",
+      "title":"Test 2asdf",
+      "link":"https://www.github.com"
+    }
+  ]
+}

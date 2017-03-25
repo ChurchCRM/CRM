@@ -29,6 +29,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\NotificationService;
 
 if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
  Redirect('CheckVersion.php');
@@ -62,6 +63,21 @@ $MenuFirst = 1;
 </head>
 
 <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
+<?php 
+  if (NotificationService::testActiveNotifications())
+  {
+    ?>
+  <div class="systemNotificationBar">
+    <?php
+    foreach (NotificationService::getNotifications() as $notification)
+    {
+      echo "<a href=\"".$notification->link."\">".$notification->title."</a>";
+    }
+    ?>
+  </div>
+    <?php
+  }
+  ?>
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php
