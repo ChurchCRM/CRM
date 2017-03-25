@@ -6,10 +6,6 @@ namespace ChurchCRM\Emails;
 class PasswordChangeEmail extends BaseUserEmail
 {
 
-    public function __construct($user) {
-        parent::__construct($user);
-    }
-
     protected function getSubSubject()
     {
         return gettext("Password Changed");
@@ -18,7 +14,7 @@ class PasswordChangeEmail extends BaseUserEmail
     protected function buildMessageBody()
     {
         $msg = array();
-        array_push($msg, gettext("We wanted to let you know that your password was changed."));
+        array_push($msg, gettext("We wanted to let you know that your ChurchCRM password was changed."));
         return implode("<p/>", $msg);
     }
 }
