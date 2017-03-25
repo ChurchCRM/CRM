@@ -9,8 +9,17 @@ class NotificationService
     /* Get the latest notifications from the source.  Store in session variable
      * 
      */
-    //$_SESSION['SystemNotifications'] = json_decode(file_get_contents("/vagrant/notifications/notifications.json"));
-    $_SESSION['SystemNotifications'] = json_decode(file_get_contents("http://demo.churchcrm.io/notifications.json"));
+    try
+    {
+      //$_SESSION['SystemNotifications'] = json_decode(file_get_contents("/vagrant/notifications/notifications.json"));
+      $_SESSION['SystemNotifications'] = json_decode(file_get_contents("http://demo.churchcrm.io/notifications.json"));
+      $_SESSION['SystemNotifications']->expires = new \DateTime();
+      $_SESSION['SystemNotifications']->expires->add(new \DateInterval("PT".$_SESSION['SystemNotifications']->TTL."S"));
+    } catch (Exception $ex) {
+      //a failure here should never prevent the page from loading.  
+      //Possibly log an exception when a unified logger is implemented.
+      //for now, do nothing.
+    }
   }
   
   public static function getNotifications()
@@ -18,18 +27,21 @@ class NotificationService
     /* retreive active notifications from the session variable for display
      * 
      */
-    $notifications = array();
-    foreach ($_SESSION['SystemNotifications']->messages as $message)
+    if (isset($_SESSION['SystemNotifications']))
     {
-      if($message->targetVersion == $_SESSION['sSoftwareInstalledVersion'])
+      $notifications = array();
+      foreach ($_SESSION['SystemNotifications']->messages as $message)
       {
-        if (! $message->adminOnly ||  $_SESSION['user']->isAdmin())
+        if($message->targetVersion == $_SESSION['sSoftwareInstalledVersion'])
         {
-          array_push($notifications, $message);
+          if (! $message->adminOnly ||  $_SESSION['user']->isAdmin())
+          {
+            array_push($notifications, $message);
+          }
         }
       }
+      return $notifications;
     }
-    return $notifications;
   }
   
   public static function testActiveNotifications()
@@ -50,8 +62,11 @@ class NotificationService
      * If session does not contain notifications, or if the notification TTL has expired, return true
      * otherwise return false.
      */
-    if (!isset($_SESSION['SystemNotifications']))
+
+
+    if (!isset($_SESSION['SystemNotifications']) || $_SESSION['SystemNotifications']->expires < new \DateTime())
     {
+      echo "updating notifications";
       return true;
     }
     return false;
