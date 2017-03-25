@@ -37,6 +37,7 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
+use ChurchCRM\Emails\LockedEmail;
 
 $systemService = new SystemService();
 
@@ -76,6 +77,10 @@ if ($currentUser != null) {
         // Increment the FailedLogins
         $currentUser->setFailedLogins($currentUser->getFailedLogins() + 1);
         $currentUser->save();
+        if (!empty($currentUser->getEmail()) && $currentUser->isLocked()) {
+            $lockedEmail = new LockedEmail($currentUser);
+            $lockedEmail->send();
+        }
 
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
