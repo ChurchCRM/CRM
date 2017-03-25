@@ -11,7 +11,6 @@ class NotificationService
      */
     try
     {
-      //$_SESSION['SystemNotifications'] = json_decode(file_get_contents("/vagrant/notifications/notifications.json"));
       $_SESSION['SystemNotifications'] = json_decode(file_get_contents("http://demo.churchcrm.io/notifications.json"));
       $_SESSION['SystemNotifications']->expires = new \DateTime();
       $_SESSION['SystemNotifications']->expires->add(new \DateInterval("PT".$_SESSION['SystemNotifications']->TTL."S"));
