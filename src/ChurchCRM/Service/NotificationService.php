@@ -45,14 +45,7 @@ class NotificationService
   
   public static function testActiveNotifications()
   {
-    foreach ($_SESSION['SystemNotifications']->messages as $message)
-    {
-      if($message->targetVersion == $_SESSION['sSoftwareInstalledVersion'])
-      {
-        return true;
-      }
-    }
-    
+    return count(NotificationService::getNotifications()) > 0;
   }
   
   public static function isUpdateRequired()
