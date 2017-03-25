@@ -37,63 +37,9 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
+use ChurchCRM\Emails\LockedEmail;
 
 $systemService = new SystemService();
-
-// Is the user requesting to logoff or timed out?
-if (isset($_GET['Logoff']) || isset($_GET['Timeout'])) {
-    if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == '')) {
-        $_SESSION['sshowPledges'] = 0;
-    }
-    if (!isset($_SESSION['sshowPayments']) || ($_SESSION['sshowPayments'] == '')) {
-        $_SESSION['sshowPayments'] = 0;
-    }
-    if (!isset($_SESSION['bSearchFamily']) || ($_SESSION['bSearchFamily'] == '')) {
-        $_SESSION['bSearchFamily'] = 0;
-    }
-
-    if (!empty($_SESSION['iUserID'])) {
-        $currentUser = UserQuery::create()->findOneByPersonId($_SESSION['iUserID']);
-        $currentUser->setShowPledges($_SESSION['sshowPledges']);
-        $currentUser->setShowPayments($_SESSION['sshowPayments']);
-        $currentUser->setShowSince($_SESSION['sshowSince']);
-        $currentUser->setDefaultFY($_SESSION['idefaultFY']);
-        $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
-
-        if ($_SESSION['dCalStart'] != '') {
-            $currentUser->setCalStart($_SESSION['dCalStart']);
-        }
-        if ($_SESSION['dCalEnd'] != '') {
-            $currentUser->setCalEnd($_SESSION['dCalEnd']);
-        }
-        if ($_SESSION['dCalNoSchool1'] != '') {
-            $currentUser->setCalNoSchool1($_SESSION['dCalNoSchool1']);
-        }
-        if ($_SESSION['dCalNoSchool2'] != '') {
-            $currentUser->dCalNoSchool2($_SESSION['dCalNoSchool2']);
-        }
-        if ($_SESSION['dCalNoSchool3'] != '') {
-            $currentUser->dCalNoSchool3($_SESSION['dCalNoSchool3']);
-        }
-        if ($_SESSION['dCalNoSchool4'] != '') {
-            $currentUser->dCalNoSchool4($_SESSION['dCalNoSchool4']);
-        }
-        if ($_SESSION['dCalNoSchool5'] != '') {
-            $currentUser->dCalNoSchool5($_SESSION['dCalNoSchool5']);
-        }
-        if ($_SESSION['dCalNoSchool6'] != '') {
-            $currentUser->dCalNoSchool6($_SESSION['dCalNoSchool6']);
-        }
-        if ($_SESSION['dCalNoSchool7'] != '') {
-            $currentUser->dCalNoSchool7($_SESSION['dCalNoSchool7']);
-        }
-        if ($_SESSION['dCalNoSchool8'] != '') {
-            $currentUser->dCalNoSchool8($_SESSION['dCalNoSchool8']);
-        }
-        $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
-        $currentUser->save();
-    }
-}
 
 $currentUser = 0;
 // Get the UserID out of user name submitted in form results
@@ -131,6 +77,10 @@ if ($currentUser != null) {
         // Increment the FailedLogins
         $currentUser->setFailedLogins($currentUser->getFailedLogins() + 1);
         $currentUser->save();
+        if (!empty($currentUser->getEmail()) && $currentUser->isLocked()) {
+            $lockedEmail = new LockedEmail($currentUser);
+            $lockedEmail->send();
+        }
 
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
@@ -278,7 +228,8 @@ if (isset($loginPageMsg)) {
         <?php if ($enableSelfReg) {
     ?>
         <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
-        <?php 
+        <?php
+
 } ?>
       <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
@@ -287,14 +238,19 @@ if (isset($loginPageMsg)) {
 <!-- /.login-box -->
 
 <script>
-  var $buoop = {vs:{i:11,f:30,o:25,s:7},c:2};
-  function $buo_f(){
-    var e = document.createElement("script");
-    e.src = "//browser-update.org/update.min.js";
-    document.body.appendChild(e);
-  };
-  try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
-  catch(e){window.attachEvent("onload", $buo_f)}
+    var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
+    function $buo_f() {
+        var e = document.createElement("script");
+        e.src = "//browser-update.org/update.min.js";
+        document.body.appendChild(e);
+    }
+
+    try {
+        document.addEventListener("DOMContentLoaded", $buo_f, false)
+    }
+    catch (e) {
+        window.attachEvent("onload", $buo_f)
+    }
 </script>
 
 <?php

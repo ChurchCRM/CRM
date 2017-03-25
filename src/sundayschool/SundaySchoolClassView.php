@@ -163,7 +163,7 @@ require '../Include/Header.php';
           <h3 class="box-title"><?= gettext('Birthdays by Month') ?></h3>
         </div>
         <div class="box-body">
-          <div id="bar-chart" style="width: 100%; height: 300px;"></div>
+          <div class="disableSelection" id="bar-chart" style="width: 100%; height: 300px;"></div>
         </div>
         <!-- /.box-body-->
       </div>
@@ -193,6 +193,7 @@ require '../Include/Header.php';
   </div>
   <!-- /.box-header -->
   <div class="box-body table-responsive">
+    <h4 class="birthday-filter" style="display:none;"><?= gettext('Showing students with birthdays in') ?><span class="month"></span> <i style="cursor:pointer; color:red;" class="icon fa fa-close"></i></h4>
     <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>
@@ -335,7 +336,8 @@ function implodeUnique($array, $withQuotes)
 
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function () {
-    $('.data-table').dataTable({
+
+    var dataTable = $('.data-table').dataTable({
       "dom": 'T<"clear">lfrtip',
       responsive: true,
       "language": {
@@ -345,6 +347,7 @@ function implodeUnique($array, $withQuotes)
         "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
       }
     });
+
     // turn the element to select2 select style
     $('.email-recepients-kids').select2({
       placeholder: 'Enter recepients',
@@ -357,6 +360,44 @@ function implodeUnique($array, $withQuotes)
     $('.email-recepients-parents').select2({
       placeholder: 'Enter recepients',
       tags: [<?= implodeUnique($ParentsEmails, true) ?>]
+    });
+
+    var birthDateColumn = dataTable
+      .DataTable()
+      .column(':contains(Birth Date)');
+
+    var hideBirthDayFilter = function() {
+      plot.unhighlight();
+      birthDateColumn
+        .search('')
+        .draw();
+
+      birthDayFilter.hide();
+    };
+
+    var birthDayFilter = $('.birthday-filter');
+    var birthDayMonth = birthDayFilter.find('.month');
+    birthDayFilter.find('i.fa-close')
+      .bind('click', hideBirthDayFilter);
+
+    $("#bar-chart").bind("plotclick", function (event, pos, item) {
+      plot.unhighlight();
+
+      if (!item) {
+        hideBirthDayFilter();
+        return;
+      }
+
+      var month = bar_data.data[item.dataIndex][0];
+
+      birthDateColumn
+        .search(month.substr(0, 3))
+        .draw();
+
+      birthDayMonth.text(month);
+      birthDayFilter.show();
+
+      plot.highlight(item.series, item.datapoint);
     });
   });
 
@@ -371,11 +412,14 @@ function implodeUnique($array, $withQuotes)
     ],
     color: "#3c8dbc"
   };
-  $.plot("#bar-chart", [bar_data], {
+
+ var plot = $.plot("#bar-chart", [bar_data], {
     grid: {
       borderWidth: 1,
       borderColor: "#f3f3f3",
-      tickColor: "#f3f3f3"
+      tickColor: "#f3f3f3",
+      hoverable:true,
+      clickable:true
     },
     series: {
       bars: {
@@ -387,8 +431,12 @@ function implodeUnique($array, $withQuotes)
     xaxis: {
       mode: "categories",
       tickLength: 0
+    },
+    yaxis: {
+      tickSize: 1
     }
   });
+
   /* END BAR CHART */
 
   /*
