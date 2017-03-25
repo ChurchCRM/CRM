@@ -61,15 +61,11 @@ class NotificationService
      * If session does not contain notifications, or if the notification TTL has expired, return true
      * otherwise return false.
      */
-
-
     if (!isset($_SESSION['SystemNotifications']) || $_SESSION['SystemNotifications']->expires < new \DateTime())
     {
-      echo "updating notifications";
       return true;
     }
     return false;
   }
   
-
 }
