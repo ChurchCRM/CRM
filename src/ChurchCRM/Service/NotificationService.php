@@ -9,7 +9,8 @@ class NotificationService
     /* Get the latest notifications from the source.  Store in session variable
      * 
      */
-    $_SESSION['SystemNotifications'] = json_decode(file_get_contents("/vagrant/notifications/notifications.json"));
+    //$_SESSION['SystemNotifications'] = json_decode(file_get_contents("/vagrant/notifications/notifications.json"));
+    $_SESSION['SystemNotifications'] = json_decode(file_get_contents("http://demo.churchcrm.io/notifications.json"));
   }
   
   public static function getNotifications()
