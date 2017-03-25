@@ -15,7 +15,7 @@ class NewAccountEmail extends BaseUserEmail
 
     protected function getSubSubject()
     {
-        return gettext("Your CRM Account");
+        return gettext("Your ChurchCRM Account");
     }
 
     protected function buildMessageBody()
@@ -24,7 +24,7 @@ class NewAccountEmail extends BaseUserEmail
         array_push($msg, gettext("A ChurchCRM account was created for you:"));
         array_push($msg, "<a href='" . $this->getLink() . "'>" . gettext("Login"). "</a>");
         array_push($msg, gettext('Username') . ": " . $this->user->getUserName());
-        array_push($msg, gettext('New Password') . ": " . $this->password);
+        array_push($msg, gettext('Password') . ": " . $this->password);
         return implode("<p/>", $msg);
     }
 }
