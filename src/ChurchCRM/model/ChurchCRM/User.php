@@ -3,6 +3,7 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\User as BaseUser;
+use ChurchCRM\dto\SystemConfig;
 
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
@@ -16,13 +17,21 @@ use ChurchCRM\Base\User as BaseUser;
 class User extends BaseUser
 {
 
-  public function getId()
-  {
-    return $this->getPersonId();
-  }
+    public function getId()
+    {
+        return $this->getPersonId();
+    }
 
     public function getName()
     {
+        return $this->getPerson()->getFullName();
+    }
+
+    public function getEmail() {
+        return $this->getPerson()->getEmail();
+    }
+
+    public function getFullName() {
         return $this->getPerson()->getFullName();
     }
 
@@ -69,5 +78,26 @@ class User extends BaseUser
     public function isCanvasserEnabled()
     {
         return $this->isAdmin() || $this->isCanvasser();
+    }
+
+    public function updatePassword($password)
+    {
+        $this->setPassword($this->hashPassword($password));
+    }
+
+    public function isPasswordValid($password)
+    {
+        return $this->getPassword() == $this->hashPassword($password);
+    }
+
+    public function hashPassword($password)
+    {
+        return hash('sha256', $password . $this->getPersonId());
+    }
+
+
+    public function isLocked()
+    {
+        return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
     }
 }
