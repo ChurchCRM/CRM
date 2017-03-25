@@ -92,11 +92,11 @@ require 'Include/Header.php';
 } ?>/><?php echo gettext('Close deposit slip (remember to press Save)'); ?>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-6" style="text-align:center">
+          <div class="row p-2">
+            <div class="col-lg-5 m-2" style="text-align:center">
               <input type="submit" class="btn" value="<?php echo gettext('Save'); ?>" name="DepositSlipSubmit">
             </div>
-            <div class="col-lg-6" style="text-align:center">
+            <div class="col-lg-5 m-2" style="text-align:center">
               <input type="button" class="btn" value="<?php echo gettext('Deposit Slip Report'); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo $thisDeposit->getId() ?>/pdf');">
             </div>
           </div>
@@ -229,12 +229,12 @@ require 'Include/Header.php';
           cancel : {
             label: '<?= gettext("Close"); ?>'
           },
-          confirm: { 
+          confirm: {
             label: '<?php echo gettext("Delete"); ?>'
           }
         },
         callback: function ( result ) {
-          if ( result ) 
+          if ( result )
           {
             window.CRM.deletesRemaining = deletedRows.length;
             $.each(deletedRows, function(index, value) {
