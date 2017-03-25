@@ -23,7 +23,10 @@ class NotificationService
     {
       if($message->targetVersion == $_SESSION['sSoftwareInstalledVersion'])
       {
-        array_push($notifications, $message);
+        if (! $message->adminOnly ||  $_SESSION['user']->isAdmin())
+        {
+          array_push($notifications, $message);
+        }
       }
     }
     return $notifications;
