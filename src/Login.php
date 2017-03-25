@@ -37,6 +37,7 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
+use ChurchCRM\Emails\LockedEmail;
 
 $systemService = new SystemService();
 
@@ -131,6 +132,10 @@ if ($currentUser != null) {
         // Increment the FailedLogins
         $currentUser->setFailedLogins($currentUser->getFailedLogins() + 1);
         $currentUser->save();
+        if (!empty($currentUser->getEmail()) && $currentUser->isLocked()) {
+            $lockedEmail = new LockedEmail($currentUser);
+            $lockedEmail->send();
+        }
 
         // Set the error text
         $sErrorText = gettext('Invalid login or password');
@@ -278,7 +283,8 @@ if (isset($loginPageMsg)) {
         <?php if ($enableSelfReg) {
     ?>
         <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
-        <?php 
+        <?php
+
 } ?>
       <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
     </div>
