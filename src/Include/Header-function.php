@@ -35,19 +35,17 @@ use ChurchCRM\Service\NotificationService;
 
 function Header_system_notifications()
 {
-  if (NotificationService::testActiveNotifications())
-  {
-    ?>
+    if (NotificationService::testActiveNotifications()) {
+        ?>
   <div class="systemNotificationBar">
     <?php
-    foreach (NotificationService::getNotifications() as $notification)
-    {
-      echo "<a href=\"".$notification->link."\">".$notification->title."</a>";
-    }
-    ?>
+    foreach (NotificationService::getNotifications() as $notification) {
+        echo "<a href=\"".$notification->link."\">".$notification->title."</a>";
+    } ?>
   </div>
     <?php
-  }
+
+    }
 }
 
 function Header_head_metatag()
