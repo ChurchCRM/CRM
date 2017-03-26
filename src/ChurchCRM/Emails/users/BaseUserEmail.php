@@ -35,7 +35,7 @@ abstract class BaseUserEmail extends BaseEmail
 
     protected function buildMessageHeader()
     {
-        return gettext("Dear") ." " . $this->user->getFullName();
+        return SystemConfig::getValue('sDear') ." " . $this->user->getFullName();
     }
 
     protected abstract function buildMessageBody();
