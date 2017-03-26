@@ -6,7 +6,6 @@ use ChurchCRM\PledgeQuery;
 use ChurchCRM\GroupQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemConfig;
-
 // Routes search
 
 // search for a string in Persons, families, groups, Financial Deposits and Payments
@@ -28,7 +27,6 @@ $app->get('/search/{query}', function ($request, $response, $args) {
             ->select(['displayName', 'uri'])
             ->find();
 
-
         array_push($resultsArray, $q->toJSON());
     } catch (Exception $e) {
     }
@@ -48,7 +46,6 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 
     //Deposits Search
     if ($_SESSION['bFinance']) {
-
       try {
         $q = DepositQuery::create();
         $q->filterByComment("%$query%", Criteria::LIKE)
