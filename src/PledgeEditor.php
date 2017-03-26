@@ -769,7 +769,6 @@ require 'Include/Header.php';
       ajax: {
           url: function (params){
             var a = window.CRM.root + '/api/families/search/'+ params.term;
-            console.log(a);
             return a;
           },
           dataType: 'json',
@@ -777,9 +776,10 @@ require 'Include/Header.php';
           data: "",
           processResults: function (data, params) {
             var results = [];
-            $.each(data.families, function(key, object) {
+            var families = JSON.parse(data).Families
+            $.each(families, function(key, object) {
               results.push({
-                id: object.id,
+                id: object.Id,
                 text: object.displayName
               });
             });
@@ -791,9 +791,7 @@ require 'Include/Header.php';
     });
     
     $("#FamilyName").on("select2:select", function (e) {
-      console.log(e);
-        $('[name=FamilyName]').val(e.params.data.text);
-        $('[name=FamilyID]:eq(1)').val(e.params.data.id);
+      $('[name=FamilyID]').val(e.params.data.id);
     });
     
     $("#FundTable").DataTable({
