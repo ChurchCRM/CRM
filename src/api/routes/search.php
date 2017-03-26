@@ -1,10 +1,9 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\DepositQuery;
 use ChurchCRM\FamilyQuery;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\dto\SystemConfig;
-
+use ChurchCRM\DepositQuery;
+use ChurchCRM\PledgeQuery;
+use ChurchCRM\GroupQuery;
 // Routes search
 
 // search for a string in Persons, families, groups, Financial Deposits and Payments
@@ -12,68 +11,71 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     $query = $args['query'];
     $resultsArray = [];
 
-    //Person Search
     try {
         array_push($resultsArray, $this->PersonService->getPersonsJSON($this->PersonService->search($query)));
     } catch (Exception $e) {
     }
-
-    //Family Search
     try {
-        array_push($resultsArray, $this->FamilyService->getFamiliesJSON($this->FamilyService->search($query)));
+        $q = FamilyQuery::create()
+            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+            ->limit(15)
+            ->withColumn('fam_Name', 'displayName')
+            ->withColumn('CONCAT("'.SystemURLs::getRootPath().'FamilyView.php?FamilyID=",Family.Id)', 'uri')
+            ->select(['displayName', 'uri'])
+            ->find();
+
+        array_push($resultsArray, $q->toJSON());
     } catch (Exception $e) {
     }
 
-
-    //Group Search
     try {
-        array_push($resultsArray, $this->GroupService->getGroupJSON($this->GroupService->search($query)));
+        $q = GroupQuery::create()
+            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+            ->limit(15)
+            ->withColumn('grp_Name', 'displayName')
+            ->withColumn('CONCAT("'.SystemURLs::getRootPath().'GroupView.php?GroupID=",Group.Id)', 'uri')
+            ->select(['displayName', 'uri'])
+            ->find();
+
+        array_push($resultsArray, $q->toJSON());
     } catch (Exception $e) {
     }
 
+    try {
+        $q = DepositQuery::create();
+        $q->filterByComment("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+            ->_or()
+            ->filterById($query)
+            ->_or()
+            ->usePledgeQuery()
+            ->filterByCheckno("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+            ->endUse()
+            ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
+            ->withColumn('CONCAT("'.SystemURLs::getRootPath().'DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
+            ->limit(5);
+        array_push($resultsArray, $q->find()->toJSON());
+    } catch (Exception $e) {
+    }
 
-    //Deposits Search
     if ($_SESSION['bFinance']) {
-
-        //Envelopes Search
-        if (SystemConfig::getValue('bUseDonationEnvelopes') && is_numeric($query)) {
-            try {
-                $q = FamilyQuery::create()
-                    ->filterByEnvelope($query)
-                    ->limit(5)
-                    ->withColumn('fam_Name', 'displayName')
-                    ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'FamilyView.php?FamilyID=",Family.Id)', 'uri')
-                    ->select(['displayName', 'uri'])
-                    ->find();
-                array_push($resultsArray, str_replace('Families', 'Donation Envelopes', $q->toJSON()));
-            } catch (Exception $ex) {
-            }
-        }
-
-
         try {
-            $q = DepositQuery::create();
-            $q->filterByComment("%$query%", Criteria::LIKE)
-                ->_or()
-                ->filterById($query)
-                ->_or()
+            $q = DepositQuery::create()
+                ->joinPledge()
                 ->usePledgeQuery()
-                ->filterByCheckno("%$query%", Criteria::LIKE)
+                ->filterByCheckno("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+                ->joinFamily()
                 ->endUse()
-                ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
-                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
-                ->limit(5);
-            array_push($resultsArray, $q->find()->toJSON());
-        } catch (Exception $e) {
-        }
+                ->limit(15)
+                ->withColumn('CONCAT("Check #",Pledge.Checkno," ",Family.Name," ",Deposit.Date)', 'displayName')
+                ->withColumn('CONCAT("'.SystemURLs::getRootPath().'DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
+                ->find();
 
-        //Search Payments
-        try {
-            array_push($resultsArray, $this->FinancialService->getPaymentJSON($this->FinancialService->searchPayments($query)));
+            array_push($resultsArray, str_replace('Deposits', 'Pledges',$q->toJSON()));
         } catch (Exception $e) {
+            echo $e;
+            exit;
         }
     }
-
     $data = ['results' => array_filter($resultsArray)];
 
     return $response->withJson($data);
