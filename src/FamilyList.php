@@ -19,7 +19,7 @@ if (strtolower($sMode) == 'inactive') {
 } else {
     $sMode = 'Active';
     $families = FamilyQuery::create()
-            ->filterByDateDeactivated(null,Criteria::ISNOTNULL)
+            ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
             ->orderByName()
             ->find();
 }
