@@ -2,10 +2,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Service\FamilyService;
 use ChurchCRM\dto\SystemConfig;
-
-$familyService = new FamilyService();
+use ChurchCRM\FamilyQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $sMode = 'Active';
 // Filter received user input as needed
@@ -13,10 +12,16 @@ if (isset($_GET['mode'])) {
     $sMode = FilterInput($_GET['mode']);
 }
 if (strtolower($sMode) == 'inactive') {
-    $families = $familyService->getDeactivatedFamilies();
+    $families = FamilyQuery::create()
+            ->filterByDateDeactivated(null)
+            ->orderByName()
+            ->find();
 } else {
     $sMode = 'Active';
-    $families = $familyService->getActiveFamilies();
+    $families = FamilyQuery::create()
+            ->filterByDateDeactivated(null,Criteria::ISNOTNULL)
+            ->orderByName()
+            ->find();
 }
 
 // Set the page title and include HTML header

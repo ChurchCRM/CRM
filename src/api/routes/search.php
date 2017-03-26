@@ -3,6 +3,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\DepositQuery;
 use ChurchCRM\PledgeQuery;
+use ChurchCRM\GroupQuery;
 // Routes search
 
 // search for a string in Persons, families, groups, Financial Deposits and Payments
@@ -14,21 +15,6 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         array_push($resultsArray, $this->PersonService->getPersonsJSON($this->PersonService->search($query)));
     } catch (Exception $e) {
     }
-
-    if ($_SESSION['bFinance']) {
-        try {
-            $q = FamilyQuery::create()
-                ->filterByEnvelope($query)
-                ->limit(5)
-                ->withColumn('fam_Name', 'displayName')
-                ->withColumn('CONCAT("'.SystemURLs::getRootPath().'FamilyView.php?FamilyID=",Family.Id)', 'uri')
-                ->select(['displayName', 'uri'])
-                ->find();
-            array_push($resultsArray, str_replace('Families', 'Donation Envelopes', $q->toJSON()));
-        } catch (Exception $ex) {
-        }
-    }
-
     try {
         $q = FamilyQuery::create()
             ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
@@ -43,7 +29,15 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     }
 
     try {
-        array_push($resultsArray, $this->GroupService->getGroupJSON($this->GroupService->search($query)));
+        $q = GroupQuery::create()
+            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+            ->limit(15)
+            ->withColumn('grp_Name', 'displayName')
+            ->withColumn('CONCAT("'.SystemURLs::getRootPath().'GroupView.php?GroupID=",Group.Id)', 'uri')
+            ->select(['displayName', 'uri'])
+            ->find();
+
+        array_push($resultsArray, $q->toJSON());
     } catch (Exception $e) {
     }
 
