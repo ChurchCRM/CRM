@@ -160,7 +160,8 @@ class SystemConfig
         "sConfirmSincerely" => new ConfigItem(1048, "sConfirmSincerely", "text", "Sincerely", gettext("Used to end a letter before Signer")),
         "googleTrackingID" => new ConfigItem(1050, "googleTrackingID", "text", "", gettext("Google Analytics Tracking Code")),
         "mailChimpApiKey" => new ConfigItem(2000, "mailChimpApiKey", "text", "", gettext("see http://kb.mailchimp.com/accounts/management/about-api-keys")),
-        "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), '{"Choices":["QBDT"]}')
+        "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), '{"Choices":["QBDT"]}'),
+        "sCloudURL" => new ConfigItem(2002, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL"))
       );
   }
 

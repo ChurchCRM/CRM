@@ -35,7 +35,7 @@ use ChurchCRM\Service\NotificationService;
 
 function Header_system_notifications()
 {
-    if (NotificationService::testActiveNotifications()) {
+    if (NotificationService::hasActiveNotifications()) {
         ?>
   <div class="systemNotificationBar">
     <?php

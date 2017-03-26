@@ -1,6 +1,7 @@
 <?php
 
 namespace ChurchCRM\Service;
+use ChurchCRM\dto\SystemConfig;
 
 class NotificationService
 {
@@ -9,12 +10,14 @@ class NotificationService
     /* Get the latest notifications from the source.  Store in session variable
      * 
      */
-    try
-    {
-      $_SESSION['SystemNotifications'] = json_decode(file_get_contents("http://demo.churchcrm.io/notifications.json"));
-      $_SESSION['SystemNotifications']->expires = new \DateTime();
-      $_SESSION['SystemNotifications']->expires->add(new \DateInterval("PT".$_SESSION['SystemNotifications']->TTL."S"));
-    } catch (Exception $ex) {
+    try {
+      $TempNotificaions = file_get_contents(SystemConfig::getValue("sCloudURL")."notifications.json");
+      if ($TempNotificaions !== false) {
+        $_SESSION['SystemNotifications']  = json_decode($TempNotificaions);
+        $_SESSION['SystemNotifications']->expires = new \DateTime();
+        $_SESSION['SystemNotifications']->expires->add(new \DateInterval("PT".$_SESSION['SystemNotifications']->TTL."S"));
+      }
+    } catch (\Exception $ex) {
       //a failure here should never prevent the page from loading.  
       //Possibly log an exception when a unified logger is implemented.
       //for now, do nothing.
@@ -43,7 +46,7 @@ class NotificationService
     }
   }
   
-  public static function testActiveNotifications()
+  public static function hasActiveNotifications()
   {
     return count(NotificationService::getNotifications()) > 0;
   }
