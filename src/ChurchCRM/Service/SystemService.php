@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
@@ -364,6 +365,10 @@ class SystemService
 
     public function runTimerJobs()
     {
+        if (NotificationService::isUpdateRequired())
+        {
+          NotificationService::updateNotifications();
+        }
         //start the external backup timer job
         if (SystemConfig::getValue('sEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
             try {
