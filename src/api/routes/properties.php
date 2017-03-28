@@ -21,7 +21,7 @@ $app->group('/properties', function() {
         $person = PersonQuery::create()->findPk($personId);
         $property = PropertyQuery::create()->findPk($propertyId);
         if (!$person || !$property) {
-            return $response->withStatus(404, 'The record could not be found.');
+            return $response->withStatus(404, gettext('The record could not be found.'));
         }
         
         $personProperty = PersonPropertyQuery::create()
@@ -31,14 +31,14 @@ $app->group('/properties', function() {
 
         if ($personProperty) {
             if (empty($property->getProPrompt()) || $personProperty->getPropertyValue() == $propertyValue) {
-                return $response->withJson(['success' => true, 'msg' => 'The property is already assigned.']);
+                return $response->withJson(['success' => true, 'msg' => gettext('The property is already assigned.')]);
             }
 
             $personProperty->setPropertyValue($propertyValue);
             if ($personProperty->save()) {
-                return $response->withJson(['success' => true, 'msg' => 'The property is successfully assigned.']);
+                return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
             } else {
-                return $response->withJson(['success' => false, 'msg' => 'The property could not be assigned.']);
+                return $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
             }
         }
 
@@ -52,14 +52,14 @@ $app->group('/properties', function() {
                     ->findOne();
                 $personProperty->setPropertyValue($propertyValue);
                 if (!$personProperty->save()) {
-                    return $response->withJson(['success' => false, 'msg' => 'The property could not be assigned.']);
+                    return $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
                 }
             }
 
-            return $response->withJson(['success' => true, 'msg' => 'The property is successfully assigned.']);
+            return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
         }
 
-        $response->withJson(['success' => false, 'msg' => 'The property could not be assigned.']);
+        $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
 
     });
     
@@ -79,14 +79,14 @@ $app->group('/properties', function() {
             ->findOne();        
         
         if ($personProperty == null) {
-            return $response->withStatus(404, 'The record could not be found.');
+            return $response->withStatus(404, gettext('The record could not be found.'));
         }
         
         $personProperty->delete();
         if ($personProperty->isDeleted()) {
-            return $response->withJson(['success' => true, 'msg' => 'The property is successfully unassigned.']);
+            return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
         } else {
-           return $response->withJson(['success' => false, 'msg' => 'The property could not be unassigned.']); 
+           return $response->withJson(['success' => false, 'msg' => gettext('The property could not be unassigned.')]); 
         }
 
     });
