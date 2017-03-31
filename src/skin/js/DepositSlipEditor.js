@@ -1,12 +1,6 @@
 function initPaymentTable()
 {
   var colDef = [
-     {
-      "className":      'details-control',
-      "orderable":      false,
-      "data":           null,
-      "defaultContent": '<i class="fa fa-plus-circle"></i>'
-    },
     {
       width: 'auto',
       title:'Family',
@@ -20,20 +14,20 @@ function initPaymentTable()
     {
       width: 'auto',
       title:'Check Number',
-      data:'Checkno',
+      data:'Checkno'
     },
     {
       width: 'auto',
       title:'Amount',
-      data:'sumAmount',
+      data:'sumAmount'
     },
     {
       width: 'auto',
       title:'Method',
-      data:'Method',
-    }   
+      data:'Method'
+    }
   ];
-    
+
   if ( depositType == "CreditCard" )
   {
     colDef.push(
@@ -48,8 +42,8 @@ function initPaymentTable()
       }
     );
   }
-    
-  
+
+
   dataT = $("#paymentsTable").DataTable({
     ajax:{
       url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
@@ -145,7 +139,7 @@ function initDepositSlipEditor()
       $("#deleteSelectedRows").prop('disabled', !(selectedRows));
       $("#deleteSelectedRows").text("Delete (" + selectedRows + ") Selected Rows");
     }
-  
+
 
   });
 
@@ -185,5 +179,5 @@ function initCharts(fundChartData, pledgeChartData)
   pieChart = pieChart.Doughnut(pledgeChartData, pieOptions);
   var legend = pieChart.generateLegend();
   $('#fund-donut-legend').append(legend);
- 
+
 }
