@@ -235,9 +235,19 @@ $(document).ready(function () {
 });
 
 function initDataTable() {
-  dataT = $("#membersTable").DataTable({
+  dataT = $("#membersTable").dataTable({
     "language": {
       "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+    },
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+      "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
+      "sRowSelect": "multi",
+      "aButtons": [
+      {
+        "sExtends": "csv",
+        "bSelectedOnly": true
+      }]
     },
     responsive: true,
     ajax: {
@@ -329,8 +339,6 @@ function initDataTable() {
     var selectedRows = dataT.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
     $("#deleteSelectedRows").text("Remove (" + selectedRows + ") Members from group");
-    $("#exportSelectedRowsCSV").prop('disabled', !(selectedRows));
-    $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (CSV)");
     $("#buttonDropdown").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").html("Add  (" + selectedRows + ") Members to another group");
