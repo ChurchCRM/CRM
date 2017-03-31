@@ -235,9 +235,19 @@ $(document).ready(function () {
 });
 
 function initDataTable() {
-  dataT = $("#membersTable").DataTable({
+  dataT = $("#membersTable").dataTable({
     "language": {
       "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+    },
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+      "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
+      "sRowSelect": "multi",
+      "aButtons": [
+      {
+        "sExtends": "csv",
+        "bSelectedOnly": true
+      }]
     },
     responsive: true,
     ajax: {
