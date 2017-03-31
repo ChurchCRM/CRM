@@ -339,8 +339,6 @@ function initDataTable() {
     var selectedRows = dataT.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
     $("#deleteSelectedRows").text("Remove (" + selectedRows + ") Members from group");
-    $("#exportSelectedRowsCSV").prop('disabled', !(selectedRows));
-    $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (CSV)");
     $("#buttonDropdown").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").html("Add  (" + selectedRows + ") Members to another group");
