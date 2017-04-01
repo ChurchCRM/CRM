@@ -69,6 +69,7 @@ $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
 $person = PersonQuery::create()->findPk($iPersonID);
+$assignedProperties = $person->getProperties();
 
 if ($per_ID == $iPersonID) {
 
@@ -184,7 +185,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     <div class="box box-primary">
       <div class="box-body box-profile">
         <div class="image-container">
-            <img  data-name="<?= $person->getFullName()?>" data-src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>" 
+            <img  data-name="<?= $person->getFullName()?>" data-src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>"
             class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
             <?php if ($bOkToEdit): ?>
                 <div class="after">
@@ -361,12 +362,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               ?>
         <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
         <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
-      <?php 
+      <?php
           }
     if ($_SESSION['bDeleteRecords']) {
         ?>
         <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
-      <?php 
+      <?php
     }
     if ($_SESSION['bAdmin']) {
         if (!$person->isUser()) {
@@ -487,10 +488,10 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             $tmpPersonId = $familyMember->getId(); ?>
               <tr>
                 <td>
-                 
+
                  <img style="width:40px; height:40px;display:inline-block" data-name="<?= $familyMember->getFullName()?>" data-src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
                   <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
-                  
+
 
                 </td>
                 <td class="text-center">
@@ -676,12 +677,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                 <table class="table table-condensed dt-responsive" id="assigned-properties-table" width="100%">
                     <thead>
                         <tr class="TableHeader">
-                            <th><?= gettext('Type') ?></th>;
-                            <th><?= gettext('Name') ?></th>;
-                            <th><?= gettext('Value') ?></th>;
+                            <th><?= gettext('Type') ?></th>
+                            <th><?= gettext('Name') ?></th>
+                            <th><?= gettext('Value') ?></th>
                             <?php if ($bOkToEdit): ?>
-                                <th><?= gettext('Edit') ?></th>;
-                                <th><?= gettext('Remove') ?></th>';
+                                <th><?= gettext('Remove') ?></th>
                             <?php endif; ?>
                         </tr>
                     </thead>
@@ -698,15 +698,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                             echo '<td>'.$pro_Name.'</td>';
                             echo '<td>'.$r2p_Value.'</td>';
                             if ($bOkToEdit) {
-                                if (strlen($pro_Prompt) > 0) {
-                                    echo '<td><a href="PropertyAssign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Edit').'</a></td>';
-                                } else {
-                                    echo '<td>&nbsp;</td>';
-                                }
-                                echo '<td><a href="PropertyUnassign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Remove').'</a></td>';
+                                $attributes = "href=\"#\" data-property_id=\"{$pro_ID}\" data-person_id=\"{$iPersonID}\" class=\"remove-property-btn\" ";
+                                echo '<td><a '.$attributes.'>'.gettext('Remove').'</a></td>';
                             }
                             echo '</tr>';
-                            
+
                             $sAssignedProperties .= $pro_ID.',';
                         } ?>
                     </tbody>
@@ -718,23 +714,41 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   <div>
                     <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
 
-                    <form method="post" action="PropertyAssign.php?PersonID=<?= $iPersonID ?>">
+                    <form method="post" action="<?= SystemURLs::getRootPath(). '/api/properties/persons/assign' ?>" id="assign-property-form">
+                        <input type="hidden" name="PersonId" value="<?= $person->getId() ?>" >
                         <div class="row">
                             <div class="form-group col-xs-12 col-md-7">
-                                <select name="PropertyID" id="input-person-properties" class="form-control select2"
+                                <select name="PropertyId" id="input-person-properties" class="form-control select2"
                                     style="width:100%" data-placeholder="Select ...">
+                                <option disabled selected> -- <?= gettext('select an option') ?> -- </option>
                                 <?php
+                                $assignedPropertiesArray = $assignedProperties->getArrayCopy('ProId');
                                 while ($aRow = mysqli_fetch_array($rsProperties)) {
                                     extract($aRow);
-                                    //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                    if (strlen(strstr($sAssignedProperties, ','.$pro_ID.',')) == 0) {
-                                        echo '<option value="'.$pro_ID.'">'.$pro_Name.'</option>';
+                                    $attributes = "value=\"{$pro_ID}\" ";
+                                    if (!empty($pro_Prompt)) {
+                                        if (!empty($assignedPropertiesArray[$pro_ID])) {
+                                            $pro_Value = $assignedPropertiesArray[$pro_ID]->getPersonProperties()[0]->getPropertyValue();
+                                        } else {
+                                            $pro_Value = '';
+                                        }
+                                        $attributes .= "data-pro_Prompt=\"{$pro_Prompt}\" data-pro_Value=\"{$pro_Value}\" ";
                                     }
+
+                                    if (!empty($assignedPropertiesArray[$pro_ID])) {
+                                        $optionText = $pro_Name . ' (' . gettext('assigned') . ')';
+                                    } else {
+                                        $optionText = $pro_Name;
+                                    }
+                                    echo "<option {$attributes}>{$optionText}</option>";
                                 } ?>
                                 </select>
                             </div>
+                            <div id="prompt-box" class="col-xs-12 col-md-7">
+
+                            </div>
                             <div class="form-group col-xs-12 col-md-7">
-                                <input type="submit" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
+                                <input id="assign-property-btn" type="submit" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
                             </div>
                         </div>
                     </form>
@@ -804,11 +818,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                 <div class="alert alert-info">
                     <div>
                         <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>
-                        
+
                         <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
                         <div class="row">
                             <div class="form-group col-xs-12 col-md-7">
-                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple 
+                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple
                                     class="form-control select2" style="width:100%" data-placeholder="Select ...">
                                     <?php
                                     while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
@@ -906,7 +920,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 </div>
 <!-- Modal -->
 <div id="photoUploader">
-  
+
 </div>
 
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
@@ -933,6 +947,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
 <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js" type="text/javascript"></script>
 <script>
   var person_ID = <?= $iPersonID ?>;
   function GroupRemove(Group, Person) {
@@ -1003,7 +1018,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
-                 
+
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Photo') ?>",
@@ -1013,13 +1028,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                 });
             }
         });
-        
 
-        
-        
+
+
+
     });
-  
-  
+    
+    
 </script>
 
 <?php
