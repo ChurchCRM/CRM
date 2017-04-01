@@ -2,29 +2,9 @@
 
 ## 2.6.3 27/03/2017
 
-- [**bug**] Groups are not available for search [#2179](https://github.com/ChurchCRM/CRM/issues/2179)
-- [**enhancement**][**Users**] Send Email when User is Locked [#2174](https://github.com/ChurchCRM/CRM/issues/2174)
-- [**bug**][**Web Report**] Photos are broken [#2150](https://github.com/ChurchCRM/CRM/issues/2150)
-- [**enhancement**] Update Browser Check  [#2138](https://github.com/ChurchCRM/CRM/issues/2138)
 - [**enhancement**] Add System Notification Bar [#2124](https://github.com/ChurchCRM/CRM/issues/2124)
 - [**bug**] Unable to Create Event [#2121](https://github.com/ChurchCRM/CRM/issues/2121)
-- [**question**] Can Some one shed some light on this issue - GROUPS - LIST GROUPS [#2069](https://github.com/ChurchCRM/CRM/issues/2069)
-- [**enhancement**][**Events**] Manual PersonID Lookup Required for each Check-In/Check-Out? [#2066](https://github.com/ChurchCRM/CRM/issues/2066)
-- [**development**] Convert salutation utility to OOP / ORM [#2052](https://github.com/ChurchCRM/CRM/issues/2052)
-- [**bug**] Need messaging and away to unlock an account [#2040](https://github.com/ChurchCRM/CRM/issues/2040)
-- [**enhancement**][**Web Report**] Deposit Buttons smashed together [#2020](https://github.com/ChurchCRM/CRM/issues/2020)
-- [**bug**][**P0 - Urgent**] Map group broken in 2.7.0 [#2005](https://github.com/ChurchCRM/CRM/issues/2005)
-- [**bug**] Advanced Search Query - Name search issue [#1967](https://github.com/ChurchCRM/CRM/issues/1967)
-- [**Feature Request**] Option to disable auto adition of lastname when add/edit person [#1953](https://github.com/ChurchCRM/CRM/issues/1953)
-- [**enhancement**] Option to hide bill counts in deposit reports [#1941](https://github.com/ChurchCRM/CRM/issues/1941)
 - [**Feature Request**] Activate/Deactivate Families [#1833](https://github.com/ChurchCRM/CRM/issues/1833)
-- [**question**] Mapping the cart or group only maps Families with a 'head of houseold'-equivalent role assigned [#1738](https://github.com/ChurchCRM/CRM/issues/1738)
-- [**enhancement**][**Web Report**] Clicking a family context data [#1717](https://github.com/ChurchCRM/CRM/issues/1717)
-- [**enhancement**][**Web Report**] Map is too small [#1716](https://github.com/ChurchCRM/CRM/issues/1716)
-- [**Feature Request**] Investigate Amazon SNS for notifications [#1265](https://github.com/ChurchCRM/CRM/issues/1265)
-- [**enhancement**] Return to Deposit List [#801](https://github.com/ChurchCRM/CRM/issues/801)
-- [**enhancement**][**Members**] Birthdays by Month [#705](https://github.com/ChurchCRM/CRM/issues/705)
-- [**Feature Request**] SMS Messaging [#375](https://github.com/ChurchCRM/CRM/issues/375)
 
  ---
 
