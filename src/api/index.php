@@ -28,6 +28,7 @@ require __DIR__.'/routes/issues.php';
 // people routes
 require __DIR__.'/routes/search.php';
 require __DIR__.'/routes/persons.php';
+require __DIR__.'/routes/properties.php';
 require __DIR__.'/routes/users.php';
 require __DIR__.'/routes/families.php';
 require __DIR__.'/routes/groups.php';

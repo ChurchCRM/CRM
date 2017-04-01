@@ -209,7 +209,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
             $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
             $arr['ID'] = $family->getId();
             $arr['Name'] = $family->getName();
-            $arr['Salutation'] = MakeSalutationUtility($family->getId());
+            $arr['Salutation'] = $family->getSaluation();
             $arr['Address'] = $family->getAddress();
             $arr['Thumbnail'] = $photoFileThumb;
             $arr['Latitude'] = $latLng['Latitude'];
