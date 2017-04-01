@@ -363,11 +363,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
         <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
       <?php
+
           }
     if ($_SESSION['bDeleteRecords']) {
         ?>
         <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
       <?php
+
     }
     if ($_SESSION['bAdmin']) {
         if (!$person->isUser()) {
@@ -723,25 +725,25 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                                 <option disabled selected> -- <?= gettext('select an option') ?> -- </option>
                                 <?php
                                 $assignedPropertiesArray = $assignedProperties->getArrayCopy('ProId');
-                                while ($aRow = mysqli_fetch_array($rsProperties)) {
-                                    extract($aRow);
-                                    $attributes = "value=\"{$pro_ID}\" ";
-                                    if (!empty($pro_Prompt)) {
-                                        if (!empty($assignedPropertiesArray[$pro_ID])) {
-                                            $pro_Value = $assignedPropertiesArray[$pro_ID]->getPersonProperties()[0]->getPropertyValue();
-                                        } else {
-                                            $pro_Value = '';
-                                        }
-                                        $attributes .= "data-pro_Prompt=\"{$pro_Prompt}\" data-pro_Value=\"{$pro_Value}\" ";
-                                    }
+    while ($aRow = mysqli_fetch_array($rsProperties)) {
+        extract($aRow);
+        $attributes = "value=\"{$pro_ID}\" ";
+        if (!empty($pro_Prompt)) {
+            if (!empty($assignedPropertiesArray[$pro_ID])) {
+                $pro_Value = $assignedPropertiesArray[$pro_ID]->getPersonProperties()[0]->getPropertyValue();
+            } else {
+                $pro_Value = '';
+            }
+            $attributes .= "data-pro_Prompt=\"{$pro_Prompt}\" data-pro_Value=\"{$pro_Value}\" ";
+        }
 
-                                    if (!empty($assignedPropertiesArray[$pro_ID])) {
-                                        $optionText = $pro_Name . ' (' . gettext('assigned') . ')';
-                                    } else {
-                                        $optionText = $pro_Name;
-                                    }
-                                    echo "<option {$attributes}>{$optionText}</option>";
-                                } ?>
+        if (!empty($assignedPropertiesArray[$pro_ID])) {
+            $optionText = $pro_Name . ' (' . gettext('assigned') . ')';
+        } else {
+            $optionText = $pro_Name;
+        }
+        echo "<option {$attributes}>{$optionText}</option>";
+    } ?>
                                 </select>
                             </div>
                             <div id="prompt-box" class="col-xs-12 col-md-7">
