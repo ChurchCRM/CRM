@@ -69,7 +69,7 @@ Header_body_scripts();
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 4: Login') ?></h3>
         <div class="timeline-body" id="finalPhase" style="display: none">
-          <a href="Login.php?Logoff=True" class="btn btn-primary"><?= gettext('Login to Upgraded System') ?> </a>
+          <a href="Logoff.php" class="btn btn-primary"><?= gettext('Login to Upgraded System') ?> </a>
         </div>
       </div>
     </li>
@@ -103,9 +103,9 @@ Header_body_scripts();
       $("#backupstatus").css("color","red");
       $("#backupstatus").html("<?= gettext('Backup Error.') ?>");
     });
-   
+
  });
- 
+
  $("#fetchUpdate").click(function(){
     $("#status2").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
     $.ajax({
@@ -121,9 +121,9 @@ Header_body_scripts();
       $("#fetchPhase").slideUp();
       $("#updatePhase").show("slow");
     });
-   
+
  });
- 
+
  $("#applyUpdate").click(function(){
    $("#status3").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
    $.ajax({
@@ -142,7 +142,7 @@ Header_body_scripts();
       $("#finalPhase").show("slow");
     });
  });
- 
+
 function downloadbutton(filename) {
     window.location = window.CRM.root +"/api/database/download/"+filename;
     $("#backupstatus").css("color","green");
