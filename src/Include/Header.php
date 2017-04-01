@@ -192,7 +192,7 @@ $MenuFirst = 1;
             </a>
           </li>
           <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getRootPath() ?>/Login.php?Logoff=True">
+            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
               <i class="fa fa-power-off"></i>
             </a>
           </li>
