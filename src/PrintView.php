@@ -115,7 +115,7 @@ $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy),
   ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
 $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sCountry, $dummy),
-  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
+  "", false);
 $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sCountry, $dummy),
   ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
 

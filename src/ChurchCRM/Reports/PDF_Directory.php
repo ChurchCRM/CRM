@@ -265,7 +265,7 @@ class PDF_Directory extends ChurchInfoReport
             return '';
         }
     }
-    
+
     public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
     {
       if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
@@ -310,9 +310,6 @@ class PDF_Directory extends ChurchInfoReport
 
         if ($bDirFamilyPhone && strlen($fam_HomePhone)) {
             $sFamilyStr .= '   '.gettext('Phone').': '.ExpandPhoneNumber($fam_HomePhone, $fam_Country, $bWierd)."\n";
-        }
-        if ($bDirFamilyWork && strlen($fam_WorkPhone)) {
-            $sFamilyStr .= '   '.gettext('Work').': '.ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $bWierd)."\n";
         }
         if ($bDirFamilyCell && strlen($fam_CellPhone)) {
             $sFamilyStr .= '   '.gettext('Cell').': '.ExpandPhoneNumber($fam_CellPhone, $fam_Country, $bWierd)."\n";
@@ -376,7 +373,7 @@ class PDF_Directory extends ChurchInfoReport
         }
 
         $iTempLen = strlen($sHeadStr);
-        
+
         $sHeadStr .= " " . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
         $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);

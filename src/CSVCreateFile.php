@@ -365,7 +365,6 @@ if ($sFormat == 'addtocart') {
         $fam_Zip = '';
         $fam_Country = '';
         $fam_HomePhone = '';
-        $fam_WorkPhone = '';
         $fam_CellPhone = '';
         $fam_Email = '';
         $fam_WeddingDate = '';
@@ -378,7 +377,7 @@ if ($sFormat == 'addtocart') {
         if ($sFormat == 'rollup') {
             $sPhoneCountry = SelectWhichInfo($fam_Country, $per_Country, false);
             $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), false);
-            $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), false);
+            $sWorkPhone = SelectWhichInfo("", ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), false);
             $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), false);
             $sCountry = SelectWhichInfo($fam_Country, $per_Country, false);
             SelectWhichAddress($sAddress1, $sAddress2, $fam_Address1, $fam_Address2, $per_Address1, $per_Address2, false);
@@ -391,7 +390,7 @@ if ($sFormat == 'addtocart') {
         else {
             $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
             $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
-            $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
+            $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), "", false);
             $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
             $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
             SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);

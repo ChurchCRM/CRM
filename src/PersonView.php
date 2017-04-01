@@ -156,10 +156,9 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
     $sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
   ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
-    $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
+    $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), "", true);
     $sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
+  "", false);
     $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
   ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);
     $sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
@@ -184,7 +183,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     <div class="box box-primary">
       <div class="box-body box-profile">
         <div class="image-container">
-            <img  data-name="<?= $person->getFullName()?>" data-src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>" 
+            <img  data-name="<?= $person->getFullName()?>" data-src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>"
             class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
             <?php if ($bOkToEdit): ?>
                 <div class="after">
@@ -361,12 +360,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               ?>
         <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
         <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
-      <?php 
+      <?php
+
           }
     if ($_SESSION['bDeleteRecords']) {
         ?>
         <a class="btn btn-app bg-maroon" href="SelectDelete.php?mode=person&PersonID=<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
-      <?php 
+      <?php
+
     }
     if ($_SESSION['bAdmin']) {
         if (!$person->isUser()) {
@@ -487,10 +488,10 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             $tmpPersonId = $familyMember->getId(); ?>
               <tr>
                 <td>
-                 
+
                  <img style="width:40px; height:40px;display:inline-block" data-name="<?= $familyMember->getFullName()?>" data-src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle">
                   <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
-                  
+
 
                 </td>
                 <td class="text-center">
@@ -706,7 +707,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                                 echo '<td><a href="PropertyUnassign.php?PersonID='.$iPersonID.'&PropertyID='.$pro_ID.'">'.gettext('Remove').'</a></td>';
                             }
                             echo '</tr>';
-                            
+
                             $sAssignedProperties .= $pro_ID.',';
                         } ?>
                     </tbody>
@@ -804,11 +805,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                 <div class="alert alert-info">
                     <div>
                         <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>
-                        
+
                         <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
                         <div class="row">
                             <div class="form-group col-xs-12 col-md-7">
-                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple 
+                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple
                                     class="form-control select2" style="width:100%" data-placeholder="Select ...">
                                     <?php
                                     while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
@@ -906,7 +907,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 </div>
 <!-- Modal -->
 <div id="photoUploader">
-  
+
 </div>
 
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label" aria-hidden="true">
@@ -963,7 +964,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
     encode: true,
     dataType: 'json',
-    data: { 
+    data: {
       "_METHOD": "DELETE"
     }
     }).done(function(data) {
@@ -984,12 +985,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   $("#uploadImageButton").click(function(){
     window.CRM.photoUploader.show();
   });
-  
+
 
     $(document).ready(function() {
         $("#input-volunteer-opportunities").select2();
         $("#input-person-properties").select2();
-        
+
         var options = {
             "language": {
                 "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
@@ -998,12 +999,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         };
         $("#assigned-volunteer-opps-table").DataTable(options);
         $("#assigned-properties-table").DataTable(options);
-        
-        
+
+
         contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
-                 
+
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Photo') ?>",
@@ -1013,13 +1014,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                 });
             }
         });
-        
 
-        
-        
+
+
+
     });
-  
-  
+
+
 </script>
 
 <?php

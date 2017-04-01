@@ -306,7 +306,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 						fam_Zip, 
 						fam_Country, 
 						fam_HomePhone, 
-						fam_WorkPhone, 
 						fam_CellPhone, 
 						fam_Email, 
 						fam_WeddingDate, 
@@ -327,7 +326,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         $sZip."','".
                         $sCountry."','".
                         $sHomePhone."','".
-                        $sWorkPhone."','".
                         $sCellPhone."','".
                         $sEmail."',".
                         $dWeddingDate.",'".
@@ -351,7 +349,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         'fam_Longitude='.$nLongitude.','.
                         "fam_Country='".$sCountry."',".
                         "fam_HomePhone='".$sHomePhone."',".
-                        "fam_WorkPhone='".$sWorkPhone."',".
                         "fam_CellPhone='".$sCellPhone."',".
                         "fam_Email='".$sEmail."',".
                         'fam_WeddingDate='.$dWeddingDate.','.
@@ -534,7 +531,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sZip = $fam_Zip;
         $sCountry = $fam_Country;
         $sHomePhone = $fam_HomePhone;
-        $sWorkPhone = $fam_WorkPhone;
         $sCellPhone = $fam_CellPhone;
         $sEmail = $fam_Email;
         $bSendNewsLetter = ($fam_SendNewsLetter == 'TRUE');

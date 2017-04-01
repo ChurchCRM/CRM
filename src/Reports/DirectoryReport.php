@@ -256,7 +256,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         $sState = SelectWhichInfo($per_State, $fam_State, false);
         $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
         $sHomePhone = SelectWhichInfo($per_HomePhone, $fam_HomePhone, false);
-        $sWorkPhone = SelectWhichInfo($per_WorkPhone, $fam_WorkPhone, false);
+        $sWorkPhone = SelectWhichInfo($per_WorkPhone, "", false);
         $sCellPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, false);
         $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
 

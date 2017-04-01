@@ -356,7 +356,6 @@ CREATE TABLE `family_fam` (
   `fam_Zip` varchar(50) default NULL,
   `fam_Country` varchar(50) default NULL,
   `fam_HomePhone` varchar(30) default NULL,
-  `fam_WorkPhone` varchar(30) default NULL,
   `fam_CellPhone` varchar(30) default NULL,
   `fam_Email` varchar(100) default NULL,
   `fam_WeddingDate` date default NULL,
