@@ -37,6 +37,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Emails\LockedEmail;
+use ChurchCRM\Service\NotificationService;
 
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
@@ -133,6 +134,7 @@ if (isset($_POST['User'])) {
 
         $systemService = new SystemService();
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
+        NotificationService::updateNotifications();
         Redirect('CheckVersion.php');
         exit;
     }
