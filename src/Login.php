@@ -38,6 +38,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Emails\LockedEmail;
+use ChurchCRM\Service\NotificationService;
 
 $systemService = new SystemService();
 
@@ -164,6 +165,7 @@ if ($currentUser != null) {
         $_SESSION['bSearchFamily'] = $currentUser->getSearchfamily();
 
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
+        NotificationService::updateNotifications();
         Redirect('CheckVersion.php');
         exit;
     }
