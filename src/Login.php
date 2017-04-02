@@ -145,7 +145,7 @@ if (isset($_POST['User'])) {
 
 
 // Set the page title and include HTML header
-$sPageTitle = 'ChurchCRM ' . gettext('Login');
+$sPageTitle = gettext('Login');
 require 'Include/HeaderNotLoggedIn.php';
 ?>
 
