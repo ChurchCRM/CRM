@@ -6,27 +6,28 @@ use ChurchCRM\Token;
 use ChurchCRM\Note;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\TokenQuery;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 $app->group('/families', function () {
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
-        echo $this->FamilyService->getFamiliesJSON($this->FamilyService->search($query));
-    });
+         $q = FamilyQuery::create()
+          ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+          ->limit(15)
+          ->withColumn('CONCAT( Family.Name, " - ", Family.Address1," / ", Family.City, " ", Family.State)', 'displayName')
+          ->withColumn('CONCAT("'.SystemURLs::getRootPath().'FamilyView.php?FamilyID=",Family.Id)', 'uri')
+          ->select(['displayName', 'uri','Id'])
+          ->find();
 
-    $this->get('/lastedited', function ($request, $response, $args) {
-        $this->FamilyService->lastEdited();
+       return $response->withJSON($q->toJSON());
     });
 
     $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
         $scanString = $args['scanString'];
         echo $this->FinancialService->getMemberByScanString($scanString);
     });
-
-    $this->get('/byEnvelopeNumber/{envelopeNumber:[0-9]+}', function ($request, $response, $args) {
-        $envelopeNumber = $args['envelopeNumber'];
-        echo $this->FamilyService->getFamilyStringByEnvelope($envelopeNumber);
-    });
-
+  
     $this->get('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
         if ( $family->isPhotoLocal() )

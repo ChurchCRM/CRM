@@ -158,13 +158,15 @@ class SystemConfig
         "sLastIntegrityCheckTimeStamp" => new ConfigItem(1046, "sLastIntegrityCheckTimeStamp", "text", "", gettext("Last Integrity Check Timestamp")),
         "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "choice", "", "", json_encode(["Choices" => Countries::getNames()])),
         "sConfirmSincerely" => new ConfigItem(1048, "sConfirmSincerely", "text", "Sincerely", gettext("Used to end a letter before Signer")),
-        "sDear" => new ConfigItem(104, "sDear", "text", "Dear", gettext("Text before name in emails/reports")),
+        "sDear" => new ConfigItem(1049, "sDear", "text", "Dear", gettext("Text before name in emails/reports")),
         "googleTrackingID" => new ConfigItem(1050, "googleTrackingID", "text", "", gettext("Google Analytics Tracking Code")),
         "mailChimpApiKey" => new ConfigItem(2000, "mailChimpApiKey", "text", "", gettext("see http://kb.mailchimp.com/accounts/management/about-api-keys")),
         "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), '{"Choices":["QBDT"]}'),
         "bAllowEmptyLastName" => new ConfigItem(2010, "bAllowEmptyLastName", "boolean", "0", gettext("Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.")),
         "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "number", "3", gettext("Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName ")),
-        "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip"))
+        "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
+        "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL"))
+
       );
   }
 

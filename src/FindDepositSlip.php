@@ -42,7 +42,7 @@ require 'Include/Header.php';
       <div class="row">
         <div class="container-fluid">
           <div class="col-lg-4">
-            <label for="addNewGruop"><?= gettext('Deposit Comment') ?></label>
+            <label for="depositComment"><?= gettext('Deposit Comment') ?></label>
             <input class="form-control newDeposit" name="depositComment" id="depositComment" style="width:100%">
           </div>
           <div class="col-lg-3">
@@ -55,7 +55,7 @@ require 'Include/Header.php';
             </select>
           </div>
           <div class="col-lg-3">
-            <label for="addNewGruop"><?= gettext('Deposit Date') ?></label>
+            <label for="depositDate"><?= gettext('Deposit Date') ?></label>
             <input class="form-control" name="depositDate" id="depositDate" style="width:100%" class="date-picker">
           </div>
         </div>

@@ -1,38 +1,33 @@
 function initPaymentTable()
 {
   var colDef = [
-     {
-      "className":      'details-control',
-      "orderable":      false,
-      "data":           null,
-      "defaultContent": '<i class="fa fa-plus-circle"></i>'
-    },
     {
       width: 'auto',
       title:'Family',
       data:'FamilyName',
       render: function(data, type, full, meta) {
-        var familyName = data ? data : "Anonymous"
-        return '<a href=\'PledgeEditor.php?GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + familyName;
+        var familyName = data ? data : "<?= gettext('Anonymous')?>";
+        return '<a href=\'PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' + depositSlipID +
+            '&GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + familyName;
       }
     },
     {
       width: 'auto',
       title:'Check Number',
-      data:'Checkno',
+      data:'Checkno'
     },
     {
       width: 'auto',
       title:'Amount',
-      data:'sumAmount',
+      data:'sumAmount'
     },
     {
       width: 'auto',
       title:'Method',
-      data:'Method',
-    }   
+      data:'Method'
+    }
   ];
-    
+
   if ( depositType == "CreditCard" )
   {
     colDef.push(
@@ -47,8 +42,8 @@ function initPaymentTable()
       }
     );
   }
-    
-  
+
+
   dataT = $("#paymentsTable").DataTable({
     ajax:{
       url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
@@ -144,7 +139,7 @@ function initDepositSlipEditor()
       $("#deleteSelectedRows").prop('disabled', !(selectedRows));
       $("#deleteSelectedRows").text("Delete (" + selectedRows + ") Selected Rows");
     }
-  
+
 
   });
 
@@ -184,5 +179,5 @@ function initCharts(fundChartData, pledgeChartData)
   pieChart = pieChart.Doughnut(pledgeChartData, pieOptions);
   var legend = pieChart.generateLegend();
   $('#fund-donut-legend').append(legend);
- 
+
 }
