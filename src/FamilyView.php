@@ -910,7 +910,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 </div>
 
   <!-- Modal -->
-  <div id="photoUploader"></div>  
+  <div id="photoUploader"></div>
   <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
        aria-hidden="true">
     <div class="modal-dialog">
@@ -1062,36 +1062,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
               }
             });
 
-        contentExists(window.CRM.root + "/api/families/" + familyId + "/photo", function(success) {
-            if (success) {
-                $("#view-larger-image-btn").removeClass('hide');
-                
-                $("#view-larger-image-btn").click(function() {
-                    bootbox.alert({
-                        title: "<?= gettext('Family Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + familyId + '/photo" />',
-                        backdrop: true
-                    });
-                });
-            }
-        });
-
-
-        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
-            if (success) {
-                $("#view-larger-image-btn").removeClass('hide');
-
-                $("#view-larger-image-btn").click(function() {
-                    bootbox.alert({
-                        title: "<?= gettext('Family Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + familyId + '/photo" />',
-                        backdrop: true
-                    });
-                });
-            }
-        });
-
-
         contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
@@ -1106,7 +1076,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             }
         });
 
-        });
+    });
     </script>
 
     <?php require "Include/Footer.php" ?>
