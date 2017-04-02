@@ -131,12 +131,6 @@ function DeletePerson($iPersonID)
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
     if ($sMode == 'person') {
-        // Delete Person
-        // Make sure this person is not a user
-        $user = UserQuery::create()->findPk($iPersonID);
-        if (!is_null($user)) {
-            $user->delete();
-        }
         DeletePerson($iPersonID);
 
         // Redirect back to the list
