@@ -1069,36 +1069,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Family Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + familyId + '/photo" />',
-                        backdrop: true
-                    });
-                });
-            }
-        });
-
-
-        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
-            if (success) {
-                $("#view-larger-image-btn").removeClass('hide');
-
-                $("#view-larger-image-btn").click(function() {
-                    bootbox.alert({
-                        title: "<?= gettext('Family Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + familyId + '/photo" />',
-                        backdrop: true
-                    });
-                });
-            }
-        });
-
-
-        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
-            if (success) {
-                $("#view-larger-image-btn").removeClass('hide');
-
-                $("#view-larger-image-btn").click(function() {
-                    bootbox.alert({
-                        title: "<?= gettext('Family Photo') ?>",
                         message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
                         backdrop: true
                     });
@@ -1106,7 +1076,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             }
         });
 
-        });
+    });
     </script>
 
     <?php require "Include/Footer.php" ?>
