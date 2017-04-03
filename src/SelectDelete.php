@@ -28,15 +28,11 @@ if (!$_SESSION['bDeleteRecords']) {
 
 // default values to make the newer versions of php happy
 $iFamilyID = 0;
-$iPersonID = 0;
 $iDonationFamilyID = 0;
 $sMode = 'family';
 
 if (!empty($_GET['FamilyID'])) {
     $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
-}
-if (!empty($_GET['PersonID'])) {
-    $iPersonID = FilterInput($_GET['PersonID'], 'int');
 }
 if (!empty($_GET['DonationFamilyID'])) {
     $iDonationFamilyID = FilterInput($_GET['DonationFamilyID'], 'int');
@@ -69,74 +65,10 @@ if ($_SESSION['bFinance'] && isset($_GET['MoveDonations']) && $iFamilyID && $iDo
 }
 
 //Set the Page Title
-
-if ($sMode == 'person') {
-    $sPageTitle = gettext('Person Delete Confirmation');
-} else {
-    $sPageTitle = gettext('Family Delete Confirmation');
-}
-
-function DeletePerson($iPersonID)
-{
-    $groupService = new GroupService();
-    // Remove person from all groups they belonged to
-    $sSQL = 'SELECT p2g2r_grp_ID FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ' . $iPersonID;
-    $rsAssignedGroups = RunQuery($sSQL);
-    while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
-        extract($aRow);
-        $groupService->removeUserFromGroup($p2g2r_grp_ID, $iPersonID);
-    }
-
-    // Remove custom field data
-    $sSQL = 'DELETE FROM person_custom WHERE per_ID = ' . $iPersonID;
-    RunQuery($sSQL);
-
-    // Remove note data
-    $sSQL = 'DELETE FROM note_nte WHERE nte_per_ID = ' . $iPersonID;
-    RunQuery($sSQL);
-
-    // Delete the Person record
-    $sSQL = 'DELETE FROM person_per WHERE per_ID = ' . $iPersonID;
-    RunQuery($sSQL);
-
-    // Remove person property data
-    $sSQL = "SELECT pro_ID FROM property_pro WHERE pro_Class='p'";
-    $rsProps = RunQuery($sSQL);
-
-    while ($aRow = mysqli_fetch_row($rsProps)) {
-        $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = ' . $aRow[0] . ' AND r2p_record_ID = ' . $iPersonID;
-        RunQuery($sSQL);
-    }
-
-    // Delete any User record
-    $user = UserQuery::create()->findPk($iPersonID);
-    if (!is_null($user)) {
-        $user->delete();
-    }
-
-    // Make sure person was not in the cart
-    RemoveFromPeopleCart($iPersonID);
-
-    // Delete the photo files, if they exist
-    $photoThumbnail = 'Images/Person/thumbnails/' . $iPersonID . '.jpg';
-    if (file_exists($photoThumbnail)) {
-        unlink($photoThumbnail);
-    }
-    $photoFile = 'Images/Person/' . $iPersonID . '.jpg';
-    if (file_exists($photoFile)) {
-        unlink($photoFile);
-    }
-}
+$sPageTitle = gettext('Family Delete Confirmation');
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
-    if ($sMode == 'person') {
-        DeletePerson($iPersonID);
-
-        // Redirect back to the list
-        Redirect('SelectList.php?mode=person');
-    }
-} else {
     // Delete Family
     // Delete all associated Notes associated with this Family record
     $sSQL = 'DELETE FROM note_nte WHERE nte_fam_ID = ' . $iFamilyID;
@@ -190,21 +122,11 @@ if (isset($_GET['Confirmed'])) {
     Redirect('FamilyList.php');
 }
 
-if ($sMode == 'person') {
-    // Get the data on this person
-    $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = ' . $iPersonID;
-    $rsPerson = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsPerson));
 
-    // See if this person is a user
-    $rsUser = UserQuery::create()->findPk($iPersonID);
-    $bIsUser = !is_null($rsUser);
-} else {
-    //Get the family record in question
-    $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
-    $rsFamily = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsFamily));
-}
+//Get the family record in question
+$sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
+$rsFamily = RunQuery($sSQL);
+extract(mysqli_fetch_array($rsFamily));
 
 require 'Include/Header.php';
 
@@ -212,45 +134,31 @@ require 'Include/Header.php';
 <div class="box">
     <div class="box-body">
         <?php
-        if ($sMode == 'person') {
-            if ($bIsUser) {
-                echo '<p class="callout callout-danger">' . gettext('Sorry, this person is a user.  An administrator must remove their user status before they may be deleted from the database.') . '<br><br>';
-                echo '<a href="PersonView.php?PersonID=' . $iPersonID . '">' . gettext('Return to Person View') . '</a></p>';
-            } else {
-                echo '<div class="callout callout-warning">';
-                echo gettext('Please confirm deletion of') . ': <strong>' . $per_FirstName . ' ' . $per_LastName . '</strong>';
-                echo gettext(' (This action CANNOT be undone!)') . '<br/>';
-                echo "</div><p class='text-center'>";
-                echo '<a class="btn btn-danger" href="SelectDelete.php?mode=person&PersonID=' . $iPersonID . '&Confirmed=Yes">' . gettext('Yes, delete this record') . '</a> ';
-                echo '<a class="btn btn-info" href="PersonView.php?PersonID=' . $iPersonID . '">' . gettext('No, cancel this deletion') . '</a></h2></p>';
-                echo '</p></div>';
-            }
-        } else {
-            // Delete Family Confirmation
+        // Delete Family Confirmation
         // See if this family has any donations OR an Egive association
         $sSQL = "SELECT plg_plgID FROM pledge_plg WHERE plg_PledgeOrPayment = 'Payment' AND plg_FamID = " . $iFamilyID;
-            $rsDonations = RunQuery($sSQL);
-            $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
+        $rsDonations = RunQuery($sSQL);
+        $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
 
-            if ($bIsDonor && !$_SESSION['bFinance']) {
-                // Donations from Family. Current user not authorized for Finance
+        if ($bIsDonor && !$_SESSION['bFinance']) {
+            // Donations from Family. Current user not authorized for Finance
             echo '<p class="LargeText">' . gettext('Sorry, there are records of donations from this family. This family may not be deleted.') . '<br><br>';
-                echo '<a href="FamilyView.php?FamilyID=' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
-            } elseif ($bIsDonor && $_SESSION['bFinance']) {
-                // Donations from Family. Current user authorized for Finance.
+            echo '<a href="FamilyView.php?FamilyID=' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
+        } elseif ($bIsDonor && $_SESSION['bFinance']) {
+        // Donations from Family. Current user authorized for Finance.
         // Select another family to move donations to.
         echo '<p class="LargeText">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
-                echo '<form name=SelectFamily method=get action=SelectDelete.php>';
-                echo '<div class="ShadedBox">';
-                echo '<div class="LightShadedBox"><strong>' . gettext('Family Name') . ':' . " $fam_Name</strong></div>";
-                echo '<p>' . gettext('Please select another family with whom to associate these donations:');
-                echo '<br><b>' . gettext('WARNING: This action can not be undone and may have legal implications!') . '</b></p>';
-                echo "<input name=FamilyID value=$iFamilyID type=hidden>";
-                echo '<select name=DonationFamilyID><option value=0 selected>' . gettext('Unassigned') . '</option>';
+        echo '<form name=SelectFamily method=get action=SelectDelete.php>';
+        echo '<div class="ShadedBox">';
+        echo '<div class="LightShadedBox"><strong>' . gettext('Family Name') . ':' . " $fam_Name</strong></div>";
+        echo '<p>' . gettext('Please select another family with whom to associate these donations:');
+        echo '<br><b>' . gettext('WARNING: This action can not be undone and may have legal implications!') . '</b></p>';
+        echo "<input name=FamilyID value=$iFamilyID type=hidden>";
+        echo '<select name=DonationFamilyID><option value=0 selected>' . gettext('Unassigned') . '</option>';
 
         //Get Families for the drop-down
         $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name';
-                $rsFamilies = RunQuery($sSQL);
+        $rsFamilies = RunQuery($sSQL);
         // Build Criteria for Head of Household
 
         $head_criteria = ' per_fmr_ID = ' . SystemConfig::getValue('sDirRoleHead') ? SystemConfig::getValue('sDirRoleHead') : '1';
@@ -262,35 +170,35 @@ require 'Include/Header.php';
         }
         // Build array of Head of Households and Spouses with fam_ID as the key
         $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
-                $rs_head = RunQuery($sSQL);
-                $aHead = '';
-                while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
-                    if ($head_firstname && $aHead[$head_famid]) {
-                        $aHead[$head_famid] .= ' & ' . $head_firstname;
-                    } elseif ($head_firstname) {
-                        $aHead[$head_famid] = $head_firstname;
-                    }
-                }
-                while ($aRow = mysqli_fetch_array($rsFamilies)) {
-                    extract($aRow);
-                    echo '<option value="' . $fam_ID . '"';
-                    if ($fam_ID == $iFamilyID) {
-                        echo ' selected';
-                    }
-                    echo '>' . $fam_Name;
-                    if ($aHead[$fam_ID]) {
-                        echo ', ' . $aHead[$fam_ID];
-                    }
-                    if ($fam_ID == $iFamilyID) {
-                        echo ' -- ' . gettext('CURRENT FAMILY WITH DONATIONS');
-                    } else {
-                        echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-                    }
-                }
-                echo '</select><br><br>';
-                echo '<input type=submit name=CancelFamily value="Cancel and Return to Family View"> &nbsp; &nbsp; ';
-                echo '<input type=submit name=MoveDonations value="Move Donations to Selected Family">';
-                echo '</div></form>';
+        $rs_head = RunQuery($sSQL);
+        $aHead = '';
+        while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
+            if ($head_firstname && $aHead[$head_famid]) {
+                $aHead[$head_famid] .= ' & ' . $head_firstname;
+            } elseif ($head_firstname) {
+                $aHead[$head_famid] = $head_firstname;
+            }
+        }
+        while ($aRow = mysqli_fetch_array($rsFamilies)) {
+            extract($aRow);
+            echo '<option value="' . $fam_ID . '"';
+            if ($fam_ID == $iFamilyID) {
+                echo ' selected';
+            }
+            echo '>' . $fam_Name;
+            if ($aHead[$fam_ID]) {
+                echo ', ' . $aHead[$fam_ID];
+            }
+            if ($fam_ID == $iFamilyID) {
+                echo ' -- ' . gettext('CURRENT FAMILY WITH DONATIONS');
+            } else {
+                echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+            }
+        }
+        echo '</select><br><br>';
+        echo '<input type=submit name=CancelFamily value="Cancel and Return to Family View"> &nbsp; &nbsp; ';
+        echo '<input type=submit name=MoveDonations value="Move Donations to Selected Family">';
+        echo '</div></form>';
 
         // Show payments connected with family
         // -----------------------------------
@@ -302,7 +210,7 @@ require 'Include/Header.php';
 				 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
 				 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 				 WHERE plg_famID = ' . $iFamilyID . ' ORDER BY pledge_plg.plg_date';
-                $rsPledges = RunQuery($sSQL); ?>
+        $rsPledges = RunQuery($sSQL); ?>
         <table cellpadding="5" cellspacing="0" width="100%">
             <tr class="TableHeader">
                 <td><?= gettext('Type') ?></td>
@@ -361,7 +269,7 @@ require 'Include/Header.php';
                 <?php
 
             }
-                echo '</table>';
+            echo '</table>';
             } else {
                 // No Donations from family.  Normal delete confirmation
                 echo $DonationMessage;
@@ -386,7 +294,7 @@ require 'Include/Header.php';
                 echo "<a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
                 echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
             }
-        } ?>
+            ?>
     </div>
 </div>
 
