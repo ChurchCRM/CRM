@@ -189,9 +189,13 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_per_ID = $iPersonID;
 
         if (!$bNewUser) {
-            $dbUser = UserQuery::create()->findPk($iPersonID);
-            $sUser = $dbUser->getPerson()->getFullName();
-            $sUserName = $dbUser->getUserName();
+            // Get the data on this user
+            $sSQL = 'SELECT * FROM user_usr INNER JOIN person_per ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID = '.$iPersonID;
+            $rsUser = RunQuery($sSQL);
+            $aUser = mysqli_fetch_array($rsUser);
+            extract($aUser);
+            $sUser = $per_LastName.', '.$per_FirstName;
+            $sUserName = $usr_UserName;
             $sAction = 'edit';
         } else {
             $dbPerson = PersonQuery::create()->findPk($iPersonID);
