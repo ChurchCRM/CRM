@@ -90,7 +90,7 @@ require 'Include/Header.php';
                     </td>
                     <td>
                         <a href="UserPasswordChange.php?PersonID=<?= $user->getId() ?>&FromUserList=True"><i class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                        <?php if ($user->getId() != $_SESSION['user']->getId()) {
+                        <?php if ($user->getId() != $_SESSION['user']->getId() && !empty($user->getEmail())) {
         ?>
                             <a onclick="resetUserPassword(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-send-o" aria-hidden="true"></i></a>
                         <?php
