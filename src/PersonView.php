@@ -68,10 +68,11 @@ $sSQL = "SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') A
 $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
-$person = PersonQuery::create()->findPk($iPersonID);
-$assignedProperties = $person->getProperties();
 
 if ($per_ID == $iPersonID) {
+
+    $person = PersonQuery::create()->findPk($iPersonID);
+    $assignedProperties = $person->getProperties();
 
 // Get the lists of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master
@@ -980,7 +981,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
     encode: true,
     dataType: 'json',
-    data: { 
+    data: {
       "_METHOD": "DELETE"
     }
     }).done(function(data) {
@@ -1001,12 +1002,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   $("#uploadImageButton").click(function(){
     window.CRM.photoUploader.show();
   });
-  
+
 
     $(document).ready(function() {
         $("#input-volunteer-opportunities").select2();
         $("#input-person-properties").select2();
-        
+
         var options = {
             "language": {
                 "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
@@ -1015,8 +1016,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         };
         $("#assigned-volunteer-opps-table").DataTable(options);
         $("#assigned-properties-table").DataTable(options);
-        
-        
+
+
         contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
@@ -1031,12 +1032,9 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             }
         });
 
-
-
-
     });
-    
-    
+
+
 </script>
 
 <?php
