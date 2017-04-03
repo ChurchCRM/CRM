@@ -70,7 +70,6 @@ extract(mysqli_fetch_array($rsPerson));
 
 
 if ($per_ID == $iPersonID) {
-
     $person = PersonQuery::create()->findPk($iPersonID);
     $assignedProperties = $person->getProperties();
 
