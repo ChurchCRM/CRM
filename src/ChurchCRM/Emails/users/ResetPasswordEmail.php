@@ -15,6 +15,7 @@ class ResetPasswordEmail extends BaseUserEmail
 
     protected function getSubSubject()
     {
+        return gettext("Password Reset");
     }
 
     protected function buildMessageBody()
