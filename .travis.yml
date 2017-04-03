@@ -35,14 +35,26 @@ install:
  - npm run composer-install
  - npm run orm-gen
  - npm install
+ - npm run tests-install
 
 # linters
 before_script:
  - ./travis-ci/setup-db.sh
+ - cp $TRAVIS_BUILD_DIR/travis-ci/Config.php $TRAVIS_BUILD_DIR/src/Include/Config.php
+ - sudo apt-get update
+ - sudo apt-get install apache2 libapache2-mod-fastcgi
+ - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+ - sudo cp $TRAVIS_BUILD_DIR/travis-ci/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf
+ - sudo a2enmod rewrite proxy_fcgi
+ - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+ - sudo cp -f travis-ci/000-default.conf /etc/apache2/sites-available/000-default.conf
+ - sudo chmod -R a+rwx /home
+ - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/src?g" --in-place /etc/apache2/sites-available/000-default.conf
+ - sudo service apache2 restart
 
 # execute tests
 script:
- - ./travis-ci/tests.sh
+ - npm test
 
 before_deploy:
  - npm run package
