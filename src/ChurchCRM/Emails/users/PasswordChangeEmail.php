@@ -23,7 +23,7 @@ class PasswordChangeEmail extends BaseUserEmail
         array_push($msg, gettext("We wanted to let you know that your ChurchCRM password was changed."));
         array_push($msg, "<a href='" . $this->getLink() . "'>" . gettext("Login"). "</a>");
         array_push($msg, gettext('Username') . ": " . $this->user->getUserName());
-        array_push($msg, gettext('Password') . ": " . $this->password);
+        array_push($msg, gettext('New Password') . ": " . $this->password);
         return implode("<p/>", $msg);
     }
 }

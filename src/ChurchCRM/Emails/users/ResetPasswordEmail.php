@@ -15,7 +15,6 @@ class ResetPasswordEmail extends BaseUserEmail
 
     protected function getSubSubject()
     {
-        return gettext("Your ChurchCRM New Password");
     }
 
     protected function buildMessageBody()
