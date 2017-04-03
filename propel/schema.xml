@@ -722,27 +722,27 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    
+
     <table name="record2property_r2p" idMethod="native" phpName="PersonProperty" isCrossRef="true">
         <column name="r2p_pro_ID" phpName="PropertyId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
         <column name="r2p_record_ID" phpName="PersonId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
         <column name="r2p_Value" phpName="PropertyValue" type="LONGVARCHAR" required="true"  defaultValue=""/>
-        
+
         <foreign-key foreignTable="property_pro">
             <reference local="r2p_pro_ID" foreign="pro_ID"/>
         </foreign-key>
-        
+
         <foreign-key foreignTable="person_per">
             <reference local="r2p_record_ID" foreign="per_ID"/>
         </foreign-key>
-        
+
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    
+
     <table name="property_pro" idMethod="native" phpName="Property" >
-        <column name="pro_ID" phpName="ProId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" 
+        <column name="pro_ID" phpName="ProId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true"
         autoIncrement="true" required="true"/>
         <column name="pro_Class" phpName="ProClass" type="VARCHAR" size="10" required="true" defaultValue=""/>
         <column name="pro_prt_ID" phpName="ProPrtId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
@@ -778,7 +778,18 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    
+
+    <table name="person2volunteeropp_p2vo" idMethod="native" phpName="PersonVolunteerOpportunity" >
+        <column name="p2vo_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="p2vo_per_ID" phpName="PersonId" type="SMALLINT" size="9"/>
+        <column name="p2vo_vol_ID" phpName="VolunteerOpportunityId" type="SMALLINT" size="9"/>
+        <unique name="p2vo_ID">
+            <unique-column name="p2vo_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
 
     <!--
  <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
@@ -828,17 +839,7 @@
      <parameter name="Engine" value="MyISAM"/>
    </vendor>
  </table>
- <table name="person2volunteeropp_p2vo" idMethod="native" phpName="Person2volunteeroppP2vo" >
-   <column name="p2vo_ID" phpName="P2voId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
-   <column name="p2vo_per_ID" phpName="P2voPerId" type="SMALLINT" size="9"/>
-   <column name="p2vo_vol_ID" phpName="P2voVolId" type="SMALLINT" size="9"/>
-   <unique name="p2vo_ID">
-     <unique-column name="p2vo_ID"/>
-   </unique>
-   <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
-   </vendor>
- </table>
+
 
 
 
