@@ -29,7 +29,6 @@ before_install:
  - chmod +x ./travis-ci/*.sh
  - chmod +x ./scripts/*.sh
  - cp BuildConfig.json.example BuildConfig.json
- 
 
 # prepare travis ci for the build process
 install:
@@ -43,26 +42,15 @@ before_script:
  - ./travis-ci/setup-db.sh
  - cp $TRAVIS_BUILD_DIR/travis-ci/Config.php $TRAVIS_BUILD_DIR/src/Include/Config.php
  - sudo apt-get update
- - sudo mkdir /run/php
- - sudo chmod a+rwx /run/php
  - sudo apt-get install apache2 libapache2-mod-fastcgi
- # enable php-fpm
  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
  - sudo cp $TRAVIS_BUILD_DIR/travis-ci/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf
  - sudo a2enmod rewrite proxy_fcgi
- #- echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
- # configure apache virtual hosts
  - sudo cp -f travis-ci/000-default.conf /etc/apache2/sites-available/000-default.conf
  - sudo chmod -R a+rwx /home
  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/src?g" --in-place /etc/apache2/sites-available/000-default.conf
  - sudo service apache2 restart
- - cat /etc/apache2/sites-available/000-default.conf
- - curl -L http://localhost
- - curl -L http://localhost/Login
- - curl -L http://localhost/Login.php
-
-
 
 # execute tests
 script:
