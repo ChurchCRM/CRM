@@ -45,7 +45,6 @@ use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Propel;
 
-
 function system_failure($message, $header = 'Setup failure')
 {
     require 'Include/HeaderNotLoggedIn.php'; ?>
