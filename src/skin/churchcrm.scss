@@ -13,6 +13,7 @@
 // and we don't want to incur IE's CSS limits.
 // ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
 
+@import url("https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");
 @import 'adminlte/plugins/datepicker/datepicker3.css';
 @import 'adminlte/plugins/daterangepicker/daterangepicker.css';
 @import 'adminlte/plugins/timepicker/bootstrap-timepicker.min.css';
@@ -21,7 +22,7 @@
 @import 'adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css';
 @import 'adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css';
 
-
+@import 'bootstrap-toggle/bootstrap-toggle.css';
 @import 'fullcalendar/fullcalendar.min.css';
 @import 'fullcalendar/fullcalendar.print.css' print;
 
@@ -41,4 +42,6 @@
 @import 'scss/shortConfig';
 @import 'scss/leftNav';
 @import 'scss/imageOverlay';
+@import 'scss/maps';
+@import "scss/spacing";
 @import 'scss/SystemNotifications';

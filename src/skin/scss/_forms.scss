@@ -83,3 +83,11 @@ input, .c-checkbox, .c-radio, .input-group {
 select {
     color: #555;
 }
+
+.disableSelection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -100,6 +100,7 @@ $rsConfigs = RunQuery($sSQL);
 ?>
 <div class="box box-body">
 <form method=post action=SettingsIndividual.php>
+<div class="table-responsive">
 <table class="table">
 <tr><th><?= gettext('Variable name') ?></th>
 	<th><?= gettext('Current Value')?></th>
@@ -167,6 +168,7 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 	</td>
 </tr>
 </table>
+</div>
 </form>
 </div>
 <?php

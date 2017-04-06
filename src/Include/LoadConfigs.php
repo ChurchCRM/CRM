@@ -59,6 +59,13 @@ function system_failure($message, $header = 'Setup failure')
     exit();
 }
 
+if (!isset($logFile)) {
+    $logFile = "/tmp/ChurchCRM.log";
+}
+
+// create a log channel
+$log = new Logger('ChurchCRM');
+$log->pushHandler(new StreamHandler($logFile, Logger::WARNING));
 try {
     SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
 } catch (\Exception $e) {
@@ -105,7 +112,7 @@ $manager->setName('default');
 $serviceContainer->setConnectionManager('default', $manager);
 $serviceContainer->setDefaultDatasource('default');
 $logger = new Logger('defaultLogger');
-$logger->pushHandler(new StreamHandler('/tmp/ChurchCRM.log'));
+$logger->pushHandler(new StreamHandler($logFile));
 $serviceContainer->setLogger('defaultLogger', $logger);
 
 $connection = Propel::getConnection();

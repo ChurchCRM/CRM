@@ -50,7 +50,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
   // Check for login timeout.  If login has expired, redirect to login page
   if (SystemConfig::getValue('sSessionTimeout') > 0) {
       if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('sSessionTimeout')) {
-          Redirect('Login.php?Timeout');
+          Redirect('Logoff.php');
           exit;
       } else {
           $_SESSION['tLastOperation'] = time();
@@ -254,7 +254,7 @@ function CurrentFY()
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect($iFYID, $selectName)
 {
-    echo '<select name="'.$selectName.'">';
+    echo '<select class="form-control" name="'.$selectName.'">';
     echo '<option value="0">'.gettext('Select Fiscal Year').'</option>';
 
     for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {

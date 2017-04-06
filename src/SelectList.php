@@ -32,6 +32,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\UserQuery;
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 
@@ -124,9 +125,9 @@ $_SESSION['bSearchFamily'] = ($sMode != 'person');
 
 if (array_key_exists('Number', $_GET)) {
     $_SESSION['SearchLimit'] = FilterInput($_GET['Number'], 'int');
-    $uSQL = ' UPDATE user_usr SET usr_SearchLimit = '.$_SESSION['SearchLimit'].
-            ' WHERE usr_per_ID = '.$_SESSION['iUserID'];
-    $rsUser = RunQuery($uSQL);
+    $tmpUser = UserQuery::create()->findPk($_SESSION['iUserID']);
+    $tmpUser->setSearchLimit($_SESSION['SearchLimit']);
+    $tmpUser->save();
 }
 
 if (array_key_exists('PersonColumn3', $_GET)) {
@@ -341,8 +342,9 @@ if (isset($sLetter)) {
 
 $sGroupBySQL = ' GROUP BY per_ID';
 
- $sWhereExt = $sGroupWhereExt.$sFilterWhereExt.$sClassificationWhereExt.
-                $sFamilyRoleWhereExt.$sGenderWhereExt.$sLetterWhereExt.$sPersonPropertyWhereExt;
+$activeFamiliesWhereExt = ' AND fam_DateDeactivated is null';
+$sWhereExt = $sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt .
+    $sFamilyRoleWhereExt . $sGenderWhereExt . $sLetterWhereExt . $sPersonPropertyWhereExt . $activeFamiliesWhereExt;
 
 $sSQL = $sBaseSQL.$sJoinExt.' WHERE 1'.$sWhereExt.$sGroupBySQL;
 
@@ -501,7 +503,7 @@ $finalSQL = $sSQL.$sOrderSQL.$sLimitSQL;
 $rsPersons = RunQuery($finalSQL);
 
 // Run query to get first letters of last name.
-$sSQL = 'SELECT DISTINCT LEFT(per_LastName,1) AS letter FROM person_per '.
+$sSQL = 'SELECT DISTINCT LEFT(per_LastName,1) AS letter FROM person_per LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID '.
         $sJoinExt." WHERE 1 $sWhereExt ORDER BY letter";
 $rsLetters = RunQuery($sSQL);
 
@@ -1000,6 +1002,7 @@ if (!isset($sPersonColumn5)) {
 
 // Header Row for results table
 echo '<form method="get" action="SelectList.php" name="ColumnOptions">';
+echo '<div class="table-responsive">';
 echo '<table cellpadding="4" align="center" cellspacing="0" width="100%">';
 echo '<tr><th></th><th><a href="SelectList.php?mode='.$sMode.'&amp;type='.$iGroupTypeMissing;
 echo '&amp;Sort=name&amp;Filter='.$sFilter.'">'.gettext('Name').'</a></th>';
@@ -1268,6 +1271,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 ?>
 
 		</table>
+        </div>
 		</form>
 	</div>
 </div>

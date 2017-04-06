@@ -102,12 +102,62 @@ $MenuFirst = 1;
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <li class="dropdown settings-dropdown">
-            <a href="<?= SystemURLs::getRootPath() ?>/CartView.php">
-              <i class="fa fa-shopping-cart"></i>
-              <span class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
-            </a>
-          </li>
+            <!-- Cart Functions: style can be found in dropdown.less -->
+            <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="iconCount" class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <?php
+                    if (count($_SESSION['aPeopleCart']) > 0) {
+                        $isCartPage = (basename($_SERVER['PHP_SELF']) == 'CartView.php'); ?>
+                        <li id="showWhenCartNotEmpty">
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                                <li>
+                                    <a href="CartView.php">
+                                        <i class="fa fa-shopping-cart text-green"></i> <?= gettext('View Cart') ?>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="emptyCart"
+                                       href="<?= ($isCartPage ? 'CartView.php?Action=EmptyCart' : '#') ?>">
+                                        <i class="fa fa-trash text-danger"></i> <?= gettext('Empty Cart') ?>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="CartToGroup.php">
+                                        <i class="fa fa-object-ungroup text-info"></i> <?= gettext('Empty Cart to Group') ?>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="CartToEvent.php">
+                                        <i class="fa fa fa-users text-info"></i> <?= gettext('Empty Cart to Family') ?>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="CartToEvent.php">
+                                        <i class="fa fa fa-ticket text-info"></i> <?= gettext('Empty Cart to Event') ?>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="MapUsingGoogle.php?GroupID=0">
+                                        <i class="fa fa-map-marker text-info"></i> <?= gettext('Map Cart') ?>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--li class="footer"><a href="#">View all</a></li-->
+                        <?php
+
+                    } else {
+                        echo '<li class="header">' . gettext("Your Cart is Empty") . '</li>';
+                    }
+                    ?>
+                </ul>
+            </li>
+
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -118,7 +168,7 @@ $MenuFirst = 1;
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="initials-image img-circle" alt="User Image">
+                <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="initials-image img-circle no-border" alt="User Image">
                 <p><?= $_SESSION['user']->getName() ?></p>
               </li>
               <!-- Menu Footer-->
@@ -145,7 +195,7 @@ $MenuFirst = 1;
             </a>
           </li>
           <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getRootPath() ?>/Login.php?Logoff=True">
+            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
               <i class="fa fa-power-off"></i>
             </a>
           </li>

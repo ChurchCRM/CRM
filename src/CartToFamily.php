@@ -129,7 +129,7 @@ require 'Include/Header.php';
 echo $sError;
 ?>
 <div class="box">
-    <form method="post">
+
 <?php
 if (count($_SESSION['aPeopleCart']) > 0) {
 
@@ -181,8 +181,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     echo '</table>'; ?>
     </div>
     <div class="box">
-<table align="center" class="table table-responsive">
-	<tr>
+<form method="post">
+<div class="table-responsive">
+<table align="center" class="table table-hover">
+    <tr>
 		<td class="LabelColumn"><?= gettext('Add to Family') ?>:</td>
 		<td class="TextColumn">
 			<?php
@@ -314,7 +316,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 	</tr>
 
 </table>
-
+</div>
 <p align="center">
 <BR>
 <input type="submit" class="btn" name="Submit" value="<?= gettext('Add to Family') ?>">

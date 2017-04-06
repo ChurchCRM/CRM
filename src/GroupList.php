@@ -25,11 +25,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Service\GroupService;
-
 //Set the page title
 $sPageTitle = gettext('Group Listing');
-$groupService = new GroupService();
 require 'Include/Header.php'; ?>
 
 <div class="box box-body">

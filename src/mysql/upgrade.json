@@ -110,9 +110,12 @@
         "versions": [
             "2.6.0",
             "2.6.1",
-            "2.6.2"
+            "2.6.2",
+            "2.6.3"
         ],
-        "scripts": [],
-        "dbVersion": "2.6.3"
+        "scripts": [
+            "/mysql/upgrade/2.7.0.sql"
+        ],
+        "dbVersion": "2.7.0"
     }
 }

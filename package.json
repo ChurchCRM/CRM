@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "2.6.3",
+    "version": "2.7.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -36,7 +36,9 @@
         "font-awesome": "4.7.0",
         "fullcalendar": "3.0.1",
         "jquery-photo-uploader": "1.0.12",
-        "initial-js": "0.3.4"
+        "initial-js": "0.3.4",
+        "bootstrap-toggle": "2.2.2",
+        "bootstrap-validator": "0.11.9"
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",

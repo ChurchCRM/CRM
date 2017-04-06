@@ -2,14 +2,31 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$sSQL = 'select * from family_fam fam order by fam_Name';
-$rsFamilies = RunQuery($sSQL);
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FamilyQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
+
+$sMode = 'Active';
+// Filter received user input as needed
+if (isset($_GET['mode'])) {
+    $sMode = FilterInput($_GET['mode']);
+}
+if (strtolower($sMode) == 'inactive') {
+    $families = FamilyQuery::create()
+            ->filterByDateDeactivated(null)
+            ->orderByName()
+            ->find();
+} else {
+    $sMode = 'Active';
+    $families = FamilyQuery::create()
+            ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
+            ->orderByName()
+            ->find();
+}
 
 // Set the page title and include HTML header
-$sPageTitle = gettext('Family List');
-require 'Include/Header.php';
-
-?>
+$sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Family List');
+require 'Include/Header.php'; ?>
 
 <div class="pull-right">
   <a class="btn btn-success" role="button" href="FamilyEditor.php"> <span class="fa fa-plus"
@@ -18,52 +35,51 @@ require 'Include/Header.php';
 </div>
 <p><br/><br/></p>
 <div class="box">
-  <div class="box-body table-responsive">
-    <table id="families" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
-      <thead>
-      <tr>
-        <th><?= gettext('Name') ?></th>
-        <th><?= gettext('Home Phone') ?></th>
-        <th><?= gettext('Address') ?></th>
-        <th><?= gettext('City') ?></th>
-        <th><?= gettext('State') ?></th>
-        <th><?= gettext('Zip') ?></th>
-        <th><?= gettext('Created') ?></th>
-        <th><?= gettext('Edited') ?></th>
-      </tr>
-      </thead>
-      <tbody>
-      <?php
+    <div class="box-body">
+        <table id="families" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th><?= gettext('Name') ?></th>
+                <th><?= gettext('Address') ?></th>
+                <th><?= gettext('Home Phone') ?></th>
+                <th><?= gettext('Cell Phone') ?></th>
+                <th><?= gettext('email') ?></th>
+                <th><?= gettext('Created') ?></th>
+                <th><?= gettext('Edited') ?></th>
+            </tr>
+            </thead>
+            <tbody>
 
-      while ($aRow = mysqli_fetch_array($rsFamilies)) {
-          extract($aRow); ?>
-      <tr>
-        <td><a href='FamilyView.php?FamilyID=<?= $fam_ID ?>'>
+            <!--Populate the table with family details -->
+            <?php foreach ($families as $family) {
+    ?>
+            <tr>
+                <td><a href='FamilyView.php?FamilyID=<?= $family->getId() ?>'>
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                         </span>
-          </a>
-          <a href='FamilyEditor.php?FamilyID=<?= $fam_ID ?>'>
+                    </a>
+                    <a href='FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                         </span>
-          </a>
-          <?= $fam_Name ?></td>
-        <?php
-        echo '<td>'.$fam_HomePhone.'</td>';
-          echo '<td>'.$fam_Address1.' '.$fam_Address2.' </td>';
-          echo '<td>'.$fam_City.' </td>';
-          echo '<td>'.$fam_State.' </td>';
-          echo '<td>'.$fam_Zip.'</td>';
-          echo '<td>'.FormatDate($fam_DateEntered, false).'</td>';
-          echo '<td>'.FormatDate($fam_DateLastEdited, false).'</td>';
-          echo '</tr>';
-      } ?>
-      </tbody>
-    </table>
-  </div>
+                    </a><?= $family->getName() ?></td>
+                <td> <?= $family->getAddress() ?></td>
+                <td><?= $family->getHomePhone() ?></td>
+                <td><?= $family->getCellPhone() ?></td>
+                <td><?= $family->getEmail() ?></td>
+                <td><?= date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
+                <td><?= date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
+                <?php
+
+}
+                ?>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script type="text/javascript">
