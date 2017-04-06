@@ -235,7 +235,7 @@ require 'Include/Header.php';
                       <td>
                         <?php if ($setting->getTooltip() != '') {
                           ?>
-                          <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="<?= $setting->getTooltip() ?>"></i>
+                          <a data-toggle="popover" title="<?= $setting->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         <?php
 
                       } ?>
