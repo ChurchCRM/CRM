@@ -27,11 +27,13 @@ class User extends BaseUser
         return $this->getPerson()->getFullName();
     }
 
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->getPerson()->getEmail();
     }
 
-    public function getFullName() {
+    public function getFullName()
+    {
         return $this->getPerson()->getFullName();
     }
 
@@ -99,5 +101,17 @@ class User extends BaseUser
     public function isLocked()
     {
         return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
+    }
+
+    public static function randomPassword()
+    {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < SystemConfig::getValue('sMinPasswordLength'); $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
     }
 }

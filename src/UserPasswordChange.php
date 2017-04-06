@@ -49,6 +49,21 @@ if ($_SESSION['bAdmin'] && isset($_GET['PersonID'])) {
 }
 
 // Was the form submitted?
+/**
+ * @param $curUser
+ * @param $sNewPassword1
+ * @param $log
+ */
+function sendWelcomeEmail($curUser, $sNewPassword1, $log)
+{
+    if (!empty($curUser->getEmail())) {
+        $email = new PasswordChangeEmail($curUser, $sNewPassword1);
+        if (!$email->send()) {
+            $log->warn($email->getError());
+        }
+    }
+}
+
 if (isset($_POST['Submit'])) {
     // Assign all the stuff locally
     $sOldPassword = '';
@@ -81,8 +96,7 @@ if (isset($_POST['Submit'])) {
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
-            $email = new PasswordChangeEmail($curUser);
-            $email->send();
+            sendWelcomeEmail($curUser, $sNewPassword1, $log);
 
             // Route back to the list
             if (array_key_exists('FromUserList', $_GET) and $_GET['FromUserList'] == 'True') {
@@ -153,8 +167,7 @@ if (isset($_POST['Submit'])) {
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
-            $email = new PasswordChangeEmail($curUser);
-            $email->send();
+            sendWelcomeEmail($curUser, $sNewPassword1, $log);
 
             // Route back to the list
             if ($_GET['FromUserList'] == 'True') {
