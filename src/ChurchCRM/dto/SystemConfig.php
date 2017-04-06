@@ -173,6 +173,7 @@ class SystemConfig
   {
     return array (
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","nChurchLatitude","nChurchLongitude"],
+      gettext('User setup') => ["sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords"],
       gettext('Email Setup')  => ["sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass","sToEmailAddress","mailChimpApiKey"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip","sEnableGravatarPhotos","sEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
       gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","debug","bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
