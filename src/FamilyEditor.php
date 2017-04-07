@@ -128,7 +128,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 //	if ($bHaveXML) {
     // Try to get Lat/Lon based on the address
         $myAddressLatLon = new AddressLatLon();
-    $myAddressLatLon->SetAddress($sAddress1, $sCity, $sState, $sZip);
+    $myAddressLatLon->SetAddress($sAddress1, $sCity, $sState, $sZip, $sCountry);
     $ret = $myAddressLatLon->Lookup();
     if ($ret == 0) {
         $nLatitude = $myAddressLatLon->GetLat();
@@ -952,7 +952,8 @@ require 'Include/Header.php';
 		<div class="MediumText">
 			<center><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later.  All entries will become <i>new</i> person records.') : '' ?></center>
 		</div><br><br>
-		<table class="horizontal-scroll" cellpadding="3" cellspacing="0" width="100%">
+            <div class="table-responsive">
+		<table cellpadding="3" cellspacing="0" width="100%">
 		<thead>
 		<tr class="TableHeader" align="center">
 			<th><?= gettext('First') ?></th>
@@ -1125,7 +1126,8 @@ require 'Include/Header.php';
                     }
             echo '</select></td></tr>';
         }
-        echo '</table>';
+        echo '</table></div>';
+
         echo '</div></div>';
     }
 
