@@ -8,3 +8,7 @@ Feature: Person List
     And I am on "/SelectList.php?mode=person"
     Then I should see "Person Listing"
     And I should see "Admin, Church"
+    And I should see "Barker, Bob"
+
+
+   
