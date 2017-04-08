@@ -32,6 +32,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\UserQuery;
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 
@@ -124,9 +125,9 @@ $_SESSION['bSearchFamily'] = ($sMode != 'person');
 
 if (array_key_exists('Number', $_GET)) {
     $_SESSION['SearchLimit'] = FilterInput($_GET['Number'], 'int');
-    $uSQL = ' UPDATE user_usr SET usr_SearchLimit = '.$_SESSION['SearchLimit'].
-            ' WHERE usr_per_ID = '.$_SESSION['iUserID'];
-    $rsUser = RunQuery($uSQL);
+    $tmpUser = UserQuery::create()->findPk($_SESSION['iUserID']);
+    $tmpUser->setSearchLimit($_SESSION['SearchLimit']);
+    $tmpUser->save();
 }
 
 if (array_key_exists('PersonColumn3', $_GET)) {

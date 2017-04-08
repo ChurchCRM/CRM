@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.6.3 27/03/2017
+
+- [**enhancement**] Add System Notification Bar [#2124](https://github.com/ChurchCRM/CRM/issues/2124)
+- [**bug**] Unable to Create Event [#2121](https://github.com/ChurchCRM/CRM/issues/2121)
+- [**Feature Request**] Activate/Deactivate Families [#1833](https://github.com/ChurchCRM/CRM/issues/1833)
+
+ ---
+
 ## 2.6.2 16/03/2017
 
 - [**enhancement**] Update Self Registration v1.1 [#2112](https://github.com/ChurchCRM/CRM/issues/2112)
