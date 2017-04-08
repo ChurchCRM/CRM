@@ -94,4 +94,55 @@ $(document).ready(function () {
             }
         });
     });
+    
+    
+    $('#edit-role-btn').click(function (event) {
+        event.preventDefault();
+        var thisLink = $(this);
+        var personId = thisLink.data('person_id');
+        
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: window.CRM.root + '/api/roles/all',
+            success: function (data, status, xmlHttpReq) {
+                if (data.length) {
+                    roles = [{text: 'Choose one ...', value: ''}];
+                    for (var i=0; i < data.length; i++) {
+                        roles[roles.length] = {
+                            text: data[i].OptionName,
+                            value: data[i].OptionId
+                        };
+                    }
+                    
+                    bootbox.prompt({
+                        title: 'Change role',
+                        inputType: 'select',
+                        inputOptions: roles,
+                        callback: function (result) {
+                            if (result) {
+                                $.ajax({
+                                    type: 'POST',
+                                    data: { personId: personId, roleId: result },
+                                    dataType: 'json',
+                                    url: window.CRM.root + '/api/roles/persons/assign',
+                                    success: function (data, status, xmlHttpReq) {
+                                        if (data.success) {
+                                            location.reload();
+                                        }
+                                    }
+                                });
+                            }
+                            
+                        }
+                    });
+                    
+                }
+            }
+        });
+        
+    });
+    
+    
+    
 });

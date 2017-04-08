@@ -226,6 +226,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
           } else {
               echo gettext('Member');
           } ?>
+          &nbsp;
+          <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
         </p>
 
         <p class="text-muted text-center">
