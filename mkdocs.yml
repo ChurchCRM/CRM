@@ -1,0 +1,3 @@
+theme: readthedocs
+extra_javascript:
+- js/extra.js
