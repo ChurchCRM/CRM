@@ -8444,3 +8444,265 @@ msgstr "selecione uma opção"
 msgid "Direct me"
 msgstr "Me direcione"
 
+#: api/routes/cart.php:22
+msgid "Your cart is empty"
+msgstr "O seu carrinho está vazio"
+
+#: api/routes/cart.php:25
+msgid "Your cart has been successfully emptied"
+msgstr "O seu carrinho foi esvaziado com sucesso"
+
+#: api/routes/properties.php:24 api/routes/properties.php:82
+msgid "The record could not be found."
+msgstr "O registro não pôde ser encontrado."
+
+#: api/routes/properties.php:34
+msgid "The property is already assigned."
+msgstr "A propriedade já está atribuída."
+
+#: api/routes/properties.php:39 api/routes/properties.php:59
+msgid "The property is successfully assigned."
+msgstr "A propriedade foi atribuída com sucesso."
+
+#: api/routes/properties.php:41 api/routes/properties.php:55
+#: api/routes/properties.php:62
+msgid "The property could not be assigned."
+msgstr "A propriedade não pôde ser atribuída."
+
+#: api/routes/properties.php:87
+msgid "The property is successfully unassigned."
+msgstr "A propriedade foi desatribuída com sucesso."
+
+#: api/routes/properties.php:89
+msgid "The property could not be unassigned."
+msgstr "A propriedade não pôde ser desatribuída."
+
+#: Checkin.php:94
+msgid "Select event"
+msgstr "Selecionar evento"
+
+#: Checkin.php:141 Checkin.php:146
+msgid "Person's Name"
+msgstr "Nome da Pessoa"
+
+#: Checkin.php:156
+msgid "Adult Name(Optional)"
+msgstr "Nome adulto (Opcional)"
+
+#: Checkin.php:161
+msgid "Checked in By(Optional)"
+msgstr "Inscrito por (Opcional)"
+
+#: Checkin.php:200
+msgid "Person has been already checked in for this event"
+msgstr "A pessoa já fez check-in para este evento"
+
+#: Checkin.php:247
+msgid "CheckOut Person"
+msgstr "Pessoas que fizeram Check-out"
+
+#: Checkin.php:247
+msgid "Delete Checkin in Entry"
+msgstr "Deletar entrada de check-in"
+
+#: Checkin.php:272
+msgid "Adult Checking Out Person"
+msgstr "Pessoas adultas realizando o check-out"
+
+#: Checkin.php:276
+msgid "Adult Name (Optional)"
+msgstr "Nome adulto (Opcional)"
+
+#: ChurchCRM/dto/SystemConfig.php:160
+msgid "Text before name in emails/reports"
+msgstr "Texto antes do nome nos e-mails /relatórios"
+
+#: ChurchCRM/dto/SystemConfig.php:164
+msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
+msgstr "Selecione verdadeiro para permitir o sobrenome vazio no editor de pessoas. Selecione falso para validar o sobrenome e herdar da família quando deixado vazio."
+
+#: ChurchCRM/dto/SystemConfig.php:165
+msgid "Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName "
+msgstr "Estilos - \ r0: Título PrimeiroNome NomeDoMeio Sobrenome, Sufixo \ r1: Título PrimeiroNome InicialDoMeio. Sobrenome, Sufixo\ r2: Sobrenome, Título PrimeiroNome NomeDoMeio, Sufixo \ r3: Sobrenome, Título PrimeiroNome InicialDoMeio., Sufixo \ r4: NomeDoMeio NomeDoMeio Sobrenome \ r5: Título PrimeiroNome Sobrenome \ r6: Sobrenome, Título PrimeiroNome ␣"
+
+#: ChurchCRM/dto/SystemConfig.php:166
+msgid "Display bill counts on deposit slip"
+msgstr "Exibir conta conta no comprovante de depósito"
+
+#: ChurchCRM/dto/SystemConfig.php:167
+msgid "ChurchCRM Cloud Access URL"
+msgstr "URL de Acesso à Nuvem ChurchCRM"
+
+#: ChurchCRM/Emails/users/AccountDeletedEmail.php:11
+msgid "Your Account was Deleted"
+msgstr "Sua conta foi deletada."
+
+#: ChurchCRM/Emails/users/AccountDeletedEmail.php:17
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "A sua conta ChurchCRM foi deletada."
+
+#: ChurchCRM/Emails/users/AccountDeletedEmail.php:18
+#: ChurchCRM/Emails/users/LockedEmail.php:18
+msgid "If you think this is an error"
+msgstr "Se você acha que isso é um erro"
+
+#: ChurchCRM/Emails/users/AccountDeletedEmail.php:18
+#: ChurchCRM/Emails/users/LockedEmail.php:18
+msgid "please contact your admin"
+msgstr "por favo contacte o administrador"
+
+#: ChurchCRM/Emails/users/LockedEmail.php:11
+msgid "Account Locked"
+msgstr "Conta bloqueada"
+
+#: ChurchCRM/Emails/users/LockedEmail.php:17
+msgid "We wanted to let you know that your ChurchCRM account was locked."
+msgstr "Nós queremos que você saiba que a sua conta do ChurchCRM foi bloqueada."
+
+#: ChurchCRM/Emails/users/NewAccountEmail.php:18
+msgid "Your New Account"
+msgstr "Sua nova conta"
+
+#: ChurchCRM/Emails/users/NewAccountEmail.php:24
+msgid "A ChurchCRM account was created for you:"
+msgstr "Uma conta do ChurchCRM foi criada para você:"
+
+#: ChurchCRM/Emails/users/NewAccountEmail.php:26
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:25
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:26
+#: ChurchCRM/Emails/users/UnlockedEmail.php:19
+msgid "Username"
+msgstr "Usuário"
+
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:17
+msgid "Password Changed"
+msgstr "Senha Alterada"
+
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:23
+msgid "We wanted to let you know that your ChurchCRM password was changed."
+msgstr "Nós queremos que você saiba que sua senha no ChurchCRM foi alterada."
+
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:18
+msgid "Password Reset"
+msgstr "Senha Resetada"
+
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:24
+msgid "You can reset your ChurchCRM password by clicking this link:"
+msgstr "Você pode resetar a sua senha do ChurchCRM clicando neste link:"
+
+#: ChurchCRM/Emails/users/UnlockedEmail.php:11
+msgid "Account Unlocked"
+msgstr "Conta desbloqueada"
+
+#: ChurchCRM/Emails/users/UnlockedEmail.php:17
+msgid "We wanted to let you know that your ChurchCRM account was unlocked."
+msgstr "Nós queremos que você saiba que a sua conta do ChurchCRM foi desbloqueada."
+
+#: ChurchCRM/Service/PersonService.php:36
+msgid "Part"
+msgstr "Parte"
+
+#: FamilyView.php:193 PersonView.php:193
+msgid "View Photo"
+msgstr "Ver foto"
+
+#: FamilyView.php:1072
+msgid "Family Photo"
+msgstr "Foto da Família"
+
+#: GroupView.php:266
+msgid "Default Role"
+msgstr "Papel padrão"
+
+#: GroupView.php:272
+msgid "Total Members"
+msgstr "Total de Membros"
+
+#: GroupView.php:280
+msgid "Quick Settings"
+msgstr "Configurações rápidas"
+
+#: GroupView.php:284
+msgid "Status"
+msgstr "Estado"
+
+#: GroupView.php:285
+msgid "Email export"
+msgstr "Exportar e-mail"
+
+#: GroupView.php:285
+msgid "Include"
+msgstr "Incluir"
+
+#: GroupView.php:285
+msgid "Exclude"
+msgstr "Excluir"
+
+#: GroupView.php:298
+msgid "Group-Specific Properties"
+msgstr "Propriedades específicas do grupo"
+
+#: GroupView.php:349
+msgid "No property assignments"
+msgstr "Sem propriedades atribuídas"
+
+#: Include/Header.php:120
+msgid "View Cart"
+msgstr "Ver carrinho"
+
+#: Include/Header.php:155
+msgid "Your Cart is Empty"
+msgstr "Seu carrinho está vazio"
+
+#: MapUsingGoogle.php:13
+msgid "View on Map"
+msgstr "Ver no Mapa"
+
+#: MapUsingGoogle.php:101 MapUsingGoogle.php:125
+msgid "Legend"
+msgstr "Lgenda"
+
+#: PersonView.php:741
+msgid "assigned"
+msgstr "Assinatura"
+
+#: PersonView.php:1026
+msgid "Photo"
+msgstr "Foto"
+
+#: PledgeEditor.php:503
+msgid "Payment Details"
+msgstr "Detalhes do Pagamento"
+
+#: PledgeEditor.php:709
+msgid "Fund Split"
+msgstr "Divisão do fundo"
+
+#: sundayschool/SundaySchoolClassView.php:196
+msgid "Showing students with birthdays in"
+msgstr "Mostrando alunos com aniversários em"
+
+#: UserList.php:51
+msgid "Actions"
+msgstr "Ações"
+
+#: UserList.php:145 UserList.php:166
+msgid "Action Confirmation"
+msgstr "Ação de confirmação"
+
+#: UserList.php:147
+msgid "Please confirm reset failed login count"
+msgstr "Confirme a contagem de login com falha de reset"
+
+#: UserList.php:178
+msgid "Password reset for"
+msgstr "Senha resetada para"
+
+#: menuconfig_mcf.php:9
+msgid "View Active Families"
+msgstr "Ver família ativas"
+
+#: menuconfig_mcf.php:10
+msgid "View Inactive Families"
+msgstr "Ver família inativas"
+
