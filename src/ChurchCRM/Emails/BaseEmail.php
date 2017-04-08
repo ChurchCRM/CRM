@@ -2,6 +2,7 @@
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 class BaseEmail
 {
@@ -44,5 +45,21 @@ class BaseEmail
 
   public function addStringAttachment($string,$filename) {
     $this->mail->addStringAttachment($string,$filename);
+  }
+
+  public function getHTMLShell($toEmail, $body) {
+      $data_map = array(
+          '[[BODY]]' => $body,
+          '[[TO-EMAIL]]' => $toEmail,
+          '[[sChurchName]]' => SystemConfig::getValue('sChurchName'),
+          '[[sChurchAddress]]' => SystemConfig::getValue('sChurchAddress'),
+          '[[sChurchCity]]' => SystemConfig::getValue('sChurchCity'),
+          '[[sChurchState]]' => SystemConfig::getValue('sChurchState'),
+          '[[sChurchCountry]]' => SystemConfig::getValue('sChurchCountry'),
+          '[[sChurchPhone]]' => SystemConfig::getValue('sChurchPhone'),
+          '[[sChurchEmail]]' => SystemConfig::getValue('sChurchEmail')
+      );
+      $file = file_get_contents(SystemURLs::getDocumentRoot().'/ChurchCRM/Emails/template/shell.html');
+      return str_replace(array_keys($data_map), array_values($data_map), $file);
   }
 }
