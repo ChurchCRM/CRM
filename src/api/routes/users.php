@@ -7,6 +7,7 @@ use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\Emails\AccountDeletedEmail;
 use ChurchCRM\Emails\UnlockedEmail;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\User;
 
 $app->group('/users', function () {
 
@@ -16,9 +17,10 @@ $app->group('/users', function () {
         }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
-            $password = SystemConfig::getValue('sDefault_Pass');
+            $password = User::randomPassword();
             $user->updatePassword($password);
-            $user->setNeedPasswordChange(true);;
+            $user->setNeedPasswordChange(true);
+            $user->setFailedLogins(0);
             $user->save();
             $email = new ResetPasswordEmail($user, $password);
             if ($email->send()) {

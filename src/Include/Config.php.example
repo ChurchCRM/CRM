@@ -51,6 +51,7 @@ $URL[0] = '||URL||';
 // the URL.  See example $URL[4]
 
 // Set error reporting
+$logFile = "/tmp/ChurchCRM.log";
 
 // Sets which PHP errors are reported see http://php.net/manual/en/errorfunc.constants.php
 error_reporting(E_ERROR);
@@ -60,7 +61,7 @@ error_reporting(E_ERROR);
 // server has permission to write to this file.
 // Warning: The error_log file can grow very large over time.
 // ini_set('log_errors', 1);
-// ini_set('error_log','/tmp/ChurchCRM.log');
+// ini_set('error_log',$logFile);
 
 //
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE

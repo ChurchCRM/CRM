@@ -8,7 +8,7 @@ class AccountDeletedEmail extends BaseUserEmail
 
     protected function getSubSubject()
     {
-        return gettext("Your ChurchCRM Account was Deleted");
+        return gettext("Your Account was Deleted");
     }
 
     protected function buildMessageBody()

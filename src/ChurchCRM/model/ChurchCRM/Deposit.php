@@ -37,46 +37,46 @@ class Deposit extends BaseDeposit
 
         $orgName = 'ChurchCRM Deposit Data';
         $OFXReturn->content = 'OFXHEADER:100'.PHP_EOL.
-      'DATA:OFXSGML'.PHP_EOL.
-      'VERSION:102'.PHP_EOL.
-      'SECURITY:NONE'.PHP_EOL.
-      'ENCODING:USASCII'.PHP_EOL.
-      'CHARSET:1252'.PHP_EOL.
-      'COMPRESSION:NONE'.PHP_EOL.
-      'OLDFILEUID:NONE'.PHP_EOL.
-      'NEWFILEUID:NONE'.PHP_EOL.PHP_EOL;
+            'DATA:OFXSGML'.PHP_EOL.
+            'VERSION:102'.PHP_EOL.
+            'SECURITY:NONE'.PHP_EOL.
+            'ENCODING:USASCII'.PHP_EOL.
+            'CHARSET:1252'.PHP_EOL.
+            'COMPRESSION:NONE'.PHP_EOL.
+            'OLDFILEUID:NONE'.PHP_EOL.
+            'NEWFILEUID:NONE'.PHP_EOL.PHP_EOL;
         $OFXReturn->content .= '<OFX>';
         $OFXReturn->content .= '<SIGNONMSGSRSV1><SONRS><STATUS><CODE>0<SEVERITY>INFO</STATUS><DTSERVER>'.date('YmdHis.u[O:T]').'<LANGUAGE>ENG<FI><ORG>'.$orgName.'<FID>12345</FI></SONRS></SIGNONMSGSRSV1>';
         $OFXReturn->content .= '<BANKMSGSRSV1>'.
-      '<STMTTRNRS>'.
-      '<TRNUID>'.
-      '<STATUS>'.
-      '<CODE>0'.
-      '<SEVERITY>INFO'.
-      '</STATUS>';
+            '<STMTTRNRS>'.
+            '<TRNUID>'.
+            '<STATUS>'.
+            '<CODE>0'.
+            '<SEVERITY>INFO'.
+            '</STATUS>';
 
         foreach ($this->getFundTotals() as $fund) {
             $OFXReturn->content .= '<STMTRS>'.
-        '<CURDEF>USD'.
-        '<BANKACCTFROM>'.
-        '<BANKID>'.$orgName.
-        '<ACCTID>'.$fund['Name'].
-        '<ACCTTYPE>SAVINGS'.
-        '</BANKACCTFROM>';
+                '<CURDEF>USD'.
+                '<BANKACCTFROM>'.
+                '<BANKID>'.$orgName.
+                '<ACCTID>'.$fund['Name'].
+                '<ACCTTYPE>SAVINGS'.
+                '</BANKACCTFROM>';
             $OFXReturn->content .=
-        '<STMTTRN>'.
-        '<TRNTYPE>CREDIT'.
-        '<DTPOSTED>'.$this->getDate('Ymd').
-        '<TRNAMT>'.$fund['Total'].
-        '<FITID>'.
-        '<NAME>'.$this->getComment().
-        '<MEMO>'.$fund['Name'].
-        '</STMTTRN></STMTRS>';
+                '<STMTTRN>'.
+                '<TRNTYPE>CREDIT'.
+                '<DTPOSTED>'.$this->getDate('Ymd').
+                '<TRNAMT>'.$fund['Total'].
+                '<FITID>'.
+                '<NAME>'.$this->getComment().
+                '<MEMO>'.$fund['Name'].
+                '</STMTTRN></STMTRS>';
         }
 
         $OFXReturn->content .= '</STMTTRNRS></BANKTRANLIST></OFX>';
-    // Export file
-    $OFXReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$this->getId().'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.ofx';
+        // Export file
+        $OFXReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$this->getId().'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.ofx';
 
         return $OFXReturn;
     }
@@ -158,34 +158,34 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
         $thisReport->pdf->Write(8, $this->getDate()->format('Y-m-d'));
 
-    //print_r($thisReport->QBDepositTicketParameters);
-    //logically, we print the cash in the first possible key=value pair column
-    if ($this->getTotalCash() > 0) {
-        $totalCashStr = sprintf('%.2f', $this->getTotalCash());
-        $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->QBDepositTicketParameters->topY, $totalCashStr);
-    }
+        //print_r($thisReport->QBDepositTicketParameters);
+        //logically, we print the cash in the first possible key=value pair column
+        if ($this->getTotalCash() > 0) {
+            $totalCashStr = sprintf('%.2f', $this->getTotalCash());
+            $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->QBDepositTicketParameters->topY, $totalCashStr);
+        }
         $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
         $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
 
         $pledges = \ChurchCRM\PledgeQuery::create()
-      ->filterByDepid($this->getId())
-      ->groupByGroupkey()
-      ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
-      ->joinFamily(null, Criteria::LEFT_JOIN)
-      ->withColumn('Family.Name')
-      ->find();
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->joinFamily(null, Criteria::LEFT_JOIN)
+            ->withColumn('Family.Name')
+            ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
-      if ($pledge->getMethod() == 'CHECK') {
-          $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckno());
-          $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
+            if ($pledge->getMethod() == 'CHECK') {
+                $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckno());
+                $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
 
-          $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
-          if ($thisReport->curX > $thisReport->QBDepositTicketParameters->max->x) {
-              $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX;
-              $thisReport->curY += $thisReport->QBDepositTicketParameters->lineItemInterval->y;
-          }
-      }
+                $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
+                if ($thisReport->curX > $thisReport->QBDepositTicketParameters->max->x) {
+                    $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX;
+                    $thisReport->curY += $thisReport->QBDepositTicketParameters->lineItemInterval->y;
+                }
+            }
         }
 
         $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
@@ -275,59 +275,59 @@ class Deposit extends BaseDeposit
 
         $totalAmount = 0;
 
-    //while ($aRow = mysqli_fetch_array($rsPledges))
-    foreach ($this->getPledges() as $payment) {
-        $thisReport->pdf->SetFont('Times', '', 10);
+        //while ($aRow = mysqli_fetch_array($rsPledges))
+        foreach ($this->getPledges() as $payment) {
+            $thisReport->pdf->SetFont('Times', '', 10);
 
-      // Format Data
-      $checkNo = $payment->getCheckno();
-        $fundName = DonationFundQuery::create()->findOneById($payment->getFundid())->getName();
-        $comment = $payment->getComment();
-      //$family = FamilyQuery::create()->findOneById($payment->getFamId());
-      $family = $payment->getFamily();
-        if (!is_null($family)) {
-            $familyName = $payment->getFamily()->getName();
-        } else {
-            $familyName = gettext('Anonymous');
+            // Format Data
+            $checkNo = $payment->getCheckno();
+            $fundName = DonationFundQuery::create()->findOneById($payment->getFundid())->getName();
+            $comment = $payment->getComment();
+            //$family = FamilyQuery::create()->findOneById($payment->getFamId());
+            $family = $payment->getFamily();
+            if (!is_null($family)) {
+                $familyName = $payment->getFamily()->getName();
+            } else {
+                $familyName = gettext('Anonymous');
+            }
+            if (strlen($checkNo) > 8) {
+                $checkNo = '...'.mb_substr($checkNo, -8, 8);
+            }
+            if (strlen($fundName) > 20) {
+                $fundName = mb_substr($fundName, 0, 20).'...';
+            }
+            if (strlen($comment) > 40) {
+                $comment = mb_substr($comment, 0, 38).'...';
+            }
+            if (strlen($familyName) > 25) {
+                $familyName = mb_substr($familyName, 0, 24).'...';
+            }
+
+            $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $checkNo);
+
+            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $fundName);
+
+            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MethodX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $payment->getMethod());
+
+            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FromX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $familyName);
+
+            $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
+            $thisReport->pdf->Write(8, $comment);
+
+            $thisReport->pdf->SetFont('Courier', '', 8);
+
+            $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->getAmount());
+
+            $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
+
+            if ($thisReport->curY >= 250) {
+                $thisReport->pdf->AddPage();
+                $thisReport->curY = $thisReport->topY;
+            }
         }
-        if (strlen($checkNo) > 8) {
-            $checkNo = '...'.mb_substr($checkNo, -8, 8);
-        }
-        if (strlen($fundName) > 20) {
-            $fundName = mb_substr($fundName, 0, 20).'...';
-        }
-        if (strlen($comment) > 40) {
-            $comment = mb_substr($comment, 0, 38).'...';
-        }
-        if (strlen($familyName) > 25) {
-            $familyName = mb_substr($familyName, 0, 24).'...';
-        }
-
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $checkNo);
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
-        $thisReport->pdf->Write(8, $fundName);
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MethodX, $thisReport->curY);
-        $thisReport->pdf->Write(8, $payment->getMethod());
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FromX, $thisReport->curY);
-        $thisReport->pdf->Write(8, $familyName);
-
-        $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
-        $thisReport->pdf->Write(8, $comment);
-
-        $thisReport->pdf->SetFont('Courier', '', 8);
-
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->getAmount());
-
-        $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
-
-        if ($thisReport->curY >= 250) {
-            $thisReport->pdf->AddPage();
-            $thisReport->curY = $thisReport->topY;
-        }
-    }
 
         $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
@@ -386,23 +386,23 @@ class Deposit extends BaseDeposit
         $Report->pdf = new \ChurchCRM\Reports\PDF_DepositReport();
         $Report->funds = DonationFundQuery::create()->find();
 
-    //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
-    $sDepositSlipType = SystemConfig::getValue('sDepositSlipType');
+        //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.
+        $sDepositSlipType = SystemConfig::getValue('sDepositSlipType');
 
         if ($sDepositSlipType == 'QBDT') {
             //Generate a QuickBooks Deposit Ticket.
-          $this->generateQBDepositSlip($Report);
+            $this->generateQBDepositSlip($Report);
         } elseif ($sDepositSlipType == 'PTDT') {
             //placeholder for Peachtree Deposit Tickets.
         } elseif ($sDepositSlipType == 'GDT') {
             //placeholder for generic deposit ticket.
         }
-    //$this->generateBankDepositSlip($Report);
+        //$this->generateBankDepositSlip($Report);
 
-    $this->generateDepositSummary($Report);
+        $this->generateDepositSummary($Report);
 
-    // Export file
-    $Report->pdf->Output('ChurchCRM-DepositReport-'.$this->getId().'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+        // Export file
+        $Report->pdf->Output('ChurchCRM-DepositReport-'.$this->getId().'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
     }
 
     public function getTotalAmount()
@@ -413,11 +413,11 @@ class Deposit extends BaseDeposit
     public function getTotalChecks()
     {
         $totalCash = PledgeQuery::create()
-      ->filterByDepid($this->getId())
-      ->filterByMethod('CHECK')
-      ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
-      ->find()
-      ->getColumnValues('sumAmount')[0];
+            ->filterByDepid($this->getId())
+            ->filterByMethod('CHECK')
+            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->find()
+            ->getColumnValues('sumAmount')[0];
 
         return $totalCash;
     }
@@ -425,11 +425,11 @@ class Deposit extends BaseDeposit
     public function getTotalCash()
     {
         $totalCash = PledgeQuery::create()
-      ->filterByDepid($this->getId())
-      ->filterByMethod('CASH')
-      ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
-      ->find()
-      ->getColumnValues('sumAmount')[0];
+            ->filterByDepid($this->getId())
+            ->filterByMethod('CASH')
+            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->find()
+            ->getColumnValues('sumAmount')[0];
 
         return $totalCash;
     }
@@ -437,11 +437,11 @@ class Deposit extends BaseDeposit
     public function getCountChecks()
     {
         $countCash = PledgeQuery::create()
-      ->filterByDepid($this->getId())
-      ->groupByGroupkey()
-      ->filterByMethod('CHECK')
-      ->find()
-      ->count();
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->filterByMethod('CHECK')
+            ->find()
+            ->count();
 
         return $countCash;
     }
@@ -449,11 +449,11 @@ class Deposit extends BaseDeposit
     public function getCountCash()
     {
         $countCash = PledgeQuery::create()
-      ->filterByDepid($this->getId())
-      ->groupByGroupkey()
-      ->filterByMethod('CASH')
-      ->find()
-      ->count();
+            ->filterByDepid($this->getId())
+            ->groupByGroupkey()
+            ->filterByMethod('CASH')
+            ->find()
+            ->count();
 
         return $countCash;
     }

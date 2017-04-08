@@ -165,7 +165,7 @@ require 'Include/Header.php';
     </div>
   </div>
   <div class="box-body">
-    <table class="table" id="paymentsTable"></table>
+    <table class="table" id="paymentsTable" width="100%"></table>
     <?php
     if ($iDepositSlipID and $thisDeposit->getType() and !$thisDeposit->getClosed()) {
         if ($thisDeposit->getType() == 'Bank') {

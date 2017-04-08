@@ -62,6 +62,9 @@ $MenuFirst = 1;
 </head>
 
 <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
+<?php
+  Header_system_notifications();
+ ?>
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php
@@ -165,7 +168,7 @@ $MenuFirst = 1;
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="initials-image img-circle" alt="User Image">
+                <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="initials-image img-circle no-border" alt="User Image">
                 <p><?= $_SESSION['user']->getName() ?></p>
               </li>
               <!-- Menu Footer-->

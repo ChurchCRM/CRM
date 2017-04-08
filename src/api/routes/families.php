@@ -15,9 +15,9 @@ $app->group('/families', function () {
          $q = FamilyQuery::create()
           ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
           ->limit(15)
-          ->withColumn('Family.Name', 'displayName')
+          ->withColumn('CONCAT( Family.Name, " - ", Family.Address1," / ", Family.City, " ", Family.State)', 'displayName')
           ->withColumn('CONCAT("'.SystemURLs::getRootPath().'FamilyView.php?FamilyID=",Family.Id)', 'uri')
-          ->select(['displayName', 'uri'])
+          ->select(['displayName', 'uri','Id'])
           ->find();
 
        return $response->withJSON($q->toJSON());

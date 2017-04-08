@@ -93,32 +93,37 @@
         "scripts": [
             "/mysql/upgrade/2.5.0.sql"
         ],
-        "dbVersion":"2.5.0"
+        "dbVersion": "2.5.0"
     },
     "pre-2.6.0": {
         "versions": [
-          "2.5.0",
-          "2.5.1",
-          "2.5.2"
+            "2.5.0",
+            "2.5.1",
+            "2.5.2"
         ],
-        "scripts":[
-          "/mysql/upgrade/2.6.0.sql"
+        "scripts": [
+            "/mysql/upgrade/2.6.0.sql"
         ],
-        "dbVersion":"2.6.0"
+        "dbVersion": "2.6.0"
+    },
+    "pre-2.7.0": {
+        "versions": [
+            "2.6.0",
+            "2.6.1",
+            "2.6.2",
+            "2.6.3"
+        ],
+        "scripts": [
+            "/mysql/upgrade/2.7.0.sql"
+        ],
+        "dbVersion": "2.7.0"
     },
     "current": {
         "versions": [
-          "2.6.0",
-          "2.6.1",
-          "2.6.2"
+            "2.7.0"
         ],
-        "scripts":[
-            "/mysql/upgrade/2.7.0-groups.sql",
-            "/mysql/upgrade/2.7.0-users.sql",
-            "/mysql/upgrade/2.7.0-add-primarykey_to_event_attend.sql",
-            "/mysql/upgrade/2.7.0-menu-inactive-families.sql",
-            "/mysql/upgrade/2.7.0-queryparamoptions.sql"
+        "scripts": [
         ],
-        "dbVersion": "2.7.0"
+        "dbVersion": "2.8.0"
     }
 }
