@@ -20,5 +20,5 @@ Feature: Letters and Labels
     When I press "Confirm data labels"
     #Then I should see in the header "Content-Disposition:attachment;"
     Then I am on "/LettersAndLabels.php"
-    When I press "Cancel"
-    Then I should see "Welcome to ChurchCRM"  
+    #When I press "Cancel"
+    #Then I should see "Welcome to ChurchCRM"  
