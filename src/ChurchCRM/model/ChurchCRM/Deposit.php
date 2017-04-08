@@ -461,14 +461,14 @@ class Deposit extends BaseDeposit
     public function getFundTotals()
     {
         $funds = PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->groupByFundid()
-            ->withColumn('SUM('.PledgeTableMap::COL_PLG_AMOUNT.')', 'Total')
-            ->joinDonationFund()
-            ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
-            ->orderBy(DonationFundTableMap::COL_FUN_NAME)
-            ->select(['Name', 'Total'])
-            ->find();
+      ->filterByDepid($this->getId())
+      ->groupByFundid()
+      ->withColumn('SUM('.PledgeTableMap::COL_PLG_AMOUNT.')', 'Total')
+      ->joinDonationFund()
+      ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
+      ->orderBy(DonationFundTableMap::COL_FUN_NAME)
+      ->select(['Name', 'Total'])
+      ->find();
 
         return $funds;
     }

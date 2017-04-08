@@ -106,7 +106,7 @@
         ],
         "dbVersion": "2.6.0"
     },
-    "current": {
+    "pre-2.7.0": {
         "versions": [
             "2.6.0",
             "2.6.1",
@@ -114,12 +114,16 @@
             "2.6.3"
         ],
         "scripts": [
-            "/mysql/upgrade/2.7.0-groups.sql",
-            "/mysql/upgrade/2.7.0-users.sql",
-            "/mysql/upgrade/2.7.0-add-primarykey_to_event_attend.sql",
-            "/mysql/upgrade/2.7.0-menu-inactive-families.sql",
-            "/mysql/upgrade/2.7.0-queryparamoptions.sql"
+            "/mysql/upgrade/2.7.0.sql"
         ],
         "dbVersion": "2.7.0"
+    },
+    "current": {
+        "versions": [
+            "2.7.0"
+        ],
+        "scripts": [
+        ],
+        "dbVersion": "2.8.0"
     }
 }

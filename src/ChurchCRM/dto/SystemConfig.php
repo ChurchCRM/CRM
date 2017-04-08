@@ -57,7 +57,6 @@ class SystemConfig
         "sSessionTimeout" => new ConfigItem(9, "sSessionTimeout", "number", "3600", gettext("Session timeout length in seconds\rSet to zero to disable session timeouts.")),
         "aFinanceQueries" => new ConfigItem(10, "aFinanceQueries", "text", "30,31,32", gettext("Queries for which user must have finance permissions to use:")),
         "bCSVAdminOnly" => new ConfigItem(11, "bCSVAdminOnly", "boolean", "1", gettext("Should only administrators have access to the CSV export system and directory report?")),
-        "sDefault_Pass" => new ConfigItem(12, "sDefault_Pass", "text", "password", gettext("Default password for new users and those with reset passwords")),
         "sMinPasswordLength" => new ConfigItem(13, "sMinPasswordLength", "number", "6", gettext("Minimum length a user may set their password to")),
         "sMinPasswordChange" => new ConfigItem(14, "sMinPasswordChange", "number", "4", gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature")),
         "sDisallowedPasswords" => new ConfigItem(15, "sDisallowedPasswords","text", "password,god,jesus,church,christian", "text", "churchcrm,password,god,jesus,church,christian", gettext("A comma-seperated list of disallowed (too obvious) passwords.")),
@@ -166,7 +165,6 @@ class SystemConfig
         "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "number", "3", gettext("Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName ")),
         "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
         "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL"))
-
       );
   }
 
@@ -174,7 +172,7 @@ class SystemConfig
   {
     return array (
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","nChurchLatitude","nChurchLongitude"],
-      gettext('User setup') => ["sDefault_Pass","sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords"],
+      gettext('User setup') => ["sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords"],
       gettext('Email Setup')  => ["sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass","sToEmailAddress","mailChimpApiKey"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip","sEnableGravatarPhotos","sEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
       gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","debug","bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],

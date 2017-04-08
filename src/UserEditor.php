@@ -42,6 +42,7 @@ use ChurchCRM\UserQuery;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Emails\NewAccountEmail;
+use ChurchCRM\User;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
@@ -158,7 +159,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             // Write the SQL depending on whether we're adding or editing
             if ($sAction == 'add') {
                 if ($undupCount == 0) {
-                    $rawPassword = SystemConfig::getValue('sDefault_Pass');
+                    $rawPassword = User::randomPassword();
                     $sPasswordHashSha256 = hash('sha256', $rawPassword . $iPersonID);
                     $sSQL = 'INSERT INTO user_usr (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_LastLogin, usr_AddRecords, usr_EditRecords, usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups, usr_Finance, usr_Notes, usr_Admin, usr_Style, usr_SearchLimit, usr_defaultFY, usr_UserName, usr_EditSelf, usr_Canvasser) VALUES (' . $iPersonID . ",'" . $sPasswordHashSha256 . "',1,'" . date('Y-m-d H:i:s') . "', " . $AddRecords . ', ' . $EditRecords . ', ' . $DeleteRecords . ', ' . $MenuOptions . ', ' . $ManageGroups . ', ' . $Finance . ', ' . $Notes . ', ' . $Admin . ", '" . $Style . "', 10," . $defaultFY . ',"' . $sUserName . '",' . $EditSelf . ',' . $Canvasser . ')';
                     // Execute the SQL
@@ -189,9 +190,13 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_per_ID = $iPersonID;
 
         if (!$bNewUser) {
-            $dbUser = UserQuery::create()->findPk($iPersonID);
-            $sUser = $dbUser->getPerson()->getFullName();
-            $sUserName = $dbUser->getUserName();
+            // Get the data on this user
+            $sSQL = 'SELECT * FROM user_usr INNER JOIN person_per ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID = '.$iPersonID;
+            $rsUser = RunQuery($sSQL);
+            $aUser = mysqli_fetch_array($rsUser);
+            extract($aUser);
+            $sUser = $per_LastName.', '.$per_FirstName;
+            $sUserName = $usr_UserName;
             $sAction = 'edit';
         } else {
             $dbPerson = PersonQuery::create()->findPk($iPersonID);
