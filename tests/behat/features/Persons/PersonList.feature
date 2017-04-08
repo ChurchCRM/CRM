@@ -6,4 +6,5 @@ Feature: Person List
   Scenario: Listing all persons
     Given I am authenticated as "admin" using "changeme"
     And I am on "/SelectList.php?mode=person"
-    Then I should see "Admin, Church"
+    Then I should see "Person Listing"
+    And I should see "Admin, Church"
