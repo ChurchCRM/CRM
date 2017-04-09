@@ -67,7 +67,7 @@ class SystemConfig
     return array(
         "debug" => new ConfigItem(2, "debug", "boolean", "1", gettext("Set debug mode\r\nThis may be helpful for when you're first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you'll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.")),
         "sLogFile" => new ConfigItem(3, "sLogFile", "text", SystemURLs::getDocumentRoot()."/log/ChurchCRM.log", gettext("If debug is enabled the location of log files.")),
-        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "INFO", gettext("Event Log severity to write"), json_encode(SystemConfig::getMonoLogLevels())),
+        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write"), json_encode(SystemConfig::getMonoLogLevels())),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma seperated")),
         "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "text", "1", gettext("These are the family role numbers designated as head of house")),
         "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "text", "2", gettext("These are the family role numbers designated as spouse")),
