@@ -352,6 +352,8 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $familyEmailSent = $mail->send();
         if ($familyEmailSent) {
             $familiesEmailed = $familiesEmailed + 1;
+        } else {
+            $logger->warn($mail->getError());
         }
     }
 }
