@@ -135,13 +135,10 @@ SystemConfig::init(ConfigQuery::create()->find());
 // Log at the desired log level defined by MonoLog's Log Levels.
 // **************************************************
 $logFile = SystemConfig::getValue("sLogFile");
-if (intval(SystemConfig::getValue("sLogLevel")) == 100)
-{
-  $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
-}
-else
-{
-  $dbClassName = "\\Propel\\Runtime\\Connection\\PropelPDO";
+if (intval(SystemConfig::getValue("sLogLevel")) == 100) {
+    $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
+} else {
+    $dbClassName = "\\Propel\\Runtime\\Connection\\PropelPDO";
 }
 $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
 $logger = new Logger('defaultLogger');
