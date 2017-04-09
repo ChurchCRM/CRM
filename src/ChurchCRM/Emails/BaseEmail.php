@@ -25,6 +25,7 @@ class BaseEmail
     $this->mail = new \PHPMailer();
     $this->mail->IsSMTP();
     $this->mail->CharSet = 'UTF-8';
+    $this->mail->Timeout = 30;
     $this->mail->Host = SystemConfig::getValue("sSMTPHost");
     if (SystemConfig::getBooleanValue("sSMTPAuth")) {
       $this->mail->SMTPAuth = true;
