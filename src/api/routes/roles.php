@@ -12,13 +12,6 @@ $app->group('/roles', function () {
         return $response->withJson($roles);
     });
     
-    $this->get('/persons/{personId:[0-9]+}/assigned', function ($request, $response, $args) {
-        $personId = $args['personId'];
-        $person = PersonQuery::create()->findPk($personId);
-        $roleName =  $person->getFamilyRoleName();
-        return $response->withJson(['roleName' => $roleName]);
-    });
-    
     
     $this->post('/persons/assign', function ($request, $response, $args) {
         if (!$_SESSION['user']->isAdmin()) {
@@ -46,7 +39,7 @@ $app->group('/roles', function () {
         if ($person->save()) {
             return $response->withJson(['success' => true, 'msg' => gettext('The role is successfully assigned.')]);
         } else {
-            return $response->withJson(['success' => true, 'msg' => gettext('The role could not be assigned.')]);
+            return $response->withJson(['success' => false, 'msg' => gettext('The role could not be assigned.')]);
         }
         
         
