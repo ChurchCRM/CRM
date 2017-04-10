@@ -1,6 +1,5 @@
 /*
  * from: https://github.com/nodemcu/nodemcu-firmware/blob/master/docs/js/extra.js
- 
  */
 (function () {
     'use strict';
