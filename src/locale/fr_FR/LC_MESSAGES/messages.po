@@ -8558,6 +8558,10 @@ msgstr "Votre panier est vide"
 msgid "Your cart has been successfully emptied"
 msgstr "Votre panier a été vidée avec succès"
 
+#: api/routes/properties.php:24 api/routes/properties.php:82
+msgid "The record could not be found."
+msgstr "Le dossier n'a pu être retrouvé."
+
 #: api/routes/properties.php:34
 msgid "The property is already assigned."
 msgstr "Cette propriété est déjà assigné."
@@ -8707,6 +8711,10 @@ msgstr "Inclure"
 #: GroupView.php:285
 msgid "Exclude"
 msgstr "Exclure"
+
+#: GroupView.php:298
+msgid "Group-Specific Properties"
+msgstr "Propriétés spécifiques du groupe"
 
 #: GroupView.php:349
 msgid "No property assignments"
