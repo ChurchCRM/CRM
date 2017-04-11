@@ -310,8 +310,9 @@ $isAdmin = $_SESSION['user']->isAdmin();
 } ?>
 
 <?php if ($_SESSION['bAdmin']) {
+    global $nonce;
     ?>
-    <script>
+    <script nonce="<?= $nonce ?>">
         ((window.gitter = {}).chat = {}).options = {
             room: 'churchcrm/crm',
             activationElement: false

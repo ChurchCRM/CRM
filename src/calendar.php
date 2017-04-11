@@ -48,21 +48,6 @@ require 'Include/Header.php'; ?>
 
 <!-- fullCalendar 2.2.5 -->
 <script src="<?= SystemURLs::getRootPath()  ?>/skin/fullcalendar/fullcalendar.min.js"></script>
-<script>
-  $(function () {
-    /* initialize the calendar
-     -----------------------------------------------------------------*/
-    $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,basicDay,listMonth'
-      },
-      height: 500,
-      locale: '<?= $localeInfo->getLanguageCode() ?>',
-      events: window.CRM.root + '/api/calendar/events'
-    });
- });
-</script>
+<script src="<?= SystemURLs::getRootPath()  ?>/skin/js/Calendar.js"></script>
 
 <?php require 'Include/Footer.php'; ?>
