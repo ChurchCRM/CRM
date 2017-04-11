@@ -16,6 +16,7 @@
  ******************************************************************************/
 
 require_once 'Header-function.php';
+require_once 'Header-Security.php';
 
 // Turn ON output buffering
 ob_start();

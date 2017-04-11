@@ -44,6 +44,7 @@ $taskService = new TaskService();
 ob_start();
 
 require_once 'Header-function.php';
+require_once 'Header-Security.php';
 
 // Top level menu index counter
 $MenuFirst = 1;
