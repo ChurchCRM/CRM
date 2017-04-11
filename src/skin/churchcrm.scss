@@ -13,7 +13,7 @@
 // and we don't want to incur IE's CSS limits.
 // ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
 
-@import url("https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");
+@import 'jquery-ui/jquery-ui.css';
 @import 'adminlte/plugins/datepicker/datepicker3.css';
 @import 'adminlte/plugins/daterangepicker/daterangepicker.css';
 @import 'adminlte/plugins/timepicker/bootstrap-timepicker.min.css';
