@@ -73,7 +73,6 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
     }
 }
 
-$familyEmailSent = false;
 $familiesEmailed = 0;
 
 // Get the list of custom person fields
@@ -349,11 +348,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         foreach ($myArray = explode(',', $emaillist) as $address) {
             $mail->addAddress($address);
         }
-        $familyEmailSent = $mail->send();
-        if ($familyEmailSent) {
+
+        if ($mail->send()) {
             $familiesEmailed = $familiesEmailed + 1;
         } else {
-            $logger->warn($mail->getError());
+            $logger->error($mail->getError());
         }
     }
 }
