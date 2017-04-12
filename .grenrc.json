@@ -1,4 +1,7 @@
 {
+    "username": "ChurchCRM",
+    "repo": "CRM",
+    "tags": "all",
     "timeWrap": "history",
     "dataSource": "issues",
     "groupBy": {

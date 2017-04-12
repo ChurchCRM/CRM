@@ -8,5 +8,5 @@ fi
 
 sudo npm install github-release-notes@0.8.0 -g
 
-gren --action=changelog --generate --tags=all --username=ChurchCRM --repo=CRM --token=${githubToken}
+gren --action=changelog --generate --token=${githubToken}
 
