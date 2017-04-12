@@ -1,4 +1,6 @@
 {
+    "timeWrap": "history",
+    "dataSource": "issues",
     "groupBy": {
         "Feature Requests:": ["Feature Request"],
         "Enhancements:": ["enhancement"],
@@ -6,5 +8,6 @@
         "Performance:": ["Performance"],
         "Bug fixes:": ["bug"],
         "Inner Beauty:": ["development","build"]
-    }
+    },
+    "ignoreIssuesWith": ["wontfix","duplicate","norepro"]
 }
