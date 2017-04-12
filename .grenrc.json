@@ -2,6 +2,8 @@
     "groupBy": {
         "Feature Requests:": ["Feature Request"],
         "Enhancements:": ["enhancement"],
+        "Localization:": ["Localization"],
+        "Performance:": ["Performance"],
         "Bug fixes:": ["bug"],
         "Inner Beauty:": ["development","build"]
     }

@@ -14,8 +14,16 @@
 - [**enhancement**][**Web Report**] Property Assign and Unassign not using new theme [#1946](https://github.com/ChurchCRM/CRM/issues/1946)
 - [**enhancement**][**Web Report**] Add table-responsive to all tables to make tables scrollable on mobile [#1927](https://github.com/ChurchCRM/CRM/issues/1927)
 - [**enhancement**][**Groups**] Groups should be active/inactive [#1846](https://github.com/ChurchCRM/CRM/issues/1846)
-- [**development**][**enhancement**][**Good first bug**][**Members**] Checkin.php not using new photo logic [#216](https://github.com/ChurchCRM/CRM/issues/216)
+- [**development**][**enhancement**][**Members**] Checkin.php not using new photo logic [#216](https://github.com/ChurchCRM/CRM/issues/216)
 - [**enhancement**][**question**] Record Followup's/visits [#24](https://github.com/ChurchCRM/CRM/issues/24)
+
+#### Localization:
+
+- [**Localization**] Settings Bar Issue [#2251](https://github.com/ChurchCRM/CRM/issues/2251)
+
+#### Performance:
+
+- [**Performance**][**wontfix**] FamilyView: Photos [#2202](https://github.com/ChurchCRM/CRM/issues/2202)
 
 #### Bug fixes:
 
@@ -35,7 +43,7 @@
 - [**development**] Mail - Enabling bEmailSend in Email Setup doesn't change anything [#1525](https://github.com/ChurchCRM/CRM/issues/1525)
 - [**build**][**development**] move log dir setting to Config.php [#1467](https://github.com/ChurchCRM/CRM/issues/1467)
 - [**development**][**Users**] Convert User Objects to ORM [#947](https://github.com/ChurchCRM/CRM/issues/947)
-- [**development**][**enhancement**][**Good first bug**][**Members**] Checkin.php not using new photo logic [#216](https://github.com/ChurchCRM/CRM/issues/216)
+- [**development**][**enhancement**][**Members**] Checkin.php not using new photo logic [#216](https://github.com/ChurchCRM/CRM/issues/216)
 
 ---
 
@@ -161,6 +169,10 @@
 - [**enhancement**] Deposit Chart on Dashboard [#1074](https://github.com/ChurchCRM/CRM/issues/1074)
 - [**enhancement**] Bug Tracking [#574](https://github.com/ChurchCRM/CRM/issues/574)
 
+#### Localization:
+
+- [**Localization**][**question**] System is not translating. [#1964](https://github.com/ChurchCRM/CRM/issues/1964)
+
 #### Bug fixes:
 
 - [**bug**][**development**] Page load fails after vagrant provision [#1997](https://github.com/ChurchCRM/CRM/issues/1997)
@@ -236,6 +248,10 @@
 - [**bug**][**enhancement**] theme: Donated Item Editor  [#1405](https://github.com/ChurchCRM/CRM/issues/1405)
 - [**enhancement**][**question**] Endless 302 loop when using WAMP [#921](https://github.com/ChurchCRM/CRM/issues/921)
 
+#### Localization:
+
+- [**Localization**] Families Translation [#1726](https://github.com/ChurchCRM/CRM/issues/1726)
+
 #### Bug fixes:
 
 - [**bug**][**build**][**Web Report**] Sunday School Dashboard broken on Demo / Master [#1894](https://github.com/ChurchCRM/CRM/issues/1894)
@@ -297,6 +313,10 @@
 
 - [**development**][**enhancement**] In-App Issue reports Include more data [#1754](https://github.com/ChurchCRM/CRM/issues/1754)
 
+#### Localization:
+
+- [**build**][**Localization**] Setup POEditor Auto-commit [#1341](https://github.com/ChurchCRM/CRM/issues/1341)
+
 #### Bug fixes:
 
 - [**bug**] Invalid prerequisite [#1779](https://github.com/ChurchCRM/CRM/issues/1779)
@@ -324,6 +344,10 @@
 ---
 
 ## 2.5.0-RC4 (23/01/2017)
+
+#### Localization:
+
+- [**Localization**] Please, add "Zip/Postal Code" to POEditor.com [#1543](https://github.com/ChurchCRM/CRM/issues/1543)
 
 #### Inner Beauty:
 
@@ -366,6 +390,14 @@
 - [**enhancement**][**Localization**] System Setting for Locales should list the Language Name [#1326](https://github.com/ChurchCRM/CRM/issues/1326)
 - [**enhancement**] TaskService: Tasks should have desc [#650](https://github.com/ChurchCRM/CRM/issues/650)
 
+#### Localization:
+
+- [**build**][**Localization**] Update POEditor download to download only translated text [#1688](https://github.com/ChurchCRM/CRM/issues/1688)
+- [**development**][**Localization**] Change Canada if blocks to Locale settings [#1683](https://github.com/ChurchCRM/CRM/issues/1683)
+- [**enhancement**][**Localization**][**Web Report**] Report Footer [#1658](https://github.com/ChurchCRM/CRM/issues/1658)
+- [**enhancement**][**Localization**] System Setting for Locales should list the Language Name [#1326](https://github.com/ChurchCRM/CRM/issues/1326)
+- [**bug**][**Localization**] Thai Member name display issue [#1282](https://github.com/ChurchCRM/CRM/issues/1282)
+
 #### Bug fixes:
 
 - [**bug**] Can't restore demo tar.gz [#1696](https://github.com/ChurchCRM/CRM/issues/1696)
@@ -398,6 +430,10 @@
 #### Feature Requests:
 
 - [**Feature Request**] Asset Management,  Visitation Management & Calendar [#267](https://github.com/ChurchCRM/CRM/issues/267)
+
+#### Localization:
+
+- [**Localization**][**question**] Diacritc accents not consistently correct [#1171](https://github.com/ChurchCRM/CRM/issues/1171)
 
 #### Bug fixes:
 
@@ -485,6 +521,14 @@
 
 - [**development**][**enhancement**] Turn unrolled loops into loopsRewrite [#315](https://github.com/ChurchCRM/CRM/issues/315)
 
+#### Localization:
+
+- [**Localization**] Add FALSE and TRUE to POEditor.com [#1480](https://github.com/ChurchCRM/CRM/issues/1480)
+- [**Localization**] Please, add all countries of countries class to POEditor.com [#1478](https://github.com/ChurchCRM/CRM/issues/1478)
+- [**Localization**] Duplicated Terms in POEditor.com [#1368](https://github.com/ChurchCRM/CRM/issues/1368)
+- [**bug**][**Localization**] Some gettext's with variable not working [#1251](https://github.com/ChurchCRM/CRM/issues/1251)
+- [**Localization**] Locale pt_br: Telephone Format [#1179](https://github.com/ChurchCRM/CRM/issues/1179)
+
 #### Bug fixes:
 
 - [**bug**] SettingsIndividual.php is broken in 2.4.0 [#1491](https://github.com/ChurchCRM/CRM/issues/1491)
@@ -523,6 +567,10 @@
 - [**enhancement**] Render photos directly in API results [#995](https://github.com/ChurchCRM/CRM/issues/995)
 - [**enhancement**] multiple ways to add events and are not same [#448](https://github.com/ChurchCRM/CRM/issues/448)
 
+#### Localization:
+
+- [**Localization**] Terms missing in POEditor.com [#1431](https://github.com/ChurchCRM/CRM/issues/1431)
+
 #### Bug fixes:
 
 - [**bug**] CartView.php renders 500 error [#1447](https://github.com/ChurchCRM/CRM/issues/1447)
@@ -550,6 +598,12 @@
 - [**enhancement**][**Members**] Membership Info need to have smaller fields  [#1409](https://github.com/ChurchCRM/CRM/issues/1409)
 - [**enhancement**][**Members**] Person Editor hide Custom Fields if not used [#1408](https://github.com/ChurchCRM/CRM/issues/1408)
 - [**enhancement**][**Users**] Revamp the User management [#9](https://github.com/ChurchCRM/CRM/issues/9)
+
+#### Localization:
+
+- [**bug**][**development**][**Localization**] Updated javascript : Include/Header-function.php [#1384](https://github.com/ChurchCRM/CRM/issues/1384)
+- [**Localization**][**question**] Version 2.3.3 with translations problems [#1338](https://github.com/ChurchCRM/CRM/issues/1338)
+- [**Localization**] Cleanup ChurchCRM - Terms [#1235](https://github.com/ChurchCRM/CRM/issues/1235)
 
 #### Bug fixes:
 
@@ -579,6 +633,13 @@
 - [**enhancement**] Default Country is not intuitive [#1327](https://github.com/ChurchCRM/CRM/issues/1327)
 - [**enhancement**][**Localization**] Spanish Translation [#1268](https://github.com/ChurchCRM/CRM/issues/1268)
 - [**enhancement**][**Financial**] Sort Donation Funds [#1233](https://github.com/ChurchCRM/CRM/issues/1233)
+- [**enhancement**][**Localization**] Untranslated terms in 2.30-RC1: [#1207](https://github.com/ChurchCRM/CRM/issues/1207)
+- [**enhancement**][**Localization**][**Members**][**Web Report**] phone number stored neutrally and then formatted on output (print or display) [#1191](https://github.com/ChurchCRM/CRM/issues/1191)
+
+#### Localization:
+
+- [**enhancement**][**Localization**] Spanish Translation [#1268](https://github.com/ChurchCRM/CRM/issues/1268)
+- [**build**][**Localization**] Update DataTables to latest and include localization files  [#1237](https://github.com/ChurchCRM/CRM/issues/1237)
 - [**enhancement**][**Localization**] Untranslated terms in 2.30-RC1: [#1207](https://github.com/ChurchCRM/CRM/issues/1207)
 - [**enhancement**][**Localization**][**Members**][**Web Report**] phone number stored neutrally and then formatted on output (print or display) [#1191](https://github.com/ChurchCRM/CRM/issues/1191)
 
@@ -633,6 +694,13 @@
 #### Enhancements:
 
 - [**enhancement**][**Members**] Where is the notes sections on Person View? [#1266](https://github.com/ChurchCRM/CRM/issues/1266)
+
+#### Localization:
+
+- [**bug**][**Events**][**Localization**] Bug of 2.3.0-RC2 - Error to add a event [#1257](https://github.com/ChurchCRM/CRM/issues/1257)
+- [**Localization**][**Web Report**] date format needs to be configurable [#1194](https://github.com/ChurchCRM/CRM/issues/1194)
+- [**Localization**] datatable : Internationalisation plug-ins [#1141](https://github.com/ChurchCRM/CRM/issues/1141)
+- [**Localization**] Need a system setting for date format [#1031](https://github.com/ChurchCRM/CRM/issues/1031)
 
 #### Bug fixes:
 
