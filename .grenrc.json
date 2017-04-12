@@ -1,0 +1,8 @@
+{
+    "groupBy": {
+        "Feature Requests:": ["Feature Request"],
+        "Enhancements:": ["enhancement"],
+        "Bug fixes:": ["bug"],
+        "Inner Beauty:": ["development","build"]
+    }
+}
