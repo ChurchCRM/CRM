@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.7.0-RC2 (08/04/2017)
+## 2.7.0-RC3 (12/04/2017)
 
 #### Feature Requests:
 
