@@ -37,6 +37,14 @@ class AppIntegrityService
       return ['status' => 'success'];
     }
   }
+  
+  private static function testImagesWriteable()
+  {
+    return is_writable(SystemURLs::getDocumentRoot().'/Images/') && 
+            is_writable(SystemURLs::getDocumentRoot().'/Images/Family') &&
+            is_writable(SystemURLs::getDocumentRoot().'/Images/Person');
+
+  }
 
   public static function getApplicationPrerequisites()
   {
@@ -55,7 +63,8 @@ class AppIntegrityService
       'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
       'cURL'                                      => function_exists('curl_version'),
       'locale gettext'                            => function_exists('bindtextdomain'),
-      'Include/Config file is writeable'                 => is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php'),
+      'Include/Config file is writeable'          => is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php'),
+      'Images directory is writeable'             => AppIntegrityService::testImagesWriteable()
     );
     return $prerequisites;
   }
