@@ -13,15 +13,15 @@ if (isset($_GET['mode'])) {
 }
 if (strtolower($sMode) == 'inactive') {
     $families = FamilyQuery::create()
-            ->filterByDateDeactivated(null)
-            ->orderByName()
-            ->find();
+        ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
+        ->orderByName()
+        ->find();
 } else {
     $sMode = 'Active';
     $families = FamilyQuery::create()
-            ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
-            ->orderByName()
-            ->find();
+        ->filterByDateDeactivated(null)
+        ->orderByName()
+        ->find();
 }
 
 // Set the page title and include HTML header
