@@ -62,7 +62,7 @@ echo "=========================================================="
 sudo rm /var/lib/php/sessions/*
 
 cp /vagrant/vagrant/Config.php /vagrant/src/Include/
-cp /vagrant/BuildConfig.json.example /vagrant/BuildConfig.json
+cp -n /vagrant/BuildConfig.json.example /vagrant/BuildConfig.json
 echo "copied Config.php "
 
 cd /vagrant
