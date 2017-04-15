@@ -26,7 +26,8 @@ $app->group('/users', function () {
             if ($email->send()) {
                 return $response->withStatus(200)->withJson(['status' => "success"]);
             } else {
-                return $response->withStatus(404)->getBody()->write($email->getError());
+                $this->Logger->error($email->getError());
+                throw new \Exception($email->getError());
             }
         } else {
             return $response->withStatus(404);
@@ -42,11 +43,10 @@ $app->group('/users', function () {
             $user->setFailedLogins(0);
             $user->save();
             $email = new UnlockedEmail($user);
-            if ($email->send()) {
-                return $response->withStatus(200)->withJson(['status' => "success"]);
-            } else {
-                return $response->withStatus(404)->getBody()->write($email->getError());
+            if (!$email->send()) {
+                $this->Logger->warn($email->getError());
             }
+            return $response->withStatus(200)->withJson(['status' => "success"]);
         } else {
             return $response->withStatus(404);
         }
@@ -64,7 +64,9 @@ $app->group('/users', function () {
             }
             $email = new AccountDeletedEmail($user);
             $user->delete();
-            $email->send();
+            if (!$email->send()) {
+                $this->Logger->warn($email->getError());
+            }
             return $response->withStatus(200)->withJson(['status' => "success"]);
         } else {
             return $response->withStatus(404);
