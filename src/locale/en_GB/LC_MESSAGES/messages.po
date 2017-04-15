@@ -47,12 +47,12 @@ msgstr "Scan cheque"
 msgid "Fall"
 msgstr "Autumn"
 
-#: Reports/ConfirmReportEmail.php:135 Reports/ConfirmReport.php:135
+#: Reports/ConfirmReportEmail.php:134 Reports/ConfirmReport.php:135
 msgid "City, State, Zip"
 msgstr "City, Postcode"
 
 #: FamilyList.php:45 GroupReports.php:130 Reports/CanvassReports.php:244
-#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
+#: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Mobile Phone"
