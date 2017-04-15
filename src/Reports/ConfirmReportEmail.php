@@ -333,7 +333,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             $subject = $subject.' ** Updated **';
         }
 
-        $mail = new FamilyVerificationPDFEmail($emaillist,$fam_Name);
+        $mail = new FamilyVerificationPDFEmail($emaillist, $fam_Name);
         $filename = 'ConfirmReportEmail-'.$fam_Name.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf';
         $mail->addStringAttachment($doc, $filename);
 
