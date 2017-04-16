@@ -1,18 +1,18 @@
 <?php
-/*******************************************************************************
+/*****************************************************************************
  *
  *  VAGRANT settings
  *
- ******************************************************************************/
+ ****************************************************************************/
 
 // Database connection constants
 $sSERVERNAME = 'localhost';
-$sUSER = 'churchcrm';
-$sPASSWORD = 'churchcrm';
-$sDATABASE = 'churchcrm';
+$sUSER = 'root';
+$sPASSWORD = '';
+$sDATABASE = 'churchcrm_test';
 $sRootPath = '';
 $bLockURL = false;
-$URL[0] = 'http://192.168.33.10/';
+$URL[0] = 'http://127.0.0.1/';
 
 // Sets which PHP errors are reported see http://php.net/manual/en/errorfunc.constants.php
 error_reporting(E_ERROR);

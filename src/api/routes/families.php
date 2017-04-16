@@ -27,7 +27,7 @@ $app->group('/families', function () {
         $scanString = $args['scanString'];
         echo $this->FinancialService->getMemberByScanString($scanString);
     });
-  
+
     $this->get('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
         if ( $family->isPhotoLocal() )
@@ -77,7 +77,8 @@ $app->group('/families', function () {
             if ($email->send()) {
                 $response = $response->withStatus(200);
             } else {
-                $response = $response->withStatus(404)->getBody()->write($email->getError());
+                $this->Logger->error($email->getError());
+                throw new \Exception($email->getError());
             }
         } else {
             $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
