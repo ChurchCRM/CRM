@@ -1,4 +1,4 @@
-# #Want to help translate this project?
+## Want to help translate this project?
 [Join the Project on POEditor](https://poeditor.com/join/project/RABdnDSqAt)
 
 ## The system uses gettext for localization
