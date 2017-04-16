@@ -5,7 +5,7 @@
 
 checkout [GNU gettext Manual](http://www.gnu.org/software/gettext/manual/) 
 
-##Generate new message.po file 
+## Generate new message.po file 
 
 - ssh into vagrant box 
 - cd /vagrant
