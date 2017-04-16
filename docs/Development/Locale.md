@@ -5,7 +5,7 @@
 
 checkout [GNU gettext Manual](http://www.gnu.org/software/gettext/manual/) 
 
-## Generate new message.po file 
+## Generate new Localization file 
 
 - ssh into vagrant box 
 - cd /vagrant
@@ -16,7 +16,12 @@ checkout [GNU gettext Manual](http://www.gnu.org/software/gettext/manual/)
 - Upload to POEditor.com
 - Tag the terms with the release version
 
-## Download locations 
+## Update Localization
+- got to poeditor.com
+- update locale values for terms
+- download po and mo file to your locale server for testing
+
+## Download Localization 
 
 - Go to POEditor.com and genrate an API Key
 - Add the API Key to Build BuildConfig.json
