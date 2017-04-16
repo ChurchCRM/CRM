@@ -5,7 +5,7 @@
 
 checkout [GNU gettext Manual](http://www.gnu.org/software/gettext/manual/) 
 
-## Generate new Localization file 
+## Generate Master Localization file 
 
 - ssh into vagrant box 
 - cd /vagrant
