@@ -298,7 +298,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
 
-<?php if ($sGlobalMessage) {
+<?php if (isset ($sGlobalMessage)) {
     ?>
     <script>
         $("document").ready(function () {
