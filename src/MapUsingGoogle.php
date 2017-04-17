@@ -9,14 +9,22 @@ use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use Propel\Runtime\ActiveQuery\Criteria;
+
 //Set the page title
 $sPageTitle = gettext('View on Map');
 
 require 'Include/Header.php';
 
 $iGroupID = FilterInput($_GET['GroupID'], 'int');
+?>
 
-if (ChurchMetaData::getChurchLatitude() == '') {
+<div class="callout callout-info">
+    <a href="<?= SystemURLs::getRootPath() ?>/UpdateAllLatLon.php" class="btn bg-green-active"><i class="fa fa-map-marker"></i> </a>
+    <?= gettext('Missing Families? Update Family Latitude or Longitude now.') ?>
+</div>
+
+<?php if (ChurchMetaData::getChurchLatitude() == '') {
     ?>
     <div class="callout callout-danger">
         <?= gettext('Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.') ?>
@@ -55,6 +63,8 @@ if (ChurchMetaData::getChurchLatitude() == '') {
         //Map all the families
         $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)
+            ->filterByLatitude(0, Criteria::NOT_EQUAL)
+            ->filterByLongitude(0, Criteria::NOT_EQUAL)
             ->usePersonQuery('per')
             ->filterByFmrId($dirRoleHead)
             ->endUse()
