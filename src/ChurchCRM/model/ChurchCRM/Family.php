@@ -5,9 +5,9 @@ namespace ChurchCRM;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Base\Family as BaseFamily;
-use ChurchCRM\Service\GeoCoderService;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Utils\GeoUtils;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -20,15 +20,6 @@ use ChurchCRM\dto\Photo;
  */
 class Family extends BaseFamily implements iPhoto
 {
-
-    private $geoCoder;
-
-    public function __construct()
-    {
-        $this->geoCoder = new GeoCoderService();
-        $this->applyDefaultValues();
-
-    }
 
     public function getAddress()
     {
@@ -304,7 +295,7 @@ class Family extends BaseFamily implements iPhoto
      */
     public function updateLanLng() {
         if (!empty($this->getAddress()) && (!$this->hasLatitudeAndLongitude())) {
-            $latLng = $this->geoCoder->getLatLong($this->getAddress());
+            $latLng = GeoUtils::getLatLong($this->getAddress());
             if(!empty( $latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 $this->setLatitude($latLng['Latitude']);
                 $this->setLongitude($latLng['Longitude']);

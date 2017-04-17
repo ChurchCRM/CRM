@@ -8,7 +8,7 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Service\GeoCoderService;
+use ChurchCRM\Utils\GeoUtils;
 
 class ChurchMetaData
 {
@@ -86,8 +86,7 @@ class ChurchMetaData
     private static function updateLatLng()
     {
         if (!empty(self::getChurchFullAddress())) {
-            $geoCode = new GeoCoderService();
-            $latLng = $geoCode->getLatLong(self::getChurchFullAddress());
+            $latLng = GeoUtils::getLatLong(self::getChurchFullAddress());
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 SystemConfig::setValue('nChurchLatitude', $latLng['Latitude']);
                 SystemConfig::setValue('nChurchLongitude', $latLng['Longitude']);

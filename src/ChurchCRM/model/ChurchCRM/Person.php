@@ -7,7 +7,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
-use ChurchCRM\Service\GeoCoderService;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -20,14 +19,6 @@ use ChurchCRM\Service\GeoCoderService;
  */
 class Person extends BasePerson implements iPhoto
 {
-
-    private $geoCoder;
-
-    public function __construct()
-    {
-        $this->geoCoder = new GeoCoderService();
-        $this->applyDefaultValues();
-    }
 
     public function getFullName()
     {
@@ -186,7 +177,7 @@ class Person extends BasePerson implements iPhoto
         $address = $this->getAddress(); //if person address empty, this will get Family address
         $lat = 0; $lng = 0;
         if (!empty($this->getAddress1())) {
-            $latLng = $this->geoCoder->getLatLong($this->getAddress());
+            $latLng = GeoUtils::getLatLong($this->getAddress());
             if(!empty( $latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 $lat = $latLng['Latitude'];
                 $lng = $latLng['Longitude'];

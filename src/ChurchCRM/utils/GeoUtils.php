@@ -5,14 +5,45 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
 
-/**
- * Created by PhpStorm.
- * User: georg
- * Date: 4/16/2017
- * Time: 11:28 PM
- */
+
 class GeoUtils
 {
+
+    public static function getLatLong($address) {
+
+        $geoCoder = null;
+        $curl = new CurlHttpAdapter();
+
+        switch (SystemConfig::getValue("sGeoCoderProvider")) {
+            case "GoogleMaps":
+                $geoCoder = new GoogleMaps($curl, null, null, false, SystemConfig::getValue("sGoogleMapKey"));
+                break;
+            case "BingMaps":
+                $geoCoder = new BingMaps($curl, SystemConfig::getValue("sBingMapKey"));
+                break;
+        }
+
+        $lat = 0;
+        $long = 0;
+
+        try {
+            $addressCollection = $geoCoder->geocode($address);
+            $geoAddress = $addressCollection->first();
+            if (!empty($geoAddress)) {
+                $lat = $geoAddress->getLatitude();
+                $long = $geoAddress->getLongitude();
+            }
+        } catch (NoResult $exception) {
+            // no result for the address
+        }
+
+        return array(
+            'Latitude' => $lat,
+            'Longitude' => $long
+        );
+
+    }
+
 
     // Function takes latitude and longitude
     // of two places as input and returns the
