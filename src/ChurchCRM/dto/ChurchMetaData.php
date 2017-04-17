@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: georg
- * Date: 4/16/2017
- * Time: 9:43 PM
- */
-
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Utils\GeoUtils;
