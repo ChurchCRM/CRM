@@ -13,13 +13,16 @@
  *
  ******************************************************************************/
 
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Note;
+use ChurchCRM\FamilyQuery;
+
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/CanvassUtilities.php';
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Note;
+
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -435,6 +438,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $note->setType('create');
             $note->setEntered($_SESSION['iUserID']);
             $note->save();
+            $family = FamilyQuery::create()->findPk($iFamilyID);
+            $family->updateLanLng();
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
                 if (strlen($aFirstNames[$iCount]) > 0) {
@@ -453,7 +458,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $sSQL = "UPDATE person_per SET per_FirstName='".$aFirstNames[$iCount]."', per_MiddleName='".$aMiddleNames[$iCount]."',per_LastName='".$aLastNames[$iCount]."',per_Suffix='".$aSuffix[$iCount]."',per_Gender='".$aGenders[$iCount]."',per_fmr_ID='".$aRoles[$iCount]."',per_BirthMonth='".$aBirthMonths[$iCount]."',per_BirthDay='".$aBirthDays[$iCount]."', ".$sBirthYearScript."per_cls_ID='".$aClassification[$iCount]."' WHERE per_ID=".$aPersonIDs[$iCount];
                     RunQuery($sSQL);
                     //RunQuery("UNLOCK TABLES");
-          $note = new Note();
+
+                    $note = new Note();
                     $note->setPerId($aPersonIDs[$iCount]);
                     $note->setText(gettext('Updated via Family'));
                     $note->setType('edit');
@@ -467,6 +473,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $note->setType('edit');
             $note->setEntered($_SESSION['iUserID']);
             $note->save();
+
+            $family = FamilyQuery::create()->findPk($iFamilyID);
+            $family->updateLanLng();
         }
 
         // Update the custom person fields.
