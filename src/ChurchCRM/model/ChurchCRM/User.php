@@ -114,4 +114,35 @@ class User extends BaseUser
         }
         return implode($pass); //turn the array into a string
     }
+
+    public function createTimeLineNote($type)
+    {
+        $note = new Note();
+        $note->setPerId($this->getPersonId());
+        $note->setEntered($_SESSION['iUserID']);
+        $note->setType('user');
+
+        switch ($type) {
+            case "created":
+                $note->setText(gettext('system user created'));
+                break;
+            case "updated":
+                $note->setText(gettext('system user updated'));
+                break;
+            case "deleted":
+                $note->setText(gettext('system user deleted'));
+                break;
+            case "password-reset":
+                $note->setText(gettext('system user password reset'));
+                break;
+            case "password-changed":
+                $note->setText(gettext('system user password changed'));
+                break;
+            case "login-reset":
+                $note->setText(gettext('system user login reset'));
+                break;
+        }
+
+        $note->save();
+    }
 }
