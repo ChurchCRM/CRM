@@ -174,7 +174,7 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
         function initialize() {
             // init map
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
+                zoom: <?= SystemConfig::getValue("iMapZoom")?>,
                 center: churchloc
 
             });
