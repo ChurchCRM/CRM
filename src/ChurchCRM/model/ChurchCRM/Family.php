@@ -5,6 +5,7 @@ namespace ChurchCRM;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Base\Family as BaseFamily;
+use ChurchCRM\Service\GeoCoderService;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\dto\Photo;
 
@@ -19,6 +20,16 @@ use ChurchCRM\dto\Photo;
  */
 class Family extends BaseFamily implements iPhoto
 {
+
+    private $geoCoder;
+
+    public function __construct()
+    {
+        $this->geoCoder = new GeoCoderService();
+        $this->applyDefaultValues();
+
+    }
+
     public function getAddress()
     {
         $address = [];
@@ -187,22 +198,22 @@ class Family extends BaseFamily implements iPhoto
                 $notChildren[] = $person;
             }
         }
-        
+
         $notChildrenCount = count($notChildren);
         if ($notChildrenCount === 1) {
             return $notChildren[0]->getFullName();
         }
-        
+
         if ($notChildrenCount === 2) {
             if ($notChildren[0]->getLastName() == $notChildren[1]->getLastName()) {
                 return $notChildren[0]->getFirstName() .' & '. $notChildren[1]->getFirstName() .' '. $notChildren[0]->getLastName();
             }
             return $notChildren[0]->getFullName() .' & '. $notChildren[1]->getFullName();
         }
-        
+
         return $this->getName() . ' Family';
     }
-    
+
     private function getPhoto()
     {
       $photo = new Photo("Family",  $this->getId());
@@ -282,27 +293,23 @@ class Family extends BaseFamily implements iPhoto
     {
         return $this->getName(). " " . $this->getAddress();
     }
-  
-   /**
+
+    public function hasLatitudeAndLongitude() {
+        return !empty($this->getLatitude()) && !empty($this->getLongitude());
+    }
+
+    /**
      * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
      * @return array of Lat/Lng
      */
-    public function getLatLng() {
-        if ($this->getLatitude() == 0 || $this->getLongitude() == 0 ) {
-            $prepAddr = str_replace(' ','+',$this->getAddress());
-            $geocode=file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=".$prepAddr."&key=". SystemConfig::getValue('sGoogleMapKey'));
-            $output= json_decode($geocode);
-            if($output->results[0]->geometry->location->lat && $output->results[0]->geometry->location->lng) {
-                $this->setLatitude($output->results[0]->geometry->location->lat);
-                $this->setLongitude($output->results[0]->geometry->location->lng);
+    public function updateLanLng() {
+        if (!empty($this->getAddress()) && (!$this->hasLatitudeAndLongitude())) {
+            $latLng = $this->geoCoder->getLatLong($this->getAddress());
+            if(!empty( $latLng['Latitude']) && !empty($latLng['Longitude'])) {
+                $this->setLatitude($latLng['Latitude']);
+                $this->setLongitude($latLng['Longitude']);
                 $this->save();
             }
-
         }
-        return array(
-            'Latitude' => $this->getLatitude(),
-            'Longitude' => $this->getLongitude()
-        );
     }
-
 }
