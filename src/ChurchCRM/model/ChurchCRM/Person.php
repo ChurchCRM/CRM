@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\Service\GeoCoderService;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -19,6 +20,15 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Person extends BasePerson implements iPhoto
 {
+
+    private $geoCoder;
+
+    public function __construct()
+    {
+        $this->geoCoder = new GeoCoderService();
+        $this->applyDefaultValues();
+    }
+
     public function getFullName()
     {
         return $this->getFormattedName(SystemConfig::getValue('iPersonNameStyle'));
@@ -176,12 +186,15 @@ class Person extends BasePerson implements iPhoto
         $address = $this->getAddress(); //if person address empty, this will get Family address
         $lat = 0; $lng = 0;
         if (!empty($this->getAddress1())) {
-            $prepAddr = str_replace(' ','+',$address);
-            $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
-            $output= json_decode($geocode);
-            $lat = $output->results[0]->geometry->location->lat;
-            $lng = $output->results[0]->geometry->location->lng;
+            $latLng = $this->geoCoder->getLatLong($this->getAddress());
+            if(!empty( $latLng['Latitude']) && !empty($latLng['Longitude'])) {
+                $lat = $latLng['Latitude'];
+                $lng = $latLng['Longitude'];
+            }
         } else {
+            if (!$this->getFamily()->hasLatitudeAndLongitude()) {
+                $this->getFamily()->updateLanLng();
+            }
             $lat = $this->getFamily()->getLatitude();
             $lng = $this->getFamily()->getLongitude();
         }
