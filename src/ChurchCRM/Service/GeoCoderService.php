@@ -39,7 +39,7 @@ class GeoCoderService
             $addressCollection = $this->geocoder->geocode($address);
             $geoAddress = $addressCollection->first();
             if (!empty($geoAddress)) {
-                $lat = $geoAddress->getLongitude();
+                $lat = $geoAddress->getLatitude();
                 $long = $geoAddress->getLongitude();
             }
         } catch (NoResult $exception) {
