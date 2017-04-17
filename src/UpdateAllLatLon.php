@@ -37,7 +37,6 @@ $families = FamilyQuery::create()->filterByLongitude(0)->limit(250)->find();
 echo '<h4>' . gettext('Families without Geo Info') . ": " . $families->count() .'</h4>';
 
 foreach ($families as $family) {
-
     $family->updateLanLng();
     $sNewLatitude = $family->getLatitude();
     $sNewLongitude = $family->getLongitude();
@@ -49,7 +48,8 @@ foreach ($families as $family) {
 ?>
 </div>
 <?php $families = FamilyQuery::create()->filterByLongitude(0)->limit(250)->find();
-if ($families->count() > 0) { ?>
+if ($families->count() > 0) {
+    ?>
     <div class="box box-warning">
         <div class="box-header">
             <b><?= gettext('No coordinates found') ?></b>
@@ -59,11 +59,11 @@ if ($families->count() > 0) { ?>
 
             foreach ($families as $family) {
                 echo '<li><a href="'.$family->getViewURI().'">' . $family->getName() . '</a> ' . $family->getAddress() . '</li>';
-            }
-            ?>
+            } ?>
         </div>
     </div>
     <?php
+
 }
 
 require 'Include/Footer.php'; ?>
