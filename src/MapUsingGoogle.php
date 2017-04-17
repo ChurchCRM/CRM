@@ -9,6 +9,7 @@ use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+
 //Set the page title
 $sPageTitle = gettext('View on Map');
 
