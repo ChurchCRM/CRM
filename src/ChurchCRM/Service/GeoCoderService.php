@@ -25,7 +25,7 @@ class GeoCoderService
                 $this->geocoder = new GoogleMaps($curl, null, null, false, SystemConfig::getValue("sGoogleMapKey"));
                 break;
             case "BingMaps":
-                $this->geocoder = new BingMaps($curl);
+                $this->geocoder = new BingMaps($curl, SystemConfig::getValue("sBingMapKey"));
                 break;
         }
     }
