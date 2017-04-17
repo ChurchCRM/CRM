@@ -4,7 +4,7 @@ namespace ChurchCRM;
 
 use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
-
+use Propel\Runtime\Connection\ConnectionInterface;
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
  *
@@ -113,6 +113,21 @@ class User extends BaseUser
             $pass[] = $alphabet[$n];
         }
         return implode($pass); //turn the array into a string
+    }
+
+    public function postInsert(ConnectionInterface $con = null)
+    {
+        $this->createTimeLineNote("created");
+    }
+
+    public function postUpdate(ConnectionInterface $con = null)
+    {
+        $this->createTimeLineNote("updated");
+    }
+
+    public function postDelete(ConnectionInterface $con = null)
+    {
+        $this->createTimeLineNote("deleted");
     }
 
     public function createTimeLineNote($type)

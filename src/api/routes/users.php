@@ -66,7 +66,6 @@ $app->group('/users', function () {
             }
             $email = new AccountDeletedEmail($user);
             $user->delete();
-            $user->createTimeLineNote("deleted");
             if (!$email->send()) {
                 $this->Logger->warn($email->getError());
             }
