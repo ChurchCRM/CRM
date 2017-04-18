@@ -2,6 +2,7 @@
 
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\PersonQuery;
+use LogicException;
 
 
 $app->group('/roles', function () {
@@ -39,7 +40,7 @@ $app->group('/roles', function () {
         if ($person->save()) {
             return $response->withJson(['success' => true, 'msg' => gettext('The role is successfully assigned.')]);
         } else {
-            return $response->withJson(['success' => false, 'msg' => gettext('The role could not be assigned.')]);
+            throw new LogicException(gettext('The role could not be assigned.'));
         }
         
         
