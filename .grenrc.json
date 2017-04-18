@@ -1,0 +1,16 @@
+{
+    "username": "ChurchCRM",
+    "repo": "CRM",
+    "tags": "all",
+    "timeWrap": "history",
+    "dataSource": "issues",
+    "groupBy": {
+        "Feature Requests:": ["Feature Request"],
+        "Enhancements:": ["enhancement"],
+        "Localization:": ["Localization"],
+        "Performance:": ["Performance"],
+        "Bug fixes:": ["bug"],
+        "Inner Beauty:": ["development","build"]
+    },
+    "ignoreIssuesWith": ["wontfix","duplicate","norepro"]
+}
