@@ -55,6 +55,9 @@ foreach ($_POST['sDirRoleChild'] as $Child) {
     $aChildren[$count++] = FilterInput($Child, 'int');
 }
 
+//Exclude inactive families
+$bExcludeInactive = isset($_POST['bExcludeInactive']);
+
 // Get other settings
 $bDirAddress = isset($_POST['bDirAddress']);
 $bDirWedding = isset($_POST['bDirWedding']);
@@ -137,6 +140,11 @@ if (!empty($_POST['GroupID'])) {
     $sGroupsList = '';
     $sWhereExt = '';
     $sGroupBy = '';
+}
+
+//Exclude inactive families
+if ($bExcludeInactive){
+    $sWhereExt .= ' AND fam_DateDeactivated is null';
 }
 
 if (array_key_exists('cartdir', $_POST)) {
