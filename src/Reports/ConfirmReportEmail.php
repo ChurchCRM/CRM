@@ -20,6 +20,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Emails\FamilyVerificationPDFEmail;
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -106,11 +107,9 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Instantiate the directory class and build the report.
   $pdf = new EmailPDF_ConfirmReport();
 
-    $mail = $pdf->getEmailConnection();
-    $mail->SetFrom(SystemConfig::getValue('sChurchEmail'), SystemConfig::getValue('sChurchName'));
     extract($aFam);
 
-    $emaillist = '';
+    $emaillist = [];
 
     $curY = $pdf->StartNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     $curY += SystemConfig::getValue('incrementY');
@@ -160,8 +159,8 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->WriteAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Family Email'));
     $pdf->SetFont('Times', '', 10);
     $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_Email);
-    if ($fam_Email != '') {
-        $emaillist = $fam_Email;
+    if (!empty($fam_Email)) {
+        array_push($emaillist, $fam_Email);
     }
 
     $curY += SystemConfig::getValue('incrementY');
@@ -220,12 +219,8 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $pdf->WriteAtCell($XGender, $curY, $XRole - $XGender, $genderStr);
         $pdf->WriteAtCell($XRole, $curY, $XEmail - $XRole, $sFamRole);
         $pdf->WriteAtCell($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
-        if ($per_Email != '') {
-            if ($emaillist == '') {
-                $emaillist = $per_Email;
-            } else {
-                $emaillist = $emaillist.','.$per_Email;
-            }
+        if (!empty($per_Email)) {
+            array_push($emaillist, $per_Email);
         }
         if ($per_BirthYear) {
             $birthdayStr = $per_BirthMonth.'/'.$per_BirthDay.'/'.$per_BirthYear;
@@ -327,10 +322,10 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     }
     $pdf->FinishPage($curY);
 
-    if ($emaillist != '') {
+    if (!empty($emaillist)) {
         header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 
-    $doc = $pdf->Output('ConfirmReportEmail-'.$fam_ID.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'S');
+        $doc = $pdf->Output('ConfirmReportEmail-'.$fam_ID.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'S');
 
         $subject = $fam_Name.' Family Information Review';
 
@@ -338,16 +333,9 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             $subject = $subject.' ** Updated **';
         }
 
-        $message = 'Dear '.$fam_Name.' Family <p>'.SystemConfig::getValue('sConfirm1').'</p>'.SystemConfig::getValue('sConfirmSincerely').', <br/>'.SystemConfig::getValue('sConfirmSigner');
-
-        $mail->Subject = $subject;
-        $mail->msgHTML($message);
-        $mail->isHTML(true);
+        $mail = new FamilyVerificationPDFEmail($emaillist, $fam_Name);
         $filename = 'ConfirmReportEmail-'.$fam_Name.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf';
         $mail->addStringAttachment($doc, $filename);
-        foreach ($myArray = explode(',', $emaillist) as $address) {
-            $mail->addAddress($address);
-        }
 
         if ($mail->send()) {
             $familiesEmailed = $familiesEmailed + 1;
