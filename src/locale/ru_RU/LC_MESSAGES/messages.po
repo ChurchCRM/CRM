@@ -138,8 +138,8 @@ msgstr "Телефон"
 #: FamilyView.php:282 FamilyView.php:286 FamilyView.php:375
 #: GroupReports.php:131 PersonEditor.php:1005 PersonEditor.php:1007
 #: PersonView.php:312 PersonView.php:484 PrintView.php:278
-#: Reports/CanvassReports.php:245 Reports/ConfirmReportEmail.php:191
-#: Reports/ConfirmReportEmail.php:209 Reports/ConfirmReport.php:188
+#: Reports/CanvassReports.php:245 Reports/ConfirmReportEmail.php:190
+#: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:188
 #: Reports/ConfirmReport.php:207 Reports/DirectoryReport.php:290
 #: Reports/GroupReport.php:137 sundayschool/SundaySchoolClassView.php:87
 #: sundayschool/SundaySchoolClassView.php:203 menuconfig_mcf.php:15
@@ -376,7 +376,7 @@ msgstr "кому"
 msgid "Birthday Date"
 msgstr "День рождения Дата"
 
-#: Reports/ConfirmReportEmail.php:155 Reports/ConfirmReport.php:155
+#: Reports/ConfirmReportEmail.php:154 Reports/ConfirmReport.php:155
 #, fuzzy
 msgid "Anniversary Date"
 msgstr "Годовщина Дата"
@@ -446,7 +446,7 @@ msgstr "Пожертвование Конверт"
 #: external/templates/verify/verify-family-info.php:70 FamilyEditor.php:751
 #: FamilyList.php:44 FamilyView.php:261 GroupReports.php:128
 #: PersonEditor.php:931 PersonEditor.php:933 PersonView.php:306
-#: PrintView.php:183 Reports/ConfirmReportEmail.php:140
+#: PrintView.php:183 Reports/ConfirmReportEmail.php:139
 #: Reports/ConfirmReport.php:140 SelectList.php:985 SelectList.php:986
 #: SelectList.php:1061 sundayschool/SundaySchoolClassView.php:205
 #: queryparameteroptions_qpo.php:8
@@ -457,7 +457,7 @@ msgstr "Домашний телефон"
 #: external/templates/verify/verify-family-info.php:71 FamilyEditor.php:763
 #: FamilyView.php:268 GroupReports.php:129 PersonEditor.php:954
 #: PersonEditor.php:956 PersonView.php:322 PrintView.php:188
-#: Reports/ConfirmReportEmail.php:242 Reports/ConfirmReport.php:244
+#: Reports/ConfirmReportEmail.php:241 Reports/ConfirmReport.php:244
 #: SelectList.php:988 SelectList.php:989 SelectList.php:1061
 msgid "Work Phone"
 msgstr "Рабочий телефон"
@@ -1030,13 +1030,13 @@ msgstr "Информация, включает в себя"
 #: FamilyEditor.php:681 FamilyList.php:43 FamilyView.php:218 GeoPage.php:388
 #: GroupReports.php:127 Menu.php:179 Menu.php:215 PersonEditor.php:799
 #: PersonEditor.php:815 PersonView.php:273 Register.php:47
-#: Reports/ConfirmReportEmail.php:125 Reports/ConfirmReportEmail.php:130
+#: Reports/ConfirmReportEmail.php:124 Reports/ConfirmReportEmail.php:129
 msgid "Address"
 msgstr "Адрес"
 
 #: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:175
-#: FamilyView.php:374 PersonView.php:483 Reports/ConfirmReportEmail.php:192
-#: Reports/ConfirmReportEmail.php:210 Reports/ConfirmReport.php:189
+#: FamilyView.php:374 PersonView.php:483 Reports/ConfirmReportEmail.php:191
+#: Reports/ConfirmReportEmail.php:209 Reports/ConfirmReport.php:189
 #: Reports/ConfirmReport.php:208
 msgid "Birthday"
 msgstr "Дата рождения"
@@ -1055,7 +1055,7 @@ msgstr "Семья сотовый телефон"
 
 #: DirectoryReports.php:180
 #: external/templates/verify/verify-family-info.php:27
-#: Reports/ConfirmReportEmail.php:161 Reports/ConfirmReport.php:161
+#: Reports/ConfirmReportEmail.php:160 Reports/ConfirmReport.php:161
 msgid "Family Email"
 msgstr "Семья Email"
 
@@ -1107,7 +1107,7 @@ msgstr "Название страницы:"
 msgid "Use Title Page"
 msgstr "Используйте титульный лист"
 
-#: ChurchCRM/dto/SystemConfig.php:114 DirectoryReports.php:244 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:116 DirectoryReports.php:244 Register.php:45
 msgid "Church Name"
 msgstr "Церковь Имя"
 
@@ -1911,7 +1911,7 @@ msgstr "График Общая сумма:"
 msgid "0 - No Minimum"
 msgstr "0 - Нет Минимальный"
 
-#: ChurchCRM/dto/SystemConfig.php:183 FinancialReports.php:281
+#: ChurchCRM/dto/SystemConfig.php:185 FinancialReports.php:281
 msgid "Other Settings"
 msgstr "Другие настройки"
 
@@ -1947,7 +1947,7 @@ msgstr "Сообщить Рубрика:"
 msgid "Graphic"
 msgstr "Графика"
 
-#: ChurchCRM/dto/SystemConfig.php:115 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:117 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Церковь Адрес"
 
@@ -2496,7 +2496,7 @@ msgstr "Адрес в США доклад о проверке"
 
 #: CartToFamily.php:209 external/templates/registration/family-register.php:31
 #: FamilyEditor.php:666 Menu.php:178 Menu.php:214
-#: Reports/ConfirmReportEmail.php:120 Reports/ConfirmReport.php:120
+#: Reports/ConfirmReportEmail.php:119 Reports/ConfirmReport.php:120
 #: SelectDelete.php:153 SelectDelete.php:280
 msgid "Family Name"
 msgstr "Фамилия"
@@ -3745,8 +3745,8 @@ msgstr "Топ залогодатель"
 msgid "Pledged"
 msgstr "Заложенные"
 
-#: Reports/CanvassReports.php:240 Reports/ConfirmReportEmail.php:189
-#: Reports/ConfirmReportEmail.php:207 Reports/ConfirmReport.php:186
+#: Reports/CanvassReports.php:240 Reports/ConfirmReportEmail.php:188
+#: Reports/ConfirmReportEmail.php:206 Reports/ConfirmReport.php:186
 #: Reports/ConfirmReport.php:205
 msgid "M/F"
 msgstr "M / F"
@@ -3764,33 +3764,33 @@ msgstr "Студен"
 msgid "Liaison"
 msgstr "Связь"
 
-#: Reports/ConfirmReportEmail.php:135 Reports/ConfirmReport.php:135
+#: Reports/ConfirmReportEmail.php:134 Reports/ConfirmReport.php:135
 msgid "City, State, Zip"
 msgstr "Город, Район, Страна"
 
 #: external/templates/verify/verify-family-info.php:36 FamilyEditor.php:795
-#: FamilyView.php:240 Reports/ConfirmReportEmail.php:145
+#: FamilyView.php:240 Reports/ConfirmReportEmail.php:144
 #: Reports/ConfirmReport.php:145
 msgid "Send Newsletter"
 msgstr "Отправить бюллетень"
 
-#: Reports/ConfirmReportEmail.php:188 Reports/ConfirmReportEmail.php:206
+#: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
 #: Reports/ConfirmReport.php:185 Reports/ConfirmReport.php:204
 msgid "Member Name"
 msgstr "Имя Пользователя"
 
-#: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
+#: Reports/ConfirmReportEmail.php:189 Reports/ConfirmReportEmail.php:207
 #: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
 msgid "Adult/Child"
 msgstr "Взрослый / ребенок"
 
 #: FamilyList.php:45 GroupReports.php:130 Reports/CanvassReports.php:244
-#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
+#: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Мобильный телефон"
 
-#: Reports/ConfirmReportEmail.php:194 Reports/ConfirmReportEmail.php:212
+#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
 #: Reports/ConfirmReport.php:192 Reports/ConfirmReport.php:211
 msgid "Member/Friend"
 msgstr "Участник / другу"
