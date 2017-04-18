@@ -143,7 +143,7 @@ if (!empty($_POST['GroupID'])) {
 }
 
 //Exclude inactive families
-if ($bExcludeInactive){
+if ($bExcludeInactive) {
     $sWhereExt .= ' AND fam_DateDeactivated is null';
 }
 
