@@ -123,6 +123,7 @@
             "2.7.0"
         ],
         "scripts": [
+          "/mysql/upgrade/2.8.0-assets.sql"
         ],
         "dbVersion": "2.8.0"
     }

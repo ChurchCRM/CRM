@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore" nameSpace="ChurchCRM">
 
+    <table name="asset_ast" idMethod="native" phpName="Asset">
+      <column name="ast_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
+        autoIncrement="true" required="true"/>
+      <column name="ast_Manufacturer" phpName="Manufacturer" type="LONGVARCHAR"/>
+      <column name="ast_ModelNumber" phpName="ModelNumber" type="LONGVARCHAR"/>
+      <column name="ast_SerialNumber" phpName="SerialNumber" type="LONGVARCHAR"/>
+      <column name="ast_OriginalValue" phpName="OriginalValue" type="DOUBLE"/>
+      <column name="ast_PricePaid" phpName="PricePaid" type="DOUBLE"/>
+      <column name="ast_ReplacementCost" phpName="ReplacementCost" type="DOUBLE"/>
+      <column name="ast_DatePurchased" phpName="DatePurchased" type="TIMESTAMP" required="true" defaultValue="2016-01-01 00:00:00"/>
+      <column name="ast_AllowLending" phpName="AllowLending" type="BOOLEAN" size="1" required="true"/>
+      <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+      </vendor>
+    </table>
     <table name="version_ver" idMethod="native" phpName="Version">
         <column name="ver_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
