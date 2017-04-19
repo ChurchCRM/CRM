@@ -33,7 +33,7 @@ msgstr "Verwijder"
 
 #: AutoPaymentDelete.php:66 AutoPaymentEditor.php:581 BatchWinnerEntry.php:114
 #: CanvassEditor.php:241 Checkin.php:172 Checkin.php:283 Checkin.php:297
-#: DirectoryReports.php:288 DonatedItemEditor.php:298 EventNames.php:233
+#: DirectoryReports.php:292 DonatedItemEditor.php:298 EventNames.php:233
 #: external/templates/verify/verify-family-info.php:136 FamilyEditor.php:1141
 #: FamilyView.php:932 FinancialReports.php:70 FundRaiserEditor.php:145
 #: GroupPropsEditor.php:171 GroupReports.php:85 GroupReports.php:155
@@ -102,14 +102,14 @@ msgid "inactive"
 msgstr "inactief"
 
 #: AutoPaymentEditor.php:698 CartToFamily.php:248 CSVExport.php:115
-#: CSVImport.php:221 DirectoryReports.php:252
+#: CSVImport.php:221 DirectoryReports.php:256
 #: external/templates/registration/family-register.php:41 FamilyEditor.php:685
 #: PersonEditor.php:831 Register.php:48 queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "Plaats"
 
 #: AutoPaymentEditor.php:703 CartToFamily.php:253 CSVExport.php:120
-#: CSVImport.php:222 DirectoryReports.php:256
+#: CSVImport.php:222 DirectoryReports.php:260
 #: external/templates/registration/family-register.php:44 FamilyEditor.php:692
 #: PersonEditor.php:851 Register.php:49 queryparameteroptions_qpo.php:6
 msgid "State"
@@ -122,9 +122,9 @@ msgstr "Land"
 
 #: AutoPaymentEditor.php:718 ChurchCRM/Reports/PDF_Directory.php:312
 #: ChurchCRM/Reports/PDF_Directory.php:386
-#: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:264
+#: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:268
 #: external/templates/registration/family-register-members.php:103
-#: Reports/DirectoryReport.php:279 Reports/GroupReport.php:123
+#: Reports/DirectoryReport.php:287 Reports/GroupReport.php:123
 msgid "Phone"
 msgstr "Telefoon"
 
@@ -138,9 +138,9 @@ msgstr "Telefoon"
 #: FamilyView.php:282 FamilyView.php:286 FamilyView.php:375
 #: GroupReports.php:131 PersonEditor.php:1005 PersonEditor.php:1007
 #: PersonView.php:312 PersonView.php:484 PrintView.php:278
-#: Reports/CanvassReports.php:245 Reports/ConfirmReportEmail.php:190
-#: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:188
-#: Reports/ConfirmReport.php:207 Reports/DirectoryReport.php:290
+#: Reports/CanvassReports.php:245 Reports/ConfirmReportEmail.php:189
+#: Reports/ConfirmReportEmail.php:207 Reports/ConfirmReport.php:188
+#: Reports/ConfirmReport.php:207 Reports/DirectoryReport.php:298
 #: Reports/GroupReport.php:137 sundayschool/SundaySchoolClassView.php:87
 #: sundayschool/SundaySchoolClassView.php:203 menuconfig_mcf.php:15
 #: queryparameteroptions_qpo.php:13
@@ -251,7 +251,7 @@ msgid "Middle Name"
 msgstr "Tussenvoegsel"
 
 #: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:265
-#: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
+#: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:264
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
 #: PersonEditor.php:874 Register.php:50
@@ -264,7 +264,7 @@ msgstr "Enveloppe"
 
 #: ChurchCRM/Reports/PDF_Directory.php:400
 #: ChurchCRM/Reports/PDF_Directory.php:457 CSVExport.php:160
-#: PersonView.php:328 Reports/DirectoryReport.php:293
+#: PersonView.php:328 Reports/DirectoryReport.php:301
 msgid "Work/Other Email"
 msgstr "Werk/Andere Email"
 
@@ -303,8 +303,8 @@ msgid "People in Cart (filters ignored)"
 msgstr "Mandje met Personen (filters genegeerd) "
 
 #: CSVExport.php:295 CSVExport.php:321 CSVExport.php:357
-#: DirectoryReports.php:80 DirectoryReports.php:98 DirectoryReports.php:117
-#: DirectoryReports.php:135 DirectoryReports.php:154 FinancialReports.php:262
+#: DirectoryReports.php:84 DirectoryReports.php:102 DirectoryReports.php:121
+#: DirectoryReports.php:139 DirectoryReports.php:158 FinancialReports.php:262
 msgid "Use Ctrl Key to select multiple"
 msgstr "Druk op Ctrl toets om veelvouden te selecteren"
 
@@ -328,7 +328,7 @@ msgstr "Man"
 msgid "Female"
 msgstr "Vrouw"
 
-#: CSVExport.php:349 DirectoryReports.php:96
+#: CSVExport.php:349 DirectoryReports.php:100
 msgid "Group Membership"
 msgstr "Groep Lidmaatschap"
 
@@ -344,7 +344,7 @@ msgstr "Aan"
 msgid "Birthday Date"
 msgstr "Verjaardagsdatum"
 
-#: Reports/ConfirmReportEmail.php:154 Reports/ConfirmReport.php:155
+#: Reports/ConfirmReportEmail.php:153 Reports/ConfirmReport.php:155
 #, fuzzy
 msgid "Anniversary Date"
 msgstr "Trouwdatum"
@@ -414,7 +414,7 @@ msgstr "Bijdrage Enveloppe"
 #: external/templates/verify/verify-family-info.php:70 FamilyEditor.php:751
 #: FamilyList.php:44 FamilyView.php:261 GroupReports.php:128
 #: PersonEditor.php:931 PersonEditor.php:933 PersonView.php:306
-#: PrintView.php:183 Reports/ConfirmReportEmail.php:139
+#: PrintView.php:183 Reports/ConfirmReportEmail.php:138
 #: Reports/ConfirmReport.php:140 SelectList.php:985 SelectList.php:986
 #: SelectList.php:1061 sundayschool/SundaySchoolClassView.php:205
 #: queryparameteroptions_qpo.php:8
@@ -425,7 +425,7 @@ msgstr "Telefoon Thuis"
 #: external/templates/verify/verify-family-info.php:71 FamilyEditor.php:763
 #: FamilyView.php:268 GroupReports.php:129 PersonEditor.php:954
 #: PersonEditor.php:956 PersonView.php:322 PrintView.php:188
-#: Reports/ConfirmReportEmail.php:241 Reports/ConfirmReport.php:244
+#: Reports/ConfirmReportEmail.php:236 Reports/ConfirmReport.php:244
 #: SelectList.php:988 SelectList.php:989 SelectList.php:1061
 msgid "Work Phone"
 msgstr "Telefoon Werk"
@@ -448,7 +448,7 @@ msgstr "Werk / Ander Email"
 msgid "Birth Date"
 msgstr "Geboortedatum"
 
-#: CartToFamily.php:214 CSVImport.php:232 DirectoryReports.php:174
+#: CartToFamily.php:214 CSVImport.php:232 DirectoryReports.php:178
 #: external/templates/verify/verify-family-info.php:31 FamilyEditor.php:820
 #: FamilyView.php:247
 msgid "Wedding Date"
@@ -964,117 +964,117 @@ msgstr "Verwerk Transacties"
 msgid "Directory reports"
 msgstr "Adresboek Rapporten"
 
-#: DirectoryReports.php:78
+#: DirectoryReports.php:82
 msgid "Select classifications to include"
 msgstr "Selecteer Classificaties die omvatten"
 
-#: DirectoryReports.php:115
+#: DirectoryReports.php:119
 msgid "Which role is the head of household?"
 msgstr "Welke rol is het hoofd van het gezin"
 
-#: DirectoryReports.php:133
+#: DirectoryReports.php:137
 msgid "Which role is the spouse?"
 msgstr "Welke rol is de echtgenoot?"
 
-#: DirectoryReports.php:152
+#: DirectoryReports.php:156
 msgid "Which role is a child?"
 msgstr "Welke rol is een kind?"
 
-#: DirectoryReports.php:171
+#: DirectoryReports.php:175
 msgid "Information to Include"
 msgstr "Informatie om toe te Voegen"
 
 #: AutoPaymentEditor.php:688 AutoPaymentEditor.php:693 CartToFamily.php:238
 #: CartToFamily.php:243 CartView.php:295 CSVExport.php:105 CSVExport.php:110
-#: CSVImport.php:219 CSVImport.php:220 DirectoryReports.php:173
-#: DirectoryReports.php:248
+#: CSVImport.php:219 CSVImport.php:220 DirectoryReports.php:177
+#: DirectoryReports.php:252
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35 FamilyEditor.php:677
 #: FamilyEditor.php:681 FamilyList.php:43 FamilyView.php:218 GeoPage.php:388
 #: GroupReports.php:127 Menu.php:179 Menu.php:215 PersonEditor.php:799
 #: PersonEditor.php:815 PersonView.php:273 Register.php:47
-#: Reports/ConfirmReportEmail.php:124 Reports/ConfirmReportEmail.php:129
+#: Reports/ConfirmReportEmail.php:123 Reports/ConfirmReportEmail.php:128
 msgid "Address"
 msgstr "Adres"
 
-#: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:175
-#: FamilyView.php:374 PersonView.php:483 Reports/ConfirmReportEmail.php:191
-#: Reports/ConfirmReportEmail.php:209 Reports/ConfirmReport.php:189
+#: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:179
+#: FamilyView.php:374 PersonView.php:483 Reports/ConfirmReportEmail.php:190
+#: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:189
 #: Reports/ConfirmReport.php:208
 msgid "Birthday"
 msgstr "Geboortedatum"
 
-#: DirectoryReports.php:177
+#: DirectoryReports.php:181
 msgid "Family Home Phone"
 msgstr "Tel.No Thuis van Familie"
 
-#: ChurchCRM/tasks/FamilyWorkPhoneTask.php:30 DirectoryReports.php:178
+#: ChurchCRM/tasks/FamilyWorkPhoneTask.php:30 DirectoryReports.php:182
 msgid "Family Work Phone"
 msgstr "Werk Tel.No van Familie"
 
-#: DirectoryReports.php:179
+#: DirectoryReports.php:183
 msgid "Family Cell Phone"
 msgstr "Mobiele Tel.No van Familie"
 
-#: DirectoryReports.php:180
+#: DirectoryReports.php:184
 #: external/templates/verify/verify-family-info.php:27
-#: Reports/ConfirmReportEmail.php:160 Reports/ConfirmReport.php:161
+#: Reports/ConfirmReportEmail.php:159 Reports/ConfirmReport.php:161
 msgid "Family Email"
 msgstr "Email van Familie"
 
-#: DirectoryReports.php:182
+#: DirectoryReports.php:186
 msgid "Personal Home Phone"
 msgstr "Persoonlijke Tel.No Thuis"
 
-#: DirectoryReports.php:183
+#: DirectoryReports.php:187
 msgid "Personal Work Phone"
 msgstr "Persoonlijke Tel.No Werk"
 
-#: DirectoryReports.php:184
+#: DirectoryReports.php:188
 msgid "Personal Cell Phone"
 msgstr "Persoonlijke Mobiele Tel.No"
 
-#: DirectoryReports.php:185
+#: DirectoryReports.php:189
 msgid "Personal Email"
 msgstr "Persoonlijke Email"
 
-#: DirectoryReports.php:186
+#: DirectoryReports.php:190
 msgid "Personal Work/Other Email"
 msgstr "Persoonlijk Werk/Ander Email"
 
-#: DirectoryReports.php:187
+#: DirectoryReports.php:191
 msgid "Photos"
 msgstr "Foto's"
 
-#: DirectoryReports.php:204
+#: DirectoryReports.php:208
 msgid "Number of Columns"
 msgstr "Aantal Colummen"
 
-#: DirectoryReports.php:212
+#: DirectoryReports.php:216
 msgid "Paper Size"
 msgstr "Papier Grote"
 
-#: DirectoryReports.php:220 Include/LabelFunctions.php:66
+#: DirectoryReports.php:224 Include/LabelFunctions.php:66
 msgid "Font Size"
 msgstr "Font Grote"
 
-#: DirectoryReports.php:236
+#: DirectoryReports.php:240
 msgid "Title page"
 msgstr "Title Pagina"
 
-#: DirectoryReports.php:240
+#: DirectoryReports.php:244
 msgid "Use Title Page"
 msgstr "Gebruik Titel Pagina"
 
-#: ChurchCRM/dto/SystemConfig.php:116 DirectoryReports.php:244 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:116 DirectoryReports.php:248 Register.php:45
 msgid "Church Name"
 msgstr "Gemeente Naam"
 
-#: DirectoryReports.php:268
+#: DirectoryReports.php:272
 msgid "Disclaimer"
 msgstr "Ontkenning"
 
-#: DirectoryReports.php:287
+#: DirectoryReports.php:291
 msgid "Create Directory"
 msgstr "Maak Nieuwe Folder"
 
@@ -2422,7 +2422,7 @@ msgstr "Amerikaanse Address Verification Report"
 
 #: CartToFamily.php:209 external/templates/registration/family-register.php:31
 #: FamilyEditor.php:666 Menu.php:178 Menu.php:214
-#: Reports/ConfirmReportEmail.php:119 Reports/ConfirmReport.php:120
+#: Reports/ConfirmReportEmail.php:118 Reports/ConfirmReport.php:120
 #: SelectDelete.php:153 SelectDelete.php:280
 msgid "Family Name"
 msgstr "Familie Naam"
@@ -3647,8 +3647,8 @@ msgstr "Top Bijdrager"
 msgid "Pledged"
 msgstr "Bijgedragen"
 
-#: Reports/CanvassReports.php:240 Reports/ConfirmReportEmail.php:188
-#: Reports/ConfirmReportEmail.php:206 Reports/ConfirmReport.php:186
+#: Reports/CanvassReports.php:240 Reports/ConfirmReportEmail.php:187
+#: Reports/ConfirmReportEmail.php:205 Reports/ConfirmReport.php:186
 #: Reports/ConfirmReport.php:205
 msgid "M/F"
 msgstr "M/V"
@@ -3666,38 +3666,38 @@ msgstr "Student"
 msgid "Liaison"
 msgstr "Liaison"
 
-#: Reports/ConfirmReportEmail.php:134 Reports/ConfirmReport.php:135
+#: Reports/ConfirmReportEmail.php:133 Reports/ConfirmReport.php:135
 msgid "City, State, Zip"
 msgstr "Stad, Provincie, Postcode"
 
 #: external/templates/verify/verify-family-info.php:36 FamilyEditor.php:795
-#: FamilyView.php:240 Reports/ConfirmReportEmail.php:144
+#: FamilyView.php:240 Reports/ConfirmReportEmail.php:143
 #: Reports/ConfirmReport.php:145
 msgid "Send Newsletter"
 msgstr "Stuur Nieuwsbrief"
 
-#: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
+#: Reports/ConfirmReportEmail.php:186 Reports/ConfirmReportEmail.php:204
 #: Reports/ConfirmReport.php:185 Reports/ConfirmReport.php:204
 msgid "Member Name"
 msgstr "Naam van Lid"
 
-#: Reports/ConfirmReportEmail.php:189 Reports/ConfirmReportEmail.php:207
+#: Reports/ConfirmReportEmail.php:188 Reports/ConfirmReportEmail.php:206
 #: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
 msgid "Adult/Child"
 msgstr "Volwassene/Kind"
 
 #: FamilyList.php:45 GroupReports.php:130 Reports/CanvassReports.php:244
-#: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
+#: Reports/ConfirmReportEmail.php:191 Reports/ConfirmReportEmail.php:209
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Mobiele Telefoon"
 
-#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
+#: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
 #: Reports/ConfirmReport.php:192 Reports/ConfirmReport.php:211
 msgid "Member/Friend"
 msgstr "Lid/Vriend"
 
-#: Reports/DirectoryReport.php:173
+#: Reports/DirectoryReport.php:181
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr "Deze optie vereist op zijn minst verie 3.22 of MySQL! Ga terug naar de vorige pagina om weer gebruik te maken van KerkInfo."
 
@@ -3705,13 +3705,13 @@ msgstr "Deze optie vereist op zijn minst verie 3.22 of MySQL! Ga terug naar de v
 #: ChurchCRM/Reports/PDF_Directory.php:390
 #: ChurchCRM/Reports/PDF_Directory.php:447
 #: external/templates/registration/family-register-members.php:96
-#: Reports/DirectoryReport.php:283 Reports/GroupReport.php:128
+#: Reports/DirectoryReport.php:291 Reports/GroupReport.php:128
 msgid "Work"
 msgstr "Werk"
 
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
-#: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:287
+#: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:295
 #: Reports/GroupReport.php:133
 msgid "Cell"
 msgstr "Mobiel"
