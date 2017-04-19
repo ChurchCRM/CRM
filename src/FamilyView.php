@@ -625,10 +625,11 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                     <div>
                                         <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
 
-                                        <p><br></p>
-
                                         <form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
-                                            <select name="PropertyID">
+                                        <div class="row">
+                                            <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
+                                            <select name="PropertyID" class="form-control">
+                                                <option selected disabled> -- <?= gettext('select an option') ?> -- </option>
                                                 <?php
                                                 while ($aRow = mysqli_fetch_array($rsProperties)) {
                                                     extract($aRow);
@@ -638,9 +639,11 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                     }
                                                 } ?>
                                             </select>
-                                            <input type="submit" class="btn btn-primary" value="<?= gettext("Assign") ?>" name="Submit2"
-                                                   style="font-size: 8pt;">
-                                            </p>
+                                            </div>
+                                            <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                                <input type="submit" class="btn btn-primary" value="<?= gettext("Assign") ?>" name="Submit2">
+                                            </div>
+                                        </div>
                                         </form>
                                     </div>
                                 </div>
