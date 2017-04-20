@@ -75,6 +75,10 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 <?php if (!array_key_exists('cartdir', $_GET)) {
     ?>
     <tr>
+        <td class="LabelColumn"><?= gettext('Exclude Inactive Families') ?></td>
+        <td><input type="checkbox" Name="bExcludeInactive" value="1" checked></td>
+    </tr>
+    <tr>
         <td class="LabelColumn"><?= gettext('Select classifications to include') ?></td>
         <td class="TextColumn">
             <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
