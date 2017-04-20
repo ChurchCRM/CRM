@@ -1,4 +1,5 @@
 <?php
+use ChurchCRM\dto\SystemURLs;
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Sunday School Device Kiosk";
 require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
@@ -14,6 +15,8 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
     
 </div>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/randomcolor/randomColor.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/initial.js"></script>
 <script>
   window.CRM.thisDeviceGuid = "<?= $thisDeviceGuid ?>";
   //first, define the function that will render the active members
@@ -29,10 +32,12 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
       var userHeaderDiv = $("<div>",{class :"widget-user-header bg-yellow"}).attr("data-personid",classMember.personId);
       var imageDiv = $("<div>", {class:"widget-user-image"})
               .append($("<img>",{
-                src: window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/activeClassMember/"+classMember.personId+"/photo"
-              }));
+                class:"initials-image profile-user-img img-responsive img-circle no-border"
+              }).data("name",classMember.displayName)
+                .data("src",window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/activeClassMember/"+classMember.personId+"/photo")
+              );
       userHeaderDiv.append(imageDiv);
-      userHeaderDiv.append($("<h3>",{class:"widget-user-username", text:classMember.displayName})).append($("<h3>",{class:"widget-user-desc", text:classMember.classRole}));
+      userHeaderDiv.append($("<h3>",{class:"widget-user-username", text:classMember.displayName})).append($("<h3>",{class:"widget-user-desc", style:"clear:both", text:classMember.classRole}));
       innerDiv.append(userHeaderDiv);
       innerDiv.append($("<div>", { class : "box-footer no-padding"})
               .append($("<ul>", {class:"nav navbar-nav", style:"width:100%"})
@@ -57,6 +62,7 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
             //console.log(d);
             window.CRM.renderClassMember({displayName:d.Person.FirstName+" "+d.Person.LastName, classRole:d.RoleName,personId:d.PersonId})
           });
+          $(".initials-image").initial();
       })
     };
     $(document).ready(function() {
@@ -97,6 +103,8 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
       $("#personId-"+personId).find(".widget-user-header").addClass("bg-yellow");
       console.log("Checkout for: "+personId);
     });
+    
+    
 
 </script>
 

@@ -27,21 +27,20 @@ $app->group('/kioskdevices', function () {
             ->joinWithGroup()
             ->joinWithPerson()
             ->addJoin(ChurchCRM\Map\GroupTableMap::COL_GRP_ROLELISTID, ChurchCRM\Map\ListOptionTableMap::COL_LST_ID , Propel\Runtime\ActiveQuery\Criteria::INNER_JOIN)
-            ->addJoinCondition(self::RoleId, "ListOptionO.ptionId")
-             ->withColumn(ChurchCRM\Map\ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
+            ->withColumn(ChurchCRM\Map\ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
             ->findByGroupId(2);
       return $ssClass->toJSON();
     });
     
     $this->get('/{guid}/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) {
-     $photo = ChurchCRM\PersonQuery::create()
-              ->findOneById($args['PersonId'])
-              ->getPhoto();
-    
-     $image = file_get_contents(dirname(dirname(__DIR__))."/".$photo);
-     $finfo = new finfo(FILEINFO_MIME_TYPE);
-     $response->getBody()->write($image);      
-      return $response->withHeader('Content-Type', 'content-type: ' . $finfo->buffer($image));
+     $person = PersonQuery::create()->findPk($args['PersonId']);
+        if ($person->isPhotoLocal()) {
+            return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
+        } else if ($person->isPhotoRemote()) {
+            return $response->withRedirect($person->getPhotoURI());
+        } else {
+            return $response->withStatus(404);
+        }
     });
   
 });
