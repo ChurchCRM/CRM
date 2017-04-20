@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.7.0-RC3 (12/04/2017)
+## 2.7.0 (19/04/2017)
 
 #### Feature Requests:
 
@@ -10,6 +10,7 @@
 
 #### Enhancements:
 
+- [**enhancement**] eMails: Create a template/wrapper for all emails. [#2221](https://github.com/ChurchCRM/CRM/issues/2221)
 - [**enhancement**][**Security**] Use Secure / randomized default password [#2160](https://github.com/ChurchCRM/CRM/issues/2160)
 - [**enhancement**] UserActions Email PR Cleanup [#2158](https://github.com/ChurchCRM/CRM/issues/2158)
 - [**enhancement**][**Web Report**] Property Assign and Unassign not using new theme [#1946](https://github.com/ChurchCRM/CRM/issues/1946)
@@ -18,6 +19,8 @@
 - [**enhancement**][**please address comments**] Fix theme for DepositSlipEditor [#1033](https://github.com/ChurchCRM/CRM/issues/1033)
 - [**development**][**enhancement**][**Members**] Checkin.php not using new photo logic [#216](https://github.com/ChurchCRM/CRM/issues/216)
 - [**enhancement**][**question**] Record Followup's/visits [#24](https://github.com/ChurchCRM/CRM/issues/24)
+- [**enhancement**] Directory Report Active / Inactive [#2257](https://github.com/ChurchCRM/CRM/issues/2257)
+- [**enhancement**][**Web Report**] Theme - QueryView Cart buttons [#1940](https://github.com/ChurchCRM/CRM/issues/1940)
 
 #### Localization:
 
@@ -37,6 +40,7 @@
 
 #### Inner Beauty:
 
+- [**development**][**Documentation**] Log Error When SMTP send fails  [#2268](https://github.com/ChurchCRM/CRM/issues/2268)
 - [**development**] Have a standard along logoff page [#2170](https://github.com/ChurchCRM/CRM/issues/2170)
 - [**development**] removed unused userconfig_ucfg [#2139](https://github.com/ChurchCRM/CRM/issues/2139)
 - [**bug**][**development**] PHP Notice [#2123](https://github.com/ChurchCRM/CRM/issues/2123)
@@ -847,34 +851,8 @@
 #### Enhancements:
 
 - [**development**][**enhancement**] Locale: french fr_FR [#775](https://github.com/ChurchCRM/CRM/issues/775)
-- [**bug**][**enhancement**] fix bad $sRootPath at runTime [#741](https://github.com/ChurchCRM/CRM/issues/741)
-
-#### Bug fixes:
-
-- [**bug**][**build**][**question**] vendor directory missing in 2.1.6 tar file [#800](https://github.com/ChurchCRM/CRM/issues/800)
-- [**bug**] Setup.php Get Apache Modules [#797](https://github.com/ChurchCRM/CRM/issues/797)
-- [**bug**] Bugs and correction with get text [#776](https://github.com/ChurchCRM/CRM/issues/776)
-- [**bug**][**build**] Problem to install churchCRM [#773](https://github.com/ChurchCRM/CRM/issues/773)
-- [**bug**][**Web Report**] Upload photo from mobile [#749](https://github.com/ChurchCRM/CRM/issues/749)
-- [**bug**][**enhancement**] fix bad $sRootPath at runTime [#741](https://github.com/ChurchCRM/CRM/issues/741)
-- [**bug**] Deposit Report [#740](https://github.com/ChurchCRM/CRM/issues/740)
-- [**bug**][**Web Report**] Restore DB does not work. [#708](https://github.com/ChurchCRM/CRM/issues/708)
-- [**bug**][**Web Report**] Address for a family member [#701](https://github.com/ChurchCRM/CRM/issues/701)
-- [**bug**] Skin: Need to remove href values when printing in Chrome [#694](https://github.com/ChurchCRM/CRM/issues/694)
-
-#### Inner Beauty:
-
-- [**bug**][**build**][**question**] vendor directory missing in 2.1.6 tar file [#800](https://github.com/ChurchCRM/CRM/issues/800)
-- [**development**][**enhancement**] Locale: french fr_FR [#775](https://github.com/ChurchCRM/CRM/issues/775)
-- [**bug**][**build**] Problem to install churchCRM [#773](https://github.com/ChurchCRM/CRM/issues/773)
-
----
-
-## 2.1.6 (06/07/2016)
-
-#### Enhancements:
-
 - [**enhancement**] Add A4 paper size option for the members directory [#747](https://github.com/ChurchCRM/CRM/issues/747)
+- [**bug**][**enhancement**] fix bad $sRootPath at runTime [#741](https://github.com/ChurchCRM/CRM/issues/741)
 - [**enhancement**] System Setup: Install the churchcrm db it it is not setup [#717](https://github.com/ChurchCRM/CRM/issues/717)
 - [**enhancement**] People: Create a Setting to disable looking for people photos on gravatar [#712](https://github.com/ChurchCRM/CRM/issues/712)
 - [**enhancement**] Install: System should import once we have correct db connection info [#707](https://github.com/ChurchCRM/CRM/issues/707)
@@ -937,10 +915,20 @@
 
 #### Bug fixes:
 
+- [**bug**][**build**][**question**] vendor directory missing in 2.1.6 tar file [#800](https://github.com/ChurchCRM/CRM/issues/800)
+- [**bug**] Setup.php Get Apache Modules [#797](https://github.com/ChurchCRM/CRM/issues/797)
+- [**bug**] Bugs and correction with get text [#776](https://github.com/ChurchCRM/CRM/issues/776)
+- [**bug**][**build**] Problem to install churchCRM [#773](https://github.com/ChurchCRM/CRM/issues/773)
+- [**bug**][**Web Report**] Upload photo from mobile [#749](https://github.com/ChurchCRM/CRM/issues/749)
 - [**bug**] sEnableGravatarPhotos breaks some upgrades [#744](https://github.com/ChurchCRM/CRM/issues/744)
+- [**bug**][**enhancement**] fix bad $sRootPath at runTime [#741](https://github.com/ChurchCRM/CRM/issues/741)
+- [**bug**] Deposit Report [#740](https://github.com/ChurchCRM/CRM/issues/740)
 - [**bug**] Release Notice has invalid URL [#720](https://github.com/ChurchCRM/CRM/issues/720)
 - [**bug**][**Web Report**] \"Add Family\" Second Cell Number [#719](https://github.com/ChurchCRM/CRM/issues/719)
 - [**bug**] Settings do not display [#709](https://github.com/ChurchCRM/CRM/issues/709)
+- [**bug**][**Web Report**] Restore DB does not work. [#708](https://github.com/ChurchCRM/CRM/issues/708)
+- [**bug**][**Web Report**] Address for a family member [#701](https://github.com/ChurchCRM/CRM/issues/701)
+- [**bug**] Skin: Need to remove href values when printing in Chrome [#694](https://github.com/ChurchCRM/CRM/issues/694)
 - [**bug**] MailChimpMissingReport.php 500 error [#690](https://github.com/ChurchCRM/CRM/issues/690)
 - [**bug**] Can't use search in email dashboard [#687](https://github.com/ChurchCRM/CRM/issues/687)
 - [**bug**] GitHub API causes rate errors [#666](https://github.com/ChurchCRM/CRM/issues/666)
@@ -1085,6 +1073,9 @@
 
 #### Inner Beauty:
 
+- [**bug**][**build**][**question**] vendor directory missing in 2.1.6 tar file [#800](https://github.com/ChurchCRM/CRM/issues/800)
+- [**development**][**enhancement**] Locale: french fr_FR [#775](https://github.com/ChurchCRM/CRM/issues/775)
+- [**bug**][**build**] Problem to install churchCRM [#773](https://github.com/ChurchCRM/CRM/issues/773)
 - [**build**][**development**] Upgrade to slim 3.x.x [#699](https://github.com/ChurchCRM/CRM/issues/699)
 - [**development**] Upgrade AdminLTE to 2.3.3  [#697](https://github.com/ChurchCRM/CRM/issues/697)
 - [**build**] Remove Downloaded Skins from src [#685](https://github.com/ChurchCRM/CRM/issues/685)
