@@ -1,3 +1,30 @@
+# Release Rules
+
+1. ChurchCRM Major (0.x.x) and Minor (x.0.x) releases will only occur on Monday, Tuesday, or Wednesday nights.
+
+  1.  If the release is blocked by a P0 bug, then the release will be delayed until the next release window.
+
+  2.  Release Candidates will be made available one week before the targeted release date.
+
+2. ChurchCRM patch builds (x.x.0) may be released at any time, upon validation that the patch:
+
+  a.  Fixes the issue for which it is intended
+
+  b.  Does not introduce any new issues (or features)
+
+  c.  Does not significantly alter the code base
+
+# Bug Definitions
+ 
+## P0
+
+  * Cause database corruption.
+  * Prevents backup or restore the databse
+  * Expose sensitive data
+  * Prevents User Login
+  * App crashes
+
+
 # Process for creating a ChurchCRM Release
 
 ## 1. Clean and update the local working copy
@@ -22,7 +49,7 @@
     git clean -xdf
     ```
 
-## 2. Build ChurchCRM
+## 2. Review Locales
 
   1. Start the vagrant box to build all prerequisites.  When build is complete, log into the box on SSH and cd to /vagrant
 
@@ -42,7 +69,7 @@
 
   3. Pull updated translation strings from POEditor.com
   
-    First edit Gruntfile.js, and set ```poeditor.options.api_token``` to your personal POEditor API access token.  Then, run:
+    First edit BuildConfig.json, and set ```POEditor.token``` to your personal POEditor API access token.  Then, run:
 
     ```
     npm run locale-download
@@ -55,28 +82,12 @@
     3. Push the branch to GitHub
     4. Merge the branch to Master.  Note the commit hash - we'll want to compare this against the demosite later.
 
-  5. After checking in translation updates, run the NPM build script
-
-    ```
-    npm run package
-    ```
-
-    This will run the following actions:
-      * Generate code signatures
-      * Build zip package
-
 ## 3. Test the build!
    
   This testing should be done to ensure there are no last-minute "showstopper" bugs or a bad build
+  
+  1. Test Build on Master http://demo.churchcrm.com/master  
     
-  1. Update the demosite using 
-
-    ```
-    npm run demosite
-    ```
-    
-    The Demosite push key will be required.  Feel free to kick the tires on the demo site at this point one last time.  The commit hash on the demo site landing page should match the commit hash from step 4.4
-
   2. Test the zip file in the vagrant QA environment:
     
     1. After creating the release zip archive, copy it to /vagrant-qa
@@ -91,8 +102,13 @@
 
     4. A new Vagrant VM wil be started on http://192.168.10.12 with the contents of the release zip.  Test major functionality in this QA environment
 
-  3. Test the release package on your own testing server
+    5. After testing a clean install of the release, test an in-place upgrade of the release.
 
+      1.  Place a restore of a previous version of ChurchCRM in the /vagrant-qa directory.  The file must be named ```ChurchCRM-Database.sql```.  
+
+      2.  Run ```vagrant provision```, and the vagrant VM will be re-loaded with the database pre-staged
+
+      3.  Attempt to log into the vagrant-qa box.  The in-place upgrade routines should upgrade the database.
 
 
 ## 5.  Create a GitHub release/tag
@@ -100,9 +116,11 @@
   https://github.com/ChurchCRM/CRM/releases
 
   * Ensure you select the correct branch, and that the current commit hash matches the commit you created in step 4.4
-  * Enter version # as the tag and subject 
+  * Enter version # subject
+  * Select tag as commit 
   * Point to the change log 
-  * Upload zip file
+  * download zip from http://demo.churchcrm.io master list
+  * Upload zip file 
   * Save the release as pre-release
 
 ## 6. Update release notes and version number
@@ -110,7 +128,8 @@
   After the tag has been created, update the change log and version number
 
   ```
-  npm run postpackage
+  npm run changelog-gen
+  npm run rev-build
   ```
 
   * Also, edit ```/src/mysql/upgrade.json``` to reflect the current upgrade path.

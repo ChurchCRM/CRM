@@ -15,45 +15,43 @@
  *
  ******************************************************************************/
 
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 use ChurchCRM\DonationFund;
 use ChurchCRM\DonationFundQuery;
 
 // Security: user must be administrator to use this page
-if (!$_SESSION['bAdmin'])
-{
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bAdmin']) {
+    Redirect('Menu.php');
+    exit;
 }
 
-if (isset($_GET["Action"])) {
-	$sAction = $_GET["Action"];
+if (isset($_GET['Action'])) {
+    $sAction = $_GET['Action'];
 } else {
-	$sAction = '';
+    $sAction = '';
 }
-if (isset ($_GET["Fund"])) {
-	$sFund = FilterInput($_GET["Fund"],'int');
+if (isset($_GET['Fund'])) {
+    $sFund = FilterInput($_GET['Fund'], 'int');
 } else {
-	$sFund = '';
+    $sFund = '';
 }
 
-$sDeleteError = "";
+$sDeleteError = '';
 $bErrorFlag = false;
-$aNameErrors = array ();
+$aNameErrors = [];
 $bNewNameError = false;
 
-if ($sAction = 'delete' && strlen($sFund) > 0)
-{
-  DonationFundQuery::create()
+if ($sAction = 'delete' && strlen($sFund) > 0) {
+    DonationFundQuery::create()
     ->findById($sFund)
     ->delete();
 }
 
-$sPageTitle = gettext("Donation Fund Editor");
+$sPageTitle = gettext('Donation Fund Editor');
 
-require "Include/Header.php"; ?>
+require 'Include/Header.php'; ?>
 
 
 <div class="box box-body">
@@ -62,60 +60,53 @@ require "Include/Header.php"; ?>
 <?php
 
 // Get data for the form as it now exists..
-$donationFundQuery = DonationFundQuery::create()
-  ->orderByName();
-$donationFunds = $donationFundQuery->find();
+
+$donationFunds = DonationFundQuery::create()
+  ->orderByName()
+  ->find();
 
 // Does the user want to save changes to text fields?
-if (isset($_POST["SaveChanges"]))
-{
-	for ($iFieldID = 0; $iFieldID < $donationFunds->count(); $iFieldID++ )
-	{
-    $donation = $donationFunds[$iFieldID];
-    $donation->setName(FilterInput($_POST[$iFieldID . "name"]));
-    $donation->setDescription(FilterInput($_POST[$iFieldID . "desc"]));
-		$donation->setActive($_POST[$iFieldID . "active"] == 1);
-    if(strlen($donation->getName()) == 0) {
-      $aNameErrors[$iFieldID] = true;
-      $bErrorFlag &= $aNameErrors[$iFieldID];
+if (isset($_POST['SaveChanges'])) {
+    for ($iFieldID = 0; $iFieldID < $donationFunds->count(); $iFieldID++) {
+        $donation = $donationFunds[$iFieldID];
+        $donation->setName(FilterInput($_POST[$iFieldID.'name']));
+        $donation->setDescription(FilterInput($_POST[$iFieldID.'desc']));
+        $donation->setActive($_POST[$iFieldID.'active'] == 1);
+        if (strlen($donation->getName()) == 0) {
+            $aNameErrors[$iFieldID] = true;
+            $bErrorFlag &= $aNameErrors[$iFieldID];
+        }
     }
-	}
 
-	// If no errors, then update.
-	if (!$bErrorFlag)
-	{
-		$donationFunds->save();
-	}
-}
-else
-{
-	// Check if we're adding a fund
-	if (isset($_POST["AddField"]))
-	{
-    $donation = new DonationFund();
-		$donation->setName(FilterInput($_POST["newFieldName"]));
-		$donation->setDescription(FilterInput($_POST["newFieldDesc"]));
-
-		if (!$donation->validate())
-		{
-			$bNewNameError = true;
-		}
-		else
-		{
-			$donation->save();
-      $donationFunds = $donationFundQuery->find();
-		}
-	}
+    // If no errors, then update.
+    if (!$bErrorFlag) {
+        $donationFunds->save();
+    }
+} else {
+    // Check if we're adding a fund
+    if (isset($_POST['AddField'])) {
+        $checkExisting = DonationFundQuery::create()->filterByName($_POST['newFieldName'])->findOne();
+        if (count($checkExisting) > 0) {
+            $bNewNameError = true;
+        } else {
+            $donation = new DonationFund();
+            $donation->setName(FilterInput($_POST['newFieldName']));
+            $donation->setDescription(FilterInput($_POST['newFieldDesc']));
+            $donation->save();
+            $donationFunds = DonationFundQuery::create()
+        ->orderByName()
+        ->find();
+        }
+    }
 }
 
 // Create arrays of the funds.
-for ($row = 0; $row < $donationFunds->count(); $row++)
-{
-  $donation = $donationFunds[$row];
-  $aIDFields[$row] = $donation->getId();
-  $aNameFields[$row] = $donation->getName();
-  $aDescFields[$row] = $donation->getDescription();
-  $aActiveFields[$row] = boolval($donation->getActive());
+for ($row = 0; $row < $donationFunds->count(); $row++) {
+    $donation = $donationFunds[$row];
+    $aIDFields[$row] = $donation->getId();
+    $aNameFields[$row] = $donation->getName();
+    $aDescFields[$row] = $donation->getDescription();
+    $aActiveFields[$row] = boolval($donation->getActive());
 }
 
 // Construct the form
@@ -124,7 +115,7 @@ for ($row = 0; $row < $donationFunds->count(); $row++)
 <script language="javascript">
 
 function confirmDeleteFund( Fund ) {
-var answer = confirm (<?= '"' . gettext("Are you sure you want to delete this fund?") . '"' ?>)
+var answer = confirm (<?= '"'.gettext('Are you sure you want to delete this fund?').'"' ?>)
 if ( answer )
 	window.location="DonationFundEditor.php?Fund=" + Fund + "&Action=delete"
 }
@@ -139,59 +130,65 @@ if ( answer )
 </div>
 
 <?php
-		if ( $bErrorFlag ) echo gettext("Invalid fields or selections. Changes not saved! Please correct and try again!");
-		if (strlen($sDeleteError) > 0) echo $sDeleteError;
-		?>
+        if ($bErrorFlag) {
+            echo gettext('Invalid fields or selections. Changes not saved! Please correct and try again!');
+        }
+        if (strlen($sDeleteError) > 0) {
+            echo $sDeleteError;
+        }
+        ?>
 
 <table class="table">
 
 <?php
-if ($donationFunds->count() == 0)
-{
-?>
-	<center><h2><?= gettext("No funds have been added yet") ?></h2>
+if ($donationFunds->count() == 0) {
+            ?>
+	<center><h2><?= gettext('No funds have been added yet') ?></h2>
 	</center>
 <?php
-}
-else
-{
-?>
+
+        } else {
+            ?>
 		<tr>
-			<th><?= gettext("Name") ?></th>
-			<th><?= gettext("Description") ?></th>
-			<th><?= gettext("Active") ?></th>
-            <th><?= gettext("Delete") ?></th>
+			<th><?= gettext('Name') ?></th>
+			<th><?= gettext('Description') ?></th>
+			<th><?= gettext('Active') ?></th>
+            <th><?= gettext('Delete') ?></th>
 		</tr>
 
 	<?php
 
-	for ($row = 0; $row < $donationFunds->count(); $row++ )
-	{
-		?>
+    for ($row = 0; $row < $donationFunds->count(); $row++) {
+        ?>
 		<tr>
 
 
 			<td class="TextColumn" align="center">
-				<input type="text" name="<?= $row . "name" ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="20" maxlength="30">
+				<input type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
 				<?php
-				if ($aNameErrors[$row])
-					echo "<span style=\"color: red;\"><BR>" . gettext("You must enter a name") . " .</span>";
-				?>
+                if ($aNameErrors[$row]) {
+                    echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' .</span>';
+                } ?>
 			</td>
 
 			<td class="TextColumn">
-				<input type="text" Name="<?php echo $row . "desc" ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]),ENT_NOQUOTES, "UTF-8") ?>" size="40" maxlength="100">
+				<input type="text" Name="<?php echo $row.'desc' ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="40" maxlength="100">
 			</td>
 			<td class="TextColumn" align="center" nowrap>
-				<input type="radio" Name="<?= $row ?>active" value="1" <?php if ($aActiveFields[$row]) echo " checked" ?>><?= gettext("Yes") ?>
-				<input type="radio" Name="<?= $row ?>active" value="0" <?php if (!$aActiveFields[$row]) echo " checked" ?>><?= gettext("No") ?>
+				<input type="radio" Name="<?= $row ?>active" value="1" <?php if ($aActiveFields[$row]) {
+                    echo ' checked';
+                } ?>><?= gettext('Yes') ?>
+				<input type="radio" Name="<?= $row ?>active" value="0" <?php if (!$aActiveFields[$row]) {
+                    echo ' checked';
+                } ?>><?= gettext('No') ?>
 			</td>
             <td class="TextColumn" width="5%">
-				<input type="button" class="btn btn-danger" value="<?= gettext("Delete") ?>" Name="delete" onclick="confirmDeleteFund('<?= $aIDFields[$row] ?>');" >
+				<input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>" Name="delete" onclick="confirmDeleteFund('<?= $aIDFields[$row] ?>');" >
 			</td>
 
 		</tr>
-	<?php } ?>
+	<?php 
+    } ?>
 
 		<tr>
 			<td colspan="5">
@@ -199,7 +196,7 @@ else
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn btn-primary" value="<?= gettext("Save Changes") ?>" Name="SaveChanges">
+						<input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -207,7 +204,8 @@ else
 			</td>
 			<td>
 		</tr>
-<?php } ?>
+<?php 
+        } ?>
 		<tr><td colspan="5"><hr></td></tr>
 		<tr>
 			<td colspan="5">
@@ -215,18 +213,20 @@ else
 				<tr>
 					<td width="15%"></td>
 					<td valign="top">
-						<div><?= gettext("Name") ?>:</div>
+						<div><?= gettext('Name') ?>:</div>
 						<input type="text" name="newFieldName" size="30" maxlength="30">
-						<?php if ( $bNewNameError ) echo "<div><span style=\"color: red;\"><BR>" . gettext("You must enter a name") . "</span></div>"; ?>
+						<?php if ($bNewNameError) {
+            echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
+        } ?>
 						&nbsp;
 					</td>
 					<td valign="top">
-						<div><?= gettext("Description") ?>:</div>
+						<div><?= gettext('Description') ?>:</div>
 						<input type="text" name="newFieldDesc" size="40" maxlength="100">
 						&nbsp;
 					</td>
 					<td>
-						<input type="submit" class="btn btn-primary" value="<?= gettext("Add New Fund") ?>" Name="AddField">
+						<input type="submit" class="btn btn-primary" value="<?= gettext('Add New Fund') ?>" Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>
@@ -238,4 +238,4 @@ else
 	</form>
 </div>
 
-<?php require "Include/Footer.php" ?>
+<?php require 'Include/Footer.php' ?>

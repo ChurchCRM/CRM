@@ -36,8 +36,11 @@ The database script will have set up an initial user called "**Admin**" with a p
 At the top right of the page select the gear icon ⚙ then select >>Edit General Settings
 
 * You might want to change the `sDefaultPass` to something that pertains to your organization. This is the default password that all new accounts are assigned until they log in and set their own.
-* Set `sDefaultCity` to the location for your organization
-* Set `sDefaultState` (This must be a two letter abbreviation)
+* Set `sLanguage` in the Localization tab, to change the language of system.
+* Set `sChurchCity` in Church Information tab, to set the location of church.
+* Set `sDefaultCity` in Member Setup tab, to set default location of your organization's members.
+* Set `sDefaultState` in Member Setup tab. This must be a two letter abbreviation.
+* Set `sDefaultCountry` in Member Setup tab. This is needed for some translations.
 
 ##### Email Settings
 

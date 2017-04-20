@@ -1,46 +1,57 @@
 {
-  "name": "ChurchCRM",
-  "description": "Free Church CRM Software",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ChurchCRM/CRM.git"
-  },
-  "keywords": [
-    "Church",
-    "CRM",
-    "LAMP",
-    "Free"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ChurchCRM/CRM/issues"
-  },
-  "homepage": "http://www.churchcrm.io",
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-curl": "~2.2.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-compress": "^1.0.3",
-    "grunt-contrib-rename": "^0.0.3",
-    "node-sha1": "1.0.1",
-    "grunt-poeditor-ab": "^0.1.9"
-  },
-  "dependencies": {
-    "admin-lte": "2.3.7",
-    "ionicons": "2.0.1",
-    "font-awesome": "4.6.3",
-    "fullcalendar": "3.0.1"
-  },
-  "scripts": {
-    "install": "grunt clean && grunt curl-dir && grunt copy",
-    "postinstall": "grunt concat && grunt rename",
-    "locale-gen": "scripts/update-locale.sh",
-    "locale-download" : "grunt updateFromPOeditor",
-    "package": "grunt generateSignatures && grunt compress",
-    "demosite": "scripts/demosite.sh",
-    "postpackage" : "scripts/gen-changelogs.sh && scripts/version-rev.sh",
-    "orm-gen" : "src/vendor/propel/propel/bin/propel --config-dir=propel model:build "
-  }
+    "name": "ChurchCRM",
+    "version": "2.7.0",
+    "description": "Free Church CRM Software",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ChurchCRM/CRM.git"
+    },
+    "keywords": [
+        "Church",
+        "CRM",
+        "LAMP",
+        "Free"
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ChurchCRM/CRM/issues"
+    },
+    "homepage": "http://www.churchcrm.io",
+    "devDependencies": {
+        "grunt": "1.0.1",
+        "grunt-curl": "2.2.0",
+        "grunt-contrib-concat": "1.0.1",
+        "grunt-contrib-clean": "1.0.0",
+        "grunt-contrib-copy": "1.0.0",
+        "grunt-contrib-compress": "1.4.1",
+        "grunt-contrib-sass": "1.0.0",
+        "grunt-contrib-rename": "0.0.3",
+        "node-sha1": "1.0.1",
+        "grunt-poeditor-ab": "0.1.9"
+    },
+    "dependencies": {
+        "admin-lte": "2.3.7",
+        "bootbox": "4.4.0",
+        "ionicons": "2.0.1",
+        "font-awesome": "4.7.0",
+        "fullcalendar": "3.0.1",
+        "jquery-photo-uploader": "1.0.12",
+        "initial-js": "0.3.4",
+        "bootstrap-toggle": "2.2.2",
+        "bootstrap-validator": "0.11.9"
+    },
+    "scripts": {
+        "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
+        "postinstall": "grunt concat && grunt rename",
+        "locale-gen": "locale/update-locale.sh",
+        "locale-download": "grunt updateFromPOeditor",
+        "package": "grunt generateSignatures && grunt compress",
+        "demosite": "scripts/demosite.sh",
+        "changelog-gen": "scripts/gen-changelogs.sh",
+        "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
+        "composer-install": "cd src/ && composer install",
+        "composer-update": " cd src/ && composer update",
+        "tests-install": "cd tests/ && composer install",
+        "test": "cd tests/behat/ && ../vendor/bin/behat"
+    }
 }

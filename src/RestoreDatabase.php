@@ -12,39 +12,41 @@
  ******************************************************************************/
 
 //Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
+
+use ChurchCRM\dto\SystemURLs;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bAdmin']) {
-  Redirect("Menu.php");
-  exit;
+    Redirect('Menu.php');
+    exit;
 }
 
 //Set the page title
-$sPageTitle = gettext("Restore Database");
+$sPageTitle = gettext('Restore Database');
 require 'Include/Header.php';
 ?>
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext("Select Database Files") ?></h3>
+    <h3 class="box-title"><?= gettext('Select Database Files') ?></h3>
   </div>
   <div class="box-body">
-    <p><?= gettext("Select a backup file to restore") ?></p>
-    <p><?= gettext("CAUTION: This will completely erase the existing database, and replace it with the backup") ?></p>
-    <p><?= gettext("If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema") ?></p>
-
+    <p><?= gettext('Select a backup file to restore') ?></p>
+    <p><?= gettext('CAUTION: This will completely erase the existing database, and replace it with the backup') ?></p>
+    <p><?= gettext('If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema') ?></p>
+    <p><?= gettext("Maximum upload size")?>: <span class="maxUploadSize"></span></p>
     <form id="restoredatabase" action="<?= sRootPath ?>/api/database/restore" method="POST"
           enctype="multipart/form-data">
       <input type="file" name="restoreFile" id="restoreFile" multiple=""><br>
-      <button type="submit" class="btn btn-primary"><?= gettext("Upload Files") ?></button>
+      <button type="submit" class="btn btn-primary"><?= gettext('Upload Files') ?></button>
     </form>
   </div>
 </div>
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext("Restore Status:") ?></h3>&nbsp;<h3 class="box-title" id="restorestatus"
-                                                        style="color:red"><?= gettext("No Restore Running") ?></h3>
+    <h3 class="box-title"><?= gettext('Restore Status:') ?></h3>&nbsp;<h3 class="box-title" id="restorestatus"
+                                                        style="color:red"><?= gettext('No Restore Running') ?></h3>
     <div id="restoreMessages"></div>
     <span id="restoreNextStep"></span>
   </div>
@@ -52,9 +54,17 @@ require 'Include/Header.php';
 <script>
   $('#restoredatabase').submit(function (event) {
     event.preventDefault();
-    $("#restorestatus").css("color", "orange");
-    $("#restorestatus").html("<?= gettext("Restore Running, Please wait.")?>");
+
     var formData = new FormData($(this)[0]);
+    if (window.FileReader) { // if the browser supports FileReader, validate the flie locally before uploading.
+       var file = document.getElementById('restoreFile').files[0];
+       if (file.size > window.CRM.maxUploadSizeBytes){
+         window.CRM.DisplayErrorMessage("/api/database/restore",{message: "<?= gettext('The selected file exceeds this servers maximum upload size of') ?>: " + window.CRM.maxUploadSize});
+         return false;
+       }
+    }
+     $("#restorestatus").css("color", "orange");
+    $("#restorestatus").html("<?= gettext('Restore Running, Please wait.')?>");
     $.ajax({
       url: window.CRM.root + '/api/database/restore',
       type: 'POST',
@@ -73,18 +83,17 @@ require 'Include/Header.php';
           });
         }
         $("#restorestatus").css("color", "green");
-        $("#restorestatus").html("<?= gettext("Restore Complete")?>");
-        $("#restoreNextStep").html('<a href="Login.php?Logoff=True" class="btn btn-primary"><?= gettext("Login to restored Database")?></a>');
+        $("#restorestatus").html("<?= gettext('Restore Complete')?>");
+        $("#restoreNextStep").html('<a href="Logoff.php" class="btn btn-primary"><?= gettext('Login to restored Database')?></a>');
       }).fail(function () {
       $("#restorestatus").css("color", "red");
-      $("#restorestatus").html("<?= gettext("Restore Error.")?>");
+      $("#restorestatus").html("<?= gettext('Restore Error.')?>");
     });
     return false;
   });
 </script>
-<!-- PACE -->
-<script src="<?= $sRootPath ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
+
 <?php
-require "Include/Footer.php";
+require 'Include/Footer.php';
 ?>
 

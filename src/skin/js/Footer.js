@@ -36,16 +36,40 @@ $("document").ready(function(){
                 if(resultGroup.children.length > 0)
                   results.push(resultGroup);
               });
-              return {results: results}; 
+              return {results: results};
             },
             cache: true
         }
     });
     $(".multiSearch").on("select2:select",function (e) { window.location.href= e.params.data.uri;});
-    
+
     $.ajax({
       url: window.CRM.root + "/api/timerjobs/run",
       type: "POST"
     });
     $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
+    
+
+    $(".initials-image").initial();
+    $(".maxUploadSize").text(window.CRM.maxUploadSize);
+
+
+    $("#emptyCart").click(function (e) {
+            $.ajax({
+                method: "DELETE",
+                url: window.CRM.root + "/api/cart/",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).done(function (data) {
+                $('#iconCount').text('0');
+            });
+
+    });
+
 });
+
+function showGlobalMessage(message, callOutClass) {
+    $("#globalMessageText").text(message);
+    $("#globalMessageCallOut").addClass("callout-"+callOutClass);
+    $("#globalMessage").show("slow");
+}

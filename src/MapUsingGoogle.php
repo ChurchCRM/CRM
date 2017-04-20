@@ -1,184 +1,299 @@
 <?php
-require ("Include/Config.php");
-require ("Include/Functions.php");
-require ("Include/ReportFunctions.php");
+require 'Include/Config.php';
+require 'Include/Functions.php';
+require 'Include/ReportFunctions.php';
+
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Base\FamilyQuery;
+use ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
-$sPageTitle = gettext("Family View");
+$sPageTitle = gettext('View on Map');
 
-require ("Include/Header.php");
+require 'Include/Header.php';
 
-$iGroupID = FilterInput($_GET["GroupID"],'int');
+$iGroupID = FilterInput($_GET['GroupID'], 'int');
 
-// Read values from config table into local variables
-// **************************************************
-$sSQL = "SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'";
-$rsConfig = mysql_query($sSQL);			// Can't use RunQuery -- not defined yet
-if ($rsConfig) {
-	while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
-		$$cfg_name = $cfg_value;
-	}
-}
+//update SystemConfig with coordinates if nChurchLatitude or nChurchLongitude is not set by using address lookup
+if (SystemConfig::getValue('nChurchLatitude') == '' || SystemConfig::getValue('nChurchLongitude') == '') {
+    require 'Include/GeoCoder.php';
+    $myAddressLatLon = new AddressLatLon();
 
-if ($nChurchLatitude == "" || $nChurchLongitude == "") {
+    // Try to look up the church address to center the map.
+    $myAddressLatLon->SetAddress(SystemConfig::getValue('sChurchAddress'), SystemConfig::getValue('sChurchCity'), SystemConfig::getValue('sChurchState'), SystemConfig::getValue('sChurchZip'), SystemConfig::getValue('sChurchCountry'));
+    $ret = $myAddressLatLon->Lookup();
+    if ($ret == 0) {
+        $nChurchLatitude = $myAddressLatLon->GetLat();
+        $nChurchLongitude = $myAddressLatLon->GetLon();
 
-	require ("Include/GeoCoder.php");
-	$myAddressLatLon = new AddressLatLon;
+        SystemConfig::setValue('nChurchLatitude', $nChurchLatitude);
+        SystemConfig::setValue('nChurchLongitude', $nChurchLongitude);
+    }
+} //end update systemConfig
 
-	// Try to look up the church address to center the map.
-	$myAddressLatLon->SetAddress ($sChurchAddress, $sChurchCity, $sChurchState, $sChurchZip);
-	$ret = $myAddressLatLon->Lookup ();
-	if ($ret == 0) {
-		$nChurchLatitude = $myAddressLatLon->GetLat ();
-		$nChurchLongitude = $myAddressLatLon->GetLon ();
-
-		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLatitude . "' WHERE cfg_name='nChurchLatitude'";
-		RunQuery ($sSQL);
-		$sSQL = "UPDATE config_cfg SET cfg_value='" . $nChurchLongitude . "' WHERE cfg_name='nChurchLongitude'";
-		RunQuery ($sSQL);
-	}
-}
-
-if ($nChurchLatitude == "") {
-?>
-  <div class="callout callout-danger">
-    <?= gettext("Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.") ?>
-  </div>
-<?php } else {
-  if ($sGoogleMapKey == "") {
-?>
-    <div class="callout callout-warning">
-      <?= gettext("Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.") ?>
+if (SystemConfig::getValue('nChurchLatitude') == '') {
+    ?>
+    <div class="callout callout-danger">
+        <?= gettext('Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.') ?>
     </div>
-<?php }
-  ?>
+    <?php
 
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= $sGoogleMapKey ?>&sensor=false"></script>
+} else {
+    if (SystemConfig::getValue('sGoogleMapKey') == '') {
+        ?>
+        <div class="callout callout-warning">
+            <?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?>
+        </div>
+        <?php
 
-<div class="box box-body">
-    <div class="col-lg-12">
-        <div id="map" class="col-lg-12" style="height: 400px;"></div>
-        <script type="text/javascript">
-            var mapOptions = {
-               center: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude ?>),
-               zoom: 4,
-               mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
+    }
 
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    $plotFamily = false;
+    //Get the details from DB
+    $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
 
-            var shadow = new google.maps.MarkerImage('http://google-maps-icons.googlecode.com/files/shadow.png',
-                new google.maps.Size(51, 37),
-                null,
-                new google.maps.Point(18, 37));
+    if ($iGroupID > 0) {
+        //Get all the members of this group
+        $persons = PersonQuery::create()
+            ->usePerson2group2roleP2g2rQuery()
+            ->filterByGroupId($iGroupID)
+            ->endUse()
+            ->find();
+    } elseif ($iGroupID == 0) {
+        // group zero means map the cart
+        if (!empty($_SESSION['aPeopleCart'])) {
+            $persons = PersonQuery::create()
+                ->filterById($_SESSION['aPeopleCart'])
+                ->find();
+        }
+    } else {
+        //Map all the families
+        $families = FamilyQuery::create()
+            ->filterByDateDeactivated(null)
+            ->usePersonQuery('per')
+            ->filterByFmrId($dirRoleHead)
+            ->endUse()
+            ->find();
+        $plotFamily = true;
+    }
 
+    //Markericons list
+    $icons = ListOptionQuery::create()
+        ->filterById(1)
+        ->orderByOptionSequence()
+        ->find();
+
+    $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
+    array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification?>
+
+    <!--Google Map Scripts -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue('sGoogleMapKey') ?>">
+    </script>
+
+    <div class="box">
+        <!-- Google map div -->
+        <div id="map" class="map-div"></div>
+
+        <!-- map Desktop legend-->
+        <div id="maplegend"><h4><?= gettext('Legend') ?></h4>
+            <div class="row legendbox">
+                <div class="legenditem">
+                    <img
+                        src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                    <?= gettext('Unassigned') ?>
+                </div>
+                <?php
+                foreach ($icons as $icon) {
+                    ?>
+                    <div class="legenditem">
+                        <img
+                            src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                        <?= $icon->getOptionName() ?>
+                    </div>
+                    <?php
+
+                } ?>
+            </div>
+        </div>
+
+        <!-- map Mobile legend-->
+        <div id="maplegend-mobile" class="box visible-xs-block">
+            <div class="row legendbox">
+                <div class="btn bg-primary col-xs-12"><?= gettext('Legend') ?></div>
+            </div>
+            <div class="row legendbox">
+                <div class="col-xs-6 legenditem">
+                    <img
+                        class="legendicon" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                    <div class="legenditemtext"><?= gettext('Unassigned') ?></div>
+                </div>
+                <?php
+                foreach ($icons as $icon) {
+                    ?>
+                    <div class="col-xs-6 legenditem">
+                        <img
+                            class="legendicon" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                        <div class="legenditemtext"><?= $icon->getOptionName() ?></div>
+                    </div>
+                    <?php
+
+                } ?>
+            </div>
+        </div>
+    </div> <!--Box-->
+
+    <script type="text/javascript">
+        var churchloc = {
+            lat: <?= SystemConfig::getValue('nChurchLatitude') ?>,
+            lng: <?= SystemConfig::getValue('nChurchLongitude') ?>};
+
+
+        var markerIcons = <?= json_encode($markerIcons) ?>;
+        var iconsJSON = <?= $icons->toJSON() ?>;
+        var icons = iconsJSON.ListOptions;
+        var iconBase = 'https://www.google.com/intl/en_us/mapfiles/ms/micons/';
+
+        var map = null;
+        var infowindow = new google.maps.InfoWindow({
+            maxWidth: 200
+        });
+
+        function addMarkerWithInfowindow(map, marker_position, image, title, infowindow_content) {
+            //Create marker
+            var marker = new google.maps.Marker({
+                position: marker_position,
+                map: map,
+                icon: image,
+                title: title
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.setContent(infowindow_content);
+                infowindow.open(map, marker);
+                //set image/gravtar
+                $('.profile-user-img').initial();
+            });
+        }
+
+        function initialize() {
+            // init map
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: churchloc
+
+            });
+
+            //Churchmark
             var churchMark = new google.maps.Marker({
                 icon: window.CRM.root + "/skin/icons/church.png",
-                shadow: shadow,
-                position: new google.maps.LatLng(<?= $nChurchLatitude . ", " . $nChurchLongitude ?>),
-                map: map});
-	 
+                position: new google.maps.LatLng(churchloc),
+                map: map
+            });
 
-            var churchInfoWin = new google.maps.InfoWindow({content: "<?= $sChurchName . "<p>" . $sChurchAddress . "<p>" . $sChurchCity . ", " . $sChurchState . "  " . $sChurchZip; ?>"});
-
-            google.maps.event.addListener(churchMark, "click", function() {
-                churchInfoWin.open(map,churchMark);
+            google.maps.event.addListener(map, 'click', function () {
+                infowindow.close();
             });
 
             <?php
-                $appendToQuery = "";
-                if ($iGroupID > 0) {
-                    // If mapping only members of  a group build a condition to add to the query used below
-
-                    //Get all the members of this group
-                    $sSQL = "SELECT per_fam_ID FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = " . $iGroupID;
-                    $rsGroupMembers = RunQuery($sSQL);
-                    $appendToQuery = " WHERE fam_ID IN (";
-                    while ($aPerFam = mysql_fetch_array($rsGroupMembers)) {
-                        extract ($aPerFam);
-                        $appendToQuery .= $per_fam_ID . ",";
-                    }
-                    $appendToQuery = substr($appendToQuery, 0, strlen ($appendToQuery)-1);
-                    $appendToQuery .= ")";
-                } elseif ($iGroupID > -1) {
-                    // group zero means map the cart
-                    $sSQL = "SELECT per_fam_ID FROM person_per WHERE per_ID IN (" . ConvertCartToString($_SESSION['aPeopleCart']) . ")";
-                    $rsGroupMembers = RunQuery($sSQL);
-                    $appendToQuery = " WHERE fam_ID IN (";
-                    while ($aPerFam = mysql_fetch_array($rsGroupMembers)) {
-                        extract ($aPerFam);
-                        $appendToQuery .= $per_fam_ID . ",";
-                    }
-                    $appendToQuery = substr($appendToQuery, 0, strlen ($appendToQuery)-1);
-                    $appendToQuery .= ")";
+            $arr = array();
+    $arrPlotItems = array();
+    if ($plotFamily) {
+        foreach ($families as $family) {
+            $latLng = $family->getLatLng();
+                    //this helps to add head people persons details: otherwise doesn't seems to populate
+                    $class = $family->getHeadPeople()[0];
+            $family->getHeadPeople()[0];
+            $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
+            $arr['ID'] = $family->getId();
+            $arr['Name'] = $family->getName();
+            $arr['Salutation'] = $family->getSaluation();
+            $arr['Address'] = $family->getAddress();
+            $arr['Thumbnail'] = $photoFileThumb;
+            $arr['Latitude'] = $latLng['Latitude'];
+            $arr['Longitude'] = $latLng['Longitude'];
+            $arr['Name'] = $family->getName();
+            $arr['Classification'] = $class->GetClsId();
+            array_push($arrPlotItems, $arr);
+        }
+    } else {
+        //plot Person
+                foreach ($persons as $member) {
+                    $latLng = $member->getLatLng();
+                    $photoFileThumb = SystemURLs::getRootPath() . '/api/persons/' . $member->getId() . '/thumbnail';
+                    $arr['ID'] = $member->getId();
+                    $arr['Salutation'] = $member->getFullName();
+                    $arr['Name'] = $member->getFullName();
+                    $arr['Address'] = $member->getAddress();
+                    $arr['Thumbnail'] = $photoFileThumb;
+                    $arr['Latitude'] = $latLng['Latitude'];
+                    $arr['Longitude'] = $latLng['Longitude'];
+                    $arr['Name'] = $member->getFullName();
+                    $arr['Classification'] = $member->getClsId();
+                    array_push($arrPlotItems, $arr);
                 }
+    } //end IF $plotFamily
 
-                $sSQL = "SELECT fam_ID, per_cls_ID, fam_Name, fam_latitude, fam_longitude, fam_Address1, fam_City, fam_State, fam_Zip FROM family_fam LEFT JOIN person_per on family_fam.fam_ID = person_per.per_fam_ID AND per_fmr_ID IN ( $sDirRoleHead )";
-                $sSQL .= $appendToQuery;
-                $rsFams = RunQuery ($sSQL);
-                $markerIcons =  explode ( "," , $sGMapIcons );
-                array_unshift($markerIcons, "red-pushpin");
-
-                while ($aFam = mysql_fetch_array($rsFams)) {
-                    extract ($aFam);
-                    if ($fam_longitude != 0 && $fam_latitude != 0) {
             ?>
 
-                                 var image = new google.maps.MarkerImage('http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= (array_key_exists ($per_cls_ID, $markerIcons) ? $markerIcons[$per_cls_ID] : 0) ?>.png',
-                                             new google.maps.Size(32, 32),
-                                             new google.maps.Point(0,0),
-                                             new google.maps.Point(0, 32));
-                                 var shadow = new google.maps.MarkerImage('http://maps.google.com/mapfiles/shadow50.png',
-                                             new google.maps.Size(37, 34),
-                                             new google.maps.Point(0,0),
-                                             new google.maps.Point(-4, 34));
+            var plotArray = <?= json_encode($arrPlotItems) ?>;
+            var bPlotFamily = <?= ($plotFamily) ? 'true' : 'false' ?>;
+            if (plotArray.length == 0) {
+                return;
+            }
+            //loop through the families/persons and add markers
+            for (var i = 0; i < plotArray.length; i++) {
+                if (plotArray[i].Latitude + plotArray[i].Longitude == 0)
+                    continue;
 
-                        var famMark<?= $fam_ID ?> = new google.maps.Marker({
-                                                                                position: new google.maps.LatLng(<?= $fam_latitude . ", " . $fam_longitude ?>),
-                                                                                shadow:shadow,
-                                                                                icon: image,
-                                                                                map: map
-                                                                                               });
-                        <?php
-                            $famDescription = MakeSalutationUtility ($fam_ID);
-                            $famDescription .= "<p>" . $fam_Address1 . "<p>" . $fam_City . ", " . $fam_State . "  " . $fam_Zip;
-                        ?>
-                                    var fam<?= $fam_ID ?>InfoWin = new google.maps.InfoWindow({content: "<?= $famDescription ?>"});
-                        google.maps.event.addListener(famMark<?= $fam_ID ?>, "click", function() {
-                                                                  fam<?= $fam_ID ?>InfoWin.open(map,famMark<?php echo $fam_ID;?>);
-                                                                 });
-            <?php
-		}
+                //icon image
+                var clsid = plotArray[i].Classification;
+                var markerIcon = markerIcons[clsid];
+                var iconurl = iconBase + markerIcon + '.png';
+                var image = {
+                    url: iconurl,
+                    // This marker is 37 pixels wide by 34 pixels high.
+                    size: new google.maps.Size(37, 34),
+                    // The origin for this image is (0, 0).
+                    origin: new google.maps.Point(0, 0),
+                    // The anchor for this image is the base of the flagpole at (0, 32).
+                    anchor: new google.maps.Point(0, 32)
+                };
 
-	}
-?>
+                //Latlng object
+                var latlng = new google.maps.LatLng(plotArray[i].Latitude, plotArray[i].Longitude);
 
-    //]]>
-    </script>
-
-    </div>
-    <div id="mapkey" class="col-lg-2 col-md-2 col-sm-2">
-        <table>
-            <tr>
-                <th colspan='2'><?= gettext("Key") ?>:</th>
-            </tr>
-            <?php
-                $sSQL = "SELECT lst_OptionID, lst_OptionName from list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
-                $rsIcons = RunQuery ($sSQL);
-                    while ($aIcons = mysql_fetch_array($rsIcons)) {
-                    extract ($aIcons);
-                        ?>
-                  <tr>
-                       <td><img style="vertical-align:middle;" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$lst_OptionID] ?>.png'/></td>
-                       <td><?= $lst_OptionName ?></td>
-                 </tr>
-        <?php
+                //Infowindow Content
+                var imghref, contentString;
+                if (bPlotFamily) {
+                    imghref = "FamilyView.php?FamilyID=" + plotArray[i].ID;
+                } else {
+                    imghref = "PersonView.php?PersonID=" + plotArray[i].ID;
                 }
-        ?>
-        </table>
-    </div>
-</div>
 
-<?php }
+                contentString = "<b><a href='" + imghref + "'>" + plotArray[i].Salutation + "</a></b>";
+                contentString += "<p>" + plotArray[i].Address + "</p>";
+                if (plotArray[i].Thumbnail.length > 0) {
+                    //contentString += "<div class='image-container'><p class='text-center'><a href='" + imghref + "'>";
+                    contentString += "<div class='image-container'><a href='" + imghref + "'>";
+                    contentString += "<img data-name='" + plotArray[i].Name + " ' class='profile-user-img img-responsive img-circle' border='1' data-src='" + plotArray[i].Thumbnail + "'></a></div>";
+                }
 
-require "Include/Footer.php" ?>
+                //Add marker and infowindow
+                addMarkerWithInfowindow(map, latlng, image, plotArray[i].Name, contentString);
+            }
+
+            //push Legend to right bottom
+            var legend = document.getElementById('maplegend');
+            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
+        }
+        initialize();
+
+    </script>
+    <?php
+
+}
+require 'Include/Footer.php' ?>

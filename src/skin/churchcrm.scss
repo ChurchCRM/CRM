@@ -13,17 +13,35 @@
 // and we don't want to incur IE's CSS limits.
 // ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
 
-@import 'adminlte/dist/css/AdminLTE.css';
-@import 'adminlte/dist/css/skins/_all-skins.css';
-@import 'adminlte/plugins/select2/select2.css';
+@import 'jquery-ui/jquery-ui.css';
 @import 'adminlte/plugins/datepicker/datepicker3.css';
-@import 'adminlte/plugins/timepicker/bootstrap-timepicker.css';
-@import 'font-awesome/css/font-awesome.css';
-@import 'ionicons/css/ionicons.css';
+@import 'adminlte/plugins/daterangepicker/daterangepicker.css';
+@import 'adminlte/plugins/timepicker/bootstrap-timepicker.min.css';
+@import 'adminlte/plugins/iCheck/square/blue.css';
+@import 'adminlte/plugins/datatables/dataTables.bootstrap.css';
+@import 'adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css';
+@import 'adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css';
 
+@import 'bootstrap-toggle/bootstrap-toggle.css';
+@import 'fullcalendar/fullcalendar.min.css';
+@import 'fullcalendar/fullcalendar.print.css' print;
 
+@import 'font-awesome/css/font-awesome.min.css';
+
+@import 'ionicons/css/ionicons.min.css';
+
+@import 'adminlte/dist/css/AdminLTE.min.css';
+@import 'adminlte/dist/css/skins/_all-skins.min.css';
+@import 'adminlte/plugins/select2/select2.min.css';
 // Import ChurchCRM custom styles
 
 @import 'scss/dropdowns';
 @import 'scss/forms';
 @import 'scss/tables';
+@import 'scss/profileImage';
+@import 'scss/shortConfig';
+@import 'scss/leftNav';
+@import 'scss/imageOverlay';
+@import 'scss/maps';
+@import "scss/spacing";
+@import 'scss/SystemNotifications';

@@ -14,41 +14,52 @@
  ******************************************************************************/
 
 //Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
 //Set the page title
-$sPageTitle = gettext("Query Listing");
+$sPageTitle = gettext('Query Listing');
 
-$sSQL = "SELECT * FROM query_qry ORDER BY qry_Name";
+$sSQL = 'SELECT * FROM query_qry ORDER BY qry_Name';
 $rsQueries = RunQuery($sSQL);
 
 $aFinanceQueries = explode(',', $aFinanceQueries);
 
-require "Include/Header.php";
-
-if ($_SESSION['bAdmin'])
-{
-	echo "<p align=\"center\"><a href=\"QuerySQL.php\">" . gettext("Run a Free-Text Query") . "</a></p>";
-}
-
-while ($aRow = mysql_fetch_array($rsQueries))
-{
-
-	extract($aRow);
-
-	// Filter out finance-related queries if the user doesn't have finance permissions
-	if ($_SESSION['bFinance'] || !in_array($qry_ID,$aFinanceQueries))
-	{
-		// Display the query name and description
-		echo "<p>";
-		echo "<a href=\"QueryView.php?QueryID=" . $qry_ID . "\">" . gettext($qry_Name) . "</a>";
-		echo "<br>";
-		echo gettext($qry_Description);
-		echo "</p>";
-	}
-}
-
-require "Include/Footer.php";
+require 'Include/Header.php';
 
 ?>
+<div class="box box-primary">
+    <div class="box-body">
+        <p class="text-right">
+            <?php
+                if ($_SESSION['bAdmin']) {
+                    echo '<a href="QuerySQL.php" class="text-red">'.gettext('Run a Free-Text Query').'</a>';
+                }
+            ?>
+        </p>
+        
+        <ul>
+            <?php while ($aRow = mysqli_fetch_array($rsQueries)): ?>
+            <li>
+                <p>
+                <?php
+                    extract($aRow);
+                    
+                    // Filter out finance-related queries if the user doesn't have finance permissions
+                    if ($_SESSION['bFinance'] || !in_array($qry_ID, $aFinanceQueries)) {
+                        // Display the query name and description
+                        echo '<a href="QueryView.php?QueryID='.$qry_ID.'">'.gettext($qry_Name).'</a>:';
+                        echo '<br>';
+                        echo gettext($qry_Description);
+                    }
+                ?>
+                </p>
+            </li>
+            <?php endwhile; ?>
+        </ul>
+    </div>
+    
+</div>
+<?php
+
+require 'Include/Footer.php';

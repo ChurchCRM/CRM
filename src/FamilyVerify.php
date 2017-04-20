@@ -1,26 +1,17 @@
 <?php
 
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
 
-use ChurchCRM\Note;
-use ChurchCRM\Service\FamilyService;
-
-$familyService = new FamilyService();
+use ChurchCRM\FamilyQuery;
 
 //Get the FamilyID out of the querystring
-$iFamilyID = FilterInput($_GET["FamilyID"], 'int');
+$iFamilyID = FilterInput($_GET['FamilyID'], 'int');
 
-$note = new Note();
-$note->setFamId($iFamilyID);
-$note->setText("Family Data Verified");
-$note->setType("verify");
-$note->setEntered($_SESSION['iUserID']);
-$note->save();
+$family =  FamilyQuery::create()
+    ->findOneById($iFamilyID);
 
-$familyURI = $familyService->getViewURI($iFamilyID);
+$family->verify();
 
-Header("Location: " . $familyURI);
+header('Location: '.$family->getViewURI());
 exit;
-
-

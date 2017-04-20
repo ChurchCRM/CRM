@@ -19,30 +19,31 @@
  *
  ******************************************************************************/
 
-require "bin/google-map/GoogleMap.php";
+require 'bin/google-map/GoogleMap.php';
+
+use ChurchCRM\dto\SystemConfig;
 
 $googleMapObj = new GoogleMapAPI('map');
 $googleMapObj->setLookupService('GOOGLE'); // or 'YAHOO'
 
+$bHaveXML = false;
 
-$bHaveXML = FALSE;
-
-if ($sXML_RPC_PATH) {
-  $pathArray = explode(PATH_SEPARATOR, get_include_path());
-  foreach ($pathArray as $onePath) {
-    $fullpath = $onePath . DIRECTORY_SEPARATOR . $sXML_RPC_PATH;
-    if (file_exists($fullpath) && is_readable($fullpath)) {
-      require_once("$sXML_RPC_PATH");
-      $bHaveXML = TRUE;
+if (SystemConfig::getValue('sXML_RPC_PATH')) {
+    $pathArray = explode(PATH_SEPARATOR, get_include_path());
+    foreach ($pathArray as $onePath) {
+        $fullpath = $onePath.DIRECTORY_SEPARATOR.SystemConfig::getValue('sXML_RPC_PATH');
+        if (file_exists($fullpath) && is_readable($fullpath)) {
+            require_once SystemConfig::getValue('sXML_RPC_PATH');
+            $bHaveXML = true;
+        }
     }
-  }
 
-  if ($bHaveXML == 0) { // Maybe the user entered absolute path, let's check
-    if (file_exists($sXML_RPC_PATH) && is_readable($sXML_RPC_PATH)) {
-      require_once("$sXML_RPC_PATH");
-      $bHaveXML = TRUE;
+    if ($bHaveXML == 0) { // Maybe the user entered absolute path, let's check
+    if (file_exists(SystemConfig::getValue('sXML_RPC_PATH')) && is_readable(SystemConfig::getValue('sXML_RPC_PATH'))) {
+        require_once SystemConfig::getValue('sXML_RPC_PATH');
+        $bHaveXML = true;
     }
-  }
+    }
 }
 
 // Function takes latitude and longitude
@@ -50,7 +51,6 @@ if ($sXML_RPC_PATH) {
 // distance in miles.
 function LatLonDistance($lat1, $lon1, $lat2, $lon2)
 {
-  global $sDistanceUnit;
 
   // Formula for calculating radians between
   // latitude and longitude pairs.
@@ -61,9 +61,9 @@ function LatLonDistance($lat1, $lon1, $lat2, $lon2)
   // convert to radians to work with trig functions
 
   $lat1 = deg2rad($lat1);
-  $lon1 = deg2rad($lon1);
-  $lat2 = deg2rad($lat2);
-  $lon2 = deg2rad($lon2);
+    $lon1 = deg2rad($lon1);
+    $lat2 = deg2rad($lat2);
+    $lon2 = deg2rad($lon2);
 
   // determine angle between between points in radians
   $radians = acos(sin($lat1) * sin($lat2) + cos($lat1) * cos($lat2) * cos($lon1 - $lon2));
@@ -75,26 +75,25 @@ function LatLonDistance($lat1, $lon1, $lat2, $lon2)
   $distance = $radians * $radius;
 
   // convert to miles
-  if (strtoupper($sDistanceUnit) == 'MILES') {
-    $distance = 0.6213712 * $distance;
+  if (strtoupper(SystemConfig::getValue('sDistanceUnit')) == 'MILES') {
+      $distance = 0.6213712 * $distance;
   }
 
   // Return distance to three figures
   if ($distance < 10.0) {
-    $distance_f = sprintf("%0.2f", $distance);
+      $distance_f = sprintf('%0.2f', $distance);
   } elseif ($distance < 100.0) {
-    $distance_f = sprintf("%0.1f", $distance);
+      $distance_f = sprintf('%0.1f', $distance);
   } else {
-    $distance_f = sprintf("%0.0f", $distance);
+      $distance_f = sprintf('%0.0f', $distance);
   }
 
-  return $distance_f;
+    return $distance_f;
 }
-
 
 function LatLonBearing($lat1, $lon1, $lat2, $lon2)
 {
-  // Formula for determining the bearing from ($lat1,$lon1) to ($lat2,$lon2)
+    // Formula for determining the bearing from ($lat1,$lon1) to ($lat2,$lon2)
 
   // This is the initial bearing which if followed in a straight line will take
   // you from the start point to the end point; in general, the bearing you are
@@ -109,57 +108,57 @@ function LatLonBearing($lat1, $lon1, $lat2, $lon2)
 
   // convert to radians to work with trig functions
   $lat1 = deg2rad($lat1);
-  $lon1 = deg2rad($lon1);
-  $lat2 = deg2rad($lat2);
-  $lon2 = deg2rad($lon2);
+    $lon1 = deg2rad($lon1);
+    $lat2 = deg2rad($lat2);
+    $lon2 = deg2rad($lon2);
 
-  $y = sin($lon2 - $lon1) * cos($lat2);
-  $x = cos($lat1) * sin($lat2) - sin($lat1) * cos($lat2) * cos($lon2 - $lon1);
-  $bearing = atan2($y, $x);
+    $y = sin($lon2 - $lon1) * cos($lat2);
+    $x = cos($lat1) * sin($lat2) - sin($lat1) * cos($lat2) * cos($lon2 - $lon1);
+    $bearing = atan2($y, $x);
 
   // Covert from radians to degrees
-  $bearing = sprintf("%5.1f", rad2deg($bearing));
+  $bearing = sprintf('%5.1f', rad2deg($bearing));
 
   // Convert to directions
   // -180=S   -135=SW   -90=W   -45=NW   0=N   45=NE   90=E   135=SE   180=S
   if ($bearing < -191.25) {
-    $direction = "---";
+      $direction = '---';
   } elseif ($bearing < -168.75) {
-    $direction = "S";
+      $direction = 'S';
   } elseif ($bearing < -146.25) {
-    $direction = "SSW";
+      $direction = 'SSW';
   } elseif ($bearing < -123.75) {
-    $direction = "SW";
+      $direction = 'SW';
   } elseif ($bearing < -101.25) {
-    $direction = "WSW";
+      $direction = 'WSW';
   } elseif ($bearing < -78.75) {
-    $direction = "W";
+      $direction = 'W';
   } elseif ($bearing < -56.25) {
-    $direction = "WNW";
+      $direction = 'WNW';
   } elseif ($bearing < -33.75) {
-    $direction = "NW";
+      $direction = 'NW';
   } elseif ($bearing < -11.25) {
-    $direction = "NNW";
+      $direction = 'NNW';
   } elseif ($bearing < 11.25) {
-    $direction = "N";
+      $direction = 'N';
   } elseif ($bearing < 33.75) {
-    $direction = "NNE";
+      $direction = 'NNE';
   } elseif ($bearing < 56.25) {
-    $direction = "NE";
+      $direction = 'NE';
   } elseif ($bearing < 78.75) {
-    $direction = "ENE";
+      $direction = 'ENE';
   } elseif ($bearing < 101.25) {
-    $direction = "E";
+      $direction = 'E';
   } elseif ($bearing < 123.75) {
-    $direction = "ESE";
+      $direction = 'ESE';
   } elseif ($bearing < 146.25) {
-    $direction = "SE";
+      $direction = 'SE';
   } elseif ($bearing < 168.75) {
-    $direction = "SSE";
+      $direction = 'SSE';
   } elseif ($bearing < 191.25) {
-    $direction = "S";
+      $direction = 'S';
   } else {
-    $direction = "+++";
+      $direction = '+++';
   }
 
 //    $direction  = $bearing . " " . $direction;
@@ -169,107 +168,111 @@ function LatLonBearing($lat1, $lon1, $lat2, $lon2)
 
 class AddressLatLon
 {
+    public $street;
+    public $city;
+    public $state;
+    public $country;
+    public $zip;
 
-  var $street;
-  var $city;
-  var $state;
-  var $zip;
+    public $lat;
+    public $lon;
 
-  var $lat;
-  var $lon;
+    public $client;
 
-  var $client;
+    public $errMsg;
 
-  var $errMsg;
-
-  function GetError()
-  {
-    return $this->errMsg;
-  }
-
-  function GetLat()
-  {
-    return $this->lat;
-  }
-
-  function GetLon()
-  {
-    return $this->lon;
-  }
-
-  function AddressLatLon()
-  {
-    global $sGeocoderID, $sGeocoderPW, $bHaveXML;
-    if (!$bHaveXML)
-      return;
-    if (isset ($sGeocoderID) && $sGeocoderID != "") { // Use credentials if available for unthrottled access to the geocoder server
-      $this->client = new XML_RPC_Client('/member/service/xmlrpc', 'rpc.geocoder.us');
-      $this->client->SetCredentials($sGeocoderID, $sGeocoderPW);
-    } else {
-      $this->client = new XML_RPC_Client('/service/xmlrpc', 'rpc.geocoder.us');
+    public function GetError()
+    {
+        return $this->errMsg;
     }
-  }
 
-  function SetAddress($newStreet, $newCity, $newState, $newZip)
-  {
-    $this->street = $newStreet;
-    $this->city = $newCity;
-    $this->state = $newState;
-    $this->zip = $newZip;
-  }
+    public function GetLat()
+    {
+        return $this->lat;
+    }
 
-  function Lookup()
-  {
-    global $bHaveXML;
-    global $bUseGoogleGeocode;
-    global $googleMapObj;
+    public function GetLon()
+    {
+        return $this->lon;
+    }
 
-    $address = $this->street . "," . $this->city . "," . $this->state . "," . $this->zip;
+    public function AddressLatLon()
+    {
+        global $bHaveXML;
+        if (!$bHaveXML) {
+            return;
+        }
+        if (SystemConfig::getValue('sGeocoderID') && SystemConfig::getValue('sGeocoderID') != '') { // Use credentials if available for unthrottled access to the geocoder server
+      $this->client = new XML_RPC_Client('/member/service/xmlrpc', 'rpc.geocoder.us');
+            $this->client->SetCredentials(SystemConfig::getValue('sGeocoderID'), SystemConfig::getValue('sGeocoderPW'));
+        } else {
+            $this->client = new XML_RPC_Client('/service/xmlrpc', 'rpc.geocoder.us');
+        }
+    }
 
-    if ($bUseGoogleGeocode) {
-      //$geocode = $googleMapObj->geoGetCoords($address);
+    public function SetAddress($newStreet, $newCity, $newState, $newZip, $newCountry)
+    {
+        $this->street = $newStreet;
+        $this->city = $newCity;
+        $this->state = $newState;
+        $this->country = $newCountry;
+        $this->zip = $newZip;
+    }
+
+    public function Lookup()
+    {
+        global $bHaveXML;
+        global $googleMapObj;
+
+        $address = $this->street.','.$this->city.','.$this->state.',' .$this->zip . ',' . $this->country;
+
+        if (SystemConfig::getValue('bUseGoogleGeocode')) {
+            //$geocode = $googleMapObj->geoGetCoords($address);
       $geocode = $googleMapObj->getGeocode($address);
 
-      if ($geocode) {
-        $this->lat = $geocode['lat'];
-        $this->lon = $geocode['lon'];
-      }
-    } else {
-      if (!$bHaveXML)
-        return (-4);
+            if ($geocode) {
+                $this->lat = $geocode['lat'];
+                $this->lon = $geocode['lon'];
+            }
+        } else {
+            if (!$bHaveXML) {
+                return -4;
+            }
 
-      $params = array(new XML_RPC_Value($address, 'string'));
-      $message = new XML_RPC_Message('geocode', $params);
-      $response = $this->client->send($message);
+            $params = [new XML_RPC_Value($address, 'string')];
+            $message = new XML_RPC_Message('geocode', $params);
+            $response = $this->client->send($message);
 
-      if (!$response) {
-        $errMsg = 'Communication error: ' . $client->errstr;
-        return (-1);
-      }
+            if (!$response) {
+                $errMsg = 'Communication error: '.$client->errstr;
 
-      if (!$response->faultCode()) {
-        $value = $response->value();
-        $address_data = XML_RPC_decode($value);
-        $data0 = $address_data[0];
-        $this->lat = $data0["lat"];
-        $this->lon = $data0["long"];
+                return -1;
+            }
 
-        if ($this->lat == "") {
-          $this->errMsg = "Unable to find " . $data0["number"] . " " . $data0["street"] . ", " . $data0["city"] . ", " . $data0["state"] . " " . $data0["zip"];
-          return (-3);
-        }
-        return (0);
-      } else {
-        /*
+            if (!$response->faultCode()) {
+                $value = $response->value();
+                $address_data = XML_RPC_decode($value);
+                $data0 = $address_data[0];
+                $this->lat = $data0['lat'];
+                $this->lon = $data0['long'];
+
+                if ($this->lat == '') {
+                    $this->errMsg = 'Unable to find '.$data0['number'].' '.$data0['street'].', '.$data0['city'].', '.$data0['state'].' '.$data0['zip'];
+
+                    return -3;
+                }
+
+                return 0;
+            } else {
+                /*
                  * Display problems that have been gracefully cought and
                  * reported by the xmlrpc.php script
                  */
-        $this->errMsg = "Fault Code: " . $response->faultCode() . ",";
-        $this->errMsg .= "Fault Reason: " . $response->faultString() . "\n";
-        return (-2);
-      }
-    }
-  }
-}
+        $this->errMsg = 'Fault Code: '.$response->faultCode().',';
+                $this->errMsg .= 'Fault Reason: '.$response->faultString()."\n";
 
-?>
+                return -2;
+            }
+        }
+    }
+}

@@ -1,26 +1,40 @@
-##Want to help translate this project?
+## Want to help translate this project?
 [Join the Project on POEditor](https://poeditor.com/join/project/RABdnDSqAt)
 
-##The system uses gettext for localization
+## The system uses gettext for localization
 
-checkout http://www.gnu.org/software/gettext/manual/ 
+checkout [GNU gettext Manual](http://www.gnu.org/software/gettext/manual/) 
 
-##System locale 
-
-1. Ensure System has correct locals ```sudo locale-gen es_ES```
-
-    The hosting system must have the correct locale as gettext depends on system libs for localization
-     - see http://www.shellhacks.com/en/HowTo-Change-Locale-Language-and-Character-Set-in-Linux 
-
-2. Visit System Settings 
-3. Select ```Localization``` tab
-3. Change ```sLanguage``` to one of the available languages in the drop down. 
-
-##Generate new message.po file 
+## Generate Master Localization file 
 
 - ssh into vagrant box 
-- cd /vagrant/src 
-- Run '$ xgettext --from-code=UTF-8 -o locale/messages.po *.php email/*.php Include/*.php Reports/*.php sundayschool/*.php'
+- cd /vagrant
+- Run `npm run locale-gen`
 - Review changes in /vagrant/src/locale/messages.po 
 - Commit messages.po
+- Create a Pull Request for changes
+- Upload to POEditor.com
+- Tag the terms with the release version
+
+## Update Localization
+- got to poeditor.com
+- update locale values for terms
+- download po and mo file to your locale server for testing
+
+## Download Localization 
+
+- Go to POEditor.com and genrate an API Key
+- Add the API Key to Build BuildConfig.json
+- ssh into vagrant box
+- cd /vagrant
+- Run `npm run locale-download`
+- Review Changes 
+- Commit Changes
+- Create a Pull Request for changes
+
+## Change the Language
+
+- See [Localization](../Installation/Localization.md) 
+
+
 

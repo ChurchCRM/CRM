@@ -15,6 +15,7 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\dto\SystemURLs;
 
 $mailchimp = new MailChimpService();
 
@@ -24,7 +25,7 @@ $sPageTitle = gettext('People not in Mailchimp');
 require '../Include/Header.php';
 
 if (!$mailchimp->isActive()) {
-  echo "Mailchimp is not active";
+    echo 'Mailchimp is not active';
 }
 
 $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_id FROM person_per where per_Email != '' order by per_DateLastEdited desc";
@@ -46,16 +47,19 @@ $rsPeopleWithEmail = RunQuery($sSQL);
             <th>Email</th>
           </tr>
           <?php
-          while ($aRow = mysql_fetch_array($rsPeopleWithEmail)) {
-            extract($aRow);
-            $mailchimpList = $mailchimp->isEmailInMailChimp($per_Email);
-            if ($mailchimpList == "") { ?>
+          while ($aRow = mysqli_fetch_array($rsPeopleWithEmail)) {
+              extract($aRow);
+              $mailchimpList = $mailchimp->isEmailInMailChimp($per_Email);
+              if ($mailchimpList == '') {
+                  ?>
               <tr>
-                <td><img class="contacts-list-img" src="<?=$sRootPath?>/api/persons/<?= $per_id ?>/photo"></td>
-                <td><a href='<?=$sRootPath?>/PersonView.php?PersonID=<?= $per_id ?>'><?= $per_FirstName . " " . $per_LastName ?></a></td>
+                <td><img data-name="<?= $per_FirstName.' '.$per_LastName ?>" data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $per_id ?>/thumbnail" alt="User Image" class="user-image initials-image" width="85" height="85" /></td>
+                <td><a href='<?=SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $per_id ?>'><?= $per_FirstName.' '.$per_LastName ?></a></td>
                 <td><?= $per_Email ?></td>
               </tr>
-            <?php }
+            <?php
+
+              }
           }
           ?>
         </table>
@@ -66,5 +70,5 @@ $rsPeopleWithEmail = RunQuery($sSQL);
 
 <?php
 
-require "../Include/Footer.php";
+require '../Include/Footer.php';
 ?>
