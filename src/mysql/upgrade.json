@@ -106,7 +106,7 @@
         ],
         "dbVersion": "2.6.0"
     },
-    "current": {
+    "pre-2.7.0": {
         "versions": [
             "2.6.0",
             "2.6.1",
@@ -117,5 +117,13 @@
             "/mysql/upgrade/2.7.0.sql"
         ],
         "dbVersion": "2.7.0"
+    },
+    "current": {
+        "versions": [
+            "2.7.0"
+        ],
+        "scripts": [
+        ],
+        "dbVersion": "2.8.0"
     }
 }

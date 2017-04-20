@@ -6,7 +6,7 @@ if [ -z ${githubToken} ]; then
     read githubToken
 fi
 
-sudo npm install github-release-notes@0.8.0 -g
+sudo npm install github-release-notes@0.6.3 -g
 
-gren --action=changelog --generate --token=${githubToken}
+gren --username=ChurchCRM --repo=CRM --action=changelog --override=true --time-wrap=history --ignore-issues-with=wontfix,duplicate,norepro,question --token=${githubToken}
 
