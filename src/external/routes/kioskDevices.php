@@ -23,15 +23,6 @@ $app->group('/kioskdevices', function () {
     });
     
     $this->get('/{guid}/activeClassMembers', function ($request, $response, $args) {
-     /*$ssClass = ChurchCRM\Person2group2roleP2g2rQuery::create()
-            ->joinWithGroup()
-            ->joinWithPerson()
-            ->addJoin(ChurchCRM\Map\GroupTableMap::COL_GRP_ROLELISTID, ChurchCRM\Map\ListOptionTableMap::COL_LST_ID , Propel\Runtime\ActiveQuery\Criteria::INNER_JOIN)
-            ->withColumn(ChurchCRM\Map\ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
-            ->findByGroupId(2);
-      *
-      */
-      
       $ssClass = PersonQuery::create()
               ->joinWithPerson2group2roleP2g2r()
               ->usePerson2group2roleP2g2rQuery()
@@ -44,7 +35,6 @@ $app->group('/kioskdevices', function () {
             
               ->find();
       return $ssClass->toJSON();
-      
     });
     
     $this->get('/{guid}/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) {
