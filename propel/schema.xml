@@ -291,6 +291,9 @@
         <foreign-key foreignTable="group_grp">
             <reference local="p2g2r_grp_ID" foreign="grp_ID"/>
         </foreign-key>
+         <foreign-key foreignTable="list_lst">
+            <reference local="p2g2r_rle_ID" foreign="lst_OptionID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>

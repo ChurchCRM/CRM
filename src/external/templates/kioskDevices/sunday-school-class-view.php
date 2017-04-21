@@ -58,9 +58,9 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
         dataType: "json"
       }).
         done(function(data){
-          $(data.Person2group2roleP2g2rs).each(function(i,d){
+          $(data.People).each(function(i,d){
             //console.log(d);
-            window.CRM.renderClassMember({displayName:d.Person.FirstName+" "+d.Person.LastName, classRole:d.RoleName,personId:d.PersonId})
+            window.CRM.renderClassMember({displayName:d.FirstName+" "+d.LastName, classRole:d.RoleName,personId:d.Id})
           });
           $(".initials-image").initial();
       })
