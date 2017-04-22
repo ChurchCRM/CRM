@@ -15,6 +15,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemConfig;
+
 $linkBack = FilterInput($_GET['linkBack']);
 $iFamily = FilterInput($_GET['FamilyID'], 'int');
 $iAutID = FilterInput($_GET['AutID'], 'int');
@@ -572,236 +574,291 @@ function CreatePaymentMethod()
 ?>
 
 <form method="post" action="AutoPaymentEditor.php?<?= 'AutID='.$iAutID.'&FamilyID='.$iFamily.'&linkBack='.$linkBack ?>" name="AutoPaymentEditor">
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title"><?= gettext('Automatic payment configuration'); ?></h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Family') ?>:</label>
+                            <select name="Family" class="form-control select2" id="Family">
+                                <option value="0" selected><?= gettext('Unassigned') ?></option>
+                                <?php
+                                while ($aRow = mysqli_fetch_array($rsFamilies)) {
+                                    extract($aRow);
 
-<table cellpadding="1" align="center">
-
-	<tr>
-		<td align="center">
-			<input type="submit" class="btn" value="<?= gettext('Save') ?>" name="Submit">
-			<input type="button" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-    echo $linkBack;
-} else {
-    echo 'Menu.php';
-} ?>';">
-		</td>
-	</tr>
-
-	<tr>
-		<td>
-		<table cellpadding="1" align="center">
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Family') ?>:</td>
-				<td class="TextColumn">
-					<select name="Family" size="8">
-						<option value="0" selected><?= gettext('Unassigned') ?></option>
-						<option value="0">-----------------------</option>
-
-						<?php
-                        while ($aRow = mysqli_fetch_array($rsFamilies)) {
-                            extract($aRow);
-
-                            echo '<option value="'.$fam_ID.'"';
-                            if ($iFamily == $fam_ID) {
-                                echo ' selected';
+                                    echo '<option value="'.$fam_ID.'"';
+                                    if ($iFamily == $fam_ID) {
+                                        echo ' selected';
+                                    }
+                                    echo '>'.$fam_Name.'&nbsp;'.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                                }
+                                ?>
+                            </select>`
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <div><label><?= gettext('Automatic payment type') ?>:</label></div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" Name="EnableButton" value="1" id="EnableBankDraft" 
+                                    <?= $bEnableBankDraft ? ' checked' : ''; ?>> Bank Draft
+                                </label>
+                            </div>
+                            
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" Name="EnableButton" value="2" id="EnableCreditCard" 
+                                    <?= $bEnableCreditCard ? ' checked' : ''; ?>> Credit Card
+                                </label>
+                            </div>
+                            
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" Name="EnableButton" value="3"  id="Disable" 
+                                    <?= (!$bEnableBankDraft && !$bEnableCreditCard) ? ' checked' : ''; ?>> Disable
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12 col-sm-12 col-xs-12"></div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Date') ?>:</label>
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" name="NextPayDate" value="<?= $dNextPayDate ?>"  
+                                id="NextPayDate" class="date-picker active form-control">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Fiscal Year') ?>:</label>
+                            <?php PrintFYIDSelect($iFYID, 'FYID') ?>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Payment amount') ?>:</label>
+                            <input type="text" name="Amount" value="<?= $nAmount ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Payment interval (months)') ?>:</label>
+                            <input type="text" name="Interval" value="<?= $iInterval ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Fund') ?>:</label>
+                            <select name="Fund" class="form-control">
+                            <option value="0"><?= gettext('None') ?></option>
+                            <?php
+                            mysqli_data_seek($rsFunds, 0);
+                            while ($row = mysqli_fetch_array($rsFunds)) {
+                                $fun_id = $row['fun_ID'];
+                                $fun_name = $row['fun_Name'];
+                                $fun_active = $row['fun_Active'];
+                                echo "<option value=\"$fun_id\" ";
+                                if ($iFund == $fun_id) {
+                                    echo 'selected';
+                                }
+                                echo ">$fun_name";
+                                if ($fun_active != 'true') {
+                                    echo ' ('.gettext('inactive').')';
+                                }
+                                echo '</option>';
                             }
-                            echo '>'.$fam_Name.'&nbsp;'.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-                        }
-                        ?>
-
-					</select>
-				</td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Automatic payment type') ?></td>
-				<td class="TextColumn"><input type="radio" Name="EnableButton" value="1" id="EnableBankDraft"<?php if ($bEnableBankDraft) {
-                            echo ' checked';
-                        } ?>>Bank Draft
-				                       <input type="radio" Name="EnableButton" value="2" id="EnableCreditCard" <?php if ($bEnableCreditCard) {
-                            echo ' checked';
-                        } ?>>Credit Card
-											  <input type="radio" Name="EnableButton" value="3"  id="Disable" <?php if ((!$bEnableBankDraft) && (!$bEnableCreditCard)) {
-                            echo ' checked';
-                        } ?>>Disable</td>
-			</tr>
-
-			<tr>
-                <td class="LabelColumn"><?= gettext('Date') ?>:</td>
-				<td class="TextColumn"><input type="text" name="NextPayDate" value="<?= $dNextPayDate ?>" maxlength="10" id="NextPayDate" size="11" class="form-control pull-right active date-picker"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Fiscal Year') ?>:</td>
-				<td class="TextColumnWithBottomBorder">
-					<?php PrintFYIDSelect($iFYID, 'FYID') ?>
-				</td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Payment amount') ?></td>
-				<td class="TextColumn"><input type="text" name="Amount" value="<?= $nAmount ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Payment interval (months)') ?></td>
-				<td class="TextColumn"><input type="text" name="Interval" value="<?= $iInterval ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Fund') ?>:</td>
-				<td class="TextColumn">
-					<select name="Fund">
-					<option value="0"><?= gettext('None') ?></option>
-					<?php
-                    mysqli_data_seek($rsFunds, 0);
-                    while ($row = mysqli_fetch_array($rsFunds)) {
-                        $fun_id = $row['fun_ID'];
-                        $fun_name = $row['fun_Name'];
-                        $fun_active = $row['fun_Active'];
-                        echo "<option value=\"$fun_id\" ";
-                        if ($iFund == $fun_id) {
-                            echo 'selected';
-                        }
-                        echo ">$fun_name";
-                        if ($fun_active != 'true') {
-                            echo ' ('.gettext('inactive').')';
-                        }
-                        echo '</option>';
-                    }
-                    ?>
-					</select>
-				</td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('First Name') ?></td>
-				<td class="TextColumn"><input type="text" id="FirstName" name="FirstName" value="<?= $tFirstName ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Last Name') ?></td>
-				<td class="TextColumn"><input type="text" id="LastName" name="LastName" value="<?= $tLastName ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Address') ?> 1</td>
-				<td class="TextColumn"><input type="text" id="Address1" name="Address1" value="<?= $tAddress1 ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Address') ?> 2</td>
-				<td class="TextColumn"><input type="text" id="Address2" name="Address2" value="<?= $tAddress2 ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('City') ?></td>
-				<td class="TextColumn"><input type="text" id="City" name="City" value="<?= $tCity ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('State') ?></td>
-				<td class="TextColumn"><input type="text" id="State" name="State" value="<?= $tState ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Zip') ?></td>
-				<td class="TextColumn"><input type="text" id="Zip" name="Zip" value="<?= $tZip ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Country') ?></td>
-				<td class="TextColumn"><input type="text" id="Country" name="Country" value="<?= $tCountry ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Phone') ?></td>
-				<td class="TextColumn"><input type="text" id="Phone" name="Phone" value="<?= $tPhone ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Email') ?></td>
-				<td class="TextColumn"><input type="text" id="Email" name="Email" value="<?= $tEmail ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Credit Card') ?></td>
-				<td class="TextColumn"><input type="text" id="CreditCard" name="CreditCard" value="<?= $tCreditCard ?>"></td>
-			</tr>
-<?php
-if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
-                        ?>
-			<tr>
-				<td class="LabelColumn"><?= gettext('Vanco Credit Card Method') ?></td>
-				<td class="TextColumn"><input type="text" id="CreditCardVanco" name="CreditCardVanco" value="<?= $tCreditCardVanco ?>" readonly></td>
-			</tr>
-<?php
-
-                    }
-?>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Expiration Month') ?></td>
-				<td class="TextColumn"><input type="text" id="ExpMonth" name="ExpMonth" value="<?= $tExpMonth ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Expiration Year') ?></td>
-				<td class="TextColumn"><input type="text" id="ExpYear" name="ExpYear" value="<?= $tExpYear ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Bank Name') ?></td>
-				<td class="TextColumn"><input type="text" id="BankName" name="BankName" value="<?= $tBankName ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Bank Route Number') ?></td>
-				<td class="TextColumn"><input type="text" id="Route" name="Route" value="<?= $tRoute ?>"></td>
-			</tr>
-
-			<tr>
-				<td class="LabelColumn"><?= gettext('Bank Account Number') ?></td>
-				<td class="TextColumn"><input type="text" id="Account" name="Account" value="<?= $tAccount ?>"></td>
-			</tr>
-<?php
-if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
-    ?>
-			<tr>
-				<td class="LabelColumn"><?= gettext('Vanco Bank Account Method') ?></td>
-				<td class="TextColumn"><input type="text" id="AccountVanco" name="AccountVanco" value="<?= $tAccountVanco ?>" readonly></td>
-			</tr>
-<?php
-
-}
-?>
-
-<?php
-    if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
-        ?>
-			<tr>
-				<td>
-<?php
-    if ($iAutID > 0) {
-        ?>
-		<input type="button" id="PressToCreatePaymentMethod" value="Store Private Data at Vanco" onclick="CreatePaymentMethod();" />
-<?php
-
-    } else {
-        ?>
-		<b>Save this record to enable storing private data at Vanco</b>
-<?php
-
-    } ?>
-				</td>
-			</tr>
-<?php
-
-    }
-?>
-		</table>
-		</td>
-		</tr>
-</table>
+                            ?>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12 col-sm-12 col-xs-12"></div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('First Name') ?>:</label>
+                            <input type="text" id="FirstName" name="FirstName" value="<?= $tFirstName ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Last Name') ?>:</label>
+                            <input type="text" id="LastName" name="LastName" value="<?= $tLastName ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Address') ?> 1:</label>
+                            <input type="text" id="Address1" name="Address1" value="<?= $tAddress1 ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Address') ?> 2:</label>
+                            <input type="text" id="Address2" name="Address2" value="<?= $tAddress2 ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('City') ?>:</label>
+                            <input type="text" id="City" name="City" value="<?= $tCity ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('State') ?>:</label>
+                            <input type="text" id="State" name="State" value="<?= $tState ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Zip') ?>:</label>
+                            <input type="text" id="Zip" name="Zip" value="<?= $tZip ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Country') ?>:</label>
+                            <input type="text" id="Country" name="Country" value="<?= $tCountry ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Phone') ?>:</label>
+                            <input type="text" id="Phone" name="Phone" value="<?= $tPhone ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Email') ?>:</label>
+                            <input type="text" id="Email" name="Email" value="<?= $tEmail ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Credit Card') ?>:</label>
+                            <input type="text" id="CreditCard" name="CreditCard" value="<?= $tCreditCard ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco'): ?>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Vanco Credit Card Method') ?>:</label>
+                            <input type="text" id="CreditCardVanco" name="CreditCardVanco" value="<?= $tCreditCardVanco ?>" readonly class="form-control">
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Expiration Month') ?>:</label>
+                            <input type="text" id="ExpMonth" name="ExpMonth" value="<?= $tExpMonth ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Expiration Year') ?>:</label>
+                            <input type="text" id="ExpYear" name="ExpYear" value="<?= $tExpYear ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Bank Name') ?>:</label>
+                            <input type="text" id="BankName" name="BankName" value="<?= $tBankName ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Bank Route Number') ?>:</label>
+                            <input type="text" id="Route" name="Route" value="<?= $tRoute ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Bank Account Number') ?>:</label>
+                            <input type="text" id="Account" name="Account" value="<?= $tAccount ?>" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco'): ?>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label><?= gettext('Vanco Bank Account Method') ?>:</label>
+                            <input type="text" id="AccountVanco" name="AccountVanco" value="<?= $tAccountVanco ?>" readonly class="form-control">
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                    
+                    <?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco'): ?>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group text-center">
+                        <?php if ($iAutID > 0): ?>
+                            <input type="button" id="PressToCreatePaymentMethod" class="btn btn-primary" value="Store Private Data at Vanco" onclick="CreatePaymentMethod();" />
+                        <?php else: ?>
+                            <b>Save this record to enable storing private data at Vanco</b>
+                        <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                    
+                    
+                    
+                </div> <!-- row -->
+                
+                
+ 
+            </div>
+        
+        </div> <!-- row -->
+    
+    </div> <!-- box-body -->
+    
+    <div class="box-footer text-center">
+        <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
+        <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" 
+        onclick="javascript:document.location='<?= (strlen($linkBack) > 0) ? $linkBack : 'Menu.php'; ?>';">
+    </div>
+</div>
 </form>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#Family").select2();
+    });
+</script>
+
+
 <?php require 'Include/Footer.php' ?>
