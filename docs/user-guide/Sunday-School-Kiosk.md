@@ -1,6 +1,6 @@
 # Sunday School Kiosk Operation
 
-Sunday School kiosks streamlines the attendance process for teachers by providing a very simple touch-based interface for both marking attendance, and alerting parents.
+Sunday School kiosks streamline the attendance process for teachers by providing a very simple touch-based interface for both marking attendance and alerting parents.
 
 ## Checking In
 
