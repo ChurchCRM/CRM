@@ -1,6 +1,6 @@
 # Sunday School Kiosk Operation
 
-Sunday School kiosks give teachers more information about the 
+Sunday School kiosks streamlines the attendance process for teachers by providing a very simple touch-based interface for both marking attendance, and alerting parents.
 
 ## Checking In
 
@@ -19,5 +19,13 @@ When new students arrive who are not already on the roster, the teacher may add 
 1. Click the "Plus" icon at the bottom of the kiosk screen
 2. Enter the child and parent demographic information
 3. Click Save
+
+## Parental Alerts
+
+1. Click the "Trigger Parent Alert" button on the student who requires parental attention.
+2. Depending on your Church's configuration, the following alerts may be sent:
+    *  SMS to parent
+    *  Overhead / Visual Display
+    *  Message to pre-defined Church administrators / pastoral staff
 
 
