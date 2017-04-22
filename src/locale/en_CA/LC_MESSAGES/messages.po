@@ -8,14 +8,14 @@ msgstr ""
 "Language: en-ca\n"
 
 #: AutoPaymentEditor.php:703 CartToFamily.php:253 CSVExport.php:120
-#: CSVImport.php:222 DirectoryReports.php:256
+#: CSVImport.php:222 DirectoryReports.php:260
 #: external/templates/registration/family-register.php:44 FamilyEditor.php:692
 #: PersonEditor.php:851 Register.php:49 queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "Province"
 
 #: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:265
-#: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
+#: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:264
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
 #: PersonEditor.php:874 Register.php:50
@@ -34,19 +34,19 @@ msgstr "Cheque"
 msgid "Scan check"
 msgstr "Scan cheque"
 
-#: Reports/ConfirmReportEmail.php:135 Reports/ConfirmReport.php:135
+#: Reports/ConfirmReportEmail.php:133 Reports/ConfirmReport.php:135
 msgid "City, State, Zip"
 msgstr "City, Province, Postal Code"
 
-#: ChurchCRM/dto/SystemConfig.php:66
+#: ChurchCRM/dto/SystemConfig.php:67
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Default Province - Must be 2-letter abbreviation!"
 
-#: ChurchCRM/dto/SystemConfig.php:117
+#: ChurchCRM/dto/SystemConfig.php:119
 msgid "Church State"
 msgstr "Church Province"
 
-#: ChurchCRM/dto/SystemConfig.php:118
+#: ChurchCRM/dto/SystemConfig.php:120
 msgid "Church Zip"
 msgstr "Church Postal Code"
 

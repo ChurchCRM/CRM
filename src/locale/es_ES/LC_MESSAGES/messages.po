@@ -33,7 +33,7 @@ msgstr "Borrar"
 
 #: AutoPaymentDelete.php:66 AutoPaymentEditor.php:581 BatchWinnerEntry.php:114
 #: CanvassEditor.php:241 Checkin.php:172 Checkin.php:283 Checkin.php:297
-#: DirectoryReports.php:288 DonatedItemEditor.php:298 EventNames.php:233
+#: DirectoryReports.php:292 DonatedItemEditor.php:298 EventNames.php:233
 #: external/templates/verify/verify-family-info.php:136 FamilyEditor.php:1141
 #: FamilyView.php:932 FinancialReports.php:70 FundRaiserEditor.php:145
 #: GroupPropsEditor.php:171 GroupReports.php:85 GroupReports.php:155
@@ -102,14 +102,14 @@ msgid "inactive"
 msgstr "Inactivo"
 
 #: AutoPaymentEditor.php:698 CartToFamily.php:248 CSVExport.php:115
-#: CSVImport.php:221 DirectoryReports.php:252
+#: CSVImport.php:221 DirectoryReports.php:256
 #: external/templates/registration/family-register.php:41 FamilyEditor.php:685
 #: PersonEditor.php:831 Register.php:48 queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "Ciudad"
 
 #: AutoPaymentEditor.php:703 CartToFamily.php:253 CSVExport.php:120
-#: CSVImport.php:222 DirectoryReports.php:256
+#: CSVImport.php:222 DirectoryReports.php:260
 #: external/templates/registration/family-register.php:44 FamilyEditor.php:692
 #: PersonEditor.php:851 Register.php:49 queryparameteroptions_qpo.php:6
 msgid "State"
@@ -122,9 +122,9 @@ msgstr "País"
 
 #: AutoPaymentEditor.php:718 ChurchCRM/Reports/PDF_Directory.php:312
 #: ChurchCRM/Reports/PDF_Directory.php:386
-#: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:264
+#: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:268
 #: external/templates/registration/family-register-members.php:103
-#: Reports/DirectoryReport.php:279 Reports/GroupReport.php:123
+#: Reports/DirectoryReport.php:287 Reports/GroupReport.php:123
 msgid "Phone"
 msgstr "Telefono"
 
@@ -138,9 +138,9 @@ msgstr "Telefono"
 #: FamilyView.php:282 FamilyView.php:286 FamilyView.php:375
 #: GroupReports.php:131 PersonEditor.php:1005 PersonEditor.php:1007
 #: PersonView.php:312 PersonView.php:484 PrintView.php:278
-#: Reports/CanvassReports.php:245 Reports/ConfirmReportEmail.php:191
-#: Reports/ConfirmReportEmail.php:209 Reports/ConfirmReport.php:188
-#: Reports/ConfirmReport.php:207 Reports/DirectoryReport.php:290
+#: Reports/CanvassReports.php:245 Reports/ConfirmReportEmail.php:189
+#: Reports/ConfirmReportEmail.php:207 Reports/ConfirmReport.php:188
+#: Reports/ConfirmReport.php:207 Reports/DirectoryReport.php:298
 #: Reports/GroupReport.php:137 sundayschool/SundaySchoolClassView.php:87
 #: sundayschool/SundaySchoolClassView.php:203 menuconfig_mcf.php:15
 #: queryparameteroptions_qpo.php:13
@@ -283,7 +283,7 @@ msgid "Middle Name"
 msgstr "Segundo Nombre"
 
 #: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:265
-#: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:260
+#: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:264
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
 #: PersonEditor.php:874 Register.php:50
@@ -296,7 +296,7 @@ msgstr "Sobre"
 
 #: ChurchCRM/Reports/PDF_Directory.php:400
 #: ChurchCRM/Reports/PDF_Directory.php:457 CSVExport.php:160
-#: PersonView.php:328 Reports/DirectoryReport.php:293
+#: PersonView.php:328 Reports/DirectoryReport.php:301
 msgid "Work/Other Email"
 msgstr "Otro Email de Contacto"
 
@@ -351,8 +351,8 @@ msgid "People in Cart (filters ignored)"
 msgstr "Personas en Separador (filtros ignorados)"
 
 #: CSVExport.php:295 CSVExport.php:321 CSVExport.php:357
-#: DirectoryReports.php:80 DirectoryReports.php:98 DirectoryReports.php:117
-#: DirectoryReports.php:135 DirectoryReports.php:154 FinancialReports.php:262
+#: DirectoryReports.php:84 DirectoryReports.php:102 DirectoryReports.php:121
+#: DirectoryReports.php:139 DirectoryReports.php:158 FinancialReports.php:262
 msgid "Use Ctrl Key to select multiple"
 msgstr "Use la tecla Ctrl para seleccionar varios"
 
@@ -376,7 +376,7 @@ msgstr "Hombre"
 msgid "Female"
 msgstr "Mujer"
 
-#: CSVExport.php:349 DirectoryReports.php:96
+#: CSVExport.php:349 DirectoryReports.php:100
 msgid "Group Membership"
 msgstr "Membresía de Grupo"
 
@@ -392,7 +392,7 @@ msgstr "Para:"
 msgid "Birthday Date"
 msgstr "Fecha de Cumpleaños"
 
-#: Reports/ConfirmReportEmail.php:155 Reports/ConfirmReport.php:155
+#: Reports/ConfirmReportEmail.php:153 Reports/ConfirmReport.php:155
 msgid "Anniversary Date"
 msgstr "Fecha de Aniversario"
 
@@ -461,7 +461,7 @@ msgstr "Sobre de donativo"
 #: external/templates/verify/verify-family-info.php:70 FamilyEditor.php:751
 #: FamilyList.php:44 FamilyView.php:261 GroupReports.php:128
 #: PersonEditor.php:931 PersonEditor.php:933 PersonView.php:306
-#: PrintView.php:183 Reports/ConfirmReportEmail.php:140
+#: PrintView.php:183 Reports/ConfirmReportEmail.php:138
 #: Reports/ConfirmReport.php:140 SelectList.php:985 SelectList.php:986
 #: SelectList.php:1061 sundayschool/SundaySchoolClassView.php:205
 #: queryparameteroptions_qpo.php:8
@@ -472,7 +472,7 @@ msgstr "Teléfono Hogar"
 #: external/templates/verify/verify-family-info.php:71 FamilyEditor.php:763
 #: FamilyView.php:268 GroupReports.php:129 PersonEditor.php:954
 #: PersonEditor.php:956 PersonView.php:322 PrintView.php:188
-#: Reports/ConfirmReportEmail.php:242 Reports/ConfirmReport.php:244
+#: Reports/ConfirmReportEmail.php:236 Reports/ConfirmReport.php:244
 #: SelectList.php:988 SelectList.php:989 SelectList.php:1061
 msgid "Work Phone"
 msgstr "Telefono Trabajo"
@@ -495,7 +495,7 @@ msgstr "Trabajo / Otro Email"
 msgid "Birth Date"
 msgstr "Fecha de Nacimiento"
 
-#: CartToFamily.php:214 CSVImport.php:232 DirectoryReports.php:174
+#: CartToFamily.php:214 CSVImport.php:232 DirectoryReports.php:178
 #: external/templates/verify/verify-family-info.php:31 FamilyEditor.php:820
 #: FamilyView.php:247
 msgid "Wedding Date"
@@ -545,7 +545,7 @@ msgstr "ERROR: el archivo CSV subido ya no existe!"
 
 #: CSVImport.php:824
 msgid "Data Cleared Successfully!"
-msgstr "Datos Limpiados satisfactoriamente!"
+msgstr "Datos Limpiados exitosamente!"
 
 #: CSVImport.php:826
 msgid "Please select the confirmation checkbox"
@@ -971,7 +971,7 @@ msgstr "Versión del Software"
 
 #: Checkin.php:20
 msgid "Event Checkin"
-msgstr "Seleccionar Evento"
+msgstr "Registro de Evento"
 
 #: Checkin.php:79
 msgid "Select the event to which you would like to check people in for"
@@ -1066,7 +1066,7 @@ msgstr "Reporte de Fichas de Depósitos"
 
 #: DepositSlipEditor.php:105
 msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
-msgstr "Nota importante: las transacciones no realizadas se eliminarán permanentemente al cerrar la ficha de depósitos."
+msgstr "Nota importante: las transacciones no realizadas se borrarán permanentemente al cerrar la ficha de depósitos."
 
 #: DepositSlipEditor.php:114
 msgid "Deposit Summary: "
@@ -1096,117 +1096,117 @@ msgstr "Ejecutar Transacciones"
 msgid "Directory reports"
 msgstr "Informe de Directorio"
 
-#: DirectoryReports.php:78
+#: DirectoryReports.php:82
 msgid "Select classifications to include"
 msgstr "Seleccione las clasificaciones a incluir"
 
-#: DirectoryReports.php:115
+#: DirectoryReports.php:119
 msgid "Which role is the head of household?"
 msgstr "Cual es el rol de la cabeza de hogar"
 
-#: DirectoryReports.php:133
+#: DirectoryReports.php:137
 msgid "Which role is the spouse?"
 msgstr "Cual es el rol del cónyuge?"
 
-#: DirectoryReports.php:152
+#: DirectoryReports.php:156
 msgid "Which role is a child?"
 msgstr "Cual es el rol del hijo?"
 
-#: DirectoryReports.php:171
+#: DirectoryReports.php:175
 msgid "Information to Include"
 msgstr "Información a Incluir"
 
 #: AutoPaymentEditor.php:688 AutoPaymentEditor.php:693 CartToFamily.php:238
 #: CartToFamily.php:243 CartView.php:295 CSVExport.php:105 CSVExport.php:110
-#: CSVImport.php:219 CSVImport.php:220 DirectoryReports.php:173
-#: DirectoryReports.php:248
+#: CSVImport.php:219 CSVImport.php:220 DirectoryReports.php:177
+#: DirectoryReports.php:252
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35 FamilyEditor.php:677
 #: FamilyEditor.php:681 FamilyList.php:43 FamilyView.php:218 GeoPage.php:388
 #: GroupReports.php:127 Menu.php:179 Menu.php:215 PersonEditor.php:799
 #: PersonEditor.php:815 PersonView.php:273 Register.php:47
-#: Reports/ConfirmReportEmail.php:125 Reports/ConfirmReportEmail.php:130
+#: Reports/ConfirmReportEmail.php:123 Reports/ConfirmReportEmail.php:128
 msgid "Address"
 msgstr "Dirección"
 
-#: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:175
-#: FamilyView.php:374 PersonView.php:483 Reports/ConfirmReportEmail.php:192
-#: Reports/ConfirmReportEmail.php:210 Reports/ConfirmReport.php:189
+#: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:179
+#: FamilyView.php:374 PersonView.php:483 Reports/ConfirmReportEmail.php:190
+#: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:189
 #: Reports/ConfirmReport.php:208
 msgid "Birthday"
 msgstr "Cumpleaños"
 
-#: DirectoryReports.php:177
+#: DirectoryReports.php:181
 msgid "Family Home Phone"
 msgstr "Teléfono de la Familia"
 
-#: ChurchCRM/tasks/FamilyWorkPhoneTask.php:30 DirectoryReports.php:178
+#: ChurchCRM/tasks/FamilyWorkPhoneTask.php:30 DirectoryReports.php:182
 msgid "Family Work Phone"
 msgstr "Teléfono de contacto familia (trabajo)"
 
-#: DirectoryReports.php:179
+#: DirectoryReports.php:183
 msgid "Family Cell Phone"
 msgstr "Teléfono movil (familia)"
 
-#: DirectoryReports.php:180
+#: DirectoryReports.php:184
 #: external/templates/verify/verify-family-info.php:27
-#: Reports/ConfirmReportEmail.php:161 Reports/ConfirmReport.php:161
+#: Reports/ConfirmReportEmail.php:159 Reports/ConfirmReport.php:161
 msgid "Family Email"
 msgstr "Email de la Familia"
 
-#: DirectoryReports.php:182
+#: DirectoryReports.php:186
 msgid "Personal Home Phone"
 msgstr "Teléfono Personal"
 
-#: DirectoryReports.php:183
+#: DirectoryReports.php:187
 msgid "Personal Work Phone"
 msgstr "Teléfono del Trabajo"
 
-#: DirectoryReports.php:184
+#: DirectoryReports.php:188
 msgid "Personal Cell Phone"
 msgstr "Teléfono Movil"
 
-#: DirectoryReports.php:185
+#: DirectoryReports.php:189
 msgid "Personal Email"
 msgstr "Email Personal"
 
-#: DirectoryReports.php:186
+#: DirectoryReports.php:190
 msgid "Personal Work/Other Email"
 msgstr "Email Alternativo"
 
-#: DirectoryReports.php:187
+#: DirectoryReports.php:191
 msgid "Photos"
 msgstr "Fotos"
 
-#: DirectoryReports.php:204
+#: DirectoryReports.php:208
 msgid "Number of Columns"
 msgstr "Número de Columnas"
 
-#: DirectoryReports.php:212
+#: DirectoryReports.php:216
 msgid "Paper Size"
 msgstr "Tamaño del Papel"
 
-#: DirectoryReports.php:220 Include/LabelFunctions.php:66
+#: DirectoryReports.php:224 Include/LabelFunctions.php:66
 msgid "Font Size"
 msgstr "Tamaño de Fuente"
 
-#: DirectoryReports.php:236
+#: DirectoryReports.php:240
 msgid "Title page"
 msgstr "Título de la Página"
 
-#: DirectoryReports.php:240
+#: DirectoryReports.php:244
 msgid "Use Title Page"
 msgstr "Utilizar título de la página"
 
-#: ChurchCRM/dto/SystemConfig.php:114 DirectoryReports.php:244 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:116 DirectoryReports.php:248 Register.php:45
 msgid "Church Name"
 msgstr "Nombre de la Iglesia"
 
-#: DirectoryReports.php:268
+#: DirectoryReports.php:272
 msgid "Disclaimer"
 msgstr "Declaración de Responsabilidad"
 
-#: DirectoryReports.php:287
+#: DirectoryReports.php:291
 msgid "Create Directory"
 msgstr "Crear Directorio"
 
@@ -1271,7 +1271,7 @@ msgstr "Editor de Fondos de Donación"
 
 #: DonationFundEditor.php:118
 msgid "Are you sure you want to delete this fund?"
-msgstr "¿Está seguro de que desea eliminar este fondo?"
+msgstr "¿Está seguro de que desea borrar este fondo?"
 
 #: DonationFundEditor.php:128
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
@@ -1611,7 +1611,7 @@ msgstr "Personalizacion de Campos de las familias"
 
 #: FamilyCustomFieldsEditor.php:175 PersonCustomFieldsEditor.php:157
 msgid "Default Option"
-msgstr "Opciones por Defecto"
+msgstr "Opción por Defecto"
 
 #: FamilyCustomFieldsEditor.php:294
 msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
@@ -1899,7 +1899,7 @@ msgstr "Familia siguiente"
 
 #: FamilyView.php:334
 msgid "Delete this Family"
-msgstr "Eliminar esta Familia"
+msgstr "Borrar esta Familia"
 
 #: FamilyView.php:196 PersonView.php:196
 msgid "Upload Photo"
@@ -2133,7 +2133,7 @@ msgstr "Aplicar las fechas del reporte a:"
 
 #: FinancialReports.php:197
 msgid "Deposit Date (Default)"
-msgstr "Fecha de depósito (por defecto)"
+msgstr "Fecha de depósito (por Defecto)"
 
 #: FinancialReports.php:198
 msgid "Payment Date"
@@ -2183,7 +2183,7 @@ msgstr "Monto Total Mínimo"
 msgid "0 - No Minimum"
 msgstr "0 - Sin mínimo"
 
-#: ChurchCRM/dto/SystemConfig.php:183 FinancialReports.php:281
+#: ChurchCRM/dto/SystemConfig.php:185 FinancialReports.php:281
 msgid "Other Settings"
 msgstr "Otros Ajustes"
 
@@ -2219,7 +2219,7 @@ msgstr "Encabezado de reporte:"
 msgid "Graphic"
 msgstr "Gráfico"
 
-#: ChurchCRM/dto/SystemConfig.php:115 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:117 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Dirección de Iglesia"
 
@@ -2644,7 +2644,7 @@ msgstr "Editar este grupo"
 
 #: GroupView.php:94
 msgid "Delete this Group"
-msgstr "Eliminar este grupo"
+msgstr "Borrar este grupo"
 
 #: GroupView.php:495
 msgid "Confirm Delete Group"
@@ -2652,7 +2652,7 @@ msgstr "Confirmar el Borrado de Grupo"
 
 #: GroupView.php:497
 msgid "Please confirm deletion of this group record"
-msgstr "Por favor confirme que desea eliminar este grupo de registros"
+msgstr "Por favor confirme que desea borrar este grupo de registros"
 
 #: GroupView.php:499
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
@@ -3009,7 +3009,7 @@ msgstr "Últimas Familias"
 
 #: CartToFamily.php:209 external/templates/registration/family-register.php:31
 #: FamilyEditor.php:666 Menu.php:178 Menu.php:214
-#: Reports/ConfirmReportEmail.php:120 Reports/ConfirmReport.php:120
+#: Reports/ConfirmReportEmail.php:118 Reports/ConfirmReport.php:120
 #: SelectDelete.php:153 SelectDelete.php:280
 msgid "Family Name"
 msgstr "Nombre de Familia"
@@ -3040,7 +3040,7 @@ msgstr "Por favor confirme la eliminación de esta nota"
 
 #: NoteDelete.php:71 PropertyDelete.php:65 PropertyTypeDelete.php:70
 msgid "Yes, delete this record"
-msgstr "Sí, eliminar este registro"
+msgstr "Sí, borrar este registro"
 
 #: NoteDelete.php:71 PropertyDelete.php:65 SelectDelete.php:278
 msgid "(this action cannot be undone)"
@@ -3470,7 +3470,7 @@ msgstr "por"
 
 #: PropertyAssign.php:126 PropertyAssign.php:144
 msgid "Property successfully assigned."
-msgstr "propiedad satisfactoriamente asignada"
+msgstr "Propiedad exitosamente asignada"
 
 #: PropertyAssign.php:159
 msgid " Property Assignment"
@@ -3490,7 +3490,7 @@ msgstr "Por favor confirme la eliminación de esta propiedad"
 
 #: PropertyDelete.php:61
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
-msgstr "Eliminar esta propiedad también eliminará las asignaciones de esta propiedad a cualquier persona, institución o registros de grupo."
+msgstr "Borrar esta propiedad también eliminará las asignaciones de esta propiedad a cualquier persona, familia o registros de grupo."
 
 #: PropertyDelete.php:67 PropertyTypeDelete.php:72 SelectDelete.php:295
 #: VolunteerOpportunityEditor.php:123
@@ -3725,7 +3725,7 @@ msgstr "Las donaciónes de esta familia has sido movidas a otra familia"
 
 #: SelectDelete.php:68
 msgid "Family Delete Confirmation"
-msgstr "Confirmación de eliminación de institución"
+msgstr "Confirmación de eliminación de familia"
 
 #: VolunteerOpportunityEditor.php:84
 msgid "Please confirm deletion of"
@@ -3733,7 +3733,7 @@ msgstr "Por favor confirme la eliminación de"
 
 #: SelectDelete.php:145
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
-msgstr "Existen donaciones de esta institución, por lo que no se puede remover."
+msgstr "Existen donaciones de esta familia, por lo que no se puede remover."
 
 #: SelectDelete.php:146
 msgid "Return to Family View"
@@ -3741,7 +3741,7 @@ msgstr "regresar a vista de familias"
 
 #: SelectDelete.php:150
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "Atención: Esta intitución tiene registros de donaciones y no puede ser borrada hasta que sus donaciones sean asociadas a otra institución"
+msgstr "Atención: Esta familia tiene registros de donaciones y no puede ser borrada hasta que sus donaciones sean asociadas a otra familia"
 
 #: SelectDelete.php:154
 msgid "Please select another family with whom to associate these donations:"
@@ -3757,7 +3757,7 @@ msgstr "FAMILIAS CON DONACIONES"
 
 #: SelectDelete.php:276
 msgid "Please confirm deletion of this family record:"
-msgstr "Confirme la eliminación de esta Familia"
+msgstr "Confirme la eliminación de este regístro de familia"
 
 #: SelectDelete.php:277
 msgid "Note: This will also delete all Notes associated with this Family record."
@@ -3913,7 +3913,7 @@ msgstr "URL Base"
 msgid "Setup"
 msgstr "Configurar"
 
-#: ChurchCRM/dto/SystemConfig.php:178 Include/Footer.php:147
+#: ChurchCRM/dto/SystemConfig.php:180 Include/Footer.php:147
 #: SystemSettings.php:42
 msgid "System Settings"
 msgstr "Ajustes de Sistema"
@@ -4000,7 +4000,7 @@ msgstr "Editarse a sí mismo"
 
 #: UserEditor.php:453
 msgid "(Edit own family only.)"
-msgstr "(Editar institución propia solamente)"
+msgstr "(Editar familia propia solamente)"
 
 #: UserEditor.php:459
 msgid "(Canvass volunteer.)"
@@ -4134,7 +4134,7 @@ msgstr "Oportunidad de Voluntariado será desasignada para las siguientes person
 
 #: VolunteerOpportunityEditor.php:121
 msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Sí, eliminar esta Oportunidad de Voluntariado"
+msgstr "Sí, borrar esta Oportunidad de Voluntariado"
 
 #: VolunteerOpportunityEditor.php:206
 msgid "Volunteer Opportunity Editor"
@@ -4564,8 +4564,8 @@ msgstr "Prometedor Top"
 msgid "Pledged"
 msgstr "Prometido"
 
-#: Reports/CanvassReports.php:240 Reports/ConfirmReportEmail.php:189
-#: Reports/ConfirmReportEmail.php:207 Reports/ConfirmReport.php:186
+#: Reports/CanvassReports.php:240 Reports/ConfirmReportEmail.php:187
+#: Reports/ConfirmReportEmail.php:205 Reports/ConfirmReport.php:186
 #: Reports/ConfirmReport.php:205
 msgid "M/F"
 msgstr "M/F"
@@ -4583,37 +4583,37 @@ msgstr "Estudiante"
 msgid "Liaison"
 msgstr "Relación"
 
-#: Reports/ConfirmReportEmail.php:135 Reports/ConfirmReport.php:135
+#: Reports/ConfirmReportEmail.php:133 Reports/ConfirmReport.php:135
 msgid "City, State, Zip"
 msgstr "Ciudad, Estado, Código Postal"
 
 #: external/templates/verify/verify-family-info.php:36 FamilyEditor.php:795
-#: FamilyView.php:240 Reports/ConfirmReportEmail.php:145
+#: FamilyView.php:240 Reports/ConfirmReportEmail.php:143
 #: Reports/ConfirmReport.php:145
 msgid "Send Newsletter"
 msgstr "Enviar Newsletter"
 
-#: Reports/ConfirmReportEmail.php:188 Reports/ConfirmReportEmail.php:206
+#: Reports/ConfirmReportEmail.php:186 Reports/ConfirmReportEmail.php:204
 #: Reports/ConfirmReport.php:185 Reports/ConfirmReport.php:204
 msgid "Member Name"
 msgstr "Nombre de miembro"
 
-#: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
+#: Reports/ConfirmReportEmail.php:188 Reports/ConfirmReportEmail.php:206
 #: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
 msgid "Adult/Child"
 msgstr "Adulto / Niño"
 
 #: FamilyList.php:45 GroupReports.php:130 Reports/CanvassReports.php:244
-#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
+#: Reports/ConfirmReportEmail.php:191 Reports/ConfirmReportEmail.php:209
 msgid "Cell Phone"
 msgstr "Teléfono Celular"
 
-#: Reports/ConfirmReportEmail.php:194 Reports/ConfirmReportEmail.php:212
+#: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
 #: Reports/ConfirmReport.php:192 Reports/ConfirmReport.php:211
 msgid "Member/Friend"
 msgstr "Miembro/Amigo"
 
-#: Reports/DirectoryReport.php:173
+#: Reports/DirectoryReport.php:181
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr "Esta opción requiere al menos la versión 3.22 de MySQL! Pulse el botón Atrás de su navegador para volver a ChurchCRM."
 
@@ -4621,13 +4621,13 @@ msgstr "Esta opción requiere al menos la versión 3.22 de MySQL! Pulse el botó
 #: ChurchCRM/Reports/PDF_Directory.php:390
 #: ChurchCRM/Reports/PDF_Directory.php:447
 #: external/templates/registration/family-register-members.php:96
-#: Reports/DirectoryReport.php:283 Reports/GroupReport.php:128
+#: Reports/DirectoryReport.php:291 Reports/GroupReport.php:128
 msgid "Work"
 msgstr "Trabajo"
 
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
-#: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:287
+#: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:295
 #: Reports/GroupReport.php:133
 msgid "Cell"
 msgstr "Celular"
@@ -5112,31 +5112,31 @@ msgstr "Ingresar a Base de Datos restaurada"
 msgid "Restore Error."
 msgstr "Error de Restauración"
 
-#: ChurchCRM/dto/SystemConfig.php:174
+#: ChurchCRM/dto/SystemConfig.php:176
 msgid "Church Information"
 msgstr "Información de Iglesia"
 
-#: ChurchCRM/dto/SystemConfig.php:175
+#: ChurchCRM/dto/SystemConfig.php:177
 msgid "User setup"
 msgstr "Configuración de Usuario"
 
-#: ChurchCRM/dto/SystemConfig.php:176
+#: ChurchCRM/dto/SystemConfig.php:178
 msgid "Email Setup"
 msgstr "Ajustes de Email"
 
-#: ChurchCRM/dto/SystemConfig.php:177
+#: ChurchCRM/dto/SystemConfig.php:179
 msgid "Member Setup"
 msgstr "Configuración de Miembro"
 
-#: ChurchCRM/dto/SystemConfig.php:179
+#: ChurchCRM/dto/SystemConfig.php:181
 msgid "Map Settings"
 msgstr "Ajustes de Mapa"
 
-#: ChurchCRM/dto/SystemConfig.php:180
+#: ChurchCRM/dto/SystemConfig.php:182
 msgid "Report Settings"
 msgstr "Ajustes de Reporte"
 
-#: ChurchCRM/dto/SystemConfig.php:181
+#: ChurchCRM/dto/SystemConfig.php:183
 msgid "Localization"
 msgstr "Localización"
 
@@ -5713,319 +5713,319 @@ msgstr "con esta porpiedad.."
 msgid "with this Property..."
 msgstr "con esta propiedad..."
 
-#: ChurchCRM/dto/SystemConfig.php:120 Register.php:52
+#: ChurchCRM/dto/SystemConfig.php:122 Register.php:52
 msgid "Church Email"
 msgstr "Email de Iglesia"
 
-#: ChurchCRM/dto/SystemConfig.php:53
+#: ChurchCRM/dto/SystemConfig.php:54
 msgid "Include only these classifications in the directory, comma seperated"
 msgstr "Incluir solo estas clasificaciones en el directorio, separadas por coma"
 
-#: ChurchCRM/dto/SystemConfig.php:54
+#: ChurchCRM/dto/SystemConfig.php:55
 msgid "These are the family role numbers designated as head of house"
 msgstr "Estos son los números de roles de familia designados como cabeza de hogar"
 
-#: ChurchCRM/dto/SystemConfig.php:55
+#: ChurchCRM/dto/SystemConfig.php:56
 msgid "These are the family role numbers designated as spouse"
 msgstr "Límite de tiempo de sesión en segundos\rColocar en cero para deshabilitar límites de tiempo de sesión."
 
-#: ChurchCRM/dto/SystemConfig.php:56
+#: ChurchCRM/dto/SystemConfig.php:57
 msgid "These are the family role numbers designated as child"
 msgstr "Estos son los números de rol de familia designados como niño"
 
-#: ChurchCRM/dto/SystemConfig.php:57
+#: ChurchCRM/dto/SystemConfig.php:58
 msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
 msgstr "Límite de tiempo de sesión en segundos\rColocar en cero para deshabilitar tiempos límite de sesión."
 
-#: ChurchCRM/dto/SystemConfig.php:58
+#: ChurchCRM/dto/SystemConfig.php:59
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Consultas para las cuales el usuario debe tener permisos financieros:"
 
-#: ChurchCRM/dto/SystemConfig.php:59
+#: ChurchCRM/dto/SystemConfig.php:60
 msgid "Should only administrators have access to the CSV export system and directory report?"
 msgstr "Deberían solo administradores tener acceso al sistema de exportación CSV y reportes de directorio?"
 
-#: ChurchCRM/dto/SystemConfig.php:60
+#: ChurchCRM/dto/SystemConfig.php:61
 msgid "Minimum length a user may set their password to"
 msgstr "Largo mínimo de contraseña que un usuario debe ingresar"
 
-#: ChurchCRM/dto/SystemConfig.php:61
+#: ChurchCRM/dto/SystemConfig.php:62
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature"
 msgstr "Cantidad mínima de diferencia en que una nueva contraseña debe diferir de una vieja (# de caracteres  cambiados)\rColocar en cero para deshabilitar esta funcionalidad"
 
-#: ChurchCRM/dto/SystemConfig.php:62
+#: ChurchCRM/dto/SystemConfig.php:63
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Una lista de contraseñas deshabilitadas (muy obvias), separadas por coma."
 
-#: ChurchCRM/dto/SystemConfig.php:63
+#: ChurchCRM/dto/SystemConfig.php:64
 msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
 msgstr "Número máximo de ingresos fallidos permitidos antes de que la cuenta de un usuario sea bloqueada.\rUna vez que el máximo haya sido alcanzado, un administrador debe restablecer la cuenta.\rEsta funcionalidad ayuda a proteger ante ataques de adivinación automático de contraseña.\rColocar en cero para deshabilitar esta funcionalidad. "
 
-#: ChurchCRM/dto/SystemConfig.php:64
+#: ChurchCRM/dto/SystemConfig.php:65
 msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
 msgstr "Modo de manejo de PDF.\r1 = Diálogo de Guardado de Archivo\r2 = Abrir en ventana actual de navegador"
 
-#: ChurchCRM/dto/SystemConfig.php:65
+#: ChurchCRM/dto/SystemConfig.php:66
 msgid "Default City"
 msgstr "Ciudad por Defecto"
 
-#: ChurchCRM/dto/SystemConfig.php:66
+#: ChurchCRM/dto/SystemConfig.php:67
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Estado por Defecto - Debe ser una abreviación de 2 letras!"
 
-#: ChurchCRM/dto/SystemConfig.php:68
+#: ChurchCRM/dto/SystemConfig.php:69
 msgid "Default account for receiving a copy of all emails"
 msgstr "Cuenta por defecto para recibir copias de todos los emails"
 
-#: ChurchCRM/dto/SystemConfig.php:69
+#: ChurchCRM/dto/SystemConfig.php:71
 msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Dirección de Servidor SMTP (mail.server.com:25)"
 
-#: ChurchCRM/dto/SystemConfig.php:70
+#: ChurchCRM/dto/SystemConfig.php:72
 msgid "Does your SMTP server require auththentication (username/password)?"
 msgstr "Requiere su servidor SMTP autenticación (usuario/contraseña)?"
 
-#: ChurchCRM/dto/SystemConfig.php:71
+#: ChurchCRM/dto/SystemConfig.php:73
 msgid "SMTP Username"
 msgstr "Usuario SMTP"
 
-#: ChurchCRM/dto/SystemConfig.php:72
+#: ChurchCRM/dto/SystemConfig.php:74
 msgid "SMTP Password"
 msgstr "Contraseña SMTP"
 
-#: ChurchCRM/dto/SystemConfig.php:77
+#: ChurchCRM/dto/SystemConfig.php:79
 #, fuzzy
 msgid "Internationalization (I18n) support"
 msgstr "Soporte de internacionalización (i18n)"
 
-#: ChurchCRM/dto/SystemConfig.php:78
+#: ChurchCRM/dto/SystemConfig.php:80
 msgid "First month of the fiscal year"
 msgstr "Primer mes del año fiscal"
 
-#: ChurchCRM/dto/SystemConfig.php:79
+#: ChurchCRM/dto/SystemConfig.php:81
 msgid "Path to RPC.php, required for Lat/Lon address lookup"
 msgstr "Ruta a RPC.php, requerida para búsqueda inversa de dirección Lat/Lon"
 
-#: ChurchCRM/dto/SystemConfig.php:80
+#: ChurchCRM/dto/SystemConfig.php:82
 msgid "User ID for rpc.geocoder.us"
 msgstr "ID de usuario para rpc.geocode.us"
 
-#: ChurchCRM/dto/SystemConfig.php:81
+#: ChurchCRM/dto/SystemConfig.php:83
 msgid "Password for rpc.geocoder.us"
 msgstr "Contraseña para rpc.geocoder.us"
 
-#: ChurchCRM/dto/SystemConfig.php:83
+#: ChurchCRM/dto/SystemConfig.php:85
 msgid "Latitude of the church, used to center the Google map"
 msgstr "Latitud de la iglesia, usada para centrar el mapa de Google"
 
-#: ChurchCRM/dto/SystemConfig.php:84
+#: ChurchCRM/dto/SystemConfig.php:86
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Longitud de la iglesia, usada para centrar el mapa de Google"
 
-#: ChurchCRM/dto/SystemConfig.php:85
+#: ChurchCRM/dto/SystemConfig.php:87
 msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
 msgstr "Colocar en verdadero para deshabilitar ingreso de direcciones en Editor de Personas. Colocar en falso para habilitar ingreso de direcciones en Editor de Personas."
 
-#: ChurchCRM/dto/SystemConfig.php:86
+#: ChurchCRM/dto/SystemConfig.php:88
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Colocar en verdadero para deshabilitar ingreso de Fecha de Amistad en Editor de Personas. Colocar en falso para habilitar ingreso de Fecha de Amistad en Editor de Personas."
 
-#: ChurchCRM/dto/SystemConfig.php:87
+#: ChurchCRM/dto/SystemConfig.php:89
 msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
 msgstr "Colocar en verdadero para deshabilitar manejo de suscripciones al boletín de noticias en el Editor de Familia."
 
-#: ChurchCRM/dto/SystemConfig.php:88
+#: ChurchCRM/dto/SystemConfig.php:90
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
 msgstr "Colocar en verdadero para deshabilitar ingreso de Fecha de Matrimonio en Editor de Familia. Colocar en falso para habilitar ingreso de Fecha de Matrimonio en Editor de Familia."
 
-#: ChurchCRM/dto/SystemConfig.php:89
+#: ChurchCRM/dto/SystemConfig.php:91
 msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
 msgstr "Colocar en verdadero para deshabilitar ingreso de Latitud y Longitud en Editor de Familia. Colocar en falso para habilitar ingreso de Latitud y Longitud en Editor de Familia. Búsquedas inversas aún serán efectuadas, solamente que no mostradas."
 
-#: ChurchCRM/dto/SystemConfig.php:90
+#: ChurchCRM/dto/SystemConfig.php:92
 msgid "Set true to enable use of donation envelopes"
 msgstr "Colocar en verdadero para habilitar uso de sobres de donación"
 
-#: ChurchCRM/dto/SystemConfig.php:91
+#: ChurchCRM/dto/SystemConfig.php:93
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Ingresar en código HTML que será desplegado como cabecera arriba de cada página. Asegúrese de cerrar sus tags! Nota: Debe REFRESCAR SU NAVEGADOR UNA SEGUNDA VEZ para ver el nuevo encabezado."
 
-#: ChurchCRM/dto/SystemConfig.php:92
+#: ChurchCRM/dto/SystemConfig.php:94
 msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username for https://www.intelligentsearch.com/Hosted/User"
 msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Usuario para https://www.intelligentsearch.com/Hosted/User"
 
-#: ChurchCRM/dto/SystemConfig.php:93
+#: ChurchCRM/dto/SystemConfig.php:95
 msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password for https://www.intelligentsearch.com/Hosted/User"
 msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Contraseña para https://www.intelligentsearch.com/Hosted/User"
 
-#: ChurchCRM/dto/SystemConfig.php:94
+#: ChurchCRM/dto/SystemConfig.php:96
 msgid "Set true to use the Google geocoder.  Set false to use rpc.geocoder.us."
 msgstr "Colocar en verdadero para usar el geocoder de Google. Colocar en falso para usar rpc.geocoder.us."
 
-#: ChurchCRM/dto/SystemConfig.php:95
+#: ChurchCRM/dto/SystemConfig.php:97
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Número de cheques para Reporte de Fichas de Depósito"
 
-#: ChurchCRM/dto/SystemConfig.php:96
+#: ChurchCRM/dto/SystemConfig.php:98
 msgid "Set true to enable use of scanned checks"
 msgstr "Colocar en verdadero para habilitar el uso de cheques escaneados."
 
-#: ChurchCRM/dto/SystemConfig.php:97
+#: ChurchCRM/dto/SystemConfig.php:99
 msgid "Unit used to measure distance, miles or km."
 msgstr "Unidad usada para medir distancias, millas o km."
 
-#: ChurchCRM/dto/SystemConfig.php:98
+#: ChurchCRM/dto/SystemConfig.php:100
 msgid "Time zone- see http://php.net/manual/en/timezones.php for valid choices."
 msgstr "Zona horaria - ver http://php.net/manual/en/timezones.php para selecciones válidas."
 
-#: ChurchCRM/dto/SystemConfig.php:99
+#: ChurchCRM/dto/SystemConfig.php:101
 msgid "Names of markers for Google Maps in order of classification"
 msgstr "Nombres de marcadores para Google Maps en orden de clasificación"
 
-#: ChurchCRM/dto/SystemConfig.php:101
+#: ChurchCRM/dto/SystemConfig.php:103
 msgid "Enable non-deductible payments"
 msgstr "Activar pagos no deducibles"
 
-#: ChurchCRM/dto/SystemConfig.php:102
+#: ChurchCRM/dto/SystemConfig.php:104
 msgid "Electronic Transaction Processor"
 msgstr "Procesador de Transacciones Electrónicas"
 
-#: ChurchCRM/dto/SystemConfig.php:103
+#: ChurchCRM/dto/SystemConfig.php:105
 msgid "Set true to enable family self registration."
 msgstr "Colocar en verdadero para activar el registro propio de familia."
 
-#: ChurchCRM/dto/SystemConfig.php:111
+#: ChurchCRM/dto/SystemConfig.php:113
 msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
 msgstr "ChurchCRM ha sido registrado. El equipo de ChurchCRM usa la información de registro para seguir su uso. Esta información es guardada de forma confidencial y nunca será publicada o vendida. Si este campo es verdadero la opción de registro en el menu de administración cambia a actualizar registro."
 
-#: ChurchCRM/dto/SystemConfig.php:112
+#: ChurchCRM/dto/SystemConfig.php:114
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Margen Izquierdo (1 = 1/100 pulgadas)"
 
-#: ChurchCRM/dto/SystemConfig.php:113
+#: ChurchCRM/dto/SystemConfig.php:115
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Grosor de Línea (1 = 1/100 pulgadas)"
 
-#: ChurchCRM/dto/SystemConfig.php:116
+#: ChurchCRM/dto/SystemConfig.php:118
 msgid "Church City"
 msgstr "Ciudad de Iglesia"
 
-#: ChurchCRM/dto/SystemConfig.php:117
+#: ChurchCRM/dto/SystemConfig.php:119
 msgid "Church State"
 msgstr "Estado de Iglesia"
 
-#: ChurchCRM/dto/SystemConfig.php:118
+#: ChurchCRM/dto/SystemConfig.php:120
 msgid "Church Zip"
 msgstr "Código Postal de Iglesia"
 
-#: ChurchCRM/dto/SystemConfig.php:119
+#: ChurchCRM/dto/SystemConfig.php:121
 msgid "Church Phone"
 msgstr "Teléfono de Iglesia"
 
-#: ChurchCRM/dto/SystemConfig.php:121
+#: ChurchCRM/dto/SystemConfig.php:123
 msgid "Home area code of the church"
 msgstr "Código de area de iglesia"
 
-#: ChurchCRM/dto/SystemConfig.php:122 ChurchCRM/dto/SystemConfig.php:142
+#: ChurchCRM/dto/SystemConfig.php:124 ChurchCRM/dto/SystemConfig.php:144
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Palabras para la primera línea del reporte de impuestos. Fechas serán agregadas al final de esta línea."
 
-#: ChurchCRM/dto/SystemConfig.php:123 ChurchCRM/dto/SystemConfig.php:124
-#: ChurchCRM/dto/SystemConfig.php:143 ChurchCRM/dto/SystemConfig.php:144
+#: ChurchCRM/dto/SystemConfig.php:125 ChurchCRM/dto/SystemConfig.php:126
+#: ChurchCRM/dto/SystemConfig.php:145 ChurchCRM/dto/SystemConfig.php:146
 msgid "Verbage for bottom line of tax report."
 msgstr "Palabras para la última línea del reporte de impuestos."
 
-#: ChurchCRM/dto/SystemConfig.php:125
+#: ChurchCRM/dto/SystemConfig.php:127
 msgid "Tax Report signer"
 msgstr "Firmante del Reporte de Impuestos"
 
-#: ChurchCRM/dto/SystemConfig.php:126
+#: ChurchCRM/dto/SystemConfig.php:128
 msgid "Verbage for the pledge reminder report"
 msgstr "Palabras para el reporte de recordatorios de promesas"
 
-#: ChurchCRM/dto/SystemConfig.php:127
+#: ChurchCRM/dto/SystemConfig.php:129
 msgid "Pledge Reminder Signer"
 msgstr "Firmante del Recordatorio de Promesa"
 
-#: ChurchCRM/dto/SystemConfig.php:128
+#: ChurchCRM/dto/SystemConfig.php:130
 msgid "Verbage for the pledge reminder report - No record of a pledge"
 msgstr "Palabras para el reporte de recordatorios de promesas - No hay registros de una promesa"
 
-#: ChurchCRM/dto/SystemConfig.php:129
+#: ChurchCRM/dto/SystemConfig.php:131
 msgid "Verbage for the pledge reminder report - No record of payments"
 msgstr "Palabras para el reporte de recordatorios de promesas -  No hay registros de pagos"
 
-#: ChurchCRM/dto/SystemConfig.php:130 ChurchCRM/dto/SystemConfig.php:131
 #: ChurchCRM/dto/SystemConfig.php:132 ChurchCRM/dto/SystemConfig.php:133
 #: ChurchCRM/dto/SystemConfig.php:134 ChurchCRM/dto/SystemConfig.php:135
+#: ChurchCRM/dto/SystemConfig.php:136 ChurchCRM/dto/SystemConfig.php:137
 msgid "Verbage for the database information confirmation and correction report"
 msgstr "Palabras para el reporte de confirmación y corrección de la información de la base de datos"
 
-#: ChurchCRM/dto/SystemConfig.php:136
+#: ChurchCRM/dto/SystemConfig.php:138
 msgid "Database information confirmation and correction report signer"
 msgstr "Firmante de la confirmación y corrección de la información de la base de datos"
 
-#: ChurchCRM/dto/SystemConfig.php:137 ChurchCRM/dto/SystemConfig.php:138
+#: ChurchCRM/dto/SystemConfig.php:139 ChurchCRM/dto/SystemConfig.php:140
 msgid "Verbage for the pledge summary report"
 msgstr "Palabras para el reporte resumido de promesas"
 
-#: ChurchCRM/dto/SystemConfig.php:139 ChurchCRM/dto/SystemConfig.php:140
+#: ChurchCRM/dto/SystemConfig.php:141 ChurchCRM/dto/SystemConfig.php:142
 msgid "Verbage for the directory report"
 msgstr "Palabras para el reporte de directorio"
 
-#: ChurchCRM/dto/SystemConfig.php:141
+#: ChurchCRM/dto/SystemConfig.php:143
 msgid "Church Letterhead path and file"
 msgstr "Ruta y archivo de Hoja Membretada de Iglesia"
 
-#: ChurchCRM/dto/SystemConfig.php:146
+#: ChurchCRM/dto/SystemConfig.php:148
 msgid "lookup user images on Gravatar when no local image is present"
 msgstr "buscar imágenes en Gravatar cuando no esté presente una imagen local"
 
-#: ChurchCRM/dto/SystemConfig.php:147
+#: ChurchCRM/dto/SystemConfig.php:149
 msgid "Enable Remote Backups to Cloud Services"
 msgstr "Habilitar Respaldos Automáticos a Servicios en la Nube"
 
-#: ChurchCRM/dto/SystemConfig.php:148
+#: ChurchCRM/dto/SystemConfig.php:150
 msgid "Cloud Service Type (Supported values: WebDAV, Local)"
 msgstr "Tipo de Servicio en la Nube (Valores soportados: WebDAV, Local)"
 
-#: ChurchCRM/dto/SystemConfig.php:149
+#: ChurchCRM/dto/SystemConfig.php:151
 msgid "Remote Backup Endpoint"
 msgstr "Punto de Acceso de Respaldo Remoto"
 
-#: ChurchCRM/dto/SystemConfig.php:150
+#: ChurchCRM/dto/SystemConfig.php:152
 msgid "Remote Backup Username"
 msgstr "Usuario de Respaldo Remoto"
 
-#: ChurchCRM/dto/SystemConfig.php:151
+#: ChurchCRM/dto/SystemConfig.php:153
 msgid "Remote Backup Password"
 msgstr "Contraseña de Respaldo Remoto"
 
-#: ChurchCRM/dto/SystemConfig.php:152
+#: ChurchCRM/dto/SystemConfig.php:154
 msgid "Interval in Hours for Automatic Remote Backups"
 msgstr "Intervalo en Horas para Respaldos Remotos Automáticos"
 
-#: ChurchCRM/dto/SystemConfig.php:153
+#: ChurchCRM/dto/SystemConfig.php:155
 msgid "Last Backup Timestamp"
 msgstr "Marca de Tiempo de Último Respaldo"
 
-#: ChurchCRM/dto/SystemConfig.php:154
+#: ChurchCRM/dto/SystemConfig.php:156
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Ajustes de Ticket de Depósito de QuickBooks"
 
-#: ChurchCRM/dto/SystemConfig.php:155
+#: ChurchCRM/dto/SystemConfig.php:157
 msgid "Enable Integrity Check"
 msgstr "Habilitar Chequeo de Integridad"
 
-#: ChurchCRM/dto/SystemConfig.php:156
+#: ChurchCRM/dto/SystemConfig.php:158
 msgid "Interval in Hours for Integrity Check"
 msgstr "Intervalo en Horas para Chequeo de Integridad"
 
-#: ChurchCRM/dto/SystemConfig.php:157
+#: ChurchCRM/dto/SystemConfig.php:159
 msgid "Last Integrity Check Timestamp"
 msgstr "Marca de Tiempo de Último Chequeo de Integridad"
 
-#: ChurchCRM/dto/SystemConfig.php:162
+#: ChurchCRM/dto/SystemConfig.php:164
 msgid "see http://kb.mailchimp.com/accounts/management/about-api-keys"
 msgstr "ver http://kb.mailchimp.com/accounts/management/about-api-keys"
 
@@ -6731,36 +6731,36 @@ msgstr "Creado vía Familia"
 msgid "Updated via Family"
 msgstr "Actualizado vía Familia"
 
-#: api/routes/families.php:94 ChurchCRM/model/ChurchCRM/Family.php:275
+#: api/routes/families.php:95 ChurchCRM/model/ChurchCRM/Family.php:275
 msgid "Family Data Verified"
 msgstr "Datos de Familia Verificados"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:218
 #: ChurchCRM/model/ChurchCRM/Person.php:200
 msgid "Profile Image Deleted"
-msgstr "Imagen de Perfil Eliminada"
+msgstr "Imagen de Perfil Borrada"
 
-#: ChurchCRM/dto/SystemConfig.php:97
+#: ChurchCRM/dto/SystemConfig.php:99
 msgid "miles"
 msgstr "millas"
 
-#: ChurchCRM/dto/SystemConfig.php:97
+#: ChurchCRM/dto/SystemConfig.php:99
 msgid "kilometers"
 msgstr "kilómetros"
 
-#: ChurchCRM/dto/SystemConfig.php:102
+#: ChurchCRM/dto/SystemConfig.php:104
 msgid "Vanco"
 msgstr "Vanco"
 
-#: ChurchCRM/dto/SystemConfig.php:102
+#: ChurchCRM/dto/SystemConfig.php:104
 msgid "Authorize.NET"
 msgstr "Authorize.NET"
 
-#: ChurchCRM/dto/SystemConfig.php:148
+#: ChurchCRM/dto/SystemConfig.php:150
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ChurchCRM/dto/SystemConfig.php:148
+#: ChurchCRM/dto/SystemConfig.php:150
 msgid "Local"
 msgstr "Local"
 
@@ -7975,7 +7975,7 @@ msgstr "Establecer modo de depuración\r\n"
 "problemas, por favor activelo para que así pueda saber que errores son. Esto\r\n"
 "es especialmente importante si necesita reportar un problema en los fotos de ayuda."
 
-#: ChurchCRM/dto/SystemConfig.php:73
+#: ChurchCRM/dto/SystemConfig.php:75
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
 msgstr "Desplegar información no disponible de la persona desde familia asignada?\n"
 "\r Esta opción hace que cierta información de un registro de familia asignado a la persona sea\r desplegado SI la información correspondiente NO ha sido ingresada para esa persona. "
@@ -8001,15 +8001,15 @@ msgstr "Coordenadas faltantes"
 msgid "Family Coordinates Data for Some Families"
 msgstr "Datos de Coordenadas de Familia para Algunas Familias"
 
-#: ChurchCRM/dto/SystemConfig.php:100
+#: ChurchCRM/dto/SystemConfig.php:102
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Hacer que los códigos postales ingresados por el usuario sean en MAYÚSCULA cuando se guarden en la base de datos."
 
-#: ChurchCRM/dto/SystemConfig.php:159
+#: ChurchCRM/dto/SystemConfig.php:161
 msgid "Used to end a letter before Signer"
 msgstr "Usado para terminar una carta antes de Firmante"
 
-#: ChurchCRM/dto/SystemConfig.php:161
+#: ChurchCRM/dto/SystemConfig.php:163
 msgid "Google Analytics Tracking Code"
 msgstr "Código de Seguimiento de Google Analytics"
 
@@ -8135,11 +8135,11 @@ msgstr "Falló"
 msgid "The previous integrity check passed.  All system file hashes match the expected values."
 msgstr "Las evaluaciones de integridad previas pasaron. Todos los hash de archivos del sistema coinciden con los valores esperados."
 
-#: ChurchCRM/dto/SystemConfig.php:82
+#: ChurchCRM/dto/SystemConfig.php:84
 msgid "Google map API requires a unique key from https://developers.google.com/maps/documentation/javascript/get-api-key"
 msgstr "La API de Google maps requiere una clave única de https://developers.google.com/maps/documentation/javascript/get-api-key"
 
-#: ChurchCRM/dto/SystemConfig.php:145
+#: ChurchCRM/dto/SystemConfig.php:147
 msgid "Church Checking Account Number"
 msgstr "Número de Cuenta Corriente de Iglesia"
 
@@ -8159,11 +8159,11 @@ msgstr "Incremente los límites de tamaño de carga de php para permitir carga d
 msgid "POST to cart requires a Persons array"
 msgstr "ENVÍO a separador requiere de un arreglo de Personas"
 
-#: api/routes/families.php:129
+#: api/routes/families.php:130
 msgid "Deactivated the Family"
 msgstr "Familia Desactivada"
 
-#: api/routes/families.php:132
+#: api/routes/families.php:133
 msgid "Activated the Family"
 msgstr "Familia Activada"
 
@@ -8171,20 +8171,20 @@ msgstr "Familia Activada"
 msgid "families"
 msgstr "familias"
 
-#: ChurchCRM/dto/SystemConfig.php:163
+#: ChurchCRM/dto/SystemConfig.php:165
 msgid "Deposit ticket type.  QBDT - Quickbooks"
 msgstr "Tipo de ticket de depósito. QBDT - Quickbooks"
 
-#: ChurchCRM/dto/SystemConfig.php:182
+#: ChurchCRM/dto/SystemConfig.php:184
 msgid "Financial Settings"
 msgstr "Ajustes Financieros"
 
-#: ChurchCRM/dto/SystemConfig.php:233 ChurchCRM/dto/SystemConfig.php:245
-#: ChurchCRM/dto/SystemConfig.php:258
+#: ChurchCRM/dto/SystemConfig.php:235 ChurchCRM/dto/SystemConfig.php:247
+#: ChurchCRM/dto/SystemConfig.php:260
 msgid "An invalid configuration name has been requested"
 msgstr "Un nombre ajuste inválido ha sido solicitado."
 
-#: ChurchCRM/dto/SystemConfig.php:276
+#: ChurchCRM/dto/SystemConfig.php:278
 msgid "An invalid configuration id has been requested"
 msgstr "Un id de configuración ha sido solicitado."
 
@@ -8260,4 +8260,275 @@ msgstr "seleccione una opción"
 #: GeoPage.php:412
 msgid "Direct me"
 msgstr "Guíeme"
+
+#: api/routes/cart.php:22
+msgid "Your cart is empty"
+msgstr "Su separador está vacío"
+
+#: api/routes/cart.php:25
+msgid "Your cart has been successfully emptied"
+msgstr "Su separador ha sido vaciado exitosamente"
+
+#: api/routes/properties.php:24 api/routes/properties.php:82
+msgid "The record could not be found."
+msgstr "El registro no pudo ser encontrado."
+
+#: api/routes/properties.php:34
+msgid "The property is already assigned."
+msgstr "La propiedad ya fue asignada."
+
+#: api/routes/properties.php:39 api/routes/properties.php:59
+msgid "The property is successfully assigned."
+msgstr "La propiedad ha sido asignada exitosamente."
+
+#: api/routes/properties.php:41 api/routes/properties.php:55
+#: api/routes/properties.php:62
+msgid "The property could not be assigned."
+msgstr "La propiedad no pudo ser asignada."
+
+#: api/routes/properties.php:87
+msgid "The property is successfully unassigned."
+msgstr "La propiedad ha sido desasignada exitosamente."
+
+#: api/routes/properties.php:89
+msgid "The property could not be unassigned."
+msgstr "La propiedad no puedo ser desasignada."
+
+#: Checkin.php:94
+msgid "Select event"
+msgstr "Seleccionar evento"
+
+#: Checkin.php:141 Checkin.php:146
+msgid "Person's Name"
+msgstr "Nombre de la Persona"
+
+#: Checkin.php:156
+msgid "Adult Name(Optional)"
+msgstr "Nombre de Adulto (Opcional)"
+
+#: Checkin.php:161
+msgid "Checked in By(Optional)"
+msgstr "Registrado Por (Opcional)"
+
+#: Checkin.php:200
+msgid "Person has been already checked in for this event"
+msgstr "La persona ya ingresó a este evento"
+
+#: Checkin.php:247
+msgid "CheckOut Person"
+msgstr "Registrar Salida de Persona"
+
+#: Checkin.php:247
+msgid "Delete Checkin in Entry"
+msgstr "Borrar Registro en Entrada"
+
+#: Checkin.php:272
+msgid "Adult Checking Out Person"
+msgstr "Adulto Registrando Salida de Persona"
+
+#: Checkin.php:276
+msgid "Adult Name (Optional)"
+msgstr "Nombre de Adulto (Opcional)"
+
+#: ChurchCRM/dto/SystemConfig.php:162
+msgid "Text before name in emails/reports"
+msgstr "Texto antes del nombre en emails/reportes"
+
+#: ChurchCRM/dto/SystemConfig.php:166
+msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
+msgstr "Colocar en verdadero para permitir apellidos vacíos en Editor de Personas. Colocar en falso para validar el apellido y heredar de familia cuando se encuentre vacío."
+
+#. What is this
+#: ChurchCRM/dto/SystemConfig.php:167
+msgid "Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName "
+msgstr "Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName␣"
+
+#: ChurchCRM/dto/SystemConfig.php:168
+msgid "Display bill counts on deposit slip"
+msgstr "Mostrar cuenta en ficha de depósitos "
+
+#: ChurchCRM/dto/SystemConfig.php:169
+msgid "ChurchCRM Cloud Access URL"
+msgstr "URL para Cloud Access de ChurchCRM"
+
+#: ChurchCRM/Emails/users/AccountDeletedEmail.php:11
+msgid "Your Account was Deleted"
+msgstr "Su cuenta fue borrada"
+
+#: ChurchCRM/Emails/users/AccountDeletedEmail.php:17
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "Su Cuenta de ChurchCRM fue Borrada."
+
+#: ChurchCRM/Emails/users/AccountDeletedEmail.php:18
+#: ChurchCRM/Emails/users/LockedEmail.php:18
+msgid "If you think this is an error"
+msgstr "Si cree que esto fue un error"
+
+#: ChurchCRM/Emails/users/AccountDeletedEmail.php:18
+#: ChurchCRM/Emails/users/LockedEmail.php:18
+msgid "please contact your admin"
+msgstr "por favor contacte a su administrador"
+
+#: ChurchCRM/Emails/users/LockedEmail.php:11
+msgid "Account Locked"
+msgstr "Cuenta Bloqueada"
+
+#: ChurchCRM/Emails/users/LockedEmail.php:17
+msgid "We wanted to let you know that your ChurchCRM account was locked."
+msgstr "Queríamos informarle que su cuenta de ChurchCRM fue bloqueada."
+
+#: ChurchCRM/Emails/users/NewAccountEmail.php:18
+msgid "Your New Account"
+msgstr "Su Nueva Cuenta"
+
+#: ChurchCRM/Emails/users/NewAccountEmail.php:24
+msgid "A ChurchCRM account was created for you:"
+msgstr "Una cuenta de ChurchCRM fue creada para used:"
+
+#: ChurchCRM/Emails/users/NewAccountEmail.php:26
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:25
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:26
+#: ChurchCRM/Emails/users/UnlockedEmail.php:19
+msgid "Username"
+msgstr "Usuario"
+
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:17
+msgid "Password Changed"
+msgstr "Contraseña Cambiada"
+
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:23
+msgid "We wanted to let you know that your ChurchCRM password was changed."
+msgstr "Queríamos informarle que su contraseña de ChurchCRM fue cambiada."
+
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:18
+msgid "Password Reset"
+msgstr "Restablecer Contraseña"
+
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:24
+msgid "You can reset your ChurchCRM password by clicking this link:"
+msgstr "Puede restablecer su contraseña de ChurchCRM haciendo clic en este enlace:"
+
+#: ChurchCRM/Emails/users/UnlockedEmail.php:11
+msgid "Account Unlocked"
+msgstr "Cuenta Desbloqueada"
+
+#: ChurchCRM/Emails/users/UnlockedEmail.php:17
+msgid "We wanted to let you know that your ChurchCRM account was unlocked."
+msgstr "Queríamos informarle que su cuenta de ChurchCRM fue besbloqueada."
+
+#: ChurchCRM/Service/PersonService.php:36
+msgid "Part"
+msgstr "Parte"
+
+#: FamilyView.php:193 PersonView.php:193
+msgid "View Photo"
+msgstr "Ver Foto"
+
+#: FamilyView.php:1072
+msgid "Family Photo"
+msgstr "Foto de Familia"
+
+#: GroupView.php:266
+msgid "Default Role"
+msgstr "Rol por Defecto"
+
+#: GroupView.php:272
+msgid "Total Members"
+msgstr "Miembros Totales"
+
+#: GroupView.php:280
+msgid "Quick Settings"
+msgstr "Ajustes Rápidos"
+
+#: GroupView.php:284
+msgid "Status"
+msgstr "Estado"
+
+#: GroupView.php:285
+msgid "Email export"
+msgstr "Exportar email"
+
+#: GroupView.php:285
+msgid "Include"
+msgstr "Incluir"
+
+#: GroupView.php:285
+msgid "Exclude"
+msgstr "Excluir"
+
+#: GroupView.php:298
+msgid "Group-Specific Properties"
+msgstr "Propiedades Específicas de Grupo"
+
+#: GroupView.php:349
+msgid "No property assignments"
+msgstr "No hay asignaciones de propiedades"
+
+#: Include/Header.php:120
+msgid "View Cart"
+msgstr "Ver Separador"
+
+#: Include/Header.php:155
+msgid "Your Cart is Empty"
+msgstr "Su Separador esta Vacío"
+
+#: MapUsingGoogle.php:13
+msgid "View on Map"
+msgstr "Ver en Mapa"
+
+#: MapUsingGoogle.php:101 MapUsingGoogle.php:125
+msgid "Legend"
+msgstr "Leyenda"
+
+#: PersonView.php:741
+msgid "assigned"
+msgstr "asignado"
+
+#: PersonView.php:1026
+msgid "Photo"
+msgstr "Foto"
+
+#: PledgeEditor.php:503
+msgid "Payment Details"
+msgstr "Detalles de Pago"
+
+#: PledgeEditor.php:709
+msgid "Fund Split"
+msgstr "División de Fondos"
+
+#: sundayschool/SundaySchoolClassView.php:196
+msgid "Showing students with birthdays in"
+msgstr "Mostrando estudiantes con cumpleaños en"
+
+#: UserList.php:51
+msgid "Actions"
+msgstr "Acciones"
+
+#: UserList.php:145 UserList.php:166
+msgid "Action Confirmation"
+msgstr "Confirmación de Acción"
+
+#: UserList.php:147
+msgid "Please confirm reset failed login count"
+msgstr "Por favor confirme restablecer la cuenta de ingresos fallidos"
+
+#: UserList.php:178
+msgid "Password reset for"
+msgstr "Restablecer contraseña para"
+
+#: menuconfig_mcf.php:9
+msgid "View Active Families"
+msgstr "Ver Familias Activas"
+
+#: menuconfig_mcf.php:10
+msgid "View Inactive Families"
+msgstr "Ver Familias Inactivas"
+
+#: ChurchCRM/dto/SystemConfig.php:53
+msgid "If debug is enabled the location of log files."
+msgstr "Si el modo de depuración esta activado, la ubicación de los archivos de log."
+
+#: ChurchCRM/dto/SystemConfig.php:70
+msgid "SMTP Server timeout in sec"
+msgstr "Tiempo de espera del Servidor SMTP en segundos"
 
