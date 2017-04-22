@@ -17,14 +17,6 @@ Sunday school classes are nothing more than [groups](Groups.md), with the "Type"
 
 7. Add users to the group as either "Teacher" or "Student"
 
-## How do I use ChurchCRM to track attendance?
-
-Sunday School Attendance cannot be tracked directly, but rather by creating an [Event](Events.md).  Please see the [events section](Events.md) of the documentation
-
-## How can I use ChurchCRM to notify parents if their child requires attention?
-
-Navigate to the Sunday School Dashboard of the group you wish to contact, and click the _"Compose Message"_ button.
-
 ## Sunday School Kiosk Operation
 
 Sunday School kiosks give teachers more information about the 
