@@ -132,18 +132,20 @@ if (count($results) == 0) {
 
 SystemConfig::init(ConfigQuery::create()->find());
 
-// enable logs if we are in debug mode
+// Log at the desired log level defined by MonoLog's Log Levels.
 // **************************************************
 $logFile = SystemConfig::getValue("sLogFile");
-if (SystemConfig::getBooleanValue("debug")) {
+if (intval(SystemConfig::getValue("sLogLevel")) == 100) {
     $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
-    $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
-    $logger = new Logger('defaultLogger');
-    $logger->pushHandler(new StreamHandler($logFile));
-    $serviceContainer->setLogger('defaultLogger', $logger);
-    ini_set('log_errors', 1);
-    ini_set('error_log', $logFile);
+} else {
+    $dbClassName = "\\Propel\\Runtime\\Connection\\PropelPDO";
 }
+$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
+$logger = new Logger('defaultLogger');
+$logger->pushHandler(new StreamHandler($logFile, intval(SystemConfig::getValue("sLogLevel"))));
+$serviceContainer->setLogger('defaultLogger', $logger);
+#ini_set('log_errors', 1);
+#ini_set('error_log', $logFile);
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
     // Load user variables from user config table.
