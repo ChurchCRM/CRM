@@ -100,6 +100,8 @@ $(document).ready(function () {
         event.preventDefault();
         var thisLink = $(this);
         var personId = thisLink.data('person_id');
+        var familyRoleId = thisLink.data('family_role_id');
+        var familyRole = thisLink.data('family_role');
         
         $.ajax({
             type: 'GET',
@@ -107,8 +109,12 @@ $(document).ready(function () {
             url: window.CRM.root + '/api/roles/all',
             success: function (data, status, xmlHttpReq) {
                 if (data.length) {
-                    roles = [{text: 'Choose one ...', value: ''}];
+                    roles = [{text: familyRole, value: ''}];
                     for (var i=0; i < data.length; i++) {
+                        if (data[i].OptionId == familyRoleId) {
+                            continue;
+                        }
+                        
                         roles[roles.length] = {
                             text: data[i].OptionName,
                             value: data[i].OptionId

@@ -15,7 +15,7 @@ $app->group('/roles', function () {
     
     
     $this->post('/persons/assign', function ($request, $response, $args) {
-        if (!$_SESSION['user']->isAdmin()) {
+        if (!$_SESSION['user']->isEditRecordsEnabled()) {
             return $response->withStatus(401);
         }
 
