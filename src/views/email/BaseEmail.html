@@ -44,6 +44,11 @@
                 {{/ password}}
             <p/>
             {{/ userName}}
+            {{# token}}
+            <p>
+                <a href="{{ChurchCRMURL}}external/verify/{{token}}">{{ChurchCRMURL}}external/verify/{{token}}</a>
+            </p>
+            {{/ token}}
             <p>
             {{sConfirmSincerely}}, <br/>
             {{sConfirmSigner}}
