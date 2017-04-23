@@ -8338,11 +8338,6 @@ msgstr "Texto antes del nombre en emails/reportes"
 msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
 msgstr "Colocar en verdadero para permitir apellidos vacíos en Editor de Personas. Colocar en falso para validar el apellido y heredar de familia cuando se encuentre vacío."
 
-#. What is this
-#: ChurchCRM/dto/SystemConfig.php:167
-msgid "Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName "
-msgstr "Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName␣"
-
 #: ChurchCRM/dto/SystemConfig.php:168
 msgid "Display bill counts on deposit slip"
 msgstr "Mostrar cuenta en ficha de depósitos "
@@ -8531,4 +8526,8 @@ msgstr "Si el modo de depuración esta activado, la ubicación de los archivos d
 #: ChurchCRM/dto/SystemConfig.php:70
 msgid "SMTP Server timeout in sec"
 msgstr "Tiempo de espera del Servidor SMTP en segundos"
+
+#: DirectoryReports.php:78
+msgid "Exclude Inactive Families"
+msgstr "Excluir Familias Inactivas"
 
