@@ -13,13 +13,13 @@ if (isset($_GET['mode'])) {
 }
 if (strtolower($sMode) == 'inactive') {
     $families = FamilyQuery::create()
-            ->filterByDateDeactivated(null)
+        ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
             ->orderByName()
             ->find();
 } else {
     $sMode = 'Active';
     $families = FamilyQuery::create()
-            ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
+        ->filterByDateDeactivated(null)
             ->orderByName()
             ->find();
 }
