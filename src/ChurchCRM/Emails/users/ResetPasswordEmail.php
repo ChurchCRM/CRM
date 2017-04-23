@@ -2,9 +2,6 @@
 
 namespace ChurchCRM\Emails;
 
-
-use ChurchCRM\dto\ChurchMetaData;
-
 class ResetPasswordEmail extends BaseUserEmail
 {
 

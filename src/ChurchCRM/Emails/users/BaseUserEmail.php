@@ -3,7 +3,6 @@
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\User;
 
 
