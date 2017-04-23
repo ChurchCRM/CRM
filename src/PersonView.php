@@ -142,7 +142,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     $sState = SelectWhichInfo($per_State, $fam_State, false);
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
     $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-    $plaintextMailingAddress = getMailingAddress($Address1, $Address2, $sCity, $sState, $sZip, $sCountry);
+    $plaintextMailingAddress = $person->getAddress();
 
 //Get a formatted mailing address to use as display to the user.
 SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
@@ -150,7 +150,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     $sState = SelectWhichInfo($per_State, $fam_State, true);
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
     $sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
-    $formattedMailingAddress = getMailingAddress($Address1, $Address2, $sCity, $sState, $sZip, $sCountry);
+    $formattedMailingAddress = $person->getAddress();
 
     $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
     $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
