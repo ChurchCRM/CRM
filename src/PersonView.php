@@ -220,12 +220,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
           <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
         <p class="text-muted text-center">
-          <?php
-          if ($sFamRole != '') {
-              echo gettext($sFamRole);
-          } else {
-              echo gettext('Member');
-          } ?>
+            <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?>
+            &nbsp;
+            <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" 
+            data-family_role_id="<?= $person->getFmrId() ?>" href="#" class="btn btn-primary btn-xs">
+                <i class="fa fa-pencil"></i>
+            </a>
         </p>
 
         <p class="text-muted text-center">
