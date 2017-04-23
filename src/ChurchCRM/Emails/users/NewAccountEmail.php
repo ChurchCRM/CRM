@@ -20,11 +20,14 @@ class NewAccountEmail extends BaseUserEmail
 
     protected function buildMessageBody()
     {
-        $msg = array();
-        array_push($msg, gettext("A ChurchCRM account was created for you:"));
-        array_push($msg, "<a href='" . $this->getLink() . "'>" . gettext("Login"). "</a>");
-        array_push($msg, gettext('Username') . ": " . $this->user->getUserName());
-        array_push($msg, gettext('New Password') . ": " . $this->password);
-        return implode("<p/>", $msg);
+        return gettext("A ChurchCRM account was created for you:");
+    }
+
+    public function getTokens()
+    {
+        $parentTokens = parent::getTokens();
+        $myTokens = ["password" => $this->password,
+            "passwordText" => gettext('New Password')];
+        return array_merge($parentTokens, $myTokens);
     }
 }
