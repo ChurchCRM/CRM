@@ -129,11 +129,10 @@
 
   ```
   npm run changelog-gen
-  npm run rev-build
+  grunt updateVersions 
   ```
 
-  * Also, edit ```/src/mysql/upgrade.json``` to reflect the current upgrade path.
-  * Commit the changes to a new branch titled ```<new-version-number>-starting```
+  * Commit the changes to a new branch titled ```<new-version-number>-starting``` if your new version has a schema change.
   * Update git release so it points to the latest version in the change log
 
 ## 7. Update milestones

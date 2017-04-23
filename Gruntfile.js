@@ -431,6 +431,7 @@ module.exports = function (grunt) {
         if (curFile.current.dbVersion !== version)
         {
           console.log("updating database upgrade file to: " + version);
+          curFile.current.versions.push(curFile.current.dbVersion);
           curFile.current.dbVersion = version;
           stringFile = JSON.stringify(curFile, null, 4);
           grunt.file.write(file, stringFile);
