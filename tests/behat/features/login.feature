@@ -9,4 +9,4 @@ Feature: Login
     When I fill in "UserBox" with "admin"
     When I fill in "PasswordBox" with "changeme"
     And I press "Login"
-    Then I should see "Welcome to ChurchCRM"
+    Then I should see "Welcome to"
