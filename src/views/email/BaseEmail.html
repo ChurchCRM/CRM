@@ -34,7 +34,7 @@
                 {{sDear}} {{toName}},
             </p>
             <p>
-                {{Body}}
+                {{body}}
             </p>
             {{# userName}}
             <p>
@@ -44,11 +44,11 @@
                 {{/ password}}
             <p/>
             {{/ userName}}
-            {{# token}}
+            {{# verificationToken}}
             <p>
-                <a href="{{ChurchCRMURL}}external/verify/{{token}}">{{ChurchCRMURL}}external/verify/{{token}}</a>
+                <a href="{{ChurchCRMURL}}external/verify/{{verificationToken}}" target="_blank">{{ChurchCRMURL}}external/verify/{{verificationToken}}</a>
             </p>
-            {{/ token}}
+            {{/ verificationToken}}
             <p>
             {{sConfirmSincerely}}, <br/>
             {{sConfirmSigner}}
