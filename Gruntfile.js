@@ -382,7 +382,7 @@ module.exports = function (grunt) {
                     repo: 'CRM',
                     token: '<%= buildConfig.GitHub.token %>',
                     dataSource: 'issues',
-                    ignoreIssuesWith: ['wontfix','duplicate','norepro']
+                    ignoreIssuesWith: ['wontfix', 'duplicate', 'norepro']
                 }
             }
         }
@@ -429,8 +429,7 @@ module.exports = function (grunt) {
         // php composer
         var file = 'src/composer.json';
         var curFile = grunt.file.readJSON(file);
-        if (curFile.version !== version)
-        {
+        if (curFile.version !== version) {
             console.log("updating composer file to: " + version);
             curFile.version = version;
             var stringFile = JSON.stringify(curFile, null, 4);
@@ -440,13 +439,12 @@ module.exports = function (grunt) {
         // db update file
         file = 'src/mysql/upgrade.json';
         curFile = grunt.file.readJSON(file);
-        if (curFile.current.dbVersion !== version)
-        {
-          console.log("updating database upgrade file to: " + version);
-          curFile.current.versions.push(curFile.current.dbVersion);
-          curFile.current.dbVersion = version;
-          stringFile = JSON.stringify(curFile, null, 4);
-          grunt.file.write(file, stringFile);
+        if (curFile.current.dbVersion !== version) {
+            console.log("updating database upgrade file to: " + version);
+            curFile.current.versions.push(curFile.current.dbVersion);
+            curFile.current.dbVersion = version;
+            stringFile = JSON.stringify(curFile, null, 4);
+            grunt.file.write(file, stringFile);
         }
 
     });
