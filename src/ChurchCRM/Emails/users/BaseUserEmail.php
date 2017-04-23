@@ -26,11 +26,6 @@ abstract class BaseUserEmail extends BaseEmail
 
     protected abstract function getSubSubject();
 
-    protected function buildMessage()
-    {
-        return $this->mustache->render($this->getMustacheTemplateName(), $this->getTokens());
-    }
-
     public function getTokens()
     {
         $myTokens =  ["toName" => $this->user->getPerson()->getFirstName(),

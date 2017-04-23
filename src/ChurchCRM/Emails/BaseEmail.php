@@ -61,6 +61,11 @@ abstract class BaseEmail
         $this->mail->addStringAttachment($string, $filename);
     }
 
+    protected function buildMessage()
+    {
+        return $this->mustache->render($this->getMustacheTemplateName(), $this->getTokens());
+    }
+
     protected function getMustacheTemplateName()
     {
         return "BaseEmail";
@@ -79,4 +84,6 @@ abstract class BaseEmail
             "sConfirmSigner" => SystemConfig::getValue('sConfirmSigner')
         ];
     }
+
+    abstract function getTokens();
 }
