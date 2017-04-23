@@ -74,14 +74,14 @@ abstract class BaseEmail
     protected function getCommonTokens() {
         return [
           "toEmails" => $this->mail->getToAddresses(),
-            "ChurchName" => ChurchMetaData::getChurchName(),
-            "ChurchAddress" => ChurchMetaData::getChurchFullAddress(),
-            "ChurchPhone" => ChurchMetaData::getChurchPhone(),
-            "ChurchEmail" => ChurchMetaData::getChurchEmail(),
-            "ChurchCRMURL" => SystemURLs::getURL(),
-            "sDear" => SystemConfig::getValue('sDear'),
-            "sConfirmSincerely" => SystemConfig::getValue('sConfirmSincerely'),
-            "sConfirmSigner" => SystemConfig::getValue('sConfirmSigner')
+            "churchName" => ChurchMetaData::getChurchName(),
+            "churchAddress" => ChurchMetaData::getChurchFullAddress(),
+            "churchPhone" => ChurchMetaData::getChurchPhone(),
+            "churchEmail" => ChurchMetaData::getChurchEmail(),
+            "churchCRMURL" => SystemURLs::getURL(),
+            "dear" => SystemConfig::getValue('sDear'),
+            "confirmSincerely" => SystemConfig::getValue('sConfirmSincerely'),
+            "confirmSigner" => SystemConfig::getValue('sConfirmSigner')
         ];
     }
 
