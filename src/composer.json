@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM/CRM",
-    "version": "2.7.0",
+    "version": "2.7.2",
     "type": "project",
     "keywords": [
         "church",
@@ -40,7 +40,8 @@
         "setasign/fpdf": "1.8.1",
         "phpmailer/phpmailer": "5.2.*",
         "verot/class.upload.php": "dev-master",
-        "ifsnop/mysqldump-php": "2.*"
+        "ifsnop/mysqldump-php": "2.*",
+        "willdurand/geocoder": "3.3.*"
     },
     "autoload": {
         "classmap": [

@@ -31,6 +31,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\ChurchMetaData;
 
 $financialService = new FinancialService();
 $dashboardService = new DashboardService();
@@ -55,7 +56,7 @@ if ($_SESSION['bFinance']) {
 }
 
 // Set the page title
-$sPageTitle = gettext('Welcome to').' <b>Church</b>CRM';
+$sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
 
 require 'Include/Header.php';
 ?>

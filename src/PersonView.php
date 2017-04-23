@@ -142,7 +142,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     $sState = SelectWhichInfo($per_State, $fam_State, false);
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
     $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-    $plaintextMailingAddress = getMailingAddress($Address1, $Address2, $sCity, $sState, $sZip, $sCountry);
+    $plaintextMailingAddress = $person->getAddress();
 
 //Get a formatted mailing address to use as display to the user.
 SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
@@ -150,7 +150,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     $sState = SelectWhichInfo($per_State, $fam_State, true);
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
     $sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
-    $formattedMailingAddress = getMailingAddress($Address1, $Address2, $sCity, $sState, $sZip, $sCountry);
+    $formattedMailingAddress = $person->getAddress();
 
     $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
     $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
@@ -220,12 +220,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
           <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
         <p class="text-muted text-center">
-          <?php
-          if ($sFamRole != '') {
-              echo gettext($sFamRole);
-          } else {
-              echo gettext('Member');
-          } ?>
+            <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?>
+            &nbsp;
+            <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" 
+            data-family_role_id="<?= $person->getFmrId() ?>" href="#" class="btn btn-primary btn-xs">
+                <i class="fa fa-pencil"></i>
+            </a>
         </p>
 
         <p class="text-muted text-center">
