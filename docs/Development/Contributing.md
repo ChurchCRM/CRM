@@ -87,6 +87,10 @@ Please familiarize yourself with the [documentation](http://docs.churchcrm.io/en
 
 ### API
   The API is built with [Slim version 2.0](http://docs.slimframework.com/)
+  
+### Logging 
+
+ We are using [Monolog](https://seldaek.github.io/monolog/) for logging. In Standard pages we have `$logger` var that can be used if the debug is enabled in the System Settings.  In the Slim APIs you can use  `$this->Logger->` var.
 
 ### UI Standards
 
