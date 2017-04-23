@@ -120,11 +120,6 @@ class User extends BaseUser
         $this->createTimeLineNote("created");
     }
 
-    public function postUpdate(ConnectionInterface $con = null)
-    {
-        $this->createTimeLineNote("updated");
-    }
-
     public function postDelete(ConnectionInterface $con = null)
     {
         $this->createTimeLineNote("deleted");
