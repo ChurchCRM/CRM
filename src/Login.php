@@ -152,7 +152,7 @@ require 'Include/HeaderNotLoggedIn.php';
 
 <div class="login-box">
     <div class="login-logo">
-        Church<b>CRM</b></a>
+        Church<b>CRM</b>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
