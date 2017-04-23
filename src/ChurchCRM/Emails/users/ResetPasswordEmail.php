@@ -31,6 +31,5 @@ class ResetPasswordEmail extends BaseUserEmail
         $myTokens = ["password" => $this->password,
             "passwordText" => gettext('New Password')];
         return array_merge($parentTokens, $myTokens);
-
     }
 }
