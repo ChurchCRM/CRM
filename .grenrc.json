@@ -7,10 +7,11 @@
     "groupBy": {
         "Feature Requests:": ["Feature Request"],
         "Enhancements:": ["enhancement"],
+        "Core Functionality": ["Feature: Events", "Feature: Financial", "Feature: Groups", "Feature: Members", "Feature: Reports", "Feature: Sunday School", "Feature: Users"],
         "Localization:": ["Localization"],
         "Performance:": ["Performance"],
-        "Bug fixes:": ["bug"],
-        "Inner Beauty:": ["development","build"]
+        "Bug fixes:": ["bug", "P0 - Urgent"],
+        "Inner Beauty:": ["development","build", "Backend System"]
     },
     "ignoreIssuesWith": ["wontfix","duplicate","norepro"]
 }
