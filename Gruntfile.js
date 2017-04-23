@@ -377,12 +377,7 @@ module.exports = function (grunt) {
         gren: {
             changelog: {
                 options: {
-                    changelogFilename: 'CHANGELOG.md',
-                    username: 'ChurchCRM',
-                    repo: 'CRM',
-                    token: '<%= buildConfig.GitHub.token %>',
-                    dataSource: 'issues',
-                    ignoreIssuesWith: ['wontfix', 'duplicate', 'norepro']
+                    token: '<%= buildConfig.GitHub.token %>'
                 }
             }
         }
@@ -446,7 +441,6 @@ module.exports = function (grunt) {
             stringFile = JSON.stringify(curFile, null, 4);
             grunt.file.write(file, stringFile);
         }
-
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
