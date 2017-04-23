@@ -8,6 +8,8 @@ use ChurchCRM\Base\FamilyQuery;
 use ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\ChurchMetaData;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 //Set the page title
 $sPageTitle = gettext('View on Map');
@@ -15,25 +17,14 @@ $sPageTitle = gettext('View on Map');
 require 'Include/Header.php';
 
 $iGroupID = FilterInput($_GET['GroupID'], 'int');
+?>
 
-//update SystemConfig with coordinates if nChurchLatitude or nChurchLongitude is not set by using address lookup
-if (SystemConfig::getValue('nChurchLatitude') == '' || SystemConfig::getValue('nChurchLongitude') == '') {
-    require 'Include/GeoCoder.php';
-    $myAddressLatLon = new AddressLatLon();
+<div class="callout callout-info">
+    <a href="<?= SystemURLs::getRootPath() ?>/UpdateAllLatLon.php" class="btn bg-green-active"><i class="fa fa-map-marker"></i> </a>
+    <?= gettext('Missing Families? Update Family Latitude or Longitude now.') ?>
+</div>
 
-    // Try to look up the church address to center the map.
-    $myAddressLatLon->SetAddress(SystemConfig::getValue('sChurchAddress'), SystemConfig::getValue('sChurchCity'), SystemConfig::getValue('sChurchState'), SystemConfig::getValue('sChurchZip'), SystemConfig::getValue('sChurchCountry'));
-    $ret = $myAddressLatLon->Lookup();
-    if ($ret == 0) {
-        $nChurchLatitude = $myAddressLatLon->GetLat();
-        $nChurchLongitude = $myAddressLatLon->GetLon();
-
-        SystemConfig::setValue('nChurchLatitude', $nChurchLatitude);
-        SystemConfig::setValue('nChurchLongitude', $nChurchLongitude);
-    }
-} //end update systemConfig
-
-if (SystemConfig::getValue('nChurchLatitude') == '') {
+<?php if (ChurchMetaData::getChurchLatitude() == '') {
     ?>
     <div class="callout callout-danger">
         <?= gettext('Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.') ?>
@@ -72,6 +63,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
         //Map all the families
         $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)
+            ->filterByLatitude(0, Criteria::NOT_EQUAL)
+            ->filterByLongitude(0, Criteria::NOT_EQUAL)
             ->usePersonQuery('per')
             ->filterByFmrId($dirRoleHead)
             ->endUse()
@@ -147,8 +140,8 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
 
     <script type="text/javascript">
         var churchloc = {
-            lat: <?= SystemConfig::getValue('nChurchLatitude') ?>,
-            lng: <?= SystemConfig::getValue('nChurchLongitude') ?>};
+            lat: <?= ChurchMetaData::getChurchLatitude() ?>,
+            lng: <?= ChurchMetaData::getChurchLongitude() ?>};
 
 
         var markerIcons = <?= json_encode($markerIcons) ?>;
@@ -181,7 +174,7 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
         function initialize() {
             // init map
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
+                zoom: <?= SystemConfig::getValue("iMapZoom")?>,
                 center: churchloc
 
             });
@@ -202,21 +195,22 @@ if (SystemConfig::getValue('nChurchLatitude') == '') {
     $arrPlotItems = array();
     if ($plotFamily) {
         foreach ($families as $family) {
-            $latLng = $family->getLatLng();
-                    //this helps to add head people persons details: otherwise doesn't seems to populate
-                    $class = $family->getHeadPeople()[0];
-            $family->getHeadPeople()[0];
-            $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
-            $arr['ID'] = $family->getId();
-            $arr['Name'] = $family->getName();
-            $arr['Salutation'] = $family->getSaluation();
-            $arr['Address'] = $family->getAddress();
-            $arr['Thumbnail'] = $photoFileThumb;
-            $arr['Latitude'] = $latLng['Latitude'];
-            $arr['Longitude'] = $latLng['Longitude'];
-            $arr['Name'] = $family->getName();
-            $arr['Classification'] = $class->GetClsId();
-            array_push($arrPlotItems, $arr);
+            if ($family->hasLatitudeAndLongitude()) {
+                //this helps to add head people persons details: otherwise doesn't seems to populate
+                $class = $family->getHeadPeople()[0];
+                $family->getHeadPeople()[0];
+                $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
+                $arr['ID'] = $family->getId();
+                $arr['Name'] = $family->getName();
+                $arr['Salutation'] = $family->getSaluation();
+                $arr['Address'] = $family->getAddress();
+                $arr['Thumbnail'] = $photoFileThumb;
+                $arr['Latitude'] = $family->getLatitude();
+                $arr['Longitude'] = $family->getLongitude();
+                $arr['Name'] = $family->getName();
+                $arr['Classification'] = $class->GetClsId();
+                array_push($arrPlotItems, $arr);
+            }
         }
     } else {
         //plot Person

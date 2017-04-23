@@ -23,12 +23,11 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Include/GeoCoder.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\GeoUtils;
 
 function CompareDistance($elem1, $elem2)
 {
@@ -68,8 +67,8 @@ function FamilyInfoByDistance($iFamily)
     foreach ($families as $family) {
         $familyID = $family->getId();
         if ($iFamily) {
-            $results[$familyID]['Distance'] = floatval(LatLonDistance($selectedFamily->getLatitude(), $selectedFamily->getLongitude(), $family->getLatitude(), $family->getLongitude()));
-            $results[$familyID]['Bearing'] = LatLonBearing($selectedFamily->getLatitude(), $selectedFamily->getLongitude(), $family->getLatitude(), $family->getLongitude());
+            $results[$familyID]['Distance'] = floatval(GeoUtils::LatLonDistance($selectedFamily->getLatitude(), $selectedFamily->getLongitude(), $family->getLatitude(), $family->getLongitude()));
+            $results[$familyID]['Bearing'] = GeoUtils::LatLonBearing($selectedFamily->getLatitude(), $selectedFamily->getLongitude(), $family->getLatitude(), $family->getLongitude());
         }
         $results[$familyID]['fam_Name'] = $family->getName();
         $results[$familyID]['fam_Address'] = $family->getAddress();
