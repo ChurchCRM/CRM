@@ -21,4 +21,4 @@ Feature: Letters and Labels
     #Then I should see in the header "Content-Disposition:attachment;"
     Then I am on "/LettersAndLabels.php"
     #When I press "Cancel"
-    #Then I should see "Welcome to ChurchCRM"  
+    #Then I should see "Welcome to"
