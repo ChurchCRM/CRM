@@ -38,6 +38,7 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Emails\LockedEmail;
 use ChurchCRM\Service\NotificationService;
+use ChurchCRM\dto\ChurchMetaData;
 
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
@@ -151,11 +152,14 @@ require 'Include/HeaderNotLoggedIn.php';
 
 <div class="login-box">
     <div class="login-logo">
-        <b>Church</b>CRM</a>
+        Church<b>CRM</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg"><?= gettext('Please Login') ?></p>
+        <p class="login-box-msg">
+            <b><?= ChurchMetaData::getChurchName() ?></b><br/>
+            <?= gettext('Please Login') ?>
+        </p>
 
         <?php
         if (isset($_GET['Timeout'])) {
