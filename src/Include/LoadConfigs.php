@@ -59,6 +59,24 @@ function system_failure($message, $header = 'Setup failure')
     exit();
 }
 
+function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort = '3306')
+{
+    return [
+        'dsn' => 'mysql:host=' . $sSERVERNAME . ';port='.$dbPort.';dbname=' . $sDATABASE,
+        'user' => $sUSER,
+        'password' => $sPASSWORD,
+        'settings' => [
+            'charset' => 'utf8mb4',
+            'queries' => [],
+        ],
+        'classname' => $dbClassName,
+        'model_paths' => [
+            0 => 'src',
+            1 => 'vendor',
+        ],
+    ];
+}
+
 try {
     SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
 } catch (\Exception $e) {
@@ -79,34 +97,19 @@ or system_failure('Could not connect to the MySQL database <strong>'.$sDATABASE.
 session_name('CRM@'.SystemURLs::getRootPath());
 session_start();
 
+
 // ==== ORM
 $dbClassName = "\\Propel\\Runtime\\Connection\\ConnectionWrapper";
-//DEBUG $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
+
 
 $serviceContainer = Propel::getServiceContainer();
 $serviceContainer->checkVersion('2.0.0-dev');
 $serviceContainer->setAdapterClass('default', 'mysql');
 $manager = new ConnectionManagerSingle();
-$manager->setConfiguration([
-    'dsn'      => 'mysql:host='.$sSERVERNAME.';port=3306;dbname='.$sDATABASE,
-    'user'     => $sUSER,
-    'password' => $sPASSWORD,
-    'settings' => [
-            'charset' => 'utf8mb4',
-            'queries' => [],
-        ],
-    'classname'   => $dbClassName,
-    'model_paths' => [
-            0 => 'src',
-            1 => 'vendor',
-        ],
-]);
+$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
 $manager->setName('default');
 $serviceContainer->setConnectionManager('default', $manager);
 $serviceContainer->setDefaultDatasource('default');
-$logger = new Logger('defaultLogger');
-$logger->pushHandler(new StreamHandler('/tmp/ChurchCRM.log'));
-$serviceContainer->setLogger('defaultLogger', $logger);
 
 $connection = Propel::getConnection();
 $query = "SHOW TABLES FROM `$sDATABASE`";
@@ -128,6 +131,19 @@ if (count($results) == 0) {
 // **************************************************
 
 SystemConfig::init(ConfigQuery::create()->find());
+
+// enable logs if we are in debug mode
+// **************************************************
+$logFile = SystemConfig::getValue("sLogFile");
+if (SystemConfig::getBooleanValue("debug")) {
+    $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
+    $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
+    $logger = new Logger('defaultLogger');
+    $logger->pushHandler(new StreamHandler($logFile));
+    $serviceContainer->setLogger('defaultLogger', $logger);
+    ini_set('log_errors', 1);
+    ini_set('error_log', $logFile);
+}
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
     // Load user variables from user config table.

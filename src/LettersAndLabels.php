@@ -56,23 +56,26 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
       </div>
       <div class="box-body">
         <form method="post" action="LettersAndLabels.php">
+            <div class="table-responsive">
 
-          <table cellpadding="3" align="left">
+          <table class="table" cellpadding="3" align="left">
 <?php
 LabelSelect('labeltype');
 FontSelect('labelfont');
 FontSizeSelect('labelfontsize');
 ?>
 
-            <tr>
-              <td><input type="submit" class="btn" name="SubmitNewsLetter" value="<?= gettext('Newsletter labels') ?>"></td>
-              <td><input type="submit" class="btn" name="SubmitConfirmReport" value="<?= gettext('Confirm data letter') ?>"></td>
-              <td><input type="submit" class="btn" name="SubmitConfirmReportEmail" value="<?= gettext('Confirm data Email') ?>"></td>
-              <td><input type="submit" class="btn" name="SubmitConfirmLabels" value="<?= gettext('Confirm data labels') ?>"></td>
-              <td><input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';"></td>
-            </tr>
-
           </table>
+            </div>
+            <div>
+              <input type="submit" class="btn" name="SubmitNewsLetter" value="<?= gettext('Newsletter labels') ?>">
+              <input type="submit" class="btn" name="SubmitConfirmReport" value="<?= gettext('Confirm data letter') ?>">
+              <input type="submit" class="btn" name="SubmitConfirmReportEmail" value="<?= gettext('Confirm data Email') ?>">
+              <input type="submit" class="btn" name="SubmitConfirmLabels" value="<?= gettext('Confirm data labels') ?>">
+              <input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
+            </div>
+
+
 
         </form>
       </div>

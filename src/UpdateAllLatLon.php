@@ -22,89 +22,48 @@
  *
  ******************************************************************************/
 
+use ChurchCRM\FamilyQuery;
+
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-require 'Include/GeoCoder.php';
 $sPageTitle = gettext('Update Latitude & Longitude');
 require 'Include/Header.php';
 
 echo '<div class="box box-body box-info">';
 
-// Lookup unknown coodinates first.  To do this set latitude = -99 for
-// every unknown record.
-$sSQL = 'UPDATE family_fam SET fam_Latitude = 0 WHERE fam_Latitude IS NULL';
-RunQuery($sSQL);
+$families = FamilyQuery::create()->filterByLongitude(0)->limit(250)->find();
 
-$sSQL = 'UPDATE family_fam SET fam_Latitude = -99 WHERE fam_Latitude = 0';
-RunQuery($sSQL);
+echo '<h4>' . gettext('Families without Geo Info') . ": " . $families->count() .'</h4>';
 
-// ORDER BY fam_Latitude forces the -99 records to the top of the queue
-$sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude ';
-//$sSQL .= "FROM family_fam ORDER BY fam_Latitude";
-
-// Need to come back and fix this someday. Server timeouts are a problem.
-// It just takes too long to do a lookups for a large database.
-// For now am limiting to 250 lookups.
-$sLimit = 250;
-
-$sSQL .= "FROM family_fam ORDER BY fam_Latitude LIMIT $sLimit";
-
-$rsFamilies = RunQuery($sSQL);
-
-// Return the -99 records back to 0
-$sSQL = 'UPDATE family_fam SET fam_Latitude = 0, fam_Longitude = 0 WHERE fam_Latitude = -99';
-RunQuery($sSQL);
-
-$myAddressLatLon = new AddressLatLon();
-
-// If the users database is large this loop does not finish before something times out.
-// This results in an ungraceful ending when $sLimit is large.
-// At least the unknown coordinates are first in the queue.
-while ($aFam = mysqli_fetch_array($rsFamilies)) {
-    extract($aFam);
-
-    $myAddressLatLon->SetAddress($fam_Address1, $fam_City, $fam_State, $fam_Zip);
-    $ret = $myAddressLatLon->Lookup();
-
-    if ($ret == 0) {
-        $sNewLatitude = $myAddressLatLon->GetLat();
-        $sNewLongitude = $myAddressLatLon->GetLon();
-        if ($sNewLatitude === null) {
-            $sNewLatitude = 0;
-        }
-            // if a lookup returned zero skip this.  Don't overwrite with 0,0
-            if ($sNewLatitude != 0) {
-                echo '<li>'.$fam_Name, ' Latitude '.$sNewLatitude.' Longitude '.$sNewLongitude.'</li>';
-                $sSQL = "UPDATE family_fam SET fam_Latitude='".$sNewLatitude."',fam_Longitude='".$sNewLongitude."' WHERE fam_ID=".$fam_ID;
-                RunQuery($sSQL);
-            }
-    } else {
-        echo '<p>'.$fam_Name.': '.$myAddressLatLon->GetError().'</p>';
+foreach ($families as $family) {
+    $family->updateLanLng();
+    $sNewLatitude = $family->getLatitude();
+    $sNewLongitude = $family->getLongitude();
+    if (!empty($sNewLatitude)) {
+        echo '<li>' . $fam_Name, ' Latitude ' . $sNewLatitude . ' Longitude ' . $sNewLongitude . '</li>';
     }
-    flush();
 }
-echo '<br/><p>'.gettext('Update Finished').'</p>';
+
 ?>
 </div>
-<div class="box box-warning">
-<div class="box-header">
-    <b><?= gettext('No coordinates found') ?></b>
-</div>
-<div class="box-body ">
-<?php
-$sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State, fam_Zip, fam_Latitude, fam_Longitude ';
-$sSQL .= 'FROM family_fam WHERE fam_Latitude = 0';
-$rsFamilies = RunQuery($sSQL);
-while ($aFam = mysqli_fetch_array($rsFamilies)) {
-    extract($aFam);
-    echo '<li>'.$fam_Name.' '.$fam_Address1.
-    ','.$fam_City.','.$fam_State.','.$fam_Zip.'</li>';
+<?php $families = FamilyQuery::create()->filterByLongitude(0)->limit(250)->find();
+if ($families->count() > 0) {
+    ?>
+    <div class="box box-warning">
+        <div class="box-header">
+            <b><?= gettext('No coordinates found') ?></b>
+        </div>
+        <div class="box-body ">
+            <?php
+
+            foreach ($families as $family) {
+                echo '<li><a href="'.$family->getViewURI().'">' . $family->getName() . '</a> ' . $family->getAddress() . '</li>';
+            } ?>
+        </div>
+    </div>
+    <?php
+
 }
-ob_flush();
 
-echo '</div></div>';
-
-require 'Include/Footer.php';
-
-?>
+require 'Include/Footer.php'; ?>

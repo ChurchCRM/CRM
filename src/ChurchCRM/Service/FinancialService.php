@@ -9,16 +9,10 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\MICRReader;
 use ChurchCRM\PledgeQuery;
+use ChurchCRM\FamilyQuery;
 
 class FinancialService
 {
-    private $familyService;
-
-    public function __construct()
-    {
-        $this->familyService = new FamilyService();
-    }
-
     public function processAuthorizeNet()
     {
         requireUserGroupMembership('bFinance');
@@ -362,10 +356,11 @@ class FinancialService
         $payments = [];
         while ($aRow = mysqli_fetch_array($rsDep)) {
             extract($aRow);
+            $family = FamilyQuery::create()->findOneById($plg_FamID);
             $values = new \stdClass();
             $values->plg_plgID = $plg_plgID;
             $values->plg_FamID = $plg_FamID;
-            $values->familyName = $this->familyService->getFamilyName($plg_FamID);
+            $values->familyName = $family->getName();
             $values->plg_FYID = $plg_FYID;
             $values->FiscalYear = MakeFYString($plg_FYID);
             $values->plg_date = $plg_date;
@@ -435,8 +430,9 @@ class FinancialService
         $result = mysqli_query($cnInfoCentral, $fetch);
         $deposits = [];
         while ($row = mysqli_fetch_array($result)) {
+            $family = FamilyQuery::create()->findOneById($row['plg_FamID']);
             $row_array['id'] = $row['dep_ID'];
-            $row_array['displayName'] = 'Check #'.$row['plg_CheckNo'].': '.$this->familyService->getFamilyName($row['plg_FamID']).' - '.$row['dep_Date'];
+            $row_array['displayName'] = 'Check #'.$row['plg_CheckNo'].': '.$family->getName().' - '.$row['dep_Date'];
             $row_array['uri'] = $this->getPaymentViewURI($row['plg_GroupKey']);
             array_push($deposits, $row_array);
         }
@@ -625,14 +621,14 @@ class FinancialService
     {
         requireUserGroupMembership('bFinance');
         $total = 0;
-        $FamilyService = new FamilyService();
         $sSQL = 'SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey="'.$GroupKey.'"';
         $rsKeys = RunQuery($sSQL);
         $payment = new \stdClass();
         $payment->funds = [];
         while ($aRow = mysqli_fetch_array($rsKeys)) {
             extract($aRow);
-            $payment->Family = $FamilyService->getFamilyStringByID($plg_FamID);
+            $family = FamilyQuery::create()->findOneById($plg_FamID);
+            $payment->Family = $family->getFamilyString();
             $payment->Date = $plg_date;
             $payment->FYID = $plg_FYID;
             $payment->iMethod = $plg_method;

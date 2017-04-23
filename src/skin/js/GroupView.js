@@ -99,7 +99,7 @@ $(document).ready(function () {
       },
       callback: function (result)
       {
-        if (result) 
+        if (result)
         {
           $.each(deletedRows, function (index, value) {
             $.ajax({
@@ -132,7 +132,7 @@ $(document).ready(function () {
                     })
       };
       $.ajax({
-        type: 'POST', 
+        type: 'POST',
         url: window.CRM.root + '/api/cart/',
         dataType: 'json',
         contentType: "application/json",
@@ -146,7 +146,7 @@ $(document).ready(function () {
     }
 
   });
-  
+
   //copy membership
   $("#addSelectedToGroup").click(function () {
     $("#selectTargetGroupModal").modal("show");
@@ -235,9 +235,19 @@ $(document).ready(function () {
 });
 
 function initDataTable() {
-  dataT = $("#membersTable").DataTable({
+  dataT = $("#membersTable").dataTable({
     "language": {
       "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+    },
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+      "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
+      "sRowSelect": "multi",
+      "aButtons": [
+      {
+        "sExtends": "csv",
+        "bSelectedOnly": true
+      }]
     },
     responsive: true,
     ajax: {
@@ -306,13 +316,29 @@ function initDataTable() {
     }
   });
 
+    $('#isGroupActive').change(function() {
+        $.ajax({
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/active/' + $(this).prop('checked'),
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+        });
+    });
+
+    $('#isGroupEmailExport').change(function() {
+        $.ajax({
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/email/export/' + $(this).prop('checked'),
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+        });
+    });
+
   $(document).on('click', '.groupRow', function () {
     $(this).toggleClass('selected');
     var selectedRows = dataT.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
     $("#deleteSelectedRows").text("Remove (" + selectedRows + ") Members from group");
-    $("#exportSelectedRowsCSV").prop('disabled', !(selectedRows));
-    $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (CSV)");
     $("#buttonDropdown").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").html("Add  (" + selectedRows + ") Members to another group");

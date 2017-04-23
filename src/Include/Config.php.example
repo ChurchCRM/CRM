@@ -50,17 +50,8 @@ $URL[0] = '||URL||';
 // you may need to add the shared SSL server name as well as your host name to
 // the URL.  See example $URL[4]
 
-// Set error reporting
-
 // Sets which PHP errors are reported see http://php.net/manual/en/errorfunc.constants.php
 error_reporting(E_ERROR);
-
-// Rather than display errors on the screen it is more secure to
-// send error messages to a file.  Make sure that your web
-// server has permission to write to this file.
-// Warning: The error_log file can grow very large over time.
-// ini_set('log_errors', 1);
-// ini_set('error_log','/tmp/ChurchCRM.log');
 
 //
 // SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE

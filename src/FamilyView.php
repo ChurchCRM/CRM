@@ -26,14 +26,13 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/GeoCoder.php";
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Utils\GeoUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -170,7 +169,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
     $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID']))); ?>
 <script>
-    var familyId = <?= $fam_ID ?>;
+    window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
  <?php if (!empty($fam_DateDeactivated)) {
@@ -186,7 +185,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
       <div class="box box-primary">
         <div class="box-body">
             <div class="image-container">
-                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" 
+                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
                 data-name="<?= $family->getName()?>" alt="" class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
                 <?php if ($bOkToEdit): ?>
                     <div class="after">
@@ -218,14 +217,13 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <ul class="fa-ul">
                     <li><i class="fa-li glyphicon glyphicon-home"></i><?= gettext("Address") ?>:<span>
 					<a
-                        href="http://maps.google.com/?q=<?= getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) ?>"
-                        target="_blank"><?php
-                        echo getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
-    echo "</a></span><br>";
-    if ($fam_Latitude && $fam_Longitude) {
+                        href="http://maps.google.com/?q=<?= $family->getAddress() ?>"
+                        target="_blank"><?= $family->getAddress() ?></a></span><br>
+
+    <?php if ($fam_Latitude && $fam_Longitude) {
         if (SystemConfig::getValue("nChurchLatitude") && SystemConfig::getValue("nChurchLongitude")) {
-            $sDistance = LatLonDistance(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
-            $sDirection = LatLonBearing(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
+            $sDistance = GeoUtils::LatLonDistance(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
+            $sDirection = GeoUtils::LatLonBearing(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
             echo $sDistance . " " . strtolower(SystemConfig::getValue("sDistanceUnit")) . " " . $sDirection . " " . gettext(" of church<br>");
         }
     } else {
@@ -508,10 +506,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         <?= $item['text'] ?>
                                     </div>
 
-                                    <?php if (($_SESSION['bNotes']) && ($item["editLink"] != "" || $item["deleteLink"] != "")) {
+                                    <?php if (($_SESSION['bNotes']) && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
             ?>
                                         <div class="timeline-footer">
-                                            <?php if ($item["editLink"] != "") {
+                                            <?php if (isset($item["editLink"])) {
                 ?>
                                                 <a href="<?= $item["editLink"] ?>">
                                                     <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
@@ -519,7 +517,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                 <?php
 
             }
-            if ($item["deleteLink"] != "") {
+            if (isset($item["deleteLink"])) {
                 ?>
                                                 <a href="<?= $item["deleteLink"] ?>">
                                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
@@ -912,7 +910,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
   <!-- Modal -->
   <div id="photoUploader"></div>
-  
+
   <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
        aria-hidden="true">
     <div class="modal-dialog">
@@ -971,7 +969,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
-                <?php 
+                <?php
+
     } ?>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
@@ -1005,7 +1004,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
     <script>
-        window.CRM.currentFamily = <?= $iFamilyID ?>;
         window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
         var dataT = 0;
         $(document).ready(function() {
@@ -1043,7 +1041,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             $("#deletePhoto").click (function () {
               $.ajax({
               type: "POST",
-              url: window.CRM.root + "/api/families/<?= $iFamilyID ?>/photo",
+              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
               encode: true,
               dataType: 'json',
               data: {
@@ -1055,7 +1053,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             });
 
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-              url: window.CRM.root + "/api/families/" + familyId + "/photo",
+              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
               maxPhotoSize: window.CRM.maxUploadSize,
               photoHeight: 400,
               photoWidth: 400,
@@ -1063,23 +1061,22 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 location.reload();
               }
             });
-            
 
-        contentExists(window.CRM.root + "/api/families/" + familyId + "/photo", function(success) {
+        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
-                
+
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Family Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + familyId + '/photo" />',
+                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
                         backdrop: true
                     });
                 });
             }
         });
 
-        });
+    });
     </script>
 
     <?php require "Include/Footer.php" ?>

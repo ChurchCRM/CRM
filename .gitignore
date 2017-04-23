@@ -18,8 +18,8 @@ npm-debug.log*
 BuildConfig.json
 
 # Uploaded Images
-src/Images/Family/thumbnails
-src/Images/Person/thumbnails
+src/Images/Family
+src/Images/Person
 
 # SASS
 .sass-cache
@@ -37,6 +37,9 @@ src/skin/churchcrm.min.css
 src/skin/jquery-photo-uploader
 src/skin/randomcolor
 src/skin/bootbox
+src/skin/bootstrap-toggle
+src/skin/bootstrap-validator
+src/skin/jquery-ui
 
 # Configuration files with passwords
 src/Include/Config.php

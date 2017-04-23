@@ -3,7 +3,7 @@ $(document).ready(function () {
   $("#onlineVerify").click(function () {
     $.ajax({
       type: 'POST',
-      url: window.CRM.root + '/api/families/' + familyId + "/verify"
+      url: window.CRM.root + '/api/families/' + window.CRM.currentFamily + '/verify'
     })
       .done(function(data, textStatus, xhr) {
         $('#confirm-verify').modal('hide');
@@ -18,7 +18,7 @@ $(document).ready(function () {
   $("#verifyNow").click(function () {
     $.ajax({
       type: 'POST',
-      url: window.CRM.root + '/api/families/verify/' + familyId + "/now"
+      url: window.CRM.root + '/api/families/verify/' + window.CRM.currentFamily + '/now'
     })
       .done(function(data, textStatus, xhr) {
         $('#confirm-verify').modal('hide');
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
 
   $("#verifyDownloadPDF").click(function () {
-    window.open(window.CRM.root + 'Reports/ConfirmReport.php?familyId=' + familyId, '_blank');
+    window.open(window.CRM.root + 'Reports/ConfirmReport.php?familyId=' + window.CRM.currentFamily, '_blank');
     $('#confirm-verify').modal('hide');
   });
 });

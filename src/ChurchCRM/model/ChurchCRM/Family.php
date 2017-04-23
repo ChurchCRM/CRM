@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Base\Family as BaseFamily;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Utils\GeoUtils;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -19,6 +20,7 @@ use ChurchCRM\dto\Photo;
  */
 class Family extends BaseFamily implements iPhoto
 {
+
     public function getAddress()
     {
         $address = [];
@@ -79,7 +81,7 @@ class Family extends BaseFamily implements iPhoto
     {
         $this->createTimeLineNote(true);
     }
-    
+
     public function postUpdate(ConnectionInterface $con = null)
     {
         $this->createTimeLineNote(false);
@@ -163,10 +165,48 @@ class Family extends BaseFamily implements iPhoto
 
       $note->save();
     }
-    
+
+    /**
+     * Figure out how to address a family for correspondence.
+     *
+     * Put the name if there is only one individual in the family.
+     * Put two first names and the last name when there are exactly two people in the family
+     * (e.g. "Nathaniel and Jeanette Brooks").
+     * Put two whole names where there are exactly two people with different names
+     * (e.g. "Doug Philbrook and Karen Andrews")
+     * When there are more than two people in the family I don't have any way to know
+     * which people are children, so I would have to just use the family name (e.g. "Grossman Family").
+     *
+     * @return string
+     */
+    public function getSaluation()
+    {
+        $childRoleId = SystemConfig::getValue("sDirRoleChild");
+        $people = $this->getPeople();
+        $notChildren = null;
+        foreach ($people as $person) {
+            if ($person->getFmrId() != $childRoleId) {
+                $notChildren[] = $person;
+            }
+        }
+
+        $notChildrenCount = count($notChildren);
+        if ($notChildrenCount === 1) {
+            return $notChildren[0]->getFullName();
+        }
+
+        if ($notChildrenCount === 2) {
+            if ($notChildren[0]->getLastName() == $notChildren[1]->getLastName()) {
+                return $notChildren[0]->getFirstName() .' & '. $notChildren[1]->getFirstName() .' '. $notChildren[0]->getLastName();
+            }
+            return $notChildren[0]->getFullName() .' & '. $notChildren[1]->getFullName();
+        }
+
+        return $this->getName() . ' Family';
+    }
+
     private function getPhoto()
     {
-      
       $photo = new Photo("Family",  $this->getId());
       return $photo;
     }
@@ -216,19 +256,51 @@ class Family extends BaseFamily implements iPhoto
         return true;
       }
       return false;
-      
     }
 
     public function isPhotoLocal() {
       return $this->getPhoto()->isPhotoLocal();
     }
-    
+
     public function isPhotoRemote() {
       return $this->getPhoto()->isPhotoRemote();
     }
-    
+
     public function getPhotoContentType() {
       return $this->getPhoto()->getPhotoContentType();
     }
 
+    public function verify()
+    {
+        $note = new Note();
+        $note->setFamId($this->getId());
+        $note->setText(gettext('Family Data Verified'));
+        $note->setType('verify');
+        $note->setEntered($_SESSION['user']->getId());
+        $note->save();
+    }
+
+    public function getFamilyString()
+    {
+        return $this->getName(). " " . $this->getAddress();
+    }
+
+    public function hasLatitudeAndLongitude() {
+        return !empty($this->getLatitude()) && !empty($this->getLongitude());
+    }
+
+    /**
+     * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
+     * @return array of Lat/Lng
+     */
+    public function updateLanLng() {
+        if (!empty($this->getAddress()) && (!$this->hasLatitudeAndLongitude())) {
+            $latLng = GeoUtils::getLatLong($this->getAddress());
+            if(!empty( $latLng['Latitude']) && !empty($latLng['Longitude'])) {
+                $this->setLatitude($latLng['Latitude']);
+                $this->setLongitude($latLng['Longitude']);
+                $this->save();
+            }
+        }
+    }
 }

@@ -145,6 +145,7 @@ require 'Include/Header.php';
             <div class="tab-pane <?php if ($category == 'Church Information') {
                     echo 'active';
                 } ?>" id="<?= str_replace(" ", '', $category) ?>">
+                <div class="table-responsive">
               <table class="table table-striped">
                 <tr>
                   <th width="150px"><?= gettext('Variable name') ?></th>
@@ -234,7 +235,7 @@ require 'Include/Header.php';
                       <td>
                         <?php if ($setting->getTooltip() != '') {
                           ?>
-                          <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="<?= $setting->getTooltip() ?>"></i>
+                          <a data-toggle="popover" title="<?= $setting->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         <?php
 
                       } ?>
@@ -245,6 +246,7 @@ require 'Include/Header.php';
 
                   } ?>
               </table>
+                </div>
             </div>
 
           <?php

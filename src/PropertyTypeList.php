@@ -27,13 +27,14 @@ $rsPropertyTypes = RunQuery($sSQL);
 require 'Include/Header.php';
 ?>
 <div class="box box-body">
+    <div class="table-responsive">
 <?php //Display the new property link
 if ($_SESSION['bMenuOptions']) {
     echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">".gettext('Add a New Property Type').'</a></p>';
 }
 
 //Start the table
-echo "<table class='table'>";
+echo "<table class='table table-hover'>";
 echo '<tr>';
 echo '<th>'.gettext('Name').'</th>';
 echo '<th>'.gettext('Class').'</th>';
@@ -70,7 +71,7 @@ while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
 }
 
 //End the table
-echo '</table></div>';
+echo '</table></div></div>';
 
 require 'Include/Footer.php';
 
