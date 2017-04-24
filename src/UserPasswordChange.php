@@ -91,7 +91,7 @@ if (isset($_POST['Submit'])) {
             // Update the user record with the password hash
             $curUser = UserQuery::create()->findPk($iPersonID);
             $curUser->updatePassword($sNewPassword1);
-            $curUser->setNeedPasswordChange(true);
+            $curUser->setNeedPasswordChange(false);
             $curUser->save();
 
             // Set the session variable so they don't get sent back here
