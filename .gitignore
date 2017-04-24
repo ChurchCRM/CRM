@@ -16,6 +16,7 @@ composer.lock
 node_modules
 npm-debug.log*
 BuildConfig.json
+security-checker.phar
 
 # Uploaded Images
 src/Images/Family
