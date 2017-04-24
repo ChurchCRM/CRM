@@ -20,7 +20,7 @@ class NewAccountEmail extends BaseUserEmail
 
     protected function buildMessageBody()
     {
-        return gettext("A ChurchCRM account was created for you:");
+        return gettext("A ChurchCRM account was created for you").":";
     }
 
     public function getTokens()

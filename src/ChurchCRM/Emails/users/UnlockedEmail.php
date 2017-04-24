@@ -13,6 +13,6 @@ class UnlockedEmail extends BaseUserEmail
 
     protected function buildMessageBody()
     {
-        return gettext("We wanted to let you know that your ChurchCRM account was unlocked.");
+        return gettext("Your ChurchCRM account was unlocked.");
     }
 }

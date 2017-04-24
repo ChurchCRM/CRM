@@ -19,7 +19,7 @@ class PasswordChangeEmail extends BaseUserEmail
 
     protected function buildMessageBody()
     {
-        return gettext("We wanted to let you know that your ChurchCRM password was changed.");
+        return gettext("Your ChurchCRM password was changed").":";
     }
 
     public function getTokens()
