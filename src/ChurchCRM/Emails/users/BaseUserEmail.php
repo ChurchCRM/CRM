@@ -1,8 +1,8 @@
 <?php
+
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\User;
 
 
@@ -25,28 +25,15 @@ abstract class BaseUserEmail extends BaseEmail
 
     protected abstract function getSubSubject();
 
-    protected function buildMessage(){
-        $msg = array();
-        array_push($msg, $this->buildMessageHeader());
-        array_push($msg, $this->buildMessageBody());
-        array_push($msg, $this->buildMessageFooter());
-        return implode("<p/>", $msg);
-    }
-
-    protected function buildMessageHeader()
+    public function getTokens()
     {
-        return SystemConfig::getValue('sDear') ." " . $this->user->getFullName();
+        $myTokens =  ["toName" => $this->user->getPerson()->getFirstName(),
+            "userName" => $this->user->getUserName(),
+            "userNameText" => gettext('Username'),
+            "body" => $this->buildMessageBody()
+        ];
+        return array_merge($this->getCommonTokens(), $myTokens);
     }
 
     protected abstract function buildMessageBody();
-
-    protected function buildMessageFooter()
-    {
-        return SystemConfig::getValue('sConfirmSincerely') . ",<br/>" . SystemConfig::getValue("sConfirmSigner");
-    }
-
-    protected function getLink()
-    {
-        return SystemURLs::getURL() . "Login.php?username=" . $this->user->getUserName();
-    }
 }
