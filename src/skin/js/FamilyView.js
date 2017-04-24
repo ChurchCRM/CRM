@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+    var options = {
+        "language": {
+            "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+        }
+    };
+    $("#pledge-payment-table").DataTable(options);
+
+
   $("#onlineVerify").click(function () {
     $.ajax({
       type: 'POST',
