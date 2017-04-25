@@ -8,15 +8,24 @@ The project welcomes, and depends on, contributions from developers and users in
 - Documentation improvements
 - Bug reports and patch reviews
 
+## First Steps
+1. Read this whole page "top to bottom."
+2. Introduce yourself in the developer chat at [https://gitter.im/ChurchCRM/CRM](https://gitter.im/ChurchCRM/CRM)
+3. Take a look at the [Open Issues](https://github.com/ChurchCRM/CRM/issues) page.
+  We've made it easy for beginners with the [Good First Bug](https://github.com/ChurchCRM/CRM/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+first+bug%22) Label.  
+  These are issues that should be relatively easy to fix.
+4. Have fun!
+
 ## Testing A Branch
-As long as there is software, there is a need for software testers.  We're no different.  As we transition into an automated testing system, there's still a very real need for actual *human beings* to test new features, bug fixes, and other aspects of the software.
+As long as there is software, there is a need for software testers.  We're no different.  Even though we have many automated tests, there's still a very real need for actual *human beings* to test new features, bug fixes, and other aspects of the software.
+
 ### Setting Up A Testing Machine
 There are two system requirements for a testing machine:
 
 1. Oracle Virtual Box
-    * Oracle VirtualBox allows you to run virtual machines on your system for free.
+    * [Oracle VirtualBox](https://www.virtualbox.org/) allows you to run virtual machines on your system for free.
 2. Vagrant 
-    * At a 10,000 ft view, Vagrant is a tool that automagically provisions a virtual machine in Oracle VritualBox featuring all of the prerequisites, settings, files, and other artifacts required for running an instance of ChurchCRM.  Since ChurchCRM is a web application, the "vagrant image" also includes a fully functional LAMP stack.
+    * Vagrant is a tool that automagically provisions a virtual machine in Oracle VritualBox featuring all of the prerequisites, settings, files, and other artifacts required for running an instance of ChurchCRM.  Since ChurchCRM is a web application, the "vagrant image" also includes a fully functional LAMP stack.
   
 ### Testing ChurchCRM
 

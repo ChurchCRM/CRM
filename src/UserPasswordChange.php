@@ -54,12 +54,12 @@ if ($_SESSION['bAdmin'] && isset($_GET['PersonID'])) {
  * @param $sNewPassword1
  * @param $log
  */
-function sendWelcomeEmail($curUser, $sNewPassword1, $log)
+function sendWelcomeEmail($curUser, $sNewPassword1, $logger)
 {
     if (!empty($curUser->getEmail())) {
         $email = new PasswordChangeEmail($curUser, $sNewPassword1);
         if (!$email->send()) {
-            $log->warn($email->getError());
+            $logger->warn($email->getError());
         }
     }
 }
@@ -91,12 +91,13 @@ if (isset($_POST['Submit'])) {
             // Update the user record with the password hash
             $curUser = UserQuery::create()->findPk($iPersonID);
             $curUser->updatePassword($sNewPassword1);
+            $curUser->setNeedPasswordChange(false);
             $curUser->save();
 
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
-            sendWelcomeEmail($curUser, $sNewPassword1, $log);
+            sendWelcomeEmail($curUser, $sNewPassword1, $logger);
 
             // Route back to the list
             if (array_key_exists('FromUserList', $_GET) and $_GET['FromUserList'] == 'True') {
@@ -162,12 +163,13 @@ if (isset($_POST['Submit'])) {
         if (!$bError) {
             // Update the user record with the password hash
             $curUser->updatePassword($sNewPassword1);
+            $curUser->setNeedPasswordChange(false);
             $curUser->save();
 
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
-            sendWelcomeEmail($curUser, $sNewPassword1, $log);
+            sendWelcomeEmail($curUser, $sNewPassword1, $logger);
 
             // Route back to the list
             if ($_GET['FromUserList'] == 'True') {

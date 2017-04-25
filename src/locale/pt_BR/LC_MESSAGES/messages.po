@@ -485,7 +485,7 @@ msgstr "Envelope de doação"
 #: SelectList.php:1061 sundayschool/SundaySchoolClassView.php:205
 #: queryparameteroptions_qpo.php:8
 msgid "Home Phone"
-msgstr "Telefone Celular II"
+msgstr "Telefone residencial"
 
 #: CartToFamily.php:294 CSVExport.php:145 CSVImport.php:226
 #: external/templates/verify/verify-family-info.php:71 FamilyEditor.php:763
@@ -494,7 +494,7 @@ msgstr "Telefone Celular II"
 #: Reports/ConfirmReportEmail.php:236 Reports/ConfirmReport.php:244
 #: SelectList.php:988 SelectList.php:989 SelectList.php:1061
 msgid "Work Phone"
-msgstr "Telefone Comercial / Residência"
+msgstr "Telefone Comercial"
 
 #: CartToFamily.php:304 CSVExport.php:150 CSVImport.php:227
 #: external/templates/verify/verify-family-info.php:72 FamilyEditor.php:773
@@ -502,7 +502,7 @@ msgstr "Telefone Comercial / Residência"
 #: PersonView.php:300 PrintView.php:193 SelectList.php:991 SelectList.php:992
 #: SelectList.php:1061
 msgid "Mobile Phone"
-msgstr "Telefone celular ( Whatsapp caso tenha )"
+msgstr "Telefone celular"
 
 #: CSVImport.php:229 PersonEditor.php:1025 PrintView.php:283
 msgid "Work / Other Email"
@@ -2294,7 +2294,7 @@ msgstr "Ordenar por:"
 
 #: FinancialReports.php:304 menuconfig_mcf.php:21
 msgid "Deposit"
-msgstr "Tesouraria"
+msgstr "Depósitos"
 
 #: FinancialReports.php:308
 msgid "All Data"
@@ -3016,7 +3016,7 @@ msgstr "Ver Todos os Pessoas"
 
 #: MembersDashboard.php:179
 msgid "Sunday School Kids"
-msgstr "Capacitação e Destino Infantil"
+msgstr "Escola Bíblica Dominical Infantil"
 
 #: MembersDashboard.php:186 MembersDashboard.php:207 Menu.php:117 Menu.php:136
 msgid "More info"
@@ -3090,7 +3090,7 @@ msgstr "Meninas"
 
 #: Menu.php:110 sundayschool/SundaySchoolDashboard.php:139
 msgid "Sunday School Classes"
-msgstr "Capacitação e Destino / UV"
+msgstr "Classes de Escola Bíblica Dominical"
 
 #: Menu.php:150
 msgid "Deposit Tracking"
@@ -4918,11 +4918,11 @@ msgstr "Designação de presente:"
 #: sundayschool/SundaySchoolDashboard.php:228 menuconfig_mcf.php:14
 #, fuzzy
 msgid "Sunday School"
-msgstr "Capacitação e Destino / UV"
+msgstr "Escola Bíblica Dominical"
 
 #: sundayschool/SundaySchoolClassView.php:67
 msgid "Sunday School Class Functions"
-msgstr "Funções da Classe da Capacitação e Destino / UV"
+msgstr "Funções na Classe de Escola Bíblica Dominical"
 
 #: sundayschool/SundaySchoolClassView.php:90
 #: sundayschool/SundaySchoolClassView.php:102
@@ -5027,7 +5027,7 @@ msgstr "Descartar"
 
 #: sundayschool/SundaySchoolDashboard.php:38
 msgid "Sunday School Dashboard"
-msgstr "Painel da Capacitação e Destino / UV"
+msgstr "Painel da Escola Bíblica Dominical"
 
 #: sundayschool/SundaySchoolDashboard.php:69
 msgid "Classes"
@@ -5035,7 +5035,7 @@ msgstr "Classes"
 
 #: sundayschool/SundaySchoolReports.php:26
 msgid "Sunday School Reports"
-msgstr "Relatório da Capacitação e Destino / UV"
+msgstr "Relatório da Escola Bíblica Dominical"
 
 #: sundayschool/SundaySchoolDashboard.php:55
 msgid "Generate class lists and attendance sheets"
@@ -5047,7 +5047,7 @@ msgstr "Exportar Todas as Classes, Crianças e Pais para um arquivo CSV"
 
 #: sundayschool/SundaySchoolDashboard.php:175
 msgid "Students not in a Sunday School Class"
-msgstr "Alunos sem Classe na Capacitação e Destino / UV"
+msgstr "Alunos sem Classe na Escola Bíblica Dominical"
 
 #: sundayschool/SundaySchoolReports.php:113
 #, fuzzy
@@ -5091,7 +5091,7 @@ msgstr "Último domingo"
 #: sundayschool/SundaySchoolReports.php:212
 #, fuzzy
 msgid "No Sunday School"
-msgstr "Nenhuma Capacitação e Destino / UV"
+msgstr "Nenhuma Escola Bíblica Dominical"
 
 #: sundayschool/SundaySchoolReports.php:217
 #, fuzzy
@@ -5125,7 +5125,7 @@ msgstr "Membros"
 
 #: menuconfig_mcf.php:6
 msgid "Add New Person"
-msgstr "Novo Membro"
+msgstr "Adicionar uma Nova Pessoa"
 
 #: menuconfig_mcf.php:7
 msgid "View All Persons"
@@ -5133,7 +5133,7 @@ msgstr "Ver Todas as Pessoas"
 
 #: menuconfig_mcf.php:8
 msgid "Add New Family"
-msgstr "Nova Família"
+msgstr "Adicionar uma Nova Família"
 
 #: menuconfig_mcf.php:16
 msgid "Events"
@@ -8714,4 +8714,8 @@ msgstr "Se o debug está habilitado, a localização dos arquivos de log."
 #: ChurchCRM/dto/SystemConfig.php:70
 msgid "SMTP Server timeout in sec"
 msgstr "Timeout do servidor SMTP"
+
+#: DirectoryReports.php:78
+msgid "Exclude Inactive Families"
+msgstr "Excluir Família Inativas"
 

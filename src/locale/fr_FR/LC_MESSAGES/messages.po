@@ -8595,9 +8595,25 @@ msgstr "Nom de la Personne"
 msgid "Adult Name(Optional)"
 msgstr "Nom de l'adulte (Optionnel)"
 
+#: Checkin.php:161
+msgid "Checked in By(Optional)"
+msgstr "Vérifié par (Optionnel)"
+
 #: Checkin.php:200
 msgid "Person has been already checked in for this event"
 msgstr "Cette personne a déjà été vérifié pour cet événement"
+
+#: Checkin.php:247
+msgid "CheckOut Person"
+msgstr "Vérifier la personne"
+
+#: Checkin.php:247
+msgid "Delete Checkin in Entry"
+msgstr "Effacer la vérification d'entrée"
+
+#: Checkin.php:272
+msgid "Adult Checking Out Person"
+msgstr "Vérification adulte Personne"
 
 #: Checkin.php:276
 msgid "Adult Name (Optional)"
@@ -8607,9 +8623,21 @@ msgstr "Nom de l'adulte (Optionnel)"
 msgid "Text before name in emails/reports"
 msgstr "Texte avant le nom dans emails/rapports"
 
+#: ChurchCRM/dto/SystemConfig.php:166
+msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
+msgstr "Fixer à true pour un nom de famille vide dans Editeur de Personne. Fixer à False si vous voulez un héritage du nom de famille."
+
 #: ChurchCRM/dto/SystemConfig.php:167
 msgid "Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName "
 msgstr "Styles -  \r0: Titre Prénom deuxième prénom Nom, Suffixe  \r1: Titre Prénom deuxième prénom Nom, Suffixe  \r2:Titre Prénom deuxième prénom Nom, Suffixe  \r3: Nom, Titre Prénom deuxième prénom, Suffixe  \r4: Titre Prénom deuxième prénom Nom  \r5: Titre Prénom deuxième prénom Nom  \r6: Nom, Titre Prénom␣ "
+
+#: ChurchCRM/dto/SystemConfig.php:168
+msgid "Display bill counts on deposit slip"
+msgstr "Afficher Nombre Facture sur le bordereau de dépôt"
+
+#: ChurchCRM/dto/SystemConfig.php:169
+msgid "ChurchCRM Cloud Access URL"
+msgstr "URL d'accès Cloud ChurchCRM"
 
 #: ChurchCRM/Emails/users/AccountDeletedEmail.php:11
 msgid "Your Account was Deleted"
@@ -8655,6 +8683,10 @@ msgstr "Nom Utilisateur"
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:17
 msgid "Password Changed"
 msgstr "Mot de passe changé"
+
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:23
+msgid "We wanted to let you know that your ChurchCRM password was changed."
+msgstr "Nous voulions vous prévenir que votre mot de passe ChurchCRM a changé"
 
 #: ChurchCRM/Emails/users/ResetPasswordEmail.php:18
 msgid "Password Reset"
@@ -8764,6 +8796,10 @@ msgstr "Actions"
 msgid "Action Confirmation"
 msgstr "Action confirmée"
 
+#: UserList.php:147
+msgid "Please confirm reset failed login count"
+msgstr "Confirmez-vous remise à zéro compteur d'échec de Login"
+
 #: UserList.php:178
 msgid "Password reset for"
 msgstr "Mot de passe à remettre à zéro pour"
@@ -8775,4 +8811,16 @@ msgstr "Visualiser les familles actives"
 #: menuconfig_mcf.php:10
 msgid "View Inactive Families"
 msgstr "Visualiser les familles inactives"
+
+#: ChurchCRM/dto/SystemConfig.php:53
+msgid "If debug is enabled the location of log files."
+msgstr "If debug is enabled the location of log files."
+
+#: ChurchCRM/dto/SystemConfig.php:70
+msgid "SMTP Server timeout in sec"
+msgstr "Timeout en sec. Serveur SMTP"
+
+#: DirectoryReports.php:78
+msgid "Exclude Inactive Families"
+msgstr "Exclure les familles inactives"
 

@@ -19,6 +19,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Person extends BasePerson implements iPhoto
 {
+
     public function getFullName()
     {
         return $this->getFormattedName(SystemConfig::getValue('iPersonNameStyle'));
@@ -62,12 +63,13 @@ class Person extends BasePerson implements iPhoto
 
     public function getFamilyRole()
     {
+        $familyRole = null;
         $roleId = $this->getFmrId();
         if (isset($roleId) && $roleId !== 0) {
             $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
-
-            return $familyRole;
         }
+        
+        return $familyRole;
     }
 
     public function getFamilyRoleName()
@@ -176,12 +178,15 @@ class Person extends BasePerson implements iPhoto
         $address = $this->getAddress(); //if person address empty, this will get Family address
         $lat = 0; $lng = 0;
         if (!empty($this->getAddress1())) {
-            $prepAddr = str_replace(' ','+',$address);
-            $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
-            $output= json_decode($geocode);
-            $lat = $output->results[0]->geometry->location->lat;
-            $lng = $output->results[0]->geometry->location->lng;
+            $latLng = GeoUtils::getLatLong($this->getAddress());
+            if(!empty( $latLng['Latitude']) && !empty($latLng['Longitude'])) {
+                $lat = $latLng['Latitude'];
+                $lng = $latLng['Longitude'];
+            }
         } else {
+            if (!$this->getFamily()->hasLatitudeAndLongitude()) {
+                $this->getFamily()->updateLanLng();
+            }
             $lat = $this->getFamily()->getLatitude();
             $lng = $this->getFamily()->getLongitude();
         }

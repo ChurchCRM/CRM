@@ -26,13 +26,13 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/GeoCoder.php";
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Utils\GeoUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -217,14 +217,13 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <ul class="fa-ul">
                     <li><i class="fa-li glyphicon glyphicon-home"></i><?= gettext("Address") ?>:<span>
 					<a
-                        href="http://maps.google.com/?q=<?= getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) ?>"
-                        target="_blank"><?php
-                        echo getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
-    echo "</a></span><br>";
-    if ($fam_Latitude && $fam_Longitude) {
+                        href="http://maps.google.com/?q=<?= $family->getAddress() ?>"
+                        target="_blank"><?= $family->getAddress() ?></a></span><br>
+
+    <?php if ($fam_Latitude && $fam_Longitude) {
         if (SystemConfig::getValue("nChurchLatitude") && SystemConfig::getValue("nChurchLongitude")) {
-            $sDistance = LatLonDistance(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
-            $sDirection = LatLonBearing(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
+            $sDistance = GeoUtils::LatLonDistance(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
+            $sDirection = GeoUtils::LatLonBearing(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
             echo $sDistance . " " . strtolower(SystemConfig::getValue("sDistanceUnit")) . " " . $sDirection . " " . gettext(" of church<br>");
         }
     } else {
@@ -507,10 +506,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         <?= $item['text'] ?>
                                     </div>
 
-                                    <?php if (($_SESSION['bNotes']) && ($item["editLink"] != "" || $item["deleteLink"] != "")) {
+                                    <?php if (($_SESSION['bNotes']) && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
             ?>
                                         <div class="timeline-footer">
-                                            <?php if ($item["editLink"] != "") {
+                                            <?php if (isset($item["editLink"])) {
                 ?>
                                                 <a href="<?= $item["editLink"] ?>">
                                                     <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
@@ -518,7 +517,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                 <?php
 
             }
-            if ($item["deleteLink"] != "") {
+            if (isset($item["deleteLink"])) {
                 ?>
                                                 <a href="<?= $item["deleteLink"] ?>">
                                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>

@@ -20,7 +20,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
-use ChurchCRM\Emails\FamilyVerificationPDFEmail;
+use ChurchCRM\Emails\FamilyVerificationEmail;
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -333,7 +333,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             $subject = $subject.' ** Updated **';
         }
 
-        $mail = new FamilyVerificationPDFEmail($emaillist, $fam_Name);
+        $mail = new FamilyVerificationEmail($emaillist, $fam_Name);
         $filename = 'ConfirmReportEmail-'.$fam_Name.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf';
         $mail->addStringAttachment($doc, $filename);
 
