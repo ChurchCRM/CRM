@@ -71,7 +71,7 @@ class SystemConfig
         "sSMTPHost" => new ConfigItem(27, "sSMTPHost", "text", "", gettext("SMTP Server Address (mail.server.com:25)")),
         "sSMTPAuth" => new ConfigItem(28, "sSMTPAuth", "boolean", "0", gettext("Does your SMTP server require auththentication (username/password)?")),
         "sSMTPUser" => new ConfigItem(29, "sSMTPUser", "text", "", gettext("SMTP Username")),
-        "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "text", "", gettext("SMTP Password")),
+        "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "password", "", gettext("SMTP Password")),
         "bShowFamilyData" => new ConfigItem(33, "bShowFamilyData", "boolean", "1", gettext("Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ")),
         "sGZIPname" => new ConfigItem(36, "sGZIPname", "text", "gzip", ""),
         "sZIPname" => new ConfigItem(37, "sZIPname", "text", "zip", ""),
@@ -93,7 +93,7 @@ class SystemConfig
         "bUseDonationEnvelopes" => new ConfigItem(52, "bUseDonationEnvelopes", "boolean", "0", gettext("Set true to enable use of donation envelopes")),
         "sHeader" => new ConfigItem(53, "sHeader", "textarea", "", gettext("Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.")),
         "sISTusername" => new ConfigItem(54, "sISTusername", "text", "username", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Username for") . " - https://www.intelligentsearch.com/Hosted/User"),
-        "sISTpassword" => new ConfigItem(55, "sISTpassword", "text", "", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Password for") . " - https://www.intelligentsearch.com/Hosted/User"),
+        "sISTpassword" => new ConfigItem(55, "sISTpassword", "password", "", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Password for") . " - https://www.intelligentsearch.com/Hosted/User"),
         "sGeoCoderProvider" => new ConfigItem(56, "sGeoCoderProvider", "choice", "GoogleMaps", gettext("Select GeoCoder Provider") . " - https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers", '{"Choices":["GoogleMaps", "BingMaps"]}'),
         "iChecksPerDepositForm" => new ConfigItem(57, "iChecksPerDepositForm", "number", "14", gettext("Number of checks for Deposit Slip Report")),
         "bUseScannedChecks" => new ConfigItem(58, "bUseScannedChecks", "boolean", "0", gettext("Set true to enable use of scanned checks")),
@@ -151,7 +151,7 @@ class SystemConfig
         "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), '{"Choices":["'.gettext("WebDAV").'","'.gettext("Local").'"]}'),
         "sExternalBackupEndpoint" => new ConfigItem(1038, "sExternalBackupEndpoint", "text", "", gettext("Remote Backup Endpoint")),
         "sExternalBackupUsername" => new ConfigItem(1039, "sExternalBackupUsername", "text", "", gettext("Remote Backup Username")),
-        "sExternalBackupPassword" => new ConfigItem(1040, "sExternalBackupPassword", "text", "", gettext("Remote Backup Password")),
+        "sExternalBackupPassword" => new ConfigItem(1040, "sExternalBackupPassword", "password", "", gettext("Remote Backup Password")),
         "sExternalBackupAutoInterval" => new ConfigItem(1041, "sExternalBackupAutoInterval", "text", "", gettext("Interval in Hours for Automatic Remote Backups")),
         "sLastBackupTimeStamp" => new ConfigItem(1042, "sLastBackupTimeStamp", "text", "", gettext("Last Backup Timestamp")),
         "sQBDTSettings" => new ConfigItem(1043, "sQBDTSettings", "json", '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}' , gettext("QuickBooks Deposit Ticket Settings")),
@@ -179,13 +179,12 @@ class SystemConfig
       gettext('Email Setup')  => ["sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip","sEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
       gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
-      gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
+      gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('System Settings')  => ["debug","sLogFile", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
-      gettext('Backup')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername"],
+      gettext('Backup')  => ["sLastBackupTimeStamp","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
-      gettext('Integration')  => ["mailChimpApiKey","sEnableGravatarPhotos","googleTrackingID"],
-      gettext('Other Settings')  => ["iPDFOutputType"]
+      gettext('Integration')  => ["mailChimpApiKey","sEnableGravatarPhotos","googleTrackingID"]
     );
   }
 
