@@ -185,6 +185,7 @@ require 'Include/Header.php';
                           <input type=text size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]'
                                  value='<?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?>' class="form-control">
                         <?php
+
                         } elseif ($setting->getType() == 'password') {
                             ?>
                             <input type=password size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]'
