@@ -77,7 +77,7 @@ class SystemConfig
         "sZIPname" => new ConfigItem(37, "sZIPname", "text", "zip", ""),
         "sPGPname" => new ConfigItem(38, "sPGPname", "text", "gpg", ""),
         "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), json_encode(SystemConfig::getSupportedLocales())),
-        "iFYMonth" => new ConfigItem(40, "iFYMonth", "number", "1", gettext("First month of the fiscal year")),
+        "iFYMonth" => new ConfigItem(40, "iFYMonth", "choice", "1", gettext("First month of the fiscal year"),'{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
         "sGeocoderID" => new ConfigItem(42, "sGeocoderID", "text", "", gettext("User ID for rpc.geocoder.us")),
         "sGeocoderPW" => new ConfigItem(43, "sGeocoderPW", "text", "", gettext("Password for rpc.geocoder.us")),
         "sGoogleMapKey" => new ConfigItem(44, "sGoogleMapKey", "text", "", gettext("Google map API requires a unique key") . " - https://developers.google.com/maps/documentation/javascript/get-api-key"),
