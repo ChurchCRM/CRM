@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.7.2 (24/04/2017)
+
+#### Core Functionality
+
+- [**Feature: Users**] Password reset email does link does not work [#2357](https://github.com/ChurchCRM/CRM/issues/2357)
+- [**Feature: Users**][**Security**] Change Password every login fix [#2341](https://github.com/ChurchCRM/CRM/issues/2341)
+
+#### Inner Beauty:
+
+- [**development**][**Documentation**] Update documentation about logging platform [#2235](https://github.com/ChurchCRM/CRM/issues/2235)
+
+---
+
 ## 2.7.1 (23/04/2017)
 
 #### Feature Requests:
@@ -10,10 +23,12 @@
 
 - [**enhancement**] Move default zoom level for maps to systemsettings [#1867](https://github.com/ChurchCRM/CRM/issues/1867)
 - [**enhancement**][**Feature: Groups**] Theme Member Role Change [#1398](https://github.com/ChurchCRM/CRM/issues/1398)
+
 #### Core Functionality
 
 - [**Feature: Financial**][**P0 - Urgent**] PledgeEditor.php [#2346](https://github.com/ChurchCRM/CRM/issues/2346)
 - [**enhancement**][**Feature: Groups**] Theme Member Role Change [#1398](https://github.com/ChurchCRM/CRM/issues/1398)
+
 #### Bug fixes:
 
 - [**Feature: Financial**][**P0 - Urgent**] PledgeEditor.php [#2346](https://github.com/ChurchCRM/CRM/issues/2346)
@@ -56,7 +71,6 @@
 
 #### Enhancements:
 
-- [**enhancement**] eMails: Create a template/wrapper for all emails. [#2221](https://github.com/ChurchCRM/CRM/issues/2221)
 - [**enhancement**][**Security**] Use Secure / randomized default password [#2160](https://github.com/ChurchCRM/CRM/issues/2160)
 - [**enhancement**] UserActions Email PR Cleanup [#2158](https://github.com/ChurchCRM/CRM/issues/2158)
 - [**enhancement**][**Web Report**] Property Assign and Unassign not using new theme [#1946](https://github.com/ChurchCRM/CRM/issues/1946)
@@ -933,19 +947,6 @@
 
 #### Enhancements:
 
-- [**enhancement**] Create Automatic Backup to Cloud Storage [#263](https://github.com/ChurchCRM/CRM/issues/263)
-- [**enhancement**] Email sunday school class parents [#71](https://github.com/ChurchCRM/CRM/issues/71)
-
-#### Bug fixes:
-
-- [**bug**] sEnableExternalBackupTarget during database restore [#889](https://github.com/ChurchCRM/CRM/issues/889)
-
----
-
-## 2.1.8 (28/07/2016)
-
-#### Enhancements:
-
 - [**enhancement**] Email from Member Dashboard [#848](https://github.com/ChurchCRM/CRM/issues/848)
 - [**development**][**enhancement**] Locale: french fr_FR [#775](https://github.com/ChurchCRM/CRM/issues/775)
 - [**enhancement**] Add A4 paper size option for the members directory [#747](https://github.com/ChurchCRM/CRM/issues/747)
@@ -981,6 +982,7 @@
 - [**development**][**enhancement**] Automatically jump to login page after timeout [#309](https://github.com/ChurchCRM/CRM/issues/309)
 - [**enhancement**] Members Dashboard needs to list people by Classification [#294](https://github.com/ChurchCRM/CRM/issues/294)
 - [**enhancement**] Create User should use email as username [#291](https://github.com/ChurchCRM/CRM/issues/291)
+- [**enhancement**] Create Automatic Backup to Cloud Storage [#263](https://github.com/ChurchCRM/CRM/issues/263)
 - [**enhancement**] Display Emails in the Outbox. [#260](https://github.com/ChurchCRM/CRM/issues/260)
 - [**enhancement**] UserPasswordChange Focus Issue [#251](https://github.com/ChurchCRM/CRM/issues/251)
 - [**enhancement**] Search by Check Number [#241](https://github.com/ChurchCRM/CRM/issues/241)
@@ -997,6 +999,7 @@
 - [**bug**][**enhancement**] Create a MailChimp APIs and Menus [#84](https://github.com/ChurchCRM/CRM/issues/84)
 - [**enhancement**] Smarter family bundling in CSV import [#80](https://github.com/ChurchCRM/CRM/issues/80)
 - [**enhancement**] Sunday School Birthdays format [#72](https://github.com/ChurchCRM/CRM/issues/72)
+- [**enhancement**] Email sunday school class parents [#71](https://github.com/ChurchCRM/CRM/issues/71)
 - [**enhancement**] Allow for internationalization [#64](https://github.com/ChurchCRM/CRM/issues/64)
 - [**enhancement**] gavatar for member Image  [#51](https://github.com/ChurchCRM/CRM/issues/51)
 - [**build**][**enhancement**] Vagrant dev envs need seed data [#50](https://github.com/ChurchCRM/CRM/issues/50)
@@ -1014,6 +1017,7 @@
 
 #### Bug fixes:
 
+- [**bug**] sEnableExternalBackupTarget during database restore [#889](https://github.com/ChurchCRM/CRM/issues/889)
 - [**bug**] Default pictures no longer correct [#873](https://github.com/ChurchCRM/CRM/issues/873)
 - [**bug**] Last Login Time Stamp Does not respect timezone [#867](https://github.com/ChurchCRM/CRM/issues/867)
 - [**bug**] show page name in issue reporter [#865](https://github.com/ChurchCRM/CRM/issues/865)

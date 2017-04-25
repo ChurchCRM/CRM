@@ -131,7 +131,7 @@ function initDepositSlipEditor()
     }
   });
 
-  $(document).on('click',".paymentRow", function() {
+  $(document).on('click',".paymentRow", function(event) {
     if (! ($(event.target).hasClass("details-control") || $(event.target).hasClass("fa")))
     {
       $(this).toggleClass('selected');
