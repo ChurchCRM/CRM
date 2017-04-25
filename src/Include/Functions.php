@@ -1985,7 +1985,7 @@ function random_color()
 function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
     foreach ($roleEmails as $role => $Email) {
-        if (SystemConfig::getValue('sToEmailAddress') != '' && SystemConfig::getValue('sToEmailAddress') != 'myReceiveEmailAddress' && !stristr($Email, SystemConfig::getValue('sToEmailAddress'))) {
+        if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, SystemConfig::getValue('sToEmailAddress'))) {
             $Email .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
         }
         $Email = urlencode($Email);  // Mailto should comply with RFC 2368
