@@ -184,6 +184,7 @@ class SystemConfig
       gettext('System Settings')  => ["debug","sLogFile", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Backup')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
+      gettext('Integration')  => ["mailChimpApiKey","sEnableGravatarPhotos","googleTrackingID"],
       gettext('Other Settings')  => ["iPDFOutputType"]
     );
   }
