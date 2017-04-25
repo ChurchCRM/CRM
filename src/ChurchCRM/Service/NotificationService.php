@@ -8,26 +8,26 @@ class NotificationService
   public static function updateNotifications()
   {
     /* Get the latest notifications from the source.  Store in session variable
-     * 
+     *
      */
     try {
-      $TempNotificaions = json_decode(file_get_contents(SystemConfig::getValue("sCloudURL")."notifications.json", false, $context));
+      $TempNotificaions = json_decode(file_get_contents(SystemConfig::getValue("sCloudURL")."notifications.json" ));
       if (isset($TempNotificaions->TTL) ) {
         $_SESSION['SystemNotifications'] = $TempNotificaions;
         $_SESSION['SystemNotifications']->expires = new \DateTime();
         $_SESSION['SystemNotifications']->expires->add(new \DateInterval("PT".$_SESSION['SystemNotifications']->TTL."S"));
       }
     } catch (\Exception $ex) {
-      //a failure here should never prevent the page from loading.  
+      //a failure here should never prevent the page from loading.
       //Possibly log an exception when a unified logger is implemented.
       //for now, do nothing.
     }
   }
-  
+
   public static function getNotifications()
   {
     /* retreive active notifications from the session variable for display
-     * 
+     *
      */
     if (isset($_SESSION['SystemNotifications']))
     {
@@ -45,12 +45,12 @@ class NotificationService
       return $notifications;
     }
   }
-  
+
   public static function hasActiveNotifications()
   {
     return count(NotificationService::getNotifications()) > 0;
   }
-  
+
   public static function isUpdateRequired()
   {
     /*
@@ -63,5 +63,5 @@ class NotificationService
     }
     return false;
   }
-  
+
 }
