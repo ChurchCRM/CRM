@@ -203,7 +203,7 @@ require 'Include/HeaderNotLoggedIn.php';
         </form>
         <!--<a href="external/user/password">I forgot my password</a><br> -->
 
-        <?php if (SystemConfig::getBooleanValue('sEnableSelfRegistration')) {
+        <?php if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
             ?>
         <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
         <?php

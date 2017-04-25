@@ -123,7 +123,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-    if (SystemConfig::getValue('cfgForceUppercaseZip')) {
+    if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
         $sZip = strtoupper($sZip);
     }
 
@@ -880,7 +880,7 @@ require 'Include/Header.php';
                         <input type="text" name="Zip" class="form-control"
                             <?php
                             // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-                            if (SystemConfig::getValue('cfgForceUppercaseZip')) {
+                            if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
                                 echo 'style="text-transform:uppercase" ';
                             }
 
