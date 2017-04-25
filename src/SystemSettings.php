@@ -185,6 +185,7 @@ require 'Include/Header.php';
                           <input type=text size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]'
                                  value='<?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?>' class="form-control">
                         <?php
+
                         } elseif ($setting->getType() == 'password') {
                             ?>
                             <input type=password size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]'
@@ -238,15 +239,18 @@ require 'Include/Header.php';
                           }
                       } ?>
                       <td>
-                        <?php if (!empty($setting->getTooltip())) { ?>
+                        <?php if (!empty($setting->getTooltip())) {
+                          ?>
                           <a data-toggle="popover" title="<?= $setting->getTooltip() ?>" target="_blank"><i class="fa fa-fw fa-question-circle"></i></a>
                         <?php
-                        }
-                        if (!empty($setting->getUrl())) { ?>
+
+                      }
+                      if (!empty($setting->getUrl())) {
+                          ?>
                             <a href="<?= $setting->getUrl() ?>"><i class="fa fa-fw fa-link"></i></a>
                             <?php
-                        }
-                        ?>
+
+                      } ?>
                         <?= $display_default ?>
                       </td>
                     </tr>

@@ -23,4 +23,5 @@ if (!empty($googleTrackingID)) {
 
     </script>
 <?php
+
 } ?>
