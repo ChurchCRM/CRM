@@ -238,12 +238,15 @@ require 'Include/Header.php';
                           }
                       } ?>
                       <td>
-                        <?php if ($setting->getTooltip() != '') {
-                          ?>
-                          <a data-toggle="popover" title="<?= $setting->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                        <?php if (!empty($setting->getTooltip())) { ?>
+                          <a data-toggle="popover" title="<?= $setting->getTooltip() ?>" target="_blank"><i class="fa fa-fw fa-question-circle"></i></a>
                         <?php
-
-                      } ?>
+                        }
+                        if (!empty($setting->getUrl())) { ?>
+                            <a href="<?= $setting->getUrl() ?>"><i class="fa fa-fw fa-link"></i></a>
+                            <?php
+                        }
+                        ?>
                         <?= $display_default ?>
                       </td>
                     </tr>
