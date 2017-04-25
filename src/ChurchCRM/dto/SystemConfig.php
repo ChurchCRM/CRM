@@ -78,7 +78,6 @@ class SystemConfig
         "sPGPname" => new ConfigItem(38, "sPGPname", "text", "gpg", ""),
         "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), json_encode(SystemConfig::getSupportedLocales())),
         "iFYMonth" => new ConfigItem(40, "iFYMonth", "number", "1", gettext("First month of the fiscal year")),
-        "sXML_RPC_PATH" => new ConfigItem(41, "sXML_RPC_PATH", "text", "XML/RPC.php", gettext("Path to RPC.php, required for Lat/Lon address lookup")),
         "sGeocoderID" => new ConfigItem(42, "sGeocoderID", "text", "", gettext("User ID for rpc.geocoder.us")),
         "sGeocoderPW" => new ConfigItem(43, "sGeocoderPW", "text", "", gettext("Password for rpc.geocoder.us")),
         "sGoogleMapKey" => new ConfigItem(44, "sGoogleMapKey", "text", "", gettext("Google map API requires a unique key") . " - https://developers.google.com/maps/documentation/javascript/get-api-key"),
@@ -182,7 +181,7 @@ class SystemConfig
       gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
-      gettext('System Settings')  => ["debug","sLogFile", "bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
+      gettext('System Settings')  => ["debug","sLogFile", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Backup')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
       gettext('Other Settings')  => ["iPDFOutputType","googleTrackingID"]
