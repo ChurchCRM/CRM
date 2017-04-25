@@ -1,7 +1,7 @@
 <?php
 use ChurchCRM\dto\SystemConfig;
 
-$googleTrackingID = SystemConfig::getValue('googleTrackingID');
+$googleTrackingID = SystemConfig::getValue('sGoogleTrackingID');
 
 if (!empty($googleTrackingID)) {
     ?>
@@ -22,5 +22,5 @@ if (!empty($googleTrackingID)) {
         ga('send', 'pageview');
 
     </script>
-<?php 
+<?php
 } ?>

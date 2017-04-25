@@ -68,7 +68,7 @@ class Person extends BasePerson implements iPhoto
         if (isset($roleId) && $roleId !== 0) {
             $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
         }
-        
+
         return $familyRole;
     }
 
@@ -217,7 +217,7 @@ class Person extends BasePerson implements iPhoto
     {
 
       $photo = new Photo("Person",  $this->getId());
-       if (!$photo->isPhotoLocal() && SystemConfig::getValue('sEnableGravatarPhotos') && $this->getEmail() != '') {
+       if (!$photo->isPhotoLocal() && SystemConfig::getBooleanValue('bEnableGravatarPhotos') && $this->getEmail() != '') {
          $photo->loadFromGravatar($this->getEmail());
        }
        return $photo;

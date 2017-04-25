@@ -48,8 +48,8 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
   }
 
   // Check for login timeout.  If login has expired, redirect to login page
-  if (SystemConfig::getValue('sSessionTimeout') > 0) {
-      if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('sSessionTimeout')) {
+  if (SystemConfig::getValue('iSessionTimeout') > 0) {
+      if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
           Redirect('Logoff.php');
           exit;
       } else {

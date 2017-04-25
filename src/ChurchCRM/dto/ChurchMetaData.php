@@ -72,18 +72,18 @@ class ChurchMetaData
 
     public static function getChurchLatitude()
     {
-        if (empty(SystemConfig::getValue('nChurchLatitude'))) {
+        if (empty(SystemConfig::getValue('iChurchLatitude'))) {
             self::updateLatLng();
         }
-        return SystemConfig::getValue('nChurchLatitude');
+        return SystemConfig::getValue('iChurchLatitude');
     }
 
     public static function getChurchLongitude()
     {
-        if (empty(SystemConfig::getValue('nChurchLongitude'))) {
+        if (empty(SystemConfig::getValue('iChurchLongitude'))) {
             self::updateLatLng();
         }
-        return SystemConfig::getValue('nChurchLongitude');
+        return SystemConfig::getValue('iChurchLongitude');
     }
 
     private static function updateLatLng()
@@ -91,8 +91,8 @@ class ChurchMetaData
         if (!empty(self::getChurchFullAddress())) {
             $latLng = GeoUtils::getLatLong(self::getChurchFullAddress());
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
-                SystemConfig::setValue('nChurchLatitude', $latLng['Latitude']);
-                SystemConfig::setValue('nChurchLongitude', $latLng['Longitude']);
+                SystemConfig::setValue('iChurchLatitude', $latLng['Latitude']);
+                SystemConfig::setValue('iChurchLongitude', $latLng['Longitude']);
             }
         }
     }

@@ -135,7 +135,7 @@ SystemConfig::init(ConfigQuery::create()->find());
 // enable logs if we are in debug mode
 // **************************************************
 $logFile = SystemConfig::getValue("sLogFile");
-if (SystemConfig::getBooleanValue("debug")) {
+if (SystemConfig::getBooleanValue("bDebug")) {
     $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
     $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
     $logger = new Logger('defaultLogger');

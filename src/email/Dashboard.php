@@ -31,7 +31,7 @@ require '../Include/Header.php';
         <h3 class="box-title"><?= gettext('Email Export') ?></h3>
       </div>
       <div class="box-body">
-        <?= gettext('You can import the generated CSV file to external email system.') ?>: 
+        <?= gettext('You can import the generated CSV file to external email system.') ?>:
             For MailChimp see <a href="http://kb.mailchimp.com/lists/growth/import-subscribers-to-a-list"
                                    target="_blank"><?= gettext('import subscribers to a list.') ?></a>
         <br/><br/>
@@ -69,7 +69,7 @@ require '../Include/Header.php';
           </div>
         </div>
       </div>
-    <?php 
+    <?php
     } ?>
   </div>
   <div class="row">
@@ -86,7 +86,7 @@ require '../Include/Header.php';
       </div>
     </div>
   </div>
-<?php 
+<?php
 } else {
     ?>
   <div class="row">
@@ -95,12 +95,12 @@ require '../Include/Header.php';
         <div class="alert alert-danger alert-dismissible">
           <h4><i class="icon fa fa-ban"></i> MailChimp <?= gettext('is not configured') ?></h4>
           <?= gettext('Please update the') ?> MailChimp <?= gettext('API key in Setting->') ?><a href="../SystemSettings.php"><?= gettext('Edit General Settings') ?></a>,
-          <?= gettext('then update') ?> mailChimpApiKey. <?= gettext('For more info see our ') ?><a href="http://docs.churchcrm.io"> MailChimp <?= gettext('support docs.') ?></a>
+          <?= gettext('then update') ?> sMailChimpApiKey. <?= gettext('For more info see our ') ?><a href="http://docs.churchcrm.io"> MailChimp <?= gettext('support docs.') ?></a>
         </div>
       </div>
     </div>
   </div>
-<?php 
+<?php
 }
 
 require '../Include/Footer.php';
