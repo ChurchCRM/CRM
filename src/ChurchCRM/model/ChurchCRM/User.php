@@ -146,7 +146,10 @@ class User extends BaseUser
                 $note->setText(gettext('system user password reset'));
                 break;
             case "password-changed":
-                $note->setText(gettext('system user password changed'));
+                $note->setText(gettext('system user changed password'));
+                break;
+            case "password-changed-admin":
+                $note->setText(gettext('system user password changed by admin'));
                 break;
             case "login-reset":
                 $note->setText(gettext('system user login reset'));
