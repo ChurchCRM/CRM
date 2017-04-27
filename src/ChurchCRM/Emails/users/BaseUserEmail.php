@@ -29,7 +29,7 @@ abstract class BaseUserEmail extends BaseEmail
     {
         $myTokens =  ["toName" => $this->user->getPerson()->getFirstName(),
             "userName" => $this->user->getUserName(),
-            "userNameText" => gettext('Username'),
+            "userNameText" => gettext('Login Name'),
             "body" => $this->buildMessageBody()
         ];
         return array_merge($this->getCommonTokens(), $myTokens);
