@@ -185,6 +185,8 @@ require 'Include/HeaderNotLoggedIn.php';
                 <input type="password" id="PasswordBox" name="Password" class="form-control"
                        placeholder="<?= gettext('Password') ?>" required autofocus>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <br />
+                <span class="text-right"><a href="external/password/"><?= gettext("I forgot my password")?></a></span>
             </div>
             <div class="row">
                 <div class="col-xs-8">
@@ -201,7 +203,6 @@ require 'Include/HeaderNotLoggedIn.php';
                 </div>
             </div>
         </form>
-        <!--<a href="external/user/password">I forgot my password</a><br> -->
 
         <?php if (SystemConfig::getBooleanValue('sEnableSelfRegistration')) {
             ?>
