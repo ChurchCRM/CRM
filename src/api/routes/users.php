@@ -17,10 +17,7 @@ $app->group('/users', function () {
         }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
-            $password = User::randomPassword();
-            $user->updatePassword($password);
-            $user->setNeedPasswordChange(true);
-            $user->setFailedLogins(0);
+            $password = $user->resetPasswordToRandom();
             $user->save();
             $email = new ResetPasswordEmail($user, $password);
             if ($email->send()) {
