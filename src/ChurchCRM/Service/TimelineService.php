@@ -146,6 +146,9 @@ class TimelineService
             case 'verify':
                 $item['style'] = 'fa-check-circle-o bg-teal';
                 break;
+            case 'user':
+                $item['style'] = 'fa-user-secret bg-gray';
+                break;
             default:
                 $item['style'] = 'fa-sticky-note bg-green';
                 $item['editLink'] = $editLink;
