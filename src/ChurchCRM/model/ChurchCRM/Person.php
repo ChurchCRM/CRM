@@ -228,7 +228,7 @@ class Person extends BasePerson implements iPhoto
     }
 
     public function getPhotoURI() {
-      return $this->getPhoto()->getThumbnailURI();
+      return $this->getPhoto()->getPhotoURI();
     }
 
     public function getThumbnailBytes() {

@@ -111,6 +111,11 @@ class Photo
     return $this->photoThumbURI;
   }
   
+  public function getPhotoURI()
+  {
+    return $this->photoThumbURI;
+  }
+  
   public function isPhotoLocal()
   {
     return ($this->photoLocation == "local");
