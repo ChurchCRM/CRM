@@ -83,7 +83,7 @@ if ($myISTReturnCode == '4') {
           You may follow the URL below to log in and manage your Intelligent Search ';
           Technology account settings.  This link may also provide information pertaining to ';
           this service disruption.<br><br>
-          <a href="https://www.intelligentsearch.com/Hosted/User/"><?= gettext('https://www.intelligentsearch.com/Hosted/User/') ?></a>';
+          <a href="https://www.intelligentsearch.com/Hosted/User/">https://www.intelligentsearch.com/Hosted/User/</a>';
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@ if ($myISTReturnCode == '4') {
           <p><i>Admin -> Edit General Settings -> sISTusername</i></p>
           <p><i>Admin -> Edit General Settings -> sISTpassword</i></p>
           <p>Follow the URL below to log in and manage your Intelligent Search Technology account settings.  If you do not already have an account you may establish an account at this URL. This software was written to work best with the service CorrectAddress(R) with Addons</p>
-          <a href="https://www.intelligentsearch.com/Hosted/User/"><?= gettext('https://www.intelligentsearch.com/Hosted/User/') ?></a>
+          <a href="https://www.intelligentsearch.com/Hosted/User/">https://www.intelligentsearch.com/Hosted/User/</a>
           <br><br>
           If you are sure that your account username and password are correct and that your
           account is in good standing it is possible that the server is currently unavailable
@@ -126,7 +126,7 @@ if ($myISTReturnCode == '4') {
     echo "settings.<br>\n";
 
     echo '<a href="https://www.intelligentsearch.com/Hosted/User/">';
-    echo gettext('https://www.intelligentsearch.com/Hosted/User/')."</a><br><br><br>\n";
+    echo 'https://www.intelligentsearch.com/Hosted/User/</a><br><br><br>\n';
 
     echo 'This software was written to work best with the service CorrectAddress(R) ';
     echo 'with Addons. <br><br><br>';
@@ -365,7 +365,7 @@ if ($myISTReturnCode == '4') {
                     echo 'need to add funds to your Intelligent Search Technology account ';
                     echo 'at the following link.<br>';
                     echo '<a href="https://www.intelligentsearch.com/Hosted/User/">';
-                    echo gettext('https://www.intelligentsearch.com/Hosted/User/').'</a><br></h3>';
+                    echo 'https://www.intelligentsearch.com/Hosted/User/</a><br></h3>';
                 } else {
                     echo '<h4>Lookup failed.  There is a problem with the connection or with your account.</h4>';
                     echo 'Please verify that your Intelligent Search Technology, Ltd. username and password ';
@@ -377,7 +377,7 @@ if ($myISTReturnCode == '4') {
                     echo 'URL. This software was written to work best with the service CorrectAddress(R) ';
                     echo 'with Addons. <br><br><br>';
 
-                    echo '<a href="https://www.intelligentsearch.com/Hosted/User/">'.gettext('https://www.intelligentsearch.com/Hosted/User/').'</a><br><br>';
+                    echo '<a href="https://www.intelligentsearch.com/Hosted/User/">https://www.intelligentsearch.com/Hosted/User/</a><br><br>';
 
                     echo 'If you are sure that your account username and password are correct and that your ';
                     echo 'account is in good standing it is possible that the server is currently unavailable ';
@@ -417,7 +417,7 @@ if ($myISTReturnCode == '4') {
         <td><form method="GET" action="USISTAddressVerification.php">
             <input type=submit class=btn name=DoLookup value="Perform Lookups">
           </form></td>
-  <?php 
+  <?php
   } ?>
 
   <?php if ($iUSOkay) {
@@ -425,7 +425,7 @@ if ($myISTReturnCode == '4') {
         <td><form method="POST" action="Reports/USISTAddressReport.php">
             <input type=submit class=btn name=MismatchReport value="View Mismatch Report">
           </form></td>
-  <?php 
+  <?php
   } ?>
 
   <?php if ($iNonUSCount) {
@@ -433,7 +433,7 @@ if ($myISTReturnCode == '4') {
         <td><form method="POST" action="Reports/USISTAddressReport.php">
             <input type=submit class=btn name=NonUSReport value="View Non-US Address Report">
           </form></td>
-  <?php 
+  <?php
   } ?>
 
     </tr></table>
