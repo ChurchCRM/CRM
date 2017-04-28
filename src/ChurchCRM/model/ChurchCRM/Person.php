@@ -68,7 +68,6 @@ class Person extends BasePerson implements iPhoto
         if (isset($roleId) && $roleId !== 0) {
             $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
         }
-
         return $familyRole;
     }
 
