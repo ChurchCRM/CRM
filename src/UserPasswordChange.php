@@ -79,7 +79,7 @@ if (isset($_POST['Submit'])) {
             $curUser->updatePassword($sNewPassword1);
             $curUser->setNeedPasswordChange(false);
             $curUser->save();
-
+            $curUser->createTimeLineNote("password-changed-admin");
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
@@ -156,7 +156,7 @@ if (isset($_POST['Submit'])) {
             $curUser->updatePassword($sNewPassword1);
             $curUser->setNeedPasswordChange(false);
             $curUser->save();
-
+            $curUser->createTimeLineNote("password-changed");
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
