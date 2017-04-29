@@ -49,7 +49,7 @@ class SystemConfig
   private static function buildConfigs()
   {
     return array(
-        "debug" => new ConfigItem(2, "debug", "boolean", "0", gettext("Set debug mode for dbl logs.")),
+        "debug" => new ConfigItem(2, "debug", "boolean", "0", gettext("Set debug mode for ORM logs")),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma seperated")),
         "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "text", "1", gettext("These are the family role numbers designated as head of house")),
         "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "text", "2", gettext("These are the family role numbers designated as spouse")),
