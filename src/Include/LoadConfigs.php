@@ -136,21 +136,25 @@ SystemConfig::init(ConfigQuery::create()->find());
 // enable logs if we are in debug mode
 // **************************************************
 
-$logger = new Logger('defaultLogger');
 $logFilePrefix = SystemURLs::getDocumentRoot().'/logs/'.date("Y-m-d");
-if (SystemConfig::getBooleanValue("debug")) {
-    $logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log'));
 
+// PHP Logs
+ini_set('log_errors', 1);
+ini_set('error_log', $logFilePrefix.'-php.log');
+
+// APP Logs
+$logger = new Logger('defaultLogger');
+$logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log'));
+
+if (SystemConfig::getBooleanValue("debug")) {
+    // ORM Logs
     $ormLogger = new Logger('ormLogger');
     $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
     $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
     $ormLogger->pushHandler(new StreamHandler($logFilePrefix.'-orm.log'));
     $serviceContainer->setLogger('defaultLogger', $ormLogger);
-} else {
-    $logger->pushHandler(new NullHandler());
 }
-ini_set('log_errors', 1);
-ini_set('error_log', $logFilePrefix.'-php.log');
+
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
     // Load user variables from user config table.
