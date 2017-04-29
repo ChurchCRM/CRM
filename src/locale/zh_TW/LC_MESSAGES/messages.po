@@ -21,8 +21,8 @@ msgstr "確認刪除自動付款"
 #: DonationFundEditor.php:186 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:222 ElectronicPaymentList.php:288
 #: EventNames.php:305 FamilyCustomFieldsEditor.php:333
-#: FamilyCustomFieldsEditor.php:391 FamilyView.php:669 FamilyView.php:721
-#: FamilyView.php:781 FamilyView.php:933 FindDepositSlip.php:108
+#: FamilyCustomFieldsEditor.php:391 FamilyView.php:671 FamilyView.php:723
+#: FamilyView.php:783 FamilyView.php:923 FindDepositSlip.php:108
 #: FundRaiserEditor.php:202 ListEvents.php:249 PaddleNumList.php:58
 #: PersonCustomFieldsEditor.php:317 PersonCustomFieldsEditor.php:386
 #: PersonView.php:944 PledgeDelete.php:55 PropertyList.php:67
@@ -34,8 +34,8 @@ msgstr "刪除"
 #: AutoPaymentDelete.php:66 AutoPaymentEditor.php:581 BatchWinnerEntry.php:114
 #: CanvassEditor.php:241 Checkin.php:172 Checkin.php:283 Checkin.php:297
 #: DirectoryReports.php:292 DonatedItemEditor.php:298 EventNames.php:233
-#: external/templates/verify/verify-family-info.php:136 FamilyEditor.php:1141
-#: FamilyView.php:932 FinancialReports.php:70 FundRaiserEditor.php:145
+#: external/templates/verify/verify-family-info.php:136 FamilyEditor.php:1136
+#: FamilyView.php:922 FinancialReports.php:70 FundRaiserEditor.php:145
 #: GroupPropsEditor.php:171 GroupReports.php:85 GroupReports.php:155
 #: LettersAndLabels.php:75 ManageEnvelopes.php:139 MemberRoleChange.php:121
 #: MemberRoleChange.php:123 NoteDelete.php:70 NoteEditor.php:138
@@ -45,7 +45,7 @@ msgstr "刪除"
 #: SettingsUser.php:109 SettingsUser.php:169
 #: sundayschool/SundaySchoolDashboard.php:239
 #: sundayschool/SundaySchoolReports.php:230 TaxReport.php:52
-#: UserEditor.php:475 UserEditor.php:578 WhyCameEditor.php:102
+#: UserEditor.php:478 UserEditor.php:581 WhyCameEditor.php:102
 msgid "Cancel"
 msgstr "取消"
 
@@ -54,23 +54,23 @@ msgid "Automatic payment configuration for the "
 msgstr "自動付款配置"
 
 #: AutoPaymentEditor.php:580 CanvassEditor.php:240 DepositSlipEditor.php:97
-#: DonatedItemEditor.php:294 FamilyEditor.php:659 FamilyEditor.php:745
-#: FamilyEditor.php:810 FamilyEditor.php:887 FamilyEditor.php:910
-#: FamilyEditor.php:942 FamilyEditor.php:1137 FundRaiserEditor.php:144
+#: DonatedItemEditor.php:294 FamilyEditor.php:654 FamilyEditor.php:740
+#: FamilyEditor.php:805 FamilyEditor.php:882 FamilyEditor.php:905
+#: FamilyEditor.php:937 FamilyEditor.php:1132 FundRaiserEditor.php:144
 #: GroupEditor.php:149 GroupPropsEditor.php:169 NoteEditor.php:136
 #: PaddleNumEditor.php:149 PersonEditor.php:579 PersonEditor.php:743
 #: PersonEditor.php:786 PersonEditor.php:1047 PersonEditor.php:1112
 #: PersonEditor.php:1148 PledgeEditor.php:689 PropertyEditor.php:171
-#: PropertyTypeEditor.php:114 UserEditor.php:474 UserPasswordChange.php:240
+#: PropertyTypeEditor.php:114 UserEditor.php:477 UserPasswordChange.php:231
 #: WhyCameEditor.php:101
 msgid "Save"
 msgstr "保存"
 
 #: AutoPaymentEditor.php:597 BatchWinnerEntry.php:85 BatchWinnerEntry.php:97
 #: CSVImport.php:274 DonatedItemEditor.php:187 DonatedItemEditor.php:238
-#: eGive.php:340 FamilyEditor.php:1111 GroupEditor.php:89
+#: eGive.php:340 FamilyEditor.php:1106 GroupEditor.php:89
 #: Include/CountryDropDown.php:6 Include/Functions.php:1128
-#: Include/Functions.php:1176 MapUsingGoogle.php:106 MapUsingGoogle.php:131
+#: Include/Functions.php:1176 MapUsingGoogle.php:99 MapUsingGoogle.php:124
 #: PaddleNumEditor.php:178 PersonEditor.php:750 PersonEditor.php:766
 #: PersonEditor.php:1055 PrintView.php:248 PrintView.php:258
 #: SelectDelete.php:157 SelectList.php:43 SelectList.php:53 SelectList.php:69
@@ -103,20 +103,20 @@ msgstr "待用"
 
 #: AutoPaymentEditor.php:698 CartToFamily.php:248 CSVExport.php:115
 #: CSVImport.php:221 DirectoryReports.php:256
-#: external/templates/registration/family-register.php:41 FamilyEditor.php:685
+#: external/templates/registration/family-register.php:41 FamilyEditor.php:680
 #: PersonEditor.php:831 Register.php:48 queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "城市"
 
 #: AutoPaymentEditor.php:703 CartToFamily.php:253 CSVExport.php:120
 #: CSVImport.php:222 DirectoryReports.php:260
-#: external/templates/registration/family-register.php:44 FamilyEditor.php:692
+#: external/templates/registration/family-register.php:44 FamilyEditor.php:687
 #: PersonEditor.php:851 Register.php:49 queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "國"
 
 #: AutoPaymentEditor.php:713 CartToFamily.php:273 CSVExport.php:135
-#: CSVImport.php:224 FamilyEditor.php:712 PersonEditor.php:896 Register.php:51
+#: CSVImport.php:224 FamilyEditor.php:707 PersonEditor.php:896 Register.php:51
 msgid "Country"
 msgstr "國家"
 
@@ -134,8 +134,8 @@ msgstr "電話"
 #: ChurchCRM/Reports/PDF_Directory.php:454 CSVExport.php:155 CSVImport.php:228
 #: EditEventAttendees.php:42 EventAttendance.php:183
 #: external/templates/registration/family-register-members.php:83
-#: external/templates/verify/verify-family-info.php:73 FamilyEditor.php:785
-#: FamilyView.php:282 FamilyView.php:286 FamilyView.php:375
+#: external/templates/verify/verify-family-info.php:73 FamilyEditor.php:780
+#: FamilyView.php:281 FamilyView.php:285 FamilyView.php:374
 #: GroupReports.php:131 PersonEditor.php:1005 PersonEditor.php:1007
 #: PersonView.php:312 PersonView.php:484 PrintView.php:278
 #: Reports/CanvassReports.php:245 Reports/ConfirmReportEmail.php:189
@@ -262,7 +262,7 @@ msgstr "中間名"
 #: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:265
 #: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:264
 #: external/templates/registration/family-register.php:51
-#: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
+#: external/templates/verify/enter-info.php:29 FamilyEditor.php:697
 #: PersonEditor.php:874 Register.php:50
 #, fuzzy
 msgid "Zip"
@@ -344,7 +344,7 @@ msgstr "不過濾"
 
 #: ChurchCRM/Service/DashboardService.php:62 CSVExport.php:339
 #: external/templates/registration/family-register-members.php:59
-#: FamilyEditor.php:1010 PersonEditor.php:592 PrintView.php:228
+#: FamilyEditor.php:1005 PersonEditor.php:592 PrintView.php:228
 #: PrintView.php:347 SelectList.php:579 SelectList.php:1160
 #: queryparameteroptions_qpo.php:2
 msgid "Male"
@@ -352,7 +352,7 @@ msgstr "男"
 
 #: ChurchCRM/Service/DashboardService.php:65 CSVExport.php:340
 #: external/templates/registration/family-register-members.php:60
-#: FamilyEditor.php:1013 PersonEditor.php:595 PrintView.php:231
+#: FamilyEditor.php:1008 PersonEditor.php:595 PrintView.php:231
 #: PrintView.php:347 SelectList.php:585 SelectList.php:1161
 #: queryparameteroptions_qpo.php:3
 msgid "Female"
@@ -423,12 +423,12 @@ msgstr "忽略這個字段"
 msgid "Title"
 msgstr "標題"
 
-#: CSVExport.php:100 CSVImport.php:216 FamilyEditor.php:962
+#: CSVExport.php:100 CSVImport.php:216 FamilyEditor.php:957
 #: PersonEditor.php:644
 msgid "Suffix"
 msgstr "後綴"
 
-#: CSVExport.php:329 CSVImport.php:217 FamilyEditor.php:963
+#: CSVExport.php:329 CSVImport.php:217 FamilyEditor.php:958
 #: PersonEditor.php:586 PrintView.php:222 PrintView.php:322
 #: sundayschool/SundaySchoolClassView.php:178 queryparameters_qrp.php:4
 msgid "Gender"
@@ -443,8 +443,8 @@ msgstr "捐款信封"
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
 #: external/templates/verify/verify-family-info.php:26
-#: external/templates/verify/verify-family-info.php:70 FamilyEditor.php:751
-#: FamilyList.php:44 FamilyView.php:261 GroupReports.php:128
+#: external/templates/verify/verify-family-info.php:70 FamilyEditor.php:746
+#: FamilyList.php:44 FamilyView.php:260 GroupReports.php:128
 #: PersonEditor.php:931 PersonEditor.php:933 PersonView.php:306
 #: PrintView.php:183 Reports/ConfirmReportEmail.php:138
 #: Reports/ConfirmReport.php:140 SelectList.php:985 SelectList.php:986
@@ -454,8 +454,8 @@ msgid "Home Phone"
 msgstr "家庭電話"
 
 #: CartToFamily.php:294 CSVExport.php:145 CSVImport.php:226
-#: external/templates/verify/verify-family-info.php:71 FamilyEditor.php:763
-#: FamilyView.php:268 GroupReports.php:129 PersonEditor.php:954
+#: external/templates/verify/verify-family-info.php:71 FamilyEditor.php:758
+#: FamilyView.php:267 GroupReports.php:129 PersonEditor.php:954
 #: PersonEditor.php:956 PersonView.php:322 PrintView.php:188
 #: Reports/ConfirmReportEmail.php:236 Reports/ConfirmReport.php:244
 #: SelectList.php:988 SelectList.php:989 SelectList.php:1061
@@ -463,8 +463,8 @@ msgid "Work Phone"
 msgstr "工作電話"
 
 #: CartToFamily.php:304 CSVExport.php:150 CSVImport.php:227
-#: external/templates/verify/verify-family-info.php:72 FamilyEditor.php:773
-#: FamilyView.php:275 PersonEditor.php:979 PersonEditor.php:981
+#: external/templates/verify/verify-family-info.php:72 FamilyEditor.php:768
+#: FamilyView.php:274 PersonEditor.php:979 PersonEditor.php:981
 #: PersonView.php:300 PrintView.php:193 SelectList.php:991 SelectList.php:992
 #: SelectList.php:1061
 msgid "Mobile Phone"
@@ -481,8 +481,8 @@ msgid "Birth Date"
 msgstr "出生日期"
 
 #: CartToFamily.php:214 CSVImport.php:232 DirectoryReports.php:178
-#: external/templates/verify/verify-family-info.php:31 FamilyEditor.php:820
-#: FamilyView.php:247
+#: external/templates/verify/verify-family-info.php:31 FamilyEditor.php:815
+#: FamilyView.php:246
 msgid "Wedding Date"
 msgstr "婚禮日期"
 
@@ -514,7 +514,7 @@ msgstr "注：分離器（破折號等）或缺乏無所謂"
 msgid "Default country if none specified otherwise"
 msgstr "默認情況下，如果沒有國家另有規定"
 
-#: CartView.php:298 CSVExport.php:277 CSVImport.php:284 FamilyEditor.php:968
+#: CartView.php:298 CSVExport.php:277 CSVImport.php:284 FamilyEditor.php:963
 #: FinancialReports.php:118 MembersDashboard.php:306 OptionManager.php:71
 #: PersonEditor.php:1053 PrintView.php:293 queryparameters_qrp.php:19
 msgid "Classification"
@@ -569,11 +569,11 @@ msgstr "招商自動化"
 msgid "Not confirmed."
 msgstr "沒有得到證實。"
 
-#: CanvassAutomation.php:53 CanvassEditor.php:147 FamilyEditor.php:58
+#: CanvassAutomation.php:53 CanvassEditor.php:147 FamilyEditor.php:60
 msgid "Canvassers"
 msgstr "檢查工作"
 
-#: CanvassAutomation.php:60 CanvassEditor.php:148 FamilyEditor.php:59
+#: CanvassAutomation.php:60 CanvassEditor.php:148 FamilyEditor.php:61
 msgid "BraveCanvassers"
 msgstr "BraveCanvassers"
 
@@ -647,7 +647,7 @@ msgstr "不感興趣報告"
 msgid " Canvass Input for the "
 msgstr "招商輸入"
 
-#: Reports/CanvassReports.php:172 UserEditor.php:456
+#: Reports/CanvassReports.php:172 UserEditor.php:459
 #, fuzzy
 msgid "Canvasser"
 msgstr "兜攬"
@@ -713,8 +713,8 @@ msgstr "加入購物車家庭"
 #: DonationFundEditor.php:153 DonationFundEditor.php:216
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:182
 #: EventNames.php:266 FamilyCustomFieldsEditor.php:329
-#: FamilyCustomFieldsEditor.php:443 FamilyList.php:42 FamilyView.php:561
-#: GeoPage.php:387 GroupEditor.php:75 GroupPropsFormEditor.php:283
+#: FamilyCustomFieldsEditor.php:443 FamilyList.php:42 FamilyView.php:560
+#: GeoPage.php:386 GroupEditor.php:75 GroupPropsFormEditor.php:283
 #: GroupPropsFormEditor.php:395 GroupView.php:322 GroupView.php:356
 #: PersonCustomFieldsEditor.php:313 PersonCustomFieldsEditor.php:444
 #: PersonView.php:683 PersonView.php:786 PrintView.php:321 PrintView.php:450
@@ -758,7 +758,7 @@ msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "（美國和加拿大以外的國家使用的文本框）"
 
 #: CartToFamily.php:289 CartToFamily.php:299 CartToFamily.php:309
-#: FamilyEditor.php:759 FamilyEditor.php:769 FamilyEditor.php:779
+#: FamilyEditor.php:754 FamilyEditor.php:764 FamilyEditor.php:774
 #: Include/Functions.php:1167 PersonEditor.php:947 PersonEditor.php:971
 #: PersonEditor.php:995
 msgid "Do not auto-format"
@@ -868,8 +868,8 @@ msgstr "您的購物車中包含"
 msgid "persons from"
 msgstr "人從"
 
-#: CartView.php:297 CartView.php:355 EditEventTypes.php:168 FamilyView.php:566
-#: FamilyView.php:608 GroupView.php:361 GroupView.php:402 PersonView.php:686
+#: CartView.php:297 CartView.php:355 EditEventTypes.php:168 FamilyView.php:565
+#: FamilyView.php:607 GroupView.php:361 GroupView.php:402 PersonView.php:686
 #: PersonView.php:704 PersonView.php:789 PersonView.php:807
 msgid "Remove"
 msgstr "清除"
@@ -940,9 +940,8 @@ msgstr "行動"
 msgid "No Attendees Assigned to Event"
 msgstr "沒有分配給事件的參加者"
 
-#: Checkin.php:489 Include/Functions.php:1712 PersonView.php:227
-#: Reports/CanvassReports.php:243 Reports/VotingMembers.php:87
-#: queryparameteroptions_qpo.php:15
+#: Checkin.php:489 Include/Functions.php:1712 Reports/CanvassReports.php:243
+#: Reports/VotingMembers.php:87 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr "成員"
 
@@ -1032,16 +1031,16 @@ msgstr "信息包括"
 #: CSVImport.php:219 CSVImport.php:220 DirectoryReports.php:177
 #: DirectoryReports.php:252
 #: external/templates/registration/family-register-done.php:29
-#: external/templates/registration/family-register.php:35 FamilyEditor.php:677
-#: FamilyEditor.php:681 FamilyList.php:43 FamilyView.php:218 GeoPage.php:388
-#: GroupReports.php:127 Menu.php:179 Menu.php:215 PersonEditor.php:799
+#: external/templates/registration/family-register.php:35 FamilyEditor.php:672
+#: FamilyEditor.php:676 FamilyList.php:43 FamilyView.php:218 GeoPage.php:387
+#: GroupReports.php:127 Menu.php:180 Menu.php:216 PersonEditor.php:799
 #: PersonEditor.php:815 PersonView.php:273 Register.php:47
 #: Reports/ConfirmReportEmail.php:123 Reports/ConfirmReportEmail.php:128
 msgid "Address"
 msgstr "地址"
 
 #: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:179
-#: FamilyView.php:374 PersonView.php:483 Reports/ConfirmReportEmail.php:190
+#: FamilyView.php:373 PersonView.php:483 Reports/ConfirmReportEmail.php:190
 #: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:189
 #: Reports/ConfirmReport.php:208
 msgid "Birthday"
@@ -1113,7 +1112,7 @@ msgstr "扉頁"
 msgid "Use Title Page"
 msgstr "使用標題頁"
 
-#: ChurchCRM/dto/SystemConfig.php:116 DirectoryReports.php:248 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:118 DirectoryReports.php:248 Register.php:45
 msgid "Church Name"
 msgstr "教會名稱"
 
@@ -1129,7 +1128,7 @@ msgstr "創建目錄"
 msgid "Donated Item Editor"
 msgstr "捐贈項目編輯器“"
 
-#: DonatedItemEditor.php:296 FamilyEditor.php:1139 PaddleNumEditor.php:152
+#: DonatedItemEditor.php:296 FamilyEditor.php:1134 PaddleNumEditor.php:152
 #: PersonEditor.php:1150 PledgeEditor.php:691
 msgid "Save and Add"
 msgstr "保存並添加"
@@ -1246,7 +1245,8 @@ msgstr "復發性模式"
 msgid "Attendance Counts"
 msgstr "出席計數"
 
-#: AutoPaymentEditor.php:594 ChurchCRM/Emails/BaseFamilyVerification.php:30
+#: AutoPaymentEditor.php:594
+#: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:198
 #: external/templates/registration/family-register-done.php:28
 #: FamilyView.php:208 FinancialReports.php:306 Include/Footer.php:58
@@ -1258,7 +1258,7 @@ msgid "Family"
 msgstr "家庭"
 
 #: ElectronicPaymentList.php:199 FamilyCustomFieldsEditor.php:328
-#: FamilyCustomFieldsEditor.php:430 FamilyView.php:560 FamilyView.php:663
+#: FamilyCustomFieldsEditor.php:430 FamilyView.php:559 FamilyView.php:665
 #: GroupPropsFormEditor.php:282 GroupPropsFormEditor.php:383 GroupView.php:321
 #: GroupView.php:355 OptionManager.php:79 PersonCustomFieldsEditor.php:312
 #: PersonCustomFieldsEditor.php:431 PersonView.php:682 PropertyEditor.php:131
@@ -1266,19 +1266,19 @@ msgstr "家庭"
 msgid "Type"
 msgstr "類型"
 
-#: AutoPaymentEditor.php:635 ElectronicPaymentList.php:200 FamilyView.php:773
+#: AutoPaymentEditor.php:635 ElectronicPaymentList.php:200 FamilyView.php:775
 #: PledgeEditor.php:522 ReminderReport.php:45 SelectDelete.php:218
 #: sundayschool/SundaySchoolReports.php:160 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "財政年度"
 
-#: ElectronicPaymentList.php:202 FamilyView.php:665 FamilyView.php:775
+#: ElectronicPaymentList.php:202 FamilyView.php:667 FamilyView.php:777
 #: PledgeEditor.php:716 SelectDelete.php:220
 msgid "Amount"
 msgstr "量"
 
-#: AutoPaymentEditor.php:652 ElectronicPaymentList.php:204 FamilyView.php:667
-#: FamilyView.php:772 FinancialReports.php:305 SelectDelete.php:217
+#: AutoPaymentEditor.php:652 ElectronicPaymentList.php:204 FamilyView.php:669
+#: FamilyView.php:774 FinancialReports.php:305 SelectDelete.php:217
 msgid "Fund"
 msgstr "基金"
 
@@ -1286,19 +1286,19 @@ msgstr "基金"
 msgid "Bank"
 msgstr "銀行"
 
-#: ElectronicPaymentList.php:214 FamilyEditor.php:965
+#: ElectronicPaymentList.php:214 FamilyEditor.php:960
 #: queryparameters_qrp.php:11
 msgid "Month"
 msgstr "月"
 
-#: ElectronicPaymentList.php:215 FamilyEditor.php:967
+#: ElectronicPaymentList.php:215 FamilyEditor.php:962
 #: Include/Functions.php:104
 msgid "Year"
 msgstr "年"
 
 #: ElectronicPaymentList.php:221 ElectronicPaymentList.php:287
-#: EventNames.php:297 FamilyView.php:212 FamilyView.php:668 FamilyView.php:717
-#: FamilyView.php:780 FindFundRaiser.php:237 FindFundRaiser.php:245
+#: EventNames.php:297 FamilyView.php:212 FamilyView.php:670 FamilyView.php:719
+#: FamilyView.php:782 FindFundRaiser.php:237 FindFundRaiser.php:245
 #: ListEvents.php:232 PersonView.php:239 PropertyList.php:66
 #: PropertyList.php:107 PropertyTypeList.php:43 PropertyTypeList.php:63
 #: SelectList.php:1072
@@ -1501,7 +1501,7 @@ msgstr "在類型上的幫助.."
 
 #: DonationFundEditor.php:170 DonationFundEditor.php:219
 #: FamilyCustomFieldsEditor.php:347 FamilyCustomFieldsEditor.php:447
-#: FamilyEditor.php:233 GroupPropsFormEditor.php:313
+#: FamilyEditor.php:222 GroupPropsFormEditor.php:313
 #: GroupPropsFormEditor.php:399 OptionManager.php:353
 #: PersonCustomFieldsEditor.php:334 PersonCustomFieldsEditor.php:448
 #: PropertyEditor.php:73 PropertyTypeEditor.php:47
@@ -1524,147 +1524,147 @@ msgstr "方"
 msgid "Add New Field"
 msgstr "添加新字段"
 
-#: FamilyEditor.php:26
+#: FamilyEditor.php:28
 msgid "Family Editor"
 msgstr "族編輯器"
 
-#: FamilyEditor.php:212
+#: FamilyEditor.php:201
 msgid "First name must be entered"
 msgstr "必須輸入名字"
 
-#: FamilyEditor.php:220 PersonEditor.php:203
+#: FamilyEditor.php:209 PersonEditor.php:203
 msgid "Invalid Year: allowable values are 1901 to 2155"
 msgstr "無效的年份：允許值是1901到2155"
 
-#: FamilyEditor.php:224 PersonEditor.php:207
+#: FamilyEditor.php:213 PersonEditor.php:207
 msgid "Invalid Birth Date."
 msgstr "無效的出生日期。"
 
-#: FamilyEditor.php:242
+#: FamilyEditor.php:231
 msgid "Not a valid Wedding Date"
 msgstr "不是一個有效的婚禮日期"
 
-#: FamilyEditor.php:255 PersonEditor.php:241
+#: FamilyEditor.php:244 PersonEditor.php:241
 msgid "Email is Not Valid"
 msgstr "電子郵件是無效的"
 
-#: FamilyEditor.php:834
+#: FamilyEditor.php:829
 #, fuzzy
 msgid "Ok To Canvass"
 msgstr "OK（確定）招商"
 
-#: FamilyEditor.php:846
+#: FamilyEditor.php:841
 #, fuzzy
 msgid "Assign a Canvasser"
 msgstr "分配兜攬"
 
-#: FamilyEditor.php:864
+#: FamilyEditor.php:859
 #, fuzzy
 msgid "Assign a Brave Canvasser"
 msgstr "指派勇者兜攬"
 
-#: FamilyEditor.php:908 PersonEditor.php:1110
+#: FamilyEditor.php:903 PersonEditor.php:1110
 msgid "Custom Fields"
 msgstr "自定義字段"
 
 #: external/templates/registration/family-register-members.php:20
-#: FamilyEditor.php:940 FamilyView.php:372 PersonView.php:481
+#: FamilyEditor.php:935 FamilyView.php:371 PersonView.php:481
 #: PrintView.php:318
 msgid "Family Members"
 msgstr "家庭成員"
 
-#: FamilyEditor.php:953
+#: FamilyEditor.php:948
 msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
 msgstr "現在，您可以創建家庭成員，或將它們添加。所有參賽作品將成為<i>新的</i>個人記錄。"
 
-#: FamilyEditor.php:959
+#: FamilyEditor.php:954
 msgid "First"
 msgstr "第一"
 
-#: FamilyEditor.php:960
+#: FamilyEditor.php:955
 msgid "Middle"
 msgstr "中間"
 
-#: FamilyEditor.php:961
+#: FamilyEditor.php:956
 msgid "Last"
 msgstr "最後"
 
-#: FamilyEditor.php:964 FamilyView.php:373 OptionManager.php:62
+#: FamilyEditor.php:959 FamilyView.php:372 OptionManager.php:62
 #: OptionManager.php:95 PersonView.php:482 PrintView.php:323 PrintView.php:379
 #: Reports/CanvassReports.php:241 Reports/GroupReport.php:106
 msgid "Role"
 msgstr "角色"
 
-#: FamilyEditor.php:966
+#: FamilyEditor.php:961
 msgid "Day"
 msgstr "日"
 
-#: FamilyEditor.php:1007 PersonEditor.php:588
+#: FamilyEditor.php:1002 PersonEditor.php:588
 msgid "Select Gender"
 msgstr "選擇性別"
 
-#: CartToGroup.php:87 FamilyEditor.php:1021 GroupReports.php:60
+#: CartToGroup.php:87 FamilyEditor.php:1016 GroupReports.php:60
 #: PersonToGroup.php:78
 msgid "Select Role"
 msgstr "選擇角色"
 
 #: ChurchCRM/Service/DashboardService.php:59
 #: ChurchCRM/Service/DashboardService.php:73
-#: ChurchCRM/Service/TimelineService.php:114 FamilyEditor.php:1037
+#: ChurchCRM/Service/TimelineService.php:114 FamilyEditor.php:1032
 #: Include/Functions.php:796 Include/Functions.php:825
 #: Include/Functions.php:1045
 msgid "Unknown"
 msgstr "未知"
 
-#: FamilyEditor.php:1040 PersonEditor.php:660
+#: FamilyEditor.php:1035 PersonEditor.php:660
 msgid "January"
 msgstr "一月"
 
-#: FamilyEditor.php:1043 PersonEditor.php:663
+#: FamilyEditor.php:1038 PersonEditor.php:663
 msgid "February"
 msgstr "二月"
 
-#: FamilyEditor.php:1046 PersonEditor.php:666
+#: FamilyEditor.php:1041 PersonEditor.php:666
 msgid "March"
 msgstr "三月"
 
-#: FamilyEditor.php:1049 PersonEditor.php:669
+#: FamilyEditor.php:1044 PersonEditor.php:669
 msgid "April"
 msgstr "四月"
 
-#: FamilyEditor.php:1052 PersonEditor.php:672
+#: FamilyEditor.php:1047 PersonEditor.php:672
 msgid "May"
 msgstr "五月"
 
-#: FamilyEditor.php:1055 PersonEditor.php:675
+#: FamilyEditor.php:1050 PersonEditor.php:675
 msgid "June"
 msgstr "六月"
 
-#: FamilyEditor.php:1058 PersonEditor.php:678
+#: FamilyEditor.php:1053 PersonEditor.php:678
 msgid "July"
 msgstr "七月"
 
-#: FamilyEditor.php:1061 PersonEditor.php:681
+#: FamilyEditor.php:1056 PersonEditor.php:681
 msgid "August"
 msgstr "八月"
 
-#: FamilyEditor.php:1064 PersonEditor.php:684
+#: FamilyEditor.php:1059 PersonEditor.php:684
 msgid "September"
 msgstr "九月"
 
-#: FamilyEditor.php:1067 PersonEditor.php:687
+#: FamilyEditor.php:1062 PersonEditor.php:687
 msgid "October"
 msgstr "十月"
 
-#: FamilyEditor.php:1070 PersonEditor.php:690
+#: FamilyEditor.php:1065 PersonEditor.php:690
 msgid "November"
 msgstr "十一月"
 
-#: FamilyEditor.php:1073 PersonEditor.php:693
+#: FamilyEditor.php:1068 PersonEditor.php:693
 msgid "December"
 msgstr "十二月"
 
-#: FamilyEditor.php:1078
+#: FamilyEditor.php:1073
 msgid "Unk"
 msgstr "安克"
 
@@ -1672,20 +1672,20 @@ msgstr "安克"
 msgid "Family View"
 msgstr "家庭觀"
 
-#: FamilyView.php:234
+#: FamilyView.php:233
 msgid "Latitude/Longitude"
 msgstr "緯度/經度"
 
-#: FamilyEditor.php:893 FamilyView.php:254 ManageEnvelopes.php:170
+#: FamilyEditor.php:888 FamilyView.php:253 ManageEnvelopes.php:170
 #: PledgeEditor.php:527
 msgid "Envelope Number"
 msgstr "信封號碼"
 
-#: FamilyView.php:318
+#: FamilyView.php:317
 msgid "Previous Family"
 msgstr "上一頁家庭"
 
-#: FamilyView.php:327
+#: FamilyView.php:326
 msgid "Next Family"
 msgstr "下一個家庭"
 
@@ -1697,105 +1697,105 @@ msgstr "上傳照片"
 msgid "Delete Photo"
 msgstr "刪除照片"
 
-#: FamilyView.php:462
+#: FamilyView.php:461
 msgid "Pledges and Payments"
 msgstr "認捐和實付"
 
-#: FamilyView.php:552 PersonView.php:676 PrintView.php:446
+#: FamilyView.php:551 PersonView.php:676 PrintView.php:446
 msgid "No property assignments."
 msgstr "沒有財產的分配。"
 
-#: FamilyView.php:562 GroupView.php:357 PersonView.php:684 PrintView.php:451
+#: FamilyView.php:561 GroupView.php:357 PersonView.php:684 PrintView.php:451
 #: PropertyAssign.php:178 SystemSettings.php:152
 msgid "Value"
 msgstr "值"
 
-#: FamilyView.php:565 FamilyView.php:603 GroupView.php:360 GroupView.php:396
+#: FamilyView.php:564 FamilyView.php:602 GroupView.php:360 GroupView.php:396
 msgid "Edit Value"
 msgstr "編輯值"
 
-#: FamilyView.php:626 PersonView.php:717
+#: FamilyView.php:625 PersonView.php:717
 #, fuzzy
 msgid "Assign a New Property"
 msgstr "分配一個新的屬性"
 
-#: FamilyView.php:641 GroupView.php:434 PersonView.php:753 PersonView.php:840
+#: FamilyView.php:643 GroupView.php:434 PersonView.php:753 PersonView.php:840
 #: PropertyAssign.php:188 SelectList.php:1080
 msgid "Assign"
 msgstr "分配"
 
-#: FamilyView.php:664
+#: FamilyView.php:666
 msgid "Next payment date"
 msgstr "下一個付款日期"
 
-#: FamilyView.php:666
+#: FamilyView.php:668
 msgid "Interval (months)"
 msgstr "間隔（月）"
 
-#: FamilyView.php:670 FamilyView.php:782 SelectDelete.php:224
+#: FamilyView.php:672 FamilyView.php:784 SelectDelete.php:224
 msgid "Date Updated"
 msgstr "更新日期"
 
-#: FamilyView.php:671 FamilyView.php:783 SelectDelete.php:225
+#: FamilyView.php:673 FamilyView.php:785 SelectDelete.php:225
 msgid "Updated By"
 msgstr "更新人"
 
-#: FamilyView.php:739
+#: FamilyView.php:741
 msgid "Add a new automatic payment"
 msgstr "添加一個新的自動付款"
 
-#: FamilyView.php:751
+#: FamilyView.php:753
 msgid "Show Pledges"
 msgstr "顯示服務承諾"
 
-#: FamilyView.php:755
+#: FamilyView.php:757
 msgid "Show Payments"
 msgstr "顯示支付"
 
-#: FamilyView.php:764 MemberRoleChange.php:118 PropertyAssign.php:190
+#: FamilyView.php:766 MemberRoleChange.php:118 PropertyAssign.php:190
 msgid "Update"
 msgstr "更新"
 
-#: FamilyView.php:771
+#: FamilyView.php:773
 msgid "Pledge or Payment"
 msgstr "質押或付款"
 
 #: AutoPaymentEditor.php:630 CanvassEditor.php:196 DepositSlipEditor.php:81
-#: EditEventAttendees.php:33 FamilyView.php:774 FindFundRaiser.php:239
+#: EditEventAttendees.php:33 FamilyView.php:776 FindFundRaiser.php:239
 #: FundRaiserEditor.php:166 Include/Functions.php:100 PledgeEditor.php:520
 #: SelectDelete.php:219
 msgid "Date"
 msgstr "日期"
 
-#: FamilyView.php:776
+#: FamilyView.php:778
 msgid "NonDeductible"
 msgstr "不得扣除"
 
-#: FamilyView.php:777 SelectDelete.php:221
+#: FamilyView.php:779 SelectDelete.php:221
 msgid "Schedule"
 msgstr "時間表"
 
-#: FamilyView.php:778 SelectDelete.php:222
+#: FamilyView.php:780 SelectDelete.php:222
 msgid "Method"
 msgstr "方法"
 
-#: FamilyView.php:779 PledgeEditor.php:724 SelectDelete.php:223
+#: FamilyView.php:781 PledgeEditor.php:724 SelectDelete.php:223
 msgid "Comment"
 msgstr "評論"
 
-#: FamilyView.php:884
+#: FamilyView.php:874
 msgid "Add a new pledge"
 msgstr "添加新的服務承諾"
 
-#: FamilyView.php:886
+#: FamilyView.php:876
 msgid "Add a new payment"
 msgstr "添加一個新的支付"
 
-#: FamilyView.php:898
+#: FamilyView.php:888
 msgid " Canvass Entry"
 msgstr "招商入口"
 
-#: DepositSlipEditor.php:224 FamilyView.php:921 FindDepositSlip.php:98
+#: DepositSlipEditor.php:224 FamilyView.php:911 FindDepositSlip.php:98
 #: PersonView.php:933 PledgeDelete.php:21
 msgid "Confirm Delete"
 msgstr "確認刪除"
@@ -1925,7 +1925,7 @@ msgstr "最小起總金額："
 msgid "0 - No Minimum"
 msgstr "0  - 不設最低"
 
-#: ChurchCRM/dto/SystemConfig.php:185 FinancialReports.php:281
+#: ChurchCRM/dto/SystemConfig.php:187 FinancialReports.php:281
 msgid "Other Settings"
 msgstr "其他設置"
 
@@ -1949,7 +1949,7 @@ msgstr "生成："
 msgid "Only Families with unpaid pledges"
 msgstr "只有未付認捐的家庭"
 
-#: FinancialReports.php:289 GeoPage.php:342 MembersDashboard.php:118
+#: FinancialReports.php:289 GeoPage.php:341 MembersDashboard.php:118
 msgid "All Families"
 msgstr "所有的家庭"
 
@@ -1961,7 +1961,7 @@ msgstr "報告標題："
 msgid "Graphic"
 msgstr "圖形"
 
-#: ChurchCRM/dto/SystemConfig.php:117 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:119 FinancialReports.php:295
 msgid "Church Address"
 msgstr "教會地址"
 
@@ -2103,75 +2103,75 @@ msgstr "的史料價值"
 msgid "Minimum Price"
 msgstr "最低價格"
 
-#: GeoPage.php:92
+#: GeoPage.php:91
 msgid "Family Geographic Utilities"
 msgstr "家庭地理公用事業"
 
-#: GeoPage.php:239
+#: GeoPage.php:238
 msgid "Select Family:"
 msgstr "選擇家庭："
 
-#: GeoPage.php:258
+#: GeoPage.php:257
 msgid "Maximum number of neighbors:"
 msgstr "鄰居的最大數量："
 
-#: GeoPage.php:265
+#: GeoPage.php:264
 msgid "Maximum distance"
 msgstr "最大距離"
 
-#: GeoPage.php:321
+#: GeoPage.php:320
 msgid "Data file format:"
 msgstr "數據文件格式："
 
-#: GeoPage.php:326
+#: GeoPage.php:325
 msgid "GPS Visualizer"
 msgstr "GPS可視化"
 
-#: GeoPage.php:331
+#: GeoPage.php:330
 msgid "Street Atlas USA"
 msgstr "街道地圖集美國"
 
-#: GeoPage.php:337
+#: GeoPage.php:336
 msgid "Include families in coordinate file:"
 msgstr "包括家庭中的坐標文件："
 
-#: GeoPage.php:347
+#: GeoPage.php:346
 msgid "Neighbor Families"
 msgstr "鄰居的家庭"
 
-#: GeoPage.php:313 GeoPage.php:361
+#: GeoPage.php:312 GeoPage.php:360
 msgid "Make Data File"
 msgstr "數據文件"
 
-#: GeoPage.php:294
+#: GeoPage.php:293
 msgid "Show Neighbors"
 msgstr "顯示鄰居"
 
-#: GeoPage.php:385
+#: GeoPage.php:384
 msgid "Distance"
 msgstr "距離"
 
-#: GeoPage.php:386
+#: GeoPage.php:385
 msgid "Direction"
 msgstr "方向"
 
-#: FamilyEditor.php:720
+#: ChurchCRM/dto/SystemConfig.php:87 FamilyEditor.php:715
 msgid "Latitude"
 msgstr "緯度"
 
-#: FamilyEditor.php:724
+#: ChurchCRM/dto/SystemConfig.php:88 FamilyEditor.php:719
 msgid "Longitude"
 msgstr "經度"
 
-#: GeoPage.php:448 PersonView.php:360 SelectList.php:783
+#: GeoPage.php:447 PersonView.php:360 SelectList.php:783
 msgid "Add to Cart"
 msgstr "添加到購物車"
 
-#: GeoPage.php:452 SelectList.php:784
+#: GeoPage.php:451 SelectList.php:784
 msgid "Intersect with Cart"
 msgstr "相交的購物車"
 
-#: GeoPage.php:456 SelectList.php:785
+#: GeoPage.php:455 SelectList.php:785
 msgid "Remove from Cart"
 msgstr "從購物車中刪除"
 
@@ -2318,7 +2318,7 @@ msgstr "GroupRole"
 msgid "Group-Specific Property Fields"
 msgstr "特定的屬性字段"
 
-#: GroupView.php:58
+#: GroupView.php:58 PersonView.php:223
 msgid "Undefined"
 msgstr "未定義"
 
@@ -2355,11 +2355,16 @@ msgstr "這是根據組"
 msgid "Email Group"
 msgstr "電子郵件組"
 
+#: GroupView.php:276
+#, fuzzy
+msgid "Total Members"
+msgstr "總會員人數"
+
 #: GroupView.php:338
 msgid "Disabled for this group."
 msgstr "這組停用。"
 
-#: FamilyView.php:456 GroupView.php:343 PersonView.php:397 PrintView.php:435
+#: FamilyView.php:455 GroupView.php:343 PersonView.php:397 PrintView.php:435
 #, fuzzy
 msgid "Assigned Properties"
 msgstr "指定的屬性"
@@ -2413,25 +2418,23 @@ msgstr "出席者（"
 msgid " Monthly Averages"
 msgstr "每月平均"
 
-#: Login.php:49 Login.php:64
+#: Login.php:50 Login.php:65
 msgid "Invalid login or password"
 msgstr "無效的登錄名或密碼"
 
-#: Login.php:52
+#: Login.php:53
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "太多次失敗登錄您的帳戶已被鎖定。請與管理員聯繫。"
 
-#: Login.php:158
+#: Login.php:161
 msgid "Please Login"
 msgstr "請登錄"
 
-#: BackupDatabase.php:76 Login.php:182 UserList.php:56
+#: BackupDatabase.php:76 Login.php:186 UserList.php:56
 msgid "Password"
 msgstr "密碼"
 
-#: ChurchCRM/Emails/users/NewAccountEmail.php:25
-#: ChurchCRM/Emails/users/PasswordChangeEmail.php:24
-#: ChurchCRM/Emails/users/UnlockedEmail.php:18 Login.php:148 Login.php:196
+#: Login.php:149 Login.php:200
 msgid "Login"
 msgstr "註冊"
 
@@ -2479,12 +2482,12 @@ msgstr "電流的作用"
 msgid "Update All Family Coordinates"
 msgstr "更新所有家庭坐標"
 
-#: MembersDashboard.php:137 Menu.php:72
+#: MembersDashboard.php:137 Menu.php:73
 #: sundayschool/SundaySchoolDashboard.php:104
 msgid "Families"
 msgstr "家庭"
 
-#: MembersDashboard.php:158 Menu.php:91
+#: MembersDashboard.php:158 Menu.php:92
 msgid "People"
 msgstr "人"
 
@@ -2513,7 +2516,7 @@ msgid "US Address Verification Report"
 msgstr "美國地址驗證報告的"
 
 #: CartToFamily.php:209 external/templates/registration/family-register.php:31
-#: FamilyEditor.php:666 Menu.php:178 Menu.php:214
+#: FamilyEditor.php:661 Menu.php:179 Menu.php:215
 #: Reports/ConfirmReportEmail.php:118 Reports/ConfirmReport.php:120
 #: SelectDelete.php:153 SelectDelete.php:280
 msgid "Family Name"
@@ -3258,16 +3261,16 @@ msgid "My User Settings"
 msgstr "我的用戶設置"
 
 #: SettingsIndividual.php:105 SettingsUser.php:94 SystemSettings.php:151
-#: UserEditor.php:494
+#: UserEditor.php:497
 msgid "Variable name"
 msgstr "變量名"
 
-#: SettingsIndividual.php:106 SettingsUser.php:95 UserEditor.php:495
+#: SettingsIndividual.php:106 SettingsUser.php:95 UserEditor.php:498
 msgid "Current Value"
 msgstr "當前值"
 
 #: SettingsIndividual.php:120 SettingsIndividual.php:166 SettingsUser.php:107
-#: SettingsUser.php:168 SystemSettings.php:258 UserEditor.php:577
+#: SettingsUser.php:168 SystemSettings.php:258 UserEditor.php:580
 msgid "Save Settings"
 msgstr "保存設置"
 
@@ -3279,7 +3282,7 @@ msgstr "默認用戶設置"
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr "真設置權限給新用戶的能力，改變他們的當前值。 <BR>"
 
-#: SettingsUser.php:93 UserEditor.php:493
+#: SettingsUser.php:93 UserEditor.php:496
 msgid "Permission"
 msgstr "允許"
 
@@ -3304,87 +3307,87 @@ msgstr "用戶刪除確認書，"
 msgid "Please confirm removal of user status from:"
 msgstr "請確認刪除的用戶狀態："
 
-#: UserEditor.php:334
+#: UserEditor.php:337
 msgid "User Editor"
 msgstr "用戶編輯器"
 
-#: UserEditor.php:342
+#: UserEditor.php:345
 msgid "Note: Changes will not take effect until next logon."
 msgstr "注：更改將不會生效，直到下一次登錄。"
 
-#: UserEditor.php:356
+#: UserEditor.php:359
 #, fuzzy
 msgid "Person to Make User"
 msgstr "人，使用戶"
 
-#: UserEditor.php:378
+#: UserEditor.php:381
 #, fuzzy
 msgid "User"
 msgstr "用戶名"
 
-#: UserEditor.php:396
+#: UserEditor.php:399
 #, fuzzy
 msgid "Login Name"
 msgstr "登錄用戶名"
 
-#: UserEditor.php:401
+#: UserEditor.php:404
 #, fuzzy
 msgid "Add Records"
 msgstr "添加記錄"
 
-#: UserEditor.php:408
+#: UserEditor.php:411
 #, fuzzy
 msgid "Edit Records"
 msgstr "編輯記錄"
 
-#: UserEditor.php:415
+#: UserEditor.php:418
 #, fuzzy
 msgid "Delete Records"
 msgstr "刪除記錄"
 
-#: UserEditor.php:422
+#: UserEditor.php:425
 #, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "管理的屬性和分類"
 
-#: UserEditor.php:429
+#: UserEditor.php:432
 #, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "管理組和角色"
 
-#: UserEditor.php:436
+#: UserEditor.php:439
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "管理捐款和金融"
 
-#: UserEditor.php:443
+#: UserEditor.php:446
 #, fuzzy
 msgid "View, Add and Edit Notes"
 msgstr "查看，添加和編輯備註"
 
-#: UserEditor.php:450
+#: UserEditor.php:453
 #, fuzzy
 msgid "Edit Self"
 msgstr "編輯自"
 
-#: UserEditor.php:453
+#: UserEditor.php:456
 msgid "(Edit own family only.)"
 msgstr "（編輯自己的家庭。）"
 
-#: UserEditor.php:459
+#: UserEditor.php:462
 msgid "(Canvass volunteer.)"
 msgstr "（招商志願者。）"
 
-#: UserEditor.php:462
+#: UserEditor.php:465
 #, fuzzy
 msgid "Admin"
 msgstr "管理員："
 
-#: UserEditor.php:465
+#: UserEditor.php:468
 msgid "(Grants all privileges.)"
 msgstr "（授予所有權限）。"
 
-#: UserEditor.php:468
+#: UserEditor.php:471
 #, fuzzy
 msgid "Style"
 msgstr "風格"
@@ -3405,75 +3408,75 @@ msgstr "總計登錄"
 msgid "Failed Logins"
 msgstr "登錄失敗"
 
-#: UserPasswordChange.php:82
+#: UserPasswordChange.php:68
 msgid "You must enter a password in both boxes"
 msgstr "您必須輸入一個密碼，這兩個框"
 
-#: UserPasswordChange.php:88 UserPasswordChange.php:136
+#: UserPasswordChange.php:74 UserPasswordChange.php:128
 msgid "You must enter the same password in both boxes"
 msgstr "您必須在兩個框中輸入相同的密碼"
 
-#: UserPasswordChange.php:124
+#: UserPasswordChange.php:116
 msgid "Invalid password"
 msgstr "無效的密碼"
 
-#: UserPasswordChange.php:130
+#: UserPasswordChange.php:122
 msgid "You must enter your new password in both boxes"
 msgstr "在這兩個框，您必須輸入您的新密碼"
 
-#: UserPasswordChange.php:142
+#: UserPasswordChange.php:134
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "選擇你的密碼是太明顯了。請選擇其他的東西。"
 
-#: UserPasswordChange.php:148
+#: UserPasswordChange.php:140
 msgid "Your new password must be at least"
 msgstr "您的新密碼必須至少"
 
-#: UserPasswordChange.php:148
+#: UserPasswordChange.php:140
 msgid "characters"
 msgstr "字符"
 
-#: UserPasswordChange.php:154
+#: UserPasswordChange.php:146
 msgid "You need to actually change your password (nice try, though!)"
 msgstr "您需要更改您的密碼（不錯的嘗試，但！）"
 
-#: UserPasswordChange.php:157
+#: UserPasswordChange.php:149
 msgid "Your new password is too similar to your old one.  Be more creative!"
 msgstr "您的新密碼是你的舊太相似了。更多的創意！"
 
-#: UserPasswordChange.php:188
+#: UserPasswordChange.php:179
 msgid "User Password Change"
 msgstr "用戶密碼更改"
 
-#: UserPasswordChange.php:196
+#: UserPasswordChange.php:187
 msgid "Your account record indicates that you need to change your password before proceding."
 msgstr "您的帳戶記錄表明操作前，您需要更改您的密碼。"
 
-#: UserPasswordChange.php:209
+#: UserPasswordChange.php:200
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "請輸入您的當前密碼，然後兩次新密碼。密碼必須至少"
 
-#: UserPasswordChange.php:209
+#: UserPasswordChange.php:200
 msgid "characters in length."
 msgstr "字符的長度。"
 
-#: UserPasswordChange.php:211
+#: UserPasswordChange.php:202
 msgid "Enter a new password for this user."
 msgstr "輸入此用戶的密碼。"
 
-#: UserPasswordChange.php:222
+#: UserPasswordChange.php:213
 #, fuzzy
 msgid "Old Password"
 msgstr "舊密碼"
 
-#: ChurchCRM/Emails/users/NewAccountEmail.php:27
-#: ChurchCRM/Emails/users/PasswordChangeEmail.php:26
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:27 UserPasswordChange.php:229
+#: ChurchCRM/Emails/users/NewAccountEmail.php:30
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:220
 #, fuzzy
 msgid "New Password"
 msgstr "新密碼"
 
-#: UserPasswordChange.php:233
+#: UserPasswordChange.php:224
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "確認新密碼"
@@ -3811,8 +3814,8 @@ msgstr "聯絡"
 msgid "City, State, Zip"
 msgstr "市，州，郵政編碼"
 
-#: external/templates/verify/verify-family-info.php:36 FamilyEditor.php:795
-#: FamilyView.php:240 Reports/ConfirmReportEmail.php:143
+#: external/templates/verify/verify-family-info.php:36 FamilyEditor.php:790
+#: FamilyView.php:239 Reports/ConfirmReportEmail.php:143
 #: Reports/ConfirmReport.php:145
 msgid "Send Newsletter"
 msgstr "發送通訊"
