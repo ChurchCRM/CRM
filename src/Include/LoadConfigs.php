@@ -143,14 +143,14 @@ ini_set('error_log', $logFilePrefix.'-php.log');
 
 // APP Logs
 $logger = new Logger('defaultLogger');
-$logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log'));
+$logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log', intval(SystemConfig::getValue("sLogLevel"))));
 
 if (SystemConfig::getBooleanValue("debug")) {
     // ORM Logs
     $ormLogger = new Logger('ormLogger');
     $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
     $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
-    $ormLogger->pushHandler(new StreamHandler($logFilePrefix.'-orm.log'));
+    $ormLogger->pushHandler(new StreamHandler($logFilePrefix.'-orm.log', intval(SystemConfig::getValue("sLogLevel"))));
     $serviceContainer->setLogger('defaultLogger', $ormLogger);
 }
 
