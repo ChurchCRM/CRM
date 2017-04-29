@@ -137,17 +137,20 @@ SystemConfig::init(ConfigQuery::create()->find());
 // **************************************************
 
 $logger = new Logger('defaultLogger');
+$logFilePrefix = SystemURLs::getDocumentRoot().'/logs/'.date("Y-m-d");
 if (SystemConfig::getBooleanValue("debug")) {
-    $logFile = SystemURLs::getDocumentRoot().'/logs/ChurchCRM-'.date("Y-m-d").'.log';
+    $logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log'));
+
+    $ormLogger = new Logger('ormLogger');
     $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
     $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
-    $logger->pushHandler(new StreamHandler($logFile));
-    $serviceContainer->setLogger('defaultLogger', $logger);
-    ini_set('log_errors', 1);
-    ini_set('error_log', $logFile);
+    $ormLogger->pushHandler(new StreamHandler($logFilePrefix.'-orm.log'));
+    $serviceContainer->setLogger('defaultLogger', $ormLogger);
 } else {
     $logger->pushHandler(new NullHandler());
 }
+ini_set('log_errors', 1);
+ini_set('error_log', $logFilePrefix.'-php.log');
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
     // Load user variables from user config table.
