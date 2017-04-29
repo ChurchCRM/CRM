@@ -49,7 +49,7 @@ class SystemConfig
   private static function buildConfigs()
   {
     return array(
-        "debug" => new ConfigItem(2, "debug", "boolean", "0", gettext("Set debug mode\r\nThis may be helpful for when you're first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you'll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.")),
+        "debug" => new ConfigItem(2, "debug", "boolean", "0", gettext("Set debug mode for dbl logs.")),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma seperated")),
         "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "text", "1", gettext("These are the family role numbers designated as head of house")),
         "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "text", "2", gettext("These are the family role numbers designated as spouse")),

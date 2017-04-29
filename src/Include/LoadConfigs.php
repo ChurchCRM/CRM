@@ -44,7 +44,6 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Propel;
-use Monolog\Handler\NullHandler;
 
 function system_failure($message, $header = 'Setup failure')
 {
