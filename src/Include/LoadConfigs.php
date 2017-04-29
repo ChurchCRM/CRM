@@ -44,6 +44,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Propel;
+use Monolog\Handler\NullHandler;
 
 function system_failure($message, $header = 'Setup failure')
 {
@@ -134,15 +135,18 @@ SystemConfig::init(ConfigQuery::create()->find());
 
 // enable logs if we are in debug mode
 // **************************************************
-$logFile = SystemConfig::getValue("sLogFile");
+
+$logger = new Logger('defaultLogger');
 if (SystemConfig::getBooleanValue("debug")) {
+    $logFile = SystemURLs::getDocumentRoot().'/logs/ChurchCRM-'.date("Y-m-d").'.log';
     $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
     $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
-    $logger = new Logger('defaultLogger');
     $logger->pushHandler(new StreamHandler($logFile));
     $serviceContainer->setLogger('defaultLogger', $logger);
     ini_set('log_errors', 1);
     ini_set('error_log', $logFile);
+} else {
+    $logger->pushHandler(new NullHandler());
 }
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
