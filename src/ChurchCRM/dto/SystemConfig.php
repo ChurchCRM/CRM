@@ -281,5 +281,17 @@ class SystemConfig
       }
     }
 
+    public static function hasValidMailServerSettings() {
+        $hasValidSettings = true;
+        if (empty(self::getValue("sSMTPHost"))) {
+            $hasValidSettings = false;
+        }
+
+        if (SystemConfig::getBooleanValue("sSMTPAuth") and (empty(self::getValue("sSMTPUser")) or empty(self::getValue("sSMTPPass")))) {
+            $hasValidSettings = false;
+        }
+
+        return $hasValidSettings;
+    }
 
 }
