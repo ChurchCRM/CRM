@@ -122,9 +122,12 @@
         "versions": [
             "2.7.0",
             "2.7.1",
-            "2.7.2"
+            "2.7.2",
+            "2.7.3"
         ],
-        "scripts": [],
-        "dbVersion": "2.7.3"
+        "scripts": [
+            "2.8.0-password-reset.sql"
+        ],
+        "dbVersion": "2.8.0"
     }
 }
