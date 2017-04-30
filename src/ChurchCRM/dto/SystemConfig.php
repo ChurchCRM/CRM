@@ -65,8 +65,8 @@ class SystemConfig
   private static function buildConfigs()
   {
     return array(
-        "debug" => new ConfigItem(2, "debug", "boolean", "0", gettext("Set debug mode for ORM logs")),
-        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write"), json_encode(SystemConfig::getMonoLogLevels())),
+        "debug" => new ConfigItem(2, "debug", "boolean", "0", gettext("Set debug mode for sql errors, note ORM logs are controlled by sLogLevel")),
+        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), json_encode(SystemConfig::getMonoLogLevels())),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma seperated")),
         "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "text", "1", gettext("These are the family role numbers designated as head of house")),
         "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "text", "2", gettext("These are the family role numbers designated as spouse")),
