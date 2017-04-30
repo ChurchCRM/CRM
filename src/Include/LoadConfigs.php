@@ -136,6 +136,7 @@ SystemConfig::init(ConfigQuery::create()->find());
 // **************************************************
 
 $logFilePrefix = SystemURLs::getDocumentRoot().'/logs/'.date("Y-m-d");
+$logLevel = intval(SystemConfig::getValue("sLogLevel"));
 
 // PHP Logs
 ini_set('log_errors', 1);
@@ -143,16 +144,14 @@ ini_set('error_log', $logFilePrefix.'-php.log');
 
 // APP Logs
 $logger = new Logger('defaultLogger');
-$logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log', intval(SystemConfig::getValue("sLogLevel"))));
+$logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log', $logLevel));
 
-if (SystemConfig::getBooleanValue("debug")) {
-    // ORM Logs
-    $ormLogger = new Logger('ormLogger');
-    $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
-    $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
-    $ormLogger->pushHandler(new StreamHandler($logFilePrefix.'-orm.log', intval(SystemConfig::getValue("sLogLevel"))));
-    $serviceContainer->setLogger('defaultLogger', $ormLogger);
-}
+// ORM Logs
+$ormLogger = new Logger('ormLogger');
+$dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
+$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
+$ormLogger->pushHandler(new StreamHandler($logFilePrefix.'-orm.log', $logLevel));
+$serviceContainer->setLogger('defaultLogger', $ormLogger);
 
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
