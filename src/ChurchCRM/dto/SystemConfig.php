@@ -168,7 +168,8 @@ class SystemConfig
         "bAllowEmptyLastName" => new ConfigItem(2010, "bAllowEmptyLastName", "boolean", "0", gettext("Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.")),
         "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "number", "3", gettext("Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName ")),
         "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
-        "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL"))
+        "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL")),
+        "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen"))
       );
   }
 
@@ -176,7 +177,7 @@ class SystemConfig
   {
     return array (
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","nChurchLatitude","nChurchLongitude"],
-      gettext('User setup') => ["sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords"],
+      gettext('User setup') => ["sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords","bEnableLostPassword"],
       gettext('Email Setup')  => ["sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress","mailChimpApiKey"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip","sEnableGravatarPhotos","sEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
       gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","debug","sLogFile", "bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
