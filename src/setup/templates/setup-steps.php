@@ -20,6 +20,13 @@ require '../Include/HeaderNotLoggedIn.php';
 <script>
     window.CRM = {};
     window.CRM.prerequisites = [];
+    window.CRM.prerequisitesStatus = false;
+
+    function skipCheck() {
+        $("#prerequisites-war").hide();
+        window.CRM.prerequisitesStatus = true;
+    }
+
     window.CRM.checkIntegrity = function () {
         window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","pending");
         $.ajax({
@@ -30,6 +37,7 @@ require '../Include/HeaderNotLoggedIn.php';
             {
                 window.CRM.renderPrerequisite("ChurchCRM File Integrity Check","pass");
                 $("#prerequisites-war").hide();
+                window.CRM.prerequisitesStatus = true;
             }
             else
             {
@@ -111,7 +119,9 @@ require '../Include/HeaderNotLoggedIn.php';
 
         <p/>
 
-        <div class="callout callout-warning" id="prerequisites-war">This server isn't quite ready for ChurchCRM. If you know what you are doing.  Click <b>Next</b>.</button>
+        <div class="callout callout-warning" id="prerequisites-war">
+            This server isn't quite ready for ChurchCRM. If you know what you are doing.
+            <a href="#" onclick="skipCheck()"><b>Click here</b></a>.
         </div>
 
 
@@ -213,12 +223,25 @@ require '../Include/HeaderNotLoggedIn.php';
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery.steps/jquery.steps.min.js" ></script>
 <script>
+
+    function disableNext(){
+        var nextButton = $(".actions ul li:nth-child(2) a");
+        buttonEnabled = $(".actions ul li:nth-child(2)").addClass("disabled").attr("aria-disabled", "true");
+    }
+
+
     $("document").ready(function(){
         $("#wizard").steps({
             headerTag: "h2",
             bodyTag: "section",
             transitionEffect: "slideLeft",
-            stepsOrientation: "vertical"
+            stepsOrientation: "vertical",
+            onStepChanging: function (event, currentIndex, newIndex) {
+                if (currentIndex == 0) {
+                    return window.CRM.prerequisitesStatus;
+                }
+                return true;
+            }
         });
 
         window.CRM.checkIntegrity();
