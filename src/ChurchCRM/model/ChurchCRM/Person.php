@@ -99,12 +99,12 @@ class Person extends BasePerson implements iPhoto
         $note->setPerId($this->getId());
 
         if ($new) {
-            $note->setText('Created');
+            $note->setText(gettext('Created'));
             $note->setType('create');
             $note->setEnteredBy($this->getEnteredBy());
             $note->setDateEntered($this->getDateEntered());
         } else {
-            $note->setText('Updated');
+            $note->setText(gettext('Updated'));
             $note->setType('edit');
             $note->setEnteredBy($this->getEditedBy());
             $note->setDateLastEdited($this->getDateLastEdited());

@@ -20,19 +20,13 @@ abstract class BaseUserEmail extends BaseEmail
         $this->user = $user;
         $this->mail->Subject = SystemConfig::getValue("sChurchName") . ": " . $this->getSubSubject();
         $this->mail->isHTML(true);
-
-        $html = $this->getHTMLShell($user->getEmail(), $this->buildMessage());
-
-        $this->mail->msgHTML($html);
     }
-
-    protected abstract function getSubSubject();
 
     public function getTokens()
     {
         $myTokens =  ["toName" => $this->user->getPerson()->getFirstName(),
             "userName" => $this->user->getUserName(),
-            "userNameText" => gettext('Username'),
+            "userNameText" => gettext('Email/Username'),
             "body" => $this->buildMessageBody()
         ];
         return array_merge($this->getCommonTokens(), $myTokens);
