@@ -289,7 +289,7 @@ function RunQuery($sSQL, $bStopOnError = true)
     if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
         return $result;
     } elseif ($bStopOnError) {
-        if (SystemConfig::getValue('debug')) {
+        if (SystemConfig::getValue('sLogLevel ') == "100") { // debug level
             die(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error());
         } else {
             die('Database error or invalid data');
