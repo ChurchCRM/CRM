@@ -13,6 +13,7 @@ class SystemURLs
     private static $rootPath;
     private static $urls;
     private static $documentRoot;
+    private static $CSPNonce;
 
     public static function init($rootPath, $urls, $documentRoot)
     {
@@ -23,6 +24,7 @@ class SystemURLs
         self::$rootPath = $rootPath;
         self::$urls = $urls;
         self::$documentRoot = $documentRoot;
+        self::$CSPNonce = base64_encode(random_bytes(16));
     }
 
     public static function getRootPath()
@@ -89,5 +91,10 @@ class SystemURLs
                 exit;
             }
         }
+    }
+    
+    public static function getCSPNonce()
+    {
+      return self::$CSPNonce;
     }
 }

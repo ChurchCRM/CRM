@@ -33,6 +33,7 @@ require 'Include/Config.php';
 $bSuppressSessionTests = true; // DO NOT MOVE
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
@@ -216,7 +217,7 @@ require 'Include/HeaderNotLoggedIn.php';
 </div>
 <!-- /.login-box -->
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
     function $buo_f() {
         var e = document.createElement("script");

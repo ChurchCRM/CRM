@@ -309,9 +309,8 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 } ?>
 
-<?php if ($_SESSION['bAdmin']) {
-    global $nonce; ?>
-    <script nonce="<?= $nonce ?>">
+<?php if ($_SESSION['bAdmin']) { ?>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         ((window.gitter = {}).chat = {}).options = {
             room: 'churchcrm/crm',
             activationElement: false

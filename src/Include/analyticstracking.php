@@ -1,11 +1,11 @@
 <?php
-use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 $googleTrackingID = SystemConfig::getValue('googleTrackingID');
 
 if (!empty($googleTrackingID)) {
     ?>
-    <script>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {

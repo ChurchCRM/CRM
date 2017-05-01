@@ -26,7 +26,7 @@ use ChurchCRM\dto\SystemURLs;
   <!-- Bootbox -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
 
-  <script>
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(function () {
       $('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',

@@ -6,16 +6,19 @@
  * and open the template in the editor.
  */
 
-global $nonce;
-
-$nonce = 'Xiojd98a8jd3s9kFiDi29Uijwdu';
+use ChurchCRM\dto\SystemURLs;
 
 $csp = array(
     "default-src 'self'",
-    "script-src 'self' 'nonce-".$nonce."' sidecar.gitter.im",
+    "script-src 'self' 'nonce-".SystemURLs::getCSPNonce()."' sidecar.gitter.im browser-update.org",
+    "object-src 'none'",
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
-    "font-src 'self' fonts.gstatic.com"
+    "img-src 'self'",
+    "media-src 'self'",
+    "frame-src 'self'",
+    "font-src 'self' fonts.gstatic.com",
+    "connect-src 'self'"
 );
 
 header('X-Frame-Options: SAMEORIGIN');
-header("Content-Security-Policy:".join(";", $csp));
+header("Content-Security-Policy-Report-Only:".join(";", $csp));
