@@ -50,7 +50,7 @@
         "changelog-gen": "scripts/gen-changelogs.sh",
         "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "composer-install": "cd src/ && composer install",
-        "composer-update": " cd src/ && composer update",
+        "composer-update": " cd src/ && composer update && cd ../tests/ && composer update",
         "tests-install": "scripts/tests-install.sh",
         "test": "scripts/tests-run.sh"
     }
