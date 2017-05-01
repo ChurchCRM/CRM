@@ -12,7 +12,6 @@
 
 #Exclude composer vendor folders
 vendor
-composer.lock
 node_modules
 npm-debug.log*
 BuildConfig.json
