@@ -46,11 +46,26 @@ class SystemConfig
 
   }
 
+    public static function getMonoLogLevels()
+    {
+        return [
+            "Choices" => [
+                gettext("DEBUG").":100",
+                gettext("INFO").":200",
+                gettext("NOTICE").":250",
+                gettext("WARNING").":300",
+                gettext("ERROR").":400",
+                gettext("CRITICAL").":500",
+                gettext("ALERT").":550",
+                gettext("EMERGENCY").":600"
+            ]
+        ];
+    }
+
   private static function buildConfigs()
   {
     return array(
-        "debug" => new ConfigItem(2, "debug", "boolean", "1", gettext("Set debug mode\r\nThis may be helpful for when you're first setting up ChurchCRM, but you should\r\nprobably turn it off for maximum security otherwise.  If you are having trouble,\r\nplease enable this so that you'll know what the errors are.  This is especially\r\nimportant if you need to report a problem on the help forums.")),
-        "sLogFile" => new ConfigItem(3, "sLogFile", "text", "/tmp/ChurchCRM.log", gettext("If debug is enabled the location of log files.")),
+        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), json_encode(SystemConfig::getMonoLogLevels())),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma seperated")),
         "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "text", "1", gettext("These are the family role numbers designated as head of house")),
         "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "text", "2", gettext("These are the family role numbers designated as spouse")),
@@ -84,8 +99,8 @@ class SystemConfig
         "sGoogleMapKey" => new ConfigItem(44, "sGoogleMapKey", "text", "", gettext("Google map API requires a unique key") . " - https://developers.google.com/maps/documentation/javascript/get-api-key"),
         "sBingMapKey" => new ConfigItem(10000, "sBingMapKey", "text", "", gettext("Bing map API requires a unique key") . " - https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"),
         "iMapZoom" => new ConfigItem(10001, "iMapZoom", "number", "10", gettext("Google Maps Zoom")),
-        "nChurchLatitude" => new ConfigItem(45, "nChurchLatitude", "number", "", gettext("Latitude of the church, used to center the Google map")),
-        "nChurchLongitude" => new ConfigItem(46, "nChurchLongitude", "number", "", gettext("Longitude of the church, used to center the Google map")),
+        "nChurchLatitude" => new ConfigItem(45, "nChurchLatitude", "number", "", gettext("Latitude"). " " . gettext("of the church, used to center the Google map")),
+        "nChurchLongitude" => new ConfigItem(46, "nChurchLongitude", "number", "", gettext("Longitude"). " " . gettext("of the church, used to center the Google map")),
         "bHidePersonAddress" => new ConfigItem(47, "bHidePersonAddress", "boolean", "1", gettext("Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.")),
         "bHideFriendDate" => new ConfigItem(48, "bHideFriendDate", "boolean", "0", gettext("Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.")),
         "bHideFamilyNewsletter" => new ConfigItem(49, "bHideFamilyNewsletter", "boolean", "0", gettext("Set true to disable management of newsletter subscriptions in the Family Editor.")),
@@ -93,8 +108,8 @@ class SystemConfig
         "bHideLatLon" => new ConfigItem(51, "bHideLatLon", "boolean", "0", gettext("Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.")),
         "bUseDonationEnvelopes" => new ConfigItem(52, "bUseDonationEnvelopes", "boolean", "0", gettext("Set true to enable use of donation envelopes")),
         "sHeader" => new ConfigItem(53, "sHeader", "textarea", "", gettext("Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.")),
-        "sISTusername" => new ConfigItem(54, "sISTusername", "text", "username", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Username for") . " - https://www.intelligentsearch.com/Hosted/User"),
-        "sISTpassword" => new ConfigItem(55, "sISTpassword", "text", "", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Password for") . " - https://www.intelligentsearch.com/Hosted/User"),
+        "sISTusername" => new ConfigItem(54, "sISTusername", "text", "username", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Username") . " - https://www.intelligentsearch.com/Hosted/User"),
+        "sISTpassword" => new ConfigItem(55, "sISTpassword", "text", "", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Password") . " - https://www.intelligentsearch.com/Hosted/User"),
         "sGeoCoderProvider" => new ConfigItem(56, "sGeoCoderProvider", "choice", "GoogleMaps", gettext("Select GeoCoder Provider") . " - https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers", '{"Choices":["GoogleMaps", "BingMaps"]}'),
         "iChecksPerDepositForm" => new ConfigItem(57, "iChecksPerDepositForm", "number", "14", gettext("Number of checks for Deposit Slip Report")),
         "bUseScannedChecks" => new ConfigItem(58, "bUseScannedChecks", "boolean", "0", gettext("Set true to enable use of scanned checks")),
@@ -179,7 +194,7 @@ class SystemConfig
       gettext('User setup') => ["sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords"],
       gettext('Email Setup')  => ["sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress","mailChimpApiKey"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip","sEnableGravatarPhotos","sEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
-      gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","debug","sLogFile", "bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
+      gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","sLogLevel", "bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],

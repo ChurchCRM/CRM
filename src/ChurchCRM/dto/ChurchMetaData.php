@@ -60,6 +60,16 @@ class ChurchMetaData
         return SystemConfig::getValue('sChurchCountry');
     }
 
+    public static function getChurchEmail()
+    {
+        return SystemConfig::getValue('sChurchEmail');
+    }
+
+    public static function getChurchPhone()
+    {
+        return SystemConfig::getValue('sChurchPhone');
+    }
+
     public static function getChurchLatitude()
     {
         if (empty(SystemConfig::getValue('nChurchLatitude'))) {

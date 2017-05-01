@@ -50,7 +50,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
   // Check for login timeout.  If login has expired, redirect to login page
   if (SystemConfig::getValue('sSessionTimeout') > 0) {
       if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('sSessionTimeout')) {
-          Redirect('Logoff.php');
+          Redirect('Login.php');
           exit;
       } else {
           $_SESSION['tLastOperation'] = time();
@@ -289,7 +289,7 @@ function RunQuery($sSQL, $bStopOnError = true)
     if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
         return $result;
     } elseif ($bStopOnError) {
-        if (SystemConfig::getValue('debug')) {
+        if (SystemConfig::getValue('sLogLevel ') == "100") { // debug level
             die(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error());
         } else {
             die('Database error or invalid data');

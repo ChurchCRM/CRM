@@ -13,9 +13,6 @@ class LockedEmail extends BaseUserEmail
 
     protected function buildMessageBody()
     {
-        $msg = array();
-        array_push($msg, gettext("We wanted to let you know that your ChurchCRM account was locked."));
-        array_push($msg, gettext("If you think this is an error") . " " . gettext("please contact your admin"));
-        return implode("<p/>", $msg);
+        return gettext("Your ChurchCRM account was locked.");
     }
 }

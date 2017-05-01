@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM/CRM",
-    "version": "2.7.2",
+    "version": "2.7.3",
     "type": "project",
     "keywords": [
         "church",
@@ -41,7 +41,8 @@
         "phpmailer/phpmailer": "5.2.*",
         "verot/class.upload.php": "dev-master",
         "ifsnop/mysqldump-php": "2.*",
-        "willdurand/geocoder": "3.3.*"
+        "willdurand/geocoder": "3.3.*",
+        "mustache/mustache": "~2.5"
     },
     "autoload": {
         "classmap": [

@@ -38,3 +38,9 @@ Users can be edited by clicking on _"Edit Users"_ in the Admin ⚙ menu. A list 
 ## What is the default password assigned to new Users?
 
 The default password is set and can be changed in the System Settings via the top right admin menu.
+
+## Password Change Behavior
+
+ - Users are required to change their password at first login.
+ - Users are required to change their password when it has been "reset" by an administrator.
+ - Users are not required to change their password if it has been "set" by and administrator.
