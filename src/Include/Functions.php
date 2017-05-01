@@ -285,7 +285,7 @@ function MakeFYString($iFYID)
 function RunQuery($sSQL, $bStopOnError = true)
 {
     global $cnInfoCentral;
-
+    mysqli_query($cnInfoCentral, "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
     if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
         return $result;
     } elseif ($bStopOnError) {
