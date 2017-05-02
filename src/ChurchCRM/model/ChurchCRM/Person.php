@@ -397,6 +397,14 @@ class Person extends BasePerson implements iPhoto
     {
         $this->deletePhoto();
 
+        $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
+        if (!empty($obj)) {
+            $groupService = new GroupService();
+            foreach ($obj as $group2roleP2g2r) {
+                $groupService->removeUserFromGroup($group2roleP2g2r->getGroupId(), $group2roleP2g2r->getPersonId());
+            }
+        }
+
         $perCustom = PersonCustomQuery::create()->findPk($this->getId(), $con);
         if (!is_null($perCustom)) {
             $perCustom->delete($con);
@@ -407,28 +415,11 @@ class Person extends BasePerson implements iPhoto
             $user->delete($con);
         }
 
-        $perVolunteers = PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->find($con);
-        foreach ($perVolunteers as $perVolunteer) {
-            $perVolunteer->delete($con);
-        }
+        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->find($con)->delete();
 
-        $perProbs = PersonPropertyQuery::create()->filterByPerson($this)->find($con);
-        foreach ($perProbs as $pp) {
-            $pp->delete($con);
-        }
+        PersonPropertyQuery::create()->filterByPerson($this)->find($con)->delete();
 
-        $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
-        if (!empty($obj)) {
-            $groupService = new GroupService();
-            foreach ($obj as $group2roleP2g2r) {
-                $groupService->removeUserFromGroup($group2roleP2g2r->getGroupId(), $group2roleP2g2r->getPersonId());
-            }
-        }
-
-        $notes = NoteQuery::create()->filterByPerson($this)->find($con);
-        foreach ($notes as $notes) {
-            $notes->delete($con);
-        }
+        NoteQuery::create()->filterByPerson($this)->find($con)->delete();
 
         return parent::preDelete($con);
     }
