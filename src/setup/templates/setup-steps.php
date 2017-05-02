@@ -124,7 +124,7 @@ require '../Include/HeaderNotLoggedIn.php';
                 <small id="DB_PASSWORD2_HELP" class="form-text text-muted"></small>
             </div>
         </section>
-
+        <!--
         <h2>Church Info</h2>
         <section>
             <div class="form-group">
@@ -221,7 +221,7 @@ require '../Include/HeaderNotLoggedIn.php';
                     SMTP password.
                 </small>
             </div>
-        </section>
+        </section>-->
     </div>
 </form>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery.steps/jquery.steps.min.js"></script>
