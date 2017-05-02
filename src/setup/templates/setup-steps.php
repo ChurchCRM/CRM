@@ -20,7 +20,7 @@ require '../Include/HeaderNotLoggedIn.php';
 <script>
     window.CRM = {};
     window.CRM.prerequisites = [];
-    window.CRM.prerequisitesStatus = false;
+    window.CRM.prerequisitesStatus = false; //TODO this is not correct we need 2 flags 
 
     function skipCheck() {
         $("#prerequisites-war").hide();
@@ -30,7 +30,7 @@ require '../Include/HeaderNotLoggedIn.php';
     window.CRM.checkIntegrity = function () {
         window.CRM.renderPrerequisite("ChurchCRM File Integrity Check", "pending");
         $.ajax({
-            url: "<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>/Setup/SystemIntegrityCheck",
+            url: "<?= SystemURLs::getRootPath() ?>/setup/SystemIntegrityCheck",
             method: "GET"
         }).done(function (data) {
             if (data == "success") {
@@ -49,7 +49,7 @@ require '../Include/HeaderNotLoggedIn.php';
 
     window.CRM.checkPrerequisites = function () {
         $.ajax({
-            url: "<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>/setup/SystemPrerequisiteCheck",
+            url: "<?= SystemURLs::getRootPath() ?>/setup/SystemPrerequisiteCheck",
             method: "GET",
             contentType: "application/json"
         }).done(function (data) {
