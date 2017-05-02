@@ -20,7 +20,7 @@ require '../Include/HeaderNotLoggedIn.php';
 <script>
     window.CRM = {};
     window.CRM.prerequisites = [];
-    window.CRM.prerequisitesStatus = false; //TODO this is not correct we need 2 flags 
+    window.CRM.prerequisitesStatus = false; //TODO this is not correct we need 2 flags
 
     function skipCheck() {
         $("#prerequisites-war").hide();
@@ -103,7 +103,7 @@ require '../Include/HeaderNotLoggedIn.php';
 </script>
 <h1 class="text-center"><?= gettext('Welcome to ChurchCRM setup wizard') ?></h1>
 <p/><br/>
-<form>
+<form id="setup-form">
     <div id="wizard">
         <h2>System Prerequisite</h2>
         <section>
@@ -139,7 +139,7 @@ require '../Include/HeaderNotLoggedIn.php';
                 <label for="ROOT_PATH">Root Path</label>
                 <input type="text" name="ROOT_PATH" id="ROOT_PATH"
                        value="<?= \ChurchCRM\dto\SystemURLs::getRootPath() ?>" class="form-control"
-                       aria-describedby="ROOT_PATH_HELP" required>
+                       aria-describedby="ROOT_PATH_HELP">
                 <small id="ROOT_PATH_HELP" class="form-text text-muted">
                     Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
                     <p/>
@@ -194,6 +194,12 @@ require '../Include/HeaderNotLoggedIn.php';
                 <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" class="form-control"
                        aria-describedby="DB_PASSWORD_HELP" required>
                 <small id="DB_PASSWORD_HELP" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label for="DB_PASSWORD2">Confirm Database Password</label>
+                <input type="password" name="DB_PASSWORD2" id="DB_PASSWORD2" class="form-control"
+                       aria-describedby="DB_PASSWORD2_HELP" required>
+                <small id="DB_PASSWORD2_HELP" class="form-text text-muted"></small>
             </div>
         </section>
 
@@ -282,18 +288,44 @@ require '../Include/HeaderNotLoggedIn.php';
     </div>
 </form>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery.steps/jquery.steps.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-validation/jquery.validate.min.js"></script>
 <script>
     $("document").ready(function () {
-        $("#wizard").steps({
+        var setupWizard = $("#setup-form");
+
+        setupWizard.validate({
+            rules: {
+                DB_PASSWORD2: {
+                    equalTo: "#DB_PASSWORD"
+                }
+            }
+        });
+
+        setupWizard.children("div").steps({
             headerTag: "h2",
             bodyTag: "section",
             transitionEffect: "slideLeft",
             stepsOrientation: "vertical",
             onStepChanging: function (event, currentIndex, newIndex) {
+                if (currentIndex > newIndex) {
+                    return true;
+                }
+
                 if (currentIndex == 0) {
                     return window.CRM.prerequisitesStatus;
                 }
-                return true;
+
+                setupWizard.validate().settings.ignore = ":disabled,:hidden";
+                return setupWizard.valid();
+            },
+            onFinishing: function (event, currentIndex)
+            {
+                setupWizard.validate().settings.ignore = ":disabled";
+                return setupWizard.valid();
+            },
+            onFinished: function (event, currentIndex)
+            {
+                alert("Submitted!");
             }
         });
 
