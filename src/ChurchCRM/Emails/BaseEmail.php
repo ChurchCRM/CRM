@@ -54,7 +54,7 @@ abstract class BaseEmail
         if (SystemConfig::hasValidMailServerSettings()) {
             return $this->mail->send();
         }
-        return true; // we don't have a valid setting so let us make sure we don't crash.
+        return false; // we don't have a valid setting so let us make sure we don't crash.
 
     }
 
