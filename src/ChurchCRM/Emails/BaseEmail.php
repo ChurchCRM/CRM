@@ -43,12 +43,19 @@ abstract class BaseEmail
             $this->mail->Username = SystemConfig::getValue("sSMTPUser");
             $this->mail->Password = SystemConfig::getValue("sSMTPPass");
         }
-        //$this->mail->SMTPDebug = 2;
+        if (SystemConfig::getBooleanValue("debug")) {
+            $this->mail->SMTPDebug = 1;
+            $this->mail->Debugoutput = "error_log";
+        }
     }
 
     public function send()
     {
-        return $this->mail->send();
+        if (SystemConfig::hasValidMailServerSettings()) {
+            return $this->mail->send();
+        }
+        return false; // we don't have a valid setting so let us make sure we don't crash.
+
     }
 
     public function getError()
