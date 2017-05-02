@@ -13,11 +13,11 @@
  *
  ******************************************************************************/
 
+use ChurchCRM\PersonQuery;
+
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-use ChurchCRM\Service\GroupService;
-use ChurchCRM\UserQuery;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
@@ -89,11 +89,7 @@ if (isset($_GET['Confirmed'])) {
 
     if (isset($_GET['Members'])) {
         // Delete all persons that were in this family
-        $sSQL = 'SELECT per_ID FROM person_per WHERE per_fam_ID = ' . $iFamilyID;
-        $rsPersons = RunQuery($sSQL);
-        while ($aRow = mysqli_fetch_row($rsPersons)) {
-            DeletePerson($aRow[0]);
-        }
+        PersonQuery::create()->filterByFamId($iFamilyID)->find()->delete();
     } else {
         // Reset previous members' family ID to 0 (undefined)
         $sSQL = 'UPDATE person_per SET per_fam_ID = 0 WHERE per_fam_ID = ' . $iFamilyID;
