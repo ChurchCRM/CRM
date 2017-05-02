@@ -38,7 +38,8 @@ module.exports = function (grunt) {
             //'!Images/{Family,Person}/*.{jpg,jpeg,png}',
             '!composer.lock',
             '!Include/Config.php',
-            '!integrityCheck.json'
+            '!integrityCheck.json',
+            '!logs/*.log'
         ],
         clean: {
             locale: ["src/skin/locale"],
