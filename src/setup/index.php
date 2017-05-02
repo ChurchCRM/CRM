@@ -9,7 +9,6 @@ ini_set('error_log', "/tmp/external.log");
 
 if (file_exists('../Include/Config.php')) {
     header('Location: ../index.php');
-
 } else {
     require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
