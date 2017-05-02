@@ -397,19 +397,25 @@ class Person extends BasePerson implements iPhoto
     {
         $this->deletePhoto();
 
-        $obj = PersonCustomQuery::create()->findPk($this->getId(), $con);
-        if (!is_null($obj)) {
-            $obj->delete();
+        $perCustom = PersonCustomQuery::create()->findPk($this->getId(), $con);
+        if (!is_null($perCustom)) {
+            $perCustom->delete($con);
         }
 
-        $obj = UserQuery::create()->findPk($this->getId(), $con);
-        if (!is_null($obj)) {
-            $obj->delete();
+        $user = UserQuery::create()->findPk($this->getId(), $con);
+        if (!is_null($user)) {
+            $user->delete($con);
         }
 
-        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->deleteAll($con);
-        PersonPropertyQuery::create()->filterByPerson($this)->deleteAll($con);
+        $perVolunteers = PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->find($con);
+        foreach ($perVolunteers as $perVolunteer) {
+            $perVolunteer->delete($con);
+        }
 
+        $perProbs = PersonPropertyQuery::create()->filterByPerson($this)->find($con);
+        foreach ($perProbs as $pp) {
+            $pp->delete($con);
+        }
 
         $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
         if (!empty($obj)) {
@@ -419,7 +425,10 @@ class Person extends BasePerson implements iPhoto
             }
         }
 
-        NoteQuery::create()->filterByPerson($this)->deleteAll($con);
+        $notes = NoteQuery::create()->filterByPerson($this)->find($con);
+        foreach ($notes as $notes) {
+            $notes->delete($con);
+        }
 
         return parent::preDelete($con);
     }
