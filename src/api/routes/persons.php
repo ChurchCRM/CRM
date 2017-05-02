@@ -77,26 +77,6 @@ $app->group('/persons', function () {
             return $response->withStatus(404);
         }
 
-        $obj = PersonCustomQuery::create()->findPk($person->getId());
-        if (!is_null($obj)) {
-            $obj->delete();
-        }
-
-        $obj = UserQuery::create()->findPk($person->getId());
-        if (!is_null($obj)) {
-            $obj->delete();
-        }
-
-        NoteQuery::create()->filterByPerson($person)->deleteAll();
-        PersonVolunteerOpportunityQuery::create()->filterByPersonId($person->getId())->deleteAll();
-        PersonPropertyQuery::create()->filterByPerson($person)->deleteAll();
-
-        $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($person)->find();
-        foreach ($obj as $group2roleP2g2r) {
-            $this->GroupService->removeUserFromGroup($group2roleP2g2r->getGroupId(), $group2roleP2g2r->getPersonId());
-        }
-
-        $person->deletePhoto();
         $person->delete();
 
         return $response->withJSON(array("status" => "success"));
