@@ -2,13 +2,6 @@
 
 // Person APIs
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Person2group2roleP2g2rQuery;
-use ChurchCRM\PersonCustomQuery;
-use ChurchCRM\NoteQuery;
-use ChurchCRM\UserQuery;
-use ChurchCRM\PropertyQuery;
-use ChurchCRM\PersonPropertyQuery;
-use ChurchCRM\PersonVolunteerOpportunityQuery;
 
 $app->group('/persons', function () {
 
