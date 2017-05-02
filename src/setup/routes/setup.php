@@ -20,32 +20,19 @@ $app->group('/', function () {
         return $response->withStatus(200)->withJson($required);
     });
 
+    $this->post('', function ($request, $response, $args) {
+        $setupDate = $request->getParsedBody();
+        $template = file_get_contents(SystemURLs::getDocumentRoot().'/Include/Config.php.example');
+
+        $template = str_replace('||DB_SERVER_NAME||', $setupDate['DB_SERVER_NAME'], $template);
+        $template = str_replace('||DB_NAME||', $setupDate['DB_NAME'], $template);
+        $template = str_replace('||DB_USER||', $setupDate['DB_USER'], $template);
+        $template = str_replace('||DB_PASSWORD||', $setupDate['DB_PASSWORD'], $template);
+        $template = str_replace('||ROOT_PATH||', $setupDate['ROOT_PATH'], $template);
+        $template = str_replace('||URL||', $setupDate['URL'], $template);
+
+        file_put_contents(SystemURLs::getDocumentRoot().'/Include/Config.php', $template);
+
+        return $response->withStatus(200);
+    });
 });
-
-
-
-
-/*// don't depend on autoloader here, just in case validation doesn't pass.
-if (!(file_exists('ChurchCRM/dto/SystemURLs.php') && file_exists('ChurchCRM/Service/AppIntegrityService.php'))) {
-    echo gettext("One or more required setup files are missing.  Please verify you downloaded the correct ChurchCRM package");
-    exit;
-}*/
-/*
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\AppIntegrityService;
-
-if (isset($_POST['Setup'])) {
-    $template = file_get_contents('Include/Config.php.example');
-    $template = str_replace('||DB_SERVER_NAME||', $_POST['DB_SERVER_NAME'], $template);
-    $template = str_replace('||DB_NAME||', $_POST['DB_NAME'], $template);
-    $template = str_replace('||DB_USER||', $_POST['DB_USER'], $template);
-    $template = str_replace('||DB_PASSWORD||', $_POST['DB_PASSWORD'], $template);
-    $template = str_replace('||ROOT_PATH||', $_POST['ROOT_PATH'], $template);
-    $template = str_replace('||URL||', $_POST['URL'], $template);
-    file_put_contents('Include/Config.php', $template);
-    header('Location: index.php');
-    exit();
-}
-
-
-*/

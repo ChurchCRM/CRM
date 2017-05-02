@@ -5,8 +5,6 @@ error_reporting(E_ALL);
 ini_set('log_errors', 1);
 ini_set('error_log', "/tmp/external.log");
 
-
-
 if (file_exists('../Include/Config.php')) {
     header('Location: ../index.php');
 } else {

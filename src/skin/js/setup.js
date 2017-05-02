@@ -113,7 +113,6 @@ $("document").ready(function () {
         onFinished: function (event, currentIndex)
         {
             submitSetupData(setupWizard);
-            alert("Submitted!");
         }
     });
 
@@ -134,16 +133,9 @@ function submitSetupData(form) {
         method: "POST",
         data: JSON.stringify(json),
         contentType: "application/json",
-    }).done(function (data) {
-        $.each(data, function (key, value) {
-            if (value) {
-                status = "pass";
-            }
-            else {
-                status = "fail";
-            }
-            window.CRM.renderPrerequisite(key, status);
-        });
+        success: function (data, status, xmlHttpReq) {
+            location.replace( window.CRM.root + "/");
+        }
     });
 
 }
