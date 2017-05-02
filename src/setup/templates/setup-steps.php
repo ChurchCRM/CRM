@@ -4,104 +4,26 @@ use ChurchCRM\dto\SystemURLs;
 
 $URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . '/';
 
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', '1');
-
-if (!function_exists('bindtextdomain')) {
-    function gettext($string)
-    {
-        return $string + 4;
-    }
-}
-
-$sPageTitle = gettext('ChurchCRM – Setup');
+$sPageTitle = 'ChurchCRM – Setup';
 require '../Include/HeaderNotLoggedIn.php';
 ?>
-<script>
-    window.CRM = {};
-    window.CRM.prerequisites = [];
-    window.CRM.prerequisitesStatus = false; //TODO this is not correct we need 2 flags
-
-    function skipCheck() {
-        $("#prerequisites-war").hide();
-        window.CRM.prerequisitesStatus = true;
+<script language="javascript" type="text/javascript">
+    window.CRM = {
+        root: "<?= SystemURLs::getRootPath() ?>",
+        prerequisites : [],
+        prerequisitesStatus : false //TODO this is not correct we need 2 flags
+    };
+</script>
+<style>
+    .wizard .content > .body {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        position: relative;
     }
 
-    window.CRM.checkIntegrity = function () {
-        window.CRM.renderPrerequisite("ChurchCRM File Integrity Check", "pending");
-        $.ajax({
-            url: "<?= SystemURLs::getRootPath() ?>/setup/SystemIntegrityCheck",
-            method: "GET"
-        }).done(function (data) {
-            if (data == "success") {
-                window.CRM.renderPrerequisite("ChurchCRM File Integrity Check", "pass");
-                $("#prerequisites-war").hide();
-                window.CRM.prerequisitesStatus = true;
-            }
-            else {
-                window.CRM.renderPrerequisite("ChurchCRM File Integrity Check", "fail");
-            }
-
-        }).fail(function () {
-            window.CRM.renderPrerequisite("ChurchCRM File Integrity Check", "fail");
-        });
-    };
-
-    window.CRM.checkPrerequisites = function () {
-        $.ajax({
-            url: "<?= SystemURLs::getRootPath() ?>/setup/SystemPrerequisiteCheck",
-            method: "GET",
-            contentType: "application/json"
-        }).done(function (data) {
-            $.each(data, function (key, value) {
-                if (value) {
-                    status = "pass";
-                }
-                else {
-                    status = "fail";
-                }
-                window.CRM.renderPrerequisite(key, status);
-            });
-        });
-    };
-    window.CRM.renderPrerequisite = function (name, status) {
-        var td = {};
-        if (status == "pass") {
-            td = {
-                class: 'text-blue',
-                html: '&check;'
-            };
-        }
-        else if (status == "pending") {
-            td = {
-                class: 'text-orange',
-                html: '<i class="fa fa-spinner fa-spin"></i>'
-            };
-        }
-        else if (status == "fail") {
-            td = {
-                class: 'text-red',
-                html: '&#x2717;'
-            };
-        }
-        var id = name.replace(/[^A-z0-9]/g, '');
-        window.CRM.prerequisites[id] = status;
-        var domElement = "#" + id;
-        var prerequisite = $("<tr>", {id: id}).append(
-            $("<td>", {text: name})).append(
-            $("<td>", td));
-
-        if ($(domElement).length != 0) {
-            $(domElement).replaceWith(prerequisite);
-        }
-        else {
-            $("#prerequisites").append(prerequisite);
-        }
-
-    };
-
-</script>
-<h1 class="text-center"><?= gettext('Welcome to ChurchCRM setup wizard') ?></h1>
+</style>
+<h1 class="text-center">Welcome to ChurchCRM setup wizard</h1>
 <p/><br/>
 <form id="setup-form">
     <div id="wizard">
@@ -267,80 +189,44 @@ require '../Include/HeaderNotLoggedIn.php';
 
         <h2>Mail Server</h2>
         <section>
-            <div class="callout callout-info" id="prerequisites-war">
-                This information can be updated late on via <b><i>System Settings</i></b>.
+            <div class="form-group">
+                <label for="sSMTPHost">SMTP Host</label>
+                <input type="text" name="sSMTPHost" id="sSMTPHost" class="form-control"
+                       aria-describedby="sSMTPHostHelp" required>
+                <small id="sSMTPHostHelp" class="form-text text-muted">
+                    Either a single hostname, you can also specify a different port by using this format: [hostname:port]
+                </small>
             </div>
-        </section>
-
-        <h2>Configuration</h2>
-        <section>
-            <div class="callout callout-info" id="prerequisites-war">
-                This information can be updated late on via <b><i>System Settings</i></b>.
+            <div class="form-group">
+                <label for="iSMTPTimeout">SMTP Host Timeout</label>
+                <input type="number" name="iSMTPTimeout" id="iSMTPTimeout" class="form-control"
+                       aria-describedby="iSMTPTimeoutHelp" value="30" required>
+                <small id="iSMTPTimeoutHelp" class="form-text text-muted">
+                    The SMTP server timeout in seconds.
+                </small>
             </div>
-        </section>
-
-        <h2>Integration</h2>
-        <section>
-            <div class="callout callout-info" id="prerequisites-war">
-                This information can be updated late on via <b><i>System Settings</i></b>.
+            <div class="form-group">
+                <label for="sSMTPUser">SMTP Host User</label>
+                <input type="text" name="sSMTPUser" id="sSMTPUser" class="form-control"
+                       aria-describedby="sSMTPUserHelp" required>
+                <small id="sSMTPUserHelp" class="form-text text-muted">
+                    SMTP username.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="sSMTPPass">SMTP Host Password</label>
+                <input type="password" name="sSMTPPass" id="sSMTPPass" class="form-control"
+                       aria-describedby="sSMTPPassHelp" required>
+                <small id="sSMTPPassHelp" class="form-text text-muted">
+                    SMTP password.
+                </small>
             </div>
         </section>
     </div>
 </form>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery.steps/jquery.steps.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-validation/jquery.validate.min.js"></script>
-<script>
-    $("document").ready(function () {
-        var setupWizard = $("#setup-form");
-
-        setupWizard.validate({
-            rules: {
-                DB_PASSWORD2: {
-                    equalTo: "#DB_PASSWORD"
-                }
-            }
-        });
-
-        setupWizard.children("div").steps({
-            headerTag: "h2",
-            bodyTag: "section",
-            transitionEffect: "slideLeft",
-            stepsOrientation: "vertical",
-            onStepChanging: function (event, currentIndex, newIndex) {
-                if (currentIndex > newIndex) {
-                    return true;
-                }
-
-                if (currentIndex == 0) {
-                    return window.CRM.prerequisitesStatus;
-                }
-
-                setupWizard.validate().settings.ignore = ":disabled,:hidden";
-                return setupWizard.valid();
-            },
-            onFinishing: function (event, currentIndex)
-            {
-                setupWizard.validate().settings.ignore = ":disabled";
-                return setupWizard.valid();
-            },
-            onFinished: function (event, currentIndex)
-            {
-                alert("Submitted!");
-            }
-        });
-
-        window.CRM.checkIntegrity();
-        window.CRM.checkPrerequisites();
-    });
-</script>
-<style>
-    .wizard .content > .body {
-        width: 100%;
-        height: auto;
-        padding: 15px;
-        position: relative;
-    }
-</style>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/setup.js"></script>
 
 <?php
 require '../Include/FooterNotLoggedIn.php';
