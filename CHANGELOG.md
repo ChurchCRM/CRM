@@ -1,5 +1,35 @@
 # Changelog
 
+## 2.7.3 (29/04/2017)
+
+#### Feature Requests:
+
+- [**development**][**Feature Request**] Use mustache for email templates  [#2309](https://github.com/ChurchCRM/CRM/issues/2309)
+- [**Feature Request**] eMails: Create a template/wrapper for all emails. [#2221](https://github.com/ChurchCRM/CRM/issues/2221)
+
+#### Enhancements:
+
+- [**enhancement**] Timeline: Log user actions  [#2220](https://github.com/ChurchCRM/CRM/issues/2220)
+
+#### Core Functionality
+
+- [**Feature: Users**][**Security**] Do not send an email with password when the change was by the user [#2381](https://github.com/ChurchCRM/CRM/issues/2381)
+- [**Feature: Users**] HTML Tags in Rendered Email Bodies are Escaped [#2370](https://github.com/ChurchCRM/CRM/issues/2370)
+- [**Feature: Financial**][**Web Report**] can't delete a payment from deposit slip [#2366](https://github.com/ChurchCRM/CRM/issues/2366)
+- [**Feature: Financial**][**UI**][**Web Report**] Family view pledge table not datable responsive. [#2191](https://github.com/ChurchCRM/CRM/issues/2191)
+- [**Feature: Groups**][**P0 - Urgent**] groupsview fails to load when there are no groups [#1963](https://github.com/ChurchCRM/CRM/issues/1963)
+
+#### Bug fixes:
+
+- [**Feature: Groups**][**P0 - Urgent**] groupsview fails to load when there are no groups [#1963](https://github.com/ChurchCRM/CRM/issues/1963)
+
+#### Inner Beauty:
+
+- [**Backend System**][**UI**] Person/Family images not appearing after upgrade [#2336](https://github.com/ChurchCRM/CRM/issues/2336)
+- [**development**][**Feature Request**] Use mustache for email templates  [#2309](https://github.com/ChurchCRM/CRM/issues/2309)
+
+---
+
 ## 2.7.2 (24/04/2017)
 
 #### Core Functionality
@@ -939,11 +969,6 @@
 ---
 
 ## 2.1.10 (03/08/2016)
-*No changelog for this release.*
-
----
-
-## 2.1.9 (03/08/2016)
 
 #### Enhancements:
 
