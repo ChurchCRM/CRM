@@ -1,5 +1,26 @@
 # Changelog
 
+## 2.7.4 (01/05/2017)
+
+#### Enhancements:
+
+- [**enhancement**] enable sEnableGravatarPhotos by default  [#2420](https://github.com/ChurchCRM/CRM/issues/2420)
+
+#### Core Functionality
+
+- [**Feature: Financial**][**P0 - Urgent**][**Web Report**] cannot edit payment! [#2432](https://github.com/ChurchCRM/CRM/issues/2432)
+
+#### Bug fixes:
+
+- [**Feature: Financial**][**P0 - Urgent**][**Web Report**] cannot edit payment! [#2432](https://github.com/ChurchCRM/CRM/issues/2432)
+- [**P0 - Urgent**][**question**][**Shared Hosting**] 403 Forbidden error when saving System Settings [#2399](https://github.com/ChurchCRM/CRM/issues/2399)
+
+#### Inner Beauty:
+
+- [**Backend System**][**development**] disable debug setting by default  [#2419](https://github.com/ChurchCRM/CRM/issues/2419)
+
+---
+
 ## 2.7.3 (29/04/2017)
 
 #### Feature Requests:
@@ -952,27 +973,8 @@
 
 #### Enhancements:
 
-- [**enhancement**] List All Church Events sort order [#785](https://github.com/ChurchCRM/CRM/issues/785)
-- [**enhancement**] Calendar: Change Member Birthdays to API [#466](https://github.com/ChurchCRM/CRM/issues/466)
-
-#### Bug fixes:
-
-- [**bug**][**build**][**question**] File extraction with incorrect 666 permissions [#882](https://github.com/ChurchCRM/CRM/issues/882)
-- [**bug**] Search bar does not work on iOS [#821](https://github.com/ChurchCRM/CRM/issues/821)
-- [**bug**] Default Start and end times for event [#412](https://github.com/ChurchCRM/CRM/issues/412)
-
-#### Inner Beauty:
-
-- [**bug**][**build**][**question**] File extraction with incorrect 666 permissions [#882](https://github.com/ChurchCRM/CRM/issues/882)
-- [**build**] Build System should rev the build version [#780](https://github.com/ChurchCRM/CRM/issues/780)
-
----
-
-## 2.1.10 (03/08/2016)
-
-#### Enhancements:
-
 - [**enhancement**] Email from Member Dashboard [#848](https://github.com/ChurchCRM/CRM/issues/848)
+- [**enhancement**] List All Church Events sort order [#785](https://github.com/ChurchCRM/CRM/issues/785)
 - [**development**][**enhancement**] Locale: french fr_FR [#775](https://github.com/ChurchCRM/CRM/issues/775)
 - [**enhancement**] Add A4 paper size option for the members directory [#747](https://github.com/ChurchCRM/CRM/issues/747)
 - [**bug**][**enhancement**] fix bad $sRootPath at runTime [#741](https://github.com/ChurchCRM/CRM/issues/741)
@@ -989,6 +991,7 @@
 - [**enhancement**] Sunday School: Queries [#479](https://github.com/ChurchCRM/CRM/issues/479)
 - [**enhancement**] Move SundaySchool Reports [#478](https://github.com/ChurchCRM/CRM/issues/478)
 - [**enhancement**] Notes: Covert Notes to Timeline  [#477](https://github.com/ChurchCRM/CRM/issues/477)
+- [**enhancement**] Calendar: Change Member Birthdays to API [#466](https://github.com/ChurchCRM/CRM/issues/466)
 - [**enhancement**] Mailchimp's Generate Email Export should export a person's groups [#457](https://github.com/ChurchCRM/CRM/issues/457)
 - [**development**][**enhancement**][**question**] Bug Reporting from within App [#455](https://github.com/ChurchCRM/CRM/issues/455)
 - [**enhancement**] Add to Cart from Family view should use ajax or at least return to same page [#449](https://github.com/ChurchCRM/CRM/issues/449)
@@ -1043,11 +1046,13 @@
 #### Bug fixes:
 
 - [**bug**] sEnableExternalBackupTarget during database restore [#889](https://github.com/ChurchCRM/CRM/issues/889)
+- [**bug**][**build**][**question**] File extraction with incorrect 666 permissions [#882](https://github.com/ChurchCRM/CRM/issues/882)
 - [**bug**] Default pictures no longer correct [#873](https://github.com/ChurchCRM/CRM/issues/873)
 - [**bug**] Last Login Time Stamp Does not respect timezone [#867](https://github.com/ChurchCRM/CRM/issues/867)
 - [**bug**] show page name in issue reporter [#865](https://github.com/ChurchCRM/CRM/issues/865)
 - [**bug**] Sunday School Email  [#851](https://github.com/ChurchCRM/CRM/issues/851)
 - [**bug**] Cart Functions Buttons Location [#847](https://github.com/ChurchCRM/CRM/issues/847)
+- [**bug**] Search bar does not work on iOS [#821](https://github.com/ChurchCRM/CRM/issues/821)
 - [**bug**][**build**][**question**] vendor directory missing in 2.1.6 tar file [#800](https://github.com/ChurchCRM/CRM/issues/800)
 - [**bug**] Setup.php Get Apache Modules [#797](https://github.com/ChurchCRM/CRM/issues/797)
 - [**bug**] Bugs and correction with get text [#776](https://github.com/ChurchCRM/CRM/issues/776)
@@ -1109,6 +1114,7 @@
 - [**bug**] Sunday School member issue [#420](https://github.com/ChurchCRM/CRM/issues/420)
 - [**bug**] Family Assign a New Property text is white on white [#418](https://github.com/ChurchCRM/CRM/issues/418)
 - [**bug**] sunday school dashboard url issue sRootPath [#417](https://github.com/ChurchCRM/CRM/issues/417)
+- [**bug**] Default Start and end times for event [#412](https://github.com/ChurchCRM/CRM/issues/412)
 - [**bug**] database_setup_and_install.sh is buggy [#407](https://github.com/ChurchCRM/CRM/issues/407)
 - [**bug**] Search box is not touch friendly [#404](https://github.com/ChurchCRM/CRM/issues/404)
 - [**bug**] ajaxError function is loaded before jquery [#399](https://github.com/ChurchCRM/CRM/issues/399)
@@ -1207,7 +1213,9 @@
 
 #### Inner Beauty:
 
+- [**bug**][**build**][**question**] File extraction with incorrect 666 permissions [#882](https://github.com/ChurchCRM/CRM/issues/882)
 - [**bug**][**build**][**question**] vendor directory missing in 2.1.6 tar file [#800](https://github.com/ChurchCRM/CRM/issues/800)
+- [**build**] Build System should rev the build version [#780](https://github.com/ChurchCRM/CRM/issues/780)
 - [**development**][**enhancement**] Locale: french fr_FR [#775](https://github.com/ChurchCRM/CRM/issues/775)
 - [**bug**][**build**] Problem to install churchCRM [#773](https://github.com/ChurchCRM/CRM/issues/773)
 - [**build**] Missing default photos [#738](https://github.com/ChurchCRM/CRM/issues/738)
