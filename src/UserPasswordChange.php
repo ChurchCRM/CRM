@@ -49,20 +49,6 @@ if ($_SESSION['bAdmin'] && isset($_GET['PersonID'])) {
 }
 
 // Was the form submitted?
-/**
- * @param $curUser
- * @param $sNewPassword1
- * @param $log
- */
-function sendWelcomeEmail($curUser, $sNewPassword1, $logger)
-{
-    if (!empty($curUser->getEmail())) {
-        $email = new PasswordChangeEmail($curUser, $sNewPassword1);
-        if (!$email->send()) {
-            $logger->warn($email->getError());
-        }
-    }
-}
 
 if (isset($_POST['Submit'])) {
     // Assign all the stuff locally
@@ -93,11 +79,17 @@ if (isset($_POST['Submit'])) {
             $curUser->updatePassword($sNewPassword1);
             $curUser->setNeedPasswordChange(false);
             $curUser->save();
-
+            $curUser->createTimeLineNote("password-changed-admin");
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
-            sendWelcomeEmail($curUser, $sNewPassword1, $logger);
+
+            if (!empty($curUser->getEmail())) {
+                $email = new PasswordChangeEmail($curUser, $sNewPassword1);
+                if (!$email->send()) {
+                    $logger->warn($email->getError());
+                }
+            }
 
             // Route back to the list
             if (array_key_exists('FromUserList', $_GET) and $_GET['FromUserList'] == 'True') {
@@ -165,11 +157,9 @@ if (isset($_POST['Submit'])) {
             $curUser->updatePassword($sNewPassword1);
             $curUser->setNeedPasswordChange(false);
             $curUser->save();
-
+            $curUser->createTimeLineNote("password-changed");
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
-
-            sendWelcomeEmail($curUser, $sNewPassword1, $logger);
 
             // Route back to the list
             if ($_GET['FromUserList'] == 'True') {

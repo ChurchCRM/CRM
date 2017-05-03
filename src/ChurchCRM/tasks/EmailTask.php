@@ -9,7 +9,7 @@ class EmailTask implements iTask
 {
   public function isActive()
   {
-    return $_SESSION['user']->isAdmin() && empty(SystemConfig::getValue('sSMTPHost'));
+    return $_SESSION['user']->isAdmin() && empty(SystemConfig::hasValidMailServerSettings());
   }
 
   public function isAdmin()

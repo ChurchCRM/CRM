@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\Service\GroupService;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -43,14 +44,14 @@ class Person extends BasePerson implements iPhoto
     public function getBirthDate()
     {
         if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
-      !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
-    ) {
+            !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
+        ) {
             $birthYear = $this->getBirthYear();
             if ($this->hideAge()) {
                 $birthYear = 1900;
             }
 
-            return date_create($birthYear.'-'.$this->getBirthMonth().'-'.$this->getBirthDay());
+            return date_create($birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
         }
 
         return date_create();
@@ -58,7 +59,7 @@ class Person extends BasePerson implements iPhoto
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath().'/PersonView.php?PersonID='.$this->getId();
+        return SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->getId();
     }
 
     public function getFamilyRole()
@@ -99,12 +100,12 @@ class Person extends BasePerson implements iPhoto
         $note->setPerId($this->getId());
 
         if ($new) {
-            $note->setText('Created');
+            $note->setText(gettext('Created'));
             $note->setType('create');
             $note->setEnteredBy($this->getEnteredBy());
             $note->setDateEntered($this->getDateEntered());
         } else {
-            $note->setText('Updated');
+            $note->setText(gettext('Updated'));
             $note->setType('edit');
             $note->setEnteredBy($this->getEditedBy());
             $note->setDateLastEdited($this->getDateLastEdited());
@@ -143,11 +144,11 @@ class Person extends BasePerson implements iPhoto
         if (!empty($this->getAddress1())) {
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
-                $tmp = $tmp.' '.$this->getAddress2();
+                $tmp = $tmp . ' ' . $this->getAddress2();
             }
             array_push($address, $tmp);
             if (!empty($this->getCity())) {
-                array_push($address, $this->getCity().',');
+                array_push($address, $this->getCity() . ',');
             }
             if (!empty($this->getState())) {
                 array_push($address, $this->getState());
@@ -160,7 +161,7 @@ class Person extends BasePerson implements iPhoto
             }
             return implode(' ', $address);
         } else {
-            if($this->getFamily()) {
+            if ($this->getFamily()) {
                 return $this->getFamily()
                     ->getAddress();
             }
@@ -168,6 +169,7 @@ class Person extends BasePerson implements iPhoto
         //if it reaches here, no address found. return empty $address
         return $address;
     }
+
     /**
      * * If person address found, return latitude and Longitude of person address
      * else return family latitude and Longitude
@@ -176,10 +178,11 @@ class Person extends BasePerson implements iPhoto
     public function getLatLng()
     {
         $address = $this->getAddress(); //if person address empty, this will get Family address
-        $lat = 0; $lng = 0;
+        $lat = 0;
+        $lng = 0;
         if (!empty($this->getAddress1())) {
             $latLng = GeoUtils::getLatLong($this->getAddress());
-            if(!empty( $latLng['Latitude']) && !empty($latLng['Longitude'])) {
+            if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 $lat = $latLng['Latitude'];
                 $lng = $latLng['Longitude'];
             }
@@ -198,19 +201,18 @@ class Person extends BasePerson implements iPhoto
 
     public function deletePhoto()
     {
-      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
-        if ( $this->getPhoto()->delete() )
-        {
-          $note = new Note();
-          $note->setText(gettext("Profile Image Deleted"));
-          $note->setType("photo");
-          $note->setEntered($_SESSION['iUserID']);
-          $note->setPerId($this->getId());
-          $note->save();
-          return true;
+        if ($_SESSION['bAddRecords'] || $bOkToEdit) {
+            if ($this->getPhoto()->delete()) {
+                $note = new Note();
+                $note->setText(gettext("Profile Image Deleted"));
+                $note->setType("photo");
+                $note->setEntered($_SESSION['iUserID']);
+                $note->setPerId($this->getId());
+                $note->save();
+                return true;
+            }
         }
-      }
-      return false;
+        return false;
     }
 
     private function getPhoto()
@@ -223,47 +225,55 @@ class Person extends BasePerson implements iPhoto
        return $photo;
     }
 
-    public function getPhotoBytes() {
-      return $this->getPhoto()->getPhotoBytes();
+    public function getPhotoBytes()
+    {
+        return $this->getPhoto()->getPhotoBytes();
     }
 
-    public function getPhotoURI() {
-      return $this->getPhoto()->getPhotoURI();
+    public function getPhotoURI()
+    {
+        return $this->getPhoto()->getPhotoURI();
     }
 
-    public function getThumbnailBytes() {
-      return $this->getPhoto()->getThumbnailBytes();
+    public function getThumbnailBytes()
+    {
+        return $this->getPhoto()->getThumbnailBytes();
     }
 
-    public function getThumbnailURI() {
-       return $this->getPhoto()->getThumbnailURI();
+    public function getThumbnailURI()
+    {
+        return $this->getPhoto()->getThumbnailURI();
     }
 
-    public function setImageFromBase64($base64) {
-      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
-        $note = new Note();
-        $note->setText(gettext("Profile Image uploaded"));
-        $note->setType("photo");
-        $note->setEntered($_SESSION['iUserID']);
-        $this->getPhoto()->setImageFromBase64($base64);
-        $note->setPerId($this->getId());
-        $note->save();
-        return true;
-      }
-      return false;
+    public function setImageFromBase64($base64)
+    {
+        if ($_SESSION['bAddRecords'] || $bOkToEdit) {
+            $note = new Note();
+            $note->setText(gettext("Profile Image uploaded"));
+            $note->setType("photo");
+            $note->setEntered($_SESSION['iUserID']);
+            $this->getPhoto()->setImageFromBase64($base64);
+            $note->setPerId($this->getId());
+            $note->save();
+            return true;
+        }
+        return false;
 
     }
 
-    public function isPhotoLocal() {
-      return $this->getPhoto()->isPhotoLocal();
+    public function isPhotoLocal()
+    {
+        return $this->getPhoto()->isPhotoLocal();
     }
 
-    public function isPhotoRemote() {
-      return $this->getPhoto()->isPhotoRemote();
+    public function isPhotoRemote()
+    {
+        return $this->getPhoto()->isPhotoRemote();
     }
 
-    public function getPhotoContentType() {
-      return $this->getPhoto()->getPhotoContentType();
+    public function getPhotoContentType()
+    {
+        return $this->getPhoto()->getPhotoContentType();
     }
 
     /**
@@ -381,6 +391,37 @@ class Person extends BasePerson implements iPhoto
 
         }
         return $nameString;
+    }
+
+    public function preDelete(ConnectionInterface $con = null)
+    {
+        $this->deletePhoto();
+
+        $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
+        if (!empty($obj)) {
+            $groupService = new GroupService();
+            foreach ($obj as $group2roleP2g2r) {
+                $groupService->removeUserFromGroup($group2roleP2g2r->getGroupId(), $group2roleP2g2r->getPersonId());
+            }
+        }
+
+        $perCustom = PersonCustomQuery::create()->findPk($this->getId(), $con);
+        if (!is_null($perCustom)) {
+            $perCustom->delete($con);
+        }
+
+        $user = UserQuery::create()->findPk($this->getId(), $con);
+        if (!is_null($user)) {
+            $user->delete($con);
+        }
+
+        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->find($con)->delete();
+
+        PersonPropertyQuery::create()->filterByPerson($this)->find($con)->delete();
+
+        NoteQuery::create()->filterByPerson($this)->find($con)->delete();
+
+        return parent::preDelete($con);
     }
 
 }

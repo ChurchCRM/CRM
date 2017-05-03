@@ -67,7 +67,7 @@ function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWO
         'password' => $sPASSWORD,
         'settings' => [
             'charset' => 'utf8mb4',
-            'queries' => [],
+            'queries' => ["SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))"],
         ],
         'classname' => $dbClassName,
         'model_paths' => [
@@ -134,16 +134,25 @@ SystemConfig::init(ConfigQuery::create()->find());
 
 // enable logs if we are in debug mode
 // **************************************************
-$logFile = SystemConfig::getValue("sLogFile");
-if (SystemConfig::getBooleanValue("bDebug")) {
-    $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
-    $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
-    $logger = new Logger('defaultLogger');
-    $logger->pushHandler(new StreamHandler($logFile));
-    $serviceContainer->setLogger('defaultLogger', $logger);
-    ini_set('log_errors', 1);
-    ini_set('error_log', $logFile);
-}
+
+$logFilePrefix = SystemURLs::getDocumentRoot().'/logs/'.date("Y-m-d");
+$logLevel = intval(SystemConfig::getValue("sLogLevel"));
+
+// PHP Logs
+ini_set('log_errors', 1);
+ini_set('error_log', $logFilePrefix.'-php.log');
+
+// APP Logs
+$logger = new Logger('defaultLogger');
+$logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log', $logLevel));
+
+// ORM Logs
+$ormLogger = new Logger('ormLogger');
+$dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
+$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
+$ormLogger->pushHandler(new StreamHandler($logFilePrefix.'-orm.log', $logLevel));
+$serviceContainer->setLogger('defaultLogger', $ormLogger);
+
 
 if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
     // Load user variables from user config table.
