@@ -20,10 +20,7 @@ abstract class BaseUserEmail extends BaseEmail
         $this->user = $user;
         $this->mail->Subject = SystemConfig::getValue("sChurchName") . ": " . $this->getSubSubject();
         $this->mail->isHTML(true);
-        $this->mail->msgHTML($this->buildMessage());
     }
-
-    protected abstract function getSubSubject();
 
     public function getTokens()
     {

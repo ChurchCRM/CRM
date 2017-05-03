@@ -19,6 +19,7 @@ $app->group('/users', function () {
         if (!is_null($user)) {
             $password = $user->resetPasswordToRandom();
             $user->save();
+            $user->createTimeLineNote("password-reset");
             $email = new ResetPasswordEmail($user, $password);
             if ($email->send()) {
                 return $response->withStatus(200)->withJson(['status' => "success"]);
@@ -39,6 +40,7 @@ $app->group('/users', function () {
         if (!is_null($user)) {
             $user->setFailedLogins(0);
             $user->save();
+            $user->createTimeLineNote("login-reset");
             $email = new UnlockedEmail($user);
             if (!$email->send()) {
                 $this->Logger->warn($email->getError());

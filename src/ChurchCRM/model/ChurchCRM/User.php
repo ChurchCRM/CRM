@@ -4,7 +4,7 @@ namespace ChurchCRM;
 
 use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
-
+use Propel\Runtime\Connection\ConnectionInterface;
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
  *
@@ -122,5 +122,49 @@ class User extends BaseUser
             $pass[] = $alphabet[$n];
         }
         return implode($pass); //turn the array into a string
+    }
+
+    public function postInsert(ConnectionInterface $con = null)
+    {
+        $this->createTimeLineNote("created");
+    }
+
+    public function postDelete(ConnectionInterface $con = null)
+    {
+        $this->createTimeLineNote("deleted");
+    }
+
+    public function createTimeLineNote($type)
+    {
+        $note = new Note();
+        $note->setPerId($this->getPersonId());
+        $note->setEntered($_SESSION['iUserID']);
+        $note->setType('user');
+
+        switch ($type) {
+            case "created":
+                $note->setText(gettext('system user created'));
+                break;
+            case "updated":
+                $note->setText(gettext('system user updated'));
+                break;
+            case "deleted":
+                $note->setText(gettext('system user deleted'));
+                break;
+            case "password-reset":
+                $note->setText(gettext('system user password reset'));
+                break;
+            case "password-changed":
+                $note->setText(gettext('system user changed password'));
+                break;
+            case "password-changed-admin":
+                $note->setText(gettext('system user password changed by admin'));
+                break;
+            case "login-reset":
+                $note->setText(gettext('system user login reset'));
+                break;
+        }
+
+        $note->save();
     }
 }
