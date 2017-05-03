@@ -186,9 +186,11 @@ require 'Include/HeaderNotLoggedIn.php';
                        placeholder="<?= gettext('Password') ?>" required autofocus>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 <br />
-                <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) { ?>
+                <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
+            ?>
                 <span class="text-right"><a href="external/password/"><?= gettext("I forgot my password")?></a></span>
-                <?php } ?>
+                <?php 
+        } ?>
             </div>
             <div class="row">
                 <div class="col-xs-8">
@@ -206,9 +208,11 @@ require 'Include/HeaderNotLoggedIn.php';
             </div>
         </form>
 
-        <?php if (SystemConfig::getBooleanValue('sEnableSelfRegistration')) { ?>
+        <?php if (SystemConfig::getBooleanValue('sEnableSelfRegistration')) {
+            ?>
         <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
-        <?php } ?>
+        <?php 
+        } ?>
       <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
 
     </div>
