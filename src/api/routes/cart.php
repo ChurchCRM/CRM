@@ -54,10 +54,19 @@ $app->group('/cart', function () {
      * delete. This will empty the cart
      */
     $this->delete('/', function ($request, $response, $args) {
-        $sMessage = gettext('Your cart is empty');
-        if(sizeof($_SESSION['aPeopleCart'])>0) {
-            $_SESSION['aPeopleCart'] = [];
-            $sMessage = gettext('Your cart has been successfully emptied');
+      
+        $cartPayload = (object)$request->getParsedBody();
+        if ( isset ($cartPayload->Persons) && count($cartPayload->Persons) > 0 )
+        {
+          RemoveArrayFromPeopleCart($cartPayload->Persons);
+        }
+        else
+        {
+          $sMessage = gettext('Your cart is empty');
+          if(sizeof($_SESSION['aPeopleCart'])>0) {
+              $_SESSION['aPeopleCart'] = [];
+              $sMessage = gettext('Your cart has been successfully emptied');
+          }
         }
         return $response->withJson([
             'status' => "success",

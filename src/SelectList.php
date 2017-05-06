@@ -1205,15 +1205,8 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     </td>
 	<td>
 	<?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
-
-        // Add to cart option
-        if (mb_substr($sRedirect, -1, 1) == '?') {
-            echo '<a href="'.$sRedirect.'AddToPeopleCart='.$per_ID.'">';
-        } elseif (mb_substr($sRedirect, -1, 1) == '&') {
-            echo '<a href="'.$sRedirect.'AddToPeopleCart='.$per_ID.'">';
-        } else {
-            echo '<a href="'.$sRedirect.'&amp;AddToPeopleCart='.$per_ID.'">';
-        } ?>
+    ?>
+      <a class="AddToPeopleCart" data-persionid="<?= $per_ID ?>">
 		<span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -1223,14 +1216,8 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 	<?php
 
     } else {
-        // Remove from cart option
-        if (mb_substr($sRedirect, -1, 1) == '?') {
-            echo '<a href="'.$sRedirect.'RemoveFromPeopleCart='.$per_ID.'">';
-        } elseif (mb_substr($sRedirect, -1, 1) == '&') {
-            echo '<a href="'.$sRedirect.'RemoveFromPeopleCart='.$per_ID.'">';
-        } else {
-            echo '<a href="'.$sRedirect.'&amp;RemoveFromPeopleCart='.$per_ID.'">';
-        } ?>
+        ?>
+    <a class="RemoveFromPeopleCart" data-persionid="<?= $per_ID ?>">
 		<span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-remove fa-stack-1x fa-inverse"></i>
@@ -1276,4 +1263,5 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 	</div>
 </div>
 
+<script src="skin/js/SelectList.js" type="text/javascript"></script>
 <?php require 'Include/Footer.php' ?>

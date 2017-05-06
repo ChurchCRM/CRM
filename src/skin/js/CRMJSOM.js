@@ -90,6 +90,23 @@
             
         });
       },
+      'removePerson' : function (Persons, callback)
+      {
+         $.ajax({
+          type: 'DELETE',
+          url: window.CRM.root + '/api/cart/',
+          dataType: 'json',
+          contentType: "application/json",
+          data: JSON.stringify({"Persons":Persons})
+        }).done(function(data) {
+            window.CRM.cart.refresh();
+            if(callback)
+            {
+              callback(data);
+            }
+            
+        });
+      },
       'addFamily' : function (FamilyID, callback)
       {
          $.ajax({
