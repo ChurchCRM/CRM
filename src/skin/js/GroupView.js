@@ -52,24 +52,6 @@ $(document).ready(function () {
     }
   });
 
-  $("#targetGroupSelection").select2({
-    ajax: {
-      url: window.CRM.root + "/api/groups/",
-      dataType: 'json',
-      processResults: function (rdata, page) {
-        var p = $.map(rdata.Groups, function (item) {
-          var o = {
-            text: item.Name,
-            id: item.Id
-          };
-          return o;
-        });
-        return {results: p};
-      }
-    },
-    minimumResultsForSearch: Infinity
-  });
-
   $(".personSearch").on("select2:select", function (e) {
     $.ajax({
       method: "POST",

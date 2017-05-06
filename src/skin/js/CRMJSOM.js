@@ -161,6 +161,76 @@
 
       }
     
+    window.CRM.groups = {
+      'promptSelection': function()
+      {
+        var dialog = bootbox.dialog({
+           title: 'Select Group and Role',
+           message: '<div class="modal-body">\
+                <input type="hidden" id="targetGroupAction">\
+                <span style="color: red">Please select target group for members:</span>\
+                <select name="targetGroupSelection" id="targetGroupSelection" style="width: 50%">\
+                </select>\
+              </div>',
+           buttons: {
+             confirm: {
+                 label: 'OK',
+                 className: 'btn-success',
+                 callback: function(){
+                   console.log({
+                     'GroupID': $("#targetGroupSelection option:selected").val(),
+                     'RoleID' : 0
+                   });
+                }
+             },
+             cancel: {
+                 label: 'Cancel',
+                 className: 'btn-danger'
+             }
+           }
+        }).show();
+          
+        $("#targetGroupSelection").select2({
+           ajax: {
+             url: window.CRM.root + "/api/groups/",
+             dataType: 'json',
+             processResults: function (rdata, page) {
+               var p = $.map(rdata.Groups, function (item) {
+                 var o = {
+                   text: item.Name,
+                   id: item.Id
+                 };
+                 return o;
+               });
+               return {results: p};
+             }
+           },
+           minimumResultsForSearch: Infinity
+         });
+        /*
+        <div class="modal fade" id="selectTargetGroupModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="upload-Image-label"><?= gettext('Select Target Group') ?></h4>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" id="targetGroupAction">
+                <span style="color: red"><?= gettext('Please select target group for members') ?>:</span>
+                <select name="targetGroupSelection" id="targetGroupSelection" style="width: 50%">
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
+                <button name="confirmTargetGroup" id="confirmTargetGroup" type="button" class="btn btn-danger"><?= gettext('Confirm Target Group') ?></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--TARGET GROP SELECT MODAL-->*/
+      }
+    }
 
     $(document).ajaxError(function (evt, xhr, settings) {
         try {
