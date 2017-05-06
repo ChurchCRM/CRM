@@ -127,7 +127,7 @@ $MenuFirst = 1;
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="CartToGroup.php">
+                                    <a id="emptyCartToGroup">
                                         <i class="fa fa-object-ungroup text-info"></i> <?= gettext('Empty Cart to Group') ?>
                                     </a>
                                 </li>

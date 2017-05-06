@@ -58,6 +58,12 @@ $("document").ready(function(){
           window.CRM.cart.empty();
 
     });
+    
+    $("#emptyCartToGroup").click(function (e) {
+          window.CRM.cart.emptyToGroup(2,1);
+
+    });
+    
 
 });
 

@@ -48,6 +48,31 @@
                   window.CRM.cart.refresh();
               });
       },
+      'emptyToGroup' : function (groupID,groupRoleID,callback)
+      {
+          $.ajax({
+          type: 'POST',
+          url: window.CRM.root + '/api/cart/emptyToGroup',
+          dataType: 'json',
+          contentType: "application/json",
+          data: JSON.stringify({"groupID":groupID,"groupRoleID":groupRoleID})
+          }).done(function(data) {
+              window.CRM.cart.refresh();
+              if(callback)
+              {
+                callback(data);
+              }
+
+          });
+      },
+      'emptytoFamily' : function ()
+      {
+          
+      },
+      'emptytoEvent' : function ()
+      {
+          
+      },
       'addPerson' : function (Persons, callback)
       {
          $.ajax({
