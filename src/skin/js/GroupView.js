@@ -77,14 +77,14 @@ $(document).ready(function () {
       dataType: "json"
     }).done(function (data) {
       var person = data.Person2group2roleP2g2rs[0];
-      var node = dataT.row.add(person).node();
-      dataT.rows().invalidate().draw(true);
+      var node = window.CRM.DataTableAPI.row.add(person).node();
+      window.CRM.DataTableAPI.rows().invalidate().draw(true);
       $(".personSearch").val(null).trigger('change')
     });
   });
 
   $("#deleteSelectedRows").click(function () {
-    var deletedRows = dataT.rows('.selected').data()
+    var deletedRows = window.CRM.DataTableAPI.rows('.selected').data()
     bootbox.confirm({
       message: "Are you sure you want to remove the " + deletedRows.length + " selected group members?",
       buttons: {
@@ -109,12 +109,12 @@ $(document).ready(function () {
               data: {"_METHOD": "DELETE"},
               encode: true
             }).done(function (data) {
-              dataT.row(function (idx, data, node) {
+              window.CRM.DataTableAPI.row(function (idx, data, node) {
                 if (data.PersonId == value.PersonId) {
                   return true;
                 }
               }).remove();
-              dataT.rows().invalidate().draw(true);
+              window.CRM.DataTableAPI.rows().invalidate().draw(true);
             });
           });
         }
@@ -124,10 +124,10 @@ $(document).ready(function () {
   });
 
   $("#addSelectedToCart").click(function () {
-    if (dataT.rows('.selected').length > 0)
+    if (window.CRM.DataTableAPI.rows('.selected').length > 0)
     {
       var selectedPersons = {
-        "Persons" : $.map(dataT.rows('.selected').data(), function(val,i){
+        "Persons" : $.map(window.CRM.DataTableAPI.rows('.selected').data(), function(val,i){
                       return val.PersonId;
                     })
       };
@@ -162,7 +162,7 @@ $(document).ready(function () {
 
 
   $("#confirmTargetGroup").click(function () {
-    var selectedRows = dataT.rows('.selected').data()
+    var selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
     var targetGroupId = $("#targetGroupSelection option:selected").val()
     var action = $("#targetGroupAction").val();
 
@@ -181,12 +181,12 @@ $(document).ready(function () {
           encode: true,
           data: {"_METHOD": "DELETE"},
         }).done(function (data) {
-          dataT.row(function (idx, data, node) {
+          window.CRM.DataTableAPI.row(function (idx, data, node) {
             if (data.PersonId == value.PersonId) {
               return true;
             }
           }).remove();
-          dataT.rows().invalidate().draw(true);
+          window.CRM.DataTableAPI.rows().invalidate().draw(true);
         });
       }
     });
@@ -198,12 +198,12 @@ $(document).ready(function () {
 
   $(document).on("click", ".changeMembership", function (e) {
     var userid = $(e.currentTarget).data("personid");
-    $("#changingMemberID").val(dataT.row(function (idx, data, node) {
+    $("#changingMemberID").val(window.CRM.DataTableAPI.row(function (idx, data, node) {
       if (data.PersonId == userid) {
         return true;
       }
     }).data().PersonId);
-    $("#changingMemberName").text(dataT.row(function (idx, data, node) {
+    $("#changingMemberName").text(window.CRM.DataTableAPI.row(function (idx, data, node) {
       if (data.PersonId == userid) {
         return true;
       }
@@ -221,13 +221,13 @@ $(document).ready(function () {
       dataType: "json",
       contentType: "application/json; charset=utf-8",
     }).done(function (data) {
-      dataT.row(function (idx, data, node) {
+      window.CRM.DataTableAPI.row(function (idx, data, node) {
         if (data.PersonId == changingMemberID) {
           data.RoleId = $("#newRoleSelection option:selected").val();
           return true;
         }
       }).data();
-      dataT.rows().invalidate().draw(true);
+      window.CRM.DataTableAPI.rows().invalidate().draw(true);
       $('#changeMembership').modal('hide');
     });
   });
@@ -235,7 +235,7 @@ $(document).ready(function () {
 });
 
 function initDataTable() {
-  dataT = $("#membersTable").dataTable({
+  window.CRM.DataTableAPI = $("#membersTable").DataTable({
     "language": {
       "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
     },
@@ -335,8 +335,7 @@ function initDataTable() {
     });
 
   $(document).on('click', '.groupRow', function () {
-    $(this).toggleClass('selected');
-    var selectedRows = dataT.rows('.selected').data().length;
+    var selectedRows = window.CRM.DataTableAPI.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
     $("#deleteSelectedRows").text("Remove (" + selectedRows + ") Members from group");
     $("#buttonDropdown").prop('disabled', !(selectedRows));
