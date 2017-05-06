@@ -64,6 +64,10 @@ $("document").ready(function(){
 
     });
     
+    $(".AddToPeopleCart").click(function(){
+      window.CRM.cart.addPerson([$(this).data("personid")]);
+    });
+    
 
 });
 

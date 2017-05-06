@@ -153,12 +153,6 @@ if (isset($_GET['ProfileImageUploadedError'])) {
     $sGlobalMessageClass = 'danger';
 }
 
-// Are they adding a person to the Cart?
-if (isset($_GET['AddToPeopleCart'])) {
-    AddToPeopleCart(FilterInput($_GET['AddToPeopleCart'], 'int'));
-    $sGlobalMessage = gettext('Selected record successfully added to the Cart.');
-}
-
 if (isset($_GET['AddFamilyToPeopleCart'])) {
     AddFamilyToPeopleCart(FilterInput($_GET['AddFamilyToPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Family successfully added to the Cart.');

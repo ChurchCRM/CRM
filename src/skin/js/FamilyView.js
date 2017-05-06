@@ -43,10 +43,6 @@ $(document).ready(function () {
     $('#confirm-verify').modal('hide');
   });
   
-  $(".AddToPeopleCart").click(function(){
-    window.CRM.cart.addPerson([$(this).data("personid")]);
-  })
-  
   $("#AddFamilyToCart").click(function(){
     window.CRM.cart.addFamily($(this).data("familyid"));
   });
