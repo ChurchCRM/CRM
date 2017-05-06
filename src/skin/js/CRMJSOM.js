@@ -131,6 +131,7 @@
           dataType: 'json',
           contentType: "application/json"
           } ).done(function(data) {
+            window.scrollTo(0, 0);
             $("#iconCount").text(data.PeopleCart.length);
             $("#CartBlock")
             .animate({'left':(-10)+'px'},200)
