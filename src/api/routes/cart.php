@@ -18,6 +18,10 @@ $app->group('/cart', function () {
           {
             AddFamilyToPeopleCart($cartPayload->Family);
           }
+          elseif ( isset ($cartPayload->Group) )
+          {
+            AddGroupToPeopleCart($cartPayload->Group);
+          }
           else
           {
             throw new \Exception(gettext("POST to cart requires a Persons array"),500);

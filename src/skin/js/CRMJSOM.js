@@ -107,6 +107,23 @@
             
         });
       },
+      'addGroup' : function (GroupID, callback)
+      {
+         $.ajax({
+          type: 'POST',
+          url: window.CRM.root + '/api/cart/',
+          dataType: 'json',
+          contentType: "application/json",
+          data: JSON.stringify({"Group":GroupID})
+        }).done(function(data) {
+            window.CRM.cart.refresh();
+            if(callback)
+            {
+              callback(data);
+            }
+            
+        });
+      },
       'refresh' : function () {
          $.ajax({
           type: 'GET',

@@ -183,6 +183,9 @@ $(document).ready(function () {
     });
   });
 
+  $("#AddGroupMembersToCart").click(function() {
+    window.CRM.cart.addGroup($(this).data("groupid"));
+  })
 
   $(document).on("click", ".changeMembership", function (e) {
     var userid = $(e.currentTarget).data("personid");
