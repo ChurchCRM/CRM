@@ -83,7 +83,7 @@ function Header_modals()
                                         : </label>
                                 </div>
                                 <div class="col-xl-3">
-                                    <input type="text" name="issueTitle" style="width:100%">
+                                    <input type="text" name="issueTitle">
                                 </div>
                             </div>
                             <div class="row">
@@ -92,7 +92,7 @@ function Header_modals()
                                         for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
                                 </div>
                                 <div class="col-xl-3">
-                                    <textarea rows="10" cols="50" name="issueDescription" style="width:100%"></textarea>
+                                    <textarea rows="10" cols="50" name="issueDescription"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -122,70 +122,16 @@ function Header_body_scripts()
 {
     global $localeInfo;
     $systemService = new SystemService(); ?>
-
-  <script>
-    window.CRM = {
+    <script>
+      window.CRM = {
       root: "<?= SystemURLs::getRootPath() ?>",
       lang: "<?= $localeInfo->getLanguageCode() ?>",
       locale: "<?= $localeInfo->getLocale() ?>",
       maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
       maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>"
     };
-
-    window.CRM.DisplayErrorMessage = function(endpoint, error) {
-
-      message = "<p><?= gettext("Error making API Call to") ?>: " + endpoint +
-        "</p><p><?= gettext("Error text") ?>: " + error.message;
-      if (error.trace)
-      {
-        message += "</p><?= gettext("Stack Trace") ?>: <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
-      }
-      bootbox.alert({
-        title: "<?= gettext("ERROR!") ?>",
-        message: message
-      });
-    };
-
-    window.CRM.VerifyThenLoadAPIContent = function(url) {
-      var error = "<?= gettext('There was a problem retrieving the requested object') ?>";
-      $.ajax({
-        type: 'HEAD',
-        url: url,
-        async: false,
-        statusCode: {
-          200: function() {
-            window.open(url);
-          },
-          404: function() {
-            window.CRM.DisplayErrorMessage(url, {message: error});
-          },
-          500: function() {
-            window.CRM.DisplayErrorMessage(url, {message: error});
-          }
-        }
-      });
-    }
-
-    $(document).ajaxError(function (evt, xhr, settings) {
-        try {
-            var CRMResponse = JSON.parse(xhr.responseText);
-            window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
-        } catch(err) {}
-    });
-
-    function LimitTextSize(theTextArea, size) {
-        if (theTextArea.value.length > size) {
-            theTextArea.value = theTextArea.value.substr(0, size);
-        }
-    }
-
-    function popUp(URL) {
-        var day = new Date();
-        var id = day.getTime();
-        eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
-    }
-
     </script>
+    <script src="<?= SystemURLs::getRootPath()?>/skin/js/CRMJSOM.js"></script>
     <?php
 
 }

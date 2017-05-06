@@ -38,9 +38,16 @@ $(document).ready(function () {
       });
   });
 
-
   $("#verifyDownloadPDF").click(function () {
     window.open(window.CRM.root + 'Reports/ConfirmReport.php?familyId=' + window.CRM.currentFamily, '_blank');
     $('#confirm-verify').modal('hide');
+  });
+  
+  $(".AddToPeopleCart").click(function(){
+    window.CRM.cart.addPerson([$(this).data("personid")]);
+  })
+  
+  $("#AddFamilyToCart").click(function(){
+    window.CRM.cart.addFamily($(this).data("familyid"));
   });
 });

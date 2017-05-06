@@ -103,7 +103,7 @@ $MenuFirst = 1;
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <!-- Cart Functions: style can be found in dropdown.less -->
-            <li class="dropdown notifications-menu">
+            <li id="CartBlock" class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your Cart') ?>">
                     <i class="fa fa-shopping-cart"></i>
                     <span id="iconCount" class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>

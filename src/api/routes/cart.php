@@ -1,12 +1,20 @@
 <?php
 
 $app->group('/cart', function () {
+  
+  $this->get('/',function($request,$response,$args) {
+    return $response->withJSON(['PeopleCart' =>  $_SESSION['aPeopleCart']]);
+  });
 
   $this->post('/', function ($request, $response, $args) {
         $cartPayload = (object)$request->getParsedBody();
         if ( isset ($cartPayload->Persons) && count($cartPayload->Persons) > 0 )
         {
          AddArrayToPeopleCart($cartPayload->Persons);
+        }
+        elseif ( isset ($cartPayload->Family) )
+        {
+          AddFamilyToPeopleCart($cartPayload->Family);
         }
         else
         {

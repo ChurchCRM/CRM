@@ -126,23 +126,11 @@ $(document).ready(function () {
   $("#addSelectedToCart").click(function () {
     if (dataT.rows('.selected').length > 0)
     {
-      var selectedPersons = {
-        "Persons" : $.map(dataT.rows('.selected').data(), function(val,i){
-                      return val.PersonId;
-                    })
-      };
-      $.ajax({
-        type: 'POST',
-        url: window.CRM.root + '/api/cart/',
-        dataType: 'json',
-        contentType: "application/json",
-        data: JSON.stringify(selectedPersons)
-      }).done(function(data) {
-          if ( data.status == "success" )
-          {
-            location.reload();
-          }
+      selectedPersons = $.map(dataT.rows('.selected').data(), function(val,i){
+        return val.PersonId;
       });
+      
+      window.CRM.cart.addPerson(selectedPersons);
     }
 
   });
