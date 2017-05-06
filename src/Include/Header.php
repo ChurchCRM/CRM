@@ -104,7 +104,7 @@ $MenuFirst = 1;
         <ul class="nav navbar-nav">
             <!-- Cart Functions: style can be found in dropdown.less -->
             <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your Cart') ?>">
                     <i class="fa fa-shopping-cart"></i>
                     <span id="iconCount" class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
                 </a>
@@ -160,7 +160,7 @@ $MenuFirst = 1;
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
               <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
@@ -185,17 +185,17 @@ $MenuFirst = 1;
             </ul>
           </li>
           <li class="hidden-xxs">
-            <a href="http://docs.churchcrm.io" target="_blank">
+            <a href="http://docs.churchcrm.io" target="_blank" title="<?= gettext('Read the docs') ?>">
               <i class="fa fa-support"></i>
             </a>
           </li>
           <li class="hidden-xxs">
-            <a href="#" data-toggle="modal" data-target="#IssueReportModal">
+            <a href="#" data-toggle="modal" data-target="#IssueReportModal" title="<?= gettext('Report an issue') ?>">
               <i class="fa fa-bug"></i>
             </a>
           </li>
           <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
+            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" title="<?= gettext('Log off') ?>">
               <i class="fa fa-power-off"></i>
             </a>
           </li>
@@ -204,7 +204,7 @@ $MenuFirst = 1;
           $taskSize = count($tasks);
           ?>
           <li class="dropdown settings-dropdown">
-            <a href="#" data-toggle="control-sidebar">
+            <a href="#" data-toggle="control-sidebar" title="<?= gettext('Your tasks') ?>">
               <i class="fa fa-gears"></i>
               <span class="label label-danger"><?= $taskSize ?></span>
             </a>
