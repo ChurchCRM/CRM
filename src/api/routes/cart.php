@@ -16,11 +16,19 @@ $app->group('/cart', function () {
           }
           elseif ( isset ($cartPayload->Family) )
           {
-            AddFamilyToPeopleCart($cartPayload->Family);
+            $FamilyMembers = ChurchCRM\FamilyQuery::create()->findOneById($cartPayload->Family)->getPeople();
+            foreach($FamilyMembers as $FamilyMember)
+            {
+              AddToPeopleCart($FamilyMember->getId());
+            }
           }
           elseif ( isset ($cartPayload->Group) )
           {
-            AddGroupToPeopleCart($cartPayload->Group);
+            $GroupMembers = ChurchCRM\Base\GroupQuery::create()->findOneById($cartPayload->Group)->getPerson2group2roleP2g2rs();
+            foreach($GroupMembers as $GroupMember)
+            {
+              AddToPeopleCart($GroupMember->getPersonId());
+            }
           }
           else
           {
