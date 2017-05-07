@@ -119,49 +119,21 @@ $(document).ready(function () {
 
   //copy membership
   $("#addSelectedToGroup").click(function () {
-    $("#selectTargetGroupModal").modal("show");
-    $("#targetGroupAction").val("copy");
-
+    window.CRM.groups.promptSelection(function(selectedRole){
+      var selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
+       $.each(selectedRows, function (index, value) {
+         window.CRM.groups.addPerson(selectedRole.GroupID,value.PersonId);
+       });
+    });
   });
 
   $("#moveSelectedToGroup").click(function () {
-    $("#selectTargetGroupModal").modal("show");
-    $("#targetGroupAction").val("move");
-
-  });
-
-
-  $("#confirmTargetGroup").click(function () {
-    var selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
-    var targetGroupId = $("#targetGroupSelection option:selected").val()
-    var action = $("#targetGroupAction").val();
-
-    $.each(selectedRows, function (index, value) {
-      $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root + '/api/groups/' + targetGroupId + '/adduser/' + value.PersonId,
-        dataType: 'json', // what type of data do we expect back from the server
-        encode: true
-      });
-      if (action == "move") {
-        $.ajax({
-          type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-          url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId,
-          dataType: 'json', // what type of data do we expect back from the server
-          encode: true,
-          data: {"_METHOD": "DELETE"},
-        }).done(function (data) {
-          window.CRM.DataTableAPI.row(function (idx, data, node) {
-            if (data.PersonId == value.PersonId) {
-              return true;
-            }
-          }).remove();
-          window.CRM.DataTableAPI.rows().invalidate().draw(true);
-        });
-      }
-    });
-    $(document).ajaxStop(function () {
-      $("#selectTargetGroupModal").modal("hide");
+    window.CRM.groups.promptSelection(function(selectedRole){
+      var selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
+       $.each(selectedRows, function (index, value) {
+         window.CRM.groups.addPerson(selectedRole.GroupID,value.PersonId);
+         window.CRM.groups.removePerson(selectedRole.GroupID,value.PersonId);
+       });
     });
   });
 

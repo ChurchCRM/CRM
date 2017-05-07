@@ -155,12 +155,11 @@
     window.CRM.groups = {
       
       'get': function() {
-        return window.CRM.APIRequest({
+        return  window.CRM.APIRequest({
           path:"groups/",
           type:"GET"
         }); 
       },
-      
       'getRoles': function(GroupID) {
         return window.CRM.APIRequest({
           path:"groups/"+GroupID+"/roles",
@@ -225,6 +224,19 @@
                })
              })
           });
+        });
+      },
+      'addPerson' : function(GroupID,PersonID) {
+        window.CRM.APIRequest({
+          type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+          path:'groups/' + GroupID + '/adduser/' + PersonID
+        });
+      },
+      'removePerson' : function(GroupID,PersonID) {
+         window.CRM.APIRequest({
+          type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+          path:'groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId,
+          data: {"_METHOD": "DELETE"}
         });
       }
     };
