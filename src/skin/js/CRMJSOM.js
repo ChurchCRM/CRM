@@ -2,6 +2,13 @@
  * ChurcmCRM JavaScript Object Model Initailizaion Script
  */
 
+    window.CRM.APIRequest = function(options) {
+      options.url=window.CRM.root +"/api/" + options.path;
+      options.dataType = 'json';
+      options.ontentType =  "application/json";
+      return $.ajax(options);
+    }
+
     window.CRM.DisplayErrorMessage = function(endpoint, error) {
 
       message = "<p>Error making API Call to: " + endpoint +
@@ -50,20 +57,22 @@
       },
       'emptyToGroup' : function (groupID,groupRoleID,callback)
       {
+        window.CRM.groups.promptSelection(function(selectedRole){
           $.ajax({
-          type: 'POST',
-          url: window.CRM.root + '/api/cart/emptyToGroup',
-          dataType: 'json',
-          contentType: "application/json",
-          data: JSON.stringify({"groupID":groupID,"groupRoleID":groupRoleID})
-          }).done(function(data) {
-              window.CRM.cart.refresh();
-              if(callback)
-              {
-                callback(data);
-              }
+            type: 'POST',
+            url: window.CRM.root + '/api/cart/emptyToGroup',
+            dataType: 'json',
+            contentType: "application/json",
+            data: JSON.stringify({"groupID":selectedRole.GroupID,"groupRoleID":selectedRole.RoleID})
+            }).done(function(data) {
+                window.CRM.cart.refresh();
+                if(callback)
+                {
+                  callback(data);
+                }
 
-          });
+            });
+        });
       },
       'emptytoFamily' : function ()
       {
@@ -162,24 +171,38 @@
       }
     
     window.CRM.groups = {
-      'promptSelection': function()
+      
+      'get': function() {
+        return window.CRM.APIRequest({
+          path:"groups/",
+          type:"GET"
+        }); 
+      },
+      
+      'getRoles': function(GroupID) {
+        return window.CRM.APIRequest({
+          path:"groups/"+GroupID+"/roles",
+          type:"GET"
+        }); 
+      },
+      'promptSelection': function(selectionCallback)
       {
-        var dialog = bootbox.dialog({
+        bootbox.dialog({
            title: 'Select Group and Role',
            message: '<div class="modal-body">\
                 <input type="hidden" id="targetGroupAction">\
                 <span style="color: red">Please select target group for members:</span>\
-                <select name="targetGroupSelection" id="targetGroupSelection" style="width: 50%">\
-                </select>\
+                <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>\
+                <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>\
               </div>',
            buttons: {
              confirm: {
                  label: 'OK',
                  className: 'btn-success',
                  callback: function(){
-                   console.log({
+                   selectionCallback({
                      'GroupID': $("#targetGroupSelection option:selected").val(),
-                     'RoleID' : 0
+                     'RoleID' : $("#targetRoleSelection option:selected").val()
                    });
                 }
              },
@@ -189,48 +212,40 @@
              }
            }
         }).show();
+        
+        window.CRM.groups.get()
+        .done(function(rdata){
+          groupsList = $.map(rdata.Groups, function (item) {
+            var o = {
+              text: item.Name,
+              id: item.Id
+            };
+            return o;
+          });
+          $groupSelect2 = $("#targetGroupSelection").select2({
+            data: groupsList
+          });
           
-        $("#targetGroupSelection").select2({
-           ajax: {
-             url: window.CRM.root + "/api/groups/",
-             dataType: 'json',
-             processResults: function (rdata, page) {
-               var p = $.map(rdata.Groups, function (item) {
-                 var o = {
-                   text: item.Name,
-                   id: item.Id
-                 };
-                 return o;
-               });
-               return {results: p};
-             }
-           },
-           minimumResultsForSearch: Infinity
-         });
-        /*
-        <div class="modal fade" id="selectTargetGroupModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="upload-Image-label"><?= gettext('Select Target Group') ?></h4>
-              </div>
-              <div class="modal-body">
-                <input type="hidden" id="targetGroupAction">
-                <span style="color: red"><?= gettext('Please select target group for members') ?>:</span>
-                <select name="targetGroupSelection" id="targetGroupSelection" style="width: 50%">
-                </select>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
-                <button name="confirmTargetGroup" id="confirmTargetGroup" type="button" class="btn btn-danger"><?= gettext('Confirm Target Group') ?></button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--TARGET GROP SELECT MODAL-->*/
+          $groupSelect2.on("select2:select", function (e) { 
+             var targetGroupId = $("#targetGroupSelection option:selected").val();
+             $parent = $("#targetRoleSelection").parent();
+             $("#targetRoleSelection").empty();
+             window.CRM.groups.getRoles(targetGroupId).done(function(rdata){
+               rolesList = $.map(rdata.ListOptions, function (item) {
+                  var o = {
+                    text: item.OptionName,
+                    id: item.OptionId
+                  };
+                  return o;
+                });
+               $("#targetRoleSelection").select2({
+                 data:rolesList
+               })
+             })
+          });
+        });
       }
-    }
+    };
 
     $(document).ajaxError(function (evt, xhr, settings) {
         try {
