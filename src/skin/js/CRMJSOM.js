@@ -5,7 +5,7 @@
     window.CRM.APIRequest = function(options) {
       options.url=window.CRM.root +"/api/" + options.path;
       options.dataType = 'json';
-      options.ontentType =  "application/json";
+      options.contentType =  "application/json";
       return $.ajax(options);
     }
 
@@ -46,30 +46,26 @@
     window.CRM.cart={
       'empty' : function ()
       {
-          $.ajax({
-                  method: "DELETE",
-                  url: window.CRM.root + "/api/cart/",
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json"
-              }).done(function (data) {
-                  window.CRM.cart.refresh();
-              });
+        window.CRM.APIRequest({
+          method: "DELETE",
+          path: "cart/"
+        }).done(function (data) {
+            window.CRM.cart.refresh();
+        });
       },
       'emptyToGroup' : function (groupID,groupRoleID,callback)
       {
         window.CRM.groups.promptSelection(function(selectedRole){
-          $.ajax({
+          window.CRM.APIRequest({
             type: 'POST',
-            url: window.CRM.root + '/api/cart/emptyToGroup',
-            dataType: 'json',
-            contentType: "application/json",
+            path: 'cart/emptyToGroup',
             data: JSON.stringify({"groupID":selectedRole.GroupID,"groupRoleID":selectedRole.RoleID})
             }).done(function(data) {
-                window.CRM.cart.refresh();
-                if(callback)
-                {
-                  callback(data);
-                }
+              window.CRM.cart.refresh();
+              if(callback)
+              {
+                callback(data);
+              }
 
             });
         });
@@ -84,19 +80,16 @@
       },
       'addPerson' : function (Persons, callback)
       {
-         $.ajax({
+         window.CRM.APIRequest({
           type: 'POST',
-          url: window.CRM.root + '/api/cart/',
-          dataType: 'json',
-          contentType: "application/json",
+          path: 'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
-            window.CRM.cart.refresh();
-            if(callback)
-            {
-              callback(data);
-            }
-            
+          window.CRM.cart.refresh();
+          if(callback)
+          {
+            callback(data);
+          }
         });
       },
       'removePerson' : function (Persons, callback)
@@ -118,11 +111,9 @@
       },
       'addFamily' : function (FamilyID, callback)
       {
-         $.ajax({
+         window.CRM.APIRequest({
           type: 'POST',
-          url: window.CRM.root + '/api/cart/',
-          dataType: 'json',
-          contentType: "application/json",
+          path:'cart/',
           data: JSON.stringify({"Family":FamilyID})
         }).done(function(data) {
             window.CRM.cart.refresh();
@@ -135,11 +126,9 @@
       },
       'addGroup' : function (GroupID, callback)
       {
-         $.ajax({
+         window.CRM.APIRequest({
           type: 'POST',
-          url: window.CRM.root + '/api/cart/',
-          dataType: 'json',
-          contentType: "application/json",
+          path: 'cart/',
           data: JSON.stringify({"Group":GroupID})
         }).done(function(data) {
             window.CRM.cart.refresh();
@@ -151,24 +140,20 @@
         });
       },
       'refresh' : function () {
-         $.ajax({
+        window.CRM.APIRequest({
           type: 'GET',
-          url: window.CRM.root + '/api/cart/',
-          dataType: 'json',
-          contentType: "application/json"
-          } ).done(function(data) {
-            window.scrollTo(0, 0);
-            $("#iconCount").text(data.PeopleCart.length);
-            $("#CartBlock")
-            .animate({'left':(-10)+'px'},200)
-            .animate({'left':(+10)+'px'},200)
-            .animate({'left':(0)+'px'},200);
-
-          });
-        
+          path:"cart/"
+        }).done(function(data) {
+          window.scrollTo(0, 0);
+          $("#iconCount").text(data.PeopleCart.length);
+          $("#CartBlock")
+          .animate({'left':(-10)+'px'},200)
+          .animate({'left':(+10)+'px'},200)
+          .animate({'left':(0)+'px'},200);
+        });
       }
 
-      }
+    };
     
     window.CRM.groups = {
       
