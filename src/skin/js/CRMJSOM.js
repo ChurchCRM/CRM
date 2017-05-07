@@ -94,19 +94,16 @@
       },
       'removePerson' : function (Persons, callback)
       {
-         $.ajax({
+         window.CRM.APIRequest({
           type: 'DELETE',
-          url: window.CRM.root + '/api/cart/',
-          dataType: 'json',
-          contentType: "application/json",
+          path:'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
-            window.CRM.cart.refresh();
-            if(callback)
-            {
-              callback(data);
-            }
-            
+          window.CRM.cart.refresh();
+          if(callback)
+          {
+            callback(data);
+          } 
         });
       },
       'addFamily' : function (FamilyID, callback)
