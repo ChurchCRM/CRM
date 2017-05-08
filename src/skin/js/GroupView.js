@@ -53,11 +53,8 @@ $(document).ready(function () {
   });
 
   $(".personSearch").on("select2:select", function (e) {
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/adduser/" + e.params.data.objid,
-      dataType: "json"
-    }).done(function (data) {
+    
+    window.CRM.groups.addPerson(window.CRM.currentGroup,e.params.data.objid).done(function (data) {
       var person = data.Person2group2roleP2g2rs[0];
       var node = window.CRM.DataTableAPI.row.add(person).node();
       window.CRM.DataTableAPI.rows().invalidate().draw(true);
@@ -72,7 +69,7 @@ $(document).ready(function () {
       buttons: {
         confirm: {
           label: 'Yes',
-            className: 'btn-success'
+          className: 'btn-success'
         },
         cancel: {
           label: 'No',
@@ -100,7 +97,7 @@ $(document).ready(function () {
             });
           });
         }
-       }
+      }
     });
 
   });
@@ -108,10 +105,10 @@ $(document).ready(function () {
   $("#addSelectedToCart").click(function () {
     if (window.CRM.DataTableAPI.rows('.selected').length > 0)
     {
-      var selectedPersons = $.map(window.CRM.DataTableAPI.rows('.selected').data(), function(val,i){
+      var selectedPersons = $.map(window.CRM.DataTableAPI.rows('.selected').data(), function (val, i) {
         return val.PersonId;
       });
-      
+
       window.CRM.cart.addPerson(selectedPersons);
     }
 
@@ -119,25 +116,25 @@ $(document).ready(function () {
 
   //copy membership
   $("#addSelectedToGroup").click(function () {
-    window.CRM.groups.promptSelection(function(selectedRole){
+    window.CRM.groups.promptSelection(function (selectedRole) {
       var selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
-       $.each(selectedRows, function (index, value) {
-         window.CRM.groups.addPerson(selectedRole.GroupID,value.PersonId);
-       });
+      $.each(selectedRows, function (index, value) {
+        window.CRM.groups.addPerson(selectedRole.GroupID, value.PersonId);
+      });
     });
   });
 
   $("#moveSelectedToGroup").click(function () {
-    window.CRM.groups.promptSelection(function(selectedRole){
+    window.CRM.groups.promptSelection(function (selectedRole) {
       var selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
-       $.each(selectedRows, function (index, value) {
-         window.CRM.groups.addPerson(selectedRole.GroupID,value.PersonId);
-         window.CRM.groups.removePerson(selectedRole.GroupID,value.PersonId);
-       });
+      $.each(selectedRows, function (index, value) {
+        window.CRM.groups.addPerson(selectedRole.GroupID, value.PersonId);
+        window.CRM.groups.removePerson(selectedRole.GroupID, value.PersonId);
+      });
     });
   });
 
-  $("#AddGroupMembersToCart").click(function() {
+  $("#AddGroupMembersToCart").click(function () {
     window.CRM.cart.addGroup($(this).data("groupid"));
   })
 
@@ -179,33 +176,13 @@ $(document).ready(function () {
 
 });
 
-function initDataTable() {
-  window.CRM.DataTableAPI = $("#membersTable").DataTable({
-    "language": {
-      "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
-    },
-    "dom": 'T<"clear">lfrtip',
-    "tableTools": {
-      "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
-      "sRowSelect": "multi",
-      "aButtons": [
-      {
-        "sExtends": "csv",
-        "bSelectedOnly": true
-      }]
-    },
-    responsive: true,
-    ajax: {
-      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
-      dataSrc: "Person2group2roleP2g2rs"
-    },
-    columns: [
+window.CRM.groupViewColumns = [
       {
         width: 'auto',
         title: 'Name',
         data: 'PersonId',
         render: function (data, type, full, meta) {
-          return '<img data-name="'+full.Person.FirstName + ' ' + full.Person.LastName + '" data-src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+          return '<img data-name="' + full.Person.FirstName + ' ' + full.Person.LastName + '" data-src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
         }
       },
       {
@@ -251,7 +228,29 @@ function initDataTable() {
         title: 'E-mail',
         data: 'Person.Email'
       }
-    ],
+    ];
+
+function initDataTable() {
+  window.CRM.DataTableAPI = $("#membersTable").DataTable({
+    "language": {
+      "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+    },
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+      "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
+      "sRowSelect": "multi",
+      "aButtons": [
+        {
+          "sExtends": "csv",
+          "bSelectedOnly": true
+        }]
+    },
+    responsive: true,
+    ajax: {
+      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
+      dataSrc: "Person2group2roleP2g2rs"
+    },
+    columns: window.CRM.groupViewColumns,
     "fnDrawCallback": function (oSettings) {
       $("#iTotalMembers").text(oSettings.aoData.length);
       $("#membersTable .initials-image").initial();
@@ -261,23 +260,23 @@ function initDataTable() {
     }
   });
 
-    $('#isGroupActive').change(function() {
-        $.ajax({
-            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/active/' + $(this).prop('checked'),
-            dataType: 'json', // what type of data do we expect back from the server
-            encode: true
-        });
+  $('#isGroupActive').change(function () {
+    $.ajax({
+      type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+      url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/active/' + $(this).prop('checked'),
+      dataType: 'json', // what type of data do we expect back from the server
+      encode: true
     });
+  });
 
-    $('#isGroupEmailExport').change(function() {
-        $.ajax({
-            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/email/export/' + $(this).prop('checked'),
-            dataType: 'json', // what type of data do we expect back from the server
-            encode: true
-        });
+  $('#isGroupEmailExport').change(function () {
+    $.ajax({
+      type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+      url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/email/export/' + $(this).prop('checked'),
+      dataType: 'json', // what type of data do we expect back from the server
+      encode: true
     });
+  });
 
   $(document).on('click', '.groupRow', function () {
     var selectedRows = window.CRM.DataTableAPI.rows('.selected').data().length;

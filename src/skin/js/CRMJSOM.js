@@ -144,7 +144,6 @@
           window.scrollTo(0, 0);
           $("#iconCount").text(data.PeopleCart.length);
           var cartDropdownMenu;
-          console.log(data.PeopleCart.length);
           if (data.PeopleCart.length > 0) {
             cartDropdownMenu = '\
               <li id="showWhenCartNotEmpty">\
@@ -272,10 +271,11 @@
           });
         });
       },
-      'addPerson' : function(GroupID,PersonID) {
-        window.CRM.APIRequest({
+      'addPerson' : function(GroupID,PersonID,RoleID) {
+        return window.CRM.APIRequest({
           type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-          path:'groups/' + GroupID + '/adduser/' + PersonID
+          path:'groups/' + GroupID + '/adduser',
+          data: JSON.stringify({"PersonID": PersonID})
         });
       },
       'removePerson' : function(GroupID,PersonID) {

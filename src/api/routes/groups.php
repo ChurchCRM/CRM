@@ -77,19 +77,30 @@ $app->group('/groups', function () {
         }
         echo json_encode(['success' => 'true']);
     });
-    $this->post('/{groupID:[0-9]+}/adduser/{userID:[0-9]+}', function ($request, $response, $args) {
-        $groupID = $args['groupID'];
-        $userID = $args['userID'];
-        $group = GroupQuery::create()->findOneById($groupID);
-        $p2g2r = new ChurchCRM\Person2group2roleP2g2r();
-        $p2g2r->setGroupId($groupID);
-        $p2g2r->setPersonId($userID);
-        $p2g2r->setRoleId($group->getDefaultRole());
-        $p2g2r->save();
+    $this->post('/{groupID:[0-9]+}/adduser', function ($request, $response, $args) {
+        $input = (object) $request->getParsedBody();
+        $GroupID = $args['groupID'];
+        $group = GroupQuery::create()->findOneById($GroupID);
+        $p2g2r = \ChurchCRM\Base\Person2group2roleP2g2rQuery::create()
+                ->filterByPersonId($input->PersonID)
+                ->filterByGroupId($GroupID)
+                ->findOneOrCreate()
+                ->setPersonId($input->PersonID);
+        if($input->RoleID)
+        {
+          $p2g2r->setRoleId($input->RoleID);
+        }
+        else
+        {
+          $p2g2r->setRoleId($group->getDefaultRole());
+        }
+                
+        $group->addPerson2group2roleP2g2r($p2g2r);
+        $group->save();
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
-            ->filterByPersonId($userID)
-            ->findByGroupId($groupID);
+            ->filterByPersonId($input->PersonID)
+            ->findByGroupId($GroupID);
         echo $members->toJSON();
     });
 
