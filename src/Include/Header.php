@@ -29,6 +29,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\Cart;
 
 if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
  Redirect('CheckVersion.php');
@@ -106,7 +107,7 @@ $MenuFirst = 1;
             <li id="CartBlock" class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your Cart') ?>">
                     <i class="fa fa-shopping-cart"></i>
-                    <span id="iconCount" class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
+                    <span id="iconCount" class="label label-success"><?= Cart::CountPeople() ?></span>
                 </a>
                 <ul class="dropdown-menu" id="cart-dropdown-menu"></ul>
             </li>
