@@ -55,8 +55,7 @@ class Cart
           $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'], $aIDs);
       }
   }
-  
-  
+
   public static function RemovePerson($PersonID)
   {
     // make sure the cart array exists
@@ -85,6 +84,11 @@ class Cart
     {
       Cart::RemovePerson($GroupMember->getPersonId());
     }
+  }
+  
+  public static function HasPeople()
+  {
+    return array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) != 0;
   }
 
 }

@@ -31,7 +31,7 @@ require 'Include/Functions.php';
 require 'Include/LabelFunctions.php';
 
 use ChurchCRM\dto\SystemURLs;
-
+use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 
 if (isset($_POST['rmEmail'])) {
@@ -44,7 +44,7 @@ require 'Include/Header.php'; ?>
 <div class="box box-body">
 <?php
 // Confirmation message that people where added to Event from Cart
-if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) == 0) {
+if (!Cart::HasPeople()) {
     if (!array_key_exists('Message', $_GET)) {
         ?>
              <p class="text-center callout callout-warning"><?= gettext('You have no items in your cart.') ?> </p>
