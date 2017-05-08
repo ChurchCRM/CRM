@@ -32,9 +32,7 @@ $app->group('/cart', function () {
       
     $this->post('/emptyToGroup', function($request, $response, $args) {
         $cartPayload = (object)$request->getParsedBody();
-        $iGroupID = $cartPayload->groupID;
-        $iGroupRole = $cartPayload->groupRoleID;
-        Cart::EmptyToGroup($iGroupID, $iGroupRole);
+        Cart::EmptyToGroup($cartPayload->groupID, $cartPayload->groupRoleID);
         return $response->withJson([
             'status' => "success",
             'message' => $iCount.' records(s) successfully added to selected Group.'

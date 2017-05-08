@@ -107,7 +107,7 @@ if (Cart::CountPeople() > 0) {
         <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
         <?php if ($_SESSION['bManageGroups']) {
             ?>
-            <a href="CartToGroup.php" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
+            <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
         <?php
 
         } ?>
