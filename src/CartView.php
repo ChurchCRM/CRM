@@ -34,10 +34,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 
-if (isset($_POST['rmEmail'])) {
-    rmEmail();
-}
-
 // Set the page title and include HTML header
 $sPageTitle = gettext('View Your Cart');
 require 'Include/Header.php'; ?>
@@ -380,20 +376,4 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 <?php
 
 require 'Include/Footer.php';
-
-function rmEmail()
-{
-    $iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
-        // Delete message from emp
-    $sSQL = 'DELETE FROM email_message_pending_emp '.
-            "WHERE emp_usr_id='$iUserID'";
-    RunQuery($sSQL);
-
-    // Delete recipients from erp (not really needed, this should have already happened)
-    // (no harm in trying again)
-    $sSQL = 'DELETE FROM email_recipient_pending_erp '.
-            "WHERE erp_usr_id='$iUserID'";
-    RunQuery($sSQL);
-    echo '<font class="SmallError">Deleted Email message succesfuly</font>';
-}
 ?>
