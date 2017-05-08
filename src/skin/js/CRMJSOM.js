@@ -53,7 +53,7 @@
             window.CRM.cart.refresh();
         });
       },
-      'emptyToGroup' : function (groupID,groupRoleID,callback)
+      'emptyToGroup' : function (callback)
       {
         window.CRM.groups.promptSelection(function(selectedRole){
           window.CRM.APIRequest({
@@ -80,17 +80,17 @@
       },
       'addPerson' : function (Persons, callback)
       {
-         window.CRM.APIRequest({
+        window.CRM.APIRequest({
           type: 'POST',
           path: 'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
-          window.CRM.cart.refresh();
-          if(callback)
-          {
-            callback(data);
-          }
-        });
+        window.CRM.cart.refresh();
+        if(callback)
+        {
+          callback(data);
+        }
+        });        
       },
       'removePerson' : function (Persons, callback)
       {

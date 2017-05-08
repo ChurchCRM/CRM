@@ -53,7 +53,8 @@ function bindEventListeners() {
     $(document).on("click", "#emptyCart", function (e) {
           window.CRM.cart.empty();
     });
-    $("#emptyCartToGroup").click(function (e) {
+    
+    $(document).on("click", "#emptyCartToGroup", function (e) {
           window.CRM.cart.emptyToGroup(2,1);
     });
     $(".AddToPeopleCart").click(function(){

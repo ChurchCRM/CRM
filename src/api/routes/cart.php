@@ -1,6 +1,7 @@
 <?php
 use ChurchCRM\GroupQuery;
 use ChurchCRM\Person2group2roleP2g2r;
+use ChurchCRM\dto\Cart;
 
 $app->group('/cart', function () {
   
@@ -12,23 +13,15 @@ $app->group('/cart', function () {
           $cartPayload = (object)$request->getParsedBody();
           if ( isset ($cartPayload->Persons) && count($cartPayload->Persons) > 0 )
           {
-           AddArrayToPeopleCart($cartPayload->Persons);
+            Cart::AddPersonArray($cartPayload->Persons);
           }
           elseif ( isset ($cartPayload->Family) )
           {
-            $FamilyMembers = ChurchCRM\FamilyQuery::create()->findOneById($cartPayload->Family)->getPeople();
-            foreach($FamilyMembers as $FamilyMember)
-            {
-              AddToPeopleCart($FamilyMember->getId());
-            }
+            Cart::AddFamily($cartPayload->Family))
           }
           elseif ( isset ($cartPayload->Group) )
           {
-            $GroupMembers = ChurchCRM\Base\GroupQuery::create()->findOneById($cartPayload->Group)->getPerson2group2roleP2g2rs();
-            foreach($GroupMembers as $GroupMember)
-            {
-              AddToPeopleCart($GroupMember->getPersonId());
-            }
+            Cart::AddGroup($cartPayload->Group)
           }
           else
           {
@@ -44,11 +37,17 @@ $app->group('/cart', function () {
         $iCount = 0;
         $Group = GroupQuery::create()->findOneById($iGroupID);
         while ($element = each($_SESSION['aPeopleCart'])) {
-            $personGroupRole = new Person2group2roleP2g2r();
-            $personGroupRole->setPersonId($_SESSION['aPeopleCart'][$element['key']]);
-            $personGroupRole->setRoleId($iGroupRole);
-            $Group->addPerson2group2roleP2g2r($personGroupRole);
-            $Group->save();
+            $personGroupRole = \ChurchCRM\Person2group2roleP2g2rQuery::create()
+                    ->filterByGroupId($iGroupID)
+                    ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
+                    ->filterByRoleId($iGroupRole)
+                    ->findOneOrCreate()
+                    ->setPersonId($_SESSION['aPeopleCart'][$element['key']])
+                    ->setRoleId($iGroupRole)
+                    ->setGroupId($iGroupID)
+                    ->save();
+            
+          
             $iCount += 1;
         }
         $_SESSION['aPeopleCart'] = [];
