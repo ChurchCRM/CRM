@@ -10,7 +10,7 @@ class Cart
   {
     // make sure the cart array exists
     if (isset($_SESSION['aPeopleCart'])) {
-        if (!in_array($sID, $_SESSION['aPeopleCart'], false)) {
+        if (!in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
             $_SESSION['aPeopleCart'][] = $PersonID;
         }
     } else {

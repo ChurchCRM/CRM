@@ -17,11 +17,11 @@ $app->group('/cart', function () {
           }
           elseif ( isset ($cartPayload->Family) )
           {
-            Cart::AddFamily($cartPayload->Family))
+            Cart::AddFamily($cartPayload->Family);
           }
           elseif ( isset ($cartPayload->Group) )
           {
-            Cart::AddGroup($cartPayload->Group)
+            Cart::AddGroup($cartPayload->Group);
           }
           else
           {
