@@ -34,23 +34,7 @@ $app->group('/cart', function () {
         $cartPayload = (object)$request->getParsedBody();
         $iGroupID = $cartPayload->groupID;
         $iGroupRole = $cartPayload->groupRoleID;
-        $iCount = 0;
-        $Group = GroupQuery::create()->findOneById($iGroupID);
-        while ($element = each($_SESSION['aPeopleCart'])) {
-            $personGroupRole = \ChurchCRM\Person2group2roleP2g2rQuery::create()
-                    ->filterByGroupId($iGroupID)
-                    ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
-                    ->filterByRoleId($iGroupRole)
-                    ->findOneOrCreate()
-                    ->setPersonId($_SESSION['aPeopleCart'][$element['key']])
-                    ->setRoleId($iGroupRole)
-                    ->setGroupId($iGroupID)
-                    ->save();
-            
-          
-            $iCount += 1;
-        }
-        $_SESSION['aPeopleCart'] = [];
+        Cart::EmptyToGroup($iGroupID, $iGroupRole);
         return $response->withJson([
             'status' => "success",
             'message' => $iCount.' records(s) successfully added to selected Group.'
