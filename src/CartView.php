@@ -79,10 +79,9 @@ if (!Cart::HasPeople()) {
 
     $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_LastName';
     $rsCartItems = RunQuery($sSQL);
-    $iNumPersons = mysqli_num_rows($rsCartItems);
+    $iNumPersons = Cart::CountPeople();
 
-    $sSQL = 'SELECT distinct per_fam_ID FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_fam_ID';
-    $iNumFamilies = mysqli_num_rows(RunQuery($sSQL));
+    $iNumFamilies = Cart::CountFamilies();
 
     if ($iNumPersons > 16) {
         ?>
@@ -98,7 +97,7 @@ if (!Cart::HasPeople()) {
 
 
 <?php
-if (count($_SESSION['aPeopleCart']) > 0) {
+if (Cart::CountPeople() > 0) {
         ?>
 <div class="box">
     <div class="box-header with-border">
@@ -129,7 +128,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i class="fa fa-map-marker"></i><?= gettext('Map Cart') ?></a>
         <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
         <?php
-        if (count($_SESSION['aPeopleCart']) != 0) {
+        if (Cart::CountPeople() != 0) {
 
             // Email Cart links
             // Note: This will email entire group, even if a specific role is currently selected.

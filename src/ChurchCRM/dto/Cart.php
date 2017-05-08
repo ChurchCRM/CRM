@@ -90,5 +90,37 @@ class Cart
   {
     return array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) != 0;
   }
+  
+  public static function CountPeople()
+  {
+    return count($_SESSION['aPeopleCart']);
+  }
+  
+  public static function ConvertCartToString($aCartArray)
+  {
+      // Implode the array
+    $sCartString = implode(',', $aCartArray);
+
+    // Make sure the comma is chopped off the end
+    if (mb_substr($sCartString, strlen($sCartString) - 1, 1) == ',') {
+        $sCartString = mb_substr($sCartString, 0, strlen($sCartString) - 1);
+    }
+
+    // Make sure there are no duplicate commas
+    $sCartString = str_replace(',,', '', $sCartString);
+
+      return $sCartString;
+  }
+
+  public static function CountFamilies()
+  {
+    $persons = PersonQuery::create()
+            ->distinct()
+            ->select(['Person.FamId'])
+            ->filterById($_SESSION['aPeopleCart'])
+            ->orderByFamId()
+            ->find();
+    return $persons->count();
+  }
 
 }
