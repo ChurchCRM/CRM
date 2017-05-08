@@ -1,5 +1,13 @@
 $("document").ready(function(){
+    window.CRM.system.runTimerJobs();
+    window.CRM.cart.refresh();
+    bindEventListeners();
+    $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
+    $(".maxUploadSize").text(window.CRM.maxUploadSize);
+    $(".initials-image").initial();
+});
 
+function bindEventListeners() {
     $(".multiSearch").select2({
         minimumInputLength: 2,
         ajax: {
@@ -42,34 +50,16 @@ $("document").ready(function(){
         }
     });
     $(".multiSearch").on("select2:select",function (e) { window.location.href= e.params.data.uri;});
-
-    $.ajax({
-      url: window.CRM.root + "/api/timerjobs/run",
-      type: "POST"
-    });
-    $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
-    
-
-    $(".initials-image").initial();
-    $(".maxUploadSize").text(window.CRM.maxUploadSize);
-
-
-    $("#emptyCart").click(function (e) {
+    $(document).on("click", "#emptyCart", function (e) {
           window.CRM.cart.empty();
-
     });
-    
     $("#emptyCartToGroup").click(function (e) {
           window.CRM.cart.emptyToGroup(2,1);
-
     });
-    
     $(".AddToPeopleCart").click(function(){
       window.CRM.cart.addPerson([$(this).data("personid")]);
     });
-    
-
-});
+}
 
 function showGlobalMessage(message, callOutClass) {
     $("#globalMessageText").text(message);

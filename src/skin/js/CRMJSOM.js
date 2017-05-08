@@ -143,10 +143,56 @@
         }).done(function(data) {
           window.scrollTo(0, 0);
           $("#iconCount").text(data.PeopleCart.length);
-          $("#CartBlock")
-          .animate({'left':(-10)+'px'},200)
-          .animate({'left':(+10)+'px'},200)
-          .animate({'left':(0)+'px'},200);
+          var cartDropdownMenu;
+          console.log(data.PeopleCart.length);
+          if (data.PeopleCart.length > 0) {
+            cartDropdownMenu = '\
+              <li id="showWhenCartNotEmpty">\
+                  <ul class="menu">\
+                      <li>\
+                          <a href="CartView.php">\
+                              <i class="fa fa-shopping-cart text-green"></i>View Cart\
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a id="emptyCart" id="#emptyCart">\
+                              <i class="fa fa-trash text-danger"></i> Empty Cart\
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a id="emptyCartToGroup">\
+                              <i class="fa fa-object-ungroup text-info"></i>Empty Cart to Group\
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a href="CartToEvent.php">\
+                              <i class="fa fa fa-users text-info"></i>Empty Cart to Family\
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a href="CartToEvent.php">\
+                              <i class="fa fa fa-ticket text-info"></i>Empty Cart to Event\
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a href="MapUsingGoogle.php?GroupID=0">\
+                              <i class="fa fa-map-marker text-info"></i>Map Cart\
+                          </a>\
+                      </li>\
+                  </ul>\
+              </li>\
+                        <!--li class="footer"><a href="#">View all</a></li-->\
+                    '
+        }
+          else {
+            cartDropdownMenu = '\
+              <li class="header">Your Cart is Empty</li>';
+          }
+        $("#cart-dropdown-menu").html(cartDropdownMenu);
+        $("#CartBlock")
+          .animate({'left':(-10)+'px'},30)
+          .animate({'left':(+10)+'px'},30)
+          .animate({'left':(0)+'px'},30);
         });
       }
 
@@ -240,6 +286,15 @@
         });
       }
     };
+    
+    window.CRM.system = {
+      'runTimerJobs' : function () {
+        window.CRM.APIRequest({
+          path: "timerjobs/run",
+          type: "POST"
+        });
+      }
+    }
 
     $(document).ajaxError(function (evt, xhr, settings) {
         try {

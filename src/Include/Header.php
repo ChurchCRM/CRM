@@ -108,54 +108,7 @@ $MenuFirst = 1;
                     <i class="fa fa-shopping-cart"></i>
                     <span id="iconCount" class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
                 </a>
-                <ul class="dropdown-menu">
-                    <?php
-                    if (count($_SESSION['aPeopleCart']) > 0) {
-                        $isCartPage = (basename($_SERVER['PHP_SELF']) == 'CartView.php'); ?>
-                        <li id="showWhenCartNotEmpty">
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-                                <li>
-                                    <a href="CartView.php">
-                                        <i class="fa fa-shopping-cart text-green"></i> <?= gettext('View Cart') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="emptyCart"
-                                       href="<?= ($isCartPage ? 'CartView.php?Action=EmptyCart' : '#') ?>">
-                                        <i class="fa fa-trash text-danger"></i> <?= gettext('Empty Cart') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="emptyCartToGroup">
-                                        <i class="fa fa-object-ungroup text-info"></i> <?= gettext('Empty Cart to Group') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="CartToEvent.php">
-                                        <i class="fa fa fa-users text-info"></i> <?= gettext('Empty Cart to Family') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="CartToEvent.php">
-                                        <i class="fa fa fa-ticket text-info"></i> <?= gettext('Empty Cart to Event') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="MapUsingGoogle.php?GroupID=0">
-                                        <i class="fa fa-map-marker text-info"></i> <?= gettext('Map Cart') ?>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!--li class="footer"><a href="#">View all</a></li-->
-                        <?php
-
-                    } else {
-                        echo '<li class="header">' . gettext("Your Cart is Empty") . '</li>';
-                    }
-                    ?>
-                </ul>
+                <ul class="dropdown-menu" id="cart-dropdown-menu"></ul>
             </li>
 
           <!-- User Account: style can be found in dropdown.less -->
