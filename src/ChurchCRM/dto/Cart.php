@@ -3,6 +3,7 @@ namespace ChurchCRM\dto;
 
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\GroupQuery;
 
 class Cart
 {
@@ -128,13 +129,13 @@ class Cart
     $iCount = 0;
     $Group = GroupQuery::create()->findOneById($GroupID);
     while ($element = each($_SESSION['aPeopleCart'])) {
-      $personGroupRole = \ChurchCRM\Person2group2roleP2g2rQuery::create()
+      $personGroupRole = Person2group2roleP2g2rQuery::create()
         ->filterByGroupId($GroupID)
         ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
         ->filterByRoleId($RoleID)
         ->findOneOrCreate()
         ->setPersonId($_SESSION['aPeopleCart'][$element['key']])
-        ->setRoleId($iGroupRole)
+        ->setRoleId($RoleID)
         ->setGroupId($GroupID)
         ->save();
       $iCount += 1;
