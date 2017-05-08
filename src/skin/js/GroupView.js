@@ -176,7 +176,27 @@ $(document).ready(function () {
 
 });
 
-window.CRM.groupViewColumns = [
+function initDataTable() {
+  window.CRM.DataTableAPI = $("#membersTable").DataTable({
+    "language": {
+      "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+    },
+    "dom": 'T<"clear">lfrtip',
+    "tableTools": {
+      "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
+      "sRowSelect": "multi",
+      "aButtons": [
+        {
+          "sExtends": "csv",
+          "bSelectedOnly": true
+        }]
+    },
+    responsive: true,
+    ajax: {
+      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
+      dataSrc: "Person2group2roleP2g2rs"
+    },
+    columns: [
       {
         width: 'auto',
         title: 'Name',
@@ -228,29 +248,7 @@ window.CRM.groupViewColumns = [
         title: 'E-mail',
         data: 'Person.Email'
       }
-    ];
-
-function initDataTable() {
-  window.CRM.DataTableAPI = $("#membersTable").DataTable({
-    "language": {
-      "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
-    },
-    "dom": 'T<"clear">lfrtip',
-    "tableTools": {
-      "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
-      "sRowSelect": "multi",
-      "aButtons": [
-        {
-          "sExtends": "csv",
-          "bSelectedOnly": true
-        }]
-    },
-    responsive: true,
-    ajax: {
-      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
-      dataSrc: "Person2group2roleP2g2rs"
-    },
-    columns: window.CRM.groupViewColumns,
+    ],
     "fnDrawCallback": function (oSettings) {
       $("#iTotalMembers").text(oSettings.aoData.length);
       $("#membersTable .initials-image").initial();
