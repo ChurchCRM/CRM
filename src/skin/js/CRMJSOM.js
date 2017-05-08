@@ -118,7 +118,6 @@
             {
               callback(data);
             }
-            
         });
       },
       'addGroup' : function (GroupID, callback)
@@ -278,11 +277,15 @@
           data: JSON.stringify({"PersonID": PersonID})
         });
       },
-      'removePerson' : function(GroupID,PersonID) {
+      'removePerson' : function(GroupID,PersonID, callback) {
          window.CRM.APIRequest({
-          type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-          path:'groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId,
-          data: {"_METHOD": "DELETE"}
+          type: 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
+          path:'groups/' + GroupID + '/removeuser/' + PersonID,
+        }).done(function(data) {
+            if(callback)
+            {
+              callback(data);
+            }
         });
       }
     };

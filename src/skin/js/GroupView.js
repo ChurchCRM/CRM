@@ -129,7 +129,14 @@ $(document).ready(function () {
       var selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
       $.each(selectedRows, function (index, value) {
         window.CRM.groups.addPerson(selectedRole.GroupID, value.PersonId);
-        window.CRM.groups.removePerson(selectedRole.GroupID, value.PersonId);
+        window.CRM.groups.removePerson(window.CRM.currentGroup, value.PersonId, function(data) {
+          window.CRM.DataTableAPI.row(function (idx, data, node) {
+                if (data.PersonId == value.PersonId) {
+                  return true;
+                }
+              }).remove();
+              window.CRM.DataTableAPI.rows().invalidate().draw(true);
+        });
       });
     });
   });
