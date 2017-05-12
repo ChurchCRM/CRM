@@ -128,6 +128,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-validator/dist/validator.min.js'],
                         dest: 'src/skin/bootstrap-validator/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/i18next/dist/umd/i18next.min.js'],
+                        dest: 'src/skin/i18next/'
                     }
                 ]
             }
@@ -361,6 +368,15 @@ module.exports = function (grunt) {
                     filters: ["translated"],
                     type: 'mo', // export type (check out the doc)
                     dest: 'src/locale/?/LC_MESSAGES/messages.mo'
+                    // grunt style dest files
+                }
+            },
+            getJSTranslations: {
+                download: {
+                    project_id: '<%= poeditor.options.project_id %>',
+                    filters: ["translated"],
+                    type: 'key_value_json', // export type (check out the doc)
+                    dest: 'src/locale/?/LC_MESSAGES/messages.js'
                     // grunt style dest files
                 }
             },
