@@ -43,7 +43,7 @@ abstract class BaseEmail
             $this->mail->Username = SystemConfig::getValue("sSMTPUser");
             $this->mail->Password = SystemConfig::getValue("sSMTPPass");
         }
-        if (SystemConfig::getBooleanValue("debug")) {
+        if (SystemConfig::getBooleanValue("bDebug")) {
             $this->mail->SMTPDebug = 1;
             $this->mail->Debugoutput = "error_log";
         }
