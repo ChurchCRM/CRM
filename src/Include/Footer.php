@@ -299,6 +299,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18next.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18next-xhr-backend.min.js"></script>
 
 <?php if (isset($sGlobalMessage)) {
     ?>
