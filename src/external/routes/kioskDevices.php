@@ -10,6 +10,7 @@ use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 
 $app->group('/kioskdevices', function () {
@@ -32,10 +33,29 @@ $app->group('/kioskdevices', function () {
                 ->addJoinCondition("ListOption", "Group.RoleListId = ListOption.Id")
               ->withColumn(ChurchCRM\Map\ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
               ->endUse()
-            
+              ->select(array("Id","FirstName","LastName"))
               ->find();
       return $ssClass->toJSON();
     });
+    
+    
+    $this->get('/{guid}/activeEvent', function ($request, $response, $args) {
+      $Event = \ChurchCRM\EventQuery::create()
+              ->filterByStart('now', Criteria::LESS_EQUAL)
+              ->filterByEnd('now',Criteria::GREATER_EQUAL)
+              ->find();
+      return $Event->toJSON();
+    });
+    
+    $this->get('/{guid}/activeEvent/checkin', function ($request, $response, $args) {
+      
+    });
+    
+    $this->get('/{guid}/activeEvent/checkout', function ($request, $response, $args) {
+      
+    });
+    
+    
     
     $this->get('/{guid}/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) {
      $person = PersonQuery::create()->findPk($args['PersonId']);
