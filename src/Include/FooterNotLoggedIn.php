@@ -22,7 +22,7 @@ use ChurchCRM\dto\SystemURLs;
   <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" ></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js" ></script>
-  
+
   <!-- Bootbox -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
 
@@ -36,8 +36,9 @@ use ChurchCRM\dto\SystemURLs;
     });
   </script>
   <?php
+
     //If this is a first-run setup, do not include google analytics code.
-    if (basename($_SERVER['SCRIPT_FILENAME']) != 'Setup.php') {
+    if ($_SERVER['SCRIPT_NAME'] != '/setup/index.php') {
         include_once('analyticstracking.php');
     }
  ?>

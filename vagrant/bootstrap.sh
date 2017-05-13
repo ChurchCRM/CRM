@@ -97,9 +97,6 @@ echo "====================   Setup Tests  ======================"
 echo "=========================================================="
 
 npm run tests-install
-#sudo apt-get install firefox xvfb openjdk-7-jre-headless
-#mkdir /usr/lib/selenium
-#wget --directory /usr/lib/selenium  http://selenium-release.storage.googleapis.com/2.40/selenium-server-standalone-2.40.0.jar
 
 echo "=========================================================="
 echo "=========================================================="

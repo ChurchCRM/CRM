@@ -26,13 +26,13 @@
 //Include the function library
 require "Include/Config.php";
 require "Include/Functions.php";
-require "Include/GeoCoder.php";
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Utils\GeoUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -217,14 +217,13 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <ul class="fa-ul">
                     <li><i class="fa-li glyphicon glyphicon-home"></i><?= gettext("Address") ?>:<span>
 					<a
-                        href="http://maps.google.com/?q=<?= getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country) ?>"
-                        target="_blank"><?php
-                        echo getMailingAddress($fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
-    echo "</a></span><br>";
-    if ($fam_Latitude && $fam_Longitude) {
+                        href="http://maps.google.com/?q=<?= $family->getAddress() ?>"
+                        target="_blank"><?= $family->getAddress() ?></a></span><br>
+
+    <?php if ($fam_Latitude && $fam_Longitude) {
         if (SystemConfig::getValue("nChurchLatitude") && SystemConfig::getValue("nChurchLongitude")) {
-            $sDistance = LatLonDistance(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
-            $sDirection = LatLonBearing(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
+            $sDistance = GeoUtils::LatLonDistance(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
+            $sDirection = GeoUtils::LatLonBearing(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
             echo $sDistance . " " . strtolower(SystemConfig::getValue("sDistanceUnit")) . " " . $sDirection . " " . gettext(" of church<br>");
         }
     } else {
@@ -507,10 +506,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         <?= $item['text'] ?>
                                     </div>
 
-                                    <?php if (($_SESSION['bNotes']) && ($item["editLink"] != "" || $item["deleteLink"] != "")) {
+                                    <?php if (($_SESSION['bNotes']) && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
             ?>
                                         <div class="timeline-footer">
-                                            <?php if ($item["editLink"] != "") {
+                                            <?php if (isset($item["editLink"])) {
                 ?>
                                                 <a href="<?= $item["editLink"] ?>">
                                                     <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
@@ -518,7 +517,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                 <?php
 
             }
-            if ($item["deleteLink"] != "") {
+            if (isset($item["deleteLink"])) {
                 ?>
                                                 <a href="<?= $item["deleteLink"] ?>">
                                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
@@ -625,10 +624,11 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                     <div>
                                         <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
 
-                                        <p><br></p>
-
                                         <form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
-                                            <select name="PropertyID">
+                                        <div class="row">
+                                            <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
+                                            <select name="PropertyID" class="form-control">
+                                                <option selected disabled> -- <?= gettext('select an option') ?> -- </option>
                                                 <?php
                                                 while ($aRow = mysqli_fetch_array($rsProperties)) {
                                                     extract($aRow);
@@ -638,9 +638,11 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                     }
                                                 } ?>
                                             </select>
-                                            <input type="submit" class="btn btn-primary" value="<?= gettext("Assign") ?>" name="Submit2"
-                                                   style="font-size: 8pt;">
-                                            </p>
+                                            </div>
+                                            <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                                <input type="submit" class="btn btn-primary" value="<?= gettext("Assign") ?>" name="Submit2">
+                                            </div>
+                                        </div>
                                         </form>
                                     </div>
                                 </div>
@@ -765,27 +767,27 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                        style="font-size: 8pt;">
                             </form>
 
-                            <table cellpadding="4" cellspacing="0" width="100%">
-
-                                <tr class="TableHeader" align="center">
-                                    <td><?= gettext("Pledge or Payment") ?></td>
-                                    <td><?= gettext("Fund") ?></td>
-                                    <td><?= gettext("Fiscal Year") ?></td>
-                                    <td><?= gettext("Date") ?></td>
-                                    <td><?= gettext("Amount") ?></td>
-                                    <td><?= gettext("NonDeductible") ?></td>
-                                    <td><?= gettext("Schedule") ?></td>
-                                    <td><?= gettext("Method") ?></td>
-                                    <td><?= gettext("Comment") ?></td>
-                                    <td><?= gettext("Edit") ?></td>
-                                    <td><?= gettext("Delete") ?></td>
-                                    <td><?= gettext("Date Updated") ?></td>
-                                    <td><?= gettext("Updated By") ?></td>
-                                </tr>
+                            <table id="pledge-payment-table" class="table table-condensed dt-responsive" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th><?= gettext("Pledge or Payment") ?></th>
+                                        <th><?= gettext("Fund") ?></th>
+                                        <th><?= gettext("Fiscal Year") ?></th>
+                                        <th><?= gettext("Date") ?></th>
+                                        <th><?= gettext("Amount") ?></th>
+                                        <th><?= gettext("NonDeductible") ?></th>
+                                        <th><?= gettext("Schedule") ?></th>
+                                        <th><?= gettext("Method") ?></th>
+                                        <th><?= gettext("Comment") ?></th>
+                                        <th><?= gettext("Edit") ?></th>
+                                        <th><?= gettext("Delete") ?></th>
+                                        <th><?= gettext("Date Updated") ?></th>
+                                        <th><?= gettext("Updated By") ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
                                 <?php
-
-
                                 $tog = 0;
 
         if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments']) {
@@ -811,22 +813,9 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                             ) &&
                                             ($_SESSION['sshowSince'] == "" ||  DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['sshowSince'])
                                         ) {
-                                            //Alternate the row style
-                                            if ($tog) {
-                                                $sRowClass = "RowColorA";
-                                            } else {
-                                                $sRowClass = "RowColorB";
-                                            }
+                                            ?>
 
-                                            if ($plg_PledgeOrPayment == 'Payment') {
-                                                if ($tog) {
-                                                    $sRowClass = "PaymentRowColorA";
-                                                } else {
-                                                    $sRowClass = "PaymentRowColorB";
-                                                }
-                                            } ?>
-
-                                            <tr class="<?= $sRowClass ?>" align="center">
+                                            <tr>
                                                 <td>
                                                     <?= $plg_PledgeOrPayment ?>&nbsp;
                                                 </td>
@@ -877,6 +866,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
                                 ?>
 
+                                </tbody>
                             </table>
 
                             <p align="center">
