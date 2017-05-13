@@ -53,7 +53,7 @@
         "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "composer-install": "cd src/ && composer install",
         "composer-update": " cd src/ && composer update",
-        "tests-install": "cd tests/ && composer install",
-        "test": "cd tests/behat/ && ../vendor/bin/behat"
+        "tests-install": "scripts/tests-install.sh",
+        "test": "scripts/tests-run.sh"
     }
 }
