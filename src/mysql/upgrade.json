@@ -127,7 +127,8 @@
             "2.7.4",
             "2.7.5"
         ],
-        "scripts": [],
-        "dbVersion": "2.7.6"
+        "scripts": [
+        ],
+        "dbVersion": "2.8.0"
     }
 }
