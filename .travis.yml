@@ -9,6 +9,9 @@ rvm:
 addons:
   sauce_connect: true
 
+addons:
+  sauce_connect:true
+
 sudo: required
 dist: trusty
 group: edge
