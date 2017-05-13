@@ -10,7 +10,7 @@ msgstr ""
 #: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:265
 #: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:264
 #: external/templates/registration/family-register.php:51
-#: external/templates/verify/enter-info.php:29 FamilyEditor.php:697
+#: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
 #: PersonEditor.php:874 Register.php:50
 #, fuzzy
 msgid "Zip"

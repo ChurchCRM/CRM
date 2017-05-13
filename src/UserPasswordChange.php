@@ -83,6 +83,7 @@ if (isset($_POST['Submit'])) {
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
+
             if (!empty($curUser->getEmail())) {
                 $email = new PasswordChangeEmail($curUser, $sNewPassword1);
                 if (!$email->send()) {

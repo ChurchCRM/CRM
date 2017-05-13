@@ -1,0 +1,4 @@
+site_name: ChurchCRM
+theme: readthedocs
+extra_javascript:
+- js/extra.js

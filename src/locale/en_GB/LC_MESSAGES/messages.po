@@ -9,7 +9,7 @@ msgstr ""
 
 #: AutoPaymentEditor.php:703 CartToFamily.php:253 CSVExport.php:120
 #: CSVImport.php:222 DirectoryReports.php:260
-#: external/templates/registration/family-register.php:44 FamilyEditor.php:687
+#: external/templates/registration/family-register.php:44 FamilyEditor.php:692
 #: PersonEditor.php:851 Register.php:49 queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "County"
@@ -17,7 +17,7 @@ msgstr "County"
 #: AutoPaymentEditor.php:708 BackupDatabase.php:67 CartToFamily.php:265
 #: CSVExport.php:125 CSVImport.php:223 DirectoryReports.php:264
 #: external/templates/registration/family-register.php:51
-#: external/templates/verify/enter-info.php:29 FamilyEditor.php:697
+#: external/templates/verify/enter-info.php:29 FamilyEditor.php:702
 #: PersonEditor.php:874 Register.php:50
 #, fuzzy
 msgid "Zip"
