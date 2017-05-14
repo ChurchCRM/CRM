@@ -488,6 +488,10 @@
         <column name="type_defrecurDOM" phpName="DefRecurDOM" type="CHAR" size="2" required="true" defaultValue="0"/>
         <column name="type_defrecurDOY" phpName="DefRecurDOY" type="DATE" required="true" defaultValue="2016-01-01"/>
         <column name="type_active" phpName="Active" type="INTEGER" size="1" required="true" defaultValue="1"/>
+        <column name="type_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
+        <foreign-key foreignTable="group_grp">
+            <reference local="type_grpid" foreign="grp_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
@@ -719,7 +723,7 @@
         </vendor>
     </table>
     
-     <table name="kioskdevice_kdev" idMethod="native" phpName="KioskDevices">
+     <table name="kioskdevice_kdev" idMethod="native" phpName="KioskDevice">
       <column name="kdev_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
       <column name="kdev_GUID" phpName="GUID" type="VARCHAR" size="36"/>
       <column name="kdev_Name" phpName="Name" type="VARCHAR" size="50"/>

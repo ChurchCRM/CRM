@@ -11,6 +11,7 @@ use ChurchCRM\PersonQuery;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\EventQuery;
 
 
 $app->group('/kioskdevices', function () {
@@ -40,11 +41,26 @@ $app->group('/kioskdevices', function () {
     
     
     $this->get('/{guid}/activeEvent', function ($request, $response, $args) {
-      $Event = \ChurchCRM\EventQuery::create()
-              ->filterByStart('now', Criteria::LESS_EQUAL)
-              ->filterByEnd('now',Criteria::GREATER_EQUAL)
-              ->find();
-      return $Event->toJSON();
+      $guid = $args['guid'];
+      $Kiosk = ChurchCRM\KioskDeviceQuery::create()
+              ->findOneByGUID($guid);
+
+      if ($Kiosk->getDeviceType() == "Sunday School Classroom Kisok")
+      {
+        $KioskConfig = json_decode($Kiosk->getConfiguration());
+        $Event = EventQuery::create()
+                ->filterByStart('now', Criteria::LESS_EQUAL)
+                ->filterByEnd('now',Criteria::GREATER_EQUAL)
+                ->filterByGroupId($KioskConfig->GroupId)
+                ->find();
+        return $Event->toJSON();
+      }
+      else
+      {
+        throw new \Exception("This kiosk does not support group attendance");
+      }
+        
+     
     });
     
     $this->get('/{guid}/activeEvent/checkin', function ($request, $response, $args) {
