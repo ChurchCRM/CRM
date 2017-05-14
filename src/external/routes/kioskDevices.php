@@ -12,6 +12,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\EventQuery;
+use ChurchCRM\dto\KioskDeviceTypes;
 
 
 $app->group('/kioskdevices', function () {
@@ -45,7 +46,7 @@ $app->group('/kioskdevices', function () {
       $Kiosk = ChurchCRM\KioskDeviceQuery::create()
               ->findOneByGUID($guid);
 
-      if ($Kiosk->getDeviceType() == "Sunday School Classroom Kisok")
+      if ($Kiosk->getDeviceType() == KioskDeviceTypes::GROUPATTENDANCEKIOSK)
       {
         $KioskConfig = json_decode($Kiosk->getConfiguration());
         $Event = EventQuery::create()
