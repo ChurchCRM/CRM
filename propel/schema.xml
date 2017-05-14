@@ -530,6 +530,10 @@
         <column name="event_end" phpName="End" type="TIMESTAMP" required="true"/>
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
         <column name="event_typename" phpName="TypeName" type="VARCHAR" size="40" required="true" defaultValue=""/>
+        <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
+        <foreign-key foreignTable="group_grp">
+            <reference local="event_grpid" foreign="grp_ID"/>
+        </foreign-key>
         <index name="event_txt">
             <index-column name="event_text"/>
         </index>

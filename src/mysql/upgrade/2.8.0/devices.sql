@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `kioskdevice_kdev`;
 CREATE TABLE `kioskdevice_kdev` ( 
   `kdev_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `kdev_GUID` char(36) DEFAULT NULL,

@@ -2,21 +2,70 @@
 use ChurchCRM\dto\SystemURLs;
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Sunday School Device Kiosk";
-require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 ?>
 <style>
   .widget-user-2 .widget-user-header {
     padding: 5px;
   }
   
+  #eventDetails {
+    display:block;
+    width: 100%;
+    background-color:rgb(60,141,188);
+    min-height:50px;
+  }
+  
+  #eventDetails  span {
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    display:block;
+  }
+  
+  #eventTitle {
+    font-size: 30px !important;
+    font-weight: bold;
+  }
+  
+  #newStudent {
+    position: fixed;
+    left: 20px;
+    bottom: 80px;
+    width:30px;
+    height:30px;
+    z-index: 10000;
+    font-size:48pt;
+    color: green;
+  }
+  
 </style>
+
+<div class="container" id="eventDetails">
+  <div class="col-md-6">
+    <span id="eventTitle" ></span>
+  </div>
+  <div class="col-md-2">
+    <span>Start Time</span>
+    <span id="startTime"></span>  
+  </div>
+  <div class="col-md-2">
+    <span>End Time</span>
+    <span id="endTime"></span> 
+  </div>
+  
+    
+</div>
 
 <div class="container" id="classMemberContainer">
     
 </div>
 
+<a id="newStudent"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+
 <script src="<?= SystemURLs::getRootPath() ?>/skin/randomcolor/randomColor.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/initial.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/moment/moment.min.js"></script>
 <script>
   window.CRM.thisDeviceGuid = "<?= $thisDeviceGuid ?>";
   //first, define the function that will render the active members
@@ -66,12 +115,23 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
       })
   };
   
-  window.CRM.getActiveEvent = function(){
-    
+  window.CRM.uppdateActiveEvent = function(){
+    $.ajax( {
+        method: "GET",
+        url: window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/activeEvent",
+        dataType: "json"
+      }).
+        done(function(data){
+          thisEvent=data.Events[0];
+          $("#eventTitle").text(thisEvent.Title);
+          $("#startTime").text(moment(thisEvent.Start).format('MMMM Do YYYY, h:mm:ss a'));
+
+          $("#endTime").text(moment(thisEvent.End).format('MMMM Do YYYY, h:mm:ss a'));
+      })
   }
   
   $(document).ready(function() {
-    window.CRM.getActiveEvent();
+    window.CRM.uppdateActiveEvent();
     window.CRM.updateActiveClassMembers();
   });
     
@@ -116,4 +176,4 @@ require(__DIR__ ."/../../../Include/HeaderNotLoggedIn.php");
 
 <?php
 // Add the page footer
-require(__DIR__ ."/../../../Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");
