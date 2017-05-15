@@ -25,6 +25,7 @@ src/Images/Person
 .sass-cache
 
 #skins
+src/skin/external
 src/skin/adminlte
 src/skin/font-awesome
 src/skin/ionicons
