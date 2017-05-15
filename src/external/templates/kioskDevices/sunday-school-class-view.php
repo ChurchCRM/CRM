@@ -39,29 +39,51 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     color: green;
   }
   
+  #event {
+    display:none;
+  }
+  
+  #noEvent {
+    display:none;
+
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+
+  }
+  
 </style>
 
-<div class="container" id="eventDetails">
-  <div class="col-md-6">
-    <span id="eventTitle" ></span>
-  </div>
-  <div class="col-md-2">
-    <span>Start Time</span>
-    <span id="startTime"></span>  
-  </div>
-  <div class="col-md-2">
-    <span>End Time</span>
-    <span id="endTime"></span> 
-  </div>
-  
-    
+<div>
+  <h1 id="noEvent">No active events for this kiosk</h1>
 </div>
 
-<div class="container" id="classMemberContainer">
-    
-</div>
+<div id="event">
 
-<a id="newStudent"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+  <div class="container" id="eventDetails">
+    <div class="col-md-6">
+      <span id="eventTitle" ></span>
+    </div>
+    <div class="col-md-2">
+      <span>Start Time</span>
+      <span id="startTime"></span>  
+    </div>
+    <div class="col-md-2">
+      <span>End Time</span>
+      <span id="endTime"></span> 
+    </div>
+
+
+  </div>
+
+  <div class="container" id="classMemberContainer">
+
+  </div>
+
+  <a id="newStudent"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+</div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/randomcolor/randomColor.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/initial.js"></script>
@@ -75,38 +97,54 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     console.log(personId);
   }
   
+  window.CRM.APIRequest = function(options) {
+      if (!options.method)
+      {
+        options.method="GET"
+      }
+      options.url=window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/"+options.path;
+      options.dataType = 'json';
+      options.contentType =  "application/json";
+      return $.ajax(options);
+    }
+  
   window.CRM.renderClassMember = function (classMember) {
-      var outerDiv = $("<div>",{id:"personId-"+classMember.personId}).addClass("col-md-4");
-      var innerDiv = $("<div>").addClass("box box-widget widget-user-2");
-      var userHeaderDiv = $("<div>",{class :"widget-user-header bg-yellow"}).attr("data-personid",classMember.personId);
-      var imageDiv = $("<div>", {class:"widget-user-image"})
-              .append($("<img>",{
-                class:"initials-image profile-user-img img-responsive img-circle no-border"
-              }).data("name",classMember.displayName)
-                .data("src",window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/activeClassMember/"+classMember.personId+"/photo")
-              );
-      userHeaderDiv.append(imageDiv);
-      userHeaderDiv.append($("<h3>",{class:"widget-user-username", text:classMember.displayName})).append($("<h3>",{class:"widget-user-desc", style:"clear:both", text:classMember.classRole}));
-      innerDiv.append(userHeaderDiv);
-      innerDiv.append($("<div>", { class : "box-footer no-padding"})
-              .append($("<ul>", {class:"nav navbar-nav", style:"width:100%"})
-                .append($("<li>", {style:"width:50%"})
-                  .append($("<button>",{class: "btn btn-danger parentAlertButton", style:"width:100%", text : "Trigger Parent Alert", "data-personid": classMember.personId}).prepend($("<i>",{class:"fa fa-exclamation-triangle",'aria-hidden':"true"}) )))
-                .append($("<li>",{class: "btn btn-primary checkinButton", style:"width:50%", text : "Checkin", "data-personid": classMember.personId}))
-              ));
-      outerDiv.append(innerDiv);
-      $("#classMemberContainer").append(outerDiv);   
+      existingDiv = $("#personId-"+classMember.personId);
+      if (existingDiv.length > 0)
+      {
+      }
+      else
+      {
+        var outerDiv = $("<div>",{id:"personId-"+classMember.personId}).addClass("col-md-4");
+        var innerDiv = $("<div>").addClass("box box-widget widget-user-2");
+        var userHeaderDiv = $("<div>",{class :"widget-user-header bg-yellow"}).attr("data-personid",classMember.personId);
+        var imageDiv = $("<div>", {class:"widget-user-image"})
+                .append($("<img>",{
+                  class:"initials-image profile-user-img img-responsive img-circle no-border"
+                }).data("name",classMember.displayName)
+                  .data("src",window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/activeClassMember/"+classMember.personId+"/photo")
+                );
+        userHeaderDiv.append(imageDiv);
+        userHeaderDiv.append($("<h3>",{class:"widget-user-username", text:classMember.displayName})).append($("<h3>",{class:"widget-user-desc", style:"clear:both", text:classMember.classRole}));
+        innerDiv.append(userHeaderDiv);
+        innerDiv.append($("<div>", { class : "box-footer no-padding"})
+                .append($("<ul>", {class:"nav navbar-nav", style:"width:100%"})
+                  .append($("<li>", {style:"width:50%"})
+                    .append($("<button>",{class: "btn btn-danger parentAlertButton", style:"width:100%", text : "Trigger Parent Alert", "data-personid": classMember.personId}).prepend($("<i>",{class:"fa fa-exclamation-triangle",'aria-hidden':"true"}) )))
+                  .append($("<li>",{class: "btn btn-primary checkinButton", style:"width:50%", text : "Checkin", "data-personid": classMember.personId}))
+                ));
+        outerDiv.append(innerDiv);
+        $("#classMemberContainer").append(outerDiv);   
+      }
       
     };
     
   window.CRM.updateActiveClassMembers = function()
   {
-      $.ajax( {
-        method: "GET",
-        url: window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/activeClassMembers",
-        dataType: "json"
-      }).
-        done(function(data){
+     window.CRM.APIRequest({
+       path:"activeClassMembers"
+     })
+     .done(function(data){
           $(data.People).each(function(i,d){
             //console.log(d);
             window.CRM.renderClassMember({displayName:d.FirstName+" "+d.LastName, classRole:d.RoleName,personId:d.Id})
@@ -115,24 +153,69 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       })
   };
   
-  window.CRM.uppdateActiveEvent = function(){
-    $.ajax( {
-        method: "GET",
-        url: window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/activeEvent",
-        dataType: "json"
-      }).
+  window.CRM.heartbeat = function(){
+    window.CRM.APIRequest({
+       path:"heartbeat"
+     }).
         done(function(data){
-          thisEvent=data.Events[0];
-          $("#eventTitle").text(thisEvent.Title);
-          $("#startTime").text(moment(thisEvent.Start).format('MMMM Do YYYY, h:mm:ss a'));
-
-          $("#endTime").text(moment(thisEvent.End).format('MMMM Do YYYY, h:mm:ss a'));
+          if (data.Status == "Reload")
+          {
+            location.reload();
+          }
+          
+          thisEvent=JSON.parse(data.Event);
+          if (thisEvent)
+          {
+            window.CRM.updateActiveClassMembers();
+            $("#noEvent").hide();
+            $("#event").show();
+            $("#eventTitle").text(thisEvent.Title);
+            $("#startTime").text(moment(thisEvent.Start).format('MMMM Do YYYY, h:mm:ss a'));
+            $("#endTime").text(moment(thisEvent.End).format('MMMM Do YYYY, h:mm:ss a'));
+          }
+          else
+          {
+             $("#noEvent").show();
+             $("#event").hide();
+          }
+          
       })
   }
   
+  window.CRM.kioskEventLoop = function()
+  {
+    window.CRM.heartbeat();
+    
+  }
+  
+  window.CRM.checkInPerson = function(personId)
+  {
+    window.CRM.APIRequest({
+      path:"checkin",
+      method:"POST",
+      data:JSON.stringify({"PersonId":personId})
+    }).
+    done(function(data){
+      console.log("CheckIn for: "+personId);
+    });
+    
+  }
+  
+  window.CRM.checkOutPerson = function(personId)
+  {
+    window.CRM.APIRequest({
+      path:"checkout",
+      method:"POST",
+      data:JSON.stringify({"PersonId":personId})
+    }).
+    done(function(data){
+      console.log("CheckOut for: "+personId);
+    });
+  }
+  
   $(document).ready(function() {
-    window.CRM.uppdateActiveEvent();
-    window.CRM.updateActiveClassMembers();
+    window.CRM.kioskEventLoop();
+    setInterval(window.CRM.kioskEventLoop,10000);
   });
     
   $(document).on('click','.widget-user-header', function(event)
@@ -155,8 +238,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     $(event.currentTarget).text("Checkout");
     $("#personId-"+personId).find(".widget-user-header").removeClass("bg-yellow");
     $("#personId-"+personId).find(".widget-user-header").addClass("bg-green");
-
-    console.log("Checkin for: "+personId);
+    window.CRM.checkInPerson(personId);
   });
     
   $(document).on('click','.checkoutButton', function(event)
@@ -167,7 +249,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     $(event.currentTarget).text("CheckIn");
     $("#personId-"+personId).find(".widget-user-header").removeClass("bg-green");
     $("#personId-"+personId).find(".widget-user-header").addClass("bg-yellow");
-    console.log("Checkout for: "+personId);
+    window.CRM.checkOutPerson(personId);
   });
     
     

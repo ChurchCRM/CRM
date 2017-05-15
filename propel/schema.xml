@@ -729,6 +729,7 @@
       <column name="kdev_Name" phpName="Name" type="VARCHAR" size="50"/>
       <column name="kdev_deviceType" phpName="DeviceType" type="LONGVARCHAR"/>
       <column name="kdev_deviceConfiguration" phpName="Configuration" type="LONGVARCHAR" />
+      <column name="kdev_lastHeartbeat" phpName="LastHeartbeat" type="LONGVARCHAR" />
       <index name="kdev_ID">
         <index-column name="kdev_ID"/>
       </index>

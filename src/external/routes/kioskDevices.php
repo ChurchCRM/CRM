@@ -1,18 +1,13 @@
 <?php
 
-use ChurchCRM\ConfigQuery;
-use ChurchCRM\Family;
-use ChurchCRM\ListOptionQuery;
-use ChurchCRM\Person;
+
+
 use Slim\Views\PhpRenderer;
-use ChurchCRM\GroupQuery;
-use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\EventQuery;
-use ChurchCRM\dto\KioskDeviceTypes;
+
+
 
 
 $app->group('/kioskdevices', function () {
@@ -26,50 +21,38 @@ $app->group('/kioskdevices', function () {
     });
     
     $this->get('/{guid}/activeClassMembers', function ($request, $response, $args) {
-      $ssClass = PersonQuery::create()
-              ->joinWithPerson2group2roleP2g2r()
-              ->usePerson2group2roleP2g2rQuery()
-                ->filterByGroupId(2)
-                ->joinGroup()
-                ->innerJoin("ListOption")
-                ->addJoinCondition("ListOption", "Group.RoleListId = ListOption.Id")
-              ->withColumn(ChurchCRM\Map\ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
-              ->endUse()
-              ->select(array("Id","FirstName","LastName"))
-              ->find();
-      return $ssClass->toJSON();
+      
+      $guid = $args['guid'];
+      $Kiosk = ChurchCRM\KioskDeviceQuery::create()
+              ->findOneByGUID($guid)
+              ->getActiveGroupMembers();
+      return $Kiosk->toJSON();
     });
     
     
-    $this->get('/{guid}/activeEvent', function ($request, $response, $args) {
+    $this->get('/{guid}/heartbeat', function ($request, $response, $args) {
       $guid = $args['guid'];
       $Kiosk = ChurchCRM\KioskDeviceQuery::create()
               ->findOneByGUID($guid);
-
-      if ($Kiosk->getDeviceType() == KioskDeviceTypes::GROUPATTENDANCEKIOSK)
-      {
-        $KioskConfig = json_decode($Kiosk->getConfiguration());
-        $Event = EventQuery::create()
-                ->filterByStart('now', Criteria::LESS_EQUAL)
-                ->filterByEnd('now',Criteria::GREATER_EQUAL)
-                ->filterByGroupId($KioskConfig->GroupId)
-                ->find();
-        return $Event->toJSON();
-      }
-      else
-      {
-        throw new \Exception("This kiosk does not support group attendance");
-      }
-        
+      return json_encode($Kiosk->heartbeat());     
+    });
+    
+    $this->post('/{guid}/checkin', function ($request, $response, $args) {
+      $guid = $args['guid'];
+      $input = (object) $request->getParsedBody();
+      $Kiosk = ChurchCRM\KioskDeviceQuery::create()
+              ->findOneByGUID($guid)
+              ->checkInPerson($input->PersonId);
+      
      
     });
     
-    $this->get('/{guid}/activeEvent/checkin', function ($request, $response, $args) {
-      
-    });
-    
-    $this->get('/{guid}/activeEvent/checkout', function ($request, $response, $args) {
-      
+    $this->post('/{guid}/checkout', function ($request, $response, $args) {
+      $guid = $args['guid'];
+      $input = (object) $request->getParsedBody();
+      $Kiosk = ChurchCRM\KioskDeviceQuery::create()
+              ->findOneByGUID($guid)
+              ->checkOutPerson($input->PersonId);
     });
     
     
