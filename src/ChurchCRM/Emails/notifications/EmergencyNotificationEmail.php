@@ -13,20 +13,20 @@ class EmergencyNotificationEmail extends BaseEmail
         parent::__construct($toAddresses);
         $this->mail->Subject = SystemConfig::getValue("sChurchName") . ": " . $this->getSubSubject();
         $this->mail->isHTML(true);
+        $this->mail->msgHTML($this->buildMessage());
     }
 
     protected function getSubSubject()
     {
         return gettext("Emergency Notification");
     }
-
-    protected function buildMessageBody()
+   
+     public function getTokens()
     {
-        return gettext("Emergency Notification");
-    }
-    
-    public function  getTokens()
-    {
-
+        $myTokens =  [
+            "toName" => "test",
+            "body" => gettext("Emergency Notification")
+        ];
+        return array_merge($this->getCommonTokens(), $myTokens);
     }
 }

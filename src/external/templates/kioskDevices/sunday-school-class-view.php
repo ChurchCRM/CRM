@@ -263,7 +263,6 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     }).
     done(function(data){
        console.log("Parent Alert for: "+personId);
-      window.CRM.setCheckedOut(personId);
     });
    
   }

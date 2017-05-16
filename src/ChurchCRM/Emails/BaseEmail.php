@@ -34,7 +34,7 @@ abstract class BaseEmail
     private function setConnection()
     {
 
-        $this->mail = new \PHPMailer();
+        $this->mail = new \PHPMailer(true);
         $this->mail->IsSMTP();
         $this->mail->CharSet = 'UTF-8';
         $this->mail->Timeout = intval(SystemConfig::getValue("iSMTPTimeout"));
