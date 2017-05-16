@@ -68,7 +68,7 @@ class KioskDevice extends BaseKioskDevice
                   ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
                   ->endUse()
                    ->leftJoin('EventAttend')
-                   ->withColumn("(CASE WHEN event_attend.checkout_date IS NULL then 1 else 0 end)","status")
+                   ->withColumn("(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)","status")
                   ->select(array("Id","FirstName","LastName","status"))
                   ->find();
         return $ssClass;
