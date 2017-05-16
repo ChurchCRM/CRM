@@ -448,8 +448,8 @@ class Person extends BasePerson implements iPhoto
          Foreach ($NotificationRecipients as $recipient)
         {        
           $message = $client->message()->send([
-              'to' => '12152647436',
-              'from' => '12152343203',
+              'to' => 'TO',
+              'from' => 'FROM',
               'text' => 'Test message from the Nexmo PHP Client'
           ]);
         }
