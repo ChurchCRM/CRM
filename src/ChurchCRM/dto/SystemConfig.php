@@ -185,7 +185,8 @@ class SystemConfig
         "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
         "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL")),
         "sNexmoAPIKey" => new ConfigItem(2004, "sNexmoAPIKey", "text", "http://demo.churchcrm.io/", gettext("Nexmo SMS API Key")),
-        "sNexmoAPISecret" => new ConfigItem(2005, "sNexmoAPISecret", "text", "http://demo.churchcrm.io/", gettext("Nexmo SMS API Secret"))
+        "sNexmoAPISecret" => new ConfigItem(2005, "sNexmoAPISecret", "text", "http://demo.churchcrm.io/", gettext("Nexmo SMS API Secret")),
+        "sNexmoFromNumber" => new ConfigItem(2006, "sNexmoFromNumber", "text", "http://demo.churchcrm.io/", gettext("Nexmo SMS From Number"))
       );
   }
 
@@ -201,7 +202,7 @@ class SystemConfig
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
-      gettext('Other Settings')  => ["iPDFOutputType","googleTrackingID","sNexmoAPIKey","sNexmoAPISecret"]
+      gettext('Other Settings')  => ["iPDFOutputType","googleTrackingID","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber"]
     );
   }
 

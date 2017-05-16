@@ -445,14 +445,14 @@ class Person extends BasePerson implements iPhoto
       try
       {
         $client = new Client(New NexmoBasicCred(SystemConfig::getValue("sNexmoAPIKey"),SystemConfig::getValue("sNexmoAPISecret")));
-         Foreach ($NotificationRecipients as $recipient)
-        {        
+         #Foreach ($NotificationRecipients as $recipient)
+        #{        
           $message = $client->message()->send([
-              'to' => 'TO',
-              'from' => 'FROM',
-              'text' => 'Test message from the Nexmo PHP Client'
+              'to' => 'TEST',
+              'from' => SystemConfig::getValue("sNexmoFromNumber"),
+              'text' => 'Notification for ' . $this->getFullName()
           ]);
-        }
+        #}
         
       } catch (Exception $ex) {
 
