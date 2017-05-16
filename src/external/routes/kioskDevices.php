@@ -59,6 +59,16 @@ $app->group('/kioskdevices', function () {
       return $response->withJSON($status);
     });
     
+     $this->post('/{guid}/triggerNotification', function ($request, $response, $args) {
+      $guid = $args['guid'];
+      $input = (object) $request->getParsedBody();
+      $person = PersonQuery::create()
+              ->findOneById($input->PersonId)
+              ->triggerNotification();
+      
+      return $response->withJSON( array("status"=>"success"));
+    });
+    
     
     
     $this->get('/{guid}/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) {

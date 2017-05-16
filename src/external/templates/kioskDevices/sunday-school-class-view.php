@@ -254,6 +254,20 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     
   }
   
+  window.CRM.triggerNotification = function(personId)
+  {
+     window.CRM.APIRequest({
+      path:"triggerNotification",
+      method:"POST",
+      data:JSON.stringify({"PersonId":personId})
+    }).
+    done(function(data){
+       console.log("Parent Alert for: "+personId);
+      window.CRM.setCheckedOut(personId);
+    });
+   
+  }
+  
   
   
   $(document).ready(function() {
@@ -270,7 +284,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   $(document).on('click','.parentAlertButton', function(event)
   {
     var personId  = $(event.currentTarget).data('personid')
-    console.log("Parent Alert for: "+personId);
+    window.CRM.triggerNotification(personId);
   });
     
   $(document).on('click','.checkinButton', function(event)

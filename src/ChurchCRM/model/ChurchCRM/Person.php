@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Emails\EmergencyNotificationEmail;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -422,6 +423,20 @@ class Person extends BasePerson implements iPhoto
         NoteQuery::create()->filterByPerson($this)->find($con)->delete();
 
         return parent::preDelete($con);
+    }
+    
+    public function triggerNotification()
+    {
+      $NotificationRecipients = $this->getFamily()->getPeople();
+      $recipients = array();
+      Foreach ($NotificationRecipients as $recipient)
+      {
+        array_push($recipients,$recipient->getEmail());
+      }
+      $addresses = implode(";", $recipients);
+      $email = new EmergencyNotificationEmail($addresses);
+      $email->send();
+      
     }
 
 }
