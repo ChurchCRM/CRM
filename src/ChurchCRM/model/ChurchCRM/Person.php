@@ -9,6 +9,7 @@ use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\EmergencyNotificationEmail;
+use Nexmo\Client;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -433,8 +434,20 @@ class Person extends BasePerson implements iPhoto
       {        
         array_push($recipients,$recipient->getEmail());
       }
-      $email = new EmergencyNotificationEmail($recipients,$this->getFullName());
-      return $email->send();
+      try
+      {
+        $email = new EmergencyNotificationEmail($recipients,$this->getFullName());
+        return $email->send();
+      } catch (Exception $ex) {
+
+      }
+      try
+      {
+        $client = new Client(New Nexmo\Client\Credentials\Basic(SystemConfig::getValue("sNexmoAPIKey"),SystemConfig::getValue("sNexmoAPISecret")))
+      } catch (Exception $ex) {
+
+      }
+      
       
     }
 
