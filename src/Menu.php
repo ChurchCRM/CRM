@@ -143,10 +143,10 @@ require 'Include/Header.php';
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>
-                  <?= 
+                  <?=
                      ChurchCRM\Base\EventAttendQuery::create()
-                    ->filterByCheckinDate(NULL,  \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
-                    ->filterByCheckoutDate(NULL, \Propel\Runtime\ActiveQuery\Criteria::EQUAL)
+                    ->filterByCheckinDate(null, \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+                    ->filterByCheckoutDate(null, \Propel\Runtime\ActiveQuery\Criteria::EQUAL)
                     ->find()
                     ->count();
                   ?>
@@ -186,7 +186,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 </div>
 <?php
 
-}  //END IF block for Finance permissions to include HTML for Deposit Chart
+                  }  //END IF block for Finance permissions to include HTML for Deposit Chart
 ?>
 
 <div class="row">
