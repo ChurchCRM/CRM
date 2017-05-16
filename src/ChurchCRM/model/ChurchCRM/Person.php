@@ -433,7 +433,7 @@ class Person extends BasePerson implements iPhoto
       {        
         array_push($recipients,$recipient->getEmail());
       }
-      $email = new EmergencyNotificationEmail($recipients);
+      $email = new EmergencyNotificationEmail($recipients,$this->getFullName());
       return $email->send();
       
     }
