@@ -11,6 +11,7 @@ use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\EmergencyNotificationEmail;
 use Nexmo\Client;
 use Nexmo\Client\Credentials\Basic as NexmoBasicCred;
+use ChurchCRM\Service\OpenLPNotification;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -425,45 +426,6 @@ class Person extends BasePerson implements iPhoto
         NoteQuery::create()->filterByPerson($this)->find($con)->delete();
 
         return parent::preDelete($con);
-    }
-    
-    public function triggerNotification()
-    {
-      $NotificationRecipients = $this->getFamily()->getPeople();
-      $recipients = array();
-      Foreach ($NotificationRecipients as $recipient)
-      {        
-        array_push($recipients,$recipient->getEmail());
-      }
-      try
-      {
-        $email = new EmergencyNotificationEmail($recipients,$this->getFullName());
-        $emailStatus=$email->send();
-      } catch (Exception $ex) {
-
-      }
-      try
-      {
-        $client = new Client(New NexmoBasicCred(SystemConfig::getValue("sNexmoAPIKey"),SystemConfig::getValue("sNexmoAPISecret")));
-         #Foreach ($NotificationRecipients as $recipient)
-        #{        
-          $message = $client->message()->send([
-              'to' => 'TEST',
-              'from' => SystemConfig::getValue("sNexmoFromNumber"),
-              'text' => 'Notification for ' . $this->getFullName()
-          ]);
-        #}
-        
-      } catch (Exception $ex) {
-
-      }
-      
-      return array(
-          "emailStatus" => $emailStatus,
-          "SMSStatus" => $message
-      );
-      
-      
     }
 
 }

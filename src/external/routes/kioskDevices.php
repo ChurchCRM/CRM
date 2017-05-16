@@ -6,7 +6,7 @@ use Slim\Views\PhpRenderer;
 use ChurchCRM\PersonQuery;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-
+use ChurchCRM\dto\Notification;
 
 
 
@@ -62,11 +62,19 @@ $app->group('/kioskdevices', function () {
      $this->post('/{guid}/triggerNotification', function ($request, $response, $args) {
       $guid = $args['guid'];
       $input = (object) $request->getParsedBody();
-      $emailStatus = PersonQuery::create()
-              ->findOneById($input->PersonId)
-              ->triggerNotification();
       
-      return $response->withJSON( array("status"=>$emailStatus));
+      $Kiosk = ChurchCRM\KioskDeviceQuery::create()
+              ->findOneByGUID($guid);
+      
+      $Person =PersonQuery::create()
+              ->findOneById($input->PersonId);
+      
+      $Notification = new Notification();
+      $Notification->setRecipients($Person->getFamily()->getPeople());
+      $Notification->setProjectorText($Kiosk->getEvents()[0]->getType()."-".$Person->getId());
+      $Status = $Notification->send();
+      
+      return $response->withJSON($Status);
     });
     
     
