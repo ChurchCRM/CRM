@@ -40,9 +40,12 @@ $app->group('/kioskdevices', function () {
     $this->post('/{guid}/checkin', function ($request, $response, $args) {
       $guid = $args['guid'];
       $input = (object) $request->getParsedBody();
-      $Kiosk = ChurchCRM\KioskDeviceQuery::create()
+      $status = ChurchCRM\KioskDeviceQuery::create()
               ->findOneByGUID($guid)
               ->checkInPerson($input->PersonId);
+      
+      return $response->withJSON($status);
+      
       
      
     });
@@ -50,9 +53,10 @@ $app->group('/kioskdevices', function () {
     $this->post('/{guid}/checkout', function ($request, $response, $args) {
       $guid = $args['guid'];
       $input = (object) $request->getParsedBody();
-      $Kiosk = ChurchCRM\KioskDeviceQuery::create()
+      $status = ChurchCRM\KioskDeviceQuery::create()
               ->findOneByGUID($guid)
               ->checkOutPerson($input->PersonId);
+      return $response->withJSON($status);
     });
     
     

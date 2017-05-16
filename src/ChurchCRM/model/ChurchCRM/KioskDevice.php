@@ -20,12 +20,7 @@ use ChurchCRM\Map\ListOptionTableMap;
 
 class KioskDevice extends BaseKioskDevice
 {
-  
-  public function getGroupID() {
-    $KioskConfig = json_decode($this->getConfiguration());
-    return $KioskConfig->GroupId;
-  }
-  
+
   private function getActiveEvent()
   {
     if ($this->getDeviceType() == KioskDeviceTypes::GROUPATTENDANCEKIOSK)
@@ -33,7 +28,7 @@ class KioskDevice extends BaseKioskDevice
       $Event = EventQuery::create()
         ->filterByStart('now', Criteria::LESS_EQUAL)
         ->filterByEnd('now',Criteria::GREATER_EQUAL)
-        ->filterByGroupId($this->getGroupID())
+        ->filterByKioskId($this->getId())
         ->findOne();
       return $Event;
     }
@@ -47,9 +42,15 @@ class KioskDevice extends BaseKioskDevice
   {
     $this->setLastHeartbeat(date('Y-m-d H:i:s'))
       ->save();
+    $event = $this->getActiveEvent();
+    if ($event)
+    {
+      $event2 = $event->toJSON();
+    }
+    
     return array(
         "Status"=>"Good",
-        "Event"=>$this->getActiveEvent()->toJSON()
+        "Event"=>$event2
       );
   }
   
@@ -60,13 +61,15 @@ class KioskDevice extends BaseKioskDevice
         $ssClass = PersonQuery::create()
                   ->joinWithPerson2group2roleP2g2r()
                   ->usePerson2group2roleP2g2rQuery()
-                    ->filterByGroupId($this->getGroupID())
+                    ->filterByGroupId($this->getActiveEvent()->getGroupId())
                     ->joinGroup()
                     ->innerJoin("ListOption")
                     ->addJoinCondition("ListOption", "Group.RoleListId = ListOption.Id")
                   ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
                   ->endUse()
-                  ->select(array("Id","FirstName","LastName"))
+                   ->leftJoin('EventAttend')
+                   ->withColumn("(CASE WHEN event_attend.checkout_date IS NULL then 1 else 0 end)","status")
+                  ->select(array("Id","FirstName","LastName","status"))
                   ->find();
         return $ssClass;
       }
@@ -91,6 +94,8 @@ class KioskDevice extends BaseKioskDevice
       ->setCheckoutDate(null)
       ->save();
     
+    return array("status"=>"success");
+    
   }
   
   public function checkOutPerson($PersonId)
@@ -107,7 +112,9 @@ class KioskDevice extends BaseKioskDevice
       ->setPersonId($PersonId)
       ->setCheckoutDate(date('Y-m-d H:i:s'))
       ->save();
-  
+    
+    return array("status"=>"success");
+    
   }
 
 }

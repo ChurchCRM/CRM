@@ -468,6 +468,9 @@
         <foreign-key foreignTable="events_event">
             <reference local="event_id" foreign="event_id"/>
         </foreign-key>
+        <foreign-key foreignTable="person_per">
+            <reference local="person_id" foreign="per_ID"/>
+        </foreign-key>
         <unique name="event_id">
             <unique-column name="event_id"/>
             <unique-column name="person_id"/>
@@ -489,6 +492,10 @@
         <column name="type_defrecurDOY" phpName="DefRecurDOY" type="DATE" required="true" defaultValue="2016-01-01"/>
         <column name="type_active" phpName="Active" type="INTEGER" size="1" required="true" defaultValue="1"/>
         <column name="type_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
+        <column name="type_kioskid" phpName="KioskId" type="INTEGER" required="false" defaultValue="0"/>
+        <foreign-key foreignTable="kioskdevice_kdev">
+            <reference local="type_kioskid" foreign="kdev_ID"/>
+        </foreign-key>
         <foreign-key foreignTable="group_grp">
             <reference local="type_grpid" foreign="grp_ID"/>
         </foreign-key>
@@ -535,8 +542,12 @@
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
         <column name="event_typename" phpName="TypeName" type="VARCHAR" size="40" required="true" defaultValue=""/>
         <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
+        <column name="event_kioskid" phpName="KioskId" type="INTEGER" required="false" defaultValue="0"/>
         <foreign-key foreignTable="group_grp">
             <reference local="event_grpid" foreign="grp_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="kioskdevice_kdev">
+            <reference local="event_kioskid" foreign="kdev_ID"/>
         </foreign-key>
         <index name="event_txt">
             <index-column name="event_text"/>

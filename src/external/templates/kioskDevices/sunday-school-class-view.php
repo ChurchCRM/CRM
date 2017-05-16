@@ -110,8 +110,10 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   
   window.CRM.renderClassMember = function (classMember) {
       existingDiv = $("#personId-"+classMember.personId);
+      console.log(classMember);
       if (existingDiv.length > 0)
       {
+
       }
       else
       {
@@ -137,6 +139,16 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         $("#classMemberContainer").append(outerDiv);   
       }
       
+      if (classMember.status == 1)
+      {
+        window.CRM.setCheckedIn(classMember.personId);
+      }
+      else
+      {
+        window.CRM.setCheckedOut(classMember.personId);
+        
+      }
+
     };
     
   window.CRM.updateActiveClassMembers = function()
@@ -147,7 +159,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
      .done(function(data){
           $(data.People).each(function(i,d){
             //console.log(d);
-            window.CRM.renderClassMember({displayName:d.FirstName+" "+d.LastName, classRole:d.RoleName,personId:d.Id})
+            window.CRM.renderClassMember({displayName:d.FirstName+" "+d.LastName, classRole:d.RoleName,personId:d.Id,status:d.status})
           });
           $(".initials-image").initial();
       })
@@ -197,6 +209,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     }).
     done(function(data){
       console.log("CheckIn for: "+personId);
+      window.CRM.setCheckedIn(personId);
     });
     
   }
@@ -210,8 +223,38 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     }).
     done(function(data){
       console.log("CheckOut for: "+personId);
+      window.CRM.setCheckedOut(personId);
     });
   }
+  
+  window.CRM.setCheckedOut = function (personId)
+  {
+    console.log("setting checked out" + personId);
+    $personDiv = $("#personId-"+personId)
+    $personDivButton = $("#personId-"+personId+" .checkoutButton")
+    $personDivButton.addClass("checkinButton");
+    $personDivButton.removeClass("checkoutButton");
+    $personDivButton.text("Checkin");
+    $personDiv.find(".widget-user-header").addClass("bg-yellow");
+    $personDiv.find(".widget-user-header").removeClass("bg-green");
+  }
+  
+  window.CRM.setCheckedIn = function (personId)
+  {
+    console.log("setting checked in" + personId);
+    $personDiv = $("#personId-"+personId)
+    
+    $personDivButton = $("#personId-"+personId+" .checkinButton")
+    $personDivButton.removeClass("checkinButton");
+    $personDivButton.addClass("checkoutButton");
+    $personDivButton.text("Checkout");
+    
+    $personDiv.find(".widget-user-header").removeClass("bg-yellow");
+    $personDiv.find(".widget-user-header").addClass("bg-green");
+    
+  }
+  
+  
   
   $(document).ready(function() {
     window.CRM.kioskEventLoop();
@@ -233,22 +276,12 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   $(document).on('click','.checkinButton', function(event)
   {
     var personId  = $(event.currentTarget).data('personid');
-    $(event.currentTarget).removeClass("checkinButton");
-    $(event.currentTarget).addClass("checkoutButton");
-    $(event.currentTarget).text("Checkout");
-    $("#personId-"+personId).find(".widget-user-header").removeClass("bg-yellow");
-    $("#personId-"+personId).find(".widget-user-header").addClass("bg-green");
     window.CRM.checkInPerson(personId);
   });
     
   $(document).on('click','.checkoutButton', function(event)
   {
     var personId  = $(event.currentTarget).data('personid');
-    $(event.currentTarget).removeClass("checkoutButton");
-    $(event.currentTarget).addClass("checkinButton");
-    $(event.currentTarget).text("CheckIn");
-    $("#personId-"+personId).find(".widget-user-header").removeClass("bg-green");
-    $("#personId-"+personId).find(".widget-user-header").addClass("bg-yellow");
     window.CRM.checkOutPerson(personId);
   });
     
