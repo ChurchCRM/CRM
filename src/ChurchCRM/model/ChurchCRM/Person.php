@@ -430,12 +430,11 @@ class Person extends BasePerson implements iPhoto
       $NotificationRecipients = $this->getFamily()->getPeople();
       $recipients = array();
       Foreach ($NotificationRecipients as $recipient)
-      {
+      {        
         array_push($recipients,$recipient->getEmail());
       }
-      $addresses = implode(";", $recipients);
-      $email = new EmergencyNotificationEmail($addresses);
-      $email->send();
+      $email = new EmergencyNotificationEmail($recipients);
+      return $email->send();
       
     }
 

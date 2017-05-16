@@ -62,11 +62,11 @@ $app->group('/kioskdevices', function () {
      $this->post('/{guid}/triggerNotification', function ($request, $response, $args) {
       $guid = $args['guid'];
       $input = (object) $request->getParsedBody();
-      $person = PersonQuery::create()
+      $emailStatus = PersonQuery::create()
               ->findOneById($input->PersonId)
               ->triggerNotification();
       
-      return $response->withJSON( array("status"=>"success"));
+      return $response->withJSON( array("status"=>$emailStatus));
     });
     
     
