@@ -27,7 +27,7 @@ class EmergencyNotificationEmail extends BaseEmail
     {
         $myTokens =  [
             "toName" => "Guardian(s) of ". $this->notificationSource,
-            "body" => gettext("An Emergency Notification was triggered")
+            "body" => gettext("An Emergency Notification was triggered by the classroom teacher at " . date('Y-m-d H:i:s') ."  Please go to this location")
         ];
         return array_merge($this->getCommonTokens(), $myTokens);
     }
