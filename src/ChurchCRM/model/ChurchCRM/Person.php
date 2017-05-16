@@ -10,6 +10,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\EmergencyNotificationEmail;
 use Nexmo\Client;
+use Nexmo\Client\Credentials\Basic as NexmoBasicCred;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -437,16 +438,30 @@ class Person extends BasePerson implements iPhoto
       try
       {
         $email = new EmergencyNotificationEmail($recipients,$this->getFullName());
-        return $email->send();
+        $emailStatus=$email->send();
       } catch (Exception $ex) {
 
       }
       try
       {
-        $client = new Client(New Nexmo\Client\Credentials\Basic(SystemConfig::getValue("sNexmoAPIKey"),SystemConfig::getValue("sNexmoAPISecret")))
+        $client = new Client(New NexmoBasicCred(SystemConfig::getValue("sNexmoAPIKey"),SystemConfig::getValue("sNexmoAPISecret")));
+         Foreach ($NotificationRecipients as $recipient)
+        {        
+          $message = $client->message()->send([
+              'to' => '12152647436',
+              'from' => '12152343203',
+              'text' => 'Test message from the Nexmo PHP Client'
+          ]);
+        }
+        
       } catch (Exception $ex) {
 
       }
+      
+      return array(
+          "emailStatus" => $emailStatus,
+          "SMSStatus" => $message
+      );
       
       
     }
