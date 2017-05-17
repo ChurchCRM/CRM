@@ -34,6 +34,12 @@ else{
   $g = hash('sha256',$_COOKIE['kioskCookie']);
   $Kiosk =  \ChurchCRM\Base\KioskDeviceQuery::create()
           ->findOneByGUIDHash($g);
+  if (is_null($Kiosk))
+  {
+    setcookie(kioskCookie,'',time() - 3600);
+    header('Location: '.$_SERVER['REQUEST_URI']);
+     
+  }
 }
 $app->kiosk = $Kiosk;
 
