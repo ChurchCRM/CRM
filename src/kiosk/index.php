@@ -7,6 +7,7 @@ require '../Include/Config.php';
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 use ChurchCRM\dto\SystemConfig;
+
 require "../ChurchCRM/utils/GUID.php";
 
 // Instantiate the app
@@ -22,26 +23,22 @@ $settings = require __DIR__ . '/../Include/slim/settings.php';
 require __DIR__ . '/routes/kiosk.php';
 
 $windowOpen = new DateTime(SystemConfig::getValue("sKioskVisibilityTimestamp")) > new DateTime();
-if (is_null($_COOKIE['kioskCookie']) && $windowOpen)
-{
-  $guid = getGUID();
-  setcookie("kioskCookie",$guid, 2147483647);
-  $Kiosk = new \ChurchCRM\KioskDevice();
-  $Kiosk->setName($_SERVER['HTTP_USER_AGENT']);
-  $Kiosk->setGUIDHash(hash('sha256',$guid));
-  $Kiosk->setAccepted($false);
-  $Kiosk->save();
-}
-elseif (isset($_COOKIE['kioskCookie'])){
-  $g = hash('sha256',$_COOKIE['kioskCookie']);
-  $Kiosk =  \ChurchCRM\Base\KioskDeviceQuery::create()
+if (is_null($_COOKIE['kioskCookie']) && $windowOpen) {
+    $guid = getGUID();
+    setcookie("kioskCookie", $guid, 2147483647);
+    $Kiosk = new \ChurchCRM\KioskDevice();
+    $Kiosk->setName($_SERVER['HTTP_USER_AGENT']);
+    $Kiosk->setGUIDHash(hash('sha256', $guid));
+    $Kiosk->setAccepted($false);
+    $Kiosk->save();
+} elseif (isset($_COOKIE['kioskCookie'])) {
+    $g = hash('sha256', $_COOKIE['kioskCookie']);
+    $Kiosk =  \ChurchCRM\Base\KioskDeviceQuery::create()
           ->findOneByGUIDHash($g);
-  setcookie(kioskCookie,'',time() - 3600);
-  header('Location: '.$_SERVER['REQUEST_URI']);
-}
-else
-{
-  exit;
+    setcookie(kioskCookie, '', time() - 3600);
+    header('Location: '.$_SERVER['REQUEST_URI']);
+} else {
+    exit;
 }
 $app->kiosk = $Kiosk;
 
