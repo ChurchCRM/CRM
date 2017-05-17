@@ -7,66 +7,44 @@ use Psr\Http\Message\ResponseInterface;
 use ChurchCRM\dto\Notification;
 
 
-$this->get('/', function ($request, $response, $args) {
-
+$app->get('/', function ($request, $response, $args) use ($app) {
     $renderer = new PhpRenderer("templates/kioskDevices/");
-    $pageObjects = array("sRootPath" => $_SESSION['sRootPath'], "thisDeviceGuid" => $args['guid']);
+    $pageObjects = array("sRootPath" => $_SESSION['sRootPath']);
     return $renderer->render($response, "sunday-school-class-view.php", $pageObjects);
-
   });
 
-  $this->get('/{guid}/activeClassMembers', function ($request, $response, $args) {
-
-    $guid = $args['guid'];
-    $Kiosk = ChurchCRM\KioskDeviceQuery::create()
-            ->findOneByGUID($guid)
-            ->getActiveGroupMembers();
-    return $Kiosk->toJSON();
+  $app->get('/activeClassMembers', function ($request, $response, $args) use ($app) {
+    return $app->kiosk->getActiveGroupMembers()->toJSON();
   });
 
 
-  $this->get('/{guid}/heartbeat', function ($request, $response, $args) {
-    $guid = $args['guid'];
-    $Kiosk = ChurchCRM\KioskDeviceQuery::create()
-            ->findOneByGUID($guid);
-    return json_encode($Kiosk->heartbeat());     
+  $app->get('/heartbeat', function ($request, $response, $args) use ($app) {
+
+    return json_encode($app->kiosk->heartbeat());     
   });
 
-  $this->post('/{guid}/checkin', function ($request, $response, $args) {
-    $guid = $args['guid'];
+  $app->post('/checkin', function ($request, $response, $args) use ($app) {
+
     $input = (object) $request->getParsedBody();
-    $status = ChurchCRM\KioskDeviceQuery::create()
-            ->findOneByGUID($guid)
-            ->checkInPerson($input->PersonId);
-
-    return $response->withJSON($status);
-
-
-
-  });
-
-  $this->post('/{guid}/checkout', function ($request, $response, $args) {
-    $guid = $args['guid'];
-    $input = (object) $request->getParsedBody();
-    $status = ChurchCRM\KioskDeviceQuery::create()
-            ->findOneByGUID($guid)
-            ->checkOutPerson($input->PersonId);
+    $status = $app->kiosk->checkInPerson($input->PersonId);
     return $response->withJSON($status);
   });
 
-   $this->post('/{guid}/triggerNotification', function ($request, $response, $args) {
-    $guid = $args['guid'];
+  $app->post('/checkout', function ($request, $response, $args) use ($app) {
     $input = (object) $request->getParsedBody();
+    $status = $app->kiosk->checkOutPerson($input->PersonId);
+    return $response->withJSON($status);
+  });
 
-    $Kiosk = ChurchCRM\KioskDeviceQuery::create()
-            ->findOneByGUID($guid);
+   $app->post('/triggerNotification', function ($request, $response, $args) use ($app) {
+    $input = (object) $request->getParsedBody();
 
     $Person =PersonQuery::create()
             ->findOneById($input->PersonId);
 
     $Notification = new Notification();
     $Notification->setRecipients($Person->getFamily()->getPeople());
-    $Notification->setProjectorText($Kiosk->getEvents()[0]->getType()."-".$Person->getId());
+    $Notification->setProjectorText($app->kiosk->getEvents()[0]->getType()."-".$Person->getId());
     $Status = $Notification->send();
 
     return $response->withJSON($Status);
@@ -74,7 +52,7 @@ $this->get('/', function ($request, $response, $args) {
 
 
 
-  $this->get('/{guid}/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) {
+  $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) use ($app) {
    $person = PersonQuery::create()->findPk($args['PersonId']);
       if ($person->isPhotoLocal()) {
           return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());

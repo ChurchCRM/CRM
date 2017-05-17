@@ -89,7 +89,6 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/initial.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/moment/moment.min.js"></script>
 <script>
-  window.CRM.thisDeviceGuid = "<?= $thisDeviceGuid ?>";
   //first, define the function that will render the active members
   
   window.CRM.displayPersonInfo = function (personId)
@@ -102,7 +101,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       {
         options.method="GET"
       }
-      options.url=window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/"+options.path;
+      options.url=window.CRM.root+"/kiosk/"+options.path;
       options.dataType = 'json';
       options.contentType =  "application/json";
       return $.ajax(options);
@@ -124,7 +123,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                 .append($("<img>",{
                   class:"initials-image profile-user-img img-responsive img-circle no-border"
                 }).data("name",classMember.displayName)
-                  .data("src",window.CRM.root+"/external/kioskdevices/"+window.CRM.thisDeviceGuid+"/activeClassMember/"+classMember.personId+"/photo")
+                  .data("src",window.CRM.root+"/kiosk/activeClassMember/"+classMember.personId+"/photo")
                 );
         userHeaderDiv.append(imageDiv);
         userHeaderDiv.append($("<h3>",{class:"widget-user-username", text:classMember.displayName})).append($("<h3>",{class:"widget-user-desc", style:"clear:both", text:classMember.classRole}));

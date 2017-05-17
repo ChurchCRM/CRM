@@ -18,15 +18,24 @@ require __DIR__ . '/../Include/slim/error-handler.php';
 $settings = require __DIR__ . '/../Include/slim/settings.php';
 
 // routes
-//require __DIR__ . '/routes/kiosk.php';
+require __DIR__ . '/routes/kiosk.php';
 
 if (is_null($_COOKIE['kioskCookie']))
 {
-  setcookie("kioskCookie",getGUID(), 2147483647);
+  $guid = getGUID();
+  setcookie("kioskCookie",$guid, 2147483647);
+  $Kiosk = new \ChurchCRM\KioskDevice();
+  $Kiosk->setName($_SERVER['HTTP_USER_AGENT']);
+  $Kiosk->setGUIDHash(hash('sha256',$guid));
+  $Kiosk->setAccepted($false);
+  $Kiosk->save();
 }
 else{
-  echo $_COOKIE['kioskCookie'];
+  $g = hash('sha256',$_COOKIE['kioskCookie']);
+  $Kiosk =  \ChurchCRM\Base\KioskDeviceQuery::create()
+          ->findOneByGUIDHash($g);
 }
-exit;
+$app->kiosk = $Kiosk;
+
 // Run app
 $app->run();
