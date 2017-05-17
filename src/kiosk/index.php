@@ -20,6 +20,7 @@ $settings = require __DIR__ . '/../Include/slim/settings.php';
 
 // routes
 require __DIR__ . '/routes/kiosk.php';
+
 $windowOpen = new DateTime(SystemConfig::getValue("sKioskVisibilityTimestamp")) > new DateTime();
 if (is_null($_COOKIE['kioskCookie']) && $windowOpen)
 {
@@ -37,9 +38,6 @@ elseif (isset($_COOKIE['kioskCookie'])){
           ->findOneByGUIDHash($g);
   setcookie(kioskCookie,'',time() - 3600);
   header('Location: '.$_SERVER['REQUEST_URI']);
-     
-  
-  
 }
 else
 {
