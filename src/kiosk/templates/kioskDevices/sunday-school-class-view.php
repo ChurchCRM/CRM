@@ -116,7 +116,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       }
       else
       {
-        var outerDiv = $("<div>",{id:"personId-"+classMember.personId}).addClass("col-md-4");
+        var outerDiv = $("<div>",{id:"personId-"+classMember.personId}).addClass("col-sm-3");
         var innerDiv = $("<div>").addClass("box box-widget widget-user-2");
         var userHeaderDiv = $("<div>",{class :"widget-user-header bg-yellow"}).attr("data-personid",classMember.personId);
         var imageDiv = $("<div>", {class:"widget-user-image"})

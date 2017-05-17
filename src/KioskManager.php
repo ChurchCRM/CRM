@@ -73,27 +73,39 @@ require 'Include/Header.php';
       console.log(data);
     })
   }
+  window.CRM.enableKioskRegistration = function() {
+    return window.CRM.APIRequest({
+      "path":"kiosks/allowRegistration",
+      "method":"POST"
+    })  
+  }
   
-   $(function() {
-    $('#isNewKioskRegistrationActive').change(function() {
-      if ($(this).prop('checked')){
-        window.CRM.secondsLeft = 5;
-        window.CRM.discoverInterval = setInterval(function(){
-          window.CRM.secondsLeft-=1;
-          if (window.CRM.secondsLeft > 0)
-          {
-             $("#isNewKioskRegistrationActive").next(".toggle-group").children(".toggle-on").html("Active for "+window.CRM.secondsLeft+" seconds");
-          }
-          else
-          {
-            clearInterval(window.CRM.discoverInterval);
-            $('#isNewKioskRegistrationActive').bootstrapToggle('off');
-          }
-          
-        },1000)
-      }
-    })
+  
+  
+  $('#isNewKioskRegistrationActive').change(function() {
+    if ($("#isNewKioskRegistrationActive").prop('checked')){
+      window.CRM.enableKioskRegistration().done(function(data) {
+      console.log(data);
+       window.CRM.secondsLeft = moment(data.visibleUntil.date).unix() - moment().unix();
+       console.log(window.CRM.secondsLeft);
+       window.CRM.discoverInterval = setInterval(function(){
+         window.CRM.secondsLeft-=1;
+         if (window.CRM.secondsLeft > 0)
+         {
+            $("#isNewKioskRegistrationActive").next(".toggle-group").children(".toggle-on").html("Active for "+window.CRM.secondsLeft+" seconds");
+         }
+         else
+         {
+           clearInterval(window.CRM.discoverInterval);
+           $('#isNewKioskRegistrationActive').bootstrapToggle('off');
+         }
+
+       },1000)
+     });
+    }
+
   })
+ 
   
   $(document).ready(function(){
     $("#KioskTable").DataTable({

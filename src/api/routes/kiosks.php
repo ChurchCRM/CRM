@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
+
 $app->group('/kiosks', function () {
 
     $this->get('/', function ($request, $response, $args) {
@@ -8,13 +10,22 @@ $app->group('/kiosks', function () {
         return $response->write($Kiosks->toJSON());
     });
     
-     $this->post('/{kioskId:[0-9]+}/reloadKiosk', function ($request, $response, $args) {
+    $this->post('/allowRegistration', function ($request, $response, $args) {
+        $window =new DateTime();
+        $window->add(new DateInterval("PT05S"));
+        SystemConfig::setValue("sKioskVisibilityTimestamp",$window->format());
+        return $response->write(json_encode(array("visibleUntil"=>$window)));
+    });
+    
+    $this->post('/{kioskId:[0-9]+}/reloadKiosk', function ($request, $response, $args) {
         $kioskId = $args['kioskId'];
         $reload = \ChurchCRM\KioskDeviceQuery::create()
                 ->findOneById($kioskId)
                 ->reloadKiosk();
         return $response->write(json_encode($reload));
     });
+    
+     
     
     
  
