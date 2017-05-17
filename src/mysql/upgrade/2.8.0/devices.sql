@@ -6,6 +6,9 @@ CREATE TABLE `kioskdevice_kdev` (
   `kdev_deviceType` mediumint(9) NOT NULL DEFAULT 0,
   `kdev_deviceConfiguration` text,
   `kdev_lastHeartbeat` TIMESTAMP,
+  `kdev_Accepted` BOOLEAN,
+  `kdev_PendingCommands` varchar(50)
+
   PRIMARY KEY  (`kdev_ID`),
   UNIQUE KEY `kdev_ID` (`kdev_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;

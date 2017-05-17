@@ -8,12 +8,12 @@ $app->group('/kiosks', function () {
         return $response->write($Kiosks->toJSON());
     });
     
-     $this->post('/{kioskId:[0-9]+}/reload', function ($request, $response, $args) {
+     $this->post('/{kioskId:[0-9]+}/reloadKiosk', function ($request, $response, $args) {
         $kioskId = $args['kioskId'];
         $reload = \ChurchCRM\KioskDeviceQuery::create()
                 ->findOneById($kioskId)
                 ->reloadKiosk();
-        echo $group->toJSON();
+        return $response->write(json_encode($reload));
     });
     
     

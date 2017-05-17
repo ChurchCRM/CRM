@@ -67,7 +67,7 @@ require 'Include/Header.php';
   window.CRM.reloadKiosk = function(id)
   {
     window.CRM.APIRequest({
-      "path":"kiosks/"+id+"/reload",
+      "path":"kiosks/"+id+"/reloadKiosk",
       "method":"POST"
     }).done(function(data){
       console.log(data);
@@ -149,7 +149,7 @@ require 'Include/Header.php';
         width: 'auto',
         title: 'Actions',
         render: function (data, type, full, meta) {
-          return "<button class='reload' data-id='"+full.Id+"'>Reload</button>";
+          return "<button class='reload' onclick='window.CRM.reloadKiosk("+full.Id+")' >Reload</button>";
 
         }
       }

@@ -50,8 +50,17 @@ class KioskDevice extends BaseKioskDevice
     
     return array(
         "Status"=>"Good",
-        "Event"=>$event2
+        "Event"=>$event2,
+        "Commands"=>$this->getPendingCommands()
       );
+  }
+  
+  public function getPendingCommands()
+  {
+    $commands = parent::getPendingCommands();
+    $this->setPendingCommands(null);
+    $this->save();
+    return $commands;
   }
   
   public function getActiveGroupMembers()
@@ -115,6 +124,13 @@ class KioskDevice extends BaseKioskDevice
     
     return array("status"=>"success");
     
+  }
+  
+  public function reloadKiosk()
+  {
+    $this->setPendingCommands("Reload");
+    $this->save();
+    return true;
   }
 
 }

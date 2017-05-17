@@ -169,7 +169,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
        path:"heartbeat"
      }).
         done(function(data){
-          if (data.Status == "Reload")
+          if (data.Commands == "Reload")
           {
             location.reload();
           }
