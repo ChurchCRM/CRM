@@ -295,7 +295,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   
   $(document).ready(function() {
     window.CRM.kioskEventLoop();
-    setInterval(window.CRM.kioskEventLoop,10000);
+    setInterval(window.CRM.kioskEventLoop,2000);
   });
     
   $(document).on('click','.widget-user-header', function(event)
