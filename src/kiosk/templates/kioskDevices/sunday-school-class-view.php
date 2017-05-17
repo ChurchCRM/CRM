@@ -266,6 +266,31 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
    
   }
   
+  window.CRM.enterFullScreen = function() {
+    if(document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else if(document.documentElement.mozRequestFullScreen) {
+      document.documentElement.mozRequestFullScreen();
+    } else if(document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
+    } else if(document.documentElement.msRequestFullscreen) {
+      document.documentElement.msRequestFullscreen();
+    }
+  }
+  window.CRM.exitFullScreen = function() {
+    if(document.exitFullscreen) {
+     document.exitFullscreen();
+   } else if(document.mozCancelFullScreen) {
+     document.mozCancelFullScreen();
+   } else if(document.webkitExitFullscreen) {
+     document.webkitExitFullscreen();
+   }
+  }
+  
+  $(document).click(function(){
+    window.CRM.enterFullScreen();
+  })
+  
   
   
   $(document).ready(function() {
