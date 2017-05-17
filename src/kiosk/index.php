@@ -22,26 +22,38 @@ $settings = require __DIR__ . '/../Include/slim/settings.php';
 require __DIR__ . '/routes/kiosk.php';
 
 $windowOpen = new DateTime(SystemConfig::getValue("sKioskVisibilityTimestamp")) > new DateTime();
-if (is_null($_COOKIE['kioskCookie']) && $windowOpen)
+
+if (isset($_COOKIE['kioskCookie']))
 {
-  $guid = getGUID();
-  setcookie("kioskCookie",$guid, 2147483647);
-  $Kiosk = new \ChurchCRM\KioskDevice();
-  $Kiosk->setName($_SERVER['HTTP_USER_AGENT']);
-  $Kiosk->setGUIDHash(hash('sha256',$guid));
-  $Kiosk->setAccepted($false);
-  $Kiosk->save();
-}
-elseif (isset($_COOKIE['kioskCookie'])){
   $g = hash('sha256',$_COOKIE['kioskCookie']);
   $Kiosk =  \ChurchCRM\Base\KioskDeviceQuery::create()
           ->findOneByGUIDHash($g);
-  setcookie(kioskCookie,'',time() - 3600);
-  header('Location: '.$_SERVER['REQUEST_URI']);
+  
+  if (is_null($Kiosk))
+  {
+    setcookie(kioskCookie,'',time() - 3600);
+    header('Location: '.$_SERVER['REQUEST_URI']);
+  }
+
 }
-else
+
+
+if (!isset($_COOKIE['kioskCookie']))
 {
-  exit;
+  if ($windowOpen)
+  {
+    $guid = getGUID();
+    setcookie("kioskCookie",$guid, 2147483647);
+    $Kiosk = new \ChurchCRM\KioskDevice();
+    $Kiosk->setName($_SERVER['HTTP_USER_AGENT']);
+    $Kiosk->setGUIDHash(hash('sha256',$guid));
+    $Kiosk->setAccepted($false);
+    $Kiosk->save();
+  }
+  else
+  {
+    exit;
+  }
 }
 $app->kiosk = $Kiosk;
 
