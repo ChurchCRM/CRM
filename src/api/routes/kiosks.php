@@ -13,7 +13,7 @@ $app->group('/kiosks', function () {
     $this->post('/allowRegistration', function ($request, $response, $args) {
         $window =new DateTime();
         $window->add(new DateInterval("PT05S"));
-        SystemConfig::setValue("sKioskVisibilityTimestamp",$window->format());
+        SystemConfig::setValue("sKioskVisibilityTimestamp",$window->format('Y-m-d H:i:s'));
         return $response->write(json_encode(array("visibleUntil"=>$window)));
     });
     
