@@ -20,23 +20,6 @@ use ChurchCRM\Map\ListOptionTableMap;
 
 class KioskDevice extends BaseKioskDevice
 {
-
-  private function getActiveEvent()
-  {
-    if ($this->getDeviceType() == KioskAssignmentTypes::GROUPATTENDANCEKIOSK)
-    {
-      $Event = EventQuery::create()
-        ->filterByStart('now', Criteria::LESS_EQUAL)
-        ->filterByEnd('now',Criteria::GREATER_EQUAL)
-        ->filterByKioskId($this->getId())
-        ->findOne();
-      return $Event;
-    }
-    else
-    {
-      throw new \Exception("This kiosk does not support group attendance");
-    }
-  }
   
   public function getActiveAssignment()
   {
@@ -70,11 +53,7 @@ class KioskDevice extends BaseKioskDevice
     $this->save();
     return $commands;
   }
-  
-  
-  
-  
-  
+
   public function reloadKiosk()
   {
     $this->setPendingCommands("Reload");
