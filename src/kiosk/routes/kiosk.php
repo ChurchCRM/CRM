@@ -39,7 +39,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
 
     $Notification = new Notification();
     $Notification->setRecipients($Person->getFamily()->getPeople());
-    $Notification->setProjectorText($app->kiosk->getEvents()[0]->getType()."-".$Person->getId());
+    $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType()."-".$Person->getId());
     $Status = $Notification->send();
 
     return $response->withJSON($Status);
