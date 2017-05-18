@@ -373,7 +373,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_end` = '".FilterInput($sEventEnd)."',
                      `inactive` = '".FilterInput($iEventStatus)."',
                      `event_typename` = '".FilterInput($sTypeName)."',
-                     `event_grpid` = '".FilterInput($nEventGroupId).
+                     `event_grpid` = '".FilterInput($nEventGroupId)."'".
                     " WHERE `event_id` = '".FilterInput($iEventID)."';";
 //            echo $sSQL;
             RunQuery($sSQL);

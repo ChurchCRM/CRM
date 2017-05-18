@@ -27,6 +27,15 @@ $app->group('/kiosks', function () {
         return $response->write(json_encode($reload));
     });
     
+    $this->post('/{kioskId:[0-9]+}/acceptKiosk', function ($request, $response, $args) {
+        $kioskId = $args['kioskId'];
+        $accept = \ChurchCRM\KioskDeviceQuery::create()
+                ->findOneById($kioskId)
+                ->setAccepted(true)
+                ->save();
+        return $response->write(json_encode($accept));
+    });
+    
      
     
     

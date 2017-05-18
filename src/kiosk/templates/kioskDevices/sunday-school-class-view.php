@@ -196,7 +196,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
           else
           {
             $("#noEvent").show();
-            $("#noEvent").text("This kiosk has not been accepted.  Name: " + data.Name);
+            $("#noEvent").html("This kiosk has not been accepted.<br/>Kiosk Name: " + data.Name);
             $("#event").hide();
           } 
           

@@ -80,6 +80,23 @@ require 'Include/Header.php';
     })  
   }
   
+  window.CRM.acceptKiosk = function (id)
+  {
+     window.CRM.APIRequest({
+      "path":"kiosks/"+id+"/acceptKiosk",
+      "method":"POST"
+    }).done(function(data){
+      console.log(data);
+    })
+  }
+  
+  window.CRM.getFutureEventes = function()
+  {
+    window.CRM.APIRequest({
+      "path":"events/notDone"
+    })
+  }
+  
   
   
   $('#isNewKioskRegistrationActive').change(function() {
@@ -143,6 +160,10 @@ require 'Include/Header.php';
             return "None";
           }
             
+        },
+        render: function (data,type,full,meta)
+        {
+          
         }
       },
       {
@@ -172,7 +193,7 @@ require 'Include/Header.php';
         width: 'auto',
         title: 'Actions',
         render: function (data, type, full, meta) {
-          return "<button class='reload' onclick='window.CRM.reloadKiosk("+full.Id+")' >Reload</button>";
+          return "<button class='reload' onclick='window.CRM.reloadKiosk("+full.Id+")' >Reload</button><button class='accept' onclick='window.CRM.acceptKiosk("+full.Id+")' >Accept</button>";
 
         }
       }
