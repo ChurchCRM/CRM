@@ -131,8 +131,19 @@ require 'Include/Header.php';
       },
       {
         width: 'auto',
-        title: 'KioskAssignment',
-        data: 'KioskAssignments[0].AssignmentType'
+        title: 'Assignment',
+        data: function (row,type,set,meta){
+          console.log(row);
+          if (row.KioskAssignments)
+          {
+            return row.KioskAssignments[0].AssignmentType.AssignmentType;
+          }
+          else
+          {
+            return "None";
+          }
+            
+        }
       },
       {
         width: 'auto',

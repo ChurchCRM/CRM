@@ -7,7 +7,7 @@ require '../Include/Config.php';
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 use ChurchCRM\dto\SystemConfig;
-require "../ChurchCRM/utils/GUID.php";
+use \ChurchCRM\Utils\MiscUtils;
 
 // Instantiate the app
 //$settings = require __DIR__ . '/settings.php';
@@ -39,10 +39,9 @@ if (!isset($_COOKIE['kioskCookie']))
 {
   if ($windowOpen)
   {
-    $guid = getGUID();
+    $guid = MiscUtils::getGUID();
     setcookie("kioskCookie",$guid, 2147483647);
     $Kiosk = new \ChurchCRM\KioskDevice();
-    $Kiosk->setName($_SERVER['HTTP_USER_AGENT']);
     $Kiosk->setGUIDHash(hash('sha256',$guid));
     $Kiosk->setAccepted($false);
     $Kiosk->save();

@@ -17,6 +17,8 @@ use ChurchCRM\GroupQuery;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\Person;
 use ChurchCRM\Map\ListOptionTableMap;
+use ChurchCRM\Utils\MiscUtils;
+
 
 class KioskDevice extends BaseKioskDevice
 {
@@ -31,17 +33,20 @@ class KioskDevice extends BaseKioskDevice
     $this->setLastHeartbeat(date('Y-m-d H:i:s'))
       ->save();
     
+    $assignmentJSON = null;
     $assignment = $this->getActiveAssignment();
     
-    if ($assignment->getAssignmentType() == dto\KioskAssignmentTypes::EVENTATTENDANCEKIOSK )
+    if (isset($assignment) && $assignment->getAssignmentType() == dto\KioskAssignmentTypes::EVENTATTENDANCEKIOSK )
     {
       $assignment->getEvent();
+      $assignmentJSON = $assignment->toJSON();
     }
     
     
     return array(
-        "Status"=>"Good",
-        "Assignment"=>$assignment->toJSON(),
+        "Accepted"=>$this->getAccepted(),
+        "Name"=>$this->getName(),
+        "Assignment"=>$assignmentJSON,
         "Commands"=>$this->getPendingCommands()
       );
   }
@@ -58,6 +63,14 @@ class KioskDevice extends BaseKioskDevice
   {
     $this->setPendingCommands("Reload");
     $this->save();
+    return true;
+  }
+  
+  public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null) {
+    if (!isset($this->Name))
+    {
+      $this->setName(Utils\MiscUtils::random_word());
+    }
     return true;
   }
 

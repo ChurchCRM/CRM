@@ -1,12 +1,13 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\KioskDeviceQuery;
 
 $app->group('/kiosks', function () {
 
     $this->get('/', function ($request, $response, $args) {
-        $Kiosks = \ChurchCRM\KioskDeviceQuery::create()
-                ->joinWithKioskAssignment()
+        $Kiosks = KioskDeviceQuery::create()
+                ->leftJoinKioskAssignment()
                 ->find();
         return $response->write($Kiosks->toJSON());
     });

@@ -57,7 +57,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 </style>
 
 <div>
-  <h1 id="noEvent">No active assignments for this kiosk</h1>
+  <h1 id="noEvent"></h1>
 </div>
 
 <div id="event">
@@ -174,21 +174,31 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
             location.reload();
           }
           
-          Assignment=JSON.parse(data.Assignment);
-          if (Assignment.AssignmentType == 1)
+          if (data.Accepted)
           {
-            window.CRM.updateActiveClassMembers();
-            $("#noEvent").hide();
-            $("#event").show();
-            $("#eventTitle").text(Assignment.Event.Title);
-            $("#startTime").text(moment(Assignment.Event.Start).format('MMMM Do YYYY, h:mm:ss a'));
-            $("#endTime").text(moment(Assignment.Event.End).format('MMMM Do YYYY, h:mm:ss a'));
+            Assignment=JSON.parse(data.Assignment);
+            if (Assignment && Assignment.AssignmentType == 1)
+            {
+              window.CRM.updateActiveClassMembers();
+              $("#noEvent").hide();
+              $("#event").show();
+              $("#eventTitle").text(Assignment.Event.Title);
+              $("#startTime").text(moment(Assignment.Event.Start).format('MMMM Do YYYY, h:mm:ss a'));
+              $("#endTime").text(moment(Assignment.Event.End).format('MMMM Do YYYY, h:mm:ss a'));
+            }
+            else
+            {
+               $("#noEvent").show();
+               $("#noEvent").text("No active assignments for this kiosk");
+               $("#event").hide();
+            }
           }
           else
           {
-             $("#noEvent").show();
-             $("#event").hide();
-          }
+            $("#noEvent").show();
+            $("#noEvent").text("This kiosk has not been accepted.  Name: " + data.Name);
+            $("#event").hide();
+          } 
           
       })
   }
