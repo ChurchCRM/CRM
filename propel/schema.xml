@@ -747,7 +747,26 @@
         <index-column name="kdev_ID"/>
       </index>
      </table>
-)
+     
+     
+    <table name="kioskassginment_kasm" idMethod="native" phpName="KioskAssignment">
+      <column name="kasm_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+      <column name="kasm_kdevId" phpName="KioskId" type="INTEGER" size="9"/>
+      <column name="kasm_AssignmentType" phpName="AssignmentType" type="INTEGER" size="9"/>
+      <column name="kasm_EventId" phpName="EventId" type="INTEGER" size="9"/>
+      <index name="kasm_ID">
+        <index-column name="kasm_ID"/>
+      </index>
+
+      <foreign-key foreignTable="kioskdevice_kdev">
+        <reference local="kasm_kdevId" foreign="kdev_ID"/>
+      </foreign-key>
+      
+      <foreign-key foreignTable="events_event">
+        <reference local="kasm_EventId" foreign="event_id"/>
+      </foreign-key>
+     </table>
+
 
 
     <table name="tokens" idMethod="native" phpName="Token">

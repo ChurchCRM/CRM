@@ -2,11 +2,12 @@
 
 namespace ChurchCRM\dto;
 
-abstract class KioskDeviceTypes
+abstract class KioskAssignmentTypes
 {
-  const GROUPATTENDANCEKIOSK =1;
+  const EVENTATTENDANCEKIOSK =1;
   const SELFREGISTRATIONKIOSK = 2;
   const SELFCHECKINKIOSK = 3;
+  const GENERALATTENDANCEKIOSK = 4;
 }
 
 ?>

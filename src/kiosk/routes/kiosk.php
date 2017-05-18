@@ -13,11 +13,6 @@ $app->get('/', function ($request, $response, $args) use ($app) {
     return $renderer->render($response, "sunday-school-class-view.php", $pageObjects);
   });
 
-  $app->get('/activeClassMembers', function ($request, $response, $args) use ($app) {
-    return $app->kiosk->getActiveGroupMembers()->toJSON();
-  });
-
-
   $app->get('/heartbeat', function ($request, $response, $args) use ($app) {
 
     return json_encode($app->kiosk->heartbeat());     
@@ -26,13 +21,13 @@ $app->get('/', function ($request, $response, $args) use ($app) {
   $app->post('/checkin', function ($request, $response, $args) use ($app) {
 
     $input = (object) $request->getParsedBody();
-    $status = $app->kiosk->checkInPerson($input->PersonId);
+    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input->PersonId);
     return $response->withJSON($status);
   });
 
   $app->post('/checkout', function ($request, $response, $args) use ($app) {
     $input = (object) $request->getParsedBody();
-    $status = $app->kiosk->checkOutPerson($input->PersonId);
+    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input->PersonId);
     return $response->withJSON($status);
   });
 
@@ -50,6 +45,10 @@ $app->get('/', function ($request, $response, $args) use ($app) {
     return $response->withJSON($Status);
   });
 
+  
+   $app->get('/activeClassMembers', function ($request, $response, $args) use ($app) {
+    return $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON();
+  });
 
 
   $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) use ($app) {

@@ -4,7 +4,7 @@ namespace ChurchCRM;
 
 use ChurchCRM\Base\KioskDevice as BaseKioskDevice;
 
-use ChurchCRM\dto\KioskDeviceTypes;
+use ChurchCRM\dto\KioskAssignmentTypes;
 use ChurchCRM\EventQuery;
 use ChurchCRM\Event;
 
@@ -23,7 +23,7 @@ class KioskDevice extends BaseKioskDevice
 
   private function getActiveEvent()
   {
-    if ($this->getDeviceType() == KioskDeviceTypes::GROUPATTENDANCEKIOSK)
+    if ($this->getDeviceType() == KioskAssignmentTypes::GROUPATTENDANCEKIOSK)
     {
       $Event = EventQuery::create()
         ->filterByStart('now', Criteria::LESS_EQUAL)
@@ -38,19 +38,27 @@ class KioskDevice extends BaseKioskDevice
     }
   }
   
+  public function getActiveAssignment()
+  {
+    return $this->getKioskAssignments()[0];
+  }
+  
   public function heartbeat()
   {
     $this->setLastHeartbeat(date('Y-m-d H:i:s'))
       ->save();
-    $event = $this->getActiveEvent();
-    if ($event)
+    
+    $assignment = $this->getActiveAssignment();
+    
+    if ($assignment->getAssignmentType() == dto\KioskAssignmentTypes::EVENTATTENDANCEKIOSK )
     {
-      $event2 = $event->toJSON();
+      $assignment->getEvent();
     }
+    
     
     return array(
         "Status"=>"Good",
-        "Event"=>$event2,
+        "Assignment"=>$assignment->toJSON(),
         "Commands"=>$this->getPendingCommands()
       );
   }
@@ -63,68 +71,9 @@ class KioskDevice extends BaseKioskDevice
     return $commands;
   }
   
-  public function getActiveGroupMembers()
-  {
-    if ($this->getDeviceType() == KioskDeviceTypes::GROUPATTENDANCEKIOSK)
-      {
-        $ssClass = PersonQuery::create()
-                  ->joinWithPerson2group2roleP2g2r()
-                  ->usePerson2group2roleP2g2rQuery()
-                    ->filterByGroupId($this->getActiveEvent()->getGroupId())
-                    ->joinGroup()
-                    ->innerJoin("ListOption")
-                    ->addJoinCondition("ListOption", "Group.RoleListId = ListOption.Id")
-                  ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
-                  ->endUse()
-                   ->leftJoin('EventAttend')
-                   ->withColumn("(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)","status")
-                  ->select(array("Id","FirstName","LastName","status"))
-                  ->find();
-        return $ssClass;
-      }
-      else
-      {
-        throw new \Exception("This kiosk does not support group attendance");
-      }
-  }
   
-  public function checkInPerson($PersonId)
-  {
-    $Event = $this->getActiveEvent();
-    
-    $AttendanceRecord = EventAttendQuery::create()
-            ->filterByEvent($Event)
-            ->filterByPersonId($PersonId)
-            ->findOneOrCreate();
-    
-    $AttendanceRecord->setEvent($Event)
-      ->setPersonId($PersonId)
-      ->setCheckinDate(date('Y-m-d H:i:s'))
-      ->setCheckoutDate(null)
-      ->save();
-    
-    return array("status"=>"success");
-    
-  }
   
-  public function checkOutPerson($PersonId)
-  {
-    $Event = $this->getActiveEvent();
-    
-    $AttendanceRecord = EventAttendQuery::create()
-            ->filterByEvent($Event)
-            ->filterByPersonId($PersonId)
-            ->filterByCheckinDate(NULL,  Criteria::NOT_EQUAL)
-            ->findOne();
-    
-    $AttendanceRecord->setEvent($Event)
-      ->setPersonId($PersonId)
-      ->setCheckoutDate(date('Y-m-d H:i:s'))
-      ->save();
-    
-    return array("status"=>"success");
-    
-  }
+  
   
   public function reloadKiosk()
   {

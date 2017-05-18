@@ -13,6 +13,17 @@ CREATE TABLE `kioskdevice_kdev` (
   UNIQUE KEY `kdev_ID` (`kdev_ID`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `kioskassginment_kasm`;
+CREATE TABLE `kioskassginment_kasm` ( 
+  `kasm_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `kasm_kdevId` mediumint(9) DEFAULT NULL,
+  `kasm_AssignmentType` mediumint(9) DEFAULT NULL,
+`kasm_EventId` mediumint(9) DEFAULT 0,
+
+  PRIMARY KEY  (`kasm_ID`),
+  UNIQUE KEY `kasm_ID` (`kasm_ID`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
 
   
 INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`, `icon`) VALUES

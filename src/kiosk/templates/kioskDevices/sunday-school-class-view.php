@@ -57,7 +57,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 </style>
 
 <div>
-  <h1 id="noEvent">No active events for this kiosk</h1>
+  <h1 id="noEvent">No active assignments for this kiosk</h1>
 </div>
 
 <div id="event">
@@ -174,15 +174,15 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
             location.reload();
           }
           
-          thisEvent=JSON.parse(data.Event);
-          if (thisEvent)
+          Assignment=JSON.parse(data.Assignment);
+          if (Assignment.AssignmentType == 1)
           {
             window.CRM.updateActiveClassMembers();
             $("#noEvent").hide();
             $("#event").show();
-            $("#eventTitle").text(thisEvent.Title);
-            $("#startTime").text(moment(thisEvent.Start).format('MMMM Do YYYY, h:mm:ss a'));
-            $("#endTime").text(moment(thisEvent.End).format('MMMM Do YYYY, h:mm:ss a'));
+            $("#eventTitle").text(Assignment.Event.Title);
+            $("#startTime").text(moment(Assignment.Event.Start).format('MMMM Do YYYY, h:mm:ss a'));
+            $("#endTime").text(moment(Assignment.Event.End).format('MMMM Do YYYY, h:mm:ss a'));
           }
           else
           {
