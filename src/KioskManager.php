@@ -131,8 +131,8 @@ require 'Include/Header.php';
       },
       {
         width: 'auto',
-        title: 'Device Type',
-        data: 'DeviceType'
+        title: 'KioskAssignment',
+        data: 'KioskAssignments[0].AssignmentType'
       },
       {
         width: 'auto',

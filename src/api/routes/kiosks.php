@@ -6,6 +6,7 @@ $app->group('/kiosks', function () {
 
     $this->get('/', function ($request, $response, $args) {
         $Kiosks = \ChurchCRM\KioskDeviceQuery::create()
+                ->joinWithKioskAssignment()
                 ->find();
         return $response->write($Kiosks->toJSON());
     });
