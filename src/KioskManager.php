@@ -90,6 +90,52 @@ require 'Include/Header.php';
     })
   }
   
+  window.CRM.identifyKiosk = function (id)
+  {
+     window.CRM.APIRequest({
+      "path":"kiosks/"+id+"/identifyKiosk",
+      "method":"POST"
+    }).done(function(data){
+      console.log(data);
+    })
+  }
+  
+  window.CRM.setKioskAssignment = function (id,assignmentId)
+  {
+    console.log(assignmentId);
+    assignmentSplit = assignmentId.split("-");
+    if(assignmentSplit.length > 0)
+    {
+      assignmentType = assignmentSplit[0];
+      eventId = assignmentSplit[1];
+    }
+    else
+    {
+      assignmentType = assignmentId;
+    }
+   
+     window.CRM.APIRequest({
+      "path":"kiosks/"+id+"/setAssignment",
+      "method":"POST",
+      "data":JSON.stringify({"assignmentType":assignmentType,"eventId":eventId})
+    }).done(function(data){
+      console.log(data);
+    })
+  }
+  
+  window.CRM.renderAssignment = function(data) {
+    if (data.EventId !== 0)
+    {
+       return '<option value="'+data.AssignmentType+'-'+data.EventId+'">'+data.AssignmentType+'-'+data.EventId+'</option>';
+    }
+    else
+    {
+      return '<option value="'+data.AssignmentType+'">'+data.AssignmentType+'</option>';
+
+    }
+      
+  }
+  
   window.CRM.getFutureEventes = function()
   {
     window.CRM.APIRequest({
@@ -101,15 +147,15 @@ require 'Include/Header.php';
   
   window.CRM.GetAssignmentOptions = function() {
     console.log(window.CRM.futureEvents.length);
-    var options = '<option value="None">None</option><option value="selfReg">Self Registration</option>';
+    //var options = '<option value="None">None</option><option value="2">Self Registration</option>';
+    var options ='<option value="None">None</option>';
     for (var i=0; i < window.CRM.futureEvents.length; i++)
     {
       var event = window.CRM.futureEvents[i];
-      options += '<option value="event-'+event.Id+'">Event - '+event.Title+'</option>'
+      options += '<option value="1-'+event.Id+'">Event - '+event.Title+'</option>'
     }
     return options;
   }
-  
   
   
   $('#isNewKioskRegistrationActive').change(function() {
@@ -139,8 +185,10 @@ require 'Include/Header.php';
   window.CRM.getFutureEventes();
  
   $(document).on("change",".assignmentMenu",function(event){
-    console.log(event);
-    console.log($(event.currentTarget).data("kioskid"));
+    var kioskId = $(event.currentTarget).data("kioskid");
+    var selected = $(event.currentTarget).val();
+    window.CRM.setKioskAssignment(kioskId,selected);
+    console.log(kioskId+" " + selected);
   })
   
   $(document).ready(function(){
@@ -170,9 +218,9 @@ require 'Include/Header.php';
         title: 'Assignment',
         data: function (row,type,set,meta){
           console.log(row);
-          if (row.KioskAssignments)
+          if (row.KioskAssignments.length > 0)
           {
-            return row.KioskAssignments[0].AssignmentType.AssignmentType;
+            return row.KioskAssignments[0];
           }
           else
           {
@@ -182,7 +230,7 @@ require 'Include/Header.php';
         },
         render: function (data,type,full,meta)
         {
-          return '<select class="assignmentMenu" data-kioskid="'+full.Id+'" data-selectedassignment='+data+'>'+ window.CRM.GetAssignmentOptions() +'</select>';
+          return '<select class="assignmentMenu" data-kioskid="'+full.Id+'" data-selectedassignment='+data+'>'+window.CRM.renderAssignment(data)+ window.CRM.GetAssignmentOptions() +'</select>';
         }
       },
       {
@@ -212,7 +260,9 @@ require 'Include/Header.php';
         width: 'auto',
         title: 'Actions',
         render: function (data, type, full, meta) {
-          return "<button class='reload' onclick='window.CRM.reloadKiosk("+full.Id+")' >Reload</button><button class='accept' onclick='window.CRM.acceptKiosk("+full.Id+")' >Accept</button>";
+          return "<button class='reload' onclick='window.CRM.reloadKiosk("+full.Id+")' >Reload</button>" +
+                 "<button class='accept' onclick='window.CRM.acceptKiosk("+full.Id+")' >Accept</button>" +
+                 "<button class='identify' onclick='window.CRM.identifyKiosk("+full.Id+")' >Identify</button>";
 
         }
       }

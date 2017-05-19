@@ -174,6 +174,17 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
             location.reload();
           }
           
+          if (data.Commands == "Identify")
+          {
+            clearInterval(window.CRM.kioskEventLoop);
+            console.log("id");
+            $("#event").hide();
+            $("#noEvent").show();
+            $("#noEvent").html("Kiosk Name: " + data.Name);
+            setTimeout(function(){location.reload()},2000);
+            return;
+          }
+          
           if (data.Accepted)
           {
             Assignment=JSON.parse(data.Assignment);
@@ -202,13 +213,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
           
       })
   }
-  
-  window.CRM.kioskEventLoop = function()
-  {
-    window.CRM.heartbeat();
-    
-  }
-  
+   
   window.CRM.checkInPerson = function(personId)
   {
     window.CRM.APIRequest({
@@ -304,8 +309,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   
   
   $(document).ready(function() {
-    window.CRM.kioskEventLoop();
-    setInterval(window.CRM.kioskEventLoop,2000);
+    window.CRM.kioskEventLoop = setInterval(window.CRM.heartbeat,2000);
   });
     
   $(document).on('click','.widget-user-header', function(event)

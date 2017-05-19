@@ -28,6 +28,19 @@ class KioskDevice extends BaseKioskDevice
     return $this->getKioskAssignments()[0];
   }
   
+  public function setAssignment($assignmentType,$eventId)
+  {
+    $assignment = $this->getActiveAssignment();
+    if (is_null($assignment))
+    {
+      $assignment = new KioskAssignment();
+      $assignment->setKioskDevice($this);
+    }
+    $assignment->setAssignmentType($assignmentType);
+    $assignment->setEventId($eventId);
+    $assignment->save();
+  }
+  
   public function heartbeat()
   {
     $this->setLastHeartbeat(date('Y-m-d H:i:s'))
@@ -62,6 +75,13 @@ class KioskDevice extends BaseKioskDevice
   public function reloadKiosk()
   {
     $this->setPendingCommands("Reload");
+    $this->save();
+    return true;
+  }
+  
+  public function identifyKiosk()
+  {
+    $this->setPendingCommands("Identify");
     $this->save();
     return true;
   }
