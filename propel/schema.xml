@@ -735,7 +735,6 @@
       <column name="kdev_GUIDHash" phpName="GUIDHash" type="VARCHAR" size="36"/>
       <column name="kdev_Name" phpName="Name" type="VARCHAR" size="50"/>
       <column name="kdev_deviceType" phpName="DeviceType" type="LONGVARCHAR"/>
-      <column name="kdev_deviceConfiguration" phpName="Configuration" type="LONGVARCHAR" />
       <column name="kdev_lastHeartbeat" phpName="LastHeartbeat" type="LONGVARCHAR" />
       <column name="kdev_Accepted" phpName="Accepted" type="BOOLEAN"/>
       <column name="kdev_PendingCommands" phpName="PendingCommands" type="LONGVARCHAR" />

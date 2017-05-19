@@ -4,7 +4,6 @@ CREATE TABLE `kioskdevice_kdev` (
   `kdev_GUIDHash` char(64) DEFAULT NULL,
   `kdev_Name` varchar(50) DEFAULT NULL,
   `kdev_deviceType` mediumint(9) NOT NULL DEFAULT 0,
-  `kdev_deviceConfiguration` text,
   `kdev_lastHeartbeat` TIMESTAMP,
   `kdev_Accepted` BOOLEAN,
   `kdev_PendingCommands` varchar(50),

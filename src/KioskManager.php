@@ -94,7 +94,20 @@ require 'Include/Header.php';
   {
     window.CRM.APIRequest({
       "path":"events/notDone"
-    })
+    }).done(function(data){
+      window.CRM.futureEvents=data.Events;
+    });
+  }
+  
+  window.CRM.GetAssignmentOptions = function() {
+    console.log(window.CRM.futureEvents.length);
+    var options = '<option value="None">None</option><option value="selfReg">Self Registration</option>';
+    for (var i=0; i < window.CRM.futureEvents.length; i++)
+    {
+      var event = window.CRM.futureEvents[i];
+      options += '<option value="event-'+event.Id+'">Event - '+event.Title+'</option>'
+    }
+    return options;
   }
   
   
@@ -122,7 +135,13 @@ require 'Include/Header.php';
     }
 
   })
+  
+  window.CRM.getFutureEventes();
  
+  $(document).on("change",".assignmentMenu",function(event){
+    console.log(event);
+    console.log($(event.currentTarget).data("kioskid"));
+  })
   
   $(document).ready(function(){
     $("#KioskTable").DataTable({
@@ -163,7 +182,7 @@ require 'Include/Header.php';
         },
         render: function (data,type,full,meta)
         {
-          
+          return '<select class="assignmentMenu" data-kioskid="'+full.Id+'" data-selectedassignment='+data+'>'+ window.CRM.GetAssignmentOptions() +'</select>';
         }
       },
       {
