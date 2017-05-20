@@ -5,6 +5,9 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Person;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\NotificationEmail;
+use Nexmo\Client;
+use Nexmo\Client\Credentials\Basic as NexmoBasicCred;
+use ChurchCRM\Service\OpenLPNotification;
 
 class Notification
 {
@@ -46,7 +49,6 @@ class Notification
   
   private function sendEmail()
   {
-    
     $emailaddresses = [];
     Foreach ($this->recipients as $recipient)
     {        
@@ -66,23 +68,27 @@ class Notification
   {
     try
       {
+     
         $client = new Client(New NexmoBasicCred(SystemConfig::getValue("sNexmoAPIKey"),SystemConfig::getValue("sNexmoAPISecret")));
-         Foreach ($NotificationRecipients as $recipient)
-        {        
+        
+        Foreach ($this->recipients as $recipient)
+        {
           $message = $client->message()->send([
-              'to' => 'num',
+              'to' => $recipient->getNumericCellPhone(),
               'from' => SystemConfig::getValue("sNexmoFromNumber"),
-              'text' => 'Notification for ' . $this->getFullName()
+              'text' => 'Notification for ' . $this->person->getFullName()
           ]);
         }
-        
+        return true;
       } catch (Exception $ex) {
-
+        return false;
       }
+      
   }
   
   private function sendProjector()
   {
+    return "would projecT";
     try
       {
         $OLPAlert = new OpenLPNotification(SystemConfig::getValue("sOLPURL"),
@@ -91,28 +97,34 @@ class Notification
         $OLPAlert->setAlertText($this->projectorText);
         $OLPAlert->send();
       } catch (Exception $ex) {
-
+        return false;
       }
+      return true;
   }
   
   public function send()
   {
-    $sendStatus = [
-        "status"=>"",
-        "methods"=>[]
-    ];
+   
+    $methods = [];
     if(SystemConfig::hasValidMailServerSettings())
     {
-      array_push($sendStatus->methods,"email: ".$this->sendEmail());
+      $send = $this->sendEmail();
+      array_push($methods,"email: ".$send);
     }
     if (SystemConfig::hasValidSMSServerSettings())
     {
-      $this->sendSMS();
+      $send = $this->sendSMS();
+      array_push($methods,"sms: ".$send);
     }
     if(SystemConfig::hasValidOpenLPSerrings())
     {
-      $this->sendProjector();
+      $send = $this->sendProjector();
+      array_push($methods,"projector: ".$send);
     }
+    $sendStatus = [
+        "status"=>"",
+        "methods"=>$methods
+    ];
     
     return json_encode($sendStatus);
     

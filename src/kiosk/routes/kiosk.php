@@ -36,6 +36,8 @@ $app->get('/', function ($request, $response, $args) use ($app) {
 
     $Person =PersonQuery::create()
             ->findOneById($input->PersonId);
+    
+    //return $response->withJSON($Person->getNumericCellPhone());
 
     $Notification = new Notification();
     $Notification->setPerson($Person);

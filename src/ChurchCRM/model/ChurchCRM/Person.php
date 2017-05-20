@@ -8,9 +8,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
-use Nexmo\Client;
-use Nexmo\Client\Credentials\Basic as NexmoBasicCred;
-use ChurchCRM\Service\OpenLPNotification;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -425,6 +422,12 @@ class Person extends BasePerson implements iPhoto
         NoteQuery::create()->filterByPerson($this)->find($con)->delete();
 
         return parent::preDelete($con);
+    }
+    
+    public function getNumericCellPhone()
+    {
+      //return $this->getCellPhone();
+      return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
 
 }
