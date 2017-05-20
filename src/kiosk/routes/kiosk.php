@@ -38,7 +38,8 @@ $app->get('/', function ($request, $response, $args) use ($app) {
             ->findOneById($input->PersonId);
 
     $Notification = new Notification();
-    $Notification->setRecipients($Person->getFamily()->getPeople());
+    $Notification->setPerson($Person);
+    $Notification->setRecipients($Person->getFamily()->getAdults());
     $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType()."-".$Person->getId());
     $Status = $Notification->send();
 

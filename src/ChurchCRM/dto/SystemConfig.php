@@ -329,5 +329,13 @@ class SystemConfig
 
         return $hasValidSettings;
     }
+    
+    public static function hasValidSMSServerSettings() {
+      return (!empty(self::getValue("sNexmoAPIKey"))) && (!empty(self::getValue("sNexmoAPISecret"))) && (!empty(self::getValue("sNexmoFromNumber")));
+    }
+    
+    public static function hasValidOpenLPSerrings() {
+      
+    }
 
 }

@@ -102,6 +102,10 @@ class Family extends BaseFamily implements iPhoto
   public function getSpousePeople() {
     return $this->getPeopleByRole("sDirRoleSpouse");
   }
+  
+  public function getAdults() {
+    return array_merge($this->getHeadPeople(),$this->getSpousePeople());
+  }
 
   public function getChildPeople() {
     return $this->getPeopleByRole("sDirRoleChild");

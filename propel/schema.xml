@@ -492,10 +492,6 @@
         <column name="type_defrecurDOY" phpName="DefRecurDOY" type="DATE" required="true" defaultValue="2016-01-01"/>
         <column name="type_active" phpName="Active" type="INTEGER" size="1" required="true" defaultValue="1"/>
         <column name="type_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
-        <column name="type_kioskid" phpName="KioskId" type="INTEGER" required="false" defaultValue="0"/>
-        <foreign-key foreignTable="kioskdevice_kdev">
-            <reference local="type_kioskid" foreign="kdev_ID"/>
-        </foreign-key>
         <foreign-key foreignTable="group_grp">
             <reference local="type_grpid" foreign="grp_ID"/>
         </foreign-key>

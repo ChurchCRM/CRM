@@ -4,7 +4,6 @@ namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\SystemConfig;
 
-
 class NotificationEmail extends BaseEmail
 {
     private $notificationSource;

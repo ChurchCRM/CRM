@@ -4,12 +4,14 @@ namespace ChurchCRM\dto;
 
 use ChurchCRM\Person;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Emails\NotificationEmail;
 
 class Notification
 {
   
   protected $projectorText;
   protected $recipients;
+  protected $person;
  
   public function __construct()
   {
@@ -32,6 +34,11 @@ class Notification
     
   }
   
+  public function setPerson(\ChurchCRM\Person $Person)
+  {
+    $this->person  = $Person;
+  }
+  
   public function setProjectorText($text)
   {
     $this->projectorText=$text;
@@ -42,15 +49,17 @@ class Notification
     
     $emailaddresses = [];
     Foreach ($this->recipients as $recipient)
-      {        
-        array_push($emailaddresses,$recipient->getEmail());
-      }
-      try
-      {
-        $email = new NotificationEmail($emailaddresses,$this->getFullName());
-        $emailStatus=$email->send();
-      } catch (Exception $ex) {
-      }
+    {        
+      array_push($emailaddresses,$recipient->getEmail());
+    }
+    try
+    {
+      $email = new NotificationEmail($emailaddresses,$this->person->getFullName());
+      $emailStatus=$email->send();
+    } catch (Exception $ex) {
+      return false;
+    }
+    return true;
   }
   
   private function sendSMS()
@@ -88,9 +97,25 @@ class Notification
   
   public function send()
   {
-    //$this->sendEmail();
-    //$this->sendSMS();
-    $this->sendProjector();
+    $sendStatus = [
+        "status"=>"",
+        "methods"=>[]
+    ];
+    if(SystemConfig::hasValidMailServerSettings())
+    {
+      array_push($sendStatus->methods,"email: ".$this->sendEmail());
+    }
+    if (SystemConfig::hasValidSMSServerSettings())
+    {
+      $this->sendSMS();
+    }
+    if(SystemConfig::hasValidOpenLPSerrings())
+    {
+      $this->sendProjector();
+    }
+    
+    return json_encode($sendStatus);
+    
   }
   
 }
