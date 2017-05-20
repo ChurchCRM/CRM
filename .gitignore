@@ -51,3 +51,4 @@ src/ChurchCRM/model/ChurchCRM/Map
 src/signatures.json
 src/integrityCheck.json
 src/tmp_attach
+src/logs/*.log
