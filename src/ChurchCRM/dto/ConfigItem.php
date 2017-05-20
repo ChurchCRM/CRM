@@ -6,7 +6,7 @@ use ChurchCRM\Config;
 class ConfigItem
 {
   private $id, $name, $value, $type, $default, $tooltip, $url, $data, $dbConfigItem;
-  public function __construct($id, $name, $type, $default, $tooltip, $url='', $data='') {
+  public function __construct($id, $name, $type, $default, $tooltip='', $url='', $data='') {
     $this->id = $id;
     $this->name = $name;
     $this->type = $type;
