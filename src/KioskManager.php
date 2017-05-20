@@ -86,7 +86,7 @@ require 'Include/Header.php';
       "path":"kiosks/"+id+"/acceptKiosk",
       "method":"POST"
     }).done(function(data){
-      console.log(data);
+      window.CRM.kioskDataTable.ajax.reload()
     })
   }
   
@@ -192,7 +192,7 @@ require 'Include/Header.php';
   })
   
   $(document).ready(function(){
-    $("#KioskTable").DataTable({
+    window.CRM.kioskDataTable = $("#KioskTable").DataTable({
     "language": {
       "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
     },
@@ -230,8 +230,15 @@ require 'Include/Header.php';
         },
         render: function (data,type,full,meta)
         {
-          return '<select class="assignmentMenu" data-kioskid="'+full.Id+'" data-selectedassignment='+data+'>'+window.CRM.renderAssignment(data)+ window.CRM.GetAssignmentOptions() +'</select>';
+          if(full.Accepted){
+            return '<select class="assignmentMenu" data-kioskid="'+full.Id+'" data-selectedassignment='+data+'>'+window.CRM.renderAssignment(data)+ window.CRM.GetAssignmentOptions() +'</select>';
+          }
+          else
+          {
+            return "Kiosk must be accepted";
+          }
         }
+        
       },
       {
         width: 'auto',
@@ -260,14 +267,18 @@ require 'Include/Header.php';
         width: 'auto',
         title: 'Actions',
         render: function (data, type, full, meta) {
-          return "<button class='reload' onclick='window.CRM.reloadKiosk("+full.Id+")' >Reload</button>" +
-                 "<button class='accept' onclick='window.CRM.acceptKiosk("+full.Id+")' >Accept</button>" +
+          buttons = "<button class='reload' onclick='window.CRM.reloadKiosk("+full.Id+")' >Reload</button>" +
                  "<button class='identify' onclick='window.CRM.identifyKiosk("+full.Id+")' >Identify</button>";
-
+          if(!full.Accepted){
+              buttons += "<button class='accept' onclick='window.CRM.acceptKiosk("+full.Id+")' >Accept</button>";
+          }
+          return buttons;
         }
       }
     ]
   })
+  
+    setInterval(function(){window.CRM.kioskDataTable.ajax.reload()},5000);
   })
   
 </script>
