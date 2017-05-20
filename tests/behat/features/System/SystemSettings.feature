@@ -15,4 +15,5 @@ Feature: SystemSettings
     And I should see "Report Settings"
     And I should see "Localization"
     And I should see "Financial Settings"
-    And I should see "Other Settings"
+    And I should see "Integration"
+    And I should see "Backup"

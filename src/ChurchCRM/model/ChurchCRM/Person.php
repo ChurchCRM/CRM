@@ -218,11 +218,11 @@ class Person extends BasePerson implements iPhoto
     private function getPhoto()
     {
 
-        $photo = new Photo("Person", $this->getId());
-        if (!$photo->isPhotoLocal() && SystemConfig::getValue('sEnableGravatarPhotos') && $this->getEmail() != '') {
-            $photo->loadFromGravatar($this->getEmail());
-        }
-        return $photo;
+      $photo = new Photo("Person",  $this->getId());
+       if (!$photo->isPhotoLocal() && SystemConfig::getBooleanValue('bEnableGravatarPhotos') && $this->getEmail() != '') {
+         $photo->loadFromGravatar($this->getEmail());
+       }
+       return $photo;
     }
 
     public function getPhotoBytes()

@@ -20,7 +20,7 @@ See the [Users](Users.md) help topic.
 
 In General Settings | System Settings, modify the following values:
 
-* **sEnableExternalBackupTarget**
+* **bEnableExternalBackupTarget**
   If you enable the external backup target, the system will allow you to do automatic and manual backups to a remote location specified below.
 
 * **sExternalBackupType**

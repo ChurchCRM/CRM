@@ -158,8 +158,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
             }
             if ($sEmailLink) {
                 // Add default email if default email has been set and is not already in string
-                if (SystemConfig::getValue('sToEmailAddress') != '' && SystemConfig::getValue('sToEmailAddress') != 'myReceiveEmailAddress'
-                                           && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+                if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
                     $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
                 }
                 $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
@@ -299,7 +298,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         <th><?= gettext('Family Role') ?></th>
                     </tr>
                 </thead>
-            
+
                 <tbody>
     <?php
         $sEmailLink = '';
@@ -342,7 +341,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
             $personName = $per_FirstName.' '.$per_LastName;
             $thumbnail = SystemURLs::getRootPath().'/api/persons/'.$per_ID.'/thumbnail'; ?>
-        
+
             <tr>
                 <td>
                     <img data-name="<?= $personName; ?>" data-src="<?= $thumbnail ?>" class="direct-chat-img initials-image">&nbsp
