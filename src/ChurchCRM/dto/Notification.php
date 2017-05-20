@@ -47,7 +47,7 @@ class Notification
       }
       try
       {
-        $email = new EmergencyNotificationEmail($emailaddresses,$this->getFullName());
+        $email = new NotificationEmail($emailaddresses,$this->getFullName());
         $emailStatus=$email->send();
       } catch (Exception $ex) {
       }

@@ -8,7 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
-use ChurchCRM\Emails\EmergencyNotificationEmail;
+use ChurchCRM\Emails\NotificationEmail;
 use Nexmo\Client;
 use Nexmo\Client\Credentials\Basic as NexmoBasicCred;
 use ChurchCRM\Service\OpenLPNotification;

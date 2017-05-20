@@ -5,7 +5,7 @@ namespace ChurchCRM\Emails;
 use ChurchCRM\dto\SystemConfig;
 
 
-class EmergencyNotificationEmail extends BaseEmail
+class NotificationEmail extends BaseEmail
 {
     private $notificationSource;
     
@@ -20,14 +20,14 @@ class EmergencyNotificationEmail extends BaseEmail
 
     protected function getSubSubject()
     {
-        return gettext("Emergency Notification");
+        return gettext("Notification");
     }
    
      public function getTokens()
     {
         $myTokens =  [
             "toName" => "Guardian(s) of ". $this->notificationSource,
-            "body" => gettext("An Emergency Notification was triggered by the classroom teacher at " . date('Y-m-d H:i:s') ."  Please go to this location")
+            "body" => gettext("A notification was triggered by the classroom teacher at " . date('Y-m-d H:i:s') ."  Please go to this location")
         ];
         return array_merge($this->getCommonTokens(), $myTokens);
     }
