@@ -1,4 +1,13 @@
 $("document").ready(function(){
+  
+    i18next
+     .use(i18nextXHRBackend)
+     .init(
+     {
+        backend: {
+          loadPath: window.CRM.root + '/locale/'+window.CRM.locale+'/LC_Messages/messages.js'
+        }
+     });
 
     $(".multiSearch").select2({
         minimumInputLength: 2,

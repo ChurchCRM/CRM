@@ -41,6 +41,8 @@ src/skin/bootbox
 src/skin/bootstrap-toggle
 src/skin/bootstrap-validator
 src/skin/jquery-ui
+src/skin/i18next
+
 
 # Configuration files with passwords
 src/Include/Config.php
