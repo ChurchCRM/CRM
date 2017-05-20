@@ -247,7 +247,7 @@ require 'Include/Header.php';
                       }
                       if (!empty($setting->getUrl())) {
                           ?>
-                            <a href="<?= $setting->getUrl() ?>"><i class="fa fa-fw fa-link"></i></a>
+                            <a href="<?= $setting->getUrl() ?>" target="_blank"><i class="fa fa-fw fa-link"></i></a>
                             <?php
 
                       } ?>
