@@ -1849,7 +1849,7 @@ msgstr ""
 msgid ""
 "As part of the restore, external backups have been disabled.  If you wish to "
 "continue automatic backups, you must manuall re-enable the "
-"sEnableExternalBackupTarget setting."
+"bEnableExternalBackupTarget setting."
 msgstr ""
 
 #: ChurchCRM/Service/TimelineService.php:116

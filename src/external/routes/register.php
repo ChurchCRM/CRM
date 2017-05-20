@@ -7,10 +7,9 @@ use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use Slim\Views\PhpRenderer;
 
-if (SystemConfig::getBooleanValue('sEnableSelfRegistration')) {
-
-    $app->group('/register', function () {
-
+]$app->group('/register', function () {
+    $enableSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
+    if ($enableSelfReg) {
         $this->get('/', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates/registration/');
 

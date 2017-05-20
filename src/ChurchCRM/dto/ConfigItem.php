@@ -5,37 +5,44 @@ use ChurchCRM\Config;
 
 class ConfigItem
 {
-  private $id, $name, $value, $type, $default, $tooltip, $data, $dbConfigItem;
-  public function __construct($id, $name, $type, $default, $tooltip, $data='') {
+  private $id, $name, $value, $type, $default, $tooltip, $url, $data, $dbConfigItem;
+  public function __construct($id, $name, $type, $default, $tooltip='', $url='', $data='') {
     $this->id = $id;
     $this->name = $name;
     $this->type = $type;
-    $this->default = $default; 
+    $this->default = $default;
     $this->tooltip = $tooltip;
     $this->data = $data;
+    $this->url = $url;
   }
-  
+
   public function getId()
   {
     return $this->id;
   }
-  
+
   public function getName()
   {
     return $this->name;
   }
-  
-  public function setDBConfigObject($dbConfigItem)
+
+  public function getUrl()
+  {
+    return $this->url;
+  }
+
+
+    public function setDBConfigObject($dbConfigItem)
   {
     $this->dbConfigItem = $dbConfigItem;
     $this->value = $dbConfigItem->getValue();
   }
-  
+
   public function getDBConfigObject()
   {
     return $this->dbConfigItem ;
   }
-  
+
   public function getValue()
   {
     if ( isset( $this->value ) )
@@ -52,7 +59,7 @@ class ConfigItem
   {
     return boolval($this->getValue());
   }
-  
+
   public function setValue($value)
   {
     if ( $value == $this->getDefault() )
@@ -80,33 +87,33 @@ class ConfigItem
       $this->value=$value;
     }
   }
-  
+
   public function getDefault()
   {
     return $this->default;
   }
-          
-  
+
+
   public function getType()
   {
     return $this->type;
   }
-  
+
   public function getTooltip()
   {
     return $this->tooltip;
   }
-  
+
   public function getSection()
   {
     return $this->section;
   }
-  
+
   public function getCategory()
   {
     return $this->category;
   }
-  
+
   public function getData()
   {
     return $this->data;
