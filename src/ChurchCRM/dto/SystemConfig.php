@@ -62,10 +62,26 @@ class SystemConfig
         ];
     }
 
-  private static function buildConfigs()
+    public static function getNameChoices()
+    {
+        return [
+            "Choices" => [
+                gettext("Title FirstName MiddleName LastName").":0",
+                gettext("Title FirstName MiddleInitial. LastName").":1",
+                gettext("LastName, Title FirstName MiddleName").":2",
+                gettext("LastName, Title FirstName MiddleInitial").":3",
+                gettext("FirstName MiddleName LastName").":4",
+                gettext("Title FirstName LastName").":5",
+                gettext("LastName, Title FirstName").":6"
+            ]
+        ];
+    }
+
+
+    private static function buildConfigs()
   {
     return array(
-        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), json_encode(SystemConfig::getMonoLogLevels())),
+        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), "", json_encode(SystemConfig::getMonoLogLevels())),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma seperated")),
         "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "text", "1", gettext("These are the family role numbers designated as head of house")),
         "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "text", "2", gettext("These are the family role numbers designated as spouse")),
@@ -75,7 +91,7 @@ class SystemConfig
         "bCSVAdminOnly" => new ConfigItem(11, "bCSVAdminOnly", "boolean", "1", gettext("Should only administrators have access to the CSV export system and directory report?")),
         "iMinPasswordLength" => new ConfigItem(13, "iMinPasswordLength", "number", "6", gettext("Minimum length a user may set their password to")),
         "iMinPasswordChange" => new ConfigItem(14, "iMinPasswordChange", "number", "4", gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature")),
-        "aDisallowedPasswords" => new ConfigItem(15, "aDisallowedPasswords","text", "password,god,jesus,church,christian", "text", "churchcrm,password,god,jesus,church,christian", gettext("A comma-seperated list of disallowed (too obvious) passwords.")),
+        "aDisallowedPasswords" => new ConfigItem(15, "aDisallowedPasswords","text", "password,god,jesus,church,christian", gettext("A comma-seperated list of disallowed (too obvious) passwords.")),
         "iMaxFailedLogins" => new ConfigItem(16, "iMaxFailedLogins", "number", "5", gettext("Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.")),
         "iPDFOutputType" => new ConfigItem(20, "iPDFOutputType", "number", "1", gettext("PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window")),
         "sDefaultCity" => new ConfigItem(21, "sDefaultCity", "text", "", gettext("Default City")),
@@ -88,9 +104,9 @@ class SystemConfig
         "sSMTPUser" => new ConfigItem(29, "sSMTPUser", "text", "", gettext("SMTP Username")),
         "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "password", "", gettext("SMTP Password")),
         "bShowFamilyData" => new ConfigItem(33, "bShowFamilyData", "boolean", "1", gettext("Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ")),
-        "sGZIPname" => new ConfigItem(36, "sGZIPname", "text", "gzip", ""),
-        "sZIPname" => new ConfigItem(37, "sZIPname", "text", "zip", ""),
-        "sPGPname" => new ConfigItem(38, "sPGPname", "text", "gpg", ""),
+        "sGZIPname" => new ConfigItem(36, "sGZIPname", "text", "gzip"),
+        "sZIPname" => new ConfigItem(37, "sZIPname", "text", "zip"),
+        "sPGPname" => new ConfigItem(38, "sPGPname", "text", "gpg"),
         "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "", json_encode(SystemConfig::getSupportedLocales())),
         "iFYMonth" => new ConfigItem(40, "iFYMonth", "choice", "1", gettext("First month of the fiscal year"),"",'{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
         "sGoogleMapKey" => new ConfigItem(44, "sGoogleMapKey", "text", "", gettext("Google map API requires a unique key") , "https://developers.google.com/maps/documentation/javascript/get-api-key"),
@@ -105,25 +121,25 @@ class SystemConfig
         "bHideLatLon" => new ConfigItem(51, "bHideLatLon", "boolean", "0", gettext("Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.")),
         "bUseDonationEnvelopes" => new ConfigItem(52, "bUseDonationEnvelopes", "boolean", "0", gettext("Set true to enable use of donation envelopes")),
         "sHeader" => new ConfigItem(53, "sHeader", "textarea", "", gettext("Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.")),
-        "sISTusername" => new ConfigItem(54, "sISTusername", "text", "username", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Username") . " - https://www.intelligentsearch.com/Hosted/User"),
-        "sISTpassword" => new ConfigItem(55, "sISTpassword", "password", "", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Password") . " - https://www.intelligentsearch.com/Hosted/User"),
-        "sGeoCoderProvider" => new ConfigItem(56, "sGeoCoderProvider", "choice", "GoogleMaps", gettext("Select GeoCoder Provider") . " - https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers", '{"Choices":["GoogleMaps", "BingMaps"]}'),
+        "sISTusername" => new ConfigItem(54, "sISTusername", "text", "username", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Username") , "https://www.intelligentsearch.com/Hosted/User"),
+        "sISTpassword" => new ConfigItem(55, "sISTpassword", "password", "", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Password") , "https://www.intelligentsearch.com/Hosted/User"),
+        "sGeoCoderProvider" => new ConfigItem(56, "sGeoCoderProvider", "choice", "GoogleMaps", gettext("Select GeoCoder Provider") , "https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers", '{"Choices":["GoogleMaps", "BingMaps"]}'),
         "iChecksPerDepositForm" => new ConfigItem(57, "iChecksPerDepositForm", "number", "14", gettext("Number of checks for Deposit Slip Report")),
         "bUseScannedChecks" => new ConfigItem(58, "bUseScannedChecks", "boolean", "0", gettext("Set true to enable use of scanned checks")),
-        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), '','{"Choices":["'.gettext("miles").'","'.gettext("kilometers").'"]}'),
+        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), "",'{"Choices":["'.gettext("miles").'","'.gettext("kilometers").'"]}'),
         "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone"), "http://php.net/manual/en/timezones.php", json_encode(["Choices"=>timezone_identifiers_list()])),
         "sGMapIcons" => new ConfigItem(66, "sGMapIcons","text", "green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", gettext("Names of markers for Google Maps in order of classification")),
         "bForceUppercaseZip" => new ConfigItem(67, "bForceUppercaseZip", "boolean", "0", gettext("Make user-entered zip/postcodes UPPERCASE when saving to the database.")),
         "bEnableNonDeductible" => new ConfigItem(72, "bEnableNonDeductible", "boolean", "0", gettext("Enable non-deductible payments")),
         "sElectronicTransactionProcessor" => new ConfigItem(73, "sElectronicTransactionProcessor", "choice", "Vanco", gettext("Electronic Transaction Processor"), '','{"Choices":["'.gettext("Vanco").'","'.gettext("Authorize.NET").'"]}'),
         "bEnableSelfRegistration" => new ConfigItem(80, "bEnableSelfRegistration", "boolean", "0", gettext("Set true to enable family self registration.")),
-        "sPhoneFormat" => new ConfigItem(100, "sPhoneFormat", "text", "(999) 999-9999", ""),
-        "sPhoneFormatWithExt" => new ConfigItem(101, "sPhoneFormatWithExt", "text", "(999) 999-9999 x99999", ""),
-        "sDateFormatLong" => new ConfigItem(102, "sDateFormatLong", "text", "m/d/Y", ""),
-        "sDateFormatNoYear" => new ConfigItem(103, "sDateFormatNoYear", "text", "m/d", ""),
-        "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y", ""),
-        "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a", ""),
-        "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd-Gis", ""),
+        "sPhoneFormat" => new ConfigItem(100, "sPhoneFormat", "text", "(999) 999-9999"),
+        "sPhoneFormatWithExt" => new ConfigItem(101, "sPhoneFormatWithExt", "text", "(999) 999-9999 x99999"),
+        "sDateFormatLong" => new ConfigItem(102, "sDateFormatLong", "text", "m/d/Y"),
+        "sDateFormatNoYear" => new ConfigItem(103, "sDateFormatNoYear", "text", "m/d"),
+        "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y"),
+        "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a"),
+        "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd-Gis"),
         "bRegistered" => new ConfigItem(999, "bRegistered", "boolean", "0", gettext("ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.")),
         "leftX" => new ConfigItem(1001, "leftX", "number", "20", gettext("Left Margin (1 = 1/100th inch)")),
         "incrementY" => new ConfigItem(1002, "incrementY", "number", "4", gettext("Line Thickness (1 = 1/100th inch")),
@@ -178,9 +194,9 @@ class SystemConfig
         "sMailChimpApiKey" => new ConfigItem(2000, "sMailChimpApiKey", "text", "", "", "http://kb.mailchimp.com/accounts/management/about-api-keys"),
         "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), "",'{"Choices":["QBDT"]}'),
         "bAllowEmptyLastName" => new ConfigItem(2010, "bAllowEmptyLastName", "boolean", "0", gettext("Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.")),
-        "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "choice", "3", gettext("Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName "),"", '{"Choices":["1","2","3","4","5","6"]}'),
+        "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "choice", "4", "","", json_encode(SystemConfig::getNameChoices())),
         "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
-        "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL"))
+        "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "", gettext("ChurchCRM Cloud Access URL"))
       );
   }
 
