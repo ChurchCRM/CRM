@@ -335,7 +335,7 @@ class SystemConfig
     }
     
     public static function hasValidOpenLPSerrings() {
-      
+       return (!empty(self::getValue("sOLPURL")));
     }
 
 }

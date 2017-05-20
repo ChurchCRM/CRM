@@ -7,7 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\NotificationEmail;
 use Nexmo\Client;
 use Nexmo\Client\Credentials\Basic as NexmoBasicCred;
-use ChurchCRM\Service\OpenLPNotification;
+use ChurchCRM\dto\OpenLPNotification;
 
 class Notification
 {
@@ -88,7 +88,6 @@ class Notification
   
   private function sendProjector()
   {
-    return "would projecT";
     try
       {
         $OLPAlert = new OpenLPNotification(SystemConfig::getValue("sOLPURL"),
