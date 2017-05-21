@@ -7,8 +7,10 @@ use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use Slim\Views\PhpRenderer;
 
-]$app->group('/register', function () {
+$app->group('/register', function () {
+
     $enableSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
+
     if ($enableSelfReg) {
         $this->get('/', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates/registration/');
@@ -101,5 +103,5 @@ use Slim\Views\PhpRenderer;
 
             return $renderer->render($response, 'family-register-done.php', $pageObjects);
         });
-    });
-}
+    }
+});
