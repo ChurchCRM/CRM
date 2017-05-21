@@ -129,7 +129,8 @@
         ],
         "scripts": [
           "/mysql/upgrade/2.8.0/devices.sql",
-          "/mysql/upgrade/2.8.0/eventGroups.sql"
+          "/mysql/upgrade/2.8.0/eventGroups.sql",
+          "/mysql/upgrade/2.8.0-password-reset.sql"
         ],
         "dbVersion": "2.8.0"
     }

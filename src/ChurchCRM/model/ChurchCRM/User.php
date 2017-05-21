@@ -103,6 +103,15 @@ class User extends BaseUser
         return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
     }
 
+    public function resetPasswordToRandom() {
+        $password = User::randomPassword();
+        $this->updatePassword($password);
+        $this->setNeedPasswordChange(true);
+        $this->setFailedLogins(0);
+        return $password;
+    }
+
+
     public static function randomPassword()
     {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';

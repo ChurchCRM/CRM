@@ -1280,7 +1280,7 @@ CREATE TABLE `kioskassginment_kasm` (
 
 CREATE TABLE `tokens` (
   `token` VARCHAR(99) NOT NULL,
-  `type` ENUM('verifyFamily', 'verifyPerson') NOT NULL,
+  `type` VARCHAR(50) NOT NULL,
   `reference_id` INT(9) NOT NULL,
   `valid_until_date` datetime NULL,
   `remainingUses` INT(2) NULL,
