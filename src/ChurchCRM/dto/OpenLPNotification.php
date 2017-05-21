@@ -33,6 +33,10 @@ class OpenLPNotification
       'http'=>array(
         'method' =>"GET",
         'timeout' => 5
+      ),
+      "ssl" => array(
+          "verify_peer" => false,
+          "allow_self_signed" => false,
       )
     );
     if(SystemConfig::getValue("sOLPUserName"))
