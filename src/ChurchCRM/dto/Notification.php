@@ -94,11 +94,11 @@ class Notification
                 SystemConfig::getValue("sOLPUserName"),
                 SystemConfig::getValue("sOLPPassword"));
         $OLPAlert->setAlertText($this->projectorText);
-        $OLPAlert->send();
+        return $OLPAlert->send();
       } catch (Exception $ex) {
         return false;
       }
-      return true;
+       
   }
   
   public function send()

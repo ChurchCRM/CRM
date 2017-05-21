@@ -202,8 +202,8 @@ class SystemConfig
         "sNexmoFromNumber" => new ConfigItem(2006, "sNexmoFromNumber", "text", "", gettext("Nexmo SMS From Number")),
         "sOLPURL" => new ConfigItem(2007, "sOLPURL", "text", "http://192.168.1.1:4316", gettext("OpenLP URL")),
         "sOLPUserName" => new ConfigItem(2008, "sOLPUserName", "text", "", gettext("OpenLP Username")),
-        "sOLPPassword" => new ConfigItem(2008, "sOLPPassword", "text", "", gettext("OpenLP Password")),
-        "sKioskVisibilityTimestamp" => new ConfigItem(2009, "sKioskVisibilityTimestamp", "text", "", gettext("KioskVisibilityTimestamp"))
+        "sOLPPassword" => new ConfigItem(2009, "sOLPPassword", "text", "", gettext("OpenLP Password")),
+        "sKioskVisibilityTimestamp" => new ConfigItem(2010, "sKioskVisibilityTimestamp", "text", "", gettext("KioskVisibilityTimestamp"))
       );
   }
 
