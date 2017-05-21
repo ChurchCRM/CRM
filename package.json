@@ -53,6 +53,7 @@
         "demosite": "scripts/demosite.sh",
         "changelog-gen": "scripts/gen-changelogs.sh",
         "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
+        "graph-viz": "src/vendor/propel/propel/bin/propel --config-dir=propel graphviz:generate",
         "composer-install": "cd src/ && composer install",
         "composer-update": " cd src/ && composer update",
         "tests-install": "scripts/tests-install.sh",
