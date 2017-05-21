@@ -54,7 +54,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         }
                     );
                 }).fail(function () {
-                    bootbox.alert("<?= gettext("Sorry, we are unable to process your request at this pint in time.")?>");
+                    bootbox.alert("<?= gettext("Sorry, we are unable to process your request at this point in time.")?>");
                 });
             } else {
                 bootbox.alert("<?= gettext("Login Name is Required")?>");
