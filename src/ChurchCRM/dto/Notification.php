@@ -58,10 +58,11 @@ class Notification
     {
       $email = new NotificationEmail($emailaddresses,$this->person->getFullName());
       $emailStatus=$email->send();
+      return $emailStatus;
     } catch (Exception $ex) {
       return false;
     }
-    return true;
+    
   }
   
   private function sendSMS()
@@ -79,7 +80,7 @@ class Notification
               'text' => 'Notification for ' . $this->person->getFullName()
           ]);
         }
-        return true;
+        return $message;
       } catch (Exception $ex) {
         return false;
       }
@@ -112,12 +113,12 @@ class Notification
     }
     if (SystemConfig::hasValidSMSServerSettings())
     {
-      $send = $this->sendSMS();
+      $send = (boolean)$this->sendSMS();
       array_push($methods,"sms: ".$send);
     }
     if(SystemConfig::hasValidOpenLPSerrings())
     {
-      $send = $this->sendProjector();
+      $send = (boolean)($this->sendProjector());
       array_push($methods,"projector: ".$send);
     }
     $sendStatus = [
