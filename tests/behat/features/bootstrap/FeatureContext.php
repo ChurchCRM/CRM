@@ -32,4 +32,18 @@ class FeatureContext extends MinkContext
       $this->fillField('PasswordBox', $password);
       $this->pressButton('Login');
     }
+    
+      /**
+     * @Then /^(?:|I )click (?:on |)(?:|the )"([^"]*)"(?:|.*)$/
+     */
+    public
+    function iClickOn($arg1)
+    {
+        $findName = $this->getSession()->getPage()->find("css", $arg1);
+        if (!$findName) {
+            throw new Exception($arg1 . " could not be found");
+        } else {
+            $findName->click();
+        }
+    }
 }
