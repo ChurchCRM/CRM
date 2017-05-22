@@ -128,6 +128,34 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-validator/dist/validator.min.js'],
                         dest: 'src/skin/bootstrap-validator/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/jquery-steps/build/jquery.steps.min.js', 'node_modules/jquery-steps/demo/css/jquery.steps.css'],
+                        dest: 'src/skin/external/jquery.steps/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/jquery-validation/dist/jquery.validate.min.js'],
+                        dest: 'src/skin/external/jquery-validation/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/i18next/dist/umd/i18next.min.js'],
+                        dest: 'src/skin/i18next/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/i18next-xhr-backend/dist/umd/i18nextXHRBackend.min.js'],
+                        dest: 'src/skin/i18next/'
                     }
                 ]
             }
@@ -359,8 +387,19 @@ module.exports = function (grunt) {
                 download: {
                     project_id: '<%= poeditor.options.project_id %>',
                     filters: ["translated"],
+                    tags: '<%= package.version %>',
                     type: 'mo', // export type (check out the doc)
                     dest: 'src/locale/?/LC_MESSAGES/messages.mo'
+                    // grunt style dest files
+                }
+            },
+            getJSTranslations: {
+                download: {
+                    project_id: '<%= poeditor.options.project_id %>',
+                    filters: ["translated"],
+                    tags: '<%= package.version %>',
+                    type: 'key_value_json', // export type (check out the doc)
+                    dest: 'src/locale/?/LC_MESSAGES/messages.js'
                     // grunt style dest files
                 }
             },
@@ -405,7 +444,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('updateFromPOeditor', 'Description of the task', function (target) {
-        grunt.config('clean', {pofiles: ["src/locale/*/**/*.po", "src/locale/*/**/*.mo"]});
+        grunt.config('clean', {pofiles: ["src/locale/*/**/*.po", "src/locale/*/**/*.mo", "src/locale/*/**/*.js"]});
         grunt.task.run(['clean:pofiles']);
         grunt.loadNpmTasks('grunt-poeditor-ab');
         grunt.task.run(['poeditor']);

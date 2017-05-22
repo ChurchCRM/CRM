@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 if (file_exists('Include/Config.php')) {
     require_once 'Include/Config.php';
 } else {
-    header('Location: Setup.php');
+    header('Location: setup');
     exit();
 }
 

@@ -5,7 +5,16 @@ $("document").ready(function(){
     $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
     $(".initials-image").initial();
+    i18next
+     .use(i18nextXHRBackend)
+     .init(
+     {
+        backend: {
+          loadPath: window.CRM.root + '/locale/'+window.CRM.locale+'/LC_Messages/messages.js'
+        }
+     });
 });
+
 
 function bindEventListeners() {
     $(".multiSearch").select2({

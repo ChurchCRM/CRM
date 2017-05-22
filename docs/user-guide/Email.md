@@ -20,7 +20,7 @@ The recommended method for mass emailing your members is via MailChimp.
 
 - You must first signup and generate an api key via _Mailchimp_ http://kb.mailchimp.com/accounts/management/about-api-keys
 
-- Add Mailchimp API key to `mailChimpApiKey` under _"Edit General Settings"_ accessible in the ⚙ (gear) menu.
+- Add Mailchimp API key to `sMailChimpApiKey` under _"Edit General Settings"_ accessible in the ⚙ (gear) menu.
 
 - Enable newsletter under _"Family View"_ for each family that wishes to be part of the Newsletter
 
