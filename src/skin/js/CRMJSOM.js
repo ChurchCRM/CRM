@@ -299,11 +299,13 @@
       }
     }
 
-    $(document).ajaxError(function (evt, xhr, settings) {
+    $(document).ajaxError(function (evt, xhr, settings,errortext) {
         try {
             var CRMResponse = JSON.parse(xhr.responseText);
             window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
-        } catch(err) {}
+        } catch(err) {
+          window.CRM.DisplayErrorMessage(settings.url,{"message":errortext});
+        }
     });
 
     function LimitTextSize(theTextArea, size) {
