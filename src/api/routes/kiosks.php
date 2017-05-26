@@ -2,12 +2,13 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\KioskDeviceQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/kiosks', function () {
 
     $this->get('/', function ($request, $response, $args) {
         $Kiosks = KioskDeviceQuery::create()
-                ->joinWithKioskAssignment(\Propel\Runtime\ActiveQuery\Criteria::LEFT_JOIN)
+                ->joinWithKioskAssignment(Criteria::LEFT_JOIN)
                 ->find();
         return $response->write($Kiosks->toJSON());
     });
@@ -21,7 +22,7 @@ $app->group('/kiosks', function () {
     
     $this->post('/{kioskId:[0-9]+}/reloadKiosk', function ($request, $response, $args) {
         $kioskId = $args['kioskId'];
-        $reload = \ChurchCRM\KioskDeviceQuery::create()
+        $reload = KioskDeviceQuery::create()
                 ->findOneById($kioskId)
                 ->reloadKiosk();
         return $response->write(json_encode($reload));
@@ -29,7 +30,7 @@ $app->group('/kiosks', function () {
     
      $this->post('/{kioskId:[0-9]+}/identifyKiosk', function ($request, $response, $args) {
         $kioskId = $args['kioskId'];
-        $identify = \ChurchCRM\KioskDeviceQuery::create()
+        $identify = KioskDeviceQuery::create()
                 ->findOneById($kioskId)
                 ->identifyKiosk();
         return $response->write(json_encode($identify));
@@ -37,7 +38,7 @@ $app->group('/kiosks', function () {
     
     $this->post('/{kioskId:[0-9]+}/acceptKiosk', function ($request, $response, $args) {
         $kioskId = $args['kioskId'];
-        $accept = \ChurchCRM\KioskDeviceQuery::create()
+        $accept = KioskDeviceQuery::create()
                 ->findOneById($kioskId)
                 ->setAccepted(true)
                 ->save();
@@ -47,15 +48,10 @@ $app->group('/kiosks', function () {
     $this->post('/{kioskId:[0-9]+}/setAssignment', function ($request, $response, $args) {
         $kioskId = $args['kioskId'];
         $input = (object) $request->getParsedBody();
-        $accept = \ChurchCRM\KioskDeviceQuery::create()
+        $accept = KioskDeviceQuery::create()
                 ->findOneById($kioskId)
                 ->setAssignment($input->assignmentType, $input->eventId);
         return $response->write(json_encode($accept));
     });
-    
-     
-    
-    
- 
 
 });

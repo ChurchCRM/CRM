@@ -77,7 +77,7 @@ class Notification
           $message = $client->message()->send([
               'to' => $recipient->getNumericCellPhone(),
               'from' => SystemConfig::getValue("sNexmoFromNumber"),
-              'text' => 'Notification for ' . $this->person->getFullName()
+              'text' => gettext('Notification for') . " " . $this->person->getFullName()
           ]);
         }
         return $message;

@@ -426,7 +426,6 @@ class Person extends BasePerson implements iPhoto
     
     public function getNumericCellPhone()
     {
-      //return $this->getCellPhone();
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
 

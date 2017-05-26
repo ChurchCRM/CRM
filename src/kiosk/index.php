@@ -35,7 +35,7 @@ if (isset($_COOKIE['kioskCookie'])) {
 
 if (!isset($_COOKIE['kioskCookie'])) {
     if ($windowOpen) {
-        $guid = MiscUtils::getGUID();
+        $guid = uniqid();
         setcookie("kioskCookie", $guid, 2147483647);
         $Kiosk = new \ChurchCRM\KioskDevice();
         $Kiosk->setGUIDHash(hash('sha256', $guid));
