@@ -245,6 +245,8 @@ CREATE TABLE `events_event` (
   `event_end` datetime NOT NULL,
   `inactive` int(1) NOT NULL default '0',
   `event_typename` varchar(40) NOT NULL default '',
+  `event_grpid` mediumint(9),
+
   PRIMARY KEY  (`event_id`),
   FULLTEXT KEY `event_txt` (`event_text`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
@@ -292,6 +294,8 @@ CREATE TABLE `event_types` (
   `type_defrecurDOM` char(2) NOT NULL default '0',
   `type_defrecurDOY` date NOT NULL default '2000-01-01',
   `type_active` int(1) NOT NULL default '1',
+  `type_grpid` mediumint(9),
+
   PRIMARY KEY  (`type_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=3 ;
 
@@ -597,7 +601,8 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 
   (80, 'report', 'root', 1, 'Data/Reports', 'Data/Reports', '', '', 'bAll', NULL, 0, 0, NULL, 1, 9, 'fa-file-pdf-o'),
   (81, 'reportmenu', 'report', 0, 'Reports Menu', 'Reports Menu', 'ReportList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-  (82, 'querymenu', 'report', 0, 'Query Menu', 'Query Menu', 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL);
+  (82, 'querymenu', 'report', 0, 'Query Menu', 'Query Menu', 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+  (83, 'kioskmanager', 'root', 0, 'Kiosk Manager', 'Kiosk Manager', 'KioskManager.php', '', 'bAll', NULL, 0, 0, NULL, 1, 10, 'fa-laptop');
 
 -- --------------------------------------------------------
 
@@ -1247,6 +1252,30 @@ CREATE TABLE `egive_egv` (
   `egv_EnteredBy` smallint(6) NOT NULL default '0',
   `egv_EditedBy` smallint(6) NOT NULL default '0'
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `kioskdevice_kdev` ( 
+  `kdev_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `kdev_GUIDHash` char(64) DEFAULT NULL,
+  `kdev_Name` varchar(50) DEFAULT NULL,
+  `kdev_deviceType` mediumint(9) NOT NULL DEFAULT 0,
+  `kdev_lastHeartbeat` TIMESTAMP,
+  `kdev_Accepted` BOOLEAN,
+  `kdev_PendingCommands` varchar(50),
+
+  PRIMARY KEY  (`kdev_ID`),
+  UNIQUE KEY `kdev_ID` (`kdev_ID`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `kioskassginment_kasm` ( 
+  `kasm_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `kasm_kdevId` mediumint(9) DEFAULT NULL,
+  `kasm_AssignmentType` mediumint(9) DEFAULT NULL,
+`kasm_EventId` mediumint(9) DEFAULT 0,
+
+  PRIMARY KEY  (`kasm_ID`),
+  UNIQUE KEY `kasm_ID` (`kasm_ID`)
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
 
 
 CREATE TABLE `tokens` (

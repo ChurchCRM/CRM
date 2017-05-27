@@ -423,5 +423,10 @@ class Person extends BasePerson implements iPhoto
 
         return parent::preDelete($con);
     }
+    
+    public function getNumericCellPhone()
+    {
+      return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
+    }
 
 }
