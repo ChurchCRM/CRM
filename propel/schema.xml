@@ -233,15 +233,15 @@
     <table name="group_grp" idMethod="native" phpName="Group" description="This contains the name and description for each group, as well as foreign keys to the list of group roles">
         <column name="grp_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
-        <column name="grp_Type" phpName="Type" type="TINYINT" required="true" defaultValue="0"/>
+        <column name="grp_Type" phpName="Type" type="TINYINT" required="true" defaultValue="0" description="The group type.  This is defined in list_lst.OptionId where lst_ID=3"/>
         <column name="grp_RoleListID" phpName="RoleListId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
-                required="true" defaultValue="0"/>
-        <column name="grp_DefaultRole" phpName="DefaultRole" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+                required="true" defaultValue="0" description="The lst_ID containing the names of the roles for this group"/>
+        <column name="grp_DefaultRole" phpName="DefaultRole" type="SMALLINT" size="9" required="true" defaultValue="0" description="The ID of the default role in this group's RoleList" />
         <column name="grp_Name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <column name="grp_Description" phpName="Description" type="LONGVARCHAR"/>
         <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="BOOLEAN" defaultValue="0"/>
         <column name="grp_active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
-        <column name="grp_include_email_export" phpName="IncludeInEmailExport" type="BOOLEAN" size="1" required="true"/>
+        <column name="grp_include_email_export" phpName="IncludeInEmailExport" type="BOOLEAN" size="1" required="true" description="Should members of this group be included in MailChimp Export"/>
         <foreign-key foreignTable="list_lst">
             <reference local="grp_RoleListID" foreign="lst_ID"/>
             <reference local="grp_Type" foreign="lst_OptionID"/>
@@ -602,10 +602,10 @@
     </table>
 
     <table name="list_lst" idMethod="native" phpName="ListOption" description="This table stores the options for most of the drop down lists in churchCRM, including person classifications, family roles, group types, group roles, group-specific property types, and custom field value lists.">
-        <column name="lst_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" />
-        <column name="lst_OptionID" phpName="OptionId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" />
-        <column name="lst_OptionSequence" phpName="OptionSequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0" />
-        <column name="lst_OptionName" phpName="OptionName" type="VARCHAR" size="50" required="true" defaultValue=""/>
+        <column name="lst_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" description="The ID of the list.  Since this is a composite primary key, there may be multiple List IDs"/>
+        <column name="lst_OptionID" phpName="OptionId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" description="The ID of the option in this list.  ***List ID + List Option ID must be unique***"/>
+        <column name="lst_OptionSequence" phpName="OptionSequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0" description="The order in which to display items in this list" />
+        <column name="lst_OptionName" phpName="OptionName" type="VARCHAR" size="50" required="true" defaultValue="" description="The actual value for this list option"/>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
