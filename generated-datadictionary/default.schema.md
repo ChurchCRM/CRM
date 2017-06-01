@@ -1,4 +1,5 @@
-# Table of Contents <a name="TOC"></a>
+<a name="TOC"></a>
+# Table of Contents
 1. [autopayment_aut](#autopayment-aut)
 2. [canvassdata_can](#canvassdata-can)
 3. [config_cfg](#config-cfg)
@@ -40,637 +41,720 @@
 39. [version_ver](#version-ver)
 40. [volunteeropportunity_vol](#volunteeropportunity-vol)
 41. [whycame_why](#whycame-why)
-## Table: autopayment_aut<a name="autopayment-aut"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|aut_ID|Id|YES|SMALLINT|9||
-|aut_FamID|Familyid|NO|SMALLINT|9||
-|aut_EnableBankDraft|EnableBankDraft|NO|BOOLEAN|1||
-|aut_EnableCreditCard|EnableCreditCard|NO|BOOLEAN|1||
-|aut_NextPayDate|NextPayDate|NO|DATE|||
-|aut_FYID|Fyid|NO|SMALLINT|9||
-|aut_Amount|Amount|NO|DECIMAL|6||
-|aut_Interval|Interval|NO|TINYINT|3||
-|aut_Fund|Fund|NO|SMALLINT|6||
-|aut_FirstName|FirstName|NO|VARCHAR|50||
-|aut_LastName|LastName|NO|VARCHAR|50||
-|aut_Address1|Address1|NO|VARCHAR|255||
-|aut_Address2|Address2|NO|VARCHAR|255||
-|aut_City|City|NO|VARCHAR|50||
-|aut_State|State|NO|VARCHAR|50||
-|aut_Zip|Zip|NO|VARCHAR|50||
-|aut_Country|Country|NO|VARCHAR|50||
-|aut_Phone|Phone|NO|VARCHAR|30||
-|aut_Email|Email|NO|VARCHAR|100||
-|aut_CreditCard|CreditCard|NO|VARCHAR|50||
-|aut_ExpMonth|ExpMonth|NO|VARCHAR|2||
-|aut_ExpYear|ExpYear|NO|VARCHAR|4||
-|aut_BankName|BankName|NO|VARCHAR|50||
-|aut_Route|Route|NO|VARCHAR|30||
-|aut_Account|Account|NO|VARCHAR|30||
-|aut_DateLastEdited|DateLastEdited|NO|TIMESTAMP|||
-|aut_EditedBy|Editedby|NO|SMALLINT|5||
-|aut_Serial|Serial|NO|SMALLINT|9||
-|aut_CreditCardVanco|Creditcardvanco|NO|VARCHAR|50||
-|aut_AccountVanco|AccountVanco|NO|VARCHAR|50||
-## Table: canvassdata_can<a name="canvassdata-can"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|can_ID|Id|YES|SMALLINT|9||
-|can_famID|FamilyId|NO|SMALLINT|9||
-|can_Canvasser|Canvasser|NO|SMALLINT|9||
-|can_FYID|Fyid|NO|SMALLINT|9||
-|can_date|Date|NO|DATE|||
-|can_Positive|Positive|NO|LONGVARCHAR|||
-|can_Critical|Critical|NO|LONGVARCHAR|||
-|can_Insightful|Insightful|NO|LONGVARCHAR|||
-|can_Financial|Financial|NO|LONGVARCHAR|||
-|can_Suggestion|Suggestion|NO|LONGVARCHAR|||
-|can_NotInterested|NotInterested|NO|BOOLEAN|1||
-|can_WhyNotInterested|WhyNotInterested|NO|LONGVARCHAR|||
-## Table: config_cfg<a name="config-cfg"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|cfg_id|Id|YES|INTEGER|||
-|cfg_name|Name|NO|VARCHAR|50||
-|cfg_value|Value|NO|LONGVARCHAR|||
-## Table: deposit_dep<a name="deposit-dep"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|dep_ID|Id|YES|SMALLINT|9||
-|dep_Date|Date|NO|DATE|||
-|dep_Comment|Comment|NO|LONGVARCHAR|||
-|dep_EnteredBy|Enteredby|NO|SMALLINT|9||
-|dep_Closed|Closed|NO|BOOLEAN|1||
-|dep_Type|Type|NO|CHAR|||
-## Table: donateditem_di<a name="donateditem-di"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|di_ID|Id|YES|SMALLINT|9||
-|di_item|Item|NO|VARCHAR|32||
-|di_FR_ID|FrId|NO|SMALLINT|9||
-|di_donor_ID|DonorId|NO|SMALLINT|9||
-|di_buyer_ID|BuyerId|NO|SMALLINT|9||
-|di_multibuy|Multibuy|NO|SMALLINT|1||
-|di_title|Title|NO|VARCHAR|128||
-|di_description|Description|NO|LONGVARCHAR|||
-|di_sellprice|Sellprice|NO|DECIMAL|8||
-|di_estprice|Estprice|NO|DECIMAL|8||
-|di_minimum|Minimum|NO|DECIMAL|8||
-|di_materialvalue|MaterialValue|NO|DECIMAL|8||
-|di_EnteredBy|Enteredby|NO|SMALLINT|5||
-|di_EnteredDate|Entereddate|NO|DATE|||
-|di_picture|Picture|NO|LONGVARCHAR|||
-## Table: donationfund_fun<a name="donationfund-fun"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|fun_ID|Id|YES|TINYINT|3||
-|fun_Active|Active|NO|CHAR|||
-|fun_Name|Name|NO|VARCHAR|30||
-|fun_Description|Description|NO|VARCHAR|100||
-## Table: egive_egv<a name="egive-egv"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|egv_egiveID|EgiveId|NO|VARCHAR|16||
-|egv_famID|FamilyId|NO|INTEGER|||
-|egv_DateEntered|DateEntered|NO|TIMESTAMP|||
-|egv_DateLastEdited|DateLastEdited|NO|TIMESTAMP|||
-|egv_EnteredBy|EnteredBy|NO|SMALLINT|||
-|egv_EditedBy|EditedBy|NO|SMALLINT|||
-## Table: email_message_pending_emp<a name="email-message-pending-emp"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|emp_usr_id|UsrId|NO|SMALLINT|9||
-|emp_to_send|ToSend|NO|SMALLINT|5||
-|emp_subject|Subject|NO|VARCHAR|128||
-|emp_message|Message|NO|LONGVARCHAR|||
-|emp_attach_name|AttachName|NO|LONGVARCHAR|||
-|emp_attach|Attach|NO|BOOLEAN|1||
-## Table: email_recipient_pending_erp<a name="email-recipient-pending-erp"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|erp_id|Id|NO|SMALLINT|5||
-|erp_usr_id|UsrId|NO|SMALLINT|9||
-|erp_num_attempt|NumAttempt|NO|SMALLINT|5||
-|erp_failed_time|FailedTime|NO|TIMESTAMP|||
-|erp_email_address|EmailAddress|NO|VARCHAR|50||
-## Table: event_attend<a name="event-attend"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|attend_id|AttendId|YES|INTEGER|||
-|event_id|EventId|NO|INTEGER|||
-|person_id|PersonId|NO|INTEGER|||
-|checkin_date|CheckinDate|NO|TIMESTAMP|||
-|checkin_id|CheckinId|NO|INTEGER|||
-|checkout_date|CheckoutDate|NO|TIMESTAMP|||
-|checkout_id|CheckoutId|NO|INTEGER|||
-## Table: event_types<a name="event-types"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|type_id|Id|YES|INTEGER|||
-|type_name|Name|NO|VARCHAR|255||
-|type_defstarttime|DefStartTime|NO|TIME|||
-|type_defrecurtype|DefRecurType|NO|CHAR|||
-|type_defrecurDOW|DefRecurDOW|NO|CHAR|||
-|type_defrecurDOM|DefRecurDOM|NO|CHAR|2||
-|type_defrecurDOY|DefRecurDOY|NO|DATE|||
-|type_active|Active|NO|INTEGER|1||
-|type_grpid|GroupId|NO|INTEGER|||
-## Table: eventcountnames_evctnm<a name="eventcountnames-evctnm"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|evctnm_countid|Id|NO|INTEGER|5||
-|evctnm_eventtypeid|TypeId|NO|SMALLINT|5||
-|evctnm_countname|Name|NO|VARCHAR|20||
-|evctnm_notes|Notes|NO|VARCHAR|20||
-## Table: eventcounts_evtcnt<a name="eventcounts-evtcnt"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|evtcnt_eventid|EvtcntEventid|YES|INTEGER|5||
-|evtcnt_countid|EvtcntCountid|YES|INTEGER|5||
-|evtcnt_countname|EvtcntCountname|NO|VARCHAR|20||
-|evtcnt_countcount|EvtcntCountcount|NO|INTEGER|6||
-|evtcnt_notes|EvtcntNotes|NO|VARCHAR|20||
-## Table: events_event<a name="events-event"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|event_id|Id|YES|INTEGER|||
-|event_type|Type|NO|INTEGER|||
-|event_title|Title|NO|VARCHAR|255||
-|event_desc|Desc|NO|VARCHAR|255||
-|event_text|Text|NO|LONGVARCHAR|||
-|event_start|Start|NO|TIMESTAMP|||
-|event_end|End|NO|TIMESTAMP|||
-|inactive|InActive|NO|INTEGER|1||
-|event_typename|TypeName|NO|VARCHAR|40||
-|event_grpid|GroupId|NO|INTEGER|||
-## Table: family_custom<a name="family-custom"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|fam_ID|FamId|YES|SMALLINT|9||
-## Table: family_custom_master<a name="family-custom-master"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|fam_custom_Order|CustomOrder|NO|SMALLINT|||
-|fam_custom_Field|CustomField|NO|VARCHAR|5||
-|fam_custom_Name|CustomName|NO|VARCHAR|40||
-|fam_custom_Special|CustomSpecial|NO|SMALLINT|8||
-|fam_custom_Side|CustomSide|NO|CHAR|||
-|fam_custom_FieldSec|CustomFieldSec|NO|TINYINT|||
-|type_ID|TypeId|NO|TINYINT|||
-## Table: family_fam<a name="family-fam"></a>
+<a name="autopayment-aut"></a>
+## Table: autopayment_aut
 [Table of Contents](#TOC)
 
 ### Description:
-Table of Families
+This contains information for automatic electronic donations or payments for events
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|fam_ID|Id|YES|SMALLINT|9||
-|fam_Name|Name|NO|VARCHAR|50||
-|fam_Address1|Address1|NO|VARCHAR|255||
-|fam_Address2|Address2|NO|VARCHAR|255||
-|fam_City|City|NO|VARCHAR|50||
-|fam_State|State|NO|VARCHAR|50||
-|fam_Zip|Zip|NO|VARCHAR|50||
-|fam_Country|Country|NO|VARCHAR|50||
-|fam_HomePhone|HomePhone|NO|VARCHAR|30||
-|fam_WorkPhone|WorkPhone|NO|VARCHAR|30||
-|fam_CellPhone|CellPhone|NO|VARCHAR|30||
-|fam_Email|Email|NO|VARCHAR|100||
-|fam_WeddingDate|Weddingdate|NO|DATE|||
-|fam_DateEntered|DateEntered|NO|TIMESTAMP|||
-|fam_DateLastEdited|DateLastEdited|NO|TIMESTAMP|||
-|fam_EnteredBy|EnteredBy|NO|SMALLINT|5||
-|fam_EditedBy|EditedBy|NO|SMALLINT|5||
-|fam_scanCheck|ScanCheck|NO|LONGVARCHAR|||
-|fam_scanCredit|ScanCredit|NO|LONGVARCHAR|||
-|fam_SendNewsLetter|SendNewsletter|NO|CHAR|||
-|fam_DateDeactivated|DateDeactivated|NO|DATE|||
-|fam_OkToCanvass|OkToCanvass|NO|CHAR|||
-|fam_Canvasser|Canvasser|NO|SMALLINT|5||
-|fam_Latitude|Latitude|NO|DOUBLE|||
-|fam_Longitude|Longitude|NO|DOUBLE|||
-|fam_Envelope|Envelope|NO|SMALLINT|9||
-## Table: fundraiser_fr<a name="fundraiser-fr"></a>
+|aut_ID|Id| [PK]|SMALLINT|9||
+|aut_FamID|Familyid||SMALLINT|9||
+|aut_EnableBankDraft|EnableBankDraft||BOOLEAN|1||
+|aut_EnableCreditCard|EnableCreditCard||BOOLEAN|1||
+|aut_NextPayDate|NextPayDate||DATE|||
+|aut_FYID|Fyid||SMALLINT|9||
+|aut_Amount|Amount||DECIMAL|6||
+|aut_Interval|Interval||TINYINT|3||
+|aut_Fund|Fund||SMALLINT|6||
+|aut_FirstName|FirstName||VARCHAR|50||
+|aut_LastName|LastName||VARCHAR|50||
+|aut_Address1|Address1||VARCHAR|255||
+|aut_Address2|Address2||VARCHAR|255||
+|aut_City|City||VARCHAR|50||
+|aut_State|State||VARCHAR|50||
+|aut_Zip|Zip||VARCHAR|50||
+|aut_Country|Country||VARCHAR|50||
+|aut_Phone|Phone||VARCHAR|30||
+|aut_Email|Email||VARCHAR|100||
+|aut_CreditCard|CreditCard||VARCHAR|50||
+|aut_ExpMonth|ExpMonth||VARCHAR|2||
+|aut_ExpYear|ExpYear||VARCHAR|4||
+|aut_BankName|BankName||VARCHAR|50||
+|aut_Route|Route||VARCHAR|30||
+|aut_Account|Account||VARCHAR|30||
+|aut_DateLastEdited|DateLastEdited||TIMESTAMP|||
+|aut_EditedBy|Editedby||SMALLINT|5||
+|aut_Serial|Serial||SMALLINT|9||
+|aut_CreditCardVanco|Creditcardvanco||VARCHAR|50||
+|aut_AccountVanco|AccountVanco||VARCHAR|50||
+<a name="canvassdata-can"></a>
+## Table: canvassdata_can
+[Table of Contents](#TOC)
+
+### Description:
+this contains information about the results of canvassing families
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|can_ID|Id| [PK]|SMALLINT|9||
+|can_famID|FamilyId||SMALLINT|9||
+|can_Canvasser|Canvasser||SMALLINT|9||
+|can_FYID|Fyid||SMALLINT|9||
+|can_date|Date||DATE|||
+|can_Positive|Positive||LONGVARCHAR|||
+|can_Critical|Critical||LONGVARCHAR|||
+|can_Insightful|Insightful||LONGVARCHAR|||
+|can_Financial|Financial||LONGVARCHAR|||
+|can_Suggestion|Suggestion||LONGVARCHAR|||
+|can_NotInterested|NotInterested||BOOLEAN|1||
+|can_WhyNotInterested|WhyNotInterested||LONGVARCHAR|||
+<a name="config-cfg"></a>
+## Table: config_cfg
+[Table of Contents](#TOC)
+
+### Description:
+This table contains all non-default configuration parameter names and values
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|cfg_id|Id| [PK]|INTEGER|||
+|cfg_name|Name||VARCHAR|50||
+|cfg_value|Value||LONGVARCHAR|||
+<a name="deposit-dep"></a>
+## Table: deposit_dep
+[Table of Contents](#TOC)
+
+### Description:
+This records deposits / payments
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|dep_ID|Id| [PK]|SMALLINT|9||
+|dep_Date|Date||DATE|||
+|dep_Comment|Comment||LONGVARCHAR|||
+|dep_EnteredBy|Enteredby||SMALLINT|9||
+|dep_Closed|Closed||BOOLEAN|1||
+|dep_Type|Type||CHAR|||
+<a name="donateditem-di"></a>
+## Table: donateditem_di
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|fr_ID|Id|YES|SMALLINT|9||
-|fr_date|Date|NO|DATE|||
-|fr_title|Title|NO|VARCHAR|128||
-|fr_description|Description|NO|LONGVARCHAR|||
-|fr_EnteredBy|EnteredBy|NO|SMALLINT|5||
-|fr_EnteredDate|EnteredDate|NO|DATE|||
-## Table: group_grp<a name="group-grp"></a>
+|di_ID|Id| [PK]|SMALLINT|9||
+|di_item|Item||VARCHAR|32||
+|di_FR_ID|FrId||SMALLINT|9||
+|di_donor_ID|DonorId||SMALLINT|9||
+|di_buyer_ID|BuyerId||SMALLINT|9||
+|di_multibuy|Multibuy||SMALLINT|1||
+|di_title|Title||VARCHAR|128||
+|di_description|Description||LONGVARCHAR|||
+|di_sellprice|Sellprice||DECIMAL|8||
+|di_estprice|Estprice||DECIMAL|8||
+|di_minimum|Minimum||DECIMAL|8||
+|di_materialvalue|MaterialValue||DECIMAL|8||
+|di_EnteredBy|Enteredby||SMALLINT|5||
+|di_EnteredDate|Entereddate||DATE|||
+|di_picture|Picture||LONGVARCHAR|||
+<a name="donationfund-fun"></a>
+## Table: donationfund_fun
+[Table of Contents](#TOC)
+
+### Description:
+This contains the defined donation funds
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|fun_ID|Id| [PK]|TINYINT|3||
+|fun_Active|Active||CHAR|||
+|fun_Name|Name||VARCHAR|30||
+|fun_Description|Description||VARCHAR|100||
+<a name="egive-egv"></a>
+## Table: egive_egv
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|grp_ID|Id|YES|SMALLINT|8||
-|grp_Type|Type|NO|TINYINT|||
-|grp_RoleListID|RoleListId|NO|SMALLINT|8||
-|grp_DefaultRole|DefaultRole|NO|SMALLINT|9||
-|grp_Name|Name|NO|VARCHAR|50||
-|grp_Description|Description|NO|LONGVARCHAR|||
-|grp_hasSpecialProps|HasSpecialProps|NO|BOOLEAN|1||
-|grp_active|Active|NO|BOOLEAN|1||
-|grp_include_email_export|IncludeInEmailExport|NO|BOOLEAN|1||
-## Table: groupprop_master<a name="groupprop-master"></a>
+|egv_egiveID|EgiveId||VARCHAR|16||
+|egv_famID|FamilyId||INTEGER|||
+|egv_DateEntered|DateEntered||TIMESTAMP|||
+|egv_DateLastEdited|DateLastEdited||TIMESTAMP|||
+|egv_EnteredBy|EnteredBy||SMALLINT|||
+|egv_EditedBy|EditedBy||SMALLINT|||
+<a name="email-message-pending-emp"></a>
+## Table: email_message_pending_emp
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|grp_ID|Id|NO|SMALLINT|9||
-|prop_ID|Id|NO|TINYINT|3||
-|prop_Field|Field|NO|VARCHAR|5||
-|prop_Name|Name|NO|VARCHAR|40||
-|prop_Description|Description|NO|VARCHAR|60||
-|type_ID|TypeId|NO|SMALLINT|5||
-|prop_Special|Special|NO|SMALLINT|9||
-|prop_PersonDisplay|PersonDisplay|NO|CHAR|||
-## Table: kioskassginment_kasm<a name="kioskassginment-kasm"></a>
+|emp_usr_id|UsrId||SMALLINT|9||
+|emp_to_send|ToSend||SMALLINT|5||
+|emp_subject|Subject||VARCHAR|128||
+|emp_message|Message||LONGVARCHAR|||
+|emp_attach_name|AttachName||LONGVARCHAR|||
+|emp_attach|Attach||BOOLEAN|1||
+<a name="email-recipient-pending-erp"></a>
+## Table: email_recipient_pending_erp
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|kasm_ID|Id|YES|INTEGER|9||
-|kasm_kdevId|KioskId|NO|INTEGER|9||
-|kasm_AssignmentType|AssignmentType|NO|INTEGER|9||
-|kasm_EventId|EventId|NO|INTEGER|9||
-## Table: kioskdevice_kdev<a name="kioskdevice-kdev"></a>
+|erp_id|Id||SMALLINT|5||
+|erp_usr_id|UsrId||SMALLINT|9||
+|erp_num_attempt|NumAttempt||SMALLINT|5||
+|erp_failed_time|FailedTime||TIMESTAMP|||
+|erp_email_address|EmailAddress||VARCHAR|50||
+<a name="event-attend"></a>
+## Table: event_attend
+[Table of Contents](#TOC)
+
+### Description:
+this indicates which people attended which events
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|attend_id|AttendId| [PK]|INTEGER|||
+|event_id|EventId|[FK] [events_event](#events-event)|INTEGER|||
+|person_id|PersonId|[FK] [person_per](#person-per)|INTEGER|||
+|checkin_date|CheckinDate||TIMESTAMP|||
+|checkin_id|CheckinId||INTEGER|||
+|checkout_date|CheckoutDate||TIMESTAMP|||
+|checkout_id|CheckoutId||INTEGER|||
+<a name="event-types"></a>
+## Table: event_types
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|kdev_ID|Id|YES|INTEGER|9||
-|kdev_GUIDHash|GUIDHash|NO|VARCHAR|36||
-|kdev_Name|Name|NO|VARCHAR|50||
-|kdev_deviceType|DeviceType|NO|LONGVARCHAR|||
-|kdev_lastHeartbeat|LastHeartbeat|NO|LONGVARCHAR|||
-|kdev_Accepted|Accepted|NO|BOOLEAN|1||
-|kdev_PendingCommands|PendingCommands|NO|LONGVARCHAR|||
-## Table: list_lst<a name="list-lst"></a>
+|type_id|Id| [PK]|INTEGER|||
+|type_name|Name||VARCHAR|255||
+|type_defstarttime|DefStartTime||TIME|||
+|type_defrecurtype|DefRecurType||CHAR|||
+|type_defrecurDOW|DefRecurDOW||CHAR|||
+|type_defrecurDOM|DefRecurDOM||CHAR|2||
+|type_defrecurDOY|DefRecurDOY||DATE|||
+|type_active|Active||INTEGER|1||
+|type_grpid|GroupId|[FK] [group_grp](#group-grp)|INTEGER|||
+<a name="eventcountnames-evctnm"></a>
+## Table: eventcountnames_evctnm
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|lst_ID|Id|YES|SMALLINT|8||
-|lst_OptionID|OptionId|YES|SMALLINT|8||
-|lst_OptionSequence|OptionSequence|NO|TINYINT|3||
-|lst_OptionName|OptionName|NO|VARCHAR|50||
-## Table: menuconfig_mcf<a name="menuconfig-mcf"></a>
+|evctnm_countid|Id||INTEGER|5||
+|evctnm_eventtypeid|TypeId||SMALLINT|5||
+|evctnm_countname|Name||VARCHAR|20||
+|evctnm_notes|Notes||VARCHAR|20||
+<a name="eventcounts-evtcnt"></a>
+## Table: eventcounts_evtcnt
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|mid|Id|YES|INTEGER|||
-|name|Name|NO|VARCHAR|20||
-|parent|Parent|NO|VARCHAR|20||
-|ismenu|Menu|NO|BOOLEAN|1||
-|content_english|ContentEnglish|NO|VARCHAR|100||
-|content|Content|NO|VARCHAR|100||
-|uri|URI|NO|VARCHAR|255||
-|statustext|Status|NO|VARCHAR|255||
-|security_grp|SecurityGroup|NO|VARCHAR|50||
-|session_var|SessionVar|NO|VARCHAR|50||
-|session_var_in_text|SessionVarInText|NO|BOOLEAN|1||
-|session_var_in_uri|SessionVarInURI|NO|BOOLEAN|1||
-|url_parm_name|URLParmName|NO|VARCHAR|50||
-|active|Active|NO|BOOLEAN|1||
-|sortorder|SortOrder|NO|TINYINT|3||
-|icon|Icon|NO|VARCHAR|50||
-## Table: note_nte<a name="note-nte"></a>
+|evtcnt_eventid|EvtcntEventid| [PK]|INTEGER|5||
+|evtcnt_countid|EvtcntCountid| [PK]|INTEGER|5||
+|evtcnt_countname|EvtcntCountname||VARCHAR|20||
+|evtcnt_countcount|EvtcntCountcount||INTEGER|6||
+|evtcnt_notes|EvtcntNotes||VARCHAR|20||
+<a name="events-event"></a>
+## Table: events_event
+[Table of Contents](#TOC)
+
+### Description:
+This contains events
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|event_id|Id| [PK]|INTEGER|||
+|event_type|Type||INTEGER|||
+|event_title|Title||VARCHAR|255||
+|event_desc|Desc||VARCHAR|255||
+|event_text|Text||LONGVARCHAR|||
+|event_start|Start||TIMESTAMP|||
+|event_end|End||TIMESTAMP|||
+|inactive|InActive||INTEGER|1||
+|event_typename|TypeName||VARCHAR|40||
+|event_grpid|GroupId|[FK] [group_grp](#group-grp)|INTEGER|||
+<a name="family-custom"></a>
+## Table: family_custom
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|nte_ID|Id|YES|SMALLINT|8||
-|nte_per_ID|PerId|NO|SMALLINT|8||
-|nte_fam_ID|FamId|NO|SMALLINT|8||
-|nte_Private|Private|NO|SMALLINT|8||
-|nte_Text|Text|NO|LONGVARCHAR|||
-|nte_DateEntered|DateEntered|NO|TIMESTAMP|||
-|nte_DateLastEdited|DateLastEdited|NO|TIMESTAMP|||
-|nte_EnteredBy|EnteredBy|NO|SMALLINT|8||
-|nte_EditedBy|EditedBy|NO|SMALLINT|8||
-|nte_Type|Type|NO|VARCHAR|50||
-## Table: person2group2role_p2g2r<a name="person-group-role-p-g-r"></a>
+|fam_ID|FamId| [PK]|SMALLINT|9||
+<a name="family-custom-master"></a>
+## Table: family_custom_master
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|p2g2r_per_ID|PersonId|YES|SMALLINT|8||
-|p2g2r_grp_ID|GroupId|YES|SMALLINT|8||
-|p2g2r_rle_ID|RoleId|NO|SMALLINT|8||
-## Table: person2volunteeropp_p2vo<a name="person-volunteeropp-p-vo"></a>
+|fam_custom_Order|CustomOrder||SMALLINT|||
+|fam_custom_Field|CustomField||VARCHAR|5||
+|fam_custom_Name|CustomName||VARCHAR|40||
+|fam_custom_Special|CustomSpecial||SMALLINT|8||
+|fam_custom_Side|CustomSide||CHAR|||
+|fam_custom_FieldSec|CustomFieldSec||TINYINT|||
+|type_ID|TypeId||TINYINT|||
+<a name="family-fam"></a>
+## Table: family_fam
+[Table of Contents](#TOC)
+
+### Description:
+This contains the main family data, including family name, family addresses, and family phone numbers
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|fam_ID|Id| [PK]|SMALLINT|9||
+|fam_Name|Name||VARCHAR|50||
+|fam_Address1|Address1||VARCHAR|255||
+|fam_Address2|Address2||VARCHAR|255||
+|fam_City|City||VARCHAR|50||
+|fam_State|State||VARCHAR|50||
+|fam_Zip|Zip||VARCHAR|50||
+|fam_Country|Country||VARCHAR|50||
+|fam_HomePhone|HomePhone||VARCHAR|30||
+|fam_WorkPhone|WorkPhone||VARCHAR|30||
+|fam_CellPhone|CellPhone||VARCHAR|30||
+|fam_Email|Email||VARCHAR|100||
+|fam_WeddingDate|Weddingdate||DATE|||
+|fam_DateEntered|DateEntered||TIMESTAMP|||
+|fam_DateLastEdited|DateLastEdited||TIMESTAMP|||
+|fam_EnteredBy|EnteredBy||SMALLINT|5||
+|fam_EditedBy|EditedBy||SMALLINT|5||
+|fam_scanCheck|ScanCheck||LONGVARCHAR|||
+|fam_scanCredit|ScanCredit||LONGVARCHAR|||
+|fam_SendNewsLetter|SendNewsletter||CHAR|||
+|fam_DateDeactivated|DateDeactivated||DATE|||
+|fam_OkToCanvass|OkToCanvass||CHAR|||
+|fam_Canvasser|Canvasser||SMALLINT|5||
+|fam_Latitude|Latitude||DOUBLE|||
+|fam_Longitude|Longitude||DOUBLE|||
+|fam_Envelope|Envelope||SMALLINT|9||
+<a name="fundraiser-fr"></a>
+## Table: fundraiser_fr
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|p2vo_ID|Id|YES|SMALLINT|9||
-|p2vo_per_ID|PersonId|NO|SMALLINT|9||
-|p2vo_vol_ID|VolunteerOpportunityId|NO|SMALLINT|9||
-## Table: person_custom<a name="person-custom"></a>
+|fr_ID|Id| [PK]|SMALLINT|9||
+|fr_date|Date||DATE|||
+|fr_title|Title||VARCHAR|128||
+|fr_description|Description||LONGVARCHAR|||
+|fr_EnteredBy|EnteredBy||SMALLINT|5||
+|fr_EnteredDate|EnteredDate||DATE|||
+<a name="group-grp"></a>
+## Table: group_grp
+[Table of Contents](#TOC)
+
+### Description:
+This contains the name and description for each group, as well as foreign keys to the list of group roles
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|grp_ID|Id| [PK]|SMALLINT|8||
+|grp_Type|Type|[FK] [list_lst](#list-lst)|TINYINT|||
+|grp_RoleListID|RoleListId|[FK] [list_lst](#list-lst)|SMALLINT|8||
+|grp_DefaultRole|DefaultRole||SMALLINT|9||
+|grp_Name|Name||VARCHAR|50||
+|grp_Description|Description||LONGVARCHAR|||
+|grp_hasSpecialProps|HasSpecialProps||BOOLEAN|1||
+|grp_active|Active||BOOLEAN|1||
+|grp_include_email_export|IncludeInEmailExport||BOOLEAN|1||
+<a name="groupprop-master"></a>
+## Table: groupprop_master
+[Table of Contents](#TOC)
+
+### Description:
+This contains definitions for the group-specific fields
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|grp_ID|Id||SMALLINT|9||
+|prop_ID|Id||TINYINT|3||
+|prop_Field|Field||VARCHAR|5||
+|prop_Name|Name||VARCHAR|40||
+|prop_Description|Description||VARCHAR|60||
+|type_ID|TypeId||SMALLINT|5||
+|prop_Special|Special||SMALLINT|9||
+|prop_PersonDisplay|PersonDisplay||CHAR|||
+<a name="kioskassginment-kasm"></a>
+## Table: kioskassginment_kasm
+[Table of Contents](#TOC)
+
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|kasm_ID|Id| [PK]|INTEGER|9||
+|kasm_kdevId|KioskId|[FK] [kioskdevice_kdev](#kioskdevice-kdev)|INTEGER|9||
+|kasm_AssignmentType|AssignmentType||INTEGER|9|The kiosk's current role.|
+|kasm_EventId|EventId|[FK] [events_event](#events-event)|INTEGER|9|Optional.  If the current role is for event check-in, populate this value|
+<a name="kioskdevice-kdev"></a>
+## Table: kioskdevice_kdev
+[Table of Contents](#TOC)
+
+### Description:
+This contains a list of all (un)registered kiosk devices
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|kdev_ID|Id| [PK]|INTEGER|9||
+|kdev_GUIDHash|GUIDHash||VARCHAR|36|SHA256 Hash of the GUID stored in the kiosk's cookie|
+|kdev_Name|Name||VARCHAR|50|Name of the kiosk|
+|kdev_deviceType|DeviceType||LONGVARCHAR||Kiosk device type|
+|kdev_lastHeartbeat|LastHeartbeat||LONGVARCHAR||Last time the kiosk sent a heartbeat|
+|kdev_Accepted|Accepted||BOOLEAN|1|Has the admin accepted the kiosk after initial registration?|
+|kdev_PendingCommands|PendingCommands||LONGVARCHAR||Commands waiting to be sent to the kiosk|
+<a name="list-lst"></a>
+## Table: list_lst
+[Table of Contents](#TOC)
+
+### Description:
+This table stores the options for most of the drop down lists in churchCRM, including person classifications, family roles, group types, group roles, group-specific property types, and custom field value lists.
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|lst_ID|Id| [PK]|SMALLINT|8||
+|lst_OptionID|OptionId| [PK]|SMALLINT|8||
+|lst_OptionSequence|OptionSequence||TINYINT|3||
+|lst_OptionName|OptionName||VARCHAR|50||
+<a name="menuconfig-mcf"></a>
+## Table: menuconfig_mcf
+[Table of Contents](#TOC)
+
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|mid|Id| [PK]|INTEGER|||
+|name|Name||VARCHAR|20||
+|parent|Parent||VARCHAR|20||
+|ismenu|Menu||BOOLEAN|1||
+|content_english|ContentEnglish||VARCHAR|100||
+|content|Content||VARCHAR|100||
+|uri|URI||VARCHAR|255||
+|statustext|Status||VARCHAR|255||
+|security_grp|SecurityGroup||VARCHAR|50||
+|session_var|SessionVar||VARCHAR|50||
+|session_var_in_text|SessionVarInText||BOOLEAN|1||
+|session_var_in_uri|SessionVarInURI||BOOLEAN|1||
+|url_parm_name|URLParmName||VARCHAR|50||
+|active|Active||BOOLEAN|1||
+|sortorder|SortOrder||TINYINT|3||
+|icon|Icon||VARCHAR|50||
+<a name="note-nte"></a>
+## Table: note_nte
+[Table of Contents](#TOC)
+
+### Description:
+Contains all person and family notes, including the date, time, and person who entered the note
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|nte_ID|Id| [PK]|SMALLINT|8||
+|nte_per_ID|PerId|[FK] [person_per](#person-per)|SMALLINT|8||
+|nte_fam_ID|FamId|[FK] [family_fam](#family-fam)|SMALLINT|8||
+|nte_Private|Private||SMALLINT|8||
+|nte_Text|Text||LONGVARCHAR|||
+|nte_DateEntered|DateEntered||TIMESTAMP|||
+|nte_DateLastEdited|DateLastEdited||TIMESTAMP|||
+|nte_EnteredBy|EnteredBy||SMALLINT|8||
+|nte_EditedBy|EditedBy||SMALLINT|8||
+|nte_Type|Type||VARCHAR|50||
+<a name="person-group-role-p-g-r"></a>
+## Table: person2group2role_p2g2r
+[Table of Contents](#TOC)
+
+### Description:
+This table stores the information of which people are in which groups, and what group role each person holds in that group
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|p2g2r_per_ID|PersonId|[FK] [person_per](#person-per)|SMALLINT|8||
+|p2g2r_grp_ID|GroupId|[FK] [group_grp](#group-grp)|SMALLINT|8||
+|p2g2r_rle_ID|RoleId||SMALLINT|8||
+<a name="person-volunteeropp-p-vo"></a>
+## Table: person2volunteeropp_p2vo
+[Table of Contents](#TOC)
+
+### Description:
+This table indicates which people are tied to which volunteer opportunities
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|p2vo_ID|Id| [PK]|SMALLINT|9||
+|p2vo_per_ID|PersonId||SMALLINT|9||
+|p2vo_vol_ID|VolunteerOpportunityId||SMALLINT|9||
+<a name="person-custom"></a>
+## Table: person_custom
 [Table of Contents](#TOC)
 
 ### Description:
 Person custom fields
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|per_ID|PerId|YES|SMALLINT|9||
-## Table: person_custom_master<a name="person-custom-master"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|custom_Order|CustomOrder|NO|SMALLINT|||
-|custom_Field|CustomField|NO|VARCHAR|5||
-|custom_Name|CustomName|NO|VARCHAR|40||
-|custom_Special|CustomSpecial|NO|SMALLINT|8||
-|custom_Side|CustomSide|NO|CHAR|||
-|custom_FieldSec|CustomFieldSec|NO|TINYINT|||
-|type_ID|TypeId|NO|TINYINT|||
-## Table: person_per<a name="person-per"></a>
+|per_ID|PerId| [PK]|SMALLINT|9||
+<a name="person-custom-master"></a>
+## Table: person_custom_master
 [Table of Contents](#TOC)
 
 ### Description:
-Table of people
+This contains definitions for the custom person fields
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|per_ID|Id|YES|SMALLINT|9||
-|per_Title|Title|NO|VARCHAR|50||
-|per_FirstName|FirstName|NO|VARCHAR|50||
-|per_MiddleName|MiddleName|NO|VARCHAR|50||
-|per_LastName|LastName|NO|VARCHAR|50||
-|per_Suffix|Suffix|NO|VARCHAR|50||
-|per_Address1|Address1|NO|VARCHAR|50||
-|per_Address2|Address2|NO|VARCHAR|50||
-|per_City|City|NO|VARCHAR|50||
-|per_State|State|NO|VARCHAR|50||
-|per_Zip|Zip|NO|VARCHAR|50||
-|per_Country|Country|NO|VARCHAR|50||
-|per_HomePhone|HomePhone|NO|VARCHAR|30||
-|per_WorkPhone|WorkPhone|NO|VARCHAR|30||
-|per_CellPhone|CellPhone|NO|VARCHAR|30||
-|per_Email|Email|NO|VARCHAR|50||
-|per_WorkEmail|WorkEmail|NO|VARCHAR|50||
-|per_BirthMonth|BirthMonth|NO|TINYINT|3||
-|per_BirthDay|BirthDay|NO|TINYINT|3||
-|per_BirthYear|BirthYear|NO|INTEGER|4||
-|per_MembershipDate|MembershipDate|NO|DATE|||
-|per_Gender|Gender|NO|TINYINT|1||
-|per_fmr_ID|FmrId|NO|TINYINT|3||
-|per_cls_ID|ClsId|NO|TINYINT|3||
-|per_fam_ID|FamId|NO|SMALLINT|5||
-|per_Envelope|Envelope|NO|SMALLINT|5||
-|per_DateLastEdited|DateLastEdited|NO|TIMESTAMP|||
-|per_DateEntered|DateEntered|NO|TIMESTAMP|||
-|per_EnteredBy|EnteredBy|NO|SMALLINT|5||
-|per_EditedBy|EditedBy|NO|SMALLINT|5||
-|per_FriendDate|FriendDate|NO|DATE|||
-|per_Flags|Flags|NO|SMALLINT|9||
-## Table: pledge_plg<a name="pledge-plg"></a>
+|custom_Order|CustomOrder||SMALLINT|||
+|custom_Field|CustomField||VARCHAR|5||
+|custom_Name|CustomName||VARCHAR|40||
+|custom_Special|CustomSpecial||SMALLINT|8||
+|custom_Side|CustomSide||CHAR|||
+|custom_FieldSec|CustomFieldSec||TINYINT|||
+|type_ID|TypeId||TINYINT|||
+<a name="person-per"></a>
+## Table: person_per
+[Table of Contents](#TOC)
+
+### Description:
+This contains the main person data, including person names, person addresses, person phone numbers, and foreign keys to the family table
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|per_ID|Id| [PK]|SMALLINT|9||
+|per_Title|Title||VARCHAR|50||
+|per_FirstName|FirstName||VARCHAR|50||
+|per_MiddleName|MiddleName||VARCHAR|50||
+|per_LastName|LastName||VARCHAR|50||
+|per_Suffix|Suffix||VARCHAR|50||
+|per_Address1|Address1||VARCHAR|50||
+|per_Address2|Address2||VARCHAR|50||
+|per_City|City||VARCHAR|50||
+|per_State|State||VARCHAR|50||
+|per_Zip|Zip||VARCHAR|50||
+|per_Country|Country||VARCHAR|50||
+|per_HomePhone|HomePhone||VARCHAR|30||
+|per_WorkPhone|WorkPhone||VARCHAR|30||
+|per_CellPhone|CellPhone||VARCHAR|30||
+|per_Email|Email||VARCHAR|50||
+|per_WorkEmail|WorkEmail||VARCHAR|50||
+|per_BirthMonth|BirthMonth||TINYINT|3||
+|per_BirthDay|BirthDay||TINYINT|3||
+|per_BirthYear|BirthYear||INTEGER|4||
+|per_MembershipDate|MembershipDate||DATE|||
+|per_Gender|Gender||TINYINT|1||
+|per_fmr_ID|FmrId||TINYINT|3||
+|per_cls_ID|ClsId||TINYINT|3||
+|per_fam_ID|FamId|[FK] [family_fam](#family-fam)|SMALLINT|5||
+|per_Envelope|Envelope||SMALLINT|5||
+|per_DateLastEdited|DateLastEdited||TIMESTAMP|||
+|per_DateEntered|DateEntered||TIMESTAMP|||
+|per_EnteredBy|EnteredBy||SMALLINT|5||
+|per_EditedBy|EditedBy||SMALLINT|5||
+|per_FriendDate|FriendDate||DATE|||
+|per_Flags|Flags||SMALLINT|9||
+<a name="pledge-plg"></a>
+## Table: pledge_plg
+[Table of Contents](#TOC)
+
+### Description:
+This contains all payment/pledge information
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|plg_plgID|Id| [PK]|SMALLINT|9||
+|plg_FamID|FamId|[FK] [family_fam](#family-fam)|SMALLINT|9||
+|plg_FYID|Fyid||SMALLINT|9||
+|plg_date|Date||DATE|||
+|plg_amount|Amount||DECIMAL|8||
+|plg_schedule|Schedule||CHAR|||
+|plg_method|Method||CHAR|||
+|plg_comment|Comment||LONGVARCHAR|||
+|plg_DateLastEdited|Datelastedited||DATE|||
+|plg_EditedBy|Editedby||SMALLINT|9||
+|plg_PledgeOrPayment|Pledgeorpayment||CHAR|||
+|plg_fundID|Fundid|[FK] [donationfund_fun](#donationfund-fun)|TINYINT|3||
+|plg_depID|Depid|[FK] [deposit_dep](#deposit-dep)|SMALLINT|9||
+|plg_CheckNo|Checkno||BIGINT|16||
+|plg_Problem|Problem||BOOLEAN|1||
+|plg_scanString|Scanstring||LONGVARCHAR|||
+|plg_aut_ID|AutId||SMALLINT|9||
+|plg_aut_Cleared|AutCleared||BOOLEAN|1||
+|plg_aut_ResultID|AutResultid||SMALLINT|9||
+|plg_NonDeductible|Nondeductible||DECIMAL|8||
+|plg_GroupKey|Groupkey||VARCHAR|64||
+<a name="property-pro"></a>
+## Table: property_pro
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|plg_plgID|Id|YES|SMALLINT|9||
-|plg_FamID|FamId|NO|SMALLINT|9||
-|plg_FYID|Fyid|NO|SMALLINT|9||
-|plg_date|Date|NO|DATE|||
-|plg_amount|Amount|NO|DECIMAL|8||
-|plg_schedule|Schedule|NO|CHAR|||
-|plg_method|Method|NO|CHAR|||
-|plg_comment|Comment|NO|LONGVARCHAR|||
-|plg_DateLastEdited|Datelastedited|NO|DATE|||
-|plg_EditedBy|Editedby|NO|SMALLINT|9||
-|plg_PledgeOrPayment|Pledgeorpayment|NO|CHAR|||
-|plg_fundID|Fundid|NO|TINYINT|3||
-|plg_depID|Depid|NO|SMALLINT|9||
-|plg_CheckNo|Checkno|NO|BIGINT|16||
-|plg_Problem|Problem|NO|BOOLEAN|1||
-|plg_scanString|Scanstring|NO|LONGVARCHAR|||
-|plg_aut_ID|AutId|NO|SMALLINT|9||
-|plg_aut_Cleared|AutCleared|NO|BOOLEAN|1||
-|plg_aut_ResultID|AutResultid|NO|SMALLINT|9||
-|plg_NonDeductible|Nondeductible|NO|DECIMAL|8||
-|plg_GroupKey|Groupkey|NO|VARCHAR|64||
-## Table: property_pro<a name="property-pro"></a>
+|pro_ID|ProId| [PK]|SMALLINT|8||
+|pro_Class|ProClass||VARCHAR|10||
+|pro_prt_ID|ProPrtId|[FK] [propertytype_prt](#propertytype-prt)|SMALLINT|8||
+|pro_Name|ProName||VARCHAR|200||
+|pro_Description|ProDescription||LONGVARCHAR|||
+|pro_Prompt|ProPrompt||VARCHAR|255||
+<a name="propertytype-prt"></a>
+## Table: propertytype_prt
+[Table of Contents](#TOC)
+
+### Description:
+This contains all the defined property types
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|prt_ID|PrtId| [PK]|SMALLINT|9||
+|prt_Class|PrtClass||VARCHAR|10||
+|prt_Name|PrtName||VARCHAR|50||
+|prt_Description|PrtDescription||LONGVARCHAR|||
+<a name="queryparameters-qrp"></a>
+## Table: queryparameters_qrp
+[Table of Contents](#TOC)
+
+### Description:
+defines the parameters for each query
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|qrp_ID|Id| [PK]|SMALLINT|8||
+|qrp_qry_ID|QryId||SMALLINT|8||
+|qrp_Type|Type||TINYINT|3||
+|qrp_OptionSQL|OptionSQL||LONGVARCHAR|||
+|qrp_Name|Name||VARCHAR|25||
+|qrp_Description|Description||LONGVARCHAR|||
+|qrp_Alias|Alias||VARCHAR|25||
+|qrp_Default|Default||VARCHAR|25||
+|qrp_Required|Required||TINYINT|3||
+|qrp_InputBoxSize|InputBoxSize||TINYINT|3||
+|qrp_Validation|Validation||VARCHAR|5||
+|qrp_NumericMax|NumericMax||INTEGER|||
+|qrp_NumericMin|NumericMin||INTEGER|||
+|qrp_AlphaMinLength|AlphaMinLength||INTEGER|||
+|qrp_AlphaMaxLength|AlphaMaxLength||INTEGER|||
+<a name="record-property-r-p"></a>
+## Table: record2property_r2p
+[Table of Contents](#TOC)
+
+### Description:
+This table indicates which persons, families, or groups are assigned specific properties and what the values of those properties are.
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|r2p_pro_ID|PropertyId|[FK] [property_pro](#property-pro)|SMALLINT|8||
+|r2p_record_ID|PersonId|[FK] [person_per](#person-per)|SMALLINT|8||
+|r2p_Value|PropertyValue||LONGVARCHAR|||
+<a name="tokens"></a>
+## Table: tokens
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|pro_ID|ProId|YES|SMALLINT|8||
-|pro_Class|ProClass|NO|VARCHAR|10||
-|pro_prt_ID|ProPrtId|NO|SMALLINT|8||
-|pro_Name|ProName|NO|VARCHAR|200||
-|pro_Description|ProDescription|NO|LONGVARCHAR|||
-|pro_Prompt|ProPrompt|NO|VARCHAR|255||
-## Table: propertytype_prt<a name="propertytype-prt"></a>
+|token|Token| [PK]|VARCHAR|255||
+|type|Type||VARCHAR|255||
+|valid_until_date|ValidUntilDate||DATE|||
+|reference_id|ReferenceId||INTEGER|||
+|remainingUses|RemainingUses||INTEGER|||
+<a name="user-usr"></a>
+## Table: user_usr
+[Table of Contents](#TOC)
+
+### Description:
+This contains the login information and specific settings for each ChurchCRM user
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|usr_per_ID|PersonId|[FK] [person_per](#person-per)|SMALLINT|9||
+|usr_Password|Password||VARCHAR|500||
+|usr_NeedPasswordChange|NeedPasswordChange||BOOLEAN|1||
+|usr_LastLogin|LastLogin||TIMESTAMP|||
+|usr_LoginCount|LoginCount||SMALLINT|5||
+|usr_FailedLogins|FailedLogins||TINYINT|3||
+|usr_AddRecords|AddRecords||BOOLEAN|1||
+|usr_EditRecords|EditRecords||BOOLEAN|1||
+|usr_DeleteRecords|DeleteRecords||BOOLEAN|1||
+|usr_MenuOptions|MenuOptions||BOOLEAN|1||
+|usr_ManageGroups|ManageGroups||BOOLEAN|1||
+|usr_Finance|Finance||BOOLEAN|1||
+|usr_Notes|Notes||BOOLEAN|1||
+|usr_Admin|Admin||BOOLEAN|1||
+|usr_SearchLimit|SearchLimit||TINYINT|||
+|usr_Style|Style||VARCHAR|50||
+|usr_showPledges|ShowPledges||BOOLEAN|1||
+|usr_showPayments|ShowPayments||BOOLEAN|1||
+|usr_showSince|ShowSince||DATE|||
+|usr_defaultFY|DefaultFY||SMALLINT|9||
+|usr_currentDeposit|CurrentDeposit||SMALLINT|9||
+|usr_UserName|UserName||VARCHAR|32||
+|usr_EditSelf|EditSelf||BOOLEAN|1||
+|usr_CalStart|CalStart||DATE|||
+|usr_CalEnd|CalEnd||DATE|||
+|usr_CalNoSchool1|CalNoSchool1||DATE|||
+|usr_CalNoSchool2|CalNoSchool2||DATE|||
+|usr_CalNoSchool3|CalNoSchool3||DATE|||
+|usr_CalNoSchool4|CalNoSchool4||DATE|||
+|usr_CalNoSchool5|CalNoSchool5||DATE|||
+|usr_CalNoSchool6|CalNoSchool6||DATE|||
+|usr_CalNoSchool7|CalNoSchool7||DATE|||
+|usr_CalNoSchool8|CalNoSchool8||DATE|||
+|usr_SearchFamily|Searchfamily||TINYINT|3||
+|usr_Canvasser|Canvasser||BOOLEAN|1||
+<a name="userconfig-ucfg"></a>
+## Table: userconfig_ucfg
 [Table of Contents](#TOC)
 
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|prt_ID|PrtId|YES|SMALLINT|9||
-|prt_Class|PrtClass|NO|VARCHAR|10||
-|prt_Name|PrtName|NO|VARCHAR|50||
-|prt_Description|PrtDescription|NO|LONGVARCHAR|||
-## Table: queryparameters_qrp<a name="queryparameters-qrp"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|qrp_ID|Id|YES|SMALLINT|8||
-|qrp_qry_ID|QryId|NO|SMALLINT|8||
-|qrp_Type|Type|NO|TINYINT|3||
-|qrp_OptionSQL|OptionSQL|NO|LONGVARCHAR|||
-|qrp_Name|Name|NO|VARCHAR|25||
-|qrp_Description|Description|NO|LONGVARCHAR|||
-|qrp_Alias|Alias|NO|VARCHAR|25||
-|qrp_Default|Default|NO|VARCHAR|25||
-|qrp_Required|Required|NO|TINYINT|3||
-|qrp_InputBoxSize|InputBoxSize|NO|TINYINT|3||
-|qrp_Validation|Validation|NO|VARCHAR|5||
-|qrp_NumericMax|NumericMax|NO|INTEGER|||
-|qrp_NumericMin|NumericMin|NO|INTEGER|||
-|qrp_AlphaMinLength|AlphaMinLength|NO|INTEGER|||
-|qrp_AlphaMaxLength|AlphaMaxLength|NO|INTEGER|||
-## Table: record2property_r2p<a name="record-property-r-p"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|r2p_pro_ID|PropertyId|YES|SMALLINT|8||
-|r2p_record_ID|PersonId|YES|SMALLINT|8||
-|r2p_Value|PropertyValue|NO|LONGVARCHAR|||
-## Table: tokens<a name="tokens"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|token|Token|YES|VARCHAR|255||
-|type|Type|NO|VARCHAR|255||
-|valid_until_date|ValidUntilDate|NO|DATE|||
-|reference_id|ReferenceId|NO|INTEGER|||
-|remainingUses|RemainingUses|NO|INTEGER|||
-## Table: user_usr<a name="user-usr"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|usr_per_ID|PersonId|YES|SMALLINT|9||
-|usr_Password|Password|NO|VARCHAR|500||
-|usr_NeedPasswordChange|NeedPasswordChange|NO|BOOLEAN|1||
-|usr_LastLogin|LastLogin|NO|TIMESTAMP|||
-|usr_LoginCount|LoginCount|NO|SMALLINT|5||
-|usr_FailedLogins|FailedLogins|NO|TINYINT|3||
-|usr_AddRecords|AddRecords|NO|BOOLEAN|1||
-|usr_EditRecords|EditRecords|NO|BOOLEAN|1||
-|usr_DeleteRecords|DeleteRecords|NO|BOOLEAN|1||
-|usr_MenuOptions|MenuOptions|NO|BOOLEAN|1||
-|usr_ManageGroups|ManageGroups|NO|BOOLEAN|1||
-|usr_Finance|Finance|NO|BOOLEAN|1||
-|usr_Notes|Notes|NO|BOOLEAN|1||
-|usr_Admin|Admin|NO|BOOLEAN|1||
-|usr_SearchLimit|SearchLimit|NO|TINYINT|||
-|usr_Style|Style|NO|VARCHAR|50||
-|usr_showPledges|ShowPledges|NO|BOOLEAN|1||
-|usr_showPayments|ShowPayments|NO|BOOLEAN|1||
-|usr_showSince|ShowSince|NO|DATE|||
-|usr_defaultFY|DefaultFY|NO|SMALLINT|9||
-|usr_currentDeposit|CurrentDeposit|NO|SMALLINT|9||
-|usr_UserName|UserName|NO|VARCHAR|32||
-|usr_EditSelf|EditSelf|NO|BOOLEAN|1||
-|usr_CalStart|CalStart|NO|DATE|||
-|usr_CalEnd|CalEnd|NO|DATE|||
-|usr_CalNoSchool1|CalNoSchool1|NO|DATE|||
-|usr_CalNoSchool2|CalNoSchool2|NO|DATE|||
-|usr_CalNoSchool3|CalNoSchool3|NO|DATE|||
-|usr_CalNoSchool4|CalNoSchool4|NO|DATE|||
-|usr_CalNoSchool5|CalNoSchool5|NO|DATE|||
-|usr_CalNoSchool6|CalNoSchool6|NO|DATE|||
-|usr_CalNoSchool7|CalNoSchool7|NO|DATE|||
-|usr_CalNoSchool8|CalNoSchool8|NO|DATE|||
-|usr_SearchFamily|Searchfamily|NO|TINYINT|3||
-|usr_Canvasser|Canvasser|NO|BOOLEAN|1||
-## Table: userconfig_ucfg<a name="userconfig-ucfg"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|ucfg_per_id|PeronId|YES|SMALLINT|9||
-|ucfg_id|Id|YES|INTEGER|||
-|ucfg_name|Name|NO|VARCHAR|50||
-|ucfg_value|Value|NO|LONGVARCHAR|||
-|ucfg_type|Type|NO|CHAR|||
-|ucfg_tooltip|Tooltip|NO|LONGVARCHAR|||
-|ucfg_permission|Permission|NO|CHAR|||
-|ucfg_cat|Cat|NO|VARCHAR|20||
-## Table: version_ver<a name="version-ver"></a>
+|ucfg_per_id|PeronId|[FK] [user_usr](#user-usr)|SMALLINT|9||
+|ucfg_id|Id| [PK]|INTEGER|||
+|ucfg_name|Name||VARCHAR|50||
+|ucfg_value|Value||LONGVARCHAR|||
+|ucfg_type|Type||CHAR|||
+|ucfg_tooltip|Tooltip||LONGVARCHAR|||
+|ucfg_permission|Permission||CHAR|||
+|ucfg_cat|Cat||VARCHAR|20||
+<a name="version-ver"></a>
+## Table: version_ver
 [Table of Contents](#TOC)
 
 ### Description:
 History of all version upgrades applied to this database
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|ver_ID|Id|YES|SMALLINT|9||
-|ver_version|Version|NO|VARCHAR|50||
-|ver_update_start|UpdateStart|NO|TIMESTAMP|||
-|ver_update_end|UpdateEnd|NO|TIMESTAMP|||
-## Table: volunteeropportunity_vol<a name="volunteeropportunity-vol"></a>
-[Table of Contents](#TOC)
-
-### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
-|---|---|---|---|---|---|
-|vol_ID|Id|YES|INTEGER|3||
-|vol_Order|Order|NO|INTEGER|3||
-|vol_Active|Active|NO|CHAR|||
-|vol_Name|Name|NO|VARCHAR|30||
-|vol_Description|Description|NO|VARCHAR|100||
-## Table: whycame_why<a name="whycame-why"></a>
+|ver_ID|Id| [PK]|SMALLINT|9||
+|ver_version|Version||VARCHAR|50||
+|ver_update_start|UpdateStart||TIMESTAMP|||
+|ver_update_end|UpdateEnd||TIMESTAMP|||
+<a name="volunteeropportunity-vol"></a>
+## Table: volunteeropportunity_vol
 [Table of Contents](#TOC)
 
 ### Description:
-Not sure
+This contains the names and descriptions of volunteer opportunities
 ### Columns:
-|Column Name|PHP Name|Primary Key|Format|Length|Description|
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|why_ID|Id|YES|SMALLINT|9||
-|why_per_ID|PerId|NO|SMALLINT|9||
-|why_join|Join|NO|LONGVARCHAR|||
-|why_come|Come|NO|LONGVARCHAR|||
-|why_suggest|Suggest|NO|LONGVARCHAR|||
-|why_hearOfUs|HearOfUs|NO|LONGVARCHAR|||
+|vol_ID|Id| [PK]|INTEGER|3||
+|vol_Order|Order||INTEGER|3||
+|vol_Active|Active||CHAR|||
+|vol_Name|Name||VARCHAR|30||
+|vol_Description|Description||VARCHAR|100||
+<a name="whycame-why"></a>
+## Table: whycame_why
+[Table of Contents](#TOC)
+
+### Description:
+This contains the comments related to why people came
+### Columns:
+|Column Name|PHP Name|PK/FK|Format|Length|Description|
+|---|---|---|---|---|---|
+|why_ID|Id| [PK]|SMALLINT|9||
+|why_per_ID|PerId|[FK] [person_per](#person-per)|SMALLINT|9||
+|why_join|Join||LONGVARCHAR|||
+|why_come|Come||LONGVARCHAR|||
+|why_suggest|Suggest||LONGVARCHAR|||
+|why_hearOfUs|HearOfUs||LONGVARCHAR|||
