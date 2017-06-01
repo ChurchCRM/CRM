@@ -20,8 +20,10 @@ class GroupQuery extends BaseGroupQuery
         $this->leftJoinPerson2group2roleP2g2r();
         $this->withColumn('COUNT(person2group2role_p2g2r.PersonId)', 'memberCount');
         $this->groupBy('Group.Id');
-        $this->leftJoinListOption();
-        $this->addJoinCondition('ListOption', 'ListOption.Id = ?', '3');
+        $groupTypeJoin = new \Propel\Runtime\ActiveQuery\Join();
+        $groupTypeJoin->addCondition("Group.Type", "list_lst.lst_OptionId", self::EQUAL );
+        $groupTypeJoin->addForeignValueCondition("list_lst", "lst_ID", '', 3, self::EQUAL);
+        $this->addJoinObject($groupTypeJoin);
         $this->withColumn('list_lst.lst_OptionName', 'groupType');
         parent::preSelect($con);
     }
