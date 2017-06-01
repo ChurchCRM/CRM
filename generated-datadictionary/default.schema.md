@@ -355,14 +355,14 @@ This contains the name and description for each group, as well as foreign keys t
 |Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
 |grp_ID|Id| [PK]|SMALLINT|8||
-|grp_Type|Type|[FK] [list_lst](#list-lst)|TINYINT|||
-|grp_RoleListID|RoleListId|[FK] [list_lst](#list-lst)|SMALLINT|8||
-|grp_DefaultRole|DefaultRole||SMALLINT|9||
+|grp_Type|Type|[FK] [list_lst](#list-lst)|TINYINT||The group type.  This is defined in list_lst.OptionId where lst_ID=3|
+|grp_RoleListID|RoleListId|[FK] [list_lst](#list-lst)|SMALLINT|8|The lst_ID containing the names of the roles for this group|
+|grp_DefaultRole|DefaultRole||SMALLINT|9|The ID of the default role in this group's RoleList|
 |grp_Name|Name||VARCHAR|50||
 |grp_Description|Description||LONGVARCHAR|||
 |grp_hasSpecialProps|HasSpecialProps||BOOLEAN|1||
 |grp_active|Active||BOOLEAN|1||
-|grp_include_email_export|IncludeInEmailExport||BOOLEAN|1||
+|grp_include_email_export|IncludeInEmailExport||BOOLEAN|1|Should members of this group be included in MailChimp Export|
 <a name="groupprop-master"></a>
 ## Table: groupprop_master
 [Table of Contents](#TOC)
@@ -416,10 +416,10 @@ This table stores the options for most of the drop down lists in churchCRM, incl
 ### Columns:
 |Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
-|lst_ID|Id| [PK]|SMALLINT|8||
-|lst_OptionID|OptionId| [PK]|SMALLINT|8||
-|lst_OptionSequence|OptionSequence||TINYINT|3||
-|lst_OptionName|OptionName||VARCHAR|50||
+|lst_ID|Id| [PK]|SMALLINT|8|The ID of the list.  Since this is a composite primary key, there may be multiple List IDs|
+|lst_OptionID|OptionId| [PK]|SMALLINT|8|The ID of the option in this list.  ***List ID + List Option ID must be unique***|
+|lst_OptionSequence|OptionSequence||TINYINT|3|The order in which to display items in this list|
+|lst_OptionName|OptionName||VARCHAR|50|The actual value for this list option|
 <a name="menuconfig-mcf"></a>
 ## Table: menuconfig_mcf
 [Table of Contents](#TOC)
