@@ -118,7 +118,7 @@
         ],
         "dbVersion": "2.7.0"
     },
-    "current": {
+    "pre-2.8.0": {
         "versions": [
             "2.7.0",
             "2.7.1",
@@ -128,10 +128,18 @@
             "2.7.5"
         ],
         "scripts": [
-          "/mysql/upgrade/2.8.0/devices.sql",
-          "/mysql/upgrade/2.8.0/eventGroups.sql",
-          "/mysql/upgrade/2.8.0-password-reset.sql"
+            "/mysql/upgrade/2.8.0/devices.sql",
+            "/mysql/upgrade/2.8.0/eventGroups.sql",
+            "/mysql/upgrade/2.8.0-password-reset.sql"
         ],
         "dbVersion": "2.8.0"
+    },
+    "current": {
+        "versions": [
+            "2.8.0"
+        ],
+        "scripts": [
+        ],
+        "dbVersion": "2.9.0"
     }
 }
