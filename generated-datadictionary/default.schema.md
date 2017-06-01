@@ -1,4 +1,5 @@
-# Table of Contents <a name="TOC"></a>
+<a name="TOC"></a>
+# Table of Contents
 1. [autopayment_aut](#autopayment-aut)
 2. [canvassdata_can](#canvassdata-can)
 3. [config_cfg](#config-cfg)
@@ -40,7 +41,8 @@
 39. [version_ver](#version-ver)
 40. [volunteeropportunity_vol](#volunteeropportunity-vol)
 41. [whycame_why](#whycame-why)
-## Table: autopayment_aut<a name="autopayment-aut"></a>
+<a name="autopayment-aut"></a>
+## Table: autopayment_aut
 [Table of Contents](#TOC)
 
 ### Description:
@@ -78,7 +80,8 @@ This contains information for automatic electronic donations or payments for eve
 |aut_Serial|Serial||SMALLINT|9||
 |aut_CreditCardVanco|Creditcardvanco||VARCHAR|50||
 |aut_AccountVanco|AccountVanco||VARCHAR|50||
-## Table: canvassdata_can<a name="canvassdata-can"></a>
+<a name="canvassdata-can"></a>
+## Table: canvassdata_can
 [Table of Contents](#TOC)
 
 ### Description:
@@ -98,7 +101,8 @@ this contains information about the results of canvassing families
 |can_Suggestion|Suggestion||LONGVARCHAR|||
 |can_NotInterested|NotInterested||BOOLEAN|1||
 |can_WhyNotInterested|WhyNotInterested||LONGVARCHAR|||
-## Table: config_cfg<a name="config-cfg"></a>
+<a name="config-cfg"></a>
+## Table: config_cfg
 [Table of Contents](#TOC)
 
 ### Description:
@@ -109,7 +113,8 @@ This table contains all non-default configuration parameter names and values
 |cfg_id|Id| [PK]|INTEGER|||
 |cfg_name|Name||VARCHAR|50||
 |cfg_value|Value||LONGVARCHAR|||
-## Table: deposit_dep<a name="deposit-dep"></a>
+<a name="deposit-dep"></a>
+## Table: deposit_dep
 [Table of Contents](#TOC)
 
 ### Description:
@@ -123,7 +128,8 @@ This records deposits / payments
 |dep_EnteredBy|Enteredby||SMALLINT|9||
 |dep_Closed|Closed||BOOLEAN|1||
 |dep_Type|Type||CHAR|||
-## Table: donateditem_di<a name="donateditem-di"></a>
+<a name="donateditem-di"></a>
+## Table: donateditem_di
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -144,7 +150,8 @@ This records deposits / payments
 |di_EnteredBy|Enteredby||SMALLINT|5||
 |di_EnteredDate|Entereddate||DATE|||
 |di_picture|Picture||LONGVARCHAR|||
-## Table: donationfund_fun<a name="donationfund-fun"></a>
+<a name="donationfund-fun"></a>
+## Table: donationfund_fun
 [Table of Contents](#TOC)
 
 ### Description:
@@ -156,7 +163,8 @@ This contains the defined donation funds
 |fun_Active|Active||CHAR|||
 |fun_Name|Name||VARCHAR|30||
 |fun_Description|Description||VARCHAR|100||
-## Table: egive_egv<a name="egive-egv"></a>
+<a name="egive-egv"></a>
+## Table: egive_egv
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -168,7 +176,8 @@ This contains the defined donation funds
 |egv_DateLastEdited|DateLastEdited||TIMESTAMP|||
 |egv_EnteredBy|EnteredBy||SMALLINT|||
 |egv_EditedBy|EditedBy||SMALLINT|||
-## Table: email_message_pending_emp<a name="email-message-pending-emp"></a>
+<a name="email-message-pending-emp"></a>
+## Table: email_message_pending_emp
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -180,7 +189,8 @@ This contains the defined donation funds
 |emp_message|Message||LONGVARCHAR|||
 |emp_attach_name|AttachName||LONGVARCHAR|||
 |emp_attach|Attach||BOOLEAN|1||
-## Table: email_recipient_pending_erp<a name="email-recipient-pending-erp"></a>
+<a name="email-recipient-pending-erp"></a>
+## Table: email_recipient_pending_erp
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -191,7 +201,8 @@ This contains the defined donation funds
 |erp_num_attempt|NumAttempt||SMALLINT|5||
 |erp_failed_time|FailedTime||TIMESTAMP|||
 |erp_email_address|EmailAddress||VARCHAR|50||
-## Table: event_attend<a name="event-attend"></a>
+<a name="event-attend"></a>
+## Table: event_attend
 [Table of Contents](#TOC)
 
 ### Description:
@@ -206,7 +217,8 @@ this indicates which people attended which events
 |checkin_id|CheckinId||INTEGER|||
 |checkout_date|CheckoutDate||TIMESTAMP|||
 |checkout_id|CheckoutId||INTEGER|||
-## Table: event_types<a name="event-types"></a>
+<a name="event-types"></a>
+## Table: event_types
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -221,7 +233,8 @@ this indicates which people attended which events
 |type_defrecurDOY|DefRecurDOY||DATE|||
 |type_active|Active||INTEGER|1||
 |type_grpid|GroupId|[FK] [group_grp](#group-grp)|INTEGER|||
-## Table: eventcountnames_evctnm<a name="eventcountnames-evctnm"></a>
+<a name="eventcountnames-evctnm"></a>
+## Table: eventcountnames_evctnm
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -231,7 +244,8 @@ this indicates which people attended which events
 |evctnm_eventtypeid|TypeId||SMALLINT|5||
 |evctnm_countname|Name||VARCHAR|20||
 |evctnm_notes|Notes||VARCHAR|20||
-## Table: eventcounts_evtcnt<a name="eventcounts-evtcnt"></a>
+<a name="eventcounts-evtcnt"></a>
+## Table: eventcounts_evtcnt
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -242,7 +256,8 @@ this indicates which people attended which events
 |evtcnt_countname|EvtcntCountname||VARCHAR|20||
 |evtcnt_countcount|EvtcntCountcount||INTEGER|6||
 |evtcnt_notes|EvtcntNotes||VARCHAR|20||
-## Table: events_event<a name="events-event"></a>
+<a name="events-event"></a>
+## Table: events_event
 [Table of Contents](#TOC)
 
 ### Description:
@@ -260,14 +275,16 @@ This contains events
 |inactive|InActive||INTEGER|1||
 |event_typename|TypeName||VARCHAR|40||
 |event_grpid|GroupId|[FK] [group_grp](#group-grp)|INTEGER|||
-## Table: family_custom<a name="family-custom"></a>
+<a name="family-custom"></a>
+## Table: family_custom
 [Table of Contents](#TOC)
 
 ### Columns:
 |Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
 |fam_ID|FamId| [PK]|SMALLINT|9||
-## Table: family_custom_master<a name="family-custom-master"></a>
+<a name="family-custom-master"></a>
+## Table: family_custom_master
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -280,7 +297,8 @@ This contains events
 |fam_custom_Side|CustomSide||CHAR|||
 |fam_custom_FieldSec|CustomFieldSec||TINYINT|||
 |type_ID|TypeId||TINYINT|||
-## Table: family_fam<a name="family-fam"></a>
+<a name="family-fam"></a>
+## Table: family_fam
 [Table of Contents](#TOC)
 
 ### Description:
@@ -314,7 +332,8 @@ This contains the main family data, including family name, family addresses, and
 |fam_Latitude|Latitude||DOUBLE|||
 |fam_Longitude|Longitude||DOUBLE|||
 |fam_Envelope|Envelope||SMALLINT|9||
-## Table: fundraiser_fr<a name="fundraiser-fr"></a>
+<a name="fundraiser-fr"></a>
+## Table: fundraiser_fr
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -326,7 +345,8 @@ This contains the main family data, including family name, family addresses, and
 |fr_description|Description||LONGVARCHAR|||
 |fr_EnteredBy|EnteredBy||SMALLINT|5||
 |fr_EnteredDate|EnteredDate||DATE|||
-## Table: group_grp<a name="group-grp"></a>
+<a name="group-grp"></a>
+## Table: group_grp
 [Table of Contents](#TOC)
 
 ### Description:
@@ -343,7 +363,8 @@ This contains the name and description for each group, as well as foreign keys t
 |grp_hasSpecialProps|HasSpecialProps||BOOLEAN|1||
 |grp_active|Active||BOOLEAN|1||
 |grp_include_email_export|IncludeInEmailExport||BOOLEAN|1||
-## Table: groupprop_master<a name="groupprop-master"></a>
+<a name="groupprop-master"></a>
+## Table: groupprop_master
 [Table of Contents](#TOC)
 
 ### Description:
@@ -359,7 +380,8 @@ This contains definitions for the group-specific fields
 |type_ID|TypeId||SMALLINT|5||
 |prop_Special|Special||SMALLINT|9||
 |prop_PersonDisplay|PersonDisplay||CHAR|||
-## Table: kioskassginment_kasm<a name="kioskassginment-kasm"></a>
+<a name="kioskassginment-kasm"></a>
+## Table: kioskassginment_kasm
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -369,7 +391,8 @@ This contains definitions for the group-specific fields
 |kasm_kdevId|KioskId|[FK] [kioskdevice_kdev](#kioskdevice-kdev)|INTEGER|9||
 |kasm_AssignmentType|AssignmentType||INTEGER|9|The kiosk's current role.|
 |kasm_EventId|EventId|[FK] [events_event](#events-event)|INTEGER|9|Optional.  If the current role is for event check-in, populate this value|
-## Table: kioskdevice_kdev<a name="kioskdevice-kdev"></a>
+<a name="kioskdevice-kdev"></a>
+## Table: kioskdevice_kdev
 [Table of Contents](#TOC)
 
 ### Description:
@@ -384,7 +407,8 @@ This contains a list of all (un)registered kiosk devices
 |kdev_lastHeartbeat|LastHeartbeat||LONGVARCHAR||Last time the kiosk sent a heartbeat|
 |kdev_Accepted|Accepted||BOOLEAN|1|Has the admin accepted the kiosk after initial registration?|
 |kdev_PendingCommands|PendingCommands||LONGVARCHAR||Commands waiting to be sent to the kiosk|
-## Table: list_lst<a name="list-lst"></a>
+<a name="list-lst"></a>
+## Table: list_lst
 [Table of Contents](#TOC)
 
 ### Description:
@@ -396,7 +420,8 @@ This table stores the options for most of the drop down lists in churchCRM, incl
 |lst_OptionID|OptionId| [PK]|SMALLINT|8||
 |lst_OptionSequence|OptionSequence||TINYINT|3||
 |lst_OptionName|OptionName||VARCHAR|50||
-## Table: menuconfig_mcf<a name="menuconfig-mcf"></a>
+<a name="menuconfig-mcf"></a>
+## Table: menuconfig_mcf
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -418,7 +443,8 @@ This table stores the options for most of the drop down lists in churchCRM, incl
 |active|Active||BOOLEAN|1||
 |sortorder|SortOrder||TINYINT|3||
 |icon|Icon||VARCHAR|50||
-## Table: note_nte<a name="note-nte"></a>
+<a name="note-nte"></a>
+## Table: note_nte
 [Table of Contents](#TOC)
 
 ### Description:
@@ -436,7 +462,8 @@ Contains all person and family notes, including the date, time, and person who e
 |nte_EnteredBy|EnteredBy||SMALLINT|8||
 |nte_EditedBy|EditedBy||SMALLINT|8||
 |nte_Type|Type||VARCHAR|50||
-## Table: person2group2role_p2g2r<a name="person-group-role-p-g-r"></a>
+<a name="person-group-role-p-g-r"></a>
+## Table: person2group2role_p2g2r
 [Table of Contents](#TOC)
 
 ### Description:
@@ -447,7 +474,8 @@ This table stores the information of which people are in which groups, and what 
 |p2g2r_per_ID|PersonId|[FK] [person_per](#person-per)|SMALLINT|8||
 |p2g2r_grp_ID|GroupId|[FK] [group_grp](#group-grp)|SMALLINT|8||
 |p2g2r_rle_ID|RoleId||SMALLINT|8||
-## Table: person2volunteeropp_p2vo<a name="person-volunteeropp-p-vo"></a>
+<a name="person-volunteeropp-p-vo"></a>
+## Table: person2volunteeropp_p2vo
 [Table of Contents](#TOC)
 
 ### Description:
@@ -458,7 +486,8 @@ This table indicates which people are tied to which volunteer opportunities
 |p2vo_ID|Id| [PK]|SMALLINT|9||
 |p2vo_per_ID|PersonId||SMALLINT|9||
 |p2vo_vol_ID|VolunteerOpportunityId||SMALLINT|9||
-## Table: person_custom<a name="person-custom"></a>
+<a name="person-custom"></a>
+## Table: person_custom
 [Table of Contents](#TOC)
 
 ### Description:
@@ -467,7 +496,8 @@ Person custom fields
 |Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
 |per_ID|PerId| [PK]|SMALLINT|9||
-## Table: person_custom_master<a name="person-custom-master"></a>
+<a name="person-custom-master"></a>
+## Table: person_custom_master
 [Table of Contents](#TOC)
 
 ### Description:
@@ -482,7 +512,8 @@ This contains definitions for the custom person fields
 |custom_Side|CustomSide||CHAR|||
 |custom_FieldSec|CustomFieldSec||TINYINT|||
 |type_ID|TypeId||TINYINT|||
-## Table: person_per<a name="person-per"></a>
+<a name="person-per"></a>
+## Table: person_per
 [Table of Contents](#TOC)
 
 ### Description:
@@ -522,7 +553,8 @@ This contains the main person data, including person names, person addresses, pe
 |per_EditedBy|EditedBy||SMALLINT|5||
 |per_FriendDate|FriendDate||DATE|||
 |per_Flags|Flags||SMALLINT|9||
-## Table: pledge_plg<a name="pledge-plg"></a>
+<a name="pledge-plg"></a>
+## Table: pledge_plg
 [Table of Contents](#TOC)
 
 ### Description:
@@ -551,7 +583,8 @@ This contains all payment/pledge information
 |plg_aut_ResultID|AutResultid||SMALLINT|9||
 |plg_NonDeductible|Nondeductible||DECIMAL|8||
 |plg_GroupKey|Groupkey||VARCHAR|64||
-## Table: property_pro<a name="property-pro"></a>
+<a name="property-pro"></a>
+## Table: property_pro
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -563,7 +596,8 @@ This contains all payment/pledge information
 |pro_Name|ProName||VARCHAR|200||
 |pro_Description|ProDescription||LONGVARCHAR|||
 |pro_Prompt|ProPrompt||VARCHAR|255||
-## Table: propertytype_prt<a name="propertytype-prt"></a>
+<a name="propertytype-prt"></a>
+## Table: propertytype_prt
 [Table of Contents](#TOC)
 
 ### Description:
@@ -575,7 +609,8 @@ This contains all the defined property types
 |prt_Class|PrtClass||VARCHAR|10||
 |prt_Name|PrtName||VARCHAR|50||
 |prt_Description|PrtDescription||LONGVARCHAR|||
-## Table: queryparameters_qrp<a name="queryparameters-qrp"></a>
+<a name="queryparameters-qrp"></a>
+## Table: queryparameters_qrp
 [Table of Contents](#TOC)
 
 ### Description:
@@ -598,7 +633,8 @@ defines the parameters for each query
 |qrp_NumericMin|NumericMin||INTEGER|||
 |qrp_AlphaMinLength|AlphaMinLength||INTEGER|||
 |qrp_AlphaMaxLength|AlphaMaxLength||INTEGER|||
-## Table: record2property_r2p<a name="record-property-r-p"></a>
+<a name="record-property-r-p"></a>
+## Table: record2property_r2p
 [Table of Contents](#TOC)
 
 ### Description:
@@ -609,7 +645,8 @@ This table indicates which persons, families, or groups are assigned specific pr
 |r2p_pro_ID|PropertyId|[FK] [property_pro](#property-pro)|SMALLINT|8||
 |r2p_record_ID|PersonId|[FK] [person_per](#person-per)|SMALLINT|8||
 |r2p_Value|PropertyValue||LONGVARCHAR|||
-## Table: tokens<a name="tokens"></a>
+<a name="tokens"></a>
+## Table: tokens
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -620,7 +657,8 @@ This table indicates which persons, families, or groups are assigned specific pr
 |valid_until_date|ValidUntilDate||DATE|||
 |reference_id|ReferenceId||INTEGER|||
 |remainingUses|RemainingUses||INTEGER|||
-## Table: user_usr<a name="user-usr"></a>
+<a name="user-usr"></a>
+## Table: user_usr
 [Table of Contents](#TOC)
 
 ### Description:
@@ -663,7 +701,8 @@ This contains the login information and specific settings for each ChurchCRM use
 |usr_CalNoSchool8|CalNoSchool8||DATE|||
 |usr_SearchFamily|Searchfamily||TINYINT|3||
 |usr_Canvasser|Canvasser||BOOLEAN|1||
-## Table: userconfig_ucfg<a name="userconfig-ucfg"></a>
+<a name="userconfig-ucfg"></a>
+## Table: userconfig_ucfg
 [Table of Contents](#TOC)
 
 ### Columns:
@@ -677,7 +716,8 @@ This contains the login information and specific settings for each ChurchCRM use
 |ucfg_tooltip|Tooltip||LONGVARCHAR|||
 |ucfg_permission|Permission||CHAR|||
 |ucfg_cat|Cat||VARCHAR|20||
-## Table: version_ver<a name="version-ver"></a>
+<a name="version-ver"></a>
+## Table: version_ver
 [Table of Contents](#TOC)
 
 ### Description:
@@ -689,7 +729,8 @@ History of all version upgrades applied to this database
 |ver_version|Version||VARCHAR|50||
 |ver_update_start|UpdateStart||TIMESTAMP|||
 |ver_update_end|UpdateEnd||TIMESTAMP|||
-## Table: volunteeropportunity_vol<a name="volunteeropportunity-vol"></a>
+<a name="volunteeropportunity-vol"></a>
+## Table: volunteeropportunity_vol
 [Table of Contents](#TOC)
 
 ### Description:
@@ -702,7 +743,8 @@ This contains the names and descriptions of volunteer opportunities
 |vol_Active|Active||CHAR|||
 |vol_Name|Name||VARCHAR|30||
 |vol_Description|Description||VARCHAR|100||
-## Table: whycame_why<a name="whycame-why"></a>
+<a name="whycame-why"></a>
+## Table: whycame_why
 [Table of Contents](#TOC)
 
 ### Description:
