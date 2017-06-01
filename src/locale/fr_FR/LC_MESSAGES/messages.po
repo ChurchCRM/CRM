@@ -8762,3 +8762,87 @@ msgstr "Timeout en sec. Serveur SMTP"
 msgid "Exclude Inactive Families"
 msgstr "Exclure les familles inactives"
 
+#: api/routes/roles.php:36
+msgid "The role is already assigned."
+msgstr "Ce rôle is déjà assigné."
+
+#: api/routes/roles.php:41
+msgid "The role is successfully assigned."
+msgstr "Le rôle a été assigné avec succès."
+
+#: api/routes/roles.php:43
+msgid "The role could not be assigned."
+msgstr "Le rôle ne peut être assigné."
+
+#: ChurchCRM/dto/SystemConfig.php:85
+msgid "Bing map API requires a unique key"
+msgstr "L'API Bing map nécessite une clé unique."
+
+#: ChurchCRM/dto/SystemConfig.php:86
+msgid "Google Maps Zoom"
+msgstr "Zoom Google maps"
+
+#: ChurchCRM/dto/SystemConfig.php:87 ChurchCRM/dto/SystemConfig.php:88
+msgid "of the church, used to center the Google map"
+msgstr "de l'église, utilisé pour centrer la carte Google"
+
+#: ChurchCRM/dto/SystemConfig.php:98
+msgid "Select GeoCoder Provider"
+msgstr "Sélectionner Provider Geocoder"
+
+#: ChurchCRM/Emails/users/LockedEmail.php:16
+msgid "Your ChurchCRM account was locked."
+msgstr "Votre compte ChurchCRM a été verrouillé."
+
+#: ChurchCRM/Emails/users/NewAccountEmail.php:23
+msgid "A ChurchCRM account was created for you"
+msgstr "Un compte ChurchCRM a été créé pour vous."
+
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:22
+msgid "Your ChurchCRM password was changed"
+msgstr "Votre mot de passe ChurchCRM a été modifié"
+
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:22
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "Vous pouvez réinitialiser votre mot de passe ChurchCRM via ce lien"
+
+#: ChurchCRM/Emails/users/UnlockedEmail.php:16
+msgid "Your ChurchCRM account was unlocked."
+msgstr "Votre compte ChurchCRM a été déverrouillé."
+
+#: ChurchCRM/model/ChurchCRM/User.php:137
+msgid "system user created"
+msgstr "Utilisateur système créé"
+
+#: ChurchCRM/model/ChurchCRM/User.php:140
+msgid "system user updated"
+msgstr "Utilisateur système mis à jour"
+
+#: ChurchCRM/model/ChurchCRM/User.php:143
+msgid "system user deleted"
+msgstr "Utilisateur système effacé"
+
+#: ChurchCRM/model/ChurchCRM/User.php:146
+msgid "system user password reset"
+msgstr "Remise à zéro mot de passe utilisateur système"
+
+#: ChurchCRM/model/ChurchCRM/User.php:149
+msgid "system user changed password"
+msgstr "Mot de passe utilisateur système modifié."
+
+#: ChurchCRM/model/ChurchCRM/User.php:152
+msgid "system user password changed by admin"
+msgstr "Mot de passe utilisateur système modifié par l'admin"
+
+#: ChurchCRM/model/ChurchCRM/User.php:155
+msgid "system user login reset"
+msgstr "Login utilisateur système remis à zéro"
+
+#: MapUsingGoogle.php:24
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "Familles manquantes ? Mise à jour Latitude et Longitude pour la famille."
+
+#: UpdateAllLatLon.php:37
+msgid "Families without Geo Info"
+msgstr "Familles sans Info Géographique."
+

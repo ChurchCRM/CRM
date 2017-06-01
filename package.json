@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "2.7.6",
+    "version": "2.8.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -38,7 +38,11 @@
         "jquery-photo-uploader": "1.0.12",
         "initial-js": "0.3.4",
         "bootstrap-toggle": "2.2.2",
-        "bootstrap-validator": "0.11.9"
+        "bootstrap-validator": "0.11.9",
+        "jquery-steps": "1.1.0",
+        "jquery-validation": "1.16.0",
+        "i18next": "8.2.1",
+        "i18next-xhr-backend":"1.4.1"
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
@@ -49,9 +53,11 @@
         "demosite": "scripts/demosite.sh",
         "changelog-gen": "scripts/gen-changelogs.sh",
         "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
+        "graph-viz": "src/vendor/propel/propel/bin/propel --config-dir=propel graphviz:generate",
+        "datadictionary": "src/vendor/propel/propel/bin/propel --config-dir=propel datadictionary:generate",
         "composer-install": "cd src/ && composer install",
         "composer-update": " cd src/ && composer update",
-        "tests-install": "cd tests/ && composer install",
-        "test": "cd tests/behat/ && ../vendor/bin/behat"
+        "tests-install": "scripts/tests-install.sh",
+        "test": "scripts/tests-run.sh"
     }
 }

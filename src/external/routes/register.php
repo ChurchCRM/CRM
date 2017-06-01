@@ -8,7 +8,9 @@ use ChurchCRM\Person;
 use Slim\Views\PhpRenderer;
 
 $app->group('/register', function () {
-    $enableSelfReg = SystemConfig::getBooleanValue('sEnableSelfRegistration');
+
+    $enableSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
+
     if ($enableSelfReg) {
         $this->get('/', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates/registration/');
@@ -49,57 +51,57 @@ $app->group('/register', function () {
 
             return $renderer->render($response, 'family-register-members.php', $pageObjects);
         });
+
+        $this->post('/confirm', function ($request, $response, $args) {
+            $renderer = new PhpRenderer('templates/registration/');
+
+            $body = $request->getParsedBody();
+            $family = $_SESSION['regFamily'];
+            $familyCount = $_SESSION['regFamilyCount'];
+            $familyMembers = [];
+            for ($x = 1; $x <= $familyCount; $x++) {
+                $person = new Person();
+                $person->setFirstName($body['memberFirstName-' . $x]);
+                $person->setLastName($body['memberLastName-' . $x]);
+                $person->setGender($body['memberGender-' . $x]);
+                $person->setEmail($body['memberEmail-' . $x]);
+
+                $phoneType = $body['memberPhoneType-' . $x];
+                if ($phoneType == 'mobile') {
+                    $person->setCellPhone($body['memberPhone-' . $x]);
+                } elseif ($phoneType == 'work') {
+                    $person->setWorkPhone($body['memberPhone-' . $x]);
+                } else {
+                    $person->setHomePhone($body['memberPhone-' . $x]);
+                }
+
+                $birthday = $body['memberBirthday-' . $x];
+                if (!empty($birthday)) {
+                    $birthdayDate = \DateTime::createFromFormat('m/d/Y', $birthday);
+                    $person->setBirthDay($birthdayDate->format('d'));
+                    $person->setBirthMonth($birthdayDate->format('m'));
+                    $person->setBirthYear($birthdayDate->format('Y'));
+                }
+
+                if (!empty($body['memberHideAge-' . $x])) {
+                    $person->setFlags(1);
+                }
+
+                $person->setEnteredBy(-1);
+                $person->setDateEntered(new \DateTime());
+
+                $familyRole = $body['memberRole-' . $x];
+                $person->setFamily($family);
+                $person->setFmrId($familyRole);
+                $person->save();
+                $family->addPerson($person);
+                array_push($familyMembers, $person);
+            }
+            $_SESSION['familyMembers'] = $familyMembers;
+
+            $pageObjects = ['sRootPath' => SystemURLs::getRootPath(), 'family' => $family, 'familyClass' => $_SESSION['regFamilyClass']];
+
+            return $renderer->render($response, 'family-register-done.php', $pageObjects);
+        });
     }
-
-    $this->post('/confirm', function ($request, $response, $args) {
-        $renderer = new PhpRenderer('templates/registration/');
-
-        $body = $request->getParsedBody();
-        $family = $_SESSION['regFamily'];
-        $familyCount = $_SESSION['regFamilyCount'];
-        $familyMembers = [];
-        for ($x = 1; $x <= $familyCount; $x++) {
-            $person = new Person();
-            $person->setFirstName($body['memberFirstName-'.$x]);
-            $person->setLastName($body['memberLastName-'.$x]);
-            $person->setGender($body['memberGender-'.$x]);
-            $person->setEmail($body['memberEmail-'.$x]);
-
-            $phoneType = $body['memberPhoneType-'.$x];
-            if ($phoneType == 'mobile') {
-                $person->setCellPhone($body['memberPhone-'.$x]);
-            } elseif ($phoneType == 'work') {
-                $person->setWorkPhone($body['memberPhone-'.$x]);
-            } else {
-                $person->setHomePhone($body['memberPhone-'.$x]);
-            }
-
-            $birthday = $body['memberBirthday-'.$x];
-            if (!empty($birthday)) {
-                $birthdayDate = \DateTime::createFromFormat('m/d/Y', $birthday);
-                $person->setBirthDay($birthdayDate->format('d'));
-                $person->setBirthMonth($birthdayDate->format('m'));
-                $person->setBirthYear($birthdayDate->format('Y'));
-            }
-
-            if (!empty($body['memberHideAge-'.$x])) {
-                $person->setFlags(1);
-            }
-
-            $person->setEnteredBy(-1);
-            $person->setDateEntered(new \DateTime());
-
-            $familyRole = $body['memberRole-'.$x];
-            $person->setFamily($family);
-            $person->setFmrId($familyRole);
-            $person->save();
-            $family->addPerson($person);
-            array_push($familyMembers, $person);
-        }
-        $_SESSION['familyMembers'] = $familyMembers;
-
-        $pageObjects = ['sRootPath' => SystemURLs::getRootPath(), 'family' => $family, 'familyClass' => $_SESSION['regFamilyClass']];
-
-        return $renderer->render($response, 'family-register-done.php', $pageObjects);
-    });
 });

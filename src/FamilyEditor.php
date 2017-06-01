@@ -99,7 +99,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $sZip = FilterInput($_POST['Zip']);
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-    if (SystemConfig::getValue('cfgForceUppercaseZip')) {
+    if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
         $sZip = strtoupper($sZip);
     }
 
@@ -697,7 +697,7 @@ require 'Include/Header.php';
 						<label><?= gettext('Zip')?>:</label>
 						<input type="text" Name="Zip"  class="form-control" <?php
                             // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-                            if (SystemConfig::getValue('cfgForceUppercaseZip')) {
+                            if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
                                 echo 'style="text-transform:uppercase" ';
                             }
                             echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>

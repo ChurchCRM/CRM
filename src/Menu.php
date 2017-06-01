@@ -138,6 +138,31 @@ require 'Include/Header.php';
             </a>
         </div>
     </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>
+                  <?=
+                     ChurchCRM\Base\EventAttendQuery::create()
+                    ->filterByCheckinDate(null, \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+                    ->filterByCheckoutDate(null, \Propel\Runtime\ActiveQuery\Criteria::EQUAL)
+                    ->find()
+                    ->count();
+                  ?>
+                </h3>
+                <p>
+                    <?= gettext('Attendees Checked In') ?>
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-gg"></i>
+            </div>
+            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
+                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
 </div><!-- /.row -->
 
 <?php
@@ -161,7 +186,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 </div>
 <?php
 
-}  //END IF block for Finance permissions to include HTML for Deposit Chart
+                  }  //END IF block for Finance permissions to include HTML for Deposit Chart
 ?>
 
 <div class="row">

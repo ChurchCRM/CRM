@@ -55,7 +55,7 @@ At the top right of the page select the gear icon ⚙ then select >>Edit General
 * Set `sHeader`. You can add a custom header to ChurchCRM by entering the HTML for the custom header.
     Example: If you enter ``<H2>My Church</H2>``, ChurchCRM will display "My Church" in large, 
     bold letters at the top of each page.
-* Set `mailChimpApiKey`. MailChimp is a web service that makes it easy to send and track bulk emails. If you do not have an account, create a free one here: http://mailchimp.com/signup. Once you have an account, create an API Key at http://kb.mailchimp.com/accounts/management/about-api-keys and enter that value into this setting.
+* Set `sMailChimpApiKey`. MailChimp is a web service that makes it easy to send and track bulk emails. If you do not have an account, create a free one here: http://mailchimp.com/signup. Once you have an account, create an API Key at http://kb.mailchimp.com/accounts/management/about-api-keys and enter that value into this setting.
 
 
 ### Report Settings

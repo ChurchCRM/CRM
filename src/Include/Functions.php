@@ -48,8 +48,8 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
   }
 
   // Check for login timeout.  If login has expired, redirect to login page
-  if (SystemConfig::getValue('sSessionTimeout') > 0) {
-      if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('sSessionTimeout')) {
+  if (SystemConfig::getValue('iSessionTimeout') > 0) {
+      if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
           Redirect('Login.php');
           exit;
       } else {
@@ -289,7 +289,7 @@ function RunQuery($sSQL, $bStopOnError = true)
     if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
         return $result;
     } elseif ($bStopOnError) {
-        if (SystemConfig::getValue('sLogLevel ') == "100") { // debug level
+        if (SystemConfig::getValue('sLogLevel') == "100") { // debug level
             die(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error());
         } else {
             die('Database error or invalid data');
@@ -1985,7 +1985,7 @@ function random_color()
 function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
     foreach ($roleEmails as $role => $Email) {
-        if (SystemConfig::getValue('sToEmailAddress') != '' && SystemConfig::getValue('sToEmailAddress') != 'myReceiveEmailAddress' && !stristr($Email, SystemConfig::getValue('sToEmailAddress'))) {
+        if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, SystemConfig::getValue('sToEmailAddress'))) {
             $Email .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
         }
         $Email = urlencode($Email);  // Mailto should comply with RFC 2368

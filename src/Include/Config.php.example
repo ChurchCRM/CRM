@@ -30,7 +30,7 @@ $sRootPath = '||ROOT_PATH||';
 $bLockURL = FALSE;
 
 // URL[0] is the URL that you prefer most users use when they
-// log in.  These are case sensitive.  Only used when $bLockURL = TRUE
+// log in.  These are case sensitive.
 $URL[0] = '||URL||';
 // List as many other URL's as may be needed. Number them sequentially.
 //$URL[1] = 'https://www.mychurch.org/churchcrm/';
