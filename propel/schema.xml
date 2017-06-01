@@ -725,14 +725,14 @@
         </vendor>
     </table>
     
-     <table name="kioskdevice_kdev" idMethod="native" phpName="KioskDevice">
+     <table name="kioskdevice_kdev" idMethod="native" phpName="KioskDevice" description="This contains a list of all (un)registered kiosk devices">
       <column name="kdev_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-      <column name="kdev_GUIDHash" phpName="GUIDHash" type="VARCHAR" size="36"/>
-      <column name="kdev_Name" phpName="Name" type="VARCHAR" size="50"/>
-      <column name="kdev_deviceType" phpName="DeviceType" type="LONGVARCHAR"/>
-      <column name="kdev_lastHeartbeat" phpName="LastHeartbeat" type="LONGVARCHAR" />
-      <column name="kdev_Accepted" phpName="Accepted" type="BOOLEAN"/>
-      <column name="kdev_PendingCommands" phpName="PendingCommands" type="LONGVARCHAR" />
+      <column name="kdev_GUIDHash" phpName="GUIDHash" type="VARCHAR" size="36" description="SHA256 Hash of the GUID stored in the kiosk's cookie"/>
+      <column name="kdev_Name" phpName="Name" type="VARCHAR" size="50" description="Name of the kiosk" />
+      <column name="kdev_deviceType" phpName="DeviceType" type="LONGVARCHAR" description="Kiosk device type" />
+      <column name="kdev_lastHeartbeat" phpName="LastHeartbeat" type="LONGVARCHAR" description="Last time the kiosk sent a heartbeat" />
+      <column name="kdev_Accepted" phpName="Accepted" type="BOOLEAN" description="Has the admin accepted the kiosk after initial registration?" />
+      <column name="kdev_PendingCommands" phpName="PendingCommands" type="LONGVARCHAR" description="Commands waiting to be sent to the kiosk" />
       <index name="kdev_ID">
         <index-column name="kdev_ID"/>
       </index>
@@ -741,9 +741,9 @@
      
     <table name="kioskassginment_kasm" idMethod="native" phpName="KioskAssignment">
       <column name="kasm_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-      <column name="kasm_kdevId" phpName="KioskId" type="INTEGER" size="9"/>
-      <column name="kasm_AssignmentType" phpName="AssignmentType" type="INTEGER" size="9"/>
-      <column name="kasm_EventId" phpName="EventId" type="INTEGER" size="9"/>
+      <column name="kasm_kdevId" phpName="KioskId" type="INTEGER" size="9" />
+      <column name="kasm_AssignmentType" phpName="AssignmentType" type="INTEGER" size="9" description="The kiosk's current role."/>
+      <column name="kasm_EventId" phpName="EventId" type="INTEGER" size="9" description="Optional.  If the current role is for event check-in, populate this value" />
       <index name="kasm_ID">
         <index-column name="kasm_ID"/>
       </index>

@@ -367,21 +367,23 @@ This contains definitions for the group-specific fields
 |---|---|---|---|---|---|
 |kasm_ID|Id| [PK]|INTEGER|9||
 |kasm_kdevId|KioskId|[FK] [kioskdevice_kdev](#kioskdevice-kdev)|INTEGER|9||
-|kasm_AssignmentType|AssignmentType||INTEGER|9||
-|kasm_EventId|EventId|[FK] [events_event](#events-event)|INTEGER|9||
+|kasm_AssignmentType|AssignmentType||INTEGER|9|The kiosk's current role.|
+|kasm_EventId|EventId|[FK] [events_event](#events-event)|INTEGER|9|Optional.  If the current role is for event check-in, populate this value|
 ## Table: kioskdevice_kdev<a name="kioskdevice-kdev"></a>
 [Table of Contents](#TOC)
 
+### Description:
+This contains a list of all (un)registered kiosk devices
 ### Columns:
 |Column Name|PHP Name|PK/FK|Format|Length|Description|
 |---|---|---|---|---|---|
 |kdev_ID|Id| [PK]|INTEGER|9||
-|kdev_GUIDHash|GUIDHash||VARCHAR|36||
-|kdev_Name|Name||VARCHAR|50||
-|kdev_deviceType|DeviceType||LONGVARCHAR|||
-|kdev_lastHeartbeat|LastHeartbeat||LONGVARCHAR|||
-|kdev_Accepted|Accepted||BOOLEAN|1||
-|kdev_PendingCommands|PendingCommands||LONGVARCHAR|||
+|kdev_GUIDHash|GUIDHash||VARCHAR|36|SHA256 Hash of the GUID stored in the kiosk's cookie|
+|kdev_Name|Name||VARCHAR|50|Name of the kiosk|
+|kdev_deviceType|DeviceType||LONGVARCHAR||Kiosk device type|
+|kdev_lastHeartbeat|LastHeartbeat||LONGVARCHAR||Last time the kiosk sent a heartbeat|
+|kdev_Accepted|Accepted||BOOLEAN|1|Has the admin accepted the kiosk after initial registration?|
+|kdev_PendingCommands|PendingCommands||LONGVARCHAR||Commands waiting to be sent to the kiosk|
 ## Table: list_lst<a name="list-lst"></a>
 [Table of Contents](#TOC)
 
