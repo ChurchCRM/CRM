@@ -201,6 +201,12 @@
     };
     
     window.CRM.kiosks = {
+        assignmentTypes: {
+            "1":"Event Attendance",
+            "2":"Self Registration",
+            "3":"Self Checkin",
+            "4":"General Attendance"
+        },
         reload: function(id)
         {
           window.CRM.APIRequest({
@@ -257,7 +263,7 @@
         renderAssignment: function(data) {
           if (data.EventId !== 0)
           {
-             return '<option value="'+data.AssignmentType+'-'+data.EventId+'">'+data.AssignmentType+'-'+data.EventId+'</option>';
+             return '<option value="'+data.AssignmentType+'-'+data.EventId+'">'+window.CRM.kiosks.assignmentTypes[data.AssignmentType]+'-'+data.Event.Title+'</option>';
           }
           else
           {
@@ -266,13 +272,16 @@
           }
 
         },
-        GetAssignmentOptions: function() {
+        GetAssignmentOptions: function(data) {
           //var options = '<option value="None">None</option><option value="2">Self Registration</option>';
           var options ='<option value="None">None</option>';
           for (var i=0; i < window.CRM.events.futureEvents.length; i++)
           {
             var event = window.CRM.events.futureEvents[i];
-            options += '<option value="1-'+event.Id+'">Event - '+event.Title+'</option>'
+            if(data.AssignmentType != 1 && data.EventId != event.Id)
+            {
+              options += '<option value="1-'+event.Id+'">Event - '+event.Title+'</option>'
+            }
           }
           return options;
         }

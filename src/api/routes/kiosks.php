@@ -9,6 +9,10 @@ $app->group('/kiosks', function () {
     $this->get('/', function ($request, $response, $args) {
         $Kiosks = KioskDeviceQuery::create()
                 ->joinWithKioskAssignment(Criteria::LEFT_JOIN)
+                ->useKioskAssignmentQuery()
+                  ->joinWithEvent()
+                ->endUse()
+                
                 ->find();
         return $response->write($Kiosks->toJSON());
     });

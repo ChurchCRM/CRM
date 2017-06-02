@@ -122,7 +122,7 @@ require 'Include/Header.php';
         render: function (data,type,full,meta)
         {
           if(full.Accepted){
-            return '<select class="assignmentMenu" data-kioskid="'+full.Id+'" data-selectedassignment='+data+'>'+window.CRM.kiosks.renderAssignment(data)+ window.CRM.kiosks.GetAssignmentOptions() +'</select>';
+            return '<select class="assignmentMenu" data-kioskid="'+full.Id+'" data-selectedassignment='+data+'>'+window.CRM.kiosks.renderAssignment(data)+ window.CRM.kiosks.GetAssignmentOptions(data) +'</select>';
           }
           else
           {
