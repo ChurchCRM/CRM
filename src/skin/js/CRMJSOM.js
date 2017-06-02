@@ -261,7 +261,7 @@
           })
         },
         renderAssignment: function(data) {
-          if (data.EventId !== 0)
+          if (data.EventId !== null)
           {
              return '<option value="'+data.AssignmentType+'-'+data.EventId+'">'+window.CRM.kiosks.assignmentTypes[data.AssignmentType]+'-'+data.Event.Title+'</option>';
           }
@@ -278,7 +278,7 @@
           for (var i=0; i < window.CRM.events.futureEvents.length; i++)
           {
             var event = window.CRM.events.futureEvents[i];
-            if(data.AssignmentType != 1 && data.EventId != event.Id)
+            if( !( data.AssignmentType == 1 && data.EventId == event.Id))
             {
               options += '<option value="1-'+event.Id+'">Event - '+event.Title+'</option>'
             }

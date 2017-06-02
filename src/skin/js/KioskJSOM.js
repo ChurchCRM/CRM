@@ -70,6 +70,15 @@ window.CRM.kiosk = {
        path:"heartbeat"
      }).
         done(function(data){
+          thisAssignment = JSON.parse(data.Assignment);
+          if( window.CRM.kioskAssignmentId === undefined) 
+          {
+            window.CRM.kioskAssignmentId = thisAssignment;
+          }
+          else if (thisAssignment == null || thisAssignment.EventId != window.CRM.kioskAssignmentId.EventId){
+            location.reload();
+          }
+          
           if (data.Commands == "Reload")
           {
             location.reload();

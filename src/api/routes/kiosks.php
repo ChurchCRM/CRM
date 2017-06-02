@@ -10,7 +10,7 @@ $app->group('/kiosks', function () {
         $Kiosks = KioskDeviceQuery::create()
                 ->joinWithKioskAssignment(Criteria::LEFT_JOIN)
                 ->useKioskAssignmentQuery()
-                  ->joinWithEvent()
+                  ->joinWithEvent(Criteria::LEFT_JOIN)
                 ->endUse()
                 
                 ->find();
