@@ -196,6 +196,14 @@ $isAdmin = $_SESSION['user']->isAdmin();
                                 </div>
                             </a>
                         </li>
+                        <li>
+                            <a href="<?= SystemURLs::getRootPath() ?>/KioskManager.php">
+                                <i class="menu-icon fa fa-laptop bg-blue-gradient"></i>
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading"><?= _('Kiosk Manager') ?></h4>
+                                </div>
+                            </a>
+                        </li>
                         <?php
 
 } else {
