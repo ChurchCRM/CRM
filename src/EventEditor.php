@@ -490,14 +490,12 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
       <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>">
         <?php
           $groups=  ChurchCRM\Base\GroupQuery::create()->find();
-          Foreach ($groups as $group)
-          {
-            ?>
+            foreach ($groups as $group) {
+                ?>
          <option value="<?= $group->getId() ?>" <?= ($group->getId() == $nEventGroupId ? "Selected":"") ?>><?= $group->getName() ?></option>
             <?php
-            
-          }
-        ?>
+
+            } ?>
       </select>
     </td>
 
