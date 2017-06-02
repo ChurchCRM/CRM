@@ -487,8 +487,18 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
       <?= gettext('Event Group') ?>:
     </td>
     <td class="TextColumn">
-      <input type="text" name="EventGroup" value="<?= $nEventGroupId ?>"
-             maxlength="10" id="EventGroup" size="50" class='form-control'>
+      <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>">
+        <?php
+          $groups=  ChurchCRM\Base\GroupQuery::create()->find();
+          Foreach ($groups as $group)
+          {
+            ?>
+         <option value="<?= $group->getId() ?>" <?= ($group->getId() == $nEventGroupId ? "Selected":"") ?>><?= $group->getName() ?></option>
+            <?php
+            
+          }
+        ?>
+      </select>
     </td>
 
   </tr>

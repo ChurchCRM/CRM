@@ -13,7 +13,6 @@ window.CRM.kiosk = {
 
   renderClassMember: function (classMember) {
       existingDiv = $("#personId-"+classMember.personId);
-      console.log(classMember);
       if (existingDiv.length > 0)
       {
 
@@ -55,12 +54,11 @@ window.CRM.kiosk = {
     },
     
   updateActiveClassMembers: function()  {
-     window.CRM.APIRequest({
+     window.CRM.kiosk.APIRequest({
        path:"activeClassMembers"
      })
      .done(function(data){
           $(data.People).each(function(i,d){
-            //console.log(d);
             window.CRM.kiosk.renderClassMember({displayName:d.FirstName+" "+d.LastName, classRole:d.RoleName,personId:d.Id,status:d.status})
           });
           $(".initials-image").initial();
@@ -80,7 +78,6 @@ window.CRM.kiosk = {
           if (data.Commands == "Identify")
           {
             clearInterval(window.CRM.kioskEventLoop);
-            console.log("id");
             $("#event").hide();
             $("#noEvent").show();
             $("#noEvent").html("Kiosk Name: " + data.Name);
@@ -118,32 +115,29 @@ window.CRM.kiosk = {
   },
    
   checkInPerson: function(personId) {
-    window.CRM.APIRequest({
+    window.CRM.kiosk.APIRequest({
       path:"checkin",
       method:"POST",
       data:JSON.stringify({"PersonId":personId})
     }).
     done(function(data){
-      console.log("CheckIn for: "+personId);
       window.CRM.kiosk.setCheckedIn(personId);
     });
     
   },
   
   checkOutPerson: function(personId)  {
-    window.CRM.APIRequest({
+    window.CRM.kiosk.APIRequest({
       path:"checkout",
       method:"POST",
       data:JSON.stringify({"PersonId":personId})
     }).
     done(function(data){
-      console.log("CheckOut for: "+personId);
       window.CRM.kiosk.setCheckedOut(personId);
     });
   },
   
   setCheckedOut: function (personId)  {
-    console.log("setting checked out" + personId);
     $personDiv = $("#personId-"+personId)
     $personDivButton = $("#personId-"+personId+" .checkoutButton")
     $personDivButton.addClass("checkinButton");
@@ -154,7 +148,6 @@ window.CRM.kiosk = {
   },
   
   setCheckedIn: function (personId)  {
-    console.log("setting checked in" + personId);
     $personDiv = $("#personId-"+personId)
     
     $personDivButton = $("#personId-"+personId+" .checkinButton")
@@ -168,13 +161,13 @@ window.CRM.kiosk = {
   },
   
   triggerNotification:  function(personId)  {
-     window.CRM.APIRequest({
+     window.CRM.kiosk.APIRequest({
       path:"triggerNotification",
       method:"POST",
       data:JSON.stringify({"PersonId":personId})
     }).
     done(function(data){
-       console.log("Parent Alert for: "+personId);
+        //TODO:  Signal to the kiosk user that the notification was sent
     });
    
   },
@@ -203,6 +196,6 @@ window.CRM.kiosk = {
   
   displayPersonInfo: function (personId)
   {
-    console.log(personId);
+    //TODO: Display information (allergies, etc) about the person selected.
   }
 }
