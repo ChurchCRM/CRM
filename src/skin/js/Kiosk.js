@@ -1,10 +1,11 @@
 //first, define the function that will render the active members
   $(document).click(function(){
+    //sadly we cant enter full screen on load, but we can do it the first time anything is clicked.
     window.CRM.kiosk.enterFullScreen();
   })
    
   $(document).ready(function() {
-    window.CRM.kioskEventLoop = setInterval(window.CRM.kiosk.heartbeat,2000);
+    window.CRM.kiosk.startEventLoop();
   });
     
   $(document).on('click','.widget-user-header', function(event)

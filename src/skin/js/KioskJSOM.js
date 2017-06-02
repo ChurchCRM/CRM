@@ -161,14 +161,16 @@ window.CRM.kiosk = {
   },
   
   triggerNotification:  function(personId)  {
-     window.CRM.kiosk.APIRequest({
-      path:"triggerNotification",
-      method:"POST",
-      data:JSON.stringify({"PersonId":personId})
-    }).
-    done(function(data){
-        //TODO:  Signal to the kiosk user that the notification was sent
-    });
+    window.CRM.kiosk.stopEventLoop();
+    window.CRM.kiosk.APIRequest({
+     path:"triggerNotification",
+     method:"POST",
+     data:JSON.stringify({"PersonId":personId})
+   }).
+   done(function(data){
+     window.CRM.kiosk.startEventLoop();
+       //TODO:  Signal to the kiosk user that the notification was sent
+   });
    
   },
   
@@ -197,5 +199,14 @@ window.CRM.kiosk = {
   displayPersonInfo: function (personId)
   {
     //TODO: Display information (allergies, etc) about the person selected.
+  },
+  
+  startEventLoop: function() {
+    window.CRM.kiosk.kioskEventLoop = setInterval(window.CRM.kiosk.heartbeat,2000);
+  },
+  
+  stopEventLoop: function() {
+    clearInterval(window.CRM.kiosk.kioskEventLoop);
   }
+
 }
