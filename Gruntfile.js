@@ -258,6 +258,13 @@ module.exports = function (grunt) {
             jqueryuicss: {
                 src: ['https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'],
                 dest: 'src/skin/jquery-ui/'
+            },
+            datatableselect: {
+                src: [
+                    'https://cdn.datatables.net/select/1.2.2/css/select.bootstrap.min.css', 
+                    'https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js'
+                ],
+                dest: 'src/skin/adminlte/plugins/datatables/extensions/Select/'
             }
         },
         sass: {
