@@ -75,7 +75,7 @@ window.CRM.kiosk = {
           {
             window.CRM.kioskAssignmentId = thisAssignment;
           }
-          else if (thisAssignment == null || thisAssignment.EventId != window.CRM.kioskAssignmentId.EventId){
+          else if (thisAssignment === null || thisAssignment.EventId != window.CRM.kioskAssignmentId.EventId){
             location.reload();
           }
           
