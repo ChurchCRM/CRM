@@ -3,7 +3,11 @@
  */
 
     window.CRM.APIRequest = function(options) {
-      options.url=window.CRM.root +"/api/" + options.path;
+      if (!options.method)
+      {
+        options.method="GET"
+      }
+      options.url=window.CRM.root+"/api/"+options.path;
       options.dataType = 'json';
       options.contentType =  "application/json";
       return $.ajax(options);
@@ -194,6 +198,81 @@
         });
       }
 
+    };
+    
+    window.CRM.kiosks = {
+        assignmentTypes: {
+            "1":"Event Attendance",
+            "2":"Self Registration",
+            "3":"Self Checkin",
+            "4":"General Attendance"
+        },
+        reload: function(id)
+        {
+          window.CRM.APIRequest({
+            "path":"kiosks/"+id+"/reloadKiosk",
+            "method":"POST"
+          }).done(function(data){
+            //todo: tell the user the kiosk was reloaded..?  maybe nothing...
+          })
+        },
+        enableRegistration: function() {
+          return window.CRM.APIRequest({
+            "path":"kiosks/allowRegistration",
+            "method":"POST"
+          })  
+        },
+        accept: function (id)
+        {
+           window.CRM.APIRequest({
+            "path":"kiosks/"+id+"/acceptKiosk",
+            "method":"POST"
+          }).done(function(data){
+            window.CRM.kioskDataTable.ajax.reload()
+          })
+        },
+        identify: function (id)
+        {
+           window.CRM.APIRequest({
+            "path":"kiosks/"+id+"/identifyKiosk",
+            "method":"POST"
+          }).done(function(data){
+              //do nothing...
+          })
+        },
+        setAssignment: function (id,assignmentId)
+        {
+          assignmentSplit = assignmentId.split("-");
+          if(assignmentSplit.length > 0)
+          {
+            assignmentType = assignmentSplit[0];
+            eventId = assignmentSplit[1];
+          }
+          else
+          {
+            assignmentType = assignmentId;
+          }
+
+           window.CRM.APIRequest({
+            "path":"kiosks/"+id+"/setAssignment",
+            "method":"POST",
+            "data":JSON.stringify({"assignmentType":assignmentType,"eventId":eventId})
+          }).done(function(data){
+          })
+        }
+    }
+    
+    window.CRM.events = {
+       getFutureEventes: function()
+        {
+          //this could probably be done better, as this option may present a race condition by
+          //populating a window variable with future events that future elements may rely on
+          window.CRM.APIRequest({
+            "path":"events/notDone"
+          }).done(function(data){
+            window.CRM.events.futureEvents=data.Events;
+          });
+        }
     };
     
     window.CRM.groups = {

@@ -8,6 +8,8 @@ use ChurchCRM\EventQuery;
 use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Base\KioskAssignment as BaseKioskAssignment;
 use ChurchCRM\Map\ListOptionTableMap;
+use Propel\Runtime\ActiveQuery\Join;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Skeleton subclass for representing a row from the 'kioskassginment_kasm' table.
@@ -24,12 +26,12 @@ class KioskAssignment extends BaseKioskAssignment
   
   private function getActiveEvent()
   {
-    if ($this->getDeviceType() == KioskAssignmentTypes::GROUPATTENDANCEKIOSK)
+    if ($this->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK)
     {
       $Event = EventQuery::create()
         ->filterByStart('now', Criteria::LESS_EQUAL)
         ->filterByEnd('now',Criteria::GREATER_EQUAL)
-        ->filterByKioskId($this->getId())
+        ->filterById($this->getEventId())
         ->findOne();
       return $Event;
     }
@@ -43,13 +45,17 @@ class KioskAssignment extends BaseKioskAssignment
   {
     if ($this->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK)
     {
+      $groupTypeJoin = new Join();
+      $groupTypeJoin->addCondition("Person2group2roleP2g2r.RoleId", "list_lst.lst_OptionId", Join::EQUAL);
+      $groupTypeJoin->addForeignValueCondition("list_lst", "lst_ID", '', $this->getActiveEvent()->getGroup()->getRoleListId(), Join::EQUAL);
+      $groupTypeJoin->setJoinType(Criteria::LEFT_JOIN);
+
       $ssClass = PersonQuery::create()
                 ->joinWithPerson2group2roleP2g2r()
                 ->usePerson2group2roleP2g2rQuery()
                   ->filterByGroupId($this->getEvent()->getGroupId())
                   ->joinGroup()
-                  ->innerJoin("ListOption")
-                  ->addJoinCondition("ListOption", "Group.RoleListId = ListOption.Id")
+                  ->addJoinObject($groupTypeJoin)
                 ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME,"RoleName")
                 ->endUse()
                  ->leftJoin('EventAttend')
