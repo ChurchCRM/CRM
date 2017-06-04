@@ -259,31 +259,6 @@
             "data":JSON.stringify({"assignmentType":assignmentType,"eventId":eventId})
           }).done(function(data){
           })
-        },
-        renderAssignment: function(data) {
-          if (data.EventId !== null)
-          {
-             return '<option value="'+data.AssignmentType+'-'+data.EventId+'">'+window.CRM.kiosks.assignmentTypes[data.AssignmentType]+'-'+data.Event.Title+'</option>';
-          }
-          else
-          {
-            return '<option value="'+data.AssignmentType+'">'+data.AssignmentType+'</option>';
-
-          }
-
-        },
-        GetAssignmentOptions: function(data) {
-          //var options = '<option value="None">None</option><option value="2">Self Registration</option>';
-          var options ='<option value="None">None</option>';
-          for (var i=0; i < window.CRM.events.futureEvents.length; i++)
-          {
-            var event = window.CRM.events.futureEvents[i];
-            if( !( data.AssignmentType == 1 && data.EventId == event.Id))
-            {
-              options += '<option value="1-'+event.Id+'">Event - '+event.Title+'</option>'
-            }
-          }
-          return options;
         }
     }
     

@@ -53,6 +53,33 @@ require 'Include/Header.php';
 
 <script>
   
+  function renderKioskAssignment(data) {
+
+    if(data.Accepted){
+      var options ='<option value="None">None</option>';
+      var currentAssignment = data.KioskAssignments[0];
+      for (var i=0; i < window.CRM.events.futureEvents.length; i++)
+      {
+        var event = window.CRM.events.futureEvents[i];
+        if (currentAssignment !== undefined && currentAssignment.EventId === event.Id)
+        {
+          options += '<option selected value="1-'+event.Id+'">Event - '+event.Title+'</option>';
+        }
+        else
+        {
+          options += '<option value="1-'+event.Id+'">Event - '+event.Title+'</option>';
+        }
+
+      }
+    
+        return '<select class="assignmentMenu" data-kioskid="'+data.Id+'">'+ options +'</select>';
+    }
+    else
+    {
+    return "Kiosk must be accepted";
+    }
+  }
+
   $('#isNewKioskRegistrationActive').change(function() {
     if ($("#isNewKioskRegistrationActive").prop('checked')){
       window.CRM.kiosks.enableRegistration().done(function(data) {
@@ -121,13 +148,7 @@ require 'Include/Header.php';
         },
         render: function (data,type,full,meta)
         {
-          if(full.Accepted){
-            return '<select class="assignmentMenu" data-kioskid="'+full.Id+'" data-selectedassignment='+data+'>'+window.CRM.kiosks.renderAssignment(data)+ window.CRM.kiosks.GetAssignmentOptions(data) +'</select>';
-          }
-          else
-          {
-            return "Kiosk must be accepted";
-          }
+          return renderKioskAssignment(full);
         }
         
       },
