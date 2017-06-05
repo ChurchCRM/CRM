@@ -324,12 +324,4 @@ class Family extends BaseFamily implements iPhoto
             }
         }
     }
-    
-    public function hydrate($row, $startcol = 0, $rehydrate = false)
-    {
-      $r = parent::hydrate($row, $startcol, $rehydrate);
-      $this->setVirtualColumn("FamilyString", $this->getFamilyString());
-      return $r;
-    }   
-
 }

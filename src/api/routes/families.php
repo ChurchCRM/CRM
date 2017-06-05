@@ -13,7 +13,10 @@ $app->group('/families', function () {
   
      $this->get('/{familyId:[0-9]+}', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
-      
+        echo "<pre> TEST!!!";
+        print_r($family->toArray());
+        echo "</pre>";
+        exit;
         return $response->withJSON($family->toJSON());
     });
   

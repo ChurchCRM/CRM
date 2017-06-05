@@ -4,7 +4,7 @@ function initPaymentTable()
     {
       width: 'auto',
       title:'Family',
-      data:'Family.FamilyString',
+      data:'FamilyString',
       render: function(data, type, full, meta) {
         var familyName = data ? data : "<?= gettext('Anonymous')?>";
         return '<a href=\'PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' + depositSlipID +
@@ -46,8 +46,7 @@ function initPaymentTable()
 
   dataT = $("#paymentsTable").DataTable({
     ajax:{
-      url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
-      dataSrc:"Pledges"
+      url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges"
     },
     columns: colDef,
     responsive: true,
