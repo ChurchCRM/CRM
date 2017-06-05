@@ -13,24 +13,22 @@ $app->group('/families', function () {
   
      $this->get('/{familyId:[0-9]+}', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
-        echo "<pre> TEST!!!";
-        print_r($family->toArray());
-        echo "</pre>";
-        exit;
         return $response->withJSON($family->toJSON());
     });
   
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
-         $q = FamilyQuery::create()
-          ->filterByName("%$query%", Criteria::LIKE)
-          ->limit(15)
-          ->withColumn('CONCAT( Family.Name, " - ", Family.Address1," / ", Family.City, " ", Family.State)', 'displayName')
-          ->withColumn('CONCAT("'.SystemURLs::getRootPath().'FamilyView.php?FamilyID=",Family.Id)', 'uri')
-          ->select(['displayName', 'uri','Id'])
-          ->find();
+        $results = [];
+        $q = FamilyQuery::create()
+            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+            ->limit(15)
+            ->find();
+        foreach ($q as $family)
+        {
+          array_push($results,$family->toSearchArray());
+        }
 
-       return $response->withJSON($q->toJSON());
+       return $response->withJSON($results);
     });
 
     $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {

@@ -324,4 +324,21 @@ class Family extends BaseFamily implements iPhoto
             }
         }
     }
+    
+    public function toArray()
+    {
+      $array = parent::toArray();
+      $array['FamilyString']=$this->getFamilyString();
+      return $array;
+    }
+    
+    public function toSearchArray()
+    {
+      $searchArray=[
+          "Id" => $this->getId(),
+          "displayName" => $this->getFamilyString(),
+          "uri" => SystemURLs::getRootPath() . 'FamilyView.php?FamilyID=' . $this->getId()
+      ];
+      return $searchArray;
+    }
 }
