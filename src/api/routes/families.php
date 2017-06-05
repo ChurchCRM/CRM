@@ -28,7 +28,7 @@ $app->group('/families', function () {
           array_push($results,$family->toSearchArray());
         }
 
-       return $response->withJSON($results);
+       return $response->withJSON(json_encode(["Families"=>$results]));
     });
 
     $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
