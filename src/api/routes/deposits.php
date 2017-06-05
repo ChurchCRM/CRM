@@ -76,11 +76,11 @@ $app->group('/deposits', function () {
             ->filterByDepid($id)
             ->groupByGroupkey()
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
-            ->joinFamily(null, Propel\Runtime\ActiveQuery\Criteria::LEFT_JOIN)
-            ->withColumn('Family.Name')
+            ->joinWithFamily(null, Propel\Runtime\ActiveQuery\Criteria::LEFT_JOIN)
             ->joinDonationFund()
             ->withColumn('DonationFund.Name')
             ->find()
+                
             ->toJSON();
     });
 });

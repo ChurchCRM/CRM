@@ -4,7 +4,7 @@ function initPaymentTable()
     {
       width: 'auto',
       title:'Family',
-      data:'FamilyName',
+      data:'Family.FamilyString',
       render: function(data, type, full, meta) {
         var familyName = data ? data : "<?= gettext('Anonymous')?>";
         return '<a href=\'PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' + depositSlipID +

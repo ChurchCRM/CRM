@@ -360,7 +360,7 @@ class FinancialService
             $values = new \stdClass();
             $values->plg_plgID = $plg_plgID;
             $values->plg_FamID = $plg_FamID;
-            $values->familyName = $family->getName();
+            $values->familyString = $family->getVirtualColumns();
             $values->plg_FYID = $plg_FYID;
             $values->FiscalYear = MakeFYString($plg_FYID);
             $values->plg_date = $plg_date;

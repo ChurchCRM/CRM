@@ -10,6 +10,13 @@ use ChurchCRM\dto\SystemURLs;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/families', function () {
+  
+     $this->get('/{familyId:[0-9]+}', function($request, $response, $args)  {
+        $family = FamilyQuery::create()->findPk($args['familyId']);
+      
+        return $response->withJSON($family->toJSON());
+    });
+  
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
          $q = FamilyQuery::create()
