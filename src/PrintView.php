@@ -86,7 +86,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 // Format the BirthDate
-$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '/', $per_Flags);
+$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
 //if ($per_BirthMonth > 0 && $per_BirthDay > 0)
 //{
 //	$dBirthDate = $per_BirthMonth . "/" . $per_BirthDay;
@@ -238,7 +238,7 @@ if ($fam_ID) {
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn"><?= $dBirthDate ?>&nbsp;</td>
 		</tr>
-		<tr>
+		<!--<tr>
 			<td class="LabelColumn"><?= gettext('Family') ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn">
@@ -248,7 +248,7 @@ if ($fam_ID) {
                     echo gettext('Unassigned');
                 } ?>
 			&nbsp;</td>
-		</tr>
+		</tr> 
 		<tr>
 			<td class="LabelColumn"><?= gettext('Family Role') ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
@@ -257,7 +257,7 @@ if ($fam_ID) {
                 } else {
                     echo gettext('Unassigned');
                 } ?>&nbsp;</td>
-		</tr>
+		</tr> -->
 		<?php
             for ($i = 1; $i <= $numColumn2Fields; $i++) {
                 $Row = mysqli_fetch_array($rsCustomFields);
@@ -317,12 +317,12 @@ if ($fam_ID) {
 
 <b><?= gettext('Family Members') ?>:</b>
 <table cellpadding=5 cellspacing=0 width="100%">
-	<tr class="TableHeader">
+	<!--<tr class="TableHeader">
 		<td><?= gettext('Name') ?></td>
 		<td><?= gettext('Gender') ?></td>
 		<td><?= gettext('Role') ?></td>
 		<td><?= gettext('Age') ?></td>
-	</tr>
+	</tr> -->
 <?php
     $sRowClass = 'RowColorA';
 
@@ -343,7 +343,7 @@ if ($fam_ID) {
 				<?= $per_FirstName.' '.$per_LastName ?>
 				<br>
 			</td>
-			<td>
+			<!-- <td>
 				<?php switch ($per_Gender) {case 1: echo gettext('Male'); break; case 2: echo gettext('Female'); break; default: echo ''; } ?>&nbsp;
 			</td>
 			<td>
@@ -351,7 +351,7 @@ if ($fam_ID) {
 			</td>
 			<td data-birth-date="<?= $per_Flags == 1 ? '' : date_create($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay)->format('Y-m-d') ?>">
 
-			</td>
+			</td> -->
 		</tr>
 	<?php
 

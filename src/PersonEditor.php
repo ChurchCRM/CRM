@@ -74,6 +74,21 @@ $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
+// Get the Groups this Person is assigned to
+$sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
+		FROM group_grp
+		LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
+		LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
+		WHERE person2group2role_p2g2r.p2g2r_per_ID = '.$iPersonID.'
+		ORDER BY grp_Name';
+    $rsAssignedGroups = RunQuery($sSQL);
+    $sAssignedGroups = ',';
+
+// Get all the Groups
+$sSQL = 'SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name';
+    $rsGroups = RunQuery($sSQL);
+
+
 //Initialize the error flag
 $bErrorFlag = false;
 $sFirstNameError = '';
@@ -575,9 +590,9 @@ require 'Include/Header.php';
     <div class="box box-info clearfix">
         <div class="box-header">
             <h3 class="box-title"><?= gettext('Personal Info') ?></h3>
-            <div class="pull-right"><br/>
+            <!-- <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
-            </div>
+            </div> -->
         </div><!-- /.box-header -->
         <div class="box-body">
             <div class="form-group">
@@ -602,6 +617,8 @@ require 'Include/Header.php';
                                class="form-control" placeholder="<?= gettext('Mr., Mrs., Dr., Rev.') ?>">
                     </div>
                 </div>
+                
+				 
                 <p/>
                 <div class="row">
                     <div class="col-md-4">
@@ -734,14 +751,15 @@ require 'Include/Header.php';
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+         </div>
+       </div>             
+    
     <div class="box box-info clearfix">
         <div class="box-header">
             <h3 class="box-title"><?= gettext('Family Info') ?></h3>
-            <div class="pull-right"><br/>
+            <!-- <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
-            </div>
+            </div> -->
         </div><!-- /.box-header -->
         <div class="box-body">
             <div class="form-group col-md-3">
@@ -779,12 +797,13 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
+    
     <div class="box box-info clearfix">
         <div class="box-header">
             <h3 class="box-title"><?= gettext('Contact Info') ?></h3>
-            <div class="pull-right"><br/>
+            <!-- <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
-            </div>
+            </div> -->
         </div><!-- /.box-header -->
         <div class="box-body">
             <?php if (!SystemConfig::getValue('bHidePersonAddress')) { /* Person Address can be hidden - General Settings */ ?>
@@ -796,7 +815,7 @@ require 'Include/Header.php';
     echo '<span style="color: red;">';
 }
 
-    echo gettext('Address').' 1:';
+    echo gettext('Address').' 1: (Somente Rua e Numero) BAIRRO SERÁ PREENCHIDO DEPOIS! ';
 
     if ($bFamilyAddress1) {
         echo '</span>';
@@ -812,7 +831,7 @@ require 'Include/Header.php';
         echo '<span style="color: red;">';
     }
 
-    echo gettext('Address').' 2:';
+    echo gettext('Address').' 2: (Casa ou Apto)';
 
     if ($bFamilyAddress2) {
         echo '</span>';
@@ -856,15 +875,7 @@ require 'Include/Header.php';
                         </label>
                         <?php require 'Include/StateDropDown.php'; ?>
                     </div>
-                    <div class="form-group col-md-2">
-                        <label><?= gettext('None State') ?>:</label>
-                        <input type="text" name="StateTextbox"
-                               value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
-        echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
-    } ?>"
-                               size="20" maxlength="30" class="form-control">
-                    </div>
-
+                    
                     <div class="form-group col-md-1">
                         <label for="Zip">
                             <?php if ($bFamilyZip) {
@@ -1043,9 +1054,9 @@ require 'Include/Header.php';
     <div class="box box-info clearfix">
         <div class="box-header">
             <h3 class="box-title"><?= gettext('Membership Info') ?></h3>
-            <div class="pull-right"><br/>
+            <!-- <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
-            </div>
+            </div> -->
         </div><!-- /.box-header -->
         <div class="box-body">
             <div class="row">
@@ -1103,14 +1114,147 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
+    
+    <!-- inicio do meu codigo de grupos yuri --> 
+       <div class="box box-info clearfix">
+       
+       <div class="box-header">
+            <h3 class="box-title"><?= gettext('Assigned Groups') ?></h3>
+            </div><!-- /.box-header -->
+        <div class="box-body">     
+
+               
+            <div class="main-box clearfix">
+            <div class="main-box-body clearfix">
+              <?php
+              //Was anything returned?
+              if (mysqli_num_rows($rsAssignedGroups) == 0) {
+                  ?>
+                <br>
+                <div class="alert alert-warning">
+                  <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No group assignments.') ?></span>
+                </div>
+              <?php
+
+              } else {
+                  echo '<div class="row">';
+                // Loop through the rows
+                while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
+                    extract($aRow); ?>
+                  <div class="col-md-3">
+                    <p><br/></p>
+                    <!-- Info box -->
+                    <div class="box box-info">
+                      <div class="box-header">
+                        <h3 class="box-title"><a href="GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
+
+                        <div class="box-tools pull-right">
+                          <div class="label bg-aqua"><?= $roleName ?></div>
+                        </div>
+                      </div>
+                      <?php
+                      // If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
+                      if ($grp_hasSpecialProps) {
+                          // Get the special properties for this group
+                        $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = '.$grp_ID." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
+                          $rsPropList = RunQuery($sSQL);
+
+                          $sSQL = 'SELECT * FROM groupprop_'.$grp_ID.' WHERE per_ID = '.$iPersonID;
+                          $rsPersonProps = RunQuery($sSQL);
+                          $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
+
+                          echo '<div class="box-body">';
+
+                          while ($aProps = mysqli_fetch_array($rsPropList)) {
+                              extract($aProps);
+                              $currentData = trim($aPersonProps[$prop_Field]);
+                              if (strlen($currentData) > 0) {
+                                  $sRowClass = AlternateRowStyle($sRowClass);
+                                  if ($type_ID == 11) {
+                                      $prop_Special = $sPhoneCountry;
+                                  }
+                                  echo '<strong>'.$prop_Name.'</strong>: '.displayCustomField($type_ID, $currentData, $prop_Special).'<br/>';
+                              }
+                          }
+
+                          echo '</div><!-- /.box-body -->';
+                      } ?>
+                      <div class="box-footer">
+                        <code>
+                          <?php if ($_SESSION['bManageGroups']) {
+                          ?>
+                            <a href="GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Change Role') ?></a></li>
+                                <?php if ($grp_hasSpecialProps) {
+                              ?>
+                                  <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
+                                <?php
+
+                          } ?>
+                              </ul>
+                            </div>
+                            <a href="#" onclick="GroupRemove(<?= $grp_ID.', '.$iPersonID ?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
+                          <?php
+
+                      } ?>
+                        </code>
+                      </div>
+                      <!-- /.box-footer-->
+                    </div>
+                    <!-- /.box -->
+                  </div>
+                  <?php
+                  // NOTE: this method is crude.  Need to replace this with use of an array.
+                  $sAssignedGroups .= $grp_ID.',';
+                }
+                  echo '</div>';
+              }
+    if ($_SESSION['bManageGroups']) {
+        ?>
+                <div class="alert alert-info">
+                  <h4><strong><?php echo gettext('Assign New Group'); ?> </strong></h4>
+                  <i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext('Person will be assigned to the Group in the Default Role.') ?></span>
+
+                  <p><br></p>
+                  <select style="color:#000000" name="GroupAssignID">
+                    <?php while ($aRow = mysqli_fetch_array($rsGroups)) {
+            extract($aRow);
+
+                      //If the property doesn't already exist for this Person, write the <OPTION> tag
+                      if (strlen(strstr($sAssignedGroups, ','.$grp_ID.',')) == 0) {
+                          echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
+                      }
+        } ?>
+                  </select>
+                  <a href="#" onclick="GroupAdd()" class="btn btn-success" role="button"><?= gettext('Assign User to Group') ?></a>
+                  <br>
+                </div>
+              <?php
+
+    } ?>
+            </div>
+          </div>   
+          
+        </div>
+    </div>
+    
+    <!-- fim do meu codigo de grupos yuri -->
+    
   <?php if ($numCustomFields > 0) {
                             ?>
     <div class="box box-info clearfix">
         <div class="box-header">
             <h3 class="box-title"><?= gettext('Custom Fields') ?></h3>
-            <div class="pull-right"><br/>
+            <!-- <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
-            </div>
+            </div> -->
         </div><!-- /.box-header -->
         <div class="box-body">
             <?php if ($numCustomFields > 0) {
@@ -1158,9 +1302,33 @@ require 'Include/Header.php';
 </form>
 
 <script type="text/javascript">
+	  var person_ID = <?= $iPersonID ?>;
 	$(function() {
 		$("[data-mask]").inputmask();
 	});
+	
+function GroupAdd() {
+    var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
+    $.ajax({
+      method: "POST",
+      url: window.CRM.root + "/api/groups/" + GroupAssignID + "/adduser/" + person_ID
+    }).done(function (data) {
+      location.reload();
+    });
+  }
+  
+  function GroupRemove(Group, Person) {
+    var answer = confirm("<?= gettext('Are you sure you want to remove this person from the Group') ?>");
+    if (answer)
+      $.ajax({
+        method: "POST",
+        data:{"_METHOD":"DELETE"},
+        url: window.CRM.root + "/api/groups/" + Group + "/removeuser/" + Person
+      }).done(function (data) {
+        location.reload();
+      });
+  }	
+	
 </script>
 
 <?php require 'Include/Footer.php' ?>
