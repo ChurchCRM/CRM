@@ -1322,7 +1322,7 @@ function GroupAdd() {
       method: "POST",
       url: window.CRM.root + "/api/groups/" + GroupAssignID + "/adduser/" + person_ID
     }).done(function (data) {
-      location.reload();
+      //location.reload();
     });
   }
   
