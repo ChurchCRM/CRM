@@ -153,7 +153,7 @@ require 'Include/HeaderNotLoggedIn.php';
 <div class="login-box">
     <div class="login-logo">
         <img src="https://ipjardimguanabara.org/wp-content/uploads/Logotipo.png" alt="Mountain View" style="width:304px">
-        <br> <h4> SISTEMA DE REGISTRO DE MEMBROS </h4>
+        <h4> SISTEMA DE REGISTRO DE MEMBROS </h4>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
