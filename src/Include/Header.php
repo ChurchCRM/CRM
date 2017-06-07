@@ -79,7 +79,7 @@ $MenuFirst = 1;
     <!-- Logo -->
     <a href="<?= SystemURLs::getRootPath() ?>/Menu.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>C</b>RM</span>
+      <span class="logo-mini"><img src="https://ipjardimguanabara.org/wp-content/uploads/logomarca_branca_peq.png" style="height:40px";></span>
       <!-- logo for regular state and mobile devices -->
       <?php
       $headerHTML = '<b>Church</b>CRM';
@@ -88,7 +88,7 @@ $MenuFirst = 1;
           $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
       }
       ?>
-      <span class="logo-lg"><?= $headerHTML ?></span>
+      <span class="logo-lg"><img src="https://ipjardimguanabara.org/wp-content/uploads/Logotipo_Branco_mini.png" style="height:40px";></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -104,7 +104,7 @@ $MenuFirst = 1;
         <ul class="nav navbar-nav">
             <!-- Cart Functions: style can be found in dropdown.less -->
             <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your Cart') ?>">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-shopping-cart"></i>
                     <span id="iconCount" class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
                 </a>
@@ -160,7 +160,7 @@ $MenuFirst = 1;
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
@@ -185,17 +185,17 @@ $MenuFirst = 1;
             </ul>
           </li>
           <li class="hidden-xxs">
-            <a href="http://docs.churchcrm.io" target="_blank" title="<?= gettext('Read the docs') ?>">
+            <a href="http://docs.churchcrm.io" target="_blank">
               <i class="fa fa-support"></i>
             </a>
           </li>
           <li class="hidden-xxs">
-            <a href="#" data-toggle="modal" data-target="#IssueReportModal" title="<?= gettext('Report an issue') ?>">
+            <a href="#" data-toggle="modal" data-target="#IssueReportModal">
               <i class="fa fa-bug"></i>
             </a>
           </li>
           <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" title="<?= gettext('Log off') ?>">
+            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
               <i class="fa fa-power-off"></i>
             </a>
           </li>
@@ -204,7 +204,7 @@ $MenuFirst = 1;
           $taskSize = count($tasks);
           ?>
           <li class="dropdown settings-dropdown">
-            <a href="#" data-toggle="control-sidebar" title="<?= gettext('Your tasks') ?>">
+            <a href="#" data-toggle="control-sidebar">
               <i class="fa fa-gears"></i>
               <span class="label label-danger"><?= $taskSize ?></span>
             </a>
