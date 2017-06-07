@@ -62,58 +62,45 @@ class SystemConfig
         ];
     }
 
-    public static function getNameChoices()
-    {
-        return [
-            "Choices" => [
-                gettext("Title FirstName MiddleName LastName").":0",
-                gettext("Title FirstName MiddleInitial. LastName").":1",
-                gettext("LastName, Title FirstName MiddleName").":2",
-                gettext("LastName, Title FirstName MiddleInitial").":3",
-                gettext("FirstName MiddleName LastName").":4",
-                gettext("Title FirstName LastName").":5",
-                gettext("LastName, Title FirstName").":6"
-            ]
-        ];
-    }
-
-
-    private static function buildConfigs()
+  private static function buildConfigs()
   {
     return array(
-        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), "", json_encode(SystemConfig::getMonoLogLevels())),
+        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), json_encode(SystemConfig::getMonoLogLevels())),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma seperated")),
         "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "text", "1", gettext("These are the family role numbers designated as head of house")),
         "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "text", "2", gettext("These are the family role numbers designated as spouse")),
         "sDirRoleChild" => new ConfigItem(8, "sDirRoleChild", "text", "3", gettext("These are the family role numbers designated as child")),
-        "iSessionTimeout" => new ConfigItem(9, "iSessionTimeout", "number", "3600", gettext("Session timeout length in seconds\rSet to zero to disable session timeouts.")),
+        "sSessionTimeout" => new ConfigItem(9, "sSessionTimeout", "number", "3600", gettext("Session timeout length in seconds\rSet to zero to disable session timeouts.")),
         "aFinanceQueries" => new ConfigItem(10, "aFinanceQueries", "text", "30,31,32", gettext("Queries for which user must have finance permissions to use:")),
         "bCSVAdminOnly" => new ConfigItem(11, "bCSVAdminOnly", "boolean", "1", gettext("Should only administrators have access to the CSV export system and directory report?")),
-        "iMinPasswordLength" => new ConfigItem(13, "iMinPasswordLength", "number", "6", gettext("Minimum length a user may set their password to")),
-        "iMinPasswordChange" => new ConfigItem(14, "iMinPasswordChange", "number", "4", gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature")),
-        "aDisallowedPasswords" => new ConfigItem(15, "aDisallowedPasswords","text", "password,god,jesus,church,christian", gettext("A comma-seperated list of disallowed (too obvious) passwords.")),
+        "sMinPasswordLength" => new ConfigItem(13, "sMinPasswordLength", "number", "6", gettext("Minimum length a user may set their password to")),
+        "sMinPasswordChange" => new ConfigItem(14, "sMinPasswordChange", "number", "4", gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature")),
+        "sDisallowedPasswords" => new ConfigItem(15, "sDisallowedPasswords","text", "password,god,jesus,church,christian", "text", "churchcrm,password,god,jesus,church,christian", gettext("A comma-seperated list of disallowed (too obvious) passwords.")),
         "iMaxFailedLogins" => new ConfigItem(16, "iMaxFailedLogins", "number", "5", gettext("Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.")),
         "iPDFOutputType" => new ConfigItem(20, "iPDFOutputType", "number", "1", gettext("PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window")),
         "sDefaultCity" => new ConfigItem(21, "sDefaultCity", "text", "", gettext("Default City")),
         "sDefaultState" => new ConfigItem(22, "sDefaultState", "text", "", gettext("Default State - Must be 2-letter abbreviation!")),
-        "sDefaultCountry" => new ConfigItem(23, "sDefaultCountry", "choice", "", "", "", json_encode(["Choices" => Countries::getNames()])),
+        "sDefaultCountry" => new ConfigItem(23, "sDefaultCountry", "choice", "", "", json_encode(["Choices" => Countries::getNames()])),
         "sToEmailAddress" => new ConfigItem(26, "sToEmailAddress", "text", "", gettext("Default account for receiving a copy of all emails")),
         "iSMTPTimeout" => new ConfigItem(24, "iSMTPTimeout", "number", "10", gettext("SMTP Server timeout in sec")),
         "sSMTPHost" => new ConfigItem(27, "sSMTPHost", "text", "", gettext("SMTP Server Address (mail.server.com:25)")),
-        "bSMTPAuth" => new ConfigItem(28, "bSMTPAuth", "boolean", "0", gettext("Does your SMTP server require auththentication (username/password)?")),
+        "sSMTPAuth" => new ConfigItem(28, "sSMTPAuth", "boolean", "0", gettext("Does your SMTP server require auththentication (username/password)?")),
         "sSMTPUser" => new ConfigItem(29, "sSMTPUser", "text", "", gettext("SMTP Username")),
-        "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "password", "", gettext("SMTP Password")),
+        "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "text", "", gettext("SMTP Password")),
         "bShowFamilyData" => new ConfigItem(33, "bShowFamilyData", "boolean", "1", gettext("Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ")),
-        "sGZIPname" => new ConfigItem(36, "sGZIPname", "text", "gzip"),
-        "sZIPname" => new ConfigItem(37, "sZIPname", "text", "zip"),
-        "sPGPname" => new ConfigItem(38, "sPGPname", "text", "gpg"),
-        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "", json_encode(SystemConfig::getSupportedLocales())),
-        "iFYMonth" => new ConfigItem(40, "iFYMonth", "choice", "1", gettext("First month of the fiscal year"),"",'{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
-        "sGoogleMapKey" => new ConfigItem(44, "sGoogleMapKey", "text", "", gettext("Google map API requires a unique key") , "https://developers.google.com/maps/documentation/javascript/get-api-key"),
-        "sBingMapKey" => new ConfigItem(10000, "sBingMapKey", "text", "", gettext("Bing map API requires a unique key") , "https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"),
+        "sGZIPname" => new ConfigItem(36, "sGZIPname", "text", "gzip", ""),
+        "sZIPname" => new ConfigItem(37, "sZIPname", "text", "zip", ""),
+        "sPGPname" => new ConfigItem(38, "sPGPname", "text", "gpg", ""),
+        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), json_encode(SystemConfig::getSupportedLocales())),
+        "iFYMonth" => new ConfigItem(40, "iFYMonth", "number", "1", gettext("First month of the fiscal year")),
+        "sXML_RPC_PATH" => new ConfigItem(41, "sXML_RPC_PATH", "text", "XML/RPC.php", gettext("Path to RPC.php, required for Lat/Lon address lookup")),
+        "sGeocoderID" => new ConfigItem(42, "sGeocoderID", "text", "", gettext("User ID for rpc.geocoder.us")),
+        "sGeocoderPW" => new ConfigItem(43, "sGeocoderPW", "text", "", gettext("Password for rpc.geocoder.us")),
+        "sGoogleMapKey" => new ConfigItem(44, "sGoogleMapKey", "text", "", gettext("Google map API requires a unique key") . " - https://developers.google.com/maps/documentation/javascript/get-api-key"),
+        "sBingMapKey" => new ConfigItem(10000, "sBingMapKey", "text", "", gettext("Bing map API requires a unique key") . " - https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"),
         "iMapZoom" => new ConfigItem(10001, "iMapZoom", "number", "10", gettext("Google Maps Zoom")),
-        "iChurchLatitude" => new ConfigItem(45, "iChurchLatitude", "number", "", gettext("Latitude of the church, used to center the Google map")),
-        "iChurchLongitude" => new ConfigItem(46, "iChurchLongitude", "number", "", gettext("Longitude of the church, used to center the Google map")),
+        "nChurchLatitude" => new ConfigItem(45, "nChurchLatitude", "number", "", gettext("Latitude"). " " . gettext("of the church, used to center the Google map")),
+        "nChurchLongitude" => new ConfigItem(46, "nChurchLongitude", "number", "", gettext("Longitude"). " " . gettext("of the church, used to center the Google map")),
         "bHidePersonAddress" => new ConfigItem(47, "bHidePersonAddress", "boolean", "1", gettext("Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.")),
         "bHideFriendDate" => new ConfigItem(48, "bHideFriendDate", "boolean", "0", gettext("Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.")),
         "bHideFamilyNewsletter" => new ConfigItem(49, "bHideFamilyNewsletter", "boolean", "0", gettext("Set true to disable management of newsletter subscriptions in the Family Editor.")),
@@ -121,25 +108,25 @@ class SystemConfig
         "bHideLatLon" => new ConfigItem(51, "bHideLatLon", "boolean", "0", gettext("Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.")),
         "bUseDonationEnvelopes" => new ConfigItem(52, "bUseDonationEnvelopes", "boolean", "0", gettext("Set true to enable use of donation envelopes")),
         "sHeader" => new ConfigItem(53, "sHeader", "textarea", "", gettext("Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.")),
-        "sISTusername" => new ConfigItem(54, "sISTusername", "text", "username", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Username") , "https://www.intelligentsearch.com/Hosted/User"),
-        "sISTpassword" => new ConfigItem(55, "sISTpassword", "password", "", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Password") , "https://www.intelligentsearch.com/Hosted/User"),
-        "sGeoCoderProvider" => new ConfigItem(56, "sGeoCoderProvider", "choice", "GoogleMaps", gettext("Select GeoCoder Provider") , "https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers", '{"Choices":["GoogleMaps", "BingMaps"]}'),
+        "sISTusername" => new ConfigItem(54, "sISTusername", "text", "username", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Username") . " - https://www.intelligentsearch.com/Hosted/User"),
+        "sISTpassword" => new ConfigItem(55, "sISTpassword", "text", "", gettext("Intelligent Search Technolgy, Ltd. CorrectAddress Password") . " - https://www.intelligentsearch.com/Hosted/User"),
+        "sGeoCoderProvider" => new ConfigItem(56, "sGeoCoderProvider", "choice", "GoogleMaps", gettext("Select GeoCoder Provider") . " - https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers", '{"Choices":["GoogleMaps", "BingMaps"]}'),
         "iChecksPerDepositForm" => new ConfigItem(57, "iChecksPerDepositForm", "number", "14", gettext("Number of checks for Deposit Slip Report")),
         "bUseScannedChecks" => new ConfigItem(58, "bUseScannedChecks", "boolean", "0", gettext("Set true to enable use of scanned checks")),
-        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), "",'{"Choices":["'.gettext("miles").'","'.gettext("kilometers").'"]}'),
-        "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone"), "http://php.net/manual/en/timezones.php", json_encode(["Choices"=>timezone_identifiers_list()])),
-        "sGMapIcons" => new ConfigItem(66, "sGMapIcons","text", "green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", gettext("Names of markers for Google Maps in order of classification")),
-        "bForceUppercaseZip" => new ConfigItem(67, "bForceUppercaseZip", "boolean", "0", gettext("Make user-entered zip/postcodes UPPERCASE when saving to the database.")),
+        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), '{"Choices":["'.gettext("miles").'","'.gettext("kilometers").'"]}'),
+        "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone- see http://php.net/manual/en/timezones.php for valid choices."), json_encode(["Choices"=>timezone_identifiers_list()])),
+        "sGMapIcons" => new ConfigItem(66, "sGMapIcons","text", "green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", "text", "red-dot,green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", gettext("Names of markers for Google Maps in order of classification")),
+        "cfgForceUppercaseZip" => new ConfigItem(67, "cfgForceUppercaseZip", "boolean", "0", gettext("Make user-entered zip/postcodes UPPERCASE when saving to the database.")),
         "bEnableNonDeductible" => new ConfigItem(72, "bEnableNonDeductible", "boolean", "0", gettext("Enable non-deductible payments")),
-        "sElectronicTransactionProcessor" => new ConfigItem(73, "sElectronicTransactionProcessor", "choice", "Vanco", gettext("Electronic Transaction Processor"), '','{"Choices":["'.gettext("Vanco").'","'.gettext("Authorize.NET").'"]}'),
-        "bEnableSelfRegistration" => new ConfigItem(80, "bEnableSelfRegistration", "boolean", "0", gettext("Set true to enable family self registration.")),
-        "sPhoneFormat" => new ConfigItem(100, "sPhoneFormat", "text", "(999) 999-9999"),
-        "sPhoneFormatWithExt" => new ConfigItem(101, "sPhoneFormatWithExt", "text", "(999) 999-9999 x99999"),
-        "sDateFormatLong" => new ConfigItem(102, "sDateFormatLong", "text", "m/d/Y"),
-        "sDateFormatNoYear" => new ConfigItem(103, "sDateFormatNoYear", "text", "m/d"),
-        "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y"),
-        "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a"),
-        "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd-Gis"),
+        "sElectronicTransactionProcessor" => new ConfigItem(73, "sElectronicTransactionProcessor", "choice", "Vanco", gettext("Electronic Transaction Processor"), '{"Choices":["'.gettext("Vanco").'","'.gettext("Authorize.NET").'"]}'),
+        "sEnableSelfRegistration" => new ConfigItem(80, "sEnableSelfRegistration", "boolean", "0", gettext("Set true to enable family self registration.")),
+        "sPhoneFormat" => new ConfigItem(100, "sPhoneFormat", "text", "(999) 999-9999", ""),
+        "sPhoneFormatWithExt" => new ConfigItem(101, "sPhoneFormatWithExt", "text", "(999) 999-9999 x99999", ""),
+        "sDateFormatLong" => new ConfigItem(102, "sDateFormatLong", "text", "m/d/Y", ""),
+        "sDateFormatNoYear" => new ConfigItem(103, "sDateFormatNoYear", "text", "m/d", ""),
+        "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y", ""),
+        "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a", ""),
+        "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd-Gis", ""),
         "bRegistered" => new ConfigItem(999, "bRegistered", "boolean", "0", gettext("ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.")),
         "leftX" => new ConfigItem(1001, "leftX", "number", "20", gettext("Left Margin (1 = 1/100th inch)")),
         "incrementY" => new ConfigItem(1002, "incrementY", "number", "4", gettext("Line Thickness (1 = 1/100th inch")),
@@ -175,53 +162,44 @@ class SystemConfig
         "sZeroGivers2" => new ConfigItem(1032, "sZeroGivers2", "text", "Thank you for your help in making a difference. We greatly appreciate your gift!", gettext("Verbage for bottom line of tax report.")),
         "sZeroGivers3" => new ConfigItem(1033, "sZeroGivers3", "text", "If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.", gettext("Verbage for bottom line of tax report.")),
         "sChurchChkAcctNum" => new ConfigItem(1034, "sChurchChkAcctNum", "text", "", gettext("Church Checking Account Number")),
-        "bEnableGravatarPhotos" => new ConfigItem(1035, "bEnableGravatarPhotos", "boolean", "1", gettext("lookup user images on Gravatar when no local image is present")),
-        "bEnableExternalBackupTarget" => new ConfigItem(1036, "bEnableExternalBackupTarget", "boolean", "0", gettext("Enable Remote Backups to Cloud Services")),
-        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), "",'{"Choices":["'.gettext("WebDAV").'","'.gettext("Local").'"]}'),
+        "sEnableGravatarPhotos" => new ConfigItem(1035, "sEnableGravatarPhotos", "boolean", "1", gettext("lookup user images on Gravatar when no local image is present")),
+        "sEnableExternalBackupTarget" => new ConfigItem(1036, "sEnableExternalBackupTarget", "boolean", "0", gettext("Enable Remote Backups to Cloud Services")),
+        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), '{"Choices":["'.gettext("WebDAV").'","'.gettext("Local").'"]}'),
         "sExternalBackupEndpoint" => new ConfigItem(1038, "sExternalBackupEndpoint", "text", "", gettext("Remote Backup Endpoint")),
         "sExternalBackupUsername" => new ConfigItem(1039, "sExternalBackupUsername", "text", "", gettext("Remote Backup Username")),
-        "sExternalBackupPassword" => new ConfigItem(1040, "sExternalBackupPassword", "password", "", gettext("Remote Backup Password")),
+        "sExternalBackupPassword" => new ConfigItem(1040, "sExternalBackupPassword", "text", "", gettext("Remote Backup Password")),
         "sExternalBackupAutoInterval" => new ConfigItem(1041, "sExternalBackupAutoInterval", "text", "", gettext("Interval in Hours for Automatic Remote Backups")),
         "sLastBackupTimeStamp" => new ConfigItem(1042, "sLastBackupTimeStamp", "text", "", gettext("Last Backup Timestamp")),
         "sQBDTSettings" => new ConfigItem(1043, "sQBDTSettings", "json", '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}' , gettext("QuickBooks Deposit Ticket Settings")),
-        "bEnableIntegrityCheck" => new ConfigItem(1044, "bEnableIntegrityCheck", "boolean", "1", gettext("Enable Integrity Check")),
-        "iIntegrityCheckInterval" => new ConfigItem(1045, "iIntegrityCheckInterval", "number", "168", gettext("Interval in Hours for Integrity Check")),
+        "sEnableIntegrityCheck" => new ConfigItem(1044, "sEnableIntegrityCheck", "boolean", "1", gettext("Enable Integrity Check")),
+        "sIntegrityCheckInterval" => new ConfigItem(1045, "sIntegrityCheckInterval", "text", "168", gettext("Interval in Hours for Integrity Check")),
         "sLastIntegrityCheckTimeStamp" => new ConfigItem(1046, "sLastIntegrityCheckTimeStamp", "text", "", gettext("Last Integrity Check Timestamp")),
-        "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "choice", "", "", "",json_encode(["Choices" => Countries::getNames()])),
+        "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "choice", "", "", json_encode(["Choices" => Countries::getNames()])),
         "sConfirmSincerely" => new ConfigItem(1048, "sConfirmSincerely", "text", "Sincerely", gettext("Used to end a letter before Signer")),
         "sDear" => new ConfigItem(1049, "sDear", "text", "Dear", gettext("Text before name in emails/reports")),
-        "sGoogleTrackingID" => new ConfigItem(1050, "sGoogleTrackingID", "text", "", gettext("Google Analytics Tracking Code")),
-        "sMailChimpApiKey" => new ConfigItem(2000, "sMailChimpApiKey", "text", "", "", "http://kb.mailchimp.com/accounts/management/about-api-keys"),
-        "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), "",'{"Choices":["QBDT"]}'),
+        "googleTrackingID" => new ConfigItem(1050, "googleTrackingID", "text", "", gettext("Google Analytics Tracking Code")),
+        "mailChimpApiKey" => new ConfigItem(2000, "mailChimpApiKey", "text", "", gettext("see http://kb.mailchimp.com/accounts/management/about-api-keys")),
+        "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), '{"Choices":["QBDT"]}'),
         "bAllowEmptyLastName" => new ConfigItem(2010, "bAllowEmptyLastName", "boolean", "0", gettext("Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.")),
-        "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "choice", "4", "","", json_encode(SystemConfig::getNameChoices())),
+        "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "number", "3", gettext("Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName ")),
         "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
-        "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL")),
-        "sNexmoAPIKey" => new ConfigItem(2012, "sNexmoAPIKey", "text", "", gettext("Nexmo SMS API Key")),
-        "sNexmoAPISecret" => new ConfigItem(2005, "sNexmoAPISecret", "text", "", gettext("Nexmo SMS API Secret")),
-        "sNexmoFromNumber" => new ConfigItem(2006, "sNexmoFromNumber", "text", "", gettext("Nexmo SMS From Number")),
-        "sOLPURL" => new ConfigItem(2007, "sOLPURL", "text", "http://192.168.1.1:4316", gettext("OpenLP URL")),
-        "sOLPUserName" => new ConfigItem(2008, "sOLPUserName", "text", "", gettext("OpenLP Username")),
-        "sOLPPassword" => new ConfigItem(2009, "sOLPPassword", "text", "", gettext("OpenLP Password")),
-        "sKioskVisibilityTimestamp" => new ConfigItem(2011, "sKioskVisibilityTimestamp", "text", "", gettext("KioskVisibilityTimestamp")),
-        "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen"))
+        "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL"))
       );
   }
 
   private static function buildCategories()
   {
     return array (
-      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude"],
-      gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword"],
-      gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress"],
-      gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
-      gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword"],
-      gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
-      gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
-      gettext('System Settings')  => ["sLogLevel", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
-      gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
+      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","nChurchLatitude","nChurchLongitude"],
+      gettext('User setup') => ["sMinPasswordLength","sMinPasswordChange","iMaxFailedLogins","sSessionTimeout","sDisallowedPasswords"],
+      gettext('Email Setup')  => ["sSMTPHost","sSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress","mailChimpApiKey"],
+      gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","cfgForceUppercaseZip","sEnableGravatarPhotos","sEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
+      gettext('System Settings')  => ["sLastBackupTimeStamp","sExternalBackupAutoInterval","sExternalBackupPassword","sEnableExternalBackupTarget","sExternalBackupType","sExternalBackupEndpoint","sExternalBackupUsername","sLogLevel", "bRegistered","sXML_RPC_PATH","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","sEnableIntegrityCheck","sIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
+      gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword","sGeocoderID","sGeocoderPW"],
+      gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
-      gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"]
+      gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
+      gettext('Other Settings')  => ["iPDFOutputType","googleTrackingID"]
     );
   }
 
@@ -324,19 +302,11 @@ class SystemConfig
             $hasValidSettings = false;
         }
 
-        if (SystemConfig::getBooleanValue("bSMTPAuth") and (empty(self::getValue("sSMTPUser")) or empty(self::getValue("sSMTPPass")))) {
+        if (SystemConfig::getBooleanValue("sSMTPAuth") and (empty(self::getValue("sSMTPUser")) or empty(self::getValue("sSMTPPass")))) {
             $hasValidSettings = false;
         }
 
         return $hasValidSettings;
-    }
-    
-    public static function hasValidSMSServerSettings() {
-      return (!empty(self::getValue("sNexmoAPIKey"))) && (!empty(self::getValue("sNexmoAPISecret"))) && (!empty(self::getValue("sNexmoFromNumber")));
-    }
-    
-    public static function hasValidOpenLPSettings() {
-       return (!empty(self::getValue("sOLPURL")));
     }
 
 }

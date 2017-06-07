@@ -79,7 +79,7 @@ $MenuFirst = 1;
     <!-- Logo -->
     <a href="<?= SystemURLs::getRootPath() ?>/Menu.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><img src="https://ipjardimguanabara.org/wp-content/uploads/logomarca_branca_peq.png" style="height:40px";></span>
+      <span class="logo-mini"><b>C</b>RM</span>
       <!-- logo for regular state and mobile devices -->
       <?php
       $headerHTML = '<b>Church</b>CRM';
@@ -88,7 +88,7 @@ $MenuFirst = 1;
           $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
       }
       ?>
-      <span class="logo-lg"><img src="https://ipjardimguanabara.org/wp-content/uploads/Logotipo_Branco_mini.png" style="height:40px";></span>
+      <span class="logo-lg"><?= $headerHTML ?></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

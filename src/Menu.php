@@ -58,10 +58,9 @@ if ($_SESSION['bFinance']) {
 // Set the page title
 $sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
 
-
 require 'Include/Header.php';
 ?>
-<!-- Small boxes (Stat box) --> <br><br><br>
+<!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->

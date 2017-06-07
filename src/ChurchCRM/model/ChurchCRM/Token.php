@@ -17,48 +17,38 @@ use ChurchCRM\Base\Token as BaseToken;
 class Token extends BaseToken
 {
 
-    public function build($type, $referenceId)
-    {
-        $this->setReferenceId($referenceId);
-        $this->setToken(uniqid());
-        switch ($type) {
-            case "verify":
-                $this->setValidUntilDate(strtotime("+1 week"));
-                $this->setRemainingUses(5);
-                $this->setType($type);
-                break;
-            case "password":
-                $this->setValidUntilDate(strtotime("+1 day"));
-                $this->setRemainingUses(1);
-                $this->setType($type);
-                break;
-        }
+  public function build($type, $referenceId)
+  {
+    $this->setReferenceId($referenceId);
+    $this->setToken(uniqid());
+    switch ($type) {
+      case "verify":
+        $this->setValidUntilDate(strtotime("+1 week"));
+        $this->setRemainingUses(5);
+        $this->setType($type);
+        break;
+    }
+  }
+
+
+  public function isVerifyFamilyToken()
+  {
+    return "verifyFamily" === $this->getType();
+  }
+
+  public function isValid()
+  {
+    $hasUses = true;
+    if ($this->getRemainingUses() !== null) {
+      $hasUses = $this->getRemainingUses() > 0;
     }
 
-
-    public function isVerifyFamilyToken()
-    {
-        return "verifyFamily" === $this->getType();
+    $stillValidDate = true;
+    if ($this->getValidUntilDate() !== null) {
+      $today = new \DateTime();
+      $stillValidDate = $this->getValidUntilDate() > $today;
     }
-
-    public function isPasswordResetToken()
-    {
-        return "password" === $this->getType();
-    }
-
-    public function isValid()
-    {
-        $hasUses = true;
-        if ($this->getRemainingUses() !== null) {
-            $hasUses = $this->getRemainingUses() > 0;
-        }
-
-        $stillValidDate = true;
-        if ($this->getValidUntilDate() !== null) {
-            $today = new \DateTime();
-            $stillValidDate = $this->getValidUntilDate() > $today;
-        }
-        return $stillValidDate && $hasUses;
-    }
+    return $stillValidDate && $hasUses;
+  }
 
 }

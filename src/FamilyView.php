@@ -221,9 +221,9 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                         target="_blank"><?= $family->getAddress() ?></a></span><br>
 
     <?php if ($fam_Latitude && $fam_Longitude) {
-        if (SystemConfig::getValue("iChurchLatitude") && SystemConfig::getValue("iChurchLongitude")) {
-            $sDistance = GeoUtils::LatLonDistance(SystemConfig::getValue("iChurchLatitude"), SystemConfig::getValue("iChurchLongitude"), $fam_Latitude, $fam_Longitude);
-            $sDirection = GeoUtils::LatLonBearing(SystemConfig::getValue("iChurchLatitude"), SystemConfig::getValue("iChurchLongitude"), $fam_Latitude, $fam_Longitude);
+        if (SystemConfig::getValue("nChurchLatitude") && SystemConfig::getValue("nChurchLongitude")) {
+            $sDistance = GeoUtils::LatLonDistance(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
+            $sDirection = GeoUtils::LatLonBearing(SystemConfig::getValue("nChurchLatitude"), SystemConfig::getValue("nChurchLongitude"), $fam_Latitude, $fam_Longitude);
             echo $sDistance . " " . strtolower(SystemConfig::getValue("sDistanceUnit")) . " " . $sDirection . " " . gettext(" of church<br>");
         }
     } else {
@@ -423,7 +423,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                     </span>
                                         </a>
-                                        <a class="delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $person->getId() ?>" data-view="family">
+                                        <a href="SelectDelete.php?mode=person&PersonID=<?= $person->getId() ?>" class="table-link">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>

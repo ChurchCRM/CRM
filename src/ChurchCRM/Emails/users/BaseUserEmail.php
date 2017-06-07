@@ -23,6 +23,8 @@ abstract class BaseUserEmail extends BaseEmail
         $this->mail->msgHTML($this->buildMessage());
     }
 
+    protected abstract function getSubSubject();
+
     public function getTokens()
     {
         $myTokens =  ["toName" => $this->user->getPerson()->getFirstName(),

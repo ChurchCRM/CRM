@@ -17,7 +17,7 @@ $app->group('/persons', function () {
         if ($person->isPhotoLocal()) {
             return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
         } else if ($person->isPhotoRemote()) {
-            return $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType());
+            return $response->withRedirect($person->getPhotoURI());
         } else {
             return $response->withStatus(404);
         }
@@ -28,7 +28,7 @@ $app->group('/persons', function () {
         if ($person->isPhotoLocal()) {
             return $response->write($person->getThumbnailBytes())->withHeader('Content-type', $person->getPhotoContentType());
         } else if ($person->isPhotoRemote()) {
-            return $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType()); 
+            return $response->withRedirect($person->getThumbnailURI());
         } else {
             return $response->withStatus(404);
         }

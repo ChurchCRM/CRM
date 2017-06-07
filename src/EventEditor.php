@@ -264,7 +264,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndHour = $aEndTimeTokens[0];
     $iEventEndMins = $aEndTimeTokens[1];
     $iEventStatus = $inactive;
-    $nEventGroupId = $event_grpid;
 
     $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
 //        echo $cvSQL;
@@ -316,7 +315,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndHour = $sEventEndDateTime->format('H');
     $iEventEndMins = $sEventEndDateTime->format('i');
     $iEventStatus = $_POST['EventStatus'];
-    $nEventGroupId = $_POST['EventGroup'];
 
     $iNumCounts = $_POST['NumAttendCounts'];
     $nCnts = $iNumCounts;
@@ -347,8 +345,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_start` = '".FilterInput($sEventStart)."',
                      `event_end` = '".FilterInput($sEventEnd)."',
                      `inactive` = '".FilterInput($iEventStatus)."',
-                     `event_typename` = '".FilterInput($sTypeName)."',
-                     `event_grpid` = '".FilterInput($nEventGroupId)."';";
+                     `event_typename` = '".FilterInput($sTypeName)."'";
                 RunQuery($sSQL);
                 $iEventID = mysqli_insert_id($cnInfoCentral);
                 for ($c = 0; $c < $iNumCounts; $c++) {
@@ -372,8 +369,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_start` = '".FilterInput($sEventStart)."',
                      `event_end` = '".FilterInput($sEventEnd)."',
                      `inactive` = '".FilterInput($iEventStatus)."',
-                     `event_typename` = '".FilterInput($sTypeName)."',
-                     `event_grpid` = '".FilterInput($nEventGroupId)."'".
+                     `event_typename` = '".FilterInput($sTypeName)."'".
                     " WHERE `event_id` = '".FilterInput($iEventID)."';";
 //            echo $sSQL;
             RunQuery($sSQL);
@@ -478,25 +474,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     <td class="TextColumn">
       <input type="text" name="EventDateRange" value=""
              maxlength="10" id="EventDateRange" size="50" class='form-control' required>
-    </td>
-
-  </tr>
-  
-  <tr>
-    <td class="LabelColumn"><span style="color: red">*</span>
-      <?= gettext('Event Group') ?>:
-    </td>
-    <td class="TextColumn">
-      <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>">
-        <?php
-          $groups=  ChurchCRM\Base\GroupQuery::create()->find();
-            foreach ($groups as $group) {
-                ?>
-         <option value="<?= $group->getId() ?>" <?= ($group->getId() == $nEventGroupId ? "Selected":"") ?>><?= $group->getName() ?></option>
-            <?php
-
-            } ?>
-      </select>
     </td>
 
   </tr>

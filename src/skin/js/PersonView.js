@@ -65,6 +65,36 @@ $(document).ready(function () {
         });
 
     });
+
+    $('#delete-person').click(function (event) {
+        event.preventDefault();
+        var thisLink = $(this);
+        bootbox.confirm({
+            title: "Delete this person?",
+            message: "Do you want to delete <b>" + thisLink.data('person_name')  + "</b>? This cannot be undone.",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Cancel'
+                },
+                confirm: {
+                    label: '<i class="fa fa-trash-o"></i> Delete'
+                }
+            },
+            callback: function (result) {
+                if(result) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: window.CRM.root + '/api/persons/' + thisLink.data('person_id'),
+                        dataType: 'json',
+                        success: function (data, status, xmlHttpReq) {
+                            location.replace( window.CRM.root + "/");
+                        }
+                    });
+                }
+            }
+        });
+    });
+    
     
     $('#edit-role-btn').click(function (event) {
         event.preventDefault();

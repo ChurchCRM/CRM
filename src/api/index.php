@@ -53,9 +53,6 @@ require __DIR__.'/routes/register.php';
 //cart
 require __DIR__.'/routes/cart.php';
 
-require __DIR__.'/routes/kiosks.php';
-
-require __DIR__.'/routes/events.php';
 
 // Run app
 $app->run();

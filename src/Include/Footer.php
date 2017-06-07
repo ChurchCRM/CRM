@@ -196,14 +196,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="<?= SystemURLs::getRootPath() ?>/KioskManager.php">
-                                <i class="menu-icon fa fa-laptop bg-blue-gradient"></i>
-                                <div class="menu-info">
-                                    <h4 class="control-sidebar-subheading"><?= _('Kiosk Manager') ?></h4>
-                                </div>
-                            </a>
-                        </li>
                         <?php
 
 } else {
@@ -284,7 +276,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Select/dataTables.select.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
@@ -306,9 +297,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/bootstrap-validator/validator.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18next.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18nextXHRBackend.min.js"></script>
 
 <?php if (isset($sGlobalMessage)) {
     ?>

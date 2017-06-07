@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM/CRM",
-    "version": "2.8.0",
+    "version": "2.7.5",
     "type": "project",
     "keywords": [
         "church",
@@ -42,8 +42,7 @@
         "verot/class.upload.php": "dev-master",
         "ifsnop/mysqldump-php": "2.*",
         "willdurand/geocoder": "3.3.*",
-        "mustache/mustache": "~2.5",
-        "nexmo/client": "@beta"
+        "mustache/mustache": "~2.5"
     },
     "autoload": {
         "classmap": [
