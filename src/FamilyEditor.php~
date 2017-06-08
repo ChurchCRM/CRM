@@ -683,8 +683,8 @@ require 'Include/Header.php';
 						<input type="text" Name="Address2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250"  class="form-control">
 					</div>
 					<div class="col-md-6">
-						<label for="StatleTextBox"><?= gettext('Bairro')?>: </label>
-						<?php require 'Include/BairroDropDown.php'; ?>
+						<label><?= gettext('Bairro') ?> 2:</label>
+						<input type="text" Name="Bairro" value="<?= htmlentities(stripslashes($sBairro), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250"  class="form-control">
 					</div>
 					<div class="col-md-6">
 						<label><?= gettext('City') ?>:</label>

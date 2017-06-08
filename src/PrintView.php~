@@ -111,7 +111,7 @@ $sCity = SelectWhichInfo($per_City, $fam_City, false);
 $sState = SelectWhichInfo($per_State, $fam_State, false);
 $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
 $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-$sBairro = SelectWhichInfo($per_Bairro, $fam_Bairro, false);
+$sBairro = $per_Bairro;
 
 $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy),
   ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);

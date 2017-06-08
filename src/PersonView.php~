@@ -272,17 +272,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   echo gettext('(No assigned family)');
               } ?>
 						</span></li>
-						
           <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Address'); ?>: <span>
 						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
 						</span></li>
-						
-										 <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Bairro'); ?>: <span>
-						<span><?= $sBairro ?></span>
-						</span></li>
-						
           <?php if ($dBirthDate) {
                   ?>
             <li>
@@ -295,6 +289,15 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
                   } ?>
             </li>
+            
+				
+				
+				 <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Bairro'); ?>: <span>
+						<span><?= $sBairro ?></span>
+						</span></li>
+            
+            
+            
             
           <?php
 
