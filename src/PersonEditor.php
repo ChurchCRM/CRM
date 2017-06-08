@@ -520,7 +520,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iGender = '';
         $sAddress1 = '';
         $sAddress2 = '';
-        $sBairro = '';
+        $sBairro = $per_Bairro;
         $sCity = SystemConfig::getValue('sDefaultCity');
         $sState = SystemConfig::getValue('sDefaultState');
         $sZip = '';
@@ -864,9 +864,7 @@ require 'Include/Header.php';
         echo '</span>';
     } ?>
                             </label>
-                            <input type="text" name="Bairro"
-                                   value="<?= htmlentities(stripslashes($sBairro), ENT_NOQUOTES, 'UTF-8') ?>"
-                                   size="30" maxlength="20" class="form-control">
+                            <?php require 'Include/BairroDropDown.php'; ?>
                         </div>
                         
                         <div class="col-md-3">
