@@ -311,12 +311,17 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $iBirthYear = "'$iBirthYear'";
         }
         
-      
+        //If no bairro, set to NULL
+        if ((strlen($sBairro) != 2)) {
+            $sBairro = 'NULL';
+        } else {
+            $sBairro = "'$sBairro'";
+        }
 
         // New Family (add)
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
-            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_Bairro, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
+            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_bairro, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
 					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sBairro."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['iUserID'].')';
             //Execute the SQL
             RunQuery($sSQL);
@@ -811,9 +816,9 @@ require 'Include/Header.php';
     <div class="box box-info clearfix">
         <div class="box-header">
             <h3 class="box-title"><?= gettext('Contact Info') ?></h3>
-            <div class="pull-right"><br/>
+            <!-- <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
-            </div>
+            </div> -->
         </div><!-- /.box-header -->
         <div class="box-body">
             <?php if (!SystemConfig::getValue('bHidePersonAddress')) { /* Person Address can be hidden - General Settings */ ?>
@@ -825,7 +830,7 @@ require 'Include/Header.php';
     echo '<span style="color: red;">';
 }
 
-    echo gettext('Address').' 1: (Somente Rua e Numero) ';
+    echo gettext('Address').' 1: (Somente Rua e Numero) BAIRRO SERÁ PREENCHIDO DEPOIS! ';
 
     if ($bFamilyAddress1) {
         echo '</span>';
@@ -851,24 +856,6 @@ require 'Include/Header.php';
                                    value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>"
                                    size="30" maxlength="50" class="form-control">
                         </div>
-                        
-                        <div class="col-md-3">
-                            <label>
-                                <?php if ($bFamilyBairro) {
-        echo '<span style="color: red;">';
-    }
-
-    echo gettext('Bairro').':';
-
-    if ($bFamilyBairro) {
-        echo '</span>';
-    } ?>
-                            </label>
-                            <input type="text" name="Bairro"
-                                   value="<?= htmlentities(stripslashes($sBairro), ENT_NOQUOTES, 'UTF-8') ?>"
-                                   size="30" maxlength="20" class="form-control">
-                        </div>
-                        
                         <div class="col-md-3">
                             <label>
                                 <?php if ($bFamilyCity) {
@@ -949,8 +936,6 @@ require 'Include/Header.php';
                        value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="Address2"
                        value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>"></input>
-                <input type="hidden" name="Bairro"
-                       value="<?= htmlentities(stripslashes($sBairro), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="City"
                        value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="State"
