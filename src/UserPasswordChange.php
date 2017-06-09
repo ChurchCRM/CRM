@@ -83,6 +83,7 @@ if (isset($_POST['Submit'])) {
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
+
             if (!empty($curUser->getEmail())) {
                 $email = new PasswordChangeEmail($curUser, $sNewPassword1);
                 if (!$email->send()) {
@@ -104,7 +105,7 @@ if (isset($_POST['Submit'])) {
         $curUser = UserQuery::create()->findPk($iPersonID);
 
         // Build the array of bad passwords
-        $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('sDisallowedPasswords')));
+        $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('aDisallowedPasswords')));
         $aBadPasswords[] = strtolower($curUser->getPerson()->getFirstName());
         $aBadPasswords[] = strtolower($curUser->getPerson()->getMiddleName());
         $aBadPasswords[] = strtolower($curUser->getPerson()->getLastName());
@@ -136,8 +137,8 @@ if (isset($_POST['Submit'])) {
         }
 
         // Is the password valid for length?
-        elseif (strlen($sNewPassword1) < SystemConfig::getValue('sMinPasswordLength')) {
-            $sNewPasswordError = '<br><font color="red">'.gettext('Your new password must be at least').' '.SystemConfig::getValue('sMinPasswordLength').' '.gettext('characters').'</font>';
+        elseif (strlen($sNewPassword1) < SystemConfig::getValue('iMinPasswordLength')) {
+            $sNewPasswordError = '<br><font color="red">'.gettext('Your new password must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters').'</font>';
             $bError = true;
         }
 
@@ -145,7 +146,7 @@ if (isset($_POST['Submit'])) {
         elseif ($sNewPassword1 == $sOldPassword) {
             $sNewPasswordError = '<br><font color="red">'.gettext('You need to actually change your password (nice try, though!)').'</font>';
             $bError = true;
-        } elseif (levenshtein(strtolower($sNewPassword1), strtolower($sOldPassword)) < SystemConfig::getValue('sMinPasswordChange')) {
+        } elseif (levenshtein(strtolower($sNewPassword1), strtolower($sOldPassword)) < SystemConfig::getValue('iMinPasswordChange')) {
             $sNewPasswordError = '<br><font color="red">'.gettext('Your new password is too similar to your old one.  Be more creative!').'</font>';
             $bError = true;
         }
@@ -197,7 +198,7 @@ if ($_SESSION['bNeedPasswordChange']) {
         <div class="box box-primary">
             <div class="box-header with-border">
                 <?php if (!$bAdminOtherUser) {
-    echo '<p>'.gettext('Enter your current password, then your new password twice.  Passwords must be at least').' '.SystemConfig::getValue('sMinPasswordLength').' '.gettext('characters in length.').'</p>';
+    echo '<p>'.gettext('Enter your current password, then your new password twice.  Passwords must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters in length.').'</p>';
 } else {
     echo '<p>'.gettext('Enter a new password for this user.').'</p>';
 }

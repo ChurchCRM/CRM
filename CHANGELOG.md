@@ -953,6 +953,7 @@
 - [**enhancement**] Test with Safari  [#843](https://github.com/ChurchCRM/CRM/issues/843)
 - [**build**][**development**][**enhancement**] Add Service Classes to composer Auto Loader  [#824](https://github.com/ChurchCRM/CRM/issues/824)
 - [**enhancement**] List All Church Events sort order [#785](https://github.com/ChurchCRM/CRM/issues/785)
+
 - [**development**][**enhancement**] Locale: french fr_FR [#775](https://github.com/ChurchCRM/CRM/issues/775)
 - [**enhancement**] Add A4 paper size option for the members directory [#747](https://github.com/ChurchCRM/CRM/issues/747)
 - [**bug**][**enhancement**] fix bad $sRootPath at runTime [#741](https://github.com/ChurchCRM/CRM/issues/741)
