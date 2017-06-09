@@ -30,9 +30,8 @@ if (AppIntegrityService::arePrerequisitesMet()) {
     <p><?= gettext('All components that ChurchCRM relies upon are present and correctly configured on this server') ?></p>
   </div>
   <?php
-
 } else {
-    ?>
+        ?>
   <div class="callout callout-danger">
     <h4><?= gettext('Unmet Application Prerequisites') ?> </h4>
     <p><?= gettext('Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior.') ?></p>
@@ -44,8 +43,7 @@ if (AppIntegrityService::arePrerequisitesMet()) {
     </ul>
   </div>
 <?php
-
-}
+    }
 if ($IntegrityCheckDetails->status == 'failure') {
     ?>
   <div class="callout callout-danger">
@@ -68,7 +66,6 @@ if ($IntegrityCheckDetails->status == 'failure') {
                  <li><?= gettext('File Missing')?></li>
                 </ul>
                 <?php
-
               } else {
                   ?>
                 <ul>
@@ -76,28 +73,23 @@ if ($IntegrityCheckDetails->status == 'failure') {
                  <li><?= gettext('Actual Hash') ?>: <?= $file->actualhash ?></li>
                 </ul>
                 <?php
-
               } ?>
             </li>
             <?php
-
           } ?>
         </ul>
         <?php
-
       } ?>
   </div>
   <?php
-
 } else {
-    ?>
+          ?>
   <div class="callout callout-success">
     <h4><?= gettext('Integrity Check Passed') ?> </h4>
     <p><?= gettext('The previous integrity check passed.  All system file hashes match the expected values.') ?></p>
   </div>
   <?php
-
-}
+      }
 ?>
 
 <?php

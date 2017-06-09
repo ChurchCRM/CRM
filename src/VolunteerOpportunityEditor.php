@@ -294,7 +294,6 @@ if ($numRows == 0) {
     ?>
     <div class="callout callout-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
 <?php
-
 } else { // if an 'action' (up/down arrow clicked, or order was input)
    if ($iRowNum && $sAction != '') {
        // cast as int and couple with switch for sql injection prevention for $row_num
@@ -337,7 +336,7 @@ if ($numRows == 0) {
            $aDescFields[$swapRow] = $aDescFields[$newRow];
        }
    }
-} // end if GET
+    } // end if GET
 
 ?>
 <tr>
@@ -403,7 +402,6 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 	   </tr>
    <?php
-
     }
 }
 ?>
