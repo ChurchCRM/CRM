@@ -1992,7 +1992,6 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
     ?>
       <li> <a href="<?= $href.mb_substr($Email, 0, -3) ?>"><?=$role?></a></li>
     <?php
-
     }
 }
 

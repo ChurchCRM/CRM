@@ -79,7 +79,6 @@ if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade wa
 
 
                 <?php
-
               } ?>
             <p>
               <?= gettext('Please check the following resources for assistance') ?>:
@@ -104,7 +103,6 @@ if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade wa
 
 
   <?php
-
 }
 
 require 'Include/FooterNotLoggedIn.php';

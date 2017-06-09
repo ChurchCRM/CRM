@@ -121,7 +121,6 @@ require 'Include/Header.php';
                     echo '<option value="'.$groupRoleTemplate['grp_ID'].'">'.$groupRoleTemplate['grp_Name'].'</option>';
                 } ?>
               </select><?php
-
             }
             ?>
           </div>

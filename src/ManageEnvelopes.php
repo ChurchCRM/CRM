@@ -209,7 +209,6 @@ foreach ($arrayToLoop as $fam_ID => $value) {
     <input type="text" name="EnvelopeID_<?= $fam_ID ?>" value="<?= $envelope ?>" maxlength="10">
     </td></tr>
     <?php
-
 }
 ?>
 </table><br>

@@ -188,7 +188,6 @@ function RunFreeQuery()
 				<input type="submit" class="btn" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
 			</p></form>
 			<?php
-
         }
 
         echo '<p align="center"><a href="QueryList.php">'.gettext('Return to Query Menu').'</a></p>';

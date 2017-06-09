@@ -45,7 +45,6 @@ if ($_SESSION['bManageGroups']) {
     <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext('Add New Group') ?></button>
 </form>
 <?php
-
 }
 ?>
 
