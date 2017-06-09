@@ -277,7 +277,6 @@ function DoQuery()
     </div>
 </div>
 <?php
-
 }
 
 
@@ -293,7 +292,6 @@ function DisplayQueryInfo()
     </div>
 </div>
 <?php
-
 }
 
 
@@ -393,7 +391,6 @@ if (mysqli_num_rows($rsParameters)) {
     
 </div>
 <?php
-
 }
 
 require 'Include/Footer.php';

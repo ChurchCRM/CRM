@@ -109,7 +109,6 @@ if ($processNews != '') {
     <strong><span style="color: red;"><?= $processNews ?></span></strong>
   </div>
   <?php
-
 }
 ?>
 

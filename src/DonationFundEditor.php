@@ -146,7 +146,6 @@ if ($donationFunds->count() == 0) {
 	<center><h2><?= gettext('No funds have been added yet') ?></h2>
 	</center>
 <?php
-
         } else {
             ?>
 		<tr>
@@ -187,7 +186,7 @@ if ($donationFunds->count() == 0) {
 			</td>
 
 		</tr>
-	<?php 
+	<?php
     } ?>
 
 		<tr>
@@ -204,7 +203,7 @@ if ($donationFunds->count() == 0) {
 			</td>
 			<td>
 		</tr>
-<?php 
+<?php
         } ?>
 		<tr><td colspan="5"><hr></td></tr>
 		<tr>
