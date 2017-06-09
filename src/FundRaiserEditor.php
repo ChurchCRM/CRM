@@ -254,7 +254,6 @@ if ($rsDonatedItems != 0) {
 			</td>
 		</tr>
 	<?php
-
     } // while
 }// if
 ?>
