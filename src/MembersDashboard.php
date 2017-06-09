@@ -109,7 +109,6 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           </ul>
         </div>
        <?php
-
        }
     }
      ?>
@@ -227,7 +226,6 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
                 href="DirectoryReports.php"><?= gettext('Members Directory') ?></a><br><?= gettext('Printable directory of all members, grouped by family where assigned') ?>
           </p>
         <?php
-
      } ?>
         <a class="MediumText" href="LettersAndLabels.php"><?php echo gettext('Letters and Mailing Labels'); ?></a>
         <br><?php echo gettext('Generate letters and mailing labels.'); ?>
@@ -281,7 +279,6 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
               <td><span class="badge bg-green"><?= $demStat['value'] ?></span></td>
             </tr>
           <?php
-
         } ?>
         </table>
       </div>
@@ -319,7 +316,6 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
         <?php
-
         } ?>
       </table>
       <!-- /.box-body-->
