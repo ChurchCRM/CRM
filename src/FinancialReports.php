@@ -182,7 +182,6 @@ if ($sReportType == '') {
         <button type="button" id="clearAllFamilies" class="btn"><?= gettext('Clear All Families') ?></button><br/><br/>
         </td></tr>
         <?php
-
     }
 
     // Starting and Ending Dates for Report
@@ -252,7 +251,6 @@ if ($sReportType == '') {
         </td></tr>
 
         <?php
-
     }
 
     // Filter by Payment Method

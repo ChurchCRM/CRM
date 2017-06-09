@@ -44,7 +44,6 @@ function Header_system_notifications()
     } ?>
   </div>
     <?php
-
     }
 }
 
@@ -57,7 +56,6 @@ function Header_head_metatag()
     } ?>
     <title>ChurchCRM: <?= $sPageTitle ?></title>
     <?php
-
 }
 
 function Header_modals()
@@ -115,7 +113,6 @@ function Header_modals()
     <!-- End Issue Report Modal -->
 
     <?php
-
 }
 
 function Header_body_scripts()
@@ -133,7 +130,6 @@ function Header_body_scripts()
     </script>
     <script src="<?= SystemURLs::getRootPath()?>/skin/js/CRMJSOM.js"></script>
     <?php
-
 }
 
 $security_matrix = GetSecuritySettings();
