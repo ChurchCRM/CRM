@@ -215,7 +215,6 @@ require 'Include/Header.php';
 							<td class="TextColumn"><input type="text" name="MBItem<?= $di_ID ?>" id="MBItem<?= $di_ID ?>" value="<?= $mb_count ?>"></td>
 						</tr>
 					<?php
-
                     }
                     ?>
 				

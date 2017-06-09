@@ -63,7 +63,6 @@ if ($families->count() > 0) {
         </div>
     </div>
     <?php
-
 }
 
 require 'Include/Footer.php'; ?>

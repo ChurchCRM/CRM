@@ -191,7 +191,6 @@ if (FilterInput($_POST['Action']) == 'NEW') {
                         $DOM = date('dS', mktime(0, 0, 0, 1, $kk, 2000)); ?>
                       <option class="SmallText" value=<?= $kk ?>><?= $DOM ?></option>
                       <?php
-
                     } ?>
                  </select>
                </div>
@@ -241,7 +240,6 @@ if (FilterInput($_POST['Action']) == 'NEW') {
     </div>
   </div>
   <?php
-
 }
 
 // Construct the form
@@ -251,7 +249,7 @@ if (FilterInput($_POST['Action']) == 'NEW') {
     <?php if ($numRows > 0) {
     ?>
       <h3 class="box-title"><?= ($numRows == 1 ? gettext('There currently is') : gettext('There currently are')).' '.$numRows.' '.($numRows == 1 ? gettext('custom event type') : gettext('custom event types')) ?></h3>
-    <?php 
+    <?php
 } ?>
   </div>
 
@@ -312,12 +310,10 @@ if (FilterInput($_POST['Action']) == 'NEW') {
               </td>
             </tr>
             <?php
-
           } ?>
         </tbody>
       </table>
       <?php
-
     }
     ?>
   </div>
@@ -334,7 +330,6 @@ if (FilterInput($_POST['Action']) != 'NEW') {
     </form>
   </div>
   <?php
-
     }
 ?>
 
