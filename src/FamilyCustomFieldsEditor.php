@@ -315,9 +315,8 @@ if ($numRows == 0) {
     <center><h2><?= gettext('No custom Family fields have been added yet') ?></h2>
     </center>
 <?php
-
 } else {
-    ?>
+        ?>
     <tr><td colspan="7">
     <?php
     if ($bErrorFlag) {
@@ -401,7 +400,7 @@ if ($numRows == 0) {
             </td>
 
         </tr>
-    <?php 
+    <?php
     } ?>
 
         <tr>
@@ -418,8 +417,8 @@ if ($numRows == 0) {
             </td>
             <td>
         </tr>
-<?php 
-} ?>
+<?php
+    } ?>
         <tr><td colspan="7"><hr></td></tr>
         <tr>
             <td colspan="7">
