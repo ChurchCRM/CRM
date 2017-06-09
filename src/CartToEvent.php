@@ -64,7 +64,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         <tr>
           <td colspan="2"><?= $sGlobalMessage ?></td>
         </tr>
-        <?php 
+        <?php
     } ?>
         <tr>
                 <td class="LabelColumn"><?= gettext('Select Event') ?>:</td>
@@ -90,10 +90,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </form>
 </div>
 <?php
-
 } else {
-    echo '<p align="center" class="callout callout-warning">'.gettext('Your cart is empty!').'</p>';
-}
+        echo '<p align="center" class="callout callout-warning">'.gettext('Your cart is empty!').'</p>';
+    }
 
 require 'Include/Footer.php';
 ?>

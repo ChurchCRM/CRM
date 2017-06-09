@@ -78,13 +78,11 @@ if ($numAttRows != 0) {
      </td>
     </tr>
     <?php
-
     }
 } else {
     ?>
 <tr><td colspan="4" align="center"><?= gettext('No Attendees Assigned to Event') ?></td></tr>
 <?php
-
 }
 
 ?>
