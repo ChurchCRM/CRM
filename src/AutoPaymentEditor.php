@@ -567,7 +567,6 @@ function CreatePaymentMethod()
 }
 </script>
 <?php
-
 }
 ?>
 
@@ -736,7 +735,6 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
 				<td class="TextColumn"><input type="text" id="CreditCardVanco" name="CreditCardVanco" value="<?= $tCreditCardVanco ?>" readonly></td>
 			</tr>
 <?php
-
                     }
 ?>
 
@@ -772,7 +770,6 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
 				<td class="TextColumn"><input type="text" id="AccountVanco" name="AccountVanco" value="<?= $tAccountVanco ?>" readonly></td>
 			</tr>
 <?php
-
 }
 ?>
 
@@ -786,17 +783,14 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
         ?>
 		<input type="button" id="PressToCreatePaymentMethod" value="Store Private Data at Vanco" onclick="CreatePaymentMethod();" />
 <?php
-
     } else {
         ?>
 		<b>Save this record to enable storing private data at Vanco</b>
 <?php
-
     } ?>
 				</td>
 			</tr>
 <?php
-
     }
 ?>
 		</table>

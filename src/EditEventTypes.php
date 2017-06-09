@@ -169,7 +169,6 @@ if ($numCounts) {
         </td>
       </tr>
      <?php
-
     }
      ?>
       <tr>
