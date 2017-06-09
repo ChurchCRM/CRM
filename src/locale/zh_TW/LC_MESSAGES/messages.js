@@ -510,6 +510,8 @@
     "Map this group": "這是根據組",
     "Email Group": "電子郵件組",
     "Total Members": "總會員人數",
+    "Default Role": "默認角色",
+    "Group-Specific Properties": "組特定的屬性",
     "Disabled for this group.": "這組停用。",
     "Assigned Properties": "指定的屬性",
     "Group Members:": "小組成員：",

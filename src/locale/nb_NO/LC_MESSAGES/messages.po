@@ -61,7 +61,7 @@ msgstr "Automatisk betaling konfigurasjon for"
 #: PaddleNumEditor.php:149 PersonEditor.php:579 PersonEditor.php:743
 #: PersonEditor.php:786 PersonEditor.php:1047 PersonEditor.php:1112
 #: PersonEditor.php:1148 PledgeEditor.php:689 PropertyEditor.php:171
-#: PropertyTypeEditor.php:114 UserEditor.php:477 UserPasswordChange.php:231
+#: PropertyTypeEditor.php:114 UserEditor.php:477 UserPasswordChange.php:232
 #: WhyCameEditor.php:101
 msgid "Save"
 msgstr "Lagre"
@@ -73,7 +73,7 @@ msgstr "Lagre"
 #: Include/Functions.php:1176 MapUsingGoogle.php:99 MapUsingGoogle.php:124
 #: PaddleNumEditor.php:178 PersonEditor.php:750 PersonEditor.php:766
 #: PersonEditor.php:1055 PrintView.php:248 PrintView.php:258
-#: SelectDelete.php:157 SelectList.php:43 SelectList.php:53 SelectList.php:69
+#: SelectDelete.php:153 SelectList.php:43 SelectList.php:53 SelectList.php:69
 #: SelectList.php:1118 SelectList.php:1189
 msgid "Unassigned"
 msgstr "Unassigned"
@@ -128,7 +128,7 @@ msgstr "Land"
 msgid "Phone"
 msgstr "Telefon"
 
-#: AutoPaymentEditor.php:723 CartToFamily.php:314 CartView.php:296
+#: AutoPaymentEditor.php:723 CartToFamily.php:314 CartView.php:295
 #: ChurchCRM/Reports/PDF_Directory.php:321
 #: ChurchCRM/Reports/PDF_Directory.php:397
 #: ChurchCRM/Reports/PDF_Directory.php:454 CSVExport.php:155 CSVImport.php:228
@@ -284,7 +284,7 @@ msgstr "Fødsel / Anniversary Dato"
 msgid "Age / Years Married"
 msgstr "Alder / år Gift"
 
-#: CartView.php:299 CSVExport.php:180 CSVExport.php:303 OptionManager.php:64
+#: CartView.php:298 CSVExport.php:180 CSVExport.php:303 OptionManager.php:64
 #: PersonEditor.php:748 PrintView.php:253 queryparameters_qrp.php:5
 #, fuzzy
 msgid "Family Role"
@@ -502,8 +502,8 @@ msgstr "MERK: Separatorer (streker, etc.) eller mangel derav ikke saken"
 msgid "Default country if none specified otherwise"
 msgstr "Standardland hvis ingen spesifisert"
 
-#: CartView.php:298 CSVExport.php:277 CSVImport.php:284 FamilyEditor.php:963
-#: FinancialReports.php:118 MembersDashboard.php:306 OptionManager.php:71
+#: CartView.php:297 CSVExport.php:277 CSVImport.php:284 FamilyEditor.php:963
+#: FinancialReports.php:118 MembersDashboard.php:305 OptionManager.php:71
 #: PersonEditor.php:1053 PrintView.php:293 queryparameters_qrp.php:19
 msgid "Classification"
 msgstr "Klassifisering"
@@ -697,7 +697,7 @@ msgstr "Ingen etternavn angitt!"
 msgid "Add Cart to Family"
 msgstr "Legg Cart til Family"
 
-#: CartToFamily.php:158 CartView.php:294 Checkin.php:323
+#: CartToFamily.php:158 CartView.php:293 Checkin.php:323
 #: DonationFundEditor.php:153 DonationFundEditor.php:216
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:182
 #: EventNames.php:266 FamilyCustomFieldsEditor.php:329
@@ -824,52 +824,52 @@ msgstr "Kart Cart"
 msgid "Name Tags"
 msgstr "Navn"
 
-#: CartView.php:169
+#: CartView.php:168
 msgid "Email Cart"
 msgstr "E Cart"
 
-#: CartView.php:170 GroupView.php:204
+#: CartView.php:169 GroupView.php:204
 #: sundayschool/SundaySchoolClassView.php:99
 msgid "Email (BCC)"
 msgstr "E-post (BCC)"
 
-#: CartView.php:199
+#: CartView.php:198
 msgid "Create Directory From Cart"
 msgstr "Lag katalog fra Cart"
 
-#: CartView.php:227 CartView.php:268
+#: CartView.php:226 CartView.php:267
 msgid "Generate Labels"
 msgstr "Generere etiketter"
 
-#: CartView.php:235
+#: CartView.php:234
 msgid "Bulk Mail Presort"
 msgstr "Bulk Mail Presort"
 
-#: CartView.php:244
+#: CartView.php:243
 msgid "Quiet Presort"
 msgstr "Stille Presort"
 
-#: CartView.php:288
+#: CartView.php:287
 msgid "Your cart contains"
 msgstr "Handlekurven inneholder"
 
-#: CartView.php:288
+#: CartView.php:287
 msgid "persons from"
 msgstr "personer fra"
 
-#: CartView.php:297 CartView.php:355 EditEventTypes.php:168 FamilyView.php:565
+#: CartView.php:296 CartView.php:354 EditEventTypes.php:168 FamilyView.php:565
 #: FamilyView.php:607 GroupView.php:361 GroupView.php:402 PersonView.php:686
 #: PersonView.php:704 PersonView.php:789 PersonView.php:807
 msgid "Remove"
 msgstr "Fjern"
 
-#: CartView.php:318 CartView.php:338 DonationFundEditor.php:180
+#: CartView.php:317 CartView.php:337 DonationFundEditor.php:180
 #: FinancialReports.php:298 Include/Functions.php:959
 #: Include/Functions.php:1043 Reports/ConfirmReport.php:232
 msgid "Yes"
 msgstr "Ja"
 
-#: CartView.php:331 CartView.php:340 DonationFundEditor.php:183
+#: CartView.php:330 CartView.php:339 DonationFundEditor.php:183
 #: FinancialReports.php:299 Include/Functions.php:961
 #: Include/Functions.php:1044 Reports/ConfirmReport.php:234
 msgid "No"
@@ -1016,13 +1016,13 @@ msgid "Information to Include"
 msgstr "Informasjon til Inkluder"
 
 #: AutoPaymentEditor.php:688 AutoPaymentEditor.php:693 CartToFamily.php:238
-#: CartToFamily.php:243 CartView.php:295 CSVExport.php:105 CSVExport.php:110
+#: CartToFamily.php:243 CartView.php:294 CSVExport.php:105 CSVExport.php:110
 #: CSVImport.php:219 CSVImport.php:220 DirectoryReports.php:177
 #: DirectoryReports.php:252
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35 FamilyEditor.php:672
 #: FamilyEditor.php:676 FamilyList.php:43 FamilyView.php:218 GeoPage.php:387
-#: GroupReports.php:127 Menu.php:180 Menu.php:216 PersonEditor.php:799
+#: GroupReports.php:127 Menu.php:205 Menu.php:241 PersonEditor.php:799
 #: PersonEditor.php:815 PersonView.php:273 Register.php:47
 #: Reports/ConfirmReportEmail.php:123 Reports/ConfirmReportEmail.php:128
 msgid "Address"
@@ -1101,7 +1101,7 @@ msgstr "Tittelside"
 msgid "Use Title Page"
 msgstr "Bruk Tittelside"
 
-#: ChurchCRM/dto/SystemConfig.php:118 DirectoryReports.php:248 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:146 DirectoryReports.php:248 Register.php:45
 msgid "Church Name"
 msgstr "Kirke Navn"
 
@@ -1151,7 +1151,8 @@ msgstr "Multiple"
 msgid "Final Price"
 msgstr "Økonomi"
 
-#: DonatedItemEditor.php:265 FindFundRaiser.php:231
+#: DonatedItemEditor.php:265 external/templates/password/enter-username.php:36
+#: FindFundRaiser.php:231
 msgid "Go"
 msgstr "Gå"
 
@@ -1188,12 +1189,12 @@ msgstr "Ugyldige felt eller valg. Endringer ikke lagret! Rett opp og prøv igjen
 msgid "No funds have been added yet"
 msgstr "Ingen midler har blitt lagt til ennå"
 
-#: DonationFundEditor.php:155 EventEditor.php:528 GroupView.php:284
-#: ListEvents.php:218
+#: DonationFundEditor.php:155 EventEditor.php:551 GroupView.php:284
+#: KioskManager.php:34 ListEvents.php:218
 msgid "Active"
 msgstr "Aktiv"
 
-#: DonationFundEditor.php:199 EventEditor.php:537 EventNames.php:236
+#: DonationFundEditor.php:199 EventEditor.php:560 EventNames.php:236
 #: FamilyCustomFieldsEditor.php:413 GroupPropsFormEditor.php:366
 #: OptionManager.php:369 PersonCustomFieldsEditor.php:409
 #: VolunteerOpportunityEditor.php:417
@@ -1216,7 +1217,7 @@ msgstr "Redigere hendelsestyper"
 msgid "Edit Event Type"
 msgstr "Redigere Hendelsestype"
 
-#: EditEventTypes.php:133 EventEditor.php:422 EventEditor.php:450
+#: EditEventTypes.php:133 EventEditor.php:426 EventEditor.php:454
 #: EventNames.php:265 ListEvents.php:215
 msgid "Event Type"
 msgstr "Hendelsestype"
@@ -1230,7 +1231,7 @@ msgstr "Lagre navn"
 msgid "Recurrence Pattern"
 msgstr "Recurrance Mønster"
 
-#: EditEventTypes.php:159 EventEditor.php:482 EventNames.php:269
+#: EditEventTypes.php:159 EventEditor.php:505 EventNames.php:269
 #: ListEvents.php:216
 msgid "Attendance Counts"
 msgstr "Oppmøte teller"
@@ -1252,23 +1253,23 @@ msgstr "Familie"
 #: GroupPropsFormEditor.php:282 GroupPropsFormEditor.php:383 GroupView.php:321
 #: GroupView.php:355 OptionManager.php:79 PersonCustomFieldsEditor.php:312
 #: PersonCustomFieldsEditor.php:431 PersonView.php:682 PropertyEditor.php:131
-#: SelectDelete.php:216
+#: SelectDelete.php:212
 msgid "Type"
 msgstr "Type"
 
 #: AutoPaymentEditor.php:635 ElectronicPaymentList.php:200 FamilyView.php:775
-#: PledgeEditor.php:522 ReminderReport.php:45 SelectDelete.php:218
+#: PledgeEditor.php:522 ReminderReport.php:45 SelectDelete.php:214
 #: sundayschool/SundaySchoolReports.php:160 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "Regnskapsåret"
 
 #: ElectronicPaymentList.php:202 FamilyView.php:667 FamilyView.php:777
-#: PledgeEditor.php:716 SelectDelete.php:220
+#: PledgeEditor.php:716 SelectDelete.php:216
 msgid "Amount"
 msgstr "Beløp"
 
 #: AutoPaymentEditor.php:652 ElectronicPaymentList.php:204 FamilyView.php:669
-#: FamilyView.php:774 FinancialReports.php:305 SelectDelete.php:217
+#: FamilyView.php:774 FinancialReports.php:305 SelectDelete.php:213
 msgid "Fund"
 msgstr "Fond"
 
@@ -1320,7 +1321,7 @@ msgstr "Tilbake til rapport Meny"
 msgid "There "
 msgstr "Det"
 
-#: EventAttendance.php:105 EventEditor.php:459
+#: EventAttendance.php:105 EventEditor.php:463
 msgid "Event Title"
 msgstr "Hendelse Tittel"
 
@@ -1352,43 +1353,43 @@ msgstr "Det er ingen aktiviteter i denne kategorien"
 msgid "There are no Records"
 msgstr "Det er ingen Records"
 
-#: EventEditor.php:400
+#: EventEditor.php:404
 msgid "Editing Event ID: "
 msgstr "Redigerer Event ID:"
 
-#: EventEditor.php:406
+#: EventEditor.php:410
 msgid " errors. Please see below"
 msgstr "feil. Vennligst se nedenfor"
 
-#: EventEditor.php:408
+#: EventEditor.php:412
 #, fuzzy
 msgid "Items with a "
 msgstr "Produkter i handlekurven"
 
-#: EventEditor.php:408
+#: EventEditor.php:412
 #, fuzzy
 msgid " are required"
 msgstr "Denne verdien er nødvendig."
 
-#: EventEditor.php:465
+#: EventEditor.php:469
 #, fuzzy
 msgid "Event Desc"
 msgstr "Hendelse Desc"
 
-#: EventEditor.php:487
+#: EventEditor.php:510
 msgid "No Attendance counts recorded"
 msgstr "Ingen Tilskuere teller opp"
 
-#: EventEditor.php:506
+#: EventEditor.php:529
 msgid "Attendance Notes: "
 msgstr "Oppmøte Merknader:"
 
-#: EventEditor.php:519
+#: EventEditor.php:542
 #, fuzzy
 msgid "Event Sermon"
 msgstr "Hendelse Sermon"
 
-#: EventEditor.php:524
+#: EventEditor.php:547
 #, fuzzy
 msgid "Event Status"
 msgstr "Hendelse Status"
@@ -1719,11 +1720,11 @@ msgstr "Neste utbetalingsdato"
 msgid "Interval (months)"
 msgstr "Intervall (måneder)"
 
-#: FamilyView.php:672 FamilyView.php:784 SelectDelete.php:224
+#: FamilyView.php:672 FamilyView.php:784 SelectDelete.php:220
 msgid "Date Updated"
 msgstr "Dato oppdatert"
 
-#: FamilyView.php:673 FamilyView.php:785 SelectDelete.php:225
+#: FamilyView.php:673 FamilyView.php:785 SelectDelete.php:221
 msgid "Updated By"
 msgstr "Oppdatert av"
 
@@ -1750,7 +1751,7 @@ msgstr "Pantsette eller betaling"
 #: AutoPaymentEditor.php:630 CanvassEditor.php:196 DepositSlipEditor.php:81
 #: EditEventAttendees.php:33 FamilyView.php:776 FindFundRaiser.php:239
 #: FundRaiserEditor.php:166 Include/Functions.php:100 PledgeEditor.php:520
-#: SelectDelete.php:219
+#: SelectDelete.php:215
 msgid "Date"
 msgstr "Dato"
 
@@ -1758,15 +1759,15 @@ msgstr "Dato"
 msgid "NonDeductible"
 msgstr "Nondeductible"
 
-#: FamilyView.php:779 SelectDelete.php:221
+#: FamilyView.php:779 SelectDelete.php:217
 msgid "Schedule"
 msgstr "Planlegg"
 
-#: FamilyView.php:780 SelectDelete.php:222
+#: FamilyView.php:780 SelectDelete.php:218
 msgid "Method"
 msgstr "Metode"
 
-#: FamilyView.php:781 PledgeEditor.php:724 SelectDelete.php:223
+#: FamilyView.php:781 PledgeEditor.php:724 SelectDelete.php:219
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -1912,7 +1913,7 @@ msgstr "Minimun Totalbeløp:"
 msgid "0 - No Minimum"
 msgstr "0 - Ingen Minimum"
 
-#: ChurchCRM/dto/SystemConfig.php:187 FinancialReports.php:281
+#: FinancialReports.php:281
 msgid "Other Settings"
 msgstr "Andre innstillinger"
 
@@ -1936,7 +1937,7 @@ msgstr "Generere:"
 msgid "Only Families with unpaid pledges"
 msgstr "Bare Familier med ubetalte løfter"
 
-#: FinancialReports.php:289 GeoPage.php:341 MembersDashboard.php:118
+#: FinancialReports.php:289 GeoPage.php:341 MembersDashboard.php:117
 msgid "All Families"
 msgstr "Alle familier"
 
@@ -1948,7 +1949,7 @@ msgstr "Rapport Tittel:"
 msgid "Graphic"
 msgstr "Grafisk"
 
-#: ChurchCRM/dto/SystemConfig.php:119 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:147 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Church Adresse"
 
@@ -2148,11 +2149,11 @@ msgstr "Avstand"
 msgid "Direction"
 msgstr "Retning"
 
-#: ChurchCRM/dto/SystemConfig.php:87 FamilyEditor.php:715
+#: FamilyEditor.php:715
 msgid "Latitude"
 msgstr "Latitude"
 
-#: ChurchCRM/dto/SystemConfig.php:88 FamilyEditor.php:719
+#: FamilyEditor.php:719
 msgid "Longitude"
 msgstr "Lengde"
 
@@ -2348,10 +2349,20 @@ msgstr "Kartlegge denne gruppen"
 msgid "Email Group"
 msgstr "E Gruppe"
 
-#: GroupView.php:276
+#: GroupView.php:272
 #, fuzzy
 msgid "Total Members"
 msgstr "Totalt antall medlemmer"
+
+#: GroupView.php:266
+#, fuzzy
+msgid "Default Role"
+msgstr "Standard Rolle"
+
+#: GroupView.php:298
+#, fuzzy
+msgid "Group-Specific Properties"
+msgstr "Gruppe-spesifikke egenskaper"
 
 #: GroupView.php:338
 msgid "Disabled for this group."
@@ -2366,7 +2377,7 @@ msgstr "Tilordnede Egenskaper"
 msgid "Group Members:"
 msgstr "Gruppemedlemmer:"
 
-#: LettersAndLabels.php:28 MembersDashboard.php:233
+#: LettersAndLabels.php:28 MembersDashboard.php:232
 msgid "Letters and Mailing Labels"
 msgstr "Brev og Postetiketter"
 
@@ -2427,7 +2438,7 @@ msgstr "Vennligst Logg inn"
 msgid "Password"
 msgstr "Passord"
 
-#: Login.php:149 Login.php:200
+#: Login.php:149 Login.php:206
 msgid "Login"
 msgstr "Logg"
 
@@ -2476,47 +2487,47 @@ msgstr "Medlem navn"
 msgid "Current Role"
 msgstr "Nåværende rolle"
 
-#: MembersDashboard.php:123
+#: MembersDashboard.php:122
 msgid "Update All Family Coordinates"
 msgstr "Oppdater alle Family Koordinater"
 
-#: MembersDashboard.php:137 Menu.php:73
+#: MembersDashboard.php:136 Menu.php:73
 #: sundayschool/SundaySchoolDashboard.php:104
 msgid "Families"
 msgstr "Familier"
 
-#: MembersDashboard.php:158 Menu.php:92
+#: MembersDashboard.php:157 Menu.php:92
 msgid "People"
 msgstr "Folk"
 
-#: MembersDashboard.php:221
+#: MembersDashboard.php:220
 msgid "Reports on groups and roles"
 msgstr "Rapporter om grupper og roller"
 
-#: MembersDashboard.php:223
+#: MembersDashboard.php:222
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
 msgstr "Rapport om gruppen og roller valgt (det kan være en multi-siders PDF)."
 
-#: MembersDashboard.php:228
+#: MembersDashboard.php:227
 msgid "Members Directory"
 msgstr "Medlemmer Directory"
 
-#: MembersDashboard.php:228
+#: MembersDashboard.php:227
 msgid "Printable directory of all members, grouped by family where assigned"
 msgstr "Utskriftsvennlig katalog over alle medlemmene gruppert etter familie der tildelt"
 
-#: MembersDashboard.php:234
+#: MembersDashboard.php:233
 msgid "Generate letters and mailing labels."
 msgstr "Generere brev og adresseetiketter."
 
-#: MembersDashboard.php:240
+#: MembersDashboard.php:239
 msgid "US Address Verification Report"
 msgstr "USA-adressen senderapport"
 
 #: CartToFamily.php:209 external/templates/registration/family-register.php:31
-#: FamilyEditor.php:661 Menu.php:179 Menu.php:215
+#: FamilyEditor.php:661 Menu.php:204 Menu.php:240
 #: Reports/ConfirmReportEmail.php:118 Reports/ConfirmReport.php:120
-#: SelectDelete.php:153 SelectDelete.php:280
+#: SelectDelete.php:149 SelectDelete.php:276
 msgid "Family Name"
 msgstr "Etternavn"
 
@@ -2533,7 +2544,7 @@ msgstr "Vennligst bekrefte sletting av dette notatet"
 msgid "Yes, delete this record"
 msgstr "Ja, slett denne posten"
 
-#: NoteDelete.php:71 PropertyDelete.php:65 SelectDelete.php:278
+#: NoteDelete.php:71 PropertyDelete.php:65 SelectDelete.php:274
 msgid "(this action cannot be undone)"
 msgstr "(Denne handlingen kan ikke omgjøres)"
 
@@ -2923,7 +2934,7 @@ msgstr "Vennligst bekreft sletting av denne eiendommen"
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Slette dette Property vil også slette alle oppdrag for denne egenskapen til noen folk, familie eller gruppe poster."
 
-#: PropertyDelete.php:67 PropertyTypeDelete.php:72 SelectDelete.php:295
+#: PropertyDelete.php:67 PropertyTypeDelete.php:72 SelectDelete.php:291
 #: VolunteerOpportunityEditor.php:123
 msgid "No, cancel this deletion"
 msgstr "Nei, avbryt denne slettingen"
@@ -3154,43 +3165,43 @@ msgstr "Familie Slett Bekreftelse"
 msgid "Please confirm deletion of"
 msgstr "Vennligst bekreft sletting av"
 
-#: SelectDelete.php:145
+#: SelectDelete.php:141
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
 msgstr "Beklager, det er registreringer av donasjoner fra denne familien. Denne familien kan ikke slettes."
 
-#: SelectDelete.php:146
+#: SelectDelete.php:142
 msgid "Return to Family View"
 msgstr "Tilbake til Familievisning"
 
-#: SelectDelete.php:150
+#: SelectDelete.php:146
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
 msgstr "ADVARSEL: Denne familien har registreringer av donasjoner og kan ikke slettes før disse donasjoner er forbundet med en annen familie."
 
-#: SelectDelete.php:154
+#: SelectDelete.php:150
 msgid "Please select another family with whom to associate these donations:"
 msgstr "Vennligst velg en annen familie med hvem du skal knytte disse donasjoner:"
 
-#: SelectDelete.php:155
+#: SelectDelete.php:151
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "ADVARSEL: Denne handlingen kan ikke angres, og kan ha rettslige konsekvenser!"
 
-#: SelectDelete.php:193
+#: SelectDelete.php:189
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "Gjeldende familien med donasjoner"
 
-#: SelectDelete.php:276
+#: SelectDelete.php:272
 msgid "Please confirm deletion of this family record:"
 msgstr "Vennligst bekreft sletting av denne familien posten:"
 
-#: SelectDelete.php:277
+#: SelectDelete.php:273
 msgid "Note: This will also delete all Notes associated with this Family record."
 msgstr "Merk: Dette vil også slette alle notater knyttet til denne Family posten."
 
-#: SelectDelete.php:293
+#: SelectDelete.php:289
 msgid "Delete Family Record ONLY"
 msgstr "Slett Family Record KUN"
 
-#: SelectDelete.php:294
+#: SelectDelete.php:290
 msgid "Delete Family Record AND Family Members"
 msgstr "Slett Family Record og familiemedlemmer"
 
@@ -3282,7 +3293,7 @@ msgid "Current Value"
 msgstr "Nåværende rolle:"
 
 #: SettingsIndividual.php:120 SettingsIndividual.php:166 SettingsUser.php:107
-#: SettingsUser.php:168 SystemSettings.php:258 UserEditor.php:580
+#: SettingsUser.php:168 SystemSettings.php:270 UserEditor.php:580
 msgid "Save Settings"
 msgstr "Lagre innstillinger"
 
@@ -3338,7 +3349,7 @@ msgstr "Person til å gjøre Bruker"
 msgid "User"
 msgstr "Bruker"
 
-#: UserEditor.php:399
+#: external/templates/password/enter-username.php:30 UserEditor.php:399
 #, fuzzy
 msgid "Login Name"
 msgstr "Logg Navn"
@@ -3415,71 +3426,71 @@ msgstr "Mislykkede pålogginger"
 msgid "You must enter a password in both boxes"
 msgstr "Du må skrive inn et passord i begge boksene"
 
-#: UserPasswordChange.php:74 UserPasswordChange.php:128
+#: UserPasswordChange.php:74 UserPasswordChange.php:129
 msgid "You must enter the same password in both boxes"
 msgstr "Du må angi det samme passordet i begge boksene"
 
-#: UserPasswordChange.php:116
+#: UserPasswordChange.php:117
 msgid "Invalid password"
 msgstr "Ugyldig passord"
 
-#: UserPasswordChange.php:122
+#: UserPasswordChange.php:123
 msgid "You must enter your new password in both boxes"
 msgstr "Du må angi nytt passord i begge boksene"
 
-#: UserPasswordChange.php:134
+#: UserPasswordChange.php:135
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "Ditt passord valget er for opplagt. Velg noe annet."
 
-#: UserPasswordChange.php:140
+#: UserPasswordChange.php:141
 msgid "Your new password must be at least"
 msgstr "Ditt nye passord må være minst"
 
-#: UserPasswordChange.php:140
+#: UserPasswordChange.php:141
 msgid "characters"
 msgstr "tegn"
 
-#: UserPasswordChange.php:146
+#: UserPasswordChange.php:147
 msgid "You need to actually change your password (nice try, though!)"
 msgstr "Du må faktisk endre passordet ditt (godt forsøk, though!)"
 
-#: UserPasswordChange.php:149
+#: UserPasswordChange.php:150
 msgid "Your new password is too similar to your old one.  Be more creative!"
 msgstr "Ditt nye passord er for lik den gamle. Bli mer kreativ!"
 
-#: UserPasswordChange.php:179
+#: UserPasswordChange.php:180
 msgid "User Password Change"
 msgstr "Bruker Passord Change"
 
-#: UserPasswordChange.php:187
+#: UserPasswordChange.php:188
 msgid "Your account record indicates that you need to change your password before proceding."
 msgstr "Din firmapost indikerer at du trenger å endre passordet ditt før du fortsetter."
 
-#: UserPasswordChange.php:200
+#: UserPasswordChange.php:201
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Skriv inn gjeldende passord, så ditt nye passord to ganger. Passord må være minst"
 
-#: UserPasswordChange.php:200
+#: UserPasswordChange.php:201
 msgid "characters in length."
 msgstr "tegn."
 
-#: UserPasswordChange.php:202
+#: UserPasswordChange.php:203
 msgid "Enter a new password for this user."
 msgstr "Tast inn et nytt passord for denne brukeren."
 
-#: UserPasswordChange.php:213
+#: UserPasswordChange.php:214
 #, fuzzy
 msgid "Old Password"
 msgstr "Gammelt passord"
 
 #: ChurchCRM/Emails/users/NewAccountEmail.php:30
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:220
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:221
 #, fuzzy
 msgid "New Password"
 msgstr "Nytt passord"
 
-#: UserPasswordChange.php:224
+#: UserPasswordChange.php:225
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Bekreft nytt passord"

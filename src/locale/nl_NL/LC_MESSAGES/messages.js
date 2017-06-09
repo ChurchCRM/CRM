@@ -502,6 +502,8 @@
     "Map this group": "Breng deze groep in kaart",
     "Email Group": "Email Groep",
     "Total Members": "Totaal aantal Leden",
+    "Default Role": "Standaard Rol",
+    "Group-Specific Properties": "Groep-Specifieke Eigenschappen",
     "Disabled for this group.": "Uitgezet voor deze groep.",
     "Assigned Properties": "Toegevoegde Eigenschappen",
     "Group Members:": "Groep Leden:",
