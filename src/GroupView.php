@@ -212,7 +212,6 @@ require 'Include/Header.php';
         </div>
 
         <?php
-
       }
     }
 // Group Text Message Comma Delimited - added by RSBC
@@ -265,7 +264,6 @@ require 'Include/Header.php';
         ?>
             <?= gettext('Default Role') ?> <span class="badge"><?= $defaultRole->getOptionName() ?></span>
         <?php
-
     } ?>
         </button>
         <button class="btn btn-primary" type="button">

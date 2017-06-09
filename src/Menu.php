@@ -185,7 +185,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     </div>
 </div>
 <?php
-
                   }  //END IF block for Finance permissions to include HTML for Deposit Chart
 ?>
 
@@ -217,7 +216,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <td><?=  date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                             </tr>
                             <?php
-
 }
                         ?>
                         </tbody>
@@ -253,7 +251,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <td><?=  date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                             </tr>
                             <?php
-
                         }
                         ?>
                         </tbody>
@@ -291,7 +288,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-
                         }
                         ?>
                     </ul>
@@ -328,7 +324,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                     class="users-list-date"><?= date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-
                         }
                         ?>
                     </ul>
@@ -373,7 +368,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 
   });
 <?php
-
                         }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>
 </script>
