@@ -361,7 +361,7 @@ for ($row = 1; $row <= $numRows; $row++) {
         } ?>
 
 	</tr>
-<?php 
+<?php
 } ?>
 
 </table>
@@ -370,15 +370,15 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 
 	<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
-    ?>
+            ?>
 		<input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
-	<?php 
-} elseif ($mode != 'grproles') {
-    ?>
+	<?php
+        } elseif ($mode != 'grproles') {
+            ?>
 		<input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
         echo 'Menu.php'; ?>';">
-	<?php 
-} ?>
+	<?php
+        } ?>
 	</div>
 </div>
 

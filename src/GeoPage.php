@@ -282,7 +282,6 @@ $families = FamilyQuery::create()
                             </label>
                         </div>
                         <?php
-
                     }
                     ?>
                 </div>
@@ -302,7 +301,6 @@ $families = FamilyQuery::create()
                 <?= gettext("Please select a Family.") ?>
             </div>
             <?php
-
         }
         ?>
 
@@ -430,7 +428,6 @@ $families = FamilyQuery::create()
                         <td align="left"><?= $aClassificationName[$per_cls_ID] ?></td>
                     </tr>
                     <?php
-
                 }
             } ?>
             </tbody>
@@ -456,7 +453,6 @@ $families = FamilyQuery::create()
         </div>
     </div>
     <?php
-
         }
     ?>
 </form>

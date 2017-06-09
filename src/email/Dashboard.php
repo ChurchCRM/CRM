@@ -70,7 +70,6 @@ require '../Include/Header.php';
         </div>
       </div>
     <?php
-
     } ?>
   </div>
   <div class="row">
@@ -88,9 +87,8 @@ require '../Include/Header.php';
     </div>
   </div>
 <?php
-
 } else {
-    ?>
+        ?>
   <div class="row">
     <div class="col-lg-12 col-md-7 col-sm-3">
       <div class="box box-body">
@@ -103,8 +101,7 @@ require '../Include/Header.php';
     </div>
   </div>
 <?php
-
-}
+    }
 
 require '../Include/Footer.php';
 ?>
