@@ -447,7 +447,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     </td>
   </tr>
 
-<?php 
+<?php
         } else { // if (empty($iTypeID))?>
 
   <tr>
@@ -494,7 +494,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                 ?>
          <option value="<?= $group->getId() ?>" <?= ($group->getId() == $nEventGroupId ? "Selected":"") ?>><?= $group->getName() ?></option>
             <?php
-
             } ?>
       </select>
     </td>
@@ -522,7 +521,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         </td>
         </tr>
       <?php
-
       } //end for loop
       ?>
       <tr>
@@ -532,7 +530,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         </tr>
         </table>
         <?php
-
       } //endif
         ?>
     </td>
@@ -559,7 +556,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 		<td></td>
     <td><input type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary"></td>
   </tr>
-<?php 
+<?php
         } // if (empty($iTypeID))?>
 </table>
 </form>
