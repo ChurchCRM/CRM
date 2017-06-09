@@ -324,10 +324,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </p>
 </form>
 <?php
-
 } else {
-    echo "<p align=\"center\" class='callout callout-warning'>".gettext('Your cart is empty!').'</p>';
-}
+        echo "<p align=\"center\" class='callout callout-warning'>".gettext('Your cart is empty!').'</p>';
+    }
 ?>
 </div>
 <?php require 'Include/Footer.php'; ?>

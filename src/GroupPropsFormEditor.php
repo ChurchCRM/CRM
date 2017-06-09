@@ -262,9 +262,8 @@ if ($numRows == 0) {
 	<center><h2><?= gettext('No properties have been added yet') ?></h2>
 	</center>
 <?php
-
 } else {
-    ?>
+        ?>
 	<tr><td colspan="7">
 	<center><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></center>
 	</td></tr>
@@ -354,7 +353,7 @@ if ($numRows == 0) {
             } ?>>
 			</td>
 		</tr>
-	<?php 
+	<?php
     } ?>
 
 		<tr>
@@ -371,8 +370,8 @@ if ($numRows == 0) {
 			</td>
 			<td>
 		</tr>
-<?php 
-} ?>
+<?php
+    } ?>
 		<tr><td colspan="7"><hr></td></tr>
 		<tr>
 			<td colspan="7">
