@@ -3,7 +3,7 @@
     "repo": "CRM",
     "tags": "all",
     "timeWrap": "history",
-    "dataSource": "milestones",
+    "dataSource": "issues",
     "groupBy": {
         "Feature Requests:": ["Feature Request"],
         "Enhancements:": ["enhancement"],
