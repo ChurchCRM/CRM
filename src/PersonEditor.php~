@@ -98,7 +98,7 @@ $sEmailError = '';
 $sWorkEmailError = '';
 $sBirthDateError = '';
 $sBirthYearError = '';
-$sFriendDateError = '';
+$sDiaconoDateError = '';
 $sMembershipDateError = '';
 $aCustomErrors = [];
 
@@ -117,6 +117,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sLastName = FilterInput($_POST['LastName']);
     $sSuffix = FilterInput($_POST['Suffix']);
     $iGender = FilterInput($_POST['Gender'], 'int');
+    $iDiacono = isset($_POST['Diacono']) ? $_POST['Diacono'] : 0 ;
 
     // Person address stuff is normally surpressed in favor of family address info
     $sAddress1 = '';
@@ -181,7 +182,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthDay = FilterInput($_POST['BirthDay'], 'int');
     $iBirthYear = FilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
-    $dFriendDate = FilterInput($_POST['FriendDate']);
+    $dDiaconoDate = FilterInput($_POST['DiaconoDate']);
     $dMembershipDate = FilterInput($_POST['MembershipDate']);
     $iClassification = FilterInput($_POST['Classification'], 'int');
     $iEnvelope = 0;
@@ -230,14 +231,14 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     // Validate Friend Date if one was entered
-    if (strlen($dFriendDate) > 0) {
-        $dateString = parseAndValidateDate($dFriendDate, $locale = 'US', $pasfut = 'past');
+    if (strlen($dDiaconoDate) > 0) {
+        $dateString = parseAndValidateDate($dDiaconoDate, $locale = 'US', $pasfut = 'past');
         if ($dateString === false) {
-            $sFriendDateError = '<span style="color: red; ">'
-                .gettext('Not a valid Friend Date').'</span>';
+            $sDiaconoDateError = '<span style="color: red; ">'
+                .gettext('Data Inválida para Diácono').'</span>';
             $bErrorFlag = true;
         } else {
-            $dFriendDate = $dateString;
+            $dDiaconoDate = $dateString;
         }
     }
 
@@ -336,8 +337,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iPersonID < 1) {
             $iEnvelope = 0;
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_Bairro, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags )
-			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sBairro."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
+            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Diacono, per_Address1, per_Address2, per_Bairro, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_DiaconoDate, per_Flags )
+			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$iDiacono.",'".$sAddress1."','".$sAddress2."','".$sBairro."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
             } else {
@@ -345,8 +346,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
             $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['iUserID'].',';
 
-            if (strlen($dFriendDate) > 0) {
-                $sSQL .= '"'.$dFriendDate.'"';
+            if (strlen($dDiaconoDate) > 0) {
+                $sSQL .= '"'.$dDiaconoDate.'"';
             } else {
                 $sSQL .= 'NULL';
             }
@@ -358,7 +359,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             // Existing person (update)
         } else {
-            $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_Bairro = '".$sBairro."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
+            $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Diacono = ".$iDiacono.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_Bairro = '".$sBairro."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
             } else {
@@ -369,10 +370,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $sSQL .= ', per_Envelope = '.$iEnvelope;
             }
 
-            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['iUserID'].', per_FriendDate =';
+            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['iUserID'].', per_DiaconoDate =';
 
-            if (strlen($dFriendDate) > 0) {
-                $sSQL .= '"'.$dFriendDate.'"';
+            if (strlen($dDiaconoDate) > 0) {
+                $sSQL .= '"'.$dDiaconoDate.'"';
             } else {
                 $sSQL .= 'NULL';
             }
@@ -459,6 +460,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sLastName = $per_LastName;
         $sSuffix = $per_Suffix;
         $iGender = $per_Gender;
+        $iDiacono = $per_Diacono;
         $sAddress1 = $per_Address1;
         $sAddress2 = $per_Address2;
         $sBairro = $per_Bairro;
@@ -479,7 +481,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iFamily = $per_fam_ID;
         $iFamilyRole = $per_fmr_ID;
         $dMembershipDate = $per_MembershipDate;
-        $dFriendDate = $per_FriendDate;
+        $dDiaconoDate = $per_DiaconoDate;
         $iClassification = $per_cls_ID;
         $iViewAgeFlag = $per_Flags;
 
@@ -518,6 +520,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sLastName = '';
         $sSuffix = '';
         $iGender = '';
+        $iDiacono = '';
         $sAddress1 = '';
         $sAddress2 = '';
         $sBairro = $per_Bairro;
@@ -538,7 +541,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iFamily = '0';
         $iFamilyRole = '0';
         $dMembershipDate = '';
-        $dFriendDate = date('Y-m-d');
+        $dDiaconoDate = date('Y-m-d');
         $iClassification = '0';
         $iViewAgeFlag = 0;
         $sPhoneCountry = '';
@@ -1119,27 +1122,33 @@ require 'Include/Header.php';
                         } ?>
                     </div>
                 </div>
-              <?php if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
-                <div class="form-group col-md-3 col-lg-3">
-                  <label><?= gettext('Friend Date') ?>:</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" name="FriendDate" class="form-control date-picker"
-                           value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="10"
-                           placeholder="YYYY-MM-DD">
-                    <?php if ($sFriendDateError) {
+                    <div class="col-md-2">
+                        <label><?= gettext('Diácono') ?></label><br/>
+                        <input type="checkbox" name="Diacono" value="1" <?php if ($iDiacono) {
+    echo ' checked';
+} ?> />
+                    </div>   
+                    
+                    <div class="form-group col-md-3 col-lg-3">
+                    <label><?= gettext('Data Eleito Diácono') ?>:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" name="DiaconoDate" class="form-control date-picker"
+                               value="<?= $dDiaconoDate ?>" maxlength="10" id="sel1" size="11"
+                               placeholder="YYYY-MM-DD">
+                        <?php if ($sMembershipDateError) {
                             ?><font
-                      color="red"><?php echo $sFriendDateError ?></font><?php
+                            color="red"><?= $sMembershipDateError ?></font><?php
 
                         } ?>
-                  </div>
+                    </div>
                 </div>
-              <?php
-
-                        } ?>
+                 
             </div>
+            
+            
         </div>
     </div>
     
