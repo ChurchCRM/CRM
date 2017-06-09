@@ -59,7 +59,7 @@ if (isset($_GET['Warn'])) {
 	<p align="center" class="LargeError">
 		<?= '<b>'.gettext('Warning').': </b>'.gettext('This property type is still being used by at least one property.').'<BR>'.gettext('If you delete this type, you will also remove all properties using').'<BR>'.gettext('it and lose any corresponding property assignments.'); ?>
 	</p>
-<?php 
+<?php
 } ?>
 
 <p align="center" class="MediumLargeText">

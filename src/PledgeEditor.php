@@ -529,42 +529,42 @@ require 'Include/Header.php';
           <?php if (!$dep_Closed) {
         ?>
             <input class="form-control" type="submit" class="btn" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
-          <?php 
+          <?php
     } ?>
           
-        <?php 
+        <?php
 } ?>
             
             <?php if ($PledgeOrPayment == 'Pledge') {
-    ?>
+        ?>
           
         <label for="Schedule"><?= gettext('Payment Schedule') ?></label>
           <select name="Schedule" class="form-control">
               <option value="0"><?= gettext('Select Schedule') ?></option>
               <option value="Weekly" <?php if ($iSchedule == 'Weekly') {
-        echo 'selected';
-    } ?>><?= gettext('Weekly') ?>
+            echo 'selected';
+        } ?>><?= gettext('Weekly') ?>
               </option>
               <option value="Monthly" <?php if ($iSchedule == 'Monthly') {
-        echo 'selected';
-    } ?>><?= gettext('Monthly') ?>
+            echo 'selected';
+        } ?>><?= gettext('Monthly') ?>
               </option>
               <option value="Quarterly" <?php if ($iSchedule == 'Quarterly') {
-        echo 'selected';
-    } ?>><?= gettext('Quarterly') ?>
+            echo 'selected';
+        } ?>><?= gettext('Quarterly') ?>
               </option>
               <option value="Once" <?php if ($iSchedule == 'Once') {
-        echo 'selected';
-    } ?>><?= gettext('Once') ?>
+            echo 'selected';
+        } ?>><?= gettext('Once') ?>
               </option>
               <option value="Other" <?php if ($iSchedule == 'Other') {
-        echo 'selected';
-    } ?>><?= gettext('Other') ?>
+            echo 'selected';
+        } ?>><?= gettext('Other') ?>
               </option>
           </select>
           
-          <?php 
-} ?>
+          <?php
+    } ?>
 
       </div>
 
@@ -573,52 +573,52 @@ require 'Include/Header.php';
         <label for="Method"><?= gettext('Payment by') ?></label>
         <select class="form-control" name="Method" id="Method">
           <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'Bank' || !$iCurrentDeposit) {
-    ?>
+        ?>
             <option value="CHECK" <?php if ($iMethod == 'CHECK') {
-        echo 'selected';
-    } ?>><?= gettext('Check'); ?>
+            echo 'selected';
+        } ?>><?= gettext('Check'); ?>
             </option>
             <option value="CASH" <?php if ($iMethod == 'CASH') {
-        echo 'selected';
-    } ?>><?= gettext('Cash'); ?>
+            echo 'selected';
+        } ?>><?= gettext('Cash'); ?>
             </option>
-              <?php 
-} ?>
+              <?php
+    } ?>
           <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'CreditCard' || !$iCurrentDeposit) {
-    ?>
+        ?>
             <option value="CREDITCARD" <?php if ($iMethod == 'CREDITCARD') {
-        echo 'selected';
-    } ?>><?= gettext('Credit Card') ?>
+            echo 'selected';
+        } ?>><?= gettext('Credit Card') ?>
             </option>
-          <?php 
-} ?>
+          <?php
+    } ?>
           <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'BankDraft' || !$iCurrentDeposit) {
-    ?>
+        ?>
             <option value="BANKDRAFT" <?php if ($iMethod == 'BANKDRAFT') {
-        echo 'selected';
-    } ?>><?= gettext('Bank Draft') ?>
+            echo 'selected';
+        } ?>><?= gettext('Bank Draft') ?>
             </option>
-          <?php 
-} ?>
+          <?php
+    } ?>
           <?php if ($PledgeOrPayment == 'Pledge') {
-    ?>
+        ?>
             <option value="EGIVE" <?= $iMethod == 'EGIVE' ? 'selected' : '' ?>>
              <?=gettext('eGive') ?>
             </option>
-          <?php 
-} ?>
+          <?php
+    } ?>
         </select>
                         
                        
                         
         <?php if ($PledgeOrPayment == 'Payment' && $dep_Type == 'Bank') {
-    ?>
+        ?>
           <div id="checkNumberGroup">
           <label for="CheckNo"><?= gettext('Check') ?> #</label>
           <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"/><font color="red"><?= $sCheckNoError ?></font>
           </div>
-        <?php 
-} ?>
+        <?php
+    } ?>
                 
                   
         <label for="TotalAmount"><?= gettext('Total $') ?></label>
@@ -662,7 +662,7 @@ require 'Include/Header.php';
             </tr>
            
       </div>
-    <?php 
+    <?php
     } ?>
               
     <div class="col-lg-6">
@@ -670,7 +670,7 @@ require 'Include/Header.php';
         ?>
           <td align="center" class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
           <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea></td>
-        <?php 
+        <?php
     } ?>
     </div>
               
@@ -679,7 +679,7 @@ require 'Include/Header.php';
         ?>
         <input type="submit" class="btn" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
         <input type="submit" class="btn" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
-      <?php 
+      <?php
     } ?>
     </div>
 
@@ -690,7 +690,7 @@ require 'Include/Header.php';
         <?php if ($_SESSION['bAddRecords']) {
             echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
         } ?>
-          <?php 
+          <?php
     } ?>
     <?php if (!$dep_Closed) {
         $cancelText = 'Cancel';
@@ -718,7 +718,7 @@ require 'Include/Header.php';
                 <?php if ($bEnableNonDeductible) {
         ?>
                   <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Non-deductible amount') ?></th>
-                <?php 
+                <?php
     } ?>
 
                 <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Comment') ?></th>
@@ -742,14 +742,13 @@ require 'Include/Header.php';
                         <br>
                         <font color="red"><?= $sNonDeductibleError[$fun_id]?></font>
                       </td>
-                    <?php 
+                    <?php
                     } ?>
                   <td class="TextColumn">
                     <input  type="text" size=40 name="<?= $fun_id ?>_Comment" id="<?= $fun_id ?>_Comment" value="<?= $sComment[$fun_id] ?>">
                   </td>
                 </tr>
               <?php
-
               } ?>
             </tbody>
           </table>
