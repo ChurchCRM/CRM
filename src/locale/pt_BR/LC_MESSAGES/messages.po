@@ -3,9 +3,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: POEditor.com\n"
+"X-Generator: Poedit 2.0.1\n"
 "Project-Id-Version: ChurchCRM\n"
-"Language: pt-br\n"
+"Language: pt_BR\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
 
 #: AutoPaymentClearAccounts.php:22 CatchCreatePayment.php:69
 #: Include/Functions.php:293
@@ -44,8 +48,8 @@ msgstr "Apagar"
 #: ReminderReport.php:55 SettingsIndividual.php:121 SettingsIndividual.php:167
 #: SettingsUser.php:109 SettingsUser.php:169
 #: sundayschool/SundaySchoolDashboard.php:239
-#: sundayschool/SundaySchoolReports.php:230 TaxReport.php:52
-#: UserEditor.php:478 UserEditor.php:581 WhyCameEditor.php:102
+#: sundayschool/SundaySchoolReports.php:230 TaxReport.php:52 UserEditor.php:478
+#: UserEditor.php:581 WhyCameEditor.php:102
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -304,8 +308,8 @@ msgid "Envelope"
 msgstr "Envelope"
 
 #: ChurchCRM/Reports/PDF_Directory.php:400
-#: ChurchCRM/Reports/PDF_Directory.php:457 CSVExport.php:160
-#: PersonView.php:328 Reports/DirectoryReport.php:301
+#: ChurchCRM/Reports/PDF_Directory.php:457 CSVExport.php:160 PersonView.php:328
+#: Reports/DirectoryReport.php:301
 #, fuzzy
 msgid "Work/Other Email"
 msgstr "Outro e-mail"
@@ -910,8 +914,7 @@ msgstr "Nome"
 msgid "Email Cart"
 msgstr "E-mail Carrinho"
 
-#: CartView.php:170 GroupView.php:204
-#: sundayschool/SundaySchoolClassView.php:99
+#: CartView.php:170 GroupView.php:204 sundayschool/SundaySchoolClassView.php:99
 msgid "Email (BCC)"
 msgstr "E-mail (Cco)"
 
@@ -1174,8 +1177,7 @@ msgstr "Telefone do trabalho da família"
 msgid "Family Cell Phone"
 msgstr "Celular da família"
 
-#: DirectoryReports.php:184
-#: external/templates/verify/verify-family-info.php:27
+#: DirectoryReports.php:184 external/templates/verify/verify-family-info.php:27
 #: Reports/ConfirmReportEmail.php:159 Reports/ConfirmReport.php:161
 msgid "Family Email"
 msgstr "e-mail da família"
@@ -1248,7 +1250,7 @@ msgstr "Editor de items do menu"
 #: DonatedItemEditor.php:296 FamilyEditor.php:1134 PaddleNumEditor.php:152
 #: PersonEditor.php:1150 PledgeEditor.php:691
 msgid "Save and Add"
-msgstr "Gravar e adicionar"
+msgstr "Salvar e Adicionar Outro"
 
 #: BatchWinnerEntry.php:76 DonatedItemEditor.php:173 FundRaiserEditor.php:193
 #, fuzzy
@@ -1453,8 +1455,7 @@ msgstr "Vanco ACH"
 msgid "Month"
 msgstr "Mês"
 
-#: ElectronicPaymentList.php:215 FamilyEditor.php:962
-#: Include/Functions.php:104
+#: ElectronicPaymentList.php:215 FamilyEditor.php:962 Include/Functions.php:104
 msgid "Year"
 msgstr "Ano"
 
@@ -1799,8 +1800,7 @@ msgid "Custom Fields"
 msgstr "Campos personalizados"
 
 #: external/templates/registration/family-register-members.php:20
-#: FamilyEditor.php:935 FamilyView.php:371 PersonView.php:481
-#: PrintView.php:318
+#: FamilyEditor.php:935 FamilyView.php:371 PersonView.php:481 PrintView.php:318
 msgid "Family Members"
 msgstr "Membros da Família"
 
@@ -2918,8 +2918,7 @@ msgid "Update Envelopes"
 msgstr "Atualizar Envelopes"
 
 #: external/templates/verify/verify-family-info.php:13
-#: external/templates/verify/verify-family-info.php:119
-#: ManageEnvelopes.php:138
+#: external/templates/verify/verify-family-info.php:119 ManageEnvelopes.php:138
 #, fuzzy
 msgid "Confirm"
 msgstr "Confirma exclusão"
@@ -4613,7 +4612,6 @@ msgstr "Reportar Questão!"
 #, fuzzy
 msgid "Enter a Title for your bug / feature report"
 msgstr "Digite um Título para o seu relatório de bug/ funcionalidade\n"
-""
 
 #: Include/Header-function.php:92
 msgid "What were you doing when you noticed the bug / feature opportunity?"
@@ -5444,8 +5442,7 @@ msgstr "Contador desde o último envio:"
 
 #: email/Dashboard.php:83
 msgid "Missing emails report"
-msgstr "Relatório de e-mails perdidos\n"
-""
+msgstr "Relatório de e-mails perdidos"
 
 #: sundayschool/SundaySchoolDashboard.php:44
 msgid "Functions"
@@ -5921,7 +5918,7 @@ msgstr "Estes são os números de papíes famíliares designados como filhos"
 
 #: ChurchCRM/dto/SystemConfig.php:58
 msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
-msgstr "Tempo limite de sessão em segundos \ rDefina como zero para desativar o tempo limite da sessão."
+msgstr "Tempo limite de sessão em segundos \\ rDefina como zero para desativar o tempo limite da sessão."
 
 #: ChurchCRM/dto/SystemConfig.php:59
 msgid "Queries for which user must have finance permissions to use:"
@@ -6312,8 +6309,7 @@ msgstr "CEP"
 
 #: queryparameteroptions_qpo.php:9
 msgid "2012/2013"
-msgstr "2012/2013 \n"
-""
+msgstr "2012/2013"
 
 #: queryparameteroptions_qpo.php:10
 msgid "2013/2014"
@@ -8131,12 +8127,14 @@ msgid "None State"
 msgstr "Nenhum Estado"
 
 #: ChurchCRM/dto/SystemConfig.php:52
-msgid "Set debug mode\r\n"
+msgid ""
+"Set debug mode\r\n"
 "This may be helpful for when you're first setting up ChurchCRM, but you should\r\n"
 "probably turn it off for maximum security otherwise.  If you are having trouble,\r\n"
 "please enable this so that you'll know what the errors are.  This is especially\r\n"
 "important if you need to report a problem on the help forums."
-msgstr "Isso pode ser útil para quando você estiver configurando o ChurchCRM, mas você deve\r\n"
+msgstr ""
+"Isso pode ser útil para quando você estiver configurando o ChurchCRM, mas você deve\r\n"
 "provavelmente deve ter desligado para a máxima segurança. Caso contrário, se você estiver tendo problemas,\r\n"
 "por favor, habilite-o para que você saiba quais são os erros. Isto é especialmente\r\n"
 "importante se você precisar relatar um problema nos fóruns de ajuda."
@@ -8507,7 +8505,7 @@ msgstr "Selecione verdadeiro para permitir o sobrenome vazio no editor de pessoa
 
 #: ChurchCRM/dto/SystemConfig.php:169
 msgid "Styles -  \r0: Title FirstName MiddleName LastName, Suffix  \r1: Title FirstName MiddleInitial. LastName, Suffix  \r2: LastName, Title FirstName MiddleName, Suffix  \r3: LastName, Title FirstName MiddleInitial., Suffix  \r4: FirstName MiddleName LastName  \r5: Title FirstName LastName  \r6: LastName, Title FirstName "
-msgstr "Estilos - \ r0: Título PrimeiroNome NomeDoMeio Sobrenome, Sufixo \ r1: Título PrimeiroNome InicialDoMeio. Sobrenome, Sufixo\ r2: Sobrenome, Título PrimeiroNome NomeDoMeio, Sufixo \ r3: Sobrenome, Título PrimeiroNome InicialDoMeio., Sufixo \ r4: NomeDoMeio NomeDoMeio Sobrenome \ r5: Título PrimeiroNome Sobrenome \ r6: Sobrenome, Título PrimeiroNome ␣"
+msgstr "Estilos - \\ r0: Título PrimeiroNome NomeDoMeio Sobrenome, Sufixo \\ r1: Título PrimeiroNome InicialDoMeio. Sobrenome, Sufixo\\ r2: Sobrenome, Título PrimeiroNome NomeDoMeio, Sufixo \\ r3: Sobrenome, Título PrimeiroNome InicialDoMeio., Sufixo \\ r4: NomeDoMeio NomeDoMeio Sobrenome \\ r5: Título PrimeiroNome Sobrenome \\ r6: Sobrenome, Título PrimeiroNome ␣"
 
 #: ChurchCRM/dto/SystemConfig.php:170
 msgid "Display bill counts on deposit slip"
@@ -8656,4 +8654,3 @@ msgstr "Timeout do servidor SMTP"
 #: DirectoryReports.php:78
 msgid "Exclude Inactive Families"
 msgstr "Excluir Família Inativas"
-

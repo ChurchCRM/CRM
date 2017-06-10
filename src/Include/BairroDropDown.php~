@@ -1,105 +1,21 @@
 <select name="Bairro" class="form-control select2" id="bairro-input">
 	<option value="">No Selection</option>
 	<option value="" disabled>--------------------</option>
-	<option value="Bancários">Bancários</option>
-	<option value="Cacuia">Cacuia</option>
-	<option value="Cocotá">Cocotá</option>
-	<option value="Freguesia">Freguesia</option>
-	<option value="Galeão">Galeão</option>
-	<option value="Guarabu">Guarabu</option>
-	<option value="Jardim Carioca">Jardim Carioca</option>
-	<option value="Jardim Guanabara">Jardim Guanabara</option>
-	<option value="Moneró">Moneró</option>
-	<option value="Pitangueiras">Pitangueiras</option>
-	<option value="Portuguesa">Portuguesa</option>
-	<option value="Praia da Bandeira">Praia da Bandeira</option>
-	<option value="Ribeira">Ribeira</option>
-	<option value="Tauá">Tauá</option>
-	<option value="Tubiacanga">Tubiacanga</option>
-	<option value="Zumbi">Zumbi</option>
-	<option value="Fora da Ilha">Fora da Ilha</option>	
+	<option value="">Bancários</option>
+	<option value="">Cacuia</option>
+	<option value="">Cocotá</option>
+	<option value="">Freguesia</option>
+	<option value="">Galeão</option>
+	<option value="">Guarabu</option>
+	<option value="">Jardim Carioca</option>
+	<option value="">Jardim Guanabara</option>
+	<option value="">Moneró</option>
+	<option value="">Pitangueiras</option>
+	<option value="">Portuguesa</option>
+	<option value="">Praia da Bandeira</option>
+	<option value="">Ribeira</option>
+	<option value="">Tauá</option>
+	<option value="">Tubiacanga</option>
+	<option value="">Zumbi</option>
+	<option value="">Fora da Ilha</option>	
 </select>
-
-<select name="State" class="form-control select2" id="state-input">
-	<option value="">No Selection</option>
-	<option value="" disabled>--------------------</option>
-	<option value="Bancários"<?php if ($sBairro == 'Bancários') {
-    echo ' selected';
-} ?>>Bancários</option>
-	<option value="Cacuia"<?php if ($sBairro == 'Cacuia') {
-    echo ' selected';
-} ?>>Cacuia</option>
-	<option value="Cocotá"<?php if ($sBairro == 'Cocotá') {
-    echo ' selected';
-} ?>>Cocotá</option>
-	<option value="Freguesia"<?php if ($sBairro == 'Freguesia') {
-    echo ' selected';
-} ?>>Freguesia</option>
-	<option value="Galeão"<?php if ($sBairro == 'Galeão') {
-    echo ' selected';
-} ?>>Galeão</option>
-	<option value="Guarabu"<?php if ($sBairro == 'Guarabu') {
-    echo ' selected';
-} ?>>Guarabu</option>
-	<option value="Jardim Carioca"<?php if ($sBairro == 'Jardim Carioca') {
-    echo ' selected';
-} ?>>Jardim Carioca</option>
-	<option value="Jardim Guanabara"<?php if ($sBairro == 'Jardim Guanabara') {
-    echo ' selected';
-} ?>>Jardim Guanabara</option>
-	<option value="Moneró"<?php if ($sBairro == 'Moneró') {
-    echo ' selected';
-} ?>>Moneró</option>
-	<option value="Pitangueiras"<?php if ($sBairro == 'Pitangueiras') {
-    echo ' selected';
-} ?>>Pitangueiras</option>
-	<option value="Portuguesa"<?php if ($sBairro == 'Portuguesa') {
-    echo ' selected';
-} ?>>Portuguesa</option>
-	<option value="MG"<?php if ($sBairro == 'MG') {
-    echo ' selected';
-} ?>>Minas Gerais</option>
-	<option value="PA"<?php if ($sBairro == 'PA') {
-    echo ' selected';
-} ?>>Pará</option>
-	<option value="PB"<?php if ($sBairro == 'PB') {
-    echo ' selected';
-} ?>>Paraíba</option>
-	<option value="PR"<?php if ($sBairro == 'PR') {
-    echo ' selected';
-} ?>>Paraná</option>
-	<option value="PE"<?php if ($sBairro == 'PE') {
-    echo ' selected';
-} ?>>Pernambuco</option>
-	<option value="PI"<?php if ($sBairro == 'PI') {
-    echo ' selected';
-} ?>>Piauí</option>
-	<option value="RJ"<?php if ($sBairro == 'RJ') {
-    echo ' selected';
-} ?>>Rio de Janeiro</option>
-	<option value="RN"<?php if ($sBairro == 'RN') {
-    echo ' selected';
-} ?>>Rio Grande do Norte</option>
-	<option value="RS"<?php if ($sBairro == 'RS') {
-    echo ' selected';
-} ?>>Rio Grande do Sul</option>
-	<option value="RO"<?php if ($sBairro == 'RO') {
-    echo ' selected';
-} ?>>Rondônia</option>
-	<option value="RR"<?php if ($sBairro == 'RR') {
-    echo ' selected';
-} ?>>Roraima</option>
-	<option value="SC"<?php if ($sBairro == 'SC') {
-    echo ' selected';
-} ?>>Santa Catarina</option>
-	<option value="SP"<?php if ($sBairro == 'SP') {
-    echo ' selected';
-} ?>>São Paulo</option>
-	<option value="SE"<?php if ($sBairro == 'SE') {
-    echo ' selected';
-} ?>>Sergipe</option>
-	<option value="TO"<?php if ($sBairro == 'TO') {
-    echo ' selected';
-} ?>>Tocantins</option>
-</select>
-

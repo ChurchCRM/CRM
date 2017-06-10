@@ -62,4 +62,4 @@ require 'Include/Header.php';
 </div>
 <?php
 
-//require 'Include/Footer.php';
+require 'Include/Footer.php';

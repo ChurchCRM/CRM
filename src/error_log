@@ -1,0 +1,28 @@
+[06-Jun-2017 13:47:48 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'An invalid configuration name has been requested: googleTrackingID' in /home/ipjardim450/public_html/srm/ChurchCRM/dto/SystemConfig.php:252
+Stack trace:
+#0 /home/ipjardim450/public_html/srm/Include/analyticstracking.php(4): ChurchCRM\dto\SystemConfig::getValue('googleTrackingI...')
+#1 /home/ipjardim450/public_html/srm/Include/FooterNotLoggedIn.php(41): include_once('/home/ipjardim4...')
+#2 /home/ipjardim450/public_html/srm/Include/LoadConfigs.php(58): require('/home/ipjardim4...')
+#3 /home/ipjardim450/public_html/srm/Include/LoadConfigs.php(94): system_failure('Could not conne...')
+#4 /home/ipjardim450/public_html/srm/Include/Config.php(61): require_once('/home/ipjardim4...')
+#5 /home/ipjardim450/public_html/srm/index.php(6): require_once('/home/ipjardim4...')
+#6 {main}
+  thrown in /home/ipjardim450/public_html/srm/ChurchCRM/dto/SystemConfig.php on line 252
+[06-Jun-2017 13:48:13 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'An invalid configuration name has been requested: googleTrackingID' in /home/ipjardim450/public_html/srm/ChurchCRM/dto/SystemConfig.php:252
+Stack trace:
+#0 /home/ipjardim450/public_html/srm/Include/analyticstracking.php(4): ChurchCRM\dto\SystemConfig::getValue('googleTrackingI...')
+#1 /home/ipjardim450/public_html/srm/Include/FooterNotLoggedIn.php(41): include_once('/home/ipjardim4...')
+#2 /home/ipjardim450/public_html/srm/Include/LoadConfigs.php(58): require('/home/ipjardim4...')
+#3 /home/ipjardim450/public_html/srm/Include/LoadConfigs.php(94): system_failure('Could not conne...')
+#4 /home/ipjardim450/public_html/srm/Include/Config.php(61): require_once('/home/ipjardim4...')
+#5 /home/ipjardim450/public_html/srm/index.php(6): require_once('/home/ipjardim4...')
+#6 {main}
+  thrown in /home/ipjardim450/public_html/srm/ChurchCRM/dto/SystemConfig.php on line 252
+[06-Jun-2017 23:13:12 UTC] PHP Parse error:  syntax error, unexpected '"/"' (T_CONSTANT_ENCAPSED_STRING) in /home/ipjardim450/public_html/srm/PrintView.php on line 90
+[06-Jun-2017 23:13:26 UTC] PHP Parse error:  syntax error, unexpected '$per_BirthMonth' (T_VARIABLE) in /home/ipjardim450/public_html/srm/PrintView.php on line 90
+[07-Jun-2017 14:34:07 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/ipjardim450/public_html/srm/PersonEditor.php on line 180
+[07-Jun-2017 15:08:43 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ipjardim450/public_html/srm/PersonEditor.php on line 685
+[07-Jun-2017 15:08:53 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ipjardim450/public_html/srm/PersonEditor.php on line 1027
+[07-Jun-2017 15:09:17 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ipjardim450/public_html/srm/PersonEditor.php on line 355
+[07-Jun-2017 15:40:14 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ipjardim450/public_html/srm/PrintView.php on line 387
+[07-Jun-2017 15:51:41 UTC] PHP Parse error:  syntax error, unexpected 'require' (T_REQUIRE) in /home/ipjardim450/public_html/srm/Menu.php on line 62

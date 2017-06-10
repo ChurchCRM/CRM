@@ -58,9 +58,10 @@ if ($_SESSION['bFinance']) {
 // Set the page title
 $sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
 
+
 require 'Include/Header.php';
 ?>
-<!-- Small boxes (Stat box) -->
+<!-- Small boxes (Stat box) --> <br><br><br>
 <div class="row">
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -141,7 +142,7 @@ require 'Include/Header.php';
 </div><!-- /.row -->
 
 <?php
-if (false) { // Always hide deposit data. default = if ($depositData)
+if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
 ?>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -317,7 +318,7 @@ if (false) { // Always hide deposit data. default = if ($depositData)
 <!-- this page specific inline scripts -->
 <script>
 <?php
-if (false) { // If the user has Finance permissions, then let's display the deposit line chart
+if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
 ?>
     //---------------
     //- LINE CHART  -

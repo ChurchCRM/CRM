@@ -1,0 +1,33 @@
+#canvas {
+    margin-left: auto;
+}
+
+#fileSelect {
+    text-align: center;
+    border: solid 1px grey;
+    background-color:#eeeeee;
+    min-height:145px
+}
+
+#cameraSelect {
+    text-align: center;
+    border: solid 1px grey;
+    background-color:#eeeeee;
+    min-height:145px
+}
+
+#photoCapture {
+    text-align: center
+}
+
+label i.fa {
+    font-size:64pt;
+}
+
+#previewPane {
+    margin-top:15px;
+}
+
+#previewPane div {
+    text-align: center;
+}

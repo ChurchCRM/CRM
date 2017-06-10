@@ -1,0 +1,47 @@
+/*! DO NOT MANUALLY EDIT skin/churchcrm.min.css
+
+    Please make changes to skin/scss/*.scss and recompile with SASS. http://sass-lang.com/
+
+    sass --watch src/skin/churchcrm.scss:src/skin/churchcrm.min.css --style compressed
+
+*/
+
+
+// Import Libraries
+
+// The only library we do not embed is Bootstrap, because it's very big
+// and we don't want to incur IE's CSS limits.
+// ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
+
+@import 'jquery-ui/jquery-ui.css';
+@import 'adminlte/plugins/datepicker/datepicker3.css';
+@import 'adminlte/plugins/daterangepicker/daterangepicker.css';
+@import 'adminlte/plugins/timepicker/bootstrap-timepicker.min.css';
+@import 'adminlte/plugins/iCheck/square/blue.css';
+@import 'adminlte/plugins/datatables/dataTables.bootstrap.css';
+@import 'adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css';
+@import 'adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css';
+
+@import 'bootstrap-toggle/bootstrap-toggle.css';
+@import 'fullcalendar/fullcalendar.min.css';
+@import 'fullcalendar/fullcalendar.print.css' print;
+
+@import 'font-awesome/css/font-awesome.min.css';
+
+@import 'ionicons/css/ionicons.min.css';
+
+@import 'adminlte/dist/css/AdminLTE.min.css';
+@import 'adminlte/dist/css/skins/_all-skins.min.css';
+@import 'adminlte/plugins/select2/select2.min.css';
+// Import ChurchCRM custom styles
+
+@import 'scss/dropdowns';
+@import 'scss/forms';
+@import 'scss/tables';
+@import 'scss/profileImage';
+@import 'scss/shortConfig';
+@import 'scss/leftNav';
+@import 'scss/imageOverlay';
+@import 'scss/maps';
+@import "scss/spacing";
+@import 'scss/SystemNotifications';

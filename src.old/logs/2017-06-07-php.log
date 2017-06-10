@@ -1,0 +1,24 @@
+[07-Jun-2017 14:38:56 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Exception' with message 'An invalid configuration name has been requested: sLogLevel ' in /opt/lampp/htdocs/srm/CRM/src/ChurchCRM/dto/SystemConfig.php:252
+Stack trace:
+#0 /opt/lampp/htdocs/srm/CRM/src/Include/Functions.php(292): ChurchCRM\dto\SystemConfig::getValue('sLogLevel ')
+#1 /opt/lampp/htdocs/srm/CRM/src/SelectList.php(508): RunQuery('SELECT DISTINCT...')
+#2 {main}
+  thrown in /opt/lampp/htdocs/srm/CRM/src/ChurchCRM/dto/SystemConfig.php on line 252
+[07-Jun-2017 14:38:58 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Exception' with message 'An invalid configuration name has been requested: sLogLevel ' in /opt/lampp/htdocs/srm/CRM/src/ChurchCRM/dto/SystemConfig.php:252
+Stack trace:
+#0 /opt/lampp/htdocs/srm/CRM/src/Include/Functions.php(292): ChurchCRM\dto\SystemConfig::getValue('sLogLevel ')
+#1 /opt/lampp/htdocs/srm/CRM/src/SelectList.php(508): RunQuery('SELECT DISTINCT...')
+#2 {main}
+  thrown in /opt/lampp/htdocs/srm/CRM/src/ChurchCRM/dto/SystemConfig.php on line 252
+[07-Jun-2017 14:39:01 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Exception' with message 'An invalid configuration name has been requested: sLogLevel ' in /opt/lampp/htdocs/srm/CRM/src/ChurchCRM/dto/SystemConfig.php:252
+Stack trace:
+#0 /opt/lampp/htdocs/srm/CRM/src/Include/Functions.php(292): ChurchCRM\dto\SystemConfig::getValue('sLogLevel ')
+#1 /opt/lampp/htdocs/srm/CRM/src/SelectList.php(508): RunQuery('SELECT DISTINCT...')
+#2 {main}
+  thrown in /opt/lampp/htdocs/srm/CRM/src/ChurchCRM/dto/SystemConfig.php on line 252
+[07-Jun-2017 14:40:00 America/Sao_Paulo] PHP Fatal error:  Uncaught exception 'Exception' with message 'An invalid configuration name has been requested: sLogLevel ' in /opt/lampp/htdocs/srm/CRM/src/ChurchCRM/dto/SystemConfig.php:252
+Stack trace:
+#0 /opt/lampp/htdocs/srm/CRM/src/Include/Functions.php(292): ChurchCRM\dto\SystemConfig::getValue('sLogLevel ')
+#1 /opt/lampp/htdocs/srm/CRM/src/SelectList.php(508): RunQuery('SELECT DISTINCT...')
+#2 {main}
+  thrown in /opt/lampp/htdocs/srm/CRM/src/ChurchCRM/dto/SystemConfig.php on line 252
