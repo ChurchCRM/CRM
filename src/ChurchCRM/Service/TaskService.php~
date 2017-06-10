@@ -6,7 +6,7 @@ use ChurchCRM\Tasks\ChurchAddress;
 use ChurchCRM\Tasks\ChurchNameTask;
 use ChurchCRM\Tasks\EmailTask;
 use ChurchCRM\Tasks\FamilyWorkPhoneTask;
-// use ChurchCRM\Tasks\HttpsTask;
+use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
 use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\iTask;
@@ -33,7 +33,7 @@ class TaskService
             new ChurchNameTask(),
             new ChurchAddress(),
             new EmailTask(),
-//            new HttpsTask(),
+            new HttpsTask(),
             new IntegrityCheckTask(),
             new LatestReleaseTask(),
             new RegisteredTask(),

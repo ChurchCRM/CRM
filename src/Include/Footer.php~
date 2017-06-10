@@ -28,7 +28,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     <div class="pull-right">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
-    <strong> &copy; 2017 <a href="https://ipjardimguanabara.org" target="_blank"><b>IPJG</b></a></strong>
+    <strong> &copy; 2015-2017 <a href="https://ipjardimguanabara.org" target="_blank"><b>IPJG</b></a></strong>
     
 </footer>
 

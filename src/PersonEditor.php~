@@ -323,7 +323,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         //If no birth year, set to NULL
         if ((strlen($iBirthYear) != 4)) {
-            $iBirthYear = null;
+            $iBirthYear = 'NULL';
         } else {
             $iBirthYear = "'$iBirthYear'";
         }

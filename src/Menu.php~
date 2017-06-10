@@ -97,7 +97,7 @@ require 'Include/Header.php';
                 <i class="ion ion-person"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
-                <?= gettext('Ver todas as Pessoas') ?> <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
