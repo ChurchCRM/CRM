@@ -693,7 +693,7 @@ require 'Include/Header.php';
                 <p/>
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="FirstName"><?= gettext('First Name') ?>:</label>
+                        <label for="FirstName"><?= gettext('Primeiro Nome') ?>:</label>
                         <input type="text" name="FirstName" id="FirstName"
                                value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
@@ -705,7 +705,7 @@ require 'Include/Header.php';
                     </div>
 
                     <div class="col-md-2">
-                        <label for="MiddleName"><?= gettext('Middle Name') ?>:</label>
+                        <label for="MiddleName"><?= gettext('Nomes do Meio') ?>:</label>
                         <input type="text" name="MiddleName" id="MiddleName"
                                value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
@@ -717,7 +717,7 @@ require 'Include/Header.php';
                     </div>
 
                     <div class="col-md-4">
-                        <label for="LastName"><?= gettext('Last Name') ?>:</label>
+                        <label for="LastName"><?= gettext('Sobrenome') ?>:</label>
                         <input type="text" name="LastName" id="LastName"
                                value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
@@ -738,7 +738,7 @@ require 'Include/Header.php';
                 <p/>
                 <div class="row">
                     <div class="col-md-2">
-                        <label><?= gettext('Birth Month') ?>:</label>
+                        <label><?= gettext('Mês de Nascimento') ?>:</label>
                         <select name="BirthMonth" class="form-control">
                             <option value="0" <?php if ($iBirthMonth == 0) {
     echo 'selected';
@@ -782,7 +782,7 @@ require 'Include/Header.php';
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label><?= gettext('Birth Day') ?>:</label>
+                        <label><?= gettext('Dia do Nascimento') ?>:</label>
                         <select name="BirthDay" class="form-control">
                             <option value="0"><?= gettext('Select Day') ?></option>
                             <?php for ($x = 1; $x < 32; $x++) {
@@ -800,7 +800,7 @@ require 'Include/Header.php';
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label><?= gettext('Birth Year') ?>:</label>
+                        <label><?= gettext('Ano de Nascimento') ?>:</label>
                         <input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
                                placeholder="yyyy" class="form-control">
                         <?php if ($sBirthYearError) {
@@ -829,7 +829,7 @@ require 'Include/Header.php';
         </div><!-- /.box-header -->
         <div class="box-body">
             <div class="form-group col-md-3">
-                <label><?= gettext('Family Role') ?>:</label>
+                <label><?= gettext('Papel na Família') ?>:</label>
                 <select name="FamilyRole" class="form-control">
                     <option value="0"><?= gettext('Unassigned') ?></option>
                     <option value="0" disabled>-----------------------</option>
@@ -908,7 +908,12 @@ require 'Include/Header.php';
                                    size="30" maxlength="50" class="form-control">
                         </div>
                         
-                        <div class="col-md-3">
+                    </div>
+                </div>
+                <p/>
+                <div class="row">
+                    
+						<div class="col-md-2">
                             <label>
                                 <?php if ($bFamilyBairro) {
         echo '<span style="color: red;">';
@@ -923,7 +928,7 @@ require 'Include/Header.php';
                             <?php require 'Include/BairroDropDown.php'; ?>
                         </div>
                         
-                        <div class="col-md-3">
+						<div class="col-md-2">
                             <label>
                                 <?php if ($bFamilyCity) {
         echo '<span style="color: red;">';
@@ -939,11 +944,8 @@ require 'Include/Header.php';
                                    value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>"
                                    class="form-control">
                         </div>
-                    </div>
-                </div>
-                <p/>
-                <div class="row">
-                    <div class="form-group col-md-2">
+                        
+							<div class="form-group col-md-2">
                         <label for="StatleTextBox">
                             <?php if ($bFamilyState) {
         echo '<span style="color: red;">';
@@ -958,13 +960,13 @@ require 'Include/Header.php';
                         <?php require 'Include/StateDropDown.php'; ?>
                     </div>
                     
-                    <div class="form-group col-md-1">
+                    <div class="form-group col-md-2">
                         <label for="Zip">
                             <?php if ($bFamilyZip) {
         echo '<span style="color: red;">';
     }
 
-    echo gettext('Zip').':';
+    echo gettext('CEP').':';
 
     if ($bFamilyZip) {
         echo '</span>';
@@ -1137,7 +1139,7 @@ require 'Include/Header.php';
     </div>
     <div class="box box-info clearfix">
         <div class="box-header">
-            <h3 class="box-title"><?= gettext('Membership Info') ?></h3>
+            <h3 class="box-title"><?= gettext('Informações de Membresia') ?></h3>
             <!-- <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div> -->
@@ -1145,7 +1147,7 @@ require 'Include/Header.php';
         <div class="box-body">
             <div class="row">
               <div class="form-group col-md-3 col-lg-3">
-                <label><?= gettext('Classification') ?>:</label>
+                <label><?= gettext('Classificação') ?>:</label>
                 <select name="Classification" class="form-control">
                   <option value="0"><?= gettext('Unassigned') ?></option>
                   <option value="0" disabled>-----------------------</option>
@@ -1160,7 +1162,7 @@ require 'Include/Header.php';
                 </select>
               </div>
                 <div class="form-group col-md-3 col-lg-3">
-                    <label><?= gettext('Membership Date') ?>:</label>
+                    <label><?= gettext('Data da Membresia') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
@@ -1175,7 +1177,9 @@ require 'Include/Header.php';
                         } ?>
                     </div>
                 </div>
-                    <div class="col-md-2">
+               </div>
+                 <div class="row">
+                    <div class="col-md-3">
                         <label><?= gettext('Diácono') ?></label><br/>
                         <input type="checkbox" name="Diacono" value="1" <?php if ($iDiacono) {
     echo ' checked';
@@ -1198,8 +1202,9 @@ require 'Include/Header.php';
                         } ?>
                     </div>
                 </div>
-                
-                <div class="col-md-2">
+                 </div>
+                                 <div class="row">
+                <div class="col-md-3">
                         <label><?= gettext('Presbítero') ?></label><br/>
                         <input type="checkbox" name="Presbitero" value="1" <?php if ($iPresbitero) {
     echo ' checked';
