@@ -660,7 +660,7 @@ require 'Include/Header.php';
 } ?>
     <div class="box box-info clearfix">
         <div class="box-header">
-            <h3 class="box-title"><?= gettext('Personal Info') ?></h3>
+            <h3 class="box-title"><?= gettext('Informações Pessoais') ?></h3>
             <!-- <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div> -->
@@ -681,18 +681,18 @@ require 'Include/Header.php';
 } ?>><?= gettext('Female') ?></option>
                         </select>
                     </div>
-                    <div class="col-md-3">
+                    <!--<div class="col-md-3">
                         <label for="Title"><?= gettext('Title') ?>:</label>
                         <input type="text" name="Title" id="Title"
                                value="<?= htmlentities(stripslashes($sTitle), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control" placeholder="<?= gettext('Mr., Mrs., Dr., Rev.') ?>">
-                    </div>
+                    </div>-->
                 </div>
                 
 				 
                 <p/>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label for="FirstName"><?= gettext('Primeiro Nome') ?>:</label>
                         <input type="text" name="FirstName" id="FirstName"
                                value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -704,7 +704,7 @@ require 'Include/Header.php';
 } ?>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <label for="MiddleName"><?= gettext('Nomes do Meio') ?>:</label>
                         <input type="text" name="MiddleName" id="MiddleName"
                                value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -716,7 +716,7 @@ require 'Include/Header.php';
 } ?>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label for="LastName"><?= gettext('Sobrenome') ?>:</label>
                         <input type="text" name="LastName" id="LastName"
                                value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -1181,12 +1181,12 @@ require 'Include/Header.php';
                  <div class="row">
                     <div class="col-md-3">
                         <label><?= gettext('Diácono') ?></label><br/>
-                        <input type="checkbox" name="Diacono" value="1" <?php if ($iDiacono) {
+                        <input type="checkbox" name="Diacono" id="Diacono" value="1" <?php if ($iDiacono) {
     echo ' checked';
 } ?> />
                     </div>   
                     
-                    <div class="form-group col-md-3 col-lg-3">
+                    <div class="form-group col-md-3 col-lg-3" id="DiaconoEleito" class="form-control date-picker" >
                     <label><?= gettext('Data Eleito Diácono') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -1206,12 +1206,12 @@ require 'Include/Header.php';
                                  <div class="row">
                 <div class="col-md-3">
                         <label><?= gettext('Presbítero') ?></label><br/>
-                        <input type="checkbox" name="Presbitero" value="1" <?php if ($iPresbitero) {
+                        <input type="checkbox" name="Presbitero" id="Presbitero" value="1" <?php if ($iPresbitero) {
     echo ' checked';
 } ?> />
                     </div>   
                     
-                    <div class="form-group col-md-3 col-lg-3">
+                    <div class="form-group col-md-3 col-lg-3" id="PresbiteroEleito" class="form-control date-picker" >
                     <label><?= gettext('Data Eleito Presbítero') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -1318,6 +1318,36 @@ function GroupAdd() {
       });
   }	
 	
+</script>
+
+<script>
+if (<?php echo ($iDiacono) ?>) {
+   $("#DiaconoEleito").show();
+}
+
+else {
+	   $("#DiaconoEleito").hide();
+}
+
+$("#Diacono").change(function () {
+   $("#DiaconoEleito").toggle();
+});
+
+</script>
+
+<script>
+if (<?php echo ($iPresbitero) ?>) {
+   $("#PresbiteroEleito").show();
+}
+
+else {
+	   $("#PresbiteroEleito").hide();
+}
+
+$("#Presbitero").change(function () {
+   $("#PresbiteroEleito").toggle();
+});
+
 </script>
 
 <?php require 'Include/Footer.php' ?>
