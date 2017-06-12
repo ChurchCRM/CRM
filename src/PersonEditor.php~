@@ -99,6 +99,7 @@ $sWorkEmailError = '';
 $sBirthDateError = '';
 $sBirthYearError = '';
 $sDiaconoDateError = '';
+$sPresbiteroDateError = '';
 $sMembershipDateError = '';
 $aCustomErrors = [];
 $izero = 0;
@@ -120,6 +121,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iGender = FilterInput($_POST['Gender'], 'int');
     //$iDiacono = FilterInput($_POST['Diacono'], 'int');
     $iDiacono = isset($_POST['Diacono']) ? 1 : 0 ;
+    $iPresbitero = isset($_POST['Presbitero']) ? 1 : 0 ;
 
     // Person address stuff is normally surpressed in favor of family address info
     $sAddress1 = '';
@@ -185,6 +187,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthYear = FilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
     $dDiaconoDate = FilterInput($_POST['DiaconoDate']);
+    $dPresbiteroDate = FilterInput($_POST['PresbiteroDate']);
     $dMembershipDate = FilterInput($_POST['MembershipDate']);
     $iClassification = FilterInput($_POST['Classification'], 'int');
     $iEnvelope = 0;
@@ -232,7 +235,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         }
     }
     
-    
+    /*
 		//Check if gender is NULL
 	   if ($iGender == '') {
             $sTopError = gettext('Não selecionou o Sexo');
@@ -244,7 +247,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sTopError = gettext('Não selecionou o Bairro');
             $bErrorFlag = true;
         }
-     
+     */
 
     // Validate Friend Date if one was entered
     if (strlen($dDiaconoDate) > 0) {
@@ -255,6 +258,18 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $bErrorFlag = true;
         } else {
             $dDiaconoDate = $dateString;
+        }
+    }
+    
+     // Validate Friend Date if one was entered
+    if (strlen($dPresbiteroDate) > 0) {
+        $dateString = parseAndValidateDate($dPresbiteroDate, $locale = 'US', $pasfut = 'past');
+        if ($dateString === false) {
+            $sPresbiteroDateError = '<span style="color: red; ">'
+                .gettext('Data Inválida para Presbítero').'</span>';
+            $bErrorFlag = true;
+        } else {
+            $dPresbiteroDate = $dateString;
         }
     }
 
@@ -323,7 +338,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         //If no birth year, set to NULL
         if ((strlen($iBirthYear) != 4)) {
-            $iBirthYear = 'NULL';
+            $iBirthYear = null;
         } else {
             $iBirthYear = "'$iBirthYear'";
         }
@@ -352,8 +367,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // New Person (add)
       if ($iPersonID < 1) {
             $iEnvelope = 0;
-            $sSQL = "INSERT INTO person_per (per_Diacono, per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_Bairro, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_DiaconoDate, per_Flags )
-			         VALUES ('".$iDiacono."','".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sBairro."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
+            $sSQL = "INSERT INTO person_per (per_Diacono, per_Presbitero, per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_DiaconoDate, per_PresbiteroDate, per_Flags )
+			         VALUES ('".$iDiacono."','".$iPresbitero."','".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
             } else {
@@ -365,13 +380,22 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             } else {
                 $sSQL .= 'NULL';
             }
+            $sSQL .= ', ';
+            if (strlen($dPresbiteroDate) > 0) {
+                $sSQL .= '"'.$dPresbiteroDate.'"';
+            } else {
+                $sSQL .= 'NULL';
+            }
             $sSQL .= ', '.$per_Flags;
             $sSQL .= ')';
             $bGetKeyBack = true;
+            
+            //echo $sSQL;
+
 
             // Existing person (update)
         } else {
-            $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Diacono = ".$iDiacono.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_Bairro = '".$sBairro."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
+            $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Diacono = ".$iDiacono.", per_Presbitero = '".$iPresbitero."', per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_Bairro = '".$sBairro."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
             } else {
@@ -389,7 +413,14 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             } else {
                 $sSQL .= 'NULL';
             }
+            $sSQL .= ', per_PresbiteroDate =';
 
+            if (strlen($dPresbiteroDate) > 0) {
+                $sSQL .= '"'.$dPresbiteroDate.'"';
+            } else {
+                $sSQL .= 'NULL';
+            }
+                        
             $sSQL .= ', per_Flags='.$per_Flags;
 
             $sSQL .= ' WHERE per_ID = '.$iPersonID;
@@ -473,6 +504,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sSuffix = $per_Suffix;
         $iGender = $per_Gender;
         $iDiacono = $per_Diacono;
+        $iPresbitero = $per_Presbitero;
         $sAddress1 = $per_Address1;
         $sAddress2 = $per_Address2;
         $sBairro = $per_Bairro;
@@ -494,6 +526,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iFamilyRole = $per_fmr_ID;
         $dMembershipDate = $per_MembershipDate;
         $dDiaconoDate = $per_DiaconoDate;
+        $dPresbiteroDate = $per_PresbiteroDate;
         $iClassification = $per_cls_ID;
         $iViewAgeFlag = $per_Flags;
 
@@ -533,6 +566,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sSuffix = '';
         $iGender = '';
         $iDiacono = 0;
+        $iPresbitero = 0;
         $sAddress1 = '';
         $sAddress2 = '';
         $sBairro = $per_Bairro;
@@ -554,6 +588,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iFamilyRole = '0';
         $dMembershipDate = '';
         $dDiaconoDate = '';
+        $dPresbiteroDate = '';
         $iClassification = '0';
         $iViewAgeFlag = 0;
         $sPhoneCountry = '';
@@ -1155,6 +1190,30 @@ require 'Include/Header.php';
                         </div>
                         <input type="text" name="DiaconoDate" class="form-control date-picker"
                                value="<?= $dDiaconoDate ?>" maxlength="10" id="sel1" size="11"
+                               placeholder="YYYY-MM-DD">
+                        <?php if ($sMembershipDateError) {
+                            ?><font
+                            color="red"><?= $sMembershipDateError ?></font><?php
+
+                        } ?>
+                    </div>
+                </div>
+                
+                <div class="col-md-2">
+                        <label><?= gettext('Presbítero') ?></label><br/>
+                        <input type="checkbox" name="Presbitero" value="1" <?php if ($iPresbitero) {
+    echo ' checked';
+} ?> />
+                    </div>   
+                    
+                    <div class="form-group col-md-3 col-lg-3">
+                    <label><?= gettext('Data Eleito Presbítero') ?>:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" name="PresbiteroDate" class="form-control date-picker"
+                               value="<?= $dPresbiteroDate ?>" maxlength="10" id="sel1" size="11"
                                placeholder="YYYY-MM-DD">
                         <?php if ($sMembershipDateError) {
                             ?><font
