@@ -179,16 +179,15 @@ require 'Include/Header.php';
 			<td><?= $sPrompt ?><br><textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea></td>
 		</tr>
 <?php
-
 } ?>
 </table>
 </div>
 
 <p align="center"><input type="submit" class="btn" <?= 'value="'; if ($sAction == 'add') {
-    echo gettext('Assign');
-} else {
-    echo gettext('Update');
-} echo '"' ?> name="Submit"></p>
+        echo gettext('Assign');
+    } else {
+        echo gettext('Update');
+    } echo '"' ?> name="Submit"></p>
 
 </form>
 
