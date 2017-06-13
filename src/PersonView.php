@@ -143,11 +143,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
     $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
     $plaintextMailingAddress = $person->getAddress();
+    $sBairro = SelectWhichInfo($per_Bairro, $fam_Bairro, false);
 
 //Get a formatted mailing address to use as display to the user.
 SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
     $sCity = SelectWhichInfo($per_City, $fam_City, true);
     $sState = SelectWhichInfo($per_State, $fam_State, true);
+    $sBairro = SelectWhichInfo($per_Bairro, $fam_Bairro, true);
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
     $sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
     $formattedMailingAddress = $person->getAddress();
@@ -270,11 +272,17 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   echo gettext('(No assigned family)');
               } ?>
 						</span></li>
+						
           <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Address'); ?>: <span>
 						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
 						</span></li>
+						
+										 <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Bairro'); ?>: <span>
+						<span><?= $sBairro ?></span>
+						</span></li>
+						
           <?php if ($dBirthDate) {
                   ?>
             <li>
@@ -287,6 +295,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
                   } ?>
             </li>
+            
           <?php
 
               }
@@ -356,18 +365,18 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="box box-primary box-body">
-      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
-      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
+      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Imprimir Relatório Pessoal") ?></a>
+      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Adicionar ao Carrinho") ?></a>
       <?php if ($_SESSION['bNotes']) {
               ?>
-        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Notas de \"Porque Veio ?\"") ?></a>
+        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Adicionar uma Anotação") ?></a>
       <?php
 
           }
     if ($_SESSION['bDeleteRecords']) {
         ?>
-        <a class="btn btn-app bg-maroon" id="delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
+        <a class="btn btn-app bg-maroon" id="delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Apagar Esta Pessoa") ?></a>
       <?php
 
     }
@@ -391,12 +400,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     <div class="nav-tabs-custom">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#timeline" aria-controls="timeline" role="tab" data-toggle="tab"><?= gettext('Timeline') ?></a></li>
+        <li role="presentation" class="active"><a href="#timeline" aria-controls="timeline" role="tab" data-toggle="tab"><?= gettext('Histórico') ?></a></li>
         <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab"><?= gettext('Family') ?></a></li>
-        <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext('Assigned Groups') ?></a></li>
-        <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
-        <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
-        <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext('Notes') ?></a></li>
+        <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext('Sociedades Internas') ?></a></li>
+        <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext('Características Especiais') ?></a></li>
+        <!--<li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li> -->
+        <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext('Anotações') ?></a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -442,6 +451,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
                   <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
             ?>
+						                 
                     <div class="timeline-footer">
                       <?php if ($item['editLink'] != '') {
                 ?>
@@ -714,7 +724,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) != 0): ?>
                 <div class="alert alert-info">
                   <div>
-                    <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
+                    <h4><strong><?= gettext('Atribuir uma característica') ?>:</strong></h4>
 
                     <form method="post" action="<?= SystemURLs::getRootPath(). '/api/properties/persons/assign' ?>" id="assign-property-form">
                         <input type="hidden" name="PersonId" value="<?= $person->getId() ?>" >
@@ -722,7 +732,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                             <div class="form-group col-xs-12 col-md-7">
                                 <select name="PropertyId" id="input-person-properties" class="form-control select2"
                                     style="width:100%" data-placeholder="Select ...">
-                                <option disabled selected> -- <?= gettext('select an option') ?> -- </option>
+                                <option disabled selected> -- <?= gettext('Escolha uma Característica') ?> -- </option>
                                 <?php
                                 $assignedPropertiesArray = $assignedProperties->getArrayCopy('ProId');
     while ($aRow = mysqli_fetch_array($rsProperties)) {
@@ -848,6 +858,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
           </div>
         </div>
         <div role="tab-pane fade" class="tab-pane" id="notes">
+		<a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Adicionar uma Anotação") ?></a>          
           <ul class="timeline">
             <!-- note time label -->
             <li class="time-label">

@@ -63,9 +63,10 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole)
     $aFam = mysqli_fetch_array($rsFamInfo);
     extract($aFam);
 
+
+	
     // Only get family members that are in the cart
-    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID='.$famID.' AND per_ID IN ('
-    .ConvertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_LastName, per_FirstName';
+    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID=1';
 
     $rsMembers = RunQuery($sSQL);
     $numMembers = mysqli_num_rows($rsMembers);

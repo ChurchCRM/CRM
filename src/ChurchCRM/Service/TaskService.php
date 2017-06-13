@@ -6,7 +6,7 @@ use ChurchCRM\Tasks\ChurchAddress;
 use ChurchCRM\Tasks\ChurchNameTask;
 use ChurchCRM\Tasks\EmailTask;
 use ChurchCRM\Tasks\FamilyWorkPhoneTask;
-use ChurchCRM\Tasks\HttpsTask;
+// use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
 use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\iTask;
@@ -14,8 +14,8 @@ use ChurchCRM\Tasks\LatestReleaseTask;
 use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\PersonGenderDataCheck;
 use ChurchCRM\Tasks\PersonClassificationDataCheck;
-use ChurchCRM\Tasks\PersonRoleDataCheck;
-use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
+//use ChurchCRM\Tasks\PersonRoleDataCheck;
+//use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 use ChurchCRM\Tasks\CheckUploadSizeTask;
 
 class TaskService
@@ -33,15 +33,15 @@ class TaskService
             new ChurchNameTask(),
             new ChurchAddress(),
             new EmailTask(),
-            new HttpsTask(),
+//            new HttpsTask(),
             new IntegrityCheckTask(),
             new LatestReleaseTask(),
             new RegisteredTask(),
             new FamilyWorkPhoneTask(),
             new PersonGenderDataCheck(),
             new PersonClassificationDataCheck(),
-            new PersonRoleDataCheck(),
-            new UpdateFamilyCoordinatesTask(),
+ //           new PersonRoleDataCheck(),
+ //           new UpdateFamilyCoordinatesTask(),
             new CheckUploadSizeTask()
         ];
     }

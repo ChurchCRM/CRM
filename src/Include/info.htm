@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Table with MySQL</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Table with MySQL</h1>
+<h2>Informations</h2>
+Author: <a href="mailto:oliver@fpdf.org?subject=Table%20with%20MySQL">Olivier</a><br>
+License: FPDF
+<h2>Description</h2>
+This class allows to output a table whose content comes from a MySQL query. The table header is
+automatically printed on top of each page. The method to add a column is:<br>
+<br>
+<code>AddCol([<b>mixed</b> field [, <b>mixed</b> width [, <b>string</b> caption [, <b>string</b> align]]]])</code><br>
+<br>
+<code><u>field</u></code>: field of the SQL query (either name or index). If -1, the column will represent
+the field in the same position in the query (default value).<br>
+<br>
+<code><u>width</u></code>: width of the column. It can be a number giving the absolute value, or a string
+of the form x% to request a percentage of the table width. If -1, the width equals the table
+width divided by the number of columns (default value).<br>
+<br>
+<code><u>caption</u></code>: caption of the column. If empty, the capitalized name of the field will
+be used (default value).<br>
+<br>
+<code><u>align</u></code>: alignment of the column content. Possible values are <code>L</code>, <code>C</code> and
+<code>R</code> (default is <code>L</code>).<br>
+<br>
+To output the table:<br>
+<br>
+<code>function Table(<b>string</b> query [, <b>array</b> prop])</code><br>
+<br>
+<code><u>query</u></code>: the SQL query.<br>
+<br>
+<code><u>prop</u></code>: associative array containing the table properties. Possible keys are:<br>
+<br>
+<div style="margin-left:1em">
+<code>width</code>: width of the table. Useful if you specify column widths by percentage. The
+default value is the page width without the margins.<br>
+<code>align</code>: alignment of the table in the page. Possible values are <code>L</code>, <code>C</code>
+and <code>R</code> (default is <code>C</code>).<br>
+<code>padding</code>: left and right margins used inside cells. Default value is 1mm.<br>
+<code>HeaderColor</code>: background color for the table header (array of the three RGB components).<br>
+<code>color1</code>: background color for odd rows.<br>
+<code>color2</code>: background color for even rows.<br>
+</div>
+<br>
+If no column has been defined when <code>Table()</code> is called, columns corresponding to all the
+fields of the query are added automatically.<br>
+After the output of the table, all column definitions are cleared.
+</body>
+</html>

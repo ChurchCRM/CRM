@@ -23,6 +23,7 @@ $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
 $demographicStats = $dashboardService->getDemographic();
 
+/* 
 $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
         where fam_ID =per_fam_ID and fam_DateDeactivated is  null
         and per_Gender in (1,2) and
@@ -42,7 +43,7 @@ $rsClassification = RunQuery($sSQL);
 $classifications = new stdClass();
 while (list($lst_OptionID, $lst_OptionName) = mysqli_fetch_row($rsClassification)) {
     $classifications->$lst_OptionName = $lst_OptionID;
-}
+} */
 
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
           LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
@@ -81,7 +82,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     <?php
     if ($sEmailLink) {
         // Add default email if default email has been set and is not already in string
-      if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+      if (SystemConfig::getValue('sToEmailAddress') != '' && SystemConfig::getValue('sToEmailAddress') != 'myReceiveEmailAddress'
+                                 && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
           $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
       }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
@@ -115,12 +117,12 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
      ?>
     <br/>
     <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
-    <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext('Family Geographic') ?></a>
-    <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext('Family Map') ?>
+    <!-- <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext('Family Geographic') ?></a> 
+    <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext('Family Map') ?> 
     </a>
     <a href="UpdateAllLatLon.php" class="btn btn-app"><i
         class="fa fa-map-pin"></i><?= gettext('Update All Family Coordinates') ?></a>
-  </div>
+  </div>-->
 </div>
 <!-- Small boxes (Stat box) -->
 <div class="row">
