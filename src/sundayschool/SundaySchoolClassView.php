@@ -106,7 +106,6 @@ require '../Include/Header.php';
         </ul>
       </div>
       <?php
-
     }
     ?>
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
@@ -139,7 +138,6 @@ require '../Include/Header.php';
         </div>
       </div>
     <?php
-
     } ?>
   </div>
 </div>
@@ -242,7 +240,6 @@ require '../Include/Header.php';
           </tr>
 
       <?php
-
       }
 
       ?>
