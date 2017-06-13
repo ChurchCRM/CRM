@@ -150,7 +150,6 @@ $MenuFirst = 1;
                         </li>
                         <!--li class="footer"><a href="#">View all</a></li-->
                         <?php
-
                     } else {
                         echo '<li class="header">' . gettext("Your Cart is Empty") . '</li>';
                     }

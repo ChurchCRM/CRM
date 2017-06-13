@@ -354,7 +354,6 @@ if ($fam_ID) {
 			</td>
 		</tr>
 	<?php
-
     }
             echo '</table>';
         }

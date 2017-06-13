@@ -98,7 +98,6 @@ if ($EventID > 0) {
                                             value="<?= $event->getId(); ?>" <?= ($EventID == $event->getId()) ? " Selected='selected'" : "" ?> >
                                             <?= $event->getTitle(); ?></option>
                                         <?php
-
 }
                                     ?>
                                 </select>
@@ -184,7 +183,6 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
     </form> <!-- end AddAttendees form -->
 
     <?php
-
 }
 
 // Checkin/Checkout Section update db
@@ -200,7 +198,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
                 $('#errorcallout').text('<?= gettext("Person has been already checked in for this event") ?>').fadeIn();
             </script>
             <?php
-
         } else {
             $attendee = new EventAttend();
             $attendee->setEventId($EventID);
@@ -289,7 +286,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                     <div id="adultoutDetails" class="box box-solid box-default hidden"></div>
                                 </div>
                                 <?php
-
                             } else { // DeleteBtn?>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-danger"
@@ -298,7 +294,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                            name="DeleteCancel">
                                 </div>
                                 <?php
-
                             } ?>
                         </div>
                     </div>
@@ -307,7 +302,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
         </div>
     </form>
     <?php
-
 }
 //End checkout
 //**********************************************************************************************************
@@ -381,25 +375,21 @@ if (isset($_POST['EventID'])) {
                                            value="<?= gettext('Delete') ?>">
 
                                     <?php
-
                                 } else {
                                     ?>
                                     <i class="fa fa-check-circle"></i>
                                     <?php
-
                                 } ?>
                             </form>
                         </td>
                     </tr>
                     <?php
-
     } ?>
                 </tbody>
             </table>
         </div>
     </div>
     <?php
-
 }
 ?>
 
