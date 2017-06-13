@@ -290,7 +290,7 @@ class SystemService
         $connection = Propel::getConnection();
         return Propel::getServiceContainer()->getConnection()->getAttribute(PDO::ATTR_SERVER_VERSION);
       }
-      catch 
+      catch (\Exception $exc)
       {
         return "Could not obtain DB Server Version";
       }
@@ -395,7 +395,7 @@ class SystemService
                     $now = new \DateTime();  // update the LastBackupTimeStamp.
                     SystemConfig::setValue('sLastBackupTimeStamp', $now->format('Y-m-d H:i:s'));
                 }
-            } catch (Exception $exc) {
+            } catch (\Exception $exc) {
                 // an error in the auto-backup shouldn't prevent the page from loading...
             }
         }
