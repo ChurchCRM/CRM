@@ -102,10 +102,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
       </form>
     </div></div>
   <?php
-
 } else {
-    echo '<p align="center" class="LargeText">'.gettext('Your cart is empty!').'</p>';
-}
+        echo '<p align="center" class="LargeText">'.gettext('Your cart is empty!').'</p>';
+    }
 
 require 'Include/Footer.php';
 ?>

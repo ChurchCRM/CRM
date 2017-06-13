@@ -234,7 +234,6 @@ if (isset($_POST['UploadCSV'])) {
             </select>
             </td>
         <?php
-
         }
 
         echo '</table>'; ?>

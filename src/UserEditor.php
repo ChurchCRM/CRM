@@ -367,14 +367,12 @@ require 'Include/Header.php';
                                             echo ' selected';
                                         } ?>><?= $per_LastName . ', ' . $per_FirstName ?></option>
                                         <?php
-
                                     } ?>
                                 </select>
                             </td>
                         </tr>
 
                         <?php
-
                     } else { // No, just display the user name?>
                         <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
                         <tr>
@@ -382,7 +380,6 @@ require 'Include/Header.php';
                             <td><?= $sUser ?></td>
                         </tr>
                         <?php
-
                     } ?>
 
                     <?php if (isset($sErrorText) != '') {
@@ -393,7 +390,6 @@ require 'Include/Header.php';
                             </td>
                         </tr>
                         <?php
-
                     } ?>
                     <tr>
                         <td><?= gettext('Login Name') ?>:</td>

@@ -263,7 +263,6 @@ require 'Include/Header.php';
                     <td><?= $EnteredFirstName . ' ' . $EnteredLastName ?>&nbsp;</td>
                 </tr>
                 <?php
-
             }
             echo '</table>';
         } else {
