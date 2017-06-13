@@ -403,9 +403,9 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         <li role="presentation" class="active"><a href="#timeline" aria-controls="timeline" role="tab" data-toggle="tab"><?= gettext('Histórico') ?></a></li>
         <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab"><?= gettext('Family') ?></a></li>
         <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext('Sociedades Internas') ?></a></li>
-        <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext('Propriedades Especiais') ?></a></li>
+        <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext('Características Especiais') ?></a></li>
         <!--<li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li> -->
-        <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext('Observações') ?></a></li>
+        <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext('Anotações') ?></a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -451,6 +451,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
                   <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
             ?>
+						                 
                     <div class="timeline-footer">
                       <?php if ($item['editLink'] != '') {
                 ?>
@@ -723,7 +724,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) != 0): ?>
                 <div class="alert alert-info">
                   <div>
-                    <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
+                    <h4><strong><?= gettext('Atribuir uma característica') ?>:</strong></h4>
 
                     <form method="post" action="<?= SystemURLs::getRootPath(). '/api/properties/persons/assign' ?>" id="assign-property-form">
                         <input type="hidden" name="PersonId" value="<?= $person->getId() ?>" >
@@ -731,7 +732,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                             <div class="form-group col-xs-12 col-md-7">
                                 <select name="PropertyId" id="input-person-properties" class="form-control select2"
                                     style="width:100%" data-placeholder="Select ...">
-                                <option disabled selected> -- <?= gettext('select an option') ?> -- </option>
+                                <option disabled selected> -- <?= gettext('Escolha uma Característica') ?> -- </option>
                                 <?php
                                 $assignedPropertiesArray = $assignedProperties->getArrayCopy('ProId');
     while ($aRow = mysqli_fetch_array($rsProperties)) {
@@ -857,6 +858,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
           </div>
         </div>
         <div role="tab-pane fade" class="tab-pane" id="notes">
+		<a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Adicionar uma Anotação") ?></a>          
           <ul class="timeline">
             <!-- note time label -->
             <li class="time-label">

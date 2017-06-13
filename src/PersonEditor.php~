@@ -120,8 +120,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sSuffix = FilterInput($_POST['Suffix']);
     $iGender = FilterInput($_POST['Gender'], 'int');
     //$iDiacono = FilterInput($_POST['Diacono'], 'int');
-    $iDiacono = isset($_POST['Diacono']) ? 1 : 0 ;
-    $iPresbitero = isset($_POST['Presbitero']) ? 1 : 0 ;
+    $iDiacono = isset($_POST['Diacono']) ? 1 : 0 ;                                          //checks if person is presbitero or not
+    $iPresbitero = isset($_POST['Presbitero']) ? 1 : 0 ;                                             
 
     // Person address stuff is normally surpressed in favor of family address info
     $sAddress1 = '';
@@ -235,7 +235,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         }
     }
     
-    /*
+    
 		//Check if gender is NULL
 	   if ($iGender == '') {
             $sTopError = gettext('Não selecionou o Sexo');
@@ -247,7 +247,18 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sTopError = gettext('Não selecionou o Bairro');
             $bErrorFlag = true;
         }
-     */
+        
+   //Check if diacono is female
+	   if ($iDiacono == '1' || $iGender == '2') {
+            $sTopError = gettext('Uma Mulher não pode ser Diácono');
+            $bErrorFlag = true;
+        }
+  
+  //Check if presbitero is female
+	   if ($iPresbitero == '1' || $iGender == '2') {
+            $sTopError = gettext('Uma Mulher não pode ser Presbítero');
+            $bErrorFlag = true;
+        }      
 
     // Validate Friend Date if one was entered
     if (strlen($dDiaconoDate) > 0) {
@@ -1178,12 +1189,14 @@ require 'Include/Header.php';
                     </div>
                 </div>
                </div>
+               
+               <br><br>
                  <div class="row">
                     <div class="col-md-3">
                         <label><?= gettext('Diácono') ?></label><br/>
                         <input type="checkbox" name="Diacono" id="Diacono" value="1" <?php if ($iDiacono) {
     echo ' checked';
-} ?> />
+} ?> /> <br><br><br>
                     </div>   
                     
                     <div class="form-group col-md-3 col-lg-3" id="DiaconoEleito" class="form-control date-picker" >
@@ -1208,7 +1221,7 @@ require 'Include/Header.php';
                         <label><?= gettext('Presbítero') ?></label><br/>
                         <input type="checkbox" name="Presbitero" id="Presbitero" value="1" <?php if ($iPresbitero) {
     echo ' checked';
-} ?> />
+} ?> /><br><br><br>
                     </div>   
                     
                     <div class="form-group col-md-3 col-lg-3" id="PresbiteroEleito" class="form-control date-picker" >
@@ -1320,6 +1333,7 @@ function GroupAdd() {
 	
 </script>
 
+//this scripts show the date only if person is diacono or presbitero
 <script>
 if (<?php echo ($iDiacono) ?>) {
    $("#DiaconoEleito").show();
