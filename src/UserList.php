@@ -66,7 +66,6 @@ require 'Include/Header.php';
     ?>
                         <a onclick="deleteUser(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         <?php
-
 } ?>
                     </td>
                     <td><a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a></td>
@@ -74,18 +73,16 @@ require 'Include/Header.php';
                     <td align="center"><?= $user->getLoginCount() ?></td>
                     <td align="center">
                         <?php if ($user->isLocked()) {
-    ?>
+        ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
                         <?php
-
-} else {
-    echo $user->getFailedLogins();
-}
+    } else {
+        echo $user->getFailedLogins();
+    }
     if ($user->getFailedLogins()> 0) {
         ?>
                             <a onclick="restUserLoginCount(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-eraser" aria-hidden="true"></i></a>
                         <?php
-
     } ?>
                     </td>
                     <td>
@@ -94,13 +91,11 @@ require 'Include/Header.php';
         ?>
                             <a onclick="resetUserPassword(<?= $user->getId()?>, '<?= $user->getPerson()->getFullName() ?>')"><i class="fa fa-send-o" aria-hidden="true"></i></a>
                         <?php
-
     } ?>
                     </td>
 
                 </tr>
             <?php
-
 } ?>
             </tbody>
         </table>

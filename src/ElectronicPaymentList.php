@@ -174,7 +174,7 @@ function CreatePaymentMethodsForChecked()
 	    }
 	}
 }
-<?php 
+<?php
 } ?>
 </script>
 
@@ -206,18 +206,18 @@ function CreatePaymentMethodsForChecked()
 		<td align="center"><b><?= gettext('Routing') ?></b></td>
 		<td align="center"><b><?= gettext('Account') ?></b></td>
 		<?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
-    ?> 
+        ?> 
 		<td align="center"><b><?= gettext('Vanco ACH') ?></b></td>
-		<?php 
-}?>
+		<?php
+    }?>
 		<td align="center"><b><?= gettext('Credit Card') ?></b></td>
 		<td align="center"><b><?= gettext('Month') ?></b></td>
 		<td align="center"><b><?= gettext('Year') ?></b></td>
 		<?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
-    ?> 
+        ?> 
 		<td align="center"><b><?= gettext('Vanco CC') ?></b></td>
-		<?php 
-}?>
+		<?php
+    }?>
 		<td><b><?= gettext('Edit') ?></b></td>
 		<td><b><?= gettext('Delete') ?></b></td>
 	</tr>
@@ -272,7 +272,7 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
 		<?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
                 ?> 
 		<td align="center" id="AccountVanco<?= $aut_ID ?>"><?= $aut_AccountVanco ?></td>
-		<?php 
+		<?php
             } ?>
 		<td id="CreditCard<?= $aut_ID ?>"><?php if (strlen($aut_CreditCard) == 16) {
                 echo '*************'.mb_substr($aut_CreditCard, 12, 4);
@@ -282,13 +282,12 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
 		<?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
                 ?> 
 		<td align="center" id="CreditCardVanco<?= $aut_ID ?>"><?= $aut_CreditCardVanco ?></td>
-		<?php 
+		<?php
             } ?>
 		<td><a href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?php echo $fam_ID?>&amp;linkBack=ElectronicPaymentList.php"><?= gettext('Edit') ?></a></td>
 		<td><button onclick="ConfirmDeleteAutoPayment(<?= $aut_ID ?>)"><?= gettext('Delete') ?></button></td>
 	</tr>
 	<?php
-
 }
 ?>
 </table>
@@ -300,7 +299,6 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
     ?>
 <input type="button" class="btn" id="CreatePaymentMethodsForChecked" value="Store Private Data at Vanco" onclick="CreatePaymentMethodsForChecked();" />
 <?php
-
 } ?>
 <input type="button" class="btn btn-warning" id="DeleteChecked" value="Delete" onclick="DeleteChecked();" />
 <input type="button" class="btn" id="DeleteChecked" value="Clear Account Numbers" onclick="ClearAccountsChecked();" />

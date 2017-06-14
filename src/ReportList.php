@@ -48,7 +48,6 @@ require 'Include/Header.php';
       </div>
     </div><!-- ./col -->
     <?php
-
 }
 
 //Conditionally Display the Event Reports, only if there are actually events in the database.  Otherwise, Don't render the Event reports section.
@@ -78,7 +77,6 @@ require 'Include/Header.php';
       </div>
     </div>
     <?php
-
   }
   ?>
 </div>

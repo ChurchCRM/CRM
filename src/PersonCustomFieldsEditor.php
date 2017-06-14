@@ -296,7 +296,6 @@ require 'Include/Header.php'; ?>
           ?>
        <h2><?= gettext('No custom person fields have been added yet') ?></h2>
         <?php
-
       } else {
           ?>
         <tr>
@@ -397,7 +396,7 @@ require 'Include/Header.php'; ?>
 
             </td>
           </tr>
-        <?php 
+        <?php
         } ?>
 
         <tr>
@@ -415,7 +414,7 @@ require 'Include/Header.php'; ?>
           </td>
           <td>
         </tr>
-      <?php 
+      <?php
       } ?>
       <tr>
         <td colspan="7">
