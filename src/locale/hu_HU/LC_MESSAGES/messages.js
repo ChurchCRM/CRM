@@ -505,6 +505,8 @@
     "Map this group": "Térkép e csoport",
     "Email Group": "Email Group",
     "Total Members": "Összes tag",
+    "Default Role": "Alapértelmezett Szerep",
+    "Group-Specific Properties": "Group-specifikus tulajdonságok",
     "Disabled for this group.": "Tiltott ebben a csoportban.",
     "Assigned Properties": "Célhoz Tulajdonságok",
     "Group Members:": "Csoport tagjai:",

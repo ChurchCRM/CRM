@@ -508,6 +508,8 @@
     "Map this group": "Harta acestui grup",
     "Email Group": "E-mail Group",
     "Total Members": "Total membri",
+    "Default Role": "Implicit Rol",
+    "Group-Specific Properties": "Proprietăți grup-specifice",
     "Disabled for this group.": "Dezactivată pentru acest grup.",
     "Assigned Properties": "Proprietăți atribuite",
     "Group Members:": "Membrii grupului:",
