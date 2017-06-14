@@ -10,6 +10,6 @@ use ChurchCRM\data\Countries;
   <option value="<?= $county ?>" <?php if ($sCountry == $county) {
         echo 'selected';
     } ?>><?= gettext($county) ?>
-    <?php 
+    <?php
 } ?>
 </select>
