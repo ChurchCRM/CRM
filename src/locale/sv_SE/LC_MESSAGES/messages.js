@@ -510,6 +510,8 @@
     "Map this group": "Kartlägga denna grupp",
     "Email Group": "Epost grupp",
     "Total Members": "Antal medlemmar",
+    "Default Role": "Standard roll",
+    "Group-Specific Properties": "Grupp specifik egenskapar",
     "Disabled for this group.": "oaktiverad för denna grupp",
     "Assigned Properties": "Angiven egenskaper",
     "Group Members:": "Grupp medlemmar",

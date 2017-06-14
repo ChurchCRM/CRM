@@ -510,6 +510,8 @@
     "Map this group": "Modifca questo gruppo",
     "Email Group": "Tutti i Gruppi",
     "Total Members": "Membri totali",
+    "Default Role": "Ruolo predefinito",
+    "Group-Specific Properties": "Proprietà specifiche del gruppo",
     "Disabled for this group.": "Disabilitato per questo gruppo.",
     "Assigned Properties": "Proprietà assegnate",
     "Group Members:": "Compoenti del gruppo:",

@@ -510,6 +510,8 @@
     "Map this group": "这是根据组",
     "Email Group": "电子邮件组",
     "Total Members": "总会员人数",
+    "Default Role": "默认角色",
+    "Group-Specific Properties": "组特定的属性",
     "Disabled for this group.": "这组停用。",
     "Assigned Properties": "指定的属性",
     "Group Members:": "小组成员：",
