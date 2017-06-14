@@ -49,7 +49,6 @@ require '../Include/Header.php';
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
           class="fa fa-plus-square"></i><?= gettext('Add New Class') ?></button>
     <?php
-
 } ?>
     <a href="SundaySchoolReports.php" class="btn btn-app"
        title="<?= gettext('Generate class lists and attendance sheets'); ?>"><i
@@ -150,7 +149,7 @@ require '../Include/Header.php';
       </thead>
       <tbody>
       <?php foreach ($classStats as $class) {
-    ?>
+        ?>
         <tr>
           <td><a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
             <span class="fa-stack">
@@ -162,8 +161,7 @@ require '../Include/Header.php';
           <td><?= $class['kids'] ?></td>
         </tr>
       <?php
-
-} ?>
+    } ?>
       </tbody>
     </table>
   </div>
@@ -278,6 +276,5 @@ require '../Include/Header.php';
   </script>
 
 <?php
-
       }
 require '../Include/Footer.php' ?>
