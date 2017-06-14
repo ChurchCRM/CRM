@@ -49,7 +49,6 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
         ?>
              <p class="text-center callout callout-warning"><?= gettext('You have no items in your cart.') ?> </p>
         <?php
-
     } else {
         switch ($_GET['Message']) {
                 case 'aMessage': ?>
@@ -95,7 +94,6 @@ if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']
         value="<?= gettext('Go To Labels') ?>">
         </form>
         <?php
-
     } ?>
 
      <!-- BEGIN CART FUNCTIONS -->
@@ -114,13 +112,11 @@ if (count($_SESSION['aPeopleCart']) > 0) {
             ?>
             <a href="CartToGroup.php" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
         <?php
-
         } ?>
         <?php if ($_SESSION['bAddRecords']) {
             ?>
             <a href="CartToFamily.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
         <?php
-
         } ?>
         <a href="CartToEvent.php" class="btn btn-app"><i class="fa fa-ticket"></i><?=  gettext('Empty Cart to Event') ?></a>
 
@@ -128,7 +124,6 @@ if (count($_SESSION['aPeopleCart']) > 0) {
             ?>
             <a href="CSVExport.php?Source=cart" class="btn btn-app"><i class="fa fa-file-excel-o"></i><?=  gettext('CSV Export') ?></a>
         <?php
-
         } ?>
         <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i class="fa fa-map-marker"></i><?= gettext('Map Cart') ?></a>
         <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
@@ -218,7 +213,6 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </div>
 <!-- /.box -->
 <?php
-
         } ?>
 <!-- Default box -->
 <div class="box">
@@ -273,7 +267,6 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
 
 <?php
-
     }
 } ?>
 
@@ -356,7 +349,6 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                 <td><?= $aFamilyRoleName[$per_fmr_ID] ?></td>
             </tr>
     <?php
-
         } ?>
 
             </tbody>
