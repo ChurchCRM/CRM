@@ -447,7 +447,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     </td>
   </tr>
 
-<?php 
+<?php
         } else { // if (empty($iTypeID))?>
 
   <tr>
@@ -488,13 +488,13 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     </td>
     <td class="TextColumn">
       <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>">
+         <option value="0" <?= ($nEventGroupId == 0 ? "Selected":"") ?>>None</option>
         <?php
           $groups=  ChurchCRM\Base\GroupQuery::create()->find();
             foreach ($groups as $group) {
                 ?>
          <option value="<?= $group->getId() ?>" <?= ($group->getId() == $nEventGroupId ? "Selected":"") ?>><?= $group->getName() ?></option>
             <?php
-
             } ?>
       </select>
     </td>
@@ -522,7 +522,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         </td>
         </tr>
       <?php
-
       } //end for loop
       ?>
       <tr>
@@ -532,7 +531,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         </tr>
         </table>
         <?php
-
       } //endif
         ?>
     </td>
@@ -559,7 +557,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 		<td></td>
     <td><input type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary"></td>
   </tr>
-<?php 
+<?php
         } // if (empty($iTypeID))?>
 </table>
 </form>

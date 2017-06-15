@@ -503,6 +503,8 @@
     "Add Group Members to Cart": "Shto anëtarët e grupit ne shporte",
     "Map this group": "Hartë këtë grup",
     "Email Group": "Email Group",
+    "Default Role": "Default Roli",
+    "Group-Specific Properties": "Grupi-specifike Prona të paluajtshme",
     "Disabled for this group.": "Me aftësi të kufizuara për këtë grup.",
     "Assigned Properties": "Prona të caktuar",
     "Group Members:": "Anëtarët e grupit:",

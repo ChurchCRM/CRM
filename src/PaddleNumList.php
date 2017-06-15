@@ -86,7 +86,6 @@ if ($rsPaddleNums) {
 			</td>
 		</tr>
 	<?php
-
     } // while
 } // if
 ?>

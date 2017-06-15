@@ -42,6 +42,7 @@ if (!isset($_COOKIE['kioskCookie'])) {
         $Kiosk->setAccepted($false);
         $Kiosk->save();
     } else {
+        header("HTTP/1.1 401 Unauthorized");
         exit;
     }
 }
