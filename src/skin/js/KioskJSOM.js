@@ -75,16 +75,16 @@ window.CRM.kiosk = {
           {
             window.CRM.kioskAssignmentId = thisAssignment;
           }
-          else if (thisAssignment === null || thisAssignment.EventId != window.CRM.kioskAssignmentId.EventId){
+          else if (thisAssignment && (thisAssignment.EventId !== window.CRM.kioskAssignmentId.EventId || thisAssignment.Event.GroupId !== window.CRM.kioskAssignmentId.Event.GroupId)){
             location.reload();
           }
           
-          if (data.Commands == "Reload")
+          if (data.Commands === "Reload")
           {
             location.reload();
           }
           
-          if (data.Commands == "Identify")
+          if (data.Commands === "Identify")
           {
             clearInterval(window.CRM.kioskEventLoop);
             $("#event").hide();
