@@ -26,7 +26,7 @@ if [[ "${SAUCE_USERNAME}" && "${SAUCE_ACCESS_KEY}" ]]; then
     done
   fi
 
-  export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host":"'${SAUCE_USERNAME}':'${SAUCE_ACCESS_KEY}'@ondemand.saucelabs.com/wd/hub"}}}}'
+  export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host":"'${SAUCE_USERNAME}':'${SAUCE_ACCESS_KEY}'@ondemand.saucelabs.com/wd/hub" ,"capabilities": { "platform": "linux"}}}}}'
 else
   echo "NO SAUCE"
   export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"goutte" : "~","selenium2":"~"}}}'
