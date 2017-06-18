@@ -379,12 +379,14 @@
     }
 
     $(document).ajaxError(function (evt, xhr, settings,errortext) {
+      if(errortext !== "abort") {
         try {
             var CRMResponse = JSON.parse(xhr.responseText);
             window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
         } catch(err) {
           window.CRM.DisplayErrorMessage(settings.url,{"message":errortext});
         }
+      }
     });
 
     function LimitTextSize(theTextArea, size) {
