@@ -55,17 +55,17 @@ if (isset($_POST['save'])) {
         $id = key($type);
     // Filter Input
     if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
-      $value = InputUtils::LegacyFilterInput($new_value[$id], 'htmltext');
+      $value = InputUtils::FilterHTML($new_value[$id]);
     } elseif ($current_type == 'text' || $current_type == 'textarea') {
-        $value = InputUtils::LegacyFilterInput($new_value[$id]);
+        $value = InputUtils::FilterString($new_value[$id]);
     } elseif ($current_type == 'number') {
-        $value = InputUtils::LegacyFilterInput($new_value[$id], 'float');
+        $value = InputUtils::FilterFloat($new_value[$id]);
     } elseif ($current_type == 'date') {
-        $value = InputUtils::LegacyFilterInput($new_value[$id], 'date');
+        $value = InputUtils::FilterDate($new_value[$id]);
     } elseif ($current_type == 'json') {
         $value = $new_value[$id];
     } elseif ($current_type == 'choice') {
-        $value = InputUtils::LegacyFilterInput($new_value[$id]);
+        $value = InputUtils::FilterString($new_value[$id]);
     } elseif ($current_type == 'boolean') {
         if ($new_value[$id] != '1') {
             $value = '';

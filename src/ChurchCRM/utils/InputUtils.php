@@ -4,6 +4,8 @@ namespace ChurchCRM\Utils;
 
 class InputUtils {
   
+  private static $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6>';
+  
   public static function LegacyFilterInputArr($arr, $key, $type = 'string', $size = 1)
   {
       if (array_key_exists($key, $arr)) {
@@ -12,51 +14,77 @@ class InputUtils {
           return InputUtils::LegacyFilterInput('', $type, $size);
       }
   }
+  
+   
+
+  public static function FilterString($sInput)
+  {
+      // or use htmlspecialchars( stripslashes( ))
+      $sInput = strip_tags(trim($sInput));
+      if (get_magic_quotes_gpc()) {
+        $sInput = stripslashes($sInput);
+      }
+      return $sInput;
+  }
+
+  public static function FilterHTML($sInput)
+  {
+      $sInput = strip_tags(trim($sInput), self::$AllowedHTMLTags);
+      if (get_magic_quotes_gpc()) {
+        $sInput = stripslashes($sInput);
+      }
+      return $sInput;
+  }
+
+  public static function FilterChar($sInput)
+  {
+     $sInput = mb_substr(trim($sInput), 0, $size);
+      if (get_magic_quotes_gpc()) {
+        $sInput = stripslashes($sInput);
+      }
+  }
+
+  public static function FilterInt($sInput)
+  {
+     return (int) intval(trim($sInput));
+  }
+
+  public static function FilterFloat($sInput)
+  {
+    return (float) floatval(trim($sInput));
+  }
+
+  public static function FilterDate($sInput)
+  {
+    // Attempts to take a date in any format and convert it to YYYY-MM-DD format
+    return date('Y-m-d', strtotime($sInput));
+  }
 
   // Sanitizes user input as a security measure
   // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
   // Note that a database connection must already be established for the mysqli_real_escape_string function to work.
   public static function LegacyFilterInput($sInput, $type = 'string', $size = 1)
   {
-      global $cnInfoCentral;
-      if (strlen($sInput) > 0) {
-          switch ($type) {
+    global $cnInfoCentral;
+    if (strlen($sInput) > 0) {
+      switch ($type) {
         case 'string':
-          // or use htmlspecialchars( stripslashes( ))
-          $sInput = strip_tags(trim($sInput));
-          if (get_magic_quotes_gpc()) {
-              $sInput = stripslashes($sInput);
-          }
-          $sInput = mysqli_real_escape_string($cnInfoCentral, $sInput);
-
-          return $sInput;
+          return mysqli_real_escape_string($cnInfoCentral, self::FilterString($sInput));
         case 'htmltext':
-          $sInput = strip_tags(trim($sInput), '<a><b><i><u><h1><h2><h3><h4><h5><h6>');
-          if (get_magic_quotes_gpc()) {
-              $sInput = stripslashes($sInput);
-          }
-          $sInput = mysqli_real_escape_string($cnInfoCentral, $sInput);
-
-          return $sInput;
+          return mysqli_real_escape_string($cnInfoCentral, self::FilterHTML($sInput));
         case 'char':
-          $sInput = mb_substr(trim($sInput), 0, $size);
-          if (get_magic_quotes_gpc()) {
-              $sInput = stripslashes($sInput);
-          }
-          $sInput = mysqli_real_escape_string($cnInfoCentral, $sInput);
-
-          return $sInput;
+          return mysqli_real_escape_string($cnInfoCentral, self::FilterChar($sInput));
         case 'int':
-          return (int) intval(trim($sInput));
+         return self::FilterInt($sInput);
         case 'float':
-          return (float) floatval(trim($sInput));
+          return self::FilterFloat($sInput);
         case 'date':
-          // Attempts to take a date in any format and convert it to YYYY-MM-DD format
-          return date('Y-m-d', strtotime($sInput));
+          return self::FilterDate($sInput);
       }
-      } else {
-          return '';
-      }
-  }
+    } 
+    else {
+      return '';
+    }
+  } 
 }
 ?>
