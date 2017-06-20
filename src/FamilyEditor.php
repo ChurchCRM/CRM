@@ -23,7 +23,6 @@ use ChurchCRM\Note;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
 
-
 //Set the page title
 $sPageTitle = gettext('Family Editor');
 
