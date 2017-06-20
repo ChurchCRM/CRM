@@ -39,11 +39,12 @@ use ChurchCRM\UserQuery;
 use ChurchCRM\Emails\LockedEmail;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Utils\InputUtils;
 
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
     // Get the information for the selected user
-    $UserName = FilterInput($_POST['User'], 'string', 32);
+    $UserName = InputUtils::LegacyFilterInput($_POST['User'], 'string', 32);
     $currentUser = UserQuery::create()->findOneByUserName($UserName);
     if ($currentUser == null) {
         // Set the error text

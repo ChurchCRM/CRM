@@ -31,6 +31,7 @@ require 'Include/Functions.php';
 use ChurchCRM\ConfigQuery;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bAdmin']) {
@@ -54,17 +55,17 @@ if (isset($_POST['save'])) {
         $id = key($type);
     // Filter Input
     if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
-      $value = FilterInput($new_value[$id], 'htmltext');
+      $value = InputUtils::LegacyFilterInput($new_value[$id], 'htmltext');
     } elseif ($current_type == 'text' || $current_type == 'textarea') {
-        $value = FilterInput($new_value[$id]);
+        $value = InputUtils::LegacyFilterInput($new_value[$id]);
     } elseif ($current_type == 'number') {
-        $value = FilterInput($new_value[$id], 'float');
+        $value = InputUtils::LegacyFilterInput($new_value[$id], 'float');
     } elseif ($current_type == 'date') {
-        $value = FilterInput($new_value[$id], 'date');
+        $value = InputUtils::LegacyFilterInput($new_value[$id], 'date');
     } elseif ($current_type == 'json') {
         $value = $new_value[$id];
     } elseif ($current_type == 'choice') {
-        $value = FilterInput($new_value[$id]);
+        $value = InputUtils::LegacyFilterInput($new_value[$id]);
     } elseif ($current_type == 'boolean') {
         if ($new_value[$id] != '1') {
             $value = '';

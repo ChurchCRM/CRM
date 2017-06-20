@@ -19,20 +19,21 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
+use ChurchCRM\Utils\InputUtils;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
 
 //Get the PersonID out of the querystring
 if (array_key_exists('PersonID', $_GET)) {
-    $iPersonID = FilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 } else {
     $iPersonID = 0;
 }
 
 $sPreviousPage = '';
 if (array_key_exists('previousPage', $_GET)) {
-    $sPreviousPage = FilterInput($_GET['previousPage']);
+    $sPreviousPage = InputUtils::LegacyFilterInput($_GET['previousPage']);
 }
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
@@ -96,12 +97,12 @@ $bNoFormat_CellPhone = false;
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
-    $sTitle = FilterInput($_POST['Title']);
-    $sFirstName = FilterInput($_POST['FirstName']);
-    $sMiddleName = FilterInput($_POST['MiddleName']);
-    $sLastName = FilterInput($_POST['LastName']);
-    $sSuffix = FilterInput($_POST['Suffix']);
-    $iGender = FilterInput($_POST['Gender'], 'int');
+    $sTitle = InputUtils::LegacyFilterInput($_POST['Title']);
+    $sFirstName = InputUtils::LegacyFilterInput($_POST['FirstName']);
+    $sMiddleName = InputUtils::LegacyFilterInput($_POST['MiddleName']);
+    $sLastName = InputUtils::LegacyFilterInput($_POST['LastName']);
+    $sSuffix = InputUtils::LegacyFilterInput($_POST['Suffix']);
+    $iGender = InputUtils::LegacyFilterInput($_POST['Gender'], 'int');
 
     // Person address stuff is normally surpressed in favor of family address info
     $sAddress1 = '';
@@ -110,16 +111,16 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sZip = '';
     $sCountry = '';
     if (array_key_exists('Address1', $_POST)) {
-        $sAddress1 = FilterInput($_POST['Address1']);
+        $sAddress1 = InputUtils::LegacyFilterInput($_POST['Address1']);
     }
     if (array_key_exists('Address2', $_POST)) {
-        $sAddress2 = FilterInput($_POST['Address2']);
+        $sAddress2 = InputUtils::LegacyFilterInput($_POST['Address2']);
     }
     if (array_key_exists('City', $_POST)) {
-        $sCity = FilterInput($_POST['City']);
+        $sCity = InputUtils::LegacyFilterInput($_POST['City']);
     }
     if (array_key_exists('Zip', $_POST)) {
-        $sZip = FilterInput($_POST['Zip']);
+        $sZip = InputUtils::LegacyFilterInput($_POST['Zip']);
     }
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
@@ -128,11 +129,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     if (array_key_exists('Country', $_POST)) {
-        $sCountry = FilterInput($_POST['Country']);
+        $sCountry = InputUtils::LegacyFilterInput($_POST['Country']);
     }
 
-    $iFamily = FilterInput($_POST['Family'], 'int');
-    $iFamilyRole = FilterInput($_POST['FamilyRole'], 'int');
+    $iFamily = InputUtils::LegacyFilterInput($_POST['Family'], 'int');
+    $iFamilyRole = InputUtils::LegacyFilterInput($_POST['FamilyRole'], 'int');
 
     // Get their family's country in case person's country was not entered
     if ($iFamily > 0) {
@@ -145,32 +146,32 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sState = '';
     if ($sCountryTest == 'United States' || $sCountryTest == 'Canada') {
         if (array_key_exists('State', $_POST)) {
-            $sState = FilterInput($_POST['State']);
+            $sState = InputUtils::LegacyFilterInput($_POST['State']);
         }
     } else {
         if (array_key_exists('StateTextbox', $_POST)) {
-            $sState = FilterInput($_POST['StateTextbox']);
+            $sState = InputUtils::LegacyFilterInput($_POST['StateTextbox']);
         }
     }
 
-    $sHomePhone = FilterInput($_POST['HomePhone']);
-    $sWorkPhone = FilterInput($_POST['WorkPhone']);
-    $sCellPhone = FilterInput($_POST['CellPhone']);
-    $sEmail = FilterInput($_POST['Email']);
-    $sWorkEmail = FilterInput($_POST['WorkEmail']);
-    $iBirthMonth = FilterInput($_POST['BirthMonth'], 'int');
-    $iBirthDay = FilterInput($_POST['BirthDay'], 'int');
-    $iBirthYear = FilterInput($_POST['BirthYear'], 'int');
+    $sHomePhone = InputUtils::LegacyFilterInput($_POST['HomePhone']);
+    $sWorkPhone = InputUtils::LegacyFilterInput($_POST['WorkPhone']);
+    $sCellPhone = InputUtils::LegacyFilterInput($_POST['CellPhone']);
+    $sEmail = InputUtils::LegacyFilterInput($_POST['Email']);
+    $sWorkEmail = InputUtils::LegacyFilterInput($_POST['WorkEmail']);
+    $iBirthMonth = InputUtils::LegacyFilterInput($_POST['BirthMonth'], 'int');
+    $iBirthDay = InputUtils::LegacyFilterInput($_POST['BirthDay'], 'int');
+    $iBirthYear = InputUtils::LegacyFilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
-    $dFriendDate = FilterInput($_POST['FriendDate']);
-    $dMembershipDate = FilterInput($_POST['MembershipDate']);
-    $iClassification = FilterInput($_POST['Classification'], 'int');
+    $dFriendDate = InputUtils::LegacyFilterInput($_POST['FriendDate']);
+    $dMembershipDate = InputUtils::LegacyFilterInput($_POST['MembershipDate']);
+    $iClassification = InputUtils::LegacyFilterInput($_POST['Classification'], 'int');
     $iEnvelope = 0;
     if (array_key_exists('EnvID', $_POST)) {
-        $iEnvelope = FilterInput($_POST['EnvID'], 'int');
+        $iEnvelope = InputUtils::LegacyFilterInput($_POST['EnvID'], 'int');
     }
     if (array_key_exists('updateBirthYear', $_POST)) {
-        $iupdateBirthYear = FilterInput($_POST['updateBirthYear'], 'int');
+        $iupdateBirthYear = InputUtils::LegacyFilterInput($_POST['updateBirthYear'], 'int');
     }
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
@@ -262,7 +263,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         extract($rowCustomField);
 
         if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
-            $currentFieldData = FilterInput($_POST[$custom_Field]);
+            $currentFieldData = InputUtils::LegacyFilterInput($_POST[$custom_Field]);
 
             $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
 

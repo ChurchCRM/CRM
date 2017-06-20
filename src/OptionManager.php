@@ -20,6 +20,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 $mode = trim($_GET['mode']);
 
 // Check security for the mode selected.
@@ -96,7 +98,7 @@ switch ($mode) {
         $adjplusname = gettext('Group Member Role');
         $adjplusnameplural = gettext('Group Member Roles');
         $sPageTitle = gettext('Group Member Roles Editor');
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = 'SELECT grp_DefaultRole FROM group_grp WHERE grp_RoleListID = '.$listID;
@@ -117,7 +119,7 @@ switch ($mode) {
         $adjplusname = gettext('Person Custom List Option');
         $adjplusnameplural = gettext('Person Custom List Options');
         $sPageTitle = gettext('Person Custom List Options Editor');
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = "SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special = ".$listID;
@@ -135,7 +137,7 @@ switch ($mode) {
         $adjplusname = gettext('Custom List Option');
         $adjplusnameplural = gettext('Custom List Options');
         $sPageTitle = gettext('Custom List Options Editor');
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = "SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special = ".$listID;
@@ -153,7 +155,7 @@ switch ($mode) {
         $adjplusname = gettext('Family Custom List Option');
         $adjplusnameplural = gettext('Family Custom List Options');
         $sPageTitle = gettext('Family Custom List Options Editor');
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = ".$listID;
@@ -175,7 +177,7 @@ $iNewNameError = 0;
 
 // Check if we're adding a field
 if (isset($_POST['AddField'])) {
-    $newFieldName = FilterInput($_POST['newFieldName']);
+    $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
 
     if (strlen($newFieldName) == 0) {
         $iNewNameError = 1;
@@ -231,7 +233,7 @@ if (isset($_POST['SaveChanges'])) {
         //addition save off sequence also
         $aSeqs[$row] = $aRow['lst_OptionSequence'];
 
-        $aNameFields[$row] = FilterInput($_POST[$row.'name']);
+        $aNameFields[$row] = InputUtils::LegacyFilterInput($_POST[$row.'name']);
     }
 
     for ($row = 1; $row <= $numRows; $row++) {

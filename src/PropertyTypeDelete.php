@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: User must have property and classification editing permission
 if (!$_SESSION['bMenuOptions']) {
     Redirect('Menu.php');
@@ -27,7 +29,7 @@ if (!$_SESSION['bMenuOptions']) {
 $sPageTitle = gettext('Property Type Delete Confirmation');
 
 //Get the PersonID from the querystring
-$iPropertyTypeID = FilterInput($_GET['PropertyTypeID'], 'int');
+$iPropertyTypeID = InputUtils::LegacyFilterInput($_GET['PropertyTypeID'], 'int');
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {

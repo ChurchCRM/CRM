@@ -19,6 +19,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bEditRecords']) {
     Redirect('Menu.php');
@@ -28,8 +30,8 @@ if (!$_SESSION['bEditRecords']) {
 $sPageTitle = gettext('Group Member Properties Editor');
 
 // Get the Group and Person IDs from the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
-$iPersonID = FilterInput($_GET['PersonID'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 // Get some info about this person.  per_Country is needed in case there are phone numbers.
 $sSQL = 'SELECT per_FirstName, per_LastName, per_Country, per_fam_ID FROM person_per WHERE per_ID = '.$iPersonID;
@@ -72,7 +74,7 @@ if (isset($_POST['GroupPropSubmit'])) {
     while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
         extract($rowPropList);
 
-        $currentFieldData = FilterInput($_POST[$prop_Field]);
+        $currentFieldData = InputUtils::LegacyFilterInput($_POST[$prop_Field]);
 
         $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $prop_Field, $aPropErrors);
 

@@ -17,8 +17,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$linkBack = FilterInputArr($_GET, 'linkBack');
-$iFundRaiserID = FilterInputArr($_GET, 'FundRaiserID');
+use ChurchCRM\Utils\InputUtils;
+
+$linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
+$iFundRaiserID = InputUtils::LegacyFilterInputArr($_GET, 'FundRaiserID');
 
 if ($iFundRaiserID > 0) {
     // Get the current fund raiser record
@@ -40,9 +42,9 @@ $sDateError = '';
 //Is this the second pass?
 if (isset($_POST['FundRaiserSubmit'])) {
     //Get all the variables from the request object and assign them locally
-    $dDate = FilterInputArr($_POST, 'Date');
-    $sTitle = FilterInputArr($_POST, 'Title');
-    $sDescription = FilterInputArr($_POST, 'Description');
+    $dDate = InputUtils::LegacyFilterInputArr($_POST, 'Date');
+    $sTitle = InputUtils::LegacyFilterInputArr($_POST, 'Title');
+    $sDescription = InputUtils::LegacyFilterInputArr($_POST, 'Description');
 
     //Initialize the error flag
     $bErrorFlag = false;

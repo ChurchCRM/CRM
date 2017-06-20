@@ -21,6 +21,7 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Emails\FamilyVerificationEmail;
+use ChurchCRM\Utils\InputUtils;
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -91,7 +92,7 @@ if ($numCustomFields > 0) {
 }
 
 $sSubQuery = '';
-if (FilterInput($_GET['familyId'], 'int')) {
+if (InputUtils::LegacyFilterInput($_GET['familyId'], 'int')) {
     $sSubQuery = ' and fam_id in ('.$_GET['familyId'].') ';
 }
 

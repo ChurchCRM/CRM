@@ -24,13 +24,15 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/LabelFunctions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Set the page title and include HTML header
 $sPageTitle = gettext('Letters and Mailing Labels');
 require 'Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) || isset($_POST['SubmitConfirmLabels']) || isset($_POST['SubmitConfirmReportEmail'])) {
-    $sLabelFormat = FilterInput($_POST['labeltype']);
+    $sLabelFormat = InputUtils::LegacyFilterInput($_POST['labeltype']);
     $sFontInfo = $_POST['labelfont'];
     $sFontSize = $_POST['labelfontsize'];
     $sLabelInfo = '&labelfont='.urlencode($sFontInfo).'&labelfontsize='.$sFontSize;

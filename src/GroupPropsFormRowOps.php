@@ -18,6 +18,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bManageGroups']) {
     Redirect('Menu.php');
@@ -25,9 +27,9 @@ if (!$_SESSION['bManageGroups']) {
 }
 
 // Get the Group, Property, and Action from the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
-$iPropID = FilterInput($_GET['PropID'], 'int');
-$sField = FilterInput($_GET['Field']);
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iPropID = InputUtils::LegacyFilterInput($_GET['PropID'], 'int');
+$sField = InputUtils::LegacyFilterInput($_GET['Field']);
 $sAction = $_GET['Action'];
 
 // Get the group information

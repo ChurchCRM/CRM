@@ -15,6 +15,7 @@ use Ifsnop\Mysqldump\Mysqldump;
 use PharData;
 use Propel\Runtime\Propel;
 use PDO;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
@@ -359,7 +360,7 @@ class SystemService
         }
 
         $postdata = new \stdClass();
-        $postdata->issueTitle = FilterInput($data->issueTitle);
+        $postdata->issueTitle = InputUtils::LegacyFilterInput($data->issueTitle);
         $postdata->issueDescription = $issueDescription;
 
         $curlService = curl_init($serviceURL);

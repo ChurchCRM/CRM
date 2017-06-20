@@ -19,6 +19,8 @@ require 'Include/Functions.php';
 
 require 'Include/CanvassUtilities.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 //Set the page title
 $sPageTitle = gettext('Canvass Automation');
 
@@ -33,7 +35,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
     $iFYID = $_SESSION['idefaultFY'];
 }
 if (array_key_exists('FYID', $_POST)) {
-    $iFYID = FilterInput($_POST['FYID'], 'int');
+    $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
 } // Use FY from the form if it was set
 
 $_SESSION['idefaultFY'] = $iFYID; // Remember default fiscal year

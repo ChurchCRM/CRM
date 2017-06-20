@@ -21,13 +21,14 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_GroupDirectory;
+use ChurchCRM\Utils\InputUtils;
 
 $bOnlyCartMembers = $_POST['OnlyCart'];
-$iGroupID = FilterInput($_POST['GroupID'], 'int');
-$iMode = FilterInput($_POST['ReportModel'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
+$iMode = InputUtils::LegacyFilterInput($_POST['ReportModel'], 'int');
 
 if ($iMode == 1) {
-    $iRoleID = FilterInput($_POST['GroupRole'], 'int');
+    $iRoleID = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
 } else {
     $iRoleID = 0;
 }

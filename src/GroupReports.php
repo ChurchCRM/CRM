@@ -20,6 +20,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Get all the groups
 $sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
 $rsGroups = RunQuery($sSQL);
@@ -94,7 +96,7 @@ require 'Include/Header.php';
     </div>
     <?php
 } else {
-                                $iGroupID = FilterInput($_POST['GroupID'], 'int'); ?>
+                                $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int'); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="box">
