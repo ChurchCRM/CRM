@@ -17,3 +17,11 @@ Feature: SystemSettings
     And I should see "Financial Settings"
     And I should see "Integration"
     And I should see "Backup"
+
+  Scenario: Enter Non-Text System Setting
+    Given I am authenticated as "admin" using "changeme"
+    And I am on "/SystemSettings.php"
+    And I fill in "new_value[1003]" with "Test's test"
+    And I press "Save Settings"
+    Then the "new_value[1003]" field should contain "Test's test"
+    Then the "new_value[1003]" field should not contain "Test\'s test"

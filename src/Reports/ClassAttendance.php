@@ -15,34 +15,36 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
 use ChurchCRM\Reports\PDF_Attendance;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
 require '../Include/GetGroupArray.php';
 
-$iGroupID = FilterInput($_GET['GroupID']);
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
 $nGrps = count($aGrp);
 //echo $iGroupID;
 
-$iFYID = FilterInput($_GET['FYID'], 'int');
+$iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
 
-$tFirstSunday = FilterInput($_GET['FirstSunday']);
-$tLastSunday = FilterInput($_GET['LastSunday']);
-$tAllRoles = FilterInput($_GET['AllRoles'], 'int');
+$tFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
+$tLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
+$tAllRoles = InputUtils::LegacyFilterInput($_GET['AllRoles'], 'int');
 //echo "all roles ={$tAllRoles}";
 
-$tNoSchool1 = FilterInputArr($_GET, 'NoSchool1');
-$tNoSchool2 = FilterInputArr($_GET, 'NoSchool2');
-$tNoSchool3 = FilterInputArr($_GET, 'NoSchool3');
-$tNoSchool4 = FilterInputArr($_GET, 'NoSchool4');
-$tNoSchool5 = FilterInputArr($_GET, 'NoSchool5');
-$tNoSchool6 = FilterInputArr($_GET, 'NoSchool6');
-$tNoSchool7 = FilterInputArr($_GET, 'NoSchool7');
-$tNoSchool8 = FilterInputArr($_GET, 'NoSchool8');
+$tNoSchool1 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool1');
+$tNoSchool2 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool2');
+$tNoSchool3 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool3');
+$tNoSchool4 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool4');
+$tNoSchool5 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool5');
+$tNoSchool6 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool6');
+$tNoSchool7 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool7');
+$tNoSchool8 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool8');
 
-$iExtraStudents = FilterInputArr($_GET, 'ExtraStudents', 'int');
-$iExtraTeachers = FilterInputArr($_GET, 'ExtraTeachers', 'int');
+$iExtraStudents = InputUtils::LegacyFilterInputArr($_GET, 'ExtraStudents', 'int');
+$iExtraTeachers = InputUtils::LegacyFilterInputArr($_GET, 'ExtraTeachers', 'int');
 
 $dFirstSunday = strtotime($tFirstSunday);
 $dLastSunday = strtotime($tLastSunday);

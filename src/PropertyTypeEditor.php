@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: User must have property and classification editing permission
 if (!$_SESSION['bMenuOptions']) {
     Redirect('Menu.php');
@@ -29,7 +31,7 @@ $sPageTitle = gettext('Property Type Editor');
 //Get the PropertyID
 $iPropertyTypeID = 0;
 if (array_key_exists('PropertyTypeID', $_GET)) {
-    $iPropertyTypeID = FilterInput($_GET['PropertyTypeID'], 'int');
+    $iPropertyTypeID = InputUtils::LegacyFilterInput($_GET['PropertyTypeID'], 'int');
 }
 
 $sClass = '';
@@ -38,9 +40,9 @@ $bError = false;
 
 //Was the form submitted?
 if (isset($_POST['Submit'])) {
-    $sName = FilterInput($_POST['Name']);
-    $sDescription = FilterInput($_POST['Description']);
-    $sClass = FilterInput($_POST['Class'], 'char', 1);
+    $sName = InputUtils::LegacyFilterInput($_POST['Name']);
+    $sDescription = InputUtils::LegacyFilterInput($_POST['Description']);
+    $sClass = InputUtils::LegacyFilterInput($_POST['Class'], 'char', 1);
 
     //Did they enter a name?
     if (strlen($sName) < 1) {

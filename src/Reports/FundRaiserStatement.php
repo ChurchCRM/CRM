@@ -19,8 +19,9 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
-$iPaddleNumID = FilterInputArr($_GET, 'PaddleNumID', 'int');
+$iPaddleNumID = InputUtils::LegacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
 //Get the paddlenum records for this fundraiser

@@ -18,6 +18,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bManageGroups']) {
     Redirect('Menu.php');
@@ -25,7 +27,7 @@ if (!$_SESSION['bManageGroups']) {
 }
 
 // Get the Group from the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
 // Get the group information
 $sSQL = 'SELECT * FROM group_grp WHERE grp_ID = '.$iGroupID;
@@ -72,7 +74,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($iPropID = 1; $iPropID <= $numRows; $iPropID++) {
-        $aNameFields[$iPropID] = FilterInput($_POST[$iPropID.'name']);
+        $aNameFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'name']);
 
         if (strlen($aNameFields[$iPropID]) == 0) {
             $aNameErrors[$iPropID] = true;
@@ -81,10 +83,10 @@ if (isset($_POST['SaveChanges'])) {
             $aNameErrors[$iPropID] = false;
         }
 
-        $aDescFields[$iPropID] = FilterInput($_POST[$iPropID.'desc']);
+        $aDescFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'desc']);
 
         if (isset($_POST[$iPropID.'special'])) {
-            $aSpecialFields[$iPropID] = FilterInput($_POST[$iPropID.'special'], 'int');
+            $aSpecialFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'special'], 'int');
 
             if ($aSpecialFields[$iPropID] == 0) {
                 $aSpecialErrors[$iPropID] = true;
@@ -123,9 +125,9 @@ if (isset($_POST['SaveChanges'])) {
 } else {
     // Check if we're adding a field
     if (isset($_POST['AddField'])) {
-        $newFieldType = FilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = FilterInput($_POST['newFieldName']);
-        $newFieldDesc = FilterInput($_POST['newFieldDesc']);
+        $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
+        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
+        $newFieldDesc = InputUtils::LegacyFilterInput($_POST['newFieldDesc']);
 
         if (strlen($newFieldName) == 0) {
             $bNewNameError = true;

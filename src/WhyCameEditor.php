@@ -17,9 +17,11 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$linkBack = FilterInput($_GET['linkBack']);
-$iPerson = FilterInput($_GET['PersonID']);
-$iWhyCameID = FilterInput($_GET['WhyCameID']);
+use ChurchCRM\Utils\InputUtils;
+
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
+$iPerson = InputUtils::LegacyFilterInput($_GET['PersonID']);
+$iWhyCameID = InputUtils::LegacyFilterInput($_GET['WhyCameID']);
 
 //Get name
 $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per where per_ID = '.$iPerson;
@@ -30,10 +32,10 @@ $sPageTitle = gettext('"Why Came" notes for ').$per_FirstName.' '.$per_LastName;
 
 //Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $tJoin = FilterInput($_POST['Join']);
-    $tCome = FilterInput($_POST['Come']);
-    $tSuggest = FilterInput($_POST['Suggest']);
-    $tHearOfUs = FilterInput($_POST['HearOfUs']);
+    $tJoin = InputUtils::LegacyFilterInput($_POST['Join']);
+    $tCome = InputUtils::LegacyFilterInput($_POST['Come']);
+    $tSuggest = InputUtils::LegacyFilterInput($_POST['Suggest']);
+    $tHearOfUs = InputUtils::LegacyFilterInput($_POST['HearOfUs']);
 
   // New input (add)
   if (strlen($iWhyCameID) < 1) {

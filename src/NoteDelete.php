@@ -18,6 +18,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\NoteQuery;
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
@@ -30,7 +31,7 @@ if (!$_SESSION['bNotes']) {
 $sPageTitle = gettext('Note Delete Confirmation');
 
 //Get the NoteID from the querystring
-$iNoteID = FilterInput($_GET['NoteID'], 'int');
+$iNoteID = InputUtils::LegacyFilterInput($_GET['NoteID'], 'int');
 
 //Get the data on this note
 $sSQL = 'SELECT * FROM note_nte WHERE nte_ID = '.$iNoteID;

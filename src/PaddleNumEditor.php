@@ -17,8 +17,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$iPaddleNumID = FilterInputArr($_GET, 'PaddleNumID', 'int');
-$linkBack = FilterInputArr($_GET, 'linkBack');
+use ChurchCRM\Utils\InputUtils;
+
+$iPaddleNumID = InputUtils::LegacyFilterInputArr($_GET, 'PaddleNumID', 'int');
+$linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
 
 if ($iPaddleNumID > 0) {
     $sSQL = "SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";
@@ -49,14 +51,14 @@ $sPageTitle = gettext('Buyer Number Editor');
 //Is this the second pass?
 if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) || isset($_POST['GenerateStatement'])) {
     //Get all the variables from the request object and assign them locally
-    $iNum = FilterInput($_POST['Num']);
-    $iPerID = FilterInput($_POST['PerID']);
+    $iNum = InputUtils::LegacyFilterInput($_POST['Num']);
+    $iPerID = InputUtils::LegacyFilterInput($_POST['PerID']);
 
     $rsMBItems = RunQuery($sMultibuyItemsSQL); // Go through the multibuy items, see if this person bought any
     while ($aRow = mysqli_fetch_array($rsMBItems)) {
         extract($aRow);
         $mbName = 'MBItem'.$di_ID;
-        $iMBCount = FilterInput($_POST[$mbName], 'int');
+        $iMBCount = InputUtils::LegacyFilterInput($_POST[$mbName], 'int');
         if ($iMBCount > 0) { // count for this item is positive.  If a multibuy record exists, update it.  If not, create it.
             $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID='.$iPerID.' AND mb_item_ID='.$di_ID;
             $rsNumBought = RunQuery($sqlNumBought);

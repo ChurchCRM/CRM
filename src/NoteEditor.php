@@ -19,6 +19,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
@@ -31,13 +32,13 @@ if (!$_SESSION['bNotes']) {
 $sPageTitle = gettext('Note Editor');
 
 if (isset($_GET['PersonID'])) {
-    $iPersonID = FilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 } else {
     $iPersonID = 0;
 }
 
 if (isset($_GET['FamilyID'])) {
-    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
 } else {
     $iFamilyID = 0;
 }
@@ -55,8 +56,8 @@ if (isset($_POST['Submit'])) {
   $bErrorFlag = false;
 
   //Assign all variables locally
-  $iNoteID = FilterInput($_POST['NoteID'], 'int');
-    $sNoteText = FilterInput($_POST['NoteText'], 'htmltext');
+  $iNoteID = InputUtils::LegacyFilterInput($_POST['NoteID'], 'int');
+    $sNoteText = InputUtils::LegacyFilterInput($_POST['NoteText'], 'htmltext');
 
   //If they didn't check the private box, set the value to 0
   if (isset($_POST['Private'])) {
@@ -99,7 +100,7 @@ if (isset($_POST['Submit'])) {
     //Are we adding or editing?
   if (isset($_GET['NoteID'])) {
       //Get the NoteID from the querystring
-    $iNoteID = FilterInput($_GET['NoteID'], 'int');
+    $iNoteID = InputUtils::LegacyFilterInput($_GET['NoteID'], 'int');
       $dbNote = NoteQuery::create()->findPk($iNoteID);
 
     //Assign everything locally

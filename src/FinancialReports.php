@@ -16,6 +16,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -25,11 +27,11 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 $sReportType = '';
 
 if (array_key_exists('ReportType', $_POST)) {
-    $sReportType = FilterInput($_POST['ReportType']);
+    $sReportType = InputUtils::LegacyFilterInput($_POST['ReportType']);
 }
 
 if ($sReportType == '' && array_key_exists('ReportType', $_GET)) {
-    $sReportType = FilterInput($_GET['ReportType']);
+    $sReportType = InputUtils::LegacyFilterInput($_GET['ReportType']);
 }
 
 // Set the page title and include HTML header

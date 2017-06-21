@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
     Redirect('Menu.php');
@@ -27,10 +29,10 @@ if (!$_SESSION['bManageGroups']) {
 $sPageTitle = gettext('Member Role Change');
 
 //Get the GroupID from the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
 //Get the PersonID from the querystring
-$iPersonID = FilterInput($_GET['PersonID'], 'int');
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 //Get the return location flag from the querystring
 $iReturn = $_GET['Return'];
@@ -39,7 +41,7 @@ $iReturn = $_GET['Return'];
 if (isset($_POST['Submit'])) {
 
     //Get the new role
-    $iNewRole = FilterInput($_POST['NewRole']);
+    $iNewRole = InputUtils::LegacyFilterInput($_POST['NewRole']);
 
     //Update the database
     $sSQL = 'UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = '.$iNewRole." WHERE p2g2r_per_ID = $iPersonID AND p2g2r_grp_ID = $iGroupID";

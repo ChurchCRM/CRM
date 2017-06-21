@@ -18,8 +18,9 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_NewsletterLabels;
+use ChurchCRM\Utils\InputUtils;
 
-$sLabelFormat = FilterInput($_GET['labeltype']);
+$sLabelFormat = InputUtils::LegacyFilterInput($_GET['labeltype']);
 setcookie('labeltype', $sLabelFormat, time() + 60 * 60 * 24 * 90, '/');
 
 // Instantiate the directory class and build the report.

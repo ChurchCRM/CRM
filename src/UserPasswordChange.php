@@ -31,6 +31,7 @@ require 'Include/Functions.php';
 use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\PasswordChangeEmail;
+use ChurchCRM\Utils\InputUtils;
 
 $bAdminOtherUser = false;
 $bAdminOther = false;
@@ -40,7 +41,7 @@ $sNewPasswordError = false;
 
 // Get the PersonID out of the querystring if they are an admin user; otherwise, use session.
 if ($_SESSION['bAdmin'] && isset($_GET['PersonID'])) {
-    $iPersonID = FilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     if ($iPersonID != $_SESSION['iUserID']) {
         $bAdminOtherUser = true;
     }

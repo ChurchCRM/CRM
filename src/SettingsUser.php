@@ -28,6 +28,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -45,11 +47,11 @@ if (isset($_POST['save'])) {
         $id = key($type);
         // Filter Input
         if ($current_type == 'text' || $current_type == 'textarea') {
-            $value = FilterInput($new_value[$id]);
+            $value = InputUtils::LegacyFilterInput($new_value[$id]);
         } elseif ($current_type == 'number') {
-            $value = FilterInput($new_value[$id], 'float');
+            $value = InputUtils::LegacyFilterInput($new_value[$id], 'float');
         } elseif ($current_type == 'date') {
-            $value = FilterInput($new_value[$id], 'date');
+            $value = InputUtils::LegacyFilterInput($new_value[$id], 'date');
         } elseif ($current_type == 'boolean') {
             if ($new_value[$id] != '1') {
                 $value = '';
