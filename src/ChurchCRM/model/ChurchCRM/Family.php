@@ -285,8 +285,25 @@ class Family extends BaseFamily implements iPhoto
     }
 
     public function getFamilyString()
-    {
+    {    
+      $HoH = $this->getHeadPeople();
+      if (count($HoH) == 1)
+      {
+         return $this->getName(). ": " . $HoH[0]->getFirstName() . " - " . $this->getAddress();
+      }
+      elseif (count($HoH) > 1)
+      {
+        $HoHs = [];
+        foreach ($HoH as $person) {
+          array_push($HoHs, $person->getFirstName());
+        }
+        
+        return $this->getName(). ": " . join(",", $HoHs) . " - " . $this->getAddress();
+      }
+      else
+      {
         return $this->getName(). " " . $this->getAddress();
+      }
     }
 
     public function hasLatitudeAndLongitude() {
@@ -306,5 +323,22 @@ class Family extends BaseFamily implements iPhoto
                 $this->save();
             }
         }
+    }
+    
+    public function toArray()
+    {
+      $array = parent::toArray();
+      $array['FamilyString']=$this->getFamilyString();
+      return $array;
+    }
+    
+    public function toSearchArray()
+    {
+      $searchArray=[
+          "Id" => $this->getId(),
+          "displayName" => $this->getFamilyString(),
+          "uri" => SystemURLs::getRootPath() . 'FamilyView.php?FamilyID=' . $this->getId()
+      ];
+      return $searchArray;
     }
 }
