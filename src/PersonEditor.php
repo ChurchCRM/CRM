@@ -1069,7 +1069,7 @@ require 'Include/Header.php';
                         } ?>
                     </div>
                 </div>
-              <?php if (!$bHideFriendDate) { /* Friend Date can be hidden - General Settings */ ?>
+              <?php if (!SystemConfig::getBooleanValue('bHideFriendDate')) { /* Friend Date can be hidden - General Settings */ ?>
                 <div class="form-group col-md-3 col-lg-3">
                   <label><?= gettext('Friend Date') ?>:</label>
                   <div class="input-group">
