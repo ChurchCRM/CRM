@@ -4,7 +4,9 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/VancoConfig.php';
 
-$iVancoAutID = FilterInput($_GET['customerid'], 'int');
+use ChurchCRM\Utils\InputUtils;
+
+$iVancoAutID = InputUtils::LegacyFilterInput($_GET['customerid'], 'int');
 
 $sSQL = 'UPDATE autopayment_aut SET ';
 $sSQL .= 'aut_CreditCard=CONCAT("************",SUBSTR(aut_CreditCard,LENGTH(aut_CreditCard)-3,4))';

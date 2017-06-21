@@ -4,7 +4,9 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 include 'Include/VancoConfig.php';
 
-$customerid = FilterInput($_GET['autid'], 'int');
+use ChurchCRM\Utils\InputUtils;
+
+$customerid = InputUtils::LegacyFilterInput($_GET['autid'], 'int');
 $iAutID = $customerid;
 
 $sSQL = 'SELECT * FROM autopayment_aut WHERE aut_ID='.$iAutID;

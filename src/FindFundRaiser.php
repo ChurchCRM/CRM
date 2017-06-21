@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 //Set the page title
 $sPageTitle = gettext('Fundraiser Listing');
 
@@ -27,16 +29,16 @@ $iID = '';
 $sSort = '';
 
 if (array_key_exists('DateStart', $_GET)) {
-    $dDateStart = FilterInput($_GET['DateStart']);
+    $dDateStart = InputUtils::LegacyFilterInput($_GET['DateStart']);
 }
 if (array_key_exists('DateEnd', $_GET)) {
-    $dDateEnd = FilterInput($_GET['DateEnd']);
+    $dDateEnd = InputUtils::LegacyFilterInput($_GET['DateEnd']);
 }
 if (array_key_exists('ID', $_GET)) {
-    $iID = FilterInput($_GET['ID']);
+    $iID = InputUtils::LegacyFilterInput($_GET['ID']);
 }
 if (array_key_exists('Sort', $_GET)) {
-    $sSort = FilterInput($_GET['Sort']);
+    $sSort = InputUtils::LegacyFilterInput($_GET['Sort']);
 }
 
 // Build SQL Criteria
@@ -105,7 +107,7 @@ require 'Include/Header.php';
 if (isset($_GET['Number'])) {
     /* @var $currentUser \ChurchCRM\User */
   $currentUser = $_SESSION['user'];
-    $currentUser->setSearchLimit(FilterInput($_GET['Number'], 'int'));
+    $currentUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
     $currentUser->save();
     $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 }
@@ -125,7 +127,7 @@ $iPerPage = $_SESSION['SearchLimit'];
 if (empty($_GET['Result_Set'])) {
     $Result_Set = 0;
 } else {
-    $Result_Set = FilterInput($_GET['Result_Set'], 'int');
+    $Result_Set = InputUtils::LegacyFilterInput($_GET['Result_Set'], 'int');
 }
 $sLimitSQL = " LIMIT $Result_Set, $iPerPage";
 

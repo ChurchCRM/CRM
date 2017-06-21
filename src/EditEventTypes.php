@@ -21,6 +21,9 @@
  ******************************************************************************/
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
+
 if (!$_SESSION['bAdmin']) {
     header('Location: Menu.php');
 }
@@ -50,7 +53,7 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
     $editing = 'FALSE';
     $eName = $_POST['newEvtName'];
     $theID = $_POST['EN_tyid'];
-    $sSQL = "UPDATE event_types SET type_name='".FilterInput($eName)."' WHERE type_id='".FilterInput($theID)."'";
+    $sSQL = "UPDATE event_types SET type_name='".InputUtils::LegacyFilterInput($eName)."' WHERE type_id='".InputUtils::LegacyFilterInput($theID)."'";
     RunQuery($sSQL);
     $theID = '';
     $_POST['Action'] = '';
@@ -60,7 +63,7 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
     $editing = 'FALSE';
     $eTime = $_POST['newEvtStartTime'];
     $theID = $_POST['EN_tyid'];
-    $sSQL = "UPDATE event_types SET type_defstarttime='".FilterInput($eTime)."' WHERE type_id='".FilterInput($theID)."'";
+    $sSQL = "UPDATE event_types SET type_defstarttime='".InputUtils::LegacyFilterInput($eTime)."' WHERE type_id='".InputUtils::LegacyFilterInput($theID)."'";
     RunQuery($sSQL);
     $theID = '';
     $_POST['Action'] = '';

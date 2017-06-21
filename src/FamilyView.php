@@ -33,6 +33,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\InputUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -43,7 +44,7 @@ require "Include/Header.php";
 
 //Get the FamilyID out of the querystring
 if (!empty($_GET['FamilyID'])) {
-    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
 }
 
 //Deactivate/Activate Family
@@ -65,7 +66,7 @@ $rsFunds = RunQuery($sSQL);
 if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['bFinance']) {
     $_SESSION['sshowPledges'] = isset($_POST["ShowPledges"]);
     $_SESSION['sshowPayments'] = isset($_POST["ShowPayments"]);
-    $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d", FilterInput($_POST["ShowSinceDate"])) ;
+    $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d", InputUtils::LegacyFilterInput($_POST["ShowSinceDate"])) ;
 }
 
 $dSQL = "SELECT fam_ID FROM family_fam order by fam_Name";
