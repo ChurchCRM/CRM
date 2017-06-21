@@ -18,8 +18,10 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
+use ChurchCRM\Utils\InputUtils;
 
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -234,7 +236,6 @@ if (isset($_POST['UploadCSV'])) {
             </select>
             </td>
         <?php
-
         }
 
         echo '</table>'; ?>
@@ -312,9 +313,9 @@ if (isset($_POST['DoImport'])) {
         $pFile = fopen($csvTempFile, 'r');
 
         $bHasCustom = false;
-        $sDefaultCountry = FilterInput($_POST['Country']);
-        $iClassID = FilterInput($_POST['Classification'], 'int');
-        $iDateMode = FilterInput($_POST['DateMode'], 'int');
+        $sDefaultCountry = InputUtils::LegacyFilterInput($_POST['Country']);
+        $iClassID = InputUtils::LegacyFilterInput($_POST['Classification'], 'int');
+        $iDateMode = InputUtils::LegacyFilterInput($_POST['DateMode'], 'int');
 
         // Get the number of CSV columns for future reference
         $aData = fgetcsv($pFile, 2048, ',');
@@ -457,7 +458,7 @@ if (isset($_POST['DoImport'])) {
 
                         // Donation envelope.. make sure it's available!
                         case 7:
-                            $iEnv = FilterInput($aData[$col], 'int');
+                            $iEnv = InputUtils::LegacyFilterInput($aData[$col], 'int');
                             if ($iEnv == '') {
                                 $iEnvelope = 0;
                             } else {
@@ -643,7 +644,7 @@ if (isset($_POST['DoImport'])) {
                     $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('".$famid."')";
                     RunQuery($sSQL);
 
-                    $fFamily = new Family(FilterInput($_POST['FamilyMode'], 'int'));
+                    $fFamily = new Family(InputUtils::LegacyFilterInput($_POST['FamilyMode'], 'int'));
                     $fFamily->AddMember($per_ID,
                                         $iGender,
                                         GetAge($iBirthMonth, $iBirthDay, $iBirthYear),

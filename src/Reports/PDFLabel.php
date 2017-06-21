@@ -38,6 +38,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_Label;
+use ChurchCRM\Utils\InputUtils;
 
 function GroupBySalutation($famID, $aAdultRole, $aChildRole)
 {
@@ -782,17 +783,17 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
 // Standard format
 
-$startcol = FilterInput($_GET['startcol'], 'int');
+$startcol = InputUtils::LegacyFilterInput($_GET['startcol'], 'int');
 if ($startcol < 1) {
     $startcol = 1;
 }
 
-$startrow = FilterInput($_GET['startrow'], 'int');
+$startrow = InputUtils::LegacyFilterInput($_GET['startrow'], 'int');
 if ($startrow < 1) {
     $startrow = 1;
 }
 
-$sLabelType = FilterInput($_GET['labeltype'], 'char', 8);
+$sLabelType = InputUtils::LegacyFilterInput($_GET['labeltype'], 'char', 8);
 setcookie('labeltype', $sLabelType, time() + 60 * 60 * 24 * 90, '/');
 
 $pdf = new PDF_Label($sLabelType, $startcol, $startrow);
@@ -846,7 +847,7 @@ setcookie('toparents', $bToParents, time() + 60 * 60 * 24 * 90, '/');
 
 $bOnlyComplete = ($_GET['onlyfull'] == 1);
 
-$sFileType = FilterInput($_GET['filetype'], 'char', 4);
+$sFileType = InputUtils::LegacyFilterInput($_GET['filetype'], 'char', 4);
 
 $aLabelList = unserialize(
                 GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete));

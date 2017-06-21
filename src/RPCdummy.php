@@ -2,8 +2,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 $mode = $_GET['mode'];
-$data = FilterInput($_GET['data'], 'int');
+$data = InputUtils::LegacyFilterInput($_GET['data'], 'int');
 ?>
 
 <html>

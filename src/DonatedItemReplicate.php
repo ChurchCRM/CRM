@@ -17,9 +17,11 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
-$iDonatedItemID = FilterInputArr($_GET, 'DonatedItemID', 'int');
-$iCount = FilterInputArr($_GET, 'Count', 'int');
+$iDonatedItemID = InputUtils::LegacyFilterInputArr($_GET, 'DonatedItemID', 'int');
+$iCount = InputUtils::LegacyFilterInputArr($_GET, 'Count', 'int');
 
 $sLetter = 'a';
 

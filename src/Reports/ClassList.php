@@ -19,11 +19,12 @@ require '../Include/GetGroupArray.php';
 
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
-$iFYID = FilterInput($_GET['FYID'], 'int');
-$dFirstSunday = FilterInput($_GET['FirstSunday']);
-$dLastSunday = FilterInput($_GET['LastSunday']);
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
+$dFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
+$dLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
 
 class PDF_ClassList extends ChurchInfoReport
 {

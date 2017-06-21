@@ -19,6 +19,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -27,12 +28,12 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 }
 
 // Filter values
-$output = FilterInput($_POST['output']);
-$sDateStart = FilterInput($_POST['DateStart'], 'date');
-$sDateEnd = FilterInput($_POST['DateEnd'], 'date');
+$output = InputUtils::LegacyFilterInput($_POST['output']);
+$sDateStart = InputUtils::LegacyFilterInput($_POST['DateStart'], 'date');
+$sDateEnd = InputUtils::LegacyFilterInput($_POST['DateEnd'], 'date');
 
-$letterhead = FilterInput($_POST['letterhead']);
-$remittance = FilterInput($_POST['remittance']);
+$letterhead = InputUtils::LegacyFilterInput($_POST['letterhead']);
+$remittance = InputUtils::LegacyFilterInput($_POST['remittance']);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {

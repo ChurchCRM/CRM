@@ -6,13 +6,14 @@ require '../Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $sundaySchoolService = new SundaySchoolService();
 
 $iGroupId = '-1';
 $iGroupName = 'Unknown';
 if (isset($_GET['groupId'])) {
-    $iGroupId = FilterInput($_GET['groupId'], 'int');
+    $iGroupId = InputUtils::LegacyFilterInput($_GET['groupId'], 'int');
 }
 
 $sSQL = 'select * from group_grp where grp_ID ='.$iGroupId;
@@ -106,7 +107,6 @@ require '../Include/Header.php';
         </ul>
       </div>
       <?php
-
     }
     ?>
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
@@ -139,7 +139,6 @@ require '../Include/Header.php';
         </div>
       </div>
     <?php
-
     } ?>
   </div>
 </div>
@@ -242,7 +241,6 @@ require '../Include/Header.php';
           </tr>
 
       <?php
-
       }
 
       ?>

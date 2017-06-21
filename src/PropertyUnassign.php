@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords']) {
@@ -25,11 +27,11 @@ if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords']) {
 }
 
 //Get the new property value from the post collection
-$iPropertyID = FilterInput($_GET['PropertyID'], 'int');
+$iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
 
 // Is there a PersonID in the querystring?
 if (isset($_GET['PersonID']) && $_SESSION['bEditRecords']) {
-    $iPersonID = FilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
     $sTypeName = 'Person';
@@ -44,7 +46,7 @@ if (isset($_GET['PersonID']) && $_SESSION['bEditRecords']) {
 
 // Is there a GroupID in the querystring?
 elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
-    $iGroupID = FilterInput($_GET['GroupID'], 'int');
+    $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
     $sTypeName = 'Group';
@@ -59,7 +61,7 @@ elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
 
 // Is there a FamilyID in the querystring?
 elseif (isset($_GET['FamilyID']) && $_SESSION['bEditRecords']) {
-    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
     $sTypeName = 'Family';

@@ -43,6 +43,7 @@ use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Emails\NewAccountEmail;
 use ChurchCRM\User;
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
@@ -57,25 +58,25 @@ $bShowPersonSelect = false;
 
 // Get the PersonID out of either querystring or the form, depending and what we're doing
 if (isset($_GET['PersonID'])) {
-    $iPersonID = FilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     $bNewUser = false;
 } elseif (isset($_POST['PersonID'])) {
-    $iPersonID = FilterInput($_POST['PersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_POST['PersonID'], 'int');
     $bNewUser = false;
 } elseif (isset($_GET['NewPersonID'])) {
-    $iPersonID = FilterInput($_GET['NewPersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_GET['NewPersonID'], 'int');
     $bNewUser = true;
 }
 
 if (isset($_GET['ErrorText'])) {
-    $sErrorText = FilterInput($_GET['ErrorText'], 'string');
+    $sErrorText = InputUtils::LegacyFilterInput($_GET['ErrorText'], 'string');
 } else {
     $sErrorText = '';
 }
 
 //Value to help determine correct return state on error
 if (isset($_POST['NewUser'])) {
-    $NewUser = FilterInput($_POST['NewUser'], 'string');
+    $NewUser = InputUtils::LegacyFilterInput($_POST['NewUser'], 'string');
 }
 
 // Has the form been submitted?
@@ -85,7 +86,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
     $sAction = $_POST['Action'];
 
     $defaultFY = CurrentFY();
-    $sUserName = FilterInput($_POST['UserName']);
+    $sUserName = InputUtils::LegacyFilterInput($_POST['UserName']);
 
     if (strlen($sUserName) < 3) {
         if ($NewUser == false) {
@@ -147,7 +148,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         } else {
             $Admin = 0;
         }
-        $Style = FilterInput($_POST['Style']);
+        $Style = InputUtils::LegacyFilterInput($_POST['Style']);
 
         // Initialize error flag
         $bErrorFlag = false;
@@ -273,11 +274,11 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
         $id = key($type);
         // Filter Input
         if ($current_type == 'text' || $current_type == 'textarea') {
-            $value = FilterInput($new_value[$id]);
+            $value = InputUtils::LegacyFilterInput($new_value[$id]);
         } elseif ($current_type == 'number') {
-            $value = FilterInput($new_value[$id], 'float');
+            $value = InputUtils::LegacyFilterInput($new_value[$id], 'float');
         } elseif ($current_type == 'date') {
-            $value = FilterInput($new_value[$id], 'date');
+            $value = InputUtils::LegacyFilterInput($new_value[$id], 'date');
         } elseif ($current_type == 'boolean') {
             if ($new_value[$id] != '1') {
                 $value = '';
@@ -367,14 +368,12 @@ require 'Include/Header.php';
                                             echo ' selected';
                                         } ?>><?= $per_LastName . ', ' . $per_FirstName ?></option>
                                         <?php
-
                                     } ?>
                                 </select>
                             </td>
                         </tr>
 
                         <?php
-
                     } else { // No, just display the user name?>
                         <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
                         <tr>
@@ -382,7 +381,6 @@ require 'Include/Header.php';
                             <td><?= $sUser ?></td>
                         </tr>
                         <?php
-
                     } ?>
 
                     <?php if (isset($sErrorText) != '') {
@@ -393,7 +391,6 @@ require 'Include/Header.php';
                             </td>
                         </tr>
                         <?php
-
                     } ?>
                     <tr>
                         <td><?= gettext('Login Name') ?>:</td>

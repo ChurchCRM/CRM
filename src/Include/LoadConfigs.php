@@ -67,7 +67,7 @@ function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWO
         'password' => $sPASSWORD,
         'settings' => [
             'charset' => 'utf8mb4',
-            'queries' => ["SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))"],
+            'queries' => ["SET sql_mode=(SELECT REPLACE(REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''),'NO_ZERO_DATE',''))"],
         ],
         'classname' => $dbClassName,
         'model_paths' => [

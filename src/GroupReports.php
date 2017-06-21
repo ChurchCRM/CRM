@@ -20,6 +20,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Get all the groups
 $sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
 $rsGroups = RunQuery($sSQL);
@@ -93,9 +95,8 @@ require 'Include/Header.php';
         </div>
     </div>
     <?php
-
 } else {
-    $iGroupID = FilterInput($_POST['GroupID'], 'int'); ?>
+                                $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int'); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="box">
@@ -118,7 +119,7 @@ require 'Include/Header.php';
 
                         <?php
                         $sSQL = 'SELECT prop_Field, prop_Name FROM groupprop_master WHERE grp_ID = '.$iGroupID.' ORDER BY prop_ID';
-    $rsPropFields = RunQuery($sSQL); ?>
+                                $rsPropFields = RunQuery($sSQL); ?>
 
                         <table align="center">
                             <tr>
@@ -161,7 +162,7 @@ require 'Include/Header.php';
         </div>
     </div>
 
-            <?php 
-} ?>
+            <?php
+                            } ?>
 
 <?php require 'Include/Footer.php' ?>

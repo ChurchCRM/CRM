@@ -19,12 +19,13 @@ require 'Include/Functions.php';
 
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $iDepositSlipID = 0;
 $thisDeposit = 0;
 
 if (array_key_exists('DepositSlipID', $_GET)) {
-    $iDepositSlipID = FilterInput($_GET['DepositSlipID'], 'int');
+    $iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID'], 'int');
 }
 
 if ($iDepositSlipID) {
@@ -158,7 +159,6 @@ require 'Include/Header.php';
           <input type="submit" class="btn btn-success" value="<?php echo gettext('Load Authorized Transactions'); ?>" name="DepositSlipLoadAuthorized">
           <input type="submit" class="btn btn-warning" value="<?php echo gettext('Run Transactions'); ?>" name="DepositSlipRunTransactions">
           <?php
-
           }
       }
       ?>
@@ -172,7 +172,6 @@ require 'Include/Header.php';
             ?>
         <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
         <?php
-
         }
     }
     ?>
