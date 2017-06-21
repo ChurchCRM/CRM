@@ -889,6 +889,7 @@
     "Add New Person": "Shto person i ri",
     "View All Persons": "Shiko të gjitha Persona",
     "Add New Family": "Shto Family re",
+    "View All Families": "Shiko të gjitha Familjet",
     "Events": "Ngjarje",
     "Fundraiser": "Fondesh",
     "Deposit Type": "Lloji Depozita",
