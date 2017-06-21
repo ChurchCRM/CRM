@@ -11,6 +11,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
     Redirect('Menu.php');
     exit;
@@ -21,7 +23,7 @@ $dDate = date('Y-m-d', $now);
 $lwDate = date('Y-m-d', $now - (6 * 24 * 60 * 60));
 
 $iFYID = CurrentFY();
-$iDepositSlipID = FilterInput($_GET['DepositSlipID']);
+$iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID']);
 
 include 'Include/eGiveConfig.php'; // Specific account information is in here
 

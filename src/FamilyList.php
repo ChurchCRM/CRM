@@ -5,11 +5,12 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Utils\InputUtils;
 
 $sMode = 'Active';
 // Filter received user input as needed
 if (isset($_GET['mode'])) {
-    $sMode = FilterInput($_GET['mode']);
+    $sMode = InputUtils::LegacyFilterInput($_GET['mode']);
 }
 if (strtolower($sMode) == 'inactive') {
     $families = FamilyQuery::create()

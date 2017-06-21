@@ -24,6 +24,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Utils\InputUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -34,11 +35,11 @@ $sPageTitle = gettext('Person Profile');
 require 'Include/Header.php';
 
 // Get the person ID from the querystring
-$iPersonID = FilterInput($_GET['PersonID'], 'int');
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
-    $iRemoveVO = FilterInput($_GET['RemoveVO'], 'int');
+    $iRemoveVO = InputUtils::LegacyFilterInput($_GET['RemoveVO'], 'int');
 }
 
 if (isset($_POST['VolunteerOpportunityAssign']) && $_SESSION['bEditRecords']) {

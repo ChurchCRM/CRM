@@ -6,13 +6,14 @@ require '../Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $sundaySchoolService = new SundaySchoolService();
 
 $iGroupId = '-1';
 $iGroupName = 'Unknown';
 if (isset($_GET['groupId'])) {
-    $iGroupId = FilterInput($_GET['groupId'], 'int');
+    $iGroupId = InputUtils::LegacyFilterInput($_GET['groupId'], 'int');
 }
 
 $sSQL = 'select * from group_grp where grp_ID ='.$iGroupId;

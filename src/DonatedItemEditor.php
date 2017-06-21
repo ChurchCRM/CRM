@@ -17,9 +17,11 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$iDonatedItemID = FilterInputArr($_GET, 'DonatedItemID', 'int');
-$linkBack = FilterInputArr($_GET, 'linkBack');
-$iCurrentFundraiser = FilterInputArr($_GET, 'CurrentFundraiser');
+use ChurchCRM\Utils\InputUtils;
+
+$iDonatedItemID = InputUtils::LegacyFilterInputArr($_GET, 'DonatedItemID', 'int');
+$linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
+$iCurrentFundraiser = InputUtils::LegacyFilterInputArr($_GET, 'CurrentFundraiser');
 
 if ($iDonatedItemID > 0) {
     $sSQL = "SELECT * FROM donateditem_di WHERE di_ID = '$iDonatedItemID'";
@@ -47,17 +49,17 @@ $sPageTitle = gettext('Donated Item Editor');
 //Is this the second pass?
 if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
-  $sItem = FilterInputArr($_POST, 'Item');
-    $bMultibuy = FilterInputArr($_POST, 'Multibuy', 'int');
-    $iDonor = FilterInputArr($_POST, 'Donor', 'int');
-    $iBuyer = FilterInputArr($_POST, 'Buyer', 'int');
-    $sTitle = FilterInputArr($_POST, 'Title');
-    $sDescription = FilterInputArr($_POST, 'Description');
-    $nSellPrice = FilterInputArr($_POST, 'SellPrice');
-    $nEstPrice = FilterInputArr($_POST, 'EstPrice');
-    $nMaterialValue = FilterInputArr($_POST, 'MaterialValue');
-    $nMinimumPrice = FilterInputArr($_POST, 'MinimumPrice');
-    $sPictureURL = FilterInputArr($_POST, 'PictureURL');
+  $sItem = InputUtils::LegacyFilterInputArr($_POST, 'Item');
+    $bMultibuy = InputUtils::LegacyFilterInputArr($_POST, 'Multibuy', 'int');
+    $iDonor = InputUtils::LegacyFilterInputArr($_POST, 'Donor', 'int');
+    $iBuyer = InputUtils::LegacyFilterInputArr($_POST, 'Buyer', 'int');
+    $sTitle = InputUtils::LegacyFilterInputArr($_POST, 'Title');
+    $sDescription = InputUtils::LegacyFilterInputArr($_POST, 'Description');
+    $nSellPrice = InputUtils::LegacyFilterInputArr($_POST, 'SellPrice');
+    $nEstPrice = InputUtils::LegacyFilterInputArr($_POST, 'EstPrice');
+    $nMaterialValue = InputUtils::LegacyFilterInputArr($_POST, 'MaterialValue');
+    $nMinimumPrice = InputUtils::LegacyFilterInputArr($_POST, 'MinimumPrice');
+    $sPictureURL = InputUtils::LegacyFilterInputArr($_POST, 'PictureURL');
 
     if (!$bMultibuy) {
         $bMultibuy = 0;

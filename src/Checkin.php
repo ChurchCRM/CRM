@@ -31,6 +31,7 @@ use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
 $EventID = 0;
 $CheckoutOrDelete = false;
@@ -40,17 +41,17 @@ $iAdultID = 0;
 
 
 if (array_key_exists('EventID', $_POST)) {
-    $EventID = FilterInput($_POST['EventID'], 'int');
+    $EventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
 } // from ListEvents button=Attendees
 if (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn'])) {
     $CheckoutOrDelete =  true;
 }
 
 if (isset($_POST['child-id'])) {
-    $iChildID = FilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
 }
 if (isset($_POST['adult-id'])) {
-    $iAdultID = FilterInput($_POST['adult-id'], 'int');
+    $iAdultID = InputUtils::LegacyFilterInput($_POST['adult-id'], 'int');
 }
 
 //
@@ -239,7 +240,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
 if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
     (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn']))
 ) {
-    $iChildID = FilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
 
     $formTitle = (isset($_POST['CheckOutBtn']) ? gettext("CheckOut Person") : gettext("Delete Checkin in Entry")); ?>
 

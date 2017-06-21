@@ -18,12 +18,14 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Get the Order, ID, Mode, and Action from the querystring
 if (array_key_exists('Order', $_GET)) {
-    $iOrder = FilterInput($_GET['Order'], 'int');
+    $iOrder = InputUtils::LegacyFilterInput($_GET['Order'], 'int');
 }  // the option Sequence
 $sAction = $_GET['Action'];
-$iID = FilterInput($_GET['ID'], 'int');  // the option ID
+$iID = InputUtils::LegacyFilterInput($_GET['ID'], 'int');  // the option ID
 $mode = trim($_GET['mode']);
 
 // Check security for the mode selected.
@@ -77,7 +79,7 @@ switch ($mode) {
         $listID = 3;
         break;
     case 'grproles':
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
 
         // Validate that this list ID is really for a group roles list. (for security)
         $sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = ".$listID;
@@ -90,7 +92,7 @@ switch ($mode) {
         break;
     case 'custom':
     case 'famcustom':
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
         break;
 }
 

@@ -20,6 +20,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\DonationFund;
 use ChurchCRM\DonationFundQuery;
+use ChurchCRM\Utils\InputUtils;
 
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {
@@ -33,7 +34,7 @@ if (isset($_GET['Action'])) {
     $sAction = '';
 }
 if (isset($_GET['Fund'])) {
-    $sFund = FilterInput($_GET['Fund'], 'int');
+    $sFund = InputUtils::LegacyFilterInput($_GET['Fund'], 'int');
 } else {
     $sFund = '';
 }
@@ -69,8 +70,8 @@ $donationFunds = DonationFundQuery::create()
 if (isset($_POST['SaveChanges'])) {
     for ($iFieldID = 0; $iFieldID < $donationFunds->count(); $iFieldID++) {
         $donation = $donationFunds[$iFieldID];
-        $donation->setName(FilterInput($_POST[$iFieldID.'name']));
-        $donation->setDescription(FilterInput($_POST[$iFieldID.'desc']));
+        $donation->setName(InputUtils::LegacyFilterInput($_POST[$iFieldID.'name']));
+        $donation->setDescription(InputUtils::LegacyFilterInput($_POST[$iFieldID.'desc']));
         $donation->setActive($_POST[$iFieldID.'active'] == 1);
         if (strlen($donation->getName()) == 0) {
             $aNameErrors[$iFieldID] = true;
@@ -90,8 +91,8 @@ if (isset($_POST['SaveChanges'])) {
             $bNewNameError = true;
         } else {
             $donation = new DonationFund();
-            $donation->setName(FilterInput($_POST['newFieldName']));
-            $donation->setDescription(FilterInput($_POST['newFieldDesc']));
+            $donation->setName(InputUtils::LegacyFilterInput($_POST['newFieldName']));
+            $donation->setDescription(InputUtils::LegacyFilterInput($_POST['newFieldDesc']));
             $donation->save();
             $donationFunds = DonationFundQuery::create()
         ->orderByName()

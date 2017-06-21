@@ -16,8 +16,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$iDonatedItemID = FilterInput($_GET['DonatedItemID'], 'int');
-$linkBack = FilterInput($_GET['linkBack'], 'string');
+use ChurchCRM\Utils\InputUtils;
+
+$iDonatedItemID = InputUtils::LegacyFilterInput($_GET['DonatedItemID'], 'int');
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
 
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 

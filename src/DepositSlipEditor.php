@@ -19,12 +19,13 @@ require 'Include/Functions.php';
 
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $iDepositSlipID = 0;
 $thisDeposit = 0;
 
 if (array_key_exists('DepositSlipID', $_GET)) {
-    $iDepositSlipID = FilterInput($_GET['DepositSlipID'], 'int');
+    $iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID'], 'int');
 }
 
 if ($iDepositSlipID) {

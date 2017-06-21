@@ -18,7 +18,9 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\InputUtils;
 
 $groupService = new GroupService();
 
@@ -32,9 +34,9 @@ if (!$_SESSION['bManageGroups']) {
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
   // Get the GroupID
-  $iGroupID = FilterInput($_POST['GroupID'], 'int');
+  $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
     if (array_key_exists('GroupRole', $_POST)) {
-        $iGroupRole = FilterInput($_POST['GroupRole'], 'int');
+        $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
     } else {
         $iGroupRole = 0;
     }

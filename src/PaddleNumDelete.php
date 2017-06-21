@@ -16,8 +16,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$iPaddleNumID = FilterInput($_GET['PaddleNumID'], 'int');
-$linkBack = FilterInput($_GET['linkBack'], 'string');
+use ChurchCRM\Utils\InputUtils;
+
+$iPaddleNumID = InputUtils::LegacyFilterInput($_GET['PaddleNumID'], 'int');
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
 
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 

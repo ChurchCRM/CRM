@@ -28,6 +28,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\InputUtils;
 
 function CompareDistance($elem1, $elem2)
 {
@@ -119,10 +120,10 @@ $iFamily = -1;
 $iNumNeighbors = 15;
 $nMaxDistance = 10;
 if (array_key_exists('Family', $_GET)) {
-    $iFamily = FilterInput($_GET['Family'], 'int');
+    $iFamily = InputUtils::LegacyFilterInput($_GET['Family'], 'int');
 }
 if (array_key_exists('NumNeighbors', $_GET)) {
-    $iNumNeighbors = FilterInput($_GET['NumNeighbors'], 'int');
+    $iNumNeighbors = InputUtils::LegacyFilterInput($_GET['NumNeighbors'], 'int');
 }
 
 $bClassificationPost = false;
@@ -134,15 +135,15 @@ $sCoordFileName = '';
 //Is this the second pass?
 if (isset($_POST['FindNeighbors']) || isset($_POST['DataFile']) || isset($_POST['PersonIDList'])) {
     //Get all the variables from the request object and assign them locally
-    $iFamily = FilterInput($_POST['Family']);
-    $iNumNeighbors = FilterInput($_POST['NumNeighbors']);
-    $nMaxDistance = FilterInput($_POST['MaxDistance']);
-    $sCoordFileName = FilterInput($_POST['CoordFileName']);
+    $iFamily = InputUtils::LegacyFilterInput($_POST['Family']);
+    $iNumNeighbors = InputUtils::LegacyFilterInput($_POST['NumNeighbors']);
+    $nMaxDistance = InputUtils::LegacyFilterInput($_POST['MaxDistance']);
+    $sCoordFileName = InputUtils::LegacyFilterInput($_POST['CoordFileName']);
     if (array_key_exists('CoordFileFormat', $_POST)) {
-        $sCoordFileFormat = FilterInput($_POST['CoordFileFormat']);
+        $sCoordFileFormat = InputUtils::LegacyFilterInput($_POST['CoordFileFormat']);
     }
     if (array_key_exists('CoordFileFamilies', $_POST)) {
-        $sCoordFileFamilies = FilterInput($_POST['CoordFileFamilies']);
+        $sCoordFileFamilies = InputUtils::LegacyFilterInput($_POST['CoordFileFamilies']);
     }
 
     foreach ($aClassificationName as $key => $value) {

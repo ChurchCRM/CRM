@@ -28,11 +28,14 @@
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
+
 $eType = 'All';
 $ThisYear = date('Y');
 
 if (isset($_POST['WhichType'])) {
-    $eType = FilterInput($_POST['WhichType']);
+    $eType = InputUtils::LegacyFilterInput($_POST['WhichType']);
 } else {
     $eType = 'All';
 }
@@ -50,7 +53,7 @@ if ($eType != 'All') {
 // retrieve the year selector
 
 if (isset($_POST['WhichYear'])) {
-    $EventYear = FilterInput($_POST['WhichYear'], 'int');
+    $EventYear = InputUtils::LegacyFilterInput($_POST['WhichYear'], 'int');
 } else {
     $EventYear = date('Y');
 }
@@ -59,8 +62,8 @@ if (isset($_POST['WhichYear'])) {
 require 'Include/Header.php';
 
 if (isset($_POST['Action']) && isset($_POST['EID'])) {
-    $eID = FilterInput($_POST['EID'], 'int');
-    $action = FilterInput($_POST['Action']);
+    $eID = InputUtils::LegacyFilterInput($_POST['EID'], 'int');
+    $action = InputUtils::LegacyFilterInput($_POST['Action']);
     if ($action == 'Delete' && $eID) {
         $sSQL = 'DELETE FROM events_event WHERE event_id = '.$eID.' LIMIT 1';
         RunQuery($sSQL);

@@ -25,6 +25,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: User must have proper permission
 // For now ... require $bAdmin
 // Future ... $bManageVol
@@ -52,13 +54,13 @@ $aNameErrors = [];
 $bNewNameError = false;
 
 if (array_key_exists('act', $_GET)) {
-    $sAction = FilterInput($_GET['act']);
+    $sAction = InputUtils::LegacyFilterInput($_GET['act']);
 }
 if (array_key_exists('Opp', $_GET)) {
-    $iOpp = FilterInput($_GET['Opp'], 'int');
+    $iOpp = InputUtils::LegacyFilterInput($_GET['Opp'], 'int');
 }
 if (array_key_exists('row_num', $_GET)) {
-    $iRowNum = FilterInput($_GET['row_num'], 'int');
+    $iRowNum = InputUtils::LegacyFilterInput($_GET['row_num'], 'int');
 }
 
 $sDeleteError = '';
@@ -217,7 +219,7 @@ if (isset($_POST['SaveChanges'])) {
         $nameName = $iFieldID.'name';
         $descName = $iFieldID.'desc';
         if (array_key_exists($nameName, $_POST)) {
-            $aNameFields[$iFieldID] = FilterInput($_POST[$nameName]);
+            $aNameFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$nameName]);
 
             if (strlen($aNameFields[$iFieldID]) == 0) {
                 $aNameErrors[$iFieldID] = true;
@@ -226,7 +228,7 @@ if (isset($_POST['SaveChanges'])) {
                 $aNameErrors[$iFieldID] = false;
             }
 
-            $aDescFields[$iFieldID] = FilterInput($_POST[$descName]);
+            $aDescFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$descName]);
 
             $aRow = mysqli_fetch_array($rsOpps);
             $aIDFields[$iFieldID] = $aRow[0];
@@ -247,8 +249,8 @@ if (isset($_POST['SaveChanges'])) {
     }
 } else {
     if (isset($_POST['AddField'])) { // Check if we're adding a VolOp
-        $newFieldName = FilterInput($_POST['newFieldName']);
-        $newFieldDesc = FilterInput($_POST['newFieldDesc']);
+        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
+        $newFieldDesc = InputUtils::LegacyFilterInput($_POST['newFieldDesc']);
         if (strlen($newFieldName) == 0) {
             $bNewNameError = true;
         } else { // Insert into table
