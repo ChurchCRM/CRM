@@ -16,6 +16,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemConfig;
+
 
 $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 $iFamily = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
