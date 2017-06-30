@@ -6,7 +6,7 @@ require '../Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\utils\InputUtils;
 
 $sundaySchoolService = new SundaySchoolService();
 

@@ -33,7 +33,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\UserQuery;
-use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\utils\InputUtils;
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 

@@ -10,7 +10,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\utils\InputUtils;
 
 //Set the page title
 $sPageTitle = gettext('View on Map');
