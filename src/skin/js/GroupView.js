@@ -237,7 +237,7 @@ $(document).ready(function () {
 function initDataTable() {
   dataT = $("#membersTable").DataTable({
     "language": {
-      "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+      "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
     },
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
