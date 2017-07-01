@@ -8,6 +8,7 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
+
 ?>
 <html>
 <header>
