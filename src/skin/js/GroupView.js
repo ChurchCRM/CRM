@@ -242,7 +242,6 @@ function initDataTable() {
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
       "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
-      "sRowSelect": "multi",
       "aButtons": [
       {
         "sExtends": "csv",
