@@ -6896,3 +6896,8 @@ msgstr "Etes vous sûr de vouloir supprimer"
 msgid "selected group members?"
 msgstr "membre(s) sélectionné(s) ?"
 
+msgid "Deactivate"
+msgstr "Désactiver"
+
+msgid "Activate"
+msgstr "Activer"
