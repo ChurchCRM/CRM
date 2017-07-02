@@ -50,11 +50,9 @@ class OpenLPNotification
         "text" =>$this->AlertText
       )
     );
-    print_r($headers);
     $url = $this->OLPAddress."/api/alert?data=".urlencode(json_encode($request));
     $context = stream_context_create($headers);
     $response = file_get_contents($url,false,$context);
-    echo json_encode($response);
     return $response;
   }
 }
