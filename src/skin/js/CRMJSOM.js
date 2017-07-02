@@ -30,7 +30,7 @@
     window.CRM.VerifyThenLoadAPIContent = function(url) {
       var error = "There was a problem retrieving the requested object";
       $.ajax({
-        type: 'HEAD',
+        method: 'HEAD',
         url: url,
         async: false,
         statusCode: {
@@ -61,7 +61,7 @@
       {
         window.CRM.groups.promptSelection(function(selectedRole){
           window.CRM.APIRequest({
-            type: 'POST',
+            method: 'POST',
             path: 'cart/emptyToGroup',
             data: JSON.stringify({"groupID":selectedRole.GroupID,"groupRoleID":selectedRole.RoleID})
             }).done(function(data) {
@@ -85,7 +85,7 @@
       'addPerson' : function (Persons, callback)
       {
         window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path: 'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
@@ -99,7 +99,7 @@
       'removePerson' : function (Persons, callback)
       {
          window.CRM.APIRequest({
-          type: 'DELETE',
+          method: 'DELETE',
           path:'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
@@ -113,7 +113,7 @@
       'addFamily' : function (FamilyID, callback)
       {
          window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path:'cart/',
           data: JSON.stringify({"Family":FamilyID})
         }).done(function(data) {
@@ -127,7 +127,7 @@
       'addGroup' : function (GroupID, callback)
       {
          window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path: 'cart/',
           data: JSON.stringify({"Group":GroupID})
         }).done(function(data) {
@@ -141,7 +141,7 @@
       },
       'refresh' : function () {
         window.CRM.APIRequest({
-          type: 'GET',
+          method: 'GET',
           path:"cart/"
         }).done(function(data) {
           window.scrollTo(0, 0);
@@ -280,13 +280,13 @@
       'get': function() {
         return  window.CRM.APIRequest({
           path:"groups/",
-          type:"GET"
+          method:"GET"
         }); 
       },
       'getRoles': function(GroupID) {
         return window.CRM.APIRequest({
           path:"groups/"+GroupID+"/roles",
-          type:"GET"
+          method:"GET"
         }); 
       },
       'promptSelection': function(selectionCallback)
@@ -351,15 +351,14 @@
       },
       'addPerson' : function(GroupID,PersonID,RoleID) {
         return window.CRM.APIRequest({
-          type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-          path:'groups/' + GroupID + '/adduser',
-          data: JSON.stringify({"PersonID": PersonID})
+          method: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+          path:'groups/' + GroupID + '/addperson/'+PersonID
         });
       },
       'removePerson' : function(GroupID,PersonID, callback) {
          window.CRM.APIRequest({
-          type: 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
-          path:'groups/' + GroupID + '/removeuser/' + PersonID,
+          method: 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
+          path:'groups/' + GroupID + '/removeperson/' + PersonID,
         }).done(function(data) {
             if(callback)
             {
@@ -373,7 +372,7 @@
       'runTimerJobs' : function () {
         window.CRM.APIRequest({
           path: "timerjobs/run",
-          type: "POST"
+          method: "POST"
         });
       }
     }

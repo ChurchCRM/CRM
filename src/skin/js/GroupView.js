@@ -71,11 +71,7 @@ $(document).ready(function () {
   });
 
   $(".personSearch").on("select2:select", function (e) {
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/adduser/" + e.params.data.objid,
-      dataType: "json"
-    }).done(function (data) {
+    window.CRM.groups.addPerson(window.CRM.currentGroup, e.params.data.objid,undefined).done(function (data) {
       var person = data.Person2group2roleP2g2rs[0];
       var node = dataT.row.add(person).node();
       dataT.rows().invalidate().draw(true);
@@ -102,13 +98,7 @@ $(document).ready(function () {
         if (result)
         {
           $.each(deletedRows, function (index, value) {
-            $.ajax({
-              type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-              url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId, // the url where we want to POST
-              dataType: 'json', // what type of data do we expect back from the server
-              data: {"_METHOD": "DELETE"},
-              encode: true
-            }).done(function (data) {
+            window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId,function(){
               dataT.row(function (idx, data, node) {
                 if (data.PersonId == value.PersonId) {
                   return true;
@@ -167,20 +157,9 @@ $(document).ready(function () {
     var action = $("#targetGroupAction").val();
 
     $.each(selectedRows, function (index, value) {
-      $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url: window.CRM.root + '/api/groups/' + targetGroupId + '/adduser/' + value.PersonId,
-        dataType: 'json', // what type of data do we expect back from the server
-        encode: true
-      });
-      if (action == "move") {
-        $.ajax({
-          type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-          url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/removeuser/' + value.PersonId,
-          dataType: 'json', // what type of data do we expect back from the server
-          encode: true,
-          data: {"_METHOD": "DELETE"},
-        }).done(function (data) {
+      window.CRM.groups.addPerson(targetGroupId,value.PersonId);
+      if (action === "move") {
+        window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId, function () {
           dataT.row(function (idx, data, node) {
             if (data.PersonId == value.PersonId) {
               return true;

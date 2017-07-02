@@ -919,23 +919,21 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   function GroupRemove(Group, Person) {
     var answer = confirm("<?= gettext('Are you sure you want to remove this person from the Group') ?>");
     if (answer)
-      $.ajax({
-        method: "POST",
-        data:{"_METHOD":"DELETE"},
-        url: window.CRM.root + "/api/groups/" + Group + "/removeuser/" + Person
-      }).done(function (data) {
-        location.reload();
-      });
+    {
+      window.CRM.groups.removePerson(Group,Person,
+        function(){
+          location.reload()
+        }
+      ); 
+     }
   }
 
   function GroupAdd() {
     var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + GroupAssignID + "/adduser/" + person_ID
-    }).done(function (data) {
-      location.reload();
-    });
+    window.CRM.groups.addPerson(GroupAssignID,person_ID,undefined).done(function(){
+        location.reload()
+      }
+    );
   }
 
   $("#deletePhoto").click (function () {
