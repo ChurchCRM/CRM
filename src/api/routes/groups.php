@@ -93,8 +93,8 @@ $app->group('/groups', function () {
         $p2g2r = Person2group2roleP2g2rQuery::create()
           ->filterByGroupId($groupID)
           ->filterByPersonId($userID)
-          ->filterByRoleId($group->getDefaultRole())
           ->findOneOrCreate()
+          ->setRoleId($group->getDefaultRole())
           ->save();
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()

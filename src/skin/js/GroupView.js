@@ -52,24 +52,6 @@ $(document).ready(function () {
     }
   });
 
-  $("#targetGroupSelection").select2({
-    ajax: {
-      url: window.CRM.root + "/api/groups/",
-      dataType: 'json',
-      processResults: function (rdata, page) {
-        var p = $.map(rdata.Groups, function (item) {
-          var o = {
-            text: item.Name,
-            id: item.Id
-          };
-          return o;
-        });
-        return {results: p};
-      }
-    },
-    minimumResultsForSearch: Infinity
-  });
-
   $(".personSearch").on("select2:select", function (e) {
     window.CRM.groups.addPerson(window.CRM.currentGroup, e.params.data.objid,undefined).done(function (data) {
       var person = data.Person2group2roleP2g2rs[0];
@@ -139,26 +121,21 @@ $(document).ready(function () {
 
   //copy membership
   $("#addSelectedToGroup").click(function () {
-    $("#selectTargetGroupModal").modal("show");
-    $("#targetGroupAction").val("copy");
-
+    //$("#selectTargetGroupModal").modal("show");
+    //$("#targetGroupAction").val("copy");
+    window.CRM.groups.promptSelection(function(data){
+      selectedRows = dataT.rows('.selected').data()
+      $.each(selectedRows, function (index, value) {
+        window.CRM.groups.addPerson(data.GroupID,value.PersonId);
+    });
+    });
   });
 
   $("#moveSelectedToGroup").click(function () {
-    $("#selectTargetGroupModal").modal("show");
-    $("#targetGroupAction").val("move");
-
-  });
-
-
-  $("#confirmTargetGroup").click(function () {
-    var selectedRows = dataT.rows('.selected').data()
-    var targetGroupId = $("#targetGroupSelection option:selected").val()
-    var action = $("#targetGroupAction").val();
-
-    $.each(selectedRows, function (index, value) {
-      window.CRM.groups.addPerson(targetGroupId,value.PersonId);
-      if (action === "move") {
+    window.CRM.groups.promptSelection(function(data){
+      selectedRows = dataT.rows('.selected').data()
+      $.each(selectedRows, function (index, value) {
+        window.CRM.groups.addPerson(data.GroupID,value.PersonId);
         window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId, function () {
           dataT.row(function (idx, data, node) {
             if (data.PersonId == value.PersonId) {
@@ -167,13 +144,11 @@ $(document).ready(function () {
           }).remove();
           dataT.rows().invalidate().draw(true);
         });
-      }
+      });
     });
-    $(document).ajaxStop(function () {
-      $("#selectTargetGroupModal").modal("hide");
-    });
-  });
 
+
+  });
 
   $(document).on("click", ".changeMembership", function (e) {
     var userid = $(e.currentTarget).data("personid");
