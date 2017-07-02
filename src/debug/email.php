@@ -16,28 +16,34 @@ use ChurchCRM\dto\ChurchMetaData;
 </header>
 <body>
 <?php
-$mail = new \PHPMailer();
-$mail->IsSMTP();
-$mail->CharSet = 'UTF-8';
-$mail->Timeout = intval(SystemConfig::getValue("iSMTPTimeout"));
-$mail->Host = SystemConfig::getValue("sSMTPHost");
-if (SystemConfig::getBooleanValue("bSMTPAuth")) {
-    $mail->SMTPAuth = true;
-    echo "SMTP Auth Used </br>";
-    $mail->Username = SystemConfig::getValue("sSMTPUser");
-    $mail->Password = SystemConfig::getValue("sSMTPPass");
-}
+if ($_SESSION['user']->isAdmin()) {
+    $mail = new \PHPMailer();
+    $mail->IsSMTP();
+    $mail->CharSet = 'UTF-8';
+    $mail->Timeout = intval(SystemConfig::getValue("iSMTPTimeout"));
+    $mail->Host = SystemConfig::getValue("sSMTPHost");
+    if (SystemConfig::getBooleanValue("bSMTPAuth")) {
+        $mail->SMTPAuth = true;
+        echo "SMTP Auth Used </br>";
+        $mail->Username = SystemConfig::getValue("sSMTPUser");
+        $mail->Password = SystemConfig::getValue("sSMTPPass");
+    }
 
-$mail->SMTPDebug = 2;
-$mail->Subject = "Test SMTP Email";
-$mail->setFrom(ChurchMetaData::getChurchEmail());
-$mail->addAddress(ChurchMetaData::getChurchEmail());
-$mail->Body = "test email";
-$mail->send()
-?>
+    $mail->SMTPDebug = 2;
+    $mail->Subject = "Test SMTP Email";
+    $mail->setFrom(ChurchMetaData::getChurchEmail());
+    $mail->addAddress(ChurchMetaData::getChurchEmail());
+    $mail->Body = "test email";
+    $mail->send()
+    ?>
 
-<pre>
-    <?= $mail->ErrorInfo;?>
+    <pre>
+    <?= $mail->ErrorInfo; ?>
 </pre>
+    <?php
+} else {
+    echo "for use by admins only";
+}
+?>
 </body>
 </html>
