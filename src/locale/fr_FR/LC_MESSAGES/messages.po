@@ -4331,7 +4331,7 @@ msgid "Photos"
 msgstr "Photos"
 
 msgid "Picture URL"
-msgstr "URL de l'image"
+msgstr "URL image"
 
 msgid "Pitcairn Islands"
 msgstr "Îles Pitcairn"
@@ -4340,10 +4340,10 @@ msgid "Please Login"
 msgstr "Merci de vous identifier"
 
 msgid "Please check the following resources for assistance"
-msgstr "Vérifier les resources suivantes pour l'assistance "
+msgstr "Vérifier les resources suivantes pour votre assistance "
 
 msgid "Please confirm activation of family"
-msgstr "Confirmer l'activation de la famille"
+msgstr "Confirmer activation de la famille"
 
 msgid "Please confirm deactivation of family"
 msgstr "Confirmer la désactivation de la famille."
@@ -4355,11 +4355,10 @@ msgid "Please confirm deletion of this Property Type"
 msgstr "Merci de confirmer la suppression du Type de Propriété"
 
 msgid "Please confirm deletion of this family record:"
-msgstr ""
-"Merci de confirmer la suppression de l'enregistrement de cette famille:"
+msgstr "Merci de confirmer la suppression de votre enregistrement de cette famille:"
 
 msgid "Please confirm deletion of this group record"
-msgstr "Merci de confirmer la suppression de l'enregistrement du groupe"
+msgstr "Merci de confirmer la suppression votre enregistrement du groupe"
 
 msgid "Please confirm deletion of this note"
 msgstr "Confirmez la suppression de la note"
@@ -5763,8 +5762,8 @@ msgid ""
 "with this Group record."
 msgstr ""
 "Ceci supprimera &eacute;galement tous les r&ocirc;les et donn&eacute;es des "
-"Propriétés sp&eacute;cifique d'un groupe li&eacute;s &agrave; "
-"l'enregistrement. ce groupe."
+"Propriétés sp&eacute;cifique du groupe li&eacute;s &agrave; "
+"votre enregistrement. ce groupe."
 
 msgid "This will also delete all payments associated with this deposit"
 msgstr "Cette action effacera aussi les paiements associés au dépôt"
