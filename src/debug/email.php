@@ -42,8 +42,8 @@ if ($_SESSION['user']->isAdmin()) {
 </pre>
     <?php
 } else {
-    echo "for use by admins only";
-}
+        echo "for use by admins only";
+    }
 ?>
 </body>
 </html>
