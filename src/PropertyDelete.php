@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 if (!$_SESSION['bMenuOptions']) {
     Redirect('Menu.php');
     exit;
@@ -27,7 +29,7 @@ $sPageTitle = gettext('Property Delete Confirmation');
 
 // Get the Type and Property
 $sType = $_GET['Type'];
-$iPropertyID = FilterInput($_GET['PropertyID'], 'int');
+$iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {

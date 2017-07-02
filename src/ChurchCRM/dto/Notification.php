@@ -116,7 +116,7 @@ class Notification
       $send = (boolean)$this->sendSMS();
       array_push($methods,"sms: ".$send);
     }
-    if(SystemConfig::hasValidOpenLPSerrings())
+    if(SystemConfig::hasValidOpenLPSettings())
     {
       $send = (boolean)($this->sendProjector());
       array_push($methods,"projector: ".$send);

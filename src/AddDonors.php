@@ -19,11 +19,13 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 $linkBack = '';
 if (array_key_exists('linkBack', $_GET)) {
-    FilterInput($_GET['linkBack']);
+    InputUtils::LegacyFilterInput($_GET['linkBack']);
 }
-$iFundRaiserID = FilterInput($_GET['FundRaiserID']);
+$iFundRaiserID = InputUtils::LegacyFilterInput($_GET['FundRaiserID']);
 
 if ($linkBack == '') {
     $linkBack = "PaddleNumList.php?FundRaiserID=$iFundRaiserID";

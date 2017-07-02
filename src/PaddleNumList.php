@@ -17,7 +17,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$linkBack = FilterInputArr($_GET, 'linkBack');
+use ChurchCRM\Utils\InputUtils;
+
+$linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
 
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
@@ -86,7 +88,6 @@ if ($rsPaddleNums) {
 			</td>
 		</tr>
 	<?php
-
     } // while
 } // if
 ?>

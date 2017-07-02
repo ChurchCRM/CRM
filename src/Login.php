@@ -39,11 +39,12 @@ use ChurchCRM\UserQuery;
 use ChurchCRM\Emails\LockedEmail;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Utils\InputUtils;
 
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
     // Get the information for the selected user
-    $UserName = FilterInput($_POST['User'], 'string', 32);
+    $UserName = InputUtils::LegacyFilterInput($_POST['User'], 'string', 32);
     $currentUser = UserQuery::create()->findOneByUserName($UserName);
     if ($currentUser == null) {
         // Set the error text
@@ -189,7 +190,7 @@ require 'Include/HeaderNotLoggedIn.php';
                 <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
             ?>
                 <span class="text-right"><a href="external/password/"><?= gettext("I forgot my password")?></a></span>
-                <?php 
+                <?php
         } ?>
             </div>
             <div class="row">
@@ -211,7 +212,7 @@ require 'Include/HeaderNotLoggedIn.php';
         <?php if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
             ?>
         <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
-        <?php 
+        <?php
         } ?>
       <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
 

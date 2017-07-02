@@ -21,6 +21,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
     Redirect('Menu.php');
@@ -31,7 +33,7 @@ if (!$_SESSION['bManageGroups']) {
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_POST['EventID'])) {
 
         // Get the PersonID
-        $iEventID = FilterInput($_POST['EventID'], 'int');
+        $iEventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
 
         // Loop through the session array
         $iCount = 0;
@@ -64,7 +66,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         <tr>
           <td colspan="2"><?= $sGlobalMessage ?></td>
         </tr>
-        <?php 
+        <?php
     } ?>
         <tr>
                 <td class="LabelColumn"><?= gettext('Select Event') ?>:</td>
@@ -90,10 +92,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </form>
 </div>
 <?php
-
 } else {
-    echo '<p align="center" class="callout callout-warning">'.gettext('Your cart is empty!').'</p>';
-}
+        echo '<p align="center" class="callout callout-warning">'.gettext('Your cart is empty!').'</p>';
+    }
 
 require 'Include/Footer.php';
 ?>

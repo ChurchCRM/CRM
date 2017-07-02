@@ -31,6 +31,7 @@ use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
 $EventID = 0;
 $CheckoutOrDelete = false;
@@ -40,17 +41,17 @@ $iAdultID = 0;
 
 
 if (array_key_exists('EventID', $_POST)) {
-    $EventID = FilterInput($_POST['EventID'], 'int');
+    $EventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
 } // from ListEvents button=Attendees
 if (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn'])) {
     $CheckoutOrDelete =  true;
 }
 
 if (isset($_POST['child-id'])) {
-    $iChildID = FilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
 }
 if (isset($_POST['adult-id'])) {
-    $iAdultID = FilterInput($_POST['adult-id'], 'int');
+    $iAdultID = InputUtils::LegacyFilterInput($_POST['adult-id'], 'int');
 }
 
 //
@@ -98,7 +99,6 @@ if ($EventID > 0) {
                                             value="<?= $event->getId(); ?>" <?= ($EventID == $event->getId()) ? " Selected='selected'" : "" ?> >
                                             <?= $event->getTitle(); ?></option>
                                         <?php
-
 }
                                     ?>
                                 </select>
@@ -184,7 +184,6 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
     </form> <!-- end AddAttendees form -->
 
     <?php
-
 }
 
 // Checkin/Checkout Section update db
@@ -200,7 +199,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
                 $('#errorcallout').text('<?= gettext("Person has been already checked in for this event") ?>').fadeIn();
             </script>
             <?php
-
         } else {
             $attendee = new EventAttend();
             $attendee->setEventId($EventID);
@@ -242,7 +240,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
 if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
     (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn']))
 ) {
-    $iChildID = FilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
 
     $formTitle = (isset($_POST['CheckOutBtn']) ? gettext("CheckOut Person") : gettext("Delete Checkin in Entry")); ?>
 
@@ -289,7 +287,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                     <div id="adultoutDetails" class="box box-solid box-default hidden"></div>
                                 </div>
                                 <?php
-
                             } else { // DeleteBtn?>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-danger"
@@ -298,7 +295,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                            name="DeleteCancel">
                                 </div>
                                 <?php
-
                             } ?>
                         </div>
                     </div>
@@ -307,7 +303,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
         </div>
     </form>
     <?php
-
 }
 //End checkout
 //**********************************************************************************************************
@@ -381,25 +376,21 @@ if (isset($_POST['EventID'])) {
                                            value="<?= gettext('Delete') ?>">
 
                                     <?php
-
                                 } else {
                                     ?>
                                     <i class="fa fa-check-circle"></i>
                                     <?php
-
                                 } ?>
                             </form>
                         </td>
                     </tr>
                     <?php
-
     } ?>
                 </tbody>
             </table>
         </div>
     </div>
     <?php
-
 }
 ?>
 

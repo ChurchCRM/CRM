@@ -17,11 +17,13 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 //Set the page title
 $sPageTitle = gettext('Confirm Delete Automatic payment');
 
-$iAutID = FilterInput($_GET['AutID'], 'int');
-$linkBack = FilterInput($_GET['linkBack']);
+$iAutID = InputUtils::LegacyFilterInput($_GET['AutID'], 'int');
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)

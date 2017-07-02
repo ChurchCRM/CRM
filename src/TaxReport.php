@@ -16,6 +16,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
     Redirect('Menu.php');
@@ -28,7 +30,7 @@ require 'Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $iYear = FilterInput($_POST['Year'], 'int');
+    $iYear = InputUtils::LegacyFilterInput($_POST['Year'], 'int');
     Redirect('Reports/TaxReport.php?Year='.$iYear);
 } else {
     $iYear = date('Y') - 1;

@@ -15,9 +15,12 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$linkBack = FilterInput($_GET['linkBack']);
-$iFamily = FilterInput($_GET['FamilyID'], 'int');
-$iAutID = FilterInput($_GET['AutID'], 'int');
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemConfig;
+
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
+$iFamily = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
+$iAutID = InputUtils::LegacyFilterInput($_GET['AutID'], 'int');
 
 //Get Family name
 if ($iFamily) {
@@ -129,9 +132,9 @@ $sPageTitle = gettext('Automatic payment configuration for the '.$fam_Name.' fam
 
 //Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $iFamily = FilterInput($_POST['Family']);
+    $iFamily = InputUtils::LegacyFilterInput($_POST['Family']);
 
-    $enableCode = FilterInput($_POST['EnableButton']);
+    $enableCode = InputUtils::LegacyFilterInput($_POST['EnableButton']);
     $bEnableBankDraft = ($enableCode == 1);
     if (!$bEnableBankDraft) {
         $bEnableBankDraft = 0;
@@ -141,36 +144,36 @@ if (isset($_POST['Submit'])) {
         $bEnableCreditCard = 0;
     }
 
-    $dNextPayDate = FilterInput($_POST['NextPayDate']);
-    $nAmount = FilterInput($_POST['Amount']);
+    $dNextPayDate = InputUtils::LegacyFilterInput($_POST['NextPayDate']);
+    $nAmount = InputUtils::LegacyFilterInput($_POST['Amount']);
     if (!$nAmount) {
         $nAmount = 0;
     }
 
-    $iFYID = FilterInput($_POST['FYID']);
+    $iFYID = InputUtils::LegacyFilterInput($_POST['FYID']);
 
-    $iInterval = FilterInput($_POST['Interval'], 'int');
-    $iFund = FilterInput($_POST['Fund'], 'int');
+    $iInterval = InputUtils::LegacyFilterInput($_POST['Interval'], 'int');
+    $iFund = InputUtils::LegacyFilterInput($_POST['Fund'], 'int');
 
-    $tFirstName = FilterInput($_POST['FirstName']);
-    $tLastName = FilterInput($_POST['LastName']);
+    $tFirstName = InputUtils::LegacyFilterInput($_POST['FirstName']);
+    $tLastName = InputUtils::LegacyFilterInput($_POST['LastName']);
 
-    $tAddress1 = FilterInput($_POST['Address1']);
-    $tAddress2 = FilterInput($_POST['Address2']);
-    $tCity = FilterInput($_POST['City']);
-    $tState = FilterInput($_POST['State']);
-    $tZip = FilterInput($_POST['Zip']);
-    $tCountry = FilterInput($_POST['Country']);
-    $tPhone = FilterInput($_POST['Phone']);
-    $tEmail = FilterInput($_POST['Email']);
+    $tAddress1 = InputUtils::LegacyFilterInput($_POST['Address1']);
+    $tAddress2 = InputUtils::LegacyFilterInput($_POST['Address2']);
+    $tCity = InputUtils::LegacyFilterInput($_POST['City']);
+    $tState = InputUtils::LegacyFilterInput($_POST['State']);
+    $tZip = InputUtils::LegacyFilterInput($_POST['Zip']);
+    $tCountry = InputUtils::LegacyFilterInput($_POST['Country']);
+    $tPhone = InputUtils::LegacyFilterInput($_POST['Phone']);
+    $tEmail = InputUtils::LegacyFilterInput($_POST['Email']);
 
-    $tCreditCard = FilterInput($_POST['CreditCard']);
-    $tExpMonth = FilterInput($_POST['ExpMonth']);
-    $tExpYear = FilterInput($_POST['ExpYear']);
+    $tCreditCard = InputUtils::LegacyFilterInput($_POST['CreditCard']);
+    $tExpMonth = InputUtils::LegacyFilterInput($_POST['ExpMonth']);
+    $tExpYear = InputUtils::LegacyFilterInput($_POST['ExpYear']);
 
-    $tBankName = FilterInput($_POST['BankName']);
-    $tRoute = FilterInput($_POST['Route']);
-    $tAccount = FilterInput($_POST['Account']);
+    $tBankName = InputUtils::LegacyFilterInput($_POST['BankName']);
+    $tRoute = InputUtils::LegacyFilterInput($_POST['Route']);
+    $tAccount = InputUtils::LegacyFilterInput($_POST['Account']);
 
     $sSQL = 'UPDATE autopayment_aut SET '.
                     'aut_FamID	=	'.$iFamily.','.
@@ -567,7 +570,6 @@ function CreatePaymentMethod()
 }
 </script>
 <?php
-
 }
 ?>
 
@@ -736,7 +738,6 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
 				<td class="TextColumn"><input type="text" id="CreditCardVanco" name="CreditCardVanco" value="<?= $tCreditCardVanco ?>" readonly></td>
 			</tr>
 <?php
-
                     }
 ?>
 
@@ -772,7 +773,6 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
 				<td class="TextColumn"><input type="text" id="AccountVanco" name="AccountVanco" value="<?= $tAccountVanco ?>" readonly></td>
 			</tr>
 <?php
-
 }
 ?>
 
@@ -786,17 +786,14 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
         ?>
 		<input type="button" id="PressToCreatePaymentMethod" value="Store Private Data at Vanco" onclick="CreatePaymentMethod();" />
 <?php
-
     } else {
         ?>
 		<b>Save this record to enable storing private data at Vanco</b>
 <?php
-
     } ?>
 				</td>
 			</tr>
 <?php
-
     }
 ?>
 		</table>

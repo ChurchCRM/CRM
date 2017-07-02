@@ -506,6 +506,8 @@
     "Map this group": "Карта эту группу",
     "Email Group": "Email Группа",
     "Total Members": "Всего пользователей",
+    "Default Role": "По умолчанию Роль",
+    "Group-Specific Properties": "Групповые специфические свойства",
     "Disabled for this group.": "Отключено для этой группы.",
     "Assigned Properties": "Заданными свойствами",
     "Group Members:": "Участники группы:",

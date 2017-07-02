@@ -17,10 +17,12 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups']) {
@@ -33,7 +35,7 @@ $sPageTitle = gettext('Group Editor');
 $groupService = new GroupService();
 //Get the GroupID from the querystring.  Redirect to Menu if no groupID is present, since this is an edit-only form.
 if (array_key_exists('GroupID', $_GET)) {
-    $iGroupID = FilterInput($_GET['GroupID'], 'int');
+    $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 } else {
     Redirect('GroupList.php');
 }
@@ -121,7 +123,6 @@ require 'Include/Header.php';
                     echo '<option value="'.$groupRoleTemplate['grp_ID'].'">'.$groupRoleTemplate['grp_Name'].'</option>';
                 } ?>
               </select><?php
-
             }
             ?>
           </div>

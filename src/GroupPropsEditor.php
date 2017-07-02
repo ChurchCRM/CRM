@@ -19,6 +19,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bEditRecords']) {
     Redirect('Menu.php');
@@ -28,8 +30,8 @@ if (!$_SESSION['bEditRecords']) {
 $sPageTitle = gettext('Group Member Properties Editor');
 
 // Get the Group and Person IDs from the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
-$iPersonID = FilterInput($_GET['PersonID'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 // Get some info about this person.  per_Country is needed in case there are phone numbers.
 $sSQL = 'SELECT per_FirstName, per_LastName, per_Country, per_fam_ID FROM person_per WHERE per_ID = '.$iPersonID;
@@ -72,7 +74,7 @@ if (isset($_POST['GroupPropSubmit'])) {
     while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
         extract($rowPropList);
 
-        $currentFieldData = FilterInput($_POST[$prop_Field]);
+        $currentFieldData = InputUtils::LegacyFilterInput($_POST[$prop_Field]);
 
         $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $prop_Field, $aPropErrors);
 
@@ -124,9 +126,8 @@ if (mysqli_num_rows($rsPropList) == 0) {
     <input type="button" class="btn" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
   </form>
   <?php
-
 } else {
-    ?>
+        ?>
 
   <div class="box ">
     <div class="box-header">
@@ -141,28 +142,28 @@ if (mysqli_num_rows($rsPropList) == 0) {
           // Make sure we're at the beginning of the properties list resource (2nd pass code used it)
           mysqli_data_seek($rsPropList, 0);
 
-    while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
-        extract($rowPropList); ?>
+        while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
+            extract($rowPropList); ?>
             <tr>
               <td><?= $prop_Name ?>: </td>
               <td>
                 <?php
                 $currentFieldData = trim($aPersonProps[$prop_Field]);
 
-        if ($type_ID == 11) {
-            $prop_Special = $sPhoneCountry;
-        }  // ugh.. an argument with special cases!
+            if ($type_ID == 11) {
+                $prop_Special = $sPhoneCountry;
+            }  // ugh.. an argument with special cases!
 
                 formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
-        if (array_key_exists($prop_Field, $aPropErrors)) {
-            echo '<span style="color: red; ">'.$aPropErrors[$prop_Field].'</span>';
-        } ?>
+            if (array_key_exists($prop_Field, $aPropErrors)) {
+                echo '<span style="color: red; ">'.$aPropErrors[$prop_Field].'</span>';
+            } ?>
               </td>
               <td><?= $prop_Description ?></td>
             </tr>
-          <?php 
-    } ?>
+          <?php
+        } ?>
           <tr>
             <td align="center" colspan="3">
               <br><br>
@@ -176,8 +177,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
     </div>
   </div>
   <?php
-
-} ?>
+    } ?>
 
 <?php 
 require 'Include/Footer.php';

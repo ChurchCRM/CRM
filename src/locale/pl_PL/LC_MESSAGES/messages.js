@@ -510,6 +510,8 @@
     "Map this group": "Pokaż Grupę na Mapie",
     "Email Group": "Wyślij Email do Grupy",
     "Total Members": "Liczba Członków",
+    "Default Role": "Domyślna Rola",
+    "Group-Specific Properties": "Ustawienia Dodatkowe dla Grupy",
     "Disabled for this group.": "Wyłącz dla tej Grupy.",
     "Assigned Properties": "Przypisane właściwości",
     "Group Members:": "Członkowie Grupy:",

@@ -168,13 +168,11 @@ $gSQL = 'SELECT COUNT(per_ID) AS gCount
            </td>
          </tr>
 <?php
-
     } ?>
          <tr><td colspan="5">&nbsp;</td></tr>
 <?php
-
 } elseif ($_POST['Action'] == 'Retrieve' && $numRows > 0) {
-    ?>
+        ?>
        <caption>
          <h3><?= gettext('There '.($numRows == 1 ? 'was '.$numRows.' '.$_POST['Choice'] : 'were '.$numRows.' '.$_POST['Choice'])).' for this Event' ?></h3>
        </caption>
@@ -188,7 +186,7 @@ $gSQL = 'SELECT COUNT(per_ID) AS gCount
          //Set the initial row color
          $sRowClass = 'RowColorA';
 
-    for ($row = 1; $row <= $numRows; $row++) {
+        for ($row = 1; $row <= $numRows; $row++) {
 
          //Alternate the row color
          $sRowClass = AlternateRowStyle($sRowClass);
@@ -205,17 +203,15 @@ $gSQL = 'SELECT COUNT(per_ID) AS gCount
            <td class="TextColumn"><?php /* echo '<a onclick="return AddToCart('.$aPersonID[$row].');" href="blank.html">'.gettext("Add to Cart").'</a>'; */ ?>&nbsp;</td>
          </tr>
 <?php
-
-    }
-} else {
-    ?>
+        }
+    } else {
+        ?>
        <caption>
          <h3><?= $_GET ? gettext('There are no events in this category') : gettext('There are no Records') ?><br><br></h3>
        </caption>
        <tr><td>&nbsp;</td></tr>
 <?php
-
-}
+    }
 ?>
 </table>
 
