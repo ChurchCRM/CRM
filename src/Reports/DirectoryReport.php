@@ -21,6 +21,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_Directory;
+use ChurchCRM\Utils\InputUtils;
 
 // Check for Create Directory user permission.
 if (!$bCreateDirectory) {
@@ -32,7 +33,7 @@ if (!$bCreateDirectory) {
 $count = 0;
 if (array_key_exists('sDirClassifications', $_POST) and $_POST['sDirClassifications'] != '') {
     foreach ($_POST['sDirClassifications'] as $Cls) {
-        $aClasses[$count++] = FilterInput($Cls, 'int');
+        $aClasses[$count++] = InputUtils::LegacyFilterInput($Cls, 'int');
     }
     $sDirClassifications = implode(',', $aClasses);
 } else {
@@ -40,19 +41,19 @@ if (array_key_exists('sDirClassifications', $_POST) and $_POST['sDirClassificati
 }
 $count = 0;
 foreach ($_POST['sDirRoleHead'] as $Head) {
-    $aHeads[$count++] = FilterInput($Head, 'int');
+    $aHeads[$count++] = InputUtils::LegacyFilterInput($Head, 'int');
 }
 $sDirRoleHeads = implode(',', $aHeads);
 
 $count = 0;
 foreach ($_POST['sDirRoleSpouse'] as $Spouse) {
-    $aSpouses[$count++] = FilterInput($Spouse, 'int');
+    $aSpouses[$count++] = InputUtils::LegacyFilterInput($Spouse, 'int');
 }
 $sDirRoleSpouses = implode(',', $aSpouses);
 
 $count = 0;
 foreach ($_POST['sDirRoleChild'] as $Child) {
-    $aChildren[$count++] = FilterInput($Child, 'int');
+    $aChildren[$count++] = InputUtils::LegacyFilterInput($Child, 'int');
 }
 
 //Exclude inactive families
@@ -73,19 +74,19 @@ $bDirPersonalEmail = isset($_POST['bDirPersonalEmail']);
 $bDirPersonalWorkEmail = isset($_POST['bDirPersonalWorkEmail']);
 $bDirPhoto = isset($_POST['bDirPhoto']);
 
-$sChurchName = FilterInput($_POST['sChurchName']);
-$sDirectoryDisclaimer = FilterInput($_POST['sDirectoryDisclaimer']);
-$sChurchAddress = FilterInput($_POST['sChurchAddress']);
-$sChurchCity = FilterInput($_POST['sChurchCity']);
-$sChurchState = FilterInput($_POST['sChurchState']);
-$sChurchZip = FilterInput($_POST['sChurchZip']);
-$sChurchPhone = FilterInput($_POST['sChurchPhone']);
+$sChurchName = InputUtils::LegacyFilterInput($_POST['sChurchName']);
+$sDirectoryDisclaimer = InputUtils::LegacyFilterInput($_POST['sDirectoryDisclaimer']);
+$sChurchAddress = InputUtils::LegacyFilterInput($_POST['sChurchAddress']);
+$sChurchCity = InputUtils::LegacyFilterInput($_POST['sChurchCity']);
+$sChurchState = InputUtils::LegacyFilterInput($_POST['sChurchState']);
+$sChurchZip = InputUtils::LegacyFilterInput($_POST['sChurchZip']);
+$sChurchPhone = InputUtils::LegacyFilterInput($_POST['sChurchPhone']);
 
 $bDirUseTitlePage = isset($_POST['bDirUseTitlePage']);
 
-$bNumberofColumns = FilterInput($_POST['NumCols']);
-$bPageSize = FilterInput($_POST['PageSize']);
-$bFontSz = FilterInput($_POST['FSize']);
+$bNumberofColumns = InputUtils::LegacyFilterInput($_POST['NumCols']);
+$bPageSize = InputUtils::LegacyFilterInput($_POST['PageSize']);
+$bFontSz = InputUtils::LegacyFilterInput($_POST['FSize']);
 $bLineSp = $bFontSz / 3;
 
 if ($bPageSize != 'letter' && $bPageSize != 'a4') {
@@ -127,7 +128,7 @@ if (!empty($_POST['GroupID'])) {
 
     $count = 0;
     foreach ($_POST['GroupID'] as $Grp) {
-        $aGroups[$count++] = FilterInput($Grp, 'int');
+        $aGroups[$count++] = InputUtils::LegacyFilterInput($Grp, 'int');
     }
     $sGroupsList = implode(',', $aGroups);
 

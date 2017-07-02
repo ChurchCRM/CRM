@@ -31,6 +31,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\InputUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -130,13 +131,13 @@ if (isset($_GET['PDFEmailed'])) {
 
 // Are they adding an entire group to the cart?
 if (isset($_GET['AddGroupToPeopleCart'])) {
-    AddGroupToPeopleCart(FilterInput($_GET['AddGroupToPeopleCart'], 'int'));
+    AddGroupToPeopleCart(InputUtils::LegacyFilterInput($_GET['AddGroupToPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully added to the Cart.');
 }
 
 // Are they removing an entire group from the Cart?
 if (isset($_GET['RemoveGroupFromPeopleCart'])) {
-    RemoveGroupFromPeopleCart(FilterInput($_GET['RemoveGroupFromPeopleCart'], 'int'));
+    RemoveGroupFromPeopleCart(InputUtils::LegacyFilterInput($_GET['RemoveGroupFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully removed from the Cart.');
 }
 
@@ -155,18 +156,18 @@ if (isset($_GET['ProfileImageUploadedError'])) {
 
 // Are they adding a person to the Cart?
 if (isset($_GET['AddToPeopleCart'])) {
-    AddToPeopleCart(FilterInput($_GET['AddToPeopleCart'], 'int'));
+    AddToPeopleCart(InputUtils::LegacyFilterInput($_GET['AddToPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Selected record successfully added to the Cart.');
 }
 
 if (isset($_GET['AddFamilyToPeopleCart'])) {
-    AddFamilyToPeopleCart(FilterInput($_GET['AddFamilyToPeopleCart'], 'int'));
+    AddFamilyToPeopleCart(InputUtils::LegacyFilterInput($_GET['AddFamilyToPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Family successfully added to the Cart.');
 }
 
 // Are they removing a person from the Cart?
 if (isset($_GET['RemoveFromPeopleCart'])) {
-    RemoveFromPeopleCart(FilterInput($_GET['RemoveFromPeopleCart'], 'int'));
+    RemoveFromPeopleCart(InputUtils::LegacyFilterInput($_GET['RemoveFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Selected record successfully removed from the Cart.');
 }
 
@@ -296,61 +297,6 @@ function RunQuery($sSQL, $bStopOnError = true)
         }
     } else {
         return false;
-    }
-}
-
-function FilterInputArr($arr, $key, $type = 'string', $size = 1)
-{
-    if (array_key_exists($key, $arr)) {
-        return FilterInput($arr[$key], $type, $size);
-    } else {
-        return FilterInput('', $type, $size);
-    }
-}
-
-// Sanitizes user input as a security measure
-// Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
-// Note that a database connection must already be established for the mysqli_real_escape_string function to work.
-function FilterInput($sInput, $type = 'string', $size = 1)
-{
-    global $cnInfoCentral;
-    if (strlen($sInput) > 0) {
-        switch ($type) {
-      case 'string':
-        // or use htmlspecialchars( stripslashes( ))
-        $sInput = strip_tags(trim($sInput));
-        if (get_magic_quotes_gpc()) {
-            $sInput = stripslashes($sInput);
-        }
-        $sInput = mysqli_real_escape_string($cnInfoCentral, $sInput);
-
-        return $sInput;
-      case 'htmltext':
-        $sInput = strip_tags(trim($sInput), '<a><b><i><u><h1><h2><h3><h4><h5><h6>');
-        if (get_magic_quotes_gpc()) {
-            $sInput = stripslashes($sInput);
-        }
-        $sInput = mysqli_real_escape_string($cnInfoCentral, $sInput);
-
-        return $sInput;
-      case 'char':
-        $sInput = mb_substr(trim($sInput), 0, $size);
-        if (get_magic_quotes_gpc()) {
-            $sInput = stripslashes($sInput);
-        }
-        $sInput = mysqli_real_escape_string($cnInfoCentral, $sInput);
-
-        return $sInput;
-      case 'int':
-        return (int) intval(trim($sInput));
-      case 'float':
-        return (float) floatval(trim($sInput));
-      case 'date':
-        // Attempts to take a date in any format and convert it to YYYY-MM-DD format
-        return date('Y-m-d', strtotime($sInput));
-    }
-    } else {
-        return '';
     }
 }
 
@@ -1992,7 +1938,6 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
     ?>
       <li> <a href="<?= $href.mb_substr($Email, 0, -3) ?>"><?=$role?></a></li>
     <?php
-
     }
 }
 

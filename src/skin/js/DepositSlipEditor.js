@@ -4,9 +4,9 @@ function initPaymentTable()
     {
       width: 'auto',
       title:'Family',
-      data:'FamilyName',
+      data:'FamilyString',
       render: function(data, type, full, meta) {
-        var familyName = data ? data : "<?= gettext('Anonymous')?>";
+        var familyName = data ? data : i18next.t('Anonymous');
         return '<a href=\'PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' + depositSlipID +
             '&GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + familyName;
       }
@@ -47,7 +47,7 @@ function initPaymentTable()
   dataT = $("#paymentsTable").DataTable({
     ajax:{
       url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
-      dataSrc:"Pledges"
+      dataSrc:''
     },
     columns: colDef,
     responsive: true,

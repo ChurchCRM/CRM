@@ -75,7 +75,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
                         </a>
                     </li>
                     <?php
-
 } ?>
             </ul>
             <br/>
@@ -92,15 +91,14 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </a>
                 </li>
                 <?php if ($isAdmin) {
-    ?>
+        ?>
                     <li>
                         <a href="<?= SystemURLs::getRootPath() ?>/PersonCustomFieldsEditor.php">
                             <i class="fa fa-cog"></i> <?= _('Edit Custom Person Fields') ?>
                         </a>
                     </li>
                     <?php
-
-} ?>
+    } ?>
             </ul>
             <br/>
             <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Group') ?></h4>
@@ -125,7 +123,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </a>
                 </li>
                 <?php if ($isAdmin) {
-    ?>
+        ?>
                     <li>
                         <a href="<?= SystemURLs::getRootPath() ?>/VolunteerOpportunityEditor.php">
                             <i class="fa fa-cog"></i> <?= _('Volunteer Opportunities') ?>
@@ -137,8 +135,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                         </a>
                     </li>
                     <?php
-
-} ?>
+    } ?>
             </ul>
             <!-- /.control-sidebar-menu -->
 
@@ -146,7 +143,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
         <div id="control-sidebar-settings-tab" class="tab-pane">
             <div><h4 class="control-sidebar-heading"><?= gettext('System Settings') ?></h4>
                 <?php if ($isAdmin) {
-    ?>
+        ?>
                     <ul class="control-sidebar-menu">
                         <li>
                             <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php">
@@ -167,11 +164,10 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </ul>
                     <hr/>
                     <?php
-
-} ?>
+    } ?>
                 <ul class="control-sidebar-menu">
                     <?php if ($isAdmin) {
-    ?>
+        ?>
                         <li>
                             <a href="<?= SystemURLs::getRootPath() ?>/RestoreDatabase.php">
                                 <i class="menu-icon fa fa-database bg-yellow-gradient"></i>
@@ -196,11 +192,18 @@ $isAdmin = $_SESSION['user']->isAdmin();
                                 </div>
                             </a>
                         </li>
+                        <li>
+                            <a href="<?= SystemURLs::getRootPath() ?>/KioskManager.php">
+                                <i class="menu-icon fa fa-laptop bg-blue-gradient"></i>
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading"><?= _('Kiosk Manager') ?></h4>
+                                </div>
+                            </a>
+                        </li>
                         <?php
-
-} else {
-    echo _('Please contact your admin to change the system settings.');
-} ?>
+    } else {
+        echo _('Please contact your admin to change the system settings.');
+    } ?>
                     <li>
                         <a href="<?= SystemURLs::getRootPath() ?>/CSVExport.php">
                             <i class="menu-icon fa fa-download bg-green"></i>
@@ -222,10 +225,10 @@ $isAdmin = $_SESSION['user']->isAdmin();
             <br/><br/>
             <ul class="control-sidebar-menu">
                 <?php foreach ($tasks as $task) {
-    $taskIcon = 'fa-info bg-green';
-    if ($task['admin']) {
-        $taskIcon = 'fa-lock bg-yellow-gradient';
-    } ?>
+        $taskIcon = 'fa-info bg-green';
+        if ($task['admin']) {
+            $taskIcon = 'fa-lock bg-yellow-gradient';
+        } ?>
                     <!-- Task item -->
                     <li>
                         <a href="<?= $task['link'] ?>">
@@ -239,8 +242,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </li>
                     <!-- end task item -->
                     <?php
-
-} ?>
+    } ?>
             </ul>
             <!-- /.control-sidebar-menu -->
 
@@ -303,18 +305,17 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18nextXHRBackend.min.js"></script>
 
 <?php if (isset($sGlobalMessage)) {
-    ?>
+        ?>
     <script>
         $("document").ready(function () {
             showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");
         });
     </script>
     <?php
-
-} ?>
+    } ?>
 
 <?php if ($_SESSION['bAdmin']) {
-    ?>
+        ?>
     <script>
         ((window.gitter = {}).chat = {}).options = {
             room: 'churchcrm/crm',
@@ -323,8 +324,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     </script>
     <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
     <?php
-
-}
+    }
 
 include_once('analyticstracking.php');
 ?>

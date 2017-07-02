@@ -28,11 +28,14 @@
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
+
 $eType = 'All';
 $ThisYear = date('Y');
 
 if (isset($_POST['WhichType'])) {
-    $eType = FilterInput($_POST['WhichType']);
+    $eType = InputUtils::LegacyFilterInput($_POST['WhichType']);
 } else {
     $eType = 'All';
 }
@@ -50,7 +53,7 @@ if ($eType != 'All') {
 // retrieve the year selector
 
 if (isset($_POST['WhichYear'])) {
-    $EventYear = FilterInput($_POST['WhichYear'], 'int');
+    $EventYear = InputUtils::LegacyFilterInput($_POST['WhichYear'], 'int');
 } else {
     $EventYear = date('Y');
 }
@@ -59,8 +62,8 @@ if (isset($_POST['WhichYear'])) {
 require 'Include/Header.php';
 
 if (isset($_POST['Action']) && isset($_POST['EID'])) {
-    $eID = FilterInput($_POST['EID'], 'int');
-    $action = FilterInput($_POST['Action']);
+    $eID = InputUtils::LegacyFilterInput($_POST['EID'], 'int');
+    $action = InputUtils::LegacyFilterInput($_POST['Action']);
     if ($action == 'Delete' && $eID) {
         $sSQL = 'DELETE FROM events_event WHERE event_id = '.$eID.' LIMIT 1';
         RunQuery($sSQL);
@@ -99,7 +102,6 @@ $numRows = mysqli_num_rows($rsOpps);
               echo 'selected';
           } ?>><?= $type_name ?></option>
           <?php
-
         }
          ?>
          </select>
@@ -138,7 +140,6 @@ for ($r = 1; $r <= $numRows; $r++) {
                 echo 'selected';
             } ?>><?= $Yr[$r] ?></option>
           <?php
-
         }
          ?>
          </select>
@@ -260,7 +261,7 @@ foreach ($allMonths as $mKey => $mVal) {
               <?php if ($aEventText[$row] != '') {
                 ?>
                 <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')">Sermon Text</a></div>
-              <?php 
+              <?php
             } ?>
             </td>
             <td><?= $aEventType[$row] ?></td>
@@ -286,7 +287,6 @@ foreach ($allMonths as $mKey => $mVal) {
                           <div><?= $evtcnt_countcount ?></div>
                         </td>
                         <?php
-
                 }
             } else {
                 ?>
@@ -294,7 +294,6 @@ foreach ($allMonths as $mKey => $mVal) {
                         <?= gettext('No Attendance Recorded') ?>
                       </td>
                       <?php
-
             } ?>
                 </tr>
               </table>
@@ -308,7 +307,6 @@ foreach ($allMonths as $mKey => $mVal) {
 
           </tr>
           <?php
-
         } // end of for loop for # rows for this month
 
         // calculate averages if this is a single type list
@@ -333,21 +331,18 @@ foreach ($allMonths as $mKey => $mVal) {
                     <br><?= sprintf('%01.2f', $avgAvg) ?></span>
                   </td>
                   <?php
-
                 } ?>
               </div>
             </td>
             <td class="TextColumn" colspan="3"></td>
           </tr>
           <?php
-
         } ?>
       </tbody>
     </table>
   </div>
   </div>
   <?php
-
     }
 } // end for-each month loop
 ?>

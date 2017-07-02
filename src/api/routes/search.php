@@ -18,16 +18,18 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     } catch (Exception $e) {
     }
 
+    //family search
     try {
-        $q = FamilyQuery::create()
-            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
-            ->limit(15)
-            ->withColumn('fam_Name', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'FamilyView.php?FamilyID=",Family.Id)', 'uri')
-            ->select(['displayName', 'uri'])
-            ->find();
-
-        array_push($resultsArray, $q->toJSON());
+      $results = [];
+      $q = FamilyQuery::create()
+          ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+          ->limit(15)
+          ->find();
+      foreach ($q as $family)
+      {
+        array_push($results,$family->toSearchArray());
+      }
+      array_push($resultsArray, json_encode(["families"=>$results]));
     } catch (Exception $e) {
     }
 

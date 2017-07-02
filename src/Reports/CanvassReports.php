@@ -16,12 +16,14 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 require '../Include/ReportFunctions.php';
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_CanvassBriefingReport;
+use ChurchCRM\Utils\InputUtils;
 
 //Get the Fiscal Year ID out of the querystring
-$iFYID = FilterInput($_GET['FYID'], 'int');
-$sWhichReport = FilterInput($_GET['WhichReport']);
+$iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
+$sWhichReport = InputUtils::LegacyFilterInput($_GET['WhichReport']);
 
 function TopPledgersLevel($iFYID, $iPercent)
 {

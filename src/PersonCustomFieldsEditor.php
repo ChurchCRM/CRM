@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -58,7 +60,7 @@ require 'Include/Header.php'; ?>
       }
 
       for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-          $aNameFields[$iFieldID] = FilterInput($_POST[$iFieldID.'name']);
+          $aNameFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$iFieldID.'name']);
 
           if (strlen($aNameFields[$iFieldID]) == 0) {
               $aNameErrors[$iFieldID] = true;
@@ -71,7 +73,7 @@ require 'Include/Header.php'; ?>
           $aFieldSecurity[$iFieldID] = $_POST[$iFieldID.'FieldSec'];
 
           if (isset($_POST[$iFieldID.'special'])) {
-              $aSpecialFields[$iFieldID] = FilterInput($_POST[$iFieldID.'special'], 'int');
+              $aSpecialFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$iFieldID.'special'], 'int');
 
               if ($aSpecialFields[$iFieldID] == 0) {
                   $aSpecialErrors[$iFieldID] = true;
@@ -103,8 +105,8 @@ require 'Include/Header.php'; ?>
   } else {
       // Check if we're adding a field
     if (isset($_POST['AddField'])) {
-        $newFieldType = FilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = FilterInput($_POST['newFieldName']);
+        $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
+        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
         $newFieldSide = $_POST['newFieldSide'];
         $newFieldSec = $_POST['newFieldSec'];
 
@@ -296,7 +298,6 @@ require 'Include/Header.php'; ?>
           ?>
        <h2><?= gettext('No custom person fields have been added yet') ?></h2>
         <?php
-
       } else {
           ?>
         <tr>
@@ -397,7 +398,7 @@ require 'Include/Header.php'; ?>
 
             </td>
           </tr>
-        <?php 
+        <?php
         } ?>
 
         <tr>
@@ -415,7 +416,7 @@ require 'Include/Header.php'; ?>
           </td>
           <td>
         </tr>
-      <?php 
+      <?php
       } ?>
       <tr>
         <td colspan="7">

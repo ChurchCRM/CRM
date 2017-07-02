@@ -335,7 +335,7 @@ class SystemConfig
       return (!empty(self::getValue("sNexmoAPIKey"))) && (!empty(self::getValue("sNexmoAPISecret"))) && (!empty(self::getValue("sNexmoFromNumber")));
     }
     
-    public static function hasValidOpenLPSerrings() {
+    public static function hasValidOpenLPSettings() {
        return (!empty(self::getValue("sOLPURL")));
     }
 

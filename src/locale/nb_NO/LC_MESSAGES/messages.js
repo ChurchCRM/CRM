@@ -507,6 +507,8 @@
     "Map this group": "Kartlegge denne gruppen",
     "Email Group": "E Gruppe",
     "Total Members": "Totalt antall medlemmer",
+    "Default Role": "Standard Rolle",
+    "Group-Specific Properties": "Gruppe-spesifikke egenskaper",
     "Disabled for this group.": "Deaktivert for denne gruppen.",
     "Assigned Properties": "Tilordnede Egenskaper",
     "Group Members:": "Gruppemedlemmer:",
