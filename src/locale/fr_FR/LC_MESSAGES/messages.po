@@ -705,7 +705,10 @@ msgid "Automatic Payments"
 msgstr "Paiements automatiques"
 
 msgid "Automatic payment configuration for the "
-msgstr "Configuration automatique du paiement pour le"
+msgstr "Configuration automatique du paiement pour la famille "
+
+msgid " family"
+msgstr " "
 
 msgid "Automatic payment type"
 msgstr "Type de paiement automatique"

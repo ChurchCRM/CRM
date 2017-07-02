@@ -128,7 +128,7 @@ if ($iAutID <= 0) {  // Need to create the record so there is a place to store t
     extract(mysqli_fetch_array($rsAutID));
 }
 
-$sPageTitle = gettext('Automatic payment configuration for the '.$fam_Name.' family');
+$sPageTitle = gettext('Automatic payment configuration for the ').$fam_Name.gettext(' family');
 
 //Is this the second pass?
 if (isset($_POST['Submit'])) {
