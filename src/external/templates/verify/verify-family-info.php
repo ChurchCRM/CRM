@@ -1,4 +1,4 @@
-<?php
+ <?php
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
@@ -84,11 +84,14 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                   <li class="list-group-item">
                     <h4>Groups</h4>
                     <?php foreach ($person->getPerson2group2roleP2g2rs() as $groupMembership) {
-                      $listOption = ListOptionQuery::create()->filterById($groupMembership->getGroup()->getRoleListId())->filterByOptionId($groupMembership->getRoleId())->findOne()->getOptionName();
-                      ?>
-                      <b><?= $groupMembership->getGroup()->getName() ?></b>: <span
-                        class="pull-right"><?= $listOption ?></span>
-                    <?php } ?>
+                        if ($groupMembership->getGroup() != null) {
+                            $listOption = ListOptionQuery::create()->filterById($groupMembership->getGroup()->getRoleListId())->filterByOptionId($groupMembership->getRoleId())->findOne()->getOptionName();
+                    ?>
+                        <b><?= $groupMembership->getGroup()->getName() ?></b>: <span class="pull-right"><?= $listOption ?></span>
+                    <?php
+                        }
+                    }
+                    ?>
                   </li>
                   <?php } ?>
                 </ul>
