@@ -22,17 +22,16 @@ class Token extends BaseToken
         $this->setReferenceId($referenceId);
         $this->setToken(uniqid());
         switch ($type) {
-            case "verify":
+            case "verifyFamily":
                 $this->setValidUntilDate(strtotime("+1 week"));
                 $this->setRemainingUses(5);
-                $this->setType($type);
                 break;
             case "password":
                 $this->setValidUntilDate(strtotime("+1 day"));
                 $this->setRemainingUses(1);
-                $this->setType($type);
                 break;
         }
+        $this->setType($type);
     }
 
 
