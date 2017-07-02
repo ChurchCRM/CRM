@@ -6904,3 +6904,15 @@ msgstr "Désactiver"
 
 msgid "Activate"
 msgstr "Activer"
+
+msgid "Bank Draft "
+msgstr "Billet de banque "
+
+msgid "Credit Card "
+msgstr "Carte de crédit"
+
+msgid "Disable "
+msgstr "Désactivé "
+
+msgid "Store Private Data at Vanco"
+msgstr "Stocker des données privées chez Vanco"

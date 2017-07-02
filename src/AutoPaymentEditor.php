@@ -14,6 +14,8 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'bin/vancowebservices.php';
+
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemConfig;
@@ -101,14 +103,14 @@ if ($iAutID <= 0) {  // Need to create the record so there is a place to store t
                     "'".$nAmount."',".
                     "'".$iInterval."',".
                     "'".$iFund."',".
-                    "'".$tFirstName."',".
-                    "'".$tLastName."',".
-                    "'".$tAddress1."',".
-                    "'".$tAddress2."',".
-                    "'".$tCity."',".
-                    "'".$tState."',".
+                    "\"".$tFirstName."\",".
+                    "\"".$tLastName."\",".
+                    "\"".$tAddress1."\",".
+                    "\"".$tAddress2."\",".
+                    "\"".$tCity."\",".
+                    "\"".$tState."\",".
                     "'".$tZip."',".
-                    "'".$tCountry."',".
+                    "\"".$tCountry."\",".
                     "'".$tPhone."',".
                     "'".$tEmail."',".
                     "'".$tCreditCard."',".
@@ -619,13 +621,13 @@ function CreatePaymentMethod()
 				<td class="LabelColumn"><?= gettext('Automatic payment type') ?></td>
 				<td class="TextColumn"><input type="radio" Name="EnableButton" value="1" id="EnableBankDraft"<?php if ($bEnableBankDraft) {
                             echo ' checked';
-                        } ?>>Bank Draft
+                        } ?>><?= _("Bank Draft ") ?>
 				                       <input type="radio" Name="EnableButton" value="2" id="EnableCreditCard" <?php if ($bEnableCreditCard) {
                             echo ' checked';
-                        } ?>>Credit Card
+                        } ?>><?= _("Credit Card ") ?>
 											  <input type="radio" Name="EnableButton" value="3"  id="Disable" <?php if ((!$bEnableBankDraft) && (!$bEnableCreditCard)) {
                             echo ' checked';
-                        } ?>>Disable</td>
+                        } ?>><?= _("Disable ") ?></td>
 			</tr>
 
 			<tr>
@@ -784,7 +786,7 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
 <?php
     if ($iAutID > 0) {
         ?>
-		<input type="button" id="PressToCreatePaymentMethod" value="Store Private Data at Vanco" onclick="CreatePaymentMethod();" />
+		<input type="button" id="PressToCreatePaymentMethod" value="<?= _("Store Private Data at Vanco") ?>" onclick="CreatePaymentMethod();" />
 <?php
     } else {
         ?>
