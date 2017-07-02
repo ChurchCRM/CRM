@@ -56,7 +56,7 @@ if (isset($_POST['save'])) {
     // Filter Input
     if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
       $value = InputUtils::FilterHTML($new_value[$id]);
-    } elseif ($current_type == 'text' || $current_type == 'textarea') {
+    } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
         $value = InputUtils::FilterString($new_value[$id]);
     } elseif ($current_type == 'number') {
         $value = InputUtils::FilterFloat($new_value[$id]);
