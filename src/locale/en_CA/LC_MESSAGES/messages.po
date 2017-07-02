@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en-ca\n"
 
-#: AutoPaymentEditor.php:704 CartToFamily.php:254 CSVExport.php:120
+#: AutoPaymentEditor.php:705 CartToFamily.php:254 CSVExport.php:120
 #: CSVImport.php:224 DirectoryReports.php:258
 #: external/templates/registration/family-register.php:44 FamilyEditor.php:685
 #: PersonEditor.php:845 Register.php:49 queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "Province"
 
-#: AutoPaymentEditor.php:709 BackupDatabase.php:67 CartToFamily.php:266
+#: AutoPaymentEditor.php:710 BackupDatabase.php:67 CartToFamily.php:266
 #: CSVExport.php:125 CSVImport.php:225 DirectoryReports.php:262
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:695
