@@ -138,7 +138,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person-stalker"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath().'/' ?>FamilyList.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -159,7 +159,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath().'/' ?>SelectList.php?mode=person" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
         <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
