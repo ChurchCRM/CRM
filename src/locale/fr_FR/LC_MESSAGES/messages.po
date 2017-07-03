@@ -3312,7 +3312,7 @@ msgid "Log off"
 msgstr "Déconnexion"
 
 msgid "Login"
-msgstr "Identifiant"
+msgstr "Connexion"
 
 msgid "Login Name"
 msgstr "Nom d'authentification"
