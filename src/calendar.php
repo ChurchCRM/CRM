@@ -21,13 +21,13 @@ require 'Include/Header.php'; ?>
     <div class="box box-primary">
         <div class="box-body">
             <?php foreach ($calenderService->getEventTypes() as $type) {
-                ?>
+    ?>
                 <div class="col-xs-3 fc-event-container fc-day-grid-event"
                      style="background-color:<?= $type['backgroundColor'] ?>;border-color:<?= $type['backgroundColor'] ?>;color: white; ">
                     <div class="fc-title"><?= gettext($type['Name']) ?></div>
                 </div>
                 <?php
-            } ?>
+} ?>
         </div>
     </div>
 </div>
