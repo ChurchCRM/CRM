@@ -25,7 +25,8 @@ module.exports = function (grunt) {
             'sv': 'sv_SE',
             'vi': 'vi_VN',
             'zh-CN': 'zh_CN',
-            'zh-TW': 'zh_TW'
+            'zh-TW': 'zh_TW',
+            'en-US': 'en_US'
         },
         projectFiles: [
             '**',
