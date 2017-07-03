@@ -204,7 +204,14 @@ class SystemConfig
         "sOLPUserName" => new ConfigItem(2008, "sOLPUserName", "text", "", gettext("OpenLP Username")),
         "sOLPPassword" => new ConfigItem(2009, "sOLPPassword", "text", "", gettext("OpenLP Password")),
         "sKioskVisibilityTimestamp" => new ConfigItem(2011, "sKioskVisibilityTimestamp", "text", "", gettext("KioskVisibilityTimestamp")),
-        "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen"))
+        "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen")),
+        "sNewPersonNotificationRecipients" => new ConfigItem(2013, "sNewPersonNotificationRecipients", "text",'[{"PersonId":"1","NotificationTypes":["Email"]}]', gettext("People to notify when a new person is added to the system")),
+        "sNewFamilyNotificationRecipients" => new ConfigItem(2014, "sNewFamilyNotificationRecipients", "text",'[{"PersonId":"1","NotificationTypes":["Email"]}]', gettext("People to notify when a new family is added to the system")),
+        "sNewNoteNotificationRecipients" => new ConfigItem(2015, "sNewNoteNotificationRecipients", "text",'[{"PersonId":"1","NotificationTypes":["Email"]}]', gettext("People to notify when a new note is added to the system")),
+        "sNewDepositNotificationRecipients" => new ConfigItem(2016, "sNewDepositNotificationRecipients", "text",'[{"PersonId":"1","NotificationTypes":["Email"]}]', gettext("People to notify when a deposit is closed")),
+
+
+
       );
   }
 
@@ -221,7 +228,9 @@ class SystemConfig
       gettext('System Settings')  => ["sLogLevel", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
-      gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"]
+      gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"],
+      gettext('Notifications')  => ["sNewPersonNotificationRecipients","sNewFamilyNotificationRecipients","sNewNoteNotificationRecipients","sNewDepositNotificationRecipients"]
+
     );
   }
 

@@ -20,6 +20,7 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Person;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -296,7 +297,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // New Family (add)
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
-            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
+             $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
 					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['iUserID'].')';
             //Execute the SQL
             RunQuery($sSQL);
@@ -315,29 +316,47 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // New Person (add)
         if ($iPersonID < 1) {
             $iEnvelope = 0;
-
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags )
-			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
+            $person = new ChurchCRM\Person();
+            $person ->setFirstName($sFirstName)
+                    ->setMiddleName($sMiddleName)
+                    ->setLastName($sLastName)
+                    ->setSuffix($sSuffix)
+                    ->setGender($iGender)
+                    ->setAddress1($sAddress1)
+                    ->setAddress2($sAddress2)
+                    ->setCity($sCity)
+                    ->setState($sState)
+                    ->setZip($sZip)
+                    ->setCountry($sCountry)
+                    ->setHomePhone($sHomePhone)
+                    ->setWorkPhone($currentFieldData)
+                    ->setCellPhone($sCellPhone)
+                    ->setEmail($sEmail)
+                    ->setWorkEmail($sWorkEmail)
+                    ->setBirthMonth($iBirthMonth)
+                    ->setBirthDay($iBirthDay)
+                    ->setBirthYear($iBirthYear)
+                    ->setEnvelope($iEnvelope)
+                    ->setFamId($iFamily)
+                    ->setFmrId($iFamilyRole)
+                    ->setClsId($iClassification)
+                    ->setDateEntered(date('YmdHis'));
+            $person->setEnteredBy($_SESSION['iUserID']);
+            $person->save();
+            
             if (strlen($dMembershipDate) > 0) {
-                $sSQL .= '"'.$dMembershipDate.'"';
-            } else {
-                $sSQL .= 'NULL';
-            }
-            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['iUserID'].',';
-
+              $person->setMembershipDate($dMembershipDate);
+            } 
             if (strlen($dFriendDate) > 0) {
-                $sSQL .= '"'.$dFriendDate.'"';
-            } else {
-                $sSQL .= 'NULL';
-            }
-
-            $sSQL .= ', '.$per_Flags;
-            $sSQL .= ')';
-
+                $person->setFriendDate($dFriendDate);
+            } 
+            $person->setFlags($per_Flags);
+            
             $bGetKeyBack = true;
 
             // Existing person (update)
         } else {
+          
             $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
