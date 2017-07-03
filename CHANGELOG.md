@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.8.1 (02/07/2017)
+
+#### Core Functionality
+
+- [**Feature: Groups**][**UI**] Need to double-select rows to highlight [#2621](https://github.com/ChurchCRM/CRM/issues/2621)
+
+#### Inner Beauty:
+
+- [**Backend System**][**Documentation**][**question**] Task Configure HTTPS [#1314](https://github.com/ChurchCRM/CRM/issues/1314)
+- [**development**][**Documentation**] Vagrant Documentation [#1042](https://github.com/ChurchCRM/CRM/issues/1042)
+
+---
+
 ## 2.8.0 (01/07/2017)
 
 #### Enhancements:
@@ -906,28 +919,6 @@
 
 #### Enhancements:
 
-- [**enhancement**] SundaySchool: Create requires lots of clicks  [#470](https://github.com/ChurchCRM/CRM/issues/470)
-- [**enhancement**] General Settings: Miles Option [#207](https://github.com/ChurchCRM/CRM/issues/207)
-
-#### Bug fixes:
-
-- [**bug**] $sPageTitle should be set with gettext [#1100](https://github.com/ChurchCRM/CRM/issues/1100)
-- [**bug**] Person View: Can't remove from group via icon [#1098](https://github.com/ChurchCRM/CRM/issues/1098)
-- [**bug**] FindDepostSlip.php file [#1086](https://github.com/ChurchCRM/CRM/issues/1086)
-- [**bug**] Email Dashboard [Theme] [#1075](https://github.com/ChurchCRM/CRM/issues/1075)
-- [**bug**] WebDAV failures prevent page load [#920](https://github.com/ChurchCRM/CRM/issues/920)
-
-#### Inner Beauty:
-
-- [**development**] What is Canvas05Editor.php [#1102](https://github.com/ChurchCRM/CRM/issues/1102)
-- [**development**] Use ORM In favor of Service Classes [#963](https://github.com/ChurchCRM/CRM/issues/963)
-
----
-
-## 2.2.2 (02/10/2016)
-
-#### Enhancements:
-
 - [**enhancement**] Capture resolution in bug reports [#891](https://github.com/ChurchCRM/CRM/issues/891)
 - [**enhancement**][**Web Report**] Moving up/ transferring students in classes [#856](https://github.com/ChurchCRM/CRM/issues/856)
 - [**enhancement**] Email from Member Dashboard [#848](https://github.com/ChurchCRM/CRM/issues/848)
@@ -953,6 +944,7 @@
 - [**enhancement**] Sunday School: Queries [#479](https://github.com/ChurchCRM/CRM/issues/479)
 - [**enhancement**] Move SundaySchool Reports [#478](https://github.com/ChurchCRM/CRM/issues/478)
 - [**enhancement**] Notes: Covert Notes to Timeline  [#477](https://github.com/ChurchCRM/CRM/issues/477)
+- [**enhancement**] SundaySchool: Create requires lots of clicks  [#470](https://github.com/ChurchCRM/CRM/issues/470)
 - [**bug**][**enhancement**] SundaySchool: Default Roles is Member [#469](https://github.com/ChurchCRM/CRM/issues/469)
 - [**enhancement**] Calendar: Change Member Birthdays to API [#466](https://github.com/ChurchCRM/CRM/issues/466)
 - [**enhancement**] Mailchimp's Generate Email Export should export a person's groups [#457](https://github.com/ChurchCRM/CRM/issues/457)
@@ -982,6 +974,7 @@
 - [**enhancement**] Search by Check Number [#241](https://github.com/ChurchCRM/CRM/issues/241)
 - [**build**][**enhancement**] Switch PDF creation to html2pdf  [#220](https://github.com/ChurchCRM/CRM/issues/220)
 - [**enhancement**] General Settings: Time Zone Dropdown [#208](https://github.com/ChurchCRM/CRM/issues/208)
+- [**enhancement**] General Settings: Miles Option [#207](https://github.com/ChurchCRM/CRM/issues/207)
 - [**bug**][**development**][**enhancement**] Tool Tip Text [#203](https://github.com/ChurchCRM/CRM/issues/203)
 - [**enhancement**] Theme: Fund Raiser [#187](https://github.com/ChurchCRM/CRM/issues/187)
 - [**enhancement**] Main Dashboard is too member focused [#178](https://github.com/ChurchCRM/CRM/issues/178)
@@ -1014,6 +1007,10 @@
 
 #### Bug fixes:
 
+- [**bug**] $sPageTitle should be set with gettext [#1100](https://github.com/ChurchCRM/CRM/issues/1100)
+- [**bug**] Person View: Can't remove from group via icon [#1098](https://github.com/ChurchCRM/CRM/issues/1098)
+- [**bug**] FindDepostSlip.php file [#1086](https://github.com/ChurchCRM/CRM/issues/1086)
+- [**bug**] Email Dashboard [Theme] [#1075](https://github.com/ChurchCRM/CRM/issues/1075)
 - [**bug**] Error during email export [#1072](https://github.com/ChurchCRM/CRM/issues/1072)
 - [**bug**] Backup Database: tar.gz (Include Photos)  [#1067](https://github.com/ChurchCRM/CRM/issues/1067)
 - [**bug**] Permissions: User needs Note access to add Note [#1061](https://github.com/ChurchCRM/CRM/issues/1061)
@@ -1041,6 +1038,7 @@
 - [**bug**][**Web Report**] System settings Input fields are larger than page on mobile [#925](https://github.com/ChurchCRM/CRM/issues/925)
 - [**bug**] Fix Case Sensitive Path in LoadConfigs [#923](https://github.com/ChurchCRM/CRM/issues/923)
 - [**bug**] remove all mysql_ [#922](https://github.com/ChurchCRM/CRM/issues/922)
+- [**bug**] WebDAV failures prevent page load [#920](https://github.com/ChurchCRM/CRM/issues/920)
 - [**bug**] sEnableExternalBackupTarget during database restore [#889](https://github.com/ChurchCRM/CRM/issues/889)
 - [**bug**][**build**][**Installation / Upgrade**][**Platform: Self-Hosted**][**Platform: Shared Hosting**][**question**] File extraction with incorrect 666 permissions [#882](https://github.com/ChurchCRM/CRM/issues/882)
 - [**bug**] Default pictures no longer correct [#873](https://github.com/ChurchCRM/CRM/issues/873)
@@ -1224,6 +1222,8 @@
 
 #### Inner Beauty:
 
+- [**development**] What is Canvas05Editor.php [#1102](https://github.com/ChurchCRM/CRM/issues/1102)
+- [**development**] Use ORM In favor of Service Classes [#963](https://github.com/ChurchCRM/CRM/issues/963)
 - [**bug**][**build**][**Installation / Upgrade**][**Platform: Self-Hosted**][**Platform: Shared Hosting**][**question**] File extraction with incorrect 666 permissions [#882](https://github.com/ChurchCRM/CRM/issues/882)
 - [**build**][**development**][**enhancement**] Add Service Classes to composer Auto Loader  [#824](https://github.com/ChurchCRM/CRM/issues/824)
 - [**bug**][**build**][**question**] vendor directory missing in 2.1.6 tar file [#800](https://github.com/ChurchCRM/CRM/issues/800)
