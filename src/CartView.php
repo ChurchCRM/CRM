@@ -360,11 +360,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#cart-listing-table").DataTable({
-            "language": {
-                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-            }
-        });
+        $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
     });
 </script>
 
