@@ -103,14 +103,14 @@ $(document).ready(function () {
   	
     var deletedRows = dataT.rows('.selected').data()
     bootbox.confirm({
-      message: "Are you sure you want to remove the " + deletedRows.length + " selected group members?",
+      message: "<?= _('Are you sure you want to remove the') ?> " + deletedRows.length + " <?= _("selected group members?") ?>",
       buttons: {
         confirm: {
-          label: 'Yes',
+          label: '<?= _("Yes") ?>',
             className: 'btn-success'
         },
         cancel: {
-          label: 'No',
+          label: '<?= _("No") ?>',
           className: 'btn-danger'
         }
       },
