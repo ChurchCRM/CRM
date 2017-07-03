@@ -36,7 +36,8 @@ class OpenLPNotification
       ),
       "ssl" => array(
           "verify_peer" => false,
-          "allow_self_signed" => false,
+          "verify_peer_name" => false,
+          "allow_self_signed" => true,
       )
     );
     if(SystemConfig::getValue("sOLPUserName"))
