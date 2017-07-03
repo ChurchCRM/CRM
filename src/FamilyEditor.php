@@ -438,7 +438,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $note->setEntered($_SESSION['iUserID']);
             $note->save();
             $family = FamilyQuery::create()->findPk($iFamilyID);
-            //TODO - This is broken in https://github.com/ChurchCRM/CRM/issues/2606 $family->updateLanLng();
+            $family->updateLanLng();
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
                 if (strlen($aFirstNames[$iCount]) > 0) {
