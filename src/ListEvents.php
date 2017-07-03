@@ -357,16 +357,7 @@ foreach ($allMonths as $mKey => $mVal) {
 <script type="text/javascript">
 //Added by @saulowulhynek to translation of datatable nav terms
   $(document).ready(function () {
-    $('#listEvents').dataTable({
-      "language": {
-        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-      },
-      responsive: true,
-      "dom": 'T<"clear">lfrtip',
-      "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
-      }
-    });
+    $('#listEvents').DataTable(window.CRM.plugin.dataTable});
   });
 </script>
 
