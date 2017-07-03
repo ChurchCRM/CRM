@@ -708,10 +708,10 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
             $.ajax({
                 type: "POST",
                 url: "<?php if ($VancoTest) {
-                    echo 'https://www.vancodev.com/cgi-bin/wsnvptest.vps';
-                } else {
-                    echo 'https://www.vancoservices.com/cgi-bin/wsnvp.vps';
-                } ?>",
+        echo 'https://www.vancodev.com/cgi-bin/wsnvptest.vps';
+    } else {
+        echo 'https://www.vancoservices.com/cgi-bin/wsnvp.vps';
+    } ?>",
                 data: {
                     "sessionid": "<?= $sessionid ?>",
                     "nvpvar": "<?= $nvpvarcontent ?>",
@@ -790,10 +790,10 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
                     <input type="submit" class="btn" value="<?= gettext('Save') ?>" name="Submit">
                     <input type="button" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel"
                            onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-                               echo $linkBack;
-                           } else {
-                               echo 'Menu.php';
-                           } ?>';">
+    echo $linkBack;
+} else {
+    echo 'Menu.php';
+} ?>';">
                 </td>
             </tr>
 
@@ -828,16 +828,16 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
                             <td class="LabelColumn"><?= gettext('Automatic payment type') ?></td>
                             <td class="TextColumn"><input type="radio" Name="EnableButton" value="1"
                                                           id="EnableBankDraft"<?php if ($bEnableBankDraft) {
-                                    echo ' checked';
-                                } ?>><?= _("Bank Draft ") ?>
+                                        echo ' checked';
+                                    } ?>><?= _("Bank Draft ") ?>
                                 <input type="radio" Name="EnableButton" value="2"
                                        id="EnableCreditCard" <?php if ($bEnableCreditCard) {
-                                    echo ' checked';
-                                } ?>><?= _("Credit Card ") ?>
+                                        echo ' checked';
+                                    } ?>><?= _("Credit Card ") ?>
                                 <input type="radio" Name="EnableButton" value="3"
                                        id="Disable" <?php if ((!$bEnableBankDraft) && (!$bEnableCreditCard)) {
-                                    echo ' checked';
-                                } ?>><?= _("Disable ") ?></td>
+                                        echo ' checked';
+                                    } ?>><?= _("Disable ") ?></td>
                         </tr>
 
                         <tr>

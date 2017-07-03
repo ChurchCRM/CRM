@@ -185,11 +185,11 @@ require 'Include/HeaderNotLoggedIn.php';
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 <br/>
                 <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
-                    ?>
+            ?>
                     <span class="text-right"><a
                                 href="external/password/"><?= gettext("I forgot my password") ?></a></span>
                     <?php
-                } ?>
+        } ?>
             </div>
             <div class="row">
                 <!-- /.col -->
