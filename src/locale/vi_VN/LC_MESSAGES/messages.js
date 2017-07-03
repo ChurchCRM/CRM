@@ -384,8 +384,6 @@
     "Cart": "Giỏ hàng",
     "Print": "In ấn",
     "Save Settings": "Lưu thay đổi",
-    "DB Password": "Nhập lại mật khẩu",
-    "Setup": "Cài đặt",
     "System Settings": "Cài đặt hệ thống",
     "Calendar Year": "Lịch năm",
     "Login Name": "Tên đăng nhập",
@@ -479,8 +477,6 @@
     "Quick Settings": "Cài đặt nhanh",
     "Status": "Trạng thái",
     "Email export": "Email xuất ra",
-    "View Active Families": "Xem gia đình đang hoạt động",
-    "View Inactive Families": "Xem gia đình không hoạt động",
     "Exclude Inactive Families": "Ngoại trừ gia đình không hoạt động",
     "system user password changed by admin": "mật khẩu thành viên đã được thay đổi bởi Admin"
 }
