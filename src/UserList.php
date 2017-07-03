@@ -64,11 +64,11 @@ require 'Include/Header.php';
                         <a href="UserEditor.php?PersonID=<?= $user->getId() ?>"><i class="fa fa-pencil"
                                                                                    aria-hidden="true"></i></a>&nbsp;&nbsp;
                         <?php if ($user->getId() != $_SESSION['user']->getId()) {
-                            ?>
+    ?>
                             <a onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
                                         class="fa fa-trash-o" aria-hidden="true"></i></a>
                             <?php
-                        } ?>
+} ?>
                     </td>
                     <td>
                         <a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a>
@@ -77,33 +77,33 @@ require 'Include/Header.php';
                     <td align="center"><?= $user->getLoginCount() ?></td>
                     <td align="center">
                         <?php if ($user->isLocked()) {
-                            ?>
+        ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
                             <?php
-                        } else {
-                            echo $user->getFailedLogins();
-                        }
-                        if ($user->getFailedLogins() > 0) {
-                            ?>
+    } else {
+        echo $user->getFailedLogins();
+    }
+    if ($user->getFailedLogins() > 0) {
+        ?>
                             <a onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
                                         class="fa fa-eraser" aria-hidden="true"></i></a>
                             <?php
-                        } ?>
+    } ?>
                     </td>
                     <td>
                         <a href="UserPasswordChange.php?PersonID=<?= $user->getId() ?>&FromUserList=True"><i
                                     class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
                         <?php if ($user->getId() != $_SESSION['user']->getId() && !empty($user->getEmail())) {
-                            ?>
+        ?>
                             <a onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
                                         class="fa fa-send-o" aria-hidden="true"></i></a>
                             <?php
-                        } ?>
+    } ?>
                     </td>
 
                 </tr>
                 <?php
-            } ?>
+} ?>
             </tbody>
         </table>
     </div>
