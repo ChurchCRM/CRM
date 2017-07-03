@@ -5567,7 +5567,7 @@ msgid "Text Field (long)"
 msgstr "Champ Texte (long)"
 
 msgid "Text Group"
-msgstr "Groupe Texte"
+msgstr "Texto au groupe"
 
 msgid "Text before name in emails/reports"
 msgstr "Texte avant le nom dans emails/rapports"
@@ -6916,3 +6916,8 @@ msgstr "Désactivé "
 
 msgid "Store Private Data at Vanco"
 msgstr "Stocker des données privées chez Vanco"
+
+msgid "Text Cart"
+msgstr "Texto du Panier"
+
+
