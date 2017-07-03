@@ -91,18 +91,20 @@ class Person extends BasePerson implements iPhoto
         global $logger;
         $logger->info(SystemConfig::getValue("sNewPersonNotificationRecipients"));
         $recipients = json_decode(SystemConfig::getValue("sNewPersonNotificationRecipients"));
-        print_r($recipients);
-        exit;
+
         $toAddresses = [];
         foreach ($recipients as $recipient)
         {
-          $r = PersonQuery::create()->findOneById($recipient->PersonId)->getEmail();
-          $logger->info("$recipient: $r");
-          array_push($toAddresses, $r);
+          $logger->info("processing item: ". $recipient->PersonId);
+          $r = PersonQuery::create()->findOneById($recipient->PersonId);
+          $email = $r->getEmail();
+          $logger->info("recipient: ".$email);
+          array_push($toAddresses, $email);
         }
 
-        //$newPersonEmail = new DataStewardNotification($toAddresses, $this);
-        //$newPersonEmail->send();
+
+        $newPersonEmail = new DataStewardNotification($toAddresses, $this);
+        $newPersonEmail->send();
     }
 
     public function postUpdate(ConnectionInterface $con = null)

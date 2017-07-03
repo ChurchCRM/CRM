@@ -19,17 +19,25 @@ class DataStewardNotification extends BaseEmail
 
     protected function getSubSubject()
     {
-      if (get_class($this->notificationObject) == "Person")
+      if (get_class($this->notificationObject) == "ChurchCRM\Person")
       {
-        return gettext("Data Notification") . $this->notificationType;
+        return gettext("New Person");
+      }
+    }
+    
+    protected function getBody()
+    {
+      if (get_class($this->notificationObject) == "ChurchCRM\Person")
+      {
+        return gettext("There is a new Person."). "<a href=\"".SystemURLs::getURL().$this->notificationObject->getViewURI()."\">Click Here to View " . $this->notificationObject->getFullName()."</a>";
       }
     }
    
      public function getTokens()
     {
         $myTokens =  [
-            "toName" => SystemConfig::getValue("sChurchName") . gettext("Data Steward,"),
-            "body" => "New Notification"
+            "toName" => SystemConfig::getValue("sChurchName") . " " . gettext("Data Steward"),
+            "body" => $this->getBody()
         ];
         return array_merge($this->getCommonTokens(), $myTokens);
     }
