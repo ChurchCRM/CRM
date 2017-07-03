@@ -21,13 +21,14 @@ require 'Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 
-function translate_Win_1252 ($string)
+function translate_Win_1252($string)
 {
-	if ($string == "" || $string == null)
-		return "";
-		
-	return iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($string), ENT_COMPAT, 'UTF-8'));
-} 	
+    if ($string == "" || $string == null) {
+        return "";
+    }
+        
+    return iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($string), ENT_COMPAT, 'UTF-8'));
+}
 
 
 $lang = substr($localeInfo->getLocale(), 0, 2);
@@ -504,8 +505,8 @@ if ($sFormat == 'addtocart') {
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                        		$birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
-                        		$age = FormatAgeSuffix($birthDate, 0);
+                            $birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
+                            $age = FormatAgeSuffix($birthDate, 0);
                             
                             //$age = $refDate['year'] - $per_BirthYear - ($per_BirthMonth > $refDate['mon'] || ($per_BirthMonth == $refDate['mon'] && $per_BirthDay > $refDate['mday']));
                         } else {
