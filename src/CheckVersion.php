@@ -29,6 +29,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\dto\SystemURLs;
 
 $systemService = new SystemService();
 if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
@@ -85,7 +86,7 @@ if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade wa
             <ul>
               <li><a href="https://github.com/ChurchCRM/CRM/issues" target="_blank"><?= gettext('GitHub issues') ?></a></li>
               <li><a href="https://gitter.im/ChurchCRM/CRM" target="_blank"><?= gettext('Developer Chat') ?></a></li>
-              <li><a href="http://docs.churchcrm.io" target="_blank"><?= gettext('Docs') ?></a></li>
+              <li><a href="<?= SystemURLs::getSupportURL() ?>" target="_blank"><?= gettext('Docs') ?></a></li>
             </ul>
             </p>
           </div>
