@@ -335,7 +335,16 @@ function implodeUnique($array, $withQuotes)
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function () {
 
-    var dataTable = $('.data-table').DataTable(window.CRM.plugin.dataTable);
+    var dataTable = $('.data-table').dataTable({
+      "dom": 'T<"clear">lfrtip',
+      responsive: true,
+      "language": {
+        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+      },
+      "tableTools": {
+        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
+      }
+    });
 
     // turn the element to select2 select style
     $('.email-recepients-kids').select2({

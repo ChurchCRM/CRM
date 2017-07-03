@@ -338,7 +338,16 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) != 'NEW') {
 <script type="text/javascript">
   $(document).ready(function () {
 //Added by @saulowulhynek to translation of datatable nav terms
-    $('#eventNames').DataTable(window.CRM.plugin.dataTable);
+    $('#eventNames').dataTable({
+      "language": {
+        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+      },
+      responsive: true,
+      "dom": 'T<"clear">lfrtip',
+      "tableTools": {
+        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
+      }
+    });
   });
 </script>
 

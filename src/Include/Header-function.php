@@ -37,13 +37,13 @@ function Header_system_notifications()
 {
     if (NotificationService::hasActiveNotifications()) {
         ?>
-        <div class="systemNotificationBar">
-            <?php
-            foreach (NotificationService::getNotifications() as $notification) {
-                echo "<a href=\"" . $notification->link . "\">" . $notification->title . "</a>";
-            } ?>
-        </div>
-        <?php
+  <div class="systemNotificationBar">
+    <?php
+    foreach (NotificationService::getNotifications() as $notification) {
+        echo "<a href=\"".$notification->link."\">".$notification->title."</a>";
+    } ?>
+  </div>
+    <?php
     }
 }
 
@@ -77,7 +77,7 @@ function Header_modals()
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label
-                                            for="issueTitle"><?= gettext('Enter a Title for your bug / feature report') ?>
+                                        for="issueTitle"><?= gettext('Enter a Title for your bug / feature report') ?>
                                         : </label>
                                 </div>
                                 <div class="col-xl-3">
@@ -87,7 +87,7 @@ function Header_modals()
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label
-                                            for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
+                                        for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
                                 </div>
                                 <div class="col-xl-3">
                                     <textarea rows="10" cols="50" name="issueDescription"></textarea>
@@ -120,27 +120,15 @@ function Header_body_scripts()
     global $localeInfo;
     $systemService = new SystemService(); ?>
     <script>
-        window.CRM = {
-            root: "<?= SystemURLs::getRootPath() ?>",
-            lang: "<?= $localeInfo->getLanguageCode() ?>",
-            locale: "<?= $localeInfo->getLocale() ?>",
-            maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
-            maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
-            plugin: {
-                dataTable : {
-                   "language": {
-                        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-                    },
-                    responsive: true,
-                    "dom": 'T<"clear">lfrtip',
-                    "tableTools": {
-                        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
-                    }
-                }
-            }
-        };
+      window.CRM = {
+      root: "<?= SystemURLs::getRootPath() ?>",
+      lang: "<?= $localeInfo->getLanguageCode() ?>",
+      locale: "<?= $localeInfo->getLocale() ?>",
+      maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
+      maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>"
+    };
     </script>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
+    <script src="<?= SystemURLs::getRootPath()?>/skin/js/CRMJSOM.js"></script>
     <?php
 }
 
@@ -213,59 +201,59 @@ function addMenu($menu)
 
 function addMenuItem($aMenu, $mIdx)
 {
-global $security_matrix;
+    global $security_matrix;
 
-$link = ($aMenu['uri'] == '') ? '' : SystemURLs::getRootPath() . '/' . $aMenu['uri'];
-$text = $aMenu['statustext'];
-if (!is_null($aMenu['session_var'])) {
-    if (($link > '') && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
-        if (strstr($link, '?') && true) {
-            $cConnector = '&';
-        } else {
-            $cConnector = '?';
+    $link = ($aMenu['uri'] == '') ? '' : SystemURLs::getRootPath() . '/' . $aMenu['uri'];
+    $text = $aMenu['statustext'];
+    if (!is_null($aMenu['session_var'])) {
+        if (($link > '') && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
+            if (strstr($link, '?') && true) {
+                $cConnector = '&';
+            } else {
+                $cConnector = '?';
+            }
+            $link .= $cConnector . $aMenu['url_parm_name'] . '=' . $_SESSION[$aMenu['session_var']];
         }
-        $link .= $cConnector . $aMenu['url_parm_name'] . '=' . $_SESSION[$aMenu['session_var']];
+        if (($text > '') && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
+            $text .= ' ' . $_SESSION[$aMenu['session_var']];
+        }
     }
-    if (($text > '') && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
-        $text .= ' ' . $_SESSION[$aMenu['session_var']];
-    }
-}
-if ($aMenu['ismenu']) {
-    $sSQL = "SELECT name
+    if ($aMenu['ismenu']) {
+        $sSQL = "SELECT name
              FROM menuconfig_mcf
              WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . '
              ORDER BY sortorder';
 
-    $rsItemCnt = RunQuery($sSQL);
-    $numItems = mysqli_num_rows($rsItemCnt);
-}
-if (!($aMenu['ismenu']) || ($numItems > 0)) {
-if ($link) {
-    if ($aMenu['name'] != 'sundayschool-dash') { // HACK to remove the sunday school 2nd dashboard
-        echo "<li><a href='$link'>";
-        if ($aMenu['icon'] != '') {
-            echo '<i class="fa ' . $aMenu['icon'] . '"></i>';
-        }
-        if ($aMenu['parent'] != 'root') {
-            echo '<i class="fa fa-angle-double-right"></i> ';
-        }
-        if ($aMenu['parent'] == 'root') {
-            echo '<span>' . gettext($aMenu['content']) . '</span></a>';
-        } else {
-            echo gettext($aMenu['content']) . '</a>';
-        }
+        $rsItemCnt = RunQuery($sSQL);
+        $numItems = mysqli_num_rows($rsItemCnt);
     }
-} else {
-echo "<li class=\"treeview\">\n";
-echo "    <a href=\"#\">\n";
-if ($aMenu['icon'] != '') {
-    echo '<i class="fa ' . $aMenu['icon'] . "\"></i>\n";
-}
-echo '<span>' . gettext($aMenu['content']) . "</span>\n";
-echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
-if ($aMenu['name'] == 'deposit') {
-    echo '<small class="badge pull-right bg-green">' . $_SESSION['iCurrentDeposit'] . "</small>\n";
-} ?>  </a>
+    if (!($aMenu['ismenu']) || ($numItems > 0)) {
+        if ($link) {
+            if ($aMenu['name'] != 'sundayschool-dash') { // HACK to remove the sunday school 2nd dashboard
+        echo "<li><a href='$link'>";
+                if ($aMenu['icon'] != '') {
+                    echo '<i class="fa ' . $aMenu['icon'] . '"></i>';
+                }
+                if ($aMenu['parent'] != 'root') {
+                    echo '<i class="fa fa-angle-double-right"></i> ';
+                }
+                if ($aMenu['parent'] == 'root') {
+                    echo '<span>' . gettext($aMenu['content']) . '</span></a>';
+                } else {
+                    echo gettext($aMenu['content']) . '</a>';
+                }
+            }
+        } else {
+            echo "<li class=\"treeview\">\n";
+            echo "    <a href=\"#\">\n";
+            if ($aMenu['icon'] != '') {
+                echo '<i class="fa ' . $aMenu['icon'] . "\"></i>\n";
+            }
+            echo '<span>' . gettext($aMenu['content']) . "</span>\n";
+            echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
+            if ($aMenu['name'] == 'deposit') {
+                echo '<small class="badge pull-right bg-green">' . $_SESSION['iCurrentDeposit'] . "</small>\n";
+            } ?>  </a>
 <ul class="treeview-menu">
     <?php
     if ($aMenu['name'] == 'sundayschool') {
@@ -276,20 +264,20 @@ if ($aMenu['name'] == 'deposit') {
             echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . '</a></li>';
         }
     }
-    }
-    if (($aMenu['ismenu']) && ($numItems > 0)) {
-        echo "\n";
-        addMenu($aMenu['name']);
-        echo "</ul>\n</li>\n";
-    } else {
-        echo "</li>\n";
-    }
+        }
+        if (($aMenu['ismenu']) && ($numItems > 0)) {
+            echo "\n";
+            addMenu($aMenu['name']);
+            echo "</ul>\n</li>\n";
+        } else {
+            echo "</li>\n";
+        }
 
-    return true;
+        return true;
     } else {
         return false;
     }
-    }
+}
 
     function create_side_nav($menu)
     {

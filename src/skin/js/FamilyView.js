@@ -1,6 +1,11 @@
 $(document).ready(function () {
 
-    $("#pledge-payment-table").DataTable(window.CRM.plugin.dataTable);
+    var options = {
+        "language": {
+            "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+        }
+    };
+    $("#pledge-payment-table").DataTable(options);
 
 
   $("#onlineVerify").click(function () {

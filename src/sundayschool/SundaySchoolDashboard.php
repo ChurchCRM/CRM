@@ -243,7 +243,12 @@ require '../Include/Header.php';
   </div>
   <script type="application/javascript">
     $(document).ready(function () {
-      $('.data-table').DataTable(window.CRM.plugin.dataTable);
+      $('.data-table').dataTable({
+        responsive: true,
+        "language": {
+          "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+        }
+      });
 
       $("#addNewClassBtn").click(function (e) {
         var groupName = $("#new-class-name").val(); // get the name of the from the textbox
