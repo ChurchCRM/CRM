@@ -170,14 +170,14 @@ window.CRM.kiosk = {
   },
   
   triggerNotification:  function(personId)  {
-    window.CRM.kiosk.stopEventLoop();
+    //window.CRM.kiosk.stopEventLoop();
     window.CRM.kiosk.APIRequest({
      path:"triggerNotification",
      method:"POST",
      data:JSON.stringify({"PersonId":personId})
    }).
    done(function(data){
-     window.CRM.kiosk.startEventLoop();
+     //window.CRM.kiosk.startEventLoop();
        //TODO:  Signal to the kiosk user that the notification was sent
    });
    
