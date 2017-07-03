@@ -296,7 +296,7 @@ if ($sFormat == 'addtocart') {
 
     if ($sFormat == 'default') {
         if (!empty($_POST['BirthdayDate'])) {
-            $headerString .= '"'.translate_Win_1252("BirthDate").'"'.$delimitor;
+            $headerString .= '"'.translate_Win_1252("Birth Date").'"'.$delimitor;
         }
         if (!empty($_POST['Age'])) {
             $headerString .= '"'.translate_Win_1252("Age").'"'.$delimitor;
@@ -305,7 +305,7 @@ if ($sFormat == 'addtocart') {
             $headerString .= '"'.translate_Win_1252("Family Role").'"'.$delimitor;
         }
     } else {
-        if (!empty($_POST['BirthdayDate'])) {
+        if (!empty($_POST['Birthday Date'])) {
             $headerString .= '"'.translate_Win_1252("AnnivDate").'"'.$delimitor;
         }
         if (!empty($_POST['Age'])) {
@@ -320,7 +320,7 @@ if ($sFormat == 'addtocart') {
             extract($aRow);
             if (isset($_POST["$custom_Field"])) {
                 $bUsedCustomFields = true;
-                $headerString .= "\"$custom_Name\"".$delimitor;
+                $headerString .= "\"".translate_Win_1252($custom_Name)."\"".$delimitor;
             }
         }
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
@@ -328,7 +328,7 @@ if ($sFormat == 'addtocart') {
             if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
-                    $headerString .= "\"$fam_custom_Name\"".$delimitor;
+                    $headerString .= "\"".translate_Win_1252($fam_custom_Name)."\"".$delimitor;
                 }
             }
         }
@@ -340,7 +340,7 @@ if ($sFormat == 'addtocart') {
             if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
-                    $headerString .= "\"$fam_custom_Name\"".$delimitor;
+                    $headerString .= "\"".translate_Win_1252($fam_custom_Name)."\"".$delimitor;
                 }
             }
         }
@@ -504,7 +504,10 @@ if ($sFormat == 'addtocart') {
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                            $age = $refDate['year'] - $per_BirthYear - ($per_BirthMonth > $refDate['mon'] || ($per_BirthMonth == $refDate['mon'] && $per_BirthDay > $refDate['mday']));
+                        		$birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
+                        		$age = FormatAgeSuffix($birthDate, 0);
+                            
+                            //$age = $refDate['year'] - $per_BirthYear - ($per_BirthMonth > $refDate['mon'] || ($per_BirthMonth == $refDate['mon'] && $per_BirthDay > $refDate['mday']));
                         } else {
                             $age = '';
                         }
@@ -551,7 +554,7 @@ if ($sFormat == 'addtocart') {
                                     if ($type_ID == 11) {
                                         $custom_Special = $sCountry;
                                     }
-                                    $sString .= '"'.$delimitor.'"'.displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special);
+                                    $sString .= '"'.$delimitor.'"'.translate_Win_1252(displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special));
                                 }
                             }
                         }
@@ -574,7 +577,7 @@ if ($sFormat == 'addtocart') {
                                 if ($type_ID == 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $sString .= '"'.$delimitor.'"'.displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
+                                $sString .= '"'.$delimitor.'"'.translate_Win_1252(displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special));
                             }
                         }
                     }
@@ -598,7 +601,7 @@ if ($sFormat == 'addtocart') {
                                 if ($type_ID == 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $sString .= '"'.$delimitor.'"'.displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
+                                $sString .= '"'.$delimitor.'"'.translate_Win_1252(displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special));
                             }
                         }
                     }

@@ -5,6 +5,15 @@ require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 
+function translate_Win_1252 ($string)
+{
+	if ($string == "" || $string == null)
+		return "";
+		
+	return iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($string), ENT_COMPAT, 'UTF-8'));
+} 	
+
+
 header('Pragma: no-cache');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -49,19 +58,19 @@ $rsKids = RunQuery($sSQL);
   _('Dad Name'), _('Dad Mobile'), _('Dad Email'),
   _('Mom Name'), _('Mom Mobile'), _('Mom Email'), ],";");*/
   
-fputcsv($out, [iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Class'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('First Name'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Last Name'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Birth Date'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Mobile'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Home Phone'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Home Address'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Dad Name'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Dad Mobile'), ENT_COMPAT, 'UTF-8')) ,
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Dad Email'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Mom Name'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Mom Mobile'), ENT_COMPAT, 'UTF-8')),
-  iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext('Mom Email'), ENT_COMPAT, 'UTF-8')), ], $delimitor);
+fputcsv($out, [translate_Win_1252('Class'),
+  translate_Win_1252('First Name'),
+  translate_Win_1252('Last Name'),
+  translate_Win_1252('Birth Date'),
+  translate_Win_1252('Mobile'),
+  translate_Win_1252('Home Phone'),
+  translate_Win_1252('Home Address'),
+  translate_Win_1252('Dad Name'),
+  translate_Win_1252('Dad Mobile') ,
+  translate_Win_1252('Dad Email'),
+  translate_Win_1252('Mom Name'),
+  translate_Win_1252('Mom Mobile'),
+  translate_Win_1252('Mom Email') ], $delimitor);
 
 
 while ($aRow = mysqli_fetch_array($rsKids)) {
@@ -71,11 +80,11 @@ while ($aRow = mysqli_fetch_array($rsKids)) {
         $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
     }
     fputcsv($out, [
-    iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($sundayschoolClass), ENT_COMPAT, 'UTF-8')),
-    iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($firstName), ENT_COMPAT, 'UTF-8')),
-    iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($LastName), ENT_COMPAT, 'UTF-8')),
+    translate_Win_1252($sundayschoolClass),
+    translate_Win_1252($firstName),
+    translate_Win_1252($LastName),
      $birthDate, $mobilePhone, $homePhone,
-    iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($Address1), ENT_COMPAT, 'UTF-8')).' '.$Address2.' '.$city.' '.$state.' '.$zip,
+    translate_Win_1252($Address1).' '.$Address2.' '.$city.' '.$state.' '.$zip,
     $dadFirstName.' '.$dadLastName, $dadCellPhone, $dadEmail,
     $momFirstName.' '.$momLastName, $momCellPhone, $momEmail, ], $delimitor);
 }
