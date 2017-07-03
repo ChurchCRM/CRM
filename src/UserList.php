@@ -139,7 +139,7 @@ require 'Include/Header.php';
         bootbox.confirm({
             title: "<?= gettext("Action Confirmation") ?>",
             message: '<p style="color: red">' +
-            '<?= gettext("Please confirm reset failed login count") ?>: <b>'+ userName +'</b></p>',
+            "<?= gettext("Please confirm reset failed login count") ?>: <b>"+ userName +"</b></p>",
             callback: function (result) {
                 if (result) {
                     $.ajax({
@@ -160,7 +160,7 @@ require 'Include/Header.php';
         bootbox.confirm({
             title: "<?= gettext("Action Confirmation") ?>",
             message: '<p style="color: red">' +
-            '<?= gettext("Please confirm the password reset of this user") ?>: <b>'+ userName +'</b></p>',
+            "<?= gettext("Please confirm the password reset of this user") ?>: <b>"+ userName +"</b></p>",
             callback: function (result) {
                 if (result) {
                     $.ajax({

@@ -104,7 +104,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         ?>
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Cart Functions</h3>
+        <h3 class="box-title"><?= _("Cart Functions") ?></h3>
     </div>
     <div class="box-body">
         <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
@@ -185,8 +185,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
             if ($sPhoneLink) {
                 if ($bEmailMailto) { // Does user have permission to email groups
 
-                // Display link
-                echo '<a href="javascript:void(0)" onclick="allPhonesCommaD()" class="btn btn-app"><i class="fa fa-mobile-phone"></i>Text Cart';
+                    // Display link
+                    echo '<a href="javascript:void(0)" onclick="allPhonesCommaD()" class="btn btn-app"><i class="fa fa-mobile-phone"></i>'.gettext("Text Cart");
                     echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
                 }
             } ?>

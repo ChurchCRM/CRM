@@ -517,6 +517,6 @@ require 'Include/Header.php';
                 });
               });
             </script>
-            <script src="skin/js/GroupView.js" type="text/javascript"></script>
+            <script src="skin/js/GroupView.js.php" type="text/javascript"></script>
 
             <?php require 'Include/Footer.php' ?>
