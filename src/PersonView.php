@@ -596,7 +596,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           } ?>
                               </ul>
                             </div>
-                            <a href="#" onclick="GroupRemove(<?= $grp_ID.', '.$iPersonID ?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
+                            <a href="#" data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" class="btn btn-danger groupRemove" role="button"><i class="fa fa-trash-o"></i></a>
                           <?php
                       } ?>
                         </code>
@@ -613,24 +613,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               }
     if ($_SESSION['bManageGroups']) {
         ?>
-                <div class="alert alert-info">
-                  <h4><strong><?php echo gettext('Assign New Group'); ?> </strong></h4>
-                  <i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext('Person will be assigned to the Group in the Default Role.') ?></span>
-
-                  <p><br></p>
-                  <select style="color:#000000" name="GroupAssignID">
-                    <?php while ($aRow = mysqli_fetch_array($rsGroups)) {
-            extract($aRow);
-
-                      //If the property doesn't already exist for this Person, write the <OPTION> tag
-                      if (strlen(strstr($sAssignedGroups, ','.$grp_ID.',')) == 0) {
-                          echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
-                      }
-        } ?>
-                  </select>
-                  <a href="#" onclick="GroupAdd()" class="btn btn-success" role="button"><?= gettext('Assign User to Group') ?></a>
-                  <br>
-                </div>
+                <a id="addGroup"><i class="fa fa-plus-circle" aria-hidden="true"></i><?php echo gettext('Assign New Group'); ?></a>
               <?php
     } ?>
             </div>
@@ -915,27 +898,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js" type="text/javascript"></script>
 <script>
-  var person_ID = <?= $iPersonID ?>;
-  function GroupRemove(Group, Person) {
-    var answer = confirm("<?= gettext('Are you sure you want to remove this person from the Group') ?>");
-    if (answer)
-    {
-      window.CRM.groups.removePerson(Group,Person).done(
-        function(){
-          location.reload()
-        }
-      ); 
-     }
-  }
-
-  function GroupAdd() {
-    var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
-    window.CRM.groups.addPerson(GroupAssignID,person_ID,undefined).done(function(){
-        location.reload()
-      }
-    );
-  }
-
+  window.CRM.currentPersonID = <?= $iPersonID ?>;
+  
   $("#deletePhoto").click (function () {
     $.ajax({
     type: "POST",
@@ -979,14 +943,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         $("#assigned-properties-table").DataTable(options);
 
 
-        contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {
+        contentExists(window.CRM.root + "/api/persons/" + window.CRM.currentPersonID + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
 
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + person_ID + '/photo" />',
+                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + window.CRM.currentPersonID + '/photo" />',
                         backdrop: true
                     });
                 });
