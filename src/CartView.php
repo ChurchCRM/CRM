@@ -24,7 +24,6 @@
  *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
  ******************************************************************************/
-// Include the function library
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
