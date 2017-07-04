@@ -96,7 +96,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                         if ($groupMembership->getGroup() != null) {
                             $listOption = ListOptionQuery::create()->filterById($groupMembership->getGroup()->getRoleListId())->filterByOptionId($groupMembership->getRoleId())->findOne()->getOptionName();
                     ?>
-                        <b><?= $groupMembership->getGroup()->getName() ?></b>: <span class="pull-right"><?= $listOption ?></span>
+                        <b><?= $groupMembership->getGroup()->getName() ?></b>: <span class="pull-right"><?= $listOption ?></span><br/>
                     <?php
                         }
                     }
