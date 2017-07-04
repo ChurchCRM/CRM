@@ -126,7 +126,7 @@ $(document).ready(function () {
     window.CRM.groups.promptSelection(function(data){
       selectedRows = dataT.rows('.selected').data()
       $.each(selectedRows, function (index, value) {
-        window.CRM.groups.addPerson(data.GroupID,value.PersonId);
+        window.CRM.groups.addPerson(data.GroupID,value.PersonId,data.RoleID);
     });
     });
   });
@@ -135,7 +135,8 @@ $(document).ready(function () {
     window.CRM.groups.promptSelection(function(data){
       selectedRows = dataT.rows('.selected').data()
       $.each(selectedRows, function (index, value) {
-        window.CRM.groups.addPerson(data.GroupID,value.PersonId);
+        console.log(data);
+        window.CRM.groups.addPerson(data.GroupID,value.PersonId,data.RoleID);
         window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId, function () {
           dataT.row(function (idx, data, node) {
             if (data.PersonId == value.PersonId) {

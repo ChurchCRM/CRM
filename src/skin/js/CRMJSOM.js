@@ -350,10 +350,17 @@
         });
       },
       'addPerson' : function(GroupID,PersonID,RoleID) {
-        return window.CRM.APIRequest({
+        params = {
           method: 'POST', // define the type of HTTP verb we want to use (POST for our form)
           path:'groups/' + GroupID + '/addperson/'+PersonID
-        });
+        };
+        if (RoleID)
+        {
+          params.data = JSON.stringify({
+            RoleID: RoleID
+          });
+        }
+        return window.CRM.APIRequest(params);
       },
       'removePerson' : function(GroupID,PersonID, callback) {
          window.CRM.APIRequest({

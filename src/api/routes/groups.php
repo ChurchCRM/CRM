@@ -89,13 +89,21 @@ $app->group('/groups', function () {
     $this->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
+        $input = (object) $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
         $p2g2r = Person2group2roleP2g2rQuery::create()
           ->filterByGroupId($groupID)
           ->filterByPersonId($userID)
-          ->findOneOrCreate()
-          ->setRoleId($group->getDefaultRole())
-          ->save();
+          ->findOneOrCreate();
+        if($input->RoleID)
+        {
+          $p2g2r->setRoleId($input->RoleID);
+        }
+        else
+        {
+           $p2g2r->setRoleId($group->getDefaultRole());
+        }
+        $p2g2r->save();
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->filterByPersonId($userID)
