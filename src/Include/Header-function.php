@@ -129,7 +129,7 @@ function Header_body_scripts()
             plugin: {
                 dataTable : {
                    "language": {
-                        "url": "<?= SystemURLs::getRootPath() ?>" + "/skin/locale/datatables/" + "<?= $localeInfo->getLanguageCode() ?>" + ".json"
+                        "url": "<?= SystemURLs::getRootPath() ?>/skin/locale/datatables/<?= $localeInfo->getLanguageCode() ?>.json"
                     },
                     responsive: true,
                     "dom": 'T<"clear">lfrtip',
