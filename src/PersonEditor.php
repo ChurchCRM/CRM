@@ -297,7 +297,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // New Family (add)
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
-             $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
+            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
 					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['iUserID'].')';
             //Execute the SQL
             RunQuery($sSQL);
@@ -345,18 +345,17 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $person->save();
             
             if (strlen($dMembershipDate) > 0) {
-              $person->setMembershipDate($dMembershipDate);
-            } 
+                $person->setMembershipDate($dMembershipDate);
+            }
             if (strlen($dFriendDate) > 0) {
                 $person->setFriendDate($dFriendDate);
-            } 
+            }
             $person->setFlags($per_Flags);
             
             $bGetKeyBack = true;
 
             // Existing person (update)
         } else {
-          
             $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
