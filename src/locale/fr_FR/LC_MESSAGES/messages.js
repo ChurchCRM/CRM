@@ -1316,7 +1316,7 @@
     "Estimated value": "Valeur estimée",
     "Disable Group Specific Properties": "Désactiver les propriétés spécifiques de groupe",
     "'Default Option'": "'Option par D&eacute;faut'",
-    "Text Group": "Groupe Texte",
+    "Text Group": "Texto au groupe",
     "Group Properties": "Propriétés Groupes",
     "Assign a New Property:": "Assigner une Nouvelle Propriété:",
     "mos old": "agé de ...",
