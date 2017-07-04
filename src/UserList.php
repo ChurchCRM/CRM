@@ -113,11 +113,7 @@ require 'Include/Header.php';
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#user-listing-table").DataTable({
-            "language": {
-                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-            }
-        });
+        $("#user-listing-table").DataTable(window.CRM.plugin.dataTable);
     });
 
     function deleteUser(userId, userName) {

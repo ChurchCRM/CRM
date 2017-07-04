@@ -397,15 +397,7 @@ if (isset($_POST['EventID'])) {
 <script language="javascript" type="text/javascript">
     var perArr;
     $(document).ready(function () {
-        $('#checkedinTable').dataTable({
-            "language": {
-                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-            },
-            responsive: true,
-            "dom": "<'row'<'col-md-6'i><'col-md-6'f>>" +
-            'rt<"bottom"lp><"clear">'
-
-        });
+        $('#checkedinTable').DataTable(window.CRM.plugin.dataTable);
     });
 
     $(document).ready(function() {
