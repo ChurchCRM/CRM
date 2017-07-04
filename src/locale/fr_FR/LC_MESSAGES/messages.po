@@ -5902,7 +5902,7 @@ msgstr "'Option par D&eacute;faut'"
 
 #: GroupView.php:248
 msgid "Text Group"
-msgstr "Groupe Texte"
+msgstr "Texto au groupe"
 
 #: GroupView.php:291 Include/Footer.php:108
 msgid "Group Properties"
