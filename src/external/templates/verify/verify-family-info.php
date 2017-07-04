@@ -2,6 +2,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\ChurchMetaData;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
@@ -147,7 +148,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         <div class="modal-footer">
           <button id="onlineVerifyCancelBtn" type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
           <button id="onlineVerifyBtn" class="btn btn-success"><?= gettext("Verify") ?></button>
-          <a href="<?= SystemURLs::getURL()?>" id="onlineVerifySiteBtn" class="btn btn-success"><?= gettext("Visit our Site") ?></a>
+          <a href="<?= ChurchMetaData::getChurchWebSite() ?>" id="onlineVerifySiteBtn" class="btn btn-success"><?= gettext("Visit our Site") ?></a>
         </div>
       </div>
     </div>
