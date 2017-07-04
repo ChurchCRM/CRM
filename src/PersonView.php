@@ -920,7 +920,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     var answer = confirm("<?= gettext('Are you sure you want to remove this person from the Group') ?>");
     if (answer)
     {
-      window.CRM.groups.removePerson(Group,Person,
+      window.CRM.groups.removePerson(Group,Person).done(
         function(){
           location.reload()
         }

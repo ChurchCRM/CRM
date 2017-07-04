@@ -362,15 +362,10 @@
         }
         return window.CRM.APIRequest(params);
       },
-      'removePerson' : function(GroupID,PersonID, callback) {
-         window.CRM.APIRequest({
+      'removePerson' : function(GroupID,PersonID) {
+        return window.CRM.APIRequest({
           method: 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
           path:'groups/' + GroupID + '/removeperson/' + PersonID,
-        }).done(function(data) {
-            if(callback)
-            {
-              callback(data);
-            }
         });
       }
     };

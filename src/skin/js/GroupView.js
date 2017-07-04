@@ -80,13 +80,14 @@ $(document).ready(function () {
         if (result)
         {
           $.each(deletedRows, function (index, value) {
-            window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId,function(){
-              dataT.row(function (idx, data, node) {
-                if (data.PersonId == value.PersonId) {
-                  return true;
-                }
-              }).remove();
-              dataT.rows().invalidate().draw(true);
+            window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId).done(
+              function(){
+                dataT.row(function (idx, data, node) {
+                  if (data.PersonId == value.PersonId) {
+                    return true;
+                  }
+                }).remove();
+                dataT.rows().invalidate().draw(true);
             });
           });
         }
@@ -137,13 +138,14 @@ $(document).ready(function () {
       $.each(selectedRows, function (index, value) {
         console.log(data);
         window.CRM.groups.addPerson(data.GroupID,value.PersonId,data.RoleID);
-        window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId, function () {
-          dataT.row(function (idx, data, node) {
-            if (data.PersonId == value.PersonId) {
-              return true;
-            }
-          }).remove();
-          dataT.rows().invalidate().draw(true);
+        window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId).done(
+          function () {
+            dataT.row(function (idx, data, node) {
+              if (data.PersonId == value.PersonId) {
+                return true;
+              }
+            }).remove();
+            dataT.rows().invalidate().draw(true);
         });
       });
     });
