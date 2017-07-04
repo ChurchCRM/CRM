@@ -24,7 +24,6 @@
  *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
  ******************************************************************************/
-// Include the function library
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
@@ -371,11 +370,7 @@ require 'Include/Header.php'; ?>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#cart-listing-table").DataTable({
-                "language": {
-                    "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-                }
-            });
+            $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
         });
     </script>
 
