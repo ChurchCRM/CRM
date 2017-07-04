@@ -129,7 +129,7 @@ function Header_body_scripts()
             plugin: {
                 dataTable : {
                    "language": {
-                        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+                        "url": "<?= SystemURLs::getRootPath() ?>" + "/skin/locale/datatables/" + window.CRM.locale + ".json"
                     },
                     responsive: true,
                     "dom": 'T<"clear">lfrtip',
