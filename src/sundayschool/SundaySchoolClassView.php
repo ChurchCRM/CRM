@@ -351,9 +351,7 @@ function implodeUnique($array, $withQuotes)
       tags: [<?= implodeUnique($ParentsEmails, true) ?>]
     });
 
-    var birthDateColumn = dataTable
-      .DataTable()
-      .column(':contains(Birth Date)');
+    var birthDateColumn = dataTable.column(':contains(Birth Date)');
 
     var hideBirthDayFilter = function() {
       plot.unhighlight();
