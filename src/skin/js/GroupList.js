@@ -32,7 +32,7 @@ $(document).ready(function () {
 
   dataT = $("#groupsTable").DataTable({
     "language": {
-      "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+      "url": window.CRM.plugin.dataTable.language.url
     },
     responsive: true,
     ajax: {

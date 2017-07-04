@@ -237,11 +237,11 @@ $(document).ready(function () {
 function initDataTable() {
   dataT = $("#membersTable").DataTable({
     "language": {
-      "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+      "url": window.CRM.plugin.dataTable.language.url
     },
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-      "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
+      "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath,
       "aButtons": [
       {
         "sExtends": "csv",
