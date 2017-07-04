@@ -23,9 +23,12 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
-        <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i><?= $family->getHomePhone() ?><br/>
-        <i class="fa fa-fw fa-envelope" title="<?= gettext("Family Email")?>"></i><?= $family->getEmail() ?><br/>
-        <?php
+          <?php if (!empty($family->getHomePhone()))  { ?>
+          <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i>(H) <?= $family->getHomePhone() ?><br/>
+          <?php }  if (!empty($family->getEmail())) { ?>
+          <i class="fa fa-fw fa-envelope" title="<?= gettext("Family Email") ?>"></i><?= $family->getEmail() ?><br/>
+              <?php
+          }
           if( $family->getWeddingDate() !== null) {
         ?>
             <i class="fa fa-fw fa-heart" title="<?= gettext("Wedding Date")?>"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?><br/>
@@ -67,11 +70,17 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
                 <ul class="list-group list-group-unbordered">
                   <li class="list-group-item">
-                    <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"></i><?= $person->getHomePhone() ?><br/>
-                    <i class="fa fa-fw fa-briefcase" title="<?= gettext("Work Phone")?>"></i><?= $person->getWorkPhone() ?><br/>
-                    <i class="fa fa-fw fa-mobile" title="<?= gettext("Mobile Phone")?>"></i><?= $person->getCellPhone() ?><br/>
-                    <i class="fa fa-fw fa-envelope" title="<?= gettext("Email")?>"></i><?= $person->getEmail() ?><br/>
-                    <i class="fa fa-fw fa-envelope-o" title="<?= gettext("Work Email")?>"></i><?= $person->getWorkEmail() ?><br/>
+                      <?php if (!empty($person->getHomePhone()))  { ?>
+                    <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"></i>(H) <?= $person->getHomePhone() ?><br/>
+                      <?php }  if (!empty($person->getWorkPhone()))  { ?>
+                    <i class="fa fa-fw fa-briefcase" title="<?= gettext("Work Phone")?>"></i>(W) <?= $person->getWorkPhone() ?><br/>
+                      <?php }  if (!empty($person->getCellPhone()))  { ?>
+                    <i class="fa fa-fw fa-mobile" title="<?= gettext("Mobile Phone")?>"></i>(M) <?= $person->getCellPhone() ?><br/>
+                      <?php }  if (!empty($person->getEmail()))  { ?>
+                    <i class="fa fa-fw fa-envelope" title="<?= gettext("Email")?>"></i>(H) <?= $person->getEmail() ?><br/>
+                      <?php }  if (!empty($person->getWorkEmail()))  { ?>
+                    <i class="fa fa-fw fa-envelope-o" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
+                      <?php }  ?>
                     <i class="fa fa-fw fa-birthday-cake"
                        title="Birthday"></i><?= $person->getBirthDate()->format("M d Y") ?> <?php if ($person->hideAge()) { ?>
                       <i class="fa fa-fw fa-eye-slash" title="<?= gettext("Age Hidden")?>"></i><?php } ?><br/>
