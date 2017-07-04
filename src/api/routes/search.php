@@ -39,7 +39,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
             ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
             ->limit(15)
             ->withColumn('grp_Name', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'GroupView.php?GroupID=",Group.Id)', 'uri')
+            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/GroupView.php?GroupID=",Group.Id)', 'uri')
             ->select(['displayName', 'uri'])
             ->find();
 
@@ -59,7 +59,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                 ->filterByCheckno("%$query%", Criteria::LIKE)
                 ->endUse()
                 ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
-                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
+                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
                 ->limit(5);
             array_push($resultsArray, $q->find()->toJSON());
         } catch (Exception $e) {

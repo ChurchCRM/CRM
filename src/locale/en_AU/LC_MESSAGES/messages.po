@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en-au\n"
 
-#: AutoPaymentEditor.php:709 BackupDatabase.php:67 CartToFamily.php:266
+#: AutoPaymentEditor.php:710 BackupDatabase.php:67 CartToFamily.php:266
 #: CSVExport.php:125 CSVImport.php:225 DirectoryReports.php:262
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:695

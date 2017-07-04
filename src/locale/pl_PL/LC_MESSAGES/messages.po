@@ -31,10 +31,10 @@ msgstr "Potwierdź Automatyczne Usunięcie płatności"
 msgid "Delete"
 msgstr "Skasuj"
 
-#: AutoPaymentDelete.php:68 AutoPaymentEditor.php:582 BatchWinnerEntry.php:116
+#: AutoPaymentDelete.php:68 AutoPaymentEditor.php:583 BatchWinnerEntry.php:116
 #: CanvassEditor.php:243 Checkin.php:172 Checkin.php:281 Checkin.php:294
 #: DirectoryReports.php:290 DonatedItemEditor.php:300 EventNames.php:234
-#: external/templates/verify/verify-family-info.php:136 FamilyEditor.php:1125
+#: external/templates/verify/verify-family-info.php:139 FamilyEditor.php:1125
 #: FamilyView.php:891 FinancialReports.php:72 FundRaiserEditor.php:147
 #: GroupPropsEditor.php:172 GroupReports.php:87 GroupReports.php:156
 #: LettersAndLabels.php:77 ManageEnvelopes.php:139 MemberRoleChange.php:123
@@ -49,11 +49,11 @@ msgstr "Skasuj"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: AutoPaymentEditor.php:130
+#: AutoPaymentEditor.php:131
 msgid "Automatic payment configuration for the "
 msgstr "Ustawienie Automatycznej płatności dla rodziny"
 
-#: AutoPaymentEditor.php:581 CanvassEditor.php:242 DepositSlipEditor.php:98
+#: AutoPaymentEditor.php:582 CanvassEditor.php:242 DepositSlipEditor.php:98
 #: DonatedItemEditor.php:296 FamilyEditor.php:653 FamilyEditor.php:737
 #: FamilyEditor.php:801 FamilyEditor.php:875 FamilyEditor.php:897
 #: FamilyEditor.php:928 FamilyEditor.php:1121 FundRaiserEditor.php:146
@@ -66,7 +66,7 @@ msgstr "Ustawienie Automatycznej płatności dla rodziny"
 msgid "Save"
 msgstr "Zapisz"
 
-#: AutoPaymentEditor.php:598 BatchWinnerEntry.php:87 BatchWinnerEntry.php:99
+#: AutoPaymentEditor.php:599 BatchWinnerEntry.php:87 BatchWinnerEntry.php:99
 #: CSVImport.php:275 DonatedItemEditor.php:189 DonatedItemEditor.php:240
 #: eGive.php:341 FamilyEditor.php:1095 GroupEditor.php:91
 #: Include/CountryDropDown.php:6 Include/Functions.php:1074
@@ -78,49 +78,49 @@ msgstr "Zapisz"
 msgid "Unassigned"
 msgstr "Nie przypisany"
 
-#: AutoPaymentEditor.php:618
+#: AutoPaymentEditor.php:619
 msgid "Automatic payment type"
 msgstr "Rodzaj Automatycznej płatności"
 
-#: AutoPaymentEditor.php:643
+#: AutoPaymentEditor.php:644
 msgid "Payment amount"
 msgstr "Kwota Wpłaty"
 
-#: AutoPaymentEditor.php:648
+#: AutoPaymentEditor.php:649
 msgid "Payment interval (months)"
 msgstr "Częstotliwość Wpłat (miesiące)"
 
-#: AutoPaymentEditor.php:656 CartToGroup.php:80 EditEventTypes.php:91
+#: AutoPaymentEditor.php:657 CartToGroup.php:80 EditEventTypes.php:91
 #: EditEventTypes.php:103 EventNames.php:109 EventNames.php:121
 #: EventNames.php:166 GroupReports.php:52 GroupReports.php:147
 #: PersonToGroup.php:70 sundayschool/SundaySchoolReports.php:147
 msgid "None"
 msgstr "Żaden"
 
-#: AutoPaymentEditor.php:669
+#: AutoPaymentEditor.php:670
 msgid "inactive"
 msgstr "nieaktywne"
 
-#: AutoPaymentEditor.php:699 CartToFamily.php:249 CSVExport.php:115
+#: AutoPaymentEditor.php:700 CartToFamily.php:249 CSVExport.php:115
 #: CSVImport.php:223 DirectoryReports.php:254
 #: external/templates/registration/family-register.php:41 FamilyEditor.php:678
 #: PersonEditor.php:825 Register.php:48 queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "Miasto"
 
-#: AutoPaymentEditor.php:704 CartToFamily.php:254 CSVExport.php:120
+#: AutoPaymentEditor.php:705 CartToFamily.php:254 CSVExport.php:120
 #: CSVImport.php:224 DirectoryReports.php:258
 #: external/templates/registration/family-register.php:44 FamilyEditor.php:685
 #: PersonEditor.php:845 Register.php:49 queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "Hrabstwo"
 
-#: AutoPaymentEditor.php:714 CartToFamily.php:274 CSVExport.php:135
+#: AutoPaymentEditor.php:715 CartToFamily.php:274 CSVExport.php:135
 #: CSVImport.php:226 FamilyEditor.php:705 PersonEditor.php:890 Register.php:51
 msgid "Country"
 msgstr "Kraj"
 
-#: AutoPaymentEditor.php:719 ChurchCRM/Reports/PDF_Directory.php:312
+#: AutoPaymentEditor.php:720 ChurchCRM/Reports/PDF_Directory.php:312
 #: ChurchCRM/Reports/PDF_Directory.php:386
 #: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:266
 #: external/templates/registration/family-register-members.php:103
@@ -128,7 +128,7 @@ msgstr "Kraj"
 msgid "Phone"
 msgstr "Tel."
 
-#: AutoPaymentEditor.php:724 CartToFamily.php:315 CartView.php:288
+#: AutoPaymentEditor.php:725 CartToFamily.php:315 CartView.php:288
 #: ChurchCRM/Reports/PDF_Directory.php:321
 #: ChurchCRM/Reports/PDF_Directory.php:397
 #: ChurchCRM/Reports/PDF_Directory.php:454 CSVExport.php:155 CSVImport.php:230
@@ -147,28 +147,28 @@ msgstr "Tel."
 msgid "Email"
 msgstr "Email"
 
-#: AutoPaymentEditor.php:729 ElectronicPaymentList.php:213
+#: AutoPaymentEditor.php:730 ElectronicPaymentList.php:213
 #: FinancialReports.php:267 FindDepositSlip.php:52 PledgeEditor.php:592
 msgid "Credit Card"
 msgstr "Numer Karty Płatniczej"
 
-#: AutoPaymentEditor.php:744
+#: AutoPaymentEditor.php:745
 msgid "Expiration Month"
 msgstr "Data Ważności (miesiąć)"
 
-#: AutoPaymentEditor.php:749
+#: AutoPaymentEditor.php:750
 msgid "Expiration Year"
 msgstr "Data Ważności (rok)"
 
-#: AutoPaymentEditor.php:754
+#: AutoPaymentEditor.php:755
 msgid "Bank Name"
 msgstr "Nazwa Banku"
 
-#: AutoPaymentEditor.php:759
+#: AutoPaymentEditor.php:760
 msgid "Bank Route Number"
 msgstr "Sort Code"
 
-#: AutoPaymentEditor.php:764
+#: AutoPaymentEditor.php:765
 msgid "Bank Account Number"
 msgstr "Numer Konta"
 
@@ -234,7 +234,7 @@ msgstr "Wprowadź Wygranych"
 msgid "CSV Export"
 msgstr "Eksportuj do CSV"
 
-#: AutoPaymentEditor.php:684 CSVExport.php:79 CSVImport.php:217
+#: AutoPaymentEditor.php:685 CSVExport.php:79 CSVImport.php:217
 #: external/templates/registration/family-register-members.php:73
 #: external/templates/verify/enter-info.php:25 ManageEnvelopes.php:166
 #: PersonEditor.php:630 sundayschool/SundaySchoolDashboard.php:182
@@ -246,7 +246,7 @@ msgstr "Nazwisko"
 msgid "Required"
 msgstr "Wymagane"
 
-#: AutoPaymentEditor.php:679 CSVExport.php:90 CSVImport.php:215
+#: AutoPaymentEditor.php:680 CSVExport.php:90 CSVImport.php:215
 #: external/templates/registration/family-register-members.php:69
 #: external/templates/verify/enter-info.php:21 PersonEditor.php:608
 #: sundayschool/SundaySchoolDashboard.php:181
@@ -259,7 +259,7 @@ msgstr "Imię"
 msgid "Middle Name"
 msgstr "Drugie Imię"
 
-#: AutoPaymentEditor.php:709 BackupDatabase.php:67 CartToFamily.php:266
+#: AutoPaymentEditor.php:710 BackupDatabase.php:67 CartToFamily.php:266
 #: CSVExport.php:125 CSVImport.php:225 DirectoryReports.php:262
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29 FamilyEditor.php:695
@@ -899,7 +899,7 @@ msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Osoby"
 msgid "Select Event"
 msgstr "Wybierz Wydarzenie"
 
-#: external/templates/verify/verify-family-info.php:137
+#: external/templates/verify/verify-family-info.php:140
 msgid "Verify"
 msgstr "Potwierdź"
 
@@ -1026,7 +1026,7 @@ msgstr "Którą rolę pełni Dziecko?"
 msgid "Information to Include"
 msgstr "Informacje które powinny być zawarte"
 
-#: AutoPaymentEditor.php:689 AutoPaymentEditor.php:694 CartToFamily.php:239
+#: AutoPaymentEditor.php:690 AutoPaymentEditor.php:695 CartToFamily.php:239
 #: CartToFamily.php:244 CartView.php:287 CSVExport.php:105 CSVExport.php:110
 #: CSVImport.php:221 CSVImport.php:222 DirectoryReports.php:176
 #: DirectoryReports.php:250
@@ -1246,7 +1246,7 @@ msgstr "Częstotliwość Wydarzenia"
 msgid "Attendance Counts"
 msgstr "Ilość Uczestników"
 
-#: AutoPaymentEditor.php:595
+#: AutoPaymentEditor.php:596
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:198
 #: external/templates/registration/family-register-done.php:28
@@ -1267,7 +1267,7 @@ msgstr "Rodzina"
 msgid "Type"
 msgstr "Typ"
 
-#: AutoPaymentEditor.php:636 ElectronicPaymentList.php:200 FamilyView.php:747
+#: AutoPaymentEditor.php:637 ElectronicPaymentList.php:200 FamilyView.php:747
 #: PledgeEditor.php:523 ReminderReport.php:46 SelectDelete.php:216
 #: sundayschool/SundaySchoolReports.php:161 queryparameters_qrp.php:18
 msgid "Fiscal Year"
@@ -1278,7 +1278,7 @@ msgstr "Rok Podatkowy"
 msgid "Amount"
 msgstr "Kwota"
 
-#: AutoPaymentEditor.php:653 ElectronicPaymentList.php:204 FamilyView.php:643
+#: AutoPaymentEditor.php:654 ElectronicPaymentList.php:204 FamilyView.php:643
 #: FamilyView.php:746 FinancialReports.php:305 SelectDelete.php:215
 msgid "Fund"
 msgstr "Cel"
@@ -1761,7 +1761,7 @@ msgstr "Aktualizuj"
 msgid "Pledge or Payment"
 msgstr "Datek lub Płatność"
 
-#: AutoPaymentEditor.php:631 CanvassEditor.php:198 DepositSlipEditor.php:82
+#: AutoPaymentEditor.php:632 CanvassEditor.php:198 DepositSlipEditor.php:82
 #: EditEventAttendees.php:33 FamilyView.php:748 FindFundRaiser.php:241
 #: FundRaiserEditor.php:168 Include/Functions.php:101 PledgeEditor.php:521
 #: SelectDelete.php:217
@@ -2458,7 +2458,7 @@ msgid "Update Family Records"
 msgstr "Aktualizuj Wpis Rodziny"
 
 #: external/templates/verify/verify-family-info.php:13
-#: external/templates/verify/verify-family-info.php:119
+#: external/templates/verify/verify-family-info.php:122
 #: ManageEnvelopes.php:138
 msgid "Confirm"
 msgstr "Potwierdź"
