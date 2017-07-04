@@ -16,6 +16,9 @@ require 'Include/Header.php'; ?>
             content: none !important;
         }
     }
+    .fc-other-month .fc-day-number {
+      display:none;
+    }
 </style>
 <div class="col">
     <div class="box box-primary">
@@ -67,7 +70,7 @@ require 'Include/Header.php'; ?>
                 if (!event.start.isAfter(evStart) || event.start.isAfter(evEnd)) {
                     return false;
                 }
-            },
+            }
         });
     });
 </script>
