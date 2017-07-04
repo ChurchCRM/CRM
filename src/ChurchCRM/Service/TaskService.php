@@ -5,7 +5,6 @@ namespace ChurchCRM\Service;
 use ChurchCRM\Tasks\ChurchAddress;
 use ChurchCRM\Tasks\ChurchNameTask;
 use ChurchCRM\Tasks\EmailTask;
-use ChurchCRM\Tasks\FamilyWorkPhoneTask;
 use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
 use ChurchCRM\Tasks\PrerequisiteCheckTask;
@@ -37,7 +36,6 @@ class TaskService
             new IntegrityCheckTask(),
             new LatestReleaseTask(),
             new RegisteredTask(),
-            new FamilyWorkPhoneTask(),
             new PersonGenderDataCheck(),
             new PersonClassificationDataCheck(),
             new PersonRoleDataCheck(),
