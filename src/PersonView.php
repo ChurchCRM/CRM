@@ -971,14 +971,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         $("#input-volunteer-opportunities").select2();
         $("#input-person-properties").select2();
 
-        var options = {
-            "language": {
-                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-            },
-            "responsive": true
-        };
-        $("#assigned-volunteer-opps-table").DataTable(options);
-        $("#assigned-properties-table").DataTable(options);
+        $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
+        $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
 
 
         contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {

@@ -84,16 +84,7 @@ require 'Include/Header.php'; ?>
 
 <script type="text/javascript">
   $(document).ready(function () {
-    $('#families').dataTable({
-      "language": {
-        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-      },
-      responsive: true,
-      "dom": 'T<"clear">lfrtip',
-      "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
-      }
-    });
+    $('#families').DataTable(window.CRM.plugin.dataTable);
   });
 </script>
 
