@@ -143,9 +143,6 @@ if (isset($_POST['User'])) {
 }
 
 
-
-
-
 // Set the page title and include HTML header
 $sPageTitle = gettext('Login');
 require 'Include/HeaderNotLoggedIn.php';
@@ -186,35 +183,30 @@ require 'Include/HeaderNotLoggedIn.php';
                 <input type="password" id="PasswordBox" name="Password" class="form-control"
                        placeholder="<?= gettext('Password') ?>" required autofocus>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                <br />
+                <br/>
                 <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
             ?>
-                <span class="text-right"><a href="external/password/"><?= gettext("I forgot my password")?></a></span>
-                <?php
+                    <span class="text-right"><a
+                                href="external/password/"><?= gettext("I forgot my password") ?></a></span>
+                    <?php
         } ?>
             </div>
             <div class="row">
-                <div class="col-xs-8">
-                    <!--<div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox"> Remember Me
-                        </label>
-                    </div>-->
-                </div>
                 <!-- /.col -->
-                <div class="col-xs-4">
+                <div class="col-xs-5">
                     <button type="submit" class="btn btn-primary btn-block btn-flat"><i
-                            class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
+                                class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
                 </div>
             </div>
         </form>
 
         <?php if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
             ?>
-        <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
-        <?php
+            <a href="external/register/" class="text-center btn bg-olive"><i
+                        class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
+            <?php
         } ?>
-      <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
+        <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
 
     </div>
     <!-- /.login-box-body -->
