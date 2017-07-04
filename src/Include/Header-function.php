@@ -37,13 +37,13 @@ function Header_system_notifications()
 {
     if (NotificationService::hasActiveNotifications()) {
         ?>
-  <div class="systemNotificationBar">
-    <?php
-    foreach (NotificationService::getNotifications() as $notification) {
-        echo "<a href=\"".$notification->link."\">".$notification->title."</a>";
-    } ?>
-  </div>
-    <?php
+        <div class="systemNotificationBar">
+            <?php
+            foreach (NotificationService::getNotifications() as $notification) {
+                echo "<a href=\"" . $notification->link . "\">" . $notification->title . "</a>";
+            } ?>
+        </div>
+        <?php
     }
 }
 
@@ -77,7 +77,7 @@ function Header_modals()
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label
-                                        for="issueTitle"><?= gettext('Enter a Title for your bug / feature report') ?>
+                                            for="issueTitle"><?= gettext('Enter a Title for your bug / feature report') ?>
                                         : </label>
                                 </div>
                                 <div class="col-xl-3">
@@ -87,7 +87,7 @@ function Header_modals()
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label
-                                        for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
+                                            for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
                                 </div>
                                 <div class="col-xl-3">
                                     <textarea rows="10" cols="50" name="issueDescription"></textarea>
@@ -120,15 +120,27 @@ function Header_body_scripts()
     global $localeInfo;
     $systemService = new SystemService(); ?>
     <script>
-      window.CRM = {
-      root: "<?= SystemURLs::getRootPath() ?>",
-      lang: "<?= $localeInfo->getLanguageCode() ?>",
-      locale: "<?= $localeInfo->getLocale() ?>",
-      maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
-      maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>"
-    };
+        window.CRM = {
+            root: "<?= SystemURLs::getRootPath() ?>",
+            lang: "<?= $localeInfo->getLanguageCode() ?>",
+            locale: "<?= $localeInfo->getLocale() ?>",
+            maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
+            maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
+            plugin: {
+                dataTable : {
+                   "language": {
+                        "url": "<?= SystemURLs::getRootPath() ?>/skin/locale/datatables/<?= $localeInfo->getLocale() ?>.json"
+                    },
+                    responsive: true,
+                    "dom": 'T<"clear">lfrtip',
+                    "tableTools": {
+                        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
+                    }
+                }
+            }
+        };
     </script>
-    <script src="<?= SystemURLs::getRootPath()?>/skin/js/CRMJSOM.js"></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
     <?php
 }
 
