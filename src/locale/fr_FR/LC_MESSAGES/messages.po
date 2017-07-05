@@ -3277,7 +3277,7 @@ msgid "List Event Types"
 msgstr "Listes les types d'événement"
 
 msgid "List Groups"
-msgstr "Lister toutes les groupes"
+msgstr "Lister tous les groupes"
 
 msgid "List Members"
 msgstr "Lister des membres"
@@ -6919,5 +6919,23 @@ msgstr "Stocker des données privées chez Vanco"
 
 msgid "Text Cart"
 msgstr "Texto du Panier"
+
+msgid "Confirm Enable Group Specific Properties"
+msgstr "Confirmez-vous l'activation des propriétés spécififique de groupe"
+
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "Vous allez créer une table de proprités spécifiques pour le groupe. Vous devrez ajouter les propriétés spécifiques avec cet éditeur"
+
+msgid "Confirm Disable Group Specific Properties"
+msgstr "Confirmez-vous la suppression des propriétés spécifiques du groupe"
+
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "Êtes-vous sûr de vouloir supprimer les propriétés spécifiques des personnes ? Toutes les données de propriétés relatves aux membres dans le groupe seront perdues !" 
+
+msgid "Role Name"
+msgstr "Nom du rôle"
+
+msgid "Sequence"
+msgstr "Séquence"
 
 
