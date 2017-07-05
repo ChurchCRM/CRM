@@ -70,6 +70,11 @@ class ChurchMetaData
         return SystemConfig::getValue('sChurchPhone');
     }
 
+    public static function getChurchWebSite()
+    {
+        return SystemConfig::getValue('sChurchWebSite');
+    }
+
     public static function getChurchLatitude()
     {
         if (empty(SystemConfig::getValue('iChurchLatitude'))) {
