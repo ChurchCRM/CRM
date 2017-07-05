@@ -90,7 +90,7 @@ $(document).ready(function () {
     $(".cartStatusButton").each(function (index, element) {
       var objectID = $(element).data("groupid");
       if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
-        $(element).html("All members of this group are in the cart<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + objectID + "\"><?= _('Remove all') ?></a>");
+        $(element).html("<?= _('All members of this group are in the cart') ?><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + objectID + "\"><?= _('Remove all') ?></a>");
       }
       else {
         $(element).html("<?= _('Not all members of this group are in the cart') ?><br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + objectID + "\"><?= _('Add all') ?></a>");
