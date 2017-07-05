@@ -5,7 +5,7 @@ $("document").ready(function(){
      .init(
      {
         backend: {
-          loadPath: window.CRM.root + '/locale/'+window.CRM.locale+'/LC_Messages/messages.js'
+          loadPath: window.CRM.root + '/locale/'+window.CRM.locale+'/LC_MESSAGES/messages.js'
         }
      });
 
