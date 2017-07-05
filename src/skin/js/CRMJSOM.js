@@ -289,65 +289,69 @@
           method:"GET"
         }); 
       },
-      'promptSelection': function(selectionCallback)
-      {
-        bootbox.dialog({
-           title: 'Select Group and Role',
-           message: '<div class="modal-body">\
-                <input type="hidden" id="targetGroupAction">\
-                <span style="color: red">Please select target group for members:</span>\
-                <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>\
-                <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>\
-              </div>',
-           buttons: {
-             confirm: {
-                 label: 'OK',
-                 className: 'btn-success',
-                 callback: function(){
-                   selectionCallback({
-                     'GroupID': $("#targetGroupSelection option:selected").val(),
-                     'RoleID' : $("#targetRoleSelection option:selected").val()
-                   });
-                }
-             },
-             cancel: {
-                 label: 'Cancel',
-                 className: 'btn-danger'
+      
+      'promptSelection': {
+        'Group': 1,
+        'Role': 2,
+        'prompt': function(selectOptions,selectionCallback) {
+          bootbox.dialog({
+             title: 'Select Group and Role',
+             message: '<div class="modal-body">\
+                  <input type="hidden" id="targetGroupAction">\
+                  <span style="color: red">Please select target group for members:</span>\
+                  <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>\
+                  <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>\
+                </div>',
+             buttons: {
+               confirm: {
+                   label: 'OK',
+                   className: 'btn-success',
+                   callback: function(){
+                     selectionCallback({
+                       'GroupID': $("#targetGroupSelection option:selected").val(),
+                       'RoleID' : $("#targetRoleSelection option:selected").val()
+                     });
+                  }
+               },
+               cancel: {
+                   label: 'Cancel',
+                   className: 'btn-danger'
+               }
              }
-           }
-        }).show();
-        
-        window.CRM.groups.get()
-        .done(function(rdata){
-          groupsList = $.map(rdata.Groups, function (item) {
-            var o = {
-              text: item.Name,
-              id: item.Id
-            };
-            return o;
-          });
-          $groupSelect2 = $("#targetGroupSelection").select2({
-            data: groupsList
-          });
-          
-          $groupSelect2.on("select2:select", function (e) { 
-             var targetGroupId = $("#targetGroupSelection option:selected").val();
-             $parent = $("#targetRoleSelection").parent();
-             $("#targetRoleSelection").empty();
-             window.CRM.groups.getRoles(targetGroupId).done(function(rdata){
-               rolesList = $.map(rdata.ListOptions, function (item) {
-                  var o = {
-                    text: item.OptionName,
-                    id: item.OptionId
-                  };
-                  return o;
-                });
-               $("#targetRoleSelection").select2({
-                 data:rolesList
+          }).show();
+
+          window.CRM.groups.get()
+          .done(function(rdata){
+            groupsList = $.map(rdata.Groups, function (item) {
+              var o = {
+                text: item.Name,
+                id: item.Id
+              };
+              return o;
+            });
+            $groupSelect2 = $("#targetGroupSelection").select2({
+              data: groupsList
+            });
+
+            $groupSelect2.on("select2:select", function (e) { 
+               var targetGroupId = $("#targetGroupSelection option:selected").val();
+               $parent = $("#targetRoleSelection").parent();
+               $("#targetRoleSelection").empty();
+               window.CRM.groups.getRoles(targetGroupId).done(function(rdata){
+                 rolesList = $.map(rdata.ListOptions, function (item) {
+                    var o = {
+                      text: item.OptionName,
+                      id: item.OptionId
+                    };
+                    return o;
+                  });
+                 $("#targetRoleSelection").select2({
+                   data:rolesList
+                 })
                })
-             })
+            });
           });
-        });
+        }
       },
       'addPerson' : function(GroupID,PersonID,RoleID) {
         params = {

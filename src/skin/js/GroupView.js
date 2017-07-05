@@ -122,8 +122,6 @@ $(document).ready(function () {
 
   //copy membership
   $("#addSelectedToGroup").click(function () {
-    //$("#selectTargetGroupModal").modal("show");
-    //$("#targetGroupAction").val("copy");
     window.CRM.groups.promptSelection(function(data){
       selectedRows = dataT.rows('.selected').data()
       $.each(selectedRows, function (index, value) {
@@ -149,9 +147,8 @@ $(document).ready(function () {
         });
       });
     });
-
-
   });
+
 
   $(document).on("click", ".changeMembership", function (e) {
     var userid = $(e.currentTarget).data("personid");
