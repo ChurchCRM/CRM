@@ -430,7 +430,6 @@
     "Add New Person": "Thêm thành viên mới",
     "View All Persons": "Xem tất cả thành viên",
     "Add New Family": "Thêm gia đình mới",
-    "View All Families": "Xem tất cả gia đình",
     "Events": "Sự kiện",
     "Email Export": "Email xuất ra",
     "Deposit(s)": "Tiền ký gửi",
@@ -477,6 +476,8 @@
     "Quick Settings": "Cài đặt nhanh",
     "Status": "Trạng thái",
     "Email export": "Email xuất ra",
+    "View Active Families": "Xem gia đình đang hoạt động",
+    "View Inactive Families": "Xem gia đình không hoạt động",
     "Exclude Inactive Families": "Ngoại trừ gia đình không hoạt động",
     "system user password changed by admin": "mật khẩu thành viên đã được thay đổi bởi Admin"
 }
