@@ -194,6 +194,12 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
                 <h3 class="box-title"><?= gettext('Latest Families') ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -229,6 +235,12 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
             <div class="box-header">
                 <i class="fa fa-check"></i>
                 <h3 class="box-title"><?= gettext('Updated Families') ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">

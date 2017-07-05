@@ -23,7 +23,7 @@ $(document).ready(function () {
 
   dataT = $("#depositsTable").DataTable({
     "language": {
-      "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+      "url": window.CRM.plugin.dataTable.language.url
     },
     ajax: {
       url: window.CRM.root + "/api/deposits",
