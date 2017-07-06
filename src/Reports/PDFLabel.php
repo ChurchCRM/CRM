@@ -864,34 +864,52 @@ if ($sFileType == 'PDF') {
 
     $sCSVOutput = '';
     if ($iBulkCode) {
-        $sCSVOutput .= '"ZipBundle",';
+        $sCSVOutput .= '"ZipBundle"'.$delimitor;
     }
+    
+    function translate_Win_1252 ($string)
+	{
+		if ($string == "" || $string == null)
+			return "";
+		
+		return iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($string), ENT_COMPAT, 'UTF-8'));
+	} 	
 
-    $sCSVOutput .= '"Greeting","Name","Address1","Address2","City","State","Zip"'."\n";
+
+	$lang = substr($localeInfo->getLocale(), 0, 2);
+
+	if ($lang == "fr") {
+		$delimitor = ";";
+	} else {
+		$delimitor = ",";
+	}
+
+
+    $sCSVOutput .= '"'.translate_Win_1252("Greeting").'"'.$delimitor.'"'.translate_Win_1252("Name").'"'.$delimitor.'"'.translate_Win_1252("Address 1").'"'.$delimitor.'"'.translate_Win_1252("Address 2").'"'.$delimitor.'"'.translate_Win_1252("City").'"'.$delimitor.'"'.translate_Win_1252("State").'"'.$delimitor.'"'.translate_Win_1252("Zip").'"'."\n";
 
     while (list($i, $sLT) = each($aLabelList)) {
         if ($iBulkCode) {
-            $sCSVOutput .= '"'.$sLT['Note'].'",';
+            $sCSVOutput .= '"'.$sLT['Note'].'"'.$delimitor;
         }
 
         $iNewline = (strpos($sLT['Name'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"","'.$sLT['Name'].'",';
+            $sCSVOutput .= '""'.$delimitor.'"'.translate_Win_1252($sLT['Name']).'"'.$delimitor;
         } else {
-            $sCSVOutput .= '"'.mb_substr($sLT['Name'], 0, $iNewline).'",'.
-                            '"'.mb_substr($sLT['Name'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.translate_Win_1252(mb_substr($sLT['Name'], 0, $iNewline)).'"'.$delimitor.
+                            '"'.translate_Win_1252(mb_substr($sLT['Name'], $iNewline + 1)).'"'.$delimitor;
         }
 
         $iNewline = (strpos($sLT['Address'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"'.$sLT['Address'].'","",';
+            $sCSVOutput .= '"'.translate_Win_1252($sLT['Address']).'",""'.$delimitor;
         } else {
-            $sCSVOutput .= '"'.mb_substr($sLT['Address'], 0, $iNewline).'",'.
-                            '"'.mb_substr($sLT['Address'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.translate_Win_1252(mb_substr($sLT['Address'], 0, $iNewline)).'"'.$delimitor.
+                            '"'.translate_Win_1252(mb_substr($sLT['Address'], $iNewline + 1)).'"'.$delimitor;
         }
 
-        $sCSVOutput .= '"'.$sLT['City'].'",'.
-                        '"'.$sLT['State'].'",'.
+        $sCSVOutput .= '"'.translate_Win_1252($sLT['City']).'"'.$delimitor.
+                        '"'.translate_Win_1252($sLT['State']).'"'.$delimitor.
                         '"'.$sLT['Zip'].'"'."\n";
     }
 
