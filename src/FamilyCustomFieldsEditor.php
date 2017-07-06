@@ -30,6 +30,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {
@@ -438,7 +439,7 @@ if ($numRows == 0) {
                         }
                         echo '</select>';
                     ?><BR>
-                    <a href="http://docs.churchcrm.io/"><?= gettext('Help on types..') ?></a>
+                    <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
                     </td>
                     <td valign="top">
                         <div><?= gettext('Name') ?>:</div>
