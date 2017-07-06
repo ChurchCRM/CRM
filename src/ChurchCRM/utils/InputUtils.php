@@ -36,12 +36,14 @@ class InputUtils {
       return $sInput;
   }
 
-  public static function FilterChar($sInput)
+  public static function FilterChar($sInput,$size=1)
   {
      $sInput = mb_substr(trim($sInput), 0, $size);
       if (get_magic_quotes_gpc()) {
         $sInput = stripslashes($sInput);
       }
+      
+      return $sInput;
   }
 
   public static function FilterInt($sInput)
@@ -73,7 +75,7 @@ class InputUtils {
         case 'htmltext':
           return mysqli_real_escape_string($cnInfoCentral, self::FilterHTML($sInput));
         case 'char':
-          return mysqli_real_escape_string($cnInfoCentral, self::FilterChar($sInput));
+          return mysqli_real_escape_string($cnInfoCentral, self::FilterChar($sInput,$size));
         case 'int':
          return self::FilterInt($sInput);
         case 'float':
