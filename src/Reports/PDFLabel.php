@@ -867,22 +867,23 @@ if ($sFileType == 'PDF') {
         $sCSVOutput .= '"ZipBundle"'.$delimitor;
     }
     
-    function translate_Win_1252 ($string)
-	{
-		if ($string == "" || $string == null)
-			return "";
-		
-		return iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($string), ENT_COMPAT, 'UTF-8'));
-	} 	
+    function translate_Win_1252($string)
+    {
+        if ($string == "" || $string == null) {
+            return "";
+        }
+        
+        return iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($string), ENT_COMPAT, 'UTF-8'));
+    }
 
 
-	$lang = substr($localeInfo->getLocale(), 0, 2);
+    $lang = substr($localeInfo->getLocale(), 0, 2);
 
-	if ($lang == "fr") {
-		$delimitor = ";";
-	} else {
-		$delimitor = ",";
-	}
+    if ($lang == "fr") {
+        $delimitor = ";";
+    } else {
+        $delimitor = ",";
+    }
 
 
     $sCSVOutput .= '"'.translate_Win_1252("Greeting").'"'.$delimitor.'"'.translate_Win_1252("Name").'"'.$delimitor.'"'.translate_Win_1252("Address 1").'"'.$delimitor.'"'.translate_Win_1252("Address 2").'"'.$delimitor.'"'.translate_Win_1252("City").'"'.$delimitor.'"'.translate_Win_1252("State").'"'.$delimitor.'"'.translate_Win_1252("Zip").'"'."\n";

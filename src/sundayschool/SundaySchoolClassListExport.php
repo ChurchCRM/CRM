@@ -5,13 +5,14 @@ require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 
-function translate_Win_1252 ($string)
+function translate_Win_1252($string)
 {
-	if ($string == "" || $string == null)
-		return "";
-		
-	return iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($string), ENT_COMPAT, 'UTF-8'));
-} 	
+    if ($string == "" || $string == null) {
+        return "";
+    }
+        
+    return iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($string), ENT_COMPAT, 'UTF-8'));
+}
 
 
 header('Pragma: no-cache');
@@ -91,5 +92,3 @@ while ($aRow = mysqli_fetch_array($rsKids)) {
 
 
 fclose($out);
-                                                                                                                            
-?>
