@@ -1,15 +1,39 @@
 <?php
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 
-header('Content-type: text/csv');
-header('Content-Disposition: attachment; filename=SundaySchool-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
+function translate_Win_1252 ($string)
+{
+	if ($string == "" || $string == null)
+		return "";
+		
+	return iconv('UTF-8', 'Windows-1252', html_entity_decode(gettext($string), ENT_COMPAT, 'UTF-8'));
+} 	
+
+
 header('Pragma: no-cache');
 header('Expires: 0');
+header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+header('Content-Description: File Transfer');
+header('Content-Type: text/csv;charset=UTF-8');
+header('Content-Disposition: attachment; filename=SundaySchool-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
+header('Content-Transfer-Encoding: binary');
+
+$lang = substr($localeInfo->getLocale(), 0, 2);
+
+if ($lang == "fr") {
+    $delimitor = ";";
+} else {
+    $delimitor = ",";
+}
 
 $out = fopen('php://output', 'w');
+
+//add BOM to fix UTF-8 in Excel
+//fputs($out, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
 
 // Get all the groups
 $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
@@ -28,11 +52,26 @@ grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_
 order by grp.grp_Name, fam.fam_Name';
 $rsKids = RunQuery($sSQL);
 
-fputcsv($out, ['Class',
-  'First Name', 'Last Name', 'Birth Date', 'Mobile',
-  'Home Phone', 'Home Address',
-  'Dad Name', 'Dad Mobile', 'Dad Email',
-  'Mom Name', 'Mom Mobile', 'Mom Email', ]);
+/*fputcsv($out, [_('Class'),
+  _('First Name'), _('Last Name'), _('Birth Date'), _('Mobile'),
+  _('Home Phone'), _('Home Address'),
+  _('Dad Name'), _('Dad Mobile'), _('Dad Email'),
+  _('Mom Name'), _('Mom Mobile'), _('Mom Email'), ],";");*/
+  
+fputcsv($out, [translate_Win_1252('Class'),
+  translate_Win_1252('First Name'),
+  translate_Win_1252('Last Name'),
+  translate_Win_1252('Birth Date'),
+  translate_Win_1252('Mobile'),
+  translate_Win_1252('Home Phone'),
+  translate_Win_1252('Home Address'),
+  translate_Win_1252('Dad Name'),
+  translate_Win_1252('Dad Mobile') ,
+  translate_Win_1252('Dad Email'),
+  translate_Win_1252('Mom Name'),
+  translate_Win_1252('Mom Mobile'),
+  translate_Win_1252('Mom Email') ], $delimitor);
+
 
 while ($aRow = mysqli_fetch_array($rsKids)) {
     extract($aRow);
@@ -40,13 +79,17 @@ while ($aRow = mysqli_fetch_array($rsKids)) {
     if ($birthYear != '') {
         $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
     }
-    fputcsv($out, [$sundayschoolClass, $firstName, $LastName, $birthDate, $mobilePhone, $homePhone, $Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip,
+    fputcsv($out, [
+    translate_Win_1252($sundayschoolClass),
+    translate_Win_1252($firstName),
+    translate_Win_1252($LastName),
+     $birthDate, $mobilePhone, $homePhone,
+    translate_Win_1252($Address1).' '.$Address2.' '.$city.' '.$state.' '.$zip,
     $dadFirstName.' '.$dadLastName, $dadCellPhone, $dadEmail,
-    $momFirstName.' '.$momLastName, $momCellPhone, $momEmail, ]);
+    $momFirstName.' '.$momLastName, $momCellPhone, $momEmail, ], $delimitor);
 }
 
+
 fclose($out);
+                                                                                                                            
 ?>
-
-
-
