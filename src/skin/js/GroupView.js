@@ -53,12 +53,15 @@ $(document).ready(function () {
   });
 
   $(".personSearch").on("select2:select", function (e) {
-    window.CRM.groups.addPerson(window.CRM.currentGroup, e.params.data.objid,undefined).done(function (data) {
-      var person = data.Person2group2roleP2g2rs[0];
-      var node = dataT.row.add(person).node();
-      dataT.rows().invalidate().draw(true);
-      $(".personSearch").val(null).trigger('change')
-    });
+      window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:window.CRM.currentGroup},function(selection){
+        window.CRM.groups.addPerson(window.CRM.currentGroup, e.params.data.objid,selection.RoleID).done(function (data) {
+          var person = data.Person2group2roleP2g2rs[0];
+          var node = dataT.row.add(person).node();
+          dataT.rows().invalidate().draw(true);
+          $(".personSearch").val(null).trigger('change')
+        });
+      })
+      
   });
 
   $("#deleteSelectedRows").click(function () {
