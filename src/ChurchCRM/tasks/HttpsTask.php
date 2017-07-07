@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Tasks;
 
+use ChurchCRM\dto\SystemURLs;
 
 class HttpsTask implements iTask
 {
@@ -12,7 +13,7 @@ class HttpsTask implements iTask
     return true;
   }
   public function getLink(){
-    return 'http://docs.churchcrm.io/en/latest/';
+    return SystemURLs::getSupportURL();
   }
   public function getTitle(){
     return gettext('Configure HTTPS');

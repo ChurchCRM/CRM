@@ -894,7 +894,6 @@
     "Add New Person": "Toevoegen Nieuw Persoon",
     "View All Persons": "Bekijk alle Personen",
     "Add New Family": "Voeg Nieuwe Familie toe",
-    "View All Families": "Bekijk Alle Families",
     "Events": "Evenementen",
     "Fundraiser": "Fundraiser",
     "Deposit Type": "Bijdrage Type",

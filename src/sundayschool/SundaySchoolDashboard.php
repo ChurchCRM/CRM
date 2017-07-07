@@ -136,6 +136,12 @@ require '../Include/Header.php';
 <div class="box box-info">
   <div class="box-header">
     <h3 class="box-title"><?= gettext('Sunday School Classes') ?></h3>
+      <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+          </button>
+      </div>
   </div>
   <div class="box-body">
     <table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
@@ -171,6 +177,12 @@ require '../Include/Header.php';
 <div class="box box-danger">
   <div class="box-header">
     <h3 class="box-title"><?= gettext('Students not in a Sunday School Class') ?></h3>
+      <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+          </button>
+      </div>
   </div>
   <!-- /.box-header -->
   <div class="box-body table-responsive">
@@ -243,12 +255,7 @@ require '../Include/Header.php';
   </div>
   <script type="application/javascript">
     $(document).ready(function () {
-      $('.data-table').dataTable({
-        responsive: true,
-        "language": {
-          "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-        }
-      });
+      $('.data-table').DataTable(window.CRM.plugin.dataTable);
 
       $("#addNewClassBtn").click(function (e) {
         var groupName = $("#new-class-name").val(); // get the name of the from the textbox
