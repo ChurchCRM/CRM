@@ -31,10 +31,7 @@ $(document).ready(function () {
   })
 
     $("#addGroup").click(function() {
-      var promptOptions = {
-        
-      }
-      var target = window.CRM.groups.promptSelection.prompt(window.CRM.groups.promptSelection.Group | window.CRM.groups.promptSelection.Role, function(data){
+      var target = window.CRM.groups.promptSelection(window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role , function(data){
         window.CRM.groups.addPerson(data.GroupID,window.CRM.currentPersonID,data.RoleID).done(function(){
             location.reload()
           }

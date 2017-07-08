@@ -310,6 +310,8 @@
                }
              }
           };
+          initFunction = function() {
+          };
           if (selectOptions.Type & window.CRM.groups.selectTypes.Group)
           {
             options.title = "Select Group"
@@ -321,16 +323,21 @@
           }
           if (selectOptions.Type & window.CRM.groups.selectTypes.Role )
           {
-            if (!selectOptions.GroupID)
-            {
-              throw "GroupID required for role selection prompt";
-            }
+           
             options.title = "Select Role"
             options.message += '<span style="color: red">Please select target Role for members:</span>\
                   <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>'
             options.buttons.confirm.callback = function(){
               selectionCallback({"RoleID": $("#targetRoleSelection option:selected").val()});
             };
+          }
+          
+          if (selectOptions.Type === window.CRM.groups.selectTypes.Role)
+          {
+            if (!selectOptions.GroupID)
+            {
+              throw "GroupID required for role selection prompt";
+            }
             initFunction = function() {
               window.CRM.groups.getRoles(selectOptions.GroupID).done(function(rdata){
                  rolesList = $.map(rdata.ListOptions, function (item) {
@@ -346,7 +353,7 @@
                })
             }
           }
-          if (selectOptions.Type & window.CRM.groups.selectTypes.Role & window.CRM.groups.selectTypes.Group )
+          if (selectOptions.Type & window.CRM.groups.selectTypes.Role && selectOptions.Type & window.CRM.groups.selectTypes.Group )
           {
             options.title = "Select Group and Role"
             options.buttons.confirm.callback = function(){
