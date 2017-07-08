@@ -262,7 +262,7 @@ $families = FamilyQuery::create()
             </div>
             <div class="form-group">
                 <label for="MaxDistance" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    <?= gettext('Maximum distance') . ' (' . strtolower(gettext(SystemConfig::getValue('sDistanceUnit'))) . "): " ?>
+                    <?= gettext('Maximum distance') . ' (' . gettext(SystemConfig::getValue('sDistanceUnit')) . "): " ?>
                 </label>
                 <div class="col-xs-12 col-sm-9">
                     <input type="text" class="form-control" name="MaxDistance" value="<?= $nMaxDistance ?>">
