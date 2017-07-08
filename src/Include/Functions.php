@@ -1105,12 +1105,18 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
           $bNoFormat_Phone = true;
       }
 
-      echo '<input class="form-control"  type="text" Name="'.$fieldname.'" maxlength="30" size="30" value="'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'">';
-      echo '<br><input type="checkbox" name="'.$fieldname.'noformat" value="1"';
+			echo '<div class="input-group">';
+      echo '<div class="input-group-addon">';
+      echo '<i class="fa fa-phone"></i>';
+      echo '</div>';
+      echo '<input class="form-control"  type="text" Name="'.$fieldname.'" maxlength="30" size="30" value="'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'" data-inputmask=\'"mask": "'.SystemConfig::getValue('sPhoneFormat').'"\' data-mask>';
+      //echo '<input class="form-control"  type="text" Name="'.$fieldname.'" maxlength="30" size="30" value="'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'" >';
+      echo '<br><input type="checkbox" name="'.$fieldname.'noformat" value="1"';      
       if ($bNoFormat_Phone) {
           echo ' checked';
       }
       echo '>'.gettext('Do not auto-format');
+      echo '</div>';
       break;
 
     // Handler for custom lists
