@@ -72,7 +72,7 @@ echo "===============   NPM                    ================="
 echo "=========================================================="
 
 sudo npm install -g npm@latest --unsafe-perm --no-bin-links
-sudo npm install -g i18next-extract-gettext --unsafe-perm --no-bin-links
+sudo npm install -g i18next-extract-gettext
 npm install --unsafe-perm --no-bin-links
 grunt compress:demo
 
