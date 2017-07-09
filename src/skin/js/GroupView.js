@@ -154,58 +154,19 @@ $(document).ready(function () {
 
 
   $(document).on("click", ".changeMembership", function (e) {
-    var userid = $(e.currentTarget).data("personid");
-    $("#changingMemberID").val(dataT.row(function (idx, data, node) {
-      if (data.PersonId == userid) {
-        return true;
-      }
-    }).data().PersonId);
-    $("#changingMemberName").text(dataT.row(function (idx, data, node) {
-      if (data.PersonId == userid) {
-        return true;
-      }
-    }).data().firstName);
-    $('#changeMembership').modal('show');
-    e.stopPropagation();
-  });
-
-  $(document).on("click", "#confirmMembershipChange", function (e) {
-    var changingMemberID = $("#changingMemberID").val();
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/userRole/" + changingMemberID,
-      data: JSON.stringify({'roleID': $("#newRoleSelection option:selected").val()}),
-      dataType: "json",
-      contentType: "application/json; charset=utf-8",
-    }).done(function (data) {
-      dataT.row(function (idx, data, node) {
-        if (data.PersonId == changingMemberID) {
-          data.RoleId = $("#newRoleSelection option:selected").val();
-          return true;
-        }
-      }).data();
-      dataT.rows().invalidate().draw(true);
-      $('#changeMembership').modal('hide');
+    var PersonID = $(e.currentTarget).data("personid");
+    window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:window.CRM.currentGroup},function(selection){
+      window.CRM.groups.addPerson(window.CRM.currentGroup,PersonID,selection.RoleID).done(function(){
+        dataT.rows().invalidate().draw(true);
+      });
     });
+    e.stopPropagation();
   });
 
 });
 
 function initDataTable() {
-  dataT = $("#membersTable").DataTable({
-    "language": {
-      "url": window.CRM.plugin.dataTable.language.url
-    },
-    "dom": 'T<"clear">lfrtip',
-    "tableTools": {
-      "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath,
-      "aButtons": [
-      {
-        "sExtends": "csv",
-        "bSelectedOnly": true
-      }]
-    },
-    responsive: true,
+  var DataTableOpts = {
     ajax: {
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
       dataSrc: "Person2group2roleP2g2rs"
@@ -270,7 +231,9 @@ function initDataTable() {
     "createdRow": function (row, data, index) {
       $(row).addClass("groupRow");
     }
-  });
+  };
+  $.extend(DataTableOpts,window.CRM.plugin.DataTable);
+  dataT = $("#membersTable").DataTable(DataTableOpts);
 
     $('#isGroupActive').change(function() {
         $.ajax({
