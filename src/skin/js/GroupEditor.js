@@ -207,7 +207,7 @@ $("document").ready(function()
     columns: [
       {
         width: 'auto',
-        title: '<?= _("Role Name") ?>',
+        title: i18next.t("Role Name"),
         data: 'lst_OptionName',
         render: function(data, type, full, meta)
         {
@@ -219,7 +219,7 @@ $("document").ready(function()
       },
       {
         width: 'auto',
-        title: '<?= _("Make Default") ?>',
+        title: i18next.t("Make Default"),
         render: function(data, type, full, meta)
         {
           if(full.lst_OptionID == defaultRoleID)
@@ -234,7 +234,7 @@ $("document").ready(function()
       },
       {
         width: '200px',
-        title: '<?= _("Sequence") ?>',
+        title: i18next.t("Sequence"),
         data: 'lst_OptionSequence',
         className: "dt-body-center",
         render: function(data, type, full, meta)
@@ -261,7 +261,7 @@ $("document").ready(function()
       },
       {
         width: 'auto',
-        title: '<?= _("Delete") ?>',
+        title: i18next.t("Delete"),
         render: function(data, type, full, meta)
         {
           return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole"><?= _("Delete") ?></button>';
