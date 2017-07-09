@@ -7,17 +7,17 @@ $("document").ready(function()
     if(groupPropertyAction == "enableGroupProps")
     {
       $("#groupSpecificPropertiesModal").modal("show");
-      $("#gsproperties-label").text("Confirm Enable Group Specific Properties");
-      $("#groupSpecificPropertiesModal .modal-body span").text("This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.");
-      $("#setgroupSpecificProperties").text("Enable Group Specific Properties");
+      $("#gsproperties-label").text(i18next.t('Confirm Enable Group Specific Properties'));
+      $("#groupSpecificPropertiesModal .modal-body span").text(i18next.t('This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.'));
+      $("#setgroupSpecificProperties").text(i18next.t('Enable Group Specific Properties'));
       $("#setgroupSpecificProperties").data("action",1);
     }
     else
     {
       $("#groupSpecificPropertiesModal").modal("show");
-      $("#gsproperties-label").text("Confirm Disable Group Specific Properties");
-      $("#groupSpecificPropertiesModal .modal-body span").text("Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!");
-      $("#setgroupSpecificProperties").text("Disable Group Specific Properties");
+      $("#gsproperties-label").text(i18next.t('Confirm Disable Group Specific Properties'));
+      $("#groupSpecificPropertiesModal .modal-body span").text(i18next.t('Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!'));
+      $("#setgroupSpecificProperties").text(i18next.t('Disable Group Specific Properties'));
       $("#setgroupSpecificProperties").data("action",0);
     }
   });
@@ -200,11 +200,14 @@ $("document").ready(function()
   });
 
   dataT = $("#groupRoleTable").DataTable({
+   "language": {
+      "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
+    },
     data: groupRoleData,
     columns: [
       {
         width: 'auto',
-        title: 'Role Name',
+        title: '<?= _("Role Name") ?>',
         data: 'lst_OptionName',
         render: function(data, type, full, meta)
         {
@@ -216,7 +219,7 @@ $("document").ready(function()
       },
       {
         width: 'auto',
-        title: 'Make Default',
+        title: '<?= _("Make Default") ?>',
         render: function(data, type, full, meta)
         {
           if(full.lst_OptionID == defaultRoleID)
@@ -231,7 +234,7 @@ $("document").ready(function()
       },
       {
         width: '200px',
-        title: 'Sequence',
+        title: '<?= _("Sequence") ?>',
         data: 'lst_OptionSequence',
         className: "dt-body-center",
         render: function(data, type, full, meta)
@@ -258,10 +261,10 @@ $("document").ready(function()
       },
       {
         width: 'auto',
-        title: 'Delete',
+        title: '<?= _("Delete") ?>',
         render: function(data, type, full, meta)
         {
-          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole">Delete</button>';
+          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole"><?= _("Delete") ?></button>';
 
         }
       },
