@@ -157,7 +157,13 @@ $(document).ready(function () {
     var PersonID = $(e.currentTarget).data("personid");
     window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:window.CRM.currentGroup},function(selection){
       window.CRM.groups.addPerson(window.CRM.currentGroup,PersonID,selection.RoleID).done(function(){
-        dataT.rows().invalidate().draw(true);
+        dataT.row(function (idx, data, node) {
+        if (data.PersonId == PersonID) {
+          data.RoleId = selection.RoleID;
+          return true;
+        }
+      });
+      dataT.rows().invalidate().draw(true);
       });
     });
     e.stopPropagation();
