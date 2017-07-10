@@ -281,7 +281,8 @@ module.exports = function (grunt) {
             sv_SE: {
                 src: [
                   'node_modules/fullcalendar/dist/locale/sv.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sv.js'
+                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sv.js',
+                    'node_modules/admin-lte/plugins/select2/i18n/sv.js'
                 ],
                 dest: 'src/skin/locale/sv_SE.js'
             },
