@@ -50,9 +50,8 @@ require 'Include/Header.php'; ?>
 &nbsp;
 
 <!-- fullCalendar 2.2.5 -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/fullcalendar/fullcalendar.min.js"></script>
 <script>
-    $(function () {
+    $(document).ready(function () {
         /* initialize the calendar
          -----------------------------------------------------------------*/
         $('#calendar').fullCalendar({
