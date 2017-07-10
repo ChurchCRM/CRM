@@ -8,3 +8,6 @@ cd db-strings
 find . -iname "*.php" | sort | xargs xgettext --join-existing --from-code=UTF-8 -o /vagrant/locale/messages.po
 cd ..
 rm db-strings/*
+i18next-extract-gettext --files='/vagrant/src/skin/js/*.js' --output=/vagrant/locale/js-strings.po
+msgcat /vagrant/locale/messages.po /vagrant/locale/js-strings.po -o /vagrant/locale/messages.po
+rm /vagrant/locale/js-strings.po
