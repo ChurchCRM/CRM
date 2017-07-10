@@ -16,6 +16,7 @@ $("document").ready(function(){
      });
 
     $(".multiSearch").select2({
+        language: window.CRM.shortLocale,
         minimumInputLength: 2,
         ajax: {
             url: function (params){
