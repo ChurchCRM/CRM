@@ -48,7 +48,7 @@ $(document).ready(function () {
         };
         var url = window.CRM.root + '/api/properties/persons/unassign';
 
-        bootbox.confirm('Are you sure you want to unassign this property?', function (result) {
+        bootbox.confirm(i18next.t('Are you sure you want to unassign this property?'), function (result) {
             if (result) {
                 $.ajax({
                     type: 'DELETE',
@@ -92,7 +92,7 @@ $(document).ready(function () {
                     }
                     
                     bootbox.prompt({
-                        title: 'Change role',
+                        title:i18next.t( 'Change role'),
                         inputType: 'select',
                         inputOptions: roles,
                         callback: function (result) {
