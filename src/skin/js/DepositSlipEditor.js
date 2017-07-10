@@ -49,6 +49,9 @@ function initPaymentTable()
       url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
       dataSrc:''
     },
+      "language": {
+          "url": window.CRM.plugin.dataTable.language.url
+      },
     columns: colDef,
     responsive: true,
     "createdRow" : function (row,data,index) {
