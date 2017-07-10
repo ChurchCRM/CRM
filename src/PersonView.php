@@ -588,7 +588,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                                 <span class="sr-only">Toggle Dropdown</span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
-                                <li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Change Role') ?></a></li>
+                                <li><a class="changeRole" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
                                 <?php if ($grp_hasSpecialProps) {
                               ?>
                                   <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
@@ -596,7 +596,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           } ?>
                               </ul>
                             </div>
-                            <a href="#" onclick="GroupRemove(<?= $grp_ID.', '.$iPersonID ?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
+                            <a href="#" data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" class="btn btn-danger groupRemove" role="button"><i class="fa fa-trash-o"></i></a>
                           <?php
                       } ?>
                         </code>
@@ -613,24 +613,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               }
     if ($_SESSION['bManageGroups']) {
         ?>
-                <div class="alert alert-info">
-                  <h4><strong><?php echo gettext('Assign New Group'); ?> </strong></h4>
-                  <i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext('Person will be assigned to the Group in the Default Role.') ?></span>
-
-                  <p><br></p>
-                  <select style="color:#000000" name="GroupAssignID">
-                    <?php while ($aRow = mysqli_fetch_array($rsGroups)) {
-            extract($aRow);
-
-                      //If the property doesn't already exist for this Person, write the <OPTION> tag
-                      if (strlen(strstr($sAssignedGroups, ','.$grp_ID.',')) == 0) {
-                          echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
-                      }
-        } ?>
-                  </select>
-                  <a href="#" onclick="GroupAdd()" class="btn btn-success" role="button"><?= gettext('Assign User to Group') ?></a>
-                  <br>
-                </div>
+                <a id="addGroup"><i class="fa fa-plus-circle" aria-hidden="true"></i><?php echo gettext('Assign New Group'); ?></a>
               <?php
     } ?>
             </div>
@@ -915,29 +898,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js" type="text/javascript"></script>
 <script>
-  var person_ID = <?= $iPersonID ?>;
-  function GroupRemove(Group, Person) {
-    var answer = confirm("<?= gettext('Are you sure you want to remove this person from the Group') ?>");
-    if (answer)
-      $.ajax({
-        method: "POST",
-        data:{"_METHOD":"DELETE"},
-        url: window.CRM.root + "/api/groups/" + Group + "/removeuser/" + Person
-      }).done(function (data) {
-        location.reload();
-      });
-  }
-
-  function GroupAdd() {
-    var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + GroupAssignID + "/adduser/" + person_ID
-    }).done(function (data) {
-      location.reload();
-    });
-  }
-
+  window.CRM.currentPersonID = <?= $iPersonID ?>;
+  
   $("#deletePhoto").click (function () {
     $.ajax({
     type: "POST",
@@ -975,14 +937,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
 
 
-        contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {
+        contentExists(window.CRM.root + "/api/persons/" + window.CRM.currentPersonID + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
 
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + person_ID + '/photo" />',
+                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + window.CRM.currentPersonID + '/photo" />',
                         backdrop: true
                     });
                 });
