@@ -200,6 +200,9 @@ $("document").ready(function()
   });
 
   dataT = $("#groupRoleTable").DataTable({
+    "language": {
+        "url": window.CRM.plugin.dataTable.language.url
+    },
     data: groupRoleData,
     columns: [
       {

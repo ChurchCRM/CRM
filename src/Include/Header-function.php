@@ -124,6 +124,7 @@ function Header_body_scripts()
             root: "<?= SystemURLs::getRootPath() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
+            shortLocale: "<?= $localeInfo->getShortLocale() ?>",
             maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
             plugin: {

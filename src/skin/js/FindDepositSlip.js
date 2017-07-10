@@ -33,7 +33,7 @@ $(document).ready(function () {
     "deferRender": true,
     columns: [
       {
-        title: 'Deposit ID',
+        title:i18next.t( 'Deposit ID'),
         data: 'Id',
         render: function (data, type, full, meta) {
           if (type === 'display') {
@@ -46,7 +46,7 @@ $(document).ready(function () {
         type: 'num'
       },
       {
-        title: 'Deposit Date',
+        title:i18next.t( 'Deposit Date'),
         data: 'Date',
         render: function (data, type, full, meta) {
           if (type === 'display') {
@@ -59,17 +59,17 @@ $(document).ready(function () {
         searchable: true
       },
       {
-        title: 'Deposit Total',
+        title:i18next.t( 'Deposit Total'),
         data: 'totalAmount',
         searchable: false,
       },
       {
-        title: 'Deposit Comment',
+        title:i18next.t( 'Deposit Comment'),
         data: 'Comment',
         searchable: true
       },
       {
-        title: 'Closed',
+        title:i18next.t( 'Closed'),
         data: 'Closed',
         searchable: true,
         render: function (data, type, full, meta) {
@@ -77,7 +77,7 @@ $(document).ready(function () {
         }
       },
       {
-        title: 'Deposit Type',
+        title:i18next.t( 'Deposit Type'),
         data: 'Type',
         searchable: true
       }
