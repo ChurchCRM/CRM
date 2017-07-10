@@ -1,19 +1,34 @@
+window.CRM.initi18next = function(callback) {
+
+    i18next
+       .use(i18nextXHRBackend)
+       .init(
+       {
+          lng:window.CRM.locale,
+          nsSeparator: false,
+          keySeparator: false,
+          pluralSeparator:false,
+          contextSeparator:false,
+          fallbackLng: false,
+          backend: {
+            loadPath: window.CRM.root + '/locale/'+window.CRM.locale+'/LC_MESSAGES/messages.js'
+          }
+       },function(err,t)
+       {
+         if (typeof callback === "function") {
+           console.log("callback");
+           callback();
+         }
+       });
+  
+}
+
+
 $("document").ready(function(){
   
-    i18next
-     .use(i18nextXHRBackend)
-     .init(
-     {
-        lng:window.CRM.locale,
-        nsSeparator: false,
-        keySeparator: false,
-        pluralSeparator:false,
-        contextSeparator:false,
-        fallbackLng: false,
-        backend: {
-          loadPath: window.CRM.root + '/locale/'+window.CRM.locale+'/LC_MESSAGES/messages.js'
-        }
-     });
+    
+    window.CRM.initi18next();
+    
 
     $(".multiSearch").select2({
         language: window.CRM.shortLocale,

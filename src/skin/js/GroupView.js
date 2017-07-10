@@ -235,86 +235,79 @@ $(document).ready(function () {
 });
 
 function initDataTable() {
-  dataT = $("#membersTable").DataTable({
-    "language": {
-      "url": window.CRM.plugin.dataTable.language.url
-    },
-    "dom": 'T<"clear">lfrtip',
-    "tableTools": {
-      "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath,
-      "aButtons": [
-      {
-        "sExtends": "csv",
-        "bSelectedOnly": true
-      }]
-    },
-    responsive: true,
-    ajax: {
-      url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
-      dataSrc: "Person2group2roleP2g2rs"
-    },
-    columns: [
-      {
-        width: 'auto',
-        title:i18next.t( 'Name'),
-        data: 'PersonId',
-        render: function (data, type, full, meta) {
-          return '<img data-name="'+full.Person.FirstName + ' ' + full.Person.LastName + '" data-src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
-        }
-      },
-      {
-        width: 'auto',
-        title:i18next.t( 'Group Role'),
-        data: 'RoleId',
-        render: function (data, type, full, meta) {
-          thisRole = $(window.CRM.groupRoles).filter(function (index, item) {
-            return item.OptionId == data
-          })[0];
-          return thisRole.OptionName + '<button class="changeMembership" data-personid=' + full.PersonId + '><i class="fa fa-pencil"></i></button>';
-        }
-      },
-      {
-        width: 'auto',
-        title:i18next.t( 'Address'),
-        render: function (data, type, full, meta) {
-          return full.Person.Address1 + " " + full.Person.Address2;
-        }
-      },
-      {
-        width: 'auto',
-        title:i18next.t( 'City'),
-        data: 'Person.City'
-      },
-      {
-        width: 'auto',
-        title:i18next.t( 'State'),
-        data: 'Person.State'
-      },
-      {
-        width: 'auto',
-        title:i18next.t( 'ZIP'),
-        data: 'Person.Zip'
-      },
-      {
-        width: 'auto',
-        title:i18next.t( 'Cell Phone'),
-        data: 'Person.CellPhone'
-      },
-      {
-        width: 'auto',
-        title:i18next.t( 'E-mail'),
-        data: 'Person.Email'
-      }
-    ],
-    "fnDrawCallback": function (oSettings) {
-      $("#iTotalMembers").text(oSettings.aoData.length);
-      $("#membersTable .initials-image").initial();
-    },
-    "createdRow": function (row, data, index) {
-      $(row).addClass("groupRow");
-    }
-  });
 
+  window.CRM.initi18next(function(){
+     DataTableOptions = {
+      ajax: {
+        url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
+        dataSrc: "Person2group2roleP2g2rs"
+      },
+      columns: [
+        {
+          width: 'auto',
+          title:i18next.t( 'Name'),
+          data: 'PersonId',
+          render: function (data, type, full, meta) {
+            return '<img data-name="'+full.Person.FirstName + ' ' + full.Person.LastName + '" data-src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+          }
+        },
+        {
+          width: 'auto',
+          title:i18next.t( 'Group Role'),
+          data: 'RoleId',
+          render: function (data, type, full, meta) {
+            thisRole = $(window.CRM.groupRoles).filter(function (index, item) {
+              return item.OptionId == data
+            })[0];
+            return thisRole.OptionName + '<button class="changeMembership" data-personid=' + full.PersonId + '><i class="fa fa-pencil"></i></button>';
+          }
+        },
+        {
+          width: 'auto',
+          title: i18next.t("Address"),
+          render: function (data, type, full, meta) {
+            return full.Person.Address1 + " " + full.Person.Address2;
+          }
+        },
+        {
+          width: 'auto',
+          title:i18next.t( 'City'),
+          data: 'Person.City'
+        },
+        {
+          width: 'auto',
+          title:i18next.t( 'State'),
+          data: 'Person.State'
+        },
+        {
+          width: 'auto',
+          title:i18next.t( 'ZIP'),
+          data: 'Person.Zip'
+        },
+        {
+          width: 'auto',
+          title:i18next.t( 'Cell Phone'),
+          data: 'Person.CellPhone'
+        },
+        {
+          width: 'auto',
+          title:i18next.t( 'E-mail'),
+          data: 'Person.Email'
+        }
+      ],
+      "fnDrawCallback": function (oSettings) {
+        $("#iTotalMembers").text(oSettings.aoData.length);
+        $("#membersTable .initials-image").initial();
+      },
+      "createdRow": function (row, data, index) {
+        $(row).addClass("groupRow");
+      }
+    }
+    $.extend(DataTableOptions, window.CRM.plugin.dataTable)
+    console.log(DataTableOptions);
+    console.log(i18next.t("Address"));
+    dataT = $("#membersTable").DataTable(DataTableOptions);
+  });
     $('#isGroupActive').change(function() {
         $.ajax({
             type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
