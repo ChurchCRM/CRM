@@ -11,9 +11,9 @@ $(document).ready(function () {
       .done(function(data, textStatus, xhr) {
         $('#confirm-verify').modal('hide');
         if (xhr.status == 200) {
-          showGlobalMessage("Verification email sent", "success")
+          showGlobalMessage(i18next.t("Verification email sent"), "success")
         } else {
-          showGlobalMessage("Failed to send verification email ", "danger")
+          showGlobalMessage(i18next.t("Failed to send verification email"), "danger")
         }
       });
   });
@@ -28,7 +28,7 @@ $(document).ready(function () {
         if (xhr.status == 200) {
           location.reload();
         } else {
-          showGlobalMessage("Failed to add verification", "danger")
+          showGlobalMessage(i18next.t("Failed to add verification"), "danger")
         }
       });
   });

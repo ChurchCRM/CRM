@@ -15,20 +15,20 @@
 
     window.CRM.DisplayErrorMessage = function(endpoint, error) {
 
-      message = "<p>Error making API Call to: " + endpoint +
-        "</p><p>Error text: " + error.message;
+      message = "<p>" + i18next.t("Error making API Call to") + ": " + endpoint +
+        "</p><p>" + i18next.t("Error text") + ": " + error.message;
       if (error.trace)
       {
-        message += "</p>Stack Trace: <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
+        message += "</p>" + i18next.t("Stack Trace") + ": <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
       }
       bootbox.alert({
-        title: "ERROR",
+        title:  i18next.t("ERROR"),
         message: message
       });
     };
 
     window.CRM.VerifyThenLoadAPIContent = function(url) {
-      var error = "There was a problem retrieving the requested object";
+      var error = i18next.t("There was a problem retrieving the requested object");
       $.ajax({
         type: 'HEAD',
         url: url,
@@ -153,42 +153,42 @@
                   <ul class="menu">\
                       <li>\
                           <a href="CartView.php">\
-                              <i class="fa fa-shopping-cart text-green"></i>View Cart\
+                              <i class="fa fa-shopping-cart text-green"></i>' + i18next.t("View Cart") + '\
                           </a>\
                       </li>\
                       <li>\
                           <a id="emptyCart" id="#emptyCart">\
-                              <i class="fa fa-trash text-danger"></i> Empty Cart\
+                              <i class="fa fa-trash text-danger"></i>' + i18next.t("Empty Cart") + ' \
                           </a>\
                       </li>\
                       <li>\
                           <a id="emptyCartToGroup">\
-                              <i class="fa fa-object-ungroup text-info"></i>Empty Cart to Group\
+                              <i class="fa fa-object-ungroup text-info"></i>' + i18next.t("Empty Cart to Group") + '\
                           </a>\
                       </li>\
                       <li>\
                           <a href="CartToEvent.php">\
-                              <i class="fa fa fa-users text-info"></i>Empty Cart to Family\
+                              <i class="fa fa fa-users text-info"></i>' + i18next.t("Empty Cart to Family") + '\
                           </a>\
                       </li>\
                       <li>\
                           <a href="CartToEvent.php">\
-                              <i class="fa fa fa-ticket text-info"></i>Empty Cart to Event\
+                              <i class="fa fa fa-ticket text-info"></i>' + i18next.t("Empty Cart to Event") + '\
                           </a>\
                       </li>\
                       <li>\
                           <a href="MapUsingGoogle.php?GroupID=0">\
-                              <i class="fa fa-map-marker text-info"></i>Map Cart\
+                              <i class="fa fa-map-marker text-info"></i>' + i18next.t("Map Cart") + '\
                           </a>\
                       </li>\
                   </ul>\
               </li>\
-                        <!--li class="footer"><a href="#">View all</a></li-->\
+                        <!--li class="footer"><a href="#">' + i18next.t("View all") + '</a></li-->\
                     '
         }
           else {
             cartDropdownMenu = '\
-              <li class="header">Your Cart is Empty</li>';
+              <li class="header">' + i18next.t("Your Cart is Empty" ) + '</li>';
           }
         $("#cart-dropdown-menu").html(cartDropdownMenu);
         $("#CartBlock")
@@ -295,7 +295,7 @@
            title: 'Select Group and Role',
            message: '<div class="modal-body">\
                 <input type="hidden" id="targetGroupAction">\
-                <span style="color: red">Please select target group for members:</span>\
+                <span style="color: red">' + i18next.t("Please select target group for members") + ':</span>\
                 <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>\
                 <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>\
               </div>',
