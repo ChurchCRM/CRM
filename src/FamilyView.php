@@ -494,7 +494,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                     </h3>
 
                                     <div class="timeline-body">
-                                        <?= $item['text'] ?>
+                                        <pre><?= $item['text'] ?></pre>
                                     </div>
 
                                     <?php if (($_SESSION['bNotes']) && (isset($item["editLink"]) || isset($item["deleteLink"]))) {

@@ -420,7 +420,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   </h3>
 
                   <div class="timeline-body">
-                    <?= $item['text'] ?>
+                      <pre><?= $item['text'] ?></pre>
                   </div>
 
                   <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
