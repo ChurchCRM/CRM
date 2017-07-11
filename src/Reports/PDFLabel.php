@@ -867,16 +867,16 @@ if ($sFileType == 'PDF') {
         $sCSVOutput .= '"ZipBundle"'.$delimitor;
     }
     
-	$lang = substr($localeInfo->getLocale(), 0, 2);
+    $lang = substr($localeInfo->getLocale(), 0, 2);
 
-	if ($lang == "fr") {
-		$delimitor = ";";
-	} else {
-		$delimitor = ",";
-	}
+    if ($lang == "fr") {
+        $delimitor = ";";
+    } else {
+        $delimitor = ",";
+    }
 
-	//add BOM to fix UTF-8 in Excel
-	//fputs($out, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+    //add BOM to fix UTF-8 in Excel
+    //fputs($out, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
 
 
     $sCSVOutput .= '"'.gettext("Greeting").'"'.$delimitor.'"'.gettext("Name").'"'.$delimitor.'"'.gettext("Address 1").'"'.$delimitor.'"'.gettext("Address 2").'"'.$delimitor.'"'.gettext("City").'"'.$delimitor.'"'.gettext("State").'"'.$delimitor.'"'.gettext("Zip").'"'."\n";
