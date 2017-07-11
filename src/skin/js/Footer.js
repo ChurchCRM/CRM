@@ -4,12 +4,19 @@ $("document").ready(function(){
      .use(i18nextXHRBackend)
      .init(
      {
+        lng:window.CRM.locale,
+        nsSeparator: false,
+        keySeparator: false,
+        pluralSeparator:false,
+        contextSeparator:false,
+        fallbackLng: false,
         backend: {
           loadPath: window.CRM.root + '/locale/'+window.CRM.locale+'/LC_MESSAGES/messages.js'
         }
      });
 
     $(".multiSearch").select2({
+        language: window.CRM.shortLocale,
         minimumInputLength: 2,
         ajax: {
             url: function (params){

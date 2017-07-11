@@ -3007,7 +3007,7 @@ msgstr "Mot de Passe"
 
 #: Login.php:147 Login.php:198
 msgid "Login"
-msgstr "Identifiant"
+msgstr "Connexion"
 
 #: ManageEnvelopes.php:25 menuconfig_mcf.php:22
 #, fuzzy
@@ -8953,4 +8953,44 @@ msgstr "Valider Participants"
 #: AutoPaymentEditor.php:133
 msgid " family"
 msgstr " Famille"
+
+#: AutoPaymentEditor.php:832
+msgid "Bank Draft "
+msgstr "Bank Draft "
+
+#: AutoPaymentEditor.php:836
+msgid "Credit Card "
+msgstr "Carte de crédit "
+
+#: AutoPaymentEditor.php:840
+msgid "Disable "
+msgstr "désactiver "
+
+#: AutoPaymentEditor.php:1018
+msgid "Store Private Data at Vanco"
+msgstr "Store Private Data at Vanco"
+
+#: CartView.php:106
+msgid "Cart Functions"
+msgstr "Fonctions du Panier"
+
+#: CartView.php:195
+msgid "Text Cart"
+msgstr "Texto du Panier"
+
+#: ChurchCRM/dto/SystemConfig.php:208
+msgid "Your Church's Website"
+msgstr "Votre site église"
+
+#: ChurchCRM/Service/TimelineService.php:118
+msgid "Self Verification"
+msgstr "Autovérification"
+
+#: FamilyView.php:349
+msgid "Deactivate"
+msgstr "Désactiver"
+
+#: FamilyView.php:349
+msgid "Activate"
+msgstr "Activer"
 
