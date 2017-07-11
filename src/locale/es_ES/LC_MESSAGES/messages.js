@@ -2071,5 +2071,16 @@
     "Enable New Kiosk Registration": "Activar Nuevo Registro de Quiosco",
     "Active Kiosks": "Activar Quioscos",
     "I forgot my password": "Olvidé mi contraseña",
-    "Attendees Checked In": "Asistentes Registrados En"
+    "Attendees Checked In": "Asistentes Registrados En",
+    " family": " familia",
+    "Bank Draft ": "Giro Bancario ",
+    "Credit Card ": "Tarjeta de Crédito ",
+    "Disable ": "Desabilitar ",
+    "Store Private Data at Vanco": "Almacenar Datos Privados en Vanco",
+    "Cart Functions": "Funciones del Separador",
+    "Text Cart": "Separador de Texto",
+    "Your Church's Website": "Sitio Web de su Iglesia",
+    "Self Verification": "Autoverificación",
+    "Deactivate": "Desactivar",
+    "Activate": "Activar"
 }

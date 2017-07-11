@@ -8845,3 +8845,47 @@ msgstr "Eu esqueci a minha senha"
 msgid "Attendees Checked In"
 msgstr "Participantes Checados"
 
+#: AutoPaymentEditor.php:133
+msgid " family"
+msgstr " família"
+
+#: AutoPaymentEditor.php:832
+msgid "Bank Draft "
+msgstr "Cheque Administrativo "
+
+#: AutoPaymentEditor.php:836
+msgid "Credit Card "
+msgstr "Cartão de Crédito "
+
+#: AutoPaymentEditor.php:840
+msgid "Disable "
+msgstr "Desabilitado "
+
+#: AutoPaymentEditor.php:1018
+msgid "Store Private Data at Vanco"
+msgstr "Armazenar dados Privativos no Vanco"
+
+#: CartView.php:106
+msgid "Cart Functions"
+msgstr "Funções do Carrinho"
+
+#: CartView.php:195
+msgid "Text Cart"
+msgstr "Texto do Carrinho"
+
+#: ChurchCRM/dto/SystemConfig.php:208
+msgid "Your Church's Website"
+msgstr "O Website da Sua Igreja"
+
+#: ChurchCRM/Service/TimelineService.php:118
+msgid "Self Verification"
+msgstr "Autoverificação"
+
+#: FamilyView.php:349
+msgid "Deactivate"
+msgstr "Desativar"
+
+#: FamilyView.php:349
+msgid "Activate"
+msgstr "Ativar"
+
