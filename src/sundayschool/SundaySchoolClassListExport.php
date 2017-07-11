@@ -44,7 +44,7 @@ $headRow = [
     gettext('Mom Email')
 ];
 
-fputcsv($out, array_map('utf8_decode',array_values($headRow)));
+fputcsv($out, array_map('utf8_decode', array_values($headRow)));
 
 while ($aRow = mysqli_fetch_array($rsKids)) {
     extract($aRow);
@@ -67,10 +67,7 @@ while ($aRow = mysqli_fetch_array($rsKids)) {
         $momCellPhone,
         $momEmail
     ];
-    fputcsv($out, array_map('utf8_decode',array_values($dataRow)));
+    fputcsv($out, array_map('utf8_decode', array_values($dataRow)));
 }
 
 fclose($out);
-
-
-
