@@ -997,10 +997,9 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
         '<div class="input-group-addon">'.
         '<i class="fa fa-calendar"></i>'.
         '</div>'.
-        '<input class="form-control date-picker" type="text" id="'.$fieldname.'" Name="'.$fieldname.'" value="'.$data.'" placeholder="YYYY-MM-DD"> '.
+        '<input class="form-control date-picker" type="text" id="'.$fieldname.'" Name="'.$fieldname.'" value="'.date("d-m-Y", strtotime($data)).'" placeholder="'.SystemConfig::getValue("sDateFormatLong").'"> '.
         '</div>';
       break;
-
     // Handler for 50 character max. text fields
     case 3:
       echo '<input class="form-control" type="text" Name="'.$fieldname.'" maxlength="50" size="50" value="'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'">';
@@ -1330,7 +1329,10 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
 
     switch ($type) {
     // Validate a date field
-    case 2:
+    case 2:    	
+    	// this part will work with each date format
+    	$data = InputUtils::FilterDate($data);
+    	
       if (strlen($data) > 0) {
           $dateString = parseAndValidateDate($data);
           if ($dateString === false) {
