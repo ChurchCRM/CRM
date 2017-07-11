@@ -19,7 +19,7 @@ class GeoUtils
 
         switch (SystemConfig::getValue("sGeoCoderProvider")) {
             case "GoogleMaps":
-                $geoCoder = new GoogleMaps($curl, null, null, true, SystemConfig::getValue("sGoogleMapKey"));
+                $geoCoder = new GoogleMaps($curl, null, null, flase, SystemConfig::getValue("sGoogleMapKey"));
                 break;
             case "BingMaps":
                 $geoCoder = new BingMaps($curl, SystemConfig::getValue("sBingMapKey"));
