@@ -12,7 +12,10 @@ class PersonGenderDataCheck implements iTask
 
     public function __construct()
     {
-        $personQuery = PersonQuery::create()->filterByGender(0)->find();
+        $personQuery = PersonQuery::create()
+            ->filterByGender(0)
+            ->filterById(1, Criteria::NOT_EQUAL)
+            ->find();
         $this->count = $personQuery->count();
     }
 
