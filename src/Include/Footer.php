@@ -285,7 +285,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
 <script>
-	$(".multiSearch").select2.defaults.set("language", "<?= substr($localeInfo->getLocale(),0,2) ?>");
+	$(".multiSearch").select2.defaults.set("language", "<?= substr($localeInfo->getLocale(), 0, 2) ?>");
 </script>
 
 
