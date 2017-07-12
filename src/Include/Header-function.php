@@ -141,7 +141,6 @@ function Header_body_scripts()
             }
         };
     </script>
-    
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
     <?php
 }
