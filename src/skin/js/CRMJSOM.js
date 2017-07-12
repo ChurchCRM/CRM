@@ -2,6 +2,50 @@
  * ChurcmCRM JavaScript Object Model Initailizaion Script
  */
 
+$(document).ready(function() {
+$.ajax({
+  url:window.CRM.root + '/locale/'+window.CRM.locale+'/LC_MESSAGES/messages.js',
+  dataType:"json"
+}).done(function(data){
+  var i18nextOpts = {
+     lng:window.CRM.shortLocale,
+     nsSeparator: false,
+     keySeparator: false,
+     pluralSeparator:false,
+     contextSeparator:false,
+     fallbackLng: false,
+     resources: {}
+  };
+  i18nextOpts.resources[window.CRM.shortLocale] = {translation: data};
+  console.log(i18nextOpts);
+  i18next.init(i18nextOpts);
+  
+    window.CRM.onReady.forEach(function(callbackRef){
+    if (typeof callbackRef === "function") {
+        callbackRef();
+      }
+    });
+  
+});
+});
+
+
+
+
+    window.CRM.ready = function (callback)
+    {
+      if (typeof callback === "function") {
+        if (window.CRM.onReady === undefined)
+        {
+          window.CRM.onReady = [];
+        }
+        console.log("inserting function to ready queue");
+        window.CRM.onReady.push(callback);
+        
+        console.log(window.CRM.onReady );
+      }
+    }
+
     window.CRM.APIRequest = function(options) {
       if (!options.method)
       {
