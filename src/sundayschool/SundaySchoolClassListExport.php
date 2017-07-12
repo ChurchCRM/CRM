@@ -20,7 +20,7 @@ $delimitor = SystemConfig::getValue("sCSVDelemitor");
 $out = fopen('php://output', 'w');
 
 //add BOM to fix UTF-8 in Excel
-fputs($out, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+fputs($out, $bom =(chr(0xEF) . chr(0xBB) . chr(0xBF)));
 
 // Get all the groups
 $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
@@ -71,12 +71,10 @@ while ($aRow = mysqli_fetch_array($rsKids)) {
     $firstName,
     $LastName,
      $birthDate, $mobilePhone, $homePhone,
-		$Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip,
+        $Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip,
     $dadFirstName.' '.$dadLastName, $dadCellPhone, $dadEmail,
     $momFirstName.' '.$momLastName, $momCellPhone, $momEmail, ], $delimitor);
 }
 
 
 fclose($out);
-                                                                                                                            
-?>
