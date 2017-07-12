@@ -864,34 +864,46 @@ if ($sFileType == 'PDF') {
 
     $sCSVOutput = '';
     if ($iBulkCode) {
-        $sCSVOutput .= '"ZipBundle",';
+        $sCSVOutput .= '"ZipBundle"'.$delimitor;
+    }
+    
+    $lang = substr($localeInfo->getLocale(), 0, 2);
+
+    if ($lang == "fr") {
+        $delimitor = ";";
+    } else {
+        $delimitor = ",";
     }
 
-    $sCSVOutput .= '"Greeting","Name","Address1","Address2","City","State","Zip"'."\n";
+    //add BOM to fix UTF-8 in Excel
+    //fputs($out, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+
+
+    $sCSVOutput .= '"'.gettext("Greeting").'"'.$delimitor.'"'.gettext("Name").'"'.$delimitor.'"'.gettext("Address 1").'"'.$delimitor.'"'.gettext("Address 2").'"'.$delimitor.'"'.gettext("City").'"'.$delimitor.'"'.gettext("State").'"'.$delimitor.'"'.gettext("Zip").'"'."\n";
 
     while (list($i, $sLT) = each($aLabelList)) {
         if ($iBulkCode) {
-            $sCSVOutput .= '"'.$sLT['Note'].'",';
+            $sCSVOutput .= '"'.$sLT['Note'].'"'.$delimitor;
         }
 
         $iNewline = (strpos($sLT['Name'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"","'.$sLT['Name'].'",';
+            $sCSVOutput .= '""'.$delimitor.'"'.$sLT['Name'].'"'.$delimitor;
         } else {
-            $sCSVOutput .= '"'.mb_substr($sLT['Name'], 0, $iNewline).'",'.
-                            '"'.mb_substr($sLT['Name'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.mb_substr($sLT['Name'], 0, $iNewline).'"'.$delimitor.
+                            '"'.mb_substr($sLT['Name'], $iNewline + 1).'"'.$delimitor;
         }
 
         $iNewline = (strpos($sLT['Address'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"'.$sLT['Address'].'","",';
+            $sCSVOutput .= '"'.$sLT['Address'].'",""'.$delimitor;
         } else {
-            $sCSVOutput .= '"'.mb_substr($sLT['Address'], 0, $iNewline).'",'.
-                            '"'.mb_substr($sLT['Address'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.mb_substr($sLT['Address'], 0, $iNewline).'"'.$delimitor.
+                            '"'.mb_substr($sLT['Address'], $iNewline + 1).'"'.$delimitor;
         }
 
-        $sCSVOutput .= '"'.$sLT['City'].'",'.
-                        '"'.$sLT['State'].'",'.
+        $sCSVOutput .= '"'.$sLT['City'].'"'.$delimitor.
+                        '"'.$sLT['State'].'"'.$delimitor.
                         '"'.$sLT['Zip'].'"'."\n";
     }
 
@@ -901,7 +913,12 @@ if ($sFileType == 'PDF') {
     header('Expires: 0');
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
+    
+    //add BOM to fix UTF-8 in Excel
+    echo "\xEF\xBB\xBF";
+    
     echo $sCSVOutput;
 }
+
 
 exit();
