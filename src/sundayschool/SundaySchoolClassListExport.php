@@ -28,11 +28,23 @@ grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_
 order by grp.grp_Name, fam.fam_Name';
 $rsKids = RunQuery($sSQL);
 
-fputcsv($out, ['Class',
-  'First Name', 'Last Name', 'Birth Date', 'Mobile',
-  'Home Phone', 'Home Address',
-  'Dad Name', 'Dad Mobile', 'Dad Email',
-  'Mom Name', 'Mom Mobile', 'Mom Email', ]);
+$headRow = [
+    gettext('Class'),
+    gettext('First Name'),
+    gettext('Last Name'),
+    gettext('Birth Date'),
+    gettext('Mobile'),
+    gettext('Home Phone'),
+    gettext('Home Address'),
+    gettext('Dad Name'),
+    gettext('Dad Mobile'),
+    gettext('Dad Email'),
+    gettext('Mom Name'),
+    gettext('Mom Mobile'),
+    gettext('Mom Email')
+];
+
+fputcsv($out, array_map('utf8_decode', array_values($headRow)));
 
 while ($aRow = mysqli_fetch_array($rsKids)) {
     extract($aRow);
@@ -40,13 +52,22 @@ while ($aRow = mysqli_fetch_array($rsKids)) {
     if ($birthYear != '') {
         $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
     }
-    fputcsv($out, [$sundayschoolClass, $firstName, $LastName, $birthDate, $mobilePhone, $homePhone, $Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip,
-    $dadFirstName.' '.$dadLastName, $dadCellPhone, $dadEmail,
-    $momFirstName.' '.$momLastName, $momCellPhone, $momEmail, ]);
+    $dataRow = [
+        $sundayschoolClass,
+        $firstName,
+        $LastName,
+        $birthDate,
+        $mobilePhone,
+        $homePhone,
+        $Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip,
+        $dadFirstName.' '.$dadLastName,
+        $dadCellPhone,
+        $dadEmail,
+        $momFirstName.' '.$momLastName,
+        $momCellPhone,
+        $momEmail
+    ];
+    fputcsv($out, array_map('utf8_decode', array_values($dataRow)));
 }
 
 fclose($out);
-?>
-
-
-
