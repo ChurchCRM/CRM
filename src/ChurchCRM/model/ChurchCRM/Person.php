@@ -140,8 +140,8 @@ class Person extends BasePerson implements iPhoto
      */
     public function getAddress()
     {
-        $address = [];
         if (!empty($this->getAddress1())) {
+            $address = [];
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
                 $tmp = $tmp . ' ' . $this->getAddress2();
@@ -167,7 +167,7 @@ class Person extends BasePerson implements iPhoto
             }
         }
         //if it reaches here, no address found. return empty $address
-        return $address;
+        return "";
     }
 
     /**
