@@ -1329,10 +1329,10 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
 
     switch ($type) {
     // Validate a date field
-    case 2:    	
-    	// this part will work with each date format
-    	$data = InputUtils::FilterDate($data);
-    	
+    case 2:
+        // this part will work with each date format
+        $data = InputUtils::FilterDate($data);
+        
       if (strlen($data) > 0) {
           $dateString = parseAndValidateDate($data);
           if ($dateString === false) {
