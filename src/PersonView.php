@@ -267,24 +267,28 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   echo gettext('(No assigned family)');
               } ?>
 						</span></li>
+            <?php if (!empty($formattedMailingAddress)) {
+                  ?>
           <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Address'); ?>: <span>
 						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
 						</span></li>
-          <?php if ($dBirthDate) {
-                  ?>
+          <?php
+              }
+    if ($dBirthDate) {
+        ?>
             <li>
               <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>:
               <span><?= $dBirthDate ?></span>
               <?php if (!$person->hideAge()) {
-                      ?>
+            ?>
               (<span data-birth-date="<?= $person->getBirthDate()->format('Y-m-d') ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
               <?php
-                  } ?>
+        } ?>
             </li>
           <?php
-              }
+    }
     if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext('Friend Date') ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
           <?php
