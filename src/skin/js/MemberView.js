@@ -13,7 +13,7 @@ function contentExists(contentUrl, callback) {
     });
 }
 
-$('.delete-person').click(function (event) {
+$('#delete-person').click(function (event) {
     event.preventDefault();
     var thisLink = $(this);
     bootbox.confirm({

@@ -418,7 +418,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                     </span>
                                         </a>
-                                        <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
+                                        <a id="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                            data-person_id="<?= $person->getId() ?>" data-view="family">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
