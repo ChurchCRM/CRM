@@ -994,7 +994,6 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
     // Handler for date fields
     case 2:
     	// code rajouté par Philippe Logel
-    	echo date(SystemConfig::getValue("sDatePickerFormat"), strtotime($data));
       echo '<div class="input-group">'.
         '<div class="input-group-addon">'.
         '<i class="fa fa-calendar"></i>'.
