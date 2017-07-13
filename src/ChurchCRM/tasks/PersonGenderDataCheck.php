@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Tasks;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonGenderDataCheck implements iTask
 {
