@@ -418,7 +418,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                     </span>
                                         </a>
-                                        <a id="delete-person" data-person_name="<?= $person->getFullName() ?>"
+                                        <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                            data-person_id="<?= $person->getId() ?>" data-view="family">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
@@ -980,78 +980,90 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
     <script>
-        window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
-        var dataT = 0;
-        $(document).ready(function () {
-            $("#activateDeactivate").click(function () {
-                console.log("click activateDeactivate");
-                popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
-                if (window.CRM.currentActive == true) {
-                    popupMessage = "<?= gettext('Please confirm deactivation of family') . ': ' . $fam_Name ?>";
-                }
-                else {
-                    popupMessage = "<?= gettext('Please confirm activation of family') . ': ' . $fam_Name  ?>";
-                }
+    		var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+    		
+    		if (!isSafari)
+    		{
+    			$.getScript("<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js");
+    		}
+    		
+    			
+					window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
+					var dataT = 0;
+					$(document).ready(function () {
+							$("#activateDeactivate").click(function () {
+									console.log("click activateDeactivate");
+									popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
+									if (window.CRM.currentActive == true) {
+											popupMessage = "<?= gettext('Please confirm deactivation of family') . ': ' . $fam_Name ?>";
+									}
+									else {
+											popupMessage = "<?= gettext('Please confirm activation of family') . ': ' . $fam_Name  ?>";
+									}
 
-                bootbox.confirm({
-                    title: popupTitle,
-                    message: '<p style="color: red">' + popupMessage + '</p>',
-                    callback: function (result) {
-                        if (result) {
-                            $.ajax({
-                                method: "POST",
-                                url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
-                                dataType: "json",
-                                encode: true
-                            }).done(function (data) {
-                                if (data.success == true)
-                                    window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
+									bootbox.confirm({
+											title: popupTitle,
+											message: '<p style="color: red">' + popupMessage + '</p>',
+											callback: function (result) {
+													if (result) {
+															$.ajax({
+																	method: "POST",
+																	url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
+																	dataType: "json",
+																	encode: true
+															}).done(function (data) {
+																	if (data.success == true)
+																			window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
 
-                            });
-                        }
-                    }
-                });
-            });
+															});
+													}
+											}
+									});
+							});
+							
+							if (!isSafari)
+    				{
 
-            $("#deletePhoto").click(function () {
-                $.ajax({
-                    type: "POST",
-                    url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
-                    encode: true,
-                    dataType: 'json',
-                    data: {
-                        "_METHOD": "DELETE"
-                    }
-                }).done(function (data) {
-                    location.reload();
-                });
-            });
+							$("#deletePhoto").click(function () {
+									$.ajax({
+											type: "POST",
+											url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+											encode: true,
+											dataType: 'json',
+											data: {
+													"_METHOD": "DELETE"
+											}
+									}).done(function (data) {
+											location.reload();
+									});
+							});
 
-            window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-                url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
-                maxPhotoSize: window.CRM.maxUploadSize,
-                photoHeight: 400,
-                photoWidth: 400,
-                done: function (e) {
-                    location.reload();
-                }
-            });
+							window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
+									url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+									maxPhotoSize: window.CRM.maxUploadSize,
+									photoHeight: 400,
+									photoWidth: 400,
+									done: function (e) {
+											location.reload();
+									}
+							});
 
-            contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function (success) {
-                if (success) {
-                    $("#view-larger-image-btn").removeClass('hide');
+							contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function (success) {
+									if (success) {
+											$("#view-larger-image-btn").removeClass('hide');
 
-                    $("#view-larger-image-btn").click(function () {
-                        bootbox.alert({
-                            title: "<?= gettext('Family Photo') ?>",
-                            message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
-                            backdrop: true
-                        });
-                    });
-                }
-            });
+											$("#view-larger-image-btn").click(function () {
+													bootbox.alert({
+															title: "<?= gettext('Family Photo') ?>",
+															message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
+															backdrop: true
+													});
+											});
+									}
+							});
+						}
 
-        });
+					});
     </script>
 
     <?php require "Include/Footer.php" ?>
