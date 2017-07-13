@@ -993,14 +993,15 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
       break;
     // Handler for date fields
     case 2:
+    	// code rajouté par Philippe Logel
+    	echo date(SystemConfig::getValue("sDatePickerFormat"), strtotime($data));
       echo '<div class="input-group">'.
         '<div class="input-group-addon">'.
         '<i class="fa fa-calendar"></i>'.
         '</div>'.
-        '<input class="form-control date-picker" type="text" id="'.$fieldname.'" Name="'.$fieldname.'" value="'.$data.'" placeholder="YYYY-MM-DD"> '.
+        '<input class="form-control date-picker" type="text" id="'.$fieldname.'" Name="'.$fieldname.'" value="'.((strtotime($data) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($data)):strtotime($data)).'" placeholder="'.SystemConfig::getValue("sDatePickerPlaceHolder").'"> '.
         '</div>';
       break;
-
     // Handler for 50 character max. text fields
     case 3:
       echo '<input class="form-control" type="text" Name="'.$fieldname.'" maxlength="50" size="50" value="'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'">';
@@ -1330,7 +1331,11 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
 
     switch ($type) {
     // Validate a date field
-    case 2:
+    case 2:    	
+    	// this part will work with each date format
+    	// Philippe logel
+    	$data = InputUtils::FilterDate($data);
+    	
       if (strlen($data) > 0) {
           $dateString = parseAndValidateDate($data);
           if ($dateString === false) {
