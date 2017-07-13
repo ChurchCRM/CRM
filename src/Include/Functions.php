@@ -993,8 +993,8 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
       break;
     // Handler for date fields
     case 2:
-    	// code rajouté par Philippe Logel
-    	echo date(SystemConfig::getValue("sDatePickerFormat"), strtotime($data));
+        // code rajouté par Philippe Logel
+        echo date(SystemConfig::getValue("sDatePickerFormat"), strtotime($data));
       echo '<div class="input-group">'.
         '<div class="input-group-addon">'.
         '<i class="fa fa-calendar"></i>'.
@@ -1331,11 +1331,11 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
 
     switch ($type) {
     // Validate a date field
-    case 2:    	
-    	// this part will work with each date format
-    	// Philippe logel
-    	$data = InputUtils::FilterDate($data);
-    	
+    case 2:
+        // this part will work with each date format
+        // Philippe logel
+        $data = InputUtils::FilterDate($data);
+        
       if (strlen($data) > 0) {
           $dateString = parseAndValidateDate($data);
           if ($dateString === false) {
