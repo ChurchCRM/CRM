@@ -30,7 +30,7 @@ env:
 before_install:
  - sudo apt-get update
  - sudo apt-get install ruby-full
- - sudo gem install sass
+ - sudo gem install sass -v 3.4.25
  - chmod +x ./travis-ci/*.sh
  - chmod +x ./scripts/*.sh
  - cp BuildConfig.json.example BuildConfig.json

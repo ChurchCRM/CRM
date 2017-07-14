@@ -114,6 +114,8 @@ class TimelineService
             $displayEditedBy = gettext('Unknown');
             if ($dbNote->getDisplayEditedBy() == -1) {
                 $displayEditedBy = gettext('Self Registration');
+            } else if ($dbNote->getDisplayEditedBy() == -2) {
+                $displayEditedBy = gettext('Self Verification');
             } else {
                 $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
                 if ($editor != null) {
