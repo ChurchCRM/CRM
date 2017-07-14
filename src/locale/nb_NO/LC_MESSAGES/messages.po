@@ -904,6 +904,18 @@ msgstr "CheckIn"
 msgid "CheckOut"
 msgstr "CheckOut"
 
+#: Checkin.php:248
+msgid "Continue checkin"
+msgstr "Fortsett checkin"
+
+#: Checkin.php:296
+msgid "Verify CheckOut"
+msgstr "Bekreft CheckOut"
+
+#: Checkin.php:348
+msgid "Finalize CheckOut"
+msgstr "Sluttføre CheckOut"
+
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Sjekket In Time"
@@ -2842,6 +2854,10 @@ msgstr "Andre"
 msgid "Payment by"
 msgstr "Betalingsdato"
 
+#: PledgeEditor.php:681
+msgid "Split"
+msgstr "Split"
+
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Velg betalingsmetode"
@@ -3422,6 +3438,14 @@ msgstr "Totalt pålogginger"
 msgid "Failed Logins"
 msgstr "Mislykkede pålogginger"
 
+#: UserList.php:94 UserList.php:101
+msgid "Reset"
+msgstr "Tilbakestille"
+
+#: UserList.php:99
+msgid "Change"
+msgstr "Endre"
+
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Du må skrive inn et passord i begge boksene"
@@ -3494,6 +3518,10 @@ msgstr "Nytt passord"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Bekreft nytt passord"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "Bruker Reset"
 
 #: UserList.php:166
 #, fuzzy

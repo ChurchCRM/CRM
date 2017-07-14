@@ -915,6 +915,18 @@ msgstr "簽入"
 msgid "CheckOut"
 msgstr "離店"
 
+#: Checkin.php:248
+msgid "Continue checkin"
+msgstr "繼續簽"
+
+#: Checkin.php:296
+msgid "Verify CheckOut"
+msgstr "驗證離店"
+
+#: Checkin.php:348
+msgid "Finalize CheckOut"
+msgstr "最終確定離店"
+
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "及時檢查"
@@ -2834,6 +2846,10 @@ msgstr "其他"
 msgid "Payment by"
 msgstr "付款"
 
+#: PledgeEditor.php:681
+msgid "Split"
+msgstr "分裂"
+
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "選擇在線支付方式"
@@ -3419,6 +3435,14 @@ msgstr "總計登錄"
 msgid "Failed Logins"
 msgstr "登錄失敗"
 
+#: UserList.php:94 UserList.php:101
+msgid "Reset"
+msgstr "復位"
+
+#: UserList.php:99
+msgid "Change"
+msgstr "改變"
+
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "您必須輸入一個密碼，這兩個框"
@@ -3491,6 +3515,10 @@ msgstr "新密碼"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "確認新密碼"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "用戶復位"
 
 #: UserList.php:166
 #, fuzzy

@@ -873,6 +873,18 @@ msgstr "CheckIn"
 msgid "CheckOut"
 msgstr "CheckOut"
 
+#: Checkin.php:248
+msgid "Continue checkin"
+msgstr "door met controle"
+
+#: Checkin.php:296
+msgid "Verify CheckOut"
+msgstr "controlereer aankoop"
+
+#: Checkin.php:348
+msgid "Finalize CheckOut"
+msgstr "Rond betaling af"
+
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "CheckIn tijd"
@@ -2737,6 +2749,10 @@ msgstr "Andere"
 msgid "Payment by"
 msgstr "Betalings Datum"
 
+#: PledgeEditor.php:681
+msgid "Split"
+msgstr "Verdelen"
+
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Kies online betalingswijze"
@@ -3293,6 +3309,14 @@ msgstr "Totale Logins"
 msgid "Failed Logins"
 msgstr "Mislukte Logins"
 
+#: UserList.php:94 UserList.php:101
+msgid "Reset"
+msgstr "Reset"
+
+#: UserList.php:99
+msgid "Change"
+msgstr "Wijzig"
+
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "U moet een wachtwoord intypen in beide vensters"
@@ -3362,6 +3386,10 @@ msgstr "Nieuw Wachtwoord"
 #: UserPasswordChange.php:224
 msgid "Confirm New Password"
 msgstr "Bevestig Nieuw Wachtwoord"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "Reset van Gebruiker"
 
 #: UserList.php:166
 msgid "Please confirm the password reset of this user"
@@ -3895,6 +3923,10 @@ msgstr "Bekijk alle Personen"
 #: menuconfig_mcf.php:8
 msgid "Add New Family"
 msgstr "Voeg Nieuwe Familie toe"
+
+#: menuconfig_mcf.php:9
+msgid "View All Families"
+msgstr "Bekijk Alle Families"
 
 #: menuconfig_mcf.php:16
 msgid "Events"

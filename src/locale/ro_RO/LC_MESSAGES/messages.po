@@ -906,6 +906,18 @@ msgstr "CheckIn"
 msgid "CheckOut"
 msgstr "CheckOut"
 
+#: Checkin.php:248
+msgid "Continue checkin"
+msgstr "Continua checkin"
+
+#: Checkin.php:296
+msgid "Verify CheckOut"
+msgstr "Verificați CheckOut"
+
+#: Checkin.php:348
+msgid "Finalize CheckOut"
+msgstr "Finalizarea CheckOut"
+
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Verificate în timp"
@@ -2820,6 +2832,10 @@ msgstr "Alte"
 msgid "Payment by"
 msgstr "Plata prin"
 
+#: PledgeEditor.php:681
+msgid "Split"
+msgstr "Împărți"
+
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Alegeti metoda de plata on-line"
@@ -3390,6 +3406,14 @@ msgstr "Totalul Conectări"
 msgid "Failed Logins"
 msgstr "Conectări nereușite"
 
+#: UserList.php:94 UserList.php:101
+msgid "Reset"
+msgstr "Restabili"
+
+#: UserList.php:99
+msgid "Change"
+msgstr "Schimba"
+
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Trebuie să introduceți o parolă în ambele casete"
@@ -3455,6 +3479,10 @@ msgstr "Vechi Parola"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Confirmați noua parolă"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "Reset utilizator"
 
 #: UserList.php:166
 #, fuzzy

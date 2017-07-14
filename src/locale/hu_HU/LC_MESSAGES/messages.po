@@ -893,6 +893,18 @@ msgstr "Bejelentkezés-"
 msgid "CheckOut"
 msgstr "CheckOut"
 
+#: Checkin.php:248
+msgid "Continue checkin"
+msgstr "Folytatás checkin"
+
+#: Checkin.php:296
+msgid "Verify CheckOut"
+msgstr "Ellenőrizze CheckOut"
+
+#: Checkin.php:348
+msgid "Finalize CheckOut"
+msgstr "Lezárás CheckOut"
+
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Kockás In Time"
@@ -2802,6 +2814,10 @@ msgstr "Más"
 msgid "Payment by"
 msgstr "Fizetés"
 
+#: PledgeEditor.php:681
+msgid "Split"
+msgstr "Hasít"
+
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Válassza online fizetés módja"
@@ -3377,6 +3393,14 @@ msgstr "Összesen Bejelentkezések"
 msgid "Failed Logins"
 msgstr "Sikertelen bejelentkezések"
 
+#: UserList.php:94 UserList.php:101
+msgid "Reset"
+msgstr "Visszaállítás"
+
+#: UserList.php:99
+msgid "Change"
+msgstr "Változás"
+
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Meg kell adnod egy jelszót mindkét dobozok"
@@ -3449,6 +3473,10 @@ msgstr "Új jelszó"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Új jelszó megerősítése"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "Felhasználó visszaállítása"
 
 #: UserList.php:166
 #, fuzzy

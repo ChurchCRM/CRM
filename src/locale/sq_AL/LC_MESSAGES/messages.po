@@ -897,6 +897,18 @@ msgstr "Checkin"
 msgid "CheckOut"
 msgstr "Checkout"
 
+#: Checkin.php:248
+msgid "Continue checkin"
+msgstr "Vazhdo Checkin"
+
+#: Checkin.php:296
+msgid "Verify CheckOut"
+msgstr "Verifiko Checkout"
+
+#: Checkin.php:348
+msgid "Finalize CheckOut"
+msgstr "Finalizimi Checkout"
+
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Kontrolluar ne daten In Time"
@@ -2737,6 +2749,10 @@ msgstr "Tjera"
 msgid "Payment by"
 msgstr "Pagesa nga"
 
+#: PledgeEditor.php:681
+msgid "Split"
+msgstr "Ndarje"
+
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Zgjidh metodën e pagesave online"
@@ -3285,6 +3301,14 @@ msgstr "Gjithsej Logins"
 msgid "Failed Logins"
 msgstr "Logins dështuara"
 
+#: UserList.php:94 UserList.php:101
+msgid "Reset"
+msgstr "Riseto"
+
+#: UserList.php:99
+msgid "Change"
+msgstr "Ndrysho"
+
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Ju duhet të hyjë në një fjalëkalim në të dy kutitë"
@@ -3354,6 +3378,10 @@ msgstr "Fjalëkalimi i ri"
 #: UserPasswordChange.php:224
 msgid "Confirm New Password"
 msgstr "Konfirmo Re Password"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "User Reset"
 
 #: UserList.php:166
 msgid "Please confirm the password reset of this user"
@@ -3879,6 +3907,10 @@ msgstr "Shiko të gjitha Persona"
 #: menuconfig_mcf.php:8
 msgid "Add New Family"
 msgstr "Shto Family re"
+
+#: menuconfig_mcf.php:9
+msgid "View All Families"
+msgstr "Shiko të gjitha Familjet"
 
 #: menuconfig_mcf.php:16
 msgid "Events"

@@ -915,6 +915,18 @@ msgstr "Wpisz"
 msgid "CheckOut"
 msgstr "Wypisz"
 
+#: Checkin.php:248
+msgid "Continue checkin"
+msgstr "Kontynuuj Wpisz"
+
+#: Checkin.php:296
+msgid "Verify CheckOut"
+msgstr "Potwierdź Wypisz"
+
+#: Checkin.php:348
+msgid "Finalize CheckOut"
+msgstr "Zakończ Wypisz"
+
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Czas Wpisu"
@@ -2834,6 +2846,10 @@ msgstr "Inne"
 msgid "Payment by"
 msgstr "Rodzaj wpłaty"
 
+#: PledgeEditor.php:681
+msgid "Split"
+msgstr "Podziel"
+
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Wybierz Płatność online"
@@ -3419,6 +3435,14 @@ msgstr "Wyszystkich Logowań"
 msgid "Failed Logins"
 msgstr "Błędnych Logowań"
 
+#: UserList.php:94 UserList.php:101
+msgid "Reset"
+msgstr "Zresetuj"
+
+#: UserList.php:99
+msgid "Change"
+msgstr "Zmień"
+
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Musisz wpisać hasło w obu polach"
@@ -3491,6 +3515,10 @@ msgstr "Nowe Hasło"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Potwierdź Nowe Hasło"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "Resetuj Użytkownika"
 
 #: UserList.php:166
 #, fuzzy

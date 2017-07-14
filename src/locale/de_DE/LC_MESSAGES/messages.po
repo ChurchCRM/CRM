@@ -919,6 +919,18 @@ msgstr "Anmelden"
 msgid "CheckOut"
 msgstr "Abmelden"
 
+#: Checkin.php:248
+msgid "Continue checkin"
+msgstr "Mit Anmelden weitermachen"
+
+#: Checkin.php:296
+msgid "Verify CheckOut"
+msgstr "Überprüfen der Abmeldung"
+
+#: Checkin.php:348
+msgid "Finalize CheckOut"
+msgstr "Abmeldung abschließen"
+
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Zeit der Anmeldung"
@@ -2846,6 +2858,10 @@ msgstr "Anderer"
 msgid "Payment by"
 msgstr "Zahlung durch"
 
+#: PledgeEditor.php:681
+msgid "Split"
+msgstr "Aufteilen"
+
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Wähle Onlinezahlungsmethode"
@@ -3427,6 +3443,14 @@ msgstr "Gesamte Logins"
 msgid "Failed Logins"
 msgstr "Fehlgschlagene Logins"
 
+#: UserList.php:94 UserList.php:101
+msgid "Reset"
+msgstr "Reset"
+
+#: UserList.php:99
+msgid "Change"
+msgstr "Ändern"
+
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Du musst ein Passwort in beide Felder eintragen"
@@ -3499,6 +3523,10 @@ msgstr "Neues Passwort"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Passwort bestätigen"
+
+#: UserReset.php:48
+msgid "User Reset"
+msgstr "Benutzer zurücksetzen"
 
 #: UserList.php:166
 #, fuzzy
