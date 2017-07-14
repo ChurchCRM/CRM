@@ -1,15 +1,21 @@
-$("document").ready(function(){
-  
-    i18next
-     .use(i18nextXHRBackend)
-     .init(
-     {
-        backend: {
-          loadPath: window.CRM.root + '/locale/'+window.CRM.locale+'/LC_Messages/messages.js'
-        }
-     });
+i18nextOpt = {
+  lng:window.CRM.shortLocale,
+  nsSeparator: false,
+  keySeparator: false,
+  pluralSeparator:false,
+  contextSeparator:false,
+  fallbackLng: false,
+  resources: { }
+};
 
+i18nextOpt.resources[window.CRM.shortLocale] = {
+  translation: window.CRM.i18keys
+};
+i18next.init(i18nextOpt);
+
+$("document").ready(function(){
     $(".multiSearch").select2({
+        language: window.CRM.shortLocale,
         minimumInputLength: 2,
         ajax: {
             url: function (params){
