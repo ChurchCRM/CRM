@@ -546,7 +546,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('updateFromPOeditor', 'Description of the task', function (target) {
-        grunt.config('clean', {pofiles: ["src/locale/*/**/*.po", "src/locale/*/**/*.mo", "src/locale/*/**/*.js"]});
+        grunt.config('clean', {pofiles: ["src/locale/*/**/*.po", "src/locale/*/**/*.mo", "locale/JSONKeys/*.json"]});
         grunt.task.run(['clean:pofiles']);
         grunt.loadNpmTasks('grunt-poeditor-ab');
         grunt.task.run(['poeditor']);
