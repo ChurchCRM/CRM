@@ -997,18 +997,6 @@ msgstr "Registro de entrada"
 msgid "CheckOut"
 msgstr "Registro de salida"
 
-#: Checkin.php:248
-msgid "Continue checkin"
-msgstr "Continuar registrado"
-
-#: Checkin.php:296
-msgid "Verify CheckOut"
-msgstr "Verificar Retiro"
-
-#: Checkin.php:348
-msgid "Finalize CheckOut"
-msgstr "Finalizar Retiro"
-
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Hora de Registro"
@@ -2881,10 +2869,6 @@ msgstr "No puede mostrarse el mapa pues falta la latitud y longitud de la Iglesi
 msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
 msgstr "La llave de la API de Google Map no ha sido ingresada. El Mapa funcionará para conjuntos de lugares pequeños. Por favor cree una Llave en la sección de mapas del menu de ajustes."
 
-#: MapUsingGoogle.php:154
-msgid "Key"
-msgstr "Llave"
-
 #: MemberRoleChange.php:29
 msgid "Member Role Change"
 msgstr "Cambio de Rol de Miembro"
@@ -3439,10 +3423,6 @@ msgstr "Otro"
 msgid "Payment by"
 msgstr "Pago por"
 
-#: PledgeEditor.php:681
-msgid "Split"
-msgstr "Dividido"
-
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Escoger metodo de pago en línea"
@@ -3922,33 +3902,9 @@ msgstr "Fijar Permiso a Verdadero para dar a nuevos usuarios la capacidad de cam
 msgid "Permission"
 msgstr "Permiso"
 
-#: Setup.php:237
-msgid "DB Server Name"
-msgstr "Nombre de Servidor de BD"
-
-#: Setup.php:242
-msgid "DB Name"
-msgstr "Nombre de BD"
-
-#: Setup.php:246
-msgid "DB User"
-msgstr "Usuario de DB"
-
-#: Setup.php:250
-msgid "DB Password"
-msgstr "Contraseña de BD"
-
-#: Setup.php:256
-msgid "Root Path"
-msgstr "Ruta Raíz"
-
 #: Register.php:53
 msgid "Base URL"
 msgstr "URL Base"
-
-#: Setup.php:266
-msgid "Setup"
-msgstr "Configurar"
 
 #: ChurchCRM/dto/SystemConfig.php:222 Include/Footer.php:144
 #: SystemSettings.php:43
@@ -3970,10 +3926,6 @@ msgstr "Verificación de dirección"
 #: UpdateAllLatLon.php:30
 msgid "Update Latitude & Longitude"
 msgstr "Actualizar Latitud y Longitud"
-
-#: UpdateAllLatLon.php:87
-msgid "Update Finished"
-msgstr "Actualización Finalizada"
 
 #: UserList.php:121
 msgid "User Delete Confirmation"
@@ -4083,14 +4035,6 @@ msgstr "Total de ingresos"
 msgid "Failed Logins"
 msgstr "Ingresos fallidos"
 
-#: UserList.php:94 UserList.php:101
-msgid "Reset"
-msgstr "Restablecer"
-
-#: UserList.php:99
-msgid "Change"
-msgstr "Cambiar"
-
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Debe entrar una contraseña en ambos espacios"
@@ -4160,10 +4104,6 @@ msgstr "Nueva Contraseña"
 #: UserPasswordChange.php:224
 msgid "Confirm New Password"
 msgstr "Confirmar Nueva Contraseña"
-
-#: UserReset.php:48
-msgid "User Reset"
-msgstr "Restablecer usuario"
 
 #: UserList.php:166
 msgid "Please confirm the password reset of this user"
@@ -4481,18 +4421,6 @@ msgstr "Itálico"
 #: Include/Functions.php:1573
 msgid " Bold"
 msgstr "Negritas"
-
-#: Include/Header-function.php:144
-msgid "ERROR!"
-msgstr "ERROR!"
-
-#: Include/Header-function.php:137
-msgid "Error making API Call to"
-msgstr "Error realizando Llamada API a"
-
-#: Include/Header-function.php:138
-msgid "Error text"
-msgstr "Texto de Error"
 
 #: Include/Header-function.php:73
 msgid "Issue Report!"
@@ -5005,10 +4933,6 @@ msgstr "Ver todas las Personas"
 msgid "Add New Family"
 msgstr "Añadir Nueva Familia"
 
-#: menuconfig_mcf.php:9
-msgid "View All Families"
-msgstr "Ver Todas las Familias"
-
 #: menuconfig_mcf.php:16
 msgid "Events"
 msgstr "Eventos"
@@ -5336,10 +5260,6 @@ msgstr "Agregar"
 msgid "Enter Name"
 msgstr "Ingresar Nombre"
 
-#: ChurchCRM/Service/SystemService.php:96
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting."
-msgstr "Como parte de la restauración, respaldos externos han sido deshabilitados. Si desea continuar con respaldos automáticos, debe manualmente rehabilitar la opción sEnableExternalBackupTarget."
-
 #: ChurchCRM/tasks/RegisteredTask.php:28
 msgid "Register Software"
 msgstr "Registrar Software"
@@ -5616,10 +5536,6 @@ msgstr "Escrutador:"
 msgid "Add Attendees for Event"
 msgstr "Agregar Asistentes para Evento"
 
-#: Checkin.php:129
-msgid "Child's Number"
-msgstr "Número de Niño"
-
 #: Checkin.php:474 ChurchCRM/Service/PersonService.php:38
 msgid "family"
 msgstr "familia"
@@ -5715,10 +5631,6 @@ msgstr "meses"
 #: Include/Functions.php:786
 msgid "yr old"
 msgstr "años"
-
-#: Include/Header-function.php:150
-msgid "There was a problem retrieving the requested object"
-msgstr "Hubo un problema al obtener el objeto solicitado"
 
 #: IntegrityCheck.php:61
 msgid "File Name"
@@ -5898,10 +5810,6 @@ msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Usuario"
 #, fuzzy
 msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
 msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Contraseña"
-
-#: ChurchCRM/dto/SystemConfig.php:96
-msgid "Set true to use the Google geocoder.  Set false to use rpc.geocoder.us."
-msgstr "Colocar en verdadero para usar el geocoder de Google. Colocar en falso para usar rpc.geocoder.us."
 
 #: ChurchCRM/dto/SystemConfig.php:127
 msgid "Number of checks for Deposit Slip Report"
@@ -7821,30 +7729,6 @@ msgstr "Zambia"
 msgid "Zimbabwe"
 msgstr "Zimbabue"
 
-#: Setup.php:55
-msgid "ChurchCRM – Setup"
-msgstr "ChurchCRM – Configuración"
-
-#: Setup.php:160
-msgid "This server is ChurchCRM ready!"
-msgstr "¡El servidor ChurchCRM esta listo!"
-
-#: Setup.php:166
-msgid "We're still determining if this server is ready for ChurchCRM."
-msgstr "Aún estamos determinando si este servidor está listo para ChurchCRM."
-
-#: Setup.php:172
-msgid "This server isn't quite ready for ChurchCRM."
-msgstr "El servidor ChurchCRM no se encuentra lista"
-
-#: Setup.php:199
-msgid "I know what I'm doing.  Install ChurchCRM Anyway"
-msgstr "Sé lo que estoy haciendo. Instalar ChurchCRM de todas formas"
-
-#: Setup.php:201
-msgid "In case you like to know the nitty gritty details, here's what we look for in a server. It's kind of like dating, but more technical."
-msgstr "En caso de que quiera saber todos los detalles, esto es lo que buscamos en un servidor. Es como salir de citas, pero más técnico."
-
 #: SelectList.php:551
 msgid "By Zip Code"
 msgstr "Por Codigo Postal"
@@ -7852,10 +7736,6 @@ msgstr "Por Codigo Postal"
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:17
 msgid "Please verify your family's information"
 msgstr "Por favor verifique la información de su familia"
-
-#: ChurchCRM/Emails/BaseFamilyVerification.php:30
-msgid "Dear"
-msgstr "Querido"
 
 #: ChurchCRM/tasks/ChurchAddress.php:22
 msgid "Church Address is not Set."
@@ -7868,10 +7748,6 @@ msgstr "Nombre de Iglesia está definido con valor por defecto"
 #: ChurchCRM/tasks/EmailTask.php:32
 msgid "SMTP Server info are blank"
 msgstr "El campo de Servidor de SMTP, se encuentra en blanco."
-
-#: ChurchCRM/tasks/FamilyWorkPhoneTask.php:35
-msgid "In Church CRM 2.6.0 we will no longer support a work phone for a family"
-msgstr "En Church CRM 2.6.0 no seguiremos soportando un teléfono de trabajo para una familia"
 
 #: ChurchCRM/tasks/HttpsTask.php:21
 msgid "Your system could be more secure by installing an TLS/SSL Cert."
@@ -8125,10 +8001,6 @@ msgstr "Máximo tamaño de carga"
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "El archivo seleccionado excede el máximo tamaño de carga del servidor de"
 
-#: Setup.php:9
-msgid "One or more required setup files are missing.  Please verify you downloaded the correct ChurchCRM package"
-msgstr "Faltan uno o más archivos de configuración. Por favor verifique que descargó el paquete de ChurchCRM correcto"
-
 #: ChurchCRM/tasks/PrerequisiteCheckTask.php:28
 #: ChurchCRM/tasks/PrerequisiteCheckTask.php:33 IntegrityCheck.php:36
 msgid "Unmet Application Prerequisites"
@@ -8375,59 +8247,25 @@ msgstr "Su cuenta fue borrada"
 msgid "Your ChurchCRM Account was Deleted."
 msgstr "Su Cuenta de ChurchCRM fue Borrada."
 
-#: ChurchCRM/Emails/users/AccountDeletedEmail.php:18
-#: ChurchCRM/Emails/users/LockedEmail.php:18
-msgid "If you think this is an error"
-msgstr "Si cree que esto fue un error"
-
-#: ChurchCRM/Emails/users/AccountDeletedEmail.php:18
-#: ChurchCRM/Emails/users/LockedEmail.php:18
-msgid "please contact your admin"
-msgstr "por favor contacte a su administrador"
-
 #: ChurchCRM/Emails/users/LockedEmail.php:11
 msgid "Account Locked"
 msgstr "Cuenta Bloqueada"
-
-#: ChurchCRM/Emails/users/LockedEmail.php:17
-msgid "We wanted to let you know that your ChurchCRM account was locked."
-msgstr "Queríamos informarle que su cuenta de ChurchCRM fue bloqueada."
 
 #: ChurchCRM/Emails/users/NewAccountEmail.php:18
 msgid "Your New Account"
 msgstr "Su Nueva Cuenta"
 
-#: ChurchCRM/Emails/users/NewAccountEmail.php:24
-msgid "A ChurchCRM account was created for you:"
-msgstr "Una cuenta de ChurchCRM fue creada para used:"
-
-#: ChurchCRM/Emails/users/BaseUserEmail.php:32
-msgid "Username"
-msgstr "Usuario"
-
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:17
 msgid "Password Changed"
 msgstr "Contraseña Cambiada"
-
-#: ChurchCRM/Emails/users/PasswordChangeEmail.php:23
-msgid "We wanted to let you know that your ChurchCRM password was changed."
-msgstr "Queríamos informarle que su contraseña de ChurchCRM fue cambiada."
 
 #: ChurchCRM/Emails/users/ResetPasswordEmail.php:17
 msgid "Password Reset"
 msgstr "Restablecer Contraseña"
 
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:24
-msgid "You can reset your ChurchCRM password by clicking this link:"
-msgstr "Puede restablecer su contraseña de ChurchCRM haciendo clic en este enlace:"
-
 #: ChurchCRM/Emails/users/UnlockedEmail.php:11
 msgid "Account Unlocked"
 msgstr "Cuenta Desbloqueada"
-
-#: ChurchCRM/Emails/users/UnlockedEmail.php:17
-msgid "We wanted to let you know that your ChurchCRM account was unlocked."
-msgstr "Queríamos informarle que su cuenta de ChurchCRM fue besbloqueada."
 
 #: ChurchCRM/Service/PersonService.php:36
 msgid "Part"

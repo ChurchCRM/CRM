@@ -915,18 +915,6 @@ msgstr "Регистрация"
 msgid "CheckOut"
 msgstr "Проверить"
 
-#: Checkin.php:248
-msgid "Continue checkin"
-msgstr "Продолжить фиксирование"
-
-#: Checkin.php:296
-msgid "Verify CheckOut"
-msgstr "Убедитесь, CheckOut"
-
-#: Checkin.php:348
-msgid "Finalize CheckOut"
-msgstr "Завершение CheckOut"
-
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Проверено In Time"
@@ -2821,10 +2809,6 @@ msgstr "Другое"
 msgid "Payment by"
 msgstr "Оплата"
 
-#: PledgeEditor.php:681
-msgid "Split"
-msgstr "сплит-тренинг"
-
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Выберите метод оплаты онлайн"
@@ -3405,14 +3389,6 @@ msgstr "Всего посещение"
 msgid "Failed Logins"
 msgstr "Неудачных попыток"
 
-#: UserList.php:94 UserList.php:101
-msgid "Reset"
-msgstr "Сброс"
-
-#: UserList.php:99
-msgid "Change"
-msgstr "Поменять"
-
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Вы должны ввести пароль в обоих полях"
@@ -3485,10 +3461,6 @@ msgstr "Новый пароль"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Подтвердите новый пароль"
-
-#: UserReset.php:48
-msgid "User Reset"
-msgstr "Пользователь Reset"
 
 #: UserList.php:166
 #, fuzzy

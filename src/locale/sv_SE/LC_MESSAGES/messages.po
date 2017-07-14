@@ -918,18 +918,6 @@ msgstr "Checkar in"
 msgid "CheckOut"
 msgstr "Checkar ut"
 
-#: Checkin.php:248
-msgid "Continue checkin"
-msgstr "Fortsätt incheckning"
-
-#: Checkin.php:296
-msgid "Verify CheckOut"
-msgstr "Bekräfta checka ut"
-
-#: Checkin.php:348
-msgid "Finalize CheckOut"
-msgstr "Slutgöra utcheckning"
-
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Incheckningstid"
@@ -2873,10 +2861,6 @@ msgstr "Annat"
 msgid "Payment by"
 msgstr "Betalningsdatum"
 
-#: PledgeEditor.php:681
-msgid "Split"
-msgstr "Split"
-
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Välj internet betalningsmetod"
@@ -3462,14 +3446,6 @@ msgstr "Antal inloggningar"
 msgid "Failed Logins"
 msgstr "Misslyckade inloggningar"
 
-#: UserList.php:94 UserList.php:101
-msgid "Reset"
-msgstr "Ställa om"
-
-#: UserList.php:99
-msgid "Change"
-msgstr "Ändring"
-
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Du måste ange ett lösenord i båda textrutor"
@@ -3542,10 +3518,6 @@ msgstr "Det nya lösenordet"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Bekräfta det nya lösenordet"
-
-#: UserReset.php:48
-msgid "User Reset"
-msgstr "Användare omställning"
 
 #: UserList.php:166
 #, fuzzy

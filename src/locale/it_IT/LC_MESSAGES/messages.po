@@ -954,18 +954,6 @@ msgstr "Assegno"
 msgid "CheckOut"
 msgstr "Assegno"
 
-#: Checkin.php:248
-msgid "Continue checkin"
-msgstr "Continua checkin"
-
-#: Checkin.php:296
-msgid "Verify CheckOut"
-msgstr "Verificare CheckOut"
-
-#: Checkin.php:348
-msgid "Finalize CheckOut"
-msgstr "Finalize CheckOut"
-
 #: Checkin.php:319
 msgid "Checked In Time"
 msgstr "Controllato In Time"
@@ -2981,10 +2969,6 @@ msgstr "Ottobre"
 msgid "Payment by"
 msgstr "Forma di pagamento:"
 
-#: PledgeEditor.php:681
-msgid "Split"
-msgstr "Dividere"
-
 #: PledgeEditor.php:637
 msgid "Choose online payment method"
 msgstr "Scegli il metodo di pagamento online"
@@ -3585,14 +3569,6 @@ msgstr "Login totali"
 msgid "Failed Logins"
 msgstr "Login falliti"
 
-#: UserList.php:94 UserList.php:101
-msgid "Reset"
-msgstr "Resetta"
-
-#: UserList.php:99
-msgid "Change"
-msgstr "Cambia"
-
 #: UserPasswordChange.php:69
 msgid "You must enter a password in both boxes"
 msgstr "Devi inserire la stessa password in entrambi i campi"
@@ -3665,10 +3641,6 @@ msgstr "Nuova password"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Conferma nuova password"
-
-#: UserReset.php:48
-msgid "User Reset"
-msgstr "Azzera utente"
 
 #: UserList.php:166
 #, fuzzy

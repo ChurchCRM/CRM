@@ -1799,14 +1799,6 @@ msgstr "In ấn"
 msgid "Save Settings"
 msgstr "Lưu thay đổi"
 
-#: Setup.php:250
-msgid "DB Password"
-msgstr "Nhập lại mật khẩu"
-
-#: Setup.php:266
-msgid "Setup"
-msgstr "Cài đặt"
-
 #: ChurchCRM/dto/SystemConfig.php:222 Include/Footer.php:144
 #: SystemSettings.php:43
 msgid "System Settings"
@@ -2012,10 +2004,6 @@ msgstr "Xem tất cả thành viên"
 #: menuconfig_mcf.php:8
 msgid "Add New Family"
 msgstr "Thêm gia đình mới"
-
-#: menuconfig_mcf.php:9
-msgid "View All Families"
-msgstr "Xem tất cả gia đình"
 
 #: menuconfig_mcf.php:16
 msgid "Events"
