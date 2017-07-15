@@ -21,13 +21,14 @@ require 'Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 
-function translate_special_charset ($string)
+function translate_special_charset($string)
 {
-	if ($string == "" || $string == null)
-		return "";
-		
-	return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?$string:iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
-} 	
+    if ($string == "" || $string == null) {
+        return "";
+    }
+        
+    return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?$string:iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
+}
 
 
 $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
@@ -344,11 +345,10 @@ if ($sFormat == 'addtocart') {
     header('Content-type: text/x-csv;charset=UTF-8');
     header('Content-Disposition: attachment; filename=churchcrm-export-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     
-		//add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-		if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")
-    {
-    	echo "\xEF\xBB\xBF";
-    }
+        //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
+        if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
+            echo "\xEF\xBB\xBF";
+        }
 
 
     echo $headerString;
@@ -503,8 +503,8 @@ if ($sFormat == 'addtocart') {
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                        		$birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
-                        		$age = FormatAgeSuffix($birthDate, 0);
+                            $birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
+                            $age = FormatAgeSuffix($birthDate, 0);
                             
                             //$age = $refDate['year'] - $per_BirthYear - ($per_BirthMonth > $refDate['mon'] || ($per_BirthMonth == $refDate['mon'] && $per_BirthDay > $refDate['mday']));
                         } else {
