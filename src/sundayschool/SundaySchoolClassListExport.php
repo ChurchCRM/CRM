@@ -5,6 +5,15 @@ require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 
+function translate_special_charset ($string)
+{
+	if ($string == "" || $string == null)
+		return "";
+		
+	return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?$string:iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
+} 	
+
+
 header('Pragma: no-cache');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -13,14 +22,15 @@ header('Content-Type: text/csv;charset=UTF-8');
 header('Content-Disposition: attachment; filename=SundaySchool-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
 header('Content-Transfer-Encoding: binary');
 
-$lang = substr($localeInfo->getLocale(), 0, 2);
-
-$delimitor = SystemConfig::getValue("sCSVDelemitor");
+$delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
 $out = fopen('php://output', 'w');
 
-//add BOM to fix UTF-8 in Excel
-fputs($out, $bom =(chr(0xEF) . chr(0xBB) . chr(0xBF)));
+//add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
+if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")
+{
+	fputs($out, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+}
 
 // Get all the groups
 $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
@@ -39,25 +49,20 @@ grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_
 order by grp.grp_Name, fam.fam_Name';
 $rsKids = RunQuery($sSQL);
 
-/*fputcsv($out, [_('Class'),
-  _('First Name'), _('Last Name'), _('Birth Date'), _('Mobile'),
-  _('Home Phone'), _('Home Address'),
-  _('Dad Name'), _('Dad Mobile'), _('Dad Email'),
-  _('Mom Name'), _('Mom Mobile'), _('Mom Email'), ],";");*/
-  
-fputcsv($out, [gettext('Class'),
-  gettext('First Name'),
-  gettext('Last Name'),
-  gettext('Birth Date'),
-  gettext('Mobile'),
-  gettext('Home Phone'),
-  gettext('Home Address'),
-  gettext('Dad Name'),
-  gettext('Dad Mobile') ,
-  gettext('Dad Email'),
-  gettext('Mom Name'),
-  gettext('Mom Mobile'),
-  gettext('Mom Email') ], $delimitor);
+
+fputcsv($out, [translate_special_charset('Class'),
+  translate_special_charset('First Name'),
+  translate_special_charset('Last Name'),
+  translate_special_charset('Birth Date'),
+  translate_special_charset('Mobile'),
+  translate_special_charset('Home Phone'),
+  translate_special_charset('Home Address'),
+  translate_special_charset('Dad Name'),
+  translate_special_charset('Dad Mobile') ,
+  translate_special_charset('Dad Email'),
+  translate_special_charset('Mom Name'),
+  translate_special_charset('Mom Mobile'),
+  translate_special_charset('Mom Email') ], $delimiter);
 
 
 while ($aRow = mysqli_fetch_array($rsKids)) {
@@ -67,14 +72,16 @@ while ($aRow = mysqli_fetch_array($rsKids)) {
         $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
     }
     fputcsv($out, [
-    $sundayschoolClass,
-    $firstName,
-    $LastName,
+    translate_special_charset($sundayschoolClass),
+    translate_special_charset($firstName),
+    translate_special_charset($LastName),
      $birthDate, $mobilePhone, $homePhone,
-        $Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip,
+    translate_special_charset($Address1).' '.$Address2.' '.$city.' '.$state.' '.$zip,
     $dadFirstName.' '.$dadLastName, $dadCellPhone, $dadEmail,
-    $momFirstName.' '.$momLastName, $momCellPhone, $momEmail, ], $delimitor);
+    $momFirstName.' '.$momLastName, $momCellPhone, $momEmail, ], $delimiter);
 }
 
 
 fclose($out);
+                                                                                                                            
+?>
