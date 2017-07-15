@@ -21,9 +21,16 @@ require 'Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 
-$lang = substr($localeInfo->getLocale(), 0, 2);
+function translate_special_charset ($string)
+{
+	if ($string == "" || $string == null)
+		return "";
+		
+	return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?$string:iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
+} 	
 
-$delimitor = SystemConfig::getValue("sCSVDelemitor");
+
+$delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
 // Turn ON output buffering
 ob_start();
@@ -222,79 +229,79 @@ if ($sFormat == 'addtocart') {
 
     //Produce Header Based on Selected Fields
     if ($sFormat == 'rollup') {
-        $headerString = '"'._("Name").'"'.$delimitor;
+        $headerString = '"'.translate_special_charset("Name").'"'.$delimiter;
     } else {
-        $headerString = '"'._("Last Name").'"'.$delimitor;
+        $headerString = '"'.translate_special_charset("Last Name").'"'.$delimiter;
         if (!empty($_POST['Title'])) {
-            $headerString .= '"'._("Title").'"'.$delimitor;
+            $headerString .= '"'.translate_special_charset("Title").'"'.$delimiter;
         }
         if (!empty($_POST['FirstName'])) {
-            $headerString .= '"'._("First Name").'"'.$delimitor;
+            $headerString .= '"'.translate_special_charset("First Name").'"'.$delimiter;
         }
         if (!empty($_POST['Suffix'])) {
-            $headerString .= '"'._("Suffix").'"'.$delimitor;
+            $headerString .= '"'.translate_special_charset("Suffix").'"'.$delimiter;
         }
         if (!empty($_POST['MiddleName'])) {
-            $headerString .= '"'._("Middle Name").'"'.$delimitor;
+            $headerString .= '"'.translate_special_charset("Middle Name").'"'.$delimiter;
         }
     }
 
     if (!empty($_POST['Address1'])) {
-        $headerString .= '"'._("Address 1").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Address 1").'"'.$delimiter;
     }
     if (!empty($_POST['Address2'])) {
-        $headerString .= '"'._("Address 2").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Address 2").'"'.$delimiter;
     }
     if (!empty($_POST['City'])) {
-        $headerString .= '"'._("City").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("City").'"'.$delimiter;
     }
     if (!empty($_POST['State'])) {
-        $headerString .= '"'._("State").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("State").'"'.$delimiter;
     }
     if (!empty($_POST['Zip'])) {
-        $headerString .= '"'._("Zip").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Zip").'"'.$delimiter;
     }
     if (!empty($_POST['Country'])) {
-        $headerString .= '"'._("Country").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Country").'"'.$delimiter;
     }
     if (!empty($_POST['HomePhone'])) {
-        $headerString .= '"'._("Home Phone").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Home Phone").'"'.$delimiter;
     }
     if (!empty($_POST['WorkPhone'])) {
-        $headerString .= '"'._("Work Phone").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Work Phone").'"'.$delimiter;
     }
     if (!empty($_POST['CellPhone'])) {
-        $headerString .= '"'._("Cell Phone").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Cell Phone").'"'.$delimiter;
     }
     if (!empty($_POST['Email'])) {
-        $headerString .= '"'._("Email").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Email").'"'.$delimiter;
     }
     if (!empty($_POST['WorkEmail'])) {
-        $headerString .= '"'._("Work Email").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Work Email").'"'.$delimiter;
     }
     if (!empty($_POST['Envelope'])) {
-        $headerString .= '"'._("Envelope Number").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("Envelope Number").'"'.$delimiter;
     }
     if (!empty($_POST['MembershipDate'])) {
-        $headerString .= '"'._("MembershipDate").'"'.$delimitor;
+        $headerString .= '"'.translate_special_charset("MembershipDate").'"'.$delimiter;
     }
 
     if ($sFormat == 'default') {
         if (!empty($_POST['BirthdayDate'])) {
-            $headerString .= '"'._("Birth Date").'"'.$delimitor;
+            $headerString .= '"'.translate_special_charset("Birth Date").'"'.$delimiter;
         }
         if (!empty($_POST['Age'])) {
-            $headerString .= '"'._("Age").'"'.$delimitor;
+            $headerString .= '"'.translate_special_charset("Age").'"'.$delimiter;
         }
         if (!empty($_POST['PrintFamilyRole'])) {
-            $headerString .= '"'._("Family Role").'"'.$delimitor;
+            $headerString .= '"'.translate_special_charset("Family Role").'"'.$delimiter;
         }
     } else {
         if (!empty($_POST['Birthday Date'])) {
-            $headerString .= '"'._("AnnivDate").'"'.$delimitor;
+            $headerString .= '"'.translate_special_charset("AnnivDate").'"'.$delimiter;
         }
         if (!empty($_POST['Age'])) {
-            $headerString .= '"'._("Anniv").'"'.$delimitor;
+            $headerString .= '"'.translate_special_charset("Anniv").'"'.$delimiter;
         }
     }
 
@@ -305,7 +312,7 @@ if ($sFormat == 'addtocart') {
             extract($aRow);
             if (isset($_POST["$custom_Field"])) {
                 $bUsedCustomFields = true;
-                $headerString .= "\"".$custom_Name."\"".$delimitor;
+                $headerString .= "\"".translate_special_charset($custom_Name)."\"".$delimiter;
             }
         }
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
@@ -313,7 +320,7 @@ if ($sFormat == 'addtocart') {
             if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
-                    $headerString .= "\"".$fam_custom_Name."\"".$delimitor;
+                    $headerString .= "\"".translate_special_charset($fam_custom_Name)."\"".$delimiter;
                 }
             }
         }
@@ -325,7 +332,7 @@ if ($sFormat == 'addtocart') {
             if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
-                    $headerString .= "\"".$fam_custom_Name."\"".$delimitor;
+                    $headerString .= "\"".translate_special_charset($fam_custom_Name)."\"".$delimiter;
                 }
             }
         }
@@ -334,11 +341,15 @@ if ($sFormat == 'addtocart') {
     $headerString = mb_substr($headerString, 0, -1);
     $headerString .= "\n";
 
-    header('Content-type: text/x-csv');
+    header('Content-type: text/x-csv;charset=UTF-8');
     header('Content-Disposition: attachment; filename=churchcrm-export-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     
-    //add BOM to fix UTF-8 in Excel
-    echo "\xEF\xBB\xBF";
+		//add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
+		if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")
+    {
+    	echo "\xEF\xBB\xBF";
+    }
+
 
     echo $headerString;
 
@@ -418,16 +429,16 @@ if ($sFormat == 'addtocart') {
                 if ($sFormat == 'default') {
                     $sString = '"'.$per_LastName;
                     if (isset($_POST['Title'])) {
-                        $sString .= '"'.$delimitor.'"'.$per_Title;
+                        $sString .= '"'.$delimiter.'"'.translate_special_charset($per_Title);
                     }
                     if (isset($_POST['FirstName'])) {
-                        $sString .= '"'.$delimitor.'"'.$per_FirstName;
+                        $sString .= '"'.$delimiter.'"'.translate_special_charset($per_FirstName);
                     }
                     if (isset($_POST['Suffix'])) {
-                        $sString .= '"'.$delimitor.'"'.$per_Suffix;
+                        $sString .= '"'.$delimiter.'"'.translate_special_charset($per_Suffix);
                     }
                     if (isset($_POST['MiddleName'])) {
-                        $sString .= '"'.$delimitor.'"'.$per_MiddleName;
+                        $sString .= '"'.$delimiter.'"'.translate_special_charset($per_MiddleName);
                     }
                 } elseif ($sFormat == 'rollup') {
                     if ($memberCount > 1) {
@@ -440,48 +451,48 @@ if ($sFormat == 'addtocart') {
                 }
 
                 if (isset($_POST['Address1'])) {
-                    $sString .= '"'.$delimitor.'"'.$sAddress1;
+                    $sString .= '"'.$delimiter.'"'.translate_special_charset($sAddress1);
                 }
                 if (isset($_POST['Address2'])) {
-                    $sString .= '"'.$delimitor.'"'.$sAddress2;
+                    $sString .= '"'.$delimiter.'"'.translate_special_charset($sAddress2);
                 }
                 if (isset($_POST['City'])) {
-                    $sString .= '"'.$delimitor.'"'.$sCity;
+                    $sString .= '"'.$delimiter.'"'.translate_special_charset($sCity);
                 }
                 if (isset($_POST['State'])) {
-                    $sString .= '"'.$delimitor.'"'.$sState;
+                    $sString .= '"'.$delimiter.'"'.translate_special_charset($sState);
                 }
                 if (isset($_POST['Zip'])) {
-                    $sString .= '"'.$delimitor.'"'.$sZip;
+                    $sString .= '"'.$delimiter.'"'.$sZip;
                 }
                 if (isset($_POST['Country'])) {
-                    $sString .= '"'.$delimitor.'"'.$sCountry;
+                    $sString .= '"'.$delimiter.'"'.translate_special_charset($sCountry);
                 }
                 if (isset($_POST['HomePhone'])) {
-                    $sString .= '"'.$delimitor.'"'.$sHomePhone;
+                    $sString .= '"'.$delimiter.'"'.$sHomePhone;
                 }
                 if (isset($_POST['WorkPhone'])) {
-                    $sString .= '"'.$delimitor.'"'.$sWorkPhone;
+                    $sString .= '"'.$delimiter.'"'.$sWorkPhone;
                 }
                 if (isset($_POST['CellPhone'])) {
-                    $sString .= '"'.$delimitor.'"'.$sCellPhone;
+                    $sString .= '"'.$delimiter.'"'.$sCellPhone;
                 }
                 if (isset($_POST['Email'])) {
-                    $sString .= '"'.$delimitor.'"'.$sEmail;
+                    $sString .= '"'.$delimiter.'"'.$sEmail;
                 }
                 if (isset($_POST['WorkEmail'])) {
-                    $sString .= '"'.$delimitor.'"'.$per_WorkEmail;
+                    $sString .= '"'.$delimiter.'"'.$per_WorkEmail;
                 }
                 if (isset($_POST['Envelope'])) {
-                    $sString .= '"'.$delimitor.'"'.$fam_Envelope;
+                    $sString .= '"'.$delimiter.'"'.$fam_Envelope;
                 }
                 if (isset($_POST['MembershipDate'])) {
-                    $sString .= '"'.$delimitor.'"'.$per_MembershipDate;
+                    $sString .= '"'.$delimiter.'"'.$per_MembershipDate;
                 }
 
                 if ($sFormat == 'default') {
                     if (isset($_POST['BirthdayDate'])) {
-                        $sString .= '"'.$delimitor.'"';
+                        $sString .= '"'.$delimiter.'"';
                         if ($per_BirthYear != '') {
                             $sString .= $per_BirthYear.'-';
                         } else {
@@ -492,23 +503,23 @@ if ($sFormat == 'addtocart') {
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                            $birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
-                            $age = FormatAgeSuffix($birthDate, 0);
+                        		$birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
+                        		$age = FormatAgeSuffix($birthDate, 0);
                             
                             //$age = $refDate['year'] - $per_BirthYear - ($per_BirthMonth > $refDate['mon'] || ($per_BirthMonth == $refDate['mon'] && $per_BirthDay > $refDate['mday']));
                         } else {
                             $age = '';
                         }
 
-                        $sString .= '"'.$delimitor.'"'.$age;
+                        $sString .= '"'.$delimiter.'"'.$age;
                     }
 
                     if (isset($_POST['PrintFamilyRole'])) {
-                        $sString .= '"'.$delimitor.'"'.$familyRoles[$per_fmr_ID];
+                        $sString .= '"'.$delimiter.'"'.translate_special_charset($familyRoles[$per_fmr_ID]);
                     }
                 } else {
                     if (isset($_POST['BirthdayDate'])) {
-                        $sString .= '"'.$delimitor.'"'.$fam_WeddingDate;
+                        $sString .= '"'.$delimiter.'"'.$fam_WeddingDate;
                     }
 
                     if (isset($_POST['Age'])) {
@@ -519,7 +530,7 @@ if ($sFormat == 'addtocart') {
                             $age = '';
                         }
 
-                        $sString .= '"'.$delimitor.'"'.$age;
+                        $sString .= '"'.$delimiter.'"'.$age;
                     }
                 }
 
@@ -542,7 +553,7 @@ if ($sFormat == 'addtocart') {
                                     if ($type_ID == 11) {
                                         $custom_Special = $sCountry;
                                     }
-                                    $sString .= '"'.$delimitor.'"'.displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special);
+                                    $sString .= '"'.$delimiter.'"'.translate_special_charset(displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special));
                                 }
                             }
                         }
@@ -565,7 +576,7 @@ if ($sFormat == 'addtocart') {
                                 if ($type_ID == 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $sString .= '"'.$delimitor.'"'.displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
+                                $sString .= '"'.$delimiter.'"'.translate_special_charset(displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special));
                             }
                         }
                     }
@@ -589,7 +600,7 @@ if ($sFormat == 'addtocart') {
                                 if ($type_ID == 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $sString .= '"'.$delimitor.'"'.displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
+                                $sString .= '"'.$delimiter.'"'.translate_special_charset(displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special));
                             }
                         }
                     }
