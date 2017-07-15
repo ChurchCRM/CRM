@@ -20,12 +20,12 @@ msgstr "Bevestig Verwijdering Automatische betaling"
 #: DepositSlipEditor.php:232 DonationFundEditor.php:156
 #: DonationFundEditor.php:186 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:222 ElectronicPaymentList.php:288
-#: EventNames.php:305 FamilyCustomFieldsEditor.php:334
-#: FamilyCustomFieldsEditor.php:392 FamilyView.php:661 FamilyView.php:713
+#: EventNames.php:305 FamilyCustomFieldsEditor.php:335
+#: FamilyCustomFieldsEditor.php:393 FamilyView.php:661 FamilyView.php:713
 #: FamilyView.php:772 FamilyView.php:909 FindDepositSlip.php:108
 #: FundRaiserEditor.php:204 ListEvents.php:250 PaddleNumList.php:60
-#: PersonCustomFieldsEditor.php:318 PersonCustomFieldsEditor.php:387
-#: PersonView.php:908 PledgeDelete.php:57 PropertyList.php:69
+#: PersonCustomFieldsEditor.php:319 PersonCustomFieldsEditor.php:388
+#: PersonView.php:912 PledgeDelete.php:57 PropertyList.php:69
 #: PropertyList.php:110 PropertyTypeList.php:44 PropertyTypeList.php:65
 #: PropertyTypeList.php:67
 msgid "Delete"
@@ -39,7 +39,7 @@ msgstr "Verwijder"
 #: GroupPropsEditor.php:172 GroupReports.php:87 GroupReports.php:156
 #: LettersAndLabels.php:77 ManageEnvelopes.php:139 MemberRoleChange.php:123
 #: MemberRoleChange.php:125 NoteDelete.php:71 NoteEditor.php:139
-#: PersonEditor.php:1138 PersonView.php:907 PledgeDelete.php:58
+#: PersonEditor.php:1138 PersonView.php:911 PledgeDelete.php:58
 #: PropertyEditor.php:173 PropertyTypeEditor.php:118 Register.php:60
 #: ReminderReport.php:56 SettingsIndividual.php:123 SettingsIndividual.php:169
 #: SettingsUser.php:111 SettingsUser.php:171
@@ -70,7 +70,7 @@ msgstr "Bewaar"
 #: CSVImport.php:275 DonatedItemEditor.php:189 DonatedItemEditor.php:240
 #: eGive.php:341 FamilyEditor.php:1095 GroupEditor.php:91
 #: Include/CountryDropDown.php:6 Include/Functions.php:1074
-#: Include/Functions.php:1122 MapUsingGoogle.php:98 MapUsingGoogle.php:122
+#: Include/Functions.php:1127 MapUsingGoogle.php:98 MapUsingGoogle.php:122
 #: PaddleNumEditor.php:180 PersonEditor.php:744 PersonEditor.php:760
 #: PersonEditor.php:1045 PrintView.php:249 PrintView.php:259
 #: SelectDelete.php:155 SelectList.php:44 SelectList.php:54 SelectList.php:70
@@ -137,7 +137,7 @@ msgstr "Telefoon"
 #: external/templates/verify/verify-family-info.php:81 FamilyEditor.php:777
 #: FamilyView.php:279 FamilyView.php:284 FamilyView.php:367
 #: GroupReports.php:132 PersonEditor.php:997 PersonEditor.php:999
-#: PersonView.php:304 PersonView.php:463 PrintView.php:279
+#: PersonView.php:308 PersonView.php:467 PrintView.php:279
 #: Reports/CanvassReports.php:247 Reports/ConfirmReportEmail.php:190
 #: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:188
 #: Reports/ConfirmReport.php:207 Reports/DirectoryReport.php:299
@@ -264,7 +264,7 @@ msgstr "Enveloppe"
 
 #: ChurchCRM/Reports/PDF_Directory.php:400
 #: ChurchCRM/Reports/PDF_Directory.php:457 CSVExport.php:160
-#: PersonView.php:318 Reports/DirectoryReport.php:302
+#: PersonView.php:322 Reports/DirectoryReport.php:302
 msgid "Work/Other Email"
 msgstr "Werk/Andere Email"
 
@@ -413,7 +413,7 @@ msgstr "Bijdrage Enveloppe"
 #: external/templates/verify/verify-family-info.php:28
 #: external/templates/verify/verify-family-info.php:75 FamilyEditor.php:743
 #: FamilyList.php:45 FamilyView.php:261 GroupReports.php:129
-#: PersonEditor.php:923 PersonEditor.php:925 PersonView.php:299
+#: PersonEditor.php:923 PersonEditor.php:925 PersonView.php:303
 #: PrintView.php:184 Reports/ConfirmReportEmail.php:139
 #: Reports/ConfirmReport.php:140 SelectList.php:986 SelectList.php:987
 #: SelectList.php:1062 sundayschool/SundaySchoolClassView.php:204
@@ -424,7 +424,7 @@ msgstr "Telefoon Thuis"
 #: CartToFamily.php:295 CSVExport.php:145 CSVImport.php:228
 #: external/templates/verify/verify-family-info.php:77 FamilyEditor.php:755
 #: FamilyView.php:267 GroupReports.php:130 PersonEditor.php:946
-#: PersonEditor.php:948 PersonView.php:313 PrintView.php:189
+#: PersonEditor.php:948 PersonView.php:317 PrintView.php:189
 #: Reports/ConfirmReportEmail.php:237 Reports/ConfirmReport.php:244
 #: SelectList.php:989 SelectList.php:990 SelectList.php:1062
 msgid "Work Phone"
@@ -433,7 +433,7 @@ msgstr "Telefoon Werk"
 #: CartToFamily.php:305 CSVExport.php:150 CSVImport.php:229
 #: external/templates/verify/verify-family-info.php:79 FamilyEditor.php:765
 #: FamilyView.php:273 PersonEditor.php:971 PersonEditor.php:973
-#: PersonView.php:294 PrintView.php:194 SelectList.php:992 SelectList.php:993
+#: PersonView.php:298 PrintView.php:194 SelectList.php:992 SelectList.php:993
 #: SelectList.php:1062
 msgid "Mobile Phone"
 msgstr "Telefoon Mobiel"
@@ -442,7 +442,7 @@ msgstr "Telefoon Mobiel"
 msgid "Work / Other Email"
 msgstr "Werk / Ander Email"
 
-#: CSVImport.php:232 PersonView.php:278 PrintView.php:238
+#: CSVImport.php:232 PersonView.php:282 PrintView.php:238
 #: sundayschool/SundaySchoolClassView.php:200
 #: sundayschool/SundaySchoolDashboard.php:195
 msgid "Birth Date"
@@ -674,12 +674,12 @@ msgstr "Voeg mandje toe aan Familie"
 #: CartToFamily.php:159 CartView.php:294 Checkin.php:318
 #: DonationFundEditor.php:153 DonationFundEditor.php:216
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:180
-#: EventNames.php:266 FamilyCustomFieldsEditor.php:330
-#: FamilyCustomFieldsEditor.php:444 FamilyList.php:43 FamilyView.php:548
-#: GeoPage.php:385 GroupEditor.php:77 GroupPropsFormEditor.php:284
-#: GroupPropsFormEditor.php:396 GroupView.php:321 GroupView.php:355
-#: PersonCustomFieldsEditor.php:314 PersonCustomFieldsEditor.php:445
-#: PersonView.php:654 PersonView.php:756 PrintView.php:322 PrintView.php:450
+#: EventNames.php:266 FamilyCustomFieldsEditor.php:331
+#: FamilyCustomFieldsEditor.php:445 FamilyList.php:43 FamilyView.php:548
+#: GeoPage.php:385 GroupEditor.php:77 GroupPropsFormEditor.php:285
+#: GroupPropsFormEditor.php:397 GroupView.php:321 GroupView.php:355
+#: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:446
+#: PersonView.php:658 PersonView.php:760 PrintView.php:322 PrintView.php:450
 #: PropertyEditor.php:153 PropertyList.php:64 PropertyTypeEditor.php:100
 #: PropertyTypeList.php:39 Reports/CanvassReports.php:73
 #: Reports/CanvassReports.php:241 Reports/FRBidSheets.php:93
@@ -720,7 +720,7 @@ msgstr "(Gebruik de tekstbox voor landen anders dan de US en Canada)"
 
 #: CartToFamily.php:290 CartToFamily.php:300 CartToFamily.php:310
 #: FamilyEditor.php:751 FamilyEditor.php:761 FamilyEditor.php:771
-#: Include/Functions.php:1113 PersonEditor.php:939 PersonEditor.php:963
+#: Include/Functions.php:1117 PersonEditor.php:939 PersonEditor.php:963
 #: PersonEditor.php:987
 msgid "Do not auto-format"
 msgstr "Gebruik geen Auto-formaat"
@@ -828,8 +828,8 @@ msgid "persons from"
 msgstr "personen van"
 
 #: CartView.php:297 CartView.php:356 EditEventTypes.php:171 FamilyView.php:553
-#: FamilyView.php:595 GroupView.php:360 GroupView.php:401 PersonView.php:657
-#: PersonView.php:675 PersonView.php:759 PersonView.php:777
+#: FamilyView.php:595 GroupView.php:360 GroupView.php:401 PersonView.php:661
+#: PersonView.php:679 PersonView.php:763 PersonView.php:781
 msgid "Remove"
 msgstr "Verwijder"
 
@@ -890,7 +890,7 @@ msgid "Checked Out By"
 msgstr "Afgerekend doior "
 
 #: Checkin.php:323 EditEventAttendees.php:44 EventNames.php:270
-#: ListEvents.php:214 PersonView.php:585
+#: ListEvents.php:214 PersonView.php:589
 msgid "Action"
 msgstr "Actie"
 
@@ -898,7 +898,7 @@ msgstr "Actie"
 msgid "No Attendees Assigned to Event"
 msgstr "Geen bezoekers toegewezen aan Evenement"
 
-#: Checkin.php:472 Include/Functions.php:1658 Reports/CanvassReports.php:245
+#: Checkin.php:472 Include/Functions.php:1663 Reports/CanvassReports.php:245
 #: Reports/VotingMembers.php:88 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr "Lid"
@@ -991,13 +991,13 @@ msgstr "Informatie om toe te Voegen"
 #: external/templates/registration/family-register.php:35 FamilyEditor.php:670
 #: FamilyEditor.php:674 FamilyList.php:44 FamilyView.php:221 GeoPage.php:386
 #: GroupReports.php:128 Menu.php:210 Menu.php:251 PersonEditor.php:793
-#: PersonEditor.php:809 PersonView.php:270 Register.php:47
+#: PersonEditor.php:809 PersonView.php:272 Register.php:47
 #: Reports/ConfirmReportEmail.php:124 Reports/ConfirmReportEmail.php:129
 msgid "Address"
 msgstr "Adres"
 
 #: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:178
-#: FamilyView.php:366 PersonView.php:462 Reports/ConfirmReportEmail.php:191
+#: FamilyView.php:366 PersonView.php:466 Reports/ConfirmReportEmail.php:191
 #: Reports/ConfirmReportEmail.php:209 Reports/ConfirmReport.php:189
 #: Reports/ConfirmReport.php:208
 msgid "Birthday"
@@ -1117,9 +1117,9 @@ msgstr "Gaan"
 
 #: DonatedItemEditor.php:277 DonationFundEditor.php:154
 #: DonationFundEditor.php:224 EditEventAttendees.php:34
-#: FundRaiserEditor.php:178 GroupEditor.php:83 GroupPropsFormEditor.php:285
-#: GroupPropsFormEditor.php:409 GroupView.php:322 ListEvents.php:215
-#: PersonView.php:757 PropertyTypeEditor.php:108
+#: FundRaiserEditor.php:178 GroupEditor.php:83 GroupPropsFormEditor.php:286
+#: GroupPropsFormEditor.php:410 GroupView.php:322 ListEvents.php:215
+#: PersonView.php:761 PropertyTypeEditor.php:108
 #: VolunteerOpportunityEditor.php:90 VolunteerOpportunityEditor.php:369
 #: VolunteerOpportunityEditor.php:443
 msgid "Description"
@@ -1137,9 +1137,9 @@ msgstr "Weet u zeker dat u dit fonds wil verwijderen?"
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
 msgstr "Waarschuwing: Aanpassingen op velden zullen verwijderd worden als u niet op 'Bewaar gegevens' drukt, voordat u een verwijder of toevoeg knop gebruikt."
 
-#: DonationFundEditor.php:135 FamilyCustomFieldsEditor.php:325
-#: GroupPropsFormEditor.php:276 OptionManager.php:314
-#: PersonCustomFieldsEditor.php:307 PersonEditor.php:571
+#: DonationFundEditor.php:135 FamilyCustomFieldsEditor.php:326
+#: GroupPropsFormEditor.php:277 OptionManager.php:314
+#: PersonCustomFieldsEditor.php:308 PersonEditor.php:571
 #: VolunteerOpportunityEditor.php:354
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ongeldig veld of selectie. Verandering niet aangepast! Graag veranderen en probeer opnieuw"
@@ -1154,8 +1154,8 @@ msgid "Active"
 msgstr "Actief"
 
 #: DonationFundEditor.php:199 EventEditor.php:560 EventNames.php:237
-#: FamilyCustomFieldsEditor.php:414 GroupPropsFormEditor.php:367
-#: OptionManager.php:371 PersonCustomFieldsEditor.php:410
+#: FamilyCustomFieldsEditor.php:415 GroupPropsFormEditor.php:368
+#: OptionManager.php:371 PersonCustomFieldsEditor.php:411
 #: VolunteerOpportunityEditor.php:417
 msgid "Save Changes"
 msgstr "Bewaar Gegevens"
@@ -1200,7 +1200,7 @@ msgstr "Opkomst Tellingen"
 #: ElectronicPaymentList.php:198
 #: external/templates/registration/family-register-done.php:28
 #: FamilyView.php:212 FinancialReports.php:306 Include/Footer.php:58
-#: PersonEditor.php:758 PersonView.php:380 PledgeEditor.php:511
+#: PersonEditor.php:758 PersonView.php:384 PledgeEditor.php:511
 #: PrintView.php:243 PropertyAssign.php:77 PropertyEditor.php:47
 #: PropertyList.php:32 PropertyTypeEditor.php:94 PropertyTypeList.php:60
 #: SelectList.php:1058
@@ -1379,81 +1379,81 @@ msgstr "OPKOMST TELLING"
 msgid "Add Event Type"
 msgstr "Toevoegen Evenement Type"
 
-#: FamilyCustomFieldsEditor.php:40
+#: FamilyCustomFieldsEditor.php:41
 msgid "Custom Family Fields Editor"
 msgstr "Aanpasbare familie-Veld editor"
 
-#: FamilyCustomFieldsEditor.php:177 PersonCustomFieldsEditor.php:159
+#: FamilyCustomFieldsEditor.php:178 PersonCustomFieldsEditor.php:160
 msgid "Default Option"
 msgstr "Standaard optie"
 
-#: FamilyCustomFieldsEditor.php:296
+#: FamilyCustomFieldsEditor.php:297
 msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
 msgstr "Waarschuwing: Door het verwijderen van dit veld, wordt alle hieraan gekoppelde  familiegegevens vernietigd!"
 
-#: FamilyCustomFieldsEditor.php:308 PersonCustomFieldsEditor.php:290
+#: FamilyCustomFieldsEditor.php:309 PersonCustomFieldsEditor.php:291
 msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
 msgstr "Waarschuwing: Pijltjes en delete toetsen worden meteen toegepast. Veld naam wijzigingen zullen verdwijnen als u niet 'Opslaat' voor het gebruik van een van deze toetsen!"
 
-#: FamilyCustomFieldsEditor.php:317
+#: FamilyCustomFieldsEditor.php:318
 msgid "No custom Family fields have been added yet"
 msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
 
-#: FamilyCustomFieldsEditor.php:331 GroupPropsFormEditor.php:286
-#: PersonCustomFieldsEditor.php:315
+#: FamilyCustomFieldsEditor.php:332 GroupPropsFormEditor.php:287
+#: PersonCustomFieldsEditor.php:316
 msgid "Special option"
 msgstr "Speciale Optie"
 
-#: FamilyCustomFieldsEditor.php:332 FamilyCustomFieldsEditor.php:457
-#: PersonCustomFieldsEditor.php:316 PersonCustomFieldsEditor.php:464
+#: FamilyCustomFieldsEditor.php:333 FamilyCustomFieldsEditor.php:458
+#: PersonCustomFieldsEditor.php:317 PersonCustomFieldsEditor.php:465
 msgid "Security Option"
 msgstr "Beveiligings optie"
 
-#: FamilyCustomFieldsEditor.php:333
+#: FamilyCustomFieldsEditor.php:334
 msgid "Family-View Side"
 msgstr "Familie Overzicht"
 
-#: FamilyCustomFieldsEditor.php:373 GroupPropsFormEditor.php:344
-#: PersonCustomFieldsEditor.php:359
+#: FamilyCustomFieldsEditor.php:374 GroupPropsFormEditor.php:345
+#: PersonCustomFieldsEditor.php:360
 msgid "You must select a group."
 msgstr "U moet een groep selecteren."
 
-#: FamilyCustomFieldsEditor.php:378 PersonCustomFieldsEditor.php:362
+#: FamilyCustomFieldsEditor.php:379 PersonCustomFieldsEditor.php:363
 msgid "Edit List Options"
 msgstr "Bewerk Lijst Opties"
 
-#: FamilyCustomFieldsEditor.php:388 FamilyCustomFieldsEditor.php:462
-#: PersonCustomFieldsEditor.php:380 PersonCustomFieldsEditor.php:459
+#: FamilyCustomFieldsEditor.php:389 FamilyCustomFieldsEditor.php:463
+#: PersonCustomFieldsEditor.php:381 PersonCustomFieldsEditor.php:460
 msgid "Left"
 msgstr "Links"
 
-#: FamilyCustomFieldsEditor.php:389 FamilyCustomFieldsEditor.php:463
-#: PersonCustomFieldsEditor.php:384 PersonCustomFieldsEditor.php:460
+#: FamilyCustomFieldsEditor.php:390 FamilyCustomFieldsEditor.php:464
+#: PersonCustomFieldsEditor.php:385 PersonCustomFieldsEditor.php:461
 msgid "Right"
 msgstr "Rechts"
 
-#: FamilyCustomFieldsEditor.php:441 GroupPropsFormEditor.php:393
-#: PersonCustomFieldsEditor.php:442
+#: FamilyCustomFieldsEditor.php:442 GroupPropsFormEditor.php:394
+#: PersonCustomFieldsEditor.php:443
 msgid "Help on types.."
 msgstr "Hulp on types.."
 
 #: DonationFundEditor.php:170 DonationFundEditor.php:219
-#: FamilyCustomFieldsEditor.php:348 FamilyCustomFieldsEditor.php:448
-#: FamilyEditor.php:221 GroupPropsFormEditor.php:314
-#: GroupPropsFormEditor.php:400 OptionManager.php:355
-#: PersonCustomFieldsEditor.php:335 PersonCustomFieldsEditor.php:449
+#: FamilyCustomFieldsEditor.php:349 FamilyCustomFieldsEditor.php:449
+#: FamilyEditor.php:221 GroupPropsFormEditor.php:315
+#: GroupPropsFormEditor.php:401 OptionManager.php:355
+#: PersonCustomFieldsEditor.php:336 PersonCustomFieldsEditor.php:450
 #: PropertyEditor.php:75 PropertyTypeEditor.php:49
 #: VolunteerOpportunityEditor.php:397 VolunteerOpportunityEditor.php:438
 msgid "You must enter a name"
 msgstr "U moet een naam invoeren"
 
-#: FamilyCustomFieldsEditor.php:451 GroupPropsFormEditor.php:403
-#: PersonCustomFieldsEditor.php:452
+#: FamilyCustomFieldsEditor.php:452 GroupPropsFormEditor.php:404
+#: PersonCustomFieldsEditor.php:453
 msgid "That field name already exists."
 msgstr "De naam van dit veld bestaat al."
 
-#: FamilyCustomFieldsEditor.php:467 GroupPropsFormEditor.php:414
-#: PersonCustomFieldsEditor.php:468
+#: FamilyCustomFieldsEditor.php:468 GroupPropsFormEditor.php:415
+#: PersonCustomFieldsEditor.php:469
 msgid "Add New Field"
 msgstr "Voeg een Nieuw Veld toe"
 
@@ -1498,7 +1498,7 @@ msgid "Custom Fields"
 msgstr "Aanpasbare Velden"
 
 #: external/templates/registration/family-register-members.php:20
-#: FamilyEditor.php:926 FamilyView.php:364 PersonView.php:460
+#: FamilyEditor.php:926 FamilyView.php:364 PersonView.php:464
 #: PrintView.php:319
 msgid "Family Members"
 msgstr "Familie Leden"
@@ -1520,7 +1520,7 @@ msgid "Last"
 msgstr "Achternaam"
 
 #: FamilyEditor.php:950 FamilyView.php:365 OptionManager.php:64
-#: OptionManager.php:97 PersonView.php:461 PrintView.php:324 PrintView.php:379
+#: OptionManager.php:97 PersonView.php:465 PrintView.php:324 PrintView.php:379
 #: Reports/CanvassReports.php:243 Reports/GroupReport.php:107
 msgid "Role"
 msgstr "Rol"
@@ -1635,11 +1635,11 @@ msgstr "Automatische Betalingen"
 msgid "Pledges and Payments"
 msgstr "Bijdrage en Betalingen"
 
-#: FamilyView.php:540 PersonView.php:647 PrintView.php:446
+#: FamilyView.php:540 PersonView.php:651 PrintView.php:446
 msgid "No property assignments."
 msgstr "Geen toegevoegde Eigenschappen."
 
-#: FamilyView.php:549 GroupView.php:356 PersonView.php:655 PrintView.php:451
+#: FamilyView.php:549 GroupView.php:356 PersonView.php:659 PrintView.php:451
 #: PropertyAssign.php:180 SystemSettings.php:152
 msgid "Value"
 msgstr "Waarde"
@@ -1648,11 +1648,11 @@ msgstr "Waarde"
 msgid "Edit Value"
 msgstr "Wijzig Waarde"
 
-#: FamilyView.php:613 PersonView.php:688
+#: FamilyView.php:613 PersonView.php:692
 msgid "Assign a New Property"
 msgstr "Voeg een Nieuwe Eigenschap toe"
 
-#: FamilyView.php:634 GroupView.php:433 PersonView.php:724 PersonView.php:810
+#: FamilyView.php:634 GroupView.php:433 PersonView.php:728 PersonView.php:814
 #: PropertyAssign.php:189 SelectList.php:1081
 msgid "Assign"
 msgstr "Koppel"
@@ -1729,7 +1729,7 @@ msgid " Canvass Entry"
 msgstr "Enquete intoetsen"
 
 #: DepositSlipEditor.php:223 FamilyView.php:897 FindDepositSlip.php:98
-#: PersonView.php:897 PledgeDelete.php:23
+#: PersonView.php:901 PledgeDelete.php:23
 msgid "Confirm Delete"
 msgstr "Bevestig Verwijdering"
 
@@ -2087,7 +2087,7 @@ msgstr "Speelruimte"
 msgid "Longitude"
 msgstr "Lengte"
 
-#: GeoPage.php:445 PersonView.php:349 SelectList.php:784
+#: GeoPage.php:445 PersonView.php:353 SelectList.php:784
 msgid "Add to Cart"
 msgstr "Voeg resultaten toe aan mandje"
 
@@ -2123,7 +2123,7 @@ msgstr "Clone rollen"
 msgid "from group"
 msgstr "van de Groep"
 
-#: GroupEditor.php:119 GroupPropsFormEditor.php:325
+#: GroupEditor.php:119 GroupPropsFormEditor.php:326
 msgid "Select a group"
 msgstr "Selecteer een groep"
 
@@ -2167,23 +2167,23 @@ msgstr "Bewerking"
 msgid "data for member"
 msgstr "Data for een Lid"
 
-#: GroupPropsFormEditor.php:42
+#: GroupPropsFormEditor.php:43
 msgid "Group-Specific Properties Form Editor:"
 msgstr "Bewerk het Groep-Specifieke Eigenschappen Formulier"
 
-#: GroupPropsFormEditor.php:264
+#: GroupPropsFormEditor.php:265
 msgid "No properties have been added yet"
 msgstr "Er zijn nog geen eigenschappen toegevoegd"
 
-#: GroupPropsFormEditor.php:270
+#: GroupPropsFormEditor.php:271
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
 msgstr "Waarschuwing: Aanpassingen op het veld zullen verdwijnen als u niet 'Eerst Opslaat' voor het gebruik van een op, neer, verwijder of toevoeg knop!"
 
-#: GroupPropsFormEditor.php:287
+#: GroupPropsFormEditor.php:288
 msgid "Show in"
 msgstr "Vertoon in"
 
-#: GroupPropsFormEditor.php:287
+#: GroupPropsFormEditor.php:288
 msgid "Person View"
 msgstr "Toon Personen"
 
@@ -2282,7 +2282,7 @@ msgstr "Groep-Specifieke Eigenschappen"
 msgid "Disabled for this group."
 msgstr "Uitgezet voor deze groep."
 
-#: FamilyView.php:449 GroupView.php:342 PersonView.php:382 PrintView.php:435
+#: FamilyView.php:449 GroupView.php:342 PersonView.php:386 PrintView.php:435
 msgid "Assigned Properties"
 msgstr "Toegevoegde Eigenschappen"
 
@@ -2397,7 +2397,7 @@ msgstr "Huidige Rol"
 msgid "Update All Family Coordinates"
 msgstr "Alles bijwerken Family Coördinaten"
 
-#: Include/Footer.php:129 PersonView.php:383
+#: Include/Footer.php:129 PersonView.php:387
 msgid "Volunteer Opportunities"
 msgstr "Vrijwilligers mogelijkheden"
 
@@ -2549,19 +2549,19 @@ msgstr "Genereer Verklaringen voor geselecteerde"
 msgid "Select"
 msgstr "Selecteer "
 
-#: PersonCustomFieldsEditor.php:28
+#: PersonCustomFieldsEditor.php:29
 msgid "Custom Person Fields Editor"
 msgstr "Aanpasbare Persoons-Veld Administratie"
 
-#: PersonCustomFieldsEditor.php:278
+#: PersonCustomFieldsEditor.php:279
 msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
 msgstr "Waarschuwing: Door het verwijderen van dit veld, wordt alle persoons data hieraan gekoppeld vernietigd!"
 
-#: PersonCustomFieldsEditor.php:299
+#: PersonCustomFieldsEditor.php:300
 msgid "No custom person fields have been added yet"
 msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
 
-#: PersonCustomFieldsEditor.php:317
+#: PersonCustomFieldsEditor.php:318
 msgid "Person-View Side"
 msgstr "Bekijk-Persoon Kant"
 
@@ -2589,7 +2589,7 @@ msgstr "E-mail werk is niet geldig"
 msgid "Red text"
 msgstr "Rode tekst"
 
-#: PersonEditor.php:564 PersonView.php:343
+#: PersonEditor.php:564 PersonView.php:347
 msgid "indicates items inherited from the associated family record."
 msgstr "geeft aan dat inhoud is geërfd van het gekoppelde familie record."
 
@@ -2607,7 +2607,7 @@ msgstr "Verberg Leeftijd"
 msgid "Create a new family (using last name)"
 msgstr "Voeg een Nieuwe familie toe (gebruik achternaam)"
 
-#: PersonEditor.php:1074 PersonView.php:289
+#: PersonEditor.php:1074 PersonView.php:293
 msgid "Friend Date"
 msgstr "Bezoekers Datum"
 
@@ -2623,35 +2623,35 @@ msgstr "Selecteer de groep om deze persoon aan toe te voegen"
 msgid "Not assigned"
 msgstr "Niet gekoppeled"
 
-#: PersonView.php:348
+#: PersonView.php:352
 msgid "Printable Page"
 msgstr "Afdruk Voorbeeld"
 
-#: PersonView.php:352
+#: PersonView.php:356
 msgid "Edit \"Why Came\" Notes"
 msgstr "Bewerk \"Waarom Kwam\" Notities"
 
-#: PersonView.php:358
+#: PersonView.php:362
 msgid "Delete this Record"
 msgstr "Verwijder dit Record"
 
-#: PersonView.php:364
+#: PersonView.php:368
 msgid "Make User"
 msgstr "Maak Gebruiker"
 
-#: PersonView.php:368
+#: PersonView.php:372
 msgid "Edit User"
 msgstr "Bewerk Gebruiker"
 
-#: PersonView.php:533 PrintView.php:374
+#: PersonView.php:537 PrintView.php:374
 msgid "No group assignments."
 msgstr "Geen Koppelingen aan Groepen."
 
-#: PersonView.php:749
+#: PersonView.php:753
 msgid "No volunteer opportunity assignments."
 msgstr "Geen vrijwilligers mogelijkheden koppelingen."
 
-#: PersonView.php:792
+#: PersonView.php:796
 msgid "Assign a New Volunteer Opportunity"
 msgstr "Koppel een Nieuwe vrijwilligers mogelijkheid"
 
@@ -2779,7 +2779,7 @@ msgstr "Afdruk Voorbeeld"
 msgid "Age"
 msgstr "Leeftijd"
 
-#: PersonView.php:381 PrintView.php:363
+#: PersonView.php:385 PrintView.php:363
 msgid "Assigned Groups"
 msgstr "Toegekende Groepen"
 
@@ -3563,43 +3563,43 @@ msgstr "Zomer"
 msgid "Fall"
 msgstr "Herfst"
 
-#: Include/Functions.php:1139
+#: Include/Functions.php:1144
 msgid "Error: Invalid Editor ID!"
 msgstr "Error: Ongeldige Administrateur ID!"
 
-#: FundRaiserEditor.php:56 Include/Functions.php:1332 PledgeEditor.php:321
+#: FundRaiserEditor.php:56 Include/Functions.php:1337 PledgeEditor.php:321
 msgid "Not a valid date"
 msgstr "Geen geldige Datum"
 
-#: Include/Functions.php:1344
+#: Include/Functions.php:1349
 msgid "Invalid Year"
 msgstr "Ongeldig Jaar"
 
-#: Include/Functions.php:1347
+#: Include/Functions.php:1352
 msgid "Out of range: Allowable values are 1901 to 2155"
 msgstr "Ongeldig: Jaar moet tussen 1901 en 2155 zijn"
 
-#: Include/Functions.php:1360 Include/Functions.php:1376
+#: Include/Functions.php:1365 Include/Functions.php:1381
 msgid "Invalid Number"
 msgstr "Ongeldig Nummer"
 
-#: Include/Functions.php:1363
+#: Include/Functions.php:1368
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr "Nummer is te groot. Moet tussen -2147483648 and 2147483647 vallen"
 
-#: Include/Functions.php:1379
+#: Include/Functions.php:1384
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Geld bedrag te groot. Maximum is $999999999.99"
 
-#: Include/Functions.php:1568
+#: Include/Functions.php:1573
 msgid " Bold Italic"
 msgstr "Vet Cursief"
 
-#: Include/Functions.php:1571
+#: Include/Functions.php:1576
 msgid " Italic"
 msgstr "Cursief"
 
-#: Include/Functions.php:1573
+#: Include/Functions.php:1578
 msgid " Bold"
 msgstr "Vet"
 
