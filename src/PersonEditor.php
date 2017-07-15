@@ -164,8 +164,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthYear = InputUtils::LegacyFilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
     // Philippe Logel
-    $dFriendDate = InputUtils::FilterDate(InputUtils::LegacyFilterInput($_POST['FriendDate']));
-    $dMembershipDate = InputUtils::FilterDate(InputUtils::LegacyFilterInput($_POST['MembershipDate']));
+    $dFriendDate = InputUtils::FilterDate($_POST['FriendDate']);
+    $dMembershipDate = InputUtils::FilterDate($_POST['MembershipDate']);
     $iClassification = InputUtils::LegacyFilterInput($_POST['Classification'], 'int');
     $iEnvelope = 0;
     if (array_key_exists('EnvID', $_POST)) {
