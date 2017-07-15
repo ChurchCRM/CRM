@@ -198,14 +198,15 @@ class SystemConfig
         "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
         "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL")),
         "sNexmoAPIKey" => new ConfigItem(2012, "sNexmoAPIKey", "text", "", gettext("Nexmo SMS API Key")),
-        "sNexmoAPISecret" => new ConfigItem(2005, "sNexmoAPISecret", "text", "", gettext("Nexmo SMS API Secret")),
+        "sNexmoAPISecret" => new ConfigItem(2005, "sNexmoAPISecret", "password", "", gettext("Nexmo SMS API Secret")),
         "sNexmoFromNumber" => new ConfigItem(2006, "sNexmoFromNumber", "text", "", gettext("Nexmo SMS From Number")),
         "sOLPURL" => new ConfigItem(2007, "sOLPURL", "text", "http://192.168.1.1:4316", gettext("OpenLP URL")),
         "sOLPUserName" => new ConfigItem(2008, "sOLPUserName", "text", "", gettext("OpenLP Username")),
-        "sOLPPassword" => new ConfigItem(2009, "sOLPPassword", "text", "", gettext("OpenLP Password")),
+        "sOLPPassword" => new ConfigItem(2009, "sOLPPassword", "password", "", gettext("OpenLP Password")),
         "sKioskVisibilityTimestamp" => new ConfigItem(2011, "sKioskVisibilityTimestamp", "text", "", gettext("KioskVisibilityTimestamp")),
-        "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen"))
-      );
+        "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen")),
+        "sChurchWebSite" => new ConfigItem(2013, "sChurchWebSite", "text", "", gettext("Your Church's Website"))
+    );
   }
 
   private static function buildCategories()

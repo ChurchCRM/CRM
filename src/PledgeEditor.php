@@ -795,9 +795,12 @@ require 'Include/Header.php';
     });
     
     $("#FundTable").DataTable({
-      responsive:true,
-      paging: false,
-      searching: false
+        "language": {
+            "url": window.CRM.plugin.dataTable.language.url
+        },
+        responsive:true,
+        paging: false,
+        searching: false
     });
     
     

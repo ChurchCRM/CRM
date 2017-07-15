@@ -3,7 +3,7 @@ function initPaymentTable()
   var colDef = [
     {
       width: 'auto',
-      title:'Family',
+      title:i18next.t('Family'),
       data:'FamilyString',
       render: function(data, type, full, meta) {
         var familyName = data ? data : i18next.t('Anonymous');
@@ -13,17 +13,17 @@ function initPaymentTable()
     },
     {
       width: 'auto',
-      title:'Check Number',
+      title:i18next.t('Check Number'),
       data:'Checkno'
     },
     {
       width: 'auto',
-      title:'Amount',
+      title:i18next.t('Amount'),
       data:'sumAmount'
     },
     {
       width: 'auto',
-      title:'Method',
+      title:i18next.t('Method'),
       data:'Method'
     }
   ];
@@ -33,7 +33,7 @@ function initPaymentTable()
     colDef.push(
       {
         width: 'auto',
-        title:'Details',
+        title:i18next.t('Details'),
         data:'Id',
         render: function(data, type, full, meta)
         {
@@ -49,6 +49,9 @@ function initPaymentTable()
       url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
       dataSrc:''
     },
+      "language": {
+          "url": window.CRM.plugin.dataTable.language.url
+      },
     columns: colDef,
     responsive: true,
     "createdRow" : function (row,data,index) {
