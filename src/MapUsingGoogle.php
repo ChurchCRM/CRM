@@ -94,7 +94,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             <div class="row legendbox">
                 <div class="legenditem">
                     <img
-                        src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                        src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
                     <?= gettext('Unassigned') ?>
                 </div>
                 <?php
@@ -102,7 +102,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                     ?>
                     <div class="legenditem">
                         <img
-                            src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                            src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
                         <?= $icon->getOptionName() ?>
                     </div>
                     <?php
@@ -118,7 +118,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             <div class="row legendbox">
                 <div class="col-xs-6 legenditem">
                     <img
-                        class="legendicon" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                        class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
                     <div class="legenditemtext"><?= gettext('Unassigned') ?></div>
                 </div>
                 <?php
@@ -126,7 +126,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                     ?>
                     <div class="col-xs-6 legenditem">
                         <img
-                            class="legendicon" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                            class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
                         <div class="legenditemtext"><?= $icon->getOptionName() ?></div>
                     </div>
                     <?php
