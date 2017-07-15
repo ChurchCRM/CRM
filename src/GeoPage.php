@@ -279,7 +279,7 @@ $families = FamilyQuery::create()
                         <div class="col-xs-6">
                             <label class="checkbox-inline">
                                 <input type="checkbox" value="Guardian" value="1" name="Classification<?= $key ?>"
-                                       id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?> > <?= ($value == "Unassigned")?_($value):$value ?>
+                                       id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?> > <?= _($value) ?>
                             </label>
                         </div>
                         <?php
