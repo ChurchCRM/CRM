@@ -867,16 +867,17 @@ if ($sFileType == 'PDF') {
         $sCSVOutput .= '"ZipBundle"'.$delimiter;
     }
     
-	function translate_special_charset ($string)
-	{
-		if ($string == "" || $string == null)
-			return "";
-		
-		return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?$string:iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
-	} 	
+    function translate_special_charset($string)
+    {
+        if ($string == "" || $string == null) {
+            return "";
+        }
+        
+        return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?$string:iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
+    }
 
 
-	$delimiter = SystemConfig::getValue("sCSVExportDelemiter");
+    $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
 
     $sCSVOutput .= '"'.translate_special_charset("Greeting").'"'.$delimiter.'"'.translate_special_charset("Name").'"'.$delimiter.'"'.translate_special_charset("Address 1").'"'.$delimiter.'"'.translate_special_charset("Address 2").'"'.$delimiter.'"'.translate_special_charset("City").'"'.$delimiter.'"'.translate_special_charset("State").'"'.$delimiter.'"'.translate_special_charset("Zip").'"'."\n";
@@ -915,10 +916,9 @@ if ($sFileType == 'PDF') {
     header('Pragma: public');
     
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
- 		if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")
- 		{
- 			echo "\xEF\xBB\xBF";
- 		}
+        if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
+            echo "\xEF\xBB\xBF";
+        }
     
     echo $sCSVOutput;
 }
