@@ -336,7 +336,10 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                       $custom_Special = $sPhoneCountry;
                   }
                   echo '<li><i class="fa-li glyphicon glyphicon-tag"></i>'.$custom_Name.': <span>';
-                  echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
+                  if ($type_ID == 11)
+                  	echo "<a href=\"tel:".nl2br((displayCustomField($type_ID, $currentData, $custom_Special)))."\">".nl2br((displayCustomField($type_ID, $currentData, $custom_Special)))."</a>";
+                  else
+	                  echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
                   echo '</span></li>';
               }
           } ?>
