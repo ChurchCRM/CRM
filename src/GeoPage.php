@@ -238,7 +238,7 @@ $families = FamilyQuery::create()
                 <label for="Family"
                        class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Select Family:') ?></label>
                 <div class="col-xs-12 col-sm-9">
-                    <select name='Family' data-placeholder="Select a family" class="form-control choiceSelectBox"
+                    <select name='Family' data-placeholder="<?= gettext('Select a family') ?>" class="form-control choiceSelectBox"
                             style="width: 100%">
                         <option></option>
                         <?php
@@ -279,7 +279,7 @@ $families = FamilyQuery::create()
                         <div class="col-xs-6">
                             <label class="checkbox-inline">
                                 <input type="checkbox" value="Guardian" value="1" name="Classification<?= $key ?>"
-                                       id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?> > <?= $value ?>
+                                       id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?> > <?= ($value == "Unassigned")?_($value):$value ?>
                             </label>
                         </div>
                         <?php
