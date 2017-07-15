@@ -32,6 +32,7 @@ require_once 'Functions.php';
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\NotificationService;
+use ChurchCRM\dto\SystemConfig;
 
 function Header_system_notifications()
 {
@@ -127,6 +128,7 @@ function Header_body_scripts()
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
             maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
+            datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
             plugin: {
                 dataTable : {
                    "language": {
