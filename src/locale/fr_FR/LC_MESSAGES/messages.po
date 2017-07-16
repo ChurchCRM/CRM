@@ -9106,3 +9106,31 @@ msgstr "Représentant(e) familial(e)"
 msgid "Spouse"
 msgstr "Epou(x)se"
 
+#: ChurchCRM/Service/DashboardService.php:82
+msgid "Child"
+msgstr "Enfant"
+
+#: GeoPage.php:241
+msgid "Select a family"
+msgstr "Sélectionnez une famille"
+
+#: UpgradeCRM.php:58
+msgid "Release Notes"
+msgstr "Notes de version"
+
+#: 
+msgid "Members from group"
+msgstr "Membres pour le groupe"
+
+#: 
+msgid "Members to another group"
+msgstr "Membres dans un autre groupe"
+
+#: 
+msgid "Members to cart"
+msgstr "Membres dans le panier"
+
+#: 
+msgid "Move"
+msgstr "Déplacer"
+
