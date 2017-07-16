@@ -224,11 +224,11 @@ $("document").ready(function()
         {
           if(full.lst_OptionID == defaultRoleID)
           {
-            return "<strong><i class=\"fa fa-check\"></i> Default</strong>";
+            return "<strong><i class=\"fa fa-check\"></i>"+ i18next.t("Default")+"</strong>";
           }
           else
           {
-            return '<button type="button" id="defaultRole-' + full.lst_OptionID + '" class="btn btn-success defaultRole">Default</button>';
+            return '<button type="button" id="defaultRole-' + full.lst_OptionID + '" class="btn btn-success defaultRole">'+i18next.t("Default")+'</button>';
           }
         }
       },
@@ -264,7 +264,7 @@ $("document").ready(function()
         title: i18next.t("Delete"),
         render: function(data, type, full, meta)
         {
-          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole"><?= _("Delete") ?></button>';
+          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole">'+i18next.t("Delete")+'</button>';
 
         }
       },
