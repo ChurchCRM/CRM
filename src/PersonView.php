@@ -337,10 +337,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   }
                   echo '<li><i class="fa-li glyphicon glyphicon-tag"></i>'.$custom_Name.': <span>';
                   $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
-                  if ($type_ID == 11)
-                  	echo "<a href=\"tel:".$temp_string."\">".$temp_string."</a>";
-                  else
-	                  echo $temp_string;
+                  if ($type_ID == 11) {
+                      echo "<a href=\"tel:".$temp_string."\">".$temp_string."</a>";
+                  } else {
+                      echo $temp_string;
+                  }
                   echo '</span></li>';
               }
           } ?>
