@@ -73,13 +73,13 @@ class DashboardService
           $role = gettext('Unknown');
           break;
         case 1:
-          $role = 'Head of Household';
+          $role = gettext('Head of Household');
           break;
         case 2:
-          $role = 'Spouse';
+          $role = gettext('Spouse');
           break;
         case 3:
-          $role = 'Child';
+          $role = gettext('Child');
           break;
         default:
           $role = gettext('Other');

@@ -345,14 +345,14 @@ function initDataTable() {
     $(this).toggleClass('selected');
     var selectedRows = dataT.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
-    $("#deleteSelectedRows").text("Remove (" + selectedRows + ") Members from group");
+    $("#deleteSelectedRows").text(i18next.t("Remove")+" (" + selectedRows + ") "+i18next.t("Members from group"));
     $("#buttonDropdown").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").prop('disabled', !(selectedRows));
-    $("#addSelectedToGroup").html("Add  (" + selectedRows + ") Members to another group");
+    $("#addSelectedToGroup").html(i18next.t("Add")+"  (" + selectedRows + ") "+i18next.t("Members to another group"));
     $("#addSelectedToCart").prop('disabled', !(selectedRows));
-    $("#addSelectedToCart").html("Add  (" + selectedRows + ") Members to cart");
+    $("#addSelectedToCart").html(i18next.t("Add")+"  (" + selectedRows + ") "+i18next.t("Members to cart"));
     $("#moveSelectedToGroup").prop('disabled', !(selectedRows));
-    $("#moveSelectedToGroup").html("Move  (" + selectedRows + ") Members to another group");
+    $("#moveSelectedToGroup").html(i18next.t("Move")+"  (" + selectedRows + ") "+i18next.t("Members to another group"));
   });
 
 }

@@ -55,11 +55,14 @@ Header_body_scripts();
         <h3 class="timeline-header"><?= gettext('Step 3: Apply Update Package on Server') ?> <span id="status3"></span></h3>
         <div class="timeline-body" id="updatePhase" style="display: none">
           <p><?= gettext('Extract the upgrade archive, and apply the new files')?></p>
+          <h4><?= gettext('Release Notes') ?></h4>
+          <pre id="releaseNotes"></pre>
           <ul>
             <li><?= gettext('File Name:')?> <span id="updateFileName"> </span></li>
             <li><?= gettext('Full Path:')?> <span id="updateFullPath"> </span></li>
             <li><?= gettext('SHA1:')?> <span id="updateSHA1"> </span></li>
           </ul>
+          <br/>
           <input type="button" class="btn btn-warning" id="applyUpdate" value="<?= gettext('Upgrade System') ?>">
         </div>
       </div>
@@ -117,6 +120,7 @@ Header_body_scripts();
       window.CRM.updateFile=data;
       $("#updateFileName").text(data.fileName);
       $("#updateFullPath").text(data.fullPath);
+      $("#releaseNotes").text(data.releaseNotes);
       $("#updateSHA1").text(data.sha1);
       $("#fetchPhase").slideUp();
       $("#updatePhase").show("slow");
