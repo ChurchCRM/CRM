@@ -175,6 +175,15 @@ module.exports = function (grunt) {
                     "try {"+src+"} catch(e) {}";
                 },
             },
+            ar_EG: {
+                src: [
+                    'locale/JSONKeys/ar_EG.json',
+                    'node_modules/fullcalendar/dist/locale/ar.js',
+                    'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ar.js',
+                    'node_modules/admin-lte/plugins/select2/i18n/ar.js'
+                ],
+                dest: 'src/skin/locale/ar_EG.js'
+            },
             de_DE: {
                 src: [
                   'locale/JSONKeys/de_DE.json', 
@@ -235,6 +244,15 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/select2/i18n/hu.js'
                 ],
                 dest: 'src/skin/locale/hu_HU.js'
+            },
+            th_TH: {
+                src: [
+                    'locale/JSONKeys/th_TH.json',
+                    'node_modules/fullcalendar/dist/locale/th.js',
+                    'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.th.js',
+                    'node_modules/admin-lte/plugins/select2/i18n/th.js'
+                ],
+                dest: 'src/skin/locale/ar_EG.js'
             },
             it_IT: {
                 src: [
