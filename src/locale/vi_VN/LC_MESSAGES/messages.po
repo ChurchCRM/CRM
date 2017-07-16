@@ -2029,11 +2029,11 @@ msgstr "Đăng nhập để phục hồi cơ sở dữ liệu"
 msgid "Church Information"
 msgstr "Thông tin Hội Thánh"
 
-#: UpgradeCRM.php:70
+#: UpgradeCRM.php:73
 msgid "Step 4: Login"
 msgstr "Bước 4: Đăng nhập"
 
-#: UpgradeCRM.php:72
+#: UpgradeCRM.php:75
 msgid "Login to Upgraded System"
 msgstr "Đăng nhập để nâng cấp hệ thống"
 
