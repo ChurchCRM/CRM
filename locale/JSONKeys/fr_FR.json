@@ -2112,5 +2112,10 @@
     "Head of Household": "Représentant(e) familial(e)",
     "Spouse": "Epou(x)se",
     "Child": "Enfant",
-    "Select a family": "Sélectionnez une famille"
+    "Select a family": "Sélectionnez une famille",
+    "Release Notes": "Notes de version",
+    "Members from group": "Membres pour le groupe",
+    "Members to another group": "Membres dans un autre groupe",
+    "Members to cart": "Membres dans le panier",
+    "Move": "Déplacer"
 }
