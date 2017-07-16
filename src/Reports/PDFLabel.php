@@ -867,20 +867,10 @@ if ($sFileType == 'PDF') {
         $sCSVOutput .= '"ZipBundle"'.$delimiter;
     }
     
-    function translate_special_charset($string)
-    {
-        if ($string == "" || $string == null) {
-            return "";
-        }
-        
-        return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?$string:iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
-    }
+	 $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
 
-    $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
-
-
-    $sCSVOutput .= '"'.translate_special_charset("Greeting").'"'.$delimiter.'"'.translate_special_charset("Name").'"'.$delimiter.'"'.translate_special_charset("Address 1").'"'.$delimiter.'"'.translate_special_charset("Address 2").'"'.$delimiter.'"'.translate_special_charset("City").'"'.$delimiter.'"'.translate_special_charset("State").'"'.$delimiter.'"'.translate_special_charset("Zip").'"'."\n";
+    $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address 1").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address 2").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
 
     while (list($i, $sLT) = each($aLabelList)) {
         if ($iBulkCode) {
@@ -889,22 +879,22 @@ if ($sFileType == 'PDF') {
 
         $iNewline = (strpos($sLT['Name'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '""'.$delimiter.'"'.translate_special_charset($sLT['Name']).'"'.$delimiter;
+            $sCSVOutput .= '""'.$delimiter.'"'.InputUtils::translate_special_charset($sLT['Name']).'"'.$delimiter;
         } else {
-            $sCSVOutput .= '"'.translate_special_charset(mb_substr($sLT['Name'], 0, $iNewline)).'"'.$delimiter.
-                            '"'.translate_special_charset(mb_substr($sLT['Name'], $iNewline + 1)).'"'.$delimiter;
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset(mb_substr($sLT['Name'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translate_special_charset(mb_substr($sLT['Name'], $iNewline + 1)).'"'.$delimiter;
         }
 
         $iNewline = (strpos($sLT['Address'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"'.translate_special_charset($sLT['Address']).'",""'.$delimiter;
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['Address']).'",""'.$delimiter;
         } else {
-            $sCSVOutput .= '"'.translate_special_charset(mb_substr($sLT['Address'], 0, $iNewline)).'"'.$delimiter.
-                            '"'.translate_special_charset(mb_substr($sLT['Address'], $iNewline + 1)).'"'.$delimiter;
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], $iNewline + 1)).'"'.$delimiter;
         }
 
-        $sCSVOutput .= '"'.translate_special_charset($sLT['City']).'"'.$delimiter.
-                        '"'.translate_special_charset($sLT['State']).'"'.$delimiter.
+        $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['City']).'"'.$delimiter.
+                        '"'.InputUtils::translate_special_charset($sLT['State']).'"'.$delimiter.
                         '"'.$sLT['Zip'].'"'."\n";
     }
 
@@ -916,9 +906,10 @@ if ($sFileType == 'PDF') {
     header('Pragma: public');
     
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-        if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
-            echo "\xEF\xBB\xBF";
-        }
+ 		if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")
+ 		{
+ 			echo "\xEF\xBB\xBF";
+ 		}
     
     echo $sCSVOutput;
 }
