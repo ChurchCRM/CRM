@@ -7,6 +7,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         buildConfig: grunt.file.readJSON('BuildConfig.json'),
         languages: {
+            'ar': 'ar_EG',
             'de': 'de_DE',
             'en-au': 'en_AU',
             'en-ca': 'en_CA',
@@ -23,6 +24,7 @@ module.exports = function (grunt) {
             'ru': 'ru_RU',
             'sq': 'sq_AL',
             'sv': 'sv_SE',
+            'th': 'th_TH',
             'vi': 'vi_VN',
             'zh-CN': 'zh_CN',
             'zh-TW': 'zh_TW',
