@@ -128,7 +128,7 @@ msgstr "Pays"
 #: external/templates/registration/family-register-members.php:103
 #: Reports/DirectoryReport.php:288 Reports/GroupReport.php:124
 msgid "Phone"
-msgstr "Fixe"
+msgstr "Téléphone"
 
 #: AutoPaymentEditor.php:946 CartToFamily.php:315 CartView.php:296
 #: ChurchCRM/Reports/PDF_Directory.php:321
@@ -5465,35 +5465,35 @@ msgstr "Etape 3 : Appliquer le package de mise à jour sur le serveur"
 msgid "Extract the upgrade archive, and apply the new files"
 msgstr "Extraire les mises à jour du package et appliquer les nouveaux fichiers"
 
-#: UpgradeCRM.php:60
+#: UpgradeCRM.php:62
 msgid "Full Path:"
 msgstr "Chemin d'accès complet :"
 
-#: UpgradeCRM.php:61
+#: UpgradeCRM.php:63
 msgid "SHA1:"
 msgstr "SHA1 :"
 
-#: UpgradeCRM.php:63
+#: UpgradeCRM.php:66
 msgid "Upgrade System"
 msgstr "Système de mise à jour"
 
-#: UpgradeCRM.php:70
+#: UpgradeCRM.php:73
 msgid "Step 4: Login"
 msgstr "Etape 4 : Authentification"
 
-#: UpgradeCRM.php:72
+#: UpgradeCRM.php:75
 msgid "Login to Upgraded System"
 msgstr "Authentification pour le système de mise à jour"
 
-#: UpgradeCRM.php:94
+#: UpgradeCRM.php:97
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup effectué, Prêt pour télécharger."
 
-#: UpgradeCRM.php:104
+#: UpgradeCRM.php:107
 msgid "Backup Error."
 msgstr "Erreur de Backup."
 
-#: UpgradeCRM.php:149
+#: UpgradeCRM.php:153
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Backup téléchargé, la copie sur le serveur est supprimée"
 
@@ -5803,7 +5803,7 @@ msgstr "Notes"
 msgid "Reports"
 msgstr "Rapport"
 
-#: UpgradeCRM.php:59
+#: UpgradeCRM.php:61
 msgid "File Name:"
 msgstr "Nom du fichier:"
 
@@ -8050,25 +8050,25 @@ msgstr "Serveur SMTP est vide"
 msgid "Your system could be more secure by installing an TLS/SSL Cert."
 msgstr "Votre système serait plus sécurisé avec un certificat TLS/SSL."
 
-#: ChurchCRM/tasks/PersonClassificationDataCheck.php:36
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:39
 #, fuzzy
 msgid "Missing Classification Data"
 msgstr "Données de classification manquante"
 
-#: ChurchCRM/tasks/PersonClassificationDataCheck.php:41
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:44
 msgid "Missing Classification Data for Some People"
 msgstr "Données de classification manquante pour certaine personne"
 
-#: ChurchCRM/tasks/PersonGenderDataCheck.php:36
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:39
 #, fuzzy
 msgid "Missing Gender Data"
 msgstr "Données de genre manquante"
 
-#: ChurchCRM/tasks/PersonGenderDataCheck.php:41
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:44
 msgid "Missing Gender Data for Some People"
 msgstr "Données de genre manquante pour certaine personne"
 
-#: ChurchCRM/tasks/PersonRoleDataCheck.php:37
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:40
 #, fuzzy
 msgid "Missing Role Data"
 msgstr "Données de rôle manquant"
@@ -8330,7 +8330,7 @@ msgstr "Api Google requièrent une clé de https://developers.google.com/maps/do
 msgid "Church Checking Account Number"
 msgstr "Numéro de compte chèque de l'église"
 
-#: ChurchCRM/tasks/PersonRoleDataCheck.php:42
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:45
 msgid "Missing Role Data for Some People"
 msgstr "Données de rôle manquantes pour certaine personne"
 
@@ -8744,7 +8744,7 @@ msgstr "Familles manquantes ? Mise à jour Latitude et Longitude pour la famille
 
 #: UpdateAllLatLon.php:37
 msgid "Families without Geo Info"
-msgstr "Familles sans Info Géographique"
+msgstr "Familles sans Info Géographique "
 
 #: ChurchCRM/dto/Notification.php:80
 msgid "Notification for"
@@ -9097,4 +9097,12 @@ msgstr "Voulez-vous supprimer cette personne ? Cette action ne pourra être annu
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Etes vous sûr de vouloir enlever cette propriété ?"
+
+#: ChurchCRM/Service/DashboardService.php:76
+msgid "Head of Household"
+msgstr "Représentant(e) familial(e)"
+
+#: ChurchCRM/Service/DashboardService.php:79
+msgid "Spouse"
+msgstr "Epou(x)se"
 

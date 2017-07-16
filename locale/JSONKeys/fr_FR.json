@@ -14,7 +14,7 @@
     "City": "Ville",
     "State": "État/Région",
     "Country": "Pays",
-    "Phone": "Fixe",
+    "Phone": "Téléphone",
     "Email": "Email",
     "Credit Card": "Carte de crédit",
     "Vanco Credit Card Method": "Méthode Vanco des cartes de crédit",
@@ -2020,7 +2020,7 @@
     "system user password changed by admin": "Mot de passe utilisateur système modifié par l'admin",
     "system user login reset": "Login utilisateur système remis à zéro",
     "Missing Families? Update Family Latitude or Longitude now.": "Familles manquantes ? Mise à jour Latitude et Longitude pour la famille.",
-    "Families without Geo Info": "Familles sans Info Géographique",
+    "Families without Geo Info": "Familles sans Info Géographique ",
     "Notification for": "Notification pour",
     "DEBUG": "DEBUG",
     "INFO": "INFO",
@@ -2108,5 +2108,9 @@
     "Successfully submitted Issue": "Issue envoyé avec succès",
     "View Issue on GitHub": "Voir issue sur GitHub",
     "Do you want to delete this person?  This cannot be undone.": "Voulez-vous supprimer cette personne ? Cette action ne pourra être annulée.",
-    "Are you sure you want to unassign this property?": "Etes vous sûr de vouloir enlever cette propriété ?"
+    "Are you sure you want to unassign this property?": "Etes vous sûr de vouloir enlever cette propriété ?",
+    "Head of Household": "Représentant(e) familial(e)",
+    "Spouse": "Epou(x)se",
+    "Child": "Enfant",
+    "Select a family": "Sélectionnez une famille"
 }
