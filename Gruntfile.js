@@ -252,7 +252,7 @@ module.exports = function (grunt) {
                     'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.th.js',
                     'node_modules/admin-lte/plugins/select2/i18n/th.js'
                 ],
-                dest: 'src/skin/locale/ar_EG.js'
+                dest: 'src/skin/locale/th_TH.js'
             },
             it_IT: {
                 src: [
