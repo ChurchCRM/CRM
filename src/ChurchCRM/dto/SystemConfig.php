@@ -208,14 +208,16 @@ class SystemConfig
         "sOLPPassword" => new ConfigItem(2009, "sOLPPassword", "password", "", gettext("OpenLP Password")),
         "sKioskVisibilityTimestamp" => new ConfigItem(2011, "sKioskVisibilityTimestamp", "text", "", gettext("KioskVisibilityTimestamp")),
         "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen")),
-        "sChurchWebSite" => new ConfigItem(2013, "sChurchWebSite", "text", "", gettext("Your Church's Website"))
+        "sChurchWebSite" => new ConfigItem(2013, "sChurchWebSite", "text", "", gettext("Your Church's Website")),
+        "sChurchFB" => new ConfigItem(2013, "sChurchFB", "text", "", gettext("Your Church's Facebook Page")),
+        "sChurchTwitter" => new ConfigItem(2013, "sChurchTwitter", "text", "", gettext("Your Church's Twitter Page"))
     );
   }
 
   private static function buildCategories()
   {
     return array (
-      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude"],
+      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
       gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
