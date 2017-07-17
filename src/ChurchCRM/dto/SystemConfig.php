@@ -25,6 +25,8 @@ class SystemConfig
             gettext("German - Germany:de_DE"),
             gettext("Spanish - Spain:es_ES"),
             gettext("French - France:fr_FR"),
+            gettext("Arabic - Egypt:ar_EG"),
+            gettext("Hungarian:hu_HU"),
             gettext("Hungarian:hu_HU"),
             gettext("Italian - Italy:it_IT"),
             gettext("Norwegian:nb_NO"),
@@ -37,6 +39,7 @@ class SystemConfig
             gettext("Albanian:sq_AL"),
             gettext("Swedish - Sweden:sv_SE"),
             gettext("Vietnamese:vi_VN"),
+            gettext("Thai:th_TH"),
             gettext("Chinese - China:zh_CN"),
             gettext("Chinese - Taiwan:zh_TW")
         ]
@@ -205,14 +208,16 @@ class SystemConfig
         "sOLPPassword" => new ConfigItem(2009, "sOLPPassword", "password", "", gettext("OpenLP Password")),
         "sKioskVisibilityTimestamp" => new ConfigItem(2011, "sKioskVisibilityTimestamp", "text", "", gettext("KioskVisibilityTimestamp")),
         "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen")),
-        "sChurchWebSite" => new ConfigItem(2013, "sChurchWebSite", "text", "", gettext("Your Church's Website"))
+        "sChurchWebSite" => new ConfigItem(2013, "sChurchWebSite", "text", "", gettext("Your Church's Website")),
+        "sChurchFB" => new ConfigItem(2013, "sChurchFB", "text", "", gettext("Your Church's Facebook Page")),
+        "sChurchTwitter" => new ConfigItem(2013, "sChurchTwitter", "text", "", gettext("Your Church's Twitter Page"))
     );
   }
 
   private static function buildCategories()
   {
     return array (
-      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude"],
+      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
       gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
