@@ -116,13 +116,13 @@ $MenuFirst = 1;
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <li>
-                                    <a href="CartView.php">
+                                    <a href="<?= SystemURLs::getRootPath() ?>/CartView.php">
                                         <i class="fa fa-shopping-cart text-green"></i> <?= gettext('View Cart') ?>
                                     </a>
                                 </li>
                                 <li>
                                     <a id="emptyCart"
-                                       href="<?= ($isCartPage ? 'CartView.php?Action=EmptyCart' : '#') ?>">
+                                       href="<?= SystemURLs::getRootPath() ?>/<?= ($isCartPage ? 'CartView.php?Action=EmptyCart' : '#') ?>">
                                         <i class="fa fa-trash text-danger"></i> <?= gettext('Empty Cart') ?>
                                     </a>
                                 </li>
