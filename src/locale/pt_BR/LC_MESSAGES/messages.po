@@ -5364,35 +5364,35 @@ msgstr "Passo 3: Aplicar Pacote de Atualização no Servidor"
 msgid "Extract the upgrade archive, and apply the new files"
 msgstr "Extrair o arquivo de atualização e aplicar os novos arquivos"
 
-#: UpgradeCRM.php:60
+#: UpgradeCRM.php:62
 msgid "Full Path:"
 msgstr "Caminho Completo:"
 
-#: UpgradeCRM.php:61
+#: UpgradeCRM.php:63
 msgid "SHA1:"
 msgstr "SHA1:"
 
-#: UpgradeCRM.php:63
+#: UpgradeCRM.php:66
 msgid "Upgrade System"
 msgstr "Atualizar o Sistema"
 
-#: UpgradeCRM.php:70
+#: UpgradeCRM.php:73
 msgid "Step 4: Login"
 msgstr "Passo 4: Login"
 
-#: UpgradeCRM.php:72
+#: UpgradeCRM.php:75
 msgid "Login to Upgraded System"
 msgstr "Faça o Login para atualizar o Sistema"
 
-#: UpgradeCRM.php:94
+#: UpgradeCRM.php:97
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup completo, Pronto para Download."
 
-#: UpgradeCRM.php:104
+#: UpgradeCRM.php:107
 msgid "Backup Error."
 msgstr "Erro de Backup."
 
-#: UpgradeCRM.php:149
+#: UpgradeCRM.php:153
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Backup baixado, copiado ou removido do sistema"
 
@@ -5700,7 +5700,7 @@ msgstr "Notas"
 msgid "Reports"
 msgstr "Relatórios"
 
-#: UpgradeCRM.php:59
+#: UpgradeCRM.php:61
 msgid "File Name:"
 msgstr "Nome do Arquivo:"
 
@@ -7948,25 +7948,25 @@ msgstr "Informação do servidor SMTP em branco"
 msgid "Your system could be more secure by installing an TLS/SSL Cert."
 msgstr "O seu sistema podria ser mais seguro com a instalação de um certificado TLS/SSL."
 
-#: ChurchCRM/tasks/PersonClassificationDataCheck.php:36
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:39
 #, fuzzy
 msgid "Missing Classification Data"
 msgstr "Classificação de dados perdida"
 
-#: ChurchCRM/tasks/PersonClassificationDataCheck.php:41
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:44
 msgid "Missing Classification Data for Some People"
 msgstr "Classificação de dados perdida para algumas pessoas"
 
-#: ChurchCRM/tasks/PersonGenderDataCheck.php:36
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:39
 #, fuzzy
 msgid "Missing Gender Data"
 msgstr "Dado de gênero perdido"
 
-#: ChurchCRM/tasks/PersonGenderDataCheck.php:41
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:44
 msgid "Missing Gender Data for Some People"
 msgstr "Dado de gênero perdido para algumas pessoas"
 
-#: ChurchCRM/tasks/PersonRoleDataCheck.php:37
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:40
 #, fuzzy
 msgid "Missing Role Data"
 msgstr "Dado do papel perdido"
@@ -8227,7 +8227,7 @@ msgstr "A API do Google Map requer uma chave única obtida em https://developers
 msgid "Church Checking Account Number"
 msgstr "Número da Conta de Verificação da Igreja"
 
-#: ChurchCRM/tasks/PersonRoleDataCheck.php:42
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:45
 msgid "Missing Role Data for Some People"
 msgstr "Dado do papel perdido para algumas pessoas"
 
