@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 19:47+0000\n"
+"POT-Creation-Date: 2017-07-16 19:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2017-07-14T19:47:36.612Z\n"
-"PO-Revision-Date: 2017-07-14T19:47:36.613Z\n"
+"POT-Creation-Date: 2017-07-16T19:01:31.611Z\n"
+"PO-Revision-Date: 2017-07-16T19:01:31.611Z\n"
 
 #: api/routes/cart.php:13
 msgid "POST to cart requires a Persons array"
@@ -1971,6 +1971,18 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
+#: ChurchCRM/Service/DashboardService.php:76
+msgid "Head of Household"
+msgstr ""
+
+#: ChurchCRM/Service/DashboardService.php:79
+msgid "Spouse"
+msgstr ""
+
+#: ChurchCRM/Service/DashboardService.php:82
+msgid "Child"
+msgstr ""
+
 #: ChurchCRM/Service/FinancialService.php:480 PledgeEditor.php:274
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr ""
@@ -2073,27 +2085,27 @@ msgstr ""
 msgid "New Release"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonClassificationDataCheck.php:36
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:39
 msgid "Missing Classification Data"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonClassificationDataCheck.php:41
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:44
 msgid "Missing Classification Data for Some People"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonGenderDataCheck.php:36
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:39
 msgid "Missing Gender Data"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonGenderDataCheck.php:41
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:44
 msgid "Missing Gender Data for Some People"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonRoleDataCheck.php:37
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:40
 msgid "Missing Role Data"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonRoleDataCheck.php:42
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:45
 msgid "Missing Role Data for Some People"
 msgstr ""
 
@@ -4255,6 +4267,10 @@ msgstr ""
 
 #: GeoPage.php:239
 msgid "Select Family:"
+msgstr ""
+
+#: GeoPage.php:241
+msgid "Select a family"
 msgstr ""
 
 #: GeoPage.php:258
@@ -7087,39 +7103,43 @@ msgstr ""
 msgid "Extract the upgrade archive, and apply the new files"
 msgstr ""
 
-#: UpgradeCRM.php:59
-msgid "File Name:"
-msgstr ""
-
-#: UpgradeCRM.php:60
-msgid "Full Path:"
+#: UpgradeCRM.php:58
+msgid "Release Notes"
 msgstr ""
 
 #: UpgradeCRM.php:61
-msgid "SHA1:"
+msgid "File Name:"
+msgstr ""
+
+#: UpgradeCRM.php:62
+msgid "Full Path:"
 msgstr ""
 
 #: UpgradeCRM.php:63
+msgid "SHA1:"
+msgstr ""
+
+#: UpgradeCRM.php:66
 msgid "Upgrade System"
 msgstr ""
 
-#: UpgradeCRM.php:70
+#: UpgradeCRM.php:73
 msgid "Step 4: Login"
 msgstr ""
 
-#: UpgradeCRM.php:72
+#: UpgradeCRM.php:75
 msgid "Login to Upgraded System"
 msgstr ""
 
-#: UpgradeCRM.php:94
+#: UpgradeCRM.php:97
 msgid "Backup Complete, Ready for Download."
 msgstr ""
 
-#: UpgradeCRM.php:104
+#: UpgradeCRM.php:107
 msgid "Backup Error."
 msgstr ""
 
-#: UpgradeCRM.php:149
+#: UpgradeCRM.php:153
 msgid "Backup Downloaded, Copy on server removed"
 msgstr ""
 
@@ -8960,6 +8980,18 @@ msgid "Add all"
 msgstr ""
 
 msgid "Are you sure you want to remove the selected group members?"
+msgstr ""
+
+msgid "Members from group"
+msgstr ""
+
+msgid "Members to another group"
+msgstr ""
+
+msgid "Members to cart"
+msgstr ""
+
+msgid "Move"
 msgstr ""
 
 msgid "Successfully submitted Issue"

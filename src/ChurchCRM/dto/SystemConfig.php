@@ -25,6 +25,8 @@ class SystemConfig
             gettext("German - Germany:de_DE"),
             gettext("Spanish - Spain:es_ES"),
             gettext("French - France:fr_FR"),
+            gettext("Arabic - Egypt:ar_EG"),
+            gettext("Hungarian:hu_HU"),
             gettext("Hungarian:hu_HU"),
             gettext("Italian - Italy:it_IT"),
             gettext("Norwegian:nb_NO"),
@@ -37,6 +39,7 @@ class SystemConfig
             gettext("Albanian:sq_AL"),
             gettext("Swedish - Sweden:sv_SE"),
             gettext("Vietnamese:vi_VN"),
+            gettext("Thai:th_TH"),
             gettext("Chinese - China:zh_CN"),
             gettext("Chinese - Taiwan:zh_TW")
         ]
