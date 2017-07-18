@@ -207,14 +207,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             <?php endif; ?>
         </div>
         <h3 class="profile-username text-center">
-          <?php if ($person->isMale()) {
+            <?php if ($person->isMale()) {
     ?>
-          <i class="fa fa-male"></i>
-          <?php
-} else {
+                <i class="fa fa-male"></i>
+            <?php
+} elseif ($person->isFemale()) {
         ?>
-            <i class="fa fa-female"></i>
-          <?php
+                <i class="fa fa-female"></i>
+            <?php
     } ?>
           <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
