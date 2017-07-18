@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Tasks;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonRoleDataCheck implements iTask
 {
@@ -13,7 +13,10 @@ class PersonRoleDataCheck implements iTask
 
     public function __construct()
     {
-        $personQuery = PersonQuery::create()->filterByFmrId(0)->find();
+        $personQuery = PersonQuery::create()->filterByFmrId(0)
+            ->filterById(1, Criteria::NOT_EQUAL)
+            ->filterByFamId("", Criteria::NOT_EQUAL)
+            ->find();
         $this->count = $personQuery->count();
     }
 

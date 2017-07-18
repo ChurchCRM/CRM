@@ -7,6 +7,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         buildConfig: grunt.file.readJSON('BuildConfig.json'),
         languages: {
+            'ar': 'ar_EG',
             'de': 'de_DE',
             'en-au': 'en_AU',
             'en-ca': 'en_CA',
@@ -23,6 +24,7 @@ module.exports = function (grunt) {
             'ru': 'ru_RU',
             'sq': 'sq_AL',
             'sv': 'sv_SE',
+            'th': 'th_TH',
             'vi': 'vi_VN',
             'zh-CN': 'zh_CN',
             'zh-TW': 'zh_TW',
@@ -166,12 +168,25 @@ module.exports = function (grunt) {
                 separator: ';\n\n',
                 banner: '/*! <%= package.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
                 process: function(src, filepath) {
+                  if (filepath.match(/JSONKeys/)){
+                   src = "window.CRM.i18keys = " + src + ";";
+                  }
                   return '// Source: ' + filepath + '\n' +
                     "try {"+src+"} catch(e) {}";
                 },
             },
+            ar_EG: {
+                src: [
+                    'locale/JSONKeys/ar_EG.json',
+                    'node_modules/fullcalendar/dist/locale/ar.js',
+                    'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ar.js',
+                    'node_modules/admin-lte/plugins/select2/i18n/ar.js'
+                ],
+                dest: 'src/skin/locale/ar_EG.js'
+            },
             de_DE: {
                 src: [
+                  'locale/JSONKeys/de_DE.json', 
                   'node_modules/fullcalendar/dist/locale/de.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.de.js',
                   'node_modules/admin-lte/plugins/select2/i18n/de.js'
@@ -179,15 +194,24 @@ module.exports = function (grunt) {
                 dest: 'src/skin/locale/de_DE.js'
             },
             en_AU: {
-                src: ['node_modules/fullcalendar/dist/locale/en-au.js'],
+                src: [
+                  'locale/JSONKeys/en_AU.json', 
+                  'node_modules/fullcalendar/dist/locale/en-au.js'
+                ],
                 dest: 'src/skin/locale/en_AU.js'
             },
             en_CA: {
-                src: ['node_modules/fullcalendar/dist/locale/en-ca.js'],
+                src: [
+                  'locale/JSONKeys/en_CA.json',
+                  'node_modules/fullcalendar/dist/locale/en-ca.js'
+                ],
                 dest: 'src/skin/locale/en_CA.js'
             },
             en_GB: {
-                src: ['node_modules/fullcalendar/dist/locale/en-gb.js'],
+                src: [
+                  'locale/JSONKeys/en_GB.json',
+                  'node_modules/fullcalendar/dist/locale/en-gb.js'
+                ],
                 dest: 'src/skin/locale/en_GB.js'
             },
             en_US: {
@@ -196,6 +220,7 @@ module.exports = function (grunt) {
             },
             es_ES: {
                 src: [
+                  'locale/JSONKeys/es_ES.json',
                   'node_modules/fullcalendar/dist/locale/es.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.es.js',
                   'node_modules/admin-lte/plugins/select2/i18n/es.js'
@@ -204,6 +229,7 @@ module.exports = function (grunt) {
             },
             fr_FR: {
                 src: [
+                  'locale/JSONKeys/fr_FR.json', 
                   'node_modules/fullcalendar/dist/locale/fr.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.fr.js', 
                   'node_modules/admin-lte/plugins/select2/i18n/fr.js'
@@ -212,14 +238,25 @@ module.exports = function (grunt) {
             },
             hu_HU: {
                 src: [
+                  'locale/JSONKeys/hu_HU.json',
                   'node_modules/fullcalendar/dist/locale/hu.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.hu.js',
                   'node_modules/admin-lte/plugins/select2/i18n/hu.js'
                 ],
                 dest: 'src/skin/locale/hu_HU.js'
             },
+            th_TH: {
+                src: [
+                    'locale/JSONKeys/th_TH.json',
+                    'node_modules/fullcalendar/dist/locale/th.js',
+                    'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.th.js',
+                    'node_modules/admin-lte/plugins/select2/i18n/th.js'
+                ],
+                dest: 'src/skin/locale/th_TH.js'
+            },
             it_IT: {
                 src: [
+                  'locale/JSONKeys/it_IT.json',
                   'node_modules/fullcalendar/dist/locale/it.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.it.js',
                   'node_modules/admin-lte/plugins/select2/i18n/it.js'
@@ -228,6 +265,7 @@ module.exports = function (grunt) {
             },
             nb_NO: {
                 src: [
+                  'locale/JSONKeys/nb_NO.json',
                   'node_modules/fullcalendar/dist/locale/nb.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.nb.js',
                   'node_modules/admin-lte/plugins/select2/i18n/nb.js'
@@ -236,6 +274,7 @@ module.exports = function (grunt) {
             },
             nl_NL: {
                 src: [
+                  'locale/JSONKeys/nl_NL.json',
                   'node_modules/fullcalendar/dist/locale/nl.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.nl.js',
                   'node_modules/admin-lte/plugins/select2/i18n/nl.js'
@@ -244,6 +283,7 @@ module.exports = function (grunt) {
             },
             pl_PL: {
                 src: [
+                  'locale/JSONKeys/pl_PL.json',
                   'node_modules/fullcalendar/dist/locale/pl.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.pl.js',
                   'node_modules/admin-lte/plugins/select2/i18n/pl.js'
@@ -252,6 +292,7 @@ module.exports = function (grunt) {
             },
             pt_BR: {
                 src: [
+                  'locale/JSONKeys/pt_BR.json',
                   'node_modules/fullcalendar/dist/locale/pt-br.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js',
                   'node_modules/admin-lte/plugins/select2/i18n/pt-BR.js'
@@ -260,6 +301,7 @@ module.exports = function (grunt) {
             },
             ro_RO: {
                 src: [
+                  'locale/JSONKeys/ro_RO.json',
                   'node_modules/fullcalendar/dist/locale/ro.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ro.js',
                   'node_modules/admin-lte/plugins/select2/i18n/ro.js'
@@ -268,6 +310,7 @@ module.exports = function (grunt) {
             },
             ru_RU: {
                 src: [
+                  'locale/JSONKeys/ru_RU.json',
                   'node_modules/fullcalendar/dist/locale/ru.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ru.js',
                   'node_modules/admin-lte/plugins/select2/i18n/ru.js'
@@ -275,11 +318,15 @@ module.exports = function (grunt) {
                 dest: 'src/skin/locale/ru_RU.js'
             },
             sq_AL: {
-                src: ['node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sq.js'],
+                src: [
+                  'locale/JSONKeys/sq_AL.json',
+                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sq.js'
+                ],
                 dest: 'src/skin/locale/sq_AL.js'
             },
             sv_SE: {
                 src: [
+                  'locale/JSONKeys/sv_SE.json',
                   'node_modules/fullcalendar/dist/locale/sv.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sv.js',
                     'node_modules/admin-lte/plugins/select2/i18n/sv.js'
@@ -288,6 +335,7 @@ module.exports = function (grunt) {
             },
             vi_VN: {
                 src: [
+                  'locale/JSONKeys/vi_VN',
                   'node_modules/fullcalendar/dist/locale/vi.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.vi.js',
                   'node_modules/admin-lte/plugins/select2/i18n/vi.js'
@@ -296,6 +344,7 @@ module.exports = function (grunt) {
             },
             zh_CN: {
                 src: [
+                  'locale/JSONKeys/zh_CN.json',
                   'node_modules/fullcalendar/dist/locale/zh-cn.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js',
                   'node_modules/admin-lte/plugins/select2/i18n/zh-CN.js'
@@ -304,6 +353,7 @@ module.exports = function (grunt) {
             },
             zh_TW: {
                 src: [
+                  'locale/JSONKeys/zh_TW.json',
                   'node_modules/fullcalendar/dist/locale/zh-tw.js', 
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-TW.js',
                   'node_modules/admin-lte/plugins/select2/i18n/zh-TW.js'
@@ -471,7 +521,7 @@ module.exports = function (grunt) {
                     filters: ["translated"],
                     tags: '<%= package.version %>',
                     type: 'key_value_json', // export type (check out the doc)
-                    dest: 'src/locale/?/LC_MESSAGES/messages.js'
+                    dest: 'locale/JSONKeys/?.json'
                     // grunt style dest files
                 }
             },
@@ -516,7 +566,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('updateFromPOeditor', 'Description of the task', function (target) {
-        grunt.config('clean', {pofiles: ["src/locale/*/**/*.po", "src/locale/*/**/*.mo", "src/locale/*/**/*.js"]});
+        grunt.config('clean', {pofiles: ["src/locale/*/**/*.po", "src/locale/*/**/*.mo", "locale/JSONKeys/*.json"]});
         grunt.task.run(['clean:pofiles']);
         grunt.loadNpmTasks('grunt-poeditor-ab');
         grunt.task.run(['poeditor']);
@@ -558,4 +608,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-curl');
+    grunt.loadNpmTasks('grunt-poeditor-ab');
 }
