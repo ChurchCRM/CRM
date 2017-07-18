@@ -16,6 +16,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     try {
         array_push($resultsArray, $this->PersonService->getPersonsJSON($this->PersonService->search($query)));
     } catch (Exception $e) {
+        $this->Logger->warn($e->getMessage());
     }
 
     //family search
@@ -31,6 +32,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
       }
       array_push($resultsArray, json_encode(["families"=>$results]));
     } catch (Exception $e) {
+        $this->Logger->warn($e->getMessage());
     }
 
 
@@ -45,6 +47,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 
         array_push($resultsArray, $q->toJSON());
     } catch (Exception $e) {
+        $this->Logger->warn($e->getMessage());
     }
 
     //Deposits Search
@@ -63,12 +66,14 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                 ->limit(5);
             array_push($resultsArray, $q->find()->toJSON());
         } catch (Exception $e) {
+            $this->Logger->warn($e->getMessage());
         }
 
         //Search Payments
         try {
             array_push($resultsArray, $this->FinancialService->getPaymentJSON($this->FinancialService->searchPayments($query)));
         } catch (Exception $e) {
+            $this->Logger->warn($e->getMessage());
         }
     }
 
