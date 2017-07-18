@@ -887,7 +887,7 @@ if ($sFileType == 'PDF') {
 
         $iNewline = (strpos($sLT['Address'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['Address']).'",""'.$delimiter;
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['Address']).'"'.$delimiter;
         } else {
             $sCSVOutput .= '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], 0, $iNewline)).'"'.$delimiter.
                             '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], $iNewline + 1)).'"'.$delimiter;
@@ -906,9 +906,10 @@ if ($sFileType == 'PDF') {
     header('Pragma: public');
     
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-        if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
-            echo "\xEF\xBB\xBF";
-        }
+ 		if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")
+ 		{
+ 			echo "\xEF\xBB\xBF";
+ 		}
     
     echo $sCSVOutput;
 }
