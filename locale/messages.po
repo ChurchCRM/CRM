@@ -11,9 +11,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 "POT-Creation-Date: 2017-07-02 21:51+0000\n"
 =======
 "POT-Creation-Date: 2017-07-09 19:57+0000\n"
+>>>>>>> master
+=======
+"POT-Creation-Date: 2017-07-16 19:01+0000\n"
 >>>>>>> master
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -28,8 +32,13 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2017-07-09T19:57:44.889Z\n"
 "PO-Revision-Date: 2017-07-09T19:57:44.890Z\n"
+=======
+"POT-Creation-Date: 2017-07-16T19:01:31.611Z\n"
+"PO-Revision-Date: 2017-07-16T19:01:31.611Z\n"
+>>>>>>> master
 
 #: api/routes/cart.php:13
 msgid "POST to cart requires a Persons array"
@@ -111,24 +120,32 @@ msgstr ""
 #: DonationFundEditor.php:186 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:222 ElectronicPaymentList.php:288
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: EventNames.php:305 FamilyCustomFieldsEditor.php:334
 #: FamilyCustomFieldsEditor.php:392 FamilyView.php:645 FamilyView.php:697
 #: FamilyView.php:755 FamilyView.php:892 FindDepositSlip.php:108
 #: FundRaiserEditor.php:204 ListEvents.php:250 PaddleNumList.php:60
 #: PersonCustomFieldsEditor.php:318 PersonCustomFieldsEditor.php:387
 =======
+=======
+>>>>>>> master
 #: EventNames.php:305 FamilyCustomFieldsEditor.php:335
 #: FamilyCustomFieldsEditor.php:393 FamilyView.php:661 FamilyView.php:713
 #: FamilyView.php:772 FamilyView.php:909 FindDepositSlip.php:108
 #: FundRaiserEditor.php:204 ListEvents.php:250 PaddleNumList.php:60
 #: PersonCustomFieldsEditor.php:319 PersonCustomFieldsEditor.php:388
+<<<<<<< HEAD
 >>>>>>> master
 #: PersonView.php:908 PledgeDelete.php:57 PropertyList.php:69
+=======
+#: PersonView.php:912 PledgeDelete.php:57 PropertyList.php:69
+>>>>>>> master
 #: PropertyList.php:110 PropertyTypeList.php:44 PropertyTypeList.php:65
 #: PropertyTypeList.php:67
 msgid "Delete"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: AutoPaymentDelete.php:68 AutoPaymentEditor.php:583 BatchWinnerEntry.php:116
 #: CanvassEditor.php:243 Checkin.php:172 Checkin.php:281 Checkin.php:294
@@ -136,11 +153,14 @@ msgstr ""
 #: external/templates/verify/verify-family-info.php:139 FamilyEditor.php:1125
 #: FamilyView.php:891 FinancialReports.php:72 FundRaiserEditor.php:147
 =======
+=======
+>>>>>>> master
 #: AutoPaymentDelete.php:68 AutoPaymentEditor.php:791 BatchWinnerEntry.php:116
 #: CanvassEditor.php:243 Checkin.php:172 Checkin.php:281 Checkin.php:294
 #: DirectoryReports.php:290 DonatedItemEditor.php:300 EventNames.php:234
 #: external/templates/verify/verify-family-info.php:149 FamilyEditor.php:1125
 #: FamilyView.php:908 FinancialReports.php:72 FundRaiserEditor.php:147
+<<<<<<< HEAD
 >>>>>>> master
 #: GroupPropsEditor.php:172 GroupReports.php:87 GroupReports.php:156
 #: LettersAndLabels.php:77 ManageEnvelopes.php:139 MemberRoleChange.php:123
@@ -154,11 +174,22 @@ msgstr ""
 =======
 #: sundayschool/SundaySchoolDashboard.php:249
 >>>>>>> master
+=======
+#: GroupPropsEditor.php:172 GroupReports.php:87 GroupReports.php:156
+#: LettersAndLabels.php:77 ManageEnvelopes.php:139 MemberRoleChange.php:123
+#: MemberRoleChange.php:125 NoteDelete.php:71 NoteEditor.php:139
+#: PersonEditor.php:1138 PersonView.php:911 PledgeDelete.php:58
+#: PropertyEditor.php:173 PropertyTypeEditor.php:118 Register.php:60
+#: ReminderReport.php:56 SettingsIndividual.php:123 SettingsIndividual.php:169
+#: SettingsUser.php:111 SettingsUser.php:171
+#: sundayschool/SundaySchoolDashboard.php:249
+>>>>>>> master
 #: sundayschool/SundaySchoolReports.php:231 TaxReport.php:54
 #: UserEditor.php:475 UserEditor.php:578 WhyCameEditor.php:104
 msgid "Cancel"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: AutoPaymentEditor.php:131
 msgid "Automatic payment configuration for the "
@@ -166,6 +197,8 @@ msgstr ""
 
 #: AutoPaymentEditor.php:582 CanvassEditor.php:242 DepositSlipEditor.php:98
 =======
+=======
+>>>>>>> master
 #: AutoPaymentEditor.php:133
 msgid "Automatic payment configuration for the "
 msgstr ""
@@ -175,6 +208,9 @@ msgid " family"
 msgstr ""
 
 #: AutoPaymentEditor.php:790 CanvassEditor.php:242 DepositSlipEditor.php:98
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: DonatedItemEditor.php:296 FamilyEditor.php:653 FamilyEditor.php:737
 #: FamilyEditor.php:801 FamilyEditor.php:875 FamilyEditor.php:897
@@ -189,6 +225,7 @@ msgid "Save"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:596
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:198
@@ -202,6 +239,14 @@ msgstr ""
 #: FamilyView.php:212 FinancialReports.php:306 Include/Footer.php:58
 >>>>>>> master
 #: PersonEditor.php:758 PersonView.php:380 PledgeEditor.php:511
+=======
+#: AutoPaymentEditor.php:805
+#: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
+#: ElectronicPaymentList.php:198
+#: external/templates/registration/family-register-done.php:28
+#: FamilyView.php:212 FinancialReports.php:306 Include/Footer.php:58
+#: PersonEditor.php:758 PersonView.php:384 PledgeEditor.php:511
+>>>>>>> master
 #: PrintView.php:243 PropertyAssign.php:77 PropertyEditor.php:47
 #: PropertyList.php:32 PropertyTypeEditor.php:94 PropertyTypeList.php:60
 #: SelectList.php:1058
@@ -209,17 +254,23 @@ msgid "Family"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:599 BatchWinnerEntry.php:87 BatchWinnerEntry.php:99
 #: CSVImport.php:275 DonatedItemEditor.php:189 DonatedItemEditor.php:240
 #: eGive.php:341 FamilyEditor.php:1095 GroupEditor.php:91
 #: Include/CountryDropDown.php:6 Include/Functions.php:1074
 #: Include/Functions.php:1122 MapUsingGoogle.php:98 MapUsingGoogle.php:122
 =======
+=======
+>>>>>>> master
 #: AutoPaymentEditor.php:808 BatchWinnerEntry.php:87 BatchWinnerEntry.php:99
 #: CSVImport.php:275 DonatedItemEditor.php:189 DonatedItemEditor.php:240
 #: eGive.php:341 FamilyEditor.php:1095 GroupEditor.php:91
 #: Include/CountryDropDown.php:6 Include/Functions.php:1074
 #: Include/Functions.php:1127 MapUsingGoogle.php:98 MapUsingGoogle.php:122
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: PaddleNumEditor.php:180 PersonEditor.php:744 PersonEditor.php:760
 #: PersonEditor.php:1045 PrintView.php:249 PrintView.php:259
@@ -229,6 +280,7 @@ msgid "Unassigned"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:619
 msgid "Automatic payment type"
 msgstr ""
@@ -236,6 +288,8 @@ msgstr ""
 #: AutoPaymentEditor.php:632 CanvassEditor.php:198 DepositSlipEditor.php:82
 #: EditEventAttendees.php:33 FamilyView.php:748 FindFundRaiser.php:241
 =======
+=======
+>>>>>>> master
 #: AutoPaymentEditor.php:828
 msgid "Automatic payment type"
 msgstr ""
@@ -254,6 +308,9 @@ msgstr ""
 
 #: AutoPaymentEditor.php:844 CanvassEditor.php:198 DepositSlipEditor.php:82
 #: EditEventAttendees.php:33 FamilyView.php:765 FindFundRaiser.php:241
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: FundRaiserEditor.php:168 Include/Functions.php:101 PledgeEditor.php:521
 #: SelectDelete.php:217
@@ -261,7 +318,11 @@ msgid "Date"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:637 ElectronicPaymentList.php:200 FamilyView.php:747
+=======
+#: AutoPaymentEditor.php:851 ElectronicPaymentList.php:200 FamilyView.php:764
+>>>>>>> master
 =======
 #: AutoPaymentEditor.php:851 ElectronicPaymentList.php:200 FamilyView.php:764
 >>>>>>> master
@@ -270,6 +331,7 @@ msgstr ""
 msgid "Fiscal Year"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: AutoPaymentEditor.php:644
 msgid "Payment amount"
@@ -301,12 +363,29 @@ msgstr ""
 
 #: AutoPaymentEditor.php:871 CartToGroup.php:80 EditEventTypes.php:91
 >>>>>>> master
+=======
+#: AutoPaymentEditor.php:858
+msgid "Payment amount"
+msgstr ""
+
+#: AutoPaymentEditor.php:863
+msgid "Payment interval (months)"
+msgstr ""
+
+#: AutoPaymentEditor.php:868 ElectronicPaymentList.php:204 FamilyView.php:659
+#: FamilyView.php:763 FinancialReports.php:305 SelectDelete.php:215
+msgid "Fund"
+msgstr ""
+
+#: AutoPaymentEditor.php:871 CartToGroup.php:80 EditEventTypes.php:91
+>>>>>>> master
 #: EditEventTypes.php:103 EventNames.php:109 EventNames.php:121
 #: EventNames.php:166 GroupReports.php:52 GroupReports.php:147
 #: PersonToGroup.php:70 sundayschool/SundaySchoolReports.php:147
 msgid "None"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: AutoPaymentEditor.php:670
 msgid "inactive"
@@ -350,10 +429,33 @@ msgstr ""
 #: AutoPaymentEditor.php:906 AutoPaymentEditor.php:912 CartToFamily.php:239
 #: CartToFamily.php:244 CartView.php:295 CSVExport.php:105 CSVExport.php:110
 >>>>>>> master
+=======
+#: AutoPaymentEditor.php:884
+msgid "inactive"
+msgstr ""
+
+#: AutoPaymentEditor.php:894 CSVExport.php:90 CSVImport.php:215
+#: external/templates/registration/family-register-members.php:69
+#: external/templates/verify/enter-info.php:21 PersonEditor.php:608
+#: sundayschool/SundaySchoolDashboard.php:193
+msgid "First Name"
+msgstr ""
+
+#: AutoPaymentEditor.php:900 CSVExport.php:79 CSVImport.php:217
+#: external/templates/registration/family-register-members.php:73
+#: external/templates/verify/enter-info.php:25 ManageEnvelopes.php:166
+#: PersonEditor.php:630 sundayschool/SundaySchoolDashboard.php:194
+msgid "Last Name"
+msgstr ""
+
+#: AutoPaymentEditor.php:906 AutoPaymentEditor.php:912 CartToFamily.php:239
+#: CartToFamily.php:244 CartView.php:295 CSVExport.php:105 CSVExport.php:110
+>>>>>>> master
 #: CSVImport.php:221 CSVImport.php:222 DirectoryReports.php:176
 #: DirectoryReports.php:250
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35 FamilyEditor.php:670
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: FamilyEditor.php:674 FamilyList.php:44 FamilyView.php:217 GeoPage.php:386
 #: GroupReports.php:128 Menu.php:204 Menu.php:239 PersonEditor.php:793
@@ -362,12 +464,21 @@ msgstr ""
 #: GroupReports.php:128 Menu.php:210 Menu.php:251 PersonEditor.php:793
 >>>>>>> master
 #: PersonEditor.php:809 PersonView.php:270 Register.php:47
+=======
+#: FamilyEditor.php:674 FamilyList.php:44 FamilyView.php:221 GeoPage.php:386
+#: GroupReports.php:128 Menu.php:210 Menu.php:251 PersonEditor.php:793
+#: PersonEditor.php:809 PersonView.php:272 Register.php:47
+>>>>>>> master
 #: Reports/ConfirmReportEmail.php:124 Reports/ConfirmReportEmail.php:129
 msgid "Address"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:700 CartToFamily.php:249 CSVExport.php:115
+=======
+#: AutoPaymentEditor.php:918 CartToFamily.php:249 CSVExport.php:115
+>>>>>>> master
 =======
 #: AutoPaymentEditor.php:918 CartToFamily.php:249 CSVExport.php:115
 >>>>>>> master
@@ -378,7 +489,11 @@ msgid "City"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:705 CartToFamily.php:254 CSVExport.php:120
+=======
+#: AutoPaymentEditor.php:923 CartToFamily.php:254 CSVExport.php:120
+>>>>>>> master
 =======
 #: AutoPaymentEditor.php:923 CartToFamily.php:254 CSVExport.php:120
 >>>>>>> master
@@ -389,7 +504,11 @@ msgid "State"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:710 BackupDatabase.php:67 CartToFamily.php:266
+=======
+#: AutoPaymentEditor.php:929 BackupDatabase.php:67 CartToFamily.php:266
+>>>>>>> master
 =======
 #: AutoPaymentEditor.php:929 BackupDatabase.php:67 CartToFamily.php:266
 >>>>>>> master
@@ -401,7 +520,11 @@ msgid "Zip"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:715 CartToFamily.php:274 CSVExport.php:135
+=======
+#: AutoPaymentEditor.php:934 CartToFamily.php:274 CSVExport.php:135
+>>>>>>> master
 =======
 #: AutoPaymentEditor.php:934 CartToFamily.php:274 CSVExport.php:135
 >>>>>>> master
@@ -410,7 +533,11 @@ msgid "Country"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:720 ChurchCRM/Reports/PDF_Directory.php:312
+=======
+#: AutoPaymentEditor.php:940 ChurchCRM/Reports/PDF_Directory.php:312
+>>>>>>> master
 =======
 #: AutoPaymentEditor.php:940 ChurchCRM/Reports/PDF_Directory.php:312
 >>>>>>> master
@@ -422,7 +549,11 @@ msgid "Phone"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:725 CartToFamily.php:315 CartView.php:288
+=======
+#: AutoPaymentEditor.php:946 CartToFamily.php:315 CartView.php:296
+>>>>>>> master
 =======
 #: AutoPaymentEditor.php:946 CartToFamily.php:315 CartView.php:296
 >>>>>>> master
@@ -432,6 +563,7 @@ msgstr ""
 #: EditEventAttendees.php:42 EventAttendance.php:181
 #: external/templates/registration/family-register-members.php:83
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: external/templates/verify/verify-family-info.php:73 FamilyEditor.php:777
 #: FamilyView.php:273 FamilyView.php:277 FamilyView.php:360
 =======
@@ -440,12 +572,22 @@ msgstr ""
 >>>>>>> master
 #: GroupReports.php:132 PersonEditor.php:997 PersonEditor.php:999
 #: PersonView.php:304 PersonView.php:463 PrintView.php:279
+=======
+#: external/templates/verify/verify-family-info.php:81 FamilyEditor.php:777
+#: FamilyView.php:279 FamilyView.php:284 FamilyView.php:367
+#: GroupReports.php:132 PersonEditor.php:997 PersonEditor.php:999
+#: PersonView.php:308 PersonView.php:467 PrintView.php:279
+>>>>>>> master
 #: Reports/CanvassReports.php:247 Reports/ConfirmReportEmail.php:190
 #: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:188
 #: Reports/ConfirmReport.php:207 Reports/DirectoryReport.php:299
 #: Reports/GroupReport.php:138 sundayschool/SundaySchoolClassView.php:88
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: sundayschool/SundaySchoolClassView.php:202 menuconfig_mcf.php:14
+=======
+#: sundayschool/SundaySchoolClassView.php:202 menuconfig_mcf.php:15
+>>>>>>> master
 =======
 #: sundayschool/SundaySchoolClassView.php:202 menuconfig_mcf.php:15
 >>>>>>> master
@@ -454,7 +596,11 @@ msgid "Email"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: AutoPaymentEditor.php:730 ElectronicPaymentList.php:213
+=======
+#: AutoPaymentEditor.php:952 ElectronicPaymentList.php:213
+>>>>>>> master
 =======
 #: AutoPaymentEditor.php:952 ElectronicPaymentList.php:213
 >>>>>>> master
@@ -462,6 +608,7 @@ msgstr ""
 msgid "Credit Card"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: AutoPaymentEditor.php:737
 msgid "Vanco Credit Card Method"
@@ -492,6 +639,8 @@ msgid "Vanco Bank Account Method"
 msgstr ""
 
 =======
+=======
+>>>>>>> master
 #: AutoPaymentEditor.php:960
 msgid "Vanco Credit Card Method"
 msgstr ""
@@ -524,6 +673,9 @@ msgstr ""
 msgid "Store Private Data at Vanco"
 msgstr ""
 
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: BackupDatabase.php:45 Include/Footer.php:183
 msgid "Backup Database"
@@ -581,7 +733,11 @@ msgid "Encrypt backup file with a password?"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: BackupDatabase.php:76 Login.php:187 UserList.php:56
+=======
+#: BackupDatabase.php:76 Login.php:184 UserList.php:56
+>>>>>>> master
 =======
 #: BackupDatabase.php:76 Login.php:184 UserList.php:56
 >>>>>>> master
@@ -849,6 +1005,7 @@ msgid "Add Cart to Family"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: CartToFamily.php:159 CartView.php:286 Checkin.php:318
 #: DonationFundEditor.php:153 DonationFundEditor.php:216
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:180
@@ -861,13 +1018,22 @@ msgstr ""
 #: CartToFamily.php:159 CartView.php:294 Checkin.php:318
 #: DonationFundEditor.php:153 DonationFundEditor.php:216
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:180
+=======
+#: CartToFamily.php:159 CartView.php:294 Checkin.php:318
+#: DonationFundEditor.php:153 DonationFundEditor.php:216
+#: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:180
+>>>>>>> master
 #: EventNames.php:266 FamilyCustomFieldsEditor.php:331
 #: FamilyCustomFieldsEditor.php:445 FamilyList.php:43 FamilyView.php:548
 #: GeoPage.php:385 GroupEditor.php:77 GroupPropsFormEditor.php:285
 #: GroupPropsFormEditor.php:397 GroupView.php:321 GroupView.php:355
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:446
+<<<<<<< HEAD
 >>>>>>> master
 #: PersonView.php:654 PersonView.php:756 PrintView.php:322 PrintView.php:450
+=======
+#: PersonView.php:658 PersonView.php:760 PrintView.php:322 PrintView.php:450
+>>>>>>> master
 #: PropertyEditor.php:153 PropertyList.php:64 PropertyTypeEditor.php:100
 #: PropertyTypeList.php:39 Reports/CanvassReports.php:73
 #: Reports/CanvassReports.php:241 Reports/FRBidSheets.php:93
@@ -900,7 +1066,11 @@ msgstr ""
 
 #: CartToFamily.php:210 external/templates/registration/family-register.php:31
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FamilyEditor.php:660 Menu.php:203 Menu.php:238
+=======
+#: FamilyEditor.php:660 Menu.php:209 Menu.php:250
+>>>>>>> master
 =======
 #: FamilyEditor.php:660 Menu.php:209 Menu.php:250
 >>>>>>> master
@@ -911,8 +1081,13 @@ msgstr ""
 
 #: CartToFamily.php:215 CSVImport.php:234 DirectoryReports.php:177
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: external/templates/verify/verify-family-info.php:31 FamilyEditor.php:811
 #: FamilyView.php:243
+=======
+#: external/templates/verify/verify-family-info.php:35 FamilyEditor.php:811
+#: FamilyView.php:248
+>>>>>>> master
 =======
 #: external/templates/verify/verify-family-info.php:35 FamilyEditor.php:811
 #: FamilyView.php:248
@@ -937,6 +1112,7 @@ msgstr ""
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: external/templates/verify/verify-family-info.php:26
 #: external/templates/verify/verify-family-info.php:70 FamilyEditor.php:743
 #: FamilyList.php:45 FamilyView.php:255 GroupReports.php:129
@@ -946,6 +1122,12 @@ msgstr ""
 #: FamilyList.php:45 FamilyView.php:261 GroupReports.php:129
 >>>>>>> master
 #: PersonEditor.php:923 PersonEditor.php:925 PersonView.php:299
+=======
+#: external/templates/verify/verify-family-info.php:28
+#: external/templates/verify/verify-family-info.php:75 FamilyEditor.php:743
+#: FamilyList.php:45 FamilyView.php:261 GroupReports.php:129
+#: PersonEditor.php:923 PersonEditor.php:925 PersonView.php:303
+>>>>>>> master
 #: PrintView.php:184 Reports/ConfirmReportEmail.php:139
 #: Reports/ConfirmReport.php:140 SelectList.php:986 SelectList.php:987
 #: SelectList.php:1062 sundayschool/SundaySchoolClassView.php:204
@@ -956,7 +1138,11 @@ msgstr ""
 #: CartToFamily.php:290 CartToFamily.php:300 CartToFamily.php:310
 #: FamilyEditor.php:751 FamilyEditor.php:761 FamilyEditor.php:771
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: Include/Functions.php:1113 PersonEditor.php:939 PersonEditor.php:963
+=======
+#: Include/Functions.php:1117 PersonEditor.php:939 PersonEditor.php:963
+>>>>>>> master
 =======
 #: Include/Functions.php:1117 PersonEditor.php:939 PersonEditor.php:963
 >>>>>>> master
@@ -966,6 +1152,7 @@ msgstr ""
 
 #: CartToFamily.php:295 CSVExport.php:145 CSVImport.php:228
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: external/templates/verify/verify-family-info.php:71 FamilyEditor.php:755
 #: FamilyView.php:261 GroupReports.php:130 PersonEditor.php:946
 =======
@@ -973,12 +1160,18 @@ msgstr ""
 #: FamilyView.php:267 GroupReports.php:130 PersonEditor.php:946
 >>>>>>> master
 #: PersonEditor.php:948 PersonView.php:313 PrintView.php:189
+=======
+#: external/templates/verify/verify-family-info.php:77 FamilyEditor.php:755
+#: FamilyView.php:267 GroupReports.php:130 PersonEditor.php:946
+#: PersonEditor.php:948 PersonView.php:317 PrintView.php:189
+>>>>>>> master
 #: Reports/ConfirmReportEmail.php:237 Reports/ConfirmReport.php:244
 #: SelectList.php:989 SelectList.php:990 SelectList.php:1062
 msgid "Work Phone"
 msgstr ""
 
 #: CartToFamily.php:305 CSVExport.php:150 CSVImport.php:229
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: external/templates/verify/verify-family-info.php:72 FamilyEditor.php:765
 #: FamilyView.php:267 PersonEditor.php:971 PersonEditor.php:973
@@ -987,6 +1180,11 @@ msgstr ""
 #: FamilyView.php:273 PersonEditor.php:971 PersonEditor.php:973
 >>>>>>> master
 #: PersonView.php:294 PrintView.php:194 SelectList.php:992 SelectList.php:993
+=======
+#: external/templates/verify/verify-family-info.php:79 FamilyEditor.php:765
+#: FamilyView.php:273 PersonEditor.php:971 PersonEditor.php:973
+#: PersonView.php:298 PrintView.php:194 SelectList.php:992 SelectList.php:993
+>>>>>>> master
 #: SelectList.php:1062
 msgid "Mobile Phone"
 msgstr ""
@@ -1030,6 +1228,7 @@ msgid "You have no items in your cart."
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: CartView.php:59
 msgid "Back to Menu"
 msgstr ""
@@ -1039,6 +1238,8 @@ msgid "Go To Labels"
 msgstr ""
 
 =======
+=======
+>>>>>>> master
 #: CartView.php:58
 msgid "Back to Menu"
 msgstr ""
@@ -1051,11 +1252,15 @@ msgstr ""
 msgid "Cart Functions"
 msgstr ""
 
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: CartView.php:110 Include/Header.php:126
 msgid "Empty Cart"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: CartView.php:113 Include/Header.php:131
 msgid "Empty Cart to Group"
@@ -1066,6 +1271,17 @@ msgid "Empty Cart to Family"
 msgstr ""
 
 #: CartView.php:121 Include/Header.php:141
+=======
+#: CartView.php:114 Include/Header.php:131
+msgid "Empty Cart to Group"
+msgstr ""
+
+#: CartView.php:120 Include/Header.php:136
+msgid "Empty Cart to Family"
+msgstr ""
+
+#: CartView.php:124 Include/Header.php:141
+>>>>>>> master
 =======
 #: CartView.php:114 Include/Header.php:131
 msgid "Empty Cart to Group"
@@ -1089,7 +1305,11 @@ msgid "Map Cart"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: CartView.php:129
+=======
+#: CartView.php:135
+>>>>>>> master
 =======
 #: CartView.php:135
 >>>>>>> master
@@ -1101,7 +1321,11 @@ msgid "Email Cart"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: CartView.php:164 GroupView.php:205
+=======
+#: CartView.php:170 GroupView.php:205
+>>>>>>> master
 =======
 #: CartView.php:170 GroupView.php:205
 >>>>>>> master
@@ -1109,6 +1333,7 @@ msgstr ""
 msgid "Email (BCC)"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: CartView.php:193
 msgid "Create Directory From Cart"
@@ -1141,6 +1366,8 @@ msgstr ""
 #: CartView.php:289 CartView.php:347 EditEventTypes.php:171 FamilyView.php:540
 #: FamilyView.php:582 GroupView.php:360 GroupView.php:401 PersonView.php:657
 =======
+=======
+>>>>>>> master
 #: CartView.php:195
 msgid "Text Cart"
 msgstr ""
@@ -1174,6 +1401,7 @@ msgid "families"
 msgstr ""
 
 #: CartView.php:297 CartView.php:356 EditEventTypes.php:171 FamilyView.php:553
+<<<<<<< HEAD
 #: FamilyView.php:595 GroupView.php:360 GroupView.php:401 PersonView.php:657
 >>>>>>> master
 #: PersonView.php:675 PersonView.php:759 PersonView.php:777
@@ -1185,13 +1413,25 @@ msgstr ""
 =======
 #: CartView.php:298 CSVExport.php:276 CSVImport.php:285 FamilyEditor.php:954
 >>>>>>> master
+=======
+#: FamilyView.php:595 GroupView.php:360 GroupView.php:401 PersonView.php:661
+#: PersonView.php:679 PersonView.php:763 PersonView.php:781
+msgid "Remove"
+msgstr ""
+
+#: CartView.php:298 CSVExport.php:276 CSVImport.php:285 FamilyEditor.php:954
+>>>>>>> master
 #: FinancialReports.php:120 MembersDashboard.php:302 OptionManager.php:73
 #: PersonEditor.php:1043 PrintView.php:294 queryparameters_qrp.php:19
 msgid "Classification"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: CartView.php:291 CSVExport.php:180 CSVExport.php:301 OptionManager.php:66
+=======
+#: CartView.php:299 CSVExport.php:180 CSVExport.php:301 OptionManager.php:66
+>>>>>>> master
 =======
 #: CartView.php:299 CSVExport.php:180 CSVExport.php:301 OptionManager.php:66
 >>>>>>> master
@@ -1203,6 +1443,9 @@ msgstr ""
 #: CartView.php:310 CartView.php:330 DonationFundEditor.php:180
 =======
 #: CartView.php:318 CartView.php:338 DonationFundEditor.php:180
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: FinancialReports.php:298 Include/Functions.php:905
 #: Include/Functions.php:989 Reports/ConfirmReport.php:232
@@ -1213,6 +1456,9 @@ msgstr ""
 #: CartView.php:323 CartView.php:332 DonationFundEditor.php:183
 =======
 #: CartView.php:331 CartView.php:340 DonationFundEditor.php:183
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: FinancialReports.php:299 Include/Functions.php:907
 #: Include/Functions.php:990 Reports/ConfirmReport.php:234
@@ -1296,6 +1542,7 @@ msgid "Checked Out By"
 msgstr ""
 
 #: Checkin.php:323 EditEventAttendees.php:44 EventNames.php:270
+<<<<<<< HEAD
 #: ListEvents.php:214 PersonView.php:585
 msgid "Action"
 msgstr ""
@@ -1305,10 +1552,18 @@ msgstr ""
 =======
 #: Checkin.php:472 Include/Functions.php:1663 Reports/CanvassReports.php:245
 >>>>>>> master
+=======
+#: ListEvents.php:214 PersonView.php:589
+msgid "Action"
+msgstr ""
+
+#: Checkin.php:472 Include/Functions.php:1663 Reports/CanvassReports.php:245
+>>>>>>> master
 #: Reports/VotingMembers.php:88 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: Checkin.php:482 ChurchCRM/Service/PersonService.php:38
 msgid " of the"
@@ -1319,6 +1574,17 @@ msgid "family"
 msgstr ""
 
 #: Checkin.php:484 ChurchCRM/Service/PersonService.php:40 PersonView.php:267
+=======
+#: Checkin.php:474 ChurchCRM/Service/PersonService.php:38
+msgid " of the"
+msgstr ""
+
+#: Checkin.php:474 ChurchCRM/Service/PersonService.php:38
+msgid "family"
+msgstr ""
+
+#: Checkin.php:476 ChurchCRM/Service/PersonService.php:40 PersonView.php:267
+>>>>>>> master
 =======
 #: Checkin.php:474 ChurchCRM/Service/PersonService.php:38
 msgid " of the"
@@ -1979,6 +2245,7 @@ msgid "Show/Hide Lost Password Link on the login screen"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: ChurchCRM/dto/SystemConfig.php:214
 msgid "Church Information"
 msgstr ""
@@ -2029,6 +2296,28 @@ msgstr ""
 msgid "Member Setup"
 msgstr ""
 
+=======
+#: ChurchCRM/dto/SystemConfig.php:208
+msgid "Your Church's Website"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:215
+msgid "Church Information"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:216
+msgid "User setup"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:217
+msgid "Email Setup"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:218
+msgid "Member Setup"
+msgstr ""
+
+>>>>>>> master
 #: ChurchCRM/dto/SystemConfig.php:219
 msgid "Map Settings"
 msgstr ""
@@ -2039,6 +2328,7 @@ msgstr ""
 
 #: ChurchCRM/dto/SystemConfig.php:221
 msgid "Financial Settings"
+<<<<<<< HEAD
 msgstr ""
 
 #: ChurchCRM/dto/SystemConfig.php:222 Include/Footer.php:144
@@ -2159,6 +2449,151 @@ msgstr ""
 
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:22
 msgid "Your ChurchCRM password was changed"
+=======
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:222 Include/Footer.php:144
+#: SystemSettings.php:43
+msgid "System Settings"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:223
+msgid "Backup"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:224
+msgid "Localization"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:225
+msgid "Integration"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:275 ChurchCRM/dto/SystemConfig.php:287
+#: ChurchCRM/dto/SystemConfig.php:300
+msgid "An invalid configuration name has been requested"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:318
+msgid "An invalid configuration id has been requested"
+msgstr ""
+
+#: ChurchCRM/Emails/notifications/NotificationEmail.php:22
+msgid "Notification"
+msgstr ""
+
+#: ChurchCRM/Emails/notifications/NotificationEmail.php:28
+msgid "Guardian(s) of"
+msgstr ""
+
+#: ChurchCRM/Emails/notifications/NotificationEmail.php:29
+msgid "A notification was triggered by the classroom teacher at"
+msgstr ""
+
+#: ChurchCRM/Emails/notifications/NotificationEmail.php:29
+msgid "Please go to this location"
+>>>>>>> master
+msgstr ""
+
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:17
+msgid "Password Reset"
+msgstr ""
+
+<<<<<<< HEAD
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:22
+msgid "You ChurchCRM updated password has been changed"
+msgstr ""
+
+#: ChurchCRM/Emails/users/ResetPasswordTokenEmail.php:17
+msgid "Password Reset Link"
+msgstr ""
+
+#: ChurchCRM/Emails/users/ResetPasswordTokenEmail.php:22
+msgid "You can reset your ChurchCRM password by clicking this link"
+=======
+#: ChurchCRM/Emails/users/AccountDeletedEmail.php:16
+msgid "Your ChurchCRM Account was Deleted."
+msgstr ""
+
+#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:179
+msgid "Email/Username"
+>>>>>>> master
+msgstr ""
+
+#: ChurchCRM/Emails/users/ResetPasswordTokenEmail.php:29
+msgid "Reset Password"
+msgstr ""
+
+<<<<<<< HEAD
+#: ChurchCRM/Emails/users/UnlockedEmail.php:11
+msgid "Account Unlocked"
+=======
+#: ChurchCRM/Emails/users/LockedEmail.php:16
+msgid "Your ChurchCRM account was locked."
+>>>>>>> master
+msgstr ""
+
+#: ChurchCRM/Emails/users/UnlockedEmail.php:16
+msgid "Your ChurchCRM account was unlocked."
+msgstr ""
+
+<<<<<<< HEAD
+#: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:17
+msgid "Please verify your family's information"
+msgstr ""
+
+#: ChurchCRM/model/ChurchCRM/Deposit.php:291
+msgid "Anonymous"
+msgstr ""
+
+#: ChurchCRM/model/ChurchCRM/Family.php:224
+#: ChurchCRM/model/ChurchCRM/Person.php:207
+msgid "Profile Image Deleted"
+msgstr ""
+
+#: ChurchCRM/model/ChurchCRM/Family.php:254
+#: ChurchCRM/model/ChurchCRM/Person.php:252
+msgid "Profile Image uploaded"
+=======
+#: ChurchCRM/Emails/users/NewAccountEmail.php:23
+msgid "A ChurchCRM account was created for you"
+msgstr ""
+
+#: ChurchCRM/Emails/users/NewAccountEmail.php:30
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:220
+msgid "New Password"
+>>>>>>> master
+msgstr ""
+
+#: ChurchCRM/model/ChurchCRM/Person.php:103 FamilyEditor.php:436
+<<<<<<< HEAD
+#: FamilyList.php:48 Menu.php:205 PersonEditor.php:380
+msgid "Created"
+msgstr ""
+
+<<<<<<< HEAD
+#: ChurchCRM/model/ChurchCRM/Person.php:108 FamilyEditor.php:471 Menu.php:240
+=======
+#: FamilyList.php:48 Menu.php:211 PersonEditor.php:380
+msgid "Created"
+msgstr ""
+
+#: ChurchCRM/model/ChurchCRM/Person.php:108 FamilyEditor.php:471 Menu.php:252
+>>>>>>> master
+#: PersonEditor.php:384
+msgid "Updated"
+msgstr ""
+
+#: ChurchCRM/model/ChurchCRM/User.php:146
+msgid "system user created"
+msgstr ""
+
+#: ChurchCRM/model/ChurchCRM/User.php:149
+msgid "system user updated"
+=======
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:22
+msgid "Your ChurchCRM password was changed"
 msgstr ""
 
 #: ChurchCRM/Emails/users/ResetPasswordEmail.php:17
@@ -2179,24 +2614,38 @@ msgstr ""
 
 #: ChurchCRM/Emails/users/ResetPasswordTokenEmail.php:29
 msgid "Reset Password"
+>>>>>>> master
 msgstr ""
 
-#: ChurchCRM/Emails/users/UnlockedEmail.php:11
-msgid "Account Unlocked"
+#: ChurchCRM/model/ChurchCRM/User.php:152
+msgid "system user deleted"
 msgstr ""
 
+<<<<<<< HEAD
+#: ChurchCRM/model/ChurchCRM/User.php:155
+msgid "system user password reset"
+=======
 #: ChurchCRM/Emails/users/UnlockedEmail.php:16
 msgid "Your ChurchCRM account was unlocked."
 msgstr ""
 
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:17
 msgid "Please verify your family's information"
+>>>>>>> master
 msgstr ""
 
-#: ChurchCRM/model/ChurchCRM/Deposit.php:291
-msgid "Anonymous"
+#: ChurchCRM/model/ChurchCRM/User.php:158
+msgid "system user changed password"
 msgstr ""
 
+<<<<<<< HEAD
+#: ChurchCRM/model/ChurchCRM/User.php:161
+msgid "system user password changed by admin"
+msgstr ""
+
+#: ChurchCRM/model/ChurchCRM/User.php:164
+msgid "system user login reset"
+=======
 #: ChurchCRM/model/ChurchCRM/Family.php:224
 #: ChurchCRM/model/ChurchCRM/Person.php:207
 msgid "Profile Image Deleted"
@@ -2205,22 +2654,15 @@ msgstr ""
 #: ChurchCRM/model/ChurchCRM/Family.php:254
 #: ChurchCRM/model/ChurchCRM/Person.php:252
 msgid "Profile Image uploaded"
+>>>>>>> master
 msgstr ""
 
 #: ChurchCRM/model/ChurchCRM/Person.php:103 FamilyEditor.php:436
-<<<<<<< HEAD
-#: FamilyList.php:48 Menu.php:205 PersonEditor.php:380
-msgid "Created"
-msgstr ""
-
-#: ChurchCRM/model/ChurchCRM/Person.php:108 FamilyEditor.php:471 Menu.php:240
-=======
 #: FamilyList.php:48 Menu.php:211 PersonEditor.php:380
 msgid "Created"
 msgstr ""
 
 #: ChurchCRM/model/ChurchCRM/Person.php:108 FamilyEditor.php:471 Menu.php:252
->>>>>>> master
 #: PersonEditor.php:384
 msgid "Updated"
 msgstr ""
@@ -2295,7 +2737,11 @@ msgstr ""
 
 #: ChurchCRM/Reports/PDF_Directory.php:400
 #: ChurchCRM/Reports/PDF_Directory.php:457 CSVExport.php:160
+<<<<<<< HEAD
 #: PersonView.php:318 Reports/DirectoryReport.php:302
+=======
+#: PersonView.php:322 Reports/DirectoryReport.php:302
+>>>>>>> master
 msgid "Work/Other Email"
 msgstr ""
 
@@ -2321,9 +2767,13 @@ msgstr ""
 
 #: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:178
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FamilyView.php:359 PersonView.php:462 Reports/ConfirmReportEmail.php:191
 =======
 #: FamilyView.php:366 PersonView.php:462 Reports/ConfirmReportEmail.php:191
+>>>>>>> master
+=======
+#: FamilyView.php:366 PersonView.php:466 Reports/ConfirmReportEmail.php:191
 >>>>>>> master
 #: Reports/ConfirmReportEmail.php:209 Reports/ConfirmReport.php:189
 #: Reports/ConfirmReport.php:208
@@ -2364,6 +2814,21 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+#: ChurchCRM/Service/DashboardService.php:76
+msgid "Head of Household"
+msgstr ""
+
+#: ChurchCRM/Service/DashboardService.php:79
+msgid "Spouse"
+msgstr ""
+
+#: ChurchCRM/Service/DashboardService.php:82
+msgid "Child"
+msgstr ""
+
+>>>>>>> master
 #: ChurchCRM/Service/FinancialService.php:480 PledgeEditor.php:274
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr ""
@@ -2450,6 +2915,7 @@ msgid "SMTP Server info are blank"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: ChurchCRM/tasks/FamilyWorkPhoneTask.php:30 DirectoryReports.php:181
 msgid "Family Work Phone"
 msgstr ""
@@ -2459,6 +2925,9 @@ msgid "In Church CRM 2.6.0 we will no longer support a work phone for a family"
 msgstr ""
 
 #: ChurchCRM/tasks/HttpsTask.php:18
+=======
+#: ChurchCRM/tasks/HttpsTask.php:19
+>>>>>>> master
 =======
 #: ChurchCRM/tasks/HttpsTask.php:19
 >>>>>>> master
@@ -2478,27 +2947,27 @@ msgstr ""
 msgid "New Release"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonClassificationDataCheck.php:36
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:39
 msgid "Missing Classification Data"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonClassificationDataCheck.php:41
+#: ChurchCRM/tasks/PersonClassificationDataCheck.php:44
 msgid "Missing Classification Data for Some People"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonGenderDataCheck.php:36
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:39
 msgid "Missing Gender Data"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonGenderDataCheck.php:41
+#: ChurchCRM/tasks/PersonGenderDataCheck.php:44
 msgid "Missing Gender Data for Some People"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonRoleDataCheck.php:37
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:40
 msgid "Missing Role Data"
 msgstr ""
 
-#: ChurchCRM/tasks/PersonRoleDataCheck.php:42
+#: ChurchCRM/tasks/PersonRoleDataCheck.php:45
 msgid "Missing Role Data for Some People"
 msgstr ""
 
@@ -2699,11 +3168,17 @@ msgstr ""
 msgid "Work / Other Email"
 msgstr ""
 
+<<<<<<< HEAD
 #: CSVImport.php:232 PersonView.php:278 PrintView.php:238
 #: sundayschool/SundaySchoolClassView.php:200
 <<<<<<< HEAD
 #: sundayschool/SundaySchoolDashboard.php:183
 =======
+#: sundayschool/SundaySchoolDashboard.php:195
+>>>>>>> master
+=======
+#: CSVImport.php:232 PersonView.php:282 PrintView.php:238
+#: sundayschool/SundaySchoolClassView.php:200
 #: sundayschool/SundaySchoolDashboard.php:195
 >>>>>>> master
 msgid "Birth Date"
@@ -2844,11 +3319,16 @@ msgid "Run Transactions"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: DepositSlipEditor.php:223 FamilyView.php:880 FindDepositSlip.php:98
 =======
 #: DepositSlipEditor.php:223 FamilyView.php:897 FindDepositSlip.php:98
 >>>>>>> master
 #: PersonView.php:897 PledgeDelete.php:23
+=======
+#: DepositSlipEditor.php:223 FamilyView.php:897 FindDepositSlip.php:98
+#: PersonView.php:901 PledgeDelete.php:23
+>>>>>>> master
 msgid "Confirm Delete"
 msgstr ""
 
@@ -2906,11 +3386,17 @@ msgid "Family Home Phone"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> master
 #: DirectoryReports.php:181
 msgid "Family Work Phone"
 msgstr ""
 
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: DirectoryReports.php:182
 msgid "Family Cell Phone"
@@ -2918,7 +3404,11 @@ msgstr ""
 
 #: DirectoryReports.php:183
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: external/templates/verify/verify-family-info.php:27
+=======
+#: external/templates/verify/verify-family-info.php:30
+>>>>>>> master
 =======
 #: external/templates/verify/verify-family-info.php:30
 >>>>>>> master
@@ -3031,6 +3521,7 @@ msgstr ""
 #: DonatedItemEditor.php:277 DonationFundEditor.php:154
 #: DonationFundEditor.php:224 EditEventAttendees.php:34
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FundRaiserEditor.php:178 GroupEditor.php:83 GroupPropsFormEditor.php:285
 #: GroupPropsFormEditor.php:409 GroupView.php:322 ListEvents.php:215
 =======
@@ -3038,6 +3529,11 @@ msgstr ""
 #: GroupPropsFormEditor.php:410 GroupView.php:322 ListEvents.php:215
 >>>>>>> master
 #: PersonView.php:757 PropertyTypeEditor.php:108
+=======
+#: FundRaiserEditor.php:178 GroupEditor.php:83 GroupPropsFormEditor.php:286
+#: GroupPropsFormEditor.php:410 GroupView.php:322 ListEvents.php:215
+#: PersonView.php:761 PropertyTypeEditor.php:108
+>>>>>>> master
 #: VolunteerOpportunityEditor.php:90 VolunteerOpportunityEditor.php:369
 #: VolunteerOpportunityEditor.php:443
 msgid "Description"
@@ -3067,9 +3563,15 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: DonationFundEditor.php:135 FamilyCustomFieldsEditor.php:325
 #: GroupPropsFormEditor.php:276 OptionManager.php:314
 #: PersonCustomFieldsEditor.php:307 PersonEditor.php:571
+=======
+#: DonationFundEditor.php:135 FamilyCustomFieldsEditor.php:326
+#: GroupPropsFormEditor.php:277 OptionManager.php:314
+#: PersonCustomFieldsEditor.php:308 PersonEditor.php:571
+>>>>>>> master
 =======
 #: DonationFundEditor.php:135 FamilyCustomFieldsEditor.php:326
 #: GroupPropsFormEditor.php:277 OptionManager.php:314
@@ -3092,15 +3594,21 @@ msgstr ""
 
 #: DonationFundEditor.php:170 DonationFundEditor.php:219
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FamilyCustomFieldsEditor.php:348 FamilyCustomFieldsEditor.php:448
 #: FamilyEditor.php:221 GroupPropsFormEditor.php:314
 #: GroupPropsFormEditor.php:400 OptionManager.php:355
 #: PersonCustomFieldsEditor.php:335 PersonCustomFieldsEditor.php:449
 =======
+=======
+>>>>>>> master
 #: FamilyCustomFieldsEditor.php:349 FamilyCustomFieldsEditor.php:449
 #: FamilyEditor.php:221 GroupPropsFormEditor.php:315
 #: GroupPropsFormEditor.php:401 OptionManager.php:355
 #: PersonCustomFieldsEditor.php:336 PersonCustomFieldsEditor.php:450
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: PropertyEditor.php:75 PropertyTypeEditor.php:49
 #: VolunteerOpportunityEditor.php:397 VolunteerOpportunityEditor.php:438
@@ -3109,8 +3617,13 @@ msgstr ""
 
 #: DonationFundEditor.php:199 EventEditor.php:560 EventNames.php:237
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FamilyCustomFieldsEditor.php:414 GroupPropsFormEditor.php:367
 #: OptionManager.php:371 PersonCustomFieldsEditor.php:410
+=======
+#: FamilyCustomFieldsEditor.php:415 GroupPropsFormEditor.php:368
+#: OptionManager.php:371 PersonCustomFieldsEditor.php:411
+>>>>>>> master
 =======
 #: FamilyCustomFieldsEditor.php:415 GroupPropsFormEditor.php:368
 #: OptionManager.php:371 PersonCustomFieldsEditor.php:411
@@ -3246,17 +3759,24 @@ msgid "Add a New Electronic Payment Method"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: ElectronicPaymentList.php:199 FamilyCustomFieldsEditor.php:329
 #: FamilyCustomFieldsEditor.php:431 FamilyView.php:534 FamilyView.php:639
 #: GroupPropsFormEditor.php:283 GroupPropsFormEditor.php:384 GroupView.php:320
 #: GroupView.php:354 OptionManager.php:81 PersonCustomFieldsEditor.php:313
 #: PersonCustomFieldsEditor.php:432 PersonView.php:653 PropertyEditor.php:133
 =======
+=======
+>>>>>>> master
 #: ElectronicPaymentList.php:199 FamilyCustomFieldsEditor.php:330
 #: FamilyCustomFieldsEditor.php:432 FamilyView.php:547 FamilyView.php:655
 #: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:320
 #: GroupView.php:354 OptionManager.php:81 PersonCustomFieldsEditor.php:314
+<<<<<<< HEAD
 #: PersonCustomFieldsEditor.php:433 PersonView.php:653 PropertyEditor.php:133
+>>>>>>> master
+=======
+#: PersonCustomFieldsEditor.php:433 PersonView.php:657 PropertyEditor.php:133
 >>>>>>> master
 #: SelectDelete.php:214
 msgid "Type"
@@ -3267,7 +3787,11 @@ msgid "Next Date"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: ElectronicPaymentList.php:202 FamilyView.php:641 FamilyView.php:749
+=======
+#: ElectronicPaymentList.php:202 FamilyView.php:657 FamilyView.php:766
+>>>>>>> master
 =======
 #: ElectronicPaymentList.php:202 FamilyView.php:657 FamilyView.php:766
 >>>>>>> master
@@ -3311,8 +3835,13 @@ msgstr ""
 
 #: ElectronicPaymentList.php:221 ElectronicPaymentList.php:287
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: EventNames.php:297 FamilyView.php:212 FamilyView.php:644 FamilyView.php:693
 #: FamilyView.php:754 FindFundRaiser.php:239 FindFundRaiser.php:247
+=======
+#: EventNames.php:297 FamilyView.php:216 FamilyView.php:660 FamilyView.php:709
+#: FamilyView.php:771 FindFundRaiser.php:239 FindFundRaiser.php:247
+>>>>>>> master
 =======
 #: EventNames.php:297 FamilyView.php:216 FamilyView.php:660 FamilyView.php:709
 #: FamilyView.php:771 FindFundRaiser.php:239 FindFundRaiser.php:247
@@ -3388,7 +3917,11 @@ msgid "API key in Setting->"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: email/Dashboard.php:97 Include/Footer.php:152
+=======
+#: email/Dashboard.php:99 Include/Footer.php:152
+>>>>>>> master
 =======
 #: email/Dashboard.php:99 Include/Footer.php:152
 >>>>>>> master
@@ -3735,9 +4268,13 @@ msgstr ""
 
 #: external/templates/registration/family-register-members.php:20
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FamilyEditor.php:926 FamilyView.php:357 PersonView.php:460
 =======
 #: FamilyEditor.php:926 FamilyView.php:364 PersonView.php:460
+>>>>>>> master
+=======
+#: FamilyEditor.php:926 FamilyView.php:364 PersonView.php:464
 >>>>>>> master
 #: PrintView.php:319
 msgid "Family Members"
@@ -3795,8 +4332,13 @@ msgid "Family Verification"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: external/templates/verify/verify-family-info.php:13
 #: external/templates/verify/verify-family-info.php:122
+=======
+#: external/templates/verify/verify-family-info.php:14
+#: external/templates/verify/verify-family-info.php:132
+>>>>>>> master
 =======
 #: external/templates/verify/verify-family-info.php:14
 #: external/templates/verify/verify-family-info.php:132
@@ -3805,6 +4347,7 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: external/templates/verify/verify-family-info.php:25
 #: sundayschool/SundaySchoolClassView.php:205
@@ -3815,6 +4358,8 @@ msgstr ""
 #: external/templates/verify/verify-family-info.php:36 FamilyEditor.php:787
 #: FamilyView.php:237 Reports/ConfirmReportEmail.php:144
 =======
+=======
+>>>>>>> master
 #: external/templates/verify/verify-family-info.php:26
 #: sundayschool/SundaySchoolClassView.php:205
 #: sundayschool/SundaySchoolDashboard.php:197
@@ -3823,6 +4368,9 @@ msgstr ""
 
 #: external/templates/verify/verify-family-info.php:40 FamilyEditor.php:787
 #: FamilyView.php:241 Reports/ConfirmReportEmail.php:144
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 #: Reports/ConfirmReport.php:145
 msgid "Send Newsletter"
@@ -3840,6 +4388,7 @@ msgstr ""
 msgid "Age Hidden"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: external/templates/verify/verify-family-info.php:126
 msgid "Please let us know what information to update if any"
@@ -3879,6 +4428,16 @@ msgstr ""
 msgid "Your verification request is complete"
 msgstr ""
 
+=======
+#: external/templates/verify/verify-family-info.php:136
+msgid "Please let us know what information to update if any"
+msgstr ""
+
+#: external/templates/verify/verify-family-info.php:141
+msgid "Your verification request is complete"
+msgstr ""
+
+>>>>>>> master
 #: external/templates/verify/verify-family-info.php:145
 msgid "We encountered an error submitting with your verification data"
 msgstr ""
@@ -3900,6 +4459,9 @@ msgid "Default Option"
 msgstr ""
 
 #: FamilyCustomFieldsEditor.php:297
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid ""
 "Warning:  By deleting this field, you will irrevokably lose all family data "
@@ -3907,7 +4469,11 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FamilyCustomFieldsEditor.php:308 PersonCustomFieldsEditor.php:290
+=======
+#: FamilyCustomFieldsEditor.php:309 PersonCustomFieldsEditor.php:291
+>>>>>>> master
 =======
 #: FamilyCustomFieldsEditor.php:309 PersonCustomFieldsEditor.php:291
 >>>>>>> master
@@ -3917,6 +4483,7 @@ msgid ""
 "delete or 'add new' button!"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: FamilyCustomFieldsEditor.php:317
 msgid "No custom Family fields have been added yet"
@@ -4004,6 +4571,40 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+=======
+#: FamilyCustomFieldsEditor.php:318
+msgid "No custom Family fields have been added yet"
+msgstr ""
+
+#: FamilyCustomFieldsEditor.php:332 GroupPropsFormEditor.php:287
+#: PersonCustomFieldsEditor.php:316
+msgid "Special option"
+msgstr ""
+
+#: FamilyCustomFieldsEditor.php:333 FamilyCustomFieldsEditor.php:458
+#: PersonCustomFieldsEditor.php:317 PersonCustomFieldsEditor.php:465
+msgid "Security Option"
+msgstr ""
+
+#: FamilyCustomFieldsEditor.php:334
+msgid "Family-View Side"
+msgstr ""
+
+#: FamilyCustomFieldsEditor.php:374 GroupPropsFormEditor.php:345
+#: PersonCustomFieldsEditor.php:360
+msgid "You must select a group."
+msgstr ""
+
+#: FamilyCustomFieldsEditor.php:379 PersonCustomFieldsEditor.php:363
+msgid "Edit List Options"
+msgstr ""
+
+#: FamilyCustomFieldsEditor.php:389 FamilyCustomFieldsEditor.php:463
+#: PersonCustomFieldsEditor.php:381 PersonCustomFieldsEditor.php:460
+msgid "Left"
+msgstr ""
+
+>>>>>>> master
 #: FamilyCustomFieldsEditor.php:390 FamilyCustomFieldsEditor.php:464
 #: PersonCustomFieldsEditor.php:385 PersonCustomFieldsEditor.php:461
 msgid "Right"
@@ -4025,6 +4626,9 @@ msgstr ""
 
 #: FamilyCustomFieldsEditor.php:468 GroupPropsFormEditor.php:415
 #: PersonCustomFieldsEditor.php:469
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid "Add New Field"
 msgstr ""
@@ -4102,7 +4706,11 @@ msgid "Envelope Info"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FamilyEditor.php:881 FamilyView.php:249 ManageEnvelopes.php:170
+=======
+#: FamilyEditor.php:881 FamilyView.php:254 ManageEnvelopes.php:170
+>>>>>>> master
 =======
 #: FamilyEditor.php:881 FamilyView.php:254 ManageEnvelopes.php:170
 >>>>>>> master
@@ -4133,11 +4741,16 @@ msgid "Last"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FamilyEditor.php:950 FamilyView.php:358 OptionManager.php:64
 =======
 #: FamilyEditor.php:950 FamilyView.php:365 OptionManager.php:64
 >>>>>>> master
 #: OptionManager.php:97 PersonView.php:461 PrintView.php:324 PrintView.php:379
+=======
+#: FamilyEditor.php:950 FamilyView.php:365 OptionManager.php:64
+#: OptionManager.php:97 PersonView.php:465 PrintView.php:324 PrintView.php:379
+>>>>>>> master
 #: Reports/CanvassReports.php:243 Reports/GroupReport.php:107
 msgid "Role"
 msgstr ""
@@ -4160,6 +4773,7 @@ msgstr ""
 
 #: FamilyEditor.php:1032 PersonEditor.php:663
 msgid "March"
+<<<<<<< HEAD
 msgstr ""
 
 #: FamilyEditor.php:1035 PersonEditor.php:666
@@ -4306,6 +4920,75 @@ msgstr ""
 
 #: FamilyView.php:536 GroupView.php:356 PersonView.php:655 PrintView.php:451
 =======
+=======
+msgstr ""
+
+#: FamilyEditor.php:1035 PersonEditor.php:666
+msgid "April"
+msgstr ""
+
+#: FamilyEditor.php:1038 PersonEditor.php:669
+msgid "May"
+msgstr ""
+
+#: FamilyEditor.php:1041 PersonEditor.php:672
+msgid "June"
+msgstr ""
+
+#: FamilyEditor.php:1044 PersonEditor.php:675
+msgid "July"
+msgstr ""
+
+#: FamilyEditor.php:1047 PersonEditor.php:678
+msgid "August"
+msgstr ""
+
+#: FamilyEditor.php:1050 PersonEditor.php:681
+msgid "September"
+msgstr ""
+
+#: FamilyEditor.php:1053 PersonEditor.php:684
+msgid "October"
+msgstr ""
+
+#: FamilyEditor.php:1056 PersonEditor.php:687
+msgid "November"
+msgstr ""
+
+#: FamilyEditor.php:1059 PersonEditor.php:690
+msgid "December"
+msgstr ""
+
+#: FamilyEditor.php:1064
+msgid "Unk"
+msgstr ""
+
+#: FamilyList.php:29 FamilyView.php:319
+msgid "Family List"
+msgstr ""
+
+#: FamilyList.php:34
+msgid "Add Family"
+msgstr ""
+
+#: FamilyList.php:46 GroupReports.php:131 Reports/CanvassReports.php:246
+#: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
+msgid "Cell Phone"
+msgstr ""
+
+#: FamilyList.php:49
+msgid "Edited"
+msgstr ""
+
+#: FamilyView.php:42
+msgid "Family View"
+msgstr ""
+
+#: FamilyView.php:179
+msgid " This Family is Deactivated"
+msgstr ""
+
+>>>>>>> master
 #: FamilyView.php:195 PersonView.php:194
 msgid "View Photo"
 msgstr ""
@@ -4346,7 +5029,11 @@ msgstr ""
 msgid "Delete this Family"
 msgstr ""
 
+<<<<<<< HEAD
 #: FamilyView.php:338 PersonView.php:353
+=======
+#: FamilyView.php:338 PersonView.php:357
+>>>>>>> master
 msgid "Add a Note"
 msgstr ""
 
@@ -4366,11 +5053,19 @@ msgstr ""
 msgid " this Family"
 msgstr ""
 
+<<<<<<< HEAD
 #: FamilyView.php:447 PersonView.php:379
 msgid "Timeline"
 msgstr ""
 
 #: FamilyView.php:449 GroupView.php:342 PersonView.php:382 PrintView.php:435
+=======
+#: FamilyView.php:447 PersonView.php:383
+msgid "Timeline"
+msgstr ""
+
+#: FamilyView.php:449 GroupView.php:342 PersonView.php:386 PrintView.php:435
+>>>>>>> master
 msgid "Assigned Properties"
 msgstr ""
 
@@ -4382,16 +5077,25 @@ msgstr ""
 msgid "Pledges and Payments"
 msgstr ""
 
+<<<<<<< HEAD
 #: FamilyView.php:540 PersonView.php:647 PrintView.php:446
 msgid "No property assignments."
 msgstr ""
 
 #: FamilyView.php:549 GroupView.php:356 PersonView.php:655 PrintView.php:451
 >>>>>>> master
+=======
+#: FamilyView.php:540 PersonView.php:651 PrintView.php:446
+msgid "No property assignments."
+msgstr ""
+
+#: FamilyView.php:549 GroupView.php:356 PersonView.php:659 PrintView.php:451
+>>>>>>> master
 #: PropertyAssign.php:180 SystemSettings.php:152
 msgid "Value"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: FamilyView.php:539 FamilyView.php:577 GroupView.php:359 GroupView.php:395
 msgid "Edit Value"
@@ -4407,10 +5111,13 @@ msgstr ""
 
 #: FamilyView.php:618 GroupView.php:433 PersonView.php:724 PersonView.php:810
 =======
+=======
+>>>>>>> master
 #: FamilyView.php:552 FamilyView.php:590 GroupView.php:359 GroupView.php:395
 msgid "Edit Value"
 msgstr ""
 
+<<<<<<< HEAD
 #: FamilyView.php:613 PersonView.php:688
 msgid "Assign a New Property"
 msgstr ""
@@ -4421,10 +5128,22 @@ msgstr ""
 
 #: FamilyView.php:634 GroupView.php:433 PersonView.php:724 PersonView.php:810
 >>>>>>> master
+=======
+#: FamilyView.php:613 PersonView.php:692
+msgid "Assign a New Property"
+msgstr ""
+
+#: FamilyView.php:619 PersonView.php:700 QueryView.php:322
+msgid "select an option"
+msgstr ""
+
+#: FamilyView.php:634 GroupView.php:433 PersonView.php:728 PersonView.php:814
+>>>>>>> master
 #: PropertyAssign.php:189 SelectList.php:1081
 msgid "Assign"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: FamilyView.php:640
 msgid "Next payment date"
@@ -4496,6 +5215,8 @@ msgstr ""
 
 #: FamilyView.php:884 PersonView.php:901
 =======
+=======
+>>>>>>> master
 #: FamilyView.php:656
 msgid "Next payment date"
 msgstr ""
@@ -4564,12 +5285,17 @@ msgstr ""
 msgid " Canvass Entry"
 msgstr ""
 
+<<<<<<< HEAD
 #: FamilyView.php:901 PersonView.php:901
+>>>>>>> master
+=======
+#: FamilyView.php:901 PersonView.php:905
 >>>>>>> master
 msgid ""
 "You are about to delete the profile photo, this procedure is irreversible."
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: FamilyView.php:886 PersonView.php:903
 msgid "Do you want to proceed?"
@@ -4586,6 +5312,9 @@ msgstr ""
 #: FamilyView.php:912
 =======
 #: FamilyView.php:903 PersonView.php:903
+=======
+#: FamilyView.php:903 PersonView.php:907
+>>>>>>> master
 msgid "Do you want to proceed?"
 msgstr ""
 
@@ -4598,12 +5327,16 @@ msgid "Select how do you want to request the family information to be verified"
 msgstr ""
 
 #: FamilyView.php:930
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid ""
 "You are about to email copy of the family information in pdf to the "
 "following emails"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: FamilyView.php:928
 msgid "Online Verification"
@@ -4623,6 +5356,8 @@ msgstr ""
 
 #: FamilyView.php:950
 =======
+=======
+>>>>>>> master
 #: FamilyView.php:947
 msgid "Online Verification"
 msgstr ""
@@ -4640,11 +5375,15 @@ msgid "Oops! Family not found."
 msgstr ""
 
 #: FamilyView.php:970
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid ""
 "We could not find the family you were looking for.<br>Meanwhile, you may"
 msgstr ""
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #: FamilyView.php:951 PersonView.php:1013
 msgid "return to member dashboard"
@@ -4669,6 +5408,9 @@ msgstr ""
 #: FamilyView.php:1026
 =======
 #: FamilyView.php:971 PersonView.php:1007
+=======
+#: FamilyView.php:971 PersonView.php:1011
+>>>>>>> master
 msgid "return to member dashboard"
 msgstr ""
 
@@ -4689,6 +5431,9 @@ msgid "Please confirm activation of family"
 msgstr ""
 
 #: FamilyView.php:1046
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid "Family Photo"
 msgstr ""
@@ -5022,7 +5767,11 @@ msgid "Display:"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FundRaiserEditor.php:35 menuconfig_mcf.php:25
+=======
+#: FundRaiserEditor.php:35 menuconfig_mcf.php:26
+>>>>>>> master
 =======
 #: FundRaiserEditor.php:35 menuconfig_mcf.php:26
 >>>>>>> master
@@ -5034,7 +5783,11 @@ msgid "Create New Fund Raiser"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: FundRaiserEditor.php:56 Include/Functions.php:1332 PledgeEditor.php:321
+=======
+#: FundRaiserEditor.php:56 Include/Functions.php:1337 PledgeEditor.php:321
+>>>>>>> master
 =======
 #: FundRaiserEditor.php:56 Include/Functions.php:1337 PledgeEditor.php:321
 >>>>>>> master
@@ -5075,6 +5828,10 @@ msgstr ""
 
 #: GeoPage.php:239
 msgid "Select Family:"
+msgstr ""
+
+#: GeoPage.php:241
+msgid "Select a family"
 msgstr ""
 
 #: GeoPage.php:258
@@ -5137,7 +5894,11 @@ msgstr ""
 msgid "Direct me"
 msgstr ""
 
+<<<<<<< HEAD
 #: GeoPage.php:445 PersonView.php:349 SelectList.php:784
+=======
+#: GeoPage.php:445 PersonView.php:353 SelectList.php:784
+>>>>>>> master
 msgid "Add to Cart"
 msgstr ""
 
@@ -5178,7 +5939,11 @@ msgid "from group"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: GroupEditor.php:119 GroupPropsFormEditor.php:325
+=======
+#: GroupEditor.php:119 GroupPropsFormEditor.php:326
+>>>>>>> master
 =======
 #: GroupEditor.php:119 GroupPropsFormEditor.php:326
 >>>>>>> master
@@ -5256,6 +6021,7 @@ msgid "data for member"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: GroupPropsFormEditor.php:42
 msgid "Group-Specific Properties Form Editor:"
 msgstr ""
@@ -5270,6 +6036,8 @@ msgstr ""
 
 #: GroupPropsFormEditor.php:270
 =======
+=======
+>>>>>>> master
 #: GroupPropsFormEditor.php:43
 msgid "Group-Specific Properties Form Editor:"
 msgstr ""
@@ -5283,6 +6051,9 @@ msgid "No properties have been added yet"
 msgstr ""
 
 #: GroupPropsFormEditor.php:271
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid ""
 "Warning: Field changes will be lost if you do not 'Save Changes' before "
@@ -5290,17 +6061,23 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: GroupPropsFormEditor.php:287
 msgid "Show in"
 msgstr ""
 
 #: GroupPropsFormEditor.php:287
 =======
+=======
+>>>>>>> master
 #: GroupPropsFormEditor.php:288
 msgid "Show in"
 msgstr ""
 
 #: GroupPropsFormEditor.php:288
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid "Person View"
 msgstr ""
@@ -5590,7 +6367,11 @@ msgstr ""
 msgid "Property Types"
 msgstr ""
 
+<<<<<<< HEAD
 #: Include/Footer.php:129 PersonView.php:383
+=======
+#: Include/Footer.php:129 PersonView.php:387
+>>>>>>> master
 msgid "Volunteer Opportunities"
 msgstr ""
 
@@ -5788,6 +6569,7 @@ msgid "Fall"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: Include/Functions.php:1139
 msgid "Error: Invalid Editor ID!"
 msgstr ""
@@ -5822,6 +6604,8 @@ msgstr ""
 
 #: Include/Functions.php:1573
 =======
+=======
+>>>>>>> master
 #: Include/Functions.php:1144
 msgid "Error: Invalid Editor ID!"
 msgstr ""
@@ -5855,6 +6639,9 @@ msgid " Italic"
 msgstr ""
 
 #: Include/Functions.php:1578
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid " Bold"
 msgstr ""
@@ -5898,9 +6685,13 @@ msgid "Submit"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: Include/Header-function.php:260 Include/Header.php:233 menuconfig_mcf.php:5
 =======
 #: Include/Header-function.php:272 Include/Header.php:233 menuconfig_mcf.php:5
+>>>>>>> master
+=======
+#: Include/Header-function.php:273 Include/Header.php:233 menuconfig_mcf.php:5
 >>>>>>> master
 msgid "Dashboard"
 msgstr ""
@@ -5931,6 +6722,7 @@ msgstr ""
 
 #: Include/Header.php:181
 msgid "My Settings"
+<<<<<<< HEAD
 msgstr ""
 
 #: Include/Header.php:187
@@ -5945,6 +6737,22 @@ msgstr ""
 msgid "Log off"
 msgstr ""
 
+=======
+msgstr ""
+
+#: Include/Header.php:187
+msgid "Read the docs"
+msgstr ""
+
+#: Include/Header.php:192
+msgid "Report an issue"
+msgstr ""
+
+#: Include/Header.php:197
+msgid "Log off"
+msgstr ""
+
+>>>>>>> master
 #: Include/Header.php:206
 msgid "Your tasks"
 msgstr ""
@@ -6135,6 +6943,7 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: Login.php:150 Login.php:207
 msgid "Login"
 msgstr ""
@@ -6165,11 +6974,28 @@ msgstr ""
 msgid "Your previous session timed out.  Please login again."
 msgstr ""
 
+=======
+#: Login.php:147 Login.php:198
+msgid "Login"
+msgstr ""
+
+#: Login.php:159
+msgid "Please Login"
+msgstr ""
+
+#: Login.php:164
+msgid "Your previous session timed out.  Please login again."
+msgstr ""
+
+>>>>>>> master
 #: Login.php:190
 msgid "I forgot my password"
 msgstr ""
 
 #: Login.php:206
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid "Register a new Family"
 msgstr ""
@@ -6311,7 +7137,11 @@ msgid "More info"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: MembersDashboard.php:198 Menu.php:130 menuconfig_mcf.php:10
+=======
+#: MembersDashboard.php:198 Menu.php:130 menuconfig_mcf.php:11
+>>>>>>> master
 =======
 #: MembersDashboard.php:198 Menu.php:130 menuconfig_mcf.php:11
 >>>>>>> master
@@ -6409,6 +7239,7 @@ msgid "Latest Families"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: Menu.php:231
 msgid "Updated Families"
 msgstr ""
@@ -6419,6 +7250,8 @@ msgstr ""
 
 #: Menu.php:303
 =======
+=======
+>>>>>>> master
 #: Menu.php:237
 msgid "Updated Families"
 msgstr ""
@@ -6428,6 +7261,9 @@ msgid "Latest Members"
 msgstr ""
 
 #: Menu.php:315
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid "Updated Members"
 msgstr ""
@@ -6632,17 +7468,23 @@ msgid "Select"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: PersonCustomFieldsEditor.php:28
 msgid "Custom Person Fields Editor"
 msgstr ""
 
 #: PersonCustomFieldsEditor.php:278
 =======
+=======
+>>>>>>> master
 #: PersonCustomFieldsEditor.php:29
 msgid "Custom Person Fields Editor"
 msgstr ""
 
 #: PersonCustomFieldsEditor.php:279
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid ""
 "Warning:  By deleting this field, you will irrevokably lose all person data "
@@ -6650,11 +7492,19 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: PersonCustomFieldsEditor.php:299
 msgid "No custom person fields have been added yet"
 msgstr ""
 
 #: PersonCustomFieldsEditor.php:317
+=======
+#: PersonCustomFieldsEditor.php:300
+msgid "No custom person fields have been added yet"
+msgstr ""
+
+#: PersonCustomFieldsEditor.php:318
+>>>>>>> master
 =======
 #: PersonCustomFieldsEditor.php:300
 msgid "No custom person fields have been added yet"
@@ -6689,7 +7539,11 @@ msgstr ""
 msgid "Red text"
 msgstr ""
 
+<<<<<<< HEAD
 #: PersonEditor.php:564 PersonView.php:343
+=======
+#: PersonEditor.php:564 PersonView.php:347
+>>>>>>> master
 msgid "indicates items inherited from the associated family record."
 msgstr ""
 
@@ -6737,7 +7591,11 @@ msgstr ""
 msgid "Membership Info"
 msgstr ""
 
+<<<<<<< HEAD
 #: PersonEditor.php:1074 PersonView.php:289
+=======
+#: PersonEditor.php:1074 PersonView.php:293
+>>>>>>> master
 msgid "Friend Date"
 msgstr ""
 
@@ -6769,6 +7627,7 @@ msgstr ""
 msgid "Family:"
 msgstr ""
 
+<<<<<<< HEAD
 #: PersonView.php:348
 msgid "Printable Page"
 msgstr ""
@@ -6798,10 +7657,42 @@ msgid "Assigned Groups"
 msgstr ""
 
 #: PersonView.php:384 SettingsIndividual.php:109 SettingsUser.php:98
+=======
+#: PersonView.php:352
+msgid "Printable Page"
+msgstr ""
+
+#: PersonView.php:356
+msgid "Edit \"Why Came\" Notes"
+msgstr ""
+
+#: PersonView.php:362
+msgid "Delete this Record"
+msgstr ""
+
+#: PersonView.php:368
+msgid "Make User"
+msgstr ""
+
+#: PersonView.php:372
+msgid "Edit User"
+msgstr ""
+
+#: PersonView.php:376
+msgid "List Members"
+msgstr ""
+
+#: PersonView.php:385 PrintView.php:363
+msgid "Assigned Groups"
+msgstr ""
+
+#: PersonView.php:388 SettingsIndividual.php:109 SettingsUser.php:98
+>>>>>>> master
 #: UserEditor.php:496
 msgid "Notes"
 msgstr ""
 
+<<<<<<< HEAD
 #: PersonView.php:533 PrintView.php:374
 msgid "No group assignments."
 msgstr ""
@@ -6862,6 +7753,57 @@ msgid "Oops! Person not found."
 msgstr ""
 
 #: PersonView.php:1007
+>>>>>>> master
+=======
+#: PersonView.php:537 PrintView.php:374
+msgid "No group assignments."
+msgstr ""
+
+#: PersonView.php:595
+msgid "Change Role"
+msgstr ""
+
+#: PersonView.php:598
+msgid "Update Properties"
+msgstr ""
+
+#: PersonView.php:621
+msgid "Assign New Group"
+msgstr ""
+
+#: PersonView.php:622
+msgid "Person will be assigned to the Group in the Default Role."
+msgstr ""
+
+#: PersonView.php:635
+msgid "Assign User to Group"
+msgstr ""
+
+#: PersonView.php:716
+msgid "assigned"
+msgstr ""
+
+#: PersonView.php:753
+msgid "No volunteer opportunity assignments."
+msgstr ""
+
+#: PersonView.php:796
+msgid "Assign a New Volunteer Opportunity"
+msgstr ""
+
+#: PersonView.php:924
+msgid "Are you sure you want to remove this person from the Group"
+msgstr ""
+
+#: PersonView.php:988
+msgid "Photo"
+msgstr ""
+
+#: PersonView.php:1008
+msgid "Oops! Person not found."
+msgstr ""
+
+#: PersonView.php:1011
 >>>>>>> master
 msgid ""
 "We could not find the person you were looking for.<br>Meanwhile, you may"
@@ -6978,7 +7920,11 @@ msgstr ""
 #: PrintView.php:325 Reports/CanvassReports.php:244
 #: sundayschool/SundaySchoolClassView.php:201
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: sundayschool/SundaySchoolDashboard.php:184
+=======
+#: sundayschool/SundaySchoolDashboard.php:196
+>>>>>>> master
 =======
 #: sundayschool/SundaySchoolDashboard.php:196
 >>>>>>> master
@@ -7103,8 +8049,13 @@ msgstr ""
 
 #: PropertyTypeEditor.php:90 PropertyTypeList.php:40
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: sundayschool/SundaySchoolDashboard.php:145
 #: sundayschool/SundaySchoolDashboard.php:226 queryparameters_qrp.php:12
+=======
+#: sundayschool/SundaySchoolDashboard.php:151
+#: sundayschool/SundaySchoolDashboard.php:238 queryparameters_qrp.php:12
+>>>>>>> master
 =======
 #: sundayschool/SundaySchoolDashboard.php:151
 #: sundayschool/SundaySchoolDashboard.php:238 queryparameters_qrp.php:12
@@ -7646,7 +8597,11 @@ msgid "Person Listing"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: SelectList.php:184 menuconfig_mcf.php:12
+=======
+#: SelectList.php:184 menuconfig_mcf.php:13
+>>>>>>> master
 =======
 #: SelectList.php:184 menuconfig_mcf.php:13
 >>>>>>> master
@@ -7782,7 +8737,11 @@ msgstr ""
 
 #: sundayschool/SundaySchoolClassView.php:38
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: sundayschool/SundaySchoolDashboard.php:226 menuconfig_mcf.php:13
+=======
+#: sundayschool/SundaySchoolDashboard.php:238 menuconfig_mcf.php:14
+>>>>>>> master
 =======
 #: sundayschool/SundaySchoolDashboard.php:238 menuconfig_mcf.php:14
 >>>>>>> master
@@ -7805,7 +8764,11 @@ msgstr ""
 #: sundayschool/SundaySchoolClassView.php:120
 #: sundayschool/SundaySchoolDashboard.php:80
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: sundayschool/SundaySchoolDashboard.php:146
+=======
+#: sundayschool/SundaySchoolDashboard.php:152
+>>>>>>> master
 =======
 #: sundayschool/SundaySchoolDashboard.php:152
 >>>>>>> master
@@ -7832,7 +8795,11 @@ msgstr ""
 #: sundayschool/SundaySchoolClassView.php:191
 #: sundayschool/SundaySchoolDashboard.php:91
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: sundayschool/SundaySchoolDashboard.php:147
+=======
+#: sundayschool/SundaySchoolDashboard.php:153
+>>>>>>> master
 =======
 #: sundayschool/SundaySchoolDashboard.php:153
 >>>>>>> master
@@ -7924,6 +8891,7 @@ msgid "Classes"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: sundayschool/SundaySchoolDashboard.php:173
 msgid "Students not in a Sunday School Class"
 msgstr ""
@@ -7939,12 +8907,21 @@ msgstr ""
 msgid "Students not in a Sunday School Class"
 msgstr ""
 
+=======
+#: sundayschool/SundaySchoolDashboard.php:179
+msgid "Students not in a Sunday School Class"
+msgstr ""
+
+>>>>>>> master
 #: sundayschool/SundaySchoolDashboard.php:238
 #: sundayschool/SundaySchoolDashboard.php:251
 msgid "Add"
 msgstr ""
 
 #: sundayschool/SundaySchoolDashboard.php:243
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid "Enter Name"
 msgstr ""
@@ -8077,39 +9054,43 @@ msgstr ""
 msgid "Extract the upgrade archive, and apply the new files"
 msgstr ""
 
-#: UpgradeCRM.php:59
-msgid "File Name:"
-msgstr ""
-
-#: UpgradeCRM.php:60
-msgid "Full Path:"
+#: UpgradeCRM.php:58
+msgid "Release Notes"
 msgstr ""
 
 #: UpgradeCRM.php:61
-msgid "SHA1:"
+msgid "File Name:"
+msgstr ""
+
+#: UpgradeCRM.php:62
+msgid "Full Path:"
 msgstr ""
 
 #: UpgradeCRM.php:63
+msgid "SHA1:"
+msgstr ""
+
+#: UpgradeCRM.php:66
 msgid "Upgrade System"
 msgstr ""
 
-#: UpgradeCRM.php:70
+#: UpgradeCRM.php:73
 msgid "Step 4: Login"
 msgstr ""
 
-#: UpgradeCRM.php:72
+#: UpgradeCRM.php:75
 msgid "Login to Upgraded System"
 msgstr ""
 
-#: UpgradeCRM.php:94
+#: UpgradeCRM.php:97
 msgid "Backup Complete, Ready for Download."
 msgstr ""
 
-#: UpgradeCRM.php:104
+#: UpgradeCRM.php:107
 msgid "Backup Error."
 msgstr ""
 
-#: UpgradeCRM.php:149
+#: UpgradeCRM.php:153
 msgid "Backup Downloaded, Copy on server removed"
 msgstr ""
 
@@ -8216,6 +9197,7 @@ msgid "Failed Logins"
 msgstr ""
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: UserList.php:118
 msgid "User Delete Confirmation"
 msgstr ""
@@ -8238,6 +9220,8 @@ msgstr ""
 
 #: UserList.php:173
 =======
+=======
+>>>>>>> master
 #: UserList.php:121
 msgid "User Delete Confirmation"
 msgstr ""
@@ -8259,6 +9243,9 @@ msgid "Please confirm the password reset of this user"
 msgstr ""
 
 #: UserList.php:176
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 msgid "Password reset for"
 msgstr ""
@@ -9931,6 +10918,32 @@ msgstr ""
 msgid "Failed to add verification"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+msgid "Confirm Enable Group Specific Properties"
+msgstr ""
+
+msgid ""
+"This will create a group-specific properties table for this group.  You "
+"should then add needed properties with the Group-Specific Properties Form "
+"Editor."
+msgstr ""
+
+msgid "Confirm Disable Group Specific Properties"
+msgstr ""
+
+msgid ""
+"Are you sure you want to remove the group-specific person properties?  All "
+"group member properties data will be lost!"
+msgstr ""
+
+msgid "Role Name"
+msgstr ""
+
+msgid "Sequence"
+msgstr ""
+
+>>>>>>> master
 msgid "Checking Cart Status"
 msgstr ""
 
@@ -9949,6 +10962,21 @@ msgstr ""
 msgid "Are you sure you want to remove the selected group members?"
 msgstr ""
 
+<<<<<<< HEAD
+=======
+msgid "Members from group"
+msgstr ""
+
+msgid "Members to another group"
+msgstr ""
+
+msgid "Members to cart"
+msgstr ""
+
+msgid "Move"
+msgstr ""
+
+>>>>>>> master
 msgid "Successfully submitted Issue"
 msgstr ""
 
