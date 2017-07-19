@@ -774,6 +774,8 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
                 }
             });
         }
+    </script>
+    <?php
 }
 ?>
 
@@ -1003,5 +1005,32 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
                             <?php
                         }
                         ?>
-    </script>
-    <?php
+
+                        <?php
+                        if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
+                            ?>
+                            <tr>
+                                <td>
+                                    <?php
+                                    if ($iAutID > 0) {
+                                        ?>
+                                        <input type="button" id="PressToCreatePaymentMethod"
+                                               value="<?= _("Store Private Data at Vanco") ?>"
+                                               onclick="CreatePaymentMethod();"/>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <b>Save this record to enable storing private data at Vanco</b>
+                                        <?php
+                                    } ?>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+<?php require 'Include/Footer.php' ?>

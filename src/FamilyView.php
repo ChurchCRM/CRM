@@ -319,11 +319,14 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                             class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
                 <?php if (($next_id > 0)) {
                         ?>
+                    <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
+                                class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
+                    <?php
                     } ?>
                 <?php if ($_SESSION['bDeleteRecords']) {
                         ?>
-                    <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
-                                class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
+                    <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
+                                class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
                     <?php
                     } ?>
                 <br/>
@@ -334,15 +337,19 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
                                 class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                     <?php
+                } ?>
                 <a class="btn btn-app"
                    href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
                             class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
 
 
                 <?php if ($bOkToEdit) {
-                    <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
-                                class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
+                    ?>
+                    <button class="btn btn-app bg-orange" id="activateDeactivate">
+                        <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo((empty($fam_DateDeactivated) ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                    </button>
                     <?php
+                } ?>
             </div>
         </div>
     </div>
@@ -394,6 +401,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                         array_push($sFamilyEmails, $tmpEmail); ?>
                                         <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
                                         <?php
+                    } ?>
                                 </td>
                                 <td style="width: 20%;">
                                     <a href="FamilyView.php?FamilyID=<?= $person->getId() ?>&AddToPeopleCart=<?= $person->getId() ?>">
@@ -410,7 +418,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                     </span>
                                         </a>
-                                        <a id="delete-person" data-person_name="<?= $person->getFullName() ?>"
+                                        <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                            data-person_id="<?= $person->getId() ?>" data-view="family">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
@@ -418,6 +426,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                     </span>
                                         </a>
                                         <?php
+                    } ?>
+                                </td>
+                            </tr>
+                            <?php
                 } ?>
                         </tbody>
                     </table>
@@ -441,11 +453,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
                     <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab"
                                                data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
-                    <?php
-                    ?>
-                    <button class="btn btn-app bg-orange" id="activateDeactivate">
-                        <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo((empty($fam_DateDeactivated) ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
-                    </button>
                     <?php
                 } ?>
 
@@ -939,6 +946,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                             class="btn btn-warning warning"><i
                                 class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
+                    <?php
     } ?>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
@@ -966,7 +974,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         </div>
         <?php
     } ?>
-                    } ?>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js"
+            type="text/javascript"></script>
     <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>

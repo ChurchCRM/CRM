@@ -88,6 +88,16 @@ require 'Include/Header.php'; ?>
 
         if ($iNumPersons > 16) {
             ?>
+            <form method="get" action="CartView.php#GenerateLabels">
+                <input type="submit" class="btn" name="gotolabels"
+                       value="<?= gettext('Go To Labels') ?>">
+            </form>
+            <?php
+        } ?>
+
+        <!-- BEGIN CART FUNCTIONS -->
+
+
         <?php
         if (count($_SESSION['aPeopleCart']) > 0) {
             ?>
@@ -267,23 +277,19 @@ require 'Include/Header.php'; ?>
         }
     } ?>
 
-            <a href="CartToGroup.php" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
-        <?php
-        } ?>
-        <?php if ($_SESSION['bAddRecords']) {
-            ?>
-            <a href="CartToFamily.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
-        <?php
-        } ?>
-        <a href="CartToEvent.php" class="btn btn-app"><i class="fa fa-ticket"></i><?=  gettext('Empty Cart to Event') ?></a>
+    <!-- END CART FUNCTIONS -->
 
-        <?php  if ($bExportCSV) {
-            ?>
-            <a href="CSVExport.php?Source=cart" class="btn btn-app"><i class="fa fa-file-excel-o"></i><?=  gettext('CSV Export') ?></a>
-        <?php
-        } ?>
-        <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i class="fa fa-map-marker"></i><?= gettext('Map Cart') ?></a>
-        <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
+    <!-- BEGIN CART LISTING -->
+    <?php if (isset($iNumPersons) && $iNumPersons > 0): ?>
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">
+                    <?= gettext('Your cart contains') . ' ' . $iNumPersons . ' ' . gettext('persons from') . ' ' . $iNumFamilies . ' ' . gettext('families') ?>
+                    .</h3>
+            </div>
+            <div class="box-body">
+                <table class="table table-hover dt-responsive" id="cart-listing-table" style="width:100%;">
+                    <thead>
                     <tr>
                         <th><?= gettext('Name') ?></th>
                         <th><?= gettext('Address') ?></th>
@@ -292,6 +298,75 @@ require 'Include/Header.php'; ?>
                         <th><?= gettext('Classification') ?></th>
                         <th><?= gettext('Family Role') ?></th>
                     </tr>
+                    </thead>
+
+                    <tbody>
+                    <?php
+                    $sEmailLink = '';
+                    $iEmailNum = 0;
+                    $email_array = [];
+
+                    while ($aRow = mysqli_fetch_array($rsCartItems)) {
+                        extract($aRow);
+
+                        $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+                        if (strlen($sEmail) == 0 && strlen($per_WorkEmail) > 0) {
+                            $sEmail = $per_WorkEmail;
+                        }
+
+                        if (strlen($sEmail)) {
+                            $sValidEmail = gettext('Yes');
+                            if (!stristr($sEmailLink, $sEmail)) {
+                                $email_array[] = $sEmail;
+
+                                if ($iEmailNum == 0) {
+                                    // Comma is not needed before first email address
+                                    $sEmailLink .= $sEmail;
+                                    $iEmailNum++;
+                                } else {
+                                    $sEmailLink .= $sMailtoDelimiter . $sEmail;
+                                }
+                            }
+                        } else {
+                            $sValidEmail = gettext('No');
+                        }
+
+                        $sAddress1 = SelectWhichInfo($per_Address1, $fam_Address1, false);
+                        $sAddress2 = SelectWhichInfo($per_Address2, $fam_Address2, false);
+
+                        if (strlen($sAddress1) > 0 || strlen($sAddress2) > 0) {
+                            $sValidAddy = gettext('Yes');
+                        } else {
+                            $sValidAddy = gettext('No');
+                        }
+
+                        $personName = $per_FirstName . ' ' . $per_LastName;
+                        $thumbnail = SystemURLs::getRootPath() . '/api/persons/' . $per_ID . '/thumbnail'; ?>
+
+                        <tr>
+                            <td>
+                                <img data-name="<?= $personName; ?>" data-src="<?= $thumbnail ?>"
+                                     class="direct-chat-img initials-image">&nbsp
+                                <a href="PersonView.php?PersonID=<?= $per_ID ?>">
+                                    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) ?>
+                                </a>
+                            </td>
+                            <td><?= $sValidAddy ?></td>
+                            <td><?= $sValidEmail ?></td>
+                            <td><a href="CartView.php?RemoveFromPeopleCart=<?= $per_ID ?>"><?= gettext('Remove') ?></a>
+                            </td>
+                            <td><?= $aClassificationName[$per_cls_ID] ?></td>
+                            <td><?= $aFamilyRoleName[$per_fmr_ID] ?></td>
+                        </tr>
+                        <?php
+                    } ?>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <?php endif; ?>
+    <!-- END CART LISTING -->
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -320,16 +395,3 @@ require 'Include/Header.php'; ?>
     }
 
     ?>
-    <!-- END CART FUNCTIONS -->
-
-    <!-- BEGIN CART LISTING -->
-    <?php if (isset($iNumPersons) && $iNumPersons > 0): ?>
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">
-                    <?= gettext('Your cart contains') . ' ' . $iNumPersons . ' ' . gettext('persons from') . ' ' . $iNumFamilies . ' ' . gettext('families') ?>
-                    .</h3>
-            </div>
-            <div class="box-body">
-                <table class="table table-hover dt-responsive" id="cart-listing-table" style="width:100%;">
-                    <thead>
