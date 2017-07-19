@@ -1,5 +1,29 @@
 # Changelog
 
+## 2.8.6 (18/07/2017)
+
+#### Enhancements:
+
+- [**Backend System**][**enhancement**] Add Church URLs to System Settings [#2363](https://github.com/ChurchCRM/CRM/issues/2363)
+- [**enhancement**] Open Tasks menu issues [#2060](https://github.com/ChurchCRM/CRM/issues/2060)
+
+#### Core Functionality
+
+- [**Feature: Members**] Missing Role in the alerts for invalid Members [#2601](https://github.com/ChurchCRM/CRM/issues/2601)
+
+#### Localization:
+
+- [**Localization**] Support Arabic / Egypt Locale [#2861](https://github.com/ChurchCRM/CRM/issues/2861)
+- [**Localization**] DataTables Column Names are not translating [#2780](https://github.com/ChurchCRM/CRM/issues/2780)
+- [**Localization**] Add Thai locales [#1325](https://github.com/ChurchCRM/CRM/issues/1325)
+
+#### Inner Beauty:
+
+- [**Backend System**] Display release notes on Upgrade wizard [#2835](https://github.com/ChurchCRM/CRM/issues/2835)
+- [**Backend System**][**enhancement**] Add Church URLs to System Settings [#2363](https://github.com/ChurchCRM/CRM/issues/2363)
+
+---
+
 ## 2.8.5 (14/07/2017)
 
 #### Enhancements:
@@ -847,31 +871,6 @@
 
 ## 2.3.3 (12/11/2016)
 
-#### Core Functionality
-
-- [**bug**][**Feature: Financial**] error with navigation on Family View [#1309](https://github.com/ChurchCRM/CRM/issues/1309)
-- [**bug**][**Feature: Members**] Email Dashboard rendering issues [#1292](https://github.com/ChurchCRM/CRM/issues/1292)
-- [**bug**][**Feature: Members**][**question**] Some birthdays showing up on wrong date [#1289](https://github.com/ChurchCRM/CRM/issues/1289)
-- [**bug**][**Feature: Members**] family view scripts fail [#1285](https://github.com/ChurchCRM/CRM/issues/1285)
-- [**bug**][**Feature: Members**][**Web Report**] People Not In MailChimp Broken Links [#1156](https://github.com/ChurchCRM/CRM/issues/1156)
-
-#### Bug fixes:
-
-- [**bug**][**build**][**question**] Failed DB Restore Results in HTTP 500 Error [#1318](https://github.com/ChurchCRM/CRM/issues/1318)
-- [**bug**][**Feature: Financial**] error with navigation on Family View [#1309](https://github.com/ChurchCRM/CRM/issues/1309)
-- [**bug**][**Feature: Members**] Email Dashboard rendering issues [#1292](https://github.com/ChurchCRM/CRM/issues/1292)
-- [**bug**][**Feature: Members**][**question**] Some birthdays showing up on wrong date [#1289](https://github.com/ChurchCRM/CRM/issues/1289)
-- [**bug**][**Feature: Members**] family view scripts fail [#1285](https://github.com/ChurchCRM/CRM/issues/1285)
-- [**bug**][**Feature: Members**][**Web Report**] People Not In MailChimp Broken Links [#1156](https://github.com/ChurchCRM/CRM/issues/1156)
-
-#### Inner Beauty:
-
-- [**bug**][**build**][**question**] Failed DB Restore Results in HTTP 500 Error [#1318](https://github.com/ChurchCRM/CRM/issues/1318)
-
----
-
-## 2.3.2 (09/11/2016)
-
 #### Enhancements:
 
 - [**enhancement**][**Feature: Members**] Where is the notes sections on Person View? [#1266](https://github.com/ChurchCRM/CRM/issues/1266)
@@ -971,8 +970,13 @@
 
 #### Core Functionality
 
+- [**bug**][**Feature: Financial**] error with navigation on Family View [#1309](https://github.com/ChurchCRM/CRM/issues/1309)
+- [**bug**][**Feature: Members**] Email Dashboard rendering issues [#1292](https://github.com/ChurchCRM/CRM/issues/1292)
+- [**bug**][**Feature: Members**][**question**] Some birthdays showing up on wrong date [#1289](https://github.com/ChurchCRM/CRM/issues/1289)
+- [**bug**][**Feature: Members**] family view scripts fail [#1285](https://github.com/ChurchCRM/CRM/issues/1285)
 - [**enhancement**][**Feature: Members**] Where is the notes sections on Person View? [#1266](https://github.com/ChurchCRM/CRM/issues/1266)
 - [**bug**][**Feature: Events**][**Localization**] Bug of 2.3.0-RC2 - Error to add a event [#1257](https://github.com/ChurchCRM/CRM/issues/1257)
+- [**bug**][**Feature: Members**][**Web Report**] People Not In MailChimp Broken Links [#1156](https://github.com/ChurchCRM/CRM/issues/1156)
 - [**bug**][**Feature: Members**] Family autocomplete popup [#544](https://github.com/ChurchCRM/CRM/issues/544)
 
 #### Localization:
@@ -984,6 +988,11 @@
 
 #### Bug fixes:
 
+- [**bug**][**build**][**question**] Failed DB Restore Results in HTTP 500 Error [#1318](https://github.com/ChurchCRM/CRM/issues/1318)
+- [**bug**][**Feature: Financial**] error with navigation on Family View [#1309](https://github.com/ChurchCRM/CRM/issues/1309)
+- [**bug**][**Feature: Members**] Email Dashboard rendering issues [#1292](https://github.com/ChurchCRM/CRM/issues/1292)
+- [**bug**][**Feature: Members**][**question**] Some birthdays showing up on wrong date [#1289](https://github.com/ChurchCRM/CRM/issues/1289)
+- [**bug**][**Feature: Members**] family view scripts fail [#1285](https://github.com/ChurchCRM/CRM/issues/1285)
 - [**bug**] timer job external backup [#1276](https://github.com/ChurchCRM/CRM/issues/1276)
 - [**bug**] In-Place upgrade from 2.2.4 to 2.3.0 fails [#1273](https://github.com/ChurchCRM/CRM/issues/1273)
 - [**bug**] Fail to delete a Group [#1264](https://github.com/ChurchCRM/CRM/issues/1264)
@@ -1006,6 +1015,7 @@
 - [**bug**][**build**] Fix docker builds  [#1198](https://github.com/ChurchCRM/CRM/issues/1198)
 - [**bug**][**Web Report**] Can\'t delete empty group [#1180](https://github.com/ChurchCRM/CRM/issues/1180)
 - [**bug**] [Develop] - Name Tags Fail After Class Cleanup [#1158](https://github.com/ChurchCRM/CRM/issues/1158)
+- [**bug**][**Feature: Members**][**Web Report**] People Not In MailChimp Broken Links [#1156](https://github.com/ChurchCRM/CRM/issues/1156)
 - [**bug**][**Installation / Upgrade**] sRootPath Undefined [#1139](https://github.com/ChurchCRM/CRM/issues/1139)
 - [**bug**] Upgrade Process does not complete in one action [#1130](https://github.com/ChurchCRM/CRM/issues/1130)
 - [**bug**][**question**] EventEditor.php [#1117](https://github.com/ChurchCRM/CRM/issues/1117)
@@ -1240,6 +1250,7 @@
 
 #### Inner Beauty:
 
+- [**bug**][**build**][**question**] Failed DB Restore Results in HTTP 500 Error [#1318](https://github.com/ChurchCRM/CRM/issues/1318)
 - [**bug**][**development**] EventName.php broken in develop [#1225](https://github.com/ChurchCRM/CRM/issues/1225)
 - [**bug**][**development**] Event Editor Broken in Develop [#1224](https://github.com/ChurchCRM/CRM/issues/1224)
 - [**build**][**development**] ORM Build failing [#1208](https://github.com/ChurchCRM/CRM/issues/1208)
