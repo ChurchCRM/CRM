@@ -209,8 +209,8 @@ class SystemConfig
         "sKioskVisibilityTimestamp" => new ConfigItem(2011, "sKioskVisibilityTimestamp", "text", "", gettext("KioskVisibilityTimestamp")),
         "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen")),
         "sChurchWebSite" => new ConfigItem(2013, "sChurchWebSite", "text", "", gettext("Your Church's Website")),
-        "sChurchFB" => new ConfigItem(2013, "sChurchFB", "text", "", gettext("Your Church's Facebook Page")),
-        "sChurchTwitter" => new ConfigItem(2013, "sChurchTwitter", "text", "", gettext("Your Church's Twitter Page"))
+        "sChurchFB" => new ConfigItem(2014, "sChurchFB", "text", "", gettext("Your Church's Facebook Page")),
+        "sChurchTwitter" => new ConfigItem(2015, "sChurchTwitter", "text", "", gettext("Your Church's Twitter Page"))
     );
   }
 
