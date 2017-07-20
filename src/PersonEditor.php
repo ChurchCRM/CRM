@@ -213,7 +213,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Friend Date if one was entered
     if (strlen($dFriendDate) > 0) {
-        $dateString = parseAndValidateDate($dFriendDate, $locale = 'US', $pasfut = 'past');
+        $dateString = InputUtils::FilterDate($dFriendDate);
         if ($dateString === false) {
             $sFriendDateError = '<span style="color: red; ">'
                 .gettext('Not a valid Friend Date').'</span>';
@@ -225,7 +225,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Membership Date if one was entered
     if (strlen($dMembershipDate) > 0) {
-        $dateString = parseAndValidateDate($dMembershipDate, $locale = 'US', $pasfut = 'past');
+        $dateString = InputUtils::FilterDate($dMembershipDate);
         if ($dateString === false) {
             $sMembershipDateError = '<span style="color: red; ">'
                 .gettext('Not a valid Membership Date').'</span>';

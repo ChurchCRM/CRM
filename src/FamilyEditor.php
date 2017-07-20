@@ -224,7 +224,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     // Validate Wedding Date if one was entered
     if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != '')) {
-        $dateString = parseAndValidateDate($dWeddingDate, $locale = "<?= $localeInfo->getCountryCode() ?>", $pasfut = 'past');
+        $dateString = InputUtils::FilterDate($dWeddingDate);
         if ($dateString === false) {
             $sWeddingDateError = '<span style="color: red; ">'
                                 .gettext('Not a valid Wedding Date').'</span>';
