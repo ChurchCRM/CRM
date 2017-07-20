@@ -238,7 +238,9 @@ class SystemConfig
   {
       self::$configs = self::buildConfigs();
       self::$categories = self::buildCategories();
-      self::scrapeDBConfigs($configs);
+      if (!empty($configs)) {
+        self::scrapeDBConfigs($configs);
+      }
   }
 
   public static function getCategories()
