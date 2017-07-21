@@ -2,11 +2,11 @@
 use ChurchCRM\dto\SystemConfig;
 
 try {
-  //there is a chance this could throw an exception if the DB has not yet been set up
+    //there is a chance this could throw an exception if the DB has not yet been set up
   //catch and hide the exception
   $googleTrackingID = SystemConfig::getValue('sGoogleTrackingID');
-  if (!empty($googleTrackingID)) {
-      ?>
+    if (!empty($googleTrackingID)) {
+        ?>
       <script>
           (function (i, s, o, g, r, a, m) {
               i['GoogleAnalyticsObject'] = r;
@@ -25,9 +25,7 @@ try {
 
       </script>
   <?php
-  }
-  
+    }
 } catch (Exception $ex) {
-
 }
  ?>
