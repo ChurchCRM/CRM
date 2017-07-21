@@ -234,7 +234,7 @@ class SystemConfig
   /**
    * @param Config[] $configs
    */
-  public static function init($configs)
+  public static function init($configs=null)
   {
       self::$configs = self::buildConfigs();
       self::$categories = self::buildCategories();
