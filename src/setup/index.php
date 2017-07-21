@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 
 error_reporting(E_ALL);
 ini_set('log_errors', 1);
@@ -11,7 +13,8 @@ if (file_exists('../Include/Config.php')) {
     require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
     $rootPath = str_replace('/setup/index.php', '', $_SERVER['SCRIPT_NAME']);
-    ChurchCRM\dto\SystemURLs::init($rootPath, '', dirname(__FILE__)."/../");
+    SystemURLs::init($rootPath, '', dirname(__FILE__)."/../");
+    SystemConfig::init();
 
     $app = new \Slim\App();
     $container = $app->getContainer();
