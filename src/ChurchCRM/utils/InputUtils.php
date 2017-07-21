@@ -59,7 +59,10 @@ class InputUtils {
   public static function FilterDate($sInput)
   {
     // Attempts to take a date in any format and convert it to YYYY-MM-DD format
-    return date('Y-m-d', strtotime($sInput));
+    if ($sInput == null || $sInput == 0)
+    	return "";
+    else 
+      return date('Y-m-d', strtotime(str_replace("/","-",$sInput)));
   }
 
   // Sanitizes user input as a security measure

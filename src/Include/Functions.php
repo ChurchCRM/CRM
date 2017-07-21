@@ -523,6 +523,22 @@ function RemoveGroupFromPeopleCart($iGroupID)
   }
 }
 
+function FormatDateOutput()
+{
+    $fmt = SystemConfig::getValue("sDateFormatLong");
+    
+    $fmt = str_replace("/", " ", $fmt);
+    
+    $fmt = str_replace("-", " ", $fmt);
+    
+    $fmt = str_replace("d", "%d", $fmt);
+    $fmt = str_replace("m", "%B", $fmt);
+    $fmt = str_replace("Y", "%Y", $fmt);
+    
+    return $fmt;
+}
+
+
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
 // bWithtime 1 to be displayed
@@ -558,25 +574,28 @@ function FormatDate($dDate, $bWithTime = false)
     ."DATE_FORMAT('$dDate', '%k') as h, "
     ."DATE_FORMAT('$dDate', ':%i') as m";
     extract(mysqli_fetch_array(RunQuery($sSQL)));
+    
 
-    $month = gettext("$mn"); // Allow for translation of 3 character month abbr
-
-  if ($h > 11) {
-      $sAMPM = gettext('pm');
-      if ($h > 12) {
-          $h = $h - 12;
-      }
-  } else {
-      $sAMPM = gettext('am');
-      if ($h == 0) {
-          $h = 12;
-      }
-  }
-
-    if ($bWithTime) {
-        return "$month $dm, $y $h$m $sAMPM";
+    if ($h > 11) {
+        $sAMPM = gettext('pm');
+        if ($h > 12) {
+            $h = $h - 12;
+        }
     } else {
-        return "$month $dm, $y";
+        $sAMPM = gettext('am');
+        if ($h == 0) {
+            $h = 12;
+        }
+    }
+        
+    $fmt = FormatDateOutput();
+        
+    setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));
+    
+    if ($bWithTime) {
+        return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
+    } else {
+        return utf8_encode(strftime("$fmt", strtotime($dDate)));
     }
 }
 
@@ -993,14 +1012,14 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
       break;
     // Handler for date fields
     case 2:
+        // code rajouté par Philippe Logel
       echo '<div class="input-group">'.
         '<div class="input-group-addon">'.
         '<i class="fa fa-calendar"></i>'.
         '</div>'.
-        '<input class="form-control date-picker" type="text" id="'.$fieldname.'" Name="'.$fieldname.'" value="'.$data.'" placeholder="YYYY-MM-DD"> '.
+        '<input class="form-control date-picker" type="text" id="'.$fieldname.'" Name="'.$fieldname.'" value="'.((strtotime($data) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($data)):strtotime($data)).'" placeholder="'.SystemConfig::getValue("sDatePickerPlaceHolder").'"> '.
         '</div>';
       break;
-
     // Handler for 50 character max. text fields
     case 3:
       echo '<input class="form-control" type="text" Name="'.$fieldname.'" maxlength="50" size="50" value="'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'">';
@@ -1331,6 +1350,10 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
     switch ($type) {
     // Validate a date field
     case 2:
+        // this part will work with each date format
+        // Philippe logel
+        $data = InputUtils::FilterDate($data);
+        
       if (strlen($data) > 0) {
           $dateString = parseAndValidateDate($data);
           if ($dateString === false) {
