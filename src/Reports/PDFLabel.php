@@ -870,7 +870,7 @@ if ($sFileType == 'PDF') {
     }
     
 
-    $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address 1").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address 2").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
+    $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
 
     while (list($i, $sLT) = each($aLabelList)) {
         if ($iBulkCode) {
@@ -898,7 +898,7 @@ if ($sFileType == 'PDF') {
                         '"'.$sLT['Zip'].'"'."\n";
     }
 
-    header('Content-type: application/csv;charset=UTF-8');
+    header('Content-type: application/csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
     header('Content-Disposition: attachment; filename=Labels-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
@@ -906,9 +906,10 @@ if ($sFileType == 'PDF') {
     header('Pragma: public');
     
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-        if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
-            echo "\xEF\xBB\xBF";
-        }
+ 		if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")
+ 		{
+ 			echo "\xEF\xBB\xBF";
+ 		}
     
     echo $sCSVOutput;
 }
