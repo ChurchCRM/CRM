@@ -46,7 +46,7 @@ class TimelineService
         foreach ($eventsByPerson as $personEvent) {
             $event = $personEvent->getEvent();
             if ($event != null) {
-                $item = $this->createTimeLineItem('cal',
+                $item = $this->createTimeLineItem($event->getId(), 'cal',
                     $event->getStart('Y-m-d h:i:s'),
                     $event->getTitle(), '',
                     $event->getDesc(), '', '');
@@ -123,7 +123,7 @@ class TimelineService
                     $displayEditedBy = $editor->getFullName();
                 }
             }
-            $item = $this->createTimeLineItem($dbNote->getType(), $dbNote->getDisplayEditedDate(),
+            $item = $this->createTimeLineItem($dbNote->getId(), $dbNote->getType(), $dbNote->getDisplayEditedDate(),
                 gettext('by') . ' ' . $displayEditedBy, '', $dbNote->getText(),
                 $dbNote->getEditLink(), $dbNote->getDeleteLink());
         }
@@ -131,7 +131,7 @@ class TimelineService
         return $item;
     }
 
-    public function createTimeLineItem($type, $datetime, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
+    public function createTimeLineItem($id, $type, $datetime, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
     {
         switch ($type) {
             case 'create':
@@ -149,6 +149,9 @@ class TimelineService
             case 'verify':
                 $item['style'] = 'fa-check-circle-o bg-teal';
                 break;
+            case 'verify-link':
+                $item['style'] = 'fa-check-circle-o bg-teal';
+                break;
             case 'user':
                 $item['style'] = 'fa-user-secret bg-gray';
                 break;
@@ -162,7 +165,7 @@ class TimelineService
         $item['text'] = $text;
 
         $item['datetime'] = $datetime;
-        $item['key'] = $datetime;
+        $item['key'] = $datetime.'-'.$id;
 
         return $item;
     }
