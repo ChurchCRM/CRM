@@ -332,13 +332,14 @@ if ($sFormat == 'addtocart') {
     $headerString = mb_substr($headerString, 0, -1);
     $headerString .= "\n";
 
-    header('Content-type: text/x-csv;charset=UTF-8');
+    header('Content-type: text/x-csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
     header('Content-Disposition: attachment; filename=churchcrm-export-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     
-        //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-        if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
-            echo "\xEF\xBB\xBF";
-        }
+		//add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
+		if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")
+    {
+    	echo "\xEF\xBB\xBF";
+    }
 
 
     echo $headerString;
@@ -493,8 +494,8 @@ if ($sFormat == 'addtocart') {
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                            $birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
-                            $age = FormatAgeSuffix($birthDate, 0);
+                        		$birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
+                        		$age = FormatAgeSuffix($birthDate, 0);
                             
                             //$age = $refDate['year'] - $per_BirthYear - ($per_BirthMonth > $refDate['mon'] || ($per_BirthMonth == $refDate['mon'] && $per_BirthDay > $refDate['mday']));
                         } else {
