@@ -42,7 +42,7 @@ class Note extends BaseNote
 
     public function getDisplayEditedDate()
     {
-        if ($this->getDateLastEdited() != '') {
+        if (!empty($this->getDateLastEdited())) {
             return $this->getDateLastEdited('Y-m-d h:i:s');
         } else {
             return $this->getDateEntered('Y-m-d h:i:s');
