@@ -6,7 +6,6 @@ require '../Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 
-
 header('Pragma: no-cache');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -20,9 +19,8 @@ $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 $out = fopen('php://output', 'w');
 
 //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")
-{
-	fputs($out, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
+    fputs($out, $bom =(chr(0xEF) . chr(0xBB) . chr(0xBF)));
 }
 
 // Get all the groups
@@ -76,5 +74,3 @@ while ($aRow = mysqli_fetch_array($rsKids)) {
 
 
 fclose($out);
-                                                                                                                            
-?>

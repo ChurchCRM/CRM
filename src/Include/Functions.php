@@ -525,17 +525,17 @@ function RemoveGroupFromPeopleCart($iGroupID)
 
 function FormatDateOutput()
 {
-	$fmt = SystemConfig::getValue("sDateFormatLong");
-	
-	$fmt = str_replace ("/"," ",$fmt);
-	
-	$fmt = str_replace ("-"," ",$fmt);
-	
-	$fmt = str_replace ("d","%d",$fmt);
-	$fmt = str_replace ("m","%B",$fmt);
-	$fmt = str_replace ("Y","%Y",$fmt);
-	
-	return $fmt;
+    $fmt = SystemConfig::getValue("sDateFormatLong");
+    
+    $fmt = str_replace("/", " ", $fmt);
+    
+    $fmt = str_replace("-", " ", $fmt);
+    
+    $fmt = str_replace("d", "%d", $fmt);
+    $fmt = str_replace("m", "%B", $fmt);
+    $fmt = str_replace("Y", "%Y", $fmt);
+    
+    return $fmt;
 }
 
 
@@ -576,27 +576,27 @@ function FormatDate($dDate, $bWithTime = false)
     extract(mysqli_fetch_array(RunQuery($sSQL)));
     
 
-		if ($h > 11) {
-				$sAMPM = gettext('pm');
-				if ($h > 12) {
-						$h = $h - 12;
-				}
-		} else {
-				$sAMPM = gettext('am');
-				if ($h == 0) {
-						$h = 12;
-				}
-		}
-		
-		$fmt = FormatDateOutput();
-	 	
-  	setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));
-  	
-  	if ($bWithTime) {
-			return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime( $dDate)));
+    if ($h > 11) {
+        $sAMPM = gettext('pm');
+        if ($h > 12) {
+            $h = $h - 12;
+        }
     } else {
-			return utf8_encode(strftime("$fmt", strtotime( $dDate)));    
-		}
+        $sAMPM = gettext('am');
+        if ($h == 0) {
+            $h = 12;
+        }
+    }
+        
+    $fmt = FormatDateOutput();
+        
+    setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));
+    
+    if ($bWithTime) {
+        return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
+    } else {
+        return utf8_encode(strftime("$fmt", strtotime($dDate)));
+    }
 }
 
 function AlternateRowStyle($sCurrentStyle)
@@ -1012,7 +1012,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
       break;
     // Handler for date fields
     case 2:
-    	// code rajouté par Philippe Logel
+        // code rajouté par Philippe Logel
       echo '<div class="input-group">'.
         '<div class="input-group-addon">'.
         '<i class="fa fa-calendar"></i>'.
@@ -1351,10 +1351,10 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
     switch ($type) {
     // Validate a date field
     case 2:
-    	// this part will work with each date format
-    	// Philippe logel
-    	$data = InputUtils::FilterDate($data);
-    	
+        // this part will work with each date format
+        // Philippe logel
+        $data = InputUtils::FilterDate($data);
+        
       if (strlen($data) > 0) {
           $dateString = parseAndValidateDate($data);
           if ($dateString === false) {
