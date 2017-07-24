@@ -6,7 +6,7 @@ use ChurchCRM\Token;
 use ChurchCRM\Note;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\TokenQuery;
-use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Person;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/families', function () {
@@ -29,6 +29,13 @@ $app->group('/families', function () {
         }
 
        return $response->withJSON(json_encode(["Families"=>$results]));
+    });
+
+    $this->get('/self-register', function($request, $response, $args)  {
+        $families = FamilyQuery::create()
+            ->filterByEnteredBy(Person::$SELF_REGISTER)
+            ->find();
+        return $response->withJSON(['families' => $families->toArray()]);
     });
 
     $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
