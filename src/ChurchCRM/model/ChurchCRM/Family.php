@@ -85,7 +85,9 @@ class Family extends BaseFamily implements iPhoto
 
     public function postUpdate(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote('edit');
+        if (!empty($this->getDateLastEdited())) {
+            $this->createTimeLineNote('edit');
+        }
     }
 
 
@@ -153,28 +155,33 @@ class Family extends BaseFamily implements iPhoto
 
     public function createTimeLineNote($type)
     {
-      $note = new Note();
-      $note->setFamId($this->getId());
-      $note->setType($type);
+        $note = new Note();
+        $note->setFamId($this->getId());
+        $note->setType($type);
+        $note->setDateEntered(new DateTime());
 
-      if ($type = "create") {
-          $note->setText(gettext('Created'));
-          $note->setEnteredBy($this->getEnteredBy());
-          $note->setDateEntered($this->getDateEntered());
-      } else if ($type = "edit") {
-          $note->setText(gettext('Updated'));
-          $note->setEnteredBy($this->getEditedBy());
-          $note->setDateEntered($this->getDateLastEdited());
-      } else if ($type = "verify-link") {
-          $note->setText(gettext('Verification email sent'));
-          $note->setEnteredBy($_SESSION['iUserID']);
-          $note->setDateEntered(new Date());
-      } else {
-          $note->setEnteredBy($_SESSION['iUserID']);
-          $note->setDateEntered(new Date());
-      }
+        switch ($type) {
+            case "create":
+              $note->setText(gettext('Created'));
+              $note->setEnteredBy($this->getEnteredBy());
+              $note->setDateEntered($this->getDateEntered());
+              break;
+            case "edit":
+              $note->setText(gettext('Updated'));
+                $note->setEnteredBy($this->getEditedBy());
+                $note->setDateEntered($this->getDateLastEdited());
+                break;
+            case "verify":
+                $note->setText(gettext('Family Data Verified'));
+                $note->setEnteredBy($_SESSION['iUserID']);
+                break;
+            case "verify-link":
+              $note->setText(gettext('Verification email sent'));
+              $note->setEnteredBy($_SESSION['iUserID']);
+              break;
+        }
 
-      $note->save();
+        $note->save();
     }
 
     /**
@@ -283,12 +290,7 @@ class Family extends BaseFamily implements iPhoto
 
     public function verify()
     {
-        $note = new Note();
-        $note->setFamId($this->getId());
-        $note->setText(gettext('Family Data Verified'));
-        $note->setType('verify');
-        $note->setEntered($_SESSION['user']->getId());
-        $note->save();
+        $this->createTimeLineNote('verify');
     }
 
     public function getFamilyString()
