@@ -6,6 +6,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\TokenQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Note;
+use ChurchCRM\Person;
 
 $app->group('/verify', function () {
 
@@ -38,7 +39,7 @@ $app->group('/verify', function () {
         $note = new Note();
         $note->setFamily($family);
         $note->setType("verify");
-        $note->setEntered(-2);
+        $note->setEntered(Person::$SELF_VERIFY);
         $note->setText(gettext("No Changes"));
         if (!empty($body->message)) {
           $note->setText($body->message);

@@ -31,7 +31,7 @@ $app->group('/register', function () {
             $family->setCountry($body['familyCountry']);
             $family->setZip($body['familyZip']);
             $family->setHomePhone($body['familyHomePhone']);
-            $family->setEnteredBy(-1);
+            $family->setEnteredBy(Person::$SELF_REGISTER);
             $family->setDateEntered(new \DateTime());
             $family->save();
 
@@ -87,7 +87,7 @@ $app->group('/register', function () {
                     $person->setFlags(1);
                 }
 
-                $person->setEnteredBy(-1);
+                $person->setEnteredBy(Person::$SELF_REGISTER);
                 $person->setDateEntered(new \DateTime());
 
                 $familyRole = $body['memberRole-' . $x];
