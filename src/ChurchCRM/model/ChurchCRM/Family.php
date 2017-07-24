@@ -8,6 +8,7 @@ use ChurchCRM\Base\Family as BaseFamily;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\GeoUtils;
+use DateTime;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -79,12 +80,12 @@ class Family extends BaseFamily implements iPhoto
 
     public function postInsert(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote(true);
+        $this->createTimeLineNote('create');
     }
 
     public function postUpdate(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote(false);
+        $this->createTimeLineNote('edit');
     }
 
 
@@ -150,21 +151,27 @@ class Family extends BaseFamily implements iPhoto
     return $emails;
   }
 
-    private function createTimeLineNote($new)
+    public function createTimeLineNote($type)
     {
       $note = new Note();
       $note->setFamId($this->getId());
+      $note->setType($type);
 
-      if ($new) {
-          $note->setText('Created');
-          $note->setType('create');
+      if ($type = "create") {
+          $note->setText(gettext('Created'));
           $note->setEnteredBy($this->getEnteredBy());
-          $note->setDateLastEdited($this->getDateEntered());
-      } else {
-          $note->setText('Updated');
-          $note->setType('edit');
+          $note->setDateEntered($this->getDateEntered());
+      } else if ($type = "edit") {
+          $note->setText(gettext('Updated'));
           $note->setEnteredBy($this->getEditedBy());
-          $note->setDateLastEdited($this->getDateLastEdited());
+          $note->setDateEntered($this->getDateLastEdited());
+      } else if ($type = "verify-link") {
+          $note->setText(gettext('Verification email sent'));
+          $note->setEnteredBy($_SESSION['iUserID']);
+          $note->setDateEntered(new Date());
+      } else {
+          $note->setEnteredBy($_SESSION['iUserID']);
+          $note->setDateEntered(new Date());
       }
 
       $note->save();

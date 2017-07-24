@@ -103,6 +103,7 @@ $app->group('/families', function () {
             $token->save();
             $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
             if ($email->send()) {
+                $family->createTimeLineNote("verify-link");
                 $response = $response->withStatus(200);
             } else {
                 $this->Logger->error($email->getError());
