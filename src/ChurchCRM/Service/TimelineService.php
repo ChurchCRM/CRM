@@ -124,14 +124,14 @@ class TimelineService
                 }
             }
             $item = $this->createTimeLineItem($dbNote->getId(), $dbNote->getType(), $dbNote->getDisplayEditedDate(),
-                gettext('by') . ' ' . $displayEditedBy, '', $dbNote->getText(),
+                $dbNote->getDisplayEditedDate("Y"),gettext('by') . ' ' . $displayEditedBy, '', $dbNote->getText(),
                 $dbNote->getEditLink(), $dbNote->getDeleteLink());
         }
 
         return $item;
     }
 
-    public function createTimeLineItem($id, $type, $datetime, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
+    public function createTimeLineItem($id, $type, $datetime, $year, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
     {
         switch ($type) {
             case 'create':
@@ -165,6 +165,7 @@ class TimelineService
         $item['text'] = $text;
 
         $item['datetime'] = $datetime;
+        $item['year'] = $year;
         $item['key'] = $datetime.'-'.$id;
 
         return $item;

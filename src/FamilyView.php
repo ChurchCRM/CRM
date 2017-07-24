@@ -37,6 +37,7 @@ use ChurchCRM\Utils\InputUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
+$curYear = (new DateTime)->format("Y");
 
 //Set the page title
 $sPageTitle = gettext("Family View");
@@ -464,16 +465,23 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <ul class="timeline">
                         <!-- timeline time label -->
                         <li class="time-label">
-                    <span class="bg-red">
-                      <?php $now = new DateTime('');
-    echo $now->format("Y-m-d") ?>
-                    </span>
+                            <span class="bg-red">
+                                <?= $curYear ?>
+                            </span>
                         </li>
                         <!-- /.timeline-label -->
 
                         <!-- timeline item -->
                         <?php foreach ($timelineService->getForFamily($iFamilyID) as $item) {
-        ?>
+                            if ($curYear != $item['year']) {
+                                $curYear = $item['year'];
+                                ?>
+                                <li class="time-label">
+                                    <span class="bg-gray">
+                                        <?= $curYear ?>
+                                    </span>
+                                </li>
+                                <?php }?>
                             <li>
                                 <!-- timeline icon -->
                                 <i class="fa <?= $item['style'] ?>"></i>
