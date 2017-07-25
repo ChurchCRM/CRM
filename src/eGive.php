@@ -11,6 +11,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
     Redirect('Menu.php');
     exit;
@@ -21,7 +23,7 @@ $dDate = date('Y-m-d', $now);
 $lwDate = date('Y-m-d', $now - (6 * 24 * 60 * 60));
 
 $iFYID = CurrentFY();
-$iDepositSlipID = FilterInput($_GET['DepositSlipID']);
+$iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID']);
 
 include 'Include/eGiveConfig.php'; // Specific account information is in here
 
@@ -267,7 +269,6 @@ if (isset($_POST['ApiGet'])) {
 		</td>
 	</tr>
 <?php
-
 }
 
 function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $frequency, $groupKey)
@@ -350,13 +351,11 @@ function importDoneFixOrContinue()
 
 		<input type="submit" class="btn" value="<?= gettext('Re-import to selected family') ?>" name="ReImport">
 	<?php
-
     } ?>
 
 	<p class="MediumLargeText"> <?= gettext('Data import results: ').$importCreated.gettext(' gifts were imported, ').$importNoChange.gettext(' gifts unchanged, and ').$importError.gettext(' gifts not imported due to problems') ?></p>
 	<input type="button" class="btn" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
 <?php
-
 }
 
 function get_api_data($json)

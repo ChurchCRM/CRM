@@ -215,7 +215,6 @@ require 'Include/Header.php';
                     </table>
                   </td></tr>
                 <?php
-
               }
       if ($numFamCustomFields > 0) {
           ?>
@@ -233,14 +232,14 @@ require 'Include/Header.php';
                       } ?>
                     </table>
                   </td></tr>
-              <?php 
+              <?php
       } ?>
             </table>
           </div>
         </div>
       </div>
     </div>
-  <?php 
+  <?php
   } ?>
 
   <div class="row">
@@ -288,7 +287,6 @@ require 'Include/Header.php';
                       extract($aRow); ?>
                     <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                     <?php
-
                   }
                   ?>
                 </select>
@@ -314,7 +312,6 @@ require 'Include/Header.php';
                       extract($aRow); ?>
                     <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                     <?php
-
                   }
                   ?>
                 </select>

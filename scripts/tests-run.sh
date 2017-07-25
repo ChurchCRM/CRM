@@ -2,6 +2,15 @@
 
 #Hints here: http://codegist.net/code/sauce%20connect%20setup/
 
+SingleTest=./tests/behat/features/$1
+echo $SingleTest
+
+if [ -f $SingleTest ]; then
+  echo "Running single test: $1"
+else
+  echo "Running full test suite"
+fi
+
 SC_READYFILE=/tmp/sceady
 SC_LOG=/tmp/sauce.log
 
@@ -26,13 +35,17 @@ if [[ "${SAUCE_USERNAME}" && "${SAUCE_ACCESS_KEY}" ]]; then
     done
   fi
 
-  export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host":"'${SAUCE_USERNAME}':'${SAUCE_ACCESS_KEY}'@ondemand.saucelabs.com/wd/hub"}}}}'
+  export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host":"'${SAUCE_USERNAME}':'${SAUCE_ACCESS_KEY}'@ondemand.saucelabs.com/wd/hub" ,"capabilities": { "platform": "linux"}}}}}'
 else
   echo "NO SAUCE"
   export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"goutte" : "~","selenium2":"~"}}}'
 fi
 
 #echo $BEHAT_PARAMS
-
-cd tests/behat/
+if [ -f $SingleTest ]; then
+  cd tests/behat/
+  ../vendor/bin/behat features/$1
+else
+  cd tests/behat/
   ../vendor/bin/behat
+fi

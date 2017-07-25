@@ -140,8 +140,8 @@ class Person extends BasePerson implements iPhoto
      */
     public function getAddress()
     {
-        $address = [];
         if (!empty($this->getAddress1())) {
+            $address = [];
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
                 $tmp = $tmp . ' ' . $this->getAddress2();
@@ -167,7 +167,7 @@ class Person extends BasePerson implements iPhoto
             }
         }
         //if it reaches here, no address found. return empty $address
-        return $address;
+        return "";
     }
 
     /**
@@ -219,8 +219,13 @@ class Person extends BasePerson implements iPhoto
     {
 
       $photo = new Photo("Person",  $this->getId());
-       if (!$photo->isPhotoLocal() && SystemConfig::getBooleanValue('bEnableGravatarPhotos') && $this->getEmail() != '') {
-         $photo->loadFromGravatar($this->getEmail());
+       if (!$photo->isPhotoLocal() && $this->getEmail() != '') {
+           if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
+               $photo->loadFromGravatar($this->getEmail());
+           }
+           if (!$photo->isPhotoRemote() && SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
+               $photo->loadFromGoogle($this->getEmail());
+           }
        }
        return $photo;
     }
@@ -422,6 +427,11 @@ class Person extends BasePerson implements iPhoto
         NoteQuery::create()->filterByPerson($this)->find($con)->delete();
 
         return parent::preDelete($con);
+    }
+    
+    public function getNumericCellPhone()
+    {
+      return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
 
 }

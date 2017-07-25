@@ -25,6 +25,8 @@ class SystemConfig
             gettext("German - Germany:de_DE"),
             gettext("Spanish - Spain:es_ES"),
             gettext("French - France:fr_FR"),
+            gettext("Arabic - Egypt:ar_EG"),
+            gettext("Hungarian:hu_HU"),
             gettext("Hungarian:hu_HU"),
             gettext("Italian - Italy:it_IT"),
             gettext("Norwegian:nb_NO"),
@@ -37,6 +39,7 @@ class SystemConfig
             gettext("Albanian:sq_AL"),
             gettext("Swedish - Sweden:sv_SE"),
             gettext("Vietnamese:vi_VN"),
+            gettext("Thai:th_TH"),
             gettext("Chinese - China:zh_CN"),
             gettext("Chinese - Taiwan:zh_TW")
         ]
@@ -197,14 +200,25 @@ class SystemConfig
         "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "choice", "4", "","", json_encode(SystemConfig::getNameChoices())),
         "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
         "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL")),
-        "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen"))
-      );
+        "sNexmoAPIKey" => new ConfigItem(2012, "sNexmoAPIKey", "text", "", gettext("Nexmo SMS API Key")),
+        "sNexmoAPISecret" => new ConfigItem(2005, "sNexmoAPISecret", "password", "", gettext("Nexmo SMS API Secret")),
+        "sNexmoFromNumber" => new ConfigItem(2006, "sNexmoFromNumber", "text", "", gettext("Nexmo SMS From Number")),
+        "sOLPURL" => new ConfigItem(2007, "sOLPURL", "text", "http://192.168.1.1:4316", gettext("OpenLP URL")),
+        "sOLPUserName" => new ConfigItem(2008, "sOLPUserName", "text", "", gettext("OpenLP Username")),
+        "sOLPPassword" => new ConfigItem(2009, "sOLPPassword", "password", "", gettext("OpenLP Password")),
+        "sKioskVisibilityTimestamp" => new ConfigItem(2011, "sKioskVisibilityTimestamp", "text", "", gettext("KioskVisibilityTimestamp")),
+        "bEnableLostPassword" => new ConfigItem(2004, "bEnableLostPassword", "boolean", "1", gettext("Show/Hide Lost Password Link on the login screen")),
+        "sChurchWebSite" => new ConfigItem(2013, "sChurchWebSite", "text", "", gettext("Your Church's Website")),
+        "sChurchFB" => new ConfigItem(2014, "sChurchFB", "text", "", gettext("Your Church's Facebook Page")),
+        "sChurchTwitter" => new ConfigItem(2015, "sChurchTwitter", "text", "", gettext("Your Church's Twitter Page")),
+        "bEnableGooglePhotos" => new ConfigItem(2016, "bEnableGooglePhotos", "boolean", "1", gettext("lookup user images on Google when no local image is present"))
+    );
   }
 
   private static function buildCategories()
   {
     return array (
-      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude"],
+      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
       gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress"],
       gettext('Member Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle"],
@@ -214,18 +228,20 @@ class SystemConfig
       gettext('System Settings')  => ["sLogLevel", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
-      gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID"]
+      gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID","bEnableGooglePhotos","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"]
     );
   }
 
   /**
    * @param Config[] $configs
    */
-  public static function init($configs)
+  public static function init($configs=null)
   {
       self::$configs = self::buildConfigs();
       self::$categories = self::buildCategories();
-      self::scrapeDBConfigs($configs);
+      if (!empty($configs)) {
+        self::scrapeDBConfigs($configs);
+      }
   }
 
   public static function getCategories()
@@ -322,6 +338,14 @@ class SystemConfig
         }
 
         return $hasValidSettings;
+    }
+    
+    public static function hasValidSMSServerSettings() {
+      return (!empty(self::getValue("sNexmoAPIKey"))) && (!empty(self::getValue("sNexmoAPISecret"))) && (!empty(self::getValue("sNexmoFromNumber")));
+    }
+    
+    public static function hasValidOpenLPSettings() {
+       return (!empty(self::getValue("sOLPURL")));
     }
 
 }

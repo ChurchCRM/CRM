@@ -13,9 +13,12 @@ use Exception;
 use Github\Client;
 use Ifsnop\Mysqldump\Mysqldump;
 use PharData;
+use Propel\Runtime\Propel;
+use PDO;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
-use Propel\Runtime\Propel;
+
 
 class SystemService
 {
@@ -281,6 +284,18 @@ class SystemService
 
         return $results[0]['ver_version'];
     }
+    
+    public function getDBServerVersion()
+    {
+      try{
+        $connection = Propel::getConnection();
+        return Propel::getServiceContainer()->getConnection()->getAttribute(PDO::ATTR_SERVER_VERSION);
+      }
+      catch (\Exception $exc)
+      {
+        return "Could not obtain DB Server Version";
+      }
+    }
 
     public function isDBCurrent()
     {
@@ -334,17 +349,18 @@ class SystemService
             'Page Size |' . $data->pageSize->height . 'x' . $data->pageSize->width . "\r\n" .
             'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
             'PHP Version | ' . phpversion() . "\r\n" .
+            'SQL Version | ' . $this->getDBServerVersion() . "\r\n" .
             'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
             'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
             'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
             'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json')."\r\n";
-
+        
         if (function_exists('apache_get_modules')) {
             $issueDescription .= 'Apache Modules    |' . implode(',', apache_get_modules());
         }
 
         $postdata = new \stdClass();
-        $postdata->issueTitle = FilterInput($data->issueTitle);
+        $postdata->issueTitle = InputUtils::LegacyFilterInput($data->issueTitle);
         $postdata->issueDescription = $issueDescription;
 
         $curlService = curl_init($serviceURL);
@@ -380,7 +396,7 @@ class SystemService
                     $now = new \DateTime();  // update the LastBackupTimeStamp.
                     SystemConfig::setValue('sLastBackupTimeStamp', $now->format('Y-m-d H:i:s'));
                 }
-            } catch (Exception $exc) {
+            } catch (\Exception $exc) {
                 // an error in the auto-backup shouldn't prevent the page from loading...
             }
         }
@@ -411,6 +427,7 @@ class SystemService
         file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
         $returnFile = [];
         $returnFile['fileName'] = basename($url);
+        $returnFile['releaseNotes'] = $release['body'];
         $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
         $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore" nameSpace="ChurchCRM">
 
-    <table name="version_ver" idMethod="native" phpName="Version">
+    <table name="version_ver" idMethod="native" phpName="Version" description="History of all version upgrades applied to this database">
         <column name="ver_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
         <column name="ver_version" phpName="Version" type="VARCHAR" size="50" required="true" defaultValue=""/>
@@ -15,7 +15,7 @@
         </vendor>
     </table>
 
-    <table name="person_per" idMethod="native" phpName="Person">
+    <table name="person_per" idMethod="native" phpName="Person" description="This contains the main person data, including person names, person addresses, person phone numbers, and foreign keys to the family table">
         <column name="per_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
         <column name="per_Title" phpName="Title" type="VARCHAR" size="50"/>
@@ -67,7 +67,7 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="whycame_why" idMethod="native" phpName="WhyCame">
+    <table name="whycame_why" idMethod="native" phpName="WhyCame" description="This contains the comments related to why people came">
         <column name="why_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true"
                 required="true"/>
         <column name="why_per_ID" phpName="PerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
@@ -82,14 +82,14 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="person_custom" idMethod="native" phpName="PersonCustom">
+    <table name="person_custom" idMethod="native" phpName="PersonCustom" description="Person custom fields">
         <column name="per_ID" phpName="PerId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="person_custom_master" idMethod="native" phpName="PersonCustomMaster">
+    <table name="person_custom_master" idMethod="native" phpName="PersonCustomMaster" description="This contains definitions for the custom person fields">
         <column name="custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
         <column name="custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
         <column name="custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
@@ -103,7 +103,7 @@
         </vendor>
     </table>
 
-    <table name="family_fam" idMethod="native" phpName="Family">
+    <table name="family_fam" idMethod="native" phpName="Family" description="This contains the main family data, including family name, family addresses, and family phone numbers">
         <column name="fam_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
         <column name="fam_Name" phpName="Name" type="VARCHAR" size="50"/>
@@ -165,7 +165,7 @@
         </vendor>
     </table>
 
-    <table name="note_nte" idMethod="native" phpName="Note">
+    <table name="note_nte" idMethod="native" phpName="Note" description="Contains all person and family notes, including the date, time, and person who entered the note">
         <column name="nte_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
         <column name="nte_per_ID" phpName="PerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
@@ -193,7 +193,7 @@
         </vendor>
     </table>
 
-    <table name="config_cfg" idMethod="native" phpName="Config">
+    <table name="config_cfg" idMethod="native" phpName="Config" description="This table contains all non-default configuration parameter names and values">
         <column name="cfg_id" phpName="Id" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
         <column name="cfg_name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <column name="cfg_value" phpName="Value" type="LONGVARCHAR"/>
@@ -230,19 +230,20 @@
         </vendor>
     </table>
 
-    <table name="group_grp" idMethod="native" phpName="Group">
+    <table name="group_grp" idMethod="native" phpName="Group" description="This contains the name and description for each group, as well as foreign keys to the list of group roles">
         <column name="grp_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
-        <column name="grp_Type" phpName="Type" type="TINYINT" required="true" defaultValue="0"/>
+        <column name="grp_Type" phpName="Type" type="TINYINT" required="true" defaultValue="0" description="The group type.  This is defined in list_lst.OptionId where lst_ID=3"/>
         <column name="grp_RoleListID" phpName="RoleListId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
-                required="true" defaultValue="0"/>
-        <column name="grp_DefaultRole" phpName="DefaultRole" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+                required="true" defaultValue="0" description="The lst_ID containing the names of the roles for this group"/>
+        <column name="grp_DefaultRole" phpName="DefaultRole" type="SMALLINT" size="9" required="true" defaultValue="0" description="The ID of the default role in this group's RoleList" />
         <column name="grp_Name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
         <column name="grp_Description" phpName="Description" type="LONGVARCHAR"/>
         <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="BOOLEAN" defaultValue="0"/>
         <column name="grp_active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
-        <column name="grp_include_email_export" phpName="IncludeInEmailExport" type="BOOLEAN" size="1" required="true"/>
+        <column name="grp_include_email_export" phpName="IncludeInEmailExport" type="BOOLEAN" size="1" required="true" description="Should members of this group be included in MailChimp Export"/>
         <foreign-key foreignTable="list_lst">
+            <reference local="grp_RoleListID" foreign="lst_ID"/>
             <reference local="grp_Type" foreign="lst_OptionID"/>
         </foreign-key>
         <index name="grp_ID_2">
@@ -255,7 +256,7 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="groupprop_master" idMethod="native" phpName="GroupPropMaster">
+    <table name="groupprop_master" idMethod="native" phpName="GroupPropMaster" description="This contains definitions for the group-specific fields">
         <column name="grp_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"
                 defaultValue="0"/>
         <column name="prop_ID" phpName="Id" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"
@@ -273,7 +274,7 @@
         </vendor>
     </table>
 
-    <table name="person2group2role_p2g2r" isCrossRef="true">
+    <table name="person2group2role_p2g2r" isCrossRef="true" description="This table stores the information of which people are in which groups, and what group role each person holds in that group">
         <column name="p2g2r_per_ID" phpName="PersonId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 primaryKey="true" required="true" defaultValue="0"/>
         <column name="p2g2r_grp_ID" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
@@ -291,13 +292,14 @@
         <foreign-key foreignTable="group_grp">
             <reference local="p2g2r_grp_ID" foreign="grp_ID"/>
         </foreign-key>
+         
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
 
 
-    <table name="autopayment_aut" idMethod="native" phpName="AutoPayment">
+    <table name="autopayment_aut" idMethod="native" phpName="AutoPayment" description="This contains information for automatic electronic donations or payments for events">
         <column name="aut_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
         <column name="aut_FamID" phpName="Familyid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
@@ -341,7 +343,7 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="canvassdata_can" idMethod="native" phpName="CanvassData">
+    <table name="canvassdata_can" idMethod="native" phpName="CanvassData" description="this contains information about the results of canvassing families">
         <column name="can_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
         <column name="can_famID" phpName="FamilyId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
@@ -363,7 +365,7 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="deposit_dep" idMethod="native" phpName="Deposit">
+    <table name="deposit_dep" idMethod="native" phpName="Deposit" description="This records deposits / payments">
         <column name="dep_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
         <column name="dep_Date" phpName="Date" type="DATE"/>
@@ -402,7 +404,7 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="donationfund_fun" idMethod="native" phpName="DonationFund">
+    <table name="donationfund_fun" idMethod="native" phpName="DonationFund" description="This contains the defined donation funds">
         <column name="fun_ID" phpName="Id" type="TINYINT" size="3" primaryKey="true" autoIncrement="true"
                 required="true"/>
         <column name="fun_Active" phpName="Active" type="CHAR" sqlType="enum('true','false')" required="true"
@@ -454,7 +456,7 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="event_attend" idMethod="native" phpName="EventAttend">
+    <table name="event_attend" idMethod="native" phpName="EventAttend" description="this indicates which people attended which events">
         <column name="attend_id" phpName="AttendId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="event_id" phpName="EventId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="person_id" phpName="PersonId" type="INTEGER" required="true" defaultValue="0"/>
@@ -464,6 +466,9 @@
         <column name="checkout_id" phpName="CheckoutId" type="INTEGER"/>
         <foreign-key foreignTable="events_event">
             <reference local="event_id" foreign="event_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per">
+            <reference local="person_id" foreign="per_ID"/>
         </foreign-key>
         <unique name="event_id">
             <unique-column name="event_id"/>
@@ -485,6 +490,10 @@
         <column name="type_defrecurDOM" phpName="DefRecurDOM" type="CHAR" size="2" required="true" defaultValue="0"/>
         <column name="type_defrecurDOY" phpName="DefRecurDOY" type="DATE" required="true" defaultValue="2016-01-01"/>
         <column name="type_active" phpName="Active" type="INTEGER" size="1" required="true" defaultValue="1"/>
+        <column name="type_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
+        <foreign-key foreignTable="group_grp">
+            <reference local="type_grpid" foreign="grp_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
@@ -517,7 +526,7 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
-    <table name="events_event" idMethod="native" phpName="Event">
+    <table name="events_event" idMethod="native" phpName="Event" description="This contains events">
         <column name="event_id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="event_type" phpName="Type" type="INTEGER" required="true" defaultValue="0"/>
         <column name="event_title" phpName="Title" type="VARCHAR" size="255" required="true" defaultValue=""/>
@@ -527,6 +536,10 @@
         <column name="event_end" phpName="End" type="TIMESTAMP" required="true"/>
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
         <column name="event_typename" phpName="TypeName" type="VARCHAR" size="40" required="true" defaultValue=""/>
+        <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
+        <foreign-key foreignTable="group_grp">
+            <reference local="event_grpid" foreign="grp_ID"/>
+        </foreign-key>
         <index name="event_txt">
             <index-column name="event_text"/>
         </index>
@@ -552,7 +565,7 @@
         </vendor>
     </table>
 
-    <table name="pledge_plg" idMethod="native" phpName="Pledge">
+    <table name="pledge_plg" idMethod="native" phpName="Pledge" description="This contains all payment/pledge information">
         <column name="plg_plgID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="plg_FamID" phpName="FamId" type="SMALLINT" size="9"/>
         <column name="plg_FYID" phpName="Fyid" type="SMALLINT" size="9"/>
@@ -588,17 +601,17 @@
         </vendor>
     </table>
 
-    <table name="list_lst" idMethod="native" phpName="ListOption">
-        <column name="lst_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" />
-        <column name="lst_OptionID" phpName="OptionId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" />
-        <column name="lst_OptionSequence" phpName="OptionSequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0" primaryKey="true" />
-        <column name="lst_OptionName" phpName="OptionName" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <table name="list_lst" idMethod="native" phpName="ListOption" description="This table stores the options for most of the drop down lists in churchCRM, including person classifications, family roles, group types, group roles, group-specific property types, and custom field value lists.">
+        <column name="lst_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" description="The ID of the list.  Since this is a composite primary key, there may be multiple List IDs"/>
+        <column name="lst_OptionID" phpName="OptionId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0" primaryKey="true" description="The ID of the option in this list.  ***List ID + List Option ID must be unique***"/>
+        <column name="lst_OptionSequence" phpName="OptionSequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0" description="The order in which to display items in this list" />
+        <column name="lst_OptionName" phpName="OptionName" type="VARCHAR" size="50" required="true" defaultValue="" description="The actual value for this list option"/>
         <vendor type="mysql">
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
 
-    <table name="user_usr" idMethod="native" phpName="User">
+    <table name="user_usr" idMethod="native" phpName="User" description="This contains the login information and specific settings for each ChurchCRM user">
         <column name="usr_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true" defaultValue="0"/>
         <column name="usr_Password" phpName="Password" type="VARCHAR" size="500" required="true" defaultValue=""/>
         <column name="usr_NeedPasswordChange" phpName="NeedPasswordChange" type="BOOLEAN" size="1" sqlType="tinyint(3) unsigned" required="true" defaultValue="1"/>
@@ -668,7 +681,7 @@
         </vendor>
     </table>
 
-    <table name="volunteeropportunity_vol" idMethod="native" phpName="VolunteerOpportunity">
+    <table name="volunteeropportunity_vol" idMethod="native" phpName="VolunteerOpportunity" description="This contains the names and descriptions of volunteer opportunities">
         <column name="vol_ID" phpName="Id" type="INTEGER" size="3" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="vol_Order" phpName="Order" type="INTEGER" size="3" required="true" defaultValue="0"/>
         <column name="vol_Active" phpName="Active" type="CHAR" sqlType="enum('true','false')" required="true" defaultValue="true"/>
@@ -682,7 +695,7 @@
         </vendor>
     </table>
 
-    <table name="queryparameters_qrp" idMethod="native" phpName="QueryParameters">
+    <table name="queryparameters_qrp" idMethod="native" phpName="QueryParameters" description="defines the parameters for each query">
         <column name="qrp_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="qrp_qry_ID" phpName="QryId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
         <column name="qrp_Type" phpName="Type" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
@@ -711,6 +724,40 @@
             <parameter name="Engine" value="MyISAM"/>
         </vendor>
     </table>
+    
+     <table name="kioskdevice_kdev" idMethod="native" phpName="KioskDevice" description="This contains a list of all (un)registered kiosk devices">
+      <column name="kdev_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+      <column name="kdev_GUIDHash" phpName="GUIDHash" type="VARCHAR" size="36" description="SHA256 Hash of the GUID stored in the kiosk's cookie"/>
+      <column name="kdev_Name" phpName="Name" type="VARCHAR" size="50" description="Name of the kiosk" />
+      <column name="kdev_deviceType" phpName="DeviceType" type="LONGVARCHAR" description="Kiosk device type" />
+      <column name="kdev_lastHeartbeat" phpName="LastHeartbeat" type="LONGVARCHAR" description="Last time the kiosk sent a heartbeat" />
+      <column name="kdev_Accepted" phpName="Accepted" type="BOOLEAN" description="Has the admin accepted the kiosk after initial registration?" />
+      <column name="kdev_PendingCommands" phpName="PendingCommands" type="LONGVARCHAR" description="Commands waiting to be sent to the kiosk" />
+      <index name="kdev_ID">
+        <index-column name="kdev_ID"/>
+      </index>
+     </table>
+     
+     
+    <table name="kioskassginment_kasm" idMethod="native" phpName="KioskAssignment">
+      <column name="kasm_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+      <column name="kasm_kdevId" phpName="KioskId" type="INTEGER" size="9" />
+      <column name="kasm_AssignmentType" phpName="AssignmentType" type="INTEGER" size="9" description="The kiosk's current role."/>
+      <column name="kasm_EventId" phpName="EventId" type="INTEGER" size="9" description="Optional.  If the current role is for event check-in, populate this value" />
+      <index name="kasm_ID">
+        <index-column name="kasm_ID"/>
+      </index>
+
+      <foreign-key foreignTable="kioskdevice_kdev">
+        <reference local="kasm_kdevId" foreign="kdev_ID"/>
+      </foreign-key>
+      
+      <foreign-key foreignTable="events_event">
+        <reference local="kasm_EventId" foreign="event_id"/>
+      </foreign-key>
+     </table>
+
+
 
     <table name="tokens" idMethod="native" phpName="Token">
         <column name="token" phpName="Token" type="VARCHAR" primaryKey="true" required="true"/>
@@ -723,12 +770,12 @@
         </vendor>
     </table>
 
-    <table name="record2property_r2p" idMethod="native" phpName="PersonProperty" isCrossRef="true">
+    <table name="record2property_r2p" idMethod="native" phpName="PersonProperty" isCrossRef="true" description="This table indicates which persons, families, or groups are assigned specific properties and what the values of those properties are.">
         <column name="r2p_pro_ID" phpName="PropertyId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
         <column name="r2p_record_ID" phpName="PersonId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
         <column name="r2p_Value" phpName="PropertyValue" type="LONGVARCHAR" required="true"  defaultValue=""/>
 
-        <foreign-key foreignTable="property_pro">
+        <foreign-key foreignTable="property_pro" description="This contains the definition of all person, family, and group properties">
             <reference local="r2p_pro_ID" foreign="pro_ID"/>
         </foreign-key>
 
@@ -763,7 +810,7 @@
         </vendor>
     </table>
 
-    <table name="propertytype_prt" idMethod="native" phpName="PropertyType" >
+    <table name="propertytype_prt" idMethod="native" phpName="PropertyType" description="This contains all the defined property types">
         <column name="prt_ID" phpName="PrtId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="prt_Class" phpName="PrtClass" type="VARCHAR" size="10" required="true" defaultValue=""/>
         <column name="prt_Name" phpName="PrtName" type="VARCHAR" size="50" required="true" defaultValue=""/>
@@ -779,7 +826,7 @@
         </vendor>
     </table>
 
-    <table name="person2volunteeropp_p2vo" idMethod="native" phpName="PersonVolunteerOpportunity" >
+    <table name="person2volunteeropp_p2vo" idMethod="native" phpName="PersonVolunteerOpportunity" description="This table indicates which people are tied to which volunteer opportunities">
         <column name="p2vo_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="p2vo_per_ID" phpName="PersonId" type="SMALLINT" size="9"/>
         <column name="p2vo_vol_ID" phpName="VolunteerOpportunityId" type="SMALLINT" size="9"/>
@@ -843,7 +890,7 @@
 
 
 
- <table name="query_qry" idMethod="native" phpName="QueryQry" >
+ <table name="query_qry" idMethod="native" phpName="QueryQry" description="This contains all the predefined queries that appear in the queries page">
    <column name="qry_ID" phpName="QryId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
    <column name="qry_SQL" phpName="QrySql" type="LONGVARCHAR" required="true"/>
    <column name="qry_Name" phpName="QryName" type="VARCHAR" size="255" required="true" defaultValue=""/>
@@ -859,7 +906,7 @@
      <parameter name="Engine" value="MyISAM"/>
    </vendor>
  </table>
- <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryparameteroptionsQpo" >
+ <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryparameteroptionsQpo" description="Defines the values for the parameters for each query">
    <column name="qpo_ID" phpName="QpoId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
    <column name="qpo_qrp_ID" phpName="QpoQrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
    <column name="qpo_Display" phpName="QpoDisplay" type="VARCHAR" size="50" required="true" defaultValue=""/>
@@ -872,7 +919,7 @@
    </vendor>
  </table>
 
- <table name="result_res" idMethod="native" phpName="ResultRes" >
+ <table name="result_res" idMethod="native" phpName="ResultRes" description="contains the results of authorizations from electronic payments">
    <column name="res_ID" phpName="ResId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
    <column name="res_echotype1" phpName="ResEchotype1" type="LONGVARCHAR" required="true"/>
    <column name="res_echotype2" phpName="ResEchotype2" type="LONGVARCHAR" required="true"/>

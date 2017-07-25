@@ -1,23 +1,21 @@
+i18nextOpt = {
+  lng:window.CRM.shortLocale,
+  nsSeparator: false,
+  keySeparator: false,
+  pluralSeparator:false,
+  contextSeparator:false,
+  fallbackLng: false,
+  resources: { }
+};
+
+i18nextOpt.resources[window.CRM.shortLocale] = {
+  translation: window.CRM.i18keys
+};
+i18next.init(i18nextOpt);
+
 $("document").ready(function(){
-    window.CRM.system.runTimerJobs();
-    window.CRM.cart.refresh();
-    bindEventListeners();
-    $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
-    $(".maxUploadSize").text(window.CRM.maxUploadSize);
-    $(".initials-image").initial();
-    i18next
-     .use(i18nextXHRBackend)
-     .init(
-     {
-        backend: {
-          loadPath: window.CRM.root + '/locale/'+window.CRM.locale+'/LC_Messages/messages.js'
-        }
-     });
-});
-
-
-function bindEventListeners() {
     $(".multiSearch").select2({
+        language: window.CRM.shortLocale,
         minimumInputLength: 2,
         ajax: {
             url: function (params){
@@ -69,7 +67,7 @@ function bindEventListeners() {
     $(".AddToPeopleCart").click(function(){
       window.CRM.cart.addPerson([$(this).data("personid")]);
     });
-}
+});
 
 function showGlobalMessage(message, callOutClass) {
     $("#globalMessageText").text(message);

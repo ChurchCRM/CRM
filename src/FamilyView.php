@@ -33,6 +33,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\InputUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -43,7 +44,7 @@ require "Include/Header.php";
 
 //Get the FamilyID out of the querystring
 if (!empty($_GET['FamilyID'])) {
-    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
 }
 
 //Deactivate/Activate Family
@@ -55,7 +56,7 @@ if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Actio
         $family->activate();
     }
     $family->save();
-    Redirect("FamilyView.php?FamilyID=". $_POST['FID']);
+    Redirect("FamilyView.php?FamilyID=" . $_POST['FID']);
     exit;
 }
 // Get the list of funds
@@ -65,7 +66,7 @@ $rsFunds = RunQuery($sSQL);
 if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['bFinance']) {
     $_SESSION['sshowPledges'] = isset($_POST["ShowPledges"]);
     $_SESSION['sshowPayments'] = isset($_POST["ShowPayments"]);
-    $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d", FilterInput($_POST["ShowSinceDate"])) ;
+    $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d", InputUtils::LegacyFilterInput($_POST["ShowSinceDate"]));
 }
 
 $dSQL = "SELECT fam_ID FROM family_fam order by fam_Name";
@@ -172,55 +173,57 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
- <?php if (!empty($fam_DateDeactivated)) {
+<?php if (!empty($fam_DateDeactivated)) {
         ?>
     <div class="alert alert-warning">
         <strong><?= gettext(" This Family is Deactivated") ?> </strong>
     </div>
     <?php
-
     } ?>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-4">
-      <div class="box box-primary">
-        <div class="box-body">
-            <div class="image-container">
-                <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
-                data-name="<?= $family->getName()?>" alt="" class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
-                <?php if ($bOkToEdit): ?>
-                    <div class="after">
-                        <div class="buttons">
-                            <a class="hide" id="view-larger-image-btn" href="#" title="<?= gettext("View Photo") ?>">
-                                <i class="fa fa-search-plus"></i>
-                            </a>&nbsp;
-                            <a href="#" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
-                                <i class="fa fa-camera"></i>
-                            </a>&nbsp;
-                            <?php if ($family->isPhotoLocal()): ?>
-                                <a href="#" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                                    <i class="fa fa-trash-o"></i>
-                                </a>
-                            <?php endif; ?>
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="image-container">
+                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
+                         data-name="<?= $family->getName() ?>" alt=""
+                         class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
+                    <?php if ($bOkToEdit): ?>
+                        <div class="after">
+                            <div class="buttons">
+                                <a class="hide" id="view-larger-image-btn" href="#"
+                                   title="<?= gettext("View Photo") ?>">
+                                    <i class="fa fa-search-plus"></i>
+                                </a>&nbsp;
+                                <a href="#" data-toggle="modal" data-target="#upload-image"
+                                   title="<?= gettext("Upload Photo") ?>">
+                                    <i class="fa fa-camera"></i>
+                                </a>&nbsp;
+                                <?php if ($family->isPhotoLocal()): ?>
+                                    <a href="#" data-toggle="modal" data-target="#confirm-delete-image"
+                                       title="<?= gettext("Delete Photo") ?>">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                         </div>
-                    </div>
-                <?php endif; ?>
-            </div>
-					<h3 class="profile-username text-center"><?=  gettext('Family').': '.$fam_Name ?></h3>
-          <?php if ($bOkToEdit) {
+                    <?php endif; ?>
+                </div>
+                <h3 class="profile-username text-center"><?= gettext('Family') . ': ' . $fam_Name ?></h3>
+                <?php if ($bOkToEdit) {
         ?>
                     <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>"
                        class="btn btn-primary btn-block"><b><?= gettext("Edit") ?></b></a>
                     <?php
-
     } ?>
                 <hr/>
                 <ul class="fa-ul">
                     <li><i class="fa-li glyphicon glyphicon-home"></i><?= gettext("Address") ?>:<span>
 					<a
-                        href="http://maps.google.com/?q=<?= $family->getAddress() ?>"
-                        target="_blank"><?= $family->getAddress() ?></a></span><br>
+                            href="http://maps.google.com/?q=<?= $family->getAddress() ?>"
+                            target="_blank"><?= $family->getAddress() ?></a></span><br>
 
-    <?php if ($fam_Latitude && $fam_Longitude) {
+                        <?php if ($fam_Latitude && $fam_Longitude) {
         if (SystemConfig::getValue("iChurchLatitude") && SystemConfig::getValue("iChurchLongitude")) {
             $sDistance = GeoUtils::LatLonDistance(SystemConfig::getValue("iChurchLatitude"), SystemConfig::getValue("iChurchLongitude"), $fam_Latitude, $fam_Longitude);
             $sDirection = GeoUtils::LatLonBearing(SystemConfig::getValue("iChurchLatitude"), SystemConfig::getValue("iChurchLongitude"), $fam_Latitude, $fam_Longitude);
@@ -233,52 +236,48 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <li><i class="fa-li fa fa-compass"></i><?= gettext("Latitude/Longitude") ?>
                         <span><?= $fam_Latitude . " / " . $fam_Longitude ?></span></li>
                     <?php
-
     }
     if (!SystemConfig::getValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
                         <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
                             <span style="color:<?= ($fam_SendNewsLetter == "TRUE" ? "green" : "red") ?>"><i
-                                    class="fa fa-<?= ($fam_SendNewsLetter == "TRUE" ? "check" : "times") ?>"></i></span></li>
+                                        class="fa fa-<?= ($fam_SendNewsLetter == "TRUE" ? "check" : "times") ?>"></i></span>
+                        </li>
                         <?php
-
     }
     if (!SystemConfig::getValue("bHideWeddingDate") && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
                         <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
                             <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
                         <?php
-
     }
     if (SystemConfig::getValue("bUseDonationEnvelopes")) {
         ?>
-                        <li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?> <span><?= $fam_Envelope ?></span>
+                        <li><i class="fa-li fa fa-phone"></i><?= gettext("Envelope Number") ?>
+                            <span><?= $fam_Envelope ?></span>
                         </li>
                         <?php
-
     }
     if ($sHomePhone != "") {
         ?>
                         <li><i class="fa-li fa fa-phone"></i><?= gettext("Home Phone") ?>: <span><a
-                                    href="tel:<?= $sHomePhone ?>"><?= $sHomePhone ?></a></span></li>
+                                        href="tel:<?= $sHomePhone ?>"><?= $sHomePhone ?></a></span></li>
                         <?php
-
     }
     if ($sWorkPhone != "") {
         ?>
                         <li><i class="fa-li fa fa-building"></i><?= gettext("Work Phone") ?>: <span><a
-                                    href="tel:<?= $sWorkPhone ?>"><?= $sWorkPhone ?></a></span></li>
+                                        href="tel:<?= $sWorkPhone ?>"><?= $sWorkPhone ?></a></span></li>
                         <?php
-
     }
     if ($sCellPhone != "") {
         ?>
                         <li><i class="fa-li fa fa-mobile"></i><?= gettext("Mobile Phone") ?>: <span><a
-                                    href="tel:<?= $sCellPhone ?>"><?= $sCellPhone ?></a></span></li>
+                                        href="tel:<?= $sCellPhone ?>"><?= $sCellPhone ?></a></span></li>
                         <?php
-
     }
     if ($fam_Email != "") {
         ?>
-                        <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email") ?>:<a href="mailto:<?= $fam_Email ?>">
+                        <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email") ?>:<a
+                                    href="mailto:<?= $fam_Email ?>">
                                 <span><?= $fam_Email ?></span></a></li>
                         <?php if ($mailchimp->isActive()) {
             ?>
@@ -286,7 +285,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                 <span><?= $mailchimp->isEmailInMailChimp($fam_Email) ?></span>
                                 </a></li>
                             <?php
-
         }
     }
                     // Display the left-side custom fields
@@ -305,42 +303,39 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         </div>
     </div>
     <div class="col-lg-9 col-md-8 col-sm-8">
-      <div class="row">
-        <div class="box"><br/>
-        <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
-                        class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
-          <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
-              class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
-          <?php if (($previous_id > 0)) {
+        <div class="row">
+            <div class="box"><br/>
+                <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
+                            class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
+                <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
+                            class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
+                <?php if (($previous_id > 0)) {
                         ?>
-            <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
-                class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
-          <?php
-
+                    <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
+                                class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
+                    <?php
                     } ?>
-          <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
-              class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
-          <?php if (($next_id > 0)) {
+                <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
+                            class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
+                <?php if (($next_id > 0)) {
                         ?>
-            <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
-                class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
-          <?php
-
+                    <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
+                                class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
+                    <?php
                     } ?>
-          <?php if ($_SESSION['bDeleteRecords']) {
+                <?php if ($_SESSION['bDeleteRecords']) {
                         ?>
-            <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
-                class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
-          <?php
-
+                    <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
+                                class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
+                    <?php
                     } ?>
-          <br/>
+                <br/>
 
-            <?php
-    if ($_SESSION['bNotes']) {
-        ?>
+                <?php
+                if ($_SESSION['bNotes']) {
+                    ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
-                            class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
+                                class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                     <?php
 
     } ?>
@@ -350,12 +345,12 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
 
                 <?php if ($bOkToEdit) {
-        ?>
-                    <button class="btn btn-app bg-orange"  id="activateDeactivate">
-                        <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?= gettext((empty($fam_DateDeactivated) ? 'Deactivate' : 'Activate') . ' this Family') ?></button>
-                <?php
-
-    } ?>
+                    ?>
+                    <button class="btn btn-app bg-orange" id="activateDeactivate">
+                        <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo((empty($fam_DateDeactivated) ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                    </button>
+                    <?php
+                } ?>
             </div>
         </div>
     </div>
@@ -376,22 +371,25 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                         </thead>
                         <tbody>
                         <?php foreach ($family->getPeople() as $person) {
-        ?>
-                <tr>
-                  <td>
-                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail" data-name="<?= $person->getFullName() ?>" width="40" height="40" class="initials-image img-circle"/>
-                    <a href="<?= $person->getViewURI() ?>" class="user-link"><?= $person->getFullName() ?> </a>
-                  </td>
-                  <td class="text-center">
-                    <?php
-                    $famRole = $person->getFamilyRoleName();
-        $labelColor = 'label-default';
-        if ($famRole == 'Head of Household') {
-        } elseif ($famRole == 'Spouse') {
-            $labelColor = 'label-info';
-        } elseif ($famRole == 'Child') {
-            $labelColor = 'label-warning';
-        } ?>
+                    ?>
+                            <tr>
+                                <td>
+                                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                         data-name="<?= $person->getFullName() ?>" width="40" height="40"
+                                         class="initials-image img-circle"/>
+                                    <a href="<?= $person->getViewURI() ?>"
+                                       class="user-link"><?= $person->getFullName() ?> </a>
+                                </td>
+                                <td class="text-center">
+                                    <?php
+                                    $famRole = $person->getFamilyRoleName();
+                    $labelColor = 'label-default';
+                    if ($famRole == 'Head of Household') {
+                    } elseif ($famRole == 'Spouse') {
+                        $labelColor = 'label-info';
+                    } elseif ($famRole == 'Child') {
+                        $labelColor = 'label-warning';
+                    } ?>
                                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                                 </td>
                                 <td>
@@ -400,12 +398,11 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                 </td>
                                 <td>
                                     <?php $tmpEmail = $person->getEmail();
-        if ($tmpEmail != "") {
-            array_push($sFamilyEmails, $tmpEmail); ?>
+                    if ($tmpEmail != "") {
+                        array_push($sFamilyEmails, $tmpEmail); ?>
                                         <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
                                         <?php
-
-        } ?>
+                    } ?>
                                 </td>
                                 <td style="width: 20%;">
                                     <a class="AddToPeopleCart" data-personid="<?= $person->getId() ?>">
@@ -415,27 +412,26 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         </span>
                                     </a>
                                     <?php if ($bOkToEdit) {
-            ?>
+                        ?>
                                         <a href="PersonEditor.php?PersonID=<?= $person->getId() ?>" class="table-link">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                     </span>
                                         </a>
-                                        <a class="delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $person->getId() ?>" data-view="family">
+                                        <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
+                                           data-person_id="<?= $person->getId() ?>" data-view="family">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
                                         <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
                                     </span>
                                         </a>
                                         <?php
-
-        } ?>
+                    } ?>
                                 </td>
                             </tr>
                             <?php
-
-    } ?>
+                } ?>
                         </tbody>
                     </table>
                 </div>
@@ -453,14 +449,13 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <li role="presentation"><a href="#properties" aria-controls="properties" role="tab"
                                            data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
                 <?php if ($_SESSION['bFinance']) {
-        ?>
+                    ?>
                     <li role="presentation"><a href="#finance" aria-controls="finance" role="tab"
                                                data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
                     <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab"
                                                data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
                     <?php
-
-    } ?>
+                } ?>
 
             </ul>
 
@@ -492,12 +487,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             ?>
                                             <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                                             <?php
-
         } else {
             ?>
                                             <?= gettext($item['header']) ?>
                                             <?php
-
         } ?>
                                     </h3>
 
@@ -511,27 +504,25 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                             <?php if (isset($item["editLink"])) {
                 ?>
                                                 <a href="<?= $item["editLink"] ?>">
-                                                    <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-primary"><i
+                                                                class="fa fa-edit"></i></button>
                                                 </a>
                                                 <?php
-
             }
             if (isset($item["deleteLink"])) {
                 ?>
                                                 <a href="<?= $item["deleteLink"] ?>">
-                                                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    <button type="button" class="btn btn-danger"><i
+                                                                class="fa fa-trash"></i></button>
                                                 </a>
                                                 <?php
-
             } ?>
                                         </div>
                                         <?php
-
         } ?>
                                 </div>
                             </li>
                             <?php
-
     } ?>
                         <!-- END timeline item -->
                     </ul>
@@ -550,7 +541,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                     <span><?= gettext("No property assignments.") ?></span>
                                 </div>
                                 <?php
-
     } else {
         //Yes, start the table
                                 echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
@@ -624,29 +614,31 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
 
                                         <form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
-                                        <div class="row">
-                                            <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
-                                            <select name="PropertyID" class="form-control">
-                                                <option selected disabled> -- <?= gettext('select an option') ?> -- </option>
-                                                <?php
-                                                while ($aRow = mysqli_fetch_array($rsProperties)) {
-                                                    extract($aRow);
-                                                    //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                                    if (strlen(strstr($sAssignedProperties, "," . $pro_ID . ",")) == 0) {
-                                                        echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
-                                                    }
-                                                } ?>
-                                            </select>
+                                            <div class="row">
+                                                <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
+                                                    <select name="PropertyID" class="form-control">
+                                                        <option selected disabled> -- <?= gettext('select an option') ?>
+                                                            --
+                                                        </option>
+                                                        <?php
+                                                        while ($aRow = mysqli_fetch_array($rsProperties)) {
+                                                            extract($aRow);
+                                                            //If the property doesn't already exist for this Person, write the <OPTION> tag
+                                                            if (strlen(strstr($sAssignedProperties, "," . $pro_ID . ",")) == 0) {
+                                                                echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
+                                                            }
+                                                        } ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                                    <input type="submit" class="btn btn-primary"
+                                                           value="<?= gettext("Assign") ?>" name="Submit2">
+                                                </div>
                                             </div>
-                                            <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                                                <input type="submit" class="btn btn-primary" value="<?= gettext("Assign") ?>" name="Submit2">
-                                            </div>
-                                        </div>
                                         </form>
                                     </div>
                                 </div>
                                 <?php
-
     } ?>
                         </div>
                     </div>
@@ -715,11 +707,11 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                             </td>
                                             <td>
                                                 <a
-                                                    href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Edit") ?></a>
+                                                        href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Edit") ?></a>
                                             </td>
                                             <td>
                                                 <a
-                                                    href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Delete") ?></a>
+                                                        href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Delete") ?></a>
                                             </td>
                                             <td>
                                                 <?= $aut_DateLastEdited ?>&nbsp;
@@ -729,11 +721,9 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                             </td>
                                         </tr>
                                         <?php
-
                                     } ?>
                                 </table>
                                 <?php
-
         } ?>
                             <p align="center">
                                 <a class="SmallText"
@@ -762,27 +752,28 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         } ?>
                                 <input type="text" class="date-picker" Name="ShowSinceDate"
                                        value="<?= $showSince ?>" maxlength="10" id="ShowSinceDate" size="15">
-                                <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?> name="UpdatePledgeTable"
+                                <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?>
+                                       name="UpdatePledgeTable"
                                        style="font-size: 8pt;">
                             </form>
 
                             <table id="pledge-payment-table" class="table table-condensed dt-responsive" width="100%">
                                 <thead>
-                                    <tr>
-                                        <th><?= gettext("Pledge or Payment") ?></th>
-                                        <th><?= gettext("Fund") ?></th>
-                                        <th><?= gettext("Fiscal Year") ?></th>
-                                        <th><?= gettext("Date") ?></th>
-                                        <th><?= gettext("Amount") ?></th>
-                                        <th><?= gettext("NonDeductible") ?></th>
-                                        <th><?= gettext("Schedule") ?></th>
-                                        <th><?= gettext("Method") ?></th>
-                                        <th><?= gettext("Comment") ?></th>
-                                        <th><?= gettext("Edit") ?></th>
-                                        <th><?= gettext("Delete") ?></th>
-                                        <th><?= gettext("Date Updated") ?></th>
-                                        <th><?= gettext("Updated By") ?></th>
-                                    </tr>
+                                <tr>
+                                    <th><?= gettext("Pledge or Payment") ?></th>
+                                    <th><?= gettext("Fund") ?></th>
+                                    <th><?= gettext("Fiscal Year") ?></th>
+                                    <th><?= gettext("Date") ?></th>
+                                    <th><?= gettext("Amount") ?></th>
+                                    <th><?= gettext("NonDeductible") ?></th>
+                                    <th><?= gettext("Schedule") ?></th>
+                                    <th><?= gettext("Method") ?></th>
+                                    <th><?= gettext("Comment") ?></th>
+                                    <th><?= gettext("Edit") ?></th>
+                                    <th><?= gettext("Delete") ?></th>
+                                    <th><?= gettext("Date Updated") ?></th>
+                                    <th><?= gettext("Updated By") ?></th>
+                                </tr>
                                 </thead>
                                 <tbody>
 
@@ -810,7 +801,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                         if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
                                                 ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
                                             ) &&
-                                            ($_SESSION['sshowSince'] == "" ||  DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['sshowSince'])
+                                            ($_SESSION['sshowSince'] == "" || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['sshowSince'])
                                         ) {
                                             ?>
 
@@ -844,11 +835,11 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                 </td>
                                                 <td>
                                                     <a
-                                                        href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
+                                                            href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
                                                 </td>
                                                 <td>
                                                     <a
-                                                        href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+                                                            href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
                                                 </td>
                                                 <td>
                                                     <?= $plg_DateLastEdited ?>&nbsp;
@@ -858,7 +849,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                 </td>
                                             </tr>
                                             <?php
-
                                         }
                                     }
         } // if bShowPledges
@@ -876,7 +866,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                             </p>
 
                             <?php
-
     } ?>
 
                             <?php if ($_SESSION['bCanvasser']) {
@@ -890,7 +879,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     </div>
                 </div>
             <?php
-
     } ?>
 
             </div>
@@ -898,11 +886,11 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     </div>
 </div>
 
-  <!-- Modal -->
-  <div id="photoUploader"></div>
+<!-- Modal -->
+<div id="photoUploader"></div>
 
-  <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
-       aria-hidden="true">
+<div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog" aria-labelledby="delete-Image-label"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -917,14 +905,14 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             </div>
 
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-         <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+                <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
 
-        </div>
+            </div>
         </div>
     </div>
-  </div>
+</div>
 
 <div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
      aria-hidden="true">
@@ -932,7 +920,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="confirm-verify-label"><?= gettext("Request Family Info Verification") ?></h4>
+                <h4 class="modal-title"
+                    id="confirm-verify-label"><?= gettext("Request Family Info Verification") ?></h4>
             </div>
             <div class="modal-body">
                 <b><?= gettext("Select how do you want to request the family information to be verified") ?></b>
@@ -945,35 +934,33 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
             ?>
                         <li><?= $tmpEmail ?></li>
                         <?php
-
         } ?>
                 </ul>
                 </p>
             </div>
             <?php
-
     } ?>
             <div class="modal-footer text-center">
                 <?php if (count($sFamilyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
         ?>
                     <button type="button" id="onlineVerify"
-                            class="btn btn-warning warning"><i class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
+                            class="btn btn-warning warning"><i
+                                class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
-                <?php
-
+                    <?php
     } ?>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
                 <button type="button" id="verifyNow"
-                        class="btn btn-success"><i class="fa fa-check"></i> <?= gettext("Verified In Person") ?></button>
+                        class="btn btn-success"><i class="fa fa-check"></i> <?= gettext("Verified In Person") ?>
+                </button>
             </div>
         </div>
     </div>
 
     <?php
-
 } else {
-    ?>
+        ?>
         <div class="error-page">
             <h2 class="headline text-yellow">404</h2>
 
@@ -982,25 +969,25 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
                 <p>
                     <?= gettext("We could not find the family you were looking for.<br>Meanwhile, you may") ?> <a
-                        href="/MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
+                            href="/MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
                 </p>
             </div>
         </div>
         <?php
-
-} ?>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
+    } ?>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js"
+            type="text/javascript"></script>
     <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
     <script>
         window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
         var dataT = 0;
-        $(document).ready(function() {
-            $("#activateDeactivate").click(function() {
+        $(document).ready(function () {
+            $("#activateDeactivate").click(function () {
                 console.log("click activateDeactivate");
                 popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
-                if(window.CRM.currentActive == true) {
+                if (window.CRM.currentActive == true) {
                     popupMessage = "<?= gettext('Please confirm deactivation of family') . ': ' . $fam_Name ?>";
                 }
                 else {
@@ -1009,17 +996,16 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
                 bootbox.confirm({
                     title: popupTitle,
-                    message: '<p style="color: red">'+ popupMessage + '</p>',
+                    message: '<p style="color: red">' + popupMessage + '</p>',
                     callback: function (result) {
-                        if (result)
-                        {
+                        if (result) {
                             $.ajax({
                                 method: "POST",
                                 url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
                                 dataType: "json",
                                 encode: true
                             }).done(function (data) {
-                                if(data.success == true)
+                                if (data.success == true)
                                     window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
 
                             });
@@ -1028,45 +1014,45 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 });
             });
 
-            $("#deletePhoto").click (function () {
-              $.ajax({
-              type: "POST",
-              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
-              encode: true,
-              dataType: 'json',
-              data: {
-                "_METHOD": "DELETE"
-              }
-              }).done(function(data) {
-                location.reload();
-              });
+            $("#deletePhoto").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+                    encode: true,
+                    dataType: 'json',
+                    data: {
+                        "_METHOD": "DELETE"
+                    }
+                }).done(function (data) {
+                    location.reload();
+                });
             });
 
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-              url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
-              maxPhotoSize: window.CRM.maxUploadSize,
-              photoHeight: 400,
-              photoWidth: 400,
-              done: function(e) {
-                location.reload();
-              }
+                url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+                maxPhotoSize: window.CRM.maxUploadSize,
+                photoHeight: 400,
+                photoWidth: 400,
+                done: function (e) {
+                    location.reload();
+                }
             });
 
-        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function(success) {
-            if (success) {
-                $("#view-larger-image-btn").removeClass('hide');
+            contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function (success) {
+                if (success) {
+                    $("#view-larger-image-btn").removeClass('hide');
 
-                $("#view-larger-image-btn").click(function() {
-                    bootbox.alert({
-                        title: "<?= gettext('Family Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
-                        backdrop: true
+                    $("#view-larger-image-btn").click(function () {
+                        bootbox.alert({
+                            title: "<?= gettext('Family Photo') ?>",
+                            message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
+                            backdrop: true
+                        });
                     });
-                });
-            }
-        });
+                }
+            });
 
-    });
+        });
     </script>
 
     <?php require "Include/Footer.php" ?>

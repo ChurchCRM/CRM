@@ -26,9 +26,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\Utils\InputUtils;
 
 //Get the GroupID out of the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
 //Get the data on this group
 $thisGroup = ChurchCRM\GroupQuery::create()->findOneById($iGroupID);
@@ -176,7 +177,6 @@ require 'Include/Header.php';
         </div>
 
         <?php
-
       }
     }
 // Group Text Message Comma Delimited - added by RSBC
@@ -229,7 +229,6 @@ require 'Include/Header.php';
         ?>
             <?= gettext('Default Role') ?> <span class="badge"><?= $defaultRole->getOptionName() ?></span>
         <?php
-
     } ?>
         </button>
         <button class="btn btn-primary" type="button">

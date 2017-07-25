@@ -29,6 +29,11 @@ class LocaleInfo
     {
         return $this->locale;
     }
+    
+    public function getShortLocale()
+    {
+       return substr($this->getLocale(), 0, 2);
+    }
 
     public function getLanguageCode()
     {

@@ -18,6 +18,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -26,14 +27,14 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 }
 
 // Filter values
-$letterhead = FilterInput($_POST['letterhead']);
-$remittance = FilterInput($_POST['remittance']);
-$output = FilterInput($_POST['output']);
-$sReportType = FilterInput($_POST['ReportType']);
-$sDateStart = FilterInput($_POST['DateStart'], 'date');
-$sDateEnd = FilterInput($_POST['DateEnd'], 'date');
-$iDepID = FilterInput($_POST['deposit'], 'int');
-$iMinimum = FilterInput($_POST['minimum'], 'int');
+$letterhead = InputUtils::LegacyFilterInput($_POST['letterhead']);
+$remittance = InputUtils::LegacyFilterInput($_POST['remittance']);
+$output = InputUtils::LegacyFilterInput($_POST['output']);
+$sReportType = InputUtils::LegacyFilterInput($_POST['ReportType']);
+$sDateStart = InputUtils::LegacyFilterInput($_POST['DateStart'], 'date');
+$sDateEnd = InputUtils::LegacyFilterInput($_POST['DateEnd'], 'date');
+$iDepID = InputUtils::LegacyFilterInput($_POST['deposit'], 'int');
+$iMinimum = InputUtils::LegacyFilterInput($_POST['minimum'], 'int');
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
@@ -116,7 +117,7 @@ if ($iDepID > 0) {
 if (!empty($_POST['funds'])) {
     $count = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$count++] = FilterInput($fundID, 'int');
+        $fund[$count++] = InputUtils::LegacyFilterInput($fundID, 'int');
     }
     if ($count == 1) {
         if ($fund[0]) {
@@ -134,7 +135,7 @@ if (!empty($_POST['funds'])) {
 if (!empty($_POST['family'])) {
     $count = 0;
     foreach ($_POST['family'] as $famID) {
-        $fam[$count++] = FilterInput($famID, 'int');
+        $fam[$count++] = InputUtils::LegacyFilterInput($famID, 'int');
     }
     if ($count == 1) {
         if ($fam[0]) {

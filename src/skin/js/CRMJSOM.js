@@ -3,7 +3,11 @@
  */
 
     window.CRM.APIRequest = function(options) {
-      options.url=window.CRM.root +"/api/" + options.path;
+      if (!options.method)
+      {
+        options.method="GET"
+      }
+      options.url=window.CRM.root+"/api/"+options.path;
       options.dataType = 'json';
       options.contentType =  "application/json";
       return $.ajax(options);
@@ -11,20 +15,20 @@
 
     window.CRM.DisplayErrorMessage = function(endpoint, error) {
 
-      message = "<p>Error making API Call to: " + endpoint +
-        "</p><p>Error text: " + error.message;
+      message = "<p>" + i18next.t("Error making API Call to") + ": " + endpoint +
+        "</p><p>" + i18next.t("Error text") + ": " + error.message;
       if (error.trace)
       {
-        message += "</p>Stack Trace: <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
+        message += "</p>" + i18next.t("Stack Trace") + ": <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
       }
       bootbox.alert({
-        title: "ERROR",
+        title:  i18next.t("ERROR"),
         message: message
       });
     };
 
     window.CRM.VerifyThenLoadAPIContent = function(url) {
-      var error = "There was a problem retrieving the requested object";
+      var error = i18next.t("There was a problem retrieving the requested object");
       $.ajax({
         type: 'HEAD',
         url: url,
@@ -149,42 +153,42 @@
                   <ul class="menu">\
                       <li>\
                           <a href="CartView.php">\
-                              <i class="fa fa-shopping-cart text-green"></i>View Cart\
+                              <i class="fa fa-shopping-cart text-green"></i>' + i18next.t("View Cart") + '\
                           </a>\
                       </li>\
                       <li>\
                           <a id="emptyCart" id="#emptyCart">\
-                              <i class="fa fa-trash text-danger"></i> Empty Cart\
+                              <i class="fa fa-trash text-danger"></i>' + i18next.t("Empty Cart") + ' \
                           </a>\
                       </li>\
                       <li>\
                           <a id="emptyCartToGroup">\
-                              <i class="fa fa-object-ungroup text-info"></i>Empty Cart to Group\
+                              <i class="fa fa-object-ungroup text-info"></i>' + i18next.t("Empty Cart to Group") + '\
                           </a>\
                       </li>\
                       <li>\
                           <a href="CartToEvent.php">\
-                              <i class="fa fa fa-users text-info"></i>Empty Cart to Family\
+                              <i class="fa fa fa-users text-info"></i>' + i18next.t("Empty Cart to Family") + '\
                           </a>\
                       </li>\
                       <li>\
                           <a href="CartToEvent.php">\
-                              <i class="fa fa fa-ticket text-info"></i>Empty Cart to Event\
+                              <i class="fa fa fa-ticket text-info"></i>' + i18next.t("Empty Cart to Event") + '\
                           </a>\
                       </li>\
                       <li>\
                           <a href="MapUsingGoogle.php?GroupID=0">\
-                              <i class="fa fa-map-marker text-info"></i>Map Cart\
+                              <i class="fa fa-map-marker text-info"></i>' + i18next.t("Map Cart") + '\
                           </a>\
                       </li>\
                   </ul>\
               </li>\
-                        <!--li class="footer"><a href="#">View all</a></li-->\
+                        <!--li class="footer"><a href="#">' + i18next.t("View all") + '</a></li-->\
                     '
         }
           else {
             cartDropdownMenu = '\
-              <li class="header">Your Cart is Empty</li>';
+              <li class="header">' + i18next.t("Your Cart is Empty" ) + '</li>';
           }
         $("#cart-dropdown-menu").html(cartDropdownMenu);
         $("#CartBlock")
@@ -194,6 +198,81 @@
         });
       }
 
+    };
+    
+    window.CRM.kiosks = {
+        assignmentTypes: {
+            "1":"Event Attendance",
+            "2":"Self Registration",
+            "3":"Self Checkin",
+            "4":"General Attendance"
+        },
+        reload: function(id)
+        {
+          window.CRM.APIRequest({
+            "path":"kiosks/"+id+"/reloadKiosk",
+            "method":"POST"
+          }).done(function(data){
+            //todo: tell the user the kiosk was reloaded..?  maybe nothing...
+          })
+        },
+        enableRegistration: function() {
+          return window.CRM.APIRequest({
+            "path":"kiosks/allowRegistration",
+            "method":"POST"
+          })  
+        },
+        accept: function (id)
+        {
+           window.CRM.APIRequest({
+            "path":"kiosks/"+id+"/acceptKiosk",
+            "method":"POST"
+          }).done(function(data){
+            window.CRM.kioskDataTable.ajax.reload()
+          })
+        },
+        identify: function (id)
+        {
+           window.CRM.APIRequest({
+            "path":"kiosks/"+id+"/identifyKiosk",
+            "method":"POST"
+          }).done(function(data){
+              //do nothing...
+          })
+        },
+        setAssignment: function (id,assignmentId)
+        {
+          assignmentSplit = assignmentId.split("-");
+          if(assignmentSplit.length > 0)
+          {
+            assignmentType = assignmentSplit[0];
+            eventId = assignmentSplit[1];
+          }
+          else
+          {
+            assignmentType = assignmentId;
+          }
+
+           window.CRM.APIRequest({
+            "path":"kiosks/"+id+"/setAssignment",
+            "method":"POST",
+            "data":JSON.stringify({"assignmentType":assignmentType,"eventId":eventId})
+          }).done(function(data){
+          })
+        }
+    }
+    
+    window.CRM.events = {
+       getFutureEventes: function()
+        {
+          //this could probably be done better, as this option may present a race condition by
+          //populating a window variable with future events that future elements may rely on
+          window.CRM.APIRequest({
+            "path":"events/notDone"
+          }).done(function(data){
+            window.CRM.events.futureEvents=data.Events;
+          });
+        }
     };
     
     window.CRM.groups = {
@@ -216,7 +295,7 @@
            title: 'Select Group and Role',
            message: '<div class="modal-body">\
                 <input type="hidden" id="targetGroupAction">\
-                <span style="color: red">Please select target group for members:</span>\
+                <span style="color: red">' + i18next.t("Please select target group for members") + ':</span>\
                 <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>\
                 <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>\
               </div>',
@@ -299,11 +378,15 @@
       }
     }
 
-    $(document).ajaxError(function (evt, xhr, settings) {
+    $(document).ajaxError(function (evt, xhr, settings,errortext) {
+      if(errortext !== "abort") {
         try {
             var CRMResponse = JSON.parse(xhr.responseText);
             window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
-        } catch(err) {}
+        } catch(err) {
+          window.CRM.DisplayErrorMessage(settings.url,{"message":errortext});
+        }
+      }
     });
 
     function LimitTextSize(theTextArea, size) {

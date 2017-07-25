@@ -17,8 +17,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$linkBack = FilterInput($_GET['linkBack']);
-$iCurrentFundraiser = FilterInput($_GET['CurrentFundraiser']);
+use ChurchCRM\Utils\InputUtils;
+
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
+$iCurrentFundraiser = InputUtils::LegacyFilterInput($_GET['CurrentFundraiser']);
 
 if ($iCurrentFundraiser) {
     $_SESSION['iCurrentFundraiser'] = $iCurrentFundraiser;

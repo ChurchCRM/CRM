@@ -17,6 +17,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: User must have canvasser permission to use this form
 if (!$_SESSION['bCanvasser']) {
     Redirect('Menu.php');
@@ -27,11 +29,11 @@ require 'Include/CanvassUtilities.php';
 
 $iCanvassID = 0;
 if (array_key_exists('CanvassID', $_GET)) {
-    $iCanvassID = FilterInput($_GET['CanvassID'], 'int');
+    $iCanvassID = InputUtils::LegacyFilterInput($_GET['CanvassID'], 'int');
 }
-$linkBack = FilterInput($_GET['linkBack']);
-$iFamily = FilterInput($_GET['FamilyID']);
-$iFYID = FilterInput($_GET['FYID']);
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
+$iFamily = InputUtils::LegacyFilterInput($_GET['FamilyID']);
+$iFYID = InputUtils::LegacyFilterInput($_GET['FYID']);
 
 $sDateError = '';
 $bNotInterested = false;
@@ -47,21 +49,21 @@ $sPageTitle = gettext($fyStr.' Canvass Input for the '.$fam_Name.' family');
 
 //Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $iCanvasser = FilterInput($_POST['Canvasser']);
+    $iCanvasser = InputUtils::LegacyFilterInput($_POST['Canvasser']);
     if (!$iCanvasser) {
         $iCanvasser = 0;
     }
-    $dDate = FilterInput($_POST['Date']);
-    $tPositive = FilterInput($_POST['Positive']);
-    $tCritical = FilterInput($_POST['Critical']);
-    $tInsightful = FilterInput($_POST['Insightful']);
-    $tFinancial = FilterInput($_POST['Financial']);
-    $tSuggestion = FilterInput($_POST['Suggestion']);
+    $dDate = InputUtils::LegacyFilterInput($_POST['Date']);
+    $tPositive = InputUtils::LegacyFilterInput($_POST['Positive']);
+    $tCritical = InputUtils::LegacyFilterInput($_POST['Critical']);
+    $tInsightful = InputUtils::LegacyFilterInput($_POST['Insightful']);
+    $tFinancial = InputUtils::LegacyFilterInput($_POST['Financial']);
+    $tSuggestion = InputUtils::LegacyFilterInput($_POST['Suggestion']);
     $bNotInterested = isset($_POST['NotInterested']);
     if ($bNotInterested == '') {
         $bNotInterested = 0;
     }
-    $tWhyNotInterested = FilterInput($_POST['WhyNotInterested']);
+    $tWhyNotInterested = InputUtils::LegacyFilterInput($_POST['WhyNotInterested']);
 
     // New canvas input (add)
     if ($iCanvassID < 1) {

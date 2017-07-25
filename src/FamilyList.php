@@ -5,11 +5,12 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Utils\InputUtils;
 
 $sMode = 'Active';
 // Filter received user input as needed
 if (isset($_GET['mode'])) {
-    $sMode = FilterInput($_GET['mode']);
+    $sMode = InputUtils::LegacyFilterInput($_GET['mode']);
 }
 if (strtolower($sMode) == 'inactive') {
     $families = FamilyQuery::create()
@@ -73,7 +74,6 @@ require 'Include/Header.php'; ?>
                 <td><?= date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                 <td><?= date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                 <?php
-
 }
                 ?>
             </tr>
@@ -84,16 +84,7 @@ require 'Include/Header.php'; ?>
 
 <script type="text/javascript">
   $(document).ready(function () {
-    $('#families').dataTable({
-      "language": {
-        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-      },
-      responsive: true,
-      "dom": 'T<"clear">lfrtip',
-      "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
-      }
-    });
+    $('#families').DataTable(window.CRM.plugin.dataTable);
   });
 </script>
 

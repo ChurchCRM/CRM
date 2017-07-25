@@ -83,7 +83,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
         <td class="TextColumn">
             <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
             <select name="sDirClassifications[]" size="5" multiple>
-            <option value="0">Unassigned</option>
+            <option value="0"><?= gettext("Unassigned") ?></option>
             <?php
                 while ($aRow = mysqli_fetch_array($rsClassifications)) {
                     extract($aRow);
@@ -111,7 +111,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     </tr>
 
 <?php
-
 }
 ?>
 
@@ -196,7 +195,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
                      ?>
 		            <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>
          <?php
-
                  }
              }
          }

@@ -139,7 +139,7 @@ $MenuFirst = 1;
             </ul>
           </li>
           <li class="hidden-xxs">
-            <a href="http://docs.churchcrm.io" target="_blank" title="<?= gettext('Read the docs') ?>">
+            <a href="<?= SystemURLs::getSupportURL() ?>" target="_blank" title="<?= gettext('Read the docs') ?>">
               <i class="fa fa-support"></i>
             </a>
           </li>

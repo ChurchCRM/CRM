@@ -28,6 +28,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 $sPageTitle = gettext('Church Event Editor');
 
 $sAction = 'Create Event';
@@ -264,6 +266,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndHour = $aEndTimeTokens[0];
     $iEventEndMins = $aEndTimeTokens[1];
     $iEventStatus = $inactive;
+    $nEventGroupId = $event_grpid;
 
     $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
 //        echo $cvSQL;
@@ -292,7 +295,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         $bEventTypeError = true;
         $iErrors++;
     } else {
-        $sSQL = "SELECT type_name FROM event_types WHERE type_id = '".FilterInput($iTypeID)."' LIMIT 1";
+        $sSQL = "SELECT type_name FROM event_types WHERE type_id = '".InputUtils::LegacyFilterInput($iTypeID)."' LIMIT 1";
         $rsOpps = RunQuery($sSQL);
         $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
         extract($aRow);
@@ -315,6 +318,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndHour = $sEventEndDateTime->format('H');
     $iEventEndMins = $sEventEndDateTime->format('i');
     $iEventStatus = $_POST['EventStatus'];
+    $nEventGroupId = $_POST['EventGroup'];
 
     $iNumCounts = $_POST['NumAttendCounts'];
     $nCnts = $iNumCounts;
@@ -338,14 +342,15 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         if ($iErrors == 0) {
             if ($EventExists == 0) {
                 $sSQL = "INSERT events_event
-                     SET `event_type` = '".FilterInput($iTypeID)."',
-                     `event_title` = '".FilterInput($sEventTitle)."',
-                     `event_desc` = '".FilterInput($sEventDesc)."',
-                     `event_text` = '".FilterInput($sEventText)."',
-                     `event_start` = '".FilterInput($sEventStart)."',
-                     `event_end` = '".FilterInput($sEventEnd)."',
-                     `inactive` = '".FilterInput($iEventStatus)."',
-                     `event_typename` = '".FilterInput($sTypeName)."'";
+                     SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
+                     `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
+                     `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
+                     `event_text` = '".InputUtils::LegacyFilterInput($sEventText)."',
+                     `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
+                     `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
+                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
+                     `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
+                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."';";
                 RunQuery($sSQL);
                 $iEventID = mysqli_insert_id($cnInfoCentral);
                 for ($c = 0; $c < $iNumCounts; $c++) {
@@ -353,24 +358,25 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                     $sSQL = "INSERT eventcounts_evtcnt
 											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
 											 VALUES
-											 ('".FilterInput($iEventID)."',
-											  '".FilterInput($aCountID[$c])."',
-												'".FilterInput($aCountName[$c])."',
-												'".FilterInput($aCount[$c])."',
-												'".FilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+											 ('".InputUtils::LegacyFilterInput($iEventID)."',
+											  '".InputUtils::LegacyFilterInput($aCountID[$c])."',
+												'".InputUtils::LegacyFilterInput($aCountName[$c])."',
+												'".InputUtils::LegacyFilterInput($aCount[$c])."',
+												'".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
                     RunQuery($sSQL);
                 }
             } else {
                 $sSQL = "UPDATE events_event
-                     SET `event_type` = '".FilterInput($iTypeID)."',
-                     `event_title` = '".FilterInput($sEventTitle)."',
-                     `event_desc` = '".FilterInput($sEventDesc)."',
-                     `event_text` = '".FilterInput($sEventText)."',
-                     `event_start` = '".FilterInput($sEventStart)."',
-                     `event_end` = '".FilterInput($sEventEnd)."',
-                     `inactive` = '".FilterInput($iEventStatus)."',
-                     `event_typename` = '".FilterInput($sTypeName)."'".
-                    " WHERE `event_id` = '".FilterInput($iEventID)."';";
+                     SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
+                     `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
+                     `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
+                     `event_text` = '".InputUtils::LegacyFilterInput($sEventText)."',
+                     `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
+                     `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
+                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
+                     `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
+                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."'".
+                    " WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
 //            echo $sSQL;
             RunQuery($sSQL);
                 for ($c = 0; $c < $iNumCounts; $c++) {
@@ -378,11 +384,11 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                     $sSQL = "INSERT eventcounts_evtcnt
 											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
 											 VALUES
-											 ('".FilterInput($iEventID)."',
-											  '".FilterInput($aCountID[$c])."',
-												'".FilterInput($aCountName[$c])."',
-												'".FilterInput($aCount[$c])."',
-												'".FilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+											 ('".InputUtils::LegacyFilterInput($iEventID)."',
+											  '".InputUtils::LegacyFilterInput($aCountID[$c])."',
+												'".InputUtils::LegacyFilterInput($aCountName[$c])."',
+												'".InputUtils::LegacyFilterInput($aCount[$c])."',
+												'".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
                     RunQuery($sSQL);
                 }
             }
@@ -443,7 +449,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     </td>
   </tr>
 
-<?php 
+<?php
         } else { // if (empty($iTypeID))?>
 
   <tr>
@@ -477,6 +483,25 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     </td>
 
   </tr>
+  
+  <tr>
+    <td class="LabelColumn"><span style="color: red">*</span>
+      <?= gettext('Event Group') ?>:
+    </td>
+    <td class="TextColumn">
+      <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>">
+         <option value="0" <?= ($nEventGroupId == 0 ? "Selected":"") ?>>None</option>
+        <?php
+          $groups=  ChurchCRM\Base\GroupQuery::create()->find();
+            foreach ($groups as $group) {
+                ?>
+         <option value="<?= $group->getId() ?>" <?= ($group->getId() == $nEventGroupId ? "Selected":"") ?>><?= $group->getName() ?></option>
+            <?php
+            } ?>
+      </select>
+    </td>
+
+  </tr>
 
   <tr>
     <td class="LabelColumn"><?= gettext('Attendance Counts') ?></td>
@@ -499,7 +524,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         </td>
         </tr>
       <?php
-
       } //end for loop
       ?>
       <tr>
@@ -509,7 +533,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         </tr>
         </table>
         <?php
-
       } //endif
         ?>
     </td>
@@ -536,7 +559,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 		<td></td>
     <td><input type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary"></td>
   </tr>
-<?php 
+<?php
         } // if (empty($iTypeID))?>
 </table>
 </form>

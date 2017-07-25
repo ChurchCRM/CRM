@@ -44,6 +44,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Propel;
+use ChurchCRM\Utils\LoggerUtils;
 
 function system_failure($message, $header = 'Setup failure')
 {
@@ -67,7 +68,7 @@ function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWO
         'password' => $sPASSWORD,
         'settings' => [
             'charset' => 'utf8mb4',
-            'queries' => ["SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))"],
+            'queries' => ["SET sql_mode=(SELECT REPLACE(REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''),'NO_ZERO_DATE',''))"],
         ],
         'classname' => $dbClassName,
         'model_paths' => [
@@ -135,22 +136,18 @@ SystemConfig::init(ConfigQuery::create()->find());
 // enable logs if we are in debug mode
 // **************************************************
 
-$logFilePrefix = SystemURLs::getDocumentRoot().'/logs/'.date("Y-m-d");
-$logLevel = intval(SystemConfig::getValue("sLogLevel"));
-
 // PHP Logs
 ini_set('log_errors', 1);
-ini_set('error_log', $logFilePrefix.'-php.log');
+ini_set('error_log', LoggerUtils::buildLogFilePath("php"));
 
 // APP Logs
-$logger = new Logger('defaultLogger');
-$logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log', $logLevel));
+$logger = LoggerUtils::getAppLogger();
 
 // ORM Logs
 $ormLogger = new Logger('ormLogger');
 $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
 $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
-$ormLogger->pushHandler(new StreamHandler($logFilePrefix.'-orm.log', $logLevel));
+$ormLogger->pushHandler(new StreamHandler(LoggerUtils::buildLogFilePath("orm"), LoggerUtils::getLogLevel()));
 $serviceContainer->setLogger('defaultLogger', $ormLogger);
 
 

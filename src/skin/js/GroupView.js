@@ -65,14 +65,14 @@ $(document).ready(function () {
   $("#deleteSelectedRows").click(function () {
     var deletedRows = window.CRM.DataTableAPI.rows('.selected').data()
     bootbox.confirm({
-      message: "Are you sure you want to remove the " + deletedRows.length + " selected group members?",
+      message: i18next.t("Are you sure you want to remove the selected group members?") + " (" + deletedRows.length + ") ",
       buttons: {
         confirm: {
-          label: 'Yes',
-          className: 'btn-success'
+          label:  i18next.t('Yes'),
+            className: 'btn-success'
         },
         cancel: {
-          label: 'No',
+          label:  i18next.t('No'),
           className: 'btn-danger'
         }
       },
@@ -184,14 +184,13 @@ $(document).ready(function () {
 });
 
 function initDataTable() {
-  window.CRM.DataTableAPI = $("#membersTable").DataTable({
+  dataT = $("#membersTable").DataTable({
     "language": {
-      "url": window.CRM.root + "/skin/locale/dataTables/" + window.CRM.locale + ".json"
+      "url": window.CRM.plugin.dataTable.language.url
     },
     "dom": 'T<"clear">lfrtip',
     "tableTools": {
-      "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf",
-      "sRowSelect": "multi",
+      "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath,
       "aButtons": [
         {
           "sExtends": "csv",
@@ -205,16 +204,24 @@ function initDataTable() {
     },
     columns: [
       {
+          width: 'auto',
+          title: '',
+          data: 'PersonId',
+          render: function (data, type, full, meta) {
+            	return '<img data-name="'+full.Person.FirstName + ' ' + full.Person.LastName + '" data-src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image">';
+          }
+      },
+      {
         width: 'auto',
-        title: 'Name',
+        title:i18next.t( 'Name'),
         data: 'PersonId',
         render: function (data, type, full, meta) {
-          return '<img data-name="' + full.Person.FirstName + ' ' + full.Person.LastName + '" data-src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+          return '<a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
         }
       },
       {
         width: 'auto',
-        title: 'Group Role',
+        title:i18next.t( 'Group Role'),
         data: 'RoleId',
         render: function (data, type, full, meta) {
           thisRole = $(window.CRM.groupRoles).filter(function (index, item) {
@@ -225,34 +232,34 @@ function initDataTable() {
       },
       {
         width: 'auto',
-        title: 'Address',
+        title:i18next.t( 'Address'),
         render: function (data, type, full, meta) {
           return full.Person.Address1 + " " + full.Person.Address2;
         }
       },
       {
         width: 'auto',
-        title: 'City',
+        title:i18next.t( 'City'),
         data: 'Person.City'
       },
       {
         width: 'auto',
-        title: 'State',
+        title:i18next.t( 'State'),
         data: 'Person.State'
       },
       {
         width: 'auto',
-        title: 'ZIP',
+        title:i18next.t( 'ZIP'),
         data: 'Person.Zip'
       },
       {
         width: 'auto',
-        title: 'Cell Phone',
+        title:i18next.t( 'Cell Phone'),
         data: 'Person.CellPhone'
       },
       {
         width: 'auto',
-        title: 'E-mail',
+        title:i18next.t( 'E-mail'),
         data: 'Person.Email'
       }
     ],
@@ -286,14 +293,14 @@ function initDataTable() {
   $(document).on('click', '.groupRow', function () {
     var selectedRows = window.CRM.DataTableAPI.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
-    $("#deleteSelectedRows").text("Remove (" + selectedRows + ") Members from group");
+    $("#deleteSelectedRows").text(i18next.t("Remove")+" (" + selectedRows + ") "+i18next.t("Members from group"));
     $("#buttonDropdown").prop('disabled', !(selectedRows));
     $("#addSelectedToGroup").prop('disabled', !(selectedRows));
-    $("#addSelectedToGroup").html("Add  (" + selectedRows + ") Members to another group");
+    $("#addSelectedToGroup").html(i18next.t("Add")+"  (" + selectedRows + ") "+i18next.t("Members to another group"));
     $("#addSelectedToCart").prop('disabled', !(selectedRows));
-    $("#addSelectedToCart").html("Add  (" + selectedRows + ") Members to cart");
+    $("#addSelectedToCart").html(i18next.t("Add")+"  (" + selectedRows + ") "+i18next.t("Members to cart"));
     $("#moveSelectedToGroup").prop('disabled', !(selectedRows));
-    $("#moveSelectedToGroup").html("Move  (" + selectedRows + ") Members to another group");
+    $("#moveSelectedToGroup").html(i18next.t("Move")+"  (" + selectedRows + ") "+i18next.t("Members to another group"));
   });
 
 }

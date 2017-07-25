@@ -19,6 +19,8 @@ use ChurchCRM\PersonQuery;
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bDeleteRecords']) {
@@ -32,10 +34,10 @@ $iDonationFamilyID = 0;
 $sMode = 'family';
 
 if (!empty($_GET['FamilyID'])) {
-    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
 }
 if (!empty($_GET['DonationFamilyID'])) {
-    $iDonationFamilyID = FilterInput($_GET['DonationFamilyID'], 'int');
+    $iDonationFamilyID = InputUtils::LegacyFilterInput($_GET['DonationFamilyID'], 'int');
 }
 if (!empty($_GET['mode'])) {
     $sMode = $_GET['mode'];
@@ -263,7 +265,6 @@ require 'Include/Header.php';
                     <td><?= $EnteredFirstName . ' ' . $EnteredLastName ?>&nbsp;</td>
                 </tr>
                 <?php
-
             }
             echo '</table>';
         } else {

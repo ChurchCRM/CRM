@@ -1,11 +1,6 @@
 $(document).ready(function () {
 
-    var options = {
-        "language": {
-            "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-        }
-    };
-    $("#pledge-payment-table").DataTable(options);
+    $("#pledge-payment-table").DataTable(window.CRM.plugin.dataTable);
 
 
   $("#onlineVerify").click(function () {
@@ -16,9 +11,9 @@ $(document).ready(function () {
       .done(function(data, textStatus, xhr) {
         $('#confirm-verify').modal('hide');
         if (xhr.status == 200) {
-          showGlobalMessage("Verification email sent", "success")
+          showGlobalMessage(i18next.t("Verification email sent"), "success")
         } else {
-          showGlobalMessage("Failed to send verification email ", "danger")
+          showGlobalMessage(i18next.t("Failed to send verification email"), "danger")
         }
       });
   });
@@ -33,7 +28,7 @@ $(document).ready(function () {
         if (xhr.status == 200) {
           location.reload();
         } else {
-          showGlobalMessage("Failed to add verification", "danger")
+          showGlobalMessage(i18next.t("Failed to add verification"), "danger")
         }
       });
   });

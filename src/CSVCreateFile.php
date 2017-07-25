@@ -19,6 +19,7 @@ require 'Include/Functions.php';
 require 'Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
 // Turn ON output buffering
 ob_start();
@@ -81,7 +82,7 @@ if ($sSource == 'cart') {
     if (!empty($_POST['Classification'])) {
         $count = 0;
         foreach ($_POST['Classification'] as $Cls) {
-            $Class[$count++] = FilterInput($Cls, 'int');
+            $Class[$count++] = InputUtils::LegacyFilterInput($Cls, 'int');
         }
         if ($count == 1) {
             if ($Class[0]) {
@@ -100,7 +101,7 @@ if ($sSource == 'cart') {
     if (!empty($_POST['FamilyRole'])) {
         $count = 0;
         foreach ($_POST['FamilyRole'] as $Fmr) {
-            $Class[$count++] = FilterInput($Fmr, 'int');
+            $Class[$count++] = InputUtils::LegacyFilterInput($Fmr, 'int');
         }
         if ($count == 1) {
             if ($Class[0]) {
@@ -116,13 +117,13 @@ if ($sSource == 'cart') {
     }
 
     if (!empty($_POST['Gender'])) {
-        $sWhereExt .= 'AND per_Gender = '.FilterInput($_POST['Gender'], 'int').' ';
+        $sWhereExt .= 'AND per_Gender = '.InputUtils::LegacyFilterInput($_POST['Gender'], 'int').' ';
     }
 
     if (!empty($_POST['GroupID'])) {
         $count = 0;
         foreach ($_POST['GroupID'] as $Grp) {
-            $Class[$count++] = FilterInput($Grp, 'int');
+            $Class[$count++] = InputUtils::LegacyFilterInput($Grp, 'int');
         }
         if ($count == 1) {
             if ($Class[0]) {
@@ -143,50 +144,50 @@ if ($sSource == 'cart') {
     }
 
     if (!empty($_POST['MembershipDate1'])) {
-        $sWhereExt .= "AND per_MembershipDate >= '".FilterInput($_POST['MembershipDate1'], 'char', 10)."' ";
+        $sWhereExt .= "AND per_MembershipDate >= '".InputUtils::LegacyFilterInput($_POST['MembershipDate1'], 'char', 10)."' ";
     }
     if ($_POST['MembershipDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND per_MembershipDate <= '".FilterInput($_POST['MembershipDate2'], 'char', 10)."' ";
+        $sWhereExt .= "AND per_MembershipDate <= '".InputUtils::LegacyFilterInput($_POST['MembershipDate2'], 'char', 10)."' ";
     }
 
     $refDate = getdate(time());
 
     if (!empty($_POST['BirthDate1'])) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= '".FilterInput($_POST['BirthDate1'], 'char', 10)."' ";
+        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= '".InputUtils::LegacyFilterInput($_POST['BirthDate1'], 'char', 10)."' ";
     }
 
     if ($_POST['BirthDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= '".FilterInput($_POST['BirthDate2'], 'char', 10)."' ";
+        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= '".InputUtils::LegacyFilterInput($_POST['BirthDate2'], 'char', 10)."' ";
     }
 
     if (!empty($_POST['AnniversaryDate1'])) {
-        $annivStart = getdate(strtotime(FilterInput($_POST['AnniversaryDate1'])));
+        $annivStart = getdate(strtotime(InputUtils::LegacyFilterInput($_POST['AnniversaryDate1'])));
 
         // Add year to query if not in future
         if ($annivStart['year'] < date('Y') || ($annivStart['year'] == date('Y') && $annivStart['mon'] <= date('m') && $annivStart['mday'] <= date('d'))) {
-            $sWhereExt .= "AND fam_WeddingDate >= '".FilterInput($_POST['AnniversaryDate1'], 'char', 10)."' ";
+            $sWhereExt .= "AND fam_WeddingDate >= '".InputUtils::LegacyFilterInput($_POST['AnniversaryDate1'], 'char', 10)."' ";
         } else {
-            $sWhereExt .= "AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR('".FilterInput($_POST['AnniversaryDate1'], 'char', 10)."') ";
+            $sWhereExt .= "AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR('".InputUtils::LegacyFilterInput($_POST['AnniversaryDate1'], 'char', 10)."') ";
         }
     }
 
     if ($_POST['AnniversaryDate2'] != date('Y-m-d')) {
-        $annivEnd = getdate(strtotime(FilterInput($_POST['AnniversaryDate2'], 'char', 10)));
+        $annivEnd = getdate(strtotime(InputUtils::LegacyFilterInput($_POST['AnniversaryDate2'], 'char', 10)));
 
         // Add year to query if not in future
         if ($annivEnd['year'] < date('Y') || ($annivEnd['year'] == date('Y') && $annivEnd['mon'] <= date('m') && $annivEnd['mday'] <= date('d'))) {
-            $sWhereExt .= "AND  fam_WeddingDate <= '".FilterInput($_POST['AnniversaryDate2'], 'char', 10)."' ";
+            $sWhereExt .= "AND  fam_WeddingDate <= '".InputUtils::LegacyFilterInput($_POST['AnniversaryDate2'], 'char', 10)."' ";
         } else {
             $refDate = getdate(strtotime($_POST['AnniversaryDate2']));
-            $sWhereExt .= "AND  DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR('".FilterInput($_POST['AnniversaryDate2'], 'char', 10)."') ";
+            $sWhereExt .= "AND  DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR('".InputUtils::LegacyFilterInput($_POST['AnniversaryDate2'], 'char', 10)."') ";
         }
     }
 
     if (!empty($_POST['EnterDate1'])) {
-        $sWhereExt .= "AND per_DateEntered >= '".FilterInput($_POST['EnterDate1'], 'char', 10)."' ";
+        $sWhereExt .= "AND per_DateEntered >= '".InputUtils::LegacyFilterInput($_POST['EnterDate1'], 'char', 10)."' ";
     }
     if ($_POST['EnterDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND per_DateEntered <= '".FilterInput($_POST['EnterDate2'], 'char', 10)."' ";
+        $sWhereExt .= "AND per_DateEntered <= '".InputUtils::LegacyFilterInput($_POST['EnterDate2'], 'char', 10)."' ";
     }
 }
 

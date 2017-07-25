@@ -33,6 +33,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\UserQuery;
+use ChurchCRM\Utils\InputUtils;
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 
@@ -86,7 +87,7 @@ while ($aRow = mysqli_fetch_array($rsGroupTypes)) {
 
 // Filter received user input as needed
 if (isset($_GET['Sort'])) {
-    $sSort = FilterInput($_GET['Sort']);
+    $sSort = InputUtils::LegacyFilterInput($_GET['Sort']);
 } else {
     $sSort = 'name';
 }
@@ -96,14 +97,14 @@ $sFilter = '';
 $sLetter = '';
 $sPrevLetter = '';
 if (array_key_exists('Filter', $_GET)) {
-    $sFilter = FilterInput($_GET['Filter']);
+    $sFilter = InputUtils::LegacyFilterInput($_GET['Filter']);
 }
 if (array_key_exists('Letter', $_GET)) {
-    $sLetter = mb_strtoupper(FilterInput($_GET['Letter']));
+    $sLetter = mb_strtoupper(InputUtils::LegacyFilterInput($_GET['Letter']));
 }
 
 if (array_key_exists('mode', $_GET)) {
-    $sMode = FilterInput($_GET['mode']);
+    $sMode = InputUtils::LegacyFilterInput($_GET['mode']);
 } elseif (array_key_exists('SelectListMode', $_SESSION)) {
     $sMode = $_SESSION['SelectListMode'];
 }
@@ -124,18 +125,18 @@ switch ($sMode) {
 $_SESSION['bSearchFamily'] = ($sMode != 'person');
 
 if (array_key_exists('Number', $_GET)) {
-    $_SESSION['SearchLimit'] = FilterInput($_GET['Number'], 'int');
+    $_SESSION['SearchLimit'] = InputUtils::LegacyFilterInput($_GET['Number'], 'int');
     $tmpUser = UserQuery::create()->findPk($_SESSION['iUserID']);
     $tmpUser->setSearchLimit($_SESSION['SearchLimit']);
     $tmpUser->save();
 }
 
 if (array_key_exists('PersonColumn3', $_GET)) {
-    $_SESSION['sPersonColumn3'] = FilterInput($_GET['PersonColumn3']);
+    $_SESSION['sPersonColumn3'] = InputUtils::LegacyFilterInput($_GET['PersonColumn3']);
 }
 
 if (array_key_exists('PersonColumn5', $_GET)) {
-    $_SESSION['sPersonColumn5'] = FilterInput($_GET['PersonColumn5']);
+    $_SESSION['sPersonColumn5'] = InputUtils::LegacyFilterInput($_GET['PersonColumn5']);
 }
 
 $iGroupTypeMissing = 0;
@@ -153,27 +154,27 @@ if ($sMode == 'person') {
     $iMode = 1;
 
     if (array_key_exists('Classification', $_GET) && $_GET['Classification'] != '') {
-        $iClassification = FilterInput($_GET['Classification'], 'int');
+        $iClassification = InputUtils::LegacyFilterInput($_GET['Classification'], 'int');
     }
     if (array_key_exists('FamilyRole', $_GET) && $_GET['FamilyRole'] != '') {
-        $iFamilyRole = FilterInput($_GET['FamilyRole'], 'int');
+        $iFamilyRole = InputUtils::LegacyFilterInput($_GET['FamilyRole'], 'int');
     }
     if (array_key_exists('Gender', $_GET) && $_GET['Gender'] != '') {
-        $iGender = FilterInput($_GET['Gender'], 'int');
+        $iGender = InputUtils::LegacyFilterInput($_GET['Gender'], 'int');
     }
     if (array_key_exists('PersonProperties', $_GET) && $_GET['PersonProperties'] != '') {
-        $iPersonProperty = FilterInput($_GET['PersonProperties'], 'int');
+        $iPersonProperty = InputUtils::LegacyFilterInput($_GET['PersonProperties'], 'int');
     }
     if (array_key_exists('grouptype', $_GET) && $_GET['grouptype'] != '') {
-        $iGroupType = FilterInput($_GET['grouptype'], 'int');
+        $iGroupType = InputUtils::LegacyFilterInput($_GET['grouptype'], 'int');
         if (array_key_exists('groupid', $_GET)) {
-            $iGroupID = FilterInput($_GET['groupid'], 'int');
+            $iGroupID = InputUtils::LegacyFilterInput($_GET['groupid'], 'int');
             if ($iGroupID == 0) {
                 $iGroupID = -1;
             }
         }
         if (array_key_exists('grouproleid', $_GET) && $_GET['grouproleid'] != '') {
-            $iRoleID = FilterInput($_GET['grouproleid'], 'int');
+            $iRoleID = InputUtils::LegacyFilterInput($_GET['grouproleid'], 'int');
             if ($iRoleID == 0) {
                 $iRoleID = -1;
             }
@@ -184,16 +185,16 @@ if ($sMode == 'person') {
     $iMode = 2;
 
     if (array_key_exists('Classification', $_GET) && $_GET['Classification'] != '') {
-        $iClassification = FilterInput($_GET['Classification'], 'int');
+        $iClassification = InputUtils::LegacyFilterInput($_GET['Classification'], 'int');
     }
     if (array_key_exists('FamilyRole', $_GET) && $_GET['FamilyRole'] != '') {
-        $iFamilyRole = FilterInput($_GET['FamilyRole'], 'int');
+        $iFamilyRole = InputUtils::LegacyFilterInput($_GET['FamilyRole'], 'int');
     }
     if (array_key_exists('Gender', $_GET) && $_GET['Gender'] != '') {
-        $iGender = FilterInput($_GET['Gender'], 'int');
+        $iGender = InputUtils::LegacyFilterInput($_GET['Gender'], 'int');
     }
     if (array_key_exists('type', $_GET)) {
-        $iGroupTypeMissing = FilterInput($_GET['type'], 'int');
+        $iGroupTypeMissing = InputUtils::LegacyFilterInput($_GET['type'], 'int');
     } else {
         $iGroupTypeMissing = 1;
     }
@@ -493,7 +494,7 @@ $sLimitSQL = '';
 if (empty($_GET['Result_Set'])) {
     $Result_Set = 0;
 } else {
-    $Result_Set = FilterInput($_GET['Result_Set'], 'int');
+    $Result_Set = InputUtils::LegacyFilterInput($_GET['Result_Set'], 'int');
 }
 
 $sLimitSQL .= " LIMIT $Result_Set, $iPerPage";
@@ -1200,7 +1201,6 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
             </span>
         </a>
 	<?php
-
     } ?>
     </td>
 	<td>
@@ -1214,7 +1214,6 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
         </a>
     </td>
 	<?php
-
     } else {
         ?>
     <a class="RemoveFromPeopleCart" data-persionid="<?= $per_ID ?>">
@@ -1224,7 +1223,6 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
             </span>
         </a>
 	<?php
-
     }
 
     if ($iMode == 1) {
@@ -1235,7 +1233,6 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
             </span>
         </a>
 	<?php
-
     } else {
         echo '<td><a href="PersonToGroup.php?PersonID='.$per_ID;
         echo '&amp;prevquery='.rawurlencode($_SERVER['QUERY_STRING']).'">';

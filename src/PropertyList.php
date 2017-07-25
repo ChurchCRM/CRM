@@ -17,8 +17,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 //Get the type to display
-$sType = FilterInput($_GET['Type'], 'char', 1);
+$sType = InputUtils::LegacyFilterInput($_GET['Type'], 'char', 1);
 
 //Based on the type, set the TypeName
 switch ($sType) {

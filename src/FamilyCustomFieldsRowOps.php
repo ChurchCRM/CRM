@@ -19,6 +19,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Security: user must be administrator to use this page.
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -26,8 +28,8 @@ if (!$_SESSION['bAdmin']) {
 }
 
 // Get the Group, Property, and Action from the querystring
-$iOrderID = FilterInput($_GET['OrderID'], 'int');
-$sField = FilterInput($_GET['Field']);
+$iOrderID = InputUtils::LegacyFilterInput($_GET['OrderID'], 'int');
+$sField = InputUtils::LegacyFilterInput($_GET['Field']);
 $sAction = $_GET['Action'];
 
 switch ($sAction) {
