@@ -21,8 +21,8 @@ use ChurchCRM\Service\GroupService;
 class Person extends BasePerson implements iPhoto
 {
 
-    public static $SELF_REGISTER = -1;
-    public static $SELF_VERIFY = -2;
+    const SELF_REGISTER = -1;
+    const SELF_VERIFY = -2;
 
     public function getFullName()
     {

@@ -113,9 +113,9 @@ class TimelineService
         $item = null;
         if ($this->currentUser->isAdmin() || $dbNote->isVisable($this->currentUser->getPersonId())) {
             $displayEditedBy = gettext('Unknown');
-            if ($dbNote->getDisplayEditedBy() == Person::$SELF_REGISTER) {
+            if ($dbNote->getDisplayEditedBy() == Person::SELF_REGISTER) {
                 $displayEditedBy = gettext('Self Registration');
-            } else if ($dbNote->getDisplayEditedBy() == Person::$SELF_VERIFY) {
+            } else if ($dbNote->getDisplayEditedBy() == Person::SELF_VERIFY) {
                 $displayEditedBy = gettext('Self Verification');
             } else {
                 $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
