@@ -294,16 +294,16 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Tooltips.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18next.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/randomcolor/randomColor.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/initial.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/bootstrap-validator/validator.min.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18next.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18nextXHRBackend.min.js"></script>
+
 
 <?php if (isset($sGlobalMessage)) {
         ?>

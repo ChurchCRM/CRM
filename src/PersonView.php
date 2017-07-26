@@ -207,14 +207,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             <?php endif; ?>
         </div>
         <h3 class="profile-username text-center">
-          <?php if ($person->isMale()) {
+            <?php if ($person->isMale()) {
     ?>
-          <i class="fa fa-male"></i>
-          <?php
-} else {
+                <i class="fa fa-male"></i>
+            <?php
+} elseif ($person->isFemale()) {
         ?>
-            <i class="fa fa-female"></i>
-          <?php
+                <i class="fa fa-female"></i>
+            <?php
     } ?>
           <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
@@ -267,24 +267,28 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   echo gettext('(No assigned family)');
               } ?>
 						</span></li>
+            <?php if (!empty($formattedMailingAddress)) {
+                  ?>
           <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Address'); ?>: <span>
 						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
 						</span></li>
-          <?php if ($dBirthDate) {
-                  ?>
+          <?php
+              }
+    if ($dBirthDate) {
+        ?>
             <li>
               <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>:
               <span><?= $dBirthDate ?></span>
               <?php if (!$person->hideAge()) {
-                      ?>
+            ?>
               (<span data-birth-date="<?= $person->getBirthDate()->format('Y-m-d') ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
               <?php
-                  } ?>
+        } ?>
             </li>
           <?php
-              }
+    }
     if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext('Friend Date') ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
           <?php
@@ -331,8 +335,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   if ($type_ID == 11) {
                       $custom_Special = $sPhoneCountry;
                   }
-                  echo '<li><i class="fa-li glyphicon glyphicon-tag"></i>'.$custom_Name.': <span>';
-                  echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
+                  echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'glyphicon glyphicon-tag').'"></i>'.$custom_Name.': <span>';
+                  $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
+                  if ($type_ID == 11) {
+                      echo "<a href=\"tel:".$temp_string."\">".$temp_string."</a>";
+                  } else {
+                      echo $temp_string;
+                  }
                   echo '</span></li>';
               }
           } ?>
@@ -355,7 +364,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
           }
     if ($_SESSION['bDeleteRecords']) {
         ?>
-        <a class="btn btn-app bg-maroon" id="delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
+        <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
       <?php
     }
     if ($_SESSION['bAdmin']) {
