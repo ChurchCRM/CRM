@@ -9,6 +9,8 @@ use ChurchCRM\TokenQuery;
 use ChurchCRM\Person;
 use ChurchCRM\NoteQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Map\FamilyTableMap;
+use ChurchCRM\Map\TokenTableMap;
 
 $app->group('/families', function () {
   
@@ -49,6 +51,19 @@ $app->group('/families', function () {
             ->limit(100)
             ->find();
         return $response->withJSON(['families' => $verifcationNotes->toArray()]);
+    });
+
+    $this->get('/pending-self-verify', function($request, $response, $args)  {
+        $pendingTokens = TokenQuery::create()
+            ->filterByType(Token::typeFamilyVerify)
+            ->filterByRemainingUses(array('min' => 1))
+            ->filterByValidUntilDate(array('min' => new DateTime()))
+            ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
+            ->withColumn(FamilyTableMap::COL_FAM_NAME, "FamilyName")
+            ->withColumn(TokenTableMap::COL_REFERENCE_ID, "FamilyId")
+            ->limit(100)
+            ->find();
+        return $response->withJSON(['families' => $pendingTokens->toArray()]);
     });
 
     $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
