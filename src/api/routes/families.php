@@ -34,7 +34,7 @@ $app->group('/families', function () {
 
     $this->get('/self-register', function($request, $response, $args)  {
         $families = FamilyQuery::create()
-            ->filterByEnteredBy(Person::$SELF_REGISTER)
+            ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
@@ -43,7 +43,7 @@ $app->group('/families', function () {
 
     $this->get('/self-verify', function($request, $response, $args)  {
         $verifcationNotes = NoteQuery::create()
-            ->filterByEnteredBy(Person::$SELF_VERIFY)
+            ->filterByEnteredBy(Person::SELF_VERIFY)
             ->orderByDateEntered(Criteria::DESC)
             ->joinWithFamily()
             ->limit(100)

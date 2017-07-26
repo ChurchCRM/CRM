@@ -39,7 +39,7 @@ $app->group('/verify', function () {
         $note = new Note();
         $note->setFamily($family);
         $note->setType("verify");
-        $note->setEntered(Person::$SELF_VERIFY);
+        $note->setEntered(Person::SELF_VERIFY);
         $note->setText(gettext("No Changes"));
         if (!empty($body->message)) {
           $note->setText($body->message);
