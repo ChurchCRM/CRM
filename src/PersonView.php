@@ -555,7 +555,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                         <h3 class="box-title"><a href="GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
                         <div class="box-tools pull-right">
-                          <div class="label bg-aqua"><?= $roleName ?></div>
+                          <div class="label bg-aqua"><?= gettext($roleName) ?></div>
                         </div>
                       </div>
                       <?php
