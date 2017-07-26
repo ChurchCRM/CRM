@@ -66,6 +66,7 @@ $app->group('/families', function () {
         return $response->withJSON(['families' => $pendingTokens->toArray()]);
     });
 
+
     $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
         $scanString = $args['scanString'];
         echo $this->FinancialService->getMemberByScanString($scanString);
