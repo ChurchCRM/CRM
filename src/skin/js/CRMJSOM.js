@@ -61,7 +61,7 @@
       {
         window.CRM.groups.promptSelection(function(selectedRole){
           window.CRM.APIRequest({
-            type: 'POST',
+            method: 'POST',
             path: 'cart/emptyToGroup',
             data: JSON.stringify({"groupID":selectedRole.GroupID,"groupRoleID":selectedRole.RoleID})
             }).done(function(data) {
@@ -85,7 +85,7 @@
       'addPerson' : function (Persons, callback)
       {
         window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path: 'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
@@ -99,7 +99,7 @@
       'removePerson' : function (Persons, callback)
       {
          window.CRM.APIRequest({
-          type: 'DELETE',
+          method: 'DELETE',
           path:'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
@@ -113,7 +113,7 @@
       'addFamily' : function (FamilyID, callback)
       {
          window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path:'cart/',
           data: JSON.stringify({"Family":FamilyID})
         }).done(function(data) {
@@ -127,7 +127,7 @@
       'addGroup' : function (GroupID, callback)
       {
          window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path: 'cart/',
           data: JSON.stringify({"Group":GroupID})
         }).done(function(data) {
@@ -141,7 +141,7 @@
       },
       'refresh' : function () {
         window.CRM.APIRequest({
-          type: 'GET',
+          method: 'GET',
           path:"cart/"
         }).done(function(data) {
           window.scrollTo(0, 0);
