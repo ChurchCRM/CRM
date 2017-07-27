@@ -2117,5 +2117,19 @@
     "Members from group": "Membros do Grupo",
     "Members to another group": "Membros para outro Grupo",
     "Members to cart": "Membros no carrinho",
-    "Move": "Mover"
+    "Move": "Mover",
+    "Arabic - Egypt:ar_EG": "Árabe - egito:ar_EG",
+    "Thai:th_TH": "Tailandês: th_TH",
+    "Your Church's Facebook Page": "Página do Facebook da sua igreja",
+    "Your Church's Twitter Page": "Página do Twitter da sua igreja",
+    "lookup user images on Google when no local image is present": "Procurar imagens de usuários no Google quando não existirem imagens locais presentes",
+    "Self Update": "Atualização automática",
+    "Self Register": "Auto registro",
+    "List families that were created via self registration.": "Listar famílias que foram criadas por auto-registro.",
+    "Self Verify Updates": "Auto verificar atualizações",
+    "Families who commented via self verify links": "Famílias que comentaram via link de verificação automática",
+    "Pending Self Verify": "Verificação automática pendente",
+    "Families with valid self verify links": "Famílias com links de verifica validados",
+    "Families Self Registration": "Auto-registro de famílias",
+    "Self Verify": "Verificação automática"
 }

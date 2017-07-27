@@ -9034,3 +9034,59 @@ msgstr "Membros no carrinho"
 msgid "Move"
 msgstr "Mover"
 
+#: ChurchCRM/dto/SystemConfig.php:28
+msgid "Arabic - Egypt:ar_EG"
+msgstr "Árabe - egito:ar_EG"
+
+#: ChurchCRM/dto/SystemConfig.php:42
+msgid "Thai:th_TH"
+msgstr "Tailandês: th_TH"
+
+#: ChurchCRM/dto/SystemConfig.php:212
+msgid "Your Church's Facebook Page"
+msgstr "Página do Facebook da sua igreja"
+
+#: ChurchCRM/dto/SystemConfig.php:213
+msgid "Your Church's Twitter Page"
+msgstr "Página do Twitter da sua igreja"
+
+#: ChurchCRM/dto/SystemConfig.php:214
+msgid "lookup user images on Google when no local image is present"
+msgstr "Procurar imagens de usuários no Google quando não existirem imagens locais presentes"
+
+#: MembersDashboard.php:253
+msgid "Self Update"
+msgstr "Atualização automática"
+
+#: MembersDashboard.php:261
+msgid "Self Register"
+msgstr "Auto registro"
+
+#: MembersDashboard.php:263
+msgid "List families that were created via self registration."
+msgstr "Listar famílias que foram criadas por auto-registro."
+
+#: MembersDashboard.php:267
+msgid "Self Verify Updates"
+msgstr "Auto verificar atualizações"
+
+#: MembersDashboard.php:267
+msgid "Families who commented via self verify links"
+msgstr "Famílias que comentaram via link de verificação automática"
+
+#: MembersDashboard.php:271 members/online-pending-verify.php:13
+msgid "Pending Self Verify"
+msgstr "Verificação automática pendente"
+
+#: MembersDashboard.php:271
+msgid "Families with valid self verify links"
+msgstr "Famílias com links de verifica validados"
+
+#: members/self-register.php:13
+msgid "Families Self Registration"
+msgstr "Auto-registro de famílias"
+
+#: members/self-verify-updates.php:13
+msgid "Self Verify"
+msgstr "Verificação automática"
+
