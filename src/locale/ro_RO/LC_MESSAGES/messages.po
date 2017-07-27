@@ -21,11 +21,11 @@ msgstr "Confirmare ștergere de plata automata"
 #: DonationFundEditor.php:186 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:222 ElectronicPaymentList.php:288
 #: EventNames.php:305 FamilyCustomFieldsEditor.php:335
-#: FamilyCustomFieldsEditor.php:393 FamilyView.php:661 FamilyView.php:713
-#: FamilyView.php:772 FamilyView.php:909 FindDepositSlip.php:108
+#: FamilyCustomFieldsEditor.php:393 FamilyView.php:669 FamilyView.php:721
+#: FamilyView.php:780 FamilyView.php:917 FindDepositSlip.php:108
 #: FundRaiserEditor.php:204 ListEvents.php:250 PaddleNumList.php:60
 #: PersonCustomFieldsEditor.php:319 PersonCustomFieldsEditor.php:388
-#: PersonView.php:912 PledgeDelete.php:57 PropertyList.php:69
+#: PersonView.php:917 PledgeDelete.php:57 PropertyList.php:69
 #: PropertyList.php:110 PropertyTypeList.php:44 PropertyTypeList.php:65
 #: PropertyTypeList.php:67
 msgid "Delete"
@@ -34,12 +34,12 @@ msgstr "Șterge"
 #: AutoPaymentDelete.php:68 AutoPaymentEditor.php:791 BatchWinnerEntry.php:116
 #: CanvassEditor.php:243 Checkin.php:172 Checkin.php:281 Checkin.php:294
 #: DirectoryReports.php:290 DonatedItemEditor.php:300 EventNames.php:234
-#: external/templates/verify/verify-family-info.php:149 FamilyEditor.php:1125
-#: FamilyView.php:908 FinancialReports.php:72 FundRaiserEditor.php:147
+#: external/templates/verify/verify-family-info.php:155 FamilyEditor.php:1114
+#: FamilyView.php:916 FinancialReports.php:72 FundRaiserEditor.php:147
 #: GroupPropsEditor.php:172 GroupReports.php:87 GroupReports.php:156
 #: LettersAndLabels.php:77 ManageEnvelopes.php:139 MemberRoleChange.php:123
 #: MemberRoleChange.php:125 NoteDelete.php:71 NoteEditor.php:139
-#: PersonEditor.php:1138 PersonView.php:911 PledgeDelete.php:58
+#: PersonEditor.php:1138 PersonView.php:916 PledgeDelete.php:58
 #: PropertyEditor.php:173 PropertyTypeEditor.php:118 Register.php:60
 #: ReminderReport.php:56 SettingsIndividual.php:123 SettingsIndividual.php:169
 #: SettingsUser.php:111 SettingsUser.php:171
@@ -54,9 +54,9 @@ msgid "Automatic payment configuration for the "
 msgstr "Configurare de plată automată pentru"
 
 #: AutoPaymentEditor.php:790 CanvassEditor.php:242 DepositSlipEditor.php:98
-#: DonatedItemEditor.php:296 FamilyEditor.php:653 FamilyEditor.php:737
-#: FamilyEditor.php:801 FamilyEditor.php:875 FamilyEditor.php:897
-#: FamilyEditor.php:928 FamilyEditor.php:1121 FundRaiserEditor.php:146
+#: DonatedItemEditor.php:296 FamilyEditor.php:642 FamilyEditor.php:726
+#: FamilyEditor.php:790 FamilyEditor.php:864 FamilyEditor.php:886
+#: FamilyEditor.php:917 FamilyEditor.php:1110 FundRaiserEditor.php:146
 #: GroupEditor.php:150 GroupPropsEditor.php:170 NoteEditor.php:137
 #: PaddleNumEditor.php:151 PersonEditor.php:579 PersonEditor.php:737
 #: PersonEditor.php:780 PersonEditor.php:1037 PersonEditor.php:1099
@@ -67,9 +67,9 @@ msgid "Save"
 msgstr "Salva"
 
 #: AutoPaymentEditor.php:808 BatchWinnerEntry.php:87 BatchWinnerEntry.php:99
-#: CSVImport.php:275 DonatedItemEditor.php:189 DonatedItemEditor.php:240
-#: eGive.php:341 FamilyEditor.php:1095 GroupEditor.php:91
-#: Include/CountryDropDown.php:6 Include/Functions.php:1074
+#: CSVImport.php:275 DirectoryReports.php:86 DonatedItemEditor.php:189
+#: DonatedItemEditor.php:240 eGive.php:341 FamilyEditor.php:1084
+#: GroupEditor.php:91 Include/CountryDropDown.php:6 Include/Functions.php:1074
 #: Include/Functions.php:1127 MapUsingGoogle.php:98 MapUsingGoogle.php:122
 #: PaddleNumEditor.php:180 PersonEditor.php:744 PersonEditor.php:760
 #: PersonEditor.php:1045 PrintView.php:249 PrintView.php:259
@@ -103,20 +103,20 @@ msgstr "inactiv"
 
 #: AutoPaymentEditor.php:918 CartToFamily.php:249 CSVExport.php:115
 #: CSVImport.php:223 DirectoryReports.php:254
-#: external/templates/registration/family-register.php:41 FamilyEditor.php:678
+#: external/templates/registration/family-register.php:41 FamilyEditor.php:667
 #: PersonEditor.php:825 Register.php:48 queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "Oraș"
 
 #: AutoPaymentEditor.php:923 CartToFamily.php:254 CSVExport.php:120
 #: CSVImport.php:224 DirectoryReports.php:258
-#: external/templates/registration/family-register.php:44 FamilyEditor.php:685
+#: external/templates/registration/family-register.php:44 FamilyEditor.php:674
 #: PersonEditor.php:845 Register.php:49 queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "De stat"
 
 #: AutoPaymentEditor.php:934 CartToFamily.php:274 CSVExport.php:135
-#: CSVImport.php:226 FamilyEditor.php:705 PersonEditor.php:890 Register.php:51
+#: CSVImport.php:226 FamilyEditor.php:694 PersonEditor.php:890 Register.php:51
 msgid "Country"
 msgstr "Țară"
 
@@ -134,10 +134,10 @@ msgstr "Telefon"
 #: ChurchCRM/Reports/PDF_Directory.php:454 CSVExport.php:155 CSVImport.php:230
 #: EditEventAttendees.php:42 EventAttendance.php:181
 #: external/templates/registration/family-register-members.php:83
-#: external/templates/verify/verify-family-info.php:81 FamilyEditor.php:777
-#: FamilyView.php:279 FamilyView.php:284 FamilyView.php:367
+#: external/templates/verify/verify-family-info.php:81 FamilyEditor.php:766
+#: FamilyView.php:280 FamilyView.php:285 FamilyView.php:368
 #: GroupReports.php:132 PersonEditor.php:997 PersonEditor.php:999
-#: PersonView.php:308 PersonView.php:467 PrintView.php:279
+#: PersonView.php:308 PersonView.php:472 PrintView.php:279
 #: Reports/CanvassReports.php:247 Reports/ConfirmReportEmail.php:190
 #: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:188
 #: Reports/ConfirmReport.php:207 Reports/DirectoryReport.php:299
@@ -335,7 +335,7 @@ msgstr "Nu Filtru"
 
 #: ChurchCRM/Service/DashboardService.php:62 CSVExport.php:336
 #: external/templates/registration/family-register-members.php:59
-#: FamilyEditor.php:996 PersonEditor.php:592 PrintView.php:229
+#: FamilyEditor.php:985 PersonEditor.php:592 PrintView.php:229
 #: PrintView.php:348 SelectList.php:580 SelectList.php:1161
 #: queryparameteroptions_qpo.php:2
 msgid "Male"
@@ -343,7 +343,7 @@ msgstr "Masculin"
 
 #: ChurchCRM/Service/DashboardService.php:65 CSVExport.php:337
 #: external/templates/registration/family-register-members.php:60
-#: FamilyEditor.php:999 PersonEditor.php:595 PrintView.php:232
+#: FamilyEditor.php:988 PersonEditor.php:595 PrintView.php:232
 #: PrintView.php:348 SelectList.php:586 SelectList.php:1162
 #: queryparameteroptions_qpo.php:3
 msgid "Female"
@@ -414,12 +414,12 @@ msgstr "Ignorați acest domeniu"
 msgid "Title"
 msgstr "Titlu"
 
-#: CSVExport.php:100 CSVImport.php:218 FamilyEditor.php:948
+#: CSVExport.php:100 CSVImport.php:218 FamilyEditor.php:937
 #: PersonEditor.php:641
 msgid "Suffix"
 msgstr "Sufix"
 
-#: CSVExport.php:326 CSVImport.php:219 FamilyEditor.php:949
+#: CSVExport.php:326 CSVImport.php:219 FamilyEditor.php:938
 #: PersonEditor.php:586 PrintView.php:223 PrintView.php:323
 #: sundayschool/SundaySchoolClassView.php:177 queryparameters_qrp.php:4
 msgid "Gender"
@@ -434,8 +434,8 @@ msgstr "Plic donație"
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
 #: external/templates/verify/verify-family-info.php:28
-#: external/templates/verify/verify-family-info.php:75 FamilyEditor.php:743
-#: FamilyList.php:45 FamilyView.php:261 GroupReports.php:129
+#: external/templates/verify/verify-family-info.php:75 FamilyEditor.php:732
+#: FamilyList.php:45 FamilyView.php:262 GroupReports.php:129
 #: PersonEditor.php:923 PersonEditor.php:925 PersonView.php:303
 #: PrintView.php:184 Reports/ConfirmReportEmail.php:139
 #: Reports/ConfirmReport.php:140 SelectList.php:986 SelectList.php:987
@@ -445,8 +445,8 @@ msgid "Home Phone"
 msgstr "Telefon acasă"
 
 #: CartToFamily.php:295 CSVExport.php:145 CSVImport.php:228
-#: external/templates/verify/verify-family-info.php:77 FamilyEditor.php:755
-#: FamilyView.php:267 GroupReports.php:130 PersonEditor.php:946
+#: external/templates/verify/verify-family-info.php:77 FamilyEditor.php:744
+#: FamilyView.php:268 GroupReports.php:130 PersonEditor.php:946
 #: PersonEditor.php:948 PersonView.php:317 PrintView.php:189
 #: Reports/ConfirmReportEmail.php:237 Reports/ConfirmReport.php:244
 #: SelectList.php:989 SelectList.php:990 SelectList.php:1062
@@ -454,8 +454,8 @@ msgid "Work Phone"
 msgstr "Telefon serviciu"
 
 #: CartToFamily.php:305 CSVExport.php:150 CSVImport.php:229
-#: external/templates/verify/verify-family-info.php:79 FamilyEditor.php:765
-#: FamilyView.php:273 PersonEditor.php:971 PersonEditor.php:973
+#: external/templates/verify/verify-family-info.php:79 FamilyEditor.php:754
+#: FamilyView.php:274 PersonEditor.php:971 PersonEditor.php:973
 #: PersonView.php:298 PrintView.php:194 SelectList.php:992 SelectList.php:993
 #: SelectList.php:1062
 msgid "Mobile Phone"
@@ -472,8 +472,8 @@ msgid "Birth Date"
 msgstr "Data nașterii"
 
 #: CartToFamily.php:215 CSVImport.php:234 DirectoryReports.php:177
-#: external/templates/verify/verify-family-info.php:35 FamilyEditor.php:811
-#: FamilyView.php:248
+#: external/templates/verify/verify-family-info.php:35 FamilyEditor.php:800
+#: FamilyView.php:249
 msgid "Wedding Date"
 msgstr "Nunta Data"
 
@@ -505,8 +505,8 @@ msgstr "NOTĂ: Separatore (linii, etc) sau lipsa acestora nu contează"
 msgid "Default country if none specified otherwise"
 msgstr "Țară implicit dacă nu se specifică altfel"
 
-#: CartView.php:298 CSVExport.php:276 CSVImport.php:285 FamilyEditor.php:954
-#: FinancialReports.php:120 MembersDashboard.php:302 OptionManager.php:73
+#: CartView.php:298 CSVExport.php:276 CSVImport.php:285 FamilyEditor.php:943
+#: FinancialReports.php:120 MembersDashboard.php:333 OptionManager.php:73
 #: PersonEditor.php:1043 PrintView.php:294 queryparameters_qrp.php:19
 msgid "Classification"
 msgstr "Clasificare"
@@ -704,11 +704,11 @@ msgstr "Adauga in cos pentru a Familiei"
 #: DonationFundEditor.php:153 DonationFundEditor.php:216
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:180
 #: EventNames.php:266 FamilyCustomFieldsEditor.php:331
-#: FamilyCustomFieldsEditor.php:445 FamilyList.php:43 FamilyView.php:548
+#: FamilyCustomFieldsEditor.php:445 FamilyList.php:43 FamilyView.php:556
 #: GeoPage.php:385 GroupEditor.php:77 GroupPropsFormEditor.php:285
 #: GroupPropsFormEditor.php:397 GroupView.php:321 GroupView.php:355
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:446
-#: PersonView.php:658 PersonView.php:760 PrintView.php:322 PrintView.php:450
+#: PersonView.php:663 PersonView.php:765 PrintView.php:322 PrintView.php:450
 #: PropertyEditor.php:153 PropertyList.php:64 PropertyTypeEditor.php:100
 #: PropertyTypeList.php:39 Reports/CanvassReports.php:73
 #: Reports/CanvassReports.php:241 Reports/FRBidSheets.php:93
@@ -749,7 +749,7 @@ msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Utilizați caseta de text în alte scopuri decât SUA și Canada)"
 
 #: CartToFamily.php:290 CartToFamily.php:300 CartToFamily.php:310
-#: FamilyEditor.php:751 FamilyEditor.php:761 FamilyEditor.php:771
+#: FamilyEditor.php:740 FamilyEditor.php:750 FamilyEditor.php:760
 #: Include/Functions.php:1117 PersonEditor.php:939 PersonEditor.php:963
 #: PersonEditor.php:987
 msgid "Do not auto-format"
@@ -859,9 +859,9 @@ msgstr "Cosul de cumparaturi contine"
 msgid "persons from"
 msgstr "persoane din"
 
-#: CartView.php:297 CartView.php:356 EditEventTypes.php:171 FamilyView.php:553
-#: FamilyView.php:595 GroupView.php:360 GroupView.php:401 PersonView.php:661
-#: PersonView.php:679 PersonView.php:763 PersonView.php:781
+#: CartView.php:297 CartView.php:356 EditEventTypes.php:171 FamilyView.php:561
+#: FamilyView.php:603 GroupView.php:360 GroupView.php:401 PersonView.php:666
+#: PersonView.php:684 PersonView.php:768 PersonView.php:786
 msgid "Remove"
 msgstr "Îndepărta"
 
@@ -890,7 +890,7 @@ msgstr "Selectați evenimentul la care doriți să verificați de persoane din p
 msgid "Select Event"
 msgstr "Selectați Eveniment"
 
-#: external/templates/verify/verify-family-info.php:150
+#: external/templates/verify/verify-family-info.php:156
 msgid "Verify"
 msgstr "Verifica"
 
@@ -923,7 +923,7 @@ msgid "Checked Out By"
 msgstr "Verificat de către"
 
 #: Checkin.php:323 EditEventAttendees.php:44 EventNames.php:270
-#: ListEvents.php:214 PersonView.php:589
+#: ListEvents.php:214 PersonView.php:594
 msgid "Action"
 msgstr "Acțiune"
 
@@ -1022,8 +1022,8 @@ msgstr "Informații pentru a include"
 #: CSVImport.php:221 CSVImport.php:222 DirectoryReports.php:176
 #: DirectoryReports.php:250
 #: external/templates/registration/family-register-done.php:29
-#: external/templates/registration/family-register.php:35 FamilyEditor.php:670
-#: FamilyEditor.php:674 FamilyList.php:44 FamilyView.php:221 GeoPage.php:386
+#: external/templates/registration/family-register.php:35 FamilyEditor.php:659
+#: FamilyEditor.php:663 FamilyList.php:44 FamilyView.php:222 GeoPage.php:386
 #: GroupReports.php:128 Menu.php:210 Menu.php:251 PersonEditor.php:793
 #: PersonEditor.php:809 PersonView.php:272 Register.php:47
 #: Reports/ConfirmReportEmail.php:124 Reports/ConfirmReportEmail.php:129
@@ -1031,7 +1031,7 @@ msgid "Address"
 msgstr "Adresa"
 
 #: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:178
-#: FamilyView.php:366 PersonView.php:466 Reports/ConfirmReportEmail.php:191
+#: FamilyView.php:367 PersonView.php:471 Reports/ConfirmReportEmail.php:191
 #: Reports/ConfirmReportEmail.php:209 Reports/ConfirmReport.php:189
 #: Reports/ConfirmReport.php:208
 msgid "Birthday"
@@ -1103,7 +1103,7 @@ msgstr "Pagina de titlu"
 msgid "Use Title Page"
 msgstr "Utilizați titlu Page"
 
-#: ChurchCRM/dto/SystemConfig.php:146 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "Numele Bisericii"
 
@@ -1119,7 +1119,7 @@ msgstr "Creați Director"
 msgid "Donated Item Editor"
 msgstr "Donat articol Editor"
 
-#: DonatedItemEditor.php:298 FamilyEditor.php:1123 PaddleNumEditor.php:154
+#: DonatedItemEditor.php:298 FamilyEditor.php:1112 PaddleNumEditor.php:154
 #: PersonEditor.php:1136 PledgeEditor.php:692
 msgid "Save and Add"
 msgstr "Salvați și Adăugați"
@@ -1161,7 +1161,7 @@ msgstr "Merge"
 #: DonationFundEditor.php:224 EditEventAttendees.php:34
 #: FundRaiserEditor.php:178 GroupEditor.php:83 GroupPropsFormEditor.php:286
 #: GroupPropsFormEditor.php:410 GroupView.php:322 ListEvents.php:215
-#: PersonView.php:761 PropertyTypeEditor.php:108
+#: PersonView.php:766 PropertyTypeEditor.php:108
 #: VolunteerOpportunityEditor.php:90 VolunteerOpportunityEditor.php:369
 #: VolunteerOpportunityEditor.php:443
 msgid "Description"
@@ -1241,8 +1241,8 @@ msgstr "Numără participare"
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:198
 #: external/templates/registration/family-register-done.php:28
-#: FamilyView.php:212 FinancialReports.php:306 Include/Footer.php:58
-#: PersonEditor.php:758 PersonView.php:384 PledgeEditor.php:511
+#: FamilyView.php:213 FinancialReports.php:306 Include/Footer.php:58
+#: PersonEditor.php:758 PersonView.php:389 PledgeEditor.php:511
 #: PrintView.php:243 PropertyAssign.php:77 PropertyEditor.php:47
 #: PropertyList.php:32 PropertyTypeEditor.php:94 PropertyTypeList.php:60
 #: SelectList.php:1058
@@ -1250,27 +1250,27 @@ msgid "Family"
 msgstr "Familie"
 
 #: ElectronicPaymentList.php:199 FamilyCustomFieldsEditor.php:330
-#: FamilyCustomFieldsEditor.php:432 FamilyView.php:547 FamilyView.php:655
+#: FamilyCustomFieldsEditor.php:432 FamilyView.php:555 FamilyView.php:663
 #: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:320
 #: GroupView.php:354 OptionManager.php:81 PersonCustomFieldsEditor.php:314
-#: PersonCustomFieldsEditor.php:433 PersonView.php:657 PropertyEditor.php:133
+#: PersonCustomFieldsEditor.php:433 PersonView.php:662 PropertyEditor.php:133
 #: SelectDelete.php:214
 msgid "Type"
 msgstr "Tip"
 
-#: AutoPaymentEditor.php:851 ElectronicPaymentList.php:200 FamilyView.php:764
+#: AutoPaymentEditor.php:851 ElectronicPaymentList.php:200 FamilyView.php:772
 #: PledgeEditor.php:523 ReminderReport.php:46 SelectDelete.php:216
 #: sundayschool/SundaySchoolReports.php:161 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "Exercițiu financiar"
 
-#: ElectronicPaymentList.php:202 FamilyView.php:657 FamilyView.php:766
+#: ElectronicPaymentList.php:202 FamilyView.php:665 FamilyView.php:774
 #: PledgeEditor.php:717 SelectDelete.php:218
 msgid "Amount"
 msgstr "Valoare"
 
-#: AutoPaymentEditor.php:868 ElectronicPaymentList.php:204 FamilyView.php:659
-#: FamilyView.php:763 FinancialReports.php:305 SelectDelete.php:215
+#: AutoPaymentEditor.php:868 ElectronicPaymentList.php:204 FamilyView.php:667
+#: FamilyView.php:771 FinancialReports.php:305 SelectDelete.php:215
 msgid "Fund"
 msgstr "Fond"
 
@@ -1278,19 +1278,19 @@ msgstr "Fond"
 msgid "Bank"
 msgstr "Bancă"
 
-#: ElectronicPaymentList.php:214 FamilyEditor.php:951
+#: ElectronicPaymentList.php:214 FamilyEditor.php:940
 #: queryparameters_qrp.php:11
 msgid "Month"
 msgstr "Lună"
 
-#: ElectronicPaymentList.php:215 FamilyEditor.php:953
+#: ElectronicPaymentList.php:215 FamilyEditor.php:942
 #: Include/Functions.php:105
 msgid "Year"
 msgstr "An"
 
 #: ElectronicPaymentList.php:221 ElectronicPaymentList.php:287
-#: EventNames.php:297 FamilyView.php:216 FamilyView.php:660 FamilyView.php:709
-#: FamilyView.php:771 FindFundRaiser.php:239 FindFundRaiser.php:247
+#: EventNames.php:297 FamilyView.php:217 FamilyView.php:668 FamilyView.php:717
+#: FamilyView.php:779 FindFundRaiser.php:239 FindFundRaiser.php:247
 #: ListEvents.php:233 PersonView.php:238 PropertyList.php:68
 #: PropertyList.php:109 PropertyTypeList.php:43 PropertyTypeList.php:63
 #: SelectList.php:1073
@@ -1535,255 +1535,255 @@ msgstr "Nu este un Wedding Date valabile"
 msgid "Email is Not Valid"
 msgstr "E-mail nu este valid"
 
-#: FamilyEditor.php:823
+#: FamilyEditor.php:812
 #, fuzzy
 msgid "Ok To Canvass"
 msgstr "Ok a dezbate"
 
-#: FamilyEditor.php:834
+#: FamilyEditor.php:823
 #, fuzzy
 msgid "Assign a Canvasser"
 msgstr "Alocați un colportor"
 
-#: FamilyEditor.php:852
+#: FamilyEditor.php:841
 #, fuzzy
 msgid "Assign a Brave Canvasser"
 msgstr "Atribui un colportor Viteazul"
 
-#: FamilyEditor.php:895 PersonEditor.php:1097
+#: FamilyEditor.php:884 PersonEditor.php:1097
 msgid "Custom Fields"
 msgstr "Câmpuri personalizate"
 
 #: external/templates/registration/family-register-members.php:20
-#: FamilyEditor.php:926 FamilyView.php:364 PersonView.php:464
+#: FamilyEditor.php:915 FamilyView.php:365 PersonView.php:469
 #: PrintView.php:319
 msgid "Family Members"
 msgstr "Membrii de familie"
 
-#: FamilyEditor.php:939
+#: FamilyEditor.php:928
 msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
 msgstr "Puteți crea membri de familie acum sau adăugați-le mai târziu. Toate înscrierile vor deveni <i>noi recorduri</i> persoană."
 
-#: FamilyEditor.php:945
+#: FamilyEditor.php:934
 msgid "First"
 msgstr "În primul rând"
 
-#: FamilyEditor.php:946
+#: FamilyEditor.php:935
 msgid "Middle"
 msgstr "De mijloc"
 
-#: FamilyEditor.php:947
+#: FamilyEditor.php:936
 msgid "Last"
 msgstr "Trecut"
 
-#: FamilyEditor.php:950 FamilyView.php:365 OptionManager.php:64
-#: OptionManager.php:97 PersonView.php:465 PrintView.php:324 PrintView.php:379
+#: FamilyEditor.php:939 FamilyView.php:366 OptionManager.php:64
+#: OptionManager.php:97 PersonView.php:470 PrintView.php:324 PrintView.php:379
 #: Reports/CanvassReports.php:243 Reports/GroupReport.php:107
 msgid "Role"
 msgstr "Rol"
 
-#: FamilyEditor.php:952
+#: FamilyEditor.php:941
 msgid "Day"
 msgstr "Zi"
 
-#: FamilyEditor.php:993 PersonEditor.php:588
+#: FamilyEditor.php:982 PersonEditor.php:588
 msgid "Select Gender"
 msgstr "Selectați de gen"
 
-#: CartToGroup.php:89 FamilyEditor.php:1007 GroupReports.php:62
+#: CartToGroup.php:89 FamilyEditor.php:996 GroupReports.php:62
 #: PersonToGroup.php:80
 msgid "Select Role"
 msgstr "Selectați Rolul"
 
 #: ChurchCRM/Service/DashboardService.php:59
 #: ChurchCRM/Service/DashboardService.php:73
-#: ChurchCRM/Service/TimelineService.php:114 FamilyEditor.php:1023
+#: ChurchCRM/Service/TimelineService.php:115 FamilyEditor.php:1012
 #: Include/Functions.php:742 Include/Functions.php:771
 #: Include/Functions.php:991
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: FamilyEditor.php:1026 PersonEditor.php:657
+#: FamilyEditor.php:1015 PersonEditor.php:657
 msgid "January"
 msgstr "Ianuarie"
 
-#: FamilyEditor.php:1029 PersonEditor.php:660
+#: FamilyEditor.php:1018 PersonEditor.php:660
 msgid "February"
 msgstr "Februarie"
 
-#: FamilyEditor.php:1032 PersonEditor.php:663
+#: FamilyEditor.php:1021 PersonEditor.php:663
 msgid "March"
 msgstr "Martie"
 
-#: FamilyEditor.php:1035 PersonEditor.php:666
+#: FamilyEditor.php:1024 PersonEditor.php:666
 msgid "April"
 msgstr "Aprilie"
 
-#: FamilyEditor.php:1038 PersonEditor.php:669
+#: FamilyEditor.php:1027 PersonEditor.php:669
 msgid "May"
 msgstr "Mai"
 
-#: FamilyEditor.php:1041 PersonEditor.php:672
+#: FamilyEditor.php:1030 PersonEditor.php:672
 msgid "June"
 msgstr "Iunie"
 
-#: FamilyEditor.php:1044 PersonEditor.php:675
+#: FamilyEditor.php:1033 PersonEditor.php:675
 msgid "July"
 msgstr "Iulie"
 
-#: FamilyEditor.php:1047 PersonEditor.php:678
+#: FamilyEditor.php:1036 PersonEditor.php:678
 msgid "August"
 msgstr "August"
 
-#: FamilyEditor.php:1050 PersonEditor.php:681
+#: FamilyEditor.php:1039 PersonEditor.php:681
 msgid "September"
 msgstr "Septembrie"
 
-#: FamilyEditor.php:1053 PersonEditor.php:684
+#: FamilyEditor.php:1042 PersonEditor.php:684
 msgid "October"
 msgstr "Octombrie"
 
-#: FamilyEditor.php:1056 PersonEditor.php:687
+#: FamilyEditor.php:1045 PersonEditor.php:687
 msgid "November"
 msgstr "Noiembrie"
 
-#: FamilyEditor.php:1059 PersonEditor.php:690
+#: FamilyEditor.php:1048 PersonEditor.php:690
 msgid "December"
 msgstr "Decembrie"
 
-#: FamilyEditor.php:1064
+#: FamilyEditor.php:1053
 msgid "Unk"
 msgstr "UNK"
 
-#: FamilyView.php:42
+#: FamilyView.php:43
 msgid "Family View"
 msgstr "Vezi familie"
 
-#: FamilyView.php:236
+#: FamilyView.php:237
 msgid "Latitude/Longitude"
 msgstr "Latitudine / Longitudine"
 
-#: FamilyEditor.php:881 FamilyView.php:254 ManageEnvelopes.php:170
+#: FamilyEditor.php:870 FamilyView.php:255 ManageEnvelopes.php:170
 #: PledgeEditor.php:528
 msgid "Envelope Number"
 msgstr "Numărul de plic"
 
-#: FamilyView.php:315
+#: FamilyView.php:316
 msgid "Previous Family"
 msgstr "Familia anterior"
 
-#: FamilyView.php:323
+#: FamilyView.php:324
 msgid "Next Family"
 msgstr "Următor de familie"
 
-#: FamilyView.php:199 PersonView.php:197
+#: FamilyView.php:200 PersonView.php:197
 msgid "Upload Photo"
 msgstr "Încarcă foto"
 
-#: FamilyView.php:204 PersonView.php:201
+#: FamilyView.php:205 PersonView.php:201
 msgid "Delete Photo"
 msgstr "Ștergeți Foto"
 
-#: FamilyView.php:455
+#: FamilyView.php:456
 msgid "Pledges and Payments"
 msgstr "Angajamente și plăți"
 
-#: FamilyView.php:540 PersonView.php:651 PrintView.php:446
+#: FamilyView.php:548 PersonView.php:656 PrintView.php:446
 msgid "No property assignments."
 msgstr "Nu misiuni de proprietate."
 
-#: FamilyView.php:549 GroupView.php:356 PersonView.php:659 PrintView.php:451
+#: FamilyView.php:557 GroupView.php:356 PersonView.php:664 PrintView.php:451
 #: PropertyAssign.php:180 SystemSettings.php:152
 msgid "Value"
 msgstr "Valoare"
 
-#: FamilyView.php:552 FamilyView.php:590 GroupView.php:359 GroupView.php:395
+#: FamilyView.php:560 FamilyView.php:598 GroupView.php:359 GroupView.php:395
 msgid "Edit Value"
 msgstr "Editare Valoare"
 
-#: FamilyView.php:613 PersonView.php:692
+#: FamilyView.php:621 PersonView.php:697
 #, fuzzy
 msgid "Assign a New Property"
 msgstr "Atribui o nouă proprietate"
 
-#: FamilyView.php:634 GroupView.php:433 PersonView.php:728 PersonView.php:814
+#: FamilyView.php:642 GroupView.php:433 PersonView.php:733 PersonView.php:819
 #: PropertyAssign.php:189 SelectList.php:1081
 msgid "Assign"
 msgstr "Atribui"
 
-#: FamilyView.php:656
+#: FamilyView.php:664
 msgid "Next payment date"
 msgstr "Urmatoarea data de plata"
 
-#: FamilyView.php:658
+#: FamilyView.php:666
 msgid "Interval (months)"
 msgstr "Interval (luni)"
 
-#: FamilyView.php:662 FamilyView.php:773 SelectDelete.php:222
+#: FamilyView.php:670 FamilyView.php:781 SelectDelete.php:222
 msgid "Date Updated"
 msgstr "Data actualizării"
 
-#: FamilyView.php:663 FamilyView.php:774 SelectDelete.php:223
+#: FamilyView.php:671 FamilyView.php:782 SelectDelete.php:223
 msgid "Updated By"
 msgstr "Actualizat de"
 
-#: FamilyView.php:729
+#: FamilyView.php:737
 msgid "Add a new automatic payment"
 msgstr "Adauga un nou plată automată"
 
-#: FamilyView.php:741
+#: FamilyView.php:749
 msgid "Show Pledges"
 msgstr "Prezinte angajamentele"
 
-#: FamilyView.php:745
+#: FamilyView.php:753
 msgid "Show Payments"
 msgstr "Arata Plăți"
 
-#: FamilyView.php:754 MemberRoleChange.php:120 PropertyAssign.php:191
+#: FamilyView.php:762 MemberRoleChange.php:120 PropertyAssign.php:191
 msgid "Update"
 msgstr "Actualizare"
 
-#: FamilyView.php:762
+#: FamilyView.php:770
 msgid "Pledge or Payment"
 msgstr "Gaj sau plata"
 
 #: AutoPaymentEditor.php:844 CanvassEditor.php:198 DepositSlipEditor.php:82
-#: EditEventAttendees.php:33 FamilyView.php:765 FindFundRaiser.php:241
+#: EditEventAttendees.php:33 FamilyView.php:773 FindFundRaiser.php:241
 #: FundRaiserEditor.php:168 Include/Functions.php:101 PledgeEditor.php:521
 #: SelectDelete.php:217
 msgid "Date"
 msgstr "Data"
 
-#: FamilyView.php:767
+#: FamilyView.php:775
 msgid "NonDeductible"
 msgstr "Nedeductibile"
 
-#: FamilyView.php:768 SelectDelete.php:219
+#: FamilyView.php:776 SelectDelete.php:219
 msgid "Schedule"
 msgstr "Programa"
 
-#: FamilyView.php:769 SelectDelete.php:220
+#: FamilyView.php:777 SelectDelete.php:220
 msgid "Method"
 msgstr "Metodă"
 
-#: FamilyView.php:770 PledgeEditor.php:725 SelectDelete.php:221
+#: FamilyView.php:778 PledgeEditor.php:725 SelectDelete.php:221
 msgid "Comment"
 msgstr "Comentariu"
 
-#: FamilyView.php:862
+#: FamilyView.php:870
 msgid "Add a new pledge"
 msgstr "Adauga un nou angajament"
 
-#: FamilyView.php:864
+#: FamilyView.php:872
 msgid "Add a new payment"
 msgstr "Adauga un nou plată"
 
-#: FamilyView.php:875
+#: FamilyView.php:883
 msgid " Canvass Entry"
 msgstr "Propagandă electorală de intrare"
 
-#: DepositSlipEditor.php:223 FamilyView.php:897 FindDepositSlip.php:98
-#: PersonView.php:901 PledgeDelete.php:23
+#: DepositSlipEditor.php:223 FamilyView.php:905 FindDepositSlip.php:98
+#: PersonView.php:906 PledgeDelete.php:23
 msgid "Confirm Delete"
 msgstr "Confirmați ștergerea"
 
@@ -1948,7 +1948,7 @@ msgstr "Raport Titlu:"
 msgid "Graphic"
 msgstr "Grafic"
 
-#: ChurchCRM/dto/SystemConfig.php:147 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Adresa bisericii"
 
@@ -2142,15 +2142,15 @@ msgstr "Distanță"
 msgid "Direction"
 msgstr "Direcție"
 
-#: FamilyEditor.php:713
+#: FamilyEditor.php:702
 msgid "Latitude"
 msgstr "Latitudine"
 
-#: FamilyEditor.php:717
+#: FamilyEditor.php:706
 msgid "Longitude"
 msgstr "Longitudine"
 
-#: GeoPage.php:445 PersonView.php:353 SelectList.php:784
+#: GeoPage.php:445 PersonView.php:358 SelectList.php:784
 msgid "Add to Cart"
 msgstr "Adauga in cos"
 
@@ -2361,7 +2361,7 @@ msgstr "Proprietăți grup-specifice"
 msgid "Disabled for this group."
 msgstr "Dezactivată pentru acest grup."
 
-#: FamilyView.php:449 GroupView.php:342 PersonView.php:386 PrintView.php:435
+#: FamilyView.php:450 GroupView.php:342 PersonView.php:391 PrintView.php:435
 #, fuzzy
 msgid "Assigned Properties"
 msgstr "Proprietăți atribuite"
@@ -2370,7 +2370,7 @@ msgstr "Proprietăți atribuite"
 msgid "Group Members:"
 msgstr "Membrii grupului:"
 
-#: LettersAndLabels.php:30 MembersDashboard.php:230
+#: LettersAndLabels.php:30 MembersDashboard.php:235
 msgid "Letters and Mailing Labels"
 msgstr "Scrisori și etichete poștale"
 
@@ -2444,7 +2444,7 @@ msgid "Update Family Records"
 msgstr "Actualizare Records Family"
 
 #: external/templates/verify/verify-family-info.php:14
-#: external/templates/verify/verify-family-info.php:132
+#: external/templates/verify/verify-family-info.php:138
 #: ManageEnvelopes.php:138
 msgid "Confirm"
 msgstr "Confirma"
@@ -2479,7 +2479,8 @@ msgstr "Rolul curent"
 msgid "Update All Family Coordinates"
 msgstr "Actualizare toate coordonatele de familie"
 
-#: MembersDashboard.php:135 Menu.php:73
+#: MembersDashboard.php:135 members/online-pending-verify.php:22
+#: members/self-register.php:22 members/self-verify-updates.php:22 Menu.php:73
 #: sundayschool/SundaySchoolDashboard.php:103
 msgid "Families"
 msgstr "Familiile"
@@ -2488,32 +2489,32 @@ msgstr "Familiile"
 msgid "People"
 msgstr "Oameni"
 
-#: MembersDashboard.php:219
+#: MembersDashboard.php:224
 msgid "Reports on groups and roles"
 msgstr "Rapoarte cu privire la grupuri și roluri"
 
-#: MembersDashboard.php:221
+#: MembersDashboard.php:226
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
 msgstr "Raport privind grup și roluri selectat (acesta poate fi un PDF cu mai multe pagini)."
 
-#: MembersDashboard.php:226
+#: MembersDashboard.php:231
 msgid "Members Directory"
 msgstr "Catalog"
 
-#: MembersDashboard.php:226
+#: MembersDashboard.php:231
 msgid "Printable directory of all members, grouped by family where assigned"
 msgstr "Director de printare a tuturor membrilor, grupate în funcție de familie în cazul în care atribuie"
 
-#: MembersDashboard.php:231
+#: MembersDashboard.php:236
 msgid "Generate letters and mailing labels."
 msgstr "Genera scrisori și etichete poștale."
 
-#: MembersDashboard.php:237
+#: MembersDashboard.php:242
 msgid "US Address Verification Report"
 msgstr "SUA Raportul de verificare Adresa"
 
 #: CartToFamily.php:210 external/templates/registration/family-register.php:31
-#: FamilyEditor.php:660 Menu.php:209 Menu.php:250
+#: FamilyEditor.php:649 Menu.php:209 Menu.php:250
 #: Reports/ConfirmReportEmail.php:119 Reports/ConfirmReport.php:120
 #: SelectDelete.php:151 SelectDelete.php:277
 msgid "Family Name"
@@ -2668,7 +2669,7 @@ msgstr "De lucru E-mail nu este valid"
 msgid "Red text"
 msgstr "Text roșu"
 
-#: PersonEditor.php:564 PersonView.php:347
+#: PersonEditor.php:564 PersonView.php:352
 msgid "indicates items inherited from the associated family record."
 msgstr "Indică elemente moștenite din cazierul familie asociat."
 
@@ -2705,35 +2706,35 @@ msgstr "Selectați grupul de a adăuga această persoană la"
 msgid "Not assigned"
 msgstr "Nu este alocat"
 
-#: PersonView.php:352
+#: PersonView.php:357
 msgid "Printable Page"
 msgstr "Printabilă Page"
 
-#: PersonView.php:356
+#: PersonView.php:361
 msgid "Edit \"Why Came\" Notes"
 msgstr "Edit \"de ce a venit\" Note"
 
-#: PersonView.php:362
+#: PersonView.php:367
 msgid "Delete this Record"
 msgstr "Ștergeți această înregistrare"
 
-#: PersonView.php:368
+#: PersonView.php:373
 msgid "Make User"
 msgstr "Face utilizator"
 
-#: PersonView.php:372
+#: PersonView.php:377
 msgid "Edit User"
 msgstr "Editare utilizator"
 
-#: PersonView.php:537 PrintView.php:374
+#: PersonView.php:542 PrintView.php:374
 msgid "No group assignments."
 msgstr "Nu misiuni de grup."
 
-#: PersonView.php:753
+#: PersonView.php:758
 msgid "No volunteer opportunity assignments."
 msgstr "Nici o ocazie de misiuni de voluntariat."
 
-#: PersonView.php:796
+#: PersonView.php:801
 #, fuzzy
 msgid "Assign a New Volunteer Opportunity"
 msgstr "Atribui o oportunitate Voluntar nou"
@@ -2862,7 +2863,7 @@ msgstr "Vedere imprimanta"
 msgid "Age"
 msgstr "Vârstă"
 
-#: PersonView.php:385 PrintView.php:363
+#: PersonView.php:390 PrintView.php:363
 #, fuzzy
 msgid "Assigned Groups"
 msgstr "Grupuri repartizate"
@@ -2879,7 +2880,7 @@ msgstr "Note:"
 msgid "Entered:"
 msgstr "Au intrat:"
 
-#: ChurchCRM/Service/TimelineService.php:126 PrintView.php:484
+#: ChurchCRM/Service/TimelineService.php:127 PrintView.php:484
 msgid "by"
 msgstr "de"
 
@@ -3784,8 +3785,8 @@ msgstr "Legătură"
 msgid "City, State, Zip"
 msgstr "Oras, de stat, Zip"
 
-#: external/templates/verify/verify-family-info.php:40 FamilyEditor.php:787
-#: FamilyView.php:241 Reports/ConfirmReportEmail.php:144
+#: external/templates/verify/verify-family-info.php:40 FamilyEditor.php:776
+#: FamilyView.php:242 Reports/ConfirmReportEmail.php:144
 #: Reports/ConfirmReport.php:145
 msgid "Send Newsletter"
 msgstr "Trimite Newsletter"
