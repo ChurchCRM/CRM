@@ -21,6 +21,9 @@ use ChurchCRM\Service\GroupService;
 class Person extends BasePerson implements iPhoto
 {
 
+    const SELF_REGISTER = -1;
+    const SELF_VERIFY = -2;
+
     public function getFullName()
     {
         return $this->getFormattedName(SystemConfig::getValue('iPersonNameStyle'));

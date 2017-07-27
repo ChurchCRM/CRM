@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\EventAttendQuery;
 use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
+use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
 
 class TimelineService
@@ -112,9 +113,9 @@ class TimelineService
         $item = null;
         if ($this->currentUser->isAdmin() || $dbNote->isVisable($this->currentUser->getPersonId())) {
             $displayEditedBy = gettext('Unknown');
-            if ($dbNote->getDisplayEditedBy() == -1) {
+            if ($dbNote->getDisplayEditedBy() == Person::SELF_REGISTER) {
                 $displayEditedBy = gettext('Self Registration');
-            } else if ($dbNote->getDisplayEditedBy() == -2) {
+            } else if ($dbNote->getDisplayEditedBy() == Person::SELF_VERIFY) {
                 $displayEditedBy = gettext('Self Verification');
             } else {
                 $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
