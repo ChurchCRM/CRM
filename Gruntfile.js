@@ -215,8 +215,20 @@ module.exports = function (grunt) {
                 dest: 'src/skin/locale/en_GB.js'
             },
             en_US: {
-                src: [],
+                src: ['locale/JSONKeys/en_US.json'],
                 dest: 'src/skin/locale/en_US.js'
+            },
+            en_CA: {
+                src: ['locale/JSONKeys/en_CA.json'],
+                dest: 'src/skin/locale/en_CA.js'
+            },
+            en_GB: {
+                src: ['locale/JSONKeys/en_GB.json'],
+                dest: 'src/skin/locale/en_GB.js'
+            },
+            en_AU: {
+                src: ['locale/JSONKeys/en_AU.json'],
+                dest: 'src/skin/locale/en_AU.js'
             },
             es_ES: {
                 src: [
