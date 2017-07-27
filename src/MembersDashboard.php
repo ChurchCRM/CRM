@@ -264,7 +264,11 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
                </p>
                 <p>
                     <a class="MediumText"
-                      href="members/self-verify-updates.php"><?= gettext('Self Verify Updates') ?></a><br><?= gettext('Members who commented via self verify links') ?>
+                      href="members/self-verify-updates.php"><?= gettext('Self Verify Updates') ?></a><br><?= gettext('Families who commented via self verify links') ?>
+                </p>
+                <p>
+                    <a class="MediumText"
+                      href="members/online-pending-verify.php"><?= gettext('Pending Self Verify') ?></a><br><?= gettext('Families with valid self verify links') ?>
                 </p>
             </div>
         </div>
