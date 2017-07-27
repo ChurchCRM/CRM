@@ -67,7 +67,7 @@ require 'Include/Header.php';
 
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext('Group Settings')?></h3>
+    <h3 class="box-title"><?= gettext('Group Settings').(($thisGroup->getType() == 4)?" : ".gettext("Sunday School Group Type"):"") ?></h3>
   </div>
   <div class="box-body">
     <form name="groupEditForm" id="groupEditForm">
@@ -87,19 +87,35 @@ require 'Include/Header.php';
         <div class="row">
           <div class="col-sm-3">
             <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
+            <?php if ($thisGroup->getType() != 4){ ?>
             <select class="form-control input-small" name="GroupType">
               <option value="0"><?= gettext('Unassigned') ?></option>
               <option value="0">-----------------------</option>
               <?php
               foreach ($rsGroupTypes as $groupType) {
-                  echo '<option value="'.$groupType->getOptionId().'"';
-                  if ($thisGroup->getType() == $groupType->getOptionId()) {
-                      echo ' selected';
-                  }
-                  echo '>'.$groupType->getOptionName().'</option>';
+              		if ($groupType->getOptionId() != 4)
+              		{
+										echo '<option value="'.$groupType->getOptionId().'"';
+										if ($thisGroup->getType() == $groupType->getOptionId()) {
+												echo ' selected';
+										}
+										echo '>'.$groupType->getOptionName().'</option>';
+									}
               }
-              ?>
+              ?>              
             </select>
+            <?php } else { ?>
+            	<b><?= gettext("Sunday School") ?></b>
+            	<p><?= gettext("Sunday School group can't be modified, only in this two cases :")?></p>
+            	<ul>
+								<li>
+									<?= gettext("You can create/delete sunday school group. ")?>
+								</li>
+								<li>
+									<?= gettext("Add new roles, but not modify or rename the Student and the Teacher roles.")?>
+								</li>
+            	</ul>
+            <?php } ?>
           </div>
         </div>
         <div class="row">
