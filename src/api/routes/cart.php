@@ -25,7 +25,7 @@ $app->group('/cart', function () {
           }
           else
           {
-            throw new \Exception(gettext("POST to cart requires a Persons array"),500);
+            throw new \Exception(gettext("POST to cart requires a Persons array, FamilyID, or GroupID"),500);
           }
           return $response->withJson(['status' => "success"]);
       });

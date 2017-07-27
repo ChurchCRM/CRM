@@ -57,16 +57,29 @@ $("document").ready(function(){
         }
     });
     $(".multiSearch").on("select2:select",function (e) { window.location.href= e.params.data.uri;});
+    
+    window.CRM.system.runTimerJobs();
+    
+    $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
+    
+  
+    $(".initials-image").initial();
+    $(".maxUploadSize").text(window.CRM.maxUploadSize);
+  
     $(document).on("click", "#emptyCart", function (e) {
-          window.CRM.cart.empty();
+      window.CRM.cart.empty();
     });
     
     $(document).on("click", "#emptyCartToGroup", function (e) {
-          window.CRM.cart.emptyToGroup(2,1);
+      window.CRM.groups.promptSelection(function (selectedRole) {
+        window.CRM.cart.emptyToGroup(0,0);
+      });
     });
+
     $(".AddToPeopleCart").click(function(){
       window.CRM.cart.addPerson([$(this).data("personid")]);
     });
+    
 });
 
 function showGlobalMessage(message, callOutClass) {

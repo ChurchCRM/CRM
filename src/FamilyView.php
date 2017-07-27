@@ -342,7 +342,6 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                         class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
 
 
-
                 <?php if ($bOkToEdit) {
                     ?>
                     <button class="btn btn-app bg-orange" id="activateDeactivate">

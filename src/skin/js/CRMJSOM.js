@@ -371,8 +371,8 @@
     
     window.CRM.system = {
       'runTimerJobs' : function () {
-        window.CRM.APIRequest({
-          path: "timerjobs/run",
+        $.ajax({
+          url: window.CRM.root + "/api/timerjobs/run",
           type: "POST"
         });
       }
