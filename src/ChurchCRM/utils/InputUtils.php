@@ -19,7 +19,7 @@ class InputUtils {
   
   public static function translate_special_charset ($string)
 	{
-		if ($string == "" || $string == null)
+		if (empty($string))
 			return "";
 		
 		return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?gettext($string):iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
