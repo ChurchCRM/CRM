@@ -32,4 +32,15 @@ class FeatureContext extends MinkContext
       $this->fillField('PasswordBox', $password);
       $this->pressButton('Login');
     }
+
+    /**
+    * Wait for AJAX to finish.
+    *
+    * @Given /^I wait for AJAX to finish$/
+    */
+   public function iWaitForAjaxToFinish() {
+     $this->getSession()->wait(3000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
+   }
+
 }
+

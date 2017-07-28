@@ -5,6 +5,7 @@
       "behat/mink-goutte-driver": "*",
       "behat/mink-selenium2-driver": "1.2.*@dev",
       "behat/mink-extension": "*",
-      "behat/mink-browserkit-driver": "*"
+      "behat/mink-browserkit-driver": "*",
+      "novaway/common-contexts": "~2.0"
     }
 }
