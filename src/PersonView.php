@@ -620,11 +620,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                 }
                   echo '</div>';
               }
-              if ($_SESSION['bManageGroups']) {
-                  ?>
+    if ($_SESSION['bManageGroups']) {
+        ?>
                           <a id="addGroup"><i class="fa fa-plus-circle" aria-hidden="true"></i><?php echo gettext('Assign New Group'); ?></a>
                         <?php
-              } ?>
+    } ?>
             </div>
           </div>
         </div>
