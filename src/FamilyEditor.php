@@ -809,7 +809,7 @@ require 'Include/Header.php';
 				<div class="row">
 					<div class="form-group col-md-4">
                         <label><?= gettext('Wedding Date') ?>:</label>
-						<input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= ((strtotime($dWeddingDate) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($dWeddingDate)):strtotime($dWeddingDate)) ?>" maxlength="12" id="WeddingDate" size="15" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
+						<input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" id="WeddingDate" size="15" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
 						<?php if ($sWeddingDateError) {
                     ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php
                 } ?>
