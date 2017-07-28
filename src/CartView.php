@@ -101,7 +101,7 @@ if (!Cart::HasPeople()) {
             <h3 class="box-title">Cart Functions</h3>
         </div>
         <div class="box-body">
-            <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
+            <a href="#" class="btn btn-app emptyCart"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
             <?php if ($_SESSION['bManageGroups']) {
             ?>
                 <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
@@ -346,7 +346,7 @@ if (!Cart::HasPeople()) {
                             </td>
                             <td><?= $sValidAddy ?></td>
                             <td><?= $sValidEmail ?></td>
-                            <td><a href="CartView.php?RemoveFromPeopleCart=<?= $per_ID ?>"><?= gettext('Remove') ?></a>
+                            <td><a class="RemoveFromPeopleCart" data-personid="<?= $per_ID ?>"><?= gettext('Remove') ?></a>
                             </td>
                             <td><?= $aClassificationName[$per_cls_ID] ?></td>
                             <td><?= $aFamilyRoleName[$per_fmr_ID] ?></td>
@@ -364,6 +364,12 @@ if (!Cart::HasPeople()) {
     <script type="text/javascript">
         $(document).ready(function () {
             $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
+        });
+        
+        $(document).on("click", ".emptyCart", function (e) {
+          window.CRM.cart.empty(function(){
+            document.location.reload();
+          });
         });
     </script>
 

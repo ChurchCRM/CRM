@@ -160,12 +160,6 @@ if (isset($_GET['RemoveFromPeopleCart'])) {
     $sGlobalMessage = gettext('Selected record successfully removed from the Cart.');
 }
 
-// Are they emptying their cart?
-if (isset($_GET['Action']) && ($_GET['Action'] == 'EmptyCart')) {
-    $_SESSION['aPeopleCart'] = [];
-    $sGlobalMessage = gettext('Your cart has been successfully emptied.');
-}
-
 if (isset($_POST['BulkAddToCart'])) {
     $aItemsToProcess = explode(',', $_POST['BulkAddToCart']);
 

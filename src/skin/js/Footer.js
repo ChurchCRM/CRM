@@ -66,13 +66,22 @@ $("document").ready(function(){
     $(".initials-image").initial();
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
   
-    $(document).on("click", "#emptyCart", function (e) {
+    $(document).on("click", ".emptyCart", function (e) {
       window.CRM.cart.empty();
     });
     
     $(document).on("click", "#emptyCartToGroup", function (e) {
       window.CRM.groups.promptSelection(function (selectedRole) {
         window.CRM.cart.emptyToGroup(0,0);
+      });
+    });
+    
+    $(document).on("click",".RemoveFromPeopleCart", function(){
+      clickedButton = $(this);
+      window.CRM.cart.removePerson([clickedButton.data("personid")],function()
+      {
+        $('span i:nth-child(2)',clickedButton).removeClass("fa-remove RemoveFromPeopleCart");
+        $('span i:nth-child(2)',clickedButton).addClass("fa-cart-plus AddToPeopleCart");
       });
     });
     

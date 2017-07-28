@@ -7,15 +7,19 @@ use ChurchCRM\GroupQuery;
 
 class Cart
 {
+  
+  private static function CheckCart()
+  {
+    if (!isset($_SESSION['aPeopleCart']))
+    {
+      $_SESSION['aPeopleCart'] = [];
+    }
+  }
   public static function AddPerson($PersonID)
   {
-    // make sure the cart array exists
-    if (isset($_SESSION['aPeopleCart'])) {
-        if (!in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
-            $_SESSION['aPeopleCart'][] = $PersonID;
-        }
-    } else {
-        $_SESSION['aPeopleCart'][] = $PersonID;
+    self::CheckCart();
+    if (!in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
+      array_push($_SESSION['aPeopleCart'], $PersonID);
     }
   }
 
@@ -63,7 +67,7 @@ class Cart
     // we can't remove anybody if there is no cart
     if (isset($_SESSION['aPeopleCart'])) {
       $aTempArray[] = $PersonID; // the only element in this array is the ID to be removed
-      $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aTempArray);
+      $_SESSION['aPeopleCart'] = array_values(array_diff($_SESSION['aPeopleCart'], $aTempArray));
     }
   }
   
@@ -72,7 +76,7 @@ class Cart
     // make sure the cart array exists
     // we can't remove anybody if there is no cart
     if (isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
-        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aIDs);
+        $_SESSION['aPeopleCart'] = array_values(array_diff($_SESSION['aPeopleCart'], $aIDs));
     }
   }
   

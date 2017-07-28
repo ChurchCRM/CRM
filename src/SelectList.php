@@ -1206,7 +1206,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 	<td>
 	<?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
         ?>
-      <a class="AddToPeopleCart" data-persionid="<?= $per_ID ?>">
+      <a class="AddToPeopleCart" data-personid="<?= $per_ID ?>">
 		<span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -1216,7 +1216,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 	<?php
     } else {
         ?>
-    <a class="RemoveFromPeopleCart" data-persionid="<?= $per_ID ?>">
+    <a class="RemoveFromPeopleCart" data-personid="<?= $per_ID ?>">
 		<span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-remove fa-stack-1x fa-inverse"></i>
