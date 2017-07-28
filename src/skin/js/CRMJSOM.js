@@ -59,7 +59,7 @@
       },
       'emptyToGroup' : function (callback)
       {
-        window.CRM.groups.promptSelection(function(selectedRole){
+        window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Group|window.CRM.groups.selectTypes.Role},function(selectedRole){
           window.CRM.APIRequest({
             method: 'POST',
             path: 'cart/emptyToGroup',

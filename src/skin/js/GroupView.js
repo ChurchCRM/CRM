@@ -134,7 +134,7 @@ $(document).ready(function () {
   });
 
   $("#moveSelectedToGroup").click(function () {
-    window.CRM.groups.promptSelection(function(data){
+    window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Group|window.CRM.groups.selectTypes.Role},function(data){
       selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
       $.each(selectedRows, function (index, value) {
         console.log(data);
