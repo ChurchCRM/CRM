@@ -75,7 +75,8 @@ $("document").ready(function(){
         window.CRM.cart.emptyToGroup(0,0);
       });
     });
-   
+    
+    window.CRM.cart.refresh();
 });
 
 function showGlobalMessage(message, callOutClass) {
