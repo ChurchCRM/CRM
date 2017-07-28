@@ -1260,5 +1260,4 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 	</div>
 </div>
 
-<script src="skin/js/SelectList.js" type="text/javascript"></script>
 <?php require 'Include/Footer.php' ?>

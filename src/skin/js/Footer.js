@@ -80,8 +80,21 @@ $("document").ready(function(){
       clickedButton = $(this);
       window.CRM.cart.removePerson([clickedButton.data("personid")],function()
       {
-        $('span i:nth-child(2)',clickedButton).removeClass("fa-remove RemoveFromPeopleCart");
-        $('span i:nth-child(2)',clickedButton).addClass("fa-cart-plus AddToPeopleCart");
+        $(clickedButton).addClass("AddToPeopleCart");
+        $(clickedButton).removeClass("RemoveFromPeopleCart");
+        $('span i:nth-child(2)',clickedButton).removeClass("fa-remove");
+        $('span i:nth-child(2)',clickedButton).addClass("fa-cart-plus");
+      });
+    });
+    
+    $(document).on("click",".AddToPeopleCart", function(){
+      clickedButton = $(this);
+      window.CRM.cart.addPerson([clickedButton.data("personid")],function()
+      {
+        $(clickedButton).addClass("RemoveFromPeopleCart");
+        $(clickedButton).removeClass("AddToPeopleCart");
+        $('span i:nth-child(2)',clickedButton).addClass("fa-remove ");
+        $('span i:nth-child(2)',clickedButton).removeClass("fa-cart-plus ");
       });
     });
     

@@ -18,7 +18,7 @@ class Cart
   public static function AddPerson($PersonID)
   {
     self::CheckCart();
-    if (!in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
+    if ($PersonID !== null && !in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
       array_push($_SESSION['aPeopleCart'], $PersonID);
     }
   }
