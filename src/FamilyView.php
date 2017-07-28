@@ -37,6 +37,7 @@ use ChurchCRM\Utils\InputUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
+$curYear = (new DateTime)->format("Y");
 
 //Set the page title
 $sPageTitle = gettext("Family View");
@@ -463,16 +464,23 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                     <ul class="timeline">
                         <!-- timeline time label -->
                         <li class="time-label">
-                    <span class="bg-red">
-                      <?php $now = new DateTime('');
-    echo $now->format("Y-m-d") ?>
-                    </span>
+                            <span class="bg-red">
+                                <?= $curYear ?>
+                            </span>
                         </li>
                         <!-- /.timeline-label -->
 
                         <!-- timeline item -->
                         <?php foreach ($timelineService->getForFamily($iFamilyID) as $item) {
-        ?>
+                    if ($curYear != $item['year']) {
+                        $curYear = $item['year']; ?>
+                                <li class="time-label">
+                                    <span class="bg-gray">
+                                        <?= $curYear ?>
+                                    </span>
+                                </li>
+                                <?php
+                    } ?>
                             <li>
                                 <!-- timeline icon -->
                                 <i class="fa <?= $item['style'] ?>"></i>
@@ -482,14 +490,14 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
                                     <h3 class="timeline-header">
                                         <?php if (in_array('headerlink', $item)) {
-            ?>
+                        ?>
                                             <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                                             <?php
-        } else {
-            ?>
+                    } else {
+                        ?>
                                             <?= gettext($item['header']) ?>
                                             <?php
-        } ?>
+                    } ?>
                                     </h3>
 
                                     <div class="timeline-body">
@@ -497,31 +505,31 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                     </div>
 
                                     <?php if (($_SESSION['bNotes']) && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
-            ?>
+                        ?>
                                         <div class="timeline-footer">
                                             <?php if (isset($item["editLink"])) {
-                ?>
+                            ?>
                                                 <a href="<?= $item["editLink"] ?>">
                                                     <button type="button" class="btn btn-primary"><i
                                                                 class="fa fa-edit"></i></button>
                                                 </a>
                                                 <?php
-            }
-            if (isset($item["deleteLink"])) {
-                ?>
+                        }
+                        if (isset($item["deleteLink"])) {
+                            ?>
                                                 <a href="<?= $item["deleteLink"] ?>">
                                                     <button type="button" class="btn btn-danger"><i
                                                                 class="fa fa-trash"></i></button>
                                                 </a>
                                                 <?php
-            } ?>
+                        } ?>
                                         </div>
                                         <?php
-        } ?>
+                    } ?>
                                 </div>
                             </li>
                             <?php
-    } ?>
+                } ?>
                         <!-- END timeline item -->
                     </ul>
                 </div>

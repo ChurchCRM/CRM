@@ -8,6 +8,7 @@ use ChurchCRM\Base\Family as BaseFamily;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\GeoUtils;
+use DateTime;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -79,12 +80,14 @@ class Family extends BaseFamily implements iPhoto
 
     public function postInsert(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote(true);
+        $this->createTimeLineNote('create');
     }
 
     public function postUpdate(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote(false);
+        if (!empty($this->getDateLastEdited())) {
+            $this->createTimeLineNote('edit');
+        }
     }
 
 
@@ -150,24 +153,35 @@ class Family extends BaseFamily implements iPhoto
     return $emails;
   }
 
-    private function createTimeLineNote($new)
+    public function createTimeLineNote($type)
     {
-      $note = new Note();
-      $note->setFamId($this->getId());
+        $note = new Note();
+        $note->setFamId($this->getId());
+        $note->setType($type);
+        $note->setDateEntered(new DateTime());
 
-      if ($new) {
-          $note->setText('Created');
-          $note->setType('create');
-          $note->setEnteredBy($this->getEnteredBy());
-          $note->setDateLastEdited($this->getDateEntered());
-      } else {
-          $note->setText('Updated');
-          $note->setType('edit');
-          $note->setEnteredBy($this->getEditedBy());
-          $note->setDateLastEdited($this->getDateLastEdited());
-      }
+        switch ($type) {
+            case "create":
+              $note->setText(gettext('Created'));
+              $note->setEnteredBy($this->getEnteredBy());
+              $note->setDateEntered($this->getDateEntered());
+              break;
+            case "edit":
+              $note->setText(gettext('Updated'));
+                $note->setEnteredBy($this->getEditedBy());
+                $note->setDateEntered($this->getDateLastEdited());
+                break;
+            case "verify":
+                $note->setText(gettext('Family Data Verified'));
+                $note->setEnteredBy($_SESSION['iUserID']);
+                break;
+            case "verify-link":
+              $note->setText(gettext('Verification email sent'));
+              $note->setEnteredBy($_SESSION['iUserID']);
+              break;
+        }
 
-      $note->save();
+        $note->save();
     }
 
     /**
@@ -276,12 +290,7 @@ class Family extends BaseFamily implements iPhoto
 
     public function verify()
     {
-        $note = new Note();
-        $note->setFamId($this->getId());
-        $note->setText(gettext('Family Data Verified'));
-        $note->setType('verify');
-        $note->setEntered($_SESSION['user']->getId());
-        $note->save();
+        $this->createTimeLineNote('verify');
     }
 
     public function getFamilyString()
