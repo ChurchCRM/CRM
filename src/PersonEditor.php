@@ -1063,7 +1063,7 @@ require 'Include/Header.php';
                         </div>
                         <!-- Philippe Logel -->
                         <input type="text" name="MembershipDate" class="form-control date-picker"
-                               value="<?= ((strtotime($dMembershipDate) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($dMembershipDate)):strtotime($dMembershipDate)) ?>" maxlength="10" id="sel1" size="11"
+                               value="<?= change_date_for_place_holder($dMembershipDate) ?>" maxlength="10" id="sel1" size="11"
                                placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                         <?php if ($sMembershipDateError) {
                             ?><font
@@ -1079,7 +1079,7 @@ require 'Include/Header.php';
                       <i class="fa fa-calendar"></i>
                     </div>
                     <input type="text" name="FriendDate" class="form-control date-picker"
-                           value="<?= ((strtotime($dFriendDate) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($dFriendDate)):strtotime($dFriendDate)) ?>" maxlength="10" id="sel2" size="10"
+                           value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10" id="sel2" size="10"
                            placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                     <?php if ($sFriendDateError) {
                             ?><font
