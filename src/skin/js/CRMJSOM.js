@@ -30,7 +30,7 @@
     window.CRM.VerifyThenLoadAPIContent = function(url) {
       var error = i18next.t("There was a problem retrieving the requested object");
       $.ajax({
-        type: 'HEAD',
+        method: 'HEAD',
         url: url,
         async: false,
         statusCode: {
@@ -61,7 +61,7 @@
       {
         window.CRM.groups.promptSelection(function(selectedRole){
           window.CRM.APIRequest({
-            type: 'POST',
+            method: 'POST',
             path: 'cart/emptyToGroup',
             data: JSON.stringify({"groupID":selectedRole.GroupID,"groupRoleID":selectedRole.RoleID})
             }).done(function(data) {
@@ -85,7 +85,7 @@
       'addPerson' : function (Persons, callback)
       {
         window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path: 'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
@@ -99,7 +99,7 @@
       'removePerson' : function (Persons, callback)
       {
          window.CRM.APIRequest({
-          type: 'DELETE',
+          method: 'DELETE',
           path:'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
@@ -113,7 +113,7 @@
       'addFamily' : function (FamilyID, callback)
       {
          window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path:'cart/',
           data: JSON.stringify({"Family":FamilyID})
         }).done(function(data) {
@@ -127,7 +127,7 @@
       'addGroup' : function (GroupID, callback)
       {
          window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path: 'cart/',
           data: JSON.stringify({"Group":GroupID})
         }).done(function(data) {
@@ -141,7 +141,7 @@
       },
       'refresh' : function () {
         window.CRM.APIRequest({
-          type: 'GET',
+          method: 'GET',
           path:"cart/"
         }).done(function(data) {
           window.scrollTo(0, 0);
@@ -280,91 +280,139 @@
       'get': function() {
         return  window.CRM.APIRequest({
           path:"groups/",
-          type:"GET"
+          method:"GET"
         }); 
       },
       'getRoles': function(GroupID) {
         return window.CRM.APIRequest({
           path:"groups/"+GroupID+"/roles",
-          type:"GET"
+          method:"GET"
         }); 
       },
-      'promptSelection': function(selectionCallback)
-      {
-        bootbox.dialog({
-           title: 'Select Group and Role',
-           message: '<div class="modal-body">\
-                <input type="hidden" id="targetGroupAction">\
-                <span style="color: red">' + i18next.t("Please select target group for members") + ':</span>\
-                <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>\
-                <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>\
-              </div>',
-           buttons: {
-             confirm: {
-                 label: 'OK',
-                 className: 'btn-success',
-                 callback: function(){
-                   selectionCallback({
-                     'GroupID': $("#targetGroupSelection option:selected").val(),
-                     'RoleID' : $("#targetRoleSelection option:selected").val()
-                   });
-                }
-             },
-             cancel: {
-                 label: 'Cancel',
-                 className: 'btn-danger'
+      'selectTypes': {
+        'Group': 1,
+        'Role': 2,
+      },
+      'promptSelection': function(selectOptions,selectionCallback) {
+          var options ={
+            message: '<div class="modal-body">\
+                  <input type="hidden" id="targetGroupAction">',
+             buttons: {
+               confirm: {
+                   label: i18next.t('OK'),
+                   className: 'btn-success'
+               },
+               cancel: {
+                   label: i18next.t('Cancel'),
+                   className: 'btn-danger'
+               }
              }
-           }
-        }).show();
-        
-        window.CRM.groups.get()
-        .done(function(rdata){
-          groupsList = $.map(rdata.Groups, function (item) {
-            var o = {
-              text: item.Name,
-              id: item.Id
+          };
+          initFunction = function() {
+          };
+          if (selectOptions.Type & window.CRM.groups.selectTypes.Group)
+          {
+            options.title = i18next.t("Select Group");
+            options.message +='<span style="color: red">'+i18next.t('Please select target group for members')+':</span>\
+                  <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>'
+            options.buttons.confirm.callback = function(){
+               selectionCallback({"GroupID": $("#targetGroupSelection option:selected").val()});
             };
-            return o;
-          });
-          $groupSelect2 = $("#targetGroupSelection").select2({
-            data: groupsList
-          });
+          }
+          if (selectOptions.Type & window.CRM.groups.selectTypes.Role )
+          {
+           
+            options.title = "Select Role"
+            options.message += '<span style="color: red">'+i18next.t('Please select target Role for members')+':</span>\
+                  <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>'
+            options.buttons.confirm.callback = function(){
+              selectionCallback({"RoleID": $("#targetRoleSelection option:selected").val()});
+            };
+          }
           
-          $groupSelect2.on("select2:select", function (e) { 
-             var targetGroupId = $("#targetGroupSelection option:selected").val();
-             $parent = $("#targetRoleSelection").parent();
-             $("#targetRoleSelection").empty();
-             window.CRM.groups.getRoles(targetGroupId).done(function(rdata){
-               rolesList = $.map(rdata.ListOptions, function (item) {
-                  var o = {
-                    text: item.OptionName,
-                    id: item.OptionId
-                  };
-                  return o;
-                });
-               $("#targetRoleSelection").select2({
-                 data:rolesList
-               })
-             })
-          });
-        });
-      },
-      'addPerson' : function(GroupID,PersonID,RoleID) {
-        return window.CRM.APIRequest({
-          type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-          path:'groups/' + GroupID + '/adduser',
-          data: JSON.stringify({"PersonID": PersonID})
-        });
-      },
-      'removePerson' : function(GroupID,PersonID, callback) {
-         window.CRM.APIRequest({
-          type: 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
-          path:'groups/' + GroupID + '/removeuser/' + PersonID,
-        }).done(function(data) {
-            if(callback)
+          if (selectOptions.Type === window.CRM.groups.selectTypes.Role)
+          {
+            if (!selectOptions.GroupID)
             {
-              callback(data);
+              throw i18next.t("GroupID required for role selection prompt");
             }
+            initFunction = function() {
+              window.CRM.groups.getRoles(selectOptions.GroupID).done(function(rdata){
+                 rolesList = $.map(rdata.ListOptions, function (item) {
+                    var o = {
+                      text: item.OptionName,
+                      id: item.OptionId
+                    };
+                    return o;
+                  });
+                 $("#targetRoleSelection").select2({
+                   data:rolesList
+                 })
+               })
+            }
+          }
+          if (selectOptions.Type & window.CRM.groups.selectTypes.Role && selectOptions.Type & window.CRM.groups.selectTypes.Group )
+          {
+            options.title = i18next.t("Select Group and Role");
+            options.buttons.confirm.callback = function(){
+              selectionCallback({
+                "RoleID": $("#targetRoleSelection option:selected").val(),
+                "GroupID": $("#targetGroupSelection option:selected").val()
+              });
+            }
+          }
+          options.message +='</div>';
+          bootbox.dialog(options).init(initFunction).show();
+
+          window.CRM.groups.get()
+          .done(function(rdata){
+            groupsList = $.map(rdata.Groups, function (item) {
+              var o = {
+                text: item.Name,
+                id: item.Id
+              };
+              return o;
+            });
+            $groupSelect2 = $("#targetGroupSelection").select2({
+              data: groupsList
+            });
+
+            $groupSelect2.on("select2:select", function (e) { 
+               var targetGroupId = $("#targetGroupSelection option:selected").val();
+               $parent = $("#targetRoleSelection").parent();
+               $("#targetRoleSelection").empty();
+               window.CRM.groups.getRoles(targetGroupId).done(function(rdata){
+                 rolesList = $.map(rdata.ListOptions, function (item) {
+                    var o = {
+                      text: item.OptionName,
+                      id: item.OptionId
+                    };
+                    return o;
+                  });
+                 $("#targetRoleSelection").select2({
+                   data:rolesList
+                 })
+               })
+            });
+          });
+      },
+     'addPerson' : function(GroupID,PersonID,RoleID) {
+        params = {
+          method: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+          path:'groups/' + GroupID + '/addperson/'+PersonID
+        };
+        if (RoleID)
+        {
+          params.data = JSON.stringify({
+            RoleID: RoleID
+          });
+        }
+        return window.CRM.APIRequest(params);
+      },
+      'removePerson' : function(GroupID,PersonID) {
+        return window.CRM.APIRequest({
+          method: 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
+          path:'groups/' + GroupID + '/removeperson/' + PersonID,
         });
       }
     };
@@ -373,7 +421,7 @@
       'runTimerJobs' : function () {
         window.CRM.APIRequest({
           path: "timerjobs/run",
-          type: "POST"
+          method: "POST"
         });
       }
     }
