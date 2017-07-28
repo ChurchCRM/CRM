@@ -308,23 +308,22 @@
                }
              }
           };
-          initFunction = function() {
-          };
+          initFunction = function() {};
+          
           if (selectOptions.Type & window.CRM.groups.selectTypes.Group)
           {
             options.title = i18next.t("Select Group");
             options.message +='<span style="color: red">'+i18next.t('Please select target group for members')+':</span>\
-                  <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>'
+                  <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>';
             options.buttons.confirm.callback = function(){
                selectionCallback({"GroupID": $("#targetGroupSelection option:selected").val()});
             };
           }
           if (selectOptions.Type & window.CRM.groups.selectTypes.Role )
           {
-           
             options.title = "Select Role"
             options.message += '<span style="color: red">'+i18next.t('Please select target Role for members')+':</span>\
-                  <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>'
+                  <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>';
             options.buttons.confirm.callback = function(){
               selectionCallback({"RoleID": $("#targetRoleSelection option:selected").val()});
             };
@@ -351,14 +350,16 @@
                })
             }
           }
-          if (selectOptions.Type & window.CRM.groups.selectTypes.Role && selectOptions.Type & window.CRM.groups.selectTypes.Group )
+          if (selectOptions.Type === (window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role) )
           {
             options.title = i18next.t("Select Group and Role");
             options.buttons.confirm.callback = function(){
-              selectionCallback({
+              selection = {
                 "RoleID": $("#targetRoleSelection option:selected").val(),
                 "GroupID": $("#targetGroupSelection option:selected").val()
-              });
+              };
+              console.log(selection);
+              selectionCallback(selection);
             }
           }
           options.message +='</div>';

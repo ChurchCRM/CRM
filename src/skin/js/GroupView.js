@@ -125,7 +125,7 @@ $(document).ready(function () {
 
   //copy membership
   $("#addSelectedToGroup").click(function () {
-    window.CRM.groups.promptSelection(function(data){
+    window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Group|window.CRM.groups.selectTypes.Role}, function(data){
       selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
       $.each(selectedRows, function (index, value) {
         window.CRM.groups.addPerson(data.GroupID,value.PersonId,data.RoleID);
