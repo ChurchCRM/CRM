@@ -67,8 +67,7 @@ class InputUtils {
   public static function FilterDate($sInput)
   {
     // Attempts to take a date in any format and convert it to YYYY-MM-DD format
-    // Logel Philippe
-    if ($sInput == null || $sInput == 0)
+    if (empty($sInput))
     	return "";
     else 
       return date('Y-m-d', strtotime(str_replace("/","-",$sInput)));
