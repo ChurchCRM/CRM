@@ -47,7 +47,7 @@ $app->group('/cart', function () {
         $cartPayload = (object)$request->getParsedBody();
         if ( isset ($cartPayload->Persons) && count($cartPayload->Persons) > 0 )
         {
-          RemoveArrayFromPeopleCart($cartPayload->Persons);
+          Cart::RemovePersonArray($cartPayload->Persons);
         }
         else
         {

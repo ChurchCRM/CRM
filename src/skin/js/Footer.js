@@ -75,11 +75,7 @@ $("document").ready(function(){
         window.CRM.cart.emptyToGroup(0,0);
       });
     });
-
-    $(".AddToPeopleCart").click(function(){
-      window.CRM.cart.addPerson([$(this).data("personid")]);
-    });
-    
+   
 });
 
 function showGlobalMessage(message, callOutClass) {

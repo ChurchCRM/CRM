@@ -9,7 +9,7 @@ $(document).on("click",".AddToPeopleCart", function(){
 
 $(document).on("click",".RemoveFromPeopleCart", function(){
   clickedButton = $(this);
-  window.CRM.cart.removePerson([$(this).data("persionid")],function()
+  window.CRM.cart.removePerson([clickedButton.data("persionid")],function()
   {
     $('span i:nth-child(2)',clickedButton).removeClass("fa-remove RemoveFromPeopleCart");
     $('span i:nth-child(2)',clickedButton).addClass("fa-cart-plus AddToPeopleCart");

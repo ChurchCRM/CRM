@@ -67,7 +67,7 @@ class Cart
     }
   }
   
-  public static function RemoveArray($aIDs)
+  public static function RemovePersonArray($aIDs)
   {
     // make sure the cart array exists
     // we can't remove anybody if there is no cart

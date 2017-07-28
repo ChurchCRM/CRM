@@ -44,7 +44,6 @@ if (!Cart::HasPeople()) {
         ?>
              <p class="text-center callout callout-warning"><?= gettext('You have no items in your cart.') ?> </p>
         <?php
-
     } else {
         switch ($_GET['Message']) {
                 case 'aMessage': ?>
@@ -89,37 +88,33 @@ if (!Cart::HasPeople()) {
         value="<?= gettext('Go To Labels') ?>">
         </form>
         <?php
-
     } ?>
-
-        $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (' . ConvertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_LastName';
-        $rsCartItems = RunQuery($sSQL);
-        $iNumPersons = mysqli_num_rows($rsCartItems);
-
-        $sSQL = 'SELECT distinct per_fam_ID FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (' . ConvertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_fam_ID';
-        $iNumFamilies = mysqli_num_rows(RunQuery($sSQL));
-
-<?php
-if (Cart::CountPeople() > 0) {
-        ?>
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title">Cart Functions</h3>
-    </div>
-    <div class="box-body">
-        <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
-        <?php if ($_SESSION['bManageGroups']) {
+    
+    <!-- BEGIN CART FUNCTIONS -->
+    
+      
+    <?php
+    if (Cart::CountPeople() > 0) {
             ?>
-            <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
-        <?php
-
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Cart Functions</h3>
+        </div>
+        <div class="box-body">
+            <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
+            <?php if ($_SESSION['bManageGroups']) {
+                ?>
+                <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
+            <?php
+            }
+            if ($_SESSION['bAddRecords']) {
+            ?>
+            <a href="CartToFamily.php" class="btn btn-app"><i
+                        class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
+            <?php
         } ?>
-
-        <!-- BEGIN CART FUNCTIONS -->
-
-
-        <?php
-        if (Cart::CountPeople() != 0) {
+            <a href="CartToEvent.php" class="btn btn-app"><i
+                class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
 
             <?php if ($bExportCSV) {
                 ?>
@@ -131,8 +126,8 @@ if (Cart::CountPeople() > 0) {
                         class="fa fa-map-marker"></i><?= gettext('Map Cart') ?></a>
             <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i
                         class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
-            <?php
-            if (count($_SESSION['aPeopleCart']) != 0) {
+             <?php
+            if (Cart::CountPeople() != 0) {
 
                 // Email Cart links
                 // Note: This will email entire group, even if a specific role is currently selected.
