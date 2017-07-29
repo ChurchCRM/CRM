@@ -11,17 +11,13 @@ class LocaleInfo
     public function __construct($locale)
     {
         $this->locale = $locale;
-        if (strpos($locale, '_')) {
-            $items = explode('_', $locale);
-            $this->language = $items[0];
-            $this->country = $items[1];
-        }
-        if ($locale == 'zh_CN') {
-            $this->language = 'zh-CN';
-        } elseif ($locale == 'zh_TW') {
-            $this->language = 'zh-TW';
-        } elseif ($locale == 'pt_BR') {
-            $this->language = 'pt-BR';
+        $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . "/locale/locales.json");
+        $locales = json_decode($localesFile, true);
+        foreach ($locales as $key => $value) {
+            if ($value["locale"] == $locale) {
+                $this->language = $value["languageCode"];
+                $this->country = $value["countryCode"];
+            }
         }
     }
 
@@ -29,10 +25,10 @@ class LocaleInfo
     {
         return $this->locale;
     }
-    
+
     public function getShortLocale()
     {
-       return substr($this->getLocale(), 0, 2);
+        return substr($this->getLocale(), 0, 2);
     }
 
     public function getLanguageCode()
@@ -61,7 +57,7 @@ class LocaleInfo
         $localArray = [];
         array_push($localArray, $this->getLanguageCode());
         foreach ($utfList as $item) {
-            array_push($localArray, $this->getLanguageCode().$item);
+            array_push($localArray, $this->getLanguageCode() . $item);
         }
 
         return $localArray;
@@ -70,11 +66,11 @@ class LocaleInfo
     public function getLocaleInfo()
     {
         $localeInfo = localeconv();
-    // patch some missing data for Italian.  This shouldn't be necessary!
-    if ($this->language == 'it_IT') {
-        $localeInfo['thousands_sep'] = '.';
-        $localeInfo['frac_digits'] = '2';
-    }
+        // patch some missing data for Italian.  This shouldn't be necessary!
+        if ($this->language == 'it_IT') {
+            $localeInfo['thousands_sep'] = '.';
+            $localeInfo['frac_digits'] = '2';
+        }
 
         return $localeInfo;
     }
