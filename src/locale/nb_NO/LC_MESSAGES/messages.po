@@ -1101,7 +1101,7 @@ msgstr "Tittelside"
 msgid "Use Title Page"
 msgstr "Bruk Tittelside"
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "Kirke Navn"
 
@@ -1949,7 +1949,7 @@ msgstr "Rapport Tittel:"
 msgid "Graphic"
 msgstr "Grafisk"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Church Adresse"
 
@@ -3659,7 +3659,7 @@ msgstr "Valgte posten er lagt til handlevognen."
 msgid "Selected record successfully removed from the Cart."
 msgstr "Valgte posten slettet fra Cart."
 
-#: Include/Functions.php:177
+#: api/routes/cart.php:25 Include/Functions.php:177
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Handlekurven har blitt tømt"

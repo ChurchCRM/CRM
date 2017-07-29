@@ -1103,7 +1103,7 @@ msgstr "Pagina de titlu"
 msgid "Use Title Page"
 msgstr "Utilizați titlu Page"
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "Numele Bisericii"
 
@@ -1948,7 +1948,7 @@ msgstr "Raport Titlu:"
 msgid "Graphic"
 msgstr "Grafic"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Adresa bisericii"
 
@@ -3614,7 +3614,7 @@ msgstr "Înregistrarea selectată adăugat cu succes în coș."
 msgid "Selected record successfully removed from the Cart."
 msgstr "Înregistrarea selectată eliminat cu succes din Cart."
 
-#: Include/Functions.php:177
+#: api/routes/cart.php:25 Include/Functions.php:177
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Cosul tau a fost golit cu succes"

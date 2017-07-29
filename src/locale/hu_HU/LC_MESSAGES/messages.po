@@ -1090,7 +1090,7 @@ msgstr "Oldal címe"
 msgid "Use Title Page"
 msgstr "Használja Címoldal"
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "Church neve"
 
@@ -1935,7 +1935,7 @@ msgstr "Jelentés Jogcím:"
 msgid "Graphic"
 msgstr "Grafikus"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Templom Cím"
 
@@ -3608,7 +3608,7 @@ msgstr "A kiválasztott rekord sikeresen hozzáadva a kosárba."
 msgid "Selected record successfully removed from the Cart."
 msgstr "A kiválasztott rekord sikeresen eltávolították a kosárba."
 
-#: Include/Functions.php:177
+#: api/routes/cart.php:25 Include/Functions.php:177
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Ön kosara sikeresen kiürült"

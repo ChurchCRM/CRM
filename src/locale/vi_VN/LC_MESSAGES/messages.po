@@ -1163,7 +1163,7 @@ msgstr "Ngày kết thúc báo cáo"
 msgid "All Families"
 msgstr "Tất cả gia đình"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Địa chỉ Hội Thánh"
 
@@ -1801,7 +1801,7 @@ msgstr "In ấn"
 msgid "Save Settings"
 msgstr "Lưu thay đổi"
 
-#: ChurchCRM/dto/SystemConfig.php:228 Include/Footer.php:144
+#: ChurchCRM/dto/SystemConfig.php:205 Include/Footer.php:144
 #: SystemSettings.php:43
 msgid "System Settings"
 msgstr "Cài đặt hệ thống"
@@ -2027,7 +2027,7 @@ msgstr "Chào mừng bạn đến với"
 msgid "Login to restored Database"
 msgstr "Đăng nhập để phục hồi cơ sở dữ liệu"
 
-#: ChurchCRM/dto/SystemConfig.php:221
+#: ChurchCRM/dto/SystemConfig.php:198
 msgid "Church Information"
 msgstr "Thông tin Hội Thánh"
 
