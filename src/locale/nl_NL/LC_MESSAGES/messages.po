@@ -1065,7 +1065,7 @@ msgstr "Title Pagina"
 msgid "Use Title Page"
 msgstr "Gebruik Titel Pagina"
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "Gemeente Naam"
 
@@ -1888,7 +1888,7 @@ msgstr "Raport Titel:"
 msgid "Graphic"
 msgstr "Graphisch"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Kerk Adres"
 
@@ -3520,9 +3520,10 @@ msgstr "Geselecteerde records zijn met sucess toegevoegd aan het mandje."
 msgid "Selected record successfully removed from the Cart."
 msgstr "Geselecteerde records zijn met success verwijderd uit het mandje."
 
-#: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "U mandje is met success geleegd."
+#: api/routes/cart.php:25 Include/Functions.php:177
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "U mandje is met success geleegd"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."
@@ -3909,7 +3910,7 @@ msgstr "Fundraiser"
 msgid "Deposit Type"
 msgstr "Bijdrage Type"
 
-#: ChurchCRM/dto/SystemConfig.php:226
+#: ChurchCRM/dto/SystemConfig.php:203
 msgid "Report Settings"
 msgstr "Rapportage Instellingen"
 

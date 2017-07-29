@@ -1107,7 +1107,7 @@ msgstr "Название страницы:"
 msgid "Use Title Page"
 msgstr "Используйте титульный лист"
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "Церковь Имя"
 
@@ -1949,7 +1949,7 @@ msgstr "Сообщить Рубрика:"
 msgid "Graphic"
 msgstr "Графика"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Церковь Адрес"
 
@@ -3612,9 +3612,10 @@ msgstr "Выбранная запись успешно добавлен в ко�
 msgid "Selected record successfully removed from the Cart."
 msgstr "Выбранная запись успешно удалены из корзины."
 
-#: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Ваша корзина успешно очищена."
+#: api/routes/cart.php:25 Include/Functions.php:177
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Ваша корзина успешно очищена"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

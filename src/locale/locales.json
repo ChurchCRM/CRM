@@ -1,0 +1,90 @@
+{
+  "Albanian": {
+    "poEditor": "sq",
+    "locale": "sq_AL"
+  },
+  "Arabic - Egypt": {
+    "poEditor": "ar",
+    "locale": "ar_EG"
+  },
+  "Chinese - China": {
+    "poEditor": "zh-CN",
+    "locale": "zh_CN"
+  },
+  "Chinese - Taiwan": {
+    "poEditor": "zh-TW",
+    "locale": "zh_TW"
+  },
+  "Dutch - Netherlands": {
+    "poEditor": "nl",
+    "locale": "nl_NL"
+  },
+  "English - Australia": {
+    "poEditor": "en-au",
+    "locale": "en_AU"
+  },
+  "English - Canada": {
+    "poEditor": "en-ca",
+    "locale": "en_CA"
+  },
+  "English - Great Britain": {
+    "poEditor": "en",
+    "locale": "en_GB"
+  },
+  "English - United States": {
+    "poEditor": "en-US",
+    "locale": "en_US"
+  },
+  "French - France": {
+    "poEditor": "fr",
+    "locale": "fr_FR"
+  },
+  "German - Germany": {
+    "poEditor": "de",
+    "locale": "de_DE"
+  },
+  "Hungarian": {
+    "poEditor": "hu",
+    "locale": "hu_HU"
+  },
+  "Italian - Italy": {
+    "poEditor": "it",
+    "locale": "it_IT"
+  },
+  "Norwegian": {
+    "poEditor": "nb",
+    "locale": "nb_NO"
+  },
+  "Polish": {
+    "poEditor": "pl",
+    "locale": "pl_PL"
+  },
+  "Portuguese - Brazil": {
+    "poEditor": "pt-br",
+    "locale": "pt_BR"
+  },
+  "Romanian - Romania": {
+    "poEditor": "ro",
+    "locale": "ro_RO"
+  },
+  "Russian": {
+    "poEditor": "ru",
+    "locale": "ru_RU"
+  },
+  "Spanish - Spain": {
+    "poEditor": "es",
+    "locale": "es_ES"
+  },
+  "Sami (Northern) (Sweden)": {
+    "poEditor": "sv",
+    "locale": "sv_SE"
+  },
+  "Thai": {
+    "poEditor": "th",
+    "locale": "th_TH"
+  },
+  "Vietnamese": {
+    "poEditor": "vi",
+    "locale": "vi_VN"
+  }
+}

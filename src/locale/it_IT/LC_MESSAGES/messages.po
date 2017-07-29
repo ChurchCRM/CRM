@@ -1156,7 +1156,7 @@ msgstr "Titolo della pagina"
 msgid "Use Title Page"
 msgstr "Usa il titolo della pagina"
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "Nome della parrocchia"
 
@@ -2048,7 +2048,7 @@ msgstr "Menu dei rapporti"
 msgid "Graphic"
 msgstr "Grafico"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 #, fuzzy
 msgid "Church Address"
 msgstr "Indirizzo"
@@ -3808,9 +3808,10 @@ msgstr "Scheda selezionata aggiunta con successo al contenitore."
 msgid "Selected record successfully removed from the Cart."
 msgstr "Scheda selezionata rimossa con successo dal contenitore."
 
-#: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Il tuo contenitore è stato svuotato con successo."
+#: api/routes/cart.php:25 Include/Functions.php:177
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Il tuo contenitore è stato svuotato con successo"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."
