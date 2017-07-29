@@ -41,6 +41,21 @@ class FeatureContext extends MinkContext
    public function iWaitForAjaxToFinish() {
      $this->getSession()->wait(3000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
    }
+   
+    /**
+    * @Given I click the :arg1 element
+    */
+    public function iClickTheElement($selector)
+    {
+        $page = $this->getSession()->getPage();
+        $element = $page->find('css', $selector);
+
+        if (empty($element)) {
+            throw new Exception("No html element found for the selector ('$selector')");
+        }
+
+        $element->click();
+    }
 
 }
 
