@@ -182,7 +182,7 @@ $aLocaleInfo = $localeInfo->getLocaleInfo();
 setlocale(LC_NUMERIC, 'C');
 
 $domain = 'messages';
-$sLocaleDir = SystemURLs::getDocumentRoot().'/locale';
+$sLocaleDir = SystemURLs::getDocumentRoot().'/locale/textdomain';
 
 bind_textdomain_codeset($domain, 'UTF-8');
 bindtextdomain($domain, $sLocaleDir);
