@@ -373,7 +373,7 @@ module.exports = function (grunt) {
         'curl-dir': {
             datatables: {
                 src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{'+dataTablesLang()+'}.json'],
-                dest: 'src/skin/locale/datatables'
+                dest: 'src/locale/datatables'
             },
             fastclick: {
                 src: ['https://raw.githubusercontent.com/ftlabs/fastclick/569732a7aa5861d428731b8db022b2d55abe1a5a/lib/fastclick.js'],
