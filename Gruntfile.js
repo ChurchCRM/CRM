@@ -179,7 +179,7 @@ module.exports = function (grunt) {
                     'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ar.js',
                     'node_modules/admin-lte/plugins/select2/i18n/ar.js'
                 ],
-                dest: 'src/skin/locale/ar_EG.js'
+                dest: 'src/locale/js/ar_EG.js'
             },
             de_DE: {
                 src: [
@@ -188,44 +188,44 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.de.js',
                   'node_modules/admin-lte/plugins/select2/i18n/de.js'
                 ],
-                dest: 'src/skin/locale/de_DE.js'
+                dest: 'src/locale/js/de_DE.js'
             },
             en_AU: {
                 src: [
                   'locale/JSONKeys/en_AU.json', 
                   'node_modules/fullcalendar/dist/locale/en-au.js'
                 ],
-                dest: 'src/skin/locale/en_AU.js'
+                dest: 'src/locale/js/en_AU.js'
             },
             en_CA: {
                 src: [
                   'locale/JSONKeys/en_CA.json',
                   'node_modules/fullcalendar/dist/locale/en-ca.js'
                 ],
-                dest: 'src/skin/locale/en_CA.js'
+                dest: 'src/locale/js/en_CA.js'
             },
             en_GB: {
                 src: [
                   'locale/JSONKeys/en_GB.json',
                   'node_modules/fullcalendar/dist/locale/en-gb.js'
                 ],
-                dest: 'src/skin/locale/en_GB.js'
+                dest: 'src/locale/js/en_GB.js'
             },
             en_US: {
                 src: ['locale/JSONKeys/en_US.json'],
-                dest: 'src/skin/locale/en_US.js'
+                dest: 'src/locale/js/en_US.js'
             },
             en_CA: {
                 src: ['locale/JSONKeys/en_CA.json'],
-                dest: 'src/skin/locale/en_CA.js'
+                dest: 'src/locale/js/en_CA.js'
             },
             en_GB: {
                 src: ['locale/JSONKeys/en_GB.json'],
-                dest: 'src/skin/locale/en_GB.js'
+                dest: 'src/locale/js/en_GB.js'
             },
             en_AU: {
                 src: ['locale/JSONKeys/en_AU.json'],
-                dest: 'src/skin/locale/en_AU.js'
+                dest: 'src/locale/js/en_AU.js'
             },
             es_ES: {
                 src: [
@@ -234,7 +234,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.es.js',
                   'node_modules/admin-lte/plugins/select2/i18n/es.js'
                 ],
-                dest: 'src/skin/locale/es_ES.js'
+                dest: 'src/locale/js/es_ES.js'
             },
             fr_FR: {
                 src: [
@@ -243,7 +243,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.fr.js', 
                   'node_modules/admin-lte/plugins/select2/i18n/fr.js'
                 ],
-                dest: 'src/skin/locale/fr_FR.js'
+                dest: 'src/locale/js/fr_FR.js'
             },
             hu_HU: {
                 src: [
@@ -252,7 +252,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.hu.js',
                   'node_modules/admin-lte/plugins/select2/i18n/hu.js'
                 ],
-                dest: 'src/skin/locale/hu_HU.js'
+                dest: 'src/locale/js/hu_HU.js'
             },
             th_TH: {
                 src: [
@@ -261,7 +261,7 @@ module.exports = function (grunt) {
                     'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.th.js',
                     'node_modules/admin-lte/plugins/select2/i18n/th.js'
                 ],
-                dest: 'src/skin/locale/th_TH.js'
+                dest: 'src/locale/js/th_TH.js'
             },
             it_IT: {
                 src: [
@@ -270,7 +270,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.it.js',
                   'node_modules/admin-lte/plugins/select2/i18n/it.js'
                 ],
-                dest: 'src/skin/locale/it_IT.js'
+                dest: 'src/locale/js/it_IT.js'
             },
             nb_NO: {
                 src: [
@@ -279,7 +279,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.nb.js',
                   'node_modules/admin-lte/plugins/select2/i18n/nb.js'
                 ],
-                dest: 'src/skin/locale/nb_NO.js'
+                dest: 'src/locale/js/nb_NO.js'
             },
             nl_NL: {
                 src: [
@@ -288,7 +288,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.nl.js',
                   'node_modules/admin-lte/plugins/select2/i18n/nl.js'
                 ],
-                dest: 'src/skin/locale/nl_NL.js'
+                dest: 'src/locale/js/nl_NL.js'
             },
             pl_PL: {
                 src: [
@@ -297,7 +297,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.pl.js',
                   'node_modules/admin-lte/plugins/select2/i18n/pl.js'
                 ],
-                dest: 'src/skin/locale/pl_PL.js'
+                dest: 'src/locale/js/pl_PL.js'
             },
             pt_BR: {
                 src: [
@@ -306,7 +306,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js',
                   'node_modules/admin-lte/plugins/select2/i18n/pt-BR.js'
                 ],
-                dest: 'src/skin/locale/pt_BR.js'
+                dest: 'src/locale/js/pt_BR.js'
             },
             ro_RO: {
                 src: [
@@ -315,7 +315,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ro.js',
                   'node_modules/admin-lte/plugins/select2/i18n/ro.js'
                 ],
-                dest: 'src/skin/locale/ro_RO.js'
+                dest: 'src/locale/js/ro_RO.js'
             },
             ru_RU: {
                 src: [
@@ -324,14 +324,14 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ru.js',
                   'node_modules/admin-lte/plugins/select2/i18n/ru.js'
                 ],
-                dest: 'src/skin/locale/ru_RU.js'
+                dest: 'src/locale/js/ru_RU.js'
             },
             sq_AL: {
                 src: [
                   'locale/JSONKeys/sq_AL.json',
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sq.js'
                 ],
-                dest: 'src/skin/locale/sq_AL.js'
+                dest: 'src/locale/js/sq_AL.js'
             },
             sv_SE: {
                 src: [
@@ -340,7 +340,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sv.js',
                     'node_modules/admin-lte/plugins/select2/i18n/sv.js'
                 ],
-                dest: 'src/skin/locale/sv_SE.js'
+                dest: 'src/locale/js/sv_SE.js'
             },
             vi_VN: {
                 src: [
@@ -349,7 +349,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.vi.js',
                   'node_modules/admin-lte/plugins/select2/i18n/vi.js'
                 ],
-                dest: 'src/skin/locale/vi_VN.js'
+                dest: 'src/locale/js/vi_VN.js'
             },
             zh_CN: {
                 src: [
@@ -358,7 +358,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js',
                   'node_modules/admin-lte/plugins/select2/i18n/zh-CN.js'
                 ],
-                dest: 'src/skin/locale/zh_CN.js'
+                dest: 'src/locale/js/zh_CN.js'
             },
             zh_TW: {
                 src: [
@@ -367,7 +367,7 @@ module.exports = function (grunt) {
                   'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-TW.js',
                   'node_modules/admin-lte/plugins/select2/i18n/zh-TW.js'
                 ],
-                dest: 'src/skin/locale/zh_TW.js'
+                dest: 'src/locale/js/zh_TW.js'
             }
         },
         'curl-dir': {
