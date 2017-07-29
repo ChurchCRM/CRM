@@ -7,6 +7,7 @@ class LocaleInfo
     public $locale;
     public $language;
     public $country;
+    public $dataTables;
 
     public function __construct($locale)
     {
@@ -17,6 +18,7 @@ class LocaleInfo
             if ($value["locale"] == $locale) {
                 $this->language = $value["languageCode"];
                 $this->country = $value["countryCode"];
+                $this->dataTables = $value["dataTables"];
             }
         }
     }
@@ -39,6 +41,11 @@ class LocaleInfo
     public function getCountryCode()
     {
         return $this->country;
+    }
+
+    public function getDataTables()
+    {
+        return $this->dataTables;
     }
 
     public function getThousandSeparator()
