@@ -10,7 +10,7 @@ Feature: Person View
     And I am on "/PersonView.php?PersonID=1"
     And I follow "Assigned Groups"
     And I wait for AJAX to finish
-    And I follow "#addGroup"
+    And I click the "#addGroup" element
     Then I should see "Select Group and Role"
     And I fill in select2 input "targetGroupSelection" with "Class 1-3" and select "Class 1-3"
     And I fill in select2 input "targetRoleSelection" with "Student" and select "Student"
