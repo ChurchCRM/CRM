@@ -475,7 +475,7 @@ module.exports = function (grunt) {
                     filters: ["translated"],
                     tags: '<%= package.version %>',
                     type: 'po', // export type (check out the doc)
-                    dest: 'src/locale/?/LC_MESSAGES/messages.po'
+                    dest: 'src/locale/po/?/messages.po'
                     // grunt style dest files
                 }
             },
@@ -485,7 +485,7 @@ module.exports = function (grunt) {
                     filters: ["translated"],
                     tags: '<%= package.version %>',
                     type: 'mo', // export type (check out the doc)
-                    dest: 'src/locale/?/LC_MESSAGES/messages.mo'
+                    dest: 'src/locale/po/?/messages.mo'
                     // grunt style dest files
                 }
             },
