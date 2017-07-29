@@ -5939,7 +5939,7 @@ msgstr "Ruta y archivo de Hoja Membretada de Iglesia"
 
 #: ChurchCRM/dto/SystemConfig.php:181
 msgid "lookup user images on Gravatar when no local image is present"
-msgstr "buscar imágenes en Gravatar cuando no esté presente una imagen local"
+msgstr "buscar imágenes de usuario en Gravatar cuando no esté presente una imagen local"
 
 #: ChurchCRM/dto/SystemConfig.php:182
 msgid "Enable Remote Backups to Cloud Services"
@@ -8855,4 +8855,60 @@ msgstr "Miembros a separador"
 #: 
 msgid "Move"
 msgstr "Mover"
+
+#: ChurchCRM/dto/SystemConfig.php:28
+msgid "Arabic - Egypt:ar_EG"
+msgstr "Árabe - Egipto:ar_EG"
+
+#: ChurchCRM/dto/SystemConfig.php:42
+msgid "Thai:th_TH"
+msgstr "Tailandés:th_TH"
+
+#: ChurchCRM/dto/SystemConfig.php:212
+msgid "Your Church's Facebook Page"
+msgstr "Página de Facebook de Su Iglesia"
+
+#: ChurchCRM/dto/SystemConfig.php:213
+msgid "Your Church's Twitter Page"
+msgstr "Página de Twitter de Su Iglesia"
+
+#: ChurchCRM/dto/SystemConfig.php:214
+msgid "lookup user images on Google when no local image is present"
+msgstr "buscar imágenes de usuario en Google cuando no esté presente una imagen local"
+
+#: MembersDashboard.php:253
+msgid "Self Update"
+msgstr "Auto Actualizar"
+
+#: MembersDashboard.php:261
+msgid "Self Register"
+msgstr "Auto Registrar"
+
+#: MembersDashboard.php:263
+msgid "List families that were created via self registration."
+msgstr "Listar familias que fueron creadas mediante auto-registros"
+
+#: MembersDashboard.php:267
+msgid "Self Verify Updates"
+msgstr "Auto Verificar Actualizaciones"
+
+#: MembersDashboard.php:267
+msgid "Families who commented via self verify links"
+msgstr "Familias que comentaron mediante enlaces de auto verificación"
+
+#: MembersDashboard.php:271 members/online-pending-verify.php:13
+msgid "Pending Self Verify"
+msgstr "Auto Verificaciones Pendientes"
+
+#: MembersDashboard.php:271
+msgid "Families with valid self verify links"
+msgstr "Familias con enlaces de auto verificación validos"
+
+#: members/self-register.php:13
+msgid "Families Self Registration"
+msgstr "Auto Registro de Familias"
+
+#: members/self-verify-updates.php:13
+msgid "Self Verify"
+msgstr "Auto Verificar"
 
