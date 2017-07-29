@@ -4472,8 +4472,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Registro selecionado com sucesso removido do carrinho."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Seu carrinho foi esvaziado com sucesso."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Seu carrinho foi esvaziado com sucesso"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."
@@ -8351,10 +8352,6 @@ msgstr "Me direcione"
 #: api/routes/cart.php:22
 msgid "Your cart is empty"
 msgstr "O seu carrinho está vazio"
-
-#: api/routes/cart.php:25
-msgid "Your cart has been successfully emptied"
-msgstr "O seu carrinho foi esvaziado com sucesso"
 
 #: api/routes/properties.php:24 api/routes/properties.php:82
 #: api/routes/roles.php:32

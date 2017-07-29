@@ -812,7 +812,7 @@
     "Group successfully removed from the Cart.": "Gruppe fjernet fra handlekurven.",
     "Selected record successfully added to the Cart.": "Valgte posten er lagt til handlevognen.",
     "Selected record successfully removed from the Cart.": "Valgte posten slettet fra Cart.",
-    "Your cart has been successfully emptied.": "Handlekurven har blitt tømt.",
+    "Your cart has been successfully emptied": "Handlekurven har blitt tømt",
     "item(s) added to the Cart.": "element (er) lagt i handlevognen.",
     "Select Fiscal Year": "Velg Regnskapsår",
     "pm": "pm",

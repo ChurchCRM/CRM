@@ -3651,8 +3651,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Wybrany/e wpis/y pomyślnie usunięte z Koszyka"
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Koszyk pomyślnie wyczyszczony."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Koszyk pomyślnie wyczyszczony"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

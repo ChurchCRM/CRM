@@ -3509,8 +3509,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Të dhënat e zgjedhur është larguar me sukses nga Cart."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Shporta juaj ka qenë i zbrazur me sukses."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Shporta juaj ka qenë i zbrazur me sukses"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

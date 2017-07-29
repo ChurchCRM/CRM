@@ -3666,8 +3666,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Ausgewhälte Aufzeichnung wurde erfolgreich aus dem Korb entfernt."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Der Korb wurde erfogreich geleert."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Der Korb wurde erfogreich geleert"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

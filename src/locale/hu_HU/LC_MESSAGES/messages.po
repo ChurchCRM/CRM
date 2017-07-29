@@ -3609,8 +3609,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "A kiválasztott rekord sikeresen eltávolították a kosárba."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Ön kosara sikeresen kiürült."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Ön kosara sikeresen kiürült"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

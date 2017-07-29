@@ -3521,8 +3521,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Geselecteerde records zijn met success verwijderd uit het mandje."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "U mandje is met success geleegd."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "U mandje is met success geleegd"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

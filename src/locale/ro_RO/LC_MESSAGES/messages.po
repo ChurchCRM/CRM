@@ -3615,8 +3615,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Înregistrarea selectată eliminat cu succes din Cart."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Cosul tau a fost golit cu succes."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Cosul tau a fost golit cu succes"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

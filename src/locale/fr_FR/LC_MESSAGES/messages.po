@@ -4348,8 +4348,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "L&#39;enregistrement sélectionné a bien été supprimé du Panier."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Votre panier a bien été vidé."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Votre panier a bien été vidé"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."
@@ -8190,10 +8191,6 @@ msgstr "Diriger moi"
 #: api/routes/cart.php:22
 msgid "Your cart is empty"
 msgstr "Votre panier est vide"
-
-#: api/routes/cart.php:25
-msgid "Your cart has been successfully emptied"
-msgstr "Votre panier a été vidée avec succès"
 
 #: api/routes/properties.php:24 api/routes/properties.php:82
 #: api/routes/roles.php:32

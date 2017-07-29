@@ -3613,8 +3613,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Выбранная запись успешно удалены из корзины."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Ваша корзина успешно очищена."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Ваша корзина успешно очищена"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

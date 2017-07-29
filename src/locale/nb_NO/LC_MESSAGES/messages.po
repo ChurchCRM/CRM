@@ -3660,8 +3660,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Valgte posten slettet fra Cart."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Handlekurven har blitt tømt."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Handlekurven har blitt tømt"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

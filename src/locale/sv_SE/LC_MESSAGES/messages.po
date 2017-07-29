@@ -3684,7 +3684,8 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Vald post bortagen från korgen."
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
 msgstr "Korgen tömdes"
 
 #: Include/Functions.php:195

@@ -4324,8 +4324,9 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Registro seleccionado removido del Separador"
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Su Separador ha sido exitosamente vaciado "
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Su Separador ha sido exitosamente vaciado"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."
@@ -8171,10 +8172,6 @@ msgstr "Guíeme"
 #: api/routes/cart.php:22
 msgid "Your cart is empty"
 msgstr "Su separador está vacío"
-
-#: api/routes/cart.php:25
-msgid "Your cart has been successfully emptied"
-msgstr "Su separador ha sido vaciado exitosamente"
 
 #: api/routes/properties.php:24 api/routes/properties.php:82
 #: api/routes/roles.php:32

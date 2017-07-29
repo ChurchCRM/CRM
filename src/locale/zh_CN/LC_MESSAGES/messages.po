@@ -3651,7 +3651,8 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "成功地从购物车中删除选定的记录。"
 
 #: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
+#, fuzzy
+msgid "Your cart has been successfully emptied"
 msgstr "您的购物车已成功清空。"
 
 #: Include/Functions.php:195
