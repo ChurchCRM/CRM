@@ -11,6 +11,17 @@ module.exports = function (grunt) {
         return poEditorLocales;
     };
 
+    var dataTablesLang = function() {
+        var locales = grunt.file.readJSON("src/locale/locales.json");
+        DTLangs = [];
+        for (var key in locales ) {
+            var locale = locales[key];
+            DTLangs.push(locale["dataTables"]);
+
+        }
+        return DTLangs.toString();
+    };
+
 // Project configuration.
     grunt.initConfig({
         package: grunt.file.readJSON('package.json'),
@@ -361,7 +372,7 @@ module.exports = function (grunt) {
         },
         'curl-dir': {
             datatables: {
-                src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{Albanian,Chinese-traditional,Chinese,Dutch,English,French,German,Hungarian,Italian,Norwegian-Bokmal,Polish,Portuguese,Romanian,Russian,Spanish,Swedish,Vietnamese}.json'],
+                src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{'+dataTablesLang()+'}.json'],
                 dest: 'src/skin/locale/datatables'
             },
             fastclick: {
@@ -385,41 +396,6 @@ module.exports = function (grunt) {
                 files: {
                     'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
                 }
-            }
-        },
-        rename: {
-            datatables: {
-                files: [
-                    {src: ['src/skin/locale/datatables/English.json'], dest: 'src/skin/locale/datatables/en_US.json'},
-                    {src: ['src/skin/locale/datatables/German.json'], dest: 'src/skin/locale/datatables/de_DE.json'},
-                    {src: ['src/skin/locale/datatables/Spanish.json'], dest: 'src/skin/locale/datatables/es_ES.json'},
-                    {src: ['src/skin/locale/datatables/French.json'], dest: 'src/skin/locale/datatables/fr_FR.json'},
-                    {src: ['src/skin/locale/datatables/Hungarian.json'], dest: 'src/skin/locale/datatables/hu_HU.json'},
-                    {src: ['src/skin/locale/datatables/Italian.json'], dest: 'src/skin/locale/datatables/it_IT.json'},
-                    {
-                        src: ['src/skin/locale/datatables/Norwegian-Bokmal.json'],
-                        dest: 'src/skin/locale/datatables/nb_NO.json'
-                    },
-                    {src: ['src/skin/locale/datatables/Dutch.json'], dest: 'src/skin/locale/datatables/nl_NL.json'},
-                    {src: ['src/skin/locale/datatables/Polish.json'], dest: 'src/skin/locale/datatables/pl_PL.json'},
-                    {
-                        src: ['src/skin/locale/datatables/Portuguese.json'],
-                        dest: 'src/skin/locale/datatables/pt_BR.json'
-                    },
-                    {src: ['src/skin/locale/datatables/Romanian.json'], dest: 'src/skin/locale/datatables/ro_RO.json'},
-                    {src: ['src/skin/locale/datatables/Russian.json'], dest: 'src/skin/locale/datatables/ru_RU.json'},
-                    {src: ['src/skin/locale/datatables/Albanian.json'], dest: 'src/skin/locale/datatables/sq_AL.json'},
-                    {src: ['src/skin/locale/datatables/Swedish.json'], dest: 'src/skin/locale/datatables/sv_SE.json'},
-                    {
-                        src: ['src/skin/locale/datatables/Vietnamese.json'],
-                        dest: 'src/skin/locale/datatables/vi_VN.json'
-                    },
-                    {src: ['src/skin/locale/datatables/Chinese.json'], dest: 'src/skin/locale/datatables/zh_CN.json'},
-                    {
-                        src: ['src/skin/locale/datatables/Chinese-traditional.json'],
-                        dest: 'src/skin/locale/datatables/zh_TW.json'
-                    }
-                ]
             }
         },
         compress: {
@@ -604,7 +580,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-compress');
-    grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-poeditor-ab');
 }

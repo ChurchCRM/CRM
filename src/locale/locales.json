@@ -1,90 +1,112 @@
 {
   "Albanian": {
     "poEditor": "sq",
-    "locale": "sq_AL"
+    "locale": "sq_AL",
+    "dataTables": "Albanian"
   },
   "Arabic - Egypt": {
     "poEditor": "ar",
-    "locale": "ar_EG"
+    "locale": "ar_EG",
+    "dataTables": "Arabic"
   },
   "Chinese - China": {
     "poEditor": "zh-CN",
-    "locale": "zh_CN"
+    "locale": "zh_CN",
+    "dataTables": "Chinese"
   },
   "Chinese - Taiwan": {
     "poEditor": "zh-TW",
-    "locale": "zh_TW"
+    "locale": "zh_TW",
+    "dataTables": "Chinese-traditional"
   },
   "Dutch - Netherlands": {
     "poEditor": "nl",
-    "locale": "nl_NL"
+    "locale": "nl_NL",
+    "dataTables": "Dutch"
   },
   "English - Australia": {
     "poEditor": "en-au",
-    "locale": "en_AU"
+    "locale": "en_AU",
+    "dataTables": "English"
   },
   "English - Canada": {
     "poEditor": "en-ca",
-    "locale": "en_CA"
+    "locale": "en_CA",
+    "dataTables": "English"
   },
   "English - Great Britain": {
     "poEditor": "en",
-    "locale": "en_GB"
+    "locale": "en_GB",
+    "dataTables": "English"
   },
   "English - United States": {
     "poEditor": "en-US",
-    "locale": "en_US"
+    "locale": "en_US",
+    "dataTables": "English"
   },
   "French - France": {
     "poEditor": "fr",
-    "locale": "fr_FR"
+    "locale": "fr_FR",
+    "dataTables": "French"
   },
   "German - Germany": {
     "poEditor": "de",
-    "locale": "de_DE"
+    "locale": "de_DE",
+    "dataTables": "German"
   },
   "Hungarian": {
     "poEditor": "hu",
-    "locale": "hu_HU"
+    "locale": "hu_HU",
+    "dataTables": "Hungarian"
   },
   "Italian - Italy": {
     "poEditor": "it",
-    "locale": "it_IT"
+    "locale": "it_IT",
+    "dataTables": "Italian"
   },
   "Norwegian": {
     "poEditor": "nb",
-    "locale": "nb_NO"
+    "locale": "nb_NO",
+    "dataTables": "Norwegian-Bokmal"
   },
   "Polish": {
     "poEditor": "pl",
-    "locale": "pl_PL"
+    "locale": "pl_PL",
+    "dataTables": "Polish"
   },
   "Portuguese - Brazil": {
     "poEditor": "pt-br",
-    "locale": "pt_BR"
+    "locale": "pt_BR",
+    "dataTables": "Portuguese"
   },
   "Romanian - Romania": {
     "poEditor": "ro",
-    "locale": "ro_RO"
+    "locale": "ro_RO",
+    "dataTables": "Romanian"
   },
   "Russian": {
     "poEditor": "ru",
-    "locale": "ru_RU"
+    "locale": "ru_RU",
+    "dataTables": "Russian"
   },
   "Spanish - Spain": {
     "poEditor": "es",
-    "locale": "es_ES"
+    "locale": "es_ES",
+    "dataTables": "Spanish"
   },
   "Sami (Northern) (Sweden)": {
     "poEditor": "sv",
-    "locale": "sv_SE"
+    "locale": "sv_SE",
+    "dataTables": "Swedish"
   },
   "Thai": {
     "poEditor": "th",
-    "locale": "th_TH"
+    "locale": "th_TH",
+    "dataTables": "Thai"
   },
   "Vietnamese": {
     "poEditor": "vi",
-    "locale": "vi_VN"
+    "locale": "vi_VN",
+    "dataTables": "Vietnamese"
   }
 }
