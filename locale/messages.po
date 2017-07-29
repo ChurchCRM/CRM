@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-29 20:21+0000\n"
+"POT-Creation-Date: 2017-07-29 21:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2017-07-29T20:21:50.845Z\n"
-"PO-Revision-Date: 2017-07-29T20:21:50.846Z\n"
+"POT-Creation-Date: 2017-07-29T21:19:03.937Z\n"
+"PO-Revision-Date: 2017-07-29T21:19:03.938Z\n"
 
 #: api/routes/cart.php:13
 msgid "POST to cart requires a Persons array"
@@ -1058,208 +1058,116 @@ msgstr ""
 msgid "Notification for"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:21
-msgid "English - United States:en_US"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:22
-msgid "English - Canada:en_CA"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:23
-msgid "English - Australia:en_AU"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:24
-msgid "English - Great Britain:en_GB"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:25
-msgid "German - Germany:de_DE"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:26
-msgid "Spanish - Spain:es_ES"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:27
-msgid "French - France:fr_FR"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:28
-msgid "Arabic - Egypt:ar_EG"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:29 ChurchCRM/dto/SystemConfig.php:30
-msgid "Hungarian:hu_HU"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:31
-msgid "Italian - Italy:it_IT"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:32
-msgid "Norwegian:nb_NO"
-msgstr ""
-
 #: ChurchCRM/dto/SystemConfig.php:33
-msgid "Dutch - Netherlands:nl_NL"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:34
-msgid "Polish:pl_PL"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:35
-msgid "Portuguese - Brazil:pt_BR"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:36
-msgid "Romanian - Romania:ro_RO"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:37
-msgid "Russian:ru_RU"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:38
-msgid "Sami (Northern) (Sweden):se_SE"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:39
-msgid "Albanian:sq_AL"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:40
-msgid "Swedish - Sweden:sv_SE"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:41
-msgid "Vietnamese:vi_VN"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:42
-msgid "Thai:th_TH"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:43
-msgid "Chinese - China:zh_CN"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:44
-msgid "Chinese - Taiwan:zh_TW"
-msgstr ""
-
-#: ChurchCRM/dto/SystemConfig.php:56
 msgid "DEBUG"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:57
+#: ChurchCRM/dto/SystemConfig.php:34
 msgid "INFO"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:58
+#: ChurchCRM/dto/SystemConfig.php:35
 msgid "NOTICE"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:59
+#: ChurchCRM/dto/SystemConfig.php:36
 msgid "WARNING"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:60
+#: ChurchCRM/dto/SystemConfig.php:37
 msgid "ERROR"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:61
+#: ChurchCRM/dto/SystemConfig.php:38
 msgid "CRITICAL"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:62
+#: ChurchCRM/dto/SystemConfig.php:39
 msgid "ALERT"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:63
+#: ChurchCRM/dto/SystemConfig.php:40
 msgid "EMERGENCY"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:72
+#: ChurchCRM/dto/SystemConfig.php:49
 msgid "Title FirstName MiddleName LastName"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:73
+#: ChurchCRM/dto/SystemConfig.php:50
 msgid "Title FirstName MiddleInitial. LastName"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:74
+#: ChurchCRM/dto/SystemConfig.php:51
 msgid "LastName, Title FirstName MiddleName"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:75
+#: ChurchCRM/dto/SystemConfig.php:52
 msgid "LastName, Title FirstName MiddleInitial"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:76
+#: ChurchCRM/dto/SystemConfig.php:53
 msgid "FirstName MiddleName LastName"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:77
+#: ChurchCRM/dto/SystemConfig.php:54
 msgid "Title FirstName LastName"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:78
+#: ChurchCRM/dto/SystemConfig.php:55
 msgid "LastName, Title FirstName"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:87
+#: ChurchCRM/dto/SystemConfig.php:64
 msgid "Event Log severity to write, used by ORM and App Logs"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:88
+#: ChurchCRM/dto/SystemConfig.php:65
 msgid "Include only these classifications in the directory, comma seperated"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:89
+#: ChurchCRM/dto/SystemConfig.php:66
 msgid "These are the family role numbers designated as head of house"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:90
+#: ChurchCRM/dto/SystemConfig.php:67
 msgid "These are the family role numbers designated as spouse"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:91
+#: ChurchCRM/dto/SystemConfig.php:68
 msgid "These are the family role numbers designated as child"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:92
+#: ChurchCRM/dto/SystemConfig.php:69
 msgid ""
 "Session timeout length in seconds\rSet to zero to disable session timeouts."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:93
+#: ChurchCRM/dto/SystemConfig.php:70
 msgid "Queries for which user must have finance permissions to use:"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:94
+#: ChurchCRM/dto/SystemConfig.php:71
 msgid ""
 "Should only administrators have access to the CSV export system and "
 "directory report?"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:95
+#: ChurchCRM/dto/SystemConfig.php:72
 msgid "Minimum length a user may set their password to"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:96
+#: ChurchCRM/dto/SystemConfig.php:73
 msgid ""
 "Minimum amount that a new password must differ from the old one (# of "
 "characters changed)\rSet to zero to disable this feature"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:97
+#: ChurchCRM/dto/SystemConfig.php:74
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:98
+#: ChurchCRM/dto/SystemConfig.php:75
 msgid ""
 "Maximum number of failed logins to allow before a user account is locked."
 "\rOnce the maximum has been reached, an administrator must re-enable the "
@@ -1267,185 +1175,185 @@ msgid ""
 "attacks.\rSet to zero to disable this feature."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:99
+#: ChurchCRM/dto/SystemConfig.php:76
 msgid ""
 "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:100
+#: ChurchCRM/dto/SystemConfig.php:77
 msgid "Default City"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:101
+#: ChurchCRM/dto/SystemConfig.php:78
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:103
+#: ChurchCRM/dto/SystemConfig.php:80
 msgid "Default account for receiving a copy of all emails"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:104
+#: ChurchCRM/dto/SystemConfig.php:81
 msgid "SMTP Server timeout in sec"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:105
+#: ChurchCRM/dto/SystemConfig.php:82
 msgid "SMTP Server Address (mail.server.com:25)"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:106
+#: ChurchCRM/dto/SystemConfig.php:83
 msgid "Does your SMTP server require auththentication (username/password)?"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:107
+#: ChurchCRM/dto/SystemConfig.php:84
 msgid "SMTP Username"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:108
+#: ChurchCRM/dto/SystemConfig.php:85
 msgid "SMTP Password"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:109
+#: ChurchCRM/dto/SystemConfig.php:86
 msgid ""
 "Unavailable person info inherited from assigned family for display?\rThis "
 "option causes certain info from a person's assigned family record to be"
 "\rdisplayed IF the corresponding info has NOT been entered for that person. "
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:113
+#: ChurchCRM/dto/SystemConfig.php:90
 msgid "Internationalization (I18n) support"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:114
+#: ChurchCRM/dto/SystemConfig.php:91
 msgid "First month of the fiscal year"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:115
+#: ChurchCRM/dto/SystemConfig.php:92
 msgid "Google map API requires a unique key"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:116
+#: ChurchCRM/dto/SystemConfig.php:93
 msgid "Bing map API requires a unique key"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:117
+#: ChurchCRM/dto/SystemConfig.php:94
 msgid "Google Maps Zoom"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:118
+#: ChurchCRM/dto/SystemConfig.php:95
 msgid "Latitude of the church, used to center the Google map"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:119
+#: ChurchCRM/dto/SystemConfig.php:96
 msgid "Longitude of the church, used to center the Google map"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:120
+#: ChurchCRM/dto/SystemConfig.php:97
 msgid ""
 "Set true to disable entering addresses in Person Editor.  Set false to "
 "enable entering addresses in Person Editor."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:121
+#: ChurchCRM/dto/SystemConfig.php:98
 msgid ""
 "Set true to disable entering Friend Date in Person Editor.  Set false to "
 "enable entering Friend Date in Person Editor."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:122
+#: ChurchCRM/dto/SystemConfig.php:99
 msgid ""
 "Set true to disable management of newsletter subscriptions in the Family "
 "Editor."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:123
+#: ChurchCRM/dto/SystemConfig.php:100
 msgid ""
 "Set true to disable entering Wedding Date in Family Editor.  Set false to "
 "enable entering Wedding Date in Family Editor."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:124
+#: ChurchCRM/dto/SystemConfig.php:101
 msgid ""
 "Set true to disable entering Latitude and Longitude in Family Editor.  Set "
 "false to enable entering Latitude and Longitude in Family Editor.  Lookups "
 "are still performed, just not displayed."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:125
+#: ChurchCRM/dto/SystemConfig.php:102
 msgid "Set true to enable use of donation envelopes"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:126
+#: ChurchCRM/dto/SystemConfig.php:103
 msgid ""
 "Enter in HTML code which will be displayed as a header at the top of each "
 "page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A "
 "SECOND TIME to view the new header."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:127
+#: ChurchCRM/dto/SystemConfig.php:104
 msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:128
+#: ChurchCRM/dto/SystemConfig.php:105
 msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:129
+#: ChurchCRM/dto/SystemConfig.php:106
 msgid "Select GeoCoder Provider"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:130
+#: ChurchCRM/dto/SystemConfig.php:107
 msgid "Number of checks for Deposit Slip Report"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:131
+#: ChurchCRM/dto/SystemConfig.php:108
 msgid "Set true to enable use of scanned checks"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:132
+#: ChurchCRM/dto/SystemConfig.php:109
 msgid "Unit used to measure distance, miles or km."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:132
+#: ChurchCRM/dto/SystemConfig.php:109
 msgid "miles"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:132
+#: ChurchCRM/dto/SystemConfig.php:109
 msgid "kilometers"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:133
+#: ChurchCRM/dto/SystemConfig.php:110
 msgid "Time zone"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:134
+#: ChurchCRM/dto/SystemConfig.php:111
 msgid "Names of markers for Google Maps in order of classification"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:135
+#: ChurchCRM/dto/SystemConfig.php:112
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:136
+#: ChurchCRM/dto/SystemConfig.php:113
 msgid "Enable non-deductible payments"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:137
+#: ChurchCRM/dto/SystemConfig.php:114
 msgid "Electronic Transaction Processor"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:137
+#: ChurchCRM/dto/SystemConfig.php:114
 msgid "Vanco"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:137
+#: ChurchCRM/dto/SystemConfig.php:114
 msgid "Authorize.NET"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:138
+#: ChurchCRM/dto/SystemConfig.php:115
 msgid "Set true to enable family self registration."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:146
+#: ChurchCRM/dto/SystemConfig.php:123
 msgid ""
 "ChurchCRM has been registered.  The ChurchCRM team uses registration "
 "information to track usage.  This information is kept confidential and never "
@@ -1453,288 +1361,288 @@ msgid ""
 "admin menu changes to update registration."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:147
+#: ChurchCRM/dto/SystemConfig.php:124
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:148
+#: ChurchCRM/dto/SystemConfig.php:125
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:151
+#: ChurchCRM/dto/SystemConfig.php:128
 msgid "Church City"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:152
+#: ChurchCRM/dto/SystemConfig.php:129
 msgid "Church State"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:153
+#: ChurchCRM/dto/SystemConfig.php:130
 msgid "Church Zip"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:154
+#: ChurchCRM/dto/SystemConfig.php:131
 msgid "Church Phone"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:155 Register.php:52
+#: ChurchCRM/dto/SystemConfig.php:132 Register.php:52
 msgid "Church Email"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:156
+#: ChurchCRM/dto/SystemConfig.php:133
 msgid "Home area code of the church"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:157 ChurchCRM/dto/SystemConfig.php:177
+#: ChurchCRM/dto/SystemConfig.php:134 ChurchCRM/dto/SystemConfig.php:154
 msgid ""
 "Verbage for top line of tax report. Dates will be appended to the end of "
 "this line."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:158 ChurchCRM/dto/SystemConfig.php:159
-#: ChurchCRM/dto/SystemConfig.php:178 ChurchCRM/dto/SystemConfig.php:179
+#: ChurchCRM/dto/SystemConfig.php:135 ChurchCRM/dto/SystemConfig.php:136
+#: ChurchCRM/dto/SystemConfig.php:155 ChurchCRM/dto/SystemConfig.php:156
 msgid "Verbage for bottom line of tax report."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:160
+#: ChurchCRM/dto/SystemConfig.php:137
 msgid "Tax Report signer"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:161
+#: ChurchCRM/dto/SystemConfig.php:138
 msgid "Verbage for the pledge reminder report"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:162
+#: ChurchCRM/dto/SystemConfig.php:139
 msgid "Pledge Reminder Signer"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:163
+#: ChurchCRM/dto/SystemConfig.php:140
 msgid "Verbage for the pledge reminder report - No record of a pledge"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:164
+#: ChurchCRM/dto/SystemConfig.php:141
 msgid "Verbage for the pledge reminder report - No record of payments"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:165 ChurchCRM/dto/SystemConfig.php:166
-#: ChurchCRM/dto/SystemConfig.php:167 ChurchCRM/dto/SystemConfig.php:168
-#: ChurchCRM/dto/SystemConfig.php:169 ChurchCRM/dto/SystemConfig.php:170
+#: ChurchCRM/dto/SystemConfig.php:142 ChurchCRM/dto/SystemConfig.php:143
+#: ChurchCRM/dto/SystemConfig.php:144 ChurchCRM/dto/SystemConfig.php:145
+#: ChurchCRM/dto/SystemConfig.php:146 ChurchCRM/dto/SystemConfig.php:147
 msgid "Verbage for the database information confirmation and correction report"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:171
+#: ChurchCRM/dto/SystemConfig.php:148
 msgid "Database information confirmation and correction report signer"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:172 ChurchCRM/dto/SystemConfig.php:173
+#: ChurchCRM/dto/SystemConfig.php:149 ChurchCRM/dto/SystemConfig.php:150
 msgid "Verbage for the pledge summary report"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:174 ChurchCRM/dto/SystemConfig.php:175
+#: ChurchCRM/dto/SystemConfig.php:151 ChurchCRM/dto/SystemConfig.php:152
 msgid "Verbage for the directory report"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:176
+#: ChurchCRM/dto/SystemConfig.php:153
 msgid "Church Letterhead path and file"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:180
+#: ChurchCRM/dto/SystemConfig.php:157
 msgid "Church Checking Account Number"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:181
+#: ChurchCRM/dto/SystemConfig.php:158
 msgid "lookup user images on Gravatar when no local image is present"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:182
+#: ChurchCRM/dto/SystemConfig.php:159
 msgid "Enable Remote Backups to Cloud Services"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:183
+#: ChurchCRM/dto/SystemConfig.php:160
 msgid "Cloud Service Type (Supported values: WebDAV, Local)"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:183
+#: ChurchCRM/dto/SystemConfig.php:160
 msgid "WebDAV"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:183
+#: ChurchCRM/dto/SystemConfig.php:160
 msgid "Local"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:184
+#: ChurchCRM/dto/SystemConfig.php:161
 msgid "Remote Backup Endpoint"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:185
+#: ChurchCRM/dto/SystemConfig.php:162
 msgid "Remote Backup Username"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:186
+#: ChurchCRM/dto/SystemConfig.php:163
 msgid "Remote Backup Password"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:187
+#: ChurchCRM/dto/SystemConfig.php:164
 msgid "Interval in Hours for Automatic Remote Backups"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:188
+#: ChurchCRM/dto/SystemConfig.php:165
 msgid "Last Backup Timestamp"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:189
+#: ChurchCRM/dto/SystemConfig.php:166
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:190
+#: ChurchCRM/dto/SystemConfig.php:167
 msgid "Enable Integrity Check"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:191
+#: ChurchCRM/dto/SystemConfig.php:168
 msgid "Interval in Hours for Integrity Check"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:192
+#: ChurchCRM/dto/SystemConfig.php:169
 msgid "Last Integrity Check Timestamp"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:194
+#: ChurchCRM/dto/SystemConfig.php:171
 msgid "Used to end a letter before Signer"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:195
+#: ChurchCRM/dto/SystemConfig.php:172
 msgid "Text before name in emails/reports"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:196
+#: ChurchCRM/dto/SystemConfig.php:173
 msgid "Google Analytics Tracking Code"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:198
+#: ChurchCRM/dto/SystemConfig.php:175
 msgid "Deposit ticket type.  QBDT - Quickbooks"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:199
+#: ChurchCRM/dto/SystemConfig.php:176
 msgid ""
 "Set true to allow empty lastname in Person Editor.  Set false to validate "
 "last name and inherit from family when left empty."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:201
+#: ChurchCRM/dto/SystemConfig.php:178
 msgid "Display bill counts on deposit slip"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:202
+#: ChurchCRM/dto/SystemConfig.php:179
 msgid "ChurchCRM Cloud Access URL"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:203
+#: ChurchCRM/dto/SystemConfig.php:180
 msgid "Nexmo SMS API Key"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:204
+#: ChurchCRM/dto/SystemConfig.php:181
 msgid "Nexmo SMS API Secret"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:205
+#: ChurchCRM/dto/SystemConfig.php:182
 msgid "Nexmo SMS From Number"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:206
+#: ChurchCRM/dto/SystemConfig.php:183
 msgid "OpenLP URL"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:207
+#: ChurchCRM/dto/SystemConfig.php:184
 msgid "OpenLP Username"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:208
+#: ChurchCRM/dto/SystemConfig.php:185
 msgid "OpenLP Password"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:209
+#: ChurchCRM/dto/SystemConfig.php:186
 msgid "KioskVisibilityTimestamp"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:210
+#: ChurchCRM/dto/SystemConfig.php:187
 msgid "Show/Hide Lost Password Link on the login screen"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:211
+#: ChurchCRM/dto/SystemConfig.php:188
 msgid "Your Church's Website"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:212
+#: ChurchCRM/dto/SystemConfig.php:189
 msgid "Your Church's Facebook Page"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:213
+#: ChurchCRM/dto/SystemConfig.php:190
 msgid "Your Church's Twitter Page"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:214
+#: ChurchCRM/dto/SystemConfig.php:191
 msgid "lookup user images on Google when no local image is present"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:221
+#: ChurchCRM/dto/SystemConfig.php:198
 msgid "Church Information"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:222
+#: ChurchCRM/dto/SystemConfig.php:199
 msgid "User setup"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:223
+#: ChurchCRM/dto/SystemConfig.php:200
 msgid "Email Setup"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:224
+#: ChurchCRM/dto/SystemConfig.php:201
 msgid "Member Setup"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:225
+#: ChurchCRM/dto/SystemConfig.php:202
 msgid "Map Settings"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:226
+#: ChurchCRM/dto/SystemConfig.php:203
 msgid "Report Settings"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:227
+#: ChurchCRM/dto/SystemConfig.php:204
 msgid "Financial Settings"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:228 Include/Footer.php:144
+#: ChurchCRM/dto/SystemConfig.php:205 Include/Footer.php:144
 #: SystemSettings.php:43
 msgid "System Settings"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:229
+#: ChurchCRM/dto/SystemConfig.php:206
 msgid "Backup"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:230
+#: ChurchCRM/dto/SystemConfig.php:207
 msgid "Localization"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:231
+#: ChurchCRM/dto/SystemConfig.php:208
 msgid "Integration"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:283 ChurchCRM/dto/SystemConfig.php:295
-#: ChurchCRM/dto/SystemConfig.php:308
+#: ChurchCRM/dto/SystemConfig.php:260 ChurchCRM/dto/SystemConfig.php:272
+#: ChurchCRM/dto/SystemConfig.php:285
 msgid "An invalid configuration name has been requested"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:326
+#: ChurchCRM/dto/SystemConfig.php:303
 msgid "An invalid configuration id has been requested"
 msgstr ""
 
@@ -8940,6 +8848,94 @@ msgstr ""
 
 #: settings-countries.php:257
 msgid "Zimbabwe"
+msgstr ""
+
+#: settings-locales.php:2
+msgid "Albanian"
+msgstr ""
+
+#: settings-locales.php:3
+msgid "Arabic - Egypt"
+msgstr ""
+
+#: settings-locales.php:4
+msgid "Chinese - China"
+msgstr ""
+
+#: settings-locales.php:5
+msgid "Chinese - Taiwan"
+msgstr ""
+
+#: settings-locales.php:6
+msgid "Dutch - Netherlands"
+msgstr ""
+
+#: settings-locales.php:7
+msgid "English - Australia"
+msgstr ""
+
+#: settings-locales.php:8
+msgid "English - Canada"
+msgstr ""
+
+#: settings-locales.php:9
+msgid "English - Great Britain"
+msgstr ""
+
+#: settings-locales.php:10
+msgid "English - United States"
+msgstr ""
+
+#: settings-locales.php:11
+msgid "French - France"
+msgstr ""
+
+#: settings-locales.php:12
+msgid "German - Germany"
+msgstr ""
+
+#: settings-locales.php:13
+msgid "Hungarian"
+msgstr ""
+
+#: settings-locales.php:14
+msgid "Italian - Italy"
+msgstr ""
+
+#: settings-locales.php:15
+msgid "Norwegian"
+msgstr ""
+
+#: settings-locales.php:16
+msgid "Polish"
+msgstr ""
+
+#: settings-locales.php:17
+msgid "Portuguese - Brazil"
+msgstr ""
+
+#: settings-locales.php:18
+msgid "Romanian - Romania"
+msgstr ""
+
+#: settings-locales.php:19
+msgid "Russian"
+msgstr ""
+
+#: settings-locales.php:20
+msgid "Spanish - Spain"
+msgstr ""
+
+#: settings-locales.php:21
+msgid "Sami (Northern) (Sweden)"
+msgstr ""
+
+#: settings-locales.php:22
+msgid "Thai"
+msgstr ""
+
+#: settings-locales.php:23
+msgid "Vietnamese"
 msgstr ""
 
 #: userconfig_ucfg.php:2
