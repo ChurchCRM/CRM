@@ -31,7 +31,7 @@
     "poEditor": "en",
     "locale": "en_GB"
   },
-  "English - USA": {
+  "English - United States": {
     "poEditor": "en-US",
     "locale": "en_US"
   },
@@ -75,7 +75,7 @@
     "poEditor": "es",
     "locale": "es_ES"
   },
-  "Swedish - Sweden": {
+  "Sami (Northern) (Sweden)": {
     "poEditor": "sv",
     "locale": "sv_SE"
   },
