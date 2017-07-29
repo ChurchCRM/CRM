@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-27 15:01+0000\n"
+"POT-Creation-Date: 2017-07-29 20:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2017-07-27T15:01:38.157Z\n"
-"PO-Revision-Date: 2017-07-27T15:01:38.157Z\n"
+"POT-Creation-Date: 2017-07-29T20:21:50.845Z\n"
+"PO-Revision-Date: 2017-07-29T20:21:50.846Z\n"
 
 #: api/routes/cart.php:13
 msgid "POST to cart requires a Persons array"
@@ -35,7 +35,7 @@ msgstr ""
 msgid "Your cart is empty"
 msgstr ""
 
-#: api/routes/cart.php:25
+#: api/routes/cart.php:25 Include/Functions.php:177
 msgid "Your cart has been successfully emptied"
 msgstr ""
 
@@ -4905,10 +4905,6 @@ msgstr ""
 
 #: Include/Functions.php:171
 msgid "Selected record successfully removed from the Cart."
-msgstr ""
-
-#: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
 msgstr ""
 
 #: Include/Functions.php:195
