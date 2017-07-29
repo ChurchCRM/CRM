@@ -25,7 +25,6 @@
         "grunt-contrib-copy": "1.0.0",
         "grunt-contrib-compress": "1.4.1",
         "grunt-contrib-sass": "1.0.0",
-        "grunt-contrib-rename": "0.0.3",
         "node-sha1": "1.0.1",
         "grunt-poeditor-ab": "0.1.9"
     },
@@ -46,7 +45,7 @@
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
-        "postinstall": "grunt concat && grunt rename",
+        "postinstall": "grunt concat",
         "locale-gen": "locale/update-locale.sh",
         "locale-download": "grunt updateFromPOeditor",
         "package": "grunt generateSignatures && grunt compress",
