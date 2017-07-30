@@ -46,7 +46,7 @@
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
-        "locale-download": "grunt updateFromPOeditor",
+        "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles",
         "package": "grunt generateSignatures && grunt compress",
         "demosite": "scripts/demosite.sh",
         "changelog-gen": "scripts/gen-changelogs.sh",
