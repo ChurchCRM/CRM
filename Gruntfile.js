@@ -546,6 +546,37 @@ module.exports = function (grunt) {
         grunt.task.run(['poeditor']);
     });
 
+    grunt.registerTask('genLocaleJSFiles', '', function () {
+        var locales = grunt.file.readJSON("src/locale/locales.json");
+        poEditorLocales = {};
+        for (var key in locales ) {
+            var localeConfig = locales[key];
+            var locale = localeConfig["locale"];
+            var countryCode = localeConfig["countryCode"];
+            var languageCode = localeConfig["languageCode"];
+            var enableFullCalendar = localeConfig["fullCalendar"];
+            var enableDatePicker = localeConfig["datePicker"];
+            var enableSelect2 = localeConfig["select2"];
+
+            console.log('locale/JSONKeys/'+locale+'.json');
+            poTerms = grunt.file.read('locale/JSONKeys/'+locale+'.json');
+            jsFileContent = "try {window.CRM.i18keys = " + poTerms + ";} catch(e) {}";
+
+            if (enableFullCalendar) {
+                fullCalendar = grunt.file.read('node_modules/fullcalendar/dist/locale/'+languageCode+'.js');
+                jsFileContent =+ '\n' + "try {"+fullCalendar+"} catch(e) {}";
+            }
+            if (enableDatePicker) {
+                datePicker = grunt.file.read('node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.'+languageCode+'.js');
+                jsFileContent =+ '\n' + "try {"+datePicker+"} catch(e) {}"
+            }
+            if (enableSelect2) {
+                select2 = grunt.file.read('node_modules/admin-lte/plugins/select2/i18n/'+languageCode+'.js');
+                jsFileContent =+ '\n' + "try {"+select2+"} catch(e) {}"
+            }
+            grunt.file.write('src/locale/js/'+locale+'.js', jsFileContent );
+        }
+    });
 
     grunt.registerMultiTask('updateVersions', 'Update Files to match NPM version', function () {
         var version = this.data.version;
