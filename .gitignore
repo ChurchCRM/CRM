@@ -44,6 +44,7 @@ src/skin/i18next
 
 #locale files
 src/locale/datatables
+src/locale/js
 
 # Configuration files with passwords
 src/Include/Config.php
