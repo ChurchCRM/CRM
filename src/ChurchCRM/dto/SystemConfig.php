@@ -16,37 +16,14 @@ class SystemConfig
 
   private static function getSupportedLocales()
   {
-    $languages = [
-        "Choices" => [
-            gettext("English - United States:en_US"),
-            gettext("English - Canada:en_CA"),
-            gettext("English - Australia:en_AU"),
-            gettext("English - Great Britain:en_GB"),
-            gettext("German - Germany:de_DE"),
-            gettext("Spanish - Spain:es_ES"),
-            gettext("French - France:fr_FR"),
-            gettext("Arabic - Egypt:ar_EG"),
-            gettext("Hungarian:hu_HU"),
-            gettext("Hungarian:hu_HU"),
-            gettext("Italian - Italy:it_IT"),
-            gettext("Norwegian:nb_NO"),
-            gettext("Dutch - Netherlands:nl_NL"),
-            gettext("Polish:pl_PL"),
-            gettext("Portuguese - Brazil:pt_BR"),
-            gettext("Romanian - Romania:ro_RO"),
-            gettext("Russian:ru_RU"),
-            gettext("Sami (Northern) (Sweden):se_SE"),
-            gettext("Albanian:sq_AL"),
-            gettext("Swedish - Sweden:sv_SE"),
-            gettext("Vietnamese:vi_VN"),
-            gettext("Thai:th_TH"),
-            gettext("Chinese - China:zh_CN"),
-            gettext("Chinese - Taiwan:zh_TW")
-        ]
-    ];
+      $localesFile = file_get_contents(SystemURLs::getDocumentRoot()."/locale/locales.json");
+      $locales = json_decode($localesFile, true);
+      $languagesChoices = [];
+      foreach ($locales as $key => $value) {
+          array_push($languagesChoices, gettext($key).":".$value["locale"]);
+      }
 
-    return $languages;
-
+      return ["Choices" => $languagesChoices ];
   }
 
     public static function getMonoLogLevels()
@@ -339,11 +316,11 @@ class SystemConfig
 
         return $hasValidSettings;
     }
-    
+
     public static function hasValidSMSServerSettings() {
       return (!empty(self::getValue("sNexmoAPIKey"))) && (!empty(self::getValue("sNexmoAPISecret"))) && (!empty(self::getValue("sNexmoFromNumber")));
     }
-    
+
     public static function hasValidOpenLPSettings() {
        return (!empty(self::getValue("sOLPURL")));
     }

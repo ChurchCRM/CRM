@@ -1116,7 +1116,7 @@ msgstr "Titel der Seite"
 msgid "Use Title Page"
 msgstr "Gebrauche Titelseite"
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "Name der Kirche"
 
@@ -1969,7 +1969,7 @@ msgstr "Berichts Überschrift:"
 msgid "Graphic"
 msgstr "Grafik"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Adresse der Kirche"
 
@@ -3665,9 +3665,10 @@ msgstr "Ausgewählte Aufzeichnung wurde erfolgreich dem Korb hinzugefügt."
 msgid "Selected record successfully removed from the Cart."
 msgstr "Ausgewhälte Aufzeichnung wurde erfolgreich aus dem Korb entfernt."
 
-#: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Der Korb wurde erfogreich geleert."
+#: api/routes/cart.php:25 Include/Functions.php:177
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Der Korb wurde erfogreich geleert"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."

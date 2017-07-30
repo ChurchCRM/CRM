@@ -1112,7 +1112,7 @@ msgstr "扉页"
 msgid "Use Title Page"
 msgstr "使用标题页"
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "教会名称"
 
@@ -1962,7 +1962,7 @@ msgstr "报告标题："
 msgid "Graphic"
 msgstr "图形"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr "教会地址"
 
@@ -3650,8 +3650,9 @@ msgstr "选择记录成功添加到购物车。"
 msgid "Selected record successfully removed from the Cart."
 msgstr "成功地从购物车中删除选定的记录。"
 
-#: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
+#: api/routes/cart.php:25 Include/Functions.php:177
+#, fuzzy
+msgid "Your cart has been successfully emptied"
 msgstr "您的购物车已成功清空。"
 
 #: Include/Functions.php:195

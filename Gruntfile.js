@@ -1,35 +1,21 @@
 module.exports = function (grunt) {
 
+    var poLocales = function() {
+        var locales = grunt.file.readJSON("src/locale/locales.json");
+        poEditorLocales = {};
+        for (var key in locales ) {
+            var locale = locales[key];
+            var poLocaleName = locale["poEditor"];
+            poEditorLocales[poLocaleName] = locale["locale"];
+        }
+        return poEditorLocales;
+    };
 
 // Project configuration.
     grunt.initConfig({
         package: grunt.file.readJSON('package.json'),
         pkg: grunt.file.readJSON('package.json'),
         buildConfig: grunt.file.readJSON('BuildConfig.json'),
-        languages: {
-            'ar': 'ar_EG',
-            'de': 'de_DE',
-            'en-au': 'en_AU',
-            'en-ca': 'en_CA',
-            'en': 'en_GB',
-            'es': 'es_ES',
-            'fr': 'fr_FR',
-            'hu': 'hu_HU',
-            'it': 'it_IT',
-            'nb': 'nb_NO',
-            'nl': 'nl_NL',
-            'pl': 'pl_PL',
-            'pt-br': 'pt_BR',
-            'ro': 'ro_RO',
-            'ru': 'ru_RU',
-            'sq': 'sq_AL',
-            'sv': 'sv_SE',
-            'th': 'th_TH',
-            'vi': 'vi_VN',
-            'zh-CN': 'zh_CN',
-            'zh-TW': 'zh_TW',
-            'en-US': 'en_US'
-        },
         projectFiles: [
             '**',
             '**/.*',
@@ -539,7 +525,7 @@ module.exports = function (grunt) {
             },
             options: {
                 project_id: '77079',
-                languages: '<%= languages %>',
+                languages: poLocales(),
                 api_token: '<%= buildConfig.POEditor.token %>'
             }
         },

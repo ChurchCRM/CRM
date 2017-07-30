@@ -1081,7 +1081,7 @@ msgstr "Faqja Titulli"
 msgid "Use Title Page"
 msgstr "Përdorni titull në faqe"
 
-#: ChurchCRM/dto/SystemConfig.php:149 DirectoryReports.php:246 Register.php:45
+#: ChurchCRM/dto/SystemConfig.php:126 DirectoryReports.php:246 Register.php:45
 msgid "Church Name"
 msgstr "Emri Kisha"
 
@@ -1905,7 +1905,7 @@ msgstr "Raporti Titulli:"
 msgid "Graphic"
 msgstr "Grafik"
 
-#: ChurchCRM/dto/SystemConfig.php:150 FinancialReports.php:295
+#: ChurchCRM/dto/SystemConfig.php:127 FinancialReports.php:295
 msgid "Church Address"
 msgstr "Kisha Adresa"
 
@@ -3508,9 +3508,10 @@ msgstr "Të dhënat e zgjedhur është shtuar me sukses në qerre."
 msgid "Selected record successfully removed from the Cart."
 msgstr "Të dhënat e zgjedhur është larguar me sukses nga Cart."
 
-#: Include/Functions.php:177
-msgid "Your cart has been successfully emptied."
-msgstr "Shporta juaj ka qenë i zbrazur me sukses."
+#: api/routes/cart.php:25 Include/Functions.php:177
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "Shporta juaj ka qenë i zbrazur me sukses"
 
 #: Include/Functions.php:195
 msgid "item(s) added to the Cart."
@@ -3893,7 +3894,7 @@ msgstr "Fondesh"
 msgid "Deposit Type"
 msgstr "Lloji Depozita"
 
-#: ChurchCRM/dto/SystemConfig.php:226
+#: ChurchCRM/dto/SystemConfig.php:203
 msgid "Report Settings"
 msgstr "Raporti Cilësimet"
 
