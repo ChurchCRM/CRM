@@ -20,7 +20,6 @@
     "devDependencies": {
         "grunt": "1.0.1",
         "grunt-curl": "2.2.0",
-        "grunt-contrib-concat": "1.0.1",
         "grunt-contrib-clean": "1.0.0",
         "grunt-contrib-copy": "1.0.0",
         "grunt-contrib-compress": "1.4.1",
@@ -45,7 +44,7 @@
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
-        "postinstall": "grunt concat",
+        "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
         "locale-download": "grunt updateFromPOeditor",
         "package": "grunt generateSignatures && grunt compress",

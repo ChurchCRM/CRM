@@ -160,216 +160,6 @@ module.exports = function (grunt) {
                 ]
             }
         },
-        concat: {
-            options: {
-                separator: ';\n\n',
-                banner: '/*! <%= package.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-                process: function(src, filepath) {
-                  if (filepath.match(/JSONKeys/)){
-                   src = "window.CRM.i18keys = " + src + ";";
-                  }
-                  return '// Source: ' + filepath + '\n' +
-                    "try {"+src+"} catch(e) {}";
-                },
-            },
-            ar_EG: {
-                src: [
-                    'locale/JSONKeys/ar_EG.json',
-                    'node_modules/fullcalendar/dist/locale/ar.js',
-                    'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ar.js',
-                    'node_modules/admin-lte/plugins/select2/i18n/ar.js'
-                ],
-                dest: 'src/locale/js/ar_EG.js'
-            },
-            de_DE: {
-                src: [
-                  'locale/JSONKeys/de_DE.json', 
-                  'node_modules/fullcalendar/dist/locale/de.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.de.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/de.js'
-                ],
-                dest: 'src/locale/js/de_DE.js'
-            },
-            en_AU: {
-                src: [
-                  'locale/JSONKeys/en_AU.json', 
-                  'node_modules/fullcalendar/dist/locale/en-au.js'
-                ],
-                dest: 'src/locale/js/en_AU.js'
-            },
-            en_CA: {
-                src: [
-                  'locale/JSONKeys/en_CA.json',
-                  'node_modules/fullcalendar/dist/locale/en-ca.js'
-                ],
-                dest: 'src/locale/js/en_CA.js'
-            },
-            en_GB: {
-                src: [
-                  'locale/JSONKeys/en_GB.json',
-                  'node_modules/fullcalendar/dist/locale/en-gb.js'
-                ],
-                dest: 'src/locale/js/en_GB.js'
-            },
-            en_US: {
-                src: ['locale/JSONKeys/en_US.json'],
-                dest: 'src/locale/js/en_US.js'
-            },
-            en_CA: {
-                src: ['locale/JSONKeys/en_CA.json'],
-                dest: 'src/locale/js/en_CA.js'
-            },
-            en_GB: {
-                src: ['locale/JSONKeys/en_GB.json'],
-                dest: 'src/locale/js/en_GB.js'
-            },
-            en_AU: {
-                src: ['locale/JSONKeys/en_AU.json'],
-                dest: 'src/locale/js/en_AU.js'
-            },
-            es_ES: {
-                src: [
-                  'locale/JSONKeys/es_ES.json',
-                  'node_modules/fullcalendar/dist/locale/es.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.es.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/es.js'
-                ],
-                dest: 'src/locale/js/es_ES.js'
-            },
-            fr_FR: {
-                src: [
-                  'locale/JSONKeys/fr_FR.json', 
-                  'node_modules/fullcalendar/dist/locale/fr.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.fr.js', 
-                  'node_modules/admin-lte/plugins/select2/i18n/fr.js'
-                ],
-                dest: 'src/locale/js/fr_FR.js'
-            },
-            hu_HU: {
-                src: [
-                  'locale/JSONKeys/hu_HU.json',
-                  'node_modules/fullcalendar/dist/locale/hu.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.hu.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/hu.js'
-                ],
-                dest: 'src/locale/js/hu_HU.js'
-            },
-            th_TH: {
-                src: [
-                    'locale/JSONKeys/th_TH.json',
-                    'node_modules/fullcalendar/dist/locale/th.js',
-                    'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.th.js',
-                    'node_modules/admin-lte/plugins/select2/i18n/th.js'
-                ],
-                dest: 'src/locale/js/th_TH.js'
-            },
-            it_IT: {
-                src: [
-                  'locale/JSONKeys/it_IT.json',
-                  'node_modules/fullcalendar/dist/locale/it.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.it.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/it.js'
-                ],
-                dest: 'src/locale/js/it_IT.js'
-            },
-            nb_NO: {
-                src: [
-                  'locale/JSONKeys/nb_NO.json',
-                  'node_modules/fullcalendar/dist/locale/nb.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.nb.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/nb.js'
-                ],
-                dest: 'src/locale/js/nb_NO.js'
-            },
-            nl_NL: {
-                src: [
-                  'locale/JSONKeys/nl_NL.json',
-                  'node_modules/fullcalendar/dist/locale/nl.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.nl.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/nl.js'
-                ],
-                dest: 'src/locale/js/nl_NL.js'
-            },
-            pl_PL: {
-                src: [
-                  'locale/JSONKeys/pl_PL.json',
-                  'node_modules/fullcalendar/dist/locale/pl.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.pl.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/pl.js'
-                ],
-                dest: 'src/locale/js/pl_PL.js'
-            },
-            pt_BR: {
-                src: [
-                  'locale/JSONKeys/pt_BR.json',
-                  'node_modules/fullcalendar/dist/locale/pt-br.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/pt-BR.js'
-                ],
-                dest: 'src/locale/js/pt_BR.js'
-            },
-            ro_RO: {
-                src: [
-                  'locale/JSONKeys/ro_RO.json',
-                  'node_modules/fullcalendar/dist/locale/ro.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ro.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/ro.js'
-                ],
-                dest: 'src/locale/js/ro_RO.js'
-            },
-            ru_RU: {
-                src: [
-                  'locale/JSONKeys/ru_RU.json',
-                  'node_modules/fullcalendar/dist/locale/ru.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ru.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/ru.js'
-                ],
-                dest: 'src/locale/js/ru_RU.js'
-            },
-            sq_AL: {
-                src: [
-                  'locale/JSONKeys/sq_AL.json',
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sq.js'
-                ],
-                dest: 'src/locale/js/sq_AL.js'
-            },
-            sv_SE: {
-                src: [
-                  'locale/JSONKeys/sv_SE.json',
-                  'node_modules/fullcalendar/dist/locale/sv.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sv.js',
-                    'node_modules/admin-lte/plugins/select2/i18n/sv.js'
-                ],
-                dest: 'src/locale/js/sv_SE.js'
-            },
-            vi_VN: {
-                src: [
-                  'locale/JSONKeys/vi_VN',
-                  'node_modules/fullcalendar/dist/locale/vi.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.vi.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/vi.js'
-                ],
-                dest: 'src/locale/js/vi_VN.js'
-            },
-            zh_CN: {
-                src: [
-                  'locale/JSONKeys/zh_CN.json',
-                  'node_modules/fullcalendar/dist/locale/zh-cn.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/zh-CN.js'
-                ],
-                dest: 'src/locale/js/zh_CN.js'
-            },
-            zh_TW: {
-                src: [
-                  'locale/JSONKeys/zh_TW.json',
-                  'node_modules/fullcalendar/dist/locale/zh-tw.js', 
-                  'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-TW.js',
-                  'node_modules/admin-lte/plugins/select2/i18n/zh-TW.js'
-                ],
-                dest: 'src/locale/js/zh_TW.js'
-            }
-        },
         'curl-dir': {
             datatables: {
                 src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{'+dataTablesLang()+'}.json'],
@@ -558,21 +348,31 @@ module.exports = function (grunt) {
             var enableDatePicker = localeConfig["datePicker"];
             var enableSelect2 = localeConfig["select2"];
 
-            console.log('locale/JSONKeys/'+locale+'.json');
-            poTerms = grunt.file.read('locale/JSONKeys/'+locale+'.json');
-            jsFileContent = "try {window.CRM.i18keys = " + poTerms + ";} catch(e) {}";
+            tempFile = 'locale/JSONKeys/'+locale+'.json';
+            poTerms = grunt.file.read(tempFile);
+            if (poTerms == "") {
+                poTerms = "{}";
+            }
+            jsFileContent = '// Source: ' + tempFile;
+            jsFileContent = jsFileContent + "\ntry {window.CRM.i18keys = " + poTerms + ";} catch(e) {};\n";
 
             if (enableFullCalendar) {
-                fullCalendar = grunt.file.read('node_modules/fullcalendar/dist/locale/'+languageCode+'.js');
-                jsFileContent =+ '\n' + "try {"+fullCalendar+"} catch(e) {}";
+                tempFile = 'node_modules/fullcalendar/dist/locale/'+languageCode.toLowerCase()+'.js';
+                fullCalendar = grunt.file.read(tempFile);
+                jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
+                jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {};\n";
             }
             if (enableDatePicker) {
-                datePicker = grunt.file.read('node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.'+languageCode+'.js');
-                jsFileContent =+ '\n' + "try {"+datePicker+"} catch(e) {}"
+                tempFile = 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.'+languageCode+'.js';
+                datePicker = grunt.file.read(tempFile);
+                jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
+                jsFileContent = jsFileContent + '\n' + "try {"+datePicker+"} catch(e) {};\n"
             }
             if (enableSelect2) {
-                select2 = grunt.file.read('node_modules/admin-lte/plugins/select2/i18n/'+languageCode+'.js');
-                jsFileContent =+ '\n' + "try {"+select2+"} catch(e) {}"
+                tempFile = 'node_modules/admin-lte/plugins/select2/i18n/'+languageCode+'.js';
+                jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
+                select2 = grunt.file.read(tempFile);
+                jsFileContent = jsFileContent + '\n' + "try {"+select2+"} catch(e) {}"
             }
             grunt.file.write('src/locale/js/'+locale+'.js', jsFileContent );
         }
@@ -609,7 +409,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-poeditor-ab');
