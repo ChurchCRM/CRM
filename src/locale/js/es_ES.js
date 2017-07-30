@@ -1,4 +1,3 @@
-/*! 2.8.10 29-07-2017 */
 // Source: locale/JSONKeys/es_ES.json
 try {window.CRM.i18keys = {
     "Cannot execute query.": "No se puede ejecutar la búsqueda.",

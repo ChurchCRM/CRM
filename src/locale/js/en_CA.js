@@ -1,4 +1,3 @@
-/*! 2.8.10 29-07-2017 */
 // Source: locale/JSONKeys/en_CA.json
 try {window.CRM.i18keys = {
     "State": "Province",
@@ -13,4 +12,4 @@ try {window.CRM.i18keys = {
     "Zip Code": "Postal Code",
     "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email.": "Enter any part of the following: Name, City, Province, Postal Code, Home Phone, Email, or Work Email.",
     "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email.": "Search by any part of Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
-};} catch(e) {}
+};} catch(e) {};

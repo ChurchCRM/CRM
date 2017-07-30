@@ -1,4 +1,3 @@
-/*! 2.8.10 29-07-2017 */
 // Source: locale/JSONKeys/en_GB.json
 try {window.CRM.i18keys = {
     "State": "County",
@@ -12,4 +11,4 @@ try {window.CRM.i18keys = {
     "City, State, Zip": "City, Postcode",
     "Cell Phone": "Mobile Phone",
     "Cell": "Mobile"
-};} catch(e) {}
+};} catch(e) {};

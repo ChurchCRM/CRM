@@ -1,4 +1,3 @@
-/*! 2.8.10 29-07-2017 */
 // Source: locale/JSONKeys/nl_NL.json
 try {window.CRM.i18keys = {
     "Cannot execute query.": "Kan de vraag niet beantwoorden.",

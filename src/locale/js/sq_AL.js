@@ -1,4 +1,3 @@
-/*! 2.8.10 29-07-2017 */
 // Source: locale/JSONKeys/sq_AL.json
 try {window.CRM.i18keys = {
     "Cannot execute query.": "Nuk mund të ekzekutuar query.",
@@ -915,4 +914,4 @@ try {/**
 	};
 }(jQuery));
 
-} catch(e) {}
+} catch(e) {};

@@ -1,4 +1,3 @@
-/*! 2.8.10 29-07-2017 */
 // Source: locale/JSONKeys/ru_RU.json
 try {window.CRM.i18keys = {
     "Cannot execute query.": "Невозможно выполнить запрос.",

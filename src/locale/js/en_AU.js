@@ -1,4 +1,3 @@
-/*! 2.8.10 29-07-2017 */
 // Source: locale/JSONKeys/en_AU.json
 try {window.CRM.i18keys = {
     "Cannot execute query.": "Unable to execute query",
@@ -19,4 +18,4 @@ try {window.CRM.i18keys = {
     "Cell Phone": "Mobile Phone",
     "Cell": "Mobile",
     "Cell phone": "Mobile phone"
-};} catch(e) {}
+};} catch(e) {};
