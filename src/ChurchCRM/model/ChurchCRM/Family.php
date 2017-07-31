@@ -350,4 +350,8 @@ class Family extends BaseFamily implements iPhoto
       ];
       return $searchArray;
     }
+
+    public function isActive() {
+        return empty($this->getDateDeactivated());
+    }
 }
