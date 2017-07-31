@@ -1,5 +1,26 @@
 # Changelog
 
+## 2.8.10 (31/07/2017)
+
+#### Enhancements:
+
+- [**enhancement**][**UI**] Family/Person Timeline does not break by date [#2880](https://github.com/ChurchCRM/CRM/issues/2880)
+
+#### Core Functionality
+
+- [**Feature: Reports**] Sending an Online Verification should create a note in the timeline  [#2813](https://github.com/ChurchCRM/CRM/issues/2813)
+
+#### Performance:
+
+- [**Backend System**][**build**][**development**][**Performance**] Move to WebPack for CSS/JS file packages [#271](https://github.com/ChurchCRM/CRM/issues/271)
+
+#### Inner Beauty:
+
+- [**Backend System**][**Platform: Shared Hosting**] Upgrading via the UI on live host fails with 'slim application error' [#2337](https://github.com/ChurchCRM/CRM/issues/2337)
+- [**Backend System**][**build**][**development**][**Performance**] Move to WebPack for CSS/JS file packages [#271](https://github.com/ChurchCRM/CRM/issues/271)
+
+---
+
 ## 2.8.9 (28/07/2017)
 
 #### Core Functionality
@@ -767,30 +788,6 @@
 
 ## 2.4.1 (07/12/2016)
 
-#### Core Functionality
-
-- [**bug**][**Feature: Financial**] Deposit Listing "Family Name" is broken [#1159](https://github.com/ChurchCRM/CRM/issues/1159)
-
-#### Bug fixes:
-
-- [**bug**] GroupList fails when there are no groups [#1542](https://github.com/ChurchCRM/CRM/issues/1542)
-- [**bug**] TaskService.php calling integrityCheck.json [#1521](https://github.com/ChurchCRM/CRM/issues/1521)
-- [**bug**] register software is broken [#1515](https://github.com/ChurchCRM/CRM/issues/1515)
-- [**bug**] In place upgrade says failure, but actually succeeds [#1511](https://github.com/ChurchCRM/CRM/issues/1511)
-- [**bug**][**build**][**development**] Various SQL errors [#1417](https://github.com/ChurchCRM/CRM/issues/1417)
-- [**bug**][**Feature: Financial**] Deposit Listing "Family Name" is broken [#1159](https://github.com/ChurchCRM/CRM/issues/1159)
-
-#### Inner Beauty:
-
-- [**development**] Need Vagrant-QA for in-place upgrade [#1527](https://github.com/ChurchCRM/CRM/issues/1527)
-- [**build**] changelog generator not working [#1508](https://github.com/ChurchCRM/CRM/issues/1508)
-- [**build**] update ionicons in package.json [#1501](https://github.com/ChurchCRM/CRM/issues/1501)
-- [**bug**][**build**][**development**] Various SQL errors [#1417](https://github.com/ChurchCRM/CRM/issues/1417)
-
----
-
-## 2.4.0 (05/12/2016)
-
 #### Enhancements:
 
 - [**enhancement**][**Feature: Members**] Membership Info need to have smaller fields  [#1409](https://github.com/ChurchCRM/CRM/issues/1409)
@@ -920,6 +917,7 @@
 - [**bug**][**Installation / Upgrade**] Fail to install 2.3.0-RC2 [#1248](https://github.com/ChurchCRM/CRM/issues/1248)
 - [**enhancement**][**Feature: Financial**] Sort Donation Funds [#1233](https://github.com/ChurchCRM/CRM/issues/1233)
 - [**enhancement**][**Feature: Members**][**Localization**][**Web Report**] phone number stored neutrally and then formatted on output (print or display) [#1191](https://github.com/ChurchCRM/CRM/issues/1191)
+- [**bug**][**Feature: Financial**] Deposit Listing "Family Name" is broken [#1159](https://github.com/ChurchCRM/CRM/issues/1159)
 - [**bug**][**Feature: Members**][**Web Report**] People Not In MailChimp Broken Links [#1156](https://github.com/ChurchCRM/CRM/issues/1156)
 - [**bug**][**Installation / Upgrade**] sRootPath Undefined [#1139](https://github.com/ChurchCRM/CRM/issues/1139)
 - [**Installation / Upgrade**][**question**] Build 2.2.1 returning blank [#1071](https://github.com/ChurchCRM/CRM/issues/1071)
@@ -956,6 +954,10 @@
 
 #### Bug fixes:
 
+- [**bug**] GroupList fails when there are no groups [#1542](https://github.com/ChurchCRM/CRM/issues/1542)
+- [**bug**] TaskService.php calling integrityCheck.json [#1521](https://github.com/ChurchCRM/CRM/issues/1521)
+- [**bug**] register software is broken [#1515](https://github.com/ChurchCRM/CRM/issues/1515)
+- [**bug**] In place upgrade says failure, but actually succeeds [#1511](https://github.com/ChurchCRM/CRM/issues/1511)
 - [**bug**] SettingsIndividual.php is broken in 2.4.0 [#1491](https://github.com/ChurchCRM/CRM/issues/1491)
 - [**bug**] System_Failure Message is broken [#1485](https://github.com/ChurchCRM/CRM/issues/1485)
 - [**bug**][**build**][**development**] Refactor Database Backup and Restore [#1476](https://github.com/ChurchCRM/CRM/issues/1476)
@@ -969,6 +971,7 @@
 - [**bug**][**build**] Automatic DB upgrade on Restore Database may fail silently [#1427](https://github.com/ChurchCRM/CRM/issues/1427)
 - [**bug**] Generating labels from cart is broken [#1426](https://github.com/ChurchCRM/CRM/issues/1426)
 - [**bug**][**development**] Short open tags creeping back in [#1425](https://github.com/ChurchCRM/CRM/issues/1425)
+- [**bug**][**build**][**development**] Various SQL errors [#1417](https://github.com/ChurchCRM/CRM/issues/1417)
 - [**bug**] Install.sql uses invalid defaults [#1415](https://github.com/ChurchCRM/CRM/issues/1415)
 - [**bug**] Church Calendar is not showing Anniversary events [#1402](https://github.com/ChurchCRM/CRM/issues/1402)
 - [**bug**][**development**][**Localization**] Updated javascript : Include/Header-function.php [#1384](https://github.com/ChurchCRM/CRM/issues/1384)
@@ -1014,6 +1017,7 @@
 - [**bug**][**question**] Missing fields on System Setting - Church Information [#1199](https://github.com/ChurchCRM/CRM/issues/1199)
 - [**bug**][**build**] Fix docker builds  [#1198](https://github.com/ChurchCRM/CRM/issues/1198)
 - [**bug**][**Web Report**] Can\'t delete empty group [#1180](https://github.com/ChurchCRM/CRM/issues/1180)
+- [**bug**][**Feature: Financial**] Deposit Listing "Family Name" is broken [#1159](https://github.com/ChurchCRM/CRM/issues/1159)
 - [**bug**] [Develop] - Name Tags Fail After Class Cleanup [#1158](https://github.com/ChurchCRM/CRM/issues/1158)
 - [**bug**][**Feature: Members**][**Web Report**] People Not In MailChimp Broken Links [#1156](https://github.com/ChurchCRM/CRM/issues/1156)
 - [**bug**][**Installation / Upgrade**] sRootPath Undefined [#1139](https://github.com/ChurchCRM/CRM/issues/1139)
@@ -1253,12 +1257,16 @@
 
 #### Inner Beauty:
 
+- [**development**] Need Vagrant-QA for in-place upgrade [#1527](https://github.com/ChurchCRM/CRM/issues/1527)
+- [**build**] changelog generator not working [#1508](https://github.com/ChurchCRM/CRM/issues/1508)
+- [**build**] update ionicons in package.json [#1501](https://github.com/ChurchCRM/CRM/issues/1501)
 - [**build**][**development**][**Platform: Self-Hosted**][**Platform: Shared Hosting**] Identify Apache Modules without shell_exec [#1477](https://github.com/ChurchCRM/CRM/issues/1477)
 - [**bug**][**build**][**development**] Refactor Database Backup and Restore [#1476](https://github.com/ChurchCRM/CRM/issues/1476)
 - [**build**] Move  locale/messages.po outside the src dir [#1443](https://github.com/ChurchCRM/CRM/issues/1443)
 - [**bug**][**build**] Automatic DB upgrade on Restore Database may fail silently [#1427](https://github.com/ChurchCRM/CRM/issues/1427)
 - [**bug**][**development**] Short open tags creeping back in [#1425](https://github.com/ChurchCRM/CRM/issues/1425)
 - [**build**] Remove unused Skin files [#1422](https://github.com/ChurchCRM/CRM/issues/1422)
+- [**bug**][**build**][**development**] Various SQL errors [#1417](https://github.com/ChurchCRM/CRM/issues/1417)
 - [**bug**][**development**][**Localization**] Updated javascript : Include/Header-function.php [#1384](https://github.com/ChurchCRM/CRM/issues/1384)
 - [**build**] setup.php integrity check async [#1381](https://github.com/ChurchCRM/CRM/issues/1381)
 - [**development**][**enhancement**] Switch Header Navs to AdminLTE Right Nav [#1378](https://github.com/ChurchCRM/CRM/issues/1378)
