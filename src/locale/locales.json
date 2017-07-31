@@ -55,7 +55,8 @@
     "languageCode": "en",
     "countryCode": "AU",
     "dataTables": "English",
-    "fullCalendar" : false,
+    "fullCalendar" : true,
+    "fullCalendarLocale" : "en-au",
     "datePicker": false,
     "select2": false
   },
@@ -65,7 +66,8 @@
     "languageCode": "en",
     "countryCode": "CA",
     "dataTables": "English",
-    "fullCalendar" : false,
+    "fullCalendar" : true,
+    "fullCalendarLocale" : "en-ca",
     "datePicker": false,
     "select2": false
   },
@@ -75,7 +77,8 @@
     "languageCode": "en",
     "countryCode": "GB",
     "dataTables": "English",
-    "fullCalendar" : false,
+    "fullCalendar" : true,
+    "fullCalendarLocale" : "en-gb",
     "datePicker": false,
     "select2": false
   },

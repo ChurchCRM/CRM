@@ -357,7 +357,11 @@ module.exports = function (grunt) {
             jsFileContent = jsFileContent + "\ntry {window.CRM.i18keys = " + poTerms + ";} catch(e) {};\n";
 
             if (enableFullCalendar) {
-                tempFile = 'node_modules/fullcalendar/dist/locale/'+languageCode.toLowerCase()+'.js';
+                tempLangCode = languageCode.toLowerCase();
+                if (localeConfig.hasOwnProperty("fullCalendarLocale")) {
+                    tempLangCode = localeConfig["fullCalendarLocale"];
+                }
+                tempFile = 'node_modules/fullcalendar/dist/locale/'+tempLangCode+'.js';
                 fullCalendar = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
                 jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {};\n";
