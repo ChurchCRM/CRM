@@ -13,7 +13,6 @@ require '../Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 
-
 $type = gettext("Family");
 if (!empty($_GET['type'])) {
     $type = gettext(InputUtils::FilterString($_GET['type']));
