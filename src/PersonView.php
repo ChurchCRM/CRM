@@ -70,7 +70,10 @@ $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
 
-if ($per_ID == $iPersonID) {
+if ($per_ID != $iPersonID) {
+    Redirect('members/404.php?type=Person');
+    exit;
+} else {
     $person = PersonQuery::create()->findPk($iPersonID);
     $assignedProperties = $person->getProperties();
 
@@ -1004,19 +1007,5 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 </script>
 
 <?php
-} else {
-                                        ?>
-  <div class="error-page">
-    <h2 class="headline text-yellow">404</h2>
-
-    <div class="error-content">
-      <h3><i class="fa fa-warning text-yellow"></i><?= gettext('Oops! Person not found.') ?></h3>
-
-      <p>
-      	<?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="//MembersDashboard.php"><?= gettext('return to member dashboard') ?></a>
-      </p>
-    </div>
-  </div>
-  <?php
-                                    }
+}
 require 'Include/Footer.php' ?>
