@@ -15,7 +15,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\FamilyQuery;
 
-$family = NULL;
+$family = null;
 //Get the FamilyID out of the querystring
 if (!empty($_GET['id'])) {
     $familyId = InputUtils::FilterInt($_GET['id'], 'int');
@@ -33,14 +33,16 @@ require '../Include/Header.php';
 
 ?>
 
-<?php if (!$family->isActive()) { ?>
+<?php if (!$family->isActive()) {
+    ?>
     <div class="alert alert-warning">
         <strong><?= gettext(" This Family is Deactivated") ?> </strong>
     </div>
     <?php
 } ?>
 
-<?php if (!empty($family->getLatitude())) { ?>
+<?php if (!empty($family->getLatitude())) {
+        ?>
 <div class="border-right border-left">
     <section id="map">
         <div id="map1"></div>
@@ -53,7 +55,8 @@ require '../Include/Header.php';
     var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
 </script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Map.js"></script>
-<?php } ?>
+<?php
+    } ?>
 
 <script src="<?= SystemURLs::getRootPath(); ?>/skin/randomcolor/randomColor.js"></script>
 <script src="<?= SystemURLs::getRootPath(); ?>/skin/js/initial.js"></script>
