@@ -177,6 +177,10 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
+<div class="alert alert-info">
+    <strong><a href="members/Family.php?id=<?= $iFamilyID ?>"><?= gettext("Try our the Beta family view") ?></a> </strong>
+</div>
+
 <?php if (!empty($fam_DateDeactivated)) {
         ?>
     <div class="alert alert-warning">
