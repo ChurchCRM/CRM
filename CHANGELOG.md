@@ -10,14 +10,9 @@
 
 - [**Feature: Reports**] Sending an Online Verification should create a note in the timeline  [#2813](https://github.com/ChurchCRM/CRM/issues/2813)
 
-#### Performance:
-
-- [**Backend System**][**build**][**development**][**Performance**] Move to WebPack for CSS/JS file packages [#271](https://github.com/ChurchCRM/CRM/issues/271)
-
 #### Inner Beauty:
 
 - [**Backend System**][**Platform: Shared Hosting**] Upgrading via the UI on live host fails with 'slim application error' [#2337](https://github.com/ChurchCRM/CRM/issues/2337)
-- [**Backend System**][**build**][**development**][**Performance**] Move to WebPack for CSS/JS file packages [#271](https://github.com/ChurchCRM/CRM/issues/271)
 
 ---
 
