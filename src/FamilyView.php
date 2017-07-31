@@ -99,7 +99,10 @@ $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS Entere
 $rsFamily = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsFamily));
 
-if ($iFamilyID == $fam_ID) {
+if ($iFamilyID != $fam_ID) {
+    Redirect('members/404.php');
+    exit;
+} else {
 
 // Get the lists of custom person fields
 $sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
@@ -966,22 +969,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     </div>
 
     <?php
-} else {
-        ?>
-        <div class="error-page">
-            <h2 class="headline text-yellow">404</h2>
-
-            <div class="error-content">
-                <h3><i class="fa fa-warning text-yellow"></i> <?= gettext("Oops! Family not found.") ?></h3>
-
-                <p>
-                    <?= gettext("We could not find the family you were looking for.<br>Meanwhile, you may") ?> <a
-                            href="/MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
-                </p>
-            </div>
-        </div>
-        <?php
-    } ?>
+} ?>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js"
             type="text/javascript"></script>
     <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
