@@ -433,8 +433,7 @@ if ($sFormat == 'addtocart') {
                 } elseif ($sFormat == 'rollup') {
                     if ($memberCount > 1) {
                         $sString = '"'.MakeSalutationUtility($fam_ID);
-                    }
-                    else {
+                    } else {
                         $sString = '"'.$per_LastName.', '.$per_FirstName;
                     }
                 }
