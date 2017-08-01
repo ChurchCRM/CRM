@@ -434,7 +434,6 @@ if ($sFormat == 'addtocart') {
                     if ($memberCount > 1) {
                         $sString = '"'.MakeSalutationUtility($fam_ID);
                     }
-//						$sString = "\"" . $fam_Name . " Family";
                     else {
                         $sString = '"'.$per_LastName.', '.$per_FirstName;
                     }
@@ -495,8 +494,6 @@ if ($sFormat == 'addtocart') {
                         if (isset($per_BirthYear)) {
                             $birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
                             $age = FormatAgeSuffix($birthDate, 0);
-                            
-                            //$age = $refDate['year'] - $per_BirthYear - ($per_BirthMonth > $refDate['mon'] || ($per_BirthMonth == $refDate['mon'] && $per_BirthDay > $refDate['mday']));
                         } else {
                             $age = '';
                         }
