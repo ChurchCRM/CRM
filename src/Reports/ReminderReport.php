@@ -5,12 +5,6 @@
 *  last change : 2005-03-26
 *  description : Creates a PDF of the current deposit slip
 *  Copyright 2004-2005  Michael Wilt, Timothy Dearborn
-*
-
-
-
-
-
 ******************************************************************************/
 
 require '../Include/Config.php';

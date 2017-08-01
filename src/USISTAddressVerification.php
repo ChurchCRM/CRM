@@ -6,15 +6,6 @@
  *  description : USPS address verification
  *
 
-
- *
-
-
-
-
-  *
-
- *
  ******************************************************************************/
 
 // This file verifies family address information using an on-line XML

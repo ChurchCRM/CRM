@@ -6,15 +6,6 @@
  *  copyright   : Copyright 2005 Michael Wilt
  *
 
-
- *
-
-
-
-
-  *
-
- *
  ******************************************************************************/
 
 require 'Include/Config.php';
