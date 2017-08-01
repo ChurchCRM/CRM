@@ -7,7 +7,7 @@
  *  description : Creates a email with all the confirmation letters asking member
  *                families to verify the information in the database.
  *
- 
+
 
 
 
