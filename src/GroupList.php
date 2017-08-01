@@ -9,16 +9,7 @@
 *  Additional Contributors:
 *  2006 Ed Davis
 *  2016 Charles Crossan
-*
 
-*
-
-*
-
-
-*
-
-*
 ******************************************************************************/
 //Include the function library
 require 'Include/Config.php';
