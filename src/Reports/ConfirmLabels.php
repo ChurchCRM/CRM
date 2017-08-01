@@ -4,12 +4,7 @@
 *  filename    : Reports/ConfimLabels.php
 *  last change : 2003-08-30
 *  description : Creates a PDF with all the mailing labels for the confirm data letter
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

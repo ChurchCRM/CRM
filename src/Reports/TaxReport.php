@@ -4,12 +4,7 @@
 *  filename    : Reports/TaxReport.php
 *  last change : 2005-03-26
 *  description : Creates a PDF with all the tax letters for a particular calendar year.
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

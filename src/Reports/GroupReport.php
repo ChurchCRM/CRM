@@ -7,12 +7,7 @@
 *
 *  http://www.churchcrm.io/
 *  Copyright 2003  Chris Gebhardt, Jason York
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

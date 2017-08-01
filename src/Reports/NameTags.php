@@ -4,12 +4,7 @@
 *  filename    : Reports/NameTags.php
 *  last change : 2012-06-26
 *  description : Creates a PDF with name tags
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

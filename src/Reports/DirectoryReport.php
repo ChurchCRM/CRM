@@ -7,12 +7,7 @@
 *
 *  http://www.churchcrm.io/
 *  Copyright 2003  Jason York, 2004-2005 Michael Wilt, Richard Bondi
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

@@ -7,12 +7,7 @@
 *  Copyright 2004-2005  Michael Wilt, Timothy Dearborn
 *
 
-*
 
-*
-
-
-*
 
 
 

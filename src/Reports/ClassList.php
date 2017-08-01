@@ -4,12 +4,7 @@
 *  filename    : Reports/ClassList.php
 *  last change : 2003-08-30
 *  description : Creates a PDF for a Sunday School Class List
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

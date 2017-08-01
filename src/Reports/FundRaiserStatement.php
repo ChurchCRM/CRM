@@ -5,12 +5,7 @@
 *  last change : 2009-04-17
 *  description : Creates a PDF with one or more fund raiser statements
 *  copyright   : Copyright 2009 Michael Wilt
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

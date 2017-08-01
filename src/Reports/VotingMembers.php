@@ -4,12 +4,7 @@
 *  filename    : Reports/VotingMembers.php
 *  last change : 2005-03-26
 *  description : Creates a PDF with names of voting members for a particular fiscal year
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

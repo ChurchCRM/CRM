@@ -4,12 +4,7 @@
 *  filename    : Reports/AdvancedDeposit.php
 *  last change : 2013-02-21
 *  description : Creates a PDF customized Deposit Report .
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

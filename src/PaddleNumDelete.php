@@ -5,12 +5,7 @@
 *  last change : 2009-04-17
 *  description : Deletes a specific paddle number holder
 *  copyright   : Copyright 2009 Michael Wilt
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require 'Include/Config.php';

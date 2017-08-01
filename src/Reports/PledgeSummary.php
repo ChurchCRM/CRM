@@ -4,12 +4,7 @@
 *  filename    : Reports/ReminderReport.php
 *  last change : 2005-03-26
 *  description : Creates a PDF of the current deposit slip
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

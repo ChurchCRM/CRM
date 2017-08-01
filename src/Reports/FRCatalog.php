@@ -5,12 +5,7 @@
 *  last change : 2003-08-30
 *  description : Creates a PDF with all the confirmation letters asking member
 *                families to verify the information in the database.
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

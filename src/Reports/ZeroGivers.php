@@ -5,12 +5,7 @@
 *  last change : 2005-03-26
 *  description : Creates a PDF with all the tax letters for a particular calendar year.
 *  Copyright 2012 Michael Wilt
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

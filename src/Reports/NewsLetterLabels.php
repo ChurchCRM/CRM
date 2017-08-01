@@ -4,12 +4,7 @@
 *  filename    : Reports/NewsLetterLabels.php
 *  last change : 2003-08-30
 *  description : Creates a PDF with all the newletter mailing labels
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

@@ -5,12 +5,7 @@
 *  last change : 2005-03-26
 *  description : Creates a PDF summary of pledge status by family
 *  Copyright 2004-2009  Michael Wilt
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';

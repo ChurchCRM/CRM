@@ -3,12 +3,7 @@
 *
 *  filename    : Reports/EnvelopeReport.php
 *  description : Creates a report showing all envelope assignments
-*
 
-*
-
-
-*
 ******************************************************************************/
 require '../Include/Config.php';
 require '../Include/Functions.php';

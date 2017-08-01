@@ -4,12 +4,7 @@
 *  filename    : Reports/ClassAttendance.php
 *  last change : 2013-02-22
 *  description : Creates a PDF for a Sunday School Class Attendance List
-*
 
-*
-
-
-*
 ******************************************************************************/
 
 require '../Include/Config.php';
