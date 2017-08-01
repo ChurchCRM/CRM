@@ -19,7 +19,7 @@ class InputUtils {
   
   public static function translate_special_charset ($string)
 	{
-		if ($string == "" || $string == null)
+		if (empty($string))
 			return "";
 		
 		return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?gettext($string):iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
@@ -68,7 +68,7 @@ class InputUtils {
   {
     // Attempts to take a date in any format and convert it to YYYY-MM-DD format
     // Logel Philippe
-    if ($sInput == null || $sInput == 0)
+    if (empty($sInput))
     	return "";
     else 
       return date('Y-m-d', strtotime(str_replace("/","-",$sInput)));
