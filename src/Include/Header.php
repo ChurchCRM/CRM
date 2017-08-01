@@ -6,19 +6,7 @@
  *  description : page header used for most pages
  *
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
- *
 
-
-  *
-
-
-
-
- *
-
- *
-
- *
  ******************************************************************************/
 
 

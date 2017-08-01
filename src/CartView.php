@@ -5,19 +5,7 @@
  *  website     : http://www.churchcrm.io
  *
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
 
-
-  *
-
-
-
-
- *
-
- *
-
- *
  ******************************************************************************/
 
 require 'Include/Config.php';
