@@ -5,7 +5,6 @@
  *  last change : 2013-02-02
  *  website     : http://www.churchcrm.io
  *
-
  ******************************************************************************/
 
 use ChurchCRM\FamilyQuery;

@@ -7,7 +7,6 @@
  *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
-
  ******************************************************************************/
 
 // Include the function library

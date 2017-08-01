@@ -5,7 +5,6 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Michael Wilt
  *
-
  ******************************************************************************/
 
 require 'Include/Config.php';
