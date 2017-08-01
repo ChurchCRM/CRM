@@ -56,6 +56,11 @@ require '../Include/Header.php';
                     searchable: true
                 },
                 {
+                    title: i18next.t('Comments'),
+                    data: 'Text',
+                    searchable: true
+                },
+                {
                     title: i18next.t('Date'),
                     data: 'DateEntered',
                     searchable: false,

@@ -40,12 +40,12 @@ class Note extends BaseNote
         return SystemURLs::getRootPath().'/NoteDelete.php?NoteID='.$this->getId();
     }
 
-    public function getDisplayEditedDate()
+    public function getDisplayEditedDate($format = 'Y-m-d h:i:s')
     {
-        if ($this->getDateLastEdited() != '') {
-            return $this->getDateLastEdited('Y-m-d h:i:s');
+        if (!empty($this->getDateLastEdited())) {
+            return $this->getDateLastEdited($format);
         } else {
-            return $this->getDateEntered('Y-m-d h:i:s');
+            return $this->getDateEntered($format);
         }
     }
 

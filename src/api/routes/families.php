@@ -119,6 +119,7 @@ $app->group('/families', function () {
             $token->save();
             $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
             if ($email->send()) {
+                $family->createTimeLineNote("verify-link");
                 $response = $response->withStatus(200);
             } else {
                 $this->Logger->error($email->getError());
@@ -134,12 +135,7 @@ $app->group('/families', function () {
         $familyId = $args["familyId"];
         $family = FamilyQuery::create()->findPk($familyId);
         if ($family != null) {
-            $note = new Note();
-            $note->setFamId($family->getId());
-            $note->setText(gettext("Family Data Verified"));
-            $note->setType("verify");
-            $note->setEntered($_SESSION['user']->getId());
-            $note->save();
+            $family->verify();
             $response = $response->withStatus(200);
         } else {
             $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
