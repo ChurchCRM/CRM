@@ -299,6 +299,9 @@ module.exports = function (grunt) {
             update: {
                 version: '<%= package.version %>'
             }
+        },
+         authors: {
+          order: "count"
         }
     });
 
@@ -416,4 +419,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-poeditor-ab');
+    grunt.loadNpmTasks('grunt-git-authors');
 }
