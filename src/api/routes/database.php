@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\Service\SystemService;
+
 // Routes
 
 $app->group('/database', function () {
@@ -14,7 +16,7 @@ $app->group('/database', function () {
       if ( $_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) &&
             empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0 )
         {  
-          $systemService = new ChurchCRM\Service\SystemService();
+          $systemService = new SystemService();
           throw new \Exception(gettext('The selected file exceeds this servers maximum upload size of').": ". $systemService->getMaxUploadFileSize()  , 500);
         }
         $fileName = $_FILES['restoreFile'];
