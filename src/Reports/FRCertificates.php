@@ -5,10 +5,10 @@
 *  last change : 2003-08-30
 *  description : Creates a PDF with a silent auction bid sheet for every item.
 *
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
+
+*  
+
+
 *
 ******************************************************************************/
 

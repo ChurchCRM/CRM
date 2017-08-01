@@ -13,26 +13,17 @@
  *  Additional Contributors:
  *  2006 Ed Davis
  *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
+
+
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
+ 
+
+
+
+  *
+
  *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters.
- *  Please configure your editor to use soft tabs (4 spaces for a tab) instead
- *  of hard tab characters.
- *
+
  ******************************************************************************/
 // Include the function library
 require 'Include/Config.php';
