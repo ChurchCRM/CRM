@@ -223,18 +223,7 @@ $MenuFirst = 1;
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <section class="content-header">
-      <h1>
-        <?php
-        echo $sPageTitle."\n";
-        if (isset($sPageTitleSub)) {
-            echo '<small>'.$sPageTitleSub.'</small>';
-        }
-        ?>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="<?= SystemURLs::getRootPath() ?>/Menu.php"><i class="fa fa-dashboard"></i><?= gettext('Home') ?></a></li>
-        <li class="active"><?= $sPageTitle ?></li>
-      </ol>
+      <h1><?= $sPageTitle; ?></h1>
     </section>
     <!-- Main content -->
     <section class="content">

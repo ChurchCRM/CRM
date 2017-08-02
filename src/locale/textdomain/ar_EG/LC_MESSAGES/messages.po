@@ -416,6 +416,99 @@ msgstr "إنشاء ملف"
 msgid "No file selected for upload."
 msgstr "لم يتم تحديد ملف للتحميل."
 
+#: CSVImport.php:158
+msgid "Total number of rows in the CSV file:"
+msgstr "عدد الصفوف في ملف CSV"
+
+#: CSVImport.php:213
+msgid "Ignore this Field"
+msgstr "تجاهل هذا الحقل"
+
+#: CSVExport.php:85 CSVImport.php:214 DonatedItemEditor.php:211
+#: FindFundRaiser.php:242 FundRaiserEditor.php:173 FundRaiserEditor.php:199
+#: PersonEditor.php:599
+msgid "Title"
+msgstr "اللقب"
+
+#: CSVExport.php:100 CSVImport.php:218 FamilyEditor.php:937
+#: PersonEditor.php:641
+msgid "Suffix"
+msgstr "الاسم اللاحق"
+
+#: CSVExport.php:326 CSVImport.php:219 FamilyEditor.php:938
+#: PersonEditor.php:586 PrintView.php:223 PrintView.php:323
+#: sundayschool/SundaySchoolClassView.php:177 queryparameters_qrp.php:4
+msgid "Gender"
+msgstr "النوع"
+
+#: CSVImport.php:220
+msgid "Donation Envelope"
+msgstr "ظرف التبرع"
+
+#: CartToFamily.php:285 CSVExport.php:140 CSVImport.php:227
+#: EditEventAttendees.php:43 EventAttendance.php:182
+#: external/templates/registration/family-register-done.php:30
+#: external/templates/registration/family-register.php:68
+#: external/templates/verify/verify-family-info.php:28
+#: external/templates/verify/verify-family-info.php:75 FamilyEditor.php:732
+#: FamilyList.php:45 FamilyView.php:262 GroupReports.php:129
+#: PersonEditor.php:923 PersonEditor.php:925 PersonView.php:303
+#: PrintView.php:184 Reports/ConfirmReportEmail.php:139
+#: Reports/ConfirmReport.php:140 SelectList.php:986 SelectList.php:987
+#: SelectList.php:1062 sundayschool/SundaySchoolClassView.php:204
+#: queryparameteroptions_qpo.php:8
+msgid "Home Phone"
+msgstr "تليفون المنزل"
+
+#: CartToFamily.php:295 CSVExport.php:145 CSVImport.php:228
+#: external/templates/verify/verify-family-info.php:77 FamilyEditor.php:744
+#: FamilyView.php:268 GroupReports.php:130 PersonEditor.php:946
+#: PersonEditor.php:948 PersonView.php:317 PrintView.php:189
+#: Reports/ConfirmReportEmail.php:237 Reports/ConfirmReport.php:244
+#: SelectList.php:989 SelectList.php:990 SelectList.php:1062
+msgid "Work Phone"
+msgstr "تليفون العمل"
+
+#: CartToFamily.php:305 CSVExport.php:150 CSVImport.php:229
+#: external/templates/verify/verify-family-info.php:79 FamilyEditor.php:754
+#: FamilyView.php:274 PersonEditor.php:971 PersonEditor.php:973
+#: PersonView.php:298 PrintView.php:194 SelectList.php:992 SelectList.php:993
+#: SelectList.php:1062
+msgid "Mobile Phone"
+msgstr "المحمول"
+
+#: CSVImport.php:231 PersonEditor.php:1016 PrintView.php:284
+msgid "Work / Other Email"
+msgstr "البريد الإلكتروني للعمل / الأخرى"
+
+#: CSVImport.php:232 PersonView.php:282 PrintView.php:238
+#: sundayschool/SundaySchoolClassView.php:200
+#: sundayschool/SundaySchoolDashboard.php:195
+msgid "Birth Date"
+msgstr "تاريخ الميلاد"
+
+#: CartToFamily.php:215 CSVImport.php:234 DirectoryReports.php:177
+#: external/templates/verify/verify-family-info.php:35 FamilyEditor.php:800
+#: FamilyView.php:249
+msgid "Wedding Date"
+msgstr "تاريخ الزواج"
+
+#: CSVImport.php:243
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "تجاهل صف CSV الأول (لاستبعاد رأس الجدول)"
+
+#: CSVImport.php:248
+msgid "Make Family records based on last name and address"
+msgstr "جعل سجلات الأسرة استنادا إلى الاسم الأخير والعنوان"
+
+#: CSVImport.php:254
+msgid "Patriarch"
+msgstr "بطريرك"
+
+#: CSVImport.php:255
+msgid "Matriarch"
+msgstr "الأم الحاطمة"
+
 #: Menu.php:59
 msgid "Welcome to"
 msgstr "مرحبا بك في"
