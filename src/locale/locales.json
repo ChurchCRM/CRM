@@ -122,6 +122,16 @@
     "datePicker": true,
     "select2": true
   },
+  "Indonesian - Indonesia": {
+    "poEditor": "id",
+    "locale": "id_ID",
+    "languageCode": "id",
+    "countryCode": "ID",
+    "dataTables": "Indonesian",
+    "fullCalendar" : true,
+    "datePicker": true,
+    "select2": true
+  },
   "Italian - Italy": {
     "poEditor": "it",
     "locale": "it_IT",

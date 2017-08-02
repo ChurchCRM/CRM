@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-29 21:19+0000\n"
+"POT-Creation-Date: 2017-08-01 04:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2017-07-29T21:19:03.937Z\n"
-"PO-Revision-Date: 2017-07-29T21:19:03.938Z\n"
+"POT-Creation-Date: 2017-08-01T04:33:00.343Z\n"
+"PO-Revision-Date: 2017-08-01T04:33:00.344Z\n"
 
 #: api/routes/cart.php:13
 msgid "POST to cart requires a Persons array"
@@ -8899,42 +8899,46 @@ msgid "Hungarian"
 msgstr ""
 
 #: settings-locales.php:14
-msgid "Italian - Italy"
+msgid "Indonesian - Indonesia"
 msgstr ""
 
 #: settings-locales.php:15
-msgid "Norwegian"
+msgid "Italian - Italy"
 msgstr ""
 
 #: settings-locales.php:16
-msgid "Polish"
+msgid "Norwegian"
 msgstr ""
 
 #: settings-locales.php:17
-msgid "Portuguese - Brazil"
+msgid "Polish"
 msgstr ""
 
 #: settings-locales.php:18
-msgid "Romanian - Romania"
+msgid "Portuguese - Brazil"
 msgstr ""
 
 #: settings-locales.php:19
-msgid "Russian"
+msgid "Romanian - Romania"
 msgstr ""
 
 #: settings-locales.php:20
-msgid "Spanish - Spain"
+msgid "Russian"
 msgstr ""
 
 #: settings-locales.php:21
-msgid "Sami (Northern) (Sweden)"
+msgid "Spanish - Spain"
 msgstr ""
 
 #: settings-locales.php:22
-msgid "Thai"
+msgid "Sami (Northern) (Sweden)"
 msgstr ""
 
 #: settings-locales.php:23
+msgid "Thai"
+msgstr ""
+
+#: settings-locales.php:24
 msgid "Vietnamese"
 msgstr ""
 
