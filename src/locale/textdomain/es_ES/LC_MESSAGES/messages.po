@@ -7924,102 +7924,102 @@ msgstr "Usado para terminar una carta antes de Firmante"
 msgid "Google Analytics Tracking Code"
 msgstr "Código de Seguimiento de Google Analytics"
 
-#: ChurchCRM/dto/SystemConfig.php:21
+#: settings-locales.php:10
 #, fuzzy
 msgid "English - United States"
 msgstr "Inglés - Estados Unidos"
 
-#: ChurchCRM/dto/SystemConfig.php:22
+#: settings-locales.php:8
 #, fuzzy
 msgid "English - Canada"
 msgstr "Inglés - Canadá"
 
-#: ChurchCRM/dto/SystemConfig.php:23
+#: settings-locales.php:7
 #, fuzzy
 msgid "English - Australia"
 msgstr "Inglés - Australia"
 
-#: ChurchCRM/dto/SystemConfig.php:24
+#: settings-locales.php:9
 #, fuzzy
 msgid "English - Great Britain"
 msgstr "Inglés - Reino Unido"
 
-#: ChurchCRM/dto/SystemConfig.php:25
+#: settings-locales.php:12
 #, fuzzy
 msgid "German - Germany"
 msgstr "Alemán - Alemania"
 
-#: ChurchCRM/dto/SystemConfig.php:26
+#: settings-locales.php:21
 #, fuzzy
 msgid "Spanish - Spain"
 msgstr "Español - España"
 
-#: ChurchCRM/dto/SystemConfig.php:27
+#: settings-locales.php:11
 #, fuzzy
 msgid "French - France"
 msgstr "Francés - Francia"
 
-#: ChurchCRM/dto/SystemConfig.php:29 ChurchCRM/dto/SystemConfig.php:30
+#: settings-locales.php:13
 #, fuzzy
 msgid "Hungarian"
 msgstr "Húngaro"
 
-#: ChurchCRM/dto/SystemConfig.php:31
+#: settings-locales.php:15
 #, fuzzy
 msgid "Italian - Italy"
 msgstr "Italiano - Italia"
 
-#: ChurchCRM/dto/SystemConfig.php:32
+#: settings-locales.php:16
 #, fuzzy
 msgid "Norwegian"
 msgstr "Noruego"
 
-#: ChurchCRM/dto/SystemConfig.php:33
+#: settings-locales.php:6
 #, fuzzy
 msgid "Dutch - Netherlands"
 msgstr "Holandés - Holanda"
 
-#: ChurchCRM/dto/SystemConfig.php:34
+#: settings-locales.php:17
 #, fuzzy
 msgid "Polish"
 msgstr "Polaco"
 
-#: ChurchCRM/dto/SystemConfig.php:35
+#: settings-locales.php:18
 #, fuzzy
 msgid "Portuguese - Brazil"
 msgstr "Portugués - Brasil"
 
-#: ChurchCRM/dto/SystemConfig.php:36
+#: settings-locales.php:19
 #, fuzzy
 msgid "Romanian - Romania"
 msgstr "Rumano - Rumania"
 
-#: ChurchCRM/dto/SystemConfig.php:37
+#: settings-locales.php:20
 #, fuzzy
 msgid "Russian"
 msgstr "Russo"
 
-#: ChurchCRM/dto/SystemConfig.php:38
+#: settings-locales.php:22
 #, fuzzy
 msgid "Sami (Northern) (Sweden)"
 msgstr "Sami (del Norte) (Suecia)"
 
-#: ChurchCRM/dto/SystemConfig.php:39
+#: settings-locales.php:2
 #, fuzzy
 msgid "Albanian"
 msgstr "Albanés"
 
-#: ChurchCRM/dto/SystemConfig.php:41
+#: settings-locales.php:24
 #, fuzzy
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: ChurchCRM/dto/SystemConfig.php:43
+#: settings-locales.php:4
 #, fuzzy
 msgid "Chinese - China"
 msgstr "Chino - China"
 
-#: ChurchCRM/dto/SystemConfig.php:44
+#: settings-locales.php:5
 #, fuzzy
 msgid "Chinese - Taiwan"
 msgstr "Chino - Taiwán"
@@ -8868,12 +8868,12 @@ msgstr "Miembros a separador"
 msgid "Move"
 msgstr "Mover"
 
-#: ChurchCRM/dto/SystemConfig.php:28
+#: settings-locales.php:3
 #, fuzzy
 msgid "Arabic - Egypt"
 msgstr "Árabe - Egipto"
 
-#: ChurchCRM/dto/SystemConfig.php:42
+#: settings-locales.php:23
 #, fuzzy
 msgid "Thai"
 msgstr "Tailandés"
