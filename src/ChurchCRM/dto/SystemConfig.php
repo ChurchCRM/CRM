@@ -16,37 +16,14 @@ class SystemConfig
 
   private static function getSupportedLocales()
   {
-    $languages = [
-        "Choices" => [
-            gettext("English - United States:en_US"),
-            gettext("English - Canada:en_CA"),
-            gettext("English - Australia:en_AU"),
-            gettext("English - Great Britain:en_GB"),
-            gettext("German - Germany:de_DE"),
-            gettext("Spanish - Spain:es_ES"),
-            gettext("French - France:fr_FR"),
-            gettext("Arabic - Egypt:ar_EG"),
-            gettext("Hungarian:hu_HU"),
-            gettext("Hungarian:hu_HU"),
-            gettext("Italian - Italy:it_IT"),
-            gettext("Norwegian:nb_NO"),
-            gettext("Dutch - Netherlands:nl_NL"),
-            gettext("Polish:pl_PL"),
-            gettext("Portuguese - Brazil:pt_BR"),
-            gettext("Romanian - Romania:ro_RO"),
-            gettext("Russian:ru_RU"),
-            gettext("Sami (Northern) (Sweden):se_SE"),
-            gettext("Albanian:sq_AL"),
-            gettext("Swedish - Sweden:sv_SE"),
-            gettext("Vietnamese:vi_VN"),
-            gettext("Thai:th_TH"),
-            gettext("Chinese - China:zh_CN"),
-            gettext("Chinese - Taiwan:zh_TW")
-        ]
-    ];
+      $localesFile = file_get_contents(SystemURLs::getDocumentRoot()."/locale/locales.json");
+      $locales = json_decode($localesFile, true);
+      $languagesChoices = [];
+      foreach ($locales as $key => $value) {
+          array_push($languagesChoices, gettext($key).":".$value["locale"]);
+      }
 
-    return $languages;
-
+      return ["Choices" => $languagesChoices ];
   }
 
     public static function getMonoLogLevels()
@@ -143,6 +120,8 @@ class SystemConfig
         "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y"),
         "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a"),
         "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd-Gis"),
+        "sCSVExportDelemiter" => new ConfigItem(107, "sCSVExportDelemiter", "text", ",", gettext("To export to another For european CharSet use ;")),
+        "sCSVExportCharset" => new ConfigItem(108, "sCSVExportCharset", "text", "UTF-8", gettext("Default is UTF-8, For european CharSet use Windows-1252 for example for French language.")),
         "bRegistered" => new ConfigItem(999, "bRegistered", "boolean", "0", gettext("ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.")),
         "leftX" => new ConfigItem(1001, "leftX", "number", "20", gettext("Left Margin (1 = 1/100th inch)")),
         "incrementY" => new ConfigItem(1002, "incrementY", "number", "4", gettext("Line Thickness (1 = 1/100th inch")),
@@ -227,7 +206,7 @@ class SystemConfig
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('System Settings')  => ["sLogLevel", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
-      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat"],
+      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset"],
       gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID","bEnableGooglePhotos","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"]
     );
   }
@@ -339,11 +318,11 @@ class SystemConfig
 
         return $hasValidSettings;
     }
-    
+
     public static function hasValidSMSServerSettings() {
       return (!empty(self::getValue("sNexmoAPIKey"))) && (!empty(self::getValue("sNexmoAPISecret"))) && (!empty(self::getValue("sNexmoFromNumber")));
     }
-    
+
     public static function hasValidOpenLPSettings() {
        return (!empty(self::getValue("sOLPURL")));
     }

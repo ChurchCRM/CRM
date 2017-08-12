@@ -6,24 +6,7 @@
  *  description : page header used for most pages
  *
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
- *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters
- *
+
  ******************************************************************************/
 
 
@@ -195,18 +178,7 @@ $MenuFirst = 1;
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <section class="content-header">
-      <h1>
-        <?php
-        echo $sPageTitle."\n";
-        if (isset($sPageTitleSub)) {
-            echo '<small>'.$sPageTitleSub.'</small>';
-        }
-        ?>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="<?= SystemURLs::getRootPath() ?>/Menu.php"><i class="fa fa-dashboard"></i><?= gettext('Home') ?></a></li>
-        <li class="active"><?= $sPageTitle ?></li>
-      </ol>
+      <h1><?= $sPageTitle; ?></h1>
     </section>
     <!-- Main content -->
     <section class="content">
