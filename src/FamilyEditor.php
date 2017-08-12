@@ -5,12 +5,7 @@
  *  last change : 2003-01-04
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -431,13 +426,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     RunQuery('UNLOCK TABLES');
                 }
             }
-            $note = new Note();
-            $note->setFamId($iFamilyID);
-            $note->setText(gettext('Created'));
-            $note->setType('create');
-            $note->setEntered($_SESSION['iUserID']);
-            $note->save();
             $family = FamilyQuery::create()->findPk($iFamilyID);
+            $family->createTimeLineNote('create');
             $family->updateLanLng();
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
@@ -466,15 +456,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->save();
                 }
             }
-            $note = new Note();
-            $note->setFamId($iFamilyID);
-            $note->setText(gettext('Updated'));
-            $note->setType('edit');
-            $note->setEntered($_SESSION['iUserID']);
-            $note->save();
-
             $family = FamilyQuery::create()->findPk($iFamilyID);
             $family->updateLanLng();
+            $family->createTimeLineNote('edit');
         }
 
         // Update the custom person fields.

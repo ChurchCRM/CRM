@@ -8,17 +8,7 @@
 *  Additional Contributors:
 *  2006 Ed Davis
 *  2011 Michael Wilt
-*
-*
-*  Copyright Contributors
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  This file best viewed in a text editor with tabs stops set to 4 characters
-*
+
 *  Design notes: this file would benefit from some thoughtful cleanup.  The filter
 *  settings are using badly overloaded values, with positive, negative, and not-set
 *  all significant.  Originally it relied on the old php behavior of not-set quietly

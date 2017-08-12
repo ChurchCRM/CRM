@@ -87,7 +87,13 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                       <i class="fa fa-fw fa-eye-slash" title="<?= gettext("Age Hidden")?>"></i><?php } ?><br/>
                   </li>
                   <li class="list-group-item">
-                    <?php $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($person->getClsId())->findOne()->getOptionName(); ?>
+                    <?php
+                    $classification = "";
+                    $cls = ListOptionQuery::create()->filterById(1)->filterByOptionId($person->getClsId())->findOne();
+                    if (!empty($cls)) {
+                        $classification = $cls->getOptionName();
+                    }
+                    ?>
                     <b>Classification:</b> <?= $classification ?>
                   </li>
                   <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) {?>
