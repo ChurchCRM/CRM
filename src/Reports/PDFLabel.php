@@ -848,46 +848,56 @@ if ($sFileType == 'PDF') {
     }
 } else { // File Type must be CSV
 
+    $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
+
     $sCSVOutput = '';
     if ($iBulkCode) {
-        $sCSVOutput .= '"ZipBundle",';
+        $sCSVOutput .= '"ZipBundle"'.$delimiter;
     }
+    
 
-    $sCSVOutput .= '"Greeting","Name","Address1","Address2","City","State","Zip"'."\n";
+    $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
 
     while (list($i, $sLT) = each($aLabelList)) {
         if ($iBulkCode) {
-            $sCSVOutput .= '"'.$sLT['Note'].'",';
+            $sCSVOutput .= '"'.$sLT['Note'].'"'.$delimiter;
         }
 
         $iNewline = (strpos($sLT['Name'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"","'.$sLT['Name'].'",';
+            $sCSVOutput .= '""'.$delimiter.'"'.InputUtils::translate_special_charset($sLT['Name']).'"'.$delimiter;
         } else {
-            $sCSVOutput .= '"'.mb_substr($sLT['Name'], 0, $iNewline).'",'.
-                            '"'.mb_substr($sLT['Name'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset(mb_substr($sLT['Name'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translate_special_charset(mb_substr($sLT['Name'], $iNewline + 1)).'"'.$delimiter;
         }
 
         $iNewline = (strpos($sLT['Address'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"'.$sLT['Address'].'","",';
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['Address']).'"'.$delimiter;
         } else {
-            $sCSVOutput .= '"'.mb_substr($sLT['Address'], 0, $iNewline).'",'.
-                            '"'.mb_substr($sLT['Address'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], $iNewline + 1)).'"'.$delimiter;
         }
 
-        $sCSVOutput .= '"'.$sLT['City'].'",'.
-                        '"'.$sLT['State'].'",'.
+        $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['City']).'"'.$delimiter.
+                        '"'.InputUtils::translate_special_charset($sLT['State']).'"'.$delimiter.
                         '"'.$sLT['Zip'].'"'."\n";
     }
 
-    header('Content-type: application/csv');
+    header('Content-type: application/csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
     header('Content-Disposition: attachment; filename=Labels-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
+    
+    //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
+        if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
+            echo "\xEF\xBB\xBF";
+        }
+    
     echo $sCSVOutput;
 }
+
 
 exit();
