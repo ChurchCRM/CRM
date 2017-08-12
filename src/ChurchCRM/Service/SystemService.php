@@ -320,7 +320,14 @@ class SystemService
                 $version->setVersion($dbUpdate['dbVersion']);
                 $version->setUpdateStart(new \DateTime());
                 foreach ($dbUpdate['scripts'] as $dbScript) {
+                  if(pathinfo($dbScript,PATHINFO_EXTENSION) === "sql")
+                  {
                     SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/' . $dbScript, $connection);
+                  }
+                  elseif(pathinfo($dbScript,PATHINFO_EXTENSION) === "php")
+                  {
+                    require SystemURLs::getDocumentRoot() . '/' . $dbScript;
+                  }
                 }
                 if (!$errorFlag) {
                     $version->setUpdateEnd(new \DateTime());
