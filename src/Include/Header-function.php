@@ -229,7 +229,7 @@ function addMenuItem($aMenu, $mIdx)
     if (!($aMenu['ismenu']) || ($numItems > 0)) {
         if ($link) {
             if ($aMenu['name'] != 'sundayschool-dash') { // HACK to remove the sunday school 2nd dashboard
-        echo "<li><a href='$link'>";
+                echo "<li><a href='$link'>";
                 if ($aMenu['icon'] != '') {
                     echo '<i class="fa ' . $aMenu['icon'] . '"></i>';
                 }
