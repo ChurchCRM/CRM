@@ -28,13 +28,13 @@ if (!$_SESSION['bManageGroups']) {
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_POST['EventID'])) {
 
         // Get the PersonID
-        $iEventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
+    $iEventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
 
-        // Loop through the session array
-        $iCount = 0;
+    // Loop through the session array
+    $iCount = 0;
     while ($element = each($_SESSION['aPeopleCart'])) {
         // Enter ID into event
-            $sSQL = 'INSERT IGNORE INTO event_attend (event_id, person_id)';
+        $sSQL = 'INSERT IGNORE INTO event_attend (event_id, person_id)';
         $sSQL .= " VALUES ('".$iEventID."','".$_SESSION['aPeopleCart'][$element['key']]."')";
         RunQuery($sSQL);
         $iCount++;

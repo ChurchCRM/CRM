@@ -81,9 +81,9 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     <?php
     if ($sEmailLink) {
         // Add default email if default email has been set and is not already in string
-      if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
-          $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
-      }
+        if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+            $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
+        }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
        if ($bEmailMailto) { // Does user have permission to email groups
       // Display link

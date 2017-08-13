@@ -24,11 +24,11 @@ use ChurchCRM\dto\SystemURLs;
 
 $systemService = new SystemService();
 if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-  Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 } else {        //the upgrade failed!
 
-  $UpgradeException = 'null';
+    $UpgradeException = 'null';
     try {
         if ($systemService->upgradeDatabaseVersion()) {
             $_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
@@ -39,8 +39,8 @@ if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade wa
         $UpgradeException = $ex;
     }
     $dbVersion = $systemService->getDBVersion();
-  //Set the page title
-  $sPageTitle = gettext('Software Version Check');
+    //Set the page title
+    $sPageTitle = gettext('Software Version Check');
     require 'Include/HeaderNotLoggedIn.php'; ?>
 
   <!-- Main content -->

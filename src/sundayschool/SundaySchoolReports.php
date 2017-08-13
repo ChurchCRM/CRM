@@ -73,8 +73,8 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
         Redirect('Reports/ClassList.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles);
     } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance'])) {
         $toStr = 'Reports/ClassAttendance.php?';
-//	      $toStr .= "GroupID=" . $iGroupID;
-    $toStr .= 'GroupID='.$aGrpID;
+        //	      $toStr .= "GroupID=" . $iGroupID;
+        $toStr .= 'GroupID='.$aGrpID;
         $toStr .= '&FYID='.$iFYID;
         $toStr .= '&FirstSunday='.$dFirstSunday;
         $toStr .= '&LastSunday='.$dLastSunday;
