@@ -5,10 +5,10 @@
  *  last change : 2003-09-03
  *  description : form to invoke Sunday School reports
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+
+
+
+
  *  edited by S. Shaffer May/June 2006 - added capability to include multiple groups.  Group reports are printed with a page break between group selections.
  *
  ******************************************************************************/
