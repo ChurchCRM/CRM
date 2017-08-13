@@ -38,7 +38,7 @@ if (isset($_POST['save'])) {
 
     while ($current_type = current($type)) {
         $id = key($type);
-    // Filter Input
+        // Filter Input
     if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
       $value = InputUtils::FilterHTML($new_value[$id]);
     } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
@@ -59,12 +59,12 @@ if (isset($_POST['save'])) {
         }
     }
 
-    // If changing the locale, translate the menu options
-    if ($id == 39 && $value != $localeInfo->getLocale()) {
-        $localeInfo = new LocaleInfo($value);
-        setlocale(LC_ALL, $localeInfo->getLocale());
-        $aLocaleInfo = $localeInfo->getLocaleInfo();
-    }
+        // If changing the locale, translate the menu options
+        if ($id == 39 && $value != $localeInfo->getLocale()) {
+            $localeInfo = new LocaleInfo($value);
+            setlocale(LC_ALL, $localeInfo->getLocale());
+            $aLocaleInfo = $localeInfo->getLocaleInfo();
+        }
 
         if ($id == 65 && !(in_array($value, timezone_identifiers_list()))) {
             $value = date_default_timezone_get();

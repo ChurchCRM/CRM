@@ -35,7 +35,7 @@ class PDF_FRBidSheetsReport extends ChurchInfoReport
 
         parent::AddPage($orientation, $format);
 
-//    	$this->SetFont("Times",'B',16);
+        //    	$this->SetFont("Times",'B',16);
 //    	$this->Write (8, $fr_title."\n");
 //		$curY += 8;
 //		$this->Write (8, $fr_description."\n\n");
