@@ -120,6 +120,8 @@ class SystemConfig
         "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y"),
         "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a"),
         "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd-Gis"),
+        "sCSVExportDelemiter" => new ConfigItem(107, "sCSVExportDelemiter", "text", ",", gettext("To export to another For european CharSet use ;")),
+        "sCSVExportCharset" => new ConfigItem(108, "sCSVExportCharset", "text", "UTF-8", gettext("Default is UTF-8, For european CharSet use Windows-1252 for example for French language.")),
         "sDatePickerPlaceHolder" => new ConfigItem(109, "sDatePickerPlaceHolder", "text", "yyyy-mm-dd", gettext("For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example.")),
         "sDatePickerFormat" => new ConfigItem(110, "sDatePickerFormat", "text", "Y-m-d", gettext("For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example.")),
         "bRegistered" => new ConfigItem(999, "bRegistered", "boolean", "0", gettext("ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.")),
@@ -206,7 +208,7 @@ class SystemConfig
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('System Settings')  => ["sLogLevel", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
-      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sDatePickerFormat","sDatePickerPlaceHolder"],
+      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
       gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID","bEnableGooglePhotos","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"]
     );
   }

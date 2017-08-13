@@ -67,6 +67,7 @@ class InputUtils {
   public static function FilterDate($sInput)
   {
     // Attempts to take a date in any format and convert it to YYYY-MM-DD format
+    // Logel Philippe
     if (empty($sInput))
     	return "";
     else 
