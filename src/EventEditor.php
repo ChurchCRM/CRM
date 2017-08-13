@@ -57,14 +57,14 @@ if (!$sAction) {
 //
 if ($sAction == 'Create Event' && !empty($tyid)) {
     //
-// user is coming from the event types screen and thus there
-// is no existing event in the event_event table
-//
-// will use the event type information to smart-prefill the
-// event fields...but still allow the user to edit everything
-// except event type since event type is tied to the attendance count fields
-//
-  $EventExists = 0;
+    // user is coming from the event types screen and thus there
+    // is no existing event in the event_event table
+    //
+    // will use the event type information to smart-prefill the
+    // event fields...but still allow the user to edit everything
+    // except event type since event type is tied to the attendance count fields
+    //
+    $EventExists = 0;
     $sSQL = "SELECT * FROM event_types WHERE type_id=$tyid";
     $rsOpps = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsOpps);
@@ -99,11 +99,11 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     }
     $nCnts = $iNumCounts;
     $sCountNotes = '';
-//
-// this switch manages the smart-prefill of the form based on the event type
-// definitions, recurrance type, etc.
-//
-  switch ($sDefRecurType) {
+    //
+    // this switch manages the smart-prefill of the form based on the event type
+    // definitions, recurrance type, etc.
+    //
+    switch ($sDefRecurType) {
     case 'none':
       $sEventStartDate = date('Y-m-d');
       $sEventEndDate = $sEventStartDate;
@@ -123,7 +123,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
       $numRows = mysqli_num_rows($ecOpps);
       if ($numRows > 0) {
           // use the most recent event if it exists
-        $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
+          $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
           extract($ecRow);
           $aStartTokens = explode(' ', $event_start);
           $ceEventStartDate = $aStartTokens[0];
@@ -138,7 +138,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
           $iEventEndMins = $iEventStartMins;
       } else {
           // use the event type definition
-        $sEventStartDate = date('Y-m-d', strtotime("last $iDefRecurDOW"));
+          $sEventStartDate = date('Y-m-d', strtotime("last $iDefRecurDOW"));
           $aStartTimeTokens = explode(':', $sDefStartTime);
           $iEventStartHour = $aStartTimeTokens[0];
           $iEventStartMins = $aStartTimeTokens[1];
@@ -157,7 +157,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
       $numRows = mysqli_num_rows($ecOpps);
       if ($numRows > 0) {
           // use the most recent event if it exists
-        $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
+          $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
           extract($ecRow);
           $aStartTokens = explode(' ', $event_start);
           $ceEventStartDate = $aStartTokens[0];
@@ -172,7 +172,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
           $iEventEndMins = $aEventStartTimeTokens[1];
       } else {
           // use the event type definition
-        $currentDOM = date('d');
+          $currentDOM = date('d');
           if ($currentDOM < $iDefRecurDOM) {
               $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, date('m') - 1, $iDefRecurDOM, date('Y')));
           } else {
@@ -194,7 +194,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
       $numRows = mysqli_num_rows($ecOpps);
       if ($numRows > 0) {
           // use the most recent event if it exists
-        $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
+          $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
           extract($ecRow);
           $aStartTokens = explode(' ', $event_start);
           $sEventStartDate = $aStartTokens[0];
@@ -209,15 +209,15 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
           $iEventEndMins = $aEventStartTimeTokens[1];
       } else {
           // use the event type definition
-        $currentDOY = time();
+          $currentDOY = time();
           $defaultDOY = strtotime($sDefRecurDOY);
           if ($currentDOY < $defaultDOY) {  // event is future
-          $sEventStartDate = $sDefRecurDOY;
+              $sEventStartDate = $sDefRecurDOY;
           } elseif ($currentDOY > $defaultDOY + (365 * 24 * 60 * 60)) {  // event is over 1 year past
-          $aDMY = explode('-', $sDefRecurDOY);
+              $aDMY = explode('-', $sDefRecurDOY);
               $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y') - 1));
           } else { // event is past
-          $aDMY = explode('-', $sDefRecurDOY);
+              $aDMY = explode('-', $sDefRecurDOY);
               $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y')));
           }
 
@@ -237,7 +237,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iTypeID = $type_id;
 } elseif ($sAction = 'Edit' && !empty($sOpp)) {
     // Get data for the form as it now exists..
-        $EventExists = 1;
+    $EventExists = 1;
     $sSQL = "SELECT * FROM events_event as t1, event_types as t2 WHERE t1.event_type = t2.type_id AND t1.event_id ='".$sOpp."' LIMIT 1";
     $rsOpps = RunQuery($sSQL);
 
@@ -264,24 +264,24 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $nEventGroupId = $event_grpid;
 
     $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
-//        echo $cvSQL;
-        $cvOpps = RunQuery($sSQL);
+    //        echo $cvSQL;
+    $cvOpps = RunQuery($sSQL);
     $iNumCounts = mysqli_num_rows($cvOpps);
     $nCnts = $iNumCounts;
-//        echo "numcounts = {$aNumCounts}\n\l";
-        if ($iNumCounts) {
-            for ($c = 0; $c < $iNumCounts; $c++) {
-                $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
-                extract($aRow);
-                $aCountID[$c] = $evtcnt_countid;
-                $aCountName[$c] = $evtcnt_countname;
-                $aCount[$c] = $evtcnt_countcount;
-                $sCountNotes = $evtcnt_notes;
-            }
+    //        echo "numcounts = {$aNumCounts}\n\l";
+    if ($iNumCounts) {
+        for ($c = 0; $c < $iNumCounts; $c++) {
+            $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
+            extract($aRow);
+            $aCountID[$c] = $evtcnt_countid;
+            $aCountName[$c] = $evtcnt_countname;
+            $aCount[$c] = $evtcnt_countcount;
+            $sCountNotes = $evtcnt_notes;
         }
+    }
 } elseif (isset($_POST['SaveChanges'])) {
     // Does the user want to save changes to text fields?
-        $iEventID = $_POST['EventID'];
+    $iEventID = $_POST['EventID'];
     $iTypeID = $_POST['EventTypeID'];
     $EventExists = $_POST['EventExists'];
     $sEventTitle = $_POST['EventTitle'];
@@ -333,10 +333,10 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 
     $sCountNotes = $_POST['EventCountNotes'];
 
-        // If no errors, then update.
-        if ($iErrors == 0) {
-            if ($EventExists == 0) {
-                $sSQL = "INSERT events_event
+    // If no errors, then update.
+    if ($iErrors == 0) {
+        if ($EventExists == 0) {
+            $sSQL = "INSERT events_event
                      SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
                      `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
                      `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
@@ -346,11 +346,11 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
                      `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
                      `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."';";
-                RunQuery($sSQL);
-                $iEventID = mysqli_insert_id($cnInfoCentral);
-                for ($c = 0; $c < $iNumCounts; $c++) {
-                    $cCnt = ltrim(rtrim($aCountName[$c]));
-                    $sSQL = "INSERT eventcounts_evtcnt
+            RunQuery($sSQL);
+            $iEventID = mysqli_insert_id($cnInfoCentral);
+            for ($c = 0; $c < $iNumCounts; $c++) {
+                $cCnt = ltrim(rtrim($aCountName[$c]));
+                $sSQL = "INSERT eventcounts_evtcnt
 											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
 											 VALUES
 											 ('".InputUtils::LegacyFilterInput($iEventID)."',
@@ -358,10 +358,10 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 												'".InputUtils::LegacyFilterInput($aCountName[$c])."',
 												'".InputUtils::LegacyFilterInput($aCount[$c])."',
 												'".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
-                    RunQuery($sSQL);
-                }
-            } else {
-                $sSQL = "UPDATE events_event
+                RunQuery($sSQL);
+            }
+        } else {
+            $sSQL = "UPDATE events_event
                      SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
                      `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
                      `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
@@ -372,11 +372,11 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
                      `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."'".
                     " WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
-//            echo $sSQL;
+            //            echo $sSQL;
             RunQuery($sSQL);
-                for ($c = 0; $c < $iNumCounts; $c++) {
-                    $cCnt = ltrim(rtrim($aCountName[$c]));
-                    $sSQL = "INSERT eventcounts_evtcnt
+            for ($c = 0; $c < $iNumCounts; $c++) {
+                $cCnt = ltrim(rtrim($aCountName[$c]));
+                $sSQL = "INSERT eventcounts_evtcnt
 											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
 											 VALUES
 											 ('".InputUtils::LegacyFilterInput($iEventID)."',
@@ -384,12 +384,12 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 												'".InputUtils::LegacyFilterInput($aCountName[$c])."',
 												'".InputUtils::LegacyFilterInput($aCount[$c])."',
 												'".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
-                    RunQuery($sSQL);
-                }
+                RunQuery($sSQL);
             }
-            $EventExists = 1;
-            header('Location: ListEvents.php');
         }
+        $EventExists = 1;
+        header('Location: ListEvents.php');
+    }
 }
 
 // Construct the form
