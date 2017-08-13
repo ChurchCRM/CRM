@@ -62,9 +62,9 @@ $aPropErrors = [];
 // Is this the second pass?
 if (isset($_POST['GroupPropSubmit'])) {
     // Process all HTTP post data based upon the list of properties data we are expecting
-  // If there is an error message, it gets assigned to an array of strings, $aPropErrors, for use in the form.
+    // If there is an error message, it gets assigned to an array of strings, $aPropErrors, for use in the form.
 
-  $bErrorFlag = false;
+    $bErrorFlag = false;
 
     while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
         extract($rowPropList);
@@ -73,40 +73,40 @@ if (isset($_POST['GroupPropSubmit'])) {
 
         $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $prop_Field, $aPropErrors);
 
-    // assign processed value locally to $aPersonProps so we can use it to generate the form later
-    $aPersonProps[$prop_Field] = $currentFieldData;
+        // assign processed value locally to $aPersonProps so we can use it to generate the form later
+        $aPersonProps[$prop_Field] = $currentFieldData;
     }
 
-  // If no errors, then update.
-  if (!$bErrorFlag) {
-      mysqli_data_seek($rsPropList, 0);
+    // If no errors, then update.
+    if (!$bErrorFlag) {
+        mysqli_data_seek($rsPropList, 0);
 
-      $sSQL = 'UPDATE groupprop_'.$iGroupID.' SET ';
+        $sSQL = 'UPDATE groupprop_'.$iGroupID.' SET ';
 
-      while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
-          extract($rowPropList);
-          $currentFieldData = trim($aPersonProps[$prop_Field]);
+        while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
+            extract($rowPropList);
+            $currentFieldData = trim($aPersonProps[$prop_Field]);
 
-          sqlCustomField($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
-      }
+            sqlCustomField($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
+        }
 
-    // chop off the last 2 characters (comma and space) added in the last while loop iteration.
-    $sSQL = mb_substr($sSQL, 0, -2);
+        // chop off the last 2 characters (comma and space) added in the last while loop iteration.
+        $sSQL = mb_substr($sSQL, 0, -2);
 
-      $sSQL .= ' WHERE per_ID = '.$iPersonID;
+        $sSQL .= ' WHERE per_ID = '.$iPersonID;
 
-    //Execute the SQL
-    RunQuery($sSQL);
+        //Execute the SQL
+        RunQuery($sSQL);
 
-    // Return to the Person View
-    Redirect('PersonView.php?PersonID='.$iPersonID);
-  }
+        // Return to the Person View
+        Redirect('PersonView.php?PersonID='.$iPersonID);
+    }
 } else {
     // First Pass
-  // we are always editing, because the record for a group member was created when they were added to the group
+    // we are always editing, because the record for a group member was created when they were added to the group
 
-  // Get the existing data for this group member
-  $sSQL = 'SELECT * FROM groupprop_'.$iGroupID.' WHERE per_ID = '.$iPersonID;
+    // Get the existing data for this group member
+    $sSQL = 'SELECT * FROM groupprop_'.$iGroupID.' WHERE per_ID = '.$iPersonID;
     $rsPersonProps = RunQuery($sSQL);
     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 }
@@ -149,7 +149,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
                 $prop_Special = $sPhoneCountry;
             }  // ugh.. an argument with special cases!
 
-                formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
+            formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
             if (array_key_exists($prop_Field, $aPropErrors)) {
                 echo '<span style="color: red; ">'.$aPropErrors[$prop_Field].'</span>';
