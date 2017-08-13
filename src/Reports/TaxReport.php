@@ -463,7 +463,7 @@ if ($output == 'pdf') {
         $pdf->Output();
     }
 
-// Output a text file
+    // Output a text file
 // ##################
 } elseif ($output == 'csv') {
 
@@ -472,7 +472,7 @@ if ($output == 'pdf') {
     $eol = "\r\n";
 
     // Build headings row
-        preg_match('/SELECT (.*) FROM /i', $sSQL, $result);
+    preg_match('/SELECT (.*) FROM /i', $sSQL, $result);
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {
