@@ -39,7 +39,7 @@ class VancoTools
         Parameters:  None
         Returns:     SessionID to be used in consecutive posts, or errors if login fails
         */
-    $requestid = $this->generateRequestID();
+        $requestid = $this->generateRequestID();
         $postdata = "nvpvar=requesttype=login&requestid=$requestid&userid=".$this->userid.'&password='.$this->password;
         $response = $this->post($postdata);
         $data = explode('&', $response);
@@ -64,7 +64,7 @@ class VancoTools
                  $isdebitcardonly: Indicator to not allow credit cards to be used, defaults to No.
         Returns:     Encrypted string to be used as nvpvar variable in a transparent redirect request
         */
-    $requestid = $this->generateRequestID();
+        $requestid = $this->generateRequestID();
         $nvpstring = "requesttype=efttransparentredirect&requestid=$requestid&clientid=".$this->clientid."&urltoredirect=$urltoredirect&isdebitcardonly=$isdebitcardonly";
         if ($customerid != '') {
             $nvpstring .= '&customerid='.$customerid;
@@ -104,13 +104,13 @@ class VancoTools
                  $amount: If funds are not being used, this will be the amount of the transaction
         Returns:     Response variables for a successful transaction, or errors if login fails. See transparent redirect specifications for details on the return fields
         */
-    $requestid = $this->generateRequestID();
+        $requestid = $this->generateRequestID();
 
         $nvpstring = "requesttype=eftaddcompletetransaction&requestid=$requestid&clientid=".$this->clientid;
-    // Adding any inputed values to the nvpvar
-    if ($paymentmethodref != '') {
-        $nvpstring .= '&paymentmethodref='.$paymentmethodref;
-    }
+        // Adding any inputed values to the nvpvar
+        if ($paymentmethodref != '') {
+            $nvpstring .= '&paymentmethodref='.$paymentmethodref;
+        }
         if ($startdate != '') {
             $nvpstring .= '&startdate='.$startdate;
         }
@@ -153,14 +153,14 @@ class VancoTools
         if ($transactiontypecode != '') {
             $nvpstring .= '&transactiontypecode='.$transactiontypecode;
         }
-    //define amount fields
-    if ($funddict != '') {
-        foreach ($funddict as $key => $value) {
-            $nvpstring .= '&'.$key.'='.$value;
+        //define amount fields
+        if ($funddict != '') {
+            foreach ($funddict as $key => $value) {
+                $nvpstring .= '&'.$key.'='.$value;
+            }
+        } else {
+            $nvpstring .= '&amount='.$amount;
         }
-    } else {
-        $nvpstring .= '&amount='.$amount;
-    }
         $responsedata = $this->encryptNVPString($nvpstring);
         $postdata = "sessionid=$sessionid&nvpvar=$responsedata";
 
@@ -175,13 +175,13 @@ class VancoTools
         Parameters:  $postdata: String to use in CGI variables in HTTPS post
         Returns:     Response to Web Services post
         */
-    if ($this->test == true) {
-        $ip = 'https://www.vancodev.com';
-        $filepath = '/cgi-bin/wsnvptest.vps';
-    } else {
-        $ip = 'https://www.vancoservices.com';
-        $filepath = '/cgi-bin/wsnvp.vps';
-    }
+        if ($this->test == true) {
+            $ip = 'https://www.vancodev.com';
+            $filepath = '/cgi-bin/wsnvptest.vps';
+        } else {
+            $ip = 'https://www.vancoservices.com';
+            $filepath = '/cgi-bin/wsnvp.vps';
+        }
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "$ip$filepath");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -209,7 +209,7 @@ class VancoTools
         Parameters:  $nvpstring: Unencrypted string that needs to be encrypted
         Returns:     Encrypted string to use in nvpvar variable
         */
-    $deflated = gzdeflate($nvpstring);
+        $deflated = gzdeflate($nvpstring);
         $padded = $this->pad_msg($deflated);
         $encrypted = $this->encrypt($padded, $this->enc_key);
         $encoded = $this->urlsafe_b64encode($encrypted);
@@ -240,7 +240,7 @@ class VancoTools
         Parameters:  $response: String returned from the Web Services response
         Returns:     Decrypted string of the response variables
         */
-    $encrypted = $this->urlsafe_b64decode($response);
+        $encrypted = $this->urlsafe_b64decode($response);
         $decrypted = $this->decrypt($encrypted, $this->enc_key);
         $inflated = gzinflate($decrypted);
 
@@ -257,21 +257,21 @@ class VancoTools
         return mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB);
     }
 
-  //Function to generate a unique requestid for the request.
-  public function generateRequestID()
-  {
-      /*
-        Function:    generateRequestID()
-        Description: Used to generate a unique request ID to be used in a Web Services request
-        Parameters:  None
-        Returns:     String value to be used as a request ID. Value will be date/time with a random 4 digit number appended
-        */
-//		date_default_timezone_set('America/Chicago');
-    $currenttime = date('YmdHis');
-      $randomnumber = rand(0, 9999);
+    //Function to generate a unique requestid for the request.
+    public function generateRequestID()
+    {
+        /*
+          Function:    generateRequestID()
+          Description: Used to generate a unique request ID to be used in a Web Services request
+          Parameters:  None
+          Returns:     String value to be used as a request ID. Value will be date/time with a random 4 digit number appended
+          */
+        //		date_default_timezone_set('America/Chicago');
+        $currenttime = date('YmdHis');
+        $randomnumber = rand(0, 9999);
 
-      return $currenttime.$randomnumber;
-  }
+        return $currenttime.$randomnumber;
+    }
 
     public function errorString($errNo)
     {

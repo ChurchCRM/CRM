@@ -14,10 +14,10 @@ class MICRFunctions
     public function IdentifyFormat($micr)
     {
         // t000000000t0000o0000000000000o ROUTE_FIRST2
-    // t000000000t 0000000000o   0000 ROUTE_FIRST1
-    // o000000o t000000000t 0000000000o CHECKNO_FIRST
+        // t000000000t 0000000000o   0000 ROUTE_FIRST1
+        // o000000o t000000000t 0000000000o CHECKNO_FIRST
 
-    $firstChar = mb_substr($micr, 0, 1);
+        $firstChar = mb_substr($micr, 0, 1);
         if ($firstChar == 'o') {
             return $this->CHECKNO_FIRST;
         } elseif ($firstChar == 't') {
@@ -25,7 +25,7 @@ class MICRFunctions
             $secondSmallO = strrpos($micr, 'o');
             if ($firstSmallO == $secondSmallO) {
                 // Only one 'o'
-        $len = strlen($micr);
+                $len = strlen($micr);
                 if ($len - $firstSmallO > 12) {
                     return $this->NOT_RECOGNIZED;
                 } else {
@@ -67,8 +67,8 @@ class MICRFunctions
             return mb_substr($micr, 0, $firstSmallO);
         } elseif ($formatID == $this->ROUTE_FIRST2) {
             // t000000000t0000o0000000000000o ROUTE_FIRST2
-      // check number is in the middle, strip it out for family matching
-      $routeNo = mb_substr($micr, 0, 10);
+            // check number is in the middle, strip it out for family matching
+            $routeNo = mb_substr($micr, 0, 10);
             $firstSmallO = strpos($micr, 'o');
             $accountNo = mb_substr($micr, $firstSmallO, strlen($micr) - $firstSmallO);
 
