@@ -110,7 +110,7 @@ if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows >
          //Alternate the row color
         $sRowClass = AlternateRowStyle($sRowClass);
 
-        //Display the row ?>
+        //Display the row?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= $aEventTitle[$row] ?></td>
            <td class="TextColumn"><?= FormatDate($aEventStartDateTime[$row], 1) ?></td>

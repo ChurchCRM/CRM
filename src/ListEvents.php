@@ -93,7 +93,7 @@ $numRows = mysqli_num_rows($rsOpps);
         for ($r = 1; $r <= $numRows; $r++) {
             $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
             extract($aRow);
-            //          foreach($aRow as $t)echo "$t\n\r"; ?>
+            //          foreach($aRow as $t)echo "$t\n\r";?>
           <option value="<?php echo $type_id ?>" <?php if ($type_id == $eType) {
                 echo 'selected';
             } ?>><?= $type_name ?></option>
