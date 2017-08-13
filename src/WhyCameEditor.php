@@ -37,27 +37,27 @@ if (isset($_POST['Submit'])) {
     $tSuggest = InputUtils::LegacyFilterInput($_POST['Suggest']);
     $tHearOfUs = InputUtils::LegacyFilterInput($_POST['HearOfUs']);
 
-  // New input (add)
-  if (strlen($iWhyCameID) < 1) {
-      $sSQL = 'INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs)
+    // New input (add)
+    if (strlen($iWhyCameID) < 1) {
+        $sSQL = 'INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs)
 				VALUES ('.$iPerson.', "'.$tJoin.'", "'.$tCome.'", "'.$tSuggest.'", "'.$tHearOfUs.'")';
 
-    // Existing record (update)
-  } else {
-      $sSQL = 'UPDATE whycame_why SET why_join = "'.$tJoin.'", why_come = "'.$tCome.'", why_suggest = "'.$tSuggest.'", why_hearOfUs = "'.$tHearOfUs.'" WHERE why_per_ID = '.$iPerson;
-  }
+        // Existing record (update)
+    } else {
+        $sSQL = 'UPDATE whycame_why SET why_join = "'.$tJoin.'", why_come = "'.$tCome.'", why_suggest = "'.$tSuggest.'", why_hearOfUs = "'.$tHearOfUs.'" WHERE why_per_ID = '.$iPerson;
+    }
 
-  //Execute the SQL
-  RunQuery($sSQL);
+    //Execute the SQL
+    RunQuery($sSQL);
 
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-    if ($linkBack != '') {
-        Redirect($linkBack);
-    } else {
-        //Send to the view of this pledge
-      Redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
-    }
+        if ($linkBack != '') {
+            Redirect($linkBack);
+        } else {
+            //Send to the view of this pledge
+            Redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
+        }
     }
 } else {
     $sSQL = 'SELECT * FROM whycame_why WHERE why_per_ID = '.$iPerson;
