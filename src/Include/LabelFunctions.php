@@ -27,7 +27,7 @@ function FontSelect($fieldname)
         $len = strlen($entry);
         if ($len > 3) {
             if (strtoupper(mb_substr($entry, $len - 3)) == 'PHP') { // php files only
-        $filename = mb_substr($entry, 0, $len - 4);
+                $filename = mb_substr($entry, 0, $len - 4);
                 if (mb_substr($filename, 0, strlen($family)) != $family) {
                     $family = $filename;
                 }

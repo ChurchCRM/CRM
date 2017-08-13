@@ -328,21 +328,21 @@ if (isset($_POST['EventID'])) {
 
     foreach ($eventAttendees as $per) {
         //Get Person who is checked in
-                    $checkedInPerson = PersonQuery::create()
+        $checkedInPerson = PersonQuery::create()
                         ->findOneById($per->getPersonId());
 
         $sPerson = $checkedInPerson->getFullName();
 
-                    //Get Person who checked person in
-                    $sCheckinby = "";
+        //Get Person who checked person in
+        $sCheckinby = "";
         if ($per->getCheckinId()) {
             $checkedInBy = PersonQuery::create()
                             ->findOneById($per->getCheckinId());
             $sCheckinby = $checkedInBy->getFullName();
         }
 
-                    //Get Person who checked person out
-                    $sCheckoutby = "";
+        //Get Person who checked person out
+        $sCheckoutby = "";
         if ($per->getCheckoutId()) {
             $checkedOutBy = PersonQuery::create()
                             ->findOneById($per->getCheckoutId());

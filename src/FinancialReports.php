@@ -63,7 +63,7 @@ if ($sReportType == '') {
     echo '</select>';
     echo '</td></tr>';
     // First Pass Cancel, Next Buttons
-      echo "<tr><td>&nbsp;</td>
+    echo "<tr><td>&nbsp;</td>
         <td><input type=button class=btn name=Cancel value='".gettext('Cancel')."'
         onclick=\"javascript:document.location='ReportList.php';\">
         <input type=submit class=btn name=Submit1 value='".gettext('Next')."'>
