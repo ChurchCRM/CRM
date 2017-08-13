@@ -101,7 +101,7 @@ require 'Include/Header.php';
 // Save record limit if changed
 if (isset($_GET['Number'])) {
     /* @var $currentUser \ChurchCRM\User */
-  $currentUser = $_SESSION['user'];
+    $currentUser = $_SESSION['user'];
     $currentUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
     $currentUser->save();
     $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
