@@ -227,8 +227,8 @@ require 'Include/Header.php'; ?>
             if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
                 echo 'disabled ';
             }   // This would be better with $_SESSION variable
-                            // instead of cookie ... (save $_SESSION in MySQL)
-                            echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
+            // instead of cookie ... (save $_SESSION in MySQL)
+            echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
             echo '  id="QuietBulkMail" value="1" ';
             if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
                 echo 'checked';

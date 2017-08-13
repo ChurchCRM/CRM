@@ -16,6 +16,7 @@ require_once 'Functions.php';
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\NotificationService;
+use ChurchCRM\dto\SystemConfig;
 
 function Header_system_notifications()
 {
@@ -111,6 +112,7 @@ function Header_body_scripts()
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
             maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
+            datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
             plugin: {
                 dataTable : {
                    "language": {
@@ -227,7 +229,7 @@ function addMenuItem($aMenu, $mIdx)
     if (!($aMenu['ismenu']) || ($numItems > 0)) {
         if ($link) {
             if ($aMenu['name'] != 'sundayschool-dash') { // HACK to remove the sunday school 2nd dashboard
-        echo "<li><a href='$link'>";
+                echo "<li><a href='$link'>";
                 if ($aMenu['icon'] != '') {
                     echo '<i class="fa ' . $aMenu['icon'] . '"></i>';
                 }
