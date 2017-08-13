@@ -76,11 +76,11 @@ $pdf = new PDF_Attendance();
 
 for ($i = 0; $i < $nGrps; $i++) {
     $iGroupID = $aGrp[$i];
-//	uset($aStudents);
+    //	uset($aStudents);
     if ($i > 0) {
         $pdf->AddPage();
     }
-//Get the data on this group
+    //Get the data on this group
     $sSQL = 'SELECT * FROM group_grp WHERE grp_ID = '.$iGroupID;
     $aGroupData = mysqli_fetch_array(RunQuery($sSQL));
     extract($aGroupData);
@@ -90,7 +90,7 @@ for ($i = 0; $i < $nGrps; $i++) {
     $ga = GetGroupArray($iGroupID);
     $numMembers = count($ga);
 
-// Build the teacher string- first teachers, then the liaison
+    // Build the teacher string- first teachers, then the liaison
     $teacherString = 'Teachers: ';
     $bFirstTeacher = true;
     $iTeacherCnt = 0;
@@ -102,9 +102,9 @@ for ($i = 0; $i < $nGrps; $i++) {
             extract($ga[$row]);
             if ($lst_OptionName == gettext('Teacher')) {
                 $aTeachers[$iTeacherCnt++] = $ga[$row]; // Make an array of teachers while we're here
-                      if (!$bFirstTeacher) {
-                          $teacherString .= ', ';
-                      }
+                if (!$bFirstTeacher) {
+                    $teacherString .= ', ';
+                }
                 $teacherString .= $per_FirstName.' '.$per_LastName;
                 $bFirstTeacher = false;
             } elseif ($lst_OptionName == gettext('Student')) {
@@ -144,8 +144,8 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '');
     } else {
         //
-// print all roles on the attendance sheet
-//
+        // print all roles on the attendance sheet
+        //
         $iStudentCnt = 0;
         unset($aStudents);
         for ($row = 0; $row < $numMembers; $row++) {
