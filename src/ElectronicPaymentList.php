@@ -228,7 +228,7 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
     //Alternate the row color
     $sRowClass = AlternateRowStyle($sRowClass);
 
-    //Display the row ?>
+    //Display the row?>
 	<tr id="PaymentMethodRow<?= $aut_ID ?>" class="<?= $sRowClass ?>">
 		<td>
 		<?php
