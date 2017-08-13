@@ -7,12 +7,7 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 use ChurchCRM\dto\SystemURLs;
@@ -295,7 +290,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Tooltips.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18next.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/locale/<?= $localeInfo->getLocale() ?>.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= $localeInfo->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/randomcolor/randomColor.js"></script>
