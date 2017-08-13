@@ -29,15 +29,15 @@ if (!$_SESSION['bManageGroups']) {
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
   // Get the GroupID
-  $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
+    $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
     if (array_key_exists('GroupRole', $_POST)) {
         $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
     } else {
         $iGroupRole = 0;
     }
 
-  // Loop through the session array
-  $iCount = 0;
+    // Loop through the session array
+    $iCount = 0;
     while ($element = each($_SESSION['aPeopleCart'])) {
         $groupService->addUserToGroup($iGroupID, $_SESSION['aPeopleCart'][$element['key']], $iGroupRole);
         $iCount += 1;

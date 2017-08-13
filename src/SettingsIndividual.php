@@ -51,7 +51,7 @@ if (isset($_POST['save'])) {
         }
 
         if (!$bRowExists) { // If Row does not exist then insert default values.
-                          // Defaults will be replaced in the following Update
+            // Defaults will be replaced in the following Update
             $sSQL = 'SELECT * FROM userconfig_ucfg '
             ."WHERE ucfg_id=$id AND ucfg_per_id=0 ";
             $rsDefault = RunQuery($sSQL);

@@ -144,8 +144,8 @@ require 'Include/Header.php';
             echo '<a href="FamilyView.php?FamilyID=' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
         } elseif ($bIsDonor && $_SESSION['bFinance']) {
             // Donations from Family. Current user authorized for Finance.
-        // Select another family to move donations to.
-        echo '<p class="LargeText">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
+            // Select another family to move donations to.
+            echo '<p class="LargeText">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
             echo '<form name=SelectFamily method=get action=SelectDelete.php>';
             echo '<div class="ShadedBox">';
             echo '<div class="LightShadedBox"><strong>' . gettext('Family Name') . ':' . " $fam_Name</strong></div>";
@@ -154,20 +154,20 @@ require 'Include/Header.php';
             echo "<input name=FamilyID value=$iFamilyID type=hidden>";
             echo '<select name=DonationFamilyID><option value=0 selected>' . gettext('Unassigned') . '</option>';
 
-        //Get Families for the drop-down
-        $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name';
+            //Get Families for the drop-down
+            $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name';
             $rsFamilies = RunQuery($sSQL);
-        // Build Criteria for Head of Household
+            // Build Criteria for Head of Household
 
-        $head_criteria = ' per_fmr_ID = ' . SystemConfig::getValue('sDirRoleHead') ? SystemConfig::getValue('sDirRoleHead') : '1';
-        // If more than one role assigned to Head of Household, add OR
-        $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
-        // Add Spouse to criteria
-        if (intval(SystemConfig::getValue('sDirRoleSpouse')) > 0) {
-            $head_criteria .= ' OR per_fmr_ID = ' . SystemConfig::getValue('sDirRoleSpouse');
-        }
-        // Build array of Head of Households and Spouses with fam_ID as the key
-        $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
+            $head_criteria = ' per_fmr_ID = ' . SystemConfig::getValue('sDirRoleHead') ? SystemConfig::getValue('sDirRoleHead') : '1';
+            // If more than one role assigned to Head of Household, add OR
+            $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
+            // Add Spouse to criteria
+            if (intval(SystemConfig::getValue('sDirRoleSpouse')) > 0) {
+                $head_criteria .= ' OR per_fmr_ID = ' . SystemConfig::getValue('sDirRoleSpouse');
+            }
+            // Build array of Head of Households and Spouses with fam_ID as the key
+            $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
             $rs_head = RunQuery($sSQL);
             $aHead = '';
             while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
@@ -198,11 +198,11 @@ require 'Include/Header.php';
             echo '<input type=submit name=MoveDonations value="Move Donations to Selected Family">';
             echo '</div></form>';
 
-        // Show payments connected with family
-        // -----------------------------------
-        echo '<br><br>';
-        //Get the pledges for this family
-        $sSQL = 'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, 
+            // Show payments connected with family
+            // -----------------------------------
+            echo '<br><br>';
+            //Get the pledges for this family
+            $sSQL = 'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, 
 		         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName
 				 FROM pledge_plg 
 				 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
@@ -269,7 +269,7 @@ require 'Include/Header.php';
             echo '</table>';
         } else {
             // No Donations from family.  Normal delete confirmation
-                echo $DonationMessage;
+            echo $DonationMessage;
             echo "<p class='callout callout-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
             echo gettext('Note: This will also delete all Notes associated with this Family record.');
             echo gettext('(this action cannot be undone)') . '</p>';
@@ -278,8 +278,8 @@ require 'Include/Header.php';
             echo '&nbsp;' . $fam_Name;
             echo '</div><br/>';
             echo '<div><strong>' . gettext('Family Members:') . '</strong><ul>';
-                //List Family Members
-                $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $iFamilyID;
+            //List Family Members
+            $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $iFamilyID;
             $rsPerson = RunQuery($sSQL);
             while ($aRow = mysqli_fetch_array($rsPerson)) {
                 extract($aRow);
