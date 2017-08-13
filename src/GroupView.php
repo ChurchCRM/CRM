@@ -342,7 +342,7 @@ require 'Include/Header.php';
                 // No, indicate nothing returned
                 echo '<p>'.gettext('No property assignments').'.</p>';
             } else {
-                // Display table of properties ?>
+                // Display table of properties?>
               <table width="100%" cellpadding="2" cellspacing="0">
                 <tr class="TableHeader">
                   <td width="15%" valign="top"><b><?= gettext('Type') ?></b>
