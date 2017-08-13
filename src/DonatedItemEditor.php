@@ -44,7 +44,7 @@ $sPageTitle = gettext('Donated Item Editor');
 //Is this the second pass?
 if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
-  $sItem = InputUtils::LegacyFilterInputArr($_POST, 'Item');
+    $sItem = InputUtils::LegacyFilterInputArr($_POST, 'Item');
     $bMultibuy = InputUtils::LegacyFilterInputArr($_POST, 'Multibuy', 'int');
     $iDonor = InputUtils::LegacyFilterInputArr($_POST, 'Donor', 'int');
     $iBuyer = InputUtils::LegacyFilterInputArr($_POST, 'Buyer', 'int');
@@ -62,51 +62,51 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     if (!$iBuyer) {
         $iBuyer = 0;
     }
-  // New DonatedItem or deposit
-  if (strlen($iDonatedItemID) < 1) {
-      $sSQL = 'INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_picture, di_EnteredBy, di_EnteredDate)
+    // New DonatedItem or deposit
+    if (strlen($iDonatedItemID) < 1) {
+        $sSQL = 'INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_picture, di_EnteredBy, di_EnteredDate)
 		VALUES ('.$iCurrentFundraiser.",'".$sItem."','".$bMultibuy."','".$iDonor."','".$iBuyer."','".html_entity_decode($sTitle)."','".html_entity_decode($sDescription)."','".$nSellPrice."','".$nEstPrice."','".$nMaterialValue."','".$nMinimumPrice."','".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."'";
-      $sSQL .= ','.$_SESSION['iUserID'].",'".date('YmdHis')."')";
-      $bGetKeyBack = true;
-    // Existing record (update)
-  } else {
-      $sSQL = 'UPDATE donateditem_di SET di_FR_ID = '.$iCurrentFundraiser.", di_Item = '".$sItem."', di_multibuy = '".$bMultibuy."', di_donor_ID = ".$iDonor.', di_buyer_ID = '.$iBuyer.", di_title = '".html_entity_decode($sTitle)."', di_description = '".html_entity_decode($sDescription)."', di_sellprice = '".$nSellPrice."', di_estprice = '".$nEstPrice."', di_materialvalue = '".$nMaterialValue."', di_minimum = '".$nMinimumPrice."', di_picture = '".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."', di_EnteredBy=".$_SESSION['iUserID'].", di_EnteredDate = '".date('YmdHis')."'";
-      $sSQL .= ' WHERE di_ID = '.$iDonatedItemID;
-      echo '<br><br><br><br><br><br>'.$sSQL;
-      $bGetKeyBack = false;
-  }
+        $sSQL .= ','.$_SESSION['iUserID'].",'".date('YmdHis')."')";
+        $bGetKeyBack = true;
+        // Existing record (update)
+    } else {
+        $sSQL = 'UPDATE donateditem_di SET di_FR_ID = '.$iCurrentFundraiser.", di_Item = '".$sItem."', di_multibuy = '".$bMultibuy."', di_donor_ID = ".$iDonor.', di_buyer_ID = '.$iBuyer.", di_title = '".html_entity_decode($sTitle)."', di_description = '".html_entity_decode($sDescription)."', di_sellprice = '".$nSellPrice."', di_estprice = '".$nEstPrice."', di_materialvalue = '".$nMaterialValue."', di_minimum = '".$nMinimumPrice."', di_picture = '".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."', di_EnteredBy=".$_SESSION['iUserID'].", di_EnteredDate = '".date('YmdHis')."'";
+        $sSQL .= ' WHERE di_ID = '.$iDonatedItemID;
+        echo '<br><br><br><br><br><br>'.$sSQL;
+        $bGetKeyBack = false;
+    }
 
-  //Execute the SQL
-  RunQuery($sSQL);
+    //Execute the SQL
+    RunQuery($sSQL);
 
-  // If this is a new DonatedItem or deposit, get the key back
-  if ($bGetKeyBack) {
-      $sSQL = 'SELECT MAX(di_ID) AS iDonatedItemID FROM donateditem_di';
-      $rsDonatedItemID = RunQuery($sSQL);
-      extract(mysqli_fetch_array($rsDonatedItemID));
-  }
+    // If this is a new DonatedItem or deposit, get the key back
+    if ($bGetKeyBack) {
+        $sSQL = 'SELECT MAX(di_ID) AS iDonatedItemID FROM donateditem_di';
+        $rsDonatedItemID = RunQuery($sSQL);
+        extract(mysqli_fetch_array($rsDonatedItemID));
+    }
 
     if (isset($_POST['DonatedItemSubmit'])) {
         // Check for redirection to another page after saving information: (ie. DonatedItemEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-    if ($linkBack != '') {
-        Redirect($linkBack);
-    } else {
-        //Send to the view of this DonatedItem
-      Redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
-    }
+        if ($linkBack != '') {
+            Redirect($linkBack);
+        } else {
+            //Send to the view of this DonatedItem
+            Redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
+        }
     } elseif (isset($_POST['DonatedItemSubmitAndAdd'])) {
         //Reload to editor to add another record
-    Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+        Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     }
 } else {
 
   //FirstPass
-  //Are we editing or adding?
-  if (strlen($iDonatedItemID) > 0) {
-      //Editing....
-    //Get all the data on this record
+    //Are we editing or adding?
+    if (strlen($iDonatedItemID) > 0) {
+        //Editing....
+        //Get all the data on this record
 
-    $sSQL = "SELECT di_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID,
+        $sSQL = "SELECT di_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID,
 		                   a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
 	                       b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
 	                       di_title, di_description, di_sellprice, di_estprice, di_materialvalue,
@@ -115,35 +115,35 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
 	         WHERE di_ID = '".$iDonatedItemID."'";
-      $rsDonatedItem = RunQuery($sSQL);
-      extract(mysqli_fetch_array($rsDonatedItem));
+        $rsDonatedItem = RunQuery($sSQL);
+        extract(mysqli_fetch_array($rsDonatedItem));
 
-      $sItem = $di_Item;
-      $bMultibuy = $di_multibuy;
-      $iDonor = $di_donor_ID;
-      $iBuyer = $di_buyer_ID;
-      $sTitle = $di_title;
-      $sDescription = $di_description;
-      $nSellPrice = $di_sellprice;
-      $nEstPrice = $di_estprice;
-      $nMaterialValue = $di_materialvalue;
-      $nMinimumPrice = $di_minimum;
-      $sPictureURL = $di_picture;
-  } else {
-      //Adding....
-    //Set defaults
-    $sItem = '';
-      $bMultibuy = 0;
-      $iDonor = 0;
-      $iBuyer = 0;
-      $sTitle = '';
-      $sDescription = '';
-      $nSellPrice = 0.0;
-      $nEstPrice = 0.0;
-      $nMaterialValue = 0.0;
-      $nMinimumPrice = 0.0;
-      $sPictureURL = '';
-  }
+        $sItem = $di_Item;
+        $bMultibuy = $di_multibuy;
+        $iDonor = $di_donor_ID;
+        $iBuyer = $di_buyer_ID;
+        $sTitle = $di_title;
+        $sDescription = $di_description;
+        $nSellPrice = $di_sellprice;
+        $nEstPrice = $di_estprice;
+        $nMaterialValue = $di_materialvalue;
+        $nMinimumPrice = $di_minimum;
+        $sPictureURL = $di_picture;
+    } else {
+        //Adding....
+        //Set defaults
+        $sItem = '';
+        $bMultibuy = 0;
+        $iDonor = 0;
+        $iBuyer = 0;
+        $sTitle = '';
+        $sDescription = '';
+        $nSellPrice = 0.0;
+        $nEstPrice = 0.0;
+        $nMaterialValue = 0.0;
+        $nMinimumPrice = 0.0;
+        $sPictureURL = '';
+    }
 }
 
 //Get People for the drop-down
