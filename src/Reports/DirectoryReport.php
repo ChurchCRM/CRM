@@ -266,7 +266,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
         if ($bDirAddress) {
             //            if (strlen($sAddress1)) { $OutStr .= $sAddress1 . "\n";  }
-//            if (strlen($sAddress2)) { $OutStr .= $sAddress2 . "\n";  }
+            //            if (strlen($sAddress2)) { $OutStr .= $sAddress2 . "\n";  }
             if (strlen($sAddress1)) {
                 $OutStr .= $sAddress1;
             }
@@ -297,7 +297,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $OutStr .= '   '.gettext('Work/Other Email').': '.$per_WorkEmail .= "\n";
         }
 
-         // Custom Fields
+        // Custom Fields
         $OutStr .= $pdf->sGetCustomString($rsCustomFields, $aRow);
     }
 

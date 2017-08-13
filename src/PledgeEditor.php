@@ -18,7 +18,7 @@ use ChurchCRM\MICRReader;
 use ChurchCRM\Utils\InputUtils;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
-   $micrObj = new MICRReader();
+    $micrObj = new MICRReader();
 }
 
 $iEnvelope = 0;
@@ -428,7 +428,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 // Set Current Deposit setting for user
 if ($iCurrentDeposit) {
     /* @var $currentUser \ChurchCRM\User */
-  $currentUser = $_SESSION['user'];
+    $currentUser = $_SESSION['user'];
     $currentUser->setCurrentDeposit($iCurrentDeposit);
     $currentUser->save();
 }

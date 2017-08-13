@@ -87,18 +87,18 @@ extract(mysqli_fetch_array($rsFamily));
 if ($iFamilyID == $fam_ID) {
 
 // Get the lists of custom person fields
-$sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
+    $sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
     $rsFamCustomFields = RunQuery($sSQL);
 
-// Get the custom field data for this person.
-$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
+    // Get the custom field data for this person.
+    $sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
     $rsFamCustomData = RunQuery($sSQL);
     $aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQLI_BOTH);
 
     $family = FamilyQuery::create()->findPk($iFamilyID);
 
-//Get the pledges for this family
-$sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
+    //Get the pledges for this family
+    $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
          plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName,
          a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible,
          plg_GroupKey
@@ -108,8 +108,8 @@ $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_met
 		 WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
     $rsPledges = RunQuery($sSQL);
 
-//Get the automatic payments for this family
-$sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
+    //Get the automatic payments for this family
+    $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
                    a.Per_LastName AS EnteredLastName,
                    b.fun_Name AS fundName
 		 FROM autopayment_aut
@@ -118,8 +118,8 @@ $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
 		 WHERE aut_famID = " . $iFamilyID . " ORDER BY autopayment_aut.aut_NextPayDate";
     $rsAutoPayments = RunQuery($sSQL);
 
-//Get the Properties assigned to this Family
-$sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
+    //Get the Properties assigned to this Family
+    $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
 		FROM record2property_r2p
 		LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
 		LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
@@ -127,16 +127,16 @@ $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
     " ORDER BY prt_Name, pro_Name";
     $rsAssignedProperties = RunQuery($sSQL);
 
-//Get all the properties
-$sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'f' ORDER BY pro_Name";
+    //Get all the properties
+    $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'f' ORDER BY pro_Name";
     $rsProperties = RunQuery($sSQL);
 
-//Get classifications
-$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+    //Get classifications
+    $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
     $rsClassifications = RunQuery($sSQL);
 
-// Get Field Security List Matrix
-$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+    // Get Field Security List Matrix
+    $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
     $rsSecurityGrp = RunQuery($sSQL);
 
     while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
@@ -144,11 +144,11 @@ $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
         $aSecurityType[$lst_OptionID] = $lst_OptionName;
     }
 
-//Set the spacer cell width
-$iTableSpacerWidth = 10;
+    //Set the spacer cell width
+    $iTableSpacerWidth = 10;
 
-// Format the phone numbers
-$sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
+    // Format the phone numbers
+    $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
     $sWorkPhone = ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy);
     $sCellPhone = ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy);
 
@@ -273,17 +273,17 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                             <?php
         }
     }
-                    // Display the left-side custom fields
-                    while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
-                        extract($Row);
-                        if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
-                            $currentData = trim($aFamCustomData[$fam_custom_Field]);
-                            if ($type_ID == 11) {
-                                $fam_custom_Special = $sPhoneCountry;
-                            }
-                            echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
-                        }
-                    } ?>
+    // Display the left-side custom fields
+    while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
+        extract($Row);
+        if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
+            $currentData = trim($aFamCustomData[$fam_custom_Field]);
+            if ($type_ID == 11) {
+                $fam_custom_Special = $sPhoneCountry;
+            }
+            echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
+        }
+    } ?>
                 </ul>
             </div>
         </div>
@@ -296,25 +296,25 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                 <a class="btn btn-app bg-olive" href="PersonEditor.php?FamilyID=<?= $iFamilyID ?>"><i
                             class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
                 <?php if (($previous_id > 0)) {
-                        ?>
+        ?>
                     <a class="btn btn-app" href="FamilyView.php?FamilyID=<?= $previous_id ?>"><i
                                 class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
                     <?php
-                    } ?>
+    } ?>
                 <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
                             class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
                 <?php if (($next_id > 0)) {
-                        ?>
+        ?>
                     <a class="btn btn-app" role="button" href="FamilyView.php?FamilyID=<?= $next_id ?>"><i
                                 class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
                     <?php
-                    } ?>
+    } ?>
                 <?php if ($_SESSION['bDeleteRecords']) {
-                        ?>
+        ?>
                     <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
                                 class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
                     <?php
-                    } ?>
+    } ?>
                 <br/>
 
                 <?php
@@ -535,7 +535,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                 <?php
     } else {
         //Yes, start the table
-                                echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
+        echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
         echo "<tr class=\"TableHeader\">";
         echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Type") . "</b></td>";
         echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
@@ -551,53 +551,53 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
         $last_pro_prt_ID = "";
         $bIsFirst = true;
 
-                                //Loop through the rows
-                                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                                    $pro_Prompt = "";
-                                    $r2p_Value = "";
+        //Loop through the rows
+        while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+            $pro_Prompt = "";
+            $r2p_Value = "";
 
-                                    extract($aRow);
+            extract($aRow);
 
-                                    if ($pro_prt_ID != $last_pro_prt_ID) {
-                                        echo "<tr class=\"";
-                                        if ($bIsFirst) {
-                                            echo "RowColorB";
-                                        } else {
-                                            echo "RowColorC";
-                                        }
-                                        echo "\"><td><b>" . $prt_Name . "</b></td>";
+            if ($pro_prt_ID != $last_pro_prt_ID) {
+                echo "<tr class=\"";
+                if ($bIsFirst) {
+                    echo "RowColorB";
+                } else {
+                    echo "RowColorC";
+                }
+                echo "\"><td><b>" . $prt_Name . "</b></td>";
 
-                                        $bIsFirst = false;
-                                        $last_pro_prt_ID = $pro_prt_ID;
-                                        $sRowClass = "RowColorB";
-                                    } else {
-                                        echo "<tr class=\"" . $sRowClass . "\">";
-                                        echo "<td valign=\"top\">&nbsp;</td>";
-                                    }
+                $bIsFirst = false;
+                $last_pro_prt_ID = $pro_prt_ID;
+                $sRowClass = "RowColorB";
+            } else {
+                echo "<tr class=\"" . $sRowClass . "\">";
+                echo "<td valign=\"top\">&nbsp;</td>";
+            }
 
-                                    echo "<td valign=\"center\">" . $pro_Name . "</td>";
-                                    echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
+            echo "<td valign=\"center\">" . $pro_Name . "</td>";
+            echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
 
-                                    if ($bOkToEdit) {
-                                        if (strlen($pro_Prompt) > 0) {
-                                            echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
-                                        } else {
-                                            echo "<td>&nbsp;</td>";
-                                        }
+            if ($bOkToEdit) {
+                if (strlen($pro_Prompt) > 0) {
+                    echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
+                } else {
+                    echo "<td>&nbsp;</td>";
+                }
 
-                                        echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
-                                    }
+                echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
+            }
 
-                                    echo "</tr>";
+            echo "</tr>";
 
-                                    //Alternate the row style
-                                    $sRowClass = AlternateRowStyle($sRowClass);
+            //Alternate the row style
+            $sRowClass = AlternateRowStyle($sRowClass);
 
-                                    $sAssignedProperties .= $pro_ID . ",";
-                                }
+            $sAssignedProperties .= $pro_ID . ",";
+        }
 
-                                //Close the table
-                                echo "</table>";
+        //Close the table
+        echo "</table>";
     }
     if ($bOkToEdit) {
         ?>
@@ -660,26 +660,26 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
                                     $tog = 0;
 
-                                    //Loop through all automatic payments
-                                    while ($aRow = mysqli_fetch_array($rsAutoPayments)) {
-                                        $tog = (!$tog);
+            //Loop through all automatic payments
+            while ($aRow = mysqli_fetch_array($rsAutoPayments)) {
+                $tog = (!$tog);
 
-                                        extract($aRow);
+                extract($aRow);
 
-                                        $payType = "Disabled";
-                                        if ($aut_EnableBankDraft) {
-                                            $payType = "Bank Draft";
-                                        }
-                                        if ($aut_EnableCreditCard) {
-                                            $payType = "Credit Card";
-                                        }
+                $payType = "Disabled";
+                if ($aut_EnableBankDraft) {
+                    $payType = "Bank Draft";
+                }
+                if ($aut_EnableCreditCard) {
+                    $payType = "Credit Card";
+                }
 
-                                        //Alternate the row style
-                                        if ($tog) {
-                                            $sRowClass = "RowColorA";
-                                        } else {
-                                            $sRowClass = "RowColorB";
-                                        } ?>
+                //Alternate the row style
+                if ($tog) {
+                    $sRowClass = "RowColorA";
+                } else {
+                    $sRowClass = "RowColorB";
+                } ?>
 
                                         <tr class="<?= $sRowClass ?>">
                                             <td>
@@ -713,7 +713,7 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                             </td>
                                         </tr>
                                         <?php
-                                    } ?>
+            } ?>
                                 </table>
                                 <?php
         } ?>
@@ -774,28 +774,28 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
 
         if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments']) {
             //Loop through all pledges
-                                    while ($aRow = mysqli_fetch_array($rsPledges)) {
-                                        $tog = (!$tog);
+            while ($aRow = mysqli_fetch_array($rsPledges)) {
+                $tog = (!$tog);
 
-                                        $plg_FYID = "";
-                                        $plg_date = "";
-                                        $plg_amount = "";
-                                        $plg_schedule = "";
-                                        $plg_method = "";
-                                        $plg_comment = "";
-                                        $plg_plgID = 0;
-                                        $plg_DateLastEdited = "";
-                                        $plg_EditedBy = "";
+                $plg_FYID = "";
+                $plg_date = "";
+                $plg_amount = "";
+                $plg_schedule = "";
+                $plg_method = "";
+                $plg_comment = "";
+                $plg_plgID = 0;
+                $plg_DateLastEdited = "";
+                $plg_EditedBy = "";
 
-                                        extract($aRow);
+                extract($aRow);
 
-                                        //Display the pledge or payment if appropriate
-                                        if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
+                //Display the pledge or payment if appropriate
+                if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
                                                 ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
                                             ) &&
                                             ($_SESSION['sshowSince'] == "" || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['sshowSince'])
                                         ) {
-                                            ?>
+                    ?>
 
                                             <tr>
                                                 <td>
@@ -841,8 +841,8 @@ $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
                                                 </td>
                                             </tr>
                                             <?php
-                                        }
-                                    }
+                }
+            }
         } // if bShowPledges
 
                                 ?>

@@ -105,7 +105,7 @@ while ($aRow = mysqli_fetch_array($rsFamilies)) {
     $bErrorDesc = false;
     if (strlen($lu_ErrorCodes)) {
         if ($lu_ErrorCodes != 'x1x2') { // Filter error messages associated with subscribing to
-                                      // CorrectAddress instead of CorrectAddress with Addons
+            // CorrectAddress instead of CorrectAddress with Addons
             $lu_ErrStr = "$lu_ErrorCodes $lu_ErrorDesc";
             $bErrorDesc = true;
         }

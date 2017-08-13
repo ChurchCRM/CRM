@@ -108,10 +108,9 @@ if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows >
     for ($row = 1; $row <= $numRows; $row++) {
 
          //Alternate the row color
-         $sRowClass = AlternateRowStyle($sRowClass);
+        $sRowClass = AlternateRowStyle($sRowClass);
 
-         //Display the row
-         ?>
+        //Display the row?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= $aEventTitle[$row] ?></td>
            <td class="TextColumn"><?= FormatDate($aEventStartDateTime[$row], 1) ?></td>
@@ -184,9 +183,9 @@ $gSQL = 'SELECT COUNT(per_ID) AS gCount
         for ($row = 1; $row <= $numRows; $row++) {
 
          //Alternate the row color
-         $sRowClass = AlternateRowStyle($sRowClass);
+            $sRowClass = AlternateRowStyle($sRowClass);
 
-         //Display the row
+            //Display the row
          ?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= FormatFullName($aTitle[$row], $aFistName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>
