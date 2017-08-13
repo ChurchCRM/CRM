@@ -165,7 +165,7 @@ function RunFreeQuery()
                 //...otherwise just render the field
                 else {
                     //Write the actual value of this row
-                echo '<td align="center">'.$aRow[$iCount].'</td>';
+                    echo '<td align="center">'.$aRow[$iCount].'</td>';
                 }
             }
             echo '</tr>';

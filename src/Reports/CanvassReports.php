@@ -347,13 +347,13 @@ function CanvassSummaryReport($iFYID)
         $pdf->SetFont('Times', 'B', 14);
 
         $pdf->Write(5, $colName.' '.gettext('Comments')."\n");
-//		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $colName . " Comments");
+        //		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $colName . " Comments");
         $pdf->SetFont('Times', '', 12);
         while ($aDatum = mysqli_fetch_array($rsCanvassData)) {
             $str = $aDatum['can_'.$colName];
             if ($str != '') {
                 $pdf->Write(4, $str."\n\n");
-//				$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $str);
+                //				$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $str);
 //				$curY += SystemConfig::getValue("incrementY");
             }
         }
