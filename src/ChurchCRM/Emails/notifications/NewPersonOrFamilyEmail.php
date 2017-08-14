@@ -28,7 +28,10 @@ class NewPersonOrFamilyEmail extends BaseEmail
         foreach($recipientPeople as $PersonID)
         {
           $Person = PersonQuery::create()->findOneById($PersonID);
-          array_push($toAddresses,  $Person->getEmail());
+          if($Person)
+          {
+            array_push($toAddresses,  $Person->getEmail());            
+          }
         }
 
         parent::__construct($toAddresses);
