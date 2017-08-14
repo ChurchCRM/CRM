@@ -48,20 +48,27 @@
     }
     
     window.CRM.cart={
-      'empty' : function ()
+      'empty' : function (callback)
       {
         window.CRM.APIRequest({
           method: "DELETE",
           path: "cart/"
         }).done(function (data) {
+          if (callback)
+          {
+            callback()
+          }
+          else
+          {
             window.CRM.cart.refresh();
+          }
         });
       },
       'emptyToGroup' : function (callback)
       {
         window.CRM.groups.promptSelection(function(selectedRole){
           window.CRM.APIRequest({
-            type: 'POST',
+            method: 'POST',
             path: 'cart/emptyToGroup',
             data: JSON.stringify({"groupID":selectedRole.GroupID,"groupRoleID":selectedRole.RoleID})
             }).done(function(data) {
@@ -85,7 +92,7 @@
       'addPerson' : function (Persons, callback)
       {
         window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path: 'cart/',
           data: JSON.stringify({"Persons":Persons})
         }).done(function(data) {
@@ -99,9 +106,9 @@
       'removePerson' : function (Persons, callback)
       {
          window.CRM.APIRequest({
-          type: 'DELETE',
+          method: 'POST',
           path:'cart/',
-          data: JSON.stringify({"Persons":Persons})
+          data: JSON.stringify({"_METHOD":"DELETE","Persons":Persons})
         }).done(function(data) {
           window.CRM.cart.refresh();
           if(callback)
@@ -113,7 +120,7 @@
       'addFamily' : function (FamilyID, callback)
       {
          window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path:'cart/',
           data: JSON.stringify({"Family":FamilyID})
         }).done(function(data) {
@@ -127,7 +134,7 @@
       'addGroup' : function (GroupID, callback)
       {
          window.CRM.APIRequest({
-          type: 'POST',
+          method: 'POST',
           path: 'cart/',
           data: JSON.stringify({"Group":GroupID})
         }).done(function(data) {
@@ -141,7 +148,7 @@
       },
       'refresh' : function () {
         window.CRM.APIRequest({
-          type: 'GET',
+          method: 'GET',
           path:"cart/"
         }).done(function(data) {
           window.scrollTo(0, 0);
@@ -157,7 +164,7 @@
                           </a>\
                       </li>\
                       <li>\
-                          <a id="emptyCart" id="#emptyCart">\
+                          <a class="emptyCart" >\
                               <i class="fa fa-trash text-danger"></i>' + i18next.t("Empty Cart") + ' \
                           </a>\
                       </li>\
@@ -371,8 +378,8 @@
     
     window.CRM.system = {
       'runTimerJobs' : function () {
-        window.CRM.APIRequest({
-          path: "timerjobs/run",
+        $.ajax({
+          url: window.CRM.root + "/api/timerjobs/run",
           type: "POST"
         });
       }
