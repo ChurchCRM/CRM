@@ -431,7 +431,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->createTimeLineNote('create');
             $family->updateLanLng();
             
-            $NotificationEmail = new NewPersonOrFamilyEmail(NewPersonOrFamilyEmail::FAMILY,$iFamilyID);
+            $NotificationEmail = new NewPersonOrFamilyEmail(NewPersonOrFamilyEmail::FAMILY, $iFamilyID);
             $NotificationEmail->send();
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
