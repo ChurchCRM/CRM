@@ -432,7 +432,10 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->updateLanLng();
             
             $NotificationEmail = new NewPersonOrFamilyEmail(NewPersonOrFamilyEmail::FAMILY, $iFamilyID);
-            $NotificationEmail->send();
+            if (!$NotificationEmail->send()) {
+              $logger->warn($NotificationEmail->getError());
+            }
+            
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
                 if (strlen($aFirstNames[$iCount]) > 0) {

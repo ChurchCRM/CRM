@@ -378,7 +378,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setType('create');
             
             $NotificationEmail = new NewPersonOrFamilyEmail(NewPersonOrFamilyEmail::PERSON, $iPersonID);
-            $NotificationEmail->send();
+            if (!$NotificationEmail->send()) {
+              $logger->warn($NotificationEmail->getError());
+            }
         } else {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Updated'));

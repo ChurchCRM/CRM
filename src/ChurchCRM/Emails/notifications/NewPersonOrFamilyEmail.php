@@ -25,12 +25,13 @@ class NewPersonOrFamilyEmail extends BaseEmail
         $toAddresses = [];
         $recipientPeople = explode(",",SystemConfig::getValue("sNewPersonNotificationRecipients") );
 
-        foreach($recipientPeople as $PersonID)
-        {
+        foreach($recipientPeople as $PersonID) {
           $Person = PersonQuery::create()->findOneById($PersonID);
-          if($Person)
-          {
-            array_push($toAddresses,  $Person->getEmail());            
+          if(!empty($Person)) {
+            $email = $Person->getEmail();
+            if (!empty($email)) {
+              array_push($toAddresses,$email);   
+            }
           }
         }
 
@@ -61,14 +62,16 @@ class NewPersonOrFamilyEmail extends BaseEmail
         if ($this->notificationType == self::FAMILY)
         {
           $family = FamilyQuery::create()->findOneById($this->relatedId);
-          $myTokens['Family'] = $family;
-          $myTokens['Members'] = $family->getPeople();
-          $myTokens['FamilyLink'] = SystemURLs::getURL()."/FamilyView.php?FamilyID=".$this->relatedId;
+          $myTokens['body'] = "<strong>".gettext("New Family Added")."</strong><br/>".
+                  gettext("Family Name").": ".$family->getName() .
+                  "<p>".gettext("Family Link").": <a href=\"".SystemURLs::getURL()."/FamilyView.php?FamilyID=".$this->relatedId."\">".gettext("View Family Page")."</a></p>";
         }
         else if ($this->notificationType == self::PERSON)
         {
-          $myTokens['Person'] = PersonQuery::create()->findOneById($this->relatedId);
-          $myTokens['PersonLink'] = SystemURLs::getURL()."/PersonView.php?PersonID=".$this->relatedId;
+          $person = PersonQuery::create()->findOneById($this->relatedId);
+          $myTokens['body'] = "<strong>".gettext("New Person Added")."</strong><br/>".
+                  gettext("Name").": ".$person->getFullName() .
+                  "<p>".gettext("Person Link").": <a href=\"".SystemURLs::getURL()."/PersonView.php?PersonID=".$this->relatedId."\">".gettext("View Person Page")."</a></p>";
         }
         
         return array_merge($this->getCommonTokens(), $myTokens);

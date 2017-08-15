@@ -40,7 +40,7 @@
                 {{dear}} {{toName}},
             </p>
             <p>
-                {{body}}
+                {{{body}}}
             </p>
             {{# userName}}
             <p>
@@ -60,42 +60,6 @@
                 <a href="{{churchCRMURL}}external/password/set/{{passwordToken}}" target="_blank">{{resetPasswordText}}</a>
             </p>
             {{/ passwordToken}}
-            
-            {{#Family}}
-              <strong>New Family Added</strong>
-              <p>Family Name: {{getName}}</p>
-              <address>Address: <a href="http://maps.google.com/?q={{getAddress}}">{{getAddress}}</a></address>
-              
-              {{#getHomePhone}}
-                <p>Home Phone:<a href="tel:{{getHomePhone}}">{{getHomePhone}}</a></p>
-              {{/getHomePhone}}
-              
-              <p>Family Members:</p>
-              <ul>
-                {{#Members}}
-                  <li>{{getFullName}}</li>
-                {{/Members}}
-              </ul>
-              
-              <p>Family Link: <a href="{{FamilyLink}}">{{FamilyLink}}</a></p>
-  
-            {{/Family}}
-            
-            {{# Person}}
-            <strong>New Person Added</strong>
-            <p>Name: {{getFullName}}</p>
-            {{#getHomePhone}}
-                <p>Home Phone:<a href="tel:{{getHomePhone}}">{{getHomePhone}}</a></p>
-            {{/getHomePhone}}
-            {{#getCellPhone}}
-                <p>Mobile Phone:<a href="tel:{{getCellPhone}}">{{getCellPhone}}</a></p>
-            {{/getCellPhone}}
-            {{#getEmail}}
-                <p>Email:<a href="mailto:{{getEmail}}">{{getEmail}}</a></p>
-            {{/getEmail}}
-            
-            <p>Person Link: <a href="{{PersonLink}}">{{PersonLink}}</a></p>
-            {{/ Person}}
             <p>
             {{confirmSincerely}}, <br/>
             {{confirmSigner}}
