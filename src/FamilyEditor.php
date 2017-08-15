@@ -433,9 +433,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             
             $NotificationEmail = new NewPersonOrFamilyEmail(NewPersonOrFamilyEmail::FAMILY, $iFamilyID);
             if (!$NotificationEmail->send()) {
-              $logger->warn($NotificationEmail->getError());
+                $logger->warn($NotificationEmail->getError());
             }
-            
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
                 if (strlen($aFirstNames[$iCount]) > 0) {
