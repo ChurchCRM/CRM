@@ -62,16 +62,16 @@ class NewPersonOrFamilyEmail extends BaseEmail
         if ($this->notificationType == self::FAMILY)
         {
           $family = FamilyQuery::create()->findOneById($this->relatedId);
-          $myTokens['body'] = "<strong>".gettext("New Family Added")."</strong><br/>".
-                  gettext("Family Name").": ".$family->getName() .
-                  "<p>".gettext("Family Link").": <a href=\"".SystemURLs::getURL()."/FamilyView.php?FamilyID=".$this->relatedId."\">".gettext("View Family Page")."</a></p>";
+          $myTokens['body'] = gettext("New Family Added")."<br/>".
+                  gettext("Family Name").": ".$family->getName();
+          $myTokens["familyLink"] = SystemURLs::getURL()."/FamilyView.php?FamilyID=".$this->relatedId;
         }
         else if ($this->notificationType == self::PERSON)
         {
           $person = PersonQuery::create()->findOneById($this->relatedId);
-          $myTokens['body'] = "<strong>".gettext("New Person Added")."</strong><br/>".
-                  gettext("Name").": ".$person->getFullName() .
-                  "<p>".gettext("Person Link").": <a href=\"".SystemURLs::getURL()."/PersonView.php?PersonID=".$this->relatedId."\">".gettext("View Person Page")."</a></p>";
+          $myTokens['body'] = gettext("New Person Added")."<br/>".
+                  gettext("Name").": ".$person->getFullName();
+          $myTokens['personLink'] = SystemURLs::getURL()."/PersonView.php?PersonID=".$this->relatedId;
         }
         
         return array_merge($this->getCommonTokens(), $myTokens);
