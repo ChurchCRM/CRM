@@ -188,11 +188,9 @@ class Person extends BasePerson implements iPhoto
         $lng = 0;
         
         // Patch : so I rewrite the code 
-        if (!empty($this->getAddress1()) && !$address) {// Patch : when the address not null this code is un-usefful
-        		// Patch : an address for googlemaps must contains the city : no ???
-            $address = $this->getAddress1()." ".$this->getCity(); //if person address empty, this will get Family address            
+        if (!empty($this->getAddress1()) && !$address) {
+        		$address = $this->getAddress1()." ".$this->getCity(); //if person address empty, this will get Family address
             $latLng = GeoUtils::getLatLong($address);
-            
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 $lat = $latLng['Latitude'];
                 $lng = $latLng['Longitude'];
@@ -209,7 +207,6 @@ class Person extends BasePerson implements iPhoto
             'Longitude' => $lng
         );
     }
-
 
     public function deletePhoto()
     {
@@ -449,17 +446,18 @@ class Person extends BasePerson implements iPhoto
   	public function hydrate($row, $startcol = 0, $rehydrate = false, $indexType = TableMap::TYPE_NUM) {
         $result = parent::hydrate($row, $startcol, $rehydrate, $indexType);
         
-				$families = FamilyQuery::create()
-					->findById($this->getFamID());
+				$family = FamilyQuery::create()
+					->findPk($this->getFamID());
 				
-				foreach ($families as $family) {
+				if (!is_null($family))
+				{
 					 // Normaly there's only one Family by one ID
 					 $this->per_address1 = $family->getAddress1();
 					 $this->per_address2 = $family->getAddress2();
 					 $this->per_city = $family->getCity();
 					 $this->per_state = $family->getState();
 					 $this->per_zip = $family->getZip();
-				}	
+				}
         	
         return $result;
     }
