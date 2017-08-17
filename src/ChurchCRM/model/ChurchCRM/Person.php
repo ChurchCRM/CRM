@@ -8,6 +8,9 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
+use Propel\Runtime\Map\TableMap;
+use ChurchCRM\FamilyQuery;
+
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -436,5 +439,22 @@ class Person extends BasePerson implements iPhoto
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
-
+    
+  	public function hydrate($row, $startcol = 0, $rehydrate = false, $indexType = TableMap::TYPE_NUM) {
+        $result = parent::hydrate($row, $startcol, $rehydrate, $indexType);
+        
+				$families = FamilyQuery::create()
+					->findById($this->getFamID());
+				
+				foreach ($families as $family) {
+						// Normaly there's only one Family by one ID
+					 $this->per_address1 = $family->getAddress1();
+					 $this->per_address2 = $family->getAddress2();
+					 $this->per_city = $family->getCity();
+					 $this->per_state = $family->getState();
+					 $this->per_zip = $family->getZip();
+				}	
+        	
+        return $result;
+    }
 }
