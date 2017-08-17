@@ -9,7 +9,6 @@ use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
 use Propel\Runtime\Map\TableMap;
-
 use ChurchCRM\FamilyQuery;
 
 
@@ -449,8 +448,8 @@ class Person extends BasePerson implements iPhoto
 				
 				foreach ($families as $family) {
 						// Normaly there's only one Family by one ID
-					 $this->per_address1 = $family->getAddress1();//$row["fam_Address1"];
-					 $this->per_address2 = $family->getAddress2();//$row["fam_Address1"];
+					 $this->per_address1 = $family->getAddress1();
+					 $this->per_address2 = $family->getAddress2();
 					 $this->per_city = $family->getCity();
 					 $this->per_state = $family->getState();
 					 $this->per_zip = $family->getZip();
