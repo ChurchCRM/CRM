@@ -451,7 +451,6 @@ class Person extends BasePerson implements iPhoto
 				
 				if (!is_null($family))
 				{
-					 // Normaly there's only one Family by one ID
 					 $this->per_address1 = $family->getAddress1();
 					 $this->per_address2 = $family->getAddress2();
 					 $this->per_city = $family->getCity();
