@@ -186,8 +186,13 @@ class Person extends BasePerson implements iPhoto
         $address = $this->getAddress(); //if person address empty, this will get Family address
         $lat = 0;
         $lng = 0;
-        if (!empty($this->getAddress1())) {
-            $latLng = GeoUtils::getLatLong($this->getAddress());
+        
+        // Patch : so I rewrite the code 
+        if (!empty($this->getAddress1()) && !$address) {// Patch : when the address not null this code is un-usefful
+        		// Patch : an address for googlemaps must contains the city : no ???
+            $address = $this->getAddress1()." ".$this->getCity(); //if person address empty, this will get Family address            
+            $latLng = GeoUtils::getLatLong($address);
+            
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 $lat = $latLng['Latitude'];
                 $lng = $latLng['Longitude'];
@@ -204,6 +209,7 @@ class Person extends BasePerson implements iPhoto
             'Longitude' => $lng
         );
     }
+
 
     public function deletePhoto()
     {
@@ -447,7 +453,7 @@ class Person extends BasePerson implements iPhoto
 					->findById($this->getFamID());
 				
 				foreach ($families as $family) {
-						// Normaly there's only one Family by one ID
+					 // Normaly there's only one Family by one ID
 					 $this->per_address1 = $family->getAddress1();
 					 $this->per_address2 = $family->getAddress2();
 					 $this->per_city = $family->getCity();
