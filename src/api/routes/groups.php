@@ -76,7 +76,6 @@ $app->group('/groups', function () {
     $this->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
-        $groupID = $args['groupID'];
         $group = GroupQuery::create()->findOneById($groupID);
         $groupRoleMemberships = $group->getPerson2group2roleP2g2rs();
         foreach ($groupRoleMemberships as $groupRoleMembership) {
