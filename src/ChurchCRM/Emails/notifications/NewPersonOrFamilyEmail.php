@@ -9,45 +9,38 @@ use ChurchCRM\dto\SystemURLs;
 
 class NewPersonOrFamilyEmail extends BaseEmail
 {
-    private $notificationSource;
+    private $relatedObject;
     
-    const FAMILY = 1;
-    const PERSON = 2;
-    
-    private $notificationType;
-    private $relatedId;
-    
-    public function __construct($notificationType,$RelatedId)
+    public function __construct($RelatedObject)
     {
-       
-        $this->notificationType = $notificationType;
-        $this->relatedId = $RelatedId;
-        $toAddresses = [];
-        $recipientPeople = explode(",",SystemConfig::getValue("sNewPersonNotificationRecipients") );
+      $this->relatedObject = $RelatedObject;
 
-        foreach($recipientPeople as $PersonID) {
-          $Person = PersonQuery::create()->findOneById($PersonID);
-          if(!empty($Person)) {
-            $email = $Person->getEmail();
-            if (!empty($email)) {
-              array_push($toAddresses,$email);   
-            }
+      $toAddresses = [];
+      $recipientPeople = explode(",",SystemConfig::getValue("sNewPersonNotificationRecipientIDs") );
+
+      foreach($recipientPeople as $PersonID) {
+        $Person = PersonQuery::create()->findOneById($PersonID);
+        if(!empty($Person)) {
+          $email = $Person->getEmail();
+          if (!empty($email)) {
+            array_push($toAddresses,$email);   
           }
         }
+      }
 
-        parent::__construct($toAddresses);
-        $this->mail->Subject = SystemConfig::getValue("sChurchName") . ": " . $this->getSubSubject();
-        $this->mail->isHTML(true);
-        $this->mail->msgHTML($this->buildMessage());
+      parent::__construct($toAddresses);
+      $this->mail->Subject = SystemConfig::getValue("sChurchName") . ": " . $this->getSubSubject();
+      $this->mail->isHTML(true);
+      $this->mail->msgHTML($this->buildMessage());
     }
 
     protected function getSubSubject()
     {
-      if ($this->notificationType == self::PERSON)
+      if (get_class($this->relatedObject) == "ChurchCRM\Person")
       {
         return gettext("New Person Added");
       }
-      else if ($this->notificationType == self::FAMILY)
+      else if (get_class($this->relatedObject) == "ChurchCRM\Family")
       {
         return gettext("New Family Added");
       }
@@ -59,19 +52,16 @@ class NewPersonOrFamilyEmail extends BaseEmail
         $myTokens =  [
             "toName" => gettext("Church Greeter")
         ];
-        if ($this->notificationType == self::FAMILY)
+        if (get_class($this->relatedObject) == "ChurchCRM\Family")
         {
-          $family = FamilyQuery::create()->findOneById($this->relatedId);
-          $myTokens['body'] = gettext("New Family Added")."<br/>".
-                  gettext("Family Name").": ".$family->getName();
-          $myTokens["familyLink"] = SystemURLs::getURL()."/FamilyView.php?FamilyID=".$this->relatedId;
+          $myTokens['body'] = gettext("New Family Added")."\r\n".
+                  gettext("Family Name").": ".$this->relatedObject->getName();
+          $myTokens["familyLink"] = SystemURLs::getURL()."/FamilyView.php?FamilyID=".$this->relatedObject->getId();
         }
-        else if ($this->notificationType == self::PERSON)
+        elseif (get_class($this->relatedObject) == "ChurchCRM\Person")
         {
-          $person = PersonQuery::create()->findOneById($this->relatedId);
-          $myTokens['body'] = gettext("New Person Added")."<br/>".
-                  gettext("Name").": ".$person->getFullName();
-          $myTokens['personLink'] = SystemURLs::getURL()."/PersonView.php?PersonID=".$this->relatedId;
+          $myTokens['body'] = gettext("New Person Added")."\r\n". gettext("Name").": ". $this->relatedObject->getFullName();
+          $myTokens['personLink'] = SystemURLs::getURL()."/PersonView.php?PersonID=".$this->relatedObject->getId();
         }
         
         return array_merge($this->getCommonTokens(), $myTokens);

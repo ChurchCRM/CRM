@@ -9,6 +9,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\GeoUtils;
 use DateTime;
+use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -349,5 +350,15 @@ class Family extends BaseFamily implements iPhoto
           "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
       ];
       return $searchArray;
+    }
+    public function preInsert(ConnectionInterface $con = null) {
+      if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
+      {
+        $NotificationEmail = new NewPersonOrFamilyEmail($this);
+        if (!$NotificationEmail->send()) {
+          $logger->warn($NotificationEmail->getError());
+        }
+      }
+      parent::preSave($con);
     }
 }

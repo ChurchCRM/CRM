@@ -436,5 +436,16 @@ class Person extends BasePerson implements iPhoto
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
+    
+    public function preInsert(ConnectionInterface $con = null) {
+      if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
+      {
+        $NotificationEmail = new NewPersonOrFamilyEmail($this);
+        if (!$NotificationEmail->send()) {
+          $logger->warn($NotificationEmail->getError());
+        }
+      }
+      parent::preSave($con);
+    }
 
 }

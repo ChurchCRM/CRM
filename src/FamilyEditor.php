@@ -431,11 +431,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->createTimeLineNote('create');
             $family->updateLanLng();
             
-            $NotificationEmail = new NewPersonOrFamilyEmail(NewPersonOrFamilyEmail::FAMILY, $iFamilyID);
-            if (!$NotificationEmail->send()) {
-              $logger->warn($NotificationEmail->getError());
+            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
+            {
+              $NotificationEmail = new NewPersonOrFamilyEmail($family);
+              if (!$NotificationEmail->send()) {
+                $logger->warn($NotificationEmail->getError());
+              }
             }
-            
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
                 if (strlen($aFirstNames[$iCount]) > 0) {

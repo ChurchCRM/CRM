@@ -16,6 +16,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\PersonQuery;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -377,9 +378,14 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setText(gettext('Created'));
             $note->setType('create');
             
-            $NotificationEmail = new NewPersonOrFamilyEmail(NewPersonOrFamilyEmail::PERSON, $iPersonID);
-            if (!$NotificationEmail->send()) {
-              $logger->warn($NotificationEmail->getError());
+            
+            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
+            {
+              $person = PersonQuery::create()->findOneByID($iPersonID);
+              $NotificationEmail = new NewPersonOrFamilyEmail($person);
+              if (!$NotificationEmail->send()) {
+                $logger->warn($NotificationEmail->getError());
+              }
             }
         } else {
             $note->setPerId($iPersonID);
