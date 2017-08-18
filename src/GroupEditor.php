@@ -67,7 +67,7 @@ require 'Include/Header.php';
 
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext('Group Settings').(($thisGroup->isSundaySchool())?" : ".gettext("Sunday School Group Type"):"") ?></h3>
+    <h3 class="box-title"><?= (($thisGroup->isSundaySchool())?gettext("Special Group Settings : Sunday School Type"):gettext('Group Settings')) ?></h3>
   </div>
   <div class="box-body">
     <form name="groupEditForm" id="groupEditForm">
