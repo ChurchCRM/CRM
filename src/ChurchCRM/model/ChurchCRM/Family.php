@@ -82,6 +82,13 @@ class Family extends BaseFamily implements iPhoto
     public function postInsert(ConnectionInterface $con = null)
     {
         $this->createTimeLineNote('create');
+        if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
+        {
+          $NotificationEmail = new NewPersonOrFamilyEmail($this);
+          if (!$NotificationEmail->send()) {
+            $logger->warn($NotificationEmail->getError());
+          }
+        }
     }
 
     public function postUpdate(ConnectionInterface $con = null)
@@ -350,15 +357,5 @@ class Family extends BaseFamily implements iPhoto
           "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
       ];
       return $searchArray;
-    }
-    public function preInsert(ConnectionInterface $con = null) {
-      if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
-      {
-        $NotificationEmail = new NewPersonOrFamilyEmail($this);
-        if (!$NotificationEmail->send()) {
-          $logger->warn($NotificationEmail->getError());
-        }
-      }
-      parent::preSave($con);
     }
 }
