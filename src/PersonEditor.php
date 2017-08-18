@@ -379,13 +379,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setType('create');
             
             
-            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
-            {
-              $person = PersonQuery::create()->findOneByID($iPersonID);
-              $NotificationEmail = new NewPersonOrFamilyEmail($person);
-              if (!$NotificationEmail->send()) {
-                $logger->warn($NotificationEmail->getError());
-              }
+            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
+                $person = PersonQuery::create()->findOneByID($iPersonID);
+                $NotificationEmail = new NewPersonOrFamilyEmail($person);
+                if (!$NotificationEmail->send()) {
+                    $logger->warn($NotificationEmail->getError());
+                }
             }
         } else {
             $note->setPerId($iPersonID);
