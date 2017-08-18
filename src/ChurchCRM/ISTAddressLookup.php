@@ -5,13 +5,13 @@ namespace ChurchCRM;
 class ISTAddressLookup
 {
     // This code is written to work with XML lookups provide by
-  // Intelligent Search Technology, Ltd.
-  // https://www.intelligentsearch.com/Hosted/User/
+    // Intelligent Search Technology, Ltd.
+    // https://www.intelligentsearch.com/Hosted/User/
 
-  public function GetAddress1()
-  {
-      return $this->DeliveryLine1;
-  }
+    public function GetAddress1()
+    {
+        return $this->DeliveryLine1;
+    }
 
     public function GetAddress2()
     {
@@ -104,23 +104,23 @@ class ISTAddressLookup
     public function getAccountInfo($sISTusername, $sISTpassword)
     {
         // Returns account related information.  Currently, it is used to retrieve
-    // remaining number of transactions.  Return codes are:
-    // 0 - information retrieved successfully
-    // 1 - invalid account
-    // 2 - account is disabled
-    // 3 - account does not have access to CorrectAddress(R) XML web services
-    // 4 - unspecified error
+        // remaining number of transactions.  Return codes are:
+        // 0 - information retrieved successfully
+        // 1 - invalid account
+        // 2 - account is disabled
+        // 3 - account does not have access to CorrectAddress(R) XML web services
+        // 4 - unspecified error
 
-    $base = 'https://www.intelligentsearch.com/CorrectAddressWS/';
+        $base = 'https://www.intelligentsearch.com/CorrectAddressWS/';
         $base .= 'CorrectAddressWebService.asmx/wsGetAccountInfo';
 
         $query_string = '';
         $XmlArray = null;
 
-    //NOTE: Fields with * sign are required.
-    //intializing the parameters
+        //NOTE: Fields with * sign are required.
+        //intializing the parameters
 
-    $username = $sISTusername;                //  * (Type your username)
+        $username = $sISTusername;                //  * (Type your username)
     $password = $sISTpassword;                //  * (Type your password)
 
     $params = [
@@ -134,11 +134,11 @@ class ISTAddressLookup
 
         $response = file_get_contents($url);
 
-//        $fp = fopen('/path/to/debug/file.txt', 'w+');
-//        fwrite($fp, $response . "\n" . $url);
-//        fclose($fp);
-    // Initialize return values to NULL
-    $this->SearchesLeft = '';
+        //        $fp = fopen('/path/to/debug/file.txt', 'w+');
+        //        fwrite($fp, $response . "\n" . $url);
+        //        fclose($fp);
+        // Initialize return values to NULL
+        $this->SearchesLeft = '';
         $this->ReturnCode = '';
 
         if (!$response) {
@@ -146,11 +146,11 @@ class ISTAddressLookup
             $this->SearchesLeft = 'Connection failure: '.$base.'<br>';
             $this->SearchesLeft .= ' Incorrect server name and/or path or server unavailable.<br>';
 
-      // This feature requires that "allow_url_fopen = On" in the php.ini file.
-      if (!ini_get('allow_url_fopen')) {
-          $this->SearchesLeft .= '<br>IMPORTANT: This feature requires "allow_url_fopen = On" in php.ini';
-          $this->SearchesLeft .= '<br>Please check your php.ini file for "allow_url_fopen"<br>';
-      }
+            // This feature requires that "allow_url_fopen = On" in the php.ini file.
+            if (!ini_get('allow_url_fopen')) {
+                $this->SearchesLeft .= '<br>IMPORTANT: This feature requires "allow_url_fopen = On" in php.ini';
+                $this->SearchesLeft .= '<br>Please check your php.ini file for "allow_url_fopen"<br>';
+            }
         } else {
             $this->ReturnCode = XMLparseIST($response, 'ReturnCode');
 
@@ -180,17 +180,17 @@ class ISTAddressLookup
 
     // Lookup and Correct US address
 
-    $base = 'https://www.intelligentsearch.com/CorrectAddressWS/';
+        $base = 'https://www.intelligentsearch.com/CorrectAddressWS/';
         $base .= 'CorrectAddressWebService.asmx/wsCorrectA';
-//        $base    .= "CorrectAddressWebService.asmx/wsTigerCA";
+        //        $base    .= "CorrectAddressWebService.asmx/wsTigerCA";
 
-    $query_string = '';
+        $query_string = '';
         $XmlArray = null;
 
-    //NOTE: Fields with * sign are required.
-    //intializing the parameters
+        //NOTE: Fields with * sign are required.
+        //intializing the parameters
 
-    $username = $sISTusername;                //  * (Type your username)
+        $username = $sISTusername;                //  * (Type your username)
     $password = $sISTpassword;                //  * (Type your password)
     $firmname = '';                           // optional
     $urbanization = '';                           // optional
@@ -222,11 +222,11 @@ class ISTAddressLookup
 
         $response = file_get_contents($url);
 
-//        $fp = fopen('/var/www/html/message.txt', 'w+');
-//        fwrite($fp, $response . "\n" . $url);
-//        fclose($fp);
-    // Initialize return values
-    $this->DeliveryLine1 = '';
+        //        $fp = fopen('/var/www/html/message.txt', 'w+');
+        //        fwrite($fp, $response . "\n" . $url);
+        //        fclose($fp);
+        // Initialize return values
+        $this->DeliveryLine1 = '';
         $this->DeliveryLine2 = '';
         $this->City = '';
         $this->State = '';
@@ -268,7 +268,7 @@ class ISTAddressLookup
             $this->ErrorDesc = XMLparseIST($response, 'ErrorDesc');
             $this->SearchesLeft = XMLparseIST($response, 'SearchesLeft');
 
-//            if(strlen(XMLparseIST($response,"ErrorCodes"))){
+            //            if(strlen(XMLparseIST($response,"ErrorCodes"))){
 //                if (XMLparseIST($response,"ErrorCodes") != "x1x2") {
 //                    $this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorCodes");
 //                    $this->DeliveryLine1 .= " " . XMLparseIST($response,"ErrorDesc");

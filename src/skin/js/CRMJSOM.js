@@ -48,13 +48,20 @@
     }
     
     window.CRM.cart={
-      'empty' : function ()
+      'empty' : function (callback)
       {
         window.CRM.APIRequest({
           method: "DELETE",
           path: "cart/"
         }).done(function (data) {
+          if (callback)
+          {
+            callback()
+          }
+          else
+          {
             window.CRM.cart.refresh();
+          }
         });
       },
       'emptyToGroup' : function (callback)
@@ -99,9 +106,9 @@
       'removePerson' : function (Persons, callback)
       {
          window.CRM.APIRequest({
-          method: 'DELETE',
+          method: 'POST',
           path:'cart/',
-          data: JSON.stringify({"Persons":Persons})
+          data: JSON.stringify({"_METHOD":"DELETE","Persons":Persons})
         }).done(function(data) {
           window.CRM.cart.refresh();
           if(callback)
@@ -157,7 +164,7 @@
                           </a>\
                       </li>\
                       <li>\
-                          <a id="emptyCart" id="#emptyCart">\
+                          <a class="emptyCart" >\
                               <i class="fa fa-trash text-danger"></i>' + i18next.t("Empty Cart") + ' \
                           </a>\
                       </li>\
@@ -420,9 +427,9 @@
     
     window.CRM.system = {
       'runTimerJobs' : function () {
-        window.CRM.APIRequest({
-          path: "timerjobs/run",
-          method: "POST"
+        $.ajax({
+          url: window.CRM.root + "/api/timerjobs/run",
+          type: "POST"
         });
       }
     }

@@ -158,8 +158,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthDay = InputUtils::LegacyFilterInput($_POST['BirthDay'], 'int');
     $iBirthYear = InputUtils::LegacyFilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
-    $dFriendDate = InputUtils::LegacyFilterInput($_POST['FriendDate']);
-    $dMembershipDate = InputUtils::LegacyFilterInput($_POST['MembershipDate']);
+    // Philippe Logel
+    $dFriendDate = InputUtils::FilterDate($_POST['FriendDate']);
+    $dMembershipDate = InputUtils::FilterDate($_POST['MembershipDate']);
     $iClassification = InputUtils::LegacyFilterInput($_POST['Classification'], 'int');
     $iEnvelope = 0;
     if (array_key_exists('EnvID', $_POST)) {
@@ -1055,9 +1056,10 @@ require 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
+                        <!-- Philippe Logel -->
                         <input type="text" name="MembershipDate" class="form-control date-picker"
-                               value="<?= $dMembershipDate ?>" maxlength="10" id="sel1" size="11"
-                               placeholder="YYYY-MM-DD">
+                               value="<?= change_date_for_place_holder($dMembershipDate) ?>" maxlength="10" id="sel1" size="11"
+                               placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                         <?php if ($sMembershipDateError) {
                             ?><font
                             color="red"><?= $sMembershipDateError ?></font><?php
@@ -1072,8 +1074,8 @@ require 'Include/Header.php';
                       <i class="fa fa-calendar"></i>
                     </div>
                     <input type="text" name="FriendDate" class="form-control date-picker"
-                           value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="10"
-                           placeholder="YYYY-MM-DD">
+                           value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10" id="sel2" size="10"
+                           placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                     <?php if ($sFriendDateError) {
                             ?><font
                       color="red"><?php echo $sFriendDateError ?></font><?php

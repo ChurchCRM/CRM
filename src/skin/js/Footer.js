@@ -62,7 +62,7 @@ $("document").ready(function(){
       url: window.CRM.root + "/api/timerjobs/run",
       type: "POST"
     });
-    $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
+    $(".date-picker").datepicker({format:window.CRM.datePickerformat, language: window.CRM.lang});
     
 
     $(".initials-image").initial();
