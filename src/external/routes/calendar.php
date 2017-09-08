@@ -4,10 +4,11 @@
 
 $app->group('/calendar', function () {
     $this->get('/events', function ($request, $response, $args) {
-        $params = $request->getQueryParams();
-        
+        if (!ChurchCRM\dto\SystemConfig::getBooleanValue("bEnableExternalCalendarAPI"))
+        {
+          throw new \Exception(gettext("External Calendar API is disabled")  , 400);
+        }
         $events = ChurchCRM\EventQuery::create()->find();
-          
         return $response->withJson($events->toArray());
     });
 });
