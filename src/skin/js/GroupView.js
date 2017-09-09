@@ -10,7 +10,7 @@ $(document).ready(function () {
       data: $(window.CRM.groupRoles).map(function () {
         return {
           id: this.OptionId,
-          text: this.OptionName
+          text: i18next.t(this.OptionName)
         };
       })
     });
@@ -278,7 +278,7 @@ function initDataTable() {
           thisRole = $(window.CRM.groupRoles).filter(function (index, item) {
             return item.OptionId == data
           })[0];
-          return thisRole.OptionName + '<button class="changeMembership" data-personid=' + full.PersonId + '><i class="fa fa-pencil"></i></button>';
+          return i18next.t(thisRole.OptionName) + '<button class="changeMembership" data-personid=' + full.PersonId + '><i class="fa fa-pencil"></i></button>';
         }
       },
       {
