@@ -550,7 +550,7 @@ if ($per_ID == $iPersonID) {
                         <h3 class="box-title"><a href="GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
                         <div class="box-tools pull-right">
-                          <div class="label bg-aqua"><?= $roleName ?></div>
+                          <div class="label bg-aqua"><?= gettext($roleName) ?></div>
                         </div>
                       </div>
                       <?php

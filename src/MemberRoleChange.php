@@ -85,7 +85,7 @@ require 'Include/Header.php'
 	</tr>
 	<tr>
 		<td align="right"><b><?= gettext('Current Role') ?>:</b></td>
-		<td><?php echo $sRoleName ?></td>
+		<td><?php echo gettext($sRoleName) ?></td>
 	</tr>
 	<tr>
 		<td align="right"><b><?= gettext('New Role') ?>:</b></td>
@@ -104,7 +104,7 @@ require 'Include/Header.php'
                         $sSelected = '';
                     }
                     //Write the <option> tag
-                    echo '<option value="'.$lst_OptionID.'" '.$sSelected.'>'.$lst_OptionName.'</option>';
+                    echo '<option value="'.$lst_OptionID.'" '.$sSelected.'>'.gettext($lst_OptionName).'</option>';
                 }
                 ?>
 			</select>
