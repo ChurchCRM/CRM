@@ -17,6 +17,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -429,6 +430,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family = FamilyQuery::create()->findPk($iFamilyID);
             $family->createTimeLineNote('create');
             $family->updateLanLng();
+            
+            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
+                $NotificationEmail = new NewPersonOrFamilyEmail($family);
+                if (!$NotificationEmail->send()) {
+                    $logger->warn($NotificationEmail->getError());
+                }
+            }
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
                 if (strlen($aFirstNames[$iCount]) > 0) {
