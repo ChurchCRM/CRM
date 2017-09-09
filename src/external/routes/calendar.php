@@ -11,7 +11,7 @@ $app->group('/calendar', function () {
         {
           throw new \Exception(gettext("External Calendar API is disabled")  , 400);
         }
-        
+
         $params = $request->getQueryParams();
         $start_date = InputUtils::FilterDate($params['start']);
         $max_events = InputUtils::FilterInt($params['max']);
@@ -28,5 +28,6 @@ $app->group('/calendar', function () {
         }
         
         return $response->withJson($events->find()->toArray());
+
     });
 });
