@@ -13,14 +13,15 @@ $app->group('/calendar', function () {
         }
 
         $params = $request->getQueryParams();
-        $start_date = InputUtils::FilterDate($params['start']);
+        $start_date = DateTime::createFromFormat("Y-m-d",$params['start']);
+        $start_date->setTime(0,0,0);
         $max_events = InputUtils::FilterInt($params['max']);
 
         $events = ChurchCRM\EventQuery::create()
                 ->orderByStart(Criteria::ASC);
 
         if($start_date) {
-          $events->filterByStart($start_date, Criteria::GREATER_EQUAL);
+          $events->filterByStart($start_date,  Criteria::GREATER_EQUAL);
         }
 
         if ($max_events) {
