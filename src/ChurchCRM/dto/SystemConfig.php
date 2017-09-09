@@ -193,7 +193,8 @@ class SystemConfig
         "sChurchFB" => new ConfigItem(2014, "sChurchFB", "text", "", gettext("Your Church's Facebook Page")),
         "sChurchTwitter" => new ConfigItem(2015, "sChurchTwitter", "text", "", gettext("Your Church's Twitter Page")),
         "bEnableGooglePhotos" => new ConfigItem(2016, "bEnableGooglePhotos", "boolean", "1", gettext("lookup user images on Google when no local image is present")),
-        "sNewPersonNotificationRecipientIDs" => new ConfigItem(2017, "sNewPersonNotificationRecipientIDs", "text", "", gettext("Comma Separated list of PersonIDs of people to notify when a new family or person is added"))
+        "sNewPersonNotificationRecipientIDs" => new ConfigItem(2018, "sNewPersonNotificationRecipientIDs", "text", "", gettext("Comma Separated list of PersonIDs of people to notify when a new family or person is added")),
+        "bEnableExternalCalendarAPI" => new ConfigItem(2017, "bEnableExternalCalendarAPI", "boolean", "0", gettext("Allow unauthenticated reads of events from the external calendar API"))
     );
   }
 
@@ -210,7 +211,7 @@ class SystemConfig
       gettext('System Settings')  => ["sLogLevel", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
-      gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID","bEnableGooglePhotos","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"]
+      gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID","bEnableGooglePhotos","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword","bEnableExternalCalendarAPI"]
     );
   }
 
