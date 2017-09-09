@@ -60,6 +60,13 @@
                 <a href="{{churchCRMURL}}external/password/set/{{passwordToken}}" target="_blank">{{resetPasswordText}}</a>
             </p>
             {{/ passwordToken}}
+            
+            {{# familyLink }}
+              <p><a href="{{familyLink}}">View Family Page</a></p>
+            {{/ familyLink }}
+             {{# personLink }}
+              <p><a href="{{personLink}}">View Person Page</a></p>
+            {{/ personLink }}
             <p>
             {{confirmSincerely}}, <br/>
             {{confirmSigner}}

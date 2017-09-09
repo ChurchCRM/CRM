@@ -5,24 +5,7 @@
  *  website     : http://www.churchcrm.io
  *
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters
- *
+
  ******************************************************************************/
 
 require 'Include/Config.php';
@@ -244,8 +227,8 @@ require 'Include/Header.php'; ?>
             if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
                 echo 'disabled ';
             }   // This would be better with $_SESSION variable
-                            // instead of cookie ... (save $_SESSION in MySQL)
-                            echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
+            // instead of cookie ... (save $_SESSION in MySQL)
+            echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
             echo '  id="QuietBulkMail" value="1" ';
             if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
                 echo 'checked';

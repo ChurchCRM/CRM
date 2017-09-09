@@ -13,15 +13,6 @@
  *
  *  Copyright Contributors
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters.
- *  Please configure your editor to use soft tabs (4 spaces for a tab) instead
- *  of hard tab characters.
- *
  ******************************************************************************/
 
 // Include the function library
@@ -33,11 +24,11 @@ use ChurchCRM\dto\SystemURLs;
 
 $systemService = new SystemService();
 if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-  Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 } else {        //the upgrade failed!
 
-  $UpgradeException = 'null';
+    $UpgradeException = 'null';
     try {
         if ($systemService->upgradeDatabaseVersion()) {
             $_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
@@ -48,8 +39,8 @@ if ($systemService->isDBCurrent()) {  //either the DB is good, or the upgrade wa
         $UpgradeException = $ex;
     }
     $dbVersion = $systemService->getDBVersion();
-  //Set the page title
-  $sPageTitle = gettext('Software Version Check');
+    //Set the page title
+    $sPageTitle = gettext('Software Version Check');
     require 'Include/HeaderNotLoggedIn.php'; ?>
 
   <!-- Main content -->

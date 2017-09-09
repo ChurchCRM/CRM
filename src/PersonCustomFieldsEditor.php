@@ -7,12 +7,7 @@
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
  *
  *  function    : Editor for custom person fields
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- ******************************************************************************/
+  ******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
@@ -43,7 +38,7 @@ require 'Include/Header.php'; ?>
   // Does the user want to save changes to text fields?
   if (isset($_POST['SaveChanges'])) {
       // Fill in the other needed custom field data arrays not gathered from the form submit
-    $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
+      $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
       $rsCustomFields = RunQuery($sSQL);
       $numRows = mysqli_num_rows($rsCustomFields);
 
@@ -85,97 +80,97 @@ require 'Include/Header.php'; ?>
           }
       }
 
-    // If no errors, then update.
-    if (!$bErrorFlag) {
-        for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-            if ($aSideFields[$iFieldID] == 0) {
-                $temp = 'left';
-            } else {
-                $temp = 'right';
-            }
+      // If no errors, then update.
+      if (!$bErrorFlag) {
+          for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
+              if ($aSideFields[$iFieldID] == 0) {
+                  $temp = 'left';
+              } else {
+                  $temp = 'right';
+              }
 
-            $sSQL = "UPDATE person_custom_master
+              $sSQL = "UPDATE person_custom_master
 					SET custom_Name = '".$aNameFields[$iFieldID]."',
 						custom_Special = ".$aSpecialFields[$iFieldID].",
 						custom_Side = '".$temp."',
 						custom_FieldSec = ".$aFieldSecurity[$iFieldID]."
 					WHERE custom_Field = '".$aFieldFields[$iFieldID]."';";
-            RunQuery($sSQL);
-        }
-    }
+              RunQuery($sSQL);
+          }
+      }
   } else {
       // Check if we're adding a field
-    if (isset($_POST['AddField'])) {
-        $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
-        $newFieldSide = $_POST['newFieldSide'];
-        $newFieldSec = $_POST['newFieldSec'];
+      if (isset($_POST['AddField'])) {
+          $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
+          $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
+          $newFieldSide = $_POST['newFieldSide'];
+          $newFieldSec = $_POST['newFieldSec'];
 
-        if (strlen($newFieldName) == 0) {
-            $bNewNameError = true;
-        } elseif (strlen($newFieldType) == 0 || $newFieldType < 1) {
-            // This should never happen, but check anyhow.
+          if (strlen($newFieldName) == 0) {
+              $bNewNameError = true;
+          } elseif (strlen($newFieldType) == 0 || $newFieldType < 1) {
+              // This should never happen, but check anyhow.
         // $bNewTypeError = true;
-        } else {
-            $sSQL = 'SELECT custom_Name FROM person_custom_master';
-            $rsCustomNames = RunQuery($sSQL);
-            while ($aRow = mysqli_fetch_array($rsCustomNames)) {
-                if ($aRow[0] == $newFieldName) {
-                    $bDuplicateNameError = true;
-                    break;
-                }
-            }
-
-            if (!$bDuplicateNameError) {
-                global $cnInfoCentral;
-                // Find the highest existing field number in the table to determine the next free one.
-                // This is essentially an auto-incrementing system where deleted numbers are not re-used.
-                $fields = mysqli_query($cnInfoCentral, 'SHOW COLUMNS FROM person_custom');
-                $last = mysqli_num_rows($fields) - 1;
-
-                // Set the new field number based on the highest existing.  Chop off the "c" at the beginning of the old one's name.
-                // The "c#" naming scheme is necessary because MySQL 3.23 doesn't allow numeric-only field (table column) names.
-                $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM person_custom');
-                $fieldInfo = mysqli_fetch_field_direct($fields, $last);
-                $newFieldNum = mb_substr($fieldInfo->name, 1) + 1;
-
-                if ($newFieldSide == 0) {
-                    $newFieldSide = 'left';
-                } else {
-                    $newFieldSide = 'right';
-                }
-
-          // If we're inserting a new custom-list type field, create a new list and get its ID
-          if ($newFieldType == 12) {
-              // Get the first available lst_ID for insertion.  lst_ID 0-9 are reserved for permanent lists.
-            $sSQL = 'SELECT MAX(lst_ID) FROM list_lst';
-              $aTemp = mysqli_fetch_array(RunQuery($sSQL));
-              if ($aTemp[0] > 9) {
-                  $newListID = $aTemp[0] + 1;
-              } else {
-                  $newListID = 10;
+          } else {
+              $sSQL = 'SELECT custom_Name FROM person_custom_master';
+              $rsCustomNames = RunQuery($sSQL);
+              while ($aRow = mysqli_fetch_array($rsCustomNames)) {
+                  if ($aRow[0] == $newFieldName) {
+                      $bDuplicateNameError = true;
+                      break;
+                  }
               }
 
-            // Insert into the lists table with an example option.
-            $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'".gettext('Default Option')."')";
-              RunQuery($sSQL);
+              if (!$bDuplicateNameError) {
+                  global $cnInfoCentral;
+                  // Find the highest existing field number in the table to determine the next free one.
+                  // This is essentially an auto-incrementing system where deleted numbers are not re-used.
+                  $fields = mysqli_query($cnInfoCentral, 'SHOW COLUMNS FROM person_custom');
+                  $last = mysqli_num_rows($fields) - 1;
 
-              $newSpecial = "'$newListID'";
-          } else {
-              $newSpecial = 'NULL';
-          }
+                  // Set the new field number based on the highest existing.  Chop off the "c" at the beginning of the old one's name.
+                  // The "c#" naming scheme is necessary because MySQL 3.23 doesn't allow numeric-only field (table column) names.
+                  $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM person_custom');
+                  $fieldInfo = mysqli_fetch_field_direct($fields, $last);
+                  $newFieldNum = mb_substr($fieldInfo->name, 1) + 1;
 
-          // Insert into the master table
-          $newOrderID = $last + 1;
-                $sSQL = "INSERT INTO person_custom_master
+                  if ($newFieldSide == 0) {
+                      $newFieldSide = 'left';
+                  } else {
+                      $newFieldSide = 'right';
+                  }
+
+                  // If we're inserting a new custom-list type field, create a new list and get its ID
+                  if ($newFieldType == 12) {
+                      // Get the first available lst_ID for insertion.  lst_ID 0-9 are reserved for permanent lists.
+                      $sSQL = 'SELECT MAX(lst_ID) FROM list_lst';
+                      $aTemp = mysqli_fetch_array(RunQuery($sSQL));
+                      if ($aTemp[0] > 9) {
+                          $newListID = $aTemp[0] + 1;
+                      } else {
+                          $newListID = 10;
+                      }
+
+                      // Insert into the lists table with an example option.
+                      $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'".gettext('Default Option')."')";
+                      RunQuery($sSQL);
+
+                      $newSpecial = "'$newListID'";
+                  } else {
+                      $newSpecial = 'NULL';
+                  }
+
+                  // Insert into the master table
+                  $newOrderID = $last + 1;
+                  $sSQL = "INSERT INTO person_custom_master
 						(custom_Order , custom_Field , custom_Name ,  custom_Special , custom_Side , custom_FieldSec, type_ID)
 						VALUES ('".$newOrderID."', 'c".$newFieldNum."', '".$newFieldName."', ".$newSpecial.", '".$newFieldSide."', '".$newFieldSec."', '".$newFieldType."');";
-                RunQuery($sSQL);
+                  RunQuery($sSQL);
 
-          // Insert into the custom fields table
-          $sSQL = 'ALTER TABLE person_custom ADD c'.$newFieldNum.' ';
+                  // Insert into the custom fields table
+                  $sSQL = 'ALTER TABLE person_custom ADD c'.$newFieldNum.' ';
 
-                switch ($newFieldType) {
+                  switch ($newFieldType) {
             case 1:
               $sSQL .= "ENUM('false', 'true')";
               break;
@@ -213,32 +208,32 @@ require 'Include/Header.php'; ?>
               $sSQL .= 'TINYINT(4)';
           }
 
-                $sSQL .= ' DEFAULT NULL ;';
-                RunQuery($sSQL);
+                  $sSQL .= ' DEFAULT NULL ;';
+                  RunQuery($sSQL);
 
-                $bNewNameError = false;
-            }
-        }
-    }
+                  $bNewNameError = false;
+              }
+          }
+      }
 
-    // Get data for the form as it now exists..
-    $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
+      // Get data for the form as it now exists..
+      $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
 
       $rsCustomFields = RunQuery($sSQL);
       $numRows = mysqli_num_rows($rsCustomFields);
 
-    // Create arrays of the fields.
-    for ($row = 1; $row <= $numRows; $row++) {
-        $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
-        extract($aRow);
+      // Create arrays of the fields.
+      for ($row = 1; $row <= $numRows; $row++) {
+          $aRow = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH);
+          extract($aRow);
 
-        $aNameFields[$row] = $custom_Name;
-        $aSpecialFields[$row] = $custom_Special;
-        $aFieldFields[$row] = $custom_Field;
-        $aTypeFields[$row] = $type_ID;
-        $aSideFields[$row] = ($custom_Side == 'right');
-        $aFieldSecurity[$row] = $custom_FieldSec;
-    }
+          $aNameFields[$row] = $custom_Name;
+          $aSpecialFields[$row] = $custom_Special;
+          $aFieldFields[$row] = $custom_Field;
+          $aTypeFields[$row] = $type_ID;
+          $aSideFields[$row] = ($custom_Side == 'right');
+          $aFieldSecurity[$row] = $custom_FieldSec;
+      }
   }
   // Prepare Security Group list
   $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
@@ -258,12 +253,12 @@ require 'Include/Header.php'; ?>
 
       for ($i = 0; $i < $grp_Count; $i++) {
           $aAryRow = $aSecGrp[$i];
-      //extract($aAryRow);
-      $sOptList .= '<option value="'.$aAryRow['lst_OptionID'].'"';
-//		echo "lst_OptionName:".$aAryRow['lst_OptionName']."<br>";
-      if ($aAryRow['lst_OptionName'] == $currOpt) {
-          $sOptList .= ' selected';
-      }
+          //extract($aAryRow);
+          $sOptList .= '<option value="'.$aAryRow['lst_OptionID'].'"';
+          //		echo "lst_OptionName:".$aAryRow['lst_OptionName']."<br>";
+          if ($aAryRow['lst_OptionName'] == $currOpt) {
+              $sOptList .= ' selected';
+          }
           $sOptList .= '>'.$aAryRow['lst_OptionName']."</option>\n";
       }
       $sOptList .= '</select>';

@@ -1,0 +1,42 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: id\n"
+
+#: AutoPaymentDelete.php:67 Checkin.php:293 Checkin.php:376
+#: DepositSlipEditor.php:232 DonationFundEditor.php:156
+#: DonationFundEditor.php:186 EditEventAttendees.php:76
+#: ElectronicPaymentList.php:222 ElectronicPaymentList.php:288
+#: EventNames.php:305 FamilyCustomFieldsEditor.php:335
+#: FamilyCustomFieldsEditor.php:393 FamilyView.php:669 FamilyView.php:721
+#: FamilyView.php:780 FamilyView.php:917 FindDepositSlip.php:108
+#: FundRaiserEditor.php:204 ListEvents.php:250 PaddleNumList.php:60
+#: PersonCustomFieldsEditor.php:319 PersonCustomFieldsEditor.php:388
+#: PersonView.php:917 PledgeDelete.php:57 PropertyList.php:69
+#: PropertyList.php:110 PropertyTypeList.php:44 PropertyTypeList.php:65
+#: PropertyTypeList.php:67
+msgid "Delete"
+msgstr "Hapus"
+
+#: AutoPaymentDelete.php:68 AutoPaymentEditor.php:791 BatchWinnerEntry.php:116
+#: CanvassEditor.php:243 Checkin.php:172 Checkin.php:281 Checkin.php:294
+#: DirectoryReports.php:290 DonatedItemEditor.php:300 EventNames.php:234
+#: external/templates/verify/verify-family-info.php:155 FamilyEditor.php:1114
+#: FamilyView.php:916 FinancialReports.php:72 FundRaiserEditor.php:147
+#: GroupPropsEditor.php:172 GroupReports.php:87 GroupReports.php:156
+#: LettersAndLabels.php:77 ManageEnvelopes.php:139 MemberRoleChange.php:123
+#: MemberRoleChange.php:125 NoteDelete.php:71 NoteEditor.php:139
+#: PersonEditor.php:1138 PersonView.php:916 PledgeDelete.php:58
+#: PropertyEditor.php:173 PropertyTypeEditor.php:118 Register.php:60
+#: ReminderReport.php:56 SettingsIndividual.php:123 SettingsIndividual.php:169
+#: SettingsUser.php:111 SettingsUser.php:171
+#: sundayschool/SundaySchoolDashboard.php:249
+#: sundayschool/SundaySchoolReports.php:231 TaxReport.php:54
+#: UserEditor.php:475 UserEditor.php:578 WhyCameEditor.php:104
+msgid "Cancel"
+msgstr "Batal"
+

@@ -7,12 +7,7 @@
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 require 'Include/Config.php';
@@ -113,10 +108,9 @@ if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows >
     for ($row = 1; $row <= $numRows; $row++) {
 
          //Alternate the row color
-         $sRowClass = AlternateRowStyle($sRowClass);
+        $sRowClass = AlternateRowStyle($sRowClass);
 
-         //Display the row
-         ?>
+        //Display the row?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= $aEventTitle[$row] ?></td>
            <td class="TextColumn"><?= FormatDate($aEventStartDateTime[$row], 1) ?></td>
@@ -189,9 +183,9 @@ $gSQL = 'SELECT COUNT(per_ID) AS gCount
         for ($row = 1; $row <= $numRows; $row++) {
 
          //Alternate the row color
-         $sRowClass = AlternateRowStyle($sRowClass);
+            $sRowClass = AlternateRowStyle($sRowClass);
 
-         //Display the row
+            //Display the row
          ?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= FormatFullName($aTitle[$row], $aFistName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>

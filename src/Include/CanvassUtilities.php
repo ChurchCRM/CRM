@@ -5,12 +5,7 @@
  *  last change : 2005-02-21
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 function CanvassSetDefaultFY($iFYID)
@@ -40,7 +35,7 @@ function CanvassClearCanvasserAssignments()
 function CanvassGetCanvassers($groupName)
 {
     // Find the canvassers group
-  $sSQL = 'SELECT grp_ID AS iCanvassGroup FROM group_grp WHERE grp_Name="'.$groupName.'";';
+    $sSQL = 'SELECT grp_ID AS iCanvassGroup FROM group_grp WHERE grp_Name="'.$groupName.'";';
     $rsGroupData = RunQuery($sSQL);
     $aGroupData = mysqli_fetch_array($rsGroupData);
     if (mysqli_num_rows($rsGroupData) == 0) {
@@ -48,8 +43,8 @@ function CanvassGetCanvassers($groupName)
     }
     extract($aGroupData);
 
-  // Get the canvassers from the Canvassers group
-  $sSQL = 'SELECT per_ID, per_FirstName, per_LastName FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = '.$iCanvassGroup.' ORDER BY per_LastName,per_FirstName;';
+    // Get the canvassers from the Canvassers group
+    $sSQL = 'SELECT per_ID, per_FirstName, per_LastName FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = '.$iCanvassGroup.' ORDER BY per_LastName,per_FirstName;';
     $rsCanvassers = RunQuery($sSQL);
     $numCanvassers = mysqli_num_rows($rsCanvassers);
     if ($numCanvassers == 0) {
@@ -63,8 +58,8 @@ function CanvassAssignCanvassers($groupName)
 {
     $rsCanvassers = CanvassGetCanvassers($groupName);
 
-  // Get all the families that need canvassers
-  $sSQL = "SELECT fam_ID FROM family_fam WHERE fam_OkToCanvass='TRUE' AND fam_Canvasser=0 ORDER BY RAND();";
+    // Get all the families that need canvassers
+    $sSQL = "SELECT fam_ID FROM family_fam WHERE fam_OkToCanvass='TRUE' AND fam_Canvasser=0 ORDER BY RAND();";
     $rsFamilies = RunQuery($sSQL);
     $numFamilies = mysqli_num_rows($rsFamilies);
     if ($numFamilies == 0) {
@@ -89,8 +84,8 @@ function CanvassAssignNonPledging($groupName, $iFYID)
 {
     $rsCanvassers = CanvassGetCanvassers($groupName);
 
-  // Get all the families which need canvassing
-  $sSQL = 'SELECT *, a.per_FirstName AS CanvasserFirstName, a.per_LastName AS CanvasserLastName FROM family_fam
+    // Get all the families which need canvassing
+    $sSQL = 'SELECT *, a.per_FirstName AS CanvasserFirstName, a.per_LastName AS CanvasserLastName FROM family_fam
 	         LEFT JOIN person_per a ON fam_Canvasser = a.per_ID
 			 WHERE fam_OkToCanvass="TRUE" ORDER BY RAND()';
     $rsFamilies = RunQuery($sSQL);
@@ -99,7 +94,7 @@ function CanvassAssignNonPledging($groupName, $iFYID)
 
     while ($aFamily = mysqli_fetch_array($rsFamilies)) {
         // Get pledges for this fiscal year, this family
-    $sSQL = 'SELECT plg_Amount FROM pledge_plg
+        $sSQL = 'SELECT plg_Amount FROM pledge_plg
 				 WHERE plg_FYID = '.$iFYID.' AND plg_PledgeOrPayment="Pledge" AND plg_FamID = '.$aFamily['fam_ID'].' ORDER BY plg_Amount DESC';
         $rsPledges = RunQuery($sSQL);
 

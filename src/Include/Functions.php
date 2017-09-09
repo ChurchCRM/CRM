@@ -7,24 +7,7 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-1012 Michael Wilt
- *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters
- *
+
  ******************************************************************************/
 
 use ChurchCRM\dto\SystemURLs;
@@ -42,29 +25,29 @@ $_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
 //
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
-  // Basic security: If the UserID isn't set (no session), redirect to the login page
-  if (!isset($_SESSION['iUserID'])) {
-      Redirect('Login.php');
-      exit;
-  }
+    // Basic security: If the UserID isn't set (no session), redirect to the login page
+    if (!isset($_SESSION['iUserID'])) {
+        Redirect('Login.php');
+        exit;
+    }
 
-  // Check for login timeout.  If login has expired, redirect to login page
-  if (SystemConfig::getValue('iSessionTimeout') > 0) {
-      if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-          Redirect('Login.php');
-          exit;
-      } else {
-          $_SESSION['tLastOperation'] = time();
-      }
-  }
+    // Check for login timeout.  If login has expired, redirect to login page
+    if (SystemConfig::getValue('iSessionTimeout') > 0) {
+        if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
+            Redirect('Login.php');
+            exit;
+        } else {
+            $_SESSION['tLastOperation'] = time();
+        }
+    }
 
-  // If this user needs to change password, send to that page
-  if ($_SESSION['bNeedPasswordChange'] && !isset($bNoPasswordRedirect)) {
-      Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
-      exit;
-  }
+    // If this user needs to change password, send to that page
+    if ($_SESSION['bNeedPasswordChange'] && !isset($bNoPasswordRedirect)) {
+        Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
+        exit;
+    }
 
-  // Check if https is required
+    // Check if https is required
 
   // Note: PHP has limited ability to access the address bar
   // url.  PHP depends on Apache or other web server
@@ -174,7 +157,7 @@ if (isset($_GET['RemoveFromPeopleCart'])) {
 // Are they emptying their cart?
 if (isset($_GET['Action']) && ($_GET['Action'] == 'EmptyCart')) {
     $_SESSION['aPeopleCart'] = [];
-    $sGlobalMessage = gettext('Your cart has been successfully emptied.');
+    $sGlobalMessage = gettext('Your cart has been successfully emptied').".";
 }
 
 if (isset($_POST['BulkAddToCart'])) {
@@ -204,31 +187,31 @@ if (isset($_POST['BulkAddToCart'])) {
 function RedirectURL($sRelativeURL)
 {
     // Test if file exists before redirecting.  May need to remove
-  // query string first.
-  $iQueryString = strpos($sRelativeURL, '?');
+    // query string first.
+    $iQueryString = strpos($sRelativeURL, '?');
     if ($iQueryString) {
         $sPathExtension = mb_substr($sRelativeURL, 0, $iQueryString);
     } else {
         $sPathExtension = $sRelativeURL;
     }
 
-  // The idea here is to get the file path into this form:
-  //     $sFullPath = $sDocumentRoot . $sRootPath . $sPathExtension
-  // The Redirect URL is then in this form:
-  //     $sRedirectURL = $sRootPath . $sPathExtension
-  $sFullPath = str_replace('\\', '/', SystemURLs::getDocumentRoot().'/'.$sPathExtension);
+    // The idea here is to get the file path into this form:
+    //     $sFullPath = $sDocumentRoot . $sRootPath . $sPathExtension
+    // The Redirect URL is then in this form:
+    //     $sRedirectURL = $sRootPath . $sPathExtension
+    $sFullPath = str_replace('\\', '/', SystemURLs::getDocumentRoot().'/'.$sPathExtension);
 
-  // With the query string removed we can test if file exists
-  if (file_exists($sFullPath) && is_readable($sFullPath)) {
-      return SystemURLs::getRootPath().'/'.$sRelativeURL;
-  } else {
-      $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n"
+    // With the query string removed we can test if file exists
+    if (file_exists($sFullPath) && is_readable($sFullPath)) {
+        return SystemURLs::getRootPath().'/'.$sRelativeURL;
+    } else {
+        $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n"
       ."\$sPathExtension = $sPathExtension<br>\n"
       ."\$sDocumentRoot = ".SystemURLs::getDocumentRoot()."<br>\n"
       .'$sRootPath = ' .SystemURLs::getRootPath()."<br>\n";
 
-      die($sErrorMessage);
-  }
+        die($sErrorMessage);
+    }
 }
 
 // Convert a relative URL into an absolute URL and redirect the browser there.
@@ -320,15 +303,15 @@ function RemoveVolunteerOpportunity($iPersonID, $iVolID)
 function ConvertCartToString($aCartArray)
 {
     // Implode the array
-  $sCartString = implode(',', $aCartArray);
+    $sCartString = implode(',', $aCartArray);
 
-  // Make sure the comma is chopped off the end
-  if (mb_substr($sCartString, strlen($sCartString) - 1, 1) == ',') {
-      $sCartString = mb_substr($sCartString, 0, strlen($sCartString) - 1);
-  }
+    // Make sure the comma is chopped off the end
+    if (mb_substr($sCartString, strlen($sCartString) - 1, 1) == ',') {
+        $sCartString = mb_substr($sCartString, 0, strlen($sCartString) - 1);
+    }
 
-  // Make sure there are no duplicate commas
-  $sCartString = str_replace(',,', '', $sCartString);
+    // Make sure there are no duplicate commas
+    $sCartString = str_replace(',,', '', $sCartString);
 
     return $sCartString;
 }
@@ -430,21 +413,21 @@ function ChopLastCharacter($sText)
 function AddToPeopleCart($sID)
 {
     // make sure the cart array exists
-  if (isset($_SESSION['aPeopleCart'])) {
-      if (!in_array($sID, $_SESSION['aPeopleCart'], false)) {
-          $_SESSION['aPeopleCart'][] = $sID;
-      }
-  } else {
-      $_SESSION['aPeopleCart'][] = $sID;
-  }
+    if (isset($_SESSION['aPeopleCart'])) {
+        if (!in_array($sID, $_SESSION['aPeopleCart'], false)) {
+            $_SESSION['aPeopleCart'][] = $sID;
+        }
+    } else {
+        $_SESSION['aPeopleCart'][] = $sID;
+    }
 }
 
 function AddArrayToPeopleCart($aIDs)
 {
     if (is_array($aIDs)) { // Make sure we were passed an array
-    foreach ($aIDs as $value) {
-        AddToPeopleCart($value);
-    }
+        foreach ($aIDs as $value) {
+            AddToPeopleCart($value);
+        }
     }
 }
 
@@ -452,17 +435,17 @@ function AddArrayToPeopleCart($aIDs)
 function AddGroupToPeopleCart($iGroupID)
 {
     //Get all the members of this group
-  $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
+    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
     'WHERE p2g2r_grp_ID = '.$iGroupID;
     $rsGroupMembers = RunQuery($sSQL);
 
-  //Loop through the recordset
-  while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
-      extract($aRow);
+    //Loop through the recordset
+    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
+        extract($aRow);
 
-    //Add each person to the cart
-    AddToPeopleCart($p2g2r_per_ID);
-  }
+        //Add each person to the cart
+        AddToPeopleCart($p2g2r_per_ID);
+    }
 }
 
 function AddFamilyToPeopleCart($iFamID)
@@ -470,13 +453,13 @@ function AddFamilyToPeopleCart($iFamID)
     $sSQL = 'SELECT per_ID from person_per where per_fam_id = '.$iFamID;
     $rsFamilyMembers = RunQuery($sSQL);
 
-  //Loop through the recordset
-  while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
-      extract($aRow);
+    //Loop through the recordset
+    while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
+        extract($aRow);
 
-    //Add each person to the cart
-    AddToPeopleCart($per_ID);
-  }
+        //Add each person to the cart
+        AddToPeopleCart($per_ID);
+    }
 }
 
 function IntersectArrayWithPeopleCart($aIDs)
@@ -489,39 +472,61 @@ function IntersectArrayWithPeopleCart($aIDs)
 function RemoveFromPeopleCart($sID)
 {
     // make sure the cart array exists
-  // we can't remove anybody if there is no cart
-  if (isset($_SESSION['aPeopleCart'])) {
-      unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
+    // we can't remove anybody if there is no cart
+    if (isset($_SESSION['aPeopleCart'])) {
+        unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
     $aTempArray[] = $sID; // the only element in this array is the ID to be removed
     $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aTempArray);
-  }
+    }
 }
 
 function RemoveArrayFromPeopleCart($aIDs)
 {
     // make sure the cart array exists
-  // we can't remove anybody if there is no cart
-  if (isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
-      $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aIDs);
-  }
+    // we can't remove anybody if there is no cart
+    if (isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
+        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aIDs);
+    }
 }
 
 // Remove group from cart
 function RemoveGroupFromPeopleCart($iGroupID)
 {
     //Get all the members of this group
-  $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
+    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
     'WHERE p2g2r_grp_ID = '.$iGroupID;
     $rsGroupMembers = RunQuery($sSQL);
 
-  //Loop through the recordset
-  while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
-      extract($aRow);
+    //Loop through the recordset
+    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
+        extract($aRow);
 
-    //remove each person from the cart
-    RemoveFromPeopleCart($p2g2r_per_ID);
-  }
+        //remove each person from the cart
+        RemoveFromPeopleCart($p2g2r_per_ID);
+    }
 }
+
+
+function change_date_for_place_holder($string)
+{
+    return ((strtotime($string) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($string)):strtotime($string));
+}
+
+function FormatDateOutput()
+{
+    $fmt = SystemConfig::getValue("sDateFormatLong");
+    
+    $fmt = str_replace("/", " ", $fmt);
+    
+    $fmt = str_replace("-", " ", $fmt);
+    
+    $fmt = str_replace("d", "%d", $fmt);
+    $fmt = str_replace("m", "%B", $fmt);
+    $fmt = str_replace("Y", "%Y", $fmt);
+    
+    return $fmt;
+}
+
 
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
@@ -533,50 +538,53 @@ function FormatDate($dDate, $bWithTime = false)
     }
 
     if (strlen($dDate) == 10) { // If only a date was passed append time
-    $dDate = $dDate.' 12:00:00';
+        $dDate = $dDate.' 12:00:00';
     }  // Use noon to avoid a shift in daylight time causing
-  // a date change.
+    // a date change.
 
-  if (strlen($dDate) != 19) {
-      return '';
-  }
+    if (strlen($dDate) != 19) {
+        return '';
+    }
 
-  // Verify it is a valid date
-  $sScanString = mb_substr($dDate, 0, 10);
+    // Verify it is a valid date
+    $sScanString = mb_substr($dDate, 0, 10);
     list($iYear, $iMonth, $iDay) = sscanf($sScanString, '%04d-%02d-%02d');
 
     if (!checkdate($iMonth, $iDay, $iYear)) {
         return 'Unknown';
     }
 
-  // PHP date() function is not used because it is only robust for dates between
-  // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.
-  // To handle a much wider range of dates use MySQL date functions.
+    // PHP date() function is not used because it is only robust for dates between
+    // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.
+    // To handle a much wider range of dates use MySQL date functions.
 
-  $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
+    $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
     ."DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
     ."DATE_FORMAT('$dDate', '%k') as h, "
     ."DATE_FORMAT('$dDate', ':%i') as m";
     extract(mysqli_fetch_array(RunQuery($sSQL)));
+    
 
-    $month = gettext("$mn"); // Allow for translation of 3 character month abbr
-
-  if ($h > 11) {
-      $sAMPM = gettext('pm');
-      if ($h > 12) {
-          $h = $h - 12;
-      }
-  } else {
-      $sAMPM = gettext('am');
-      if ($h == 0) {
-          $h = 12;
-      }
-  }
-
-    if ($bWithTime) {
-        return "$month $dm, $y $h$m $sAMPM";
+    if ($h > 11) {
+        $sAMPM = gettext('pm');
+        if ($h > 12) {
+            $h = $h - 12;
+        }
     } else {
-        return "$month $dm, $y";
+        $sAMPM = gettext('am');
+        if ($h == 0) {
+            $h = 12;
+        }
+    }
+        
+    $fmt = FormatDateOutput();
+        
+    setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));
+    
+    if ($bWithTime) {
+        return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
+    } else {
+        return utf8_encode(strftime("$fmt", strtotime($dDate)));
     }
 }
 
@@ -637,19 +645,19 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
       for ($iCount = 0; $iCount <= strlen($sPhoneNumber); $iCount++) {
 
         // Take one character...
-        $sThisCharacter = mb_substr($sPhoneNumber, $iCount, 1);
+          $sThisCharacter = mb_substr($sPhoneNumber, $iCount, 1);
 
-        // Is it a number?
-        if (ord($sThisCharacter) >= 48 && ord($sThisCharacter) <= 57) {
-            // Yes, add it to the returned value.
-          $sCollapsedPhoneNumber .= $sThisCharacter;
-        } // Is the user trying to add an extension?
-        elseif (!$bHasExtension && ($sThisCharacter == 'e' || $sThisCharacter == 'E')) {
-            // Yes, add the extension identifier 'e' to the stored string.
-          $sCollapsedPhoneNumber .= 'e';
-          // From now on, ignore other non-digits and process normally
-          $bHasExtension = true;
-        }
+          // Is it a number?
+          if (ord($sThisCharacter) >= 48 && ord($sThisCharacter) <= 57) {
+              // Yes, add it to the returned value.
+              $sCollapsedPhoneNumber .= $sThisCharacter;
+          } // Is the user trying to add an extension?
+          elseif (!$bHasExtension && ($sThisCharacter == 'e' || $sThisCharacter == 'E')) {
+              // Yes, add the extension identifier 'e' to the stored string.
+              $sCollapsedPhoneNumber .= 'e';
+              // From now on, ignore other non-digits and process normally
+              $bHasExtension = true;
+          }
       }
       break;
 
@@ -707,7 +715,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
 function FormatAge($Month, $Day, $Year, $Flags)
 {
     if (($Flags & 1)) { //||!$_SESSION['bSeePrivacyData']
-    return;
+        return;
     }
 
     if ($Year > 0) {
@@ -993,11 +1001,12 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
       break;
     // Handler for date fields
     case 2:
+        // code rajouté par Philippe Logel
       echo '<div class="input-group">'.
         '<div class="input-group-addon">'.
         '<i class="fa fa-calendar"></i>'.
         '</div>'.
-        '<input class="form-control date-picker" type="text" id="'.$fieldname.'" Name="'.$fieldname.'" value="'.$data.'" placeholder="YYYY-MM-DD"> '.
+        '<input class="form-control date-picker" type="text" id="'.$fieldname.'" Name="'.$fieldname.'" value="'.change_date_for_place_holder($data).'" placeholder="'.SystemConfig::getValue("sDatePickerPlaceHolder").'"> '.
         '</div>';
       break;
 
@@ -1099,7 +1108,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
       // this business of overloading the special field is really troublesome when trying to follow the code.
       if ($bFirstPassFlag) {
           // in this case, $special is the phone country
-        $data = ExpandPhoneNumber($data, $special, $bNoFormat_Phone);
+          $data = ExpandPhoneNumber($data, $special, $bNoFormat_Phone);
       }
       if (isset($_POST[$fieldname.'noformat'])) {
           $bNoFormat_Phone = true;
@@ -1149,63 +1158,63 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
 {
     // This function takes a year, month and day from parseAndValidateDate.  On success this
-// function returns a string in the form "YYYY-MM-DD".  It returns FALSE on failure.
-// The year can be either 2 digit or 4 digit.  If a 2 digit year is passed the $passfut
-// indicates whether to return a 4 digit year in the past or the future.  The parameter
-// $passfut is not needed for the current year.  If unspecified it assumes the two digit year
-// is either this year or one of the next 99 years.
+    // function returns a string in the form "YYYY-MM-DD".  It returns FALSE on failure.
+    // The year can be either 2 digit or 4 digit.  If a 2 digit year is passed the $passfut
+    // indicates whether to return a 4 digit year in the past or the future.  The parameter
+    // $passfut is not needed for the current year.  If unspecified it assumes the two digit year
+    // is either this year or one of the next 99 years.
 
-  // Parse the year
-  // Take a 2 or 4 digit year and return a 4 digit year.  Use $pasfut to determine if
-  // two digit year maps to past or future 4 digit year.
-  if (strlen($sYear) == 2) {
-      $thisYear = date('Y');
-      $twoDigit = mb_substr($thisYear, 2, 2);
-      if ($sYear == $twoDigit) {
-          // Assume 2 digit year is this year
-      $sYear = mb_substr($thisYear, 0, 4);
-      } elseif ($pasfut == 'future') {
-          // Assume 2 digit year is in next 99 years
-      if ($sYear > $twoDigit) {
-          $sYear = mb_substr($thisYear, 0, 2).$sYear;
-      } else {
-          $sNextCentury = $thisYear + 100;
-          $sYear = mb_substr($sNextCentury, 0, 2).$sYear;
-      }
-      } else {
-          // Assume 2 digit year was is last 99 years
-      if ($sYear < $twoDigit) {
-          $sYear = mb_substr($thisYear, 0, 2).$sYear;
-      } else {
-          $sLastCentury = $thisYear - 100;
-          $sYear = mb_substr($sLastCentury, 0, 2).$sYear;
-      }
-      }
-  } elseif (strlen($sYear) == 4) {
-      $sYear = $sYear;
-  } else {
-      return false;
-  }
+    // Parse the year
+    // Take a 2 or 4 digit year and return a 4 digit year.  Use $pasfut to determine if
+    // two digit year maps to past or future 4 digit year.
+    if (strlen($sYear) == 2) {
+        $thisYear = date('Y');
+        $twoDigit = mb_substr($thisYear, 2, 2);
+        if ($sYear == $twoDigit) {
+            // Assume 2 digit year is this year
+            $sYear = mb_substr($thisYear, 0, 4);
+        } elseif ($pasfut == 'future') {
+            // Assume 2 digit year is in next 99 years
+            if ($sYear > $twoDigit) {
+                $sYear = mb_substr($thisYear, 0, 2).$sYear;
+            } else {
+                $sNextCentury = $thisYear + 100;
+                $sYear = mb_substr($sNextCentury, 0, 2).$sYear;
+            }
+        } else {
+            // Assume 2 digit year was is last 99 years
+            if ($sYear < $twoDigit) {
+                $sYear = mb_substr($thisYear, 0, 2).$sYear;
+            } else {
+                $sLastCentury = $thisYear - 100;
+                $sYear = mb_substr($sLastCentury, 0, 2).$sYear;
+            }
+        }
+    } elseif (strlen($sYear) == 4) {
+        $sYear = $sYear;
+    } else {
+        return false;
+    }
 
-  // Parse the Month
-  // Take a one or two character month and return a two character month
-  if (strlen($sMonth) == 1) {
-      $sMonth = '0'.$sMonth;
-  } elseif (strlen($sMonth) == 2) {
-      $sMonth = $sMonth;
-  } else {
-      return false;
-  }
+    // Parse the Month
+    // Take a one or two character month and return a two character month
+    if (strlen($sMonth) == 1) {
+        $sMonth = '0'.$sMonth;
+    } elseif (strlen($sMonth) == 2) {
+        $sMonth = $sMonth;
+    } else {
+        return false;
+    }
 
-  // Parse the Day
-  // Take a one or two character day and return a two character day
-  if (strlen($sDay) == 1) {
-      $sDay = '0'.$sDay;
-  } elseif (strlen($sDay) == 2) {
-      $sDay = $sDay;
-  } else {
-      return false;
-  }
+    // Parse the Day
+    // Take a one or two character day and return a two character day
+    if (strlen($sDay) == 1) {
+        $sDay = '0'.$sDay;
+    } elseif (strlen($sDay) == 2) {
+        $sDay = $sDay;
+    } else {
+        return false;
+    }
 
     $sScanString = $sYear.'-'.$sMonth.'-'.$sDay;
     list($iYear, $iMonth, $iDay) = sscanf($sScanString, '%04d-%02d-%02d');
@@ -1220,102 +1229,102 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
 function parseAndValidateDate($data, $locale = 'US', $pasfut = 'future')
 {
     // This function was written because I had no luck finding a PHP
-// function that would reliably parse a human entered date string for
-// dates before 1/1/1970 or after 1/19/2038 on any Operating System.
-//
-// This function has hooks for US English M/D/Y format as well as D/M/Y.  The
-// default is M/D/Y for date.  To change to D/M/Y use anything but "US" for
-// $locale.
-//
-// Y-M-D is allowed if the delimiter is "-" instead of "/"
-//
-// In order to help this function guess a two digit year a "past" or "future" flag is
-// passed to this function.  If no flag is passed the function assumes that two digit
-// years are in the future (or the current year).
-//
-// Month and day may be either 1 character or two characters (leading zeroes are not
-// necessary)
+    // function that would reliably parse a human entered date string for
+    // dates before 1/1/1970 or after 1/19/2038 on any Operating System.
+    //
+    // This function has hooks for US English M/D/Y format as well as D/M/Y.  The
+    // default is M/D/Y for date.  To change to D/M/Y use anything but "US" for
+    // $locale.
+    //
+    // Y-M-D is allowed if the delimiter is "-" instead of "/"
+    //
+    // In order to help this function guess a two digit year a "past" or "future" flag is
+    // passed to this function.  If no flag is passed the function assumes that two digit
+    // years are in the future (or the current year).
+    //
+    // Month and day may be either 1 character or two characters (leading zeroes are not
+    // necessary)
 
-  // Determine if the delimiter is "-" or "/".  The delimiter must appear
-  // twice or a FALSE will be returned.
+    // Determine if the delimiter is "-" or "/".  The delimiter must appear
+    // twice or a FALSE will be returned.
 
-  if (mb_substr_count($data, '-') == 2) {
-      // Assume format is Y-M-D
-    $iFirstDelimiter = strpos($data, '-');
-      $iSecondDelimiter = strpos($data, '-', $iFirstDelimiter + 1);
+    if (mb_substr_count($data, '-') == 2) {
+        // Assume format is Y-M-D
+        $iFirstDelimiter = strpos($data, '-');
+        $iSecondDelimiter = strpos($data, '-', $iFirstDelimiter + 1);
 
-    // Parse the year.
-    $sYear = mb_substr($data, 0, $iFirstDelimiter);
+        // Parse the year.
+        $sYear = mb_substr($data, 0, $iFirstDelimiter);
 
-    // Parse the month
-    $sMonth = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
+        // Parse the month
+        $sMonth = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
 
-    // Parse the day
-    $sDay = mb_substr($data, $iSecondDelimiter + 1);
+        // Parse the day
+        $sDay = mb_substr($data, $iSecondDelimiter + 1);
 
-    // Put into YYYY-MM-DD form
-    return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
-  } elseif ((mb_substr_count($data, '/') == 2) && ($locale == 'US')) {
-      // Assume format is M/D/Y
-    $iFirstDelimiter = strpos($data, '/');
-      $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
+        // Put into YYYY-MM-DD form
+        return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
+    } elseif ((mb_substr_count($data, '/') == 2) && ($locale == 'US')) {
+        // Assume format is M/D/Y
+        $iFirstDelimiter = strpos($data, '/');
+        $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
 
-    // Parse the month
-    $sMonth = mb_substr($data, 0, $iFirstDelimiter);
+        // Parse the month
+        $sMonth = mb_substr($data, 0, $iFirstDelimiter);
 
-    // Parse the day
-    $sDay = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
+        // Parse the day
+        $sDay = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
 
-    // Parse the year
-    $sYear = mb_substr($data, $iSecondDelimiter + 1);
+        // Parse the year
+        $sYear = mb_substr($data, $iSecondDelimiter + 1);
 
-    // Put into YYYY-MM-DD form
-    return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
-  } elseif (mb_substr_count($data, '/') == 2) {
-      // Assume format is D/M/Y
-    $iFirstDelimiter = strpos($data, '/');
-      $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
+        // Put into YYYY-MM-DD form
+        return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
+    } elseif (mb_substr_count($data, '/') == 2) {
+        // Assume format is D/M/Y
+        $iFirstDelimiter = strpos($data, '/');
+        $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
 
-    // Parse the day
-    $sDay = mb_substr($data, 0, $iFirstDelimiter);
+        // Parse the day
+        $sDay = mb_substr($data, 0, $iFirstDelimiter);
 
-    // Parse the month
-    $sMonth = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
+        // Parse the month
+        $sMonth = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
 
-    // Parse the year
-    $sYear = mb_substr($data, $iSecondDelimiter + 1);
+        // Parse the year
+        $sYear = mb_substr($data, $iSecondDelimiter + 1);
 
-    // Put into YYYY-MM-DD form
-    return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
-  }
-
-  // If we made it this far it means the above logic was unable to parse the date.
-  // Now try to parse using the function strtotime().  The strtotime() function does
-  // not gracefully handle dates outside the range 1/1/1970 to 1/19/2038.  For this
-  // reason consider strtotime() as a function of last resort.
-  $timeStamp = strtotime($data);
-    if ($timeStamp == false || $timeStamp <= 0) {
-        // Some Operating Sytems and older versions of PHP do not gracefully handle
-    // negative timestamps.  Bail if the timestamp is negative.
-    return false;
+        // Put into YYYY-MM-DD form
+        return assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
     }
 
-  // Now use the date() function to convert timestamp into YYYY-MM-DD
-  $dateString = date('Y-m-d', $timeStamp);
+    // If we made it this far it means the above logic was unable to parse the date.
+    // Now try to parse using the function strtotime().  The strtotime() function does
+    // not gracefully handle dates outside the range 1/1/1970 to 1/19/2038.  For this
+    // reason consider strtotime() as a function of last resort.
+    $timeStamp = strtotime($data);
+    if ($timeStamp == false || $timeStamp <= 0) {
+        // Some Operating Sytems and older versions of PHP do not gracefully handle
+        // negative timestamps.  Bail if the timestamp is negative.
+        return false;
+    }
+
+    // Now use the date() function to convert timestamp into YYYY-MM-DD
+    $dateString = date('Y-m-d', $timeStamp);
 
     if (strlen($dateString) != 10) {
         // Common sense says we have a 10 charater string.  If not, something is wrong
-    // and it's time to bail.
-    return false;
+        // and it's time to bail.
+        return false;
     }
 
     if ($dateString > '1970-01-01' && $dateString < '2038-01-19') {
         // Success!
-    return $dateString;
+        return $dateString;
     }
 
-  // Should not have made it this far.  Something is wrong so bail.
-  return false;
+    // Should not have made it this far.  Something is wrong so bail.
+    return false;
 }
 
 // Processes and Validates custom field data based on its type.
@@ -1331,6 +1340,10 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
     switch ($type) {
     // Validate a date field
     case 2:
+        // this part will work with each date format
+        // Philippe logel
+        $data = InputUtils::FilterDate($data);
+        
       if (strlen($data) > 0) {
           $dateString = parseAndValidateDate($data);
           if ($dateString === false) {
@@ -1528,7 +1541,7 @@ function formatNumber($iNumber, $sMode = 'integer')
 function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
 {
     if ($bFlags == 1 || $per_BirthYear == '') {  //Person Would Like their Age Hidden or BirthYear is not known.
-    $birthYear = '1000';
+        $birthYear = '1000';
     } else {
         $birthYear = $per_BirthYear;
     }
@@ -1556,7 +1569,7 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
             }
         }
     } elseif (is_numeric($birthYear) && $birthYear != 1000) {  //Person Would Like Their Age Hidden
-    $dBirthDate = $birthYear;
+        $dBirthDate = $birthYear;
     } else {
         $dBirthDate = '';
     }
@@ -1655,7 +1668,7 @@ function createTimeDropdown($start, $stop, $mininc, $hoursel, $minsel)
 function FindMemberClassID()
 {
     //Get Classifications
-  $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
+    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
     $rsClassifications = RunQuery($sSQL);
 
     while ($aRow = mysqli_fetch_array($rsClassifications)) {
@@ -1707,112 +1720,112 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
     if ($checkEmailDebug) {
         echo '<pre>';
     }
-  // Check syntax with regex
-  if (preg_match('/^([a-zA-Z0-9\._\+-]+)\@((\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,7}|[0-9]{1,3})(\]?))$/', $email, $matches)) {
-      $user = $matches[1];
-      $domain = $matches[2];
-    // Check availability of DNS MX records
-    if ($domainCheck && function_exists('checkdnsrr')) {
-        // Construct array of available mailservers
-      if (getmxrr($domain, $mxhosts, $mxweight)) {
-          for ($i = 0; $i < count($mxhosts); $i++) {
-              $mxs[$mxhosts[$i]] = $mxweight[$i];
-          }
-          asort($mxs);
-          $mailers = array_keys($mxs);
-      } elseif (checkdnsrr($domain, 'A')) {
-          $mailers[0] = gethostbyname($domain);
-      } else {
-          $mailers = [];
-      }
-        $total = count($mailers);
-      // Query each mailserver
-      if ($total > 0 && $verify) {
-          // Check if mailers accept mail
-        for ($n = 0; $n < $total; $n++) {
-            // Check if socket can be opened
-          if ($checkEmailDebug) {
-              echo "Checking server $mailers[$n]...\n";
-          }
-            $connect_timeout = 2;
-            $errno = 0;
-            $errstr = 0;
-            $probe_address = SystemConfig::getValue('sToEmailAddress');
-          // Try to open up socket
-          if ($sock = @fsockopen($mailers[$n], 25, $errno, $errstr, $connect_timeout)) {
-              $response = fgets($sock);
-              if ($checkEmailDebug) {
-                  echo "Opening up socket to $mailers[$n]... Succes!\n";
-              }
-              stream_set_timeout($sock, 5);
-              $meta = stream_get_meta_data($sock);
-              if ($checkEmailDebug) {
-                  echo "$mailers[$n] replied: $response\n";
-              }
-              $cmds = [
+    // Check syntax with regex
+    if (preg_match('/^([a-zA-Z0-9\._\+-]+)\@((\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,7}|[0-9]{1,3})(\]?))$/', $email, $matches)) {
+        $user = $matches[1];
+        $domain = $matches[2];
+        // Check availability of DNS MX records
+        if ($domainCheck && function_exists('checkdnsrr')) {
+            // Construct array of available mailservers
+            if (getmxrr($domain, $mxhosts, $mxweight)) {
+                for ($i = 0; $i < count($mxhosts); $i++) {
+                    $mxs[$mxhosts[$i]] = $mxweight[$i];
+                }
+                asort($mxs);
+                $mailers = array_keys($mxs);
+            } elseif (checkdnsrr($domain, 'A')) {
+                $mailers[0] = gethostbyname($domain);
+            } else {
+                $mailers = [];
+            }
+            $total = count($mailers);
+            // Query each mailserver
+            if ($total > 0 && $verify) {
+                // Check if mailers accept mail
+                for ($n = 0; $n < $total; $n++) {
+                    // Check if socket can be opened
+                    if ($checkEmailDebug) {
+                        echo "Checking server $mailers[$n]...\n";
+                    }
+                    $connect_timeout = 2;
+                    $errno = 0;
+                    $errstr = 0;
+                    $probe_address = SystemConfig::getValue('sToEmailAddress');
+                    // Try to open up socket
+                    if ($sock = @fsockopen($mailers[$n], 25, $errno, $errstr, $connect_timeout)) {
+                        $response = fgets($sock);
+                        if ($checkEmailDebug) {
+                            echo "Opening up socket to $mailers[$n]... Succes!\n";
+                        }
+                        stream_set_timeout($sock, 5);
+                        $meta = stream_get_meta_data($sock);
+                        if ($checkEmailDebug) {
+                            echo "$mailers[$n] replied: $response\n";
+                        }
+                        $cmds = [
               'HELO '.SystemConfig::getValue('sSMTPHost'), // Be sure to set this correctly!
               "MAIL FROM: <$probe_address>",
               "RCPT TO: <$email>",
               'QUIT',
             ];
-            // Hard error on connect -> break out
-            if (!$meta['timed_out'] && !preg_match('/^2\d\d[ -]/', $response)) {
-                $error = "Error: $mailers[$n] said: $response\n";
-                break;
+                        // Hard error on connect -> break out
+                        if (!$meta['timed_out'] && !preg_match('/^2\d\d[ -]/', $response)) {
+                            $error = "Error: $mailers[$n] said: $response\n";
+                            break;
+                        }
+                        foreach ($cmds as $cmd) {
+                            $before = microtime(true);
+                            fwrite($sock, "$cmd\r\n");
+                            $response = fgets($sock, 4096);
+                            $t = 1000 * (microtime(true) - $before);
+                            if ($checkEmailDebug) {
+                                echo htmlentities("$cmd\n$response").'('.sprintf('%.2f', $t)." ms)\n";
+                            }
+                            if (!$meta['timed_out'] && preg_match('/^5\d\d[ -]/', $response)) {
+                                $error = "Unverified address: $mailers[$n] said: $response";
+                                break 2;
+                            }
+                        }
+                        fclose($sock);
+                        if ($checkEmailDebug) {
+                            echo "Succesful communication with $mailers[$n], no hard errors, assuming OK";
+                        }
+                        break;
+                    } elseif ($n == $total - 1) {
+                        $error = "None of the mailservers listed for $domain could be contacted";
+                    }
+                }
+            } elseif ($total <= 0) {
+                $error = "No usable DNS records found for domain '$domain'";
             }
-              foreach ($cmds as $cmd) {
-                  $before = microtime(true);
-                  fwrite($sock, "$cmd\r\n");
-                  $response = fgets($sock, 4096);
-                  $t = 1000 * (microtime(true) - $before);
-                  if ($checkEmailDebug) {
-                      echo htmlentities("$cmd\n$response").'('.sprintf('%.2f', $t)." ms)\n";
-                  }
-                  if (!$meta['timed_out'] && preg_match('/^5\d\d[ -]/', $response)) {
-                      $error = "Unverified address: $mailers[$n] said: $response";
-                      break 2;
-                  }
-              }
-              fclose($sock);
-              if ($checkEmailDebug) {
-                  echo "Succesful communication with $mailers[$n], no hard errors, assuming OK";
-              }
-              break;
-          } elseif ($n == $total - 1) {
-              $error = "None of the mailservers listed for $domain could be contacted";
-          }
         }
-      } elseif ($total <= 0) {
-          $error = "No usable DNS records found for domain '$domain'";
-      }
+    } else {
+        $error = 'Address syntax not correct';
     }
-  } else {
-      $error = 'Address syntax not correct';
-  }
     if ($checkEmailDebug) {
         echo '</pre>';
     }
-  //echo "</pre>";
-  if ($return_errors) {
-      // Give back details about the error(s).
-    // Return FALSE if there are no errors.
-    // Keep this in mind when using it like:
-    // if(checkEmail($addr)) {
-    // Because of this strange behaviour this
-    // is not default ;-)
-    if (isset($error)) {
-        return htmlentities($error);
+    //echo "</pre>";
+    if ($return_errors) {
+        // Give back details about the error(s).
+        // Return FALSE if there are no errors.
+        // Keep this in mind when using it like:
+        // if(checkEmail($addr)) {
+        // Because of this strange behaviour this
+        // is not default ;-)
+        if (isset($error)) {
+            return htmlentities($error);
+        } else {
+            return false;
+        }
     } else {
-        return false;
+        // 'Old' behaviour, simple to understand
+        if (isset($error)) {
+            return false;
+        } else {
+            return true;
+        }
     }
-  } else {
-      // 'Old' behaviour, simple to understand
-    if (isset($error)) {
-        return false;
-    } else {
-        return true;
-    }
-  }
 }
 
 function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSearchTerm = 0)
@@ -1835,19 +1848,19 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
 
     $rsFamilies = RunQuery($sSQL);
 
-  // Build Criteria for Head of Household
-  if (!$sDirRoleHead) {
-      $sDirRoleHead = '1';
-  }
+    // Build Criteria for Head of Household
+    if (!$sDirRoleHead) {
+        $sDirRoleHead = '1';
+    }
     $head_criteria = ' per_fmr_ID = '.$sDirRoleHead;
-  // If more than one role assigned to Head of Household, add OR
-  $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
-  // Add Spouse to criteria
-  if (intval($sDirRoleSpouse) > 0) {
-      $head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
-  }
-  // Build array of Head of Households and Spouses with fam_ID as the key
-  $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND ('.$head_criteria.') ORDER BY per_fam_ID';
+    // If more than one role assigned to Head of Household, add OR
+    $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
+    // Add Spouse to criteria
+    if (intval($sDirRoleSpouse) > 0) {
+        $head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
+    }
+    // Build array of Head of Households and Spouses with fam_ID as the key
+    $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND ('.$head_criteria.') ORDER BY per_fam_ID';
     $rs_head = RunQuery($sSQL);
     $aHead = [];
     while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
@@ -1875,7 +1888,7 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
 function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse)
 {
     //Get Families for the drop-down
-  $familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
+    $familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
     foreach ($familyArray as $fam_ID => $fam_Data) {
         $html .= '<option value="'.$fam_ID.'"';
         if ($iFamily == $fam_ID) {
@@ -1909,18 +1922,18 @@ function requireUserGroupMembership($allowedRoles = null)
         throw new Exception('Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.');
     }
     if ($_SESSION[$allowedRoles] || $_SESSION['bAdmin']) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
-    return true;
-    } elseif (is_array($allowedRoles)) {  //sometimes we might have an array of allowed roles.
-    foreach ($allowedRoles as $role) {
-        if ($_SESSION[$role]) {
-            // The current allowed role is in the user's session variable
         return true;
+    } elseif (is_array($allowedRoles)) {  //sometimes we might have an array of allowed roles.
+        foreach ($allowedRoles as $role) {
+            if ($_SESSION[$role]) {
+                // The current allowed role is in the user's session variable
+                return true;
+            }
         }
     }
-    }
 
-  //if we get to this point in the code, then the user is not authorized.
-  throw new Exception('User is not authorized to access '.debug_backtrace()[1]['function'], 401);
+    //if we get to this point in the code, then the user is not authorized.
+    throw new Exception('User is not authorized to access '.debug_backtrace()[1]['function'], 401);
 }
 
 function random_color_part()

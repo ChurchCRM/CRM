@@ -4,12 +4,7 @@
 *  filename    : Reports/TaxReport.php
 *  last change : 2005-03-26
 *  description : Creates a PDF with all the tax letters for a particular calendar year.
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -468,7 +463,7 @@ if ($output == 'pdf') {
         $pdf->Output();
     }
 
-// Output a text file
+    // Output a text file
 // ##################
 } elseif ($output == 'csv') {
 
@@ -477,7 +472,7 @@ if ($output == 'pdf') {
     $eol = "\r\n";
 
     // Build headings row
-        preg_match('/SELECT (.*) FROM /i', $sSQL, $result);
+    preg_match('/SELECT (.*) FROM /i', $sSQL, $result);
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {

@@ -7,12 +7,7 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
@@ -34,15 +29,15 @@ if (!$_SESSION['bManageGroups']) {
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
   // Get the GroupID
-  $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
+    $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
     if (array_key_exists('GroupRole', $_POST)) {
         $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
     } else {
         $iGroupRole = 0;
     }
 
-  // Loop through the session array
-  $iCount = 0;
+    // Loop through the session array
+    $iCount = 0;
     while ($element = each($_SESSION['aPeopleCart'])) {
         $groupService->addUserToGroup($iGroupID, $_SESSION['aPeopleCart'][$element['key']], $iGroupRole);
         $iCount += 1;

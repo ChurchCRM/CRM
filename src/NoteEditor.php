@@ -5,12 +5,7 @@
  *  last change : 2003-01-07
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -53,62 +48,62 @@ if ($iPersonID > 0) {
 //Has the form been submitted?
 if (isset($_POST['Submit'])) {
     //Initialize the ErrorFlag
-  $bErrorFlag = false;
+    $bErrorFlag = false;
 
-  //Assign all variables locally
-  $iNoteID = InputUtils::LegacyFilterInput($_POST['NoteID'], 'int');
-    $sNoteText = $_POST['NoteText'];
+    //Assign all variables locally
+    $iNoteID = InputUtils::LegacyFilterInput($_POST['NoteID'], 'int');
+    $sNoteText = InputUtils::LegacyFilterInput($_POST['NoteText'], 'htmltext');
 
-  //If they didn't check the private box, set the value to 0
-  if (isset($_POST['Private'])) {
-      $bPrivate = 1;
-  } else {
-      $bPrivate = 0;
-  }
-
-  //Did they enter text for the note?
-  if ($sNoteText == '') {
-      $sNoteTextError = '<br><span style="color: red;">You must enter text for this note.</span>';
-      $bErrorFlag = true;
-  }
-
-  //Were there any errors?
-  if (!$bErrorFlag) {
-      //Are we adding or editing?
-    if ($iNoteID <= 0) {
-        $note = new Note();
-        $note->setPerId($iPersonID);
-        $note->setFamId($iFamilyID);
-        $note->setPrivate($bPrivate);
-        $note->setText($sNoteText);
-        $note->setType('note');
-        $note->setEntered($_SESSION['iUserID']);
-        $note->save();
+    //If they didn't check the private box, set the value to 0
+    if (isset($_POST['Private'])) {
+        $bPrivate = 1;
     } else {
-        $note = NoteQuery::create()->findPk($iNoteID);
-        $note->setPrivate($bPrivate);
-        $note->setText($sNoteText);
-        $note->setDateLastEdited(new DateTime());
-        $note->setEditedBy($_SESSION['iUserID']);
-        $note->save();
+        $bPrivate = 0;
     }
 
-    //Send them back to whereever they came from
-    Redirect($sBackPage);
-  }
+    //Did they enter text for the note?
+    if ($sNoteText == '') {
+        $sNoteTextError = '<br><span style="color: red;">You must enter text for this note.</span>';
+        $bErrorFlag = true;
+    }
+
+    //Were there any errors?
+    if (!$bErrorFlag) {
+        //Are we adding or editing?
+        if ($iNoteID <= 0) {
+            $note = new Note();
+            $note->setPerId($iPersonID);
+            $note->setFamId($iFamilyID);
+            $note->setPrivate($bPrivate);
+            $note->setText($sNoteText);
+            $note->setType('note');
+            $note->setEntered($_SESSION['iUserID']);
+            $note->save();
+        } else {
+            $note = NoteQuery::create()->findPk($iNoteID);
+            $note->setPrivate($bPrivate);
+            $note->setText($sNoteText);
+            $note->setDateLastEdited(new DateTime());
+            $note->setEditedBy($_SESSION['iUserID']);
+            $note->save();
+        }
+
+        //Send them back to whereever they came from
+        Redirect($sBackPage);
+    }
 } else {
     //Are we adding or editing?
-  if (isset($_GET['NoteID'])) {
-      //Get the NoteID from the querystring
-    $iNoteID = InputUtils::LegacyFilterInput($_GET['NoteID'], 'int');
-      $dbNote = NoteQuery::create()->findPk($iNoteID);
+    if (isset($_GET['NoteID'])) {
+        //Get the NoteID from the querystring
+        $iNoteID = InputUtils::LegacyFilterInput($_GET['NoteID'], 'int');
+        $dbNote = NoteQuery::create()->findPk($iNoteID);
 
-    //Assign everything locally
-    $sNoteText = $dbNote->getText();
-      $bPrivate = $dbNote->getPrivate();
-      $iPersonID = $dbNote->getPerId();
-      $iFamilyID = $dbNote->getFamId();
-  }
+        //Assign everything locally
+        $sNoteText = $dbNote->getText();
+        $bPrivate = $dbNote->getPrivate();
+        $iPersonID = $dbNote->getPerId();
+        $iFamilyID = $dbNote->getFamId();
+    }
 }
 
 require 'Include/Header.php';
