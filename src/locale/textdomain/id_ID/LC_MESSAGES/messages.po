@@ -7,36 +7,551 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: id\n"
 
-#: AutoPaymentDelete.php:67 Checkin.php:293 Checkin.php:376
-#: DepositSlipEditor.php:232 DonationFundEditor.php:156
-#: DonationFundEditor.php:186 EditEventAttendees.php:76
-#: ElectronicPaymentList.php:222 ElectronicPaymentList.php:288
-#: EventNames.php:305 FamilyCustomFieldsEditor.php:335
-#: FamilyCustomFieldsEditor.php:393 FamilyView.php:669 FamilyView.php:721
-#: FamilyView.php:780 FamilyView.php:917 FindDepositSlip.php:108
-#: FundRaiserEditor.php:204 ListEvents.php:250 PaddleNumList.php:60
-#: PersonCustomFieldsEditor.php:319 PersonCustomFieldsEditor.php:388
-#: PersonView.php:917 PledgeDelete.php:57 PropertyList.php:69
-#: PropertyList.php:110 PropertyTypeList.php:44 PropertyTypeList.php:65
-#: PropertyTypeList.php:67
+#: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
+#: Include/Functions.php:277
+msgid "Cannot execute query."
+msgstr "Tak Bisa Jalankan Pertanyaan."
+
+#: AutoPaymentDelete.php:18
+msgid "Confirm Delete Automatic payment"
+msgstr "Konfirmasi Hapus Pembayaran Otomatis"
+
+#: AutoPaymentDelete.php:62 Checkin.php:288 Checkin.php:371
+#: DepositSlipEditor.php:227 DonationFundEditor.php:151
+#: DonationFundEditor.php:181 EditEventAttendees.php:76
+#: ElectronicPaymentList.php:217 ElectronicPaymentList.php:282
+#: EventNames.php:300 FamilyCustomFieldsEditor.php:323
+#: FamilyCustomFieldsEditor.php:381 FamilyView.php:654 FamilyView.php:706
+#: FamilyView.php:765 FamilyView.php:902 FindDepositSlip.php:103
+#: FundRaiserEditor.php:199 ListEvents.php:246 PaddleNumList.php:55
+#: PersonCustomFieldsEditor.php:314 PersonCustomFieldsEditor.php:383
+#: PersonView.php:912 PledgeDelete.php:52 PropertyList.php:64
+#: PropertyList.php:105 PropertyTypeList.php:39 PropertyTypeList.php:60
+#: PropertyTypeList.php:62
 msgid "Delete"
 msgstr "Hapus"
 
-#: AutoPaymentDelete.php:68 AutoPaymentEditor.php:791 BatchWinnerEntry.php:116
-#: CanvassEditor.php:243 Checkin.php:172 Checkin.php:281 Checkin.php:294
-#: DirectoryReports.php:290 DonatedItemEditor.php:300 EventNames.php:234
-#: external/templates/verify/verify-family-info.php:155 FamilyEditor.php:1114
-#: FamilyView.php:916 FinancialReports.php:72 FundRaiserEditor.php:147
-#: GroupPropsEditor.php:172 GroupReports.php:87 GroupReports.php:156
-#: LettersAndLabels.php:77 ManageEnvelopes.php:139 MemberRoleChange.php:123
-#: MemberRoleChange.php:125 NoteDelete.php:71 NoteEditor.php:139
-#: PersonEditor.php:1138 PersonView.php:916 PledgeDelete.php:58
-#: PropertyEditor.php:173 PropertyTypeEditor.php:118 Register.php:60
-#: ReminderReport.php:56 SettingsIndividual.php:123 SettingsIndividual.php:169
-#: SettingsUser.php:111 SettingsUser.php:171
+#: AutoPaymentDelete.php:63 AutoPaymentEditor.php:786 BatchWinnerEntry.php:111
+#: CanvassEditor.php:238 Checkin.php:167 Checkin.php:276 Checkin.php:289
+#: DirectoryReports.php:285 DonatedItemEditor.php:295 EventNames.php:229
+#: external/templates/verify/verify-family-info.php:155 FamilyEditor.php:1117
+#: FamilyView.php:901 FinancialReports.php:67 FundRaiserEditor.php:142
+#: GroupPropsEditor.php:167 GroupReports.php:82 GroupReports.php:151
+#: LettersAndLabels.php:72 ManageEnvelopes.php:134 MemberRoleChange.php:118
+#: MemberRoleChange.php:120 NoteDelete.php:66 NoteEditor.php:134
+#: PersonEditor.php:1146 PersonView.php:911 PledgeDelete.php:53
+#: PropertyEditor.php:168 PropertyTypeEditor.php:113 Register.php:55
+#: ReminderReport.php:51 SettingsIndividual.php:111 SettingsIndividual.php:157
+#: SettingsUser.php:99 SettingsUser.php:159
 #: sundayschool/SundaySchoolDashboard.php:249
 #: sundayschool/SundaySchoolReports.php:231 TaxReport.php:54
-#: UserEditor.php:475 UserEditor.php:578 WhyCameEditor.php:104
+#: UserEditor.php:457 UserEditor.php:560 WhyCameEditor.php:104
 msgid "Cancel"
 msgstr "Batal"
+
+#: AutoPaymentEditor.php:128
+msgid "Automatic payment configuration for the "
+msgstr "Konfigurasi pembayaran otomatis untuk␣"
+
+#: AutoPaymentEditor.php:785 CanvassEditor.php:237 DepositSlipEditor.php:93
+#: DonatedItemEditor.php:291 FamilyEditor.php:645 FamilyEditor.php:729
+#: FamilyEditor.php:793 FamilyEditor.php:867 FamilyEditor.php:889
+#: FamilyEditor.php:920 FamilyEditor.php:1113 FundRaiserEditor.php:141
+#: GroupEditor.php:161 GroupPropsEditor.php:165 NoteEditor.php:132
+#: PaddleNumEditor.php:146 PersonEditor.php:586 PersonEditor.php:744
+#: PersonEditor.php:787 PersonEditor.php:1044 PersonEditor.php:1107
+#: PersonEditor.php:1142 PledgeEditor.php:685 PropertyEditor.php:168
+#: PropertyTypeEditor.php:111 UserEditor.php:456 UserPasswordChange.php:216
+#: WhyCameEditor.php:103
+msgid "Save"
+msgstr "Simpan"
+
+#: AutoPaymentEditor.php:803 BatchWinnerEntry.php:82 BatchWinnerEntry.php:94
+#: CSVImport.php:269 DirectoryReports.php:81 DonatedItemEditor.php:184
+#: DonatedItemEditor.php:235 eGive.php:340 FamilyEditor.php:1087
+#: GroupEditor.php:88 Include/CountryDropDown.php:6 Include/Functions.php:1083
+#: Include/Functions.php:1136 MapUsingGoogle.php:98 MapUsingGoogle.php:122
+#: PaddleNumEditor.php:175 PersonEditor.php:751 PersonEditor.php:767
+#: PersonEditor.php:1052 PrintView.php:244 PrintView.php:254
+#: SelectDelete.php:155 SelectList.php:34 SelectList.php:44 SelectList.php:60
+#: SelectList.php:1109 SelectList.php:1180
+msgid "Unassigned"
+msgstr "Belum Ditetapkan"
+
+#: AutoPaymentEditor.php:823
+msgid "Automatic payment type"
+msgstr "Jenis Pembayaran Otomatis"
+
+#: AutoPaymentEditor.php:853
+msgid "Payment amount"
+msgstr "Jumlah Pembayaran"
+
+#: AutoPaymentEditor.php:858
+msgid "Payment interval (months)"
+msgstr "Interval Pembayaran (bulan)"
+
+#: AutoPaymentEditor.php:866 CartToGroup.php:75 EditEventTypes.php:86
+#: EditEventTypes.php:98 EventNames.php:104 EventNames.php:116
+#: EventNames.php:161 GroupReports.php:47 GroupReports.php:142
+#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:147
+msgid "None"
+msgstr "Tidak ada"
+
+#: AutoPaymentEditor.php:879
+msgid "inactive"
+msgstr "Non-aktif"
+
+#: AutoPaymentEditor.php:913 CartToFamily.php:244 CSVExport.php:100
+#: CSVImport.php:217 DirectoryReports.php:249
+#: external/templates/registration/family-register.php:41 FamilyEditor.php:670
+#: PersonEditor.php:832 Register.php:43 queryparameteroptions_qpo.php:7
+msgid "City"
+msgstr "Kota"
+
+#: AutoPaymentEditor.php:918 CartToFamily.php:249 CSVExport.php:105
+#: CSVImport.php:218 DirectoryReports.php:253
+#: external/templates/registration/family-register.php:44 FamilyEditor.php:677
+#: PersonEditor.php:852 Register.php:44 queryparameteroptions_qpo.php:6
+msgid "State"
+msgstr "Provinsi"
+
+#: AutoPaymentEditor.php:929 CartToFamily.php:269 CSVExport.php:120
+#: CSVImport.php:220 FamilyEditor.php:697 PersonEditor.php:897 Register.php:46
+msgid "Country"
+msgstr "Negara"
+
+#: AutoPaymentEditor.php:935 ChurchCRM/Reports/PDF_Directory.php:312
+#: ChurchCRM/Reports/PDF_Directory.php:386
+#: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:261
+#: external/templates/registration/family-register-members.php:103
+#: Reports/DirectoryReport.php:283 Reports/GroupReport.php:119
+msgid "Phone"
+msgstr "Telepon"
+
+#: AutoPaymentEditor.php:941 CartToFamily.php:310 CartView.php:279
+#: ChurchCRM/Reports/PDF_Directory.php:321
+#: ChurchCRM/Reports/PDF_Directory.php:397
+#: ChurchCRM/Reports/PDF_Directory.php:454 CSVExport.php:140 CSVImport.php:224
+#: EditEventAttendees.php:42 EventAttendance.php:175
+#: external/templates/registration/family-register-members.php:83
+#: external/templates/verify/verify-family-info.php:81 FamilyEditor.php:769
+#: FamilyView.php:265 FamilyView.php:270 FamilyView.php:353
+#: GroupReports.php:127 PersonEditor.php:1004 PersonEditor.php:1006
+#: PersonView.php:303 PersonView.php:467 PrintView.php:274
+#: Reports/CanvassReports.php:242 Reports/ConfirmReportEmail.php:190
+#: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:183
+#: Reports/ConfirmReport.php:202 Reports/DirectoryReport.php:294
+#: Reports/GroupReport.php:133 sundayschool/SundaySchoolClassView.php:88
+#: sundayschool/SundaySchoolClassView.php:202 menuconfig_mcf.php:15
+#: queryparameteroptions_qpo.php:13
+msgid "Email"
+msgstr "Surel"
+
+#: AutoPaymentEditor.php:947 ElectronicPaymentList.php:208
+#: FinancialReports.php:262 FindDepositSlip.php:47 PledgeEditor.php:587
+msgid "Credit Card"
+msgstr "Kartu Kredit"
+
+#: AutoPaymentEditor.php:955
+msgid "Vanco Credit Card Method"
+msgstr "Metode Kartu Kredit Vanco"
+
+#: AutoPaymentEditor.php:964
+msgid "Expiration Month"
+msgstr "Bulan Kadaluarsa"
+
+#: AutoPaymentEditor.php:970
+msgid "Expiration Year"
+msgstr "Tahun Kadaluarsa"
+
+#: AutoPaymentEditor.php:976
+msgid "Bank Name"
+msgstr "Nama Bank"
+
+#: AutoPaymentEditor.php:982
+msgid "Bank Route Number"
+msgstr "Nomor Rute Bank"
+
+#: AutoPaymentEditor.php:988
+msgid "Bank Account Number"
+msgstr "Nomor Rekening Bank"
+
+#: AutoPaymentEditor.php:996
+msgid "Vanco Bank Account Method"
+msgstr "Metode Rekening Bank Vanco"
+
+#: BackupDatabase.php:40 Include/Footer.php:178
+msgid "Backup Database"
+msgstr "Backup Database"
+
+#: BackupDatabase.php:46
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Fungsi ini akan menolongmu secara manual backup database ChurchCRM."
+
+#: BackupDatabase.php:50
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+msgstr "Anda harus buat backup manual setidaknya seminggu sekali kecuali jika Anda sudah memiliki prosedur backup reguler."
+
+#: BackupDatabase.php:51
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Setelah unduh file backup, buatlah dua salinan. Letakkan salah satunya ke dalam lokasi yang sangat aman dan yang satu lagi di tempat aman diluar itu."
+
+#: BackupDatabase.php:52
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Jika peduli dengan kerahasiaan data dalam database ChurchCRM, Anda harus enkripsi data backup-nya jika hendak disimpan di tempat yang berpotensi diakses orang lain."
+
+#: BackupDatabase.php:53
+msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
+msgstr "Untuk keamanan backup tambahan, Anda dapat kirim data backup via akun surel di luar situs atau ke teman terpercaya. Akan tetapi, pastikan untuk gunakan enkripsi jika Anda melakukan ini."
+
+#: BackupDatabase.php:57
+msgid "Select archive type"
+msgstr "Pilih Jenis Arsip"
+
+#: BackupDatabase.php:59
+msgid "GZip"
+msgstr "GZip"
+
+#: BackupDatabase.php:64
+msgid "Uncompressed"
+msgstr "Tidak Terkompresi"
+
+#: BackupDatabase.php:65
+msgid "tar.gz (Include Photos)"
+msgstr "tar.gz (sertakan foto)"
+
+#: BackupDatabase.php:69
+msgid "Encrypt backup file with a password?"
+msgstr "Enkripsi file backup dengan kata sandi?"
+
+#: BackupDatabase.php:72
+msgid "Re-type Password"
+msgstr "Ketik Ulang Kata Sandi"
+
+#: BackupDatabase.php:76
+msgid "Generate and Download Backup"
+msgstr "Hasilkan dan Unduh Backup"
+
+#: BackupDatabase.php:77
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Hasilkan dan Kirim ke Penyimpanan Eksternal"
+
+#: BatchWinnerEntry.php:34 FundRaiserEditor.php:153
+msgid "Batch Winner Entry"
+msgstr "Masukkan Sekaligus Pemenang"
+
+#: BatchWinnerEntry.php:74
+msgid "Winner"
+msgstr "Pemenang"
+
+#: BatchWinnerEntry.php:75
+msgid "Price"
+msgstr "Hadiah"
+
+#: BatchWinnerEntry.php:110
+msgid "Enter Winners"
+msgstr "Masukkan para Pemenang"
+
+#: CartView.php:112 CSVExport.php:52
+msgid "CSV Export"
+msgstr "Ekspor CSV"
+
+#: CSVExport.php:60
+msgid "Field Selection"
+msgstr "Pilih Bidang"
+
+#: AutoPaymentEditor.php:895 CSVExport.php:64 CSVImport.php:211
+#: external/templates/registration/family-register-members.php:73
+#: external/templates/verify/enter-info.php:25 ManageEnvelopes.php:161
+#: PersonEditor.php:637 sundayschool/SundaySchoolDashboard.php:194
+msgid "Last Name"
+msgstr "Nama Belakang"
+
+#: CSVExport.php:65
+msgid "Required"
+msgstr "Wajib"
+
+#: AutoPaymentEditor.php:889 CSVExport.php:75 CSVImport.php:209
+#: external/templates/registration/family-register-members.php:69
+#: external/templates/verify/enter-info.php:21 PersonEditor.php:615
+#: sundayschool/SundaySchoolDashboard.php:193
+msgid "First Name"
+msgstr "Nama Depan"
+
+#: CSVExport.php:80 CSVImport.php:210 PersonEditor.php:626
+msgid "Middle Name"
+msgstr "Nama Tengah"
+
+#: AutoPaymentEditor.php:924 BackupDatabase.php:62 CartToFamily.php:261
+#: CSVExport.php:110 CSVImport.php:219 DirectoryReports.php:257
+#: external/templates/registration/family-register.php:51
+#: external/templates/verify/enter-info.php:29 FamilyEditor.php:687
+#: PersonEditor.php:875 Register.php:45
+msgid "Zip"
+msgstr "zip"
+
+#: CSVExport.php:115
+msgid "Envelope"
+msgstr "Sampul"
+
+#: ChurchCRM/Reports/PDF_Directory.php:400
+#: ChurchCRM/Reports/PDF_Directory.php:457 CSVExport.php:145
+#: PersonView.php:317 Reports/DirectoryReport.php:297
+msgid "Work/Other Email"
+msgstr "Surel Kerja/Lainnya"
+
+#: CSVExport.php:150 CSVExport.php:355 CSVImport.php:227 PersonEditor.php:1065
+#: PrintView.php:284
+msgid "Membership Date"
+msgstr "Tanggal Keanggotaan"
+
+#: CSVExport.php:155
+msgid "Birth / Anniversary Date"
+msgstr "Tanggal Lahir / Ulang Tahun"
+
+#: CSVExport.php:160
+msgid "Age / Years Married"
+msgstr "Umur / Tahun Menikah"
+
+#: CartView.php:282 CSVExport.php:165 CSVExport.php:286 OptionManager.php:61
+#: PersonEditor.php:749 PrintView.php:249 queryparameters_qrp.php:5
+msgid "Family Role"
+msgstr "Peran Keluarga"
+
+#: CSVExport.php:168
+msgid "Depends whether using person or family output method"
+msgstr "Tergantung apakah menggunakan metode produksi pribadi atau keluarga"
+
+#: CSVExport.php:181
+msgid "Custom Field Selection"
+msgstr "Pilih Bidang Khusus"
+
+#: CSVExport.php:189
+msgid "Custom Person Fields"
+msgstr "Bidang Pribadi Khusus"
+
+#: CSVExport.php:207
+msgid "Custom Family Fields"
+msgstr "Bidang Keluarga Khusus"
+
+#: CSVExport.php:234 FinancialReports.php:106
+msgid "Filters"
+msgstr "Penyaring"
+
+#: CSVExport.php:240
+msgid "Records to export"
+msgstr "File-file yang diekspor"
+
+#: CSVExport.php:249
+msgid "Based on filters below.."
+msgstr "Berdasarkan filter di bawah .."
+
+#: CSVExport.php:252
+msgid "People in Cart (filters ignored)"
+msgstr "Orang dalam Keranjang (filter diabaikan)"
+
+#: CSVExport.php:278 CSVExport.php:303 CSVExport.php:339
+#: DirectoryReports.php:79 DirectoryReports.php:97 DirectoryReports.php:115
+#: DirectoryReports.php:133 DirectoryReports.php:152 FinancialReports.php:257
+msgid "Use Ctrl Key to select multiple"
+msgstr "Gunakan Ctrl Key untuk pilih banyak"
+
+#: CSVExport.php:320
+msgid "Don't Filter"
+msgstr "Jangan Saring"
+
+#: ChurchCRM/Service/DashboardService.php:62 CSVExport.php:321
+#: external/templates/registration/family-register-members.php:59
+#: FamilyEditor.php:988 PersonEditor.php:599 PrintView.php:224
+#: PrintView.php:343 SelectList.php:570 SelectList.php:1151
+#: queryparameteroptions_qpo.php:2
+msgid "Male"
+msgstr "Pria"
+
+#: ChurchCRM/Service/DashboardService.php:65 CSVExport.php:322
+#: external/templates/registration/family-register-members.php:60
+#: FamilyEditor.php:991 PersonEditor.php:602 PrintView.php:227
+#: PrintView.php:343 SelectList.php:576 SelectList.php:1152
+#: queryparameteroptions_qpo.php:3
+msgid "Female"
+msgstr "Wanita"
+
+#: CSVExport.php:331 DirectoryReports.php:95
+msgid "Group Membership"
+msgstr "Keanggotaan Kelompok"
+
+#: CSVExport.php:363 CSVExport.php:380 CSVExport.php:397 CSVExport.php:414
+msgid "From:"
+msgstr "Dari:"
+
+#: CSVExport.php:364 CSVExport.php:381 CSVExport.php:398 CSVExport.php:415
+msgid "To:"
+msgstr "ke:"
+
+#: CSVExport.php:372
+msgid "Birthday Date"
+msgstr "Tanggal Lahir"
+
+#: Reports/ConfirmReportEmail.php:154 Reports/ConfirmReport.php:150
+msgid "Anniversary Date"
+msgstr "Tanggal Jadian"
+
+#: CSVExport.php:427 FinancialReports.php:321
+msgid "Output Method:"
+msgstr "Metode Hasil:"
+
+#: CSVExport.php:431
+msgid "CSV Individual Records"
+msgstr "Record Individu CSV"
+
+#: CSVExport.php:432
+msgid "CSV Combine Families"
+msgstr "CSV Gabungkan Keluarga"
+
+#: CSVExport.php:433
+msgid "Add Individuals to Cart"
+msgstr "Tambahkan Individu ke Keranjang."
+
+#: CSVExport.php:436
+msgid "Skip records with incomplete mail address"
+msgstr "Lewati record dengan alamat surat yang tidak lengkap"
+
+#: CSVExport.php:438
+msgid "Create File"
+msgstr "Buat File"
+
+#: CSVImport.php:126
+msgid "No file selected for upload."
+msgstr "Tidak ada file yang dipilih untuk diunggah."
+
+#: CSVImport.php:152
+msgid "Total number of rows in the CSV file:"
+msgstr "Total Baris dalam File CSV:"
+
+#: CSVImport.php:207
+msgid "Ignore this Field"
+msgstr "Abaikan Area Ini"
+
+#: CSVExport.php:70 CSVImport.php:208 DonatedItemEditor.php:206
+#: FindFundRaiser.php:237 FundRaiserEditor.php:168 FundRaiserEditor.php:194
+#: PersonEditor.php:606
+msgid "Title"
+msgstr "Judul"
+
+#: CSVExport.php:85 CSVImport.php:212 FamilyEditor.php:940
+#: PersonEditor.php:648
+msgid "Suffix"
+msgstr "Akhiran"
+
+#: CSVExport.php:311 CSVImport.php:213 FamilyEditor.php:941
+#: PersonEditor.php:593 PrintView.php:218 PrintView.php:318
+#: sundayschool/SundaySchoolClassView.php:177 queryparameters_qrp.php:4
+msgid "Gender"
+msgstr "Kelamin"
+
+#: CSVImport.php:214
+msgid "Donation Envelope"
+msgstr "Amplop Donasi"
+
+#: CartToFamily.php:280 CSVExport.php:125 CSVImport.php:221
+#: EditEventAttendees.php:43 EventAttendance.php:176
+#: external/templates/registration/family-register-done.php:30
+#: external/templates/registration/family-register.php:68
+#: external/templates/verify/verify-family-info.php:28
+#: external/templates/verify/verify-family-info.php:75 FamilyEditor.php:735
+#: FamilyList.php:45 FamilyView.php:247 GroupReports.php:124
+#: PersonEditor.php:930 PersonEditor.php:932 PersonView.php:298
+#: PrintView.php:179 Reports/ConfirmReportEmail.php:139
+#: Reports/ConfirmReport.php:135 SelectList.php:976 SelectList.php:977
+#: SelectList.php:1052 sundayschool/SundaySchoolClassView.php:204
+#: queryparameteroptions_qpo.php:8
+msgid "Home Phone"
+msgstr "Telepon Rumah"
+
+#: CartToFamily.php:290 CSVExport.php:130 CSVImport.php:222
+#: external/templates/verify/verify-family-info.php:77 FamilyEditor.php:747
+#: FamilyView.php:253 GroupReports.php:125 PersonEditor.php:953
+#: PersonEditor.php:955 PersonView.php:312 PrintView.php:184
+#: Reports/ConfirmReportEmail.php:237 Reports/ConfirmReport.php:239
+#: SelectList.php:979 SelectList.php:980 SelectList.php:1052
+msgid "Work Phone"
+msgstr "Telepon Kantor"
+
+#: CartToFamily.php:300 CSVExport.php:135 CSVImport.php:223
+#: external/templates/verify/verify-family-info.php:79 FamilyEditor.php:757
+#: FamilyView.php:259 PersonEditor.php:978 PersonEditor.php:980
+#: PersonView.php:293 PrintView.php:189 SelectList.php:982 SelectList.php:983
+#: SelectList.php:1052
+msgid "Mobile Phone"
+msgstr "Telepon Selular"
+
+#: CSVImport.php:225 PersonEditor.php:1023 PrintView.php:279
+msgid "Work / Other Email"
+msgstr "Email Kerja / Lainnya"
+
+#: CSVImport.php:226 PersonView.php:277 PrintView.php:233
+#: sundayschool/SundaySchoolClassView.php:200
+#: sundayschool/SundaySchoolDashboard.php:195
+msgid "Birth Date"
+msgstr "Tanggal Lahir"
+
+#: CartToFamily.php:210 CSVImport.php:228 DirectoryReports.php:172
+#: external/templates/verify/verify-family-info.php:35 FamilyEditor.php:803
+#: FamilyView.php:234
+msgid "Wedding Date"
+msgstr "Tanggal Pernikahan"
+
+#: CSVImport.php:237
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Abaikan baris ke-1 CSV (jaga header)"
+
+#: CSVImport.php:242
+msgid "Make Family records based on last name and address"
+msgstr "Buat Record Keluarga dengan nama belakang dan alamat"
+
+#: CSVImport.php:248
+msgid "Patriarch"
+msgstr "Kepala Keluarga"
+
+#: CSVImport.php:249
+msgid "Matriarch"
+msgstr "Ibu Kepala Keluarga"
+
+#: CSVImport.php:251
+msgid "Family Type: used with Make Family records... option above"
+msgstr "Tipe Keluarga: digunakan dengan Record Membut Keluarga ... pilihan di atas"
+
+#: CSVImport.php:258
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "CATATAN: Tanda pemisah (tanda hubung, dll.) atau kurang dari itu tidak masalah"
+
+#: CSVImport.php:263
+msgid "Default country if none specified otherwise"
+msgstr "Set Negara secara tomatis jika tidak ditentukan"
+
+#: CartView.php:281 CSVExport.php:261 CSVImport.php:279 FamilyEditor.php:946
+#: FinancialReports.php:115 MembersDashboard.php:333 OptionManager.php:68
+#: PersonEditor.php:1050 PrintView.php:289 queryparameters_qrp.php:19
+msgid "Classification"
+msgstr "Penggolongan"
+
+#: CSVImport.php:281
+msgid "Perform Import"
+msgstr "Lakukan Impor"
+
+#: CSVImport.php:801
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "KESALAHAN: file CSV yang diunggah tidak ada lagi!"
+
+#: CSVImport.php:819
+msgid "Data Cleared Successfully!"
+msgstr "Data Berhasil Dibersihkan!"
+
+#: CSVImport.php:821
+msgid "Please select the confirmation checkbox"
+msgstr "Silahkan Pilih kotak centang konfirmasi"
+
+#: CSVImport.php:830
+msgid "Upload CSV File"
+msgstr "Unggah File CSV"
 
