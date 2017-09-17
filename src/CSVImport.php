@@ -110,7 +110,7 @@ require 'Include/Header.php'; ?>
 
 <div class="box">
 <div class="box-header">
-<h3 class="box-title"><?= gettext('Import Data')?></h3>
+   <h3 class="box-title"><?= gettext('Import Data')?></h3>
 </div>
 <div class="box-body">
 
@@ -145,8 +145,7 @@ if (isset($_POST['UploadCSV'])) {
         }
         rewind($pFile);
 
-        // create the form
-        ?>
+        // create the form?>
         <form method="post" action="CSVImport.php">
 
         <?php
@@ -824,8 +823,7 @@ if (isset($_POST['Clear'])) {
 }
 
 if ($iStage == 1) {
-    // Display the select file form
-    ?>
+    // Display the select file form?>
         <p style="color: red"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
         <input class="icTinyButton" type="file" name="CSVfile"><br/>

@@ -3,8 +3,8 @@ use ChurchCRM\dto\SystemConfig;
 
 try {
     //there is a chance this could throw an exception if the DB has not yet been set up
-  //catch and hide the exception
-  $googleTrackingID = SystemConfig::getValue('sGoogleTrackingID');
+    //catch and hide the exception
+    $googleTrackingID = SystemConfig::getValue('sGoogleTrackingID');
     if (!empty($googleTrackingID)) {
         ?>
       <script>

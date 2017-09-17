@@ -93,11 +93,10 @@ $numRows = mysqli_num_rows($rsOpps);
         for ($r = 1; $r <= $numRows; $r++) {
             $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
             extract($aRow);
-//          foreach($aRow as $t)echo "$t\n\r";
-          ?>
+            //          foreach($aRow as $t)echo "$t\n\r";?>
           <option value="<?php echo $type_id ?>" <?php if ($type_id == $eType) {
-              echo 'selected';
-          } ?>><?= $type_name ?></option>
+                echo 'selected';
+            } ?>><?= $type_name ?></option>
           <?php
         }
          ?>
@@ -168,35 +167,35 @@ foreach ($allMonths as $mKey => $mVal) {
         $sSQL .= '';
     } else {
         //$sSQL .= " WHERE (TO_DAYS(event_start_date) - TO_DAYS(now()) < 30)";
-                $sSQL .= ' WHERE t1.event_type = t2.type_id'.$eTypeSQL.' AND MONTH(t1.event_start) = '.$mVal." AND YEAR(t1.event_start)=$EventYear";
+        $sSQL .= ' WHERE t1.event_type = t2.type_id'.$eTypeSQL.' AND MONTH(t1.event_start) = '.$mVal." AND YEAR(t1.event_start)=$EventYear";
     }
     $sSQL .= ' ORDER BY t1.event_start ';
 
     $rsOpps = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsOpps);
     $aAvgRows = $numRows;
-        // Create arrays of the fundss.
-        for ($row = 1; $row <= $numRows; $row++) {
-            $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-            extract($aRow);
+    // Create arrays of the fundss.
+    for ($row = 1; $row <= $numRows; $row++) {
+        $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
+        extract($aRow);
 
-            $aEventID[$row] = $event_id;
-            $aEventType[$row] = $event_typename;
-            $aEventTitle[$row] = htmlentities(stripslashes($event_title), ENT_NOQUOTES, 'UTF-8');
-            $aEventDesc[$row] = htmlentities(stripslashes($event_desc), ENT_NOQUOTES, 'UTF-8');
-            $aEventText[$row] = htmlentities(stripslashes($event_text), ENT_NOQUOTES, 'UTF-8');
-            $aEventStartDateTime[$row] = $event_start;
-            $aEventEndDateTime[$row] = $event_end;
-            $aEventStatus[$row] = $inactive;
-                // get the list of attend-counts that exists in event_attend for this
-                $attendSQL = "SELECT * FROM event_attend WHERE event_id=$event_id";
-            $attOpps = RunQuery($attendSQL);
-            if ($attOpps) {
-                $attNumRows[$row] = mysqli_num_rows($attOpps);
-            } else {
-                $attNumRows[$row] = 0;
-            }
+        $aEventID[$row] = $event_id;
+        $aEventType[$row] = $event_typename;
+        $aEventTitle[$row] = htmlentities(stripslashes($event_title), ENT_NOQUOTES, 'UTF-8');
+        $aEventDesc[$row] = htmlentities(stripslashes($event_desc), ENT_NOQUOTES, 'UTF-8');
+        $aEventText[$row] = htmlentities(stripslashes($event_text), ENT_NOQUOTES, 'UTF-8');
+        $aEventStartDateTime[$row] = $event_start;
+        $aEventEndDateTime[$row] = $event_end;
+        $aEventStatus[$row] = $inactive;
+        // get the list of attend-counts that exists in event_attend for this
+        $attendSQL = "SELECT * FROM event_attend WHERE event_id=$event_id";
+        $attOpps = RunQuery($attendSQL);
+        if ($attOpps) {
+            $attNumRows[$row] = mysqli_num_rows($attOpps);
+        } else {
+            $attNumRows[$row] = 0;
         }
+    }
 
     if ($numRows > 0) {
         ?>
