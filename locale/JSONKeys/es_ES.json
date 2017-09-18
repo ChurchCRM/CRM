@@ -2129,5 +2129,22 @@
     "Pending Self Verify": "Auto Verificaciones Pendientes",
     "Families with valid self verify links": "Familias con enlaces de auto verificación validos",
     "Families Self Registration": "Auto Registro de Familias",
-    "Self Verify": "Auto Verificar"
+    "Self Verify": "Auto Verificar",
+    "Indonesian - Indonesia": "Indonesio - Indonesia",
+    "POST to cart requires a Persons array, FamilyID, or GroupID": "POST a separador requiere un arreglo de Personas, ID de Familia o ID de Grupo",
+    "records(s) successfully added to selected Group.": "registro(s) agregados exitosamente al Grupo seleccionado",
+    "To export to another For european CharSet use ;": "Para exportar hacia otro Para caracteres europeos use ;",
+    "Default is UTF-8, For european CharSet use Windows-1252 for example for French language.": "UTF-8 por defecto, Para caracteres euripeos use Windows-1252 por ejemplo para Francés",
+    "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example.": "Para definir la fecha en el Selector de Fechas, por defecto: yyyy-mm-dd, por ejemplo en Francés: dd/mm/yyyy.",
+    "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example.": "Para definir la fecha en el Selector de Fechas, por defecto: Y-m-d, por ejemplo en Francés: d/m/Y.",
+    "Comma Separated list of PersonIDs of people to notify when a new family or person is added": "Lista separada por comas de Id de Persona para notificar cuando una nueva familia o persona es agregada.",
+    "Allow unauthenticated reads of events from the external calendar API": "Permitir lecturas no autentificadas de eventos de la API del calendario externo",
+    "New Person Added": "Nueva Persona Agregada",
+    "New Family Added": "Nueva Familia Agregada",
+    "Church Greeter": "Recibidor de Personas",
+    "External Calendar API is disabled": "API de calendario externo está deshabilitado",
+    "Special Group Settings : Sunday School Type": "Ajustes de Grupo Especial: Tipo de Escuela Dominical",
+    "Sunday School group can't be modified, only in this two cases :": "Grupo de Escuela Dominical no puede ser modificado, solo en estos dos casos:",
+    "You can create/delete sunday school group. ": "Puede crear/eliminar grupo de escuela dominical. ",
+    "Add new roles, but not modify or rename the Student and the Teacher roles.": "Agregar nuevos roles, pero no modificar o renombrar los roles de Estudiantes y Profesores."
 }

@@ -42,7 +42,6 @@ module.exports = function (grunt) {
             '!logs/*.log'
         ],
         clean: {
-            locale: ["src/skin/locale"],
             skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
             release: ["target"]
         },
