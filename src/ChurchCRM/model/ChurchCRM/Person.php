@@ -8,7 +8,9 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
-use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use Propel\Runtime\Map\TableMap;
+use ChurchCRM\FamilyQuery;
+
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -90,14 +92,7 @@ class Person extends BasePerson implements iPhoto
 
     public function postInsert(ConnectionInterface $con = null)
     {
-      $this->createTimeLineNote(true);
-      if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
-      {
-        $NotificationEmail = new NewPersonOrFamilyEmail($this);
-        if (!$NotificationEmail->send()) {
-          $logger->warn($NotificationEmail->getError());
-        }
-      }
+        $this->createTimeLineNote(true);
     }
 
     public function postUpdate(ConnectionInterface $con = null)
@@ -191,8 +186,11 @@ class Person extends BasePerson implements iPhoto
         $address = $this->getAddress(); //if person address empty, this will get Family address
         $lat = 0;
         $lng = 0;
-        if (!empty($this->getAddress1())) {
-            $latLng = GeoUtils::getLatLong($this->getAddress());
+        
+        // Patch : so I rewrite the code 
+        if (!empty($this->getAddress1()) && !$address) {
+        		$address = $this->getAddress1()." ".$this->getCity(); //if person address empty, this will get Family address
+            $latLng = GeoUtils::getLatLong($address);
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 $lat = $latLng['Latitude'];
                 $lng = $latLng['Longitude'];
@@ -443,5 +441,22 @@ class Person extends BasePerson implements iPhoto
     public function getNumericCellPhone()
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
+    }
+    
+  	public function hydrate($row, $startcol = 0, $rehydrate = false, $indexType = TableMap::TYPE_NUM) {
+        $result = parent::hydrate($row, $startcol, $rehydrate, $indexType);
+        
+				$family = $this->getFamily();
+				
+				if (!is_null($family))
+				{
+					 $this->per_address1 = $family->getAddress1();
+					 $this->per_address2 = $family->getAddress2();
+					 $this->per_city = $family->getCity();
+					 $this->per_state = $family->getState();
+					 $this->per_zip = $family->getZip();
+				}
+        	
+        return $result;
     }
 }
