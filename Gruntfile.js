@@ -437,14 +437,25 @@ module.exports = function (grunt) {
           }
         });
       //  ensure local code is clean
+      grunt.config('confirm',{
+        startRelease: {
+          options: {
+            question: "Are you sure you want to start this release?",
+            input: '_key:y'
+          }
+        }
+      });
+      
+      grunt.task.run('confirm:startRelease');
       grunt.task.run('gitreset');
       //  make sure we're on master
       grunt.task.run('gitcheckout:master');
       //  ensure local and remote master are up to date
       grunt.task.run('gitpull:master');
       //  display local master's commit hash
-      
+      grunt.task.run('gitlog');
       //  prompt that commit hash === current version
+      
       //  create github tag at current hash
       //  check for / wait for build to complete on demo site
       //  download zip archive from demo site
