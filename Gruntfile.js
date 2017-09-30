@@ -409,12 +409,9 @@ module.exports = function (grunt) {
 
     });
     
-    grunt.registerTask('doTheRelease', 'Publish the latest release', function() {
-      
-      grunt.loadNpmTasks('grunt-git');
-      grunt.loadNpmTasks('grunt-confirm');
-      
-      grunt.config('gitreset' ,{
+    grunt.registerTask('cleanupLocalGit', 'clean local git', function () {
+       grunt.loadNpmTasks('grunt-git');
+       grunt.config('gitreset' ,{
           task: {
             options: {
               mode: "hard"
@@ -437,6 +434,40 @@ module.exports = function (grunt) {
             }
           }
         });
+      //grunt.task.run('gitreset');
+      //  make sure we're on master
+      //grunt.task.run('gitcheckout:master');
+      //  ensure local and remote master are up to date
+      //grunt.task.run('gitpull:master');
+      //  display local master's commit hash
+    });
+    
+    
+    grunt.registerTask('asyncGitHashes', 'prepare hashes', function () {
+      grunt.loadNpmTasks('grunt-git');
+      grunt.config('gitlog',{
+       master: {
+         options: {
+           prop: "gitlog.master.results",
+           number: 1,
+           callback: function(logs) {
+             grunt.log.writeln("Callback!!!");
+             grunt.log.writeln(JSON.stringify(logs));
+             
+           }
+         }
+       }
+     });
+      grunt.task.run('gitlog');
+    });
+    
+    
+    grunt.registerTask('doTheRelease', 'Publish the latest release', function() {
+      
+     
+      grunt.loadNpmTasks('grunt-confirm');
+      
+      
       //  ensure local code is clean
       grunt.config('confirm',{
         startRelease: {
@@ -447,33 +478,24 @@ module.exports = function (grunt) {
         },
         tagRelease: {
           options: {
-            question: "ArAre you sure you want to release {{commit hash}} as {{version tag number}}",
+            question: function() {
+              return "ArAre you sure you want to release " + grunt.config.get('gitlog.master.results')[0].hash + "as {{version tag number}}"
+            },
             input: '_key:y'
           }
         }
       });
       
-       grunt.config('gitlog',{
-        master: {
-          options: {
-            prop: "gitlog.master.results",
-            number: 1,
-            pretty: "format:'%H' -n 1"
-          }
-        }
-      });
       
       grunt.task.run('confirm:startRelease');
-      grunt.task.run('gitreset');
-      //  make sure we're on master
-      grunt.task.run('gitcheckout:master');
-      //  ensure local and remote master are up to date
-      grunt.task.run('gitpull:master');
-      //  display local master's commit hash
-      grunt.task.run('gitlog');
-      grunt.log("Hash: " + gitlog.master.results);
+      //grunt.task.run('cleanupLocalGit');
+      grunt.task.run('asyncGitHashes');
+
+     
       //  prompt that commit hash === current version
+      
       grunt.task.run('confirm:tagRelease');
+            
       //  create github tag at current hash
       //  check for / wait for build to complete on demo site
       //  download zip archive from demo site
