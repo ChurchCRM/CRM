@@ -408,6 +408,29 @@ module.exports = function (grunt) {
         }
 
     });
+    
+    grunt.registerMultiTask('doRelease', 'Publish the latest release', function() {
+      //  ensure local and remote master are up to date
+      //  display local master's commit hash
+      //  prompt that commit hash === current version
+      //  create github tag at current hash
+      //  check for / wait for build to complete on demo site
+      //  download zip archive from demo site
+      //  calculate SHA1 of zip archive
+      //  create github release
+      //    add release notes
+      //    add SHA hash of archive
+      //    add zip archive
+      //  close GitHub milestone
+      //  create a new GitHub milestone
+      //  create new branch for next-version
+      //    updateversions
+      //    gen-changelogs
+      //    commit updates to new branch
+      //    push branch, and create PR
+      //  PR from master -> develop
+      
+    });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
