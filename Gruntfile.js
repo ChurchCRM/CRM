@@ -443,22 +443,22 @@ module.exports = function (grunt) {
     });
     
     
-    grunt.registerTask('asyncGitHashes', 'prepare hashes', function () {
-      grunt.loadNpmTasks('grunt-git');
-      grunt.config('gitlog',{
-       master: {
+    grunt.registerTask('downloadLatestRelease', 'dl R', function () {
+      var targetURL = "http://demo.churchcrm.io/builds/master/ChurchCRM-" + grunt.config.get("package.version") + "-" + grunt.config.get('gitlog.master.results')[0].hash.substring(0,7) + ".zip";
+      var downloadTarget = "download/ChurchCRM-" + grunt.config.get("package.version") + ".zip";
+      grunt.config('http', {
+        demoRelease: {
          options: {
-           prop: "gitlog.master.results",
-           number: 1,
-           callback: function(logs) {
-             grunt.log.writeln("Callback!!!");
-             grunt.log.writeln(JSON.stringify(logs));
-             
-           }
-         }
-       }
-     });
-      grunt.task.run('gitlog');
+           url: targetURL ,       
+           gzip: true,
+           encoding: null
+         },
+         dest:  downloadTarget
+      }
+    });
+      
+      grunt.task.run('http:demoRelease');
+     
     });
     
     
@@ -466,7 +466,8 @@ module.exports = function (grunt) {
       
      
       grunt.loadNpmTasks('grunt-confirm');
-      
+      grunt.loadNpmTasks('grunt-git');
+      grunt.loadNpmTasks('grunt-http')
       
       //  ensure local code is clean
       grunt.config('confirm',{
@@ -479,24 +480,30 @@ module.exports = function (grunt) {
         tagRelease: {
           options: {
             question: function() {
-              return "ArAre you sure you want to release " + grunt.config.get('gitlog.master.results')[0].hash + "as {{version tag number}}"
+              return "Are you sure you want to release " + grunt.config.get('gitlog.master.results')[0].hash + " as " + grunt.config.get('package.version')+"?";
             },
             input: '_key:y'
           }
         }
       });
       
-      
-      grunt.task.run('confirm:startRelease');
-      //grunt.task.run('cleanupLocalGit');
-      grunt.task.run('asyncGitHashes');
+       grunt.config('gitlog',{
+       master: {
+         options: {
+           prop: "gitlog.master.results",
+           number: 1
+         }
+       }
+     });
 
-     
-      //  prompt that commit hash === current version
-      
+      grunt.task.run('confirm:startRelease');
+      grunt.task.run('cleanupLocalGit');
+      grunt.task.run('gitlog');
       grunt.task.run('confirm:tagRelease');
-            
+      grunt.task.run('downloadLatestRelease');
       //  create github tag at current hash
+      
+      
       //  check for / wait for build to complete on demo site
       //  download zip archive from demo site
       //  calculate SHA1 of zip archive
