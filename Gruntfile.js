@@ -298,27 +298,6 @@ module.exports = function (grunt) {
             update: {
                 version: '<%= package.version %>'
             }
-        },
-        gitreset: {
-          task: {
-            options: {
-              mode: "hard"
-            }
-          }
-        },
-        gitcheckout: {
-          master: {
-            options: {
-              branch: "master"
-            }
-          }
-        },
-        gitpull: {
-          master: {
-            options: {
-              branch: "master"
-            }
-          }
         }
     });
 
@@ -430,7 +409,33 @@ module.exports = function (grunt) {
 
     });
     
-    grunt.registerMultiTask('doRelease', 'Publish the latest release', function() {
+    grunt.registerTask('doTheRelease', 'Publish the latest release', function() {
+      
+      grunt.loadNpmTasks('grunt-git');
+      
+      grunt.config('gitreset' ,{
+          task: {
+            options: {
+              mode: "hard"
+            }
+          }
+        });
+        
+       grunt.config('gitcheckout', {
+          master: {
+            options: {
+              branch: "master"
+            }
+          }
+        });
+        
+        grunt.config('gitpull', {
+          master: {
+            options: {
+              branch: "master"
+            }
+          }
+        });
       //  ensure local code is clean
       grunt.task.run('gitreset');
       //  make sure we're on master
@@ -465,5 +470,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-poeditor-ab');
-    grunt.loadNpmTasks('grunt-git');
+    
 }
