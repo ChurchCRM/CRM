@@ -298,6 +298,27 @@ module.exports = function (grunt) {
             update: {
                 version: '<%= package.version %>'
             }
+        },
+        gitreset: {
+          task: {
+            options: {
+              mode: "hard"
+            }
+          }
+        },
+        gitcheckout: {
+          master: {
+            options: {
+              branch: "master"
+            }
+          }
+        },
+        gitpull: {
+          master: {
+            options: {
+              branch: "master"
+            }
+          }
         }
     });
 
@@ -306,7 +327,7 @@ module.exports = function (grunt) {
         grunt.log.writeln(sha1(grunt.file.read(arg1, {encoding: null})));
     });
 
-    grunt.registerMultiTask('generateSignatures', 'A sample task that logs stuff.', function () {
+    grunt.registerTask('generateSignatures', 'A sample task that logs stuff.', function () {
         var sha1 = require('node-sha1');
         var signatures = {
             "version": this.data.version,
@@ -410,8 +431,14 @@ module.exports = function (grunt) {
     });
     
     grunt.registerMultiTask('doRelease', 'Publish the latest release', function() {
+      //  ensure local code is clean
+      grunt.task.run('gitreset');
+      //  make sure we're on master
+      grunt.task.run('gitcheckout:master');
       //  ensure local and remote master are up to date
+      grunt.task.run('gitpull:master');
       //  display local master's commit hash
+      
       //  prompt that commit hash === current version
       //  create github tag at current hash
       //  check for / wait for build to complete on demo site
@@ -438,4 +465,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-poeditor-ab');
+    grunt.loadNpmTasks('grunt-git');
 }
