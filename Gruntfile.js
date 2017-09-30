@@ -412,6 +412,7 @@ module.exports = function (grunt) {
     grunt.registerTask('doTheRelease', 'Publish the latest release', function() {
       
       grunt.loadNpmTasks('grunt-git');
+      grunt.loadNpmTasks('grunt-confirm');
       
       grunt.config('gitreset' ,{
           task: {
