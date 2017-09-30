@@ -471,6 +471,7 @@ module.exports = function (grunt) {
       grunt.task.run('gitpull:master');
       //  display local master's commit hash
       grunt.task.run('gitlog');
+      grunt.log("Hash: " + gitlog.master.results);
       //  prompt that commit hash === current version
       grunt.task.run('confirm:tagRelease');
       //  create github tag at current hash
