@@ -434,11 +434,11 @@ module.exports = function (grunt) {
             }
           }
         });
-      //grunt.task.run('gitreset');
+      grunt.task.run('gitreset');
       //  make sure we're on master
-      //grunt.task.run('gitcheckout:master');
+      grunt.task.run('gitcheckout:master');
       //  ensure local and remote master are up to date
-      //grunt.task.run('gitpull:master');
+      grunt.task.run('gitpull:master');
       //  display local master's commit hash
     });
     
@@ -463,8 +463,6 @@ module.exports = function (grunt) {
     
     
     grunt.registerTask('doTheRelease', 'Publish the latest release', function() {
-      
-     
       grunt.loadNpmTasks('grunt-confirm');
       grunt.loadNpmTasks('grunt-git');
       grunt.loadNpmTasks('grunt-http')
