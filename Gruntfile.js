@@ -458,6 +458,7 @@ module.exports = function (grunt) {
           options: {
             prop: "gitlog.master.results",
             number: 1,
+            pretty: "format:'%H' -n 1"
           }
         }
       });
