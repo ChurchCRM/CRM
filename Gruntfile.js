@@ -462,8 +462,8 @@ module.exports = function (grunt) {
     });
     
     grunt.registerTask('createRelease','make release', function() {
-      grunt.loadNpmTasks('github_releaser');
-      grunt.config('github_releaser', {
+      grunt.loadNpmTasks('grunt-github-releaser');
+      grunt.config('github-release', {
           options: {
             repository: 'churchcrm/crm',
             auth: {
@@ -479,10 +479,10 @@ module.exports = function (grunt) {
             }
           },
           files: {
-            'dest': ["download/ChurchCRM-" + grunt.config.get("package.version") + ".zip"],
+            'src': ["download/ChurchCRM-" + grunt.config.get("package.version") + ".zip"],
           },
         });
-      grunt.task.run('github_releaser');
+      grunt.task.run('github-release');
       
     });
     
@@ -524,6 +524,7 @@ module.exports = function (grunt) {
       grunt.task.run('gitlog');
       grunt.task.run('confirm:tagRelease');
       grunt.task.run('downloadLatestRelease');
+      grunt.task.run('createRelease');
       //  create github tag at current hash
       
       
