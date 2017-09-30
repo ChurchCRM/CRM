@@ -444,6 +444,12 @@ module.exports = function (grunt) {
             question: "Are you sure you want to start this release?",
             input: '_key:y'
           }
+        },
+        tagRelease: {
+          options: {
+            question: "ArAre you sure you want to release {{commit hash}} as {{version tag number}}",
+            input: '_key:y'
+          }
         }
       });
       
@@ -456,7 +462,7 @@ module.exports = function (grunt) {
       //  display local master's commit hash
       grunt.task.run('gitlog');
       //  prompt that commit hash === current version
-      
+      grunt.task.run('confirm:tagRelease');
       //  create github tag at current hash
       //  check for / wait for build to complete on demo site
       //  download zip archive from demo site
