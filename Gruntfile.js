@@ -453,6 +453,15 @@ module.exports = function (grunt) {
         }
       });
       
+       grunt.config('gitlog',{
+        master: {
+          options: {
+            prop: "gitlog.master.results",
+            number: 1,
+          }
+        }
+      });
+      
       grunt.task.run('confirm:startRelease');
       grunt.task.run('gitreset');
       //  make sure we're on master
