@@ -36,6 +36,7 @@
         "font-awesome": "4.7.0",
         "fullcalendar": "3.0.1",
         "grunt-git": "^1.0.7",
+        "grunt-github-releaser": "^0.1.18",
         "grunt-http": "^2.2.0",
         "i18next": "8.2.1",
         "i18next-xhr-backend": "1.4.1",

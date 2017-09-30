@@ -455,10 +455,35 @@ module.exports = function (grunt) {
          },
          dest:  downloadTarget
       }
-    });
+      });
       
       grunt.task.run('http:demoRelease');
      
+    });
+    
+    grunt.registerTask('createRelease','make release', function() {
+      grunt.loadNpmTasks('github_releaser');
+      grunt.config('github_releaser', {
+          options: {
+            repository: 'churchcrm/crm',
+            auth: {
+              user: 'crossan007',
+              password: grunt.config.get("buildConfig.GitHub.token")
+            },
+            release: {
+              tag_name: grunt.config.get('package.version'),
+              name: grunt.config.get('package.version'),
+              body: grunt.config.get('package.version'),
+              draft: true, 
+              prerelease: true
+            }
+          },
+          files: {
+            'dest': ["download/ChurchCRM-" + grunt.config.get("package.version") + ".zip"],
+          },
+        });
+      grunt.task.run('github_releaser');
+      
     });
     
     
