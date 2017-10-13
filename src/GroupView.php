@@ -484,6 +484,8 @@ require 'Include/Header.php';
                 $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport()? 'true': 'false' ?>).change();
                 $("#deleteGroupButton").click(function() {
                   console.log("click");
+                  bootbox.setDefaults({
+									locale: "<?= $localeInfo->getLanguageCode() ?>"}),
                   bootbox.confirm({
                     title: "<?= gettext("Confirm Delete Group") ?>",
                     message: '<p style="color: red">'+
