@@ -11,10 +11,8 @@ use ChurchCRM\Utils\LoggerUtils;
 
 class GeoUtils
 {
-
     public static function getLatLong($address)
     {
-
         $logger = LoggerUtils::getAppLogger();
 
         $geoCoder = null;
@@ -53,7 +51,6 @@ class GeoUtils
             'Latitude' => $lat,
             'Longitude' => $long
         );
-
     }
 
 
