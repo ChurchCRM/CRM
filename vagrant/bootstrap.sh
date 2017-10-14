@@ -71,8 +71,8 @@ echo "=========================================================="
 echo "===============   NPM                    ================="
 echo "=========================================================="
 
-sudo npm install -g npm@latest --unsafe-perm --no-bin-links
 sudo npm install -g i18next-extract-gettext
+sudo npm install -g grunt-cli
 npm install --unsafe-perm --no-bin-links
 grunt compress:demo
 
@@ -80,6 +80,7 @@ echo "=========================================================="
 echo "===============   Composer PHP           ================="
 echo "=========================================================="
 
+sudo /usr/local/bin/composer self-update
 npm run composer-update
 
 echo "================   Build ORM Classes    =================="

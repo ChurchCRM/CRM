@@ -9,7 +9,7 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "ChurchCRM/box"
+  config.vm.box = "ChurchCRM/box1.2"
   config.vm.box_url = "https://box.churchcrm.io/churchcrm.box"
   config.vm.network "private_network", ip: "192.168.33.10"
   config.vm.hostname = "scotchbox"

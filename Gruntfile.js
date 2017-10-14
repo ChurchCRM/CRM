@@ -182,10 +182,13 @@ module.exports = function (grunt) {
         },
         sass: {
             dist: {
-                files: {
-                    'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
-                }
-            }
+              options: {
+                 cacheLocation: "/tmp"
+              },
+              files: {
+                  'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
+              }  
+            },
         },
         compress: {
             'zip': {
