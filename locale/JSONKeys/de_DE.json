@@ -29,7 +29,6 @@
     "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.": "Nachdem du die Sicherung heruntergeladen hast solltest du zwei kopien erzeugen. Speichere die eine an einem sicheren Platz online und die andere lokal ab.",
     "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however.": "Zusätzliche Sicherheit kann dadurch erreicht werden, dass du die Datenbanksicherung dir selbst an eine e-mail Adresse zusendest, die nicht auf dem selben Server verwaltet wird,  oder an eine Person deines Vertrauens. Die Datei sollte vorher verschlüsselt werden.",
     "Select archive type": "Wähle den Archivierungstyp",
-    "GZip": "Gzip",
     "Uncompressed": "Nichtkomprimiert",
     "tar.gz (Include Photos)": "tar.gz (inklusive Fotos)",
     "Encrypt backup file with a password?": "Soll die Sicherung mit einem Passwort verschlüsselt werden?",
