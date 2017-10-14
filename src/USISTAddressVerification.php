@@ -5,21 +5,6 @@
  *  website     : http://www.churchcrm.io
  *  description : USPS address verification
  *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
  ******************************************************************************/
 
 // This file verifies family address information using an on-line XML
@@ -36,17 +21,17 @@ function XMLparseIST($xmlstr, $xmlfield)
 {
     // Function to parse XML data from Intelligent Search Technolgy, Ltd.
 
-  if (!(strpos($xmlstr, "<$xmlfield>") === false) ||
+    if (!(strpos($xmlstr, "<$xmlfield>") === false) ||
           strpos($xmlstr, "</$xmlfield>" === false)) {
-      $startpos = strpos($xmlstr, "<$xmlfield>") + strlen("<$xmlfield>");
-      $endpos = strpos($xmlstr, "</$xmlfield>");
+        $startpos = strpos($xmlstr, "<$xmlfield>") + strlen("<$xmlfield>");
+        $endpos = strpos($xmlstr, "</$xmlfield>");
 
-      if ($endpos < $startpos) {
-          return '';
-      }
+        if ($endpos < $startpos) {
+            return '';
+        }
 
-      return mb_substr($xmlstr, $startpos, $endpos - $startpos);
-  }
+        return mb_substr($xmlstr, $startpos, $endpos - $startpos);
+    }
 
     return '';
 }
@@ -131,7 +116,7 @@ if ($myISTReturnCode == '4') {
     } else {
         // IST account is valid and working.  Time to get to work.
 
-  echo "<h3>\n";
+        echo "<h3>\n";
         echo 'To conserve funds the following rules are used to determine if ';
         echo "an address lookup should be performed.<br>\n";
         echo "1) The family record has been added since the last lookup<br>\n";
@@ -140,19 +125,19 @@ if ($myISTReturnCode == '4') {
         echo "4) The address must be a US address (Country = United States)<br><br>\n";
         echo "</h3>\n";
 
-  // Housekeeping ... Delete families from the table istlookup_lu that
-  // do not exist in the table family_fam.  This happens whenever
-  // a family is deleted from family_fam.  (Or, more rarely, if a family
-  // moves to another country)
+        // Housekeeping ... Delete families from the table istlookup_lu that
+        // do not exist in the table family_fam.  This happens whenever
+        // a family is deleted from family_fam.  (Or, more rarely, if a family
+        // moves to another country)
 
-  $sSQL = 'SELECT lu_fam_ID FROM istlookup_lu ';
+        $sSQL = 'SELECT lu_fam_ID FROM istlookup_lu ';
         $rsIST = RunQuery($sSQL);
         $iOrphanCount = 0;
         while ($aRow = mysqli_fetch_array($rsIST)) {
             extract($aRow);
-    // verify that this ID exists in family_fam with
-    // fam_Country = 'United States'
-    $sSQL = 'SELECT count(fam_ID) as idexists FROM family_fam ';
+            // verify that this ID exists in family_fam with
+            // fam_Country = 'United States'
+            $sSQL = 'SELECT count(fam_ID) as idexists FROM family_fam ';
             $sSQL .= "WHERE fam_ID='$lu_fam_ID' ";
             $sSQL .= "AND fam_Country='United States'";
             $rsExists = RunQuery($sSQL);
@@ -168,15 +153,15 @@ if ($myISTReturnCode == '4') {
             echo $iOrphanCount." Orphaned IDs deleted.<br>\n";
         }
 
-  // More Housekeeping ... Delete families from the table istlookup_lu that
-  // have had their family_fam records edited since the last lookup
-  //
-  // Note: If the address matches the information from the previous
-  // lookup the delete is not necessary.  Perform this check to determine
-  // if a delete is really needed.  This avoids the problem of having to do
-  // a lookup AFTER the address has been corrected.
+        // More Housekeeping ... Delete families from the table istlookup_lu that
+        // have had their family_fam records edited since the last lookup
+        //
+        // Note: If the address matches the information from the previous
+        // lookup the delete is not necessary.  Perform this check to determine
+        // if a delete is really needed.  This avoids the problem of having to do
+        // a lookup AFTER the address has been corrected.
 
-  $sSQL = 'SELECT * FROM family_fam INNER JOIN istlookup_lu ';
+        $sSQL = 'SELECT * FROM family_fam INNER JOIN istlookup_lu ';
         $sSQL .= 'ON family_fam.fam_ID = istlookup_lu.lu_fam_ID ';
         $sSQL .= 'WHERE fam_DateLastEdited > lu_LookupDateTime ';
         $sSQL .= 'AND fam_DateLastEdited IS NOT NULL';
@@ -190,23 +175,23 @@ if ($myISTReturnCode == '4') {
             $sLookupAddress = $lu_DeliveryLine1.$lu_DeliveryLine2.$lu_City.
             $lu_State.$lu_ZipAddon;
 
-    // compare addresses
-    if (strtoupper($sFamilyAddress) != strtoupper($sLookupAddress)) {
-        // only delete mismatches from lookup table
-      $sSQL = "DELETE FROM istlookup_lu WHERE lu_fam_ID='$fam_ID'";
-        RunQuery($sSQL);
-        $iUpdatedCount++;
-    }
+            // compare addresses
+            if (strtoupper($sFamilyAddress) != strtoupper($sLookupAddress)) {
+                // only delete mismatches from lookup table
+                $sSQL = "DELETE FROM istlookup_lu WHERE lu_fam_ID='$fam_ID'";
+                RunQuery($sSQL);
+                $iUpdatedCount++;
+            }
         }
         if ($iUpdatedCount) {
             echo $iUpdatedCount." Updated IDs deleted.<br>\n";
         }
 
-  // More Housekeeping ... Delete families from the table istlookup_lu that
-  // have not had a lookup performed in more than one year.  Zip codes and street
-  // names occasionally change so a verification every two years is a good idea.
+        // More Housekeeping ... Delete families from the table istlookup_lu that
+        // have not had a lookup performed in more than one year.  Zip codes and street
+        // names occasionally change so a verification every two years is a good idea.
 
-  $twoYearsAgo = date('Y-m-d H:i:s', strtotime('-24 months'));
+        $twoYearsAgo = date('Y-m-d H:i:s', strtotime('-24 months'));
 
         $sSQL = 'SELECT lu_fam_ID FROM istlookup_lu ';
         $sSQL .= "WHERE '$twoYearsAgo' > lu_LookupDateTime";
@@ -222,9 +207,9 @@ if ($myISTReturnCode == '4') {
             echo $iOutdatedCount." Outdated IDs deleted.<br>\n";
         }
 
-  // All housekeeping is finished !!!
-  // Get count of non-US addresses
-  $sSQL = 'SELECT count(fam_ID) AS nonustotal FROM family_fam ';
+        // All housekeeping is finished !!!
+        // Get count of non-US addresses
+        $sSQL = 'SELECT count(fam_ID) AS nonustotal FROM family_fam ';
         $sSQL .= "WHERE fam_Country NOT IN ('United States')";
         $rsResult = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsResult));
@@ -233,8 +218,8 @@ if ($myISTReturnCode == '4') {
             echo $iNonUSCount." Non US addresses in database will not be verified.<br>\n";
         }
 
-  // Get count of US addresses
-  $sSQL = 'SELECT count(fam_ID) AS ustotal FROM family_fam ';
+        // Get count of US addresses
+        $sSQL = 'SELECT count(fam_ID) AS ustotal FROM family_fam ';
         $sSQL .= "WHERE fam_Country IN ('United States')";
         $rsResult = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsResult));
@@ -243,8 +228,8 @@ if ($myISTReturnCode == '4') {
             echo $iUSCount." Total US addresses in database.<br>\n";
         }
 
-  // Get count of US addresses that do not require a fresh lookup
-  $sSQL = 'SELECT count(lu_fam_ID) AS usokay FROM istlookup_lu';
+        // Get count of US addresses that do not require a fresh lookup
+        $sSQL = 'SELECT count(lu_fam_ID) AS usokay FROM istlookup_lu';
         $rsResult = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsResult));
         $iUSOkay = intval($usokay);
@@ -252,8 +237,8 @@ if ($myISTReturnCode == '4') {
             echo $iUSOkay." US addresses have had lookups performed.<br>\n";
         }
 
-  // Get count of US addresses ready for lookup
-  $sSQL = 'SELECT count(fam_ID) AS newcount FROM family_fam ';
+        // Get count of US addresses ready for lookup
+        $sSQL = 'SELECT count(fam_ID) AS newcount FROM family_fam ';
         $sSQL .= "WHERE fam_Country IN ('United States') AND fam_ID NOT IN (";
         $sSQL .= 'SELECT lu_fam_ID from istlookup_lu)';
         $rs = RunQuery($sSQL);
@@ -269,7 +254,7 @@ if ($myISTReturnCode == '4') {
         if ($_GET['DoLookup']) {
             $startTime = time();  // keep tabs on how long this runs to avoid server timeouts
 
-    echo "Lookups in process, screen refresh scheduled every 20 seconds.<br>\n"; ?>
+            echo "Lookups in process, screen refresh scheduled every 20 seconds.<br>\n"; ?>
     <table><tr><td><form method="POST" action="USISTAddressVerification.php">
             <input type=submit class=btn name=StopLookup value="Stop Lookups">
           </form></td></tr></table>
@@ -314,9 +299,9 @@ if ($myISTReturnCode == '4') {
                 $lu_ErrorCodes = MySQLquote(addslashes($myISTAddressLookup->GetErrorCodes()));
                 $lu_ErrorDesc = MySQLquote(addslashes($myISTAddressLookup->GetErrorDesc()));
 
-      //echo "<br>" . $lu_ErrorCodes;
+                //echo "<br>" . $lu_ErrorCodes;
 
-      $iSearchesLeft = $myISTAddressLookup->GetSearchesLeft();
+                $iSearchesLeft = $myISTAddressLookup->GetSearchesLeft();
                 if (!is_numeric($iSearchesLeft)) {
                     $iSearchesLeft = 0;
                 } else {
@@ -333,11 +318,11 @@ if ($myISTReturnCode == '4') {
 
                 if ($lu_ErrorCodes != "'xx'") {
                     // Error code xx is one of the following
-        // 1) Connection failure 2) Invalid username or password 3) No searches left
-        //
-            // Insert data into istlookup_lu table
-        //
-            $sSQL = 'INSERT INTO istlookup_lu (';
+                    // 1) Connection failure 2) Invalid username or password 3) No searches left
+                    //
+                    // Insert data into istlookup_lu table
+                    //
+                    $sSQL = 'INSERT INTO istlookup_lu (';
                     $sSQL .= '  lu_fam_ID,  lu_LookupDateTime,  lu_DeliveryLine1, ';
                     $sSQL .= '  lu_DeliveryLine2,  lu_City,  lu_State,  lu_ZipAddon, ';
                     $sSQL .= '  lu_Zip,  lu_Addon,  lu_LOTNumber,  lu_DPCCheckdigit,  lu_RecordType, ';
@@ -350,9 +335,9 @@ if ($myISTReturnCode == '4') {
                     $sSQL .= " $lu_LastLine, $lu_CarrierRoute, $lu_ReturnCodes, $lu_ErrorCodes, ";
                     $sSQL .= " $lu_ErrorDesc) ";
 
-        //echo $sSQL . "<br>";
+                    //echo $sSQL . "<br>";
 
-        RunQuery($sSQL);
+                    RunQuery($sSQL);
                 }
 
                 if ($iSearchesLeft < 30) {

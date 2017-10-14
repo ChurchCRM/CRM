@@ -5,12 +5,7 @@
  *  last change : 2003-04-03
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Lewis Franklin
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -90,7 +85,7 @@ require 'Include/Header.php'
 	</tr>
 	<tr>
 		<td align="right"><b><?= gettext('Current Role') ?>:</b></td>
-		<td><?php echo $sRoleName ?></td>
+		<td><?php echo gettext($sRoleName) ?></td>
 	</tr>
 	<tr>
 		<td align="right"><b><?= gettext('New Role') ?>:</b></td>
@@ -109,7 +104,7 @@ require 'Include/Header.php'
                         $sSelected = '';
                     }
                     //Write the <option> tag
-                    echo '<option value="'.$lst_OptionID.'" '.$sSelected.'>'.$lst_OptionName.'</option>';
+                    echo '<option value="'.$lst_OptionID.'" '.$sSelected.'>'.gettext($lst_OptionName).'</option>';
                 }
                 ?>
 			</select>

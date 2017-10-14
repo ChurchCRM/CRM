@@ -15,21 +15,7 @@
 *  2006,2010 Ed Davis
 *  2006 Stephen Shaffer
 *
-*  LICENSE:
-*  (C) Free Software Foundation, Inc.
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 3 of the License, or
-*  (at your option) any later version.
-*
-*  This program is distributed in the hope that it will be useful, but
-*  WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-*  General Public License for more details.
-*
-*  http://www.gnu.org/licenses
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -43,16 +29,16 @@ use ChurchCRM\Utils\InputUtils;
 function GroupBySalutation($famID, $aAdultRole, $aChildRole)
 {
     // Function to place the name(s) on a label when grouping multiple
-// family members on the same label.
-// Make it put the name if there is only one adult in the family.
-// Make it put two first names and the last name when there are exactly
-// two adults in the family (e.g. "Nathaniel & Jeanette Brooks")
-// Make it put two whole names where there are exactly two adults with
-// different names (e.g. "Doug Philbrook & Karen Andrews")
-// When there are zero adults or more than two adults in the family just
-// use the family name.  This is helpful for sending newsletters to places
-// such as "All Souls Church"
-// Similar logic is applied if mailing to Sunday School children.
+    // family members on the same label.
+    // Make it put the name if there is only one adult in the family.
+    // Make it put two first names and the last name when there are exactly
+    // two adults in the family (e.g. "Nathaniel & Jeanette Brooks")
+    // Make it put two whole names where there are exactly two adults with
+    // different names (e.g. "Doug Philbrook & Karen Andrews")
+    // When there are zero adults or more than two adults in the family just
+    // use the family name.  This is helpful for sending newsletters to places
+    // such as "All Souls Church"
+    // Similar logic is applied if mailing to Sunday School children.
 
     $sSQL = 'SELECT * FROM family_fam WHERE fam_ID='.$famID;
     $rsFamInfo = RunQuery($sSQL);
@@ -217,51 +203,51 @@ function MakeADCArray($sADClist)
 {
     unset($aReturnArray);
 
-// The end of each row is marked with the pipe | symbol
-// keep fetching rows until gone
-while (mb_substr_count($sADClist, '|')) {
+    // The end of each row is marked with the pipe | symbol
+    // keep fetching rows until gone
+    while (mb_substr_count($sADClist, '|')) {
 
     // find end of current row
-    $endOfRow = strpos($sADClist, '|');
-    if ($endOfRow) {
-        $currentRow = mb_substr($sADClist, 0, $endOfRow);
-        $sADClist = mb_substr($sADClist, ($endOfRow + 1));
+        $endOfRow = strpos($sADClist, '|');
+        if ($endOfRow) {
+            $currentRow = mb_substr($sADClist, 0, $endOfRow);
+            $sADClist = mb_substr($sADClist, ($endOfRow + 1));
 
-        // find the current adc (hint, last item listed)
-        $currentRow = trim($currentRow);
-        $adc = mb_substr($currentRow, strrpos($currentRow, ' '));
-        $adc = trim($adc, " ,\t\n\r\0\x0B");
+            // find the current adc (hint, last item listed)
+            $currentRow = trim($currentRow);
+            $adc = mb_substr($currentRow, strrpos($currentRow, ' '));
+            $adc = trim($adc, " ,\t\n\r\0\x0B");
 
-        // Now get a list of the three digit codes associated
-        // with this adc.  They are all before the "_" character
+            // Now get a list of the three digit codes associated
+            // with this adc.  They are all before the "_" character
 
-        $currentRow = mb_substr($currentRow, 0, strpos($currentRow, '_'));
-        $currentRow = trim($currentRow, " ,\t\n\r\0\x0B");
-        while (strlen($currentRow)) {
-            if (strpos($currentRow, ',')) {
-                $nugget = trim(mb_substr($currentRow, 0, strpos($currentRow, ',')));
-                $currentRow = trim(mb_substr($currentRow, strpos($currentRow, ',') + 1));
-            } else {  // parsing last element
-                $nugget = trim($currentRow, " ,\t\n\r\0\x0B");
-                $currentRow = '';
-            }
-
-            $dash = strpos($nugget, '-');
-            if ($dash) {   // range of
-                $start = intval(mb_substr($nugget, 0, $dash));
-                $end = intval(mb_substr($nugget, $dash + 1));
-                if ($end >= $start) {
-                    for ($i = $start; $i <= $end; $i++) {
-                        $aReturnArray[$i] = $adc;
-                    }
+            $currentRow = mb_substr($currentRow, 0, strpos($currentRow, '_'));
+            $currentRow = trim($currentRow, " ,\t\n\r\0\x0B");
+            while (strlen($currentRow)) {
+                if (strpos($currentRow, ',')) {
+                    $nugget = trim(mb_substr($currentRow, 0, strpos($currentRow, ',')));
+                    $currentRow = trim(mb_substr($currentRow, strpos($currentRow, ',') + 1));
+                } else {  // parsing last element
+                    $nugget = trim($currentRow, " ,\t\n\r\0\x0B");
+                    $currentRow = '';
                 }
-            } else {
-                $i = intval($nugget);
-                $aReturnArray[$i] = $adc;
+
+                $dash = strpos($nugget, '-');
+                if ($dash) {   // range of
+                    $start = intval(mb_substr($nugget, 0, $dash));
+                    $end = intval(mb_substr($nugget, $dash + 1));
+                    if ($end >= $start) {
+                        for ($i = $start; $i <= $end; $i++) {
+                            $aReturnArray[$i] = $adc;
+                        }
+                    }
+                } else {
+                    $i = intval($nugget);
+                    $aReturnArray[$i] = $adc;
+                }
             }
         }
     }
-}
 
     return $aReturnArray;
 }
@@ -269,45 +255,45 @@ while (mb_substr_count($sADClist, '|')) {
 function ZipBundleSort($inLabels)
 {
     //
-// Description:
-// sorts an input array $inLabels() for presort bundles
-//
-// Inputs:
-// $inLabels() is a 2-d associative array which must have:
-//  "Zip" as the location of the zipcode,
-//  the array is generally of the form
-//      $Labels[$i] = array('Name'=>$name, 'Address'=>$address,...'Zip'=>$zip)
-//
-//  Bundles will be returned in the following order:
-//  Bundles where full 5 digit zip count >= $iZip5MinBundleSize
-//  Bundles where 3 digit zip count >= $iZip3MinBundleSize
-//  Bundles where "ADC" count >= $iAdcMinBundleSize
-//      Mixed ADC bundle
-//
-// Return Values:
-// (1) The function returns an associative array which matches the input array containing any
-// legal bundles of "type" sorted by zip
-// (2) if no legal bundles are found for the requested "type" then the function returns "FALSE"
-// (3) the output array will also contain an associative value of "Notes" which will contain a
-//     text string to be printed on the labels indicating the bundle the label is a member of
-//
-// Notes:
-// (1) The ADC data is hard coded in the variable $adc was composed march 2006
-// (2) the definition of a "legal" bundle is one that contains at least $iMinBundleSize units
-// (3) this function is not PAVE certified
-//
-// Stephen Shaffer 2006, stephen@shaffers4christ.com
-//
-//////////////////////////////////////////////////////////////////////////////////////////////
-// 60
-// initialize the adc data list
-//
-// The following website is the source for the adc
-// http://pe.usps.com/text/dmm300/L004.htm
-// This array for STD mail
-// ADC array updated 2010-08-26
+    // Description:
+    // sorts an input array $inLabels() for presort bundles
+    //
+    // Inputs:
+    // $inLabels() is a 2-d associative array which must have:
+    //  "Zip" as the location of the zipcode,
+    //  the array is generally of the form
+    //      $Labels[$i] = array('Name'=>$name, 'Address'=>$address,...'Zip'=>$zip)
+    //
+    //  Bundles will be returned in the following order:
+    //  Bundles where full 5 digit zip count >= $iZip5MinBundleSize
+    //  Bundles where 3 digit zip count >= $iZip3MinBundleSize
+    //  Bundles where "ADC" count >= $iAdcMinBundleSize
+    //      Mixed ADC bundle
+    //
+    // Return Values:
+    // (1) The function returns an associative array which matches the input array containing any
+    // legal bundles of "type" sorted by zip
+    // (2) if no legal bundles are found for the requested "type" then the function returns "FALSE"
+    // (3) the output array will also contain an associative value of "Notes" which will contain a
+    //     text string to be printed on the labels indicating the bundle the label is a member of
+    //
+    // Notes:
+    // (1) The ADC data is hard coded in the variable $adc was composed march 2006
+    // (2) the definition of a "legal" bundle is one that contains at least $iMinBundleSize units
+    // (3) this function is not PAVE certified
+    //
+    // Stephen Shaffer 2006, stephen@shaffers4christ.com
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    // 60
+    // initialize the adc data list
+    //
+    // The following website is the source for the adc
+    // http://pe.usps.com/text/dmm300/L004.htm
+    // This array for STD mail
+    // ADC array updated 2010-08-26
 
-$sADClist =
+    $sADClist =
 '005, 115, 117-119                      _LONG ISLAND NY 117         |'.
 '006-009                                _ADC SAN JUAN PR 006        |'.
 '010-017                                _ADC SPRINGFIELD MA 010     |'.
@@ -420,16 +406,16 @@ $sADClist =
 
     $adc = MakeADCArray($sADClist);
 
-//foreach ($adc as $key => $value)
-//    echo "key = $key, value = $value <br>";
+    //foreach ($adc as $key => $value)
+    //    echo "key = $key, value = $value <br>";
 
-//$db=0;
-//
-// Step 1 - create an array of only the zipcodes of length 5
-//
-// 80
+    //$db=0;
+    //
+    // Step 1 - create an array of only the zipcodes of length 5
+    //
+    // 80
 
-// $iMinBundleSize = 15;  // Minimum number of labels allowed in a bundle
+    // $iMinBundleSize = 15;  // Minimum number of labels allowed in a bundle
 $iZip5MinBundleSize = 15;  // Minimum number of labels allowed in a 5 digit zip code bundle
 $iZip3MinBundleSize = 10;  // Minimum number of labels allowed in a 3 digit zip code bundle
 $iAdcMinBundleSize = 10;  // Minimum number of labels allowed in an ADC bundle
@@ -444,17 +430,17 @@ $n = count($inLabels);
         $Zips[$i] = intval(mb_substr($inLabels[$i]['Zip'], 0, 5));
     }
 
-//
-// perform a count of the array values
-//
+    //
+    // perform a count of the array values
+    //
 
-$ZipCounts = array_count_values($Zips);
+    $ZipCounts = array_count_values($Zips);
 
-//
-// walk through the input array and pull all matching records where count >= $iZip5MinBundleSize
-//
+    //
+    // walk through the input array and pull all matching records where count >= $iZip5MinBundleSize
+    //
 
-$nz5 = 0;
+    $nz5 = 0;
 
     while (list($z, $zc) = each($ZipCounts)) {
         if ($zc >= $iZip5MinBundleSize) {
@@ -467,7 +453,7 @@ $nz5 = 0;
                 if (intval(mb_substr($inLabels[$i]['Zip'], 0, 5)) == $z) {
                     $outList[] = array_merge($inLabels[$i], $NoteText);
                     $inLabels[$i]['Zip'] = -1; // done
-                $nz5++;
+                    $nz5++;
                 }
             }
         }
@@ -476,45 +462,45 @@ $nz5 = 0;
         echo "<br>{$nz5} Labels moved to the output list<br>";
     }
 
-//
-//  remove processed labels for inLabels array
-//
+    //
+    //  remove processed labels for inLabels array
+    //
 
-for ($i = 0; $i < $n; $i++) {
-    if ($inLabels[$i]['Zip'] != -1) {
-        $inLabels2[] = $inLabels[$i];
+    for ($i = 0; $i < $n; $i++) {
+        if ($inLabels[$i]['Zip'] != -1) {
+            $inLabels2[] = $inLabels[$i];
+        }
     }
-}
     unset($inLabels);
     $inLabels = $inLabels2;
 
-//
-// Pass 2 looking for ZIP3 bundles
-//
+    //
+    // Pass 2 looking for ZIP3 bundles
+    //
 
-unset($Zips);
+    unset($Zips);
     $n = count($inLabels);
     if ($db) {
         echo "<br>...pass 2 ZIP3..{$n} labels to process<br>";
     }
 
-//print_r($inLabels);
+    //print_r($inLabels);
 
-for ($i = 0; $i < $n; $i++) {
-    $Zips[$i] = intval(mb_substr($inLabels[$i]['Zip'], 0, 3));
-}
+    for ($i = 0; $i < $n; $i++) {
+        $Zips[$i] = intval(mb_substr($inLabels[$i]['Zip'], 0, 3));
+    }
 
-//
-// perform a count of the array values
-//
+    //
+    // perform a count of the array values
+    //
 
-$ZipCounts = array_count_values($Zips);
+    $ZipCounts = array_count_values($Zips);
 
-//
-// walk through the input array and pull all matching records where count >= $iZip3MinBundleSize
-//
+    //
+    // walk through the input array and pull all matching records where count >= $iZip3MinBundleSize
+    //
 
-$nz3 = 0;
+    $nz3 = 0;
     while (list($z, $zc) = each($ZipCounts)) {
         if ($zc >= $iZip3MinBundleSize) {
             $NoteText = ['Note'=>'******* Presort ZIP-3 '.$z];
@@ -544,11 +530,11 @@ $nz3 = 0;
     unset($inLabels);
     $inLabels = $inLabels2;
 
-//
-// Pass 3 looking for ADC bundles
-//
+    //
+    // Pass 3 looking for ADC bundles
+    //
 
-unset($Zips);
+    unset($Zips);
     $n = count($inLabels);
     if ($db) {
         echo "...pass 3 ADC..{$n} labels to process\r\n";
@@ -559,19 +545,19 @@ unset($Zips);
             $Zips[$i] = $adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))];
         }
     }
-//
-// perform a count of the array values
-//
-unset($ZipCounts);
+    //
+    // perform a count of the array values
+    //
+    unset($ZipCounts);
     if (isset($Zips)) {
         $ZipCounts = array_count_values($Zips);
     }
 
-//
-// walk through the input array and pull all matching records where count >= $iAdcMinBundleSize
-//
+    //
+    // walk through the input array and pull all matching records where count >= $iAdcMinBundleSize
+    //
 
-$ncounts = 0;
+    $ncounts = 0;
     if (isset($ZipCounts)) {
         $ncounts = count($ZipCounts);
     }
@@ -588,7 +574,7 @@ $ncounts = 0;
                     if ($adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))] == $z) {
                         $outList[] = array_merge($inLabels[$i], $NoteText);
                         $inLabels[$i]['Zip'] = -1; // done
-                $nadc++;
+                        $nadc++;
                     }
                 }
             }
@@ -607,10 +593,10 @@ $ncounts = 0;
     unset($inLabels);
     $inLabels = $inLabels2;
 
-//
-// Pass 4 looking for remaining Mixed ADC bundles
-//
-$nmadc = 0;
+    //
+    // Pass 4 looking for remaining Mixed ADC bundles
+    //
+    $nmadc = 0;
     unset($Zips);
     $n = count($inLabels);
     $zc = $n;
@@ -636,15 +622,15 @@ $nmadc = 0;
         echo "{$nmadc} Labels moved to the output list <br>";
     }
 
-//
-// return the results
-//
+    //
+    // return the results
+    //
 
-if (count($outList) > 0) {
-    return $outList;
-} else {
-    return 'FALSE';
-}
+    if (count($outList) > 0) {
+        return $outList;
+    } else {
+        return 'FALSE';
+    }
 }
 
 function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete)
@@ -675,23 +661,23 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     while ($aRow = mysqli_fetch_array($rsCartItems)) {
 
     // It's possible (but unlikely) that three labels can be generated for a
-    // family even when they are grouped.
-    // At most one label for all adults
-    // At most one label for all children
-    // At most one label for all others (for example, another church or a landscape
-    // company)
+        // family even when they are grouped.
+        // At most one label for all adults
+        // At most one label for all children
+        // At most one label for all others (for example, another church or a landscape
+        // company)
 
-    $sRowClass = AlternateRowStyle($sRowClass);
+        $sRowClass = AlternateRowStyle($sRowClass);
 
         if (($aRow['per_fam_ID'] == 0) && ($mode == 'fam')) {
             // Skip people with no family ID
-        continue;
+            continue;
         }
 
-    // Skip if mode is fam and we have already printed labels
-    if (array_key_exists($aRow['per_fam_ID'], $didFam) and $didFam[$aRow['per_fam_ID']] && ($mode == 'fam')) {
-        continue;
-    }
+        // Skip if mode is fam and we have already printed labels
+        if (array_key_exists($aRow['per_fam_ID'], $didFam) and $didFam[$aRow['per_fam_ID']] && ($mode == 'fam')) {
+            continue;
+        }
 
         $didFam[$aRow['per_fam_ID']] = 1;
 
@@ -720,9 +706,9 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         foreach ($aName as $key => $sName) {
 
         // Bail out if nothing to print
-        if ($sName == 'Nothing to return') {
-            continue;
-        }
+            if ($sName == 'Nothing to return') {
+                continue;
+            }
 
             if ($bToParents && ($key == 'child')) {
                 $sName = "To the parents of:\n".$sName;
@@ -862,46 +848,56 @@ if ($sFileType == 'PDF') {
     }
 } else { // File Type must be CSV
 
+    $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
+
     $sCSVOutput = '';
     if ($iBulkCode) {
-        $sCSVOutput .= '"ZipBundle",';
+        $sCSVOutput .= '"ZipBundle"'.$delimiter;
     }
+    
 
-    $sCSVOutput .= '"Greeting","Name","Address1","Address2","City","State","Zip"'."\n";
+    $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
 
     while (list($i, $sLT) = each($aLabelList)) {
         if ($iBulkCode) {
-            $sCSVOutput .= '"'.$sLT['Note'].'",';
+            $sCSVOutput .= '"'.$sLT['Note'].'"'.$delimiter;
         }
 
         $iNewline = (strpos($sLT['Name'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"","'.$sLT['Name'].'",';
+            $sCSVOutput .= '""'.$delimiter.'"'.InputUtils::translate_special_charset($sLT['Name']).'"'.$delimiter;
         } else {
-            $sCSVOutput .= '"'.mb_substr($sLT['Name'], 0, $iNewline).'",'.
-                            '"'.mb_substr($sLT['Name'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset(mb_substr($sLT['Name'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translate_special_charset(mb_substr($sLT['Name'], $iNewline + 1)).'"'.$delimiter;
         }
 
         $iNewline = (strpos($sLT['Address'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"'.$sLT['Address'].'","",';
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['Address']).'"'.$delimiter;
         } else {
-            $sCSVOutput .= '"'.mb_substr($sLT['Address'], 0, $iNewline).'",'.
-                            '"'.mb_substr($sLT['Address'], $iNewline + 1).'",';
+            $sCSVOutput .= '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], $iNewline + 1)).'"'.$delimiter;
         }
 
-        $sCSVOutput .= '"'.$sLT['City'].'",'.
-                        '"'.$sLT['State'].'",'.
+        $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['City']).'"'.$delimiter.
+                        '"'.InputUtils::translate_special_charset($sLT['State']).'"'.$delimiter.
                         '"'.$sLT['Zip'].'"'."\n";
     }
 
-    header('Content-type: application/csv');
+    header('Content-type: application/csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
     header('Content-Disposition: attachment; filename=Labels-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
+    
+    //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
+    if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
+        echo "\xEF\xBB\xBF";
+    }
+    
     echo $sCSVOutput;
 }
+
 
 exit();

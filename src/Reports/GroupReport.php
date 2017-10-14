@@ -7,12 +7,7 @@
 *
 *  http://www.churchcrm.io/
 *  Copyright 2003  Chris Gebhardt, Jason York
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -162,13 +157,13 @@ if ($iMode == 1) {
 
         //if ($numlines > 1)
         //{
-            /* if (strtoupper($sLastLetter) != strtoupper(mb_substr($pdf->sFamily,0,1)))
-            {
-                $pdf->Check_Lines($numlines+2);
-                $sLastLetter = strtoupper(mb_substr($pdf->sFamily,0,1));
-                $pdf->Add_Header($sLastLetter);
-            } */
-            $pdf->Add_Record($pdf->sFamily, $OutStr, $numlines);
+        /* if (strtoupper($sLastLetter) != strtoupper(mb_substr($pdf->sFamily,0,1)))
+        {
+            $pdf->Check_Lines($numlines+2);
+            $sLastLetter = strtoupper(mb_substr($pdf->sFamily,0,1));
+            $pdf->Add_Header($sLastLetter);
+        } */
+        $pdf->Add_Record($pdf->sFamily, $OutStr, $numlines);
         // }
     }
 

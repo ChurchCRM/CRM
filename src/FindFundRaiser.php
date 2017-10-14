@@ -5,12 +5,7 @@
  *  last change : 2009-04-16
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2009 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -106,7 +101,7 @@ require 'Include/Header.php';
 // Save record limit if changed
 if (isset($_GET['Number'])) {
     /* @var $currentUser \ChurchCRM\User */
-  $currentUser = $_SESSION['user'];
+    $currentUser = $_SESSION['user'];
     $currentUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
     $currentUser->save();
     $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();

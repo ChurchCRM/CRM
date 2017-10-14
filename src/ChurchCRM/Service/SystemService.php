@@ -427,6 +427,7 @@ class SystemService
         file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
         $returnFile = [];
         $returnFile['fileName'] = basename($url);
+        $returnFile['releaseNotes'] = $release['body'];
         $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
         $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
 

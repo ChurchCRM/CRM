@@ -10,13 +10,8 @@
  *
  *
  *  Copyright Contributors
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters
+  *
+
  *
  ******************************************************************************/
 
@@ -238,7 +233,7 @@ $families = FamilyQuery::create()
                 <label for="Family"
                        class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Select Family:') ?></label>
                 <div class="col-xs-12 col-sm-9">
-                    <select name='Family' data-placeholder="Select a family" class="form-control choiceSelectBox"
+                    <select name='Family' data-placeholder="<?= gettext('Select a family') ?>" class="form-control choiceSelectBox"
                             style="width: 100%">
                         <option></option>
                         <?php
@@ -262,7 +257,7 @@ $families = FamilyQuery::create()
             </div>
             <div class="form-group">
                 <label for="MaxDistance" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    <?= gettext('Maximum distance') . ' (' . strtolower(gettext(SystemConfig::getValue('sDistanceUnit'))) . "): " ?>
+                    <?= gettext('Maximum distance') . ' (' . gettext(SystemConfig::getValue('sDistanceUnit')) . "): " ?>
                 </label>
                 <div class="col-xs-12 col-sm-9">
                     <input type="text" class="form-control" name="MaxDistance" value="<?= $nMaxDistance ?>">
@@ -279,7 +274,7 @@ $families = FamilyQuery::create()
                         <div class="col-xs-6">
                             <label class="checkbox-inline">
                                 <input type="checkbox" value="Guardian" value="1" name="Classification<?= $key ?>"
-                                       id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?> > <?= $value ?>
+                                       id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?> > <?= _($value) ?>
                             </label>
                         </div>
                         <?php

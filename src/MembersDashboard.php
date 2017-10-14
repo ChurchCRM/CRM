@@ -81,9 +81,9 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     <?php
     if ($sEmailLink) {
         // Add default email if default email has been set and is not already in string
-      if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
-          $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
-      }
+        if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+            $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
+        }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
        if ($bEmailMailto) { // Does user have permission to email groups
       // Display link
@@ -138,7 +138,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person-stalker"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath().'/' ?>FamilyList.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -159,7 +159,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="ion ion-person"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath().'/' ?>SelectList.php?mode=person" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
         <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -210,10 +210,15 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 
 </div><!-- /.row -->
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-6">
     <div class="box box-info">
       <div class="box-header with-border">
         <h3 class="box-title"><?= gettext('Reports') ?></h3>
+          <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
       </div>
       <div class="box-body">
         <a class="MediumText" href="GroupReports.php"><?php echo gettext('Reports on groups and roles'); ?></a>
@@ -242,6 +247,32 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       </div>
     </div>
   </div>
+    <div class="col-lg-6">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= gettext('Self Update') ?> <?= gettext('Reports') ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+               <p> <a class="MediumText" href="members/self-register.php"><?php echo gettext('Self Register') ?> <?= gettext('Reports') ?></a>
+                <br>
+                <?php echo gettext('List families that were created via self registration.') ?>
+               </p>
+                <p>
+                    <a class="MediumText"
+                      href="members/self-verify-updates.php"><?= gettext('Self Verify Updates') ?></a><br><?= gettext('Families who commented via self verify links') ?>
+                </p>
+                <p>
+                    <a class="MediumText"
+                      href="members/online-pending-verify.php"><?= gettext('Pending Self Verify') ?></a><br><?= gettext('Families with valid self verify links') ?>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="row">
   <div class="col-lg-6">

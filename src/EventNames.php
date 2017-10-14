@@ -7,12 +7,7 @@
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  *
  *  Modified by Stephen Shaffer, Oct 2006
  *  feature changes - added recurring defaults and customizable attendance count
@@ -102,9 +97,9 @@ $numRows = mysqli_num_rows($rsOpps);
             $aDefRecurDOM[$row] = $type_defrecurDOM;
             $aDefRecurDOY[$row] = $type_defrecurDOY;
             $aDefRecurType[$row] = $type_defrecurtype;
-//                echo "$row:::DOW = $aDefRecurDOW[$row], DOM=$aDefRecurDOM[$row], DOY=$adefRecurDOY[$row] type=$aDefRecurType[$row]\n\r\n<br>";
+            //                echo "$row:::DOW = $aDefRecurDOW[$row], DOM=$aDefRecurDOM[$row], DOY=$adefRecurDOY[$row] type=$aDefRecurType[$row]\n\r\n<br>";
 
-                switch ($aDefRecurType[$row]) {
+            switch ($aDefRecurType[$row]) {
                   case 'none':
                     $recur[$row] = gettext('None');
                     break;
@@ -120,11 +115,11 @@ $numRows = mysqli_num_rows($rsOpps);
                   default:
                     $recur[$row] = gettext('None');
                 }
-                // recur types = 1-DOW for weekly, 2-DOM for monthly, 3-DOY for yearly.
-                // repeats on DOW, DOM or DOY
-                //
-                // new - check the count definintions table for a list of count fields
-                $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
+            // recur types = 1-DOW for weekly, 2-DOM for monthly, 3-DOY for yearly.
+            // repeats on DOW, DOM or DOY
+            //
+            // new - check the count definintions table for a list of count fields
+            $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
             $cOpps = RunQuery($cSQL);
             $numCounts = mysqli_num_rows($cOpps);
             $cCountName = '';
@@ -338,16 +333,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) != 'NEW') {
 <script type="text/javascript">
   $(document).ready(function () {
 //Added by @saulowulhynek to translation of datatable nav terms
-    $('#eventNames').dataTable({
-      "language": {
-        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-      },
-      responsive: true,
-      "dom": 'T<"clear">lfrtip',
-      "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
-      }
-    });
+    $('#eventNames').DataTable(window.CRM.plugin.dataTable);
   });
 </script>
 

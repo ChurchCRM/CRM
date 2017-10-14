@@ -7,21 +7,6 @@
  *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  General Public License for mote details.
- *
- *  http://www.gnu.org/licenses
- *
  ******************************************************************************/
 
 // Include the function library
@@ -53,10 +38,10 @@ if (isset($_POST['save'])) {
 
     while ($current_type = current($type)) {
         $id = key($type);
-    // Filter Input
+        // Filter Input
     if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
       $value = InputUtils::FilterHTML($new_value[$id]);
-    } elseif ($current_type == 'text' || $current_type == 'textarea') {
+    } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
         $value = InputUtils::FilterString($new_value[$id]);
     } elseif ($current_type == 'number') {
         $value = InputUtils::FilterFloat($new_value[$id]);
@@ -74,12 +59,12 @@ if (isset($_POST['save'])) {
         }
     }
 
-    // If changing the locale, translate the menu options
-    if ($id == 39 && $value != $localeInfo->getLocale()) {
-        $localeInfo = new LocaleInfo($value);
-        setlocale(LC_ALL, $localeInfo->getLocale());
-        $aLocaleInfo = $localeInfo->getLocaleInfo();
-    }
+        // If changing the locale, translate the menu options
+        if ($id == 39 && $value != $localeInfo->getLocale()) {
+            $localeInfo = new LocaleInfo($value);
+            setlocale(LC_ALL, $localeInfo->getLocale());
+            $aLocaleInfo = $localeInfo->getLocaleInfo();
+        }
 
         if ($id == 65 && !(in_array($value, timezone_identifiers_list()))) {
             $value = date_default_timezone_get();

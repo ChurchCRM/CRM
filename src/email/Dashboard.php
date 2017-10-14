@@ -6,16 +6,18 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2014
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+
+
+
+
  *
  ******************************************************************************/
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
+
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\dto\SystemURLs;
 
 $mailchimp = new MailChimpService();
 
@@ -95,7 +97,7 @@ require '../Include/Header.php';
         <div class="alert alert-danger alert-dismissible">
           <h4><i class="icon fa fa-ban"></i> MailChimp <?= gettext('is not configured') ?></h4>
           <?= gettext('Please update the') ?> MailChimp <?= gettext('API key in Setting->') ?><a href="../SystemSettings.php"><?= gettext('Edit General Settings') ?></a>,
-          <?= gettext('then update') ?> sMailChimpApiKey. <?= gettext('For more info see our ') ?><a href="http://docs.churchcrm.io"> MailChimp <?= gettext('support docs.') ?></a>
+          <?= gettext('then update') ?> sMailChimpApiKey. <?= gettext('For more info see our ') ?><a href="<?= SystemURLs::getSupportURL() ?>"> MailChimp <?= gettext('support docs.') ?></a>
         </div>
       </div>
     </div>

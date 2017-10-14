@@ -9,13 +9,8 @@
  *
  *
  *  Copyright 2006 Contributors
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters
+  *
+
  *
  ******************************************************************************/
 
@@ -32,7 +27,7 @@ function FontSelect($fieldname)
         $len = strlen($entry);
         if ($len > 3) {
             if (strtoupper(mb_substr($entry, $len - 3)) == 'PHP') { // php files only
-        $filename = mb_substr($entry, 0, $len - 4);
+                $filename = mb_substr($entry, 0, $len - 4);
                 if (mb_substr($filename, 0, strlen($family)) != $family) {
                     $family = $filename;
                 }

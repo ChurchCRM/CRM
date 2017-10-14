@@ -5,12 +5,7 @@
  *  last change : 2009-04-15
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2009 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -65,7 +60,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
             $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES ('.
             "'".$dDate."','".$sTitle."','".$sDescription."',".$_SESSION['iUserID'].",'".date('YmdHis')."')";
             $bGetKeyBack = true;
-        // Existing record (update)
+            // Existing record (update)
         } else {
             $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".$_SESSION['iUserID'].", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
             $bGetKeyBack = false;

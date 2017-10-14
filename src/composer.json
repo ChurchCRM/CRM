@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM/CRM",
-    "version": "2.8.0",
+    "version": "2.8.11",
     "type": "project",
     "keywords": [
         "church",
@@ -24,9 +24,9 @@
     "support": {
         "email": "info@churchcrm.io",
         "issues": "https://github.com/ChurchCRM/CRM/issues",
-        "irc": "http://webchat.freenode.net/?randomnick=1&channels=ChurchCRM&prompt=1&uio=d4",
+        "irc": "https://gitter.im/ChurchCRM/CRM",
         "source": "https://github.com/ChurchCRM/CRM",
-        "docs": "http://docs.churchcrm.io"
+        "docs": "https://github.com/ChurchCRM/CRM/wiki"
     },
     "require": {
         "php": ">=5.6.0",
@@ -41,7 +41,7 @@
         "phpmailer/phpmailer": "5.2.*",
         "verot/class.upload.php": "dev-master",
         "ifsnop/mysqldump-php": "2.*",
-        "willdurand/geocoder": "3.3.*",
+        "willdurand/geocoder": "3.3.2",
         "mustache/mustache": "~2.5",
         "nexmo/client": "@beta"
     },

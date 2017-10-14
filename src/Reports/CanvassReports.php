@@ -5,12 +5,7 @@
  *  last change : 2013-02-22
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2013 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 require '../Include/Config.php';
@@ -352,13 +347,13 @@ function CanvassSummaryReport($iFYID)
         $pdf->SetFont('Times', 'B', 14);
 
         $pdf->Write(5, $colName.' '.gettext('Comments')."\n");
-//		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $colName . " Comments");
+        //		$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $colName . " Comments");
         $pdf->SetFont('Times', '', 12);
         while ($aDatum = mysqli_fetch_array($rsCanvassData)) {
             $str = $aDatum['can_'.$colName];
             if ($str != '') {
                 $pdf->Write(4, $str."\n\n");
-//				$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $str);
+                //				$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $str);
 //				$curY += SystemConfig::getValue("incrementY");
             }
         }

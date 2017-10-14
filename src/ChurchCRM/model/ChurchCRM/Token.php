@@ -17,33 +17,35 @@ use ChurchCRM\Base\Token as BaseToken;
 class Token extends BaseToken
 {
 
+    const typeFamilyVerify = "verifyFamily";
+    const typePassword = "password";
+
     public function build($type, $referenceId)
     {
         $this->setReferenceId($referenceId);
         $this->setToken(uniqid());
         switch ($type) {
-            case "verify":
+            case "verifyFamily":
                 $this->setValidUntilDate(strtotime("+1 week"));
                 $this->setRemainingUses(5);
-                $this->setType($type);
                 break;
             case "password":
                 $this->setValidUntilDate(strtotime("+1 day"));
                 $this->setRemainingUses(1);
-                $this->setType($type);
                 break;
         }
+        $this->setType($type);
     }
 
 
     public function isVerifyFamilyToken()
     {
-        return "verifyFamily" === $this->getType();
+        return self::typeFamilyVerify === $this->getType();
     }
 
     public function isPasswordResetToken()
     {
-        return "password" === $this->getType();
+        return self::typePassword === $this->getType();
     }
 
     public function isValid()

@@ -9,16 +9,17 @@
  *
  *  function    : Editor for group-specific properties form
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+
+
+
+
 ******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bManageGroups']) {
@@ -390,7 +391,7 @@ if ($numRows == 0) {
                         }
                         echo '</select>';
                     ?><BR>
-					<a href="http://docs.churchcrm.io/"><?= gettext('Help on types..') ?></a>
+					<a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
 					</td>
 					<td valign="top">
 						<div><?= gettext('Name') ?>:</div>

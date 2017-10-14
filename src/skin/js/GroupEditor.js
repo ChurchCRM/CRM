@@ -7,17 +7,17 @@ $("document").ready(function()
     if(groupPropertyAction == "enableGroupProps")
     {
       $("#groupSpecificPropertiesModal").modal("show");
-      $("#gsproperties-label").text("Confirm Enable Group Specific Properties");
-      $("#groupSpecificPropertiesModal .modal-body span").text("This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.");
-      $("#setgroupSpecificProperties").text("Enable Group Specific Properties");
+      $("#gsproperties-label").text(i18next.t('Confirm Enable Group Specific Properties'));
+      $("#groupSpecificPropertiesModal .modal-body span").text(i18next.t('This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.'));
+      $("#setgroupSpecificProperties").text(i18next.t('Enable Group Specific Properties'));
       $("#setgroupSpecificProperties").data("action",1);
     }
     else
     {
       $("#groupSpecificPropertiesModal").modal("show");
-      $("#gsproperties-label").text("Confirm Disable Group Specific Properties");
-      $("#groupSpecificPropertiesModal .modal-body span").text("Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!");
-      $("#setgroupSpecificProperties").text("Disable Group Specific Properties");
+      $("#gsproperties-label").text(i18next.t('Confirm Disable Group Specific Properties'));
+      $("#groupSpecificPropertiesModal .modal-body span").text(i18next.t('Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!'));
+      $("#setgroupSpecificProperties").text(i18next.t('Disable Group Specific Properties'));
       $("#setgroupSpecificProperties").data("action",0);
     }
   });
@@ -200,38 +200,46 @@ $("document").ready(function()
   });
 
   dataT = $("#groupRoleTable").DataTable({
+   "language": {
+      "url": window.CRM.plugin.dataTable.language.url
+    },
     data: groupRoleData,
     columns: [
       {
         width: 'auto',
-        title: 'Role Name',
+        title: i18next.t("Role Name"),
         data: 'lst_OptionName',
         render: function(data, type, full, meta)
         {
           if(type === 'display')
-            return '<input type="text" class="roleName" id="roleName-' + full.lst_OptionID + '" value="' + data + '">';
+          {
+          	if (data === 'Student' || data === 'Teacher')
+	            return '<input type="text" class="roleName" id="roleName-' + full.lst_OptionID + '" value="' + i18next.t(data) + '" readonly>';
+	          else
+	          	return '<input type="text" class="roleName" id="roleName-' + full.lst_OptionID + '" value="' + data + '">';
+          }
           else
             return data;
         }
       },
       {
         width: 'auto',
-        title: 'Make Default',
+        title: i18next.t("Make Default"),
         render: function(data, type, full, meta)
         {
           if(full.lst_OptionID == defaultRoleID)
           {
-            return "<strong><i class=\"fa fa-check\"></i> Default</strong>";
+            return "<strong><i class=\"fa fa-check\"></i>"+ i18next.t("Default")+"</strong>";
           }
           else
           {
-            return '<button type="button" id="defaultRole-' + full.lst_OptionID + '" class="btn btn-success defaultRole">Default</button>';
+            return '<button type="button" id="defaultRole-' + full.lst_OptionID + '" class="btn btn-success defaultRole">'+i18next.t("Default")+'</button>';
           }
         }
       },
       {
         width: '200px',
-        title: 'Sequence',
+        title: i18next.t("Sequence"),
         data: 'lst_OptionSequence',
         className: "dt-body-center",
         render: function(data, type, full, meta)
@@ -258,10 +266,13 @@ $("document").ready(function()
       },
       {
         width: 'auto',
-        title: 'Delete',
+        title: i18next.t("Delete"),
         render: function(data, type, full, meta)
         {
-          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole">Delete</button>';
+        	if (full.lst_OptionName === 'Student' || full.lst_OptionName === 'Teacher' )
+	          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole" disabled>'+i18next.t("Delete")+'</button>';
+	        else
+	          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole">'+i18next.t("Delete")+'</button>';
 
         }
       },

@@ -11,25 +11,14 @@
 *  Additional Contributors:
 *  2007 Ed Davis
 *
-*
-*  Copyright Contributors
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*
-*  This file best viewed in a text editor with tabs stops set to 4 characters.
-*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
-*  of hard tab characters.
-*
+
 ******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {
@@ -438,7 +427,7 @@ if ($numRows == 0) {
                         }
                         echo '</select>';
                     ?><BR>
-                    <a href="http://docs.churchcrm.io/"><?= gettext('Help on types..') ?></a>
+                    <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
                     </td>
                     <td valign="top">
                         <div><?= gettext('Name') ?>:</div>

@@ -1,32 +1,32 @@
 module.exports = function (grunt) {
 
+    var poLocales = function() {
+        var locales = grunt.file.readJSON("src/locale/locales.json");
+        poEditorLocales = {};
+        for (var key in locales ) {
+            var locale = locales[key];
+            var poLocaleName = locale["poEditor"];
+            poEditorLocales[poLocaleName] = locale["locale"];
+        }
+        return poEditorLocales;
+    };
+
+    var dataTablesLang = function() {
+        var locales = grunt.file.readJSON("src/locale/locales.json");
+        DTLangs = [];
+        for (var key in locales ) {
+            var locale = locales[key];
+            DTLangs.push(locale["dataTables"]);
+
+        }
+        return DTLangs.toString();
+    };
 
 // Project configuration.
     grunt.initConfig({
         package: grunt.file.readJSON('package.json'),
         pkg: grunt.file.readJSON('package.json'),
         buildConfig: grunt.file.readJSON('BuildConfig.json'),
-        languages: {
-            'de': 'de_DE',
-            'en-au': 'en_AU',
-            'en-ca': 'en_CA',
-            'en': 'en_GB',
-            'es': 'es_ES',
-            'fr': 'fr_FR',
-            'hu': 'hu_HU',
-            'it': 'it_IT',
-            'nb': 'nb_NO',
-            'nl': 'nl_NL',
-            'pl': 'pl_PL',
-            'pt-br': 'pt_BR',
-            'ro': 'ro_RO',
-            'ru': 'ru_RU',
-            'sq': 'sq_AL',
-            'sv': 'sv_SE',
-            'vi': 'vi_VN',
-            'zh-CN': 'zh_CN',
-            'zh-TW': 'zh_TW'
-        },
         projectFiles: [
             '**',
             '**/.*',
@@ -42,7 +42,6 @@ module.exports = function (grunt) {
             '!logs/*.log'
         ],
         clean: {
-            locale: ["src/skin/locale"],
             skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
             release: ["target"]
         },
@@ -160,96 +159,10 @@ module.exports = function (grunt) {
                 ]
             }
         },
-        concat: {
-            options: {
-                separator: ';\n\n',
-                banner: '/*! <%= package.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-            },
-            de_DE: {
-                src: ['node_modules/fullcalendar/dist/locale/de.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.de.js'],
-                dest: 'src/skin/locale/de_DE.js'
-            },
-            en_AU: {
-                src: ['node_modules/fullcalendar/dist/locale/en-au.js'],
-                dest: 'src/skin/locale/en_AU.js'
-            },
-            en_CA: {
-                src: ['node_modules/fullcalendar/dist/locale/en-ca.js'],
-                dest: 'src/skin/locale/en_CA.js'
-            },
-            en_GB: {
-                src: ['node_modules/fullcalendar/dist/locale/en-gb.js'],
-                dest: 'src/skin/locale/en_GB.js'
-            },
-            en_US: {
-                src: [],
-                dest: 'src/skin/locale/en_US.js'
-            },
-            es_ES: {
-                src: ['node_modules/fullcalendar/dist/locale/es.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.es.js'],
-                dest: 'src/skin/locale/es_ES.js'
-            },
-            fr_FR: {
-                src: ['node_modules/fullcalendar/dist/locale/fr.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.fr.js'],
-                dest: 'src/skin/locale/fr_FR.js'
-            },
-            hu_HU: {
-                src: ['node_modules/fullcalendar/dist/locale/hu.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.hu.js'],
-                dest: 'src/skin/locale/hu_HU.js'
-            },
-            it_IT: {
-                src: ['node_modules/fullcalendar/dist/locale/it.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.it.js'],
-                dest: 'src/skin/locale/it_IT.js'
-            },
-            nb_NO: {
-                src: ['node_modules/fullcalendar/dist/locale/nb.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.nb.js'],
-                dest: 'src/skin/locale/nb_NO.js'
-            },
-            nl_NL: {
-                src: ['node_modules/fullcalendar/dist/locale/nl.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.nl.js'],
-                dest: 'src/skin/locale/nl_NL.js'
-            },
-            pl_PL: {
-                src: ['node_modules/fullcalendar/dist/locale/pl.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.pl.js'],
-                dest: 'src/skin/locale/pl_PL.js'
-            },
-            pt_BR: {
-                src: ['node_modules/fullcalendar/dist/locale/pt-br.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js'],
-                dest: 'src/skin/locale/pt_BR.js'
-            },
-            ro_RO: {
-                src: ['node_modules/fullcalendar/dist/locale/ro.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ro.js'],
-                dest: 'src/skin/locale/ro_RO.js'
-            },
-            ru_RU: {
-                src: ['node_modules/fullcalendar/dist/locale/ru.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.ru.js'],
-                dest: 'src/skin/locale/ru_RU.js'
-            },
-            sq_AL: {
-                src: ['node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sq.js'],
-                dest: 'src/skin/locale/sq_AL.js'
-            },
-            sv_SE: {
-                src: ['node_modules/fullcalendar/dist/locale/sv.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.sv.js'],
-                dest: 'src/skin/locale/sv_SE.js'
-            },
-            vi_VN: {
-                src: ['node_modules/fullcalendar/dist/locale/vi.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.vi.js'],
-                dest: 'src/skin/locale/vi_VN.js'
-            },
-            zh_CN: {
-                src: ['node_modules/fullcalendar/dist/locale/zh-cn.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js'],
-                dest: 'src/skin/locale/zh_CN.js'
-            },
-            zh_TW: {
-                src: ['node_modules/fullcalendar/dist/locale/zh-tw.js', 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.zh-TW.js'],
-                dest: 'src/skin/locale/zh_TW.js'
-            }
-        },
         'curl-dir': {
             datatables: {
-                src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{Albanian,Chinese-traditional,Chinese,Dutch,English,French,German,Hungarian,Italian,Norwegian-Bokmal,Polish,Portuguese,Romanian,Russian,Spanish,Swedish,Vietnamese}.json'],
-                dest: 'src/skin/locale/datatables'
+                src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{'+dataTablesLang()+'}.json'],
+                dest: 'src/locale/datatables'
             },
             fastclick: {
                 src: ['https://raw.githubusercontent.com/ftlabs/fastclick/569732a7aa5861d428731b8db022b2d55abe1a5a/lib/fastclick.js'],
@@ -272,41 +185,6 @@ module.exports = function (grunt) {
                 files: {
                     'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
                 }
-            }
-        },
-        rename: {
-            datatables: {
-                files: [
-                    {src: ['src/skin/locale/datatables/English.json'], dest: 'src/skin/locale/datatables/en_US.json'},
-                    {src: ['src/skin/locale/datatables/German.json'], dest: 'src/skin/locale/datatables/de_DE.json'},
-                    {src: ['src/skin/locale/datatables/Spanish.json'], dest: 'src/skin/locale/datatables/es_ES.json'},
-                    {src: ['src/skin/locale/datatables/French.json'], dest: 'src/skin/locale/datatables/fr_FR.json'},
-                    {src: ['src/skin/locale/datatables/Hungarian.json'], dest: 'src/skin/locale/datatables/hu_HU.json'},
-                    {src: ['src/skin/locale/datatables/Italian.json'], dest: 'src/skin/locale/datatables/it_IT.json'},
-                    {
-                        src: ['src/skin/locale/datatables/Norwegian-Bokmal.json'],
-                        dest: 'src/skin/locale/datatables/nb_NO.json'
-                    },
-                    {src: ['src/skin/locale/datatables/Dutch.json'], dest: 'src/skin/locale/datatables/nl_NL.json'},
-                    {src: ['src/skin/locale/datatables/Polish.json'], dest: 'src/skin/locale/datatables/pl_PL.json'},
-                    {
-                        src: ['src/skin/locale/datatables/Portuguese.json'],
-                        dest: 'src/skin/locale/datatables/pt_BR.json'
-                    },
-                    {src: ['src/skin/locale/datatables/Romanian.json'], dest: 'src/skin/locale/datatables/ro_RO.json'},
-                    {src: ['src/skin/locale/datatables/Russian.json'], dest: 'src/skin/locale/datatables/ru_RU.json'},
-                    {src: ['src/skin/locale/datatables/Albanian.json'], dest: 'src/skin/locale/datatables/sq_AL.json'},
-                    {src: ['src/skin/locale/datatables/Swedish.json'], dest: 'src/skin/locale/datatables/sv_SE.json'},
-                    {
-                        src: ['src/skin/locale/datatables/Vietnamese.json'],
-                        dest: 'src/skin/locale/datatables/vi_VN.json'
-                    },
-                    {src: ['src/skin/locale/datatables/Chinese.json'], dest: 'src/skin/locale/datatables/zh_CN.json'},
-                    {
-                        src: ['src/skin/locale/datatables/Chinese-traditional.json'],
-                        dest: 'src/skin/locale/datatables/zh_TW.json'
-                    }
-                ]
             }
         },
         compress: {
@@ -386,7 +264,7 @@ module.exports = function (grunt) {
                     filters: ["translated"],
                     tags: '<%= package.version %>',
                     type: 'po', // export type (check out the doc)
-                    dest: 'src/locale/?/LC_MESSAGES/messages.po'
+                    dest: 'src/locale/textdomain/?/LC_MESSAGES/messages.po'
                     // grunt style dest files
                 }
             },
@@ -396,7 +274,7 @@ module.exports = function (grunt) {
                     filters: ["translated"],
                     tags: '<%= package.version %>',
                     type: 'mo', // export type (check out the doc)
-                    dest: 'src/locale/?/LC_MESSAGES/messages.mo'
+                    dest: 'src/locale/textdomain/?/LC_MESSAGES/messages.mo'
                     // grunt style dest files
                 }
             },
@@ -406,13 +284,13 @@ module.exports = function (grunt) {
                     filters: ["translated"],
                     tags: '<%= package.version %>',
                     type: 'key_value_json', // export type (check out the doc)
-                    dest: 'src/locale/?/LC_MESSAGES/messages.js'
+                    dest: 'locale/JSONKeys/?.json'
                     // grunt style dest files
                 }
             },
             options: {
                 project_id: '77079',
-                languages: '<%= languages %>',
+                languages: poLocales(),
                 api_token: '<%= buildConfig.POEditor.token %>'
             }
         },
@@ -458,12 +336,57 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('updateFromPOeditor', 'Description of the task', function (target) {
-        grunt.config('clean', {pofiles: ["src/locale/*/**/*.po", "src/locale/*/**/*.mo", "src/locale/*/**/*.js"]});
+        grunt.config('clean', {pofiles: ["src/locale/*/**/*.po", "src/locale/*/**/*.mo", "locale/JSONKeys/*.json"]});
         grunt.task.run(['clean:pofiles']);
         grunt.loadNpmTasks('grunt-poeditor-ab');
         grunt.task.run(['poeditor']);
     });
 
+    grunt.registerTask('genLocaleJSFiles', '', function () {
+        var locales = grunt.file.readJSON("src/locale/locales.json");
+        poEditorLocales = {};
+        for (var key in locales ) {
+            var localeConfig = locales[key];
+            var locale = localeConfig["locale"];
+            var countryCode = localeConfig["countryCode"];
+            var languageCode = localeConfig["languageCode"];
+            var enableFullCalendar = localeConfig["fullCalendar"];
+            var enableDatePicker = localeConfig["datePicker"];
+            var enableSelect2 = localeConfig["select2"];
+
+            tempFile = 'locale/JSONKeys/'+locale+'.json';
+            poTerms = grunt.file.read(tempFile);
+            if (poTerms == "") {
+                poTerms = "{}";
+            }
+            jsFileContent = '// Source: ' + tempFile;
+            jsFileContent = jsFileContent + "\ntry {window.CRM.i18keys = " + poTerms + ";} catch(e) {};\n";
+
+            if (enableFullCalendar) {
+                tempLangCode = languageCode.toLowerCase();
+                if (localeConfig.hasOwnProperty("fullCalendarLocale")) {
+                    tempLangCode = localeConfig["fullCalendarLocale"];
+                }
+                tempFile = 'node_modules/fullcalendar/dist/locale/'+tempLangCode+'.js';
+                fullCalendar = grunt.file.read(tempFile);
+                jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
+                jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {};\n";
+            }
+            if (enableDatePicker) {
+                tempFile = 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.'+languageCode+'.js';
+                datePicker = grunt.file.read(tempFile);
+                jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
+                jsFileContent = jsFileContent + '\n' + "try {"+datePicker+"} catch(e) {};\n"
+            }
+            if (enableSelect2) {
+                tempFile = 'node_modules/admin-lte/plugins/select2/i18n/'+languageCode+'.js';
+                jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
+                select2 = grunt.file.read(tempFile);
+                jsFileContent = jsFileContent + '\n' + "try {"+select2+"} catch(e) {}"
+            }
+            grunt.file.write('src/locale/js/'+locale+'.js', jsFileContent );
+        }
+    });
 
     grunt.registerMultiTask('updateVersions', 'Update Files to match NPM version', function () {
         var version = this.data.version;
@@ -493,9 +416,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-compress');
-    grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-github-release-notes');
+    grunt.loadNpmTasks('grunt-poeditor-ab');
 }

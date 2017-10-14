@@ -6,12 +6,7 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2012Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -23,7 +18,7 @@ use ChurchCRM\MICRReader;
 use ChurchCRM\Utils\InputUtils;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
-   $micrObj = new MICRReader();
+    $micrObj = new MICRReader();
 }
 
 $iEnvelope = 0;
@@ -433,7 +428,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 // Set Current Deposit setting for user
 if ($iCurrentDeposit) {
     /* @var $currentUser \ChurchCRM\User */
-  $currentUser = $_SESSION['user'];
+    $currentUser = $_SESSION['user'];
     $currentUser->setCurrentDeposit($iCurrentDeposit);
     $currentUser->save();
 }
@@ -795,9 +790,12 @@ require 'Include/Header.php';
     });
     
     $("#FundTable").DataTable({
-      responsive:true,
-      paging: false,
-      searching: false
+        "language": {
+            "url": window.CRM.plugin.dataTable.language.url
+        },
+        responsive:true,
+        paging: false,
+        searching: false
     });
     
     

@@ -10,17 +10,7 @@
 *  Additional Contributors:
 *  2006 Ed Davis
 *
-*
-*  Copyright Contributors
-*
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  This file best viewed in a text editor with tabs stops set to 4 characters
-*
+
 ******************************************************************************/
 
 // Include the function library
@@ -194,6 +184,12 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
                 <h3 class="box-title"><?= gettext('Latest Families') ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -229,6 +225,12 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
             <div class="box-header">
                 <i class="fa fa-check"></i>
                 <h3 class="box-title"><?= gettext('Updated Families') ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">

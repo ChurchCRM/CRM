@@ -4,12 +4,7 @@
  *  filename    : FinancialReports.php
  *  last change : 2005-03-26
  *  description : form to invoke financial reports
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
@@ -68,7 +63,7 @@ if ($sReportType == '') {
     echo '</select>';
     echo '</td></tr>';
     // First Pass Cancel, Next Buttons
-      echo "<tr><td>&nbsp;</td>
+    echo "<tr><td>&nbsp;</td>
         <td><input type=button class=btn name=Cancel value='".gettext('Cancel')."'
         onclick=\"javascript:document.location='ReportList.php';\">
         <input type=submit class=btn name=Submit1 value='".gettext('Next')."'>
