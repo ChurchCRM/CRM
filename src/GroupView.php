@@ -10,8 +10,7 @@
  *
  *
  *  Copyright Contributors
-  *
-
+ *
  *
  * **************************************************************************** */
 
@@ -485,7 +484,7 @@ require 'Include/Header.php';
                 $("#deleteGroupButton").click(function() {
                   console.log("click");
                   bootbox.setDefaults({
-									locale: "<?= $localeInfo->getLanguageCode() ?>"}),
+									locale: window.CRM.shortLocale}),
                   bootbox.confirm({
                     title: "<?= gettext("Confirm Delete Group") ?>",
                     message: '<p style="color: red">'+
