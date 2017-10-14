@@ -152,6 +152,10 @@ msgstr "Email"
 msgid "Credit Card"
 msgstr "Kreditkarte"
 
+#: AutoPaymentEditor.php:955
+msgid "Vanco Credit Card Method"
+msgstr "Vanco Kreditkarten Methode"
+
 #: AutoPaymentEditor.php:964
 msgid "Expiration Month"
 msgstr "Auslaufmonat"
@@ -171,6 +175,10 @@ msgstr "BLZ"
 #: AutoPaymentEditor.php:988
 msgid "Bank Account Number"
 msgstr "Kontonummer"
+
+#: AutoPaymentEditor.php:996
+msgid "Vanco Bank Account Method"
+msgstr "Vanco Bankkonto Methode"
 
 #: BackupDatabase.php:40 Include/Footer.php:178
 msgid "Backup Database"
@@ -201,6 +209,10 @@ msgstr "Gzip"
 msgid "Uncompressed"
 msgstr "Nichtkomprimiert"
 
+#: BackupDatabase.php:65
+msgid "tar.gz (Include Photos)"
+msgstr "tar.gz (inklusive Fotos)"
+
 #: BackupDatabase.php:69
 msgid "Encrypt backup file with a password?"
 msgstr "Soll die Sicherung mit einem Passwort verschlüsselt werden?"
@@ -213,6 +225,10 @@ msgstr "Wiederholung des Passworts"
 #: BackupDatabase.php:76
 msgid "Generate and Download Backup"
 msgstr "Erstellen und Herunterladen einer Sicherung"
+
+#: BackupDatabase.php:77
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Backup für externen Speicher erstellen und speichern"
 
 #: BatchWinnerEntry.php:34 FundRaiserEditor.php:153
 #, fuzzy
@@ -236,6 +252,10 @@ msgstr "Geben Gewinner"
 #: CartView.php:112 CSVExport.php:52
 msgid "CSV Export"
 msgstr "CSV Export"
+
+#: CSVExport.php:60
+msgid "Field Selection"
+msgstr "Feldauswahl"
 
 #: AutoPaymentEditor.php:895 CSVExport.php:64 CSVImport.php:211
 #: external/templates/registration/family-register-members.php:73
@@ -309,6 +329,10 @@ msgstr "Rolle in der Familie"
 #, fuzzy
 msgid "Depends whether using person or family output method"
 msgstr "Abhängig davon ob die Personen oder Familienansicht benutzt wird"
+
+#: CSVExport.php:181
+msgid "Custom Field Selection"
+msgstr "Benutzerdefinierte Feldauswahl"
 
 #: CSVExport.php:189
 msgid "Custom Person Fields"
@@ -891,6 +915,14 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
+#: CheckVersion.php:43
+msgid "Software Version Check"
+msgstr "Software Versions Check"
+
+#: CheckVersion.php:53
+msgid "Oops! Something went wrong"
+msgstr "Ups, da lief was falsch."
+
 #: Checkin.php:15
 msgid "Event Checkin"
 msgstr "Anmeldung zur Veranstaltung"
@@ -1181,6 +1213,10 @@ msgstr "Geh zu"
 msgid "Description"
 msgstr "Beschreibung"
 
+#: DonatedItemEditor.php:277
+msgid "Picture URL"
+msgstr "Bild URL"
+
 #: DonationFundEditor.php:48
 msgid "Donation Fund Editor"
 msgstr "Spenden Fonds Editor"
@@ -1251,6 +1287,14 @@ msgstr "Wiederholungsmuster"
 msgid "Attendance Counts"
 msgstr "Teilnehmerzahl"
 
+#: EditEventTypes.php:177
+msgid "Add counter"
+msgstr "Zähler hinzufügen"
+
+#: ElectronicPaymentList.php:186
+msgid "Add a New Electronic Payment Method"
+msgstr "Neue elektronische Zahlmethode hinzufügen"
+
 #: AutoPaymentEditor.php:800
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:193
@@ -1278,6 +1322,10 @@ msgstr "Typ"
 msgid "Fiscal Year"
 msgstr "Steuerjahr"
 
+#: ElectronicPaymentList.php:196
+msgid "Next Date"
+msgstr "Nächster Termin"
+
 #: ElectronicPaymentList.php:197 FamilyView.php:650 FamilyView.php:759
 #: PledgeEditor.php:712 SelectDelete.php:218
 msgid "Amount"
@@ -1291,6 +1339,10 @@ msgstr "Fonds"
 #: ElectronicPaymentList.php:200 FindDepositSlip.php:46
 msgid "Bank"
 msgstr "Bank"
+
+#: ElectronicPaymentList.php:202
+msgid "Account"
+msgstr "Konto"
 
 #: ElectronicPaymentList.php:209 FamilyEditor.php:943
 #: queryparameters_qrp.php:11
@@ -1367,6 +1419,14 @@ msgstr "In dieser Kategorie gibt es keine Veranstaltungen"
 msgid "There are no Records"
 msgstr "Es gibt keine Einträge"
 
+#: EventNames.php:284 EventNames.php:285
+msgid "Create Event"
+msgstr "Event erstellen"
+
+#: EventEditor.php:401
+msgid "Create a new Event"
+msgstr "Neues Event erstellen"
+
 #: EventEditor.php:401
 msgid "Editing Event ID: "
 msgstr "Edit Event ID:"
@@ -1384,6 +1444,14 @@ msgstr "Objekte im Korb:"
 #, fuzzy
 msgid " are required"
 msgstr "Dieser Wert wird benötigt."
+
+#: EventEditor.php:426
+msgid "Select your event type"
+msgstr "Eventtyp auswählen"
+
+#: EventEditor.php:436
+msgid "You must pick an event type."
+msgstr "Es muss ein Eventtyp ausgewählt werden."
 
 #: EventEditor.php:466
 #, fuzzy
@@ -1407,6 +1475,10 @@ msgstr "Predigt"
 #, fuzzy
 msgid "Event Status"
 msgstr "Veranstaltungsstatus"
+
+#: EventEditor.php:566
+msgid "Return to Events"
+msgstr "Zurück zu den Events"
 
 #: EventNames.php:148
 msgid "EVENT TYPE NAME"
@@ -1440,9 +1512,17 @@ msgstr "Freitags"
 msgid "Saturdays"
 msgstr "Samstags"
 
+#: EventNames.php:207
+msgid "DEFAULT START TIME"
+msgstr "Benutzerdefinierte Startzeit"
+
 #: EventNames.php:217
 msgid "ATTENDANCE COUNTS"
 msgstr "BESUCHERZAHL"
+
+#: EventNames.php:220
+msgid "Optional"
+msgstr "Optional"
 
 #: EventNames.php:325
 msgid "Add Event Type"
@@ -1688,6 +1768,14 @@ msgstr "Breitengrad/Längengrad"
 msgid "Envelope Number"
 msgstr "Nr. des Briefumschlags"
 
+#: FamilyView.php:295
+msgid "Verify Info"
+msgstr "Bestätige die Information"
+
+#: FamilyView.php:297
+msgid "Add New Member"
+msgstr "Neues Mitglied anlegen"
+
 #: FamilyView.php:301
 msgid "Previous Family"
 msgstr "Letzte Familie"
@@ -1696,6 +1784,10 @@ msgstr "Letzte Familie"
 msgid "Next Family"
 msgstr "Nächste Familie"
 
+#: FamilyView.php:315
+msgid "Delete this Family"
+msgstr "Diese Familie löschen"
+
 #: FamilyView.php:185 PersonView.php:192
 msgid "Upload Photo"
 msgstr "Foto hochladen"
@@ -1703,6 +1795,14 @@ msgstr "Foto hochladen"
 #: FamilyView.php:190 PersonView.php:196
 msgid "Delete Photo"
 msgstr "Foto löschen"
+
+#: FamilyView.php:324 PersonView.php:357
+msgid "Add a Note"
+msgstr "Notiz hinzufügen"
+
+#: FamilyView.php:433 PersonView.php:383
+msgid "Timeline"
+msgstr "Zeitstrahl"
 
 #: FamilyView.php:441
 msgid "Pledges and Payments"
@@ -1759,6 +1859,10 @@ msgstr "Zeige Zusagen"
 msgid "Show Payments"
 msgstr "Zahlungen anzeigen"
 
+#: FamilyView.php:739
+msgid "Since"
+msgstr "Seit"
+
 #: FamilyView.php:747 MemberRoleChange.php:115 PropertyAssign.php:186
 msgid "Update"
 msgstr "Aktualisieren"
@@ -1806,6 +1910,14 @@ msgstr "Aktionseintrag"
 #: PersonView.php:901 PledgeDelete.php:18
 msgid "Confirm Delete"
 msgstr "Löschen bestätigen"
+
+#: FamilyView.php:894 PersonView.php:905
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "Du löschst das Profilbild. Der Vorgang kann nicht rückgängig gemacht werden."
+
+#: FamilyView.php:960
+msgid "Oops! Family not found."
+msgstr "Ups. Familie nicht gefunden."
 
 #: FinancialReports.php:33 ReportList.php:29
 msgid "Financial Reports"
