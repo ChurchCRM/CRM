@@ -7,12 +7,7 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
@@ -24,6 +19,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Utils\InputUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -34,11 +30,11 @@ $sPageTitle = gettext('Person Profile');
 require 'Include/Header.php';
 
 // Get the person ID from the querystring
-$iPersonID = FilterInput($_GET['PersonID'], 'int');
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
-    $iRemoveVO = FilterInput($_GET['RemoveVO'], 'int');
+    $iRemoveVO = InputUtils::LegacyFilterInput($_GET['RemoveVO'], 'int');
 }
 
 if (isset($_POST['VolunteerOpportunityAssign']) && $_SESSION['bEditRecords']) {
@@ -73,18 +69,18 @@ if ($per_ID == $iPersonID) {
     $person = PersonQuery::create()->findPk($iPersonID);
     $assignedProperties = $person->getProperties();
 
-// Get the lists of custom person fields
-$sSQL = 'SELECT person_custom_master.* FROM person_custom_master
+    // Get the lists of custom person fields
+    $sSQL = 'SELECT person_custom_master.* FROM person_custom_master
 			ORDER BY custom_Order';
     $rsCustomFields = RunQuery($sSQL);
 
-// Get the custom field data for this person.
-$sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
+    // Get the custom field data for this person.
+    $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
     $rsCustomData = RunQuery($sSQL);
     $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
-// Get the Groups this Person is assigned to
-$sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
+    // Get the Groups this Person is assigned to
+    $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
 		FROM group_grp
 		LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
 		LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
@@ -93,22 +89,22 @@ $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS ro
     $rsAssignedGroups = RunQuery($sSQL);
     $sAssignedGroups = ',';
 
-// Get all the Groups
-$sSQL = 'SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name';
+    // Get all the Groups
+    $sSQL = 'SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name';
     $rsGroups = RunQuery($sSQL);
 
-// Get the volunteer opportunities this Person is assigned to
-$sSQL = 'SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
+    // Get the volunteer opportunities this Person is assigned to
+    $sSQL = 'SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
 		LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
 		WHERE person2volunteeropp_p2vo.p2vo_per_ID = '.$iPersonID.' ORDER by vol_Order';
     $rsAssignedVolunteerOpps = RunQuery($sSQL);
 
-// Get all the volunteer opportunities
-$sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order';
+    // Get all the volunteer opportunities
+    $sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order';
     $rsVolunteerOpps = RunQuery($sSQL);
 
-// Get the Properties assigned to this Person
-$sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
+    // Get the Properties assigned to this Person
+    $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
 		FROM record2property_r2p
 		LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
 		LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
@@ -116,12 +112,12 @@ $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
   ' ORDER BY prt_Name, pro_Name';
     $rsAssignedProperties = RunQuery($sSQL);
 
-// Get all the properties
-$sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
+    // Get all the properties
+    $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
     $rsProperties = RunQuery($sSQL);
 
-// Get Field Security List Matrix
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
+    // Get Field Security List Matrix
+    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
     $rsSecurityGrp = RunQuery($sSQL);
 
     while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
@@ -134,18 +130,18 @@ $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
     $sFamilyInfoBegin = '<span style="color: red;">';
     $sFamilyInfoEnd = '</span>';
 
-// Assign the values locally, after selecting whether to display the family or person information
+    // Assign the values locally, after selecting whether to display the family or person information
 
-//Get an unformatted mailing address to pass as a parameter to a google maps search
-SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
+    //Get an unformatted mailing address to pass as a parameter to a google maps search
+    SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
     $sCity = SelectWhichInfo($per_City, $fam_City, false);
     $sState = SelectWhichInfo($per_State, $fam_State, false);
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
     $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
     $plaintextMailingAddress = $person->getAddress();
 
-//Get a formatted mailing address to use as display to the user.
-SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
+    //Get a formatted mailing address to use as display to the user.
+    SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
     $sCity = SelectWhichInfo($per_City, $fam_City, true);
     $sState = SelectWhichInfo($per_State, $fam_State, true);
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
@@ -206,17 +202,15 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             <?php endif; ?>
         </div>
         <h3 class="profile-username text-center">
-          <?php if ($person->isMale()) {
+            <?php if ($person->isMale()) {
     ?>
-          <i class="fa fa-male"></i>
-          <?php
-
-} else {
-    ?>
-            <i class="fa fa-female"></i>
-          <?php
-
-} ?>
+                <i class="fa fa-male"></i>
+            <?php
+} elseif ($person->isFemale()) {
+        ?>
+                <i class="fa fa-female"></i>
+            <?php
+    } ?>
           <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
 
         <p class="text-muted text-center">
@@ -238,7 +232,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         ?>
           <a href="PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
         <?php
-
     } ?>
       </div>
       <!-- /.box-body -->
@@ -265,47 +258,45 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 									</span>
                 </a>
               <?php
-
               } else {
                   echo gettext('(No assigned family)');
               } ?>
 						</span></li>
+            <?php if (!empty($formattedMailingAddress)) {
+                  ?>
           <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Address'); ?>: <span>
 						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
 						</span></li>
-          <?php if ($dBirthDate) {
-                  ?>
+          <?php
+              }
+    if ($dBirthDate) {
+        ?>
             <li>
               <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>:
               <span><?= $dBirthDate ?></span>
               <?php if (!$person->hideAge()) {
-                      ?>
+            ?>
               (<span data-birth-date="<?= $person->getBirthDate()->format('Y-m-d') ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
               <?php
-
-                  } ?>
+        } ?>
             </li>
           <?php
-
-              }
+    }
     if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') { /* Friend Date can be hidden - General Settings */ ?>
             <li><i class="fa-li fa fa-tasks"></i><?= gettext('Friend Date') ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
           <?php
-
     }
     if ($sCellPhone) {
         ?>
             <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext('Mobile Phone') ?>: <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
           <?php
-
     }
     if ($sHomePhone) {
         ?>
             <li><i class="fa-li fa fa-phone"></i><?= gettext('Home Phone') ?>: <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
             <?php
-
     }
     if ($sEmail != '') {
         ?>
@@ -314,14 +305,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             ?>
               <li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
             <?php
-
         }
     }
     if ($sWorkPhone) {
         ?>
             <li><i class="fa-li fa fa-phone"></i><?= gettext('Work Phone') ?>: <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
           <?php
-
     } ?>
           <?php if ($per_WorkEmail != '') {
         ?>
@@ -330,23 +319,27 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             ?>
               <li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
               <?php
-
         }
     }
 
-          // Display the right-side custom fields
-          while ($Row = mysqli_fetch_array($rsCustomFields)) {
-              extract($Row);
-              $currentData = trim($aCustomData[$custom_Field]);
-              if ($currentData != '') {
-                  if ($type_ID == 11) {
-                      $custom_Special = $sPhoneCountry;
-                  }
-                  echo '<li><i class="fa-li glyphicon glyphicon-tag"></i>'.$custom_Name.': <span>';
-                  echo nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
-                  echo '</span></li>';
-              }
-          } ?>
+    // Display the right-side custom fields
+    while ($Row = mysqli_fetch_array($rsCustomFields)) {
+        extract($Row);
+        $currentData = trim($aCustomData[$custom_Field]);
+        if ($currentData != '') {
+            if ($type_ID == 11) {
+                $custom_Special = $sPhoneCountry;
+            }
+            echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'glyphicon glyphicon-tag').'"></i>'.$custom_Name.': <span>';
+            $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
+            if ($type_ID == 11) {
+                echo "<a href=\"tel:".$temp_string."\">".$temp_string."</a>";
+            } else {
+                echo $temp_string;
+            }
+            echo '</span></li>';
+        }
+    } ?>
         </ul>
       </div>
     </div>
@@ -359,29 +352,25 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
       <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
       <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
       <?php if ($_SESSION['bNotes']) {
-              ?>
+        ?>
         <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
         <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
       <?php
-
-          }
+    }
     if ($_SESSION['bDeleteRecords']) {
         ?>
-        <a class="btn btn-app bg-maroon" id="delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
+        <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
       <?php
-
     }
     if ($_SESSION['bAdmin']) {
         if (!$person->isUser()) {
             ?>
           <a class="btn btn-app" href="UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Make User') ?></a>
         <?php
-
         } else {
             ?>
           <a class="btn btn-app" href="UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
         <?php
-
         }
     } ?>
       <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
@@ -427,12 +416,10 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             ?>
                       <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                     <?php
-
         } else {
             ?>
                       <?= $item['header'] ?>
                     <?php
-
         } ?>
                   </h3>
 
@@ -449,7 +436,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                         </a>
                       <?php
-
             }
             if ($item['deleteLink'] != '') {
                 ?>
@@ -457,16 +443,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </a>
                       <?php
-
             } ?>
                     </div>
                   <?php
-
         } ?>
                 </div>
               </li>
             <?php
-
     } ?>
             <!-- END timeline item -->
           </ul>
@@ -508,7 +491,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                 ?>
                     <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
                   <?php
-
             } ?>
                 </td>
                 <td style="width: 20%;">
@@ -533,17 +515,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                       </span>
                     </a>
                   <?php
-
             } ?>
                 </td>
               </tr>
             <?php
-
         } ?>
             </tbody>
           </table>
           <?php
-
     } ?>
         </div>
         <div role="tab-pane fade" class="tab-pane" id="groups">
@@ -558,12 +537,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No group assignments.') ?></span>
                 </div>
               <?php
-
               } else {
                   echo '<div class="row">';
-                // Loop through the rows
-                while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
-                    extract($aRow); ?>
+                  // Loop through the rows
+                  while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
+                      extract($aRow); ?>
                   <div class="col-md-3">
                     <p><br/></p>
                     <!-- Info box -->
@@ -572,14 +550,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                         <h3 class="box-title"><a href="GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
                         <div class="box-tools pull-right">
-                          <div class="label bg-aqua"><?= $roleName ?></div>
+                          <div class="label bg-aqua"><?= gettext($roleName) ?></div>
                         </div>
                       </div>
                       <?php
                       // If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
                       if ($grp_hasSpecialProps) {
                           // Get the special properties for this group
-                        $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = '.$grp_ID." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
+                          $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = '.$grp_ID." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
                           $rsPropList = RunQuery($sSQL);
 
                           $sSQL = 'SELECT * FROM groupprop_'.$grp_ID.' WHERE per_ID = '.$iPersonID;
@@ -619,13 +597,11 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                               ?>
                                   <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
                                 <?php
-
                           } ?>
                               </ul>
                             </div>
                             <a href="#" onclick="GroupRemove(<?= $grp_ID.', '.$iPersonID ?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
                           <?php
-
                       } ?>
                         </code>
                       </div>
@@ -636,7 +612,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   <?php
                   // NOTE: this method is crude.  Need to replace this with use of an array.
                   $sAssignedGroups .= $grp_ID.',';
-                }
+                  }
                   echo '</div>';
               }
     if ($_SESSION['bManageGroups']) {
@@ -650,17 +626,16 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                     <?php while ($aRow = mysqli_fetch_array($rsGroups)) {
             extract($aRow);
 
-                      //If the property doesn't already exist for this Person, write the <OPTION> tag
-                      if (strlen(strstr($sAssignedGroups, ','.$grp_ID.',')) == 0) {
-                          echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
-                      }
+            //If the property doesn't already exist for this Person, write the <OPTION> tag
+            if (strlen(strstr($sAssignedGroups, ','.$grp_ID.',')) == 0) {
+                echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
+            }
         } ?>
                   </select>
                   <a href="#" onclick="GroupAdd()" class="btn btn-success" role="button"><?= gettext('Assign User to Group') ?></a>
                   <br>
                 </div>
               <?php
-
     } ?>
             </div>
           </div>
@@ -770,51 +745,50 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
     $sAssignedVolunteerOpps = ',';
 
-              //Was anything returned?
-              if (mysqli_num_rows($rsAssignedVolunteerOpps) == 0) {
-                  ?>
+    //Was anything returned?
+    if (mysqli_num_rows($rsAssignedVolunteerOpps) == 0) {
+        ?>
                 <br>
                 <div class="alert alert-warning">
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
                 </div>
               <?php
+    } else {
+        echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
+        echo '<thead>';
+        echo '<tr class="TableHeader">';
+        echo '<th>'.gettext('Name').'</th>';
+        echo '<th>'.gettext('Description').'</th>';
+        if ($_SESSION['bEditRecords']) {
+            echo '<th>'.gettext('Remove').'</th>';
+        }
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
 
-              } else {
-                  echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
-                  echo '<thead>';
-                  echo '<tr class="TableHeader">';
-                  echo '<th>'.gettext('Name').'</th>';
-                  echo '<th>'.gettext('Description').'</th>';
-                  if ($_SESSION['bEditRecords']) {
-                      echo '<th>'.gettext('Remove').'</th>';
-                  }
-                  echo '</tr>';
-                  echo '</thead>';
-                  echo '<tbody>';
+        // Loop through the rows
+        while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
+            extract($aRow);
 
-                // Loop through the rows
-                while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
-                    extract($aRow);
+            // Alternate the row style
+            $sRowClass = AlternateRowStyle($sRowClass);
 
-                  // Alternate the row style
-                  $sRowClass = AlternateRowStyle($sRowClass);
+            echo '<tr class="'.$sRowClass.'">';
+            echo '<td>'.$vol_Name.'</a></td>';
+            echo '<td>'.$vol_Description.'</a></td>';
 
-                    echo '<tr class="'.$sRowClass.'">';
-                    echo '<td>'.$vol_Name.'</a></td>';
-                    echo '<td>'.$vol_Description.'</a></td>';
+            if ($_SESSION['bEditRecords']) {
+                echo '<td><a class="SmallText" href="PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
+            }
 
-                    if ($_SESSION['bEditRecords']) {
-                        echo '<td><a class="SmallText" href="PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
-                    }
+            echo '</tr>';
 
-                    echo '</tr>';
-
-                  // NOTE: this method is crude.  Need to replace this with use of an array.
-                  $sAssignedVolunteerOpps .= $vol_ID.',';
-                }
-                  echo '</tbody>';
-                  echo '</table>';
-              } ?>
+            // NOTE: this method is crude.  Need to replace this with use of an array.
+            $sAssignedVolunteerOpps .= $vol_ID.',';
+        }
+        echo '</tbody>';
+        echo '</table>';
+    } ?>
 
                 <?php if ($_SESSION['bEditRecords'] && $rsVolunteerOpps->num_rows): ?>
                 <div class="alert alert-info">
@@ -829,10 +803,10 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                                     <?php
                                     while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
                                         extract($aRow);
-                                      //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                      if (strlen(strstr($sAssignedVolunteerOpps, ','.$vol_ID.',')) == 0) {
-                                          echo '<option value="'.$vol_ID.'">'.$vol_Name.'</option>';
-                                      }
+                                        //If the property doesn't already exist for this Person, write the <OPTION> tag
+                                        if (strlen(strstr($sAssignedVolunteerOpps, ','.$vol_ID.',')) == 0) {
+                                            echo '<option value="'.$vol_ID.'">'.$vol_Name.'</option>';
+                                        }
                                     } ?>
                                 </select>
                             </div>
@@ -872,12 +846,10 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                                             ?>
                       <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                     <?php
-
                                         } else {
                                             ?>
                       <?= $item['header'] ?>
                     <?php
-
                                         } ?>
                   </h3>
 
@@ -894,7 +866,6 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                         </a>
                       <?php
-
                                             }
                                             if ($item['deleteLink'] != '') {
                                                 ?>
@@ -902,16 +873,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                           <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </a>
                       <?php
-
                                             } ?>
                     </div>
                   <?php
-
                                         } ?>
                 </div>
               </li>
             <?php
-
                                     } ?>
             <!-- END timeline item -->
           </ul>
@@ -1007,14 +975,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         $("#input-volunteer-opportunities").select2();
         $("#input-person-properties").select2();
 
-        var options = {
-            "language": {
-                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-            },
-            "responsive": true
-        };
-        $("#assigned-volunteer-opps-table").DataTable(options);
-        $("#assigned-properties-table").DataTable(options);
+        $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
+        $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
 
 
         contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {
@@ -1037,9 +999,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 </script>
 
 <?php
-
 } else {
-    ?>
+                                        ?>
   <div class="error-page">
     <h2 class="headline text-yellow">404</h2>
 
@@ -1052,6 +1013,5 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     </div>
   </div>
   <?php
-
-}
+                                    }
 require 'Include/Footer.php' ?>

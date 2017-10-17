@@ -10,13 +10,8 @@
  *
  *
  *  Copyright Contributors
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters
+  *
+
  *
  ******************************************************************************/
 
@@ -28,6 +23,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\InputUtils;
 
 function CompareDistance($elem1, $elem2)
 {
@@ -119,10 +115,10 @@ $iFamily = -1;
 $iNumNeighbors = 15;
 $nMaxDistance = 10;
 if (array_key_exists('Family', $_GET)) {
-    $iFamily = FilterInput($_GET['Family'], 'int');
+    $iFamily = InputUtils::LegacyFilterInput($_GET['Family'], 'int');
 }
 if (array_key_exists('NumNeighbors', $_GET)) {
-    $iNumNeighbors = FilterInput($_GET['NumNeighbors'], 'int');
+    $iNumNeighbors = InputUtils::LegacyFilterInput($_GET['NumNeighbors'], 'int');
 }
 
 $bClassificationPost = false;
@@ -134,15 +130,15 @@ $sCoordFileName = '';
 //Is this the second pass?
 if (isset($_POST['FindNeighbors']) || isset($_POST['DataFile']) || isset($_POST['PersonIDList'])) {
     //Get all the variables from the request object and assign them locally
-    $iFamily = FilterInput($_POST['Family']);
-    $iNumNeighbors = FilterInput($_POST['NumNeighbors']);
-    $nMaxDistance = FilterInput($_POST['MaxDistance']);
-    $sCoordFileName = FilterInput($_POST['CoordFileName']);
+    $iFamily = InputUtils::LegacyFilterInput($_POST['Family']);
+    $iNumNeighbors = InputUtils::LegacyFilterInput($_POST['NumNeighbors']);
+    $nMaxDistance = InputUtils::LegacyFilterInput($_POST['MaxDistance']);
+    $sCoordFileName = InputUtils::LegacyFilterInput($_POST['CoordFileName']);
     if (array_key_exists('CoordFileFormat', $_POST)) {
-        $sCoordFileFormat = FilterInput($_POST['CoordFileFormat']);
+        $sCoordFileFormat = InputUtils::LegacyFilterInput($_POST['CoordFileFormat']);
     }
     if (array_key_exists('CoordFileFamilies', $_POST)) {
-        $sCoordFileFamilies = FilterInput($_POST['CoordFileFamilies']);
+        $sCoordFileFamilies = InputUtils::LegacyFilterInput($_POST['CoordFileFamilies']);
     }
 
     foreach ($aClassificationName as $key => $value) {
@@ -237,7 +233,7 @@ $families = FamilyQuery::create()
                 <label for="Family"
                        class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Select Family:') ?></label>
                 <div class="col-xs-12 col-sm-9">
-                    <select name='Family' data-placeholder="Select a family" class="form-control choiceSelectBox"
+                    <select name='Family' data-placeholder="<?= gettext('Select a family') ?>" class="form-control choiceSelectBox"
                             style="width: 100%">
                         <option></option>
                         <?php
@@ -261,7 +257,7 @@ $families = FamilyQuery::create()
             </div>
             <div class="form-group">
                 <label for="MaxDistance" class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    <?= gettext('Maximum distance') . ' (' . strtolower(gettext(SystemConfig::getValue('sDistanceUnit'))) . "): " ?>
+                    <?= gettext('Maximum distance') . ' (' . gettext(SystemConfig::getValue('sDistanceUnit')) . "): " ?>
                 </label>
                 <div class="col-xs-12 col-sm-9">
                     <input type="text" class="form-control" name="MaxDistance" value="<?= $nMaxDistance ?>">
@@ -278,11 +274,10 @@ $families = FamilyQuery::create()
                         <div class="col-xs-6">
                             <label class="checkbox-inline">
                                 <input type="checkbox" value="Guardian" value="1" name="Classification<?= $key ?>"
-                                       id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?> > <?= $value ?>
+                                       id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?> > <?= _($value) ?>
                             </label>
                         </div>
                         <?php
-
                     }
                     ?>
                 </div>
@@ -302,7 +297,6 @@ $families = FamilyQuery::create()
                 <?= gettext("Please select a Family.") ?>
             </div>
             <?php
-
         }
         ?>
 
@@ -430,7 +424,6 @@ $families = FamilyQuery::create()
                         <td align="left"><?= $aClassificationName[$per_cls_ID] ?></td>
                     </tr>
                     <?php
-
                 }
             } ?>
             </tbody>
@@ -456,7 +449,6 @@ $families = FamilyQuery::create()
         </div>
     </div>
     <?php
-
         }
     ?>
 </form>

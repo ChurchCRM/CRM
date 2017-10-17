@@ -5,12 +5,7 @@
 *  last change : 2003-08-30
 *  description : Creates a PDF with all the confirmation letters asking member
 *                families to verify the information in the database.
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -147,9 +142,9 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->WriteAtCell($dataCol, $curY, $dataWid, $fam_SendNewsLetter);
     $curY += SystemConfig::getValue('incrementY');
 
-// Missing the following information from the Family record:
-// Wedding date (if present) - need to figure how to do this with sensitivity
-// Family e-mail address
+    // Missing the following information from the Family record:
+    // Wedding date (if present) - need to figure how to do this with sensitivity
+    // Family e-mail address
 
     $pdf->SetFont('Times', 'B', 10);
     $pdf->WriteAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Anniversary Date'));
@@ -239,14 +234,14 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $pdf->WriteAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, $per_CellPhone);
         $pdf->WriteAtCell($XClassification, $curY, $XRight - $XClassification, $sClassName);
         $curY += SystemConfig::getValue('incrementY');
-// Missing the following information for the personal record: ??? Is this the place to put this data ???
-// Work Phone
+        // Missing the following information for the personal record: ??? Is this the place to put this data ???
+        // Work Phone
         $pdf->WriteAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone').':'.$per_WorkPhone);
         $curY += SystemConfig::getValue('incrementY');
         $curY += SystemConfig::getValue('incrementY');
 
-// *** All custom fields ***
-// Get the list of custom person fields
+        // *** All custom fields ***
+        // Get the list of custom person fields
 
         $xSize = 40;
         $numCustomFields = mysqli_num_rows($rsCustomFields);
@@ -292,7 +287,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         }
         $curY += 2 * SystemConfig::getValue('incrementY');
     }
-//
+    //
 
     $curY += SystemConfig::getValue('incrementY');
 

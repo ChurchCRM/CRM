@@ -6,22 +6,66 @@ use ChurchCRM\Token;
 use ChurchCRM\Note;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\TokenQuery;
-use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Person;
+use ChurchCRM\NoteQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Map\FamilyTableMap;
+use ChurchCRM\Map\TokenTableMap;
 
 $app->group('/families', function () {
+  
+     $this->get('/{familyId:[0-9]+}', function($request, $response, $args)  {
+        $family = FamilyQuery::create()->findPk($args['familyId']);
+        return $response->withJSON($family->toJSON());
+    });
+  
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
-         $q = FamilyQuery::create()
-          ->filterByName("%$query%", Criteria::LIKE)
-          ->limit(15)
-          ->withColumn('CONCAT( Family.Name, " - ", Family.Address1," / ", Family.City, " ", Family.State)', 'displayName')
-          ->withColumn('CONCAT("'.SystemURLs::getRootPath().'FamilyView.php?FamilyID=",Family.Id)', 'uri')
-          ->select(['displayName', 'uri','Id'])
-          ->find();
+        $results = [];
+        $q = FamilyQuery::create()
+            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+            ->limit(15)
+            ->find();
+        foreach ($q as $family)
+        {
+          array_push($results,$family->toSearchArray());
+        }
 
-       return $response->withJSON($q->toJSON());
+       return $response->withJSON(json_encode(["Families"=>$results]));
     });
+
+    $this->get('/self-register', function($request, $response, $args)  {
+        $families = FamilyQuery::create()
+            ->filterByEnteredBy(Person::SELF_REGISTER)
+            ->orderByDateEntered(Criteria::DESC)
+            ->limit(100)
+            ->find();
+        return $response->withJSON(['families' => $families->toArray()]);
+    });
+
+    $this->get('/self-verify', function($request, $response, $args)  {
+        $verifcationNotes = NoteQuery::create()
+            ->filterByEnteredBy(Person::SELF_VERIFY)
+            ->orderByDateEntered(Criteria::DESC)
+            ->joinWithFamily()
+            ->limit(100)
+            ->find();
+        return $response->withJSON(['families' => $verifcationNotes->toArray()]);
+    });
+
+    $this->get('/pending-self-verify', function($request, $response, $args)  {
+        $pendingTokens = TokenQuery::create()
+            ->filterByType(Token::typeFamilyVerify)
+            ->filterByRemainingUses(array('min' => 1))
+            ->filterByValidUntilDate(array('min' => new DateTime()))
+            ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
+            ->withColumn(FamilyTableMap::COL_FAM_NAME, "FamilyName")
+            ->withColumn(TokenTableMap::COL_REFERENCE_ID, "FamilyId")
+            ->limit(100)
+            ->find();
+        return $response->withJSON(['families' => $pendingTokens->toArray()]);
+    });
+
 
     $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
         $scanString = $args['scanString'];
@@ -75,6 +119,7 @@ $app->group('/families', function () {
             $token->save();
             $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
             if ($email->send()) {
+                $family->createTimeLineNote("verify-link");
                 $response = $response->withStatus(200);
             } else {
                 $this->Logger->error($email->getError());
@@ -90,12 +135,7 @@ $app->group('/families', function () {
         $familyId = $args["familyId"];
         $family = FamilyQuery::create()->findPk($familyId);
         if ($family != null) {
-            $note = new Note();
-            $note->setFamId($family->getId());
-            $note->setText(gettext("Family Data Verified"));
-            $note->setType("verify");
-            $note->setEntered($_SESSION['user']->getId());
-            $note->save();
+            $family->verify();
             $response = $response->withStatus(200);
         } else {
             $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");

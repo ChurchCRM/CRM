@@ -7,23 +7,7 @@
  *
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters
+
  *
  ******************************************************************************/
 
@@ -32,19 +16,19 @@ require_once 'Functions.php';
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\NotificationService;
+use ChurchCRM\dto\SystemConfig;
 
 function Header_system_notifications()
 {
     if (NotificationService::hasActiveNotifications()) {
         ?>
-  <div class="systemNotificationBar">
-    <?php
-    foreach (NotificationService::getNotifications() as $notification) {
-        echo "<a href=\"".$notification->link."\">".$notification->title."</a>";
-    } ?>
-  </div>
-    <?php
-
+        <div class="systemNotificationBar">
+            <?php
+            foreach (NotificationService::getNotifications() as $notification) {
+                echo "<a href=\"" . $notification->link . "\">" . $notification->title . "</a>";
+            } ?>
+        </div>
+        <?php
     }
 }
 
@@ -57,7 +41,6 @@ function Header_head_metatag()
     } ?>
     <title>ChurchCRM: <?= $sPageTitle ?></title>
     <?php
-
 }
 
 function Header_modals()
@@ -79,20 +62,20 @@ function Header_modals()
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label
-                                        for="issueTitle"><?= gettext('Enter a Title for your bug / feature report') ?>
+                                            for="issueTitle"><?= gettext('Enter a Title for your bug / feature report') ?>
                                         : </label>
                                 </div>
                                 <div class="col-xl-3">
-                                    <input type="text" name="issueTitle" style="width:100%">
+                                    <input type="text" name="issueTitle">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label
-                                        for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
+                                            for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
                                 </div>
                                 <div class="col-xl-3">
-                                    <textarea rows="10" cols="50" name="issueDescription" style="width:100%"></textarea>
+                                    <textarea rows="10" cols="50" name="issueDescription"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -115,79 +98,37 @@ function Header_modals()
     <!-- End Issue Report Modal -->
 
     <?php
-
 }
 
 function Header_body_scripts()
 {
     global $localeInfo;
     $systemService = new SystemService(); ?>
-
-  <script>
-    window.CRM = {
-      root: "<?= SystemURLs::getRootPath() ?>",
-      lang: "<?= $localeInfo->getLanguageCode() ?>",
-      locale: "<?= $localeInfo->getLocale() ?>",
-      maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
-      maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>"
-    };
-
-    window.CRM.DisplayErrorMessage = function(endpoint, error) {
-
-      message = "<p><?= gettext("Error making API Call to") ?>: " + endpoint +
-        "</p><p><?= gettext("Error text") ?>: " + error.message;
-      if (error.trace)
-      {
-        message += "</p><?= gettext("Stack Trace") ?>: <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
-      }
-      bootbox.alert({
-        title: "<?= gettext("ERROR!") ?>",
-        message: message
-      });
-    };
-
-    window.CRM.VerifyThenLoadAPIContent = function(url) {
-      var error = "<?= gettext('There was a problem retrieving the requested object') ?>";
-      $.ajax({
-        type: 'HEAD',
-        url: url,
-        async: false,
-        statusCode: {
-          200: function() {
-            window.open(url);
-          },
-          404: function() {
-            window.CRM.DisplayErrorMessage(url, {message: error});
-          },
-          500: function() {
-            window.CRM.DisplayErrorMessage(url, {message: error});
-          }
-        }
-      });
-    }
-
-    $(document).ajaxError(function (evt, xhr, settings) {
-        try {
-            var CRMResponse = JSON.parse(xhr.responseText);
-            window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
-        } catch(err) {}
-    });
-
-    function LimitTextSize(theTextArea, size) {
-        if (theTextArea.value.length > size) {
-            theTextArea.value = theTextArea.value.substr(0, size);
-        }
-    }
-
-    function popUp(URL) {
-        var day = new Date();
-        var id = day.getTime();
-        eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
-    }
-
+    <script>
+        window.CRM = {
+            root: "<?= SystemURLs::getRootPath() ?>",
+            lang: "<?= $localeInfo->getLanguageCode() ?>",
+            locale: "<?= $localeInfo->getLocale() ?>",
+            shortLocale: "<?= $localeInfo->getShortLocale() ?>",
+            maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
+            maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
+            datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
+            plugin: {
+                dataTable : {
+                   "language": {
+                        "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
+                    },
+                    responsive: true,
+                    "dom": 'T<"clear">lfrtip',
+                    "tableTools": {
+                        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
+                    }
+                }
+            }
+        };
     </script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
     <?php
-
 }
 
 $security_matrix = GetSecuritySettings();
@@ -288,7 +229,7 @@ function addMenuItem($aMenu, $mIdx)
     if (!($aMenu['ismenu']) || ($numItems > 0)) {
         if ($link) {
             if ($aMenu['name'] != 'sundayschool-dash') { // HACK to remove the sunday school 2nd dashboard
-        echo "<li><a href='$link'>";
+                echo "<li><a href='$link'>";
                 if ($aMenu['icon'] != '') {
                     echo '<i class="fa ' . $aMenu['icon'] . '"></i>';
                 }

@@ -11,28 +11,28 @@
 *  Additional Contributors:
 *  2007 Ed Davis
 *
+
 *
-*  Copyright Contributors
 *
+
 *
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  This file best viewed in a text editor with tabs stops set to 4 characters.
-*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
-*  of hard tab characters.
+
+
+
+
 *
 ******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
+
 $eType = 'All';
 $ThisYear = date('Y');
 
 if (isset($_POST['WhichType'])) {
-    $eType = FilterInput($_POST['WhichType']);
+    $eType = InputUtils::LegacyFilterInput($_POST['WhichType']);
 } else {
     $eType = 'All';
 }
@@ -50,7 +50,7 @@ if ($eType != 'All') {
 // retrieve the year selector
 
 if (isset($_POST['WhichYear'])) {
-    $EventYear = FilterInput($_POST['WhichYear'], 'int');
+    $EventYear = InputUtils::LegacyFilterInput($_POST['WhichYear'], 'int');
 } else {
     $EventYear = date('Y');
 }
@@ -59,8 +59,8 @@ if (isset($_POST['WhichYear'])) {
 require 'Include/Header.php';
 
 if (isset($_POST['Action']) && isset($_POST['EID'])) {
-    $eID = FilterInput($_POST['EID'], 'int');
-    $action = FilterInput($_POST['Action']);
+    $eID = InputUtils::LegacyFilterInput($_POST['EID'], 'int');
+    $action = InputUtils::LegacyFilterInput($_POST['Action']);
     if ($action == 'Delete' && $eID) {
         $sSQL = 'DELETE FROM events_event WHERE event_id = '.$eID.' LIMIT 1';
         RunQuery($sSQL);
@@ -93,13 +93,11 @@ $numRows = mysqli_num_rows($rsOpps);
         for ($r = 1; $r <= $numRows; $r++) {
             $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
             extract($aRow);
-//          foreach($aRow as $t)echo "$t\n\r";
-          ?>
+            //          foreach($aRow as $t)echo "$t\n\r";?>
           <option value="<?php echo $type_id ?>" <?php if ($type_id == $eType) {
-              echo 'selected';
-          } ?>><?= $type_name ?></option>
+                echo 'selected';
+            } ?>><?= $type_name ?></option>
           <?php
-
         }
          ?>
          </select>
@@ -138,7 +136,6 @@ for ($r = 1; $r <= $numRows; $r++) {
                 echo 'selected';
             } ?>><?= $Yr[$r] ?></option>
           <?php
-
         }
          ?>
          </select>
@@ -170,35 +167,35 @@ foreach ($allMonths as $mKey => $mVal) {
         $sSQL .= '';
     } else {
         //$sSQL .= " WHERE (TO_DAYS(event_start_date) - TO_DAYS(now()) < 30)";
-                $sSQL .= ' WHERE t1.event_type = t2.type_id'.$eTypeSQL.' AND MONTH(t1.event_start) = '.$mVal." AND YEAR(t1.event_start)=$EventYear";
+        $sSQL .= ' WHERE t1.event_type = t2.type_id'.$eTypeSQL.' AND MONTH(t1.event_start) = '.$mVal." AND YEAR(t1.event_start)=$EventYear";
     }
     $sSQL .= ' ORDER BY t1.event_start ';
 
     $rsOpps = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsOpps);
     $aAvgRows = $numRows;
-        // Create arrays of the fundss.
-        for ($row = 1; $row <= $numRows; $row++) {
-            $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-            extract($aRow);
+    // Create arrays of the fundss.
+    for ($row = 1; $row <= $numRows; $row++) {
+        $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
+        extract($aRow);
 
-            $aEventID[$row] = $event_id;
-            $aEventType[$row] = $event_typename;
-            $aEventTitle[$row] = htmlentities(stripslashes($event_title), ENT_NOQUOTES, 'UTF-8');
-            $aEventDesc[$row] = htmlentities(stripslashes($event_desc), ENT_NOQUOTES, 'UTF-8');
-            $aEventText[$row] = htmlentities(stripslashes($event_text), ENT_NOQUOTES, 'UTF-8');
-            $aEventStartDateTime[$row] = $event_start;
-            $aEventEndDateTime[$row] = $event_end;
-            $aEventStatus[$row] = $inactive;
-                // get the list of attend-counts that exists in event_attend for this
-                $attendSQL = "SELECT * FROM event_attend WHERE event_id=$event_id";
-            $attOpps = RunQuery($attendSQL);
-            if ($attOpps) {
-                $attNumRows[$row] = mysqli_num_rows($attOpps);
-            } else {
-                $attNumRows[$row] = 0;
-            }
+        $aEventID[$row] = $event_id;
+        $aEventType[$row] = $event_typename;
+        $aEventTitle[$row] = htmlentities(stripslashes($event_title), ENT_NOQUOTES, 'UTF-8');
+        $aEventDesc[$row] = htmlentities(stripslashes($event_desc), ENT_NOQUOTES, 'UTF-8');
+        $aEventText[$row] = htmlentities(stripslashes($event_text), ENT_NOQUOTES, 'UTF-8');
+        $aEventStartDateTime[$row] = $event_start;
+        $aEventEndDateTime[$row] = $event_end;
+        $aEventStatus[$row] = $inactive;
+        // get the list of attend-counts that exists in event_attend for this
+        $attendSQL = "SELECT * FROM event_attend WHERE event_id=$event_id";
+        $attOpps = RunQuery($attendSQL);
+        if ($attOpps) {
+            $attNumRows[$row] = mysqli_num_rows($attOpps);
+        } else {
+            $attNumRows[$row] = 0;
         }
+    }
 
     if ($numRows > 0) {
         ?>
@@ -260,7 +257,7 @@ foreach ($allMonths as $mKey => $mVal) {
               <?php if ($aEventText[$row] != '') {
                 ?>
                 <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')">Sermon Text</a></div>
-              <?php 
+              <?php
             } ?>
             </td>
             <td><?= $aEventType[$row] ?></td>
@@ -286,7 +283,6 @@ foreach ($allMonths as $mKey => $mVal) {
                           <div><?= $evtcnt_countcount ?></div>
                         </td>
                         <?php
-
                 }
             } else {
                 ?>
@@ -294,7 +290,6 @@ foreach ($allMonths as $mKey => $mVal) {
                         <?= gettext('No Attendance Recorded') ?>
                       </td>
                       <?php
-
             } ?>
                 </tr>
               </table>
@@ -308,7 +303,6 @@ foreach ($allMonths as $mKey => $mVal) {
 
           </tr>
           <?php
-
         } // end of for loop for # rows for this month
 
         // calculate averages if this is a single type list
@@ -333,21 +327,18 @@ foreach ($allMonths as $mKey => $mVal) {
                     <br><?= sprintf('%01.2f', $avgAvg) ?></span>
                   </td>
                   <?php
-
                 } ?>
               </div>
             </td>
             <td class="TextColumn" colspan="3"></td>
           </tr>
           <?php
-
         } ?>
       </tbody>
     </table>
   </div>
   </div>
   <?php
-
     }
 } // end for-each month loop
 ?>
@@ -362,16 +353,7 @@ foreach ($allMonths as $mKey => $mVal) {
 <script type="text/javascript">
 //Added by @saulowulhynek to translation of datatable nav terms
   $(document).ready(function () {
-    $('#listEvents').dataTable({
-      "language": {
-        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-      },
-      responsive: true,
-      "dom": 'T<"clear">lfrtip',
-      "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
-      }
-    });
+    $('#listEvents').DataTable(window.CRM.plugin.dataTable});
   });
 </script>
 

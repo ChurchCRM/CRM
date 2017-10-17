@@ -6,12 +6,7 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *                Copyright 2004-2012 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -19,12 +14,13 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
 //Set the page title
 $sPageTitle = gettext('Query View');
 
 //Get the QueryID from the querystring
-$iQueryID = FilterInput($_GET['QueryID'], 'int');
+$iQueryID = InputUtils::LegacyFilterInput($_GET['QueryID'], 'int');
 
 $aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
 
@@ -118,7 +114,7 @@ function ValidateInput()
                         }
                     }
 
-                    $vPOST[$qrp_Alias] = FilterInput($_POST[$qrp_Alias], 'int');
+                    $vPOST[$qrp_Alias] = InputUtils::LegacyFilterInput($_POST[$qrp_Alias], 'int');
                     break;
 
                 //Alpha validation
@@ -135,7 +131,7 @@ function ValidateInput()
                         $aErrorText[$qrp_Alias] = gettext('This value cannot be less than ').$qrp_AlphaMinLength.gettext(' characters long');
                     }
 
-                    $vPOST[$qrp_Alias] = FilterInput($_POST[$qrp_Alias]);
+                    $vPOST[$qrp_Alias] = InputUtils::LegacyFilterInput($_POST[$qrp_Alias]);
                     break;
 
                 default:
@@ -277,7 +273,6 @@ function DoQuery()
     </div>
 </div>
 <?php
-
 }
 
 
@@ -293,7 +288,6 @@ function DisplayQueryInfo()
     </div>
 </div>
 <?php
-
 }
 
 
@@ -393,7 +387,6 @@ if (mysqli_num_rows($rsParameters)) {
     
 </div>
 <?php
-
 }
 
 require 'Include/Footer.php';

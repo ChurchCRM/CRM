@@ -5,12 +5,7 @@
  *  last change : 2003-03-20
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 require 'Include/Config.php';
@@ -48,7 +43,6 @@ require 'Include/Header.php';
       </div>
     </div><!-- ./col -->
     <?php
-
 }
 
 //Conditionally Display the Event Reports, only if there are actually events in the database.  Otherwise, Don't render the Event reports section.
@@ -78,7 +72,6 @@ require 'Include/Header.php';
       </div>
     </div>
     <?php
-
   }
   ?>
 </div>

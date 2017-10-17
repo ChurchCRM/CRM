@@ -46,3 +46,12 @@ foreach (ChurchCRM\data\Countries::getNames() as $country) {
     file_put_contents($stringFile, 'gettext("'.addslashes($country)."\");\r\n", FILE_APPEND);
 }
 file_put_contents($stringFile, "\r\n?>", FILE_APPEND);
+
+$stringFile = $stringsDir.'/settings-locales.php';
+file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
+$localesFile = file_get_contents("../src/locale/locales.json");
+$locales = json_decode($localesFile, true);
+foreach ($locales as $key => $value) {
+    file_put_contents($stringFile, 'gettext("'.$key."\");\r\n",FILE_APPEND);
+}
+file_put_contents($stringFile, "\r\n?>", FILE_APPEND);

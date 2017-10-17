@@ -5,24 +5,19 @@
  *  last change : 2003-01-04
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
-
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Note;
-use ChurchCRM\FamilyQuery;
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/CanvassUtilities.php';
 
-
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Note;
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -31,7 +26,7 @@ $iFamilyID = -1;
 
 //Get the FamilyID from the querystring
 if (array_key_exists('FamilyID', $_GET)) {
-    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
 }
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
@@ -90,41 +85,41 @@ $aperFlags = [];
 //Is this the second pass?
 if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     //Assign everything locally
-    $sName = FilterInput($_POST['Name']);
+    $sName = InputUtils::LegacyFilterInput($_POST['Name']);
     // Strip commas out of address fields because they are problematic when
     // exporting addresses to CSV file
-    $sAddress1 = str_replace(',', '', FilterInput($_POST['Address1']));
-    $sAddress2 = str_replace(',', '', FilterInput($_POST['Address2']));
-    $sCity = FilterInput($_POST['City']);
-    $sZip = FilterInput($_POST['Zip']);
+    $sAddress1 = str_replace(',', '', InputUtils::LegacyFilterInput($_POST['Address1']));
+    $sAddress2 = str_replace(',', '', InputUtils::LegacyFilterInput($_POST['Address2']));
+    $sCity = InputUtils::LegacyFilterInput($_POST['City']);
+    $sZip = InputUtils::LegacyFilterInput($_POST['Zip']);
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-    if (SystemConfig::getValue('cfgForceUppercaseZip')) {
+    if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
         $sZip = strtoupper($sZip);
     }
 
-    $sCountry = FilterInput($_POST['Country']);
-    $iFamilyMemberRows = FilterInput($_POST['FamCount']);
+    $sCountry = InputUtils::LegacyFilterInput($_POST['Country']);
+    $iFamilyMemberRows = InputUtils::LegacyFilterInput($_POST['FamCount']);
 
     if ($sCountry == 'United States' || $sCountry == 'Canada' || $sCountry == '') {
-        $sState = FilterInput($_POST['State']);
+        $sState = InputUtils::LegacyFilterInput($_POST['State']);
     } else {
-        $sState = FilterInput($_POST['StateTextbox']);
+        $sState = InputUtils::LegacyFilterInput($_POST['StateTextbox']);
     }
 
-    $sHomePhone = FilterInput($_POST['HomePhone']);
-    $sWorkPhone = FilterInput($_POST['WorkPhone']);
-    $sCellPhone = FilterInput($_POST['CellPhone']);
-    $sEmail = FilterInput($_POST['Email']);
+    $sHomePhone = InputUtils::LegacyFilterInput($_POST['HomePhone']);
+    $sWorkPhone = InputUtils::LegacyFilterInput($_POST['WorkPhone']);
+    $sCellPhone = InputUtils::LegacyFilterInput($_POST['CellPhone']);
+    $sEmail = InputUtils::LegacyFilterInput($_POST['Email']);
     $bSendNewsLetter = isset($_POST['SendNewsLetter']);
 
     $nLatitude = 0.0;
     $nLongitude = 0.0;
     if (array_key_exists('Latitude', $_POST)) {
-        $nLatitude = FilterInput($_POST['Latitude'], 'float');
+        $nLatitude = InputUtils::LegacyFilterInput($_POST['Latitude'], 'float');
     }
     if (array_key_exists('Longitude', $_POST)) {
-        $nLongitude = FilterInput($_POST['Longitude'], 'float');
+        $nLongitude = InputUtils::LegacyFilterInput($_POST['Longitude'], 'float');
     }
 
 
@@ -142,7 +137,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     $nEnvelope = 0;
     if (array_key_exists('Envelope', $_POST)) {
-        $nEnvelope = FilterInput($_POST['Envelope'], 'int');
+        $nEnvelope = InputUtils::LegacyFilterInput($_POST['Envelope'], 'int');
     }
 
     if (is_numeric($nEnvelope)) { // Only integers are allowed as Envelope Numbers
@@ -159,10 +154,10 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $bOkToCanvass = isset($_POST['OkToCanvass']);
         $iCanvasser = 0;
         if (array_key_exists('Canvasser', $_POST)) {
-            $iCanvasser = FilterInput($_POST['Canvasser']);
+            $iCanvasser = InputUtils::LegacyFilterInput($_POST['Canvasser']);
         }
         if ((!$iCanvasser) && array_key_exists('BraveCanvasser', $_POST)) {
-            $iCanvasser = FilterInput($_POST['BraveCanvasser']);
+            $iCanvasser = InputUtils::LegacyFilterInput($_POST['BraveCanvasser']);
         }
         if (!$iCanvasser) {
             $iCanvasser = 0;
@@ -171,9 +166,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     $iPropertyID = 0;
     if (array_key_exists('PropertyID', $_POST)) {
-        $iPropertyID = FilterInput($_POST['PropertyID'], 'int');
+        $iPropertyID = InputUtils::LegacyFilterInput($_POST['PropertyID'], 'int');
     }
-    $dWeddingDate = FilterInput($_POST['WeddingDate']);
+    $dWeddingDate = InputUtils::LegacyFilterInput($_POST['WeddingDate']);
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
     $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
@@ -182,18 +177,18 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     //Loop through the Family Member 'quick entry' form fields
     for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
         // Assign everything to arrays
-        $aFirstNames[$iCount] = FilterInput($_POST['FirstName'.$iCount]);
-        $aMiddleNames[$iCount] = FilterInput($_POST['MiddleName'.$iCount]);
-        $aLastNames[$iCount] = FilterInput($_POST['LastName'.$iCount]);
-        $aSuffix[$iCount] = FilterInput($_POST['Suffix'.$iCount]);
-        $aRoles[$iCount] = FilterInput($_POST['Role'.$iCount], 'int');
-        $aGenders[$iCount] = FilterInput($_POST['Gender'.$iCount], 'int');
-        $aBirthDays[$iCount] = FilterInput($_POST['BirthDay'.$iCount], 'int');
-        $aBirthMonths[$iCount] = FilterInput($_POST['BirthMonth'.$iCount], 'int');
-        $aBirthYears[$iCount] = FilterInput($_POST['BirthYear'.$iCount], 'int');
-        $aClassification[$iCount] = FilterInput($_POST['Classification'.$iCount], 'int');
-        $aPersonIDs[$iCount] = FilterInput($_POST['PersonID'.$iCount], 'int');
-        $aUpdateBirthYear[$iCount] = FilterInput($_POST['UpdateBirthYear'], 'int');
+        $aFirstNames[$iCount] = InputUtils::LegacyFilterInput($_POST['FirstName'.$iCount]);
+        $aMiddleNames[$iCount] = InputUtils::LegacyFilterInput($_POST['MiddleName'.$iCount]);
+        $aLastNames[$iCount] = InputUtils::LegacyFilterInput($_POST['LastName'.$iCount]);
+        $aSuffix[$iCount] = InputUtils::LegacyFilterInput($_POST['Suffix'.$iCount]);
+        $aRoles[$iCount] = InputUtils::LegacyFilterInput($_POST['Role'.$iCount], 'int');
+        $aGenders[$iCount] = InputUtils::LegacyFilterInput($_POST['Gender'.$iCount], 'int');
+        $aBirthDays[$iCount] = InputUtils::LegacyFilterInput($_POST['BirthDay'.$iCount], 'int');
+        $aBirthMonths[$iCount] = InputUtils::LegacyFilterInput($_POST['BirthMonth'.$iCount], 'int');
+        $aBirthYears[$iCount] = InputUtils::LegacyFilterInput($_POST['BirthYear'.$iCount], 'int');
+        $aClassification[$iCount] = InputUtils::LegacyFilterInput($_POST['Classification'.$iCount], 'int');
+        $aPersonIDs[$iCount] = InputUtils::LegacyFilterInput($_POST['PersonID'.$iCount], 'int');
+        $aUpdateBirthYear[$iCount] = InputUtils::LegacyFilterInput($_POST['UpdateBirthYear'], 'int');
 
         // Make sure first names were entered if editing existing family
         if ($iFamilyID > 0) {
@@ -253,7 +248,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
         extract($rowCustomField);
 
-        $currentFieldData = FilterInput($_POST[$fam_custom_Field]);
+        $currentFieldData = InputUtils::LegacyFilterInput($_POST[$fam_custom_Field]);
 
         $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $fam_custom_Field, $aCustomErrors);
 
@@ -432,14 +427,16 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     RunQuery('UNLOCK TABLES');
                 }
             }
-            $note = new Note();
-            $note->setFamId($iFamilyID);
-            $note->setText(gettext('Created'));
-            $note->setType('create');
-            $note->setEntered($_SESSION['iUserID']);
-            $note->save();
             $family = FamilyQuery::create()->findPk($iFamilyID);
+            $family->createTimeLineNote('create');
             $family->updateLanLng();
+            
+            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
+                $NotificationEmail = new NewPersonOrFamilyEmail($family);
+                if (!$NotificationEmail->send()) {
+                    $logger->warn($NotificationEmail->getError());
+                }
+            }
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
                 if (strlen($aFirstNames[$iCount]) > 0) {
@@ -467,15 +464,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->save();
                 }
             }
-            $note = new Note();
-            $note->setFamId($iFamilyID);
-            $note->setText(gettext('Updated'));
-            $note->setType('edit');
-            $note->setEntered($_SESSION['iUserID']);
-            $note->save();
-
             $family = FamilyQuery::create()->findPk($iFamilyID);
             $family->updateLanLng();
+            $family->createTimeLineNote('edit');
         }
 
         // Update the custom person fields.
@@ -662,7 +653,6 @@ require 'Include/Header.php';
 						<input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="48"  class="form-control">
 						<?php if ($sNameError) {
     ?><font color="red"><?= $sNameError ?></font><?php
-
 } ?>
 					</div>
 				</div>
@@ -690,14 +680,14 @@ require 'Include/Header.php';
 					<div class="form-group col-md-3">
 						<label><?= gettext('None US/CND State') ?>:</label>
 						<input type="text"  class="form-control" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
-    echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
-} ?>" size="20" maxlength="30">
+        echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
+    } ?>" size="20" maxlength="30">
 					</div>
 					<div class="form-group col-md-3">
 						<label><?= gettext('Zip')?>:</label>
 						<input type="text" Name="Zip"  class="form-control" <?php
                             // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
-                            if (SystemConfig::getValue('cfgForceUppercaseZip')) {
+                            if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
                                 echo 'style="text-transform:uppercase" ';
                             }
                             echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
@@ -709,7 +699,7 @@ require 'Include/Header.php';
 					</div>
 				</div>
 				<?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
-                    if (!$bHaveXML) { // No point entering if values will just be overwritten?>
+                                if (!$bHaveXML) { // No point entering if values will just be overwritten?>
 				<div class="row">
 					<div class="form-group col-md-3">
 						<label><?= gettext('Latitude') ?>:</label>
@@ -721,8 +711,7 @@ require 'Include/Header.php';
 					</div>
 				</div>
 				<?php
-
-                    }
+                                }
                             } /* Lat/Lon can be hidden - General Settings */ ?>
 			</div>
 		</div>
@@ -793,7 +782,6 @@ require 'Include/Header.php';
                             } ?>>
 				</div>
 				<?php
-
                             } ?>
 			</div>
 		</div>
@@ -807,21 +795,19 @@ require 'Include/Header.php';
 		</div><!-- /.box-header -->
 		<div class="box-body">
 			<?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
-                if ($dWeddingDate == 'NULL') {
-                    $dWeddingDate = '';
-                } ?>
+                                if ($dWeddingDate == 'NULL') {
+                                    $dWeddingDate = '';
+                                } ?>
 				<div class="row">
 					<div class="form-group col-md-4">
                         <label><?= gettext('Wedding Date') ?>:</label>
-						<input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="12" id="WeddingDate" size="15">
+						<input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" id="WeddingDate" size="15" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
 						<?php if ($sWeddingDateError) {
-                    ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php
-
-                } ?>
+                                    ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php
+                                } ?>
 					</div>
 				</div>
 			<?php
-
                             } /* Wedding date can be hidden - General Settings */ ?>
 			<div class="row">
 				<?php if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser?>
@@ -832,7 +818,6 @@ require 'Include/Header.php';
                             } ?> >
 					</div>
 				<?php
-
                             }
 
                 if ($rsCanvassers != 0 && mysqli_num_rows($rsCanvassers) > 0) {
@@ -894,7 +879,6 @@ require 'Include/Header.php';
 		</div>
 	</div>
 	<?php
-
                 }
     if ($numCustomFields > 0) {
         ?>
@@ -928,7 +912,6 @@ require 'Include/Header.php';
 		</div>
 	</div>
 	<?php
-
     } ?>
 	<div class="box box-info clearfix">
 		<div class="box-header">
@@ -1081,7 +1064,6 @@ require 'Include/Header.php';
                         echo 'selected';
                     } ?>><?= $x ?></option>
 				<?php
-
                 } ?>
 				</select>
 			</td>
@@ -1093,7 +1075,6 @@ require 'Include/Header.php';
                         echo $aBirthDateError[$iCount];
                     } ?></font></div>
 			<?php
-
                 } else {
                     $UpdateBirthYear = 0;
                 } ?>
@@ -1110,15 +1091,15 @@ require 'Include/Header.php';
                     $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
             $rsClassifications = RunQuery($sSQL);
 
-                    //Display Classifications
-                    while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                        extract($aRow);
-                        echo '<option value="'.$lst_OptionID.'"';
-                        if ($aClassification[$iCount] == $lst_OptionID) {
-                            echo ' selected';
-                        }
-                        echo '>'.$lst_OptionName.'&nbsp;';
-                    }
+            //Display Classifications
+            while ($aRow = mysqli_fetch_array($rsClassifications)) {
+                extract($aRow);
+                echo '<option value="'.$lst_OptionID.'"';
+                if ($aClassification[$iCount] == $lst_OptionID) {
+                    echo ' selected';
+                }
+                echo '>'.$lst_OptionName.'&nbsp;';
+            }
             echo '</select></td></tr>';
         }
         echo '</table></div>';

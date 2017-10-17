@@ -7,12 +7,7 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
@@ -20,6 +15,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have add records permission
 if (!$_SESSION['bAddRecords']) {
@@ -31,20 +27,20 @@ if (!$_SESSION['bAddRecords']) {
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
     // Get the FamilyID
-    $iFamilyID = FilterInput($_POST['FamilyID'], 'int');
+    $iFamilyID = InputUtils::LegacyFilterInput($_POST['FamilyID'], 'int');
 
     // Are we creating a new family
     if ($iFamilyID == 0) {
-        $sFamilyName = FilterInput($_POST['FamilyName']);
+        $sFamilyName = InputUtils::LegacyFilterInput($_POST['FamilyName']);
 
-        $dWeddingDate = FilterInput($_POST['WeddingDate']);
+        $dWeddingDate = InputUtils::LegacyFilterInput($_POST['WeddingDate']);
         if (strlen($dWeddingDate) > 0) {
             $dWeddingDate = '"'.$dWeddingDate.'"';
         } else {
             $dWeddingDate = 'NULL';
         }
 
-        $iPersonAddress = FilterInput($_POST['PersonAddress']);
+        $iPersonAddress = InputUtils::LegacyFilterInput($_POST['PersonAddress']);
 
         if ($iPersonAddress != 0) {
             $sSQL = 'SELECT * FROM person_per WHERE per_ID = '.$iPersonAddress;
@@ -52,22 +48,22 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             extract(mysqli_fetch_array($rsPerson));
         }
 
-        SelectWhichAddress($sAddress1, $sAddress2, FilterInput($_POST['Address1']), FilterInput($_POST['Address2']), $per_Address1, $per_Address2, false);
-        $sCity = SelectWhichInfo(FilterInput($_POST['City']), $per_City);
-        $sZip = SelectWhichInfo(FilterInput($_POST['Zip']), $per_Zip);
-        $sCountry = SelectWhichInfo(FilterInput($_POST['Country']), $per_Country);
+        SelectWhichAddress($sAddress1, $sAddress2, InputUtils::LegacyFilterInput($_POST['Address1']), InputUtils::LegacyFilterInput($_POST['Address2']), $per_Address1, $per_Address2, false);
+        $sCity = SelectWhichInfo(InputUtils::LegacyFilterInput($_POST['City']), $per_City);
+        $sZip = SelectWhichInfo(InputUtils::LegacyFilterInput($_POST['Zip']), $per_Zip);
+        $sCountry = SelectWhichInfo(InputUtils::LegacyFilterInput($_POST['Country']), $per_Country);
 
         if ($sCountry == 'United States' || $sCountry == 'Canada') {
-            $sState = FilterInput($_POST['State']);
+            $sState = InputUtils::LegacyFilterInput($_POST['State']);
         } else {
-            $sState = FilterInput($_POST['StateTextbox']);
+            $sState = InputUtils::LegacyFilterInput($_POST['StateTextbox']);
         }
         $sState = SelectWhichInfo($sState, $per_State);
 
         // Get and format any phone data from the form.
-        $sHomePhone = FilterInput($_POST['HomePhone']);
-        $sWorkPhone = FilterInput($_POST['WorkPhone']);
-        $sCellPhone = FilterInput($_POST['CellPhone']);
+        $sHomePhone = InputUtils::LegacyFilterInput($_POST['HomePhone']);
+        $sWorkPhone = InputUtils::LegacyFilterInput($_POST['WorkPhone']);
+        $sCellPhone = InputUtils::LegacyFilterInput($_POST['CellPhone']);
         if (!isset($_POST['NoFormat_HomePhone'])) {
             $sHomePhone = CollapsePhoneNumber($sHomePhone, $sCountry);
         }
@@ -81,7 +77,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $sHomePhone = SelectWhichInfo($sHomePhone, $per_HomePhone);
         $sWorkPhone = SelectWhichInfo($sWorkPhone, $per_WorkPhone);
         $sCellPhone = SelectWhichInfo($sCellPhone, $per_CellPhone);
-        $sEmail = SelectWhichInfo(FilterInput($_POST['Email']), $per_Email);
+        $sEmail = SelectWhichInfo(InputUtils::LegacyFilterInput($_POST['Email']), $per_Email);
 
         if (strlen($sFamilyName) == 0) {
             $sError = '<p class="callout callout-warning" align="center" style="color:red;">'.gettext('No family name entered!').'</p>';
@@ -108,7 +104,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
             // Make sure they are not already in a family
             if ($per_fam_ID == 0) {
-                $iFamilyRoleID = FilterInput($_POST['role'.$iPersonID], 'int');
+                $iFamilyRoleID = InputUtils::LegacyFilterInput($_POST['role'.$iPersonID], 'int');
 
                 $sSQL = 'UPDATE person_per SET per_fam_ID = '.$iFamilyID.', per_fmr_ID = '.$iFamilyRoleID.' WHERE per_ID = '.$iPersonID;
                 RunQuery($sSQL);
@@ -324,10 +320,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </p>
 </form>
 <?php
-
 } else {
-    echo "<p align=\"center\" class='callout callout-warning'>".gettext('Your cart is empty!').'</p>';
-}
+        echo "<p align=\"center\" class='callout callout-warning'>".gettext('Your cart is empty!').'</p>';
+    }
 ?>
 </div>
 <?php require 'Include/Footer.php'; ?>

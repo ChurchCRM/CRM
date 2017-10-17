@@ -5,20 +5,17 @@
  *  last change : 2009-04-15
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2009 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$linkBack = FilterInputArr($_GET, 'linkBack');
-$iFundRaiserID = FilterInputArr($_GET, 'FundRaiserID');
+use ChurchCRM\Utils\InputUtils;
+
+$linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
+$iFundRaiserID = InputUtils::LegacyFilterInputArr($_GET, 'FundRaiserID');
 
 if ($iFundRaiserID > 0) {
     // Get the current fund raiser record
@@ -40,9 +37,9 @@ $sDateError = '';
 //Is this the second pass?
 if (isset($_POST['FundRaiserSubmit'])) {
     //Get all the variables from the request object and assign them locally
-    $dDate = FilterInputArr($_POST, 'Date');
-    $sTitle = FilterInputArr($_POST, 'Title');
-    $sDescription = FilterInputArr($_POST, 'Description');
+    $dDate = InputUtils::LegacyFilterInputArr($_POST, 'Date');
+    $sTitle = InputUtils::LegacyFilterInputArr($_POST, 'Title');
+    $sDescription = InputUtils::LegacyFilterInputArr($_POST, 'Description');
 
     //Initialize the error flag
     $bErrorFlag = false;
@@ -63,7 +60,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
             $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES ('.
             "'".$dDate."','".$sTitle."','".$sDescription."',".$_SESSION['iUserID'].",'".date('YmdHis')."')";
             $bGetKeyBack = true;
-        // Existing record (update)
+            // Existing record (update)
         } else {
             $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".$_SESSION['iUserID'].", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
             $bGetKeyBack = false;
@@ -254,7 +251,6 @@ if ($rsDonatedItems != 0) {
 			</td>
 		</tr>
 	<?php
-
     } // while
 }// if
 ?>

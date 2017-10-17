@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -20,6 +21,9 @@ use ChurchCRM\Service\GroupService;
  */
 class Person extends BasePerson implements iPhoto
 {
+
+    const SELF_REGISTER = -1;
+    const SELF_VERIFY = -2;
 
     public function getFullName()
     {
@@ -86,7 +90,14 @@ class Person extends BasePerson implements iPhoto
 
     public function postInsert(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote(true);
+      $this->createTimeLineNote(true);
+      if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
+      {
+        $NotificationEmail = new NewPersonOrFamilyEmail($this);
+        if (!$NotificationEmail->send()) {
+          $logger->warn($NotificationEmail->getError());
+        }
+      }
     }
 
     public function postUpdate(ConnectionInterface $con = null)
@@ -140,8 +151,8 @@ class Person extends BasePerson implements iPhoto
      */
     public function getAddress()
     {
-        $address = [];
         if (!empty($this->getAddress1())) {
+            $address = [];
             $tmp = $this->getAddress1();
             if (!empty($this->getAddress2())) {
                 $tmp = $tmp . ' ' . $this->getAddress2();
@@ -167,7 +178,7 @@ class Person extends BasePerson implements iPhoto
             }
         }
         //if it reaches here, no address found. return empty $address
-        return $address;
+        return "";
     }
 
     /**
@@ -218,11 +229,16 @@ class Person extends BasePerson implements iPhoto
     private function getPhoto()
     {
 
-        $photo = new Photo("Person", $this->getId());
-        if (!$photo->isPhotoLocal() && SystemConfig::getValue('sEnableGravatarPhotos') && $this->getEmail() != '') {
-            $photo->loadFromGravatar($this->getEmail());
-        }
-        return $photo;
+      $photo = new Photo("Person",  $this->getId());
+       if (!$photo->isPhotoLocal() && $this->getEmail() != '') {
+           if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
+               $photo->loadFromGravatar($this->getEmail());
+           }
+           if (!$photo->isPhotoRemote() && SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
+               $photo->loadFromGoogle($this->getEmail());
+           }
+       }
+       return $photo;
     }
 
     public function getPhotoBytes()
@@ -423,5 +439,9 @@ class Person extends BasePerson implements iPhoto
 
         return parent::preDelete($con);
     }
-
+    
+    public function getNumericCellPhone()
+    {
+      return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
+    }
 }

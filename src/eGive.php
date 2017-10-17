@@ -11,6 +11,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
     Redirect('Menu.php');
     exit;
@@ -21,7 +23,7 @@ $dDate = date('Y-m-d', $now);
 $lwDate = date('Y-m-d', $now - (6 * 24 * 60 * 60));
 
 $iFYID = CurrentFY();
-$iDepositSlipID = FilterInput($_GET['DepositSlipID']);
+$iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID']);
 
 include 'Include/eGiveConfig.php'; // Specific account information is in here
 
@@ -111,8 +113,8 @@ if (isset($_POST['ApiGet'])) {
         if ($data && $data['status'] == 'success') {
             $api_error = 0;
 
-        // each transaction has these fields: 'transactionID' 'envelopeID' 'giftID' 'frequency' 'amount'
-        // 'giverID' 'giverName' 'giverEmail' 'dateCompleted' 'breakouts'
+            // each transaction has these fields: 'transactionID' 'envelopeID' 'giftID' 'frequency' 'amount'
+            // 'giverID' 'giverName' 'giverEmail' 'dateCompleted' 'breakouts'
             $importCreated = 0;
             $importNoChange = 0;
             $importError = 0;
@@ -267,7 +269,6 @@ if (isset($_POST['ApiGet'])) {
 		</td>
 	</tr>
 <?php
-
 }
 
 function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $frequency, $groupKey)
@@ -323,8 +324,7 @@ function importDoneFixOrContinue()
     global $familySelectHtml; ?>
 	<form method="post" action="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>">
 	<?php
-    if ($importError) { // the only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.
-        ?>
+    if ($importError) { // the only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.?>
 		<p>New eGive Name(s) and ID(s) have been imported and must be associated with the appropriate Family.  Use the pulldown in the <b>Family</b> column to select the Family, based on the eGive name, and then press the Re-Import button.<br><br>If you cannot make the assignment now, you can safely go Back to the Deposit Slip, and Re-import this data at a later time.  Its possible you may need to view eGive data using the Web View in order to make an accurate Family assignment.</p>
 		<table border=1>
 		<tr><td><b>eGive Name</b></td><td><b>eGive ID</b></td><td><b>Family</b></td><td><b>Set eGive ID into Family</b></td></tr>
@@ -350,13 +350,11 @@ function importDoneFixOrContinue()
 
 		<input type="submit" class="btn" value="<?= gettext('Re-import to selected family') ?>" name="ReImport">
 	<?php
-
     } ?>
 
 	<p class="MediumLargeText"> <?= gettext('Data import results: ').$importCreated.gettext(' gifts were imported, ').$importNoChange.gettext(' gifts unchanged, and ').$importError.gettext(' gifts not imported due to problems') ?></p>
 	<input type="button" class="btn" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
 <?php
-
 }
 
 function get_api_data($json)

@@ -8,12 +8,7 @@
  *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
  *  Copyright 2004-2012 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
@@ -83,7 +78,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
         <td class="TextColumn">
             <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
             <select name="sDirClassifications[]" size="5" multiple>
-            <option value="0">Unassigned</option>
+            <option value="0"><?= gettext("Unassigned") ?></option>
             <?php
                 while ($aRow = mysqli_fetch_array($rsClassifications)) {
                     extract($aRow);
@@ -111,7 +106,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     </tr>
 
 <?php
-
 }
 ?>
 
@@ -196,7 +190,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
                      ?>
 		            <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>
          <?php
-
                  }
              }
          }

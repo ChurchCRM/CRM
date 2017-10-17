@@ -7,12 +7,7 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
@@ -61,23 +56,23 @@ require 'Include/Header.php';
         <form method="post" action="<?= sRootPath ?>/api/database/backup" id="BackupDatabase">
         <?= gettext('Select archive type') ?>:
         <?php if ($hasGZIP) {
-    ?><input type="radio" name="archiveType" value="0"><?= gettext('GZip') ?><?php 
+    ?><input type="radio" name="archiveType" value="0"><?= gettext('GZip') ?><?php
 } ?>
         <!--<?php if ($hasZIP) {
-    ?><input type="radio" name="archiveType" value="1"><?= gettext('Zip') ?><?php 
-} ?>-->
+        ?><input type="radio" name="archiveType" value="1"><?= gettext('Zip') ?><?php
+    } ?>-->
         <input type="radio" name="archiveType" value="2" checked><?= gettext('Uncompressed') ?>
         <input type="radio" name="archiveType" value="3" checked><?= gettext('tar.gz (Include Photos)') ?>
         <BR><BR>
         <?php if ($hasPGP) {
-    ?>
+        ?>
         <input type="checkbox" name="encryptBackup" value="1"><?= gettext('Encrypt backup file with a password?') ?>
         &nbsp;&nbsp;&nbsp;
         <?= gettext('Password') ?>:<input type="password" name="pw1">
         <?= gettext('Re-type Password') ?>:<input type="password" name="pw2">
         <BR><span id="passworderror" style="color: red"></span><BR><BR>
-        <?php 
-} ?>
+        <?php
+    } ?>
         <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate and Download Backup').'"' ?>>
         <input type="button" class="btn btn-primary" id="doRemoteBackup" <?= 'value="'.gettext('Generate and Ship Backup to External Storage').'"' ?>>
 

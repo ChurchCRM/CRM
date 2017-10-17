@@ -8,16 +8,12 @@
  *  Cloned from PersonCustomFieldsRowOps.php
  *
  *  function    : Row operations for the Family custom fields form
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
-
- ******************************************************************************/
+ *******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Security: user must be administrator to use this page.
 if (!$_SESSION['bAdmin']) {
@@ -26,8 +22,8 @@ if (!$_SESSION['bAdmin']) {
 }
 
 // Get the Group, Property, and Action from the querystring
-$iOrderID = FilterInput($_GET['OrderID'], 'int');
-$sField = FilterInput($_GET['Field']);
+$iOrderID = InputUtils::LegacyFilterInput($_GET['OrderID'], 'int');
+$sField = InputUtils::LegacyFilterInput($_GET['Field']);
 $sAction = $_GET['Action'];
 
 switch ($sAction) {

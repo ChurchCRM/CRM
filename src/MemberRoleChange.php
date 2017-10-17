@@ -5,17 +5,14 @@
  *  last change : 2003-04-03
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001-2003 Deane Barker, Lewis Franklin
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
@@ -27,10 +24,10 @@ if (!$_SESSION['bManageGroups']) {
 $sPageTitle = gettext('Member Role Change');
 
 //Get the GroupID from the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
 //Get the PersonID from the querystring
-$iPersonID = FilterInput($_GET['PersonID'], 'int');
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 //Get the return location flag from the querystring
 $iReturn = $_GET['Return'];
@@ -39,7 +36,7 @@ $iReturn = $_GET['Return'];
 if (isset($_POST['Submit'])) {
 
     //Get the new role
-    $iNewRole = FilterInput($_POST['NewRole']);
+    $iNewRole = InputUtils::LegacyFilterInput($_POST['NewRole']);
 
     //Update the database
     $sSQL = 'UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = '.$iNewRole." WHERE p2g2r_per_ID = $iPersonID AND p2g2r_grp_ID = $iGroupID";
@@ -88,7 +85,7 @@ require 'Include/Header.php'
 	</tr>
 	<tr>
 		<td align="right"><b><?= gettext('Current Role') ?>:</b></td>
-		<td><?php echo $sRoleName ?></td>
+		<td><?php echo gettext($sRoleName) ?></td>
 	</tr>
 	<tr>
 		<td align="right"><b><?= gettext('New Role') ?>:</b></td>
@@ -107,7 +104,7 @@ require 'Include/Header.php'
                         $sSelected = '';
                     }
                     //Write the <option> tag
-                    echo '<option value="'.$lst_OptionID.'" '.$sSelected.'>'.$lst_OptionName.'</option>';
+                    echo '<option value="'.$lst_OptionID.'" '.$sSelected.'>'.gettext($lst_OptionName).'</option>';
                 }
                 ?>
 			</select>

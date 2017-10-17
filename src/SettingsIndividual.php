@@ -8,24 +8,14 @@
 *
 *  Contributors:
 *  2006 Ed Davis
-*
-*
-*  Copyright Contributors
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  This file best viewed in a text editor with tabs stops set to 4 characters.
-*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
-*  of hard tab characters.
-*
+
 ******************************************************************************/
 
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 $iPersonID = $_SESSION['iUserID'];
 
@@ -39,11 +29,11 @@ if (isset($_POST['save'])) {
         $id = key($type);
         // Filter Input
         if ($current_type == 'text' || $current_type == 'textarea') {
-            $value = FilterInput($new_value[$id]);
+            $value = InputUtils::LegacyFilterInput($new_value[$id]);
         } elseif ($current_type == 'number') {
-            $value = FilterInput($new_value[$id], 'float');
+            $value = InputUtils::LegacyFilterInput($new_value[$id], 'float');
         } elseif ($current_type == 'date') {
-            $value = FilterInput($new_value[$id], 'date');
+            $value = InputUtils::LegacyFilterInput($new_value[$id], 'date');
         } elseif ($current_type == 'boolean') {
             if ($new_value[$id] != '1') {
                 $value = '';
@@ -61,7 +51,7 @@ if (isset($_POST['save'])) {
         }
 
         if (!$bRowExists) { // If Row does not exist then insert default values.
-                          // Defaults will be replaced in the following Update
+            // Defaults will be replaced in the following Update
             $sSQL = 'SELECT * FROM userconfig_ucfg '
             ."WHERE ucfg_id=$id AND ucfg_per_id=0 ";
             $rsDefault = RunQuery($sSQL);

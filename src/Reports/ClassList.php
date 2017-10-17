@@ -4,12 +4,7 @@
 *  filename    : Reports/ClassList.php
 *  last change : 2003-08-30
 *  description : Creates a PDF for a Sunday School Class List
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -19,11 +14,12 @@ require '../Include/GetGroupArray.php';
 
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
-$iFYID = FilterInput($_GET['FYID'], 'int');
-$dFirstSunday = FilterInput($_GET['FirstSunday']);
-$dLastSunday = FilterInput($_GET['LastSunday']);
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
+$dFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
+$dLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
 
 class PDF_ClassList extends ChurchInfoReport
 {

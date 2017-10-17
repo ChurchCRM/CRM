@@ -5,12 +5,7 @@
 *  last change : 2009-04-17
 *  description : Creates a PDF with one or more fund raiser statements
 *  copyright   : Copyright 2009 Michael Wilt
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -19,8 +14,9 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
-$iPaddleNumID = FilterInputArr($_GET, 'PaddleNumID', 'int');
+$iPaddleNumID = InputUtils::LegacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
 //Get the paddlenum records for this fundraiser

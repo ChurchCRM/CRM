@@ -72,6 +72,7 @@ echo "===============   NPM                    ================="
 echo "=========================================================="
 
 sudo npm install -g npm@latest --unsafe-perm --no-bin-links
+sudo npm install -g i18next-extract-gettext
 npm install --unsafe-perm --no-bin-links
 grunt compress:demo
 
@@ -97,9 +98,6 @@ echo "====================   Setup Tests  ======================"
 echo "=========================================================="
 
 npm run tests-install
-#sudo apt-get install firefox xvfb openjdk-7-jre-headless
-#mkdir /usr/lib/selenium
-#wget --directory /usr/lib/selenium  http://selenium-release.storage.googleapis.com/2.40/selenium-server-standalone-2.40.0.jar
 
 echo "=========================================================="
 echo "=========================================================="

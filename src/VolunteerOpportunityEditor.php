@@ -5,25 +5,12 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2005 Michael Wilt
  *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
  ******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have proper permission
 // For now ... require $bAdmin
@@ -52,13 +39,13 @@ $aNameErrors = [];
 $bNewNameError = false;
 
 if (array_key_exists('act', $_GET)) {
-    $sAction = FilterInput($_GET['act']);
+    $sAction = InputUtils::LegacyFilterInput($_GET['act']);
 }
 if (array_key_exists('Opp', $_GET)) {
-    $iOpp = FilterInput($_GET['Opp'], 'int');
+    $iOpp = InputUtils::LegacyFilterInput($_GET['Opp'], 'int');
 }
 if (array_key_exists('row_num', $_GET)) {
-    $iRowNum = FilterInput($_GET['row_num'], 'int');
+    $iRowNum = InputUtils::LegacyFilterInput($_GET['row_num'], 'int');
 }
 
 $sDeleteError = '';
@@ -151,9 +138,9 @@ if (($sAction == 'ConfDelete') && $iOpp > 0) {
 
 if ($iRowNum == 0) {
     // Skip data integrity check if we are only changing the ordering
-// by moving items up or down.
-// System response is too slow to do these checks every time the page
-// is viewed.
+    // by moving items up or down.
+    // System response is too slow to do these checks every time the page
+    // is viewed.
 
     // Data integrity checks performed when adding or deleting records.
     // Also on initial page view
@@ -194,7 +181,7 @@ if ($iRowNum == 0) {
         $aRow = mysqli_fetch_array($rsOpps);
         extract($aRow);
         if ($orderCounter != $vol_Order) { // found hole, update all records to the end
-         $sSQL = 'UPDATE `volunteeropportunity_vol` '.
+            $sSQL = 'UPDATE `volunteeropportunity_vol` '.
                  "SET `vol_Order` = '".$orderCounter."' ".
                  "WHERE `vol_ID` = '".$vol_ID."'";
             RunQuery($sSQL);
@@ -217,7 +204,7 @@ if (isset($_POST['SaveChanges'])) {
         $nameName = $iFieldID.'name';
         $descName = $iFieldID.'desc';
         if (array_key_exists($nameName, $_POST)) {
-            $aNameFields[$iFieldID] = FilterInput($_POST[$nameName]);
+            $aNameFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$nameName]);
 
             if (strlen($aNameFields[$iFieldID]) == 0) {
                 $aNameErrors[$iFieldID] = true;
@@ -226,7 +213,7 @@ if (isset($_POST['SaveChanges'])) {
                 $aNameErrors[$iFieldID] = false;
             }
 
-            $aDescFields[$iFieldID] = FilterInput($_POST[$descName]);
+            $aDescFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$descName]);
 
             $aRow = mysqli_fetch_array($rsOpps);
             $aIDFields[$iFieldID] = $aRow[0];
@@ -247,13 +234,13 @@ if (isset($_POST['SaveChanges'])) {
     }
 } else {
     if (isset($_POST['AddField'])) { // Check if we're adding a VolOp
-        $newFieldName = FilterInput($_POST['newFieldName']);
-        $newFieldDesc = FilterInput($_POST['newFieldDesc']);
+        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
+        $newFieldDesc = InputUtils::LegacyFilterInput($_POST['newFieldDesc']);
         if (strlen($newFieldName) == 0) {
             $bNewNameError = true;
         } else { // Insert into table
-        //  there must be an easier way to get the number of rows in order to generate the last order number.
-        $sSQL = 'SELECT * FROM `volunteeropportunity_vol`';
+            //  there must be an easier way to get the number of rows in order to generate the last order number.
+            $sSQL = 'SELECT * FROM `volunteeropportunity_vol`';
             $rsOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsOpps);
             $newOrder = $numRows + 1;
@@ -294,50 +281,49 @@ if ($numRows == 0) {
     ?>
     <div class="callout callout-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
 <?php
-
 } else { // if an 'action' (up/down arrow clicked, or order was input)
-   if ($iRowNum && $sAction != '') {
-       // cast as int and couple with switch for sql injection prevention for $row_num
-      $swapRow = $iRowNum;
-       if ($sAction == 'up') {
-           $newRow = --$iRowNum;
-       } elseif ($sAction == 'down') {
-           $newRow = ++$iRowNum;
-       } else {
-           $newRow = $iRowNum;
-       }
+        if ($iRowNum && $sAction != '') {
+            // cast as int and couple with switch for sql injection prevention for $row_num
+            $swapRow = $iRowNum;
+            if ($sAction == 'up') {
+                $newRow = --$iRowNum;
+            } elseif ($sAction == 'down') {
+                $newRow = ++$iRowNum;
+            } else {
+                $newRow = $iRowNum;
+            }
 
-       if (array_key_exists($swapRow, $aIDFields)) {
-           $sSQL = "UPDATE volunteeropportunity_vol
+            if (array_key_exists($swapRow, $aIDFields)) {
+                $sSQL = "UPDATE volunteeropportunity_vol
 	               SET vol_Order = '".$newRow."' ".
               "WHERE vol_ID = '".$aIDFields[$swapRow]."';";
-           RunQuery($sSQL);
-       }
+                RunQuery($sSQL);
+            }
 
-       if (array_key_exists($newRow, $aIDFields)) {
-           $sSQL = "UPDATE volunteeropportunity_vol
+            if (array_key_exists($newRow, $aIDFields)) {
+                $sSQL = "UPDATE volunteeropportunity_vol
 	               SET vol_Order = '".$swapRow."' ".
               "WHERE vol_ID = '".$aIDFields[$newRow]."';";
-           RunQuery($sSQL);
-       }
+                RunQuery($sSQL);
+            }
 
-      // now update internal data to match
-      if (array_key_exists($swapRow, $aIDFields)) {
-          $saveID = $aIDFields[$swapRow];
-          $saveName = $aNameFields[$swapRow];
-          $saveDesc = $aDescFields[$swapRow];
-          $aIDFields[$newRow] = $saveID;
-          $aNameFields[$newRow] = $saveName;
-          $aDescFields[$newRow] = $saveDesc;
-      }
+            // now update internal data to match
+            if (array_key_exists($swapRow, $aIDFields)) {
+                $saveID = $aIDFields[$swapRow];
+                $saveName = $aNameFields[$swapRow];
+                $saveDesc = $aDescFields[$swapRow];
+                $aIDFields[$newRow] = $saveID;
+                $aNameFields[$newRow] = $saveName;
+                $aDescFields[$newRow] = $saveDesc;
+            }
 
-       if (array_key_exists($newRow, $aIDFields)) {
-           $aIDFields[$swapRow] = $aIDFields[$newRow];
-           $aNameFields[$swapRow] = $aNameFields[$newRow];
-           $aDescFields[$swapRow] = $aDescFields[$newRow];
-       }
-   }
-} // end if GET
+            if (array_key_exists($newRow, $aIDFields)) {
+                $aIDFields[$swapRow] = $aIDFields[$newRow];
+                $aNameFields[$swapRow] = $aNameFields[$newRow];
+                $aDescFields[$swapRow] = $aDescFields[$newRow];
+            }
+        }
+    } // end if GET
 
 ?>
 <tr>
@@ -403,7 +389,6 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 	   </tr>
    <?php
-
     }
 }
 ?>

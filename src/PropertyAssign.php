@@ -7,17 +7,14 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
@@ -30,16 +27,16 @@ $sValue = '';
 
 // Get the new property value from the request
 if (isset($_POST['PropertyID'])) {
-    $iPropertyID = FilterInput($_POST['PropertyID'], 'int');
+    $iPropertyID = InputUtils::LegacyFilterInput($_POST['PropertyID'], 'int');
     $sAction = 'add';
 } else {
-    $iPropertyID = FilterInput($_GET['PropertyID'], 'int');
+    $iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
     $sAction = 'edit';
 }
 
 // Is there a PersonID in the querystring?
 if (isset($_GET['PersonID']) && $_SESSION['bEditRecords']) {
-    $iPersonID = FilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
     $sTypeName = gettext('Person');
@@ -54,7 +51,7 @@ if (isset($_GET['PersonID']) && $_SESSION['bEditRecords']) {
 
 // Is there a GroupID in the querystring?
 elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
-    $iGroupID = FilterInput($_GET['GroupID'], 'int');
+    $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
     $sTypeName = gettext('Group');
@@ -69,7 +66,7 @@ elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
 
 // Is there a FamilyID in the querystring?
 elseif (isset($_GET['FamilyID']) && $_SESSION['bEditRecords']) {
-    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
     $sTypeName = gettext('Family');
@@ -117,7 +114,7 @@ if (isset($_POST['SecondPass'])) {
     $sAction = $_POST['Action'];
 
     // Get the value
-    $sValue = FilterInput($_POST['Value']);
+    $sValue = InputUtils::LegacyFilterInput($_POST['Value']);
 
     // Update the property
     UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction);
@@ -179,16 +176,15 @@ require 'Include/Header.php';
 			<td><?= $sPrompt ?><br><textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea></td>
 		</tr>
 <?php
-
 } ?>
 </table>
 </div>
 
 <p align="center"><input type="submit" class="btn" <?= 'value="'; if ($sAction == 'add') {
-    echo gettext('Assign');
-} else {
-    echo gettext('Update');
-} echo '"' ?> name="Submit"></p>
+        echo gettext('Assign');
+    } else {
+        echo gettext('Update');
+    } echo '"' ?> name="Submit"></p>
 
 </form>
 

@@ -4,17 +4,14 @@
  *  filename    : FinancialReports.php
  *  last change : 2005-03-26
  *  description : form to invoke financial reports
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -25,11 +22,11 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 $sReportType = '';
 
 if (array_key_exists('ReportType', $_POST)) {
-    $sReportType = FilterInput($_POST['ReportType']);
+    $sReportType = InputUtils::LegacyFilterInput($_POST['ReportType']);
 }
 
 if ($sReportType == '' && array_key_exists('ReportType', $_GET)) {
-    $sReportType = FilterInput($_GET['ReportType']);
+    $sReportType = InputUtils::LegacyFilterInput($_GET['ReportType']);
 }
 
 // Set the page title and include HTML header
@@ -66,7 +63,7 @@ if ($sReportType == '') {
     echo '</select>';
     echo '</td></tr>';
     // First Pass Cancel, Next Buttons
-      echo "<tr><td>&nbsp;</td>
+    echo "<tr><td>&nbsp;</td>
         <td><input type=button class=btn name=Cancel value='".gettext('Cancel')."'
         onclick=\"javascript:document.location='ReportList.php';\">
         <input type=submit class=btn name=Submit1 value='".gettext('Next')."'>
@@ -182,7 +179,6 @@ if ($sReportType == '') {
         <button type="button" id="clearAllFamilies" class="btn"><?= gettext('Clear All Families') ?></button><br/><br/>
         </td></tr>
         <?php
-
     }
 
     // Starting and Ending Dates for Report
@@ -252,7 +248,6 @@ if ($sReportType == '') {
         </td></tr>
 
         <?php
-
     }
 
     // Filter by Payment Method

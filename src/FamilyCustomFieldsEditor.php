@@ -11,23 +11,14 @@
 *  Additional Contributors:
 *  2007 Ed Davis
 *
-*
-*  Copyright Contributors
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*
-*  This file best viewed in a text editor with tabs stops set to 4 characters.
-*  Please configure your editor to use soft tabs (4 spaces for a tab) instead
-*  of hard tab characters.
-*
+
 ******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {
@@ -70,7 +61,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-        $aNameFields[$iFieldID] = FilterInput($_POST[$iFieldID.'name']);
+        $aNameFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$iFieldID.'name']);
 
         if (strlen($aNameFields[$iFieldID]) == 0) {
             $aNameErrors[$iFieldID] = true;
@@ -83,7 +74,7 @@ if (isset($_POST['SaveChanges'])) {
         $aFieldSecurity[$iFieldID] = $_POST[$iFieldID.'FieldSec'];
 
         if (isset($_POST[$iFieldID.'special'])) {
-            $aSpecialFields[$iFieldID] = FilterInput($_POST[$iFieldID.'special'], 'int');
+            $aSpecialFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$iFieldID.'special'], 'int');
 
             if ($aSpecialFields[$iFieldID] == 0) {
                 $aSpecialErrors[$iFieldID] = true;
@@ -116,8 +107,8 @@ if (isset($_POST['SaveChanges'])) {
 } else {
     // Check if we're adding a field
     if (isset($_POST['AddField'])) {
-        $newFieldType = FilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = FilterInput($_POST['newFieldName']);
+        $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
+        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
         $newFieldSide = $_POST['newFieldSide'];
         $newFieldSec = $_POST['newFieldSec'];
 
@@ -315,9 +306,8 @@ if ($numRows == 0) {
     <center><h2><?= gettext('No custom Family fields have been added yet') ?></h2>
     </center>
 <?php
-
 } else {
-    ?>
+        ?>
     <tr><td colspan="7">
     <?php
     if ($bErrorFlag) {
@@ -401,7 +391,7 @@ if ($numRows == 0) {
             </td>
 
         </tr>
-    <?php 
+    <?php
     } ?>
 
         <tr>
@@ -418,8 +408,8 @@ if ($numRows == 0) {
             </td>
             <td>
         </tr>
-<?php 
-} ?>
+<?php
+    } ?>
         <tr><td colspan="7"><hr></td></tr>
         <tr>
             <td colspan="7">
@@ -437,7 +427,7 @@ if ($numRows == 0) {
                         }
                         echo '</select>';
                     ?><BR>
-                    <a href="http://docs.churchcrm.io/"><?= gettext('Help on types..') ?></a>
+                    <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
                     </td>
                     <td valign="top">
                         <div><?= gettext('Name') ?>:</div>

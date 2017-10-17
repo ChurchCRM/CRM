@@ -4,12 +4,7 @@
 *  filename    : Reports/AdvancedDeposit.php
 *  last change : 2013-02-21
 *  description : Creates a PDF customized Deposit Report .
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -18,6 +13,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -26,13 +22,13 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 }
 
 // Filter values
-$sort = FilterInput($_POST['sort']);
-$detail_level = FilterInput($_POST['detail_level']);
-$datetype = FilterInput($_POST['datetype']);
-$output = FilterInput($_POST['output']);
-$sDateStart = FilterInput($_POST['DateStart'], 'date');
-$sDateEnd = FilterInput($_POST['DateEnd'], 'date');
-$iDepID = FilterInput($_POST['deposit'], 'int');
+$sort = InputUtils::LegacyFilterInput($_POST['sort']);
+$detail_level = InputUtils::LegacyFilterInput($_POST['detail_level']);
+$datetype = InputUtils::LegacyFilterInput($_POST['datetype']);
+$output = InputUtils::LegacyFilterInput($_POST['output']);
+$sDateStart = InputUtils::LegacyFilterInput($_POST['DateStart'], 'date');
+$sDateEnd = InputUtils::LegacyFilterInput($_POST['DateEnd'], 'date');
+$iDepID = InputUtils::LegacyFilterInput($_POST['deposit'], 'int');
 
 if (!empty($_POST['classList'])) {
     $classList = $_POST['classList'];
@@ -130,7 +126,7 @@ if ($iDepID > 0) {
 if (!empty($_POST['funds'])) {
     $count = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$count++] = FilterInput($fundID, 'int');
+        $fund[$count++] = InputUtils::LegacyFilterInput($fundID, 'int');
     }
     if ($count == 1) {
         if ($fund[0]) {
@@ -149,7 +145,7 @@ if (!empty($_POST['funds'])) {
 if ($familyList) {
     $count = 0;
     foreach ($familyList as $famID) {
-        $fam[$count++] = FilterInput($famID, 'int');
+        $fam[$count++] = InputUtils::LegacyFilterInput($famID, 'int');
     }
     if ($count == 1) {
         if ($fam[0]) {
@@ -172,7 +168,7 @@ if ($classList[0]) {
 if (!empty($_POST['method'])) {
     $count = 0;
     foreach ($_POST['method'] as $MethodItem) {
-        $aMethod[$count++] = FilterInput($MethodItem);
+        $aMethod[$count++] = InputUtils::LegacyFilterInput($MethodItem);
     }
     if ($count == 1) {
         if ($aMethod[0]) {
@@ -885,7 +881,7 @@ if ($output == 'pdf') {
     $pdf->FinishPage($page);
     $pdf->Output('DepositReport-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 
-// Output a text file
+    // Output a text file
 // ##################
 } elseif ($output == 'csv') {
 

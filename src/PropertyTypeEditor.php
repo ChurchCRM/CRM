@@ -5,17 +5,14 @@
  *  last change : 2003-01-07
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have property and classification editing permission
 if (!$_SESSION['bMenuOptions']) {
@@ -29,7 +26,7 @@ $sPageTitle = gettext('Property Type Editor');
 //Get the PropertyID
 $iPropertyTypeID = 0;
 if (array_key_exists('PropertyTypeID', $_GET)) {
-    $iPropertyTypeID = FilterInput($_GET['PropertyTypeID'], 'int');
+    $iPropertyTypeID = InputUtils::LegacyFilterInput($_GET['PropertyTypeID'], 'int');
 }
 
 $sClass = '';
@@ -38,9 +35,9 @@ $bError = false;
 
 //Was the form submitted?
 if (isset($_POST['Submit'])) {
-    $sName = FilterInput($_POST['Name']);
-    $sDescription = FilterInput($_POST['Description']);
-    $sClass = FilterInput($_POST['Class'], 'char', 1);
+    $sName = InputUtils::LegacyFilterInput($_POST['Name']);
+    $sDescription = InputUtils::LegacyFilterInput($_POST['Description']);
+    $sClass = InputUtils::LegacyFilterInput($_POST['Class'], 'char', 1);
 
     //Did they enter a name?
     if (strlen($sName) < 1) {

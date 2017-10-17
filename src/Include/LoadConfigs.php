@@ -9,27 +9,7 @@
  *  Copyright 2001-2005 Phillip Hullquist, Deane Barker, Chris Gebhardt,
  *                      Michael Wilt, Timothy Dearborn
  *
- *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters.
- *  Please configure your editor to use soft tabs (4 spaces for a tab) instead
- *  of hard tab characters.
- *
- ******************************************************************************/
+ *******************************************************************************/
 
 require_once dirname(__FILE__).'/../vendor/autoload.php';
 
@@ -44,6 +24,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Propel;
+use ChurchCRM\Utils\LoggerUtils;
 
 function system_failure($message, $header = 'Setup failure')
 {
@@ -67,7 +48,7 @@ function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWO
         'password' => $sPASSWORD,
         'settings' => [
             'charset' => 'utf8mb4',
-            'queries' => ["SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))"],
+            'queries' => ["SET sql_mode=(SELECT REPLACE(REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''),'NO_ZERO_DATE',''))"],
         ],
         'classname' => $dbClassName,
         'model_paths' => [
@@ -135,22 +116,18 @@ SystemConfig::init(ConfigQuery::create()->find());
 // enable logs if we are in debug mode
 // **************************************************
 
-$logFilePrefix = SystemURLs::getDocumentRoot().'/logs/'.date("Y-m-d");
-$logLevel = intval(SystemConfig::getValue("sLogLevel"));
-
 // PHP Logs
 ini_set('log_errors', 1);
-ini_set('error_log', $logFilePrefix.'-php.log');
+ini_set('error_log', LoggerUtils::buildLogFilePath("php"));
 
 // APP Logs
-$logger = new Logger('defaultLogger');
-$logger->pushHandler(new StreamHandler($logFilePrefix.'-app.log', $logLevel));
+$logger = LoggerUtils::getAppLogger();
 
 // ORM Logs
 $ormLogger = new Logger('ormLogger');
 $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
 $manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
-$ormLogger->pushHandler(new StreamHandler($logFilePrefix.'-orm.log', $logLevel));
+$ormLogger->pushHandler(new StreamHandler(LoggerUtils::buildLogFilePath("orm"), LoggerUtils::getLogLevel()));
 $serviceContainer->setLogger('defaultLogger', $ormLogger);
 
 
@@ -185,7 +162,7 @@ $aLocaleInfo = $localeInfo->getLocaleInfo();
 setlocale(LC_NUMERIC, 'C');
 
 $domain = 'messages';
-$sLocaleDir = SystemURLs::getDocumentRoot().'/locale';
+$sLocaleDir = SystemURLs::getDocumentRoot().'/locale/textdomain';
 
 bind_textdomain_codeset($domain, 'UTF-8');
 bindtextdomain($domain, $sLocaleDir);

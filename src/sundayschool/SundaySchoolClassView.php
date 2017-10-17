@@ -6,13 +6,14 @@ require '../Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $sundaySchoolService = new SundaySchoolService();
 
 $iGroupId = '-1';
 $iGroupName = 'Unknown';
 if (isset($_GET['groupId'])) {
-    $iGroupId = FilterInput($_GET['groupId'], 'int');
+    $iGroupId = InputUtils::LegacyFilterInput($_GET['groupId'], 'int');
 }
 
 $sSQL = 'select * from group_grp where grp_ID ='.$iGroupId;
@@ -74,7 +75,7 @@ require '../Include/Header.php';
     $roleEmails->Kids = implode($sMailtoDelimiter, $KidsEmails).',';
     $sEmailLink = implode($sMailtoDelimiter, $allEmails).',';
     // Add default email if default email has been set and is not already in string
-    if (SystemConfig::getValue('sToEmailAddress') != '' && SystemConfig::getValue('sToEmailAddress') != 'myReceiveEmailAddress' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+    if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
         $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
@@ -106,7 +107,6 @@ require '../Include/Header.php';
         </ul>
       </div>
       <?php
-
     }
     ?>
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
@@ -139,7 +139,6 @@ require '../Include/Header.php';
         </div>
       </div>
     <?php
-
     } ?>
   </div>
 </div>
@@ -242,7 +241,6 @@ require '../Include/Header.php';
           </tr>
 
       <?php
-
       }
 
       ?>
@@ -337,16 +335,7 @@ function implodeUnique($array, $withQuotes)
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function () {
 
-    var dataTable = $('.data-table').dataTable({
-      "dom": 'T<"clear">lfrtip',
-      responsive: true,
-      "language": {
-        "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-      },
-      "tableTools": {
-        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
-      }
-    });
+    var dataTable = $('.data-table').DataTable(window.CRM.plugin.dataTable);
 
     // turn the element to select2 select style
     $('.email-recepients-kids').select2({
@@ -362,9 +351,7 @@ function implodeUnique($array, $withQuotes)
       tags: [<?= implodeUnique($ParentsEmails, true) ?>]
     });
 
-    var birthDateColumn = dataTable
-      .DataTable()
-      .column(':contains(Birth Date)');
+    var birthDateColumn = dataTable.column(':contains(Birth Date)');
 
     var hideBirthDayFilter = function() {
       plot.unhighlight();

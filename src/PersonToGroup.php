@@ -8,18 +8,15 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\InputUtils;
 
 $groupService = new GroupService();
 
@@ -29,13 +26,13 @@ if (!$_SESSION['bManageGroups']) {
     exit;
 }
 
-$iPersonID = FilterInput($_GET['PersonID'], 'int');
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 // Was the form submitted?
 if (isset($_POST['Submit'])) {
     // Get the GroupID
-  $iGroupID = FilterInput($_POST['GroupID'], 'int');
-    $iGroupRole = FilterInput($_POST['GroupRole'], 'int');
+    $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
+    $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
 
     $sPreviousQuery = strip_tags($_POST['prevquery']);
     $groupService->addUserToGroup($iGroupID, $iPersonID, $iGroupRole);

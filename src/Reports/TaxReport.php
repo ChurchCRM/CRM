@@ -4,12 +4,7 @@
 *  filename    : Reports/TaxReport.php
 *  last change : 2005-03-26
 *  description : Creates a PDF with all the tax letters for a particular calendar year.
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -18,6 +13,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -26,14 +22,14 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 }
 
 // Filter values
-$letterhead = FilterInput($_POST['letterhead']);
-$remittance = FilterInput($_POST['remittance']);
-$output = FilterInput($_POST['output']);
-$sReportType = FilterInput($_POST['ReportType']);
-$sDateStart = FilterInput($_POST['DateStart'], 'date');
-$sDateEnd = FilterInput($_POST['DateEnd'], 'date');
-$iDepID = FilterInput($_POST['deposit'], 'int');
-$iMinimum = FilterInput($_POST['minimum'], 'int');
+$letterhead = InputUtils::LegacyFilterInput($_POST['letterhead']);
+$remittance = InputUtils::LegacyFilterInput($_POST['remittance']);
+$output = InputUtils::LegacyFilterInput($_POST['output']);
+$sReportType = InputUtils::LegacyFilterInput($_POST['ReportType']);
+$sDateStart = InputUtils::LegacyFilterInput($_POST['DateStart'], 'date');
+$sDateEnd = InputUtils::LegacyFilterInput($_POST['DateEnd'], 'date');
+$iDepID = InputUtils::LegacyFilterInput($_POST['deposit'], 'int');
+$iMinimum = InputUtils::LegacyFilterInput($_POST['minimum'], 'int');
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
@@ -116,7 +112,7 @@ if ($iDepID > 0) {
 if (!empty($_POST['funds'])) {
     $count = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$count++] = FilterInput($fundID, 'int');
+        $fund[$count++] = InputUtils::LegacyFilterInput($fundID, 'int');
     }
     if ($count == 1) {
         if ($fund[0]) {
@@ -134,7 +130,7 @@ if (!empty($_POST['funds'])) {
 if (!empty($_POST['family'])) {
     $count = 0;
     foreach ($_POST['family'] as $famID) {
-        $fam[$count++] = FilterInput($famID, 'int');
+        $fam[$count++] = InputUtils::LegacyFilterInput($famID, 'int');
     }
     if ($count == 1) {
         if ($fam[0]) {
@@ -467,7 +463,7 @@ if ($output == 'pdf') {
         $pdf->Output();
     }
 
-// Output a text file
+    // Output a text file
 // ##################
 } elseif ($output == 'csv') {
 
@@ -476,7 +472,7 @@ if ($output == 'pdf') {
     $eol = "\r\n";
 
     // Build headings row
-        preg_match('/SELECT (.*) FROM /i', $sSQL, $result);
+    preg_match('/SELECT (.*) FROM /i', $sSQL, $result);
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {

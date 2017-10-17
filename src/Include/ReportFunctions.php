@@ -5,12 +5,7 @@
  *  last change : 2003-03-20
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2003 Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Finds and loads the base JPGraph library and any components specified as arguments
@@ -21,10 +16,10 @@
 function MakeSalutationUtility($famID)
 {
     // Make it put the name if there is only one individual in the family
-  // Make it put two first names and the last name when there are exactly two people in the family (e.g. "Nathaniel and Jeanette Brooks")
-  // Make it put two whole names where there are exactly two people with different names (e.g. "Doug Philbrook and Karen Andrews")
-  // When there are more than two people in the family I don't have any way to know which people are children, so I would have to just use the family name (e.g. "Grossman Family").
-  $sSQL = 'SELECT * FROM family_fam WHERE fam_ID='.$famID;
+    // Make it put two first names and the last name when there are exactly two people in the family (e.g. "Nathaniel and Jeanette Brooks")
+    // Make it put two whole names where there are exactly two people with different names (e.g. "Doug Philbrook and Karen Andrews")
+    // When there are more than two people in the family I don't have any way to know which people are children, so I would have to just use the family name (e.g. "Grossman Family").
+    $sSQL = 'SELECT * FROM family_fam WHERE fam_ID='.$famID;
     $rsFamInfo = RunQuery($sSQL);
 
     if (mysqli_num_rows($rsFamInfo) == 0) {

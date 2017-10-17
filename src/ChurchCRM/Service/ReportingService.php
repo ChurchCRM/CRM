@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 class ReportingService
 {
@@ -34,7 +35,7 @@ class ReportingService
     public function search($searchTerm)
     {
         global $cnInfoCentral;
-        $fetch = 'SELECT * from query_qry WHERE qry_Name LIKE \'%'.FilterInput($searchTerm).'%\' LIMIT 15';
+        $fetch = 'SELECT * from query_qry WHERE qry_Name LIKE \'%'.InputUtils::LegacyFilterInput($searchTerm).'%\' LIMIT 15';
         $result = mysqli_query($cnInfoCentral, $fetch);
         $reports = [];
         while ($row = mysqli_fetch_array($result)) {
@@ -64,7 +65,7 @@ class ReportingService
     public function getQuerySQL($qry_ID, $qry_Parameters)
     {
         requireUserGroupMembership('bAdmin');
-        $sSQL = 'SELECT qry_SQL FROM query_qry where qry_ID='.FilterInput($qry_ID, 'int');
+        $sSQL = 'SELECT qry_SQL FROM query_qry where qry_ID='.InputUtils::LegacyFilterInput($qry_ID, 'int');
         $rsQueries = RunQuery($sSQL);
         $query = mysqli_fetch_assoc($rsQueries);
         $sql = $query['qry_SQL'];
@@ -89,7 +90,7 @@ class ReportingService
             return $result;
         } else {
             if ($qry_Args == null) {
-                $sSQL = 'SELECT qry_ID,qry_Name,qry_Description FROM query_qry where qry_ID='.FilterInput($qry_ID, 'int');
+                $sSQL = 'SELECT qry_ID,qry_Name,qry_Description FROM query_qry where qry_ID='.InputUtils::LegacyFilterInput($qry_ID, 'int');
                 $rsQueries = RunQuery($sSQL);
                 $result = [];
                 while ($row = mysqli_fetch_assoc($rsQueries)) {
@@ -105,7 +106,7 @@ class ReportingService
     public function getQueryParameters($qry_ID = null)
     {
         requireUserGroupMembership('bAdmin');
-        $sSQL = 'SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID='.FilterInput($qry_ID, 'int');
+        $sSQL = 'SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID='.InputUtils::LegacyFilterInput($qry_ID, 'int');
         $rsQueries = RunQuery($sSQL);
         $result = [];
         while ($row = mysqli_fetch_assoc($rsQueries)) {

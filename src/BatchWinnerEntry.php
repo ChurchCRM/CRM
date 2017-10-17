@@ -5,20 +5,17 @@
  *  last change : 2011-04-01
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2011 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$linkBack = FilterInput($_GET['linkBack']);
-$iCurrentFundraiser = FilterInput($_GET['CurrentFundraiser']);
+use ChurchCRM\Utils\InputUtils;
+
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
+$iCurrentFundraiser = InputUtils::LegacyFilterInput($_GET['CurrentFundraiser']);
 
 if ($iCurrentFundraiser) {
     $_SESSION['iCurrentFundraiser'] = $iCurrentFundraiser;

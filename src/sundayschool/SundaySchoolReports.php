@@ -5,10 +5,10 @@
  *  last change : 2003-09-03
  *  description : form to invoke Sunday School reports
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+
+
+
+
  *  edited by S. Shaffer May/June 2006 - added capability to include multiple groups.  Group reports are printed with a page break between group selections.
  *
  ******************************************************************************/
@@ -17,6 +17,7 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 use ChurchCRM\UserQuery;
+use ChurchCRM\Utils\InputUtils;
 
 // Get all the groups
 $sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
@@ -28,19 +29,19 @@ require '../Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) {
-    $iFYID = FilterInput($_POST['FYID'], 'int');
-    $dFirstSunday = FilterInput($_POST['FirstSunday']);
-    $dLastSunday = FilterInput($_POST['LastSunday']);
-    $dNoSchool1 = FilterInput($_POST['NoSchool1']);
-    $dNoSchool2 = FilterInput($_POST['NoSchool2']);
-    $dNoSchool3 = FilterInput($_POST['NoSchool3']);
-    $dNoSchool4 = FilterInput($_POST['NoSchool4']);
-    $dNoSchool5 = FilterInput($_POST['NoSchool5']);
-    $dNoSchool6 = FilterInput($_POST['NoSchool6']);
-    $dNoSchool7 = FilterInput($_POST['NoSchool7']);
-    $dNoSchool8 = FilterInput($_POST['NoSchool8']);
-    $iExtraStudents = FilterInput($_POST['ExtraStudents'], 'int');
-    $iExtraTeachers = FilterInput($_POST['ExtraTeachers'], 'int');
+    $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
+    $dFirstSunday = InputUtils::LegacyFilterInput($_POST['FirstSunday']);
+    $dLastSunday = InputUtils::LegacyFilterInput($_POST['LastSunday']);
+    $dNoSchool1 = InputUtils::LegacyFilterInput($_POST['NoSchool1']);
+    $dNoSchool2 = InputUtils::LegacyFilterInput($_POST['NoSchool2']);
+    $dNoSchool3 = InputUtils::LegacyFilterInput($_POST['NoSchool3']);
+    $dNoSchool4 = InputUtils::LegacyFilterInput($_POST['NoSchool4']);
+    $dNoSchool5 = InputUtils::LegacyFilterInput($_POST['NoSchool5']);
+    $dNoSchool6 = InputUtils::LegacyFilterInput($_POST['NoSchool6']);
+    $dNoSchool7 = InputUtils::LegacyFilterInput($_POST['NoSchool7']);
+    $dNoSchool8 = InputUtils::LegacyFilterInput($_POST['NoSchool8']);
+    $iExtraStudents = InputUtils::LegacyFilterInput($_POST['ExtraStudents'], 'int');
+    $iExtraTeachers = InputUtils::LegacyFilterInput($_POST['ExtraTeachers'], 'int');
     $_SESSION['idefaultFY'] = $iFYID;
 
     $bAtLeastOneGroup = false;
@@ -48,12 +49,12 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
     if (!empty($_POST['GroupID'])) {
         $count = 0;
         foreach ($_POST['GroupID'] as $Grp) {
-            $aGroups[$count++] = FilterInput($Grp, 'int');
+            $aGroups[$count++] = InputUtils::LegacyFilterInput($Grp, 'int');
         }
         $aGrpID = implode(',', $aGroups);
         $bAtLeastOneGroup = true;
     }
-    $allroles = FilterInput($_POST['allroles']);
+    $allroles = InputUtils::LegacyFilterInput($_POST['allroles']);
 
     $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
     $currentUser->setCalStart($dFirstSunday);
@@ -72,8 +73,8 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
         Redirect('Reports/ClassList.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles);
     } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance'])) {
         $toStr = 'Reports/ClassAttendance.php?';
-//	      $toStr .= "GroupID=" . $iGroupID;
-    $toStr .= 'GroupID='.$aGrpID;
+        //	      $toStr .= "GroupID=" . $iGroupID;
+        $toStr .= 'GroupID='.$aGrpID;
         $toStr .= '&FYID='.$iFYID;
         $toStr .= '&FirstSunday='.$dFirstSunday;
         $toStr .= '&LastSunday='.$dLastSunday;

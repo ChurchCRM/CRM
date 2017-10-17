@@ -3,27 +3,27 @@ function initPaymentTable()
   var colDef = [
     {
       width: 'auto',
-      title:'Family',
-      data:'FamilyName',
+      title:i18next.t('Family'),
+      data:'FamilyString',
       render: function(data, type, full, meta) {
-        var familyName = data ? data : "<?= gettext('Anonymous')?>";
+        var familyName = data ? data : i18next.t('Anonymous');
         return '<a href=\'PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' + depositSlipID +
             '&GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + familyName;
       }
     },
     {
       width: 'auto',
-      title:'Check Number',
+      title:i18next.t('Check Number'),
       data:'Checkno'
     },
     {
       width: 'auto',
-      title:'Amount',
+      title:i18next.t('Amount'),
       data:'sumAmount'
     },
     {
       width: 'auto',
-      title:'Method',
+      title:i18next.t('Method'),
       data:'Method'
     }
   ];
@@ -33,7 +33,7 @@ function initPaymentTable()
     colDef.push(
       {
         width: 'auto',
-        title:'Details',
+        title:i18next.t('Details'),
         data:'Id',
         render: function(data, type, full, meta)
         {
@@ -47,8 +47,11 @@ function initPaymentTable()
   dataT = $("#paymentsTable").DataTable({
     ajax:{
       url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
-      dataSrc:"Pledges"
+      dataSrc:''
     },
+      "language": {
+          "url": window.CRM.plugin.dataTable.language.url
+      },
     columns: colDef,
     responsive: true,
     "createdRow" : function (row,data,index) {
