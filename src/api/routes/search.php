@@ -30,7 +30,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
       {
         array_push($results,$family->toSearchArray());
       }
-      array_push($resultsArray, json_encode(["families"=>$results]));
+      array_push($resultsArray, json_encode([gettext("families")=>$results]));
     } catch (Exception $e) {
         $this->Logger->warn($e->getMessage());
     }
