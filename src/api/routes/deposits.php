@@ -83,4 +83,14 @@ $app->group('/deposits', function () {
         return $response->withJSON($Pledges);
         
     });
+    
+    $this->get('/summarydata', function($request,$response, $args) {
+        if ($_SESSION['bFinance']) {
+          $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-180 days'))])->find();
+          if (count($deposits) > 0) {
+            return $response->withJSON(json_encode($deposits->toArray()));
+          }
+        }
+    });
+    
 });

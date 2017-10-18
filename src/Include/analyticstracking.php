@@ -1,5 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 
 try {
     //there is a chance this could throw an exception if the DB has not yet been set up

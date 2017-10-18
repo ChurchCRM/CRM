@@ -104,7 +104,7 @@ function Header_body_scripts()
 {
     global $localeInfo, $nonce;
     $systemService = new SystemService(); ?>
-    <script nonce="<?= $nonce ?>">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
             root: "<?= SystemURLs::getRootPath() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
@@ -124,7 +124,12 @@ function Header_body_scripts()
                         "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
                     }
                 }
-            }
+            },
+            currentUser:
+              <?php
+                echo json_encode($_SESSION['user']->toArray());
+              ?>
+            
         };
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>

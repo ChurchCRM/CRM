@@ -1,6 +1,7 @@
 /*
  * ChurcmCRM JavaScript Object Model Initailizaion Script
  */
+
   window.CRM.APIRequest = function(options) {
     if (!options.method)
     {
@@ -12,8 +13,8 @@
     return $.ajax(options);
   }
     
-
   window.CRM.DisplayErrorMessage = function(endpoint, error) {
+    
     message = "<p>" + i18next.t("Error making API Call to") + ": " + endpoint +
       "</p><p>" + i18next.t("Error text") + ": " + error.message;
     if (error.trace)
@@ -282,6 +283,7 @@
     };
     
     window.CRM.groups = {
+      
       'get': function() {
         return  window.CRM.APIRequest({
           path:"groups/",
@@ -374,6 +376,16 @@
       }
     };
     
+    
+    window.CRM.deposits = {
+      'getSummaryData': function() {
+         return  window.CRM.APIRequest({
+          path:"deposits/summarydata",
+          type:"GET"
+        })
+      }
+    }
+    
     window.CRM.system = {
       'runTimerJobs' : function () {
         $.ajax({
@@ -404,3 +416,4 @@
         var day = new Date();
         var id = day.getTime();
         eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
+      }

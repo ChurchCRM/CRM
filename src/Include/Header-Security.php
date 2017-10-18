@@ -10,10 +10,10 @@ use ChurchCRM\dto\SystemURLs;
 
 $csp = array(
     "default-src 'self'",
-    "script-src 'self' 'nonce-".SystemURLs::getCSPNonce()."' sidecar.gitter.im browser-update.org",
+    "script-src 'unsafe-eval' 'self' 'nonce-".SystemURLs::getCSPNonce()."' sidecar.gitter.im browser-update.org",
     "object-src 'none'",
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
-    "img-src 'self'",
+    "img-src 'self' data:",
     "media-src 'self'",
     "frame-src 'self'",
     "font-src 'self' fonts.gstatic.com",

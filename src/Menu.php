@@ -37,14 +37,6 @@ $updatedMembers = $dashboardService->getUpdatedMembers(12);
 //Newly added members from Active families
 $latestMembers = $dashboardService->getLatestMembers(12);
 
-$depositData = false;  //Determine whether or not we should display the deposit line graph
-if ($_SESSION['bFinance']) {
-    $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
-    if (count($deposits) > 0) {
-        $depositData = $deposits->toJSON();
-    }
-}
-
 // Set the page title
 $sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
 
@@ -155,28 +147,24 @@ require 'Include/Header.php';
     </div><!-- ./col -->
 </div><!-- /.row -->
 
-<?php
-if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
-?>
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="box box-info">
-            <div class="box-header">
-                <i class="ion ion-cash"></i>
-                <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
-                <div class="box-tools pull-right">
-                    <div id="deposit-graph" class="chart-legend"></div>
-                </div>
-            </div><!-- /.box-header -->
-            <div class="box-body">
-                <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
-            </div>
-            </div>
-    </div>
+<div id="depositSummaryChart">
+  <div class="row"> 
+          <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="box box-info">
+                  <div class="box-header">
+                      <i class="ion ion-cash"></i>
+                      <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
+                      <div class="box-tools pull-right">
+                          <div id="deposit-graph" class="chart-legend"></div>
+                      </div>
+                  </div><!-- /.box-header -->
+                  <div class="box-body">
+                      <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
+                  </div>
+                  </div>
+          </div>
+      </div>
 </div>
-<?php
-                  }  //END IF block for Finance permissions to include HTML for Deposit Chart
-?>
 
 <div class="row">
     <div class="col-lg-6">
@@ -336,20 +324,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     </div>
 </div>
 
-<!-- this page specific inline scripts -->
-<script>
-<?php
-if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
-?>
-    //---------------
-    //- LINE CHART  -
-    //---------------
-    var lineDataRaw = <?= $depositData ?>;
-
-<?php
-                        }  //END IF block for Finance permissions to include JS for Deposit Chart
-?>
-</script>
 <script src="/skin/js/Menu.js"></script>
 
 
