@@ -51,6 +51,6 @@ else
 fi
 
 
-cd tests/
+cd ../
 php security-checker.phar security:check /vagrant/src/composer.lock
 php security-checker.phar security:check /vagrant/tests/composer.lock
