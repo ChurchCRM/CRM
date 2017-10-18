@@ -301,9 +301,12 @@ class Family extends BaseFamily implements iPhoto
         $this->createTimeLineNote('verify');
     }
 
-    public function getFamilyString()
+    public function getFamilyString($booleanIncludeHOH)
     {    
-      $HoH = $this->getHeadPeople();
+      $HoH = [];
+      if ($booleanIncludeHOH) {
+        $HoH = $this->getHeadPeople();
+      }
       if (count($HoH) == 1)
       {
          return $this->getName(). ": " . $HoH[0]->getFirstName() . " - " . $this->getAddress();
@@ -353,7 +356,7 @@ class Family extends BaseFamily implements iPhoto
     {
       $searchArray=[
           "Id" => $this->getId(),
-          "displayName" => $this->getFamilyString(),
+          "displayName" => $this->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
           "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
       ];
       return $searchArray;
