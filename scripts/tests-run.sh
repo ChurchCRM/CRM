@@ -4,9 +4,15 @@
 
 echo "Scanning composer for vulnerabilities"
 cd tests
-php security-checker.phar security:check /vagrant/src/composer.lock
-php security-checker.phar security:check /vagrant/tests/composer.lock
+php security-checker.phar security:check ../src/composer.lock
+exit_status=$?
+php security-checker.phar security:check composer.lock
 
+exit_status=$exit_status||$?
+if [ $exit_status -eq 1 ]; then
+  echo "One or more vulnerabilities were found in the compooser.lock file(s)"
+  exit $exit_status
+fi
 
 SingleTest=./behat/features/$1
 echo $SingleTest
