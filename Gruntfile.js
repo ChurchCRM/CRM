@@ -298,13 +298,6 @@ module.exports = function (grunt) {
             update: {
                 version: '<%= package.version %>'
             }
-        },
-        gren: {
-            changelog: {
-                options: {
-                    token: '<%= buildConfig.GitHub.token %>'
-                }
-            }
         }
     });
 
