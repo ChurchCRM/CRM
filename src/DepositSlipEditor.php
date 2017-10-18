@@ -5,12 +5,7 @@
  *  last change : 2014-12-14
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003-2014 Deane Barker, Chris Gebhardt, Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -19,32 +14,33 @@ require 'Include/Functions.php';
 
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $iDepositSlipID = 0;
 $thisDeposit = 0;
 
 if (array_key_exists('DepositSlipID', $_GET)) {
-    $iDepositSlipID = FilterInput($_GET['DepositSlipID'], 'int');
+    $iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID'], 'int');
 }
 
 if ($iDepositSlipID) {
     $thisDeposit = DepositQuery::create()->findOneById($iDepositSlipID);
-  // Set the session variable for default payment type so the new payment form will come up correctly
-  if ($thisDeposit->getType() == 'Bank') {
-      $_SESSION['idefaultPaymentMethod'] = 'CHECK';
-  } elseif ($thisDeposit->getType() == 'CreditCard') {
-      $_SESSION['idefaultPaymentMethod'] = 'CREDITCARD';
-  } elseif ($thisDeposit->getType() == 'BankDraft') {
-      $_SESSION['idefaultPaymentMethod'] = 'BANKDRAFT';
-  } elseif ($thisDeposit->getType() == 'eGive') {
-      $_SESSION['idefaultPaymentMethod'] = 'EGIVE';
-  }
+    // Set the session variable for default payment type so the new payment form will come up correctly
+    if ($thisDeposit->getType() == 'Bank') {
+        $_SESSION['idefaultPaymentMethod'] = 'CHECK';
+    } elseif ($thisDeposit->getType() == 'CreditCard') {
+        $_SESSION['idefaultPaymentMethod'] = 'CREDITCARD';
+    } elseif ($thisDeposit->getType() == 'BankDraft') {
+        $_SESSION['idefaultPaymentMethod'] = 'BANKDRAFT';
+    } elseif ($thisDeposit->getType() == 'eGive') {
+        $_SESSION['idefaultPaymentMethod'] = 'EGIVE';
+    }
 
-  // Security: User must have finance permission or be the one who created this deposit
-  if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $thisDeposit->getEnteredby())) {
-      Redirect('Menu.php');
-      exit;
-  }
+    // Security: User must have finance permission or be the one who created this deposit
+    if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $thisDeposit->getEnteredby())) {
+        Redirect('Menu.php');
+        exit;
+    }
 } else {
     Redirect('Menu.php');
 }
@@ -158,7 +154,6 @@ require 'Include/Header.php';
           <input type="submit" class="btn btn-success" value="<?php echo gettext('Load Authorized Transactions'); ?>" name="DepositSlipLoadAuthorized">
           <input type="submit" class="btn btn-warning" value="<?php echo gettext('Run Transactions'); ?>" name="DepositSlipRunTransactions">
           <?php
-
           }
       }
       ?>
@@ -172,7 +167,6 @@ require 'Include/Header.php';
             ?>
         <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>
         <?php
-
         }
     }
     ?>

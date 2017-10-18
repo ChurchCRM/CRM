@@ -5,12 +5,7 @@
 *  last change : 2005-03-26
 *  description : Creates a PDF with all the tax letters for a particular calendar year.
 *  Copyright 2012 Michael Wilt
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -19,6 +14,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -27,12 +23,12 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 }
 
 // Filter values
-$output = FilterInput($_POST['output']);
-$sDateStart = FilterInput($_POST['DateStart'], 'date');
-$sDateEnd = FilterInput($_POST['DateEnd'], 'date');
+$output = InputUtils::LegacyFilterInput($_POST['output']);
+$sDateStart = InputUtils::LegacyFilterInput($_POST['DateStart'], 'date');
+$sDateEnd = InputUtils::LegacyFilterInput($_POST['DateEnd'], 'date');
 
-$letterhead = FilterInput($_POST['letterhead']);
-$remittance = FilterInput($_POST['remittance']);
+$letterhead = InputUtils::LegacyFilterInput($_POST['letterhead']);
+$remittance = InputUtils::LegacyFilterInput($_POST['remittance']);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
@@ -147,7 +143,7 @@ if ($output == 'pdf') {
         $pdf->Output();
     }
 
-// Output a text file
+    // Output a text file
 // ##################
 } elseif ($output == 'csv') {
 

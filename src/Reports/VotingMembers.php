@@ -4,12 +4,7 @@
 *  filename    : Reports/VotingMembers.php
 *  last change : 2005-03-26
 *  description : Creates a PDF with names of voting members for a particular fiscal year
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -18,12 +13,13 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
 //Get the Fiscal Year ID out of the querystring
-$iFYID = FilterInput($_POST['FYID'], 'int');
+$iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
-$iRequireDonationYears = FilterInput($_POST['RequireDonationYears'], 'int');
-$output = FilterInput($_POST['output']);
+$iRequireDonationYears = InputUtils::LegacyFilterInput($_POST['RequireDonationYears'], 'int');
+$output = InputUtils::LegacyFilterInput($_POST['output']);
 
 class PDF_VotingMembers extends ChurchInfoReport
 {

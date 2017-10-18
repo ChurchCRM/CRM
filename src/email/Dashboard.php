@@ -6,16 +6,18 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2014
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+
+
+
+
  *
  ******************************************************************************/
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
+
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\dto\SystemURLs;
 
 $mailchimp = new MailChimpService();
 
@@ -31,7 +33,7 @@ require '../Include/Header.php';
         <h3 class="box-title"><?= gettext('Email Export') ?></h3>
       </div>
       <div class="box-body">
-        <?= gettext('You can import the generated CSV file to external email system.') ?>: 
+        <?= gettext('You can import the generated CSV file to external email system.') ?>:
             For MailChimp see <a href="http://kb.mailchimp.com/lists/growth/import-subscribers-to-a-list"
                                    target="_blank"><?= gettext('import subscribers to a list.') ?></a>
         <br/><br/>
@@ -69,7 +71,7 @@ require '../Include/Header.php';
           </div>
         </div>
       </div>
-    <?php 
+    <?php
     } ?>
   </div>
   <div class="row">
@@ -86,22 +88,22 @@ require '../Include/Header.php';
       </div>
     </div>
   </div>
-<?php 
+<?php
 } else {
-    ?>
+        ?>
   <div class="row">
     <div class="col-lg-12 col-md-7 col-sm-3">
       <div class="box box-body">
         <div class="alert alert-danger alert-dismissible">
           <h4><i class="icon fa fa-ban"></i> MailChimp <?= gettext('is not configured') ?></h4>
           <?= gettext('Please update the') ?> MailChimp <?= gettext('API key in Setting->') ?><a href="../SystemSettings.php"><?= gettext('Edit General Settings') ?></a>,
-          <?= gettext('then update') ?> mailChimpApiKey. <?= gettext('For more info see our ') ?><a href="http://docs.churchcrm.io"> MailChimp <?= gettext('support docs.') ?></a>
+          <?= gettext('then update') ?> sMailChimpApiKey. <?= gettext('For more info see our ') ?><a href="<?= SystemURLs::getSupportURL() ?>"> MailChimp <?= gettext('support docs.') ?></a>
         </div>
       </div>
     </div>
   </div>
-<?php 
-}
+<?php
+    }
 
 require '../Include/Footer.php';
 ?>

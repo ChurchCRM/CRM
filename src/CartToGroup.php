@@ -7,18 +7,15 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\InputUtils;
 
 $groupService = new GroupService();
 
@@ -32,15 +29,15 @@ if (!$_SESSION['bManageGroups']) {
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
   // Get the GroupID
-  $iGroupID = FilterInput($_POST['GroupID'], 'int');
+    $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
     if (array_key_exists('GroupRole', $_POST)) {
-        $iGroupRole = FilterInput($_POST['GroupRole'], 'int');
+        $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
     } else {
         $iGroupRole = 0;
     }
 
-  // Loop through the session array
-  $iCount = 0;
+    // Loop through the session array
+    $iCount = 0;
     while ($element = each($_SESSION['aPeopleCart'])) {
         $groupService->addUserToGroup($iGroupID, $_SESSION['aPeopleCart'][$element['key']], $iGroupRole);
         $iCount += 1;
@@ -102,10 +99,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
       </form>
     </div></div>
   <?php
-
 } else {
-    echo '<p align="center" class="LargeText">'.gettext('Your cart is empty!').'</p>';
-}
+        echo '<p align="center" class="LargeText">'.gettext('Your cart is empty!').'</p>';
+    }
 
 require 'Include/Footer.php';
 ?>

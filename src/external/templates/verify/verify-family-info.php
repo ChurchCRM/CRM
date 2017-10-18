@@ -1,7 +1,8 @@
-<?php
+ <?php
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\ChurchMetaData;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
@@ -23,9 +24,12 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
-        <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i><?= $family->getHomePhone() ?><br/>
-        <i class="fa fa-fw fa-envelope" title="<?= gettext("Family Email")?>"></i><?= $family->getEmail() ?><br/>
-        <?php
+          <?php if (!empty($family->getHomePhone()))  { ?>
+          <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i>(H) <?= $family->getHomePhone() ?><br/>
+          <?php }  if (!empty($family->getEmail())) { ?>
+          <i class="fa fa-fw fa-envelope" title="<?= gettext("Family Email") ?>"></i><?= $family->getEmail() ?><br/>
+              <?php
+          }
           if( $family->getWeddingDate() !== null) {
         ?>
             <i class="fa fa-fw fa-heart" title="<?= gettext("Wedding Date")?>"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?><br/>
@@ -67,28 +71,43 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
                 <ul class="list-group list-group-unbordered">
                   <li class="list-group-item">
-                    <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"></i><?= $person->getHomePhone() ?><br/>
-                    <i class="fa fa-fw fa-briefcase" title="<?= gettext("Work Phone")?>"></i><?= $person->getWorkPhone() ?><br/>
-                    <i class="fa fa-fw fa-mobile" title="<?= gettext("Mobile Phone")?>"></i><?= $person->getCellPhone() ?><br/>
-                    <i class="fa fa-fw fa-envelope" title="<?= gettext("Email")?>"></i><?= $person->getEmail() ?><br/>
-                    <i class="fa fa-fw fa-envelope-o" title="<?= gettext("Work Email")?>"></i><?= $person->getWorkEmail() ?><br/>
+                      <?php if (!empty($person->getHomePhone()))  { ?>
+                    <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"></i>(H) <?= $person->getHomePhone() ?><br/>
+                      <?php }  if (!empty($person->getWorkPhone()))  { ?>
+                    <i class="fa fa-fw fa-briefcase" title="<?= gettext("Work Phone")?>"></i>(W) <?= $person->getWorkPhone() ?><br/>
+                      <?php }  if (!empty($person->getCellPhone()))  { ?>
+                    <i class="fa fa-fw fa-mobile" title="<?= gettext("Mobile Phone")?>"></i>(M) <?= $person->getCellPhone() ?><br/>
+                      <?php }  if (!empty($person->getEmail()))  { ?>
+                    <i class="fa fa-fw fa-envelope" title="<?= gettext("Email")?>"></i>(H) <?= $person->getEmail() ?><br/>
+                      <?php }  if (!empty($person->getWorkEmail()))  { ?>
+                    <i class="fa fa-fw fa-envelope-o" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
+                      <?php }  ?>
                     <i class="fa fa-fw fa-birthday-cake"
                        title="Birthday"></i><?= $person->getBirthDate()->format("M d Y") ?> <?php if ($person->hideAge()) { ?>
                       <i class="fa fa-fw fa-eye-slash" title="<?= gettext("Age Hidden")?>"></i><?php } ?><br/>
                   </li>
                   <li class="list-group-item">
-                    <?php $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($person->getClsId())->findOne()->getOptionName(); ?>
+                    <?php
+                    $classification = "";
+                    $cls = ListOptionQuery::create()->filterById(1)->filterByOptionId($person->getClsId())->findOne();
+                    if (!empty($cls)) {
+                        $classification = $cls->getOptionName();
+                    }
+                    ?>
                     <b>Classification:</b> <?= $classification ?>
                   </li>
                   <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) {?>
                   <li class="list-group-item">
                     <h4>Groups</h4>
                     <?php foreach ($person->getPerson2group2roleP2g2rs() as $groupMembership) {
-                      $listOption = ListOptionQuery::create()->filterById($groupMembership->getGroup()->getRoleListId())->filterByOptionId($groupMembership->getRoleId())->findOne()->getOptionName();
-                      ?>
-                      <b><?= $groupMembership->getGroup()->getName() ?></b>: <span
-                        class="pull-right"><?= $listOption ?></span>
-                    <?php } ?>
+                        if ($groupMembership->getGroup() != null) {
+                            $listOption = ListOptionQuery::create()->filterById($groupMembership->getGroup()->getRoleListId())->filterByOptionId($groupMembership->getRoleId())->findOne()->getOptionName();
+                    ?>
+                        <b><?= $groupMembership->getGroup()->getName() ?></b>: <span class="pull-right"><?= $listOption ?></span><br/>
+                    <?php
+                        }
+                    }
+                    ?>
                   </li>
                   <?php } ?>
                 </ul>
@@ -135,7 +154,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         <div class="modal-footer">
           <button id="onlineVerifyCancelBtn" type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
           <button id="onlineVerifyBtn" class="btn btn-success"><?= gettext("Verify") ?></button>
-          <a href="<?= SystemURLs::getURL()?>" id="onlineVerifySiteBtn" class="btn btn-success"><?= gettext("Visit our Site") ?></a>
+          <a href="<?= ChurchMetaData::getChurchWebSite() ?>" id="onlineVerifySiteBtn" class="btn btn-success"><?= gettext("Visit our Site") ?></a>
         </div>
       </div>
     </div>

@@ -8,17 +8,14 @@
  *
  *  OptionName : Interface for editing simple selection options such as those
  *              : used for Family Roles, Classifications, and Group Types
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 $mode = trim($_GET['mode']);
 
@@ -96,7 +93,7 @@ switch ($mode) {
         $adjplusname = gettext('Group Member Role');
         $adjplusnameplural = gettext('Group Member Roles');
         $sPageTitle = gettext('Group Member Roles Editor');
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = 'SELECT grp_DefaultRole FROM group_grp WHERE grp_RoleListID = '.$listID;
@@ -117,7 +114,7 @@ switch ($mode) {
         $adjplusname = gettext('Person Custom List Option');
         $adjplusnameplural = gettext('Person Custom List Options');
         $sPageTitle = gettext('Person Custom List Options Editor');
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = "SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special = ".$listID;
@@ -135,7 +132,7 @@ switch ($mode) {
         $adjplusname = gettext('Custom List Option');
         $adjplusnameplural = gettext('Custom List Options');
         $sPageTitle = gettext('Custom List Options Editor');
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = "SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special = ".$listID;
@@ -153,7 +150,7 @@ switch ($mode) {
         $adjplusname = gettext('Family Custom List Option');
         $adjplusnameplural = gettext('Family Custom List Options');
         $sPageTitle = gettext('Family Custom List Options Editor');
-        $listID = FilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = ".$listID;
@@ -175,7 +172,7 @@ $iNewNameError = 0;
 
 // Check if we're adding a field
 if (isset($_POST['AddField'])) {
-    $newFieldName = FilterInput($_POST['newFieldName']);
+    $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
 
     if (strlen($newFieldName) == 0) {
         $iNewNameError = 1;
@@ -231,7 +228,7 @@ if (isset($_POST['SaveChanges'])) {
         //addition save off sequence also
         $aSeqs[$row] = $aRow['lst_OptionSequence'];
 
-        $aNameFields[$row] = FilterInput($_POST[$row.'name']);
+        $aNameFields[$row] = InputUtils::LegacyFilterInput($_POST[$row.'name']);
     }
 
     for ($row = 1; $row <= $numRows; $row++) {
@@ -361,7 +358,7 @@ for ($row = 1; $row <= $numRows; $row++) {
         } ?>
 
 	</tr>
-<?php 
+<?php
 } ?>
 
 </table>
@@ -370,15 +367,15 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 
 	<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
-    ?>
+            ?>
 		<input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
-	<?php 
-} elseif ($mode != 'grproles') {
-    ?>
+	<?php
+        } elseif ($mode != 'grproles') {
+            ?>
 		<input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
         echo 'Menu.php'; ?>';">
-	<?php 
-} ?>
+	<?php
+        } ?>
 	</div>
 </div>
 

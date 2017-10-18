@@ -10,22 +10,6 @@
  *  Updated 2005-03-19 by Everette L Mills: Removed dropdown login box and
  *  added user entered login box
  *
- *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
  ******************************************************************************/
 
 // Include the function library
@@ -40,11 +24,12 @@ use ChurchCRM\UserQuery;
 use ChurchCRM\Emails\LockedEmail;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Utils\InputUtils;
 
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
     // Get the information for the selected user
-    $UserName = FilterInput($_POST['User'], 'string', 32);
+    $UserName = InputUtils::LegacyFilterInput($_POST['User'], 'string', 32);
     $currentUser = UserQuery::create()->findOneByUserName($UserName);
     if ($currentUser == null) {
         // Set the error text
@@ -143,9 +128,6 @@ if (isset($_POST['User'])) {
 }
 
 
-
-
-
 // Set the page title and include HTML header
 $sPageTitle = gettext('Login');
 require 'Include/HeaderNotLoggedIn.php';
@@ -186,31 +168,30 @@ require 'Include/HeaderNotLoggedIn.php';
                 <input type="password" id="PasswordBox" name="Password" class="form-control"
                        placeholder="<?= gettext('Password') ?>" required autofocus>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <br/>
+                <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
+            ?>
+                    <span class="text-right"><a
+                                href="external/password/"><?= gettext("I forgot my password") ?></a></span>
+                    <?php
+        } ?>
             </div>
             <div class="row">
-                <div class="col-xs-8">
-                    <!--<div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox"> Remember Me
-                        </label>
-                    </div>-->
-                </div>
                 <!-- /.col -->
-                <div class="col-xs-4">
+                <div class="col-xs-5">
                     <button type="submit" class="btn btn-primary btn-block btn-flat"><i
-                            class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
+                                class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
                 </div>
             </div>
         </form>
-        <!--<a href="external/user/password">I forgot my password</a><br> -->
 
-        <?php if (SystemConfig::getBooleanValue('sEnableSelfRegistration')) {
+        <?php if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
             ?>
-        <a href="external/register/" class="text-center btn bg-olive"><i class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
-        <?php
-
+            <a href="external/register/" class="text-center btn bg-olive"><i
+                        class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
+            <?php
         } ?>
-      <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
+        <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
 
     </div>
     <!-- /.login-box-body -->

@@ -10,13 +10,14 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Utils\InputUtils;
 
 //Set the page title
 $sPageTitle = gettext('View on Map');
 
 require 'Include/Header.php';
 
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 ?>
 
 <div class="callout callout-info">
@@ -30,38 +31,36 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
         <?= gettext('Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.') ?>
     </div>
     <?php
-
 } else {
-    if (SystemConfig::getValue('sGoogleMapKey') == '') {
-        ?>
+        if (SystemConfig::getValue('sGoogleMapKey') == '') {
+            ?>
         <div class="callout callout-warning">
             <?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?>
         </div>
         <?php
+        }
 
-    }
+        $plotFamily = false;
+        //Get the details from DB
+        $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
 
-    $plotFamily = false;
-    //Get the details from DB
-    $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
-
-    if ($iGroupID > 0) {
-        //Get all the members of this group
-        $persons = PersonQuery::create()
+        if ($iGroupID > 0) {
+            //Get all the members of this group
+            $persons = PersonQuery::create()
             ->usePerson2group2roleP2g2rQuery()
             ->filterByGroupId($iGroupID)
             ->endUse()
             ->find();
-    } elseif ($iGroupID == 0) {
-        // group zero means map the cart
-        if (!empty($_SESSION['aPeopleCart'])) {
-            $persons = PersonQuery::create()
+        } elseif ($iGroupID == 0) {
+            // group zero means map the cart
+            if (!empty($_SESSION['aPeopleCart'])) {
+                $persons = PersonQuery::create()
                 ->filterById($_SESSION['aPeopleCart'])
                 ->find();
-        }
-    } else {
-        //Map all the families
-        $families = FamilyQuery::create()
+            }
+        } else {
+            //Map all the families
+            $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)
             ->filterByLatitude(0, Criteria::NOT_EQUAL)
             ->filterByLongitude(0, Criteria::NOT_EQUAL)
@@ -69,17 +68,17 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
             ->filterByFmrId($dirRoleHead)
             ->endUse()
             ->find();
-        $plotFamily = true;
-    }
+            $plotFamily = true;
+        }
 
-    //Markericons list
-    $icons = ListOptionQuery::create()
+        //Markericons list
+        $icons = ListOptionQuery::create()
         ->filterById(1)
         ->orderByOptionSequence()
         ->find();
 
-    $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
-    array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification?>
+        $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
+        array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification?>
 
     <!--Google Map Scripts -->
     <script
@@ -95,7 +94,7 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
             <div class="row legendbox">
                 <div class="legenditem">
                     <img
-                        src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                        src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
                     <?= gettext('Unassigned') ?>
                 </div>
                 <?php
@@ -103,11 +102,10 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
                     ?>
                     <div class="legenditem">
                         <img
-                            src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                            src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
                         <?= $icon->getOptionName() ?>
                     </div>
                     <?php
-
                 } ?>
             </div>
         </div>
@@ -120,7 +118,7 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
             <div class="row legendbox">
                 <div class="col-xs-6 legenditem">
                     <img
-                        class="legendicon" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
+                        class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png'/>
                     <div class="legenditemtext"><?= gettext('Unassigned') ?></div>
                 </div>
                 <?php
@@ -128,11 +126,10 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
                     ?>
                     <div class="col-xs-6 legenditem">
                         <img
-                            class="legendicon" src='http://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
+                            class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png'/>
                         <div class="legenditemtext"><?= $icon->getOptionName() ?></div>
                     </div>
                     <?php
-
                 } ?>
             </div>
         </div>
@@ -192,43 +189,43 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
 
             <?php
             $arr = array();
-    $arrPlotItems = array();
-    if ($plotFamily) {
-        foreach ($families as $family) {
-            if ($family->hasLatitudeAndLongitude()) {
-                //this helps to add head people persons details: otherwise doesn't seems to populate
-                $class = $family->getHeadPeople()[0];
-                $family->getHeadPeople()[0];
-                $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
-                $arr['ID'] = $family->getId();
-                $arr['Name'] = $family->getName();
-                $arr['Salutation'] = $family->getSaluation();
-                $arr['Address'] = $family->getAddress();
-                $arr['Thumbnail'] = $photoFileThumb;
-                $arr['Latitude'] = $family->getLatitude();
-                $arr['Longitude'] = $family->getLongitude();
-                $arr['Name'] = $family->getName();
-                $arr['Classification'] = $class->GetClsId();
-                array_push($arrPlotItems, $arr);
-            }
-        }
-    } else {
-        //plot Person
-                foreach ($persons as $member) {
-                    $latLng = $member->getLatLng();
-                    $photoFileThumb = SystemURLs::getRootPath() . '/api/persons/' . $member->getId() . '/thumbnail';
-                    $arr['ID'] = $member->getId();
-                    $arr['Salutation'] = $member->getFullName();
-                    $arr['Name'] = $member->getFullName();
-                    $arr['Address'] = $member->getAddress();
+        $arrPlotItems = array();
+        if ($plotFamily) {
+            foreach ($families as $family) {
+                if ($family->hasLatitudeAndLongitude()) {
+                    //this helps to add head people persons details: otherwise doesn't seems to populate
+                    $class = $family->getHeadPeople()[0];
+                    $family->getHeadPeople()[0];
+                    $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
+                    $arr['ID'] = $family->getId();
+                    $arr['Name'] = $family->getName();
+                    $arr['Salutation'] = $family->getSaluation();
+                    $arr['Address'] = $family->getAddress();
                     $arr['Thumbnail'] = $photoFileThumb;
-                    $arr['Latitude'] = $latLng['Latitude'];
-                    $arr['Longitude'] = $latLng['Longitude'];
-                    $arr['Name'] = $member->getFullName();
-                    $arr['Classification'] = $member->getClsId();
+                    $arr['Latitude'] = $family->getLatitude();
+                    $arr['Longitude'] = $family->getLongitude();
+                    $arr['Name'] = $family->getName();
+                    $arr['Classification'] = $class->GetClsId();
                     array_push($arrPlotItems, $arr);
                 }
-    } //end IF $plotFamily
+            }
+        } else {
+            //plot Person
+            foreach ($persons as $member) {
+                $latLng = $member->getLatLng();
+                $photoFileThumb = SystemURLs::getRootPath() . '/api/persons/' . $member->getId() . '/thumbnail';
+                $arr['ID'] = $member->getId();
+                $arr['Salutation'] = $member->getFullName();
+                $arr['Name'] = $member->getFullName();
+                $arr['Address'] = $member->getAddress();
+                $arr['Thumbnail'] = $photoFileThumb;
+                $arr['Latitude'] = $latLng['Latitude'];
+                $arr['Longitude'] = $latLng['Longitude'];
+                $arr['Name'] = $member->getFullName();
+                $arr['Classification'] = $member->getClsId();
+                array_push($arrPlotItems, $arr);
+            }
+        } //end IF $plotFamily
 
             ?>
 
@@ -288,6 +285,5 @@ $iGroupID = FilterInput($_GET['GroupID'], 'int');
 
     </script>
     <?php
-
-}
+    }
 require 'Include/Footer.php' ?>

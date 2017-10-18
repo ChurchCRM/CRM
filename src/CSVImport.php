@@ -7,19 +7,16 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
+use ChurchCRM\Utils\InputUtils;
 
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -113,7 +110,7 @@ require 'Include/Header.php'; ?>
 
 <div class="box">
 <div class="box-header">
-<h3 class="box-title"><?= gettext('Import Data')?></h3>
+   <h3 class="box-title"><?= gettext('Import Data')?></h3>
 </div>
 <div class="box-body">
 
@@ -148,8 +145,7 @@ if (isset($_POST['UploadCSV'])) {
         }
         rewind($pFile);
 
-        // create the form
-        ?>
+        // create the form?>
         <form method="post" action="CSVImport.php">
 
         <?php
@@ -234,7 +230,6 @@ if (isset($_POST['UploadCSV'])) {
             </select>
             </td>
         <?php
-
         }
 
         echo '</table>'; ?>
@@ -312,9 +307,9 @@ if (isset($_POST['DoImport'])) {
         $pFile = fopen($csvTempFile, 'r');
 
         $bHasCustom = false;
-        $sDefaultCountry = FilterInput($_POST['Country']);
-        $iClassID = FilterInput($_POST['Classification'], 'int');
-        $iDateMode = FilterInput($_POST['DateMode'], 'int');
+        $sDefaultCountry = InputUtils::LegacyFilterInput($_POST['Country']);
+        $iClassID = InputUtils::LegacyFilterInput($_POST['Classification'], 'int');
+        $iDateMode = InputUtils::LegacyFilterInput($_POST['DateMode'], 'int');
 
         // Get the number of CSV columns for future reference
         $aData = fgetcsv($pFile, 2048, ',');
@@ -457,7 +452,7 @@ if (isset($_POST['DoImport'])) {
 
                         // Donation envelope.. make sure it's available!
                         case 7:
-                            $iEnv = FilterInput($aData[$col], 'int');
+                            $iEnv = InputUtils::LegacyFilterInput($aData[$col], 'int');
                             if ($iEnv == '') {
                                 $iEnvelope = 0;
                             } else {
@@ -643,7 +638,7 @@ if (isset($_POST['DoImport'])) {
                     $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('".$famid."')";
                     RunQuery($sSQL);
 
-                    $fFamily = new Family(FilterInput($_POST['FamilyMode'], 'int'));
+                    $fFamily = new Family(InputUtils::LegacyFilterInput($_POST['FamilyMode'], 'int'));
                     $fFamily->AddMember($per_ID,
                                         $iGender,
                                         GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
@@ -828,8 +823,7 @@ if (isset($_POST['Clear'])) {
 }
 
 if ($iStage == 1) {
-    // Display the select file form
-    ?>
+    // Display the select file form?>
         <p style="color: red"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
         <input class="icTinyButton" type="file" name="CSVfile"><br/>

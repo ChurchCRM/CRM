@@ -6,21 +6,6 @@
  *  copyright   : Copyright 2001, 2002 Deane Barker
  *  			  Copyright 2004-2012 Michael Wilt
  *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
  ******************************************************************************/
 
 // Include the function library
@@ -31,6 +16,7 @@ require 'Include/Functions.php';
 use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\PasswordChangeEmail;
+use ChurchCRM\Utils\InputUtils;
 
 $bAdminOtherUser = false;
 $bAdminOther = false;
@@ -40,7 +26,7 @@ $sNewPasswordError = false;
 
 // Get the PersonID out of the querystring if they are an admin user; otherwise, use session.
 if ($_SESSION['bAdmin'] && isset($_GET['PersonID'])) {
-    $iPersonID = FilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     if ($iPersonID != $_SESSION['iUserID']) {
         $bAdminOtherUser = true;
     }
@@ -83,6 +69,7 @@ if (isset($_POST['Submit'])) {
             // Set the session variable so they don't get sent back here
             $_SESSION['bNeedPasswordChange'] = false;
 
+
             if (!empty($curUser->getEmail())) {
                 $email = new PasswordChangeEmail($curUser, $sNewPassword1);
                 if (!$email->send()) {
@@ -104,7 +91,7 @@ if (isset($_POST['Submit'])) {
         $curUser = UserQuery::create()->findPk($iPersonID);
 
         // Build the array of bad passwords
-        $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('sDisallowedPasswords')));
+        $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('aDisallowedPasswords')));
         $aBadPasswords[] = strtolower($curUser->getPerson()->getFirstName());
         $aBadPasswords[] = strtolower($curUser->getPerson()->getMiddleName());
         $aBadPasswords[] = strtolower($curUser->getPerson()->getLastName());
@@ -136,8 +123,8 @@ if (isset($_POST['Submit'])) {
         }
 
         // Is the password valid for length?
-        elseif (strlen($sNewPassword1) < SystemConfig::getValue('sMinPasswordLength')) {
-            $sNewPasswordError = '<br><font color="red">'.gettext('Your new password must be at least').' '.SystemConfig::getValue('sMinPasswordLength').' '.gettext('characters').'</font>';
+        elseif (strlen($sNewPassword1) < SystemConfig::getValue('iMinPasswordLength')) {
+            $sNewPasswordError = '<br><font color="red">'.gettext('Your new password must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters').'</font>';
             $bError = true;
         }
 
@@ -145,7 +132,7 @@ if (isset($_POST['Submit'])) {
         elseif ($sNewPassword1 == $sOldPassword) {
             $sNewPasswordError = '<br><font color="red">'.gettext('You need to actually change your password (nice try, though!)').'</font>';
             $bError = true;
-        } elseif (levenshtein(strtolower($sNewPassword1), strtolower($sOldPassword)) < SystemConfig::getValue('sMinPasswordChange')) {
+        } elseif (levenshtein(strtolower($sNewPassword1), strtolower($sOldPassword)) < SystemConfig::getValue('iMinPasswordChange')) {
             $sNewPasswordError = '<br><font color="red">'.gettext('Your new password is too similar to your old one.  Be more creative!').'</font>';
             $bError = true;
         }
@@ -187,7 +174,6 @@ if ($_SESSION['bNeedPasswordChange']) {
         <?= gettext('Your account record indicates that you need to change your password before proceding.') ?>
         </div>
 <?php
-
 } ?>
 
 <div class="row">
@@ -197,10 +183,10 @@ if ($_SESSION['bNeedPasswordChange']) {
         <div class="box box-primary">
             <div class="box-header with-border">
                 <?php if (!$bAdminOtherUser) {
-    echo '<p>'.gettext('Enter your current password, then your new password twice.  Passwords must be at least').' '.SystemConfig::getValue('sMinPasswordLength').' '.gettext('characters in length.').'</p>';
-} else {
-    echo '<p>'.gettext('Enter a new password for this user.').'</p>';
-}
+        echo '<p>'.gettext('Enter your current password, then your new password twice.  Passwords must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters in length.').'</p>';
+    } else {
+        echo '<p>'.gettext('Enter a new password for this user.').'</p>';
+    }
                 ?>
             </div>
             <!-- /.box-header -->
@@ -214,7 +200,6 @@ if ($_SESSION['bNeedPasswordChange']) {
                         <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?= $sOldPassword ?>" autofocus><?= $sOldPasswordError ?>
                     </div>
                     <?php
-
                 } ?>
                     <div class="form-group">
                             <label for="NewPassword1"><?= gettext('New Password') ?>:</label>

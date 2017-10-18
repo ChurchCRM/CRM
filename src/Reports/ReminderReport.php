@@ -5,22 +5,6 @@
 *  last change : 2005-03-26
 *  description : Creates a PDF of the current deposit slip
 *  Copyright 2004-2005  Michael Wilt, Timothy Dearborn
-*
-*  LICENSE:
-*  (C) Free Software Foundation, Inc.
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 3 of the License, or
-*  (at your option) any later version.
-*
-*  This program is distributed in the hope that it will be useful, but
-*  WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-*  General Public License for more details.
-*
-*  http://www.gnu.org/licenses
-*
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -29,6 +13,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -37,11 +22,11 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 }
 
 //Get the Fiscal Year ID out of the querystring
-$iFYID = FilterInput($_POST['FYID'], 'int');
+$iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
-$output = FilterInput($_POST['output']);
-$pledge_filter = FilterInput($_POST['pledge_filter']);
-$only_owe = FilterInput($_POST['only_owe']);
+$output = InputUtils::LegacyFilterInput($_POST['output']);
+$pledge_filter = InputUtils::LegacyFilterInput($_POST['pledge_filter']);
+$only_owe = InputUtils::LegacyFilterInput($_POST['only_owe']);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
@@ -99,7 +84,7 @@ $criteria = '';
 if (!empty($_POST['family'])) {
     $count = 0;
     foreach ($_POST['family'] as $famID) {
-        $fam[$count++] = FilterInput($famID, 'int');
+        $fam[$count++] = InputUtils::LegacyFilterInput($famID, 'int');
     }
     if ($count == 1) {
         if ($fam[0]) {
@@ -147,7 +132,7 @@ $sSQLFundCriteria = '';
 if (!empty($_POST['funds'])) {
     $fundCount = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$fundCount++] = FilterInput($fundID, 'int');
+        $fund[$fundCount++] = InputUtils::LegacyFilterInput($fundID, 'int');
     }
     if ($fundCount == 1) {
         if ($fund[0]) {

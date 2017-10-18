@@ -9,12 +9,7 @@
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
  *  Copyright 2005 Todd Pillars
  *  Copyright 2012 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 $sPageTitle = gettext('Event Checkin');
@@ -31,6 +26,7 @@ use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
 $EventID = 0;
 $CheckoutOrDelete = false;
@@ -40,17 +36,17 @@ $iAdultID = 0;
 
 
 if (array_key_exists('EventID', $_POST)) {
-    $EventID = FilterInput($_POST['EventID'], 'int');
+    $EventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
 } // from ListEvents button=Attendees
 if (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn'])) {
     $CheckoutOrDelete =  true;
 }
 
 if (isset($_POST['child-id'])) {
-    $iChildID = FilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
 }
 if (isset($_POST['adult-id'])) {
-    $iAdultID = FilterInput($_POST['adult-id'], 'int');
+    $iAdultID = InputUtils::LegacyFilterInput($_POST['adult-id'], 'int');
 }
 
 //
@@ -98,7 +94,6 @@ if ($EventID > 0) {
                                             value="<?= $event->getId(); ?>" <?= ($EventID == $event->getId()) ? " Selected='selected'" : "" ?> >
                                             <?= $event->getTitle(); ?></option>
                                         <?php
-
 }
                                     ?>
                                 </select>
@@ -184,7 +179,6 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
     </form> <!-- end AddAttendees form -->
 
     <?php
-
 }
 
 // Checkin/Checkout Section update db
@@ -200,7 +194,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
                 $('#errorcallout').text('<?= gettext("Person has been already checked in for this event") ?>').fadeIn();
             </script>
             <?php
-
         } else {
             $attendee = new EventAttend();
             $attendee->setEventId($EventID);
@@ -242,7 +235,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
 if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
     (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn']))
 ) {
-    $iChildID = FilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
 
     $formTitle = (isset($_POST['CheckOutBtn']) ? gettext("CheckOut Person") : gettext("Delete Checkin in Entry")); ?>
 
@@ -289,7 +282,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                     <div id="adultoutDetails" class="box box-solid box-default hidden"></div>
                                 </div>
                                 <?php
-
                             } else { // DeleteBtn?>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-danger"
@@ -298,7 +290,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                            name="DeleteCancel">
                                 </div>
                                 <?php
-
                             } ?>
                         </div>
                     </div>
@@ -307,7 +298,6 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
         </div>
     </form>
     <?php
-
 }
 //End checkout
 //**********************************************************************************************************
@@ -338,21 +328,21 @@ if (isset($_POST['EventID'])) {
 
     foreach ($eventAttendees as $per) {
         //Get Person who is checked in
-                    $checkedInPerson = PersonQuery::create()
+        $checkedInPerson = PersonQuery::create()
                         ->findOneById($per->getPersonId());
 
         $sPerson = $checkedInPerson->getFullName();
 
-                    //Get Person who checked person in
-                    $sCheckinby = "";
+        //Get Person who checked person in
+        $sCheckinby = "";
         if ($per->getCheckinId()) {
             $checkedInBy = PersonQuery::create()
                             ->findOneById($per->getCheckinId());
             $sCheckinby = $checkedInBy->getFullName();
         }
 
-                    //Get Person who checked person out
-                    $sCheckoutby = "";
+        //Get Person who checked person out
+        $sCheckoutby = "";
         if ($per->getCheckoutId()) {
             $checkedOutBy = PersonQuery::create()
                             ->findOneById($per->getCheckoutId());
@@ -381,40 +371,28 @@ if (isset($_POST['EventID'])) {
                                            value="<?= gettext('Delete') ?>">
 
                                     <?php
-
                                 } else {
                                     ?>
                                     <i class="fa fa-check-circle"></i>
                                     <?php
-
                                 } ?>
                             </form>
                         </td>
                     </tr>
                     <?php
-
     } ?>
                 </tbody>
             </table>
         </div>
     </div>
     <?php
-
 }
 ?>
 
 <script language="javascript" type="text/javascript">
     var perArr;
     $(document).ready(function () {
-        $('#checkedinTable').dataTable({
-            "language": {
-                "url": window.CRM.root + "/skin/locale/datatables/" + window.CRM.locale + ".json"
-            },
-            responsive: true,
-            "dom": "<'row'<'col-md-6'i><'col-md-6'f>>" +
-            'rt<"bottom"lp><"clear">'
-
-        });
+        $('#checkedinTable').DataTable(window.CRM.plugin.dataTable);
     });
 
     $(document).ready(function() {

@@ -4,12 +4,7 @@
 *  filename    : Reports/ReminderReport.php
 *  last change : 2005-03-26
 *  description : Creates a PDF of the current deposit slip
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -18,6 +13,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -26,8 +22,8 @@ if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
 }
 
 // Filter Values
-$output = FilterInput($_POST['output']);
-$iFYID = FilterInput($_POST['FYID'], 'int');
+$output = InputUtils::LegacyFilterInput($_POST['output']);
+$iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
@@ -68,7 +64,7 @@ $sSQL = 'SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID
  if (!empty($_POST['funds'])) {
      $count = 0;
      foreach ($_POST['funds'] as $fundID) {
-         $fund[$count++] = FilterInput($fundID, 'int');
+         $fund[$count++] = InputUtils::LegacyFilterInput($fundID, 'int');
      }
      if ($count == 1) {
          if ($fund[0]) {
@@ -274,7 +270,7 @@ if ($output == 'pdf') {
         $pdf->Output();
     }
 
-// Output a text file
+    // Output a text file
 // ##################
 } elseif ($output == 'csv') {
 

@@ -6,10 +6,10 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt, Michael Wilt
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+
+
+
+
  *
  ******************************************************************************/
 
@@ -17,9 +17,11 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-$linkBack = FilterInput($_GET['linkBack']);
-$iPerson = FilterInput($_GET['PersonID']);
-$iWhyCameID = FilterInput($_GET['WhyCameID']);
+use ChurchCRM\Utils\InputUtils;
+
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
+$iPerson = InputUtils::LegacyFilterInput($_GET['PersonID']);
+$iWhyCameID = InputUtils::LegacyFilterInput($_GET['WhyCameID']);
 
 //Get name
 $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per where per_ID = '.$iPerson;
@@ -30,32 +32,32 @@ $sPageTitle = gettext('"Why Came" notes for ').$per_FirstName.' '.$per_LastName;
 
 //Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $tJoin = FilterInput($_POST['Join']);
-    $tCome = FilterInput($_POST['Come']);
-    $tSuggest = FilterInput($_POST['Suggest']);
-    $tHearOfUs = FilterInput($_POST['HearOfUs']);
+    $tJoin = InputUtils::LegacyFilterInput($_POST['Join']);
+    $tCome = InputUtils::LegacyFilterInput($_POST['Come']);
+    $tSuggest = InputUtils::LegacyFilterInput($_POST['Suggest']);
+    $tHearOfUs = InputUtils::LegacyFilterInput($_POST['HearOfUs']);
 
-  // New input (add)
-  if (strlen($iWhyCameID) < 1) {
-      $sSQL = 'INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs)
+    // New input (add)
+    if (strlen($iWhyCameID) < 1) {
+        $sSQL = 'INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs)
 				VALUES ('.$iPerson.', "'.$tJoin.'", "'.$tCome.'", "'.$tSuggest.'", "'.$tHearOfUs.'")';
 
-    // Existing record (update)
-  } else {
-      $sSQL = 'UPDATE whycame_why SET why_join = "'.$tJoin.'", why_come = "'.$tCome.'", why_suggest = "'.$tSuggest.'", why_hearOfUs = "'.$tHearOfUs.'" WHERE why_per_ID = '.$iPerson;
-  }
+        // Existing record (update)
+    } else {
+        $sSQL = 'UPDATE whycame_why SET why_join = "'.$tJoin.'", why_come = "'.$tCome.'", why_suggest = "'.$tSuggest.'", why_hearOfUs = "'.$tHearOfUs.'" WHERE why_per_ID = '.$iPerson;
+    }
 
-  //Execute the SQL
-  RunQuery($sSQL);
+    //Execute the SQL
+    RunQuery($sSQL);
 
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-    if ($linkBack != '') {
-        Redirect($linkBack);
-    } else {
-        //Send to the view of this pledge
-      Redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
-    }
+        if ($linkBack != '') {
+            Redirect($linkBack);
+        } else {
+            //Send to the view of this pledge
+            Redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
+        }
     }
 } else {
     $sSQL = 'SELECT * FROM whycame_why WHERE why_per_ID = '.$iPerson;

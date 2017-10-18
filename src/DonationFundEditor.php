@@ -7,12 +7,7 @@
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
  *
  *  function    : Editor for donation funds
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 require 'Include/Config.php';
@@ -20,6 +15,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\DonationFund;
 use ChurchCRM\DonationFundQuery;
+use ChurchCRM\Utils\InputUtils;
 
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {
@@ -33,7 +29,7 @@ if (isset($_GET['Action'])) {
     $sAction = '';
 }
 if (isset($_GET['Fund'])) {
-    $sFund = FilterInput($_GET['Fund'], 'int');
+    $sFund = InputUtils::LegacyFilterInput($_GET['Fund'], 'int');
 } else {
     $sFund = '';
 }
@@ -69,8 +65,8 @@ $donationFunds = DonationFundQuery::create()
 if (isset($_POST['SaveChanges'])) {
     for ($iFieldID = 0; $iFieldID < $donationFunds->count(); $iFieldID++) {
         $donation = $donationFunds[$iFieldID];
-        $donation->setName(FilterInput($_POST[$iFieldID.'name']));
-        $donation->setDescription(FilterInput($_POST[$iFieldID.'desc']));
+        $donation->setName(InputUtils::LegacyFilterInput($_POST[$iFieldID.'name']));
+        $donation->setDescription(InputUtils::LegacyFilterInput($_POST[$iFieldID.'desc']));
         $donation->setActive($_POST[$iFieldID.'active'] == 1);
         if (strlen($donation->getName()) == 0) {
             $aNameErrors[$iFieldID] = true;
@@ -90,8 +86,8 @@ if (isset($_POST['SaveChanges'])) {
             $bNewNameError = true;
         } else {
             $donation = new DonationFund();
-            $donation->setName(FilterInput($_POST['newFieldName']));
-            $donation->setDescription(FilterInput($_POST['newFieldDesc']));
+            $donation->setName(InputUtils::LegacyFilterInput($_POST['newFieldName']));
+            $donation->setDescription(InputUtils::LegacyFilterInput($_POST['newFieldDesc']));
             $donation->save();
             $donationFunds = DonationFundQuery::create()
         ->orderByName()
@@ -146,7 +142,6 @@ if ($donationFunds->count() == 0) {
 	<center><h2><?= gettext('No funds have been added yet') ?></h2>
 	</center>
 <?php
-
         } else {
             ?>
 		<tr>
@@ -187,7 +182,7 @@ if ($donationFunds->count() == 0) {
 			</td>
 
 		</tr>
-	<?php 
+	<?php
     } ?>
 
 		<tr>
@@ -204,7 +199,7 @@ if ($donationFunds->count() == 0) {
 			</td>
 			<td>
 		</tr>
-<?php 
+<?php
         } ?>
 		<tr><td colspan="5"><hr></td></tr>
 		<tr>

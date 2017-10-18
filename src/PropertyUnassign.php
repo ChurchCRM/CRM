@@ -5,17 +5,14 @@
  *  last change : 2003-01-07
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
@@ -25,11 +22,11 @@ if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords']) {
 }
 
 //Get the new property value from the post collection
-$iPropertyID = FilterInput($_GET['PropertyID'], 'int');
+$iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
 
 // Is there a PersonID in the querystring?
 if (isset($_GET['PersonID']) && $_SESSION['bEditRecords']) {
-    $iPersonID = FilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
     $sTypeName = 'Person';
@@ -44,7 +41,7 @@ if (isset($_GET['PersonID']) && $_SESSION['bEditRecords']) {
 
 // Is there a GroupID in the querystring?
 elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
-    $iGroupID = FilterInput($_GET['GroupID'], 'int');
+    $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
     $sTypeName = 'Group';
@@ -59,7 +56,7 @@ elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
 
 // Is there a FamilyID in the querystring?
 elseif (isset($_GET['FamilyID']) && $_SESSION['bEditRecords']) {
-    $iFamilyID = FilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
     $sTypeName = 'Family';

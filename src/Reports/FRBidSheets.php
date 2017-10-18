@@ -4,12 +4,7 @@
 *  filename    : Reports/FRBidSheets.php
 *  last change : 2003-08-30
 *  description : Creates a PDF with a silent auction bid sheet for every item.
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -40,7 +35,7 @@ class PDF_FRBidSheetsReport extends ChurchInfoReport
 
         parent::AddPage($orientation, $format);
 
-//    	$this->SetFont("Times",'B',16);
+        //    	$this->SetFont("Times",'B',16);
 //    	$this->Write (8, $fr_title."\n");
 //		$curY += 8;
 //		$this->Write (8, $fr_description."\n\n");

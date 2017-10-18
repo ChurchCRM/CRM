@@ -8,17 +8,14 @@
  *  http://www.churchcrm.io/
  *  Copyright 2003 Federico Nebiolo, Chris Gebhardt
  *  Copyright 2004-2012 Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Get all the groups
 $sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
@@ -93,9 +90,8 @@ require 'Include/Header.php';
         </div>
     </div>
     <?php
-
 } else {
-    $iGroupID = FilterInput($_POST['GroupID'], 'int'); ?>
+                                $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int'); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="box">
@@ -118,7 +114,7 @@ require 'Include/Header.php';
 
                         <?php
                         $sSQL = 'SELECT prop_Field, prop_Name FROM groupprop_master WHERE grp_ID = '.$iGroupID.' ORDER BY prop_ID';
-    $rsPropFields = RunQuery($sSQL); ?>
+                                $rsPropFields = RunQuery($sSQL); ?>
 
                         <table align="center">
                             <tr>
@@ -161,7 +157,7 @@ require 'Include/Header.php';
         </div>
     </div>
 
-            <?php 
-} ?>
+            <?php
+                            } ?>
 
 <?php require 'Include/Footer.php' ?>

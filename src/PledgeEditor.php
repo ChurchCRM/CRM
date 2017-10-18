@@ -6,12 +6,7 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2012Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -20,9 +15,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MICRReader;
+use ChurchCRM\Utils\InputUtils;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
-   $micrObj = new MICRReader();
+    $micrObj = new MICRReader();
 }
 
 $iEnvelope = 0;
@@ -64,19 +60,19 @@ while ($aRow = mysqli_fetch_array($rsFunds)) {
 
 // Handle URL via _GET first
 if (array_key_exists('PledgeOrPayment', $_GET)) {
-    $PledgeOrPayment = FilterInput($_GET['PledgeOrPayment'], 'string');
+    $PledgeOrPayment = InputUtils::LegacyFilterInput($_GET['PledgeOrPayment'], 'string');
 }
 $sGroupKey = '';
 if (array_key_exists('GroupKey', $_GET)) {
-    $sGroupKey = FilterInput($_GET['GroupKey'], 'string');
+    $sGroupKey = InputUtils::LegacyFilterInput($_GET['GroupKey'], 'string');
 } // this will only be set if someone pressed the 'edit' button on the Pledge or Deposit line
 if (array_key_exists('CurrentDeposit', $_GET)) {
-    $iCurrentDeposit = FilterInput($_GET['CurrentDeposit'], 'integer');
+    $iCurrentDeposit = InputUtils::LegacyFilterInput($_GET['CurrentDeposit'], 'integer');
 }
-$linkBack = FilterInput($_GET['linkBack'], 'string');
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
 $iFamily = 0;
 if (array_key_exists('FamilyID', $_GET)) {
-    $iFamily = FilterInput($_GET['FamilyID'], 'int');
+    $iFamily = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
 }
 
 $fund2PlgIds = []; // this will be the array cross-referencing funds to existing plg_plgid's
@@ -105,9 +101,9 @@ if (isset($_POST['PledgeSubmit']) or
     isset($_POST['MatchEnvelope']) or
     isset($_POST['SetDefaultCheck']) or
     isset($_POST['SetFundTypeSelection'])) {
-    $iFamily = FilterInput($_POST['FamilyID'], 'int');
+    $iFamily = InputUtils::LegacyFilterInput($_POST['FamilyID'], 'int');
 
-    $dDate = FilterInput($_POST['Date']);
+    $dDate = InputUtils::LegacyFilterInput($_POST['Date']);
     if (!$dDate) {
         if (array_key_exists('idefaultDate', $_SESSION)) {
             $dDate = $_SESSION['idefaultDate'];
@@ -118,7 +114,7 @@ if (isset($_POST['PledgeSubmit']) or
     $_SESSION['idefaultDate'] = $dDate;
 
     // set from drop-down if set, saved session default, or by calcuation
-    $iFYID = FilterInput($_POST['FYID'], 'int');
+    $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
     if (!$iFYID) {
         $iFYID = $_SESSION['idefaultFY'];
     }
@@ -128,19 +124,19 @@ if (isset($_POST['PledgeSubmit']) or
     $_SESSION['idefaultFY'] = $iFYID;
 
     if (array_key_exists('CheckNo', $_POST)) {
-        $iCheckNo = FilterInput($_POST['CheckNo'], 'int');
+        $iCheckNo = InputUtils::LegacyFilterInput($_POST['CheckNo'], 'int');
     } else {
         $iCheckNo = 0;
     }
 
     if (array_key_exists('Schedule', $_POST)) {
-        $iSchedule = FilterInput($_POST['Schedule']);
+        $iSchedule = InputUtils::LegacyFilterInput($_POST['Schedule']);
     } else {
         $iSchedule = 'Once';
     }
     $_SESSION['iDefaultSchedule'] = $iSchedule;
 
-    $iMethod = FilterInput($_POST['Method']);
+    $iMethod = InputUtils::LegacyFilterInput($_POST['Method']);
     if (!$iMethod) {
         if ($sGroupKey) {
             $sSQL = "SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_GroupKey='".$sGroupKey."'";
@@ -164,7 +160,7 @@ if (isset($_POST['PledgeSubmit']) or
 
     $iEnvelope = 0;
     if (array_key_exists('Envelope', $_POST)) {
-        $iEnvelope = FilterInput($_POST['Envelope'], 'int');
+        $iEnvelope = InputUtils::LegacyFilterInput($_POST['Envelope'], 'int');
     }
 } else { // Form was not up previously, take data from existing records or make default values
     if ($sGroupKey) {
@@ -260,14 +256,14 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     $nonZeroFundAmountEntered = 0;
     foreach ($fundId2Name as $fun_id => $fun_name) {
         //$fun_active = $fundActive[$fun_id];
-        $nAmount[$fun_id] = FilterInput($_POST[$fun_id.'_Amount']);
-        $sComment[$fun_id] = FilterInput($_POST[$fun_id.'_Comment']);
+        $nAmount[$fun_id] = InputUtils::LegacyFilterInput($_POST[$fun_id.'_Amount']);
+        $sComment[$fun_id] = InputUtils::LegacyFilterInput($_POST[$fun_id.'_Comment']);
         if ($nAmount[$fun_id] > 0) {
             ++$nonZeroFundAmountEntered;
         }
 
         if ($bEnableNonDeductible) {
-            $nNonDeductible[$fun_id] = FilterInput($_POST[$fun_id.'_NonDeductible']);
+            $nNonDeductible[$fun_id] = InputUtils::LegacyFilterInput($_POST[$fun_id.'_NonDeductible']);
             //Validate the NonDeductible Amount
             if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
                 $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
@@ -283,15 +279,15 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     
 
     if (array_key_exists('ScanInput', $_POST)) {
-        $tScanString = FilterInput($_POST['ScanInput']);
+        $tScanString = InputUtils::LegacyFilterInput($_POST['ScanInput']);
     } else {
         $tScanString = '';
     }
     $iAutID = 0;
     if (array_key_exists('AutoPay', $_POST)) {
-        $iAutID = FilterInput($_POST['AutoPay']);
+        $iAutID = InputUtils::LegacyFilterInput($_POST['AutoPay']);
     }
-    //$iEnvelope = FilterInput($_POST["Envelope"], 'int');
+    //$iEnvelope = InputUtils::LegacyFilterInput($_POST["Envelope"], 'int');
 
     if ($PledgeOrPayment == 'Payment' && !$iCheckNo && $iMethod == 'CHECK') {
         $sCheckNoError = '<span style="color: red; ">'.gettext('Must specify non-zero check number').'</span>';
@@ -386,7 +382,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     //$iCheckNo = 0;
     // Take care of match-family first- select the family based on the scanned check
     if (SystemConfig::getValue('bUseScannedChecks') && isset($_POST['MatchFamily'])) {
-        $tScanString = FilterInput($_POST['ScanInput']);
+        $tScanString = InputUtils::LegacyFilterInput($_POST['ScanInput']);
 
         $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
 
@@ -398,13 +394,13 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 
             $iCheckNo = $micrObj->FindCheckNo($tScanString);
         } else {
-            $iFamily = FilterInput($_POST['FamilyID'], 'int');
-            $iCheckNo = FilterInput($_POST['CheckNo'], 'int');
+            $iFamily = InputUtils::LegacyFilterInput($_POST['FamilyID'], 'int');
+            $iCheckNo = InputUtils::LegacyFilterInput($_POST['CheckNo'], 'int');
         }
     } elseif (isset($_POST['MatchEnvelope'])) {
         // Match envelope is similar to match check- use the envelope number to choose a family
 
-        $iEnvelope = FilterInput($_POST['Envelope'], 'int');
+        $iEnvelope = InputUtils::LegacyFilterInput($_POST['Envelope'], 'int');
         if ($iEnvelope && strlen($iEnvelope) > 0) {
             $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_Envelope='.$iEnvelope;
             $rsFam = RunQuery($sSQL);
@@ -415,15 +411,15 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             }
         }
     } else {
-        $iFamily = FilterInput($_POST['FamilyID']);
-        $iCheckNo = FilterInput($_POST['CheckNo'], 'int');
+        $iFamily = InputUtils::LegacyFilterInput($_POST['FamilyID']);
+        $iCheckNo = InputUtils::LegacyFilterInput($_POST['CheckNo'], 'int');
     }
 
     // Handle special buttons at the bottom of the form.
     if (isset($_POST['SetDefaultCheck'])) {
-        $tScanString = FilterInput($_POST['ScanInput']);
+        $tScanString = InputUtils::LegacyFilterInput($_POST['ScanInput']);
         $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
-        $iFamily = FilterInput($_POST['FamilyID'], 'int');
+        $iFamily = InputUtils::LegacyFilterInput($_POST['FamilyID'], 'int');
         $sSQL = 'UPDATE family_fam SET fam_scanCheck="'.$routeAndAccount.'" WHERE fam_ID = '.$iFamily;
         RunQuery($sSQL);
     }
@@ -432,7 +428,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 // Set Current Deposit setting for user
 if ($iCurrentDeposit) {
     /* @var $currentUser \ChurchCRM\User */
-  $currentUser = $_SESSION['user'];
+    $currentUser = $_SESSION['user'];
     $currentUser->setCurrentDeposit($iCurrentDeposit);
     $currentUser->save();
 }
@@ -529,42 +525,42 @@ require 'Include/Header.php';
           <?php if (!$dep_Closed) {
         ?>
             <input class="form-control" type="submit" class="btn" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
-          <?php 
+          <?php
     } ?>
           
-        <?php 
+        <?php
 } ?>
             
             <?php if ($PledgeOrPayment == 'Pledge') {
-    ?>
+        ?>
           
         <label for="Schedule"><?= gettext('Payment Schedule') ?></label>
           <select name="Schedule" class="form-control">
               <option value="0"><?= gettext('Select Schedule') ?></option>
               <option value="Weekly" <?php if ($iSchedule == 'Weekly') {
-        echo 'selected';
-    } ?>><?= gettext('Weekly') ?>
+            echo 'selected';
+        } ?>><?= gettext('Weekly') ?>
               </option>
               <option value="Monthly" <?php if ($iSchedule == 'Monthly') {
-        echo 'selected';
-    } ?>><?= gettext('Monthly') ?>
+            echo 'selected';
+        } ?>><?= gettext('Monthly') ?>
               </option>
               <option value="Quarterly" <?php if ($iSchedule == 'Quarterly') {
-        echo 'selected';
-    } ?>><?= gettext('Quarterly') ?>
+            echo 'selected';
+        } ?>><?= gettext('Quarterly') ?>
               </option>
               <option value="Once" <?php if ($iSchedule == 'Once') {
-        echo 'selected';
-    } ?>><?= gettext('Once') ?>
+            echo 'selected';
+        } ?>><?= gettext('Once') ?>
               </option>
               <option value="Other" <?php if ($iSchedule == 'Other') {
-        echo 'selected';
-    } ?>><?= gettext('Other') ?>
+            echo 'selected';
+        } ?>><?= gettext('Other') ?>
               </option>
           </select>
           
-          <?php 
-} ?>
+          <?php
+    } ?>
 
       </div>
 
@@ -573,52 +569,52 @@ require 'Include/Header.php';
         <label for="Method"><?= gettext('Payment by') ?></label>
         <select class="form-control" name="Method" id="Method">
           <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'Bank' || !$iCurrentDeposit) {
-    ?>
+        ?>
             <option value="CHECK" <?php if ($iMethod == 'CHECK') {
-        echo 'selected';
-    } ?>><?= gettext('Check'); ?>
+            echo 'selected';
+        } ?>><?= gettext('Check'); ?>
             </option>
             <option value="CASH" <?php if ($iMethod == 'CASH') {
-        echo 'selected';
-    } ?>><?= gettext('Cash'); ?>
+            echo 'selected';
+        } ?>><?= gettext('Cash'); ?>
             </option>
-              <?php 
-} ?>
+              <?php
+    } ?>
           <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'CreditCard' || !$iCurrentDeposit) {
-    ?>
+        ?>
             <option value="CREDITCARD" <?php if ($iMethod == 'CREDITCARD') {
-        echo 'selected';
-    } ?>><?= gettext('Credit Card') ?>
+            echo 'selected';
+        } ?>><?= gettext('Credit Card') ?>
             </option>
-          <?php 
-} ?>
+          <?php
+    } ?>
           <?php if ($PledgeOrPayment == 'Pledge' || $dep_Type == 'BankDraft' || !$iCurrentDeposit) {
-    ?>
+        ?>
             <option value="BANKDRAFT" <?php if ($iMethod == 'BANKDRAFT') {
-        echo 'selected';
-    } ?>><?= gettext('Bank Draft') ?>
+            echo 'selected';
+        } ?>><?= gettext('Bank Draft') ?>
             </option>
-          <?php 
-} ?>
+          <?php
+    } ?>
           <?php if ($PledgeOrPayment == 'Pledge') {
-    ?>
+        ?>
             <option value="EGIVE" <?= $iMethod == 'EGIVE' ? 'selected' : '' ?>>
              <?=gettext('eGive') ?>
             </option>
-          <?php 
-} ?>
+          <?php
+    } ?>
         </select>
                         
                        
                         
         <?php if ($PledgeOrPayment == 'Payment' && $dep_Type == 'Bank') {
-    ?>
+        ?>
           <div id="checkNumberGroup">
           <label for="CheckNo"><?= gettext('Check') ?> #</label>
           <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"/><font color="red"><?= $sCheckNoError ?></font>
           </div>
-        <?php 
-} ?>
+        <?php
+    } ?>
                 
                   
         <label for="TotalAmount"><?= gettext('Total $') ?></label>
@@ -662,7 +658,7 @@ require 'Include/Header.php';
             </tr>
            
       </div>
-    <?php 
+    <?php
     } ?>
               
     <div class="col-lg-6">
@@ -670,7 +666,7 @@ require 'Include/Header.php';
         ?>
           <td align="center" class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
           <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea></td>
-        <?php 
+        <?php
     } ?>
     </div>
               
@@ -679,7 +675,7 @@ require 'Include/Header.php';
         ?>
         <input type="submit" class="btn" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
         <input type="submit" class="btn" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
-      <?php 
+      <?php
     } ?>
     </div>
 
@@ -690,7 +686,7 @@ require 'Include/Header.php';
         <?php if ($_SESSION['bAddRecords']) {
             echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
         } ?>
-          <?php 
+          <?php
     } ?>
     <?php if (!$dep_Closed) {
         $cancelText = 'Cancel';
@@ -718,7 +714,7 @@ require 'Include/Header.php';
                 <?php if ($bEnableNonDeductible) {
         ?>
                   <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Non-deductible amount') ?></th>
-                <?php 
+                <?php
     } ?>
 
                 <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Comment') ?></th>
@@ -742,14 +738,13 @@ require 'Include/Header.php';
                         <br>
                         <font color="red"><?= $sNonDeductibleError[$fun_id]?></font>
                       </td>
-                    <?php 
+                    <?php
                     } ?>
                   <td class="TextColumn">
                     <input  type="text" size=40 name="<?= $fun_id ?>_Comment" id="<?= $fun_id ?>_Comment" value="<?= $sComment[$fun_id] ?>">
                   </td>
                 </tr>
               <?php
-
               } ?>
             </tbody>
           </table>
@@ -795,9 +790,12 @@ require 'Include/Header.php';
     });
     
     $("#FundTable").DataTable({
-      responsive:true,
-      paging: false,
-      searching: false
+        "language": {
+            "url": window.CRM.plugin.dataTable.language.url
+        },
+        responsive:true,
+        paging: false,
+        searching: false
     });
     
     

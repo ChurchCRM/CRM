@@ -4,7 +4,9 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 include 'Include/VancoConfig.php';
 
-$customerid = FilterInput($_GET['autid'], 'int');
+use ChurchCRM\Utils\InputUtils;
+
+$customerid = InputUtils::LegacyFilterInput($_GET['autid'], 'int');
 $iAutID = $customerid;
 
 $sSQL = 'SELECT * FROM autopayment_aut WHERE aut_ID='.$iAutID;
@@ -39,7 +41,7 @@ class VancoToolsXML
         $this->enckey = $setEncKey;
         $this->test = $setTest;
 
-//		echo "Inside VancoToolsXML __construct $this->userid password $this->password clientid $this->clientid enckey $this->enckey test $this->test <br>";
+        //		echo "Inside VancoToolsXML __construct $this->userid password $this->password clientid $this->clientid enckey $this->enckey test $this->test <br>";
     }
 
     public function generateRequestID()
@@ -50,7 +52,7 @@ class VancoToolsXML
         Parameters:  None
         Returns:     String value to be used as a request ID. Value will be date/time with a random 4 digit number appended
         */
-//		date_default_timezone_set('America/Chicago');
+        //		date_default_timezone_set('America/Chicago');
         $currenttime = date('YmdHis');
         $randomnumber = rand(0, 9999);
 
@@ -67,7 +69,7 @@ class VancoToolsXML
         } else {
             $ReqHeaderBase .= "POST /cgi-bin/ws2.vps HTTP/1.1\n";
         }
-//			$ReqHeaderBase  .= "POST /cgi-bin/wsnvp.vps HTTP/1.1\n";
+        //			$ReqHeaderBase  .= "POST /cgi-bin/wsnvp.vps HTTP/1.1\n";
         $ReqHeaderBase .= 'Host: '.$_SERVER['HTTP_HOST']."\n";
         $ReqHeaderBase .= 'User-Agent: '.$_SERVER['HTTP_USER_AGENT']."\n";
         $ReqHeaderBase .= "Content-Type: application/x-www-form-urlencoded\n";
@@ -75,7 +77,7 @@ class VancoToolsXML
         $ReqHeader = $ReqHeaderBase.'Content-length: '.strlen($xmlstr)."\nConnection: close\n\n";
         $Req = $ReqHeader.$xmlstr."\n\n";
 
-//		echo "Sending request: '" . $Req;
+        //		echo "Sending request: '" . $Req;
 
         //--- Open Connection ---
         $vancoURL = '';
@@ -85,7 +87,7 @@ class VancoToolsXML
             $vancoURL = 'ssl://www.vancoservices.com';
         }
 
-//		echo "Opening connection to '$vancoURL'<br>";
+        //		echo "Opening connection to '$vancoURL'<br>";
 
         $socket = fsockopen($vancoURL, 443, $errno, $errstr, 15);
 
@@ -112,10 +114,10 @@ class VancoToolsXML
 
             $rets = mb_substr($rets, strpos($rets, '?'.'>') + 2); // Skip over the header and the xml tag
 
-//		    printf ("Got string '%s'", $rets);
+            //		    printf ("Got string '%s'", $rets);
 
             $xml = simplexml_load_string($rets);
-//    		print_r($xml);
+            //    		print_r($xml);
             return $xml;
         }
     }
@@ -213,7 +215,7 @@ $resArr[] = ['PaymentType'=>"$accountType"];
 if (gettype($addPaymentMethodXmlResp->Response->Errors->Error) == 'object') {
     foreach ($addPaymentMethodXmlResp->Response->Errors->Error as $onerr) {
         $resArr[] = ['Error'=>$onerr->ErrorCode.': '.$onerr->ErrorDescription];
-//		print "Got an error code ".$onerr->ErrorCode." description " . $onerr->ErrorDescription . "<br>";
+        //		print "Got an error code ".$onerr->ErrorCode." description " . $onerr->ErrorDescription . "<br>";
     }
     $resArr[] = ['Success'=>false];
 } else {

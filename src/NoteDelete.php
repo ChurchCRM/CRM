@@ -5,12 +5,7 @@
  *  last change : 2003-01-07
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -18,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\NoteQuery;
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
@@ -30,7 +26,7 @@ if (!$_SESSION['bNotes']) {
 $sPageTitle = gettext('Note Delete Confirmation');
 
 //Get the NoteID from the querystring
-$iNoteID = FilterInput($_GET['NoteID'], 'int');
+$iNoteID = InputUtils::LegacyFilterInput($_GET['NoteID'], 'int');
 
 //Get the data on this note
 $sSQL = 'SELECT * FROM note_nte WHERE nte_ID = '.$iNoteID;

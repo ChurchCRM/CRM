@@ -14,6 +14,7 @@ class SystemURLs
     private static $urls;
     private static $documentRoot;
     private static $CSPNonce;
+    private static $supportURL = "https://github.com/ChurchCRM/CRM/wiki";
 
     public static function init($rootPath, $urls, $documentRoot)
     {
@@ -48,6 +49,11 @@ class SystemURLs
     public static function getURLs()
     {
         return self::$urls;
+    }
+
+    public static function getSupportURL()
+    {
+        return self::$supportURL;
     }
 
   public static function getURL($index = 0)

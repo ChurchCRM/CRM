@@ -7,16 +7,12 @@
  *  copyright   : Copyright 2003 Chris Gebhardt (http://www.openserve.org)
  *
  *  function    : Row operations for the group-specific properties form
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
-
- ******************************************************************************/
+ *******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bManageGroups']) {
@@ -25,9 +21,9 @@ if (!$_SESSION['bManageGroups']) {
 }
 
 // Get the Group, Property, and Action from the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
-$iPropID = FilterInput($_GET['PropID'], 'int');
-$sField = FilterInput($_GET['Field']);
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iPropID = InputUtils::LegacyFilterInput($_GET['PropID'], 'int');
+$sField = InputUtils::LegacyFilterInput($_GET['Field']);
 $sAction = $_GET['Action'];
 
 // Get the group information

@@ -16,19 +16,23 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     try {
         array_push($resultsArray, $this->PersonService->getPersonsJSON($this->PersonService->search($query)));
     } catch (Exception $e) {
+        $this->Logger->warn($e->getMessage());
     }
 
+    //family search
     try {
-        $q = FamilyQuery::create()
-            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
-            ->limit(15)
-            ->withColumn('fam_Name', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'FamilyView.php?FamilyID=",Family.Id)', 'uri')
-            ->select(['displayName', 'uri'])
-            ->find();
-
-        array_push($resultsArray, $q->toJSON());
+      $results = [];
+      $q = FamilyQuery::create()
+          ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+          ->limit(15)
+          ->find();
+      foreach ($q as $family)
+      {
+        array_push($results,$family->toSearchArray());
+      }
+      array_push($resultsArray, json_encode([gettext("families")=>$results]));
     } catch (Exception $e) {
+        $this->Logger->warn($e->getMessage());
     }
 
 
@@ -37,12 +41,13 @@ $app->get('/search/{query}', function ($request, $response, $args) {
             ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
             ->limit(15)
             ->withColumn('grp_Name', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'GroupView.php?GroupID=",Group.Id)', 'uri')
+            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/GroupView.php?GroupID=",Group.Id)', 'uri')
             ->select(['displayName', 'uri'])
             ->find();
 
         array_push($resultsArray, $q->toJSON());
     } catch (Exception $e) {
+        $this->Logger->warn($e->getMessage());
     }
 
     //Deposits Search
@@ -57,16 +62,18 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                 ->filterByCheckno("%$query%", Criteria::LIKE)
                 ->endUse()
                 ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
-                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . 'DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
+                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
                 ->limit(5);
             array_push($resultsArray, $q->find()->toJSON());
         } catch (Exception $e) {
+            $this->Logger->warn($e->getMessage());
         }
 
         //Search Payments
         try {
             array_push($resultsArray, $this->FinancialService->getPaymentJSON($this->FinancialService->searchPayments($query)));
         } catch (Exception $e) {
+            $this->Logger->warn($e->getMessage());
         }
     }
 

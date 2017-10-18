@@ -5,12 +5,7 @@
  *  last change : 2003-01-04
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
@@ -170,7 +165,7 @@ function RunFreeQuery()
                 //...otherwise just render the field
                 else {
                     //Write the actual value of this row
-                echo '<td align="center">'.$aRow[$iCount].'</td>';
+                    echo '<td align="center">'.$aRow[$iCount].'</td>';
                 }
             }
             echo '</tr>';
@@ -188,7 +183,6 @@ function RunFreeQuery()
 				<input type="submit" class="btn" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
 			</p></form>
 			<?php
-
         }
 
         echo '<p align="center"><a href="QueryList.php">'.gettext('Return to Query Menu').'</a></p>';

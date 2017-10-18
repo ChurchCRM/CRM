@@ -3,24 +3,21 @@
  *
  *  filename    : PledgeDetails.php
  *  copyright   : Copyright 2001, 2002, 2003, 2004 Deane Barker, Chris Gebhardt, Michael Wilt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 //Set the page title
 $sPageTitle = gettext('Electronic Transaction Details');
 
 //Get the PledgeID out of the querystring
-$iPledgeID = FilterInput($_GET['PledgeID'], 'int');
-$linkBack = FilterInput($_GET['linkBack']);
+$iPledgeID = InputUtils::LegacyFilterInput($_GET['PledgeID'], 'int');
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 
 // Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)

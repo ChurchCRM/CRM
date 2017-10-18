@@ -9,14 +9,17 @@
  *
  *  function    : Editor for group-specific properties form
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+
+
+
+
 ******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bManageGroups']) {
@@ -25,7 +28,7 @@ if (!$_SESSION['bManageGroups']) {
 }
 
 // Get the Group from the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
 // Get the group information
 $sSQL = 'SELECT * FROM group_grp WHERE grp_ID = '.$iGroupID;
@@ -72,7 +75,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($iPropID = 1; $iPropID <= $numRows; $iPropID++) {
-        $aNameFields[$iPropID] = FilterInput($_POST[$iPropID.'name']);
+        $aNameFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'name']);
 
         if (strlen($aNameFields[$iPropID]) == 0) {
             $aNameErrors[$iPropID] = true;
@@ -81,10 +84,10 @@ if (isset($_POST['SaveChanges'])) {
             $aNameErrors[$iPropID] = false;
         }
 
-        $aDescFields[$iPropID] = FilterInput($_POST[$iPropID.'desc']);
+        $aDescFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'desc']);
 
         if (isset($_POST[$iPropID.'special'])) {
-            $aSpecialFields[$iPropID] = FilterInput($_POST[$iPropID.'special'], 'int');
+            $aSpecialFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'special'], 'int');
 
             if ($aSpecialFields[$iPropID] == 0) {
                 $aSpecialErrors[$iPropID] = true;
@@ -123,9 +126,9 @@ if (isset($_POST['SaveChanges'])) {
 } else {
     // Check if we're adding a field
     if (isset($_POST['AddField'])) {
-        $newFieldType = FilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = FilterInput($_POST['newFieldName']);
-        $newFieldDesc = FilterInput($_POST['newFieldDesc']);
+        $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
+        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
+        $newFieldDesc = InputUtils::LegacyFilterInput($_POST['newFieldDesc']);
 
         if (strlen($newFieldName) == 0) {
             $bNewNameError = true;
@@ -262,9 +265,8 @@ if ($numRows == 0) {
 	<center><h2><?= gettext('No properties have been added yet') ?></h2>
 	</center>
 <?php
-
 } else {
-    ?>
+        ?>
 	<tr><td colspan="7">
 	<center><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></center>
 	</td></tr>
@@ -354,7 +356,7 @@ if ($numRows == 0) {
             } ?>>
 			</td>
 		</tr>
-	<?php 
+	<?php
     } ?>
 
 		<tr>
@@ -371,8 +373,8 @@ if ($numRows == 0) {
 			</td>
 			<td>
 		</tr>
-<?php 
-} ?>
+<?php
+    } ?>
 		<tr><td colspan="7"><hr></td></tr>
 		<tr>
 			<td colspan="7">
@@ -389,7 +391,7 @@ if ($numRows == 0) {
                         }
                         echo '</select>';
                     ?><BR>
-					<a href="http://docs.churchcrm.io/"><?= gettext('Help on types..') ?></a>
+					<a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
 					</td>
 					<td valign="top">
 						<div><?= gettext('Name') ?>:</div>

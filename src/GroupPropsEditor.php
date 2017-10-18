@@ -8,16 +8,13 @@
  *                Copyright 2013 Michael Wilt
  *
  *  function    : Editor for the special properties of a group member
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bEditRecords']) {
@@ -28,8 +25,8 @@ if (!$_SESSION['bEditRecords']) {
 $sPageTitle = gettext('Group Member Properties Editor');
 
 // Get the Group and Person IDs from the querystring
-$iGroupID = FilterInput($_GET['GroupID'], 'int');
-$iPersonID = FilterInput($_GET['PersonID'], 'int');
+$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 // Get some info about this person.  per_Country is needed in case there are phone numbers.
 $sSQL = 'SELECT per_FirstName, per_LastName, per_Country, per_fam_ID FROM person_per WHERE per_ID = '.$iPersonID;
@@ -65,51 +62,51 @@ $aPropErrors = [];
 // Is this the second pass?
 if (isset($_POST['GroupPropSubmit'])) {
     // Process all HTTP post data based upon the list of properties data we are expecting
-  // If there is an error message, it gets assigned to an array of strings, $aPropErrors, for use in the form.
+    // If there is an error message, it gets assigned to an array of strings, $aPropErrors, for use in the form.
 
-  $bErrorFlag = false;
+    $bErrorFlag = false;
 
     while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
         extract($rowPropList);
 
-        $currentFieldData = FilterInput($_POST[$prop_Field]);
+        $currentFieldData = InputUtils::LegacyFilterInput($_POST[$prop_Field]);
 
         $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $prop_Field, $aPropErrors);
 
-    // assign processed value locally to $aPersonProps so we can use it to generate the form later
-    $aPersonProps[$prop_Field] = $currentFieldData;
+        // assign processed value locally to $aPersonProps so we can use it to generate the form later
+        $aPersonProps[$prop_Field] = $currentFieldData;
     }
 
-  // If no errors, then update.
-  if (!$bErrorFlag) {
-      mysqli_data_seek($rsPropList, 0);
+    // If no errors, then update.
+    if (!$bErrorFlag) {
+        mysqli_data_seek($rsPropList, 0);
 
-      $sSQL = 'UPDATE groupprop_'.$iGroupID.' SET ';
+        $sSQL = 'UPDATE groupprop_'.$iGroupID.' SET ';
 
-      while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
-          extract($rowPropList);
-          $currentFieldData = trim($aPersonProps[$prop_Field]);
+        while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
+            extract($rowPropList);
+            $currentFieldData = trim($aPersonProps[$prop_Field]);
 
-          sqlCustomField($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
-      }
+            sqlCustomField($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
+        }
 
-    // chop off the last 2 characters (comma and space) added in the last while loop iteration.
-    $sSQL = mb_substr($sSQL, 0, -2);
+        // chop off the last 2 characters (comma and space) added in the last while loop iteration.
+        $sSQL = mb_substr($sSQL, 0, -2);
 
-      $sSQL .= ' WHERE per_ID = '.$iPersonID;
+        $sSQL .= ' WHERE per_ID = '.$iPersonID;
 
-    //Execute the SQL
-    RunQuery($sSQL);
+        //Execute the SQL
+        RunQuery($sSQL);
 
-    // Return to the Person View
-    Redirect('PersonView.php?PersonID='.$iPersonID);
-  }
+        // Return to the Person View
+        Redirect('PersonView.php?PersonID='.$iPersonID);
+    }
 } else {
     // First Pass
-  // we are always editing, because the record for a group member was created when they were added to the group
+    // we are always editing, because the record for a group member was created when they were added to the group
 
-  // Get the existing data for this group member
-  $sSQL = 'SELECT * FROM groupprop_'.$iGroupID.' WHERE per_ID = '.$iPersonID;
+    // Get the existing data for this group member
+    $sSQL = 'SELECT * FROM groupprop_'.$iGroupID.' WHERE per_ID = '.$iPersonID;
     $rsPersonProps = RunQuery($sSQL);
     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 }
@@ -124,9 +121,8 @@ if (mysqli_num_rows($rsPropList) == 0) {
     <input type="button" class="btn" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
   </form>
   <?php
-
 } else {
-    ?>
+        ?>
 
   <div class="box ">
     <div class="box-header">
@@ -141,28 +137,28 @@ if (mysqli_num_rows($rsPropList) == 0) {
           // Make sure we're at the beginning of the properties list resource (2nd pass code used it)
           mysqli_data_seek($rsPropList, 0);
 
-    while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
-        extract($rowPropList); ?>
+        while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
+            extract($rowPropList); ?>
             <tr>
               <td><?= $prop_Name ?>: </td>
               <td>
                 <?php
                 $currentFieldData = trim($aPersonProps[$prop_Field]);
 
-        if ($type_ID == 11) {
-            $prop_Special = $sPhoneCountry;
-        }  // ugh.. an argument with special cases!
+            if ($type_ID == 11) {
+                $prop_Special = $sPhoneCountry;
+            }  // ugh.. an argument with special cases!
 
-                formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
+            formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
-        if (array_key_exists($prop_Field, $aPropErrors)) {
-            echo '<span style="color: red; ">'.$aPropErrors[$prop_Field].'</span>';
-        } ?>
+            if (array_key_exists($prop_Field, $aPropErrors)) {
+                echo '<span style="color: red; ">'.$aPropErrors[$prop_Field].'</span>';
+            } ?>
               </td>
               <td><?= $prop_Description ?></td>
             </tr>
-          <?php 
-    } ?>
+          <?php
+        } ?>
           <tr>
             <td align="center" colspan="3">
               <br><br>
@@ -176,8 +172,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
     </div>
   </div>
   <?php
-
-} ?>
+    } ?>
 
 <?php 
 require 'Include/Footer.php';

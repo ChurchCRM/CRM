@@ -13,9 +13,12 @@ use Exception;
 use Github\Client;
 use Ifsnop\Mysqldump\Mysqldump;
 use PharData;
+use Propel\Runtime\Propel;
+use PDO;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
-use Propel\Runtime\Propel;
+
 
 class SystemService
 {
@@ -75,7 +78,7 @@ class SystemService
                   FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir,true);
                   throw new Exception(gettext("Backup archive does not contain a database").": " . $file['name']);
                 }
-              
+
             } elseif ($restoreResult->type2 == 'sql') {
                 $restoreResult->SQLfile = $restoreResult->backupDir . str_replace('.gz', '', $file['name']);
                 file_put_contents($restoreResult->SQLfile, gzopen($restoreResult->uploadedFileDestination, r));
@@ -92,8 +95,8 @@ class SystemService
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
-        SystemConfig::setValue('sEnableExternalBackupTarget', '0');
-        array_push($restoreResult->Messages, gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the sEnableExternalBackupTarget setting.'));
+        SystemConfig::setValue('bEnableExternalBackupTarget', '0');
+        array_push($restoreResult->Messages, gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting.'));
         SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
 
         return $restoreResult;
@@ -281,6 +284,18 @@ class SystemService
 
         return $results[0]['ver_version'];
     }
+    
+    public function getDBServerVersion()
+    {
+      try{
+        $connection = Propel::getConnection();
+        return Propel::getServiceContainer()->getConnection()->getAttribute(PDO::ATTR_SERVER_VERSION);
+      }
+      catch (\Exception $exc)
+      {
+        return "Could not obtain DB Server Version";
+      }
+    }
 
     public function isDBCurrent()
     {
@@ -334,6 +349,7 @@ class SystemService
             'Page Size |' . $data->pageSize->height . 'x' . $data->pageSize->width . "\r\n" .
             'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
             'PHP Version | ' . phpversion() . "\r\n" .
+            'SQL Version | ' . $this->getDBServerVersion() . "\r\n" .
             'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
             'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
             'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
@@ -344,7 +360,7 @@ class SystemService
         }
 
         $postdata = new \stdClass();
-        $postdata->issueTitle = FilterInput($data->issueTitle);
+        $postdata->issueTitle = InputUtils::LegacyFilterInput($data->issueTitle);
         $postdata->issueDescription = $issueDescription;
 
         $curlService = curl_init($serviceURL);
@@ -354,7 +370,7 @@ class SystemService
         curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata));
         curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curlService, CURLOPT_CONNECTTIMEOUT, 1);
-        
+
         $result = curl_exec($curlService);
         if ($result === false) {
             throw new \Exception('Unable to reach the issue bridge', 500);
@@ -370,7 +386,7 @@ class SystemService
           NotificationService::updateNotifications();
         }
         //start the external backup timer job
-        if (SystemConfig::getValue('sEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
+        if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
             try {
                 $now = new \DateTime();  //get the current time
                 $previous = new \DateTime(SystemConfig::getValue('sLastBackupTimeStamp')); // get a DateTime object for the last time a backup was done.
@@ -380,15 +396,15 @@ class SystemService
                     $now = new \DateTime();  // update the LastBackupTimeStamp.
                     SystemConfig::setValue('sLastBackupTimeStamp', $now->format('Y-m-d H:i:s'));
                 }
-            } catch (Exception $exc) {
+            } catch (\Exception $exc) {
                 // an error in the auto-backup shouldn't prevent the page from loading...
             }
         }
-        if (SystemConfig::getValue('sEnableIntegrityCheck') && SystemConfig::getValue('sIntegrityCheckInterval') > 0) {
+        if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
             $now = new \DateTime();  //get the current time
             $previous = new \DateTime(SystemConfig::getValue('sLastIntegrityCheckTimeStamp')); // get a DateTime object for the last time a backup was done.
             $diff = $previous->diff($now);  // calculate the difference.
-            if (!SystemConfig::getValue('sLastIntegrityCheckTimeStamp') || $diff->h >= SystemConfig::getValue('sIntegrityCheckInterval')) {  // if there was no previous backup, or if the interval suggests we do a backup now.
+            if (!SystemConfig::getValue('sLastIntegrityCheckTimeStamp') || $diff->h >= SystemConfig::getValue('iIntegrityCheckInterval')) {  // if there was no previous backup, or if the interval suggests we do a backup now.
                 $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
                 $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity));
@@ -411,6 +427,7 @@ class SystemService
         file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
         $returnFile = [];
         $returnFile['fileName'] = basename($url);
+        $returnFile['releaseNotes'] = $release['body'];
         $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
         $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
 
@@ -465,7 +482,7 @@ class SystemService
       {
         return $this->human_filesize(min($max_upload, $max_post, $memory_limit));
       }
-      else 
+      else
       {
          return min($max_upload, $max_post, $memory_limit);
       }
@@ -482,7 +499,7 @@ class SystemService
         return round($size);
       }
     }
-    
+
     function human_filesize($bytes, $decimals = 2) {
       $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
       $factor = floor((strlen($bytes) - 1) / 3);

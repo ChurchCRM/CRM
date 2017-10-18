@@ -7,12 +7,7 @@
  *  copyright   : Copyright 2005 Todd Pillars
  *
  *  function    : List all Church Events
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 require 'Include/Config.php';
@@ -113,10 +108,9 @@ if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows >
     for ($row = 1; $row <= $numRows; $row++) {
 
          //Alternate the row color
-         $sRowClass = AlternateRowStyle($sRowClass);
+        $sRowClass = AlternateRowStyle($sRowClass);
 
-         //Display the row
-         ?>
+        //Display the row?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= $aEventTitle[$row] ?></td>
            <td class="TextColumn"><?= FormatDate($aEventStartDateTime[$row], 1) ?></td>
@@ -168,13 +162,11 @@ $gSQL = 'SELECT COUNT(per_ID) AS gCount
            </td>
          </tr>
 <?php
-
     } ?>
          <tr><td colspan="5">&nbsp;</td></tr>
 <?php
-
 } elseif ($_POST['Action'] == 'Retrieve' && $numRows > 0) {
-    ?>
+        ?>
        <caption>
          <h3><?= gettext('There '.($numRows == 1 ? 'was '.$numRows.' '.$_POST['Choice'] : 'were '.$numRows.' '.$_POST['Choice'])).' for this Event' ?></h3>
        </caption>
@@ -188,12 +180,12 @@ $gSQL = 'SELECT COUNT(per_ID) AS gCount
          //Set the initial row color
          $sRowClass = 'RowColorA';
 
-    for ($row = 1; $row <= $numRows; $row++) {
+        for ($row = 1; $row <= $numRows; $row++) {
 
          //Alternate the row color
-         $sRowClass = AlternateRowStyle($sRowClass);
+            $sRowClass = AlternateRowStyle($sRowClass);
 
-         //Display the row
+            //Display the row
          ?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= FormatFullName($aTitle[$row], $aFistName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>
@@ -205,17 +197,15 @@ $gSQL = 'SELECT COUNT(per_ID) AS gCount
            <td class="TextColumn"><?php /* echo '<a onclick="return AddToCart('.$aPersonID[$row].');" href="blank.html">'.gettext("Add to Cart").'</a>'; */ ?>&nbsp;</td>
          </tr>
 <?php
-
-    }
-} else {
-    ?>
+        }
+    } else {
+        ?>
        <caption>
          <h3><?= $_GET ? gettext('There are no events in this category') : gettext('There are no Records') ?><br><br></h3>
        </caption>
        <tr><td>&nbsp;</td></tr>
 <?php
-
-}
+    }
 ?>
 </table>
 

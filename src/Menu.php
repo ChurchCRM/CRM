@@ -10,17 +10,7 @@
 *  Additional Contributors:
 *  2006 Ed Davis
 *
-*
-*  Copyright Contributors
-*
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  This file best viewed in a text editor with tabs stops set to 4 characters
-*
+
 ******************************************************************************/
 
 // Include the function library
@@ -138,6 +128,31 @@ require 'Include/Header.php';
             </a>
         </div>
     </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>
+                  <?=
+                     ChurchCRM\Base\EventAttendQuery::create()
+                    ->filterByCheckinDate(null, \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+                    ->filterByCheckoutDate(null, \Propel\Runtime\ActiveQuery\Criteria::EQUAL)
+                    ->find()
+                    ->count();
+                  ?>
+                </h3>
+                <p>
+                    <?= gettext('Attendees Checked In') ?>
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-gg"></i>
+            </div>
+            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
+                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
 </div><!-- /.row -->
 
 <?php
@@ -160,8 +175,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     </div>
 </div>
 <?php
-
-}  //END IF block for Finance permissions to include HTML for Deposit Chart
+                  }  //END IF block for Finance permissions to include HTML for Deposit Chart
 ?>
 
 <div class="row">
@@ -170,6 +184,12 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
             <div class="box-header">
                 <i class="ion ion-person-add"></i>
                 <h3 class="box-title"><?= gettext('Latest Families') ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -192,7 +212,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <td><?=  date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                             </tr>
                             <?php
-
 }
                         ?>
                         </tbody>
@@ -206,6 +225,12 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
             <div class="box-header">
                 <i class="fa fa-check"></i>
                 <h3 class="box-title"><?= gettext('Updated Families') ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
                 <div class="table-responsive">
@@ -228,7 +253,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <td><?=  date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                             </tr>
                             <?php
-
                         }
                         ?>
                         </tbody>
@@ -266,7 +290,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-
                         }
                         ?>
                     </ul>
@@ -303,7 +326,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                     class="users-list-date"><?= date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-
                         }
                         ?>
                     </ul>
@@ -325,7 +347,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     var lineDataRaw = <?= $depositData ?>;
 
 <?php
-
                         }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>
 </script>

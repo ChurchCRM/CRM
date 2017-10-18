@@ -4,41 +4,43 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/VancoConfig.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // set into the Vanco interface by AutoPaymentEditor.php
-$iVancoAutID = FilterInputArr($_POST, 'customerid', 'int');
+$iVancoAutID = InputUtils::LegacyFilterInputArr($_POST, 'customerid', 'int');
 
 // this is what we are really after- this handle can be used to initiate authorized transactions
-$iVancoPaymentMethodRef = FilterInputArr($_POST, 'paymentmethodref', 'int');
+$iVancoPaymentMethodRef = InputUtils::LegacyFilterInputArr($_POST, 'paymentmethodref', 'int');
 
 $sVancoPaymentCreditCard = '';
 $iEnableCreditCard = 0;
-if (FilterInputArr($_POST, 'accounttype') == 'CC') {
+if (InputUtils::LegacyFilterInputArr($_POST, 'accounttype') == 'CC') {
     $sVancoPaymentCreditCard = "$iVancoPaymentMethodRef";
     $iEnableCreditCard = 1;
 }
 
 $sVancoPaymentBankDraft = '';
 $iEnableBankDraft = 0;
-if (FilterInputArr($_POST, 'accounttype') == 'C') {
+if (InputUtils::LegacyFilterInputArr($_POST, 'accounttype') == 'C') {
     $sVancoPaymentBankDraft = "$iVancoPaymentMethodRef";
     $iEnableBankDraft = 1;
 }
 
 // Other information that was just entered into the payment page that we will store for reference
-$sVancoName = FilterInputArr($_POST, 'name');
+$sVancoName = InputUtils::LegacyFilterInputArr($_POST, 'name');
 $aVancoNames = explode(' ', $sVancoName, 2);
 $sVancoFirstName = $aVancoNames[0];
 $sVancoLastName = $aVancoNames[1];
-$sVancoAddr1 = FilterInputArr($_POST, 'billingaddr1');
-$sVancoBillingCity = FilterInputArr($_POST, 'billingcity');
-$sVancoBillingState = FilterInputArr($_POST, 'billingstate');
-$sVancoBillingZip = FilterInputArr($_POST, 'billingzip');
-$sVancoEmail = FilterInputArr($_POST, 'email');
-$sVancoExpMonth = FilterInputArr($_POST, 'expmonth');
-$sVancoExpYear = FilterInputArr($_POST, 'expyear');
+$sVancoAddr1 = InputUtils::LegacyFilterInputArr($_POST, 'billingaddr1');
+$sVancoBillingCity = InputUtils::LegacyFilterInputArr($_POST, 'billingcity');
+$sVancoBillingState = InputUtils::LegacyFilterInputArr($_POST, 'billingstate');
+$sVancoBillingZip = InputUtils::LegacyFilterInputArr($_POST, 'billingzip');
+$sVancoEmail = InputUtils::LegacyFilterInputArr($_POST, 'email');
+$sVancoExpMonth = InputUtils::LegacyFilterInputArr($_POST, 'expmonth');
+$sVancoExpYear = InputUtils::LegacyFilterInputArr($_POST, 'expyear');
 
 // information reflected back (use for verification)
-$sVancoClientID = FilterInputArr($_POST, 'clientid');
+$sVancoClientID = InputUtils::LegacyFilterInputArr($_POST, 'clientid');
 
 $sSQL = 'UPDATE autopayment_aut SET ';
 $sSQL .= "aut_FirstName=\"$sVancoFirstName\"";

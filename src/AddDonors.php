@@ -5,11 +5,6 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2009 Michael Wilt
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
  * This script adds people who have donated but not registered as buyers to the
  * buyer list so they can get statements too.
  *
@@ -19,11 +14,13 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 $linkBack = '';
 if (array_key_exists('linkBack', $_GET)) {
-    FilterInput($_GET['linkBack']);
+    InputUtils::LegacyFilterInput($_GET['linkBack']);
 }
-$iFundRaiserID = FilterInput($_GET['FundRaiserID']);
+$iFundRaiserID = InputUtils::LegacyFilterInput($_GET['FundRaiserID']);
 
 if ($linkBack == '') {
     $linkBack = "PaddleNumList.php?FundRaiserID=$iFundRaiserID";

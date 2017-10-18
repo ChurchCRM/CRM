@@ -7,21 +7,6 @@
  *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
  *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  General Public License for mote details.
- *
- *  http://www.gnu.org/licenses
- *
  ******************************************************************************/
 
 // Include the function library
@@ -215,7 +200,6 @@ require 'Include/Header.php';
                     </table>
                   </td></tr>
                 <?php
-
               }
       if ($numFamCustomFields > 0) {
           ?>
@@ -233,14 +217,14 @@ require 'Include/Header.php';
                       } ?>
                     </table>
                   </td></tr>
-              <?php 
+              <?php
       } ?>
             </table>
           </div>
         </div>
       </div>
     </div>
-  <?php 
+  <?php
   } ?>
 
   <div class="row">
@@ -288,7 +272,6 @@ require 'Include/Header.php';
                       extract($aRow); ?>
                     <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                     <?php
-
                   }
                   ?>
                 </select>
@@ -314,7 +297,6 @@ require 'Include/Header.php';
                       extract($aRow); ?>
                     <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                     <?php
-
                   }
                   ?>
                 </select>

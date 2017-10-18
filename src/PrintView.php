@@ -6,12 +6,7 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 // Include the function library
@@ -19,9 +14,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 // Get the person ID from the querystring
-$iPersonID = FilterInput($_GET['PersonID'], 'int');
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 // Get this person
 $sSQL = 'SELECT a.*, family_fam.*, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole, b.per_FirstName AS EnteredFirstName,
@@ -326,15 +322,15 @@ if ($fam_ID) {
 <?php
     $sRowClass = 'RowColorA';
 
-    // Loop through all the family members
-    while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
-        $per_BirthYear = '';
-        $agr_Description = '';
+            // Loop through all the family members
+            while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
+                $per_BirthYear = '';
+                $agr_Description = '';
 
-        extract($aRow);
+                extract($aRow);
 
-        // Alternate the row style
-        $sRowClass = AlternateRowStyle($sRowClass)
+                // Alternate the row style
+                $sRowClass = AlternateRowStyle($sRowClass)
 
         // Display the family member
     ?>
@@ -354,8 +350,7 @@ if ($fam_ID) {
 			</td>
 		</tr>
 	<?php
-
-    }
+            }
             echo '</table>';
         }
 ?>

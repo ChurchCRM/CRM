@@ -9,13 +9,8 @@
  *
  *
  *  Copyright 2006 Contributors
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters
+  *
+
  *
  ******************************************************************************/
 
@@ -24,13 +19,15 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/LabelFunctions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 // Set the page title and include HTML header
 $sPageTitle = gettext('Letters and Mailing Labels');
 require 'Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) || isset($_POST['SubmitConfirmLabels']) || isset($_POST['SubmitConfirmReportEmail'])) {
-    $sLabelFormat = FilterInput($_POST['labeltype']);
+    $sLabelFormat = InputUtils::LegacyFilterInput($_POST['labeltype']);
     $sFontInfo = $_POST['labelfont'];
     $sFontSize = $_POST['labelfontsize'];
     $sLabelInfo = '&labelfont='.urlencode($sFontInfo).'&labelfontsize='.$sFontSize;

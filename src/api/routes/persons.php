@@ -2,13 +2,6 @@
 
 // Person APIs
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Person2group2roleP2g2rQuery;
-use ChurchCRM\PersonCustomQuery;
-use ChurchCRM\NoteQuery;
-use ChurchCRM\UserQuery;
-use ChurchCRM\PropertyQuery;
-use ChurchCRM\PersonPropertyQuery;
-use ChurchCRM\PersonVolunteerOpportunityQuery;
 
 $app->group('/persons', function () {
 
@@ -24,7 +17,7 @@ $app->group('/persons', function () {
         if ($person->isPhotoLocal()) {
             return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
         } else if ($person->isPhotoRemote()) {
-            return $response->withRedirect($person->getPhotoURI());
+            return $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType());
         } else {
             return $response->withStatus(404);
         }
@@ -35,7 +28,7 @@ $app->group('/persons', function () {
         if ($person->isPhotoLocal()) {
             return $response->write($person->getThumbnailBytes())->withHeader('Content-type', $person->getPhotoContentType());
         } else if ($person->isPhotoRemote()) {
-            return $response->withRedirect($person->getThumbnailURI());
+            return $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType()); 
         } else {
             return $response->withStatus(404);
         }
@@ -77,26 +70,6 @@ $app->group('/persons', function () {
             return $response->withStatus(404);
         }
 
-        $obj = PersonCustomQuery::create()->findPk($person->getId());
-        if (!is_null($obj)) {
-            $obj->delete();
-        }
-
-        $obj = UserQuery::create()->findPk($person->getId());
-        if (!is_null($obj)) {
-            $obj->delete();
-        }
-
-        NoteQuery::create()->filterByPerson($person)->deleteAll();
-        PersonVolunteerOpportunityQuery::create()->filterByPersonId($person->getId())->deleteAll();
-        PersonPropertyQuery::create()->filterByPerson($person)->deleteAll();
-
-        $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($person)->find();
-        foreach ($obj as $group2roleP2g2r) {
-            $this->GroupService->removeUserFromGroup($group2roleP2g2r->getGroupId(), $group2roleP2g2r->getPersonId());
-        }
-
-        $person->deletePhoto();
         $person->delete();
 
         return $response->withJSON(array("status" => "success"));

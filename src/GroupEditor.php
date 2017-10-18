@@ -7,20 +7,17 @@
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2012 Michael Wilt
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
  ******************************************************************************/
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups']) {
@@ -33,7 +30,7 @@ $sPageTitle = gettext('Group Editor');
 $groupService = new GroupService();
 //Get the GroupID from the querystring.  Redirect to Menu if no groupID is present, since this is an edit-only form.
 if (array_key_exists('GroupID', $_GET)) {
-    $iGroupID = FilterInput($_GET['GroupID'], 'int');
+    $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 } else {
     Redirect('GroupList.php');
 }
@@ -65,7 +62,7 @@ require 'Include/Header.php';
 
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title"><?= gettext('Group Settings')?></h3>
+    <h3 class="box-title"><?= (($thisGroup->isSundaySchool())?gettext("Special Group Settings : Sunday School Type"):gettext('Group Settings')) ?></h3>
   </div>
   <div class="box-body">
     <form name="groupEditForm" id="groupEditForm">
@@ -85,6 +82,8 @@ require 'Include/Header.php';
         <div class="row">
           <div class="col-sm-3">
             <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
+            <?php if (!$thisGroup->isSundaySchool()) {
+    ?>
             <select class="form-control input-small" name="GroupType">
               <option value="0"><?= gettext('Unassigned') ?></option>
               <option value="0">-----------------------</option>
@@ -95,9 +94,23 @@ require 'Include/Header.php';
                       echo ' selected';
                   }
                   echo '>'.$groupType->getOptionName().'</option>';
-              }
-              ?>
+              } ?>              
             </select>
+            <?php
+} else {
+                  ?>
+            	<b><?= gettext("Sunday School") ?></b>
+            	<p><?= gettext("Sunday School group can't be modified, only in this two cases :")?></p>
+            	<ul>
+								<li>
+									<?= gettext("You can create/delete sunday school group. ")?>
+								</li>
+								<li>
+									<?= gettext("Add new roles, but not modify or rename the Student and the Teacher roles.")?>
+								</li>
+            	</ul>
+            <?php
+              } ?>
           </div>
         </div>
         <div class="row">
@@ -121,7 +134,6 @@ require 'Include/Header.php';
                     echo '<option value="'.$groupRoleTemplate['grp_ID'].'">'.$groupRoleTemplate['grp_Name'].'</option>';
                 } ?>
               </select><?php
-
             }
             ?>
           </div>

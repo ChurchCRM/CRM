@@ -125,9 +125,7 @@ class Photo
       return ($this->photoLocation == "remote");
    }
   
-  public function loadFromGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = [])
-  {
-
+  public function loadFromGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = []) {
     $url = 'https://www.gravatar.com/avatar/';
     $url .= md5(strtolower(trim($email)));
     $url .= "?s=$s&d=$d&r=$r";
@@ -138,6 +136,24 @@ class Photo
         $this->photoThumbURI = $url;
         $this->photoLocation = "remote";
     }
+  }
+
+  public function loadFromGoogle($email) {
+      $url = 'http://picasaweb.google.com/data/entry/api/user/';
+      $url .= strtolower(trim($email));
+      $url .= "?alt=json";
+      $headers = @get_headers($url);
+      if (strpos($headers[0], '404') === false) {
+          $json = file_get_contents($url);
+          if (!empty($json)) {
+              $obj = json_decode($json);
+              $photoEntry = $obj->entry;
+              $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
+              $this->photoURI =  $photoURL;
+              $this->photoThumbURI = $photoURL;
+              $this->photoLocation = "remote";
+        }
+      }
   }
   
   public function setImageFromBase64($base64)
