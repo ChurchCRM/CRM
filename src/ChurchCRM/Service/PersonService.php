@@ -51,7 +51,7 @@ class PersonService
     public function getPersonsJSON($persons)
     {
         if ($persons) {
-            return '{"persons": '.json_encode($persons).'}';
+            return '{"'.gettext('Persons').'": '.json_encode($persons).'}';
         } else {
             return false;
         }

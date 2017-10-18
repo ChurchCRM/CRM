@@ -10,8 +10,7 @@
  *
  *
  *  Copyright Contributors
-  *
-
+ *
  *
  * **************************************************************************** */
 
@@ -484,6 +483,8 @@ require 'Include/Header.php';
                 $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport()? 'true': 'false' ?>).change();
                 $("#deleteGroupButton").click(function() {
                   console.log("click");
+                  bootbox.setDefaults({
+									locale: window.CRM.shortLocale}),
                   bootbox.confirm({
                     title: "<?= gettext("Confirm Delete Group") ?>",
                     message: '<p style="color: red">'+
