@@ -31,7 +31,7 @@ require '../Include/Header.php';
 </div>
 
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
         $("#families").DataTable({
             "language": {

@@ -124,7 +124,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
   <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
 
-  <script>
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
     var token = '<?= $token->getToken()?>';
   </script>
