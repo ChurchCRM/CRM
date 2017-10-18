@@ -191,7 +191,7 @@ require 'Include/Header.php';
                         </thead>
                         <tbody>
                         <?php foreach ($latestFamilies as $family) {
-    ?>
+                      ?>
                             <tr>
                                 <td>
                                     <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
@@ -200,7 +200,7 @@ require 'Include/Header.php';
                                 <td><?=  date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                             </tr>
                             <?php
-}
+                  }
                         ?>
                         </tbody>
                     </table>
