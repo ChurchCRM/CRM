@@ -311,7 +311,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     } ?>
 
 <?php if ($_SESSION['bAdmin']) {
-    ?>
+        ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         ((window.gitter = {}).chat = {}).options = {
             room: 'churchcrm/crm',

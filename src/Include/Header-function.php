@@ -127,8 +127,7 @@ function Header_body_scripts()
             },
             currentUser:
               <?php
-                echo json_encode($_SESSION['user']->toArray());
-              ?>
+                echo json_encode($_SESSION['user']->toArray()); ?>
             
         };
     </script>
