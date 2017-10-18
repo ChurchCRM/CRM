@@ -14,7 +14,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 
     //Person Search
     try {
-        array_push($resultsArray, $this->PersonService->getPersonsJSON($this->PersonService->search($query)));
+        array_push($resultsArray, $this->PersonService->getPersonsJSON($this->PersonService->search($query, false)));
     } catch (Exception $e) {
         $this->Logger->warn($e->getMessage());
     }
