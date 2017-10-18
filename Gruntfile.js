@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 
     var poLocales = function() {
         var locales = grunt.file.readJSON("src/locale/locales.json");
-        poEditorLocales = {};
+        var poEditorLocales = {};
         for (var key in locales ) {
             var locale = locales[key];
             var poLocaleName = locale["poEditor"];
@@ -13,7 +13,7 @@ module.exports = function (grunt) {
 
     var dataTablesLang = function() {
         var locales = grunt.file.readJSON("src/locale/locales.json");
-        DTLangs = [];
+        var DTLangs = [];
         for (var key in locales ) {
             var locale = locales[key];
             DTLangs.push(locale["dataTables"]);
@@ -320,7 +320,7 @@ module.exports = function (grunt) {
             "files": []
         };
         this.files.forEach(function (filePair) {
-            isExpandedPair = filePair.orig.expand || false;
+            var isExpandedPair = filePair.orig.expand || false;
 
             filePair.src.forEach(function (src) {
                 if (grunt.file.isFile(src)) {
@@ -344,7 +344,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('genLocaleJSFiles', '', function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
-        poEditorLocales = {};
+        var poEditorLocales = {};
         for (var key in locales ) {
             var localeConfig = locales[key];
             var locale = localeConfig["locale"];
@@ -354,34 +354,34 @@ module.exports = function (grunt) {
             var enableDatePicker = localeConfig["datePicker"];
             var enableSelect2 = localeConfig["select2"];
 
-            tempFile = 'locale/JSONKeys/'+locale+'.json';
-            poTerms = grunt.file.read(tempFile);
+            var tempFile = 'locale/JSONKeys/'+locale+'.json';
+            var poTerms = grunt.file.read(tempFile);
             if (poTerms == "") {
                 poTerms = "{}";
             }
-            jsFileContent = '// Source: ' + tempFile;
+            var jsFileContent = '// Source: ' + tempFile;
             jsFileContent = jsFileContent + "\ntry {window.CRM.i18keys = " + poTerms + ";} catch(e) {};\n";
 
             if (enableFullCalendar) {
-                tempLangCode = languageCode.toLowerCase();
+                var tempLangCode = languageCode.toLowerCase();
                 if (localeConfig.hasOwnProperty("fullCalendarLocale")) {
                     tempLangCode = localeConfig["fullCalendarLocale"];
                 }
                 tempFile = 'node_modules/fullcalendar/dist/locale/'+tempLangCode+'.js';
-                fullCalendar = grunt.file.read(tempFile);
+                var fullCalendar = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
                 jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {};\n";
             }
             if (enableDatePicker) {
                 tempFile = 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.'+languageCode+'.js';
-                datePicker = grunt.file.read(tempFile);
+                var datePicker = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
                 jsFileContent = jsFileContent + '\n' + "try {"+datePicker+"} catch(e) {};\n"
             }
             if (enableSelect2) {
                 tempFile = 'node_modules/admin-lte/plugins/select2/i18n/'+languageCode+'.js';
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
-                select2 = grunt.file.read(tempFile);
+                var select2 = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n' + "try {"+select2+"} catch(e) {}"
             }
             grunt.file.write('src/locale/js/'+locale+'.js', jsFileContent );
@@ -418,6 +418,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-curl');
-    grunt.loadNpmTasks('grunt-github-release-notes');
     grunt.loadNpmTasks('grunt-poeditor-ab');
 }
