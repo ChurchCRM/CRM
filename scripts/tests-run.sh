@@ -2,14 +2,23 @@
 
 #Hints here: http://codegist.net/code/sauce%20connect%20setup/
 
-echo "Scanning composer for vulnerabilities"
-cd tests
-php security-checker.phar security:check ../src/composer.lock
+echo "Scanning composer and npm for vulnerabilities"
+node /usr/local/bin/nsp check --output summary
 exit_status=$?
-php security-checker.phar security:check composer.lock
+echo $exit_status
 
-exit_status=$exit_status||$?
-if [ $exit_status -eq 1 ]; then
+cd tests
+
+php security-checker.phar security:check ../src/composer.lock
+exit_status=$(($exit_status + $?))
+echo $exit_status
+
+php security-checker.phar security:check composer.lock
+exit_status=$(($exit_status + $?))
+
+echo $exit_status
+
+if [ $exit_status -ne 0 ]; then
   echo "One or more vulnerabilities were found in the compooser.lock file(s)"
   exit $exit_status
 fi
