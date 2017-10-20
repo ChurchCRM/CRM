@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #Hints here: http://codegist.net/code/sauce%20connect%20setup/
 

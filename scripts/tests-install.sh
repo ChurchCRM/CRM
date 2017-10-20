@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ -z "${TRAVIS}" ]]; then
   echo "Not TravisCI - Manually Installing Sauce Connect"
