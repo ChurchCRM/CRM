@@ -301,7 +301,7 @@ class Family extends BaseFamily implements iPhoto
         $this->createTimeLineNote('verify');
     }
 
-    public function getFamilyString($booleanIncludeHOH)
+    public function getFamilyString($booleanIncludeHOH=true)
     {    
       $HoH = [];
       if ($booleanIncludeHOH) {
