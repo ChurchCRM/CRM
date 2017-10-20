@@ -8,5 +8,6 @@ if [[ -z "${TRAVIS}" ]]; then
   tar -xzf /tmp/sc.tar.gz -C /tmp/sc
 fi
 
-cd tests/
+cd tests/ 
 composer install
+wget http://get.sensiolabs.org/security-checker.phar
