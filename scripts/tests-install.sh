@@ -8,7 +8,7 @@ if [[ -z "${TRAVIS}" ]]; then
   tar -xzf /tmp/sc.tar.gz -C /tmp/sc
 fi
 
-sudo npm install -g nsp
+sudo npm install -g nsp@next
 
 cd tests/ 
 composer install
