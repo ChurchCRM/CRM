@@ -71,9 +71,21 @@ echo "=========================================================="
 echo "===============   NPM                    ================="
 echo "=========================================================="
 
-sudo npm install -g npm@latest --unsafe-perm --no-bin-links
-sudo npm install -g i18next-extract-gettext
-npm install --unsafe-perm --no-bin-links
+sudo npm install -g npm@latest
+chmod a+x ~/.bashrc
+PS1='$ '
+source ~/.bashrc
+
+VERSION="$(npm --version)"
+echo "Node vesrion: $VERSION"
+
+sudo mkdir /vagrant/node_modules
+sudo chown vagrant:vagrant /vagrant/node_modules
+mkdir -p /home/vagrant/node_modules /vagrant/node_modules
+sudo mount --bind /home/vagrant/node_modules/ /vagrant/node_modules
+
+sudo npm install -g i18next-extract-gettext grunt-cli
+npm install 
 grunt compress:demo
 
 echo "=========================================================="
