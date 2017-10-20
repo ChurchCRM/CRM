@@ -1,6 +1,7 @@
 <?php
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\GroupQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -13,67 +14,78 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     $resultsArray = [];
 
     //Person Search
-    try {
-        array_push($resultsArray, $this->PersonService->getPersonsJSON($this->PersonService->search($query)));
-    } catch (Exception $e) {
-        $this->Logger->warn($e->getMessage());
-    }
-
-    //family search
-    try {
-      $results = [];
-      $q = FamilyQuery::create()
-          ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
-          ->limit(15)
-          ->find();
-      foreach ($q as $family)
-      {
-        array_push($results,$family->toSearchArray());
-      }
-      array_push($resultsArray, json_encode([gettext("families")=>$results]));
-    } catch (Exception $e) {
-        $this->Logger->warn($e->getMessage());
-    }
-
-
-    try {
-        $q = GroupQuery::create()
-            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
-            ->limit(15)
-            ->withColumn('grp_Name', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/GroupView.php?GroupID=",Group.Id)', 'uri')
-            ->select(['displayName', 'uri'])
-            ->find();
-
-        array_push($resultsArray, $q->toJSON());
-    } catch (Exception $e) {
-        $this->Logger->warn($e->getMessage());
-    }
-
-    //Deposits Search
-    if ($_SESSION['bFinance']) {
+    if (SystemConfig::getBooleanValue("bSearchIncludePersons")) {
         try {
-            $q = DepositQuery::create();
-            $q->filterByComment("%$query%", Criteria::LIKE)
-                ->_or()
-                ->filterById($query)
-                ->_or()
-                ->usePledgeQuery()
-                ->filterByCheckno("%$query%", Criteria::LIKE)
-                ->endUse()
-                ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
-                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
-                ->limit(5);
-            array_push($resultsArray, $q->find()->toJSON());
+            array_push($resultsArray, $this->PersonService->getPersonsJSON($this->PersonService->search($query, false)));
         } catch (Exception $e) {
             $this->Logger->warn($e->getMessage());
         }
-
-        //Search Payments
+    }
+    
+    //family search
+    if (SystemConfig::getBooleanValue("bSearchIncludeFamilies")) {
         try {
-            array_push($resultsArray, $this->FinancialService->getPaymentJSON($this->FinancialService->searchPayments($query)));
+          $results = [];
+          $q = FamilyQuery::create()
+              ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+              ->limit(15)
+              ->find();
+          foreach ($q as $family)
+          {
+            array_push($results,$family->toSearchArray());
+          }
+          array_push($resultsArray, json_encode([gettext("families")=>$results]));
         } catch (Exception $e) {
             $this->Logger->warn($e->getMessage());
+        }
+    }
+
+
+    if (SystemConfig::getBooleanValue("bSearchIncludeGroups")) {
+        try {
+            $q = GroupQuery::create()
+                ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+                ->limit(15)
+                ->withColumn('grp_Name', 'displayName')
+                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/GroupView.php?GroupID=",Group.Id)', 'uri')
+                ->select(['displayName', 'uri'])
+                ->find();
+    
+            array_push($resultsArray, $q->toJSON());
+        } catch (Exception $e) {
+            $this->Logger->warn($e->getMessage());
+        }
+    }
+
+
+    if ($_SESSION['bFinance']) {
+        //Deposits Search
+        if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) {
+            try {
+                $q = DepositQuery::create();
+                $q->filterByComment("%$query%", Criteria::LIKE)
+                    ->_or()
+                    ->filterById($query)
+                    ->_or()
+                    ->usePledgeQuery()
+                    ->filterByCheckno("%$query%", Criteria::LIKE)
+                    ->endUse()
+                    ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
+                    ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
+                    ->limit(5);
+                array_push($resultsArray, $q->find()->toJSON());
+            } catch (Exception $e) {
+                $this->Logger->warn($e->getMessage());
+            }
+        }
+
+        //Search Payments
+        if (SystemConfig::getBooleanValue("bSearchIncludePayments")) {
+            try {
+                array_push($resultsArray, $this->FinancialService->getPaymentJSON($this->FinancialService->searchPayments($query)));
+            } catch (Exception $e) {
+                $this->Logger->warn($e->getMessage());
+            }
         }
     }
 
