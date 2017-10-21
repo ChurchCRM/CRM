@@ -17,7 +17,28 @@ require 'Include/Functions.php';
 
 //Set the page title
 $sPageTitle = gettext('Group Listing');
-require 'Include/Header.php'; ?>
+require 'Include/Header.php'; 
+
+use ChurchCRM\ListOptionQuery;
+
+$rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
+
+?>
+
+<p>
+<?= gettext("Show type of group:") ?>
+<select id="table-filter">
+
+<option value=""><?= gettext("All") ?></option>
+
+<?php
+  foreach ($rsGroupTypes as $groupType) {
+	  echo '<option>'.$groupType->getOptionName().'</option>';
+} ?>    
+</select>
+</p>
+
+
 
 <div class="box box-body">
 <table class="table" id="groupsTable">
@@ -39,6 +60,7 @@ if ($_SESSION['bManageGroups']) {
 ?>
 
 </div>
+
 <script src="skin/js/GroupList.js" type="text/javascript"></script>
 
 
