@@ -111,7 +111,9 @@ require '../Include/Header.php';
     ?>
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
     <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i
-        class="fa fa-eye-slash"></i><?= gettext('LegacyView') ?> </a>
+        class="fa fa-user-plus"></i><?= gettext('Add Students') ?> </a>
+        
+	<a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fa fa-pencil"></i><?= gettext("Edit this Class") ?></a>
   </div>
 </div>
 
