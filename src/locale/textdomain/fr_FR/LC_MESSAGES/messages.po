@@ -1990,7 +1990,9 @@ msgstr "Montrer les paiements"
 msgid "Since"
 msgstr "Depuis"
 
+#. In the process to update the ChurchCRM system, there is a button that ends up with the translation "Système de mise à jour" (I think that's it exactly - just saw it 5 minutes ago).  That sounds like a bad literal translation of "Update System" where "update" is an imperative verb and not a noun.  I can't find this in the POEditor translations - either from an English or French search.  So I don't know the context of this particular "Update" to know whether it's a noun or a verb.  At any rate updating to 2.8.11 still gives this erroneous translation.  So if anyone knows where that text is coming from, the real translation should be something like: "Mettre à jour le système" or "Lancer la mise à jour" or "Commencer la mise à jour".  Thanks!
 #: FamilyView.php:747 MemberRoleChange.php:115 PropertyAssign.php:186
+#, fuzzy
 msgid "Update"
 msgstr "Mise à jour"
 
@@ -5659,7 +5661,7 @@ msgstr "Tous"
 
 #: MembersDashboard.php:118
 msgid "Family Map"
-msgstr "Carte familiale"
+msgstr "Carte de toutes les familles"
 
 #: MembersDashboard.php:198 Menu.php:120 menuconfig_mcf.php:11
 msgid "Groups"
