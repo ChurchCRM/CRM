@@ -157,10 +157,19 @@ require '../Include/Header.php';
       <?php foreach ($classStats as $class) {
         ?>
         <tr>
-          <td><a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
+          <td style="width:80px">
+          	<a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
             <span class="fa-stack">
-            <i class="fa fa-square fa-stack-2x"></i>
-            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+							<i class="fa fa-square fa-stack-2x"></i>
+							<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+            </span>
+            </a>
+          	<a href='/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
+            <span class="fa-stack">
+							<i class="fa fa-square fa-stack-2x"></i>
+							<i class="fa fa fa-pencil fa-stack-1x fa-inverse"></i>
+            </span>
+            </a>
           </td>
           <td><?= $class['name'] ?></td>
           <td><?= $class['teachers'] ?></td>
