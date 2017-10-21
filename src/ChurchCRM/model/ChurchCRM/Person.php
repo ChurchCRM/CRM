@@ -204,11 +204,13 @@ class Person extends BasePerson implements iPhoto
                 $lng = $latLng['Longitude'];
             }
         } else {
-            if (!$this->getFamily()->hasLatitudeAndLongitude()) {
-                $this->getFamily()->updateLanLng();
-            }
-            $lat = $this->getFamily()->getLatitude();
-            $lng = $this->getFamily()->getLongitude();
+        	if ($this->getFamily()){// we have to test if a member has a family : ie if the adress exist
+				if (!$this->getFamily()->hasLatitudeAndLongitude()) {
+					$this->getFamily()->updateLanLng();
+				}
+				$lat = $this->getFamily()->getLatitude();
+				$lng = $this->getFamily()->getLongitude();
+			}
         }
         return array(
             'Latitude' => $lat,
