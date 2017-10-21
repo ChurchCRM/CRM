@@ -1,3 +1,6 @@
+/* this part is for futur purpose */
+window.yourGlobalVariable='3000';
+
 $(document).ready(function () {
   window.CRM.groupsInCart = 0;
   $.ajax({
@@ -37,6 +40,8 @@ $(document).ready(function () {
     responsive: true,
     ajax: {
       url: window.CRM.root + "/api/groups/",
+      type: 'GET', // performing a POST request
+      data : window.yourGlobalVariable,
       dataSrc: "Groups"
     },
     columns: [
@@ -82,5 +87,9 @@ $(document).ready(function () {
         $(element).html(i18next.t("Not all members of this group are in the cart")+"<br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + objectID + "\">" + i18next.t("Add all") + "</a>");
       }
     });
+  });
+  
+  $('#table-filter').on('change', function(){
+       dataT.search(this.value).draw();   
   });
 });
