@@ -14,10 +14,11 @@ php extract-db-locale-terms.php
 cd db-strings
 find . -iname "*.php" | sort | xargs xgettext --join-existing --from-code=UTF-8 -o ../messages.po
 
+
 # merge PHP & DB & JS Terms
+cd ..
 msgcat messages.po js-strings.po -o messages.po
 
 # Cleanup
-cd ..
 rm js-strings.po
 rm db-strings/*
