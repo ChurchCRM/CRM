@@ -26,16 +26,16 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 ?>
 
 <p>
+<label>
 <?= gettext("Show type of group:") ?>
-<select id="table-filter">
-
+<select id="table-filter" class="form-control input-sm">
 <option value=""><?= gettext("All") ?></option>
-
 <?php
   foreach ($rsGroupTypes as $groupType) {
 	  echo '<option>'.$groupType->getOptionName().'</option>';
 } ?>    
 </select>
+</label>
 </p>
 
 
