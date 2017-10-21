@@ -6,7 +6,12 @@ use ChurchCRM\GroupQuery;
 
 $app->group('/groups', function () {
     $this->get('/', function () {
-        echo GroupQuery::create()->find()->toJSON();
+        $role = $_REQUEST;
+        
+        if (!strcmp($role,'3000'))// all the groups 
+        	echo GroupQuery::create()->find()->toJSON();
+        else         
+        	echo GroupQuery::create()->filterByDefaultRole($role)->find()->toJSON();
     });
 
     $this->get('/groupsInCart', function () {
