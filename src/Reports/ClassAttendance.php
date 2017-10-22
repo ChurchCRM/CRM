@@ -113,7 +113,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                 
                 $aTeachersIMG[$iTeacherCnt++] = '/Images/Person/'.$per_ID.'.png';
             } elseif ($lst_OptionName == 'Student') {
-                $aStudents[$iStudentCnt] = $ga[$row];                
+                $aStudents[$iStudentCnt] = $ga[$row];
                 $aStudentsIMG[$iStudentCnt++] = '/Images/Person/'.$per_ID.'.png';
             }
         }
@@ -131,8 +131,8 @@ for ($i = 0; $i < $nGrps; $i++) {
         }
 
 
-				//$pdf->Image($img, 5, $y + 5, 33.78);
-				
+        //$pdf->Image($img, 5, $y + 5, 33.78);
+                
         $pdf->SetFont('Times', 'B', 12);
 
         $y = $yTeachers;
@@ -147,12 +147,12 @@ for ($i = 0; $i < $nGrps; $i++) {
         $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('Students'), $iExtraStudents,
                                    $tFirstSunday, $tLastSunday,
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                										$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
-                										
+                                                        $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
+                                                        
         $pdf->DrawAttendanceCalendar($nameX, $y + 12, $aTeachers, gettext('Teachers'), $iExtraTeachers,
                               $tFirstSunday, $tLastSunday,
                               $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                							$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '',$aTeachersIMG,$withPictures);
+                                            $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '', $aTeachersIMG, $withPictures);
     } else {
         //
         // print all roles on the attendance sheet
@@ -173,7 +173,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('All Members'), $iExtraStudents,
                                    $tFirstSunday, $tLastSunday,
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                										$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
+                                                        $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
     }
 }
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
