@@ -14,6 +14,7 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\Reports\PDF_Attendance;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 require '../Include/GetGroupArray.php';
 
@@ -27,6 +28,8 @@ $iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
 $tFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
 $tLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
 $tAllRoles = InputUtils::LegacyFilterInput($_GET['AllRoles'], 'int');
+$withPictures = InputUtils::LegacyFilterInput($_GET['withPictures'], 'int');
+
 //echo "all roles ={$tAllRoles}";
 
 $tNoSchool1 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool1');
@@ -91,7 +94,7 @@ for ($i = 0; $i < $nGrps; $i++) {
     $numMembers = count($ga);
 
     // Build the teacher string- first teachers, then the liaison
-    $teacherString = 'Teachers: ';
+    $teacherString = gettext('Teachers').': ';
     $bFirstTeacher = true;
     $iTeacherCnt = 0;
     $iMaxTeachersFit = 4;
@@ -100,17 +103,21 @@ for ($i = 0; $i < $nGrps; $i++) {
     if ($tAllRoles != 1) {
         for ($row = 0; $row < $numMembers; $row++) {
             extract($ga[$row]);
-            if ($lst_OptionName == gettext('Teacher')) {
-                $aTeachers[$iTeacherCnt++] = $ga[$row]; // Make an array of teachers while we're here
+            if ($lst_OptionName == 'Teacher') {
+                $aTeachers[$iTeacherCnt] = $ga[$row]; // Make an array of teachers while we're here
                 if (!$bFirstTeacher) {
                     $teacherString .= ', ';
                 }
                 $teacherString .= $per_FirstName.' '.$per_LastName;
                 $bFirstTeacher = false;
-            } elseif ($lst_OptionName == gettext('Student')) {
-                $aStudents[$iStudentCnt++] = $ga[$row];
+                
+                $aTeachersIMG[$iTeacherCnt++] = '/Images/Person/'.$per_ID.'.png';
+            } elseif ($lst_OptionName == 'Student') {
+                $aStudents[$iStudentCnt] = $ga[$row];                
+                $aStudentsIMG[$iStudentCnt++] = '/Images/Person/'.$per_ID.'.png';
             }
         }
+        
         $liaisonString = '';
         for ($row = 0; $row < $numMembers; $row++) {
             extract($ga[$row]);
@@ -123,6 +130,9 @@ for ($i = 0; $i < $nGrps; $i++) {
             $teacherString .= '  '.$liaisonString;
         }
 
+
+				//$pdf->Image($img, 5, $y + 5, 33.78);
+				
         $pdf->SetFont('Times', 'B', 12);
 
         $y = $yTeachers;
@@ -134,14 +144,15 @@ for ($i = 0; $i < $nGrps; $i++) {
             $y += 4;
         }
 
-        $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, 'Students', $iExtraStudents,
+        $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('Students'), $iExtraStudents,
                                    $tFirstSunday, $tLastSunday,
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader);
-        $pdf->DrawAttendanceCalendar($nameX, $y + 12, $aTeachers, 'Teachers', $iExtraTeachers,
+                										$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
+                										
+        $pdf->DrawAttendanceCalendar($nameX, $y + 12, $aTeachers, gettext('Teachers'), $iExtraTeachers,
                               $tFirstSunday, $tLastSunday,
                               $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '');
+                							$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '',$aTeachersIMG,$withPictures);
     } else {
         //
         // print all roles on the attendance sheet
@@ -150,17 +161,19 @@ for ($i = 0; $i < $nGrps; $i++) {
         unset($aStudents);
         for ($row = 0; $row < $numMembers; $row++) {
             extract($ga[$row]);
-            $aStudents[$iStudentCnt++] = $ga[$row];
+            $aStudents[$iStudentCnt] = $ga[$row];
+            
+            $aStudentsIMG[$iStudentCnt++] = '/Images/Person/'.$per_ID.'.png';
         }
 
         $pdf->SetFont('Times', 'B', 12);
 
         $y = $yTeachers;
 
-        $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, 'All Members', $iExtraStudents,
+        $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('All Members'), $iExtraStudents,
                                    $tFirstSunday, $tLastSunday,
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader);
+                										$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
     }
 }
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
