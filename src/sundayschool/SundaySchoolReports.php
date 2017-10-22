@@ -18,9 +18,10 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemConfig;
 
 // Get all the groups
-$sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
+$sSQL = 'SELECT * FROM group_grp WHERE grp_DefaultRole=2 ORDER BY grp_Name';
 $rsGroups = RunQuery($sSQL);
 
 // Set the page title and include HTML header
@@ -30,16 +31,17 @@ require '../Include/Header.php';
 // Is this the second pass?
 if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) {
     $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
-    $dFirstSunday = InputUtils::LegacyFilterInput($_POST['FirstSunday']);
-    $dLastSunday = InputUtils::LegacyFilterInput($_POST['LastSunday']);
-    $dNoSchool1 = InputUtils::LegacyFilterInput($_POST['NoSchool1']);
-    $dNoSchool2 = InputUtils::LegacyFilterInput($_POST['NoSchool2']);
-    $dNoSchool3 = InputUtils::LegacyFilterInput($_POST['NoSchool3']);
-    $dNoSchool4 = InputUtils::LegacyFilterInput($_POST['NoSchool4']);
-    $dNoSchool5 = InputUtils::LegacyFilterInput($_POST['NoSchool5']);
-    $dNoSchool6 = InputUtils::LegacyFilterInput($_POST['NoSchool6']);
-    $dNoSchool7 = InputUtils::LegacyFilterInput($_POST['NoSchool7']);
-    $dNoSchool8 = InputUtils::LegacyFilterInput($_POST['NoSchool8']);
+    
+    $dFirstSunday = InputUtils::LegacyFilterInput($_POST['FirstSunday'],'date');
+    $dLastSunday = InputUtils::LegacyFilterInput($_POST['LastSunday'],'date');
+    $dNoSchool1 = InputUtils::LegacyFilterInput($_POST['NoSchool1'],'date');
+    $dNoSchool2 = InputUtils::LegacyFilterInput($_POST['NoSchool2'],'date');
+    $dNoSchool3 = InputUtils::LegacyFilterInput($_POST['NoSchool3'],'date');
+    $dNoSchool4 = InputUtils::LegacyFilterInput($_POST['NoSchool4'],'date');
+    $dNoSchool5 = InputUtils::LegacyFilterInput($_POST['NoSchool5'],'date');
+    $dNoSchool6 = InputUtils::LegacyFilterInput($_POST['NoSchool6'],'date');
+    $dNoSchool7 = InputUtils::LegacyFilterInput($_POST['NoSchool7'],'date');
+    $dNoSchool8 = InputUtils::LegacyFilterInput($_POST['NoSchool8'],'date');
     $iExtraStudents = InputUtils::LegacyFilterInput($_POST['ExtraStudents'], 'int');
     $iExtraTeachers = InputUtils::LegacyFilterInput($_POST['ExtraTeachers'], 'int');
     $_SESSION['idefaultFY'] = $iFYID;
@@ -54,7 +56,9 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
         $aGrpID = implode(',', $aGroups);
         $bAtLeastOneGroup = true;
     }
+    
     $allroles = InputUtils::LegacyFilterInput($_POST['allroles']);
+    $withPictures = InputUtils::LegacyFilterInput($_POST['withPictures']);
 
     $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
     $currentUser->setCalStart($dFirstSunday);
@@ -69,9 +73,9 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
     $currentUser->setCalNoSchool7($dNoSchool8);
     $currentUser->save();
 
-    if ($bAtLeastOneGroup && isset($_POST['SubmitClassList'])) {
+    if ($bAtLeastOneGroup && isset($_POST['SubmitClassList']) && $aGrpID != 0) {
         Redirect('Reports/ClassList.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles);
-    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance'])) {
+    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance']) && $aGrpID != 0) {
         $toStr = 'Reports/ClassAttendance.php?';
         //	      $toStr .= "GroupID=" . $iGroupID;
         $toStr .= 'GroupID='.$aGrpID;
@@ -79,6 +83,7 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
         $toStr .= '&FirstSunday='.$dFirstSunday;
         $toStr .= '&LastSunday='.$dLastSunday;
         $toStr .= '&AllRoles='.$allroles;
+        $toStr .= '&withPictures='.$withPictures;
         if ($dNoSchool1) {
             $toStr .= '&NoSchool1='.$dNoSchool1;
         }
@@ -110,26 +115,50 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
             $toStr .= '&ExtraTeachers='.$iExtraTeachers;
         }
         Redirect($toStr);
-    } elseif (!$bAtLeastOneGroup) {
-        echo gettext('At least one group must be selected to make class lists or attendance sheets.');
+    } elseif (!$bAtLeastOneGroup || $aGrpID == 0) {
+        echo "<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\"> ".gettext('At least one group must be selected to make class lists or attendance sheets.')."</span></p>";
     }
 } else {
     $iFYID = $_SESSION['idefaultFY'];
     $iGroupID = 0;
     $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
-    $dFirstSunday = $currentUser->getCalStart();
-    $dLastSunday = $currentUser->getCalEnd();
-    $dNoSchool1 = $currentUser->getCalNoSchool1();
-    $dNoSchool2 = $currentUser->getCalNoSchool2();
-    $dNoSchool3 = $currentUser->getCalNoSchool3();
-    $dNoSchool4 = $currentUser->getCalNoSchool4();
-    $dNoSchool5 = $currentUser->getCalNoSchool5();
-    $dNoSchool6 = $currentUser->getCalNoSchool6();
-    $dNoSchool7 = $currentUser->getCalNoSchool7();
-    $dNoSchool8 = $currentUser->getCalNoSchool8();
+    
+    if ($currentUser->getCalStart() != null)
+	    $dFirstSunday = $currentUser->getCalStart()->format('Y-m-d');
+    if ($currentUser->getCalEnd() != null)
+	    $dLastSunday = $currentUser->getCalEnd()->format('Y-m-d');
+    if ($currentUser->getCalNoSchool1() != null)
+	    $dNoSchool1 = $currentUser->getCalNoSchool1()->format('Y-m-d');
+    if ($currentUser->getCalNoSchool2() != null)
+	    $dNoSchool2 = $currentUser->getCalNoSchool2()->format('Y-m-d');
+    if ($currentUser->getCalNoSchool3() != null)
+	    $dNoSchool3 = $currentUser->getCalNoSchool3()->format('Y-m-d');
+    if ($currentUser->getCalNoSchool4() != null)
+	    $dNoSchool4 = $currentUser->getCalNoSchool4()->format('Y-m-d');
+    if ($currentUser->getCalNoSchool5() != null)
+	    $dNoSchool5 = $currentUser->getCalNoSchool5()->format('Y-m-d');
+    if ($currentUser->getCalNoSchool6() != null)
+	    $dNoSchool6 = $currentUser->getCalNoSchool6()->format('Y-m-d');
+    if ($currentUser->getCalNoSchool7() != null)
+	    $dNoSchool7 = $currentUser->getCalNoSchool7()->format('Y-m-d');
+    if ($currentUser->getCalNoSchool8() != null)
+	    $dNoSchool8 = $currentUser->getCalNoSchool8()->format('Y-m-d');
+	    
     $iExtraStudents = 0;
     $iExtraTeachers = 0;
 }
+
+$dFirstSunday = change_date_for_place_holder($dFirstSunday);
+$dLastSunday = change_date_for_place_holder($dLastSunday);
+$dNoSchool1 = change_date_for_place_holder($dNoSchool1);
+$dNoSchool2 = change_date_for_place_holder($dNoSchool2);
+$dNoSchool3 = change_date_for_place_holder($dNoSchool3);
+$dNoSchool4 = change_date_for_place_holder($dNoSchool4);
+$dNoSchool5 = change_date_for_place_holder($dNoSchool5);
+$dNoSchool6 = change_date_for_place_holder($dNoSchool6);
+$dNoSchool7 = change_date_for_place_holder($dNoSchool7);
+$dNoSchool8 = change_date_for_place_holder($dNoSchool6);
+
 ?>
 <div class="box">
   <div class="box-header with-border">
@@ -152,7 +181,9 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
             echo '</select><br>';
             echo gettext('Multiple groups will have a Page Break between Groups<br>');
             echo '<input type="checkbox" Name="allroles" value="1" checked>';
-            echo gettext('List all Roles (unchecked will list Teacher/Student roles only)');
+            echo gettext('List all Roles (unchecked will list Teacher/Student roles only)')."<br>";
+            echo '<input type="checkbox" Name="withPictures" value="1" checked>';
+            echo gettext('Face Book');
             ?>
           </td>
         </tr>
@@ -166,52 +197,52 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
 
         <tr>
           <td><?= gettext('First Sunday') ?>:</td>
-          <td><input type="text" name="FirstSunday" value="<?= $dFirstSunday ?>" maxlength="10" id="FirstSunday" size="11"  class="date-picker"></td>
+          <td><input type="text" name="FirstSunday" value="<?= $dFirstSunday ?>" maxlength="10" id="FirstSunday" size="11"  class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('Last Sunday') ?>:</td>
-          <td><input type="text" name="LastSunday" value="<?= $dLastSunday ?>" maxlength="10" id="LastSunday" size="11"  class="date-picker"></td>
+          <td><input type="text" name="LastSunday" value="<?= $dLastSunday ?>" maxlength="10" id="LastSunday" size="11"  class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool1" value="<?= $dNoSchool1 ?>" maxlength="10" id="NoSchool1" size="11" class="date-picker"></td>
+          <td><input type="text" name="NoSchool1" value="<?= $dNoSchool1 ?>" maxlength="10" id="NoSchool1" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool2" value="<?= $dNoSchool2 ?>" maxlength="10" id="NoSchool2" size="11"  class="date-picker"></td>
+          <td><input type="text" name="NoSchool2" value="<?= $dNoSchool2 ?>" maxlength="10" id="NoSchool2" size="11"  class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool3" value="<?= $dNoSchool3 ?>" maxlength="10" id="NoSchool3" size="11" class="date-picker"></td>
+          <td><input type="text" name="NoSchool3" value="<?= $dNoSchool3 ?>" maxlength="10" id="NoSchool3" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool4" value="<?= $dNoSchool4 ?>" maxlength="10" id="NoSchool4" size="11" class="date-picker"></td>
+          <td><input type="text" name="NoSchool4" value="<?= $dNoSchool4 ?>" maxlength="10" id="NoSchool4" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool5" value="<?= $dNoSchool5 ?>" maxlength="10" id="NoSchool5" size="11" class="date-picker"></td>
+          <td><input type="text" name="NoSchool5" value="<?= $dNoSchool5 ?>" maxlength="10" id="NoSchool5" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool6" value="<?= $dNoSchool6 ?>" maxlength="10" id="NoSchool6" size="11" class="date-picker"></td>
+          <td><input type="text" name="NoSchool6" value="<?= $dNoSchool6 ?>" maxlength="10" id="NoSchool6" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool7" value="<?= $dNoSchool7 ?>" maxlength="10" id="NoSchool7" size="11" class="date-picker"></td>
+          <td><input type="text" name="NoSchool7" value="<?= $dNoSchool7 ?>" maxlength="10" id="NoSchool7" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool8" value="<?= $dNoSchool8 ?>" maxlength="10" id="NoSchool8" size="11" class="date-picker"></td>
+          <td><input type="text" name="NoSchool8" value="<?= $dNoSchool8 ?>" maxlength="10" id="NoSchool8" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
         </tr>
 
         <tr>
