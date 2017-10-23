@@ -4,7 +4,8 @@
 *  filename    : Reports/ClassAttendance.php
 *  last change : 2013-02-22
 *  description : Creates a PDF for a Sunday School Class Attendance List
-
+*  Udpdated    : 2017-10-23
+*                Philippe Logel
 ******************************************************************************/
 
 require '../Include/Config.php';
@@ -113,7 +114,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                 
                 $aTeachersIMG[$iTeacherCnt++] = '/Images/Person/'.$per_ID.'.png';
             } elseif ($lst_OptionName == 'Student') {
-                $aStudents[$iStudentCnt] = $ga[$row];
+                $aStudents[$iStudentCnt] = $ga[$row];                
                 $aStudentsIMG[$iStudentCnt++] = '/Images/Person/'.$per_ID.'.png';
             }
         }
@@ -131,8 +132,8 @@ for ($i = 0; $i < $nGrps; $i++) {
         }
 
 
-        //$pdf->Image($img, 5, $y + 5, 33.78);
-                
+				//$pdf->Image($img, 5, $y + 5, 33.78);
+				
         $pdf->SetFont('Times', 'B', 12);
 
         $y = $yTeachers;
@@ -147,12 +148,20 @@ for ($i = 0; $i < $nGrps; $i++) {
         $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('Students'), $iExtraStudents,
                                    $tFirstSunday, $tLastSunday,
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                                                        $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
-                                                        
+                				   $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
+        
+        
+        $pdf->SetFont('Times', 'B', 12);
+		
+		// we start a new page
+		if ($y > $yTeachers+10)
+	        $pdf->AddPage();
+                										
+        $y = $yTeachers;        
         $pdf->DrawAttendanceCalendar($nameX, $y + 12, $aTeachers, gettext('Teachers'), $iExtraTeachers,
                               $tFirstSunday, $tLastSunday,
                               $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                                            $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '', $aTeachersIMG, $withPictures);
+                			  $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '',$aTeachersIMG,$withPictures);
     } else {
         //
         // print all roles on the attendance sheet
@@ -170,10 +179,10 @@ for ($i = 0; $i < $nGrps; $i++) {
 
         $y = $yTeachers;
 
-        $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('All Members'), $iExtraStudents,
+        $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('All Members'), $iExtraStudents+$iExtraTeachers,
                                    $tFirstSunday, $tLastSunday,
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                                                        $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
+                										$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
     }
 }
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
