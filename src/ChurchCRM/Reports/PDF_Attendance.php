@@ -31,7 +31,7 @@ class PDF_Attendance extends ChurchInfoReport
     public function DrawAttendanceCalendar($nameX, $yTop, $aNames, $tTitle, $extraLines,
                                     $tFirstSunday, $tLastSunday,
                                     $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                    $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $rptHeader,$imgs,$with_img)
+                    				$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $rptHeader,$imgs,$with_img)
     {
         $startMonthX = 60;
         $dayWid = 7;
@@ -48,8 +48,7 @@ class PDF_Attendance extends ChurchInfoReport
         $numMembers = 0;
         $aNameCount = 0;
         
-        $MaxLinesPerPage = -3*$yIncrement+54; // 36  lignes pour un yIncrement de 6, 12 lignes pour un yIncrement de 12, y=-3x+54
-
+        $MaxLinesPerPage = -5*$yIncrement+66; // 36  lignes pour un yIncrement de 6, 18 lignes pour un yIncrement de 12, y=-3x+54
         
         $fontTitleTitle = 16;
         
@@ -91,21 +90,23 @@ class PDF_Attendance extends ChurchInfoReport
 //
 // add extra blank lines to the array
 //
-		for ($i = 0; $i < $extraLines; $i++) {
-				$NameList[$aNameCount] = '   ';
-				$imgList[$aNameCount++] = '';
-		}
+	for ($i = 0; $i < $extraLines; $i++) {
+			$NameList[$aNameCount] = '   ';
+			$imgList[$aNameCount++] = '';
+	}
 
-        $numMembers = count($NameList);
-        $nPages = ceil($numMembers / $MaxLinesPerPage);
-//	echo "nPages = {$nPages} \n\r";
-//
-// Main loop which draws each page
-//
+	$numMembers = count($NameList);
+	$nPages = ceil($numMembers / $MaxLinesPerPage);
+	
+	
+	//	echo "nPages = {$nPages} \n\r";
+	//
+	// Main loop which draws each page
+	//
     for ($p = 0; $p < $nPages; $p++) {
         //
-// 	Paint the title section- class name and year on the top, then teachers/liaison
-//
+		// 	Paint the title section- class name and year on the top, then teachers/liaison
+		//
         if ($p > 0) {
             $this->AddPage();
         }
@@ -113,7 +114,7 @@ class PDF_Attendance extends ChurchInfoReport
         $this->WriteAt($nameX, $yTitle, $rptHeader);
                 
         $this->SetLineWidth(0.5);
-        $this->Line($nameX, $yTeachers - 0.75, 195, $yTeachers - 0.75);
+        $this->Line($nameX-5, $yTeachers - 0.45, 195, $yTeachers - 0.45);
         $yMonths = $yTop;
         $yDays = $yTop + $yIncrement;
         $y = $yDays + $yIncrement;
