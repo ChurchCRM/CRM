@@ -34,6 +34,12 @@ $(document).ready(function () {
   });
 
   dataT = $("#groupsTable").DataTable({
+  	"initComplete": function( settings, json ) {
+   	 	if (window.groupSelect != null)
+   	 	{
+   	 		dataT.search(window.groupSelect).draw();
+   	 	}
+  	},
     "language": {
       "url": window.CRM.plugin.dataTable.language.url
     },
@@ -90,6 +96,7 @@ $(document).ready(function () {
   });
   
   $('#table-filter').on('change', function(){
-       dataT.search(this.value).draw();   
+       dataT.search(this.value).draw();
+       localStorage.setItem("groupSelect",this.selectedIndex);
   });
 });
