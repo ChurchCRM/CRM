@@ -35,7 +35,12 @@ class PDF_Attendance extends ChurchInfoReport
     {
         $startMonthX = 60;
         $dayWid = 7;
-        $yIncrement = 10; // normalement 6
+        
+        if ($with_img)
+	        $yIncrement = 10; // normalement 6
+	    else
+	    	$yIncrement = 6;
+	    	
         $yTitle = 20;
         $yTeachers = $yTitle + $yIncrement;
         $nameX = 10+$yIncrement/2;
@@ -47,7 +52,11 @@ class PDF_Attendance extends ChurchInfoReport
 
         
         $fontTitleTitle = 16;
-        $fontTitleNormal = 10;
+        
+        if ($with_img)
+        	$fontTitleNormal = 11;
+        else
+        	$fontTitleNormal = 10;
 
         $aNoSchoolX = [];
         $noSchoolCnt = 0;
@@ -127,7 +136,7 @@ class PDF_Attendance extends ChurchInfoReport
 
         $this->SetLineWidth(0.25);
         for ($row = $pRowStart; $row < $pRowEnd; $row++) {
-            $this->WriteAt($nameX, $y + 1, $NameList[$row]);
+            $this->WriteAt($nameX, $y + (($with_img==true)?3:1), $NameList[$row]);
                         
             if($NameList[$row] != '   ' && file_exists($_SERVER['DOCUMENT_ROOT'].$imgList[$row]) && $with_img == true) 
           	{
