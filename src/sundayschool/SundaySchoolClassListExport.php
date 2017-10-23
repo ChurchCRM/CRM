@@ -67,9 +67,9 @@ while ($aRow = mysqli_fetch_array($rsKids)) {
     InputUtils::translate_special_charset($firstName),
     InputUtils::translate_special_charset($LastName),
      $birthDate, $mobilePhone, $homePhone,
-    InputUtils::translate_special_charset($Address1).' '.$Address2.' '.$city.' '.$state.' '.$zip,
-    $dadFirstName.' '.$dadLastName, $dadCellPhone, $dadEmail,
-    $momFirstName.' '.$momLastName, $momCellPhone, $momEmail, ], $delimiter);
+    InputUtils::translate_special_charset($Address1).' '.InputUtils::translate_special_charset($Address2).' '.InputUtils::translate_special_charset($city).' '.InputUtils::translate_special_charset($state).' '.$zip,
+    InputUtils::translate_special_charset($dadFirstName).' '.InputUtils::translate_special_charset($dadLastName), $dadCellPhone, $dadEmail,
+    InputUtils::translate_special_charset($momFirstName).' '.InputUtils::translate_special_charset($momLastName), $momCellPhone, $momEmail, ], $delimiter);
 }
 
 
