@@ -151,14 +151,12 @@ for ($i = 0; $i < $nGrps; $i++) {
                 				   $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
         
         
-        $pdf->SetFont('Times', 'B', 12);
-		
 		// we start a new page
 		if ($y > $yTeachers+10)
 	        $pdf->AddPage();
                 										
         $y = $yTeachers;        
-        $pdf->DrawAttendanceCalendar($nameX, $y + 12, $aTeachers, gettext('Teachers'), $iExtraTeachers,
+        $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aTeachers, gettext('Teachers'), $iExtraTeachers,
                               $tFirstSunday, $tLastSunday,
                               $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
                 			  $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '',$aTeachersIMG,$withPictures);
