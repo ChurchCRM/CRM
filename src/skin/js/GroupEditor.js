@@ -68,7 +68,7 @@ $("document").ready(function()
       dataType: "json"
     }).done(function(data)
     {
-    	if (data.DefaultRole == 2)
+    	if (data.groupType == i18next.t("Sunday School"))
     	{
 	      window.location.href = CRM.root + "/sundayschool/SundaySchoolDashboard.php";
 	    }
