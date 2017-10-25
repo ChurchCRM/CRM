@@ -5852,11 +5852,6 @@ msgstr "Mapa da Família"
 msgid "Groups"
 msgstr "Grupos"
 
-#: mrbs.php:26
-#, fuzzy
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM: Login"
-
 #: OptionManager.php:394
 msgid "Error: You must enter a name"
 msgstr "Erro: Você deve entrar um nome"
@@ -8262,10 +8257,6 @@ msgstr "O tamanho máximo do arquivo para o PHP é muito pequeno"
 msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
 msgstr "Aumente os limites do upload do PHP para permitir o upload de foto de celular e restaurar o backup."
 
-#: api/routes/cart.php:13
-msgid "POST to cart requires a Persons array"
-msgstr "O POST para carrinho requer um array de pessoas"
-
 #: api/routes/families.php:170
 msgid "Deactivated the Family"
 msgstr "Família desativada"
@@ -9177,4 +9168,96 @@ msgstr "Você pode criar/deletar grupo da escola bíblica dominical. "
 #: GroupEditor.php:109
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Adicione novos papéis, mas não modificar ou renomear os papéis de Aluno e Professor."
+
+#: 
+msgid "E"
+msgstr "E"
+
+#: 
+msgid "ENE"
+msgstr "ENE"
+
+#: 
+msgid "ESE"
+msgstr "ESE"
+
+#: 
+msgid "N"
+msgstr "N"
+
+#: 
+msgid "NE"
+msgstr "NE"
+
+#: 
+msgid "NNE"
+msgstr "NNE"
+
+#: 
+msgid "NNW"
+msgstr "NNW"
+
+#: 
+msgid "NW"
+msgstr "NW"
+
+#: 
+msgid "S"
+msgstr "S"
+
+#: 
+msgid "SE"
+msgstr "SE"
+
+#: 
+msgid "SSW"
+msgstr "SSW"
+
+#: 
+msgid "SW"
+msgstr "SW"
+
+#: 
+msgid "W"
+msgstr "W"
+
+#: 
+msgid "WNW"
+msgstr "WNW"
+
+#: 
+msgid "WSW"
+msgstr "WSW"
+
+#: ChurchCRM/Service/PersonService.php:54
+msgid "Persons"
+msgstr "Pessoas"
+
+#: ChurchCRM/dto/SystemConfig.php:198
+msgid "Search Members"
+msgstr "Procurar membros"
+
+#: ChurchCRM/dto/SystemConfig.php:199
+msgid "Search Family"
+msgstr "Pocurar famílias"
+
+#: ChurchCRM/dto/SystemConfig.php:200
+msgid "Show Family Head of House Names"
+msgstr "Mostrar o cabeça das famílias das casas"
+
+#: ChurchCRM/dto/SystemConfig.php:201
+msgid "Search Groups"
+msgstr "Procurar grupos"
+
+#: ChurchCRM/dto/SystemConfig.php:202
+msgid "Search Deposits"
+msgstr "Procurar depósitos"
+
+#: ChurchCRM/dto/SystemConfig.php:203
+msgid "Search Payments"
+msgstr "Procurar pagamentos"
+
+#: ChurchCRM/dto/SystemConfig.php:219
+msgid "Quick Search"
+msgstr "Busca rápida"
 
