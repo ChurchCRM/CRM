@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.8.11 (18/09/2017)
+
+#### Core Functionality
+
+- [**Installation / Upgrade**][**Platform: Shared Hosting**][**question**] File integrity check failure [#3037](https://github.com/ChurchCRM/CRM/issues/3037)
+- [**Feature: Emails**][**Feature: Members**] Alert / Notify Pastoral and Greeters of new family additions [#3007](https://github.com/ChurchCRM/CRM/issues/3007)
+- [**Backend System**][**Installation / Upgrade**][**Platform: Database**] Need option for PHP based Upgrade Script [#2983](https://github.com/ChurchCRM/CRM/issues/2983)
+- [**Installation / Upgrade**][**Platform: Shared Hosting**] Setup Failure [#2980](https://github.com/ChurchCRM/CRM/issues/2980)
+
+#### Localization:
+
+- [**Localization**] Support - Indonesian locale  [#2961](https://github.com/ChurchCRM/CRM/issues/2961)
+
+#### Inner Beauty:
+
+- [**Backend System**][**Installation / Upgrade**][**Platform: Database**] Need option for PHP based Upgrade Script [#2983](https://github.com/ChurchCRM/CRM/issues/2983)
+- [**development**] ChurchCRM mixed Lic [#2911](https://github.com/ChurchCRM/CRM/issues/2911)
+
+---
+
 ## 2.8.10 (31/07/2017)
 
 #### Enhancements:
@@ -774,15 +794,6 @@
 
 ## 2.4.2 (08/12/2016)
 
-#### Bug fixes:
-
-- [**bug**] Auto-Upgrade is broken [#1549](https://github.com/ChurchCRM/CRM/issues/1549)
-- [**bug**] "Confirm data letter" and "Confirm data email" in LettersAndLabels.php are broken in PHP 7.0 [#1546](https://github.com/ChurchCRM/CRM/issues/1546)
-
----
-
-## 2.4.1 (07/12/2016)
-
 #### Enhancements:
 
 - [**enhancement**][**Feature: Members**] Membership Info need to have smaller fields  [#1409](https://github.com/ChurchCRM/CRM/issues/1409)
@@ -949,6 +960,8 @@
 
 #### Bug fixes:
 
+- [**bug**] Auto-Upgrade is broken [#1549](https://github.com/ChurchCRM/CRM/issues/1549)
+- [**bug**] "Confirm data letter" and "Confirm data email" in LettersAndLabels.php are broken in PHP 7.0 [#1546](https://github.com/ChurchCRM/CRM/issues/1546)
 - [**bug**] GroupList fails when there are no groups [#1542](https://github.com/ChurchCRM/CRM/issues/1542)
 - [**bug**] TaskService.php calling integrityCheck.json [#1521](https://github.com/ChurchCRM/CRM/issues/1521)
 - [**bug**] register software is broken [#1515](https://github.com/ChurchCRM/CRM/issues/1515)
