@@ -902,7 +902,7 @@ msgstr "Email (BCC)"
 
 #: CartView.php:183
 msgid "Create Directory From Cart"
-msgstr "Créer un dossier depuis le panier"
+msgstr "Créer un répertoire depuis le panier"
 
 #: CartView.php:207 CartView.php:249
 msgid "Generate Labels"
@@ -1102,7 +1102,7 @@ msgstr "Démarrer les transactions"
 
 #: DirectoryReports.php:27
 msgid "Directory reports"
-msgstr "Rapports de dossier"
+msgstr "Rapport style « répertoire »"
 
 #: DirectoryReports.php:77
 msgid "Select classifications to include"
@@ -1216,7 +1216,7 @@ msgstr "Avertissement"
 
 #: DirectoryReports.php:284
 msgid "Create Directory"
-msgstr "Créer un dossier"
+msgstr "Créer un répertoire"
 
 #: DonatedItemEditor.php:42
 msgid "Donated Item Editor"
@@ -4704,7 +4704,7 @@ msgstr "Certificat de propriété"
 #: ChurchCRM/Reports/PDF_Directory.php:37
 #: ChurchCRM/Reports/PDF_Directory.php:73
 msgid "Directory"
-msgstr "Dossier"
+msgstr "Répertoire"
 
 #: ChurchCRM/Reports/PDF_Directory.php:56
 msgid "Page"
@@ -4720,7 +4720,7 @@ msgstr "et"
 
 #: ChurchCRM/Reports/PDF_GroupDirectory.php:29
 msgid "Group Directory"
-msgstr "Dossier du Groupe"
+msgstr "Répertoire du Groupe"
 
 #: Reports/TaxReport.php:240
 msgid "Please detach this slip and mail with your next gift."
@@ -5671,10 +5671,6 @@ msgstr "Carte de toutes les familles"
 msgid "Groups"
 msgstr "Groupes"
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM MRBS Portail"
-
 #: OptionManager.php:394
 msgid "Error: You must enter a name"
 msgstr "Erreur: Vous devez entrer un nom."
@@ -5705,7 +5701,7 @@ msgstr "Email de l'église"
 
 #: ChurchCRM/dto/SystemConfig.php:65
 msgid "Include only these classifications in the directory, comma seperated"
-msgstr "Inclure uniquement ces classifications dans le dossier, séparées par une virgule"
+msgstr "Inclure uniquement ces classifications dans le répertoire, séparées par une virgule"
 
 #: ChurchCRM/dto/SystemConfig.php:66
 msgid "These are the family role numbers designated as head of house"
@@ -5729,7 +5725,7 @@ msgstr "Requêtes pour lesquelles l'utilisateur doit avoir des permissions de fi
 
 #: ChurchCRM/dto/SystemConfig.php:71
 msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Est-ce que les administrateurs sont les seuls à voir accès au système d'exportation au format CSV et au dossier Rapport?"
+msgstr "Est-ce que les administrateurs sont les seuls à voir accès au système d'exportation au format CSV et au répertoire?"
 
 #: ChurchCRM/dto/SystemConfig.php:72
 msgid "Minimum length a user may set their password to"
@@ -5936,7 +5932,7 @@ msgstr "Verbiage pour le rapport sommaire de contribution"
 
 #: ChurchCRM/dto/SystemConfig.php:155 ChurchCRM/dto/SystemConfig.php:156
 msgid "Verbage for the directory report"
-msgstr "Verbiage pour le dossier Rapport"
+msgstr "Verbiage pour le répertoire"
 
 #: ChurchCRM/dto/SystemConfig.php:157
 msgid "Church Letterhead path and file"
@@ -8050,10 +8046,6 @@ msgstr "La taille max de fichier PHP est trop petite"
 msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
 msgstr "Augmenter la limite de téléchargement PHP pour les téléchargements de photo de téléphone portable et de la restauration des sauvegardes."
 
-#: api/routes/cart.php:13
-msgid "POST to cart requires a Persons array"
-msgstr "L'envoi vers le panier requière un tableau de personnes."
-
 #: api/routes/families.php:170
 msgid "Deactivated the Family"
 msgstr "Désactiver la famille."
@@ -8963,4 +8955,96 @@ msgstr "Vous pourrez ajouter/supprimer des groupes d'école du dimanche. "
 #: GroupEditor.php:109
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Ajouter des roles, mais vous ne pourrez modifier ou renommer les rôles Etudiant et Moniteur."
+
+#: 
+msgid "E"
+msgstr "E"
+
+#: 
+msgid "ENE"
+msgstr "ENE"
+
+#: 
+msgid "ESE"
+msgstr "ESE"
+
+#: 
+msgid "N"
+msgstr "N"
+
+#: 
+msgid "NE"
+msgstr "NE"
+
+#: 
+msgid "NNE"
+msgstr "NNE"
+
+#: 
+msgid "NNW"
+msgstr "NNO"
+
+#: 
+msgid "NW"
+msgstr "NO"
+
+#: 
+msgid "S"
+msgstr "S"
+
+#: 
+msgid "SE"
+msgstr "SE"
+
+#: 
+msgid "SSW"
+msgstr "SSO"
+
+#: 
+msgid "SW"
+msgstr "SO"
+
+#: 
+msgid "W"
+msgstr "O"
+
+#: 
+msgid "WNW"
+msgstr "ONO"
+
+#: 
+msgid "WSW"
+msgstr "OSO"
+
+#: ChurchCRM/Service/PersonService.php:54
+msgid "Persons"
+msgstr "Personnes"
+
+#: ChurchCRM/dto/SystemConfig.php:198
+msgid "Search Members"
+msgstr "Rechercher des membres"
+
+#: ChurchCRM/dto/SystemConfig.php:199
+msgid "Search Family"
+msgstr "Rechercher une famille"
+
+#: ChurchCRM/dto/SystemConfig.php:200
+msgid "Show Family Head of House Names"
+msgstr "Afficher les prénoms des chefs des familles"
+
+#: ChurchCRM/dto/SystemConfig.php:201
+msgid "Search Groups"
+msgstr "Rechercher des groupes"
+
+#: ChurchCRM/dto/SystemConfig.php:202
+msgid "Search Deposits"
+msgstr "Rechercher des versements"
+
+#: ChurchCRM/dto/SystemConfig.php:203
+msgid "Search Payments"
+msgstr "Rechercher des paiements"
+
+#: ChurchCRM/dto/SystemConfig.php:219
+msgid "Quick Search"
+msgstr "Recherche rapide"
 

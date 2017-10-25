@@ -565,6 +565,168 @@ msgstr "Unggah File CSV"
 msgid "Clear Persons and Families"
 msgstr "Bersihkan Orang dan Keluarga"
 
+#: CSVImport.php:853
+msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
+msgstr "Perhatian ! Jangan memilih ini jika database sudah pernah ada"
+
+#: CSVImport.php:854
+msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
+msgstr "Gunakan jika initial import kurang memuaskan. Semua data anggota akan dihapus"
+
+#: CSVImport.php:870
+msgid "Data import successful."
+msgstr "Impor data berhasil"
+
+#: CanvassAutomation.php:45 CanvassAutomation.php:52 CanvassAutomation.php:59
+#: CanvassAutomation.php:67 CanvassAutomation.php:75
+msgid "Not confirmed."
+msgstr "Belum terkonfirmasi"
+
+#: CanvassAutomation.php:128
+msgid "Set default fiscal year"
+msgstr "Atur tahun fiskal"
+
+#: CanvassEditor.php:219
+msgid "Suggestions"
+msgstr "Saran-saran"
+
+#: CanvassEditor.php:224
+msgid "Not Interested"
+msgstr "Tidak berminat"
+
+#: CanvassEditor.php:231
+msgid "Why Not Interested?"
+msgstr "Mengapa tidak berminat ?"
+
+#: CartToEvent.php:84 Checkin.php:105 ListEvents.php:349
+msgid "Add New Event"
+msgstr "Tambah Event Baru"
+
+#: CartToFamily.php:83
+msgid "No family name entered!"
+msgstr "Nama keluarga masih kosong"
+
+#: CartToFamily.php:154 CartView.php:277 Checkin.php:313
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
+#: DonationFundEditor.php:148 DonationFundEditor.php:211
+#: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:174
+#: EventNames.php:261 FamilyCustomFieldsEditor.php:319
+#: FamilyCustomFieldsEditor.php:433 FamilyList.php:43 FamilyView.php:541
+#: GeoPage.php:380 GroupEditor.php:72 GroupPropsFormEditor.php:285
+#: GroupPropsFormEditor.php:397 GroupView.php:315 GroupView.php:348
+#: PersonCustomFieldsEditor.php:310 PersonCustomFieldsEditor.php:441
+#: PersonView.php:658 PersonView.php:760 PrintView.php:317 PrintView.php:445
+#: PropertyEditor.php:148 PropertyList.php:59 PropertyTypeEditor.php:95
+#: PropertyTypeList.php:34 Reports/CanvassReports.php:68
+#: Reports/CanvassReports.php:236 Reports/FRBidSheets.php:88
+#: SelectList.php:999 UserList.php:52 VolunteerOpportunityEditor.php:74
+#: VolunteerOpportunityEditor.php:353 VolunteerOpportunityEditor.php:420
+#: sundayschool/SundaySchoolClassView.php:199 queryparameteroptions_qpo.php:4
+msgid "Name"
+msgstr "Nama"
+
+#: CartToFamily.php:155
+msgid "Assign Role"
+msgstr "Tentukan peran"
+
+#: CartToFamily.php:171
+msgid "Already in a family"
+msgstr "Terdaftar di keluarga lain"
+
+#: CartToFamily.php:189
+msgid "Create new family"
+msgstr "Buat keluarga baru"
+
+#: CartToFamily.php:200
+msgid "If adding a new family, enter data below."
+msgstr "Jika menambah keluarga baru, masukkan data di bawah ini"
+
+#: CartToFamily.php:215
+msgid "Use address/contact data from"
+msgstr "Gunakan alamat/data kontak dari"
+
+#: CartToFamily.php:256
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Gunakan textbox untuk negara selain US dan Canada"
+
+#: CartToFamily.php:285 CartToFamily.php:295 CartToFamily.php:305
+#: FamilyEditor.php:743 FamilyEditor.php:753 FamilyEditor.php:763
+#: Include/Functions.php:1126 PersonEditor.php:946 PersonEditor.php:970
+#: PersonEditor.php:994
+msgid "Do not auto-format"
+msgstr "Jangan lakukan auto-format"
+
+#: CartToFamily.php:184 CartToFamily.php:318
+msgid "Add to Family"
+msgstr "Tambahkan ke Keluarga"
+
+#: CartToGroup.php:71 GroupReports.php:43 PersonToGroup.php:61
+#: sundayschool/SundaySchoolReports.php:143
+msgid "Select Group"
+msgstr "Pilih Group"
+
+#: CartToGroup.php:87 PersonToGroup.php:78
+msgid "No Group Selected"
+msgstr "Belum memilih Group"
+
+#: CartToGroup.php:94 PersonToGroup.php:85 SelectList.php:1242
+msgid "Add to Group"
+msgstr "Tambahkan ke Group"
+
+#: CartToGroup.php:96
+msgid "Create a New Group"
+msgstr "Buat Group Baru"
+
+#: CartView.php:24
+msgid "View Your Cart"
+msgstr "Tampilkan Cart"
+
+#: CartView.php:32
+msgid "You have no items in your cart."
+msgstr "Cart anda masih kosong"
+
+#: CartView.php:41
+msgid "Back to Menu"
+msgstr "Kembali ke Menu"
+
+#: CartView.php:76
+msgid "Go To Labels"
+msgstr "Menuju ke labels"
+
+#: CartView.php:93 Include/Header.php:109
+msgid "Empty Cart"
+msgstr "Kosongkan Cart"
+
+#: CartView.php:280 CartView.php:339 EditEventTypes.php:166 FamilyView.php:546
+#: FamilyView.php:588 GroupView.php:353 GroupView.php:394 PersonView.php:661
+#: PersonView.php:679 PersonView.php:763 PersonView.php:781
+msgid "Remove"
+msgstr "Hapus"
+
+#: CartView.php:301 CartView.php:321 DonationFundEditor.php:175
+#: FinancialReports.php:293 Include/Functions.php:913
+#: Include/Functions.php:997 Reports/ConfirmReport.php:227
+msgid "Yes"
+msgstr "Ya"
+
+#: CartView.php:314 CartView.php:323 DonationFundEditor.php:178
+#: FinancialReports.php:294 Include/Functions.php:915
+#: Include/Functions.php:998 Reports/ConfirmReport.php:229
+msgid "No"
+msgstr "Tidak"
+
+#: CheckVersion.php:43
+msgid "Software Version Check"
+msgstr "Cek Versi Software"
+
+#: CheckVersion.php:53
+msgid "Oops! Something went wrong"
+msgstr "Oops ! Ada sesuatu yang salah"
+
+#: CheckVersion.php:56
+msgid "There is an incompatibility between database schema and installed software. You are seeing this message because there is a software bug or an incomplete upgrade."
+msgstr "Ada ketidak-cocokan  antara skema database dan software yang diinstall. Pesan ini muncul karena bug pada software atau upgrade yang tidak sempurna"
+
 #: menuconfig_mcf.php:7
 msgid "View All Persons"
 msgstr "Lihat semua Orang"

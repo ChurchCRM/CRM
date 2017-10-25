@@ -5668,10 +5668,6 @@ msgstr "Mapa de Familias"
 msgid "Groups"
 msgstr "Grupos"
 
-#: mrbs.php:26
-msgid "ChurchCRM MRBS Portal"
-msgstr "ChurchCRM: Portal MRBS"
-
 #: OptionManager.php:394
 msgid "Error: You must enter a name"
 msgstr "Error: Debe ingresar un nombre"
@@ -8081,10 +8077,6 @@ msgstr "PHP Tamaño de Archivo Máximo muy peqeño"
 #: ChurchCRM/tasks/CheckUploadSizeTask.php:40
 msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
 msgstr "Incremente los límites de tamaño de carga de php para permitir carga de foto para móviles y restauración de respaldos."
-
-#: api/routes/cart.php:13
-msgid "POST to cart requires a Persons array"
-msgstr "ENVÍO a separador requiere de un arreglo de Personas"
 
 #: api/routes/families.php:170
 msgid "Deactivated the Family"
