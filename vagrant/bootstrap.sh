@@ -78,11 +78,22 @@ source ~/.bashrc
 
 VERSION="$(npm --version)"
 echo "Node vesrion: $VERSION"
+    
+mountpoint /vagrant/node_modules/ > /dev/null
+ISMOUNTPOINT=$?
 
-sudo mkdir /vagrant/node_modules
+if [ $ISMOUNTPOINT -eq 0 ]; then 
+    echo "/vagrant/node_modules is a mountpoint - don't touch"
+else
+    echo "/vagrant/node_modules is not a mountpoint - nuke and mount"
+    sudo rm -rf /vagrant/node_modules
+    sudo mkdir /vagrant/node_modules
+    mkdir -p /home/vagrant/node_modules /vagrant/node_modules
+    sudo mount --bind /home/vagrant/node_modules/ /vagrant/node_modules
+    echo "/home/vagrant/node_modules/ has been mounted to /vagrant/node_modules"
+fi
+
 sudo chown vagrant:vagrant /vagrant/node_modules
-mkdir -p /home/vagrant/node_modules /vagrant/node_modules
-sudo mount --bind /home/vagrant/node_modules/ /vagrant/node_modules
 
 sudo npm install -g i18next-extract-gettext grunt-cli
 npm install 
