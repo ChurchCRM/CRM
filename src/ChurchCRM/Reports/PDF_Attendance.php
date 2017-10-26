@@ -57,7 +57,7 @@ class PDF_Attendance extends ChurchInfoReport
         $numMembers = 0;
         $aNameCount = 0;
         
-        $MaxLinesPerPage = -5*$yIncrement+66; // 36  lignes pour un yIncrement de 6, 18 lignes pour un yIncrement de 12, y=-3x+54
+        $MaxLinesPerPage = -5*$yIncrement+66; // 36  lines for a yIncrement of 6, 16 lines for a yIncrement of 10, y=-5x+66
         
         $fontTitleTitle = 16;
         
