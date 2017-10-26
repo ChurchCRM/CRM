@@ -39,7 +39,7 @@ if (!Cart::HasPeople()) {
 } else {
 
         // Create array with Classification Information (lst_ID = 1)
-        $sClassSQL = 'SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence';
+    $sClassSQL = 'SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence';
     $rsClassification = RunQuery($sClassSQL);
     unset($aClassificationName);
     $aClassificationName[0] = 'Unassigned';
@@ -48,8 +48,8 @@ if (!Cart::HasPeople()) {
         $aClassificationName[intval($lst_OptionID)] = $lst_OptionName;
     }
 
-        // Create array with Family Role Information (lst_ID = 2)
-        $sFamRoleSQL = 'SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence';
+    // Create array with Family Role Information (lst_ID = 2)
+    $sFamRoleSQL = 'SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence';
     $rsFamilyRole = RunQuery($sFamRoleSQL);
     unset($aFamilyRoleName);
     $aFamilyRoleName[0] = 'Unassigned';
@@ -205,28 +205,28 @@ if (!Cart::HasPeople()) {
                             <?php
                             LabelGroupSelect('groupbymode');
 
-            echo '  <tr><td>' . gettext('Bulk Mail Presort') . '</td>';
-            echo '  <td>';
-            echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
-            echo '  id="BulkMailPresort" value="1" ';
-            if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-                echo 'checked';
-            }
-            echo '  ><br></td></tr>';
+        echo '  <tr><td>' . gettext('Bulk Mail Presort') . '</td>';
+        echo '  <td>';
+        echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
+        echo '  id="BulkMailPresort" value="1" ';
+        if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
+            echo 'checked';
+        }
+        echo '  ><br></td></tr>';
 
-            echo '  <tr><td>' . gettext('Quiet Presort') . '</td>';
-            echo '  <td>';
-            echo '  <input ';
-            if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
-                echo 'disabled ';
-            }   // This would be better with $_SESSION variable
-            // instead of cookie ... (save $_SESSION in MySQL)
-            echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
-            echo '  id="QuietBulkMail" value="1" ';
-            if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-                echo 'checked';
-            }
-            echo '  ><br></td></tr>';
+        echo '  <tr><td>' . gettext('Quiet Presort') . '</td>';
+        echo '  <td>';
+        echo '  <input ';
+        if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
+            echo 'disabled ';
+        }   // This would be better with $_SESSION variable
+        // instead of cookie ... (save $_SESSION in MySQL)
+        echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
+        echo '  id="QuietBulkMail" value="1" ';
+        if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
+            echo 'checked';
+        }
+        echo '  ><br></td></tr>';
 
         ToParentsOfCheckBox('toparents');
         LabelSelect('labeltype');
