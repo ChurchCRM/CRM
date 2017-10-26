@@ -35,7 +35,7 @@ $app->group('/cart', function () {
         Cart::EmptyToGroup($cartPayload->groupID, $cartPayload->groupRoleID);
         return $response->withJson([
             'status' => "success",
-            'message' => $iCount.' records(s) successfully added to selected Group.'
+            'message' => $iCount.' '.gettext('records(s) successfully added to selected Group.')
         ]);
     });
 

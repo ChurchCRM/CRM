@@ -57,11 +57,11 @@ $("document").ready(function(){
         }
     });
     $(".multiSearch").on("select2:select",function (e) { window.location.href= e.params.data.uri;});
-    
+
     window.CRM.system.runTimerJobs();
-    
-    $(".date-picker").datepicker({format:'yyyy-mm-dd', language: window.CRM.lang});
-    
+       
+    $(".date-picker").datepicker({format:window.CRM.datePickerformat, language: window.CRM.lang});
+
   
     $(".initials-image").initial();
     $(".maxUploadSize").text(window.CRM.maxUploadSize);

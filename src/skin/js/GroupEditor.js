@@ -212,7 +212,12 @@ $("document").ready(function()
         render: function(data, type, full, meta)
         {
           if(type === 'display')
-            return '<input type="text" class="roleName" id="roleName-' + full.lst_OptionID + '" value="' + data + '">';
+          {
+          	if (data === 'Student' || data === 'Teacher')
+	            return '<input type="text" class="roleName" id="roleName-' + full.lst_OptionID + '" value="' + i18next.t(data) + '" readonly>';
+	          else
+	          	return '<input type="text" class="roleName" id="roleName-' + full.lst_OptionID + '" value="' + data + '">';
+          }
           else
             return data;
         }
@@ -264,7 +269,10 @@ $("document").ready(function()
         title: i18next.t("Delete"),
         render: function(data, type, full, meta)
         {
-          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole">'+i18next.t("Delete")+'</button>';
+        	if (full.lst_OptionName === 'Student' || full.lst_OptionName === 'Teacher' )
+	          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole" disabled>'+i18next.t("Delete")+'</button>';
+	        else
+	          return '<button type="button" id="roleDelete-' + full.lst_OptionID + '" class="btn btn-danger deleteRole">'+i18next.t("Delete")+'</button>';
 
         }
       },

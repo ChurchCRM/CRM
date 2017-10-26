@@ -15,7 +15,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
 
 if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
- Redirect('CheckVersion.php');
+    Redirect('CheckVersion.php');
     exit;
 }
 
