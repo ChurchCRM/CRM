@@ -34,7 +34,7 @@ if (isset($_POST['save'])) {
     ksort($type);
     reset($type);
 
-    $iHTMLHeaderRow = SystemConfig::getValue('sHeader');
+    $iHTMLHeaderRow = 53;
 
     while ($current_type = current($type)) {
         $id = key($type);
