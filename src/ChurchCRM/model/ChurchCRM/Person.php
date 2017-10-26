@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -89,7 +90,14 @@ class Person extends BasePerson implements iPhoto
 
     public function postInsert(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote(true);
+      $this->createTimeLineNote(true);
+      if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
+      {
+        $NotificationEmail = new NewPersonOrFamilyEmail($this);
+        if (!$NotificationEmail->send()) {
+          $logger->warn($NotificationEmail->getError());
+        }
+      }
     }
 
     public function postUpdate(ConnectionInterface $con = null)
@@ -436,5 +444,4 @@ class Person extends BasePerson implements iPhoto
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
-
 }
