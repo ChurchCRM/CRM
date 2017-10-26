@@ -6,7 +6,12 @@ use ChurchCRM\GroupQuery;
 
 $app->group('/groups', function () {
     $this->get('/', function () {
-        echo GroupQuery::create()->find()->toJSON();
+        $role = $_REQUEST;
+        
+        if (!strcmp($role,'3000'))// all the groups 
+        	echo GroupQuery::create()->find()->toJSON();
+        else         
+        	echo GroupQuery::create()->filterByDefaultRole($role)->find()->toJSON();
     });
 
     $this->get('/groupsInCart', function () {
@@ -61,6 +66,27 @@ $app->group('/groups', function () {
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->findByGroupId($groupID);
+            
+        // we loop to find the information in the family to add adresses etc ...
+        foreach ($members as $member)
+        {
+        	$p_ID = $member->getPersonId();  
+                		      	
+        	$p = $member->getPerson();
+			$fam = $p->getFamily();   
+			
+			// this is usefull when a person don't have a family : ie not a address
+			if ($fam)
+        	{
+				$p->setAddress1 ($fam->getAddress1());
+				$p->setAddress2 ($fam->getAddress2());
+			
+				$p->setCity($fam->getCity());
+				$p->setState($fam->getState());
+				$p->setZip($fam->getZip());    
+			}    	
+        }
+        
         echo $members->toJSON();
     });
     
