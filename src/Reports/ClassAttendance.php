@@ -114,12 +114,12 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $bFirstTeacher = false;
                                 
                 $person = PersonQuery::create()->findPk($per_ID);
-    	        $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(),"",$person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
+                $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
             } elseif ($lst_OptionName == 'Student') {
-                $aStudents[$iStudentCnt] = $ga[$row];  
+                $aStudents[$iStudentCnt] = $ga[$row];
 
                 $person = PersonQuery::create()->findPk($per_ID);
-    	        $aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(),"",$person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
+                $aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
             }
         }
         
@@ -150,18 +150,19 @@ for ($i = 0; $i < $nGrps; $i++) {
         $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('Students'), $iExtraStudents,
                                    $tFirstSunday, $tLastSunday,
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                				   $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
+                                   $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
         
         
-		// we start a new page
-		if ($y > $yTeachers+10)
-	        $pdf->AddPage();
-                										
-        $y = $yTeachers;        
+        // we start a new page
+        if ($y > $yTeachers+10) {
+            $pdf->AddPage();
+        }
+                                                        
+        $y = $yTeachers;
         $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aTeachers, gettext('Teachers'), $iExtraTeachers,
                               $tFirstSunday, $tLastSunday,
                               $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                			  $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '',$aTeachersIMG,$withPictures);
+                              $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '', $aTeachersIMG, $withPictures);
     } else {
         //
         // print all roles on the attendance sheet
@@ -173,7 +174,7 @@ for ($i = 0; $i < $nGrps; $i++) {
             $aStudents[$iStudentCnt] = $ga[$row];
             
             $person = PersonQuery::create()->findPk($per_ID);
-            $aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(),"",$person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
+            $aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
         }
 
         $pdf->SetFont('Times', 'B', 12);
@@ -183,7 +184,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('All Members'), $iExtraStudents+$iExtraTeachers,
                                    $tFirstSunday, $tLastSunday,
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                										$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
+                                                        $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
     }
 }
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
