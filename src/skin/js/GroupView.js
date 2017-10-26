@@ -36,7 +36,8 @@ $(document).ready(function () {
         var idKey = 1;
         var results = new Array();
         data = JSON.parse(rdata);
-        $.each(data[0].persons, function (index, cvalue) {
+        
+        $.each(data[0][Object.keys(data[0])], function (index, cvalue) {
           var childObject = {
             id: idKey,
             objid: cvalue.id,
