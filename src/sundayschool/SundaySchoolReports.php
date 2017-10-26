@@ -179,7 +179,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
             echo '<input type="checkbox" Name="allroles" value="1" checked>';
             echo gettext('List all Roles (unchecked will list Teacher/Student roles only)')."<br>";
             echo '<input type="checkbox" Name="withPictures" value="1" checked>';
-            echo gettext('Face Book');
+            echo gettext('Facebook');
             ?>
           </td>
         </tr>
