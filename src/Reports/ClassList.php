@@ -76,7 +76,8 @@ $bFirstTeacher1 = true;
 $bFirstTeacher2 = true;
 for ($row = 0; $row < $numMembers; $row++) {
     extract($ga[$row]);
-    if ($lst_OptionName == gettext('Teacher')) {
+    
+    if ($lst_OptionName == 'Teacher') {
         $phone = $pdf->StripPhone($fam_HomePhone);
         if ($teacherCount >= $teachersThatFit) {
             if (!$bFirstTeacher2) {
@@ -124,13 +125,13 @@ $prevStudentName = '';
 for ($row = 0; $row < $numMembers; $row++) {
     extract($ga[$row]);
 
-    if ($lst_OptionName == gettext('Student')) {
+    if ($lst_OptionName == 'Student') {
         $studentName = ($per_LastName.', '.$per_FirstName);
-
+        
         if ($studentName != $prevStudentName) {
             $pdf->WriteAt($nameX, $y, $studentName);
 
-            $birthdayStr = $per_BirthMonth.'-'.$per_BirthDay.'-'.$per_BirthYear;
+            $birthdayStr = change_date_for_place_holder($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay);
             $pdf->WriteAt($birthdayX, $y, $birthdayStr);
         }
 
