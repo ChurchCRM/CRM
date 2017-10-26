@@ -28,10 +28,10 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 			
 			$data = [];
 		
-			$i = 2;
+			$id = 2;
 		
 			foreach ($people as $person) {
-				$elt = ['id'=>$i++,
+				$elt = ['id'=>$id++,
 						'text'=>$person->getFirstName()." ".$person->getLastName(),
 						'uri'=>$person->getViewURI()];
 					
