@@ -20,6 +20,7 @@ $(document).ready(function () {
 
   $(".personSearch").select2({
     minimumInputLength: 2,
+    language: window.CRM.shortLocale,
     ajax: {
       url: function (params) {
         return window.CRM.root + "/api/persons/search/" + params.term;
@@ -37,7 +38,7 @@ $(document).ready(function () {
         var results = new Array();
         data = JSON.parse(rdata);
         
-        $.each(data[0][Object.keys(data[0])], function (index, cvalue) {
+        $.each(data[0].Persons, function (index, cvalue) {
           var childObject = {
             id: idKey,
             objid: cvalue.id,
@@ -68,6 +69,7 @@ $(document).ready(function () {
         return {results: p};
       }
     },
+    language: window.CRM.shortLocale,
     minimumResultsForSearch: Infinity
   });
 
