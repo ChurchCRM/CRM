@@ -62,7 +62,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     }
     
     //Person Search by adresses
-    if (SystemConfig::getBooleanValue("bSearchIncludePersons")) {
+    if (SystemConfig::getBooleanValue("bSearchIncludeAdresses")) {
         try {
         	$searchLikeString = '%'.$query.'%';
 					$families = FamilyQuery::create()->
