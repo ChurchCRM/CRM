@@ -34,21 +34,7 @@ $(document).ready(function () {
         };
       },
       processResults: function (rdata, page) {
-        var idKey = 1;
-        var results = new Array();
-        data = JSON.parse(rdata);
-        
-        $.each(data[0].Persons, function (index, cvalue) {
-          var childObject = {
-            id: idKey,
-            objid: cvalue.id,
-            text: cvalue.displayName,
-            uri: cvalue.uri
-          };
-          idKey++;
-          results.push(childObject);
-        });
-        return {results: results};
+        return {results: rdata};
       },
       cache: true
     }
