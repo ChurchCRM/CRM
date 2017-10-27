@@ -24,6 +24,9 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						filterByFirstName($searchLikeString, Criteria::LIKE)->
 							_or()->filterByLastName($searchLikeString, Criteria::LIKE)->
 							_or()->filterByEmail($searchLikeString, Criteria::LIKE)->
+							_or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
+							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
+							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
 						limit(15)->find();
 			
 		
@@ -107,10 +110,12 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     if (SystemConfig::getBooleanValue("bSearchIncludeFamilies")) {
         try {
           $results = [];
-          $families = FamilyQuery::create()
-              ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
-              ->limit(15)
-              ->find();
+          $families = FamilyQuery::create()->
+          		filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)->
+              _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
+							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
+							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
+              limit(15)->find();
 
 					if (count($families))
 					{
