@@ -27,7 +27,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 							_or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
-						limit(15)->find();
+						limit(SystemConfig::getValue("bSearchIncludePersonsNumbers"))->find();
 			
 		
 					if (count($people))
@@ -71,7 +71,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						_or()->filterByAddress2($searchLikeString, Criteria::LIKE)->
 						_or()->filterByZip($searchLikeString, Criteria::LIKE)->
 						_or()->filterByState($searchLikeString, Criteria::LIKE)->
-						limit(15)->find();
+						limit(SystemConfig::getValue("bSearchIncludeAdressesNumbers"))->find();
 			
 					if (count($families))
 					{					
@@ -115,7 +115,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
               _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
-              limit(15)->find();
+              limit(SystemConfig::getValue("bSearchIncludeFamiliesNumbers"))->find();
 
 					if (count($families))
 					{
@@ -154,7 +154,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         try {
             $groups = GroupQuery::create()
                 ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
-                ->limit(15)
+                ->limit(SystemConfig::getValue("bSearchIncludeGroupsNumbers"))
                 ->withColumn('grp_Name', 'displayName')
                 ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/GroupView.php?GroupID=",Group.Id)', 'uri')
                 ->select(['displayName', 'uri'])
@@ -207,7 +207,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                     ->endUse()
                     ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
                     ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
-                    ->limit(5);
+                    ->limit(SystemConfig::getValue("bSearchIncludeDepositsNumbers"));
               
               if (count($Deposits))
 							{      
