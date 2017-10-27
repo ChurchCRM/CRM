@@ -66,6 +66,8 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						filterByCity($searchLikeString, Criteria::LIKE)->
 						_or()->filterByAddress1($searchLikeString, Criteria::LIKE)->
 						_or()->filterByAddress2($searchLikeString, Criteria::LIKE)->
+						_or()->filterByZip($searchLikeString, Criteria::LIKE)->
+						_or()->filterByState($searchLikeString, Criteria::LIKE)->
 						limit(15)->find();
 			
 					if (count($families))
