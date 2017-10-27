@@ -26,12 +26,12 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 							_or()->filterByEmail($searchLikeString, Criteria::LIKE)->
 						limit(15)->find();
 			
-					$data = [];
-		
-					$id++;
 		
 					if (count($people))
-						{
+					{
+						$data = [];
+						$id++;
+						
 						foreach ($people as $person) {
 							$elt = ['id'=>$id++,
 									'text'=>$person->getFirstName()." ".$person->getLastName(),
@@ -47,6 +47,48 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 							$dataPerson = ['children' => $data,
 							'id' => 0,
 							'text' => gettext('Persons')];
+					
+							$resultsArray = array ($dataPerson);
+
+							$id+=count($arr);
+						}
+					}
+        } catch (Exception $e) {
+            $this->Logger->warn($e->getMessage());
+        }
+    }
+    
+    //Person Search by adresses
+    if (SystemConfig::getBooleanValue("bSearchIncludePersons")) {
+        try {
+        	$searchLikeString = '%'.$query.'%';
+					$families = FamilyQuery::create()->
+						filterByCity($searchLikeString, Criteria::LIKE)->
+						_or()->filterByAddress1($searchLikeString, Criteria::LIKE)->
+						_or()->filterByAddress2($searchLikeString, Criteria::LIKE)->
+						limit(15)->find();
+			
+					if (count($families))
+					{					
+						$data = [];
+						$id++;
+					
+						foreach ($families as $family) {
+							$elt = ['id'=>$id++,
+									'text'=>$family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
+									'uri'=>SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $family->getId()
+							];
+					
+							array_push($data, $elt);
+						}        	
+			
+						$c = count($data);
+			
+						if ($c > 0)
+						{
+							$dataPerson = ['children' => $data,
+							'id' => 1,
+							'text' => gettext('Adresses')];
 					
 							$resultsArray = array ($dataPerson);
 
@@ -70,9 +112,8 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 
 					if (count($families))
 					{
-							$id++;
-					
-							$data = []; 
+						$data = []; 
+						$id++;					
 					
 						foreach ($families as $family)
 						{          					
@@ -82,14 +123,19 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 								"uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $family->getId()
 							];
 					
-						array_push($data,$searchArray);
+							array_push($data,$searchArray);
 						}
+						
+						$c = count($data);
 			
-						$dataFamilies = ['children' => $data,
-								'id' => 1,
+						if ($c > 0)
+						{
+							$dataFamilies = ['children' => $data,
+								'id' => 2,
 								'text' => gettext('Families')];
 			
-						array_push($resultsArray, $dataFamilies);
+							array_push($resultsArray, $dataFamilies);
+						}
 					}
         } catch (Exception $e) {
             $this->Logger->warn($e->getMessage());
@@ -107,26 +153,31 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                 ->select(['displayName', 'uri'])
                 ->find();
             
-            $data = [];   
             
             if (count($groups))
 						{ 
-									$id++;
+	            $data = [];   
+							$id++;
 							
-									foreach ($groups as $group) {
-							$elt = ['id'=>$id++,
-								'text'=>$group['displayName'],
-								'uri'=>$group['uri']];
+							foreach ($groups as $group) {
+								$elt = ['id'=>$id++,
+									'text'=>$group['displayName'],
+									'uri'=>$group['uri']];
 					
-							array_push($data, $elt);
-						}
+								array_push($data, $elt);
+							}
 			
-						$dataGroup = ['children' => $data,
-								'id' => 2,
-								'text' => gettext('Groups')];
+							$c = count($data);
+			
+							if ($c > 0)
+							{
+								$dataGroup = ['children' => $data,
+									'id' => 3,
+									'text' => gettext('Groups')];
 	
-						array_push($resultsArray, $dataGroup);
-					}
+							array_push($resultsArray, $dataGroup);
+							}
+						}
         } catch (Exception $e) {
             $this->Logger->warn($e->getMessage());
         }
@@ -150,30 +201,31 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                     ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
                     ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
                     ->limit(5);
-                    
-              $data = [];   
-            
-							$id++;
+              
+              if (count($Deposits))
+							{      
+								$data = [];               
+								$id++;				
+							
+								foreach ($Deposits as $Deposit) {
 				
-							$realCount = 0;			
-							foreach ($Deposits as $Deposit) {
+									$elt = ['id'=>$id++,
+										'text'=>$Deposit['displayName'],
+										'uri'=>$Deposit['uri']];
 				
-								$elt = ['id'=>$id++,
-									'text'=>$Deposit['displayName'],
-									'uri'=>$Deposit['uri']];
+									array_push($data, $elt);
+								}
 				
-								array_push($data, $elt);
-					
-								$realCount++;
-							}
-				
-							if ($realCount>0)
-							{
-								$dataDeposit = ['children' => $data,
-								'id' => 3,
-								'text' => gettext('Deposits')];
+								$c = count($data);
+			
+								if ($c > 0)
+								{
+									$dataDeposit = ['children' => $data,
+									'id' => 4,
+									'text' => gettext('Deposits')];
 
-								array_push($resultsArray, $dataDeposit);
+									array_push($resultsArray, $dataDeposit);
+								}
 							}
 						} catch (Exception $e) {
 								$this->Logger->warn($e->getMessage());
@@ -186,29 +238,29 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						try {
 							$Payments = $this->FinancialService->searchPayments($query);
 									
-							$data = [];   
-						
-							$id++;
+							if (count($Deposits))
+							{  
+								$data = [];   
+								$id++;
 				
-							$realCount = 0;			
-							foreach ($Payments as $Payment) {
+								foreach ($Payments as $Payment) {
+									$elt = ['id'=>$id++,
+										'text'=>$Payment['displayName'],
+										'uri'=>$Payment['uri']];
 				
-								$elt = ['id'=>$id++,
-									'text'=>$Payment['displayName'],
-									'uri'=>$Payment['uri']];
+									array_push($data, $elt);
+								}
 				
-								array_push($data, $elt);
-					
-								$realCount++;
-							}
-				
-							if ($realCount>0)
-							{
-								$dataPayements = ['children' => $data,
-								'id' => 4,
-								'text' => gettext('Payments')];
+								$c = count($data);
+			
+								if ($c > 0)
+								{
+									$dataPayements = ['children' => $data,
+									'id' => 5,
+									'text' => gettext('Payments')];
 
-								array_push($resultsArray, $dataPayements);
+									array_push($resultsArray, $dataPayements);
+								}
 							}
 				
             } catch (Exception $e) {
@@ -216,7 +268,6 @@ $app->get('/search/{query}', function ($request, $response, $args) {
             }
         }
     }
-
     
     return $response->withJson(array_filter($resultsArray));
 });
