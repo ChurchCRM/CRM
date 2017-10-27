@@ -20,43 +20,45 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     if (SystemConfig::getBooleanValue("bSearchIncludePersons")) {
         try {
         	$searchLikeString = '%'.$query.'%';
-			$people = PersonQuery::create()->
-				filterByFirstName($searchLikeString, Criteria::LIKE)->
-					_or()->filterByLastName($searchLikeString, Criteria::LIKE)->
-					_or()->filterByEmail($searchLikeString, Criteria::LIKE)->
-				limit(15)->find();
+					$people = PersonQuery::create()->
+						filterByFirstName($searchLikeString, Criteria::LIKE)->
+							_or()->filterByLastName($searchLikeString, Criteria::LIKE)->
+							_or()->filterByEmail($searchLikeString, Criteria::LIKE)->
+						limit(15)->find();
 			
-			$data = [];
+					$data = [];
 		
-			$id = 2;
+					$id++;
 		
-			foreach ($people as $person) {
-				$elt = ['id'=>$id++,
-						'text'=>$person->getFirstName()." ".$person->getLastName(),
-						'uri'=>$person->getViewURI()];
+					if (count($people))
+						{
+						foreach ($people as $person) {
+							$elt = ['id'=>$id++,
+									'text'=>$Person->getFullName(),
+									'uri'=>$person->getViewURI()];
 					
-				array_push($data, $elt);
-			}        	
-        	
-        	$c = count($data);
-        	
-        	if ($c >0)
-        	{
-				$dataPerson = ['children' => $data,
-				'id' => 0,
-				'text' => gettext('Persons')];
+							array_push($data, $elt);
+						}        	
+			
+						$c = count($data);
+			
+						if ($c >0)
+						{
+							$dataPerson = ['children' => $data,
+							'id' => 0,
+							'text' => gettext('Persons')];
 					
-				$resultsArray = array ($dataPerson);
+							$resultsArray = array ($dataPerson);
 
-				$id+=count($arr);			
-			}
+							$id+=count($arr);			
+						}
+					}
         } catch (Exception $e) {
             $this->Logger->warn($e->getMessage());
-        }
+      	}
     }
     
-    
-     //family search
+    //family search
     if (SystemConfig::getBooleanValue("bSearchIncludeFamilies")) {
         try {
           $results = [];
@@ -65,34 +67,35 @@ $app->get('/search/{query}', function ($request, $response, $args) {
               ->limit(15)
               ->find();
 
-		  if (count($families))
-		  {
-		  	  $id++;
-		  	  
-		  	  $data = []; 
-		  	  
-			  foreach ($families as $family)
-			  {          					
-  				  $searchArray=[
-					  "id" => $id++,
-					  "text" => $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-					  "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $family->getId()
-				  ];
-				  
-				array_push($data,$searchArray);
-			  }
-		  
-			  $dataFamilies = ['children' => $data,
-				'id' => 1,
-				'text' => gettext('families')];
-		  
-			  array_push($resultsArray, $dataFamilies);
-			}
+					if (count($families))
+					{
+						$id++;
+					
+						$data = []; 
+					
+						foreach ($families as $family)
+						{          					
+								$searchArray=[
+								"id" => $id++,
+								"text" => $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
+								"uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $family->getId()
+							];
+					
+							array_push($data,$searchArray);
+						}
+			
+						$dataFamilies = ['children' => $data,
+						'id' => 1,
+						'text' => gettext('Families')];
+			
+						array_push($resultsArray, $dataFamilies);
+					}
         } catch (Exception $e) {
             $this->Logger->warn($e->getMessage());
         }
     }
     
+    // Group search
     if (SystemConfig::getBooleanValue("bSearchIncludeGroups")) {
         try {
             $groups = GroupQuery::create()
@@ -105,24 +108,24 @@ $app->get('/search/{query}', function ($request, $response, $args) {
             
             $data = [];   
             
-            if (count($groups))
-		  	{ 
-            	$id++;
-            	
-            	foreach ($groups as $group) {
-					$elt = ['id'=>$id++,
-						'text'=>$group['displayName'],
-						'uri'=>$group['uri']];
+						if (count($groups))
+						{ 
+							$id++;
+							
+							foreach ($groups as $group) {
+							$elt = ['id'=>$id++,
+								'text'=>$group['displayName'],
+								'uri'=>$group['uri']];
 					
-					array_push($data, $elt);
-				}
+							array_push($data, $elt);
+						}
 			
-				$dataGroup = ['children' => $data,
-				'id' => 2,
-				'text' => gettext('Groups')];
+						$dataGroup = ['children' => $data,
+						'id' => 2,
+						'text' => gettext('Groups')];
 	
-				array_push($resultsArray, $dataGroup);
-			}
+						array_push($resultsArray, $dataGroup);
+					}
         } catch (Exception $e) {
             $this->Logger->warn($e->getMessage());
         }
@@ -134,21 +137,9 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         //Deposits Search
         if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) 
         {
-            try {
-                /*$q = DepositQuery::create();
-                $q->filterByComment("%$query%", Criteria::LIKE)
-                    ->_or()
-                    ->filterById($query)
-                    ->_or()
-                    ->usePledgeQuery()
-                    ->filterByCheckno("%$query%", Criteria::LIKE)
-                    ->endUse()
-                    ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
-                    ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
-                    ->limit(5);
-                array_push($resultsArray, $q->find()->toJSON());*/
-                $Deposits = DepositQuery::create();
-                $Deposits->filterByComment("%$query%", Criteria::LIKE)
+          try {
+            $Deposits = DepositQuery::create();
+            $Deposits->filterByComment("%$query%", Criteria::LIKE)
                     ->_or()
                     ->filterById($query)
                     ->_or()
@@ -159,30 +150,30 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                     ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
                     ->limit(5);
                     
-                $data = [];   
+              $data = [];   
             
-				$id++;
+							$id++;
 				
-				$realCount = 0;			
-				foreach ($Deposits as $Deposit) {
+							$realCount = 0;			
+							foreach ($Deposits as $Deposit) {
 				
-					$elt = ['id'=>$id++,
-						'text'=>$Deposit['displayName'],
-						'uri'=>$Deposit['uri']];
+								$elt = ['id'=>$id++,
+									'text'=>$Deposit['displayName'],
+									'uri'=>$Deposit['uri']];
 				
-					array_push($data, $elt);
+								array_push($data, $elt);
 					
-					$realCount++;
-				}
+								$realCount++;
+							}
 				
-				if ($realCount>0)
-				{
-					$dataDeposit = ['children' => $data,
-					'id' => 3,
-					'text' => gettext('Deposits')];
+							if ($realCount>0)
+							{
+								$dataDeposit = ['children' => $data,
+								'id' => 3,
+								'text' => gettext('Deposits')];
 
-					array_push($resultsArray, $dataDeposit);
-				}
+								array_push($resultsArray, $dataDeposit);
+							}
             } catch (Exception $e) {
                 $this->Logger->warn($e->getMessage());
             }
@@ -192,33 +183,32 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         if (SystemConfig::getBooleanValue("bSearchIncludePayments")) 
         {
             try {
-            	//array_push($resultsArray, $this->FinancialService->getPaymentJSON($this->FinancialService->searchPayments($query)));
             	$Payments = $this->FinancialService->searchPayments($query);
                     
-                $data = [];   
+              $data = [];   
             
-				$id++;
+							$id++;
 				
-				$realCount = 0;			
-				foreach ($Payments as $Payment) {
+							$realCount = 0;			
+							foreach ($Payments as $Payment) {
 				
-					$elt = ['id'=>$id++,
-						'text'=>$Payment['displayName'],
-						'uri'=>$Payment['uri']];
+								$elt = ['id'=>$id++,
+									'text'=>$Payment['displayName'],
+									'uri'=>$Payment['uri']];
 				
-					array_push($data, $elt);
+								array_push($data, $elt);
 					
-					$realCount++;
-				}
+								$realCount++;
+							}
 				
-				if ($realCount>0)
-				{
-					$dataPayements = ['children' => $data,
-					'id' => 4,
-					'text' => gettext('Payments')];
+							if ($realCount>0)
+							{
+								$dataPayements = ['children' => $data,
+								'id' => 4,
+								'text' => gettext('Payments')];
 
-					array_push($resultsArray, $dataPayements);
-				}
+								array_push($resultsArray, $dataPayements);
+							}
 				
             } catch (Exception $e) {
                 $this->Logger->warn($e->getMessage());
