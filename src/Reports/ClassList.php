@@ -135,46 +135,43 @@ for ($row = 0; $row < $numMembers; $row++) {
             $pdf->WriteAt($nameX, $y, $studentName);
             
             $person = PersonQuery::create()->findPk($per_ID);
-            $imgName = str_replace(SystemURLs::getDocumentRoot(),"",$person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
+            $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
             
             //echo $imgName."<br>";
             
             $birthdayStr = change_date_for_place_holder($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay);
             $pdf->WriteAt($birthdayX, $y, $birthdayStr);
 
-            if ($withPictures)
-            {   
-            
-            	$imageHeight=9;
-            	
-            	$nameX-=2;
-            	$y-=2;
-            	          
-          		$pdf->SetLineWidth(0.25);
-							$pdf->Line($nameX-$imageHeight,$y,$nameX,$y);
-							$pdf->Line($nameX-$imageHeight,$y+$imageHeight,$nameX,$y+$imageHeight);
-							$pdf->Line($nameX-$imageHeight,$y,$nameX,$y);
-							$pdf->Line($nameX-$imageHeight,$y,$nameX-$imageHeight,$y+$imageHeight);
-							$pdf->Line($nameX,$y,$nameX,$y+$imageHeight);
-					
-							// we build the cross in the case of there's no photo
-							//$this->SetLineWidth(0.25);
-							$pdf->Line($nameX-$imageHeight,$y+$imageHeight,$nameX,$y);
-							$pdf->Line($nameX-$imageHeight,$y,$nameX,$y+$imageHeight);
-							
-							if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($_SERVER['DOCUMENT_ROOT'].$imgName))
-							{
-								list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$img);
-								$factor = 8/$height;
-								$nw = $imageHeight;
-								$nh = $imageHeight;
-						
-								$pdf->Image('https://'.$_SERVER['HTTP_HOST'].$imgName, $nameX-$nw , $y, $nw,$nh,'PNG');
-							}
-							
-							$nameX+=2;
-							$y+=2;
-						}
+            if ($withPictures) {
+                $imageHeight=9;
+                
+                $nameX-=2;
+                $y-=2;
+                          
+                $pdf->SetLineWidth(0.25);
+                $pdf->Line($nameX-$imageHeight, $y, $nameX, $y);
+                $pdf->Line($nameX-$imageHeight, $y+$imageHeight, $nameX, $y+$imageHeight);
+                $pdf->Line($nameX-$imageHeight, $y, $nameX, $y);
+                $pdf->Line($nameX-$imageHeight, $y, $nameX-$imageHeight, $y+$imageHeight);
+                $pdf->Line($nameX, $y, $nameX, $y+$imageHeight);
+                    
+                // we build the cross in the case of there's no photo
+                //$this->SetLineWidth(0.25);
+                $pdf->Line($nameX-$imageHeight, $y+$imageHeight, $nameX, $y);
+                $pdf->Line($nameX-$imageHeight, $y, $nameX, $y+$imageHeight);
+                            
+                if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($_SERVER['DOCUMENT_ROOT'].$imgName)) {
+                    list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$img);
+                    $factor = 8/$height;
+                    $nw = $imageHeight;
+                    $nh = $imageHeight;
+                        
+                    $pdf->Image('https://'.$_SERVER['HTTP_HOST'].$imgName, $nameX-$nw, $y, $nw, $nh, 'PNG');
+                }
+                            
+                $nameX+=2;
+                $y+=2;
+            }
         }
 
         $parentsStr = $pdf->MakeSalutation($fam_ID);
