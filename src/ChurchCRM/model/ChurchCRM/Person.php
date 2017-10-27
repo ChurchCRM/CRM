@@ -199,7 +199,7 @@ class Person extends BasePerson implements iPhoto
             }
         } else {
         	// Philippe Logel : this is usefull when a person don't have a family : ie not an address
-        	if ($this->getFamily())
+        	if (!empty($this->getFamily()))
         	{
 				if (!$this->getFamily()->hasLatitudeAndLongitude()) {
 					$this->getFamily()->updateLanLng();
