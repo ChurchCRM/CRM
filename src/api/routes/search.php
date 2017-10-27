@@ -34,7 +34,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						{
 						foreach ($people as $person) {
 							$elt = ['id'=>$id++,
-									'text'=>$Person->getFullName(),
+									'text'=>$person->getFirstName()." ".$person->getLastName(),
 									'uri'=>$person->getViewURI()];
 					
 							array_push($data, $elt);
@@ -42,7 +42,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 			
 						$c = count($data);
 			
-						if ($c >0)
+						if ($c > 0)
 						{
 							$dataPerson = ['children' => $data,
 							'id' => 0,
@@ -55,8 +55,9 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 					}
         } catch (Exception $e) {
             $this->Logger->warn($e->getMessage());
-      	}
+        }
     }
+    
     
     //family search
     if (SystemConfig::getBooleanValue("bSearchIncludeFamilies")) {
@@ -69,9 +70,9 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 
 					if (count($families))
 					{
-						$id++;
+							$id++;
 					
-						$data = []; 
+							$data = []; 
 					
 						foreach ($families as $family)
 						{          					
@@ -81,12 +82,12 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 								"uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $family->getId()
 							];
 					
-							array_push($data,$searchArray);
+						array_push($data,$searchArray);
 						}
 			
 						$dataFamilies = ['children' => $data,
-						'id' => 1,
-						'text' => gettext('Families')];
+								'id' => 1,
+								'text' => gettext('Families')];
 			
 						array_push($resultsArray, $dataFamilies);
 					}
@@ -95,7 +96,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         }
     }
     
-    // Group search
+    // Group Search
     if (SystemConfig::getBooleanValue("bSearchIncludeGroups")) {
         try {
             $groups = GroupQuery::create()
@@ -108,11 +109,11 @@ $app->get('/search/{query}', function ($request, $response, $args) {
             
             $data = [];   
             
-						if (count($groups))
+            if (count($groups))
 						{ 
-							$id++;
+									$id++;
 							
-							foreach ($groups as $group) {
+									foreach ($groups as $group) {
 							$elt = ['id'=>$id++,
 								'text'=>$group['displayName'],
 								'uri'=>$group['uri']];
@@ -121,8 +122,8 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						}
 			
 						$dataGroup = ['children' => $data,
-						'id' => 2,
-						'text' => gettext('Groups')];
+								'id' => 2,
+								'text' => gettext('Groups')];
 	
 						array_push($resultsArray, $dataGroup);
 					}
@@ -138,8 +139,8 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) 
         {
           try {
-            $Deposits = DepositQuery::create();
-            $Deposits->filterByComment("%$query%", Criteria::LIKE)
+              $Deposits = DepositQuery::create();
+              $Deposits->filterByComment("%$query%", Criteria::LIKE)
                     ->_or()
                     ->filterById($query)
                     ->_or()
@@ -174,19 +175,19 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 
 								array_push($resultsArray, $dataDeposit);
 							}
-            } catch (Exception $e) {
-                $this->Logger->warn($e->getMessage());
-            }
-        }
+						} catch (Exception $e) {
+								$this->Logger->warn($e->getMessage());
+						}
+					}
 
-        //Search Payments
-        if (SystemConfig::getBooleanValue("bSearchIncludePayments")) 
-        {
-            try {
-            	$Payments = $this->FinancialService->searchPayments($query);
-                    
-              $data = [];   
-            
+					//Search Payments
+					if (SystemConfig::getBooleanValue("bSearchIncludePayments")) 
+					{
+						try {
+							$Payments = $this->FinancialService->searchPayments($query);
+									
+							$data = [];   
+						
 							$id++;
 				
 							$realCount = 0;			
