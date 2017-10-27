@@ -15,11 +15,14 @@ require '../Include/GetGroupArray.php';
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\PersonQuery;
 
 $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 $iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
 $dFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
 $dLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
+$withPictures = InputUtils::LegacyFilterInput($_GET['pictures']);
 
 class PDF_ClassList extends ChurchInfoReport
 {
@@ -76,7 +79,8 @@ $bFirstTeacher1 = true;
 $bFirstTeacher2 = true;
 for ($row = 0; $row < $numMembers; $row++) {
     extract($ga[$row]);
-    if ($lst_OptionName == gettext('Teacher')) {
+    
+    if ($lst_OptionName == 'Teacher') {
         $phone = $pdf->StripPhone($fam_HomePhone);
         if ($teacherCount >= $teachersThatFit) {
             if (!$bFirstTeacher2) {
@@ -124,14 +128,53 @@ $prevStudentName = '';
 for ($row = 0; $row < $numMembers; $row++) {
     extract($ga[$row]);
 
-    if ($lst_OptionName == gettext('Student')) {
-        $studentName = ($per_LastName.', '.$per_FirstName);
-
+    if ($lst_OptionName == 'Student') {
+        $studentName = ($per_LastName.','.$per_MiddleName.' '.$per_FirstName);
+        
         if ($studentName != $prevStudentName) {
             $pdf->WriteAt($nameX, $y, $studentName);
-
-            $birthdayStr = $per_BirthMonth.'-'.$per_BirthDay.'-'.$per_BirthYear;
+            
+            $person = PersonQuery::create()->findPk($per_ID);
+            $imgName = str_replace(SystemURLs::getDocumentRoot(),"",$person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
+            
+            //echo $imgName."<br>";
+            
+            $birthdayStr = change_date_for_place_holder($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay);
             $pdf->WriteAt($birthdayX, $y, $birthdayStr);
+
+            if ($withPictures)
+            {   
+            
+            	$imageHeight=9;
+            	
+            	$nameX-=2;
+            	$y-=2;
+            	          
+          		$pdf->SetLineWidth(0.25);
+							$pdf->Line($nameX-$imageHeight,$y,$nameX,$y);
+							$pdf->Line($nameX-$imageHeight,$y+$imageHeight,$nameX,$y+$imageHeight);
+							$pdf->Line($nameX-$imageHeight,$y,$nameX,$y);
+							$pdf->Line($nameX-$imageHeight,$y,$nameX-$imageHeight,$y+$imageHeight);
+							$pdf->Line($nameX,$y,$nameX,$y+$imageHeight);
+					
+							// we build the cross in the case of there's no photo
+							//$this->SetLineWidth(0.25);
+							$pdf->Line($nameX-$imageHeight,$y+$imageHeight,$nameX,$y);
+							$pdf->Line($nameX-$imageHeight,$y,$nameX,$y+$imageHeight);
+							
+							if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($_SERVER['DOCUMENT_ROOT'].$imgName))
+							{
+								list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$img);
+								$factor = 8/$height;
+								$nw = $imageHeight;
+								$nh = $imageHeight;
+						
+								$pdf->Image('https://'.$_SERVER['HTTP_HOST'].$imgName, $nameX-$nw , $y, $nw,$nh,'PNG');
+							}
+							
+							$nameX+=2;
+							$y+=2;
+						}
         }
 
         $parentsStr = $pdf->MakeSalutation($fam_ID);
@@ -158,7 +201,7 @@ for ($row = 0; $row < $numMembers; $row++) {
 }
 
 $pdf->SetFont('Times', 'B', 12);
-$pdf->WriteAt($phoneX, $y, date('d-M-Y'));
+$pdf->WriteAt($phoneX-7, $y+5, FormatDate(date('Y-m-d')));
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
