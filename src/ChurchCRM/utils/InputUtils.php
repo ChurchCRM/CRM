@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 
 class InputUtils {
   
-  private static $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6>';
+  private static $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><img>';
   
   public static function LegacyFilterInputArr($arr, $key, $type = 'string', $size = 1)
   {
