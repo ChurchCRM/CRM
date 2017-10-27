@@ -46,7 +46,7 @@ class PDF_Attendance extends ChurchInfoReport
         $dayWid = 7;
         
         if ($with_img)
-	        $yIncrement = 10; // normalement 6
+	        $yIncrement = 10; // normally 6
 	    else
 	    	$yIncrement = 6;
 	    	
