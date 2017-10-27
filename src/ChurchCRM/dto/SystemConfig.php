@@ -201,15 +201,14 @@ class SystemConfig
         "bSearchIncludeGroups" => new ConfigItem(2023, "bSearchIncludeGroups", "boolean", "1", gettext("Search Groups")),
         "bSearchIncludeDeposits" => new ConfigItem(2024, "bSearchIncludeDeposits", "boolean", "1", gettext("Search Deposits")),
         "bSearchIncludePayments" => new ConfigItem(2025, "bSearchIncludePayments", "boolean", "1", gettext("Search Payments")),
-        "bSearchIncludeAdresses" => new ConfigItem(2026, "bSearchIncludeAdresses", "boolean", "1", gettext("Search Payments")),
-        
+        "bSearchIncludeAdresses" => new ConfigItem(2026, "bSearchIncludeAdresses", "boolean", "1", gettext("Search Adresses")),        
         "bSearchIncludePersonsNumbers" => new ConfigItem(2027, "bSearchIncludePersonsNumbers", "text", "15", gettext("Search Members numbers")),
         "bSearchIncludeFamiliesNumbers" => new ConfigItem(2028, "bSearchIncludeFamiliesNumbers", "text", "15", gettext("Search Family ")),
         "bSearchIncludeFamilyHOHNumbers" => new ConfigItem(2029, "bSearchIncludeFamilyHOHNumbers", "text", "15", gettext("Show Family Head of House Names numbers")),
         "bSearchIncludeGroupsNumbers" => new ConfigItem(2030, "bSearchIncludeGroupsNumbers", "text", "15", gettext("Search Groups numbers")),
         "bSearchIncludeDepositsNumbers" => new ConfigItem(2031, "bSearchIncludeDepositsNumbers", "text", "5", gettext("Search Deposits numbers")),
         "bSearchIncludePaymentsNumbers" => new ConfigItem(2032, "bSearchIncludePaymentsNumbers", "text", "5", gettext("Search Payments numbers")),
-        "bSearchIncludeAdressesNumbers" => new ConfigItem(20233, "bSearchIncludeAdressesNumbers", "text", "15", gettext("Search Payments"))
+        "bSearchIncludeAdressesNumbers" => new ConfigItem(20233, "bSearchIncludeAdressesNumbers", "text", "15", gettext("Search Adresses numbers"))
 
     );
   }
