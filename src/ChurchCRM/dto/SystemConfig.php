@@ -159,7 +159,7 @@ class SystemConfig
         "sZeroGivers2" => new ConfigItem(1032, "sZeroGivers2", "text", "Thank you for your help in making a difference. We greatly appreciate your gift!", gettext("Verbage for bottom line of tax report.")),
         "sZeroGivers3" => new ConfigItem(1033, "sZeroGivers3", "text", "If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.", gettext("Verbage for bottom line of tax report.")),
         "sChurchChkAcctNum" => new ConfigItem(1034, "sChurchChkAcctNum", "text", "", gettext("Church Checking Account Number")),
-        "bEnableGravatarPhotos" => new ConfigItem(1035, "bEnableGravatarPhotos", "boolean", "1", gettext("lookup user images on Gravatar when no local image is present")),
+        "bEnableGravatarPhotos" => new ConfigItem(1035, "bEnableGravatarPhotos", "boolean", "0", gettext("lookup user images on Gravatar when no local image is present")),
         "bEnableExternalBackupTarget" => new ConfigItem(1036, "bEnableExternalBackupTarget", "boolean", "0", gettext("Enable Remote Backups to Cloud Services")),
         "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), "",'{"Choices":["'.gettext("WebDAV").'","'.gettext("Local").'"]}'),
         "sExternalBackupEndpoint" => new ConfigItem(1038, "sExternalBackupEndpoint", "text", "", gettext("Remote Backup Endpoint")),
