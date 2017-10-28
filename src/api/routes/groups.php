@@ -61,25 +61,24 @@ $app->group('/groups', function () {
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->findByGroupId($groupID);
+        
             
         // we loop to find the information in the family to add adresses etc ...
         foreach ($members as $member)
         {
-        	$p_ID = $member->getPersonId();  
-                		      	
         	$p = $member->getPerson();
-			$fam = $p->getFamily();   
+					$fam = $p->getFamily();   
 			
-			// Philippe Logel : this is usefull when a person don't have a family : ie not an address
-			if ($fam)
-        	{
-				$p->setAddress1 ($fam->getAddress1());
-				$p->setAddress2 ($fam->getAddress2());
+					// Philippe Logel : this is usefull when a person don't have a family : ie not an address
+					if (!empty($fam))
+					{
+						$p->setAddress1 ($fam->getAddress1());
+						$p->setAddress2 ($fam->getAddress2());
 			
-				$p->setCity($fam->getCity());
-				$p->setState($fam->getState());
-				$p->setZip($fam->getZip());    
-			}    	
+						$p->setCity($fam->getCity());
+						$p->setState($fam->getState());
+						$p->setZip($fam->getZip());    
+					}    	
         }
         
         echo $members->toJSON();
