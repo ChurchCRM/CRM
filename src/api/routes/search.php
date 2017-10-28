@@ -37,23 +37,19 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						
 						foreach ($people as $person) {
 							$elt = ['id'=>$id++,
-									'text'=>$person->getFirstName()." ".$person->getLastName(),
+									'text'=>$person->getFullName(),
 									'uri'=>$person->getViewURI()];
 					
 							array_push($data, $elt);
 						}        	
 			
-						$c = count($data);
-			
-						if ($c > 0)
+						if (!empty($data))
 						{
 							$dataPerson = ['children' => $data,
 							'id' => 0,
 							'text' => gettext('Persons')];
 					
 							$resultsArray = array ($dataPerson);
-
-							$id+=count($arr);
 						}
 					}
         } catch (Exception $e) {
@@ -65,7 +61,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     if (SystemConfig::getBooleanValue("bSearchIncludeAdresses")) {
         try {
         	$searchLikeString = '%'.$query.'%';
-					$families = FamilyQuery::create()->
+					$addresses = FamilyQuery::create()->
 						filterByCity($searchLikeString, Criteria::LIKE)->
 						_or()->filterByAddress1($searchLikeString, Criteria::LIKE)->
 						_or()->filterByAddress2($searchLikeString, Criteria::LIKE)->
@@ -73,31 +69,27 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						_or()->filterByState($searchLikeString, Criteria::LIKE)->
 						limit(SystemConfig::getValue("bSearchIncludeAdressesNumbers"))->find();
 			
-					if (count($families))
+					if (count($addresses))
 					{					
 						$data = [];
 						$id++;
 					
-						foreach ($families as $family) {
+						foreach ($addresses as $address) {
 							$elt = ['id'=>$id++,
-									'text'=>$family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-									'uri'=>SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $family->getId()
+									'text'=>$address->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
+									'uri'=>SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $address->getId()
 							];
 					
 							array_push($data, $elt);
 						}        	
 			
-						$c = count($data);
-			
-						if ($c > 0)
+						if (!empty($data))
 						{
-							$dataPerson = ['children' => $data,
+							$dataAddress = ['children' => $data,
 							'id' => 1,
 							'text' => gettext('Adresses')];
 					
-							$resultsArray = array ($dataPerson);
-
-							$id+=count($arr);			
+							array_push($resultsArray,$dataAddress);
 						}
 					}
         } catch (Exception $e) {
@@ -133,9 +125,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 							array_push($data,$searchArray);
 						}
 						
-						$c = count($data);
-			
-						if ($c > 0)
+						if (!empty($data))
 						{
 							$dataFamilies = ['children' => $data,
 								'id' => 2,
@@ -174,15 +164,13 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 								array_push($data, $elt);
 							}
 			
-							$c = count($data);
-			
-							if ($c > 0)
+							if (!empty($data))
 							{
 								$dataGroup = ['children' => $data,
 									'id' => 3,
 									'text' => gettext('Groups')];
 	
-							array_push($resultsArray, $dataGroup);
+								array_push($resultsArray, $dataGroup);
 							}
 						}
         } catch (Exception $e) {
@@ -214,8 +202,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 								$data = [];               
 								$id++;				
 							
-								foreach ($Deposits as $Deposit) {
-				
+								foreach ($Deposits as $Deposit) {				
 									$elt = ['id'=>$id++,
 										'text'=>$Deposit['displayName'],
 										'uri'=>$Deposit['uri']];
@@ -223,9 +210,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 									array_push($data, $elt);
 								}
 				
-								$c = count($data);
-			
-								if ($c > 0)
+								if (!empty($data))
 								{
 									$dataDeposit = ['children' => $data,
 									'id' => 4,
@@ -245,7 +230,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						try {
 							$Payments = $this->FinancialService->searchPayments($query);
 									
-							if (count($Deposits))
+							if (count($Payments))
 							{  
 								$data = [];   
 								$id++;
@@ -258,9 +243,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 									array_push($data, $elt);
 								}
 				
-								$c = count($data);
-			
-								if ($c > 0)
+								if (!empty($data))
 								{
 									$dataPayements = ['children' => $data,
 									'id' => 5,
