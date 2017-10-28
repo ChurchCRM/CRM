@@ -1,6 +1,3 @@
-/* this part is for futur purpose */
-window.yourGlobalVariable='3000';
-
 $(document).ready(function () {
   window.CRM.groupsInCart = 0;
   $.ajax({
@@ -47,7 +44,6 @@ $(document).ready(function () {
     ajax: {
       url: window.CRM.root + "/api/groups/",
       type: 'GET', // performing a POST request
-      data : window.yourGlobalVariable,
       dataSrc: "Groups"
     },
     columns: [
