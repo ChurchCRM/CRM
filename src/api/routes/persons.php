@@ -2,14 +2,33 @@
 
 // Person APIs
 use ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/persons', function () {
-
     // search person by Name
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
-        $data = "[" . $this->PersonService->getPersonsJSON($this->PersonService->search($query)) . "]";
-        return $response->withJson($data);
+
+    	$searchLikeString = '%'.$query.'%';
+    	$people = PersonQuery::create()->
+			filterByFirstName($searchLikeString, Criteria::LIKE)->
+			_or()->filterByLastName($searchLikeString, Criteria::LIKE)->
+			_or()->filterByEmail($searchLikeString, Criteria::LIKE)->
+      		limit(15)->find();
+        
+        $id = 1;
+        
+        $return = [];        
+        foreach ($people as $person) {
+            $values['id'] = $id++;
+            $values['objid'] = $person->getId();
+            $values['text'] = $person->getFullName();
+            $values['uri'] = $person->getViewURI();
+            
+            array_push($return, $values);
+        }
+        
+        return $response->withJson($return);    
     });
 
     $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
