@@ -76,7 +76,17 @@ $(document).ready(function () {
         title:i18next.t( 'Group Type'),
         data: 'groupType',
         defaultContent: "",
-        searchable: true
+        searchable: true,
+        render: function (data, type, full, meta) {
+					if (data)
+					{
+          	return data;
+          }
+          else
+          {
+          	return i18next.t('Unassigned');
+          }
+        }
       }
     ]
   }).on('draw.dt', function () {
