@@ -57,3 +57,5 @@ src/signatures.json
 src/integrityCheck.json
 src/tmp_attach
 src/logs/*.log
+
+error.log
