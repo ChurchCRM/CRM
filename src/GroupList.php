@@ -17,7 +17,7 @@ require 'Include/Functions.php';
 
 //Set the page title
 $sPageTitle = gettext('Group Listing');
-require 'Include/Header.php'; 
+require 'Include/Header.php';
 
 use ChurchCRM\ListOptionQuery;
 
@@ -31,10 +31,10 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 <select id="table-filter" class="form-control input-sm">
 <option value=""><?= gettext("All") ?></option>
 <?php
-		echo '<option>'.gettext("Unassigned").'</option>';
+        echo '<option>'.gettext("Unassigned").'</option>';
   foreach ($rsGroupTypes as $groupType) {
-	  echo '<option>'.$groupType->getOptionName().'</option>';
-} ?>    
+      echo '<option>'.$groupType->getOptionName().'</option>';
+  } ?>    
 </select>
 </label>
 </p>
@@ -46,7 +46,7 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 </table>
 <?php
 if ($_SESSION['bManageGroups']) {
-    ?>
+      ?>
 
 
 <br>
@@ -57,7 +57,7 @@ if ($_SESSION['bManageGroups']) {
     <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext('Add New Group') ?></button>
 </form>
 <?php
-}
+  }
 ?>
 
 </div>
