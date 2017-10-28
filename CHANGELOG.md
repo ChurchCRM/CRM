@@ -1,5 +1,7 @@
 # Changelog
 
+## 2.8.12 (18/09/2017)
+
 ## 2.8.11 (18/09/2017)
 
 #### Core Functionality
