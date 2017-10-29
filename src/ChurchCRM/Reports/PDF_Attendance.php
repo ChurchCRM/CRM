@@ -40,15 +40,15 @@ class PDF_Attendance extends ChurchInfoReport
     public function DrawAttendanceCalendar($nameX, $yTop, $aNames, $tTitle, $extraLines,
                                     $tFirstSunday, $tLastSunday,
                                     $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                    				$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $rptHeader,$imgs,$with_img)
+                    								$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $rptHeader,$imgs,$with_img)
     {
         $startMonthX = 60;
         $dayWid = 7;
         
         if ($with_img)
-	        $yIncrement = 10; // normally 6
-	    else
-	    	$yIncrement = 6;
+	        $yIncrement = 10; // normalement 6
+				else
+					$yIncrement = 6;
 	    	
         $yTitle = 20;
         $yTeachers = $yTitle + $yIncrement;
@@ -80,17 +80,17 @@ class PDF_Attendance extends ChurchInfoReport
     	$prevThisName = '';
         $aNameCount = 0;
         for ($row = 0; $row < count($aNames); $row++) {
-            extract($aNames[$row]);
-            $thisName = ($per_LastName.', '.$per_FirstName);
+        		$person = $aNames[$row];
+            $thisName = ($person->getLastName().', '.$person->getFirstName());
             
              // Special handling for person listed twice- only show once in the Attendance Calendar
              // This happens when a child is listed in two different families (parents divorced and
              // both active in the church)
-			if ($thisName != $prevThisName) {
-					$NameList[$aNameCount] = $thisName;
-					$imgList[$aNameCount++] = $imgs[$row];
-				//			echo "adding {$thisName} to NameList at {$aNameCount}\n\r";
-			}
+						if ($thisName != $prevThisName) {
+								$NameList[$aNameCount] = $thisName;
+								$imgList[$aNameCount++] = $imgs[$row];
+							//			echo "adding {$thisName} to NameList at {$aNameCount}\n\r";
+						}
             $prevThisName = $thisName;
         }
 //
