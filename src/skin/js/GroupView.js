@@ -20,6 +20,7 @@ $(document).ready(function () {
 
   $(".personSearch").select2({
     minimumInputLength: 2,
+    language: window.CRM.shortLocale,
     ajax: {
       url: function (params) {
         return window.CRM.root + "/api/persons/search/" + params.term;
@@ -33,20 +34,7 @@ $(document).ready(function () {
         };
       },
       processResults: function (rdata, page) {
-        var idKey = 1;
-        var results = new Array();
-        data = JSON.parse(rdata);
-        $.each(data[0].persons, function (index, cvalue) {
-          var childObject = {
-            id: idKey,
-            objid: cvalue.id,
-            text: cvalue.displayName,
-            uri: cvalue.uri
-          };
-          idKey++;
-          results.push(childObject);
-        });
-        return {results: results};
+        return {results: rdata};
       },
       cache: true
     }
@@ -67,6 +55,7 @@ $(document).ready(function () {
         return {results: p};
       }
     },
+    language: window.CRM.shortLocale,
     minimumResultsForSearch: Infinity
   });
 

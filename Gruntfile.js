@@ -393,6 +393,7 @@ module.exports = function (grunt) {
 
         // php composer
         var file = 'src/composer.json';
+        
         var curFile = grunt.file.readJSON(file);
         if (curFile.version !== version) {
             console.log("updating composer file to: " + version);
