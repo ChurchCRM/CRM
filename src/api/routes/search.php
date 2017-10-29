@@ -1,4 +1,12 @@
 <?php
+/*******************************************************************************
+*
+*  filename    : api/routes/search.php
+*  last change : 2017/10/29
+*  description : Search terms like : Firstname, Lastname, phone, adresses, 
+*								 groups, families, etc...
+*
+******************************************************************************/
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
