@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : Reports/ClassList.php
-*  last change : 2003-08-30
+*  last change : 2017-10-29 Philippe Logel
 *  description : Creates a PDF for a Sunday School Class List
 
 ******************************************************************************/
@@ -17,6 +17,11 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\GroupQuery;
+use ChurchCRM\Person2group2roleP2g2r;
+use ChurchCRM\Map\PersonTableMap;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 $iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
@@ -42,10 +47,7 @@ class PDF_ClassList extends ChurchInfoReport
 // Instantiate the directory class and build the report.
 $pdf = new PDF_ClassList();
 
-//Get the data on this group
-$sSQL = 'SELECT * FROM group_grp WHERE grp_ID = '.$iGroupID;
-$aGroupData = mysqli_fetch_array(RunQuery($sSQL));
-extract($aGroupData);
+$group = GroupQuery::Create()->findOneById($iGroupID);
 
 $nameX = 20;
 $birthdayX = 70;
@@ -59,7 +61,7 @@ $yIncrement = 4;
 
 $pdf->SetFont('Times', 'B', 16);
 
-$pdf->WriteAt($nameX, $yTitle, ($grp_Name.' - '.$grp_Description));
+$pdf->WriteAt($nameX, $yTitle, ($group->getName().' - '));
 
 $FYString = MakeFYString($iFYID);
 $pdf->WriteAt($phoneX, $yTitle, $FYString);
@@ -77,35 +79,59 @@ $teachersThatFit = 4;
 
 $bFirstTeacher1 = true;
 $bFirstTeacher2 = true;
-for ($row = 0; $row < $numMembers; $row++) {
-    extract($ga[$row]);
-    
-    if ($lst_OptionName == 'Teacher') {
-        $phone = $pdf->StripPhone($fam_HomePhone);
+
+
+$groupRoleMemberships = ChurchCRM\Person2group2roleP2g2rQuery::create()
+            ->joinWithPerson()
+            ->orderBy(PersonTableMap::COL_PER_LASTNAME)
+            ->findByGroupId($iGroupID);
+
+$students = [];
+
+foreach ($groupRoleMemberships as $groupRoleMembership) {		
+		$perID = $groupRoleMembership->getPersonId();
+		$person = PersonQuery::create()->findPk($perID);
+		
+		$firstName = $person->getFirstName();		
+		$middlename = $person->getMiddleName();		
+		$lastname = $person->getLastName();		
+		$family = $person->getFamily();
+		
+		$homePhone = $family->getHomePhone();
+
+		$groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
+				
+		$lst_OptionName = $groupRole->getOptionName();
+		
+		if ($lst_OptionName == 'Teacher') {
+        $phone = $pdf->StripPhone($homePhone);
         if ($teacherCount >= $teachersThatFit) {
             if (!$bFirstTeacher2) {
                 $teacherString2 .= ', ';
             }
-            $teacherString2 .= $per_FirstName.' '.$per_LastName.' '.$phone;
+            $teacherString2 .= $firstName.' '.$middlename.' '.$lastname.' '.$phone;
             $bFirstTeacher2 = false;
         } else {
             if (!$bFirstTeacher1) {
                 $teacherString1 .= ', ';
             }
-            $teacherString1 .= $per_FirstName.' '.$per_LastName.' '.$phone;
+            $teacherString1 .= $firstName.' '.$middlename.' '.$lastname.' '.$phone;
             $bFirstTeacher1 = false;
         }
         ++$teacherCount;
+    } else if ($lst_OptionName == gettext('Liaison')) {    
+    	$liaisonString .= gettext('Liaison').':'.$firstName.' '.$middlename.' '.$lastname.' '.$phone.' ';
+    } else if ($lst_OptionName == 'Student') { 
+    	   $elt = ['perID' => $perID,
+    	   				 'firstName' => $firstName,
+    	   				 'middlename' => $middlename,
+    	   				 'lastname' => $lastname,
+    	   				 'homePhone' => $homePhone];
+    	   				 
+    	   array_push( $students,$elt);
     }
 }
 
-$liaisonString = '';
-for ($row = 0; $row < $numMembers; $row++) {
-    extract($ga[$row]);
-    if ($lst_OptionName == gettext('Liaison')) {
-        $liaisonString .= gettext('Liaison').':'.$per_FirstName.' '.$per_LastName.' '.$fam_HomePhone.' ';
-    }
-}
 
 $pdf->SetFont('Times', 'B', 10);
 
@@ -125,76 +151,115 @@ $y += $yOffsetStartStudents;
 $pdf->SetFont('Times', '', 12);
 $prevStudentName = '';
 
-for ($row = 0; $row < $numMembers; $row++) {
-    extract($ga[$row]);
+$numMembers = count ($students);
 
-    if ($lst_OptionName == 'Student') {
-        $studentName = ($per_LastName.','.$per_MiddleName.' '.$per_FirstName);
-        
-        if ($studentName != $prevStudentName) {
-            $pdf->WriteAt($nameX, $y, $studentName);
-            
-            $person = PersonQuery::create()->findPk($per_ID);
-            $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
-            
-            //echo $imgName."<br>";
-            
-            $birthdayStr = change_date_for_place_holder($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay);
-            $pdf->WriteAt($birthdayX, $y, $birthdayStr);
+for ($row = 0; $row < $numMembers; $row++){	
+		$student = $students[$row];
+		
+		$person = PersonQuery::create()->findPk($student['perID']);
+		
+		$firstName = $person->getFirstName();		
+		$middlename = $person->getMiddleName();		
+		$lastname = $person->getLastName();
+		
+		$assignedProperties = $person->getProperties();
+		
+		$family = $person->getFamily();
 
-            if ($withPictures) {
-                $imageHeight=9;
-                
-                $nameX-=2;
-                $y-=2;
-                          
-                $pdf->SetLineWidth(0.25);
-                $pdf->Line($nameX-$imageHeight, $y, $nameX, $y);
-                $pdf->Line($nameX-$imageHeight, $y+$imageHeight, $nameX, $y+$imageHeight);
-                $pdf->Line($nameX-$imageHeight, $y, $nameX, $y);
-                $pdf->Line($nameX-$imageHeight, $y, $nameX-$imageHeight, $y+$imageHeight);
-                $pdf->Line($nameX, $y, $nameX, $y+$imageHeight);
-                    
-                // we build the cross in the case of there's no photo
-                //$this->SetLineWidth(0.25);
-                $pdf->Line($nameX-$imageHeight, $y+$imageHeight, $nameX, $y);
-                $pdf->Line($nameX-$imageHeight, $y, $nameX, $y+$imageHeight);
-                            
-                if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($_SERVER['DOCUMENT_ROOT'].$imgName)) {
-                    list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$img);
-                    $factor = 8/$height;
-                    $nw = $imageHeight;
-                    $nh = $imageHeight;
-                        
-                    $pdf->Image('https://'.$_SERVER['HTTP_HOST'].$imgName, $nameX-$nw, $y, $nw, $nh, 'PNG');
-                }
-                            
-                $nameX+=2;
-                $y+=2;
-            }
-        }
+		$studentName = ($lastname.','.$$middlename.' '.$firstName);
+		
+		if ($studentName != $prevStudentName) {
+				$pdf->WriteAt($nameX, $y, $studentName);
+				
+				$imgName = str_replace(SystemURLs::getDocumentRoot(),"",$person->getThumbnailURI());//'/Images/Person/'.$per_ID.'.png';
+				
+				//echo $imgName."<br>";
+				
+				$birthdayStr = change_date_for_place_holder($person->getBirthYear().'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
+				$pdf->WriteAt($birthdayX, $y, $birthdayStr);
 
-        $parentsStr = $pdf->MakeSalutation($fam_ID);
-        $pdf->WriteAt($parentsX, $y, $parentsStr);
+				if ($withPictures)
+				{   
+				
+					$imageHeight=9;
+					
+					$nameX-=2;
+					$y-=2;
+										
+					$pdf->SetLineWidth(0.25);
+					$pdf->Line($nameX-$imageHeight,$y,$nameX,$y);
+					$pdf->Line($nameX-$imageHeight,$y+$imageHeight,$nameX,$y+$imageHeight);
+					$pdf->Line($nameX-$imageHeight,$y,$nameX,$y);
+					$pdf->Line($nameX-$imageHeight,$y,$nameX-$imageHeight,$y+$imageHeight);
+					$pdf->Line($nameX,$y,$nameX,$y+$imageHeight);
+			
+					// we build the cross in the case of there's no photo
+					//$this->SetLineWidth(0.25);
+					$pdf->Line($nameX-$imageHeight,$y+$imageHeight,$nameX,$y);
+					$pdf->Line($nameX-$imageHeight,$y,$nameX,$y+$imageHeight);
+					
+					if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($_SERVER['DOCUMENT_ROOT'].$imgName))
+					{
+						list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$img);
+						$factor = 8/$height;
+						$nw = $imageHeight;
+						$nh = $imageHeight;
+				
+						$pdf->Image('https://'.$_SERVER['HTTP_HOST'].$imgName, $nameX-$nw , $y, $nw,$nh,'PNG');
+					}
+					
+					$nameX+=2;
+					$y+=2;
+				}
+				
+				$props = "";
+				foreach ($assignedProperties as $property)
+				{
+					$props.= $property->getProName().", ";
+				}			
+				
+				if (strlen($props) > 1)
+				{
+					$props = " !!! ".$props;
+					
+					$pdf->SetFont('Times', 'B', 10);
+					$pdf->WriteAt($nameX, $y+3.5, $props);
+					$pdf->SetFont('Times', '', 12);
+				}
+		}
+		
 
-        $pdf->WriteAt($phoneX, $y, $pdf->StripPhone($fam_HomePhone));
-        $y += $yIncrement;
 
-        $addrStr = $fam_Address1;
-        if ($fam_Address2 != '') {
-            $addrStr .= ' '.$fam_Address2;
-        }
-        $addrStr .= ', '.$fam_City.', '.$fam_State.'  '.$fam_Zip;
-        $pdf->WriteAt($parentsX, $y, $addrStr);
+		$parentsStr = $pdf->MakeSalutation($family->getId());
+		
+		$phone = $family->getHomePhone();
+		
+		if (strlen($phone) == 0)
+			$phone = $family->getCellPhone();
+			
+		if (strlen($phone) == 0)
+			$phone = $family->getWorkPhone();
 
-        $prevStudentName = $studentName;
-        $y += 1.5 * $yIncrement;
+		
+		$pdf->WriteAt($parentsX, $y, $parentsStr);
+		
+		$pdf->WriteAt($phoneX, $y, $pdf->StripPhone($phone));
+		$y += $yIncrement;
 
-        if ($y > 250) {
-            $pdf->AddPage();
-            $y = 20;
-        }
-    }
+		$addrStr = $family->getAddress1();
+		if ($fam_Address2 != '') {
+				$addrStr .= ' '.$family->getAddress2();
+		}
+		$addrStr .= ', '.$family->getCity().', '.$family->getState().'  '.$family->getZip();
+		$pdf->WriteAt($parentsX, $y, $addrStr);
+
+		$prevStudentName = $studentName;
+		$y += 1.5 * $yIncrement;
+
+		if ($y > 250) {
+				$pdf->AddPage();
+				$y = 20;
+		}  
 }
 
 $pdf->SetFont('Times', 'B', 12);
