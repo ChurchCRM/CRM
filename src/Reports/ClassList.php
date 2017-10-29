@@ -84,6 +84,7 @@ $bFirstTeacher2 = true;
 $groupRoleMemberships = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
+            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce per_LastName, per_FirstName
             ->findByGroupId($iGroupID);
 
 $students = [];
