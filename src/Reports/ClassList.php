@@ -99,6 +99,14 @@ foreach ($groupRoleMemberships as $groupRoleMembership) {
 		$family = $person->getFamily();
 		
 		$homePhone = $family->getHomePhone();
+		
+		
+		if (strlen($homePhone) == 0)
+			$homePhone = $family->getCellPhone();
+			
+		if (strlen($homePhone) == 0)
+			$homePhone = $family->getWorkPhone();
+
 
 		$groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
 				
