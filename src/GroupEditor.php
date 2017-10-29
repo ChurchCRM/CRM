@@ -83,15 +83,12 @@ require 'Include/Header.php';
           <div class="col-sm-3">
             <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
             <?php 
-            			if ($thisGroup->isSundaySchool()) 
-            			{
-            				$hide = "style=\"display:none;\"";
-            			}
-            			else
-            			{
-            				$hide = "";
-            			}
-    				?>
+                        if ($thisGroup->isSundaySchool()) {
+                            $hide = "style=\"display:none;\"";
+                        } else {
+                            $hide = "";
+                        }
+                    ?>
             <select class="form-control input-small" name="GroupType" <?php echo $hide; ?>>
               <option value="0"><?= gettext('Unassigned') ?></option>
               <option value="0">-----------------------</option>
@@ -105,9 +102,8 @@ require 'Include/Header.php';
               } ?>              
             </select>
             <?php
-								if ($thisGroup->isSundaySchool()) 
-								{
-                  ?>
+                                if ($thisGroup->isSundaySchool()) {
+                                    ?>
             	<b><?= gettext("Sunday School") ?></b>
             	<p><?= gettext("Sunday School group can't be modified, only in this two cases :")?></p>
             	<ul>
@@ -119,7 +115,7 @@ require 'Include/Header.php';
 								</li>
             	</ul>
             <?php
-              } ?>
+                                } ?>
           </div>
         </div>
         <div class="row">
