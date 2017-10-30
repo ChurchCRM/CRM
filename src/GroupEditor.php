@@ -89,7 +89,7 @@ require 'Include/Header.php';
                             $hide = "";
                         }
                     ?>
-            <select class="form-control input-small" name="GroupType" <?php echo $hide; ?>>
+            <select class="form-control input-small" name="GroupType" <?= $hide ?>>
               <option value="0"><?= gettext('Unassigned') ?></option>
               <option value="0">-----------------------</option>
               <?php
