@@ -39,7 +39,7 @@ if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
 
 
 fputcsv($out, [InputUtils::translate_special_charset('Class'),
-	InputUtils::translate_special_charset('Role'),
+    InputUtils::translate_special_charset('Role'),
   InputUtils::translate_special_charset('First Name'),
   InputUtils::translate_special_charset('Last Name'),
   InputUtils::translate_special_charset('Birth Date'),
@@ -56,109 +56,102 @@ fputcsv($out, [InputUtils::translate_special_charset('Class'),
 
 
 $groups = GroupQuery::create()
-					->orderByName(Criteria::ASC)
-					->filterByType(4)					
-					->find();
-					
-					
-foreach ($groups as $group)
-{
-		$iGroupID = $group->getID();		
-		$sundayschoolClass = $group->getName();
-		
-		
-		$groupRoleMemberships = ChurchCRM\Person2group2roleP2g2rQuery::create()
-							->joinWithPerson()
-							->orderBy(PersonTableMap::COL_PER_LASTNAME)
-							->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce per_LastName, per_FirstName
-							->findByGroupId($iGroupID);
-							
-		foreach ($groupRoleMemberships as $groupRoleMembership) {				
-			$groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
-			
-			$lst_OptionName = $groupRole->getOptionName();
-		
-			$perID = $groupRoleMembership->getPersonId();
-			$kid = PersonQuery::create()->findPk($perID);
-	
-			$firstName = $kid->getFirstName();		
-			$middlename = $kid->getMiddleName();		
-			$lastname = $kid->getLastName();		
-			$birthDay = $kid->getBirthDay();
-			$birthMonth = $kid->getBirthMonth();
-			$birthYear = $kid->getBirthYear();
-			$homePhone = $kid->getHomePhone();
-			$mobilePhone = $kid->getCellPhone();
-					
-			$family = $kid->getFamily();
-		
-			$Address1 = $Address2 = $city = $state = $zip = " ";	
-			$dadFirstName = $dadLastName = $dadCellPhone = $dadEmail = " ";
-			$momFirstName = $momLastName = $momCellPhone = $momEmail = " ";
-		
-			if (!empty($family))
-			{
-				$famID = $family->getID();
-				$Address1 = $family->getAddress1();				
-				$Address2 = $family->getAddress2();
-				$city = $family->getCity();
-				$state = $family->getState();
-				$zip = $family->getZip();
-				
-				
-				if ($lst_OptionName == "Student")
-				{
-					// only for a student
-					$FAmembers = FamilyQuery::create()->findOneByID($famID)->getAdults();
-			
-					// il faut encore chercher les membres de la famille
-					foreach ($FAmembers as $maf)
-					{
-						if ($maf->getGender() == 1)
-						{
-							// Dad
-							$dadFirstName = $maf->getFirstName();
-							$dadLastName = $maf->getLastName();
-							$dadCellPhone = $maf->getCellPhone();
-							$dadEmail = $maf->getEmail();
-						} else if ($maf->getGender() == 2){
-							// Mom
-							$momFirstName = $maf->getFirstName();
-							$momLastName = $maf->getLastName();
-							$momCellPhone = $maf->getCellPhone();
-							$momEmail = $maf->getEmail();
-						}
-					}
-				}
-			}
-		
-			$assignedProperties = $kid->getProperties();
-			$props = " ";
-			if ($lst_OptionName == "Student" && !empty($assignedProperties))
-			{
-				foreach ($assignedProperties as $property)
-				{
-					$props.= $property->getProName().", ";
-				}
-				
-				$props = chop($props,", ");
-			}
-		
-		
-			if ($birthYear != '') {
-					$birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
-			}
-		
-			fputcsv($out, [
-			InputUtils::translate_special_charset($sundayschoolClass),
-			InputUtils::translate_special_charset($lst_OptionName),
-			InputUtils::translate_special_charset($firstName),
-			InputUtils::translate_special_charset($lastname),
-			 $birthDate, $mobilePhone, $homePhone,
-			InputUtils::translate_special_charset($Address1).' '.InputUtils::translate_special_charset($Address2).' '.InputUtils::translate_special_charset($city).' '.InputUtils::translate_special_charset($state).' '.$zip,
-			InputUtils::translate_special_charset($dadFirstName).' '.InputUtils::translate_special_charset($dadLastName), $dadCellPhone, $dadEmail,
-			InputUtils::translate_special_charset($momFirstName).' '.InputUtils::translate_special_charset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
-		}
+                    ->orderByName(Criteria::ASC)
+                    ->filterByType(4)
+                    ->find();
+                    
+                    
+foreach ($groups as $group) {
+    $iGroupID = $group->getID();
+    $sundayschoolClass = $group->getName();
+        
+        
+    $groupRoleMemberships = ChurchCRM\Person2group2roleP2g2rQuery::create()
+                            ->joinWithPerson()
+                            ->orderBy(PersonTableMap::COL_PER_LASTNAME)
+                            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce per_LastName, per_FirstName
+                            ->findByGroupId($iGroupID);
+                            
+    foreach ($groupRoleMemberships as $groupRoleMembership) {
+        $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
+            
+        $lst_OptionName = $groupRole->getOptionName();
+        
+        $perID = $groupRoleMembership->getPersonId();
+        $kid = PersonQuery::create()->findPk($perID);
+    
+        $firstName = $kid->getFirstName();
+        $middlename = $kid->getMiddleName();
+        $lastname = $kid->getLastName();
+        $birthDay = $kid->getBirthDay();
+        $birthMonth = $kid->getBirthMonth();
+        $birthYear = $kid->getBirthYear();
+        $homePhone = $kid->getHomePhone();
+        $mobilePhone = $kid->getCellPhone();
+                    
+        $family = $kid->getFamily();
+        
+        $Address1 = $Address2 = $city = $state = $zip = " ";
+        $dadFirstName = $dadLastName = $dadCellPhone = $dadEmail = " ";
+        $momFirstName = $momLastName = $momCellPhone = $momEmail = " ";
+        
+        if (!empty($family)) {
+            $famID = $family->getID();
+            $Address1 = $family->getAddress1();
+            $Address2 = $family->getAddress2();
+            $city = $family->getCity();
+            $state = $family->getState();
+            $zip = $family->getZip();
+                
+                
+            if ($lst_OptionName == "Student") {
+                // only for a student
+                $FAmembers = FamilyQuery::create()->findOneByID($famID)->getAdults();
+            
+                // il faut encore chercher les membres de la famille
+                foreach ($FAmembers as $maf) {
+                    if ($maf->getGender() == 1) {
+                        // Dad
+                        $dadFirstName = $maf->getFirstName();
+                        $dadLastName = $maf->getLastName();
+                        $dadCellPhone = $maf->getCellPhone();
+                        $dadEmail = $maf->getEmail();
+                    } elseif ($maf->getGender() == 2) {
+                        // Mom
+                        $momFirstName = $maf->getFirstName();
+                        $momLastName = $maf->getLastName();
+                        $momCellPhone = $maf->getCellPhone();
+                        $momEmail = $maf->getEmail();
+                    }
+                }
+            }
+        }
+        
+        $assignedProperties = $kid->getProperties();
+        $props = " ";
+        if ($lst_OptionName == "Student" && !empty($assignedProperties)) {
+            foreach ($assignedProperties as $property) {
+                $props.= $property->getProName().", ";
+            }
+                
+            $props = chop($props, ", ");
+        }
+        
+        
+        if ($birthYear != '') {
+            $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
+        }
+        
+        fputcsv($out, [
+            InputUtils::translate_special_charset($sundayschoolClass),
+            InputUtils::translate_special_charset($lst_OptionName),
+            InputUtils::translate_special_charset($firstName),
+            InputUtils::translate_special_charset($lastname),
+             $birthDate, $mobilePhone, $homePhone,
+            InputUtils::translate_special_charset($Address1).' '.InputUtils::translate_special_charset($Address2).' '.InputUtils::translate_special_charset($city).' '.InputUtils::translate_special_charset($state).' '.$zip,
+            InputUtils::translate_special_charset($dadFirstName).' '.InputUtils::translate_special_charset($dadLastName), $dadCellPhone, $dadEmail,
+            InputUtils::translate_special_charset($momFirstName).' '.InputUtils::translate_special_charset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
+    }
 }
 
 fclose($out);
