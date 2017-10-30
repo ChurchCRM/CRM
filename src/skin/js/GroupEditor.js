@@ -39,7 +39,7 @@ $("document").ready(function()
 
 
   $("#selectGroupIDDiv").hide();
-          $("#cloneGroupRole").click(function(e)
+  $("#cloneGroupRole").click(function(e)
   {
     if(e.target.checked)
       $("#selectGroupIDDiv").show();
@@ -68,7 +68,14 @@ $("document").ready(function()
       dataType: "json"
     }).done(function(data)
     {
-      window.location.href = CRM.root + "/GroupList.php";
+    	if (data.groupType == i18next.t("Sunday School"))
+    	{
+	      window.location.href = CRM.root + "/sundayschool/SundaySchoolDashboard.php";
+	    }
+	    else
+	    {
+	    	window.location.href = CRM.root + "/GroupList.php";
+	    }
     });
 
   });
