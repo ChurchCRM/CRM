@@ -18,13 +18,15 @@
     },
     "homepage": "http://www.churchcrm.io",
     "devDependencies": {
+        "node-sha1": "1.0.1",
+        "github-release-notes": "0.21.0",
+        "i18next-extract-gettext": "3.2.0",
         "grunt": "1.0.1",
         "grunt-curl": "2.2.0",
         "grunt-contrib-clean": "1.0.0",
         "grunt-contrib-copy": "1.0.0",
         "grunt-contrib-compress": "1.4.1",
         "grunt-contrib-sass": "1.0.0",
-        "node-sha1": "1.0.1",
         "grunt-poeditor-ab": "0.1.9"
     },
     "dependencies": {
@@ -50,6 +52,7 @@
         "package": "grunt generateSignatures && grunt compress",
         "demosite": "scripts/demosite.sh",
         "changelog-gen": "scripts/gen-changelogs.sh",
+        "changelog-gen2": "grunt gren:changelog",
         "orm-gen": "src/vendor/propel/propel/bin/propel --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "graph-viz": "src/vendor/propel/propel/bin/propel --config-dir=propel graphviz:generate",
         "datadictionary": "src/vendor/propel/propel/bin/propel --config-dir=propel datadictionary:generate",
