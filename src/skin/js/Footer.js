@@ -24,7 +24,6 @@ $("document").ready(function(){
             dataType: 'json',
             delay: 250,
             data: "",
-            
             processResults: function (data, params) {
               return {results: data};
             },
