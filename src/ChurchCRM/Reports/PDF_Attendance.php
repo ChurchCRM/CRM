@@ -46,7 +46,7 @@ class PDF_Attendance extends ChurchInfoReport
         $dayWid = 7;
         
         if ($with_img)
-	        $yIncrement = 10; // normalement 6
+	        $yIncrement = 10; // normaly 6
 				else
 					$yIncrement = 6;
 	    	
@@ -77,11 +77,11 @@ class PDF_Attendance extends ChurchInfoReport
 // First cull the input names array to remove duplicates, then extend the array to include the requested
 // number of blank lines
 //
-    	$prevThisName = '';
+    		$prevThisName = '';
         $aNameCount = 0;
         for ($row = 0; $row < count($aNames); $row++) {
         		$person = $aNames[$row];
-            $thisName = ($person->getLastName().', '.$person->getFirstName());
+            $thisName = ($person->getFullName());
             
              // Special handling for person listed twice- only show once in the Attendance Calendar
              // This happens when a child is listed in two different families (parents divorced and
