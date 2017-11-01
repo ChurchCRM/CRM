@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : api/routes/search.php
-*  last change : 2017/10/29
+*  last change : 2017/10/29 Philippe Logel
 *  description : Search terms like : Firstname, Lastname, phone, adresses, 
 *								 groups, families, etc...
 *
@@ -35,10 +35,10 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 							_or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
-						limit(SystemConfig::getValue("bSearchIncludePersonsNumbers"))->find();
+						limit(SystemConfig::getValue("bSearchIncludePersonsMax"))->find();
 			
 		
-					if (count($people))
+					if (!empty($people))
 					{
 						$data = [];
 						$id++;
@@ -66,7 +66,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     }
     
     //Person Search by adresses
-    if (SystemConfig::getBooleanValue("bSearchIncludeAdresses")) {
+    if (SystemConfig::getBooleanValue("bSearchIncludeAddresses")) {
         try {
         	$searchLikeString = '%'.$query.'%';
 					$addresses = FamilyQuery::create()->
@@ -75,9 +75,9 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						_or()->filterByAddress2($searchLikeString, Criteria::LIKE)->
 						_or()->filterByZip($searchLikeString, Criteria::LIKE)->
 						_or()->filterByState($searchLikeString, Criteria::LIKE)->
-						limit(SystemConfig::getValue("bSearchIncludeAdressesNumbers"))->find();
+						limit(SystemConfig::getValue("bSearchIncludeAddressesMax"))->find();
 			
-					if (count($addresses))
+					if (!empty($addresses))
 					{					
 						$data = [];
 						$id++;
@@ -85,7 +85,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						foreach ($addresses as $address) {
 							$elt = ['id'=>$id++,
 									'text'=>$address->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-									'uri'=>SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $address->getId()
+									'uri'=>SystemURLs::getRootPath().$address->getViewURI()
 							];
 					
 							array_push($data, $elt);
@@ -115,9 +115,9 @@ $app->get('/search/{query}', function ($request, $response, $args) {
               _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
-              limit(SystemConfig::getValue("bSearchIncludeFamiliesNumbers"))->find();
+              limit(SystemConfig::getValue("bSearchIncludeFamiliesMax"))->find();
 
-					if (count($families))
+					if (!empty($families))
 					{
 						$data = []; 
 						$id++;					
@@ -127,7 +127,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 								$searchArray=[
 								"id" => $id++,
 								"text" => $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-								"uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $family->getId()
+								"uri" => SystemURLs::getRootPath().$family->getViewURI()
 							];
 					
 							array_push($data,$searchArray);
@@ -152,14 +152,14 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         try {
             $groups = GroupQuery::create()
                 ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
-                ->limit(SystemConfig::getValue("bSearchIncludeGroupsNumbers"))
+                ->limit(SystemConfig::getValue("bSearchIncludeGroupsMax"))
                 ->withColumn('grp_Name', 'displayName')
                 ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/GroupView.php?GroupID=",Group.Id)', 'uri')
                 ->select(['displayName', 'uri'])
                 ->find();
             
             
-            if (count($groups))
+            if (!empty($groups))
 						{ 
 	            $data = [];   
 							$id++;
@@ -203,9 +203,9 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                     ->endUse()
                     ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
                     ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
-                    ->limit(SystemConfig::getValue("bSearchIncludeDepositsNumbers"));
+                    ->limit(SystemConfig::getValue("bSearchIncludeDepositsMax"));
               
-              if (count($Deposits))
+              if (!empty($Deposits))
 							{      
 								$data = [];               
 								$id++;				
@@ -238,7 +238,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						try {
 							$Payments = $this->FinancialService->searchPayments($query);
 									
-							if (count($Payments))
+							if (!empty($Payments))
 							{  
 								$data = [];   
 								$id++;
