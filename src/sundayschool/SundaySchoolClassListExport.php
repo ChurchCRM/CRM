@@ -75,7 +75,7 @@ foreach ($groups as $group) {
     foreach ($groupRoleMemberships as $groupRoleMembership) {
         $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
             
-        $lst_OptionName = $groupRole->getOptionName();        
+        $lst_OptionName = $groupRole->getOptionName();
         $kid = $groupRoleMembership->getPerson();
     
         $firstName = $kid->getFirstName();
@@ -85,8 +85,8 @@ foreach ($groups as $group) {
         $birthMonth = $kid->getBirthMonth();
         $birthYear = $kid->getBirthYear();
         $homePhone = $kid->getHomePhone();
-        $mobilePhone = $kid->getCellPhone();    
-        $hideAge = $kid->hideAge();            
+        $mobilePhone = $kid->getCellPhone();
+        $hideAge = $kid->hideAge();
                     
         $family = $kid->getFamily();
         
@@ -138,7 +138,7 @@ foreach ($groups as $group) {
         
         $birthDate = '';
         if ($birthYear != '' && !$birthDate) {
-        		$birthDate = FormatDate ($birthYear."-".$birthMonth."-".$birthDay);
+            $birthDate = FormatDate($birthYear."-".$birthMonth."-".$birthDay);
             $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
         }
         
