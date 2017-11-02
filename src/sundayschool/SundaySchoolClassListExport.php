@@ -54,7 +54,7 @@ fputcsv($out, [InputUtils::translate_special_charset('Class'),
   InputUtils::translate_special_charset('Mom Email'),
   InputUtils::translate_special_charset('Properties') ], $delimiter);
 
-// only the sunday groups
+// only the unday groups
 $groups = GroupQuery::create()
                     ->orderByName(Criteria::ASC)
                     ->filterByType(4)
@@ -75,20 +75,20 @@ foreach ($groups as $group) {
     foreach ($groupRoleMemberships as $groupRoleMembership) {
         $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
             
-        $lst_OptionName = $groupRole->getOptionName();
-        $kid = $groupRoleMembership->getPerson();
+        $lst_OptionName = $groupRole->getOptionName();        
+        $member = $groupRoleMembership->getPerson();
     
-        $firstName = $kid->getFirstName();
-        $middlename = $kid->getMiddleName();
-        $lastname = $kid->getLastName();
-        $birthDay = $kid->getBirthDay();
-        $birthMonth = $kid->getBirthMonth();
-        $birthYear = $kid->getBirthYear();
-        $homePhone = $kid->getHomePhone();
-        $mobilePhone = $kid->getCellPhone();
-        $hideAge = $kid->hideAge();
+        $firstName = $member->getFirstName();
+        $middlename = $member->getMiddleName();
+        $lastname = $member->getLastName();
+        $birthDay = $member->getBirthDay();
+        $birthMonth = $member->getBirthMonth();
+        $birthYear = $member->getBirthYear();
+        $homePhone = $member->getHomePhone();
+        $mobilePhone = $member->getCellPhone();    
+        $hideAge = $member->hideAge();            
                     
-        $family = $kid->getFamily();
+        $family = $member->getFamily();
         
         $Address1 = $Address2 = $city = $state = $zip = " ";
         $dadFirstName = $dadLastName = $dadCellPhone = $dadEmail = " ";
@@ -126,7 +126,7 @@ foreach ($groups as $group) {
             }
         }
         
-        $assignedProperties = $kid->getProperties();
+        $assignedProperties = $member->getProperties();
         $props = " ";
         if ($lst_OptionName == "Student" && !empty($assignedProperties)) {
             foreach ($assignedProperties as $property) {
@@ -137,9 +137,9 @@ foreach ($groups as $group) {
         }
         
         $birthDate = '';
-        if ($birthYear != '' && !$birthDate) {
-            $birthDate = FormatDate($birthYear."-".$birthMonth."-".$birthDay);
-            $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
+        if ($birthYear != '' && !$birthDate && !$member->getFlags()) {
+        		$publishDate = DateTime::createFromFormat('Y-m-d', $birthYear.'-'.$birthMonth.'-'.$birthDay);        		
+        		$birthDate = $publishDate->format(SystemConfig::getValue("sDateFormatLong"));
         }
         
         fputcsv($out, [
