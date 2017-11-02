@@ -54,7 +54,7 @@ fputcsv($out, [InputUtils::translate_special_charset('Class'),
   InputUtils::translate_special_charset('Mom Email'),
   InputUtils::translate_special_charset('Properties') ], $delimiter);
 
-// only the unday groups
+// only the sunday groups
 $groups = GroupQuery::create()
                     ->orderByName(Criteria::ASC)
                     ->filterByType(4)
