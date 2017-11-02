@@ -43,7 +43,7 @@ $(document).ready(function () {
     responsive: true,
     ajax: {
       url: window.CRM.root + "/api/groups/",
-      type: 'GET', // performing a POST request
+      type: 'GET',
       dataSrc: "Groups"
     },
     columns: [
@@ -78,8 +78,8 @@ $(document).ready(function () {
         defaultContent: "",
         searchable: true,
         render: function (data, type, full, meta) {
-					if (data)
-					{
+		  if (data)
+		  {
           	return data;
           }
           else
