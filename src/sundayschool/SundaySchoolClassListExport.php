@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : sundayschol/SundaySchoolClassListExport.php
-*  last change : 2017-10-29 Philippe Logel
+*  last change : 2017-11-02 Philippe Logel
 *  description : Creates a csv for a Sunday School Class List
 
 ******************************************************************************/
@@ -39,7 +39,7 @@ if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
 
 
 fputcsv($out, [InputUtils::translate_special_charset('Class'),
-    InputUtils::translate_special_charset('Role'),
+  InputUtils::translate_special_charset('Role'),
   InputUtils::translate_special_charset('First Name'),
   InputUtils::translate_special_charset('Last Name'),
   InputUtils::translate_special_charset('Birth Date'),
@@ -54,7 +54,7 @@ fputcsv($out, [InputUtils::translate_special_charset('Class'),
   InputUtils::translate_special_charset('Mom Email'),
   InputUtils::translate_special_charset('Properties') ], $delimiter);
 
-
+// only the unday groups
 $groups = GroupQuery::create()
                     ->orderByName(Criteria::ASC)
                     ->filterByType(4)
@@ -75,10 +75,8 @@ foreach ($groups as $group) {
     foreach ($groupRoleMemberships as $groupRoleMembership) {
         $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
             
-        $lst_OptionName = $groupRole->getOptionName();
-        
-        $perID = $groupRoleMembership->getPersonId();
-        $kid = PersonQuery::create()->findPk($perID);
+        $lst_OptionName = $groupRole->getOptionName();        
+        $kid = $groupRoleMembership->getPerson();
     
         $firstName = $kid->getFirstName();
         $middlename = $kid->getMiddleName();
@@ -87,7 +85,8 @@ foreach ($groups as $group) {
         $birthMonth = $kid->getBirthMonth();
         $birthYear = $kid->getBirthYear();
         $homePhone = $kid->getHomePhone();
-        $mobilePhone = $kid->getCellPhone();
+        $mobilePhone = $kid->getCellPhone();    
+        $hideAge = $kid->hideAge();            
                     
         $family = $kid->getFamily();
         
@@ -137,8 +136,9 @@ foreach ($groups as $group) {
             $props = chop($props, ", ");
         }
         
-        
-        if ($birthYear != '') {
+        $birthDate = '';
+        if ($birthYear != '' && !$birthDate) {
+        		$birthDate = FormatDate ($birthYear."-".$birthMonth."-".$birthDay);
             $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
         }
         
@@ -147,7 +147,7 @@ foreach ($groups as $group) {
             InputUtils::translate_special_charset($lst_OptionName),
             InputUtils::translate_special_charset($firstName),
             InputUtils::translate_special_charset($lastname),
-             $birthDate, $mobilePhone, $homePhone,
+            $birthDate, $mobilePhone, $homePhone,
             InputUtils::translate_special_charset($Address1).' '.InputUtils::translate_special_charset($Address2).' '.InputUtils::translate_special_charset($city).' '.InputUtils::translate_special_charset($state).' '.$zip,
             InputUtils::translate_special_charset($dadFirstName).' '.InputUtils::translate_special_charset($dadLastName), $dadCellPhone, $dadEmail,
             InputUtils::translate_special_charset($momFirstName).' '.InputUtils::translate_special_charset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
