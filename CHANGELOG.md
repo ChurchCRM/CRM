@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.8.13 (31/10/2017)
+
+#### Core Functionality
+
+- [**Installation / Upgrade**][**Platform: Shared Hosting**] Default Login Credentials Not Working - No Error [#3123](https://github.com/ChurchCRM/CRM/issues/3123)
+- [**Feature: Reports**] ConfirmReport.php is broken [#3103](https://github.com/ChurchCRM/CRM/issues/3103)
+- [**API**][**Configuration**] sHeader entries under general settings is not retained after save - applies to 2.8.11, 2.8.12 [#3099](https://github.com/ChurchCRM/CRM/issues/3099)
+- [**Documentation**][**Feature: Users**][**Security**] Password Hashing Algorithm [#2342](https://github.com/ChurchCRM/CRM/issues/2342)
+
+#### Inner Beauty:
+
+- [**build**] Audit NPM devDependencies [#3019](https://github.com/ChurchCRM/CRM/issues/3019)
+
+---
+
 ## 2.8.12 (25/10/2017)
 
 #### Core Functionality
