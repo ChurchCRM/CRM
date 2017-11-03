@@ -203,7 +203,7 @@ class SystemConfig
         "bSearchIncludePayments" => new ConfigItem(2025, "bSearchIncludePayments", "boolean", "1", gettext("Search Payments")),
         "bSearchIncludeAddresses" => new ConfigItem(2026, "bSearchIncludeAddresses", "boolean", "1", gettext("Search Addresses")),        
         "bSearchIncludePersonsMax" => new ConfigItem(2027, "bSearchIncludePersonsMax", "text", "15", gettext("Search Members Max")),
-        "bSearchIncludeFamiliesMax" => new ConfigItem(2028, "bSearchIncludeFamiliesMax", "text", "15", gettext("Search Family ")),
+        "bSearchIncludeFamiliesMax" => new ConfigItem(2028, "bSearchIncludeFamiliesMax", "text", "15", gettext("Search Family Max")),
         "bSearchIncludeFamilyHOHMax" => new ConfigItem(2029, "bSearchIncludeFamilyHOHMax", "text", "15", gettext("Max Family H.O.H Names")),
         "bSearchIncludeGroupsMax" => new ConfigItem(2030, "bSearchIncludeGroupsMax", "text", "15", gettext("Max Search Groups")),
         "bSearchIncludeDepositsMax" => new ConfigItem(2031, "bSearchIncludeDepositsMax", "text", "5", gettext("Max Search Deposits")),
