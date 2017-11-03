@@ -4,6 +4,7 @@
 *  filename    : GroupList.php
 *  website     : http://www.churchcrm.io
 *  copyright   : Copyright 2001, 2002 Deane Barker
+*  update      : 2017-11-02 Philippe Logel
 *
 *
 *  Additional Contributors:
@@ -17,7 +18,7 @@ require 'Include/Functions.php';
 
 //Set the page title
 $sPageTitle = gettext('Group Listing');
-require 'Include/Header.php';
+require 'Include/Header.php'; 
 
 use ChurchCRM\ListOptionQuery;
 
@@ -31,10 +32,10 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 <select id="table-filter" class="form-control input-sm">
 <option value=""><?= gettext("All") ?></option>
 <?php
-        echo '<option>'.gettext("Unassigned").'</option>';
+  echo '<option>'.gettext("Unassigned").'</option>';
   foreach ($rsGroupTypes as $groupType) {
-      echo '<option>'.$groupType->getOptionName().'</option>';
-  } ?>    
+	  echo '<option>'.$groupType->getOptionName().'</option>';
+} ?>    
 </select>
 </label>
 </p>
@@ -46,18 +47,18 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 </table>
 <?php
 if ($_SESSION['bManageGroups']) {
-      ?>
+    ?>
 
 
 <br>
 <form action="#" method="get" class="form">
-    <label for="addNewGroup"><?= gettext('Add New Group') ?>:</label>
+    <label for="addNewGruop"><?= gettext('Add New Group') ?> :</label>
     <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
     <br>
     <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext('Add New Group') ?></button>
 </form>
 <?php
-  }
+}
 ?>
 
 </div>
