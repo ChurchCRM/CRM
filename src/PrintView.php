@@ -133,18 +133,21 @@ require 'Include/Header-Short.php';
 
 $personSheet = PersonQuery::create()->findPk($per_ID);
 
-if ($personSheet) {
-    echo "<table>";
-    echo "	<tr>";
-    echo "	<td  style=\"padding:5px;\">";
-    $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $personSheet->getPhotoURI());
-    
-    echo "<img src=\"".$imgName."\"/>";
-    echo "</td><td>";
-    echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
-    echo "</td></tr></table>";
-} else {
-    echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
+if ($personSheet)
+{
+	echo "<table>";
+	echo "	<tr>";
+	echo "	<td  style=\"padding:5px;\">";
+	$imgName = str_replace(SystemURLs::getDocumentRoot(),"",$personSheet->getPhotoURI());
+	
+	echo "<img src=\"".$imgName."\"/>";
+	echo "</td><td>";
+	echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
+	echo "</td></tr></table>";
+}
+else
+{
+	echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
 }
 
 // Print the name and address header
@@ -366,10 +369,10 @@ if ($fam_ID) {
 			<td>
 				<?= $sFamRole ?>&nbsp;
 			</td>
-			<td data-birth-date="<?= $per_Flags == 1 ? '' : date_create($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay)->format('Y-m-d') ?>">
-				<?php if ($per_Flags == 0) {
-        echo FormatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear);
-    } ?>
+			<td data-birth-date>
+				<?php if ($per_Flags == 0)
+					echo FormatAge($per_BirthMonth,$per_BirthDay,$per_BirthYear);
+				?>
 			</td>
 		</tr>
 	<?php
