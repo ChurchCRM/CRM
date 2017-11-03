@@ -75,7 +75,7 @@ foreach ($groups as $group) {
     foreach ($groupRoleMemberships as $groupRoleMembership) {
         $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
             
-        $lst_OptionName = $groupRole->getOptionName();        
+        $lst_OptionName = $groupRole->getOptionName();
         $member = $groupRoleMembership->getPerson();
     
         $firstName = $member->getFirstName();
@@ -85,8 +85,8 @@ foreach ($groups as $group) {
         $birthMonth = $member->getBirthMonth();
         $birthYear = $member->getBirthYear();
         $homePhone = $member->getHomePhone();
-        $mobilePhone = $member->getCellPhone();    
-        $hideAge = $member->hideAge();            
+        $mobilePhone = $member->getCellPhone();
+        $hideAge = $member->hideAge();
                     
         $family = $member->getFamily();
         
@@ -138,8 +138,8 @@ foreach ($groups as $group) {
         
         $birthDate = '';
         if ($birthYear != '' && !$birthDate && (!$member->getFlags() || $lst_OptionName == "Student")) {
-        		$publishDate = DateTime::createFromFormat('Y-m-d', $birthYear.'-'.$birthMonth.'-'.$birthDay);        		
-        		$birthDate = $publishDate->format(SystemConfig::getValue("sDateFormatLong"));
+            $publishDate = DateTime::createFromFormat('Y-m-d', $birthYear.'-'.$birthMonth.'-'.$birthDay);
+            $birthDate = $publishDate->format(SystemConfig::getValue("sDateFormatLong"));
         }
         
         fputcsv($out, [
