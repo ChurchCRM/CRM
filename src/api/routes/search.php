@@ -111,7 +111,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         try {
           $results = [];
           $families = FamilyQuery::create()->
-          		filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)->
+          		filterByName("%$query%", Criteria::LIKE)->
               _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
@@ -151,7 +151,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     if (SystemConfig::getBooleanValue("bSearchIncludeGroups")) {
         try {
             $groups = GroupQuery::create()
-                ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+                ->filterByName("%$query%", Criteria::LIKE)
                 ->limit(SystemConfig::getValue("bSearchIncludeGroupsMax"))
                 ->withColumn('grp_Name', 'displayName')
                 ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/GroupView.php?GroupID=",Group.Id)', 'uri')
