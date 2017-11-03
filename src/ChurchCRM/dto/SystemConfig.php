@@ -202,13 +202,13 @@ class SystemConfig
         "bSearchIncludeDeposits" => new ConfigItem(2024, "bSearchIncludeDeposits", "boolean", "1", gettext("Search Deposits")),
         "bSearchIncludePayments" => new ConfigItem(2025, "bSearchIncludePayments", "boolean", "1", gettext("Search Payments")),
         "bSearchIncludeAddresses" => new ConfigItem(2026, "bSearchIncludeAddresses", "boolean", "1", gettext("Search Addresses")),        
-        "bSearchIncludePersonsMax" => new ConfigItem(2027, "bSearchIncludePersonsMax", "text", "15", gettext("Search Members Max")),
-        "bSearchIncludeFamiliesMax" => new ConfigItem(2028, "bSearchIncludeFamiliesMax", "text", "15", gettext("Search Family Max")),
-        "bSearchIncludeFamilyHOHMax" => new ConfigItem(2029, "bSearchIncludeFamilyHOHMax", "text", "15", gettext("Max Family H.O.H Names")),
-        "bSearchIncludeGroupsMax" => new ConfigItem(2030, "bSearchIncludeGroupsMax", "text", "15", gettext("Max Search Groups")),
-        "bSearchIncludeDepositsMax" => new ConfigItem(2031, "bSearchIncludeDepositsMax", "text", "5", gettext("Max Search Deposits")),
-        "bSearchIncludePaymentsMax" => new ConfigItem(2032, "bSearchIncludePaymentsMax", "text", "5", gettext("Max Search Payments")),
-        "bSearchIncludeAddressesMax" => new ConfigItem(20233, "bSearchIncludeAddressesMax", "text", "15", gettext("Max Search Addresses"))
+        "bSearchIncludePersonsMax" => new ConfigItem(2027, "bSearchIncludePersonsMax", "text", "15", gettext("Maximum number of Members")),
+        "bSearchIncludeFamiliesMax" => new ConfigItem(2028, "bSearchIncludeFamiliesMax", "text", "15", gettext("Maximum number of Families")),
+        "bSearchIncludeFamilyHOHMax" => new ConfigItem(2029, "bSearchIncludeFamilyHOHMax", "text", "15", gettext("Maximum number of Family H.O.H Names")),
+        "bSearchIncludeGroupsMax" => new ConfigItem(2030, "bSearchIncludeGroupsMax", "text", "15", gettext("Maximum number of Groups")),
+        "bSearchIncludeDepositsMax" => new ConfigItem(2031, "bSearchIncludeDepositsMax", "text", "5", gettext("Maximum number of Deposits")),
+        "bSearchIncludePaymentsMax" => new ConfigItem(2032, "bSearchIncludePaymentsMax", "text", "5", gettext("Maximum number of Payments")),
+        "bSearchIncludeAddressesMax" => new ConfigItem(20233, "bSearchIncludeAddressesMax", "text", "15", gettext("Maximum number of Addresses"))
     );
   }
 
