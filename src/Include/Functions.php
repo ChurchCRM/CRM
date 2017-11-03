@@ -1541,9 +1541,9 @@ function formatNumber($iNumber, $sMode = 'integer')
 function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
 {
     if ($bFlags == 1 || $per_BirthYear == '') {  //Person Would Like their Age Hidden or BirthYear is not known.
-    	$birthYear = '1000';
+        $birthYear = '1000';
     } else {
-      $birthYear = $per_BirthYear;
+        $birthYear = $per_BirthYear;
     }
 
     if ($per_BirthMonth > 0 && $per_BirthDay > 0 && $birthYear != 1000) {
