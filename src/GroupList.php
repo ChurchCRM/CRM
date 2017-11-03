@@ -4,7 +4,7 @@
 *  filename    : GroupList.php
 *  website     : http://www.churchcrm.io
 *  copyright   : Copyright 2001, 2002 Deane Barker
-*  update      : 2017-11-02 Philippe Logel
+*  update      : 2017-11-02, Philippe Logel
 *
 *
 *  Additional Contributors:
