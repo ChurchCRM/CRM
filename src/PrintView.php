@@ -6,7 +6,8 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
-  *
+ *  update 2017 : Philippe Logel
+ *
  ******************************************************************************/
 
 // Include the function library
@@ -133,18 +134,21 @@ require 'Include/Header-Short.php';
 
 $personSheet = PersonQuery::create()->findPk($per_ID);
 
-if ($personSheet) {
-    echo "<table>";
-    echo "	<tr>";
-    echo "	<td  style=\"padding:5px;\">";
-    $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $personSheet->getPhotoURI());
-    
-    echo "<img src=\"".$imgName."\"/>";
-    echo "</td><td>";
-    echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
-    echo "</td></tr></table>";
-} else {
-    echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
+if ($personSheet)
+{
+	echo "<table>";
+	echo "	<tr>";
+	echo "	<td  style=\"padding:5px;\">";
+	$imgName = str_replace(SystemURLs::getDocumentRoot(),"",$personSheet->getPhotoURI());
+	
+	echo "<img src=\"".$imgName."\"/>";
+	echo "</td><td>";
+	echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
+	echo "</td></tr></table>";
+}
+else
+{
+	echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
 }
 
 // Print the name and address header
@@ -348,8 +352,6 @@ if ($fam_ID) {
                 
                 extract($aRow);
                 
-                $person = PersonQuery::create()->findPk($per_ID);
-
                 // Alternate the row style
                 $sRowClass = AlternateRowStyle($sRowClass)
 
