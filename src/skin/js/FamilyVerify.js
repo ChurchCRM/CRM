@@ -4,7 +4,7 @@ $(document).ready(function () {
   $("#confirm-modal-done").hide();
   $("#confirm-modal-error").hide();
 
-  const doShowMap = (LatLng !== null);
+  const doShowMap = !empty(LatLng);
 
   // When the window has finished loading google map
   if (doShowMap) {
