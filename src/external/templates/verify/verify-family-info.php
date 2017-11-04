@@ -9,7 +9,7 @@ $sPageTitle = gettext("Family Verification");
 
 require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
-$doShowMap = !empty($family->getLatitude());
+$doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
   <div class="row">
     <div id="right-buttons" class="btn-group" role="group">
