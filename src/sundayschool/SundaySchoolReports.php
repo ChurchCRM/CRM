@@ -268,7 +268,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
     		      <input type="submit" class="btn btn-info" name="SubmitClassAttendance" value="<?= gettext('Create Attendance Sheet') ?>">
     		  </div>
     		  <div class="col-md-4">
-    			  <input type="submit" class="btn btn-danger" name="SubmitFaceBook" value="<?= gettext('Create FaceBook') ?>">
+    			  <input type="submit" class="btn btn-danger" name="SubmitFaceBook" value="<?= gettext('Create Facebook') ?>">
     		  </div>
     	  </td>
     	  <td width="35%">
