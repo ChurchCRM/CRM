@@ -21,10 +21,10 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 // Get all the sunday school classes
 $groups = GroupQuery::create()
-					->orderByName(Criteria::ASC)
-					->filterByType(4)					
-					->find();					
-					
+                    ->orderByName(Criteria::ASC)
+                    ->filterByType(4)
+                    ->find();
+                    
 // Set the page title and include HTML header
 $sPageTitle = gettext('Sunday School Reports');
 require '../Include/Header.php';
@@ -33,16 +33,16 @@ require '../Include/Header.php';
 if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) {
     $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
     
-    $dFirstSunday = InputUtils::LegacyFilterInput($_POST['FirstSunday'],'date');
-    $dLastSunday = InputUtils::LegacyFilterInput($_POST['LastSunday'],'date');
-    $dNoSchool1 = InputUtils::LegacyFilterInput($_POST['NoSchool1'],'date');
-    $dNoSchool2 = InputUtils::LegacyFilterInput($_POST['NoSchool2'],'date');
-    $dNoSchool3 = InputUtils::LegacyFilterInput($_POST['NoSchool3'],'date');
-    $dNoSchool4 = InputUtils::LegacyFilterInput($_POST['NoSchool4'],'date');
-    $dNoSchool5 = InputUtils::LegacyFilterInput($_POST['NoSchool5'],'date');
-    $dNoSchool6 = InputUtils::LegacyFilterInput($_POST['NoSchool6'],'date');
-    $dNoSchool7 = InputUtils::LegacyFilterInput($_POST['NoSchool7'],'date');
-    $dNoSchool8 = InputUtils::LegacyFilterInput($_POST['NoSchool8'],'date');
+    $dFirstSunday = InputUtils::LegacyFilterInput($_POST['FirstSunday'], 'date');
+    $dLastSunday = InputUtils::LegacyFilterInput($_POST['LastSunday'], 'date');
+    $dNoSchool1 = InputUtils::LegacyFilterInput($_POST['NoSchool1'], 'date');
+    $dNoSchool2 = InputUtils::LegacyFilterInput($_POST['NoSchool2'], 'date');
+    $dNoSchool3 = InputUtils::LegacyFilterInput($_POST['NoSchool3'], 'date');
+    $dNoSchool4 = InputUtils::LegacyFilterInput($_POST['NoSchool4'], 'date');
+    $dNoSchool5 = InputUtils::LegacyFilterInput($_POST['NoSchool5'], 'date');
+    $dNoSchool6 = InputUtils::LegacyFilterInput($_POST['NoSchool6'], 'date');
+    $dNoSchool7 = InputUtils::LegacyFilterInput($_POST['NoSchool7'], 'date');
+    $dNoSchool8 = InputUtils::LegacyFilterInput($_POST['NoSchool8'], 'date');
     $iExtraStudents = InputUtils::LegacyFilterInput($_POST['ExtraStudents'], 'int');
     $iExtraTeachers = InputUtils::LegacyFilterInput($_POST['ExtraTeachers'], 'int');
     $_SESSION['idefaultFY'] = $iFYID;
@@ -126,27 +126,37 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     $iGroupID = 0;
     $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
     
-    if ($currentUser->getCalStart() != null)
-	    $dFirstSunday = $currentUser->getCalStart()->format('Y-m-d');
-    if ($currentUser->getCalEnd() != null)
-	    $dLastSunday = $currentUser->getCalEnd()->format('Y-m-d');
-    if ($currentUser->getCalNoSchool1() != null)
-	    $dNoSchool1 = $currentUser->getCalNoSchool1()->format('Y-m-d');
-    if ($currentUser->getCalNoSchool2() != null)
-	    $dNoSchool2 = $currentUser->getCalNoSchool2()->format('Y-m-d');
-    if ($currentUser->getCalNoSchool3() != null)
-	    $dNoSchool3 = $currentUser->getCalNoSchool3()->format('Y-m-d');
-    if ($currentUser->getCalNoSchool4() != null)
-	    $dNoSchool4 = $currentUser->getCalNoSchool4()->format('Y-m-d');
-    if ($currentUser->getCalNoSchool5() != null)
-	    $dNoSchool5 = $currentUser->getCalNoSchool5()->format('Y-m-d');
-    if ($currentUser->getCalNoSchool6() != null)
-	    $dNoSchool6 = $currentUser->getCalNoSchool6()->format('Y-m-d');
-    if ($currentUser->getCalNoSchool7() != null)
-	    $dNoSchool7 = $currentUser->getCalNoSchool7()->format('Y-m-d');
-    if ($currentUser->getCalNoSchool8() != null)
-	    $dNoSchool8 = $currentUser->getCalNoSchool8()->format('Y-m-d');
-	    
+    if ($currentUser->getCalStart() != null) {
+        $dFirstSunday = $currentUser->getCalStart()->format('Y-m-d');
+    }
+    if ($currentUser->getCalEnd() != null) {
+        $dLastSunday = $currentUser->getCalEnd()->format('Y-m-d');
+    }
+    if ($currentUser->getCalNoSchool1() != null) {
+        $dNoSchool1 = $currentUser->getCalNoSchool1()->format('Y-m-d');
+    }
+    if ($currentUser->getCalNoSchool2() != null) {
+        $dNoSchool2 = $currentUser->getCalNoSchool2()->format('Y-m-d');
+    }
+    if ($currentUser->getCalNoSchool3() != null) {
+        $dNoSchool3 = $currentUser->getCalNoSchool3()->format('Y-m-d');
+    }
+    if ($currentUser->getCalNoSchool4() != null) {
+        $dNoSchool4 = $currentUser->getCalNoSchool4()->format('Y-m-d');
+    }
+    if ($currentUser->getCalNoSchool5() != null) {
+        $dNoSchool5 = $currentUser->getCalNoSchool5()->format('Y-m-d');
+    }
+    if ($currentUser->getCalNoSchool6() != null) {
+        $dNoSchool6 = $currentUser->getCalNoSchool6()->format('Y-m-d');
+    }
+    if ($currentUser->getCalNoSchool7() != null) {
+        $dNoSchool7 = $currentUser->getCalNoSchool7()->format('Y-m-d');
+    }
+    if ($currentUser->getCalNoSchool8() != null) {
+        $dNoSchool8 = $currentUser->getCalNoSchool8()->format('Y-m-d');
+    }
+        
     $iExtraStudents = 0;
     $iExtraTeachers = 0;
 }
@@ -176,9 +186,8 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
           <td>
             <?php
             // Create the group select drop-down
-            echo '<select id="GroupID" name="GroupID[]" multiple size="8" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';            
-            foreach ($groups as $group)
-						{
+            echo '<select id="GroupID" name="GroupID[]" multiple size="8" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';
+            foreach ($groups as $group) {
                 echo '<option value="'.$group->getID().'">'.$group->getName().'</option>';
             }
             echo '</select><br>';
