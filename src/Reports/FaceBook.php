@@ -70,7 +70,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
 	$pdf->SetFont('Times', 'B', 16);
 
-	$pdf->WriteAt($nameX, $yTitle, (gettext("Face Book").' - '.$group->getName().' - '.gettext("Students")));
+	$pdf->WriteAt($nameX, $yTitle, (gettext("Facebook").' - '.$group->getName().' - '.gettext("Students")));
 
 	$FYString = MakeFYString($iFYID);
 	$pdf->WriteAt($phoneX, $yTitle, $FYString);
@@ -186,7 +186,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 	$pdf->AddPage();
 	$nameX = 20;
 	$yTitle = 20;
-	$pdf->WriteAt($nameX, $yTitle, (gettext("Face Book").' - '.$group->getName().' - '.gettext("Teachers")));
+	$pdf->WriteAt($nameX, $yTitle, (gettext("Facebook").' - '.$group->getName().' - '.gettext("Teachers")));
 
 	$FYString = MakeFYString($iFYID);
 	$pdf->WriteAt($phoneX, $yTitle, $FYString);	
