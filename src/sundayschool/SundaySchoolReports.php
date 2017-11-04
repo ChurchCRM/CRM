@@ -30,7 +30,7 @@ $sPageTitle = gettext('Sunday School Reports');
 require '../Include/Header.php';
 
 // Is this the second pass?
-if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) {
+if (isset($_POST['SubmitFaceBook']) || isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) {
     $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
     
     $dFirstSunday = InputUtils::LegacyFilterInput($_POST['FirstSunday'],'date');
@@ -74,7 +74,9 @@ if (isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) 
     $currentUser->setCalNoSchool7($dNoSchool8);
     $currentUser->save();
 
-    if ($bAtLeastOneGroup && isset($_POST['SubmitClassList']) && $aGrpID != 0) {
+    if ($bAtLeastOneGroup && isset($_POST['SubmitFaceBook']) && $aGrpID != 0) {
+        Redirect('Reports/FaceBook.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles.'&pictures='.$withPictures);
+    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassList']) && $aGrpID != 0) {
         Redirect('Reports/ClassList.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles.'&pictures='.$withPictures);
     } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance']) && $aGrpID != 0) {
         $toStr = 'Reports/ClassAttendance.php?';
@@ -258,9 +260,22 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
           <td><br/></td>
         </tr>
         <tr>
-          <td><input type="submit" class="btn btn-primary" name="SubmitClassList" value="<?= gettext('Create Class List') ?>"></td>
-          <td><input type="submit" class="btn btn-info" name="SubmitClassAttendance" value="<?= gettext('Create Attendance Sheet') ?>"></td>
-          <td><input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';"></td>
+          <td width="65%">
+          	  <div class="col-md-4">
+		          <input type="submit" class="btn btn-primary" name="SubmitClassList" value="<?= gettext('Create Class List') ?>">
+		      </div>
+		      <div class="col-md-4">
+    		      <input type="submit" class="btn btn-info" name="SubmitClassAttendance" value="<?= gettext('Create Attendance Sheet') ?>">
+    		  </div>
+    		  <div class="col-md-4">
+    			  <input type="submit" class="btn btn-danger" name="SubmitFaceBook" value="<?= gettext('Create FaceBook') ?>">
+    		  </div>
+    	  </td>
+    	  <td width="35%">
+    	  	<div class="col-rd-12">
+	    		<input type="button" style="align=right" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
+	    	</div>
+    	  </td>
         </tr>
       </table>
     </form>
