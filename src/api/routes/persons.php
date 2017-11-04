@@ -2,7 +2,11 @@
 
 // Person APIs
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Person;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\Photo;
+use Propel\Runtime\Connection\ConnectionInterface;
+
 
 $app->group('/persons', function () {
     // search person by Name
@@ -34,9 +38,17 @@ $app->group('/persons', function () {
     $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
         $person = PersonQuery::create()->findPk($args['personId']);
         if ($person->isPhotoLocal()) {
-            return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
+        		$resp = $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType()); 
+        		// we have to generate the thumbnail too
+        		$resp = $response->write($person->getThumbnailBytes())->withHeader('Content-type', $person->getPhotoContentType());
+        		foreach ($person as $per)// we have to update the last edition
+        				$per->setDateLastEdited(new DateTime());
+            return $resp;
         } else if ($person->isPhotoRemote()) {
-            return $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType());
+        		$resp = $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType());
+        		foreach ($person as $per)// we have to update the last edition
+		        	$per->setDateLastEdited(new DateTime());
+            return $resp;
         } else {
             return $response->withStatus(404);
         }
