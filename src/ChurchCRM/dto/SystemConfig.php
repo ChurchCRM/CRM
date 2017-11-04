@@ -200,8 +200,15 @@ class SystemConfig
         "bSearchIncludeFamilyHOH" => new ConfigItem(2022, "bSearchIncludeFamilyHOH", "boolean", "1", gettext("Show Family Head of House Names")),
         "bSearchIncludeGroups" => new ConfigItem(2023, "bSearchIncludeGroups", "boolean", "1", gettext("Search Groups")),
         "bSearchIncludeDeposits" => new ConfigItem(2024, "bSearchIncludeDeposits", "boolean", "1", gettext("Search Deposits")),
-        "bSearchIncludePayments" => new ConfigItem(2025, "bSearchIncludePayments", "boolean", "1", gettext("Search Payments"))
-
+        "bSearchIncludePayments" => new ConfigItem(2025, "bSearchIncludePayments", "boolean", "1", gettext("Search Payments")),
+        "bSearchIncludeAddresses" => new ConfigItem(2026, "bSearchIncludeAddresses", "boolean", "1", gettext("Search Addresses")),        
+        "bSearchIncludePersonsMax" => new ConfigItem(2027, "bSearchIncludePersonsMax", "text", "15", gettext("Maximum number of Members")),
+        "bSearchIncludeFamiliesMax" => new ConfigItem(2028, "bSearchIncludeFamiliesMax", "text", "15", gettext("Maximum number of Families")),
+        "bSearchIncludeFamilyHOHMax" => new ConfigItem(2029, "bSearchIncludeFamilyHOHMax", "text", "15", gettext("Maximum number of Family H.O.H Names")),
+        "bSearchIncludeGroupsMax" => new ConfigItem(2030, "bSearchIncludeGroupsMax", "text", "15", gettext("Maximum number of Groups")),
+        "bSearchIncludeDepositsMax" => new ConfigItem(2031, "bSearchIncludeDepositsMax", "text", "5", gettext("Maximum number of Deposits")),
+        "bSearchIncludePaymentsMax" => new ConfigItem(2032, "bSearchIncludePaymentsMax", "text", "5", gettext("Maximum number of Payments")),
+        "bSearchIncludeAddressesMax" => new ConfigItem(20233, "bSearchIncludeAddressesMax", "text", "15", gettext("Maximum number of Addresses"))
     );
   }
 
@@ -216,7 +223,7 @@ class SystemConfig
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('System Settings')  => ["sLogLevel", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp"],
-      gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludeFamilies","bSearchIncludeFamilyHOH","bSearchIncludeGroups","bSearchIncludeDeposits", "bSearchIncludePayments"],
+      gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
       gettext('Integration')  => ["sMailChimpApiKey","bEnableGravatarPhotos","sGoogleTrackingID","bEnableGooglePhotos","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword","bEnableExternalCalendarAPI"]
