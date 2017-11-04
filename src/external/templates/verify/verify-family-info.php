@@ -125,7 +125,11 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
 
   <script>
-    var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+    <?php if ($family->getLatitude() !== null) { ?>
+      var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+    <?php } else { ?>
+      var LatLng = null;
+    <?php } ?>
     var token = '<?= $token->getToken()?>';
   </script>
 
