@@ -7,7 +7,7 @@
  *
  *  Additional Contributors:
  *  2006-2007 Ed Davis
- *  2017 Philippe Logel
+ *	2017 Philippe Logel
  *
  *
  *  Copyright Contributors
@@ -88,55 +88,6 @@ require 'Include/Header.php';
     if ($_SESSION['bManageGroups']) {
         echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
         echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
-
-
-      <!-- MEMBER ROLE MODAL-->
-      <div class="modal fade" id="changeMembership" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="upload-Image-label"><?= gettext('Change Member Role') ?></h4>
-            </div>
-            <div class="modal-body">
-              <span style="color: red"><?= gettext('Please select target role for member') ?>:</span>
-              <input type="hidden" id="changingMemberID">
-              <p class="ShadedBox" id="changingMemberName"></p>
-              <select name="newRoleSelection" id="newRoleSelection">
-              </select>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
-              <button name="confirmMembershipChange" id="confirmMembershipChange" type="button" class="btn btn-danger"><?= gettext('Change Membership') ?></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--END MEMBER ROLE MODAL-->
-
-      <!-- TARGET GROP SELECT MODAL-->
-      <div class="modal fade" id="selectTargetGroupModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="upload-Image-label"><?= gettext('Select Target Group') ?></h4>
-            </div>
-            <div class="modal-body">
-              <input type="hidden" id="targetGroupAction">
-              <span style="color: red"><?= gettext('Please select target group for members') ?>:</span>
-              <select name="targetGroupSelection" id="targetGroupSelection" style="width: 50%">
-              </select>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
-              <button name="confirmTargetGroup" id="confirmTargetGroup" type="button" class="btn btn-danger"><?= gettext('Confirm Target Group') ?></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--TARGET GROP SELECT MODAL-->
-
 
       <?php
       if ($thisGroup->getHasSpecialProps()) {
