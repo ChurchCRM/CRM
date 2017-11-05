@@ -258,50 +258,51 @@ function addMenuItem($aMenu, $mIdx)
             } ?>  </a>
 		<ul class="treeview-menu">
 			<?php
-				//Get the Properties assigned to all the sunday Group
-				$sSQL = "SELECT pro_Name,grp_ID, r2p_Value, prt_Name, pro_prt_ID, grp_Name
+                //Get the Properties assigned to all the sunday Group
+                $sSQL = "SELECT pro_Name,grp_ID, r2p_Value, prt_Name, pro_prt_ID, grp_Name
 			        FROM property_pro
 			        LEFT JOIN record2property_r2p ON r2p_pro_ID = pro_ID
         			LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
         			LEFT JOIN group_grp ON group_grp.grp_ID = record2property_r2p.r2p_record_ID
         			WHERE pro_Class = 'g' AND grp_Type = '4' ORDER BY prt_Name, grp_Name ASC";
-				$rsAssignedProperties = RunQuery($sSQL);
-				
-				//Get the sunday groups not assigned by properties
-				$sSQL = "SELECT grp_ID , grp_Name
+            $rsAssignedProperties = RunQuery($sSQL);
+                
+            //Get the sunday groups not assigned by properties
+            $sSQL = "SELECT grp_ID , grp_Name
 			        FROM group_grp
 			        LEFT JOIN record2property_r2p ON record2property_r2p.r2p_record_ID = group_grp.grp_ID
         			WHERE record2property_r2p.r2p_record_ID IS NULL AND grp_Type = '4' ORDER BY grp_Name ASC";
-				$rsWithoutAssignedProperties = RunQuery($sSQL);
-				
-					
-			if ($aMenu['name'] == 'sundayschool') {
-				echo "<li><a href='" . SystemURLs::getRootPath() . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>" . gettext('Dashboard') . '</a></li>';
-												
-				$property = '';
-				while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-					if ($aRow[pro_Name] != $property)
-					{
-						if (!empty($property))
-							echo '</ul></li>';
+            $rsWithoutAssignedProperties = RunQuery($sSQL);
+                
+                    
+            if ($aMenu['name'] == 'sundayschool') {
+                echo "<li><a href='" . SystemURLs::getRootPath() . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>" . gettext('Dashboard') . '</a></li>';
+                                                
+                $property = '';
+                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                    if ($aRow[pro_Name] != $property) {
+                        if (!empty($property)) {
+                            echo '</ul></li>';
+                        }
 
-						echo '<li><a href="#"><i class="fa fa-child"></i><pan>'.$aRow[pro_Name].'</span></a>';
-						echo '<ul class="treeview-menu">';
-						
+                        echo '<li><a href="#"><i class="fa fa-child"></i><pan>'.$aRow[pro_Name].'</span></a>';
+                        echo '<ul class="treeview-menu">';
+                        
 
-						$property = $aRow[pro_Name];
-					}	
-            		echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . '</a></li>';
-		        }
-		        
-				if (!empty($property))
-					echo '</ul></li>';
-					
-				// the non assigned group to a group property
-				while ($aRow = mysqli_fetch_array($rsWithoutAssignedProperties)) {
-            		echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . '</a></li>';
-        		}
-			}
+                        $property = $aRow[pro_Name];
+                    }
+                    echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . '</a></li>';
+                }
+                
+                if (!empty($property)) {
+                    echo '</ul></li>';
+                }
+                    
+                // the non assigned group to a group property
+                while ($aRow = mysqli_fetch_array($rsWithoutAssignedProperties)) {
+                    echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . '</a></li>';
+                }
+            }
         }
         if (($aMenu['ismenu']) && ($numItems > 0)) {
             echo "\n";
@@ -309,17 +310,17 @@ function addMenuItem($aMenu, $mIdx)
             echo "</ul>\n</li>\n";
                         
             /*echo '<li><a href="#">One Level</a></li>';
-			echo '  <li class="treeview">';
-		    echo '<a href="#">Multilevel</a>';
-		    echo '<ul class="treeview-menu">';
-	        echo '<li><a href="#">Level 2</a>';
-		    echo '<ul class="treeview-menu">';
-	        echo '<li><a href="#">Level 3</a></li>';
-	        echo '<li><a href="#">Level 3</a></li>';
-    		echo '</ul>';
-	        echo '</li>';
-    		echo '</ul>';
-		    echo '</li>';*/
+            echo '  <li class="treeview">';
+            echo '<a href="#">Multilevel</a>';
+            echo '<ul class="treeview-menu">';
+            echo '<li><a href="#">Level 2</a>';
+            echo '<ul class="treeview-menu">';
+            echo '<li><a href="#">Level 3</a></li>';
+            echo '<li><a href="#">Level 3</a></li>';
+            echo '</ul>';
+            echo '</li>';
+            echo '</ul>';
+            echo '</li>';*/
         } else {
             echo "</li>\n";
         }
