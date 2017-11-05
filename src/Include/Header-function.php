@@ -308,18 +308,6 @@ function addMenuItem($aMenu, $mIdx)
             addMenu($aMenu['name']);
             echo "</ul>\n</li>\n";
                         
-            /*echo '<li><a href="#">One Level</a></li>';
-			echo '  <li class="treeview">';
-		    echo '<a href="#">Multilevel</a>';
-		    echo '<ul class="treeview-menu">';
-	        echo '<li><a href="#">Level 2</a>';
-		    echo '<ul class="treeview-menu">';
-	        echo '<li><a href="#">Level 3</a></li>';
-	        echo '<li><a href="#">Level 3</a></li>';
-    		echo '</ul>';
-	        echo '</li>';
-    		echo '</ul>';
-		    echo '</li>';*/
         } else {
             echo "</li>\n";
         }
