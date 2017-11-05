@@ -8,7 +8,6 @@
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
  *  Update 2017 Philippe Logel
  *
-
  *
  ******************************************************************************/
 
@@ -259,7 +258,7 @@ function addMenuItem($aMenu, $mIdx)
             } ?>  </a>
 		<ul class="treeview-menu">
 			<?php
-				//Get the Properties assigned to this Group
+				//Get the Properties assigned to all the sunday Group
 				$sSQL = "SELECT pro_Name,grp_ID, r2p_Value, prt_Name, pro_prt_ID, grp_Name
 			        FROM property_pro
 			        LEFT JOIN record2property_r2p ON r2p_pro_ID = pro_ID
@@ -268,7 +267,7 @@ function addMenuItem($aMenu, $mIdx)
         			WHERE pro_Class = 'g' AND grp_Type = '4' ORDER BY prt_Name, grp_Name ASC";
 				$rsAssignedProperties = RunQuery($sSQL);
 				
-				//Get the group not assigned by properties
+				//Get the sunday groups not assigned by properties
 				$sSQL = "SELECT grp_ID , grp_Name
 			        FROM group_grp
 			        LEFT JOIN record2property_r2p ON record2property_r2p.r2p_record_ID = group_grp.grp_ID
@@ -279,23 +278,23 @@ function addMenuItem($aMenu, $mIdx)
 			if ($aMenu['name'] == 'sundayschool') {
 				echo "<li><a href='" . SystemURLs::getRootPath() . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>" . gettext('Dashboard') . '</a></li>';
 												
-				$properties = '';
+				$property = '';
 				while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-					if ($aRow[pro_Name] != $properties)
+					if ($aRow[pro_Name] != $property)
 					{
-						if ($properties != '')
+						if (!empty($property))
 							echo '</ul></li>';
 
 						echo '<li><a href="#"><i class="fa fa-child"></i><pan>'.$aRow[pro_Name].'</span></a>';
 						echo '<ul class="treeview-menu">';
 						
 
-						$properties = $aRow[pro_Name];
+						$property = $aRow[pro_Name];
 					}	
             		echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . '</a></li>';
 		        }
 		        
-				if ($properties != '')
+				if (!empty($property))
 					echo '</ul></li>';
 					
 				// the non assigned group to a group property
