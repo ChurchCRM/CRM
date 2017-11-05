@@ -7,6 +7,7 @@
  *
  *  Additional Contributors:
  *  2006-2007 Ed Davis
+ *  2017 Philippe Logel
  *
  *
  *  Copyright Contributors
