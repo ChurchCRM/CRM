@@ -285,7 +285,7 @@ function addMenuItem($aMenu, $mIdx)
 						if (!empty($property))
 							echo '</ul></li>';
 
-						echo '<li><a href="#"><i class="fa fa-child"></i><pan>'.$aRow[pro_Name].'</span></a>';
+						echo '<li><a href="#"><i class="fa fa-user-o"></i><pan>'.$aRow[pro_Name].'</span></a>';
 						echo '<ul class="treeview-menu">';
 						
 
