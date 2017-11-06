@@ -2,7 +2,7 @@
 /*******************************************************************************
 *
 *  filename    : sundayschol/SundaySchoolClassListExport.php
-*  last change : 2017-10-29 Philippe Logel
+*  last change : 2017-11-03 Philippe Logel
 *  description : Creates a csv for a Sunday School Class List
 
 ******************************************************************************/
@@ -39,7 +39,7 @@ if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
 
 
 fputcsv($out, [InputUtils::translate_special_charset('Class'),
-    InputUtils::translate_special_charset('Role'),
+  InputUtils::translate_special_charset('Role'),
   InputUtils::translate_special_charset('First Name'),
   InputUtils::translate_special_charset('Last Name'),
   InputUtils::translate_special_charset('Birth Date'),
@@ -54,7 +54,7 @@ fputcsv($out, [InputUtils::translate_special_charset('Class'),
   InputUtils::translate_special_charset('Mom Email'),
   InputUtils::translate_special_charset('Properties') ], $delimiter);
 
-
+// only the unday groups
 $groups = GroupQuery::create()
                     ->orderByName(Criteria::ASC)
                     ->filterByType(4)
@@ -76,20 +76,19 @@ foreach ($groups as $group) {
         $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
             
         $lst_OptionName = $groupRole->getOptionName();
-        
-        $perID = $groupRoleMembership->getPersonId();
-        $kid = PersonQuery::create()->findPk($perID);
+        $member = $groupRoleMembership->getPerson();
     
-        $firstName = $kid->getFirstName();
-        $middlename = $kid->getMiddleName();
-        $lastname = $kid->getLastName();
-        $birthDay = $kid->getBirthDay();
-        $birthMonth = $kid->getBirthMonth();
-        $birthYear = $kid->getBirthYear();
-        $homePhone = $kid->getHomePhone();
-        $mobilePhone = $kid->getCellPhone();
+        $firstName = $member->getFirstName();
+        $middlename = $member->getMiddleName();
+        $lastname = $member->getLastName();
+        $birthDay = $member->getBirthDay();
+        $birthMonth = $member->getBirthMonth();
+        $birthYear = $member->getBirthYear();
+        $homePhone = $member->getHomePhone();
+        $mobilePhone = $member->getCellPhone();
+        $hideAge = $member->hideAge();
                     
-        $family = $kid->getFamily();
+        $family = $member->getFamily();
         
         $Address1 = $Address2 = $city = $state = $zip = " ";
         $dadFirstName = $dadLastName = $dadCellPhone = $dadEmail = " ";
@@ -127,7 +126,7 @@ foreach ($groups as $group) {
             }
         }
         
-        $assignedProperties = $kid->getProperties();
+        $assignedProperties = $member->getProperties();
         $props = " ";
         if ($lst_OptionName == "Student" && !empty($assignedProperties)) {
             foreach ($assignedProperties as $property) {
@@ -137,9 +136,10 @@ foreach ($groups as $group) {
             $props = chop($props, ", ");
         }
         
-        
-        if ($birthYear != '') {
-            $birthDate = $birthDay.'/'.$birthMonth.'/'.$birthYear;
+        $birthDate = '';
+        if ($birthYear != '' && !$birthDate && (!$member->getFlags() || $lst_OptionName == "Student")) {
+            $publishDate = DateTime::createFromFormat('Y-m-d', $birthYear.'-'.$birthMonth.'-'.$birthDay);
+            $birthDate = $publishDate->format(SystemConfig::getValue("sDateFormatLong"));
         }
         
         fputcsv($out, [
@@ -147,7 +147,7 @@ foreach ($groups as $group) {
             InputUtils::translate_special_charset($lst_OptionName),
             InputUtils::translate_special_charset($firstName),
             InputUtils::translate_special_charset($lastname),
-             $birthDate, $mobilePhone, $homePhone,
+            $birthDate, $mobilePhone, $homePhone,
             InputUtils::translate_special_charset($Address1).' '.InputUtils::translate_special_charset($Address2).' '.InputUtils::translate_special_charset($city).' '.InputUtils::translate_special_charset($state).' '.$zip,
             InputUtils::translate_special_charset($dadFirstName).' '.InputUtils::translate_special_charset($dadLastName), $dadCellPhone, $dadEmail,
             InputUtils::translate_special_charset($momFirstName).' '.InputUtils::translate_special_charset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
