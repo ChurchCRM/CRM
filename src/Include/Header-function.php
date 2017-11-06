@@ -247,7 +247,7 @@ function addMenuItem($aMenu, $mIdx)
                     echo gettext($aMenu['content']) . '</a>';
                 }
             } else if ($aMenu['name'] == 'listgroups'){
-	            	echo "<li><a href='" . SystemURLs::getRootPath() . "GroupList.php'><i class='fa fa-angle-double-right'></i>" . gettext('List Groups') . '</a></li>';
+	            	echo "<li><a href='" . SystemURLs::getRootPath() . "/GroupList.php'><i class='fa fa-angle-double-right'></i>" . gettext('List Groups') . '</a></li>';
 	            								
 								$listOptions = ListOptionQuery::Create()
 															->filterById(3)
@@ -270,7 +270,11 @@ function addMenuItem($aMenu, $mIdx)
 									
 											foreach ($groups as $group)
 											{
-												echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " . $group->getName() . '</a></li>';
+												$str = $group->getName();
+												if (strlen($str)>23)
+													$str = substr($str,0,20)." ...";
+													
+												echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
 											}
 											echo '</ul></li>';	
 										}
@@ -344,15 +348,24 @@ function addMenuItem($aMenu, $mIdx)
 
 								$property = $aRow[pro_Name];
 							}	
-										echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . '</a></li>';
-							}
+							
+							$str = gettext($aRow[grp_Name]);
+							if (strlen($str)>23)
+								$str = substr($str,0,20)." ...";
+													
+							echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
+						}
 						
-							if (!empty($property))
+						if (!empty($property))
 							echo '</ul></li>';
 					
 							// the non assigned group to a group property
 							while ($aRow = mysqli_fetch_array($rsWithoutAssignedProperties)) {
-										echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . '</a></li>';
+									$str = gettext($aRow[grp_Name]);
+									if (strlen($str)>23)
+										$str = substr($str,0,20)." ...";
+										
+									echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $str . '</a></li>';
 							}
 						}
         }
