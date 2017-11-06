@@ -274,7 +274,7 @@ function addMenuItem($aMenu, $mIdx)
 			        LEFT JOIN record2property_r2p ON record2property_r2p.r2p_record_ID = group_grp.grp_ID
        			  LEFT JOIN property_pro ON property_pro.pro_ID = record2property_r2p.r2p_pro_ID
 			        LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-        			WHERE ((record2property_r2p.r2p_record_ID IS NULL) OR (propertytype_prt.prt_Name = 'General')) AND grp_Type = '4' ORDER BY grp_Name ASC";
+        			WHERE ((record2property_r2p.r2p_record_ID IS NULL) OR (propertytype_prt.prt_Name != 'MENU')) AND grp_Type = '4' ORDER BY grp_Name ASC";
 				$rsWithoutAssignedProperties = RunQuery($sSQL);
 				
 					
