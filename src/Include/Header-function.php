@@ -206,6 +206,7 @@ function addMenu($menu)
 function addMenuItem($aMenu, $mIdx)
 {
     global $security_matrix;
+    $maxStr = 25;
 
     $link = ($aMenu['uri'] == '') ? '' : SystemURLs::getRootPath() . '/' . $aMenu['uri'];
     $text = $aMenu['statustext'];
@@ -271,8 +272,8 @@ function addMenuItem($aMenu, $mIdx)
 											foreach ($groups as $group)
 											{
 												$str = $group->getName();
-												if (strlen($str)>23)
-													$str = substr($str,0,20)." ...";
+												if (strlen($str)>$maxStr)
+													$str = substr($str,0,$maxStr-3)." ...";
 													
 												echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
 											}
@@ -350,8 +351,8 @@ function addMenuItem($aMenu, $mIdx)
 							}	
 							
 							$str = gettext($aRow[grp_Name]);
-							if (strlen($str)>23)
-								$str = substr($str,0,20)." ...";
+							if (strlen($str)>$maxStr)
+								$str = substr($str,0,$maxStr-3)." ...";
 													
 							echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
 						}
@@ -362,8 +363,8 @@ function addMenuItem($aMenu, $mIdx)
 							// the non assigned group to a group property
 							while ($aRow = mysqli_fetch_array($rsWithoutAssignedProperties)) {
 									$str = gettext($aRow[grp_Name]);
-									if (strlen($str)>23)
-										$str = substr($str,0,20)." ...";
+									if (strlen($str)>$maxStr)
+										$str = substr($str,0,$maxStr-3)." ...";
 										
 									echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $str . '</a></li>';
 							}
