@@ -46,7 +46,8 @@ $(document).ready(function () {
           var person = data.Person2group2roleP2g2rs[0];
           var node = window.CRM.DataTableAPI.row.add(person).node();
           window.CRM.DataTableAPI.rows().invalidate().draw(true);
-          $(".personSearch").val(null).trigger('change')
+          $(".personSearch").val(null).trigger('change');
+          dataT.ajax.reload();
         });
       })
       
