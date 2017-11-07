@@ -22,6 +22,10 @@ use ChurchCRM\Group;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\ListOption;
+use ChurchCRM\MenuConfigQuery;
+use ChurchCRM\MenuConfig;
+use ChurchCRM\UserConfigQuery;
+use ChurchCRM\UserConfig;
 
 function Header_system_notifications()
 {
@@ -138,6 +142,7 @@ function Header_body_scripts()
 
 $security_matrix = GetSecuritySettings();
 
+// return the security group to table
 function GetSecuritySettings()
 {
     $aSecurityList[] = 'bAdmin';
@@ -152,48 +157,58 @@ function GetSecuritySettings()
     $aSecurityList[] = 'bCanvasser';
     $aSecurityList[] = 'bAddEvent';
     $aSecurityList[] = 'bSeePrivacyData';
+    
+   	$ormSecGrpLists = UserConfigQuery::Create()   							
+    					->filterByPeronId(0)
+    					->filterByCat('SECURITY')
+    					->orderById()
+    					->find();
 
-    $sSQL = "SELECT DISTINCT ucfg_name, ucfg_id
-           FROM userconfig_ucfg
-           WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY'
-           ORDER by ucfg_id";
-
-    $rsSecGrpList = RunQuery($sSQL);
-
-    while ($aRow = mysqli_fetch_array($rsSecGrpList)) {
-        $aSecurityList[] = $aRow['ucfg_name'];
+		$aSecurityListPrimal=[];
+		
+    foreach ($ormSecGrpLists as $ormSecGrpList) {
+        array_push($aSecurityListPrimal,$ormSecGrpList->getName());
     }
 
-    asort($aSecurityList);
-
-    $sSecurityCond = " AND (security_grp = 'bALL'";
-    for ($i = 0; $i < count($aSecurityList); $i++) {
-        if (array_key_exists($aSecurityList[$i], $_SESSION) && $_SESSION[$aSecurityList[$i]]) {
-            $sSecurityCond .= " OR security_grp = '" . $aSecurityList[$i] . "'";
+    asort($aSecurityListPrimal);
+    
+    $aSecurityListFinal = array('bALL');
+    for ($i = 0; $i < count($aSecurityListPrimal); $i++) {
+        if (array_key_exists($aSecurityListPrimal[$i], $_SESSION) && $_SESSION[$aSecurityListPrimal[$i]]) {
+            array_push($aSecurityListFinal,$aSecurityListPrimal[$i]);
         }
     }
-    $sSecurityCond .= ')';
-
-    return $sSecurityCond;
+    
+    return $aSecurityListFinal;
 }
 
 function addMenu($menu)
 {
     global $security_matrix;
-
-    $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text,
-                  session_var_in_uri, url_parm_name, security_grp, icon
-           FROM menuconfig_mcf
-           WHERE parent = '$menu' AND active=1 " . $security_matrix . '
-           ORDER BY sortorder';
-
-    $rsMenu = RunQuery($sSQL);
-    $item_cnt = mysqli_num_rows($rsMenu);
+    
+    $ormMenus = MenuConfigQuery::Create()   							
+    					->filterByParent('%'.$menu.'%', Criteria::LIKE)
+    					->filterByActive(1);
+    
+    $firstTime = 1;					
+    for ($i = 0; $i < count($security_matrix); $i++) {
+			if ($firstTime)
+				$ormMenus->filterBySecurityGroup($security_matrix[$i]);
+			else 
+				$ormMenus->_or()->filterBySecurityGroup($security_matrix[$i]);
+			$firstTime = 0;
+    }
+    
+    $ormMenus->orderBySortOrder()
+    					->find();
+    
+    $item_cnt = count($ormMenus);
+    
     $idx = 1;
-    $ptr = 1;
-    while ($aRow = mysqli_fetch_array($rsMenu)) {
-        if (addMenuItem($aRow, $idx)) {
-            if ($ptr == $item_cnt) {
+    $ptr = 1;					
+    foreach ($ormMenus as $ormMenu) {    						 
+    		if (addMenuItem($ormMenu, $idx)) {
+    				if ($ptr == $item_cnt) {
                 $idx++;
             }
             $ptr++;
@@ -203,175 +218,191 @@ function addMenu($menu)
     }
 }
 
-function addMenuItem($aMenu, $mIdx)
+function addMenuItem($ormMenu, $mIdx)
 {
     global $security_matrix;
     $maxStr = 25;
+    
+    //echo "ormMenu : ".$ormMenu."<br>";
 
-    $link = ($aMenu['uri'] == '') ? '' : SystemURLs::getRootPath() . '/' . $aMenu['uri'];
-    $text = $aMenu['statustext'];
-    if (!is_null($aMenu['session_var'])) {
-        if (($link > '') && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
+    $link = ($ormMenu->getURI() == '') ? '' : SystemURLs::getRootPath() . '/' . $ormMenu->getURI();
+    $text = $ormMenu->getStatus();
+    if (!is_null($ormMenu->getSessionVar())) {
+        if (($link > '') && ($ormMenu->getSessionVarInURI()) && isset($_SESSION[$ormMenu->getSessionVar()])) {
             if (strstr($link, '?') && true) {
                 $cConnector = '&';
             } else {
                 $cConnector = '?';
             }
-            $link .= $cConnector . $aMenu['url_parm_name'] . '=' . $_SESSION[$aMenu['session_var']];
+            $link .= $cConnector . $ormMenu->getURLParmName() . '=' . $_SESSION[$ormMenu->getSessionVar()];
         }
-        if (($text > '') && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
-            $text .= ' ' . $_SESSION[$aMenu['session_var']];
+        if (($text > '') && ($ormMenu->getSessionVarInText()) && isset($_SESSION[$ormMenu->getSessionVar()])) {
+            $text .= ' ' . $_SESSION[$ormMenu->getSessionVar()];
         }
     }
-    if ($aMenu['ismenu']) {
-        $sSQL = "SELECT name
-             FROM menuconfig_mcf
-             WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . '
-             ORDER BY sortorder';
-
-        $rsItemCnt = RunQuery($sSQL);
-        $numItems = mysqli_num_rows($rsItemCnt);
+    if ($ormMenu->getMenu()) {
+    		$ormItemCnt = MenuConfigQuery::Create()   							
+    					->filterByParent('%'.$menu.'%', Criteria::LIKE)
+    					->filterByActive(1);
+    
+				$firstTime = 1;					
+				for ($i = 0; $i < count($security_matrix); $i++) {
+					if ($firstTime)
+						$ormItemCnt->filterBySecurityGroup($security_matrix[$i]);
+					else 
+						$ormItemCnt->_or()->filterBySecurityGroup($security_matrix[$i]);
+					$firstTime = 0;
+				}
+		
+				$ormItemCnt->orderBySortOrder()
+    					->find();
+    
+    		$numItems = count($ormItemCnt);
     }
-    if (!($aMenu['ismenu']) || ($numItems > 0)) {
-        if ($link) {
-            if ($aMenu['name'] != 'sundayschool-dash' && $aMenu['name'] != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
-                echo "<li><a href='$link'>";
-                if ($aMenu['icon'] != '') {
-                    echo '<i class="fa ' . $aMenu['icon'] . '"></i>';
-                }
-                if ($aMenu['parent'] != 'root') {
-                    echo '<i class="fa fa-angle-double-right"></i> ';
-                }
-                if ($aMenu['parent'] == 'root') {
-                    echo '<span>' . gettext($aMenu['content']) . '</span></a>';
-                } else {
-                    echo gettext($aMenu['content']) . '</a>';
-                }
-            } elseif ($aMenu['name'] == 'listgroups') {
-                echo "<li><a href='" . SystemURLs::getRootPath() . "/GroupList.php'><i class='fa fa-angle-double-right'></i>" . gettext('List Groups') . '</a></li>';
-                                                
-                $listOptions = ListOptionQuery::Create()
-                                                            ->filterById(3)
-                                                            ->orderByOptionName()
-                                                            ->Find();
-                                                            
-                foreach ($listOptions as $listOption) {
-                    if ($listOption->getOptionId() != 4) {// we avoid the sundaySchool, it's done under
-                        $groups=GroupQuery::Create()
-                                            ->filterByType($listOption->getOptionId())
-                                            ->orderByName()
-                                            ->find();
-                                                        
-                        if (count($groups)>0) {// only if the groups exist
-                            echo "<li><a href='#'><i class='fa fa-user-o'></i>" . $listOption->getOptionName(). '</a>';
-                            echo '<ul class="treeview-menu">';
-                                    
-                            foreach ($groups as $group) {
-                                $str = $group->getName();
-                                if (strlen($str)>$maxStr) {
-                                    $str = substr($str, 0, $maxStr-3)." ...";
-                                }
-                                                    
-                                echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
-                            }
-                            echo '</ul></li>';
-                        }
-                    }
-                }
-                                
-                // now we're searching the unclassified groups
-                $groups=GroupQuery::Create()
-                                            ->filterByType(0)
-                                            ->orderByName()
-                                            ->find();
-                                            
-                if (count($groups)>0) {
-                    echo "<li><a href='#'><i class='fa fa-user-o'></i>" . gettext("Unassigned"). '</a>';
-                    echo '<ul class="treeview-menu">';
+    if (!($ormMenu->getMenu()) || ($numItems > 0)) {
+      if ($link) {
+        if ($ormMenu->getName() != 'sundayschool-dash' && $ormMenu->getName() != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
+          echo "<li><a href='$link'>";
+          if ($ormMenu->getIcon() != '') {
+            echo '<i class="fa ' . $ormMenu->getIcon() . '"></i>';
+          }
+          if ($ormMenu->getParent() != 'root') {
+            echo '<i class="fa fa-angle-double-right"></i> ';
+          }
+          if ($ormMenu->getParent() == 'root') {
+            echo '<span>' . gettext($ormMenu->getContent()) . '</span></a>';
+          } else {
+            echo gettext($ormMenu->getContent()) . '</a>';
+          }
+        } else if ($ormMenu->getName() == 'listgroups'){
+	        echo "<li><a href='" . SystemURLs::getRootPath() . "/GroupList.php'><i class='fa fa-angle-double-right'></i>" . gettext('List Groups') . '</a></li>';
+	            								
+		    $listOptions = ListOptionQuery::Create()
+					->filterById(3)
+					->orderByOptionName()
+					->find();
+															
+			foreach ($listOptions as $listOption)
+			{
+				if ($listOption->getOptionId() != 4)// we avoid the sundaySchool, it's done under
+				{
+			    	$groups=GroupQuery::Create()
+				    		->filterByType($listOption->getOptionId())
+							->orderByName()
+							->find();		
+											
+					if (count($groups)>0)// only if the groups exist : !empty doesn't work !
+					{
+						echo "<li><a href='#'><i class='fa fa-user-o'></i>" . $listOption->getOptionName(). '</a>';		
+						echo '<ul class="treeview-menu">';
+						
+						foreach ($groups as $group)
+						{
+							$str = $group->getName();
+							if (strlen($str)>$maxStr)
+								$str = substr($str,0,$maxStr-3)." ...";
+										
+								echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
+							}
+							echo '</ul></li>';	
+						}
+					}
+				}
+								
+				// now we're searching the unclassified groups
+				$groups=GroupQuery::Create()
+							->filterByType(0)
+							->orderByName()
+							->find();
+								
+				if (count($groups)>0)// only if the groups exist : !empty doesn't work !
+				{
+						echo "<li><a href='#'><i class='fa fa-user-o'></i>" . gettext("Unassigned"). '</a>';		
+						echo '<ul class="treeview-menu">';
 
-                    foreach ($groups as $group) {
-                        echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " . $group->getName() . '</a></li>';
-                    }
-                    echo '</ul></li>';
-                }
+                        foreach ($groups as $group)
+						{
+							echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " . $group->getName() . '</a></li>';
+						}
+						echo '</ul></li>';	
+				}
             }
-        } else {
+        } else {          
             echo "<li class=\"treeview\">\n";
             echo "    <a href=\"#\">\n";
-            if ($aMenu['icon'] != '') {
-                echo '<i class="fa ' . $aMenu['icon'] . "\"></i>\n";
+      	    if ($ormMenu->getIcon() != '') {
+                echo '<i class="fa ' . $ormMenu->getIcon() . "\"></i>\n";
             }
-            echo '<span>' . gettext($aMenu['content']) . "</span>\n";
+            echo '<span>' . gettext($ormMenu->getContent()) . "</span>\n";
             echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
-            if ($aMenu['name'] == 'deposit') {
+          
+            if ($ormMenu->getName() == 'deposit') {
                 echo '<small class="badge pull-right bg-green">' . $_SESSION['iCurrentDeposit'] . "</small>\n";
             } ?>  </a>
-				<ul class="treeview-menu">
-					<?php
-                        //Get the Properties assigned to all the sunday Group
-                        $sSQL = "SELECT pro_Name,grp_ID, r2p_Value, prt_Name, pro_prt_ID, grp_Name
-									FROM property_pro
-									LEFT JOIN record2property_r2p ON r2p_pro_ID = pro_ID
-									LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-									LEFT JOIN group_grp ON group_grp.grp_ID = record2property_r2p.r2p_record_ID
-									WHERE pro_Class = 'g' AND grp_Type = '4' AND prt_Name = 'MENU' ORDER BY pro_Name, grp_Name ASC";
-            $rsAssignedProperties = RunQuery($sSQL);
-                
-            //Get the sunday groups not assigned by properties
-                
-            $sSQL = "SELECT grp_ID , grp_Name,prt_Name,pro_prt_ID
+			<ul class="treeview-menu">
+			<?php
+				//Get the Properties assigned to all the sunday Group
+				$sSQL = "SELECT pro_Name,grp_ID, r2p_Value, prt_Name, pro_prt_ID, grp_Name
+						FROM property_pro
+						LEFT JOIN record2property_r2p ON r2p_pro_ID = pro_ID
+						LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
+						LEFT JOIN group_grp ON group_grp.grp_ID = record2property_r2p.r2p_record_ID
+						WHERE pro_Class = 'g' AND grp_Type = '4' AND prt_Name = 'MENU' ORDER BY pro_Name, grp_Name ASC";
+				$rsAssignedProperties = RunQuery($sSQL);
+				
+	    		//Get the sunday groups not assigned by properties
+				
+				$sSQL = "SELECT grp_ID , grp_Name,prt_Name,pro_prt_ID
 									FROM group_grp
 									LEFT JOIN record2property_r2p ON record2property_r2p.r2p_record_ID = group_grp.grp_ID
 									LEFT JOIN property_pro ON property_pro.pro_ID = record2property_r2p.r2p_pro_ID
 									LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
 									WHERE ((record2property_r2p.r2p_record_ID IS NULL) OR (propertytype_prt.prt_Name != 'MENU')) AND grp_Type = '4' ORDER BY grp_Name ASC";
-            $rsWithoutAssignedProperties = RunQuery($sSQL);
-                
-                    
-            if ($aMenu['name'] == 'sundayschool') {
-                echo "<li><a href='" . SystemURLs::getRootPath() . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>" . gettext('Dashboard') . '</a></li>';
-                                                
-                $property = '';
-                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                    if ($aRow[pro_Name] != $property) {
-                        if (!empty($property)) {
-                            echo '</ul></li>';
-                        }
+				$rsWithoutAssignedProperties = RunQuery($sSQL);
+				
+					
+				if ($ormMenu->getName() == 'sundayschool') {
+		    		echo "<li><a href='" . SystemURLs::getRootPath() . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>" . gettext('Dashboard') . '</a></li>';
+												
+					$property = '';
+					while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+			    		if ($aRow[pro_Name] != $property)
+				    	{
+							if (!empty($property))
+								echo '</ul></li>';
 
-                        echo '<li><a href="#"><i class="fa fa-user-o"></i><pan>'.$aRow[pro_Name].'</span></a>';
-                        echo '<ul class="treeview-menu">';
-                        
+							echo '<li><a href="#"><i class="fa fa-user-o"></i><pan>'.$aRow[pro_Name].'</span></a>';
+							echo '<ul class="treeview-menu">';
+						
 
-                        $property = $aRow[pro_Name];
-                    }
-                            
-                    $str = gettext($aRow[grp_Name]);
-                    if (strlen($str)>$maxStr) {
-                        $str = substr($str, 0, $maxStr-3)." ...";
-                    }
-                                                    
-                    echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
-                }
-                        
-                if (!empty($property)) {
-                    echo '</ul></li>';
-                }
-                    
-                // the non assigned group to a group property
-                while ($aRow = mysqli_fetch_array($rsWithoutAssignedProperties)) {
-                    $str = gettext($aRow[grp_Name]);
-                    if (strlen($str)>$maxStr) {
-                        $str = substr($str, 0, $maxStr-3)." ...";
-                    }
-                                        
-                    echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $str . '</a></li>';
-                }
-            }
+							$property = $aRow[pro_Name];
+						}	
+							
+						$str = gettext($aRow[grp_Name]);
+						if (strlen($str)>$maxStr)
+							$str = substr($str,0,$maxStr-3)." ...";
+													
+						echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
+					}
+						
+					if (!empty($property))
+						echo '</ul></li>';
+					
+							// the non assigned group to a group property
+					while ($aRow = mysqli_fetch_array($rsWithoutAssignedProperties)) {
+						$str = gettext($aRow[grp_Name]);
+						if (strlen($str)>$maxStr)
+							$str = substr($str,0,$maxStr-3)." ...";
+										
+						echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $str . '</a></li>';
+					}
+				}
         }
-        if (($aMenu['ismenu']) && ($numItems > 0)) {
+        if (($ormMenu->getMenu()) && ($numItems > 0)) {
             echo "\n";
-            addMenu($aMenu['name']);
+            addMenu($ormMenu->getName());
             echo "</ul>\n</li>\n";
+                        
         } else {
             echo "</li>\n";
         }
@@ -382,81 +413,4 @@ function addMenuItem($aMenu, $mIdx)
     }
 }
 
-    function create_side_nav($menu)
-    {
-        echo '<p>';
-        addSection($menu);
-        echo "</p>\n";
-    }
-
-    function addSection($menu)
-    {
-        global $cnInfoCentral;
-
-        $security_matrix = " AND (security_grp = 'bALL'";
-        if ($_SESSION['bAdmin']) {
-            $security_matrix .= " OR security_grp = 'bAdmin'";
-        }
-        if ($_SESSION['bAddRecords']) {
-            $security_matrix .= " OR security_grp = 'bAddRecords'";
-        }
-        if ($_SESSION['bMenuOptions']) {
-            $security_matrix .= " OR security_grp = 'bMenuOptions'";
-        }
-        if ($_SESSION['bFinance']) {
-            $security_matrix .= " OR security_grp = 'bFinance'";
-        }
-        if ($_SESSION['bManageGroups']) {
-            $security_matrix .= " OR security_grp = 'bManageGroups'";
-        }
-        $security_matrix .= ')';
-        $query = "SELECT name, ismenu, content, uri, statustext, session_var, session_var_in_text,
-                         session_var_in_uri, url_parm_name, security_grp
-                  FROM menuconfig_mcf
-                  WHERE parent = '$menu' AND active=1 " . $security_matrix . '
-                  ORDER BY sortorder';
-
-        $rsMenu = mysqli_query($cnInfoCentral, $query);
-        $item_cnt = mysqli_num_rows($rsMenu);
-        $ptr = 1;
-        while ($aRow = mysqli_fetch_array($rsMenu)) {
-            if (isset($aRow['admin_only']) & !$_SESSION['bAdmin']) {
-                // hide admin menu
-            } else {
-                addEntry($aRow);
-            }
-            $ptr++;
-        }
-    }
-
-    function addEntry($aMenu)
-    {
-        $link = ($aMenu['uri'] == '') ? '' : SystemURLs::getRootPath() . '/' . $aMenu['uri'];
-        $text = $aMenu['statustext'];
-        $content = $aMenu['content'];
-        if (!is_null($aMenu['session_var'])) {
-            if (($link > '') && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
-                $link .= '?' . $aMenu['url_parm_name'] . '=' . $_SESSION[$aMenu['session_var']];
-            }
-            if (($text > '') && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
-                $text .= ' ' . $_SESSION[$aMenu['session_var']];
-            }
-        }
-        if (mb_substr($content, 1, 10) == '----------') {
-            $content = '--------------------';
-        }
-        if ($aMenu['ismenu']) {
-            echo "</p>\n<p>\n";
-        }
-        if ($link > '') {
-            echo '<a class="SmallText" href="' . $link . '">' . $content . '</a>';
-        } else {
-            echo $content;
-        }
-        echo "<br>\n";
-        if ($aMenu['ismenu']) {
-            addSection($aMenu['name']);
-        }
-    }
-
-    ?>
+?>
