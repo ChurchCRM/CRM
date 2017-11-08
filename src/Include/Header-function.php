@@ -145,18 +145,18 @@ $security_matrix = GetSecuritySettings();
 // return the security group to table
 function GetSecuritySettings()
 {
-    $aSecurityList[] = 'bAdmin';
-    $aSecurityList[] = 'bAddRecords';
-    $aSecurityList[] = 'bEditRecords';
-    $aSecurityList[] = 'bDeleteRecords';
-    $aSecurityList[] = 'bMenuOptions';
-    $aSecurityList[] = 'bManageGroups';
-    $aSecurityList[] = 'bFinance';
-    $aSecurityList[] = 'bNotes';
-    $aSecurityList[] = 'bCommunication';
-    $aSecurityList[] = 'bCanvasser';
-    $aSecurityList[] = 'bAddEvent';
-    $aSecurityList[] = 'bSeePrivacyData';
+    $aSecurityListPrimal[] = 'bAdmin';
+    $aSecurityListPrimal[] = 'bAddRecords';
+    $aSecurityListPrimal[] = 'bEditRecords';
+    $aSecurityListPrimal[] = 'bDeleteRecords';
+    $aSecurityListPrimal[] = 'bMenuOptions';
+    $aSecurityListPrimal[] = 'bManageGroups';
+    $aSecurityListPrimal[] = 'bFinance';
+    $aSecurityListPrimal[] = 'bNotes';
+    $aSecurityListPrimal[] = 'bCommunication';
+    $aSecurityListPrimal[] = 'bCanvasser';
+    $aSecurityListPrimal[] = 'bAddEvent';
+    $aSecurityListPrimal[] = 'bSeePrivacyData';
     
     $ormSecGrpLists = UserConfigQuery::Create()
                         ->filterByPeronId(0)
@@ -164,8 +164,6 @@ function GetSecuritySettings()
                         ->orderById()
                         ->find();
 
-    $aSecurityListPrimal=[];
-        
     foreach ($ormSecGrpLists as $ormSecGrpList) {
         array_push($aSecurityListPrimal, $ormSecGrpList->getName());
     }
@@ -175,7 +173,7 @@ function GetSecuritySettings()
     $aSecurityListFinal = array('bALL');
     for ($i = 0; $i < count($aSecurityListPrimal); $i++) {
         if (array_key_exists($aSecurityListPrimal[$i], $_SESSION) && $_SESSION[$aSecurityListPrimal[$i]]) {
-            array_push($aSecurityListFinal, $aSecurityListPrimal[$i]);
+            $aSecurityListFinal[] = $aSecurityListPrimal[$i];
         }
     }
     
@@ -224,8 +222,6 @@ function addMenuItem($ormMenu, $mIdx)
     global $security_matrix;
     $maxStr = 25;
     
-    //echo "ormMenu : ".$ormMenu."<br>";
-
     $link = ($ormMenu->getURI() == '') ? '' : SystemURLs::getRootPath() . '/' . $ormMenu->getURI();
     $text = $ormMenu->getStatus();
     if (!is_null($ormMenu->getSessionVar())) {
@@ -243,7 +239,7 @@ function addMenuItem($ormMenu, $mIdx)
     }
     if ($ormMenu->getMenu()) {
         $ormItemCnt = MenuConfigQuery::Create()
-                        ->filterByParent('%'.$menu.'%', Criteria::LIKE)
+                        ->filterByParent('%'.$ormMenu->getName().'%', Criteria::LIKE)
                         ->filterByActive(1);
     
         $firstTime = 1;
