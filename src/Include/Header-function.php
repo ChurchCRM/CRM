@@ -83,9 +83,7 @@ function Header_modals()
                             <li><?= gettext('When you click "submit," an error report will be posted to the ChurchCRM GitHub Issue tracker.') ?></li>
                             <li><?= gettext('Please do not include any confidential information.') ?></li>
                             <li><?= gettext('Some general information about your system will be submitted along with the request such as Server version and browser headers.') ?></li>
-                            <li><?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?>
-                                "
-                            </li>
+                            <li><?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?></li>
                         </ul>
                     </div>
                     <div class="modal-footer">
