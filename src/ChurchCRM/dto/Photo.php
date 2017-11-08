@@ -113,7 +113,7 @@ class Photo
   
   public function getPhotoURI()
   {
-    return $this->photoThumbURI;
+    return $this->photoURI;
   }
   
   public function isPhotoLocal()
