@@ -23,7 +23,6 @@ use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Map\PersonTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-
 $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
 $nGrps = count($aGrp);
@@ -110,31 +109,32 @@ for ($i = 0; $i < $nGrps; $i++) {
             ->findByGroupId($iGroupID);
 
     if ($tAllRoles != 1) {
-    	$liaisonString = '';
-    		
+        $liaisonString = '';
+            
         foreach ($groupRoleMemberships as $groupRoleMembership) {
-						$person = $groupRoleMembership->getPerson();
-						$family = $person->getFamily();
-						
-						$homePhone = "";
-						if (!empty(family))
-						{
-							$homePhone = $family->getHomePhone();
-		
-		
-							if (empty($homePhone))
-								$homePhone = $family->getCellPhone();
-			
-							if (empty($homePhone))
-								$homePhone = $family->getWorkPhone();
-						}
-							
-						$groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
-				
-						$lst_OptionName = $groupRole->getOptionName();
-							
+            $person = $groupRoleMembership->getPerson();
+            $family = $person->getFamily();
+                        
+            $homePhone = "";
+            if (!empty(family)) {
+                $homePhone = $family->getHomePhone();
+        
+        
+                if (empty($homePhone)) {
+                    $homePhone = $family->getCellPhone();
+                }
+            
+                if (empty($homePhone)) {
+                    $homePhone = $family->getWorkPhone();
+                }
+            }
+                            
+            $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
+                
+            $lst_OptionName = $groupRole->getOptionName();
+                            
             if ($lst_OptionName == 'Teacher') {
-            		$aTeachers[$iTeacherCnt] = $person; // Make an array of teachers while we're here
+                $aTeachers[$iTeacherCnt] = $person; // Make an array of teachers while we're here
                 if (!$bFirstTeacher) {
                     $teacherString .= ', ';
                 }
@@ -142,13 +142,13 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $bFirstTeacher = false;
                 
                 $person->getPhoto()->createThumbnail();
-	    	        $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(),"",$person->getThumbnailURI());
+                $aTeachersIMG[$iTeacherCnt++] = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());
             } elseif ($lst_OptionName == 'Student') {
-                $aStudents[$iStudentCnt] = $person;  
+                $aStudents[$iStudentCnt] = $person;
 
-								$person->getPhoto()->createThumbnail();
-                $aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(),"",$person->getThumbnailURI());
-            } else if ($lst_OptionName == gettext('Liaison')) {
+                $person->getPhoto()->createThumbnail();
+                $aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());
+            } elseif ($lst_OptionName == gettext('Liaison')) {
                 $liaisonString .= gettext('Liaison').':'.$person->getFullName().' '.$pdf->StripPhone($homePhone).' ';
             }
         }
@@ -172,46 +172,47 @@ for ($i = 0; $i < $nGrps; $i++) {
         $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('Students'), $iExtraStudents,
                                    $tFirstSunday, $tLastSunday,
                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                				   				 $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
+                                                 $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
         
         
-				// we start a new page
-				if ($y > $yTeachers+10)
-						$pdf->AddPage();
-																		
-						$y = $yTeachers;        
-						$pdf->DrawAttendanceCalendar($nameX, $y + 6, $aTeachers, gettext('Teachers'), $iExtraTeachers,
-																	$tFirstSunday, $tLastSunday,
-																	$tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-																	$tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '',$aTeachersIMG,$withPictures);
-				} else {
-						//
-						// print all roles on the attendance sheet
-						//
-						$iStudentCnt = 0;
-						
-						unset($aStudents);
-						
-						foreach ($groupRoleMemberships as $groupRoleMembership) {
-								$person = $groupRoleMembership->getPerson();
-		
-								$aStudents[$iStudentCnt] = $groupRoleMembership->getPerson();
-								
-								$person->getPhoto()->createThumbnail();
-								$aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(),"",$person->getThumbnailURI());
-						}
+        // we start a new page
+        if ($y > $yTeachers+10) {
+            $pdf->AddPage();
+        }
+                                                                        
+        $y = $yTeachers;
+        $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aTeachers, gettext('Teachers'), $iExtraTeachers,
+                                                                    $tFirstSunday, $tLastSunday,
+                                                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
+                                                                    $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '', $aTeachersIMG, $withPictures);
+    } else {
+        //
+        // print all roles on the attendance sheet
+        //
+        $iStudentCnt = 0;
+                        
+        unset($aStudents);
+                        
+        foreach ($groupRoleMemberships as $groupRoleMembership) {
+            $person = $groupRoleMembership->getPerson();
+        
+            $aStudents[$iStudentCnt] = $groupRoleMembership->getPerson();
+                                
+            $person->getPhoto()->createThumbnail();
+            $aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());
+        }
 
-						$pdf->SetFont('Times', 'B', 12);
+        $pdf->SetFont('Times', 'B', 12);
 
-						$y = $yTeachers;
+        $y = $yTeachers;
 
-						$y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('All Members'), $iExtraStudents+$iExtraTeachers,
-																			 $tFirstSunday, $tLastSunday,
-																			 $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-																			 $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader,$aStudentsIMG,$withPictures);
-				}
-		}
-		
+        $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('All Members'), $iExtraStudents+$iExtraTeachers,
+                                                                             $tFirstSunday, $tLastSunday,
+                                                                             $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
+                                                                             $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
+    }
+}
+        
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
     $pdf->Output('ClassAttendance'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
