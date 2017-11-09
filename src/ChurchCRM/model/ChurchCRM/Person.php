@@ -230,7 +230,7 @@ class Person extends BasePerson implements iPhoto
         return false;
     }
 
-    private function getPhoto()
+    public function getPhoto()
     {
 
       $photo = new Photo("Person",  $this->getId());
@@ -278,7 +278,6 @@ class Person extends BasePerson implements iPhoto
             return true;
         }
         return false;
-
     }
 
     public function isPhotoLocal()
