@@ -35,7 +35,7 @@ $withPictures = InputUtils::LegacyFilterInput($_GET['pictures']);
 class PDF_ClassList extends ChurchInfoReport
 {
     // Constructor
-    public function PDF_ClassList()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
 
@@ -175,11 +175,8 @@ for ($i = 0; $i < $nGrps; $i++) {
         if ($studentName != $prevStudentName) {
             $pdf->WriteAt($nameX, $y, $studentName);
                 
-            $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());
-                    
-            //"SystemURLs::getRootPath()/api/persons/thumbnail"
-                    
-            $person->getPhoto()->createThumbnail();
+            $imgName = $person->getThumbnailURI();
+            
             $birthdayStr = change_date_for_place_holder($person->getBirthYear().'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
             $pdf->WriteAt($birthdayX, $y, $birthdayStr);
 
@@ -201,13 +198,13 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $pdf->Line($nameX-$imageHeight, $y+$imageHeight, $nameX, $y);
                 $pdf->Line($nameX-$imageHeight, $y, $nameX, $y+$imageHeight);
                     
-                if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($_SERVER['DOCUMENT_ROOT'].$imgName)) {
-                    list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$img);
+                if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($imgName)) {
+                    list($width, $height) = getimagesize($imgName);
                     $factor = 8/$height;
                     $nw = $imageHeight;
                     $nh = $imageHeight;
                 
-                    $pdf->Image('https://'.$_SERVER['HTTP_HOST'].$imgName, $nameX-$nw, $y, $nw, $nh, 'PNG');
+                    $pdf->Image($imgName, $nameX-$nw, $y, $nw, $nh, 'PNG');
                 }
                     
                 $nameX+=2;
