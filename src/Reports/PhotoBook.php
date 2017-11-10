@@ -31,10 +31,10 @@ $dFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
 $dLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
 $withPictures = InputUtils::LegacyFilterInput($_GET['pictures']);
 
-class PDF_ClassList extends ChurchInfoReport
+class PDF_PhotoBook extends ChurchInfoReport
 {
     // Constructor
-    public function PDF_ClassList()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
 
@@ -44,7 +44,44 @@ class PDF_ClassList extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
         $this->AddPage();
     }
+    
+    private function drawPersonBlock($name, $thumbnailURI, $x, $y, $pdf) {
+      $imageHeight=30;
+      $nameX = $x+$imageHeight/1.22-$pdf->GetStringWidth($name)/2;
+      $nameY = $y+$imageHeight+2
+
+      $pdf->WriteAt($nameX,$nameY , $name);
+
+
+      $pdf->SetLineWidth(0.25);
+      $pdf->Line($nameX-$imageHeight, $y, $nameX, $y);
+      $pdf->Line($nameX-$imageHeight, $y+$imageHeight, $nameX, $y+$imageHeight);
+      $pdf->Line($nameX-$imageHeight, $y, $nameX, $y);
+      $pdf->Line($nameX-$imageHeight, $y, $nameX-$imageHeight, $y+$imageHeight);
+      $pdf->Line($nameX, $y, $nameX, $y+$imageHeight);
+
+      $nameX -= $widthName;
+      $nameX+=$widthName;
+      $nameX=$nameX%($widthName*5);
+
+      if ($nameX == 0) {
+          $y+=$imageHeight*2;
+      }
+
+      if (file_exists($thumbnailURI)) {
+          $nw = $imageHeight;
+          $nh = $imageHeight;
+
+          $pdf->Image($thumbnailURI, $nameX-$nw, $y, $nw, $nh, 'PNG');
+      }
+      else
+      {
+        $pdf->Line($nameX-$imageHeight, $y+$imageHeight, $nameX, $y);
+        $pdf->Line($nameX-$imageHeight, $y, $nameX, $y+$imageHeight);
+      }
+    }
 }
+
 
 // Instantiate the directory class and build the report.
 $pdf = new PDF_ClassList();
@@ -91,20 +128,18 @@ for ($i = 0; $i < $nGrps; $i++) {
     $teachers = [];
 
     foreach ($groupRoleMemberships as $groupRoleMembership) {
-        $person = $groupRoleMembership->getPerson();
-
-        $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
-        $lst_OptionName = $groupRole->getOptionName();
-        
-        if ($lst_OptionName == 'Teacher') {
-            $elt = ['perID' => $groupRoleMembership->getPersonId()];
-            array_push($teachers, $elt);
-            ++$teacherCount;
-        } elseif ($lst_OptionName == 'Student') {
-            $elt = ['perID' => $groupRoleMembership->getPersonId()];
-            array_push($students, $elt);
-            ++$studentCount;
-        }
+      $person = $groupRoleMembership->getPerson();
+      $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
+      $lst_OptionName = $groupRole->getOptionName();
+      if ($lst_OptionName == 'Teacher') {
+        $elt = ['perID' => $groupRoleMembership->getPersonId()];
+        array_push($teachers, $elt);
+        ++$teacherCount;
+      } elseif ($lst_OptionName == 'Student') {
+        $elt = ['perID' => $groupRoleMembership->getPersonId()];
+        array_push($students, $elt);
+        ++$studentCount;
+      }
     }
 
     $y = $yTeachers;
@@ -114,12 +149,12 @@ for ($i = 0; $i < $nGrps; $i++) {
     $pdf->SetFont('Times', '', 9);
     $prevStudentName = '';
     
-    $withStudentName = 40;
-    $imageHeight=30;
+    
+   
 
     $numMembers = count($students);
     
-    $nameX = 0;
+    $PersonBlockWidth = 40;
 
     for ($row = 0; $row < $numMembers; $row++) {
         $student = $students[$row];
@@ -128,41 +163,8 @@ for ($i = 0; $i < $nGrps; $i++) {
         $studentName = $person->getFullName();
         
         if ($studentName != $prevStudentName) {
-            $pdf->WriteAt($nameX+$imageHeight/1.22-$pdf->GetStringWidth($studentName)/2, $y+$imageHeight+2, $studentName);
-            $nameX += $withStudentName;
-                
-            // we force to create the thumbnail
-            $person->getPhoto()->createThumbnail();
-            $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhotoURI());
-                
-            $pdf->SetLineWidth(0.25);
-            $pdf->Line($nameX-$imageHeight, $y, $nameX, $y);
-            $pdf->Line($nameX-$imageHeight, $y+$imageHeight, $nameX, $y+$imageHeight);
-            $pdf->Line($nameX-$imageHeight, $y, $nameX, $y);
-            $pdf->Line($nameX-$imageHeight, $y, $nameX-$imageHeight, $y+$imageHeight);
-            $pdf->Line($nameX, $y, $nameX, $y+$imageHeight);
-        
-            // we build the cross in the case of there's no photo
-            //$this->SetLineWidth(0.25);
-            $pdf->Line($nameX-$imageHeight, $y+$imageHeight, $nameX, $y);
-            $pdf->Line($nameX-$imageHeight, $y, $nameX, $y+$imageHeight);
-                
-            if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($_SERVER['DOCUMENT_ROOT'].$imgName)) {
-                list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$img);
-                $nw = $imageHeight;
-                $nh = $imageHeight;
-            
-                $pdf->Image('https://'.$_SERVER['HTTP_HOST'].$imgName, $nameX-$nw, $y, $nw, $nh, 'PNG');
-            }
-                    
-            $nameX -= $withStudentName;
-
-            $nameX+=$withStudentName;
-            $nameX=$nameX%($withStudentName*5);
-                    
-            if ($nameX == 0) {
-                $y+=$imageHeight*2;
-            }
+          drawPersonBlock($person->getFullName(), $person->getThumbnailURI(), $nameX, $y, $pdf);
+          $nameX += $widthName;
         }
 
         $prevStudentName = $studentName;
@@ -217,8 +219,6 @@ for ($i = 0; $i < $nGrps; $i++) {
             $pdf->WriteAt($nameX+$imageHeight/1.22-$pdf->GetStringWidth($teacherName)/2, $y+$imageHeight+2, $teacherName);
             $nameX += $withTeacherName;
                 
-            // we force to create the thumbnail
-            $person->getPhoto()->createThumbnail();
             $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhotoURI());
                     
             $pdf->SetLineWidth(0.25);
