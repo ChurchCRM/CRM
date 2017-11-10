@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-10 08:57+0000\n"
+"POT-Creation-Date: 2017-11-10 09:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2017-11-10T08:57:21.016Z\n"
-"PO-Revision-Date: 2017-11-10T08:57:21.016Z\n"
+"POT-Creation-Date: 2017-11-10T09:11:58.872Z\n"
+"PO-Revision-Date: 2017-11-10T09:11:58.872Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:277
@@ -2358,6 +2358,70 @@ msgstr ""
 
 #: ChurchCRM/tasks/UpdateFamilyCoordinatesTask.php:41
 msgid "Family Coordinates Data for Some Families"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:138 ChurchCRM/utils/GeoUtils.php:170
+msgid "S"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:140
+msgid "SSW"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:142
+msgid "SW"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:144
+msgid "WSW"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:146
+msgid "W"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:148
+msgid "WNW"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:150
+msgid "NW"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:152
+msgid "NNW"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:154
+msgid "N"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:156
+msgid "NNE"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:158
+msgid "NE"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:160
+msgid "ENE"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:162
+msgid "E"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:164
+msgid "ESE"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:166
+msgid "SE"
+msgstr ""
+
+#: ChurchCRM/utils/GeoUtils.php:168
+msgid "SSE"
 msgstr ""
 
 #: ConvertIndividualToFamily.php:37
