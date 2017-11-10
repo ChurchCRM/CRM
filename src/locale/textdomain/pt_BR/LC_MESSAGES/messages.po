@@ -9211,3 +9211,95 @@ msgstr "Procurar pagamentos"
 msgid "Quick Search"
 msgstr "Busca rápida"
 
+#: ChurchCRM/dto/SystemConfig.php:204
+msgid "Search Addresses"
+msgstr "Procurar Endereços"
+
+#: ChurchCRM/dto/SystemConfig.php:205
+msgid "Maximum number of Members"
+msgstr "Número máximo de Membros"
+
+#: ChurchCRM/dto/SystemConfig.php:206
+msgid "Maximum number of Families"
+msgstr "Número máximo de Famílias"
+
+#: ChurchCRM/dto/SystemConfig.php:207
+msgid "Maximum number of Family H.O.H Names"
+msgstr "Número máximo de Famílias Nomes HOH"
+
+#: ChurchCRM/dto/SystemConfig.php:208
+msgid "Maximum number of Groups"
+msgstr "Número máximo de Grupos"
+
+#: ChurchCRM/dto/SystemConfig.php:209
+msgid "Maximum number of Deposits"
+msgstr "Número máximo de Depósitos"
+
+#: ChurchCRM/dto/SystemConfig.php:210
+msgid "Maximum number of Payments"
+msgstr "Número máximo de Pagamentos"
+
+#: ChurchCRM/dto/SystemConfig.php:211
+msgid "Maximum number of Addresses"
+msgstr "Número máximo de Endereços"
+
+#: GroupList.php:31
+msgid "Show type of group:"
+msgstr "Mostrar tipo de grupo:"
+
+#: api/routes/search.php:225
+msgid "Deposits"
+msgstr "Depósitos"
+
+#: api/routes/search.php:258
+msgid "Payments"
+msgstr "Pagamentos"
+
+#: sundayschool/SundaySchoolClassView.php:114
+msgid "Add Students"
+msgstr "Adicionar alunos"
+
+#: sundayschool/SundaySchoolClassView.php:116
+msgid "Edit this Class"
+msgstr "Editar esta classe"
+
+#: 
+msgid "OK"
+msgstr "OK"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "Por favor, selecione o papel para os membros"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "ID do grupo desejado para a regra selecionada"
+
+#: 
+msgid "Select Group and Role"
+msgstr "Selecione o Grupo e o papel"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "Você tem certeza de que você quer remover esta pessoa "
+
+#: Reports/ClassAttendance.php:207
+msgid "All Members"
+msgstr "Todos os membros"
+
+#: Reports/PhotoBook.php:131
+msgid "PhotoBook"
+msgstr "Fotolivro"
+
+#: sundayschool/SundaySchoolReports.php:198
+msgid "With Photos"
+msgstr "Com Fotos"
+
+#: sundayschool/SundaySchoolReports.php:280
+msgid "Create PhotoBook"
+msgstr "Criar Fotolivro"
+
+#: ChurchCRM/utils/GeoUtils.php:168
+msgid "SSE"
+msgstr "SSE"
+
