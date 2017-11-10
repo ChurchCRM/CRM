@@ -14,24 +14,15 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\FamilyQuery;
 use ChurchCRM\GroupQuery;
-use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Map\PersonTableMap;
-use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 
 $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
-$nGrps = count($aGrp);
 
 $iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
-$dFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
-$dLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
-$withPictures = InputUtils::LegacyFilterInput($_GET['pictures']);
 
 class PDF_PhotoBook extends ChurchInfoReport {
     private $group;
