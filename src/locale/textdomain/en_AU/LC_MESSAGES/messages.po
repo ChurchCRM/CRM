@@ -39,9 +39,9 @@ msgstr "Delete"
 #: Register.php:55 ReminderReport.php:51 SettingsIndividual.php:111
 #: SettingsIndividual.php:157 SettingsUser.php:99 SettingsUser.php:159
 #: TaxReport.php:54 UserEditor.php:457 UserEditor.php:560
-#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:155
+#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:163
 #: sundayschool/SundaySchoolDashboard.php:258
-#: sundayschool/SundaySchoolReports.php:231
+#: sundayschool/SundaySchoolReports.php:285
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -73,7 +73,7 @@ msgstr "Unassigned"
 #: AutoPaymentEditor.php:866 CartToGroup.php:75 EditEventTypes.php:86
 #: EditEventTypes.php:98 EventNames.php:104 EventNames.php:116
 #: EventNames.php:161 GroupReports.php:47 GroupReports.php:142
-#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:147
+#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:189
 msgid "None"
 msgstr "None"
 

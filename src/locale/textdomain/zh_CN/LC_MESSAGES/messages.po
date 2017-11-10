@@ -43,9 +43,9 @@ msgstr "删除"
 #: Register.php:55 ReminderReport.php:51 SettingsIndividual.php:111
 #: SettingsIndividual.php:157 SettingsUser.php:99 SettingsUser.php:159
 #: TaxReport.php:54 UserEditor.php:457 UserEditor.php:560
-#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:155
+#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:163
 #: sundayschool/SundaySchoolDashboard.php:258
-#: sundayschool/SundaySchoolReports.php:231
+#: sundayschool/SundaySchoolReports.php:285
 msgid "Cancel"
 msgstr "取消"
 
@@ -93,7 +93,7 @@ msgstr "付款的时间间隔（月）"
 #: AutoPaymentEditor.php:866 CartToGroup.php:75 EditEventTypes.php:86
 #: EditEventTypes.php:98 EventNames.php:104 EventNames.php:116
 #: EventNames.php:161 GroupReports.php:47 GroupReports.php:142
-#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:147
+#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:189
 msgid "None"
 msgstr "无"
 
@@ -144,7 +144,7 @@ msgstr "电话"
 #: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
 #: Reports/DirectoryReport.php:294 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
-#: external/templates/verify/verify-family-info.php:81
+#: external/templates/verify/verify-family-info.php:85
 #: sundayschool/SundaySchoolClassView.php:88
 #: sundayschool/SundaySchoolClassView.php:204 menuconfig_mcf.php:15
 #: queryparameteroptions_qpo.php:13
@@ -453,8 +453,8 @@ msgstr "捐款信封"
 #: SelectList.php:1052
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
-#: external/templates/verify/verify-family-info.php:28
-#: external/templates/verify/verify-family-info.php:75
+#: external/templates/verify/verify-family-info.php:30
+#: external/templates/verify/verify-family-info.php:79
 #: sundayschool/SundaySchoolClassView.php:206 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr "家庭电话"
@@ -464,7 +464,7 @@ msgstr "家庭电话"
 #: PersonEditor.php:953 PersonEditor.php:955 PersonView.php:312
 #: PrintView.php:204 Reports/ConfirmReport.php:239
 #: Reports/ConfirmReportEmail.php:237 SelectList.php:979 SelectList.php:980
-#: SelectList.php:1052 external/templates/verify/verify-family-info.php:77
+#: SelectList.php:1052 external/templates/verify/verify-family-info.php:81
 msgid "Work Phone"
 msgstr "工作电话"
 
@@ -472,7 +472,7 @@ msgstr "工作电话"
 #: FamilyEditor.php:757 FamilyView.php:259 PersonEditor.php:978
 #: PersonEditor.php:980 PersonView.php:293 PrintView.php:209
 #: SelectList.php:982 SelectList.php:983 SelectList.php:1052
-#: external/templates/verify/verify-family-info.php:79
+#: external/templates/verify/verify-family-info.php:83
 msgid "Mobile Phone"
 msgstr "手机"
 
@@ -488,7 +488,7 @@ msgstr "出生日期"
 
 #: CSVImport.php:228 CartToFamily.php:210 DirectoryReports.php:172
 #: FamilyEditor.php:803 FamilyView.php:234
-#: external/templates/verify/verify-family-info.php:35
+#: external/templates/verify/verify-family-info.php:37
 msgid "Wedding Date"
 msgstr "婚礼日期"
 
@@ -784,7 +784,7 @@ msgid "Select the group to which you would like to add your cart"
 msgstr "选择您想添加您的购物车"
 
 #: CartToGroup.php:71 GroupReports.php:43 PersonToGroup.php:61
-#: sundayschool/SundaySchoolReports.php:143
+#: sundayschool/SundaySchoolReports.php:185
 #, fuzzy
 msgid "Select Group"
 msgstr "选择组"
@@ -905,7 +905,7 @@ msgstr "选择事件时，你要检查的人"
 msgid "Select Event"
 msgstr "选择事件"
 
-#: external/templates/verify/verify-family-info.php:156
+#: external/templates/verify/verify-family-info.php:164
 msgid "Verify"
 msgstr "验证"
 
@@ -1066,7 +1066,7 @@ msgstr "家庭手机"
 
 #: DirectoryReports.php:178 Reports/ConfirmReport.php:156
 #: Reports/ConfirmReportEmail.php:160
-#: external/templates/verify/verify-family-info.php:30
+#: external/templates/verify/verify-family-info.php:32
 msgid "Family Email"
 msgstr "家庭电子邮件"
 
@@ -1274,7 +1274,7 @@ msgstr "类型"
 
 #: AutoPaymentEditor.php:846 ElectronicPaymentList.php:195 FamilyView.php:757
 #: PledgeEditor.php:518 ReminderReport.php:41 SelectDelete.php:216
-#: sundayschool/SundaySchoolReports.php:161 queryparameters_qrp.php:18
+#: sundayschool/SundaySchoolReports.php:204 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "财政年度"
 
@@ -2461,8 +2461,8 @@ msgstr "信封经理"
 msgid "Update Family Records"
 msgstr "更新家庭记录"
 
-#: ManageEnvelopes.php:133 external/templates/verify/verify-family-info.php:14
-#: external/templates/verify/verify-family-info.php:138
+#: ManageEnvelopes.php:133 external/templates/verify/verify-family-info.php:16
+#: external/templates/verify/verify-family-info.php:146
 msgid "Confirm"
 msgstr "确认"
 
@@ -3824,8 +3824,8 @@ msgstr "老师"
 msgid "Student"
 msgstr "学生"
 
-#: Reports/ClassAttendance.php:117 Reports/ClassAttendance.php:118
-#: Reports/ClassList.php:101 Reports/ClassList.php:102
+#: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
+#: Reports/ClassList.php:134 Reports/ClassList.php:135
 msgid "Liaison"
 msgstr "联络"
 
@@ -3835,7 +3835,7 @@ msgstr "市，州，邮政编码"
 
 #: FamilyEditor.php:779 FamilyView.php:227 Reports/ConfirmReport.php:140
 #: Reports/ConfirmReportEmail.php:144
-#: external/templates/verify/verify-family-info.php:40
+#: external/templates/verify/verify-family-info.php:42
 msgid "Send Newsletter"
 msgstr "发送通讯"
 
@@ -3945,7 +3945,7 @@ msgstr "电广传媒（）现金（）检查（）信用卡_____________________
 msgid "                                        Signature ________________________________________________________________"
 msgstr "签名________________________________________________________________"
 
-#: ChurchCRM/Reports/PDF_Attendance.php:126
+#: ChurchCRM/Reports/PDF_Attendance.php:179
 msgid "Totals"
 msgstr "总计"
 
@@ -3990,7 +3990,7 @@ msgstr "礼品金额："
 msgid "Gift Designation:"
 msgstr "商品名称："
 
-#: sundayschool/SundaySchoolReports.php:27
+#: sundayschool/SundaySchoolReports.php:29
 msgid "Sunday School Reports"
 msgstr "主日学报告"
 
@@ -3998,52 +3998,52 @@ msgstr "主日学报告"
 msgid "Generate class lists and attendance sheets"
 msgstr "生成类清单和考勤表"
 
-#: sundayschool/SundaySchoolReports.php:114
+#: sundayschool/SundaySchoolReports.php:122
 msgid "At least one group must be selected to make class lists or attendance sheets."
 msgstr "必须选择至少一组类列表或出勤表。"
 
-#: sundayschool/SundaySchoolReports.php:143
+#: sundayschool/SundaySchoolReports.php:185
 #, fuzzy
 msgid "To select multiple hold CTL"
 msgstr "要选择多个保持CTL"
 
-#: sundayschool/SundaySchoolReports.php:168
+#: sundayschool/SundaySchoolReports.php:211
 #, fuzzy
 msgid "First Sunday"
 msgstr "第一个星期日"
 
-#: sundayschool/SundaySchoolReports.php:173
+#: sundayschool/SundaySchoolReports.php:216
 #, fuzzy
 msgid "Last Sunday"
 msgstr "上周日"
 
-#: sundayschool/SundaySchoolReports.php:178
-#: sundayschool/SundaySchoolReports.php:183
-#: sundayschool/SundaySchoolReports.php:188
-#: sundayschool/SundaySchoolReports.php:193
-#: sundayschool/SundaySchoolReports.php:198
-#: sundayschool/SundaySchoolReports.php:203
-#: sundayschool/SundaySchoolReports.php:208
-#: sundayschool/SundaySchoolReports.php:213
+#: sundayschool/SundaySchoolReports.php:221
+#: sundayschool/SundaySchoolReports.php:226
+#: sundayschool/SundaySchoolReports.php:231
+#: sundayschool/SundaySchoolReports.php:236
+#: sundayschool/SundaySchoolReports.php:241
+#: sundayschool/SundaySchoolReports.php:246
+#: sundayschool/SundaySchoolReports.php:251
+#: sundayschool/SundaySchoolReports.php:256
 #, fuzzy
 msgid "No Sunday School"
 msgstr "无主日学​​"
 
-#: sundayschool/SundaySchoolReports.php:218
+#: sundayschool/SundaySchoolReports.php:261
 #, fuzzy
 msgid "Extra Students"
 msgstr "额外的学生"
 
-#: sundayschool/SundaySchoolReports.php:222
+#: sundayschool/SundaySchoolReports.php:265
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "额外的教师"
 
-#: sundayschool/SundaySchoolReports.php:229
+#: sundayschool/SundaySchoolReports.php:274
 msgid "Create Class List"
 msgstr "创建类列表"
 
-#: sundayschool/SundaySchoolReports.php:230
+#: sundayschool/SundaySchoolReports.php:277
 msgid "Create Attendance Sheet"
 msgstr "建立考勤表"
 
