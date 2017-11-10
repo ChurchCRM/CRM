@@ -3,7 +3,7 @@
 *
 *  filename    : api/routes/search.php
 *  last change : 2017/10/29 Philippe Logel
-*  description : Search terms like : Firstname, Lastname, phone, adresses, 
+*  description : Search terms like : Firstname, Lastname, phone, address, 
 *								 groups, families, etc...
 *
 ******************************************************************************/
@@ -65,8 +65,8 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         }
     }
     
-    //Person Search by adresses
-    if (SystemConfig::getBooleanValue("bSearchIncludeAddresses")) {
+    //Person Search by address
+`    if (SystemConfig::getBooleanValue("bSearchIncludeAddresses")) {
         try {
         	$searchLikeString = '%'.$query.'%';
 					$addresses = FamilyQuery::create()->
@@ -95,7 +95,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						{
 							$dataAddress = ['children' => $data,
 							'id' => 1,
-							'text' => gettext('Adresses')];
+							'text' => gettext('Address')];
 					
 							array_push($resultsArray,$dataAddress);
 						}
