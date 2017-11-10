@@ -33,7 +33,8 @@ $dFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
 $dLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
 $withPictures = InputUtils::LegacyFilterInput($_GET['pictures']);
 
-class PDF_PhotoBook extends ChurchInfoReport {
+class PDF_PhotoBook extends ChurchInfoReport
+{
     private $group;
     private $FYIDString;
     private $currentX;
@@ -64,14 +65,14 @@ class PDF_PhotoBook extends ChurchInfoReport {
     
     public function drawGroup($iGroupID)
     {
-      $this->group = GroupQuery::Create()->findOneById($iGroupID);
-      $this->SetMargins(0, 0); // use our own margin logic.
-      $this->SetFont('Times', '', 14);
-      $this->SetAutoPageBreak(false);
-      $this->AddPage();
-      $this->drawGroupMebersByRole("Teacher", gettext("Teachers"));
-      $this->AddPage();
-      $this->drawGroupMebersByRole("Student", gettext("Students"));
+        $this->group = GroupQuery::Create()->findOneById($iGroupID);
+        $this->SetMargins(0, 0); // use our own margin logic.
+        $this->SetFont('Times', '', 14);
+        $this->SetAutoPageBreak(false);
+        $this->AddPage();
+        $this->drawGroupMebersByRole("Teacher", gettext("Teachers"));
+        $this->AddPage();
+        $this->drawGroupMebersByRole("Student", gettext("Students"));
     }
     
     private function drawPageHeader($title)
@@ -147,7 +148,7 @@ class PDF_PhotoBook extends ChurchInfoReport {
 // Instantiate the directory class and build the report.
 $pdf = new PDF_PhotoBook($iFYID);
 foreach ($aGrp as $groupID) {
-  $pdf->drawGroup($groupID);
+    $pdf->drawGroup($groupID);
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
