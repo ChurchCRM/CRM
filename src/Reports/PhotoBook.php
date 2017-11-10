@@ -33,6 +33,7 @@ class PDF_PhotoBook extends ChurchInfoReport
     private $pageMarginL;
     private $pageMarginR;
     private $pageMarginT;
+    private $pageMarginB;
     private $personMarginL;
     private $personMarginR;
     private $personImageHeight;
@@ -47,6 +48,7 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->pageMarginL = 15;
         $this->pageMarginR = 15;
         $this->pageMarginT = 20;
+        $this->pageMarginB = 20;
         $this->personMarginL = 2.5;
         $this->personMarginR = 2.5;
         $this->personImageHeight = 30;
@@ -94,7 +96,7 @@ class PDF_PhotoBook extends ChurchInfoReport
     
         # Draw the image or an x
         if (file_exists($thumbnailURI)) {
-            $this->Image($thumbnailURI, $this->currentX, $this->currentY, $this->personImageWidth, $this->personImageHeight, 'PNG');
+            $this->Image($thumbnailURI, $this->currentX+.5, $this->currentY+.5, $this->personImageWidth-.25, $this->personImageHeight-.25, 'PNG');
         } else {
             $this->Line($this->currentX, $this->currentY, $this->currentX + $this->personImageWidth, $this->currentY + $this->personImageHeight);
             $this->Line($this->currentX+$this->personImageWidth, $this->currentY, $this->currentX, $this->currentY + $this->personImageHeight);
@@ -112,8 +114,7 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->currentX += $this->personMarginR;
     }
   
-    private function drawGroupMebersByRole($roleName, $roleDisplayName)
-    {
+    private function drawGroupMebersByRole($roleName, $roleDisplayName) {
         $RoleListID =$this->group->getRoleListId();
         $groupRole = ListOptionQuery::create()->filterById($RoleListID)->filterByOptionName($roleName)->findOne();
         $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
@@ -127,12 +128,18 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->currentX = $this->pageMarginL;
         $this->currentY += 10;
         foreach ($groupRoleMemberships as $roleMembership) {
-            $person = $roleMembership->getPerson();
-            $this->drawPersonBlock($person->getFullName(), $person->getThumbnailURI());
-            if ($this->currentX + $this->personMarginL + $this->personImageWidth + $this->personMarginR  >= $this->GetPageWidth() - $this->pageMarginR) { //can we fit another on the page?
-                $this->currentY += 50;
-                $this->currentX = $this->pageMarginL;
-            }
+          $person = $roleMembership->getPerson();
+          $this->drawPersonBlock($person->getFullName(), $person->getPhotoURI());
+          if ($this->currentX + $this->personMarginL + $this->personImageWidth + $this->personMarginR  >= $this->GetPageWidth() - $this->pageMarginR) { //can we fit another on the page?
+              $this->currentY += 50;
+              $this->currentX = $this->pageMarginL;
+          }
+          if ($this->currentY + $this->personImageHeight+10 >= $this->GetPageHeight() - $this->pageMarginB) {
+            $this->AddPage();
+            $this->drawPageHeader((gettext("PhotoBook").' - '.$this->group->getName().' - '.$roleDisplayName." (".$groupRoleMemberships->count().")"));
+            $this->currentX = $this->pageMarginL;
+            $this->currentY += 10;
+          }
         }
     }
 }
