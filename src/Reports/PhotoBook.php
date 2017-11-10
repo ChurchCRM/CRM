@@ -62,7 +62,7 @@ class PDF_PhotoBook extends ChurchInfoReport
     $this->personImageWidth = 30;
     $this->FYIDString = MakeFYString($iFYID);
     $this->group = GroupQuery::Create()->findOneById($iGroupID);
-    $this->SetMargins(0, 0);
+    $this->SetMargins(0, 0); // use our own margin logic.
     $this->SetFont('Times', '', 14);
     $this->SetAutoPageBreak(false);
     $this->AddPage();
@@ -139,8 +139,6 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->currentY += 50;
         $this->currentX = $this->pageMarginL;
       }
-      
-      if 
     }
   }
 }
