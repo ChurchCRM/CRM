@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-10 02:11+0000\n"
+"POT-Creation-Date: 2017-11-10 02:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2017-11-10T02:11:56.808Z\n"
-"PO-Revision-Date: 2017-11-10T02:11:56.808Z\n"
+"POT-Creation-Date: 2017-11-10T02:21:00.554Z\n"
+"PO-Revision-Date: 2017-11-10T02:21:00.554Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:277
@@ -189,7 +189,7 @@ msgstr ""
 #: FamilyList.php:44 FamilyView.php:207 GeoPage.php:381 GroupReports.php:123
 #: Menu.php:200 Menu.php:241 PersonEditor.php:800 PersonEditor.php:816
 #: PersonView.php:267 Register.php:42 Reports/ConfirmReportEmail.php:124
-#: Reports/ConfirmReportEmail.php:129
+#: Reports/ConfirmReportEmail.php:129 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35
 msgid "Address"
@@ -7007,10 +7007,6 @@ msgstr ""
 
 #: api/routes/search.php:58
 msgid "Persons"
-msgstr ""
-
-#: api/routes/search.php:98
-msgid "Adresses"
 msgstr ""
 
 #: api/routes/search.php:225
