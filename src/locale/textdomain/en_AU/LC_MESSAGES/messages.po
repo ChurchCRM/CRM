@@ -21,7 +21,7 @@ msgstr "Unable to execute query"
 #: FamilyView.php:765 FamilyView.php:902 FindDepositSlip.php:103
 #: FundRaiserEditor.php:199 ListEvents.php:246 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:314 PersonCustomFieldsEditor.php:383
-#: PersonView.php:912 PledgeDelete.php:52 PropertyList.php:64
+#: PersonView.php:895 PledgeDelete.php:52 PropertyList.php:64
 #: PropertyList.php:105 PropertyTypeList.php:39 PropertyTypeList.php:60
 #: PropertyTypeList.php:62
 msgid "Delete"
@@ -34,13 +34,13 @@ msgstr "Delete"
 #: FundRaiserEditor.php:142 GroupPropsEditor.php:167 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:72 ManageEnvelopes.php:134
 #: MemberRoleChange.php:118 MemberRoleChange.php:120 NoteDelete.php:66
-#: NoteEditor.php:134 PersonEditor.php:1146 PersonView.php:911
+#: NoteEditor.php:134 PersonEditor.php:1146 PersonView.php:894
 #: PledgeDelete.php:53 PropertyEditor.php:168 PropertyTypeEditor.php:113
 #: Register.php:55 ReminderReport.php:51 SettingsIndividual.php:111
 #: SettingsIndividual.php:157 SettingsUser.php:99 SettingsUser.php:159
 #: TaxReport.php:54 UserEditor.php:457 UserEditor.php:560
 #: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:155
-#: sundayschool/SundaySchoolDashboard.php:249
+#: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:231
 msgid "Cancel"
 msgstr "Cancel"
@@ -49,7 +49,7 @@ msgstr "Cancel"
 #: DonatedItemEditor.php:291 FamilyEditor.php:645 FamilyEditor.php:729
 #: FamilyEditor.php:793 FamilyEditor.php:867 FamilyEditor.php:889
 #: FamilyEditor.php:920 FamilyEditor.php:1113 FundRaiserEditor.php:141
-#: GroupEditor.php:161 GroupPropsEditor.php:165 NoteEditor.php:132
+#: GroupEditor.php:166 GroupPropsEditor.php:165 NoteEditor.php:132
 #: PaddleNumEditor.php:146 PersonEditor.php:586 PersonEditor.php:744
 #: PersonEditor.php:787 PersonEditor.php:1044 PersonEditor.php:1107
 #: PersonEditor.php:1142 PledgeEditor.php:685 PropertyEditor.php:168
@@ -60,11 +60,11 @@ msgstr "Save"
 
 #: AutoPaymentEditor.php:803 BatchWinnerEntry.php:82 BatchWinnerEntry.php:94
 #: CSVImport.php:269 DirectoryReports.php:81 DonatedItemEditor.php:184
-#: DonatedItemEditor.php:235 FamilyEditor.php:1087 GroupEditor.php:88
-#: Include/CountryDropDown.php:6 Include/Functions.php:1083
+#: DonatedItemEditor.php:235 FamilyEditor.php:1087 GroupEditor.php:93
+#: GroupList.php:35 Include/CountryDropDown.php:6 Include/Functions.php:1083
 #: Include/Functions.php:1136 MapUsingGoogle.php:98 MapUsingGoogle.php:122
 #: PaddleNumEditor.php:175 PersonEditor.php:751 PersonEditor.php:767
-#: PersonEditor.php:1052 PrintView.php:244 PrintView.php:254
+#: PersonEditor.php:1052 PrintView.php:264 PrintView.php:274
 #: SelectDelete.php:155 SelectList.php:34 SelectList.php:44 SelectList.php:60
 #: SelectList.php:1109 SelectList.php:1180 eGive.php:340
 msgid "Unassigned"
