@@ -9,8 +9,9 @@ function UpdateRoles()
     var html = "";
     $.each(data.ListOptions, function (index, value) {
       html += "<option value=\"" + value.OptionId + "\"";
-      html += ">" + value.OptionName + "</option>";
+      html += ">" + i18next.t(value.OptionName) + "</option>";
     });
     $("#GroupRole").html(html);
   });
 }
+	
