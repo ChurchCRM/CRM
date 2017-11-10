@@ -64,7 +64,7 @@ class Photo
     return $sourceGDImage;
   }
   
-  private function createThumbnail()      
+  public function createThumbnail()      
   {
     $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/thumbnails/" . $this->id.".png";
     $thumbWidth = 100;
