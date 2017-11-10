@@ -123,7 +123,7 @@ require 'Include/Header.php';
                         <?php
                         // Show Role Clone fields only when adding new group
                         if (strlen($iGroupID) < 1) {
-                        ?>
+                            ?>
                         <b><?= gettext('Group Member Roles') ?>:</b>
 
                         <?= gettext('Clone roles') ?>:

@@ -329,7 +329,7 @@ require 'Include/Header-Short.php';
 <br>
 
 <?php if ($fam_ID) {
-?>
+                    ?>
 
 <b><?= gettext('Family Members') ?>:</b>
 <table cellpadding=5 cellspacing=0 width="100%">
@@ -342,15 +342,15 @@ require 'Include/Header-Short.php';
     <?php
     $sRowClass = 'RowColorA';
 
-    // Loop through all the family members
-    while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
-        $per_BirthYear = '';
-        $agr_Description = '';
+                    // Loop through all the family members
+                    while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
+                        $per_BirthYear = '';
+                        $agr_Description = '';
 
-        extract($aRow);
+                        extract($aRow);
 
-        // Alternate the row style
-        $sRowClass = AlternateRowStyle($sRowClass)
+                        // Alternate the row style
+                        $sRowClass = AlternateRowStyle($sRowClass)
 
         // Display the family member
         ?>
@@ -369,9 +369,9 @@ require 'Include/Header-Short.php';
             </td>
         </tr>
         <?php
-    }
-    echo '</table>';
-    }
+                    }
+                    echo '</table>';
+                }
     ?>
     <BR>
     <b><?= gettext('Assigned Groups') ?>:</b>
