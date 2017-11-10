@@ -3,6 +3,7 @@
 // Routes
 use ChurchCRM\Group;
 use ChurchCRM\GroupQuery;
+use ChurchCRM\Person2group2roleP2g2rQuery;
 
 $app->group('/groups', function () {
     $this->get('/', function () {        
@@ -92,10 +93,9 @@ $app->group('/groups', function () {
         echo $members->toJSON();
     });
 
-    $this->delete('/{groupID:[0-9]+}/removeuser/{userID:[0-9]+}', function ($request, $response, $args) {
+    $this->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
-        $groupID = $args['groupID'];
         $group = GroupQuery::create()->findOneById($groupID);
         $groupRoleMemberships = $group->getPerson2group2roleP2g2rs();
         foreach ($groupRoleMemberships as $groupRoleMembership) {
@@ -105,15 +105,16 @@ $app->group('/groups', function () {
         }
         echo json_encode(['success' => 'true']);
     });
-    $this->post('/{groupID:[0-9]+}/adduser', function ($request, $response, $args) {
+    
+    $this->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
+        $groupID = $args['groupID'];
+        $userID = $args['userID'];
         $input = (object) $request->getParsedBody();
-        $GroupID = $args['groupID'];
-        $group = GroupQuery::create()->findOneById($GroupID);
-        $p2g2r = \ChurchCRM\Base\Person2group2roleP2g2rQuery::create()
-                ->filterByPersonId($input->PersonID)
-                ->filterByGroupId($GroupID)
-                ->findOneOrCreate()
-                ->setPersonId($input->PersonID);
+        $group = GroupQuery::create()->findOneById($groupID);
+        $p2g2r = Person2group2roleP2g2rQuery::create()
+          ->filterByGroupId($groupID)
+          ->filterByPersonId($userID)
+          ->findOneOrCreate();
         if($input->RoleID)
         {
           $p2g2r->setRoleId($input->RoleID);
