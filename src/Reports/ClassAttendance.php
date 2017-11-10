@@ -147,7 +147,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $aStudents[$iStudentCnt] = $person;
 
                 $person->getPhoto()->createThumbnail();
-                $aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());
+                $aStudentsIMG[$iStudentCnt++] = $person->getThumbnailURI();
             } elseif ($lst_OptionName == gettext('Liaison')) {
                 $liaisonString .= gettext('Liaison').':'.$person->getFullName().' '.$pdf->StripPhone($homePhone).' ';
             }
@@ -197,9 +197,7 @@ for ($i = 0; $i < $nGrps; $i++) {
             $person = $groupRoleMembership->getPerson();
         
             $aStudents[$iStudentCnt] = $groupRoleMembership->getPerson();
-                                
-            $person->getPhoto()->createThumbnail();
-            $aStudentsIMG[$iStudentCnt++] = str_replace(SystemURLs::getDocumentRoot(), "", $person->getThumbnailURI());
+            $aStudentsIMG[$iStudentCnt++] = $person->getThumbnailURI();
         }
 
         $pdf->SetFont('Times', 'B', 12);

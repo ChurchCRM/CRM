@@ -159,14 +159,14 @@ class PDF_Attendance extends ChurchInfoReport
 					$this->Line($nameX-$yIncrement,$y,$nameX,$y+$yIncrement);
 
 
-					if ($NameList[$row] != '   ' && strlen($imgList[$row]) > 5 && file_exists($_SERVER['DOCUMENT_ROOT'].$imgList[$row]))
+					if ($NameList[$row] != '   ' && strlen($imgList[$row]) > 5 && file_exists($imgList[$row]))
 					{
-						list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$imgList[$row]);
+						list($width, $height) = getimagesize($imgList[$row]);
 						$factor = $yIncrement/$height;
 						$nw = $width*$factor;
 						$nh = $yIncrement;
 				
-						$this->Image('https://'.$_SERVER['HTTP_HOST'].$imgList[$row], $nameX-$nw , $y, $nw,$nh,'PNG');
+						$this->Image($imgList[$row], $nameX-$nw , $y, $nw,$nh,'PNG');
 					}
 				}
 			  
