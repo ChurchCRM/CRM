@@ -114,7 +114,8 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->currentX += $this->personMarginR;
     }
   
-    private function drawGroupMebersByRole($roleName, $roleDisplayName) {
+    private function drawGroupMebersByRole($roleName, $roleDisplayName)
+    {
         $RoleListID =$this->group->getRoleListId();
         $groupRole = ListOptionQuery::create()->filterById($RoleListID)->filterByOptionName($roleName)->findOne();
         $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
@@ -128,18 +129,18 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->currentX = $this->pageMarginL;
         $this->currentY += 10;
         foreach ($groupRoleMemberships as $roleMembership) {
-          $person = $roleMembership->getPerson();
-          $this->drawPersonBlock($person->getFullName(), $person->getPhotoURI());
-          if ($this->currentX + $this->personMarginL + $this->personImageWidth + $this->personMarginR  >= $this->GetPageWidth() - $this->pageMarginR) { //can we fit another on the page?
-              $this->currentY += 50;
-              $this->currentX = $this->pageMarginL;
-          }
-          if ($this->currentY + $this->personImageHeight+10 >= $this->GetPageHeight() - $this->pageMarginB) {
-            $this->AddPage();
-            $this->drawPageHeader((gettext("PhotoBook").' - '.$this->group->getName().' - '.$roleDisplayName." (".$groupRoleMemberships->count().")"));
-            $this->currentX = $this->pageMarginL;
-            $this->currentY += 10;
-          }
+            $person = $roleMembership->getPerson();
+            $this->drawPersonBlock($person->getFullName(), $person->getPhotoURI());
+            if ($this->currentX + $this->personMarginL + $this->personImageWidth + $this->personMarginR  >= $this->GetPageWidth() - $this->pageMarginR) { //can we fit another on the page?
+                $this->currentY += 50;
+                $this->currentX = $this->pageMarginL;
+            }
+            if ($this->currentY + $this->personImageHeight+10 >= $this->GetPageHeight() - $this->pageMarginB) {
+                $this->AddPage();
+                $this->drawPageHeader((gettext("PhotoBook").' - '.$this->group->getName().' - '.$roleDisplayName." (".$groupRoleMemberships->count().")"));
+                $this->currentX = $this->pageMarginL;
+                $this->currentY += 10;
+            }
         }
     }
 }
