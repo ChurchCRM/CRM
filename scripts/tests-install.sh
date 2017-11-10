@@ -2,10 +2,10 @@
 
 if [[ -z "${TRAVIS}" ]]; then
   echo "Not TravisCI - Manually Installing Sauce Connect"
-  wget -q https://saucelabs.com/downloads/sc-4.4.6-linux.tar.gz -O /tmp/sc.tar.gz
-  rm -rf /tmp/sc
-  mkdir /tmp/sc
-  tar -xzf /tmp/sc.tar.gz -C /tmp/sc
+  wget -q https://saucelabs.com/downloads/sc-4.4.6-linux.tar.gz -O tests/sc.tar.gz
+  rm -rf tests/sc
+  mkdir tests/sc
+  tar -xzf tests/sc.tar.gz -C /tmp/sc
 fi
 
 cd tests/ 
