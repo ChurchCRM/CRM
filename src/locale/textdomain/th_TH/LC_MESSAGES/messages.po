@@ -43,9 +43,9 @@ msgstr "ลบ"
 #: Register.php:55 ReminderReport.php:51 SettingsIndividual.php:111
 #: SettingsIndividual.php:157 SettingsUser.php:99 SettingsUser.php:159
 #: TaxReport.php:54 UserEditor.php:457 UserEditor.php:560
-#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:155
+#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:163
 #: sundayschool/SundaySchoolDashboard.php:258
-#: sundayschool/SundaySchoolReports.php:231
+#: sundayschool/SundaySchoolReports.php:285
 msgid "Cancel"
 msgstr "ยกเลิก"
 
@@ -81,7 +81,7 @@ msgstr "จำนวนเงินที่ชำระ"
 #: AutoPaymentEditor.php:866 CartToGroup.php:75 EditEventTypes.php:86
 #: EditEventTypes.php:98 EventNames.php:104 EventNames.php:116
 #: EventNames.php:161 GroupReports.php:47 GroupReports.php:142
-#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:147
+#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:189
 msgid "None"
 msgstr "ไม่มี"
 
@@ -128,7 +128,7 @@ msgstr "โทรศัพท์"
 #: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
 #: Reports/DirectoryReport.php:294 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
-#: external/templates/verify/verify-family-info.php:81
+#: external/templates/verify/verify-family-info.php:85
 #: sundayschool/SundaySchoolClassView.php:88
 #: sundayschool/SundaySchoolClassView.php:204 menuconfig_mcf.php:15
 #: queryparameteroptions_qpo.php:13
@@ -366,8 +366,8 @@ msgstr "ซองถวาย"
 #: SelectList.php:1052
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
-#: external/templates/verify/verify-family-info.php:28
-#: external/templates/verify/verify-family-info.php:75
+#: external/templates/verify/verify-family-info.php:30
+#: external/templates/verify/verify-family-info.php:79
 #: sundayschool/SundaySchoolClassView.php:206 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr "โทรศัพท์บ้าน"
@@ -377,7 +377,7 @@ msgstr "โทรศัพท์บ้าน"
 #: PersonEditor.php:953 PersonEditor.php:955 PersonView.php:312
 #: PrintView.php:204 Reports/ConfirmReport.php:239
 #: Reports/ConfirmReportEmail.php:237 SelectList.php:979 SelectList.php:980
-#: SelectList.php:1052 external/templates/verify/verify-family-info.php:77
+#: SelectList.php:1052 external/templates/verify/verify-family-info.php:81
 msgid "Work Phone"
 msgstr "โทรศัพท์ที่ทำงาน"
 
@@ -385,7 +385,7 @@ msgstr "โทรศัพท์ที่ทำงาน"
 #: FamilyEditor.php:757 FamilyView.php:259 PersonEditor.php:978
 #: PersonEditor.php:980 PersonView.php:293 PrintView.php:209
 #: SelectList.php:982 SelectList.php:983 SelectList.php:1052
-#: external/templates/verify/verify-family-info.php:79
+#: external/templates/verify/verify-family-info.php:83
 msgid "Mobile Phone"
 msgstr "โทรศัพท์มือถือ"
 
@@ -401,7 +401,7 @@ msgstr "วันเกิด"
 
 #: CSVImport.php:228 CartToFamily.php:210 DirectoryReports.php:172
 #: FamilyEditor.php:803 FamilyView.php:234
-#: external/templates/verify/verify-family-info.php:35
+#: external/templates/verify/verify-family-info.php:37
 msgid "Wedding Date"
 msgstr "วันแต่งงาน"
 

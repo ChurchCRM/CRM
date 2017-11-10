@@ -43,9 +43,9 @@ msgstr "Borrar"
 #: Register.php:55 ReminderReport.php:51 SettingsIndividual.php:111
 #: SettingsIndividual.php:157 SettingsUser.php:99 SettingsUser.php:159
 #: TaxReport.php:54 UserEditor.php:457 UserEditor.php:560
-#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:155
+#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:163
 #: sundayschool/SundaySchoolDashboard.php:258
-#: sundayschool/SundaySchoolReports.php:231
+#: sundayschool/SundaySchoolReports.php:285
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -93,7 +93,7 @@ msgstr "Intervalo de Pagos (meses)"
 #: AutoPaymentEditor.php:866 CartToGroup.php:75 EditEventTypes.php:86
 #: EditEventTypes.php:98 EventNames.php:104 EventNames.php:116
 #: EventNames.php:161 GroupReports.php:47 GroupReports.php:142
-#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:147
+#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:189
 msgid "None"
 msgstr "Nada"
 
@@ -144,7 +144,7 @@ msgstr "Telefono"
 #: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
 #: Reports/DirectoryReport.php:294 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
-#: external/templates/verify/verify-family-info.php:81
+#: external/templates/verify/verify-family-info.php:85
 #: sundayschool/SundaySchoolClassView.php:88
 #: sundayschool/SundaySchoolClassView.php:204 menuconfig_mcf.php:15
 #: queryparameteroptions_qpo.php:13
@@ -468,8 +468,8 @@ msgstr "Sobre de donativo"
 #: SelectList.php:1052
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
-#: external/templates/verify/verify-family-info.php:28
-#: external/templates/verify/verify-family-info.php:75
+#: external/templates/verify/verify-family-info.php:30
+#: external/templates/verify/verify-family-info.php:79
 #: sundayschool/SundaySchoolClassView.php:206 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr "Teléfono Hogar"
@@ -479,7 +479,7 @@ msgstr "Teléfono Hogar"
 #: PersonEditor.php:953 PersonEditor.php:955 PersonView.php:312
 #: PrintView.php:204 Reports/ConfirmReport.php:239
 #: Reports/ConfirmReportEmail.php:237 SelectList.php:979 SelectList.php:980
-#: SelectList.php:1052 external/templates/verify/verify-family-info.php:77
+#: SelectList.php:1052 external/templates/verify/verify-family-info.php:81
 msgid "Work Phone"
 msgstr "Telefono Trabajo"
 
@@ -487,7 +487,7 @@ msgstr "Telefono Trabajo"
 #: FamilyEditor.php:757 FamilyView.php:259 PersonEditor.php:978
 #: PersonEditor.php:980 PersonView.php:293 PrintView.php:209
 #: SelectList.php:982 SelectList.php:983 SelectList.php:1052
-#: external/templates/verify/verify-family-info.php:79
+#: external/templates/verify/verify-family-info.php:83
 msgid "Mobile Phone"
 msgstr "Telefono Móvil"
 
@@ -503,7 +503,7 @@ msgstr "Fecha de Nacimiento"
 
 #: CSVImport.php:228 CartToFamily.php:210 DirectoryReports.php:172
 #: FamilyEditor.php:803 FamilyView.php:234
-#: external/templates/verify/verify-family-info.php:35
+#: external/templates/verify/verify-family-info.php:37
 msgid "Wedding Date"
 msgstr "Fecha de Matrimonio"
 
@@ -832,7 +832,7 @@ msgid "Select the group to which you would like to add your cart"
 msgstr "Seleccione el grupo que desea añadir al separador"
 
 #: CartToGroup.php:71 GroupReports.php:43 PersonToGroup.php:61
-#: sundayschool/SundaySchoolReports.php:143
+#: sundayschool/SundaySchoolReports.php:185
 msgid "Select Group"
 msgstr "Seleccionar Grupo"
 
@@ -987,7 +987,7 @@ msgstr "Seleccione el evento al que desea ingresar personas"
 msgid "Select Event"
 msgstr "Seleccionar Evento"
 
-#: external/templates/verify/verify-family-info.php:156
+#: external/templates/verify/verify-family-info.php:164
 msgid "Verify"
 msgstr "Verificar"
 
@@ -1155,7 +1155,7 @@ msgstr "Teléfono movil (familia)"
 
 #: DirectoryReports.php:178 Reports/ConfirmReport.php:156
 #: Reports/ConfirmReportEmail.php:160
-#: external/templates/verify/verify-family-info.php:30
+#: external/templates/verify/verify-family-info.php:32
 msgid "Family Email"
 msgstr "Email de la Familia"
 
@@ -1378,7 +1378,7 @@ msgstr "Tipo"
 
 #: AutoPaymentEditor.php:846 ElectronicPaymentList.php:195 FamilyView.php:757
 #: PledgeEditor.php:518 ReminderReport.php:41 SelectDelete.php:216
-#: sundayschool/SundaySchoolReports.php:161 queryparameters_qrp.php:18
+#: sundayschool/SundaySchoolReports.php:204 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "Año fiscal"
 
@@ -2827,8 +2827,8 @@ msgstr "Actualizar Registros de Familia"
 msgid "Update Envelopes"
 msgstr "Actualizar Sobres"
 
-#: ManageEnvelopes.php:133 external/templates/verify/verify-family-info.php:14
-#: external/templates/verify/verify-family-info.php:138
+#: ManageEnvelopes.php:133 external/templates/verify/verify-family-info.php:16
+#: external/templates/verify/verify-family-info.php:146
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -4538,8 +4538,8 @@ msgstr "Maestro"
 msgid "Student"
 msgstr "Estudiante"
 
-#: Reports/ClassAttendance.php:117 Reports/ClassAttendance.php:118
-#: Reports/ClassList.php:101 Reports/ClassList.php:102
+#: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
+#: Reports/ClassList.php:134 Reports/ClassList.php:135
 msgid "Liaison"
 msgstr "Relación"
 
@@ -4549,7 +4549,7 @@ msgstr "Ciudad, Estado, Código Postal"
 
 #: FamilyEditor.php:779 FamilyView.php:227 Reports/ConfirmReport.php:140
 #: Reports/ConfirmReportEmail.php:144
-#: external/templates/verify/verify-family-info.php:40
+#: external/templates/verify/verify-family-info.php:42
 msgid "Send Newsletter"
 msgstr "Enviar Newsletter"
 
@@ -4658,7 +4658,7 @@ msgstr "Pagado por ( ) Efectivo ( ) Cheque ( ) Tarjeta de crédito _____________
 msgid "                                        Signature ________________________________________________________________"
 msgstr "                                        Firma ________________________________________________________________"
 
-#: ChurchCRM/Reports/PDF_Attendance.php:126
+#: ChurchCRM/Reports/PDF_Attendance.php:179
 msgid "Totals"
 msgstr "Totales"
 
@@ -4717,7 +4717,8 @@ msgstr "Funciones de Clase de Escuela Dominical"
 msgid "Toggle Dropdown"
 msgstr "Cambiar Desplegable"
 
-#: sundayschool/SundaySchoolClassView.php:122
+#: Reports/ClassAttendance.php:99 Reports/ClassAttendance.php:184
+#: Reports/PhotoBook.php:69 sundayschool/SundaySchoolClassView.php:122
 #: sundayschool/SundaySchoolDashboard.php:80
 #: sundayschool/SundaySchoolDashboard.php:152
 msgid "Teachers"
@@ -4740,6 +4741,7 @@ msgstr "Estado Rápido"
 msgid "Birthdays by Month"
 msgstr "Cumpleaños por Mes"
 
+#: Reports/ClassAttendance.php:172 Reports/PhotoBook.php:71
 #: sundayschool/SundaySchoolClassView.php:193
 #: sundayschool/SundaySchoolDashboard.php:91
 #: sundayschool/SundaySchoolDashboard.php:153
@@ -4751,7 +4753,7 @@ msgstr "Estudiantes"
 msgid "Mobile"
 msgstr "Teléfono Móvil"
 
-#: external/templates/verify/verify-family-info.php:26
+#: external/templates/verify/verify-family-info.php:28
 #: sundayschool/SundaySchoolClassView.php:207
 #: sundayschool/SundaySchoolDashboard.php:206
 msgid "Home Address"
@@ -4817,7 +4819,7 @@ msgstr "Dashboard de Escuela Dominical"
 msgid "Classes"
 msgstr "Clases"
 
-#: sundayschool/SundaySchoolReports.php:27
+#: sundayschool/SundaySchoolReports.php:29
 msgid "Sunday School Reports"
 msgstr "Reportes de Escuelas Dominicales"
 
@@ -4833,58 +4835,58 @@ msgstr "Exportar Todas las Clases, Niños y Padres a un archivo CSV"
 msgid "Students not in a Sunday School Class"
 msgstr "Estudiantes en ninguna Escuela Dominical"
 
-#: sundayschool/SundaySchoolReports.php:114
+#: sundayschool/SundaySchoolReports.php:122
 msgid "At least one group must be selected to make class lists or attendance sheets."
 msgstr "Al menos un grupo debe ser seleccionado para crear listas de clase u hojas de asistencia."
 
-#: CanvassAutomation.php:116 sundayschool/SundaySchoolReports.php:136
+#: CanvassAutomation.php:116 sundayschool/SundaySchoolReports.php:178
 msgid "Report Details"
 msgstr "Detalles de Reporte"
 
-#: sundayschool/SundaySchoolReports.php:143
+#: sundayschool/SundaySchoolReports.php:185
 msgid "To select multiple hold CTL"
 msgstr "Para seleccionar varios mantenga presionada la tecla Ctrl"
 
-#: sundayschool/SundaySchoolReports.php:153
+#: sundayschool/SundaySchoolReports.php:194
 msgid "Multiple groups will have a Page Break between Groups<br>"
 msgstr "Múltiples grupos tendrán un salto de página entre cada uno<br>"
 
-#: sundayschool/SundaySchoolReports.php:155
+#: sundayschool/SundaySchoolReports.php:196
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Listar todos los Roles (no seleccionado listará sólo roles Profesor/Estudiante)"
 
-#: sundayschool/SundaySchoolReports.php:168
+#: sundayschool/SundaySchoolReports.php:211
 msgid "First Sunday"
 msgstr "Primer Domingo"
 
-#: sundayschool/SundaySchoolReports.php:173
+#: sundayschool/SundaySchoolReports.php:216
 msgid "Last Sunday"
 msgstr "Domingo Pasado"
 
-#: sundayschool/SundaySchoolReports.php:178
-#: sundayschool/SundaySchoolReports.php:183
-#: sundayschool/SundaySchoolReports.php:188
-#: sundayschool/SundaySchoolReports.php:193
-#: sundayschool/SundaySchoolReports.php:198
-#: sundayschool/SundaySchoolReports.php:203
-#: sundayschool/SundaySchoolReports.php:208
-#: sundayschool/SundaySchoolReports.php:213
+#: sundayschool/SundaySchoolReports.php:221
+#: sundayschool/SundaySchoolReports.php:226
+#: sundayschool/SundaySchoolReports.php:231
+#: sundayschool/SundaySchoolReports.php:236
+#: sundayschool/SundaySchoolReports.php:241
+#: sundayschool/SundaySchoolReports.php:246
+#: sundayschool/SundaySchoolReports.php:251
+#: sundayschool/SundaySchoolReports.php:256
 msgid "No Sunday School"
 msgstr "No hay Escuela Dominical"
 
-#: sundayschool/SundaySchoolReports.php:218
+#: sundayschool/SundaySchoolReports.php:261
 msgid "Extra Students"
 msgstr "Estudiantes Adicionales"
 
-#: sundayschool/SundaySchoolReports.php:222
+#: sundayschool/SundaySchoolReports.php:265
 msgid "Extra Teachers"
 msgstr "Maestros Adicionales"
 
-#: sundayschool/SundaySchoolReports.php:229
+#: sundayschool/SundaySchoolReports.php:274
 msgid "Create Class List"
 msgstr "Crear lista de clase"
 
-#: sundayschool/SundaySchoolReports.php:230
+#: sundayschool/SundaySchoolReports.php:277
 msgid "Create Attendance Sheet"
 msgstr "Crear Hoja de Asistencia"
 
@@ -7799,31 +7801,31 @@ msgstr "Correo Electronico"
 msgid "Family Verification"
 msgstr "Verificación de Familia"
 
-#: external/templates/verify/verify-family-info.php:51
+#: external/templates/verify/verify-family-info.php:55
 msgid "Family Member(s)"
 msgstr "Miembro(s) de Familia"
 
-#: external/templates/verify/verify-family-info.php:83
+#: external/templates/verify/verify-family-info.php:87
 msgid "Work Email"
 msgstr "Correo electrónico del trabajo"
 
-#: external/templates/verify/verify-family-info.php:87
+#: external/templates/verify/verify-family-info.php:91
 msgid "Age Hidden"
 msgstr "Ocultar Edad"
 
-#: external/templates/verify/verify-family-info.php:142
+#: external/templates/verify/verify-family-info.php:150
 msgid "Please let us know what information to update if any"
 msgstr "Por favor háganos saber qué información actualizar, si alguna"
 
-#: external/templates/verify/verify-family-info.php:147
+#: external/templates/verify/verify-family-info.php:155
 msgid "Your verification request is complete"
 msgstr "Su petición de verificación está completada"
 
-#: external/templates/verify/verify-family-info.php:151
+#: external/templates/verify/verify-family-info.php:159
 msgid "We encountered an error submitting with your verification data"
 msgstr "Encontramos un error al enviar sus datos de verificación"
 
-#: external/templates/verify/verify-family-info.php:157
+#: external/templates/verify/verify-family-info.php:165
 msgid "Visit our Site"
 msgstr "Visite nuestro sitio"
 
@@ -8941,63 +8943,63 @@ msgstr "Puede crear/eliminar grupo de escuela dominical. "
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr "Agregar nuevos roles, pero no modificar o renombrar los roles de Estudiantes y Profesores."
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:162
 msgid "E"
 msgstr "E"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:160
 msgid "ENE"
 msgstr "ENE"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:164
 msgid "ESE"
 msgstr "ESE"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:154
 msgid "N"
 msgstr "N"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:158
 msgid "NE"
 msgstr "NE"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:156
 msgid "NNE"
 msgstr "NNE"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:152
 msgid "NNW"
 msgstr "NNO"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:150
 msgid "NW"
 msgstr "NO"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:138 ChurchCRM/utils/GeoUtils.php:170
 msgid "S"
 msgstr "S"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:166
 msgid "SE"
 msgstr "SE"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:140
 msgid "SSW"
 msgstr "SSO"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:142
 msgid "SW"
 msgstr "SO"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:146
 msgid "W"
 msgstr "O"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:148
 msgid "WNW"
 msgstr "ONO"
 
-#: 
+#: ChurchCRM/utils/GeoUtils.php:144
 msgid "WSW"
 msgstr "OSO"
 
