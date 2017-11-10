@@ -35,23 +35,32 @@ $withPictures = InputUtils::LegacyFilterInput($_GET['pictures']);
 
 class PDF_PhotoBook extends ChurchInfoReport
 {
-  private $students;
-  private $teachers;
   private $group;
   private $FYIDString;
   private $currentX;
   private $currentY;
-  private $imageHeight;
+  private $pageMarginL;
+  private $pageMarginR;
+  private $pageMarginT;
+  private $personMarginL;
+  private $personMarginR;
+  private $personImageHeight;
+  private $personImageWidth;
   
   // Constructor
   public function __construct($iGroupID,$iFYID)
   {
     parent::__construct('P', 'mm', $this->paperFormat);
     
-    
     //$this->initializeArrays();
+    $this->pageMarginL = 15;
+    $this->pageMarginR = 15;
+    $this->pageMarginT = 20;
+    $this->personMarginL = 2.5;
+    $this->personMarginR = 2.5;
+    $this->personImageHeight = 30;
+    $this->personImageWidth = 30;
     $this->FYIDString = MakeFYString($iFYID);
-    $this->imageHeight = 30;
     $this->group = GroupQuery::Create()->findOneById($iGroupID);
     $this->SetMargins(0, 0);
     $this->SetFont('Times', '', 14);
@@ -59,261 +68,84 @@ class PDF_PhotoBook extends ChurchInfoReport
     $this->AddPage();
     $this->drawGroupMebersByRole("Teacher",gettext("Teachers"));
     $this->AddPage();
-   
     $this->drawGroupMebersByRole("Student",gettext("Students"));
   }
     
   private function drawPageHeader($title) {
-    $this->currentX = 20;
-    $this->currentY = 26;
+    $this->currentX = $this->pageMarginL;
+    $this->currentY = $this->pageMarginT;
 
     $this->SetFont('Times', 'B', 16);
-
     $this->WriteAt($this->currentX, $this->currentY, $title);
-
-    $this->WriteAt($this->currentX, $this->currentY, $this->iFYIDString);
+    $this->currentX = 170;
+    $this->WriteAt($this->currentX, $this->currentY, $this->FYIDString);
     $this->SetLineWidth(0.5);
-    $this->Line($this->currentX, $this->currentY - 0.75, 195, $this->currentY - 0.75);
+    $this->Line($this->pageMarginL, 25.25,$this->GetPageWidth() - $this->pageMarginR, 25.25);
   }
     
   private function drawPersonBlock($name, $thumbnailURI) {
-
-    $nameX = $this->currentX+$this->imageHeight/1.22-$this->GetStringWidth($name)/2;
-    $nameY = $this->currentY+$this->imageHeight+2;
-
-    $this->WriteAt($nameX,$nameY , $name);
-
-
+   
+    # Draw a bounding box around the image placeholder centered around the name text.
+    $this->currentX += $this->personMarginL;
+    $this->SetFont('Times', '', 10);
+    $NameWidth = $this->GetStringWidth($name);
+    $offset = ($NameWidth/2) - ($this->personImageWidth /2)+2;
+    
     $this->SetLineWidth(0.25);
-    $this->Line($nameX-$this->imageHeight, $y, $nameX, $y);
-    $this->Line($nameX-$this->imageHeight, $y+$this->imageHeight, $nameX, $y+$this->imageHeight);
-    $this->Line($nameX-$this->imageHeight, $y, $nameX, $y);
-    $this->Line($nameX-$this->imageHeight, $y, $nameX-$this->imageHeight, $y+$this->imageHeight);
-    $this->Line($nameX, $y, $nameX, $y+$this->imageHeight);
-
-    $nameX -= $widthName;
-    $nameX+=$widthName;
-
-
-    if ($nameX == 0) {
-        $y+=$this->imageHeight*2;
-    }
-
+    $this->Rect($this->currentX, $this->currentY, $this->personImageWidth, $this->personImageHeight);
+   
+    
+    # Draw the image or an x
     if (file_exists($thumbnailURI)) {
-        $nw = $this->imageHeight;
-        $nh = $this->imageHeight;
-
-        $this->Image($thumbnailURI, $nameX-$nw, $y, $nw, $nh, 'PNG');
+      $this->Image($thumbnailURI,$this->currentX, $this->currentY, $this->personImageWidth, $this->personImageHeight, 'PNG');
     }
-    else
-    {
-      $this->Line($nameX-$this->imageHeight, $y+$this->imageHeight, $nameX, $y);
-      $this->Line($nameX-$this->imageHeight, $y, $nameX, $y+$this->imageHeight);
+    else {
+      $this->Line($this->currentX, $this->currentY, $this->currentX + $this->personImageWidth, $this->currentY + $this->personImageHeight);
+      $this->Line($this->currentX+$this->personImageWidth, $this->currentY, $this->currentX, $this->currentY + $this->personImageHeight);
     }
+     
+    # move the cursor, and draw the teacher name
+    $this->currentX -= $offset;
+    $this->currentY += $this->personImageHeight + 2;
+    $this->WriteAt($this->currentX, $this->currentY , $name);
     
-    $this->currentX+=50;
-  }
-
-  private function initializeArrays(){
+    $this->currentX += $offset;
+    $this->currentY -= $this->personImageHeight + 2;
     
-    
-    $teacherCount = 0;
-    $studentCount = 0;
-
-    $this->students = [];
-    $this->teachers = [];
-
-    foreach ($groupRoleMemberships as $groupRoleMembership) {
-      $person = $groupRoleMembership->getPerson();
-      
-      $lst_OptionName = $groupRole->getOptionName();
-      if ($lst_OptionName == 'Teacher') {
-        $elt = ['perID' => $groupRoleMembership->getPersonId()];
-        array_push($teachers, $elt);
-        ++$teacherCount;
-      } elseif ($lst_OptionName == 'Student') {
-        $elt = ['perID' => $groupRoleMembership->getPersonId()];
-        array_push($students, $elt);
-        ++$studentCount;
-      }
-    }
+    $this->currentX += $this->personImageWidth;
+    $this->currentX += $this->personMarginR;
   }
   
   private function drawGroupMebersByRole($roleName,$roleDisplayName) {
-    
-    $this->drawPageHeader((gettext("PhotoBook").' - '.$this->group->getName().' - '.$roleDisplayName));
+
     $RoleListID =$this->group->getRoleListId();
     $groupRole = ListOptionQuery::create()->filterById($RoleListID)->filterByOptionName($roleName)->findOne();
-    
-    
-    
     $groupRoleMemberships = Person2group2roleP2g2rQuery::create() 
                             ->filterByGroup($this->group)
                             ->filterByRoleId($groupRole->getOptionId())
                             ->joinWithPerson()
                             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
-                            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce per_LastName, per_FirstName
+                            ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME)
                             ->find();
-    //echo $groupRoleMemberships->count();
-    
-    $this->WriteAt(80,50,$groupRoleMemberships->count());
+    $this->drawPageHeader((gettext("PhotoBook").' - '.$this->group->getName().' - '.$roleDisplayName." (".$groupRoleMemberships->count().")"));
+    $this->currentX = $this->pageMarginL;
+    $this->currentY += 10;
     foreach ($groupRoleMemberships as $roleMembership)
     {
       $person = $roleMembership->getPerson();
       $this->drawPersonBlock($person->getFullName(), $person->getThumbnailURI());
+      if ($this->currentX + $this->personMarginL + $this->personImageWidth + $this->personMarginR  >= $this->GetPageWidth() - $this->pageMarginR) //can we fit another on the page?
+      {
+        $this->currentY += 50;
+        $this->currentX = $this->pageMarginL;
+      }
+      
+      if 
     }
   }
-
 }
-
-
 // Instantiate the directory class and build the report.
 $pdf = new PDF_PhotoBook($iGroupID);
-/*
-for ($i = 0; $i < $nGrps; $i++) {
-    $iGroupID = $aGrp[$i];
-    
-    if ($i > 0) {
-        $pdf->AddPage();
-    }
-    
-   
-
-   
-
-    
-
-
-    $y = $yTeachers;
-    $y += $yIncrement;
-    $y += $yOffsetStartStudents;
-
-    $pdf->SetFont('Times', '', 9);
-    $prevStudentName = '';
-    
-    
-   
-
-    $numMembers = count($students);
-    
-    $PersonBlockWidth = 40;
-
-    for ($row = 0; $row < $numMembers; $row++) {
-        $student = $students[$row];
-        
-        $person = PersonQuery::create()->findPk($student['perID']);
-        $studentName = $person->getFullName();
-        
-        if ($studentName != $prevStudentName) {
-          drawPersonBlock($person->getFullName(), $person->getThumbnailURI(), $nameX, $y, $pdf);
-          $nameX += $widthName;
-        }
-
-        $prevStudentName = $studentName;
-        //$y += 1.5 * $yIncrement;
-
-        if ($y > 250) {
-            $pdf->AddPage();
-            $y = 20;
-        }
-    }
-    
-    if ($nameX != 0) {
-        $y+=$this->imageHeight*1.2;
-    } else {
-        $y-=$this->imageHeight/2;
-    }
-
-    $pdf->SetFont('Times', 'B', 12);
-    $pdf->WriteAt($phoneX-7, $y+5, FormatDate(date('Y-m-d')));
-
-    
-    // we start to create all the teachers
-    $pdf->AddPage();
-    $nameX = 20;
-    $yTitle = 20;
-    $pdf->WriteAt($nameX, $yTitle, (gettext("PhotoBook").' - '.$group->getName().' - '.gettext("Teachers")));
-
-    $FYString = MakeFYString($iFYID);
-    $pdf->WriteAt($phoneX, $yTitle, $FYString);
-    $pdf->SetLineWidth(0.5);
-    $pdf->Line($nameX, $yTeachers - 0.75, 195, $yTeachers - 0.75);
-
-    $nameX = 0;
-    $y = $yTeachers;
-    $y += $yIncrement;
-    $y += $yOffsetStartStudents;
-
-    $teacherCount = count($teachers);
-    
-    $pdf->SetFont('Times', '', 9);
-    $prevTeacherName = '';
-    
-    $withTeacherName = 40;
-    
-    for ($row = 0; $row < $teacherCount; $row++) {
-        $teacher = $teachers[$row];
-        
-        $person = PersonQuery::create()->findPk($teacher['perID']);
-        $teacherName = $person->getFullName();
-        
-        if ($teacherName != $prevTeacherName) {
-            $pdf->WriteAt($nameX+$this->imageHeight/1.22-$pdf->GetStringWidth($teacherName)/2, $y+$this->imageHeight+2, $teacherName);
-            $nameX += $withTeacherName;
-                
-            $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhotoURI());
-                    
-            $pdf->SetLineWidth(0.25);
-            $pdf->Line($nameX-$this->imageHeight, $y, $nameX, $y);
-            $pdf->Line($nameX-$this->imageHeight, $y+$this->imageHeight, $nameX, $y+$this->imageHeight);
-            $pdf->Line($nameX-$this->imageHeight, $y, $nameX, $y);
-            $pdf->Line($nameX-$this->imageHeight, $y, $nameX-$this->imageHeight, $y+$this->imageHeight);
-            $pdf->Line($nameX, $y, $nameX, $y+$this->imageHeight);
-        
-            // we build the cross in the case of there's no photo
-            //$this->SetLineWidth(0.25);
-            $pdf->Line($nameX-$this->imageHeight, $y+$this->imageHeight, $nameX, $y);
-            $pdf->Line($nameX-$this->imageHeight, $y, $nameX, $y+$this->imageHeight);
-                
-            if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($_SERVER['DOCUMENT_ROOT'].$imgName)) {
-                list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$img);
-                $nw = $this->imageHeight;
-                $nh = $this->imageHeight;
-            
-                $pdf->Image('https://'.$_SERVER['HTTP_HOST'].$imgName, $nameX-$nw, $y, $nw, $nh, 'PNG');
-            }
-                    
-            $nameX -= $withTeacherName;
-
-            $nameX+=$withTeacherName;
-            $nameX=$nameX%($withTeacherName*5);
-                    
-            if ($nameX == 0) {
-                $y+=$this->imageHeight*2;
-            }
-                        
-            //echo $nameX." ".$y."<br>";
-        }
-
-        $prevTeacherName = $teacherName;
-
-        if ($y > 250) {
-            $pdf->AddPage();
-            $y = 20;
-        }
-    }
-    
-    if ($nameX != 0) {
-        $y+=$this->imageHeight*1.2;
-    } else {
-        $y-=$this->imageHeight/2;
-    }
-
-
-    $pdf->SetFont('Times', 'B', 12);
-    $pdf->WriteAt($phoneX-7, $y+5, FormatDate(date('Y-m-d')));
-}
-*/
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
     $pdf->Output('ClassList'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
