@@ -174,6 +174,6 @@ class GeoUtils
 
 //    $direction  = $bearing . " " . $direction;
 
-        return gettext($direction);
+        return $direction;
     }
 }
