@@ -17,6 +17,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -429,6 +430,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family = FamilyQuery::create()->findPk($iFamilyID);
             $family->createTimeLineNote('create');
             $family->updateLanLng();
+            
+            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
+                $NotificationEmail = new NewPersonOrFamilyEmail($family);
+                if (!$NotificationEmail->send()) {
+                    $logger->warn($NotificationEmail->getError());
+                }
+            }
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
                 if (strlen($aFirstNames[$iCount]) > 0) {
@@ -691,7 +699,7 @@ require 'Include/Header.php';
 					</div>
 				</div>
 				<?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
-                    if (!$bHaveXML) { // No point entering if values will just be overwritten?>
+                                if (!$bHaveXML) { // No point entering if values will just be overwritten?>
 				<div class="row">
 					<div class="form-group col-md-3">
 						<label><?= gettext('Latitude') ?>:</label>
@@ -703,7 +711,7 @@ require 'Include/Header.php';
 					</div>
 				</div>
 				<?php
-                    }
+                                }
                             } /* Lat/Lon can be hidden - General Settings */ ?>
 			</div>
 		</div>
@@ -787,16 +795,16 @@ require 'Include/Header.php';
 		</div><!-- /.box-header -->
 		<div class="box-body">
 			<?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
-                if ($dWeddingDate == 'NULL') {
-                    $dWeddingDate = '';
-                } ?>
+                                if ($dWeddingDate == 'NULL') {
+                                    $dWeddingDate = '';
+                                } ?>
 				<div class="row">
 					<div class="form-group col-md-4">
                         <label><?= gettext('Wedding Date') ?>:</label>
-						<input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="12" id="WeddingDate" size="15">
+						<input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" id="WeddingDate" size="15" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
 						<?php if ($sWeddingDateError) {
-                    ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php
-                } ?>
+                                    ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php
+                                } ?>
 					</div>
 				</div>
 			<?php
@@ -1083,15 +1091,15 @@ require 'Include/Header.php';
                     $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
             $rsClassifications = RunQuery($sSQL);
 
-                    //Display Classifications
-                    while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                        extract($aRow);
-                        echo '<option value="'.$lst_OptionID.'"';
-                        if ($aClassification[$iCount] == $lst_OptionID) {
-                            echo ' selected';
-                        }
-                        echo '>'.$lst_OptionName.'&nbsp;';
-                    }
+            //Display Classifications
+            while ($aRow = mysqli_fetch_array($rsClassifications)) {
+                extract($aRow);
+                echo '<option value="'.$lst_OptionID.'"';
+                if ($aClassification[$iCount] == $lst_OptionID) {
+                    echo ' selected';
+                }
+                echo '>'.$lst_OptionName.'&nbsp;';
+            }
             echo '</select></td></tr>';
         }
         echo '</table></div>';

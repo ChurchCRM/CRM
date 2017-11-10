@@ -198,7 +198,7 @@ class SundaySchoolService
 
     public function getKidsWithoutClasses()
     {
-        $sSQL = 'select kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone,
+        $sSQL = 'select kid.per_ID kidId, kid.per_FirstName firstName, kid.per_LastName LastName, kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, kid.per_CellPhone mobilePhone, kid.per_Flags flags,
               fam.fam_Address1 Address1, fam.fam_Address2 Address2, fam.fam_City city, fam.fam_State state, fam.fam_Zip zip
             from person_per kid, family_fam fam
             where per_fam_id = fam.fam_ID and per_cls_ID in (1,2) and kid.per_fmr_ID = 3 and

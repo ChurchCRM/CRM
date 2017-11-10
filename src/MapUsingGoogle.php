@@ -41,26 +41,26 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
         }
 
         $plotFamily = false;
-    //Get the details from DB
-    $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
+        //Get the details from DB
+        $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
 
         if ($iGroupID > 0) {
             //Get all the members of this group
-        $persons = PersonQuery::create()
+            $persons = PersonQuery::create()
             ->usePerson2group2roleP2g2rQuery()
             ->filterByGroupId($iGroupID)
             ->endUse()
             ->find();
         } elseif ($iGroupID == 0) {
             // group zero means map the cart
-        if (!empty($_SESSION['aPeopleCart'])) {
-            $persons = PersonQuery::create()
+            if (!empty($_SESSION['aPeopleCart'])) {
+                $persons = PersonQuery::create()
                 ->filterById($_SESSION['aPeopleCart'])
                 ->find();
-        }
+            }
         } else {
             //Map all the families
-        $families = FamilyQuery::create()
+            $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)
             ->filterByLatitude(0, Criteria::NOT_EQUAL)
             ->filterByLongitude(0, Criteria::NOT_EQUAL)
@@ -71,8 +71,8 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             $plotFamily = true;
         }
 
-    //Markericons list
-    $icons = ListOptionQuery::create()
+        //Markericons list
+        $icons = ListOptionQuery::create()
         ->filterById(1)
         ->orderByOptionSequence()
         ->find();
@@ -194,7 +194,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             foreach ($families as $family) {
                 if ($family->hasLatitudeAndLongitude()) {
                     //this helps to add head people persons details: otherwise doesn't seems to populate
-                $class = $family->getHeadPeople()[0];
+                    $class = $family->getHeadPeople()[0];
                     $family->getHeadPeople()[0];
                     $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
                     $arr['ID'] = $family->getId();
@@ -211,20 +211,20 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             }
         } else {
             //plot Person
-                foreach ($persons as $member) {
-                    $latLng = $member->getLatLng();
-                    $photoFileThumb = SystemURLs::getRootPath() . '/api/persons/' . $member->getId() . '/thumbnail';
-                    $arr['ID'] = $member->getId();
-                    $arr['Salutation'] = $member->getFullName();
-                    $arr['Name'] = $member->getFullName();
-                    $arr['Address'] = $member->getAddress();
-                    $arr['Thumbnail'] = $photoFileThumb;
-                    $arr['Latitude'] = $latLng['Latitude'];
-                    $arr['Longitude'] = $latLng['Longitude'];
-                    $arr['Name'] = $member->getFullName();
-                    $arr['Classification'] = $member->getClsId();
-                    array_push($arrPlotItems, $arr);
-                }
+            foreach ($persons as $member) {
+                $latLng = $member->getLatLng();
+                $photoFileThumb = SystemURLs::getRootPath() . '/api/persons/' . $member->getId() . '/thumbnail';
+                $arr['ID'] = $member->getId();
+                $arr['Salutation'] = $member->getFullName();
+                $arr['Name'] = $member->getFullName();
+                $arr['Address'] = $member->getAddress();
+                $arr['Thumbnail'] = $photoFileThumb;
+                $arr['Latitude'] = $latLng['Latitude'];
+                $arr['Longitude'] = $latLng['Longitude'];
+                $arr['Name'] = $member->getFullName();
+                $arr['Classification'] = $member->getClsId();
+                array_push($arrPlotItems, $arr);
+            }
         } //end IF $plotFamily
 
             ?>

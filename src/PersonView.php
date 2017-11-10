@@ -69,18 +69,18 @@ if ($per_ID == $iPersonID) {
     $person = PersonQuery::create()->findPk($iPersonID);
     $assignedProperties = $person->getProperties();
 
-// Get the lists of custom person fields
-$sSQL = 'SELECT person_custom_master.* FROM person_custom_master
+    // Get the lists of custom person fields
+    $sSQL = 'SELECT person_custom_master.* FROM person_custom_master
 			ORDER BY custom_Order';
     $rsCustomFields = RunQuery($sSQL);
 
-// Get the custom field data for this person.
-$sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
+    // Get the custom field data for this person.
+    $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
     $rsCustomData = RunQuery($sSQL);
     $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
-// Get the Groups this Person is assigned to
-$sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
+    // Get the Groups this Person is assigned to
+    $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
 		FROM group_grp
 		LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
 		LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
@@ -89,22 +89,22 @@ $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS ro
     $rsAssignedGroups = RunQuery($sSQL);
     $sAssignedGroups = ',';
 
-// Get all the Groups
-$sSQL = 'SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name';
+    // Get all the Groups
+    $sSQL = 'SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name';
     $rsGroups = RunQuery($sSQL);
 
-// Get the volunteer opportunities this Person is assigned to
-$sSQL = 'SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
+    // Get the volunteer opportunities this Person is assigned to
+    $sSQL = 'SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
 		LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
 		WHERE person2volunteeropp_p2vo.p2vo_per_ID = '.$iPersonID.' ORDER by vol_Order';
     $rsAssignedVolunteerOpps = RunQuery($sSQL);
 
-// Get all the volunteer opportunities
-$sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order';
+    // Get all the volunteer opportunities
+    $sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order';
     $rsVolunteerOpps = RunQuery($sSQL);
 
-// Get the Properties assigned to this Person
-$sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
+    // Get the Properties assigned to this Person
+    $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
 		FROM record2property_r2p
 		LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
 		LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
@@ -112,12 +112,12 @@ $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
   ' ORDER BY prt_Name, pro_Name';
     $rsAssignedProperties = RunQuery($sSQL);
 
-// Get all the properties
-$sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
+    // Get all the properties
+    $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
     $rsProperties = RunQuery($sSQL);
 
-// Get Field Security List Matrix
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
+    // Get Field Security List Matrix
+    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
     $rsSecurityGrp = RunQuery($sSQL);
 
     while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
@@ -130,18 +130,18 @@ $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
     $sFamilyInfoBegin = '<span style="color: red;">';
     $sFamilyInfoEnd = '</span>';
 
-// Assign the values locally, after selecting whether to display the family or person information
+    // Assign the values locally, after selecting whether to display the family or person information
 
-//Get an unformatted mailing address to pass as a parameter to a google maps search
-SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
+    //Get an unformatted mailing address to pass as a parameter to a google maps search
+    SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
     $sCity = SelectWhichInfo($per_City, $fam_City, false);
     $sState = SelectWhichInfo($per_State, $fam_State, false);
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
     $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
     $plaintextMailingAddress = $person->getAddress();
 
-//Get a formatted mailing address to use as display to the user.
-SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
+    //Get a formatted mailing address to use as display to the user.
+    SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
     $sCity = SelectWhichInfo($per_City, $fam_City, true);
     $sState = SelectWhichInfo($per_State, $fam_State, true);
     $sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
@@ -186,14 +186,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             <?php if ($bOkToEdit): ?>
                 <div class="after">
                 <div class="buttons">
-                    <a id="view-larger-image-btn" class="hide" href="#" title="<?= gettext("View Photo") ?>">
+                    <a id="view-larger-image-btn" class="hide"  title="<?= gettext("View Photo") ?>">
                         <i class="fa fa-search-plus"></i>
                     </a>&nbsp;
-                    <a href="#" class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
+                    <a  class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
                         <i class="fa fa-camera"></i>
                     </a>&nbsp;
                     <?php if ($person->isPhotoLocal()): ?>
-                        <a href="#" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                        <a  data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
                             <i class="fa fa-trash-o"></i>
                         </a>
                     <?php endif; ?>
@@ -217,7 +217,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
             <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?>
             &nbsp;
             <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" 
-            data-family_role_id="<?= $person->getFmrId() ?>" href="#" class="btn btn-primary btn-xs">
+            data-family_role_id="<?= $person->getFmrId() ?>"  class="btn btn-primary btn-xs">
                 <i class="fa fa-pencil"></i>
             </a>
         </p>
@@ -230,7 +230,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         </p>
         <?php if ($bOkToEdit) {
         ?>
-          <a href="PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
+          <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
         <?php
     } ?>
       </div>
@@ -250,8 +250,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 							<?php
               if ($fam_ID != '') {
                   ?>
-                <a href="FamilyView.php?FamilyID=<?= $fam_ID ?>"><?= $fam_Name ?> </a>
-                <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
+                <a href="<?= SystemURLs::getRootPath() ?>/FamilyView.php?FamilyID=<?= $fam_ID ?>"><?= $fam_Name ?> </a>
+                <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
 									<span class="fa-stack">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
@@ -322,24 +322,24 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
         }
     }
 
-          // Display the right-side custom fields
-          while ($Row = mysqli_fetch_array($rsCustomFields)) {
-              extract($Row);
-              $currentData = trim($aCustomData[$custom_Field]);
-              if ($currentData != '') {
-                  if ($type_ID == 11) {
-                      $custom_Special = $sPhoneCountry;
-                  }
-                  echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'glyphicon glyphicon-tag').'"></i>'.$custom_Name.': <span>';
-                  $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
-                  if ($type_ID == 11) {
-                      echo "<a href=\"tel:".$temp_string."\">".$temp_string."</a>";
-                  } else {
-                      echo $temp_string;
-                  }
-                  echo '</span></li>';
-              }
-          } ?>
+    // Display the right-side custom fields
+    while ($Row = mysqli_fetch_array($rsCustomFields)) {
+        extract($Row);
+        $currentData = trim($aCustomData[$custom_Field]);
+        if ($currentData != '') {
+            if ($type_ID == 11) {
+                $custom_Special = $sPhoneCountry;
+            }
+            echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'glyphicon glyphicon-tag').'"></i>'.$custom_Name.': <span>';
+            $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
+            if ($type_ID == 11) {
+                echo "<a href=\"tel:".$temp_string."\">".$temp_string."</a>";
+            } else {
+                echo $temp_string;
+            }
+            echo '</span></li>';
+        }
+    } ?>
         </ul>
       </div>
     </div>
@@ -349,14 +349,14 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="box box-primary box-body">
-      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
-      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
+      <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
+      <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
       <?php if ($_SESSION['bNotes']) {
-              ?>
-        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+        ?>
+        <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
+        <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
       <?php
-          }
+    }
     if ($_SESSION['bDeleteRecords']) {
         ?>
         <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
@@ -365,15 +365,15 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
     if ($_SESSION['bAdmin']) {
         if (!$person->isUser()) {
             ?>
-          <a class="btn btn-app" href="UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Make User') ?></a>
+          <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Make User') ?></a>
         <?php
         } else {
             ?>
-          <a class="btn btn-app" href="UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
+          <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
         <?php
         }
     } ?>
-      <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
+      <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
     </div>
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
@@ -475,7 +475,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                 <td>
 
                  <img style="width:40px; height:40px;display:inline-block" data-name="<?= $familyMember->getFullName()?>" data-src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
-                  <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
 
                 </td>
@@ -489,12 +489,12 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   <?php $tmpEmail = $familyMember->getEmail();
             if ($tmpEmail != '') {
                 ?>
-                    <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
+                    <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
                   <?php
             } ?>
                 </td>
                 <td style="width: 20%;">
-                  <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
+                  <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
                     <span class="fa-stack">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -502,13 +502,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   </a>
                   <?php if ($bOkToEdit) {
                 ?>
-                    <a href="PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
                       <span class="fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                       </span>
                     </a>
-                    <a href="SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>">
+                    <a href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>">
                       <span class="fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
                         <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -539,25 +539,25 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
               <?php
               } else {
                   echo '<div class="row">';
-                // Loop through the rows
-                while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
-                    extract($aRow); ?>
+                  // Loop through the rows
+                  while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
+                      extract($aRow); ?>
                   <div class="col-md-3">
                     <p><br/></p>
                     <!-- Info box -->
                     <div class="box box-info">
                       <div class="box-header">
-                        <h3 class="box-title"><a href="GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
+                        <h3 class="box-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
                         <div class="box-tools pull-right">
-                          <div class="label bg-aqua"><?= $roleName ?></div>
+                          <div class="label bg-aqua"><?= gettext($roleName) ?></div>
                         </div>
                       </div>
                       <?php
                       // If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
                       if ($grp_hasSpecialProps) {
                           // Get the special properties for this group
-                        $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = '.$grp_ID." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
+                          $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = '.$grp_ID." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
                           $rsPropList = RunQuery($sSQL);
 
                           $sSQL = 'SELECT * FROM groupprop_'.$grp_ID.' WHERE per_ID = '.$iPersonID;
@@ -584,7 +584,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                         <code>
                           <?php if ($_SESSION['bManageGroups']) {
                           ?>
-                            <a href="GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
+                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
                             <div class="btn-group">
                               <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -592,15 +592,15 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                                 <span class="sr-only">Toggle Dropdown</span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
-                                <li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Change Role') ?></a></li>
+                                <li><a  class="changeRole" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
                                 <?php if ($grp_hasSpecialProps) {
                               ?>
-                                  <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
+                                  <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
                                 <?php
                           } ?>
                               </ul>
                             </div>
-                            <a href="#" onclick="GroupRemove(<?= $grp_ID.', '.$iPersonID ?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
+                            <a data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" class="btn btn-danger groupRemove" role="button"><i class="fa fa-trash-o"></i></a>
                           <?php
                       } ?>
                         </code>
@@ -612,30 +612,13 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                   <?php
                   // NOTE: this method is crude.  Need to replace this with use of an array.
                   $sAssignedGroups .= $grp_ID.',';
-                }
+                  }
                   echo '</div>';
               }
     if ($_SESSION['bManageGroups']) {
         ?>
-                <div class="alert alert-info">
-                  <h4><strong><?php echo gettext('Assign New Group'); ?> </strong></h4>
-                  <i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext('Person will be assigned to the Group in the Default Role.') ?></span>
-
-                  <p><br></p>
-                  <select style="color:#000000" name="GroupAssignID">
-                    <?php while ($aRow = mysqli_fetch_array($rsGroups)) {
-            extract($aRow);
-
-                      //If the property doesn't already exist for this Person, write the <OPTION> tag
-                      if (strlen(strstr($sAssignedGroups, ','.$grp_ID.',')) == 0) {
-                          echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
-                      }
-        } ?>
-                  </select>
-                  <a href="#" onclick="GroupAdd()" class="btn btn-success" role="button"><?= gettext('Assign User to Group') ?></a>
-                  <br>
-                </div>
-              <?php
+                          <a id="addGroup"><i class="fa fa-plus-circle" aria-hidden="true"></i><?php echo gettext('Assign New Group'); ?></a>
+                        <?php
     } ?>
             </div>
           </div>
@@ -675,7 +658,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                             echo '<td>'.$pro_Name.'</td>';
                             echo '<td>'.$r2p_Value.'</td>';
                             if ($bOkToEdit) {
-                                $attributes = "href=\"#\" data-property_id=\"{$pro_ID}\" data-person_id=\"{$iPersonID}\" class=\"remove-property-btn\" ";
+                                $attributes = "data-property_id=\"{$pro_ID}\" data-person_id=\"{$iPersonID}\" class=\"remove-property-btn\" ";
                                 echo '<td><a '.$attributes.'>'.gettext('Remove').'</a></td>';
                             }
                             echo '</tr>';
@@ -745,50 +728,50 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 
     $sAssignedVolunteerOpps = ',';
 
-              //Was anything returned?
-              if (mysqli_num_rows($rsAssignedVolunteerOpps) == 0) {
-                  ?>
+    //Was anything returned?
+    if (mysqli_num_rows($rsAssignedVolunteerOpps) == 0) {
+        ?>
                 <br>
                 <div class="alert alert-warning">
                   <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
                 </div>
               <?php
-              } else {
-                  echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
-                  echo '<thead>';
-                  echo '<tr class="TableHeader">';
-                  echo '<th>'.gettext('Name').'</th>';
-                  echo '<th>'.gettext('Description').'</th>';
-                  if ($_SESSION['bEditRecords']) {
-                      echo '<th>'.gettext('Remove').'</th>';
-                  }
-                  echo '</tr>';
-                  echo '</thead>';
-                  echo '<tbody>';
+    } else {
+        echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
+        echo '<thead>';
+        echo '<tr class="TableHeader">';
+        echo '<th>'.gettext('Name').'</th>';
+        echo '<th>'.gettext('Description').'</th>';
+        if ($_SESSION['bEditRecords']) {
+            echo '<th>'.gettext('Remove').'</th>';
+        }
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
 
-                // Loop through the rows
-                while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
-                    extract($aRow);
+        // Loop through the rows
+        while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
+            extract($aRow);
 
-                  // Alternate the row style
-                  $sRowClass = AlternateRowStyle($sRowClass);
+            // Alternate the row style
+            $sRowClass = AlternateRowStyle($sRowClass);
 
-                    echo '<tr class="'.$sRowClass.'">';
-                    echo '<td>'.$vol_Name.'</a></td>';
-                    echo '<td>'.$vol_Description.'</a></td>';
+            echo '<tr class="'.$sRowClass.'">';
+            echo '<td>'.$vol_Name.'</a></td>';
+            echo '<td>'.$vol_Description.'</a></td>';
 
-                    if ($_SESSION['bEditRecords']) {
-                        echo '<td><a class="SmallText" href="PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
-                    }
+            if ($_SESSION['bEditRecords']) {
+                echo '<td><a class="SmallText" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
+            }
 
-                    echo '</tr>';
+            echo '</tr>';
 
-                  // NOTE: this method is crude.  Need to replace this with use of an array.
-                  $sAssignedVolunteerOpps .= $vol_ID.',';
-                }
-                  echo '</tbody>';
-                  echo '</table>';
-              } ?>
+            // NOTE: this method is crude.  Need to replace this with use of an array.
+            $sAssignedVolunteerOpps .= $vol_ID.',';
+        }
+        echo '</tbody>';
+        echo '</table>';
+    } ?>
 
                 <?php if ($_SESSION['bEditRecords'] && $rsVolunteerOpps->num_rows): ?>
                 <div class="alert alert-info">
@@ -803,10 +786,10 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
                                     <?php
                                     while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
                                         extract($aRow);
-                                      //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                      if (strlen(strstr($sAssignedVolunteerOpps, ','.$vol_ID.',')) == 0) {
-                                          echo '<option value="'.$vol_ID.'">'.$vol_Name.'</option>';
-                                      }
+                                        //If the property doesn't already exist for this Person, write the <OPTION> tag
+                                        if (strlen(strstr($sAssignedVolunteerOpps, ','.$vol_ID.',')) == 0) {
+                                            echo '<option value="'.$vol_ID.'">'.$vol_Name.'</option>';
+                                        }
                                     } ?>
                                 </select>
                             </div>
@@ -919,28 +902,8 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js" type="text/javascript"></script>
 <script>
-  var person_ID = <?= $iPersonID ?>;
-  function GroupRemove(Group, Person) {
-    var answer = confirm("<?= gettext('Are you sure you want to remove this person from the Group') ?>");
-    if (answer)
-      $.ajax({
-        method: "POST",
-        data:{"_METHOD":"DELETE"},
-        url: window.CRM.root + "/api/groups/" + Group + "/removeuser/" + Person
-      }).done(function (data) {
-        location.reload();
-      });
-  }
-
-  function GroupAdd() {
-    var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + GroupAssignID + "/adduser/" + person_ID
-    }).done(function (data) {
-      location.reload();
-    });
-  }
+  window.CRM.currentPersonID = <?= $iPersonID ?>;
+  
 
   $("#deletePhoto").click (function () {
     $.ajax({
@@ -971,29 +934,29 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
   });
 
 
-    $(document).ready(function() {
-        $("#input-volunteer-opportunities").select2();
-        $("#input-person-properties").select2();
+  $(document).ready(function() {
+      $("#input-volunteer-opportunities").select2();
+      $("#input-person-properties").select2();
 
-        $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
-        $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
+      $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
+      $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
 
 
-        contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {
-            if (success) {
-                $("#view-larger-image-btn").removeClass('hide');
+      contentExists(window.CRM.root + "/api/persons/" + window.CRM.currentPersonID + "/photo", function(success) {
+          if (success) {
+              $("#view-larger-image-btn").removeClass('hide');
 
-                $("#view-larger-image-btn").click(function() {
-                    bootbox.alert({
-                        title: "<?= gettext('Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + person_ID + '/photo" />',
-                        backdrop: true
-                    });
-                });
-            }
-        });
+              $("#view-larger-image-btn").click(function() {
+                  bootbox.alert({
+                      title: "<?= gettext('Photo') ?>",
+                      message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + window.CRM.currentPersonID + '/photo" />',
+                      backdrop: true
+                  });
+              });
+          }
+      });
 
-    });
+  });
 
 
 </script>
@@ -1008,7 +971,7 @@ SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Addr
       <h3><i class="fa fa-warning text-yellow"></i><?= gettext('Oops! Person not found.') ?></h3>
 
       <p>
-      	<?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="//MembersDashboard.php"><?= gettext('return to member dashboard') ?></a>
+      	<?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="<?= SystemURLs::getRootPath() ?>/MembersDashboard.php"><?= gettext('return to member dashboard') ?></a>
       </p>
     </div>
   </div>

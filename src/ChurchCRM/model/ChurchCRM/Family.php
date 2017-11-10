@@ -9,6 +9,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\GeoUtils;
 use DateTime;
+use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -81,6 +82,13 @@ class Family extends BaseFamily implements iPhoto
     public function postInsert(ConnectionInterface $con = null)
     {
         $this->createTimeLineNote('create');
+        if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
+        {
+            $NotificationEmail = new NewPersonOrFamilyEmail($this);
+            if (!$NotificationEmail->send()) {
+                $logger->warn($NotificationEmail->getError());
+            }
+        }
     }
 
     public function postUpdate(ConnectionInterface $con = null)
@@ -91,67 +99,67 @@ class Family extends BaseFamily implements iPhoto
     }
 
 
-  public function getPeopleSorted() {
-    $familyMembersParents = array_merge($this->getHeadPeople(), $this->getSpousePeople());
-    $familyMembersChildren = $this->getChildPeople();
-    $familyMembersOther = $this->getOtherPeople();
-    return array_merge($familyMembersParents, $familyMembersChildren, $familyMembersOther);
-  }
-
-  public function getHeadPeople() {
-    return $this->getPeopleByRole("sDirRoleHead");
-  }
-
-  public function getSpousePeople() {
-    return $this->getPeopleByRole("sDirRoleSpouse");
-  }
-  
-  public function getAdults() {
-    return array_merge($this->getHeadPeople(),$this->getSpousePeople());
-  }
-
-  public function getChildPeople() {
-    return $this->getPeopleByRole("sDirRoleChild");
-  }
-
-  public function getOtherPeople() {
-    $roleIds = array_merge (explode(",", SystemConfig::getValue("sDirRoleHead")), explode(",",
-      SystemConfig::getValue("sDirRoleSpouse")),
-      explode(",", SystemConfig::getValue("sDirRoleChild")));
-    $foundPeople = array();
-    foreach ($this->getPeople() as $person) {
-      if (!in_array($person->getFmrId(), $roleIds)) {
-        array_push($foundPeople, $person);
-      }
+    public function getPeopleSorted() {
+        $familyMembersParents = array_merge($this->getHeadPeople(), $this->getSpousePeople());
+        $familyMembersChildren = $this->getChildPeople();
+        $familyMembersOther = $this->getOtherPeople();
+        return array_merge($familyMembersParents, $familyMembersChildren, $familyMembersOther);
     }
-    return $foundPeople;
-  }
 
-  private function getPeopleByRole($roleConfigName) {
-    $roleIds = explode(",", SystemConfig::getValue($roleConfigName));
-    $foundPeople = array();
-    foreach ($this->getPeople() as $person) {
-      if (in_array($person->getFmrId(), $roleIds)) {
-          array_push($foundPeople, $person);
-      }
+    public function getHeadPeople() {
+        return $this->getPeopleByRole("sDirRoleHead");
     }
-    return $foundPeople;
-  }
 
-  public function getEmails() {
-    $emails = array();
-    foreach ($this->getPeople() as $person) {
-      $email = $person->getEmail();
-      if ($email != null) {
-        array_push($emails, $email);
-      }
-      $email = $person->getWorkEmail();
-      if ($email != null) {
-        array_push($emails, $email);
-      }
+    public function getSpousePeople() {
+        return $this->getPeopleByRole("sDirRoleSpouse");
     }
-    return $emails;
-  }
+
+    public function getAdults() {
+        return array_merge($this->getHeadPeople(),$this->getSpousePeople());
+    }
+
+    public function getChildPeople() {
+        return $this->getPeopleByRole("sDirRoleChild");
+    }
+
+    public function getOtherPeople() {
+        $roleIds = array_merge (explode(",", SystemConfig::getValue("sDirRoleHead")), explode(",",
+            SystemConfig::getValue("sDirRoleSpouse")),
+            explode(",", SystemConfig::getValue("sDirRoleChild")));
+        $foundPeople = array();
+        foreach ($this->getPeople() as $person) {
+            if (!in_array($person->getFmrId(), $roleIds)) {
+                array_push($foundPeople, $person);
+            }
+        }
+        return $foundPeople;
+    }
+
+    private function getPeopleByRole($roleConfigName) {
+        $roleIds = explode(",", SystemConfig::getValue($roleConfigName));
+        $foundPeople = array();
+        foreach ($this->getPeople() as $person) {
+            if (in_array($person->getFmrId(), $roleIds)) {
+                array_push($foundPeople, $person);
+            }
+        }
+        return $foundPeople;
+    }
+
+    public function getEmails() {
+        $emails = array();
+        foreach ($this->getPeople() as $person) {
+            $email = $person->getEmail();
+            if ($email != null) {
+                array_push($emails, $email);
+            }
+            $email = $person->getWorkEmail();
+            if ($email != null) {
+                array_push($emails, $email);
+            }
+        }
+        return $emails;
+    }
 
     public function createTimeLineNote($type)
     {
@@ -162,12 +170,12 @@ class Family extends BaseFamily implements iPhoto
 
         switch ($type) {
             case "create":
-              $note->setText(gettext('Created'));
-              $note->setEnteredBy($this->getEnteredBy());
-              $note->setDateEntered($this->getDateEntered());
-              break;
+                $note->setText(gettext('Created'));
+                $note->setEnteredBy($this->getEnteredBy());
+                $note->setDateEntered($this->getDateEntered());
+                break;
             case "edit":
-              $note->setText(gettext('Updated'));
+                $note->setText(gettext('Updated'));
                 $note->setEnteredBy($this->getEditedBy());
                 $note->setDateEntered($this->getDateLastEdited());
                 break;
@@ -176,9 +184,9 @@ class Family extends BaseFamily implements iPhoto
                 $note->setEnteredBy($_SESSION['iUserID']);
                 break;
             case "verify-link":
-              $note->setText(gettext('Verification email sent'));
-              $note->setEnteredBy($_SESSION['iUserID']);
-              break;
+                $note->setText(gettext('Verification email sent'));
+                $note->setEnteredBy($_SESSION['iUserID']);
+                break;
         }
 
         $note->save();
@@ -225,67 +233,67 @@ class Family extends BaseFamily implements iPhoto
 
     private function getPhoto()
     {
-      $photo = new Photo("Family",  $this->getId());
-      return $photo;
+        $photo = new Photo("Family",  $this->getId());
+        return $photo;
     }
 
     public function deletePhoto()
     {
-      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
-        if ( $this->getPhoto()->delete() )
-        {
-          $note = new Note();
-          $note->setText(gettext("Profile Image Deleted"));
-          $note->setType("photo");
-          $note->setEntered($_SESSION['iUserID']);
-          $note->setPerId($this->getId());
-          $note->save();
-          return true;
+        if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+            if ( $this->getPhoto()->delete() )
+            {
+                $note = new Note();
+                $note->setText(gettext("Profile Image Deleted"));
+                $note->setType("photo");
+                $note->setEntered($_SESSION['iUserID']);
+                $note->setPerId($this->getId());
+                $note->save();
+                return true;
+            }
         }
-      }
-      return false;
+        return false;
     }
 
     public function getPhotoBytes() {
-      return $this->getPhoto()->getPhotoBytes();
+        return $this->getPhoto()->getPhotoBytes();
     }
 
     public function getPhotoURI() {
-      return $this->getPhoto()->getPhotoURI();
+        return $this->getPhoto()->getPhotoURI();
     }
 
     public function getThumbnailBytes() {
-      return $this->getPhoto()->getThumbnailBytes();
+        return $this->getPhoto()->getThumbnailBytes();
     }
 
     public function getThumbnailURI() {
-       return $this->getPhoto()->getThumbnailURI();
+        return $this->getPhoto()->getThumbnailURI();
     }
 
     public function setImageFromBase64($base64) {
-      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
-        $note = new Note();
-        $note->setText(gettext("Profile Image uploaded"));
-        $note->setType("photo");
-        $note->setEntered($_SESSION['iUserID']);
-        $this->getPhoto()->setImageFromBase64($base64);
-        $note->setFamId($this->getId());
-        $note->save();
-        return true;
-      }
-      return false;
+        if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+            $note = new Note();
+            $note->setText(gettext("Profile Image uploaded"));
+            $note->setType("photo");
+            $note->setEntered($_SESSION['iUserID']);
+            $this->getPhoto()->setImageFromBase64($base64);
+            $note->setFamId($this->getId());
+            $note->save();
+            return true;
+        }
+        return false;
     }
 
     public function isPhotoLocal() {
-      return $this->getPhoto()->isPhotoLocal();
+        return $this->getPhoto()->isPhotoLocal();
     }
 
     public function isPhotoRemote() {
-      return $this->getPhoto()->isPhotoRemote();
+        return $this->getPhoto()->isPhotoRemote();
     }
 
     public function getPhotoContentType() {
-      return $this->getPhoto()->getPhotoContentType();
+        return $this->getPhoto()->getPhotoContentType();
     }
 
     public function verify()
@@ -293,26 +301,29 @@ class Family extends BaseFamily implements iPhoto
         $this->createTimeLineNote('verify');
     }
 
-    public function getFamilyString()
-    {    
-      $HoH = $this->getHeadPeople();
-      if (count($HoH) == 1)
-      {
-         return $this->getName(). ": " . $HoH[0]->getFirstName() . " - " . $this->getAddress();
-      }
-      elseif (count($HoH) > 1)
-      {
-        $HoHs = [];
-        foreach ($HoH as $person) {
-          array_push($HoHs, $person->getFirstName());
+    public function getFamilyString($booleanIncludeHOH=true)
+    {
+        $HoH = [];
+        if ($booleanIncludeHOH) {
+            $HoH = $this->getHeadPeople();
         }
-        
-        return $this->getName(). ": " . join(",", $HoHs) . " - " . $this->getAddress();
-      }
-      else
-      {
-        return $this->getName(). " " . $this->getAddress();
-      }
+        if (count($HoH) == 1)
+        {
+            return $this->getName(). ": " . $HoH[0]->getFirstName() . " - " . $this->getAddress();
+        }
+        elseif (count($HoH) > 1)
+        {
+            $HoHs = [];
+            foreach ($HoH as $person) {
+                array_push($HoHs, $person->getFirstName());
+            }
+
+            return $this->getName(). ": " . join(",", $HoHs) . " - " . $this->getAddress();
+        }
+        else
+        {
+            return $this->getName(). " " . $this->getAddress();
+        }
     }
 
     public function hasLatitudeAndLongitude() {
@@ -333,21 +344,21 @@ class Family extends BaseFamily implements iPhoto
             }
         }
     }
-    
+
     public function toArray()
     {
-      $array = parent::toArray();
-      $array['FamilyString']=$this->getFamilyString();
-      return $array;
+        $array = parent::toArray();
+        $array['FamilyString']=$this->getFamilyString();
+        return $array;
     }
-    
+
     public function toSearchArray()
     {
-      $searchArray=[
-          "Id" => $this->getId(),
-          "displayName" => $this->getFamilyString(),
-          "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
-      ];
-      return $searchArray;
+        $searchArray=[
+            "Id" => $this->getId(),
+            "displayName" => $this->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
+            "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
+        ];
+        return $searchArray;
     }
 }
