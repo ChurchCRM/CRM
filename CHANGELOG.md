@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.8.14 (10/11/2017)
+
+#### Core Functionality
+
+- [**Feature: Reports**] Bug in printing of birth dates in directory PDF [#3168](https://github.com/ChurchCRM/CRM/issues/3168)
+- [**Feature: Emails**][**Feature: Members**] Cannot self-verify family if no geo-location information [#3128](https://github.com/ChurchCRM/CRM/issues/3128)
+- [**Feature: Groups**][**Feature: Sunday School**][**Localization**] Sunday School Group Roles are not Translated [#2936](https://github.com/ChurchCRM/CRM/issues/2936)
+- [**Feature: Groups**] Group Copy/Move Modal Behavior [#1034](https://github.com/ChurchCRM/CRM/issues/1034)
+
+#### Localization:
+
+- [**Localization**] Lack of the term  [#3095](https://github.com/ChurchCRM/CRM/issues/3095)
+- [**Feature: Groups**][**Feature: Sunday School**][**Localization**] Sunday School Group Roles are not Translated [#2936](https://github.com/ChurchCRM/CRM/issues/2936)
+
+---
+
 ## 2.8.13 (31/10/2017)
 
 #### Core Functionality
