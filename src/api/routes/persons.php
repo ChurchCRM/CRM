@@ -3,6 +3,7 @@
 // Person APIs
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\Photo;
 
 $app->group('/persons', function () {
     // search person by Name
@@ -40,8 +41,8 @@ $app->group('/persons', function () {
 
     $this->get('/{personId:[0-9]+}/thumbnail', function ($request, $response, $args) {
         $res=$this->cache->withExpires($response, time() + 3600);
-        $person = PersonQuery::create()->findPk($args['personId']);
-        return $res->write($person->getThumbnailBytes())->withHeader('Content-type', $person->getPhotoContentType());
+        $photo = new Photo("Person",$args['personId']);
+        return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
     });
 
     $this->post('/{personId:[0-9]+}/photo', function ($request, $response, $args) {

@@ -53,14 +53,8 @@ $app->get('/', function ($request, $response, $args) use ($app) {
 
 
   $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) use ($app) {
-   $person = PersonQuery::create()->findPk($args['PersonId']);
-      if ($person->isPhotoLocal()) {
-          return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
-      } else if ($person->isPhotoRemote()) {
-          return $response->withRedirect($person->getPhotoURI());
-      } else {
-          return $response->withStatus(404);
-      }
+    $person = PersonQuery::create()->findPk($args['PersonId']);
+    return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
   });
 
 

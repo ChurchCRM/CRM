@@ -192,11 +192,9 @@ if ($per_ID == $iPersonID) {
                     <a  class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
                         <i class="fa fa-camera"></i>
                     </a>&nbsp;
-                    <?php if ($person->isPhotoLocal()): ?>
-                        <a  data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                            <i class="fa fa-trash-o"></i>
-                        </a>
-                    <?php endif; ?>
+                    <a  data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
                 </div>
                 </div>
             <?php endif; ?>

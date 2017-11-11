@@ -9,7 +9,6 @@ interface iPhoto
     public function getPhotoURI();
     public function deletePhoto();
     public function setImageFromBase64($base64);
-    public function isPhotoLocal();
-    public function isPhotoRemote();
     public function getPhotoContentType();
+    public function getThumbnailContentType();
 }

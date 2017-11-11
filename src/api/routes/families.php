@@ -74,26 +74,12 @@ $app->group('/families', function () {
 
     $this->get('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
-        if ( $family->isPhotoLocal() )
-        {
-            return $response->write($family->getPhotoBytes());
-        }
-        else
-        {
-            return $response->withStatus(404);
-        }
+        return $response->write($family->getPhotoBytes());
     });
 
     $this->get('/{familyId:[0-9]+}/thumbnail', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
-        if ( $family->isPhotoLocal())
-        {
-            return $response->write($family->getThumbnailBytes())->withHeader('Content-type', $family->getPhotoContentType());
-        }
-        else
-        {
-            return $response->withStatus(404);
-        }
+        return $response->write($family->getThumbnailBytes())->withHeader('Content-type', $family->getPhotoContentType());
     });
 
     $this->post('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {

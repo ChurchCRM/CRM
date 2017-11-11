@@ -211,9 +211,8 @@ class SystemConfig
         "bSearchIncludeAddressesMax" => new ConfigItem(20233, "bSearchIncludeAddressesMax", "text", "15", gettext("Maximum number of Addresses")),
         "iPhotoHeight" => new ConfigItem(2034, "iPhotoHeight", "number", "400", gettext("Height to use for images")),
         "iPhotoWidth" => new ConfigItem(2035, "iPhotoWidth", "number", "400", gettext("Width to use for images")),
-        "iThumbnailHeight" => new ConfigItem(2034, "iPhotoHeight", "number", "400", gettext("Height to use for thumbnails")),
-        "iThumbnailWidth" => new ConfigItem(2035, "iPhotoWidth", "number", "400", gettext("Width to use for thumbnails")),
-        "iInitialsPointSize" => new ConfigItem(2036, "iInitialsPointSize", "number", "150", gettext("Point size to use for initials thumbnails")),
+        "iThumbnailWidth" => new ConfigItem(2036, "iPhotoWidth", "number", "100", gettext("Width to use for thumbnails")),
+        "iInitialsPointSize" => new ConfigItem(2037, "iInitialsPointSize", "number", "150", gettext("Point size to use for initials thumbnails")),
     );
   }
 

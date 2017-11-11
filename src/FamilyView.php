@@ -183,12 +183,10 @@ if ($iFamilyID == $fam_ID) {
                                    title="<?= gettext("Upload Photo") ?>">
                                     <i class="fa fa-camera"></i>
                                 </a>&nbsp;
-                                <?php if ($family->isPhotoLocal()): ?>
-                                    <a href="#" data-toggle="modal" data-target="#confirm-delete-image"
-                                       title="<?= gettext("Delete Photo") ?>">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="#" data-toggle="modal" data-target="#confirm-delete-image"
+                                   title="<?= gettext("Delete Photo") ?>">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
                             </div>
                         </div>
                     <?php endif; ?>
