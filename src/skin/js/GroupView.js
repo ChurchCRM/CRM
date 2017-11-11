@@ -47,7 +47,7 @@ $(document).ready(function () {
           var node = window.CRM.DataTableAPI.row.add(person).node();
           window.CRM.DataTableAPI.rows().invalidate().draw(true);
           $(".personSearch").val(null).trigger('change');
-          dataT.ajax.reload();
+          window.CRM.DataTableAPI.ajax.reload();
         });
       })
       
