@@ -14,12 +14,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\dto\Cart;
 
-$groupService = new GroupService();
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
