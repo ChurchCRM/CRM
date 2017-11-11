@@ -110,8 +110,3 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
 require 'Include/Footer.php';
 ?>
-
-<script>
-
-
-</script>
