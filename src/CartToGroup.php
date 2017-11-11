@@ -17,6 +17,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\GroupQuery;
+use ChurchCRM\dto\Cart;
 
 $groupService = new GroupService();
 
@@ -40,15 +41,10 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
         $iGroupRole = 0;
     }
 
-    // Loop through the session array
-    $iCount = 0;
-    while ($element = each($_SESSION['aPeopleCart'])) {
-        $groupService->addUserToGroup($iGroupID, $_SESSION['aPeopleCart'][$element['key']], $iGroupRole);
-        $iCount += 1;
-    }
+    Cart::EmptyToGroup($iGroupID,$iGroupRole);
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Group.';
-
+    
     Redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
 }
 
