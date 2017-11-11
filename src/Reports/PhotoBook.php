@@ -14,24 +14,15 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\FamilyQuery;
 use ChurchCRM\GroupQuery;
-use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Map\PersonTableMap;
-use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 
 $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
-$nGrps = count($aGrp);
 
 $iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
-$dFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
-$dLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
-$withPictures = InputUtils::LegacyFilterInput($_GET['pictures']);
 
 class PDF_PhotoBook extends ChurchInfoReport
 {
@@ -42,25 +33,29 @@ class PDF_PhotoBook extends ChurchInfoReport
     private $pageMarginL;
     private $pageMarginR;
     private $pageMarginT;
+    private $pageMarginB;
     private $personMarginL;
     private $personMarginR;
     private $personImageHeight;
     private $personImageWidth;
   
     // Constructor
-    public function __construct($iGroupID, $iFYID)
+    public function __construct($iFYID)
     {
         parent::__construct('P', 'mm', $this->paperFormat);
-    
-        //$this->initializeArrays();
         $this->pageMarginL = 15;
         $this->pageMarginR = 15;
         $this->pageMarginT = 20;
+        $this->pageMarginB = 5;
         $this->personMarginL = 2.5;
         $this->personMarginR = 2.5;
         $this->personImageHeight = 30;
         $this->personImageWidth = 30;
         $this->FYIDString = MakeFYString($iFYID);
+    }
+    
+    public function drawGroup($iGroupID)
+    {
         $this->group = GroupQuery::Create()->findOneById($iGroupID);
         $this->SetMargins(0, 0); // use our own margin logic.
         $this->SetFont('Times', '', 14);
@@ -99,7 +94,7 @@ class PDF_PhotoBook extends ChurchInfoReport
     
         # Draw the image or an x
         if (file_exists($thumbnailURI)) {
-            $this->Image($thumbnailURI, $this->currentX, $this->currentY, $this->personImageWidth, $this->personImageHeight, 'PNG');
+            $this->Image($thumbnailURI, $this->currentX+.25, $this->currentY+.25, $this->personImageWidth-.5, $this->personImageHeight-.5, 'PNG');
         } else {
             $this->Line($this->currentX, $this->currentY, $this->currentX + $this->personImageWidth, $this->currentY + $this->personImageHeight);
             $this->Line($this->currentX+$this->personImageWidth, $this->currentY, $this->currentX, $this->currentY + $this->personImageHeight);
@@ -133,16 +128,26 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->currentY += 10;
         foreach ($groupRoleMemberships as $roleMembership) {
             $person = $roleMembership->getPerson();
-            $this->drawPersonBlock($person->getFullName(), $person->getThumbnailURI());
+            $this->drawPersonBlock($person->getFullName(), $person->getPhotoURI());
             if ($this->currentX + $this->personMarginL + $this->personImageWidth + $this->personMarginR  >= $this->GetPageWidth() - $this->pageMarginR) { //can we fit another on the page?
                 $this->currentY += 50;
                 $this->currentX = $this->pageMarginL;
+            }
+            if ($this->currentY + $this->personImageHeight+10 >= $this->GetPageHeight() - $this->pageMarginB) {
+                $this->AddPage();
+                $this->drawPageHeader((gettext("PhotoBook").' - '.$this->group->getName().' - '.$roleDisplayName." (".$groupRoleMemberships->count().")"));
+                $this->currentX = $this->pageMarginL;
+                $this->currentY += 10;
             }
         }
     }
 }
 // Instantiate the directory class and build the report.
-$pdf = new PDF_PhotoBook($iGroupID);
+$pdf = new PDF_PhotoBook($iFYID);
+foreach ($aGrp as $groupID) {
+    $pdf->drawGroup($groupID);
+}
+
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
     $pdf->Output('ClassList'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
