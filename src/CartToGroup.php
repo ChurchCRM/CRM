@@ -6,7 +6,7 @@
  *  description : Add cart records to a group
  *
  *  http://www.churchcrm.io/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
+ *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt, Logel Philippe
   *
  ******************************************************************************/
 
@@ -27,14 +27,12 @@ if (!$_SESSION['bManageGroups']) {
 }
 
 // Was the form submitted?
-if ((isset($_GET['groupeID']) || isset($_POST['Submit'])) && count($_SESSION['aPeopleCart']) > 0) {
-
-  // Get the GroupID
-    $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
-
-    if (empty($iGroupID)) {// if empty
-        $iGroupID = InputUtils::LegacyFilterInput($_GET['groupeID'], 'int');
-    }
+if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SESSION['aPeopleCart']) > 0) {
+	  // Get the GroupID
+	  if (isset($_POST['Submit']))
+	    $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
+	  else
+	    $iGroupID = InputUtils::LegacyFilterInput($_GET['groupeCreationID'], 'int');
     
     if (array_key_exists('GroupRole', $_POST)) {
         $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
@@ -55,8 +53,8 @@ if ((isset($_GET['groupeID']) || isset($_POST['Submit'])) && count($_SESSION['aP
 }
 
 $ormGroups = GroupQuery::Create()
-                                ->orderByName()
-                                ->find();
+								->orderByName()
+								->find();
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Add Cart to Group');
@@ -79,10 +77,11 @@ if (count($_SESSION['aPeopleCart']) > 0) {
               <?php
               // Create the group select drop-down
               echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';
-    foreach ($ormGroups as $ormGroup) {
-        echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
-    }
-    echo '</select>'; ?>
+							foreach ($ormGroups as $ormGroup)
+							{
+								echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
+							}
+							echo '</select>'; ?>
             </td>
           </tr>
           <tr>
@@ -97,8 +96,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         <p align="center">
           <BR>
           <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Add to Group') ?>">
-          <BR><BR>--<?= gettext('OR') ?>--<BR><BR>
-          <button type="button" id="addToGroup" class="btn btn-info"> <?= gettext('Create New Group + add the Cart') ?> </button>
+          <BR><BR>--<?= gettext('OR CREATE A GROUP AND ADD THE GROUPE AFTER INSIDE') ?>--<BR><BR>
+          <button type="button" id="addToGroup" class="btn btn-info"> <?= gettext('Create Group + ADD Cart') ?> </button>
           <BR><BR>
         </p>
       </form>
@@ -113,43 +112,6 @@ require 'Include/Footer.php';
 ?>
 
 <script>
-$(document).ready(function (e, confirmed) {
-  $("#addToGroup").click(function () {
-    bootbox.prompt({
-      title: i18next.t("Add a Group Name "),
-      value: i18next.t("Default Name Group"),
-      onEscape: true,
-      closeButton: true,
-      buttons: {
-        confirm: {
-          label:  i18next.t('Yes'),
-            className: 'btn-success'
-        },
-        cancel: {
-          label:  i18next.t('No'),
-          className: 'btn-danger'
-        }
-      },
-      callback: function (result)
-      {
-      	if (result)
-      	{
-	      	var newGroup = {'groupName': result};
-	      	
-					$.ajax({
-						method: "POST",
-						url: window.CRM.root + "/api/groups/",               //call the groups api handler located at window.CRM.root
-						data: JSON.stringify(newGroup),                      // stringify the object we created earlier, and add it to the data payload
-						contentType: "application/json; charset=utf-8",
-						dataType: "json"
-					}).done(function (data) {                               //yippie, we got something good back from the server
-						var id = data.Id;
-						location.href = 'CartToGroup.php?groupeID='+id;
-					});
-				}
-       }
-    });
-  });
-});
+
 
 </script>
