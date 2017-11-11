@@ -38,17 +38,17 @@ $(document).ready(function (e, confirmed) {
       	{
 	      	var newGroup = {'groupName': result};
 	      	
-					$.ajax({
-						method: "POST",
-						url: window.CRM.root + "/api/groups/",               //call the groups api handler located at window.CRM.root
-						data: JSON.stringify(newGroup),                      // stringify the object we created earlier, and add it to the data payload
-						contentType: "application/json; charset=utf-8",
-						dataType: "json"
-					}).done(function (data) {                               //yippie, we got something good back from the server
-						location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
-					});
-				}
-       }
+			$.ajax({
+				method: "POST",
+				url: window.CRM.root + "/api/groups/",               //call the groups api handler located at window.CRM.root
+			    data: JSON.stringify(newGroup),                      // stringify the object we created earlier, and add it to the data payload
+				contentType: "application/json; charset=utf-8",
+				dataType: "json"
+			}).done(function (data) {                               //yippie, we got something good back from the server
+				location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
+			});
+		}
+      }
     });
   });
 });
