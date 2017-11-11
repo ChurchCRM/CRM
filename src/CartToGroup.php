@@ -6,7 +6,7 @@
  *  description : Add cart records to a group
  *
  *  http://www.churchcrm.io/
- *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt, Philippe Logel
+ *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
   *
  ******************************************************************************/
 
@@ -98,7 +98,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
           <BR>
           <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Add to Group') ?>">
           <BR><BR>--<?= gettext('OR') ?>--<BR><BR>
-          <button type="button" id="addToGroup" class="btn btn-info"> <?= gettext('Create New Group and add to Cart') ?> </button>
+          <button type="button" id="addToGroup" class="btn btn-info"> <?= gettext('Create New Group + add the Cart') ?> </button>
           <BR><BR>
         </p>
       </form>
@@ -116,7 +116,7 @@ require 'Include/Footer.php';
 $(document).ready(function (e, confirmed) {
   $("#addToGroup").click(function () {
     bootbox.prompt({
-      title: i18next.t("Group Name ?"),
+      title: i18next.t("Add a Group Name "),
       value: i18next.t("Default Name Group"),
       onEscape: true,
       closeButton: true,
