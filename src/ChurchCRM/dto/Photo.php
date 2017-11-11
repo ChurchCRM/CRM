@@ -33,18 +33,24 @@ class Photo
       }
     }
     # we still haven't found a photo file.  Begin checking remote if it's enabled
-    if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
-        //return  $this->loadFromGoogle($this->getEmail());
-    }
-    if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
-        if ($this>photoType == "Person")
-        {
-          $personEmail = PersonQuery::create()->findOneById($this->id)->getEmail();
-          $photoPath = $this->loadFromGravatar($personEmail);
-          if ($photoPath) {
-            return $photoPath;
-          }
+    # only check google and gravatar for person photos.
+    if ($this>photoType == "Person")
+    {
+      if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
+        $personEmail = PersonQuery::create()->findOneById($this->id)->getEmail();
+        $photoPath =  $this->loadFromGoogle($personEmail, $baseName);
+        if ($photoPath) {
+          return $photoFile;
         }
+      }
+    
+      if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
+        $personEmail = PersonQuery::create()->findOneById($this->id)->getEmail();
+        $photoPath = $this->loadFromGravatar($personEmail,  $baseName);
+        if ($photoPath) {
+          return $photoFile;
+        }
+      }
     }
  
     # stil no image - generate it from initials
@@ -116,22 +122,26 @@ class Photo
     return $this->photoURI;
   }
 
-  private function loadFromGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = []) {
+  private function loadFromGravatar($email, $baseName) {
+    $s = 60;
+    $d = '404';
+    $r = 'g';
+    $img = false;
+    $atts = [];
     $url = 'https://www.gravatar.com/avatar/';
     $url .= md5(strtolower(trim($email)));
     $url .= "?s=$s&d=$d&r=$r";
-  
-    $targetPath = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/" . $this->id.".png";
+
     $photo = imagecreatefromstring(file_get_contents($url));
     if ($photo){
-      imagepng($photo,$targetPath);
-      return $targetPath;
+      $photoPath = $baseName.".png";
+      imagepng($photo, $photoPath);
+      return $photoPath;
     }
-    return null;
-
+    return false;
   }
 
-  private function loadFromGoogle($email) {
+  private function loadFromGoogle($email, $baseName) {
       $url = 'http://picasaweb.google.com/data/entry/api/user/';
       $url .= strtolower(trim($email));
       $url .= "?alt=json";
@@ -142,10 +152,15 @@ class Photo
               $obj = json_decode($json);
               $photoEntry = $obj->entry;
               $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
-              $this->photoURI =  $photoURL;
-              $this->photoThumbURI = $photoURL;
-              $this->photoLocation = "remote";
-              return true;
+              //echo $photoURL;
+              //die();
+              $photo = imagecreatefromstring(file_get_contents($photoURL));
+              if ($photo){
+                $photoPath = $baseName.".png";
+                imagepng($photo, $photoPath);
+                return $photoPath;
+              }
+              return false;
         }
       }
       return false;
