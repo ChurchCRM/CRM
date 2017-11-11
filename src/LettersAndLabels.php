@@ -63,7 +63,7 @@ FontSelect('labelfont');
 FontSizeSelect('labelfontsize');
 ?>
             <tr>
-              <td class="LabelColumn"><?= gettext("Recipient Naming Method")?></td>
+              <td class="LabelColumn"><?= gettext("Recipient Naming Method")?>:</td>
               <td class="TextColumn">
                 <select name="recipientnamingmethod">
                   <option value="salutationutility"><?= gettext("Salutation Utility") ?></option>
