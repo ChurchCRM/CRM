@@ -34,8 +34,7 @@ class Photo
     }
     # we still haven't found a photo file.  Begin checking remote if it's enabled
     # only check google and gravatar for person photos.
-    if ($this>photoType == "Person")
-    {
+    if ($this->photoType == "Person") {
       if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
         $personEmail = PersonQuery::create()->findOneById($this->id)->getEmail();
         $photoPath =  $this->loadFromGoogle($personEmail, $baseName);
@@ -172,7 +171,7 @@ class Photo
   
   private function getInitialsString() {
     $retstr = "";
-    if ($this>photoType == "Person")
+    if ($this->photoType == "Person")
     {
       $fullNameArr = explode(" ",PersonQuery::create()->findOneById($this->id)->getFullName());
       foreach ($fullNameArr as $name)
@@ -181,7 +180,7 @@ class Photo
       }
 
     }
-    elseif ($this>photoType == "Family" )
+    elseif ($this->photoType == "Family" )
     {
       $fullNameArr = explode(" ",  FamilyQuery::create()->findOneById($this->id)->getName());
       foreach ($fullNameArr as $name)

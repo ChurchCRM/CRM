@@ -33,16 +33,16 @@ $app->group('/persons', function () {
     });
 
     $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
-        $res=$this->cache->withExpires($response, time() + 3600);
-        $person = PersonQuery::create()->findPk($args['personId']);
-        return $res->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
+      $res=$this->cache->withExpires($response, time() + 3600);
+      $photo = new Photo("Person",$args['personId']);
+      return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
       
     });
 
     $this->get('/{personId:[0-9]+}/thumbnail', function ($request, $response, $args) {
-        $res=$this->cache->withExpires($response, time() + 3600);
-        $photo = new Photo("Person",$args['personId']);
-        return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
+      $res=$this->cache->withExpires($response, time() + 3600);
+      $photo = new Photo("Person",$args['personId']);
+      return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
     });
 
     $this->post('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
