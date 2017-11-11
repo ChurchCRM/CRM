@@ -45,9 +45,7 @@ $("document").ready(function(){
     });
     
     $(document).on("click", "#emptyCartToGroup", function (e) {
-      window.CRM.groups.promptSelection(function (selectedRole) {
-        window.CRM.cart.emptyToGroup(0,0);
-      });
+      window.CRM.cart.emptyToGroup();
     });
     
     $(document).on("click",".RemoveFromPeopleCart", function(){
