@@ -94,7 +94,7 @@ class PDF_PhotoBook extends ChurchInfoReport
     
         # Draw the image or an x
         if (file_exists($thumbnailURI)) {
-            $this->Image($thumbnailURI, $this->currentX+.5, $this->currentY+.5, $this->personImageWidth-.25, $this->personImageHeight-.25, 'PNG');
+            $this->Image($thumbnailURI, $this->currentX+.25, $this->currentY+.25, $this->personImageWidth-.5, $this->personImageHeight-.5, 'PNG');
         } else {
             $this->Line($this->currentX, $this->currentY, $this->currentX + $this->personImageWidth, $this->currentY + $this->personImageHeight);
             $this->Line($this->currentX+$this->personImageWidth, $this->currentY, $this->currentX, $this->currentY + $this->personImageHeight);
