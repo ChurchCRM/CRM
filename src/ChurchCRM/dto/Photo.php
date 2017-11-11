@@ -40,7 +40,7 @@ class Photo
         $personEmail = PersonQuery::create()->findOneById($this->id)->getEmail();
         $photoPath =  $this->loadFromGoogle($personEmail, $baseName);
         if ($photoPath) {
-          return $photoFile;
+          return $photoPath;
         }
       }
     
@@ -48,7 +48,7 @@ class Photo
         $personEmail = PersonQuery::create()->findOneById($this->id)->getEmail();
         $photoPath = $this->loadFromGravatar($personEmail,  $baseName);
         if ($photoPath) {
-          return $photoFile;
+          return $photoPath;
         }
       }
     }
@@ -147,20 +147,17 @@ class Photo
       $url .= "?alt=json";
       $headers = @get_headers($url);
       if (strpos($headers[0], '404') === false) {
-          $json = file_get_contents($url);
-          if (!empty($json)) {
-              $obj = json_decode($json);
-              $photoEntry = $obj->entry;
-              $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
-              //echo $photoURL;
-              //die();
-              $photo = imagecreatefromstring(file_get_contents($photoURL));
-              if ($photo){
-                $photoPath = $baseName.".png";
-                imagepng($photo, $photoPath);
-                return $photoPath;
-              }
-              return false;
+        $json = file_get_contents($url);
+        if (!empty($json)) {
+          $obj = json_decode($json);
+          $photoEntry = $obj->entry;
+          $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
+          $photo = imagecreatefromstring(file_get_contents($photoURL));
+          if ($photo){
+            $photoPath = $baseName.".png";
+            imagepng($photo, $photoPath);
+            return $photoPath;
+          }
         }
       }
       return false;
