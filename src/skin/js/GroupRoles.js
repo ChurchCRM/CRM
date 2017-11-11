@@ -17,6 +17,14 @@ function UpdateRoles()
 
 $(document).ready(function (e, confirmed) {
   $("#addToGroup").click(function () {
+		window.CRM.groups.addGroup(function(data){   	
+			location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
+	  });
+  });
+});
+
+/*$(document).ready(function (e, confirmed) {
+  $("#addToGroup").click(function () {
     bootbox.prompt({
       title: i18next.t("Add A Group Name"),
       value: i18next.t("Default Name Group"),
@@ -38,18 +46,18 @@ $(document).ready(function (e, confirmed) {
       	{
 	      	var newGroup = {'groupName': result};
 	      	
-			$.ajax({
-				method: "POST",
-				url: window.CRM.root + "/api/groups/",               //call the groups api handler located at window.CRM.root
-			    data: JSON.stringify(newGroup),                      // stringify the object we created earlier, and add it to the data payload
-				contentType: "application/json; charset=utf-8",
-				dataType: "json"
-			}).done(function (data) {                               //yippie, we got something good back from the server
-				location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
-			});
-		}
-      }
+					$.ajax({
+						method: "POST",
+						url: window.CRM.root + "/api/groups/",               //call the groups api handler located at window.CRM.root
+						data: JSON.stringify(newGroup),                      // stringify the object we created earlier, and add it to the data payload
+						contentType: "application/json; charset=utf-8",
+						dataType: "json"
+					}).done(function (data) {                               //yippie, we got something good back from the server
+						location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
+					});
+				}
+       }
     });
   });
-});
-	
+});*/
+
