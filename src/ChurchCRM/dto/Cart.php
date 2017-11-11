@@ -1,7 +1,6 @@
 <?php
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Service\GroupService;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\GroupQuery;
@@ -131,16 +130,40 @@ class Cart
 
   public static function EmptyToGroup($GroupID,$RoleID)
   {
-  	$groupService = new GroupService();
-  	
-  	// Loop through the session array
     $iCount = 0;
-    while ($element = each($_SESSION['aPeopleCart'])) {
-        $groupService->addUserToGroup($GroupID, $_SESSION['aPeopleCart'][$element['key']], $RoleID);
-        $iCount += 1;
+
+    $group = GroupQuery::create()->findOneById($GroupID);
+    
+    if($RoleID == 0)
+    {
+      $RoleID = $group->getDefaultRole();
+    }
+    
+    while ($element = each($_SESSION['aPeopleCart'])) {      
+      $personGroupRole = Person2group2roleP2g2rQuery::create()
+        ->filterByGroupId($GroupID)
+        ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
+        ->findOneOrCreate()
+        ->setRoleId($RoleID)
+        ->save();	
+        
+      /*
+      This part of code should be done 
+    	*/	
+    	// Check if this group has special properties
+      /*      $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = '.$iGroupID;
+            $rsTemp = RunQuery($sSQL);
+            $rowTemp = mysqli_fetch_row($rsTemp);
+            $bHasProp = $rowTemp[0];
+
+            if ($bHasProp == 'true') {
+                $sSQL = 'INSERT INTO groupprop_'.$iGroupID." (per_ID) VALUES ('".$iPersonID."')";
+                RunQuery($sSQL);
+            }	*/
+			
+      $iCount += 1;
     }
     
     $_SESSION['aPeopleCart'] = [];
   }
-  
 }
