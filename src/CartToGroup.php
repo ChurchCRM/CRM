@@ -32,8 +32,9 @@ if ((isset($_GET['groupeID']) || isset($_POST['Submit'])) && count($_SESSION['aP
   // Get the GroupID
     $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
 
-    if (empty($iGroupID))// if empty
-	    $iGroupID = InputUtils::LegacyFilterInput($_GET['groupeID'], 'int');
+    if (empty($iGroupID)) {// if empty
+        $iGroupID = InputUtils::LegacyFilterInput($_GET['groupeID'], 'int');
+    }
     
     if (array_key_exists('GroupRole', $_POST)) {
         $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
@@ -54,8 +55,8 @@ if ((isset($_GET['groupeID']) || isset($_POST['Submit'])) && count($_SESSION['aP
 }
 
 $ormGroups = GroupQuery::Create()
-								->orderByName()
-								->find();
+                                ->orderByName()
+                                ->find();
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Add Cart to Group');
@@ -78,11 +79,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
               <?php
               // Create the group select drop-down
               echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';
-							foreach ($ormGroups as $ormGroup)
-							{
-								echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
-							}
-							echo '</select>'; ?>
+    foreach ($ormGroups as $ormGroup) {
+        echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
+    }
+    echo '</select>'; ?>
             </td>
           </tr>
           <tr>
