@@ -181,7 +181,7 @@ if ($per_ID == $iPersonID) {
     <div class="box box-primary">
       <div class="box-body box-profile">
         <div class="image-container">
-            <img  data-name="<?= $person->getFullName()?>" data-src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>"
+            <img src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>"
             class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
             <?php if ($bOkToEdit): ?>
                 <div class="after">
@@ -474,7 +474,7 @@ if ($per_ID == $iPersonID) {
               <tr>
                 <td>
 
-                 <img style="width:40px; height:40px;display:inline-block" data-name="<?= $familyMember->getFullName()?>" data-src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
+                 <img style="width:40px; height:40px;display:inline-block" src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
                   <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
 

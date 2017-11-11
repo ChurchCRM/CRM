@@ -19,7 +19,6 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
   <div class="box box-info" id="verifyBox">
     <div class="panel-body">
       <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200"
-           data-name="<?= $family->getName() ?>"
            <?php if ( $family->getThumbnailBytes() != FALSE ) { ?>
            src="data:image/png;base64,<?= base64_encode($family->getThumbnailBytes()) ?>"
            <?php } ?>>
@@ -60,10 +59,9 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
             <div class="box box-primary">
               <div class="box-body box-profile">
                  <img class="profile-user-img img-responsive img-circle initials-image"
-                      data-name="<?= $person->getFullName() ?>"
                        <?php if ( $person->getThumbnailBytes() != FALSE)
                         {?>
-                      src="data:image/png;base64,<?= base64_encode($person->getThumbnailBytes()) ?>">
+                          src="data:image/png;base64,<?= base64_encode($person->getThumbnailBytes()) ?>">
                         <?php } ?>
 
 
@@ -206,8 +204,6 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
 </style>
 
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/randomcolor/randomColor.js"></script>
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/js/initial.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyVerify.js"></script>
 
 <?php

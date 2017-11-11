@@ -130,8 +130,7 @@ require '../Include/Header.php';
         <div class="box box-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?></h4>
-            <img data-name="<?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?>"
-                  data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $teacher['per_ID'] ?>/thumbnail"
+            <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $teacher['per_ID'] ?>/thumbnail"
                   alt="User Image" class="user-image initials-image" width="85" height="85" />
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
                 class="fa fa-envelope"></i> <?= gettext('Send Message') ?></a>
@@ -223,8 +222,7 @@ require '../Include/Header.php';
 
           <tr>
           <td>
-            <img data-name="<?= $child['firstName'].' '.$child['LastName'] ?>"
-                data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
+            <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
                 alt="User Image" class="user-image initials-image" width="30" height="30" />
             <a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['firstName'].', '.$child['LastName'] ?></a>
           </td>

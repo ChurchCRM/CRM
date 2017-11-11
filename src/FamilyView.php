@@ -171,9 +171,7 @@ if ($iFamilyID == $fam_ID) {
         <div class="box box-primary">
             <div class="box-body">
                 <div class="image-container">
-                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
-                         data-name="<?= $family->getName() ?>" alt=""
-                         class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
+                    <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
                     <?php if ($bOkToEdit): ?>
                         <div class="after">
                             <div class="buttons">
@@ -359,8 +357,8 @@ if ($iFamilyID == $fam_ID) {
                     ?>
                             <tr>
                                 <td>
-                                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
-                                         data-name="<?= $person->getFullName() ?>" width="40" height="40"
+                                    <img src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                         width="40" height="40"
                                          class="initials-image img-circle"/>
                                     <a href="<?= $person->getViewURI() ?>"
                                        class="user-link"><?= $person->getFullName() ?> </a>

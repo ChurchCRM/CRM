@@ -14,8 +14,15 @@ require_once dirname(__FILE__).'/../vendor/autoload.php';
 
 // Instantiate the app
 $settings = require __DIR__.'/../Include/slim/settings.php';
-$app = new \Slim\App();
-$container = $app->getContainer();
+
+$container = new \Slim\Container;
+$container['cache'] = function () {
+    return new \Slim\HttpCache\CacheProvider();
+};
+
+// Add middleware to the application
+$app = new \Slim\App($container);
+$app->add(new \Slim\HttpCache\Cache('public', 86400));
 
 // Set up
 require __DIR__.'/dependencies.php';

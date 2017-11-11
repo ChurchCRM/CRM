@@ -32,25 +32,16 @@ $app->group('/persons', function () {
     });
 
     $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
+        $res=$this->cache->withExpires($response, time() + 3600);
         $person = PersonQuery::create()->findPk($args['personId']);
-        if ($person->isPhotoLocal()) {
-            return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
-        } else if ($person->isPhotoRemote()) {
-            return $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType());
-        } else {
-            return $response->withStatus(404);
-        }
+        return $res->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
+      
     });
 
     $this->get('/{personId:[0-9]+}/thumbnail', function ($request, $response, $args) {
+        $res=$this->cache->withExpires($response, time() + 3600);
         $person = PersonQuery::create()->findPk($args['personId']);
-        if ($person->isPhotoLocal()) {
-            return $response->write($person->getThumbnailBytes())->withHeader('Content-type', $person->getPhotoContentType());
-        } else if ($person->isPhotoRemote()) {
-            return $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType()); 
-        } else {
-            return $response->withStatus(404);
-        }
+        return $res->write($person->getThumbnailBytes())->withHeader('Content-type', $person->getPhotoContentType());
     });
 
     $this->post('/{personId:[0-9]+}/photo', function ($request, $response, $args) {

@@ -24,6 +24,7 @@ class Person extends BasePerson implements iPhoto
 
     const SELF_REGISTER = -1;
     const SELF_VERIFY = -2;
+    private $photo;
 
     public function getFullName()
     {
@@ -232,17 +233,11 @@ class Person extends BasePerson implements iPhoto
 
     private function getPhoto()
     {
-
-      $photo = new Photo("Person",  $this->getId());
-       if (!$photo->isPhotoLocal() && $this->getEmail() != '') {
-           if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
-               $photo->loadFromGoogle($this->getEmail());
-           }
-            if (!$photo->isPhotoRemote() && SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
-               $photo->loadFromGravatar($this->getEmail());
-           }
-       }
-       return $photo;
+      if (!$this->photo) 
+      {
+        $this->photo = new Photo("Person",  $this->getId());
+      }
+      return $this->photo;
     }
 
     public function getPhotoBytes()

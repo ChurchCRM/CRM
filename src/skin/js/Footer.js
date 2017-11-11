@@ -37,9 +37,7 @@ $("document").ready(function(){
       type: "POST"
     });
     $(".date-picker").datepicker({format:window.CRM.datePickerformat, language: window.CRM.lang});
-    
 
-    $(".initials-image").initial();
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
 
 

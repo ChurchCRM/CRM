@@ -4,6 +4,8 @@ namespace ChurchCRM\dto;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\FamilyQuery;
 
 class Photo
 {
@@ -20,21 +22,9 @@ class Photo
     $this->photoType = $photoType;
     $this->id = $id;
     $this->photoURI = $this->photoHunt(SystemURLs::getImagesRoot() . "/" . $photoType . "/" . $id); 
-    $this->photoThumbURI = $this->photoHunt(SystemURLs::getImagesRoot() . "/" . $photoType . "/thumbnails/" . $id);
-    if (isset($this->photoThumbURI) && !isset($this->photoURI) )
-    {
-      # If there is a thumbnail photo, but no normal photo,
-      # Use the existing thumbnail as both normal and thumbnail photos.
-      $this->photoURI = $this->photoThumbURI;
-    }
-    if ($this->photoURI)
-    {
-      $this->photoLocation = "local";
-    }
   }
   
-  private function photoHunt($baseName)
-  {
+  private function photoHunt($baseName) {
     $extensions = Photo::$validExtensions;
     foreach($extensions as $ext) 
     {
@@ -43,11 +33,32 @@ class Photo
        return $photoFile;
       }
     }
-    return null;
+    # we still haven't found a photo file.  Begin checking remote if it's enabled
+    if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
+        //return  $this->loadFromGoogle($this->getEmail());
+    }
+    if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
+        if ($this>photoType == "Person")
+        {
+          $personEmail = PersonQuery::create()->findOneById($this->id)->getEmail();
+          $photoPath = $this->loadFromGravatar($personEmail);
+          if ($photoPath) {
+            return $photoPath;
+          }
+         
+        }
+        elseif ($this>photoType == "Family" )
+        {
+          
+        }
+        
+    }
+ 
+    # stil no image - generate it from initials
+    return $this->renderInitials();
   }
   
-  private function getGDImage($sourceImagePath)
-  {
+  private function getGDImage($sourceImagePath) {
     $sourceImageType = exif_imagetype($sourceImagePath);
     switch ($sourceImageType) 
     {
@@ -64,8 +75,7 @@ class Photo
     return $sourceGDImage;
   }
   
-  private function createThumbnail()      
-  {
+  private function createThumbnail() {
     $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/thumbnails/" . $this->id.".png";
     $thumbWidth = 100;
     $img =  $this->getGDImage($this->photoURI); //just in case we have legacy JPG/GIF that don't have a thumbnail.
@@ -78,8 +88,7 @@ class Photo
     imagepng($tmp_img, $this->photoThumbURI);
   }
 
-  public function getThumbnailBytes()
-  {
+  public function getThumbnailBytes() {
     if (!file_exists($this->photoThumbURI))
     {
       $this->createThumbnail();
@@ -87,13 +96,11 @@ class Photo
     return file_get_contents($this->photoThumbURI);
   }
 
-  public function getPhotoBytes()
-  {
+  public function getPhotoBytes() {
     return file_get_contents($this->photoURI);
   }
 
-  public function getPhotoContentType()
-  {
+  public function getPhotoContentType() {
     if ($this->isPhotoRemote())
     {
       return;
@@ -106,8 +113,7 @@ class Photo
     }
   }
 
-  public function getThumbnailURI()
-  {
+  public function getThumbnailURI() {
     if (!file_exists($this->photoThumbURI))
     {
       $this->createThumbnail();
@@ -115,13 +121,11 @@ class Photo
     return $this->photoThumbURI;
   }
   
-  public function getPhotoURI()
-  {
+  public function getPhotoURI() {
     return $this->photoURI;
   }
   
-  public function isPhotoLocal()
-  {
+  public function isPhotoLocal() {
     return ($this->photoLocation == "local");
   }
   
@@ -129,20 +133,23 @@ class Photo
       return ($this->photoLocation == "remote");
    }
   
-  public function loadFromGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = []) {
+  private function loadFromGravatar($email, $s = 60, $d = '404', $r = 'g', $img = false, $atts = []) {
     $url = 'https://www.gravatar.com/avatar/';
     $url .= md5(strtolower(trim($email)));
     $url .= "?s=$s&d=$d&r=$r";
-
-    $headers = @get_headers($url);
-    if (strpos($headers[0], '404') === false) {
-        $this->photoURI =  $url;
-        $this->photoThumbURI = $url;
-        $this->photoLocation = "remote";
+  
+    $targetPath = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/" . $this->id.".png";
+    $photo = imagecreatefromstring(file_get_contents($url));
+    if ($photo){
+      imagepng($photo,$targetPath);
+      return $targetPath;
     }
+    return null;
+   
+
   }
 
-  public function loadFromGoogle($email) {
+  private function loadFromGoogle($email) {
       $url = 'http://picasaweb.google.com/data/entry/api/user/';
       $url .= strtolower(trim($email));
       $url .= "?alt=json";
@@ -156,8 +163,49 @@ class Photo
               $this->photoURI =  $photoURL;
               $this->photoThumbURI = $photoURL;
               $this->photoLocation = "remote";
+              return true;
         }
       }
+      return false;
+  }
+  
+  
+  private function getRandomColor($image) {
+    $red = rand(0, 150);
+    $green = rand(0, 150);
+    $blue = rand(0, 150);
+    return imagecolorallocate($image, $red, $green, $blue);
+  }
+  
+  private function getInitialsString()
+  {
+    $retstr = "";
+    if ($this>photoType == "Person")
+    {
+      $fullNameArr = explode(" ",PersonQuery::create()->findOneById($this->id)->getFullName());
+      foreach ($fullNameArr as $name)
+      {
+        $retstr .= substr($name, 0,1);
+      }
+
+    }
+    elseif ($this>photoType == "Family" )
+    {
+
+    }
+    return $retstr;
+  }
+  
+  private function renderInitials() {
+    $initials = $this->getInitialsString();
+    $targetPath = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/" . $this->id.".png";
+    $image = imagecreatetruecolor(100,100);
+    $bgcolor = $this->getRandomColor($image);
+    imagefilledrectangle($image, 0, 0, 100, 100, $bgcolor);
+    $white = imagecolorallocate($image, 255, 255, 255);
+    imagefttext($image, 20, 0,30,50, $white, SystemURLs::getDocumentRoot()."/fonts/Roboto-Regular.ttf", $initials);
+    imagepng($image,$targetPath);
+    return $targetPath;
   }
   
   public function setImageFromBase64($base64)
