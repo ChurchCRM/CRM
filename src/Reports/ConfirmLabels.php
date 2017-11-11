@@ -36,13 +36,11 @@ $families = FamilyQuery::create()
         ->orderByZip()
         ->find();
 
-foreach($families as $family) {
-
+foreach ($families as $family) {
     if ($bRecipientNamingMethod == "familyname") {
-      $labelText = $family->getName();
-    }
-    else {
-      $labelText = $pdf->MakeSalutation($family->getID());
+        $labelText = $family->getName();
+    } else {
+        $labelText = $pdf->MakeSalutation($family->getID());
     }
     if ($family->getAddress1() != '') {
         $labelText .= "\n".$family->getAddress1();
