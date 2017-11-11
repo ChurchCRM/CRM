@@ -14,8 +14,10 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_NewsletterLabels;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\FamilyQuery;
 
 $sLabelFormat = InputUtils::LegacyFilterInput($_GET['labeltype']);
+$bRecipientNamingMethod = $_GET['recipientnamingmethod'];
 setcookie('labeltype', $sLabelFormat, time() + 60 * 60 * 24 * 90, '/');
 
 // Instantiate the directory class and build the report.
@@ -31,29 +33,29 @@ if ($sFontSize != 'default') {
 }
 
 // Get all the families which receive the newsletter by mail
-$sSQL = "SELECT * FROM family_fam WHERE fam_SendNewsLetter='TRUE' ORDER BY fam_Zip";
-$rsFamilies = RunQuery($sSQL);
+$families = FamilyQuery::create()
+        ->filterBySendNewsletter("TRUE")
+        ->orderByZip()
+        ->find();
 
-// Loop through families
-$labelThisPage = 0;
-$labelHeight = 26.5;
-$labelLineHeight = 6;
-$labelX = 10;
+foreach($families as $family) {
 
-while ($aFam = mysqli_fetch_array($rsFamilies)) {
-    extract($aFam);
-
-    $labelText = $pdf->MakeSalutation($fam_ID);
-    if ($fam_Address1 != '') {
-        $labelText .= "\n".$fam_Address1;
+    if ($bRecipientNamingMethod == "familyname") {
+      $labelText = $family->getName();
     }
-    if ($fam_Address2 != '') {
-        $labelText .= "\n".$fam_Address2;
+    else {
+      $labelText = $pdf->MakeSalutation($family->getID());
     }
-    $labelText .= sprintf("\n%s, %s  %s", $fam_City, $fam_State, $fam_Zip);
+    if ($family->getAddress1() != '') {
+        $labelText .= "\n".$family->getAddress1();
+    }
+    if ($family->getAddress2() != '') {
+        $labelText .= "\n".$family->getAddress2();
+    }
+    $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
 
-    if ($fam_Country != '' && $fam_Country != 'USA' && $fam_Country != 'United States') {
-        $labelText .= "\n".$fam_Country;
+    if ($family->getCountry() != '' && $family->getCountry() != 'USA' && $family->getCountry() != 'United States') {
+        $labelText .= "\n".$family->getCountry();
     }
 
     $pdf->Add_PDF_Label($labelText);

@@ -14,8 +14,10 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_Label;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\FamilyQuery;
 
 $sLabelFormat = InputUtils::LegacyFilterInput($_GET['labeltype']);
+$bRecipientNamingMethod = $_GET['recipientnamingmethod'];
 setcookie('labeltype', $sLabelFormat, time() + 60 * 60 * 24 * 90, '/');
 
 $pdf = new PDF_Label($sLabelFormat);
@@ -29,26 +31,32 @@ if ($sFontSize != 'default') {
     $pdf->Set_Char_Size($sFontSize);
 }
 
-// Get all the families
-$sSQL = 'SELECT * FROM family_fam WHERE 1 ORDER BY fam_Name';
-$rsFamilies = RunQuery($sSQL);
+// Get all the families which receive the newsletter by mail
+$families = FamilyQuery::create()
+        ->orderByZip()
+        ->find();
 
-// Loop through families
-while ($aFam = mysqli_fetch_array($rsFamilies)) {
-    extract($aFam);
+foreach($families as $family) {
 
-    $labelStr = $pdf->MakeSalutation($fam_ID);
-    if ($fam_Address1 != '') {
-        $labelStr .= "\n".$fam_Address1;
+    if ($bRecipientNamingMethod == "familyname") {
+      $labelText = $family->getName();
     }
-    if ($fam_Address2 != '') {
-        $labelStr .= "\n".$fam_Address2;
+    else {
+      $labelText = $pdf->MakeSalutation($family->getID());
     }
-    $labelStr .= sprintf("\n%s, %s  %s", $fam_City, $fam_State, $fam_Zip);
-    if ($fam_Country != '' && $fam_Country != 'USA' && $fam_Country != 'United States') {
-        $labelStr .= "\n".$fam_Country;
+    if ($family->getAddress1() != '') {
+        $labelText .= "\n".$family->getAddress1();
     }
-    $pdf->Add_PDF_Label($labelStr);
+    if ($family->getAddress2() != '') {
+        $labelText .= "\n".$family->getAddress2();
+    }
+    $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
+
+    if ($family->getCountry() != '' && $family->getCountry() != 'USA' && $family->getCountry() != 'United States') {
+        $labelText .= "\n".$family->getCountry();
+    }
+
+    $pdf->Add_PDF_Label($labelText);
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
