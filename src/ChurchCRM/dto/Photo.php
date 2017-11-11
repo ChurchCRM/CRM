@@ -27,9 +27,12 @@ class Photo
     $extensions = Photo::$validExtensions;
     foreach($extensions as $ext) 
     {
-      $photoFile = $baseName . "." . $ext;
-      if (file_exists($photoFile)) {
-       return $photoFile;
+      $photoFiles = array($baseName . "." . $ext,$baseName . "-remote." . $ext,$baseName . "-initials." . $ext);
+      foreach ($photoFiles as $photoFile)
+      {
+        if (file_exists($photoFile)) {
+          return $photoFile;
+         }
       }
     }
     # we still haven't found a photo file.  Begin checking remote if it's enabled
@@ -133,7 +136,7 @@ class Photo
 
     $photo = imagecreatefromstring(file_get_contents($url));
     if ($photo){
-      $photoPath = $baseName.".png";
+      $photoPath = $baseName."-remote.png";
       imagepng($photo, $photoPath);
       return $photoPath;
     }
@@ -153,7 +156,7 @@ class Photo
           $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
           $photo = imagecreatefromstring(file_get_contents($photoURL));
           if ($photo){
-            $photoPath = $baseName.".png";
+            $photoPath = $baseName."-remote.png";
             imagepng($photo, $photoPath);
             return $photoPath;
           }
@@ -193,7 +196,7 @@ class Photo
   
   private function renderInitials() {
     $initials = $this->getInitialsString();
-    $targetPath = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/" . $this->id.".png";
+    $targetPath = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/" . $this->id."-initials.png";
     $height = SystemConfig::getValue("iPhotoHeight");
     $width= SystemConfig::getValue("iPhotoWidth");
     $pointSize = SystemConfig::getValue("iInitialsPointSize");
