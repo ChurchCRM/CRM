@@ -1021,8 +1021,8 @@ if ($iFamilyID == $fam_ID) {
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
                 url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
                 maxPhotoSize: window.CRM.maxUploadSize,
-                photoHeight: 400,
-                photoWidth: 400,
+                photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+                photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
                 done: function (e) {
                     location.reload();
                 }

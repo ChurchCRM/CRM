@@ -199,11 +199,20 @@ class Photo
   private function renderInitials() {
     $initials = $this->getInitialsString();
     $targetPath = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/" . $this->id.".png";
-    $image = imagecreatetruecolor(100,100);
+    $height = SystemConfig::getValue("iPhotoHeight");
+    $width= SystemConfig::getValue("iPhotoWidth");
+    $pointSize = SystemConfig::getValue("iInitialsPointSize");
+    $font = SystemURLs::getDocumentRoot()."/fonts/Roboto-Regular.ttf";
+    //(0.5*$width)-(0.75*$pointSize),(0.5*$height)+(0.40*$pointSize)
+    
+    $image = imagecreatetruecolor($width,$height);
     $bgcolor = $this->getRandomColor($image);
-    imagefilledrectangle($image, 0, 0, 100, 100, $bgcolor);
     $white = imagecolorallocate($image, 255, 255, 255);
-    imagefttext($image, 20, 0,30,50, $white, SystemURLs::getDocumentRoot()."/fonts/Roboto-Regular.ttf", $initials);
+    imagefilledrectangle($image, 0, 0,$height , $width, $bgcolor);
+    $tb = imagettfbbox($pointSize, 0, $font, $initials);
+    $x = ceil(($width - $tb[2]) / 2);
+    $y = ceil(($height - $tb[5]) / 2);
+    imagefttext($image, $pointSize, 0, $x, $y, $white, $font, $initials);
     imagepng($image,$targetPath);
     return $targetPath;
   }
