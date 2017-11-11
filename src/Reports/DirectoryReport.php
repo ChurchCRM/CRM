@@ -251,7 +251,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         }
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $pdf->sRecordName .= " ". date(SystemConfig::getValue("sDateFormatNoYear"));
+            $pdf->sRecordName .= " ". date(SystemConfig::getValue("sDateFormatNoYear"),mktime(0,0,0,$per_BirthMonth,$per_BirthDay,$per_BirthYear));
         }
 
         SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
