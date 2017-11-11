@@ -1,6 +1,7 @@
 <?php
 namespace ChurchCRM\dto;
 
+use ChurchCRM\Service\GroupService;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\GroupQuery;
@@ -130,20 +131,15 @@ class Cart
 
   public static function EmptyToGroup($GroupID,$RoleID)
   {
+  	$groupService = new GroupService();
+  	
+  	// Loop through the session array
     $iCount = 0;
-    $Group = GroupQuery::create()->findOneById($GroupID);
     while ($element = each($_SESSION['aPeopleCart'])) {
-      $personGroupRole = Person2group2roleP2g2rQuery::create()
-        ->filterByGroupId($GroupID)
-        ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
-        ->filterByRoleId($RoleID)
-        ->findOneOrCreate()
-        ->setPersonId($_SESSION['aPeopleCart'][$element['key']])
-        ->setRoleId($RoleID)
-        ->setGroupId($GroupID)
-        ->save();
-      $iCount += 1;
+        $groupService->addUserToGroup($GroupID, $_SESSION['aPeopleCart'][$element['key']], $RoleID);
+        $iCount += 1;
     }
+    
     $_SESSION['aPeopleCart'] = [];
   }
   
