@@ -43,12 +43,10 @@ class PDF_PhotoBook extends ChurchInfoReport
     public function __construct($iFYID)
     {
         parent::__construct('P', 'mm', $this->paperFormat);
-    
-        //$this->initializeArrays();
         $this->pageMarginL = 15;
         $this->pageMarginR = 15;
         $this->pageMarginT = 20;
-        $this->pageMarginB = 20;
+        $this->pageMarginB = 5;
         $this->personMarginL = 2.5;
         $this->personMarginR = 2.5;
         $this->personImageHeight = 30;
