@@ -231,33 +231,13 @@ class Person extends BasePerson implements iPhoto
         return false;
     }
 
-    private function getPhoto()
+    public function getPhoto()
     {
       if (!$this->photo) 
       {
         $this->photo = new Photo("Person",  $this->getId());
       }
       return $this->photo;
-    }
-
-    public function getPhotoBytes()
-    {
-        return $this->getPhoto()->getPhotoBytes();
-    }
-
-    public function getPhotoURI()
-    {
-        return $this->getPhoto()->getPhotoURI();
-    }
-
-    public function getThumbnailBytes()
-    {
-        return $this->getPhoto()->getThumbnailBytes();
-    }
-
-    public function getThumbnailURI()
-    {
-        return $this->getPhoto()->getThumbnailURI();
     }
 
     public function setImageFromBase64($base64)
@@ -274,15 +254,6 @@ class Person extends BasePerson implements iPhoto
         }
         return false;
 
-    }
-    public function getPhotoContentType()
-    {
-        return $this->getPhoto()->getPhotoContentType();
-    }
-    
-    public function getThumbnailContentType()
-    {
-        return $this->getPhoto()->getThumbnailContentType();
     }
 
     /**
@@ -436,5 +407,10 @@ class Person extends BasePerson implements iPhoto
     public function getNumericCellPhone()
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
+    }
+    
+    public function postSave(ConnectionInterface $con = null) {
+      $this->getPhoto()->refresh();
+      return parent::postSave($con);
     }
 }

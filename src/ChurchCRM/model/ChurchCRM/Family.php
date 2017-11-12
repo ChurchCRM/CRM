@@ -257,23 +257,6 @@ class Family extends BaseFamily implements iPhoto
       }
       return false;
     }
-
-    public function getPhotoBytes() {
-      return $this->getPhoto()->getPhotoBytes();
-    }
-
-    public function getPhotoURI() {
-      return $this->getPhoto()->getPhotoURI();
-    }
-
-    public function getThumbnailBytes() {
-      return $this->getPhoto()->getThumbnailBytes();
-    }
-
-    public function getThumbnailURI() {
-       return $this->getPhoto()->getThumbnailURI();
-    }
-
     public function setImageFromBase64($base64) {
       if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
         $note = new Note();
@@ -287,16 +270,7 @@ class Family extends BaseFamily implements iPhoto
       }
       return false;
     }
-
-    public function getPhotoContentType() {
-      return $this->getPhoto()->getPhotoContentType();
-    }
     
-    public function getThumbnailContentType()
-    {
-        return $this->getPhoto()->getThumbnailContentType();
-    }
-
     public function verify()
     {
         $this->createTimeLineNote('verify');

@@ -53,8 +53,8 @@ $app->get('/', function ($request, $response, $args) use ($app) {
 
 
   $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) use ($app) {
-    $person = PersonQuery::create()->findPk($args['PersonId']);
-    return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
+    $photo = new Photo("Person",$args['PersonId']);
+    return $response->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
   });
 
 

@@ -17,6 +17,7 @@ use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\dto\Photo;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -360,10 +361,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL .= ' WHERE per_ID = '.$iPersonID;
 
             $bGetKeyBack = false;
+            
         }
 
         //Execute the SQL
         RunQuery($sSQL);
+        $photo = new Photo("Person", $iPersonID);
+        $photo->refresh();
 
         $note = new Note();
         $note->setEntered($_SESSION['iUserID']);

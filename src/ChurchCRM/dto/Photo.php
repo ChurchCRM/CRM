@@ -7,56 +7,87 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
 
-class Photo
-{
+class Photo {
   private $photoType;
   private $id;
   private $photoURI;
   private $photoThumbURI;
   private $photoContentType;
+  private $remotesEnabled;
   public static $validExtensions = ["png", "jpeg", "jpg"];
 
   public function __construct($photoType,$id) {
     $this->photoType = $photoType;
     $this->id = $id;
-    $this->photoURI = $this->photoHunt(SystemURLs::getImagesRoot() . "/" . $photoType . "/" . $id); 
-    $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $photoType . "/thumbnails/" . $id . ".jpg"; 
+    $this->remotesEnabled = SystemConfig::getBooleanValue('bEnableGooglePhotos') || SystemConfig::getBooleanValue('bEnableGravatarPhotos');
+    $this->photoHunt();
   }
   
-  private function photoHunt($baseName) {
+  private function setURIs($photoPath) {
+    $this->photoURI = $photoPath;
+    $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/thumbnails/" . $this->id . ".jpg"; 
+  }
+ 
+  private function shouldRefreshPhotoFile($photoFile) {
+    if ($this->remotesEnabled) {
+      // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
+      $remotecachethreshold = date_create();
+      date_sub($remotecachethreshold,date_interval_create_from_date_string("5 seconds"));
+      if (strpos($photoFile,"remote") !== false || strpos($photoFile,"initials") !== false ) {
+        return filemtime($photoFile) < date_timestamp_get($remotecachethreshold); 
+      }
+    }
+    else{
+      // if remotes are disabled, and the image contains remote, then we should re-gen
+      return strpos($photoFile,"remote") !== false;
+    }
+  }
+  
+  private function photoHunt() {
+    $baseName = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/" . $this->id;
     $extensions = Photo::$validExtensions;
-    foreach($extensions as $ext) 
-    {
+   
+    foreach($extensions as $ext) {
       $photoFiles = array($baseName . "." . $ext,$baseName . "-remote." . $ext,$baseName . "-initials." . $ext);
       foreach ($photoFiles as $photoFile)
       {
         if (file_exists($photoFile)) {
-          return $photoFile;
+          $this->setURIs($photoFile);
+          if ($this->shouldRefreshPhotoFile($photoFile)) {
+            //if we found the file, but it's remote and aged, then we should update it.
+            $this->delete();
+            break 2;  
+          }
+          return;
          }
       }
     }
     # we still haven't found a photo file.  Begin checking remote if it's enabled
     # only check google and gravatar for person photos.
-    if ($this->photoType == "Person") {
-      if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
-        $personEmail = PersonQuery::create()->findOneById($this->id)->getEmail();
-        $photoPath =  $this->loadFromGoogle($personEmail, $baseName);
-        if ($photoPath) {
-          return $photoPath;
+    if ($this->photoType == "Person" && $this->remotesEnabled) {
+      $person = PersonQuery::create()->findOneById($this->id);
+      if($person) {
+        $personEmail = $person->getEmail();
+        if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
+          $photoPath =  $this->loadFromGoogle($personEmail, $baseName);
+          if ($photoPath) {
+            $this->setURIs($photoPath);
+            return;
+          }
         }
-      }
-    
-      if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
-        $personEmail = PersonQuery::create()->findOneById($this->id)->getEmail();
-        $photoPath = $this->loadFromGravatar($personEmail,  $baseName);
-        if ($photoPath) {
-          return $photoPath;
+
+        if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
+          $photoPath = $this->loadFromGravatar($personEmail,  $baseName);
+          if ($photoPath) {
+            $this->setURIs($photoPath);
+            return;
+          }
         }
       }
     }
  
     # stil no image - generate it from initials
-    return $this->renderInitials();
+    $this->renderInitials();
   }
   
   private function getGDImage($sourceImagePath) {
@@ -201,8 +232,6 @@ class Photo
     $width= SystemConfig::getValue("iPhotoWidth");
     $pointSize = SystemConfig::getValue("iInitialsPointSize");
     $font = SystemURLs::getDocumentRoot()."/fonts/Roboto-Regular.ttf";
-    //(0.5*$width)-(0.75*$pointSize),(0.5*$height)+(0.40*$pointSize)
-    
     $image = imagecreatetruecolor($width,$height);
     $bgcolor = $this->getRandomColor($image);
     $white = imagecolorallocate($image, 255, 255, 255);
@@ -212,7 +241,7 @@ class Photo
     $y = ceil(($height - $tb[5]) / 2);
     imagefttext($image, $pointSize, 0, $x, $y, $white, $font, $initials);
     imagepng($image,$targetPath);
-    return $targetPath;
+     $this->setURIs($targetPath);
   }
   
   public function setImageFromBase64($base64) {
@@ -243,4 +272,13 @@ class Photo
     }
     return $deleted;
   }  
+  
+  public function refresh() {
+    if (strpos($this->photoURI, "initials") || strpos($this->photoURI, "remote")) {
+      $this->delete();
+    }
+    $this->photoURI = $this->photoHunt(SystemURLs::getImagesRoot() . "/" . $photoType . "/" . $id);
+    $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $photoType . "/thumbnails/" . $id . ".jpg"; 
+  }
+  
 }
