@@ -53,6 +53,10 @@ class Photo {
       {
         if (file_exists($photoFile)) {
           $this->setURIs($photoFile);
+          if ($ext !== "png") 
+          {
+            $this->convertToPNG();
+          }
           if ($this->shouldRefreshPhotoFile($photoFile)) {
             //if we found the file, but it's remote and aged, then we should update it.
             $this->delete();
@@ -88,6 +92,14 @@ class Photo {
  
     # stil no image - generate it from initials
     $this->renderInitials();
+  }
+  
+  private function convertToPNG() {
+    $image = $this->getGDImage($this->getPhotoURI());
+    $this->delete();
+    $targetPath = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/" . $this->id.".png";
+    imagepng($image,$targetPath);
+    $this->setURIs($targetPath);
   }
   
   private function getGDImage($sourceImagePath) {
@@ -241,7 +253,7 @@ class Photo {
     $y = ceil(($height - $tb[5]) / 2);
     imagefttext($image, $pointSize, 0, $x, $y, $white, $font, $initials);
     imagepng($image,$targetPath);
-     $this->setURIs($targetPath);
+    $this->setURIs($targetPath);
   }
   
   public function setImageFromBase64($base64) {
