@@ -21,6 +21,18 @@ class MiscUtils {
       }
       return $word;
   }
+  
+  public function getRandomCache($baseCacheTime,$variability){
+    $var = rand(0,2*$variability);
+    if ($var >= $variability) {
+      return $baseCacheTime - ($var -$variability);
+    }
+    elseif ($var < $variability) {
+      return $baseCacheTime + $variability;
+    }
+    return 0;
+    
+  }
 
 }
 ?>

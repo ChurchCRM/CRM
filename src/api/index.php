@@ -25,7 +25,6 @@ $container['cache'] = function () {
 
 // Add middleware to the application
 $app = new \Slim\App($container);
-$app->add(new Cache('public', 86400));
 
 // Set up
 require __DIR__.'/dependencies.php';
