@@ -119,7 +119,7 @@ function Header_body_scripts()
                     responsive: true,
                     "dom": 'T<"clear">lfrtip',
                     "tableTools": {
-                        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
+                        "sSwfPath": "<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"
                     }
                 }
             }
