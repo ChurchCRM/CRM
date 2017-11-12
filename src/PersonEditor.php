@@ -361,7 +361,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL .= ' WHERE per_ID = '.$iPersonID;
 
             $bGetKeyBack = false;
-            
         }
 
         //Execute the SQL
