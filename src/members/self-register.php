@@ -41,6 +41,10 @@ require '../Include/Header.php';
                 url: window.CRM.root + "/api/families/self-register",
                 dataSrc: 'families'
             },
+            "dom": window.CRM.plugin.dataTable.dom,
+            "tableTools": {
+                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
+            },
             columns: [
                 {
                     title: i18next.t('Family Id'),
