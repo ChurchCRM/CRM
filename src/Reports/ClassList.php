@@ -204,7 +204,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                     $nw = $imageHeight;
                     $nh = $imageHeight;
                 
-                    $pdf->Image($imgName, $nameX-$nw, $y, $nw, $nh, 'PNG');
+                    $pdf->Image($imgName, $nameX-$nw, $y, $nw, $nh, 'JPG');
                 }
                     
                 $nameX+=2;
