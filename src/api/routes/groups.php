@@ -3,9 +3,10 @@
 // Routes
 use ChurchCRM\Group;
 use ChurchCRM\GroupQuery;
+use ChurchCRM\Person2group2roleP2g2rQuery;
 
 $app->group('/groups', function () {
-    $this->get('/', function () {
+    $this->get('/', function () {        
         echo GroupQuery::create()->find()->toJSON();
     });
 
@@ -61,6 +62,26 @@ $app->group('/groups', function () {
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->findByGroupId($groupID);
+        
+            
+        // we loop to find the information in the family to add adresses etc ...
+        foreach ($members as $member)
+        {
+        	$p = $member->getPerson();
+					$fam = $p->getFamily();   
+			
+					// Philippe Logel : this is usefull when a person don't have a family : ie not an address
+					if (!empty($fam))
+					{
+						$p->setAddress1 ($fam->getAddress1());
+						$p->setAddress2 ($fam->getAddress2());
+			
+						$p->setCity($fam->getCity());
+						$p->setState($fam->getState());
+						$p->setZip($fam->getZip());    
+					}    	
+        }
+        
         echo $members->toJSON();
     });
     
@@ -72,10 +93,9 @@ $app->group('/groups', function () {
         echo $members->toJSON();
     });
 
-    $this->delete('/{groupID:[0-9]+}/removeuser/{userID:[0-9]+}', function ($request, $response, $args) {
+    $this->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
-        $groupID = $args['groupID'];
         $group = GroupQuery::create()->findOneById($groupID);
         $groupRoleMemberships = $group->getPerson2group2roleP2g2rs();
         foreach ($groupRoleMemberships as $groupRoleMembership) {
@@ -85,16 +105,26 @@ $app->group('/groups', function () {
         }
         echo json_encode(['success' => 'true']);
     });
-    $this->post('/{groupID:[0-9]+}/adduser/{userID:[0-9]+}', function ($request, $response, $args) {
+    
+    $this->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
+        $input = (object) $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
-        $p2g2r = new ChurchCRM\Person2group2roleP2g2r();
-        $p2g2r->setGroupId($groupID);
-        $p2g2r->setPersonId($userID);
-        $p2g2r->setRoleId($group->getDefaultRole());
+        $p2g2r = Person2group2roleP2g2rQuery::create()
+          ->filterByGroupId($groupID)
+          ->filterByPersonId($userID)
+          ->findOneOrCreate();
+        if($input->RoleID)
+        {
+          $p2g2r->setRoleId($input->RoleID);
+        }
+        else
+        {
+           $p2g2r->setRoleId($group->getDefaultRole());
+        }
         $p2g2r->save();
-        $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
+        $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->filterByPersonId($userID)
             ->findByGroupId($groupID);

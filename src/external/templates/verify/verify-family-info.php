@@ -8,6 +8,8 @@ use ChurchCRM\dto\ChurchMetaData;
 $sPageTitle = gettext("Family Verification");
 
 require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
+
+$doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
   <div class="row">
     <div id="right-buttons" class="btn-group" role="group">
@@ -41,9 +43,11 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       </div>
     </div>
     <div class="border-right border-left">
-      <section id="map">
-        <div id="map1"></div>
-      </section>
+      <?php if ($doShowMap) { ?>
+        <section id="map">
+          <div id="map1"></div>
+        </section>
+      <?php } ?>
     </div>
     <div class="box box-solid">
       <div class="box-header">
@@ -122,10 +126,14 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   </div>
 
 
-  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
+  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>"></script>
 
   <script>
-    var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+    <?php if ($doShowMap) { ?>
+      var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+    <?php } else { ?>
+      var LatLng = null;
+    <?php } ?>
     var token = '<?= $token->getToken()?>';
   </script>
 
