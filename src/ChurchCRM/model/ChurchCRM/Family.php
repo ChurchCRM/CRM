@@ -22,7 +22,8 @@ use ChurchCRM\Emails\NewPersonOrFamilyEmail;
  */
 class Family extends BaseFamily implements iPhoto
 {
-
+    private $photo;
+    
     public function getAddress()
     {
         $address = [];
@@ -233,8 +234,11 @@ class Family extends BaseFamily implements iPhoto
 
     private function getPhoto()
     {
-      $photo = new Photo("Family",  $this->getId());
-      return $photo;
+      if (!$this->photo) 
+      {
+        $this->photo = new Photo("Family",  $this->getId());
+      }
+      return $this->photo;
     }
 
     public function deletePhoto()

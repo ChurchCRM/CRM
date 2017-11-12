@@ -18,10 +18,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
   </div>
   <div class="box box-info" id="verifyBox">
     <div class="panel-body">
-      <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200"
-           <?php if ( $family->getThumbnailBytes() != FALSE ) { ?>
-           src="data:image/png;base64,<?= base64_encode($family->getThumbnailBytes()) ?>"
-           <?php } ?>>
+      <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200" src="data:image/png;base64,<?= base64_encode($family->getThumbnailBytes()) ?>" >
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
@@ -58,12 +55,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
           <div class="col-md-3 col-sm-4">
             <div class="box box-primary">
               <div class="box-body box-profile">
-                 <img class="profile-user-img img-responsive img-circle initials-image"
-                       <?php if ( $person->getThumbnailBytes() != FALSE)
-                        {?>
-                          src="data:image/png;base64,<?= base64_encode($person->getThumbnailBytes()) ?>">
-                        <?php } ?>
-
+                 <img class="profile-user-img img-responsive img-circle initials-image" src="data:image/png;base64,<?= base64_encode($person->getThumbnailBytes()) ?>">
 
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
 
