@@ -5,8 +5,6 @@ RewriteEngine On
 # absolute physical path to the directory that contains this htaccess file.
 #
 # RewriteBase /
-<IfModule mod_php5.c>
-    php_value always_populate_raw_post_data -1
-</IfModule>
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [QSA,L]
