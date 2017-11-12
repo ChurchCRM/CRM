@@ -45,6 +45,7 @@ require '../Include/Header.php';
             "tableTools": {
                 "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
             },
+            responsive: true,
             columns: [
                 {
                     title: i18next.t('Family Id'),
