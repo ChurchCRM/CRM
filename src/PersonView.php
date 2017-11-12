@@ -211,7 +211,7 @@ if ($per_ID == $iPersonID) {
                 <i class="fa fa-female"></i>
             <?php
     } ?>
-          <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
+          <?= $person->getFullName() ?></h3>
 
         <p class="text-muted text-center">
             <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?>
