@@ -34,14 +34,14 @@ $app->group('/persons', function () {
     });
 
     $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
-      $res=$this->cache->withExpires($response, time() + MiscUtils::getRandomCache(600,300));
+      $res=$this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
       $photo = new Photo("Person",$args['personId']);
       return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
       
     });
 
     $this->get('/{personId:[0-9]+}/thumbnail', function ($request, $response, $args) {
-      $res=$this->cache->withExpires($response, time() + MiscUtils::getRandomCache(600,300));
+      $res=$this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
       $photo = new Photo("Person",$args['personId']);
       return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
     });

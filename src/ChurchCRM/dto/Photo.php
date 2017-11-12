@@ -32,7 +32,7 @@ class Photo {
     if ($this->remotesEnabled) {
       // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
       $remotecachethreshold = date_create();
-      date_sub($remotecachethreshold,date_interval_create_from_date_string("5 seconds"));
+      date_sub($remotecachethreshold,date_interval_create_from_date_string(SystemConfig::getValue("iRemotePhotoCacheDuration")));
       if (strpos($photoFile,"remote") !== false || strpos($photoFile,"initials") !== false ) {
         return filemtime($photoFile) < date_timestamp_get($remotecachethreshold); 
       }
