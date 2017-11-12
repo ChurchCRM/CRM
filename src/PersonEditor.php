@@ -365,8 +365,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         //Execute the SQL
         RunQuery($sSQL);
-        $photo = new Photo("Person", $iPersonID);
-        $photo->refresh();
+       
 
         $note = new Note();
         $note->setEntered($_SESSION['iUserID']);
@@ -395,6 +394,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setType('edit');
         }
         $note->save();
+        
+        $photo = new Photo("Person", $iPersonID);
+        $photo->refresh();
 
         // Update the custom person fields.
         if ($numCustomFields > 0) {
