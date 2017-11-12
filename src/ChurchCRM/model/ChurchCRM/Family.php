@@ -232,7 +232,7 @@ class Family extends BaseFamily implements iPhoto
         return $this->getName() . ' Family';
     }
 
-    private function getPhoto()
+    public function getPhoto()
     {
       if (!$this->photo) 
       {
