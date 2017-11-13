@@ -169,6 +169,14 @@ function initDataTable() {
     "language": {
       "url": window.CRM.plugin.dataTable.language.url
     },
+      responsive: true,
+      "language": {
+          "url": window.CRM.plugin.dataTable.language.url
+      },
+      "dom": window.CRM.plugin.dataTable.dom,
+      "tableTools": {
+          "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
+      },
     columns: [
       {
         width: 'auto',
