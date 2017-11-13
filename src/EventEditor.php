@@ -30,19 +30,24 @@ $sPageTitle = gettext('Church Event Editor');
 $sAction = 'Create Event';
 require 'Include/Header.php';
 
-if (array_key_exists('Action', $_POST)) {
+if (isset($_GET['calendarAction'])) {
+		$sAction = 'Edit';
+		$sOpp = $_GET['calendarAction'];
+} else {
+	if (array_key_exists('Action', $_POST)) {
     $sAction = $_POST['Action'];
-}
+	} 
 
-if (array_key_exists('EID', $_POST)) {
+	if (array_key_exists('EID', $_POST)) {
     $sOpp = $_POST['EID'];
-} // from EDIT button on event listing
+	} // from EDIT button on event listing
 
-if (array_key_exists('EN_tyid', $_POST)) {
+	if (array_key_exists('EN_tyid', $_POST)) {
     $tyid = $_POST['EN_tyid'];
-} // from event type list page
-else {
+	} // from event type list page
+	else {
     $tyid = 0;
+	}
 }
 
 $iEventID = 0;
