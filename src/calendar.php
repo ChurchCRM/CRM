@@ -479,7 +479,10 @@ require 'Include/Header.php'; ?>
         
         if (event.hasOwnProperty('type')){
           if (event.type == 'event' && groupFilterID == 0){
-            return true;
+            if (EventTypeFilterID == 0 || (EventTypeFilterID >0 && event.eventID == EventTypeFilterID))
+              return true;
+            else
+              return false;
           } else if(event.type == 'event' && (groupFilterID>0 && groupFilterID != event.groupID)){
             return false;
           } else if ((event.allDay || event.type != 'event')){// we are in a allDay event          
