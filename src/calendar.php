@@ -69,8 +69,8 @@ require 'Include/Header.php'; ?>
   <div class="box-body">
       <form>
           <div class="col-sm-3"> <b><?= gettext("Event Type Filter") ?> : </b> 
-            <select type="text" id="EventTypeFilter" value="-1">
-              <option value='-1' ><?= gettext("None") ?></option>
+            <select type="text" id="EventTypeFilter" value="0">
+              <option value='0' ><?= gettext("None") ?></option>
             <?php
                   foreach ($eventTypes as $eventType)
                   {
@@ -80,8 +80,8 @@ require 'Include/Header.php'; ?>
             </select>
           </div>
           <div class="col-sm-6"> <b><?= gettext("Event Group Filter") ?>:</b> 
-            <select type="text" id="EventGroupFilter" value="-1">
-              <option value='-1' ><?= gettext("None") ?></option>
+            <select type="text" id="EventGroupFilter" value="0">
+              <option value='0' ><?= gettext("None") ?></option>
             <?php
                   foreach ($groups as $group)
                   {
@@ -183,8 +183,8 @@ require 'Include/Header.php'; ?>
      localStorage.setItem("withlimit",_val); 
   });
   
-  var groupFilterID     = -1;
-  var EventTypeFilterID = -1;
+  window.groupFilterID     = 0;
+  window.EventTypeFilterID = 0;
   
   localStorage.setItem("groupFilterID",groupFilterID);
   localStorage.setItem("EventTypeFilterID",EventTypeFilterID);  
@@ -201,20 +201,37 @@ require 'Include/Header.php'; ?>
   
   $("#EventGroupFilter").on('change',function () {
      var e = document.getElementById("EventGroupFilter");
-     var groupFilterID = e.options[e.selectedIndex].value;
+     window.groupFilterID = e.options[e.selectedIndex].value;
    
     $('#calendar').fullCalendar( 'refetchEvents' );
+    
+    if (window.groupFilterID == 0)
+      $("#ATTENDENCES").parents("tr").hide();
      
      localStorage.setItem("groupFilterID",groupFilterID); 
   });
   
+  
   $("#EventTypeFilter").on('change',function () {
      var e = document.getElementById("EventTypeFilter");
-     var EventTypeFilterID = e.options[e.selectedIndex].value;
+     window.EventTypeFilterID = e.options[e.selectedIndex].value;
       
      $('#calendar').fullCalendar( 'refetchEvents' );
      
      localStorage.setItem("EventTypeFilterID",EventTypeFilterID); 
+  });
+  
+  // I have to do this because EventGroup isn't yet present when you load the page the first time
+  $(document).on('change','#EventGroup',function () {
+     var e = document.getElementById("EventGroup");
+     var _val = e.options[e.selectedIndex].value;
+   
+    if (_val == 0)
+      $("#ATTENDENCES").parents("tr").hide();
+    else
+      $("#ATTENDENCES").parents("tr").show();
+     
+     localStorage.setItem("groupFilterID",groupFilterID); 
   });
   
   function BootboxContent(){    
@@ -224,7 +241,7 @@ require 'Include/Header.php'; ?>
               +"<td class='LabelColumn'><span style='color: red'>*</span><?= gettext('Select your event type'); ?></td>"
               +'<td colspan="3" class="TextColumn">'
               +'<select type="text" id="eventType" value="39">'
-                   //+"<option value='0' ><?= gettext("None") ?></option>"
+                   //+"<option value='0' ><?= gettext("Personal") ?></option>"
                    <?php
                       foreach ($eventTypes as $eventType)
                       {
@@ -250,7 +267,7 @@ require 'Include/Header.php'; ?>
               +"<td class='LabelColumn'><span style='color: red'>*</span><?= gettext('Event Group') ?>:</td>"
               +'<td class="TextColumn">'
                 +'<select type="text" id="EventGroup" value="39">'
-                   //+"<option value='0' Selected><?= gettext("None") ?></option>"
+                   +"<option value='0' Selected><?= gettext("None") ?></option>"
                 <?php
                   foreach ($groups as $group)
                   {
@@ -261,7 +278,7 @@ require 'Include/Header.php'; ?>
               +'</td>'
             +'</tr>'
             +'<tr>'
-              +"<td class='LabelColumn'><?= gettext('Attendance Counts') ?></td>"
+              +"<td class='LabelColumn' id='ATTENDENCES'><?= gettext('Attendance Counts') ?></td>"
               +'<td class="TextColumn" colspan="3">'
                 +'<table>'
                 +'<tr>'
@@ -402,38 +419,38 @@ require 'Include/Header.php'; ?>
            label: "<?= gettext("Save") ?>",
            className: "btn btn-primary pull-left",
            callback: function() {
-            var e = document.getElementById("eventType");
-            var eventTypeID = e.options[e.selectedIndex].value;
+              var e = document.getElementById("eventType");
+              var eventTypeID = e.options[e.selectedIndex].value;
                                          
-            var EventTitle =  $('form #EventTitle').val();
-            var EventDesc =  $('form #EventDesc').val();
+              var EventTitle =  $('form #EventTitle').val();
+              var EventDesc =  $('form #EventDesc').val();
                              
-            var e = document.getElementById("EventGroup");
-            var EventGroupID = e.options[e.selectedIndex].value;
+              var e = document.getElementById("EventGroup");
+              var EventGroupID = e.options[e.selectedIndex].value;
                              
-            var Total =  $('form #Total').val();
-            var Members = $('form #Members').val();
-            var Visitors = $('form #Visitors').val();
-            var EventCountNotes = $('form #EventCountNotes').val();
+              var Total =  $('form #Total').val();
+              var Members = $('form #Members').val();
+              var Visitors = $('form #Visitors').val();
+              var EventCountNotes = $('form #EventCountNotes').val();
                              
-            var eventPredication = $('form #eventPredication').val();
+              var eventPredication = $('form #eventPredication').val();
             
-            var add = false;
+              var add = false;
                                                             
-            window.CRM.APIRequest({
-                  method: 'POST',
-                  path: 'events/',
-                  data: JSON.stringify({"evntAction":'createEvent',"eventTypeID":eventTypeID,"EventTitle":EventTitle,"EventDesc":EventDesc,"EventGroupID":EventGroupID,"Total":Total,"Members":Members,"Visitors":Visitors,"EventCountNotes":EventCountNotes,"eventPredication":eventPredication,"start":moment(start).format(),"end":moment(end).format()})
-            }).done(function(data) {                   
-              $('#calendar').fullCalendar('renderEvent', data, true); // stick? = true             
-              $('#calendar').fullCalendar('unselect');              
-              add = true;              
-              modal.modal("hide");   
-              return true;
-            });
+              window.CRM.APIRequest({
+                    method: 'POST',
+                    path: 'events/',
+                    data: JSON.stringify({"evntAction":'createEvent',"eventTypeID":eventTypeID,"EventTitle":EventTitle,"EventDesc":EventDesc,"EventGroupID":EventGroupID,"Total":Total,"Members":Members,"Visitors":Visitors,"EventCountNotes":EventCountNotes,"eventPredication":eventPredication,"start":moment(start).format(),"end":moment(end).format()})
+              }).done(function(data) {                   
+                $('#calendar').fullCalendar('renderEvent', data, true); // stick? = true             
+                $('#calendar').fullCalendar('unselect');              
+                add = true;              
+                modal.modal("hide");   
+                return true;
+              });
 
-            return add;      
-           }
+              return add;      
+            }
           },
           {
            label: "<?= gettext("Close") ?>",
@@ -450,25 +467,18 @@ require 'Include/Header.php'; ?>
        });
   
        modal.modal("show");
-    
+       $("#ATTENDENCES").parents("tr").hide();
       },
       editable: true,
       eventLimit: withlimit, // allow "more" link when too many events
       locale: window.CRM.lang,
       events: window.CRM.root + '/api/calendar/events',
       eventRender: function (event, element, view) {
-        groupFilterID = -1;
-        var groupFID = localStorage.getItem("groupFilterID");
-        if (groupFID != null)
-          groupFilterID = groupFID;
-        
-        EventTypeFilterID = -1; 
-        var eventTFID = localStorage.getItem("EventTypeFilterID");
-        if (eventTFID != null)
-          EventTypeFilterID = groupFID;
+        groupFilterID = window.groupFilterID;
+        EventTypeFilterID = window.EventTypeFilterID;
         
         if (event.hasOwnProperty('type')){
-          if (event.type == 'event' && groupFilterID == -1){
+          if (event.type == 'event' && groupFilterID == 0){
             return true;
           } else if(event.type == 'event' && (groupFilterID>0 && groupFilterID != event.groupID)){
             return false;
