@@ -478,12 +478,13 @@ require 'Include/Header.php'; ?>
         EventTypeFilterID = window.EventTypeFilterID;
         
         if (event.hasOwnProperty('type')){
-          if (event.type == 'event' && groupFilterID == 0){
-            if (EventTypeFilterID == 0 || (EventTypeFilterID >0 && event.eventID == EventTypeFilterID))
-              return true;
-            else
-              return false;
-          } else if(event.type == 'event' && (groupFilterID>0 && groupFilterID != event.groupID)){
+          if (event.type == 'event' 
+            && (groupFilterID == 0 || (groupFilterID>0 && groupFilterID == event.groupID)) 
+            && (EventTypeFilterID == 0 || (EventTypeFilterID>0 && EventTypeFilterID == event.eventID))){
+            return true;
+          } else if(event.type == 'event' 
+            && ((groupFilterID>0 && groupFilterID != event.groupID)
+                || (EventTypeFilterID>0 && EventTypeFilterID != event.eventID))){
             return false;
           } else if ((event.allDay || event.type != 'event')){// we are in a allDay event          
            if (event.type == 'anniversary' && anniversary == true || event.type == 'birthday' && birthday == true){
