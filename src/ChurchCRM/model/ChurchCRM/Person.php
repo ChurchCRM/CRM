@@ -449,6 +449,11 @@ class Person extends BasePerson implements iPhoto
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
     
+    public function postSave(ConnectionInterface $con = null) {
+      $this->getPhoto()->refresh();
+      return parent::postSave($con);
+    }
+    
     public function getAge()
     {
        $birthD = $this->getBirthDate();
