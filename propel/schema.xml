@@ -540,7 +540,7 @@
         <foreign-key foreignTable="group_grp">
             <reference local="event_grpid" foreign="grp_ID"/>
         </foreign-key>
-        <column name="event_persid" phpName="personID" type="INTEGER" required="false" defaultValue="0"/>
+        <column name="event_persid" phpName="personID" type="INTEGER" required="false" defaultValue="0" description="The personID an event could be personal to a user now."/>
         <foreign-key foreignTable="person_per">
             <reference local="event_persid" foreign="per_ID"/>
         </foreign-key>
