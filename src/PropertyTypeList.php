@@ -12,12 +12,19 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\PropertyQuery;
+use ChurchCRM\PropertyTypeQuery;
+
 // Set the page title
 $sPageTitle = gettext('Property Type List');
 
-// Get the properties types
-$sSQL = 'SELECT prt_ID, prt_Class, prt_Name, COUNT(pro_ID) AS Properties FROM propertytype_prt LEFT JOIN property_pro ON pro_prt_ID = prt_ID GROUP BY prt_ID, prt_Class, prt_Name';
-$rsPropertyTypes = RunQuery($sSQL);
+$ormPropertyTypes = PropertyTypeQuery::Create()
+	->leftJoinProperty()
+	->groupByPrtId()
+	->groupByPrtClass()
+	->groupByPrtName()
+	->find();
+
 
 require 'Include/Header.php';
 ?>
@@ -44,22 +51,32 @@ echo '</tr>';
 $sRowClass = 'RowColorA';
 
 //Loop through the records
-while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
-    extract($aRow);
+foreach ($ormPropertyTypes as $ormPropertyType)
+{
+    //extract($aRow);
 
     $sRowClass = AlternateRowStyle($sRowClass);
 
     echo '<tr class="'.$sRowClass.'">';
-    echo '<td>'.$prt_Name.'</td>';
+    echo '<td>'.$ormPropertyType->getPrtName().'</td>';
     echo '<td>';
-    switch ($prt_Class) { case 'p': echo gettext('Person'); break; case 'f': echo gettext('Family'); break; case 'g': echo gettext('Group'); break; }
+    if ($ormPropertyType->getPrtName() == 'Menu')
+	    echo gettext('Sunday School Sub Menu');
+	else
+	    switch ($ormPropertyType->getPrtClass()) { case 'p': echo gettext('Person'); break; case 'f': echo gettext('Family'); break; case 'g': echo gettext('Group'); break;}
+	    
     echo '<td align="center">'.$Properties.'</td>';
+    
+    $activLink = "";
+    if ($ormPropertyType->getPrtName() == 'Menu')
+	    $activLink = " disabled";		    
+    
     if ($_SESSION['bMenuOptions']) {
-        echo "<td><a class='btn btn-info' href=\"PropertyTypeEditor.php?PropertyTypeID=".$prt_ID.'">'.gettext('Edit').'</a></td>';
+        echo "<td><a class='btn btn-info".$activLink."' href=\"PropertyTypeEditor.php?PropertyTypeID=".$ormPropertyType->getPrtId().'">'.gettext('Edit').'</a></td>';
         if ($Properties == 0) {
-            echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=".$prt_ID.'">'.gettext('Delete').'</a></td>';
+            echo "<td><a class='btn btn-danger".$activLink."' href=\"PropertyTypeDelete.php?PropertyTypeID=".$ormPropertyType->getPrtId().'">'.gettext('Delete').'</a></td>';
         } else {
-            echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=".$prt_ID.'&Warn">'.gettext('Delete').'</a></td>';
+            echo "<td><a class='btn btn-danger".$activLink."' href=\"PropertyTypeDelete.php?PropertyTypeID=".$ormPropertyType->getPrtId().'&Warn">'.gettext('Delete').'</a></td>';
         }
     }
     echo '</tr>';
