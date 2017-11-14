@@ -95,7 +95,7 @@ class CalendarService
           ->find();
         foreach ($activeEvents as $evnt) {
           $event = $this->createCalendarItem('event',
-          $evnt->getTitle(), $evnt->getStart('Y-m-d H:i:s'), $evnt->getEnd('Y-m-d H:i:s'), $evnt->getEventURI(),$evnt->getId(),$evnt->getGroupId());// only the event id sould be edited and moved and have custom color
+          $evnt->getTitle(), $evnt->getStart('Y-m-d H:i:s'), $evnt->getEnd('Y-m-d H:i:s'), $evnt->getEventURI(),$evnt->getType(),$evnt->getGroupId());// only the event id sould be edited and moved and have custom color
           array_push($events, $event);
         }
 
