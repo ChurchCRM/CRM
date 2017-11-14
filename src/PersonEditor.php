@@ -17,6 +17,7 @@ use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\dto\Photo;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -364,6 +365,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         //Execute the SQL
         RunQuery($sSQL);
+       
 
         $note = new Note();
         $note->setEntered($_SESSION['iUserID']);
@@ -392,6 +394,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setType('edit');
         }
         $note->save();
+        
+        $photo = new Photo("Person", $iPersonID);
+        $photo->refresh();
 
         // Update the custom person fields.
         if ($numCustomFields > 0) {

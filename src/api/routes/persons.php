@@ -3,6 +3,8 @@
 // Person APIs
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\Photo;
+use ChurchCRM\Utils\MiscUtils;
 
 $app->group('/persons', function () {
     // search person by Name
@@ -32,25 +34,16 @@ $app->group('/persons', function () {
     });
 
     $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
-        $person = PersonQuery::create()->findPk($args['personId']);
-        if ($person->isPhotoLocal()) {
-            return $response->write($person->getPhotoBytes())->withHeader('Content-type', $person->getPhotoContentType());
-        } else if ($person->isPhotoRemote()) {
-            return $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType());
-        } else {
-            return $response->withStatus(404);
-        }
+      $res=$this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
+      $photo = new Photo("Person",$args['personId']);
+      return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
+      
     });
 
     $this->get('/{personId:[0-9]+}/thumbnail', function ($request, $response, $args) {
-        $person = PersonQuery::create()->findPk($args['personId']);
-        if ($person->isPhotoLocal()) {
-            return $response->write($person->getThumbnailBytes())->withHeader('Content-type', $person->getPhotoContentType());
-        } else if ($person->isPhotoRemote()) {
-            return $response->write(file_get_contents($person->getPhotoURI()))->withHeader('Content-type', $person->getPhotoContentType()); 
-        } else {
-            return $response->withStatus(404);
-        }
+      $res=$this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
+      $photo = new Photo("Person",$args['personId']);
+      return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
     });
 
     $this->post('/{personId:[0-9]+}/photo', function ($request, $response, $args) {

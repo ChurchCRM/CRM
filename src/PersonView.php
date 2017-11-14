@@ -181,7 +181,7 @@ if ($per_ID == $iPersonID) {
     <div class="box box-primary">
       <div class="box-body box-profile">
         <div class="image-container">
-            <img  data-name="<?= $person->getFullName()?>" data-src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>"
+            <img src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>"
             class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
             <?php if ($bOkToEdit): ?>
                 <div class="after">
@@ -192,11 +192,9 @@ if ($per_ID == $iPersonID) {
                     <a  class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
                         <i class="fa fa-camera"></i>
                     </a>&nbsp;
-                    <?php if ($person->isPhotoLocal()): ?>
-                        <a  data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                            <i class="fa fa-trash-o"></i>
-                        </a>
-                    <?php endif; ?>
+                    <a  data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
                 </div>
                 </div>
             <?php endif; ?>
@@ -474,7 +472,7 @@ if ($per_ID == $iPersonID) {
               <tr>
                 <td>
 
-                 <img style="width:40px; height:40px;display:inline-block" data-name="<?= $familyMember->getFullName()?>" data-src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
+                 <img style="width:40px; height:40px;display:inline-block" src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
                   <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
 
@@ -922,8 +920,8 @@ if ($per_ID == $iPersonID) {
   window.CRM.photoUploader =  $("#photoUploader").PhotoUploader({
     url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
     maxPhotoSize: window.CRM.maxUploadSize,
-    photoHeight: 400,
-    photoWidth: 400,
+    photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+    photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
     done: function(e) {
       window.location.reload();
     }
