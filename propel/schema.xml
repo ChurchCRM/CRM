@@ -57,6 +57,7 @@
                 defaultValue="0"/>
         <column name="per_FriendDate" phpName="FriendDate" type="DATE"/>
         <column name="per_Flags" phpName="Flags" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="per_event_color" phpName="Color" type="VARCHAR" size="7" description="If an event belongs to a person the person should have a color."/>
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>
@@ -242,6 +243,7 @@
         <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="BOOLEAN" defaultValue="0"/>
         <column name="grp_active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
         <column name="grp_include_email_export" phpName="IncludeInEmailExport" type="BOOLEAN" size="1" required="true" description="Should members of this group be included in MailChimp Export"/>
+        <column name="grp_event_color" phpName="Color" type="VARCHAR" size="7" description="If an event belongs to a group the group should have a color."/>
         <foreign-key foreignTable="list_lst">
             <reference local="grp_RoleListID" foreign="lst_ID"/>
             <reference local="grp_Type" foreign="lst_OptionID"/>
@@ -540,7 +542,9 @@
         <foreign-key foreignTable="group_grp">
             <reference local="event_grpid" foreign="grp_ID"/>
         </foreign-key>
-        <column name="event_persid" phpName="personID" type="INTEGER" required="false" defaultValue="0" description="The personID an event could be personal to a user now."/>
+        <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
+        <column name="event_persid" phpName="PersonID" type="INTEGER" required="false" defaultValue="0" description="The personID an event could be personal to a user now."/>
+        <column name="event_parentid" phpName="ParentID" type="INTEGER" required="false" defaultValue="0" description="A recurrent event should have a parent."/>
         <foreign-key foreignTable="person_per">
             <reference local="event_persid" foreign="per_ID"/>
         </foreign-key>
