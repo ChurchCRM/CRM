@@ -19,11 +19,11 @@ use ChurchCRM\PropertyTypeQuery;
 $sPageTitle = gettext('Property Type List');
 
 $ormPropertyTypes = PropertyTypeQuery::Create()
-	->leftJoinProperty()
-	->groupByPrtId()
-	->groupByPrtClass()
-	->groupByPrtName()
-	->find();
+    ->leftJoinProperty()
+    ->groupByPrtId()
+    ->groupByPrtClass()
+    ->groupByPrtName()
+    ->find();
 
 
 require 'Include/Header.php';
@@ -51,8 +51,7 @@ echo '</tr>';
 $sRowClass = 'RowColorA';
 
 //Loop through the records
-foreach ($ormPropertyTypes as $ormPropertyType)
-{
+foreach ($ormPropertyTypes as $ormPropertyType) {
     //extract($aRow);
 
     $sRowClass = AlternateRowStyle($sRowClass);
@@ -60,16 +59,18 @@ foreach ($ormPropertyTypes as $ormPropertyType)
     echo '<tr class="'.$sRowClass.'">';
     echo '<td>'.$ormPropertyType->getPrtName().'</td>';
     echo '<td>';
-    if ($ormPropertyType->getPrtName() == 'Menu')
-	    echo gettext('Sunday School Sub Menu');
-	else
-	    switch ($ormPropertyType->getPrtClass()) { case 'p': echo gettext('Person'); break; case 'f': echo gettext('Family'); break; case 'g': echo gettext('Group'); break;}
-	    
+    if ($ormPropertyType->getPrtName() == 'Menu') {
+        echo gettext('Sunday School Sub Menu');
+    } else {
+        switch ($ormPropertyType->getPrtClass()) { case 'p': echo gettext('Person'); break; case 'f': echo gettext('Family'); break; case 'g': echo gettext('Group'); break;}
+    }
+        
     echo '<td align="center">'.$Properties.'</td>';
     
     $activLink = "";
-    if ($ormPropertyType->getPrtName() == 'Menu')
-	    $activLink = " disabled";		    
+    if ($ormPropertyType->getPrtName() == 'Menu') {
+        $activLink = " disabled";
+    }
     
     if ($_SESSION['bMenuOptions']) {
         echo "<td><a class='btn btn-info".$activLink."' href=\"PropertyTypeEditor.php?PropertyTypeID=".$ormPropertyType->getPrtId().'">'.gettext('Edit').'</a></td>';
