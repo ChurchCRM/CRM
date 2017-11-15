@@ -166,4 +166,5 @@ class Cart
     
     $_SESSION['aPeopleCart'] = [];
   }
+  
 }
