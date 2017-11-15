@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\EventQuery;
+use ChurchCRM\EventTypesQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Person;
@@ -95,7 +96,7 @@ class CalendarService
           ->find();
         foreach ($activeEvents as $evnt) {
           $event = $this->createCalendarItem('event',
-          $evnt->getTitle(), $evnt->getStart('Y-m-d H:i:s'), $evnt->getEnd('Y-m-d H:i:s'), $evnt->getEventURI(),$evnt->getType(),$evnt->getGroupId());// only the event id sould be edited and moved and have custom color
+          $evnt->getTitle(), $evnt->getStart('Y-m-d H:i:s'), $evnt->getEnd('Y-m-d H:i:s'), $evnt->getEventURI(),$evnt->getID(),$evnt->getType(),$evnt->getGroupId());// only the event id sould be edited and moved and have custom color
           array_push($events, $event);
         }
 
@@ -103,12 +104,12 @@ class CalendarService
     }
     
     private function toColor($n) {// so the color is now in function of the group
-     $n = crc32($n);
-     $n &= 0xffffffff;
-     return ("#".substr("000000".dechex($n),-6));
-  }
+      $n = crc32($n);
+      $n &= 0xffffffff;
+      return ("#".substr("000000".dechex($n),-6));
+    }
 
-    public function createCalendarItem($type, $title, $start, $end, $uri,$eventID=0,$groupID=0)
+    public function createCalendarItem($type, $title, $start, $end, $uri,$eventID=0,$eventTypeID=0,$groupID=0)
     {
         $event = [];
         switch ($type) {
@@ -141,6 +142,7 @@ class CalendarService
         
         $event['type'] = $type;
         $event['eventID'] = $eventID;
+        $event['eventTypeID'] = $eventTypeID;
         $event['groupID'] = $groupID;
         
         
