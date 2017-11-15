@@ -545,6 +545,9 @@
         <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
         <column name="event_persid" phpName="PersonID" type="INTEGER" required="false" defaultValue="0" description="The personID an event could be personal to a user now."/>
         <column name="event_parentid" phpName="ParentID" type="INTEGER" required="false" defaultValue="0" description="A recurrent event should have a parent."/>
+	<foreign-key foreignTable="events_event">
+            <reference local="event_parentid" foreign="event_id"/>
+        </foreign-key>
         <foreign-key foreignTable="person_per">
             <reference local="event_persid" foreign="per_ID"/>
         </foreign-key>
