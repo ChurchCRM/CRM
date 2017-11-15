@@ -9,8 +9,16 @@ function UpdateRoles()
     var html = "";
     $.each(data.ListOptions, function (index, value) {
       html += "<option value=\"" + value.OptionId + "\"";
-      html += ">" + value.OptionName + "</option>";
+      html += ">" + i18next.t(value.OptionName) + "</option>";
     });
     $("#GroupRole").html(html);
   });
 }
+
+$(document).ready(function (e, confirmed) {
+  $("#addToGroup").click(function () {
+		window.CRM.groups.addGroup(function(data){   	
+			location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
+	  });
+  });
+});
