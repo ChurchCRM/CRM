@@ -133,6 +133,7 @@ class Cart
     $iCount = 0;
 
     $group = GroupQuery::create()->findOneById($GroupID);
+    
     if($RoleID == 0)
     {
       $RoleID = $group->getDefaultRole();
