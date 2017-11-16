@@ -7,8 +7,8 @@
  *  description : manage the full calendar with events
  *
  *  http://www.churchcrm.io/
- *  Copyright 2017 Logel Philippe
-  *
+ *  Copyright 2017 Logel Philippe & Charles
+ *
  ******************************************************************************/
 
 use ChurchCRM\dto\SystemConfig;
