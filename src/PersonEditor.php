@@ -1112,9 +1112,9 @@ require 'Include/Header.php';
                                  value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                  maxlength="100" class="form-control">
                           <?php if ($sLinkedInError) {
-                              ?><font
+                            ?><font
                               color="red"><?php echo $sLinkedInError ?></font></td><?php
-                          } ?>
+                        } ?>
                       </div>
                   </div>
             </div>
