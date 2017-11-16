@@ -4306,6 +4306,14 @@ msgstr "Zugesagt"
 msgid "M/F"
 msgstr "M/F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Lehrer"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Student"
+
 #: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
 #: Reports/ClassList.php:134 Reports/ClassList.php:135
 msgid "Liaison"

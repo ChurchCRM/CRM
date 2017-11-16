@@ -4692,6 +4692,14 @@ msgstr "Vinculados"
 msgid "M/F"
 msgstr "M / F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Professor"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Estudante"
+
 #: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
 #: Reports/ClassList.php:134 Reports/ClassList.php:135
 msgid "Liaison"
@@ -9298,4 +9306,68 @@ msgstr "Criar Fotolivro"
 #: ChurchCRM/utils/GeoUtils.php:168
 msgid "SSE"
 msgstr "SSE"
+
+#: ChurchCRM/dto/SystemConfig.php:212
+msgid "Height to use for images"
+msgstr "Altura para usar para imagens"
+
+#: ChurchCRM/dto/SystemConfig.php:213
+msgid "Width to use for images"
+msgstr "Largura para usar para imagens"
+
+#: ChurchCRM/dto/SystemConfig.php:214
+msgid "Width to use for thumbnails"
+msgstr "Largura para usar para miniaturas"
+
+#: ChurchCRM/dto/SystemConfig.php:215
+msgid "Point size to use for initials thumbnails"
+msgstr "Tamanho do ponto a ser usado para miniaturas iniciais"
+
+#: ChurchCRM/dto/SystemConfig.php:216
+msgid "Client cache seconds for images"
+msgstr "Segundos de cache do cliente para imagens"
+
+#: ChurchCRM/dto/SystemConfig.php:217
+msgid "Server cache time for remote images"
+msgstr "Tempo de cache do servidor para imagens remotas"
+
+#: LettersAndLabels.php:66
+msgid "Recipient Naming Method"
+msgstr "Método de nomeação do destinatário"
+
+#: LettersAndLabels.php:69
+msgid "Salutation Utility"
+msgstr "Utilitário de Saudação"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Adicionar um nome de grupo"
+
+#: 
+msgid "Default Name Group"
+msgstr "Nome padrão do grupo"
+
+#: 
+msgid "Group Role"
+msgstr "Papel no grupo"
+
+#: 
+msgid "ZIP"
+msgstr "CEP"
+
+#: 
+msgid "E-mail"
+msgstr "E-mail"
+
+#: 
+msgid "Members from group"
+msgstr "membros do grupo"
+
+#: 
+msgid "Members to another group"
+msgstr "Membros para outro grupo"
+
+#: 
+msgid "Members to cart"
+msgstr "Membros para o carrinho"
 

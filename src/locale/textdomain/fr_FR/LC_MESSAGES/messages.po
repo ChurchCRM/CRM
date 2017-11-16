@@ -4533,6 +4533,14 @@ msgstr "Contribué"
 msgid "M/F"
 msgstr "H / F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Moniteur"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Étudiant"
+
 #: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
 #: Reports/ClassList.php:134 Reports/ClassList.php:135
 msgid "Liaison"
@@ -9086,4 +9094,68 @@ msgstr "Créer un trombinoscope"
 #: ChurchCRM/utils/GeoUtils.php:168
 msgid "SSE"
 msgstr "SSE"
+
+#: ChurchCRM/dto/SystemConfig.php:212
+msgid "Height to use for images"
+msgstr "La hauteur à utilisé pour les images"
+
+#: ChurchCRM/dto/SystemConfig.php:213
+msgid "Width to use for images"
+msgstr "La largeur à utilisé pour les images"
+
+#: ChurchCRM/dto/SystemConfig.php:214
+msgid "Width to use for thumbnails"
+msgstr "La largeur à utilisé pour les miniatures"
+
+#: ChurchCRM/dto/SystemConfig.php:215
+msgid "Point size to use for initials thumbnails"
+msgstr "La taille en points à utilisé pour les miniatures des initiales"
+
+#: ChurchCRM/dto/SystemConfig.php:216
+msgid "Client cache seconds for images"
+msgstr "Nombre de seconds de cache client pour les images"
+
+#: ChurchCRM/dto/SystemConfig.php:217
+msgid "Server cache time for remote images"
+msgstr "Temps de cache serveur pour les images à distance"
+
+#: LettersAndLabels.php:66
+msgid "Recipient Naming Method"
+msgstr "Méthode pour les noms des déstinateurs"
+
+#: LettersAndLabels.php:69
+msgid "Salutation Utility"
+msgstr "Utilitaire de salutation"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Rajouter un nom de groupe"
+
+#: 
+msgid "Default Name Group"
+msgstr "Groupe de nom par défaut "
+
+#: 
+msgid "Group Role"
+msgstr "Rôle du groupe"
+
+#: 
+msgid "ZIP"
+msgstr "Code Postale"
+
+#: 
+msgid "E-mail"
+msgstr "Adresse mail"
+
+#: 
+msgid "Members from group"
+msgstr "Les membres d'un groupe"
+
+#: 
+msgid "Members to another group"
+msgstr "Les membres vers un autre groupe"
+
+#: 
+msgid "Members to cart"
+msgstr "Les membres vers le chariot"
 

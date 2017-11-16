@@ -577,6 +577,10 @@ msgstr "Gunakan jika initial import kurang memuaskan. Semua data anggota akan di
 msgid "Data import successful."
 msgstr "Impor data berhasil"
 
+#: CSVImport.php:870
+msgid "persons were imported"
+msgstr "Data telah diimpor"
+
 #: CanvassAutomation.php:45 CanvassAutomation.php:52 CanvassAutomation.php:59
 #: CanvassAutomation.php:67 CanvassAutomation.php:75
 msgid "Not confirmed."
@@ -585,6 +589,32 @@ msgstr "Belum terkonfirmasi"
 #: CanvassAutomation.php:128
 msgid "Set default fiscal year"
 msgstr "Atur tahun fiskal"
+
+#: CanvassAutomation.php:132 CanvassAutomation.php:143
+#: CanvassAutomation.php:154 CanvassAutomation.php:165
+#: CanvassAutomation.php:176 CanvassAutomation.php:187
+msgid "Check to confirm"
+msgstr "Tandai sebagai konfirmasi"
+
+#: Reports/CanvassReports.php:169 UserEditor.php:438
+msgid "Canvasser"
+msgstr "Peminta dukungan"
+
+#: CanvassEditor.php:199 Reports/CanvassReports.php:346
+msgid "Positive"
+msgstr "Positif"
+
+#: CanvassEditor.php:204 Reports/CanvassReports.php:346
+msgid "Critical"
+msgstr "Kritis"
+
+#: CanvassEditor.php:209 Reports/CanvassReports.php:346
+msgid "Insightful"
+msgstr "Berwawasan"
+
+#: CanvassEditor.php:214 Reports/CanvassReports.php:346
+msgid "Financial"
+msgstr "Finansial"
 
 #: CanvassEditor.php:219
 msgid "Suggestions"
@@ -598,13 +628,33 @@ msgstr "Tidak berminat"
 msgid "Why Not Interested?"
 msgstr "Mengapa tidak berminat ?"
 
+#: CartToEvent.php:49 CartToEvent.php:82
+msgid "Add Cart to Event"
+msgstr "Tambahkan cart di Acara"
+
+#: CartToEvent.php:56
+msgid "Select the event to which you would like to add your cart"
+msgstr "Pilih acara yang ingin ditambahkan cart"
+
+#: CartToEvent.php:83 CartToGroup.php:95
+msgid "OR"
+msgstr "Atau"
+
 #: CartToEvent.php:84 Checkin.php:105 ListEvents.php:349
 msgid "Add New Event"
 msgstr "Tambah Event Baru"
 
+#: CartToEvent.php:91 CartToFamily.php:324 CartToGroup.php:103
+msgid "Your cart is empty!"
+msgstr "Cart kosong !"
+
 #: CartToFamily.php:83
 msgid "No family name entered!"
 msgstr "Nama keluarga masih kosong"
+
+#: CartToFamily.php:122
+msgid "Add Cart to Family"
+msgstr "Tambahkan Cart di Keluarga"
 
 #: CartToFamily.php:154 CartView.php:277 Checkin.php:313
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
@@ -645,6 +695,10 @@ msgstr "Jika menambah keluarga baru, masukkan data di bawah ini"
 msgid "Use address/contact data from"
 msgstr "Gunakan alamat/data kontak dari"
 
+#: CartToFamily.php:219
+msgid "Only the new data below"
+msgstr "Hanya data baru di bawah ini"
+
 #: CartToFamily.php:256
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Gunakan textbox untuk negara selain US dan Canada"
@@ -659,6 +713,14 @@ msgstr "Jangan lakukan auto-format"
 #: CartToFamily.php:184 CartToFamily.php:318
 msgid "Add to Family"
 msgstr "Tambahkan ke Keluarga"
+
+#: CartToGroup.php:56
+msgid "Add Cart to Group"
+msgstr "Tambahkan Cart di Group"
+
+#: CartToGroup.php:67
+msgid "Select the group to which you would like to add your cart"
+msgstr "Pilih group yang akan ditambahkan cart"
 
 #: CartToGroup.php:71 GroupReports.php:43 PersonToGroup.php:61
 #: sundayschool/SundaySchoolReports.php:185
@@ -697,6 +759,47 @@ msgstr "Menuju ke labels"
 msgid "Empty Cart"
 msgstr "Kosongkan Cart"
 
+#: CartView.php:97 Include/Header.php:114
+msgid "Empty Cart to Group"
+msgstr "Kosongkan Cart di Group"
+
+#: CartView.php:103 Include/Header.php:119
+msgid "Empty Cart to Family"
+msgstr "Kosongkan Cart di Keluarga"
+
+#: CartView.php:107 Include/Header.php:124
+msgid "Empty Cart to Event"
+msgstr "Kosongkan Cart di Acara"
+
+#: CartView.php:116 Include/Header.php:129
+msgid "Map Cart"
+msgstr "Peta-kan Cart"
+
+#: CartView.php:118
+msgid "Name Tags"
+msgstr "Tag Nama"
+
+#: CartView.php:152
+msgid "Email Cart"
+msgstr "Cart Email"
+
+#: CartView.php:153 GroupView.php:151
+#: sundayschool/SundaySchoolClassView.php:100
+msgid "Email (BCC)"
+msgstr "Email (BCC)"
+
+#: CartView.php:183
+msgid "Create Directory From Cart"
+msgstr "Buat Direktori dari Cart"
+
+#: CartView.php:207 CartView.php:249
+msgid "Generate Labels"
+msgstr "Buat label"
+
+#: CartView.php:270
+msgid "persons from"
+msgstr "orang dari"
+
 #: CartView.php:280 CartView.php:338 EditEventTypes.php:166 FamilyView.php:542
 #: FamilyView.php:584 GroupView.php:305 GroupView.php:346 PersonView.php:642
 #: PersonView.php:660 PersonView.php:744 PersonView.php:762
@@ -726,6 +829,263 @@ msgstr "Oops ! Ada sesuatu yang salah"
 #: CheckVersion.php:56
 msgid "There is an incompatibility between database schema and installed software. You are seeing this message because there is a software bug or an incomplete upgrade."
 msgstr "Ada ketidak-cocokan  antara skema database dan software yang diinstall. Pesan ini muncul karena bug pada software atau upgrade yang tidak sempurna"
+
+#: CheckVersion.php:87
+msgid "Software Version"
+msgstr "Versi Software"
+
+#: Checkin.php:15
+msgid "Event Checkin"
+msgstr "Kehadiran di Acara"
+
+#: Checkin.php:75
+msgid "Select the event to which you would like to check people in for"
+msgstr "Pilih Acara yang akan diisi daftar kehadirannya"
+
+#: CartToEvent.php:67 Checkin.php:84
+msgid "Select Event"
+msgstr "Pilih Acara"
+
+#: external/templates/verify/verify-family-info.php:154
+msgid "Verify"
+msgstr "Periksa"
+
+#: Checkin.php:172
+msgid "Add Visitor"
+msgstr "Tambahkan pengunjung"
+
+#: Checkin.php:165
+msgid "CheckIn"
+msgstr "Hadir"
+
+#: Checkin.php:275 Checkin.php:368
+msgid "CheckOut"
+msgstr "Pulang"
+
+#: Checkin.php:314
+msgid "Checked In Time"
+msgstr "Jam Hadir"
+
+#: Checkin.php:315
+msgid "Checked In By"
+msgstr "Diisi oleh "
+
+#: Checkin.php:316
+msgid "Checked Out Time"
+msgstr "Jam Pulang "
+
+#: Checkin.php:317
+msgid "Checked Out By"
+msgstr "Diisi oleh "
+
+#: Checkin.php:318 EditEventAttendees.php:44 EventNames.php:265
+#: ListEvents.php:210 PersonView.php:587
+msgid "Action"
+msgstr "Aksi"
+
+#: EditEventAttendees.php:84
+msgid "No Attendees Assigned to Event"
+msgstr "Tidak ada yang hadir pada acara"
+
+#: Checkin.php:465 Include/Functions.php:1676 Reports/CanvassReports.php:240
+#: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
+msgid "Member"
+msgstr "Anggota"
+
+#: Checkin.php:467 ChurchCRM/Service/PersonService.php:39
+msgid " of the"
+msgstr "dari"
+
+#: Checkin.php:469 ChurchCRM/Service/PersonService.php:41 PersonView.php:260
+msgid "(No assigned family)"
+msgstr "Belum ada data keluarga"
+
+#: ConvertIndividualToFamily.php:37
+msgid "Convert Individuals to Families"
+msgstr "Konversi beberapa individu menjadi Keluarga"
+
+#: ConvertIndividualToFamily.php:135
+msgid "Convert Next"
+msgstr "Konversi Berikutnya"
+
+#: ConvertIndividualToFamily.php:136
+msgid "Convert All"
+msgstr "Konversi semuanya"
+
+#: DepositSlipEditor.php:49
+msgid "Deposit Slip Number: "
+msgstr "Nomor Slip Setoran"
+
+#: DepositSlipEditor.php:71
+msgid "Deposit Details: "
+msgstr "Rincian Setoran"
+
+#: DepositSlipEditor.php:88
+msgid "Close deposit slip (remember to press Save)"
+msgstr "Tutup slip setoran (jangan lupa klik \"Save\")"
+
+#: DepositSlipEditor.php:96
+msgid "Deposit Slip Report"
+msgstr "Laporan Slip Setoran"
+
+#: DepositSlipEditor.php:101
+msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+msgstr "Catatan penting : transaksi yang gagal akan terhapus permanen jika slip setoran di tutup"
+
+#: DepositSlipEditor.php:110
+msgid "Deposit Summary: "
+msgstr "Ringkasan Setoran : "
+
+#: DepositSlipEditor.php:143
+msgid "Payments on this deposit slip:"
+msgstr "Pembayaran pada slip setoran ini :"
+
+#: DepositSlipEditor.php:148 eGive.php:266
+msgid "Import eGive"
+msgstr "Impor eGive"
+
+#: DepositSlipEditor.php:150
+msgid "Add Payment"
+msgstr "Tambah Pembayaran"
+
+#: DepositSlipEditor.php:154
+msgid "Load Authorized Transactions"
+msgstr "Load transaksi yang sudah terotorisasi"
+
+#: DepositSlipEditor.php:155
+msgid "Run Transactions"
+msgstr "Jalankan transaksi"
+
+#: DirectoryReports.php:27
+msgid "Directory reports"
+msgstr "Laporan direktori"
+
+#: DirectoryReports.php:77
+msgid "Select classifications to include"
+msgstr "Pilih klasifikasi yang akan dimasukkan"
+
+#: DirectoryReports.php:113
+msgid "Which role is the head of household?"
+msgstr "Yang manakah kepala rumah tangga ?"
+
+#: DirectoryReports.php:131
+msgid "Which role is the spouse?"
+msgstr "Yang manakah pasangannya ?"
+
+#: DirectoryReports.php:150
+msgid "Which role is a child?"
+msgstr "Yang manakah merupakan anak ?"
+
+#: DirectoryReports.php:169
+msgid "Information to Include"
+msgstr "Informasi yang akan ditambahkan"
+
+#: AutoPaymentEditor.php:901 AutoPaymentEditor.php:907 CSVExport.php:90
+#: CSVExport.php:95 CSVImport.php:215 CSVImport.php:216 CartToFamily.php:234
+#: CartToFamily.php:239 CartView.php:278 DirectoryReports.php:171
+#: DirectoryReports.php:245 FamilyEditor.php:662 FamilyEditor.php:666
+#: FamilyList.php:44 FamilyView.php:203 GeoPage.php:381 GroupReports.php:123
+#: Menu.php:200 Menu.php:241 PersonEditor.php:805 PersonEditor.php:821
+#: PersonView.php:265 Register.php:42 Reports/ConfirmReportEmail.php:124
+#: Reports/ConfirmReportEmail.php:129 api/routes/search.php:98
+#: external/templates/registration/family-register-done.php:29
+#: external/templates/registration/family-register.php:35
+msgid "Address"
+msgstr "Alamat"
+
+#: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:173
+#: FamilyView.php:348 PersonView.php:464 Reports/ConfirmReport.php:184
+#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:191
+#: Reports/ConfirmReportEmail.php:209
+msgid "Birthday"
+msgstr "Ulang Tahun"
+
+#: DirectoryReports.php:175
+msgid "Family Home Phone"
+msgstr "Telepon Rumah "
+
+#: DirectoryReports.php:176
+msgid "Family Work Phone"
+msgstr "Telepon Kantor"
+
+#: DirectoryReports.php:177
+msgid "Family Cell Phone"
+msgstr "Handphone"
+
+#: DirectoryReports.php:178 Reports/ConfirmReport.php:156
+#: Reports/ConfirmReportEmail.php:160
+#: external/templates/verify/verify-family-info.php:28
+msgid "Family Email"
+msgstr "E-mail"
+
+#: DirectoryReports.php:180
+msgid "Personal Home Phone"
+msgstr "Telepon Pribadi"
+
+#: DirectoryReports.php:181
+msgid "Personal Work Phone"
+msgstr "Telepon kantor Pribadi"
+
+#: DirectoryReports.php:182
+msgid "Personal Cell Phone"
+msgstr "Handphone pribadi"
+
+#: DirectoryReports.php:183
+msgid "Personal Email"
+msgstr "E-mail pribadi"
+
+#: DirectoryReports.php:184
+msgid "Personal Work/Other Email"
+msgstr "Email lainnya"
+
+#: DirectoryReports.php:185
+msgid "Photos"
+msgstr "Foto"
+
+#: DirectoryReports.php:201
+msgid "Number of Columns"
+msgstr "Jumlah Kolom"
+
+#: DirectoryReports.php:209
+msgid "Paper Size"
+msgstr "Ukuran kertas"
+
+#: DirectoryReports.php:217 Include/LabelFunctions.php:61
+msgid "Font Size"
+msgstr "Ukuran Font"
+
+#: DirectoryReports.php:233
+msgid "Title page"
+msgstr "Halaman Judul"
+
+#: DirectoryReports.php:237
+msgid "Use Title Page"
+msgstr "Gunakan halaman judul"
+
+#: ChurchCRM/dto/SystemConfig.php:130 DirectoryReports.php:241 Register.php:40
+msgid "Church Name"
+msgstr "Nama Gereja"
+
+#: DirectoryReports.php:265
+msgid "Disclaimer"
+msgstr "Penolakan"
+
+#: DirectoryReports.php:284
+msgid "Create Directory"
+msgstr "Buat direktori"
+
+#: DonatedItemEditor.php:42
+msgid "Donated Item Editor"
+msgstr "Pengedit rincian donasi"
+
+#: DonatedItemEditor.php:293 FamilyEditor.php:1115 PaddleNumEditor.php:149
+#: PersonEditor.php:1149 PledgeEditor.php:687
+msgid "Save and Add"
+msgstr "Simpan dan tambahkan"
+
+#: BatchWinnerEntry.php:73 DonatedItemEditor.php:170 FundRaiserEditor.php:190
+msgid "Item"
+msgstr "Rincian"
 
 #: menuconfig_mcf.php:7
 msgid "View All Persons"
