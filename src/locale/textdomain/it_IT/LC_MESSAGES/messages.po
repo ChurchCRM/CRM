@@ -4169,6 +4169,15 @@ msgstr "Pegno"
 msgid "M/F"
 msgstr "M / F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+#, fuzzy
+msgid "Teacher"
+msgstr "Cerca"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Studente"
+
 #: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
 #: Reports/ClassList.php:134 Reports/ClassList.php:135
 #, fuzzy
