@@ -349,8 +349,7 @@ if (isset($_POST['EventID'])) {
             $sCheckoutby = $checkedOutBy->getFullName();
         } ?>
                     <tr>
-                        <td><img data-name="<?= $sPerson; ?>"
-                                 data-src="<?= SystemURLs::getRootPath() . '/api/persons/' . $per->getPersonId() . '/thumbnail' ?>"
+                        <td><img src="<?= SystemURLs::getRootPath() . '/api/persons/' . $per->getPersonId() . '/thumbnail' ?>"
                                  class="direct-chat-img initials-image">&nbsp
                             <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a></td>
                         <td><?= date_format($per->getCheckinDate(), SystemConfig::getValue('sDateFormatLong')) ?></td>
@@ -439,11 +438,10 @@ if (isset($_POST['EventID'])) {
                 '<a target="_top" href="PersonView.php?PersonID=' + perArr.id + '"><h4>' + perArr.displayName + '</h4></a>' +
                 '<div class="">' + perArr.familyRole + '</div>' +
                 '<div class="text-center">' + perArr.address + '</div>' +
-                '<img data-name="' + perArr.displayName + '" data-src="' + window.CRM.root + '/api/persons/' + perArr.id + '/thumbnail" ' +
+                '<img src="' + window.CRM.root + '/api/persons/' + perArr.id + '/thumbnail"' +
                 'class="initials-image profile-user-img img-responsive img-circle"> </div>'
             );
             element.removeClass('hidden');
-            $(".initials-image").initial();
         } else {
             element.html('');
             element.addClass('hidden');
@@ -476,8 +474,7 @@ function loadPerson($iPersonID)
         '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle(). ' ' . $person->getFullName() . '</h4></a>' .
         '<div class="">' . $familyRole . '</div>' .
         '<div class="text-center">' . $person->getAddress() . '</div>' .
-        '<img data-name="' . $person->getFullName() . '" data-src="' . SystemURLs::getRootPath() . '/api/persons/' . $iPersonID . '/thumbnail" ' .
-        'class="initials-image profile-user-img img-responsive img-circle"> </div>';
+        '<img src="' . SystemURLs::getRootPath() . '/api/persons/' . $iPersonID . '/thumbnail" class="initials-image profile-user-img img-responsive img-circle"> </div>';
     echo $html;
 }
 ?>

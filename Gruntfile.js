@@ -104,13 +104,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/randomcolor/randomColor.js'],
-                        dest: 'src/skin/randomcolor/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
                         src: ['node_modules/bootbox/bootbox.min.js'],
                         dest: 'src/skin/bootbox/'
                     },

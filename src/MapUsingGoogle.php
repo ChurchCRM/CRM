@@ -269,7 +269,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                 if (plotArray[i].Thumbnail.length > 0) {
                     //contentString += "<div class='image-container'><p class='text-center'><a href='" + imghref + "'>";
                     contentString += "<div class='image-container'><a href='" + imghref + "'>";
-                    contentString += "<img data-name='" + plotArray[i].Name + " ' class='profile-user-img img-responsive img-circle' border='1' data-src='" + plotArray[i].Thumbnail + "'></a></div>";
+                    contentString += "<img class='profile-user-img img-responsive img-circle' border='1' src='" + plotArray[i].Thumbnail + "'></a></div>";
                 }
 
                 //Add marker and infowindow

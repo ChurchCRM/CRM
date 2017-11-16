@@ -75,6 +75,7 @@ mysqli_select_db($cnInfoCentral, $sDATABASE)
 or system_failure('Could not connect to the MySQL database <strong>'.$sDATABASE.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
 
 // Initialize the session
+session_cache_limiter('private_no_expire:');
 session_name('CRM@'.SystemURLs::getRootPath());
 session_start();
 
