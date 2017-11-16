@@ -9,6 +9,7 @@ use ChurchCRM\EventTypesQuery;
 $calenderService = new CalendarService();
 use ChurchCRM\dto\SystemURLs;
 
+
 $groups = GroupQuery::Create()
       ->orderByName()
       ->find();
@@ -71,8 +72,9 @@ require 'Include/Header.php'; ?>
             <select type="text" id="EventTypeFilter" value="0">
               <option value='0' ><?= gettext("None") ?></option>
             <?php
-                  foreach ($eventTypes as $eventType) {
-                      echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
+                  foreach ($eventTypes as $eventType)
+                  {
+                    echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
                   }
             ?>
             </select>
@@ -81,8 +83,9 @@ require 'Include/Header.php'; ?>
             <select type="text" id="EventGroupFilter" value="0">
               <option value='0' ><?= gettext("None") ?></option>
             <?php
-                  foreach ($groups as $group) {
-                      echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
+                  foreach ($groups as $group)
+                  {
+                    echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
                   }
                 ?>  
             </select>
@@ -221,6 +224,11 @@ require 'Include/Header.php'; ?>
      localStorage.setItem("groupFilterID",groupFilterID); 
   });
   
+  function deleteText(a)
+  {
+    if(a.value=='<?= gettext("Calendar Title")?>' || a.value=='<?= gettext("Calendar description")?>'){ a.value=''; a.style.color='#000';};
+  }
+  
   function BootboxContent(){    
     var frm_str = '<form id="some-form">'
        + '<table class="table">'
@@ -230,8 +238,9 @@ require 'Include/Header.php'; ?>
               +'<select type="text" id="eventType" value="39">'
                    //+"<option value='0' ><?= gettext("Personal") ?></option>"
                    <?php
-                      foreach ($eventTypes as $eventType) {
-                          echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
+                      foreach ($eventTypes as $eventType)
+                      {
+                        echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
                       }
                     ?>
                 +'</select>'
@@ -240,13 +249,13 @@ require 'Include/Header.php'; ?>
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span><?= gettext('Event Title') ?> :</td>"
               +'<td colspan="1" class="TextColumn">'
-                +"<input type='text' id='EventTitle' value='<?= gettext("Calendar Title")?>' size='30' maxlength='100' class='form-control' required>"
+                +"<input type='text' id='EventTitle' onfocus='deleteText(this)' value='<?= gettext("Calendar Title")?>' size='30' maxlength='100' class='form-control' required>"
               +'</td>'
             +'</tr>'
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span><?= gettext('Event Desc') ?>:</td>"
               +'<td colspan="3" class="TextColumn">'
-                +"<textarea id='EventDesc' rows='4' maxlength='100' class='form-control' required><?= gettext("Calendar description")?></textarea>"
+                +"<textarea id='EventDesc' rows='4' maxlength='100' onfocus='deleteText(this)' class='form-control' required><?= gettext("Calendar description")?></textarea>"
               +'</td>'
             +'</tr>'          
             +'<tr>'
@@ -255,8 +264,9 @@ require 'Include/Header.php'; ?>
                 +'<select type="text" id="EventGroup" value="39">'
                    +"<option value='0' Selected><?= gettext("None") ?></option>"
                 <?php
-                  foreach ($groups as $group) {
-                      echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
+                  foreach ($groups as $group)
+                  {
+                    echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
                   }
                 ?>              
                 +'</select>'
@@ -431,6 +441,13 @@ require 'Include/Header.php'; ?>
                 $('#calendar').fullCalendar('unselect');              
                 add = true;              
                 modal.modal("hide");   
+                
+                var box = bootbox.dialog({message : "<?=gettext("Event was added successfully.") ?>"});
+                
+                setTimeout(function() {
+                    // be careful not to call box.hide() here, which will invoke jQuery's hide method
+                    box.modal('hide');
+                }, 3000);
                 return true;
               });
 
