@@ -1,4 +1,16 @@
 <?php
+
+/*******************************************************************************
+ *
+ *  filename    : calendar.php
+ *  last change : 2017-11-16
+ *  description : manage the full calendar
+ *
+ *  http://www.churchcrm.io/
+ *  Copyright 2017 Logel Philippe
+  *
+ ******************************************************************************/
+ 
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -321,6 +333,7 @@ require 'Include/Header.php'; ?>
 
   
     $(document).ready(function () {
+        //
         // initialize the calendar
         // -----------------------------------------------------------------
         $('#calendar').fullCalendar({
