@@ -319,6 +319,12 @@ if ($per_ID == $iPersonID) {
               <?php
         }
     }
+    
+    if ($per_FacebookID > 0 )
+    { ?>
+              <li><i class="fa-li fa fa-phone"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?>"><?= gettext('Facebook') ?></a></span></li>
+          <?php
+    }
 
     // Display the right-side custom fields
     while ($Row = mysqli_fetch_array($rsCustomFields)) {

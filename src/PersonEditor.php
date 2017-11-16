@@ -172,6 +172,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (array_key_exists('updateBirthYear', $_POST)) {
         $iupdateBirthYear = InputUtils::LegacyFilterInput($_POST['updateBirthYear'], 'int');
     }
+    
+    $iFacebook = InputUtils::FilterInt($_POST['Facebook']);
+    $sTwitter = InputUtils::FilterInt($_POST['Twitter']);
+    $sLinkedIn = InputUtils::FilterInt($_POST['LinkedIn']);
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
     $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
@@ -315,7 +319,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iPersonID < 1) {
             $iEnvelope = 0;
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags )
+            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_FacebookID, per_Twitter, per,LinkedIn)
 			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
@@ -331,6 +335,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
 
             $sSQL .= ', '.$per_Flags;
+            $sSQL .= ', '. $iFacebook;
+            $sSQL .= ', '. $sTwitter;
+            $sSQL .= ', '. $sLinkedIn;
             $sSQL .= ')';
 
             $bGetKeyBack = true;
@@ -357,6 +364,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
 
             $sSQL .= ', per_Flags='.$per_Flags;
+            
+            $sSQL .= ', per_FacebookID='. $iFacebook;
+            $sSQL .= ', per_Twitter='. $sTwitter;
+            $sSQL .= ', per_LinkedIn='. $sLinkedIn;
 
             $sSQL .= ' WHERE per_ID = '.$iPersonID;
 
@@ -473,6 +484,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $dFriendDate = $per_FriendDate;
         $iClassification = $per_cls_ID;
         $iViewAgeFlag = $per_Flags;
+        
+        $iFacebookID = $per_FacebookID;
+        $sTwitter = $per_Twitter;
+        $sLinkedIn = $per_LinkedIn;
 
         $sPhoneCountry = SelectWhichInfo($sCountry, $fam_Country, false);
 
@@ -492,6 +507,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyWorkPhone = strlen($fam_WorkPhone);
         $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
+        
+        $bFacebookID = $per_FacebookID != 0;
+        $bTwitter =  strlen($per_Twitter);
+        $bLinkedIn = strlen($per_LinkedIn);
 
         $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
         $rsCustomData = RunQuery($sSQL);
@@ -531,6 +550,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iClassification = '0';
         $iViewAgeFlag = 0;
         $sPhoneCountry = '';
+        
+        $iFacebookID = 0;
+        $sTwitter = '';
+        $sLinkedIn = '';
+                
 
         $sHomePhone = '';
         $sWorkPhone = '';
@@ -1039,6 +1063,60 @@ require 'Include/Header.php';
                         } ?>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="FacebookID">
+                        <?php
+                        if ($bFacebookID) {
+                            echo '<span style="color: red;">'.gettext('Facebook').':</span></td>';
+                        } else {
+                            echo gettext('Facebook').':</td>';
+                        }
+                        ?>
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <input type="text" name="Facebook"
+                               value="<?= htmlentities(stripslashes($iFacebookID), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               maxlength="100" class="form-control">
+                        <?php if ($sFacebookError) {
+                            ?><font color="red"><?php echo $sFacebookError ?></font><?php
+                        } ?>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="Twitter"><?= gettext('Twitter') ?>:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <input type="text" name="Twitter"
+                               value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               maxlength="100" class="form-control">
+                        <?php if ($sTwitterError) {
+                            ?><font
+                            color="red"><?php echo $sTwitterError ?></font></td><?php
+                        } ?>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                      <label for="LinkedIn"><?= gettext('LinkedIn') ?>:</label>
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-envelope"></i>
+                          </div>
+                          <input type="text" name="LinkedIn"
+                                 value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                                 maxlength="100" class="form-control">
+                          <?php if ($sLinkedInError) {
+                              ?><font
+                              color="red"><?php echo $sLinkedInError ?></font></td><?php
+                          } ?>
+                      </div>
+                  </div>
             </div>
         </div>
     </div>
