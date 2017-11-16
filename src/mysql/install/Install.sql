@@ -510,6 +510,7 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (4, 10, 10, 'Money'),
   (4, 11, 11, 'Phone Number'),
   (4, 12, 12, 'Custom Drop-Down List'),
+  (4, 13, 13, 'Father Of Confession'),
   (5, 1, 1, 'bAll'),
   (5, 2, 2, 'bAdmin'),
   (5, 3, 3, 'bAddRecords'),
