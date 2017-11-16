@@ -79,7 +79,7 @@ $app->group('/events', function () {
            $eventCount->save();
          }
      
-         $calendarS = new CalendarService();
+         $calendarS = $this->CalendarService;
          $realCalEvnt = $calendarS->createCalendarItem('event',
             $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(),$event->getId(),$event->getType(),$event->getGroupId());// only the event id sould be edited and moved and have custom color
       
@@ -112,7 +112,7 @@ $app->group('/events', function () {
        $event->setEnd($newEnd->format('Y-m-d H:i:s'));
        $event->save();
   
-        $calendarS = new CalendarService();
+        $calendarS = $this->CalendarService;
         $realCalEvnt = $calendarS->createCalendarItem('event',
           $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(),$event->getId(),$event->getType(),$event->getGroupId());// only the event id sould be edited and moved and have custom color
   
@@ -123,7 +123,7 @@ $app->group('/events', function () {
         $event = EventQuery::Create()
           ->findOneById($input->eventID);
     
-        $calendarS = new CalendarService();
+        $calendarS = $this->CalendarService;
         $realCalEvnt = $calendarS->createCalendarItem('event',
             $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(),$event->getId(),$event->getType(),$event->getGroupId());// only the event id sould be edited and moved and have custom color
   
@@ -137,14 +137,11 @@ $app->group('/events', function () {
        $event->setEnd(str_replace("T"," ",$input->end));
        $event->save();
   
-        $calendarS = new CalendarService();
+        $calendarS = $this->CalendarService;
         $realCalEvnt = $calendarS->createCalendarItem('event',
           $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(),$event->getId(),$event->getType(),$event->getGroupId());// only the event id sould be edited and moved and have custom color
   
         return $response->withJson(array_filter($realCalEvnt));
      }
-     
-
-     //return $response->write($event->toJSON());
   });
 });
