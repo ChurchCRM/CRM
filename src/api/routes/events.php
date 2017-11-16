@@ -1,5 +1,16 @@
 <?php
 
+/*******************************************************************************
+ *
+ *  filename    : events.php
+ *  last change : 2017-11-16
+ *  description : manage the full calendar with events
+ *
+ *  http://www.churchcrm.io/
+ *  Copyright 2017 Logel Philippe
+  *
+ ******************************************************************************/
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Base\EventQuery;
 use ChurchCRM\Base\EventTypesQuery;
