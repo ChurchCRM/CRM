@@ -325,6 +325,18 @@ if ($per_ID == $iPersonID) {
               <li><i class="fa-li fa fa-phone"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?>"><?= gettext('Facebook') ?></a></span></li>
           <?php
     }
+    
+    if (strlen($per_Twitter) > 0)
+    { ?>
+              <li><i class="fa-li fa fa-phone"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>"><?= gettext('Twitter') ?></a></span></li>
+          <?php
+    }
+    
+    if (strlen($per_LinkedIn) > 0)
+    { ?>
+              <li><i class="fa-li fa fa-phone"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>"><?= gettext('LinkedIn') ?></a></span></li>
+          <?php
+    }
 
     // Display the right-side custom fields
     while ($Row = mysqli_fetch_array($rsCustomFields)) {

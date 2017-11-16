@@ -174,8 +174,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
     
     $iFacebook = InputUtils::FilterInt($_POST['Facebook']);
-    $sTwitter = InputUtils::FilterInt($_POST['Twitter']);
-    $sLinkedIn = InputUtils::FilterInt($_POST['LinkedIn']);
+    $sTwitter = InputUtils::FilterString($_POST['Twitter']);
+    $sLinkedIn = InputUtils::FilterString($_POST['LinkedIn']);
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
     $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
@@ -336,8 +336,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             $sSQL .= ', '.$per_Flags;
             $sSQL .= ', '. $iFacebook;
-            $sSQL .= ', '. $sTwitter;
-            $sSQL .= ', '. $sLinkedIn;
+            $sSQL .= ', "'. $sTwitter.'"';
+            $sSQL .= ', "'. $sLinkedIn.'"';
             $sSQL .= ')';
 
             $bGetKeyBack = true;
@@ -366,8 +366,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL .= ', per_Flags='.$per_Flags;
             
             $sSQL .= ', per_FacebookID='. $iFacebook;
-            $sSQL .= ', per_Twitter='. $sTwitter;
-            $sSQL .= ', per_LinkedIn='. $sLinkedIn;
+            $sSQL .= ', per_Twitter="'. $sTwitter.'"';
+            $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
 
             $sSQL .= ' WHERE per_ID = '.$iPersonID;
 
