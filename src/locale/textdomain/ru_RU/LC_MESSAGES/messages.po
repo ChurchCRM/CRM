@@ -3774,6 +3774,14 @@ msgstr "Заложенные"
 msgid "M/F"
 msgstr "M / F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Учител"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Студен"
+
 #: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
 #: Reports/ClassList.php:134 Reports/ClassList.php:135
 msgid "Liaison"
