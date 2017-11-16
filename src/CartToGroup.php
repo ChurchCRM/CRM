@@ -18,6 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\dto\Cart;
 
+
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
     Redirect('Menu.php');
@@ -26,12 +27,11 @@ if (!$_SESSION['bManageGroups']) {
 
 // Was the form submitted?
 if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SESSION['aPeopleCart']) > 0) {
-    // Get the GroupID
-    if (isset($_POST['Submit'])) {
-        $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
-    } else {
-        $iGroupID = InputUtils::LegacyFilterInput($_GET['groupeCreationID'], 'int');
-    }
+	  // Get the GroupID
+	  if (isset($_POST['Submit']))
+	    $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
+	  else
+	    $iGroupID = InputUtils::LegacyFilterInput($_GET['groupeCreationID'], 'int');
     
     if (array_key_exists('GroupRole', $_POST)) {
         $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
@@ -39,7 +39,7 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
         $iGroupRole = 0;
     }
 
-    Cart::EmptyToGroup($iGroupID, $iGroupRole);
+    Cart::EmptyToGroup($iGroupID,$iGroupRole);
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Group.';
     
@@ -47,8 +47,8 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
 }
 
 $ormGroups = GroupQuery::Create()
-                                ->orderByName()
-                                ->find();
+								->orderByName()
+								->find();
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Add Cart to Group');
@@ -71,10 +71,11 @@ if (count($_SESSION['aPeopleCart']) > 0) {
               <?php
               // Create the group select drop-down
               echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';
-    foreach ($ormGroups as $ormGroup) {
-        echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
-    }
-    echo '</select>'; ?>
+							foreach ($ormGroups as $ormGroup)
+							{
+								echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
+							}
+							echo '</select>'; ?>
             </td>
           </tr>
           <tr>
@@ -89,7 +90,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         <p align="center">
           <BR>
           <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Add to Group') ?>">
-          <BR><BR>--<?= gettext('OR CREATE A GROUP AND ADD THE CART IN ONE ACTION') ?>--<BR><BR>
+          <BR><BR>--<?= gettext('OR Create a Group and add the CART in ONE ACTION') ?>--<BR><BR>
           <button type="button" id="addToGroup" class="btn btn-info"> <?= gettext('Create Group + ADD Cart') ?> </button>
           <BR><BR>
         </p>
