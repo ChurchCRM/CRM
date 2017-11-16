@@ -839,7 +839,8 @@ CREATE TABLE `property_pro` (
 INSERT INTO `property_pro` (`pro_ID`, `pro_Class`, `pro_prt_ID`, `pro_Name`, `pro_Description`, `pro_Prompt`) VALUES
   (1, 'p', 1, 'Disabled', 'has a disability.', 'What is the nature of the disability?'),
   (2, 'f', 2, 'Single Parent', 'is a single-parent household.', ''),
-  (3, 'g', 3, 'Youth', 'is youth-oriented.', '');
+  (3, 'g', 3, 'Youth', 'is youth-oriented.', ''),
+  (4, 'g', 1, 'Father Of Confession', '', '');
 
 -- --------------------------------------------------------
 
