@@ -327,7 +327,7 @@ require 'Include/Header.php'; ?>
           header: {
               left: 'prev,next today',
               center: 'title',
-              right: 'month,agendaDay,agendaWeek,listMonth'
+              right: 'month,agendaWeek,agendaDay,listMonth'
           },
           height: 500,
           selectable: true,
