@@ -14,12 +14,14 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+
 use ChurchCRM\Service\CalendarService;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\EventTypesQuery;
 
 $calenderService = new CalendarService();
 use ChurchCRM\dto\SystemURLs;
+
 
 $groups = GroupQuery::Create()
       ->orderByName()
@@ -83,8 +85,8 @@ require 'Include/Header.php'; ?>
             <select type="text" id="EventTypeFilter" value="0">
               <option value='0' ><?= gettext("None") ?></option>
             <?php
-                  foreach ($eventTypes as $eventType) {
-                      echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
+                  foreach ($eventTypes as $eventType){
+                    echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
                   }
             ?>
             </select>
@@ -93,8 +95,8 @@ require 'Include/Header.php'; ?>
             <select type="text" id="EventGroupFilter" value="0">
               <option value='0' ><?= gettext("None") ?></option>
             <?php
-                  foreach ($groups as $group) {
-                      echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
+                  foreach ($groups as $group){
+                    echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
                   }
                 ?>  
             </select>
@@ -121,8 +123,9 @@ require 'Include/Header.php'; ?>
 <script>
 
   var anniversary = true;
-  var birthday    = false;
+  var birthday    = true;
   var withlimit   = false;
+  var isModifiable  = <?php if($_SESSION['bAddEvent'])echo "true"; else echo "false"; ?>;
   
  
   var birthD = localStorage.getItem("birthday");
@@ -247,8 +250,8 @@ require 'Include/Header.php'; ?>
               +'<select type="text" id="eventType" value="39">'
                    //+"<option value='0' ><?= gettext("Personal") ?></option>"
                    <?php
-                      foreach ($eventTypes as $eventType) {
-                          echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
+                      foreach ($eventTypes as $eventType){
+                        echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
                       }
                     ?>
                 +'</select>'
@@ -272,8 +275,8 @@ require 'Include/Header.php'; ?>
                 +'<select type="text" id="EventGroup" value="39">'
                    +"<option value='0' Selected><?= gettext("None") ?></option>"
                 <?php
-                  foreach ($groups as $group) {
-                      echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
+                  foreach ($groups as $group){
+                    echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
                   }
                 ?>              
                 +'</select>'
@@ -338,8 +341,8 @@ require 'Include/Header.php'; ?>
               right: 'month,agendaWeek,agendaDay,listMonth'
           },
           height: 500,
-          selectable: true,
-          editable:true,
+          selectable: isModifiable,
+          editable:isModifiable,
           eventDrop: function(event, delta, revertFunc) {
             if (event.type == 'event'){
               bootbox.confirm({
@@ -479,7 +482,6 @@ require 'Include/Header.php'; ?>
        modal.modal("show");
        $("#ATTENDENCES").parents("tr").hide();
       },
-      editable: true,
       eventLimit: withlimit, // allow "more" link when too many events
       locale: window.CRM.lang,
       events: window.CRM.root + '/api/calendar/events',
