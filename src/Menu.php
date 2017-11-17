@@ -282,8 +282,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                             ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                    <img data-name="<?= $person->getFullName() ?>"
-                                         data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
                                          width="85" height="85"/><br/>
                                     <?= $person->getFullName() ?></a>
@@ -317,8 +316,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                             ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                    <img data-name="<?= $person->getFullName() ?>"
-                                         data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
                                          width="85" height="85"/><br/>
                                     <?= $person->getFullName() ?></a>

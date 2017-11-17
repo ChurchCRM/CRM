@@ -24,6 +24,7 @@ class Person extends BasePerson implements iPhoto
 
     const SELF_REGISTER = -1;
     const SELF_VERIFY = -2;
+    private $photo;
 
     public function getFullName()
     {
@@ -230,39 +231,13 @@ class Person extends BasePerson implements iPhoto
         return false;
     }
 
-    private function getPhoto()
+    public function getPhoto()
     {
-
-      $photo = new Photo("Person",  $this->getId());
-       if (!$photo->isPhotoLocal() && $this->getEmail() != '') {
-           if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
-               $photo->loadFromGoogle($this->getEmail());
-           }
-            if (!$photo->isPhotoRemote() && SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
-               $photo->loadFromGravatar($this->getEmail());
-           }
-       }
-       return $photo;
-    }
-
-    public function getPhotoBytes()
-    {
-        return $this->getPhoto()->getPhotoBytes();
-    }
-
-    public function getPhotoURI()
-    {
-        return $this->getPhoto()->getPhotoURI();
-    }
-
-    public function getThumbnailBytes()
-    {
-        return $this->getPhoto()->getThumbnailBytes();
-    }
-
-    public function getThumbnailURI()
-    {
-        return $this->getPhoto()->getThumbnailURI();
+      if (!$this->photo) 
+      {
+        $this->photo = new Photo("Person",  $this->getId());
+      }
+      return $this->photo;
     }
 
     public function setImageFromBase64($base64)
@@ -279,21 +254,6 @@ class Person extends BasePerson implements iPhoto
         }
         return false;
 
-    }
-
-    public function isPhotoLocal()
-    {
-        return $this->getPhoto()->isPhotoLocal();
-    }
-
-    public function isPhotoRemote()
-    {
-        return $this->getPhoto()->isPhotoRemote();
-    }
-
-    public function getPhotoContentType()
-    {
-        return $this->getPhoto()->getPhotoContentType();
     }
 
     /**
@@ -447,5 +407,10 @@ class Person extends BasePerson implements iPhoto
     public function getNumericCellPhone()
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
+    }
+    
+    public function postSave(ConnectionInterface $con = null) {
+      $this->getPhoto()->refresh();
+      return parent::postSave($con);
     }
 }

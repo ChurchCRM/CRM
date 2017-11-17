@@ -328,8 +328,7 @@ require 'Include/Header.php'; ?>
 
                         <tr>
                             <td>
-                                <img data-name="<?= $personName; ?>" data-src="<?= $thumbnail ?>"
-                                     class="direct-chat-img initials-image">&nbsp
+                                <img src="<?= $thumbnail ?>" class="direct-chat-img initials-image">&nbsp
                                 <a href="PersonView.php?PersonID=<?= $per_ID ?>">
                                     <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) ?>
                                 </a>
