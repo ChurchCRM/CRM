@@ -131,19 +131,39 @@ class Cart
   public static function EmptyToGroup($GroupID,$RoleID)
   {
     $iCount = 0;
-    $Group = GroupQuery::create()->findOneById($GroupID);
-    while ($element = each($_SESSION['aPeopleCart'])) {
+
+    $group = GroupQuery::create()->findOneById($GroupID);
+    
+    if($RoleID == 0)
+    {
+      $RoleID = $group->getDefaultRole();
+    }
+    
+    while ($element = each($_SESSION['aPeopleCart'])) {      
       $personGroupRole = Person2group2roleP2g2rQuery::create()
         ->filterByGroupId($GroupID)
         ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
-        ->filterByRoleId($RoleID)
         ->findOneOrCreate()
-        ->setPersonId($_SESSION['aPeopleCart'][$element['key']])
         ->setRoleId($RoleID)
-        ->setGroupId($GroupID)
-        ->save();
+        ->save();	
+        
+      /*
+      This part of code should be done 
+    	*/	
+    	// Check if this group has special properties
+      /*      $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = '.$iGroupID;
+            $rsTemp = RunQuery($sSQL);
+            $rowTemp = mysqli_fetch_row($rsTemp);
+            $bHasProp = $rowTemp[0];
+
+            if ($bHasProp == 'true') {
+                $sSQL = 'INSERT INTO groupprop_'.$iGroupID." (per_ID) VALUES ('".$iPersonID."')";
+                RunQuery($sSQL);
+            }	*/
+			
       $iCount += 1;
     }
+    
     $_SESSION['aPeopleCart'] = [];
   }
   
