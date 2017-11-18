@@ -4,7 +4,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\ListOptionQuery;
+
 class DashboardService
 {
     public function getFamilyCount()

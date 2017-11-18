@@ -3,10 +3,8 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\EventQuery;
-use ChurchCRM\EventTypesQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Person;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class CalendarService
