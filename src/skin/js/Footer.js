@@ -36,8 +36,6 @@ $("document").ready(function(){
        
     $(".date-picker").datepicker({format:window.CRM.datePickerformat, language: window.CRM.lang});
 
-  
-    $(".initials-image").initial();
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
   
     $(document).on("click", ".emptyCart", function (e) {

@@ -175,7 +175,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         if ($studentName != $prevStudentName) {
             $pdf->WriteAt($nameX, $y, $studentName);
                 
-            $imgName = $person->getThumbnailURI();
+            $imgName = $person->getPhoto()->getThumbnailURI();
             
             $birthdayStr = change_date_for_place_holder($person->getBirthYear().'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
             $pdf->WriteAt($birthdayX, $y, $birthdayStr);
@@ -204,7 +204,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                     $nw = $imageHeight;
                     $nh = $imageHeight;
                 
-                    $pdf->Image($imgName, $nameX-$nw, $y, $nw, $nh, 'PNG');
+                    $pdf->Image($imgName, $nameX-$nw, $y, $nw, $nh, 'JPG');
                 }
                     
                 $nameX+=2;

@@ -171,9 +171,7 @@ if ($iFamilyID == $fam_ID) {
         <div class="box box-primary">
             <div class="box-body">
                 <div class="image-container">
-                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
-                         data-name="<?= $family->getName() ?>" alt=""
-                         class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
+                    <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
                     <?php if ($bOkToEdit): ?>
                         <div class="after">
                             <div class="buttons">
@@ -185,12 +183,10 @@ if ($iFamilyID == $fam_ID) {
                                    title="<?= gettext("Upload Photo") ?>">
                                     <i class="fa fa-camera"></i>
                                 </a>&nbsp;
-                                <?php if ($family->isPhotoLocal()): ?>
-                                    <a href="#" data-toggle="modal" data-target="#confirm-delete-image"
-                                       title="<?= gettext("Delete Photo") ?>">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="#" data-toggle="modal" data-target="#confirm-delete-image"
+                                   title="<?= gettext("Delete Photo") ?>">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -358,8 +354,8 @@ if ($iFamilyID == $fam_ID) {
                     ?>
                             <tr>
                                 <td>
-                                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
-                                         data-name="<?= $person->getFullName() ?>" width="40" height="40"
+                                    <img src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                         width="40" height="40"
                                          class="initials-image img-circle"/>
                                     <a href="<?= $person->getViewURI() ?>"
                                        class="user-link"><?= $person->getFullName() ?> </a>
@@ -1022,8 +1018,8 @@ if ($iFamilyID == $fam_ID) {
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
                 url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
                 maxPhotoSize: window.CRM.maxUploadSize,
-                photoHeight: 400,
-                photoWidth: 400,
+                photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+                photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
                 done: function (e) {
                     location.reload();
                 }

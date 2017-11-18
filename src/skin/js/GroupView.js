@@ -47,7 +47,7 @@ $(document).ready(function () {
           var node = window.CRM.DataTableAPI.row.add(person).node();
           window.CRM.DataTableAPI.rows().invalidate().draw(true);
           $(".personSearch").val(null).trigger('change');
-          dataT.ajax.reload();
+          window.CRM.DataTableAPI.ajax.reload();
         });
       });
   });
@@ -173,13 +173,21 @@ function initDataTable() {
     "language": {
       "url": window.CRM.plugin.dataTable.language.url
     },
+      responsive: true,
+      "language": {
+          "url": window.CRM.plugin.dataTable.language.url
+      },
+      "dom": window.CRM.plugin.dataTable.dom,
+      "tableTools": {
+          "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
+      },
     columns: [
       {
         width: 'auto',
         title: i18next.t('Name'),
         data: 'PersonId',
         render: function (data, type, full, meta) {
-          return '<img data-name="'+full.Person.FirstName + ' ' + full.Person.LastName + '" data-src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+          return '<img src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
         }
       },
       {
@@ -228,7 +236,6 @@ function initDataTable() {
     ],
     "fnDrawCallback": function (oSettings) {
       $("#iTotalMembers").text(oSettings.aoData.length);
-      $("#membersTable .initials-image").initial();
     },
     "createdRow": function (row, data, index) {
       $(row).addClass("groupRow");

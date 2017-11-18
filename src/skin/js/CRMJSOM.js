@@ -282,8 +282,7 @@
         }
     };
     
-    window.CRM.groups = {
-      
+    window.CRM.groups = {      
       'get': function() {
         return  window.CRM.APIRequest({
           path:"groups/",
@@ -422,7 +421,46 @@
           method: 'DELETE', // define the type of HTTP verb we want to use (POST for our form)
           path:'groups/' + GroupID + '/removeperson/' + PersonID,
         });
-      }
+      },
+      'addGroup' : function(callbackM){
+      	bootbox.prompt({
+					title: i18next.t("Add A Group Name"),
+					value: i18next.t("Default Name Group"),
+					onEscape: true,
+					closeButton: true,
+					buttons: {
+						confirm: {
+							label:  i18next.t('Yes'),
+								className: 'btn-success'
+						},
+						cancel: {
+							label:  i18next.t('No'),
+							className: 'btn-danger'
+						}
+					},
+					callback: function (result)
+					{
+						if (result)
+						{
+							var newGroup = {'groupName': result};
+				
+							$.ajax({
+								method: "POST",
+								url: window.CRM.root + "/api/groups/",               //call the groups api handler located at window.CRM.root
+								data: JSON.stringify(newGroup),                      // stringify the object we created earlier, and add it to the data payload
+								contentType: "application/json; charset=utf-8",
+								dataType: "json"
+							}).done(function (data) {                               //yippie, we got something good back from the server
+									window.CRM.cart.refresh();
+            			if(callbackM)
+            			{
+              			callbackM(data);
+            			}								
+							});
+						}
+					 }
+				});
+			}
     };
     
     window.CRM.system = {

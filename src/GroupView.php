@@ -36,7 +36,7 @@ $defaultRole = ListOptionQuery::create()->filterById($thisGroup->getRoleListId()
 if ($thisGroup->getType() > 0) {
     $sGroupType = ListOptionQuery::create()->filterById(3)->filterByOptionId($thisGroup->getType())->findOne()->getOptionName();
 } else {
-    $sGroupType = gettext('Undefined');
+    $sGroupType = gettext('Unassigned');
 }
 
 //Get the Properties assigned to this Group
