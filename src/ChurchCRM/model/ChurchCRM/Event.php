@@ -4,6 +4,8 @@ namespace ChurchCRM;
 
 use ChurchCRM\Base\Event as BaseEvent;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\SystemURLs;
+
 /**
  * Skeleton subclass for representing a row from the 'events_event' table.
  *
@@ -48,5 +50,13 @@ class Event extends BaseEvent
     
     return array("status"=>"success");
     
+  }
+  
+  public function getEventURI()
+  {
+    if($_SESSION['bAddEvent'])
+      return SystemURLs::getRootPath()."EventEditor.php?calendarAction=".$this->getID();
+    else 
+      return '';
   }
 }
