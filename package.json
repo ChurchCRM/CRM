@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "2.8.11",
+    "version": "2.9.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -58,7 +58,7 @@
         "graph-viz": "src/vendor/propel/propel/bin/propel --config-dir=propel graphviz:generate",
         "datadictionary": "src/vendor/propel/propel/bin/propel --config-dir=propel datadictionary:generate",
         "composer-install": "cd src/ && composer install",
-        "composer-update": " cd src/ && composer update",
+        "composer-update": " cd src/ && composer update && cd ../tests/ && composer update",
         "tests-install": "scripts/tests-install.sh",
         "test": "scripts/tests-run.sh"
     }

@@ -11,6 +11,11 @@ $app->group('/database', function () {
         echo json_encode($backup);
     });
 
+    $this->post('/backupRemote', function() use ($app, $systemService) {
+        $backup = $this->SystemService->copyBackupToExternalStorage();
+        echo json_encode($backup);
+    });
+
     $this->post('/restore', function ($request, $response, $args) {
       
       if ( $_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) &&
