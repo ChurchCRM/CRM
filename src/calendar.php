@@ -128,8 +128,8 @@ require 'Include/Header.php'; ?>
       if ($_SESSION['bAddEvent']) {
           echo "true";
       } else {
-        echo "false";
-    }
+          echo "false";
+      }
     ?>;
   
  
