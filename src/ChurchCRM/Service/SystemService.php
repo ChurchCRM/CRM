@@ -2,8 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
@@ -16,6 +14,7 @@ use PharData;
 use Propel\Runtime\Propel;
 use PDO;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
@@ -288,7 +287,6 @@ class SystemService
     public function getDBServerVersion()
     {
       try{
-        $connection = Propel::getConnection();
         return Propel::getServiceContainer()->getConnection()->getAttribute(PDO::ATTR_SERVER_VERSION);
       }
       catch (\Exception $exc)
@@ -320,7 +318,14 @@ class SystemService
                 $version->setVersion($dbUpdate['dbVersion']);
                 $version->setUpdateStart(new \DateTime());
                 foreach ($dbUpdate['scripts'] as $dbScript) {
-                    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/' . $dbScript, $connection);
+                    $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
+                    LoggerUtils::getAppLogger()->info("Upgrade DB - " . $scriptName);
+                    if (pathinfo($scriptName, PATHINFO_EXTENSION) == ".sql") {
+                        SQLUtils::sqlImport($scriptName, $connection);
+                    } else
+                    {
+                        require_once ($scriptName);
+                    }
                 }
                 if (!$errorFlag) {
                     $version->setUpdateEnd(new \DateTime());
