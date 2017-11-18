@@ -7,8 +7,8 @@
  *  description : manage the full calendar with events
  *
  *  http://www.churchcrm.io/
- *  Copyright 2017 Logel Philippe & Charles
- *
+ *  Copyright 2017 Logel Philippe
+  *
  ******************************************************************************/
 
 use ChurchCRM\dto\SystemConfig;
@@ -90,8 +90,7 @@ $app->group('/events', function () {
            $eventCount->save();
          }
      
-         $calendarS = $this->CalendarService;
-         $realCalEvnt = $calendarS->createCalendarItem('event',
+         $realCalEvnt = $this->CalendarService->createCalendarItem('event',
             $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(),$event->getId(),$event->getType(),$event->getGroupId());// only the event id sould be edited and moved and have custom color
       
          return $response->withJson(array_filter($realCalEvnt));
@@ -123,8 +122,7 @@ $app->group('/events', function () {
        $event->setEnd($newEnd->format('Y-m-d H:i:s'));
        $event->save();
   
-        $calendarS = $this->CalendarService;
-        $realCalEvnt = $calendarS->createCalendarItem('event',
+        $realCalEvnt = $this->CalendarService->createCalendarItem('event',
           $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(),$event->getId(),$event->getType(),$event->getGroupId());// only the event id sould be edited and moved and have custom color
   
         return $response->withJson(array_filter($realCalEvnt));
@@ -134,8 +132,7 @@ $app->group('/events', function () {
         $event = EventQuery::Create()
           ->findOneById($input->eventID);
     
-        $calendarS = $this->CalendarService;
-        $realCalEvnt = $calendarS->createCalendarItem('event',
+        $realCalEvnt = $this->CalendarService->createCalendarItem('event',
             $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(),$event->getId(),$event->getType(),$event->getGroupId());// only the event id sould be edited and moved and have custom color
   
         return $response->withJson(array_filter($realCalEvnt));
@@ -148,8 +145,7 @@ $app->group('/events', function () {
        $event->setEnd(str_replace("T"," ",$input->end));
        $event->save();
   
-        $calendarS = $this->CalendarService;
-        $realCalEvnt = $calendarS->createCalendarItem('event',
+        $realCalEvnt = $this->CalendarService->createCalendarItem('event',
           $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(),$event->getId(),$event->getType(),$event->getGroupId());// only the event id sould be edited and moved and have custom color
   
         return $response->withJson(array_filter($realCalEvnt));
