@@ -125,9 +125,11 @@ require 'Include/Header.php'; ?>
   var birthday    = true;
   var withlimit   = false;
   var isModifiable  = <?php 
-      if($_SESSION['bAddEvent'])
-      echo "true"; 
-    else echo "false"; 
+      if ($_SESSION['bAddEvent']) {
+          echo "true";
+      } else {
+        echo "false";
+    }
     ?>;
   
  
