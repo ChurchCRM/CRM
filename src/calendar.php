@@ -124,7 +124,11 @@ require 'Include/Header.php'; ?>
   var anniversary = true;
   var birthday    = true;
   var withlimit   = false;
-  var isModifiable  = <?php if($_SESSION['bAddEvent'])echo "true"; else echo "false"; ?>;
+  var isModifiable  = <?php if ($_SESSION['bAddEvent']) {
+                    echo "true";
+                } else {
+                    echo "false";
+                } ?>;
   
  
   var birthD = localStorage.getItem("birthday");
