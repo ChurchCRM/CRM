@@ -266,7 +266,7 @@ class GroupService
                         per_ID mediumint(8) unsigned NOT NULL default '0',
                         PRIMARY KEY  (per_ID),
                           UNIQUE KEY per_ID (per_ID)
-                        ) ENGINE=MyISAM;";
+                        ) ENGINE=InnoDB;";
         RunQuery($sSQLp);
 
         $groupMembers = $this->getGroupMembers($groupID);
