@@ -5,7 +5,12 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2005 Michael Wilt
-  *
+ *
+ *  ChurchCRM is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
  ******************************************************************************/
 
 //Include the function library
@@ -15,9 +20,6 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Emails\NewPersonOrFamilyEmail;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\dto\Photo;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -78,10 +80,15 @@ $bErrorFlag = false;
 $sFirstNameError = '';
 $sMiddleNameError = '';
 $sLastNameError = '';
+$sEducationError = '';
+$sEduPlaceError = '';
+$sWorkError = '';
+$sWorkplaceError = '';
 $sEmailError = '';
 $sWorkEmailError = '';
 $sBirthDateError = '';
 $sBirthYearError = '';
+$sNationalError = '';
 $sFriendDateError = '';
 $sMembershipDateError = '';
 $aCustomErrors = [];
@@ -101,6 +108,16 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sLastName = InputUtils::LegacyFilterInput($_POST['LastName']);
     $sSuffix = InputUtils::LegacyFilterInput($_POST['Suffix']);
     $iGender = InputUtils::LegacyFilterInput($_POST['Gender'], 'int');
+    $iSocial = InputUtils::LegacyFilterInput($_POST['Social'], 'int');
+    $iNational = InputUtils::LegacyFilterInput($_POST['National'], 'int');
+    $sEducation = InputUtils::LegacyFilterInput($_POST['Education']);
+    $sEduPlace = InputUtils::LegacyFilterInput($_POST['EduPlace']);
+    $sWork = InputUtils::LegacyFilterInput($_POST['Work']);
+    $sWorkplace = InputUtils::LegacyFilterInput($_POST['Workplace']);
+    $sRecFather = InputUtils::LegacyFilterInput($_POST['RecFather']);
+    $sRecChurch = InputUtils::LegacyFilterInput($_POST['RecChurch']);
+    $sElections = inputUtils::LegacyFilterInput($_POST['Elections']);
+
 
     // Person address stuff is normally surpressed in favor of family address info
     $sAddress1 = '';
@@ -160,10 +177,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthMonth = InputUtils::LegacyFilterInput($_POST['BirthMonth'], 'int');
     $iBirthDay = InputUtils::LegacyFilterInput($_POST['BirthDay'], 'int');
     $iBirthYear = InputUtils::LegacyFilterInput($_POST['BirthYear'], 'int');
+    $iNational = InputUtils::LegacyFilterInput($_POST['National']);
     $bHideAge = isset($_POST['HideAge']);
-    // Philippe Logel
-    $dFriendDate = InputUtils::FilterDate($_POST['FriendDate']);
-    $dMembershipDate = InputUtils::FilterDate($_POST['MembershipDate']);
+    $dFriendDate = InputUtils::LegacyFilterInput($_POST['FriendDate']);
+    $dMembershipDate = InputUtils::LegacyFilterInput($_POST['MembershipDate']);
     $iClassification = InputUtils::LegacyFilterInput($_POST['Classification'], 'int');
     $iEnvelope = 0;
     if (array_key_exists('EnvID', $_POST)) {
@@ -193,6 +210,52 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $aTemp = mysqli_fetch_array($rsFamName);
             $sLastName = $aTemp[0];
         }
+    }
+
+    //Validate the National ID.
+    if (strlen($iNational) >  14) {
+        $sNationalError = gettext('Entered ID is too big,<p>Please enter only the "14" Digits National ID.');
+        $bErrorFlag = true;
+    } elseif (strlen($iNational) < 14) {
+        $sNationalError = gettext('You entered too small ID,<p>Please enter only the "14" Digits National ID.');
+        $bErrorFlag = true;
+    } elseif (strlen($iNational) < 1) {
+        $sNationalError = gettext('You must enter the "14" Digits National ID.');
+        $bErrorFlag = true;
+    } else {
+        $iNational = $iNational;
+    }
+
+    //Validate the Education.
+    if (!$sEducation) {
+        $sEducationError = gettext('You must enter Academic Year or Degree.');
+        $bErrorFlag = true;
+    } else {
+        $sEducation = $sEducation;
+    }
+
+    //Validate Education Place.
+    if (!$sEduPlace) {
+        $sEduPlaceError = gettext('You must enter the Education or Graduation Place.');
+        $bErrorFlag = true;
+    } else {
+        $sEduPlace = $sEduPlace;
+    }
+
+    //Validate Work.
+    if (!$sWork) {
+        $sWorkError = gettext('You must enter the Job or Work description.');
+        $bErrorFlag = true;
+    } else {
+        $sWork = $sWork;
+    }
+
+    //Validate Work.
+    if (!$sWorkplace) {
+        $sWorkplaceError = gettext('You must enter Company or Workplace.');
+        $bErrorFlag = true;
+    } else {
+        $sWorkplace = $sWorkplace;
     }
 
     // If they entered a full date, see if it's valid
@@ -315,8 +378,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iPersonID < 1) {
             $iEnvelope = 0;
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags )
-			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
+            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_NID, per_Social, per_Elections, per_Edu, per_EduPlace, per_Work, per_Workplace, per_RecFather, per_RecChurch, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags )
+			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$iNational."',".$iSocial.",'".$sElections."','".$sEducation."','".$sEduPlace."','".$sWork."','".$sWorkplace."','".$sRecFather."','".$sRecChurch."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
             } else {
@@ -337,7 +400,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             // Existing person (update)
         } else {
-            $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
+            $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_NID = '".$iNational."', per_Social = ".$iSocial.", per_Elections = '".$sElections."', per_Edu = '".$sEducation."', per_EduPlace = '".$sEduPlace."', per_Work = '".$sWork."', per_Workplace = '".$sWorkplace."', per_RecFather = '".$sRecFather."', per_RecChurch = '".$sRecChurch."', per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
             } else {
@@ -365,7 +428,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         //Execute the SQL
         RunQuery($sSQL);
-       
 
         $note = new Note();
         $note->setEntered($_SESSION['iUserID']);
@@ -379,24 +441,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Created'));
             $note->setType('create');
-            
-            
-            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
-                $person = PersonQuery::create()->findOneByID($iPersonID);
-                $NotificationEmail = new NewPersonOrFamilyEmail($person);
-                if (!$NotificationEmail->send()) {
-                    $logger->warn($NotificationEmail->getError());
-                }
-            }
         } else {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Updated'));
             $note->setType('edit');
         }
         $note->save();
-        
-        $photo = new Photo("Person", $iPersonID);
-        $photo->refresh();
 
         // Update the custom person fields.
         if ($numCustomFields > 0) {
@@ -451,6 +501,15 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sLastName = $per_LastName;
         $sSuffix = $per_Suffix;
         $iGender = $per_Gender;
+        $iNational = $per_NID;
+        $iSocial = $per_Social;
+        $sElections = $per_Elections;
+        $sEducation = $per_Edu;
+        $sEduPlace = $per_EduPlace;
+        $sWork = $per_Work;
+        $sWorkplace = $per_Workplace;
+        $sRecFather = $per_RecFather;
+        $sRecChurch = $per_RecChurch;
         $sAddress1 = $per_Address1;
         $sAddress2 = $per_Address2;
         $sCity = $per_City;
@@ -508,6 +567,15 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sLastName = '';
         $sSuffix = '';
         $iGender = '';
+        $iNational = '';
+        $iSocial = '';
+        $sElections = '';
+        $sEducation = '';
+        $sEduPlace = '';
+        $sWork = '';
+        $sWorkplace = '';
+        $sRecFather = '';
+        $sRecChurch = '';
         $sAddress1 = '';
         $sAddress2 = '';
         $sCity = SystemConfig::getValue('sDefaultCity');
@@ -596,6 +664,10 @@ require 'Include/Header.php';
                 <div class="row">
                     <div class="col-md-2">
                         <label><?= gettext('Gender') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-venus-mars" aria-hidden="true"></i>
+                            </div>
                         <select name="Gender" class="form-control">
                             <option value="0"><?= gettext('Select Gender') ?></option>
                             <option value="0" disabled>-----------------------</option>
@@ -606,60 +678,104 @@ require 'Include/Header.php';
         echo 'selected';
     } ?>><?= gettext('Female') ?></option>
                         </select>
+                        </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label for="Title"><?= gettext('Title') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                            </div>
                         <input type="text" name="Title" id="Title"
                                value="<?= htmlentities(stripslashes($sTitle), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control" placeholder="<?= gettext('Mr., Mrs., Dr., Rev.') ?>">
                     </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label><?= gettext('National ID') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                            </div>
+                        <input type="text" name="National"
+                               value="<?php echo $iNational ?>" maxlength="14" minlength="14" size="15"
+                               class="form-control" placeholder="<?= gettext('xxxx xxxx xxxx xx') ?>">
+                        </div>
+                            <?php if ($sNationalError) {
+                            ?><font color="red"><br><?php echo $sNationalError ?>
+                            </font><?php
+                        } ?>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="Elections"><?= gettext('Elections Committee') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <input type="text" name="Elections" id="Elections"
+                                   value="<?= htmlentities(stripslashes($sElections), ENT_NOQUOTES, 'UTF-8') ?>"
+                                   class="form-control" placeholder="<?= gettext('Elections Committee') ?>">
+                        </div>
+                    </div>
                 </div>
                 <p/>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label for="FirstName"><?= gettext('First Name') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-align-right" aria-hidden="true"></i>
+                            </div>
                         <input type="text" name="FirstName" id="FirstName"
-                               value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>"
-                               class="form-control">
+                               value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="24" size="25"
+                               class="form-control" placeholder="<?= gettext('First Name') ?>">
+                        </div>
                         <?php if ($sFirstNameError) {
         ?><br><font
                             color="red"><?php echo $sFirstNameError ?></font><?php
     } ?>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label for="MiddleName"><?= gettext('Middle Name') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-align-center" aria-hidden="true"></i>
+                            </div>
                         <input type="text" name="MiddleName" id="MiddleName"
-                               value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, 'UTF-8') ?>"
-                               class="form-control">
+                               value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="20" size="20"
+                               class="form-control" placeholder="<?= gettext('Second Name') ?>">
+                        </div>
                         <?php if ($sMiddleNameError) {
         ?><br><font
                             color="red"><?php echo $sMiddleNameError ?></font><?php
     } ?>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label for="LastName"><?= gettext('Last Name') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-align-left" aria-hidden="true"></i>
+                            </div>
                         <input type="text" name="LastName" id="LastName"
-                               value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, 'UTF-8') ?>"
-                               class="form-control">
-                        <?php if ($sLastNameError) {
+                               value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="30" size="20"
+                               class="form-control" placeholder="<?= gettext ('Family Name') ?>">
+                        </div>
+                            <?php if ($sLastNameError) {
         ?><br><font
                             color="red"><?php echo $sLastNameError ?></font><?php
     } ?>
                     </div>
-
-                    <div class="col-md-1">
-                        <label for="Suffix"><?= gettext('Suffix') ?>:</label>
-                        <input type="text" name="Suffix" id="Suffix"
-                               value="<?= htmlentities(stripslashes($sSuffix), ENT_NOQUOTES, 'UTF-8') ?>"
-                               placeholder="<?= gettext('Jr., Sr., III') ?>" class="form-control">
-                    </div>
                 </div>
                 <p/>
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label><?= gettext('Birth Month') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                            </div>
                         <select name="BirthMonth" class="form-control">
                             <option value="0" <?php if ($iBirthMonth == 0) {
         echo 'selected';
@@ -702,8 +818,13 @@ require 'Include/Header.php';
     } ?>><?= gettext('December') ?></option>
                         </select>
                     </div>
+                    </div>
                     <div class="col-md-2">
                         <label><?= gettext('Birth Day') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+                            </div>
                         <select name="BirthDay" class="form-control">
                             <option value="0"><?= gettext('Select Day') ?></option>
                             <?php for ($x = 1; $x < 32; $x++) {
@@ -718,11 +839,17 @@ require 'Include/Header.php';
                             <?php
     } ?>
                         </select>
+                        </div>
                     </div>
                     <div class="col-md-2">
                         <label><?= gettext('Birth Year') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                            </div>
                         <input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
                                placeholder="yyyy" class="form-control">
+                        </div>
                         <?php if ($sBirthYearError) {
         ?><font color="red"><br><?php echo $sBirthYearError ?>
                             </font><?php
@@ -732,11 +859,293 @@ require 'Include/Header.php';
                             color="red"><?php echo $sBirthDateError ?></font><?php
     } ?>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <label><?= gettext('Hide Age') ?></label><br/>
                         <input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) {
         echo ' checked';
     } ?> />
+                    </div>
+                </div>
+                    <p/>
+                    <?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
+                    if ($dWeddingDate == 'NULL') {
+                        $dWeddingDate = '';
+                    } ?>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label><?= gettext('Martial Status') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            </div>
+                            <select name="Social" class="form-control">
+                                <option value="0"><?= gettext('Social Status') ?></option>
+                                <option value="0" disabled>-----------------------</option>
+                                <option value="1" <?php if ($iSocial == 1) {
+                                    echo 'selected';
+                                } ?>><?= gettext('Single') ?></option>
+                                <option value="2" <?php if ($iSocial == 2) {
+                                    echo 'selected';
+                                } ?>><?= gettext('Engaged') ?></option>
+                                <option value="3" <?php if ($iSocial == 3) {
+                                    echo 'selected';
+                                } ?>><?= gettext('Married') ?></option>
+                                <option value="4" <?php if ($iSocial == 4) {
+                                    echo 'selected';
+                                } ?>><?= gettext('Widowed') ?></option>
+                                <option value="5" <?php if ($iSocial == 5) {
+                                    echo 'selected';
+                                } ?>><?= gettext('Separated') ?></option>
+                                <option value="6" <?php if ($iSocial == 6) {
+                                    echo 'selected';
+                                } ?>><?= gettext('Divorced') ?></option>
+                            </select>
+                        </div>
+                    </div>
+                        <div class="form-group col-md-3 col-lg-3">
+                            <label><?= gettext('Engagment Date') ?>:</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-heart-o"></i>
+                                </div>
+                                <input type="text" name="RecDate" class="form-control date-picker"
+                                       value="<?= $dRecDate ?>" maxlength="10" id="recdate" size="11"
+                                       placeholder="YYYY-MM-DD">
+                                <?php if ($sRecDateError) {
+                                    ?><font
+                                            color="red"><?= $sRecDateError ?></font><?php
+                                } ?>
+                            </div>
+                        </div>
+                        <?php
+                        } /* Wedding date can be hidden - General Settings */ ?>
+                    <div class="col-md-2">
+                        <label for="Elections"><?= gettext('Engagment Count') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <input type="number" name="Elections" id="Elections"
+                                   value="<?= htmlentities(stripslashes($sElections), ENT_NOQUOTES, 'UTF-8') ?>"
+                                   class="form-control" placeholder="<?= gettext('Elections Committee') ?>">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3">
+                        <label><?= gettext('Wedding Date') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-heart-o"></i>
+                            </div>
+                            <input type="text" name="RecDate" class="form-control date-picker"
+                                   value="<?= $dRecDate ?>" maxlength="10" id="recdate" size="11"
+                                   placeholder="YYYY-MM-DD">
+                            <?php if ($sRecDateError) {
+                                ?><font
+                                        color="red"><?= $sRecDateError ?></font><?php
+                            } ?>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="box box-info clearfix">
+        <div class="box-header">
+            <h3 class="box-title"><?= gettext('Personal Data') ?></h3>
+            <div class="pull-right"><br/>
+                <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="Education"><?= gettext('Education') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                            </div>
+                        <input type="text" name="Education" id="Education"
+                               value="<?= htmlentities(stripslashes($sEducation), ENT_NOQUOTES, 'UTF-8') ?>"
+                               class="form-control" placeholder="<?= gettext('Academic Year or Degree') ?>">
+                        </div>
+                            <?php if ($sEducationError) {
+                            ?><br><font
+                                    color="red"><?php echo $sEducationError ?></font><?php
+                        } ?>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="EduPlace"><?= gettext('Education Place') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-hospital-o" aria-hidden="true"></i>
+                            </div>
+                        <input type="text" name="EduPlace" id="EduPlace"
+                               value="<?= htmlentities(stripslashes($sEduPlace), ENT_NOQUOTES, 'UTF-8') ?>"
+                               class="form-control" placeholder="<?= gettext('Education or Graduation Place') ?>">
+                        </div>
+                            <?php if ($sEduPlaceError) {
+                            ?><br><font
+                                    color="red"><?php echo $sEduPlaceError ?></font><?php
+                        } ?>
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3">
+                        <label><?= gettext('Graduation Date') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" name="RecDate" class="form-control date-picker"
+                                   value="<?= $dRecDate ?>" maxlength="10" id="recdate" size="11"
+                                   placeholder="YYYY-MM-DD">
+                            <?php if ($sRecDateError) {
+                                ?><font
+                                        color="red"><?= $sRecDateError ?></font><?php
+                            } ?>
+                        </div>
+                    </div>
+                </div>
+                <p/>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="Work"><?= gettext('Work Field') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                            </div>
+                        <input type="text" name="Work" id="Work"
+                               value="<?= htmlentities(stripslashes($sWork), ENT_NOQUOTES, 'UTF-8') ?>"
+                               class="form-control" placeholder="<?= gettext('Type of work or business') ?>">
+                        </div>
+                        <?php if ($sWorkError) {
+                            ?><br><font
+                                    color="red"><?php echo $sWorkError ?></font><?php
+                        } ?>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="Work"><?= gettext('Job / Work') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                            </div>
+                            <input type="text" name="Work" id="Work"
+                                   value="<?= htmlentities(stripslashes($sWork), ENT_NOQUOTES, 'UTF-8') ?>"
+                                   class="form-control" placeholder="<?= gettext('Job or Work description') ?>">
+                        </div>
+                        <?php if ($sWorkError) {
+                            ?><br><font
+                                    color="red"><?php echo $sWorkError ?></font><?php
+                        } ?>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="Workplace"><?= gettext('Company / Workplace') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-building" aria-hidden="true"></i>
+                            </div>
+                        <input type="text" name="Workplace" id="Workplace"
+                               value="<?= htmlentities(stripslashes($sWorkplace), ENT_NOQUOTES, 'UTF-8') ?>"
+                               class="form-control" placeholder="<?= gettext('Company / Workplace') ?>">
+                        </div>
+                        <?php if ($sWorkplaceError) {
+                            ?><br><font
+                                    color="red"><?php echo $sWorkplaceError ?></font><?php
+                        } ?>
+                    </div>
+                        <div class="col-md-2">
+                        <label for="Elections"><?= gettext('Elections Committee') ?>:</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </div>
+                        <input type="text" name="Elections" id="Elections"
+                               value="<?= htmlentities(stripslashes($sElections), ENT_NOQUOTES, 'UTF-8') ?>"
+                               class="form-control" placeholder="<?= gettext('Elections Committee') ?>">
+                    </div>
+                        </div>
+                    <div class="col-md-2">
+                        <label><?= gettext('Time-Shift') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            </div>
+                            <select name="Social" class="form-control">
+                                <option value="0"><?= gettext('Time Shift') ?></option>
+                                <option value="0" disabled>-----------------------</option>
+                                <option value="1" <?php if ($iSocial == 1) {
+                                    echo 'selected';
+                                } ?>><?= gettext('Morning') ?></option>
+                                <option value="2" <?php if ($iSocial == 2) {
+                                    echo 'selected';
+                                } ?>><?= gettext('Afternoon') ?></option>
+                                <option value="3" <?php if ($iSocial == 3) {
+                                    echo 'selected';
+                                } ?>><?= gettext('Night') ?></option>
+                                <option value="4" <?php if ($iSocial == 4) {
+                                    echo 'selected';
+                                } ?>><?= gettext('8 Changable') ?></option>
+                                <option value="5" <?php if ($iSocial == 5) {
+                                    echo 'selected';
+                                } ?>><?= gettext('12 Changable') ?></option>
+                                <option value="6" <?php if ($iSocial == 6) {
+                                    echo 'selected';
+                                } ?>><?= gettext('24 Hours') ?></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3">
+                        <label><?= gettext('Wedding Date') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-heart-o"></i>
+                            </div>
+                            <input type="text" name="RecDate" class="form-control date-picker"
+                                   value="<?= $dRecDate ?>" maxlength="10" id="recdate" size="11"
+                                   placeholder="YYYY-MM-DD">
+                            <?php if ($sRecDateError) {
+                                ?><font
+                                        color="red"><?= $sRecDateError ?></font><?php
+                            } ?>
+                        </div>
+                    </div>
+                </div>
+                <p/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="RecChurch"><?= gettext('Church of Recognition') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-bank" aria-hidden="true"></i>
+                            </div>
+                        <input type="text" name="RecChurch" id="RecChurch"
+                               value="<?= htmlentities(stripslashes($sRecChurch), ENT_NOQUOTES, 'UTF-8') ?>"
+                               class="form-control" placeholder="<?= gettext('Church of Recognition') ?>">
+                    </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="RecFather"><?= gettext('Recognition Father') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                        <input type="text" name="RecFather" id="RecFather"
+                               value="<?= htmlentities(stripslashes($sRecFather), ENT_NOQUOTES, 'UTF-8') ?>"
+                               class="form-control" placeholder="<?= gettext('Recognition Father') ?>">
+                    </div>
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3">
+                        <label><?= gettext('Last Recognition') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" name="RecDate" class="form-control date-picker"
+                                   value="<?= $dRecDate ?>" maxlength="10" id="recdate" size="11"
+                                   placeholder="YYYY-MM-DD">
+                            <?php if ($sRecDateError) {
+                                ?><font
+                                        color="red"><?= $sRecDateError ?></font><?php
+                            } ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -945,11 +1354,11 @@ require 'Include/Header.php';
                         <input type="text" name="HomePhone"
                                value="<?= htmlentities(stripslashes($sHomePhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask>
-                        <br><input type="checkbox" name="NoFormat_HomePhone"
+                    </div>
+                    <br><input type="checkbox" name="NoFormat_HomePhone"
                                    value="1" <?php if ($bNoFormat_HomePhone) {
                             echo ' checked';
                         } ?>><?= gettext('Do not auto-format') ?>
-                    </div>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="WorkPhone">
@@ -963,17 +1372,17 @@ require 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa fa-phone-square"></i>
                         </div>
                         <input type="text" name="WorkPhone"
                                value="<?= htmlentities(stripslashes($sWorkPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="30" class="form-control"
                                data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt')?>"' data-mask/>
+                    </div>
                         <br><input type="checkbox" name="NoFormat_WorkPhone"
                                    value="1" <?php if ($bNoFormat_WorkPhone) {
                             echo ' checked';
                         } ?>><?= gettext('Do not auto-format') ?>
-                    </div>
                 </div>
 
                 <div class="form-group col-md-3">
@@ -988,16 +1397,16 @@ require 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa fa-mobile"></i>
                         </div>
                         <input type="text" name="CellPhone"
                                value="<?= htmlentities(stripslashes($sCellPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask>
+                    </div>
                         <br><input type="checkbox" name="NoFormat_CellPhone"
                                    value="1" <?php if ($bNoFormat_CellPhone) {
                             echo ' checked';
                         } ?>><?= gettext('Do not auto-format') ?>
-                    </div>
                 </div>
             </div>
             <p/>
@@ -1028,7 +1437,7 @@ require 'Include/Header.php';
                     <label for="WorkEmail"><?= gettext('Work / Other Email') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-envelope"></i>
+                            <i class="fa fa-envelope-o"></i>
                         </div>
                         <input type="text" name="WorkEmail"
                                value="<?= htmlentities(stripslashes($sWorkEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1053,6 +1462,10 @@ require 'Include/Header.php';
             <div class="row">
               <div class="form-group col-md-3 col-lg-3">
                 <label><?= gettext('Classification') ?>:</label>
+                  <div class="input-group">
+                      <div class="input-group-addon">
+                          <i class="fa fa-list-ul"></i>
+                      </div>
                 <select name="Classification" class="form-control">
                   <option value="0"><?= gettext('Unassigned') ?></option>
                   <option value="0" disabled>-----------------------</option>
@@ -1065,6 +1478,7 @@ require 'Include/Header.php';
                             echo '>'.$lst_OptionName.'&nbsp;';
                         } ?>
                 </select>
+                  </div>
               </div>
                 <div class="form-group col-md-3 col-lg-3">
                     <label><?= gettext('Membership Date') ?>:</label>
@@ -1072,10 +1486,9 @@ require 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <!-- Philippe Logel -->
                         <input type="text" name="MembershipDate" class="form-control date-picker"
-                               value="<?= change_date_for_place_holder($dMembershipDate) ?>" maxlength="10" id="sel1" size="11"
-                               placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
+                               value="<?= $dMembershipDate ?>" maxlength="10" id="sel1" size="11"
+                               placeholder="YYYY-MM-DD">
                         <?php if ($sMembershipDateError) {
                             ?><font
                             color="red"><?= $sMembershipDateError ?></font><?php
@@ -1090,8 +1503,8 @@ require 'Include/Header.php';
                       <i class="fa fa-calendar"></i>
                     </div>
                     <input type="text" name="FriendDate" class="form-control date-picker"
-                           value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10" id="sel2" size="10"
-                           placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
+                           value="<?= $dFriendDate ?>" maxlength="10" id="sel2" size="10"
+                           placeholder="YYYY-MM-DD">
                     <?php if ($sFriendDateError) {
                             ?><font
                       color="red"><?php echo $sFriendDateError ?></font><?php
