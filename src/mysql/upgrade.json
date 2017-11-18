@@ -151,7 +151,9 @@
             "2.8.14",
             "2.8.15"
         ],
-        "scripts": [],
+        "scripts": [
+            "/mysql/upgrade/2.9.0-InnoDB.php"
+        ],
         "dbVersion": "2.9.0"
     }
 }
