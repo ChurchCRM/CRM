@@ -7,6 +7,7 @@
  *
  *  Additional Contributors:
  *  2006-2007 Ed Davis
+ *	2017 Philippe Logel
  *
  *
  *  Copyright Contributors
@@ -50,7 +51,7 @@ $defaultRole = ListOptionQuery::create()->filterById($thisGroup->getRoleListId()
 if ($thisGroup->getType() > 0) {
     $sGroupType = ListOptionQuery::create()->filterById(3)->filterByOptionId($thisGroup->getType())->findOne()->getOptionName();
 } else {
-    $sGroupType = gettext('Undefined');
+    $sGroupType = gettext('Unassigned');
 }
 
 //Get the Properties assigned to this Group
@@ -439,11 +440,11 @@ require 'Include/Header.php';
                   bootbox.confirm({
                     title: "<?= gettext("Confirm Delete Group") ?>",
                     message: '<p style="color: red">'+
-                      '<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>'+
-                      '<p>'+
-                      '<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>'+
-                      '</p><p>'+
-                      '<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>',
+                      "<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>"+
+                      "<p>"+
+                      "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>"+
+                      "</p><p>"+
+                      "<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
                     callback: function (result) {
                       if (result)
                       {

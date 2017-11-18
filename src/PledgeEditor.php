@@ -795,7 +795,11 @@ require 'Include/Header.php';
         },
         responsive:true,
         paging: false,
-        searching: false
+        searching: false,
+        "dom": window.CRM.plugin.dataTable.dom,
+        "tableTools": {
+            "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
+        },
     });
     
     

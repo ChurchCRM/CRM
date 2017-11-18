@@ -115,6 +115,10 @@ require 'Include/Header.php';
       url: window.CRM.root + "/api/kiosks/",
       dataSrc: "KioskDevices"
     },
+    "dom": window.CRM.plugin.dataTable.dom,
+    "tableTools": {
+        "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
+    },
     columns: [
       {
         width: 'auto',

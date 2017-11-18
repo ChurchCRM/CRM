@@ -8,6 +8,8 @@ use ChurchCRM\dto\ChurchMetaData;
 $sPageTitle = gettext("Family Verification");
 
 require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
+
+$doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
   <div class="row">
     <div id="right-buttons" class="btn-group" role="group">
@@ -16,11 +18,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   </div>
   <div class="box box-info" id="verifyBox">
     <div class="panel-body">
-      <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200"
-           data-name="<?= $family->getName() ?>"
-           <?php if ( $family->getThumbnailBytes() != FALSE ) { ?>
-           src="data:image/png;base64,<?= base64_encode($family->getThumbnailBytes()) ?>"
-           <?php } ?>>
+      <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200" src="data:image/png;base64,<?= base64_encode($family->getPhoto()->getThumbnailBytes()) ?>" >
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
@@ -41,9 +39,11 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       </div>
     </div>
     <div class="border-right border-left">
-      <section id="map">
-        <div id="map1"></div>
-      </section>
+      <?php if ($doShowMap) { ?>
+        <section id="map">
+          <div id="map1"></div>
+        </section>
+      <?php } ?>
     </div>
     <div class="box box-solid">
       <div class="box-header">
@@ -55,13 +55,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
           <div class="col-md-3 col-sm-4">
             <div class="box box-primary">
               <div class="box-body box-profile">
-                 <img class="profile-user-img img-responsive img-circle initials-image"
-                      data-name="<?= $person->getFullName() ?>"
-                       <?php if ( $person->getThumbnailBytes() != FALSE)
-                        {?>
-                      src="data:image/png;base64,<?= base64_encode($person->getThumbnailBytes()) ?>">
-                        <?php } ?>
-
+                 <img class="profile-user-img img-responsive img-circle initials-image" src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
 
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
 
@@ -122,10 +116,14 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   </div>
 
 
-  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
+  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>"></script>
 
   <script>
-    var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+    <?php if ($doShowMap) { ?>
+      var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+    <?php } else { ?>
+      var LatLng = null;
+    <?php } ?>
     var token = '<?= $token->getToken()?>';
   </script>
 
@@ -198,8 +196,6 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
 </style>
 
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/randomcolor/randomColor.js"></script>
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/js/initial.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyVerify.js"></script>
 
 <?php

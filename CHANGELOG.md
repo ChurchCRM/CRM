@@ -1,5 +1,63 @@
 # Changelog
 
+## 2.8.15 (15/11/2017)
+
+#### Enhancements:
+
+- [**enhancement**][**Web Report**] View Photo in Real Image Size [#2075](https://github.com/ChurchCRM/CRM/issues/2075)
+- [**enhancement**][**Feature: Members**][**UI**] Standardize the images background when using Initials [#2027](https://github.com/ChurchCRM/CRM/issues/2027)
+- [**enhancement**][**Performance**] Performance limits exceeded on shared hosting when viewing large cart [#1807](https://github.com/ChurchCRM/CRM/issues/1807)
+- [**enhancement**][**Feature: Members**][**Feature: Sunday School**][**Web Report**] Sunday School class info section- need a scroll bar to page to the right option sooner than bottom of page [#886](https://github.com/ChurchCRM/CRM/issues/886)
+
+#### Core Functionality
+
+- [**Feature: Reports**][**Web Report**] Need less formal "Display Name" for Mailing Labels [#3247](https://github.com/ChurchCRM/CRM/issues/3247)
+- [**Feature: Reports**][**Feature: Sunday School**] PhotoBook fails if images are not PNG format [#3245](https://github.com/ChurchCRM/CRM/issues/3245)
+- [**Feature: Reports**][**Feature: Sunday School**] Sunday School Photo Book does not loop [#3236](https://github.com/ChurchCRM/CRM/issues/3236)
+- [**Feature: Reports**] Bug in printing of birth dates in directory PDF [#3168](https://github.com/ChurchCRM/CRM/issues/3168)
+- [**Installation / Upgrade**] MYSQL Error: myphpadmin in XAMPP/WAMP  [#3040](https://github.com/ChurchCRM/CRM/issues/3040)
+- [**Installation / Upgrade**] Setting up churchcrm but stuck [#3039](https://github.com/ChurchCRM/CRM/issues/3039)
+- [**Feature: Data Import / Export**][**Feature: Sunday School**] Add option to export on this page [#3026](https://github.com/ChurchCRM/CRM/issues/3026)
+- [**API**][**Feature: Data Import / Export**][**Feature: Groups**] Add export option to this page [#3025](https://github.com/ChurchCRM/CRM/issues/3025)
+- [**Installation / Upgrade**][**Platform: Dependencies**][**Platform: Self-Hosted**] IIS Infinite Redirects on First Login [#2974](https://github.com/ChurchCRM/CRM/issues/2974)
+- [**Feature: Members**] PersonView: Initials Photo [#2203](https://github.com/ChurchCRM/CRM/issues/2203)
+- [**Installation / Upgrade**][**Platform: Self-Hosted**][**Platform: Shared Hosting**][**question**] HTTP ERROR 500 after Setup [#2156](https://github.com/ChurchCRM/CRM/issues/2156)
+- [**enhancement**][**Feature: Members**][**UI**] Standardize the images background when using Initials [#2027](https://github.com/ChurchCRM/CRM/issues/2027)
+- [**help wanted**][**Installation / Upgrade**][**Platform: Self-Hosted**][**Platform: Shared Hosting**][**question**] Create a install guide on popular hosting providers [#1236](https://github.com/ChurchCRM/CRM/issues/1236)
+- [**Installation / Upgrade**][**question**] Update "Upgrade" documentation [#1128](https://github.com/ChurchCRM/CRM/issues/1128)
+- [**enhancement**][**Feature: Members**][**Feature: Sunday School**][**Web Report**] Sunday School class info section- need a scroll bar to page to the right option sooner than bottom of page [#886](https://github.com/ChurchCRM/CRM/issues/886)
+
+#### Localization:
+
+- [**Localization**] Awkwardly translated "Update" String [#3066](https://github.com/ChurchCRM/CRM/issues/3066)
+- [**Localization**] Add support for Indonesian [#2928](https://github.com/ChurchCRM/CRM/issues/2928)
+
+#### Performance:
+
+- [**Backend System**][**Performance**] Photo logic is ugly [#3276](https://github.com/ChurchCRM/CRM/issues/3276)
+- [**enhancement**][**Performance**] Performance limits exceeded on shared hosting when viewing large cart [#1807](https://github.com/ChurchCRM/CRM/issues/1807)
+
+#### Bug fixes:
+
+- [**bug**] Locked Account message has HTML [#2968](https://github.com/ChurchCRM/CRM/issues/2968)
+
+#### Inner Beauty:
+
+- [**Backend System**][**Performance**] Photo logic is ugly [#3276](https://github.com/ChurchCRM/CRM/issues/3276)
+- [**Backend System**][**development**] Remove PersonService getPersonsJSON [#3120](https://github.com/ChurchCRM/CRM/issues/3120)
+- [**development**] Add CodeOwners [#3074](https://github.com/ChurchCRM/CRM/issues/3074)
+
+---
+
+## 2.8.14 (10/11/2017)
+
+#### Core Functionality
+
+- [**Feature: Emails**][**Feature: Members**] Cannot self-verify family if no geo-location information [#3128](https://github.com/ChurchCRM/CRM/issues/3128)
+- [**Feature: Groups**] Group Copy/Move Modal Behavior [#1034](https://github.com/ChurchCRM/CRM/issues/1034)
+
+---
+
 ## 2.8.13 (31/10/2017)
 
 #### Core Functionality
@@ -19,7 +77,7 @@
 
 #### Core Functionality
 
-- [**Installation / Upgrade**][**please address comments**] You don\'t have permission to access /churchcrm/SystemSettings.php on this server [#3038](https://github.com/ChurchCRM/CRM/issues/3038)
+- [**Installation / Upgrade**] You don\'t have permission to access /churchcrm/SystemSettings.php on this server [#3038](https://github.com/ChurchCRM/CRM/issues/3038)
 
 #### Localization:
 
@@ -1305,7 +1363,10 @@
 ---
 
 ## 2.1.10 (03/08/2016)
-*No changelog for this release.*
+
+#### Enhancements:
+
+- [**enhancement**] Favicon [#893](https://github.com/ChurchCRM/CRM/issues/893)
 
 ---
 
