@@ -184,12 +184,9 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
 // Checkin/Checkout Section update db
 if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['CheckIn']) || isset($_POST['CheckOut']) || isset($_POST['Delete']))) {
     //Fields -> event_id, person_id, checkin_date, checkin_id, checkout_date, checkout_id
-    if (isset($_POST['CheckIn']) && $iChildID > 0) {
-        $attendee = EventAttendQuery::create()
-            ->filterByEventId($EventID)
-            ->findOneByPersonId($iChildID);
-        if ($attendee) {
-            ?>
+    if (isset($_POST['CheckIn']) && !empty($iChildID)) {
+        $attendee = EventAttendQuery::create()->filterByEventId($EventID)->findOneByPersonId($iChildID);
+        if ($attendee) { ?>
             <script>
                 $('#errorcallout').text('<?= gettext("Person has been already checked in for this event") ?>').fadeIn();
             </script>
@@ -199,7 +196,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
             $attendee->setEventId($EventID);
             $attendee->setPersonId($iChildID);
             $attendee->setCheckinDate(date("Y-m-d H:i:s"));
-            if ($iAdultID) {
+            if (!empty($iAdultID)) {
                 $attendee->setCheckinId($iAdultID);
             }
             $attendee->save();
@@ -398,34 +395,28 @@ if (isset($_POST['EventID'])) {
         var $input = $("#child, #adult, #adultout");
         $input.autocomplete({
             source: function (request, response) {
-                console.log('empty');
                 $.ajax({
                     url: window.CRM.root + '/api/persons/search/'+request.term,
                     dataType: 'json',
                     type: 'GET',
-                    success: function (rdata) {
-                        console.log(rdata);
-                        data = JSON.parse(rdata);
-                        if(data.length > 0) {
-                            data = data[0];
-                            response($.map(data.persons, function (item) {
-                                var val=item.displayName + (item.role ? '- (' + item.role + ')':'');
-                                return {
-                                    value: val,
-                                    id: item.id,
-                                    obj:item
-                                }
-                            }));
-                        }
-
+                    success: function (data) {
+                        console.log(data);
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.text,
+                                value: item.objid,
+                                obj:item
+                            };
+                        }));
                     }
                 })
             },
             minLength: 2,
             select: function(event,ui) {
-                $('[id=' + event.target.id + ']' ).val(ui.item.value);
-                $('[id=' + event.target.id + '-id]').val(ui.item.id);
+                $('[id=' + event.target.id + ']' ).val(ui.item.obj.text);
+                $('[id=' + event.target.id + '-id]').val(ui.item.obj.objid);
                 SetPersonHtml($('#' + event.target.id + 'Details'),ui.item.obj);
+                return false;
             }
         });
 
@@ -435,10 +426,8 @@ if (isset($_POST['EventID'])) {
         if(perArr) {
             element.html(
                 '<div class="text-center">' +
-                '<a target="_top" href="PersonView.php?PersonID=' + perArr.id + '"><h4>' + perArr.displayName + '</h4></a>' +
-                '<div class="">' + perArr.familyRole + '</div>' +
-                '<div class="text-center">' + perArr.address + '</div>' +
-                '<img src="' + window.CRM.root + '/api/persons/' + perArr.id + '/thumbnail"' +
+                '<a target="_top" href="PersonView.php?PersonID=' + perArr.objid + '"><h4>' + perArr.text + '</h4></a>' +
+                '<img src="' + window.CRM.root + '/api/persons/' + perArr.objid + '/thumbnail"' +
                 'class="initials-image profile-user-img img-responsive img-circle"> </div>'
             );
             element.removeClass('hidden');
