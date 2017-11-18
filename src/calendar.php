@@ -124,11 +124,7 @@ require 'Include/Header.php'; ?>
   var anniversary = true;
   var birthday    = true;
   var withlimit   = false;
-  var isModifiable  = <?php if ($_SESSION['bAddEvent']) {
-                    echo "true";
-                } else {
-                    echo "false";
-                } ?>;
+  var isModifiable  = <?php if($_SESSION['bAddEvent'])echo "true"; else echo "false"; ?>;
   
  
   var birthD = localStorage.getItem("birthday");
@@ -152,6 +148,9 @@ require 'Include/Header.php'; ?>
   {
     if (wLimit == 'checked')
       withlimit=true;
+    else
+      withlimit=false;
+      
     $('#isWithLimit').prop('checked', withlimit);
   }  
   
