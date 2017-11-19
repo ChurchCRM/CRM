@@ -742,6 +742,9 @@ CREATE TABLE `person_per` (
   `per_EditedBy` smallint(5) unsigned default '0',
   `per_FriendDate` date default NULL,
   `per_Flags` mediumint(9) NOT NULL default '0',
+  `per_FacebookID` bigint(20) unsigned default NULL,
+  `per_Twitter` varchar(50) default NULL,
+  `per_LinkedIn` varchar(50) default NULL,
   PRIMARY KEY  (`per_ID`),
   KEY `per_ID` (`per_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
