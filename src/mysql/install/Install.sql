@@ -247,9 +247,8 @@ CREATE TABLE `events_event` (
   `event_typename` varchar(40) NOT NULL default '',
   `event_grpid` mediumint(9),
 
-  PRIMARY KEY  (`event_id`),
-  FULLTEXT KEY `event_txt` (`event_text`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+  PRIMARY KEY  (`event_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `events_event`
