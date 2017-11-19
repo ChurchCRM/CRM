@@ -1,5 +1,3 @@
-<?php
-
 use Propel\Runtime\Propel;
 use ChurchCRM\Utils\LoggerUtils;
 
@@ -10,28 +8,27 @@ global $sDATABASE;
 
 $logger->info("Upgrade " . $sDATABASE. " to InnoDB started ");
 
-//this is needed as we create DB tables on the fly and we don't know what they are at upgrade time.
-$sqlUpgrade = "SELECT CONCAT('ALTER TABLE ',TABLE_NAME,' ENGINE=InnoDB;') as alterSQL
-    FROM INFORMATION_SCHEMA.TABLES
-    WHERE ENGINE='MyISAM'
-    AND table_schema = '". $sDATABASE ."';";
+global $sDATABASE;
+    
+$sql = "ALTER TABLE events_event DROP INDEX event_txt;";
+$rs = RunQuery($sql);
 
-$statement = $connection->prepare($sqlUpgrade);
-$statement->execute();
-$dbTablesSQLs = $statement->fetchAll();
+$logger->info("Upgrade: " . $rs); 
 
-
-
-foreach ($dbTablesSQLs as $dbAlter) {
-    $alterSQL = $dbAlter ['alterSQL'];
-    if (! strpos("$alterSQL", "events_event")) {
-        $logger->info("Upgrade: " . $alterSQL);
-        $dbAlterStatement = $connection->prepare($alterSQL);
-        $dbAlterStatement->execute();
-        $logger->info("Upgrade: " . $alterSQL . " done.");
-    } else {
-        $logger->info("Upgrade: " . $alterSQL . " SKIPPED.");
-    }
+$sql = "SHOW TABLES FROM `".$sDATABASE."`";
+$rs = RunQuery($sql);
+$logger->info("Upgrade: " . $sql);    
+    
+while ($row = mysqli_fetch_row($rs)) {
+  $sql = "ALTER TABLE ".$row[0]." ENGINE = InnoDB;";
+  $rs2 = RunQuery($sql);
+    
+  $logger->info("Upgrade: " . $sql); 
 }
+    
+$sql = "ALTER TABLE events_event ADD FULLTEXT KEY `event_txt` (`event_text`);";
+$rs = RunQuery($sql);
+
+$logger->info("Upgrade: " . $sql); 
 
 $logger->info("Upgrade " . $sDATABASE. " to InnoDB finished ");
