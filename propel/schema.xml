@@ -11,7 +11,7 @@
             <unique-column name="ver_version"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -57,9 +57,6 @@
                 defaultValue="0"/>
         <column name="per_FriendDate" phpName="FriendDate" type="DATE"/>
         <column name="per_Flags" phpName="Flags" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-        <column name="per_FacebookID" phpName="FacebookID" type="bigint" size="20" Description="FacebookID" />
-        <column name="per_Twitter" phpName="Twitter" type="VARCHAR" size="50" Description="Twitter username" />
-        <column name="per_LinkedIn" phpName="LinkedIn" type="VARCHAR" size="50" Description="LinkedIn name" />
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>
@@ -67,7 +64,7 @@
             <reference local="per_fam_ID" foreign="fam_ID"/>
         </foreign-key>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="whycame_why" idMethod="native" phpName="WhyCame" description="This contains the comments related to why people came">
@@ -82,15 +79,32 @@
             <reference local="why_per_ID" foreign="per_ID"/>
         </foreign-key>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="person_custom" idMethod="native" phpName="PersonCustom" description="Person custom fields">
         <column name="per_ID" phpName="PerId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
+    </table>
+    <table name="person_calendar" idMethod="native" phpName="PersonCalendar">
+      <column name="per_cal_id" phpName="PerCalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+      <column name="person_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+      <column name="per_cal_Name" phpName="PerCalName" type="VARCHAR" size="50" required="true" defaultValue=""/>
+      <column name="per_cal_creation" phpName="PerCalCreation" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+      <column name="per_cal_desc" phpName="PerCalDesc" type="LONGVARCHAR"/>
+      <column name="per_cal_color" phpName="PerCalColor" type="VARCHAR" size="10" required="true" defaultValue="#DC143C"/>
+      <foreign-key foreignTable="person_per" name="fk_per_cal_ID" onDelete="CASCADE">
+        <reference local="person_ID" foreign="per_ID"/>
+      </foreign-key>
+      <index name="fk_per_cal_ID">
+        <index-column name="person_ID"/>
+      </index>
+      <vendor type="mysql">
+        <parameter name="Engine" value="InnoDB"/>
+      </vendor>
     </table>
     <table name="person_custom_master" idMethod="native" phpName="PersonCustomMaster" description="This contains definitions for the custom person fields">
         <column name="custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
@@ -102,7 +116,7 @@
         <column name="custom_FieldSec" phpName="CustomFieldSec" type="TINYINT" required="true"/>
         <column name="type_ID" phpName="TypeId" type="TINYINT" required="true" defaultValue="0"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -143,7 +157,7 @@
             <index-column name="fam_ID"/>
         </index>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
@@ -157,14 +171,14 @@
         <column name="fam_custom_FieldSec" phpName="CustomFieldSec" type="TINYINT" required="true" defaultValue="1"/>
         <column name="type_ID" phpName="TypeId" type="TINYINT" required="true" defaultValue="0"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="family_custom" idMethod="native" phpName="FamilyCustom">
         <column name="fam_ID" phpName="FamId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -192,7 +206,7 @@
             <reference local="nte_fam_ID" foreign="fam_ID"/>
         </foreign-key>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -207,7 +221,7 @@
             <unique-column name="cfg_name"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -229,10 +243,33 @@
         <column name="sortorder" phpName="SortOrder" type="TINYINT" size="3" required="true"/>
         <column name="icon" phpName="Icon" type="VARCHAR" size="50"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-
+    <table name="group_calendar_persons" idMethod="native" phpName="GroupCalendarPersons">
+      <column name="grp_cal_id" phpName="GrpCalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+      <column name="group_ID" phpName="GroupId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+      <column name="person_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+      <column name="grp_cal_creation" phpName="GrpCalCreation" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+      <column name="grp_cal_desc" phpName="GrpCalDesc" type="LONGVARCHAR"/>
+      <column name="grp_cal_color" phpName="GrpCalColor" type="VARCHAR" size="10" required="true" defaultValue="#8A2BE2"/>
+      <column name="grp_cal_right" phpName="GrpCalRight" type="TINYINT" required="true" defaultValue="6"/>
+      <foreign-key foreignTable="group_grp" name="fk_grp_cal_ID" onDelete="CASCADE">
+        <reference local="group_ID" foreign="grp_ID"/>
+      </foreign-key>
+      <foreign-key foreignTable="person_per" name="fk_grp_per_cal_ID" onDelete="SET NULL">
+        <reference local="person_ID" foreign="per_ID"/>
+      </foreign-key>
+      <index name="fk_grp_cal_ID">
+        <index-column name="group_ID"/>
+      </index>
+      <index name="fk_grp_per_cal_ID">
+        <index-column name="person_ID"/>
+      </index>
+      <vendor type="mysql">
+        <parameter name="Engine" value="InnoDB"/>
+      </vendor>
+    </table>
     <table name="group_grp" idMethod="native" phpName="Group" description="This contains the name and description for each group, as well as foreign keys to the list of group roles">
         <column name="grp_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
@@ -245,18 +282,28 @@
         <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="BOOLEAN" defaultValue="0"/>
         <column name="grp_active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
         <column name="grp_include_email_export" phpName="IncludeInEmailExport" type="BOOLEAN" size="1" required="true" description="Should members of this group be included in MailChimp Export"/>
-        <foreign-key foreignTable="list_lst">
-            <reference local="grp_RoleListID" foreign="lst_ID"/>
-            <reference local="grp_Type" foreign="lst_OptionID"/>
+        <column name="group_manager_id" phpName="GroupManagerId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="group_parent_id" phpName="GroupParentId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <foreign-key foreignTable="group_grp" name="fk_grp_parent_ID" onDelete="SET NULL">
+          <reference local="group_parent_id" foreign="grp_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="fk_manager_ID" onDelete="SET NULL">
+          <reference local="group_manager_id" foreign="per_ID"/>
         </foreign-key>
         <index name="grp_ID_2">
-            <index-column name="grp_ID"/>
+          <index-column name="grp_ID"/>
+        </index>
+        <index name="fk_manager_ID">
+          <index-column name="group_manager_id"/>
+        </index>
+        <index name="fk_grp_parent_ID">
+          <index-column name="group_parent_id"/>
         </index>
         <unique name="grp_ID">
-            <unique-column name="grp_ID"/>
+          <unique-column name="grp_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+          <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="groupprop_master" idMethod="native" phpName="GroupPropMaster" description="This contains definitions for the group-specific fields">
@@ -273,7 +320,7 @@
         <column name="prop_PersonDisplay" phpName="PersonDisplay" type="CHAR" sqlType="enum('false','true')"
                 required="true" defaultValue="false"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -297,7 +344,7 @@
         </foreign-key>
          
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -343,7 +390,7 @@
             <unique-column name="aut_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="canvassdata_can" idMethod="native" phpName="CanvassData" description="this contains information about the results of canvassing families">
@@ -365,7 +412,7 @@
             <unique-column name="can_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="deposit_dep" idMethod="native" phpName="Deposit" description="This records deposits / payments">
@@ -378,7 +425,7 @@
         <column name="dep_Type" phpName="Type" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft','eGive')"
                 required="true" defaultValue="Bank"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="donateditem_di" idMethod="native" phpName="DonatedItem">
@@ -404,7 +451,7 @@
             <unique-column name="di_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="donationfund_fun" idMethod="native" phpName="DonationFund" description="This contains the defined donation funds">
@@ -418,7 +465,7 @@
             <unique-column name="fun_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="egive_egv" idMethod="native" phpName="Egive">
@@ -429,7 +476,7 @@
         <column name="egv_EnteredBy" phpName="EnteredBy" type="SMALLINT" required="true" defaultValue="0"/>
         <column name="egv_EditedBy" phpName="EditedBy" type="SMALLINT" required="true" defaultValue="0"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="email_message_pending_emp" idMethod="native" phpName="EmailMessagePending">
@@ -442,7 +489,7 @@
         <column name="emp_attach_name" phpName="AttachName" type="LONGVARCHAR"/>
         <column name="emp_attach" phpName="Attach" type="BOOLEAN" size="1"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="email_recipient_pending_erp" idMethod="native" phpName="EmailRecipientPending">
@@ -456,7 +503,7 @@
         <column name="erp_email_address" phpName="EmailAddress" type="VARCHAR" size="50" required="true"
                 defaultValue=""/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="event_attend" idMethod="native" phpName="EventAttend" description="this indicates which people attended which events">
@@ -478,7 +525,7 @@
             <unique-column name="person_id"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="event_types" idMethod="native" phpName="EventTypes">
@@ -498,7 +545,7 @@
             <reference local="type_grpid" foreign="grp_ID"/>
         </foreign-key>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="eventcountnames_evctnm" idMethod="native" phpName="EventCountName">
@@ -514,7 +561,7 @@
             <unique-column name="evctnm_countname"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="eventcounts_evtcnt" idMethod="native" phpName="EventCounts">
@@ -526,7 +573,7 @@
         <column name="evtcnt_countcount" phpName="EvtcntCountcount" type="INTEGER" size="6"/>
         <column name="evtcnt_notes" phpName="EvtcntNotes" type="VARCHAR" size="20"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="events_event" idMethod="native" phpName="Event" description="This contains events">
@@ -540,14 +587,25 @@
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
         <column name="event_typename" phpName="TypeName" type="VARCHAR" size="40" required="true" defaultValue=""/>
         <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
-        <foreign-key foreignTable="group_grp">
-            <reference local="event_grpid" foreign="grp_ID"/>
+        <column name="event_grp_cal_id" phpName="EventGrpCalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="event_per_cal_id" phpName="EventPerCalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <foreign-key foreignTable="group_calendar_persons" name="fk_event_grp_cal_id" onDelete="SET NULL">
+          <reference local="event_grp_cal_id" foreign="grp_cal_id"/>
         </foreign-key>
+        <foreign-key foreignTable="person_calendar" name="fk_evnt_per_cal_ID" onDelete="CASCADE">
+          <reference local="event_per_cal_id" foreign="per_cal_id"/>
+        </foreign-key>
+        <index name="fk_event_grp_cal_id">
+        <index-column name="event_grp_cal_id"/>
+        </index>
+        <index name="fk_evnt_per_cal_ID">
+          <index-column name="event_per_cal_id"/>
+        </index>
         <index name="event_txt">
-            <index-column name="event_text"/>
+          <index-column name="event_text"/>
         </index>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -564,7 +622,7 @@
             <unique-column name="fr_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -600,7 +658,7 @@
             <reference local="plg_FamID" foreign="fam_ID"/>
         </foreign-key>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -610,7 +668,7 @@
         <column name="lst_OptionSequence" phpName="OptionSequence" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0" description="The order in which to display items in this list" />
         <column name="lst_OptionName" phpName="OptionName" type="VARCHAR" size="50" required="true" defaultValue="" description="The actual value for this list option"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -660,7 +718,7 @@
             <reference local="usr_per_ID" foreign="per_ID"/>
         </foreign-key>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -680,7 +738,7 @@
         </foreign-key>
 
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -694,7 +752,7 @@
             <unique-column name="vol_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -724,7 +782,7 @@
             <unique-column name="qrp_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     
@@ -769,7 +827,7 @@
         <column name="reference_id" phpName="ReferenceId" type="INTEGER" defaultValue=""/>
         <column name="remainingUses" phpName="RemainingUses" type="INTEGER" defaultValue="0"/>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -787,7 +845,7 @@
         </foreign-key>
 
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -809,7 +867,7 @@
             <unique-column name="pro_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -825,7 +883,7 @@
             <unique-column name="prt_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -837,7 +895,7 @@
             <unique-column name="p2vo_ID"/>
         </unique>
         <vendor type="mysql">
-            <parameter name="Engine" value="MyISAM"/>
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
@@ -861,7 +919,7 @@
    <column name="lu_ErrorCodes" phpName="LuErrorcodes" type="VARCHAR" size="10"/>
    <column name="lu_ErrorDesc" phpName="LuErrordesc" type="VARCHAR" size="255"/>
    <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
+     <parameter name="Engine" value="InnoDB"/>
    </vendor>
  </table>
  <table name="multibuy_mb" idMethod="native" phpName="MultibuyMb" >
@@ -873,7 +931,7 @@
      <unique-column name="mb_ID"/>
    </unique>
    <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
+     <parameter name="Engine" value="InnoDB"/>
    </vendor>
  </table>
 
@@ -886,7 +944,7 @@
      <unique-column name="pn_ID"/>
    </unique>
    <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
+     <parameter name="Engine" value="InnoDB"/>
    </vendor>
  </table>
 
@@ -906,7 +964,7 @@
      <unique-column name="qry_ID"/>
    </unique>
    <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
+     <parameter name="Engine" value="InnoDB"/>
    </vendor>
  </table>
  <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryparameteroptionsQpo" description="Defines the values for the parameters for each query">
@@ -918,7 +976,7 @@
      <unique-column name="qpo_ID"/>
    </unique>
    <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
+     <parameter name="Engine" value="InnoDB"/>
    </vendor>
  </table>
 
@@ -940,9 +998,10 @@
    <column name="res_version" phpName="ResVersion" type="LONGVARCHAR" required="true"/>
    <column name="res_EchoServer" phpName="ResEchoserver" type="LONGVARCHAR" required="true"/>
    <vendor type="mysql">
-     <parameter name="Engine" value="MyISAM"/>
+     <parameter name="Engine" value="InnoDB"/>
    </vendor>
  </table>
  -->
 
 </database>
+
