@@ -283,7 +283,7 @@ class SystemService
 
         return $results[0]['ver_version'];
     }
-    
+
     public function getDBServerVersion()
     {
       try{
@@ -302,8 +302,10 @@ class SystemService
 
     public function upgradeDatabaseVersion()
     {
+        $logger = LoggerUtils::getAppLogger();
         $connection = Propel::getConnection();
         $db_version = $this->getDBVersion();
+        $logger->info("Current Version: " .$db_version);
         if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
             return true;
         }
@@ -317,13 +319,13 @@ class SystemService
                 $version = new Version();
                 $version->setVersion($dbUpdate['dbVersion']);
                 $version->setUpdateStart(new \DateTime());
+                $logger->info("New Version: " .$version->getVersion());
                 foreach ($dbUpdate['scripts'] as $dbScript) {
                     $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
-                    LoggerUtils::getAppLogger()->info("Upgrade DB - " . $scriptName);
-                    if (pathinfo($scriptName, PATHINFO_EXTENSION) == ".sql") {
+                    $logger->info("Upgrade DB - " . $scriptName);
+                    if (pathinfo($scriptName, PATHINFO_EXTENSION) == "sql") {
                         SQLUtils::sqlImport($scriptName, $connection);
-                    } else
-                    {
+                    } else {
                         require_once ($scriptName);
                     }
                 }
@@ -359,7 +361,7 @@ class SystemService
             'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
             'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
             'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json')."\r\n";
-        
+
         if (function_exists('apache_get_modules')) {
             $issueDescription .= 'Apache Modules    |' . implode(',', apache_get_modules());
         }
