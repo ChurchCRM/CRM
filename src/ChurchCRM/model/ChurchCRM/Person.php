@@ -199,15 +199,15 @@ class Person extends BasePerson implements iPhoto
                 $lng = $latLng['Longitude'];
             }
         } else {
-        	// Philippe Logel : this is usefull when a person don't have a family : ie not an address
-        	if (!empty($this->getFamily()))
-        	{
-				if (!$this->getFamily()->hasLatitudeAndLongitude()) {
-					$this->getFamily()->updateLanLng();
-				}
-				$lat = $this->getFamily()->getLatitude();
-				$lng = $this->getFamily()->getLongitude();
-			}
+         // Philippe Logel : this is usefull when a person don't have a family : ie not an address
+         if (!empty($this->getFamily()))
+         {
+    if (!$this->getFamily()->hasLatitudeAndLongitude()) {
+     $this->getFamily()->updateLanLng();
+    }
+    $lat = $this->getFamily()->getLatitude();
+    $lng = $this->getFamily()->getLongitude();
+   }
         }
         return array(
             'Latitude' => $lat,
@@ -413,4 +413,36 @@ class Person extends BasePerson implements iPhoto
       $this->getPhoto()->refresh();
       return parent::postSave($con);
     }
+    
+    public function getAge()
+    {
+       $birthD = $this->getBirthDate();
+   
+       if ($this->hideAge() == 1) 
+       {
+            return '';
+       }
+
+       $ageSuffix = gettext('Unknown');
+
+       $now = date_create('today');
+       $age = date_diff($now,$birthD);
+
+       if ($age->y < 1) {
+         if ($age->m > 1) {
+           $ageSuffix = gettext('mos old');
+         } else {
+           $ageSuffix = gettext('mo old');
+         }
+       } else {
+         if ($age->y > 1) {
+           $ageSuffix = gettext('yrs old');
+         } else {
+           $ageSuffix = gettext('yr old');
+         }
+       }
+
+       return $age->y." ".$ageSuffix;
+    }
+
 }
