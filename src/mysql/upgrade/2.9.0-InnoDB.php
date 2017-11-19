@@ -1,34 +1,29 @@
+<?php
+
 use Propel\Runtime\Propel;
 use ChurchCRM\Utils\LoggerUtils;
 
 $connection = Propel::getConnection();
 $logger = LoggerUtils::getAppLogger();
 
-global $sDATABASE;
+$logger->info("Upgrade to InnoDB started ");
 
-$logger->info("Upgrade " . $sDATABASE. " to InnoDB started ");
 
-global $sDATABASE;
-    
-$sql = "ALTER TABLE events_event DROP INDEX event_txt;";
-$rs = RunQuery($sql);
+$sqlEvents = "ALTER TABLE events_event DROP INDEX event_txt;";
+$connection->exec($sqlEvents);
 
-$logger->info("Upgrade: " . $rs); 
+$logger->info("Dropped events_event INDEX");
 
-$sql = "SHOW TABLES FROM `".$sDATABASE."`";
-$rs = RunQuery($sql);
-$logger->info("Upgrade: " . $sql);    
-    
-while ($row = mysqli_fetch_row($rs)) {
-  $sql = "ALTER TABLE ".$row[0]." ENGINE = InnoDB;";
-  $rs2 = RunQuery($sql);
-    
-  $logger->info("Upgrade: " . $sql); 
+$statement = $connection->prepare("SHOW TABLES");
+$statement->execute();
+$dbTablesSQLs = $statement->fetchAll();
+
+foreach ($dbTablesSQLs as $dbTable) {
+
+    $alterSQL = "ALTER TABLE " . $dbTable[0] . " ENGINE=InnoDB;";
+    $logger->info("Upgrade: " . $alterSQL);
+    $dbAlterStatement = $connection->exec($alterSQL);
+    $logger->info("Upgrade: " . $alterSQL . " done.");
 }
-    
-$sql = "ALTER TABLE events_event ADD FULLTEXT KEY `event_txt` (`event_text`);";
-$rs = RunQuery($sql);
 
-$logger->info("Upgrade: " . $sql); 
-
-$logger->info("Upgrade " . $sDATABASE. " to InnoDB finished ");
+$logger->info("Upgrade to InnoDB finished ");
