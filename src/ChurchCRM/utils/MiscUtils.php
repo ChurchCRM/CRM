@@ -1,7 +1,7 @@
 <?php
 
 namespace ChurchCRM\Utils;
-
+use ChurchCRM\dto\SystemConfig;
 class MiscUtils {
  
 
@@ -20,6 +20,26 @@ class MiscUtils {
           }
       }
       return $word;
+  }
+  
+  public static function getRandomCache($baseCacheTime,$variability){
+    $var = rand(0,$variability);
+    $dir = rand(0,1);
+    if ($dir) {
+      return $baseCacheTime - $var;
+    }
+    else{
+      return $baseCacheTime + $var;
+    }
+    
+  }
+  
+  public static function getPhotoCacheExpirationTimestamp() {
+    $cacheLength = SystemConfig::getValue(iPhotoClientCacheDuration);
+    $cacheLength = MiscUtils::getRandomCache($cacheLength,0.5*$cacheLength);
+    //echo time() +  $cacheLength;
+    //die();
+    return time() + $cacheLength ;
   }
 
 }

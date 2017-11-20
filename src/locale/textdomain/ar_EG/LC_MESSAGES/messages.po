@@ -8,508 +8,1388 @@ msgstr ""
 "Language: ar\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:294
+#: Include/Functions.php:277
 msgid "Cannot execute query."
 msgstr "لا يمكن تنفيذ طلب البحث."
 
-#: AutoPaymentDelete.php:23
+#: AutoPaymentDelete.php:18
 msgid "Confirm Delete Automatic payment"
 msgstr "تأكيد حذف الدفع التلقائي"
 
-#: AutoPaymentDelete.php:67 Checkin.php:293 Checkin.php:376
-#: DepositSlipEditor.php:232 DonationFundEditor.php:156
-#: DonationFundEditor.php:186 EditEventAttendees.php:76
-#: ElectronicPaymentList.php:222 ElectronicPaymentList.php:288
-#: EventNames.php:305 FamilyCustomFieldsEditor.php:335
-#: FamilyCustomFieldsEditor.php:393 FamilyView.php:669 FamilyView.php:721
-#: FamilyView.php:780 FamilyView.php:917 FindDepositSlip.php:108
-#: FundRaiserEditor.php:204 ListEvents.php:250 PaddleNumList.php:60
-#: PersonCustomFieldsEditor.php:319 PersonCustomFieldsEditor.php:388
-#: PersonView.php:917 PledgeDelete.php:57 PropertyList.php:69
-#: PropertyList.php:110 PropertyTypeList.php:44 PropertyTypeList.php:65
-#: PropertyTypeList.php:67
+#: AutoPaymentDelete.php:62 Checkin.php:288 Checkin.php:370
+#: DepositSlipEditor.php:227 DonationFundEditor.php:151
+#: DonationFundEditor.php:181 EditEventAttendees.php:76
+#: ElectronicPaymentList.php:217 ElectronicPaymentList.php:282
+#: EventNames.php:300 FamilyCustomFieldsEditor.php:323
+#: FamilyCustomFieldsEditor.php:381 FamilyView.php:650 FamilyView.php:702
+#: FamilyView.php:761 FamilyView.php:898 FindDepositSlip.php:103
+#: FundRaiserEditor.php:199 ListEvents.php:246 PaddleNumList.php:55
+#: PersonCustomFieldsEditor.php:314 PersonCustomFieldsEditor.php:383
+#: PersonView.php:893 PledgeDelete.php:52 PropertyList.php:64
+#: PropertyList.php:105 PropertyTypeList.php:39 PropertyTypeList.php:60
+#: PropertyTypeList.php:62
 msgid "Delete"
 msgstr "حذف"
 
-#: AutoPaymentDelete.php:68 AutoPaymentEditor.php:791 BatchWinnerEntry.php:116
-#: CanvassEditor.php:243 Checkin.php:172 Checkin.php:281 Checkin.php:294
-#: DirectoryReports.php:290 DonatedItemEditor.php:300 EventNames.php:234
-#: external/templates/verify/verify-family-info.php:155 FamilyEditor.php:1114
-#: FamilyView.php:916 FinancialReports.php:72 FundRaiserEditor.php:147
-#: GroupPropsEditor.php:172 GroupReports.php:87 GroupReports.php:156
-#: LettersAndLabels.php:77 ManageEnvelopes.php:139 MemberRoleChange.php:123
-#: MemberRoleChange.php:125 NoteDelete.php:71 NoteEditor.php:139
-#: PersonEditor.php:1138 PersonView.php:916 PledgeDelete.php:58
-#: PropertyEditor.php:173 PropertyTypeEditor.php:118 Register.php:60
-#: ReminderReport.php:56 SettingsIndividual.php:123 SettingsIndividual.php:169
-#: SettingsUser.php:111 SettingsUser.php:171
-#: sundayschool/SundaySchoolDashboard.php:249
-#: sundayschool/SundaySchoolReports.php:231 TaxReport.php:54
-#: UserEditor.php:475 UserEditor.php:578 WhyCameEditor.php:104
+#: AutoPaymentDelete.php:63 AutoPaymentEditor.php:786 BatchWinnerEntry.php:111
+#: CanvassEditor.php:238 Checkin.php:167 Checkin.php:276 Checkin.php:289
+#: DirectoryReports.php:285 DonatedItemEditor.php:295 EventNames.php:229
+#: FamilyEditor.php:1117 FamilyView.php:897 FinancialReports.php:67
+#: FundRaiserEditor.php:142 GroupPropsEditor.php:167 GroupReports.php:82
+#: GroupReports.php:151 LettersAndLabels.php:82 ManageEnvelopes.php:134
+#: MemberRoleChange.php:118 MemberRoleChange.php:120 NoteDelete.php:66
+#: NoteEditor.php:134 PersonEditor.php:1151 PersonView.php:892
+#: PledgeDelete.php:53 PropertyEditor.php:168 PropertyTypeEditor.php:113
+#: Register.php:55 ReminderReport.php:51 SettingsIndividual.php:111
+#: SettingsIndividual.php:157 SettingsUser.php:99 SettingsUser.php:159
+#: TaxReport.php:54 UserEditor.php:457 UserEditor.php:560
+#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:153
+#: sundayschool/SundaySchoolDashboard.php:258
+#: sundayschool/SundaySchoolReports.php:285
 msgid "Cancel"
 msgstr "الغاء"
 
-#: AutoPaymentEditor.php:133
+#: AutoPaymentEditor.php:128
 msgid "Automatic payment configuration for the "
 msgstr "تهيئة الدفع التلقائي لل␣␣"
 
-#: AutoPaymentEditor.php:790 CanvassEditor.php:242 DepositSlipEditor.php:98
-#: DonatedItemEditor.php:296 FamilyEditor.php:642 FamilyEditor.php:726
-#: FamilyEditor.php:790 FamilyEditor.php:864 FamilyEditor.php:886
-#: FamilyEditor.php:917 FamilyEditor.php:1110 FundRaiserEditor.php:146
-#: GroupEditor.php:150 GroupPropsEditor.php:170 NoteEditor.php:137
-#: PaddleNumEditor.php:151 PersonEditor.php:579 PersonEditor.php:737
-#: PersonEditor.php:780 PersonEditor.php:1037 PersonEditor.php:1099
-#: PersonEditor.php:1134 PledgeEditor.php:690 PropertyEditor.php:173
-#: PropertyTypeEditor.php:116 UserEditor.php:474 UserPasswordChange.php:231
+#: AutoPaymentEditor.php:785 CanvassEditor.php:237 DepositSlipEditor.php:93
+#: DonatedItemEditor.php:291 FamilyEditor.php:645 FamilyEditor.php:729
+#: FamilyEditor.php:793 FamilyEditor.php:867 FamilyEditor.php:889
+#: FamilyEditor.php:920 FamilyEditor.php:1113 FundRaiserEditor.php:141
+#: GroupEditor.php:166 GroupPropsEditor.php:165 NoteEditor.php:132
+#: PaddleNumEditor.php:146 PersonEditor.php:591 PersonEditor.php:749
+#: PersonEditor.php:792 PersonEditor.php:1049 PersonEditor.php:1112
+#: PersonEditor.php:1147 PledgeEditor.php:685 PropertyEditor.php:168
+#: PropertyTypeEditor.php:111 UserEditor.php:456 UserPasswordChange.php:216
 #: WhyCameEditor.php:103
 msgid "Save"
 msgstr "حفظ"
 
-#: AutoPaymentEditor.php:808 BatchWinnerEntry.php:87 BatchWinnerEntry.php:99
-#: CSVImport.php:275 DirectoryReports.php:86 DonatedItemEditor.php:189
-#: DonatedItemEditor.php:240 eGive.php:341 FamilyEditor.php:1084
-#: GroupEditor.php:91 Include/CountryDropDown.php:6 Include/Functions.php:1074
-#: Include/Functions.php:1127 MapUsingGoogle.php:98 MapUsingGoogle.php:122
-#: PaddleNumEditor.php:180 PersonEditor.php:744 PersonEditor.php:760
-#: PersonEditor.php:1045 PrintView.php:249 PrintView.php:259
-#: SelectDelete.php:155 SelectList.php:44 SelectList.php:54 SelectList.php:70
-#: SelectList.php:1119 SelectList.php:1190
+#: AutoPaymentEditor.php:803 BatchWinnerEntry.php:82 BatchWinnerEntry.php:94
+#: CSVImport.php:269 DirectoryReports.php:81 DonatedItemEditor.php:184
+#: DonatedItemEditor.php:235 FamilyEditor.php:1087 GroupEditor.php:93
+#: GroupList.php:35 GroupView.php:54 Include/CountryDropDown.php:6
+#: Include/Functions.php:1083 Include/Functions.php:1136 MapUsingGoogle.php:98
+#: MapUsingGoogle.php:122 PaddleNumEditor.php:175 PersonEditor.php:756
+#: PersonEditor.php:772 PersonEditor.php:1057 PrintView.php:264
+#: PrintView.php:274 SelectDelete.php:155 SelectList.php:34 SelectList.php:44
+#: SelectList.php:60 SelectList.php:1109 SelectList.php:1180 eGive.php:340
 msgid "Unassigned"
 msgstr "غير معين"
 
-#: AutoPaymentEditor.php:828
+#: AutoPaymentEditor.php:823
 msgid "Automatic payment type"
 msgstr "نوع الدفع التلقائي"
 
-#: AutoPaymentEditor.php:858
+#: AutoPaymentEditor.php:853
 msgid "Payment amount"
 msgstr "المبلغ المدفوع"
 
-#: AutoPaymentEditor.php:863
+#: AutoPaymentEditor.php:858
 msgid "Payment interval (months)"
 msgstr "مدة الدفع (أشهر)"
 
-#: AutoPaymentEditor.php:871 CartToGroup.php:80 EditEventTypes.php:91
-#: EditEventTypes.php:103 EventNames.php:109 EventNames.php:121
-#: EventNames.php:166 GroupReports.php:52 GroupReports.php:147
-#: PersonToGroup.php:70 sundayschool/SundaySchoolReports.php:147
+#: AutoPaymentEditor.php:866 CartToGroup.php:75 EditEventTypes.php:86
+#: EditEventTypes.php:98 EventNames.php:104 EventNames.php:116
+#: EventNames.php:161 GroupReports.php:47 GroupReports.php:142
+#: PersonToGroup.php:65 sundayschool/SundaySchoolReports.php:189
 msgid "None"
 msgstr "لا شئ"
 
-#: AutoPaymentEditor.php:884
+#: AutoPaymentEditor.php:879
 msgid "inactive"
 msgstr "غير فعال"
 
-#: AutoPaymentEditor.php:918 CartToFamily.php:249 CSVExport.php:115
-#: CSVImport.php:223 DirectoryReports.php:254
-#: external/templates/registration/family-register.php:41 FamilyEditor.php:667
-#: PersonEditor.php:825 Register.php:48 queryparameteroptions_qpo.php:7
+#: AutoPaymentEditor.php:913 CSVExport.php:100 CSVImport.php:217
+#: CartToFamily.php:244 DirectoryReports.php:249 FamilyEditor.php:670
+#: PersonEditor.php:837 Register.php:43
+#: external/templates/registration/family-register.php:41
+#: queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "المدينة"
 
-#: AutoPaymentEditor.php:923 CartToFamily.php:254 CSVExport.php:120
-#: CSVImport.php:224 DirectoryReports.php:258
-#: external/templates/registration/family-register.php:44 FamilyEditor.php:674
-#: PersonEditor.php:845 Register.php:49 queryparameteroptions_qpo.php:6
+#: AutoPaymentEditor.php:918 CSVExport.php:105 CSVImport.php:218
+#: CartToFamily.php:249 DirectoryReports.php:253 FamilyEditor.php:677
+#: PersonEditor.php:857 Register.php:44
+#: external/templates/registration/family-register.php:44
+#: queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "الحي"
 
-#: AutoPaymentEditor.php:934 CartToFamily.php:274 CSVExport.php:135
-#: CSVImport.php:226 FamilyEditor.php:694 PersonEditor.php:890 Register.php:51
+#: AutoPaymentEditor.php:929 CSVExport.php:120 CSVImport.php:220
+#: CartToFamily.php:269 FamilyEditor.php:697 PersonEditor.php:902
+#: Register.php:46
 msgid "Country"
 msgstr "البلد"
 
-#: AutoPaymentEditor.php:940 ChurchCRM/Reports/PDF_Directory.php:312
+#: AutoPaymentEditor.php:935 ChurchCRM/Reports/PDF_Directory.php:312
 #: ChurchCRM/Reports/PDF_Directory.php:386
-#: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:266
+#: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:261
+#: Reports/DirectoryReport.php:283 Reports/GroupReport.php:119
 #: external/templates/registration/family-register-members.php:103
-#: Reports/DirectoryReport.php:288 Reports/GroupReport.php:124
 msgid "Phone"
 msgstr "التليفون"
 
-#: AutoPaymentEditor.php:946 CartToFamily.php:315 CartView.php:296
+#: AutoPaymentEditor.php:941 CSVExport.php:140 CSVImport.php:224
+#: CartToFamily.php:310 CartView.php:279
 #: ChurchCRM/Reports/PDF_Directory.php:321
 #: ChurchCRM/Reports/PDF_Directory.php:397
-#: ChurchCRM/Reports/PDF_Directory.php:454 CSVExport.php:155 CSVImport.php:230
-#: EditEventAttendees.php:42 EventAttendance.php:181
+#: ChurchCRM/Reports/PDF_Directory.php:454 EditEventAttendees.php:42
+#: EventAttendance.php:175 FamilyEditor.php:769 FamilyView.php:261
+#: FamilyView.php:266 FamilyView.php:349 GroupReports.php:127
+#: PersonEditor.php:1009 PersonEditor.php:1011 PersonView.php:301
+#: PersonView.php:465 PrintView.php:294 Reports/CanvassReports.php:242
+#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
+#: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
+#: Reports/DirectoryReport.php:294 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
-#: external/templates/verify/verify-family-info.php:81 FamilyEditor.php:766
-#: FamilyView.php:280 FamilyView.php:285 FamilyView.php:368
-#: GroupReports.php:132 PersonEditor.php:997 PersonEditor.php:999
-#: PersonView.php:308 PersonView.php:472 PrintView.php:279
-#: Reports/CanvassReports.php:247 Reports/ConfirmReportEmail.php:190
-#: Reports/ConfirmReportEmail.php:208 Reports/ConfirmReport.php:188
-#: Reports/ConfirmReport.php:207 Reports/DirectoryReport.php:299
-#: Reports/GroupReport.php:138 sundayschool/SundaySchoolClassView.php:88
-#: sundayschool/SundaySchoolClassView.php:202 menuconfig_mcf.php:15
+#: external/templates/verify/verify-family-info.php:75
+#: sundayschool/SundaySchoolClassView.php:88
+#: sundayschool/SundaySchoolClassView.php:203 menuconfig_mcf.php:15
 #: queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr "البريد الإلكتروني"
 
-#: AutoPaymentEditor.php:952 ElectronicPaymentList.php:213
-#: FinancialReports.php:267 FindDepositSlip.php:52 PledgeEditor.php:592
+#: AutoPaymentEditor.php:947 ElectronicPaymentList.php:208
+#: FinancialReports.php:262 FindDepositSlip.php:47 PledgeEditor.php:587
 msgid "Credit Card"
 msgstr "بطاقة ائتمان"
 
-#: AutoPaymentEditor.php:960
+#: AutoPaymentEditor.php:955
 msgid "Vanco Credit Card Method"
 msgstr "بطاقة الائتمان بطريقة Vanco"
 
-#: AutoPaymentEditor.php:969
+#: AutoPaymentEditor.php:964
 msgid "Expiration Month"
 msgstr "شهر الإنتهاء"
 
-#: AutoPaymentEditor.php:975
+#: AutoPaymentEditor.php:970
 msgid "Expiration Year"
 msgstr "سنة الإنتهاء"
 
-#: AutoPaymentEditor.php:981
+#: AutoPaymentEditor.php:976
 msgid "Bank Name"
 msgstr "اسم البنك"
 
-#: AutoPaymentEditor.php:987
+#: AutoPaymentEditor.php:982
 msgid "Bank Route Number"
 msgstr "رقم التحويل المصرفي"
 
-#: AutoPaymentEditor.php:993
+#: AutoPaymentEditor.php:988
 msgid "Bank Account Number"
 msgstr "رقم الحساب المصرفي"
 
-#: BackupDatabase.php:45 Include/Footer.php:183
+#: AutoPaymentEditor.php:996
+msgid "Vanco Bank Account Method"
+msgstr "طريقة حساب البنك Vanco"
+
+#: BackupDatabase.php:40 Include/Footer.php:178
 msgid "Backup Database"
 msgstr "النسخ الاحتياطي لقاعدة البيانات"
 
-#: BackupDatabase.php:51
+#: BackupDatabase.php:46
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "هذه الأداة سوف تساعدك في النسخ الاحتياطي لقاعدة بيانات ChurchCRM يدويا."
 
-#: BackupDatabase.php:55
+#: BackupDatabase.php:50
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
 msgstr "يجب عليك إجراء نسخة احتياطية يدوياً مرة واحدة في الأسبوع على الأقل , ما لم يكن لديك بالفعل إجراء نسخ احتياطي منتظم لأنظمتك."
 
-#: BackupDatabase.php:56
+#: BackupDatabase.php:51
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr "بعد تحميل ملف النسخ الاحتياطي، يجب إجراء نسختين. احتفظ بواحد منهم في حافظة واقية من الحريق في الموقع والآخر في مكان آمن خارج الموقع."
 
-#: BackupDatabase.php:57
+#: BackupDatabase.php:52
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
 msgstr "إذا كنت تشعر بالقلق إزاء سرية البيانات المخزنة في قاعدة البيانات ChurchCRM، يجب أن تشفير البيانات الاحتياطية إذا كان سيتم تخزينها في مكان ما يحتمل أن تكون في متناول الآخرين"
 
-#: BackupDatabase.php:58
+#: BackupDatabase.php:53
 msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
 msgstr "لنسخة احتياطية إضافية آمنة، يمكنك ارسالها عبر البريد الإلكتروني لنفسك علي حساب بريد الإلكتروني خارج الموقع أو الي صديق موثوق به. ومع ذلك، تأكد من استخدام التشفير إذا قمت بذلك."
 
-#: BackupDatabase.php:62
+#: BackupDatabase.php:57
 msgid "Select archive type"
 msgstr "حدد نوع الأرشيف"
 
-#: BackupDatabase.php:64
+#: BackupDatabase.php:59
 msgid "GZip"
 msgstr "GZIP"
 
-#: BackupDatabase.php:69
+#: BackupDatabase.php:64
 msgid "Uncompressed"
 msgstr "غير مضغوط"
 
-#: BackupDatabase.php:70
+#: BackupDatabase.php:65
 msgid "tar.gz (Include Photos)"
 msgstr "tar.gz (يتضمين الصور)"
 
-#: BackupDatabase.php:74
+#: BackupDatabase.php:69
 msgid "Encrypt backup file with a password?"
 msgstr "تشفير ملف النسخ الاحتياطي بكلمة سر؟"
 
-#: BackupDatabase.php:77
+#: BackupDatabase.php:72
 msgid "Re-type Password"
 msgstr "أعد إدخال كلمة السر"
 
-#: BackupDatabase.php:81
+#: BackupDatabase.php:76
 msgid "Generate and Download Backup"
 msgstr "إنشاء وتحميل النسخة الاحتياطي"
 
-#: BackupDatabase.php:82
+#: BackupDatabase.php:77
 msgid "Generate and Ship Backup to External Storage"
 msgstr "إنشاء وحفظ النسخة الاحتياطي إلى تخزين الخارجي"
 
-#: BatchWinnerEntry.php:79
+#: BatchWinnerEntry.php:74
 msgid "Winner"
 msgstr "الفائز"
 
-#: BatchWinnerEntry.php:80
+#: BatchWinnerEntry.php:75
 msgid "Price"
 msgstr "السعر"
 
-#: BatchWinnerEntry.php:115
+#: BatchWinnerEntry.php:110
 msgid "Enter Winners"
 msgstr "أدخل الفائزين"
 
-#: CartView.php:129 CSVExport.php:67
+#: CSVExport.php:52 CartView.php:112
 msgid "CSV Export"
 msgstr "تصدير بصيغة CSV"
 
-#: CSVExport.php:75
+#: CSVExport.php:60
 msgid "Field Selection"
 msgstr "اختيار الحقل"
 
-#: AutoPaymentEditor.php:900 CSVExport.php:79 CSVImport.php:217
+#: AutoPaymentEditor.php:895 CSVExport.php:64 CSVImport.php:211
+#: ManageEnvelopes.php:161 PersonEditor.php:642
 #: external/templates/registration/family-register-members.php:73
-#: external/templates/verify/enter-info.php:25 ManageEnvelopes.php:166
-#: PersonEditor.php:630 sundayschool/SundaySchoolDashboard.php:194
+#: external/templates/verify/enter-info.php:25
+#: sundayschool/SundaySchoolDashboard.php:203
 msgid "Last Name"
 msgstr "اسم العائلة"
 
-#: CSVExport.php:80
+#: CSVExport.php:65
 msgid "Required"
 msgstr "مطلوب"
 
-#: AutoPaymentEditor.php:894 CSVExport.php:90 CSVImport.php:215
+#: AutoPaymentEditor.php:889 CSVExport.php:75 CSVImport.php:209
+#: PersonEditor.php:620
 #: external/templates/registration/family-register-members.php:69
-#: external/templates/verify/enter-info.php:21 PersonEditor.php:608
-#: sundayschool/SundaySchoolDashboard.php:193
+#: external/templates/verify/enter-info.php:21
+#: sundayschool/SundaySchoolDashboard.php:202
 msgid "First Name"
 msgstr "الاسم الاول"
 
-#: CSVExport.php:95 CSVImport.php:216 PersonEditor.php:619
+#: CSVExport.php:80 CSVImport.php:210 PersonEditor.php:631
 msgid "Middle Name"
 msgstr "الاسم الأوسط"
 
-#: AutoPaymentEditor.php:929 BackupDatabase.php:67 CartToFamily.php:266
-#: CSVExport.php:125 CSVImport.php:225 DirectoryReports.php:262
+#: AutoPaymentEditor.php:924 BackupDatabase.php:62 CSVExport.php:110
+#: CSVImport.php:219 CartToFamily.php:261 DirectoryReports.php:257
+#: FamilyEditor.php:687 PersonEditor.php:880 Register.php:45
 #: external/templates/registration/family-register.php:51
-#: external/templates/verify/enter-info.php:29 FamilyEditor.php:684
-#: PersonEditor.php:868 Register.php:50
+#: external/templates/verify/enter-info.php:29
 msgid "Zip"
 msgstr "الرمز البريدي"
 
-#: CSVExport.php:130
+#: CSVExport.php:115
 msgid "Envelope"
 msgstr "الرقم البريدي"
 
-#: ChurchCRM/Reports/PDF_Directory.php:400
-#: ChurchCRM/Reports/PDF_Directory.php:457 CSVExport.php:160
-#: PersonView.php:322 Reports/DirectoryReport.php:302
+#: CSVExport.php:145 ChurchCRM/Reports/PDF_Directory.php:400
+#: ChurchCRM/Reports/PDF_Directory.php:457 PersonView.php:315
+#: Reports/DirectoryReport.php:297
 msgid "Work/Other Email"
 msgstr "البريد الإلكتروني للعمل / الأخرى"
 
-#: CSVExport.php:165 CSVExport.php:370 CSVImport.php:233 PersonEditor.php:1058
-#: PrintView.php:289
+#: CSVExport.php:150 CSVExport.php:355 CSVImport.php:227 PersonEditor.php:1070
+#: PrintView.php:304
 msgid "Membership Date"
 msgstr "تاريخ العضوية"
 
-#: CSVExport.php:170
+#: CSVExport.php:155
 msgid "Birth / Anniversary Date"
 msgstr "تاريخ الميلاد / المناسبة السنوية"
 
-#: CSVExport.php:175
+#: CSVExport.php:160
 msgid "Age / Years Married"
 msgstr "مدة / سنوات الزواج"
 
-#: CartView.php:299 CSVExport.php:180 CSVExport.php:301 OptionManager.php:66
-#: PersonEditor.php:742 PrintView.php:254 queryparameters_qrp.php:5
+#: CSVExport.php:165 CSVExport.php:286 CartView.php:282 OptionManager.php:61
+#: PersonEditor.php:754 PrintView.php:269 queryparameters_qrp.php:5
 msgid "Family Role"
 msgstr "القرابة في الأسرة"
 
-#: CSVExport.php:183
+#: CSVExport.php:168
 msgid "Depends whether using person or family output method"
 msgstr "يعتمد على ما إذا كان يستخدم طريقة إخراج الشخص أو الأسرة"
 
-#: CSVExport.php:196
+#: CSVExport.php:181
 msgid "Custom Field Selection"
 msgstr "اختيار الحقل المخصص"
 
-#: CSVExport.php:204
+#: CSVExport.php:189
 msgid "Custom Person Fields"
 msgstr "حقول الشخص المخصصة"
 
-#: CSVExport.php:222
+#: CSVExport.php:207
 msgid "Custom Family Fields"
 msgstr "حقول العائلة المخصصة"
 
-#: CSVExport.php:249 FinancialReports.php:111
+#: CSVExport.php:234 FinancialReports.php:106
 msgid "Filters"
 msgstr "تصفية"
 
-#: CSVExport.php:255
+#: CSVExport.php:240
 msgid "Records to export"
 msgstr "سجلات للتصدير"
 
-#: CSVExport.php:264
+#: CSVExport.php:249
 msgid "Based on filters below.."
 msgstr "استنادا إلى التصفيات أدناه .."
 
-#: CSVExport.php:267
+#: CSVExport.php:252
 msgid "People in Cart (filters ignored)"
 msgstr "الأشخاص في سلة التسوق (تم تجاهل التصفيات)"
 
-#: CSVExport.php:293 CSVExport.php:318 CSVExport.php:354
-#: DirectoryReports.php:84 DirectoryReports.php:102 DirectoryReports.php:120
-#: DirectoryReports.php:138 DirectoryReports.php:157 FinancialReports.php:262
+#: CSVExport.php:278 CSVExport.php:303 CSVExport.php:339
+#: DirectoryReports.php:79 DirectoryReports.php:97 DirectoryReports.php:115
+#: DirectoryReports.php:133 DirectoryReports.php:152 FinancialReports.php:257
 msgid "Use Ctrl Key to select multiple"
 msgstr "استخدم مفتاح Ctrl لتحديد عدة عناصر"
 
-#: CSVExport.php:335
+#: CSVExport.php:320
 msgid "Don't Filter"
 msgstr "لا تصفية"
 
-#: ChurchCRM/Service/DashboardService.php:62 CSVExport.php:336
+#: CSVExport.php:321 ChurchCRM/Service/DashboardService.php:62
+#: FamilyEditor.php:988 PersonEditor.php:604 PrintView.php:244
+#: PrintView.php:363 SelectList.php:570 SelectList.php:1151
 #: external/templates/registration/family-register-members.php:59
-#: FamilyEditor.php:985 PersonEditor.php:592 PrintView.php:229
-#: PrintView.php:348 SelectList.php:580 SelectList.php:1161
 #: queryparameteroptions_qpo.php:2
 msgid "Male"
 msgstr "ذكر"
 
-#: ChurchCRM/Service/DashboardService.php:65 CSVExport.php:337
+#: CSVExport.php:322 ChurchCRM/Service/DashboardService.php:65
+#: FamilyEditor.php:991 PersonEditor.php:607 PrintView.php:247
+#: PrintView.php:363 SelectList.php:576 SelectList.php:1152
 #: external/templates/registration/family-register-members.php:60
-#: FamilyEditor.php:988 PersonEditor.php:595 PrintView.php:232
-#: PrintView.php:348 SelectList.php:586 SelectList.php:1162
 #: queryparameteroptions_qpo.php:3
 msgid "Female"
 msgstr "أنثي"
 
-#: CSVExport.php:346 DirectoryReports.php:100
+#: CSVExport.php:331 DirectoryReports.php:95
 msgid "Group Membership"
 msgstr "عضوية في المجموعة"
 
-#: CSVExport.php:378 CSVExport.php:395 CSVExport.php:412 CSVExport.php:429
+#: CSVExport.php:363 CSVExport.php:380 CSVExport.php:397 CSVExport.php:414
 msgid "From:"
 msgstr "من:"
 
-#: CSVExport.php:379 CSVExport.php:396 CSVExport.php:413 CSVExport.php:430
+#: CSVExport.php:364 CSVExport.php:381 CSVExport.php:398 CSVExport.php:415
 msgid "To:"
 msgstr "إلي:"
 
-#: CSVExport.php:387
+#: CSVExport.php:372
 msgid "Birthday Date"
 msgstr "تاريخ الميلاد"
 
-#: Reports/ConfirmReportEmail.php:154 Reports/ConfirmReport.php:155
+#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:154
 msgid "Anniversary Date"
 msgstr "تاريخ المناسبة السنوية"
 
-#: CSVExport.php:442 FinancialReports.php:326
+#: CSVExport.php:427 FinancialReports.php:321
 msgid "Output Method:"
 msgstr "طريقة الإخراج:"
 
-#: CSVExport.php:446
+#: CSVExport.php:431
 msgid "CSV Individual Records"
 msgstr "كسف السجلات الفردية بصيغة CSV"
 
-#: CSVExport.php:447
+#: CSVExport.php:432
 msgid "CSV Combine Families"
 msgstr "كسف الأسر مجمعة بصيغة CSV"
 
-#: CSVExport.php:448
+#: CSVExport.php:433
 msgid "Add Individuals to Cart"
 msgstr "إضافة الأفراد إلى سلة التسوق"
 
-#: CSVExport.php:451
+#: CSVExport.php:436
 msgid "Skip records with incomplete mail address"
 msgstr "تخطي السجلات غير مكتملة عنوان البريد الإلكتروني"
 
-#: CSVExport.php:453
+#: CSVExport.php:438
 msgid "Create File"
 msgstr "إنشاء ملف"
 
-#: CSVImport.php:131
+#: CSVImport.php:126
 msgid "No file selected for upload."
 msgstr "لم يتم تحديد ملف للتحميل."
 
-#: CSVImport.php:158
+#: CSVImport.php:152
 msgid "Total number of rows in the CSV file:"
 msgstr "عدد الصفوف في ملف CSV"
 
-#: CSVImport.php:213
+#: CSVImport.php:207
 msgid "Ignore this Field"
 msgstr "تجاهل هذا الحقل"
 
-#: CSVExport.php:85 CSVImport.php:214 DonatedItemEditor.php:211
-#: FindFundRaiser.php:242 FundRaiserEditor.php:173 FundRaiserEditor.php:199
-#: PersonEditor.php:599
+#: CSVExport.php:70 CSVImport.php:208 DonatedItemEditor.php:206
+#: FindFundRaiser.php:237 FundRaiserEditor.php:168 FundRaiserEditor.php:194
+#: PersonEditor.php:611
 msgid "Title"
 msgstr "اللقب"
 
-#: CSVExport.php:100 CSVImport.php:218 FamilyEditor.php:937
-#: PersonEditor.php:641
+#: CSVExport.php:85 CSVImport.php:212 FamilyEditor.php:940
+#: PersonEditor.php:653
 msgid "Suffix"
 msgstr "الاسم اللاحق"
 
-#: CSVExport.php:326 CSVImport.php:219 FamilyEditor.php:938
-#: PersonEditor.php:586 PrintView.php:223 PrintView.php:323
-#: sundayschool/SundaySchoolClassView.php:177 queryparameters_qrp.php:4
+#: CSVExport.php:311 CSVImport.php:213 FamilyEditor.php:941
+#: PersonEditor.php:598 PrintView.php:238 PrintView.php:338
+#: sundayschool/SundaySchoolClassView.php:178 queryparameters_qrp.php:4
 msgid "Gender"
 msgstr "النوع"
 
-#: CSVImport.php:220
+#: CSVImport.php:214
 msgid "Donation Envelope"
 msgstr "ظرف التبرع"
 
-#: CartToFamily.php:285 CSVExport.php:140 CSVImport.php:227
-#: EditEventAttendees.php:43 EventAttendance.php:182
+#: CSVExport.php:125 CSVImport.php:221 CartToFamily.php:280
+#: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:735
+#: FamilyList.php:45 FamilyView.php:243 GroupReports.php:124
+#: PersonEditor.php:935 PersonEditor.php:937 PersonView.php:296
+#: PrintView.php:199 Reports/ConfirmReport.php:135
+#: Reports/ConfirmReportEmail.php:139 SelectList.php:976 SelectList.php:977
+#: SelectList.php:1052
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
-#: external/templates/verify/verify-family-info.php:28
-#: external/templates/verify/verify-family-info.php:75 FamilyEditor.php:732
-#: FamilyList.php:45 FamilyView.php:262 GroupReports.php:129
-#: PersonEditor.php:923 PersonEditor.php:925 PersonView.php:303
-#: PrintView.php:184 Reports/ConfirmReportEmail.php:139
-#: Reports/ConfirmReport.php:140 SelectList.php:986 SelectList.php:987
-#: SelectList.php:1062 sundayschool/SundaySchoolClassView.php:204
-#: queryparameteroptions_qpo.php:8
+#: external/templates/verify/verify-family-info.php:26
+#: external/templates/verify/verify-family-info.php:69
+#: sundayschool/SundaySchoolClassView.php:205 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr "تليفون المنزل"
 
-#: CartToFamily.php:295 CSVExport.php:145 CSVImport.php:228
-#: external/templates/verify/verify-family-info.php:77 FamilyEditor.php:744
-#: FamilyView.php:268 GroupReports.php:130 PersonEditor.php:946
-#: PersonEditor.php:948 PersonView.php:317 PrintView.php:189
-#: Reports/ConfirmReportEmail.php:237 Reports/ConfirmReport.php:244
-#: SelectList.php:989 SelectList.php:990 SelectList.php:1062
+#: CSVExport.php:130 CSVImport.php:222 CartToFamily.php:290
+#: FamilyEditor.php:747 FamilyView.php:249 GroupReports.php:125
+#: PersonEditor.php:958 PersonEditor.php:960 PersonView.php:310
+#: PrintView.php:204 Reports/ConfirmReport.php:239
+#: Reports/ConfirmReportEmail.php:237 SelectList.php:979 SelectList.php:980
+#: SelectList.php:1052 external/templates/verify/verify-family-info.php:71
 msgid "Work Phone"
 msgstr "تليفون العمل"
 
-#: CartToFamily.php:305 CSVExport.php:150 CSVImport.php:229
-#: external/templates/verify/verify-family-info.php:79 FamilyEditor.php:754
-#: FamilyView.php:274 PersonEditor.php:971 PersonEditor.php:973
-#: PersonView.php:298 PrintView.php:194 SelectList.php:992 SelectList.php:993
-#: SelectList.php:1062
+#: CSVExport.php:135 CSVImport.php:223 CartToFamily.php:300
+#: FamilyEditor.php:757 FamilyView.php:255 PersonEditor.php:983
+#: PersonEditor.php:985 PersonView.php:291 PrintView.php:209
+#: SelectList.php:982 SelectList.php:983 SelectList.php:1052
+#: external/templates/verify/verify-family-info.php:73
 msgid "Mobile Phone"
 msgstr "المحمول"
 
-#: CSVImport.php:231 PersonEditor.php:1016 PrintView.php:284
+#: CSVImport.php:225 PersonEditor.php:1028 PrintView.php:299
 msgid "Work / Other Email"
 msgstr "البريد الإلكتروني للعمل / الأخرى"
 
-#: CSVImport.php:232 PersonView.php:282 PrintView.php:238
-#: sundayschool/SundaySchoolClassView.php:200
-#: sundayschool/SundaySchoolDashboard.php:195
+#: CSVImport.php:226 PersonView.php:275 PrintView.php:253
+#: sundayschool/SundaySchoolClassView.php:201
+#: sundayschool/SundaySchoolDashboard.php:204
 msgid "Birth Date"
 msgstr "تاريخ الميلاد"
 
-#: CartToFamily.php:215 CSVImport.php:234 DirectoryReports.php:177
-#: external/templates/verify/verify-family-info.php:35 FamilyEditor.php:800
-#: FamilyView.php:249
+#: CSVImport.php:228 CartToFamily.php:210 DirectoryReports.php:172
+#: FamilyEditor.php:803 FamilyView.php:230
+#: external/templates/verify/verify-family-info.php:33
 msgid "Wedding Date"
 msgstr "تاريخ الزواج"
 
-#: CSVImport.php:243
+#: CSVImport.php:237
 msgid "Ignore first CSV row (to exclude a header)"
 msgstr "تجاهل صف CSV الأول (لاستبعاد رأس الجدول)"
 
-#: CSVImport.php:248
+#: CSVImport.php:242
 msgid "Make Family records based on last name and address"
 msgstr "جعل سجلات الأسرة استنادا إلى الاسم الأخير والعنوان"
 
-#: CSVImport.php:254
+#: CSVImport.php:248
 msgid "Patriarch"
 msgstr "بطريرك"
 
-#: CSVImport.php:255
+#: CSVImport.php:249
 msgid "Matriarch"
 msgstr "الأم الحاطمة"
 
-#: Menu.php:59
+#: CSVImport.php:251
+msgid "Family Type: used with Make Family records... option above"
+msgstr "نوع الأسرة: تستخدم عند تسجيل بيانات الأسرة ... الأختيارات أعلاه"
+
+#: CSVImport.php:258
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "ملاحظة: الفواصل (شرطات، إلخ) أو عدمه لا يهم"
+
+#: CSVImport.php:263
+msgid "Default country if none specified otherwise"
+msgstr "البلد الافتراضية إذا كان غير محدد"
+
+#: CSVExport.php:261 CSVImport.php:279 CartView.php:281 FamilyEditor.php:946
+#: FinancialReports.php:115 MembersDashboard.php:333 OptionManager.php:68
+#: PersonEditor.php:1055 PrintView.php:309 queryparameters_qrp.php:19
+msgid "Classification"
+msgstr "تصنيف"
+
+#: CSVImport.php:281
+msgid "Perform Import"
+msgstr "إجراء الاستيراد"
+
+#: CSVImport.php:801
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "خطأ: ملف CSV الذي تم تحميله لم يعد موجوداً!"
+
+#: CSVImport.php:819
+msgid "Data Cleared Successfully!"
+msgstr "مسح البيانات بنجاح!"
+
+#: CSVImport.php:821
+msgid "Please select the confirmation checkbox"
+msgstr "الرجاء حدد خانة الاختيار تأكيد"
+
+#: CSVImport.php:830
+msgid "Upload CSV File"
+msgstr "تحميل ملف CSV"
+
+#: CSVImport.php:841 CSVImport.php:848 CSVImport.php:859
+msgid "Clear Persons and Families"
+msgstr "مسح الأشخاص والأسر"
+
+#: CSVImport.php:853
+msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
+msgstr "تحذير!  لا تقم بتحديد هذا الخيار إذا كنت تخطط للإضافة إلى قاعدة بيانات موجودة."
+
+#: CSVImport.php:854
+msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
+msgstr "استخدم فقط إذا كنت غير راضي بالاستيراد المبدئي.  وسيتم حذف كافة بيانات الأشخاص والأعضاء!"
+
+#: CSVImport.php:870
+msgid "Data import successful."
+msgstr "تم إستيراد البيانات بنجاح"
+
+#: CSVImport.php:870
+msgid "persons were imported"
+msgstr "تم إستيراد بيانات الشخص"
+
+#: CanvassAutomation.php:45 CanvassAutomation.php:52 CanvassAutomation.php:59
+#: CanvassAutomation.php:67 CanvassAutomation.php:75
+msgid "Not confirmed."
+msgstr "غير مؤكد."
+
+#: CanvassAutomation.php:128
+msgid "Set default fiscal year"
+msgstr "تعيين السنة المالية الافتراضية"
+
+#: CanvassAutomation.php:132 CanvassAutomation.php:143
+#: CanvassAutomation.php:154 CanvassAutomation.php:165
+#: CanvassAutomation.php:176 CanvassAutomation.php:187
+msgid "Check to confirm"
+msgstr "تحقق للتأكد"
+
+#: CanvassAutomation.php:193
+msgid "Briefing Sheets"
+msgstr "أوراق الإحاطة"
+
+#: CanvassAutomation.php:203
+msgid "Progress Report"
+msgstr "تقرير التطور"
+
+#: CanvassAutomation.php:213
+msgid "Summary Report"
+msgstr "تقرير ملخص"
+
+#: CanvassAutomation.php:223
+msgid "Not Interested Report"
+msgstr "تقرير غير مهتم"
+
+#: CanvassEditor.php:199 Reports/CanvassReports.php:346
+msgid "Positive"
+msgstr "إيجابي"
+
+#: CanvassEditor.php:204 Reports/CanvassReports.php:346
+msgid "Critical"
+msgstr "حرج"
+
+#: CanvassEditor.php:209 Reports/CanvassReports.php:346
+msgid "Insightful"
+msgstr "الثاقبة"
+
+#: CanvassEditor.php:214 Reports/CanvassReports.php:346
+msgid "Financial"
+msgstr "الأمور المالية"
+
+#: CanvassEditor.php:219
+msgid "Suggestions"
+msgstr "اقتراحات"
+
+#: CanvassEditor.php:224
+msgid "Not Interested"
+msgstr "غير مهتم"
+
+#: CanvassEditor.php:231
+msgid "Why Not Interested?"
+msgstr "لماذا لا تهتم؟"
+
+#: CartToEvent.php:49 CartToEvent.php:82
+msgid "Add Cart to Event"
+msgstr "إضافة سلة التسوق للحدث"
+
+#: CartToEvent.php:56
+msgid "Select the event to which you would like to add your cart"
+msgstr "حدد الحدث الذي تريد إضافة سلة التسوق إليه"
+
+#: CartToEvent.php:83 CartToGroup.php:95
+msgid "OR"
+msgstr "أو"
+
+#: CartToEvent.php:84 Checkin.php:105 ListEvents.php:349
+msgid "Add New Event"
+msgstr "إضافة حدث جديد"
+
+#: CartToEvent.php:91 CartToFamily.php:324 CartToGroup.php:103
+msgid "Your cart is empty!"
+msgstr "عربة التسوق الخاصة بك فارغ!"
+
+#: CartToFamily.php:83
+msgid "No family name entered!"
+msgstr "لم يتم إدخال اسم العائلة!"
+
+#: CartToFamily.php:122
+msgid "Add Cart to Family"
+msgstr "إضافة عربة للأسرة"
+
+#: CartToFamily.php:154 CartView.php:277 Checkin.php:313
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
+#: DonationFundEditor.php:148 DonationFundEditor.php:211
+#: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:174
+#: EventNames.php:261 FamilyCustomFieldsEditor.php:319
+#: FamilyCustomFieldsEditor.php:433 FamilyList.php:43 FamilyView.php:537
+#: GeoPage.php:380 GroupEditor.php:72 GroupPropsFormEditor.php:285
+#: GroupPropsFormEditor.php:397 GroupView.php:267 GroupView.php:300
+#: PersonCustomFieldsEditor.php:310 PersonCustomFieldsEditor.php:441
+#: PersonView.php:639 PersonView.php:741 PrintView.php:337 PrintView.php:464
+#: PropertyEditor.php:148 PropertyList.php:59 PropertyTypeEditor.php:95
+#: PropertyTypeList.php:34 Reports/CanvassReports.php:68
+#: Reports/CanvassReports.php:236 Reports/FRBidSheets.php:88
+#: SelectList.php:999 UserList.php:52 VolunteerOpportunityEditor.php:74
+#: VolunteerOpportunityEditor.php:353 VolunteerOpportunityEditor.php:420
+#: sundayschool/SundaySchoolClassView.php:200 queryparameteroptions_qpo.php:4
+msgid "Name"
+msgstr "الاسم"
+
+#: CartToFamily.php:155
+msgid "Assign Role"
+msgstr "تعيين الدور"
+
+#: CartToFamily.php:171
+msgid "Already in a family"
+msgstr "بالفعل في الأسرة"
+
+#: CartToFamily.php:189
+msgid "Create new family"
+msgstr "إنشاء أسرة جديدة"
+
+#: CartToFamily.php:200
+msgid "If adding a new family, enter data below."
+msgstr "في حالة إضافة أسرة جديدة، أدخل البيانات أدناه."
+
+#: CartToFamily.php:215
+msgid "Use address/contact data from"
+msgstr "استخدام بيانات العنوان/الاتصال من"
+
+#: CartToFamily.php:219
+msgid "Only the new data below"
+msgstr "فقط البيانات الجديدة أدناه"
+
+#: CartToFamily.php:256
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(استخدم مربع نص للبلدان عدا الولايات المتحدة وكندا)"
+
+#: CartToFamily.php:285 CartToFamily.php:295 CartToFamily.php:305
+#: FamilyEditor.php:743 FamilyEditor.php:753 FamilyEditor.php:763
+#: Include/Functions.php:1126 PersonEditor.php:951 PersonEditor.php:975
+#: PersonEditor.php:999
+msgid "Do not auto-format"
+msgstr "عدم التنسيق التلقائي"
+
+#: CartToFamily.php:184 CartToFamily.php:318
+msgid "Add to Family"
+msgstr "إضافة إلى الأسرة"
+
+#: CartToGroup.php:56
+msgid "Add Cart to Group"
+msgstr "إضافة عربة للمجموعة"
+
+#: CartToGroup.php:67
+msgid "Select the group to which you would like to add your cart"
+msgstr "حدد المجموعة التي تريد إضافة إلى عربة التسوق الخاصة بك"
+
+#: CartToGroup.php:71 GroupReports.php:43 PersonToGroup.php:61
+#: sundayschool/SundaySchoolReports.php:185
+msgid "Select Group"
+msgstr "حدد مجموعة"
+
+#: CartToGroup.php:87 PersonToGroup.php:78
+msgid "No Group Selected"
+msgstr "لم يتم تحديد مجموعة"
+
+#: CartToGroup.php:94 PersonToGroup.php:85 SelectList.php:1242
+msgid "Add to Group"
+msgstr "إضافة إلى مجموعة"
+
+#: CartToGroup.php:96
+msgid "Create a New Group"
+msgstr "إنشاء مجموعة جديدة"
+
+#: CartView.php:24
+msgid "View Your Cart"
+msgstr "عرض سلة التسوق الخاصة بك"
+
+#: CartView.php:32
+msgid "You have no items in your cart."
+msgstr "لا يوجد لديك عناصر في سلة التسوق الخاصة بك."
+
+#: CartView.php:41
+msgid "Back to Menu"
+msgstr "العودة إلى القائمة"
+
+#: CartView.php:76
+msgid "Go To Labels"
+msgstr "انتقل إلى التصنيفات"
+
+#: CartView.php:93 Include/Header.php:109
+msgid "Empty Cart"
+msgstr "العربة فارغة"
+
+#: CartView.php:97 Include/Header.php:114
+msgid "Empty Cart to Group"
+msgstr "عربة تسوق فارغة إلى المجموعة"
+
+#: CartView.php:103 Include/Header.php:119
+msgid "Empty Cart to Family"
+msgstr "عربة تسوق فارغة للأسرة"
+
+#: CartView.php:107 Include/Header.php:124
+msgid "Empty Cart to Event"
+msgstr "عربة تسوق فارغة للحدث"
+
+#: CartView.php:116 Include/Header.php:129
+msgid "Map Cart"
+msgstr "خريطة عربة التسوق"
+
+#: CartView.php:118
+msgid "Name Tags"
+msgstr "علامات الاسم"
+
+#: CartView.php:152
+msgid "Email Cart"
+msgstr "عربة البريد الإلكتروني"
+
+#: CartView.php:153 GroupView.php:151
+#: sundayschool/SundaySchoolClassView.php:100
+msgid "Email (BCC)"
+msgstr "البريد الإلكتروني (BCC)"
+
+#: CartView.php:183
+msgid "Create Directory From Cart"
+msgstr "إنشاء دليل من عربة التسوق"
+
+#: CartView.php:207 CartView.php:249
+msgid "Generate Labels"
+msgstr "إنشاء تسميات"
+
+#: CartView.php:270
+msgid "Your cart contains"
+msgstr "تحتوي سلة التسوق على"
+
+#: CartView.php:270
+msgid "persons from"
+msgstr "الأشخاص من"
+
+#: CartView.php:280 CartView.php:338 EditEventTypes.php:166 FamilyView.php:542
+#: FamilyView.php:584 GroupView.php:305 GroupView.php:346 PersonView.php:642
+#: PersonView.php:660 PersonView.php:744 PersonView.php:762
+msgid "Remove"
+msgstr "إزالة"
+
+#: CartView.php:301 CartView.php:321 DonationFundEditor.php:175
+#: FinancialReports.php:293 Include/Functions.php:913
+#: Include/Functions.php:997 Reports/ConfirmReport.php:227
+msgid "Yes"
+msgstr "نعم"
+
+#: CartView.php:314 CartView.php:323 DonationFundEditor.php:178
+#: FinancialReports.php:294 Include/Functions.php:915
+#: Include/Functions.php:998 Reports/ConfirmReport.php:229
+msgid "No"
+msgstr "لا"
+
+#: CheckVersion.php:43
+msgid "Software Version Check"
+msgstr "التحقق من إصدار البرنامج"
+
+#: CheckVersion.php:53
+msgid "Oops! Something went wrong"
+msgstr "عفوا! حدث خطأ"
+
+#: CheckVersion.php:56
+msgid "There is an incompatibility between database schema and installed software. You are seeing this message because there is a software bug or an incomplete upgrade."
+msgstr "هناك عدم توافق بين مخطط قاعدة البيانات والبرامج المثبتة. كنت ترى هذه الرسالة لأن هناك خلل برمجيات أو ترقية غير مكتملة."
+
+#: CheckVersion.php:76
+msgid "Please check the following resources for assistance"
+msgstr "الرجاء التحقق من الموارد التالية للحصول على المساعدة"
+
+#: CheckVersion.php:79
+msgid "Developer Chat"
+msgstr "مطور الدردشة"
+
+#: CheckVersion.php:80
+msgid "Docs"
+msgstr "مستندات"
+
+#: CheckVersion.php:86
+msgid "Software Database Version"
+msgstr "إصدار قاعدة بيانات البرنامج"
+
+#: CheckVersion.php:87
+msgid "Software Version"
+msgstr "إصدار البرنامج"
+
+#: Checkin.php:75
+msgid "Select the event to which you would like to check people in for"
+msgstr "حدد الحدث الذي تريد إضافة سلة التسوق إليه"
+
+#: CartToEvent.php:67 Checkin.php:84
+msgid "Select Event"
+msgstr "حدد الحدث"
+
+#: external/templates/verify/verify-family-info.php:154
+msgid "Verify"
+msgstr "تحقق"
+
+#: Checkin.php:172
+msgid "Add Visitor"
+msgstr "إضافة زائر"
+
+#: Checkin.php:275 Checkin.php:368
+msgid "CheckOut"
+msgstr "الخروج"
+
+#: Checkin.php:318 EditEventAttendees.php:44 EventNames.php:265
+#: ListEvents.php:210 PersonView.php:587
+msgid "Action"
+msgstr "عمل"
+
+#: Checkin.php:465 Include/Functions.php:1676 Reports/CanvassReports.php:240
+#: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
+msgid "Member"
+msgstr "الأعضاء"
+
+#: Checkin.php:467 ChurchCRM/Service/PersonService.php:39
+msgid " of the"
+msgstr " لأن"
+
+#: ConvertIndividualToFamily.php:37
+msgid "Convert Individuals to Families"
+msgstr "تحويل الأفراد إلى الأسر"
+
+#: ConvertIndividualToFamily.php:135
+msgid "Convert Next"
+msgstr "تحويل التالي"
+
+#: ConvertIndividualToFamily.php:136
+msgid "Convert All"
+msgstr "تحويل الكل"
+
+#: DepositSlipEditor.php:49
+msgid "Deposit Slip Number: "
+msgstr "رقم قسيمة الإيداع: "
+
+#: DepositSlipEditor.php:71
+msgid "Deposit Details: "
+msgstr "تفاصيل الإيداع: "
+
+#: DepositSlipEditor.php:88
+msgid "Close deposit slip (remember to press Save)"
+msgstr "إغلاق قسيمة إيداع (تذكر أن تضغط على حفظ)"
+
+#: DepositSlipEditor.php:96
+msgid "Deposit Slip Report"
+msgstr "تقرير قسيمة إيداع"
+
+#: DepositSlipEditor.php:143
+msgid "Payments on this deposit slip:"
+msgstr "المدفوعات على قسيمة إيداع هذا:"
+
+#: DepositSlipEditor.php:150
+msgid "Add Payment"
+msgstr "إضافة الدفع"
+
+#: DepositSlipEditor.php:155
+msgid "Run Transactions"
+msgstr "تشغيل الحركات"
+
+#: DirectoryReports.php:27
+msgid "Directory reports"
+msgstr "دليل التقارير"
+
+#: AutoPaymentEditor.php:901 AutoPaymentEditor.php:907 CSVExport.php:90
+#: CSVExport.php:95 CSVImport.php:215 CSVImport.php:216 CartToFamily.php:234
+#: CartToFamily.php:239 CartView.php:278 DirectoryReports.php:171
+#: DirectoryReports.php:245 FamilyEditor.php:662 FamilyEditor.php:666
+#: FamilyList.php:44 FamilyView.php:203 GeoPage.php:381 GroupReports.php:123
+#: Menu.php:200 Menu.php:241 PersonEditor.php:805 PersonEditor.php:821
+#: PersonView.php:265 Register.php:42 Reports/ConfirmReportEmail.php:124
+#: Reports/ConfirmReportEmail.php:129 api/routes/search.php:98
+#: external/templates/registration/family-register-done.php:29
+#: external/templates/registration/family-register.php:35
+msgid "Address"
+msgstr "عنوان"
+
+#: ChurchCRM/Service/CalendarService.php:16 DirectoryReports.php:173
+#: FamilyView.php:348 PersonView.php:464 Reports/ConfirmReport.php:184
+#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:191
+#: Reports/ConfirmReportEmail.php:209
+msgid "Birthday"
+msgstr "عيد ميلاد"
+
+#: DirectoryReports.php:175
+msgid "Family Home Phone"
+msgstr "هاتف منزل الأسرة"
+
+#: DirectoryReports.php:176
+msgid "Family Work Phone"
+msgstr "هاتف عمل الأسره"
+
+#: DirectoryReports.php:177
+msgid "Family Cell Phone"
+msgstr "هاتف محمول الأسرة"
+
+#: DirectoryReports.php:178 Reports/ConfirmReport.php:156
+#: Reports/ConfirmReportEmail.php:160
+#: external/templates/verify/verify-family-info.php:28
+msgid "Family Email"
+msgstr "البريد الإلكتروني للعائلة"
+
+#: DirectoryReports.php:180
+msgid "Personal Home Phone"
+msgstr "هاتف المنزل الشخصي"
+
+#: DirectoryReports.php:181
+msgid "Personal Work Phone"
+msgstr "هاتف العمل الشخصي"
+
+#: DirectoryReports.php:182
+msgid "Personal Cell Phone"
+msgstr "الهاتف المحمول الشخصي"
+
+#: DirectoryReports.php:183
+msgid "Personal Email"
+msgstr "البريد الإلكتروني الشخصي"
+
+#: DirectoryReports.php:184
+msgid "Personal Work/Other Email"
+msgstr "البريد الإلكتروني الشخصي العمل/أخرى"
+
+#: DirectoryReports.php:185
+msgid "Photos"
+msgstr "صور"
+
+#: DirectoryReports.php:201
+msgid "Number of Columns"
+msgstr "عدد الأعمدة"
+
+#: DirectoryReports.php:209
+msgid "Paper Size"
+msgstr "حجم الورق"
+
+#: DirectoryReports.php:217 Include/LabelFunctions.php:61
+msgid "Font Size"
+msgstr "حجم الخط"
+
+#: DirectoryReports.php:233
+msgid "Title page"
+msgstr "عنوان الصفحة"
+
+#: DirectoryReports.php:237
+msgid "Use Title Page"
+msgstr "استخدام عنوان الصفحة"
+
+#: ChurchCRM/dto/SystemConfig.php:130 DirectoryReports.php:241 Register.php:40
+msgid "Church Name"
+msgstr "اسم الكنيسة"
+
+#: DirectoryReports.php:265
+msgid "Disclaimer"
+msgstr "إخلاء مسؤولية"
+
+#: DirectoryReports.php:284
+msgid "Create Directory"
+msgstr "إنشاء دليل"
+
+#: DonatedItemEditor.php:42
+msgid "Donated Item Editor"
+msgstr "محرر العناصر المتبرع به"
+
+#: DonatedItemEditor.php:293 FamilyEditor.php:1115 PaddleNumEditor.php:149
+#: PersonEditor.php:1149 PledgeEditor.php:687
+msgid "Save and Add"
+msgstr "حفظ و إضافة"
+
+#: BatchWinnerEntry.php:73 DonatedItemEditor.php:170 FundRaiserEditor.php:190
+msgid "Item"
+msgstr "البند"
+
+#: DonatedItemEditor.php:177
+msgid "Multiple items"
+msgstr "عناصر متعددة"
+
+#: DonatedItemEditor.php:177
+msgid "Sell to everyone"
+msgstr "بيع للجميع"
+
+#: DonatedItemEditor.php:211
+msgid "Estimated Price"
+msgstr "السعر المقدر"
+
+#: DonatedItemEditor.php:231 FundRaiserEditor.php:191 FundRaiserEditor.php:229
+msgid "Multiple"
+msgstr "متعدد"
+
+#: DonatedItemEditor.php:253
+msgid "Final Price"
+msgstr "السعر النهائي"
+
+#: DonatedItemEditor.php:258
+msgid "Replicate item"
+msgstr "نسخ عنصر"
+
+#: DonatedItemEditor.php:262 FindFundRaiser.php:228
+#: external/templates/password/enter-username.php:36
+msgid "Go"
+msgstr "إذهب"
+
+#: DonatedItemEditor.php:272 DonationFundEditor.php:149
+#: DonationFundEditor.php:219 EditEventAttendees.php:34
+#: FundRaiserEditor.php:173 GroupEditor.php:78 GroupPropsFormEditor.php:286
+#: GroupPropsFormEditor.php:410 GroupView.php:268 ListEvents.php:211
+#: PersonView.php:742 PropertyTypeEditor.php:103
+#: VolunteerOpportunityEditor.php:75 VolunteerOpportunityEditor.php:354
+#: VolunteerOpportunityEditor.php:428
+msgid "Description"
+msgstr "الوصف"
+
+#: DonatedItemEditor.php:277
+msgid "Picture URL"
+msgstr "رابط الصورة"
+
+#: DonationFundEditor.php:48
+msgid "Donation Fund Editor"
+msgstr "تحرير صندوق التبرعات"
+
+#: DonationFundEditor.php:114
+msgid "Are you sure you want to delete this fund?"
+msgstr "هل أنت متأكد من أنك تريد حذف هذا الصندوق؟"
+
+#: DonationFundEditor.php:124
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
+msgstr "تحذير: سيتم فقد التغييرات في الحقل إذا لم تقم \"حفظ التغييرات\" قبل استخدام زر حذف أو \"إضافة جديد\"!"
+
+#: DonationFundEditor.php:130 FamilyCustomFieldsEditor.php:314
+#: GroupPropsFormEditor.php:277 OptionManager.php:309
+#: PersonCustomFieldsEditor.php:303 PersonEditor.php:583
+#: VolunteerOpportunityEditor.php:339
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "حقول غير صالحة أو التحديدات. التغييرات غير المحفوظة! الرجاء تصحيح وحاول مرة أخرى!"
+
+#: DonationFundEditor.php:142
+msgid "No funds have been added yet"
+msgstr "لم تتم إضافة أي أموال حتى الآن"
+
+#: DonationFundEditor.php:150 EventEditor.php:546 GroupView.php:229
+#: KioskManager.php:29 ListEvents.php:215
+msgid "Active"
+msgstr "نشط"
+
+#: DonationFundEditor.php:194 EventEditor.php:555 EventNames.php:232
+#: FamilyCustomFieldsEditor.php:403 GroupPropsFormEditor.php:368
+#: OptionManager.php:366 PersonCustomFieldsEditor.php:406
+#: VolunteerOpportunityEditor.php:402
+msgid "Save Changes"
+msgstr "حفظ التغييرات"
+
+#: DonationFundEditor.php:224
+msgid "Add New Fund"
+msgstr "إضافة صندوق جديد"
+
+#: EditEventAttendees.php:7 EventEditor.php:28
+msgid "Church Event Editor"
+msgstr "محرر حدث الكنيسة"
+
+#: EditEventTypes.php:25 EventNames.php:27
+msgid "Edit Event Types"
+msgstr "تحرير أنواع الأحداث"
+
+#: EditEventTypes.php:121
+msgid "Edit Event Type"
+msgstr "تحرير نوع الحدث"
+
+#: EditEventTypes.php:131 EventEditor.php:423 EventEditor.php:451
+#: EventNames.php:260 ListEvents.php:212
+msgid "Event Type"
+msgstr "نوع الحدث"
+
+#: EditEventTypes.php:137
+msgid "Save Name"
+msgstr "حفظ الاسم"
+
+#: EditEventTypes.php:142 EventNames.php:156 EventNames.php:262
+msgid "Recurrence Pattern"
+msgstr "نمط التكرار"
+
+#: EditEventTypes.php:157 EventEditor.php:502 EventNames.php:264
+#: ListEvents.php:213
+msgid "Attendance Counts"
+msgstr "تهم بالحضور"
+
+#: EditEventTypes.php:187
+msgid "Return to Event Types"
+msgstr "عودة لأنواع الأحداث"
+
+#: ElectronicPaymentList.php:31
+msgid "Electronic Payment Listing"
+msgstr "قائمة الدفع الإلكتروني"
+
+#: ElectronicPaymentList.php:186
+msgid "Add a New Electronic Payment Method"
+msgstr "إضافة أسلوب دفع إلكتروني الجديدة"
+
+#: AutoPaymentEditor.php:800
+#: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
+#: ElectronicPaymentList.php:193 FamilyView.php:194 FinancialReports.php:301
+#: Include/Footer.php:53 PersonEditor.php:770 PersonView.php:382
+#: PledgeEditor.php:506 PrintView.php:258 PropertyAssign.php:72
+#: PropertyEditor.php:42 PropertyList.php:27 PropertyTypeEditor.php:89
+#: PropertyTypeList.php:55 SelectList.php:1048
+#: external/templates/registration/family-register-done.php:28
+msgid "Family"
+msgstr "الأسرة"
+
+#: ElectronicPaymentList.php:194 FamilyCustomFieldsEditor.php:318
+#: FamilyCustomFieldsEditor.php:420 FamilyView.php:536 FamilyView.php:644
+#: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:266
+#: GroupView.php:299 OptionManager.php:76 PersonCustomFieldsEditor.php:309
+#: PersonCustomFieldsEditor.php:428 PersonView.php:638 PropertyEditor.php:128
+#: SelectDelete.php:214
+msgid "Type"
+msgstr "نوع"
+
+#: AutoPaymentEditor.php:846 ElectronicPaymentList.php:195 FamilyView.php:753
+#: PledgeEditor.php:518 ReminderReport.php:41 SelectDelete.php:216
+#: sundayschool/SundaySchoolReports.php:204 queryparameters_qrp.php:18
+msgid "Fiscal Year"
+msgstr "السنة المالية"
+
+#: ElectronicPaymentList.php:196
+msgid "Next Date"
+msgstr "الموعد القادم"
+
+#: ElectronicPaymentList.php:197 FamilyView.php:646 FamilyView.php:755
+#: PledgeEditor.php:712 SelectDelete.php:218
+msgid "Amount"
+msgstr "المبلغ"
+
+#: ElectronicPaymentList.php:198
+msgid "Interval"
+msgstr "فترة"
+
+#: AutoPaymentEditor.php:863 ElectronicPaymentList.php:199 FamilyView.php:648
+#: FamilyView.php:752 FinancialReports.php:300 SelectDelete.php:215
+msgid "Fund"
+msgstr "صندوق"
+
+#: ElectronicPaymentList.php:200 FindDepositSlip.php:46
+msgid "Bank"
+msgstr "بنك"
+
+#: ElectronicPaymentList.php:201
+msgid "Routing"
+msgstr "التوجيه"
+
+#: ElectronicPaymentList.php:202
+msgid "Account"
+msgstr "حساب"
+
+#: ElectronicPaymentList.php:209 FamilyEditor.php:943
+#: queryparameters_qrp.php:11
+msgid "Month"
+msgstr "شهر"
+
+#: ElectronicPaymentList.php:210 FamilyEditor.php:945 Include/Functions.php:88
+msgid "Year"
+msgstr "سنة"
+
+#: ElectronicPaymentList.php:216 ElectronicPaymentList.php:281
+#: EventNames.php:292 FamilyView.php:198 FamilyView.php:649 FamilyView.php:698
+#: FamilyView.php:760 FindFundRaiser.php:234 FindFundRaiser.php:242
+#: ListEvents.php:229 PersonView.php:231 PropertyList.php:63
+#: PropertyList.php:104 PropertyTypeList.php:38 PropertyTypeList.php:58
+#: SelectList.php:1063
+msgid "Edit"
+msgstr "تحرير"
+
+#: Register.php:49
+msgid "Message"
+msgstr "رسالة"
+
+#: EventAttendance.php:22
+msgid "Event Attendees"
+msgstr "حضور الحدث"
+
+#: EventAttendance.php:42
+msgid "Event Nonattendees"
+msgstr "عدم حضور الحدث"
+
+#: EventAttendance.php:48
+msgid "Event Guests"
+msgstr "ضيوف الحدث"
+
+#: EventAttendance.php:60
+msgid "Back to Report Menu"
+msgstr "العودة إلى قائمة التقرير"
+
+#: EventAttendance.php:171
+msgid "There "
+msgstr "هناك "
+
+#: EventAttendance.php:100 EventEditor.php:460
+msgid "Event Title"
+msgstr "عنوان الحدث"
+
+#: EventAttendance.php:101
+msgid "Event Date"
+msgstr "تاريخ الحدث"
+
+#: EventAttendance.php:102
+msgid "Generate Report"
+msgstr "إنشاء تقرير"
+
+#: EventAttendance.php:134
+msgid "Attending Members"
+msgstr "الأعضاء الحاضرين"
+
+#: EventAttendance.php:145
+msgid "Non-Attending Members"
+msgstr "الأعضاء الغير حاضرين"
+
+#: EventAttendance.php:160
+msgid "Guests"
+msgstr "الضيوف"
+
+#: EventAttendance.php:204
+msgid "There are no events in this category"
+msgstr "لا توجد أية أحداث في هذه الفئة"
+
+#: EventAttendance.php:204
+msgid "There are no Records"
+msgstr "لا توجد سجلات"
+
+#: EventNames.php:284 EventNames.php:285
+msgid "Create Event"
+msgstr "إنشاء حدث"
+
+#: EventEditor.php:401
+msgid "Create a new Event"
+msgstr "إنشاء حدث جديد"
+
+#: EventEditor.php:401
+msgid "Editing Event ID: "
+msgstr "تعديل معرف الحدث: "
+
+#: EventEditor.php:407
+msgid " errors. Please see below"
+msgstr " أخطاء. الرجاء انظر أدناه"
+
+#: EventEditor.php:409
+msgid "Items with a "
+msgstr "البنود مع "
+
+#: EventEditor.php:409
+msgid " are required"
+msgstr " مطلوبة"
+
+#: EventEditor.php:426
+msgid "Select your event type"
+msgstr "اختر نوع الحدث"
+
+#: EventEditor.php:436
+msgid "You must pick an event type."
+msgstr "يجب عليك اختيار نوع حدث."
+
+#: EventEditor.php:466
+msgid "Event Desc"
+msgstr "وصف الحدث"
+
+#: EventEditor.php:525
+msgid "Attendance Notes: "
+msgstr "مذكرات الحضور: "
+
+#: EventEditor.php:566
+msgid "Return to Events"
+msgstr "العودة إلى أحداث"
+
+#: EventNames.php:148
+msgid "EVENT TYPE NAME"
+msgstr "اسم نوع الحدث"
+
+#: EventNames.php:170
+msgid "Sundays"
+msgstr "الأحد"
+
+#: EventNames.php:171
+msgid "Mondays"
+msgstr "الاثنين"
+
+#: EventNames.php:172
+msgid "Tuesdays"
+msgstr "الثلاثاء"
+
+#: EventNames.php:173
+msgid "Wednesdays"
+msgstr "الأربعاء"
+
+#: EventNames.php:174
+msgid "Thursdays"
+msgstr "الخميس"
+
+#: EventNames.php:175
+msgid "Fridays"
+msgstr "الجمعة"
+
+#: EventNames.php:176
+msgid "Saturdays"
+msgstr "السبت"
+
+#: EventNames.php:207
+msgid "DEFAULT START TIME"
+msgstr "وقت البدء الافتراضي"
+
+#: EventNames.php:217
+msgid "ATTENDANCE COUNTS"
+msgstr "عدد الحضور"
+
+#: EventNames.php:220
+msgid "Optional"
+msgstr "اختياري"
+
+#: Menu.php:49
 msgid "Welcome to"
 msgstr "مرحبا بك في"
 
