@@ -580,7 +580,7 @@
         <foreign-key foreignTable="group_calendar_persons" name="fk_event_grp_cal_id" onDelete="SET NULL">
           <reference local="event_grp_cal_id" foreign="grp_cal_id"/>
         </foreign-key>
-        <foreign-key foreignTable="person_calendar" name="fk_evnt_per_cal_ID" onDelete="CASCADE">
+        <foreign-key foreignTable="person_calendar" name="fk_event_per_cal_ID" onDelete="CASCADE">
           <reference local="event_per_cal_id" foreign="per_cal_id"/>
         </foreign-key>
         <index name="fk_event_grp_cal_id">
