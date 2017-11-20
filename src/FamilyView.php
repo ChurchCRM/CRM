@@ -483,7 +483,7 @@ if ($iFamilyID == $fam_ID) {
                                     </h3>
 
                                     <div class="timeline-body">
-                                        <?= $item['text'] ?>
+                                        <pre><?= $item['text'] ?></pre>
                                     </div>
 
                                     <?php if (($_SESSION['bNotes']) && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
