@@ -52,7 +52,7 @@ if (isset($_POST['Submit'])) {
 
     //Assign all variables locally
     $iNoteID = InputUtils::LegacyFilterInput($_POST['NoteID'], 'int');
-    $sNoteText = InputUtils::LegacyFilterInput($_POST['NoteText'], 'htmltext');
+    $sNoteText = InputUtils::FilterHTML($_POST['NoteText'], 'htmltext');
 
     //If they didn't check the private box, set the value to 0
     if (isset($_POST['Private'])) {

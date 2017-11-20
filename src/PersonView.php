@@ -440,7 +440,7 @@ if ($per_ID == $iPersonID) {
                   </h3>
 
                   <div class="timeline-body">
-                    <?= $item['text'] ?>
+                      <pre><?= $item['text'] ?></pre>
                   </div>
 
                   <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
