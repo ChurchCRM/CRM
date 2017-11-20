@@ -14,13 +14,13 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-
 use ChurchCRM\Service\CalendarService;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\EventTypesQuery;
 
 $calenderService = new CalendarService();
 use ChurchCRM\dto\SystemURLs;
+
 
 $groups = GroupQuery::Create()
       ->orderByName()
@@ -67,9 +67,9 @@ require 'Include/Header.php'; ?>
   </div>
   <div class="box-body">
       <form>
-          <div class="col-sm-3"> <b><?= gettext("Birthdate") ?>:</b> <input data-size="small" id="isBirthdateActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"> </div>
-          <div class="col-sm-3"> <b><?= gettext("Anniversary") ?>:</b> <input data-size="small" id="isAnniversaryActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"></div>
-          <div class="col-sm-3"> <b><?= gettext("With Limit") ?>:</b> <input data-size="small" id="isWithLimit" type="checkbox" data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"></div>
+          <div class="col-sm-4"> <b><?= gettext("Birthdate") ?>:</b> <input data-size="small" id="isBirthdateActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"> </div>
+          <div class="col-sm-4"> <b><?= gettext("Anniversary") ?>:</b> <input data-size="small" id="isAnniversaryActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"></div>
+          <div class="col-sm-4"> <b><?= gettext("With Limit") ?>:</b> <input data-size="small" id="isWithLimit" type="checkbox" data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"></div>
       </form>
   </div>
 </div>
@@ -84,8 +84,8 @@ require 'Include/Header.php'; ?>
             <select type="text" id="EventTypeFilter" value="0">
               <option value='0' ><?= gettext("None") ?></option>
             <?php
-                  foreach ($eventTypes as $eventType) {
-                      echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
+                  foreach ($eventTypes as $eventType){
+                    echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
                   }
             ?>
             </select>
@@ -94,8 +94,8 @@ require 'Include/Header.php'; ?>
             <select type="text" id="EventGroupFilter" value="0">
               <option value='0' ><?= gettext("None") ?></option>
             <?php
-                  foreach ($groups as $group) {
-                      echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
+                  foreach ($groups as $group){
+                    echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
                   }
                 ?>  
             </select>
@@ -125,38 +125,44 @@ require 'Include/Header.php'; ?>
   var birthday    = true;
   var withlimit   = false;
   var isModifiable  = <?php 
-      if ($_SESSION['bAddEvent']) {
-          echo "true";
-      } else {
-          echo "false";
-      }
-    ?>;
+    if($_SESSION['bAddEvent'])echo "true"; 
+    else echo "false"; 
+  ?>;
   
  
   var birthD = localStorage.getItem("birthday");
   if (birthD != null)
   {
-    if (birthD == 'checked')
+    if (birthD == 'checked'){ 
       birthday=true;
+    } else {
+      birthday=false;
+    }
+      
     $('#isBirthdateActive').prop('checked', birthday);
   }
 
   var ann = localStorage.getItem("anniversary");
   if (ann != null)
   {
-    if (ann == 'checked')
-      anniversary=true
+    if (ann == 'checked'){
+      anniversary=true;
+    } else {
+      anniversary=false;
+    }
+    
     $('#isAnniversaryActive').prop('checked', anniversary);
   }
   
   var wLimit = localStorage.getItem("withlimit");
   if (wLimit != null)
   {
-    if (wLimit == 'checked')
+    if (wLimit == 'checked'){
       withlimit=true;
-    else
+    } else {
       withlimit=false;
-      
+    }
+    
     $('#isWithLimit').prop('checked', withlimit);
   }  
   
@@ -258,8 +264,8 @@ require 'Include/Header.php'; ?>
               +'<select type="text" id="eventType" value="39">'
                    //+"<option value='0' ><?= gettext("Personal") ?></option>"
                    <?php
-                      foreach ($eventTypes as $eventType) {
-                          echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
+                      foreach ($eventTypes as $eventType){
+                        echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
                       }
                     ?>
                 +'</select>'
@@ -283,8 +289,8 @@ require 'Include/Header.php'; ?>
                 +'<select type="text" id="EventGroup" value="39">'
                    +"<option value='0' Selected><?= gettext("None") ?></option>"
                 <?php
-                  foreach ($groups as $group) {
-                      echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
+                  foreach ($groups as $group){
+                    echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
                   }
                 ?>              
                 +'</select>'
