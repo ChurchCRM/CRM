@@ -28,7 +28,7 @@ $container['cache'] = function () {
 // Add middleware to the application
 $app = new App($container);
 
-$app->add( new VersionMiddleware());
+$app->add(new VersionMiddleware());
 
 // Set up
 require __DIR__.'/dependencies.php';
