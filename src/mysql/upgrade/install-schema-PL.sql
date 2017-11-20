@@ -1,3 +1,4 @@
+-- Mise en place des calendriers groupes
 CREATE TABLE person_calendar (
     `per_cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
     `person_ID` mediumint(9) unsigned NOT NULL,
@@ -13,6 +14,8 @@ CREATE TABLE person_calendar (
 )
 ENGINE= InnoDB;
 
+
+-- Mise en place des calendriers groupes
 CREATE TABLE group_calendar_persons (
     `grp_cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
     `group_ID` mediumint(9) unsigned NOT NULL,
@@ -33,6 +36,7 @@ CREATE TABLE group_calendar_persons (
 )
 ENGINE= InnoDB;
 
+-- altération des événements
 ALTER TABLE group_grp ADD `group_manager_id` mediumint(9) unsigned DEFAULT NULL;
 ALTER TABLE group_grp
 ADD CONSTRAINT fk_manager_ID 
@@ -54,7 +58,7 @@ ADD CONSTRAINT fk_event_grp_cal_id
 
 ALTER TABLE events_event ADD event_per_cal_id mediumint(9) unsigned DEFAULT NULL;
 ALTER TABLE events_event
-ADD CONSTRAINT fk_evnt_per_cal_ID
+ADD CONSTRAINT fk_event_per_cal_ID
     FOREIGN KEY (event_per_cal_id) 
     REFERENCES person_calendar(per_cal_id)
     ON DELETE CASCADE;
