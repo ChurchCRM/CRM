@@ -14,6 +14,7 @@ require_once dirname(__FILE__).'/../vendor/autoload.php';
 use \Slim\Container;
 use Slim\HttpCache\Cache;
 use Slim\HttpCache\CacheProvider;
+use ChurchCRM\Slim\Middleware\VersionMiddleware;
 
 // Instantiate the app
 $settings = require __DIR__.'/../Include/slim/settings.php';
@@ -25,6 +26,8 @@ $container['cache'] = function () {
 
 // Add middleware to the application
 $app = new \Slim\App($container);
+
+$app->add( new VersionMiddleware());
 
 // Set up
 require __DIR__.'/dependencies.php';
