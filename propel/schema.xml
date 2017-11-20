@@ -586,7 +586,7 @@
         <index name="fk_event_grp_cal_id">
         <index-column name="event_grp_cal_id"/>
         </index>
-        <index name="fk_evnt_per_cal_ID">
+        <index name="fk_event_per_cal_ID">
           <index-column name="event_per_cal_id"/>
         </index>
         <index name="event_txt">
