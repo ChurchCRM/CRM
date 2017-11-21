@@ -319,6 +319,24 @@ if ($per_ID == $iPersonID) {
               <?php
         }
     }
+    
+    if ($per_FacebookID > 0) {
+        ?>
+              <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?>"><?= gettext('Facebook') ?></a></span></li>
+          <?php
+    }
+    
+    if (strlen($per_Twitter) > 0) {
+        ?>
+              <li><i class="fa-li fa fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>"><?= gettext('Twitter') ?></a></span></li>
+          <?php
+    }
+    
+    if (strlen($per_LinkedIn) > 0) {
+        ?>
+              <li><i class="fa-li fa fa-linkedin"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>"><?= gettext('LinkedIn') ?></a></span></li>
+          <?php
+    }
 
     // Display the right-side custom fields
     while ($Row = mysqli_fetch_array($rsCustomFields)) {
@@ -422,7 +440,7 @@ if ($per_ID == $iPersonID) {
                   </h3>
 
                   <div class="timeline-body">
-                    <?= $item['text'] ?>
+                      <pre><?= $item['text'] ?></pre>
                   </div>
 
                   <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {

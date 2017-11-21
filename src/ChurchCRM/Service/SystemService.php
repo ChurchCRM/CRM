@@ -2,8 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
@@ -16,6 +14,7 @@ use PharData;
 use Propel\Runtime\Propel;
 use PDO;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
@@ -284,11 +283,10 @@ class SystemService
 
         return $results[0]['ver_version'];
     }
-    
+
     public function getDBServerVersion()
     {
       try{
-        $connection = Propel::getConnection();
         return Propel::getServiceContainer()->getConnection()->getAttribute(PDO::ATTR_SERVER_VERSION);
       }
       catch (\Exception $exc)
@@ -304,8 +302,10 @@ class SystemService
 
     public function upgradeDatabaseVersion()
     {
+        $logger = LoggerUtils::getAppLogger();
         $connection = Propel::getConnection();
         $db_version = $this->getDBVersion();
+        $logger->info("Current Version: " .$db_version);
         if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
             return true;
         }
@@ -319,8 +319,15 @@ class SystemService
                 $version = new Version();
                 $version->setVersion($dbUpdate['dbVersion']);
                 $version->setUpdateStart(new \DateTime());
+                $logger->info("New Version: " .$version->getVersion());
                 foreach ($dbUpdate['scripts'] as $dbScript) {
-                    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/' . $dbScript, $connection);
+                    $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
+                    $logger->info("Upgrade DB - " . $scriptName);
+                    if (pathinfo($scriptName, PATHINFO_EXTENSION) == "sql") {
+                        SQLUtils::sqlImport($scriptName, $connection);
+                    } else {
+                        require_once ($scriptName);
+                    }
                 }
                 if (!$errorFlag) {
                     $version->setUpdateEnd(new \DateTime());
@@ -354,7 +361,7 @@ class SystemService
             'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
             'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
             'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json')."\r\n";
-        
+
         if (function_exists('apache_get_modules')) {
             $issueDescription .= 'Apache Modules    |' . implode(',', apache_get_modules());
         }
