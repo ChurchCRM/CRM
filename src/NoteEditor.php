@@ -15,6 +15,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
@@ -105,7 +106,6 @@ if (isset($_POST['Submit'])) {
         $iFamilyID = $dbNote->getFamId();
     }
 }
-
 require 'Include/Header.php';
 
 ?>
@@ -117,7 +117,7 @@ require 'Include/Header.php';
         <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
         <input type="hidden" name="FamilyID" value="<?= $iFamilyID ?>">
         <input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
-        <textarea name="NoteText" style="width: 100%" rows="10"><?= $sNoteText ?></textarea>
+        <textarea id="NoteText" name="NoteText" style="width: 100%;min-height: 300px;" rows="40"><?= $sNoteText ?></textarea>
         <?= $sNoteTextError ?>
       </p>
 
@@ -135,4 +135,13 @@ require 'Include/Header.php';
 
   </p>
 </form>
+
 <?php require 'Include/Footer.php' ?>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/editor/CKEditor/ckeditor.js"></script>
+
+<script>
+  CKEDITOR.replace('NoteText');    
+</script>
+
+
