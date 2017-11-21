@@ -152,6 +152,8 @@ $MenuFirst = 1;
               <li class="user-header">
                 <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
                 <p><?= $_SESSION['user']->getName() ?></p>
+				  <a href="/Logoff.php" 
+                     class="btn btn-default btn-flat" style="width:50%; display:block; margin:auto"><?= gettext('Log Off') ?></a>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
