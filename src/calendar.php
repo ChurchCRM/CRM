@@ -254,17 +254,17 @@ require 'Include/Header.php'; ?>
   
   function deleteText(a)
   {
-    if(a.value=='<?= gettext("Calendar Title")?>' || a.value=='<?= gettext("Calendar description")?>'){ a.value=''; a.style.color='#000';};
+    if(a.value==i18next.t("Calendar Title") || a.value==i18next.t("Calendar description")){ a.value=''; a.style.color='#000';};
   }
   
   function BootboxContent(){    
     var frm_str = '<form id="some-form">'
        + '<table class="table">'
             +'<tr>'
-              +"<td class='LabelColumn'><span style='color: red'>*</span><?= gettext('Select your event type'); ?></td>"
+              +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Select your event type') + "</td>"
               +'<td colspan="3" class="TextColumn">'
               +'<select type="text" id="eventType" value="39">'
-                   //+"<option value='0' ><?= gettext("Personal") ?></option>"
+                   //+"<option value='0' >" + i18next.t("Personal") + "</option>"
                    <?php
                       foreach ($eventTypes as $eventType) {
                           echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
@@ -274,22 +274,22 @@ require 'Include/Header.php'; ?>
               +'</td>'
             +'</tr>'
             +'<tr>'
-              +"<td class='LabelColumn'><span style='color: red'>*</span><?= gettext('Event Title') ?> :</td>"
+              +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Title') + ":</td>"
               +'<td colspan="1" class="TextColumn">'
-                +"<input type='text' id='EventTitle' onfocus='deleteText(this)' value='<?= gettext("Calendar Title")?>' size='30' maxlength='100' class='form-control' required>"
+                +"<input type='text' id='EventTitle' onfocus='deleteText(this)' value=" + i18next.t("Calendar Title") + " size='30' maxlength='100' class='form-control' required>"
               +'</td>'
             +'</tr>'
             +'<tr>'
-              +"<td class='LabelColumn'><span style='color: red'>*</span><?= gettext('Event Desc') ?>:</td>"
+              +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Desc') + ":</td>"
               +'<td colspan="3" class="TextColumn">'
-                +"<textarea id='EventDesc' rows='4' maxlength='100' onfocus='deleteText(this)' class='form-control' required><?= gettext("Calendar description")?></textarea>"
+                +"<textarea id='EventDesc' rows='4' maxlength='100' onfocus='deleteText(this)' class='form-control' required>" + i18next.t("Calendar description") + "</textarea>"
               +'</td>'
             +'</tr>'          
             +'<tr>'
-              +"<td class='LabelColumn'><span style='color: red'>*</span><?= gettext('Event Group') ?>:</td>"
+              +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Group') + ":</td>"
               +'<td class="TextColumn">'
                 +'<select type="text" id="EventGroup" value="39">'
-                   +"<option value='0' Selected><?= gettext("None") ?></option>"
+                   +"<option value='0' Selected>" + i18next.t("None") + "</option>"
                 <?php
                   foreach ($groups as $group) {
                       echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
@@ -299,29 +299,29 @@ require 'Include/Header.php'; ?>
               +'</td>'
             +'</tr>'
             +'<tr>'
-              +"<td class='LabelColumn' id='ATTENDENCES'><?= gettext('Attendance Counts') ?></td>"
+              +"<td class='LabelColumn' id='ATTENDENCES'>" + i18next.t('Attendance Counts') + "</td>"
               +'<td class="TextColumn" colspan="3">'
                 +'<table>'
                 +'<tr>'
-                    +"<td><strong><?= gettext("Total")?>:&nbsp;</strong></td>"
+                    +"<td><strong>" + i18next.t("Total") + ":&nbsp;</strong></td>"
                   +'<td>'
                   +'<input type="text" id="Total" value="0" size="8" class="form-control">'
                   +'</td>'
                   +'</tr>'
                 +'<tr>'
-                    +"<td><strong><?= gettext("Members")?>:&nbsp;</strong></td>"
+                    +"<td><strong>" + i18next.t("Members") + ":&nbsp;</strong></td>"
                   +'<td>'
                   +'<input type="text" id="Members" value="0" size="8" class="form-control">'
                  +' </td>'
                   +'</tr>'
                +' <tr>'
-                    +"<td><strong><?= gettext("Visitors")?>:&nbsp;</strong></td>"
+                    +"<td><strong>" + i18next.t("Visitors") + ":&nbsp;</strong></td>"
                   +'<td>'
                   +'<input type="text" id="Visitors" value="0" size="8" class="form-control">'
                   +'</td>'
                   +'</tr>'
                       +'<tr>'
-                +"<td><strong><?= gettext('Attendance Notes: ') ?> &nbsp;</strong></td>"
+                +"<td><strong>" + i18next.t('Attendance Notes: ') + " &nbsp;</strong></td>"
                   +'<td><input type="text" id="EventCountNotes" value="" class="form-control">'
                   +'</td>'
                   +'</tr>'
@@ -329,7 +329,7 @@ require 'Include/Header.php'; ?>
                       +'</td>'
             +'</tr>'
             +'<tr>'
-              +"<td class='LabelColumn'><?= gettext('Event Sermon') ?>:</td>"
+              +"<td class='LabelColumn'>" + i18next.t('Event Sermon') + ":</td>"
               +'<td colspan="3" class="TextColumn"><textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"></textarea></td>'
             +'</tr>'
             //+'<tr>'
@@ -362,14 +362,14 @@ require 'Include/Header.php'; ?>
           eventDrop: function(event, delta, revertFunc) {
             if (event.type == 'event'){
               bootbox.confirm({
-               title: "<?= gettext("Move Event") ?>?",
-                message: "<?= gettext("Are you sure about this change?") ?>\n"+event.title + " <?= gettext("will be dropped.") ?>",
+               title:  i18next.t("Move Event") + "?",
+                message: i18next.t("Are you sure about this change?") + "\n"  + event.title + " " + i18next.t("will be dropped."),
                 buttons: {
                   cancel: {
-                    label: '<i class="fa fa-times"></i> <?= gettext("Cancel") ?>'
+                    label: '<i class="fa fa-times"></i> ' + i18next.t("Cancel")
                   },
                   confirm: {
-                    label: '<i class="fa fa-check"></i> <?= gettext("Confirm") ?>'
+                    label: '<i class="fa fa-check"></i> ' + i18next.t("Confirm")
                   }
                 },
                 callback: function (result) {
@@ -398,14 +398,14 @@ require 'Include/Header.php'; ?>
         eventResize: function(event, delta, revertFunc) {
           if (event.type == 'event'){
             bootbox.confirm({
-             title: "<?= gettext("Resize Event") ?>?",
-              message: "<?= gettext("Are you sure about this change?") ?>\n"+event.title + " <?= gettext("will be dropped.") ?>",
+             title: i18next.t("Resize Event") + "?",
+              message: i18next.t("Are you sure about this change?") + "\n"+event.title + " " + i18next.t("will be dropped."),
               buttons: {
                 cancel: {
-                  label: '<i class="fa fa-times"></i> <?= gettext("Cancel") ?>'
+                  label: '<i class="fa fa-times"></i> ' + i18next.t("Cancel")
                 },
                 confirm: {
-                  label: '<i class="fa fa-check"></i> <?= gettext("Confirm") ?>'
+                  label: '<i class="fa fa-check"></i> ' + i18next.t("Confirm")
                 }
               },
               callback: function (result) {
@@ -435,10 +435,10 @@ require 'Include/Header.php'; ?>
       select: function(start, end) {        
        var modal = bootbox.dialog({
          message: BootboxContent,
-         title: "<?= gettext("Event Creation") ?>",
+         title: i18next.t("Event Creation"),
          buttons: [
           {
-           label: "<?= gettext("Save") ?>",
+           label: i18next.t("Save"),
            className: "btn btn-primary pull-left",
            callback: function() {
               var e = document.getElementById("eventType");
@@ -482,7 +482,7 @@ require 'Include/Header.php'; ?>
             }
           },
           {
-           label: "<?= gettext("Close") ?>",
+           label: i18next.t("Close"),
            className: "btn btn-default pull-left",
            callback: function() {
               console.log("just do something on close");
