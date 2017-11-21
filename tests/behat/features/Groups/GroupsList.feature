@@ -26,7 +26,7 @@ Feature: Groups List
     And I am on "GroupView.php?GroupID=1"
     And I click the first ".groupRow" element
     Then I should see "Add (1) Members to Cart"
-    And I click the "addSelectedToCart" element
+    And I click the "#addSelectedToCart" element
     And I reload the page
     Then I should see "1" in the "#iconCount" element
 
@@ -35,8 +35,8 @@ Feature: Groups List
     And I am on "GroupView.php?GroupID=1"
     And I click the first ".groupRow" element
     Then I should see "Add (1) Members to Cart"
-    And I click the "buttonDropdown" element
-    And I click the "addSelectedToGroup" element
+    And I click the "#buttonDropdown" element
+    And I click the "#addSelectedToGroup" element
     Then I should see "Select Group and Role"
     And I fill in select2 input "targetGroupSelection" with "Class 1-3" and select "Class 1-3"
     And I fill in select2 input "targetRoleSelection" with "Student" and select "Student"
@@ -47,8 +47,8 @@ Feature: Groups List
     And I am on "GroupView.php?GroupID=1"
     And I click the first ".groupRow" element
     Then I should see "Add (1) Members to Cart"
-    And I click the "buttonDropdown" element
-    And I click the "moveSelectedToGroup" element
+    And I click the "#buttonDropdown" element
+    And I click the "#moveSelectedToGroup" element
     Then I should see "Select Group and Role"
     And I fill in select2 input "targetGroupSelection" with "Class 4-5" and select "Class 4-5"
     And I fill in select2 input "targetRoleSelection" with "Student" and select "Student"
