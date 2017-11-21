@@ -8,7 +8,7 @@ Feature: Cart
     And I am on "CartView.php"
     Then I should see "You have no items in your cart"
     And I am on "PersonView.php?PersonID=1"
-    And I click on "Add to Cart"
+    And I click "#AddGroupMembersToCart"
     And I am on "CartView.php"
     Then I should see "Cart Functions"
     And I should see "Church Admin"
