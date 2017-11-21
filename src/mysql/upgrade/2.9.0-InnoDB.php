@@ -1,3 +1,5 @@
+<?php
+
 use Propel\Runtime\Propel;
 use ChurchCRM\Utils\LoggerUtils;
 
@@ -23,9 +25,5 @@ foreach ($dbTablesSQLs as $dbTable) {
     $dbAlterStatement = $connection->exec($alterSQL);
     $logger->info("Upgrade: " . $alterSQL . " done.");
 }
-
-
-$sqlEvents = "ALTER TABLE events_event ADD FULLTEXT KEY `event_txt` (`event_text`);";
-$connection->exec($sqlEvents);
 
 $logger->info("Upgrade to InnoDB finished ");
