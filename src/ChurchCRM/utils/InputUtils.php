@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 
 class InputUtils {
   
-  private static $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><img>';
+  private static $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><tbody><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
   
   public static function LegacyFilterInputArr($arr, $key, $type = 'string', $size = 1)
   {
@@ -18,12 +18,12 @@ class InputUtils {
   }
   
   public static function translate_special_charset ($string)
-	{
-		if (empty($string))
-			return "";
-		
-		return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?gettext($string):iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
-	} 	 
+  {
+    if (empty($string))
+      return "";
+    
+    return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?gettext($string):iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
+  }    
 
   public static function FilterString($sInput)
   {
@@ -69,7 +69,7 @@ class InputUtils {
     // Attempts to take a date in any format and convert it to YYYY-MM-DD format
     // Logel Philippe
     if (empty($sInput))
-    	return "";
+      return "";
     else 
       return date('Y-m-d', strtotime(str_replace("/","-",$sInput)));
   }
