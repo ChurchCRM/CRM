@@ -152,18 +152,16 @@ $MenuFirst = 1;
               <li class="user-header">
                 <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
                 <p><?= $_SESSION['user']->getName() ?></p>
-				  <a href="/Logoff.php" 
-                     class="btn btn-default btn-flat" style="width:50%; display:block; margin:auto"><?= gettext('Log Off') ?></a>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php"
-                     class="btn btn-default btn-flat"><?= gettext('Change Password') ?></a>
+                  <a href="<?= SystemURLs::getRootPath()?>PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>"
+                     class="btn btn-default btn-flat"><?= gettext('Profile') ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"
-                     class="btn btn-default btn-flat"><?= gettext('My Settings') ?></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php"
+                     class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
                 </div>
               </li>
             </ul>
