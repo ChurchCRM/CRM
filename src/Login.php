@@ -161,12 +161,10 @@ require 'Include/HeaderNotLoggedIn.php';
             <div class="form-group has-feedback">
                 <input type="text" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>"
                        placeholder="<?= gettext('Email/Username') ?>" required autofocus>
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" id="PasswordBox" name="Password" class="form-control"
+                <input type="password" id="PasswordBox" name="Password" class="form-control" data-toggle="password"
                        placeholder="<?= gettext('Password') ?>" required autofocus>
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 <br/>
                 <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
             ?>
@@ -193,7 +191,14 @@ require 'Include/HeaderNotLoggedIn.php';
         <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
 
     </div>
-    <!-- /.login-box-body -->
+<script>
+    $('#password').password('toggle');
+    $("#password").password({
+        eyeOpenClass: 'glyphicon-eye-open',
+        eyeCloseClass: 'glyphicon-eye-close'
+})    
+</script>
+<!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
 
