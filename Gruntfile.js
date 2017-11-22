@@ -104,7 +104,7 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd:'node_modules/ckeditor/',
                         //src: ['**/*'],
-                        src: ['*.md','*.js','*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
+                        src: ['*.js','*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
                         dest: 'src/skin/ckeditor/'
                     },
                     {
@@ -446,9 +446,7 @@ module.exports = function (grunt) {
       grunt.task.run('gitpull:master');
       //  display local master's commit hash
     });
-    
-    //grunt.registerTask('default', ["copy"]);
-    
+        
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
