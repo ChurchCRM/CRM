@@ -95,20 +95,7 @@ $(document).ready(function () {
                       return val.PersonId;
                     })
       };
-      $.ajax({
-        type: 'POST',
-        url: window.CRM.root + '/api/cart/',
-        dataType: 'json',
-        contentType: "application/json",
-        data: JSON.stringify(selectedPersons)
-      }).done(function(data) {
-          if ( data.status == "success" )
-          {
-            location.reload();
-          }
-      });
-
-      window.CRM.cart.addPerson(selectedPersons);
+      window.CRM.cart.addPerson(selectedPersons.Persons);
     }
 
   });

@@ -24,16 +24,17 @@ Feature: Groups List
   Scenario: Add group memeber to cart
     Given I am authenticated as "admin" using "changeme"
     And I am on "GroupView.php?GroupID=1"
-    And I click the first ".groupRow" element
+    And I click the ".groupRow" element
     Then I should see "Add (1) Members to Cart"
     And I click the "#addSelectedToCart" element
+    And I wait for AJAX to finish
     And I reload the page
     Then I should see "1" in the "#iconCount" element
 
   Scenario: Copy a member to a different group
     Given I am authenticated as "admin" using "changeme"
     And I am on "GroupView.php?GroupID=1"
-    And I click the first ".groupRow" element
+    And I click the ".groupRow" element
     Then I should see "Add (1) Members to Cart"
     And I click the "#buttonDropdown" element
     And I click the "#addSelectedToGroup" element
@@ -45,7 +46,7 @@ Feature: Groups List
   Scenario: Move a member to a different group
     Given I am authenticated as "admin" using "changeme"
     And I am on "GroupView.php?GroupID=1"
-    And I click the first ".groupRow" element
+    And I click the ".groupRow" element
     Then I should see "Add (1) Members to Cart"
     And I click the "#buttonDropdown" element
     And I click the "#moveSelectedToGroup" element
