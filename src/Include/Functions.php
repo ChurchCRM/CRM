@@ -92,6 +92,7 @@ $aPropTypes = [
   10 => gettext('Money'),
   11 => gettext('Phone Number'),
   12 => gettext('Custom Drop-Down List'),
+  13 => gettext('Father Of Confession')
 ];
 
 $sGlobalMessageClass = 'success';

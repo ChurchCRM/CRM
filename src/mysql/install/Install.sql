@@ -509,6 +509,7 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (4, 10, 10, 'Money'),
   (4, 11, 11, 'Phone Number'),
   (4, 12, 12, 'Custom Drop-Down List'),
+  (4, 13, 13, 'Father Of Confession'),
   (5, 1, 1, 'bAll'),
   (5, 2, 2, 'bAdmin'),
   (5, 3, 3, 'bAddRecords'),
@@ -841,7 +842,8 @@ CREATE TABLE `property_pro` (
 INSERT INTO `property_pro` (`pro_ID`, `pro_Class`, `pro_prt_ID`, `pro_Name`, `pro_Description`, `pro_Prompt`) VALUES
   (1, 'p', 1, 'Disabled', 'has a disability.', 'What is the nature of the disability?'),
   (2, 'f', 2, 'Single Parent', 'is a single-parent household.', ''),
-  (3, 'g', 3, 'Youth', 'is youth-oriented.', '');
+  (3, 'g', 3, 'Youth', 'is youth-oriented.', ''),
+  (4, 'g', 1, 'Father Of Confession', '', '');
 
 -- --------------------------------------------------------
 
