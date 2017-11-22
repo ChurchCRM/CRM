@@ -111,6 +111,13 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
+                        src: ['node_modules/config.js'],
+                        dest: 'src/skin/ckeditor/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
                         src: ['node_modules/bootbox/bootbox.min.js'],
                         dest: 'src/skin/bootbox/'
                     },
@@ -440,7 +447,7 @@ module.exports = function (grunt) {
       //  display local master's commit hash
     });
     
-    //grunt.registerTask('default', ["copy"]);
+    grunt.registerTask('default', ["copy"]);
     
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
