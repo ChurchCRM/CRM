@@ -61,6 +61,7 @@ module.exports = function (grunt) {
                             '!plugins/moment/**',
                             '!plugins/fastclick/**',
                             '!plugins/bootstrap-wysihtml5/**',
+                            '!plugins/ckeditor/**',
                             '!plugins/morris/**',
                             '!dist/img/**',
                             '!plugins/**/psd/**'],
@@ -98,6 +99,12 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/jquery-photo-uploader/dist/*'],
                         dest: 'src/skin/jquery-photo-uploader/'
+                    },
+                    {
+                        expand: true,
+                        cwd:'node_modules/ckeditor/',
+                        src: ['**/*'],
+                        dest: 'src/skin/ckeditor/'
                     },
                     {
                         expand: true,
@@ -431,7 +438,9 @@ module.exports = function (grunt) {
       grunt.task.run('gitpull:master');
       //  display local master's commit hash
     });
-
+    
+    //grunt.registerTask('default', ["copy"]);
+    
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
