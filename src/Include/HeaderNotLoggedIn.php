@@ -19,7 +19,7 @@ use ChurchCRM\dto\SystemURLs;
 
     <!-- jQuery JS -->
     <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    
+
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
 </head>
