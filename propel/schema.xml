@@ -291,7 +291,11 @@
           <unique-column name="grp_ID"/>
         </unique>
         <vendor type="mysql">
+<<<<<<< HEAD
           <parameter name="Engine" value="InnoDB"/>
+=======
+            <parameter name="Engine" value="InnoDB"/>
+>>>>>>> f289f56d826cffd774916cd1790f57ebd49c7f7e
         </vendor>
     </table>
     <table name="groupprop_master" idMethod="native" phpName="GroupPropMaster" description="This contains definitions for the group-specific fields">
