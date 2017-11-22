@@ -61,7 +61,6 @@ module.exports = function (grunt) {
                             '!plugins/moment/**',
                             '!plugins/fastclick/**',
                             '!plugins/bootstrap-wysihtml5/**',
-                            '!plugins/ckeditor/**',
                             '!plugins/morris/**',
                             '!dist/img/**',
                             '!plugins/**/psd/**'],
