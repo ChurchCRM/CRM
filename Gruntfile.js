@@ -103,7 +103,8 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd:'node_modules/ckeditor/',
-                        src: ['**/*'],
+                        //src: ['**/*'],
+                        src: ['*.md','*.js','*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
                         dest: 'src/skin/ckeditor/'
                     },
                     {
@@ -439,7 +440,7 @@ module.exports = function (grunt) {
       //  display local master's commit hash
     });
     
-    //grunt.registerTask('default', ["copy"]);
+    grunt.registerTask('default', ["copy"]);
     
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
