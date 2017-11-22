@@ -1,4 +1,5 @@
-var anniversary = true;
+  // Philippe Logel
+  var anniversary = true;
   var birthday    = true;
   var withlimit   = false;
   
