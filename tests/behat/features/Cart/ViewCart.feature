@@ -12,5 +12,6 @@ Feature: Cart
     And I am on "CartView.php"
     Then I should see "Cart Functions"
     And I should see "Church Admin"
-    And I am on "CartView.php?Action=EmptyCart"
+    And I click "#emptyCart"
+    And I wait for AJAX to finish
     Then I should see "You have no items in your cart"

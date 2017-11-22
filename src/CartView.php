@@ -84,7 +84,7 @@ if (!Cart::HasPeople()) {
             <h3 class="box-title">Cart Functions</h3>
         </div>
         <div class="box-body">
-            <a href="#" class="btn btn-app emptyCart"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
+            <a href="#" id="emptyCart" class="btn btn-app emptyCart"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
             <?php if ($_SESSION['bManageGroups']) {
             ?>
                 <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
