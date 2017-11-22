@@ -138,7 +138,7 @@ require 'Include/Header.php';
 
 <?php require 'Include/Footer.php' ?>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/editor/CKEditor/ckeditor.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/ckeditor/ckeditor.js"></script>
 
 <script>
   CKEDITOR.replace('NoteText');    
