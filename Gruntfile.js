@@ -447,7 +447,7 @@ module.exports = function (grunt) {
       //  display local master's commit hash
     });
     
-    grunt.registerTask('default', ["copy"]);
+    //grunt.registerTask('default', ["copy"]);
     
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
