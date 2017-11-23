@@ -44,7 +44,8 @@
         "ionicons": "2.0.1",
         "jquery-photo-uploader": "1.0.13",
         "jquery-steps": "1.1.0",
-        "jquery-validation": "1.16.0"
+        "jquery-validation": "1.16.0",
+        "ckeditor": "4.7.3"
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
