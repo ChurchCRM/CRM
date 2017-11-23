@@ -1292,7 +1292,7 @@ CREATE TABLE `tokens` (
 update version_ver set ver_update_end = now();
 
 
--- Mise en place des calendriers groupes
+-- person calendar setup
 CREATE TABLE person_calendar (
     `per_cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
     `person_ID` mediumint(9) unsigned NOT NULL,
@@ -1309,7 +1309,7 @@ CREATE TABLE person_calendar (
 ENGINE= InnoDB;
 
 
--- Mise en place des calendriers groupes
+-- group calendar setup
 CREATE TABLE group_calendar_persons (
     `grp_cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
     `group_ID` mediumint(9) unsigned NOT NULL,
@@ -1330,7 +1330,7 @@ CREATE TABLE group_calendar_persons (
 )
 ENGINE= InnoDB;
 
--- altération des événements
+-- alteration of the groups
 ALTER TABLE group_grp ADD `group_manager_id` mediumint(9) unsigned DEFAULT NULL;
 ALTER TABLE group_grp
 ADD CONSTRAINT fk_manager_ID 
@@ -1343,6 +1343,7 @@ ADD CONSTRAINT fk_grp_parent_ID
     FOREIGN KEY (group_parent_id) REFERENCES group_grp(grp_ID)
     ON DELETE SET NULL;
 
+-- alteration of the events
 ALTER TABLE events_event ADD event_grp_cal_id mediumint(9) unsigned DEFAULT NULL;
 ALTER TABLE events_event
 ADD CONSTRAINT fk_event_grp_cal_id
