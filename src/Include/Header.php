@@ -143,25 +143,25 @@ $MenuFirst = 1;
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
-              <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="user-image initials-image" alt="User Image">
+              <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img data-src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" data-name="<?= $_SESSION['user']->getName() ?>" class="initials-image img-circle no-border" alt="User Image">
+                <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
                 <p><?= $_SESSION['user']->getName() ?></p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php"
-                     class="btn btn-default btn-flat"><?= gettext('Change Password') ?></a>
+                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>"
+                     class="btn btn-default btn-flat"><?= gettext('Profile') ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"
-                     class="btn btn-default btn-flat"><?= gettext('My Settings') ?></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php"
+                     class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
                 </div>
               </li>
             </ul>

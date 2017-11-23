@@ -1546,7 +1546,7 @@ function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSepar
         $birthYear = $per_BirthYear;
     }
 
-    if ($per_BirthMonth > 0 && $per_BirthDay > 0) {
+    if ($per_BirthMonth > 0 && $per_BirthDay > 0 && $birthYear != 1000) {
         if ($per_BirthMonth < 10) {
             $dBirthMonth = '0'.$per_BirthMonth;
         } else {

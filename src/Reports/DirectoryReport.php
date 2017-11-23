@@ -166,7 +166,7 @@ if ($mysqlversion >= 4) {
     // If UNION not supported use this query with temporary table.  Prior to version 3.22 no IF EXISTS statement.
     $sSQL = 'DROP TABLE IF EXISTS tmp;';
     $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
-    $sSQL = "CREATE TABLE tmp TYPE = MyISAM SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;";
+    $sSQL = "CREATE TABLE tmp TYPE = InnoDB SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;";
     $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
     $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;";
     $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
@@ -251,7 +251,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         }
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $pdf->sRecordName .= " ". date(SystemConfig::getValue("sDateFormatNoYear"));
+            $pdf->sRecordName .= " ". date(SystemConfig::getValue("sDateFormatNoYear"), mktime(0, 0, 0, $per_BirthMonth, $per_BirthDay, $per_BirthYear));
         }
 
         SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);

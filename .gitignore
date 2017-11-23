@@ -12,10 +12,10 @@
 
 #Exclude composer vendor folders
 vendor
-composer.lock
 node_modules
 npm-debug.log*
 BuildConfig.json
+security-checker.phar
 
 # Uploaded Images
 src/Images/Family
@@ -35,7 +35,6 @@ src/skin/fastclick
 src/skin/churchcrm.min.css.map
 src/skin/churchcrm.min.css
 src/skin/jquery-photo-uploader
-src/skin/randomcolor
 src/skin/bootbox
 src/skin/bootstrap-toggle
 src/skin/bootstrap-validator
@@ -57,3 +56,5 @@ src/signatures.json
 src/integrityCheck.json
 src/tmp_attach
 src/logs/*.log
+
+error.log

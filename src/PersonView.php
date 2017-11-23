@@ -53,14 +53,14 @@ if ($iRemoveVO > 0 && $_SESSION['bEditRecords']) {
 
 // Get this person's data
 $sSQL = "SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') AS sClassName, fmr.lst_OptionName AS sFamRole, b.per_FirstName AS EnteredFirstName, b.per_ID AS EnteredId,
-				b.Per_LastName AS EnteredLastName, c.per_FirstName AS EditedFirstName, c.per_LastName AS EditedLastName, c.per_ID AS EditedId
-			FROM person_per a
-			LEFT JOIN family_fam ON a.per_fam_ID = family_fam.fam_ID
-			LEFT JOIN list_lst cls ON a.per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-			LEFT JOIN list_lst fmr ON a.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-			LEFT JOIN person_per b ON a.per_EnteredBy = b.per_ID
-			LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
-			WHERE a.per_ID = ".$iPersonID;
+        b.Per_LastName AS EnteredLastName, c.per_FirstName AS EditedFirstName, c.per_LastName AS EditedLastName, c.per_ID AS EditedId
+      FROM person_per a
+      LEFT JOIN family_fam ON a.per_fam_ID = family_fam.fam_ID
+      LEFT JOIN list_lst cls ON a.per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
+      LEFT JOIN list_lst fmr ON a.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
+      LEFT JOIN person_per b ON a.per_EnteredBy = b.per_ID
+      LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
+      WHERE a.per_ID = ".$iPersonID;
 $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
@@ -71,7 +71,7 @@ if ($per_ID == $iPersonID) {
 
     // Get the lists of custom person fields
     $sSQL = 'SELECT person_custom_master.* FROM person_custom_master
-			ORDER BY custom_Order';
+      ORDER BY custom_Order';
     $rsCustomFields = RunQuery($sSQL);
 
     // Get the custom field data for this person.
@@ -81,11 +81,11 @@ if ($per_ID == $iPersonID) {
 
     // Get the Groups this Person is assigned to
     $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
-		FROM group_grp
-		LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
-		LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
-		WHERE person2group2role_p2g2r.p2g2r_per_ID = '.$iPersonID.'
-		ORDER BY grp_Name';
+    FROM group_grp
+    LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
+    LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
+    WHERE person2group2role_p2g2r.p2g2r_per_ID = '.$iPersonID.'
+    ORDER BY grp_Name';
     $rsAssignedGroups = RunQuery($sSQL);
     $sAssignedGroups = ',';
 
@@ -95,8 +95,8 @@ if ($per_ID == $iPersonID) {
 
     // Get the volunteer opportunities this Person is assigned to
     $sSQL = 'SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
-		LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
-		WHERE person2volunteeropp_p2vo.p2vo_per_ID = '.$iPersonID.' ORDER by vol_Order';
+    LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
+    WHERE person2volunteeropp_p2vo.p2vo_per_ID = '.$iPersonID.' ORDER by vol_Order';
     $rsAssignedVolunteerOpps = RunQuery($sSQL);
 
     // Get all the volunteer opportunities
@@ -105,10 +105,10 @@ if ($per_ID == $iPersonID) {
 
     // Get the Properties assigned to this Person
     $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
-		FROM record2property_r2p
-		LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
-		LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-		WHERE pro_Class = 'p' AND r2p_record_ID = ".$iPersonID.
+    FROM record2property_r2p
+    LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
+    LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
+    WHERE pro_Class = 'p' AND r2p_record_ID = ".$iPersonID.
   ' ORDER BY prt_Name, pro_Name';
     $rsAssignedProperties = RunQuery($sSQL);
 
@@ -181,22 +181,20 @@ if ($per_ID == $iPersonID) {
     <div class="box box-primary">
       <div class="box-body box-profile">
         <div class="image-container">
-            <img  data-name="<?= $person->getFullName()?>" data-src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>"
+            <img src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>"
             class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
             <?php if ($bOkToEdit): ?>
                 <div class="after">
                 <div class="buttons">
-                    <a id="view-larger-image-btn" class="hide" href="#" title="<?= gettext("View Photo") ?>">
+                    <a id="view-larger-image-btn" class="hide"  title="<?= gettext("View Photo") ?>">
                         <i class="fa fa-search-plus"></i>
                     </a>&nbsp;
-                    <a href="#" class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
+                    <a  class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
                         <i class="fa fa-camera"></i>
                     </a>&nbsp;
-                    <?php if ($person->isPhotoLocal()): ?>
-                        <a href="#" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                            <i class="fa fa-trash-o"></i>
-                        </a>
-                    <?php endif; ?>
+                    <a  data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
                 </div>
                 </div>
             <?php endif; ?>
@@ -211,13 +209,13 @@ if ($per_ID == $iPersonID) {
                 <i class="fa fa-female"></i>
             <?php
     } ?>
-          <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 0) ?></h3>
+          <?= $person->getFullName() ?></h3>
 
         <p class="text-muted text-center">
             <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?>
             &nbsp;
             <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" 
-            data-family_role_id="<?= $person->getFmrId() ?>" href="#" class="btn btn-primary btn-xs">
+            data-family_role_id="<?= $person->getFmrId() ?>"  class="btn btn-primary btn-xs">
                 <i class="fa fa-pencil"></i>
             </a>
         </p>
@@ -230,7 +228,7 @@ if ($per_ID == $iPersonID) {
         </p>
         <?php if ($bOkToEdit) {
         ?>
-          <a href="PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
+          <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
         <?php
     } ?>
       </div>
@@ -247,28 +245,28 @@ if ($per_ID == $iPersonID) {
       <div class="box-body">
         <ul class="fa-ul">
           <li><i class="fa-li fa fa-group"></i><?php echo gettext('Family:'); ?> <span>
-							<?php
+              <?php
               if ($fam_ID != '') {
                   ?>
-                <a href="FamilyView.php?FamilyID=<?= $fam_ID ?>"><?= $fam_Name ?> </a>
-                <a href="FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
-									<span class="fa-stack">
-										<i class="fa fa-square fa-stack-2x"></i>
-										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-									</span>
+                <a href="<?= SystemURLs::getRootPath() ?>/FamilyView.php?FamilyID=<?= $fam_ID ?>"><?= $fam_Name ?> </a>
+                <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
+                  <span class="fa-stack">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                  </span>
                 </a>
               <?php
               } else {
                   echo gettext('(No assigned family)');
               } ?>
-						</span></li>
+            </span></li>
             <?php if (!empty($formattedMailingAddress)) {
                   ?>
           <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Address'); ?>: <span>
-						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
+            <a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
-						</span></li>
+            </span></li>
           <?php
               }
     if ($dBirthDate) {
@@ -321,6 +319,24 @@ if ($per_ID == $iPersonID) {
               <?php
         }
     }
+    
+    if ($per_FacebookID > 0) {
+        ?>
+              <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?>"><?= gettext('Facebook') ?></a></span></li>
+          <?php
+    }
+    
+    if (strlen($per_Twitter) > 0) {
+        ?>
+              <li><i class="fa-li fa fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>"><?= gettext('Twitter') ?></a></span></li>
+          <?php
+    }
+    
+    if (strlen($per_LinkedIn) > 0) {
+        ?>
+              <li><i class="fa-li fa fa-linkedin"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>"><?= gettext('LinkedIn') ?></a></span></li>
+          <?php
+    }
 
     // Display the right-side custom fields
     while ($Row = mysqli_fetch_array($rsCustomFields)) {
@@ -349,12 +365,18 @@ if ($per_ID == $iPersonID) {
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="box box-primary box-body">
-      <a class="btn btn-app" href="PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
-      <a class="btn btn-app" href="PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
+      <?php if ($per_ID == $_SESSION['user']->getPersonId()) {
+        ?>
+              <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"><i class="fa fa-cog"></i> <?= gettext("Change Settings") ?></a>
+              <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
+            <?php
+    } ?>
+      <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
+      <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
       <?php if ($_SESSION['bNotes']) {
         ?>
-        <a class="btn btn-app" href="WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-        <a class="btn btn-app" href="NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+        <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
+        <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
       <?php
     }
     if ($_SESSION['bDeleteRecords']) {
@@ -365,15 +387,15 @@ if ($per_ID == $iPersonID) {
     if ($_SESSION['bAdmin']) {
         if (!$person->isUser()) {
             ?>
-          <a class="btn btn-app" href="UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Make User') ?></a>
+          <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Make User') ?></a>
         <?php
         } else {
             ?>
-          <a class="btn btn-app" href="UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
+          <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
         <?php
         }
     } ?>
-      <a class="btn btn-app" role="button" href="SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
+      <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
     </div>
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
@@ -424,7 +446,7 @@ if ($per_ID == $iPersonID) {
                   </h3>
 
                   <div class="timeline-body">
-                    <?= $item['text'] ?>
+                      <pre style="line-height: 1.2;"><?= $item['text'] ?></pre>
                   </div>
 
                   <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
@@ -474,8 +496,8 @@ if ($per_ID == $iPersonID) {
               <tr>
                 <td>
 
-                 <img style="width:40px; height:40px;display:inline-block" data-name="<?= $familyMember->getFullName()?>" data-src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
-                  <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
+                 <img style="width:40px; height:40px;display:inline-block" src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
+                  <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
 
                 </td>
@@ -489,12 +511,12 @@ if ($per_ID == $iPersonID) {
                   <?php $tmpEmail = $familyMember->getEmail();
             if ($tmpEmail != '') {
                 ?>
-                    <a href="#"><a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a></a>
+                    <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
                   <?php
             } ?>
                 </td>
                 <td style="width: 20%;">
-                  <a href="PersonView.php?PersonID=<?= $tmpPersonId ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
+                  <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>&AddToPeopleCart=<?= $tmpPersonId ?>">
                     <span class="fa-stack">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -502,13 +524,13 @@ if ($per_ID == $iPersonID) {
                   </a>
                   <?php if ($bOkToEdit) {
                 ?>
-                    <a href="PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
                       <span class="fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                       </span>
                     </a>
-                    <a href="SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>">
+                    <a href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>">
                       <span class="fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
                         <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -547,7 +569,7 @@ if ($per_ID == $iPersonID) {
                     <!-- Info box -->
                     <div class="box box-info">
                       <div class="box-header">
-                        <h3 class="box-title"><a href="GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
+                        <h3 class="box-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
                         <div class="box-tools pull-right">
                           <div class="label bg-aqua"><?= gettext($roleName) ?></div>
@@ -584,7 +606,7 @@ if ($per_ID == $iPersonID) {
                         <code>
                           <?php if ($_SESSION['bManageGroups']) {
                           ?>
-                            <a href="GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
+                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
                             <div class="btn-group">
                               <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -592,15 +614,15 @@ if ($per_ID == $iPersonID) {
                                 <span class="sr-only">Toggle Dropdown</span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
-                                <li><a href="MemberRoleChange.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Change Role') ?></a></li>
+                                <li><a  class="changeRole" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
                                 <?php if ($grp_hasSpecialProps) {
                               ?>
-                                  <li><a href="GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
+                                  <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
                                 <?php
                           } ?>
                               </ul>
                             </div>
-                            <a href="#" onclick="GroupRemove(<?= $grp_ID.', '.$iPersonID ?>);" class="btn btn-danger" role="button"><i class="fa fa-trash-o"></i></a>
+                            <a data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" class="btn btn-danger groupRemove" role="button"><i class="fa fa-trash-o"></i></a>
                           <?php
                       } ?>
                         </code>
@@ -617,25 +639,8 @@ if ($per_ID == $iPersonID) {
               }
     if ($_SESSION['bManageGroups']) {
         ?>
-                <div class="alert alert-info">
-                  <h4><strong><?php echo gettext('Assign New Group'); ?> </strong></h4>
-                  <i class="fa fa-info-circle fa-fw fa-lg"></i> <span><?= gettext('Person will be assigned to the Group in the Default Role.') ?></span>
-
-                  <p><br></p>
-                  <select style="color:#000000" name="GroupAssignID">
-                    <?php while ($aRow = mysqli_fetch_array($rsGroups)) {
-            extract($aRow);
-
-            //If the property doesn't already exist for this Person, write the <OPTION> tag
-            if (strlen(strstr($sAssignedGroups, ','.$grp_ID.',')) == 0) {
-                echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
-            }
-        } ?>
-                  </select>
-                  <a href="#" onclick="GroupAdd()" class="btn btn-success" role="button"><?= gettext('Assign User to Group') ?></a>
-                  <br>
-                </div>
-              <?php
+                          <a id="addGroup"><i class="fa fa-plus-circle" aria-hidden="true"></i><?php echo gettext('Assign New Group'); ?></a>
+                        <?php
     } ?>
             </div>
           </div>
@@ -675,7 +680,7 @@ if ($per_ID == $iPersonID) {
                             echo '<td>'.$pro_Name.'</td>';
                             echo '<td>'.$r2p_Value.'</td>';
                             if ($bOkToEdit) {
-                                $attributes = "href=\"#\" data-property_id=\"{$pro_ID}\" data-person_id=\"{$iPersonID}\" class=\"remove-property-btn\" ";
+                                $attributes = "data-property_id=\"{$pro_ID}\" data-person_id=\"{$iPersonID}\" class=\"remove-property-btn\" ";
                                 echo '<td><a '.$attributes.'>'.gettext('Remove').'</a></td>';
                             }
                             echo '</tr>';
@@ -778,7 +783,7 @@ if ($per_ID == $iPersonID) {
             echo '<td>'.$vol_Description.'</a></td>';
 
             if ($_SESSION['bEditRecords']) {
-                echo '<td><a class="SmallText" href="PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
+                echo '<td><a class="SmallText" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
             }
 
             echo '</tr>';
@@ -919,28 +924,8 @@ if ($per_ID == $iPersonID) {
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js" type="text/javascript"></script>
 <script>
-  var person_ID = <?= $iPersonID ?>;
-  function GroupRemove(Group, Person) {
-    var answer = confirm("<?= gettext('Are you sure you want to remove this person from the Group') ?>");
-    if (answer)
-      $.ajax({
-        method: "POST",
-        data:{"_METHOD":"DELETE"},
-        url: window.CRM.root + "/api/groups/" + Group + "/removeuser/" + Person
-      }).done(function (data) {
-        location.reload();
-      });
-  }
-
-  function GroupAdd() {
-    var GroupAssignID = $("select[name='GroupAssignID'] option:selected").val();
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/groups/" + GroupAssignID + "/adduser/" + person_ID
-    }).done(function (data) {
-      location.reload();
-    });
-  }
+  window.CRM.currentPersonID = <?= $iPersonID ?>;
+  
 
   $("#deletePhoto").click (function () {
     $.ajax({
@@ -959,8 +944,8 @@ if ($per_ID == $iPersonID) {
   window.CRM.photoUploader =  $("#photoUploader").PhotoUploader({
     url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
     maxPhotoSize: window.CRM.maxUploadSize,
-    photoHeight: 400,
-    photoWidth: 400,
+    photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+    photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
     done: function(e) {
       window.location.reload();
     }
@@ -971,29 +956,29 @@ if ($per_ID == $iPersonID) {
   });
 
 
-    $(document).ready(function() {
-        $("#input-volunteer-opportunities").select2();
-        $("#input-person-properties").select2();
+  $(document).ready(function() {
+      $("#input-volunteer-opportunities").select2();
+      $("#input-person-properties").select2();
 
-        $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
-        $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
+      $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
+      $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
 
 
-        contentExists(window.CRM.root + "/api/persons/" + person_ID + "/photo", function(success) {
-            if (success) {
-                $("#view-larger-image-btn").removeClass('hide');
+      contentExists(window.CRM.root + "/api/persons/" + window.CRM.currentPersonID + "/photo", function(success) {
+          if (success) {
+              $("#view-larger-image-btn").removeClass('hide');
 
-                $("#view-larger-image-btn").click(function() {
-                    bootbox.alert({
-                        title: "<?= gettext('Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + person_ID + '/photo" />',
-                        backdrop: true
-                    });
-                });
-            }
-        });
+              $("#view-larger-image-btn").click(function() {
+                  bootbox.alert({
+                      title: "<?= gettext('Photo') ?>",
+                      message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + window.CRM.currentPersonID + '/photo" />',
+                      backdrop: true
+                  });
+              });
+          }
+      });
 
-    });
+  });
 
 
 </script>
@@ -1008,7 +993,7 @@ if ($per_ID == $iPersonID) {
       <h3><i class="fa fa-warning text-yellow"></i><?= gettext('Oops! Person not found.') ?></h3>
 
       <p>
-      	<?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="//MembersDashboard.php"><?= gettext('return to member dashboard') ?></a>
+        <?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="<?= SystemURLs::getRootPath() ?>/MembersDashboard.php"><?= gettext('return to member dashboard') ?></a>
       </p>
     </div>
   </div>

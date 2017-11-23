@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 
     var poLocales = function() {
         var locales = grunt.file.readJSON("src/locale/locales.json");
-        poEditorLocales = {};
+        var poEditorLocales = {};
         for (var key in locales ) {
             var locale = locales[key];
             var poLocaleName = locale["poEditor"];
@@ -13,7 +13,7 @@ module.exports = function (grunt) {
 
     var dataTablesLang = function() {
         var locales = grunt.file.readJSON("src/locale/locales.json");
-        DTLangs = [];
+        var DTLangs = [];
         for (var key in locales ) {
             var locale = locales[key];
             DTLangs.push(locale["dataTables"]);
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
             '!logs/*.log'
         ],
         clean: {
-            skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
+            skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick,ckeditor}"],
             release: ["target"]
         },
         copy: {
@@ -102,10 +102,9 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        filter: 'isFile',
-                        flatten: true,
-                        src: ['node_modules/randomcolor/randomColor.js'],
-                        dest: 'src/skin/randomcolor/'
+                        cwd:'node_modules/ckeditor/',
+                        src: ['*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
+                        dest: 'src/skin/ckeditor/'
                     },
                     {
                         expand: true,
@@ -155,6 +154,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/i18next-xhr-backend/dist/umd/i18nextXHRBackend.min.js'],
                         dest: 'src/skin/i18next/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-show-password/bootstrap-show-password.min.js'],
+                        dest: 'src/skin/external/bootstrap-show-password'
                     }
                 ]
             }
@@ -316,7 +322,7 @@ module.exports = function (grunt) {
             "files": []
         };
         this.files.forEach(function (filePair) {
-            isExpandedPair = filePair.orig.expand || false;
+            var isExpandedPair = filePair.orig.expand || false;
 
             filePair.src.forEach(function (src) {
                 if (grunt.file.isFile(src)) {
@@ -340,7 +346,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('genLocaleJSFiles', '', function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
-        poEditorLocales = {};
+        var poEditorLocales = {};
         for (var key in locales ) {
             var localeConfig = locales[key];
             var locale = localeConfig["locale"];
@@ -350,34 +356,34 @@ module.exports = function (grunt) {
             var enableDatePicker = localeConfig["datePicker"];
             var enableSelect2 = localeConfig["select2"];
 
-            tempFile = 'locale/JSONKeys/'+locale+'.json';
-            poTerms = grunt.file.read(tempFile);
+            var tempFile = 'locale/JSONKeys/'+locale+'.json';
+            var poTerms = grunt.file.read(tempFile);
             if (poTerms == "") {
                 poTerms = "{}";
             }
-            jsFileContent = '// Source: ' + tempFile;
+            var jsFileContent = '// Source: ' + tempFile;
             jsFileContent = jsFileContent + "\ntry {window.CRM.i18keys = " + poTerms + ";} catch(e) {};\n";
 
             if (enableFullCalendar) {
-                tempLangCode = languageCode.toLowerCase();
+                var tempLangCode = languageCode.toLowerCase();
                 if (localeConfig.hasOwnProperty("fullCalendarLocale")) {
                     tempLangCode = localeConfig["fullCalendarLocale"];
                 }
                 tempFile = 'node_modules/fullcalendar/dist/locale/'+tempLangCode+'.js';
-                fullCalendar = grunt.file.read(tempFile);
+                var fullCalendar = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
                 jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {};\n";
             }
             if (enableDatePicker) {
                 tempFile = 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.'+languageCode+'.js';
-                datePicker = grunt.file.read(tempFile);
+                var datePicker = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
                 jsFileContent = jsFileContent + '\n' + "try {"+datePicker+"} catch(e) {};\n"
             }
             if (enableSelect2) {
                 tempFile = 'node_modules/admin-lte/plugins/select2/i18n/'+languageCode+'.js';
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
-                select2 = grunt.file.read(tempFile);
+                var select2 = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n' + "try {"+select2+"} catch(e) {}"
             }
             grunt.file.write('src/locale/js/'+locale+'.js', jsFileContent );
@@ -387,29 +393,60 @@ module.exports = function (grunt) {
     grunt.registerMultiTask('updateVersions', 'Update Files to match NPM version', function () {
         var version = this.data.version;
 
-      // php composer
+        // php composer
         var file = 'src/composer.json';
+        
         var curFile = grunt.file.readJSON(file);
-        if (curFile.version !== version)
-        {
-          console.log("updating composer file to: " + version);
-          curFile.version = version;
-          var stringFile = JSON.stringify(curFile, null, 4);
-          grunt.file.write(file, stringFile);
+        if (curFile.version !== version) {
+            console.log("updating composer file to: " + version);
+            curFile.version = version;
+            var stringFile = JSON.stringify(curFile, null, 4);
+            grunt.file.write(file, stringFile);
         }
 
         // db update file
         file = 'src/mysql/upgrade.json';
         curFile = grunt.file.readJSON(file);
-        if (curFile.current.dbVersion !== version)
-        {
-          console.log("updating database upgrade file to: " + version);
-          curFile.current.versions.push(curFile.current.dbVersion);
-          curFile.current.dbVersion = version;
-          stringFile = JSON.stringify(curFile, null, 4);
-          grunt.file.write(file, stringFile);
+        if (curFile.current.dbVersion !== version) {
+            console.log("updating database upgrade file to: " + version);
+            curFile.current.versions.push(curFile.current.dbVersion);
+            curFile.current.dbVersion = version;
+            stringFile = JSON.stringify(curFile, null, 4);
+            grunt.file.write(file, stringFile);
         }
-
+    });
+    
+    grunt.registerTask('cleanupLocalGit', 'clean local git', function () {
+       grunt.loadNpmTasks('grunt-git');
+       grunt.config('gitreset' ,{
+          task: {
+            options: {
+              mode: "hard"
+            }
+          }
+        });
+        
+       grunt.config('gitcheckout', {
+          master: {
+            options: {
+              branch: "master"
+            }
+          }
+        });
+        
+        grunt.config('gitpull', {
+          master: {
+            options: {
+              branch: "master"
+            }
+          }
+        });
+      grunt.task.run('gitreset');
+      //  make sure we're on master
+      grunt.task.run('gitcheckout:master');
+      //  ensure local and remote master are up to date
+      grunt.task.run('gitpull:master');
+      //  display local master's commit hash
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');

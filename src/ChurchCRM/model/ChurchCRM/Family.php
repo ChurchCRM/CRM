@@ -22,7 +22,8 @@ use ChurchCRM\Emails\NewPersonOrFamilyEmail;
  */
 class Family extends BaseFamily implements iPhoto
 {
-
+    private $photo;
+    
     public function getAddress()
     {
         $address = [];
@@ -231,10 +232,13 @@ class Family extends BaseFamily implements iPhoto
         return $this->getName() . ' Family';
     }
 
-    private function getPhoto()
+    public function getPhoto()
     {
-      $photo = new Photo("Family",  $this->getId());
-      return $photo;
+      if (!$this->photo) 
+      {
+        $this->photo = new Photo("Family",  $this->getId());
+      }
+      return $this->photo;
     }
 
     public function deletePhoto()
@@ -253,23 +257,6 @@ class Family extends BaseFamily implements iPhoto
       }
       return false;
     }
-
-    public function getPhotoBytes() {
-      return $this->getPhoto()->getPhotoBytes();
-    }
-
-    public function getPhotoURI() {
-      return $this->getPhoto()->getPhotoURI();
-    }
-
-    public function getThumbnailBytes() {
-      return $this->getPhoto()->getThumbnailBytes();
-    }
-
-    public function getThumbnailURI() {
-       return $this->getPhoto()->getThumbnailURI();
-    }
-
     public function setImageFromBase64($base64) {
       if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
         $note = new Note();
@@ -283,27 +270,18 @@ class Family extends BaseFamily implements iPhoto
       }
       return false;
     }
-
-    public function isPhotoLocal() {
-      return $this->getPhoto()->isPhotoLocal();
-    }
-
-    public function isPhotoRemote() {
-      return $this->getPhoto()->isPhotoRemote();
-    }
-
-    public function getPhotoContentType() {
-      return $this->getPhoto()->getPhotoContentType();
-    }
-
+    
     public function verify()
     {
         $this->createTimeLineNote('verify');
     }
 
-    public function getFamilyString()
+    public function getFamilyString($booleanIncludeHOH=true)
     {    
-      $HoH = $this->getHeadPeople();
+      $HoH = [];
+      if ($booleanIncludeHOH) {
+        $HoH = $this->getHeadPeople();
+      }
       if (count($HoH) == 1)
       {
          return $this->getName(). ": " . $HoH[0]->getFirstName() . " - " . $this->getAddress();
@@ -353,7 +331,7 @@ class Family extends BaseFamily implements iPhoto
     {
       $searchArray=[
           "Id" => $this->getId(),
-          "displayName" => $this->getFamilyString(),
+          "displayName" => $this->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
           "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
       ];
       return $searchArray;
