@@ -111,13 +111,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['logel_files/config.js'],
-                        dest: 'src/skin/ckeditor/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
                         src: ['node_modules/bootbox/bootbox.min.js'],
                         dest: 'src/skin/bootbox/'
                     },
