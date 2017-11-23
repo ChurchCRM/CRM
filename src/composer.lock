@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa719c60b06b9d488883f4a319cb02c6",
+    "content-hash": "97ace22dd8d312a771a8c5d87c993c7c",
     "packages": [
         {
             "name": "authorizenet/authorizenet",
@@ -812,16 +812,16 @@
         },
         {
             "name": "nexmo/client",
-            "version": "1.1.1",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nexmo/nexmo-php.git",
-                "reference": "0a17af601a3249dfe78381e4d9684ad5ea844188"
+                "reference": "7f3a98b9b68dd6058ddac1e5cb35c84d455bc2ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nexmo/nexmo-php/zipball/0a17af601a3249dfe78381e4d9684ad5ea844188",
-                "reference": "0a17af601a3249dfe78381e4d9684ad5ea844188",
+                "url": "https://api.github.com/repos/Nexmo/nexmo-php/zipball/7f3a98b9b68dd6058ddac1e5cb35c84d455bc2ee",
+                "reference": "7f3a98b9b68dd6058ddac1e5cb35c84d455bc2ee",
                 "shasum": ""
             },
             "require": {
@@ -834,7 +834,8 @@
             "require-dev": {
                 "estahn/phpunit-json-assertions": "@stable",
                 "php-http/mock-client": "^0.3.0",
-                "phpunit/phpunit": "^5.3"
+                "phpunit/phpunit": "^5.3",
+                "squizlabs/php_codesniffer": "^3.1"
             },
             "type": "library",
             "autoload": {
@@ -855,7 +856,7 @@
                 }
             ],
             "description": "PHP Client for using Nexmo's API.",
-            "time": "2017-10-17T11:40:41+00:00"
+            "time": "2017-11-22T14:50:49+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -1613,7 +1614,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -1675,16 +1676,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "fd684d68f83568d8293564b4971928a2c4bdfc5c"
+                "reference": "63cd7960a0a522c3537f6326706d7f3b8de65805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/fd684d68f83568d8293564b4971928a2c4bdfc5c",
-                "reference": "fd684d68f83568d8293564b4971928a2c4bdfc5c",
+                "url": "https://api.github.com/repos/symfony/console/zipball/63cd7960a0a522c3537f6326706d7f3b8de65805",
+                "reference": "63cd7960a0a522c3537f6326706d7f3b8de65805",
                 "shasum": ""
             },
             "require": {
@@ -1739,11 +1740,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-07T14:16:22+00:00"
+            "time": "2017-11-16T15:24:32+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -1799,7 +1800,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.29",
+            "version": "v2.8.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -1859,7 +1860,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -1908,7 +1909,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -2016,7 +2017,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -2081,7 +2082,7 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
@@ -2160,7 +2161,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
