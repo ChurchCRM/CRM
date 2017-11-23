@@ -4,10 +4,6 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-  // Define changes to default configuration here. For example:
-  // config.language = 'fr';
-  // config.uiColor = '#AADC6E';
-  // %REMOVE_START%
   config.height = '400px';
   
   config.plugins =
@@ -32,11 +28,8 @@ CKEDITOR.editorConfig = function( config ) {
     'floatingspace,' +
     'font,' +
     'format,' +
-    //'forms,' +
     'horizontalrule,' +
-    //'htmlwriter,' +
     'image,' +
-    //'iframe,' +
     'indentlist,' +
     'indentblock,' +
     'justify,' +
@@ -70,7 +63,4 @@ CKEDITOR.editorConfig = function( config ) {
     'toolbar,' +
     'undo,' +
     'wysiwygarea';
-  // %REMOVE_END%
 };
-
-// %LEAVE_UNMINIFIED% %REMOVE_LINE%
