@@ -156,12 +156,12 @@ $MenuFirst = 1;
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php"
-                     class="btn btn-default btn-flat"><?= gettext('Change Password') ?></a>
+                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>"
+                     class="btn btn-default btn-flat"><?= gettext('Profile') ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"
-                     class="btn btn-default btn-flat"><?= gettext('My Settings') ?></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php"
+                     class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
                 </div>
               </li>
             </ul>

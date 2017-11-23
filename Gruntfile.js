@@ -148,6 +148,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/i18next-xhr-backend/dist/umd/i18nextXHRBackend.min.js'],
                         dest: 'src/skin/i18next/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-show-password/bootstrap-show-password.min.js'],
+                        dest: 'src/skin/external/bootstrap-show-password'
                     }
                 ]
             }
@@ -398,6 +405,39 @@ module.exports = function (grunt) {
             stringFile = JSON.stringify(curFile, null, 4);
             grunt.file.write(file, stringFile);
         }
+    });
+    
+    grunt.registerTask('cleanupLocalGit', 'clean local git', function () {
+       grunt.loadNpmTasks('grunt-git');
+       grunt.config('gitreset' ,{
+          task: {
+            options: {
+              mode: "hard"
+            }
+          }
+        });
+        
+       grunt.config('gitcheckout', {
+          master: {
+            options: {
+              branch: "master"
+            }
+          }
+        });
+        
+        grunt.config('gitpull', {
+          master: {
+            options: {
+              branch: "master"
+            }
+          }
+        });
+      grunt.task.run('gitreset');
+      //  make sure we're on master
+      grunt.task.run('gitcheckout:master');
+      //  ensure local and remote master are up to date
+      grunt.task.run('gitpull:master');
+      //  display local master's commit hash
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
