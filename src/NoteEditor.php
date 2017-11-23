@@ -142,7 +142,7 @@ require 'Include/Header.php';
 
 <script>
   CKEDITOR.replace('NoteText',{
-    customConfig: '<?= SystemURLs::getRootPath() ?>/ckeditor_note_editor_config.js',
+    customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor_note_editor_config.js',
     language : window.CRM.lang
   });    
 </script>
