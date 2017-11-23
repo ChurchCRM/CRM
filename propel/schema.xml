@@ -94,11 +94,11 @@
     </table>
     
     <table name="person_custom_master" idMethod="native" phpName="PersonCustomMaster" description="This contains definitions for the custom person fields">
-        <column name="custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
-        <column name="custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
-        <column name="custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
-        <column name="custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
-        <column name="custom_Side" phpName="CustomSide" type="CHAR" sqlType="enum('left','right')" required="true"
+        <column name="custom_Order" phpName="Order" type="SMALLINT" required="true" defaultValue="0"/>
+        <column name="custom_Field" phpName="Id" type="VARCHAR" primaryKey="true" size="5" required="true" defaultValue=""/>
+        <column name="custom_Name" phpName="Name" type="VARCHAR" size="40" required="true" defaultValue=""/>
+        <column name="custom_Special" phpName="Special" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
+        <column name="custom_Side" phpName="Side" type="CHAR" sqlType="enum('left','right')" required="true"
                 defaultValue="left"/>
         <column name="custom_FieldSec" phpName="CustomFieldSec" type="TINYINT" required="true"/>
         <column name="type_ID" phpName="TypeId" type="TINYINT" required="true" defaultValue="0"/>
