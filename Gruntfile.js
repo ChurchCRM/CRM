@@ -103,7 +103,6 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd:'node_modules/ckeditor/',
-                        //src: ['**/*'],
                         src: ['*.js','*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
                         dest: 'src/skin/ckeditor/'
                     },
@@ -162,6 +161,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/i18next-xhr-backend/dist/umd/i18nextXHRBackend.min.js'],
                         dest: 'src/skin/i18next/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-show-password/bootstrap-show-password.min.js'],
+                        dest: 'src/skin/external/bootstrap-show-password'
                     }
                 ]
             }
@@ -446,7 +452,7 @@ module.exports = function (grunt) {
       grunt.task.run('gitpull:master');
       //  display local master's commit hash
     });
-        
+    
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
