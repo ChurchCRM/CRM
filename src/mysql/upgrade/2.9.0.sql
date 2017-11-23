@@ -9,3 +9,7 @@ ALTER TABLE person_per
 
 ALTER TABLE person_custom_master
   ADD PRIMARY KEY (custom_Field);
+  
+UPDATE menuconfig_mcf
+  SET security_grp = 'bAddEvent'
+  WHERE name = 'addevent';
