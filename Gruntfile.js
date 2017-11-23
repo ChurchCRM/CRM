@@ -42,7 +42,7 @@ module.exports = function (grunt) {
             '!logs/*.log'
         ],
         clean: {
-            skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
+            skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick,ckeditor}"],
             release: ["target"]
         },
         copy: {
@@ -102,6 +102,12 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
+                        cwd:'node_modules/ckeditor/',
+                        src: ['*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
+                        dest: 'src/skin/ckeditor/'
+                    },
+                    {
+                        expand: true,
                         filter: 'isFile',
                         flatten: true,
                         src: ['node_modules/bootbox/bootbox.min.js'],
@@ -148,6 +154,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/i18next-xhr-backend/dist/umd/i18nextXHRBackend.min.js'],
                         dest: 'src/skin/i18next/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-show-password/bootstrap-show-password.min.js'],
+                        dest: 'src/skin/external/bootstrap-show-password'
                     }
                 ]
             }
