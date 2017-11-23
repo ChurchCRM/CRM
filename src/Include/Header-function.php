@@ -26,6 +26,10 @@ use ChurchCRM\MenuConfigQuery;
 use ChurchCRM\MenuConfig;
 use ChurchCRM\UserConfigQuery;
 use ChurchCRM\UserConfig;
+use ChurchCRM\EventQuery;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\FamilyQuery;
+
 
 function Header_system_notifications()
 {
@@ -92,7 +96,9 @@ function Header_modals()
                             <li><?= gettext('When you click "submit," an error report will be posted to the ChurchCRM GitHub Issue tracker.') ?></li>
                             <li><?= gettext('Please do not include any confidential information.') ?></li>
                             <li><?= gettext('Some general information about your system will be submitted along with the request such as Server version and browser headers.') ?></li>
-                            <li><?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?></li>
+                            <li><?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?>
+                                "
+                            </li>
                         </ul>
                     </div>
                     <div class="modal-footer">
@@ -128,7 +134,7 @@ function Header_body_scripts()
                     responsive: true,
                     "dom": 'T<"clear">lfrtip',
                     "tableTools": {
-                        "sSwfPath": "<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"
+                        "sSwfPath": "//cdn.datatables.net/tabletools/2.2.3/swf/copy_csv_xls_pdf.swf"
                     }
                 }
             }
@@ -172,8 +178,8 @@ function GetSecuritySettings()
     for ($i = 0; $i < count($aSecurityListPrimal); $i++) {
         if (array_key_exists($aSecurityListPrimal[$i], $_SESSION) && $_SESSION[$aSecurityListPrimal[$i]]) {
             $aSecurityListFinal[] = $aSecurityListPrimal[$i];
-        } elseif ($aSecurityListPrimal[$i] == 'bAddEvent' && $_SESSION['bAdmin']) {
-            $aSecurityListFinal[] = 'bAddEvent';
+        } else if ($aSecurityListPrimal[$i] == 'bAddEvent' && $_SESSION['bAdmin']) {
+ +          $aSecurityListFinal[] = 'bAddEvent';
         }
     }
     
@@ -217,6 +223,59 @@ function addMenu($menu)
     }
 }
 
+function getNumberEventOfToday()
+{
+  /* get ponctual event */
+  $activeEvents = EventQuery::create()
+          ->filterByStart(array('min' => 'today'))
+          ->filterByEnd(array('max' => 'tomorrow'))
+          ->find();
+  $cnt = count($activeEvents);
+  
+  /* get event with large range */
+  $activeEvents = EventQuery::create()
+          ->filterByStart(array('max' => 'today'))
+          ->filterByEnd(array('min' => 'tomorrow'))
+          ->find();
+          
+  $cnt += count($activeEvents);
+
+  return $cnt;  
+}
+
+function getNumberBirthDate()
+{
+  $peopleWithBirthDays = PersonQuery::create()
+        ->filterByBirthMonth(date('m'))
+        ->filterByBirthDay(date('d'))
+        ->find();
+
+  return count($peopleWithBirthDays); 
+}
+
+function getNumberAnniversary()
+{
+  $Anniversaries = FamilyQuery::create()
+          ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
+          ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
+          ->find();
+      
+  $curDay = date('d');
+  $curMonth = date('m');
+  
+  $cnt = 0;
+  
+  foreach ($Anniversaries as $anniversary) {
+      if ($anniversary->getWeddingMonth() == $curMonth && $curDay == $anniversary->getWeddingDay()){
+        $cnt += 1;
+      }
+  }
+
+  return $cnt; 
+}
+
+
+
 function addMenuItem($ormMenu, $mIdx)
 {
     global $security_matrix;
@@ -259,7 +318,16 @@ function addMenuItem($ormMenu, $mIdx)
     }
     if (!($ormMenu->getMenu()) || ($numItems > 0)) {
         if ($link) {
-            if ($ormMenu->getName() != 'sundayschool-dash' && $ormMenu->getName() != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
+            if ($ormMenu->getName() == 'calendar'){
+                echo "<li><a href='".SystemURLs::getRootPath() . '/' . $ormMenu->getURI()."'>";
+                echo "<i class='fa fa-calendar'></i><span>".gettext($ormMenu->getContent());
+                echo "<span class='pull-right-container'>";
+                echo "<small class='label pull-right bg-blue'>".getNumberAnniversary()."</small>";// mariage
+                echo "<small class='label pull-right bg-red'>".getNumberBirthDate()."</small>";// anniversaire
+                echo "<small class='label pull-right bg-yellow'>".getNumberEventOfToday()."</small>";// événemt
+                echo "</span>";
+                echo "</span></a></li>";
+            } else if ($ormMenu->getName() != 'sundayschool-dash' && $ormMenu->getName() != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
                 echo "<li><a href='$link'>";
                 if ($ormMenu->getIcon() != '') {
                     echo '<i class="fa ' . $ormMenu->getIcon() . '"></i>';
@@ -343,8 +411,7 @@ function addMenuItem($ormMenu, $mIdx)
               WHERE pro_Class = 'g' AND grp_Type = '4' AND prt_Name = 'MENU' ORDER BY pro_Name, grp_Name ASC";
             $rsAssignedProperties = RunQuery($sSQL);
                 
-            //Get the sunday groups not assigned by properties
-                
+            //Get the sunday groups not assigned by properties                
             $sSQL = "SELECT grp_ID , grp_Name,prt_Name,pro_prt_ID
                   FROM group_grp
                   LEFT JOIN record2property_r2p ON record2property_r2p.r2p_record_ID = group_grp.grp_ID
