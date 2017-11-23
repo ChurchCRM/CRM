@@ -42,7 +42,7 @@ module.exports = function (grunt) {
             '!logs/*.log'
         ],
         clean: {
-            skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick}"],
+            skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick,ckeditor}"],
             release: ["target"]
         },
         copy: {
@@ -103,7 +103,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd:'node_modules/ckeditor/',
-                        src: ['*.js','*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
+                        src: ['*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
                         dest: 'src/skin/ckeditor/'
                     },
                     {
