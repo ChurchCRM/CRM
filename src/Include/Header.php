@@ -176,11 +176,6 @@ $MenuFirst = 1;
               <i class="fa fa-bug"></i>
             </a>
           </li>
-          <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" title="<?= gettext('Log off') ?>">
-              <i class="fa fa-power-off"></i>
-            </a>
-          </li>
           <?php
           $tasks = $taskService->getCurrentUserTasks();
           $taskSize = count($tasks);
