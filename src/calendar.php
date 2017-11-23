@@ -122,7 +122,7 @@ require 'Include/Header.php'; ?>
 
  
   var isModifiable  = <?php 
-    if ($_SESSION['bAddEvent'] || || $_SESSION['bAdmin']) {
+    if ($_SESSION['bAddEvent'] || $_SESSION['bAdmin']) {
         echo "true";
     } else {
         echo "false";
