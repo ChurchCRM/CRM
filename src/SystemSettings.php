@@ -206,13 +206,16 @@ require 'Include/Header.php';
                                   data-cfgid="<?= $setting->getId() ?>"><?= gettext('Edit Settings')?>
                           </button>
                             <?php
-                        } elseif ($setting->getType() == 'ajax') { ?>
+                        } elseif ($setting->getType() == 'ajax') {
+                            ?>
                             <select id='ajax-<?= $setting->getId() ?>' name='new_value[<?= $setting->getId() ?>]'
                                     data-url="<?= $setting->getData() ?>" data-value="<?= $setting->getValue() ?>" class="choiceSelectBox" style="width: 100%">
                                 <option value=''><?= gettext('Unassigned')?>
                             </select>
                         <?php
-                        } else { echo gettext("Unknown Type") . " " . $setting->getType();} ?>
+                        } else {
+                            echo gettext("Unknown Type") . " " . $setting->getType();
+                        } ?>
                       </td>
                       <?php
                       // Default Value
@@ -267,7 +270,8 @@ require 'Include/Header.php';
     foreach (SystemConfig::getCategories() as $category=>$settings) {
         foreach ($settings as $settingName) {
             $setting = SystemConfig::getConfigItem($settingName);
-            if ($setting->getType() == 'ajax') { ?>
+            if ($setting->getType() == 'ajax') {
+                ?>
                 updateDropDrownFromAjax($('#ajax-<?= $setting->getId() ?>'));
 <?php
             }
