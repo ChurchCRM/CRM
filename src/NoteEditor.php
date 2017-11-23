@@ -141,7 +141,7 @@ require 'Include/Header.php';
 <script src="<?= SystemURLs::getRootPath() ?>/skin/ckeditor/ckeditor.js"></script>
 
 <script>
-  CKEDITOR.replace('NoteText');    
+  CKEDITOR.replace('NoteText',{
+    customConfig: '<?= SystemURLs::getRootPath() ?>/ckeditor_note_editor_config.js'
+  });    
 </script>
-
-
