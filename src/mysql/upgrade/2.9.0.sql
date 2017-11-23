@@ -6,3 +6,6 @@ ALTER TABLE person_per
 
 ALTER TABLE person_per
   ADD COLUMN per_LinkedIn varchar(50) default NULL AFTER per_Twitter;
+
+ALTER TABLE person_custom_master
+  ADD PRIMARY KEY (custom_Field);
