@@ -544,8 +544,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
   </tr>
 
   <tr>
-    <td class="LabelColumn"><?= gettext('Event Sermon') ?>:</td>
-    <td colspan="3" class="TextColumn"><textarea id="#EventText" name="EventText" rows="5" cols="80" class='form-control'><?= ($sEventText) ?></textarea></td>
+    <td colspan="4" class="TextColumn"><?= gettext('Event Sermon') ?>:<br><textarea id="#EventText" name="EventText" rows="5" cols="80" class='form-control'><?= ($sEventText) ?></textarea></td>
   </tr>
 
   <tr>
@@ -608,5 +607,5 @@ $eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
   CKEDITOR.replace('EventText',{
     customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor_event_editor_config.js',
     language : window.CRM.lang
-  });    
+  });
 </script>
