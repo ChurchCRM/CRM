@@ -14,3 +14,4 @@ Feature: Dropdown User Menu
 	And I am on "/PersonView.php?PersonID=1"
 	And I should see "Change Settings"
 	And I should see "Change Password"
+	
