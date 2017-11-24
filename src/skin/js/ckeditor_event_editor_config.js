@@ -4,7 +4,7 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-  config.height = '200px';
+  config.height = '250px';
   
   config.plugins =
     'about,' +
