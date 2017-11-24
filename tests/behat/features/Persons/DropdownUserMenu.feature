@@ -7,7 +7,7 @@ Feature: Dropdown User Menu
     Given I am authenticated as "admin" using "changeme"
     And I am on "/Menu.php"
 	Then I should see "Welcome to"
-	And I click the "#dropdown user user-menu" element
+	And I click the "#dropdown-toggle" element
     Then I should see "Profile"
     And I should see "Sign Out"
 	And I press "Profile"
