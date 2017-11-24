@@ -142,7 +142,7 @@ $MenuFirst = 1;
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
+            <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
               <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
