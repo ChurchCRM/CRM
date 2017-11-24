@@ -25,6 +25,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 
+if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent']) {
+    header('Location: Menu.php');
+}
+
 $sPageTitle = gettext('Church Event Editor');
 
 $sAction = 'Create Event';
