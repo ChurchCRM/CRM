@@ -58,98 +58,96 @@ $peopleWithBirthDays = getBirthDates();
 $Anniversaries = getAnniversaries();
 
 
-if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) {
-    echo '<div class="alert alert-info" id="Menu_Banner" style="background-color: #50abef !important;">';
-    echo '<a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration: none">&times;</a>';
-    echo '<h4 class="alert-heading">'.gettext("Birthdates of the day").'</h4>';
-    echo '<p>';
+if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) { ?>
+    <div class="alert alert-info" id="Menu_Banner" style="background-color: #50abef !important;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration: none">&times;</a>
+    <h4 class="alert-heading"><?= gettext("Birthdates of the day") ?></h4>
+    <p>
 
-    if (!empty($peopleWithBirthDays)) {
-        echo '<div class="row">';
+    <?php
+    if (!empty($peopleWithBirthDays)) {?>
+        <div class="row">
           
+      <?php
         $new_row = false;
         $count_people = 0;
           
         {
             foreach ($peopleWithBirthDays as $peopleWithBirthDay) {
-                if ($new_row == false) {
-                    echo '<div class="row">';
+                if ($new_row == false) {?>
+                
+                    <div class="row">
+                <?php
                     $new_row = true;
-                }
-                echo '<div class="col-sm-3">';
-                echo '<label class="checkbox-inline">';
-                echo '<a href="'.$peopleWithBirthDay->getViewURI().'" class="btn btn-link" style="text-decoration: none">'.$peopleWithBirthDay->getFullName()." ".$peopleWithBirthDay->getAge()."</a>";
-                echo '</label>';
-                echo '</div>';
-              
+                }?>
+                <div class="col-sm-3">
+                <label class="checkbox-inline">
+                    <a href="<?= $peopleWithBirthDay->getViewURI()?>" class="btn btn-link" style="text-decoration: none"><?= $peopleWithBirthDay->getFullNameWithAge() ?></a>
+                </label>
+                </div>
+              <?php
                 $count_people+=1;
                 $count_people%=4;
-                if ($count_people == 0) {
-                    echo '</div>';
-                    $new_row = false;
+                if ($count_people == 0) {?>
+                    </div>
+                    <?php $new_row = false;
                 }
             }
           
-            if ($new_row == true) {
-                echo '</div>';
-            }
-          }
+            if ($new_row == true) {?>
+                </div>
+            <?php }
+          }?>
           
-        echo '</div>';
-        echo '</p>';
-    }
+        </div>
+        </p>
+    <?php } ?>
   
-    if (!empty($Anniversaries)) {
-        if (!empty($peopleWithBirthDays)) {
-            echo '<hr>';
-        }
+    <?php if (!empty($Anniversaries)) {
+        if (!empty($peopleWithBirthDays)) {?>
+            <hr>
+    <?php }?>
     
-        echo '<h4 class="alert-heading">'.gettext("Anniversaries of the day").'</h4>';
-        echo '<p>';
-        echo '<div class="row">';
+        <h4 class="alert-heading"><?= gettext("Anniversaries of the day")?></h4>
+        <p>
+        <div class="row">
           
+    <?php
         $new_row = false;
         $count_people = 0;
           
-        echo '<div class="row">';
-        echo '<div class="col-sm-12">';
-        echo '<label class="checkbox-inline">';
-        echo gettext("None for today.");
-        echo '</label>';
-        echo '</div>';
-        echo '</div>';
-
-        foreach ($Anniversaries as $Anniversary) {
-            if ($new_row == false) {
-                echo '<div class="row">';
-                $new_row = true;
-            }
-            echo '<div class="col-sm-3">';
-            echo '<label class="checkbox-inline">';
-            echo '<a href="'.$Anniversary->getViewURI().'" class="btn btn-link" style="text-decoration: none">'.$Anniversary->getFamilyString()."</a>";
-            echo '</label>';
-            echo '</div>';
+        foreach ($Anniversaries as $Anniversary){
+            if ($new_row == false) { ?>
+                <div class="row">
+                
+                <?php $new_row = true;
+            }?>
+            <div class="col-sm-3">
+            <label class="checkbox-inline">
+              <a href="<?= $Anniversary->getViewURI() ?>" class="btn btn-link" style="text-decoration: none"><?= $Anniversary->getFamilyString() ?></a>
+            </label>
+            </div>
             
+            <?php
             $count_people+=1;
             $count_people%=4;
-            if ($count_people == 0) {
-                echo '</div>';
+            if ($count_people == 0) {?>
+                </div>
+            <?php
                 $new_row = false;
             }
         }
         
-        if ($new_row == true) {
-            echo '</div>';
-        }
+        if ($new_row == true) {?>
+            </div>
+        <?php } ?>
                   
-        echo '</div>';
-        echo '</p>';
-    }
+        </div>
+        </p>
+    <?php }?>
+  </div>
   
-    echo '</div>';
-}
-
-?>
+<?php }?>
 
 <!-- Small boxes (Stat box) -->
 <div class="row">
