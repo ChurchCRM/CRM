@@ -1966,32 +1966,32 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
 /* get number of events of the current day Philippe Logel */
 function getEventsOfToday()
 {
-  $start_date = date("Y-m-d ")." 00:00:00";
-  $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' +1 day'));
+    $start_date = date("Y-m-d ")." 00:00:00";
+    $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' +1 day'));
 
-  $activeEvents = EventQuery::create()
+    $activeEvents = EventQuery::create()
         ->where("event_start <= '".$start_date ."' AND event_end >= '".$end_date."'") /* the large events */
         ->_or()->where("event_start>='".$start_date."' AND event_end <= '".$end_date."'") /* the events of the day */
         ->find();
 
-  return  $activeEvents;       
+    return  $activeEvents;
 }
 
 function getNumberEventsOfToday()
-{       
-  $cnt = count(getEventsOfToday());
+{
+    $cnt = count(getEventsOfToday());
 
-  return $cnt;
+    return $cnt;
 }
 
 function getBirthDates()
 {
-  $peopleWithBirthDays = PersonQuery::create()
+    $peopleWithBirthDays = PersonQuery::create()
         ->filterByBirthMonth(date('m'))
         ->filterByBirthDay(date('d'))
         ->find();
         
-  return $peopleWithBirthDays;
+    return $peopleWithBirthDays;
 }
 
 function getNumberBirthDates()
