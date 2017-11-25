@@ -45,7 +45,8 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
             </p>
         </div>
     </div>
-    <?php if (empty($errorMessage)) { ?>
+    <?php if (empty($errorMessage)) {
+    ?>
         <div class="row center-block">
                 <p></br></p>
                 <form>
@@ -54,13 +55,16 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
                             class="fa fa-database"></i> <?= gettext('Upgrade database') ?></button>
                 </form>
         </div>
-    <?php } else { ?>
+    <?php
+} else {
+        ?>
         <div class="main-box-body clearfix" id="globalMessage">
             <div class="callout callout-danger fade in" id="globalMessageCallOut">
                 <i class="fa fa-warning fa-fw fa-lg"></i> <?= $errorMessage ?>
             </div>
         </div>
-    <?php } ?>
+    <?php
+    } ?>
 </div>
 
 
