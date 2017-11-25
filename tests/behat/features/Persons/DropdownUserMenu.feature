@@ -10,8 +10,7 @@ Feature: Dropdown User Menu
 	And I click the "#dropdown-toggle" element
     Then I should see "Profile"
     And I should see "Sign Out"
-	And I click "Profile"
+	And I click the "#signout" element
 	And I am on "/PersonView.php?PersonID=1"
 	And I should see "Change Settings"
 	And I should see "Change Password"
-	

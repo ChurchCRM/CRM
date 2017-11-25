@@ -160,7 +160,7 @@ $MenuFirst = 1;
                      class="btn btn-default btn-flat"><?= gettext('Profile') ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php"
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" id="signout"
                      class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
                 </div>
               </li>
