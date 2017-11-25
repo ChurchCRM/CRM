@@ -13,10 +13,16 @@ CREATE TABLE `church_division` (
   PRIMARY KEY (`division_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `church_clergy_clergy` (
+CREATE TABLE `church_division_clergy` (
   `division_id` INT NOT NULL,
   `clergy_personId` INT NOT NULL,
   `clergy_roleId` INT NOT NULL,
   PRIMARY KEY (`division_id`, `clergy_personId`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+CREATE TABLE `church_division_person` (
+  `division_id` INT NOT NULL,
+  `personId` INT NOT NULL,
+  `order` INT NOT NULL,
+  PRIMARY KEY (`division_id`, `personId`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
