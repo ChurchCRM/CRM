@@ -49,6 +49,15 @@ while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
     $roleSequence[$lst_OptionSequence] = $lst_OptionID;
 }
 
+//Get membership statuses
+$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
+$rsMembershipStatuses = RunQuery($sSQL);
+while ($aRow = mysqli_fetch_array($rsMembershipStatuses)) {
+    extract($aRow);
+    $membershipStatuses[$lst_OptionID] = $lst_OptionName;
+    $roleSequence[$lst_OptionSequence] = $lst_OptionID;
+}
+
 // Get Field Security List Matrix
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
 $rsSecurityGrp = RunQuery($sSQL);
@@ -267,6 +276,9 @@ if ($sFormat == 'addtocart') {
     }
     if (!empty($_POST['Envelope'])) {
         $headerString .= '"'.InputUtils::translate_special_charset("Envelope Number").'"'.$delimiter;
+    }
+    if (!empty($_POST['PrintMembershipStatus'])) {
+        $headerString .= '"'.InputUtils::translate_special_charset("Membership Status").'"'.$delimiter;
     }
     if (!empty($_POST['MembershipDate'])) {
         $headerString .= '"'.InputUtils::translate_special_charset("MembershipDate").'"'.$delimiter;
@@ -495,6 +507,10 @@ if ($sFormat == 'addtocart') {
                         $sString .= '"'.$delimiter.'"'.$age;
                     }
 
+                    if (isset($_POST['PrintMembershipStatus'])) {
+                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($membershipStatuses[$per_cls_ID]);
+                    }
+                    
                     if (isset($_POST['PrintFamilyRole'])) {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($familyRoles[$per_fmr_ID]);
                     }
