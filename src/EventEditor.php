@@ -605,7 +605,7 @@ $eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
 
 <script>
   CKEDITOR.replace('EventText',{
-    customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor_event_editor_config.js',
+    customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor/event_editor_config.js',
     language : window.CRM.lang
   });
 </script>
