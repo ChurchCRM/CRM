@@ -444,5 +444,10 @@ class Person extends BasePerson implements iPhoto
 
        return $age->y." ".$ageSuffix;
     }
+    
+    public function getFullNameWithAge()
+    {
+       return $this->getFullName()." ".$this->getAge();
+    }
 
 }
