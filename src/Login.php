@@ -26,7 +26,6 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
-
 if (!SystemService::isDBCurrent()) {
     Redirect('SystemDBUpdate.php');
     exit;
