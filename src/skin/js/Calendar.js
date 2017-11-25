@@ -365,7 +365,7 @@
        
        // this will create the toolbar for the textarea
        CKEDITOR.replace('eventPredication',{
-    		customConfig: '/skin/js/ckeditor_calendar_event_editor_config.js',
+    		customConfig: '/skin/js/ckeditor/calendar_event_editor_config.js',
     		language : window.CRM.lang
 	   });
 	    
