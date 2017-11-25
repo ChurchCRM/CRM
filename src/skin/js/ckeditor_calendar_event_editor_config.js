@@ -21,6 +21,7 @@ CKEDITOR.editorConfig = function( config ) {
     'pastetext,' +
     'resize,' +
     'tableselection,' +
+    'smiley,' +
     'maximize,' +
     'wysiwygarea';
 };
