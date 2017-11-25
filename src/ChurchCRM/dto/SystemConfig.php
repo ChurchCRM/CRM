@@ -214,7 +214,9 @@ class SystemConfig
         "iThumbnailWidth" => new ConfigItem(2036, "iPhotoWidth", "number", "100", gettext("Width to use for thumbnails")),
         "iInitialsPointSize" => new ConfigItem(2037, "iInitialsPointSize", "number", "150", gettext("Point size to use for initials thumbnails")),
         "iPhotoClientCacheDuration" => new ConfigItem(2038, "iPhotoClientCacheDuration", "number", "3600", gettext("Client cache seconds for images")),
-        "iRemotePhotoCacheDuration" => new ConfigItem(2039, "iRemotePhotoCacheDuration", "number", "72 hours", gettext("Server cache time for remote images"))
+        "iRemotePhotoCacheDuration" => new ConfigItem(2039, "iRemotePhotoCacheDuration", "number", "72 hours", gettext("Server cache time for remote images")),
+        "bEventsOnDashboardPresence" => new ConfigItem(2040, "bEventsOnDashboardPresence", "boolean", "1", gettext("Show Birthdates Anniversaries on start up of the CRM")),        
+        "bEventsOnDashboardPresenceTimeOut" => new ConfigItem(2041, "bEventsOnDashboardPresenceTimeOut", "number", "10", gettext("TimeOut in seconds, default 10 seconds"))
     );
   }
 
@@ -232,7 +234,8 @@ class SystemConfig
       gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
-      gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword","bEnableExternalCalendarAPI"]
+      gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword","bEnableExternalCalendarAPI"],
+      gettext('Events')  => ["bEventsOnDashboardPresence","bEventsOnDashboardPresenceTimeOut"]
     );
   }
 
