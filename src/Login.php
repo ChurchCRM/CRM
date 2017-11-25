@@ -23,6 +23,7 @@ use ChurchCRM\UserQuery;
 use ChurchCRM\Emails\LockedEmail;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 // Get the UserID out of user name submitted in form results
@@ -131,7 +132,6 @@ if (isset($_POST['User'])) {
 $sPageTitle = gettext('Login');
 require 'Include/HeaderNotLoggedIn.php';
 ?>
-
 <div class="login-box">
     <div class="login-logo">
         Church<b>CRM</b>
@@ -160,13 +160,11 @@ require 'Include/HeaderNotLoggedIn.php';
         <form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
             <div class="form-group has-feedback">
                 <input type="text" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>"
-                       placeholder="<?= gettext('Email/Username') ?>" required autofocus>
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                   placeholder="<?= gettext('Email/Username') ?>" required autofocus>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" id="PasswordBox" name="Password" class="form-control"
-                       placeholder="<?= gettext('Password') ?>" required autofocus>
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <input type="password" id="PasswordBox" name="Password" class="form-control" data-toggle="password"
+                   placeholder="<?= gettext('Password') ?>" required autofocus>
                 <br/>
                 <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
             ?>
@@ -193,10 +191,11 @@ require 'Include/HeaderNotLoggedIn.php';
         <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
 
     </div>
-    <!-- /.login-box-body -->
+
+<!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-
+<script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
     var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
     function $buo_f() {
@@ -211,6 +210,12 @@ require 'Include/HeaderNotLoggedIn.php';
     catch (e) {
         window.attachEvent("onload", $buo_f)
     }
+    
+    $('#password').password('toggle');
+    $("#password").password({
+        eyeOpenClass: 'glyphicon-eye-open',
+        eyeCloseClass: 'glyphicon-eye-close'
+    });    
 </script>
 
 <?php require 'Include/FooterNotLoggedIn.php'; ?>

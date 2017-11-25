@@ -142,7 +142,7 @@ $MenuFirst = 1;
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
+            <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
               <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
@@ -156,12 +156,12 @@ $MenuFirst = 1;
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php"
-                     class="btn btn-default btn-flat"><?= gettext('Change Password') ?></a>
+                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>"
+                     class="btn btn-default btn-flat"><?= gettext('Profile') ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"
-                     class="btn btn-default btn-flat"><?= gettext('My Settings') ?></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" id="signout"
+                     class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
                 </div>
               </li>
             </ul>
@@ -174,11 +174,6 @@ $MenuFirst = 1;
           <li class="hidden-xxs">
             <a href="#" data-toggle="modal" data-target="#IssueReportModal" title="<?= gettext('Report an issue') ?>">
               <i class="fa fa-bug"></i>
-            </a>
-          </li>
-          <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" title="<?= gettext('Log off') ?>">
-              <i class="fa fa-power-off"></i>
             </a>
           </li>
           <?php

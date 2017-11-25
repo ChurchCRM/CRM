@@ -53,14 +53,14 @@ if ($iRemoveVO > 0 && $_SESSION['bEditRecords']) {
 
 // Get this person's data
 $sSQL = "SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') AS sClassName, fmr.lst_OptionName AS sFamRole, b.per_FirstName AS EnteredFirstName, b.per_ID AS EnteredId,
-				b.Per_LastName AS EnteredLastName, c.per_FirstName AS EditedFirstName, c.per_LastName AS EditedLastName, c.per_ID AS EditedId
-			FROM person_per a
-			LEFT JOIN family_fam ON a.per_fam_ID = family_fam.fam_ID
-			LEFT JOIN list_lst cls ON a.per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-			LEFT JOIN list_lst fmr ON a.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-			LEFT JOIN person_per b ON a.per_EnteredBy = b.per_ID
-			LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
-			WHERE a.per_ID = ".$iPersonID;
+        b.Per_LastName AS EnteredLastName, c.per_FirstName AS EditedFirstName, c.per_LastName AS EditedLastName, c.per_ID AS EditedId
+      FROM person_per a
+      LEFT JOIN family_fam ON a.per_fam_ID = family_fam.fam_ID
+      LEFT JOIN list_lst cls ON a.per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
+      LEFT JOIN list_lst fmr ON a.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
+      LEFT JOIN person_per b ON a.per_EnteredBy = b.per_ID
+      LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
+      WHERE a.per_ID = ".$iPersonID;
 $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
@@ -71,7 +71,7 @@ if ($per_ID == $iPersonID) {
 
     // Get the lists of custom person fields
     $sSQL = 'SELECT person_custom_master.* FROM person_custom_master
-			ORDER BY custom_Order';
+      ORDER BY custom_Order';
     $rsCustomFields = RunQuery($sSQL);
 
     // Get the custom field data for this person.
@@ -81,11 +81,11 @@ if ($per_ID == $iPersonID) {
 
     // Get the Groups this Person is assigned to
     $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
-		FROM group_grp
-		LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
-		LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
-		WHERE person2group2role_p2g2r.p2g2r_per_ID = '.$iPersonID.'
-		ORDER BY grp_Name';
+    FROM group_grp
+    LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
+    LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
+    WHERE person2group2role_p2g2r.p2g2r_per_ID = '.$iPersonID.'
+    ORDER BY grp_Name';
     $rsAssignedGroups = RunQuery($sSQL);
     $sAssignedGroups = ',';
 
@@ -95,8 +95,8 @@ if ($per_ID == $iPersonID) {
 
     // Get the volunteer opportunities this Person is assigned to
     $sSQL = 'SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
-		LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
-		WHERE person2volunteeropp_p2vo.p2vo_per_ID = '.$iPersonID.' ORDER by vol_Order';
+    LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
+    WHERE person2volunteeropp_p2vo.p2vo_per_ID = '.$iPersonID.' ORDER by vol_Order';
     $rsAssignedVolunteerOpps = RunQuery($sSQL);
 
     // Get all the volunteer opportunities
@@ -105,10 +105,10 @@ if ($per_ID == $iPersonID) {
 
     // Get the Properties assigned to this Person
     $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
-		FROM record2property_r2p
-		LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
-		LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-		WHERE pro_Class = 'p' AND r2p_record_ID = ".$iPersonID.
+    FROM record2property_r2p
+    LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
+    LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
+    WHERE pro_Class = 'p' AND r2p_record_ID = ".$iPersonID.
   ' ORDER BY prt_Name, pro_Name';
     $rsAssignedProperties = RunQuery($sSQL);
 
@@ -245,28 +245,28 @@ if ($per_ID == $iPersonID) {
       <div class="box-body">
         <ul class="fa-ul">
           <li><i class="fa-li fa fa-group"></i><?php echo gettext('Family:'); ?> <span>
-							<?php
+              <?php
               if ($fam_ID != '') {
                   ?>
                 <a href="<?= SystemURLs::getRootPath() ?>/FamilyView.php?FamilyID=<?= $fam_ID ?>"><?= $fam_Name ?> </a>
                 <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
-									<span class="fa-stack">
-										<i class="fa fa-square fa-stack-2x"></i>
-										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-									</span>
+                  <span class="fa-stack">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                  </span>
                 </a>
               <?php
               } else {
                   echo gettext('(No assigned family)');
               } ?>
-						</span></li>
+            </span></li>
             <?php if (!empty($formattedMailingAddress)) {
                   ?>
           <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Address'); ?>: <span>
-						<a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
+            <a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
-						</span></li>
+            </span></li>
           <?php
               }
     if ($dBirthDate) {
@@ -365,6 +365,12 @@ if ($per_ID == $iPersonID) {
   </div>
   <div class="col-lg-9 col-md-9 col-sm-9">
     <div class="box box-primary box-body">
+      <?php if ($per_ID == $_SESSION['user']->getPersonId()) {
+        ?>
+              <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"><i class="fa fa-cog"></i> <?= gettext("Change Settings") ?></a>
+              <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
+            <?php
+    } ?>
       <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
       <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $iPersonID ?>&AddToPeopleCart=<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
       <?php if ($_SESSION['bNotes']) {
@@ -440,7 +446,7 @@ if ($per_ID == $iPersonID) {
                   </h3>
 
                   <div class="timeline-body">
-                    <?= $item['text'] ?>
+                      <pre style="line-height: 1.2;"><?= $item['text'] ?></pre>
                   </div>
 
                   <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
@@ -987,7 +993,7 @@ if ($per_ID == $iPersonID) {
       <h3><i class="fa fa-warning text-yellow"></i><?= gettext('Oops! Person not found.') ?></h3>
 
       <p>
-      	<?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="<?= SystemURLs::getRootPath() ?>/MembersDashboard.php"><?= gettext('return to member dashboard') ?></a>
+        <?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="<?= SystemURLs::getRootPath() ?>/MembersDashboard.php"><?= gettext('return to member dashboard') ?></a>
       </p>
     </div>
   </div>
