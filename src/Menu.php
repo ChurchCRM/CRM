@@ -475,7 +475,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 </script>
 
 <script>
-  var timeOut = <?= SystemConfig::getValue("bEventsOnDashboardPresenceTimeOut")*1000 ?>;
+  var timeOut = <?= SystemConfig::getValue("iEventsOnDashboardPresenceTimeOut")*1000 ?>;
   
   $(document).ready (function(){
     $("#myWish").click(function showAlert() {
