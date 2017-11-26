@@ -6,7 +6,7 @@
  *  description : footer that appear on the bottom of all pages
  *
  *  http://www.churchcrm.io/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
+ *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, Philippe Logel
   *
  ******************************************************************************/
 
@@ -292,10 +292,9 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18next.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= $localeInfo->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MenuEventsCount.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/bootstrap-validator/validator.min.js"></script>
-
-
 
 
 <?php if (isset($sGlobalMessage)) {
