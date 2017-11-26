@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `church_location`;
 CREATE TABLE `church_location` (
   `location_id` INT NOT NULL,
   `location_typeId` INT NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE `church_location` (
   PRIMARY KEY (`location_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `church_location_person`;
 CREATE TABLE `church_location_person` (
   `location_id` INT NOT NULL,
   `person_id` INT NOT NULL,
@@ -21,7 +23,7 @@ CREATE TABLE `church_location_person` (
   PRIMARY KEY (`location_id`, `person_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-
+DROP TABLE IF EXISTS `church_location_role`;
 CREATE TABLE `church_location_role` (
   `location_id` INT NOT NULL,
   `role_id` INT NOT NULL,
