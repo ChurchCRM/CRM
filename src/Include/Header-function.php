@@ -263,7 +263,8 @@ function addMenuItem($ormMenu, $mIdx)
     }
     if (!($ormMenu->getMenu()) || ($numItems > 0)) {
         if ($link) {
-            if ($ormMenu->getName() == 'calendar') { ?>
+            if ($ormMenu->getName() == 'calendar') {
+                ?>
                 <li>
                   <a href="<?= SystemURLs::getRootPath() . '/' . $ormMenu->getURI() ?>">
                   <i class='fa fa-calendar'></i>
@@ -277,7 +278,8 @@ function addMenuItem($ormMenu, $mIdx)
                   </span>
                 </a>
               </li>
-            <?php } elseif ($ormMenu->getName() != 'sundayschool-dash' && $ormMenu->getName() != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
+            <?php
+            } elseif ($ormMenu->getName() != 'sundayschool-dash' && $ormMenu->getName() != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
                 echo "<li><a href='$link'>";
                 if ($ormMenu->getIcon() != '') {
                     echo '<i class="fa ' . $ormMenu->getIcon() . '"></i>';
