@@ -216,7 +216,7 @@ class SystemConfig
         "iPhotoClientCacheDuration" => new ConfigItem(2038, "iPhotoClientCacheDuration", "number", "3600", gettext("Client cache seconds for images")),
         "iRemotePhotoCacheDuration" => new ConfigItem(2039, "iRemotePhotoCacheDuration", "number", "72 hours", gettext("Server cache time for remote images")),
         "bEventsOnDashboardPresence" => new ConfigItem(2040, "bEventsOnDashboardPresence", "boolean", "1", gettext("Show Birthdates Anniversaries on start up of the CRM")),        
-        "iEventsOnDashboardPresenceTimeOut" => new ConfigItem(2041, "iEventsOnDashboardPresenceTimeOut", "number", "10", gettext("TimeOut in seconds, default 10 seconds")),
+        "iEventsOnDashboardPresenceTimeOut" => new ConfigItem(2041, "iEventsOnDashboardPresenceTimeOut", "number", "10", gettext("Number of seconds after page load until the banner disappears, default 10 seconds")),
         "iEventsInMenuBarIntervalTime" => new ConfigItem(2042, "iEventsOnDashboardPresenceTimeOut", "number", "1", gettext("Menu bar event counter asynchronous refresh interval, default 1 second")),
     );
   }
