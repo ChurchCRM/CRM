@@ -25,9 +25,9 @@ $(".jsonSettingsEdit").on("click",function(event){
   $.each(cfgvalue,function(key,value) {
     $("#JSONSettingsDiv").append(getRender(key,value,0));
   });
-  
+
   $("#JSONSettingsModal").modal("show");
-  
+
 });
 
 
@@ -46,9 +46,24 @@ function getFormValue(object)
   {
     return $("input",object).val();
   }
-  
+
 }
- 
+
+function updateDropDrownFromAjax(selectObj) {
+    $.ajax({
+        method: "GET",
+        url: window.CRM.root + selectObj.data("url"),
+        dataType: "json",
+        encode: true,
+    }).done(function (data) {
+        $.each(data, function (index, config) {
+            var optSelected = config.id == selectObj.data("value");
+            var opt = new Option(config.value, config.id, optSelected, optSelected);
+            selectObj.append(opt);
+        });
+    });
+}
+
 
 $(".jsonSettingsClose").on("click",function(event){
    var settings=getFormValue($("#JSONSettingsDiv"));

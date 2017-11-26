@@ -193,8 +193,7 @@
                       +'</td>'
             +'</tr>'
             +'<tr>'
-              +"<td class='LabelColumn'>" + i18next.t('Event Sermon') + ":</td>"
-              +'<td colspan="3" class="TextColumn"><textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"></textarea></td>'
+              +'<td colspan="4" class="TextColumn">'+i18next.t('Event Sermon')+'<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"></textarea></td>'
             +'</tr>'
             //+'<tr>'
               //+'<td class="LabelColumn"><span style="color: red">*</span>Statut de l&#39;événement:</td>'
@@ -319,8 +318,8 @@
               var Visitors = $('form #Visitors').val();
               var EventCountNotes = $('form #EventCountNotes').val();
                              
-              var eventPredication = $('form #eventPredication').val();
-            
+              var eventPredication = CKEDITOR.instances['eventPredication'].getData();//$('form #eventPredication').val();
+              
               var add = false;
                                                             
               window.CRM.APIRequest({
@@ -360,6 +359,16 @@
        });
   
        modal.modal("show");
+       
+       // this will ensure that image and table can be focused
+       $(document).on('focusin', function(e) {e.stopImmediatePropagation();});
+       
+       // this will create the toolbar for the textarea
+       CKEDITOR.replace('eventPredication',{
+    		customConfig: '/skin/js/ckeditor/calendar_event_editor_config.js',
+    		language : window.CRM.lang
+	   });
+	    
        $("#ATTENDENCES").parents("tr").hide();
       },
       eventLimit: withlimit, // allow "more" link when too many events
