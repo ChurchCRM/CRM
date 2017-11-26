@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\SystemService;
 
 $app->group('/register', function () {
     $this->post('', function ($request, $response, $args) {
@@ -15,7 +16,7 @@ $app->group('/register', function () {
         $registrationData->sCountry = SystemConfig::getValue('sChurchCountry');
         $registrationData->sEmail = SystemConfig::getValue('sChurchEmail');
         $registrationData->ChurchCRMURL = $input->ChurchCRMURL;
-        $registrationData->Version = $this->SystemService->getInstalledVersion();
+        $registrationData->Version = SystemService::getInstalledVersion();
 
         $registrationData->sComments = $input->emailmessage;
         $curlService = curl_init('http://demo.churchcrm.io/register.php');

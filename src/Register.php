@@ -12,6 +12,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\SystemService;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Software Registration');
@@ -38,7 +39,7 @@ require 'Include/Header.php';
 	<form id="registerForm">
 	<div class="box-body">
     <?= gettext('Church Name') ?>: <?= SystemConfig::getValue('sChurchName'); ?><br>
-    <?= gettext('Version') ?>: <?= $systemService->getInstalledVersion(); ?><br>
+    <?= gettext('Version') ?>: <?= SystemService::getInstalledVersion(); ?><br>
     <?= gettext('Address') ?>: <?= SystemConfig::getValue('sChurchAddress'); ?><br>
     <?= gettext('City') ?>: <?= SystemConfig::getValue('sChurchCity'); ?><br>
     <?= gettext('State') ?>: <?= SystemConfig::getValue('sChurchState'); ?><br>

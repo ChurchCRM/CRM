@@ -9,12 +9,12 @@
 
  ******************************************************************************/
 
-
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-    Redirect('CheckVersion.php');
+if (!SystemService::isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
+    Redirect('SystemDBUpdate.php');
     exit;
 }
 
