@@ -124,7 +124,7 @@ function Header_body_scripts()
             maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
-            eventsInMenuBarIntervalTime:"<?= SystemConfig::getValue('bEventsInMenuBarIntervalTime') ?>",
+            eventsInMenuBarIntervalTime:"<?= SystemConfig::getValue('iEventsInMenuBarIntervalTime') ?>",
             plugin: {
                 dataTable : {
                    "language": {
@@ -316,7 +316,7 @@ function addMenuItem($ormMenu, $mIdx)
                                     $str = substr($str, 0, $maxStr-3)." ...";
                                 }
                                         
-                                echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
+                                echo "<li><a href='" . SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
                             }
                             echo '</ul></li>';
                         }
@@ -334,7 +334,7 @@ function addMenuItem($ormMenu, $mIdx)
                     echo '<ul class="treeview-menu">';
 
                     foreach ($groups as $group) {
-                        echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " . $group->getName() . '</a></li>';
+                        echo "<li><a href='" . SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " . $group->getName() . '</a></li>';
                     }
                     echo '</ul></li>';
                 }
