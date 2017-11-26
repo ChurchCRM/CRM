@@ -123,6 +123,7 @@ function Header_body_scripts()
             maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
+            eventsInMenuBarIntervalTime:"<?= SystemConfig::getValue('bEventsInMenuBarIntervalTime') ?>",
             plugin: {
                 dataTable : {
                    "language": {
@@ -176,7 +177,7 @@ function GetSecuritySettings()
         if (array_key_exists($aSecurityListPrimal[$i], $_SESSION) && $_SESSION[$aSecurityListPrimal[$i]]) {
             $aSecurityListFinal[] = $aSecurityListPrimal[$i];
         } elseif ($aSecurityListPrimal[$i] == 'bAddEvent' && $_SESSION['bAdmin']) {
-            +          $aSecurityListFinal[] = 'bAddEvent';
+            $aSecurityListFinal[] = 'bAddEvent';
         }
     }
     
@@ -220,59 +221,6 @@ function addMenu($menu)
     }
 }
 
-function getNumberEventOfToday()
-{
-    /* get ponctual event */
-    $activeEvents = EventQuery::create()
-          ->filterByStart(array('min' => 'today'))
-          ->filterByEnd(array('max' => 'tomorrow'))
-          ->find();
-    $cnt = count($activeEvents);
-  
-    /* get event with large range */
-    $activeEvents = EventQuery::create()
-          ->filterByStart(array('max' => 'today'))
-          ->filterByEnd(array('min' => 'tomorrow'))
-          ->find();
-          
-    $cnt += count($activeEvents);
-
-    return $cnt;
-}
-
-function getNumberBirthDate()
-{
-    $peopleWithBirthDays = PersonQuery::create()
-        ->filterByBirthMonth(date('m'))
-        ->filterByBirthDay(date('d'))
-        ->find();
-
-    return count($peopleWithBirthDays);
-}
-
-function getNumberAnniversary()
-{
-    $Anniversaries = FamilyQuery::create()
-          ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
-          ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
-          ->find();
-      
-    $curDay = date('d');
-    $curMonth = date('m');
-  
-    $cnt = 0;
-  
-    foreach ($Anniversaries as $anniversary) {
-        if ($anniversary->getWeddingMonth() == $curMonth && $curDay == $anniversary->getWeddingDay()) {
-            $cnt += 1;
-        }
-    }
-
-    return $cnt;
-}
-
-
-
 function addMenuItem($ormMenu, $mIdx)
 {
     global $security_matrix;
@@ -315,16 +263,21 @@ function addMenuItem($ormMenu, $mIdx)
     }
     if (!($ormMenu->getMenu()) || ($numItems > 0)) {
         if ($link) {
-            if ($ormMenu->getName() == 'calendar') {
-                echo "<li><a href='".SystemURLs::getRootPath() . '/' . $ormMenu->getURI()."'>";
-                echo "<i class='fa fa-calendar'></i><span>".gettext($ormMenu->getContent());
-                echo "<span class='pull-right-container'>";
-                echo "<small class='label pull-right bg-blue'>".getNumberAnniversary()."</small>";// mariage
-                echo "<small class='label pull-right bg-red'>".getNumberBirthDate()."</small>";// anniversaire
-                echo "<small class='label pull-right bg-yellow'>".getNumberEventOfToday()."</small>";// événemt
-                echo "</span>";
-                echo "</span></a></li>";
-            } elseif ($ormMenu->getName() != 'sundayschool-dash' && $ormMenu->getName() != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
+            if ($ormMenu->getName() == 'calendar') { ?>
+                <li>
+                  <a href="<?= SystemURLs::getRootPath() . '/' . $ormMenu->getURI() ?>">
+                  <i class='fa fa-calendar'></i>
+                  <span> 
+                    <?= gettext($ormMenu->getContent()) ?>
+                    <span class='pull-right-container'>
+                      <small class='label pull-right bg-blue' id='AnniversaryNumber'>0</small>
+                      <small class='label pull-right bg-red' id='BirthdateNumber'>0</small>
+                      <small class='label pull-right bg-yellow' id='EventsNumber'>0</small>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            <?php } elseif ($ormMenu->getName() != 'sundayschool-dash' && $ormMenu->getName() != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
                 echo "<li><a href='$link'>";
                 if ($ormMenu->getIcon() != '') {
                     echo '<i class="fa ' . $ormMenu->getIcon() . '"></i>';
@@ -362,7 +315,7 @@ function addMenuItem($ormMenu, $mIdx)
                                     $str = substr($str, 0, $maxStr-3)." ...";
                                 }
                                         
-                                echo "<li><a href='" . SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
+                                echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
                             }
                             echo '</ul></li>';
                         }
@@ -380,7 +333,7 @@ function addMenuItem($ormMenu, $mIdx)
                     echo '<ul class="treeview-menu">';
 
                     foreach ($groups as $group) {
-                        echo "<li><a href='" . SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " . $group->getName() . '</a></li>';
+                        echo "<li><a href='" . SystemURLs::getRootPath() . 'GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " . $group->getName() . '</a></li>';
                     }
                     echo '</ul></li>';
                 }
