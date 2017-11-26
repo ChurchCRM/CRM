@@ -27,6 +27,6 @@
       EventsNumber.innerText=data;
     });
 
-  },window.CRM.eventsInMenuBarIntervalTime);
+  },window.CRM.eventsInMenuBarIntervalTime*1000);
   
 
