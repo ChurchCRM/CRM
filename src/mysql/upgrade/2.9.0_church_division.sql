@@ -1,28 +1,32 @@
-CREATE TABLE `church_division` (
-  `division_id` INT NOT NULL,
-  `division_typeId` INT NOT NULL,
-  `division_name` VARCHAR(256) NOT NULL,
-  `division_address` VARCHAR(45) NOT NULL,
-  `division_city` VARCHAR(45) NOT NULL,
-  `division_state` VARCHAR(45) NOT NULL,
-  `division_zip` VARCHAR(45) NOT NULL,
-  `division_country` VARCHAR(45) NOT NULL,
-  `division_phone` VARCHAR(45) NULL,
-  `division_email` VARCHAR(45) NULL,
-  `division_timzezone` VARCHAR(45) NULL,
-  PRIMARY KEY (`division_id`)
+CREATE TABLE `church_location` (
+  `location_id` INT NOT NULL,
+  `location_typeId` INT NOT NULL,
+  `location_name` VARCHAR(256) NOT NULL,
+  `location_address` VARCHAR(45) NOT NULL,
+  `location_city` VARCHAR(45) NOT NULL,
+  `location_state` VARCHAR(45) NOT NULL,
+  `location_zip` VARCHAR(45) NOT NULL,
+  `location_country` VARCHAR(45) NOT NULL,
+  `location_phone` VARCHAR(45) NULL,
+  `location_email` VARCHAR(45) NULL,
+  `location_timzezone` VARCHAR(45) NULL,
+  PRIMARY KEY (`location_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `church_division_clergy` (
-  `division_id` INT NOT NULL,
-  `clergy_personId` INT NOT NULL,
-  `clergy_roleId` INT NOT NULL,
-  PRIMARY KEY (`division_id`, `clergy_personId`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-
-CREATE TABLE `church_division_person` (
-  `division_id` INT NOT NULL,
-  `personId` INT NOT NULL,
+CREATE TABLE `church_location_person` (
+  `location_id` INT NOT NULL,
+  `person_id` INT NOT NULL,
   `order` INT NOT NULL,
-  PRIMARY KEY (`division_id`, `personId`)
+  `person_location_role_id` INT NOT NULL,  #This will be referenced to user-defined roles such as clergey, pastor, member, etc for non-denominational use
+  PRIMARY KEY (`location_id`, `person_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+
+CREATE TABLE `church_location_role` (
+  `location_id` INT NOT NULL,
+  `role_id` INT NOT NULL,
+  `role_order` INT NOT NULL,
+  `role_title` INT NOT NULL,  #Thi
+  PRIMARY KEY (`location_id`, `role_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
