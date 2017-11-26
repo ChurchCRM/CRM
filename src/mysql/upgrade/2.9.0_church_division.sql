@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `church_division`;
 CREATE TABLE `church_division` (
   `division_id` INT NOT NULL,
   `division_typeId` INT NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE `church_division` (
   PRIMARY KEY (`division_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `church_division_clergy`;
 CREATE TABLE `church_division_clergy` (
   `division_id` INT NOT NULL,
   `clergy_personId` INT NOT NULL,
@@ -20,6 +22,7 @@ CREATE TABLE `church_division_clergy` (
   PRIMARY KEY (`division_id`, `clergy_personId`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `church_division_person`;
 CREATE TABLE `church_division_person` (
   `division_id` INT NOT NULL,
   `personId` INT NOT NULL,
