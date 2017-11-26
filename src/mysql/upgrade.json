@@ -154,7 +154,8 @@
         ],
         "scripts": [
             "/mysql/upgrade/2.9.0.sql",
-            "/mysql/upgrade/2.9.0-InnoDB.php"
+            "/mysql/upgrade/2.9.0-InnoDB.php",
+            "/mysql/upgrade/2.9.0_church_division.sql"
         ],
         "dbVersion": "2.9.0"
     }
