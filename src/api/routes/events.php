@@ -18,6 +18,7 @@ use ChurchCRM\Event;
 use ChurchCRM\EventCountsQuery;
 use ChurchCRM\EventCounts;
 use ChurchCRM\Service\CalendarService;
+use ChurchCRM\dto\MenuEventsCount;
 
 
 $app->group('/events', function () {
@@ -33,6 +34,10 @@ $app->group('/events', function () {
                  ->filterByEnd(new DateTime(),  Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL)
                 ->find();
         return $response->write($Events->toJSON());
+    });
+    
+    $this->get('/numbers', function ($request, $response, $args) {        
+        $response->withJson(MenuEventsCount::getNumberEventsOfToday());       
     });
     
      
