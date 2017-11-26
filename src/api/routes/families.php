@@ -1,5 +1,6 @@
 <?php
 
+/* Contributors Philippe Logel */
 // Routes
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Token;
@@ -13,13 +14,18 @@ use ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\Map\TokenTableMap;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\dto\MenuEventsCount;
 
 $app->group('/families', function () {
-  
-     $this->get('/{familyId:[0-9]+}', function($request, $response, $args)  {
+    $this->get('/{familyId:[0-9]+}', function($request, $response, $args)  {
         $family = FamilyQuery::create()->findPk($args['familyId']);
         return $response->withJSON($family->toJSON());
     });
+    
+    $this->get('/numbers', function($request, $response, $args)  {
+        return $response->withJson(MenuEventsCount::getNumberAnniversaries());       
+    });
+
   
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
