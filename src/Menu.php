@@ -8,7 +8,8 @@
 *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, Michael Wilt
 *
 *  Additional Contributors:
-*  2006 Ed Davis
+*  2006 Ed Davis 
+*  2017 Philippe Logel
 *
 
 ******************************************************************************/
@@ -22,6 +23,9 @@ use ChurchCRM\Service\FinancialService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\dto\MenuEventsCount;
+
 
 $financialService = new FinancialService();
 $dashboardService = new DashboardService();
@@ -45,11 +49,109 @@ if ($_SESSION['bFinance']) {
     }
 }
 
+
 // Set the page title
 $sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
 
 require 'Include/Header.php';
-?>
+
+$showBanner = SystemConfig::getValue("bEventsOnDashboardPresence");
+
+$peopleWithBirthDays = MenuEventsCount::getBirthDates();
+$Anniversaries = MenuEventsCount::getAnniversaries();
+
+
+if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) { ?>
+    <div class="alert alert-info" id="Menu_Banner" style="background-color: #50abef !important;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration: none">&times;</a>
+    <h4 class="alert-heading"><?= gettext("Birthdates of the day") ?></h4>
+    <p>
+
+    <?php
+    if (!empty($peopleWithBirthDays)) {?>
+        <div class="row">
+          
+      <?php
+        $new_row = false;
+        $count_people = 0;
+          
+        {
+            foreach ($peopleWithBirthDays as $peopleWithBirthDay) {
+                if ($new_row == false) {?>
+                
+                    <div class="row">
+                <?php
+                    $new_row = true;
+                }?>
+                <div class="col-sm-3">
+                <label class="checkbox-inline">
+                    <a href="<?= $peopleWithBirthDay->getViewURI()?>" class="btn btn-link" style="text-decoration: none"><?= $peopleWithBirthDay->getFullNameWithAge() ?></a>
+                </label>
+                </div>
+              <?php
+                $count_people+=1;
+                $count_people%=4;
+                if ($count_people == 0) {?>
+                    </div>
+                    <?php $new_row = false;
+                }
+            }
+          
+            if ($new_row == true) {?>
+                </div>
+            <?php }
+          }?>
+          
+        </div>
+        </p>
+    <?php } ?>
+  
+    <?php if (!empty($Anniversaries)) {
+        if (!empty($peopleWithBirthDays)) {?>
+            <hr>
+    <?php }?>
+    
+        <h4 class="alert-heading"><?= gettext("Anniversaries of the day")?></h4>
+        <p>
+        <div class="row">
+          
+    <?php
+        $new_row = false;
+        $count_people = 0;
+          
+        foreach ($Anniversaries as $Anniversary){
+            if ($new_row == false) { ?>
+                <div class="row">
+                
+                <?php $new_row = true;
+            }?>
+            <div class="col-sm-3">
+            <label class="checkbox-inline">
+              <a href="<?= $Anniversary->getViewURI() ?>" class="btn btn-link" style="text-decoration: none"><?= $Anniversary->getFamilyString() ?></a>
+            </label>
+            </div>
+            
+            <?php
+            $count_people+=1;
+            $count_people%=4;
+            if ($count_people == 0) {?>
+                </div>
+            <?php
+                $new_row = false;
+            }
+        }
+        
+        if ($new_row == true) {?>
+            </div>
+        <?php } ?>
+                  
+        </div>
+        </p>
+    <?php }?>
+  </div>
+  
+<?php }?>
+
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-xs-6">
@@ -370,6 +472,22 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 <?php
                         }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>
+</script>
+
+<script>
+  var timeOut = <?= SystemConfig::getValue("bEventsOnDashboardPresenceTimeOut")*1000 ?>;
+  
+  $(document).ready (function(){
+    $("#myWish").click(function showAlert() {
+        $("#Menu_Banner").alert();
+        window.setTimeout(function () { 
+            $("#Menu_Banner").alert('close'); }, timeOut);               
+       });       
+    });
+    
+    $("#Menu_Banner").fadeTo(timeOut, 500).slideUp(500, function(){
+    $("#Menu_Banner").slideUp(500);
+});
 </script>
 
 
