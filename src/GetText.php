@@ -18,14 +18,14 @@ $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH) or die(mysqli_error($cnInfoCent
 extract($aRow);
 $aEventID = $event_id;
 $aEventTitle = $event_title;
-$aEventText = nl2br(htmlentities(stripslashes($event_text), ENT_NOQUOTES, 'UTF-8'));
+$aEventText = $event_text;
 ?>
 <html>
-<head><title>Text from <?= $aEventID ?></title></head>
+<head><title><?= gettext("Text from") ?> <?= $aEventID ?></title></head>
 </html>
 <table cellpadding="4" align="center" cellspacing="0" width="100%">
   <caption>
-    <h3><?= gettext('Text for Event ID: '.$aEventTitle) ?></h3>
+    <h3><?= gettext('Text for Event ID: ').$aEventTitle ?></h3>
   </caption>
   <tr>
     <td><?= $aEventText ?></td>

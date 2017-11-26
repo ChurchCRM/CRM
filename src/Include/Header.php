@@ -9,12 +9,12 @@
 
  ******************************************************************************/
 
-
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-    Redirect('CheckVersion.php');
+if (!SystemService::isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
+    Redirect('SystemDBUpdate.php');
     exit;
 }
 
@@ -142,7 +142,7 @@ $MenuFirst = 1;
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
+            <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
               <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
@@ -160,7 +160,7 @@ $MenuFirst = 1;
                      class="btn btn-default btn-flat"><?= gettext('Profile') ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php"
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" id="signout"
                      class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
                 </div>
               </li>
@@ -174,11 +174,6 @@ $MenuFirst = 1;
           <li class="hidden-xxs">
             <a href="#" data-toggle="modal" data-target="#IssueReportModal" title="<?= gettext('Report an issue') ?>">
               <i class="fa fa-bug"></i>
-            </a>
-          </li>
-          <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" title="<?= gettext('Log off') ?>">
-              <i class="fa fa-power-off"></i>
             </a>
           </li>
           <?php

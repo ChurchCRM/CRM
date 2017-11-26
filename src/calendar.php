@@ -142,6 +142,8 @@ require 'Include/Header.php'; ?>
                 ?>;
 
 </script>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/ckeditor/ckeditor.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Calendar.js" type="text/javascript"></script>
 
 <?php require 'Include/Footer.php'; ?>

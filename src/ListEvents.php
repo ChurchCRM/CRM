@@ -10,16 +10,10 @@
 *
 *  Additional Contributors:
 *  2007 Ed Davis
+*  update 2017 Philippe Logel
 *
-
 *
 *
-
-*
-
-
-
-
 *
 ******************************************************************************/
 
@@ -256,7 +250,7 @@ foreach ($allMonths as $mKey => $mVal) {
               <?= ($aEventDesc[$row] == '' ? '&nbsp;' : $aEventDesc[$row]) ?>
               <?php if ($aEventText[$row] != '') {
                 ?>
-                <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')">Sermon Text</a></div>
+                <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')"><?= gettext("Sermon Text") ?></a></div>
               <?php
             } ?>
             </td>
