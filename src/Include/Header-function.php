@@ -29,6 +29,7 @@ use ChurchCRM\UserConfig;
 use ChurchCRM\EventQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
+use ChurchCRM\dto\MenuEventsCount;
 
 function Header_system_notifications()
 {
@@ -270,9 +271,9 @@ function addMenuItem($ormMenu, $mIdx)
                   <span> 
                     <?= gettext($ormMenu->getContent()) ?>
                     <span class='pull-right-container'>
-                      <small class='label pull-right bg-blue' id='AnniversaryNumber'>0</small>
-                      <small class='label pull-right bg-red' id='BirthdateNumber'>0</small>
-                      <small class='label pull-right bg-yellow' id='EventsNumber'>0</small>
+                      <small class='label pull-right bg-blue' id='AnniversaryNumber'><?= MenuEventsCount::getNumberAnniversaries() ?></small>
+                      <small class='label pull-right bg-red' id='BirthdateNumber'><?= MenuEventsCount::getNumberBirthDates() ?></small>
+                      <small class='label pull-right bg-yellow' id='EventsNumber'><?= MenuEventsCount::getNumberEventsOfToday() ?></small>
                     </span>
                   </span>
                 </a>
