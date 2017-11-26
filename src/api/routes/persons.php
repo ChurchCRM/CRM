@@ -1,22 +1,24 @@
 <?php
+/* contributor Philippe Logel */
 
 // Person APIs
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\dto\MenuEventsCount;
 
 $app->group('/persons', function () {
     // search person by Name
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
 
-    	$searchLikeString = '%'.$query.'%';
-    	$people = PersonQuery::create()->
-			filterByFirstName($searchLikeString, Criteria::LIKE)->
-			_or()->filterByLastName($searchLikeString, Criteria::LIKE)->
-			_or()->filterByEmail($searchLikeString, Criteria::LIKE)->
-      		limit(15)->find();
+      $searchLikeString = '%'.$query.'%';
+      $people = PersonQuery::create()->
+      filterByFirstName($searchLikeString, Criteria::LIKE)->
+      _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
+      _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
+          limit(15)->find();
         
         $id = 1;
         
@@ -31,6 +33,10 @@ $app->group('/persons', function () {
         }
         
         return $response->withJson($return);    
+    });
+    
+    $this->get('/numbers', function ($request, $response, $args) {
+      return $response->withJson(MenuEventsCount::getNumberBirthDates());       
     });
 
     $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
