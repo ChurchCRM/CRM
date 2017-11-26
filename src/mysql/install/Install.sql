@@ -1255,7 +1255,7 @@ CREATE TABLE `egive_egv` (
   `egv_EditedBy` smallint(6) NOT NULL default '0'
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `kioskdevice_kdev` ( 
+CREATE TABLE `kioskdevice_kdev` (
   `kdev_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `kdev_GUIDHash` char(64) DEFAULT NULL,
   `kdev_Name` varchar(50) DEFAULT NULL,
@@ -1268,7 +1268,7 @@ CREATE TABLE `kioskdevice_kdev` (
   UNIQUE KEY `kdev_ID` (`kdev_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `kioskassginment_kasm` ( 
+CREATE TABLE `kioskassginment_kasm` (
   `kasm_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `kasm_kdevId` mediumint(9) DEFAULT NULL,
   `kasm_AssignmentType` mediumint(9) DEFAULT NULL,
@@ -1287,6 +1287,36 @@ CREATE TABLE `tokens` (
   `valid_until_date` datetime NULL,
   `remainingUses` INT(2) NULL,
   PRIMARY KEY (`token`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `church_division` (
+  `division_id` INT NOT NULL,
+  `division_typeId` INT NOT NULL,
+  `division_name` VARCHAR(256) NOT NULL,
+  `division_address` VARCHAR(45) NOT NULL,
+  `division_city` VARCHAR(45) NOT NULL,
+  `division_state` VARCHAR(45) NOT NULL,
+  `division_zip` VARCHAR(45) NOT NULL,
+  `division_country` VARCHAR(45) NOT NULL,
+  `division_phone` VARCHAR(45) NULL,
+  `division_email` VARCHAR(45) NULL,
+  `division_timzezone` VARCHAR(45) NULL,
+  PRIMARY KEY (`division_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+
+CREATE TABLE `church_division_clergy` (
+  `division_id` INT NOT NULL,
+  `clergy_personId` INT NOT NULL,
+  `clergy_roleId` INT NOT NULL,
+  PRIMARY KEY (`division_id`, `clergy_personId`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `church_division_person` (
+  `division_id` INT NOT NULL,
+  `personId` INT NOT NULL,
+  `order` INT NOT NULL,
+  PRIMARY KEY (`division_id`, `personId`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 update version_ver set ver_update_end = now();

@@ -18,7 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();
-$_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
+$_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 
 //
 // Basic security checks:

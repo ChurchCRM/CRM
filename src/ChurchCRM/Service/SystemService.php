@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
 use ChurchCRM\SQLUtils;
-use ChurchCRM\Version;
 use Exception;
 use Github\Client;
 use Ifsnop\Mysqldump\Mysqldump;
@@ -14,7 +13,6 @@ use PharData;
 use Propel\Runtime\Propel;
 use PDO;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\LoggerUtils;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
@@ -24,7 +22,6 @@ class SystemService
     public function getLatestRelese()
     {
         $client = new Client();
-        //$client->authenticate('', null, Client::AUTH_HTTP_TOKEN);
         $release = null;
         try {
             $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
@@ -34,7 +31,7 @@ class SystemService
         return $release;
     }
 
-    public function getInstalledVersion()
+    static public function getInstalledVersion()
     {
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
         $composerJson = json_decode($composerFile, true);
@@ -90,7 +87,7 @@ class SystemService
             throw new Exception(gettext("Unknown File Type").": " . $restoreResult->type . " ".gettext("from file").": " . $file['name']);
         }
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
-        $restoreResult->UpgradeStatus = $this->upgradeDatabaseVersion();
+        $restoreResult->UpgradeStatus = UpgradeService::upgradeDatabaseVersion();
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
@@ -272,15 +269,14 @@ class SystemService
         requireUserGroupMembership('bAdmin');
     }
 
-    public function getDBVersion()
+   static public function getDBVersion()
     {
         $connection = Propel::getConnection();
         $query = 'Select * from version_ver';
         $statement = $connection->prepare($query);
-        $resultset = $statement->execute();
+        $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
         rsort($results);
-
         return $results[0]['ver_version'];
     }
 
@@ -295,51 +291,11 @@ class SystemService
       }
     }
 
-    public function isDBCurrent()
+    static public function isDBCurrent()
     {
-        return $this->getDBVersion() == $this->getInstalledVersion();
+        return SystemService::getDBVersion() == SystemService::getInstalledVersion();
     }
 
-    public function upgradeDatabaseVersion()
-    {
-        $logger = LoggerUtils::getAppLogger();
-        $connection = Propel::getConnection();
-        $db_version = $this->getDBVersion();
-        $logger->info("Current Version: " .$db_version);
-        if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
-            return true;
-        }
-
-        //the database isn't at the current version.  Start the upgrade
-        $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
-        $dbUpdates = json_decode($dbUpdatesFile, true);
-        $errorFlag = false;
-        foreach ($dbUpdates as $dbUpdate) {
-            if (in_array($this->getDBVersion(), $dbUpdate['versions'])) {
-                $version = new Version();
-                $version->setVersion($dbUpdate['dbVersion']);
-                $version->setUpdateStart(new \DateTime());
-                $logger->info("New Version: " .$version->getVersion());
-                foreach ($dbUpdate['scripts'] as $dbScript) {
-                    $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
-                    $logger->info("Upgrade DB - " . $scriptName);
-                    if (pathinfo($scriptName, PATHINFO_EXTENSION) == "sql") {
-                        SQLUtils::sqlImport($scriptName, $connection);
-                    } else {
-                        require_once ($scriptName);
-                    }
-                }
-                if (!$errorFlag) {
-                    $version->setUpdateEnd(new \DateTime());
-                    $version->save();
-                }
-            }
-        }
-        // always rebuild the menu
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
-
-        return 'success';
-    }
 
     public function reportIssue($data)
     {
