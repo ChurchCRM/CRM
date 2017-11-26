@@ -8,7 +8,7 @@
 *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, Michael Wilt
 *
 *  Additional Contributors:
-*  2006 Ed Davis 
+*  2006 Ed Davis
 *  2017 Philippe Logel
 *
 
@@ -25,7 +25,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\MenuEventsCount;
-
 
 $financialService = new FinancialService();
 $dashboardService = new DashboardService();
@@ -61,14 +60,16 @@ $peopleWithBirthDays = MenuEventsCount::getBirthDates();
 $Anniversaries = MenuEventsCount::getAnniversaries();
 
 
-if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) { ?>
+if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) {
+    ?>
     <div class="alert alert-info" id="Menu_Banner" style="background-color: #50abef !important;">
     <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration: none">&times;</a>
     <h4 class="alert-heading"><?= gettext("Birthdates of the day") ?></h4>
     <p>
 
     <?php
-    if (!empty($peopleWithBirthDays)) {?>
+    if (!empty($peopleWithBirthDays)) {
+        ?>
         <div class="row">
           
       <?php
@@ -77,12 +78,13 @@ if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) { ?
           
         {
             foreach ($peopleWithBirthDays as $peopleWithBirthDay) {
-                if ($new_row == false) {?>
+                if ($new_row == false) {
+                    ?>
                 
                     <div class="row">
                 <?php
                     $new_row = true;
-                }?>
+                } ?>
                 <div class="col-sm-3">
                 <label class="checkbox-inline">
                     <a href="<?= $peopleWithBirthDay->getViewURI()?>" class="btn btn-link" style="text-decoration: none"><?= $peopleWithBirthDay->getFullNameWithAge() ?></a>
@@ -91,25 +93,31 @@ if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) { ?
               <?php
                 $count_people+=1;
                 $count_people%=4;
-                if ($count_people == 0) {?>
+                if ($count_people == 0) {
+                    ?>
                     </div>
                     <?php $new_row = false;
                 }
             }
           
-            if ($new_row == true) {?>
+            if ($new_row == true) {
+                ?>
                 </div>
-            <?php }
-          }?>
+            <?php
+            }
+          } ?>
           
         </div>
         </p>
-    <?php } ?>
+    <?php
+    } ?>
   
     <?php if (!empty($Anniversaries)) {
-        if (!empty($peopleWithBirthDays)) {?>
+        if (!empty($peopleWithBirthDays)) {
+            ?>
             <hr>
-    <?php }?>
+    <?php
+        } ?>
     
         <h4 class="alert-heading"><?= gettext("Anniversaries of the day")?></h4>
         <p>
@@ -119,12 +127,13 @@ if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) { ?
         $new_row = false;
         $count_people = 0;
           
-        foreach ($Anniversaries as $Anniversary){
-            if ($new_row == false) { ?>
+        foreach ($Anniversaries as $Anniversary) {
+            if ($new_row == false) {
+                ?>
                 <div class="row">
                 
                 <?php $new_row = true;
-            }?>
+            } ?>
             <div class="col-sm-3">
             <label class="checkbox-inline">
               <a href="<?= $Anniversary->getViewURI() ?>" class="btn btn-link" style="text-decoration: none"><?= $Anniversary->getFamilyString() ?></a>
@@ -134,23 +143,28 @@ if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) { ?
             <?php
             $count_people+=1;
             $count_people%=4;
-            if ($count_people == 0) {?>
+            if ($count_people == 0) {
+                ?>
                 </div>
             <?php
                 $new_row = false;
             }
         }
         
-        if ($new_row == true) {?>
+        if ($new_row == true) {
+            ?>
             </div>
-        <?php } ?>
+        <?php
+        } ?>
                   
         </div>
         </p>
-    <?php }?>
+    <?php
+    } ?>
   </div>
   
-<?php }?>
+<?php
+}?>
 
 <!-- Small boxes (Stat box) -->
 <div class="row">

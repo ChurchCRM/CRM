@@ -26,6 +26,11 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
+if (!SystemService::isDBCurrent()) {
+    Redirect('SystemDBUpdate.php');
+    exit;
+}
+
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
     // Get the information for the selected user
@@ -120,7 +125,7 @@ if (isset($_POST['User'])) {
         $systemService = new SystemService();
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         NotificationService::updateNotifications();
-        Redirect('CheckVersion.php');
+        Redirect('Menu.php');
         exit;
     }
 } elseif (isset($_GET['username'])) {
