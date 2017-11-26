@@ -15,6 +15,10 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\EventQuery;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\FamilyQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -1958,5 +1962,69 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
     <?php
     }
 }
+
+/* get number of events of the current day Philippe Logel */
+function getEventsOfToday()
+{
+    $start_date = date("Y-m-d ")." 00:00:00";
+    $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' +1 day'));
+
+    $activeEvents = EventQuery::create()
+        ->where("event_start <= '".$start_date ."' AND event_end >= '".$end_date."'") /* the large events */
+        ->_or()->where("event_start>='".$start_date."' AND event_end <= '".$end_date."'") /* the events of the day */
+        ->find();
+
+    return  $activeEvents;
+}
+
+function getNumberEventsOfToday()
+{
+    $cnt = count(getEventsOfToday());
+
+    return $cnt;
+}
+
+function getBirthDates()
+{
+    $peopleWithBirthDays = PersonQuery::create()
+        ->filterByBirthMonth(date('m'))
+        ->filterByBirthDay(date('d'))
+        ->find();
+        
+    return $peopleWithBirthDays;
+}
+
+function getNumberBirthDates()
+{
+    return count(getBirthDates());
+}
+
+function getAnniversaries()
+{
+    $Anniversaries = FamilyQuery::create()
+          ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
+          ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
+          ->find();
+      
+    $curDay = date('d');
+    $curMonth = date('m');
+  
+    $cnt = 0;
+    
+    $families = [];
+    foreach ($Anniversaries as $anniversary) {
+        if ($anniversary->getWeddingMonth() == $curMonth && $curDay == $anniversary->getWeddingDay()) {
+            $families[] = $anniversary;
+        }
+    }
+    
+    return $families;
+}
+
+function getNumberAnniversaries()
+{
+    return count(getAnniversaries());
+}
+
 
 ?>
