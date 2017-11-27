@@ -17,7 +17,8 @@ $csp = array(
     "media-src 'self'",
     "frame-src 'self'",
     "font-src 'self' fonts.gstatic.com",
-    "connect-src 'self'"
+    "connect-src 'self'",
+    "report-uri ".SystemURLs::getRootPath()."/api/system/csp-report"
 );
 
 header('X-Frame-Options: SAMEORIGIN');
