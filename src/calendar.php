@@ -18,7 +18,6 @@ use ChurchCRM\Service\CalendarService;
 
 $calenderService = new CalendarService();
 use ChurchCRM\dto\SystemURLs;
-  
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Church Calendar');
