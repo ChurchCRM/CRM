@@ -171,7 +171,10 @@ module.exports = function (grunt) {
                 dest: 'src/skin/external/fastclick'
             },
             jqueryuicss: {
-                src: ['https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'],
+                src: [
+                    'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css',
+                    "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+                ],
                 dest: 'src/skin/external/jquery-ui/'
             },
             datatableselect: {
