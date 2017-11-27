@@ -956,7 +956,7 @@ if ($iFamilyID == $fam_ID) {
 
                 <p>
                     <?= gettext("We could not find the family you were looking for.<br>Meanwhile, you may") ?> <a
-                            href="/MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
+                            href="/PeopleDashboard.php"><?= gettext("return to people dashboard") ?></a>
                 </p>
             </div>
         </div>
