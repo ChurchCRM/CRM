@@ -160,6 +160,7 @@
     	
     	for (i=0; i<len; ++i) {
 	  		var option = document.createElement("option");
+	  		// there is a groups.type in function of the new plan of schema
   			option.text = groups[i].name;
 				option.value = groups[i].groupID;
 				elt.appendChild(option);
