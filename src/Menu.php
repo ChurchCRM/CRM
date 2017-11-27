@@ -58,9 +58,11 @@ $showBanner = SystemConfig::getValue("bEventsOnDashboardPresence");
 
 $peopleWithBirthDays = MenuEventsCount::getBirthDates();
 $Anniversaries = MenuEventsCount::getAnniversaries();
+$peopleWithBirthDaysCount = MenuEventsCount::getNumberBirthDates();
+$AnniversariesCount = MenuEventsCount::getNumberAnniversaries();
 
 
-if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) {
+if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
     ?>
     <div class="alert alert-info" id="Menu_Banner" style="background-color: #50abef !important;">
     <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration: none">&times;</a>
@@ -68,7 +70,7 @@ if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) {
     <p>
 
     <?php
-    if (!empty($peopleWithBirthDays)) {
+    if ($peopleWithBirthDaysCount > 0) {
         ?>
         <div class="row">
           
@@ -112,8 +114,8 @@ if ($showBanner && (!empty($peopleWithBirthDays) || !empty($Anniversaries))) {
     <?php
     } ?>
   
-    <?php if (!empty($Anniversaries)) {
-        if (!empty($peopleWithBirthDays)) {
+    <?php if ($AnniversariesCount > 0) {
+        if ($peopleWithBirthDaysCount > 0) {
             ?>
             <hr>
     <?php
