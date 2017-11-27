@@ -117,17 +117,6 @@ require 'Include/Header.php'; ?>
         echo "false";
     }
   ?>;
-  <?php
-  if (count($eventTypes)>0) {
-      ?>
-  		var eventTypes = <?php
-                      foreach ($eventTypes as $eventType) {
-                          echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
-                      } ?>;
-  <?php
-  }
-   ?>
-
 </script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/ckeditor/ckeditor.js"></script>
