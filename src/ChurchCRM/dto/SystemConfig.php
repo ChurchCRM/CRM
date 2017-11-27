@@ -218,8 +218,8 @@ class SystemConfig
         "iPersonConfessionFatherCustomField" => new ConfigItem(2040, "iPersonConfessionFatherCustomField", "ajax", "", gettext("Field where Father Of Confession is listed, must be a people of group type"), "", "/api/system/custom-fields/person/?typeId=9"),
         "iPersonConfessionDateCustomField" => new ConfigItem(2041, "iPersonConfessionDateCustomField", "ajax", "", gettext("Field where last Confession is stored, must be a date type"), "", "/api/system/custom-fields/person/?typeId=2"),
         "bEventsOnDashboardPresence" => new ConfigItem(2042, "bEventsOnDashboardPresence", "boolean", "1", gettext("Show Birthdates Anniversaries on start up of the CRM")),        
-        "iEventsOnDashboardPresenceTimeOut" => new ConfigItem(2043, "iEventsOnDashboardPresenceTimeOut", "number", "30", gettext("Number of seconds after page load until the banner disappears, default 30 seconds")),
-        "iEventsInMenuBarIntervalTime" => new ConfigItem(2044, "iEventsInMenuBarIntervalTime", "number", "1", gettext("Menu bar event counter asynchronous refresh interval, default 1 second"))
+        "iEventsOnDashboardPresenceTimeOut" => new ConfigItem(2043, "iEventsOnDashboardPresenceTimeOut", "number", "10", gettext("Number of seconds after page load until the banner disappears, default 10 seconds")),
+        "iEventsInMenuBarIntervalTime" => new ConfigItem(2044, "iEventsInMenuBarIntervalTime", "number", "60", gettext("Menu bar event counter asynchronous refresh interval, default 60 second"))
     );
   }
 
