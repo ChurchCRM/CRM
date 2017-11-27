@@ -128,18 +128,22 @@ require 'Include/Header.php'; ?>
         echo "false";
     }
   ?>;
-  
+  <?php
+  if (count($eventTypes)>0) { ?>
   var eventTypes = <?php
                       foreach ($eventTypes as $eventType) {
                           echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
                       }
                     ?>;
-  
+  <?php
+  }
+  if (count($groups)>0) { ?>
   var eventGroups = <?php
                   foreach ($groups as $group) {
                       echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
                   }
                 ?>;
+  <?php } ?>
 
 </script>
 
