@@ -129,21 +129,22 @@ require 'Include/Header.php'; ?>
     }
   ?>;
   <?php
-  if (count($eventTypes)>0) { ?>
+  if (count($eventTypes)>0) {
+      ?>
   var eventTypes = <?php
                       foreach ($eventTypes as $eventType) {
                           echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
-                      }
-                    ?>;
+                      } ?>;
   <?php
   }
-  if (count($groups)>0) { ?>
+  if (count($groups)>0) {
+      ?>
   var eventGroups = <?php
                   foreach ($groups as $group) {
                       echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
-                  }
-                ?>;
-  <?php } ?>
+                  } ?>;
+  <?php
+  } ?>
 
 </script>
 
