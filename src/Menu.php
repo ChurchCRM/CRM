@@ -59,19 +59,19 @@ $showBanner = SystemConfig::getValue("bEventsOnDashboardPresence");
 $peopleWithBirthDays = MenuEventsCount::getBirthDates();
 $Anniversaries = MenuEventsCount::getAnniversaries();
 $peopleWithBirthDaysCount = MenuEventsCount::getNumberBirthDates();
-$AnniversariesCount = MenuEventsCount::getNumberAnniversaries();
+$AnniversariesCount = 0;
 
 
 if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
     ?>
     <div class="alert alert-info" id="Menu_Banner" style="background-color: #50abef !important;">
     <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration: none">&times;</a>
-    <h4 class="alert-heading"><?= gettext("Birthdates of the day") ?></h4>
-    <p>
 
     <?php
     if ($peopleWithBirthDaysCount > 0) {
         ?>
+    <h4 class="alert-heading"><?= gettext("Birthdates of the day") ?></h4>
+    <p>
         <div class="row">
           
       <?php
