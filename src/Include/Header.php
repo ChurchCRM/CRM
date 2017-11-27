@@ -12,6 +12,7 @@
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\Cart;
 
 if (!SystemService::isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
     Redirect('SystemDBUpdate.php');
@@ -86,58 +87,12 @@ $MenuFirst = 1;
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <!-- Cart Functions: style can be found in dropdown.less -->
-            <li class="dropdown notifications-menu">
+            <li id="CartBlock" class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your Cart') ?>">
                     <i class="fa fa-shopping-cart"></i>
-                    <span id="iconCount" class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
+                    <span id="iconCount" class="label label-success"><?= Cart::CountPeople() ?></span>
                 </a>
-                <ul class="dropdown-menu">
-                    <?php
-                    if (count($_SESSION['aPeopleCart']) > 0) {
-                        $isCartPage = (basename($_SERVER['PHP_SELF']) == 'CartView.php'); ?>
-                        <li id="showWhenCartNotEmpty">
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-                                <li>
-                                    <a href="<?= SystemURLs::getRootPath() ?>/CartView.php">
-                                        <i class="fa fa-shopping-cart text-green"></i> <?= gettext('View Cart') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="emptyCart"
-                                       href="<?= SystemURLs::getRootPath() ?>/<?= ($isCartPage ? 'CartView.php?Action=EmptyCart' : '#') ?>">
-                                        <i class="fa fa-trash text-danger"></i> <?= gettext('Empty Cart') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="CartToGroup.php">
-                                        <i class="fa fa-object-ungroup text-info"></i> <?= gettext('Empty Cart to Group') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="CartToEvent.php">
-                                        <i class="fa fa fa-users text-info"></i> <?= gettext('Empty Cart to Family') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="CartToEvent.php">
-                                        <i class="fa fa fa-ticket text-info"></i> <?= gettext('Empty Cart to Event') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="MapUsingGoogle.php?GroupID=0">
-                                        <i class="fa fa-map-marker text-info"></i> <?= gettext('Map Cart') ?>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!--li class="footer"><a href="#">View all</a></li-->
-                        <?php
-                    } else {
-                        echo '<li class="header">' . gettext("Your Cart is Empty") . '</li>';
-                    }
-                    ?>
-                </ul>
+                <ul class="dropdown-menu" id="cart-dropdown-menu"></ul>
             </li>
 
           <!-- User Account: style can be found in dropdown.less -->

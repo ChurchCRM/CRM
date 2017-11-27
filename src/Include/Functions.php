@@ -137,27 +137,10 @@ if (isset($_GET['ProfileImageUploadedError'])) {
     $sGlobalMessageClass = 'danger';
 }
 
-// Are they adding a person to the Cart?
-if (isset($_GET['AddToPeopleCart'])) {
-    AddToPeopleCart(InputUtils::LegacyFilterInput($_GET['AddToPeopleCart'], 'int'));
-    $sGlobalMessage = gettext('Selected record successfully added to the Cart.');
-}
-
-if (isset($_GET['AddFamilyToPeopleCart'])) {
-    AddFamilyToPeopleCart(InputUtils::LegacyFilterInput($_GET['AddFamilyToPeopleCart'], 'int'));
-    $sGlobalMessage = gettext('Family successfully added to the Cart.');
-}
-
 // Are they removing a person from the Cart?
 if (isset($_GET['RemoveFromPeopleCart'])) {
     RemoveFromPeopleCart(InputUtils::LegacyFilterInput($_GET['RemoveFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Selected record successfully removed from the Cart.');
-}
-
-// Are they emptying their cart?
-if (isset($_GET['Action']) && ($_GET['Action'] == 'EmptyCart')) {
-    $_SESSION['aPeopleCart'] = [];
-    $sGlobalMessage = gettext('Your cart has been successfully emptied').".";
 }
 
 if (isset($_POST['BulkAddToCart'])) {
@@ -410,103 +393,6 @@ function ChopLastCharacter($sText)
     return mb_substr($sText, 0, strlen($sText) - 1);
 }
 
-function AddToPeopleCart($sID)
-{
-    // make sure the cart array exists
-    if (isset($_SESSION['aPeopleCart'])) {
-        if (!in_array($sID, $_SESSION['aPeopleCart'], false)) {
-            $_SESSION['aPeopleCart'][] = $sID;
-        }
-    } else {
-        $_SESSION['aPeopleCart'][] = $sID;
-    }
-}
-
-function AddArrayToPeopleCart($aIDs)
-{
-    if (is_array($aIDs)) { // Make sure we were passed an array
-        foreach ($aIDs as $value) {
-            AddToPeopleCart($value);
-        }
-    }
-}
-
-// Add group to cart
-function AddGroupToPeopleCart($iGroupID)
-{
-    //Get all the members of this group
-    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
-    'WHERE p2g2r_grp_ID = '.$iGroupID;
-    $rsGroupMembers = RunQuery($sSQL);
-
-    //Loop through the recordset
-    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
-        extract($aRow);
-
-        //Add each person to the cart
-        AddToPeopleCart($p2g2r_per_ID);
-    }
-}
-
-function AddFamilyToPeopleCart($iFamID)
-{
-    $sSQL = 'SELECT per_ID from person_per where per_fam_id = '.$iFamID;
-    $rsFamilyMembers = RunQuery($sSQL);
-
-    //Loop through the recordset
-    while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
-        extract($aRow);
-
-        //Add each person to the cart
-        AddToPeopleCart($per_ID);
-    }
-}
-
-function IntersectArrayWithPeopleCart($aIDs)
-{
-    if (isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
-        $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'], $aIDs);
-    }
-}
-
-function RemoveFromPeopleCart($sID)
-{
-    // make sure the cart array exists
-    // we can't remove anybody if there is no cart
-    if (isset($_SESSION['aPeopleCart'])) {
-        unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
-    $aTempArray[] = $sID; // the only element in this array is the ID to be removed
-    $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aTempArray);
-    }
-}
-
-function RemoveArrayFromPeopleCart($aIDs)
-{
-    // make sure the cart array exists
-    // we can't remove anybody if there is no cart
-    if (isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
-        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aIDs);
-    }
-}
-
-// Remove group from cart
-function RemoveGroupFromPeopleCart($iGroupID)
-{
-    //Get all the members of this group
-    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
-    'WHERE p2g2r_grp_ID = '.$iGroupID;
-    $rsGroupMembers = RunQuery($sSQL);
-
-    //Loop through the recordset
-    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
-        extract($aRow);
-
-        //remove each person from the cart
-        RemoveFromPeopleCart($p2g2r_per_ID);
-    }
-}
-
-
 function change_date_for_place_holder($string)
 {
     return ((strtotime($string) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($string)):strtotime($string));
@@ -526,7 +412,6 @@ function FormatDateOutput()
     
     return $fmt;
 }
-
 
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
