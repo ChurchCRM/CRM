@@ -993,7 +993,7 @@ if ($per_ID == $iPersonID) {
       <h3><i class="fa fa-warning text-yellow"></i><?= gettext('Oops! Person not found.') ?></h3>
 
       <p>
-        <?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="<?= SystemURLs::getRootPath() ?>/MembersDashboard.php"><?= gettext('return to member dashboard') ?></a>
+        <?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="<?= SystemURLs::getRootPath() ?>/PeopleDashboard.php"><?= gettext('return to people dashboard') ?></a>
       </p>
     </div>
   </div>

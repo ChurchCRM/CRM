@@ -12,7 +12,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\dto\SystemURLs;
 
 // Set the page title
-$sPageTitle = gettext('Members Dashboard');
+$sPageTitle = gettext('People Dashboard');
 
 require 'Include/Header.php';
 
