@@ -64,7 +64,7 @@ require 'Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-stalker"></i>
+                <i class="fa fa-users"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
                 <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -83,7 +83,7 @@ require 'Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person"></i>
+                <i class="fa fa-user"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
                 <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -162,7 +162,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="box box-info">
             <div class="box-header">
-                <i class="ion ion-cash"></i>
+                <i class="fa fa-money"></i>
                 <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
                 <div class="box-tools pull-right">
                     <div id="deposit-graph" class="chart-legend"></div>
@@ -182,7 +182,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
-                <i class="ion ion-person-add"></i>
+                <i class="fa fa-user-plus"></i>
                 <h3 class="box-title"><?= gettext('Latest Families') ?></h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
