@@ -124,6 +124,50 @@
      localStorage.setItem("groupFilterID",groupFilterID); 
   });
   
+  function addEventTypes()
+  {
+  	window.CRM.APIRequest({
+          method: 'GET',
+          path: 'events/calendars',
+    }).done(function(eventTypes) {    
+	  	var elt = document.getElementById("eventType");        	
+    	var len = eventTypes.length;
+    	
+    	for (i=0; i<len; ++i) {
+	  		var option = document.createElement("option");
+  			option.text = eventTypes[i].name;
+				option.value = eventTypes[i].eventTypeID;
+				elt.appendChild(option);
+			} 			
+			
+    });  
+  }
+  
+  function addCalendars()
+  {
+  	window.CRM.APIRequest({
+          method: 'GET',
+          path: 'groups/calendars',
+    }).done(function(groups) {    
+	  	var elt = document.getElementById("EventGroup");        	
+    	var len = groups.length;
+
+			// We add the none option
+  		var option = document.createElement("option");
+  		option.text = i18next.t("None");
+			option.value = 0;
+			elt.appendChild(option);
+    	
+    	for (i=0; i<len; ++i) {
+	  		var option = document.createElement("option");
+  			option.text = groups[i].name;
+				option.value = groups[i].groupID;
+				elt.appendChild(option);
+			} 			
+			
+    });  
+  }
+  
   function deleteText(a)
   {
     if(a.value==i18next.t("Calendar Title") || a.value==i18next.t("Calendar description")){ a.value=''; a.style.color='#000';};
@@ -137,7 +181,6 @@
               +'<td colspan="3" class="TextColumn">'
               +'<select type="text" id="eventType" value="39">'
                    //+"<option value='0' >" + i18next.t("Personal") + "</option>"
-                   + eventTypes
                 +'</select>'
               +'</td>'
             +'</tr>'
@@ -157,8 +200,6 @@
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Group') + ":</td>"
               +'<td class="TextColumn">'
                 +'<select type="text" id="EventGroup" value="39">'
-                   +"<option value='0' Selected>" + i18next.t("None") + "</option>"
-                   + eventGroups           
                 +'</select>'
               +'</td>'
             +'</tr>'
@@ -359,6 +400,10 @@
        });
   
        modal.modal("show");
+       
+       // we add the calendars
+       addCalendars();
+       addEventTypes();      
        
        // this will ensure that image and table can be focused
        $(document).on('focusin', function(e) {e.stopImmediatePropagation();});
