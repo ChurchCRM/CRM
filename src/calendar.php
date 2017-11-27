@@ -15,10 +15,9 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Service\CalendarService;
-
-$calenderService = new CalendarService();
 use ChurchCRM\dto\SystemURLs;
-  
+
+$calenderService = new CalendarService();  
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Church Calendar');
@@ -108,8 +107,6 @@ require 'Include/Header.php'; ?>
 
 <!-- fullCalendar 2.2.5 -->
 <script>
-
- 
   var isModifiable  = <?php 
     if ($_SESSION['bAddEvent'] || $_SESSION['bAdmin']) {
         echo "true";
