@@ -60,6 +60,8 @@ $app->group('/events', function () {
      {
         $eventTypeName = "";
         
+        $EventGroupType = $input->EventGroupType;// for futur dev : personal or group
+        
         if ($input->eventTypeID)
         {
            $type = EventTypesQuery::Create()
