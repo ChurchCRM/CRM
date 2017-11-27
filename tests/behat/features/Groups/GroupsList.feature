@@ -27,6 +27,7 @@ Feature: Groups List
     And I click the ".groupRow" element
     Then I should see "Add (1) Members to Cart"
     And I click the "#addSelectedToCart" element
+    And I wait for AJAX to finish
     And I reload the page
     Then I should see "1" in the "#iconCount" element
 

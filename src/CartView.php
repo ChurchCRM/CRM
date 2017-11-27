@@ -13,111 +13,104 @@ require 'Include/Functions.php';
 require 'Include/LabelFunctions.php';
 
 use ChurchCRM\dto\SystemURLs;
-
+use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
-
-if (isset($_POST['rmEmail'])) {
-    rmEmail();
-}
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('View Your Cart');
 require 'Include/Header.php'; ?>
 <div class="box box-body">
-    <?php
-    // Confirmation message that people where added to Event from Cart
-    if (array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) == 0) {
-        if (!array_key_exists('Message', $_GET)) {
-            ?>
-            <p class="text-center callout callout-warning"><?= gettext('You have no items in your cart.') ?> </p>
-            <?php
-        } else {
-            switch ($_GET['Message']) {
+<?php
+// Confirmation message that people where added to Event from Cart
+if (!Cart::HasPeople()) {
+    if (!array_key_exists('Message', $_GET)) {
+        ?>
+             <p class="text-center callout callout-warning"><?= gettext('You have no items in your cart.') ?> </p>
+        <?php
+    } else {
+        switch ($_GET['Message']) {
                 case 'aMessage': ?>
                     <p class="text-center callout callout-info"><?= $_GET['iCount'] . ' ' . ($_GET['iCount'] == 1 ? 'Record' : 'Records') . ' Emptied into Event ID:' . $_GET['iEID'] ?> </p>
                     <?php break;
             }
-        }
-        echo '<p align="center"><input type="button" name="Exit" class="btn btn-primary" value="' . gettext('Back to Menu') . '" ' . "onclick=\"javascript:document.location='Menu.php';\"></p>\n";
-        echo '</div>';
-    } else {
+    }
+    echo '<p align="center"><input type="button" name="Exit" class="btn btn-primary" value="' . gettext('Back to Menu') . '" ' . "onclick=\"javascript:document.location='Menu.php';\"></p>\n";
+    echo '</div>';
+} else {
 
         // Create array with Classification Information (lst_ID = 1)
-        $sClassSQL = 'SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence';
-        $rsClassification = RunQuery($sClassSQL);
-        unset($aClassificationName);
-        $aClassificationName[0] = 'Unassigned';
-        while ($aRow = mysqli_fetch_array($rsClassification)) {
-            extract($aRow);
-            $aClassificationName[intval($lst_OptionID)] = $lst_OptionName;
-        }
+    $sClassSQL = 'SELECT * FROM list_lst WHERE lst_ID=1 ORDER BY lst_OptionSequence';
+    $rsClassification = RunQuery($sClassSQL);
+    unset($aClassificationName);
+    $aClassificationName[0] = 'Unassigned';
+    while ($aRow = mysqli_fetch_array($rsClassification)) {
+        extract($aRow);
+        $aClassificationName[intval($lst_OptionID)] = $lst_OptionName;
+    }
 
-        // Create array with Family Role Information (lst_ID = 2)
-        $sFamRoleSQL = 'SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence';
-        $rsFamilyRole = RunQuery($sFamRoleSQL);
-        unset($aFamilyRoleName);
-        $aFamilyRoleName[0] = 'Unassigned';
-        while ($aRow = mysqli_fetch_array($rsFamilyRole)) {
-            extract($aRow);
-            $aFamilyRoleName[intval($lst_OptionID)] = $lst_OptionName;
-        }
+    // Create array with Family Role Information (lst_ID = 2)
+    $sFamRoleSQL = 'SELECT * FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence';
+    $rsFamilyRole = RunQuery($sFamRoleSQL);
+    unset($aFamilyRoleName);
+    $aFamilyRoleName[0] = 'Unassigned';
+    while ($aRow = mysqli_fetch_array($rsFamilyRole)) {
+        extract($aRow);
+        $aFamilyRoleName[intval($lst_OptionID)] = $lst_OptionName;
+    }
 
-        $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (' . ConvertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_LastName';
-        $rsCartItems = RunQuery($sSQL);
-        $iNumPersons = mysqli_num_rows($rsCartItems);
+    $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_LastName';
+    $rsCartItems = RunQuery($sSQL);
+    $iNumPersons = Cart::CountPeople();
 
-        $sSQL = 'SELECT distinct per_fam_ID FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID WHERE per_ID IN (' . ConvertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_fam_ID';
-        $iNumFamilies = mysqli_num_rows(RunQuery($sSQL));
+    $iNumFamilies = Cart::CountFamilies();
 
-        if ($iNumPersons > 16) {
+    if ($iNumPersons > 16) {
+        ?>
+        <form method="get" action="CartView.php#GenerateLabels">
+        <input type="submit" class="btn" name="gotolabels"
+        value="<?= gettext('Go To Labels') ?>">
+        </form>
+        <?php
+    } ?>
+    
+    <!-- BEGIN CART FUNCTIONS -->
+    
+      
+    <?php
+    if (Cart::CountPeople() > 0) {
+        ?>
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Cart Functions</h3>
+        </div>
+        <div class="box-body">
+            <a href="#" id="emptyCart" class="btn btn-app emptyCart"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
+            <?php if ($_SESSION['bManageGroups']) {
             ?>
-            <form method="get" action="CartView.php#GenerateLabels">
-                <input type="submit" class="btn" name="gotolabels"
-                       value="<?= gettext('Go To Labels') ?>">
-            </form>
+                <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
+            <?php
+        }
+        if ($_SESSION['bAddRecords']) {
+            ?>
+            <a href="CartToFamily.php" class="btn btn-app"><i
+                        class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
             <?php
         } ?>
-
-        <!-- BEGIN CART FUNCTIONS -->
-
-
-        <?php
-        if (count($_SESSION['aPeopleCart']) > 0) {
-            ?>
-            <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= _("Cart Functions") ?></h3>
-            </div>
-            <div class="box-body">
-            <a href="CartView.php?Action=EmptyCart" class="btn btn-app"><i
-                        class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
-            <?php if ($_SESSION['bManageGroups']) {
-                ?>
-                <a href="CartToGroup.php" class="btn btn-app"><i
-                            class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
-                <?php
-            } ?>
-            <?php if ($_SESSION['bAddRecords']) {
-                ?>
-                <a href="CartToFamily.php" class="btn btn-app"><i
-                            class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
-                <?php
-            } ?>
             <a href="CartToEvent.php" class="btn btn-app"><i
-                        class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
+                class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
 
             <?php if ($bExportCSV) {
-                ?>
+            ?>
                 <a href="CSVExport.php?Source=cart" class="btn btn-app"><i
                             class="fa fa-file-excel-o"></i><?= gettext('CSV Export') ?></a>
                 <?php
-            } ?>
+        } ?>
             <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i
                         class="fa fa-map-marker"></i><?= gettext('Map Cart') ?></a>
             <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i
                         class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
-            <?php
-            if (count($_SESSION['aPeopleCart']) != 0) {
+             <?php
+            if (Cart::CountPeople() != 0) {
 
                 // Email Cart links
                 // Note: This will email entire group, even if a specific role is currently selected.
@@ -212,36 +205,36 @@ require 'Include/Header.php'; ?>
                             <?php
                             LabelGroupSelect('groupbymode');
 
-            echo '  <tr><td>' . gettext('Bulk Mail Presort') . '</td>';
-            echo '  <td>';
-            echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
-            echo '  id="BulkMailPresort" value="1" ';
-            if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-                echo 'checked';
-            }
-            echo '  ><br></td></tr>';
+        echo '  <tr><td>' . gettext('Bulk Mail Presort') . '</td>';
+        echo '  <td>';
+        echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
+        echo '  id="BulkMailPresort" value="1" ';
+        if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
+            echo 'checked';
+        }
+        echo '  ><br></td></tr>';
 
-            echo '  <tr><td>' . gettext('Quiet Presort') . '</td>';
-            echo '  <td>';
-            echo '  <input ';
-            if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
-                echo 'disabled ';
-            }   // This would be better with $_SESSION variable
-            // instead of cookie ... (save $_SESSION in MySQL)
-            echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
-            echo '  id="QuietBulkMail" value="1" ';
-            if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-                echo 'checked';
-            }
-            echo '  ><br></td></tr>';
+        echo '  <tr><td>' . gettext('Quiet Presort') . '</td>';
+        echo '  <td>';
+        echo '  <input ';
+        if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
+            echo 'disabled ';
+        }   // This would be better with $_SESSION variable
+        // instead of cookie ... (save $_SESSION in MySQL)
+        echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
+        echo '  id="QuietBulkMail" value="1" ';
+        if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
+            echo 'checked';
+        }
+        echo '  ><br></td></tr>';
 
-            ToParentsOfCheckBox('toparents');
-            LabelSelect('labeltype');
-            FontSelect('labelfont');
-            FontSizeSelect('labelfontsize');
-            StartRowStartColumn();
-            IgnoreIncompleteAddresses();
-            LabelFileType(); ?>
+        ToParentsOfCheckBox('toparents');
+        LabelSelect('labeltype');
+        FontSelect('labelfont');
+        FontSizeSelect('labelfontsize');
+        StartRowStartColumn();
+        IgnoreIncompleteAddresses();
+        LabelFileType(); ?>
 
                             <tr>
                                 <td></td>
@@ -257,8 +250,8 @@ require 'Include/Header.php'; ?>
 
 
             <?php
-        }
-    } ?>
+    }
+} ?>
 
     <!-- END CART FUNCTIONS -->
 
@@ -335,7 +328,7 @@ require 'Include/Header.php'; ?>
                             </td>
                             <td><?= $sValidAddy ?></td>
                             <td><?= $sValidEmail ?></td>
-                            <td><a href="CartView.php?RemoveFromPeopleCart=<?= $per_ID ?>"><?= gettext('Remove') ?></a>
+                            <td><a class="RemoveFromPeopleCart" data-personid="<?= $per_ID ?>"><?= gettext('Remove') ?></a>
                             </td>
                             <td><?= $aClassificationName[$per_cls_ID] ?></td>
                             <td><?= $aFamilyRoleName[$per_fmr_ID] ?></td>
@@ -352,28 +345,26 @@ require 'Include/Header.php'; ?>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
-        });
+          $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
+
+          $(document).on("click", ".emptyCart", function (e) {
+            window.CRM.cart.empty(function(){
+              document.location.reload();
+            });
+          });
+
+          $(document).on("click", ".RemoveFromPeopleCart", function (e) {
+            clickedButton = $(this);
+            e.stopPropagation();
+            window.CRM.cart.removePerson([clickedButton.data("personid")],function() {
+              document.location.reload();
+            });
+          });
+        
+         });
     </script>
 
     <?php
 
-    require 'Include/Footer.php';
-
-    function rmEmail()
-    {
-        $iUserID = $_SESSION['iUserID']; // Read into local variable for faster access
-        // Delete message from emp
-        $sSQL = 'DELETE FROM email_message_pending_emp ' .
-            "WHERE emp_usr_id='$iUserID'";
-        RunQuery($sSQL);
-
-        // Delete recipients from erp (not really needed, this should have already happened)
-        // (no harm in trying again)
-        $sSQL = 'DELETE FROM email_recipient_pending_erp ' .
-            "WHERE erp_usr_id='$iUserID'";
-        RunQuery($sSQL);
-        echo '<font class="SmallError">Deleted Email message succesfuly</font>';
-    }
-
-    ?>
+require 'Include/Footer.php';
+?>

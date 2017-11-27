@@ -38,4 +38,9 @@ $(document).ready(function () {
     window.open(window.CRM.root + '/Reports/ConfirmReport.php?familyId=' + window.CRM.currentFamily, '_blank');
     $('#confirm-verify').modal('hide');
   });
+  
+  $("#AddFamilyToCart").click(function(){
+    window.CRM.cart.addFamily($(this).data("familyid"));
+  });
+  
 });
