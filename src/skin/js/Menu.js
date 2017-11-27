@@ -10,6 +10,9 @@ var lineData = {
 
 $( document ).ready(function() {
   window.CRM.deposits.getSummaryData().done(function(data) {
+    if (data){
+      $("#depositSummaryChart").show()
+    }
     lineDataRaw = JSON.parse(data);
     
     if (lineDataRaw)

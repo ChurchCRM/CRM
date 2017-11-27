@@ -90,6 +90,9 @@ $app->group('/deposits', function () {
           if (count($deposits) > 0) {
             return $response->withJSON(json_encode($deposits->toArray()));
           }
+          else{
+            return $response->withJSON(array());
+          }
         }
     });
     
