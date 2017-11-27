@@ -12,7 +12,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\dto\SystemURLs;
 
 // Set the page title
-$sPageTitle = gettext('Members Dashboard');
+$sPageTitle = gettext('People Dashboard');
 
 require 'Include/Header.php';
 
@@ -74,7 +74,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 <!-- Default box -->
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('Members Functions') ?></h3>
+    <h3 class="box-title"><?= gettext('People Functions') ?></h3>
   </div>
   <div class="box-body">
     <a href="SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext('All People') ?></a>
@@ -228,7 +228,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <?php if ($bCreateDirectory) {
          ?>
           <p><a class="MediumText"
-                href="DirectoryReports.php"><?= gettext('Members Directory') ?></a><br><?= gettext('Printable directory of all members, grouped by family where assigned') ?>
+                href="DirectoryReports.php"><?= gettext('People Directory') ?></a><br><?= gettext('Printable directory of all people, grouped by family where assigned') ?>
           </p>
         <?php
      } ?>
@@ -292,7 +292,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <table class="table table-condensed">
           <tr>
             <th><?= gettext('Role / Gender') ?></th>
-            <th>% <?= gettext('of Members') ?></th>
+            <th>% <?= gettext('of People') ?></th>
             <th style="width: 40px"><?= gettext('Count') ?></th>
           </tr>
             <?php foreach ($demographicStats as $demStat) {
@@ -331,7 +331,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <table class="table table-condensed">
         <tr>
           <th><?= gettext('Classification') ?></th>
-          <th>% <?= gettext('of Members') ?></th>
+          <th>% <?= gettext('of People') ?></th>
           <th style="width: 40px"><?= gettext('Count') ?></th>
         </tr>
         <?php foreach ($personStats as $key => $value) {
