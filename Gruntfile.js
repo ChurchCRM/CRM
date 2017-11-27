@@ -62,6 +62,7 @@ module.exports = function (grunt) {
                             '!plugins/fastclick/**',
                             '!plugins/bootstrap-wysihtml5/**',
                             '!plugins/ckeditor/**',
+                            '!plugins/jQueryUI/**',
                             '!plugins/morris/**',
                             '!dist/img/**',
                             '!plugins/**/psd/**'],
