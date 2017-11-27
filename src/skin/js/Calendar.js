@@ -370,7 +370,7 @@
               window.CRM.APIRequest({
                     method: 'POST',
                     path: 'events/',
-                    data: JSON.stringify({"evntAction":'createEvent',"eventTypeID":eventTypeID,"EventGroupType",EventGroupType,"EventTitle":EventTitle,"EventDesc":EventDesc,"EventGroupID":EventGroupID,"Total":Total,"Members":Members,"Visitors":Visitors,"EventCountNotes":EventCountNotes,"eventPredication":eventPredication,"start":moment(start).format(),"end":moment(end).format()})
+                    data: JSON.stringify({"evntAction":'createEvent',"eventTypeID":eventTypeID,"EventGroupType":EventGroupType,"EventTitle":EventTitle,"EventDesc":EventDesc,"EventGroupID":EventGroupID,"Total":Total,"Members":Members,"Visitors":Visitors,"EventCountNotes":EventCountNotes,"eventPredication":eventPredication,"start":moment(start).format(),"end":moment(end).format()})
               }).done(function(data) {                   
                 $('#calendar').fullCalendar('renderEvent', data, true); // stick? = true             
                 $('#calendar').fullCalendar('unselect');              
