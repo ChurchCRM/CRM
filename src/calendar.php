@@ -105,8 +105,6 @@ $calenderService = new CalendarService();
 </div>
 <!-- /.col -->
 
-&nbsp;
-
 <!-- fullCalendar 2.2.5 -->
 <script>
   var isModifiable  = <?php 
