@@ -28,6 +28,7 @@ $taskService = new TaskService();
 ob_start();
 
 require_once 'Header-function.php';
+require_once 'Header-Security.php';
 
 // Top level menu index counter
 $MenuFirst = 1;
@@ -154,7 +155,7 @@ $MenuFirst = 1;
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
 
-        <select class="form-control multiSearch" style="width:100%">
+        <select class="form-control multiSearch">
         </select>
 
       </form>

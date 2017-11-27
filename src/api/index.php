@@ -72,5 +72,8 @@ require __DIR__.'/routes/events.php';
 
 require __DIR__.'/routes/custom-fields.php';
 
+require __DIR__.'/routes/system.php';
+
+
 // Run app
 $app->run();
