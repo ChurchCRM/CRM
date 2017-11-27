@@ -2,7 +2,13 @@
 
 #Hints here: http://codegist.net/code/sauce%20connect%20setup/
 
-SingleTest=./tests/behat/features/$1
+echo "Scanning composer for vulnerabilities"
+cd tests
+php security-checker.phar security:check /vagrant/src/composer.lock
+php security-checker.phar security:check /vagrant/tests/composer.lock
+
+
+SingleTest=./behat/features/$1
 echo $SingleTest
 
 if [ -f $SingleTest ]; then
@@ -11,7 +17,7 @@ else
   echo "Running full test suite"
 fi
 
-SC_READYFILE=/tmp/sceady
+SC_READYFILE=/tmp/scready
 SC_LOG=/tmp/sauce.log
 
 
@@ -43,9 +49,9 @@ fi
 
 #echo $BEHAT_PARAMS
 if [ -f $SingleTest ]; then
-  cd tests/behat/
+  cd behat/
   ../vendor/bin/behat features/$1
 else
-  cd tests/behat/
+  cd behat/
   ../vendor/bin/behat
 fi

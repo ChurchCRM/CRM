@@ -75,6 +75,7 @@ mysqli_select_db($cnInfoCentral, $sDATABASE)
 or system_failure('Could not connect to the MySQL database <strong>'.$sDATABASE.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
 
 // Initialize the session
+session_cache_limiter('private_no_expire:');
 session_name('CRM@'.SystemURLs::getRootPath());
 session_start();
 
@@ -101,7 +102,7 @@ $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
 if (count($results) == 0) {
     $systemService = new SystemService();
     $version = new Version();
-    $version->setVersion($systemService->getInstalledVersion());
+    $version->setVersion(SystemService::getInstalledVersion());
     $version->setUpdateStart(new DateTime());
     SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/install/Install.sql', $connection);
     $version->setUpdateEnd(new DateTime());

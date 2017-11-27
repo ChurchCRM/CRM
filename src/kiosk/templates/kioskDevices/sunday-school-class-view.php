@@ -27,8 +27,6 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   <!-- TODO: Add a quick-entry screen for new people <a id="newStudent"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>-->
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/randomcolor/randomColor.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/initial.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/moment/moment.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/KioskJSOM.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Kiosk.js"></script>

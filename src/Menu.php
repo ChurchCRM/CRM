@@ -270,8 +270,7 @@ require 'Include/Header.php';
                             ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                    <img data-name="<?= $person->getFullName() ?>"
-                                         data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
                                          width="85" height="85"/><br/>
                                     <?= $person->getFullName() ?></a>
@@ -305,8 +304,7 @@ require 'Include/Header.php';
                             ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                    <img data-name="<?= $person->getFullName() ?>"
-                                         data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
                                          width="85" height="85"/><br/>
                                     <?= $person->getFullName() ?></a>

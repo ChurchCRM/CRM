@@ -293,8 +293,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= $localeInfo->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/randomcolor/randomColor.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/initial.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/bootstrap-validator/validator.min.js"></script>
 
 

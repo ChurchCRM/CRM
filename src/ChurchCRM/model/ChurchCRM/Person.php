@@ -24,6 +24,7 @@ class Person extends BasePerson implements iPhoto
 
     const SELF_REGISTER = -1;
     const SELF_VERIFY = -2;
+    private $photo;
 
     public function getFullName()
     {
@@ -198,11 +199,15 @@ class Person extends BasePerson implements iPhoto
                 $lng = $latLng['Longitude'];
             }
         } else {
-            if (!$this->getFamily()->hasLatitudeAndLongitude()) {
-                $this->getFamily()->updateLanLng();
-            }
-            $lat = $this->getFamily()->getLatitude();
-            $lng = $this->getFamily()->getLongitude();
+         // Philippe Logel : this is usefull when a person don't have a family : ie not an address
+         if (!empty($this->getFamily()))
+         {
+    if (!$this->getFamily()->hasLatitudeAndLongitude()) {
+     $this->getFamily()->updateLanLng();
+    }
+    $lat = $this->getFamily()->getLatitude();
+    $lng = $this->getFamily()->getLongitude();
+   }
         }
         return array(
             'Latitude' => $lat,
@@ -226,39 +231,13 @@ class Person extends BasePerson implements iPhoto
         return false;
     }
 
-    private function getPhoto()
+    public function getPhoto()
     {
-
-      $photo = new Photo("Person",  $this->getId());
-       if (!$photo->isPhotoLocal() && $this->getEmail() != '') {
-           if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
-               $photo->loadFromGravatar($this->getEmail());
-           }
-           if (!$photo->isPhotoRemote() && SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
-               $photo->loadFromGoogle($this->getEmail());
-           }
-       }
-       return $photo;
-    }
-
-    public function getPhotoBytes()
-    {
-        return $this->getPhoto()->getPhotoBytes();
-    }
-
-    public function getPhotoURI()
-    {
-        return $this->getPhoto()->getPhotoURI();
-    }
-
-    public function getThumbnailBytes()
-    {
-        return $this->getPhoto()->getThumbnailBytes();
-    }
-
-    public function getThumbnailURI()
-    {
-        return $this->getPhoto()->getThumbnailURI();
+      if (!$this->photo) 
+      {
+        $this->photo = new Photo("Person",  $this->getId());
+      }
+      return $this->photo;
     }
 
     public function setImageFromBase64($base64)
@@ -275,21 +254,6 @@ class Person extends BasePerson implements iPhoto
         }
         return false;
 
-    }
-
-    public function isPhotoLocal()
-    {
-        return $this->getPhoto()->isPhotoLocal();
-    }
-
-    public function isPhotoRemote()
-    {
-        return $this->getPhoto()->isPhotoRemote();
-    }
-
-    public function getPhotoContentType()
-    {
-        return $this->getPhoto()->getPhotoContentType();
     }
 
     /**
@@ -444,4 +408,41 @@ class Person extends BasePerson implements iPhoto
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
+    
+    public function postSave(ConnectionInterface $con = null) {
+      $this->getPhoto()->refresh();
+      return parent::postSave($con);
+    }
+    
+    public function getAge()
+    {
+       $birthD = $this->getBirthDate();
+   
+       if ($this->hideAge() == 1) 
+       {
+            return '';
+       }
+
+       $ageSuffix = gettext('Unknown');
+
+       $now = date_create('today');
+       $age = date_diff($now,$birthD);
+
+       if ($age->y < 1) {
+         if ($age->m > 1) {
+           $ageSuffix = gettext('mos old');
+         } else {
+           $ageSuffix = gettext('mo old');
+         }
+       } else {
+         if ($age->y > 1) {
+           $ageSuffix = gettext('yrs old');
+         } else {
+           $ageSuffix = gettext('yr old');
+         }
+       }
+
+       return $age->y." ".$ageSuffix;
+    }
+
 }

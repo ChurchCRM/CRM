@@ -11,6 +11,8 @@ use ChurchCRM\NoteQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\Map\TokenTableMap;
+use ChurchCRM\dto\Photo;
+use ChurchCRM\Utils\MiscUtils;
 
 $app->group('/families', function () {
   
@@ -73,27 +75,16 @@ $app->group('/families', function () {
     });
 
     $this->get('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        if ( $family->isPhotoLocal() )
-        {
-            return $response->write($family->getPhotoBytes());
-        }
-        else
-        {
-            return $response->withStatus(404);
-        }
+      $res=$this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
+      $photo = new Photo("Family",$args['familyId']);
+      return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
     });
 
     $this->get('/{familyId:[0-9]+}/thumbnail', function($request, $response, $args)  {
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        if ( $family->isPhotoLocal())
-        {
-            return $response->write($family->getThumbnailBytes())->withHeader('Content-type', $family->getPhotoContentType());
-        }
-        else
-        {
-            return $response->withStatus(404);
-        }
+      
+      $res=$this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
+      $photo = new Photo("Family",$args['familyId']);
+      return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
     });
 
     $this->post('/{familyId:[0-9]+}/photo', function($request, $response, $args)  {
