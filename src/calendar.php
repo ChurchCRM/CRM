@@ -21,7 +21,6 @@ use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Church Calendar');
-$calenderService = new CalendarService();  
 
 ?>
 
@@ -38,7 +37,7 @@ $calenderService = new CalendarService();
 <div class="col">
     <div class="box box-primary">
         <div class="box-body">
-            <?php foreach ($calenderService->getEventTypes() as $type) {
+            <?php foreach (CalendarService::getEventTypes() as $type) {
     ?>
                 <div class="col-xs-3 fc-event-container fc-day-grid-event"
                      style="background-color:<?= $type['backgroundColor'] ?>;border-color:<?= $type['backgroundColor'] ?>;color: white; ">
