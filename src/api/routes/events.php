@@ -56,13 +56,15 @@ $app->group('/events', function () {
         
         return $response->withJson($return);    
     });
-     
+  
     $this->post('/', function ($request, $response, $args) {
       $input = (object) $request->getParsedBody();
       
     if (!strcmp($input->evntAction,'createEvent'))
      {
         $eventTypeName = "";
+        
+        $EventGroupType = $input->EventGroupType;// for futur dev : personal or group
         
         if ($input->eventTypeID)
         {

@@ -9,7 +9,7 @@ Feature: SystemSettings
     Then I should see "Church Information"
     And I should see "User Setup"
     And I should see "Email Setup"
-    And I should see "Member Setup"
+    And I should see "People Setup"
     And I should see "System Settings"
     And I should see "Map Settings"
     And I should see "Report Settings"

@@ -15,25 +15,13 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Service\CalendarService;
-use ChurchCRM\GroupQuery;
-use ChurchCRM\EventTypesQuery;
-
-$calenderService = new CalendarService();
 use ChurchCRM\dto\SystemURLs;
-
-$groups = GroupQuery::Create()
-      ->orderByName()
-      ->find();
-      
-
-$eventTypes = EventTypesQuery::Create()
-      ->orderByName()
-      ->find();
-  
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Church Calendar');
-require 'Include/Header.php'; ?>
+require 'Include/Header.php';
+
+?>
 
 <style>
     @media print {
@@ -48,7 +36,7 @@ require 'Include/Header.php'; ?>
 <div class="col">
     <div class="box box-primary">
         <div class="box-body">
-            <?php foreach ($calenderService->getEventTypes() as $type) {
+            <?php foreach (CalendarService::getEventTypes() as $type) {
     ?>
                 <div class="col-xs-3 fc-event-container fc-day-grid-event"
                      style="background-color:<?= $type['backgroundColor'] ?>;border-color:<?= $type['backgroundColor'] ?>;color: white; ">
@@ -92,7 +80,7 @@ require 'Include/Header.php'; ?>
           <div class="col-sm-6"> <b><?= gettext("Event Group Filter") ?>:</b> 
             <select type="text" id="EventGroupFilter" value="0">
               <option value='0' ><?= gettext("None") ?></option>
-            <?php
+                <?php
                   foreach ($groups as $group) {
                       echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
                   }
@@ -115,12 +103,8 @@ require 'Include/Header.php'; ?>
 </div>
 <!-- /.col -->
 
-&nbsp;
-
 <!-- fullCalendar 2.2.5 -->
 <script>
-
- 
   var isModifiable  = <?php 
     if ($_SESSION['bAddEvent'] || $_SESSION['bAdmin']) {
         echo "true";
@@ -128,19 +112,6 @@ require 'Include/Header.php'; ?>
         echo "false";
     }
   ?>;
-  
-  var eventTypes = <?php
-                      foreach ($eventTypes as $eventType) {
-                          echo "+\"<option value='".$eventType->getID()."'>".$eventType->getName()."</option>\"";
-                      }
-                    ?>;
-  
-  var eventGroups = <?php
-                  foreach ($groups as $group) {
-                      echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
-                  }
-                ?>;
-
 </script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/ckeditor/ckeditor.js"></script>
