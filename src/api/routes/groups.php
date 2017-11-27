@@ -121,13 +121,15 @@ $app->group('/groups', function () {
         }
         else
         {
-           $p2g2r->setRoleId($group->getDefaultRole());
+          $p2g2r->setRoleId($group->getDefaultRole());
         }
-        $p2g2r->save();
-        $members = Person2group2roleP2g2rQuery::create()
+                
+        $group->addPerson2group2roleP2g2r($p2g2r);
+        $group->save();
+        $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
-            ->filterByPersonId($userID)
-            ->findByGroupId($groupID);
+            ->filterByPersonId($input->PersonID)
+            ->findByGroupId($GroupID);
         echo $members->toJSON();
     });
 

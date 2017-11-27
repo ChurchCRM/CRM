@@ -320,9 +320,8 @@ if ($iFamilyID == $fam_ID) {
                                 class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                     <?php
                 } ?>
-                <a class="btn btn-app"
-                   href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
-                            class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
+                <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $iFamilyID ?>"> <i
+                        class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
 
 
                 <?php if ($bOkToEdit) {
@@ -386,7 +385,7 @@ if ($iFamilyID == $fam_ID) {
                     } ?>
                                 </td>
                                 <td style="width: 20%;">
-                                    <a href="FamilyView.php?FamilyID=<?= $person->getId() ?>&AddToPeopleCart=<?= $person->getId() ?>">
+                                    <a class="AddToPeopleCart" data-personid="<?= $person->getId() ?>">
                                         <span class="fa-stack">
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
