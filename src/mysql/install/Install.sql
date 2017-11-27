@@ -1322,6 +1322,10 @@ CREATE TABLE `church_division_person` (
 update version_ver set ver_update_end = now();
 
 
+UPDATE menuconfig_mcf
+  SET security_grp = 'bAddEvent'
+  WHERE name = 'addevent';  
+
 -- person calendar setup
 CREATE TABLE person_calendar (
     `per_cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,

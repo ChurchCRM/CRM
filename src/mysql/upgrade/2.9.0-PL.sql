@@ -14,7 +14,6 @@ CREATE TABLE person_calendar (
 )
 ENGINE= InnoDB;
 
-
 -- Mise en place des calendriers groupes
 CREATE TABLE group_calendar_persons (
     `grp_cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
@@ -35,6 +34,10 @@ CREATE TABLE group_calendar_persons (
         ON DELETE SET NULL
 )
 ENGINE= InnoDB;
+
+UPDATE menuconfig_mcf
+  SET security_grp = 'bAddEvent'
+  WHERE name = 'addevent';  
 
 -- altération des événements
 ALTER TABLE group_grp ADD `group_manager_id` mediumint(9) unsigned DEFAULT NULL;
