@@ -147,6 +147,11 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-md-4">
+            <label><?= gettext('Membership Status') ?>:</label>
+            <input type="checkbox" name="PrintMembershipStatus" value="1">
+          </div>
+
+          <div class="col-md-4">
             <label><?= gettext('Membership Date') ?>:</label>
             <input type="checkbox" name="MembershipDate" value="1">
           </div>
