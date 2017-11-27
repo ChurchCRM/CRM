@@ -488,7 +488,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     </td>
 
   </tr>
-  
+
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span>
       <?= gettext('Event Group') ?>:
@@ -601,7 +601,7 @@ $eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
 
 <?php require 'Include/Footer.php' ?>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/ckeditor/ckeditor.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
 
 <script>
   CKEDITOR.replace('EventText',{
