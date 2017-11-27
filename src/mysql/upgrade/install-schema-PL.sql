@@ -1,3 +1,7 @@
+UPDATE menuconfig_mcf
+  SET security_grp = 'bAddEvent'
+  WHERE name = 'addevent';  
+
 -- Mise en place des calendriers groupes
 CREATE TABLE person_calendar (
     `per_cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
