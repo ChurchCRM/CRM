@@ -40,6 +40,7 @@ src/skin/bootstrap-toggle
 src/skin/bootstrap-validator
 src/skin/jquery-ui
 src/skin/i18next
+src/skin/ckeditor
 
 #locale files
 src/locale/datatables

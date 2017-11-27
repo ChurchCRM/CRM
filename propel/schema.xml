@@ -88,6 +88,9 @@
     <table name="person_custom" idMethod="native" phpName="PersonCustom" description="Person custom fields">
         <column name="per_ID" phpName="PerId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
+        <foreign-key foreignTable="person_per">
+            <reference local="per_ID" foreign="per_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
