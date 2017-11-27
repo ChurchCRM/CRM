@@ -41,6 +41,21 @@ $app->group('/events', function () {
         $response->withJson(MenuEventsCount::getNumberEventsOfToday());       
     });
     
+    $this->get('/calendars', function ($request, $response, $args) {
+        $eventTypes = EventTypesQuery::Create()
+              ->orderByName()
+              ->find();
+             
+        $return = [];           
+        foreach ($eventTypes as $eventType) {
+            $values['eventTypeID'] = $eventType->getID();
+            $values['name'] = $eventType->getName();
+            
+            array_push($return, $values);
+        }
+        
+        return $response->withJson($return);    
+    });
      
     $this->post('/', function ($request, $response, $args) {
       $input = (object) $request->getParsedBody();
