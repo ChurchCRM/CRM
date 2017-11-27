@@ -15,9 +15,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/Header.php';
 
-use ChurchCRM\Service\CalendarService;
 use ChurchCRM\dto\SystemURLs;
-
+use ChurchCRM\Service\CalendarService;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Church Calendar');
