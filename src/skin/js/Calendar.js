@@ -197,7 +197,7 @@
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Group') + ":</td>"
               +'<td class="TextColumn">'
-                +'<select type="text" id="EventGroup" value="39">'
+                +'<select type="text" id="EventGroup" value="39" width="100%" style="width: 100%">'
                 +'</select>'
               +'</td>'
             +'</tr>'
