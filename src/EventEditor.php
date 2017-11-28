@@ -579,7 +579,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 $eventStart = $sEventStartDate.' '.$iEventStartHour.':'.$iEventStartMins;
 $eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
 ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $( document ).ready(function() {
         var startDate = moment("<?= $eventStart?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
         var endDate = moment("<?= $eventEnd?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
@@ -603,7 +603,7 @@ $eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   CKEDITOR.replace('EventText',{
     customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor/event_editor_config.js',
     language : window.CRM.lang

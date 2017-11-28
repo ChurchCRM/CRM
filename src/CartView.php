@@ -169,7 +169,7 @@ if (!Cart::HasPeople()) {
 
                         // Display link
                         echo '<a href="javascript:void(0)" onclick="allPhonesCommaD()" class="btn btn-app"><i class="fa fa-mobile-phone"></i>' . gettext("Text Cart");
-                        echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "' . mb_substr($sPhoneLink, 0, -2) . '")};</script>';
+                        echo '<script nonce="'. SystemURLs::getCSPNonce() .'">function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "' . mb_substr($sPhoneLink, 0, -2) . '")};</script>';
                     }
                 } ?>
                 <a href="DirectoryReports.php?cartdir=Cart+Directory" class="btn btn-app"><i

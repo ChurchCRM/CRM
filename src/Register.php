@@ -58,7 +58,7 @@ require 'Include/Header.php';
 	</form>
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function () {
   $("#registerForm").on("submit", function (ev) {
     ev.preventDefault();

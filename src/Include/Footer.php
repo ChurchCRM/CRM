@@ -299,7 +299,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 <?php if (isset($sGlobalMessage)) {
         ?>
-    <script>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $("document").ready(function () {
             showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");
         });
