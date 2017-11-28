@@ -95,7 +95,7 @@ require '../Include/Header.php';
     <div class="col-lg-12 col-md-7 col-sm-3">
       <div class="box box-body">
         <div class="alert alert-danger alert-dismissible">
-          <h4><i class="icon fa fa-ban"></i> MailChimp <?= gettext('is not configured') ?></h4>
+          <h4><i class="fa fa-ban"></i> MailChimp <?= gettext('is not configured') ?></h4>
           <?= gettext('Please update the') ?> MailChimp <?= gettext('API key in Setting->') ?><a href="../SystemSettings.php"><?= gettext('Edit General Settings') ?></a>,
           <?= gettext('then update') ?> sMailChimpApiKey. <?= gettext('For more info see our ') ?><a href="<?= SystemURLs::getSupportURL() ?>"> MailChimp <?= gettext('support docs.') ?></a>
         </div>
