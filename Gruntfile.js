@@ -42,7 +42,7 @@ module.exports = function (grunt) {
             '!logs/*.log'
         ],
         clean: {
-            skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick,ckeditor}"],
+            skin: ["src/skin/{adminlte,external}"],
             release: ["target"]
         },
         copy: {
@@ -62,6 +62,7 @@ module.exports = function (grunt) {
                             '!plugins/fastclick/**',
                             '!plugins/bootstrap-wysihtml5/**',
                             '!plugins/ckeditor/**',
+                            '!plugins/jQueryUI/**',
                             '!plugins/morris/**',
                             '!dist/img/**',
                             '!plugins/**/psd/**'],
@@ -71,61 +72,55 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'node_modules/font-awesome',
                         src: ['{css,fonts,less,scss}/**'],
-                        dest: 'src/skin/font-awesome/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'node_modules/ionicons',
-                        src: ['{css,fonts,less,png}/**'],
-                        dest: 'src/skin/ionicons/'
+                        dest: 'src/skin/external/font-awesome/'
                     },
                     {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
                         src: ['node_modules/fullcalendar/dist/*'],
-                        dest: 'src/skin/fullcalendar/'
+                        dest: 'src/skin/external/fullcalendar/'
                     },
                     {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
                         src: ['node_modules/moment/min/*'],
-                        dest: 'src/skin/moment/'
+                        dest: 'src/skin/external/moment/'
                     },
                     {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
                         src: ['node_modules/jquery-photo-uploader/dist/*'],
-                        dest: 'src/skin/jquery-photo-uploader/'
+                        dest: 'src/skin/external/jquery-photo-uploader/'
                     },
                     {
                         expand: true,
                         cwd:'node_modules/ckeditor/',
                         src: ['*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
-                        dest: 'src/skin/ckeditor/'
+                        dest: 'src/skin/external/ckeditor/'
                     },
                     {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
                         src: ['node_modules/bootbox/bootbox.min.js'],
-                        dest: 'src/skin/bootbox/'
+                        dest: 'src/skin/external/bootbox/'
                     },
                     {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
                         src: ['node_modules/bootstrap-toggle/css/bootstrap-toggle.css', 'node_modules/bootstrap-toggle/js/bootstrap-toggle.js'],
-                        dest: 'src/skin/bootstrap-toggle/'
+                        dest: 'src/skin/external/bootstrap-toggle/'
                     },
                     {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
                         src: ['node_modules/bootstrap-validator/dist/validator.min.js'],
-                        dest: 'src/skin/bootstrap-validator/'
+                        dest: 'src/skin/external/bootstrap-validator/'
                     },
                     {
                         expand: true,
@@ -145,15 +140,11 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/i18next/dist/umd/i18next.min.js'],
-                        dest: 'src/skin/i18next/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
-                        src: ['node_modules/i18next-xhr-backend/dist/umd/i18nextXHRBackend.min.js'],
-                        dest: 'src/skin/i18next/'
+                        src: [
+                            'node_modules/i18next/dist/umd/i18next.min.js',
+                            'node_modules/i18next-xhr-backend/dist/umd/i18nextXHRBackend.min.js'
+                        ],
+                        dest: 'src/skin/external/i18next/'
                     },
                     {
                         expand: true,
@@ -172,15 +163,18 @@ module.exports = function (grunt) {
             },
             fastclick: {
                 src: ['https://raw.githubusercontent.com/ftlabs/fastclick/569732a7aa5861d428731b8db022b2d55abe1a5a/lib/fastclick.js'],
-                dest: 'src/skin/fastclick'
+                dest: 'src/skin/external/fastclick'
             },
             jqueryuicss: {
-                src: ['https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'],
-                dest: 'src/skin/jquery-ui/'
+                src: [
+                    'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css',
+                    "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+                ],
+                dest: 'src/skin/external/jquery-ui/'
             },
             datatableselect: {
                 src: [
-                    'https://cdn.datatables.net/select/1.2.2/css/select.bootstrap.min.css', 
+                    'https://cdn.datatables.net/select/1.2.2/css/select.bootstrap.min.css',
                     'https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js'
                 ],
                 dest: 'src/skin/adminlte/plugins/datatables/extensions/Select/'
@@ -392,7 +386,7 @@ module.exports = function (grunt) {
 
         // php composer
         var file = 'src/composer.json';
-        
+
         var curFile = grunt.file.readJSON(file);
         if (curFile.version !== version) {
             console.log("updating composer file to: " + version);
@@ -412,7 +406,7 @@ module.exports = function (grunt) {
             grunt.file.write(file, stringFile);
         }
     });
-    
+
     grunt.registerTask('cleanupLocalGit', 'clean local git', function () {
        grunt.loadNpmTasks('grunt-git');
        grunt.config('gitreset' ,{
@@ -422,7 +416,7 @@ module.exports = function (grunt) {
             }
           }
         });
-        
+
        grunt.config('gitcheckout', {
           master: {
             options: {
@@ -430,7 +424,7 @@ module.exports = function (grunt) {
             }
           }
         });
-        
+
         grunt.config('gitpull', {
           master: {
             options: {

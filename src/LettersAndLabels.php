@@ -50,7 +50,7 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
   <div class="col-lg-12">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Member Reports')?></h3>
+        <h3 class="box-title"><?= gettext('People Reports')?></h3>
       </div>
       <div class="box-body">
         <form method="post" action="LettersAndLabels.php">

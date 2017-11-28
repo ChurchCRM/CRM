@@ -214,7 +214,7 @@ if ($per_ID == $iPersonID) {
         <p class="text-muted text-center">
             <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?>
             &nbsp;
-            <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" 
+            <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>"
             data-family_role_id="<?= $person->getFmrId() ?>"  class="btn btn-primary btn-xs">
                 <i class="fa fa-pencil"></i>
             </a>
@@ -262,7 +262,7 @@ if ($per_ID == $iPersonID) {
             </span></li>
             <?php if (!empty($formattedMailingAddress)) {
                   ?>
-          <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Address'); ?>: <span>
+          <li><i class="fa-li fa fa-home"></i><?php echo gettext('Address'); ?>: <span>
             <a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
@@ -301,7 +301,7 @@ if ($per_ID == $iPersonID) {
             <li><i class="fa-li fa fa-envelope"></i><?= gettext('Email') ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
             <?php if ($mailchimp->isActive()) {
             ?>
-              <li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
+              <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
             <?php
         }
     }
@@ -315,23 +315,23 @@ if ($per_ID == $iPersonID) {
             <li><i class="fa-li fa fa-envelope"></i><?= gettext('Work/Other Email') ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
             <?php if ($mailchimp->isActive()) {
             ?>
-              <li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
+              <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
               <?php
         }
     }
-    
+
     if ($per_FacebookID > 0) {
         ?>
               <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?>"><?= gettext('Facebook') ?></a></span></li>
           <?php
     }
-    
+
     if (strlen($per_Twitter) > 0) {
         ?>
               <li><i class="fa-li fa fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>"><?= gettext('Twitter') ?></a></span></li>
           <?php
     }
-    
+
     if (strlen($per_LinkedIn) > 0) {
         ?>
               <li><i class="fa-li fa fa-linkedin"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>"><?= gettext('LinkedIn') ?></a></span></li>
@@ -346,7 +346,7 @@ if ($per_ID == $iPersonID) {
             if ($type_ID == 11) {
                 $custom_Special = $sPhoneCountry;
             }
-            echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'glyphicon glyphicon-tag').'"></i>'.$custom_Name.': <span>';
+            echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'fa fa-tag').'"></i>'.$custom_Name.': <span>';
             $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
             if ($type_ID == 11) {
                 echo "<a href=\"tel:".$temp_string."\">".$temp_string."</a>";
@@ -606,7 +606,7 @@ if ($per_ID == $iPersonID) {
                         <code>
                           <?php if ($_SESSION['bManageGroups']) {
                           ?>
-                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
+                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa fa-list"></i></a>
                             <div class="btn-group">
                               <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -919,13 +919,12 @@ if ($per_ID == $iPersonID) {
     </div>
   </div>
 </div>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
-<link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js" type="text/javascript"></script>
 <script>
   window.CRM.currentPersonID = <?= $iPersonID ?>;
-  
+
 
   $("#deletePhoto").click (function () {
     $.ajax({
@@ -993,7 +992,7 @@ if ($per_ID == $iPersonID) {
       <h3><i class="fa fa-warning text-yellow"></i><?= gettext('Oops! Person not found.') ?></h3>
 
       <p>
-        <?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="<?= SystemURLs::getRootPath() ?>/MembersDashboard.php"><?= gettext('return to member dashboard') ?></a>
+        <?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="<?= SystemURLs::getRootPath() ?>/PeopleDashboard.php"><?= gettext('return to people dashboard') ?></a>
       </p>
     </div>
   </div>
