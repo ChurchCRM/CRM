@@ -21,6 +21,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 $eType = 'All';
 $ThisYear = date('Y');
