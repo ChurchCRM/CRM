@@ -134,11 +134,7 @@ function Header_body_scripts()
                         "sSwfPath": "<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"
                     }
                 }
-            },
-            currentUser:
-              <?php
-                echo json_encode($_SESSION['user']->toArray()); ?>
-            
+            }
         };
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
