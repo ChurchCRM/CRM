@@ -16,18 +16,17 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     </div>
     <div class="col-md-2">
       <span>Start Time</span>
-      <span id="startTime"></span>  
+      <span id="startTime"></span>
     </div>
     <div class="col-md-2">
       <span>End Time</span>
-      <span id="endTime"></span> 
+      <span id="endTime"></span>
     </div>
   </div>
   <div class="container" id="classMemberContainer"></div>
   <!-- TODO: Add a quick-entry screen for new people <a id="newStudent"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>-->
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/moment/moment.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/KioskJSOM.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Kiosk.js"></script>
 

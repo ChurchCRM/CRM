@@ -10,7 +10,7 @@
  *  Copyright 2017 Logel Philippe
   *
  ******************************************************************************/
- 
+
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -67,7 +67,7 @@ require 'Include/Header.php';
   </div>
   <div class="box-body">
       <form>
-          <div class="col-sm-3"> <b><?= gettext("Event Type Filter") ?> : </b> 
+          <div class="col-sm-3"> <b><?= gettext("Event Type Filter") ?> : </b>
             <select type="text" id="EventTypeFilter" value="0">
               <option value='0' ><?= gettext("None") ?></option>
             <?php
@@ -77,14 +77,14 @@ require 'Include/Header.php';
             ?>
             </select>
           </div>
-          <div class="col-sm-6"> <b><?= gettext("Event Group Filter") ?>:</b> 
+          <div class="col-sm-6"> <b><?= gettext("Event Group Filter") ?>:</b>
             <select type="text" id="EventGroupFilter" value="0">
               <option value='0' ><?= gettext("None") ?></option>
                 <?php
                   foreach ($groups as $group) {
                       echo "+\"<option value='".$group->getID()."'>".$group->getName()."</option>\"";
                   }
-                ?>  
+                ?>
             </select>
           </div>
       </form>
@@ -105,7 +105,7 @@ require 'Include/Header.php';
 
 <!-- fullCalendar 2.2.5 -->
 <script>
-  var isModifiable  = <?php 
+  var isModifiable  = <?php
     if ($_SESSION['bAddEvent'] || $_SESSION['bAdmin']) {
         echo "true";
     } else {
@@ -114,7 +114,7 @@ require 'Include/Header.php';
   ?>;
 </script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/ckeditor/ckeditor.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Calendar.js" type="text/javascript"></script>
 
 <?php require 'Include/Footer.php'; ?>
