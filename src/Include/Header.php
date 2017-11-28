@@ -122,15 +122,32 @@ $MenuFirst = 1;
               </li>
             </ul>
           </li>
-          <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getSupportURL() ?>" target="_blank" title="<?= gettext('Read the docs') ?>">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Help & Support') ?>">
               <i class="fa fa-support"></i>
             </a>
-          </li>
-          <li class="hidden-xxs">
-            <a href="#" data-toggle="modal" data-target="#IssueReportModal" title="<?= gettext('Report an issue') ?>">
-              <i class="fa fa-bug"></i>
-            </a>
+            <ul class="dropdown-menu">
+              <li class="hidden-xxs">
+                <a href="<?= SystemURLs::getSupportURL() ?>" target="_blank" title="<?= gettext('Help & Manual') ?>">
+                  <i class="fa fa-question-circle"></i> <?= gettext('Help & Manual') ?>
+                </a>
+              </li>
+              <li class="hidden-xxs">
+                <a href="#" data-toggle="modal" data-target="#IssueReportModal" title="<?= gettext('Report an issue') ?>">
+                  <i class="fa fa-bug"></i> <?= gettext('Report an issue') ?>
+                </a>
+              </li>
+              <li class="hidden-xxs">
+                <a href="https://gitter.im/ChurchCRM/CRM" target="_blank" title="<?= gettext('Developer Chat') ?>">
+                  <i class="fa fa-commenting-o"></i> <?= gettext('Developer Chat') ?>
+                </a>
+              </li>              
+              <li class="hidden-xxs">
+                <a href="https://github.com/ChurchCRM/CRM/wiki/Contributing" target="_blank" title="<?= gettext('Contributing') ?>">
+                  <i class="fa fa-github"></i> <?= gettext('Contributing') ?>
+                </a>
+              </li>              
+            </ul>
           </li>
           <?php
           $tasks = $taskService->getCurrentUserTasks();

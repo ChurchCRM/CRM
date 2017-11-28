@@ -308,21 +308,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     <?php
     } ?>
 
-<?php if ($_SESSION['bAdmin']) {
-        ?>
-    <script>
-        ((window.gitter = {}).chat = {}).options = {
-            room: 'churchcrm/crm',
-            activationElement: false
-        };
-    </script>
-    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-    <?php
-    }
-
-include_once('analyticstracking.php');
-?>
-
+<?php  include_once('analyticstracking.php'); ?>
 </body>
 </html>
 <?php
