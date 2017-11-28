@@ -102,7 +102,7 @@ $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
 if (count($results) == 0) {
     $systemService = new SystemService();
     $version = new Version();
-    $version->setVersion($systemService->getInstalledVersion());
+    $version->setVersion(SystemService::getInstalledVersion());
     $version->setUpdateStart(new DateTime());
     SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/install/Install.sql', $connection);
     $version->setUpdateEnd(new DateTime());

@@ -88,17 +88,20 @@
     <table name="person_custom" idMethod="native" phpName="PersonCustom" description="Person custom fields">
         <column name="per_ID" phpName="PerId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
+        <foreign-key foreignTable="person_per">
+            <reference local="per_ID" foreign="per_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     
     <table name="person_custom_master" idMethod="native" phpName="PersonCustomMaster" description="This contains definitions for the custom person fields">
-        <column name="custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
-        <column name="custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
-        <column name="custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
-        <column name="custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
-        <column name="custom_Side" phpName="CustomSide" type="CHAR" sqlType="enum('left','right')" required="true"
+        <column name="custom_Order" phpName="Order" type="SMALLINT" required="true" defaultValue="0"/>
+        <column name="custom_Field" phpName="Id" type="VARCHAR" primaryKey="true" size="5" required="true" defaultValue=""/>
+        <column name="custom_Name" phpName="Name" type="VARCHAR" size="40" required="true" defaultValue=""/>
+        <column name="custom_Special" phpName="Special" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
+        <column name="custom_Side" phpName="Side" type="CHAR" sqlType="enum('left','right')" required="true"
                 defaultValue="left"/>
         <column name="custom_FieldSec" phpName="CustomFieldSec" type="TINYINT" required="true"/>
         <column name="type_ID" phpName="TypeId" type="TINYINT" required="true" defaultValue="0"/>
@@ -291,7 +294,11 @@
           <unique-column name="grp_ID"/>
         </unique>
         <vendor type="mysql">
+<<<<<<< HEAD
           <parameter name="Engine" value="InnoDB"/>
+=======
+            <parameter name="Engine" value="InnoDB"/>
+>>>>>>> 474e16fbaff86c04895b5346879f1c5a4e8dbd72
         </vendor>
     </table>
     <table name="groupprop_master" idMethod="native" phpName="GroupPropMaster" description="This contains definitions for the group-specific fields">

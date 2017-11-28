@@ -174,7 +174,7 @@
                           </a>\
                       </li>\
                       <li>\
-                          <a href="CartToEvent.php">\
+                          <a href="CartToFamily.php">\
                               <i class="fa fa fa-users text-info"></i>' + i18next.t("Empty Cart to Family") + '\
                           </a>\
                       </li>\
