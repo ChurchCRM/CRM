@@ -432,7 +432,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Type') ?>:</td>
     <td colspan="3" class="TextColumn">
-      <select name='EN_tyid' class='form-control' id='event_type_id'>
+      <select name='EN_tyid' class='form-control' id='event_type_id' width='100%' style='width: 100%'>
         <option><?= gettext('Select your event type'); ?></option>
         <?php
                     $sSQL = 'SELECT * FROM event_types';
@@ -469,13 +469,13 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Title') ?>:</td>
     <td colspan="1" class="TextColumn">
-      <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control' required>
+      <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control' width="95%" style="width: 95%" required>
     </td>
   </tr>
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Desc') ?>:</td>
     <td colspan="3" class="TextColumn">
-      <textarea name="EventDesc" rows="4" maxlength="100" class='form-control' required><?= ($sEventDesc) ?></textarea>
+      <textarea name="EventDesc" rows="4" maxlength="100" class='form-control' required width="95%" style="width: 95%"><?= ($sEventDesc) ?></textarea>
     </td>
   </tr>
   <tr>
@@ -484,7 +484,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     </td>
     <td class="TextColumn">
       <input type="text" name="EventDateRange" value=""
-             maxlength="10" id="EventDateRange" size="50" class='form-control' required>
+             maxlength="10" id="EventDateRange" size="50" class='form-control' width="95%" style="width: 95%" required>
     </td>
 
   </tr>
@@ -494,7 +494,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
       <?= gettext('Event Group') ?>:
     </td>
     <td class="TextColumn">
-      <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>">
+      <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>" width="95%" style="width: 95%">
          <option value="0" <?= ($nEventGroupId == 0 ? "Selected":"") ?>><?= gettext("None") ?></option>
         <?php
           $groups=  ChurchCRM\Base\GroupQuery::create()->find();
@@ -544,7 +544,9 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
   </tr>
 
   <tr>
-    <td colspan="4" class="TextColumn"><?= gettext('Event Sermon') ?>:<br><textarea id="#EventText" name="EventText" rows="5" cols="80" class='form-control'><?= ($sEventText) ?></textarea></td>
+    <td colspan="4" class="TextColumn"><?= gettext('Event Sermon') ?>:<br>
+    	<textarea id="#EventText" name="EventText" rows="5" cols="70" class='form-control' width="90%" style="width: 90%"><?= ($sEventText) ?></textarea>
+    </td>
   </tr>
 
   <tr>
@@ -606,6 +608,7 @@ $eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
 <script>
   CKEDITOR.replace('EventText',{
     customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor/event_editor_config.js',
-    language : window.CRM.lang
+    language : window.CRM.lang,
+    width : '95%'
   });
 </script>
