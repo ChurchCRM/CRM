@@ -177,7 +177,7 @@
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Select your event type') + "</td>"
               +'<td colspan="3" class="TextColumn">'
-              +'<select type="text" id="eventType" value="39">'
+              +'<select type="text" id="eventType" value="39" width="100%" style="width: 100%">'
                    //+"<option value='0' >" + i18next.t("Personal") + "</option>"
                 +'</select>'
               +'</td>'
