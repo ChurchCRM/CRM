@@ -3,7 +3,7 @@ Feature: Group Reports
   As a User
   I am able to visit the Group Reports page
 
-  Scenario: Open the Members Dashboard
+  Scenario: Open the Group Reports Page
     Given I am authenticated as "admin" using "changeme"
     And I am on "/GroupReports.php"
     Then I should see "Group reports"

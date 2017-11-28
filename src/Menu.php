@@ -9,6 +9,7 @@
 *
 *  Additional Contributors:
 *  2006 Ed Davis
+*  2017 Philippe Logel
 *
 
 ******************************************************************************/
@@ -22,6 +23,8 @@ use ChurchCRM\Service\FinancialService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\dto\MenuEventsCount;
 
 $financialService = new FinancialService();
 $dashboardService = new DashboardService();
@@ -45,11 +48,126 @@ if ($_SESSION['bFinance']) {
     }
 }
 
+
 // Set the page title
 $sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
 
 require 'Include/Header.php';
-?>
+
+$showBanner = SystemConfig::getValue("bEventsOnDashboardPresence");
+
+$peopleWithBirthDays = MenuEventsCount::getBirthDates();
+$Anniversaries = MenuEventsCount::getAnniversaries();
+$peopleWithBirthDaysCount = MenuEventsCount::getNumberBirthDates();
+$AnniversariesCount = MenuEventsCount::getNumberAnniversaries();
+
+
+if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
+    ?>
+    <div class="alert alert-info" id="Menu_Banner" style="background-color: #50abef !important;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration: none">&times;</a>
+
+    <?php
+    if ($peopleWithBirthDaysCount > 0) {
+        ?>
+        <h4 class="alert-heading"><?= gettext("Birthdates of the day") ?></h4>
+        <p>
+        <div class="row">
+          
+      <?php
+        $new_row = false;
+        $count_people = 0;
+          
+        {
+            foreach ($peopleWithBirthDays as $peopleWithBirthDay) {
+                if ($new_row == false) {
+                    ?>
+                
+                    <div class="row">
+                <?php
+                    $new_row = true;
+                } ?>
+                <div class="col-sm-3">
+                <label class="checkbox-inline">
+                    <a href="<?= $peopleWithBirthDay->getViewURI()?>" class="btn btn-link" style="text-decoration: none"><?= $peopleWithBirthDay->getFullNameWithAge() ?></a>
+                </label>
+                </div>
+              <?php
+                $count_people+=1;
+                $count_people%=4;
+                if ($count_people == 0) {
+                    ?>
+                    </div>
+                    <?php $new_row = false;
+                }
+            }
+          
+            if ($new_row == true) {
+                ?>
+                </div>
+            <?php
+            }
+          } ?>
+          
+        </div>
+        </p>
+    <?php
+    } ?>
+  
+    <?php if ($AnniversariesCount > 0) {
+        if ($peopleWithBirthDaysCount > 0) {
+            ?>
+            <hr>
+    <?php
+        } ?>
+    
+        <h4 class="alert-heading"><?= gettext("Anniversaries of the day")?></h4>
+        <p>
+        <div class="row">
+          
+    <?php
+        $new_row = false;
+        $count_people = 0;
+          
+        foreach ($Anniversaries as $Anniversary) {
+            if ($new_row == false) {
+                ?>
+                <div class="row">
+                
+                <?php $new_row = true;
+            } ?>
+            <div class="col-sm-3">
+            <label class="checkbox-inline">
+              <a href="<?= $Anniversary->getViewURI() ?>" class="btn btn-link" style="text-decoration: none"><?= $Anniversary->getFamilyString() ?></a>
+            </label>
+            </div>
+            
+            <?php
+            $count_people+=1;
+            $count_people%=4;
+            if ($count_people == 0) {
+                ?>
+                </div>
+            <?php
+                $new_row = false;
+            }
+        }
+        
+        if ($new_row == true) {
+            ?>
+            </div>
+        <?php
+        } ?>
+                  
+        </div>
+        </p>
+    <?php
+    } ?>
+  </div>
+  
+<?php
+}?>
+
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-xs-6">
@@ -64,7 +182,7 @@ require 'Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-stalker"></i>
+                <i class="fa fa-users"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
                 <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -83,7 +201,7 @@ require 'Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person"></i>
+                <i class="fa fa-user"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
                 <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -162,7 +280,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="box box-info">
             <div class="box-header">
-                <i class="ion ion-cash"></i>
+                <i class="fa fa-money"></i>
                 <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
                 <div class="box-tools pull-right">
                     <div id="deposit-graph" class="chart-legend"></div>
@@ -182,7 +300,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
-                <i class="ion ion-person-add"></i>
+                <i class="fa fa-user-plus"></i>
                 <h3 class="box-title"><?= gettext('Latest Families') ?></h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -370,6 +488,22 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 <?php
                         }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>
+</script>
+
+<script>
+  var timeOut = <?= SystemConfig::getValue("iEventsOnDashboardPresenceTimeOut")*1000 ?>;
+  
+  $(document).ready (function(){
+    $("#myWish").click(function showAlert() {
+        $("#Menu_Banner").alert();
+        window.setTimeout(function () { 
+            $("#Menu_Banner").alert('close'); }, timeOut);               
+       });       
+    });
+    
+    $("#Menu_Banner").fadeTo(timeOut, 500).slideUp(500, function(){
+    $("#Menu_Banner").slideUp(500);
+});
 </script>
 
 

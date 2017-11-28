@@ -2,13 +2,10 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
 use ChurchCRM\SQLUtils;
-use ChurchCRM\Version;
 use Exception;
 use Github\Client;
 use Ifsnop\Mysqldump\Mysqldump;
@@ -25,7 +22,6 @@ class SystemService
     public function getLatestRelese()
     {
         $client = new Client();
-        //$client->authenticate('', null, Client::AUTH_HTTP_TOKEN);
         $release = null;
         try {
             $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
@@ -35,7 +31,7 @@ class SystemService
         return $release;
     }
 
-    public function getInstalledVersion()
+    static public function getInstalledVersion()
     {
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
         $composerJson = json_decode($composerFile, true);
@@ -91,7 +87,7 @@ class SystemService
             throw new Exception(gettext("Unknown File Type").": " . $restoreResult->type . " ".gettext("from file").": " . $file['name']);
         }
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
-        $restoreResult->UpgradeStatus = $this->upgradeDatabaseVersion();
+        $restoreResult->UpgradeStatus = UpgradeService::upgradeDatabaseVersion();
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
@@ -273,22 +269,20 @@ class SystemService
         requireUserGroupMembership('bAdmin');
     }
 
-    public function getDBVersion()
+   static public function getDBVersion()
     {
         $connection = Propel::getConnection();
         $query = 'Select * from version_ver';
         $statement = $connection->prepare($query);
-        $resultset = $statement->execute();
+        $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
         rsort($results);
-
         return $results[0]['ver_version'];
     }
-    
+
     public function getDBServerVersion()
     {
       try{
-        $connection = Propel::getConnection();
         return Propel::getServiceContainer()->getConnection()->getAttribute(PDO::ATTR_SERVER_VERSION);
       }
       catch (\Exception $exc)
@@ -297,42 +291,11 @@ class SystemService
       }
     }
 
-    public function isDBCurrent()
+    static public function isDBCurrent()
     {
-        return $this->getDBVersion() == $this->getInstalledVersion();
+        return SystemService::getDBVersion() == SystemService::getInstalledVersion();
     }
 
-    public function upgradeDatabaseVersion()
-    {
-        $connection = Propel::getConnection();
-        $db_version = $this->getDBVersion();
-        if ($db_version == $_SESSION['sSoftwareInstalledVersion']) {
-            return true;
-        }
-
-        //the database isn't at the current version.  Start the upgrade
-        $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
-        $dbUpdates = json_decode($dbUpdatesFile, true);
-        $errorFlag = false;
-        foreach ($dbUpdates as $dbUpdate) {
-            if (in_array($this->getDBVersion(), $dbUpdate['versions'])) {
-                $version = new Version();
-                $version->setVersion($dbUpdate['dbVersion']);
-                $version->setUpdateStart(new \DateTime());
-                foreach ($dbUpdate['scripts'] as $dbScript) {
-                    SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/' . $dbScript, $connection);
-                }
-                if (!$errorFlag) {
-                    $version->setUpdateEnd(new \DateTime());
-                    $version->save();
-                }
-            }
-        }
-        // always rebuild the menu
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
-
-        return 'success';
-    }
 
     public function reportIssue($data)
     {
@@ -354,7 +317,7 @@ class SystemService
             'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
             'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
             'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json')."\r\n";
-        
+
         if (function_exists('apache_get_modules')) {
             $issueDescription .= 'Apache Modules    |' . implode(',', apache_get_modules());
         }
