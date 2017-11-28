@@ -129,7 +129,7 @@ $MenuFirst = 1;
             <ul class="dropdown-menu">
               <li class="hidden-xxs">
                 <a href="<?= SystemURLs::getSupportURL() ?>" target="_blank" title="<?= gettext('Help & Manual') ?>">
-                  <i class="fa fa-question-circle"></i> Help & Manual
+                  <i class="fa fa-question-circle"></i> <?= gettext('Help & Manual') ?>
                 </a>
               </li>
               <li class="hidden-xxs">
