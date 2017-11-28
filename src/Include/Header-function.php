@@ -112,9 +112,9 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $localeInfo;
+    global $localeInfo, $nonce;
     $systemService = new SystemService(); ?>
-    <script>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
             root: "<?= SystemURLs::getRootPath() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
@@ -134,7 +134,11 @@ function Header_body_scripts()
                         "sSwfPath": "<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"
                     }
                 }
-            }
+            },
+            currentUser:
+              <?php
+                echo json_encode($_SESSION['user']->toArray()); ?>
+            
         };
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
