@@ -23,11 +23,11 @@
 @import 'adminlte/plugins/datatables/extensions/Select/select.bootstrap.min.css';
 
 
-@import 'bootstrap-toggle/bootstrap-toggle.css';
-@import 'fullcalendar/fullcalendar.min.css';
-@import 'fullcalendar/fullcalendar.print.css' print;
+@import 'external/bootstrap-toggle/bootstrap-toggle.css';
+@import 'external/fullcalendar/fullcalendar.min.css';
+@import 'external/fullcalendar/fullcalendar.print.css' print;
 
-@import 'font-awesome/css/font-awesome.min.css';
+@import 'external/font-awesome/css/font-awesome.min.css';
 
 @import 'adminlte/dist/css/AdminLTE.min.css';
 @import 'adminlte/dist/css/skins/_all-skins.min.css';
