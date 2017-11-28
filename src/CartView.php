@@ -175,7 +175,7 @@ if (!Cart::HasPeople()) {
                 <a href="DirectoryReports.php?cartdir=Cart+Directory" class="btn btn-app"><i
                             class="fa fa-book"></i><?= gettext('Create Directory From Cart') ?></a>
 
-                <script language="JavaScript" type="text/javascript"><!--
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript"><!--
                     function codename() {
                         if (document.labelform.bulkmailpresort.checked) {
                             document.labelform.bulkmailquiet.disabled = false;
@@ -343,7 +343,7 @@ if (!Cart::HasPeople()) {
     <?php endif; ?>
     <!-- END CART LISTING -->
 
-    <script type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
         $(document).ready(function () {
           $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
 

@@ -568,7 +568,7 @@ require 'Include/Header.php';
 </div>
 <!-- /.box -->
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
     $(document).ready(function () {
         $("#personSelect").select2();
     });

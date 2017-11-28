@@ -716,7 +716,7 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
-    <script type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
         $(document).ready(function() {
             $("#country-input").select2();
             $("#state-input").select2();
@@ -1123,7 +1123,7 @@ require 'Include/Header.php';
     echo '</td></tr></form></table>';
 ?>
 
-	<script type="text/javascript">
+	<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
 		$(function() {
 			$("[data-mask]").inputmask();
 		});

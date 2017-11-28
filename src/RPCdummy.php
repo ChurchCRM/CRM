@@ -10,7 +10,7 @@ $data = InputUtils::LegacyFilterInput($_GET['data'], 'int');
 
 <html>
   <head>
-    <script language="JavaScript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" language="JavaScript">
 <?php
 // Select the appropriate Javascript routine..
 switch ($mode) {

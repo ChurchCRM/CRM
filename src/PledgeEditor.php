@@ -756,7 +756,7 @@ require 'Include/Header.php';
 
 </form>
 
- <script language="javascript" type="text/javascript">
+ <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
   $(document).ready(function() {
 
     $("#FamilyName").select2({

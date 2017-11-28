@@ -1234,7 +1234,7 @@ require 'Include/Header.php';
                         } ?>';">
 </form>
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
 	$(function() {
 		$("[data-mask]").inputmask();
 	});

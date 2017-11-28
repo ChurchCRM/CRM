@@ -332,7 +332,7 @@ function implodeUnique($array, $withQuotes)
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"
         type="text/javascript"></script>
 
-<script type="text/javascript" charset="utf-8">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript" charset="utf-8">
   $(document).ready(function () {
 
     var dataTable = $('.data-table').DataTable(window.CRM.plugin.dataTable);
