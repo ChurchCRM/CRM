@@ -207,7 +207,7 @@ function initDataTable() {
       },
       {
         width: 'auto',
-        title: i18next.t('ZIP'),
+        title: i18next.t('Zip Code'),
         data: 'Person.Zip'
       },
       {
