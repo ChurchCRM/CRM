@@ -112,7 +112,7 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $localeInfo, $nonce;
+    global $localeInfo;
     $systemService = new SystemService(); ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
