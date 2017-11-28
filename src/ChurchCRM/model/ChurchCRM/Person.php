@@ -414,6 +414,8 @@ class Person extends BasePerson implements iPhoto
       return parent::postSave($con);
     }
     
+    
+    /* Philippe Logel 2017 */
     public function getAge()
     {
        $birthD = $this->getBirthDate();
@@ -443,6 +445,12 @@ class Person extends BasePerson implements iPhoto
        }
 
        return $age->y." ".$ageSuffix;
+    }
+    
+    /* Philippe Logel 2017 */
+    public function getFullNameWithAge()
+    {
+       return $this->getFullName()." ".$this->getAge();
     }
 
 }
