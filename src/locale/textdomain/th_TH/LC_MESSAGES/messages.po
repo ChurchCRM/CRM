@@ -8,7 +8,7 @@ msgstr ""
 "Language: th\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:277
+#: Include/Functions.php:260
 msgid "Cannot execute query."
 msgstr "ไม่สามารถสืบค้นฐานข้อมูล"
 
@@ -21,8 +21,8 @@ msgstr "ยืนยันที่จะลบการจ่ายเงิน
 #: DonationFundEditor.php:181 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:217 ElectronicPaymentList.php:282
 #: EventNames.php:300 FamilyCustomFieldsEditor.php:323
-#: FamilyCustomFieldsEditor.php:381 FamilyView.php:650 FamilyView.php:702
-#: FamilyView.php:761 FamilyView.php:898 FindDepositSlip.php:103
+#: FamilyCustomFieldsEditor.php:381 FamilyView.php:649 FamilyView.php:701
+#: FamilyView.php:760 FamilyView.php:897 FindDepositSlip.php:103
 #: FundRaiserEditor.php:199 ListEvents.php:240 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:314 PersonCustomFieldsEditor.php:383
 #: PersonView.php:917 PledgeDelete.php:52 PropertyList.php:64
@@ -34,16 +34,16 @@ msgstr "ลบ"
 #: AutoPaymentDelete.php:63 AutoPaymentEditor.php:786 BatchWinnerEntry.php:111
 #: CanvassEditor.php:238 Checkin.php:167 Checkin.php:274 Checkin.php:287
 #: DirectoryReports.php:285 DonatedItemEditor.php:295 EventNames.php:229
-#: FamilyEditor.php:1117 FamilyView.php:897 FinancialReports.php:67
+#: FamilyEditor.php:1117 FamilyView.php:896 FinancialReports.php:67
 #: FundRaiserEditor.php:142 GroupPropsEditor.php:167 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:82 ManageEnvelopes.php:134
 #: MemberRoleChange.php:118 MemberRoleChange.php:120 NoteDelete.php:66
 #: NoteEditor.php:134 PersonEditor.php:1229 PersonView.php:916
 #: PledgeDelete.php:53 PropertyEditor.php:168 PropertyTypeEditor.php:113
-#: Register.php:55 ReminderReport.php:51 SettingsIndividual.php:111
+#: Register.php:56 ReminderReport.php:51 SettingsIndividual.php:111
 #: SettingsIndividual.php:157 SettingsUser.php:99 SettingsUser.php:159
 #: TaxReport.php:54 UserEditor.php:457 UserEditor.php:560
-#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:153
+#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:158
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:285
 msgid "Cancel"
@@ -65,9 +65,9 @@ msgstr "บันทึก"
 #: AutoPaymentEditor.php:803 BatchWinnerEntry.php:82 BatchWinnerEntry.php:94
 #: CSVImport.php:269 DirectoryReports.php:81 DonatedItemEditor.php:184
 #: DonatedItemEditor.php:235 FamilyEditor.php:1087 GroupEditor.php:93
-#: GroupList.php:35 GroupView.php:54 Include/CountryDropDown.php:6
-#: Include/Functions.php:1083 Include/Functions.php:1136
-#: Include/Header-function.php:379 MapUsingGoogle.php:98
+#: GroupList.php:35 GroupView.php:39 Include/CountryDropDown.php:6
+#: Include/Functions.php:968 Include/Functions.php:1021
+#: Include/Header-function.php:335 MapUsingGoogle.php:98
 #: MapUsingGoogle.php:122 PaddleNumEditor.php:175 PersonEditor.php:780
 #: PersonEditor.php:796 PersonEditor.php:1135 PrintView.php:264
 #: PrintView.php:274 SelectDelete.php:155 SelectList.php:34 SelectList.php:44
@@ -83,14 +83,14 @@ msgstr "จำนวนเงินที่ชำระ"
 #: AutoPaymentEditor.php:866 CartToGroup.php:73 EditEventTypes.php:86
 #: EditEventTypes.php:98 EventEditor.php:498 EventNames.php:104
 #: EventNames.php:116 EventNames.php:161 GroupReports.php:47
-#: GroupReports.php:142 PersonToGroup.php:65 calendar.php:84 calendar.php:94
+#: GroupReports.php:142 PersonToGroup.php:65 calendar.php:72 calendar.php:82
 #: sundayschool/SundaySchoolReports.php:189
 msgid "None"
 msgstr "ไม่มี"
 
 #: AutoPaymentEditor.php:913 CSVExport.php:100 CSVImport.php:217
 #: CartToFamily.php:244 DirectoryReports.php:249 FamilyEditor.php:670
-#: PersonEditor.php:861 Register.php:43
+#: PersonEditor.php:861 Register.php:44
 #: external/templates/registration/family-register.php:41
 #: queryparameteroptions_qpo.php:7
 msgid "City"
@@ -98,7 +98,7 @@ msgstr "เมือง"
 
 #: AutoPaymentEditor.php:918 CSVExport.php:105 CSVImport.php:218
 #: CartToFamily.php:249 DirectoryReports.php:253 FamilyEditor.php:677
-#: PersonEditor.php:881 Register.php:44
+#: PersonEditor.php:881 Register.php:45
 #: external/templates/registration/family-register.php:44
 #: queryparameteroptions_qpo.php:6
 msgid "State"
@@ -106,7 +106,7 @@ msgstr "จังหวัด"
 
 #: AutoPaymentEditor.php:929 CSVExport.php:120 CSVImport.php:220
 #: CartToFamily.php:269 FamilyEditor.php:697 PersonEditor.php:926
-#: Register.php:46
+#: Register.php:47
 msgid "Country"
 msgstr "ประเทศ"
 
@@ -119,12 +119,12 @@ msgid "Phone"
 msgstr "โทรศัพท์"
 
 #: AutoPaymentEditor.php:941 CSVExport.php:140 CSVImport.php:224
-#: CartToFamily.php:310 CartView.php:279
+#: CartToFamily.php:310 CartView.php:272
 #: ChurchCRM/Reports/PDF_Directory.php:321
 #: ChurchCRM/Reports/PDF_Directory.php:397
 #: ChurchCRM/Reports/PDF_Directory.php:454 EditEventAttendees.php:42
 #: EventAttendance.php:175 FamilyEditor.php:769 FamilyView.php:261
-#: FamilyView.php:266 FamilyView.php:349 GroupReports.php:127
+#: FamilyView.php:266 FamilyView.php:348 GroupReports.php:127
 #: PersonEditor.php:1033 PersonEditor.php:1035 PersonView.php:301
 #: PersonView.php:489 PrintView.php:294 Reports/CanvassReports.php:242
 #: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
@@ -204,7 +204,7 @@ msgstr "ราคา"
 msgid "Enter Winners"
 msgstr "ลงชื่อผู้ชนะ"
 
-#: CSVExport.php:52 CartView.php:112
+#: CSVExport.php:52 CartView.php:105
 msgid "CSV Export"
 msgstr "ส่งไฟล์ CSV ออก"
 
@@ -241,7 +241,7 @@ msgstr "ชื่อกลาง"
 
 #: AutoPaymentEditor.php:924 BackupDatabase.php:62 CSVExport.php:110
 #: CSVImport.php:219 CartToFamily.php:261 DirectoryReports.php:257
-#: FamilyEditor.php:687 PersonEditor.php:904 Register.php:45
+#: FamilyEditor.php:687 PersonEditor.php:904 Register.php:46
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29
 #, fuzzy
@@ -275,7 +275,7 @@ msgstr "วันเกิด / วันครอบรอบแต่งงา
 msgid "Age / Years Married"
 msgstr "อายุ / แต่งงานกี่ปีแล้ว"
 
-#: CSVExport.php:165 CSVExport.php:286 CartView.php:282 OptionManager.php:61
+#: CSVExport.php:165 CSVExport.php:286 CartView.php:275 OptionManager.php:61
 #: PersonEditor.php:778 PrintView.php:269 queryparameters_qrp.php:5
 #, fuzzy
 msgid "Family Role"
@@ -420,7 +420,7 @@ msgstr "ผู้ชายที่อยู่ในวงศาคณาญา
 msgid "Matriarch"
 msgstr "ผู้หญิงที่อยู่ในวงศาคณาญาติที่เราให้ความเคารพ"
 
-#: Login.php:132 Login.php:180
+#: Login.php:137 Login.php:185
 msgid "Login"
 msgstr "เข้าสู่ระบบ"
 

@@ -8,7 +8,7 @@ msgstr ""
 "Language: ru\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:277
+#: Include/Functions.php:260
 msgid "Cannot execute query."
 msgstr "Невозможно выполнить запрос."
 
@@ -21,8 +21,8 @@ msgstr "Подтвердить Удалить Автоматическая оп�
 #: DonationFundEditor.php:181 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:217 ElectronicPaymentList.php:282
 #: EventNames.php:300 FamilyCustomFieldsEditor.php:323
-#: FamilyCustomFieldsEditor.php:381 FamilyView.php:650 FamilyView.php:702
-#: FamilyView.php:761 FamilyView.php:898 FindDepositSlip.php:103
+#: FamilyCustomFieldsEditor.php:381 FamilyView.php:649 FamilyView.php:701
+#: FamilyView.php:760 FamilyView.php:897 FindDepositSlip.php:103
 #: FundRaiserEditor.php:199 ListEvents.php:240 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:314 PersonCustomFieldsEditor.php:383
 #: PersonView.php:917 PledgeDelete.php:52 PropertyList.php:64
@@ -34,16 +34,16 @@ msgstr "Удалить"
 #: AutoPaymentDelete.php:63 AutoPaymentEditor.php:786 BatchWinnerEntry.php:111
 #: CanvassEditor.php:238 Checkin.php:167 Checkin.php:274 Checkin.php:287
 #: DirectoryReports.php:285 DonatedItemEditor.php:295 EventNames.php:229
-#: FamilyEditor.php:1117 FamilyView.php:897 FinancialReports.php:67
+#: FamilyEditor.php:1117 FamilyView.php:896 FinancialReports.php:67
 #: FundRaiserEditor.php:142 GroupPropsEditor.php:167 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:82 ManageEnvelopes.php:134
 #: MemberRoleChange.php:118 MemberRoleChange.php:120 NoteDelete.php:66
 #: NoteEditor.php:134 PersonEditor.php:1229 PersonView.php:916
 #: PledgeDelete.php:53 PropertyEditor.php:168 PropertyTypeEditor.php:113
-#: Register.php:55 ReminderReport.php:51 SettingsIndividual.php:111
+#: Register.php:56 ReminderReport.php:51 SettingsIndividual.php:111
 #: SettingsIndividual.php:157 SettingsUser.php:99 SettingsUser.php:159
 #: TaxReport.php:54 UserEditor.php:457 UserEditor.php:560
-#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:153
+#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:158
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:285
 msgid "Cancel"
@@ -69,9 +69,9 @@ msgstr "Сохранить"
 #: AutoPaymentEditor.php:803 BatchWinnerEntry.php:82 BatchWinnerEntry.php:94
 #: CSVImport.php:269 DirectoryReports.php:81 DonatedItemEditor.php:184
 #: DonatedItemEditor.php:235 FamilyEditor.php:1087 GroupEditor.php:93
-#: GroupList.php:35 GroupView.php:54 Include/CountryDropDown.php:6
-#: Include/Functions.php:1083 Include/Functions.php:1136
-#: Include/Header-function.php:379 MapUsingGoogle.php:98
+#: GroupList.php:35 GroupView.php:39 Include/CountryDropDown.php:6
+#: Include/Functions.php:968 Include/Functions.php:1021
+#: Include/Header-function.php:335 MapUsingGoogle.php:98
 #: MapUsingGoogle.php:122 PaddleNumEditor.php:175 PersonEditor.php:780
 #: PersonEditor.php:796 PersonEditor.php:1135 PrintView.php:264
 #: PrintView.php:274 SelectDelete.php:155 SelectList.php:34 SelectList.php:44
@@ -95,7 +95,7 @@ msgstr "Интервал Оплата (месяцев)"
 #: AutoPaymentEditor.php:866 CartToGroup.php:73 EditEventTypes.php:86
 #: EditEventTypes.php:98 EventEditor.php:498 EventNames.php:104
 #: EventNames.php:116 EventNames.php:161 GroupReports.php:47
-#: GroupReports.php:142 PersonToGroup.php:65 calendar.php:84 calendar.php:94
+#: GroupReports.php:142 PersonToGroup.php:65 calendar.php:72 calendar.php:82
 #: sundayschool/SundaySchoolReports.php:189
 msgid "None"
 msgstr "Ни один"
@@ -106,7 +106,7 @@ msgstr "неактивно"
 
 #: AutoPaymentEditor.php:913 CSVExport.php:100 CSVImport.php:217
 #: CartToFamily.php:244 DirectoryReports.php:249 FamilyEditor.php:670
-#: PersonEditor.php:861 Register.php:43
+#: PersonEditor.php:861 Register.php:44
 #: external/templates/registration/family-register.php:41
 #: queryparameteroptions_qpo.php:7
 msgid "City"
@@ -114,7 +114,7 @@ msgstr "Город"
 
 #: AutoPaymentEditor.php:918 CSVExport.php:105 CSVImport.php:218
 #: CartToFamily.php:249 DirectoryReports.php:253 FamilyEditor.php:677
-#: PersonEditor.php:881 Register.php:44
+#: PersonEditor.php:881 Register.php:45
 #: external/templates/registration/family-register.php:44
 #: queryparameteroptions_qpo.php:6
 msgid "State"
@@ -122,7 +122,7 @@ msgstr "Область"
 
 #: AutoPaymentEditor.php:929 CSVExport.php:120 CSVImport.php:220
 #: CartToFamily.php:269 FamilyEditor.php:697 PersonEditor.php:926
-#: Register.php:46
+#: Register.php:47
 msgid "Country"
 msgstr "Страна"
 
@@ -135,12 +135,12 @@ msgid "Phone"
 msgstr "Телефон"
 
 #: AutoPaymentEditor.php:941 CSVExport.php:140 CSVImport.php:224
-#: CartToFamily.php:310 CartView.php:279
+#: CartToFamily.php:310 CartView.php:272
 #: ChurchCRM/Reports/PDF_Directory.php:321
 #: ChurchCRM/Reports/PDF_Directory.php:397
 #: ChurchCRM/Reports/PDF_Directory.php:454 EditEventAttendees.php:42
 #: EventAttendance.php:175 FamilyEditor.php:769 FamilyView.php:261
-#: FamilyView.php:266 FamilyView.php:349 GroupReports.php:127
+#: FamilyView.php:266 FamilyView.php:348 GroupReports.php:127
 #: PersonEditor.php:1033 PersonEditor.php:1035 PersonView.php:301
 #: PersonView.php:489 PrintView.php:294 Reports/CanvassReports.php:242
 #: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
@@ -237,7 +237,7 @@ msgstr "Цена"
 msgid "Enter Winners"
 msgstr "Введите победителей"
 
-#: CSVExport.php:52 CartView.php:112
+#: CSVExport.php:52 CartView.php:105
 msgid "CSV Export"
 msgstr "CSV экспорт"
 
@@ -270,7 +270,7 @@ msgstr "Второе имя"
 
 #: AutoPaymentEditor.php:924 BackupDatabase.php:62 CSVExport.php:110
 #: CSVImport.php:219 CartToFamily.php:261 DirectoryReports.php:257
-#: FamilyEditor.php:687 PersonEditor.php:904 Register.php:45
+#: FamilyEditor.php:687 PersonEditor.php:904 Register.php:46
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29
 #, fuzzy
@@ -305,7 +305,7 @@ msgstr "Рождения / Юбилей Дата"
 msgid "Age / Years Married"
 msgstr "Возраст / лет замужем"
 
-#: CSVExport.php:165 CSVExport.php:286 CartView.php:282 OptionManager.php:61
+#: CSVExport.php:165 CSVExport.php:286 CartView.php:275 OptionManager.php:61
 #: PersonEditor.php:778 PrintView.php:269 queryparameters_qrp.php:5
 #, fuzzy
 msgid "Family Role"
@@ -523,8 +523,8 @@ msgstr "ПРИМЕЧАНИЕ: Сепараторы (тире и т.д.) или �
 msgid "Default country if none specified otherwise"
 msgstr "Страна по умолчанию, если ничего не указано иное"
 
-#: CSVExport.php:261 CSVImport.php:279 CartView.php:281 FamilyEditor.php:946
-#: FinancialReports.php:115 MembersDashboard.php:333 OptionManager.php:68
+#: CSVExport.php:261 CSVImport.php:279 CartView.php:274 FamilyEditor.php:946
+#: FinancialReports.php:115 OptionManager.php:68 PeopleDashboard.php:333
 #: PersonEditor.php:1133 PrintView.php:309 queryparameters_qrp.php:19
 msgid "Classification"
 msgstr "Классификация"
@@ -718,14 +718,14 @@ msgstr "Без названия семья не введены!"
 msgid "Add Cart to Family"
 msgstr "Добавить корзину, чтобы семьи"
 
-#: CartToFamily.php:154 CartView.php:277 Checkin.php:311
+#: CartToFamily.php:154 CartView.php:270 Checkin.php:311
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
 #: DonationFundEditor.php:148 DonationFundEditor.php:211
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:174
 #: EventNames.php:261 FamilyCustomFieldsEditor.php:319
-#: FamilyCustomFieldsEditor.php:433 FamilyList.php:43 FamilyView.php:537
+#: FamilyCustomFieldsEditor.php:433 FamilyList.php:43 FamilyView.php:536
 #: GeoPage.php:380 GroupEditor.php:72 GroupPropsFormEditor.php:285
-#: GroupPropsFormEditor.php:397 GroupView.php:267 GroupView.php:300
+#: GroupPropsFormEditor.php:397 GroupView.php:254 GroupView.php:287
 #: PersonCustomFieldsEditor.php:310 PersonCustomFieldsEditor.php:441
 #: PersonView.php:663 PersonView.php:765 PrintView.php:337 PrintView.php:464
 #: PropertyEditor.php:148 PropertyList.php:59 PropertyTypeEditor.php:95
@@ -768,7 +768,7 @@ msgstr "(Используйте текстовое поле для других 
 
 #: CartToFamily.php:285 CartToFamily.php:295 CartToFamily.php:305
 #: FamilyEditor.php:743 FamilyEditor.php:753 FamilyEditor.php:763
-#: Include/Functions.php:1126 PersonEditor.php:975 PersonEditor.php:999
+#: Include/Functions.php:1011 PersonEditor.php:975 PersonEditor.php:999
 #: PersonEditor.php:1023
 msgid "Do not auto-format"
 msgstr "Не Авто-формат"
@@ -796,102 +796,98 @@ msgstr "Выберите группу"
 msgid "No Group Selected"
 msgstr "Нет Группа Выбранный"
 
-#: CartToGroup.php:91 PersonToGroup.php:85 SelectList.php:1242
+#: CartToGroup.php:91 PersonToGroup.php:85 SelectList.php:1229
 msgid "Add to Group"
 msgstr "Добавить в группу "
 
-#: CartToGroup.php:96
-msgid "Create a New Group"
-msgstr "Создать группу"
-
-#: CartView.php:24
+#: CartView.php:20
 msgid "View Your Cart"
 msgstr "Просмотр Ваша корзина"
 
-#: CartView.php:32
+#: CartView.php:28
 msgid "You have no items in your cart."
 msgstr "У вас нет товаров в корзине."
 
-#: CartView.php:41
+#: CartView.php:37
 msgid "Back to Menu"
 msgstr "Вернуться к меню"
 
-#: CartView.php:76
+#: CartView.php:71
 msgid "Go To Labels"
 msgstr "Перейти к ярлыкам"
 
-#: CartView.php:93 Include/Header.php:109
+#: CartView.php:87
 msgid "Empty Cart"
 msgstr "Очистить корзину"
 
-#: CartView.php:97 Include/Header.php:114
+#: CartView.php:90
 msgid "Empty Cart to Group"
 msgstr "Очистить корзину Группе"
 
-#: CartView.php:103 Include/Header.php:119
+#: CartView.php:96
 msgid "Empty Cart to Family"
 msgstr "Очистить корзину для семьи"
 
-#: CartView.php:107 Include/Header.php:124
+#: CartView.php:100
 msgid "Empty Cart to Event"
 msgstr "Очистить корзину Событие"
 
-#: CartView.php:116 Include/Header.php:129
+#: CartView.php:109
 msgid "Map Cart"
 msgstr "Карта Корзина"
 
-#: CartView.php:118
+#: CartView.php:111
 msgid "Name Tags"
 msgstr "Теги имен"
 
-#: CartView.php:152
+#: CartView.php:145
 msgid "Email Cart"
 msgstr "Email Корзина"
 
-#: CartView.php:153 GroupView.php:151
+#: CartView.php:146 GroupView.php:138
 #: sundayschool/SundaySchoolClassView.php:100
 msgid "Email (BCC)"
 msgstr "E-mail (BCC)"
 
-#: CartView.php:183
+#: CartView.php:176
 msgid "Create Directory From Cart"
 msgstr "Создать каталог из корзины"
 
-#: CartView.php:207 CartView.php:249
+#: CartView.php:200 CartView.php:242
 msgid "Generate Labels"
 msgstr "Создание меток"
 
-#: CartView.php:215
+#: CartView.php:208
 msgid "Bulk Mail Presort"
 msgstr "Массовые рассылки Presort"
 
-#: CartView.php:224
+#: CartView.php:217
 msgid "Quiet Presort"
 msgstr "Тихий Presort"
 
-#: CartView.php:270
+#: CartView.php:263
 msgid "Your cart contains"
 msgstr "Ваша корзина содержит"
 
-#: CartView.php:270
+#: CartView.php:263
 msgid "persons from"
 msgstr "человек из"
 
-#: CartView.php:280 CartView.php:338 EditEventTypes.php:166 FamilyView.php:542
-#: FamilyView.php:584 GroupView.php:305 GroupView.php:346 PersonView.php:666
+#: CartView.php:273 CartView.php:331 EditEventTypes.php:166 FamilyView.php:541
+#: FamilyView.php:583 GroupView.php:292 GroupView.php:333 PersonView.php:666
 #: PersonView.php:684 PersonView.php:768 PersonView.php:786
 msgid "Remove"
 msgstr "Удалять"
 
-#: CartView.php:301 CartView.php:321 DonationFundEditor.php:175
-#: FinancialReports.php:293 Include/Functions.php:913
-#: Include/Functions.php:997 Reports/ConfirmReport.php:227
+#: CartView.php:294 CartView.php:314 DonationFundEditor.php:175
+#: FinancialReports.php:293 Include/Functions.php:798
+#: Include/Functions.php:882 Reports/ConfirmReport.php:227
 msgid "Yes"
 msgstr "Да "
 
-#: CartView.php:314 CartView.php:323 DonationFundEditor.php:178
-#: FinancialReports.php:294 Include/Functions.php:915
-#: Include/Functions.php:998 Reports/ConfirmReport.php:229
+#: CartView.php:307 CartView.php:316 DonationFundEditor.php:178
+#: FinancialReports.php:294 Include/Functions.php:800
+#: Include/Functions.php:883 Reports/ConfirmReport.php:229
 msgid "No"
 msgstr "Нет"
 
@@ -908,7 +904,7 @@ msgstr "Выберите событие, к которому вы хотели �
 msgid "Select Event"
 msgstr "Выберите событие"
 
-#: external/templates/verify/verify-family-info.php:154
+#: external/templates/verify/verify-family-info.php:159
 msgid "Verify"
 msgstr "Проверить"
 
@@ -1032,11 +1028,11 @@ msgstr "Информация, включает в себя"
 
 #: AutoPaymentEditor.php:901 AutoPaymentEditor.php:907 CSVExport.php:90
 #: CSVExport.php:95 CSVImport.php:215 CSVImport.php:216 CartToFamily.php:234
-#: CartToFamily.php:239 CartView.php:278 DirectoryReports.php:171
+#: CartToFamily.php:239 CartView.php:271 DirectoryReports.php:171
 #: DirectoryReports.php:245 FamilyEditor.php:662 FamilyEditor.php:666
 #: FamilyList.php:44 FamilyView.php:203 GeoPage.php:381 GroupReports.php:123
-#: Menu.php:200 Menu.php:241 PersonEditor.php:829 PersonEditor.php:845
-#: PersonView.php:265 Register.php:42 Reports/ConfirmReportEmail.php:124
+#: Menu.php:318 Menu.php:359 PersonEditor.php:829 PersonEditor.php:845
+#: PersonView.php:265 Register.php:43 Reports/ConfirmReportEmail.php:124
 #: Reports/ConfirmReportEmail.php:129 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35
@@ -1044,9 +1040,10 @@ msgid "Address"
 msgstr "Адрес"
 
 #: ChurchCRM/Service/CalendarService.php:18 DirectoryReports.php:173
-#: FamilyView.php:348 PersonView.php:488 Reports/ConfirmReport.php:184
+#: FamilyView.php:347 PersonView.php:488 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:191
 #: Reports/ConfirmReportEmail.php:209
+#: external/templates/verify/verify-family-info.php:79
 msgid "Birthday"
 msgstr "Дата рождения"
 
@@ -1116,7 +1113,7 @@ msgstr "Название страницы:"
 msgid "Use Title Page"
 msgstr "Используйте титульный лист"
 
-#: ChurchCRM/dto/SystemConfig.php:130 DirectoryReports.php:241 Register.php:40
+#: ChurchCRM/dto/SystemConfig.php:130 DirectoryReports.php:241 Register.php:41
 msgid "Church Name"
 msgstr "Церковь Имя"
 
@@ -1173,7 +1170,7 @@ msgstr "Дальше"
 #: DonatedItemEditor.php:272 DonationFundEditor.php:149
 #: DonationFundEditor.php:219 EditEventAttendees.php:34
 #: FundRaiserEditor.php:173 GroupEditor.php:78 GroupPropsFormEditor.php:286
-#: GroupPropsFormEditor.php:410 GroupView.php:268 ListEvents.php:205
+#: GroupPropsFormEditor.php:410 GroupView.php:255 ListEvents.php:205
 #: PersonView.php:766 PropertyTypeEditor.php:103
 #: VolunteerOpportunityEditor.php:75 VolunteerOpportunityEditor.php:354
 #: VolunteerOpportunityEditor.php:428
@@ -1199,7 +1196,7 @@ msgstr "Недействительные поля или выбора. Изме�
 msgid "No funds have been added yet"
 msgstr "Никакие средства не были добавлены еще"
 
-#: DonationFundEditor.php:150 EventEditor.php:555 GroupView.php:229
+#: DonationFundEditor.php:150 EventEditor.php:555 GroupView.php:216
 #: KioskManager.php:29 ListEvents.php:209
 msgid "Active"
 msgstr "Активен"
@@ -1258,27 +1255,27 @@ msgid "Family"
 msgstr "Семья"
 
 #: ElectronicPaymentList.php:194 FamilyCustomFieldsEditor.php:318
-#: FamilyCustomFieldsEditor.php:420 FamilyView.php:536 FamilyView.php:644
-#: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:266
-#: GroupView.php:299 OptionManager.php:76 PersonCustomFieldsEditor.php:309
+#: FamilyCustomFieldsEditor.php:420 FamilyView.php:535 FamilyView.php:643
+#: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:253
+#: GroupView.php:286 OptionManager.php:76 PersonCustomFieldsEditor.php:309
 #: PersonCustomFieldsEditor.php:428 PersonView.php:662 PropertyEditor.php:128
 #: SelectDelete.php:214
 msgid "Type"
 msgstr "Тип"
 
-#: AutoPaymentEditor.php:846 ElectronicPaymentList.php:195 FamilyView.php:753
+#: AutoPaymentEditor.php:846 ElectronicPaymentList.php:195 FamilyView.php:752
 #: PledgeEditor.php:518 ReminderReport.php:41 SelectDelete.php:216
 #: sundayschool/SundaySchoolReports.php:204 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "Отчетный год"
 
-#: ElectronicPaymentList.php:197 FamilyView.php:646 FamilyView.php:755
+#: ElectronicPaymentList.php:197 FamilyView.php:645 FamilyView.php:754
 #: PledgeEditor.php:712 SelectDelete.php:218
 msgid "Amount"
 msgstr "Количество"
 
-#: AutoPaymentEditor.php:863 ElectronicPaymentList.php:199 FamilyView.php:648
-#: FamilyView.php:752 FinancialReports.php:300 SelectDelete.php:215
+#: AutoPaymentEditor.php:863 ElectronicPaymentList.php:199 FamilyView.php:647
+#: FamilyView.php:751 FinancialReports.php:300 SelectDelete.php:215
 msgid "Fund"
 msgstr "Фонд"
 
@@ -1296,15 +1293,15 @@ msgid "Year"
 msgstr "Год"
 
 #: ElectronicPaymentList.php:216 ElectronicPaymentList.php:281
-#: EventNames.php:292 FamilyView.php:198 FamilyView.php:649 FamilyView.php:698
-#: FamilyView.php:760 FindFundRaiser.php:234 FindFundRaiser.php:242
+#: EventNames.php:292 FamilyView.php:198 FamilyView.php:648 FamilyView.php:697
+#: FamilyView.php:759 FindFundRaiser.php:234 FindFundRaiser.php:242
 #: ListEvents.php:223 PersonView.php:231 PropertyList.php:63
 #: PropertyList.php:104 PropertyTypeList.php:38 PropertyTypeList.php:58
 #: SelectList.php:1063
 msgid "Edit"
 msgstr "Редактировать"
 
-#: Register.php:49
+#: Register.php:50
 #, fuzzy
 msgid "Message"
 msgstr "Сообщение"
@@ -1562,7 +1559,7 @@ msgstr "Связать храбрый представитель фирмы"
 msgid "Custom Fields"
 msgstr "Настраиваемые поля"
 
-#: FamilyEditor.php:918 FamilyView.php:346 PersonView.php:486
+#: FamilyEditor.php:918 FamilyView.php:345 PersonView.php:486
 #: PrintView.php:334
 #: external/templates/registration/family-register-members.php:20
 msgid "Family Members"
@@ -1584,7 +1581,7 @@ msgstr "Середина урока"
 msgid "Last"
 msgstr "Последний"
 
-#: FamilyEditor.php:942 FamilyView.php:347 OptionManager.php:59
+#: FamilyEditor.php:942 FamilyView.php:346 OptionManager.php:59
 #: OptionManager.php:92 PersonView.php:487 PrintView.php:339 PrintView.php:393
 #: Reports/CanvassReports.php:238 Reports/GroupReport.php:102
 msgid "Role"
@@ -1606,9 +1603,9 @@ msgstr "Выберите Роль"
 #: ChurchCRM/Service/DashboardService.php:59
 #: ChurchCRM/Service/DashboardService.php:73
 #: ChurchCRM/Service/TimelineService.php:115
-#: ChurchCRM/model/ChurchCRM/Person.php:426 FamilyEditor.php:1015
-#: Include/Functions.php:750 Include/Functions.php:779
-#: Include/Functions.php:999
+#: ChurchCRM/model/ChurchCRM/Person.php:428 FamilyEditor.php:1015
+#: Include/Functions.php:635 Include/Functions.php:664
+#: Include/Functions.php:884
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -1693,105 +1690,105 @@ msgstr "Идет загрузка фото"
 msgid "Delete Photo"
 msgstr "Удалить фотографию"
 
-#: FamilyView.php:437
+#: FamilyView.php:436
 msgid "Pledges and Payments"
 msgstr "Объявленные и платежи"
 
-#: FamilyView.php:529 PersonView.php:656 PrintView.php:460
+#: FamilyView.php:528 PersonView.php:656 PrintView.php:460
 msgid "No property assignments."
 msgstr "Нет свойства заданий."
 
-#: FamilyView.php:538 GroupView.php:301 PersonView.php:664 PrintView.php:465
+#: FamilyView.php:537 GroupView.php:288 PersonView.php:664 PrintView.php:465
 #: PropertyAssign.php:175 SystemSettings.php:139
 msgid "Value"
 msgstr "Значение "
 
-#: FamilyView.php:541 FamilyView.php:579 GroupView.php:304 GroupView.php:340
+#: FamilyView.php:540 FamilyView.php:578 GroupView.php:291 GroupView.php:327
 msgid "Edit Value"
 msgstr "Редактировать Значение"
 
-#: FamilyView.php:602 PersonView.php:697
+#: FamilyView.php:601 PersonView.php:697
 #, fuzzy
 msgid "Assign a New Property"
 msgstr "Связать новое свойство"
 
-#: FamilyView.php:623 GroupView.php:378 PersonView.php:733 PersonView.php:819
+#: FamilyView.php:622 GroupView.php:365 PersonView.php:733 PersonView.php:819
 #: PropertyAssign.php:184 SelectList.php:1071
 msgid "Assign"
 msgstr "Назначить"
 
-#: FamilyView.php:645
+#: FamilyView.php:644
 msgid "Next payment date"
 msgstr "Следующая дата выплаты"
 
-#: FamilyView.php:647
+#: FamilyView.php:646
 msgid "Interval (months)"
 msgstr "Интервал (месяцы)"
 
-#: FamilyView.php:651 FamilyView.php:762 SelectDelete.php:222
+#: FamilyView.php:650 FamilyView.php:761 SelectDelete.php:222
 msgid "Date Updated"
 msgstr "Дата обновления"
 
-#: FamilyView.php:652 FamilyView.php:763 SelectDelete.php:223
+#: FamilyView.php:651 FamilyView.php:762 SelectDelete.php:223
 msgid "Updated By"
 msgstr "Обновил"
 
-#: FamilyView.php:718
+#: FamilyView.php:717
 msgid "Add a new automatic payment"
 msgstr "Добавить новую автоматическую оплату"
 
-#: FamilyView.php:730
+#: FamilyView.php:729
 msgid "Show Pledges"
 msgstr "Показать Обязательства"
 
-#: FamilyView.php:734
+#: FamilyView.php:733
 msgid "Show Payments"
 msgstr "Показать платежи"
 
-#: FamilyView.php:743 MemberRoleChange.php:115 PropertyAssign.php:186
+#: FamilyView.php:742 MemberRoleChange.php:115 PropertyAssign.php:186
 msgid "Update"
 msgstr "Обновить"
 
-#: FamilyView.php:751
+#: FamilyView.php:750
 msgid "Pledge or Payment"
 msgstr "Залог или оплаты"
 
 #: AutoPaymentEditor.php:839 CanvassEditor.php:193 DepositSlipEditor.php:77
-#: EditEventAttendees.php:33 FamilyView.php:754 FindFundRaiser.php:236
+#: EditEventAttendees.php:33 FamilyView.php:753 FindFundRaiser.php:236
 #: FundRaiserEditor.php:163 Include/Functions.php:84 PledgeEditor.php:516
 #: SelectDelete.php:217
 msgid "Date"
 msgstr "Дата"
 
-#: FamilyView.php:756
+#: FamilyView.php:755
 msgid "NonDeductible"
 msgstr "NonDeductible"
 
-#: FamilyView.php:757 SelectDelete.php:219
+#: FamilyView.php:756 SelectDelete.php:219
 msgid "Schedule"
 msgstr "Сроки"
 
-#: FamilyView.php:758 SelectDelete.php:220
+#: FamilyView.php:757 SelectDelete.php:220
 msgid "Method"
 msgstr "Метод"
 
-#: FamilyView.php:759 PledgeEditor.php:720 SelectDelete.php:221
+#: FamilyView.php:758 PledgeEditor.php:720 SelectDelete.php:221
 msgid "Comment"
 msgstr "Комментарий "
 
-#: FamilyView.php:851
+#: FamilyView.php:850
 msgid "Add a new pledge"
 msgstr "Добавить новый залог"
 
-#: FamilyView.php:853
+#: FamilyView.php:852
 msgid "Add a new payment"
 msgstr "Добавить новый платеж"
 
-#: FamilyView.php:864
+#: FamilyView.php:863
 msgid " Canvass Entry"
 msgstr " Canvass запись"
 
-#: DepositSlipEditor.php:218 FamilyView.php:886 FindDepositSlip.php:93
+#: DepositSlipEditor.php:218 FamilyView.php:885 FindDepositSlip.php:93
 #: PersonView.php:906 PledgeDelete.php:18
 msgid "Confirm Delete"
 msgstr "Подтвердить удаление"
@@ -1945,7 +1942,7 @@ msgstr "Создание:"
 msgid "Only Families with unpaid pledges"
 msgstr "Семьи только с невыплаченных взносов"
 
-#: FinancialReports.php:284 GeoPage.php:335 MembersDashboard.php:116
+#: FinancialReports.php:284 GeoPage.php:335 PeopleDashboard.php:116
 msgid "All Families"
 msgstr "Все семьи"
 
@@ -2179,7 +2176,7 @@ msgstr "Текст для события с кодом: "
 msgid "Group Editor"
 msgstr "Редактор группы"
 
-#: GroupEditor.php:84 GroupView.php:207
+#: GroupEditor.php:84 GroupView.php:194
 #, fuzzy
 msgid "Type of Group"
 msgstr "Тип группы"
@@ -2203,7 +2200,7 @@ msgstr "от группы"
 msgid "Select a group"
 msgstr "Выбор группы"
 
-#: GroupEditor.php:155 GroupView.php:94
+#: GroupEditor.php:155 GroupView.php:79
 msgid "Edit Group-Specific Properties Form"
 msgstr "Edit Group-Specific Properties Форма"
 
@@ -2221,7 +2218,7 @@ msgstr "Новая роль"
 msgid "Group Listing"
 msgstr "Группа Листинг"
 
-#: Include/Header-function.php:102
+#: Include/Header-function.php:103
 msgid "Submit"
 msgstr "Представлять"
 
@@ -2314,68 +2311,68 @@ msgstr "Группа-конкретных областях недвижимос�
 msgid "Undefined"
 msgstr "Неопределенный"
 
-#: GroupView.php:76
+#: GroupView.php:61
 msgid "Group View"
 msgstr "Вид группы"
 
-#: GroupView.php:89
+#: GroupView.php:74
 msgid "Edit this Group"
 msgstr "Редактировать этот группу"
 
-#: GroupView.php:90
+#: GroupView.php:75
 msgid "Delete this Group"
 msgstr "Удалить эту группу"
 
-#: GroupView.php:443
+#: GroupView.php:430
 #, fuzzy
 msgid "Please confirm deletion of this group record"
 msgstr "Пожалуйста, подтвердите удаление этой группы записи"
 
-#: GroupView.php:445
+#: GroupView.php:432
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 msgstr "Это приведет к удалению всех ролей и определенных групп данных объектов, связанных с этой записью группы."
 
-#: GroupView.php:97
+#: GroupView.php:83
 msgid "Add Group Members to Cart"
 msgstr "Добавить группу Пользователей в корзину"
 
-#: GroupView.php:99
+#: GroupView.php:84
 msgid "Map this group"
 msgstr "Карта эту группу"
 
-#: GroupView.php:140
+#: GroupView.php:127
 msgid "Email Group"
 msgstr "Email Группа"
 
-#: GroupView.php:217
+#: GroupView.php:204
 #, fuzzy
 msgid "Total Members"
 msgstr "Всего пользователей"
 
-#: GroupView.php:212
+#: GroupView.php:199
 #, fuzzy
 msgid "Default Role"
 msgstr "По умолчанию Роль"
 
-#: GroupView.php:243
+#: GroupView.php:230
 #, fuzzy
 msgid "Group-Specific Properties"
 msgstr "Групповые специфические свойства"
 
-#: GroupView.php:283
+#: GroupView.php:270
 msgid "Disabled for this group."
 msgstr "Отключено для этой группы."
 
-#: FamilyView.php:431 GroupView.php:288 PersonView.php:408 PrintView.php:449
+#: FamilyView.php:430 GroupView.php:275 PersonView.php:408 PrintView.php:449
 #, fuzzy
 msgid "Assigned Properties"
 msgstr "Заданными свойствами"
 
-#: GroupView.php:395
+#: GroupView.php:382
 msgid "Group Members:"
 msgstr "Участники группы:"
 
-#: LettersAndLabels.php:25 MembersDashboard.php:235
+#: LettersAndLabels.php:25 PeopleDashboard.php:235
 msgid "Letters and Mailing Labels"
 msgstr "Письма и почтовые наклейки"
 
@@ -2420,23 +2417,23 @@ msgstr "Участники ("
 msgid " Monthly Averages"
 msgstr " Ежемесячные средние"
 
-#: Login.php:36 Login.php:51
+#: Login.php:41 Login.php:56
 msgid "Invalid login or password"
 msgstr "Неверный Логин или пароль"
 
-#: Login.php:39
+#: Login.php:44
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Слишком много неудачных попыток: ваша учетная запись была заблокирована. Пожалуйста, свяжитесь с администратором."
 
-#: Login.php:143
+#: Login.php:148
 msgid "Please Login"
 msgstr "Пожалуйста, войдите"
 
-#: BackupDatabase.php:71 Login.php:167 UserList.php:56
+#: BackupDatabase.php:71 Login.php:172 UserList.php:56
 msgid "Password"
 msgstr "Пароль"
 
-#: Login.php:132 Login.php:180
+#: Login.php:137 Login.php:185
 msgid "Login"
 msgstr "Вход"
 
@@ -2449,7 +2446,7 @@ msgid "Update Family Records"
 msgstr "Обновление Family Records"
 
 #: ManageEnvelopes.php:133 external/templates/verify/verify-family-info.php:16
-#: external/templates/verify/verify-family-info.php:136
+#: external/templates/verify/verify-family-info.php:141
 msgid "Confirm"
 msgstr "Подтвердить"
 
@@ -2479,48 +2476,40 @@ msgstr "Имя пользователя"
 msgid "Current Role"
 msgstr "Текущая роль"
 
-#: MembersDashboard.php:121
+#: PeopleDashboard.php:121
 msgid "Update All Family Coordinates"
 msgstr "Обновление всей семьи Координаты"
 
-#: MembersDashboard.php:135 Menu.php:63 api/routes/search.php:140
+#: Menu.php:181 PeopleDashboard.php:135 api/routes/search.php:140
 #: members/online-pending-verify.php:22 members/self-register.php:22
 #: members/self-verify-updates.php:22
 #: sundayschool/SundaySchoolDashboard.php:103
 msgid "Families"
 msgstr "Семьи"
 
-#: MembersDashboard.php:156 Menu.php:82
+#: Menu.php:200 PeopleDashboard.php:156 menuconfig_mcf.php:4
 msgid "People"
 msgstr "Люди"
 
-#: MembersDashboard.php:224
+#: PeopleDashboard.php:224
 msgid "Reports on groups and roles"
 msgstr "Отчеты по группам и ролям"
 
-#: MembersDashboard.php:226
+#: PeopleDashboard.php:226
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
 msgstr "Отчет о группы и роли, выбранной (это может быть многостраничный PDF)."
 
-#: MembersDashboard.php:231
-msgid "Members Directory"
-msgstr "Список Пользователей"
-
-#: MembersDashboard.php:231
-msgid "Printable directory of all members, grouped by family where assigned"
-msgstr "Версия для печати Каталог всех членов, сгруппированных по семье, где назначается"
-
-#: MembersDashboard.php:236
+#: PeopleDashboard.php:236
 msgid "Generate letters and mailing labels."
 msgstr "Создание письма и почтовые наклейки."
 
-#: MembersDashboard.php:242
+#: PeopleDashboard.php:242
 msgid "US Address Verification Report"
 msgstr "Адрес в США доклад о проверке"
 
 #: CartToFamily.php:205
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:58
-#: FamilyEditor.php:652 LettersAndLabels.php:70 Menu.php:199 Menu.php:240
+#: FamilyEditor.php:652 LettersAndLabels.php:70 Menu.php:317 Menu.php:358
 #: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:119
 #: SelectDelete.php:151 SelectDelete.php:277
 #: external/templates/registration/family-register.php:31
@@ -3103,15 +3092,15 @@ msgstr "Выполнить запрос"
 msgid "Address Info:"
 msgstr "Информация об адресе:"
 
-#: Register.php:34
+#: Register.php:35
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
 msgstr "Пожалуйста, зарегистрируйтесь копию ChurchCRM, проверяя по этой информации и нажав на кнопку Отправить.  "
 
-#: Register.php:35
+#: Register.php:36
 msgid "This information is used only to track the usage of this software.  "
 msgstr "Эта информация используется только для отслеживания использования данного программного обеспечения.  "
 
-#: Register.php:54
+#: Register.php:55
 msgid "Send"
 msgstr "Отправить"
 
@@ -3615,91 +3604,87 @@ msgid "Group successfully removed from the Cart."
 msgstr "Группа успешно удален из корзины."
 
 #: Include/Functions.php:143
-msgid "Selected record successfully added to the Cart."
-msgstr "Выбранная запись успешно добавлен в корзину."
-
-#: Include/Functions.php:154
 msgid "Selected record successfully removed from the Cart."
 msgstr "Выбранная запись успешно удалены из корзины."
 
-#: Include/Functions.php:160 api/routes/cart.php:57
+#: api/routes/cart.php:57
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Ваша корзина успешно очищена"
 
-#: Include/Functions.php:178
+#: Include/Functions.php:161
 msgid "item(s) added to the Cart."
 msgstr "товар (ов) добавлен в корзину."
 
-#: Include/Functions.php:242
+#: Include/Functions.php:225
 msgid "Select Fiscal Year"
 msgstr "Выберите финансовый год"
 
-#: Include/Functions.php:569
+#: Include/Functions.php:454
 msgid "pm"
 msgstr "вечера"
 
-#: Include/Functions.php:981
+#: Include/Functions.php:866
 msgid "Invalid Editor ID!"
 msgstr "Неверный редактор ID!"
 
-#: Include/Functions.php:1036
+#: Include/Functions.php:921
 msgid "Select Season"
 msgstr "Выберите сезон"
 
-#: Include/Functions.php:1041
+#: Include/Functions.php:926
 msgid "Winter"
 msgstr "Зима"
 
-#: Include/Functions.php:1046
+#: Include/Functions.php:931
 msgid "Spring"
 msgstr "Весна"
 
-#: Include/Functions.php:1051
+#: Include/Functions.php:936
 msgid "Summer"
 msgstr "Лето"
 
-#: Include/Functions.php:1056
+#: Include/Functions.php:941
 msgid "Fall"
 msgstr "слабость"
 
-#: Include/Functions.php:1153
+#: Include/Functions.php:1038
 msgid "Error: Invalid Editor ID!"
 msgstr "Ошибка: Неправильно редактор ID!"
 
-#: FundRaiserEditor.php:51 Include/Functions.php:1350 PledgeEditor.php:316
+#: FundRaiserEditor.php:51 Include/Functions.php:1235 PledgeEditor.php:316
 msgid "Not a valid date"
 msgstr "Не действует дата"
 
-#: Include/Functions.php:1362
+#: Include/Functions.php:1247
 msgid "Invalid Year"
 msgstr "Неверный год"
 
-#: Include/Functions.php:1365
+#: Include/Functions.php:1250
 msgid "Out of range: Allowable values are 1901 to 2155"
 msgstr "Вне диапазона: Допустимые значения от 1901 до 2155"
 
-#: Include/Functions.php:1378 Include/Functions.php:1394
+#: Include/Functions.php:1263 Include/Functions.php:1279
 msgid "Invalid Number"
 msgstr "Неверный номер"
 
-#: Include/Functions.php:1381
+#: Include/Functions.php:1266
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr "Слишком большое число. Должно быть между -2147483648 и 2147483647"
 
-#: Include/Functions.php:1397
+#: Include/Functions.php:1282
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Деньги количество слишком велико. Максимум $ 999999999,99"
 
-#: Include/Functions.php:1586
+#: Include/Functions.php:1471
 msgid " Bold Italic"
 msgstr " Полужирный курсив"
 
-#: Include/Functions.php:1589
+#: Include/Functions.php:1474
 msgid " Italic"
 msgstr " Курсив"
 
-#: Include/Functions.php:1591
+#: Include/Functions.php:1476
 msgid " Bold"
 msgstr " Жирный"
 
@@ -3777,14 +3762,6 @@ msgstr "Заложенные"
 #: Reports/ConfirmReportEmail.php:206
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Учител"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Студен"
 
 #: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
 #: Reports/ClassList.php:134 Reports/ClassList.php:135
