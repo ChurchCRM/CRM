@@ -9,6 +9,26 @@ $app->group('/groups', function () {
     $this->get('/', function () {        
         echo GroupQuery::create()->find()->toJSON();
     });
+    
+    // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
+    $this->get('/calendars', function ($request, $response, $args) {
+        $groups = GroupQuery::Create()
+          ->orderByName()
+          ->find();
+          
+        $return = [];        
+        foreach ($groups as $group) {
+            $values['type'] = 'group';
+            $values['groupID'] = $group->getID();
+            $values['name'] = $group->getName();
+            
+            array_push($return, $values);
+        }
+        
+        return $response->withJson($return);    
+    });
+    
+
 
     $this->get('/groupsInCart', function () {
         $groupsInCart = [];

@@ -29,11 +29,11 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       <form action="<?= SystemURLs::getRootPath() ?>/external/register/" method="post">
         <div class="form-group has-feedback">
           <input name="familyName" type="text" class="form-control" placeholder="<?= gettext('Family Name') ?>" required>
-          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          <span class="fa fa-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
           <input name="familyAddress1" class="form-control" placeholder="<?= gettext('Address') ?>" required>
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          <span class="fa fa-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
           <div class="row">
@@ -66,7 +66,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         </div>
         <div class="form-group has-feedback">
           <input name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home Phone') ?>" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask>
-          <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
+          <span class="fa fa-phone form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
           <label><?= gettext('How many people are in your family') ?></label>

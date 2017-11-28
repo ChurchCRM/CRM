@@ -200,7 +200,7 @@ if ($iFamilyID == $fam_ID) {
     } ?>
                 <hr/>
                 <ul class="fa-ul">
-                    <li><i class="fa-li glyphicon glyphicon-home"></i><?= gettext("Address") ?>:<span>
+                    <li><i class="fa-li fa fa-home"></i><?= gettext("Address") ?>:<span>
 					<a
                             href="http://maps.google.com/?q=<?= $family->getAddress() ?>"
                             target="_blank"><?= $family->getAddress() ?></a></span><br>
@@ -263,7 +263,7 @@ if ($iFamilyID == $fam_ID) {
                                 <span><?= $fam_Email ?></span></a></li>
                         <?php if ($mailchimp->isActive()) {
             ?>
-                            <li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email") ?>:
+                            <li><i class="fa-li fa fa-send"></i><?= gettext("Email") ?>:
                                 <span><?= $mailchimp->isEmailInMailChimp($fam_Email) ?></span>
                                 </a></li>
                             <?php
@@ -277,7 +277,7 @@ if ($iFamilyID == $fam_ID) {
             if ($type_ID == 11) {
                 $fam_custom_Special = $sPhoneCountry;
             }
-            echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
+            echo "<li><i class=\"fa-li fa fa-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
         }
     } ?>
                 </ul>
@@ -956,15 +956,14 @@ if ($iFamilyID == $fam_ID) {
 
                 <p>
                     <?= gettext("We could not find the family you were looking for.<br>Meanwhile, you may") ?> <a
-                            href="/MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
+                            href="/PeopleDashboard.php"><?= gettext("return to people dashboard") ?></a>
                 </p>
             </div>
         </div>
         <?php
     } ?>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js"
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"
             type="text/javascript"></script>
-    <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
     <script>
