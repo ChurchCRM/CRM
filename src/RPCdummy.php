@@ -3,6 +3,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 $mode = $_GET['mode'];
 $data = InputUtils::LegacyFilterInput($_GET['data'], 'int');

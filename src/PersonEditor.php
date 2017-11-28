@@ -18,6 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
