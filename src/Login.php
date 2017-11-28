@@ -17,7 +17,6 @@ require 'Include/Config.php';
 $bSuppressSessionTests = true; // DO NOT MOVE
 require 'Include/Functions.php';
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
