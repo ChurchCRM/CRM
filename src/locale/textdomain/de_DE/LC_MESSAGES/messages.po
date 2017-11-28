@@ -43,7 +43,7 @@ msgstr "Löschen"
 #: Register.php:56 ReminderReport.php:51 SettingsIndividual.php:111
 #: SettingsIndividual.php:157 SettingsUser.php:99 SettingsUser.php:159
 #: TaxReport.php:54 UserEditor.php:457 UserEditor.php:560
-#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:153
+#: WhyCameEditor.php:104 external/templates/verify/verify-family-info.php:158
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:285
 msgid "Cancel"
@@ -71,7 +71,7 @@ msgstr "Speichern"
 #: DonatedItemEditor.php:235 FamilyEditor.php:1087 GroupEditor.php:93
 #: GroupList.php:35 GroupView.php:39 Include/CountryDropDown.php:6
 #: Include/Functions.php:968 Include/Functions.php:1021
-#: Include/Header-function.php:379 MapUsingGoogle.php:98
+#: Include/Header-function.php:335 MapUsingGoogle.php:98
 #: MapUsingGoogle.php:122 PaddleNumEditor.php:175 PersonEditor.php:780
 #: PersonEditor.php:796 PersonEditor.php:1135 PrintView.php:264
 #: PrintView.php:274 SelectDelete.php:155 SelectList.php:34 SelectList.php:44
@@ -147,7 +147,6 @@ msgstr "Tel."
 #: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
 #: Reports/DirectoryReport.php:294 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
-#: external/templates/verify/enter-info.php:33
 #: external/templates/verify/verify-family-info.php:75
 #: sundayschool/SundaySchoolClassView.php:88
 #: sundayschool/SundaySchoolClassView.php:203 menuconfig_mcf.php:15
@@ -936,6 +935,10 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
+#: Include/Header.php:141 Include/Header.php:142
+msgid "Developer Chat"
+msgstr "Entwicklerchat"
+
 #: Checkin.php:15
 msgid "Event Checkin"
 msgstr "Anmeldung zur Veranstaltung"
@@ -949,7 +952,7 @@ msgstr "Veranstaltung auswählen zu der Teilnehmer angemeldet werden sollen"
 msgid "Select Event"
 msgstr "Veranstaltung auswählen"
 
-#: external/templates/verify/verify-family-info.php:154
+#: external/templates/verify/verify-family-info.php:159
 msgid "Verify"
 msgstr "Überprüfen"
 
@@ -1089,7 +1092,7 @@ msgstr "Informationen zum Einfügen"
 #: CartToFamily.php:239 CartView.php:271 DirectoryReports.php:171
 #: DirectoryReports.php:245 FamilyEditor.php:662 FamilyEditor.php:666
 #: FamilyList.php:44 FamilyView.php:203 GeoPage.php:381 GroupReports.php:123
-#: Menu.php:200 Menu.php:241 PersonEditor.php:829 PersonEditor.php:845
+#: Menu.php:318 Menu.php:359 PersonEditor.php:829 PersonEditor.php:845
 #: PersonView.php:265 Register.php:43 Reports/ConfirmReportEmail.php:124
 #: Reports/ConfirmReportEmail.php:129 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
@@ -1101,6 +1104,7 @@ msgstr "Adresse"
 #: FamilyView.php:347 PersonView.php:488 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:191
 #: Reports/ConfirmReportEmail.php:209
+#: external/templates/verify/verify-family-info.php:79
 msgid "Birthday"
 msgstr "Geburtstag:"
 
@@ -1734,7 +1738,7 @@ msgstr "Rolle auswählen"
 #: ChurchCRM/Service/DashboardService.php:59
 #: ChurchCRM/Service/DashboardService.php:73
 #: ChurchCRM/Service/TimelineService.php:115
-#: ChurchCRM/model/ChurchCRM/Person.php:426 FamilyEditor.php:1015
+#: ChurchCRM/model/ChurchCRM/Person.php:428 FamilyEditor.php:1015
 #: Include/Functions.php:635 Include/Functions.php:664
 #: Include/Functions.php:884
 msgid "Unknown"
@@ -1801,7 +1805,7 @@ msgid "Add Family"
 msgstr "Familie hinzufügen"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:174
-#: ChurchCRM/model/ChurchCRM/Person.php:115 FamilyList.php:48 Menu.php:201
+#: ChurchCRM/model/ChurchCRM/Person.php:115 FamilyList.php:48 Menu.php:319
 #: PersonEditor.php:391
 msgid "Created"
 msgstr "Erstellt"
@@ -2452,7 +2456,7 @@ msgstr "Neue Rolle"
 msgid "Group Listing"
 msgstr "Gruppenauflistung"
 
-#: Include/Header-function.php:102
+#: Include/Header-function.php:103
 msgid "Submit"
 msgstr "Versende"
 
@@ -2704,7 +2708,7 @@ msgid "Update Envelopes"
 msgstr "Briefumschläge aktualisieren"
 
 #: ManageEnvelopes.php:133 external/templates/verify/verify-family-info.php:16
-#: external/templates/verify/verify-family-info.php:136
+#: external/templates/verify/verify-family-info.php:141
 msgid "Confirm"
 msgstr "Bestätigen"
 
@@ -2774,22 +2778,22 @@ msgstr "Alle Familienkoordinaten aktualisieren"
 msgid "Volunteer Opportunities"
 msgstr "Möglichkeiten zur Freiwilligenarbeit"
 
-#: Menu.php:63 PeopleDashboard.php:135 api/routes/search.php:140
+#: Menu.php:181 PeopleDashboard.php:135 api/routes/search.php:140
 #: members/online-pending-verify.php:22 members/self-register.php:22
 #: members/self-verify-updates.php:22
 #: sundayschool/SundaySchoolDashboard.php:103
 msgid "Families"
 msgstr "Familien"
 
-#: Menu.php:70 PeopleDashboard.php:142
+#: Menu.php:188 PeopleDashboard.php:142
 msgid "See all Families"
 msgstr "Alle Familien anzeigen"
 
-#: Menu.php:82 PeopleDashboard.php:156 menuconfig_mcf.php:4
+#: Menu.php:200 PeopleDashboard.php:156 menuconfig_mcf.php:4
 msgid "People"
 msgstr "Personen"
 
-#: Menu.php:89 PeopleDashboard.php:163
+#: Menu.php:207 PeopleDashboard.php:163
 msgid "See All People"
 msgstr "Alle Menschen anzeigen"
 
@@ -2811,7 +2815,7 @@ msgstr "Bericht zur US Adressüberprüfung "
 
 #: CartToFamily.php:205
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:58
-#: FamilyEditor.php:652 LettersAndLabels.php:70 Menu.php:199 Menu.php:240
+#: FamilyEditor.php:652 LettersAndLabels.php:70 Menu.php:317 Menu.php:358
 #: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:119
 #: SelectDelete.php:151 SelectDelete.php:277
 #: external/templates/registration/family-register.php:31
@@ -3090,11 +3094,11 @@ msgstr "Keine ehrenamtlichen Tätigkeiten erfasst."
 msgid "Assign a New Volunteer Opportunity"
 msgstr "Neue ehrenamtliche Aufgabe festlegen"
 
-#: PersonView.php:993
+#: PersonView.php:992
 msgid "Oops! Person not found."
 msgstr "Person konnte nicht gefunden werden."
 
-#: PersonView.php:996
+#: PersonView.php:995
 msgid "We could not find the person you were looking for.<br>Meanwhile, you may"
 msgstr "Die Person konnte nicht gefunden werden.<br>Vielleicht möchtest du..."
 
@@ -4067,7 +4071,7 @@ msgstr "Monate alt"
 msgid "1 yr old"
 msgstr "1 Jahr alt"
 
-#: ChurchCRM/model/ChurchCRM/Person.php:439 Include/Functions.php:630
+#: ChurchCRM/model/ChurchCRM/Person.php:441 Include/Functions.php:630
 #: Include/Functions.php:632 Include/Functions.php:677
 msgid "yrs old"
 msgstr "Jahre alt"
@@ -4140,35 +4144,35 @@ msgstr "Fett"
 msgid "Error text"
 msgstr "Fehlermeldung"
 
-#: Include/Header-function.php:70
+#: Include/Header-function.php:71
 msgid "Issue Report!"
 msgstr "Problemmeldung!"
 
-#: Include/Header-function.php:77
+#: Include/Header-function.php:78
 msgid "Enter a Title for your bug / feature report"
 msgstr "Einen Titel zur Meldung des Bugs oder Featurerequest"
 
-#: Include/Header-function.php:87
+#: Include/Header-function.php:88
 msgid "What were you doing when you noticed the bug / feature opportunity?"
 msgstr "Was geschah, als der Fehler auftrat?"
 
-#: Include/Header-function.php:95
+#: Include/Header-function.php:96
 msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
 msgstr "Wenn Du auf \"Senden\" klickt, wird ein Bug im GitHub Issue tracker erstellt."
 
-#: Include/Header-function.php:96
+#: Include/Header-function.php:97
 msgid "Please do not include any confidential information."
 msgstr "Bitte keine vertraulichen Informationen einfügen."
 
-#: Include/Header-function.php:97
+#: Include/Header-function.php:98
 msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
 msgstr "Einige Grundinformationen (wie Serverversion und Browser Header) werden mitgeschickt."
 
-#: Include/Header-function.php:98
+#: Include/Header-function.php:99
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr "Keine persönlichen Daten werden mitgeschickt, es sei denn Du fügst sie hinzu."
 
-#: Include/Header-function.php:422 Include/Header.php:167 menuconfig_mcf.php:5
+#: Include/Header-function.php:378 Include/Header.php:184 menuconfig_mcf.php:5
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -4611,7 +4615,7 @@ msgstr "Familienauswahl"
 msgid "with at least one:"
 msgstr "mit mindestens einem:"
 
-#: Menu.php:49
+#: Menu.php:53
 msgid "Welcome to"
 msgstr "Willkommen zu"
 
@@ -4841,8 +4845,7 @@ msgstr "Geschäftsjahr:"
 msgid "Add Attendees for Event"
 msgstr "Besucher zum Ereignis hinzufügen"
 
-#: AutoPaymentEditor.php:128 Checkin.php:457
-#: ChurchCRM/Service/PersonService.php:39
+#: Checkin.php:457 ChurchCRM/Service/PersonService.php:39
 msgid "family"
 msgstr "Familie"
 
@@ -4862,7 +4865,7 @@ msgstr "CSV Import"
 msgid "Comment:"
 msgstr "Kommentar:"
 
-#: ChurchCRM/model/ChurchCRM/Person.php:441 Include/Functions.php:679
+#: ChurchCRM/model/ChurchCRM/Person.php:443 Include/Functions.php:679
 msgid "yr old"
 msgstr "jahre alt"
 
@@ -4882,7 +4885,7 @@ msgstr "Alle"
 msgid "Family Map"
 msgstr "Familienkarte"
 
-#: Menu.php:120 PeopleDashboard.php:198 api/routes/search.php:179
+#: Menu.php:238 PeopleDashboard.php:198 api/routes/search.php:179
 #: menuconfig_mcf.php:11
 msgid "Groups"
 msgstr "Gruppen"
@@ -4987,7 +4990,7 @@ msgstr "Letzte Integritätsprüfung"
 msgid "Main"
 msgstr "Haupt"
 
-#: Include/Header-function.php:341 menuconfig_mcf.php:12
+#: Include/Header-function.php:297 menuconfig_mcf.php:12
 msgid "List Groups"
 msgstr "Liste Gruppen"
 
@@ -5831,7 +5834,7 @@ msgstr "Seite nicht gefunden"
 msgid "Family Registration"
 msgstr "Familie Registrieren"
 
-#: FamilyList.php:47
+#: FamilyList.php:47 external/templates/verify/enter-info.php:33
 msgid "email"
 msgstr "Email"
 
@@ -5843,11 +5846,11 @@ msgstr "Familienmitglieder"
 msgid "Work Email"
 msgstr "Arbeitsmail"
 
-#: external/templates/verify/verify-family-info.php:81
+#: external/templates/verify/verify-family-info.php:82
 msgid "Age Hidden"
 msgstr "Alter versteckt"
 
-#: external/templates/verify/verify-family-info.php:155
+#: external/templates/verify/verify-family-info.php:160
 msgid "Visit our Site"
 msgstr "Besuche unsere Seite"
 
@@ -5951,19 +5954,19 @@ msgstr " Diese Familie ist deaktiviert."
 msgid " this Family"
 msgstr " diese Familie"
 
-#: FamilyView.php:976
+#: FamilyView.php:975
 msgid "Confirm Deactivation"
 msgstr "Bestätige die Deaktivierung"
 
-#: FamilyView.php:976
+#: FamilyView.php:975
 msgid "Confirm Activation"
 msgstr "Bestätige die Aktivierung"
 
-#: FamilyView.php:978
+#: FamilyView.php:977
 msgid "Please confirm deactivation of family"
 msgstr "Bitte bestätige die Deaktivierung der Familie"
 
-#: FamilyView.php:981
+#: FamilyView.php:980
 msgid "Please confirm activation of family"
 msgstr "Bitte bestätige die Aktivierung der Familie"
 
@@ -6040,7 +6043,7 @@ msgstr "Teil"
 msgid "View Photo"
 msgstr "Zeige Foto"
 
-#: FamilyView.php:1034
+#: FamilyView.php:1033
 msgid "Family Photo"
 msgstr "Familienfoto"
 
