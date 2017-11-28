@@ -18,6 +18,7 @@ use ChurchCRM\Event;
 use ChurchCRM\EventCountsQuery;
 use ChurchCRM\EventCounts;
 use ChurchCRM\Service\CalendarService;
+use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\Utils\InputUtils;
 
 
@@ -36,6 +37,10 @@ $app->group('/events', function () {
         return $response->write($Events->toJSON());
     });
     
+    $this->get('/numbers', function ($request, $response, $args) {        
+        $response->withJson(MenuEventsCount::getNumberEventsOfToday());       
+    });
+    
     $this->get('/calendars', function ($request, $response, $args) {
         $eventTypes = EventTypesQuery::Create()
               ->orderByName()
@@ -51,8 +56,7 @@ $app->group('/events', function () {
         
         return $response->withJson($return);    
     });
-    
-     
+  
     $this->post('/', function ($request, $response, $args) {
       $input = (object) $request->getParsedBody();
       
