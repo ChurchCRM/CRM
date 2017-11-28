@@ -124,6 +124,53 @@
      localStorage.setItem("groupFilterID",groupFilterID); 
   });
   
+  function addEventTypes()
+  {
+    window.CRM.APIRequest({
+          method: 'GET',
+          path: 'events/calendars',
+    }).done(function(eventTypes) {    
+      var elt = document.getElementById("eventType");          
+      var len = eventTypes.length;
+      
+      for (i=0; i<len; ++i) {
+        var option = document.createElement("option");
+        option.text = eventTypes[i].name;
+        option.value = eventTypes[i].eventTypeID;
+        elt.appendChild(option);
+      }       
+      
+    });  
+  }
+  
+  function addCalendars()
+  {
+    window.CRM.APIRequest({
+          method: 'GET',
+          path: 'groups/calendars',
+    }).done(function(groups) {    
+      var elt = document.getElementById("EventGroup");          
+      var len = groups.length;
+
+      // We add the none option
+      var option = document.createElement("option");
+      option.text = i18next.t("None");
+      option.value = 0;
+      option.title = ""; 
+      elt.appendChild(option);
+      
+      for (i=0; i<len; ++i) {
+        var option = document.createElement("option");
+        // there is a groups.type in function of the new plan of schema
+        option.text = groups[i].name;
+        option.title = groups[i].type;        
+        option.value = groups[i].groupID;
+        elt.appendChild(option);
+      }       
+      
+    });  
+  }
+  
   function deleteText(a)
   {
     if(a.value==i18next.t("Calendar Title") || a.value==i18next.t("Calendar description")){ a.value=''; a.style.color='#000';};
@@ -137,7 +184,6 @@
               +'<td colspan="3" class="TextColumn">'
               +'<select type="text" id="eventType" value="39">'
                    //+"<option value='0' >" + i18next.t("Personal") + "</option>"
-                   + eventTypes
                 +'</select>'
               +'</td>'
             +'</tr>'
@@ -157,8 +203,6 @@
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Group') + ":</td>"
               +'<td class="TextColumn">'
                 +'<select type="text" id="EventGroup" value="39">'
-                   +"<option value='0' Selected>" + i18next.t("None") + "</option>"
-                   + eventGroups           
                 +'</select>'
               +'</td>'
             +'</tr>'
@@ -193,8 +237,7 @@
                       +'</td>'
             +'</tr>'
             +'<tr>'
-              +"<td class='LabelColumn'>" + i18next.t('Event Sermon') + ":</td>"
-              +'<td colspan="3" class="TextColumn"><textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"></textarea></td>'
+              +'<td colspan="4" class="TextColumn">'+i18next.t('Event Sermon')+'<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"></textarea></td>'
             +'</tr>'
             //+'<tr>'
               //+'<td class="LabelColumn"><span style="color: red">*</span>Statut de l&#39;événement:</td>'
@@ -313,20 +356,21 @@
                              
               var e = document.getElementById("EventGroup");
               var EventGroupID = e.options[e.selectedIndex].value;
+              var EventGroupType = e.options[e.selectedIndex].title;// we get the type of the group : personal or group for future dev
                              
               var Total =  $('form #Total').val();
               var Members = $('form #Members').val();
               var Visitors = $('form #Visitors').val();
               var EventCountNotes = $('form #EventCountNotes').val();
                              
-              var eventPredication = $('form #eventPredication').val();
-            
+              var eventPredication = CKEDITOR.instances['eventPredication'].getData();//$('form #eventPredication').val();
+              
               var add = false;
                                                             
               window.CRM.APIRequest({
                     method: 'POST',
                     path: 'events/',
-                    data: JSON.stringify({"evntAction":'createEvent',"eventTypeID":eventTypeID,"EventTitle":EventTitle,"EventDesc":EventDesc,"EventGroupID":EventGroupID,"Total":Total,"Members":Members,"Visitors":Visitors,"EventCountNotes":EventCountNotes,"eventPredication":eventPredication,"start":moment(start).format(),"end":moment(end).format()})
+                    data: JSON.stringify({"evntAction":'createEvent',"eventTypeID":eventTypeID,"EventGroupType":EventGroupType,"EventTitle":EventTitle,"EventDesc":EventDesc,"EventGroupID":EventGroupID,"Total":Total,"Members":Members,"Visitors":Visitors,"EventCountNotes":EventCountNotes,"eventPredication":eventPredication,"start":moment(start).format(),"end":moment(end).format()})
               }).done(function(data) {                   
                 $('#calendar').fullCalendar('renderEvent', data, true); // stick? = true             
                 $('#calendar').fullCalendar('unselect');              
@@ -360,6 +404,20 @@
        });
   
        modal.modal("show");
+       
+       // we add the calendars
+       addCalendars();
+       addEventTypes();      
+       
+       // this will ensure that image and table can be focused
+       $(document).on('focusin', function(e) {e.stopImmediatePropagation();});
+       
+       // this will create the toolbar for the textarea
+       CKEDITOR.replace('eventPredication',{
+        customConfig: window.CRM.root+'/skin/js/ckeditor/calendar_event_editor_config.js',
+        language : window.CRM.lang
+     });
+      
        $("#ATTENDENCES").parents("tr").hide();
       },
       eventLimit: withlimit, // allow "more" link when too many events

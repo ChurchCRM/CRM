@@ -9,6 +9,26 @@ $app->group('/groups', function () {
     $this->get('/', function () {        
         echo GroupQuery::create()->find()->toJSON();
     });
+    
+    // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
+    $this->get('/calendars', function ($request, $response, $args) {
+        $groups = GroupQuery::Create()
+          ->orderByName()
+          ->find();
+          
+        $return = [];        
+        foreach ($groups as $group) {
+            $values['type'] = 'group';
+            $values['groupID'] = $group->getID();
+            $values['name'] = $group->getName();
+            
+            array_push($return, $values);
+        }
+        
+        return $response->withJson($return);    
+    });
+    
+
 
     $this->get('/groupsInCart', function () {
         $groupsInCart = [];
@@ -121,13 +141,15 @@ $app->group('/groups', function () {
         }
         else
         {
-           $p2g2r->setRoleId($group->getDefaultRole());
+          $p2g2r->setRoleId($group->getDefaultRole());
         }
-        $p2g2r->save();
-        $members = Person2group2roleP2g2rQuery::create()
+                
+        $group->addPerson2group2roleP2g2r($p2g2r);
+        $group->save();
+        $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
-            ->filterByPersonId($userID)
-            ->findByGroupId($groupID);
+            ->filterByPersonId($input->PersonID)
+            ->findByGroupId($GroupID);
         echo $members->toJSON();
     });
 

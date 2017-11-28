@@ -561,8 +561,8 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
   (1, 'root', '', 1, 'Main', 'Main', '', '', 'bAll', NULL, 0, 0, NULL, 1, 0, NULL),
   (2, 'calendar', 'root', 0, 'Calendar', 'Calendar', 'calendar.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, 'fa-calendar'),
 
-  (10, 'people', 'root', 1, 'Members', 'Members', '', 'Members', 'bAll', NULL, 0, 0, NULL, 1, 2, 'fa-users'),
-  (11, 'membdash', 'people', 0, 'Dashboard', 'Dashboard', 'MembersDashboard.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 1, NULL),
+  (10, 'people', 'root', 1, 'People', 'People', '', 'People', 'bAll', NULL, 0, 0, NULL, 1, 2, 'fa-users'),
+  (11, 'membdash', 'people', 0, 'Dashboard', 'Dashboard', 'PeopleDashboard.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 1, NULL),
   (12, 'newperson', 'people', 0, 'Add New Person', 'Add New Person', 'PersonEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 2, NULL),
   (13, 'viewperson', 'people', 0, 'View All Persons', 'View All Persons', 'SelectList.php?mode=person', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
   (14, 'newfamily', 'people', 0, 'Add New Family', 'Add New Family', 'FamilyEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 4, NULL),
@@ -1255,7 +1255,7 @@ CREATE TABLE `egive_egv` (
   `egv_EditedBy` smallint(6) NOT NULL default '0'
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `kioskdevice_kdev` ( 
+CREATE TABLE `kioskdevice_kdev` (
   `kdev_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `kdev_GUIDHash` char(64) DEFAULT NULL,
   `kdev_Name` varchar(50) DEFAULT NULL,
@@ -1268,7 +1268,7 @@ CREATE TABLE `kioskdevice_kdev` (
   UNIQUE KEY `kdev_ID` (`kdev_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `kioskassginment_kasm` ( 
+CREATE TABLE `kioskassginment_kasm` (
   `kasm_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `kasm_kdevId` mediumint(9) DEFAULT NULL,
   `kasm_AssignmentType` mediumint(9) DEFAULT NULL,
@@ -1287,6 +1287,38 @@ CREATE TABLE `tokens` (
   `valid_until_date` datetime NULL,
   `remainingUses` INT(2) NULL,
   PRIMARY KEY (`token`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `church_location` (
+  `location_id` INT NOT NULL,
+  `location_typeId` INT NOT NULL,
+  `location_name` VARCHAR(256) NOT NULL,
+  `location_address` VARCHAR(45) NOT NULL,
+  `location_city` VARCHAR(45) NOT NULL,
+  `location_state` VARCHAR(45) NOT NULL,
+  `location_zip` VARCHAR(45) NOT NULL,
+  `location_country` VARCHAR(45) NOT NULL,
+  `location_phone` VARCHAR(45) NULL,
+  `location_email` VARCHAR(45) NULL,
+  `location_timzezone` VARCHAR(45) NULL,
+  PRIMARY KEY (`location_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+
+CREATE TABLE `church_location_person` (
+  `location_id` INT NOT NULL,
+  `person_id` INT NOT NULL,
+  `order` INT NOT NULL,
+  `person_location_role_id` INT NOT NULL,  #This will be referenced to user-defined roles such as clergey, pastor, member, etc for non-denominational use
+  PRIMARY KEY (`location_id`, `person_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `church_location_role` (
+  `location_id` INT NOT NULL,
+  `role_id` INT NOT NULL,
+  `role_order` INT NOT NULL,
+  `role_title` INT NOT NULL,  #Thi
+  PRIMARY KEY (`location_id`, `role_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 update version_ver set ver_update_end = now();
