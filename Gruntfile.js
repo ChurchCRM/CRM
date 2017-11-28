@@ -42,7 +42,7 @@ module.exports = function (grunt) {
             '!logs/*.log'
         ],
         clean: {
-            skin: ["src/skin/{adminlte,font-awesome,ionicons,fullcalendar,moment,fastclick,ckeditor}"],
+            skin: ["src/skin/{adminlte,font-awesome,fullcalendar,moment,fastclick,ckeditor}"],
             release: ["target"]
         },
         copy: {
@@ -72,12 +72,6 @@ module.exports = function (grunt) {
                         cwd: 'node_modules/font-awesome',
                         src: ['{css,fonts,less,scss}/**'],
                         dest: 'src/skin/font-awesome/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'node_modules/ionicons',
-                        src: ['{css,fonts,less,png}/**'],
-                        dest: 'src/skin/ionicons/'
                     },
                     {
                         expand: true,
@@ -180,7 +174,7 @@ module.exports = function (grunt) {
             },
             datatableselect: {
                 src: [
-                    'https://cdn.datatables.net/select/1.2.2/css/select.bootstrap.min.css', 
+                    'https://cdn.datatables.net/select/1.2.2/css/select.bootstrap.min.css',
                     'https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js'
                 ],
                 dest: 'src/skin/adminlte/plugins/datatables/extensions/Select/'
@@ -392,7 +386,7 @@ module.exports = function (grunt) {
 
         // php composer
         var file = 'src/composer.json';
-        
+
         var curFile = grunt.file.readJSON(file);
         if (curFile.version !== version) {
             console.log("updating composer file to: " + version);
@@ -412,7 +406,7 @@ module.exports = function (grunt) {
             grunt.file.write(file, stringFile);
         }
     });
-    
+
     grunt.registerTask('cleanupLocalGit', 'clean local git', function () {
        grunt.loadNpmTasks('grunt-git');
        grunt.config('gitreset' ,{
@@ -422,7 +416,7 @@ module.exports = function (grunt) {
             }
           }
         });
-        
+
        grunt.config('gitcheckout', {
           master: {
             options: {
@@ -430,7 +424,7 @@ module.exports = function (grunt) {
             }
           }
         });
-        
+
         grunt.config('gitpull', {
           master: {
             options: {
