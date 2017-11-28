@@ -262,7 +262,7 @@ if ($per_ID == $iPersonID) {
             </span></li>
             <?php if (!empty($formattedMailingAddress)) {
                   ?>
-          <li><i class="fa-li glyphicon glyphicon-home"></i><?php echo gettext('Address'); ?>: <span>
+          <li><i class="fa-li fa fa-home"></i><?php echo gettext('Address'); ?>: <span>
             <a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
@@ -301,7 +301,7 @@ if ($per_ID == $iPersonID) {
             <li><i class="fa-li fa fa-envelope"></i><?= gettext('Email') ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
             <?php if ($mailchimp->isActive()) {
             ?>
-              <li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
+              <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
             <?php
         }
     }
@@ -315,7 +315,7 @@ if ($per_ID == $iPersonID) {
             <li><i class="fa-li fa fa-envelope"></i><?= gettext('Work/Other Email') ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
             <?php if ($mailchimp->isActive()) {
             ?>
-              <li><i class="fa-li glyphicon glyphicon-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
+              <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
               <?php
         }
     }
@@ -346,7 +346,7 @@ if ($per_ID == $iPersonID) {
             if ($type_ID == 11) {
                 $custom_Special = $sPhoneCountry;
             }
-            echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'glyphicon glyphicon-tag').'"></i>'.$custom_Name.': <span>';
+            echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'fa fa-tag').'"></i>'.$custom_Name.': <span>';
             $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
             if ($type_ID == 11) {
                 echo "<a href=\"tel:".$temp_string."\">".$temp_string."</a>";
@@ -606,7 +606,7 @@ if ($per_ID == $iPersonID) {
                         <code>
                           <?php if ($_SESSION['bManageGroups']) {
                           ?>
-                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="glyphicon glyphicon-list"></i></a>
+                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa fa-list"></i></a>
                             <div class="btn-group">
                               <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

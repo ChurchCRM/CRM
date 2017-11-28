@@ -76,12 +76,6 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: 'node_modules/ionicons',
-                        src: ['{css,fonts,less,png}/**'],
-                        dest: 'src/skin/external/ionicons/'
-                    },
-                    {
-                        expand: true,
                         filter: 'isFile',
                         flatten: true,
                         src: ['node_modules/fullcalendar/dist/*'],

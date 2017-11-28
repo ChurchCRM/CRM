@@ -571,7 +571,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 
 <div>
   <a href="ListEvents.php" class='btn btn-default'>
-    <i class='glyphicon glyphicon-chevron-left'></i>
+    <i class='fa fa-chevron-left'></i>
     <?= gettext('Return to Events') ?>
   </a>
 </div>
