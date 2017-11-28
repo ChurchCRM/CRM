@@ -124,11 +124,6 @@
      localStorage.setItem("groupFilterID",groupFilterID); 
   });
   
-  function deleteText(a)
-  {
-    if(a.value==i18next.t("Calendar Title") || a.value==i18next.t("Calendar description")){ a.value=''; a.style.color='#000';};
-  }
-  
   function BootboxContent(){    
     var frm_str = '<form id="some-form">'
        + '<table class="table">'
@@ -144,13 +139,13 @@
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Title') + ":</td>"
               +'<td colspan="1" class="TextColumn">'
-                +"<input type='text' id='EventTitle' onfocus='deleteText(this)' value=" + i18next.t("Calendar Title") + " size='30' maxlength='100' class='form-control' required>"
+                +"<input type='text' id='EventTitle' value='" + i18next.t("Calendar Title") + "' size='30' maxlength='100' class='form-control' required>"
               +'</td>'
             +'</tr>'
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Desc') + ":</td>"
               +'<td colspan="3" class="TextColumn">'
-                +"<textarea id='EventDesc' rows='4' maxlength='100' onfocus='deleteText(this)' class='form-control' required>" + i18next.t("Calendar description") + "</textarea>"
+                +"<textarea id='EventDesc' rows='4' maxlength='100' class='form-control' required>" + i18next.t("Calendar description") + "</textarea>"
               +'</td>'
             +'</tr>'          
             +'<tr>'
@@ -363,12 +358,21 @@
        // this will ensure that image and table can be focused
        $(document).on('focusin', function(e) {e.stopImmediatePropagation();});
        
+       $('#EventTitle').on('click',function(){
+       		if(this.defaultValue==i18next.t("Calendar Title")){ this.defaultValue=''; this.style.color='#000';};
+       });
+       
+       $('#EventDesc').on('click',function(){	
+       	   if(this.defaultValue==i18next.t("Calendar description")){ this.defaultValue=''; this.style.color='#000';};
+			 });
+       
        // this will create the toolbar for the textarea
        CKEDITOR.replace('eventPredication',{
-    		customConfig: '/skin/js/ckeditor/calendar_event_editor_config.js',
-    		language : window.CRM.lang
-	   });
+	    		customConfig: '/skin/js/ckeditor/calendar_event_editor_config.js',
+  	  		language : window.CRM.lang
+	   		});
 	    
+	    	// we hide the ATTENDENCES
        $("#ATTENDENCES").parents("tr").hide();
       },
       eventLimit: withlimit, // allow "more" link when too many events
