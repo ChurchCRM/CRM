@@ -29,7 +29,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
             <div class="form-group has-feedback">
                 <input id="username" type="text" class="form-control" placeholder="<?= gettext('Login Name') ?>"
                        required>
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <span class="fa fa-user form-control-feedback"></span>
             </div>
             <div class="row">
                 <div class="col-xs-12 text-center">
