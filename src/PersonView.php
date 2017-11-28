@@ -919,8 +919,7 @@ if ($per_ID == $iPersonID) {
     </div>
   </div>
 </div>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
-<link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js" type="text/javascript"></script>
 <script>
