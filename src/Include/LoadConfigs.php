@@ -24,7 +24,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Propel;
-use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\utils\LoggerUtils;
 
 function system_failure($message, $header = 'Setup failure')
 {
