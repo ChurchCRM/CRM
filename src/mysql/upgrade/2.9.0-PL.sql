@@ -1,20 +1,4 @@
-ALTER TABLE person_per
-  ADD COLUMN per_FacebookID bigint(20) unsigned default NULL AFTER per_Flags;
-
-ALTER TABLE person_per
-  ADD COLUMN per_Twitter varchar(50) default NULL AFTER per_FacebookID;
-
-ALTER TABLE person_per
-  ADD COLUMN per_LinkedIn varchar(50) default NULL AFTER per_Twitter;
-  
-ALTER TABLE person_custom_master
-  ADD PRIMARY KEY (custom_Field);
-  
-UPDATE menuconfig_mcf
-  SET security_grp = 'bAddEvent'
-  WHERE name = 'addevent';  
-  
--- person calendar setup
+-- Mise en place des calendriers groupes
 CREATE TABLE person_calendar (
     `per_cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
     `person_ID` mediumint(9) unsigned NOT NULL,
@@ -30,8 +14,7 @@ CREATE TABLE person_calendar (
 )
 ENGINE= InnoDB;
 
-
--- group calendar setup
+-- Mise en place des calendriers groupes
 CREATE TABLE group_calendar_persons (
     `grp_cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
     `group_ID` mediumint(9) unsigned NOT NULL,
@@ -52,7 +35,11 @@ CREATE TABLE group_calendar_persons (
 )
 ENGINE= InnoDB;
 
--- alteration of the groups
+UPDATE menuconfig_mcf
+  SET security_grp = 'bAddEvent'
+  WHERE name = 'addevent';  
+
+-- altération des événements
 ALTER TABLE group_grp ADD `group_manager_id` mediumint(9) unsigned DEFAULT NULL;
 ALTER TABLE group_grp
 ADD CONSTRAINT fk_manager_ID 
@@ -65,7 +52,6 @@ ADD CONSTRAINT fk_grp_parent_ID
     FOREIGN KEY (group_parent_id) REFERENCES group_grp(grp_ID)
     ON DELETE SET NULL;
 
--- alteration of the events
 ALTER TABLE events_event ADD event_grp_cal_id mediumint(9) unsigned DEFAULT NULL;
 ALTER TABLE events_event
 ADD CONSTRAINT fk_event_grp_cal_id
