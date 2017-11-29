@@ -64,8 +64,8 @@ $AnniversariesCount = MenuEventsCount::getNumberAnniversaries();
 
 if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
     ?>
-    <div class="alert alert-info alert-dismissible" id="Menu_Banner" style="background-color: #605ca8 !important;">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div class="alert alert-info alert-dismissible bg-purple disabled color-palette" id="Menu_Banner">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="color:#fff;">&times;</button>
 
     <?php
     if ($peopleWithBirthDaysCount > 0) {
