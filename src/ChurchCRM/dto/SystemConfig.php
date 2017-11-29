@@ -220,7 +220,8 @@ class SystemConfig
         "bHSTSEnable" => new ConfigItem(20142,"bHSTSEnable","boolean","0",gettext("Require that this ChurchCRM Database is accessed over HTTPS")),
         "bEventsOnDashboardPresence" => new ConfigItem(2042, "bEventsOnDashboardPresence", "boolean", "1", gettext("Show Birthdates Anniversaries on start up of the CRM")),
         "iEventsOnDashboardPresenceTimeOut" => new ConfigItem(2043, "iEventsOnDashboardPresenceTimeOut", "number", "10", gettext("Number of seconds after page load until the banner disappears, default 10 seconds")),
-        "iEventsInMenuBarIntervalTime" => new ConfigItem(2044, "iEventsInMenuBarIntervalTime", "number", "60", gettext("Menu bar event counter asynchronous refresh interval, default 60 second"))
+        "iEventsInMenuBarIntervalTime" => new ConfigItem(2044, "iEventsInMenuBarIntervalTime", "number", "60", gettext("Menu bar event counter asynchronous refresh interval, default 60 second")),
+        "bPHPMailerAutoTLS" => new ConfigItem(2045, "bPHPMailerAutoTLS", "boolean", "0", gettext("Automatically enable SMTP encryption if offered by the relaying server."))
     );
   }
 
@@ -229,7 +230,7 @@ class SystemConfig
     return array (
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
       gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword"],
-      gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress"],
+      gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS"],
       gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle","sNewPersonNotificationRecipientIDs"],
       gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
