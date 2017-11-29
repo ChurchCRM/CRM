@@ -119,6 +119,10 @@ $MenuFirst = 1;
                   <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" id="signout"
                      class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
                 </div>
+                <div class="pull-right">
+                  <a href="<?= SystemURLs::getRootPath()?>/Suspend.php"
+                     class="btn btn-default btn-flat"><?= gettext('Suspend') ?></a>
+                </div>
               </li>
             </ul>
           </li>
