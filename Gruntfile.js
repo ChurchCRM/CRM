@@ -183,7 +183,7 @@ module.exports = function (grunt) {
         sass: {
             dist: {
               options: {
-                 cacheLocation: "/tmp"
+                 cacheLocation: process.env['HOME'] + "/node_cache"
               },
               files: {
                   'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
