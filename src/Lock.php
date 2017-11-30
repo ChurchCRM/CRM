@@ -133,7 +133,7 @@ $id = null;
 
 // we hold down the last id
 if(isset($_SESSION['iUserID'])) {
-  $id = $_SESSION['iUserID'];
+  	$id = $_SESSION['iUserID'];
 }
 
 // we destroy the session
