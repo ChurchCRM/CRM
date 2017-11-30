@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-28 02:42+0000\n"
+"POT-Creation-Date: 2017-11-30 15:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2017-11-28T02:42:18.606Z\n"
-"PO-Revision-Date: 2017-11-28T02:42:18.607Z\n"
+"POT-Creation-Date: 2017-11-30T15:41:48.403Z\n"
+"PO-Revision-Date: 2017-11-30T15:41:48.403Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:260
@@ -2172,69 +2172,77 @@ msgstr ""
 msgid "Menu bar event counter asynchronous refresh interval, default 60 second"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:230
-msgid "Church Information"
+#: ChurchCRM/dto/SystemConfig.php:224
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:231
-msgid "User setup"
+#: ChurchCRM/dto/SystemConfig.php:225
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr ""
 
 #: ChurchCRM/dto/SystemConfig.php:232
-msgid "Email Setup"
+msgid "Church Information"
 msgstr ""
 
 #: ChurchCRM/dto/SystemConfig.php:233
-msgid "People Setup"
+msgid "User setup"
 msgstr ""
 
 #: ChurchCRM/dto/SystemConfig.php:234
-msgid "Map Settings"
+msgid "Email Setup"
 msgstr ""
 
 #: ChurchCRM/dto/SystemConfig.php:235
-msgid "Report Settings"
+msgid "People Setup"
 msgstr ""
 
 #: ChurchCRM/dto/SystemConfig.php:236
+msgid "Map Settings"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:237
+msgid "Report Settings"
+msgstr ""
+
+#: ChurchCRM/dto/SystemConfig.php:238
 msgid "Financial Settings"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:237 Include/Footer.php:139
+#: ChurchCRM/dto/SystemConfig.php:239 Include/Footer.php:139
 #: SystemSettings.php:28
 msgid "System Settings"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:238
+#: ChurchCRM/dto/SystemConfig.php:240
 msgid "Quick Search"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:239
+#: ChurchCRM/dto/SystemConfig.php:241
 msgid "Backup"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:240
+#: ChurchCRM/dto/SystemConfig.php:242
 msgid "Localization"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:241
+#: ChurchCRM/dto/SystemConfig.php:243
 msgid "Integration"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:242
+#: ChurchCRM/dto/SystemConfig.php:244
 msgid "Church Services"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:243 menuconfig_mcf.php:16
+#: ChurchCRM/dto/SystemConfig.php:245 menuconfig_mcf.php:16
 msgid "Events"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:295 ChurchCRM/dto/SystemConfig.php:307
-#: ChurchCRM/dto/SystemConfig.php:320
+#: ChurchCRM/dto/SystemConfig.php:297 ChurchCRM/dto/SystemConfig.php:309
+#: ChurchCRM/dto/SystemConfig.php:322
 msgid "An invalid configuration name has been requested"
 msgstr ""
 
-#: ChurchCRM/dto/SystemConfig.php:338
+#: ChurchCRM/dto/SystemConfig.php:340
 msgid "An invalid configuration id has been requested"
 msgstr ""
 
