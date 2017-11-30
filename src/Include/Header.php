@@ -120,8 +120,8 @@ $MenuFirst = 1;
                      class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath()?>/Suspend.php"
-                     class="btn btn-default btn-flat"><?= gettext('Suspend') ?></a>
+                  <a href="<?= SystemURLs::getRootPath()?>/Lock.php"
+                     class="btn btn-default btn-flat"><?= gettext('Lock') ?></a>
                 </div>
               </li>
             </ul>
