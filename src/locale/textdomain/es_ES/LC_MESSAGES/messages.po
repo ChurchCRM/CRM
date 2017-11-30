@@ -3203,7 +3203,7 @@ msgstr "Hoja Imprimible"
 
 #: PersonView.php:378
 msgid "Edit \"Why Came\" Notes"
-msgstr "Editar\"Forma de contacto\" Notas"
+msgstr "Editar Notas \"Cómo se contactó\""
 
 #: PersonView.php:384
 msgid "Delete this Record"
@@ -4059,7 +4059,7 @@ msgstr "Añadir nueva oportunidad"
 
 #: WhyCameEditor.php:31
 msgid "\"Why Came\" notes for "
-msgstr "\"Cómo se contactó\" notas para "
+msgstr "Notas \"Cómo se contactó\" para "
 
 #: WhyCameEditor.php:86
 msgid "Why did you come to the church?"
@@ -9191,4 +9191,124 @@ msgstr "Cambiar Ajustes"
 #: SystemSettings.php:217
 msgid "Unknown Type"
 msgstr "Tipo Desconocido"
+
+#: ChurchCRM/dto/Cart.php:23 ChurchCRM/dto/Cart.php:82
+msgid "PersonID for Cart must be numeric"
+msgstr "ID de Persona para Separador debe ser numérico"
+
+#: ChurchCRM/dto/Cart.php:43 ChurchCRM/dto/Cart.php:103
+msgid "GroupID for Cart must be numeric"
+msgstr "ID de Grupo para Separador debe ser numérico"
+
+#: ChurchCRM/dto/Cart.php:58
+msgid "FamilyID for Cart must be numeric"
+msgstr "ID de Familia para Separador debe ser numérico"
+
+#: ChurchCRM/dto/SystemConfig.php:198
+msgid "Search People"
+msgstr "Buscar Personas"
+
+#: ChurchCRM/dto/SystemConfig.php:205
+msgid "Maximum number of People"
+msgstr "Número máximo de Personas"
+
+#: ChurchCRM/dto/SystemConfig.php:220
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "Requiere que esta Base de Datos de ChurchCRM sea accedida mediante HTTPS"
+
+#: ChurchCRM/dto/SystemConfig.php:233
+msgid "People Setup"
+msgstr "Ajustes de Personas"
+
+#: ChurchCRM/dto/SystemConfig.php:242
+msgid "Church Services"
+msgstr "Servicios Religiosos"
+
+#: FamilyView.php:959 PersonView.php:995
+msgid "return to people dashboard"
+msgstr "volver al dashboard de personas"
+
+#: LettersAndLabels.php:53
+msgid "People Reports"
+msgstr "Reportes de Personas"
+
+#: PeopleDashboard.php:15
+msgid "People Dashboard"
+msgstr "Dashboard de Personas"
+
+#: PeopleDashboard.php:77
+msgid "People Functions"
+msgstr "Funciones de Personas"
+
+#: PeopleDashboard.php:231
+msgid "People Directory"
+msgstr "Directorio de Personas"
+
+#: PeopleDashboard.php:231
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "Directorio imprimible de todas las personas, agrupadas por familia asignada"
+
+#: PeopleDashboard.php:295 PeopleDashboard.php:334
+msgid "of People"
+msgstr "de Personas"
+
+#: SystemDBUpdate.php:28
+msgid "System Upgrade"
+msgstr "Actualización de Sistema"
+
+#: SystemDBUpdate.php:41
+msgid "Upgrade Required"
+msgstr "Actualización Requerida"
+
+#: SystemDBUpdate.php:43
+msgid "Current DB Version: "
+msgstr "Versión Actual de BD: "
+
+#: SystemDBUpdate.php:44
+msgid "Current Software Version: "
+msgstr "Versión de Software Actual: "
+
+#: SystemDBUpdate.php:55
+msgid "Upgrade database"
+msgstr "Actualizar base de datos"
+
+#: ChurchCRM/dto/SystemConfig.php:221
+msgid "Show Birthdates Anniversaries on start up of the CRM"
+msgstr "Mostrar Cumpleaños cuando al iniciar el CRM"
+
+#: ChurchCRM/dto/SystemConfig.php:222
+msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
+msgstr "Número de segundos después de la carga del sitio en que el anuncio desaparecerá, 10 segundos por defecto"
+
+#: ChurchCRM/dto/SystemConfig.php:223
+msgid "Menu bar event counter asynchronous refresh interval, default 60 second"
+msgstr "Intervalo de actualización del contador de eventos de la barra del menu, 60 segundos por defecto"
+
+#: Include/Header.php:126
+msgid "Help & Support"
+msgstr "Ayuda y Soporte"
+
+#: Include/Header.php:131 Include/Header.php:132
+msgid "Help & Manual"
+msgstr "Ayuda y Guía"
+
+#: Include/Header.php:146 Include/Header.php:147
+msgid "Contributing"
+msgstr "Contribuir"
+
+#: Menu.php:73
+msgid "Birthdates of the day"
+msgstr "Cumpleaños del día"
+
+#: Menu.php:124
+msgid "Anniversaries of the day"
+msgstr "Aniversarios del día"
+
+#: 
+msgid "ZIP"
+msgstr "Código Postal"
+
+#: 
+msgid "E-mail"
+msgstr "Email"
 
