@@ -132,8 +132,8 @@ if (isset($_POST['User'])) {
 $id = null;
 
 // we hold down the last id
-if(isset($_SESSION['iUserID'])){
-  $id = $_SESSION['iUserID'];
+if (isset($_SESSION['iUserID'])) {
+    $id = $_SESSION['iUserID'];
 }
 
 // we destroy the session
@@ -142,11 +142,11 @@ session_destroy();
 // we reopen a new one
 session_start() ;
 
-if ($id){
-  $_SESSION['iUserID'] = $id;
-  $_SESSION['iLoginType'] = "Lock";
+if ($id) {
+    $_SESSION['iUserID'] = $id;
+    $_SESSION['iLoginType'] = "Lock";
 } else {
-  $_SESSION['iLoginType'] = "Login";
+    $_SESSION['iLoginType'] = "Login";
 }
 
 // Set the page title and include HTML header
@@ -155,14 +155,14 @@ require 'Include/HeaderNotLoggedIn.php';
 
 $urlUserName = "";
 
-if ($_SESSION['iLoginType'] == "Lock"){
-  $person = PersonQuery::Create()
+if ($_SESSION['iLoginType'] == "Lock") {
+    $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
 
-  $user = UserQuery::Create()
+    $user = UserQuery::Create()
               ->findOneByPersonId($_SESSION['iUserID']);
             
-  $urlUserName = $user->getUserName();
+    $urlUserName = $user->getUserName();
 }
 
 
@@ -194,9 +194,11 @@ if ($_SESSION['iLoginType'] == "Lock"){
     
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <?php if ($_SESSION['iLoginType'] == "Lock"){ ?>
+      <?php if ($_SESSION['iLoginType'] == "Lock") {
+            ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
-      <?php } ?>
+      <?php
+        } ?>
     </div>
     <!-- /.lockscreen-image -->
 
@@ -289,7 +291,8 @@ if ($_SESSION['iLoginType'] == "Lock"){
 <!-- /.login-box -->
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
-  <?php if ($_SESSION['iLoginType'] == "Lock"){ ?>
+  <?php if ($_SESSION['iLoginType'] == "Lock") {
+            ?>
     $(document).ready(function () {
         $("#Login").hide();
     });  
@@ -301,11 +304,14 @@ if ($_SESSION['iLoginType'] == "Lock"){
         $("#Login").fadeIn(300);
       });
     });
-  <?php } else { ?>
+  <?php
+        } else {
+            ?>
     $(document).ready(function () {
         $("#Lock").hide();
     });  
-  <?php } ?>
+  <?php
+        } ?>
 </script>
 <script>
     var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
