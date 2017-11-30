@@ -172,6 +172,12 @@ if ($_SESSION['iLoginType'] == "Lock") {
         Church<b>CRM</b>        
     </div>
     
+    <p class="login-box-msg">
+        <b><?= ChurchMetaData::getChurchName() ?></b><br/>
+            <?= gettext('Please Login') ?>
+    </p>
+
+    
     <div>
     <?php
         if (isset($_GET['Timeout'])) {
