@@ -132,8 +132,8 @@ if (isset($_POST['User'])) {
 $id = null;
 
 // we hold down the last id
-if(isset($_SESSION['iUserID'])) {
-  	$id = $_SESSION['iUserID'];
+if (isset($_SESSION['iUserID'])) {
+    $id = $_SESSION['iUserID'];
 }
 
 // we destroy the session
@@ -196,8 +196,8 @@ if ($_SESSION['iLoginType'] == "Lock") {
       <?php if ($_SESSION['iLoginType'] == "Lock") {
             ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
-      <?php 
-      	} 
+      <?php
+        }
       ?>
     </div>
     <!-- /.lockscreen-image -->
@@ -291,8 +291,8 @@ if ($_SESSION['iLoginType'] == "Lock") {
 <!-- /.login-box -->
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
-  <?php if ($_SESSION['iLoginType'] == "Lock") { 
-    		?>
+  <?php if ($_SESSION['iLoginType'] == "Lock") {
+            ?>
     $(document).ready(function () {
         $("#Login").hide();
     });  
@@ -304,14 +304,14 @@ if ($_SESSION['iLoginType'] == "Lock") {
         $("#Login").fadeIn(300);
       });
     });
-  <?php 
-  		} else { 
-    			?>
+  <?php
+        } else {
+            ?>
     $(document).ready(function () {
         $("#Lock").hide();
     });  
-  <?php 
-  		} 
+  <?php
+        }
   ?>
 </script>
 <script>
