@@ -6,7 +6,7 @@
  *  description : page header used for most pages
  *
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
-
+ *  Copyright 2017 Philippe Logel
  ******************************************************************************/
 
 use ChurchCRM\Service\SystemService;
@@ -109,10 +109,12 @@ $MenuFirst = 1;
                 <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>">
                 <i class="fa fa fa-user"></i> <?= gettext('Profile') ?></a>
               </li>
+              <li class="hidden-xxs divider"></li>
               <li class="hidden-xxs">
                 <a href="<?= SystemURLs::getRootPath()?>/Lock.php">
                 <i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></a>
               </li>
+              <li class="hidden-xxs divider"></li>
               <li class="hidden-xxs">
                 <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
                 <i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></a>

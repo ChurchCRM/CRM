@@ -1,17 +1,13 @@
 <?php
 /*******************************************************************************
  *
- *  filename    : Login.php
- *  description : login page that checks for correct username and password
+ *  filename    : Lock.php
+ *  website     : http://www.churchcrm.io
+ *  description : page header used for most pages
  *
- *  http://www.churchcrm.io/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker,
- *
- *  Updated 2005-03-19 by Everette L Mills: Removed dropdown login box and
- *  added user entered login box
- *
+ *  Copyright 2017 Philippe Logel
  ******************************************************************************/
-
+ 
 // Include the function library
 require 'Include/Config.php';
 $bSuppressSessionTests = true; // DO NOT MOVE
