@@ -129,19 +129,24 @@ if (isset($_POST['User'])) {
     $urlUserName = $_GET['username'];
 }
 
+$id = null;
+
 // we hold down the last id
-$id = $_SESSION['iUserID'];
+if(isset($_SESSION['iUserID'])){
+  $id = $_SESSION['iUserID'];
+}
 
 // we destroy the session
 session_destroy();
 
-// we reopen it
+// we reopen a new one
 session_start() ;
-$_SESSION['iUserID'] = $id;
+
 if ($id){
-  $_SESSION['iLonginType'] = "Lock";
+  $_SESSION['iUserID'] = $id;
+  $_SESSION['iLoginType'] = "Lock";
 } else {
-  $_SESSION['iLonginType'] = "Login";
+  $_SESSION['iLoginType'] = "Login";
 }
 
 // Set the page title and include HTML header
@@ -150,7 +155,7 @@ require 'Include/HeaderNotLoggedIn.php';
 
 $urlUserName = "";
 
-if ($_SESSION['iLonginType'] == "Lock"){
+if ($_SESSION['iLoginType'] == "Lock"){
   $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
 
@@ -189,7 +194,7 @@ if ($_SESSION['iLonginType'] == "Lock"){
     
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <?php if ($_SESSION['iLonginType'] == "Lock"){ ?>
+      <?php if ($_SESSION['iLoginType'] == "Lock"){ ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
       <?php } ?>
     </div>
@@ -284,7 +289,7 @@ if ($_SESSION['iLonginType'] == "Lock"){
 <!-- /.login-box -->
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
-  <?php if ($_SESSION['iLonginType'] == "Lock"){ ?>
+  <?php if ($_SESSION['iLoginType'] == "Lock"){ ?>
     $(document).ready(function () {
         $("#Login").hide();
     });  
