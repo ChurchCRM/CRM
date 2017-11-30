@@ -17,6 +17,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 //Set the page title
