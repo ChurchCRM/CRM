@@ -306,7 +306,7 @@ if ($_SESSION['iLoginType'] == "Lock") {
     });
   <?php 
   	} else { 
-  ?>
+        ?>
     $(document).ready(function () {
         $("#Lock").hide();
     });  
