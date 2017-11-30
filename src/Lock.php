@@ -189,7 +189,7 @@ $urlUserName = $user->getUserName();
     <!-- /.lockscreen-image -->
 
     <!-- lockscreen credentials (contains the form) -->
-    <form class="lockscreen-credentials" role="form" method="post" name="LoginForm" action="Suspend.php">
+    <form class="lockscreen-credentials" role="form" method="post" name="LoginForm" action="Lock.php">
       <div class="input-group">
         <input type="hidden" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>">
 
