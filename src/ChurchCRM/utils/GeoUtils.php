@@ -135,39 +135,39 @@ class GeoUtils
         if ($bearing < -191.25) {
             $direction = '---';
         } elseif ($bearing < -168.75) {
-            $direction = 'S';
+            $direction = gettext('S');
         } elseif ($bearing < -146.25) {
-            $direction = 'SSW';
+            $direction = gettext('SSW');
         } elseif ($bearing < -123.75) {
-            $direction = 'SW';
+            $direction = gettext('SW');
         } elseif ($bearing < -101.25) {
-            $direction = 'WSW';
+            $direction = gettext('WSW');
         } elseif ($bearing < -78.75) {
-            $direction = 'W';
+            $direction = gettext('W');
         } elseif ($bearing < -56.25) {
-            $direction = 'WNW';
+            $direction = gettext('WNW');
         } elseif ($bearing < -33.75) {
-            $direction = 'NW';
+            $direction = gettext('NW');
         } elseif ($bearing < -11.25) {
-            $direction = 'NNW';
+            $direction = gettext('NNW');
         } elseif ($bearing < 11.25) {
-            $direction = 'N';
+            $direction = gettext('N');
         } elseif ($bearing < 33.75) {
-            $direction = 'NNE';
+            $direction = gettext('NNE');
         } elseif ($bearing < 56.25) {
-            $direction = 'NE';
+            $direction = gettext('NE');
         } elseif ($bearing < 78.75) {
-            $direction = 'ENE';
+            $direction = gettext('ENE');
         } elseif ($bearing < 101.25) {
-            $direction = 'E';
+            $direction = gettext('E');
         } elseif ($bearing < 123.75) {
-            $direction = 'ESE';
+            $direction = gettext('ESE');
         } elseif ($bearing < 146.25) {
-            $direction = 'SE';
+            $direction = gettext('SE');
         } elseif ($bearing < 168.75) {
-            $direction = 'SSE';
+            $direction = gettext('SSE');
         } elseif ($bearing < 191.25) {
-            $direction = 'S';
+            $direction = gettext('S');
         } else {
             $direction = '+++';
         }

@@ -61,7 +61,6 @@ window.CRM.kiosk = {
           $(data.People).each(function(i,d){
             window.CRM.kiosk.renderClassMember({displayName:d.FirstName+" "+d.LastName, classRole:d.RoleName,personId:d.Id,status:d.status})
           });
-          $(".initials-image").initial();
       })
   },
   

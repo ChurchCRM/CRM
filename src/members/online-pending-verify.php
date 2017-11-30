@@ -41,6 +41,11 @@ require '../Include/Header.php';
                 url: window.CRM.root + "/api/families/pending-self-verify",
                 dataSrc: 'families'
             },
+            "dom": window.CRM.plugin.dataTable.dom,
+            "tableTools": {
+                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
+            },
+            responsive: true,
             columns: [
                 {
                     title: i18next.t('Family Id'),

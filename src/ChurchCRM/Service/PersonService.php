@@ -7,7 +7,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
 {
-    public function search($searchTerm)
+    public function search($searchTerm, $includeFamilyRole=true)
     {
         $searchLikeString = '%'.$searchTerm.'%';
         $people = PersonQuery::create()->
@@ -28,32 +28,24 @@ class PersonService
             $values['address'] = $person->getAddress();
             $values['role'] = $person->getFamilyRoleName();
 
-            $familyRole="(";
-            if($values['familyID']) {
-                if ($person->getFamilyRole()) {
-                    $familyRole .= $person->getFamilyRoleName();
+            if ($includeFamilyRole) {
+                $familyRole = "(";
+                if ($values['familyID']) {
+                    if ($person->getFamilyRole()) {
+                        $familyRole .= $person->getFamilyRoleName();
+                    } else {
+                        $familyRole .= gettext('Part');
+                    }
+                    $familyRole .= gettext(' of the') . ' <a href="FamilyView.php?FamilyID=' . $values['familyID'] . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
                 } else {
-                    $familyRole .=  gettext('Part');
+                    $familyRole = gettext('(No assigned family)');
                 }
-                $familyRole .= gettext(' of the').' <a href="FamilyView.php?FamilyID='. $values['familyID'].'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
-            } else {
-                $familyRole = gettext('(No assigned family)');
+                $values['familyRole'] = $familyRole;
             }
-            $values['familyRole'] = $familyRole;
-
             array_push($return, $values);
         }
 
         return $return;
-    }
-
-    public function getPersonsJSON($persons)
-    {
-        if ($persons) {
-            return '{"persons": '.json_encode($persons).'}';
-        } else {
-            return false;
-        }
     }
 
     public function getPeopleEmailsAndGroups()

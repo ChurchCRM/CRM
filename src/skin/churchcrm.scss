@@ -13,7 +13,6 @@
 // and we don't want to incur IE's CSS limits.
 // ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
 
-@import 'jquery-ui/jquery-ui.css';
 @import 'adminlte/plugins/datepicker/datepicker3.css';
 @import 'adminlte/plugins/daterangepicker/daterangepicker.css';
 @import 'adminlte/plugins/timepicker/bootstrap-timepicker.min.css';
@@ -22,20 +21,18 @@
 @import 'adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css';
 @import 'adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css';
 @import 'adminlte/plugins/datatables/extensions/Select/select.bootstrap.min.css';
-
-@import 'bootstrap-toggle/bootstrap-toggle.css';
-@import 'fullcalendar/fullcalendar.min.css';
-@import 'fullcalendar/fullcalendar.print.css' print;
-
-@import 'font-awesome/css/font-awesome.min.css';
-
-@import 'ionicons/css/ionicons.min.css';
-
+@import 'adminlte/plugins/select2/select2.min.css';
 @import 'adminlte/dist/css/AdminLTE.min.css';
 @import 'adminlte/dist/css/skins/_all-skins.min.css';
-@import 'adminlte/plugins/select2/select2.min.css';
 
+@import 'external/jquery-ui/jquery-ui.css';
+@import 'external/bootstrap-toggle/bootstrap-toggle.css';
+@import 'external/font-awesome/css/font-awesome.min.css';
 @import 'external/jquery.steps/jquery.steps.css';
+@import 'external/jquery-photo-uploader/PhotoUploader.css';
+
+@import 'external/fullcalendar/fullcalendar.min.css';
+@import 'external/fullcalendar/fullcalendar.print.css' print;
 
 // Import ChurchCRM custom styles
 
@@ -47,5 +44,6 @@
 @import 'scss/leftNav';
 @import 'scss/imageOverlay';
 @import 'scss/maps';
-// @import "scss/spacing";
+@import "scss/spacing";
 @import 'scss/SystemNotifications';
+@import 'scss/cartDropdown';

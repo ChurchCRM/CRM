@@ -6,7 +6,8 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2003 Phillip Hullquist, Deane Barker, Chris Gebhardt
-  *
+ *  update 2017 : Philippe Logel
+ *
  ******************************************************************************/
 
 // Include the function library
@@ -15,6 +16,9 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\PersonQuery;
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
@@ -82,7 +86,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 // Format the BirthDate
-$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '/', $per_Flags);
+$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
 //if ($per_BirthMonth > 0 && $per_BirthDay > 0)
 //{
 //	$dBirthDate = $per_BirthMonth . "/" . $per_BirthDay;
@@ -127,8 +131,24 @@ require 'Include/Header-Short.php';
 <p class="ShadedBox">
 
 <?php
+
+$personSheet = PersonQuery::create()->findPk($per_ID);
+
+if ($personSheet) {
+    echo "<table>";
+    echo "	<tr>";
+    echo "	<td  style=\"padding:5px;\">";
+    $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $personSheet->getPhoto()->getPhotoURI());
+    
+    echo "<img src=\"".$imgName."\"/>";
+    echo "</td><td>";
+    echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
+    echo "</td></tr></table>";
+} else {
+    echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
+}
+
 // Print the name and address header
-echo '<b><font size="4">'.$per_FirstName.' '.$per_LastName.'</font></b><br>';
 echo '<font size="3">';
 if ($sAddress1 != '') {
     echo $sAddress1.'<br>';
@@ -326,9 +346,9 @@ if ($fam_ID) {
             while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
                 $per_BirthYear = '';
                 $agr_Description = '';
-
+                
                 extract($aRow);
-
+                
                 // Alternate the row style
                 $sRowClass = AlternateRowStyle($sRowClass)
 
@@ -346,7 +366,6 @@ if ($fam_ID) {
 				<?= $sFamRole ?>&nbsp;
 			</td>
 			<td data-birth-date="<?= $per_Flags == 1 ? '' : date_create($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay)->format('Y-m-d') ?>">
-
 			</td>
 		</tr>
 	<?php
@@ -384,7 +403,7 @@ if (mysqli_num_rows($rsAssignedGroups) == 0) {
         // DISPLAY THE ROW
         echo '<tr class="'.$sRowClass.'">';
         echo ' <td>'.$grp_Name.'</td>';
-        echo ' <td>'.$roleName.'</td>';
+        echo ' <td>'.gettext($roleName).'</td>';
         echo '</tr>';
 
         // If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
@@ -392,7 +411,7 @@ if (mysqli_num_rows($rsAssignedGroups) == 0) {
             $firstRow = true;
             // Get the special properties for this group
             $sSQL = 'SELECT groupprop_master.* FROM groupprop_master
-				WHERE grp_ID = '.$grp_ID." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
+									WHERE grp_ID = '.$grp_ID." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
             $rsPropList = RunQuery($sSQL);
 
             $sSQL = 'SELECT * FROM groupprop_'.$grp_ID.' WHERE per_ID = '.$iPersonID;

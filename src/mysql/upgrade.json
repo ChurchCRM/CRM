@@ -114,6 +114,7 @@
             "2.6.3"
         ],
         "scripts": [
+            "/mysql/upgrade/rebuild_nav_menus.sql",
             "/mysql/upgrade/2.7.0.sql"
         ],
         "dbVersion": "2.7.0"
@@ -144,9 +145,18 @@
             "2.8.7",
             "2.8.8",
             "2.8.9",
-            "2.8.10"
+            "2.8.10",
+            "2.8.11",
+            "2.8.12",
+            "2.8.13",
+            "2.8.14",
+            "2.8.15"
         ],
-        "scripts": [],
-        "dbVersion": "2.8.11"
+        "scripts": [
+            "/mysql/upgrade/2.9.0.sql",
+            "/mysql/upgrade/2.9.0-InnoDB.php",
+            "/mysql/upgrade/2.9.0_church_division.sql"
+        ],
+        "dbVersion": "2.9.0"
     }
 }

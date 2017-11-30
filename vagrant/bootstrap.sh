@@ -80,7 +80,7 @@ echo "=========================================================="
 echo "===============   Composer PHP           ================="
 echo "=========================================================="
 
-sudo /usr/local/bin/composer self-update
+sudo composer self-update
 npm run composer-update
 
 echo "================   Build ORM Classes    =================="
