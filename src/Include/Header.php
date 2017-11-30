@@ -104,19 +104,27 @@ $MenuFirst = 1;
 
             </a>
             <ul class="hidden-xxs dropdown-menu">
-	            <li class="user-header" style="height: 155px;padding-top: 10px;">
-                <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>"><img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
-                <p style="color:#fff"><i class="fa fa fa-user"></i> <?= $_SESSION['user']->getName() ?></p>
-                </a>
-              </li>
-              <li class="hidden-xxs">
-                <a href="<?= SystemURLs::getRootPath()?>/Lock.php">
-                <i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></a>
-              </li>
-              <li class="hidden-xxs divider"></li>
-              <li class="hidden-xxs">
-                <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
-                <i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></a>
+              <li class="user-header" id="yourElement" style="height:205px">
+                <table border=0 width="100%">
+                <tr style="border-bottom: 1pt solid white;">
+                <td valign="middle" width=110>
+                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">                
+                </td>
+                <td valign="middle" align="left" >                
+                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>" class="item_link" data-toggle="tooltip" title="<?= gettext("Consult your profile at this place")?>" data-placement="bottom">
+                      <p ><i class="fa fa fa-user"></i> <?= gettext("Profile") ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php" class="item_link"  data-toggle="tooltip" title="<?= gettext("You can change here your password")?>" data-placement="bottom">
+                      <p ><i class="fa fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link"  data-toggle="tooltip" title="<?= gettext("Change Custom Settings ")?>" data-placement="bottom">
+                      <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Change Settings') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath()?>/Lock.php" class="item_link"  data-toggle="tooltip" title="<?= gettext("Lock your session")?>" data-placement="bottom">
+                      <p ><i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link"  data-toggle="tooltip" title="<?= gettext("Quit ChurchCRM and close your session")?>" data-placement="bottom">
+                      <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
+                </td>
+                </tr>
+                </table>
+                <p style="color:#fff"><b><?= $_SESSION['user']->getName() ?></b></p>
               </li>
             </ul>
           </li>
