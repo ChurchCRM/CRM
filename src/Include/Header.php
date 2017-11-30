@@ -106,23 +106,21 @@ $MenuFirst = 1;
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
+                <img width="100" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
                 <p><?= $_SESSION['user']->getName() ?></p>
               </li>
               <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>"
-                     class="btn btn-default btn-flat"><?= gettext('Profile') ?></a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" id="signout"
-                     class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath()?>/Lock.php"
-                     class="btn btn-default btn-flat"><?= gettext('Lock') ?></a>
-                </div>
+              <li class="hidden-xxs">
+                <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
+                <i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></a>
+              </li>
+              <li class="hidden-xxs">
+                <a href="<?= SystemURLs::getRootPath()?>/Lock.php">
+                <i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></a>
+              </li>
+              <li class="hidden-xxs">
+                <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>">
+                <i class="fa fa fa-user"></i> <?= gettext('Profile') ?></a>
               </li>
             </ul>
           </li>

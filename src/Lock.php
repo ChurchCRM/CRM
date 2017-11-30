@@ -142,22 +142,31 @@ session_destroy();
 // we reopen it
 session_start() ;
 $_SESSION['iUserID'] = $id;
+if ($id){
+  $_SESSION['iLonginType'] = "Lock";
+} else {
+  $_SESSION['iLonginType'] = "Login";
+}
 
 // Set the page title and include HTML header
-$sPageTitle = gettext('Login');
+$sPageTitle = gettext('Lock');
 require 'Include/HeaderNotLoggedIn.php';
 
-$person = PersonQuery::Create()
-            ->findOneByID($_SESSION['iUserID']);
+$urlUserName = "";
 
-$user = UserQuery::Create()
-            ->findOneByPersonId($_SESSION['iUserID']);
+if ($_SESSION['iLonginType'] == "Lock"){
+  $person = PersonQuery::Create()
+              ->findOneByID($_SESSION['iUserID']);
+
+  $user = UserQuery::Create()
+              ->findOneByPersonId($_SESSION['iUserID']);
             
-$urlUserName = $user->getUserName();
+  $urlUserName = $user->getUserName();
+}
 
 
 ?>
-<div class="lockscreen-wrapper">
+<div class="lockscreen-wrapper" id="Lock">
     <div class="login-logo">
         Church<b>CRM</b>        
     </div>
@@ -184,7 +193,9 @@ $urlUserName = $user->getUserName();
     
     <!-- lockscreen image -->
     <div class="lockscreen-image">
+      <?php if ($_SESSION['iLonginType'] == "Lock"){ ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
+      <?php } ?>
     </div>
     <!-- /.lockscreen-image -->
 
@@ -194,9 +205,7 @@ $urlUserName = $user->getUserName();
         <input type="hidden" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>">
 
         <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext('Password')?>">
-        <!--type="password" id="PasswordBox" name="Password" class="form-control" data-toggle="password"
-                   placeholder="<?= gettext('Password') ?>" required autofocus-->
-
+        
         <div class="input-group-btn">
           <button type="submit"  class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
         </div>
@@ -209,12 +218,94 @@ $urlUserName = $user->getUserName();
     <?= gettext("Enter your password to retrieve your session") ?>
   </div>
   <div class="text-center">
-    <a href="Login.php"><?= gettext("Or sign in as a different user") ?></a>
+    <a href="#" id="Login-div-appear"><?= gettext("Or sign in as a different user") ?></a>
   </div>
+<!-- /.login-box-body -->
+</div>
+<!-- /.lockscreen-wrapper -->
+<div class="login-box" id="Login">
+    <div class="login-logo">
+        Church<b>CRM</b>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">
+            <b><?= ChurchMetaData::getChurchName() ?></b><br/>
+            <?= gettext('Please Login') ?>
+        </p>
+
+        <?php
+        if (isset($_GET['Timeout'])) {
+            $loginPageMsg = gettext('Your previous session timed out.  Please login again.');
+        }
+
+        // output warning and error messages
+        if (isset($sErrorText)) {
+            echo '<div class="alert alert-error">' . $sErrorText . '</div>';
+        }
+        if (isset($loginPageMsg)) {
+            echo '<div class="alert alert-warning">' . $loginPageMsg . '</div>';
+        }
+        ?>
+
+        <form class="form-signin" role="form" method="post" name="LoginForm" action="Lock.php">
+            <div class="form-group has-feedback">
+                <input type="text" id="UserBox" name="User" class="form-control" value=""
+                   placeholder="<?= gettext('Email/Username') ?>" required autofocus>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" id="PasswordBox" name="Password" class="form-control" data-toggle="password"
+                   placeholder="<?= gettext('Password') ?>" required autofocus>
+                <br/>
+                <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
+            ?>
+                    <span class="text-right"><a
+                                href="external/password/"><?= gettext("I forgot my password") ?></a></span>
+                    <?php
+        } ?>
+            </div>
+            <div class="row">
+                <!-- /.col -->
+                <div class="col-xs-5">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat"><i
+                                class="fa fa-sign-in"></i> <?= gettext('Login') ?></button>
+                </div>
+            </div>
+        </form>
+
+        <?php if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
+            ?>
+            <a href="external/register/" class="text-center btn bg-olive"><i
+                        class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
+            <?php
+        } ?>
+        <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
+
+    </div>
+
 <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+<script>
+  <?php if ($_SESSION['iLonginType'] == "Lock"){ ?>
+    $(document).ready(function () {
+        $("#Login").hide();
+    });  
+    
+    $("#Login-div-appear").click(function(){
+      // 200 is the interval in milliseconds for the fade-in/out, we use jQuery's callback feature to fade
+      // in the new div once the first one has faded out
+      $("#Lock").fadeOut(100, function () {
+        $("#Login").fadeIn(300);
+      });
+    });
+  <?php } else { ?>
+    $(document).ready(function () {
+        $("#Lock").hide();
+    });  
+  <?php } ?>
+</script>
 <script>
     var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
     function $buo_f() {
@@ -236,5 +327,6 @@ $urlUserName = $user->getUserName();
         eyeCloseClass: 'glyphicon-eye-close'
     });    
 </script>
+
 
 <?php require 'Include/FooterNotLoggedIn.php'; ?>
