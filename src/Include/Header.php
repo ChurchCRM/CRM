@@ -104,11 +104,6 @@ $MenuFirst = 1;
 
             </a>
             <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img width="100" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
-                <p><?= $_SESSION['user']->getName() ?></p>
-              </li>
               <!-- Menu Footer-->
               <li class="hidden-xxs">
                 <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
