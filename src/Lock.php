@@ -172,6 +172,11 @@ if ($_SESSION['iLoginType'] == "Lock"){
         Church<b>CRM</b>        
     </div>
     
+    <p class="login-box-msg">
+        <b><?= ChurchMetaData::getChurchName() ?></b><br/>
+            <?= gettext('Please Login') ?>
+    </p>
+    
     <div>
     <?php
         if (isset($_GET['Timeout'])) {
@@ -196,7 +201,8 @@ if ($_SESSION['iLoginType'] == "Lock"){
     <div class="lockscreen-image">
       <?php if ($_SESSION['iLoginType'] == "Lock"){ ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
-      <?php } ?>
+      <?php 
+      	} ?>
     </div>
     <!-- /.lockscreen-image -->
 
