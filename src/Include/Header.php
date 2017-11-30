@@ -104,6 +104,10 @@ $MenuFirst = 1;
 
             </a>
             <ul class="dropdown-menu">
+	            <li class="user-header">
+                <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
+                <p><?= $_SESSION['user']->getName() ?></p>
+              </li>
               <!-- Menu Footer-->
               <li class="hidden-xxs">
                 <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>">
