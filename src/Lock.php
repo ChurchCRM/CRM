@@ -194,7 +194,8 @@ if ($_SESSION['iLoginType'] == "Lock") {
     
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <?php if ($_SESSION['iLoginType'] == "Lock"){ ?>
+      <?php if ($_SESSION['iLoginType'] == "Lock"){ 
+      ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
       <?php 
       	} 
