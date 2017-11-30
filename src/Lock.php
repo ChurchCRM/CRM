@@ -176,6 +176,7 @@ if ($_SESSION['iLoginType'] == "Lock") {
         <b><?= ChurchMetaData::getChurchName() ?></b><br/>
             <?= gettext('Please Login') ?>
     </p>
+    
 
     
     <div>
@@ -236,11 +237,6 @@ if ($_SESSION['iLoginType'] == "Lock") {
     <div class="login-logo">
         Church<b>CRM</b>
     </div>
-    
-    <p class="login-box-msg">
-        <b><?= ChurchMetaData::getChurchName() ?></b><br/>
-            <?= gettext('Please Login') ?>
-    </p>
     
     <!-- /.login-logo -->
     <div class="login-box-body">

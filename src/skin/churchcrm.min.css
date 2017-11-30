@@ -1729,10 +1729,10 @@ img.legendicon {
 /*# sourceMappingURL=churchcrm.min.css.map */
 
 .user-header a.item_link{
-	color:#FFFFFF;}
+  color:#FFFFFF;}
 
 .user-header a.item_link:link{
-.user-header 	color:#FFFFFF;}
+.user-header   color:#FFFFFF;}
 
 .user-header a.item_link:hover{
-	color:#BBBBBB;}
+  color:#CCCCCC;}
