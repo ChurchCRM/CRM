@@ -143,10 +143,10 @@ session_destroy();
 session_start() ;
 
 if ($id) {
-    $_SESSION['iUserID'] = $id;
-    $_SESSION['iLoginType'] = "Lock";
+  $_SESSION['iUserID'] = $id;
+  $_SESSION['iLoginType'] = "Lock";
 } else {
-    $_SESSION['iLoginType'] = "Login";
+  $_SESSION['iLoginType'] = "Login";
 }
 
 // Set the page title and include HTML header
@@ -156,12 +156,13 @@ require 'Include/HeaderNotLoggedIn.php';
 $urlUserName = "";
 
 if ($_SESSION['iLoginType'] == "Lock") {
-    $person = PersonQuery::Create()
+  $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
-    $user = UserQuery::Create()
+
+  $user = UserQuery::Create()
               ->findOneByPersonId($_SESSION['iUserID']);
-    
-    $urlUserName = $user->getUserName();
+            
+  $urlUserName = $user->getUserName();
 }
 
 
@@ -193,8 +194,8 @@ if ($_SESSION['iLoginType'] == "Lock") {
     
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <?php if ($_SESSION['iLoginType'] == "Lock") {
-            ?>
+      <?php if ($_SESSION['iLoginType'] == "Lock") { 
+      ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
       <?php 
       	} 
@@ -292,7 +293,7 @@ if ($_SESSION['iLoginType'] == "Lock") {
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
   <?php if ($_SESSION['iLoginType'] == "Lock") { 
-    		?>
+  ?>
     $(document).ready(function () {
         $("#Login").hide();
     });  
@@ -305,13 +306,13 @@ if ($_SESSION['iLoginType'] == "Lock") {
       });
     });
   <?php 
-  		} else { 
-    			?>
+  	} else { 
+  ?>
     $(document).ready(function () {
         $("#Lock").hide();
     });  
   <?php 
-  		} 
+  	} 
   ?>
 </script>
 <script>
