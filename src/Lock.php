@@ -194,7 +194,7 @@ if ($_SESSION['iLoginType'] == "Lock") {
     
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <?php if ($_SESSION['iLoginType'] == "Lock"){ 
+      <?php if ($_SESSION['iLoginType'] == "Lock") { 
       ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
       <?php 
@@ -292,12 +292,13 @@ if ($_SESSION['iLoginType'] == "Lock") {
 <!-- /.login-box -->
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
-  <?php if ($_SESSION['iLoginType'] == "Lock"){ ?>
+  <?php if ($_SESSION['iLoginType'] == "Lock") { 
+  ?>
     $(document).ready(function () {
         $("#Login").hide();
     });  
     
-    $("#Login-div-appear").click(function(){
+    $("#Login-div-appear").click(function() {
       // 200 is the interval in milliseconds for the fade-in/out, we use jQuery's callback feature to fade
       // in the new div once the first one has faded out
       $("#Lock").fadeOut(100, function () {
