@@ -138,10 +138,10 @@ session_destroy();
 // we reopen it
 session_start() ;
 $_SESSION['iUserID'] = $id;
-if ($id){
-  $_SESSION['iLonginType'] = "Lock";
+if ($id) {
+    $_SESSION['iLonginType'] = "Lock";
 } else {
-  $_SESSION['iLonginType'] = "Login";
+    $_SESSION['iLonginType'] = "Login";
 }
 
 // Set the page title and include HTML header
@@ -150,14 +150,14 @@ require 'Include/HeaderNotLoggedIn.php';
 
 $urlUserName = "";
 
-if ($_SESSION['iLonginType'] == "Lock"){
-  $person = PersonQuery::Create()
+if ($_SESSION['iLonginType'] == "Lock") {
+    $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
 
-  $user = UserQuery::Create()
+    $user = UserQuery::Create()
               ->findOneByPersonId($_SESSION['iUserID']);
             
-  $urlUserName = $user->getUserName();
+    $urlUserName = $user->getUserName();
 }
 
 
@@ -189,9 +189,11 @@ if ($_SESSION['iLonginType'] == "Lock"){
     
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <?php if ($_SESSION['iLonginType'] == "Lock"){ ?>
+      <?php if ($_SESSION['iLonginType'] == "Lock") {
+            ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
-      <?php } ?>
+      <?php
+        } ?>
     </div>
     <!-- /.lockscreen-image -->
 
@@ -284,7 +286,8 @@ if ($_SESSION['iLonginType'] == "Lock"){
 <!-- /.login-box -->
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
-  <?php if ($_SESSION['iLonginType'] == "Lock"){ ?>
+  <?php if ($_SESSION['iLonginType'] == "Lock") {
+            ?>
     $(document).ready(function () {
         $("#Login").hide();
     });  
@@ -296,11 +299,14 @@ if ($_SESSION['iLonginType'] == "Lock"){
         $("#Login").fadeIn(300);
       });
     });
-  <?php } else { ?>
+  <?php
+        } else {
+            ?>
     $(document).ready(function () {
         $("#Lock").hide();
     });  
-  <?php } ?>
+  <?php
+        } ?>
 </script>
 <script>
     var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
