@@ -106,16 +106,16 @@ $MenuFirst = 1;
             <ul class="dropdown-menu">
               <!-- Menu Footer-->
               <li class="hidden-xxs">
-                <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
-                <i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></a>
+                <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>">
+                <i class="fa fa fa-user"></i> <?= gettext('Profile') ?></a>
               </li>
               <li class="hidden-xxs">
                 <a href="<?= SystemURLs::getRootPath()?>/Lock.php">
                 <i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></a>
               </li>
               <li class="hidden-xxs">
-                <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>">
-                <i class="fa fa fa-user"></i> <?= gettext('Profile') ?></a>
+                <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php">
+                <i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></a>
               </li>
             </ul>
           </li>
