@@ -39,6 +39,8 @@ abstract class BaseEmail
         $this->mail->CharSet = 'UTF-8';
         $this->mail->Timeout = intval(SystemConfig::getValue("iSMTPTimeout"));
         $this->mail->Host = SystemConfig::getValue("sSMTPHost");
+        $this->mail->SMTPAutoTLS = SystemConfig::getBooleanValue("bPHPMailerAutoTLS");
+        $this->mail->SMTPSecure = SystemConfig::getValue("sPHPMailerSMTPSecure");
         if (SystemConfig::getBooleanValue("bSMTPAuth")) {
             $this->mail->SMTPAuth = true;
             $this->mail->Username = SystemConfig::getValue("sSMTPUser");
