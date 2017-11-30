@@ -133,7 +133,7 @@ $id = null;
 
 // we hold down the last id
 if(isset($_SESSION['iUserID'])) {
-    $id = $_SESSION['iUserID'];
+  	$id = $_SESSION['iUserID'];
 }
 
 // we destroy the session
@@ -292,7 +292,7 @@ if ($_SESSION['iLoginType'] == "Lock") {
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
   <?php if ($_SESSION['iLoginType'] == "Lock") { 
-        ?>
+    		?>
     $(document).ready(function () {
         $("#Login").hide();
     });  
@@ -305,13 +305,13 @@ if ($_SESSION['iLoginType'] == "Lock") {
       });
     });
   <?php 
-  	} else { 
-        ?>
+  		} else { 
+    			?>
     $(document).ready(function () {
         $("#Lock").hide();
     });  
   <?php 
-  	} 
+  		} 
   ?>
 </script>
 <script>
