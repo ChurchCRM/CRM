@@ -193,8 +193,8 @@ if ($_SESSION['iLoginType'] == "Lock") {
     
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <?php if ($_SESSION['iLoginType'] == "Lock") { 
-        ?>
+      <?php if ($_SESSION['iLoginType'] == "Lock") {
+            ?>
       <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
       <?php 
       	} 
@@ -292,7 +292,7 @@ if ($_SESSION['iLoginType'] == "Lock") {
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
   <?php if ($_SESSION['iLoginType'] == "Lock") { 
-    ?>
+        ?>
     $(document).ready(function () {
         $("#Login").hide();
     });  
