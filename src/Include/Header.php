@@ -103,17 +103,12 @@ $MenuFirst = 1;
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
             </a>
-            <ul class="dropdown-menu">
-	            <li class="user-header" style="height: 145px;padding-top: 10px;">
-                <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
-                <p><?= $_SESSION['user']->getName() ?></p>
+            <ul class="hidden-xxs dropdown-menu">
+	            <li class="user-header" style="height: 155px;padding-top: 10px;">
+                <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>"><img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
+                <p style="color:#fff"><i class="fa fa fa-user"></i> <?= $_SESSION['user']->getName() ?></p>
+                </a>
               </li>
-              <!-- Menu Footer-->
-              <li class="hidden-xxs">
-                <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>">
-                <i class="fa fa fa-user"></i> <?= gettext('Profile') ?></a>
-              </li>
-              <li class="hidden-xxs divider"></li>
               <li class="hidden-xxs">
                 <a href="<?= SystemURLs::getRootPath()?>/Lock.php">
                 <i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></a>
