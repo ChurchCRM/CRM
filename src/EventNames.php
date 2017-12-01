@@ -19,6 +19,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent']) {
     header('Location: Menu.php');
@@ -330,7 +331,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) != 'NEW') {
     }
 ?>
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
   $(document).ready(function () {
 //Added by @saulowulhynek to translation of datatable nav terms
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);

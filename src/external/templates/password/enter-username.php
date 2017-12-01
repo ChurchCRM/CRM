@@ -40,7 +40,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
         </div>
         <!-- /.form-box -->
     </div>
-    <script type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
         $("#resetPassword").click(function (e) {
             var userName = $("#username").val();
             if (userName) {

@@ -108,7 +108,7 @@ for ($row = 0; $row < $donationFunds->count(); $row++) {
 // Construct the form
 ?>
 
-<script language="javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" language="javascript">
 
 function confirmDeleteFund( Fund ) {
 var answer = confirm (<?= '"'.gettext('Are you sure you want to delete this fund?').'"' ?>)

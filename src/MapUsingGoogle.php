@@ -135,7 +135,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
         </div>
     </div> <!--Box-->
 
-    <script type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
         var churchloc = {
             lat: <?= ChurchMetaData::getChurchLatitude() ?>,
             lng: <?= ChurchMetaData::getChurchLongitude() ?>};
