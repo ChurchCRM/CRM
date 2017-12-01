@@ -1276,7 +1276,7 @@ msgstr "Actif"
 #: OptionManager.php:366 PersonCustomFieldsEditor.php:406
 #: VolunteerOpportunityEditor.php:402
 msgid "Save Changes"
-msgstr "Enregistrer les modifications"
+msgstr "Enregistrer Modifications"
 
 #: DonationFundEditor.php:224
 msgid "Add New Fund"
@@ -9154,4 +9154,132 @@ msgstr "Changer Réglages"
 #: SystemSettings.php:217
 msgid "Unknown Type"
 msgstr "Type inconnu"
+
+#: ChurchCRM/dto/Cart.php:23 ChurchCRM/dto/Cart.php:82
+msgid "PersonID for Cart must be numeric"
+msgstr "PersonID pour Panier doit être un nombre"
+
+#: ChurchCRM/dto/Cart.php:43 ChurchCRM/dto/Cart.php:103
+msgid "GroupID for Cart must be numeric"
+msgstr "GroupID pour Panier doit être un nombre"
+
+#: ChurchCRM/dto/Cart.php:58
+msgid "FamilyID for Cart must be numeric"
+msgstr "FamilyID pour Panier doit être un nombre"
+
+#: ChurchCRM/dto/SystemConfig.php:198
+msgid "Search People"
+msgstr "Recherche Personnes"
+
+#: ChurchCRM/dto/SystemConfig.php:205
+msgid "Maximum number of People"
+msgstr "Nombre maximal Personnes"
+
+#: ChurchCRM/dto/SystemConfig.php:218
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "Champ ou le père de confession est listé, doit être une personne du groupe type"
+
+#: ChurchCRM/dto/SystemConfig.php:219
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "Champ ou la dernière confession est enregistré, doit être un type date"
+
+#: ChurchCRM/dto/SystemConfig.php:220
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "Requière que la base de données de ChurchCRM soit accessible par HTTPS"
+
+#: ChurchCRM/dto/SystemConfig.php:233
+msgid "People Setup"
+msgstr "Installer personne"
+
+#: ChurchCRM/dto/SystemConfig.php:242
+msgid "Church Services"
+msgstr "Services Eglise"
+
+#: FamilyView.php:959 PersonView.php:995
+msgid "return to people dashboard"
+msgstr "Retour tableau de bord Personne"
+
+#: LettersAndLabels.php:53
+msgid "People Reports"
+msgstr "Rapports Personne"
+
+#: PeopleDashboard.php:15
+msgid "People Dashboard"
+msgstr "Tableau de bord Personne"
+
+#: PeopleDashboard.php:77
+msgid "People Functions"
+msgstr "Fonctions Personne"
+
+#: PeopleDashboard.php:231
+msgid "People Directory"
+msgstr "Dossier Personne"
+
+#: PeopleDashboard.php:231
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "Dossier imprimable de toutes les personnes, groupé par famille ont été assignés"
+
+#: PeopleDashboard.php:295 PeopleDashboard.php:334
+msgid "of People"
+msgstr "de Personne"
+
+#: SystemDBUpdate.php:28
+msgid "System Upgrade"
+msgstr "Mise à jour système"
+
+#: SystemDBUpdate.php:41
+msgid "Upgrade Required"
+msgstr "Mise à jour requise"
+
+#: SystemDBUpdate.php:43
+msgid "Current DB Version: "
+msgstr "Version de la base de données : "
+
+#: SystemDBUpdate.php:44
+msgid "Current Software Version: "
+msgstr "Version courante du logiciel : "
+
+#: SystemDBUpdate.php:55
+msgid "Upgrade database"
+msgstr "Mise à jour base de données"
+
+#: ChurchCRM/dto/SystemConfig.php:221
+msgid "Show Birthdates Anniversaries on start up of the CRM"
+msgstr "Visualiser les anniversaire et anniversaires de mariage au démarrage du CRM"
+
+#: ChurchCRM/dto/SystemConfig.php:222
+msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
+msgstr "Nombre de secondes à fixer pour que la bannière disparaisse, par défaut 10 secs."
+
+#: ChurchCRM/dto/SystemConfig.php:223
+msgid "Menu bar event counter asynchronous refresh interval, default 60 second"
+msgstr "Mise à jour des compteurs dans la barre des menus en seconde, par défaut toutes les 60 secondes"
+
+#: Include/Header.php:126
+msgid "Help & Support"
+msgstr "Aide & Support"
+
+#: Include/Header.php:131 Include/Header.php:132
+msgid "Help & Manual"
+msgstr "Aide & Manuel"
+
+#: Include/Header.php:146 Include/Header.php:147
+msgid "Contributing"
+msgstr "Pour contribuer"
+
+#: Menu.php:73
+msgid "Birthdates of the day"
+msgstr "Anniversaires du jour"
+
+#: Menu.php:124
+msgid "Anniversaries of the day"
+msgstr "Anniversaire de mariage du jour"
+
+#: 
+msgid "ZIP"
+msgstr "Code postal"
+
+#: 
+msgid "E-mail"
+msgstr "Email"
 
