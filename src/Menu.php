@@ -453,7 +453,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 </div>
 
 <!-- this page specific inline scripts -->
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 <?php
 if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
 ?>
@@ -490,7 +490,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 ?>
 </script>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   var timeOut = <?= SystemConfig::getValue("iEventsOnDashboardPresenceTimeOut")*1000 ?>;
   
   $(document).ready (function(){

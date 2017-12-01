@@ -16,6 +16,7 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MICRReader;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
     $micrObj = new MICRReader();
@@ -756,7 +757,7 @@ require 'Include/Header.php';
 
 </form>
 
- <script language="javascript" type="text/javascript">
+ <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
   $(document).ready(function() {
 
     $("#FamilyName").select2({

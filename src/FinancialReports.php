@@ -12,6 +12,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
@@ -333,7 +334,7 @@ if ($sReportType == '') {
         </td></tr></table></form>";
 }
 ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $("#family").select2();
 $("#addAllFamilies").click(function () {
 var all = [];

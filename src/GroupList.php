@@ -21,6 +21,7 @@ $sPageTitle = gettext('Group Listing');
 require 'Include/Header.php';
 
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\dto\SystemURLs;
 
 $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 
@@ -64,7 +65,7 @@ if ($_SESSION['bManageGroups']) {
 </div>
 
 <script src="skin/js/GroupList.js" type="text/javascript"></script>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $( document).ready(function() {
     var gS = localStorage.getItem("groupSelect");
 	if (gS != null)

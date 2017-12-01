@@ -51,7 +51,7 @@ require 'Include/Header.php';
     <span id="restoreNextStep"></span>
   </div>
 </div>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $('#restoredatabase').submit(function (event) {
     event.preventDefault();
 
