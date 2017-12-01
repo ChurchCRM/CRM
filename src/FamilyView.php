@@ -155,7 +155,7 @@ if ($iFamilyID == $fam_ID) {
     $sFamilyEmails = array();
 
     $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID']))); ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
@@ -966,7 +966,7 @@ if ($iFamilyID == $fam_ID) {
             type="text/javascript"></script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
-    <script>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
         var dataT = 0;
         $(document).ready(function () {

@@ -189,7 +189,7 @@ require 'Include/Header.php';
     <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext('Add New Role')?></button>
   </div>
 </div>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   //setup some document-global variables for later on in the javascript
   var defaultRoleID = <?= ($thisGroup->getDefaultRole() ? $thisGroup->getDefaultRole() : 1) ?>;
   var dataT = 0;

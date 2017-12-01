@@ -87,7 +87,7 @@ require 'Include/Header.php';
      </div>
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 
 function doBackup(isRemote)
 {
