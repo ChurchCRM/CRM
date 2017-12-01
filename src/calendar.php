@@ -104,7 +104,7 @@ require 'Include/Header.php';
 <!-- /.col -->
 
 <!-- fullCalendar 2.2.5 -->
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   var isModifiable  = <?php
     if ($_SESSION['bAddEvent'] || $_SESSION['bAdmin']) {
         echo "true";

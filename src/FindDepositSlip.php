@@ -86,7 +86,7 @@ require 'Include/Header.php';
 </div>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $('#deleteSelectedRows').click(function () {
     var deletedRows = dataT.rows('.selected').data()
     bootbox.confirm({

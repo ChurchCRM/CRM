@@ -17,6 +17,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 //Set the page title
@@ -716,7 +717,7 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
-    <script type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
         $(document).ready(function() {
             $("#country-input").select2();
             $("#state-input").select2();
@@ -1123,7 +1124,7 @@ require 'Include/Header.php';
     echo '</td></tr></form></table>';
 ?>
 
-	<script type="text/javascript">
+	<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
 		$(function() {
 			$("[data-mask]").inputmask();
 		});

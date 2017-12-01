@@ -6,6 +6,8 @@ $bSuppressSessionTests = true;
 require 'Include/Functions.php';
 require_once 'Include/Header-function.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
@@ -78,7 +80,7 @@ Header_body_scripts();
     </li>
   </ul>
 </div>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
  $("#doBackup").click(function(){
    $("#status1").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
    $.ajax({

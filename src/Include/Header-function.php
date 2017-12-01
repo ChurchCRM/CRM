@@ -115,7 +115,7 @@ function Header_body_scripts()
 {
     global $localeInfo;
     $systemService = new SystemService(); ?>
-    <script>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
             root: "<?= SystemURLs::getRootPath() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",

@@ -24,6 +24,7 @@ use ChurchCRM\ListOptionQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 function CompareDistance($elem1, $elem2)
 {
@@ -453,7 +454,7 @@ $families = FamilyQuery::create()
     ?>
 </form>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             var target = $(e.target).attr("href") // activated tab
