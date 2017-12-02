@@ -30,14 +30,15 @@
   background-color: #222D32; }
 
 /* Philippe Logel : file in Header.php */
+/* Philippe Logel : file in Header.php */
 .user-header a.item_link {
-  color: #FFFFFF; }
+  color: #FFF !important; }
 
 .user-header a.item_link:link {
-  color: #FFFFFF; }
+  color: #FFF !important; }
 
 .user-header a.item_link:hover {
-  color: #CCCCCC; }
+  color: #CCCCCC !important; }
 
 .c-checkbox, .c-radio {
   position: relative;
