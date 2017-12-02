@@ -46,7 +46,7 @@ if ($sFormat == 'rollup') {
 $rsMembershipClasses = ListOptionQuery::create()->filterByID('1')->orderByOptionId()->find();
 $memberClass = array(0);
 foreach ($rsMembershipClasses as $Member) {
-  $memberClass[] = $Member->getOptionName();   
+    $memberClass[] = $Member->getOptionName();   
 }
 
 //Get family roles
