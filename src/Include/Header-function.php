@@ -28,6 +28,7 @@ use ChurchCRM\EventQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\MenuEventsCount;
+
 function Header_system_notifications()
 {
     if (NotificationService::hasActiveNotifications()) {
