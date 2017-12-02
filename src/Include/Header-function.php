@@ -160,7 +160,6 @@ function GetSecuritySettings()
     $aSecurityListPrimal[] = 'bCanvasser';
     $aSecurityListPrimal[] = 'bAddEvent';
     $aSecurityListPrimal[] = 'bSeePrivacyData';
-    $aSecurityListPrimal[] = 'bShowTooltip';
     
     $ormSecGrpLists = UserConfigQuery::Create()
                         ->filterByPeronId(0)
