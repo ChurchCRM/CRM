@@ -1,5 +1,7 @@
 <?php
 
+/* Philippe Logel 2017 */
+
 namespace ChurchCRM\dto;
 
 class Tooltip
