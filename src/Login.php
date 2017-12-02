@@ -137,7 +137,7 @@ if (isset($_SESSION['iUserID'])) {
     $id = $_SESSION['iUserID'];
 }
 
-$type = "login".$_POST['iLoginType']."coucou";
+$type = $_POST['iLoginType'];
 if (isset($_SESSION['iLoginType'])) {
     $type = $_SESSION['iLoginType'];
 }
