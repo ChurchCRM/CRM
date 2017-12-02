@@ -10,9 +10,7 @@
  *
  *
  ******************************************************************************/
-
 require_once 'Functions.php';
-
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\NotificationService;
@@ -30,7 +28,6 @@ use ChurchCRM\EventQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\MenuEventsCount;
-
 function Header_system_notifications()
 {
     if (NotificationService::hasActiveNotifications()) {
@@ -44,18 +41,15 @@ function Header_system_notifications()
         <?php
     }
 }
-
 function Header_head_metatag()
 {
     global $sMetaRefresh, $sPageTitle;
-
     if (strlen($sMetaRefresh) > 0) {
         echo $sMetaRefresh;
     } ?>
     <title>ChurchCRM: <?= $sPageTitle ?></title>
     <?php
 }
-
 function Header_modals()
 {
     ?>
@@ -110,7 +104,6 @@ function Header_modals()
 
     <?php
 }
-
 function Header_body_scripts()
 {
     global $localeInfo;
@@ -142,9 +135,7 @@ function Header_body_scripts()
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
     <?php
 }
-
 $security_matrix = GetSecuritySettings();
-
 // return the security group to table
 function GetSecuritySettings()
 {
@@ -160,17 +151,16 @@ function GetSecuritySettings()
     $aSecurityListPrimal[] = 'bCanvasser';
     $aSecurityListPrimal[] = 'bAddEvent';
     $aSecurityListPrimal[] = 'bSeePrivacyData';
+    $aSecurityListPrimal[] = 'bShowTooltip';
     
     $ormSecGrpLists = UserConfigQuery::Create()
                         ->filterByPeronId(0)
                         ->filterByCat('SECURITY')
                         ->orderById()
                         ->find();
-
     foreach ($ormSecGrpLists as $ormSecGrpList) {
         $aSecurityListPrimal[] = $ormSecGrpList->getName();
     }
-
     asort($aSecurityListPrimal);
     
     $aSecurityListFinal = array('bALL');
@@ -184,7 +174,6 @@ function GetSecuritySettings()
     
     return $aSecurityListFinal;
 }
-
 function addMenu($menu)
 {
     global $security_matrix;
@@ -221,7 +210,6 @@ function addMenu($menu)
         }
     }
 }
-
 function addMenuItem($ormMenu, $mIdx)
 {
     global $security_matrix;
@@ -334,7 +322,6 @@ function addMenuItem($ormMenu, $mIdx)
                 if (count($groups)>0) {// only if the groups exist : !empty doesn't work !
                     echo "<li><a href='#'><i class='fa fa-user-o'></i>" . gettext("Unassigned"). '</a>';
                     echo '<ul class="treeview-menu">';
-
                     foreach ($groups as $group) {
                         echo "<li><a href='" . SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " . $group->getName() . '</a></li>';
                     }
@@ -343,7 +330,8 @@ function addMenuItem($ormMenu, $mIdx)
             }
         } else {
             echo "<li class=\"treeview\">\n";
-            echo "    <a href=\"#\">\n";
+            // proof of ToolTip concept
+            echo "    <a href=\"#\"  data-toggle='tooltip' title='".Tooltip::gettext("Consult what you want in our sunday school wondefull team")."' data-placement='right' style='max-width: 350px;'>\n";
             if ($ormMenu->getIcon() != '') {
                 echo '<i class="fa ' . $ormMenu->getIcon() . "\"></i>\n";
             }
@@ -383,11 +371,9 @@ function addMenuItem($ormMenu, $mIdx)
                         if (!empty($property)) {
                             echo '</ul></li>';
                         }
-
                         echo '<li><a href="#"><i class="fa fa-user-o"></i><pan>'.$aRow[pro_Name].'</span></a>';
                         echo '<ul class="treeview-menu">';
                         
-
                         $property = $aRow[pro_Name];
                     }
                             
@@ -421,11 +407,9 @@ function addMenuItem($ormMenu, $mIdx)
         } else {
             echo "</li>\n";
         }
-
         return true;
     } else {
         return false;
     }
 }
-
 ?>
