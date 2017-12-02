@@ -130,7 +130,7 @@ if (isset($_POST['User'])) {
     $urlUserName = $_GET['username'];
 }
 
-$id = null;
+$id = 0;
 
 // we hold down the last id
 if (isset($_SESSION['iUserID'])) {
@@ -150,7 +150,7 @@ session_start() ;
 
 $_SESSION['iLoginType'] = $type;
 
-if ($id) {
+if ($id>0) {
     $_SESSION['iUserID'] = $id;    
 } 
 
