@@ -150,13 +150,12 @@
             "2.8.12",
             "2.8.13",
             "2.8.14",
-            "2.8.15"
+            "2.8.15",
+            "2.9.0"
         ],
         "scripts": [
-            "/mysql/upgrade/2.9.0.sql",
-            "/mysql/upgrade/2.9.0-InnoDB.php",
-            "/mysql/upgrade/2.9.0_church_division.sql"
+            "/mysql/upgrade/2.9.1_show_tooltip.sql"
         ],
-        "dbVersion": "2.9.0"
+        "dbVersion": "2.9.1"
     }
 }
