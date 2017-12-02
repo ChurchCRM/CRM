@@ -31,13 +31,13 @@
 
 /* Philippe Logel : file in Header.php */
 .user-header a.item_link {
-  color: #FFFFFF; }
+  color: #FFFFFF !important; }
 
 .user-header a.item_link:link {
-  color: #FFFFFF; }
+  color: #FFFFFF !important; }
 
 .user-header a.item_link:hover {
-  color: #CCCCCC; }
+  color: #CCCCCC !important; }
 
 .c-checkbox, .c-radio {
   position: relative;
