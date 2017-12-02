@@ -71,8 +71,6 @@ echo "=========================================================="
 echo "===============   NPM                    ================="
 echo "=========================================================="
 
-sudo npm install -g i18next-extract-gettext
-sudo npm install -g grunt-cli
 npm install --unsafe-perm --no-bin-links
 grunt compress:demo
 
