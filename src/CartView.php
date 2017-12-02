@@ -169,13 +169,13 @@ if (!Cart::HasPeople()) {
 
                         // Display link
                         echo '<a href="javascript:void(0)" onclick="allPhonesCommaD()" class="btn btn-app"><i class="fa fa-mobile-phone"></i>' . gettext("Text Cart");
-                        echo '<script>function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "' . mb_substr($sPhoneLink, 0, -2) . '")};</script>';
+                        echo '<script nonce="'. SystemURLs::getCSPNonce() .'">function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "' . mb_substr($sPhoneLink, 0, -2) . '")};</script>';
                     }
                 } ?>
                 <a href="DirectoryReports.php?cartdir=Cart+Directory" class="btn btn-app"><i
                             class="fa fa-book"></i><?= gettext('Create Directory From Cart') ?></a>
 
-                <script language="JavaScript" type="text/javascript"><!--
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript"><!--
                     function codename() {
                         if (document.labelform.bulkmailpresort.checked) {
                             document.labelform.bulkmailquiet.disabled = false;
@@ -343,7 +343,7 @@ if (!Cart::HasPeople()) {
     <?php endif; ?>
     <!-- END CART LISTING -->
 
-    <script type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
         $(document).ready(function () {
           $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
 

@@ -21,6 +21,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 $eType = 'All';
 $ThisYear = date('Y');
@@ -344,7 +345,7 @@ foreach ($allMonths as $mKey => $mVal) {
   </a>
 </div>
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
 //Added by @saulowulhynek to translation of datatable nav terms
   $(document).ready(function () {
     $('#listEvents').DataTable(window.CRM.plugin.dataTable});

@@ -18,6 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -1234,7 +1235,7 @@ require 'Include/Header.php';
                         } ?>';">
 </form>
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
 	$(function() {
 		$("[data-mask]").inputmask();
 	});

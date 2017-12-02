@@ -370,7 +370,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </div>
 
 <!-- this page specific inline scripts -->
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
         //-------------
         //- PIE CHART -

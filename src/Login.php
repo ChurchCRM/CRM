@@ -201,7 +201,7 @@ require 'Include/HeaderNotLoggedIn.php';
 </div>
 <!-- /.login-box -->
 <script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
     function $buo_f() {
         var e = document.createElement("script");
