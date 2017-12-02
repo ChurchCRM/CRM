@@ -89,6 +89,7 @@ else
 fi
 
 sudo chown vagrant:vagrant /vagrant/node_modules
+sudo chmod a+rw /vagrant/node_modules
 
 npm install
 grunt compress:demo
