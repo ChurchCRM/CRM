@@ -5,7 +5,6 @@
     sass --watch src/skin/churchcrm.scss:src/skin/churchcrm.min.css --style compressed
 
 */
-@import url(jquery-ui/jquery-ui.css);
 @import url(adminlte/plugins/datepicker/datepicker3.css);
 @import url(adminlte/plugins/daterangepicker/daterangepicker.css);
 @import url(adminlte/plugins/timepicker/bootstrap-timepicker.min.css);
@@ -14,20 +13,31 @@
 @import url(adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css);
 @import url(adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css);
 @import url(adminlte/plugins/datatables/extensions/Select/select.bootstrap.min.css);
-@import url(bootstrap-toggle/bootstrap-toggle.css);
-@import url(fullcalendar/fullcalendar.min.css);
-@import "fullcalendar/fullcalendar.print.css" print;
-@import url(font-awesome/css/font-awesome.min.css);
-@import url(ionicons/css/ionicons.min.css);
+@import url(adminlte/plugins/select2/select2.min.css);
 @import url(adminlte/dist/css/AdminLTE.min.css);
 @import url(adminlte/dist/css/skins/_all-skins.min.css);
-@import url(adminlte/plugins/select2/select2.min.css);
+@import url(external/jquery-ui/jquery-ui.css);
+@import url(external/bootstrap-toggle/bootstrap-toggle.css);
+@import url(external/font-awesome/css/font-awesome.min.css);
 @import url(external/jquery.steps/jquery.steps.css);
+@import url(external/jquery-photo-uploader/PhotoUploader.css);
+@import url(external/fullcalendar/fullcalendar.min.css);
+@import "external/fullcalendar/fullcalendar.print.css" print;
 @media (max-width: 767px) {
   .skin-blue .main-header .navbar .dropdown-menu li a {
     color: #000000; } }
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #222D32; }
+
+/* Philippe Logel : file in Header.php */
+.user-header a.item_link {
+  color: #FFFFFF; }
+
+.user-header a.item_link:link {
+  color: #FFFFFF; }
+
+.user-header a.item_link:hover {
+  color: #CCCCCC; }
 
 .c-checkbox, .c-radio {
   position: relative;
@@ -1726,13 +1736,7 @@ img.legendicon {
   padding-right: 15px;
   text-decoration: underline; }
 
+#cart-dropdown-menu > li > ul {
+  max-height: none; }
+
 /*# sourceMappingURL=churchcrm.min.css.map */
-
-.user-header a.item_link{
-  color:#FFFFFF;}
-
-.user-header a.item_link:link{
-.user-header   color:#FFFFFF;}
-
-.user-header a.item_link:hover{
-  color:#CCCCCC;}
