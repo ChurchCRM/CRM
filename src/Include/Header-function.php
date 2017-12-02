@@ -30,6 +30,7 @@ use ChurchCRM\EventQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\MenuEventsCount;
+use ChurchCRM\dto\Tooltip;
 
 function Header_system_notifications()
 {
