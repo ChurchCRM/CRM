@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CSVCreateFile.php
@@ -15,6 +16,7 @@ require 'Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\ListOptionQuery;
 
 $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
@@ -38,6 +40,13 @@ if ($sFormat == 'default') {
 if ($sFormat == 'rollup') {
     $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
     $rsFamCustomFields = RunQuery($sSQL);
+}
+
+//Get membership classes
+$rsMembershipClasses = ListOptionQuery::create()->filterByID('1')->orderByOptionId()->find();
+$memberClass = array(0);
+foreach ($rsMembershipClasses as $Member) {
+  $memberClass[] = $Member->getOptionName();   
 }
 
 //Get family roles
@@ -279,6 +288,9 @@ if ($sFormat == 'addtocart') {
         if (!empty($_POST['Age'])) {
             $headerString .= '"'.InputUtils::translate_special_charset("Age").'"'.$delimiter;
         }
+        if (!empty($_POST['PrintMembershipStatus'])) {
+            $headerString .= '"'.InputUtils::translate_special_charset("Classification").'"'.$delimiter;
+        }
         if (!empty($_POST['PrintFamilyRole'])) {
             $headerString .= '"'.InputUtils::translate_special_charset("Family Role").'"'.$delimiter;
         }
@@ -495,6 +507,9 @@ if ($sFormat == 'addtocart') {
                         $sString .= '"'.$delimiter.'"'.$age;
                     }
 
+                    if (isset($_POST['PrintMembershipStatus'])) {
+                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($memberClass[$per_cls_ID]);
+                    }
                     if (isset($_POST['PrintFamilyRole'])) {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($familyRoles[$per_fmr_ID]);
                     }
