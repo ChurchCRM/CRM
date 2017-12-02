@@ -151,8 +151,8 @@ session_start() ;
 $_SESSION['iLoginType'] = $type;
 
 if ($id) {
-    $_SESSION['iUserID'] = $id;    
-} 
+    $_SESSION['iUserID'] = $id;
+}
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Login');
