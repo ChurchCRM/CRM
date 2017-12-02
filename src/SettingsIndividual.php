@@ -77,6 +77,8 @@ if (isset($_POST['save'])) {
         $rsUpdate = RunQuery($sSQL);
         next($type);
     }
+    
+    Redirect('SettingsIndividual.php');// to reflect the tooltip change, we have to refresh the page
 }
 
 // Set the page title and include HTML header
@@ -101,8 +103,8 @@ $r = 1;
 // List Individual Settings
 while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysqli_fetch_row($rsConfigs)) {
     if (!(($ucfg_permission == 'TRUE') || $_SESSION['bAdmin'])) {
-        break;
-    } // Don't show rows that can't be changed
+        continue;
+    } // Don't show rows that can't be changed : BUG, you must continue the loop, and not break it PL
 
     // Cancel, Save Buttons every 13 rows
     if ($r == 13) {
