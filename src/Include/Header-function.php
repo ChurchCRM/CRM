@@ -30,6 +30,7 @@ use ChurchCRM\EventQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\dto\MenuEventsCount;
+use ChurchCRM\dto\Tooltip;
 
 function Header_system_notifications()
 {
@@ -344,7 +345,7 @@ function addMenuItem($ormMenu, $mIdx)
             }
         } else {
             echo "<li class=\"treeview\">\n";
-            echo "    <a href=\"#\">\n";
+            echo "    <a href=\"#\"  data-toggle='tooltip' title='".Tooltip::gettext("Consult what you want in our sunday school wondefull team")."' data-placement='right' style='max-width: 350px;'>\n";
             if ($ormMenu->getIcon() != '') {
                 echo '<i class="fa ' . $ormMenu->getIcon() . "\"></i>\n";
             }
@@ -376,7 +377,7 @@ function addMenuItem($ormMenu, $mIdx)
                 
                     
             if ($ormMenu->getName() == 'sundayschool') {
-                echo "<li><a href='" . SystemURLs::getRootPath() . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>" . gettext('Dashboard') . '</a></li>';
+                echo "<li><a href='" . SystemURLs::getRootPath() . "/sundayschool/SundaySchoolDashboard.php'></i>" . gettext('Dashboard') . '</a></li>';
                                                 
                 $property = '';
                 while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
