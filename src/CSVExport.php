@@ -162,6 +162,11 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-md-4">
+            <label><?= gettext('Classification') ?>:</label>
+            <input type="checkbox" name="PrintMembershipStatus" value="1">
+          </div>
+          
+          <div class="col-md-4">
             <label><?= gettext('Family Role') ?>:</label>
             <input type="checkbox" name="PrintFamilyRole" value="1">
           </div>
