@@ -171,18 +171,13 @@
     });  
   }
   
-  function deleteText(a)
-  {
-    if(a.value==i18next.t("Calendar Title") || a.value==i18next.t("Calendar description")){ a.value=''; a.style.color='#000';};
-  }
-  
   function BootboxContent(){    
     var frm_str = '<form id="some-form">'
        + '<table class="table">'
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Select your event type') + "</td>"
               +'<td colspan="3" class="TextColumn">'
-              +'<select type="text" id="eventType" value="39">'
+              +'<select type="text" id="eventType" value="39"  width="100%" style="width: 100%">'
                    //+"<option value='0' >" + i18next.t("Personal") + "</option>"
                 +'</select>'
               +'</td>'
@@ -190,19 +185,19 @@
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Title') + ":</td>"
               +'<td colspan="1" class="TextColumn">'
-                +"<input type='text' id='EventTitle' onfocus='deleteText(this)' value=" + i18next.t("Calendar Title") + " size='30' maxlength='100' class='form-control' required>"
+                +"<input type='text' id='EventTitle' value='" + i18next.t("Calendar Title") + "' size='30' maxlength='100' class='form-control'  width='100%' style='width: 100%' required>"
               +'</td>'
             +'</tr>'
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Desc') + ":</td>"
               +'<td colspan="3" class="TextColumn">'
-                +"<textarea id='EventDesc' rows='4' maxlength='100' onfocus='deleteText(this)' class='form-control' required>" + i18next.t("Calendar description") + "</textarea>"
+                +"<textarea id='EventDesc' rows='4' maxlength='100' class='form-control'  width='100%' style='width: 100%' required >" + i18next.t("Calendar description") + "</textarea>"
               +'</td>'
             +'</tr>'          
             +'<tr>'
               +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Group') + ":</td>"
               +'<td class="TextColumn">'
-                +'<select type="text" id="EventGroup" value="39">'
+                +'<select type="text" id="EventGroup" value="39" width="100%" style="width: 100%">'
                 +'</select>'
               +'</td>'
             +'</tr>'
@@ -213,19 +208,19 @@
                 +'<tr>'
                     +"<td><strong>" + i18next.t("Total") + ":&nbsp;</strong></td>"
                   +'<td>'
-                  +'<input type="text" id="Total" value="0" size="8" class="form-control">'
+                  +'<input type="text" id="Total" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
                   +'</td>'
                   +'</tr>'
                 +'<tr>'
                     +"<td><strong>" + i18next.t("Members") + ":&nbsp;</strong></td>"
                   +'<td>'
-                  +'<input type="text" id="Members" value="0" size="8" class="form-control">'
+                  +'<input type="text" id="Members" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
                  +' </td>'
                   +'</tr>'
                +' <tr>'
                     +"<td><strong>" + i18next.t("Visitors") + ":&nbsp;</strong></td>"
                   +'<td>'
-                  +'<input type="text" id="Visitors" value="0" size="8" class="form-control">'
+                  +'<input type="text" id="Visitors" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
                   +'</td>'
                   +'</tr>'
                       +'<tr>'
@@ -237,7 +232,7 @@
                       +'</td>'
             +'</tr>'
             +'<tr>'
-              +'<td colspan="4" class="TextColumn">'+i18next.t('Event Sermon')+'<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"></textarea></td>'
+              +'<td colspan="4" class="TextColumn">'+i18next.t('Event Sermon')+'<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  width="100%" style="width: 100%"></textarea></td>'
             +'</tr>'
             //+'<tr>'
               //+'<td class="LabelColumn"><span style="color: red">*</span>Statut de l&#39;événement:</td>'
@@ -412,10 +407,19 @@
        // this will ensure that image and table can be focused
        $(document).on('focusin', function(e) {e.stopImmediatePropagation();});
        
+       $('#EventTitle').on('click',function(){
+       		if(this.defaultValue==i18next.t("Calendar Title")){ this.defaultValue=''; this.style.color='#000';};
+       });
+       
+       $('#EventDesc').on('click',function(){	
+       	   if(this.defaultValue==i18next.t("Calendar description")){ this.defaultValue=''; this.style.color='#000';};
+			 });
+       
        // this will create the toolbar for the textarea
        CKEDITOR.replace('eventPredication',{
         customConfig: window.CRM.root+'/skin/js/ckeditor/calendar_event_editor_config.js',
-        language : window.CRM.lang
+        language : window.CRM.lang,
+        width : '100%'
      });
       
        $("#ATTENDENCES").parents("tr").hide();
