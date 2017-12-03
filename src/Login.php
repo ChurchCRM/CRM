@@ -152,7 +152,6 @@ if (empty($urlUserName)) {
     }
 }
 
-
 // we destroy the session
 session_destroy();
 
