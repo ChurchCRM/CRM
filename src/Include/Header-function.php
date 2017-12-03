@@ -345,7 +345,7 @@ function addMenuItem($ormMenu, $mIdx)
             }
         } else {
             echo "<li class=\"treeview\">\n";
-            echo "    <a href=\"#\"  data-toggle='tooltip' title='".Tooltip::gettext("Consult what you want in our sunday school wondefull team")."' data-placement='right' style='max-width: 350px;'>\n";
+            echo "    <a href=\"#\">\n";
             if ($ormMenu->getIcon() != '') {
                 echo '<i class="fa ' . $ormMenu->getIcon() . "\"></i>\n";
             }
