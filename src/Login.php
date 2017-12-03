@@ -131,16 +131,27 @@ if (isset($_POST['User'])) {
 }
 
 $id = 0;
-
 // we hold down the last id
 if (isset($_SESSION['iUserID'])) {
     $id = $_SESSION['iUserID'];
 }
 
-$type = $_POST['iLoginType'];
-if (isset($_SESSION['iLoginType'])) {
+// we hold down the session type : Lock Login
+if (isset($_POST['iLoginType'])) {
+  $type = $_POST['iLoginType'];
+} else if (isset($_SESSION['iLoginType'])) {
     $type = $_SESSION['iLoginType'];
 }
+
+if (empty($urlUserName)) {
+  if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $urlUserName = $user->getUserName();
+  } else if (isset($_SESSION['username'])) {
+    $urlUserName = $_SESSION['username'];
+  }
+}
+
 
 // we destroy the session
 session_destroy();
@@ -148,28 +159,19 @@ session_destroy();
 // we reopen a new one
 session_start() ;
 
+// we restore only this part
 $_SESSION['iLoginType'] = $type;
+$_SESSION['username'] = $urlUserName;
+$_SESSION['iUserID'] = $id;
 
-if ($id>0) {
-    $_SESSION['iUserID'] = $id;
+if ($_SESSION['iLoginType'] == "Lock" && $id > 0) {// this point is important for the photo in a lock session
+    $person = PersonQuery::Create()
+              ->findOneByID($_SESSION['iUserID']);
 }
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Login');
 require 'Include/HeaderNotLoggedIn.php';
-
-$urlUserName = "";
-
-if ($_SESSION['iLoginType'] == "Lock") {
-    $person = PersonQuery::Create()
-              ->findOneByID($_SESSION['iUserID']);
-
-    $user = UserQuery::Create()
-              ->findOneByPersonId($_SESSION['iUserID']);
-            
-    $urlUserName = $user->getUserName();
-}
-
 
 ?>
 <div class="login-box" id="Login">
@@ -200,7 +202,7 @@ if ($_SESSION['iLoginType'] == "Lock") {
 
         <form class="form-signin" role="form" method="post" name="LoginForm" action="Login.php">
             <div class="form-group has-feedback">
-                <input type="text" id="UserBox" name="User" class="form-control" value=""
+                <input type="text" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>"
                    placeholder="<?= gettext('Email/Username') ?>" required autofocus>
             </div>
             <div class="form-group has-feedback">
