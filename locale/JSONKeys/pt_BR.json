@@ -2032,14 +2032,12 @@
     "Kiosk Manager": "Gerenciador de quiosque",
     "Your Cart": "Seu carrinho",
     "Your settings and more": "Suas configurações e mais",
-    "Read the docs": "Leia os documentos",
     "Report an issue": "Reportar um problema",
     "Your tasks": "Suas tarefas",
     "Enable New Kiosk Registration": "Abilitar o requistro de um novo quiosque",
     "Active Kiosks": "Quiosques ativo",
     "I forgot my password": "Eu esqueci a minha senha",
     "Attendees Checked In": "Participantes Checados",
-    " family": " família",
     "Bank Draft ": "Cheque Administrativo ",
     "Credit Card ": "Cartão de Crédito ",
     "Disable ": "Desabilitado ",
@@ -2220,7 +2218,5 @@
     "Help & Manual": "Ajuda e Manual",
     "Contributing": "\nContribuindo",
     "Birthdates of the day": "Dia do Aniversário",
-    "Anniversaries of the day": "Aniversariantes do dia",
-    "ZIP": "ZIP",
-    "E-mail": "E-mail"
+    "Anniversaries of the day": "Aniversariantes do dia"
 }
