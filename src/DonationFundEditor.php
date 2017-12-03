@@ -16,6 +16,7 @@ require 'Include/Functions.php';
 use ChurchCRM\DonationFund;
 use ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {

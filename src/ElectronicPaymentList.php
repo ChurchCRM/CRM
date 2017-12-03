@@ -15,6 +15,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
@@ -39,7 +40,7 @@ require 'Include/Header.php';
 	var r = confirm("<?= gettext('Delete automatic payment for') ?> " + famName );
 	if (r == true) {
 		DeleteAutoPayment (AutID);
-	} 
+	}
 }
 
 function ConfirmClearAccounts (AutID)
@@ -48,7 +49,7 @@ function ConfirmClearAccounts (AutID)
 	var r = confirm("<?= gettext('Clear account numbers for')?> "+famName);
 	if (r == true) {
 		ClearAccounts (AutID);
-	} 
+	}
 }
 
 function ClearAccounts (AutID)
@@ -58,7 +59,7 @@ function ClearAccounts (AutID)
 
     xmlhttp.open("GET","<?= RedirectURL('AutoPaymentClearAccounts.php') ?>?customerid="+AutID,true);
     xmlhttp.PaymentID = AutID; // So we can see it when the request finishes
-    
+
     xmlhttp.onreadystatechange=function() {
 		if (this.readyState==4 && this.status==200) { // Hide them as the requests come back, deleting would mess up the outside loop
             document.getElementById("Select"+this.PaymentID).checked = false;
@@ -77,13 +78,13 @@ function DeleteAutoPayment (AutID)
     xmlhttp.uniqueid = AutID;
 
     var params="Delete=1"; // post with Delete already set so the page goes straight into the delete
-    	    
+
     xmlhttp.open("POST","<?= RedirectURL('AutoPaymentDelete.php') ?>?linkBack=<?= RedirectURL('ElectronicPaymentList.php') ?>&AutID="+AutID,true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.setRequestHeader("Content-length", params.length);
     xmlhttp.setRequestHeader("Connection", "close");
     xmlhttp.PaymentID = AutID; // So we can see it when the request finishes
-    
+
     xmlhttp.onreadystatechange=function() {
 		if (this.readyState==4 && this.status==200) { // Hide them as the requests come back, deleting would mess up the outside loop
              document.getElementById("Select"+this.PaymentID).checked = false;
@@ -130,13 +131,13 @@ function CreatePaymentMethodsForChecked()
 				if (this.readyState==4 && this.status==200) {
 		            var jsonresp=JSON.parse(this.response);
 		            var index;
-		            
+
 		            var Success = false;
 		            var ErrStr = "";
 		            var AutID = 0;
 		            var PaymentMethod = 0;
 		            var PaymentType = "";
-		            
+
 		            for (index = 0; index < jsonresp.length; ++index) {
 		                var oneResp = jsonresp[index];
 		                if (oneResp.hasOwnProperty("Error"))
@@ -156,7 +157,7 @@ function CreatePaymentMethodsForChecked()
 			            document.getElementById("CreditCardVanco"+AutID).innerHTML = PaymentMethod;
 		            if (Success && PaymentType=="C")
 			            document.getElementById("AccountVanco"+AutID).innerHTML = PaymentMethod;
-		            
+
 		            if (!Success && PaymentType=="CC")
 			            document.getElementById("CreditCardVanco"+AutID).innerHTML = ErrStr;
 		            if (!Success && PaymentType=="C")
@@ -201,7 +202,7 @@ function CreatePaymentMethodsForChecked()
 		<td align="center"><b><?= gettext('Routing') ?></b></td>
 		<td align="center"><b><?= gettext('Account') ?></b></td>
 		<?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
-        ?> 
+        ?>
 		<td align="center"><b><?= gettext('Vanco ACH') ?></b></td>
 		<?php
     }?>
@@ -209,7 +210,7 @@ function CreatePaymentMethodsForChecked()
 		<td align="center"><b><?= gettext('Month') ?></b></td>
 		<td align="center"><b><?= gettext('Year') ?></b></td>
 		<?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
-        ?> 
+        ?>
 		<td align="center"><b><?= gettext('Vanco CC') ?></b></td>
 		<?php
     }?>
@@ -234,14 +235,14 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
 		<?php
             echo "<input type=checkbox id=Select$aut_ID name=SelectForAction />"; ?>
 		</td>
-		
+
 		<td>
 		<?php
             echo "<a id=\"FamName$aut_ID\" href=\"FamilyView.php?FamilyID=".$fam_ID.'">'.$fam_Name.' '.$fam_Address1.', '.$fam_City.', '.$fam_State.'</a>'; ?>
 		</td>
 
 		<td>
-		<?php 
+		<?php
             if ($aut_EnableBankDraft) {
                 echo 'Bank ACH';
             } elseif ($aut_EnableCreditCard) {
@@ -264,7 +265,7 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
                 echo '*****'.mb_substr($aut_Account, strlen($aut_Account) - 4, 4);
             } ?></td>
 		<?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
-                ?> 
+                ?>
 		<td align="center" id="AccountVanco<?= $aut_ID ?>"><?= $aut_AccountVanco ?></td>
 		<?php
             } ?>
@@ -274,7 +275,7 @@ while ($aRow = mysqli_fetch_array($rsAutopayments)) {
 		<td><?= $aut_ExpMonth ?></td>
 		<td><?= $aut_ExpYear ?></td>
 		<?php if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
-                ?> 
+                ?>
 		<td align="center" id="CreditCardVanco<?= $aut_ID ?>"><?= $aut_CreditCardVanco ?></td>
 		<?php
             } ?>
