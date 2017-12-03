@@ -7,17 +7,17 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en\n"
 
-#: AutoPaymentEditor.php:918 CSVExport.php:105 CSVImport.php:218
-#: CartToFamily.php:249 DirectoryReports.php:253 FamilyEditor.php:677
-#: PersonEditor.php:881 Register.php:45
+#: AutoPaymentEditor.php:918 CSVExport.php:105 CSVImport.php:219
+#: CartToFamily.php:249 DirectoryReports.php:253 FamilyEditor.php:678
+#: PersonEditor.php:882 Register.php:45
 #: external/templates/registration/family-register.php:44
 #: queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "County"
 
 #: AutoPaymentEditor.php:924 BackupDatabase.php:62 CSVExport.php:110
-#: CSVImport.php:219 CartToFamily.php:261 DirectoryReports.php:257
-#: FamilyEditor.php:687 PersonEditor.php:904 Register.php:46
+#: CSVImport.php:220 CartToFamily.php:261 DirectoryReports.php:257
+#: FamilyEditor.php:688 PersonEditor.php:905 Register.php:46
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29
 #, fuzzy
@@ -36,11 +36,11 @@ msgstr "Family Mobile"
 msgid "Personal Cell Phone"
 msgstr "Personal Mobile"
 
-#: FinancialReports.php:260 PledgeEditor.php:575 PledgeEditor.php:613
+#: FinancialReports.php:261 PledgeEditor.php:576 PledgeEditor.php:614
 msgid "Check"
 msgstr "Cheque"
 
-#: PledgeEditor.php:667
+#: PledgeEditor.php:668
 msgid "Scan check"
 msgstr "Scan cheque"
 
