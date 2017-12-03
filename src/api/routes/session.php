@@ -8,6 +8,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 $app->group('/session', function () {
     $this->get('/lock', function ($request, $response, $args) {
     	$_SESSION['iLoginType'] = "Lock";
-      Redirect('Login.php');
+        return $response->withStatus(200)->withJson(['status' => "success"]);
     });
 });

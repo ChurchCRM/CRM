@@ -9,8 +9,20 @@
 
 
 /* Philippe Logel : file in Header.php */
-.user-header a.item_link{color:#FFFFFF !important}
+.user-header a.item_link {
+  color: #FFF !important ; 
+  cursor:pointer;
+    cursor:hand;
+}
 
-.user-header a.item_link:link{color:#FFFFFF !important}
+.user-header a.item_link:link {
+  color: #FFF !important; 
+  cursor:pointer;
+    cursor:hand;
+}
 
-.user-header a.item_link:hover{color:#CCCCCC !important} 
+.user-header a.item_link:hover {
+  color: #CCCCCC !important ; 
+  cursor:pointer;
+    cursor:hand;
+}

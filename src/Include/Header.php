@@ -118,7 +118,7 @@ $MenuFirst = 1;
                       <p ><i class="fa fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link"  data-toggle="tooltip" title="<?= Tooltip::gettext("Change Custom Settings ")?>" data-placement="right">
                       <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Change Settings') ?></p></a>
-                  <a href="<?= SystemURLs::getRootPath()?>/api/session/lock" class="item_link"  data-toggle="tooltip" title="<?= Tooltip::gettext("Lock your session")?>" data-placement="right">
+                  <a onclick="suspendSession()" class="item_link"  data-toggle="tooltip" title="<?= Tooltip::gettext("Lock your session")?>" data-placement="right">
                       <p ><i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link"  data-toggle="tooltip" title="<?= Tooltip::gettext("Quit ChurchCRM and close your session")?>" data-placement="right">
                       <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
