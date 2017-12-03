@@ -6,7 +6,7 @@
  *  description : page header used for most pages
  *
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
-
+ *  Copyright 2017 Philippe Logel
  ******************************************************************************/
 
 use ChurchCRM\Service\SystemService;
@@ -103,22 +103,28 @@ $MenuFirst = 1;
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
             </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
-                <p><?= $_SESSION['user']->getName() ?></p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>"
-                     class="btn btn-default btn-flat"><?= gettext('Profile') ?></a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" id="signout"
-                     class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
-                </div>
+            <ul class="hidden-xxs dropdown-menu">
+              <li class="user-header" id="yourElement" style="height:205px">
+                <table border=0 width="100%">
+                <tr style="border-bottom: 1pt solid white;">
+                <td valign="middle" width=110>
+                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">                
+                </td>
+                <td valign="middle" align="left" >                
+                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>" class="item_link">
+                      <p ><i class="fa fa fa-user"></i> <?= gettext("Profile") ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php" class="item_link">
+                      <p ><i class="fa fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
+                      <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Change Settings') ?></p></a>
+                  <a onclick="suspendSession()" class="item_link">
+                      <p ><i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link">
+                      <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
+                </td>
+                </tr>
+                </table>
+                <p style="color:#fff"><b><?= $_SESSION['user']->getName() ?></b></p>
               </li>
             </ul>
           </li>
