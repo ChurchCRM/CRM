@@ -138,18 +138,18 @@ if (isset($_SESSION['iUserID'])) {
 
 // we hold down the session type : Lock Login
 if (isset($_POST['iLoginType'])) {
-  $type = $_POST['iLoginType'];
-} else if (isset($_SESSION['iLoginType'])) {
+    $type = $_POST['iLoginType'];
+} elseif (isset($_SESSION['iLoginType'])) {
     $type = $_SESSION['iLoginType'];
 }
 
 if (empty($urlUserName)) {
-  if (isset($_SESSION['user'])) {
-    $user = $_SESSION['user'];
-    $urlUserName = $user->getUserName();
-  } else if (isset($_SESSION['username'])) {
-    $urlUserName = $_SESSION['username'];
-  }
+    if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user'];
+        $urlUserName = $user->getUserName();
+    } elseif (isset($_SESSION['username'])) {
+        $urlUserName = $_SESSION['username'];
+    }
 }
 
 
