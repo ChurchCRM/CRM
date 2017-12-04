@@ -1804,7 +1804,7 @@ class GoogleMapAPI
      */
     public function getOnLoad()
     {
-        return '<script type="text/javascript">window.onload=onLoad'.$this->map_id.';</script>';
+        return '<script >window.onload=onLoad'.$this->map_id.';</script>';
     }
 
     /**
@@ -1830,7 +1830,7 @@ class GoogleMapAPI
     {
         $_script = '';
         $_key = $this->map_id;
-        $_output = '<script type="text/javascript" charset="utf-8">'."\n";
+        $_output = '<script  charset="utf-8">'."\n";
         $_output .= '//<![CDATA['."\n";
         $_output .= "/*************************************************\n";
         $_output .= ' * Created with GoogleMapAPI'.$this->_version."\n";
@@ -2588,7 +2588,7 @@ class GoogleMapAPI
      */
     public function getMap()
     {
-        $_output = '<script type="text/javascript" charset="utf-8">'."\n".'//<![CDATA['."\n";
+        $_output = '<script  charset="utf-8">'."\n".'//<![CDATA['."\n";
         //$_output .= 'if (GBrowserIsCompatible()) {' . "\n";
         if (strlen($this->width) > 0 && strlen($this->height) > 0) {
             $_output .= sprintf('document.write(\'<div id="%s" style="width: %s; height: %s; position:relative;"><\/div>\');', $this->map_id, $this->width, $this->height)."\n";

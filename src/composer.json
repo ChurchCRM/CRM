@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM/CRM",
-    "version": "2.9.0",
+    "version": "2.9.2",
     "type": "project",
     "keywords": [
         "church",
@@ -31,10 +31,10 @@
     "require": {
         "php": ">=5.6.0",
         "mailchimp/mailchimp": "2.0.6",
-        "slim/slim": "3.4.1",
-        "slim/php-view": "2.1",
+        "slim/slim": "3.9.2",
+        "slim/php-view": "2.2",
         "monolog/monolog": "^1.17",
-        "authorizenet/authorizenet": "1.8.0",
+        "authorizenet/authorizenet": "1.9.4",
         "knplabs/github-api": "~1.4",
         "propel/propel": "~2.0@dev",
         "setasign/fpdf": "1.8.1",

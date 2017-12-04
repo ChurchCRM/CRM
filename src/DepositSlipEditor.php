@@ -174,7 +174,7 @@ require 'Include/Header.php';
 </div>
 
 
-<script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/js/DepositSlipEditor.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/js/DepositSlipEditor.js"></script>
 <?php
   $fundData = [];
   foreach ($thisDeposit->getFundTotals() as $tmpfund) {

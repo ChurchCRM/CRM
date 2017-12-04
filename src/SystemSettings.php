@@ -13,7 +13,6 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\ConfigQuery;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
@@ -280,7 +279,7 @@ require 'Include/Header.php';
     } ?>
   });
 </script>
-<script src="skin/js/SystemSettings.js" type="text/javascript"></script>
+<script src="skin/js/SystemSettings.js"></script>
 
 
 <?php require 'Include/Footer.php' ?>

@@ -19,7 +19,7 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-use ChurchCRM\dto\SystemConfig;
+
 use ChurchCRM\UserQuery;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -569,7 +569,7 @@ require 'Include/Header.php';
 </div>
 <!-- /.box -->
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     $(document).ready(function () {
         $("#personSelect").select2();
     });
