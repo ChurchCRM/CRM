@@ -1,1 +1,0 @@
-# Please review the [Contributing Wiki page](https://github.com/ChurchCRM/CRM/wiki/Contributing).
