@@ -39,7 +39,7 @@ $app->group('/cart', function () {
         ]);
     });
     
-    $this->post('/removegGroup', function($request, $response, $args) {
+    $this->post('/removeGroup', function($request, $response, $args) {
         $cartPayload = (object)$request->getParsedBody();
         Cart::RemoveGroup($cartPayload->Group);
         return $response->withJson([
