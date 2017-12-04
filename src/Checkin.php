@@ -386,7 +386,7 @@ if (isset($_POST['EventID'])) {
 }
 ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     var perArr;
     $(document).ready(function () {
         $('#checkedinTable').DataTable(window.CRM.plugin.dataTable);

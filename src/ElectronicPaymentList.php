@@ -33,7 +33,7 @@ $sPageTitle = gettext('Electronic Payment Listing');
 require 'Include/Header.php';
 ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" language="javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 	function ConfirmDeleteAutoPayment (AutID)
 {
 	var famName = document.getElementById("FamName"+AutID).innerHTML;
@@ -174,7 +174,7 @@ function CreatePaymentMethodsForChecked()
 } ?>
 </script>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" language="javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 	function toggle(source, groupName) {
 	  var checkboxes = document.getElementsByName(groupName);
 	  for(var i=0, n=checkboxes.length;i<n;i++) {

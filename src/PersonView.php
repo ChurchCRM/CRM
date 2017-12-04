@@ -919,9 +919,9 @@ if ($per_ID == $iPersonID) {
     </div>
   </div>
 </div>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js" type="text/javascript"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   window.CRM.currentPersonID = <?= $iPersonID ?>;
 

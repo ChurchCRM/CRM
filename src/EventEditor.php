@@ -445,7 +445,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
       <?php if ($bEventTypeError) {
                 echo '<div><span style="color: red;">'.gettext('You must pick an event type.').'</span></div>';
             } ?>
-      <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+      <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
         $('#event_type_id').on('change', function(e) {
           e.preventDefault();
           document.forms.EventsEditor.submit();

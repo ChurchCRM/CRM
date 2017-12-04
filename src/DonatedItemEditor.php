@@ -197,7 +197,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
 ?>
                             </select>
                         </div>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     $(document).ready(function() {
     $("#Donor").select2();
 });

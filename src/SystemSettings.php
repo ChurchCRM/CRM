@@ -279,7 +279,7 @@ require 'Include/Header.php';
     } ?>
   });
 </script>
-<script src="skin/js/SystemSettings.js" type="text/javascript"></script>
+<script src="skin/js/SystemSettings.js"></script>
 
 
 <?php require 'Include/Footer.php' ?>

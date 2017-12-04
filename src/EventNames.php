@@ -331,7 +331,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) != 'NEW') {
     }
 ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function () {
 //Added by @saulowulhynek to translation of datatable nav terms
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);
