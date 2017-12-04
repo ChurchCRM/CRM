@@ -34,7 +34,7 @@
         "slim/slim": "3.9.2",
         "slim/php-view": "2.2",
         "monolog/monolog": "^1.17",
-        "authorizenet/authorizenet": "1.8.0",
+        "authorizenet/authorizenet": "1.9.4",
         "knplabs/github-api": "~1.4",
         "propel/propel": "~2.0@dev",
         "setasign/fpdf": "1.8.1",
