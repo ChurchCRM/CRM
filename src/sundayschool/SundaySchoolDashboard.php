@@ -262,7 +262,7 @@ require '../Include/Header.php';
       </div>
     </div>
   </div>
-  <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="application/javascript">
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
       $('.data-table').DataTable(window.CRM.plugin.dataTable);
 

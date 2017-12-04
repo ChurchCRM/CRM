@@ -431,7 +431,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family = FamilyQuery::create()->findPk($iFamilyID);
             $family->createTimeLineNote('create');
             $family->updateLanLng();
-            
+
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $NotificationEmail = new NewPersonOrFamilyEmail($family);
                 if (!$NotificationEmail->send()) {
@@ -717,7 +717,7 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
-    <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
         $(document).ready(function() {
             $("#country-input").select2();
             $("#state-input").select2();
@@ -1124,7 +1124,7 @@ require 'Include/Header.php';
     echo '</td></tr></form></table>';
 ?>
 
-	<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+	<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 		$(function() {
 			$("[data-mask]").inputmask();
 		});
