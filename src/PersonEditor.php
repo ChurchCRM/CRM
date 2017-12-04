@@ -173,7 +173,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (array_key_exists('updateBirthYear', $_POST)) {
         $iupdateBirthYear = InputUtils::LegacyFilterInput($_POST['updateBirthYear'], 'int');
     }
-    
+
     $iFacebook = InputUtils::FilterInt($_POST['Facebook']);
     $sTwitter = InputUtils::FilterString($_POST['Twitter']);
     $sLinkedIn = InputUtils::FilterString($_POST['LinkedIn']);
@@ -365,7 +365,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
 
             $sSQL .= ', per_Flags='.$per_Flags;
-            
+
             $sSQL .= ', per_FacebookID='. $iFacebook;
             $sSQL .= ', per_Twitter="'. $sTwitter.'"';
             $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
@@ -374,10 +374,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             $bGetKeyBack = false;
         }
-        
+
         //Execute the SQL
         RunQuery($sSQL);
-       
+
 
         $note = new Note();
         $note->setEntered($_SESSION['iUserID']);
@@ -391,8 +391,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Created'));
             $note->setType('create');
-            
-            
+
+
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
                 $NotificationEmail = new NewPersonOrFamilyEmail($person);
@@ -406,7 +406,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setType('edit');
         }
         $note->save();
-        
+
         $photo = new Photo("Person", $iPersonID);
         $photo->refresh();
 
@@ -485,7 +485,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $dFriendDate = $per_FriendDate;
         $iClassification = $per_cls_ID;
         $iViewAgeFlag = $per_Flags;
-        
+
         $iFacebookID = $per_FacebookID;
         $sTwitter = $per_Twitter;
         $sLinkedIn = $per_LinkedIn;
@@ -508,7 +508,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyWorkPhone = strlen($fam_WorkPhone);
         $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
-        
+
         $bFacebookID = $per_FacebookID != 0;
         $bTwitter =  strlen($per_Twitter);
         $bLinkedIn = strlen($per_LinkedIn);
@@ -551,11 +551,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iClassification = '0';
         $iViewAgeFlag = 0;
         $sPhoneCountry = '';
-        
+
         $iFacebookID = 0;
         $sTwitter = '';
         $sLinkedIn = '';
-                
+
 
         $sHomePhone = '';
         $sWorkPhone = '';
@@ -1017,7 +1017,7 @@ require 'Include/Header.php';
                         </div>
                         <input type="text" name="CellPhone"
                                value="<?= htmlentities(stripslashes($sCellPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                               maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask>
+                               maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell')?>"' data-mask>
                         <br><input type="checkbox" name="NoFormat_CellPhone"
                                    value="1" <?php if ($bNoFormat_CellPhone) {
                             echo ' checked';
@@ -1235,7 +1235,7 @@ require 'Include/Header.php';
                         } ?>';">
 </form>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 	$(function() {
 		$("[data-mask]").inputmask();
 	});

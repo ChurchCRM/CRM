@@ -11,7 +11,7 @@ $data = InputUtils::LegacyFilterInput($_GET['data'], 'int');
 
 <html>
   <head>
-    <script nonce="<?= SystemURLs::getCSPNonce() ?>" language="JavaScript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 <?php
 // Select the appropriate Javascript routine..
 switch ($mode) {

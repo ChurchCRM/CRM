@@ -1,5 +1,5 @@
 <?php
-use ChurchCRM\data\Countries;
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
@@ -40,7 +40,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
         </div>
         <!-- /.form-box -->
     </div>
-    <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
         $("#resetPassword").click(function (e) {
             var userName = $("#username").val();
             if (userName) {

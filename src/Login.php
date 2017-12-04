@@ -7,7 +7,7 @@
  *
  *  Copyright 2017 Philippe Logel
  ******************************************************************************/
- 
+
 // Include the function library
 require 'Include/Config.php';
 $bSuppressSessionTests = true; // DO NOT MOVE
@@ -177,7 +177,7 @@ require 'Include/HeaderNotLoggedIn.php';
     <div class="login-logo">
         Church<b>CRM</b>
     </div>
-    
+
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">
@@ -239,16 +239,16 @@ require 'Include/HeaderNotLoggedIn.php';
 <!-- /.login-box -->
 <div class="lockscreen-wrapper" id="Lock">
     <div class="login-logo">
-        Church<b>CRM</b>        
+        Church<b>CRM</b>
     </div>
-    
+
     <p class="login-box-msg">
         <b><?= ChurchMetaData::getChurchName() ?></b><br/>
             <?= gettext('Please Login') ?>
     </p>
-    
 
-    
+
+
     <div>
     <?php
         if (isset($_GET['Timeout'])) {
@@ -264,11 +264,11 @@ require 'Include/HeaderNotLoggedIn.php';
         }
         ?>
     </div>
-    
+
     <div class="lockscreen-name text-center"><?= $urlUserName ?></div>
-    
+
     <div class="lockscreen-item">
-    
+
     <!-- lockscreen image -->
     <div class="lockscreen-image">
       <?php if ($_SESSION['iLoginType'] == "Lock") {
@@ -285,7 +285,7 @@ require 'Include/HeaderNotLoggedIn.php';
         <input type="hidden" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>">
 
         <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext('Password')?>">
-        
+
         <div class="input-group-btn">
           <button type="submit"  class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
         </div>
@@ -303,15 +303,15 @@ require 'Include/HeaderNotLoggedIn.php';
 <!-- /.login-box-body -->
 </div>
 <!-- /.lockscreen-wrapper -->
-<script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 <script>
   <?php if ($_SESSION['iLoginType'] == "Lock") {
             ?>
     $(document).ready(function () {
         $("#Login").hide();
         document.title = 'Lock';
-    });  
-    
+    });
+
     $("#Login-div-appear").click(function(){
       // 200 is the interval in milliseconds for the fade-in/out, we use jQuery's callback feature to fade
       // in the new div once the first one has faded out
@@ -326,7 +326,7 @@ require 'Include/HeaderNotLoggedIn.php';
     $(document).ready(function () {
         $("#Lock").hide();
         document.title = 'Login';
-    });  
+    });
   <?php
         } ?>
 </script>
@@ -344,12 +344,12 @@ require 'Include/HeaderNotLoggedIn.php';
     catch (e) {
         window.attachEvent("onload", $buo_f)
     }
-    
+
     $('#password').password('toggle');
     $("#password").password({
         eyeOpenClass: 'glyphicon-eye-open',
         eyeCloseClass: 'glyphicon-eye-close'
-    });    
+    });
 </script>
 
 
