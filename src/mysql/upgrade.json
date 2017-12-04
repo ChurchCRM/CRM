@@ -159,12 +159,12 @@
         ],
         "dbVersion": "2.9.0"
     },
-     "current": {
+    "current": {
         "versions": [
-            "2.9.0"
+            "2.9.0",
+            "2.9.1"
         ],
-        "scripts": [
-        ],
-        "dbVersion": "2.9.1"
-     }
+        "scripts": [],
+        "dbVersion": "2.9.2"
+    }
 }
