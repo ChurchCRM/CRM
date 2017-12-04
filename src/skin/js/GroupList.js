@@ -93,10 +93,10 @@ $(document).ready(function () {
     $(".cartStatusButton").each(function (index, element) {
       var objectID = $(element).data("groupid");
       if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
-        $(element).html(i18next.t("All members of this group are in the cart")+"<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + objectID + "\">" + i18next.t("Remove all") + "</a>");
+        $(element).html(i18next.t("All members of this group are in the cart")+"<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\" id=\"removeGroupFromCart\" data-groupid=\"" + objectID + "\">" + i18next.t("Remove all") + "</a>");
       }
       else {
-        $(element).html(i18next.t("Not all members of this group are in the cart")+"<br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + objectID + "\">" + i18next.t("Add all") + "</a>");
+        $(element).html(i18next.t("Not all members of this group are in the cart")+"<br><a onclick=\"saveScrollCoordinates()\" id=\"AddGroupToCart\" class=\"btn btn-primary\" data-groupid=\"" + objectID + "\">" + i18next.t("Add all") + "</a>");
       }
     });
   });
@@ -105,4 +105,17 @@ $(document).ready(function () {
        dataT.search(this.value).draw();
        localStorage.setItem("groupSelect",this.selectedIndex);
   });
+  
+  $(document).on("click","#AddGroupToCart",function(data){
+  	var groupid = data.toElement.dataset.groupid;
+    window.CRM.cart.addGroup(groupid);
+    location.reload();
+  });
+  
+  $(document).on("click","#removeGroupFromCart",function(data){
+  	var groupid = data.toElement.dataset.groupid;
+    window.CRM.cart.removeGroup(groupid);
+    location.reload();
+  });
+
 });
