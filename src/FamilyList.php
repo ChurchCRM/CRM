@@ -82,7 +82,7 @@ require 'Include/Header.php'; ?>
     </div>
 </div>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function () {
     $('#families').DataTable(window.CRM.plugin.dataTable);
   });

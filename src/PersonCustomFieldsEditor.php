@@ -268,7 +268,7 @@ require 'Include/Header.php'; ?>
 
   // Construct the form
   ?>
-  <script nonce="<?= SystemURLs::getCSPNonce() ?>" language="javascript">
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 
     function confirmDeleteField(event) {
       var answer = confirm("<?= gettext('Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!') ?>")

@@ -27,7 +27,7 @@ require_once 'Header-Security.php';
 </head>
 <body class="hold-transition login-page">
 
-  <script nonce="<?= SystemURLs::getCSPNonce() ?>" language="javascript" type="text/javascript">
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     window.CRM = {
       root: "<?= SystemURLs::getRootPath() ?>"
     };
