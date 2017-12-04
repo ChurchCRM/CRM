@@ -133,7 +133,7 @@
         ],
         "dbVersion": "2.8.0"
     },
-    "current": {
+    "pre-2.9.0": {
         "versions": [
             "2.8.0",
             "2.8.1",
@@ -150,13 +150,22 @@
             "2.8.12",
             "2.8.13",
             "2.8.14",
-            "2.8.15",
+            "2.8.15"
+        ],
+        "scripts": [
+            "/mysql/upgrade/2.9.0.sql",
+            "/mysql/upgrade/2.9.0-InnoDB.php",
+            "/mysql/upgrade/2.9.0_church_division.sql",
+	     "/mysql/upgrade/2.9.2_show_tooltip.sql"
+        ],
+        "dbVersion": "2.9.0"
+    },
+    "current": {
+        "versions": [
             "2.9.0",
             "2.9.1"
         ],
-        "scripts": [
-            "/mysql/upgrade/2.9.2_show_tooltip.sql"
-        ],
+        "scripts": [],
         "dbVersion": "2.9.2"
     }
 }
