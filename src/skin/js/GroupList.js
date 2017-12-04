@@ -106,14 +106,14 @@ $(document).ready(function () {
        localStorage.setItem("groupSelect",this.selectedIndex);
   });
   
-  $(document).on("click","#AddGroupToCart",function(data){
-  	var groupid = data.toElement.dataset.groupid;
+  $(document).on("click","#AddGroupToCart",function(link){
+  	var groupid = link.toElement.dataset.groupid;
     window.CRM.cart.addGroup(groupid);
     location.reload();
   });
   
-  $(document).on("click","#removeGroupFromCart",function(data){
-  	var groupid = data.toElement.dataset.groupid;
+  $(document).on("click","#removeGroupFromCart",function(link){
+  	var groupid = link.toElement.dataset.groupid;
     window.CRM.cart.removeGroup(groupid);
     location.reload();
   });
