@@ -273,7 +273,7 @@ require 'Include/HeaderNotLoggedIn.php';
     <div class="lockscreen-image">
       <?php if ($_SESSION['iLoginType'] == "Lock") {
             ?>
-      <img src='<?= SystemURLs::getRootPath()."/api/persons/".$id."/thumbnail" ?>' alt="User Image">
+      <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getThumbnailURI()) ?>" alt="User Image">
       <?php
         } ?>
     </div>
