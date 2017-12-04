@@ -13,10 +13,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\ConfigQuery;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security
 if (!$_SESSION['bAdmin']) {
@@ -258,7 +258,7 @@ require 'Include/Header.php';
   </div>
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       var target = $(e.target).attr("href") // activated tab
@@ -279,7 +279,7 @@ require 'Include/Header.php';
     } ?>
   });
 </script>
-<script src="skin/js/SystemSettings.js" type="text/javascript"></script>
+<script src="skin/js/SystemSettings.js"></script>
 
 
 <?php require 'Include/Footer.php' ?>

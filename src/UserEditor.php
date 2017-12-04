@@ -19,13 +19,14 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-use ChurchCRM\dto\SystemConfig;
+
 use ChurchCRM\UserQuery;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Emails\NewAccountEmail;
 use ChurchCRM\User;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
@@ -568,7 +569,7 @@ require 'Include/Header.php';
 </div>
 <!-- /.box -->
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     $(document).ready(function () {
         $("#personSelect").select2();
     });

@@ -2,14 +2,10 @@
 /*******************************************************************************
  *
  *  filename    : Login.php
- *  description : login page that checks for correct username and password
+ *  website     : http://www.churchcrm.io
+ *  description : page header used for most pages
  *
- *  http://www.churchcrm.io/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker,
- *
- *  Updated 2005-03-19 by Everette L Mills: Removed dropdown login box and
- *  added user entered login box
- *
+ *  Copyright 2017 Philippe Logel
  ******************************************************************************/
 
 // Include the function library
@@ -25,11 +21,13 @@ use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\PersonQuery;
 
 if (!SystemService::isDBCurrent()) {
     Redirect('SystemDBUpdate.php');
     exit;
 }
+
 
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
@@ -132,15 +130,54 @@ if (isset($_POST['User'])) {
     $urlUserName = $_GET['username'];
 }
 
+$id = 0;
+// we hold down the last id
+if (isset($_SESSION['iUserID'])) {
+    $id = $_SESSION['iUserID'];
+}
+
+// we hold down the session type : Lock Login
+if (isset($_POST['iLoginType'])) {
+    $type = $_POST['iLoginType'];
+} elseif (isset($_SESSION['iLoginType'])) {
+    $type = $_SESSION['iLoginType'];
+}
+
+if (empty($urlUserName)) {
+    if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user'];
+        $urlUserName = $user->getUserName();
+    } elseif (isset($_SESSION['username'])) {
+        $urlUserName = $_SESSION['username'];
+    }
+}
+
+// we destroy the session
+session_destroy();
+
+// we reopen a new one
+session_start() ;
+
+// we restore only this part
+$_SESSION['iLoginType'] = $type;
+$_SESSION['username'] = $urlUserName;
+$_SESSION['iUserID'] = $id;
+
+if ($_SESSION['iLoginType'] == "Lock" && $id > 0) {// this point is important for the photo in a lock session
+    $person = PersonQuery::Create()
+              ->findOneByID($_SESSION['iUserID']);
+}
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Login');
 require 'Include/HeaderNotLoggedIn.php';
+
 ?>
-<div class="login-box">
+<div class="login-box" id="Login">
     <div class="login-logo">
         Church<b>CRM</b>
     </div>
+
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">
@@ -200,7 +237,99 @@ require 'Include/HeaderNotLoggedIn.php';
 <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-<script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+<div class="lockscreen-wrapper" id="Lock">
+    <div class="login-logo">
+        Church<b>CRM</b>
+    </div>
+
+    <p class="login-box-msg">
+        <b><?= ChurchMetaData::getChurchName() ?></b><br/>
+            <?= gettext('Please Login') ?>
+    </p>
+
+
+
+    <div>
+    <?php
+        if (isset($_GET['Timeout'])) {
+            $loginPageMsg = gettext('Your previous session timed out.  Please login again.');
+        }
+
+        // output warning and error messages
+        if (isset($sErrorText)) {
+            echo '<div class="alert alert-error">' . $sErrorText . '</div>';
+        }
+        if (isset($loginPageMsg)) {
+            echo '<div class="alert alert-warning">' . $loginPageMsg . '</div>';
+        }
+        ?>
+    </div>
+
+    <div class="lockscreen-name text-center"><?= $urlUserName ?></div>
+
+    <div class="lockscreen-item">
+
+    <!-- lockscreen image -->
+    <div class="lockscreen-image">
+      <?php if ($_SESSION['iLoginType'] == "Lock") {
+            ?>
+      <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
+      <?php
+        } ?>
+    </div>
+    <!-- /.lockscreen-image -->
+
+    <!-- lockscreen credentials (contains the form) -->
+    <form class="lockscreen-credentials" role="form" method="post" name="LoginForm" action="Login.php">
+      <div class="input-group">
+        <input type="hidden" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>">
+
+        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext('Password')?>">
+
+        <div class="input-group-btn">
+          <button type="submit"  class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+        </div>
+      </div>
+    </form>
+    <!-- /.lockscreen credentials -->
+  </div>
+  <!-- /.lockscreen-item -->
+  <div class="help-block text-center">
+    <?= gettext("Enter your password to retrieve your session") ?>
+  </div>
+  <div class="text-center">
+    <a href="#" id="Login-div-appear"><?= gettext("Or sign in as a different user") ?></a>
+  </div>
+<!-- /.login-box-body -->
+</div>
+<!-- /.lockscreen-wrapper -->
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+<script>
+  <?php if ($_SESSION['iLoginType'] == "Lock") {
+            ?>
+    $(document).ready(function () {
+        $("#Login").hide();
+        document.title = 'Lock';
+    });
+
+    $("#Login-div-appear").click(function(){
+      // 200 is the interval in milliseconds for the fade-in/out, we use jQuery's callback feature to fade
+      // in the new div once the first one has faded out
+      $("#Lock").fadeOut(100, function () {
+        $("#Login").fadeIn(300);
+        document.title = 'Login';
+      });
+    });
+  <?php
+        } else {
+            ?>
+    $(document).ready(function () {
+        $("#Lock").hide();
+        document.title = 'Login';
+    });
+  <?php
+        } ?>
+</script>
 <script>
     var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
     function $buo_f() {
@@ -215,12 +344,13 @@ require 'Include/HeaderNotLoggedIn.php';
     catch (e) {
         window.attachEvent("onload", $buo_f)
     }
-    
+
     $('#password').password('toggle');
     $("#password").password({
         eyeOpenClass: 'glyphicon-eye-open',
         eyeCloseClass: 'glyphicon-eye-close'
-    });    
+    });
 </script>
+
 
 <?php require 'Include/FooterNotLoggedIn.php'; ?>

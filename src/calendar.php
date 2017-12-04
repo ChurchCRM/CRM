@@ -104,7 +104,7 @@ require 'Include/Header.php';
 <!-- /.col -->
 
 <!-- fullCalendar 2.2.5 -->
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   var isModifiable  = <?php
     if ($_SESSION['bAddEvent'] || $_SESSION['bAdmin']) {
         echo "true";
@@ -115,6 +115,6 @@ require 'Include/Header.php';
 </script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Calendar.js" type="text/javascript"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Calendar.js" ></script>
 
 <?php require 'Include/Footer.php'; ?>

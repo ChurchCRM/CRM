@@ -188,7 +188,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
         $attendee = EventAttendQuery::create()->filterByEventId($EventID)->findOneByPersonId($iChildID);
         if ($attendee) {
             ?>
-            <script>
+            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                 $('#errorcallout').text('<?= gettext("Person has been already checked in for this event") ?>').fadeIn();
             </script>
             <?php
@@ -386,7 +386,7 @@ if (isset($_POST['EventID'])) {
 }
 ?>
 
-<script language="javascript" type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     var perArr;
     $(document).ready(function () {
         $('#checkedinTable').DataTable(window.CRM.plugin.dataTable);
