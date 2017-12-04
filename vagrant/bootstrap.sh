@@ -90,10 +90,10 @@ fi
 
 sudo chown vagrant:vagrant /vagrant/node_modules
 sudo chmod a+rw /vagrant/node_modules
+sudo chmod a+rw  /home/vagrant/node_modules
 
-npm install
+npm install --unsafe-perm
 grunt compress:demo
-
 echo "=========================================================="
 echo "===============   Composer PHP           ================="
 echo "=========================================================="
