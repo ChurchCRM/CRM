@@ -1,7 +1,7 @@
 <?php
 
 namespace ChurchCRM\Service;
-class DashboardService
+class NewDashboardService
 {
   public static function getValues($PageName) {
     $DashboardItems = array (
@@ -20,5 +20,17 @@ class DashboardService
       }
     }
     return $ReturnValues;
+  }
+  
+  
+  public static function getRenderCode($PageName) {
+    $code = "window.CRM.dashboard={";
+    $code .= "EventsCounters: function(data) { console.log(data); document.getElementById('BirthdateNumber').innerText=data.Birthdays;
+      document.getElementById('AnniversaryNumber').innerText=data.Anniversaries;
+      document.getElementById('EventsNumber').innerText=data.Events; }";
+    
+    $code .= "};";
+    
+    return $code;
   }
 }

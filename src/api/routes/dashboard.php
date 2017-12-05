@@ -2,14 +2,21 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\Service\DashboardService;
+use ChurchCRM\Service\NewDashboardService;
 
 
 
 $app->group('/dashboard', function () {
-   $this->get('/{pagename}', 'getDashboard');
+   $this->get('/page/{pagename}', 'getDashboard');
+   $this->get('/renderer/{pagename}', 'getDashboardRenderer');
 });
 
+
+function getDashboardRenderer(Request $request, Response $response, array $p_args ) {
+  $DashboardRenderCode = NewDashboardService::getRenderCode($p_args['pagename']);
+  echo $DashboardRenderCode;
+  //return $response->withBody($DashboardRenderCode);
+}
 /**
  * A method that does the work to handle getting an issue via REST API.
  *
@@ -19,6 +26,6 @@ $app->group('/dashboard', function () {
  * @return \Slim\Http\Response The augmented response.
  */
 function getDashboard(Request $request, Response $response, array $p_args ) {
-  $DashboardValues = DashboardService::getValues($p_args['pagename']);
+  $DashboardValues = NewDashboardService::getValues($p_args['pagename']);
   return $response->withJson($DashboardValues);
 }

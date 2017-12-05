@@ -12,7 +12,7 @@ use ChurchCRM\PersonQuery;
 
 class PersonDashboardItem implements DashboardItemInterface {
   
-  public static function getDashboardItemRenderControl() {
+  public static function getDashboardItemRenderer() {
     return "#PersonCount";
   }
 
@@ -63,7 +63,7 @@ class PersonDashboardItem implements DashboardItemInterface {
   
 
   public static function shouldInclude($PageName) {
-    return true; // this ID would be found on all pages.
+    return $PageName=="index.php"; // this ID would be found on all pages.
   }
 
 }

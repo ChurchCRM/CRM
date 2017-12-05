@@ -6,7 +6,7 @@ use ChurchCRM\Dashboard\DashboardItemInterface;
 
 class GroupsDashboardItem implements DashboardItemInterface {
   
-  public static function getDashboardItemRenderControl() {
+  public static function getDashboardItemRenderer() {
     
   }
 
@@ -34,7 +34,7 @@ class GroupsDashboardItem implements DashboardItemInterface {
   }
 
   public static function shouldInclude($PageName) {
-    
+    return $PageName=="index.php";
   }
 
 }

@@ -10,19 +10,41 @@ namespace ChurchCRM\Dashboard;
 
 use ChurchCRM\Dashboard\DashboardItemInterface;
 use ChurchCRM\EventQuery;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\FamilyQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class EventsDashboardItem implements DashboardItemInterface {
   
-  public static function getDashboardItemRenderControl() {
-    return "#EventsNumber";
+  public static function getDashboardItemRenderer() {
+    return "?>
+      document.getElementById('BirthdateNumber').innerText=data.Birthdays;
+      document.getElementById('AnniversaryNumber').innerText=data.Anniversaries;
+      document.getElementById('EventsNumber').innerText=data.Events;
+    <?php";
   }
 
   public static function getDashboardItemName() {
-    return "Events Counter";
+    return "EventsCounters";
   }
 
   public static function getDashboardItemValue() {
-    $start_date = date("Y-m-d ")." 00:00:00";
+    $activeEvents = array (
+        "Events" => self::getNumberEventsOfToday(),
+        "Birthdays" => self::getNumberBirthDates(),
+        "Anniversaries" => self::getNumberAnniversaries()
+    );
+
+    return $activeEvents;
+  }
+
+  public static function shouldInclude($PageName) {
+    return true; // this ID would be found on all pages.
+  }
+  
+  private static function getEventsOfToday()
+    {
+        $start_date = date("Y-m-d ")." 00:00:00";
         $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' +1 day'));
 
         $activeEvents = EventQuery::create()
@@ -30,11 +52,52 @@ class EventsDashboardItem implements DashboardItemInterface {
             ->_or()->where("event_start>='".$start_date."' AND event_end <= '".$end_date."'") /* the events of the day */
             ->find();
 
-    return  count($activeEvents);
-  }
+        return  $activeEvents;
+    }
 
-  public static function shouldInclude($PageName) {
-    return true; // this ID would be found on all pages.
-  }
+    private static function getNumberEventsOfToday()
+    {
+        return count(self::getEventsOfToday());
+    }
+
+    private static function getBirthDates()
+    {
+        $peopleWithBirthDays = PersonQuery::create()
+            ->filterByBirthMonth(date('m'))
+            ->filterByBirthDay(date('d'))
+            ->find();
+        
+        return $peopleWithBirthDays;
+    }
+
+    private static function getNumberBirthDates()
+    {
+        return count(self::getBirthDates());
+    }
+
+    private static function getAnniversaries()
+    {
+        $Anniversaries = FamilyQuery::create()
+              ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
+              ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
+              ->find();
+      
+        $curDay = date('d');
+        $curMonth = date('m');
+  
+        $families = [];
+        foreach ($Anniversaries as $anniversary) {
+            if ($anniversary->getWeddingMonth() == $curMonth && $curDay == $anniversary->getWeddingDay()) {
+                $families[] = $anniversary;
+            }
+        }
+    
+        return $families;
+    }
+
+    private static function getNumberAnniversaries()
+    {
+        return count(self::getAnniversaries());
+    }
 
 }
