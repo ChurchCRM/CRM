@@ -3,8 +3,9 @@
 namespace ChurchCRM\Service;
 class NewDashboardService
 {
-  public static function getValues($PageName) {
-    $DashboardItems = array (
+  
+  public static function getDashboardItems() {
+     $DashboardItems = array (
        "ChurchCRM\Dashboard\EventsDashboardItem",
        "ChurchCRM\Dashboard\ClassificationDashboardItem",
        "ChurchCRM\Dashboard\FamilyDashboardItem",
@@ -15,20 +16,31 @@ class NewDashboardService
     $ReturnValues = array ();
     Foreach ($DashboardItems as $DashboardItem) {
       if ($DashboardItem::shouldInclude($PageName)){
+        array_push($ReturnValues, $DashboardItem);
+      }
+    }
+    return $ReturnValues;
+    
+  }
+  public static function getValues($PageName) {
+    $ReturnValues = array ();
+    Foreach (self::getDashboardItems() as $DashboardItem) {
         $thisItem = array($DashboardItem::getDashboardItemName() => $DashboardItem::getDashboardItemValue());
         array_push($ReturnValues,$thisItem);
-      }
     }
     return $ReturnValues;
   }
   
   
   public static function getRenderCode($PageName) {
-    $code = "window.CRM.dashboard={";
-    $code .= "EventsCounters: function(data) { console.log(data); document.getElementById('BirthdateNumber').innerText=data.Birthdays;
-      document.getElementById('AnniversaryNumber').innerText=data.Anniversaries;
-      document.getElementById('EventsNumber').innerText=data.Events; }";
     
+    $jsFunctions = array();
+    Foreach (self::getDashboardItems() as $DashboardItem) {
+        $itemRenderer = $DashboardItem::getDashboardItemName().": function(data) {". $DashboardItem::getDashboardItemRenderer() ."}";
+        array_push($jsFunctions,$itemRenderer);
+    }
+    $code = "window.CRM.dashboard={";
+    $code .= join(", ",$jsFunctions);
     $code .= "};";
     
     return $code;

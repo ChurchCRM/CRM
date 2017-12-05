@@ -17,11 +17,11 @@ use Propel\Runtime\ActiveQuery\Criteria;
 class EventsDashboardItem implements DashboardItemInterface {
   
   public static function getDashboardItemRenderer() {
-    return "?>
+    return "
       document.getElementById('BirthdateNumber').innerText=data.Birthdays;
       document.getElementById('AnniversaryNumber').innerText=data.Anniversaries;
       document.getElementById('EventsNumber').innerText=data.Events;
-    <?php";
+    ";
   }
 
   public static function getDashboardItemName() {
