@@ -7,11 +7,13 @@ use ChurchCRM\Dashboard\DashboardItemInterface;
 class GroupsDashboardItem implements DashboardItemInterface {
   
   public static function getDashboardItemRenderer() {
-    
+    return "
+        document.getElementById('groupStatsSundaySchool').innerText = data.sundaySchoolClasses;
+      ";
   }
 
   public static function getDashboardItemName() {
-    
+    return "GroupsDisplay";
   }
 
   public static function getDashboardItemValue() {
@@ -34,7 +36,7 @@ class GroupsDashboardItem implements DashboardItemInterface {
   }
 
   public static function shouldInclude($PageName) {
-    return $PageName=="index.php";
+    return $PageName=="Menu.php";
   }
 
 }

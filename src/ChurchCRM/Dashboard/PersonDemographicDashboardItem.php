@@ -13,11 +13,11 @@ use ChurchCRM\Dashboard\DashboardItemInterface;
 class PersonDemographicDashboardItem implements DashboardItemInterface {
   
   public static function getDashboardItemRenderer() {
-    return "#PersonDemographics";
+    return "";
   }
 
   public static function getDashboardItemName() {
-    return "Person Demographics";
+    return "PersonDemographics";
   }
 
   public static function getDashboardItemValue() {
@@ -71,7 +71,7 @@ class PersonDemographicDashboardItem implements DashboardItemInterface {
   }
 
   public static function shouldInclude($PageName) {
-    return $PageName=="index.php"; // this ID would be found on all pages.
+    return $PageName=="PeopleDashboard.php"; // this ID would be found on all pages.
   }
 
 }

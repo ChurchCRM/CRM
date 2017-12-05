@@ -211,8 +211,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>
-                    <?= $groupStats['sundaySchoolClasses'] ?>
+                <h3 id="groupStatsSundaySchool">
+                   0
                 </h3>
                 <p>
                     <?= gettext('Sunday School Classes') ?>

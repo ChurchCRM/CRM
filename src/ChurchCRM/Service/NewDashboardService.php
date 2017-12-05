@@ -4,7 +4,7 @@ namespace ChurchCRM\Service;
 class NewDashboardService
 {
   
-  public static function getDashboardItems() {
+  public static function getDashboardItems($PageName) {
      $DashboardItems = array (
        "ChurchCRM\Dashboard\EventsDashboardItem",
        "ChurchCRM\Dashboard\ClassificationDashboardItem",
@@ -24,9 +24,8 @@ class NewDashboardService
   }
   public static function getValues($PageName) {
     $ReturnValues = array ();
-    Foreach (self::getDashboardItems() as $DashboardItem) {
-        $thisItem = array($DashboardItem::getDashboardItemName() => $DashboardItem::getDashboardItemValue());
-        array_push($ReturnValues,$thisItem);
+    Foreach (self::getDashboardItems($PageName) as $DashboardItem) {
+        $ReturnValues[$DashboardItem::getDashboardItemName()] = $DashboardItem::getDashboardItemValue();
     }
     return $ReturnValues;
   }
@@ -35,7 +34,7 @@ class NewDashboardService
   public static function getRenderCode($PageName) {
     
     $jsFunctions = array();
-    Foreach (self::getDashboardItems() as $DashboardItem) {
+    Foreach (self::getDashboardItems($PageName) as $DashboardItem) {
         $itemRenderer = $DashboardItem::getDashboardItemName().": function(data) {". $DashboardItem::getDashboardItemRenderer() ."}";
         array_push($jsFunctions,$itemRenderer);
     }

@@ -12,7 +12,7 @@ use ChurchCRM\Dashboard\DashboardItemInterface;
 class ClassificationDashboardItem implements DashboardItemInterface {
   
   public static function getDashboardItemRenderer() {
-    return "#ClassificationBreakdown";
+    return "";
   }
 
   public static function getDashboardItemName() {
@@ -35,7 +35,7 @@ class ClassificationDashboardItem implements DashboardItemInterface {
   }
 
   public static function shouldInclude($PageName) {
-    return $PageName=="index.php"; // this ID would be found on all pages.
+    return $PageName=="PeopleDashboard.php"; // this ID would be found on all pages.
   }
 
 }

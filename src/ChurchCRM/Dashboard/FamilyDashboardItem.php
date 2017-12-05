@@ -13,11 +13,11 @@ use ChurchCRM\FamilyQuery;
 class FamilyDashboardItem implements DashboardItemInterface {
   
   public static function getDashboardItemRenderer() {
-    return "#FamilyCount";
+    return "";
   }
 
   public static function getDashboardItemName() {
-    return "Family Count";
+    return "FamilyCount";
   }
 
   public static function getDashboardItemValue() {
@@ -61,7 +61,7 @@ class FamilyDashboardItem implements DashboardItemInterface {
     }
   
   public static function shouldInclude($PageName) {
-    return $PageName=="index.php"; // this ID would be found on all pages.
+    return $PageName=="Menu.php"; // this ID would be found on all pages.
   }
 
 }
