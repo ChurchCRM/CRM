@@ -27,9 +27,6 @@ use ChurchCRM\dto\MenuEventsCount;
 
 $financialService = new FinancialService();
 $dashboardService = new DashboardService();
-$personCount = $dashboardService->getPersonCount();
-$familyCount = $dashboardService->getFamilyCount();
-$groupStats = $dashboardService->getGroupStats();
 //Last edited active families
 $updatedFamilies = $dashboardService->getUpdatedFamilies(10);
 //Newly added active families
