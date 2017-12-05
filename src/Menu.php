@@ -173,8 +173,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>
-                    <?= $familyCount['familyCount'] ?>
+                <h3 id="familyCountDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('Families') ?>
@@ -192,8 +192,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>
-                    <?= $personCount['personCount'] ?>
+                <h3 id="peopleStatsDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('People') ?>
@@ -230,8 +230,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>
-                  <?= $groupStats['groups'] - $groupStats['sundaySchoolClasses']  ?>
+                <h3 id="groupsCountDashboard">
+                  0
                 </h3>
                 <p>
                     <?= gettext('Groups') ?>

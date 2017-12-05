@@ -13,7 +13,9 @@ use ChurchCRM\FamilyQuery;
 class FamilyDashboardItem implements DashboardItemInterface {
   
   public static function getDashboardItemRenderer() {
-    return "";
+    return "
+      document.getElementById('familyCountDashboard').innerText = data.familyCount;
+     ";
   }
 
   public static function getDashboardItemName() {
