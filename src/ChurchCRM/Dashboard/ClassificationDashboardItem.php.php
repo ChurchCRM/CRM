@@ -16,7 +16,7 @@ class ClassificationDashboardItem implements DashboardItemInterface {
   }
 
   public static function getDashboardItemName() {
-    return "Classification Breakdown";
+    return "ClassificationBreakdown";
   }
 
   public static function getDashboardItemValue() {
