@@ -228,11 +228,8 @@ class Photo {
     }
     elseif ($this->photoType == "Family" )
     {
-      $fullNameArr = explode(" ",  FamilyQuery::create()->findOneById($this->id)->getName());
-      foreach ($fullNameArr as $name)
-      {
-        $retstr .= substr($name, 0,1);
-      }
+      $fullNameArr = FamilyQuery::create()->findOneById($this->id)->getName();
+        $retstr .= strtoupper(substr($fullNameArr, 0,1));
     }
     return $retstr;
   }
