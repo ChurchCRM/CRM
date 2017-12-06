@@ -37,8 +37,10 @@ $app->group('/events', function () {
         return $response->write($Events->toJSON());
     });
     
-    $this->get('/numbers', function ($request, $response, $args) {        
-        $response->withJson(MenuEventsCount::getNumberEventsOfToday());       
+    $this->get('/numbers', function ($request, $response, $args) {   
+        $return = array("anniversaries" => MenuEventsCount::getNumberAnniversaries(),'events' => MenuEventsCount::getNumberEventsOfToday(),'birthdates' => MenuEventsCount::getNumberBirthDates());
+        
+        $response->withJson($return);       
     });
     
     $this->get('/calendars', function ($request, $response, $args) {
