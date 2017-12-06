@@ -14,6 +14,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
@@ -87,7 +88,7 @@ require 'Include/Header.php';
      </div>
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 
 function doBackup(isRemote)
 {
@@ -156,7 +157,7 @@ function doBackup(isRemote)
     });
   }
 }
-  
+
 $('#doBackup').click(function(event) {
   event.preventDefault();
   doBackup (0);

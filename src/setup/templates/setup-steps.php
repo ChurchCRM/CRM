@@ -7,7 +7,7 @@ $URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_H
 $sPageTitle = 'ChurchCRM – Setup';
 require '../Include/HeaderNotLoggedIn.php';
 ?>
-<script language="javascript" type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = {
         root: "<?= SystemURLs::getRootPath() ?>",
         prerequisites : [],

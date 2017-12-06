@@ -121,9 +121,8 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
   </div>
 
 
-  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>"></script>
-
-  <script>
+  <script  src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>"></script>
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     <?php if ($doShowMap) { ?>
       var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
     <?php } else { ?>

@@ -16,6 +16,7 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MICRReader;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
     $micrObj = new MICRReader();
@@ -167,7 +168,7 @@ if (isset($_POST['PledgeSubmit']) or
         $sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='".$sGroupKey."' GROUP BY plg_GroupKey";
         $rsResults = RunQuery($sSQL);
         list($numGroupKeys, $PledgeOrPayment, $fundId, $dDate, $iFYID, $iCheckNo, $iSchedule, $iMethod, $iCurrentDeposit) = mysqli_fetch_row($rsResults);
-        
+
 
         $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_date, plg_method, plg_FYID from pledge_plg where plg_GroupKey='".$sGroupKey."'";
         //	don't know if we need plg_date or plg_method here...  leave it here for now
@@ -193,7 +194,7 @@ if (isset($_POST['PledgeSubmit']) or
         } else {
             $dDate = date('Y-m-d');
         }
-               
+
         if (array_key_exists('idefaultFY', $_SESSION)) {
             $iFYID = $_SESSION['idefaultFY'];
         } else {
@@ -276,7 +277,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         $sAmountError[$fun_id] = gettext('At least one fund must have a non-zero amount.');
         $bErrorFlag = true;
     }
-    
+
 
     if (array_key_exists('ScanInput', $_POST)) {
         $tScanString = InputUtils::LegacyFilterInput($_POST['ScanInput']);
@@ -501,7 +502,7 @@ require 'Include/Header.php';
       <div class="box-body">
         <input type="hidden" name="FamilyID" id="FamilyID" value="<?= $iFamily ?>">
         <input type="hidden" name="PledgeOrPayment" id="PledgeOrPayment" value="<?= $PledgeOrPayment ?>">
-  
+
         <div class="col-lg-12">
           <label for="FamilyName"><?= gettext('Family') ?></label>
           <select class="form-control"   id="FamilyName" name="FamilyName" >
@@ -517,7 +518,7 @@ require 'Include/Header.php';
           <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>" ><font color="red"><?= $sDateError ?></font>
           <label for="FYID"><?= gettext('Fiscal Year') ?></label>
            <?php PrintFYIDSelect($iFYID, 'FYID') ?>
-          
+
           <?php if ($dep_Type == 'Bank' && SystemConfig::getValue('bUseDonationEnvelopes')) {
     ?>
           <label for="Envelope"><?= gettext('Envelope Number') ?></label>
@@ -527,13 +528,13 @@ require 'Include/Header.php';
             <input class="form-control" type="submit" class="btn" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
           <?php
     } ?>
-          
+
         <?php
 } ?>
-            
+
             <?php if ($PledgeOrPayment == 'Pledge') {
         ?>
-          
+
         <label for="Schedule"><?= gettext('Payment Schedule') ?></label>
           <select name="Schedule" class="form-control">
               <option value="0"><?= gettext('Select Schedule') ?></option>
@@ -558,13 +559,13 @@ require 'Include/Header.php';
         } ?>><?= gettext('Other') ?>
               </option>
           </select>
-          
+
           <?php
     } ?>
 
       </div>
 
-              
+
       <div class="col-lg-6">
         <label for="Method"><?= gettext('Payment by') ?></label>
         <select class="form-control" name="Method" id="Method">
@@ -604,9 +605,9 @@ require 'Include/Header.php';
           <?php
     } ?>
         </select>
-                        
-                       
-                        
+
+
+
         <?php if ($PledgeOrPayment == 'Payment' && $dep_Type == 'Bank') {
         ?>
           <div id="checkNumberGroup">
@@ -615,19 +616,19 @@ require 'Include/Header.php';
           </div>
         <?php
     } ?>
-                
-                  
+
+
         <label for="TotalAmount"><?= gettext('Total $') ?></label>
         <input class="form-control"  type="number" step="any" name="TotalAmount" id="TotalAmount" disabled />
 
     </div>
-        
-        
+
+
     <?php
     if ($dep_Type == 'CreditCard' || $dep_Type == 'BankDraft') {
-        ?>       
+        ?>
     <div class="col-lg-6">
-       
+
             <tr>
               <td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Choose online payment method') ?></td>
               <td class="TextColumnWithBottomBorder">
@@ -656,11 +657,11 @@ require 'Include/Header.php';
                 </select>
               </td>
             </tr>
-           
+
       </div>
     <?php
     } ?>
-              
+
     <div class="col-lg-6">
        <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type == 'Bank' || $PledgeOrPayment == 'Pledge')) {
         ?>
@@ -669,7 +670,7 @@ require 'Include/Header.php';
         <?php
     } ?>
     </div>
-              
+
     <div class="col-lg-6">
       <?php if (SystemConfig::getValue('bUseScannedChecks') && $dep_Type == 'Bank') {
         ?>
@@ -756,7 +757,7 @@ require 'Include/Header.php';
 
 </form>
 
- <script language="javascript" type="text/javascript">
+ <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function() {
 
     $("#FamilyName").select2({
@@ -784,11 +785,11 @@ require 'Include/Header.php';
           }
         }
     });
-    
+
     $("#FamilyName").on("select2:select", function (e) {
       $('[name=FamilyID]').val(e.params.data.id);
     });
-    
+
     $("#FundTable").DataTable({
         "language": {
             "url": window.CRM.plugin.dataTable.language.url
@@ -801,20 +802,20 @@ require 'Include/Header.php';
             "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
         },
     });
-    
-    
+
+
     $(".FundAmount").change(function(){
       CalculateTotal();
     });
-    
+
     $("#Method").change(function() {
       EvalCheckNumberGroup();
     });
-    
+
     EvalCheckNumberGroup();
     CalculateTotal();
   });
-  
+
   function EvalCheckNumberGroup()
   {
     if ($("#Method option:selected").val()==="CHECK") {
@@ -824,7 +825,7 @@ require 'Include/Header.php';
     {
       $("#checkNumberGroup").hide();
       $("#CheckNo").val('');
-    } 
+    }
   }
   function CalculateTotal() {
     var Total = 0;

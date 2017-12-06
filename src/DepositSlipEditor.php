@@ -174,7 +174,7 @@ require 'Include/Header.php';
 </div>
 
 
-<script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/js/DepositSlipEditor.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/js/DepositSlipEditor.js"></script>
 <?php
   $fundData = [];
   foreach ($thisDeposit->getFundTotals() as $tmpfund) {
@@ -200,7 +200,7 @@ require 'Include/Header.php';
   array_push($pledgeTypeData, $t1);
 ?>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   var depositType = '<?php echo $thisDeposit->getType(); ?>';
   var depositSlipID = <?php echo $iDepositSlipID; ?>;
   var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed(); ?>);

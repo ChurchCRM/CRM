@@ -102,7 +102,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     </div>
     <!-- /.form-box -->
   </div>
-    <script type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
         $(document).ready(function() {
             $("#familyCountry").select2();
             $("[data-mask]").inputmask();
