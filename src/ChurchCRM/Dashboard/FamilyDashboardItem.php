@@ -25,9 +25,19 @@ class FamilyDashboardItem implements DashboardItemInterface {
         scrollX: false,
         info: false,
         'columns': [
-          {data:'Name'},
+          {
+            data:'Name',
+            render: function ( data, type, row, meta ) {
+              return '<a href='+window.CRM.root+'/FamilyView.php?FamilyID='+row.Id+'>'+data+'</a>';
+            }
+          },
           {data:'Address1'},
-          {data:'DateEntered'}
+          {
+            data:'DateEntered',
+            render: function ( data, type, row, meta ) {
+              return moment(data).format('MM-DD-YYYY hh:mm');
+            }
+          }
         ]
       });
       latestFamiliesTable.clear();
@@ -43,9 +53,19 @@ class FamilyDashboardItem implements DashboardItemInterface {
         scrollX: false,
         info: false,
         'columns': [
-          {data:'Name'},
+          {
+            data:'Name',
+            render: function ( data, type, row, meta ) {
+              return '<a href='+window.CRM.root+'/FamilyView.php?FamilyID='+row.Id+'>'+data+'</a>';
+            }
+          },
           {data:'Address1'},
-          {data:'DateLastEdited'}
+          {
+            data:'DateLastEdited',
+            render: function ( data, type, row, meta ) {
+              return moment(data).format('MM-DD-YYYY hh:mm');
+            }
+          }
         ]
       });
       updatedFamiliesTable.clear();
