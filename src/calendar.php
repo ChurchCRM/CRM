@@ -54,9 +54,9 @@ require 'Include/Header.php';
   </div>
   <div class="box-body">
       <form>
-          <div class="col-sm-4"> <b><?= gettext("Birthdate") ?>:</b> <input data-size="small" id="isBirthdateActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"> </div>
-          <div class="col-sm-4"> <b><?= gettext("Anniversary") ?>:</b> <input data-size="small" id="isAnniversaryActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"></div>
-          <div class="col-sm-4"> <b><?= gettext("With Limit") ?>:</b> <input data-size="small" id="isWithLimit" type="checkbox" data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"></div>
+          <div class="col-sm-4"> <b><?= gettext("Birthdate") ?>:</b> <input data-size="small" id="isBirthdateActive" type="checkbox" checked data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"> </div>
+          <div class="col-sm-4"> <b><?= gettext("Anniversary") ?>:</b> <input data-size="small" id="isAnniversaryActive" type="checkbox" checked data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"></div>
+          <div class="col-sm-4"> <b><?= gettext("With Limit") ?>:</b> <input data-size="small" id="isWithLimit" type="checkbox" checked data-toggle="toggle" data-on="<?= gettext("Include") ?>" data-off="<?= gettext("Exclude") ?>"></div>
       </form>
   </div>
 </div>
