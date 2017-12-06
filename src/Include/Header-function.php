@@ -118,6 +118,7 @@ function Header_body_scripts()
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
             eventsInMenuBarIntervalTime:"<?= SystemConfig::getValue('iEventsInMenuBarIntervalTime') ?>",
+            showTooltip:"<?= $_SESSION['bShowTooltip'] ?>",
             plugin: {
                 dataTable : {
                    "language": {
