@@ -38,7 +38,7 @@ class NewDashboardService
         $itemRenderer = $DashboardItem::getDashboardItemName().": function(data) {". $DashboardItem::getDashboardItemRenderer() ."}";
         array_push($jsFunctions,$itemRenderer);
     }
-    $code = "window.CRM.dashboard={";
+    $code = "window.CRM.dashboard.renderers={";
     $code .= join(", ",$jsFunctions);
     $code .= "};";
     

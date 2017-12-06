@@ -470,6 +470,20 @@
           type: "POST"
         });
       }
+    };
+    
+    window.CRM.dashboard = {
+      refresh: function () {
+        window.CRM.APIRequest({
+          method: 'GET',
+          path: 'dashboard/page' + window.CRM.PageName,
+        }).done(function(data) {     
+          for (var key in data){
+            console.log(key);
+            window["CRM"]["dashboard"]["renderers"][key](data[key]);
+          }
+        });  
+      }
     }
 
     $(document).ajaxError(function (evt, xhr, settings,errortext) {
