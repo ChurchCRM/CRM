@@ -369,7 +369,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
                         <?php foreach ($latestMembers as $person) {
-                            ?>
+    ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                     <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
@@ -379,7 +379,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-                        }
+}
                         ?>
                     </ul>
                     <!-- /.users-list -->
