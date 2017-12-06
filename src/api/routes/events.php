@@ -38,8 +38,8 @@ $app->group('/events', function () {
     });
     
     $this->get('/numbers', function ($request, $response, $args) {   
-    	$return = array("anniversaries" => MenuEventsCount::getNumberAnniversaries(),'events' => MenuEventsCount::getNumberEventsOfToday(),'birthdates' => MenuEventsCount::getNumberBirthDates());
-    	
+        $return = array("anniversaries" => MenuEventsCount::getNumberAnniversaries(),'events' => MenuEventsCount::getNumberEventsOfToday(),'birthdates' => MenuEventsCount::getNumberBirthDates());
+        
         $response->withJson($return);       
     });
     
