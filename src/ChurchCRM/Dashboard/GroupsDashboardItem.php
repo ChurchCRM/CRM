@@ -31,7 +31,7 @@ class GroupsDashboardItem implements DashboardItemInterface {
         ';
         $rsQuickStat = RunQuery($sSQL);
         $row = mysqli_fetch_array($rsQuickStat);
-        $data = ['groups' => $row['Groups'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
+        $data = ['groups' => $row['Groups'] - $row['SundaySchoolClasses'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
 
         return $data;
   }
