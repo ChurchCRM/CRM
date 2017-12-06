@@ -7,13 +7,14 @@ use ChurchCRM\Service\NewDashboardService;
 
 
 $app->group('/dashboard', function () {
-   $this->get('/page/{pagename}', 'getDashboard');
-   $this->get('/renderer/{pagename}', 'getDashboardRenderer');
+   $this->get('/page', 'getDashboard');
+   $this->get('/renderer', 'getDashboardRenderer');
 });
 
 
 function getDashboardRenderer(Request $request, Response $response, array $p_args ) {
-  $DashboardRenderCode = NewDashboardService::getRenderCode($p_args['pagename']);
+  $pageName = $request->getQueryParam("currentpagename","");
+  $DashboardRenderCode = NewDashboardService::getRenderCode($pageName);
   echo $DashboardRenderCode;
   //return $response->withBody($DashboardRenderCode);
 }
@@ -26,6 +27,7 @@ function getDashboardRenderer(Request $request, Response $response, array $p_arg
  * @return \Slim\Http\Response The augmented response.
  */
 function getDashboard(Request $request, Response $response, array $p_args ) {
-  $DashboardValues = NewDashboardService::getValues($p_args['pagename']);
+  $pageName = $request->getQueryParam("currentpagename","");
+  $DashboardValues = NewDashboardService::getValues($pageName);
   return $response->withJson($DashboardValues);
 }
