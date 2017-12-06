@@ -306,8 +306,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class="dataTable table table-striped table-condensed" id="latestFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -316,18 +316,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($latestFamilies as $family) {
-    ?>
-                            <tr>
-                                <td>
-                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
-                                </td>
-                                <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                            </tr>
-                            <?php
-}
-                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -347,8 +335,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class=" dataTable table table-striped table-condensed" id="updatedFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -357,18 +345,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($updatedFamilies as $family) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
-                                </td>
-                                <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
                         </tbody>
                     </table>
                 </div>
