@@ -131,16 +131,34 @@ if (isset($_POST['User'])) {
 }
 
 $id = 0;
+$type ="";
+
 // we hold down the last id
-if (isset($_SESSION['iUserID'])) {
-    $id = $_SESSION['iUserID'];
+if(isset($_SESSION['iUserID'])) {
+	$id = $_SESSION['iUserID'];
 }
 
-// we hold down the session type : Lock Login
-if (isset($_POST['iLoginType'])) {
-    $type = $_POST['iLoginType'];
-} elseif (isset($_SESSION['iLoginType'])) {
-    $type = $_SESSION['iLoginType'];
+// we hold down the last type of login : lock or nothing
+if(isset($_SESSION['iLoginType'])) {
+	$type = $_SESSION['iLoginType'];
+}
+
+
+if (isset($_GET['session']) && $_GET['session'] == "Lock") {// We are in a Lock session
+    $type = $_SESSION['iLoginType']  = "Lock";
+    
+	if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user'];
+        $urlUserName = $user->getUserName();
+        
+		if (empty($urlUserName)) {
+			$urlUserName = $user->getUserName();
+		}
+		
+		$id = $user->getPersonId();
+    } elseif (isset($_SESSION['username'])) {
+        $urlUserName = $_SESSION['username'];
+    }
 }
 
 if (empty($urlUserName)) {
@@ -151,6 +169,9 @@ if (empty($urlUserName)) {
         $urlUserName = $_SESSION['username'];
     }
 }
+
+//echo $type." ".$urlUserName." ".$id."<br>";
+
 
 // we destroy the session
 session_destroy();

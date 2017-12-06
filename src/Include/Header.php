@@ -117,7 +117,7 @@ $MenuFirst = 1;
                       <p ><i class="fa fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
                       <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Change Settings') ?></p></a>
-                  <a href="<?= SystemURLs::getRootPath()?>/api/session/lock" class="item_link">
+                  <a href="Login.php?session=Lock" class="item_link">
                       <p ><i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link">
                       <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
