@@ -71,7 +71,7 @@ class PersonDemographicDashboardItem implements DashboardItemInterface {
   }
 
   public static function shouldInclude($PageName) {
-    return $PageName=="PeopleDashboard.php"; // this ID would be found on all pages.
+    return $PageName=="/PeopleDashboard.php"; // this ID would be found on all pages.
   }
 
 }
