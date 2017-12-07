@@ -1228,11 +1228,7 @@ require 'Include/Header.php';
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
                         } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"
-           onclick="javascript:document.location='<?php if (strlen($iPersonID) > 0) {
-                            echo 'PersonView.php?PersonID='.$iPersonID;
-                        } else {
-                            echo 'SelectList.php?mode=person';
-                        } ?>';">
+           onclick="javascript:document.location='SelectList.php?mode=person';">
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
