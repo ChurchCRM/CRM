@@ -473,15 +473,84 @@
     };
     
     window.CRM.dashboard = {
+      renderers: {
+        EventsCounters: function (data) {
+          document.getElementById('BirthdateNumber').innerText = data.Birthdays;
+          document.getElementById('AnniversaryNumber').innerText = data.Anniversaries;
+          document.getElementById('EventsNumber').innerText = data.Events;
+        }, FamilyCount: function (data) {
+          document.getElementById('familyCountDashboard').innerText = data.familyCount;
+          latestFamiliesTable = $('#latestFamiliesDashboardItem').DataTable({
+            retrieve: true,
+            responsive: true,
+            paging: false,
+            ordering: false,
+            searching: false,
+            scrollX: false,
+            info: false,
+            'columns': [
+              {
+                data: 'Name',
+                render: function (data, type, row, meta) {
+                  return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+                }
+              },
+              {data: 'Address1'},
+              {
+                data: 'DateEntered',
+                render: function (data, type, row, meta) {
+                  return moment(data).format('MM-DD-YYYY hh:mm');
+                }
+              }
+            ]
+          });
+          latestFamiliesTable.clear();
+          latestFamiliesTable.rows.add(data.LatestFamilies);
+          latestFamiliesTable.draw(true);
+
+          updatedFamiliesTable = $('#updatedFamiliesDashboardItem').DataTable({
+            retrieve: true,
+            responsive: true,
+            paging: false,
+            ordering: false,
+            searching: false,
+            scrollX: false,
+            info: false,
+            'columns': [
+              {
+                data: 'Name',
+                render: function (data, type, row, meta) {
+                  return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+                }
+              },
+              {data: 'Address1'},
+              {
+                data: 'DateLastEdited',
+                render: function (data, type, row, meta) {
+                  return moment(data).format('MM-DD-YYYY hh:mm');
+                }
+              }
+            ]
+          });
+          updatedFamiliesTable.clear();
+          updatedFamiliesTable.rows.add(data.UpdatedFamilies);
+          updatedFamiliesTable.draw(true);
+        }, GroupsDisplay: function (data) {
+          document.getElementById('groupStatsSundaySchool').innerText = data.sundaySchoolClasses;
+          document.getElementById('groupsCountDashboard').innerText = data.groups;
+        }, PersonCount: function (data) {
+          document.getElementById('peopleStatsDashboard').innerText = data.personCount;
+        }
+      },
       refresh: function () {
         window.CRM.APIRequest({
           method: 'GET',
-          path: 'dashboard/page?currentpagename=' + window.CRM.PageName,
-        }).done(function(data) {     
-          for (var key in data){
+          path: window.CRM.root + '/dashboard/page?currentpagename=' + window.CRM.PageName,
+        }).done(function (data) {
+          for (var key in data) {
             window["CRM"]["dashboard"]["renderers"][key](data[key]);
           }
-        });  
+        });
       }
     }
 

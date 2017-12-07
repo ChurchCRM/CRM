@@ -29,19 +29,5 @@ class NewDashboardService
     }
     return $ReturnValues;
   }
-  
-  
-  public static function getRenderCode($PageName) {
-    
-    $jsFunctions = array();
-    Foreach (self::getDashboardItems($PageName) as $DashboardItem) {
-        $itemRenderer = $DashboardItem::getDashboardItemName().": function(data) {". $DashboardItem::getDashboardItemRenderer() ."}";
-        array_push($jsFunctions,$itemRenderer);
-    }
-    $code = "window.CRM.dashboard.renderers={";
-    $code .= join(", ",$jsFunctions);
-    $code .= "};";
-    
-    return $code;
-  }
+
 }
