@@ -6,6 +6,7 @@
  *  description : page header used for most pages
  *
  *  Copyright 2017 Philippe Logel
+ *
  ******************************************************************************/
 
 // Include the function library
