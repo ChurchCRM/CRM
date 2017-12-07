@@ -43,7 +43,8 @@ $("document").ready(function(){
     });
     
     $(document).on("click", "#emptyCartToGroup", function (e) {
-      window.CRM.cart.emptyToGroup();
+      //window.CRM.cart.emptyToGroup(); /// PL : keep this part I will try to write it completely in JS
+      window.location.href = window.CRM.root+"/CartToGroup.php";
     });
     
     $(document).on("click",".RemoveFromPeopleCart", function(){
