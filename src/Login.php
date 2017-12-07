@@ -168,12 +168,12 @@ if ($type == "Lock" && $id > 0) {// this point is important for the photo in a l
     // we restore only this part
     $_SESSION['iLoginType'] = $type;
     $_SESSION['username'] = $urlUserName;
-    $_SESSION['iUserID'] = $id; 
+    $_SESSION['iUserID'] = $id;
 
     $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
 } else {
-  $type = $_SESSION['iLoginType'] = "";
+    $type = $_SESSION['iLoginType'] = "";
 }
 
 // Set the page title and include HTML header
