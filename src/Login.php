@@ -164,12 +164,12 @@ session_destroy();
 // we reopen a new one
 session_start() ;
 
-if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     // we restore only this part
-    $_SESSION['iLoginType'] = $type;
-    $_SESSION['username'] = $urlUserName;
-    $_SESSION['iUserID'] = $id; 
+$_SESSION['iLoginType'] = $type;
+$_SESSION['username'] = $urlUserName;
+$_SESSION['iUserID'] = $id; 
 
+if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
 } else {
