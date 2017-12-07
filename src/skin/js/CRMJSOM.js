@@ -423,44 +423,44 @@
         });
       },
       'addGroup' : function(callbackM){
-      	bootbox.prompt({
-					title: i18next.t("Add A Group Name"),
-					value: i18next.t("Default Name Group"),
-					onEscape: true,
-					closeButton: true,
-					buttons: {
-						confirm: {
-							label:  i18next.t('Yes'),
-								className: 'btn-success'
-						},
-						cancel: {
-							label:  i18next.t('No'),
-							className: 'btn-danger'
-						}
-					},
-					callback: function (result)
-					{
-						if (result)
-						{
-							var newGroup = {'groupName': result};
-				
-							$.ajax({
-								method: "POST",
-								url: window.CRM.root + "/api/groups/",               //call the groups api handler located at window.CRM.root
-								data: JSON.stringify(newGroup),                      // stringify the object we created earlier, and add it to the data payload
-								contentType: "application/json; charset=utf-8",
-								dataType: "json"
-							}).done(function (data) {                               //yippie, we got something good back from the server
-									window.CRM.cart.refresh();
-            			if(callbackM)
-            			{
-              			callbackM(data);
-            			}								
-							});
-						}
-					 }
-				});
-			}
+        bootbox.prompt({
+          title: i18next.t("Add A Group Name"),
+          value: i18next.t("Default Name Group"),
+          onEscape: true,
+          closeButton: true,
+          buttons: {
+            confirm: {
+              label:  i18next.t('Yes'),
+                className: 'btn-success'
+            },
+            cancel: {
+              label:  i18next.t('No'),
+              className: 'btn-danger'
+            }
+          },
+          callback: function (result)
+          {
+            if (result)
+            {
+              var newGroup = {'groupName': result};
+        
+              $.ajax({
+                method: "POST",
+                url: window.CRM.root + "/api/groups/",               //call the groups api handler located at window.CRM.root
+                data: JSON.stringify(newGroup),                      // stringify the object we created earlier, and add it to the data payload
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+              }).done(function (data) {                               //yippie, we got something good back from the server
+                  window.CRM.cart.refresh();
+                  if(callbackM)
+                  {
+                    callbackM(data);
+                  }                
+              });
+            }
+           }
+        });
+      }
     };
     
     window.CRM.system = {
@@ -478,68 +478,84 @@
           document.getElementById('BirthdateNumber').innerText = data.Birthdays;
           document.getElementById('AnniversaryNumber').innerText = data.Anniversaries;
           document.getElementById('EventsNumber').innerText = data.Events;
-        }, FamilyCount: function (data) {
-          document.getElementById('familyCountDashboard').innerText = data.familyCount;
-          latestFamiliesTable = $('#latestFamiliesDashboardItem').DataTable({
-            retrieve: true,
-            responsive: true,
-            paging: false,
-            ordering: false,
-            searching: false,
-            scrollX: false,
-            info: false,
-            'columns': [
-              {
-                data: 'Name',
-                render: function (data, type, row, meta) {
-                  return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+        }, 
+        FamilyCount: function (data) {
+          var dashBoardFam = document.getElementById('familyCountDashboard');
+          
+          if (dashBoardFam) { // we have to test if we are on the dashboard or not
+            dashBoardFam.innerText = data.familyCount;
+            latestFamiliesTable = $('#latestFamiliesDashboardItem').DataTable({
+              retrieve: true,
+              responsive: true,
+              paging: false,
+              ordering: false,
+              searching: false,
+              scrollX: false,
+              info: false,
+              'columns': [
+                {
+                  data: 'Name',
+                  render: function (data, type, row, meta) {
+                    return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+                  }
+                },
+                {data: 'Address1'},
+                {
+                  data: 'DateEntered',
+                  render: function (data, type, row, meta) {
+                    return moment(data).format('MM-DD-YYYY hh:mm');
+                  }
                 }
-              },
-              {data: 'Address1'},
-              {
-                data: 'DateEntered',
-                render: function (data, type, row, meta) {
-                  return moment(data).format('MM-DD-YYYY hh:mm');
-                }
-              }
-            ]
-          });
-          latestFamiliesTable.clear();
-          latestFamiliesTable.rows.add(data.LatestFamilies);
-          latestFamiliesTable.draw(true);
+              ]
+            });
+            latestFamiliesTable.clear();
+            latestFamiliesTable.rows.add(data.LatestFamilies);
+            latestFamiliesTable.draw(true);
 
-          updatedFamiliesTable = $('#updatedFamiliesDashboardItem').DataTable({
-            retrieve: true,
-            responsive: true,
-            paging: false,
-            ordering: false,
-            searching: false,
-            scrollX: false,
-            info: false,
-            'columns': [
-              {
-                data: 'Name',
-                render: function (data, type, row, meta) {
-                  return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+            updatedFamiliesTable = $('#updatedFamiliesDashboardItem').DataTable({
+              retrieve: true,
+              responsive: true,
+              paging: false,
+              ordering: false,
+              searching: false,
+              scrollX: false,
+              info: false,
+              'columns': [
+                {
+                  data: 'Name',
+                  render: function (data, type, row, meta) {
+                    return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+                  }
+                },
+                {data: 'Address1'},
+                {
+                  data: 'DateLastEdited',
+                  render: function (data, type, row, meta) {
+                    return moment(data).format('MM-DD-YYYY hh:mm');
+                  }
                 }
-              },
-              {data: 'Address1'},
-              {
-                data: 'DateLastEdited',
-                render: function (data, type, row, meta) {
-                  return moment(data).format('MM-DD-YYYY hh:mm');
-                }
-              }
-            ]
-          });
-          updatedFamiliesTable.clear();
-          updatedFamiliesTable.rows.add(data.UpdatedFamilies);
-          updatedFamiliesTable.draw(true);
+              ]
+            });
+            updatedFamiliesTable.clear();
+            updatedFamiliesTable.rows.add(data.UpdatedFamilies);
+            updatedFamiliesTable.draw(true);
+          }
         }, GroupsDisplay: function (data) {
-          document.getElementById('groupStatsSundaySchool').innerText = data.sundaySchoolClasses;
-          document.getElementById('groupsCountDashboard').innerText = data.groups;
+          var dashBoardStatsSundaySchool = document.getElementById('groupStatsSundaySchool');
+          if (dashBoardStatsSundaySchool) {// We have to check if we are on the dashboard menu
+            dashBoardStatsSundaySchool.innerText = data.sundaySchoolClasses;
+          }
+          
+          var dashBoardGroupsCountDashboard = document.getElementById('groupsCountDashboard');
+          
+          if (dashBoardGroupsCountDashboard) {// We have to check if we are on the dashboard menu
+	          dashBoardGroupsCountDashboard.innerText = data.groups;
+	        }
         }, PersonCount: function (data) {
-          document.getElementById('peopleStatsDashboard').innerText = data.personCount;
+          var dashBoardPeopleStats = document.getElementById('peopleStatsDashboard');
+          if (dashBoardPeopleStats) {
+            dashBoardPeopleStats.innerText = data.personCount;
+          }
         }
       },
       refresh: function () {
