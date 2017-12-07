@@ -147,19 +147,6 @@ if (isset($_SESSION['iLoginType'])) {
 
 if (isset($_GET['session']) && $_GET['session'] == "Lock") {// We are in a Lock session
     $type = $_SESSION['iLoginType']  = "Lock";
-    
-    if (isset($_SESSION['user'])) {
-        $user = $_SESSION['user'];
-        $urlUserName = $user->getUserName();
-        
-        if (empty($urlUserName)) {
-            $urlUserName = $user->getUserName();
-        }
-        
-        $id = $user->getPersonId();
-    } elseif (isset($_SESSION['username'])) {
-        $urlUserName = $_SESSION['username'];
-    }
 }
 
 if (empty($urlUserName)) {
@@ -171,23 +158,22 @@ if (empty($urlUserName)) {
     }
 }
 
-//echo $type." ".$urlUserName." ".$id."<br>";
-
-
 // we destroy the session
 session_destroy();
 
 // we reopen a new one
 session_start() ;
 
-// we restore only this part
-$_SESSION['iLoginType'] = $type;
-$_SESSION['username'] = $urlUserName;
-$_SESSION['iUserID'] = $id;
+if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
+    // we restore only this part
+    $_SESSION['iLoginType'] = $type;
+    $_SESSION['username'] = $urlUserName;
+    $_SESSION['iUserID'] = $id; 
 
-if ($_SESSION['iLoginType'] == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
+} else {
+  $type = $_SESSION['iLoginType'] = "";
 }
 
 // Set the page title and include HTML header
