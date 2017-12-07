@@ -4,10 +4,6 @@ namespace ChurchCRM\Dashboard;
 use ChurchCRM\Dashboard\DashboardItemInterface;
 
 class ClassificationDashboardItem implements DashboardItemInterface {
-  
-  public static function getDashboardItemRenderer() {
-    return "";
-  }
 
   public static function getDashboardItemName() {
     return "ClassificationBreakdown";

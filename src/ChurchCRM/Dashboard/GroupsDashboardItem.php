@@ -5,13 +5,6 @@ namespace ChurchCRM\Dashboard;
 use ChurchCRM\Dashboard\DashboardItemInterface;
 
 class GroupsDashboardItem implements DashboardItemInterface {
-  
-  public static function getDashboardItemRenderer() {
-    return "
-        document.getElementById('groupStatsSundaySchool').innerText = data.sundaySchoolClasses;
-        document.getElementById('groupsCountDashboard').innerText = data.groups;
-      ";
-  }
 
   public static function getDashboardItemName() {
     return "GroupsDisplay";

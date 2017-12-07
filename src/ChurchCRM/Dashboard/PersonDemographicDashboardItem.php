@@ -6,10 +6,6 @@ use ChurchCRM\Dashboard\DashboardItemInterface;
 
 class PersonDemographicDashboardItem implements DashboardItemInterface {
   
-  public static function getDashboardItemRenderer() {
-    return "";
-  }
-
   public static function getDashboardItemName() {
     return "PersonDemographics";
   }

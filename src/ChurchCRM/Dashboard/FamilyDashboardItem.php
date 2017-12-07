@@ -7,67 +7,6 @@ use ChurchCRM\FamilyQuery;
 
 class FamilyDashboardItem implements DashboardItemInterface {
 
-  public static function getDashboardItemRenderer() {
-    return "
-      document.getElementById('familyCountDashboard').innerText = data.familyCount;
-      latestFamiliesTable = $('#latestFamiliesDashboardItem').DataTable({
-        retrieve: true,
-        responsive: true,
-        paging: false,
-        ordering: false,
-        searching: false,
-        scrollX: false,
-        info: false,
-        'columns': [
-          {
-            data:'Name',
-            render: function ( data, type, row, meta ) {
-              return '<a href='+window.CRM.root+'/FamilyView.php?FamilyID='+row.Id+'>'+data+'</a>';
-            }
-          },
-          {data:'Address1'},
-          {
-            data:'DateEntered',
-            render: function ( data, type, row, meta ) {
-              return moment(data).format('MM-DD-YYYY hh:mm');
-            }
-          }
-        ]
-      });
-      latestFamiliesTable.clear();
-      latestFamiliesTable.rows.add(data.LatestFamilies);
-      latestFamiliesTable.draw(true);
-      
-      updatedFamiliesTable = $('#updatedFamiliesDashboardItem').DataTable({
-        retrieve: true,
-        responsive: true,
-        paging: false,
-        ordering: false,
-        searching: false,
-        scrollX: false,
-        info: false,
-        'columns': [
-          {
-            data:'Name',
-            render: function ( data, type, row, meta ) {
-              return '<a href='+window.CRM.root+'/FamilyView.php?FamilyID='+row.Id+'>'+data+'</a>';
-            }
-          },
-          {data:'Address1'},
-          {
-            data:'DateLastEdited',
-            render: function ( data, type, row, meta ) {
-              return moment(data).format('MM-DD-YYYY hh:mm');
-            }
-          }
-        ]
-      });
-      updatedFamiliesTable.clear();
-      updatedFamiliesTable.rows.add(data.UpdatedFamilies);
-      updatedFamiliesTable.draw(true);
-     ";
-  }
-
   public static function getDashboardItemName() {
     return "FamilyCount";
   }

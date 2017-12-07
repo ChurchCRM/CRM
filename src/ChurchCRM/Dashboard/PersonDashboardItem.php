@@ -5,12 +5,6 @@ use ChurchCRM\Dashboard\DashboardItemInterface;
 use ChurchCRM\PersonQuery;
 
 class PersonDashboardItem implements DashboardItemInterface {
-  
-  public static function getDashboardItemRenderer() {
-    return "
-        document.getElementById('peopleStatsDashboard').innerText = data.personCount;
-    ";
-  }
 
   public static function getDashboardItemName() {
     return "PersonCount";
