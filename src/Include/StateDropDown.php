@@ -1,10 +1,9 @@
 <?php
   use ChurchCRM\data\States;
 
-
-  if (empty($state)) {
+if (empty($state)) {
     $state = "State";
-  }
+}
 ?>
 
 <select name="<?= $state ?>" class="form-control select2" id="state-input" style="width:100%">
