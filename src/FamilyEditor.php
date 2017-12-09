@@ -26,7 +26,6 @@ use ChurchCRM\ListOptionQuery;
 use ChurchCRM\data\Countries;
 use ChurchCRM\data\States;
 
-
 //Set the page title
 $sPageTitle = gettext('Family Editor');
 
@@ -305,7 +304,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->setCellPhone($sCellPhone);
             $family->setEmail($sEmail);
             if ($dWeddingDate !== "NULL") {// strangely it's a string wich contains sometimes "NULL"
-                $family->setWeddingdate(str_replace("'","",$dWeddingDate));
+                $family->setWeddingdate(str_replace("'", "", $dWeddingDate));
             }
             $family->setDateEntered(new DateTime());
             $family->setEnteredBy($_SESSION['iUserID']);
@@ -322,7 +321,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             
             $family->save();
             
-            $bGetKeyBack = true;            
+            $bGetKeyBack = true;
         } else {
             $family = FamilyQuery::Create()
                 ->findOneByID($iFamilyID);
@@ -339,7 +338,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->setCellPhone($sCellPhone);
             $family->setEmail($sEmail);
             if ($dWeddingDate !== "NULL") {
-                $family->setWeddingdate(str_replace("'","",$dWeddingDate));
+                $family->setWeddingdate(str_replace("'", "", $dWeddingDate));
             }
             $family->setDateEntered(new DateTime());
             $family->setEnteredBy($_SESSION['iUserID']);
@@ -522,8 +521,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $bOkToCanvass = ($family->getOkToCanvass() == 'TRUE');
         $iCanvasser = $family->getCanvasser();
         if (!empty($family->getWeddingdate())) {
-	        $dWeddingDate = $family->getWeddingdate()->format("Y-M-d");
-	      }
+            $dWeddingDate = $family->getWeddingdate()->format("Y-M-d");
+        }
         $nLatitude = $family->getLatitude();
         $nLongitude = $family->getLongitude();
 
@@ -551,7 +550,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                   ->findByFamId($iFamilyID);
         
         $iCount = 0;
-        $iFamilyMemberRows = 0;          
+        $iFamilyMemberRows = 0;
         foreach ($persons as $person) {
             $iCount++;
             $iFamilyMemberRows++;
@@ -684,8 +683,8 @@ require 'Include/Header.php';
           <div class="form-group col-md-3">
             <label><?= gettext('None US/CND State') ?>:</label>
             <input type="text"  class="form-control" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
-        echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
-    } ?>" size="20" maxlength="30">
+                echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
+            } ?>" size="20" maxlength="30">
           </div>
           <div class="form-group col-md-3">
             <label><?= gettext('Zip')?>:</label>
@@ -706,7 +705,7 @@ require 'Include/Header.php';
           </div>
         </div>
         <?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
-                                if (!$bHaveXML) { // No point entering if values will just be overwritten?>
+                  if (!$bHaveXML) { // No point entering if values will just be overwritten?>
         <div class="row">
           <div class="form-group col-md-3">
             <label><?= gettext('Latitude') ?>:</label>
@@ -718,8 +717,8 @@ require 'Include/Header.php';
           </div>
         </div>
         <?php
-                                }
-                            } /* Lat/Lon can be hidden - General Settings */ ?>
+                  }
+              } /* Lat/Lon can be hidden - General Settings */ ?>
       </div>
     </div>
   </div>
@@ -746,8 +745,8 @@ require 'Include/Header.php';
             </div>
             <input type="text" Name="HomePhone" value="<?= htmlentities(stripslashes($sHomePhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask>
             <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
-                                echo ' checked';
-                            } ?>><?= gettext('Do not auto-format') ?>
+                  echo ' checked';
+              } ?>><?= gettext('Do not auto-format') ?>
           </div>
         </div>
         <div class="form-group col-md-4">
@@ -785,11 +784,11 @@ require 'Include/Header.php';
         <div class="form-group col-md-4">
           <label><?= gettext('Send Newsletter') ?>:</label><br/>
           <input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) {
-                                echo ' checked';
-                            } ?>>
+                  echo ' checked';
+              } ?>>
         </div>
         <?php
-                            } ?>
+              } ?>
       </div>
     </div>
   </div>
@@ -802,30 +801,30 @@ require 'Include/Header.php';
     </div><!-- /.box-header -->
     <div class="box-body">
       <?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
-                                if ($dWeddingDate == 'NULL') {
-                                    $dWeddingDate = '';
-                                } ?>
+                  if ($dWeddingDate == 'NULL') {
+                      $dWeddingDate = '';
+                  } ?>
         <div class="row">
           <div class="form-group col-md-4">
                         <label><?= gettext('Wedding Date') ?>:</label>
             <input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" id="WeddingDate" size="15" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
             <?php if ($sWeddingDateError) {
-                                    ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php
-                                } ?>
+                      ?> <span style="color: red"><br/><?php $sWeddingDateError ?></span> <?php
+                  } ?>
           </div>
         </div>
       <?php
-                            } /* Wedding date can be hidden - General Settings */ ?>
+              } /* Wedding date can be hidden - General Settings */ ?>
       <div class="row">
         <?php if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser?>
           <div class="form-group col-md-4">
             <label><?= gettext('Ok To Canvass') ?>: </label><br/>
             <input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) {
-                                echo ' checked ';
-                            } ?> >
+                  echo ' checked ';
+              } ?> >
           </div>
         <?php
-                            }
+              }
 
                 if ($rsCanvassers != 0 && mysqli_num_rows($rsCanvassers) > 0) {
                     ?>
