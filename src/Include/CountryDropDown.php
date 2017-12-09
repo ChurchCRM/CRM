@@ -1,8 +1,13 @@
 <?php
 use ChurchCRM\data\Countries;
 
+if (empty($country))
+{
+	$country = "Country";
+}
+
 ?>
-<select name="Country" class="form-control select2" id="country-input">
+<select name="<?= $country ?>" class="form-control select2" id="country-input">
   <option value=""><?= gettext('Unassigned') ?></option>
   <option value="" disabled>--------------------</option>
   <?php foreach (Countries::getNames() as $county) {
