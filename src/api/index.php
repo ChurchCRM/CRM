@@ -74,6 +74,7 @@ require __DIR__.'/routes/custom-fields.php';
 
 require __DIR__.'/routes/system.php';
 
+require __DIR__.'/routes/dashboard.php';
 
 // Run app
 $app->run();
