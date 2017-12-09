@@ -1,6 +1,6 @@
 <?php 
   if (empty($state)) {
-    $state = "State";
+      $state = "State";
   }
 ?>
 
