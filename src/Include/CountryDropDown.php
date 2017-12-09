@@ -1,9 +1,8 @@
 <?php
 use ChurchCRM\data\Countries;
 
-if (empty($country))
-{
-	$country = "Country";
+if (empty($country)) {
+    $country = "Country";
 }
 
 ?>
