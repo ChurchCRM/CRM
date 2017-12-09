@@ -6,7 +6,7 @@ if (empty($country)) {
 }
 
 ?>
-<select name="<?= $country ?>" class="form-control select2" id="country-input">
+<select name="<?= $country ?>" class="form-control select2" id="country-input" style="width:100%">
   <option value=""><?= gettext('Unassigned') ?></option>
   <option value="" disabled>--------------------</option>
   <?php foreach (Countries::getNames() as $county) {

@@ -24,6 +24,8 @@ use ChurchCRM\FamilyQuery;
 use ChurchCRM\Family;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\PersonCustomQuery;
+use ChurchCRM\data\Countries;
+use ChurchCRM\data\States;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -145,8 +147,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
     if (array_key_exists('FamZip', $_POST)) {
         $sFamZip = InputUtils::LegacyFilterInput($_POST['FamZip']);
-    }
-    
+    }        
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
@@ -154,7 +155,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     if (array_key_exists('FamCountry', $_POST)) {
-        $sCountry = InputUtils::LegacyFilterInput($_POST['FamCountry']);
+        $sFamCountry = InputUtils::LegacyFilterInput($_POST['FamCountry']);
     }
     
     $iFamily = InputUtils::LegacyFilterInput($_POST['Family'], 'int');
@@ -379,9 +380,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $person->setBirthMonth($iBirthMonth);
             $person->setBirthDay($iBirthDay);
             $person->setBirthYear($iBirthYear);
+            
             if ($_SESSION['bFinance']) {
                 $person->setEnvelope($iEnvelope);
             }
+            
             $person->setFamId($iFamily);
             $person->setFmrId($iFamilyRole);
             
@@ -390,7 +393,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
             
             $person->setClsId($iClassification);
-            $person->setDateEntered(date('YmdHis'));
+            $person->setDateEntered(new DateTime());
             $person->setEnteredBy($_SESSION['iUserID']);
             
             if (strlen($dFriendDate) > 0) {
@@ -431,9 +434,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $person->setBirthMonth($iBirthMonth);
             $person->setBirthDay($iBirthDay);
             $person->setBirthYear($iBirthYear);
+            
             if ($_SESSION['bFinance']) {
                 $person->setEnvelope($iEnvelope);
             }
+            
             $person->setFamId($iFamily);
             $person->setFmrId($iFamilyRole);
             
@@ -442,8 +447,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
             
             $person->setClsId($iClassification);
-            $person->setDateEntered(date('YmdHis'));
+            $person->setDateEntered(new DateTime());
             $person->setEnteredBy($_SESSION['iUserID']);
+            
+            $person->setDateLastEdited(new DateTime());
+            $person->setEditedBy($_SESSION['iUserID']);
             
             if (strlen($dFriendDate) > 0) {
                 $person->setFriendDate($dFriendDate);
@@ -459,12 +467,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $bGetKeyBack = false;
         }
 
-        //Execute the SQL
-        RunQuery($sSQL);
-
-
-        $note = new Note();
-        $note->setEntered($_SESSION['iUserID']);
+        $person = PersonQuery::create()->findOneByID($iPersonID);
+        
+        // the Part with note is no more useful :PL
         // If this is a new person, get the key back and insert a blank row into the person_custom table
         if ($bGetKeyBack) {
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
@@ -472,11 +477,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             extract(mysqli_fetch_array($rsPersonID));
             $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('".$iPersonID."')";
             RunQuery($sSQL);
-            $note->setPerId($iPersonID);
-            $note->setText(gettext('Created'));
-            $note->setType('create');
-
-
+          	
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
                 $NotificationEmail = new NewPersonOrFamilyEmail($person);
@@ -484,13 +485,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                     $logger->warn($NotificationEmail->getError());
                 }
             }
-        } else {
-            $note->setPerId($iPersonID);
-            $note->setText(gettext('Updated'));
-            $note->setType('edit');
         }
-        $note->save();
-
+        
         $photo = new Photo("Person", $iPersonID);
         $photo->refresh();
 
@@ -940,9 +936,9 @@ require 'Include/Header.php';
                 <div class="row">
                   <div class="form-group col-md-3">
                     <label for="StatleTextBox"><?= gettext('State')?>: </label><br>
-                    <?php 
-                      $state = "FamState";
-                      require 'Include/StateDropDown.php';
+                    <?php                       
+                      $statesFamDropDown = new States($sState,"FamState");
+                      $statesFamDropDown->getDropDown();                      
                     ?>
                   </div>
                   <div class="form-group col-md-3">
@@ -964,9 +960,9 @@ require 'Include/Header.php';
                   <div class="form-group col-md-3">
                     <label> <?= gettext('Country') ?>:</label><br>
                     <?php 
-                      $country = "FamCountry";
-                      require 'Include/CountryDropDown.php'
-                      ?>
+                      $countryFamDropDown = new Countries($sCountry,"FamCountry");// this code is secure
+                      $countryFamDropDown->getDropDown();
+                    ?>
                   </div>
                 </div>
               </div>
@@ -986,7 +982,7 @@ require 'Include/Header.php';
             <?php if (!SystemConfig::getValue('bHidePersonAddress')) { /* Person Address can be hidden - General Settings */ ?>
                 <div class="row">
                     <div class="form-group">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyAddress1) {
                           echo '<span style="color: red;">';
@@ -1002,7 +998,7 @@ require 'Include/Header.php';
                                    value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"
                                    size="30" maxlength="50" class="form-control">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyAddress2) {
                               echo '<span style="color: red;">';
@@ -1018,7 +1014,7 @@ require 'Include/Header.php';
                                    value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>"
                                    size="30" maxlength="50" class="form-control">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyCity) {
                               echo '<span style="color: red;">';
@@ -1050,7 +1046,10 @@ require 'Include/Header.php';
                               echo '</span>';
                           } ?>
                         </label>
-                        <?php require 'Include/StateDropDown.php'; ?>
+                        <?php 
+                          $stateDropDown = new States($sState);
+                          $stateDropDown->getDropDown();
+                        ?>
                     </div>
                     <div class="form-group col-md-2">
                         <label><?= gettext('None State') ?>:</label>
@@ -1095,7 +1094,10 @@ require 'Include/Header.php';
                               echo '</span>';
                           } ?>
                         </label>
-                        <?php require 'Include/CountryDropDown.php'; ?>
+                        <?php 
+                            $countryDropDown = new Countries($sCountry);// this code is secure
+                            $countryDropDown->getDropDown();
+                         ?>
                     </div>
                 </div>
                 <p/>
@@ -1360,50 +1362,50 @@ require 'Include/Header.php';
         </div><!-- /.box-header -->
         <div class="box-body">
             <?php if ($numCustomFields > 0) {
-                                mysqli_data_seek($rsCustomFields, 0);
-                
-                                $cnt = 0;
-                
-                                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                                    extract($rowCustomField);
-                    
-                                    if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
-                                        if ($cnt == 0) {
-                                            echo "<div class='row'>";
-                                        }
-                        
+                mysqli_data_seek($rsCustomFields, 0);
 
-                                        echo "<div class=\"form-group col-md-4\"><label>".$custom_Name.'</label>';
+                $cnt = 0;
 
-                                        if (array_key_exists($custom_Field, $aCustomData)) {
-                                            $currentFieldData = trim($aCustomData[$custom_Field]);
-                                        } else {
-                                            $currentFieldData = '';
-                                        }
+                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
+                    extract($rowCustomField);
+    
+                    if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                        if ($cnt == 0) {
+                            echo "<div class='row'>";
+                        }
+        
 
-                                        if ($type_ID == 11) {
-                                            $custom_Special = $sPhoneCountry;
-                                        }
+                        echo "<div class=\"form-group col-md-4\"><label>".$custom_Name.'</label>';
 
-                                        formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
-                                        if (isset($aCustomErrors[$custom_Field])) {
-                                            echo '<span style="color: red; ">'.$aCustomErrors[$custom_Field].'</span>';
-                                        }
-                                        echo '</div>';
-                        
-                                        $cnt+=1;
-                                        $cnt%=3;
+                        if (array_key_exists($custom_Field, $aCustomData)) {
+                            $currentFieldData = trim($aCustomData[$custom_Field]);
+                        } else {
+                            $currentFieldData = '';
+                        }
 
-                                        if ($cnt == 0) {
-                                            echo '</div>';
-                                        }
-                                    }
-                                }
-                
-                                if ($cnt) {
-                                    echo '</div>';
-                                }
-                            } ?>
+                        if ($type_ID == 11) {
+                            $custom_Special = $sPhoneCountry;
+                        }
+
+                        formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
+                        if (isset($aCustomErrors[$custom_Field])) {
+                            echo '<span style="color: red; ">'.$aCustomErrors[$custom_Field].'</span>';
+                        }
+                        echo '</div>';
+        
+                        $cnt+=1;
+                        $cnt%=3;
+
+                        if ($cnt == 0) {
+                            echo '</div>';
+                        }
+                    }
+                }
+
+                if ($cnt) {
+                    echo '</div>';
+                }
+            } ?>
         </div>
     </div>
   <?php
@@ -1446,6 +1448,8 @@ require 'Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     $(document).ready(function() {
+        $("#famcountry-input").select2();
+        $("#famstate-input").select2();
         $("#country-input").select2();
         $("#state-input").select2();
     });

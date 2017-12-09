@@ -18,6 +18,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\data\Countries;
 
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -260,7 +261,9 @@ if (isset($_POST['UploadCSV'])) {
         <BR><BR>
         <?php
             $sCountry = SystemConfig::getValue('sDefaultCountry');
-        require 'Include/CountryDropDown.php';
+        $countryDropDown = new Countries($sCountry);// this code is secure
+        $countryDropDown->getDropDown();
+        
         echo gettext('Default country if none specified otherwise');
 
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
