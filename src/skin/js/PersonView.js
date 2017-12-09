@@ -1,5 +1,54 @@
 $(document).ready(function () {
+  
+  $('.changeRole').click(function(event) {
+    var GroupID = $(this).data("groupid");
+    window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:GroupID},function(selection){
+      window.CRM.groups.addPerson(GroupID,window.CRM.currentPersonID,selection.RoleID).done(function(){
+        location.reload();
+      })
+      
+    });
+  });
 
+  $(".groupRemove").click(function(event){
+    var targetGroupID = $(event.target).data("groupid");
+    var targetGroupName = $(event.target).data("groupname");
+    
+    bootbox.confirm({
+      message: i18next.t("Are you sure you want to remove this person's membership from") + " " + targetGroupName + "?",
+      buttons: {
+        confirm: {
+          label: i18next.t('Yes'),
+            className: 'btn-success'
+        },
+        cancel: {
+          label: i18next.t('No'),
+          className: 'btn-danger'
+        }
+      },
+      callback: function (result)
+      {
+        if (result)
+        {
+          window.CRM.groups.removePerson(targetGroupID,window.CRM.currentPersonID).done(
+            function(){
+              location.reload()
+            }
+          ); 
+        }
+      }
+    });
+  })
+
+  $("#addGroup").click(function() {
+    var target = window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role}, function(data){
+      window.CRM.groups.addPerson(data.GroupID,window.CRM.currentPersonID,data.RoleID).done(function(){
+          location.reload()
+        }
+      );
+    });
+  });
+  
     $("#input-person-properties").on("select2:select", function (event) {
         promptBox = $("#prompt-box");
         promptBox.removeClass('form-group').html('');

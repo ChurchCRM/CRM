@@ -13,10 +13,10 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\ConfigQuery;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security
 if (!$_SESSION['bAdmin']) {
@@ -34,7 +34,7 @@ if (isset($_POST['save'])) {
     ksort($type);
     reset($type);
 
-    $iHTMLHeaderRow = SystemConfig::getValue('sHeader');
+    $iHTMLHeaderRow = SystemConfig::getConfigItem('sHeader')->getId();
 
     while ($current_type = current($type)) {
         $id = key($type);
@@ -50,6 +50,8 @@ if (isset($_POST['save'])) {
     } elseif ($current_type == 'json') {
         $value = $new_value[$id];
     } elseif ($current_type == 'choice') {
+        $value = InputUtils::FilterString($new_value[$id]);
+    } elseif ($current_type == 'ajax') {
         $value = InputUtils::FilterString($new_value[$id]);
     } elseif ($current_type == 'boolean') {
         if ($new_value[$id] != '1') {
@@ -203,7 +205,16 @@ require 'Include/Header.php';
                           <button class="btn-primary jsonSettingsEdit" id="set_value<?= $setting->getId() ?>"
                                   data-cfgid="<?= $setting->getId() ?>"><?= gettext('Edit Settings')?>
                           </button>
+                            <?php
+                        } elseif ($setting->getType() == 'ajax') {
+                            ?>
+                            <select id='ajax-<?= $setting->getId() ?>' name='new_value[<?= $setting->getId() ?>]'
+                                    data-url="<?= $setting->getData() ?>" data-value="<?= $setting->getValue() ?>" class="choiceSelectBox" style="width: 100%">
+                                <option value=''><?= gettext('Unassigned')?>
+                            </select>
                         <?php
+                        } else {
+                            echo gettext("Unknown Type") . " " . $setting->getType();
                         } ?>
                       </td>
                       <?php
@@ -247,16 +258,28 @@ require 'Include/Header.php';
   </div>
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       var target = $(e.target).attr("href") // activated tab
       $(target + " .choiceSelectBox").select2({width: 'resolve'});
     });
     $(".choiceSelectBox").select2({width: 'resolve'});
+
+  <?php
+    foreach (SystemConfig::getCategories() as $category=>$settings) {
+        foreach ($settings as $settingName) {
+            $setting = SystemConfig::getConfigItem($settingName);
+            if ($setting->getType() == 'ajax') {
+                ?>
+                updateDropDrownFromAjax($('#ajax-<?= $setting->getId() ?>'));
+<?php
+            }
+        }
+    } ?>
   });
 </script>
-<script src="skin/js/SystemSettings.js" type="text/javascript"></script>
+<script src="skin/js/SystemSettings.js"></script>
 
 
 <?php require 'Include/Footer.php' ?>

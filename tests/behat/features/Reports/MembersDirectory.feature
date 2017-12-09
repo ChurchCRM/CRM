@@ -1,9 +1,9 @@
-Feature: Member Directory
-  In order to create a member directory
+Feature: People Directory
+  In order to create a people directory
   As a User
   I am able to visit the Directory reports page
 
-  Scenario: Open the Members Dashboard
+  Scenario: Open the People Dashboard
     Given I am authenticated as "admin" using "changeme"
     And I am on "/DirectoryReports.php"
     Then I should see "Directory reports"

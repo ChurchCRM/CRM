@@ -11,6 +11,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
 $sPageTitle = gettext('Kiosk Manager');
@@ -46,7 +47,7 @@ require 'Include/Header.php';
   </div>
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   
   function renderKioskAssignment(data) {
 
@@ -114,6 +115,10 @@ require 'Include/Header.php';
     ajax: {
       url: window.CRM.root + "/api/kiosks/",
       dataSrc: "KioskDevices"
+    },
+    "dom": window.CRM.plugin.dataTable.dom,
+    "tableTools": {
+        "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
     },
     columns: [
       {

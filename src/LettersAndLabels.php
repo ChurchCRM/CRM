@@ -30,7 +30,8 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
     $sLabelFormat = InputUtils::LegacyFilterInput($_POST['labeltype']);
     $sFontInfo = $_POST['labelfont'];
     $sFontSize = $_POST['labelfontsize'];
-    $sLabelInfo = '&labelfont='.urlencode($sFontInfo).'&labelfontsize='.$sFontSize;
+    $bRecipientNamingMethod = $_POST['recipientnamingmethod'];
+    $sLabelInfo = '&labelfont='.urlencode($sFontInfo).'&labelfontsize='.$sFontSize."&recipientnamingmethod=".$bRecipientNamingMethod;
 
     if (isset($_POST['SubmitNewsLetter'])) {
         Redirect('Reports/NewsLetterLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
@@ -49,7 +50,7 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
   <div class="col-lg-12">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Member Reports')?></h3>
+        <h3 class="box-title"><?= gettext('People Reports')?></h3>
       </div>
       <div class="box-body">
         <form method="post" action="LettersAndLabels.php">
@@ -61,6 +62,15 @@ LabelSelect('labeltype');
 FontSelect('labelfont');
 FontSizeSelect('labelfontsize');
 ?>
+            <tr>
+              <td class="LabelColumn"><?= gettext("Recipient Naming Method")?>:</td>
+              <td class="TextColumn">
+                <select name="recipientnamingmethod">
+                  <option value="salutationutility"><?= gettext("Salutation Utility") ?></option>
+                  <option value="familyname"><?= gettext("Family Name") ?></option>
+                </select>
+              </td>
+            </tr>
 
           </table>
             </div>

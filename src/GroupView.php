@@ -7,11 +7,11 @@
  *
  *  Additional Contributors:
  *  2006-2007 Ed Davis
+ *	2017 Philippe Logel
  *
  *
  *  Copyright Contributors
-  *
-
+ *
  *
  * **************************************************************************** */
 
@@ -22,24 +22,10 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 //Get the GroupID out of the querystring
 $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
-
-//Do they want to add this group to their cart?
-if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'AddGroupToCart') {
-    //Get all the members of this group
-    $sSQL = 'SELECT per_ID FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = '.$iGroupID;
-    $rsGroupMembers = RunQuery($sSQL);
-
-    //Loop through the recordset
-    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
-        extract($aRow);
-
-        //Add each person to the cart
-        AddToPeopleCart($per_ID);
-    }
-}
 
 //Get the data on this group
 $thisGroup = ChurchCRM\GroupQuery::create()->findOneById($iGroupID);
@@ -51,7 +37,7 @@ $defaultRole = ListOptionQuery::create()->filterById($thisGroup->getRoleListId()
 if ($thisGroup->getType() > 0) {
     $sGroupType = ListOptionQuery::create()->filterById(3)->filterByOptionId($thisGroup->getType())->findOne()->getOptionName();
 } else {
-    $sGroupType = gettext('Undefined');
+    $sGroupType = gettext('Unassigned');
 }
 
 //Get the Properties assigned to this Group
@@ -89,63 +75,16 @@ require 'Include/Header.php';
         echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
         echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
 
-
-      <!-- MEMBER ROLE MODAL-->
-      <div class="modal fade" id="changeMembership" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="upload-Image-label"><?= gettext('Change Member Role') ?></h4>
-            </div>
-            <div class="modal-body">
-              <span style="color: red"><?= gettext('Please select target role for member') ?>:</span>
-              <input type="hidden" id="changingMemberID">
-              <p class="ShadedBox" id="changingMemberName"></p>
-              <select name="newRoleSelection" id="newRoleSelection">
-              </select>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
-              <button name="confirmMembershipChange" id="confirmMembershipChange" type="button" class="btn btn-danger"><?= gettext('Change Membership') ?></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--END MEMBER ROLE MODAL-->
-
-      <!-- TARGET GROP SELECT MODAL-->
-      <div class="modal fade" id="selectTargetGroupModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="upload-Image-label"><?= gettext('Select Target Group') ?></h4>
-            </div>
-            <div class="modal-body">
-              <input type="hidden" id="targetGroupAction">
-              <span style="color: red"><?= gettext('Please select target group for members') ?>:</span>
-              <select name="targetGroupSelection" id="targetGroupSelection" style="width: 50%">
-              </select>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close') ?></button>
-              <button name="confirmTargetGroup" id="confirmTargetGroup" type="button" class="btn btn-danger"><?= gettext('Confirm Target Group') ?></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--TARGET GROP SELECT MODAL-->
-
-
       <?php
       if ($thisGroup->getHasSpecialProps()) {
           echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID='.$thisGroup->getId().'"><i class="fa fa-list-alt"></i>'.gettext('Edit Group-Specific Properties Form').'</a>';
       }
-    }
-    echo '<a class="btn btn-app" href="GroupView.php?Action=AddGroupToCart&amp;GroupID='.$thisGroup->getId().'"><i class="fa fa-users"></i>'.gettext('Add Group Members to Cart').'</a>';
+    }?>
 
-    echo '<a class="btn btn-app" href="MapUsingGoogle.php?GroupID='.$thisGroup->getId().'"><i class="fa fa-map-marker"></i>'.gettext('Map this group').'</a>';
+    <a class="btn btn-app" id="AddGroupMembersToCart" data-groupid="<?= $thisGroup->getId() ?>"><i class="fa fa-users"></i><?= gettext('Add Group Members to Cart') ?></a>
+    <a class="btn btn-app" href="MapUsingGoogle.php?GroupID=<?= $thisGroup->getId() ?>"><i class="fa fa-map-marker"></i><?= gettext('Map this group') ?></a>
+
+    <?php
 
 // Email Group link
 // Note: This will email entire group, even if a specific role is currently selected.
@@ -241,7 +180,7 @@ require 'Include/Header.php';
         if ($bEmailMailto) { // Does user have permission to email groups
             // Display link
             echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>'.gettext('Text Group').'</a>';
-            echo '<script>function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
+            echo '<script nonce="'. SystemURLs::getCSPNonce() .'">function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
         }
     }
     ?>
@@ -476,7 +415,7 @@ require 'Include/Header.php';
                 </form>
               </div>
             </div>
-            <script>
+            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
               window.CRM.currentGroup = <?= $iGroupID ?>;
               var dataT = 0;
               $(document).ready(function () {
@@ -484,14 +423,16 @@ require 'Include/Header.php';
                 $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport()? 'true': 'false' ?>).change();
                 $("#deleteGroupButton").click(function() {
                   console.log("click");
+                  bootbox.setDefaults({
+									locale: window.CRM.shortLocale}),
                   bootbox.confirm({
                     title: "<?= gettext("Confirm Delete Group") ?>",
                     message: '<p style="color: red">'+
-                      '<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>'+
-                      '<p>'+
-                      '<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>'+
-                      '</p><p>'+
-                      '<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>',
+                      "<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>"+
+                      "<p>"+
+                      "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>"+
+                      "</p><p>"+
+                      "<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
                     callback: function (result) {
                       if (result)
                       {
@@ -511,6 +452,6 @@ require 'Include/Header.php';
                 });
               });
             </script>
-            <script src="skin/js/GroupView.js" type="text/javascript"></script>
+            <script src="skin/js/GroupView.js" ></script>
 
             <?php require 'Include/Footer.php' ?>
