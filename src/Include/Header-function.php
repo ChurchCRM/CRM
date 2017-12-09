@@ -22,7 +22,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\MenuConfigQuery;
 use ChurchCRM\UserConfigQuery;
-use ChurchCRM\dto\MenuEventsCount;
 
 function Header_system_notifications()
 {
@@ -117,8 +116,7 @@ function Header_body_scripts()
             maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
-            eventsInMenuBarIntervalTime:"<?= SystemConfig::getValue('iEventsInMenuBarIntervalTime') ?>",
-            showTooltip:"<?= $_SESSION['bShowTooltip'] ?>",
+            iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {
                    "language": {
@@ -130,7 +128,8 @@ function Header_body_scripts()
                         "sSwfPath": "<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"
                     }
                 }
-            }
+            },
+            PageName:"<?= $_SERVER['PHP_SELF']?>"
         };
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
@@ -267,9 +266,9 @@ function addMenuItem($ormMenu, $mIdx)
                   <span>
                     <?= gettext($ormMenu->getContent()) ?>
                     <span class='pull-right-container'>
-                      <small class='label pull-right bg-blue' id='AnniversaryNumber'><?= MenuEventsCount::getNumberAnniversaries() ?></small>
-                      <small class='label pull-right bg-red' id='BirthdateNumber'><?= MenuEventsCount::getNumberBirthDates() ?></small>
-                      <small class='label pull-right bg-yellow' id='EventsNumber'><?= MenuEventsCount::getNumberEventsOfToday() ?></small>
+                       <small class='label pull-right bg-blue' id='AnniversaryNumber'>0</small>
+                      <small class='label pull-right bg-red' id='BirthdateNumber'>0</small>
+                      <small class='label pull-right bg-yellow' id='EventsNumber'>0</small>
                     </span>
                   </span>
                 </a>
