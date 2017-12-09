@@ -56,13 +56,8 @@ require '../Include/Header.php';
 </script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Map.js"></script>
 <?php
-    } ?>
-
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/randomcolor/randomColor.js"></script>
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/js/initial.js"></script>
-
-
-
+    }
+?>
 <style>
     #map1 {
         height: 200px;
@@ -70,8 +65,5 @@ require '../Include/Header.php';
 </style>
 
 <?php
-
-
-
 require '../Include/Footer.php';
 ?>
