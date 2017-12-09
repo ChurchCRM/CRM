@@ -70,6 +70,9 @@ $("document").ready(function(){
     });
     
     window.CRM.cart.refresh();
+    window.CRM.dashboard.refresh();
+    DashboardRefreshTimer=setInterval(window.CRM.dashboard.refresh, window.CRM.iDasbhoardServiceIntervalTime * 1000);
+
 });
 
 function showGlobalMessage(message, callOutClass) {
