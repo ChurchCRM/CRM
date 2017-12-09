@@ -577,9 +577,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         $sPhoneCountry = SelectWhichInfo($sCountry, $fam_Country, false);
 
-        $sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $bNoFormat_HomePhone);
-        $sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $bNoFormat_WorkPhone);
-        $sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $bNoFormat_CellPhone);
+        $sHomePhone = ExpandPhoneNumber($sHomePhone, $sPhoneCountry, $bNoFormat_HomePhone);
+        $sWorkPhone = ExpandPhoneNumber($sWorkPhone, $sPhoneCountry, $bNoFormat_WorkPhone);
+        $sCellPhone = ExpandPhoneNumber($sCellPhone, $sPhoneCountry, $bNoFormat_CellPhone);
 
         //The following values are True booleans if the family record has a value for the
         //indicated field.  These are used to highlight field headers in red.
@@ -594,9 +594,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
 
-        $bFacebookID = $per_FacebookID != 0;
-        $bTwitter =  strlen($per_Twitter);
-        $bLinkedIn = strlen($per_LinkedIn);
+        $bFacebookID = $iFacebookID != 0;
+        $bTwitter =  strlen($sTwitter);
+        $bLinkedIn = strlen($sLinkedIn);
 
         $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
         $rsCustomData = RunQuery($sSQL);
@@ -605,7 +605,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
         }
         
-        /* // This can be done in ORM
+        /* // This can't be done in ORM
         print_r($aCustomData);
         
         $aCustomData = [];
