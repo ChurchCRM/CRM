@@ -65,120 +65,124 @@ $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
 
-if ($per_ID != $iPersonID) {
+$person = PersonQuery::create()->findPk($iPersonID);
+
+if (empty($person)) {
     Redirect('members/404.php?type=Person');
     exit;
+}
+
+$assignedProperties = $person->getProperties();
+
+// Get the lists of custom person fields
+$sSQL = 'SELECT person_custom_master.* FROM person_custom_master
+  ORDER BY custom_Order';
+$rsCustomFields = RunQuery($sSQL);
+
+// Get the custom field data for this person.
+$sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
+$rsCustomData = RunQuery($sSQL);
+$aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
+
+// Get the Groups this Person is assigned to
+$sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
+FROM group_grp
+LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
+LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
+WHERE person2group2role_p2g2r.p2g2r_per_ID = '.$iPersonID.'
+ORDER BY grp_Name';
+$rsAssignedGroups = RunQuery($sSQL);
+$sAssignedGroups = ',';
+
+// Get all the Groups
+$sSQL = 'SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name';
+$rsGroups = RunQuery($sSQL);
+
+// Get the volunteer opportunities this Person is assigned to
+$sSQL = 'SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
+LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
+WHERE person2volunteeropp_p2vo.p2vo_per_ID = '.$iPersonID.' ORDER by vol_Order';
+$rsAssignedVolunteerOpps = RunQuery($sSQL);
+
+// Get all the volunteer opportunities
+$sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order';
+$rsVolunteerOpps = RunQuery($sSQL);
+
+// Get the Properties assigned to this Person
+$sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
+FROM record2property_r2p
+LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
+LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
+WHERE pro_Class = 'p' AND r2p_record_ID = ".$iPersonID.
+' ORDER BY prt_Name, pro_Name';
+$rsAssignedProperties = RunQuery($sSQL);
+
+// Get all the properties
+$sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
+$rsProperties = RunQuery($sSQL);
+
+// Get Field Security List Matrix
+$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
+$rsSecurityGrp = RunQuery($sSQL);
+
+while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
+    extract($aRow);
+    $aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
+
+$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
+
+$sFamilyInfoBegin = '<span style="color: red;">';
+$sFamilyInfoEnd = '</span>';
+
+// Assign the values locally, after selecting whether to display the family or person information
+
+//Get an unformatted mailing address to pass as a parameter to a google maps search
+SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
+$sCity = SelectWhichInfo($per_City, $fam_City, false);
+$sState = SelectWhichInfo($per_State, $fam_State, false);
+$sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
+$sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+$plaintextMailingAddress = $person->getAddress();
+
+//Get a formatted mailing address to use as display to the user.
+SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
+$sCity = SelectWhichInfo($per_City, $fam_City, true);
+$sState = SelectWhichInfo($per_State, $fam_State, true);
+$sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
+$sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
+$formattedMailingAddress = $person->getAddress();
+
+$sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
+$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
+$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
+$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
+$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);
+$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
+$sEmail = SelectWhichInfo($per_Email, $fam_Email, true);
+$sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+
+if ($per_Envelope > 0) {
+    $sEnvelope = $per_Envelope;
 } else {
-    $person = PersonQuery::create()->findPk($iPersonID);
-    $assignedProperties = $person->getProperties();
+    $sEnvelope = gettext('Not assigned');
+}
 
-    // Get the lists of custom person fields
-    $sSQL = 'SELECT person_custom_master.* FROM person_custom_master
-      ORDER BY custom_Order';
-    $rsCustomFields = RunQuery($sSQL);
+$iTableSpacerWidth = 10;
 
-    // Get the custom field data for this person.
-    $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
-    $rsCustomData = RunQuery($sSQL);
-    $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
+$bOkToEdit = ($_SESSION['bEditRecords'] ||
+    ($_SESSION['bEditSelf'] && $per_ID == $_SESSION['iUserID']) ||
+    ($_SESSION['bEditSelf'] && $per_fam_ID == $_SESSION['iFamID'])
+    );
 
-    // Get the Groups this Person is assigned to
-    $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
-    FROM group_grp
-    LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
-    LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
-    WHERE person2group2role_p2g2r.p2g2r_per_ID = '.$iPersonID.'
-    ORDER BY grp_Name';
-    $rsAssignedGroups = RunQuery($sSQL);
-    $sAssignedGroups = ',';
-
-    // Get all the Groups
-    $sSQL = 'SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name';
-    $rsGroups = RunQuery($sSQL);
-
-    // Get the volunteer opportunities this Person is assigned to
-    $sSQL = 'SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
-    LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
-    WHERE person2volunteeropp_p2vo.p2vo_per_ID = '.$iPersonID.' ORDER by vol_Order';
-    $rsAssignedVolunteerOpps = RunQuery($sSQL);
-
-    // Get all the volunteer opportunities
-    $sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order';
-    $rsVolunteerOpps = RunQuery($sSQL);
-
-    // Get the Properties assigned to this Person
-    $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
-    FROM record2property_r2p
-    LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
-    LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-    WHERE pro_Class = 'p' AND r2p_record_ID = ".$iPersonID.
-  ' ORDER BY prt_Name, pro_Name';
-    $rsAssignedProperties = RunQuery($sSQL);
-
-    // Get all the properties
-    $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
-    $rsProperties = RunQuery($sSQL);
-
-    // Get Field Security List Matrix
-    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
-    $rsSecurityGrp = RunQuery($sSQL);
-
-    while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-        extract($aRow);
-        $aSecurityType[$lst_OptionID] = $lst_OptionName;
-    }
-
-    $dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
-
-    $sFamilyInfoBegin = '<span style="color: red;">';
-    $sFamilyInfoEnd = '</span>';
-
-    // Assign the values locally, after selecting whether to display the family or person information
-
-    //Get an unformatted mailing address to pass as a parameter to a google maps search
-    SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
-    $sCity = SelectWhichInfo($per_City, $fam_City, false);
-    $sState = SelectWhichInfo($per_State, $fam_State, false);
-    $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
-    $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-    $plaintextMailingAddress = $person->getAddress();
-
-    //Get a formatted mailing address to use as display to the user.
-    SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
-    $sCity = SelectWhichInfo($per_City, $fam_City, true);
-    $sState = SelectWhichInfo($per_State, $fam_State, true);
-    $sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
-    $sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
-    $formattedMailingAddress = $person->getAddress();
-
-    $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-    $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-  ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
-    $sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-  ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
-    $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
-    $sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
-    $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-  ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);
-    $sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-  ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
-    $sEmail = SelectWhichInfo($per_Email, $fam_Email, true);
-    $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
-
-    if ($per_Envelope > 0) {
-        $sEnvelope = $per_Envelope;
-    } else {
-        $sEnvelope = gettext('Not assigned');
-    }
-
-    $iTableSpacerWidth = 10;
-
-    $bOkToEdit = ($_SESSION['bEditRecords'] ||
-  ($_SESSION['bEditSelf'] && $per_ID == $_SESSION['iUserID']) ||
-  ($_SESSION['bEditSelf'] && $per_fam_ID == $_SESSION['iFamID'])
-); ?>
+?>
 <div class="row">
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="box box-primary">
@@ -985,22 +989,4 @@ if ($per_ID != $iPersonID) {
 
 </script>
 
-<?php
-
-} else {
-                                        ?>
-  <div class="error-page">
-    <h2 class="headline text-yellow">404</h2>
-
-    <div class="error-content">
-      <h3><i class="fa fa-warning text-yellow"></i><?= gettext('Oops! Person not found.') ?></h3>
-
-      <p>
-        <?= gettext('We could not find the person you were looking for.<br>Meanwhile, you may')?> <a href="<?= SystemURLs::getRootPath() ?>/PeopleDashboard.php"><?= gettext('return to people dashboard') ?></a>
-      </p>
-    </div>
-  </div>
-  <?php
-                                    }
-
-require 'Include/Footer.php' ?>
+<?php require 'Include/Footer.php' ?>
