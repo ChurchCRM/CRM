@@ -27,9 +27,6 @@ use ChurchCRM\dto\MenuEventsCount;
 
 $financialService = new FinancialService();
 $dashboardService = new DashboardService();
-$personCount = $dashboardService->getPersonCount();
-$familyCount = $dashboardService->getFamilyCount();
-$groupStats = $dashboardService->getGroupStats();
 //Last edited active families
 $updatedFamilies = $dashboardService->getUpdatedFamilies(10);
 //Newly added active families
@@ -173,8 +170,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>
-                    <?= $familyCount['familyCount'] ?>
+                <h3 id="familyCountDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('Families') ?>
@@ -192,8 +189,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>
-                    <?= $personCount['personCount'] ?>
+                <h3 id="peopleStatsDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('People') ?>
@@ -211,8 +208,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>
-                    <?= $groupStats['sundaySchoolClasses'] ?>
+                <h3 id="groupStatsSundaySchool">
+                   0
                 </h3>
                 <p>
                     <?= gettext('Sunday School Classes') ?>
@@ -230,8 +227,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>
-                  <?= $groupStats['groups'] - $groupStats['sundaySchoolClasses']  ?>
+                <h3 id="groupsCountDashboard">
+                  0
                 </h3>
                 <p>
                     <?= gettext('Groups') ?>
@@ -309,8 +306,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class="dataTable table table-striped table-condensed" id="latestFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -319,18 +316,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($latestFamilies as $family) {
-    ?>
-                            <tr>
-                                <td>
-                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
-                                </td>
-                                <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                            </tr>
-                            <?php
-}
-                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -350,8 +335,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class=" dataTable table table-striped table-condensed" id="updatedFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -360,18 +345,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($updatedFamilies as $family) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
-                                </td>
-                                <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -396,7 +369,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
                         <?php foreach ($latestMembers as $person) {
-                            ?>
+    ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                     <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
@@ -406,7 +379,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-                        }
+}
                         ?>
                     </ul>
                     <!-- /.users-list -->
