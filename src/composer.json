@@ -41,7 +41,7 @@
         "phpmailer/phpmailer": "5.2.*",
         "verot/class.upload.php": "dev-master",
         "ifsnop/mysqldump-php": "2.*",
-        "willdurand/geocoder": "3.3.2",
+        "willdurand/geocoder": "4.1.0",
         "mustache/mustache": "~2.5",
         "nexmo/client": "@beta",
         "slim/http-cache": "^0.4.0"
