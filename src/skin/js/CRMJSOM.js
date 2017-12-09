@@ -146,6 +146,21 @@
             
         });
       },
+      'removeGroup' : function (GroupID, callback)
+      {
+         window.CRM.APIRequest({
+          method: 'POST',
+          path: 'cart/removeGroup',
+          data: JSON.stringify({"Group":GroupID})
+        }).done(function(data) {
+            window.CRM.cart.refresh();
+            if(callback)
+            {
+              callback(data);
+            }
+            
+        });
+      },
       'refresh' : function () {
         window.CRM.APIRequest({
           method: 'GET',
