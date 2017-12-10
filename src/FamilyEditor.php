@@ -1133,6 +1133,5 @@ require 'Include/Header.php';
     $(function() {
       $("[data-mask]").inputmask();
     });
-
   </script>
 <?php require 'Include/Footer.php' ?>
