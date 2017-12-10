@@ -10,6 +10,8 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\ListOptionQuery;
 
 // Set the page title
 $sPageTitle = gettext('People Dashboard');
@@ -21,7 +23,7 @@ $personCount = $dashboardService->getPersonCount();
 $personStats = $dashboardService->getPersonStats();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
-$demographicStats = $dashboardService->getDemographic();
+$demographicStats = ListOptionQuery::create()->filterByID('2')->find();
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
         where fam_ID =per_fam_ID and fam_DateDeactivated is  null
@@ -296,21 +298,34 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <th style="width: 40px"><?= gettext('Count') ?></th>
           </tr>
             <?php foreach ($demographicStats as $demStat) {
+            $countMale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(1)->count();
+            $countFemale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(2)->count();
+            $demStatId = $demStat->getOptionID();
+            $demStatName = $demStat->getOptionName();
+            $genPop = PersonQuery::create()->count();
+                if ($countMale != 0) {
+                    echo '<tr>';
+                    echo '<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=' . $demStatId . '">' . $demStatName . ' - ' . gettext('Male') . '</a></td>';
+                    echo '<td>';
+                    echo '<div class="progress progress-xs progress-striped active">';
+                    echo '<div class="progress-bar progress-bar-success" style="width: ' . round(($countMale / $genPop) * 100) . '%" title="' . round(($countMale / $genPop) * 100) . '%"></div>';
+                    echo '</div>';
+                    echo '</td>';
+                    echo '<td><span class="badge bg-green">' . $countMale . '</span></td>';
+                    echo '</tr>';
+                }
+                if ($countFemale != 0) {
+                    echo '<tr>';
+                    echo '<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=' . $demStatId . '">' . $demStatName . ' - ' . gettext('Female') . '</a></td>';
+                    echo '<td>';
+                    echo '<div class="progress progress-xs progress-striped active">';
+                    echo '<div class="progress-bar progress-bar-success" style="width: ' . round(($countFemale / $genPop) * 100) . '%" title="' . round(($countFemale / $genPop) * 100) . '%"></div>';
+                    echo '</div>';
+                    echo '</td>';echo '<td><span class="badge bg-green">' . $countFemale . '</span></td>';
+                echo '</tr>';
+                }
+            }
             ?>
-            <tr>
-                <td>
-                    <a href="SelectList.php?mode=person&Gender=<?= $demStat['gender'] ?>&FamilyRole=<?= $demStat['role'] ?>"><?= gettext($demStat['key']) ?></a>
-                </td>
-              <td>
-                <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-success"
-                       style="width: <?= round($demStat['value'] / $personCount['personCount'] * 100) ?>%"></div>
-                </div>
-              </td>
-              <td><span class="badge bg-green"><?= $demStat['value'] ?></span></td>
-            </tr>
-          <?php
-        } ?>
         </table>
       </div>
     </div>
