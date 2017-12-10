@@ -785,7 +785,15 @@ if ($iMode == 1) {
     </div>
 	<div class="box-body">
 <?php
-
+// Display record count
+if ($Total == 1)
+	{
+	echo '<p align = "center">' . $Total . gettext(" record returned") . '</p>';
+	}
+  else
+	{
+	echo '<p align = "center">' . $Total . gettext(" records returned") . '</p>';
+	}
 // Create Sort Links
 echo '<div align="center">';
 echo "<a href=\"SelectList.php?mode=$sMode&amp;type=$iGroupTypeMissing&amp;Filter=$sFilter&amp;Classification=$iClassificationStr&amp;FamilyRole=$iFamilyRoleStr&amp;Gender=$iGenderStr&amp;grouptype=$iGroupTypeStr&amp;groupid=$iGroupIDStr&amp;grouproleid=$iRoleIDStr&amp;PersonProperties=$iPersonPropertyStr";
