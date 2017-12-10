@@ -303,28 +303,29 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             $demStatId = $demStat->getOptionID();
             $demStatName = $demStat->getOptionName();
             $genPop = PersonQuery::create()->count();
-                if ($countMale != 0) {
-                    echo '<tr>';
-                    echo '<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=' . $demStatId . '">' . $demStatName . ' - ' . gettext('Male') . '</a></td>';
-                    echo '<td>';
-                    echo '<div class="progress progress-xs progress-striped active">';
-                    echo '<div class="progress-bar progress-bar-success" style="width: ' . round(($countMale / $genPop) * 100) . '%" title="' . round(($countMale / $genPop) * 100) . '%"></div>';
-                    echo '</div>';
-                    echo '</td>';
-                    echo '<td><span class="badge bg-green">' . $countMale . '</span></td>';
-                    echo '</tr>';
-                }
-                if ($countFemale != 0) {
-                    echo '<tr>';
-                    echo '<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=' . $demStatId . '">' . $demStatName . ' - ' . gettext('Female') . '</a></td>';
-                    echo '<td>';
-                    echo '<div class="progress progress-xs progress-striped active">';
-                    echo '<div class="progress-bar progress-bar-success" style="width: ' . round(($countFemale / $genPop) * 100) . '%" title="' . round(($countFemale / $genPop) * 100) . '%"></div>';
-                    echo '</div>';
-                    echo '</td>';echo '<td><span class="badge bg-green">' . $countFemale . '</span></td>';
+            if ($countMale != 0) {
+                echo '<tr>';
+                echo '<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=' . $demStatId . '">' . $demStatName . ' - ' . gettext('Male') . '</a></td>';
+                echo '<td>';
+                echo '<div class="progress progress-xs progress-striped active">';
+                echo '<div class="progress-bar progress-bar-success" style="width: ' . round(($countMale / $genPop) * 100) . '%" title="' . round(($countMale / $genPop) * 100) . '%"></div>';
+                echo '</div>';
+                echo '</td>';
+                echo '<td><span class="badge bg-green">' . $countMale . '</span></td>';
                 echo '</tr>';
-                }
             }
+            if ($countFemale != 0) {
+                echo '<tr>';
+                echo '<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=' . $demStatId . '">' . $demStatName . ' - ' . gettext('Female') . '</a></td>';
+                echo '<td>';
+                echo '<div class="progress progress-xs progress-striped active">';
+                echo '<div class="progress-bar progress-bar-success" style="width: ' . round(($countFemale / $genPop) * 100) . '%" title="' . round(($countFemale / $genPop) * 100) . '%"></div>';
+                echo '</div>';
+                echo '</td>';
+                echo '<td><span class="badge bg-green">' . $countFemale . '</span></td>';
+                echo '</tr>';
+            }
+        }
             ?>
         </table>
       </div>
@@ -350,7 +351,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <th style="width: 40px"><?= gettext('Count') ?></th>
         </tr>
         <?php foreach ($personStats as $key => $value) {
-            ?>
+                ?>
           <tr>
             <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
             <td>
@@ -362,7 +363,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
         <?php
-        } ?>
+            } ?>
       </table>
       <!-- /.box-body-->
     </div>
@@ -393,13 +394,13 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         // Get context with jQuery - using jQuery's .get() method.
         var PieData = [
             <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
-            if ($row['per_Gender'] == 1) {
-                echo '{value: ' . $row['numb'] . ' , color: "#003399", highlight: "#3366ff", label: "' . gettext('Men') . '" },';
+                if ($row['per_Gender'] == 1) {
+                    echo '{value: ' . $row['numb'] . ' , color: "#003399", highlight: "#3366ff", label: "' . gettext('Men') . '" },';
+                }
+                if ($row['per_Gender'] == 2) {
+                    echo '{value: ' . $row['numb'] . ' , color: "#9900ff", highlight: "#ff66cc", label: "' . gettext('Women') . '"},';
+                }
             }
-            if ($row['per_Gender'] == 2) {
-                echo '{value: ' . $row['numb'] . ' , color: "#9900ff", highlight: "#ff66cc", label: "' . gettext('Women') . '"},';
-            }
-        }
             while ($row = mysqli_fetch_array($rsKidsGender)) {
                 if ($row['per_Gender'] == 1) {
                     echo '{value: ' . $row['numb'] . ' , color: "#3399ff", highlight: "#99ccff", label: "' . gettext('Boys') . '"},';
