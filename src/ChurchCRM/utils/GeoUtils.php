@@ -3,10 +3,12 @@
 namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\LocaleInfo;
 use Geocoder\Provider\BingMaps\BingMaps;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
+use Geocoder\StatefulGeocoder;
 use Http\Adapter\Guzzle6\Client;
-
+use Geocoder\Query\GeocodeQuery;
 
 class GeoUtils
 {
@@ -15,37 +17,34 @@ class GeoUtils
     {
 
         $logger = LoggerUtils::getAppLogger();
+        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
 
-        $geoCoder = null;
+        $provider = null;
         $adapter = new Client();
 
         $lat = 0;
         $long = 0;
-
         try {
             switch (SystemConfig::getValue("sGeoCoderProvider")) {
                 case "GoogleMaps":
-                    $geoCoder = new GoogleMaps($adapter, null, null, true, SystemConfig::getValue("sGoogleMapKey"));
+                    $provider = new GoogleMaps($adapter, null, null, true, SystemConfig::getValue("sGoogleMapKey"));
                     break;
                 case "BingMaps":
-                    $geoCoder = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));
+                    $provider = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));
                     break;
+            }
+            $logger->debug("Using: Geo Provider -  ". $provider->getName());
+            $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
+            $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
+            $logger->debug("We have " . $result->count() . " results");
+            if (!empty($result)) {
+                $firstResult = $result->get(0);
+                $coordinates = $firstResult->getCoordinates();
+                $lat = $coordinates->getLatitude();
+                $long = $coordinates->getLongitude();
             }
         } catch (\Exception $exception) {
             $logger->warn("issue creating geoCoder " . $exception->getMessage());
-        }
-
-        if (!empty($geoCoder)) {
-            try {
-                $addressCollection = $geoCoder->geocode($address);
-                $geoAddress = $addressCollection->first();
-                if (!empty($geoAddress)) {
-                    $lat = $geoAddress->getLatitude();
-                    $long = $geoAddress->getLongitude();
-                }
-            } catch (\Exception $exception) {
-                $logger->warn("issue getting geoCoder " . $exception->getMessage());
-            }
         }
 
         return array(
