@@ -147,7 +147,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
     if (array_key_exists('FamZip', $_POST)) {
         $sFamZip = InputUtils::LegacyFilterInput($_POST['FamZip']);
-    }        
+    }
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
@@ -477,7 +477,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             extract(mysqli_fetch_array($rsPersonID));
             $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('".$iPersonID."')";
             RunQuery($sSQL);
-          	
+              
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
                 $NotificationEmail = new NewPersonOrFamilyEmail($person);
@@ -936,9 +936,9 @@ require 'Include/Header.php';
                 <div class="row">
                   <div class="form-group col-md-3">
                     <label for="StatleTextBox"><?= gettext('State')?>: </label><br>
-                    <?php                       
-                      $statesFamDropDown = new States($sState,"FamState");
-                      $statesFamDropDown->getDropDown();                      
+                    <?php 
+                      $statesFamDropDown = new States($sState, "FamState");
+                      $statesFamDropDown->getDropDown();
                     ?>
                   </div>
                   <div class="form-group col-md-3">
@@ -960,7 +960,7 @@ require 'Include/Header.php';
                   <div class="form-group col-md-3">
                     <label> <?= gettext('Country') ?>:</label><br>
                     <?php 
-                      $countryFamDropDown = new Countries($sCountry,"FamCountry");// this code is secure
+                      $countryFamDropDown = new Countries($sCountry, "FamCountry");// this code is secure
                       $countryFamDropDown->getDropDown();
                     ?>
                   </div>
@@ -985,14 +985,14 @@ require 'Include/Header.php';
                         <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyAddress1) {
-                          echo '<span style="color: red;">';
-                      }
+                        echo '<span style="color: red;">';
+                    }
 
-                          echo gettext('Address').' 1:';
+                        echo gettext('Address').' 1:';
 
-                          if ($bFamilyAddress1) {
-                              echo '</span>';
-                          } ?>
+                        if ($bFamilyAddress1) {
+                            echo '</span>';
+                        } ?>
                             </label>
                             <input type="text" name="Address1"
                                    value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -1001,14 +1001,14 @@ require 'Include/Header.php';
                         <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyAddress2) {
-                              echo '<span style="color: red;">';
-                          }
+                            echo '<span style="color: red;">';
+                        }
 
-                          echo gettext('Address').' 2:';
+                        echo gettext('Address').' 2:';
 
-                          if ($bFamilyAddress2) {
-                              echo '</span>';
-                          } ?>
+                        if ($bFamilyAddress2) {
+                            echo '</span>';
+                        } ?>
                             </label>
                             <input type="text" name="Address2"
                                    value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -1017,14 +1017,14 @@ require 'Include/Header.php';
                         <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyCity) {
-                              echo '<span style="color: red;">';
-                          }
+                            echo '<span style="color: red;">';
+                        }
 
-                          echo gettext('City').':';
+                        echo gettext('City').':';
 
-                          if ($bFamilyCity) {
-                              echo '</span>';
-                          } ?>
+                        if ($bFamilyCity) {
+                            echo '</span>';
+                        } ?>
                             </label>
                             <input type="text" name="City"
                                    value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -1037,40 +1037,39 @@ require 'Include/Header.php';
                     <div class="form-group col-md-2">
                         <label for="StatleTextBox">
                             <?php if ($bFamilyState) {
-                              echo '<span style="color: red;">';
-                          }
+                            echo '<span style="color: red;">';
+                        }
 
-                          echo gettext('State').':';
+                        echo gettext('State').':';
 
-                          if ($bFamilyState) {
-                              echo '</span>';
-                          } ?>
+                        if ($bFamilyState) {
+                            echo '</span>';
+                        } ?>
                         </label>
                         <?php 
                           $stateDropDown = new States($sState);
-                          $stateDropDown->getDropDown();
-                        ?>
+                        $stateDropDown->getDropDown(); ?>
                     </div>
                     <div class="form-group col-md-2">
                         <label><?= gettext('None State') ?>:</label>
                         <input type="text" name="StateTextbox"
                                value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
-                              echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
-                          } ?>"
+                            echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
+                        } ?>"
                                size="20" maxlength="30" class="form-control">
                     </div>
 
                     <div class="form-group col-md-1">
                         <label for="Zip">
                             <?php if ($bFamilyZip) {
-                              echo '<span style="color: red;">';
-                          }
+                            echo '<span style="color: red;">';
+                        }
 
-                          echo gettext('Zip').':';
+                        echo gettext('Zip').':';
 
-                          if ($bFamilyZip) {
-                              echo '</span>';
-                          } ?>
+                        if ($bFamilyZip) {
+                            echo '</span>';
+                        } ?>
                         </label>
                         <input type="text" name="Zip" class="form-control"
                             <?php
@@ -1079,30 +1078,29 @@ require 'Include/Header.php';
                                 echo 'style="text-transform:uppercase" ';
                             }
 
-                          echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
+                        echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
                                maxlength="10" size="8">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="Zip">
                             <?php if ($bFamilyCountry) {
-                              echo '<span style="color: red;">';
-                          }
+                            echo '<span style="color: red;">';
+                        }
 
-                          echo gettext('Country').':';
+                        echo gettext('Country').':';
 
-                          if ($bFamilyCountry) {
-                              echo '</span>';
-                          } ?>
+                        if ($bFamilyCountry) {
+                            echo '</span>';
+                        } ?>
                         </label>
                         <?php 
                             $countryDropDown = new Countries($sCountry);// this code is secure
-                            $countryDropDown->getDropDown();
-                         ?>
+                            $countryDropDown->getDropDown(); ?>
                     </div>
                 </div>
                 <p/>
             <?php
-                      } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
+                    } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
                 <input type="hidden" name="Address1"
                        value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="Address2"
@@ -1118,7 +1116,7 @@ require 'Include/Header.php';
                 <input type="hidden" name="Country"
                        value="<?= htmlentities(stripslashes($sCountry), ENT_NOQUOTES, 'UTF-8') ?>"></input>
             <?php
-                      } ?>
+                    } ?>
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="HomePhone">
@@ -1362,50 +1360,50 @@ require 'Include/Header.php';
         </div><!-- /.box-header -->
         <div class="box-body">
             <?php if ($numCustomFields > 0) {
-                mysqli_data_seek($rsCustomFields, 0);
+                                mysqli_data_seek($rsCustomFields, 0);
 
-                $cnt = 0;
+                                $cnt = 0;
 
-                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                    extract($rowCustomField);
+                                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
+                                    extract($rowCustomField);
     
-                    if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
-                        if ($cnt == 0) {
-                            echo "<div class='row'>";
-                        }
+                                    if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                                        if ($cnt == 0) {
+                                            echo "<div class='row'>";
+                                        }
         
 
-                        echo "<div class=\"form-group col-md-4\"><label>".$custom_Name.'</label>';
+                                        echo "<div class=\"form-group col-md-4\"><label>".$custom_Name.'</label>';
 
-                        if (array_key_exists($custom_Field, $aCustomData)) {
-                            $currentFieldData = trim($aCustomData[$custom_Field]);
-                        } else {
-                            $currentFieldData = '';
-                        }
+                                        if (array_key_exists($custom_Field, $aCustomData)) {
+                                            $currentFieldData = trim($aCustomData[$custom_Field]);
+                                        } else {
+                                            $currentFieldData = '';
+                                        }
 
-                        if ($type_ID == 11) {
-                            $custom_Special = $sPhoneCountry;
-                        }
+                                        if ($type_ID == 11) {
+                                            $custom_Special = $sPhoneCountry;
+                                        }
 
-                        formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
-                        if (isset($aCustomErrors[$custom_Field])) {
-                            echo '<span style="color: red; ">'.$aCustomErrors[$custom_Field].'</span>';
-                        }
-                        echo '</div>';
+                                        formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
+                                        if (isset($aCustomErrors[$custom_Field])) {
+                                            echo '<span style="color: red; ">'.$aCustomErrors[$custom_Field].'</span>';
+                                        }
+                                        echo '</div>';
         
-                        $cnt+=1;
-                        $cnt%=3;
+                                        $cnt+=1;
+                                        $cnt%=3;
 
-                        if ($cnt == 0) {
-                            echo '</div>';
-                        }
-                    }
-                }
+                                        if ($cnt == 0) {
+                                            echo '</div>';
+                                        }
+                                    }
+                                }
 
-                if ($cnt) {
-                    echo '</div>';
-                }
-            } ?>
+                                if ($cnt) {
+                                    echo '</div>';
+                                }
+                            } ?>
         </div>
     </div>
   <?php

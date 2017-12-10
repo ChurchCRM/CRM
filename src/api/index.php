@@ -77,6 +77,8 @@ require __DIR__.'/routes/system.php';
 //lock session PL
 require __DIR__.'/routes/session.php';
 
+require __DIR__.'/routes/dashboard.php';
+
 
 // Run app
 $app->run();
