@@ -32,12 +32,12 @@ $(document).ready(function () {
   });
 
   dataT = $("#groupsTable").DataTable({
-  	"initComplete": function( settings, json ) {
-   	 	if (window.groupSelect != null)
-   	 	{
-   	 		dataT.search(window.groupSelect).draw();
-   	 	}
-  	},
+    "initComplete": function( settings, json ) {
+        if (window.groupSelect != null)
+        {
+          dataT.search(window.groupSelect).draw();
+        }
+    },
     "language": {
       "url": window.CRM.plugin.dataTable.language.url
     },
@@ -80,13 +80,13 @@ $(document).ready(function () {
         defaultContent: "",
         searchable: true,
         render: function (data, type, full, meta) {
-		  if (data)
-		  {
-          	return data;
+      if (data)
+      {
+            return data;
           }
           else
           {
-          	return i18next.t('Unassigned');
+            return i18next.t('Unassigned');
           }
         }
       }
@@ -98,7 +98,7 @@ $(document).ready(function () {
       
       var activLink = '';
       if (numberOfMembers == 0){
-      	activLink=' disabled'; // PL : We disable the button Add All when there isn't any member in the group
+        activLink=' disabled'; // PL : We disable the button Add All when there isn't any member in the group
       }
       
       if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
@@ -116,16 +116,20 @@ $(document).ready(function () {
   });
   
   $(document).on("click","#AddGroupToCart",function(link){
-  	var groupid = link.toElement.dataset.groupid;
+    var groupid = link.toElement.dataset.groupid;
     window.CRM.cart.addGroup(groupid,function(data){
-	    location.reload();
+        link.target.id = "removeGroupFromCart";
+        link.target.className = "btn btn-danger";
+        link.target.innerText = i18next.t("Remove all");
     });
   });
   
   $(document).on("click","#removeGroupFromCart",function(link){
-  	var groupid = link.toElement.dataset.groupid;
+    var groupid = link.toElement.dataset.groupid;
     window.CRM.cart.removeGroup(groupid,function(data){
-	    location.reload();
+        link.target.id = "AddGroupToCart";    
+        link.target.className = "btn btn-primary";
+        link.target.innerText = i18next.t("Add all");
     });
   });
 
