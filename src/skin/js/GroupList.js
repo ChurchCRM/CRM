@@ -102,10 +102,10 @@ $(document).ready(function () {
       }
       
       if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
-        $(element).html(i18next.t("All members of this group are in the cart")+"<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger \" id=\"removeGroupFromCart\" data-groupid=\"" + objectID + "\">" + i18next.t("Remove all") + "</a>");
+        $(element).html("<span>"+i18next.t("All members of this group are in the cart")+"</span><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger \" id=\"removeGroupFromCart\" data-groupid=\"" + objectID + "\">" + i18next.t("Remove all") + "</a>");
       }
       else {
-        $(element).html(i18next.t("Not all members of this group are in the cart")+"<br><a onclick=\"saveScrollCoordinates()\" id=\"AddGroupToCart\" class=\"btn btn-primary"+activLink+"\" data-groupid=\"" + objectID + "\">" + i18next.t("Add all") + "</a>");
+        $(element).html("<span>"+i18next.t("Not all members of this group are in the cart")+"</span><a onclick=\"saveScrollCoordinates()\" id=\"AddGroupToCart\" class=\"btn btn-primary"+activLink+"\" data-groupid=\"" + objectID + "\">" + i18next.t("Add all") + "</a>");
       }
     });
   });
@@ -117,19 +117,23 @@ $(document).ready(function () {
   
   $(document).on("click","#AddGroupToCart",function(link){
     var groupid = link.toElement.dataset.groupid;
+    var parent = $(this).parent().find("span");
     window.CRM.cart.addGroup(groupid,function(data){
         link.target.id = "removeGroupFromCart";
         link.target.className = "btn btn-danger";
         link.target.innerText = i18next.t("Remove all");
+        parent.text(i18next.t("All members of this group are in the cart"));
     });
   });
   
   $(document).on("click","#removeGroupFromCart",function(link){
     var groupid = link.toElement.dataset.groupid;
+    var parent = $(this).parent().find("span");
     window.CRM.cart.removeGroup(groupid,function(data){
         link.target.id = "AddGroupToCart";    
         link.target.className = "btn btn-primary";
         link.target.innerText = i18next.t("Add all");
+        parent.text(i18next.t("Not all members of this group are in the cart"));
     });
   });
 
