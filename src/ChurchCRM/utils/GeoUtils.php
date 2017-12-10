@@ -54,6 +54,23 @@ class GeoUtils
 
     }
 
+    public static function DrivingDistanceMatrix($address1, $address2)
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
+        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
+        $url = $url . "language=" . $localeInfo->getShortLocale();
+        $url = $url . "&origins=" . urlencode($address1);
+        $url = $url . "&destinations=" . urlencode($address2);
+        $logger->debug($url);
+        $gMapsResponse = file_get_contents($url);
+        $details = json_decode($gMapsResponse, TRUE);
+        $matrixElements = $details['rows'][0]['elements'][0];
+        return array(
+            'distance' => $matrixElements['distance']['text'],
+            'duration' => $matrixElements['duration']['text']
+        );
+    }
 
     // Function takes latitude and longitude
     // of two places as input and returns the
