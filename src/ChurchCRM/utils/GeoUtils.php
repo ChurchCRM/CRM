@@ -3,11 +3,10 @@
 namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
-use Geocoder\Exception\NoResult;
-use Geocoder\Provider\BingMaps;
-use Geocoder\Provider\GoogleMaps;
-use Ivory\HttpAdapter\CurlHttpAdapter;
-use ChurchCRM\Utils\LoggerUtils;
+use Geocoder\Provider\BingMaps\BingMaps;
+use Geocoder\Provider\GoogleMaps\GoogleMaps;
+use Http\Adapter\Guzzle6\Client;
+
 
 class GeoUtils
 {
@@ -18,7 +17,7 @@ class GeoUtils
         $logger = LoggerUtils::getAppLogger();
 
         $geoCoder = null;
-        $curl = new CurlHttpAdapter();
+        $adapter = new Client();
 
         $lat = 0;
         $long = 0;
@@ -26,10 +25,10 @@ class GeoUtils
         try {
             switch (SystemConfig::getValue("sGeoCoderProvider")) {
                 case "GoogleMaps":
-                    $geoCoder = new GoogleMaps($curl, null, null, true, SystemConfig::getValue("sGoogleMapKey"));
+                    $geoCoder = new GoogleMaps($adapter, null, null, true, SystemConfig::getValue("sGoogleMapKey"));
                     break;
                 case "BingMaps":
-                    $geoCoder = new BingMaps($curl, SystemConfig::getValue("sBingMapKey"));
+                    $geoCoder = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));
                     break;
             }
         } catch (\Exception $exception) {
