@@ -135,13 +135,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
 
     if (is_numeric($nLatitude)) {
-        $nLatitude = "'".$nLatitude."'";
+        $nLatitude = "".$nLatitude."";
     } else {
         $nLatitude = 'NULL';
     }
 
     if (is_numeric($nLongitude)) {
-        $nLongitude = "'".$nLongitude."'";
+        $nLongitude = "".$nLongitude."";
     } else {
         $nLongitude = 'NULL';
     }
@@ -153,12 +153,12 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     if (is_numeric($nEnvelope)) { // Only integers are allowed as Envelope Numbers
         if (intval($nEnvelope) == floatval($nEnvelope)) {
-            $nEnvelope = "'".intval($nEnvelope)."'";
+            $nEnvelope = "".intval($nEnvelope)."";
         } else {
-            $nEnvelope = "'0'";
+            $nEnvelope = "0";
         }
     } else {
-        $nEnvelope = "'0'";
+        $nEnvelope = "0";
     }
 
     if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
@@ -237,7 +237,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                                 .gettext('Not a valid Wedding Date').'</span>';
             $bErrorFlag = true;
         } else {
-            $dWeddingDate = "'$dateString'";
+            $dWeddingDate = "$dateString";
         }
     } else {
         $dWeddingDate = 'NULL';
@@ -282,14 +282,14 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         //Write the base SQL depending on the Action
         if ($bSendNewsLetter) {
-            $bSendNewsLetterString = "'TRUE'";
+            $bSendNewsLetterString = "TRUE";
         } else {
-            $bSendNewsLetterString = "'FALSE'";
+            $bSendNewsLetterString = "FALSE";
         }
         if ($bOkToCanvass) {
-            $bOkToCanvassString = "'TRUE'";
+            $bOkToCanvassString = "TRUE";
         } else {
-            $bOkToCanvassString = "'FALSE'";
+            $bOkToCanvassString = "FALSE";
         }
         if ($iFamilyID < 1) { // create a family
             $family = new Family();
@@ -306,7 +306,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->setCellPhone($sCellPhone);
             $family->setEmail($sEmail);
             if ($dWeddingDate !== "NULL") {// strangely it's a string wich contains sometimes "NULL"
-                $family->setWeddingdate(str_replace("'", "", $dWeddingDate));
+                $family->setWeddingdate($dWeddingDate);
             }
             $family->setDateEntered(new DateTime());
             $family->setEnteredBy($_SESSION['iUserID']);
@@ -340,7 +340,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->setCellPhone($sCellPhone);
             $family->setEmail($sEmail);
             if ($dWeddingDate !== "NULL") {
-                $family->setWeddingdate(str_replace("'", "", $dWeddingDate));
+                $family->setWeddingdate($dWeddingDate);
             }
             $family->setDateEntered(new DateTime());
             $family->setEnteredBy($_SESSION['iUserID']);
