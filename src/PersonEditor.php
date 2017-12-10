@@ -5,7 +5,8 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2005 Michael Wilt
-  *
+ *                2017 Philippe Logel
+ *
  ******************************************************************************/
 
 //Include the function library
