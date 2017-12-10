@@ -27,6 +27,8 @@ use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\data\Countries;
 use ChurchCRM\data\States;
+use ChurchCRM\PersonCustom;
+use ChurchCRM\PersonCustomQuery;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -123,7 +125,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $sCellPhone = InputUtils::LegacyFilterInput($_POST['CellPhone']);
     $sEmail = InputUtils::LegacyFilterInput($_POST['Email']);
     $bSendNewsLetter = isset($_POST['SendNewsLetter']);
-
+    
     $nLatitude = 0.0;
     $nLongitude = 0.0;
     if (array_key_exists('Latitude', $_POST)) {
@@ -200,7 +202,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $aClassification[$iCount] = InputUtils::LegacyFilterInput($_POST['Classification'.$iCount], 'int');
         $aPersonIDs[$iCount] = InputUtils::LegacyFilterInput($_POST['PersonID'.$iCount], 'int');
         $aUpdateBirthYear[$iCount] = InputUtils::LegacyFilterInput($_POST['UpdateBirthYear'], 'int');
-
+        
         // Make sure first names were entered if editing existing family
         if ($iFamilyID > 0) {
             if (strlen($aFirstNames[$iCount]) == 0) {
@@ -393,9 +395,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     } else {
                         $sLastNameToEnter = $sName;
                     }
-
-                    RunQuery('LOCK TABLES person_per WRITE, person_custom WRITE');
                     
+                    //RunQuery('LOCK TABLES person_per WRITE, person_custom WRITE');
                     $person = new Person();
                     $person->setFirstName($aFirstNames[$iCount]);
                     $person->setMiddleName($aMiddleNames[$iCount]);
@@ -410,8 +411,10 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $person->setBirthMonth($aBirthMonths[$iCount]);
                     $person->setBirthYear($aBirthYears[$iCount]);
                     $person->setClsId($aClassification[$iCount]);
-                                    
-                    $dbPersonId = mysqli_insert_id($cnInfoCentral);
+                    $person->save();
+                    
+                    $dbPersonId = $person->getID();
+                              
                     $note = new Note();
                     $note->setPerId($dbPersonId);
                     $note->setText(gettext('Created via Family'));
@@ -419,10 +422,14 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->setEntered($_SESSION['iUserID']);
                     $note->save();
                     
-                    $sSQL = 'INSERT INTO person_custom (per_ID) VALUES ('
+                    $personCustom = new PersonCustom();
+                    $personCustom->setPerId($dbPersonId);
+                    $personCustom->save();
+                        
+                    /*$sSQL = 'INSERT INTO person_custom (per_ID) VALUES ('
                                 .$dbPersonId.')';
-                    RunQuery($sSQL);
-                    RunQuery('UNLOCK TABLES');
+                    RunQuery($sSQL);*/
+                    //RunQuery('UNLOCK TABLES');
                 }
             }
             $family = FamilyQuery::create()->findPk($iFamilyID);
@@ -450,8 +457,22 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     }
                     $sBirthYearScript = ($aUpdateBirthYear[$iCount] & 1) ? 'per_BirthYear='.$aBirthYears[$iCount].', ' : '';
                     //RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
-                    $sSQL = "UPDATE person_per SET per_FirstName='".$aFirstNames[$iCount]."', per_MiddleName='".$aMiddleNames[$iCount]."',per_LastName='".$aLastNames[$iCount]."',per_Suffix='".$aSuffix[$iCount]."',per_Gender='".$aGenders[$iCount]."',per_fmr_ID='".$aRoles[$iCount]."',per_BirthMonth='".$aBirthMonths[$iCount]."',per_BirthDay='".$aBirthDays[$iCount]."', ".$sBirthYearScript."per_cls_ID='".$aClassification[$iCount]."' WHERE per_ID=".$aPersonIDs[$iCount];
-                    RunQuery($sSQL);
+                    $person = PersonQuery::Create()
+                                ->findOneById($aPersonIDs[$iCount]);
+                                
+                    $person->setFirstName($aFirstNames[$iCount]);
+                    $person->setMiddleName($aMiddleNames[$iCount]);
+                    $person->setLastName($aLastNames[$iCount]);
+                    $person->setSuffix($aSuffix[$iCount]);
+                    $person->setGender($aGenders[$iCount]);
+                    $person->setFmrId($aRoles[$iCount]);
+                    $person->setBirthMonth($aBirthMonths[$iCount]);
+                    $person->setBirthDay($aBirthDays[$iCount]);
+                    $person->setBirthYear($aBirthYears[$iCount]);
+                    $person->setClsId($aClassification[$iCount]);
+                    $person->setDateEntered(date('YmdHis'));
+                    $person->setEnteredBy($_SESSION['iUserID']);
+                    $person->save();                    
                     //RunQuery("UNLOCK TABLES");
 
                     $note = new Note();
