@@ -16,6 +16,7 @@ use ChurchCRM\TokenQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\ChurchMetaData;
 
 $app->group('/families', function () {
     $this->get('/{familyId:[0-9]+}', function ($request, $response, $args) {
@@ -181,8 +182,13 @@ $app->group('/families', function () {
         $familyId = $args["familyId"];
         $family = FamilyQuery::create()->findPk($familyId);
         if (!empty($family)) {
-            $familyLatLong = GeoUtils::getLatLong($family->getAddress());
-            return $response->withJson($familyLatLong);
+            $familyAddress = $family->getAddress();
+            $familyLatLong = GeoUtils::getLatLong($familyAddress);
+
+            $familyDrivingInfo = GeoUtils::DrivingDistanceMatrix($familyAddress, ChurchMetaData::getChurchAddress());
+            $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
+
+            return $response->withJson($geoLocationInfo);
         }
         return $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
     });
