@@ -475,7 +475,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $person->setClsId($aClassification[$iCount]);
                     $person->setDateEntered(date('YmdHis'));
                     $person->setEnteredBy($_SESSION['iUserID']);
-                    $person->save();                    
+                    $person->save();
                     //RunQuery("UNLOCK TABLES");
 
                     $note = new Note();
