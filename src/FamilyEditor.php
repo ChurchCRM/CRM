@@ -29,6 +29,8 @@ use ChurchCRM\data\Countries;
 use ChurchCRM\data\States;
 use ChurchCRM\PersonCustom;
 use ChurchCRM\PersonCustomQuery;
+use ChurchCRM\FamilyCustom;
+use ChurchCRM\FamilyCustomQuery;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -373,8 +375,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $rsLastEntry = RunQuery($sSQL);
             extract(mysqli_fetch_array($rsLastEntry));
 
-            $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('".$iFamilyID."')";
-            RunQuery($sSQL);
+            $familyCustom=new FamilyCustom();
+            $familyCustom->setFamId($iFamilyID);
+            $familyCustom->save();
 
             // Add property if assigned
             if ($iPropertyID) {
