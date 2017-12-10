@@ -576,7 +576,7 @@
       refresh: function () {
         window.CRM.APIRequest({
           method: 'GET',
-          path: window.CRM.root + '/dashboard/page?currentpagename=' + window.CRM.PageName,
+          path: 'dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
         }).done(function (data) {
           for (var key in data) {
             window["CRM"]["dashboard"]["renderers"][key](data[key]);
