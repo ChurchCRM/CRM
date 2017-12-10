@@ -56,6 +56,11 @@ class States
     {
         return array_values(self::$states);
     }
+    
+    public static function getKeys()
+    {
+        return array_keys(self::$states);
+    }
 
     public static function getAll()
     {
@@ -67,12 +72,12 @@ class States
       echo '<select name="'.$this->state.'" class="form-control select2" id="'.$this->id_input.'" style="width:100%">';      
       echo '<option value="">'.gettext('Unassigned').'</option>';
       echo '<option value="" disabled>--------------------</option>';
-        foreach ($this->getNames() as $stat) {
-          echo '<option value="'.$stat.'"';
-          if ($this->selected_State == $stat) {
+        foreach (self::$states as $keystate => $itemstate) {
+          echo '<option value="'.$keystate.'"';
+          if ($this->selected_State == $itemstate) {
             echo 'selected';
           } 
-          echo '>'.gettext($stat);
+          echo '>'.gettext($itemstate);
         }
       echo '</select>';
     }
