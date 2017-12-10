@@ -289,7 +289,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         } else {
             $bOkToCanvassString = "'FALSE'";
         }
-        if ($iFamilyID < 1) {
+        if ($iFamilyID < 1) { // create a family
             $family = new Family();
             
             $family->setName($sName);
@@ -322,7 +322,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->save();
             
             $bGetKeyBack = true;
-        } else {
+        } else {// edition family
             $family = FamilyQuery::Create()
                 ->findOneByID($iFamilyID);
                 

@@ -73,10 +73,14 @@ class States
       echo '<option value="">'.gettext('Unassigned').'</option>';
       echo '<option value="" disabled>--------------------</option>';
         foreach (self::$states as $keystate => $itemstate) {
-          echo '<option value="'.$keystate.'"';
-          if ($this->selected_State == $itemstate) {
-            echo 'selected';
-          } 
+          if (!empty($keystate)) {
+              echo '<option value="'.$keystate.'"';
+              if ($this->selected_State == $keystate) {
+                echo 'selected';
+              } 
+          } else {
+            echo '<option value disabled';
+          }
           echo '>'.gettext($itemstate);
         }
       echo '</select>';
