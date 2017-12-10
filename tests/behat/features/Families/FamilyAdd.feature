@@ -23,6 +23,7 @@ Feature: FamilyAdd
     And I fill in "Classification4" with "1" 
     And I fill in "Classification5" with "1" 
     And I fill in "Classification6" with "1" 
+    
     And I press "FamilySubmit"
     Then I should see "Family View"
     And I should see "Family: Brady"
