@@ -20,7 +20,6 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\data\Countries;
 use ChurchCRM\data\States;
 
-
 // Security: User must have add records permission
 if (!$_SESSION['bAddRecords']) {
     Redirect('Menu.php');
@@ -254,8 +253,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <td class="TextColumn">
       <?php 
         $stateDropDown = new States($sState);
-        $stateDropDown->getDropDown();
-      ?>
+    $stateDropDown->getDropDown(); ?>
       OR
       <input type="text" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
         echo $sState;
@@ -277,8 +275,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <td class="TextColumnWithBottomBorder">
       <?php 
         $countryDropDown = new Countries($sCountry);// this code is secure
-        $countryDropDown->getDropDown();
-      ?>
+    $countryDropDown->getDropDown(); ?>
     </td>
   </tr>
 
