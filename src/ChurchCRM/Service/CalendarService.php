@@ -1,6 +1,12 @@
 <?php
 
-/* Philippe Logel 2017-12-11 */
+/*******************************************************************************
+ *
+ *  filename    : CalendarService.php
+ *  last change : 2017-11-16
+ *  Copyright 2017 Logel Philippe
+ *
+ ******************************************************************************/
 
 namespace ChurchCRM\Service;
 
@@ -50,7 +56,7 @@ class CalendarService
           
         $peopleWithBirthDays->filterByBirthMonth($firstMonth);// the event aren't more than a month
         
-        while ($month != $endMonth) {// we loop to have all the month
+        while ($month != $endMonth) {// we loop to have all the months from the first in the start to the end
           $month += 1;
           if ($month == 13) {
               $month = 1;
