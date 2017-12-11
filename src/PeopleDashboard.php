@@ -329,7 +329,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </tr>
 <?php
             }
-              }
+        }
               ?>
         </table>
       </div>
@@ -355,7 +355,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <th style="width: 40px"><?= gettext('Count') ?></th>
         </tr>
         <?php foreach ($personStats as $key => $value) {
-                ?>
+                  ?>
           <tr>
             <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
             <td>
@@ -367,7 +367,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
         <?php
-             } ?>
+              } ?>
       </table>
       <!-- /.box-body-->
     </div>
@@ -398,13 +398,13 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         // Get context with jQuery - using jQuery's .get() method.
         var PieData = [
             <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
-                if ($row['per_Gender'] == 1) {
-                    echo '{value: ' . $row['numb'] . ' , color: "#003399", highlight: "#3366ff", label: "' . gettext('Men') . '" },';
-                }
-                if ($row['per_Gender'] == 2) {
-                    echo '{value: ' . $row['numb'] . ' , color: "#9900ff", highlight: "#ff66cc", label: "' . gettext('Women') . '"},';
-                }
-            }
+                  if ($row['per_Gender'] == 1) {
+                      echo '{value: ' . $row['numb'] . ' , color: "#003399", highlight: "#3366ff", label: "' . gettext('Men') . '" },';
+                  }
+                  if ($row['per_Gender'] == 2) {
+                      echo '{value: ' . $row['numb'] . ' , color: "#9900ff", highlight: "#ff66cc", label: "' . gettext('Women') . '"},';
+                  }
+              }
             while ($row = mysqli_fetch_array($rsKidsGender)) {
                 if ($row['per_Gender'] == 1) {
                     echo '{value: ' . $row['numb'] . ' , color: "#3399ff", highlight: "#99ccff", label: "' . gettext('Boys') . '"},';
