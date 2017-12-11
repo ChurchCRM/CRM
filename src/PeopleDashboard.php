@@ -304,7 +304,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             $demStatName = $demStat->getOptionName();
             $genPop = PersonQuery::create()->count();
             if ($countMale != 0) {
-?>
+                ?>
 <tr>
 <td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Male') ?></a></td>
 <td>
@@ -315,9 +315,9 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 <td><span class="badge bg-green"><?= $countMale ?></span></td>
 </tr>
 <?php
-}
+            }
             if ($countFemale != 0) {
-?>
+                ?>
 <tr>
 <td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
 <td>
@@ -329,8 +329,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </tr>
 <?php
             }
-        }
-            ?>
+              }
+              ?>
         </table>
       </div>
     </div>
