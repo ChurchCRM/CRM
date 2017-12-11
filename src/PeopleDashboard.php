@@ -367,7 +367,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
         <?php
-             } ?>
+            } ?>
       </table>
       <!-- /.box-body-->
     </div>
