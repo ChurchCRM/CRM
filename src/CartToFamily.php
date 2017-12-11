@@ -7,7 +7,8 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2003 Chris Gebhardt
-  *
+ *            2017 Philippe Logel
+ *
  ******************************************************************************/
 
 // Include the function library
@@ -16,6 +17,9 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\data\Countries;
+use ChurchCRM\data\States;
+
 
 // Security: User must have add records permission
 if (!$_SESSION['bAddRecords']) {
@@ -248,7 +252,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
   <tr>
     <td class="LabelColumn"><?= gettext('State') ?>:</td>
     <td class="TextColumn">
-      <?php require 'Include/StateDropDown.php'; ?>
+      <?php 
+        $stateDropDown = new States($sState);
+        $stateDropDown->getDropDown();
+      ?>
       OR
       <input type="text" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
         echo $sState;
@@ -268,7 +275,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
   <tr>
     <td class="LabelColumn"><?= gettext('Country') ?>:</td>
     <td class="TextColumnWithBottomBorder">
-      <?php require 'Include/CountryDropDown.php' ?>
+      <?php 
+        $countryDropDown = new Countries($sCountry);// this code is secure
+        $countryDropDown->getDropDown();
+      ?>
     </td>
   </tr>
 
@@ -325,4 +335,11 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     }
 ?>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $("#country-input").select2();
+        $("#state-input").select2();
+    });
+</script>
 <?php require 'Include/Footer.php'; ?>
