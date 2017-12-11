@@ -6,6 +6,7 @@
  *  description : page header used for most pages
  *
  *  Copyright 2017 Philippe Logel
+ *
  ******************************************************************************/
 
 // Include the function library
@@ -131,16 +132,21 @@ if (isset($_POST['User'])) {
 }
 
 $id = 0;
+$type ="";
+
 // we hold down the last id
 if (isset($_SESSION['iUserID'])) {
     $id = $_SESSION['iUserID'];
 }
 
-// we hold down the session type : Lock Login
-if (isset($_POST['iLoginType'])) {
-    $type = $_POST['iLoginType'];
-} elseif (isset($_SESSION['iLoginType'])) {
+// we hold down the last type of login : lock or nothing
+if (isset($_SESSION['iLoginType'])) {
     $type = $_SESSION['iLoginType'];
+}
+
+
+if (isset($_GET['session']) && $_GET['session'] == "Lock") {// We are in a Lock session
+    $type = $_SESSION['iLoginType']  = "Lock";
 }
 
 if (empty($urlUserName)) {
@@ -158,14 +164,16 @@ session_destroy();
 // we reopen a new one
 session_start() ;
 
-// we restore only this part
+    // we restore only this part
 $_SESSION['iLoginType'] = $type;
 $_SESSION['username'] = $urlUserName;
 $_SESSION['iUserID'] = $id;
 
-if ($_SESSION['iLoginType'] == "Lock" && $id > 0) {// this point is important for the photo in a lock session
+if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
+} else {
+    $type = $_SESSION['iLoginType'] = "";
 }
 
 // Set the page title and include HTML header
@@ -273,7 +281,7 @@ require 'Include/HeaderNotLoggedIn.php';
     <div class="lockscreen-image">
       <?php if ($_SESSION['iLoginType'] == "Lock") {
             ?>
-      <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getPhotoURI()) ?>" alt="User Image">
+      <img src="<?= str_replace(SystemURLs::getDocumentRoot(), "", $person->getPhoto()->getThumbnailURI()) ?>" alt="User Image">
       <?php
         } ?>
     </div>
