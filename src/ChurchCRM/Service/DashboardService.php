@@ -44,7 +44,6 @@ class DashboardService
 
         return $data;
     }
-
     public function getGroupStats()
     {
         $sSQL = 'select
