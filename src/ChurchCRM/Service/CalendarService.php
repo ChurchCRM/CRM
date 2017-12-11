@@ -1,5 +1,7 @@
 <?php
 
+/* Philippe Logel 2017-12-11 */
+
 namespace ChurchCRM\Service;
 
 use ChurchCRM\EventQuery;
@@ -36,25 +38,30 @@ class CalendarService
         }
 
         $firstYear = $startDate->format('Y');
-
-        $perBirthDayThisYear = "STR_TO_DATE(CONCAT('1900-', 
-          per.per_BirthMonth, '-', per.per_BirthDay), '%Y-%m-%d')";
-            $perBirthDayNextYear = "STR_TO_DATE(CONCAT('1901-', 
-          per.per_BirthMonth, '-', per.per_BirthDay), '%Y-%m-%d')";
-            $dateRange = [
-          $startDate->format($startYear.'-m-d'),
-          $endDate->format($endYear.'-m-d'),
-        ];
-
-        $peopleWithBirthDays = PersonQuery::create('per')
-          ->join('Family')
-          ->condition('thisYear', $perBirthDayThisYear.' BETWEEN ? AND ?', $dateRange)
-          ->condition('nextYear', $perBirthDayNextYear.' BETWEEN ? AND ?', $dateRange)
-          ->combine(['thisYear', 'nextYear'], Criteria::LOGICAL_OR, 'birthDates')
-          ->condition('greaterThanZero', 'per_BirthDay > 0 AND per_BirthMonth > 0')
-          ->condition('active', 'Family.fam_DateDeactivated is null' )
-          ->where(['greaterThanZero', 'birthDates', 'active'], Criteria::LOGICAL_AND)
-          ->find();
+          
+        $peopleWithBirthDays = PersonQuery::create()
+          ->JoinWithFamily();
+          
+        // get the first and the last month
+        $firstMonth = $startDate->format('m');
+        $endMonth = $endDate->format('m');
+        
+        $month = $firstMonth;
+          
+        $peopleWithBirthDays->filterByBirthMonth($firstMonth);// the event aren't more than a month
+        
+        while ($month != $endMonth) {// we loop to have all the month
+          $month += 1;
+          if ($month == 13) {
+              $month = 1;
+          }
+          if ($month == 0) {
+            $month = 1;
+          }
+          $peopleWithBirthDays->_or()->filterByBirthMonth($month);// the event aren't more than a month
+        }
+        
+        $peopleWithBirthDays->find();
 
         foreach ($peopleWithBirthDays as $person) {
             $year = $firstYear;
@@ -64,13 +71,13 @@ class CalendarService
 
             $start = date_create($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
 
-
-             $event = $this->createCalendarItem('birthday',
-             $person->getFullName()." ".$person->getAge(), $start->format(DATE_ATOM), '', $person->getViewURI());
+            $event = $this->createCalendarItem('birthday',
+            $person->getFullName()." ".$person->getAge(), $start->format(DATE_ATOM), '', $person->getViewURI());
 
             array_push($events, $event);
         }
-
+        
+        // we search the Anniversaries
         $Anniversaries = FamilyQuery::create()
           ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
           ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
@@ -94,6 +101,7 @@ class CalendarService
           ->filterByInActive('false')
           ->orderByStart()
           ->find();
+        
         foreach ($activeEvents as $evnt) {
           $event = $this->createCalendarItem('event',
           $evnt->getTitle(), $evnt->getStart('Y-m-d H:i:s'), $evnt->getEnd('Y-m-d H:i:s'), $evnt->getEventURI(),$evnt->getID(),$evnt->getType(),$evnt->getGroupId());// only the event id sould be edited and moved and have custom color
