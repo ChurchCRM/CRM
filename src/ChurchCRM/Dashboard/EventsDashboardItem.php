@@ -2,11 +2,11 @@
 
 //
 // Philippe Logel : 
-// I replace the code at the right place : 
+// I re-put the code at the right place it was : 
 // Menu events should be in MenuEventsCount.php
 // It's important for a new dev
 // It was my code ...
-// Last this code was two times used
+// Last this code was two times in different parts
 //
 
 namespace ChurchCRM\Dashboard;
