@@ -390,7 +390,7 @@ $sRedirect = mb_substr($sRedirect, 0, -5); // Chop off last &amp;
 $peopleIDArray = array();
 $rsPersons = RunQuery($sSQL);
 while ($aRow = mysqli_fetch_row($rsPersons)) {
-   array_push($peopleIDArray,intval($aRow[0]));
+    array_push($peopleIDArray, intval($aRow[0]));
 }
 
 
