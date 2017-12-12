@@ -40,6 +40,7 @@ $("document").ready(function(){
   
     $(document).on("click", ".emptyCart", function (e) {
       window.CRM.cart.empty();
+      window.location.reload();
     });
     
     function BootboxContentCartTogroup(){    
