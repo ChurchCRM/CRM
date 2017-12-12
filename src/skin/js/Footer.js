@@ -40,7 +40,8 @@ $("document").ready(function(){
   
     $(document).on("click", ".emptyCart", function (e) {
       window.CRM.cart.empty();
-      window.location.reload();
+      window.CRM.cart.refresh();
+      window.location.reload();// this should be the nicer solution to avoid the problem on each page to set correctly the button when the cart is empty
     });
     
     function BootboxContentCartTogroup(){    
