@@ -39,10 +39,11 @@ $("document").ready(function(){
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
   
     $(document).on("click", ".emptyCart", function (e) {
-      window.CRM.cart.empty();
-      window.CRM.cart.refresh();
-      window.location.reload();// this should be the nicer solution to avoid the problem on each page to set correctly the button when the cart is empty
-      // some many pages should be affected now and in the future, so this part part will reflect all the pages
+      window.CRM.cart.empty(function(data){
+          window.CRM.cart.refresh();
+          window.location.reload();// this should be the nicer solution to avoid the problem on each page to set correctly the button when the cart is empty
+          // some many pages should be affected now and in the future, so this part part will reflect all the pages
+      });
     });
     
     function BootboxContentCartTogroup(){    
@@ -205,7 +206,10 @@ $("document").ready(function(){
                         data: JSON.stringify({"groupID":GroupID,"groupRoleID":RoleID})
                         }).done(function(data) {
                           window.CRM.cart.refresh();
+                          window.location.reload();
                       });
+                      
+                      return true
                 } else {
                     var box = bootbox.dialog({title: "<span style='color: red;'>"+i18next.t("Error")+"</span>",message : i18next.t("You have to select one group and a group role if you want")});
                 
@@ -229,6 +233,8 @@ $("document").ready(function(){
                           window.CRM.cart.refresh();
                           location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
                       });
+                      
+                      return true;
                   } else {
                     var box = bootbox.dialog({title: "<span style='color: red;'>"+i18next.t("Error")+"</span>",message : i18next.t("You have to set a Group Name")});
                 
@@ -237,7 +243,7 @@ $("document").ready(function(){
                         box.modal('hide');
                     }, 3000);
                     
-                      return false;
+                    return false;
                   }
               }
             }
