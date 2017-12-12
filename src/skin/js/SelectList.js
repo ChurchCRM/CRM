@@ -5,8 +5,8 @@ $(document).ready(function () {
         personButton = $("a[data-personid='" + data + "']");
         $(personButton).addClass("RemoveFromPeopleCart");
         $(personButton).removeClass("AddToPeopleCart");
-        $('span i:nth-child(2)',personButton).addClass("fa-remove ");
-        $('span i:nth-child(2)',personButton).removeClass("fa-cart-plus ");
+        $('span i:nth-child(2)',personButton).addClass("fa-remove");
+        $('span i:nth-child(2)',personButton).removeClass("fa-cart-plus");
       });
     });
   });
