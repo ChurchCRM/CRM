@@ -42,6 +42,7 @@ $("document").ready(function(){
       window.CRM.cart.empty();
       window.CRM.cart.refresh();
       window.location.reload();// this should be the nicer solution to avoid the problem on each page to set correctly the button when the cart is empty
+      // some many pages should be affected now and in the future, so this part part will reflect all the pages
     });
     
     function BootboxContentCartTogroup(){    
