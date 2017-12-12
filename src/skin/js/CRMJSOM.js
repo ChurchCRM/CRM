@@ -228,14 +228,24 @@
           if (cartPeople.includes(personID)) {
             $(personButton).addClass("RemoveFromPeopleCart");
             $(personButton).removeClass("AddToPeopleCart");
-            $('span i:nth-child(2)',personButton).addClass("fa-remove");
-            $('span i:nth-child(2)',personButton).removeClass("fa-cart-plus");
+            fa = $(personButton).find("i.fa.fa-inverse")
+            $(fa).addClass("fa-remove");
+            $(fa).removeClass("fa-cart-plus");
+            text = $(personButton).find("span.cartActionDescription")
+            if(text){
+              $(text).text(i18next.t("Remove from Cart"));
+            }
           }
           else {
             $(personButton).addClass("AddToPeopleCart");
             $(personButton).removeClass("RemoveFromPeopleCart");
-            $('span i:nth-child(2)',personButton).removeClass("fa-remove");
-            $('span i:nth-child(2)',personButton).addClass("fa-cart-plus");
+            fa = $(personButton).find("i.fa.fa-inverse")
+            $(fa).removeClass("fa-remove");
+            $(fa).addClass("fa-cart-plus");
+            text = $(personButton).find("span.cartActionDescription")
+            if(text){
+              $(text).text(i18next.t("Add to Cart"));
+            }
           }
         });
       }
