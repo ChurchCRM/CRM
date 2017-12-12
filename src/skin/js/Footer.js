@@ -47,7 +47,7 @@ $("document").ready(function(){
         +'<table border=0 cellpadding=2 width="100%">'
         +'<tr>'
         +'<td>'+i18next.t('Select the method to add to a group')+'   </td>'
-        +'<td><select id="GroupSelector">'
+        +'<td><select id="GroupSelector" class="form-control">'
         +'<option>'+i18next.t('Select an existing Group')+'</option>'
         +'<option>'+i18next.t('OR Create a Group and add the CART in ONE ACTION')+'</option>'
         +'</select>'
@@ -57,19 +57,19 @@ $("document").ready(function(){
         +'<hr/>'
         +'<div id="GroupSelect">'
         +'    <p align="center">'+i18next.t('Select the group to which you would like to add your cart')+':</p>'
-        +'    <form method="post">'
         +'      <table align="center">'
         +'        <tr>'
         +'          <td class="LabelColumn">'+i18next.t('Select Group')+':</td>'
         +'          <td class="TextColumn">'
-        +'            <select id="GroupID" name="GroupID" style="width:100%">'
+        +'            <select id="GroupID" name="GroupID" style="width:100%" class="form-control">'
         +'            </select>'
         +'          </td>'
         +'        </tr>'
+        +'        <tr><td colspan="2">&nbsp;</td></tr>'
         +'        <tr>'
         +'          <td class="LabelColumn">'+i18next.t('Select Role')+':</td>'
         +'          <td class="TextColumn">'
-        +'            <select name="GroupRole" id="GroupRole" style="width:100%">'
+        +'            <select name="GroupRole" id="GroupRole" style="width:100%" class="form-control">'
         +'                <option>'+i18next.t('None')+'</option>'
         +'            </select>'
         +'          </td>'
@@ -81,13 +81,12 @@ $("document").ready(function(){
         +'      <p align="center">'
         +'        <table border=0 cellpadding=2 width="100%">'
         +'        <tr>'
-        +'           <td>'+ i18next.t('Group Name Title') + ':</td>'
+        +'           <td>'+ i18next.t('Group Name') + ':</td>'
         +'           <td><input type="text" id="GroupName" value="" size="30" maxlength="100" class="form-control"  width="100%" style="width: 100%" placeholder="'+i18next.t("Default Name Group")+'" required></td>'
         +'        </tr>'        
         +'        </table>'
         +'      </p>'
         +'</div>';
-        +'</form>'
 
         var object = $('<div/>').html(frm_str).contents();
 
@@ -126,33 +125,36 @@ $("document").ready(function(){
     // I have to do this because EventGroup isn't yet present when you load the page the first time
     $(document).on('change','#GroupID',function () {
      var e = document.getElementById("GroupID");
-     var option = e.options[e.selectedIndex];
-     var GroupID = option.value;
+     
+     if (e.selectedIndex > 0) {
+         var option = e.options[e.selectedIndex];
+         var GroupID = option.value;
    
-      window.CRM.APIRequest({
-          path:"groups/"+GroupID+"/roles",
-          method:"GET"
-      }).done(function(data) {
-          var ListOptions = data.ListOptions;                 
-          $("#GroupRole").empty();        
-          var elt = document.getElementById("GroupRole");  
-          var len = ListOptions.length;
+          window.CRM.APIRequest({
+              path:"groups/"+GroupID+"/roles",
+              method:"GET"
+          }).done(function(data) {
+              var ListOptions = data.ListOptions;                 
+              $("#GroupRole").empty();        
+              var elt = document.getElementById("GroupRole");  
+              var len = ListOptions.length;
 
-          // We add the none option
-          var option = document.createElement("option");
-          option.text = i18next.t("None");
-          option.value = 0;
-          option.title = ""; 
-          elt.appendChild(option);
+              // We add the none option
+              var option = document.createElement("option");
+              option.text = i18next.t("None");
+              option.value = 0;
+              option.title = ""; 
+              elt.appendChild(option);
     
-          for (i=0; i<len; ++i) {
-            var option = document.createElement("option");
-            // there is a groups.type in function of the new plan of schema
-            option.text = i18next.t(ListOptions[i].OptionName);
-            option.value = ListOptions[i].OptionId;
-            elt.appendChild(option);
-          }       
-      }); 
+              for (i=0; i<len; ++i) {
+                var option = document.createElement("option");
+                // there is a groups.type in function of the new plan of schema
+                option.text = i18next.t(ListOptions[i].OptionName);
+                option.value = ListOptions[i].OptionId;
+                elt.appendChild(option);
+              }       
+          });
+      } 
     });
   
     // I have to do this because EventGroup isn't yet present when you load the page the first time
@@ -185,31 +187,55 @@ $("document").ready(function(){
              var e = document.getElementById("GroupSelector");
              if (e.selectedIndex == 0) {
                  var e = document.getElementById("GroupID");
-                 var option = e.options[e.selectedIndex];
-                 var GroupID = option.value;             
+                 
+                 if (e.selectedIndex > 0) {
+                     var option = e.options[e.selectedIndex];
+                     var GroupID = option.value;             
 
-                 var e = document.getElementById("GroupRole");
-                 var option = e.options[e.selectedIndex];
-                 var RoleID = option.value;
+                     var e = document.getElementById("GroupRole");
+                     var option = e.options[e.selectedIndex];
+                     var RoleID = option.value;
                      
-                 window.CRM.APIRequest({
-                    method: 'POST',
-                    path: 'cart/emptyToGroup',
-                    data: JSON.stringify({"groupID":GroupID,"groupRoleID":RoleID})
-                    }).done(function(data) {
-                      window.CRM.cart.refresh();
-                  });
-               
+                     window.CRM.APIRequest({
+                        method: 'POST',
+                        path: 'cart/emptyToGroup',
+                        data: JSON.stringify({"groupID":GroupID,"groupRoleID":RoleID})
+                        }).done(function(data) {
+                          window.CRM.cart.refresh();
+                      });
+                } else {
+                    var box = bootbox.dialog({title: "<span style='color: red;'>"+i18next.t("Error")+"</span>",message : i18next.t("You have to select one group and a group role if you want")});
+                
+                    setTimeout(function() {
+                        // be careful not to call box.hide() here, which will invoke jQuery's hide method
+                        box.modal('hide');
+                    }, 3000);
+                    
+                    return false;
+                }                    
               } else {
+          
                   var newGroupName = document.getElementById("GroupName").value;
-                  window.CRM.APIRequest({
-                    method: 'POST',
-                    path: 'groups/',               //call the groups api handler located at window.CRM.root
-                    data: JSON.stringify({'groupName':newGroupName}),                      // stringify the object we created earlier, and add it to the data payload
-                  }).done(function (data) {                               //yippie, we got something good back from the server
-                      window.CRM.cart.refresh();
-                      location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
-                  });
+                  
+                  if (newGroupName) {
+                      window.CRM.APIRequest({
+                        method: 'POST',
+                        path: 'groups/',               //call the groups api handler located at window.CRM.root
+                        data: JSON.stringify({'groupName':newGroupName}),                      // stringify the object we created earlier, and add it to the data payload
+                      }).done(function (data) {                               //yippie, we got something good back from the server
+                          window.CRM.cart.refresh();
+                          location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
+                      });
+                  } else {
+                    var box = bootbox.dialog({title: "<span style='color: red;'>"+i18next.t("Error")+"</span>",message : i18next.t("You have to set a Group Name")});
+                
+                    setTimeout(function() {
+                        // be careful not to call box.hide() here, which will invoke jQuery's hide method
+                        box.modal('hide');
+                    }, 3000);
+                    
+                      return false;
+                  }
               }
             }
           },
