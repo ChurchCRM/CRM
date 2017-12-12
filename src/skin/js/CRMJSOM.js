@@ -56,7 +56,8 @@
         }).done(function (data) {
           if (callback)
           {
-            callback()
+            callback(data);
+            window.CRM.cart.refresh();
           }
           else
           {
@@ -166,6 +167,7 @@
           method: 'GET',
           path:"cart/"
         }).done(function(data) {
+          window.CRM.cart.updatePage(data.PeopleCart);
           window.scrollTo(0, 0);
           $("#iconCount").text(data.PeopleCart.length);
           var cartDropdownMenu;
@@ -218,8 +220,26 @@
           .animate({'left':(+10)+'px'},30)
           .animate({'left':(0)+'px'},30);
         });
+      },
+      'updatePage' : function (cartPeople){
+        personButtons = $("a[data-cartpersonid]");
+        $(personButtons).each(function(index,personButton){
+          personID = $(personButton).data("cartpersonid")
+          if (cartPeople.includes(personID)) {
+            $(personButton).addClass("RemoveFromPeopleCart");
+            $(personButton).removeClass("AddToPeopleCart");
+            $('span i:nth-child(2)',personButton).addClass("fa-remove");
+            $('span i:nth-child(2)',personButton).removeClass("fa-cart-plus");
+          }
+          else {
+            $(personButton).addClass("AddToPeopleCart");
+            $(personButton).removeClass("RemoveFromPeopleCart");
+            $('span i:nth-child(2)',personButton).removeClass("fa-remove");
+            $('span i:nth-child(2)',personButton).addClass("fa-cart-plus");
+          }
+        });
       }
-
+      
     };
     
     window.CRM.kiosks = {
