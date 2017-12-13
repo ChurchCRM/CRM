@@ -16,20 +16,21 @@ require 'Include/QueryFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
+
 //Include the header
 require 'Include/Header.php';
 
 //Set the page title
 $sPageTitle = gettext('Query View 2.0');
 if (isset($_POST['Submit'])) {
-DoQuery();
-}
-else {
+    DoQuery();
+} else {
     DisplayQuery();
 }
 
-function DisplayQuery() {
-?>
+function DisplayQuery()
+{
+    ?>
 <div class="box box-info">
     <div class="box-body">
         <p><strong><?= gettext('Birthdays'); ?></strong></p>
@@ -46,12 +47,11 @@ function DisplayQuery() {
                         <select name="birthMonth" class="form-control">
                         <option disabled="" selected="" value=""> -- Select an option -- </option>
                         <?php
-                        foreach($birthdayMonths as $monthNum => $monthName) {
+                        foreach ($birthdayMonths as $monthNum => $monthName) {
                             ?>
                             <option value="<?= $monthNum ?>"><?= $monthName ?></option>
                         <?php
-                        }
-                        ?>
+                        } ?>
                         </select>
                         <div class="help-block"><div><?= gettext('The birthday month for which you would like records returned.') ?></div>
                     </div>
@@ -64,8 +64,7 @@ function DisplayQuery() {
                             ?>
                             <option value="<?= $Member->getOptionSequence() ?>"><?= $Member->getOptionName() ?></option>
                         <?php
-                        }
-                        ?>
+                        } ?>
 
                         </select>
                         <div class="help-block"><div><?= gettext('Member, Regular Attender, etc.') ?></div>
@@ -81,8 +80,9 @@ function DisplayQuery() {
 <?php
 }
 
-function DoQuery() {
-?>
+function DoQuery()
+{
+    ?>
     <div class="box box-primary">   
     <div class="box-body">
         <p class="text-right">
