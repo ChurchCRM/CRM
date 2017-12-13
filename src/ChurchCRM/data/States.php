@@ -15,7 +15,8 @@ class States
     private $selected_State;
     
     private static $states = ['AL' => 'Alabama', 'AK' => 'Alaska', 
-      'AZ' => 'Arkansas', 'AR' => 'Arkansas', 
+      'AZ' => 'Arizona', 
+      'AR' => 'Arkansas', 
       'CA' => 'California', 'CO' => 'Colorado', 'CT' => 'Connecticut', 
       'DE' => 'Delaware', 'DC' => 'District of Columbia', 'FL' => 'Florida',
       'GA' => 'Georgia', 'HI' => 'Hawaii', 'ID' => 'Idaho', 'IL' => 'Illinois',

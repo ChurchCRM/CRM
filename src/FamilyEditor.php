@@ -76,12 +76,12 @@ $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
 // Get Field Security List Matrix
-$listOptions = ListOptionQuery::Create()
+$securityListOptions = ListOptionQuery::Create()
               ->orderByOptionSequence()
               ->findById(5);
               
-foreach ($listOptions as $listOption) {
-    $aSecurityType[$listOption->getOptionId()] = $listOption->getOptionName();
+foreach ($securityListOptions as $securityListOption) {
+    $aSecurityType[$listOption->getOptionId()] = $securityListOption->getOptionName();
 }
 
 $bErrorFlag = false;
