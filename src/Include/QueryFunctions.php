@@ -38,22 +38,3 @@ $memberClass = array(0);
 foreach ($rsMembershipClasses as $Member) {
     $memberClass[$Member->getOptionSequence()] = $Member->getOptionName();
 }
-
-function QuerySelect($fieldname)
-{
-    $sizes = ['default', 6, 7, 8, 9, 10, 11, 12, 14, 16, 18];
-    echo '<tr>';
-    echo '<td class="LabelColumn"> '.gettext('Font Size').':</td>';
-    echo '<td class="TextColumn">';
-    echo "<select name=\"$fieldname\">";
-    foreach ($sizes as $s) {
-        $sel = '';
-        if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $s) {
-            $sel = ' selected';
-        }
-        echo '<option value="'.$s.'"'.$sel.'>'.gettext("$s").'</option>';
-    }
-    echo '</select>';
-    echo '</td>';
-    echo '</tr>';
-}
