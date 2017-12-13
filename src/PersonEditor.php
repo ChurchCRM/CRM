@@ -149,7 +149,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
     if (array_key_exists('FamZip', $_POST)) {
         $sFamZip = InputUtils::LegacyFilterInput($_POST['FamZip']);
-    }    
+    }
     if (array_key_exists('FamState', $_POST)) {
         $sFamState = InputUtils::LegacyFilterInput($_POST['FamState']);
     }
