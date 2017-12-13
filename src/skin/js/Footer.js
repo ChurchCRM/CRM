@@ -53,7 +53,7 @@ $("document").ready(function(){
         +'<td>'+i18next.t('Select the method to add to a group')+'   </td>'
         +'<td><select id="GroupSelector" class="form-control">'
         +'<option>'+i18next.t('Select an existing Group')+'</option>'
-        +'<option>'+i18next.t('OR Create a Group and add the CART in ONE ACTION')+'</option>'
+        +'<option>'+i18next.t('or Create a new Group from the Cart')+'</option>'
         +'</select>'
         +'</td>'
         +'</tr>'
@@ -176,10 +176,6 @@ $("document").ready(function(){
 
     
     $(document).on("click", "#emptyCartToGroup", function (e) {
-      //window.CRM.cart.emptyToGroup(); /// PL : keep this part I will try to write it completely in JS
-      //return;
-      //window.location.href = window.CRM.root+"/CartToGroup.php";
-      
       var modal = bootbox.dialog({
          message: BootboxContentCartTogroup,
          title: i18next.t("Add Cart to Group"),
@@ -206,7 +202,7 @@ $("document").ready(function(){
                         data: JSON.stringify({"groupID":GroupID,"groupRoleID":RoleID})
                         }).done(function(data) {
                           window.CRM.cart.refresh();
-                          window.location.reload();
+                          location.href = window.CRM.root + 'GroupView.php?GroupID='+GroupID;
                       });
                       
                       return true
@@ -227,11 +223,11 @@ $("document").ready(function(){
                   if (newGroupName) {
                       window.CRM.APIRequest({
                         method: 'POST',
-                        path: 'groups/',               //call the groups api handler located at window.CRM.root
+                        path: 'cart/emptyToNewGroup',               //call the groups api handler located at window.CRM.root
                         data: JSON.stringify({'groupName':newGroupName}),                      // stringify the object we created earlier, and add it to the data payload
                       }).done(function (data) {                               //yippie, we got something good back from the server
                           window.CRM.cart.refresh();
-                          location.href = 'CartToGroup.php?groupeCreationID='+data.Id;
+                          location.href = window.CRM.root + 'GroupView.php?GroupID='+data.Id;
                       });
                       
                       return true;

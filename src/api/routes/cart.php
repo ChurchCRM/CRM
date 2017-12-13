@@ -1,6 +1,7 @@
 <?php
-use ChurchCRM\GroupQuery;
 use ChurchCRM\Person2group2roleP2g2r;
+use ChurchCRM\GroupQuery;
+use ChurchCRM\Group;
 use ChurchCRM\dto\Cart;
 
 $app->group('/cart', function () {
@@ -38,6 +39,19 @@ $app->group('/cart', function () {
             'message' => $iCount.' '.gettext('records(s) successfully added to selected Group.')
         ]);
     });
+    
+    $this->post('/emptyToNewGroup', function($request, $response, $args) {
+        $cartPayload = (object)$request->getParsedBody();
+        $group = new Group();
+        $group->setName($cartPayload->groupName);
+        $group->save();
+        
+        Cart::EmptyToNewGroup($group->getId());
+        
+        echo $group->toJSON();
+    });
+    
+   
     
     $this->post('/removeGroup', function($request, $response, $args) {
         $cartPayload = (object)$request->getParsedBody();
