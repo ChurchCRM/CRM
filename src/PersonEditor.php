@@ -334,8 +334,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $family->setAddress1($sFamAddress1);
             $family->setAddress2($sFamAddress2);
             $family->setCity($sFamCity);
-            $family->setState($sFamZip);
-            $family->setZip($sFamState);
+            $family->setState($sFamState);
+            $family->setZip($sFamZip);
             $family->setCountry($sFamCountry);
             $family->setHomePhone($sHomePhone);
             $family->setWorkPhone($sWorkPhone);
