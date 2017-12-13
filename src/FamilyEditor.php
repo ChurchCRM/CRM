@@ -81,7 +81,7 @@ $securityListOptions = ListOptionQuery::Create()
               ->findById(5);
               
 foreach ($securityListOptions as $securityListOption) {
-    $aSecurityType[$listOption->getOptionId()] = $securityListOption->getOptionName();
+    $aSecurityType[$securityListOption->getOptionId()] = $securityListOption->getOptionName();
 }
 
 $bErrorFlag = false;
