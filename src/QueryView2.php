@@ -29,6 +29,8 @@ else {
 }
 
 function DisplayQuery() {
+global $birthdayMonths;
+global $rsMembershipClasses;
 ?>
 <div class="box box-info">
     <div class="box-body">
