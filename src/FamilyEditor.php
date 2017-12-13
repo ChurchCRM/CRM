@@ -5,7 +5,7 @@
  *  last change : 2003-01-04
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
- *                Philippe Logel 2017
+ *                Philippe Logel 2017-12-13
  *
  ******************************************************************************/
 
