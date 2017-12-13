@@ -136,6 +136,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sFamAddress2 = '';
     $sFamCity = '';
     $sFamZip = '';
+    $sFamState = '';
     $sFamCountry = '';
     if (array_key_exists('FamAddress1', $_POST)) {
         $sFamAddress1 = InputUtils::LegacyFilterInput($_POST['FamAddress1']);
@@ -148,6 +149,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
     if (array_key_exists('FamZip', $_POST)) {
         $sFamZip = InputUtils::LegacyFilterInput($_POST['FamZip']);
+    }    
+    if (array_key_exists('FamState', $_POST)) {
+        $sFamState = InputUtils::LegacyFilterInput($_POST['FamState']);
     }
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
