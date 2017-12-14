@@ -74,9 +74,9 @@ require __DIR__.'/routes/custom-fields.php';
 
 require __DIR__.'/routes/system.php';
 
-//lock session PL
-require __DIR__.'/routes/session.php';
+require __DIR__.'/routes/dashboard.php';
 
+require __DIR__.'/routes/geocoder.php';
 
 // Run app
 $app->run();
