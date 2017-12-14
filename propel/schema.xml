@@ -88,17 +88,19 @@
     <table name="person_custom" idMethod="native" phpName="PersonCustom" description="Person custom fields">
         <column name="per_ID" phpName="PerId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
+        <foreign-key foreignTable="person_per">
+            <reference local="per_ID" foreign="per_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-    
     <table name="person_custom_master" idMethod="native" phpName="PersonCustomMaster" description="This contains definitions for the custom person fields">
-        <column name="custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
-        <column name="custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
-        <column name="custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
-        <column name="custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
-        <column name="custom_Side" phpName="CustomSide" type="CHAR" sqlType="enum('left','right')" required="true"
+        <column name="custom_Order" phpName="Order" type="SMALLINT" required="true" defaultValue="0"/>
+        <column name="custom_Field" phpName="Id" type="VARCHAR" primaryKey="true" size="5" required="true" defaultValue=""/>
+        <column name="custom_Name" phpName="Name" type="VARCHAR" size="40" required="true" defaultValue=""/>
+        <column name="custom_Special" phpName="Special" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
+        <column name="custom_Side" phpName="Side" type="CHAR" sqlType="enum('left','right')" required="true"
                 defaultValue="left"/>
         <column name="custom_FieldSec" phpName="CustomFieldSec" type="TINYINT" required="true"/>
         <column name="type_ID" phpName="TypeId" type="TINYINT" required="true" defaultValue="0"/>
@@ -106,7 +108,59 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-
+    <table name="calendar" idMethod="native" phpName="Calendar">
+        <column name="cal_id" phpName="CalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="cal_person_ID" phpName="CalPersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" description="The owner of the calendar"/>
+        <column name="cal_parent_ID" phpName="CalParentId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" description="We can have a horearchy like in Zimbra calendars"/>
+        <column name="cal_Name" phpName="CalName" type="VARCHAR" size="50" required="true" defaultValue=""/>
+        <column name="cal_creation" phpName="CalCreation" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+        <column name="cal_desc" phpName="CalDesc" type="LONGVARCHAR" description="A user could add a description of the purpose of the calendar"/>
+        <column name="cal_color" phpName="CalColor" type="VARCHAR" size="10" required="true" defaultValue="#DC143C"/>
+        <column name="cal_cal_type_id" phpName="CalCalTypeId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" description="Like in zimbra a calendar could be a reservation tool too"/>
+        <foreign-key foreignTable="person_per" name="fk_cal_ID" onDelete="CASCADE">
+            <reference local="cal_person_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="calendar_type" name="fk_cal_cal_type_ID" onDelete="CASCADE">
+            <reference local="cal_cal_type_id" foreign="cal_type_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="calendar" name="fk_cal_parent_ID" onDelete="SET NULL">
+            <reference local="cal_parent_ID" foreign="cal_id"/>
+        </foreign-key>
+        <index name="fk_cal_ID">
+            <index-column name="cal_person_ID"/>
+        </index>
+        <index name="fk_cal_parent_ID">
+            <index-column name="cal_parent_ID"/>
+        </index>
+        <index name="fk_cal_cal_type_ID">
+            <index-column name="cal_cal_type_id"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="calendar_share" idMethod="native" phpName="CalendarShare">
+        <column name="cal_share_id" phpName="CalShareId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="per_share_id" phpName="PerShareId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" description="the person id to share the calendar"/>
+        <column name="cal_share_color" phpName="CalShareColor" type="VARCHAR" size="10" required="true" defaultValue="#DC143C" description="A person can personnalize the color of the calendar"/>
+        <column name="cal_share_right" phpName="CalShareRight" type="TINYINT" required="true" defaultValue="6" description="2 to write 4 for reading and 6 to read write 0 for nothing" />
+        <foreign-key foreignTable="calendar" name="fk_cal_share_ID" onDelete="CASCADE">
+            <reference local="per_share_id" foreign="cal_id"/>
+        </foreign-key>
+        <index name="fk_cal_share_ID">
+            <index-column name="per_share_id"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="calendar_type" idMethod="native" phpName="CalendarType">
+        <column name="cal_type_id" phpName="CalTypeId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="cal_type_Name" phpName="CalTypeName" type="VARCHAR" size="50" required="true" defaultValue="" description="MATERIAL RESERVATION, ROOM RESERVATION, VIDEO PROJECTOR RESERVATION, CALENDAR by defulat, etc ...."/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
     <table name="family_fam" idMethod="native" phpName="Family" description="This contains the main family data, including family name, family addresses, and family phone numbers">
         <column name="fam_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
@@ -233,31 +287,7 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-    <table name="group_calendar_persons" idMethod="native" phpName="GroupCalendarPersons">
-      <column name="grp_cal_id" phpName="GrpCalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-      <column name="group_ID" phpName="GroupId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" description="A calendar is binded to a group by default, if it is shared"/>
-      <column name="person_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" description="each person who has the right to visualized it, by default the manager can see it"/>
-      <column name="grp_cal_creation" phpName="GrpCalCreation" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00" description="create date and modifcation"/>
-      <column name="grp_cal_desc" phpName="GrpCalDesc" type="LONGVARCHAR" description="A short description for each user who can visualized it"/>
-      <column name="grp_cal_color" phpName="GrpCalColor" type="VARCHAR" size="10" required="true" defaultValue="#8A2BE2" description="A person can personalize the calendar color"/>
-      <column name="grp_cal_right" phpName="GrpCalRight" type="TINYINT" required="true" defaultValue="6" description="The right the personID has person_ID has, fixed by the manager_ID in group_grp : 0 not visible, 2 Write, 4 Read, 7 all rights "/>
-      <foreign-key foreignTable="group_grp" name="fk_grp_cal_ID" onDelete="CASCADE">
-        <reference local="group_ID" foreign="grp_ID"/>
-      </foreign-key>
-      <foreign-key foreignTable="person_per" name="fk_grp_per_cal_ID" onDelete="SET NULL">
-        <reference local="person_ID" foreign="per_ID"/>
-      </foreign-key>
-      <index name="fk_grp_cal_ID">
-        <index-column name="group_ID"/>
-      </index>
-      <index name="fk_grp_per_cal_ID">
-        <index-column name="person_ID"/>
-      </index>
-      <vendor type="mysql">
-        <parameter name="Engine" value="InnoDB"/>
-      </vendor>
-    </table>
-    
+
     <table name="group_grp" idMethod="native" phpName="Group" description="This contains the name and description for each group, as well as foreign keys to the list of group roles">
         <column name="grp_ID" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
@@ -270,28 +300,38 @@
         <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="BOOLEAN" defaultValue="0"/>
         <column name="grp_active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
         <column name="grp_include_email_export" phpName="IncludeInEmailExport" type="BOOLEAN" size="1" required="true" description="Should members of this group be included in MailChimp Export"/>
-        <column name="group_manager_id" phpName="GroupManagerId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" description="Each groups has a manager, by default the sysadmin, it could be a person of the group"/>
-        <column name="group_parent_id" phpName="GroupParentId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" description="This is planned to build sub groups"/>
-        <foreign-key foreignTable="group_grp" name="fk_grp_parent_ID" onDelete="SET NULL">
-          <reference local="group_parent_id" foreign="grp_ID"/>
+        <foreign-key foreignTable="list_lst">
+            <reference local="grp_RoleListID" foreign="lst_ID"/>
+            <reference local="grp_Type" foreign="lst_OptionID"/>
         </foreign-key>
-        <foreign-key foreignTable="person_per" name="fk_manager_ID" onDelete="SET NULL">
-          <reference local="group_manager_id" foreign="per_ID"/>
+        <column name="group_parent_id" phpName="GroupParentId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <foreign-key foreignTable="group_grp" name="fk_grp_parent_ID" onDelete="SET NULL" description="For the group hierarchy">
+            <reference local="group_parent_id" foreign="grp_ID"/>
         </foreign-key>
         <index name="grp_ID_2">
-          <index-column name="grp_ID"/>
-        </index>
-        <index name="fk_manager_ID">
-          <index-column name="group_manager_id"/>
+            <index-column name="grp_ID"/>
         </index>
         <index name="fk_grp_parent_ID">
-          <index-column name="group_parent_id"/>
+            <index-column name="group_parent_id"/>
         </index>
         <unique name="grp_ID">
-          <unique-column name="grp_ID"/>
+            <unique-column name="grp_ID"/>
         </unique>
         <vendor type="mysql">
-          <parameter name="Engine" value="InnoDB"/>
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="group_manager" idMethod="native" phpName="GroupManager">
+        <column name="grp_mngr_id" phpName="GrpMngrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="grp_mngr_person_ID" phpName="GrpMngrPersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" description="A person can now manage a group nor the sub-group" />
+        <foreign-key foreignTable="person_per" name="fk_grp_mngr_id" onDelete="CASCADE">
+            <reference local="grp_mngr_person_ID" foreign="per_ID"/>
+        </foreign-key>
+        <index name="fk_grp_mngr_id">
+            <index-column name="grp_mngr_person_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
     <table name="groupprop_master" idMethod="native" phpName="GroupPropMaster" description="This contains definitions for the group-specific fields">
@@ -575,48 +615,23 @@
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
         <column name="event_typename" phpName="TypeName" type="VARCHAR" size="40" required="true" defaultValue=""/>
         <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
-        <column name="event_grp_cal_id" phpName="EventGrpCalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"  description="A group has automatically a calendar"/>
-        <column name="event_per_cal_id" phpName="EventPerCalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" description="A person can have a calendar"/>
-        <foreign-key foreignTable="group_calendar_persons" name="fk_event_grp_cal_id" onDelete="SET NULL">
-          <reference local="event_grp_cal_id" foreign="grp_cal_id"/>
+        <foreign-key foreignTable="group_grp">
+            <reference local="event_grpid" foreign="grp_ID"/>
         </foreign-key>
-        <foreign-key foreignTable="person_calendar" name="fk_event_per_cal_ID" onDelete="CASCADE">
-          <reference local="event_per_cal_id" foreign="per_cal_id"/>
+        <column name="event_cal_id" phpName="EventCalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" description="A calendar is now coreleted to a person and not to a group, security reason"/>
+        <foreign-key foreignTable="calendar" name="fk_event_cal_id" onDelete="CASCADE">
+            <reference local="event_cal_id" foreign="cal_id"/>
         </foreign-key>
-        <index name="fk_event_grp_cal_id">
-        <index-column name="event_grp_cal_id"/>
-        </index>
-        <index name="fk_event_per_cal_ID">
-          <index-column name="event_per_cal_id"/>
+        <index name="fk_event_cal_id">
+            <index-column name="event_cal_id"/>
         </index>
         <index name="event_txt">
-          <index-column name="event_text"/>
+            <index-column name="event_text"/>
         </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-    
-    
-    <table name="person_calendar" idMethod="native" phpName="PersonCalendar">
-      <column name="per_cal_id" phpName="PerCalId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-      <column name="person_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
-      <column name="per_cal_Name" phpName="PerCalName" type="VARCHAR" size="50" required="true" defaultValue="" description="The name of the calendar"/>
-      <column name="per_cal_creation" phpName="PerCalCreation" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00" description="The creation date of the calendar"/>
-      <column name="per_cal_desc" phpName="PerCalDesc" type="LONGVARCHAR" description="A description of the calendat, why not notes"/>
-      <column name="per_cal_color" phpName="PerCalColor" type="VARCHAR" size="10" required="true" defaultValue="#DC143C" description="Each calendar should have a color"/>
-      <foreign-key foreignTable="person_per" name="fk_per_cal_ID" onDelete="CASCADE" description="When a person is destroyed the calendar is destroyed too">
-        <reference local="person_ID" foreign="per_ID"/>
-      </foreign-key>
-      <index name="fk_per_cal_ID">
-        <index-column name="person_ID"/>
-      </index>
-      <vendor type="mysql">
-        <parameter name="Engine" value="InnoDB"/>
-      </vendor>
-    </table>
-    
-
 
     <table name="fundraiser_fr" idMethod="native" phpName="FundRaiser">
         <column name="fr_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
@@ -634,7 +649,37 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-
+    <table name="person_presence" idMethod="native" phpName="PersonPresence">
+        <column name="per_pr_id" phpName="PerPrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="per_presence_id" phpName="PerPresenceId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" description="make classroom appeal event for each students"/>
+        <column name="per_person_id" phpName="PerPersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" description="The user who was present or not to the the student" />
+        <column name="is_present" phpName="IsPresent" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="delay" phpName="Delay" type="VARCHAR" size="40" required="true" defaultValue="0"/>
+        <column name="date_attendance" phpName="DateAttendance" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+        <column name="description" phpName="Description" type="LONGVARCHAR"/>
+        <foreign-key foreignTable="person_per" name="fk_person_ID" onDelete="CASCADE">
+            <reference local="per_person_id" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="presence" name="fk_person_presence_ID" onDelete="CASCADE">
+            <reference local="per_presence_id" foreign="pr_id"/>
+        </foreign-key>
+        <index name="fk_person_presence_ID">
+            <index-column name="per_presence_id"/>
+        </index>
+        <index name="fk_person_ID">
+            <index-column name="per_person_id"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="presence" idMethod="native" phpName="Presence">
+        <column name="pr_id" phpName="PrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="date_attendance" phpName="DateAttendance" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00" description="make sunday school classroom appeal event"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
     <table name="pledge_plg" idMethod="native" phpName="Pledge" description="This contains all payment/pledge information">
         <column name="plg_plgID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="plg_FamID" phpName="FamId" type="SMALLINT" size="9"/>
@@ -1013,4 +1058,3 @@
  -->
 
 </database>
-
