@@ -10,16 +10,10 @@
 *
 *  Additional Contributors:
 *  2007 Ed Davis
+*  update 2017 Philippe Logel
 *
-
 *
 *
-
-*
-
-
-
-
 *
 ******************************************************************************/
 
@@ -27,6 +21,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 $eType = 'All';
 $ThisYear = date('Y');
@@ -256,7 +251,7 @@ foreach ($allMonths as $mKey => $mVal) {
               <?= ($aEventDesc[$row] == '' ? '&nbsp;' : $aEventDesc[$row]) ?>
               <?php if ($aEventText[$row] != '') {
                 ?>
-                <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')">Sermon Text</a></div>
+                <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')"><?= gettext("Sermon Text") ?></a></div>
               <?php
             } ?>
             </td>
@@ -350,7 +345,7 @@ foreach ($allMonths as $mKey => $mVal) {
   </a>
 </div>
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 //Added by @saulowulhynek to translation of datatable nav terms
   $(document).ready(function () {
     $('#listEvents').DataTable(window.CRM.plugin.dataTable});

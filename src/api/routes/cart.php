@@ -38,6 +38,16 @@ $app->group('/cart', function () {
             'message' => $iCount.' '.gettext('records(s) successfully added to selected Group.')
         ]);
     });
+    
+    $this->post('/removeGroup', function($request, $response, $args) {
+        $cartPayload = (object)$request->getParsedBody();
+        Cart::RemoveGroup($cartPayload->Group);
+        return $response->withJson([
+            'status' => "success",
+            'message' => $iCount.' '.gettext('records(s) successfully deleted from the selected Group.')
+        ]);
+    });
+    
 
     /**
      * delete. This will empty the cart

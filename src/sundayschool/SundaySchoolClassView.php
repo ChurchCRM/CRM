@@ -112,7 +112,7 @@ require '../Include/Header.php';
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
     <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i
         class="fa fa-user-plus"></i><?= gettext('Add Students') ?> </a>
-        
+
 	<a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fa fa-pencil"></i><?= gettext("Edit this Class") ?></a>
   </div>
 </div>
@@ -323,16 +323,15 @@ function implodeUnique($array, $withQuotes)
 </div><!-- /.modal -->
 
 <!-- FLOT CHARTS -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.min.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"
-        type="text/javascript"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"></script>
 
-<script type="text/javascript" charset="utf-8">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {
 
     var dataTable = $('.data-table').DataTable(window.CRM.plugin.dataTable);

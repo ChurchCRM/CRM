@@ -76,9 +76,14 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                       <?php }  if (!empty($person->getWorkEmail()))  { ?>
                     <i class="fa fa-fw fa-envelope-o" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
                       <?php }  ?>
-                    <i class="fa fa-fw fa-birthday-cake"
-                       title="Birthday"></i><?= $person->getBirthDate()->format("M d Y") ?> <?php if ($person->hideAge()) { ?>
-                      <i class="fa fa-fw fa-eye-slash" title="<?= gettext("Age Hidden")?>"></i><?php } ?><br/>
+                    <i class="fa fa-fw fa-birthday-cake" title="<?= gettext("Birthday")?>"></i>
+                      <?php if ($person->hideAge()) { ?>
+                          <?= $person->getBirthDate()->format("M d") ?>
+                          <i class="fa fa-fw fa-eye-slash" title="<?= gettext("Age Hidden")?>"></i>
+                      <?php } else {?>
+                          <?= $person->getBirthDate()->format("M d Y") ?>
+                      <?php } ?>
+                      <br/>
                   </li>
                   <li class="list-group-item">
                     <?php
@@ -116,9 +121,8 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
   </div>
 
 
-  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>"></script>
-
-  <script>
+  <script  src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>"></script>
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     <?php if ($doShowMap) { ?>
       var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
     <?php } else { ?>

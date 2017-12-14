@@ -17,6 +17,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 
 //Set the page title
@@ -430,7 +431,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family = FamilyQuery::create()->findPk($iFamilyID);
             $family->createTimeLineNote('create');
             $family->updateLanLng();
-            
+
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $NotificationEmail = new NewPersonOrFamilyEmail($family);
                 if (!$NotificationEmail->send()) {
@@ -716,7 +717,7 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
-    <script type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
         $(document).ready(function() {
             $("#country-input").select2();
             $("#state-input").select2();
@@ -759,7 +760,7 @@ require 'Include/Header.php';
 						<div class="input-group-addon">
 							<i class="fa fa-phone"></i>
 						</div>
-						<input type="text" name="CellPhone" value="<?= htmlentities(stripslashes($sCellPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask>
+						<input type="text" name="CellPhone" value="<?= htmlentities(stripslashes($sCellPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell')?>"' data-mask>
 						<input type="checkbox" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? ' checked' : '' ?>><?= gettext('Do not auto-format') ?>
 					</div>
 				</div>
@@ -1123,7 +1124,7 @@ require 'Include/Header.php';
     echo '</td></tr></form></table>';
 ?>
 
-	<script type="text/javascript">
+	<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 		$(function() {
 			$("[data-mask]").inputmask();
 		});

@@ -6,15 +6,16 @@
  *  description : page header used for most pages
  *
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
-
+ *  Copyright 2017 Philippe Logel
  ******************************************************************************/
 
-
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\Cart;
 
-if (!$systemService->isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-    Redirect('CheckVersion.php');
+if (!SystemService::isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
+    Redirect('SystemDBUpdate.php');
     exit;
 }
 
@@ -27,6 +28,7 @@ $taskService = new TaskService();
 ob_start();
 
 require_once 'Header-function.php';
+require_once 'Header-Security.php';
 
 // Top level menu index counter
 $MenuFirst = 1;
@@ -86,100 +88,72 @@ $MenuFirst = 1;
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <!-- Cart Functions: style can be found in dropdown.less -->
-            <li class="dropdown notifications-menu">
+            <li id="CartBlock" class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your Cart') ?>">
                     <i class="fa fa-shopping-cart"></i>
-                    <span id="iconCount" class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
+                    <span id="iconCount" class="label label-success"><?= Cart::CountPeople() ?></span>
                 </a>
-                <ul class="dropdown-menu">
-                    <?php
-                    if (count($_SESSION['aPeopleCart']) > 0) {
-                        $isCartPage = (basename($_SERVER['PHP_SELF']) == 'CartView.php'); ?>
-                        <li id="showWhenCartNotEmpty">
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-                                <li>
-                                    <a href="<?= SystemURLs::getRootPath() ?>/CartView.php">
-                                        <i class="fa fa-shopping-cart text-green"></i> <?= gettext('View Cart') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="emptyCart"
-                                       href="<?= SystemURLs::getRootPath() ?>/<?= ($isCartPage ? 'CartView.php?Action=EmptyCart' : '#') ?>">
-                                        <i class="fa fa-trash text-danger"></i> <?= gettext('Empty Cart') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="CartToGroup.php">
-                                        <i class="fa fa-object-ungroup text-info"></i> <?= gettext('Empty Cart to Group') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="CartToEvent.php">
-                                        <i class="fa fa fa-users text-info"></i> <?= gettext('Empty Cart to Family') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="CartToEvent.php">
-                                        <i class="fa fa fa-ticket text-info"></i> <?= gettext('Empty Cart to Event') ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="MapUsingGoogle.php?GroupID=0">
-                                        <i class="fa fa-map-marker text-info"></i> <?= gettext('Map Cart') ?>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!--li class="footer"><a href="#">View all</a></li-->
-                        <?php
-                    } else {
-                        echo '<li class="header">' . gettext("Your Cart is Empty") . '</li>';
-                    }
-                    ?>
-                </ul>
+                <ul class="dropdown-menu" id="cart-dropdown-menu"></ul>
             </li>
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
+            <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
               <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
             </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
-                <p><?= $_SESSION['user']->getName() ?></p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php"
-                     class="btn btn-default btn-flat"><?= gettext('Change Password') ?></a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"
-                     class="btn btn-default btn-flat"><?= gettext('My Settings') ?></a>
-                </div>
+            <ul class="hidden-xxs dropdown-menu">
+              <li class="user-header" id="yourElement" style="height:205px">
+                <table border=0 width="100%">
+                <tr style="border-bottom: 1pt solid white;">
+                <td valign="middle" width=110>
+                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">                
+                </td>
+                <td valign="middle" align="left" >                
+                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>" class="item_link">
+                      <p ><i class="fa fa fa-user"></i> <?= gettext("Profile") ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php" class="item_link">
+                      <p ><i class="fa fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
+                      <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Change Settings') ?></p></a>
+                  <a href="Login.php?session=Lock" class="item_link">
+                      <p ><i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link">
+                      <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
+                </td>
+                </tr>
+                </table>
+                <p style="color:#fff"><b><?= $_SESSION['user']->getName() ?></b></p>
               </li>
             </ul>
           </li>
-          <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getSupportURL() ?>" target="_blank" title="<?= gettext('Read the docs') ?>">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Help & Support') ?>">
               <i class="fa fa-support"></i>
             </a>
-          </li>
-          <li class="hidden-xxs">
-            <a href="#" data-toggle="modal" data-target="#IssueReportModal" title="<?= gettext('Report an issue') ?>">
-              <i class="fa fa-bug"></i>
-            </a>
-          </li>
-          <li class="hidden-xxs">
-            <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" title="<?= gettext('Log off') ?>">
-              <i class="fa fa-power-off"></i>
-            </a>
+            <ul class="dropdown-menu">
+              <li class="hidden-xxs">
+                <a href="<?= SystemURLs::getSupportURL() ?>" target="_blank" title="<?= gettext('Help & Manual') ?>">
+                  <i class="fa fa-question-circle"></i> <?= gettext('Help & Manual') ?>
+                </a>
+              </li>
+              <li class="hidden-xxs">
+                <a href="#" data-toggle="modal" data-target="#IssueReportModal" title="<?= gettext('Report an issue') ?>">
+                  <i class="fa fa-bug"></i> <?= gettext('Report an issue') ?>
+                </a>
+              </li>
+              <li class="hidden-xxs">
+                <a href="https://gitter.im/ChurchCRM/CRM" target="_blank" title="<?= gettext('Developer Chat') ?>">
+                  <i class="fa fa-commenting-o"></i> <?= gettext('Developer Chat') ?>
+                </a>
+              </li>              
+              <li class="hidden-xxs">
+                <a href="https://github.com/ChurchCRM/CRM/wiki/Contributing" target="_blank" title="<?= gettext('Contributing') ?>">
+                  <i class="fa fa-github"></i> <?= gettext('Contributing') ?>
+                </a>
+              </li>              
+            </ul>
           </li>
           <?php
           $tasks = $taskService->getCurrentUserTasks();
@@ -204,7 +178,7 @@ $MenuFirst = 1;
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
 
-        <select class="form-control multiSearch" style="width:100%">
+        <select class="form-control multiSearch">
         </select>
 
       </form>

@@ -80,13 +80,13 @@ require 'Include/Header.php';
       <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
               disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
       <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
-              disabled> <?= gettext('Generate Deposit Split for Selected Rows (PDF)') ?></button>
+              disabled> <?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button>
     </div>
   </div>
 </div>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $('#deleteSelectedRows').click(function () {
     var deletedRows = dataT.rows('.selected').data()
     bootbox.confirm({

@@ -84,88 +84,93 @@ $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS Entere
 $rsFamily = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsFamily));
 
-if ($iFamilyID == $fam_ID) {
-
 // Get the lists of custom person fields
-    $sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
-    $rsFamCustomFields = RunQuery($sSQL);
+$sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
+$rsFamCustomFields = RunQuery($sSQL);
 
-    // Get the custom field data for this person.
-    $sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
-    $rsFamCustomData = RunQuery($sSQL);
-    $aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQLI_BOTH);
+// Get the custom field data for this person.
+$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
+$rsFamCustomData = RunQuery($sSQL);
+$aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQLI_BOTH);
 
-    $family = FamilyQuery::create()->findPk($iFamilyID);
+$family = FamilyQuery::create()->findPk($iFamilyID);
 
-    //Get the pledges for this family
-    $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
-         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName,
-         a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible,
-         plg_GroupKey
-		 FROM pledge_plg
-		 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
-		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-		 WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
-    $rsPledges = RunQuery($sSQL);
+if (empty($family)) {
+    Redirect('members/404.php');
+    exit;
+}
 
-    //Get the automatic payments for this family
-    $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
-                   a.Per_LastName AS EnteredLastName,
-                   b.fun_Name AS fundName
-		 FROM autopayment_aut
-		 LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
-		 LEFT JOIN donationfund_fun b ON aut_Fund = b.fun_ID
-		 WHERE aut_famID = " . $iFamilyID . " ORDER BY autopayment_aut.aut_NextPayDate";
-    $rsAutoPayments = RunQuery($sSQL);
+//Get the pledges for this family
+$sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
+     plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName,
+     a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible,
+     plg_GroupKey
+     FROM pledge_plg
+     LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
+     LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
+     WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
+$rsPledges = RunQuery($sSQL);
 
-    //Get the Properties assigned to this Family
-    $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
-		FROM record2property_r2p
-		LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
-		LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-		WHERE pro_Class = 'f' AND r2p_record_ID = " . $iFamilyID .
-    " ORDER BY prt_Name, pro_Name";
-    $rsAssignedProperties = RunQuery($sSQL);
+//Get the automatic payments for this family
+$sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
+               a.Per_LastName AS EnteredLastName,
+               b.fun_Name AS fundName
+     FROM autopayment_aut
+     LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
+     LEFT JOIN donationfund_fun b ON aut_Fund = b.fun_ID
+     WHERE aut_famID = " . $iFamilyID . " ORDER BY autopayment_aut.aut_NextPayDate";
+$rsAutoPayments = RunQuery($sSQL);
 
-    //Get all the properties
-    $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'f' ORDER BY pro_Name";
-    $rsProperties = RunQuery($sSQL);
+//Get the Properties assigned to this Family
+$sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
+    FROM record2property_r2p
+    LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
+    LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
+    WHERE pro_Class = 'f' AND r2p_record_ID = " . $iFamilyID .
+" ORDER BY prt_Name, pro_Name";
+$rsAssignedProperties = RunQuery($sSQL);
 
-    //Get classifications
-    $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
-    $rsClassifications = RunQuery($sSQL);
+//Get all the properties
+$sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'f' ORDER BY pro_Name";
+$rsProperties = RunQuery($sSQL);
 
-    // Get Field Security List Matrix
-    $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
-    $rsSecurityGrp = RunQuery($sSQL);
+//Get classifications
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+$rsClassifications = RunQuery($sSQL);
 
-    while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-        extract($aRow);
-        $aSecurityType[$lst_OptionID] = $lst_OptionName;
-    }
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
 
-    //Set the spacer cell width
-    $iTableSpacerWidth = 10;
+while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
+    extract($aRow);
+    $aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
 
-    // Format the phone numbers
-    $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
-    $sWorkPhone = ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy);
-    $sCellPhone = ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy);
+//Set the spacer cell width
+$iTableSpacerWidth = 10;
 
-    $sFamilyEmails = array();
+// Format the phone numbers
+$sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
+$sWorkPhone = ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy);
+$sCellPhone = ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy);
 
-    $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID']))); ?>
-<script>
+$sFamilyEmails = array();
+
+$bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
+
+?>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
 <?php if (!empty($fam_DateDeactivated)) {
-        ?>
+    ?>
     <div class="alert alert-warning">
         <strong><?= gettext(" This Family is Deactivated") ?> </strong>
     </div>
     <?php
-    } ?>
+} ?>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-4">
         <div class="box box-primary">
@@ -200,7 +205,7 @@ if ($iFamilyID == $fam_ID) {
     } ?>
                 <hr/>
                 <ul class="fa-ul">
-                    <li><i class="fa-li glyphicon glyphicon-home"></i><?= gettext("Address") ?>:<span>
+                    <li><i class="fa-li fa fa-home"></i><?= gettext("Address") ?>:<span>
 					<a
                             href="http://maps.google.com/?q=<?= $family->getAddress() ?>"
                             target="_blank"><?= $family->getAddress() ?></a></span><br>
@@ -263,7 +268,7 @@ if ($iFamilyID == $fam_ID) {
                                 <span><?= $fam_Email ?></span></a></li>
                         <?php if ($mailchimp->isActive()) {
             ?>
-                            <li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email") ?>:
+                            <li><i class="fa-li fa fa-send"></i><?= gettext("Email") ?>:
                                 <span><?= $mailchimp->isEmailInMailChimp($fam_Email) ?></span>
                                 </a></li>
                             <?php
@@ -277,7 +282,7 @@ if ($iFamilyID == $fam_ID) {
             if ($type_ID == 11) {
                 $fam_custom_Special = $sPhoneCountry;
             }
-            echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
+            echo "<li><i class=\"fa-li fa fa-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
         }
     } ?>
                 </ul>
@@ -320,9 +325,8 @@ if ($iFamilyID == $fam_ID) {
                                 class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                     <?php
                 } ?>
-                <a class="btn btn-app"
-                   href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
-                            class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
+                <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $iFamilyID ?>"> <i
+                        class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
 
 
                 <?php if ($bOkToEdit) {
@@ -386,7 +390,7 @@ if ($iFamilyID == $fam_ID) {
                     } ?>
                                 </td>
                                 <td style="width: 20%;">
-                                    <a href="FamilyView.php?FamilyID=<?= $person->getId() ?>&AddToPeopleCart=<?= $person->getId() ?>">
+                                    <a class="AddToPeopleCart" data-personid="<?= $person->getId() ?>">
                                         <span class="fa-stack">
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -483,7 +487,7 @@ if ($iFamilyID == $fam_ID) {
                                     </h3>
 
                                     <div class="timeline-body">
-                                        <?= $item['text'] ?>
+                                        <pre><?= $item['text'] ?></pre>
                                     </div>
 
                                     <?php if (($_SESSION['bNotes']) && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
@@ -946,29 +950,10 @@ if ($iFamilyID == $fam_ID) {
         </div>
     </div>
 
-    <?php
-} else {
-        ?>
-        <div class="error-page">
-            <h2 class="headline text-yellow">404</h2>
-
-            <div class="error-content">
-                <h3><i class="fa fa-warning text-yellow"></i> <?= gettext("Oops! Family not found.") ?></h3>
-
-                <p>
-                    <?= gettext("We could not find the family you were looking for.<br>Meanwhile, you may") ?> <a
-                            href="/MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
-                </p>
-            </div>
-        </div>
-        <?php
-    } ?>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js"
-            type="text/javascript"></script>
-    <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
-    <script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" ></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
         var dataT = 0;
         $(document).ready(function () {

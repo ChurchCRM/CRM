@@ -280,7 +280,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 // Construct the form
 ?>
 
-<script language="javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 function confirmDeleteField( Field ) {
 	var answer = confirm (<?= "'".gettext('Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!')."'" ?>)
 	if ( answer )

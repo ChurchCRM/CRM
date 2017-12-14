@@ -9,6 +9,7 @@
 *
 *  Additional Contributors:
 *  2006 Ed Davis
+*  2017 Philippe Logel
 *
 
 ******************************************************************************/
@@ -22,12 +23,10 @@ use ChurchCRM\Service\FinancialService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\MenuEventsCount;
 
 $financialService = new FinancialService();
 $dashboardService = new DashboardService();
-$personCount = $dashboardService->getPersonCount();
-$familyCount = $dashboardService->getFamilyCount();
-$groupStats = $dashboardService->getGroupStats();
 //Last edited active families
 $updatedFamilies = $dashboardService->getUpdatedFamilies(10);
 //Newly added active families
@@ -45,26 +44,141 @@ if ($_SESSION['bFinance']) {
     }
 }
 
+
 // Set the page title
 $sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
 
 require 'Include/Header.php';
-?>
+
+$showBanner = SystemConfig::getValue("bEventsOnDashboardPresence");
+
+$peopleWithBirthDays = MenuEventsCount::getBirthDates();
+$Anniversaries = MenuEventsCount::getAnniversaries();
+$peopleWithBirthDaysCount = MenuEventsCount::getNumberBirthDates();
+$AnniversariesCount = MenuEventsCount::getNumberAnniversaries();
+
+
+if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
+    ?>
+    <div class="alert alert-info alert-dismissible bg-purple disabled color-palette" id="Menu_Banner">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="color:#fff;">&times;</button>
+
+    <?php
+    if ($peopleWithBirthDaysCount > 0) {
+        ?>
+        <h4 class="alert-heading"><?= gettext("Birthdates of the day") ?></h4>
+        <p>
+        <div class="row">
+
+      <?php
+        $new_row = false;
+        $count_people = 0;
+
+        {
+            foreach ($peopleWithBirthDays as $peopleWithBirthDay) {
+                if ($new_row == false) {
+                    ?>
+
+                    <div class="row">
+                <?php
+                    $new_row = true;
+                } ?>
+                <div class="col-sm-3">
+                <label class="checkbox-inline">
+                    <a href="<?= $peopleWithBirthDay->getViewURI()?>" class="btn btn-link" style="text-decoration: none"><?= $peopleWithBirthDay->getFullNameWithAge() ?></a>
+                </label>
+                </div>
+              <?php
+                $count_people+=1;
+                $count_people%=4;
+                if ($count_people == 0) {
+                    ?>
+                    </div>
+                    <?php $new_row = false;
+                }
+            }
+
+            if ($new_row == true) {
+                ?>
+                </div>
+            <?php
+            }
+          } ?>
+
+        </div>
+        </p>
+    <?php
+    } ?>
+
+    <?php if ($AnniversariesCount > 0) {
+        if ($peopleWithBirthDaysCount > 0) {
+            ?>
+            <hr>
+    <?php
+        } ?>
+
+        <h4 class="alert-heading"><?= gettext("Anniversaries of the day")?></h4>
+        <p>
+        <div class="row">
+
+    <?php
+        $new_row = false;
+        $count_people = 0;
+
+        foreach ($Anniversaries as $Anniversary) {
+            if ($new_row == false) {
+                ?>
+                <div class="row">
+
+                <?php $new_row = true;
+            } ?>
+            <div class="col-sm-3">
+            <label class="checkbox-inline">
+              <a href="<?= $Anniversary->getViewURI() ?>" class="btn btn-link" style="text-decoration: none"><?= $Anniversary->getFamilyString() ?></a>
+            </label>
+            </div>
+
+            <?php
+            $count_people+=1;
+            $count_people%=4;
+            if ($count_people == 0) {
+                ?>
+                </div>
+            <?php
+                $new_row = false;
+            }
+        }
+
+        if ($new_row == true) {
+            ?>
+            </div>
+        <?php
+        } ?>
+
+        </div>
+        </p>
+    <?php
+    } ?>
+  </div>
+
+<?php
+}?>
+
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>
-                    <?= $familyCount['familyCount'] ?>
+                <h3 id="familyCountDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('Families') ?>
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-stalker"></i>
+                <i class="fa fa-users"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
                 <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -75,15 +189,15 @@ require 'Include/Header.php';
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>
-                    <?= $personCount['personCount'] ?>
+                <h3 id="peopleStatsDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('People') ?>
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person"></i>
+                <i class="fa fa-user"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
                 <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -94,8 +208,8 @@ require 'Include/Header.php';
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>
-                    <?= $groupStats['sundaySchoolClasses'] ?>
+                <h3 id="groupStatsSundaySchool">
+                   0
                 </h3>
                 <p>
                     <?= gettext('Sunday School Classes') ?>
@@ -113,8 +227,8 @@ require 'Include/Header.php';
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>
-                  <?= $groupStats['groups'] - $groupStats['sundaySchoolClasses']  ?>
+                <h3 id="groupsCountDashboard">
+                  0
                 </h3>
                 <p>
                     <?= gettext('Groups') ?>
@@ -162,7 +276,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="box box-info">
             <div class="box-header">
-                <i class="ion ion-cash"></i>
+                <i class="fa fa-money"></i>
                 <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
                 <div class="box-tools pull-right">
                     <div id="deposit-graph" class="chart-legend"></div>
@@ -182,7 +296,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
-                <i class="ion ion-person-add"></i>
+                <i class="fa fa-user-plus"></i>
                 <h3 class="box-title"><?= gettext('Latest Families') ?></h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -192,8 +306,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class="dataTable table table-striped table-condensed" id="latestFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -202,18 +316,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($latestFamilies as $family) {
-    ?>
-                            <tr>
-                                <td>
-                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
-                                </td>
-                                <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                            </tr>
-                            <?php
-}
-                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -233,8 +335,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class=" dataTable table table-striped table-condensed" id="updatedFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -243,18 +345,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($updatedFamilies as $family) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
-                                </td>
-                                <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -279,7 +369,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
                         <?php foreach ($latestMembers as $person) {
-                            ?>
+    ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                     <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
@@ -289,7 +379,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-                        }
+}
                         ?>
                     </ul>
                     <!-- /.users-list -->
@@ -335,7 +425,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 </div>
 
 <!-- this page specific inline scripts -->
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 <?php
 if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
 ?>
@@ -370,6 +460,22 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
 <?php
                         }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>
+</script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  var timeOut = <?= SystemConfig::getValue("iEventsOnDashboardPresenceTimeOut")*1000 ?>;
+
+  $(document).ready (function(){
+    $("#myWish").click(function showAlert() {
+        $("#Menu_Banner").alert();
+        window.setTimeout(function () {
+            $("#Menu_Banner").alert('close'); }, timeOut);
+       });
+    });
+
+    $("#Menu_Banner").fadeTo(timeOut, 500).slideUp(500, function(){
+    $("#Menu_Banner").slideUp(500);
+});
 </script>
 
 

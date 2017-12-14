@@ -21,6 +21,7 @@ $sPageTitle = gettext('Group Listing');
 require 'Include/Header.php';
 
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\dto\SystemURLs;
 
 $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 
@@ -35,7 +36,7 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
   echo '<option>'.gettext("Unassigned").'</option>';
   foreach ($rsGroupTypes as $groupType) {
       echo '<option>'.$groupType->getOptionName().'</option>';
-  } ?>    
+  } ?>
 </select>
 </label>
 </p>
@@ -63,15 +64,15 @@ if ($_SESSION['bManageGroups']) {
 
 </div>
 
-<script src="skin/js/GroupList.js" type="text/javascript"></script>
-<script>
+<script src="skin/js/GroupList.js"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $( document).ready(function() {
     var gS = localStorage.getItem("groupSelect");
 	if (gS != null)
 	{
 		tf = document.getElementById("table-filter");
 		tf.selectedIndex = gS;
-		
+
 		window.groupSelect = tf.value;
 	}
 });

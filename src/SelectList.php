@@ -785,7 +785,12 @@ if ($iMode == 1) {
     </div>
 	<div class="box-body">
 <?php
-
+// Display record count
+if ($Total == 1) {
+    echo '<p align = "center">' . $Total . gettext(" record returned") . '</p>';
+} else {
+    echo '<p align = "center">' . $Total . gettext(" records returned") . '</p>';
+}
 // Create Sort Links
 echo '<div align="center">';
 echo "<a href=\"SelectList.php?mode=$sMode&amp;type=$iGroupTypeMissing&amp;Filter=$sFilter&amp;Classification=$iClassificationStr&amp;FamilyRole=$iFamilyRoleStr&amp;Gender=$iGenderStr&amp;grouptype=$iGroupTypeStr&amp;groupid=$iGroupIDStr&amp;grouproleid=$iRoleIDStr&amp;PersonProperties=$iPersonPropertyStr";
@@ -1195,15 +1200,8 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     </td>
 	<td>
 	<?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
-
-        // Add to cart option
-        if (mb_substr($sRedirect, -1, 1) == '?') {
-            echo '<a href="'.$sRedirect.'AddToPeopleCart='.$per_ID.'">';
-        } elseif (mb_substr($sRedirect, -1, 1) == '&') {
-            echo '<a href="'.$sRedirect.'AddToPeopleCart='.$per_ID.'">';
-        } else {
-            echo '<a href="'.$sRedirect.'&amp;AddToPeopleCart='.$per_ID.'">';
-        } ?>
+        ?>
+      <a class="AddToPeopleCart" data-personid="<?= $per_ID ?>">
 		<span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -1212,14 +1210,8 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     </td>
 	<?php
     } else {
-        // Remove from cart option
-        if (mb_substr($sRedirect, -1, 1) == '?') {
-            echo '<a href="'.$sRedirect.'RemoveFromPeopleCart='.$per_ID.'">';
-        } elseif (mb_substr($sRedirect, -1, 1) == '&') {
-            echo '<a href="'.$sRedirect.'RemoveFromPeopleCart='.$per_ID.'">';
-        } else {
-            echo '<a href="'.$sRedirect.'&amp;RemoveFromPeopleCart='.$per_ID.'">';
-        } ?>
+        ?>
+    <a class="RemoveFromPeopleCart" data-personid="<?= $per_ID ?>">
 		<span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-remove fa-stack-1x fa-inverse"></i>
