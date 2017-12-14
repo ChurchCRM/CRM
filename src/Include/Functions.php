@@ -401,7 +401,8 @@ function change_date_for_place_holder($string)
 function FormatDateOutput()
 {
     $fmt = SystemConfig::getValue("sDateFormatLong");
-    
+    $fmt_time = SystemConfig::getValue("sTimeFormat");
+
     $fmt = str_replace("/", " ", $fmt);
     
     $fmt = str_replace("-", " ", $fmt);
@@ -409,6 +410,7 @@ function FormatDateOutput()
     $fmt = str_replace("d", "%d", $fmt);
     $fmt = str_replace("m", "%B", $fmt);
     $fmt = str_replace("Y", "%Y", $fmt);
+    $fmt .= " ".$fmt_time;
     
     return $fmt;
 }
@@ -439,38 +441,10 @@ function FormatDate($dDate, $bWithTime = false)
         return 'Unknown';
     }
 
-    // PHP date() function is not used because it is only robust for dates between
-    // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.
-    // To handle a much wider range of dates use MySQL date functions.
-
-    $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
-    ."DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
-    ."DATE_FORMAT('$dDate', '%k') as h, "
-    ."DATE_FORMAT('$dDate', ':%i') as m";
-    extract(mysqli_fetch_array(RunQuery($sSQL)));
-    
-
-    if ($h > 11) {
-        $sAMPM = gettext('pm');
-        if ($h > 12) {
-            $h = $h - 12;
-        }
-    } else {
-        $sAMPM = gettext('am');
-        if ($h == 0) {
-            $h = 12;
-        }
-    }
-        
     $fmt = FormatDateOutput();
         
-    setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));
-    
-    if ($bWithTime) {
-        return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
-    } else {
-        return utf8_encode(strftime("$fmt", strtotime($dDate)));
-    }
+    setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));    
+    return utf8_encode(strftime("$fmt", strtotime($dDate)));
 }
 
 function AlternateRowStyle($sCurrentStyle)

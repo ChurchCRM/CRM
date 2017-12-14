@@ -414,7 +414,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext('Assigned Groups') ?></a></li>
         <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
         <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
-        <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext('Notes') ?></a></li>
+        <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext('Documents') ?></a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -438,7 +438,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <i class="fa <?= $item['style'] ?>"></i>
 
                 <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+                  <span class="time"><i class="fa fa-clock-o"></i> <?= FormatDate($item['datetime'],true) ?></span>
 
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) {
@@ -851,7 +851,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <i class="fa <?= $item['style'] ?>"></i>
 
                 <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+                  <span class="time"><i class="fa fa-clock-o"></i> <?= FormatDate($item['datetime'],true) ?></span>
 
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) {
