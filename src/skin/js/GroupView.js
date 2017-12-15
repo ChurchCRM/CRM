@@ -41,17 +41,16 @@ $(document).ready(function () {
   });
 
   $(".personSearch").on("select2:select", function (e) {
-  		var dataTable = window.CRM.DataTableAPIGroupView;
       window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:window.CRM.currentGroup},function(selection){
         window.CRM.groups.addPerson(window.CRM.currentGroup, e.params.data.objid,selection.RoleID).done(function (data) {
           $(".personSearch").val(null).trigger('change');
-          window.CRM.DataTableAPIGroupView.ajax.reload();/* we reload the data no need to add the person inside the dataTable */          
+          window.CRM.DataTableAPI.ajax.reload();/* we reload the data no need to add the person inside the dataTable */
         });
       });
   });
 
   $("#deleteSelectedRows").click(function () {
-    var deletedRows = window.CRM.DataTableAPIGroupView.rows('.selected').data()
+    var deletedRows = window.CRM.DataTableAPI.rows('.selected').data()
     bootbox.confirm({
       message: i18next.t("Are you sure you want to remove the selected group members?") + " (" + deletedRows.length + ") ",
       buttons: {
@@ -71,12 +70,12 @@ $(document).ready(function () {
           $.each(deletedRows, function (index, value) {
             window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId).done(
               function(){
-                window.CRM.DataTableAPIGroupView.row(function (idx, data, node) {
+                window.CRM.DataTableAPI.row(function (idx, data, node) {
                   if (data.PersonId == value.PersonId) {
                     return true;
                   }
                 }).remove();
-                window.CRM.DataTableAPIGroupView.rows().invalidate().draw(true);
+                window.CRM.DataTableAPI.rows().invalidate().draw(true);
             });
           });
         }
@@ -86,10 +85,10 @@ $(document).ready(function () {
   });
 
   $("#addSelectedToCart").click(function () {
-    if (window.CRM.DataTableAPIGroupView.rows('.selected').length > 0)
+    if (window.CRM.DataTableAPI.rows('.selected').length > 0)
     {
       var selectedPersons = {
-        "Persons" : $.map(window.CRM.DataTableAPIGroupView.rows('.selected').data(), function(val,i){
+        "Persons" : $.map(window.CRM.DataTableAPI.rows('.selected').data(), function(val,i){
                       return val.PersonId;
                     })
       };
@@ -101,7 +100,7 @@ $(document).ready(function () {
   //copy membership
   $("#addSelectedToGroup").click(function () {
     window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Group|window.CRM.groups.selectTypes.Role}, function(data){
-      selectedRows = window.CRM.DataTableAPIGroupView.rows('.selected').data()
+      selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
       $.each(selectedRows, function (index, value) {
         window.CRM.groups.addPerson(data.GroupID,value.PersonId,data.RoleID);
     });
@@ -110,18 +109,18 @@ $(document).ready(function () {
 
   $("#moveSelectedToGroup").click(function () {
     window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Group|window.CRM.groups.selectTypes.Role},function(data){
-      selectedRows = window.CRM.DataTableAPIGroupView.rows('.selected').data()
+      selectedRows = window.CRM.DataTableAPI.rows('.selected').data()
       $.each(selectedRows, function (index, value) {
         console.log(data);
         window.CRM.groups.addPerson(data.GroupID,value.PersonId,data.RoleID);
         window.CRM.groups.removePerson(window.CRM.currentGroup,value.PersonId).done(
           function () {
-            window.CRM.DataTableAPIGroupView.row(function (idx, data, node) {
+            window.CRM.DataTableAPI.row(function (idx, data, node) {
               if (data.PersonId == value.PersonId) {
                 return true;
               }
             }).remove();
-            window.CRM.DataTableAPIGroupView.rows().invalidate().draw(true);
+            window.CRM.DataTableAPI.rows().invalidate().draw(true);
         });
       });
     });
@@ -135,13 +134,13 @@ $(document).ready(function () {
     var PersonID = $(e.currentTarget).data("personid");
     window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:window.CRM.currentGroup},function(selection){
       window.CRM.groups.addPerson(window.CRM.currentGroup,PersonID,selection.RoleID).done(function(){
-        window.CRM.DataTableAPIGroupView.row(function (idx, data, node) {
+        window.CRM.DataTableAPI.row(function (idx, data, node) {
         if (data.PersonId == PersonID) {
           data.RoleId = selection.RoleID;
           return true;
         }
       });
-      window.CRM.DataTableAPIGroupView.rows().invalidate().draw(true);
+      window.CRM.DataTableAPI.rows().invalidate().draw(true);
       });
     });
     e.stopPropagation();
@@ -227,7 +226,7 @@ function initDataTable() {
     }
   };
   $.extend(DataTableOpts,window.CRM.plugin.DataTable);
-  window.CRM.DataTableAPIGroupView = $("#membersTable").DataTable(DataTableOpts);
+  window.CRM.DataTableAPI = $("#membersTable").DataTable(DataTableOpts);
 
   $('#isGroupActive').change(function () {
     $.ajax({
@@ -249,7 +248,7 @@ function initDataTable() {
 
   $(document).on('click', '.groupRow', function () {
     $(this).toggleClass('selected');
-    var selectedRows = window.CRM.DataTableAPIGroupView.rows('.selected').data().length;
+    var selectedRows = window.CRM.DataTableAPI.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
     $("#deleteSelectedRows").text(i18next.t("Remove")+" (" + selectedRows + ") "+i18next.t("Members from group"));
     $("#buttonDropdown").prop('disabled', !(selectedRows));
