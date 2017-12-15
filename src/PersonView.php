@@ -438,8 +438,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <i class="fa <?= $item['style'] ?>"></i>
 
                 <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
-
+                  <span class="time"><i class="fa fa-clock-o"></i> <?= FormatDate($item['datetime'], true) ?></span>
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) {
             ?>
@@ -851,8 +850,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <i class="fa <?= $item['style'] ?>"></i>
 
                 <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
-
+                  <span class="time"><i class="fa fa-clock-o"></i> <?= FormatDate($item['datetime'], true) ?></span>
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) {
                                             ?>

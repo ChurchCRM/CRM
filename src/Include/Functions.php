@@ -445,7 +445,7 @@ function FormatDate($dDate, $bWithTime = false)
 
     $fmt = FormatDateOutput($bWithTime);
         
-    setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));    
+    setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));
     return utf8_encode(strftime("$fmt", strtotime($dDate)));
 }
 
