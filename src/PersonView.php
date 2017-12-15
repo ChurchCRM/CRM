@@ -439,6 +439,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                 <div class="timeline-item">
                   <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+                  
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) {
             ?>
@@ -851,6 +852,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                 <div class="timeline-item">
                   <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+                  
                   <h3 class="timeline-header">
                     <?php if (in_array('headerlink', $item)) {
                                             ?>
