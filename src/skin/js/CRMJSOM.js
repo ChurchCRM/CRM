@@ -342,7 +342,7 @@
           }
           if (selectOptions.Type & window.CRM.groups.selectTypes.Role )
           {
-            options.title = "Select Role"
+            options.title = i18next.t("Select Role");
             options.message += '<span style="color: red">'+i18next.t('Please select target Role for members')+':</span>\
                   <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>';
             options.buttons.confirm.callback = function(){
