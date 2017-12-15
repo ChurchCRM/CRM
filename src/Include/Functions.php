@@ -410,6 +410,7 @@ function FormatDateOutput($bWithTime)
     $fmt = str_replace("d", "%d", $fmt);
     $fmt = str_replace("m", "%B", $fmt);
     $fmt = str_replace("Y", "%Y", $fmt);
+    
     if ($bWithTime) {
         $fmt .= " ".$fmt_time;
     }
