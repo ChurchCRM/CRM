@@ -162,7 +162,8 @@
     "current": {
         "versions": [
             "2.9.0",
-            "2.9.1"
+            "2.9.1",
+            "2.9.2"
         ],
         "scripts": [
             "/mysql/upgrade/2.9.10_show_tooltip.sql"
