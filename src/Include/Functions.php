@@ -398,7 +398,7 @@ function change_date_for_place_holder($string)
     return ((strtotime($string) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($string)):strtotime($string));
 }
 
-function FormatDateOutput()
+function FormatDateOutput($bWithTime)
 {
     $fmt = SystemConfig::getValue("sDateFormatLong");
     $fmt_time = SystemConfig::getValue("sTimeFormat");
@@ -410,7 +410,9 @@ function FormatDateOutput()
     $fmt = str_replace("d", "%d", $fmt);
     $fmt = str_replace("m", "%B", $fmt);
     $fmt = str_replace("Y", "%Y", $fmt);
-    $fmt .= " ".$fmt_time;
+    if ($bWithTime) {
+        $fmt .= " ".$fmt_time;
+    }
     
     return $fmt;
 }
@@ -441,7 +443,7 @@ function FormatDate($dDate, $bWithTime = false)
         return 'Unknown';
     }
 
-    $fmt = FormatDateOutput();
+    $fmt = FormatDateOutput($bWithTime);
         
     setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));    
     return utf8_encode(strftime("$fmt", strtotime($dDate)));

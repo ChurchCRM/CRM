@@ -8,6 +8,8 @@ use ChurchCRM\NoteQuery;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
 
+require_once 'Include/Functions.php';
+
 class TimelineService
 {
     /* @var $currentUser \ChurchCRM\User */
@@ -164,7 +166,7 @@ class TimelineService
         $item['headerLink'] = $headerLink;
         $item['text'] = $text;
 
-        $item['datetime'] = $datetime;
+        $item['datetime'] = FormatDate($datetime,true);
         $item['year'] = $year;
         $item['key'] = $datetime.'-'.$id;
 
