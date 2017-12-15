@@ -360,7 +360,7 @@
               window.CRM.groups.getRoles(selectOptions.GroupID).done(function(rdata){
                  rolesList = $.map(rdata.ListOptions, function (item) {
                     var o = {
-                      text: item.OptionName,
+                      text: i18next.t(item.OptionName),// to translate the Teacher and Student in localize text
                       id: item.OptionId
                     };
                     return o;
