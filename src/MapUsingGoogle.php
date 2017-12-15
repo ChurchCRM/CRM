@@ -35,7 +35,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
         if (SystemConfig::getValue('sGoogleMapKey') == '') {
             ?>
         <div class="callout callout-warning">
-            <?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?>
+          <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?></a>
         </div>
         <?php
         }
