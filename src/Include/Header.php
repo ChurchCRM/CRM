@@ -112,15 +112,15 @@ $MenuFirst = 1;
                 </td>
                 <td valign="middle" align="left" >                
                   <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>" class="item_link">
-                      <p ><i class="fa fa fa-home"></i> <?= gettext("Profile") ?></p></a>
+                      <p ><i class="fa fa-home"></i> <?= gettext("Profile") ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php" class="item_link">
-                      <p ><i class="fa fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
+                      <p ><i class="fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
-                      <p ><i class="fa fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>
+                      <p ><i class="fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>
                   <a href="Login.php?session=Lock" class="item_link">
-                      <p ><i class="fa fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
+                      <p ><i class="fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link">
-                      <p ><i class="fa fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
+                      <p ><i class="fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
                 </td>
                 </tr>
                 </table>
