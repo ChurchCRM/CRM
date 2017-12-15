@@ -155,8 +155,7 @@
         "scripts": [
             "/mysql/upgrade/2.9.0.sql",
             "/mysql/upgrade/2.9.0-InnoDB.php",
-            "/mysql/upgrade/2.9.0_church_division.sql",
-            "/mysql/upgrade/2.9.10_show_tooltip.sql"
+            "/mysql/upgrade/2.9.0_church_division.sql"
         ],
         "dbVersion": "2.9.0"
     },
@@ -165,7 +164,9 @@
             "2.9.0",
             "2.9.1"
         ],
-        "scripts": [],
-        "dbVersion": "2.9.2"
+        "scripts": [
+            "/mysql/upgrade/2.9.10_show_tooltip.sql"
+        ],
+        "dbVersion": "2.10.0"
     }
 }
