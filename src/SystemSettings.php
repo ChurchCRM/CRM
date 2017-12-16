@@ -21,7 +21,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 if (!$_SESSION['bAdmin']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -76,7 +76,7 @@ if (isset($_POST['save'])) {
         SystemConfig::setValueById($id, $value);
         next($type);
     }
-   RedirectUtils::Redirect("SystemSettings.php?saved=true");
+    RedirectUtils::Redirect("SystemSettings.php?saved=true");
 }
 
 if (isset($_GET['saved'])) {

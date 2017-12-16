@@ -17,7 +17,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // If user does not have CSV Export permission, redirect to the menu.
 if (!$bExportCSV) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 

@@ -18,7 +18,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // If user does not have permission redirect to the menu.
 if (!SystemConfig::getValue('bUSAddressVerification')) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -31,7 +31,7 @@ if ($_POST['MismatchReport']) {
     $sWhere = "WHERE fam_Country NOT IN ('United States') ";
     $sMissing = 'Unable to perform lookup for non-US address';
 } else {
-   RedirectUtils::Redirect('USISTAddressVerification.php');
+    RedirectUtils::Redirect('USISTAddressVerification.php');
 }
 
 // Instantiate the class and build the report.

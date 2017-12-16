@@ -26,7 +26,7 @@ $iQueryID = InputUtils::LegacyFilterInput($_GET['QueryID'], 'int');
 $aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
 
 if (!$_SESSION['bFinance'] && in_array($iQueryID, $aFinanceQueries)) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 

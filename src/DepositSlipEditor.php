@@ -39,11 +39,11 @@ if ($iDepositSlipID) {
 
     // Security: User must have finance permission or be the one who created this deposit
     if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $thisDeposit->getEnteredby())) {
-       RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 } else {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
 }
 
 //Set the page title

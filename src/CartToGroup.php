@@ -21,7 +21,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -44,7 +44,7 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Group.';
     
-   RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
+    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
 }
 
 $ormGroups = GroupQuery::Create()
