@@ -17,7 +17,6 @@ require 'Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\ListOptionQuery;
-use ChurchCRM\Utils\RedirectUtils;
 
 $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
@@ -208,7 +207,7 @@ if ($sFormat == 'addtocart') {
         extract($aRow);
         AddToPeopleCart($per_ID);
     }
-    RedirectUtils::Redirect('CartView.php');
+    Redirect('CartView.php');
 } else {
     // Build the complete SQL statement
 

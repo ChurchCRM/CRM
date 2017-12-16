@@ -18,7 +18,6 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\GroupQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Get all the sunday school classes
 $groups = GroupQuery::create()
@@ -76,9 +75,9 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     $currentUser->save();
 
     if ($bAtLeastOneGroup && isset($_POST['SubmitPhotoBook']) && $aGrpID != 0) {
-        RedirectUtils::Redirect('Reports/PhotoBook.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles.'&pictures='.$withPictures);
+        Redirect('Reports/PhotoBook.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles.'&pictures='.$withPictures);
     } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassList']) && $aGrpID != 0) {
-        RedirectUtils::Redirect('Reports/ClassList.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles.'&pictures='.$withPictures);
+        Redirect('Reports/ClassList.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles.'&pictures='.$withPictures);
     } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance']) && $aGrpID != 0) {
         $toStr = 'Reports/ClassAttendance.php?';
         //	      $toStr .= "GroupID=" . $iGroupID;
@@ -118,7 +117,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
         if ($iExtraTeachers) {
             $toStr .= '&ExtraTeachers='.$iExtraTeachers;
         }
-        RedirectUtils::Redirect($toStr);
+        Redirect($toStr);
     } elseif (!$bAtLeastOneGroup || $aGrpID == 0) {
         echo "<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\"> ".gettext('At least one group must be selected to make class lists or attendance sheets.')."</span></p>";
     }

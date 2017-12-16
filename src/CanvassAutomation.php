@@ -15,14 +15,13 @@ require 'Include/Functions.php';
 require 'Include/CanvassUtilities.php';
 
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Canvass Automation');
 
 // Security: User must have canvasser permission to use this form
 if (!$_SESSION['bCanvasser']) {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 }
 
@@ -85,16 +84,16 @@ if (isset($_POST['ClearAllOkToCanvass'])) {
     }
 }
 if (isset($_POST['BriefingSheets'])) {
-    RedirectUtils::Redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Briefing');
+    redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Briefing');
 }
 if (isset($_POST['ProgressReport'])) {
-    RedirectUtils::Redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Progress');
+    redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Progress');
 }
 if (isset($_POST['SummaryReport'])) {
-    RedirectUtils::Redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Summary');
+    redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Summary');
 }
 if (isset($_POST['NotInterestedReport'])) {
-    RedirectUtils::Redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=NotInterested');
+    redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=NotInterested');
 }
 
 require 'Include/Header.php';

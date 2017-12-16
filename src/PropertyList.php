@@ -13,7 +13,6 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 //Get the type to display
 $sType = InputUtils::LegacyFilterInput($_GET['Type'], 'char', 1);
@@ -33,7 +32,7 @@ switch ($sType) {
         break;
 
     default:
-       RedirectUtils::Redirect('Menu.php');
+        Redirect('Menu.php');
         exit;
         break;
 }

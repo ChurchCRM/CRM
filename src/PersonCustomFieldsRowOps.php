@@ -13,11 +13,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be administrator to use this page.
 if (!$_SESSION['bAdmin']) {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 }
 
@@ -75,7 +74,7 @@ switch ($sAction) {
 
     // If no valid action was specified, abort and return to the GroupView
     default:
-       RedirectUtils::Redirect('PersonCustomFieldsEditor.php');
+        Redirect('PersonCustomFieldsEditor.php');
         break;
 }
 

@@ -18,10 +18,9 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\RedirectUtils;
 
 if (!$_SESSION['bAdmin']) {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 }
 /**

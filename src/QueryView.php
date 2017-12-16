@@ -15,7 +15,6 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Query View');
@@ -26,7 +25,7 @@ $iQueryID = InputUtils::LegacyFilterInput($_GET['QueryID'], 'int');
 $aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
 
 if (!$_SESSION['bFinance'] && in_array($iQueryID, $aFinanceQueries)) {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 }
 

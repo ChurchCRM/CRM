@@ -23,11 +23,9 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
-use ChurchCRM\Utils\RedirectUtils;
-
 // Security
 if (!$_SESSION['bAdmin']) {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 }
 

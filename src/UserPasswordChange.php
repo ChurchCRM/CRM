@@ -17,7 +17,6 @@ use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\PasswordChangeEmail;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 $bAdminOtherUser = false;
 $bAdminOther = false;
@@ -80,9 +79,9 @@ if (isset($_POST['Submit'])) {
 
             // Route back to the list
             if (array_key_exists('FromUserList', $_GET) and $_GET['FromUserList'] == 'True') {
-                RedirectUtils::Redirect('UserList.php');
+                Redirect('UserList.php');
             } else {
-                RedirectUtils::Redirect('Menu.php');
+                Redirect('Menu.php');
             }
         }
     }
@@ -150,9 +149,9 @@ if (isset($_POST['Submit'])) {
 
             // Route back to the list
             if ($_GET['FromUserList'] == 'True') {
-                RedirectUtils::Redirect('UserList.php');
+                Redirect('UserList.php');
             } else {
-                RedirectUtils::Redirect('Menu.php');
+                Redirect('Menu.php');
             }
         }
     }
@@ -165,7 +164,6 @@ if (isset($_POST['Submit'])) {
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('User Password Change');
-$suppressBackgroundAPIRequests = true;
 require 'Include/Header.php';
 
 if ($_SESSION['bNeedPasswordChange']) {

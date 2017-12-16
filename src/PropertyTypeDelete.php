@@ -13,11 +13,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have property and classification editing permission
 if (!$_SESSION['bMenuOptions']) {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 }
 
@@ -42,7 +41,7 @@ if (isset($_GET['Confirmed'])) {
     $sSQL = 'DELETE FROM property_pro WHERE pro_prt_ID = '.$iPropertyTypeID;
     RunQuery($sSQL);
 
-    RedirectUtils::Redirect('PropertyTypeList.php');
+    Redirect('PropertyTypeList.php');
 }
 
 $sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = '.$iPropertyTypeID;

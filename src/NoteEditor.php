@@ -16,12 +16,11 @@ use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bNotes']) {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 }
 
@@ -91,7 +90,7 @@ if (isset($_POST['Submit'])) {
         }
 
         //Send them back to whereever they came from
-        RedirectUtils::Redirect($sBackPage);
+        Redirect($sBackPage);
     }
 } else {
     //Are we adding or editing?

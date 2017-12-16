@@ -20,7 +20,6 @@ require 'Include/Functions.php';
 require 'Include/LabelFunctions.php';
 
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Letters and Mailing Labels');
@@ -35,13 +34,13 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
     $sLabelInfo = '&labelfont='.urlencode($sFontInfo).'&labelfontsize='.$sFontSize."&recipientnamingmethod=".$bRecipientNamingMethod;
 
     if (isset($_POST['SubmitNewsLetter'])) {
-        RedirectUtils::Redirect('Reports/NewsLetterLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
+        Redirect('Reports/NewsLetterLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
     } elseif (isset($_POST['SubmitConfirmReport'])) {
-        RedirectUtils::Redirect('Reports/ConfirmReport.php');
+        Redirect('Reports/ConfirmReport.php');
     } elseif (isset($_POST['SubmitConfirmReportEmail'])) {
-        RedirectUtils::Redirect('Reports/ConfirmReportEmail.php');
+        Redirect('Reports/ConfirmReportEmail.php');
     } elseif (isset($_POST['SubmitConfirmLabels'])) {
-        RedirectUtils::Redirect('Reports/ConfirmLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
+        Redirect('Reports/ConfirmLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
     }
 } else {
     $sLabelFormat = 'Tractor';

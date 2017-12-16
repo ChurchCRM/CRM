@@ -13,11 +13,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 }
 
@@ -29,7 +28,7 @@ require 'Include/Header.php';
 if (isset($_POST['Submit'])) {
     $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
     $_SESSION['idefaultFY'] = $iFYID;
-    RedirectUtils::Redirect('Reports/ReminderReport.php?FYID='.$_SESSION['idefaultFY']);
+    Redirect('Reports/ReminderReport.php?FYID='.$_SESSION['idefaultFY']);
 } else {
     $iFYID = $_SESSION['idefaultFY'];
 }

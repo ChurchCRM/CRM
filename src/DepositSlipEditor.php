@@ -15,7 +15,6 @@ require 'Include/Functions.php';
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 $iDepositSlipID = 0;
 $thisDeposit = 0;
@@ -39,11 +38,11 @@ if ($iDepositSlipID) {
 
     // Security: User must have finance permission or be the one who created this deposit
     if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $thisDeposit->getEnteredby())) {
-        RedirectUtils::Redirect('Menu.php');
+        Redirect('Menu.php');
         exit;
     }
 } else {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
 }
 
 //Set the page title

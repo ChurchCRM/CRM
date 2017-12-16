@@ -6,12 +6,11 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Integrity Check Results');
 if (!$_SESSION['bAdmin']) {
-    RedirectUtils::Redirect('index.php');
+    Redirect('index.php');
     exit;
 }
 require 'Include/Header.php';

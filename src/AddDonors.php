@@ -34,7 +34,7 @@ if ($iFundRaiserID > 0) {
     // Set current fundraiser
     $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 } else {
-    RedirectUtils::Redirect($linkBack);
+    redirect($linkBack);
 }
 
 // Get all the people listed as donors for this fundraiser

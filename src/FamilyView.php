@@ -19,7 +19,6 @@ use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -43,7 +42,7 @@ if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Actio
         $family->activate();
     }
     $family->save();
-    RedirectUtils::Redirect("FamilyView.php?FamilyID=" . $_POST['FID']);
+    Redirect("FamilyView.php?FamilyID=" . $_POST['FID']);
     exit;
 }
 // Get the list of funds
@@ -97,7 +96,7 @@ $aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQLI_BOTH);
 $family = FamilyQuery::create()->findPk($iFamilyID);
 
 if (empty($family)) {
-    RedirectUtils::Redirect('members/404.php');
+    Redirect('members/404.php');
     exit;
 }
 

@@ -20,7 +20,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -69,7 +68,7 @@ extract(mysqli_fetch_array($rsPerson));
 $person = PersonQuery::create()->findPk($iPersonID);
 
 if (empty($person)) {
-    RedirectUtils::Redirect('members/404.php?type=Person');
+    Redirect('members/404.php?type=Person');
     exit;
 }
 

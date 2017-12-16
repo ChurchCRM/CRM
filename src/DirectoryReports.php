@@ -16,11 +16,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Check for Create Directory user permission.
 if (!$bCreateDirectory) {
-    RedirectUtils::Redirect('Menu.php');
+    Redirect('Menu.php');
     exit;
 }
 

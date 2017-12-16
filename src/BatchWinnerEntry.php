@@ -13,7 +13,6 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 $iCurrentFundraiser = InputUtils::LegacyFilterInput($_GET['CurrentFundraiser']);
@@ -45,7 +44,7 @@ if (isset($_POST['EnterWinners'])) {
             RunQuery($sSQL);
         }
     }
-    RedirectUtils::Redirect($linkBack);
+    Redirect($linkBack);
 }
 
 // Get Items for the drop-down
