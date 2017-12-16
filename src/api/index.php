@@ -12,7 +12,7 @@ use ChurchCRM\Slim\Middleware\VersionMiddleware;
 
 //Security
 if (!isset($_SESSION['iUserID'])) {
-   RedirectUtils::Redirect('Login.php');
+    RedirectUtils::Redirect('Login.php');
     exit;
 }
 

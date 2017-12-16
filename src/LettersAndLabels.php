@@ -35,13 +35,13 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
     $sLabelInfo = '&labelfont='.urlencode($sFontInfo).'&labelfontsize='.$sFontSize."&recipientnamingmethod=".$bRecipientNamingMethod;
 
     if (isset($_POST['SubmitNewsLetter'])) {
-       RedirectUtils::Redirect('Reports/NewsLetterLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
+        RedirectUtils::Redirect('Reports/NewsLetterLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
     } elseif (isset($_POST['SubmitConfirmReport'])) {
-       RedirectUtils::Redirect('Reports/ConfirmReport.php');
+        RedirectUtils::Redirect('Reports/ConfirmReport.php');
     } elseif (isset($_POST['SubmitConfirmReportEmail'])) {
-       RedirectUtils::Redirect('Reports/ConfirmReportEmail.php');
+        RedirectUtils::Redirect('Reports/ConfirmReportEmail.php');
     } elseif (isset($_POST['SubmitConfirmLabels'])) {
-       RedirectUtils::Redirect('Reports/ConfirmLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
+        RedirectUtils::Redirect('Reports/ConfirmLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
     }
 } else {
     $sLabelFormat = 'Tractor';

@@ -25,7 +25,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bDeleteRecords']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -45,7 +45,7 @@ if (!empty($_GET['mode'])) {
 }
 
 if (isset($_GET['CancelFamily'])) {
-   RedirectUtils::Redirect("FamilyView.php?FamilyID=$iFamilyID");
+    RedirectUtils::Redirect("FamilyView.php?FamilyID=$iFamilyID");
     exit;
 }
 
@@ -118,7 +118,7 @@ if (isset($_GET['Confirmed'])) {
     }
 
     // Redirect back to the family listing
-   RedirectUtils::Redirect('FamilyList.php');
+    RedirectUtils::Redirect('FamilyList.php');
 }
 
 

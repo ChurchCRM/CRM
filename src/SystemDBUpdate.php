@@ -11,14 +11,14 @@ $bSuppressSessionTests = true; // DO NOT MOVE
 require 'Include/Functions.php';
 
 if (SystemService::isDBCurrent()) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
 if (InputUtils::FilterString($_GET['upgrade']) == "true") {
     try {
         UpgradeService::upgradeDatabaseVersion();
-       RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     } catch (\Exception $ex) {
         $errorMessage = $ex->getMessage();

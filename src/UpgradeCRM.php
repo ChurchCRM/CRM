@@ -13,7 +13,7 @@ use ChurchCRM\Utils\RedirectUtils;
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
 if (!$_SESSION['bAdmin']) {
-   RedirectUtils::Redirect('index.php');
+    RedirectUtils::Redirect('index.php');
     exit;
 }
 

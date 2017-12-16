@@ -45,7 +45,7 @@ if (isset($_POST['EnterWinners'])) {
             RunQuery($sSQL);
         }
     }
-   RedirectUtils::Redirect($linkBack);
+    RedirectUtils::Redirect($linkBack);
 }
 
 // Get Items for the drop-down

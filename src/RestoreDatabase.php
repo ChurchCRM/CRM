@@ -20,7 +20,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bAdmin']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
