@@ -17,28 +17,30 @@ global $iChecksPerDepositForm;
 require "../Include/Config.php";
 require "../Include/Functions.php";
 require "../Include/ReportFunctions.php";
-require "../Include/ReportConfig.php";
 
-// Security
-//if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
-//	Redirect("Menu.php");
-//	exit;
-//}
+use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\InputUtils;
+
+//Security
+if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
+	Redirect("Menu.php");
+	exit;
+}
 
 $iBankSlip = 0;
 if (array_key_exists ("BankSlip", $_GET))
-	$iBankSlip = FilterInput($_GET["BankSlip"], 'int');
+	$iBankSlip = InputUtils::LegacyFilterInput($_GET["BankSlip"], 'int');
 if (!$iBankSlip && array_key_exists ("report_type", $_POST))
-	$iBankSlip = FilterInput($_POST["report_type"], 'int');
+	$iBankSlip = InputUtils::LegacyFilterInput($_POST["report_type"], 'int');
 
 $output = "pdf";
 if (array_key_exists ("output",$_POST))
-	$output = FilterInput($_POST["output"]);
+	$output = InputUtils::LegacyFilterInput($_POST["output"]);
 
 
 $iDepositSlipID = 0;
 if (array_key_exists ("deposit", $_POST))
-	$iDepositSlipID = FilterInput($_POST["deposit"],"int");
+	$iDepositSlipID = InputUtils::LegacyFilterInput($_POST["deposit"],"int");
 	
 if (!$iDepositSlipID && array_key_exists ('iCurrentDeposit', $_SESSION))
 	$iDepositSlipID = $_SESSION['iCurrentDeposit'];
@@ -59,7 +61,7 @@ $sSQL = "SELECT plg_plgID, plg_date, SUM(plg_amount) as plg_sum, plg_CheckNo, pl
 $rsPledges = RunQuery($sSQL);
 
 // Exit if no rows returned
-$iCountRows = mysql_num_rows($rsPledges);
+$iCountRows = mysqli_num_rows($rsPledges);
 if ($iCountRows < 1){
 	header("Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Individual%20Deposit%20Report"); 
 }
@@ -70,7 +72,7 @@ if ($iCountRows < 1){
 
 if ($output == "pdf") {
 	
-	class PDF_AccessReport extends ChurchInfoReport {
+	class PDF_DepositReport extends ChurchInfoReport {
 
 		// Private properties
 		var $_Char_Size   = 10;        // Character size
@@ -93,7 +95,7 @@ if ($output == "pdf") {
 		}
 
 		// Constructor
-		function PDF_AccessReport() {
+		function __construct__() {
 			parent::FPDF("P", "mm", $this->paperFormat);
 
 			$this->_Font        = "Courier";
@@ -108,12 +110,13 @@ if ($output == "pdf") {
 	$fundTotal = array ();
 	
 	// Instantiate the directory class and build the report.
-	$pdf = new PDF_AccessReport();
+	$pdf = new PDF_DepositReport();
+  $pdf->AddPage();
 
 	// Read in report settings from database
-	$rsConfig = mysql_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
+	$rsConfig = mysqli_query("SELECT cfg_name, IFNULL(cfg_value, cfg_default) AS value FROM config_cfg WHERE cfg_section='ChurchInfoReport'");
 	if ($rsConfig) {
-		while (list($cfg_name, $cfg_value) = mysql_fetch_row($rsConfig)) {
+		while (list($cfg_name, $cfg_value) = mysqli_fetch_row($rsConfig)) {
 			$pdf->$cfg_name = $cfg_value;
 		}
 	}
@@ -121,7 +124,7 @@ if ($output == "pdf") {
 	// Get Deposit Information
 	$sSQL = "SELECT * FROM deposit_dep WHERE dep_ID = " . $iDepositSlipID;
 	$rsDepositSlip = RunQuery($sSQL);
-	extract(mysql_fetch_array($rsDepositSlip));
+	extract(mysqli_fetch_array($rsDepositSlip));
 
 	$date1X = 12;
 	$date1Y = 35 + 7;
@@ -165,7 +168,7 @@ if ($output == "pdf") {
 	} else {
 
 		// Print Deposit Slip portion of report
-		while ($aRow = mysql_fetch_array($rsPledges))
+		while ($aRow = mysqli_fetch_array($rsPledges))
 		{
 			$OutStr = "";
 			extract($aRow);
@@ -204,6 +207,7 @@ if ($output == "pdf") {
 		$pdf->PrintRightJustified ($topTotalX, $topTotalY, $grandTotalStr);
 	}
 
+  $pdf->SetFont('Times','B', 10);
 	$pdf->SetXY ($date2X, $date2Y);
 	$pdf->Write (8, $dep_Date);
 
@@ -257,7 +261,7 @@ if ($output == "pdf") {
 
 	$totalAmount = 0;
 
-	while ($aRow = mysql_fetch_array($rsPledges))
+	while ($aRow = mysqli_fetch_array($rsPledges))
 	{
 		$pdf->SetFont('Times','', 10);
 
@@ -329,9 +333,9 @@ if ($output == "pdf") {
 
 	$curY += $summaryIntervalY;
 
-	if (mysql_num_rows ($rsFunds) > 0) {
-		mysql_data_seek($rsFunds,0);
-		while ($row = mysql_fetch_array($rsFunds))
+	if (mysqli_num_rows ($rsFunds) > 0) {
+		mysqli_data_seek($rsFunds,0);
+		while ($row = mysqli_fetch_array($rsFunds))
 		{
 			$fun_name = $row["fun_Name"];
 		   if (array_key_exists ($fun_name, $fundTotal) && $fundTotal[$fun_name] > 0) {
@@ -377,7 +381,7 @@ if ($output == "pdf") {
 	$buffer = substr($buffer,0,-1) . $eol;
 	
 	// Add data
-	while ($row = mysql_fetch_row($rsPledges)) {
+	while ($row = mysqli_fetch_row($rsPledges)) {
 		foreach ($row as $field) {
 			$field = str_replace($delimiter, " ", $field);	// Remove any delimiters from data
 			$buffer .= $field . $delimiter;
