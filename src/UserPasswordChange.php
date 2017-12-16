@@ -165,7 +165,6 @@ if (isset($_POST['Submit'])) {
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('User Password Change');
-$suppressBackgroundAPIRequests = true;
 require 'Include/Header.php';
 
 if ($_SESSION['bNeedPasswordChange']) {

@@ -22,7 +22,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\MenuConfigQuery;
 use ChurchCRM\UserConfigQuery;
-use ChurchCRM\Utils\RedirectUtils;
 
 function Header_system_notifications()
 {
@@ -106,7 +105,7 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $localeInfo, $suppressBackgroundAPIRequests;
+    global $localeInfo;
     $systemService = new SystemService(); ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
@@ -130,8 +129,7 @@ function Header_body_scripts()
                     }
                 }
             },
-            PageName:"<?= $_SERVER['PHP_SELF']?>",
-            suppressBackgroundAPIRequests: <?= ($suppressBackgroundAPIRequests ? "true":"false")?>
+            PageName:"<?= $_SERVER['PHP_SELF']?>"
         };
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
