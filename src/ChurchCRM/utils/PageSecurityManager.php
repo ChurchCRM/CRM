@@ -4,6 +4,7 @@ Namespace ChurchCRM\Utils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\RedirectUtils;
 
 Class PageSecurityManager {
 
@@ -43,11 +44,11 @@ Class PageSecurityManager {
       exit();
     }
     else if (!self::isUserSessionValid()) {  // if the user session is not present, or expired, the user should see the login page.
-      MiscUtils::Redirect('Login.php');
+      RedirectUtils::Redirect('Login.php');
       exit;
     }
     else if(self::doesUserNeedPasswordChange()){  // if the user needs to change their password, redirect to password change page.
-      MiscUtils::Redirect('UserPasswordChange.php?PersonID=' . $_SESSION['iUserID']);
+      RedirectUtils::Redirect('UserPasswordChange.php?PersonID=' . $_SESSION['iUserID']);
       exit;
     }
   }

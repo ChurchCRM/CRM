@@ -13,9 +13,10 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!SystemService::isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-   MiscUtils::Redirect('SystemDBUpdate.php');
+   RedirectUtils::Redirect('SystemDBUpdate.php');
     exit;
 }
 

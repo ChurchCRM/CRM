@@ -23,10 +23,10 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!SystemService::isDBCurrent()) {
-   MiscUtils::Redirect('SystemDBUpdate.php');
+   RedirectUtils::Redirect('SystemDBUpdate.php');
     exit;
 }
 
@@ -125,7 +125,7 @@ if (isset($_POST['User'])) {
         $systemService = new SystemService();
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         NotificationService::updateNotifications();
-       MiscUtils::Redirect('Menu.php');
+       RedirectUtils::Redirect('Menu.php');
         exit;
     }
 } elseif (isset($_GET['username'])) {

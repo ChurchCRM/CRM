@@ -3,6 +3,7 @@
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Include the function library
 require 'Include/Config.php';
@@ -10,14 +11,14 @@ $bSuppressSessionTests = true; // DO NOT MOVE
 require 'Include/Functions.php';
 
 if (SystemService::isDBCurrent()) {
-   MiscUtils::Redirect('Menu.php');
+   RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
 if (InputUtils::FilterString($_GET['upgrade']) == "true") {
     try {
         UpgradeService::upgradeDatabaseVersion();
-       MiscUtils::Redirect('Menu.php');
+       RedirectUtils::Redirect('Menu.php');
         exit;
     } catch (\Exception $ex) {
         $errorMessage = $ex->getMessage();
