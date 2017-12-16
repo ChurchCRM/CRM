@@ -344,7 +344,7 @@
           }
           if (selectOptions.Type & window.CRM.groups.selectTypes.Role )
           {
-            options.title = "Select Role"
+            options.title = i18next.t("Select Role");
             options.message += '<span style="color: red">'+i18next.t('Please select target Role for members')+':</span>\
                   <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>';
             options.buttons.confirm.callback = function(){
@@ -362,7 +362,7 @@
               window.CRM.groups.getRoles(selectOptions.GroupID).done(function(rdata){
                  rolesList = $.map(rdata.ListOptions, function (item) {
                     var o = {
-                      text: item.OptionName,
+                      text: i18next.t(item.OptionName),// to translate the Teacher and Student in localize text
                       id: item.OptionId
                     };
                     return o;
