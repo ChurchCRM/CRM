@@ -23,7 +23,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Util\MiscUtils;
+use ChurchCRM\Utils\MiscUtils;
 
 if (!SystemService::isDBCurrent()) {
    MiscUtils::Redirect('SystemDBUpdate.php');
