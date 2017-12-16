@@ -24,7 +24,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bManageGroups']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -38,7 +38,7 @@ extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false) {
-   RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
+    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
 }
 
 $sPageTitle = gettext('Group-Specific Properties Form Editor:').'  '.$grp_Name;

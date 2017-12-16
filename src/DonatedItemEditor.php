@@ -91,14 +91,14 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     if (isset($_POST['DonatedItemSubmit'])) {
         // Check for redirection to another page after saving information: (ie. DonatedItemEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-           RedirectUtils::Redirect($linkBack);
+            RedirectUtils::Redirect($linkBack);
         } else {
             //Send to the view of this DonatedItem
-           RedirectUtils::Redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
+            RedirectUtils::Redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
         }
     } elseif (isset($_POST['DonatedItemSubmitAndAdd'])) {
         //Reload to editor to add another record
-       RedirectUtils::Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+        RedirectUtils::Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     }
 } else {
 

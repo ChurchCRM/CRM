@@ -11,7 +11,7 @@ use ChurchCRM\Utils\RedirectUtils;
 //Set the page title
 $sPageTitle = gettext('Integrity Check Results');
 if (!$_SESSION['bAdmin']) {
-   RedirectUtils::Redirect('index.php');
+    RedirectUtils::Redirect('index.php');
     exit;
 }
 require 'Include/Header.php';

@@ -69,7 +69,7 @@ extract(mysqli_fetch_array($rsPerson));
 $person = PersonQuery::create()->findPk($iPersonID);
 
 if (empty($person)) {
-   RedirectUtils::Redirect('members/404.php?type=Person');
+    RedirectUtils::Redirect('members/404.php?type=Person');
     exit;
 }
 

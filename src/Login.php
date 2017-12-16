@@ -26,7 +26,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
 if (!SystemService::isDBCurrent()) {
-   RedirectUtils::Redirect('SystemDBUpdate.php');
+    RedirectUtils::Redirect('SystemDBUpdate.php');
     exit;
 }
 
@@ -125,7 +125,7 @@ if (isset($_POST['User'])) {
         $systemService = new SystemService();
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         NotificationService::updateNotifications();
-       RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 } elseif (isset($_GET['username'])) {

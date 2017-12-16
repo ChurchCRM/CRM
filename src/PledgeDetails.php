@@ -23,13 +23,13 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 // Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if (!$_SESSION['bFinance']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
 //Is this the second pass?
 if (isset($_POST['Back'])) {
-   RedirectUtils::Redirect($linkBack);
+    RedirectUtils::Redirect($linkBack);
 }
 
 $sSQL = 'SELECT * FROM pledge_plg WHERE plg_plgID = '.$iPledgeID;
