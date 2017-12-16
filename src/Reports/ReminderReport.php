@@ -17,7 +17,7 @@ use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -30,7 +30,7 @@ $only_owe = InputUtils::LegacyFilterInput($_POST['only_owe']);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

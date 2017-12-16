@@ -20,7 +20,7 @@ use ChurchCRM\dto\SystemURLs;
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -57,7 +57,7 @@ function ClearAccounts (AutID)
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.uniqueid = AutID;
 
-    xmlhttp.open("GET","<?= RedirectURL('AutoPaymentClearAccounts.php') ?>?customerid="+AutID,true);
+    xmlhttp.open("GET","<?=MiscUtils::RedirectURL('AutoPaymentClearAccounts.php') ?>?customerid="+AutID,true);
     xmlhttp.PaymentID = AutID; // So we can see it when the request finishes
 
     xmlhttp.onreadystatechange=function() {
@@ -79,7 +79,7 @@ function DeleteAutoPayment (AutID)
 
     var params="Delete=1"; // post with Delete already set so the page goes straight into the delete
 
-    xmlhttp.open("POST","<?= RedirectURL('AutoPaymentDelete.php') ?>?linkBack=<?= RedirectURL('ElectronicPaymentList.php') ?>&AutID="+AutID,true);
+    xmlhttp.open("POST","<?=MiscUtils::RedirectURL('AutoPaymentDelete.php') ?>?linkBack=<?=MiscUtils::RedirectURL('ElectronicPaymentList.php') ?>&AutID="+AutID,true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.setRequestHeader("Content-length", params.length);
     xmlhttp.setRequestHeader("Connection", "close");
@@ -126,7 +126,7 @@ function CreatePaymentMethodsForChecked()
 		    var id = checkboxes[i].id.split("Select")[1];
 		    var xmlhttp = new XMLHttpRequest();
 		    xmlhttp.uniqueid = id;
-		    xmlhttp.open("GET","<?= RedirectURL('ConvertOnePaymentXML.php') ?>?autid="+id,true);
+		    xmlhttp.open("GET","<?=MiscUtils::RedirectURL('ConvertOnePaymentXML.php') ?>?autid="+id,true);
 		    xmlhttp.onreadystatechange=function() {
 				if (this.readyState==4 && this.status==200) {
 		            var jsonresp=JSON.parse(this.response);

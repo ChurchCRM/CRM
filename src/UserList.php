@@ -25,7 +25,7 @@ use ChurchCRM\dto\SystemURLs;
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

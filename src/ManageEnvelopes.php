@@ -21,7 +21,7 @@ $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

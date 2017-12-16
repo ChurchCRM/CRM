@@ -22,7 +22,7 @@ $groupService = new GroupService();
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -37,7 +37,7 @@ if (isset($_POST['Submit'])) {
     $sPreviousQuery = strip_tags($_POST['prevquery']);
     $groupService->addUserToGroup($iGroupID, $iPersonID, $iGroupRole);
 
-    Redirect("SelectList.php?$sPreviousQuery");
+   MiscUtils::Redirect("SelectList.php?$sPreviousQuery");
 } else {
     $sPreviousQuery = strip_tags(rawurldecode($_GET['prevquery']));
 }

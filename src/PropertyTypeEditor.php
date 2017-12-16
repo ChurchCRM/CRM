@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have property and classification editing permission
 if (!$_SESSION['bMenuOptions']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -58,7 +58,7 @@ if (isset($_POST['Submit'])) {
         RunQuery($sSQL);
 
         //Route back to the list
-        Redirect('PropertyTypeList.php');
+       MiscUtils::Redirect('PropertyTypeList.php');
     }
 } elseif ($iPropertyTypeID > 0) {
     //Get the data on this property

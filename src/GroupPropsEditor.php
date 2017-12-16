@@ -18,7 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bEditRecords']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -99,7 +99,7 @@ if (isset($_POST['GroupPropSubmit'])) {
         RunQuery($sSQL);
 
         // Return to the Person View
-        Redirect('PersonView.php?PersonID='.$iPersonID);
+       MiscUtils::Redirect('PersonView.php?PersonID='.$iPersonID);
     }
 } else {
     // First Pass

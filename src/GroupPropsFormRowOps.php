@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -33,7 +33,7 @@ extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false) {
-    Redirect('GroupView.php?GroupID='.$iGroupID);
+   MiscUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
 }
 
 switch ($sAction) {
@@ -85,7 +85,7 @@ switch ($sAction) {
 
     // If no valid action was specified, abort and return to the GroupView
     default:
-        Redirect('GroupView.php?GroupID='.$iGroupID);
+       MiscUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
         break;
 }
 

@@ -16,7 +16,7 @@ use ChurchCRM\dto\SystemURLs;
 
 // Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

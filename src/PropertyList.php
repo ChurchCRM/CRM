@@ -32,7 +32,7 @@ switch ($sType) {
         break;
 
     default:
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         exit;
         break;
 }

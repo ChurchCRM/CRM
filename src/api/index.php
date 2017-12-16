@@ -5,7 +5,7 @@ require '../Include/Functions.php';
 
 //Security
 if (!isset($_SESSION['iUserID'])) {
-    Redirect('Login.php');
+   MiscUtils::Redirect('Login.php');
     exit;
 }
 

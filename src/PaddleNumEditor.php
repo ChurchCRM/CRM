@@ -94,13 +94,13 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     }
 
     if (isset($_POST['PaddleNumSubmit'])) {
-        Redirect('PaddleNumEditor.php?PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack);
+       MiscUtils::Redirect('PaddleNumEditor.php?PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack);
     } elseif (isset($_POST['PaddleNumSubmitAndAdd'])) {
         //Reload to editor to add another record
-        Redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+       MiscUtils::Redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     } elseif (isset($_POST['GenerateStatement'])) {
         //Jump straight to generating the statement report
-        Redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
+       MiscUtils::Redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
     }
 } else {
 

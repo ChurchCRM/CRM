@@ -24,16 +24,16 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if (strlen($iAutID) > 0) {
     if (!$_SESSION['bEditRecords']) {
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         exit;
     }
     $sSQL = "SELECT '' FROM autopayment_aut WHERE aut_ID = ".$iAutID;
     if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         exit;
     }
 } elseif (!$_SESSION['bAddRecords']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -43,10 +43,10 @@ if (isset($_POST['Delete'])) {
     //Execute the SQL
     RunQuery($sSQL);
     if ($linkBack != '') {
-        Redirect($linkBack);
+       MiscUtils::Redirect($linkBack);
     }
 } elseif (isset($_POST['Cancel'])) {
-    Redirect($linkBack);
+   MiscUtils::Redirect($linkBack);
 }
 
 require 'Include/Header.php';

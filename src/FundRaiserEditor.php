@@ -78,10 +78,10 @@ if (isset($_POST['FundRaiserSubmit'])) {
 
         if (isset($_POST['FundRaiserSubmit'])) {
             if ($linkBack != '') {
-                Redirect($linkBack);
+               MiscUtils::Redirect($linkBack);
             } else {
                 //Send to the view of this FundRaiser
-                Redirect('FundRaiserEditor.php?linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID);
+               MiscUtils::Redirect('FundRaiserEditor.php?linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID);
             }
         }
     }

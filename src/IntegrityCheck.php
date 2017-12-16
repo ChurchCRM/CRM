@@ -10,7 +10,7 @@ use ChurchCRM\Service\AppIntegrityService;
 //Set the page title
 $sPageTitle = gettext('Integrity Check Results');
 if (!$_SESSION['bAdmin']) {
-    Redirect('index.php');
+   MiscUtils::Redirect('index.php');
     exit;
 }
 require 'Include/Header.php';

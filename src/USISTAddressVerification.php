@@ -38,7 +38,7 @@ function XMLparseIST($xmlstr, $xmlfield)
 
 // If user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

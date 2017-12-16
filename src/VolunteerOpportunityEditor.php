@@ -17,7 +17,7 @@ use ChurchCRM\Utils\InputUtils;
 // Future ... $bManageVol
 
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -56,7 +56,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
     if (!$_SESSION['bDeleteRecords']) {
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         exit;
     }
 
@@ -118,7 +118,7 @@ if (($sAction == 'ConfDelete') && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
     if (!$_SESSION['bDeleteRecords']) {
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         exit;
     }
 

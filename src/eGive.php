@@ -14,7 +14,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

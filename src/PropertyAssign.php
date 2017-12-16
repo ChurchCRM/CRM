@@ -19,7 +19,7 @@ use ChurchCRM\Utils\InputUtils;
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -81,12 +81,12 @@ elseif (isset($_GET['FamilyID']) && $_SESSION['bEditRecords']) {
 
 // Somebody tried to call the script with no options
 else {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
 }
 
 // If no property, return to previous page
 if (!$iPropertyID) {
-    Redirect("$sBackPage");
+   MiscUtils::Redirect("$sBackPage");
 }
 
 function UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction)
@@ -123,7 +123,7 @@ if (isset($_POST['SecondPass'])) {
     $_SESSION['sGlobalMessage'] = gettext('Property successfully assigned.');
 
     // Back to the PersonView
-    Redirect($sBackPage);
+   MiscUtils::Redirect($sBackPage);
 }
 
 // Get the name of the property
@@ -141,7 +141,7 @@ if (strlen($sPrompt) == 0) {
     $_SESSION['sGlobalMessage'] = gettext('Property successfully assigned.');
 
     // Back to the PersonView
-    Redirect($sBackPage);
+   MiscUtils::Redirect($sBackPage);
 }
 
 // If we're editing, get the value

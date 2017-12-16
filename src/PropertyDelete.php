@@ -15,7 +15,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 
 if (!$_SESSION['bMenuOptions']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -34,7 +34,7 @@ if (isset($_GET['Confirmed'])) {
     $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = '.$iPropertyID;
     RunQuery($sSQL);
 
-    Redirect('PropertyList.php?Type='.$sType);
+   MiscUtils::Redirect('PropertyList.php?Type='.$sType);
 }
 
 //Get the family record in question

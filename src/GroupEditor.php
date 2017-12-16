@@ -21,7 +21,7 @@ use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -32,7 +32,7 @@ $groupService = new GroupService();
 if (array_key_exists('GroupID', $_GET)) {
     $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 } else {
-    Redirect('GroupList.php');
+   MiscUtils::Redirect('GroupList.php');
 }
 
 $thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.

@@ -207,7 +207,7 @@ if ($sFormat == 'addtocart') {
         extract($aRow);
         AddToPeopleCart($per_ID);
     }
-    Redirect('CartView.php');
+   MiscUtils::Redirect('CartView.php');
 } else {
     // Build the complete SQL statement
 

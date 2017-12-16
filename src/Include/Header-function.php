@@ -105,7 +105,7 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $localeInfo;
+    global $localeInfo, $suppressBackgroundAPIRequests;
     $systemService = new SystemService(); ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
@@ -129,7 +129,8 @@ function Header_body_scripts()
                     }
                 }
             },
-            PageName:"<?= $_SERVER['PHP_SELF']?>"
+            PageName:"<?= $_SERVER['PHP_SELF']?>",
+            suppressBackgroundAPIRequests: <?= ($suppressBackgroundAPIRequests ? "true":"false")?>
         };
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>

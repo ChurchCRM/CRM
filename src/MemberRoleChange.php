@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -44,9 +44,9 @@ if (isset($_POST['Submit'])) {
 
     //Reroute back to the proper location
     if ($iReturn) {
-        Redirect('GroupView.php?GroupID='.$iGroupID);
+       MiscUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
     } else {
-        Redirect('PersonView.php?PersonID='.$iPersonID);
+       MiscUtils::Redirect('PersonView.php?PersonID='.$iPersonID);
     }
 }
 

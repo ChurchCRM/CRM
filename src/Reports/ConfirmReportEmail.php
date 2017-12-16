@@ -347,7 +347,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 }
 
 if ($_GET['familyId']) {
-    Redirect('FamilyView.php?FamilyID='.$_GET['familyId'].'&PDFEmailed='.$familyEmailSent);
+   MiscUtils::Redirect('FamilyView.php?FamilyID='.$_GET['familyId'].'&PDFEmailed='.$familyEmailSent);
 } else {
-    Redirect('FamilyList.php?AllPDFsEmailed='.$familiesEmailed);
+   MiscUtils::Redirect('FamilyList.php?AllPDFsEmailed='.$familiesEmailed);
 }

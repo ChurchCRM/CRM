@@ -20,7 +20,7 @@ use ChurchCRM\dto\SystemURLs;
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bNotes']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -90,7 +90,7 @@ if (isset($_POST['Submit'])) {
         }
 
         //Send them back to whereever they came from
-        Redirect($sBackPage);
+       MiscUtils::Redirect($sBackPage);
     }
 } else {
     //Are we adding or editing?

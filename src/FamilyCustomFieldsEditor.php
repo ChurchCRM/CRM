@@ -22,7 +22,7 @@ use ChurchCRM\dto\SystemURLs;
 
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

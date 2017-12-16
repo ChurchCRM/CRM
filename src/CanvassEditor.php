@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 
 // Security: User must have canvasser permission to use this form
 if (!$_SESSION['bCanvasser']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -102,9 +102,9 @@ if (isset($_POST['Submit'])) {
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-            Redirect($linkBack);
+           MiscUtils::Redirect($linkBack);
         } else {
-            Redirect('CanvassEditor.php?FamilyID='.$iFamily.'&FYID='.$iFYID.'&CanvassID='.$iCanvassID.'&linkBack=', $linkBack);
+           MiscUtils::Redirect('CanvassEditor.php?FamilyID='.$iFamily.'&FYID='.$iFYID.'&CanvassID='.$iCanvassID.'&linkBack=', $linkBack);
         }
     }
 } else {

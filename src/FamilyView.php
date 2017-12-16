@@ -42,7 +42,7 @@ if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Actio
         $family->activate();
     }
     $family->save();
-    Redirect("FamilyView.php?FamilyID=" . $_POST['FID']);
+   MiscUtils::Redirect("FamilyView.php?FamilyID=" . $_POST['FID']);
     exit;
 }
 // Get the list of funds
@@ -96,7 +96,7 @@ $aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQLI_BOTH);
 $family = FamilyQuery::create()->findPk($iFamilyID);
 
 if (empty($family)) {
-    Redirect('members/404.php');
+   MiscUtils::Redirect('members/404.php');
     exit;
 }
 

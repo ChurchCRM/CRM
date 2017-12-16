@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -28,7 +28,7 @@ require 'Include/Header.php';
 if (isset($_POST['Submit'])) {
     $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
     $_SESSION['idefaultFY'] = $iFYID;
-    Redirect('Reports/ReminderReport.php?FYID='.$_SESSION['idefaultFY']);
+   MiscUtils::Redirect('Reports/ReminderReport.php?FYID='.$_SESSION['idefaultFY']);
 } else {
     $iFYID = $_SESSION['idefaultFY'];
 }

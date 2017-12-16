@@ -24,7 +24,7 @@ switch ($mode) {
     case 'famroles':
     case 'classes':
         if (!$_SESSION['bMenuOptions']) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             exit;
         }
         break;
@@ -33,7 +33,7 @@ switch ($mode) {
     case 'grproles':
     case 'groupcustom':
         if (!$_SESSION['bManageGroups']) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             exit;
         }
         break;
@@ -42,13 +42,13 @@ switch ($mode) {
     case 'famcustom':
     case 'securitygrp':
         if (!$_SESSION['bAdmin']) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             exit;
         }
         break;
 
     default:
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         break;
 }
 
@@ -101,7 +101,7 @@ switch ($mode) {
 
         // Validate that this list ID is really for a group roles list. (for security)
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             break;
         }
 
@@ -122,7 +122,7 @@ switch ($mode) {
 
         // Validate that this is a valid person-custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             break;
         }
 
@@ -140,7 +140,7 @@ switch ($mode) {
 
         // Validate that this is a valid group-specific-property field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             break;
         }
 
@@ -158,13 +158,13 @@ switch ($mode) {
 
         // Validate that this is a valid family_custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             break;
         }
 
         break;
     default:
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         break;
 }
 

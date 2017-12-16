@@ -31,7 +31,7 @@ use ChurchCRM\dto\SystemURLs;
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -74,10 +74,10 @@ if (isset($_POST['save']) && $iPersonID > 0) {
     if (strlen($sUserName) < 3) {
         if ($NewUser == false) {
             //Report error for current user creation
-            Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
+           MiscUtils::Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         } else {
             //Report error for new user creation
-            Redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
+           MiscUtils::Redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         }
     } else {
         if (isset($_POST['AddRecords'])) {
@@ -154,7 +154,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $email->send();
                 } else {
                     // Set the error text for duplicate when new user
-                    Redirect('UserEditor.php?NewPersonID=' . $PersonID . '&ErrorText=Login already in use, please select a different login!');
+                   MiscUtils::Redirect('UserEditor.php?NewPersonID=' . $PersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             } else {
                 if ($undupCount == 0) {
@@ -165,7 +165,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $user->createTimeLineNote("updated");
                 } else {
                     // Set the error text for duplicate when currently existing
-                    Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
+                   MiscUtils::Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             }
         }
@@ -313,7 +313,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
         next($type);
     }
 
-    Redirect('UserList.php');
+   MiscUtils::Redirect('UserList.php');
     exit;
 }
 

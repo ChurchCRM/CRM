@@ -43,7 +43,7 @@ if ($iPersonID > 0) {
     extract(mysqli_fetch_array($rsPerson));
 
     if (mysqli_num_rows($rsPerson) == 0) {
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         exit;
     }
 
@@ -53,11 +53,11 @@ if ($iPersonID > 0) {
         ($_SESSION['bEditSelf'] && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['iFamID'])
     )
     ) {
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         exit;
     }
 } elseif (!$_SESSION['bAddRecords']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 // Get Field Security List Matrix
@@ -433,13 +433,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($sPreviousPage != '') {
             $sPreviousPage = str_replace(';', '&', $sPreviousPage);
-            Redirect($sPreviousPage.$iPersonID);
+           MiscUtils::Redirect($sPreviousPage.$iPersonID);
         } elseif (isset($_POST['PersonSubmit'])) {
             //Send to the view of this person
-            Redirect('PersonView.php?PersonID='.$iPersonID);
+           MiscUtils::Redirect('PersonView.php?PersonID='.$iPersonID);
         } else {
             //Reload to editor to add another record
-            Redirect('PersonEditor.php');
+           MiscUtils::Redirect('PersonEditor.php');
         }
     }
 

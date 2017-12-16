@@ -19,7 +19,7 @@ use ChurchCRM\dto\SystemURLs;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

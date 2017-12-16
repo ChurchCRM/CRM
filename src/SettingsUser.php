@@ -20,7 +20,7 @@ use ChurchCRM\Utils\InputUtils;
 
 // Security
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

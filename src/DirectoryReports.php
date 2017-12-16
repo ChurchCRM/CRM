@@ -19,7 +19,7 @@ use ChurchCRM\dto\SystemConfig;
 
 // Check for Create Directory user permission.
 if (!$bCreateDirectory) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

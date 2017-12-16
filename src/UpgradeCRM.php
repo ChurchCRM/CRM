@@ -12,7 +12,7 @@ use ChurchCRM\dto\SystemURLs;
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
 if (!$_SESSION['bAdmin']) {
-    Redirect('index.php');
+   MiscUtils::Redirect('index.php');
     exit;
 }
 

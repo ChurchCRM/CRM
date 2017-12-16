@@ -18,7 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bNotes']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -49,7 +49,7 @@ if (isset($_GET['Confirmed'])) {
     $note->delete();
 
     //Send back to the page they came from
-    Redirect($sReroute);
+   MiscUtils::Redirect($sReroute);
 }
 
 require 'Include/Header.php';

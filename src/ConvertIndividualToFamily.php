@@ -25,7 +25,7 @@ require 'Include/Functions.php';
 
 // Security
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

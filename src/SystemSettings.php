@@ -20,7 +20,7 @@ use ChurchCRM\dto\SystemURLs;
 
 // Security
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -75,7 +75,7 @@ if (isset($_POST['save'])) {
         SystemConfig::setValueById($id, $value);
         next($type);
     }
-    Redirect("SystemSettings.php?saved=true");
+   MiscUtils::Redirect("SystemSettings.php?saved=true");
 }
 
 if (isset($_GET['saved'])) {

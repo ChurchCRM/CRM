@@ -21,7 +21,7 @@ $sPageTitle = gettext('Canvass Automation');
 
 // Security: User must have canvasser permission to use this form
 if (!$_SESSION['bCanvasser']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 

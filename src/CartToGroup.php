@@ -20,7 +20,7 @@ use ChurchCRM\dto\Cart;
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+   MiscUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -43,7 +43,7 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Group.';
     
-    Redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
+   MiscUtils::Redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
 }
 
 $ormGroups = GroupQuery::Create()

@@ -205,10 +205,10 @@ if (isset($_POST['Submit'])) {
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-            Redirect($linkBack);
+           MiscUtils::Redirect($linkBack);
         } else {
             //Send to the view of this pledge
-            Redirect('AutoPaymentEditor.php?AutID=' . $iAutID . '&FamilyID=' . $iFamily . '&linkBack=', $linkBack);
+           MiscUtils::Redirect('AutoPaymentEditor.php?AutID=' . $iAutID . '&FamilyID=' . $iFamily . '&linkBack=', $linkBack);
         }
     }
 } else { // not submitting, just get ready to build the page
@@ -754,7 +754,7 @@ if (SystemConfig::getValue('sElectronicTransactionProcessor') == 'Vanco') {
                                 for (var i = 0; i < errorArr.length; i++)
                                     errorStr += "Error " + errorArr[i] + ": " + VancoErrorString(Number(errorArr[i])) + "\n";
                                 alert(errorStr);
-                                window.location = "<?= RedirectURL('AutoPaymentEditor.php') . "?AutID=$iAutID&FamilyID=$aut_FamID$&linkBack=$linkBack" ?>";
+                                window.location = "<?=MiscUtils::RedirectURL('AutoPaymentEditor.php') . "?AutID=$iAutID&FamilyID=$aut_FamID$&linkBack=$linkBack" ?>";
                             }
                         },
                         error: function (jqXHR, textStatus, errorThrown, nashuadata) {

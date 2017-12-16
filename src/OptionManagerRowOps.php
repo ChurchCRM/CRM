@@ -27,7 +27,7 @@ switch ($mode) {
     case 'famroles':
     case 'classes':
         if (!$_SESSION['bMenuOptions']) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             exit;
         }
         break;
@@ -35,7 +35,7 @@ switch ($mode) {
     case 'grptypes':
     case 'grproles':
         if (!$_SESSION['bManageGroups']) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             exit;
         }
         break;
@@ -43,12 +43,12 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     if (!$_SESSION['bAdmin']) {
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         exit;
     }
         break;
     default:
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         break;
 }
 
@@ -79,7 +79,7 @@ switch ($mode) {
         $sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = ".$listID;
         $rsTemp = RunQuery($sSQL);
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+           MiscUtils::Redirect('Menu.php');
             break;
         }
 
@@ -159,7 +159,7 @@ switch ($sAction) {
 
     // If no valid action was specified, abort
     default:
-        Redirect('Menu.php');
+       MiscUtils::Redirect('Menu.php');
         break;
 }
 

@@ -65,7 +65,7 @@ if (isset($_POST['Action'])) {
           $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".InputUtils::LegacyFilterInput($theID)."','".InputUtils::LegacyFilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
           RunQuery($sSQL);
       }
-    Redirect('EventNames.php'); // clear POST
+   MiscUtils::Redirect('EventNames.php'); // clear POST
     break;
 
     case 'DELETE':
