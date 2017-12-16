@@ -45,14 +45,12 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     if ($_SESSION['bNeedPasswordChange'] && !isset($bNoPasswordRedirect)) {
         $redirectURL = 'UserPasswordChange.php?PersonID='.$_SESSION['iUserID'];
     }
-    if ($redirectURL && $_SERVER['SCRIPT_FILENAME'] == SystemURLs::getDocumentRoot() . "/api/index.php"){
-      http_response_code(403);
-      exit;
-    }
-    elseif($redirectURL)
-    {
-      Redirect($redirectURL);
-      exit;
+    if ($redirectURL && $_SERVER['SCRIPT_FILENAME'] == SystemURLs::getDocumentRoot() . "/api/index.php") {
+        http_response_code(403);
+        exit;
+    } elseif ($redirectURL) {
+        Redirect($redirectURL);
+        exit;
     }
     // Check if https is required
 
