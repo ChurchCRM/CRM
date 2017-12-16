@@ -9,6 +9,7 @@ use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use DateTime;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
