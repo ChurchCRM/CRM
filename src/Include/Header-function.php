@@ -22,7 +22,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\MenuConfigQuery;
 use ChurchCRM\UserConfigQuery;
-use ChurchCRM\Utils\RedirectUtils;
 
 function Header_system_notifications()
 {

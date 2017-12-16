@@ -162,64 +162,65 @@
         });
       },
       'refresh' : function () {
-        if (!window.CRM.suppressBackgroundAPIRequests) {
-          window.CRM.APIRequest({
-            method: 'GET',
-            path:"cart/"
-          }).done(function(data) {
-            window.scrollTo(0, 0);
-            $("#iconCount").text(data.PeopleCart.length);
-            var cartDropdownMenu;
-            if (data.PeopleCart.length > 0) {
-              cartDropdownMenu = '\
-                <li id="showWhenCartNotEmpty">\
-                    <ul class="menu">\
-                        <li>\
-                            <a href="CartView.php">\
-                                <i class="fa fa-shopping-cart text-green"></i>' + i18next.t("View Cart") + '\
-                            </a>\
-                        </li>\
-                        <li>\
-                            <a class="emptyCart" >\
-                                <i class="fa fa-trash text-danger"></i>' + i18next.t("Empty Cart") + ' \
-                            </a>\
-                        </li>\
-                        <li>\
-                            <a id="emptyCartToGroup">\
-                                <i class="fa fa-object-ungroup text-info"></i>' + i18next.t("Empty Cart to Group") + '\
-                            </a>\
-                        </li>\
-                        <li>\
-                            <a href="CartToFamily.php">\
-                                <i class="fa fa fa-users text-info"></i>' + i18next.t("Empty Cart to Family") + '\
-                            </a>\
-                        </li>\
-                        <li>\
-                            <a href="CartToEvent.php">\
-                                <i class="fa fa fa-ticket text-info"></i>' + i18next.t("Empty Cart to Event") + '\
-                            </a>\
-                        </li>\
-                        <li>\
-                            <a href="MapUsingGoogle.php?GroupID=0">\
-                                <i class="fa fa-map-marker text-info"></i>' + i18next.t("Map Cart") + '\
-                            </a>\
-                        </li>\
-                    </ul>\
-                </li>\
-                          <!--li class="footer"><a href="#">' + i18next.t("View all") + '</a></li-->\
-                      '
-          }
-            else {
-              cartDropdownMenu = '\
-                <li class="header">' + i18next.t("Your Cart is Empty" ) + '</li>';
-            }
-          $("#cart-dropdown-menu").html(cartDropdownMenu);
-          $("#CartBlock")
-            .animate({'left':(-10)+'px'},30)
-            .animate({'left':(+10)+'px'},30)
-            .animate({'left':(0)+'px'},30);
-          });
+        if (window.CRM.suppressBackgroundAPIRequests) {
+          return false;
         }
+        window.CRM.APIRequest({
+          method: 'GET',
+          path:"cart/"
+        }).done(function(data) {
+          window.scrollTo(0, 0);
+          $("#iconCount").text(data.PeopleCart.length);
+          var cartDropdownMenu;
+          if (data.PeopleCart.length > 0) {
+            cartDropdownMenu = '\
+              <li id="showWhenCartNotEmpty">\
+                  <ul class="menu">\
+                      <li>\
+                          <a href="CartView.php">\
+                              <i class="fa fa-shopping-cart text-green"></i>' + i18next.t("View Cart") + '\
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a class="emptyCart" >\
+                              <i class="fa fa-trash text-danger"></i>' + i18next.t("Empty Cart") + ' \
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a id="emptyCartToGroup">\
+                              <i class="fa fa-object-ungroup text-info"></i>' + i18next.t("Empty Cart to Group") + '\
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a href="CartToFamily.php">\
+                              <i class="fa fa fa-users text-info"></i>' + i18next.t("Empty Cart to Family") + '\
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a href="CartToEvent.php">\
+                              <i class="fa fa fa-ticket text-info"></i>' + i18next.t("Empty Cart to Event") + '\
+                          </a>\
+                      </li>\
+                      <li>\
+                          <a href="MapUsingGoogle.php?GroupID=0">\
+                              <i class="fa fa-map-marker text-info"></i>' + i18next.t("Map Cart") + '\
+                          </a>\
+                      </li>\
+                  </ul>\
+              </li>\
+                        <!--li class="footer"><a href="#">' + i18next.t("View all") + '</a></li-->\
+                    '
+        }
+          else {
+            cartDropdownMenu = '\
+              <li class="header">' + i18next.t("Your Cart is Empty" ) + '</li>';
+          }
+        $("#cart-dropdown-menu").html(cartDropdownMenu);
+        $("#CartBlock")
+          .animate({'left':(-10)+'px'},30)
+          .animate({'left':(+10)+'px'},30)
+          .animate({'left':(0)+'px'},30);
+        });
       }
     };
     
