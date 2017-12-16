@@ -78,6 +78,7 @@ class PDF_Directory extends ChurchInfoReport
         $sContact = sprintf("%s\n%s, %s  %s\n\n%s\n\n", SystemConfig::getValue('sChurchAddress'), SystemConfig::getValue('sChurchCity'), SystemConfig::getValue('sChurchState'), SystemConfig::getValue('sChurchZip'), SystemConfig::getValue('sChurchPhone'));
         $this->MultiCell(197, 10, $sContact, 0, 'C');
         $this->Cell(10);
+        $sDirectoryDisclaimer = iconv('UTF-8', 'ISO-8859-1', $sDirectoryDisclaimer);
         $this->MultiCell(197, 10, $sDirectoryDisclaimer, 0, 'C');
         $this->AddPage();
     }
