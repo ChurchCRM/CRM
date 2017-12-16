@@ -482,12 +482,13 @@
     
     window.CRM.system = {
       'runTimerJobs' : function () {
-        if (!window.CRM.suppressBackgroundAPIRequests) {
-          $.ajax({
-            url: window.CRM.root + "/api/timerjobs/run",
-            type: "POST"
-          });
+        if (window.CRM.suppressBackgroundAPIRequests) {
+          return false;
         }
+        $.ajax({
+          url: window.CRM.root + "/api/timerjobs/run",
+          type: "POST"
+        });
       }
     };
     
@@ -578,16 +579,17 @@
         }
       },
       refresh: function () {
-        if (!window.CRM.suppressBackgroundAPIRequests) {
-          window.CRM.APIRequest({
-            method: 'GET',
-            path: 'dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
-          }).done(function (data) {
-            for (var key in data) {
-              window["CRM"]["dashboard"]["renderers"][key](data[key]);
-            }
-          });
+        if (window.CRM.suppressBackgroundAPIRequests) {
+          return false;
         }
+        window.CRM.APIRequest({
+          method: 'GET',
+          path: 'dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
+        }).done(function (data) {
+          for (var key in data) {
+            window["CRM"]["dashboard"]["renderers"][key](data[key]);
+          }
+        });
       }
     }
 
