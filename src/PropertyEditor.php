@@ -17,7 +17,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have property and classification editing permission
 if (!$_SESSION['bMenuOptions']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -92,7 +92,7 @@ if (isset($_POST['Submit'])) {
         RunQuery($sSQL);
 
         //Route back to the list
-       RedirectUtils::Redirect('PropertyList.php?Type='.$sType);
+        RedirectUtils::Redirect('PropertyList.php?Type='.$sType);
     }
 } else {
     if ($iPropertyID != 0) {

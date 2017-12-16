@@ -20,7 +20,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Check for Create Directory user permission.
 if (!$bCreateDirectory) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 

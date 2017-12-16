@@ -21,7 +21,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bNotes']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -91,7 +91,7 @@ if (isset($_POST['Submit'])) {
         }
 
         //Send them back to whereever they came from
-       RedirectUtils::Redirect($sBackPage);
+        RedirectUtils::Redirect($sBackPage);
     }
 } else {
     //Are we adding or editing?

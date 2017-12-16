@@ -22,7 +22,7 @@ $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -94,7 +94,7 @@ $updateEnvelopes = 0;
 
 // Service the action buttons
 if (isset($_POST['PrintReport'])) {
-   RedirectUtils::Redirect('Reports/EnvelopeReport.php');
+    RedirectUtils::Redirect('Reports/EnvelopeReport.php');
 } elseif (isset($_POST['AssignAllFamilies'])) {
     $newEnvNum = $iAssignStartNum;
     $envelopesToWrite = []; // zero it out

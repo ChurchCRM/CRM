@@ -35,17 +35,17 @@ if (array_key_exists('FamilyID', $_GET)) {
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
     if (!($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])))) {
-       RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 
     $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_ID = '.$iFamilyID;
     if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
-       RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 } elseif (!$_SESSION['bAddRecords']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -497,10 +497,10 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //Which submit button did they press?
         if (isset($_POST['FamilySubmit'])) {
             //Send to the view of this person
-           RedirectUtils::Redirect('FamilyView.php?FamilyID='.$iFamilyID);
+            RedirectUtils::Redirect('FamilyView.php?FamilyID='.$iFamilyID);
         } else {
             //Reload to editor to add another record
-           RedirectUtils::Redirect('FamilyEditor.php');
+            RedirectUtils::Redirect('FamilyEditor.php');
         }
     }
 } else {

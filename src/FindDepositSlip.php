@@ -22,7 +22,7 @@ $sPageTitle = gettext('Deposit Listing');
 
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance']) {
-   RedirectUtils::Redirect('index.php');
+    RedirectUtils::Redirect('index.php');
     exit;
 }
 

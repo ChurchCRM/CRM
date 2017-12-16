@@ -24,7 +24,7 @@ $sGroupKey = InputUtils::LegacyFilterInput($_GET['GroupKey'], 'string');
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if (!$_SESSION['bAddRecords']) {
-   RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -34,10 +34,10 @@ if (isset($_POST['Delete'])) {
     RunQuery($sSQL);
 
     if ($linkBack != '') {
-       RedirectUtils::Redirect($linkBack);
+        RedirectUtils::Redirect($linkBack);
     }
 } elseif (isset($_POST['Cancel'])) {
-   RedirectUtils::Redirect($linkBack);
+    RedirectUtils::Redirect($linkBack);
 }
 
 require 'Include/Header.php';
