@@ -9,6 +9,7 @@ use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use DateTime;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -91,7 +92,7 @@ class Person extends BasePerson implements iPhoto
 
     public function postInsert(ConnectionInterface $con = null)
     {
-      $this->createTimeLineNote(true);
+      $this->createTimeLineNote('create');
       if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
       {
         $NotificationEmail = new NewPersonOrFamilyEmail($this);
@@ -103,24 +104,29 @@ class Person extends BasePerson implements iPhoto
 
     public function postUpdate(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote(false);
+      if (!empty($this->getDateLastEdited())) {
+        $this->createTimeLineNote('edit');
+      }
     }
 
-    private function createTimeLineNote($new)
+    private function createTimeLineNote($type)
     {
         $note = new Note();
         $note->setPerId($this->getId());
+        $note->setType($type);
+        $note->setDateEntered(new DateTime());
 
-        if ($new) {
-            $note->setText(gettext('Created'));
-            $note->setType('create');
-            $note->setEnteredBy($this->getEnteredBy());
-            $note->setDateEntered($this->getDateEntered());
-        } else {
-            $note->setText(gettext('Updated'));
-            $note->setType('edit');
-            $note->setEnteredBy($this->getEditedBy());
-            $note->setDateLastEdited($this->getDateLastEdited());
+         switch ($type) {
+            case "create":
+              $note->setText(gettext('Created'));
+              $note->setEnteredBy($this->getEnteredBy());
+              $note->setDateEntered($this->getDateEntered());
+              break;
+            case "edit":
+              $note->setText(gettext('Updated'));
+              $note->setEnteredBy($this->getEditedBy());
+              $note->setDateEntered($this->getDateLastEdited());
+              break;
         }
 
         $note->save();
