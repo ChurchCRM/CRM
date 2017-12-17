@@ -7,15 +7,11 @@
  *
  *  http://www.churchcrm.io/
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
-require_once('Header-function.php');
+require_once 'Header-function.php';
+require_once 'Header-Security.php';
 
 // Turn ON output buffering
 ob_start();

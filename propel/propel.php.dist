@@ -11,10 +11,10 @@ return [
     'propel' => [
         'paths' => [
             // The directory where Propel expects to find your `schema.xml` file.
-            'schemaDir' => '/vagrant/propel',
+            'schemaDir' => 'propel',
 
             // The directory where Propel should output generated object model classes.
-            'phpDir' => '/vagrant/src/ChurchCRM/model',
+            'phpDir' => 'src/ChurchCRM/model',
         ],
         /*
         'database' => [

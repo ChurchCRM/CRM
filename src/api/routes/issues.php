@@ -1,7 +1,9 @@
 <?php
+
 // Routes
 
 $app->post('/issues', function ($request, $response, $args) {
-  $input = (object)$request->getParsedBody();
-  return $this->SystemService->reportIssue($input);
+    $input = json_decode($request->getBody());
+    
+    return $this->SystemService->reportIssue($input);
 });

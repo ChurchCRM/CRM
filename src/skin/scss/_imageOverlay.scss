@@ -1,0 +1,29 @@
+.image-container {
+    position: relative;
+}
+.image-container .after {
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+    width: 100%;
+    height: 44px;
+    display: block;
+    color: #FFF;
+}
+.image-container:hover .after .buttons {
+    display: block;
+    background: rgba(0, 0, 0, .6);
+}
+.image-container .after .buttons {
+    font-size: 1.7em;
+    width: 80%;
+    max-width: 180px;
+    text-align:center;
+    background: rgba(0, 0, 0, .2);
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+.image-container .after .buttons a {
+    color: #EEE;
+}

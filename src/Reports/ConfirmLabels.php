@@ -4,57 +4,62 @@
 *  filename    : Reports/ConfimLabels.php
 *  last change : 2003-08-30
 *  description : Creates a PDF with all the mailing labels for the confirm data letter
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
+
 ******************************************************************************/
 
-require "../Include/Config.php";
-require "../Include/Functions.php";
-require "../Include/ReportFunctions.php";
+require '../Include/Config.php';
+require '../Include/Functions.php';
+require '../Include/ReportFunctions.php';
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_Label;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\FamilyQuery;
 
-$sLabelFormat = FilterInput($_GET["labeltype"]);
-setcookie("labeltype", $sLabelFormat, time()+60*60*24*90, "/" );
+$sLabelFormat = InputUtils::LegacyFilterInput($_GET['labeltype']);
+$bRecipientNamingMethod = $_GET['recipientnamingmethod'];
+setcookie('labeltype', $sLabelFormat, time() + 60 * 60 * 24 * 90, '/');
 
 $pdf = new PDF_Label($sLabelFormat);
 
-$sFontInfo = FontFromName($_GET["labelfont"]);
-setcookie("labelfont", $_GET["labelfont"], time()+60*60*24*90, "/" );
-$sFontSize = $_GET["labelfontsize"];
-setcookie("labelfontsize", $sFontSize, time()+60*60*24*90, "/");
-$pdf->SetFont($sFontInfo[0],$sFontInfo[1]);
-if($sFontSize != "default") $pdf->Set_Char_Size($sFontSize);
+$sFontInfo = FontFromName($_GET['labelfont']);
+setcookie('labelfont', $_GET['labelfont'], time() + 60 * 60 * 24 * 90, '/');
+$sFontSize = $_GET['labelfontsize'];
+setcookie('labelfontsize', $sFontSize, time() + 60 * 60 * 24 * 90, '/');
+$pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
+if ($sFontSize != 'default') {
+    $pdf->Set_Char_Size($sFontSize);
+}
 
-// Get all the families
-$sSQL = "SELECT * FROM family_fam WHERE 1 ORDER BY fam_Name";
-$rsFamilies = RunQuery($sSQL);
+// Get all the families which receive the newsletter by mail
+$families = FamilyQuery::create()
+        ->orderByZip()
+        ->find();
 
-// Loop through families
-while ($aFam = mysql_fetch_array($rsFamilies)) {
-	extract ($aFam);
+foreach ($families as $family) {
+    if ($bRecipientNamingMethod == "familyname") {
+        $labelText = $family->getName();
+    } else {
+        $labelText = $pdf->MakeSalutation($family->getID());
+    }
+    if ($family->getAddress1() != '') {
+        $labelText .= "\n".$family->getAddress1();
+    }
+    if ($family->getAddress2() != '') {
+        $labelText .= "\n".$family->getAddress2();
+    }
+    $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
 
-   $labelStr = $pdf->MakeSalutation ($fam_ID);
-	if ($fam_Address1 != "") {
-      $labelStr .= "\n" . $fam_Address1;
-	}
-	if ($fam_Address2 != "") {
-      $labelStr .= "\n" . $fam_Address2;
-	}
-   $labelStr .= sprintf ("\n%s, %s  %s", $fam_City, $fam_State, $fam_Zip);
-	if ($fam_Country != "" && $fam_Country != "USA" && $fam_Country != "United States") {
-      $labelStr .= "\n" . $fam_Country;
-	}
-   $pdf->Add_PDF_Label($labelStr);
+    if ($family->getCountry() != '' && $family->getCountry() != 'USA' && $family->getCountry() != 'United States') {
+        $labelText .= "\n".$family->getCountry();
+    }
+
+    $pdf->Add_PDF_Label($labelText);
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-if ($iPDFOutputType == 1)
-	$pdf->Output("ConfirmDataLabels" . date("Ymd") . ".pdf", "D");
-else
-	$pdf->Output();
-?>
+if ($iPDFOutputType == 1) {
+    $pdf->Output('ConfirmDataLabels'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+} else {
+    $pdf->Output();
+}

@@ -25,11 +25,11 @@ $("#submitIssue").click(function () {
   }).done(function (data) {
     console.log(data);
     $("#IssueReportModal .modal-body").empty();
-    $("<h2/>").text("Successfully submitted Issue #" + data.number).appendTo("#IssueReportModal .modal-body");
+    $("<h2/>").text( i18next.t("Successfully submitted Issue")+" #" + data.number).appendTo("#IssueReportModal .modal-body");
     $("<a/>", {
       href: data.url,
       target: "_blank",
-      text: "View Issue #" + data.number + " on GitHub"
+      text:  i18next.t("View Issue on GitHub") + ": #" + data.number
     }).appendTo("#IssueReportModal .modal-body");
     $("#submitIssue").remove();
     $("<button/>").text("Close").attr("data-dismiss", "modal").addClass("btn btn-primary").appendTo("#IssueReportModal .modal-footer");

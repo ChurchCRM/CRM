@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{{churchName}}</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron text-center">
+        <h2 class="display-3">{{churchName}}</b></h2>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-10">
+            <p>
+                {{dear}} {{toName}},
+            </p>
+            <p>
+                {{body}}
+            </p>
+            {{# userName}}
+            <p>
+                {{userNameText}}: <a href="{{churchCRMURL}}Login.php?username={{userName}}" target="_blank">{{userName}}</a><br/>
+                {{# password}}
+                {{passwordText}}: {{password}}
+                {{/ password}}
+            <p/>
+            {{/ userName}}
+            {{# verificationToken}}
+            <p>
+                <a href="{{churchCRMURL}}external/verify/{{verificationToken}}" target="_blank">{{churchCRMURL}}external/verify/{{verificationToken}}</a>
+            </p>
+            {{/ verificationToken}}
+            {{# passwordToken}}
+            <p>
+                <a href="{{churchCRMURL}}external/password/set/{{passwordToken}}" target="_blank">{{resetPasswordText}}</a>
+            </p>
+            {{/ passwordToken}}
+            
+            {{# familyLink }}
+              <p><a href="{{familyLink}}">View Family Page</a></p>
+            {{/ familyLink }}
+             {{# personLink }}
+              <p><a href="{{personLink}}">View Person Page</a></p>
+            {{/ personLink }}
+            <p>
+            {{confirmSincerely}}, <br/>
+            {{confirmSigner}}
+            </p>
+        </div>
+        <p/>
+    </div>
+
+    <footer class="footer text-center">
+        <hr/>
+        <p>
+            {{churchName}}<br/>
+            {{churchAddress}}<br/>
+            {{churchPhone}}<br/>
+            {{churchEmail}}<br/>
+        <p/>
+        If you do not want to receive these emails from {{churchName}} in the future, please contact the church admins.
+        </p>
+        <hr width="50%"/>
+        <p>Church<b>CRM</b> 2015-2017</p>
+    </footer>
+
+</div> <!-- /container -->
+
+</body>
+</html>

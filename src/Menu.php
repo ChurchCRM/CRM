@@ -9,72 +9,179 @@
 *
 *  Additional Contributors:
 *  2006 Ed Davis
+*  2017 Philippe Logel
 *
-*
-*  Copyright Contributors
-*
-*
-*  ChurchCRM is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  This file best viewed in a text editor with tabs stops set to 4 characters
-*
+
 ******************************************************************************/
 
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-use ChurchCRM\Service\FinancialService;
+use ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\MenuEventsCount;
 
 $financialService = new FinancialService();
-
-$sSQL = "select * from family_fam order by fam_DateLastEdited desc  LIMIT 10;";
-$rsLastFamilies = RunQuery($sSQL);
-
-$sSQL = "select * from family_fam where fam_DateLastEdited is null order by fam_DateEntered desc LIMIT 10;";
-$rsNewFamilies = RunQuery($sSQL);
-
-$sSQL = "select * from person_per order by per_DateLastEdited desc  LIMIT 10;";
-$rsLastPeople = RunQuery($sSQL);
-
-$sSQL = "select * from person_per where per_DateLastEdited is null order by per_DateEntered desc LIMIT 10;";
-$rsNewPeople = RunQuery($sSQL);
-
 $dashboardService = new DashboardService();
-$personCount = $dashboardService->getPersonCount();
-$familyCount = $dashboardService->getFamilyCount();
-$groupStats = $dashboardService->getGroupStats();
+//Last edited active families
+$updatedFamilies = $dashboardService->getUpdatedFamilies(10);
+//Newly added active families
+$latestFamilies = $dashboardService->getLatestFamilies(10);
+//last Edited members from Active families
+$updatedMembers = $dashboardService->getUpdatedMembers(12);
+//Newly added members from Active families
+$latestMembers = $dashboardService->getLatestMembers(12);
+
 $depositData = false;  //Determine whether or not we should display the deposit line graph
-if ($_SESSION['bFinance']) {  
-  $depositData =  \ChurchCRM\Base\DepositQuery::create()->filterByDate(array('min' =>date('Y-m-d', strtotime('-90 days'))))->find()->toJSON();
+if ($_SESSION['bFinance']) {
+    $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
+    if (count($deposits) > 0) {
+        $depositData = $deposits->toJSON();
+    }
 }
 
+
 // Set the page title
-$sPageTitle = gettext("Welcome to"). " <b>Church</b>CRM";
+$sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
 
 require 'Include/Header.php';
-?>
+
+$showBanner = SystemConfig::getValue("bEventsOnDashboardPresence");
+
+$peopleWithBirthDays = MenuEventsCount::getBirthDates();
+$Anniversaries = MenuEventsCount::getAnniversaries();
+$peopleWithBirthDaysCount = MenuEventsCount::getNumberBirthDates();
+$AnniversariesCount = MenuEventsCount::getNumberAnniversaries();
+
+
+if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
+    ?>
+    <div class="alert alert-info alert-dismissible bg-purple disabled color-palette" id="Menu_Banner">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="color:#fff;">&times;</button>
+
+    <?php
+    if ($peopleWithBirthDaysCount > 0) {
+        ?>
+        <h4 class="alert-heading"><?= gettext("Birthdates of the day") ?></h4>
+        <p>
+        <div class="row">
+
+      <?php
+        $new_row = false;
+        $count_people = 0;
+
+        {
+            foreach ($peopleWithBirthDays as $peopleWithBirthDay) {
+                if ($new_row == false) {
+                    ?>
+
+                    <div class="row">
+                <?php
+                    $new_row = true;
+                } ?>
+                <div class="col-sm-3">
+                <label class="checkbox-inline">
+                    <a href="<?= $peopleWithBirthDay->getViewURI()?>" class="btn btn-link" style="text-decoration: none"><?= $peopleWithBirthDay->getFullNameWithAge() ?></a>
+                </label>
+                </div>
+              <?php
+                $count_people+=1;
+                $count_people%=4;
+                if ($count_people == 0) {
+                    ?>
+                    </div>
+                    <?php $new_row = false;
+                }
+            }
+
+            if ($new_row == true) {
+                ?>
+                </div>
+            <?php
+            }
+          } ?>
+
+        </div>
+        </p>
+    <?php
+    } ?>
+
+    <?php if ($AnniversariesCount > 0) {
+        if ($peopleWithBirthDaysCount > 0) {
+            ?>
+            <hr>
+    <?php
+        } ?>
+
+        <h4 class="alert-heading"><?= gettext("Anniversaries of the day")?></h4>
+        <p>
+        <div class="row">
+
+    <?php
+        $new_row = false;
+        $count_people = 0;
+
+        foreach ($Anniversaries as $Anniversary) {
+            if ($new_row == false) {
+                ?>
+                <div class="row">
+
+                <?php $new_row = true;
+            } ?>
+            <div class="col-sm-3">
+            <label class="checkbox-inline">
+              <a href="<?= $Anniversary->getViewURI() ?>" class="btn btn-link" style="text-decoration: none"><?= $Anniversary->getFamilyString() ?></a>
+            </label>
+            </div>
+
+            <?php
+            $count_people+=1;
+            $count_people%=4;
+            if ($count_people == 0) {
+                ?>
+                </div>
+            <?php
+                $new_row = false;
+            }
+        }
+
+        if ($new_row == true) {
+            ?>
+            </div>
+        <?php
+        } ?>
+
+        </div>
+        </p>
+    <?php
+    } ?>
+  </div>
+
+<?php
+}?>
+
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>
-                    <?= $familyCount['familyCount'] ?>
+                <h3 id="familyCountDashboard">
+                    0
                 </h3>
                 <p>
-                    <?= gettext("Families") ?>
+                    <?= gettext('Families') ?>
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-stalker"></i>
+                <i class="fa fa-users"></i>
             </div>
-            <a href="<?= $sRootPath ?>/FamilyList.php" class="small-box-footer">
-                <?= gettext("See all Families") ?> <i class="fa fa-arrow-circle-right"></i>
+            <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
+                <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -82,18 +189,56 @@ require 'Include/Header.php';
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>
-                    <?= $personCount['personCount'] ?>
+                <h3 id="peopleStatsDashboard">
+                    0
                 </h3>
                 <p>
-                    <?= gettext("People") ?>
+                    <?= gettext('People') ?>
                 </p>
             </div>
             <div class="icon">
-                <i class="ion ion-person"></i>
+                <i class="fa fa-user"></i>
             </div>
-            <a href="<?= $sRootPath ?>/SelectList.php?mode=person" class="small-box-footer">
-                <?= gettext("See All People") ?> <i class="fa fa-arrow-circle-right"></i>
+            <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
+                <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3 id="groupStatsSundaySchool">
+                   0
+                </h3>
+                <p>
+                    <?= gettext('Sunday School Classes') ?>
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-child"></i>
+            </div>
+            <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
+                <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3 id="groupsCountDashboard">
+                  0
+                </h3>
+                <p>
+                    <?= gettext('Groups') ?>
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-gg"></i>
+            </div>
+            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
+                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -102,51 +247,37 @@ require 'Include/Header.php';
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>
-                    <?= $groupStats['sundaySchoolClasses'] ?>
+                  <?=
+                     ChurchCRM\Base\EventAttendQuery::create()
+                    ->filterByCheckinDate(null, \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+                    ->filterByCheckoutDate(null, \Propel\Runtime\ActiveQuery\Criteria::EQUAL)
+                    ->find()
+                    ->count();
+                  ?>
                 </h3>
                 <p>
-                    <?= gettext("Sunday School Classes") ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-child"></i>
-            </div>
-            <a href="<?= $sRootPath ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
-                <?= gettext("More info") ?> <i class="fa fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-red">
-            <div class="inner">
-                <h3>
-                  <?= $groupStats['groups'] -$groupStats['sundaySchoolClasses']  ?>
-                </h3>
-                <p>
-                    <?= gettext("Groups") ?>
+                    <?= gettext('Attendees Checked In') ?>
                 </p>
             </div>
             <div class="icon">
                 <i class="fa fa-gg"></i>
             </div>
-            <a href="<?= $sRootPath ?>/GroupList.php" class="small-box-footer">
-                <?= gettext("More info") ?>  <i class="fa fa-arrow-circle-right"></i>
+            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
+                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
 </div><!-- /.row -->
 
 <?php
-if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
-{
+if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
 ?>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="box box-info">
             <div class="box-header">
-                <i class="ion ion-cash"></i>
-                <h3 class="box-title"><?= gettext("Deposit Tracking") ?></h3>
+                <i class="fa fa-money"></i>
+                <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
                 <div class="box-tools pull-right">
                     <div id="deposit-graph" class="chart-legend"></div>
                 </div>
@@ -158,34 +289,33 @@ if ($depositData) // If the user has Finance permissions, then let's display the
     </div>
 </div>
 <?php
-}  //END IF block for Finance permissions to include HTML for Deposit Chart
- ?>
+                  }  //END IF block for Finance permissions to include HTML for Deposit Chart
+?>
 
 <div class="row">
     <div class="col-lg-6">
         <div class="box box-solid">
             <div class="box-header">
-                <i class="ion ion-person-add"></i>
-                <h3 class="box-title"><?= gettext("Latest Families") ?></h3>
+                <i class="fa fa-user-plus"></i>
+                <h3 class="box-title"><?= gettext('Latest Families') ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class="dataTable table table-striped table-condensed" id="latestFamiliesDashboardItem">
                         <thead>
                         <tr>
-                            <th data-field="name"><?= gettext("Family Name") ?></th>
-                            <th data-field="address"><?= gettext("Address") ?></th>
-                            <th data-field="city"><?= gettext("Created") ?></th>
+                            <th data-field="name"><?= gettext('Family Name') ?></th>
+                            <th data-field="address"><?= gettext('Address') ?></th>
+                            <th data-field="city"><?= gettext('Created') ?></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php while ($row = mysql_fetch_array($rsNewFamilies)) { ?>
-                        <tr>
-                            <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
-                            <td><?php if ($row['fam_Address1'] != "") { echo $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip']; } ?></td>
-                            <td><?= FormatDate($row['fam_DateEntered'], false) ?></td>
-                        </tr>
-                        <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -196,26 +326,25 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         <div class="box box-solid">
             <div class="box-header">
                 <i class="fa fa-check"></i>
-                <h3 class="box-title"><?= gettext("Updated Families") ?></h3>
+                <h3 class="box-title"><?= gettext('Updated Families') ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class=" dataTable table table-striped table-condensed" id="updatedFamiliesDashboardItem">
                         <thead>
                         <tr>
-                            <th data-field="name"><?= gettext("Family Name") ?></th>
-                            <th data-field="address"><?= gettext("Address") ?></th>
-                            <th data-field="city"><?= gettext("Updated") ?></th>
+                            <th data-field="name"><?= gettext('Family Name') ?></th>
+                            <th data-field="address"><?= gettext('Address') ?></th>
+                            <th data-field="city"><?= gettext('Updated') ?></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php while ($row = mysql_fetch_array($rsLastFamilies)) { ?>
-                            <tr>
-                                <td><a href="FamilyView.php?FamilyID=<?= $row['fam_ID'] ?>"><?= $row['fam_Name'] ?></a></td>
-                                <td><?= $row['fam_Address1']. ", ".$row['fam_City']." ".$row['fam_Zip'] ?></td>
-                                <td><?= FormatDate($row['fam_DateLastEdited'], false) ?></td>
-                            </tr>
-                        <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -228,7 +357,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext("Latest Members") ?></h3>
+                    <h3 class="box-title"><?= gettext('Latest Members') ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -239,14 +368,19 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
-                        <?php while ($row = mysql_fetch_array($rsNewPeople)) { ?>
-                        <li>
-                            <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
-                            <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                            <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
-                            <span class="users-list-date"><?= FormatDate($row['per_DateEntered'], false) ?></span>
-                        </li>
-                        <?php } ?>
+                        <?php foreach ($latestMembers as $person) {
+    ?>
+                            <li>
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                         alt="<?= $person->getFullName() ?>" class="user-image initials-image"
+                                         width="85" height="85"/><br/>
+                                    <?= $person->getFullName() ?></a>
+                                <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
+                            </li>
+                            <?php
+}
+                        ?>
                     </ul>
                     <!-- /.users-list -->
                 </div>
@@ -257,7 +391,7 @@ if ($depositData) // If the user has Finance permissions, then let's display the
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext("Updated Members") ?></h3>
+                    <h3 class="box-title"><?= gettext('Updated Members') ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -268,14 +402,20 @@ if ($depositData) // If the user has Finance permissions, then let's display the
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
-                        <?php while ($row = mysql_fetch_array($rsLastPeople)) { ?>
+                        <?php foreach ($updatedMembers as $person) {
+                            ?>
                             <li>
-                                <a class="users-list" href="PersonView.php?PersonID=<?= $row['per_ID'] ?>">
-                                <img src="<?=$sRootPath?>/api/persons/<?= $row['per_ID'] ?>/photo" alt="User Image" class="user-image" width="85" height="85" /><br/>
-                                <?= $row['per_FirstName']." ".substr($row['per_LastName'],0,1) ?></a>
-                                <span class="users-list-date"><?= FormatDate($row['per_DateLastEdited'], false) ?></span>
+                                <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                         alt="<?= $person->getFullName() ?>" class="user-image initials-image"
+                                         width="85" height="85"/><br/>
+                                    <?= $person->getFullName() ?></a>
+                                <span
+                                    class="users-list-date"><?= date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
-                        <?php } ?>
+                            <?php
+                        }
+                        ?>
                     </ul>
                     <!-- /.users-list -->
                 </div>
@@ -285,10 +425,9 @@ if ($depositData) // If the user has Finance permissions, then let's display the
 </div>
 
 <!-- this page specific inline scripts -->
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 <?php
-if ($depositData) // If the user has Finance permissions, then let's display the deposit line chart
-{
+if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
 ?>
     //---------------
     //- LINE CHART  -
@@ -316,11 +455,27 @@ if ($depositData) // If the user has Finance permissions, then let's display the
     };
     var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
     var lineChart = new Chart(lineChartCanvas).Line(lineData,options);
-    
+
   });
 <?php
-}  //END IF block for Finance permissions to include JS for Deposit Chart
+                        }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>
+</script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  var timeOut = <?= SystemConfig::getValue("iEventsOnDashboardPresenceTimeOut")*1000 ?>;
+
+  $(document).ready (function(){
+    $("#myWish").click(function showAlert() {
+        $("#Menu_Banner").alert();
+        window.setTimeout(function () {
+            $("#Menu_Banner").alert('close'); }, timeOut);
+       });
+    });
+
+    $("#Menu_Banner").fadeTo(timeOut, 500).slideUp(500, function(){
+    $("#Menu_Banner").slideUp(500);
+});
 </script>
 
 

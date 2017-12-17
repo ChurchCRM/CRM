@@ -6,612 +6,419 @@
  *  description : page header used for most pages
  *
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
+ *  Update 2017 Philippe Logel
  *
- *
- *  LICENSE:
- *  (C) Free Software Foundation, Inc.
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  General Public License for more details.
- *
- *  http://www.gnu.org/licenses
- *
- *  This file best viewed in a text editor with tabs stops set to 4 characters
  *
  ******************************************************************************/
 
 require_once 'Functions.php';
 
-use ChurchCRM\Service\TaskService;
+use ChurchCRM\Service\SystemService;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\NotificationService;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\GroupQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\ListOptionQuery;
+use ChurchCRM\MenuConfigQuery;
+use ChurchCRM\UserConfigQuery;
 
-function Header_head_metatag() {
-  global $sLanguage, $bExportCSV, $sMetaRefresh, $sHeader, $sGlobalMessage;
-  global $sPageTitle, $sRootPath;
-
-  if (strlen($sMetaRefresh)) {
-    echo $sMetaRefresh;
-  }
-  ?>
-  <title>ChurchCRM: <?= $sPageTitle ?></title>
-  <?php
+function Header_system_notifications()
+{
+    if (NotificationService::hasActiveNotifications()) {
+        ?>
+        <div class="systemNotificationBar">
+            <?php
+            foreach (NotificationService::getNotifications() as $notification) {
+                echo "<a href=\"" . $notification->link . "\">" . $notification->title . "</a>";
+            } ?>
+        </div>
+        <?php
+    }
 }
 
-function Header_modals() {
-  ?>
-  <!-- API Call Error Modal -->
-  <div id="APIError" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><?= gettext("ERROR!") ?></h4>
-        </div>
-        <div class="modal-body">
-          <p><?= gettext("Error making API Call to:") ?> <span id="APIEndpoint"></span></p>
+function Header_head_metatag()
+{
+    global $sMetaRefresh, $sPageTitle;
 
-          <p><?= gettext("Error text:") ?> <span id="APIErrorText"></span></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal"><?= gettext("Close") ?></button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End API Call Error Modal -->
+    if (strlen($sMetaRefresh) > 0) {
+        echo $sMetaRefresh;
+    } ?>
+    <title>ChurchCRM: <?= $sPageTitle ?></title>
+    <?php
+}
 
-  <!-- Issue Report Modal -->
-  <div id="IssueReportModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <form name="issueReport">
-          <input type="hidden" name="pageName" value="<?= $_SERVER['SCRIPT_NAME']?>"/>
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><?= gettext("Issue Report!") ?></h4>
-          </div>
-          <div class="modal-body">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-xl-3">
-                  <label for="issueTitle"><?= gettext("Enter a Title for your bug / feature report:") ?> </label>
-                </div>
-                <div class="col-xl-3">
-                  <input type="text" name="issueTitle" style="width:100%">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xl-3">
-                  <label for="issueDescription"><?= gettext("What were you doing when you noticed the bug / feature opportunity?") ?></label>
-                </div>
-                <div class="col-xl-3">
-                  <textarea rows="10" cols="50" name="issueDescription" style="width:100%"></textarea>
-                </div>
-              </div>
+function Header_modals()
+{
+    ?>
+    <!-- Issue Report Modal -->
+    <div id="IssueReportModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <form name="issueReport">
+                    <input type="hidden" name="pageName" value="<?= $_SERVER['SCRIPT_NAME'] ?>"/>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><?= gettext('Issue Report!') ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    <label
+                                            for="issueTitle"><?= gettext('Enter a Title for your bug / feature report') ?>
+                                        : </label>
+                                </div>
+                                <div class="col-xl-3">
+                                    <input type="text" name="issueTitle">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    <label
+                                            for="issueDescription"><?= gettext('What were you doing when you noticed the bug / feature opportunity?') ?></label>
+                                </div>
+                                <div class="col-xl-3">
+                                    <textarea rows="10" cols="50" name="issueDescription"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li><?= gettext('When you click "submit," an error report will be posted to the ChurchCRM GitHub Issue tracker.') ?></li>
+                            <li><?= gettext('Please do not include any confidential information.') ?></li>
+                            <li><?= gettext('Some general information about your system will be submitted along with the request such as Server version and browser headers.') ?></li>
+                            <li><?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?></li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="submitIssue"><?= gettext('Submit') ?></button>
+                    </div>
+                </form>
             </div>
-            <ul>
-              <li><?= gettext("When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker.") ?></li>
-              <li><?= gettext("Please do not include any confidential information.") ?></li>
-              <li><?= gettext("Some general information about your system will be submitted along with the request such as Server version and browser headers.") ?></li>
-              <li><?= gettext("No personally identifiable information will be submitted unless you purposefully include it.") ?>"</li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="submitIssue"><?= gettext("Submit") ?></button>
-          </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
-  <!-- End Issue Report Modal -->
+    <!-- End Issue Report Modal -->
 
-  <?php
+    <?php
 }
 
-function Header_body_scripts() {
-  global $sRootPath, $localeInfo;
-
-  checkAllowedURL();
-  ?>
-  <script src="<?= $sRootPath ?>/skin/js/IssueReporter.js"></script>
-
-  <script>
-    window.CRM = {
-      root: "<?= $sRootPath ?>",
-      lang: "<?= $localeInfo->getLanguageCode() ?>"
-    };
-
-    window.CRM.DisplayErrorMessage = function(endpoint, message) {
-      $(".modal").modal('hide');
-      $("#APIError").modal('show');
-      $("#APIEndpoint").text(endpoint);
-      $("#APIErrorText").text(message);
-    };
-
-    window.CRM.VerifyThenLoadAPIContent = function(url) {
-      var error = '<?=gettext("There was a problem retrieving the requested object") ?>';
-      $.ajax({
-        type: 'HEAD',
-        url: url,
-        async: false,
-        statusCode: {
-          200: function() {
-            window.open(url);
-          },
-          404: function() {
-            window.CRM.DisplayErrorMessage(url, error);
-          },
-          500: function() {
-            window.CRM.DisplayErrorMessage(url, error);
-          }
-        }
-      });
-    };
-
-    $(document).ajaxError(function(evt, xhr, settings) {
-      var CRMResponse = JSON.parse(xhr.responseText);
-      window.CRM.DisplayErrorMessage("[" + settings.type + "] " + settings.url, " " + CRMResponse.message);
-    });
-
-    function LimitTextSize(theTextArea, size) {
-      if(theTextArea.value.length > size) {
-        theTextArea.value = theTextArea.value.substr(0, size);
-      }
-    }
-
-    function popUp(URL) {
-      var day = new Date();
-      var id = day.getTime();
-      eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
-    }
-
-  </script>
-  <?php
+function Header_body_scripts()
+{
+    global $localeInfo;
+    $systemService = new SystemService(); ?>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+        window.CRM = {
+            root: "<?= SystemURLs::getRootPath() ?>",
+            lang: "<?= $localeInfo->getLanguageCode() ?>",
+            locale: "<?= $localeInfo->getLocale() ?>",
+            shortLocale: "<?= $localeInfo->getShortLocale() ?>",
+            maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
+            maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
+            datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
+            iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
+            plugin: {
+                dataTable : {
+                   "language": {
+                        "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
+                    },
+                    responsive: true,
+                    "dom": 'T<"clear">lfrtip',
+                    "tableTools": {
+                        "sSwfPath": "<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"
+                    }
+                }
+            },
+            PageName:"<?= $_SERVER['PHP_SELF']?>"
+        };
+    </script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
+    <?php
 }
 
 $security_matrix = GetSecuritySettings();
 
-function GetSecuritySettings() {
-  $aSecurityList[] = "bAdmin";
-  $aSecurityList[] = "bAddRecords";
-  $aSecurityList[] = "bEditRecords";
-  $aSecurityList[] = "bDeleteRecords";
-  $aSecurityList[] = "bMenuOptions";
-  $aSecurityList[] = "bManageGroups";
-  $aSecurityList[] = "bFinance";
-  $aSecurityList[] = "bNotes";
-  $aSecurityList[] = "bCommunication";
-  $aSecurityList[] = "bCanvasser";
-  $aSecurityList[] = "bAddEvent";
-  $aSecurityList[] = "bSeePrivacyData";
+// return the security group to table
+function GetSecuritySettings()
+{
+    $aSecurityListPrimal[] = 'bAdmin';
+    $aSecurityListPrimal[] = 'bAddRecords';
+    $aSecurityListPrimal[] = 'bEditRecords';
+    $aSecurityListPrimal[] = 'bDeleteRecords';
+    $aSecurityListPrimal[] = 'bMenuOptions';
+    $aSecurityListPrimal[] = 'bManageGroups';
+    $aSecurityListPrimal[] = 'bFinance';
+    $aSecurityListPrimal[] = 'bNotes';
+    $aSecurityListPrimal[] = 'bCommunication';
+    $aSecurityListPrimal[] = 'bCanvasser';
+    $aSecurityListPrimal[] = 'bAddEvent';
+    $aSecurityListPrimal[] = 'bSeePrivacyData';
 
-  $sSQL = "SELECT DISTINCT ucfg_name 
-           FROM userconfig_ucfg 
-           WHERE ucfg_per_id = 0 AND ucfg_cat = 'SECURITY' 
-           ORDER by ucfg_id";
+    $ormSecGrpLists = UserConfigQuery::Create()
+                        ->filterByPeronId(0)
+                        ->filterByCat('SECURITY')
+                        ->orderById()
+                        ->find();
 
-  $rsSecGrpList = RunQuery($sSQL);
-
-  while ($aRow = mysql_fetch_array($rsSecGrpList)) {
-    $aSecurityList[] = $aRow['ucfg_name'];
-  }
-
-  asort($aSecurityList);
-
-  $sSecurityCond = " AND (security_grp = 'bALL'";
-  for ($i = 0; $i < count($aSecurityList); $i++) {
-    if (array_key_exists($aSecurityList[$i], $_SESSION) && $_SESSION[$aSecurityList[$i]]) {
-      $sSecurityCond .= " OR security_grp = '" . $aSecurityList[$i] . "'";
+    foreach ($ormSecGrpLists as $ormSecGrpList) {
+        $aSecurityListPrimal[] = $ormSecGrpList->getName();
     }
-  }
-  $sSecurityCond .= ")";
-  return $sSecurityCond;
+
+    asort($aSecurityListPrimal);
+
+    $aSecurityListFinal = array('bALL');
+    for ($i = 0; $i < count($aSecurityListPrimal); $i++) {
+        if (array_key_exists($aSecurityListPrimal[$i], $_SESSION) && $_SESSION[$aSecurityListPrimal[$i]]) {
+            $aSecurityListFinal[] = $aSecurityListPrimal[$i];
+        } elseif ($aSecurityListPrimal[$i] == 'bAddEvent' && $_SESSION['bAdmin']) {
+            $aSecurityListFinal[] = 'bAddEvent';
+        }
+    }
+
+    return $aSecurityListFinal;
 }
 
-function addMenu($menu) {
-  global $security_matrix;
+function addMenu($menu)
+{
+    global $security_matrix;
 
-  $sSQL = "SELECT name, ismenu, parent, content, uri, statustext, session_var, session_var_in_text, 
-                  session_var_in_uri, url_parm_name, security_grp, icon 
-           FROM menuconfig_mcf 
-           WHERE parent = '$menu' AND active=1 " . $security_matrix . " 
-           ORDER BY sortorder";
+    $ormMenus = MenuConfigQuery::Create()
+                        ->filterByParent('%'.$menu.'%', Criteria::LIKE)
+                        ->filterByActive(1);
 
-  $rsMenu = RunQuery($sSQL);
-  $item_cnt = mysql_num_rows($rsMenu);
-  $idx = 1;
-  $ptr = 1;
-  while ($aRow = mysql_fetch_array($rsMenu)) {
-    if (addMenuItem($aRow, $idx)) {
-      if ($ptr == $item_cnt) {
-        $idx++;
-      }
-      $ptr++;
+    $firstTime = 1;
+    for ($i = 0; $i < count($security_matrix); $i++) {
+        if ($firstTime) {
+            $ormMenus->filterBySecurityGroup($security_matrix[$i]);
+        } else {
+            $ormMenus->_or()->filterBySecurityGroup($security_matrix[$i]);
+        }
+        $firstTime = 0;
     }
-    else {
-      $item_cnt--;
+
+    $ormMenus->orderBySortOrder()
+                        ->find();
+
+    $item_cnt = count($ormMenus);
+
+    $idx = 1;
+    $ptr = 1;
+    foreach ($ormMenus as $ormMenu) {
+        if (addMenuItem($ormMenu, $idx)) {
+            if ($ptr == $item_cnt) {
+                $idx++;
+            }
+            $ptr++;
+        } else {
+            $item_cnt--;
+        }
     }
-  }
 }
 
-function addMenuItem($aMenu, $mIdx) {
-  global $security_matrix, $sRootPath;
+function addMenuItem($ormMenu, $mIdx)
+{
+    global $security_matrix;
+    $maxStr = 25;
 
-  $link = ($aMenu['uri'] == "") ? "" : $sRootPath . "/" . $aMenu['uri'];
-  $text = $aMenu['statustext'];
-  if (!is_null($aMenu['session_var'])) {
-    if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
-      if (strstr($link, "?") && true) {
-        $cConnector = "&";
-      }
-      else {
-        $cConnector = "?";
-      }
-      $link .= $cConnector . $aMenu['url_parm_name'] . "=" . $_SESSION[$aMenu['session_var']];
-    }
-    if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
-      $text .= " " . $_SESSION[$aMenu['session_var']];
-    }
-  }
-  if ($aMenu['ismenu']) {
-    $sSQL = "SELECT name 
-             FROM menuconfig_mcf 
-             WHERE parent = '" . $aMenu['name'] . "' AND active=1 " . $security_matrix . " 
-             ORDER BY sortorder";
-
-    $rsItemCnt = RunQuery($sSQL);
-    $numItems = mysql_num_rows($rsItemCnt);
-  }
-  if (!($aMenu['ismenu']) || ($numItems > 0)) {
-    if ($link) {
-      if ($aMenu['name'] != "sundayschool-dash") { # HACK to remove the sunday school 2nd dashboard
-        echo "<li><a href='$link'>";
-        if ($aMenu['icon'] != "") {
-          echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>";
+    $link = ($ormMenu->getURI() == '') ? '' : SystemURLs::getRootPath() . '/' . $ormMenu->getURI();
+    $text = $ormMenu->getStatus();
+    if (!is_null($ormMenu->getSessionVar())) {
+        if (($link > '') && ($ormMenu->getSessionVarInURI()) && isset($_SESSION[$ormMenu->getSessionVar()])) {
+            if (strstr($link, '?') && true) {
+                $cConnector = '&';
+            } else {
+                $cConnector = '?';
+            }
+            $link .= $cConnector . $ormMenu->getURLParmName() . '=' . $_SESSION[$ormMenu->getSessionVar()];
         }
-        if ($aMenu['parent'] != "root") {
-          echo "<i class=\"fa fa-angle-double-right\"></i> ";
+        if (($text > '') && ($ormMenu->getSessionVarInText()) && isset($_SESSION[$ormMenu->getSessionVar()])) {
+            $text .= ' ' . $_SESSION[$ormMenu->getSessionVar()];
         }
-        if ($aMenu['parent'] == "root") {
-          echo "<span>" . gettext($aMenu['content']) . "</span></a>";
-        }
-        else {
-          echo gettext($aMenu['content']) . "</a>";
-        }
-      }
     }
-    else {
-      echo "<li class=\"treeview\">\n";
-      echo "    <a href=\"#\">\n";
-      if ($aMenu['icon'] != "") {
-        echo "<i class=\"fa " . $aMenu['icon'] . "\"></i>\n";
-      }
-      echo "<span>" . gettext($aMenu['content']) . "</span>\n";
-      echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
-      if ($aMenu['name'] == "deposit") {
-        echo "<small class=\"badge pull-right bg-green\">" . $_SESSION['iCurrentDeposit'] . "</small>\n";
-      }
-      ?>  </a>
-      <ul class="treeview-menu">
-        <?php
-        if ($aMenu['name'] == "sundayschool") {
-          echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>".gettext("Dashboard")."</a></li>";
-          $sSQL = "select * from group_grp where grp_Type = 4 order by grp_name";
-          $rsSundaySchoolClasses = RunQuery($sSQL);
-          while ($aRow = mysql_fetch_array($rsSundaySchoolClasses)) {
-            echo "<li><a href='" . $sRootPath . "/sundayschool/SundaySchoolClassView.php?groupId=" . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . gettext($aRow[grp_Name]) . "</a></li>";
-          }
+    if ($ormMenu->getMenu()) {
+        $ormItemCnt = MenuConfigQuery::Create()
+                        ->filterByParent('%'.$ormMenu->getName().'%', Criteria::LIKE)
+                        ->filterByActive(1);
+
+        $firstTime = 1;
+        for ($i = 0; $i < count($security_matrix); $i++) {
+            if ($firstTime) {
+                $ormItemCnt->filterBySecurityGroup($security_matrix[$i]);
+            } else {
+                $ormItemCnt->_or()->filterBySecurityGroup($security_matrix[$i]);
+            }
+            $firstTime = 0;
         }
-      }
-      if (($aMenu['ismenu']) && ($numItems > 0)) {
-        echo "\n";
-        addMenu($aMenu['name']);
-        echo "</ul>\n</li>\n";
-      }
-      else {
-        echo "</li>\n";
-      }
 
-      return true;
+        $ormItemCnt->orderBySortOrder()
+                        ->find();
+
+        $numItems = count($ormItemCnt);
     }
-    else {
-      return false;
-    }
-  }
-
-  function Header_body_menu() {
-    global $sHeader, $sGlobalMessage, $sGlobalMessageClass;
-    global $MenuFirst, $sPageTitle, $sPageTitleSub, $sRootPath;
-
-    $loggedInUserPhoto = $sRootPath . "/api/persons/" .$_SESSION['iUserID']. "/photo";
-
-    $MenuFirst = 1;
-
-    $taskService = new TaskService();
-    ?>
-
-    <header class="main-header">
-      <!-- Logo -->
-      <a href="<?= $sRootPath ?>/Menu.php" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>C</b>RM</span>
-        <!-- logo for regular state and mobile devices -->
-        <?php if ($sHeader) { ?>
-          <span class="logo-lg"><?= html_entity_decode($sHeader, ENT_QUOTES) ?></span>
-        <?php }
-        Else {
-          ?>
-          <span class="logo-lg"><b>Church</b>CRM</span>
-  <?php } ?>
-      </a>
-      <!-- Header Navbar: style can be found in header.less -->
-      <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-          <span class="sr-only"><?= gettext("Toggle navigation") ?></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <li class="dropdown settings-dropdown">
-              <a href="<?= $sRootPath . "/" ?>CartView.php">
-                <i class="fa fa-shopping-cart"></i>
-                <span class="label label-success"><?= count($_SESSION['aPeopleCart']) ?></span>
-              </a>
-
-            </li>
-            <!-- User Account: style can be found in dropdown.less -->
-            <li class="dropdown user user-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="<?= $loggedInUserPhoto ?>" class="user-image" alt="User Image">
-                <span class="hidden-xs"><?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?> </span>
-
-              </a>
-              <ul class="dropdown-menu">
-                <!-- User image -->
-                <li class="user-header">
-                  <img src="<?= $loggedInUserPhoto ?>" class="img-circle" alt="User Image">
-
-                  <p>
-  										<?= $_SESSION['UserFirstName'] . " " . $_SESSION['UserLastName'] ?>
-                      <!--<small>Member since Nov. 2012</small>-->
-                  </p>
-                </li>
-                <!-- Menu Body
-                <li class="user-body">
-                    <div class="row">
-                        <div class="col-xs-4 text-center">
-                            <a href="#">Followers</a>
-                        </div>
-                        <div class="col-xs-4 text-center">
-                            <a href="#">Sales</a>
-                        </div>
-                        <div class="col-xs-4 text-center">
-                            <a href="#">Friends</a>
-                        </div>
-                    </div>
-                <!-- /.row --
-                </li>-->
-                <!-- Menu Footer-->
-                <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="<?= $sRootPath . "/" ?>UserPasswordChange.php" class="btn btn-default btn-flat"><?= gettext("Change Password")?></a>
-                  </div>
-                  <div class="pull-right">
-                    <a href="<?= $sRootPath . "/" ?>SettingsIndividual.php" class="btn btn-default btn-flat"><?= gettext("My Settings")?></a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-  						<?php if ($_SESSION['bAdmin']) { ?>
-              <li class="hidden-xxs">
-                <a class="js-gitter-toggle-chat-button">
-                  <i class="fa fa-comments"></i>
-                </a>
-              </li>
-              <li class="dropdown settings-dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-cog"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="user-body">
-                    <?php addMenu("admin"); ?>
-                  </li>
-                </ul>
-              </li>
-              <?php
-                  $tasks = $taskService->getCurrentUserTasks();
-                  $taskSize = count($tasks);
-              ?>
-            <li class="dropdown tasks-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-flag-o"></i>
-                <span class="label label-danger"><?= $taskSize ?></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header"><?= gettext("You have") ?> <?= $taskSize ?> <?= gettext("task(s)") ?></li>
+    if (!($ormMenu->getMenu()) || ($numItems > 0)) {
+        if ($link) {
+            if ($ormMenu->getName() == 'calendar') {
+                ?>
                 <li>
-                  <!-- inner menu: contains the actual data -->
-                  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;">
-                    <ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
-                      <?php foreach ($tasks as $task) { ?>
-                      <li><!-- Task item -->
-                        <a href="<?= $task["link"] ?>">
-                          <h3><?= $task["title"] ?>
-                            <?php if ($task["admin"]) { ?>
-                            <small class="pull-right"><i class="fa fa-fw fa-lock"></i></small>
-                            <?php } ?>
-                          </h3>
-                        </a>
-                      </li>
-                      <!-- end task item -->
-                      <?php } ?>
-                    </ul><div class="slimScrollBar" style="width: 3px; position: absolute; top: 11px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 188.679px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
-                </li>
-              </ul>
-            </li>
-      <?php  } ?>
-            <li class="hidden-xxs">
-              <a href="http://docs.churchcrm.io" target="_blank">
-                <i class="fa fa-support"></i>
-              </a>
-            </li>
-            <li class="hidden-xxs">
-              <a href="#" data-toggle="modal" data-target="#IssueReportModal">
-                <i class="fa fa-bug"></i>
-              </a>
-            </li>
-            <li class="hidden-xxs">
-              <a href="<?= $sRootPath ?>/Login.php?Logoff=True">
-                <i class="fa fa-power-off"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <!-- =============================================== -->
+                  <a href="<?= SystemURLs::getRootPath() . '/' . $ormMenu->getURI() ?>">
+                  <i class='fa fa-calendar'></i>
+                  <span>
+                    <?= gettext($ormMenu->getContent()) ?>
+                    <span class='pull-right-container'>
+                       <small class='label pull-right bg-blue' id='AnniversaryNumber'>0</small>
+                      <small class='label pull-right bg-red' id='BirthdateNumber'>0</small>
+                      <small class='label pull-right bg-yellow' id='EventsNumber'>0</small>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            <?php
+            } elseif ($ormMenu->getName() != 'sundayschool-dash' && $ormMenu->getName() != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
+                echo "<li><a href='$link'>";
+                if ($ormMenu->getIcon() != '') {
+                    echo '<i class="fa ' . $ormMenu->getIcon() . '"></i>';
+                }
+                if ($ormMenu->getParent() != 'root') {
+                    echo '<i class="fa fa-angle-double-right"></i> ';
+                }
+                if ($ormMenu->getParent() == 'root') {
+                    echo '<span>' . gettext($ormMenu->getContent()) . '</span></a>';
+                } else {
+                    echo gettext($ormMenu->getContent()) . '</a>';
+                }
+            } elseif ($ormMenu->getName() == 'listgroups') {
+                echo "<li><a href='" . SystemURLs::getRootPath() . "/GroupList.php'><i class='fa fa-angle-double-right'></i>" . gettext('List Groups') . '</a></li>';
 
-    <!-- Left side column. contains the sidebar -->
-    <aside class="main-sidebar">
-      <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
+                $listOptions = ListOptionQuery::Create()
+                    ->filterById(3)
+                    ->orderByOptionName()
+                    ->find();
 
-          <select class="form-control multiSearch" style="width:100%">
-          </select>
+                foreach ($listOptions as $listOption) {
+                    if ($listOption->getOptionId() != 4) {// we avoid the sundaySchool, it's done under
+                        $groups=GroupQuery::Create()
+                            ->filterByType($listOption->getOptionId())
+                            ->orderByName()
+                            ->find();
 
-        </form>
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu">
-          <li>
-            <a href="<?= $sRootPath . "/" ?>Menu.php">
-              <i class="fa fa-dashboard"></i> <span><?= gettext("Dashboard") ?></span>
-            </a>
-          </li>
-  				<?php addMenu("root"); ?>
-        </ul>
-      </section>
-    </aside>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <section class="content-header">
-        <h1>
-          <?php
-          echo $sPageTitle . "\n";
-          if ($sPageTitleSub != "") {
-            echo "<small>" . $sPageTitleSub . "</small>";
-          }
-          ?>
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="<?= $sRootPath . "/Menu.php" ?>"><i class="fa fa-dashboard"></i><?= gettext("Home") ?></a></li>
-          <li class="active"><?= $sPageTitle ?></li>
-        </ol>
-      </section>
-      <!-- Main content -->
-      <section class="content">
-      <?php if ($sGlobalMessage) { ?>
-          <div class="main-box-body clearfix">
-            <div class="callout callout-<?= $sGlobalMessageClass ?> fade in">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-              <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i>
-                <?= $sGlobalMessage ?>
-            </div>
-          </div>
-          <?php
-        }
-      }
+                        if (count($groups)>0) {// only if the groups exist : !empty doesn't work !
+                            echo "<li><a href='#'><i class='fa fa-user-o'></i>" . $listOption->getOptionName(). '</a>';
+                            echo '<ul class="treeview-menu">';
 
-      function create_side_nav($menu) {
+                            foreach ($groups as $group) {
+                                $str = $group->getName();
+                                if (strlen($str)>$maxStr) {
+                                    $str = substr($str, 0, $maxStr-3)." ...";
+                                }
 
-        echo "<p>";
-        addSection($menu);
-        echo "</p>\n";
-      }
+                                echo "<li><a href='" . SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
+                            }
+                            echo '</ul></li>';
+                        }
+                    }
+                }
 
-      function addSection($menu) {
-        global $cnInfoCentral;
+                // now we're searching the unclassified groups
+                $groups=GroupQuery::Create()
+                            ->filterByType(0)
+                            ->orderByName()
+                            ->find();
 
-        $security_matrix = " AND (security_grp = 'bALL'";
-        if ($_SESSION['bAdmin']) {
-          $security_matrix .= " OR security_grp = 'bAdmin'";
-        }
-        if ($_SESSION['bAddRecords']) {
-          $security_matrix .= " OR security_grp = 'bAddRecords'";
-        }
-        if ($_SESSION['bMenuOptions']) {
-          $security_matrix .= " OR security_grp = 'bMenuOptions'";
-        }
-        if ($_SESSION['bFinance']) {
-          $security_matrix .= " OR security_grp = 'bFinance'";
-        }
-        if ($_SESSION['bManageGroups']) {
-          $security_matrix .= " OR security_grp = 'bManageGroups'";
-        }
-        $security_matrix .= ")";
-        $query = "SELECT name, ismenu, content, uri, statustext, session_var, session_var_in_text, 
-                         session_var_in_uri, url_parm_name, security_grp 
-                  FROM menuconfig_mcf 
-                  WHERE parent = '$menu' AND active=1 " . $security_matrix . " 
-                  ORDER BY sortorder";
+                if (count($groups)>0) {// only if the groups exist : !empty doesn't work !
+                    echo "<li><a href='#'><i class='fa fa-user-o'></i>" . gettext("Unassigned"). '</a>';
+                    echo '<ul class="treeview-menu">';
 
-        $rsMenu = mysql_query($query, $cnInfoCentral);
-        $item_cnt = mysql_num_rows($rsMenu);
-        $ptr = 1;
-        while ($aRow = mysql_fetch_array($rsMenu)) {
-          if (isset($aRow['admin_only']) & !$_SESSION['bAdmin']) {
-            // hide admin menu
-          }
-          else {
-            addEntry($aRow);
-          }
-          $ptr++;
-        }
-      }
+                    foreach ($groups as $group) {
+                        echo "<li><a href='" . SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " . $group->getName() . '</a></li>';
+                    }
+                    echo '</ul></li>';
+                }
+            }
+        } else {
+            echo "<li class=\"treeview\">\n";
+            echo "    <a href=\"#\">\n";
+            if ($ormMenu->getIcon() != '') {
+                echo '<i class="fa ' . $ormMenu->getIcon() . "\"></i>\n";
+            }
+            echo '<span>' . gettext($ormMenu->getContent()) . "</span>\n";
+            echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
 
-      function addEntry($aMenu) {
-        global $sRootPath;
+            if ($ormMenu->getName() == 'deposit') {
+                echo '<small class="badge pull-right bg-green">' . $_SESSION['iCurrentDeposit'] . "</small>\n";
+            } ?>  </a>
+      <ul class="treeview-menu">
+      <?php
+            //Get the Properties assigned to all the sunday Group
+            $sSQL = "SELECT pro_Name,grp_ID, r2p_Value, prt_Name, pro_prt_ID, grp_Name
+              FROM property_pro
+              LEFT JOIN record2property_r2p ON r2p_pro_ID = pro_ID
+              LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
+              LEFT JOIN group_grp ON group_grp.grp_ID = record2property_r2p.r2p_record_ID
+              WHERE pro_Class = 'g' AND grp_Type = '4' AND prt_Name = 'MENU' ORDER BY pro_Name, grp_Name ASC";
+            $rsAssignedProperties = RunQuery($sSQL);
 
-        $link = ($aMenu['uri'] == "") ? "" : $sRootPath . "/" . $aMenu['uri'];
-        $text = $aMenu['statustext'];
-        $content = $aMenu['content'];
-        if (!is_null($aMenu['session_var'])) {
-          if (($link > "") && ($aMenu['session_var_in_uri']) && isset($_SESSION[$aMenu['session_var']])) {
-            $link .= "?" . $aMenu['url_parm_name'] . "=" . $_SESSION[$aMenu['session_var']];
-          }
-          if (($text > "") && ($aMenu['session_var_in_text']) && isset($_SESSION[$aMenu['session_var']])) {
-            $text .= " " . $_SESSION[$aMenu['session_var']];
-          }
+            //Get the sunday groups not assigned by properties
+            $sSQL = "SELECT grp_ID , grp_Name,prt_Name,pro_prt_ID
+                  FROM group_grp
+                  LEFT JOIN record2property_r2p ON record2property_r2p.r2p_record_ID = group_grp.grp_ID
+                  LEFT JOIN property_pro ON property_pro.pro_ID = record2property_r2p.r2p_pro_ID
+                  LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
+                  WHERE ((record2property_r2p.r2p_record_ID IS NULL) OR (propertytype_prt.prt_Name != 'MENU')) AND grp_Type = '4' ORDER BY grp_Name ASC";
+            $rsWithoutAssignedProperties = RunQuery($sSQL);
+
+
+            if ($ormMenu->getName() == 'sundayschool') {
+                echo "<li><a href='" . SystemURLs::getRootPath() . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>" . gettext('Dashboard') . '</a></li>';
+
+                $property = '';
+                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                    if ($aRow[pro_Name] != $property) {
+                        if (!empty($property)) {
+                            echo '</ul></li>';
+                        }
+
+                        echo '<li><a href="#"><i class="fa fa-user-o"></i><pan>'.$aRow[pro_Name].'</span></a>';
+                        echo '<ul class="treeview-menu">';
+
+
+                        $property = $aRow[pro_Name];
+                    }
+
+                    $str = gettext($aRow[grp_Name]);
+                    if (strlen($str)>$maxStr) {
+                        $str = substr($str, 0, $maxStr-3)." ...";
+                    }
+
+                    echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
+                }
+
+                if (!empty($property)) {
+                    echo '</ul></li>';
+                }
+
+                // the non assigned group to a group property
+                while ($aRow = mysqli_fetch_array($rsWithoutAssignedProperties)) {
+                    $str = gettext($aRow[grp_Name]);
+                    if (strlen($str)>$maxStr) {
+                        $str = substr($str, 0, $maxStr-3)." ...";
+                    }
+
+                    echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $str . '</a></li>';
+                }
+            }
         }
-        if (substr($content, 1, 10) == '----------') {
-          $content = "--------------------";
+        if (($ormMenu->getMenu()) && ($numItems > 0)) {
+            echo "\n";
+            addMenu($ormMenu->getName());
+            echo "</ul>\n</li>\n";
+        } else {
+            echo "</li>\n";
         }
-        if ($aMenu['ismenu']) {
-          echo "</p>\n<p>\n";
-        }
-        if ($link > "") {
-          echo "<a class=\"SmallText\" href=\"" . $link . "\">" . $content . "</a>";
-        }
-        else {
-          echo $content;
-        }
-        echo "<br>\n";
-        if ($aMenu['ismenu']) {
-          addSection($aMenu['name']);
-        }
-      }
-      ?>
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
+?>

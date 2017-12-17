@@ -6,7 +6,7 @@
       var now = moment();
       var ageDisplay = now.diff(birthDate, 'years');
       if(ageDisplay < 1) {
-        ageDisplay = now.diff(birthDate, 'months');
+        ageDisplay = now.diff(birthDate, 'months') + " m";
       }
       if(ageDisplay) {
         $element.text(ageDisplay);

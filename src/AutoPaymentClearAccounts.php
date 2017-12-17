@@ -1,24 +1,28 @@
-<?php 
-require "Include/Config.php";
-require "Include/Functions.php";
-require "Include/VancoConfig.php";
+<?php
 
-$iVancoAutID = FilterInput($_GET['customerid'],'int'); 
+require 'Include/Config.php';
+require 'Include/Functions.php';
+require 'Include/VancoConfig.php';
 
-$sSQL = "UPDATE autopayment_aut SET ";
-$sSQL .= "aut_CreditCard=CONCAT(\"************\",SUBSTR(aut_CreditCard,LENGTH(aut_CreditCard)-3,4))";
-$sSQL .= ", aut_Account=CONCAT(\"*****\",SUBSTR(aut_Account,LENGTH(aut_Account)-3, 4))";
+use ChurchCRM\Utils\InputUtils;
+
+$iVancoAutID = InputUtils::LegacyFilterInput($_GET['customerid'], 'int');
+
+$sSQL = 'UPDATE autopayment_aut SET ';
+$sSQL .= 'aut_CreditCard=CONCAT("************",SUBSTR(aut_CreditCard,LENGTH(aut_CreditCard)-3,4))';
+$sSQL .= ', aut_Account=CONCAT("*****",SUBSTR(aut_Account,LENGTH(aut_Account)-3, 4))';
 $sSQL .= " WHERE aut_ID=$iVancoAutID";
 
 $bSuccess = false;
-if ($result = mysql_query($sSQL, $cnInfoCentral))
+if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
     $bSuccess = true;
+}
 
-$errStr = "";
+$errStr = '';
 
-if (! $bSuccess)
-	$errStr = gettext("Cannot execute query.") . "<p>$sSQL<p>" . mysql_error();
+if (!$bSuccess) {
+    $errStr = gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error($cnInfoCentral);
+}
 
 header('Content-type: application/json');
-echo json_encode(array('Success'=>$bSuccess, 'ErrStr'=>$errStr));
-?>
+echo json_encode(['Success'=>$bSuccess, 'ErrStr'=>$errStr]);

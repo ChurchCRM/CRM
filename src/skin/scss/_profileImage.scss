@@ -1,0 +1,19 @@
+.profile-user-img {
+  height:100px;
+}
+
+.profile-family-img, .profile-user-img-md {
+  height:160px;
+  width:200px;
+  border:0;
+}
+
+.user-image{
+  height:auto;
+  max-width:100%;
+  border-radius:50%;
+}
+
+.users-list > li:nth-child(4n+1) { 
+  clear: both; 
+}

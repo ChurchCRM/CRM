@@ -1,10 +1,19 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
-
-# list any PHP version you want to test against
 php:
-# aliased to a recent 5.6.x version
-  - 5.6
+#  - 5.6
+  - 7.0
+  - 7.1
+
+rvm:
+  - 2.2
+  
+addons:
+  sauce_connect: true
+
+sudo: required
+dist: trusty
+group: edge
 
 notifications:
   webhooks:
@@ -13,21 +22,53 @@ notifications:
     on_success: change  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: never     # options: [always|never|change] default: always
-  
+
 # optionally specify a list of environments, for example to test different RDBMS
 env:
   - DB=mysql
 
-# execute any number of scripts before the test run, custom env's are available as variables
-before_script:
-  - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS churchcrm_test;" -uroot; fi
-  - cd ./src
-  - composer install  
-  - cd ..
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install ruby-full
+ - sudo gem install sass -v 3.4.25
+ - chmod +x ./travis-ci/*.sh
+ - chmod +x ./scripts/*.sh
+ - cp BuildConfig.json.example BuildConfig.json
 
-# omitting "script:" will default to phpunit
-# use the $DB env variable to determine the phpunit.xml to use
-script: 
-  - if [[ "$DB" == "mysql" ]]; then mysql churchcrm_test < src/mysql/install/Install.sql -uroot; fi
-  - tests/LineEndings.sh
-  ##- phpunit --configuration phpunit_$DB.xml --coverage-text
+# prepare travis ci for the build process
+install:
+ - npm run composer-install
+ - npm run orm-gen
+ - npm install
+ - npm run tests-install
+
+# linters
+before_script:
+ - ./travis-ci/setup-db.sh
+ - cp $TRAVIS_BUILD_DIR/travis-ci/Config.php $TRAVIS_BUILD_DIR/src/Include/Config.php
+ - sudo apt-get update
+ - sudo apt-get install apache2 libapache2-mod-fastcgi
+ - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+ - sudo cp $TRAVIS_BUILD_DIR/travis-ci/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf
+ - sudo a2enmod rewrite proxy_fcgi
+ - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+ - sudo cp -f travis-ci/000-default.conf /etc/apache2/sites-available/000-default.conf
+ - sudo chmod -R a+rwx /home
+ - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/src?g" --in-place /etc/apache2/sites-available/000-default.conf
+ - sudo service apache2 restart
+
+# execute tests
+script:
+ - npm test
+
+before_deploy:
+ - npm run package
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: npm run demosite
+  on:
+    all_branches: true
+    php: 7.0
+    condition: "$TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH = 'develop'"

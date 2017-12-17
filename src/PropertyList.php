@@ -5,122 +5,114 @@
  *  last change : 2003-01-07
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002 Deane Barker
- *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
+  *
  ******************************************************************************/
 
 //Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 //Get the type to display
-$sType = FilterInput($_GET["Type"],'char',1);
+$sType = InputUtils::LegacyFilterInput($_GET['Type'], 'char', 1);
 
 //Based on the type, set the TypeName
-switch($sType)
-{
-	case "p":
-		$sTypeName = gettext("Person");
-		break;
+switch ($sType) {
+    case 'p':
+        $sTypeName = gettext('Person');
+        break;
 
-	case "f":
-		$sTypeName = gettext("Family");
-		break;
+    case 'f':
+        $sTypeName = gettext('Family');
+        break;
 
-	case "g":
-		$sTypeName = gettext("Group");
-		break;
+    case 'g':
+        $sTypeName = gettext('Group');
+        break;
 
-	default:
-		Redirect("Menu.php");
-		exit;
-		break;
+    default:
+        Redirect('Menu.php');
+        exit;
+        break;
 }
 
 //Set the page title
-$sPageTitle = $sTypeName . ' ' . gettext("Property List");
+$sPageTitle = $sTypeName.' '.gettext('Property List');
 
 //Get the properties
-$sSQL = "SELECT * FROM property_pro, propertytype_prt WHERE prt_ID = pro_prt_ID AND pro_Class = '" . $sType . "' ORDER BY prt_Name,pro_Name";
+$sSQL = "SELECT * FROM property_pro, propertytype_prt WHERE prt_ID = pro_prt_ID AND pro_Class = '".$sType."' ORDER BY prt_Name,pro_Name";
 $rsProperties = RunQuery($sSQL);
 
-require "Include/Header.php"; ?>
+require 'Include/Header.php'; ?>
 
 <div class="box box-body">
 
-<?php if ($_SESSION['bMenuOptions'])
-{
-	//Display the new property link
-	echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=" . $sType . "\">" . gettext("Add a New") . " " . $sTypeName . " " . gettext("Property") . "</a></p>";
+<?php if ($_SESSION['bMenuOptions']) {
+    //Display the new property link
+    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=".$sType.'">'.gettext('Add a New').' '.$sTypeName.' '.gettext('Property').'</a></p>';
 }
 
 //Start the table
 echo "<table class='table'>";
-echo "<tr>";
-echo "<th valign=\"top\">" . gettext("Name") . "</th>";
-echo "<th valign=\"top\">" . gettext("A") . " " . $sTypeName . " " . gettext("with this Property...") . "</b></th>";
-echo "<th valign=\"top\">" . gettext("Prompt") . "</th>";
-if ($_SESSION['bMenuOptions'])
-{
-	echo "<td valign=\"top\"><b>" . gettext("Edit") . "</b></td>";
-	echo "<td valign=\"top\"><b>" . gettext("Delete") . "</b></td>";
+echo '<tr>';
+echo '<th valign="top">'.gettext('Name').'</th>';
+echo '<th valign="top">'.gettext('A').' '.$sTypeName.' '.gettext('with this Property...').'</b></th>';
+echo '<th valign="top">'.gettext('Prompt').'</th>';
+if ($_SESSION['bMenuOptions']) {
+    echo '<td valign="top"><b>'.gettext('Edit').'</b></td>';
+    echo '<td valign="top"><b>'.gettext('Delete').'</b></td>';
 }
-echo "</tr>";
+echo '</tr>';
 
-echo "<tr><td>&nbsp;</td></tr>";
+echo '<tr><td>&nbsp;</td></tr>';
 
 //Initalize the row shading
-$sRowClass = "RowColorA";
+$sRowClass = 'RowColorA';
 $iPreviousPropertyType = -1;
 $sBlankLine = '';
 
 //Loop through the records
-while ($aRow = mysql_fetch_array($rsProperties))
-{
+while ($aRow = mysqli_fetch_array($rsProperties)) {
+    $pro_Prompt = '';
+    $pro_Description = '';
+    extract($aRow);
 
-	$pro_Prompt = "";
-	$pro_Description = "";
-	extract($aRow);
+    //Did the Type change?
+    if ($iPreviousPropertyType != $prt_ID) {
 
+        //Write the header row
+        echo $sBlankLine;
+        echo '<tr class="RowColorA"><td colspan="5"><b>'.$prt_Name.'</b></td></tr>';
+        $sBlankLine = '<tr><td>&nbsp;</td></tr>';
 
-	//Did the Type change?
-	if ($iPreviousPropertyType != $prt_ID)
-	{
+        //Reset the row color
+        $sRowClass = 'RowColorA';
+    }
 
-		//Write the header row
-		echo $sBlankLine;
-		echo "<tr class=\"RowColorA\"><td colspan=\"5\"><b>" . $prt_Name . "</b></td></tr>";
-		$sBlankLine = "<tr><td>&nbsp;</td></tr>";
+    $sRowClass = AlternateRowStyle($sRowClass);
 
-		//Reset the row color
-		$sRowClass = "RowColorA";
-	}
+    echo '<tr class="'.$sRowClass.'">';
+    echo '<td valign="top">'.$pro_Name.'&nbsp;</td>';
+    echo '<td valign="top">';
+    if (strlen($pro_Description) > 0) {
+        echo '...'.$pro_Description;
+    }
+    echo '&nbsp;</td>';
+    echo '<td valign="top">'.$pro_Prompt.'&nbsp;</td>';
+    if ($_SESSION['bMenuOptions']) {
+        echo "<td valign=\"top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=".$pro_ID.'&Type='.$sType.'">'.gettext('Edit').'</a></td>';
+        echo "<td valign=\"top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=".$pro_ID.'&Type='.$sType.'">'.gettext('Delete').'</a></td>';
+    }
+    echo '</tr>';
 
-	$sRowClass = AlternateRowStyle($sRowClass);
-
-	echo "<tr class=\"" . $sRowClass . "\">";
-	echo "<td valign=\"top\">" . $pro_Name . "&nbsp;</td>";
-	echo "<td valign=\"top\">"; if (strlen($pro_Description) > 0) { echo "..." . $pro_Description; }; echo "&nbsp;</td>";
-	echo "<td valign=\"top\">" . $pro_Prompt . "&nbsp;</td>";
-	if ($_SESSION['bMenuOptions'])
-	{
-		echo "<td valign=\"top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Edit") . "</a></td>";
-		echo "<td valign=\"top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=" . $pro_ID . "&Type=" . $sType . "\">" . gettext("Delete") . "</a></td>";
-	}
-	echo "</tr>";
-
-	//Store the PropertyType
-	$iPreviousPropertyType = $prt_ID;
-
+    //Store the PropertyType
+    $iPreviousPropertyType = $prt_ID;
 }
 
 //End the table
-echo "</table></div>";
+echo '</table></div>';
 
-require "Include/Footer.php";
+require 'Include/Footer.php';
 
 ?>

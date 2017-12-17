@@ -4,3 +4,5 @@
 *.git binary
 *.png binary
 *.xcf binary
+*.pdf binary
+*.mo binary

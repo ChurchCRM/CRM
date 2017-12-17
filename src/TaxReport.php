@@ -5,58 +5,56 @@
  *  last change : 2003-09-03
  *  description : form to invoke tax letter generation
  *
- *  ChurchCRM is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+
+
+
+
  *
  ******************************************************************************/
 
 // Include the function library
-require "Include/Config.php";
-require "Include/Functions.php";
+require 'Include/Config.php';
+require 'Include/Functions.php';
+
+use ChurchCRM\Utils\InputUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && $bCSVAdminOnly) {
-	Redirect("Menu.php");
-	exit;
+if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
+    Redirect('Menu.php');
+    exit;
 }
 
-
 // Set the page title and include HTML header
-$sPageTitle = gettext("Tax Report");
-require "Include/Header.php";
+$sPageTitle = gettext('Tax Report');
+require 'Include/Header.php';
 
 // Is this the second pass?
-if (isset($_POST["Submit"])) {
-	$iYear = FilterInput($_POST["Year"], 'int');
-   Redirect ("Reports/TaxReport.php?Year=" . $iYear);
+if (isset($_POST['Submit'])) {
+    $iYear = InputUtils::LegacyFilterInput($_POST['Year'], 'int');
+    Redirect('Reports/TaxReport.php?Year='.$iYear);
 } else {
-   $iYear = date ("Y") - 1;
+    $iYear = date('Y') - 1;
 }
 
 ?>
 
-<form method="post" action="TaxReport.php">
+<div class="box box-body">
+    <form class="form-horizontal" method="post" action="TaxReport.php">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Year"><?= gettext('Calendar Year') ?>:</label>
+            <div class="col-sm-2">
+                <input type="text" name="Year" id="Year" value="<?= $iYear ?>">
+            </div>
+        </div>
 
-<table cellpadding="3" align="left">
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
+                <button type="button" class="btn btn-default" name="Cancel"
+                        onclick="javascript:document.location='Menu.php';"><?= gettext('Cancel') ?></button>
+            </div>
+        </div>
 
-   <tr>
-      <td class="LabelColumn"><?= gettext("Calendar Year:") ?></td>
-		<td class="TextColumn"><input type="text" name="Year" id="Year" value="<?= $iYear ?>"></td>
-   </tr>
-
-</table>
-
-<table cellpadding="3" align="left">
-   <tr>
-      <input type="submit" class="btn" name="Submit" value="<?= gettext("Create Report") ?>">
-      <input type="button" class="btn" name="Cancel" value="<?= gettext("Cancel") ?>" onclick="javascript:document.location='Menu.php';">
-   </tr>
-</table>
-
-
-</p>
-</form>
-
-<?php require "Include/Footer.php" ?>
+    </form>
+</div>
+<?php require 'Include/Footer.php' ?>
