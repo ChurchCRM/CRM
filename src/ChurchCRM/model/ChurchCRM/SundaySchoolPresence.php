@@ -2,10 +2,10 @@
 
 namespace ChurchCRM;
 
-use ChurchCRM\Base\Presence as BasePresence;
+use ChurchCRM\Base\SundaySchoolPresence as BaseSundaySchoolPresence;
 
 /**
- * Skeleton subclass for representing a row from the 'presence' table.
+ * Skeleton subclass for representing a row from the 'sunday_school_presence' table.
  *
  *
  *
@@ -14,7 +14,7 @@ use ChurchCRM\Base\Presence as BasePresence;
  * long as it does not already exist in the output directory.
  *
  */
-class Presence extends BasePresence
+class SundaySchoolPresence extends BaseSundaySchoolPresence
 {
 
 }
