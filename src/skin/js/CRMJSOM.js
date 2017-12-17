@@ -56,7 +56,8 @@
         }).done(function (data) {
           if (callback)
           {
-            callback()
+            callback(data);
+            window.CRM.cart.refresh();
           }
           else
           {
@@ -169,6 +170,7 @@
           method: 'GET',
           path:"cart/"
         }).done(function(data) {
+          window.CRM.cart.updatePage(data.PeopleCart);
           window.scrollTo(0, 0);
           $("#iconCount").text(data.PeopleCart.length);
           var cartDropdownMenu;
@@ -220,6 +222,34 @@
           .animate({'left':(-10)+'px'},30)
           .animate({'left':(+10)+'px'},30)
           .animate({'left':(0)+'px'},30);
+        });
+      },
+      'updatePage' : function (cartPeople){
+        personButtons = $("a[data-cartpersonid]");
+        $(personButtons).each(function(index,personButton){
+          personID = $(personButton).data("cartpersonid")
+          if (cartPeople.includes(personID)) {
+            $(personButton).addClass("RemoveFromPeopleCart");
+            $(personButton).removeClass("AddToPeopleCart");
+            fa = $(personButton).find("i.fa.fa-inverse")
+            $(fa).addClass("fa-remove");
+            $(fa).removeClass("fa-cart-plus");
+            text = $(personButton).find("span.cartActionDescription")
+            if(text){
+              $(text).text(i18next.t("Remove from Cart"));
+            }
+          }
+          else {
+            $(personButton).addClass("AddToPeopleCart");
+            $(personButton).removeClass("RemoveFromPeopleCart");
+            fa = $(personButton).find("i.fa.fa-inverse")
+            $(fa).removeClass("fa-remove");
+            $(fa).addClass("fa-cart-plus");
+            text = $(personButton).find("span.cartActionDescription")
+            if(text){
+              $(text).text(i18next.t("Add to Cart"));
+            }
+          }
         });
       }
     };

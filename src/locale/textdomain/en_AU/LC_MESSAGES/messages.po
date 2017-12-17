@@ -13,15 +13,15 @@ msgid "Cannot execute query."
 msgstr "Unable to execute query"
 
 #: AutoPaymentDelete.php:62 Checkin.php:286 Checkin.php:368
-#: DepositSlipEditor.php:227 DonationFundEditor.php:151
-#: DonationFundEditor.php:181 EditEventAttendees.php:76
-#: ElectronicPaymentList.php:217 ElectronicPaymentList.php:282
+#: DepositSlipEditor.php:227 DonationFundEditor.php:152
+#: DonationFundEditor.php:182 EditEventAttendees.php:76
+#: ElectronicPaymentList.php:218 ElectronicPaymentList.php:283
 #: EventNames.php:301 FamilyCustomFieldsEditor.php:323
-#: FamilyCustomFieldsEditor.php:381 FamilyView.php:649 FamilyView.php:701
-#: FamilyView.php:760 FamilyView.php:897 FindDepositSlip.php:103
+#: FamilyCustomFieldsEditor.php:381 FamilyView.php:654 FamilyView.php:706
+#: FamilyView.php:765 FamilyView.php:902 FindDepositSlip.php:103
 #: FundRaiserEditor.php:199 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:314 PersonCustomFieldsEditor.php:383
-#: PersonView.php:917 PledgeDelete.php:52 PropertyList.php:64
+#: PersonView.php:924 PledgeDelete.php:52 PropertyList.php:64
 #: PropertyList.php:105 PropertyTypeList.php:39 PropertyTypeList.php:60
 #: PropertyTypeList.php:62
 msgid "Delete"
@@ -29,12 +29,12 @@ msgstr "Delete"
 
 #: AutoPaymentDelete.php:63 AutoPaymentEditor.php:786 BatchWinnerEntry.php:111
 #: CanvassEditor.php:238 Checkin.php:167 Checkin.php:274 Checkin.php:287
-#: DirectoryReports.php:285 DonatedItemEditor.php:295 EventNames.php:230
-#: FamilyEditor.php:1118 FamilyView.php:896 FinancialReports.php:68
+#: DirectoryReports.php:285 DonatedItemEditor.php:296 EventNames.php:230
+#: FamilyEditor.php:1118 FamilyView.php:901 FinancialReports.php:68
 #: FundRaiserEditor.php:142 GroupPropsEditor.php:167 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:82 ManageEnvelopes.php:134
 #: MemberRoleChange.php:118 MemberRoleChange.php:120 NoteDelete.php:66
-#: NoteEditor.php:134 PersonEditor.php:1230 PersonView.php:916
+#: NoteEditor.php:134 PersonEditor.php:1230 PersonView.php:923
 #: PledgeDelete.php:53 PropertyEditor.php:168 PropertyTypeEditor.php:113
 #: Register.php:56 ReminderReport.php:51 SettingsIndividual.php:113
 #: SettingsIndividual.php:159 SettingsUser.php:99 SettingsUser.php:159
@@ -46,7 +46,7 @@ msgid "Cancel"
 msgstr "Cancel"
 
 #: AutoPaymentEditor.php:785 CanvassEditor.php:237 DepositSlipEditor.php:93
-#: DonatedItemEditor.php:291 FamilyEditor.php:646 FamilyEditor.php:730
+#: DonatedItemEditor.php:292 FamilyEditor.php:646 FamilyEditor.php:730
 #: FamilyEditor.php:794 FamilyEditor.php:868 FamilyEditor.php:890
 #: FamilyEditor.php:921 FamilyEditor.php:1114 FundRaiserEditor.php:141
 #: GroupEditor.php:166 GroupPropsEditor.php:165 NoteEditor.php:132
@@ -59,16 +59,16 @@ msgid "Save"
 msgstr "Save"
 
 #: AutoPaymentEditor.php:803 BatchWinnerEntry.php:82 BatchWinnerEntry.php:94
-#: CSVImport.php:270 DirectoryReports.php:81 DonatedItemEditor.php:184
-#: DonatedItemEditor.php:235 FamilyEditor.php:1088 GroupEditor.php:93
+#: CSVImport.php:270 DirectoryReports.php:81 DonatedItemEditor.php:185
+#: DonatedItemEditor.php:236 FamilyEditor.php:1088 GroupEditor.php:93
 #: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
 #: Include/Functions.php:968 Include/Functions.php:1021
-#: Include/Header-function.php:335 MapUsingGoogle.php:98
+#: Include/Header-function.php:328 MapUsingGoogle.php:98
 #: MapUsingGoogle.php:122 PaddleNumEditor.php:175 PersonEditor.php:781
 #: PersonEditor.php:797 PersonEditor.php:1136 PrintView.php:264
 #: PrintView.php:274 SelectDelete.php:155 SelectList.php:34 SelectList.php:44
-#: SelectList.php:60 SelectList.php:1109 SelectList.php:1180
-#: SystemSettings.php:214 eGive.php:340
+#: SelectList.php:60 SelectList.php:1114 SelectList.php:1185
+#: SystemSettings.php:213 eGive.php:340
 msgid "Unassigned"
 msgstr "Unassigned"
 
@@ -106,7 +106,7 @@ msgstr "State"
 msgid "Country"
 msgstr "Country"
 
-#: AutoPaymentEditor.php:924 BackupDatabase.php:62 CSVExport.php:110
+#: AutoPaymentEditor.php:924 BackupDatabase.php:63 CSVExport.php:110
 #: CSVImport.php:220 CartToFamily.php:261 DirectoryReports.php:257
 #: FamilyEditor.php:688 PersonEditor.php:905 Register.php:46
 #: external/templates/registration/family-register.php:51
@@ -131,7 +131,7 @@ msgstr "Cheque"
 msgid "City, State, Zip"
 msgstr "Suburb, State, Post Code"
 
-#: FamilyList.php:46 GroupReports.php:126 Reports/CanvassReports.php:241
+#: FamilyList.php:47 GroupReports.php:126 Reports/CanvassReports.php:241
 #: Reports/ConfirmReportEmail.php:192 Reports/ConfirmReportEmail.php:210
 msgid "Cell Phone"
 msgstr "Mobile Phone"

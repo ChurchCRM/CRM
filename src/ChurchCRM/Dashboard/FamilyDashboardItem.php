@@ -4,6 +4,7 @@ namespace ChurchCRM\Dashboard;
 
 use ChurchCRM\Dashboard\DashboardItemInterface;
 use ChurchCRM\FamilyQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class FamilyDashboardItem implements DashboardItemInterface {
 
@@ -37,8 +38,10 @@ class FamilyDashboardItem implements DashboardItemInterface {
   private static function getUpdatedFamilies($limit = 12) {
     return FamilyQuery::create()
                     ->filterByDateDeactivated(null)
+                    ->filterByDateLastEdited(null, Criteria::NOT_EQUAL)
                     ->orderByDateLastEdited('DESC')
                     ->limit($limit)
+                    ->select(array("Id","Name","Address1","DateEntered","DateLastEdited"))
                     ->find()->toArray();
   }
 
@@ -51,9 +54,9 @@ class FamilyDashboardItem implements DashboardItemInterface {
 
     return FamilyQuery::create()
                     ->filterByDateDeactivated(null)
-                    ->filterByDateLastEdited(null)
                     ->orderByDateEntered('DESC')
                     ->limit($limit)
+                    ->select(array("Id","Name","Address1","DateEntered","DateLastEdited"))
                     ->find()->toArray();
   }
 
