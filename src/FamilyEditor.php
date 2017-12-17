@@ -702,8 +702,7 @@ require 'Include/Header.php';
           <div class="form-group col-md-3">
             <label for="StatleTextBox"><?= gettext('State')?>: </label>
             <?php 
-                $stateDropDown = new States($sState);
-                $stateDropDown->getDropDown();
+                States::getDropDown($sState);
             ?>
           </div>
           <div class="form-group col-md-3">
@@ -725,8 +724,7 @@ require 'Include/Header.php';
           <div class="form-group col-md-3">
             <label> <?= gettext('Country') ?>:</label>
             <?php 
-               $countryDropDown = new Countries($sCountry);// this code is secure
-               $countryDropDown->getDropDown();
+               Countries::getDropDown($sCountry);
               ?>
           </div>
         </div>

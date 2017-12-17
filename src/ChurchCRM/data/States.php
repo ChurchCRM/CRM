@@ -9,12 +9,9 @@
 namespace ChurchCRM\data;
 
 class States
-{
-    private $state;
-    private $id_input;
-    private $selected_State;
-    
-    private static $states = ['AL' => 'Alabama', 'AK' => 'Alaska', 
+{   
+    private static $states = [
+      'AL' => 'Alabama', 'AK' => 'Alaska', 
       'AZ' => 'Arizona', 'AR' => 'Arkansas', 
       'CA' => 'California', 'CO' => 'Colorado', 'CT' => 'Connecticut', 
       'DE' => 'Delaware', 'DC' => 'District of Columbia', 'FL' => 'Florida',
@@ -45,12 +42,6 @@ class States
       'NS' => 'Nova Scotia', 'PE' => 'Prince Edward Island', 
       'NF' => 'Newfoundland', 'YT' => 'Yukon', 
       'NT' => 'Northwest Territories', 'NU' => 'Nunavut Territory'];
-    
-    function __construct($selected_state="",$statename= "State") {  
-      $this->selected_State = $selected_state;
-      $this->state = $statename;
-      $this->id_input = strtolower($this->state)."-input";
-    }
 
     public static function getNames()
     {
@@ -67,15 +58,18 @@ class States
         return self::$states;
     }
     
-    public function getDropDown()
+    public function getDropDown($selected_state="",$statename= "State")
     {
-      echo '<select name="'.$this->state.'" class="form-control select2" id="'.$this->id_input.'" style="width:100%">';      
+      $state = $statename;
+      $id_input = strtolower($state)."-input";
+      
+      echo '<select name="'.$state.'" class="form-control select2" id="'.$id_input.'" style="width:100%">';      
       echo '<option value="">'.gettext('Unassigned').'</option>';
       echo '<option value="" disabled>--------------------</option>';
-        foreach (self::$states as $keystate => $itemstate) {
+        foreach (self::getAll() as $keystate => $itemstate) {
           if (!empty($keystate)) {
               echo '<option value="'.$keystate.'"';
-              if ($this->selected_State == $keystate) {
+              if ($selected_state == $keystate) {
                 echo 'selected';
               } 
           } else {

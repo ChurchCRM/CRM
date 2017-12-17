@@ -943,8 +943,7 @@ require 'Include/Header.php';
                   <div class="form-group col-md-3">
                     <label for="StatleTextBox"><?= gettext('State')?>: </label><br>
                     <?php 
-                      $statesFamDropDown = new States($sState, "FamState");
-                      $statesFamDropDown->getDropDown();
+                      States::getDropDown($sState, "FamState");
                     ?>
                   </div>
                   <div class="form-group col-md-3">
@@ -966,8 +965,7 @@ require 'Include/Header.php';
                   <div class="form-group col-md-3">
                     <label> <?= gettext('Country') ?>:</label><br>
                     <?php 
-                      $countryFamDropDown = new Countries($sCountry, "FamCountry");// this code is secure
-                      $countryFamDropDown->getDropDown();
+                      Countries::getDropDown($sCountry, "FamCountry");
                     ?>
                   </div>
                 </div>
@@ -1052,9 +1050,7 @@ require 'Include/Header.php';
                             echo '</span>';
                         } ?>
                         </label>
-                        <?php 
-                          $stateDropDown = new States($sState);
-                        $stateDropDown->getDropDown(); ?>
+                        <?php States::getDropDown($sState); ?>
                     </div>
                     <div class="form-group col-md-2">
                         <label><?= gettext('None State') ?>:</label>
@@ -1100,8 +1096,7 @@ require 'Include/Header.php';
                         } ?>
                         </label>
                         <?php 
-                            $countryDropDown = new Countries($sCountry);// this code is secure
-                            $countryDropDown->getDropDown(); ?>
+                            Countries::getDropDown($sCountry); ?>
                     </div>
                 </div>
                 <p/>

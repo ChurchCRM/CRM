@@ -261,8 +261,8 @@ if (isset($_POST['UploadCSV'])) {
         <BR><BR>
         <?php
             $sCountry = SystemConfig::getValue('sDefaultCountry');
-        $countryDropDown = new Countries($sCountry);// this code is secure
-        $countryDropDown->getDropDown();
+        
+            Countries::getDropDown($sCountry);
         
         echo gettext('Default country if none specified otherwise');
 

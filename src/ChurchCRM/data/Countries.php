@@ -10,10 +10,7 @@ namespace ChurchCRM\data;
 
 class Countries
 {
-    private $selected_country;
-    private $country;
-    private $id_input;
-    
+   
     private static $countries = ['AF' => 'Afghanistan (‫افغانستان‬‎)', 'AX' => 'Åland Islands (Åland)', 'AL' => 'Albania (Shqipëri)', 
         'DZ' => 'Algeria (‫الجزائر‬‎)', 'AS' => 'American Samoa', 'AD' => 'Andorra', 
         'AO' => 'Angola', 'AI' => 'Anguilla', 'AQ' => 'Antarctica', 'AG' => 'Antigua and Barbuda', 
@@ -68,12 +65,7 @@ class Countries
         'UA' => 'Ukraine (Україна)', 'AE' => 'United Arab Emirates (‫الإمارات العربية المتحدة‬‎)', 'GB' => 'United Kingdom', 'US' => 'United States', 
         'UY' => 'Uruguay', 'UZ' => 'Uzbekistan (Oʻzbekiston)', 'VU' => 'Vanuatu', 'VA' => 'Vatican City (Città del Vaticano)', 'VE' => 'Venezuela', 
         'VN' => 'Vietnam (Việt Nam)', 'WF' => 'Wallis and Futuna', 'EH' => 'Western Sahara (‫الصحراء الغربية‬‎)', 'YE' => 'Yemen (‫اليمن‬‎)', 'ZM' => 'Zambia', 'ZW' => 'Zimbabwe'];
-        
-    function __construct($selected_country="",$countryname= "Country") {  
-      $this->selected_country = $selected_country;
-      $this->country = $countryname;
-      $this->id_input = strtolower($this->country)."-input";
-    }
+    
 
     public static function getNames()
     {
@@ -85,14 +77,17 @@ class Countries
         return self::$countries;
     }
     
-    public function getDropDown()
+    public static function getDropDown($selected_country="",$countryname= "Country")
     {
-      echo '<select name="'.$this->country.'" class="form-control select2" id="'.$this->id_input.'" style="width:100%">';      
+      $country = $countryname;
+      $id_input = strtolower($country)."-input";
+      
+      echo '<select name="'.$country.'" class="form-control select2" id="'.$id_input.'" style="width:100%">';      
       echo '<option value="">'.gettext('Unassigned').'</option>';
       echo '<option value="" disabled>--------------------</option>';
-        foreach ($this->getNames() as $county) {
+        foreach (self::getNames() as $county) {
           echo '<option value="'.$county.'"';
-          if ($this->selected_country == $county) {
+          if ($selected_country == $county) {
             echo 'selected';
           } 
           echo '>'.gettext($county);
