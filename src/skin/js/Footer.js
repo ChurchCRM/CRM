@@ -39,7 +39,16 @@ $("document").ready(function(){
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
   
     $(document).on("click", ".emptyCart", function (e) {
-      window.CRM.cart.empty();
+      window.CRM.cart.empty(function(data){
+        console.log(data.cartPeople);
+        $(data.cartPeople).each(function(index,data){
+          personButton = $("a[data-cartpersonid='" + data + "']");
+          $(personButton).addClass("AddToPeopleCart");
+          $(personButton).removeClass("RemoveFromPeopleCart");
+          $('span i:nth-child(2)',personButton).removeClass("fa-remove");
+          $('span i:nth-child(2)',personButton).addClass("fa-cart-plus");
+        });
+      });
     });
     
     $(document).on("click", "#emptyCartToGroup", function (e) {
@@ -48,7 +57,7 @@ $("document").ready(function(){
     
     $(document).on("click",".RemoveFromPeopleCart", function(){
       clickedButton = $(this);
-      window.CRM.cart.removePerson([clickedButton.data("personid")],function()
+      window.CRM.cart.removePerson([clickedButton.data("cartpersonid")],function()
       {
         $(clickedButton).addClass("AddToPeopleCart");
         $(clickedButton).removeClass("RemoveFromPeopleCart");
@@ -59,12 +68,12 @@ $("document").ready(function(){
     
     $(document).on("click",".AddToPeopleCart", function(){
       clickedButton = $(this);
-      window.CRM.cart.addPerson([clickedButton.data("personid")],function()
+      window.CRM.cart.addPerson([clickedButton.data("cartpersonid")],function()
       {
         $(clickedButton).addClass("RemoveFromPeopleCart");
         $(clickedButton).removeClass("AddToPeopleCart");
-        $('span i:nth-child(2)',clickedButton).addClass("fa-remove ");
-        $('span i:nth-child(2)',clickedButton).removeClass("fa-cart-plus ");
+        $('span i:nth-child(2)',clickedButton).addClass("fa-remove");
+        $('span i:nth-child(2)',clickedButton).removeClass("fa-cart-plus");
       });
     });
     
