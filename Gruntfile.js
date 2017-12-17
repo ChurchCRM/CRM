@@ -98,7 +98,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd:'node_modules/ckeditor/',
-                        src: ['*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
+                        src: ['*.js','*.css','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
                         dest: 'src/skin/external/ckeditor/'
                     },
                     {
