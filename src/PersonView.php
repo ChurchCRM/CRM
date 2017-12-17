@@ -379,7 +379,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             <?php
     } ?>
       <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
-      <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-personid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
+      <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
       <?php if ($_SESSION['bNotes']) {
         ?>
         <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
@@ -523,7 +523,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             } ?>
                 </td>
                 <td style="width: 20%;">
-                  <a class="AddToPeopleCart" data-personid="<?= $tmpPersonId ?>">
+                  <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
                     <span class="fa-stack">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
