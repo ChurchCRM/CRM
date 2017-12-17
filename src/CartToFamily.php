@@ -252,12 +252,11 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <td class="LabelColumn"><?= gettext('State') ?>:</td>
     <td class="TextColumn">
       <?php 
-        States::getDropDown($sState); 
-      ?>
+        States::getDropDown($sState); ?>
       OR
       <input type="text" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
-        echo $sState;
-    } ?>" size="20" maxlength="30">
+            echo $sState;
+        } ?>" size="20" maxlength="30">
       <BR><?= gettext('(Use the textbox for countries other than US and Canada)') ?>
     </td>
   </tr>
@@ -274,8 +273,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <td class="LabelColumn"><?= gettext('Country') ?>:</td>
     <td class="TextColumnWithBottomBorder">
       <?php 
-        Countries::getDropDown($sCountry); 
-      ?>
+        Countries::getDropDown($sCountry); ?>
     </td>
   </tr>
 
@@ -288,8 +286,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <td class="TextColumn">
       <input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30">
       <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
-        echo ' checked';
-    } ?>><?= gettext('Do not auto-format') ?>
+            echo ' checked';
+        } ?>><?= gettext('Do not auto-format') ?>
     </td>
   </tr>
 
@@ -298,8 +296,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <td class="TextColumn">
       <input type="text" name="WorkPhone" value="<?php echo $sWorkPhone ?>" size="30" maxlength="30">
       <input type="checkbox" name="NoFormat_WorkPhone" value="1" <?php if ($bNoFormat_WorkPhone) {
-        echo ' checked';
-    } ?>><?= gettext('Do not auto-format') ?>
+            echo ' checked';
+        } ?>><?= gettext('Do not auto-format') ?>
     </td>
   </tr>
 
@@ -308,8 +306,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <td class="TextColumn">
       <input type="text" name="CellPhone" value="<?php echo $sCellPhone ?>" size="30" maxlength="30">
       <input type="checkbox" name="NoFormat_CellPhone" value="1" <?php if ($bNoFormat_CellPhone) {
-        echo ' checked';
-    } ?>><?= gettext('Do not auto-format') ?>
+            echo ' checked';
+        } ?>><?= gettext('Do not auto-format') ?>
     </td>
   </tr>
 
@@ -328,8 +326,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </form>
 <?php
 } else {
-        echo "<p align=\"center\" class='callout callout-warning'>".gettext('Your cart is empty!').'</p>';
-    }
+            echo "<p align=\"center\" class='callout callout-warning'>".gettext('Your cart is empty!').'</p>';
+        }
 ?>
 </div>
 
