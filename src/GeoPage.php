@@ -154,28 +154,6 @@ if (isset($_POST['FindNeighbors']) || isset($_POST['DataFile']) || isset($_POST[
     }
 }
 
-// Check if cart needs to be updated
-if (isset($_POST['PersonIDList'])) {
-    $aIDsToProcess = explode(',', $_POST['PersonIDList']);
-
-    //Do we add these people to cart?
-    if (isset($_POST['AddAllToCart'])) {
-        AddArrayToPeopleCart($aIDsToProcess);
-    }
-
-    //Do we intersect these people with cart (keep values that are in both arrays)
-    if (isset($_POST['IntersectCart'])) {
-        IntersectArrayWithPeopleCart($aIDsToProcess);
-    }
-
-    if (isset($_POST['RemoveFromCart'])) {
-        RemoveArrayFromPeopleCart($aIDsToProcess);
-    }
-
-    //sort the cart
-    sort($_SESSION['aPeopleCart']);
-}
-
 if (isset($_POST['DataFile'])) {
     $resultsByDistance = FamilyInfoByDistance($iFamily);
 
@@ -438,15 +416,14 @@ $families = FamilyQuery::create()
 
     <div class="row">
         <div class="col-xs-7 col-md-4">
-            <input name="AddAllToCart" type="submit" class="btn btn-primary" value="<?= gettext('Add to Cart') ?>">
+            <a id="AddAllToCart" class="btn btn-primary" ><?= gettext('Add All to Cart') ?></a>
         </div>
         <div class="col-xs-7 col-md-4">
             <input name="IntersectCart" type="submit" class="btn btn-primary"
                    value="<?= gettext('Intersect with Cart') ?>">
         </div>
         <div class="col-xs-7 col-md-4">
-            <input name="RemoveFromCart" type="submit" class="btn btn-primary"
-                   value="<?= gettext('Remove from Cart') ?>">
+           <a id="RemoveAllFromCart" class="btn btn-danger" ><?= gettext('Remove All from Cart') ?></a>
         </div>
     </div>
     <?php
@@ -455,14 +432,9 @@ $families = FamilyQuery::create()
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-            var target = $(e.target).attr("href") // activated tab
-            $(target + " .choiceSelectBox").select2({width: 'resolve'});
-        });
-        $(".choiceSelectBox").select2({width: 'resolve'});
-    });
+    var listPeople=<?= json_encode($aPersonIDs)?>;
 </script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/GeoPage.js"></script>
 <?php
 require 'Include/Footer.php';
 ?>
