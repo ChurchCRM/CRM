@@ -266,31 +266,31 @@ ADD CONSTRAINT fk_event_cal_id
 -- Last the make classroom appeal
 -- We create an presence moment
 
-CREATE TABLE presence (
-    `pr_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
-    `date_attendance` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-    PRIMARY KEY(pr_id)
+CREATE TABLE sunday_school_presence (
+    `sc_pr_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
+    `sc_pr_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(sc_pr_id)
 )
 ENGINE= InnoDB;
 
--- We can add a person to the presence moment
+-- We can add a person to the sunday school presence moment
 -- This part is deleted when a person id deleted or a presence is deleted
 
-CREATE TABLE person_presence (
-    `per_pr_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
-    `per_presence_id` mediumint(9) unsigned NOT NULL,
-    `per_person_id` mediumint(9) unsigned NOT NULL,
-    `is_present` BOOLEAN NOT NULL DEFAULT false,
-    `delay` VARCHAR(40) NOT NULL DEFAULT '0',
-    `date_attendance` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-    `description` TEXT COLLATE utf8_unicode_ci,
-    PRIMARY KEY(per_pr_id),
+CREATE TABLE sunday_school_presence_person (
+    `sc_pr_per_pr_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
+    `sc_pr_per_presence_id` mediumint(9) unsigned NOT NULL,
+    `sc_pr_per_person_id` mediumint(9) unsigned NOT NULL,
+    `sc_pr_is_present` BOOLEAN NOT NULL DEFAULT false,
+    `sc_pr_delay` VARCHAR(40) NOT NULL DEFAULT '0',
+    `sc_pr_date_attendance` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `sc_pr_description` TEXT COLLATE utf8_unicode_ci,
+    PRIMARY KEY(sc_pr_per_pr_id),
     CONSTRAINT fk_person_presence_ID
-	FOREIGN KEY (per_presence_id) 
-	REFERENCES presence(pr_id)
+	FOREIGN KEY (sc_pr_per_presence_id) 
+	REFERENCES sunday_school_presence(sc_pr_id)
 	ON DELETE CASCADE,
     CONSTRAINT fk_person_ID
-	FOREIGN KEY (per_person_id) 
+	FOREIGN KEY (sc_pr_per_person_id) 
 	REFERENCES person_per(per_ID)
 	ON DELETE CASCADE
 )
@@ -510,16 +510,16 @@ INSERT INTO `calendar_type`(`cal_type_Name`) VALUES ('CALENDAR');
 
 CREATE TABLE calendar (
     `cal_id` mediumint(9) unsigned  NOT NULL AUTO_INCREMENT,
-    `cal_person_ID` mediumint(9) unsigned NOT NULL,
+    `cal_owner_person_ID` mediumint(9) unsigned NOT NULL,
     `cal_parent_ID` mediumint(9) unsigned DEFAULT NULL,
     `cal_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-    `cal_creation` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+    `cal_creation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `cal_desc` TEXT COLLATE utf8_unicode_ci,
     `cal_color` VARCHAR(10) NOT NULL DEFAULT '#DC143C', 
     `cal_cal_type_id`  mediumint(9) unsigned NOT NULL,
     PRIMARY KEY(cal_id),
-    CONSTRAINT fk_cal_ID
-	FOREIGN KEY (cal_person_ID) 
+    CONSTRAINT fk_cal_owner_ID
+	FOREIGN KEY (cal_owner_person_ID) 
 	REFERENCES person_per(per_ID)
 	ON DELETE CASCADE,
      CONSTRAINT fk_cal_parent_ID
@@ -533,8 +533,8 @@ CREATE TABLE calendar (
 )
 ENGINE= InnoDB;
 
--- A calendar can be share to another user nor to a group via inclusion
--- A user can customise the color nor the description
+-- A calendar can be share to another user or/and to a group via inclusion
+-- A user can customize the color and the description too
 -- a user has rights on the calendar :
 --   - 2 to write 4 for reading and 6 to read write 0 for nothing
 
@@ -550,6 +550,7 @@ CREATE TABLE calendar_share (
 	ON DELETE CASCADE
 )
 ENGINE= InnoDB;
+
 
 
 --
