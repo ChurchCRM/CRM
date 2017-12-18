@@ -13,12 +13,13 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Include/CountryDropDown.php';
+
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\data\Countries;
 
 if (!$_SESSION['bAdmin']) {
     Redirect('Menu.php');
@@ -262,7 +263,7 @@ if (isset($_POST['UploadCSV'])) {
         <?php
             $sCountry = SystemConfig::getValue('sDefaultCountry');
         
-        Countries::getDropDown($sCountry);
+        echo CountryDropDown::getDropDown($sCountry);
         
         echo gettext('Default country if none specified otherwise');
 

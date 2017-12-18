@@ -12,6 +12,8 @@
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Include/CountryDropDown.php';
+require 'Include/StateDropDown.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
@@ -25,8 +27,6 @@ use ChurchCRM\FamilyQuery;
 use ChurchCRM\Family;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\PersonCustomQuery;
-use ChurchCRM\data\Countries;
-use ChurchCRM\data\States;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -942,9 +942,7 @@ require 'Include/Header.php';
                 <div class="row">
                   <div class="form-group col-md-3">
                     <label for="StatleTextBox"><?= gettext('State')?>: </label><br>
-                    <?php 
-                      States::getDropDown($sState, "FamState");
-                    ?>
+                    <?= StateDropDown::getDropDown($sState, "FamState") ?>
                   </div>
                   <div class="form-group col-md-3">
                     <label><?= gettext('None US/CND State') ?>:</label>
@@ -964,9 +962,7 @@ require 'Include/Header.php';
                   </div>
                   <div class="form-group col-md-3">
                     <label> <?= gettext('Country') ?>:</label><br>
-                    <?php 
-                      Countries::getDropDown($sCountry, "FamCountry");
-                    ?>
+                    <?= CountryDropDown::getDropDown($sCountry, "FamCountry") ?>
                   </div>
                 </div>
               </div>
@@ -1050,7 +1046,7 @@ require 'Include/Header.php';
                             echo '</span>';
                         } ?>
                         </label>
-                        <?php States::getDropDown($sState); ?>
+                        <?= StateDropDown::getDropDown($sState) ?>
                     </div>
                     <div class="form-group col-md-2">
                         <label><?= gettext('None State') ?>:</label>
@@ -1095,8 +1091,7 @@ require 'Include/Header.php';
                             echo '</span>';
                         } ?>
                         </label>
-                        <?php 
-                            Countries::getDropDown($sCountry); ?>
+                        <?= CountryDropDown::getDropDown($sCountry) ?>
                     </div>
                 </div>
                 <p/>

@@ -57,26 +57,4 @@ class States
     {
         return self::$states;
     }
-    
-    public function getDropDown($selected_state="",$statename= "State")
-    {
-      $state = $statename;
-      $id_input = strtolower($state)."-input";
-      
-      echo '<select name="'.$state.'" class="form-control select2" id="'.$id_input.'" style="width:100%">';      
-      echo '<option value="">'.gettext('Unassigned').'</option>';
-      echo '<option value="" disabled>--------------------</option>';
-        foreach (self::getAll() as $keystate => $itemstate) {
-          if (!empty($keystate)) {
-              echo '<option value="'.$keystate.'"';
-              if ($selected_state == $keystate) {
-                echo 'selected';
-              } 
-          } else {
-            echo '<option value disabled';
-          }
-          echo '>'.gettext($itemstate);
-        }
-      echo '</select>';
-    }
 }

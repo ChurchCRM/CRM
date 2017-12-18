@@ -13,7 +13,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/CanvassUtilities.php';
-
+require 'Include/CountryDropDown.php';
+require 'Include/StateDropDown.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
@@ -25,8 +26,6 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\ListOptionQuery;
-use ChurchCRM\data\Countries;
-use ChurchCRM\data\States;
 use ChurchCRM\PersonCustom;
 use ChurchCRM\PersonCustomQuery;
 use ChurchCRM\FamilyCustom;
@@ -701,9 +700,7 @@ require 'Include/Header.php';
         <div class="row">
           <div class="form-group col-md-3">
             <label for="StatleTextBox"><?= gettext('State')?>: </label>
-            <?php 
-                States::getDropDown($sState);
-            ?>
+            <?= StateDropDown::getDropDown($sState) ?>
           </div>
           <div class="form-group col-md-3">
             <label><?= gettext('None US/CND State') ?>:</label>
@@ -723,9 +720,7 @@ require 'Include/Header.php';
           </div>
           <div class="form-group col-md-3">
             <label> <?= gettext('Country') ?>:</label>
-            <?php 
-               Countries::getDropDown($sCountry);
-              ?>
+            <?= CountryDropDown::getDropDown($sCountry) ?>
           </div>
         </div>
         <?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */

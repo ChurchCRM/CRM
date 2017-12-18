@@ -14,11 +14,12 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Include/CountryDropDown.php';
+require 'Include/StateDropDown.php';
+
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\data\Countries;
-use ChurchCRM\data\States;
 
 // Security: User must have add records permission
 if (!$_SESSION['bAddRecords']) {
@@ -252,7 +253,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <td class="LabelColumn"><?= gettext('State') ?>:</td>
     <td class="TextColumn">
       <?php 
-        States::getDropDown($sState); ?>
+        echo CountryDropDown::getDropDown($sState); ?>
       OR
       <input type="text" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
             echo $sState;
@@ -272,8 +273,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
   <tr>
     <td class="LabelColumn"><?= gettext('Country') ?>:</td>
     <td class="TextColumnWithBottomBorder">
-      <?php 
-        Countries::getDropDown($sCountry); ?>
+      <?= StateDropDown::getDropDown($sCountry) ?>
     </td>
   </tr>
 

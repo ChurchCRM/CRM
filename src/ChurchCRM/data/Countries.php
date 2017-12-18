@@ -76,22 +76,4 @@ class Countries
     {
         return self::$countries;
     }
-    
-    public static function getDropDown($selected_country="",$countryname= "Country")
-    {
-      $country = $countryname;
-      $id_input = strtolower($country)."-input";
-      
-      echo '<select name="'.$country.'" class="form-control select2" id="'.$id_input.'" style="width:100%">';      
-      echo '<option value="">'.gettext('Unassigned').'</option>';
-      echo '<option value="" disabled>--------------------</option>';
-        foreach (self::getNames() as $county) {
-          echo '<option value="'.$county.'"';
-          if ($selected_country == $county) {
-            echo 'selected';
-          } 
-          echo '>'.gettext($county);
-        }
-      echo '</select>';
-    }
 }
