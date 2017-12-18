@@ -1,6 +1,10 @@
 {
     "name": "ChurchCRM",
+<<<<<<< HEAD
     "version": "2.9.3",
+=======
+    "version": "2.10.0",
+>>>>>>> phili67-tooltip-new-improvements
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -58,7 +62,7 @@
         "graph-viz": "src/vendor/propel/propel/bin/propel --config-dir=propel graphviz:generate",
         "datadictionary": "src/vendor/propel/propel/bin/propel --config-dir=propel datadictionary:generate",
         "composer-install": "cd src/ && composer install",
-        "composer-update": " cd src/ && composer update && cd ../tests/ && composer update",
+        "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update",
         "tests-install": "scripts/tests-install.sh",
         "test": "scripts/tests-run.sh"
     }

@@ -1091,7 +1091,10 @@ INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_valu
   (1, 1, 'sMailtoDelimiter', ',', 'text', 'user permission to send email via mailto: links', 'TRUE', ''),
   (1, 5, 'bCreateDirectory', '1', 'boolean', 'User permission to create directories', 'TRUE', ''),
   (1, 6, 'bExportCSV', '1', 'boolean', 'User permission to export CSV files', 'TRUE', ''),
-  (1, 7, 'bUSAddressVerification', '1', 'boolean', 'User permission to use IST Address Verification', 'TRUE', '');
+  (1, 7, 'bUSAddressVerification', '1', 'boolean', 'User permission to use IST Address Verification', 'TRUE', ''),
+  (1, 8, 'bShowTooltip',1,'boolean','Allow to see ballon Help','TRUE',''),
+  (0, 8, 'bShowTooltip',1,'boolean','Allow to see ballon Help','TRUE','');
+  
 
 -- --------------------------------------------------------
 
