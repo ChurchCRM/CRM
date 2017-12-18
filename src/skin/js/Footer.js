@@ -44,7 +44,7 @@ $("document").ready(function(){
         
         if (window.CRM.dataTableList) {
             window.CRM.dataTableList.ajax.reload();
-        } else if (data.cartPeople) {// this part should be written like this        
+        } else if (data.cartPeople) {// this part should be written like this, the code will crash at this point without this test       
           console.log(data.cartPeople);
           $(data.cartPeople).each(function(index,data){
             personButton = $("a[data-cartpersonid='" + data + "']");
@@ -180,8 +180,7 @@ $("document").ready(function(){
            $("#GroupSelect").show();
        } else {
            $("#GroupSelect").hide();
-           $("#GroupCreation").show();
-           
+           $("#GroupCreation").show();           
        }
     });
 
@@ -280,7 +279,7 @@ $("document").ready(function(){
     
     $(document).on("click",".RemoveFromPeopleCart", function(){
       clickedButton = $(this);
-      window.CRM.cart.removePerson([clickedButton.data("personid")],function()
+      window.CRM.cart.removePerson([clickedButton.data("cartpersonid")],function()
       {
         $(clickedButton).addClass("AddToPeopleCart");
         $(clickedButton).removeClass("RemoveFromPeopleCart");
@@ -291,12 +290,12 @@ $("document").ready(function(){
     
     $(document).on("click",".AddToPeopleCart", function(){
       clickedButton = $(this);
-      window.CRM.cart.addPerson([clickedButton.data("personid")],function()
+      window.CRM.cart.addPerson([clickedButton.data("cartpersonid")],function()
       {
         $(clickedButton).addClass("RemoveFromPeopleCart");
         $(clickedButton).removeClass("AddToPeopleCart");
-        $('span i:nth-child(2)',clickedButton).addClass("fa-remove ");
-        $('span i:nth-child(2)',clickedButton).removeClass("fa-cart-plus ");
+        $('span i:nth-child(2)',clickedButton).addClass("fa-remove");
+        $('span i:nth-child(2)',clickedButton).removeClass("fa-cart-plus");
       });
     });
     
