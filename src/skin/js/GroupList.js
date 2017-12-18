@@ -20,10 +20,10 @@ $(document).ready(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json"
       }).done(function (data) {                               //yippie, we got something good back from the server
-        dataT.row.add(data);                                //add the group data to the existing DataTable
-        dataT.rows().invalidate().draw(true);               //redraw the dataTable
+        window.CRM.dataTableList.row.add(data);                                //add the group data to the existing window.CRM.dataTableListable
+        window.CRM.dataTableList.rows().invalidate().draw(true);               //redraw the window.CRM.dataTableListable
         $("#groupName").val(null);
-        dataT.ajax.reload();// PL : We should reload the table after we add a group so the button add to group is disabled
+        window.CRM.dataTableList.ajax.reload();// PL : We should reload the table after we add a group so the button add to group is disabled
       });
     }
     else {
@@ -31,11 +31,11 @@ $(document).ready(function () {
     }
   });
 
-  dataT = $("#groupsTable").DataTable({
+  window.CRM.dataTableList = $("#groupsTable").DataTable({
     "initComplete": function( settings, json ) {
         if (window.groupSelect != null)
         {
-          dataT.search(window.groupSelect).draw();
+          window.CRM.dataTableList.search(window.groupSelect).draw();
         }
     },
     "language": {
@@ -111,7 +111,7 @@ $(document).ready(function () {
   });
   
   $('#table-filter').on('change', function(){
-       dataT.search(this.value).draw();
+       window.CRM.dataTableList.search(this.value).draw();
        localStorage.setItem("groupSelect",this.selectedIndex);
   });
   
