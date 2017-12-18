@@ -13,6 +13,8 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Include/CountryDropDown.php';
+
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
@@ -260,7 +262,9 @@ if (isset($_POST['UploadCSV'])) {
         <BR><BR>
         <?php
             $sCountry = SystemConfig::getValue('sDefaultCountry');
-        require 'Include/CountryDropDown.php';
+        
+        echo CountryDropDown::getDropDown($sCountry);
+        
         echo gettext('Default country if none specified otherwise');
 
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
