@@ -40,9 +40,20 @@ $("document").ready(function(){
   
     $(document).on("click", ".emptyCart", function (e) {
       window.CRM.cart.empty(function(data){
-          window.CRM.cart.refresh();
-          window.location.reload();// this should be the nicer solution to avoid the problem on each page to set correctly the button when the cart is empty
-          // some many pages should be affected now and in the future, so this part part will reflect all the pages
+        window.CRM.cart.refresh();
+        
+        if (window.CRM.dataTableList) {
+            window.CRM.dataTableList.ajax.reload();
+        } else if (data.cartPeople) {// this part should be written like this        
+          console.log(data.cartPeople);
+          $(data.cartPeople).each(function(index,data){
+            personButton = $("a[data-cartpersonid='" + data + "']");
+            $(personButton).addClass("AddToPeopleCart");
+            $(personButton).removeClass("RemoveFromPeopleCart");
+            $('span i:nth-child(2)',personButton).removeClass("fa-remove");
+            $('span i:nth-child(2)',personButton).addClass("fa-cart-plus");
+          });
+        }
       });
     });
     
