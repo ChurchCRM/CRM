@@ -38,6 +38,10 @@ $("document").ready(function(){
 
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
   
+  
+  	/* IMPORTANT :
+  	   You have to be careful with this part of code !!!!!
+  	   this part of code will work in two different js code : PersonView.js and GroupList.js */
     $(document).on("click", ".emptyCart", function (e) {
       window.CRM.cart.empty(function(data){
         window.CRM.cart.refresh();
