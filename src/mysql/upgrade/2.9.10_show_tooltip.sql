@@ -1,0 +1,2 @@
+INSERT INTO `userconfig_ucfg`(`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`, `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`, `ucfg_cat`) VALUES (1, 8, 'bShowTooltip',1,'boolean','Allow to see ballon Help','TRUE','');
+INSERT INTO `userconfig_ucfg`(`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`, `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`, `ucfg_cat`) VALUES (0, 8, 'bShowTooltip',1,'boolean','Allow to see ballon Help','TRUE','');
