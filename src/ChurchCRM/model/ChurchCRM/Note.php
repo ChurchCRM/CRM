@@ -40,7 +40,7 @@ class Note extends BaseNote
         return SystemURLs::getRootPath().'/NoteDelete.php?NoteID='.$this->getId();
     }
 
-    public function getDisplayEditedDate($format = 'Y-m-d h:i:s')
+    public function getDisplayEditedDate($format = 'Y-m-d H:i:s')// you have to set the time to 0-23, if not all the time are set to AM.
     {
         if (!empty($this->getDateLastEdited())) {
             return $this->getDateLastEdited($format);
