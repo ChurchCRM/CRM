@@ -39,7 +39,7 @@ $("document").ready(function(){
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
   
   
-  	/* IMPORTANT :
+  	/* IMPORTANT : be careful
   	   You have to be careful with this part of code !!!!!
   	   this part of code will work in two different js code : PersonView.js and GroupList.js */
     $(document).on("click", ".emptyCart", function (e) {
@@ -48,7 +48,7 @@ $("document").ready(function(){
         
         if (window.CRM.dataTableList) {
             window.CRM.dataTableList.ajax.reload();
-        } else if (data.cartPeople) {// this part should be written like this, the code will crash at this point without this test       
+        } else if (data.cartPeople) {// this part should be written like this, the code will crash at this point without this test and crash the js code
           console.log(data.cartPeople);
           $(data.cartPeople).each(function(index,data){
             personButton = $("a[data-cartpersonid='" + data + "']");
@@ -61,6 +61,8 @@ $("document").ready(function(){
       });
     });
     
+    /* IMPORTANT : be careful
+  	   This will work in cartToGroup code */
     function BootboxContentCartTogroup(){    
       var frm_str = '<form id="some-form">'
         +'<table border=0 cellpadding=2 width="100%">'
