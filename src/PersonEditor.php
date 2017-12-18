@@ -947,8 +947,8 @@ require 'Include/Header.php';
                   <div class="form-group col-md-3">
                     <label><?= gettext('None US/CND State') ?>:</label>
                     <input type="text"  class="form-control" name="FamStateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
-                        echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
-                    } ?>" size="20" maxlength="30">
+                         echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
+                     } ?>" size="20" maxlength="30">
                   </div>
                   <div class="form-group col-md-3">
                     <label><?= gettext('Zip')?>:</label>
@@ -985,14 +985,14 @@ require 'Include/Header.php';
                         <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyAddress1) {
-                        echo '<span style="color: red;">';
-                    }
+                                        echo '<span style="color: red;">';
+                                    }
 
-                        echo gettext('Address').' 1:';
+                                        echo gettext('Address').' 1:';
 
-                        if ($bFamilyAddress1) {
-                            echo '</span>';
-                        } ?>
+                                        if ($bFamilyAddress1) {
+                                            echo '</span>';
+                                        } ?>
                             </label>
                             <input type="text" name="Address1"
                                    value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -1001,14 +1001,14 @@ require 'Include/Header.php';
                         <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyAddress2) {
-                            echo '<span style="color: red;">';
-                        }
+                                            echo '<span style="color: red;">';
+                                        }
 
-                        echo gettext('Address').' 2:';
+                                        echo gettext('Address').' 2:';
 
-                        if ($bFamilyAddress2) {
-                            echo '</span>';
-                        } ?>
+                                        if ($bFamilyAddress2) {
+                                            echo '</span>';
+                                        } ?>
                             </label>
                             <input type="text" name="Address2"
                                    value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -1017,14 +1017,14 @@ require 'Include/Header.php';
                         <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyCity) {
-                            echo '<span style="color: red;">';
-                        }
+                                            echo '<span style="color: red;">';
+                                        }
 
-                        echo gettext('City').':';
+                                        echo gettext('City').':';
 
-                        if ($bFamilyCity) {
-                            echo '</span>';
-                        } ?>
+                                        if ($bFamilyCity) {
+                                            echo '</span>';
+                                        } ?>
                             </label>
                             <input type="text" name="City"
                                    value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -1037,14 +1037,14 @@ require 'Include/Header.php';
                     <div class="form-group col-md-2">
                         <label for="StatleTextBox">
                             <?php if ($bFamilyState) {
-                            echo '<span style="color: red;">';
-                        }
+                                            echo '<span style="color: red;">';
+                                        }
 
-                        echo gettext('State').':';
+                                        echo gettext('State').':';
 
-                        if ($bFamilyState) {
-                            echo '</span>';
-                        } ?>
+                                        if ($bFamilyState) {
+                                            echo '</span>';
+                                        } ?>
                         </label>
                         <?= StateDropDown::getDropDown($sState) ?>
                     </div>
@@ -1052,22 +1052,22 @@ require 'Include/Header.php';
                         <label><?= gettext('None State') ?>:</label>
                         <input type="text" name="StateTextbox"
                                value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
-                            echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
-                        } ?>"
+                                            echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
+                                        } ?>"
                                size="20" maxlength="30" class="form-control">
                     </div>
 
                     <div class="form-group col-md-1">
                         <label for="Zip">
                             <?php if ($bFamilyZip) {
-                            echo '<span style="color: red;">';
-                        }
+                                            echo '<span style="color: red;">';
+                                        }
 
-                        echo gettext('Zip').':';
+                                        echo gettext('Zip').':';
 
-                        if ($bFamilyZip) {
-                            echo '</span>';
-                        } ?>
+                                        if ($bFamilyZip) {
+                                            echo '</span>';
+                                        } ?>
                         </label>
                         <input type="text" name="Zip" class="form-control"
                             <?php
@@ -1076,27 +1076,27 @@ require 'Include/Header.php';
                                 echo 'style="text-transform:uppercase" ';
                             }
 
-                        echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
+                                        echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
                                maxlength="10" size="8">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="Zip">
                             <?php if ($bFamilyCountry) {
-                            echo '<span style="color: red;">';
-                        }
+                                            echo '<span style="color: red;">';
+                                        }
 
-                        echo gettext('Country').':';
+                                        echo gettext('Country').':';
 
-                        if ($bFamilyCountry) {
-                            echo '</span>';
-                        } ?>
+                                        if ($bFamilyCountry) {
+                                            echo '</span>';
+                                        } ?>
                         </label>
                         <?= CountryDropDown::getDropDown($sCountry) ?>
                     </div>
                 </div>
                 <p/>
             <?php
-                    } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
+                                    } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
                 <input type="hidden" name="Address1"
                        value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="Address2"
@@ -1112,7 +1112,7 @@ require 'Include/Header.php';
                 <input type="hidden" name="Country"
                        value="<?= htmlentities(stripslashes($sCountry), ENT_NOQUOTES, 'UTF-8') ?>"></input>
             <?php
-                    } ?>
+                                    } ?>
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="HomePhone">
