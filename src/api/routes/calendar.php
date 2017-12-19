@@ -19,6 +19,6 @@ $app->group('/calendar', function () {
  */
 function getEvents(Request $request, Response $response, array $p_args ) {
     $params = $request->getQueryParams();
-    $clanderService = new CalendarService();
-    return $response->withJson($clanderService->getEvents($params['start'], $params['end']));
+    $calendarService = new CalendarService();
+    return $response->withJson($calendarService->getEvents($params['start'], $params['end']));
 }
