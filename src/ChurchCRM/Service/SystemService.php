@@ -24,7 +24,7 @@ class SystemService
         $client = new Client();
         $release = null;
         try {
-            $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
+            $release = $client->api('repo')->releases()->latest('phili67', 'crm');
         } catch (\Exception $e) {
         }
 
