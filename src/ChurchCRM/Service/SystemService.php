@@ -24,10 +24,13 @@ class SystemService
         $client = new Client();
         $release = null;
         try {
+            // old repo
+            //$release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
+            // new repo : attention le nom de la build doit être pile 2.9.2 et non 2.9.2 update
             $release = $client->api('repo')->releases()->latest('phili67', 'crm');
         } catch (\Exception $e) {
         }
-
+        
         return $release;
     }
 
