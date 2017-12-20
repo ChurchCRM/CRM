@@ -9271,3 +9271,8 @@ msgstr "Saisir votre mot de passe pour revenir à votre session"
 msgid "Or sign in as a different user"
 msgstr "Ou choisir un autre utilisateur afin de vous vous connecter"
 
+msgid "Users Specific Schedule Tasks"
+msgstr "Tâches planifiées utilisateurs" 
+
+msgid "for"
+msgstr "pour"
