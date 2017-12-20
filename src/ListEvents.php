@@ -354,6 +354,7 @@ foreach ($allMonths as $mKey => $mVal) {
   });
 </script>
 
+
 <?php
 require 'Include/Footer.php';
 ?>
