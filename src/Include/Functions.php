@@ -162,9 +162,67 @@ if (isset($_POST['BulkAddToCart'])) {
     }
 }
 
+
 //
 // Some very basic functions that all scripts use
 //
+
+function AddToPeopleCart($sID)
+{
+    // make sure the cart array exists
+    if (isset($_SESSION['aPeopleCart'])) {
+        if (!in_array($sID, $_SESSION['aPeopleCart'], false)) {
+            $_SESSION['aPeopleCart'][] = $sID;
+        }
+    } else {
+        $_SESSION['aPeopleCart'][] = $sID;
+    }
+}
+
+function RemoveFromPeopleCart($sID)
+{
+   // make sure the cart array exists
+   // we can't remove anybody if there is no cart
+   if (isset($_SESSION['aPeopleCart'])) {
+       unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
+   $aTempArray[] = $sID; // the only element in this array is the ID to be removed
+   $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aTempArray);
+   }
+}
+
+// Remove group from cart
+function RemoveGroupFromPeopleCart($iGroupID)
+{
+    //Get all the members of this group
+    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
+    'WHERE p2g2r_grp_ID = '.$iGroupID;
+    $rsGroupMembers = RunQuery($sSQL);
+
+    //Loop through the recordset
+    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
+        extract($aRow);
+
+        //remove each person from the cart
+        RemoveFromPeopleCart($p2g2r_per_ID);
+    }
+}
+
+// Add group to cart
+function AddGroupToPeopleCart($iGroupID)
+{
+    //Get all the members of this group
+    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
+    'WHERE p2g2r_grp_ID = '.$iGroupID;
+    $rsGroupMembers = RunQuery($sSQL);
+
+    //Loop through the recordset
+    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
+        extract($aRow);
+
+        //Add each person to the cart
+        AddToPeopleCart($p2g2r_per_ID);
+    }
+}
 
 // Convert a relative URL into an absolute URL and return absolute URL.
 function RedirectURL($sRelativeURL)
