@@ -21,7 +21,24 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class MenuEventsCount
 {
-    
+    public static function getEventsOfToday()
+    {
+        $start_date = date("Y-m-d ")." 00:00:00";
+        $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' +1 day'));
+
+        $activeEvents = EventQuery::create()
+            ->where("event_start <= '".$start_date ."' AND event_end >= '".$end_date."'") /* the large events */
+            ->_or()->where("event_start>='".$start_date."' AND event_end <= '".$end_date."'") /* the events of the day */
+            ->find();
+
+        return  $activeEvents;
+    }
+
+    public static function getNumberEventsOfToday()
+    {
+        return count(self::getEventsOfToday());
+    }
+
     public static function getBirthDates()
     {
         $peopleWithBirthDays = PersonQuery::create()

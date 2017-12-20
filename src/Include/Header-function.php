@@ -117,6 +117,7 @@ function Header_body_scripts()
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
             iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
+            showTooltip:"<?= $_SESSION['bShowTooltip'] ?>",
             plugin: {
                 dataTable : {
                    "language": {
@@ -153,6 +154,7 @@ function GetSecuritySettings()
     $aSecurityListPrimal[] = 'bCanvasser';
     $aSecurityListPrimal[] = 'bAddEvent';
     $aSecurityListPrimal[] = 'bSeePrivacyData';
+    $aSecurityListPrimal[] = 'bShowTooltip';
 
     $ormSecGrpLists = UserConfigQuery::Create()
                         ->filterByPeronId(0)

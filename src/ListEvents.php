@@ -196,10 +196,10 @@ foreach ($allMonths as $mKey => $mVal) {
         ?>
   <div class='box'>
     <div class='box-header'>
-      <h3 class='box-title'><?= ($numRows == 1 ? gettext('There is') : gettext('There are')).' '.$numRows.' '.($numRows == 1 ? gettext('event') : gettext('events')).' '.'for'.'  '.gettext(date('F', mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
+      <h3 class='box-title'><?= ($numRows == 1 ? gettext('There is') : gettext('There are')).' '.$numRows.' '.($numRows == 1 ? gettext('event') : gettext('events')).' '.gettext('for').'  '.gettext(date('F', mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
     </div>
     <div class='box-body'>
-  <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
+  <table class='listEvents table data-table table-striped table-bordered table-responsive'>
     <thead>
       <tr class="TableHeader">
         <th><?= gettext('Action') ?></th>
@@ -293,7 +293,7 @@ foreach ($allMonths as $mKey => $mVal) {
               <?= FormatDate($aEventStartDateTime[$row], 1) ?>
             </td>
             <td>
-              <?= ($aEventStatus[$row] != 0 ? 'No' : 'Yes') ?>
+              <?= ($aEventStatus[$row] != 0 ? _('No') : _('Yes')) ?>
             </td>
 
           </tr>
@@ -348,9 +348,12 @@ foreach ($allMonths as $mKey => $mVal) {
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 //Added by @saulowulhynek to translation of datatable nav terms
   $(document).ready(function () {
-    $('#listEvents').DataTable(window.CRM.plugin.dataTable});
+    $('.listEvents').DataTable({"language": {
+      "url": window.CRM.plugin.dataTable.language.url
+    }});
   });
 </script>
+
 
 <?php
 require 'Include/Footer.php';

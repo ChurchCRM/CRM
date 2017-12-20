@@ -162,9 +162,67 @@ if (isset($_POST['BulkAddToCart'])) {
     }
 }
 
+
 //
 // Some very basic functions that all scripts use
 //
+
+function AddToPeopleCart($sID)
+{
+    // make sure the cart array exists
+    if (isset($_SESSION['aPeopleCart'])) {
+        if (!in_array($sID, $_SESSION['aPeopleCart'], false)) {
+            $_SESSION['aPeopleCart'][] = $sID;
+        }
+    } else {
+        $_SESSION['aPeopleCart'][] = $sID;
+    }
+}
+
+function RemoveFromPeopleCart($sID)
+{
+   // make sure the cart array exists
+   // we can't remove anybody if there is no cart
+   if (isset($_SESSION['aPeopleCart'])) {
+       unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
+   $aTempArray[] = $sID; // the only element in this array is the ID to be removed
+   $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aTempArray);
+   }
+}
+
+// Remove group from cart
+function RemoveGroupFromPeopleCart($iGroupID)
+{
+    //Get all the members of this group
+    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
+    'WHERE p2g2r_grp_ID = '.$iGroupID;
+    $rsGroupMembers = RunQuery($sSQL);
+
+    //Loop through the recordset
+    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
+        extract($aRow);
+
+        //remove each person from the cart
+        RemoveFromPeopleCart($p2g2r_per_ID);
+    }
+}
+
+// Add group to cart
+function AddGroupToPeopleCart($iGroupID)
+{
+    //Get all the members of this group
+    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
+    'WHERE p2g2r_grp_ID = '.$iGroupID;
+    $rsGroupMembers = RunQuery($sSQL);
+
+    //Loop through the recordset
+    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
+        extract($aRow);
+
+        //Add each person to the cart
+        AddToPeopleCart($p2g2r_per_ID);
+    }
+}
 
 // Convert a relative URL into an absolute URL and return absolute URL.
 function RedirectURL($sRelativeURL)
@@ -398,10 +456,11 @@ function change_date_for_place_holder($string)
     return ((strtotime($string) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($string)):strtotime($string));
 }
 
-function FormatDateOutput()
+function FormatDateOutput($bWithTime)
 {
     $fmt = SystemConfig::getValue("sDateFormatLong");
-    
+    $fmt_time = SystemConfig::getValue("sTimeFormat");
+
     $fmt = str_replace("/", " ", $fmt);
     
     $fmt = str_replace("-", " ", $fmt);
@@ -409,6 +468,10 @@ function FormatDateOutput()
     $fmt = str_replace("d", "%d", $fmt);
     $fmt = str_replace("m", "%B", $fmt);
     $fmt = str_replace("Y", "%Y", $fmt);
+    
+    if ($bWithTime) {
+        $fmt .= " ".$fmt_time;
+    }
     
     return $fmt;
 }
@@ -439,38 +502,10 @@ function FormatDate($dDate, $bWithTime = false)
         return 'Unknown';
     }
 
-    // PHP date() function is not used because it is only robust for dates between
-    // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.
-    // To handle a much wider range of dates use MySQL date functions.
-
-    $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
-    ."DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
-    ."DATE_FORMAT('$dDate', '%k') as h, "
-    ."DATE_FORMAT('$dDate', ':%i') as m";
-    extract(mysqli_fetch_array(RunQuery($sSQL)));
-    
-
-    if ($h > 11) {
-        $sAMPM = gettext('pm');
-        if ($h > 12) {
-            $h = $h - 12;
-        }
-    } else {
-        $sAMPM = gettext('am');
-        if ($h == 0) {
-            $h = 12;
-        }
-    }
-        
-    $fmt = FormatDateOutput();
+    $fmt = FormatDateOutput($bWithTime);
         
     setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));
-    
-    if ($bWithTime) {
-        return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
-    } else {
-        return utf8_encode(strftime("$fmt", strtotime($dDate)));
-    }
+    return utf8_encode(strftime("$fmt", strtotime($dDate)));
 }
 
 function AlternateRowStyle($sCurrentStyle)

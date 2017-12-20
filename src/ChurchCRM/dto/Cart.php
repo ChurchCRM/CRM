@@ -148,7 +148,13 @@ class Cart
     return $persons->count();
   }
 
-  public static function EmptyToGroup($GroupID,$RoleID)
+
+  public static function EmptyToNewGroup($GroupID)
+  {
+    self::EmptyToGroup($GroupID);
+  }
+  	
+  public static function EmptyToGroup($GroupID,$RoleID=0)
   {
     $iCount = 0;
 

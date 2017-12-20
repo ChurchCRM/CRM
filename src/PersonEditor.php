@@ -5,20 +5,28 @@
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003 Deane Barker, Chris Gebhardt
  *                Copyright 2004-2005 Michael Wilt
-  *
+ *                2017 Philippe Logel
+ *
  ******************************************************************************/
 
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+require 'Include/CountryDropDown.php';
+require 'Include/StateDropDown.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Person;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\Family;
+use ChurchCRM\ListOptionQuery;
+use ChurchCRM\PersonCustomQuery;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -38,13 +46,12 @@ if (array_key_exists('previousPage', $_GET)) {
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iPersonID > 0) {
-    $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = '.$iPersonID;
-    $rsPerson = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsPerson));
+    $person = PersonQuery::Create()
+        ->findOneById($iPersonID);
 
-    if (mysqli_num_rows($rsPerson) == 0) {
+    if (empty($person)) {
         Redirect('Menu.php');
-        exit;
+        exit();
     }
 
     if (!(
@@ -60,16 +67,17 @@ if ($iPersonID > 0) {
     Redirect('Menu.php');
     exit;
 }
-// Get Field Security List Matrix
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
-$rsSecurityGrp = RunQuery($sSQL);
 
-while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-    extract($aRow);
-    $aSecurityType[$lst_OptionID] = $lst_OptionName;
+// Get Field Security List Matrix
+$listOptions = ListOptionQuery::Create()
+              ->orderByOptionSequence()
+              ->findById(5);
+              
+foreach ($listOptions as $listOption) {
+    $aSecurityType[$listOption->getOptionId()] = $listOption->getOptionName();
 }
 
-// Get the list of custom person fields
+// Get the list of custom person fields : I leave you this in exercice
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
@@ -92,6 +100,7 @@ $fam_Country = '';
 $bNoFormat_HomePhone = false;
 $bNoFormat_WorkPhone = false;
 $bNoFormat_CellPhone = false;
+
 
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
@@ -121,16 +130,39 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (array_key_exists('Zip', $_POST)) {
         $sZip = InputUtils::LegacyFilterInput($_POST['Zip']);
     }
+    
+    // Person address stuff is normally surpressed in favor of family address info
+    $sFamAddress1 = '';
+    $sFamAddress2 = '';
+    $sFamCity = '';
+    $sFamZip = '';
+    $sFamState = '';
+    $sFamCountry = '';
+    if (array_key_exists('FamAddress1', $_POST)) {
+        $sFamAddress1 = InputUtils::LegacyFilterInput($_POST['FamAddress1']);
+    }
+    if (array_key_exists('FamAddress2', $_POST)) {
+        $sFamAddress2 = InputUtils::LegacyFilterInput($_POST['FamAddress2']);
+    }
+    if (array_key_exists('FamCity', $_POST)) {
+        $sFamCity = InputUtils::LegacyFilterInput($_POST['FamCity']);
+    }
+    if (array_key_exists('FamZip', $_POST)) {
+        $sFamZip = InputUtils::LegacyFilterInput($_POST['FamZip']);
+    }
+    if (array_key_exists('FamState', $_POST)) {
+        $sFamState = InputUtils::LegacyFilterInput($_POST['FamState']);
+    }
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
-        $sZip = strtoupper($sZip);
+        $sFamZip = strtoupper($sFamZip);
     }
 
-    if (array_key_exists('Country', $_POST)) {
-        $sCountry = InputUtils::LegacyFilterInput($_POST['Country']);
+    if (array_key_exists('FamCountry', $_POST)) {
+        $sFamCountry = InputUtils::LegacyFilterInput($_POST['FamCountry']);
     }
-
+    
     $iFamily = InputUtils::LegacyFilterInput($_POST['Family'], 'int');
     $iFamilyRole = InputUtils::LegacyFilterInput($_POST['FamilyRole'], 'int');
 
@@ -161,6 +193,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthMonth = InputUtils::LegacyFilterInput($_POST['BirthMonth'], 'int');
     $iBirthDay = InputUtils::LegacyFilterInput($_POST['BirthDay'], 'int');
     $iBirthYear = InputUtils::LegacyFilterInput($_POST['BirthYear'], 'int');
+
     $bHideAge = isset($_POST['HideAge']);
     // Philippe Logel
     $dFriendDate = InputUtils::FilterDate($_POST['FriendDate']);
@@ -294,17 +327,29 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ((strlen($iBirthYear) != 4)) {
             $iBirthYear = 'NULL';
         } else {
-            $iBirthYear = "'$iBirthYear'";
+            $iBirthYear = "$iBirthYear";
         }
 
         // New Family (add)
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
-            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
-					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['iUserID'].')';
-            //Execute the SQL
-            RunQuery($sSQL);
-            //Get the key back
+            $family = new Family();
+            $family->setName($sLastName);
+            $family->setAddress1($sFamAddress1);
+            $family->setAddress2($sFamAddress2);
+            $family->setCity($sFamCity);
+            $family->setState($sFamState);
+            $family->setZip($sFamZip);
+            $family->setCountry($sFamCountry);
+            $family->setHomePhone($sHomePhone);
+            $family->setWorkPhone($sWorkPhone);
+            $family->setCellPhone($sCellPhone);
+            $family->setEmail($sEmail);
+            $family->setDateEntered(date('YmdHis'));
+            $family->setEnteredBy($_SESSION['iUserID']);
+            $family->save();
+            
+            //Get the key back You use the same code in CartView.php
             $sSQL = 'SELECT MAX(fam_ID) AS iFamily FROM family_fam';
             $rsLastEntry = RunQuery($sSQL);
             extract(mysqli_fetch_array($rsLastEntry));
@@ -319,68 +364,118 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // New Person (add)
         if ($iPersonID < 1) {
             $iEnvelope = 0;
-
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_FacebookID, per_Twitter, per_LinkedIn)
-			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
+            
+            $person = new Person();
+            $person->setTitle($sTitle);
+            $person->setFirstName($sFirstName);
+            $person->setMiddleName($sMiddleName);
+            $person->setLastName($sLastName);
+            $person->setSuffix($sSuffix);
+            $person->setGender($iGender);
+            $person->setAddress1($sAddress1);
+            $person->setAddress2($sAddress2);
+            $person->setCity($sCity);
+            $person->setState($sState);
+            $person->setZip($sZip);
+            $person->setCountry($sCountry);
+            $person->setHomePhone($sHomePhone);
+            $person->setWorkPhone($sWorkPhone);
+            $person->setCellPhone($sCellPhone);
+            $person->setEmail($sEmail);
+            $person->setWorkEmail($sWorkEmail);
+            $person->setBirthMonth($iBirthMonth);
+            $person->setBirthDay($iBirthDay);
+            $person->setBirthYear($iBirthYear);
+            
+            if ($_SESSION['bFinance']) {
+                $person->setEnvelope($iEnvelope);
+            }
+            
+            $person->setFamId($iFamily);
+            $person->setFmrId($iFamilyRole);
+            
             if (strlen($dMembershipDate) > 0) {
-                $sSQL .= '"'.$dMembershipDate.'"';
-            } else {
-                $sSQL .= 'NULL';
+                $person->setMembershipDate($dMembershipDate);
             }
-            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['iUserID'].',';
-
+            
+            $person->setClsId($iClassification);
+            $person->setDateEntered(new DateTime());
+            $person->setEnteredBy($_SESSION['iUserID']);
+            
             if (strlen($dFriendDate) > 0) {
-                $sSQL .= '"'.$dFriendDate.'"';
-            } else {
-                $sSQL .= 'NULL';
+                $person->setFriendDate($dFriendDate);
             }
-
-            $sSQL .= ', '.$per_Flags;
-            $sSQL .= ', '. $iFacebook;
-            $sSQL .= ', "'. $sTwitter.'"';
-            $sSQL .= ', "'. $sLinkedIn.'"';
-            $sSQL .= ')';
+            
+            $person->setFlags($per_Flags);
+            $person->setFacebookID($iFacebook);
+            $person->setTwitter($sTwitter);
+            $person->setLinkedIn($sLinkedIn);
+            
+            $person->save();
 
             $bGetKeyBack = true;
 
             // Existing person (update)
         } else {
-            $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
-            if (strlen($dMembershipDate) > 0) {
-                $sSQL .= '"'.$dMembershipDate.'"';
-            } else {
-                $sSQL .= 'NULL';
-            }
-
+            $person = PersonQuery::Create()
+                ->findOneByID($iPersonID);
+                
+            $person->setTitle($sTitle);
+            $person->setFirstName($sFirstName);
+            $person->setMiddleName($sMiddleName);
+            $person->setLastName($sLastName);
+            $person->setSuffix($sSuffix);
+            $person->setGender($iGender);
+            $person->setAddress1($sAddress1);
+            $person->setAddress2($sAddress2);
+            $person->setCity($sCity);
+            $person->setState($sState);
+            $person->setZip($sZip);
+            $person->setCountry($sCountry);
+            $person->setHomePhone($sHomePhone);
+            $person->setWorkPhone($sWorkPhone);
+            $person->setCellPhone($sCellPhone);
+            $person->setEmail($sEmail);
+            $person->setWorkEmail($sWorkEmail);
+            $person->setBirthMonth($iBirthMonth);
+            $person->setBirthDay($iBirthDay);
+            $person->setBirthYear($iBirthYear);
+            
             if ($_SESSION['bFinance']) {
-                $sSQL .= ', per_Envelope = '.$iEnvelope;
+                $person->setEnvelope($iEnvelope);
             }
-
-            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['iUserID'].', per_FriendDate =';
-
+            
+            $person->setFamId($iFamily);
+            $person->setFmrId($iFamilyRole);
+            
+            if (strlen($dMembershipDate) > 0) {
+                $person->setMembershipDate($dMembershipDate);
+            }
+            
+            $person->setClsId($iClassification);
+            $person->setDateEntered(new DateTime());
+            $person->setEnteredBy($_SESSION['iUserID']);
+            
+            $person->setDateLastEdited(new DateTime());
+            $person->setEditedBy($_SESSION['iUserID']);
+            
             if (strlen($dFriendDate) > 0) {
-                $sSQL .= '"'.$dFriendDate.'"';
-            } else {
-                $sSQL .= 'NULL';
+                $person->setFriendDate($dFriendDate);
             }
-
-            $sSQL .= ', per_Flags='.$per_Flags;
-
-            $sSQL .= ', per_FacebookID='. $iFacebook;
-            $sSQL .= ', per_Twitter="'. $sTwitter.'"';
-            $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
-
-            $sSQL .= ' WHERE per_ID = '.$iPersonID;
-
+            
+            $person->setFlags($per_Flags);
+            $person->setFacebookID($iFacebook);
+            $person->setTwitter($sTwitter);
+            $person->setLinkedIn($sLinkedIn);
+            
+            $person->save();
+            
             $bGetKeyBack = false;
         }
 
-        //Execute the SQL
-        RunQuery($sSQL);
-
-
-        $note = new Note();
-        $note->setEntered($_SESSION['iUserID']);
+        $person = PersonQuery::create()->findOneByID($iPersonID);
+        
+        // the Part with note is no more useful :PL
         // If this is a new person, get the key back and insert a blank row into the person_custom table
         if ($bGetKeyBack) {
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
@@ -388,11 +483,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             extract(mysqli_fetch_array($rsPersonID));
             $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('".$iPersonID."')";
             RunQuery($sSQL);
-            $note->setPerId($iPersonID);
-            $note->setText(gettext('Created'));
-            $note->setType('create');
-
-
+              
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
                 $NotificationEmail = new NewPersonOrFamilyEmail($person);
@@ -400,13 +491,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                     $logger->warn($NotificationEmail->getError());
                 }
             }
-        } else {
-            $note->setPerId($iPersonID);
-            $note->setText(gettext('Updated'));
-            $note->setType('edit');
         }
-        $note->save();
-
+        
         $photo = new Photo("Person", $iPersonID);
         $photo->refresh();
 
@@ -452,49 +538,48 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if ($iPersonID > 0) {
         //Editing....
         //Get all the data on this record
+        $person = PersonQuery::create()
+            ->leftJoinWithFamily()
+            ->findOneById($iPersonID);
 
-        $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_ID = '.$iPersonID;
-        $rsPerson = RunQuery($sSQL);
-        extract(mysqli_fetch_array($rsPerson));
+        $sTitle = $person->getTitle();
+        $sFirstName = $person->getFirstName();
+        $sMiddleName = $person->getMiddleName();
+        $sLastName = $person->getLastName();
+        $sSuffix = $person->getSuffix();
+        $iGender = $person->getGender();
+        $sAddress1 = $person->getAddress1();
+        $sAddress2 = $person->getAddress2();
+        $sCity = $person->getCity();
+        $sState = $person->getState();
+        $sZip = $person->getZip();
+        $sCountry = $person->getCountry();
+        $sHomePhone = $person->getHomePhone();
+        $sWorkPhone = $person->getWorkPhone();
+        $sCellPhone = $person->getCellPhone();
+        $sEmail = $person->getEmail();
+        $sWorkEmail = $person->getWorkEmail();
+        $iBirthMonth = $person->getBirthMonth();
+        $iBirthDay = $person->getBirthDay();
+        $iBirthYear = $person->getBirthYear();
+        $bHideAge = ($person->getFlags() & 1) != 0;
+        $iOriginalFamily = $person->getFamId();
+        $iFamily = $person->getFamId();
+        $iFamilyRole = $person->getFmrId();
+        $dMembershipDate = $person->getMembershipDate();
+        $dFriendDate = $person->getFriendDate();
+        $iClassification = $person->getClsId();
+        $iViewAgeFlag = $person->getFlags();
 
-        $sTitle = $per_Title;
-        $sFirstName = $per_FirstName;
-        $sMiddleName = $per_MiddleName;
-        $sLastName = $per_LastName;
-        $sSuffix = $per_Suffix;
-        $iGender = $per_Gender;
-        $sAddress1 = $per_Address1;
-        $sAddress2 = $per_Address2;
-        $sCity = $per_City;
-        $sState = $per_State;
-        $sZip = $per_Zip;
-        $sCountry = $per_Country;
-        $sHomePhone = $per_HomePhone;
-        $sWorkPhone = $per_WorkPhone;
-        $sCellPhone = $per_CellPhone;
-        $sEmail = $per_Email;
-        $sWorkEmail = $per_WorkEmail;
-        $iBirthMonth = $per_BirthMonth;
-        $iBirthDay = $per_BirthDay;
-        $iBirthYear = $per_BirthYear;
-        $bHideAge = ($per_Flags & 1) != 0;
-        $iOriginalFamily = $per_fam_ID;
-        $iFamily = $per_fam_ID;
-        $iFamilyRole = $per_fmr_ID;
-        $dMembershipDate = $per_MembershipDate;
-        $dFriendDate = $per_FriendDate;
-        $iClassification = $per_cls_ID;
-        $iViewAgeFlag = $per_Flags;
-
-        $iFacebookID = $per_FacebookID;
-        $sTwitter = $per_Twitter;
-        $sLinkedIn = $per_LinkedIn;
+        $iFacebookID = $person->getFacebookID();
+        $sTwitter = $person->getTwitter();
+        $sLinkedIn = $person->getLinkedIn();
 
         $sPhoneCountry = SelectWhichInfo($sCountry, $fam_Country, false);
 
-        $sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $bNoFormat_HomePhone);
-        $sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $bNoFormat_WorkPhone);
-        $sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $bNoFormat_CellPhone);
+        $sHomePhone = ExpandPhoneNumber($sHomePhone, $sPhoneCountry, $bNoFormat_HomePhone);
+        $sWorkPhone = ExpandPhoneNumber($sWorkPhone, $sPhoneCountry, $bNoFormat_WorkPhone);
+        $sCellPhone = ExpandPhoneNumber($sCellPhone, $sPhoneCountry, $bNoFormat_CellPhone);
 
         //The following values are True booleans if the family record has a value for the
         //indicated field.  These are used to highlight field headers in red.
@@ -509,9 +594,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
 
-        $bFacebookID = $per_FacebookID != 0;
-        $bTwitter =  strlen($per_Twitter);
-        $bLinkedIn = strlen($per_LinkedIn);
+        $bFacebookID = $iFacebookID != 0;
+        $bTwitter =  strlen($sTwitter);
+        $bLinkedIn = strlen($sLinkedIn);
 
         $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
         $rsCustomData = RunQuery($sSQL);
@@ -519,6 +604,19 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if (mysqli_num_rows($rsCustomData) >= 1) {
             $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
         }
+        
+        /* // This can't be done in ORM
+        print_r($aCustomData);
+
+        $aCustomData = [];
+
+        $personCustom = PersonCustomQuery::Create()
+                          ->findByPerId($iPersonID)
+                          ->toArray();
+
+        print_r($personCustom[0]);
+
+        exit;*/
     } else {
         //Adding....
         //Set defaults
@@ -579,16 +677,20 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 }
 
 //Get Classifications for the drop-down
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-$rsClassifications = RunQuery($sSQL);
+// Get Field Security List Matrix
+$ormClassifications = ListOptionQuery::Create()
+              ->orderByOptionSequence()
+              ->findById(1);
 
 //Get Families for the drop-down
-$sSQL = 'SELECT * FROM family_fam ORDER BY fam_Name';
-$rsFamilies = RunQuery($sSQL);
+$ormFamilies = FamilyQuery::Create()
+                  ->orderByName()
+                  ->find();
 
 //Get Family Roles for the drop-down
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-$rsFamilyRoles = RunQuery($sSQL);
+$ormFamilyRoles = ListOptionQuery::Create()
+              ->orderByOptionSequence()
+              ->findById(2);
 
 require 'Include/Header.php';
 
@@ -780,34 +882,93 @@ require 'Include/Header.php';
                 <select name="FamilyRole" class="form-control">
                     <option value="0"><?= gettext('Unassigned') ?></option>
                     <option value="0" disabled>-----------------------</option>
-                    <?php while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-        extract($aRow);
-        echo '<option value="'.$lst_OptionID.'"';
-        if ($iFamilyRole == $lst_OptionID) {
-            echo ' selected';
-        }
-        echo '>'.$lst_OptionName.'&nbsp;';
-    } ?>
+                    <?php 
+                        foreach ($ormFamilyRoles as $ormFamilyRole) {
+                            echo '<option value="'.$ormFamilyRole->getOptionId().'"';
+                            if ($iFamilyRole == $ormFamilyRole->getOptionId()) {
+                                echo ' selected';
+                            }
+                            echo '>'.$ormFamilyRole->getOptionName().'&nbsp;';
+                        }
+                    
+                     ?>
                 </select>
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-9">
                 <label><?= gettext('Family'); ?>:</label>
-                <select name="Family" size="8" class="form-control">
+                <select name="Family" size="8" class="form-control" id="optionFamily">
                     <option value="0" selected><?= gettext('Unassigned') ?></option>
-                    <option value="-1"><?= gettext('Create a new family (using last name)') ?></option>
+                    <option value="-1" ><?= gettext('Create a new family (using last name)') ?></option>
                     <option value="0" disabled>-----------------------</option>
-                    <?php while ($aRow = mysqli_fetch_array($rsFamilies)) {
-        extract($aRow);
-
-        echo '<option value="'.$fam_ID.'"';
-        if ($iFamily == $fam_ID || $_GET['FamilyID'] == $fam_ID) {
-            echo ' selected';
-        }
-        echo '>'.$fam_Name.'&nbsp;'.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-    } ?>
+                    <?php 
+                        foreach ($ormFamilies as $ormFamily) {
+                            echo '<option value="'.$ormFamily->getId().'"';
+                            if ($iFamily == $ormFamily->getId() || $_GET['FamilyID'] == $ormFamily->getId()) {
+                                echo ' selected';
+                            }
+                            echo '>'.$ormFamily->getName().'&nbsp;'.FormatAddressLine($ormFamily->getAddress1(), $ormFamily->getCity(), $ormFamily->getState());
+                        }
+                     ?>
                 </select>
             </div>
+            
+            <!-- start of the new code PL -->
+            <div id="familyAdress">
+              <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                      <div class="box-header">
+                        <h3 class="box-title"><?= gettext('Family Address') ?></h3>
+                      </div>
+                    </div><!-- /.box-header -->
+                </div>
+                <p/>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label><?= gettext('Address') ?> 1:</label>
+                      <input type="text" name="FamAddress1" value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250"  class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label><?= gettext('Address') ?> 2:</label>
+                    <input type="text" Name="FamAddress2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250"  class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label><?= gettext('City') ?>:</label>
+                    <input type="text" Name="FamCity" value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="50"  class="form-control">
+                  </div>
+                </div>
+                <p/>
+                <div class="row">
+                  <div class="form-group col-md-3">
+                    <label for="StatleTextBox"><?= gettext('State')?>: </label><br>
+                    <?= StateDropDown::getDropDown($sState, "FamState") ?>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label><?= gettext('None US/CND State') ?>:</label>
+                    <input type="text"  class="form-control" name="FamStateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
+                        echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
+                    } ?>" size="20" maxlength="30">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label><?= gettext('Zip')?>:</label>
+                    <input type="text" Name="FamZip"  class="form-control" <?php
+                                    // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
+                                    if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
+                                        echo 'style="text-transform:uppercase" ';
+                                    }
+                                    echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
+                      maxlength="10" size="8">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label> <?= gettext('Country') ?>:</label><br>
+                    <?= CountryDropDown::getDropDown($sCountry, "FamCountry") ?>
+                  </div>
+                </div>
+              </div>
+            </div>            
+            <!-- end of the new code PL -->
+            
         </div>
     </div>
     <div class="box box-info clearfix">
@@ -821,49 +982,49 @@ require 'Include/Header.php';
             <?php if (!SystemConfig::getValue('bHidePersonAddress')) { /* Person Address can be hidden - General Settings */ ?>
                 <div class="row">
                     <div class="form-group">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyAddress1) {
-        echo '<span style="color: red;">';
-    }
+                        echo '<span style="color: red;">';
+                    }
 
-        echo gettext('Address').' 1:';
+                        echo gettext('Address').' 1:';
 
-        if ($bFamilyAddress1) {
-            echo '</span>';
-        } ?>
+                        if ($bFamilyAddress1) {
+                            echo '</span>';
+                        } ?>
                             </label>
                             <input type="text" name="Address1"
                                    value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"
                                    size="30" maxlength="50" class="form-control">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyAddress2) {
-            echo '<span style="color: red;">';
-        }
+                            echo '<span style="color: red;">';
+                        }
 
-        echo gettext('Address').' 2:';
+                        echo gettext('Address').' 2:';
 
-        if ($bFamilyAddress2) {
-            echo '</span>';
-        } ?>
+                        if ($bFamilyAddress2) {
+                            echo '</span>';
+                        } ?>
                             </label>
                             <input type="text" name="Address2"
                                    value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>"
                                    size="30" maxlength="50" class="form-control">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>
                                 <?php if ($bFamilyCity) {
-            echo '<span style="color: red;">';
-        }
+                            echo '<span style="color: red;">';
+                        }
 
-        echo gettext('City').':';
+                        echo gettext('City').':';
 
-        if ($bFamilyCity) {
-            echo '</span>';
-        } ?>
+                        if ($bFamilyCity) {
+                            echo '</span>';
+                        } ?>
                             </label>
                             <input type="text" name="City"
                                    value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -876,37 +1037,37 @@ require 'Include/Header.php';
                     <div class="form-group col-md-2">
                         <label for="StatleTextBox">
                             <?php if ($bFamilyState) {
-            echo '<span style="color: red;">';
-        }
+                            echo '<span style="color: red;">';
+                        }
 
-        echo gettext('State').':';
+                        echo gettext('State').':';
 
-        if ($bFamilyState) {
-            echo '</span>';
-        } ?>
+                        if ($bFamilyState) {
+                            echo '</span>';
+                        } ?>
                         </label>
-                        <?php require 'Include/StateDropDown.php'; ?>
+                        <?= StateDropDown::getDropDown($sState) ?>
                     </div>
                     <div class="form-group col-md-2">
                         <label><?= gettext('None State') ?>:</label>
                         <input type="text" name="StateTextbox"
                                value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
-            echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
-        } ?>"
+                            echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
+                        } ?>"
                                size="20" maxlength="30" class="form-control">
                     </div>
 
                     <div class="form-group col-md-1">
                         <label for="Zip">
                             <?php if ($bFamilyZip) {
-            echo '<span style="color: red;">';
-        }
+                            echo '<span style="color: red;">';
+                        }
 
-        echo gettext('Zip').':';
+                        echo gettext('Zip').':';
 
-        if ($bFamilyZip) {
-            echo '</span>';
-        } ?>
+                        if ($bFamilyZip) {
+                            echo '</span>';
+                        } ?>
                         </label>
                         <input type="text" name="Zip" class="form-control"
                             <?php
@@ -915,27 +1076,27 @@ require 'Include/Header.php';
                                 echo 'style="text-transform:uppercase" ';
                             }
 
-        echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
+                        echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
                                maxlength="10" size="8">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="Zip">
                             <?php if ($bFamilyCountry) {
-            echo '<span style="color: red;">';
-        }
+                            echo '<span style="color: red;">';
+                        }
 
-        echo gettext('Country').':';
+                        echo gettext('Country').':';
 
-        if ($bFamilyCountry) {
-            echo '</span>';
-        } ?>
+                        if ($bFamilyCountry) {
+                            echo '</span>';
+                        } ?>
                         </label>
-                        <?php require 'Include/CountryDropDown.php'; ?>
+                        <?= CountryDropDown::getDropDown($sCountry) ?>
                     </div>
                 </div>
                 <p/>
             <?php
-    } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
+                    } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
                 <input type="hidden" name="Address1"
                        value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="Address2"
@@ -951,7 +1112,7 @@ require 'Include/Header.php';
                 <input type="hidden" name="Country"
                        value="<?= htmlentities(stripslashes($sCountry), ENT_NOQUOTES, 'UTF-8') ?>"></input>
             <?php
-    } ?>
+                    } ?>
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="HomePhone">
@@ -1135,14 +1296,16 @@ require 'Include/Header.php';
                 <select name="Classification" class="form-control">
                   <option value="0"><?= gettext('Unassigned') ?></option>
                   <option value="0" disabled>-----------------------</option>
-                  <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                            extract($aRow);
-                            echo '<option value="'.$lst_OptionID.'"';
-                            if ($iClassification == $lst_OptionID) {
-                                echo ' selected';
-                            }
-                            echo '>'.$lst_OptionName.'&nbsp;';
-                        } ?>
+                  
+                  <?php 
+                       foreach ($ormClassifications as $ormClassification) {
+                           echo '<option value="'.$ormClassification->getOptionId().'"';
+                           if ($iClassification == $ormClassification->getOptionId()) {
+                               echo ' selected';
+                           }
+                           echo '>'.$ormClassification->getOptionName().'&nbsp;';
+                       }
+                        ?>
                 </select>
               </div>
                 <div class="form-group col-md-3 col-lg-3">
@@ -1195,11 +1358,18 @@ require 'Include/Header.php';
             <?php if ($numCustomFields > 0) {
                                 mysqli_data_seek($rsCustomFields, 0);
 
+                                $cnt = 0;
+
                                 while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                                     extract($rowCustomField);
-
+    
                                     if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
-                                        echo "<div class='row'><div class=\"form-group col-md-3\"><label>".$custom_Name.'</label>';
+                                        if ($cnt == 0) {
+                                            echo "<div class='row'>";
+                                        }
+        
+
+                                        echo "<div class=\"form-group col-md-4\"><label>".$custom_Name.'</label>';
 
                                         if (array_key_exists($custom_Field, $aCustomData)) {
                                             $currentFieldData = trim($aCustomData[$custom_Field]);
@@ -1215,8 +1385,19 @@ require 'Include/Header.php';
                                         if (isset($aCustomErrors[$custom_Field])) {
                                             echo '<span style="color: red; ">'.$aCustomErrors[$custom_Field].'</span>';
                                         }
-                                        echo '</div></div>';
+                                        echo '</div>';
+        
+                                        $cnt+=1;
+                                        $cnt%=3;
+
+                                        if ($cnt == 0) {
+                                            echo '</div>';
+                                        }
                                     }
+                                }
+
+                                if ($cnt) {
+                                    echo '</div>';
                                 }
                             } ?>
         </div>
@@ -1232,9 +1413,40 @@ require 'Include/Header.php';
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-	$(function() {
-		$("[data-mask]").inputmask();
-	});
+  $(function() {
+    $("[data-mask]").inputmask();
+  });
+</script>
+
+<script>
+  // we hide by default the familyAdress
+  $("#familyAdress").hide();
+  
+  // This scroll the family at the right place
+  var selectedItem = $("#optionFamily option:selected").val();
+  
+  $('#optionFamily').val(1).change();
+  $('#optionFamily').val(selectedItem).change();
+  
+  
+  $('#optionFamily').change(function(data) {
+    if (this.value == -1) {
+      $('#optionFamily').attr('size', '2');    
+      $("#familyAdress").fadeIn(1000);
+    }  else {
+      $('#optionFamily').attr('size', '8');
+      $("#familyAdress").fadeOut(100);
+    }
+  });
+</script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
+    $(document).ready(function() {
+        $("#famcountry-input").select2();
+        $("#famstate-input").select2();
+        $("#country-input").select2();
+        $("#state-input").select2();
+    });
 </script>
 
 <?php require 'Include/Footer.php' ?>
