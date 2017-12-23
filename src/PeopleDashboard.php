@@ -330,6 +330,35 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 <?php
             }
         }
+            $countUnknownMale = PersonQuery::create()->filterByFmrId(0)->filterByGender(1)->count();
+            $countUnknwonFemale = PersonQuery::create()->filterByFmrId(0)->filterByGender(2)->count();
+            $genPop = PersonQuery::create()->count();
+            if ($countUnknownMale != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Male') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownMale / $genPop) * 100)?>%" title="<?= round(($countUnknownMale / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countUnknownMale ?></span></td>
+</tr>
+<?php
+            }
+            if ($countUnknownFemale != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Female') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownFemale / $genPop) * 100)?>%" title="<?= round(($countUnknownFemale / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countFemale ?></span></td>
+</tr>
+<?php
+            }
               ?>
         </table>
       </div>
