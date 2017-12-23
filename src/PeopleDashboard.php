@@ -315,9 +315,9 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </td>
 <td><span class="badge bg-green"><?= $countMale ?></span></td>
 </tr>
-              <?php
+<?php
             }
-             if ($countFemale != 0) {
+            if ($countFemale != 0) {
                 ?>
 <tr>
 <td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
@@ -328,7 +328,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </td>
 <td><span class="badge bg-green"><?= $countFemale ?></span></td>
 </tr>
-              <?php
+<?php
             }
              if ($countUnknown != 0) {
                 ?>
@@ -350,7 +350,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 
             $genPop = PersonQuery::create()->count();
             if ($countUnknownMale != 0) {
-              ?>
+            ?>
 <tr>
 <td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Male') ?></a></td>
 <td>
