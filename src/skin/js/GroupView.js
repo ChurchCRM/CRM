@@ -43,11 +43,8 @@ $(document).ready(function () {
   $(".personSearch").on("select2:select", function (e) {
       window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:window.CRM.currentGroup},function(selection){
         window.CRM.groups.addPerson(window.CRM.currentGroup, e.params.data.objid,selection.RoleID).done(function (data) {
-          var person = data.Person2group2roleP2g2rs[0];
-          var node = window.CRM.DataTableAPI.row.add(person).node();
-          window.CRM.DataTableAPI.rows().invalidate().draw(true);
           $(".personSearch").val(null).trigger('change');
-          window.CRM.DataTableAPI.ajax.reload();
+          window.CRM.DataTableAPI.ajax.reload();/* we reload the data no need to add the person inside the dataTable */
         });
       });
   });

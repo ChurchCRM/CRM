@@ -311,12 +311,6 @@ if ($sReportType == '') {
         echo '<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>';
     }
 
-    if ($sReportType == 'Individual Deposit Report') {
-        echo '<tr><td class=LabelColumn>'.gettext('Report Type:').'</td>'
-            ."<td class=TextColumnWithBottomBorder><input name=report_type type=radio value='Bank'>".gettext('Deposit Slip')
-            ." <input name=report_type type=radio value='' checked>".gettext('Deposit Report').'</td></tr>';
-    }
-
     if ((($_SESSION['bAdmin'] && $bCSVAdminOnly) || !$bCSVAdminOnly)
         && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers')) {
         echo '<tr><td class=LabelColumn>'.gettext('Output Method:').'</td>';
