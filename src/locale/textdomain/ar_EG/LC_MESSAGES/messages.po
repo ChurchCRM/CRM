@@ -75,7 +75,7 @@ msgstr "حفظ"
 #: MapUsingGoogle.php:122 PaddleNumEditor.php:175 PersonEditor.php:781
 #: PersonEditor.php:797 PersonEditor.php:1136 PrintView.php:264
 #: PrintView.php:274 SelectDelete.php:155 SelectList.php:34 SelectList.php:44
-#: SelectList.php:60 SelectList.php:1114 SelectList.php:1185
+#: SelectList.php:60 SelectList.php:1100 SelectList.php:1171
 #: SystemSettings.php:213 eGive.php:340
 msgid "Unassigned"
 msgstr "غير معين"
@@ -126,9 +126,9 @@ msgstr "الحي"
 msgid "Country"
 msgstr "البلد"
 
-#: AutoPaymentEditor.php:935 ChurchCRM/Reports/PDF_Directory.php:312
-#: ChurchCRM/Reports/PDF_Directory.php:386
-#: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:261
+#: AutoPaymentEditor.php:935 ChurchCRM/Reports/PDF_Directory.php:313
+#: ChurchCRM/Reports/PDF_Directory.php:387
+#: ChurchCRM/Reports/PDF_Directory.php:444 DirectoryReports.php:261
 #: Reports/DirectoryReport.php:283 Reports/GroupReport.php:119
 #: external/templates/registration/family-register-members.php:103
 msgid "Phone"
@@ -136,9 +136,9 @@ msgstr "التليفون"
 
 #: AutoPaymentEditor.php:941 CSVExport.php:140 CSVImport.php:225
 #: CartToFamily.php:310 CartView.php:272
-#: ChurchCRM/Reports/PDF_Directory.php:321
-#: ChurchCRM/Reports/PDF_Directory.php:397
-#: ChurchCRM/Reports/PDF_Directory.php:454 EditEventAttendees.php:42
+#: ChurchCRM/Reports/PDF_Directory.php:322
+#: ChurchCRM/Reports/PDF_Directory.php:398
+#: ChurchCRM/Reports/PDF_Directory.php:455 EditEventAttendees.php:42
 #: EventAttendance.php:175 FamilyEditor.php:770 FamilyView.php:266
 #: FamilyView.php:271 FamilyView.php:353 GroupReports.php:127
 #: PersonEditor.php:1034 PersonEditor.php:1036 PersonView.php:308
@@ -300,8 +300,8 @@ msgstr "الرمز البريدي"
 msgid "Envelope"
 msgstr "الرقم البريدي"
 
-#: CSVExport.php:145 ChurchCRM/Reports/PDF_Directory.php:400
-#: ChurchCRM/Reports/PDF_Directory.php:457 PersonView.php:322
+#: CSVExport.php:145 ChurchCRM/Reports/PDF_Directory.php:401
+#: ChurchCRM/Reports/PDF_Directory.php:458 PersonView.php:322
 #: Reports/DirectoryReport.php:297
 msgid "Work/Other Email"
 msgstr "البريد الإلكتروني للعمل / الأخرى"
@@ -367,18 +367,18 @@ msgid "Don't Filter"
 msgstr "لا تصفية"
 
 #: CSVExport.php:326 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
-#: ChurchCRM/Service/DashboardService.php:62 FamilyEditor.php:989
-#: PersonEditor.php:629 PrintView.php:244 PrintView.php:363 SelectList.php:570
-#: SelectList.php:1156
+#: FamilyEditor.php:989 PeopleDashboard.php:310 PeopleDashboard.php:355
+#: PersonEditor.php:629 PrintView.php:244 PrintView.php:363 SelectList.php:557
+#: SelectList.php:1142
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
 msgid "Male"
 msgstr "ذكر"
 
 #: CSVExport.php:327 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
-#: ChurchCRM/Service/DashboardService.php:65 FamilyEditor.php:992
-#: PersonEditor.php:632 PrintView.php:247 PrintView.php:363 SelectList.php:576
-#: SelectList.php:1157
+#: FamilyEditor.php:992 PeopleDashboard.php:323 PeopleDashboard.php:368
+#: PersonEditor.php:632 PrintView.php:247 PrintView.php:363 SelectList.php:563
+#: SelectList.php:1143
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
 msgid "Female"
@@ -404,7 +404,7 @@ msgstr "تاريخ الميلاد"
 msgid "Anniversary Date"
 msgstr "تاريخ المناسبة السنوية"
 
-#: CSVExport.php:432 FinancialReports.php:322
+#: CSVExport.php:432 FinancialReports.php:316
 msgid "Output Method:"
 msgstr "طريقة الإخراج:"
 
@@ -466,8 +466,8 @@ msgstr "ظرف التبرع"
 #: FamilyList.php:46 FamilyView.php:248 GroupReports.php:124
 #: PersonEditor.php:960 PersonEditor.php:962 PersonView.php:303
 #: PrintView.php:199 Reports/ConfirmReport.php:135
-#: Reports/ConfirmReportEmail.php:139 SelectList.php:981 SelectList.php:982
-#: SelectList.php:1057
+#: Reports/ConfirmReportEmail.php:139 SelectList.php:967 SelectList.php:968
+#: SelectList.php:1043
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
 #: external/templates/verify/verify-family-info.php:26
@@ -480,15 +480,15 @@ msgstr "تليفون المنزل"
 #: FamilyEditor.php:748 FamilyView.php:254 GroupReports.php:125
 #: PersonEditor.php:983 PersonEditor.php:985 PersonView.php:317
 #: PrintView.php:204 Reports/ConfirmReport.php:239
-#: Reports/ConfirmReportEmail.php:237 SelectList.php:984 SelectList.php:985
-#: SelectList.php:1057 external/templates/verify/verify-family-info.php:71
+#: Reports/ConfirmReportEmail.php:237 SelectList.php:970 SelectList.php:971
+#: SelectList.php:1043 external/templates/verify/verify-family-info.php:71
 msgid "Work Phone"
 msgstr "تليفون العمل"
 
 #: CSVExport.php:135 CSVImport.php:224 CartToFamily.php:300
 #: FamilyEditor.php:758 FamilyView.php:260 PersonEditor.php:1008
 #: PersonEditor.php:1010 PersonView.php:298 PrintView.php:209
-#: SelectList.php:987 SelectList.php:988 SelectList.php:1057
+#: SelectList.php:973 SelectList.php:974 SelectList.php:1043
 #: external/templates/verify/verify-family-info.php:73
 msgid "Mobile Phone"
 msgstr "المحمول"
@@ -539,7 +539,7 @@ msgstr "البلد الافتراضية إذا كان غير محدد"
 
 #: CSVExport.php:165 CSVExport.php:266 CSVImport.php:280 CartView.php:274
 #: FamilyEditor.php:947 FinancialReports.php:116 OptionManager.php:68
-#: PeopleDashboard.php:333 PersonEditor.php:1134 PrintView.php:309
+#: PeopleDashboard.php:411 PersonEditor.php:1134 PrintView.php:309
 #: queryparameters_qrp.php:19
 msgid "Classification"
 msgstr "تصنيف"
@@ -684,7 +684,7 @@ msgstr "إضافة عربة للأسرة"
 #: PropertyEditor.php:148 PropertyList.php:59 PropertyTypeEditor.php:95
 #: PropertyTypeList.php:34 Reports/CanvassReports.php:68
 #: Reports/CanvassReports.php:236 Reports/FRBidSheets.php:88
-#: SelectList.php:1004 UserList.php:53 VolunteerOpportunityEditor.php:74
+#: SelectList.php:990 UserList.php:53 VolunteerOpportunityEditor.php:74
 #: VolunteerOpportunityEditor.php:353 VolunteerOpportunityEditor.php:420
 #: sundayschool/SundaySchoolClassView.php:200 queryparameteroptions_qpo.php:4
 msgid "Name"
@@ -746,7 +746,7 @@ msgstr "حدد مجموعة"
 msgid "No Group Selected"
 msgstr "لم يتم تحديد مجموعة"
 
-#: CartToGroup.php:91 PersonToGroup.php:85 SelectList.php:1234
+#: CartToGroup.php:91 PersonToGroup.php:85 SelectList.php:1220
 msgid "Add to Group"
 msgstr "إضافة إلى مجموعة"
 
@@ -1153,7 +1153,7 @@ msgstr "إضافة أسلوب دفع إلكتروني الجديدة"
 #: Include/Footer.php:53 PersonEditor.php:795 PersonView.php:413
 #: PledgeEditor.php:507 PrintView.php:258 PropertyAssign.php:72
 #: PropertyEditor.php:42 PropertyList.php:27 PropertyTypeEditor.php:89
-#: PropertyTypeList.php:55 SelectList.php:1053
+#: PropertyTypeList.php:55 SelectList.php:1039
 #: external/templates/registration/family-register-done.php:28
 #: members/404.php:16
 msgid "Family"
@@ -1218,7 +1218,7 @@ msgstr "سنة"
 #: FamilyView.php:764 FindFundRaiser.php:234 FindFundRaiser.php:242
 #: ListEvents.php:224 PersonView.php:238 PropertyList.php:63
 #: PropertyList.php:104 PropertyTypeList.php:38 PropertyTypeList.php:58
-#: SelectList.php:1068
+#: SelectList.php:1054
 msgid "Edit"
 msgstr "تحرير"
 

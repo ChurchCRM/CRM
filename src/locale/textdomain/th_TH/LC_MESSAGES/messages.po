@@ -71,7 +71,7 @@ msgstr "บันทึก"
 #: MapUsingGoogle.php:122 PaddleNumEditor.php:175 PersonEditor.php:781
 #: PersonEditor.php:797 PersonEditor.php:1136 PrintView.php:264
 #: PrintView.php:274 SelectDelete.php:155 SelectList.php:34 SelectList.php:44
-#: SelectList.php:60 SelectList.php:1114 SelectList.php:1185
+#: SelectList.php:60 SelectList.php:1100 SelectList.php:1171
 #: SystemSettings.php:213 eGive.php:340
 msgid "Unassigned"
 msgstr "ยังไม่ได้กำหนด"
@@ -110,9 +110,9 @@ msgstr "จังหวัด"
 msgid "Country"
 msgstr "ประเทศ"
 
-#: AutoPaymentEditor.php:935 ChurchCRM/Reports/PDF_Directory.php:312
-#: ChurchCRM/Reports/PDF_Directory.php:386
-#: ChurchCRM/Reports/PDF_Directory.php:443 DirectoryReports.php:261
+#: AutoPaymentEditor.php:935 ChurchCRM/Reports/PDF_Directory.php:313
+#: ChurchCRM/Reports/PDF_Directory.php:387
+#: ChurchCRM/Reports/PDF_Directory.php:444 DirectoryReports.php:261
 #: Reports/DirectoryReport.php:283 Reports/GroupReport.php:119
 #: external/templates/registration/family-register-members.php:103
 msgid "Phone"
@@ -120,9 +120,9 @@ msgstr "โทรศัพท์"
 
 #: AutoPaymentEditor.php:941 CSVExport.php:140 CSVImport.php:225
 #: CartToFamily.php:310 CartView.php:272
-#: ChurchCRM/Reports/PDF_Directory.php:321
-#: ChurchCRM/Reports/PDF_Directory.php:397
-#: ChurchCRM/Reports/PDF_Directory.php:454 EditEventAttendees.php:42
+#: ChurchCRM/Reports/PDF_Directory.php:322
+#: ChurchCRM/Reports/PDF_Directory.php:398
+#: ChurchCRM/Reports/PDF_Directory.php:455 EditEventAttendees.php:42
 #: EventAttendance.php:175 FamilyEditor.php:770 FamilyView.php:266
 #: FamilyView.php:271 FamilyView.php:353 GroupReports.php:127
 #: PersonEditor.php:1034 PersonEditor.php:1036 PersonView.php:308
@@ -254,8 +254,8 @@ msgstr "รหัสไปรษณีย์"
 msgid "Envelope"
 msgstr "ซอง"
 
-#: CSVExport.php:145 ChurchCRM/Reports/PDF_Directory.php:400
-#: ChurchCRM/Reports/PDF_Directory.php:457 PersonView.php:322
+#: CSVExport.php:145 ChurchCRM/Reports/PDF_Directory.php:401
+#: ChurchCRM/Reports/PDF_Directory.php:458 PersonView.php:322
 #: Reports/DirectoryReport.php:297
 #, fuzzy
 msgid "Work/Other Email"
@@ -305,18 +305,18 @@ msgid "Don't Filter"
 msgstr "ไม่ใช้ฟิลเตอร์"
 
 #: CSVExport.php:326 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
-#: ChurchCRM/Service/DashboardService.php:62 FamilyEditor.php:989
-#: PersonEditor.php:629 PrintView.php:244 PrintView.php:363 SelectList.php:570
-#: SelectList.php:1156
+#: FamilyEditor.php:989 PeopleDashboard.php:310 PeopleDashboard.php:355
+#: PersonEditor.php:629 PrintView.php:244 PrintView.php:363 SelectList.php:557
+#: SelectList.php:1142
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
 msgid "Male"
 msgstr "ชาย"
 
 #: CSVExport.php:327 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
-#: ChurchCRM/Service/DashboardService.php:65 FamilyEditor.php:992
-#: PersonEditor.php:632 PrintView.php:247 PrintView.php:363 SelectList.php:576
-#: SelectList.php:1157
+#: FamilyEditor.php:992 PeopleDashboard.php:323 PeopleDashboard.php:368
+#: PersonEditor.php:632 PrintView.php:247 PrintView.php:363 SelectList.php:563
+#: SelectList.php:1143
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
 msgid "Female"
@@ -345,7 +345,7 @@ msgstr "วันเกิด"
 msgid "Anniversary Date"
 msgstr "วันครบรอบแต่งงาน"
 
-#: CSVExport.php:432 FinancialReports.php:322
+#: CSVExport.php:432 FinancialReports.php:316
 msgid "Output Method:"
 msgstr "วิธีการส่งออก"
 
@@ -368,8 +368,8 @@ msgstr "ซองถวาย"
 #: FamilyList.php:46 FamilyView.php:248 GroupReports.php:124
 #: PersonEditor.php:960 PersonEditor.php:962 PersonView.php:303
 #: PrintView.php:199 Reports/ConfirmReport.php:135
-#: Reports/ConfirmReportEmail.php:139 SelectList.php:981 SelectList.php:982
-#: SelectList.php:1057
+#: Reports/ConfirmReportEmail.php:139 SelectList.php:967 SelectList.php:968
+#: SelectList.php:1043
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
 #: external/templates/verify/verify-family-info.php:26
@@ -382,15 +382,15 @@ msgstr "โทรศัพท์บ้าน"
 #: FamilyEditor.php:748 FamilyView.php:254 GroupReports.php:125
 #: PersonEditor.php:983 PersonEditor.php:985 PersonView.php:317
 #: PrintView.php:204 Reports/ConfirmReport.php:239
-#: Reports/ConfirmReportEmail.php:237 SelectList.php:984 SelectList.php:985
-#: SelectList.php:1057 external/templates/verify/verify-family-info.php:71
+#: Reports/ConfirmReportEmail.php:237 SelectList.php:970 SelectList.php:971
+#: SelectList.php:1043 external/templates/verify/verify-family-info.php:71
 msgid "Work Phone"
 msgstr "โทรศัพท์ที่ทำงาน"
 
 #: CSVExport.php:135 CSVImport.php:224 CartToFamily.php:300
 #: FamilyEditor.php:758 FamilyView.php:260 PersonEditor.php:1008
 #: PersonEditor.php:1010 PersonView.php:298 PrintView.php:209
-#: SelectList.php:987 SelectList.php:988 SelectList.php:1057
+#: SelectList.php:973 SelectList.php:974 SelectList.php:1043
 #: external/templates/verify/verify-family-info.php:73
 msgid "Mobile Phone"
 msgstr "โทรศัพท์มือถือ"

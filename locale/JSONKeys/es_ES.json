@@ -2211,5 +2211,17 @@
     "Help & Manual": "Ayuda y Guía",
     "Contributing": "Contribuir",
     "Birthdates of the day": "Cumpleaños del día",
-    "Anniversaries of the day": "Aniversarios del día"
+    "Anniversaries of the day": "Aniversarios del día",
+    "Automatically enable SMTP encryption if offered by the relaying server.": "Habilitar automáticamente cifrado SMTP si es ofrecido por el servidor.",
+    "Set the encryption system to use - ssl (deprecated) or tls": "Establecer el sistema de cifrado a usar - ssl (deprecado) o tls",
+    "Lock": "bloquear",
+    "Enter your password to retrieve your session": "Ingrese su contraseña para obtener su sesión",
+    "Or sign in as a different user": "O ingresar como un usuario diferente",
+    "Add All to Cart": "Agregar Todo a Separador",
+    "Remove All from Cart": "Remover Todo de Separador",
+    "Not Found": "No Encontrado",
+    "Oops!": "Oops!",
+    "We could not find the member(s) you were looking for.": "No pudimos encontrar los miembros que estaba buscando.",
+    "Meanwhile, you may": "Mientras tanto, podría",
+    "return to member dashboard": "volver a dashboard de miembros"
 }

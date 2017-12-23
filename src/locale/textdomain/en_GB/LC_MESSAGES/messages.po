@@ -58,9 +58,9 @@ msgstr "City, Postcode"
 msgid "Cell Phone"
 msgstr "Mobile Phone"
 
-#: ChurchCRM/Reports/PDF_Directory.php:318
-#: ChurchCRM/Reports/PDF_Directory.php:394
-#: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:291
+#: ChurchCRM/Reports/PDF_Directory.php:319
+#: ChurchCRM/Reports/PDF_Directory.php:395
+#: ChurchCRM/Reports/PDF_Directory.php:452 Reports/DirectoryReport.php:291
 #: Reports/GroupReport.php:129
 msgid "Cell"
 msgstr "Mobile"
