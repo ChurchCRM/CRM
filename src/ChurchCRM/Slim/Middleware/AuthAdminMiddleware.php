@@ -15,7 +15,7 @@ class AuthAdminMiddleware {
          */
         $user = $_SESSION['user'];
         if (empty($user) || !$user->isAdmin()) {
-            return $response->withStatus( 401)->withJson(gettext('User must be an Admin'));
+            return $response->withStatus( 401)->withJson(["message" => gettext('User must be an Admin')]);
         }
         return $next( $request, $response );
     }
