@@ -386,7 +386,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
       <?php
     }
-    if ($_SESSION['bManageGroups']) { ?>
+    if ($_SESSION['bManageGroups']) {
+        ?>
         <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
       <?php
     }
