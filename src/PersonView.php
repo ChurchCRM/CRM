@@ -386,6 +386,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
       <?php
     }
+    if ($_SESSION['bManageGroups']) {
+        ?>
+        <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
+      <?php
+    }
     if ($_SESSION['bDeleteRecords']) {
         ?>
         <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
@@ -629,7 +634,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                           } ?>
                               </ul>
                             </div>
-                            <a data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" class="btn btn-danger groupRemove" role="button"><i class="fa fa-trash-o"></i></a>
+                            <div class="btn-group">
+                             <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-o"></i></button>
+                            </div>		                          
                           <?php
                       } ?>
                         </code>
@@ -644,11 +651,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                   }
                   echo '</div>';
               }
-    if ($_SESSION['bManageGroups']) {
-        ?>
-                          <a id="addGroup"><i class="fa fa-plus-circle" aria-hidden="true"></i><?php echo gettext('Assign New Group'); ?></a>
-                        <?php
-    } ?>
+ ?>
             </div>
           </div>
         </div>

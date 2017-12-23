@@ -436,7 +436,7 @@
                window.CRM.groups.getRoles(targetGroupId).done(function(rdata){
                  rolesList = $.map(rdata.ListOptions, function (item) {
                     var o = {
-                      text: item.OptionName,
+                      text: i18next.t(item.OptionName),// this is for the Teacher and Student role
                       id: item.OptionId
                     };
                     return o;

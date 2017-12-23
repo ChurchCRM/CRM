@@ -11,8 +11,8 @@ $(document).ready(function () {
   });
 
   $(".groupRemove").click(function(event){
-    var targetGroupID = $(event.target).data("groupid");
-    var targetGroupName = $(event.target).data("groupname");
+    var targetGroupID = event.currentTarget.dataset.groupid;
+    var targetGroupName = event.currentTarget.dataset.groupname;
     
     bootbox.confirm({
       message: i18next.t("Are you sure you want to remove this person's membership from") + " " + targetGroupName + "?",
