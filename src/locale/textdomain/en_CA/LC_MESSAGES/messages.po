@@ -51,7 +51,7 @@ msgstr "Church Province"
 msgid "Church Zip"
 msgstr "Church Postal Code"
 
-#: SelectList.php:991 SelectList.php:995 SelectList.php:1057
+#: SelectList.php:977 SelectList.php:981 SelectList.php:1043
 #: queryparameteroptions_qpo.php:5
 msgid "Zip Code"
 msgstr "Postal Code"

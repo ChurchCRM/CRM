@@ -2218,5 +2218,17 @@
     "Set the encryption system to use - ssl (deprecated) or tls": "Activer le système de cryptage pour utiliser SSL (deprecated) ou TLS",
     "Lock": "Verrouiller la session",
     "Enter your password to retrieve your session": "Saisir votre mot de passe pour revenir à votre session",
-    "Or sign in as a different user": "Ou choisir un autre utilisateur afin de vous vous connecter"
+    "Or sign in as a different user": "Ou choisir un autre utilisateur afin de vous vous connecter",
+    "Dashboard Service dynamic asynchronous refresh interval, default 60 second": "Intervalle de rafraîchissement asynchrone dynamique du Tableau de Bord, 60 secondes par défaut",
+    "Generate Deposit Slip for Selected Rows (PDF)": "Générer les bordereaux de dépôts pour les rangées sélectionnées (PDF)",
+    "Add All to Cart": "Tout ajouter au Panier",
+    "Remove All from Cart": "Tout supprimer du Panier",
+    " record returned": "␣enregistrement retourné",
+    " records returned": "␣enregistrements retourné",
+    "records(s) successfully deleted from the selected Group.": "Les enregistrement(s) du groupe sélectionné ont supprimé avec succès.",
+    "Not Found": "Introuvable",
+    "Oops!": "Oups",
+    "We could not find the member(s) you were looking for.": "Impossible de trouver le/les membre(s) que vous recherchez.",
+    "Meanwhile, you may": "Pendant ce temps, vous pouvez",
+    "return to member dashboard": "retourner au tableau de bord des membres"
 }
