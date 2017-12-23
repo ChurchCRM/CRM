@@ -300,6 +300,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <?php foreach ($demographicStats as $demStat) {
             $countMale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(1)->count();
             $countFemale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(2)->count();
+            $countUnknown = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(0)->count();
             $demStatId = $demStat->getOptionID();
             $demStatName = $demStat->getOptionName();
             $genPop = PersonQuery::create()->count();
@@ -314,27 +315,42 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </td>
 <td><span class="badge bg-green"><?= $countMale ?></span></td>
 </tr>
-<?php
+              <?php
             }
-            if ($countFemale != 0) {
+             if ($countFemale != 0) {
                 ?>
 <tr>
 <td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
-<div class="progress-bar progress-bar-success" style="width: <?= round(($countFemale / $genPop) * 100)?>%" title="<?= round(($countFemale / $genPop) * 100)?>%"></div>
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknown / $genPop) * 100)?>%" title="<?= round(($countUnknown / $genPop) * 100)?>%"></div>
 </div>
 </td>
-<td><span class="badge bg-green"><?= $countFemale ?></span></td>
+<td><span class="badge bg-green"><?= $countUnknown ?></span></td>
 </tr>
-<?php
+              <?php
             }
-        }
+             if ($countUnknown != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=0&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Unknown') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknown / $genPop) * 100)?>%" title="<?= round(($countUnknown / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countUnknown ?></span></td>
+</tr>
+              <?php
+            }
+            }
             $countUnknownMale = PersonQuery::create()->filterByFmrId(0)->filterByGender(1)->count();
-            $countUnknwonFemale = PersonQuery::create()->filterByFmrId(0)->filterByGender(2)->count();
+            $countUnknownFemale = PersonQuery::create()->filterByFmrId(0)->filterByGender(2)->count();
+            $countUnknwonRoleUnknownGender = PersonQuery::create()->filterByFmrId(0)->filterByGender(0)->count();
+
             $genPop = PersonQuery::create()->count();
             if ($countUnknownMale != 0) {
-                ?>
+              ?>
 <tr>
 <td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Male') ?></a></td>
 <td>
@@ -344,7 +360,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </td>
 <td><span class="badge bg-green"><?= $countUnknownMale ?></span></td>
 </tr>
-<?php
+              <?php
             }
             if ($countUnknownFemale != 0) {
                 ?>
@@ -355,7 +371,20 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownFemale / $genPop) * 100)?>%" title="<?= round(($countUnknownFemale / $genPop) * 100)?>%"></div>
 </div>
 </td>
-<td><span class="badge bg-green"><?= $countFemale ?></span></td>
+<td><span class="badge bg-green"><?= $countUnknownFemale ?></span></td>
+</tr>
+<?php
+            }
+            if ($countUnknwonRoleUnknownGender != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=0&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Unknown') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%" title="<?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countUnknwonRoleUnknownGender ?></span></td>
 </tr>
 <?php
             }
