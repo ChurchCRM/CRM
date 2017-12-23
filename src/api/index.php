@@ -29,7 +29,7 @@ $app->add(new AuthMiddleware());
 // Set up
 require __DIR__.'/dependencies.php';
 require __DIR__.'/../Include/slim/error-handler.php';
-/*
+
 // system routes
 require __DIR__.'/routes/database.php';
 require __DIR__.'/routes/issues.php';
@@ -72,7 +72,7 @@ require __DIR__.'/routes/system.php';
 
 require __DIR__.'/routes/dashboard.php';
 
-require __DIR__.'/routes/geocoder.php';*/
+require __DIR__.'/routes/geocoder.php';
 
 // Run app
 $app->run();
