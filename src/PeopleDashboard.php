@@ -323,10 +323,10 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 <td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
-<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknown / $genPop) * 100)?>%" title="<?= round(($countUnknown / $genPop) * 100)?>%"></div>
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countFemale / $genPop) * 100)?>%" title="<?= round(($countFemale / $genPop) * 100)?>%"></div>
 </div>
 </td>
-<td><span class="badge bg-green"><?= $countUnknown ?></span></td>
+<td><span class="badge bg-green"><?= $countFemale ?></span></td>
 </tr>
               <?php
             }
