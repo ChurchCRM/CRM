@@ -12,7 +12,7 @@ class AuthMiddleware {
     {
         $user = $_SESSION['user'];
         if (empty($user)) {
-            return $response->withStatus( 401, 'No logged in user' );
+            return $response->withStatus( 401)->withJson( gettext('No logged in user'));
         }
         return $next( $request, $response )->withHeader( "CRM_USER_ID", $user->getId());
     }
