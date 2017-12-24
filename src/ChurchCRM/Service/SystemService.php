@@ -109,8 +109,8 @@ class SystemService
         mkdir($backup->backupDir,0750,true);
         $backup->headers = [];
         $backup->params = $params;
-        $backup->saveTo = "$backup->backupDir/ChurchCRM-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-        $backup->SQLFile = "$backup->backupDir/ChurchCRM-Database.sql";
+        $backup->saveTo = "$backup->backupDir/" . SystemConfig::getValue('sChurchName') . "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $backup->SQLFile = "$backup->backupDir/" . SystemConfig::getValue('sChurchName') . "-Database.sql";
 
         try {
             $dump = new Mysqldump('mysql:host=' . $sSERVERNAME . ';dbname=' . $sDATABASE, $sUSER, $sPASSWORD, ['add-drop-table' => true]);
