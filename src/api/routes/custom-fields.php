@@ -6,11 +6,9 @@ use ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
 $app->group('/system/custom-fields', function () {
-    $adminRoleMidleware = new AdminRoleAuthMiddleware();
-
     $this->get('/person', 'getPersonFieldsByType');
     $this->get('/person/', 'getPersonFieldsByType');
-})->add($adminRoleMidleware);
+})->add(new AdminRoleAuthMiddleware());
 
 
 /**
