@@ -78,5 +78,7 @@ require __DIR__.'/routes/dashboard.php';
 
 require __DIR__.'/routes/geocoder.php';
 
+require __DIR__.'/routes/public-data.php';
+
 // Run app
 $app->run();
