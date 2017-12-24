@@ -18,6 +18,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 $iPerson = InputUtils::LegacyFilterInput($_GET['PersonID']);
@@ -53,10 +54,10 @@ if (isset($_POST['Submit'])) {
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-            Redirect($linkBack);
+            RedirectUtils::Redirect($linkBack);
         } else {
             //Send to the view of this pledge
-            Redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
+            RedirectUtils::Redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
         }
     }
 } else {

@@ -13,10 +13,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -44,9 +45,9 @@ if (isset($_POST['Submit'])) {
 
     //Reroute back to the proper location
     if ($iReturn) {
-        Redirect('GroupView.php?GroupID='.$iGroupID);
+        RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
     } else {
-        Redirect('PersonView.php?PersonID='.$iPersonID);
+        RedirectUtils::Redirect('PersonView.php?PersonID='.$iPersonID);
     }
 }
 

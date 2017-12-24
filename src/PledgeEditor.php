@@ -17,6 +17,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MICRReader;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
     $micrObj = new MICRReader();
@@ -89,7 +90,7 @@ if ($sGroupKey) {
 
         // Security: User must have Finance permission or be the one who entered this record originally
         if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $aRow['plg_EditedBy'])) {
-            Redirect('Menu.php');
+            RedirectUtils::Redirect('Menu.php');
             exit;
         }
     }
@@ -368,14 +369,14 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         if (isset($_POST['PledgeSubmit'])) {
             // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
             if ($linkBack != '') {
-                Redirect($linkBack);
+                RedirectUtils::Redirect($linkBack);
             } else {
                 //Send to the view of this pledge
-                Redirect('PledgeEditor.php?PledgeOrPayment='.$PledgeOrPayment.'&GroupKey='.$sGroupKey.'&linkBack=', $linkBack);
+                RedirectUtils::Redirect('PledgeEditor.php?PledgeOrPayment='.$PledgeOrPayment.'&GroupKey='.$sGroupKey.'&linkBack=', $linkBack);
             }
         } elseif (isset($_POST['PledgeSubmitAndAdd'])) {
             //Reload to editor to add another record
-            Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=".$PledgeOrPayment.'&linkBack=', $linkBack);
+            RedirectUtils::Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=".$PledgeOrPayment.'&linkBack=', $linkBack);
         }
     } // end if !$bErrorFlag
 } elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck'])) {
