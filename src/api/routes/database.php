@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Slim\Middleware\AuthAdminMiddleware;
+use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
 // Routes
 
@@ -34,4 +34,4 @@ $app->group('/database', function () {
         $filename = $args['filename'];
         $this->SystemService->download($filename);
     });
-})->add(new AuthAdminMiddleware());
+})->add(new AdminRoleAuthMiddleware());
