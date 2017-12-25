@@ -129,6 +129,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     extract($aRow);
     $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
+<<<<<<< HEAD
 
 $dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
 
@@ -177,6 +178,56 @@ if ($per_Envelope > 0) {
 
 $iTableSpacerWidth = 10;
 
+=======
+
+$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
+
+$sFamilyInfoBegin = '<span style="color: red;">';
+$sFamilyInfoEnd = '</span>';
+
+// Assign the values locally, after selecting whether to display the family or person information
+
+//Get an unformatted mailing address to pass as a parameter to a google maps search
+SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
+$sCity = SelectWhichInfo($per_City, $fam_City, false);
+$sState = SelectWhichInfo($per_State, $fam_State, false);
+$sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
+$sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+$plaintextMailingAddress = $person->getAddress();
+
+//Get a formatted mailing address to use as display to the user.
+SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
+$sCity = SelectWhichInfo($per_City, $fam_City, true);
+$sState = SelectWhichInfo($per_State, $fam_State, true);
+$sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
+$sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
+$formattedMailingAddress = $person->getAddress();
+
+$sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
+$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
+$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
+$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
+$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);
+$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
+$sEmail = SelectWhichInfo($per_Email, $fam_Email, true);
+$sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+
+if ($per_Envelope > 0) {
+    $sEnvelope = $per_Envelope;
+} else {
+    $sEnvelope = gettext('Not assigned');
+}
+
+$iTableSpacerWidth = 10;
+
+>>>>>>> master
 $bOkToEdit = ($_SESSION['bEditRecords'] ||
     ($_SESSION['bEditSelf'] && $per_ID == $_SESSION['iUserID']) ||
     ($_SESSION['bEditSelf'] && $per_fam_ID == $_SESSION['iFamID'])
@@ -379,11 +430,16 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             <?php
     } ?>
       <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
-      <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-personid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i> <?= gettext("Add to Cart") ?></a>
+      <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
       <?php if ($_SESSION['bNotes']) {
         ?>
         <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
         <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+      <?php
+    }
+    if ($_SESSION['bManageGroups']) {
+        ?>
+        <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
       <?php
     }
     if ($_SESSION['bDeleteRecords']) {
@@ -523,7 +579,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             } ?>
                 </td>
                 <td style="width: 20%;">
-                  <a class="AddToPeopleCart" data-personid="<?= $tmpPersonId ?>">
+                  <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
                     <span class="fa-stack">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -629,7 +685,9 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                           } ?>
                               </ul>
                             </div>
-                            <a data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" class="btn btn-danger groupRemove" role="button"><i class="fa fa-trash-o"></i></a>
+                            <div class="btn-group">
+                             <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-o"></i></button>
+                            </div>		                          
                           <?php
                       } ?>
                         </code>
@@ -644,11 +702,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                   }
                   echo '</div>';
               }
-    if ($_SESSION['bManageGroups']) {
-        ?>
-                          <a id="addGroup"><i class="fa fa-plus-circle" aria-hidden="true"></i><?php echo gettext('Assign New Group'); ?></a>
-                        <?php
-    } ?>
+ ?>
             </div>
           </div>
         </div>
