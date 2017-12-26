@@ -46,8 +46,8 @@ require 'Include/Header.php';
         <BR><BR>
         <form method="post" action="<?= sRootPath ?>/api/database/backup" id="BackupDatabase">
         <?= gettext('Select archive type') ?>:
-        <input type="radio" name="archiveType" value="2" checked><?= gettext('Uncompressed') ?>
-        <input type="radio" name="archiveType" value="3" checked><?= gettext('tar.gz (Include Photos)') ?>
+        <input type="radio" name="archiveType" value="2" checked><?= gettext('Database Only (.sql)') ?>
+        <input type="radio" name="archiveType" value="3" checked><?= gettext('Database and Photos (.tar.gz)') ?>
         <BR><BR>
         <input type="checkbox" name="encryptBackup" value="1"><?= gettext('Encrypt backup file with a password?') ?>
         &nbsp;&nbsp;&nbsp;
