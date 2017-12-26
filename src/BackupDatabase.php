@@ -46,7 +46,6 @@ require 'Include/Header.php';
         <BR><BR>
         <form method="post" action="<?= sRootPath ?>/api/database/backup" id="BackupDatabase">
         <?= gettext('Select archive type') ?>:
-        <input type="radio" name="archiveType" value="0"><?= gettext('GZip') ?>
         <input type="radio" name="archiveType" value="2" checked><?= gettext('Uncompressed') ?>
         <input type="radio" name="archiveType" value="3" checked><?= gettext('tar.gz (Include Photos)') ?>
         <BR><BR>
