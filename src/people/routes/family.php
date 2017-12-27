@@ -5,7 +5,7 @@ use Slim\Http\Response;
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\FamilyQuery;
-
+use ChurchCRM\Service\TimelineService;
 
 $app->group('/family', function () {
     $this->get('/not-found', 'viewFamilyNotFound');
@@ -38,9 +38,12 @@ function viewFamily(Request $request, Response $response, array $args)
         return $response->withRedirect(SystemURLs::getRootPath() . "/people/family/not-found?id=".$args["id"]);
     }
 
+    $timelineService = new TimelineService();
+
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'family' => $family
+        'family' => $family,
+        'familyTimeline' => $timelineService->getForFamily($family->getId())
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);
