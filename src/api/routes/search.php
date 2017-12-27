@@ -32,6 +32,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						filterByFirstName($searchLikeString, Criteria::LIKE)->
 							_or()->filterByLastName($searchLikeString, Criteria::LIKE)->
 							_or()->filterByEmail($searchLikeString, Criteria::LIKE)->
+              _or()->filterByWorkEmail($searchLikeString, Criteria::LIKE)->
 							_or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
@@ -113,6 +114,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
           $families = FamilyQuery::create()->
           		filterByName("%$query%", Criteria::LIKE)->
               _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
+              _or()->filterByEmail($searchLikeString, Criteria::LIKE) ->
 							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
               limit(SystemConfig::getValue("bSearchIncludeFamiliesMax"))->find();
