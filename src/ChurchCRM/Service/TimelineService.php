@@ -133,6 +133,8 @@ class TimelineService
 
     public function createTimeLineItem($id, $type, $datetime, $year, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
     {
+        $item['slim'] = true;
+        $item['type'] = $type;
         switch ($type) {
             case 'create':
                 $item['style'] = 'fa-plus-circle bg-blue';
@@ -158,6 +160,7 @@ class TimelineService
                 $item['style'] = 'fa-user-secret bg-gray';
                 break;
             default:
+                $item['slim'] = false;
                 $item['style'] = 'fa-sticky-note bg-green';
                 $item['editLink'] = $editLink;
                 $item['deleteLink'] = $deleteLink;
