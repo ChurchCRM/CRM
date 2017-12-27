@@ -844,13 +844,25 @@
         </vendor>
     </table>
     
-     <table name="survey_definitions" idMethod="native" phpName="SurveyDefinition">
+    <table name="survey_definitions" idMethod="native" phpName="SurveyDefinition">
         <column name="survey_definition_id" phpName="SurveyDefinitionId" type="SMALLINT" size="9" primaryKey="true" required="true"/>
         <column name="name" phpName="name" type="VARCHAR" required="true"/>
         <column name="definition" phpName="definition" type="LONGVARCHAR"/>
         <column name="owner_per_id" phpName="OwnerPersonID" type="INTEGER" defaultValue=""/>
          <foreign-key foreignTable="person_per">
             <reference local="owner_per_id" foreign="per_ID"/>
+        </foreign-key>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    
+    <table name="survey_responses" idMethod="native" phpName="SurveyResponse">
+        <column name="survey_response_id" phpName="SurveyResponseId" type="SMALLINT" size="9" primaryKey="true" required="true"/>
+        <column name="survey_definition_id" phpName="SurveyDefinitionId" type="SMALLINT" size="9" required="true"/>
+        <column name="response" phpName="name" type="VARCHAR" required="true"/>
+         <foreign-key foreignTable="survey_definitions">
+            <reference local="survey_definition_id" foreign="survey_definition_id"/>
         </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>

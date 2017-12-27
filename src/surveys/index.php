@@ -24,8 +24,15 @@ $app->add(new AuthMiddleware());
 // Set up
 require __DIR__.'/../Include/slim/error-handler.php';
 
-// people routes
+// survey routes
 require __DIR__.'/routes/surveys.php';
+
+// definition routes
+require __DIR__.'/routes/definitions.php';
+
+// responses routes
+require __DIR__.'/routes/responses.php';
+
 
 // Run app
 $app->run();

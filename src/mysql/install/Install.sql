@@ -1335,7 +1335,7 @@ CREATE TABLE `survey_responses` (
   `survey_response_id` INT NOT NULL,
   `survey_definition_id` INT NOT NULL,
   `response` text,
-  PRIMARY KEY (`survey_definition_id`)
+  PRIMARY KEY (`survey_response_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 update version_ver set ver_update_end = now();
