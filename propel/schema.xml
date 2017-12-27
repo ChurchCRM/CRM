@@ -132,8 +132,7 @@
                 defaultValue="0"/>
         <column name="fam_scanCheck" phpName="ScanCheck" type="LONGVARCHAR"/>
         <column name="fam_scanCredit" phpName="ScanCredit" type="LONGVARCHAR"/>
-        <column name="fam_SendNewsLetter" phpName="SendNewsletter" type="CHAR" sqlType="enum('FALSE','TRUE')"
-                required="true" defaultValue="FALSE"/>
+        <column name="fam_SendNewsLetter" phpName="SendNewsletter" type="BOOLEAN" required="true" defaultValue="FALSE"/>
         <column name="fam_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
         <column name="fam_OkToCanvass" phpName="OkToCanvass" type="CHAR" sqlType="enum('FALSE','TRUE')" required="true"
                 defaultValue="FALSE"/>
