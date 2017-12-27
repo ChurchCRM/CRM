@@ -152,6 +152,16 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-show-password/bootstrap-show-password.min.js'],
                         dest: 'src/skin/external/bootstrap-show-password'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: [
+                          'node_modules/survey-jquery/survey.jquery.min.js',
+                          'node_modules/survey-jquery/survey.css'
+                        ],
+                        dest: 'src/skin/external/survey-jquery'
                     }
                 ]
             }

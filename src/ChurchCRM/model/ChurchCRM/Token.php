@@ -19,6 +19,7 @@ class Token extends BaseToken
 
     const typeFamilyVerify = "verifyFamily";
     const typePassword = "password";
+    const typeSurvey = "survey";
 
     public function build($type, $referenceId)
     {
@@ -46,6 +47,11 @@ class Token extends BaseToken
     public function isPasswordResetToken()
     {
         return self::typePassword === $this->getType();
+    }
+    
+    public function isSurveyToken() 
+    {
+      return self::typeSurvey == $this->getType();
     }
 
     public function isValid()

@@ -80,7 +80,11 @@ INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_englis
 
   (80, 'report', 'root', 1, 'Data/Reports', 'Data/Reports', '', '', 'bAll', NULL, 0, 0, NULL, 1, 9, 'fa-file-pdf-o'),
   (81, 'reportmenu', 'report', 0, 'Reports Menu', 'Reports Menu', 'ReportList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-  (82, 'querymenu', 'report', 0, 'Query Menu', 'Query Menu', 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL);
+  (82, 'querymenu', 'report', 0, 'Query Menu', 'Query Menu', 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
+
+  (90, 'survey', 'root', 1, 'Survey', 'Survey', '', '', 'bAll', NULL, 0, 0, NULL, 1, 10, 'fa-comments'),
+  (91, 'surveydashboard', 'survey', 0, 'Survey Dashboard', 'Survey Dashboard', '', '', 'bAll', NULL, 0, 0, NULL, 1, 1, ''),
+  (92, 'surveytemplates', 'survey', 0, 'Survey Templates', 'Survey Templates', '', '', 'bAll', NULL, 0, 0, NULL, 1, 2, '');
 
 UPDATE menuconfig_mcf SET content=content_english;
 --

@@ -1286,6 +1286,7 @@ CREATE TABLE `tokens` (
   `reference_id` INT(9) NOT NULL,
   `valid_until_date` datetime NULL,
   `remainingUses` INT(2) NULL,
+  `meta_data` text,
   PRIMARY KEY (`token`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
@@ -1319,6 +1320,22 @@ CREATE TABLE `church_location_role` (
   `role_order` INT NOT NULL,
   `role_title` INT NOT NULL,  #Thi
   PRIMARY KEY (`location_id`, `role_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+
+CREATE TABLE `survey_definitions` (
+  `survey_definition_id` INT NOT NULL,
+  `name` VARCHAR(256) NOT NULL,
+  `definition` text,
+  `owner_per_id` mediumint(9) unsigned NOT NULL,
+  PRIMARY KEY (`survey_definition_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `survey_responses` (
+  `survey_response_id` INT NOT NULL,
+  `survey_definition_id` INT NOT NULL,
+  `response` text,
+  PRIMARY KEY (`survey_definition_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 update version_ver set ver_update_end = now();
