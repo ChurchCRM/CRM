@@ -2,6 +2,7 @@
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+
 $sMetaRefresh = '';  // Initialize to empty
 if (SystemConfig::getValue('sTimeZone')) {
     date_default_timezone_set(SystemConfig::getValue('sTimeZone'));
