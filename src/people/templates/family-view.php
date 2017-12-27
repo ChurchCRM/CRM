@@ -471,17 +471,133 @@ $familyAddress = $family->getAddress();
 </div>
 
 
+<div class="row">
+    <div role="tab-pane fade" class="tab-pane" id="properties">
+        <div class="main-box clearfix">
+            <div class="main-box-body clearfix">
+                <?php
+                $sAssignedProperties = ",";
+
+                if (mysqli_num_rows($rsAssignedProperties) == 0) {
+                    ?>
+                    <br>
+                    <div class="alert alert-warning">
+                        <i class="fa fa-question-circle fa-fw fa-lg"></i>
+                        <span><?= gettext("No property assignments.") ?></span>
+                    </div>
+                    <?php
+                } else {
+                    //Yes, start the table
+                    echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
+                    echo "<tr class=\"TableHeader\">";
+                    echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Type") . "</b></td>";
+                    echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
+                    echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
+
+                    if ($bOkToEdit) {
+                        echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
+                        echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
+                    }
+
+                    echo "</tr>";
+
+                    $last_pro_prt_ID = "";
+                    $bIsFirst = true;
+
+                    //Loop through the rows
+                    while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                        $pro_Prompt = "";
+                        $r2p_Value = "";
+
+                        extract($aRow);
+
+                        if ($pro_prt_ID != $last_pro_prt_ID) {
+                            echo "<tr class=\"";
+                            if ($bIsFirst) {
+                                echo "RowColorB";
+                            } else {
+                                echo "RowColorC";
+                            }
+                            echo "\"><td><b>" . $prt_Name . "</b></td>";
+
+                            $bIsFirst = false;
+                            $last_pro_prt_ID = $pro_prt_ID;
+                            $sRowClass = "RowColorB";
+                        } else {
+                            echo "<tr class=\"" . $sRowClass . "\">";
+                            echo "<td valign=\"top\">&nbsp;</td>";
+                        }
+
+                        echo "<td valign=\"center\">" . $pro_Name . "</td>";
+                        echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
+
+                        if ($bOkToEdit) {
+                            if (strlen($pro_Prompt) > 0) {
+                                echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
+                            } else {
+                                echo "<td>&nbsp;</td>";
+                            }
+
+                            echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
+                        }
+
+                        echo "</tr>";
+
+                        //Alternate the row style
+                        $sRowClass = AlternateRowStyle($sRowClass);
+
+                        $sAssignedProperties .= $pro_ID . ",";
+                    }
+
+                    //Close the table
+                    echo "</table>";
+                }
+                if ($bOkToEdit) {
+                    ?>
+                    <div class="alert alert-info">
+                        <div>
+                            <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
+
+                            <form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
+                                <div class="row">
+                                    <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
+                                        <select name="PropertyID" class="form-control">
+                                            <option selected disabled> -- <?= gettext('select an option') ?>
+                                                --
+                                            </option>
+                                            <?php
+                                            while ($aRow = mysqli_fetch_array($rsProperties)) {
+                                                extract($aRow);
+                                                //If the property doesn't already exist for this Person, write the <OPTION> tag
+                                                if (strlen(strstr($sAssignedProperties, "," . $pro_ID . ",")) == 0) {
+                                                    echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
+                                                }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                        <input type="submit" class="btn btn-primary"
+                                               value="<?= gettext("Assign") ?>" name="Submit2">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <?php
+                } ?>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-lg-12">
         <div class="nav-tabs-custom">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#properties" aria-controls="properties" role="tab"
-                                           data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
                 <?php if ($_SESSION['bFinance']) {
                     ?>
-                    <li role="presentation"><a href="#finance" aria-controls="finance" role="tab"
+                    <li role="presentation" class="active"><a href="#finance" aria-controls="finance" role="tab"
                                                data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
                     <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab"
                                                data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
@@ -493,122 +609,7 @@ $familyAddress = $family->getAddress();
             <!-- Tab panes -->
             <div class="tab-content">
 
-                <div role="tab-pane fade" class="tab-pane" id="properties">
-                    <div class="main-box clearfix">
-                        <div class="main-box-body clearfix">
-                            <?php
-                            $sAssignedProperties = ",";
 
-                            if (mysqli_num_rows($rsAssignedProperties) == 0) {
-                                ?>
-                                <br>
-                                <div class="alert alert-warning">
-                                    <i class="fa fa-question-circle fa-fw fa-lg"></i>
-                                    <span><?= gettext("No property assignments.") ?></span>
-                                </div>
-                                <?php
-                            } else {
-                                //Yes, start the table
-                                echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
-                                echo "<tr class=\"TableHeader\">";
-                                echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Type") . "</b></td>";
-                                echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
-                                echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
-
-                                if ($bOkToEdit) {
-                                    echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
-                                    echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
-                                }
-
-                                echo "</tr>";
-
-                                $last_pro_prt_ID = "";
-                                $bIsFirst = true;
-
-                                //Loop through the rows
-                                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                                    $pro_Prompt = "";
-                                    $r2p_Value = "";
-
-                                    extract($aRow);
-
-                                    if ($pro_prt_ID != $last_pro_prt_ID) {
-                                        echo "<tr class=\"";
-                                        if ($bIsFirst) {
-                                            echo "RowColorB";
-                                        } else {
-                                            echo "RowColorC";
-                                        }
-                                        echo "\"><td><b>" . $prt_Name . "</b></td>";
-
-                                        $bIsFirst = false;
-                                        $last_pro_prt_ID = $pro_prt_ID;
-                                        $sRowClass = "RowColorB";
-                                    } else {
-                                        echo "<tr class=\"" . $sRowClass . "\">";
-                                        echo "<td valign=\"top\">&nbsp;</td>";
-                                    }
-
-                                    echo "<td valign=\"center\">" . $pro_Name . "</td>";
-                                    echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
-
-                                    if ($bOkToEdit) {
-                                        if (strlen($pro_Prompt) > 0) {
-                                            echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
-                                        } else {
-                                            echo "<td>&nbsp;</td>";
-                                        }
-
-                                        echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
-                                    }
-
-                                    echo "</tr>";
-
-                                    //Alternate the row style
-                                    $sRowClass = AlternateRowStyle($sRowClass);
-
-                                    $sAssignedProperties .= $pro_ID . ",";
-                                }
-
-                                //Close the table
-                                echo "</table>";
-                            }
-                            if ($bOkToEdit) {
-                                ?>
-                                <div class="alert alert-info">
-                                    <div>
-                                        <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
-
-                                        <form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
-                                            <div class="row">
-                                                <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
-                                                    <select name="PropertyID" class="form-control">
-                                                        <option selected disabled> -- <?= gettext('select an option') ?>
-                                                            --
-                                                        </option>
-                                                        <?php
-                                                        while ($aRow = mysqli_fetch_array($rsProperties)) {
-                                                            extract($aRow);
-                                                            //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                                            if (strlen(strstr($sAssignedProperties, "," . $pro_ID . ",")) == 0) {
-                                                                echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
-                                                            }
-                                                        } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                                                    <input type="submit" class="btn btn-primary"
-                                                           value="<?= gettext("Assign") ?>" name="Submit2">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <?php
-                            } ?>
-                        </div>
-                    </div>
-                </div>
                 <?php if ($_SESSION['bFinance']) {
                 ?>
                 <div role="tab-pane fade" class="tab-pane" id="finance">
