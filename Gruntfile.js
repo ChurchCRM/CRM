@@ -162,6 +162,18 @@ module.exports = function (grunt) {
                           'node_modules/survey-jquery/survey.css'
                         ],
                         dest: 'src/skin/external/survey-jquery'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: [
+                          'node_modules/surveyjs-editor/surveyeditor.min.js',
+                          'node_modules/surveyjs-editor/surveyeditor.css',
+                          'node_modules/survey-knockout/survey.ko.min.js',
+                          'node_modules/knockout/build/output/knockout-latest.js'
+                        ],
+                        dest: 'src/skin/external/surveyjs-editor'
                     }
                 ]
             }
