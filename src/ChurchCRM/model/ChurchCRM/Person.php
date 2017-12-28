@@ -410,6 +410,13 @@ class Person extends BasePerson implements iPhoto
         return parent::preDelete($con);
     }
 
+    public function getProperties() {
+        $personProperties = RecordPropertyQuery::create()
+            ->filterByRecordId($this->getId())
+            ->find();
+        return $personProperties;
+    }
+
     public function getNumericCellPhone()
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
