@@ -14,7 +14,7 @@ $app->group('/properties', function() {
         $data = $request->getParsedBody();
         $personId = empty($data['PersonId']) ? null : $data['PersonId'];
         $propertyId = empty($data['PropertyId']) ? null : $data['PropertyId'];
-        $propertyValue = empty($data['PropertyValue']) ? '' : $data['PropertyValue'];
+        $propertyValue = empty($data['PropertyValue']) ? 'N/A' : $data['PropertyValue'];
 
         $person = PersonQuery::create()->findPk($personId);
         $property = PropertyQuery::create()->findPk($propertyId);
@@ -38,30 +38,16 @@ $app->group('/properties', function() {
             } else {
                 return $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
             }
-        }
-        $perProperty = new RecordProperty();
-        $perProperty->setPropertyId($property->getProId());
-        $perProperty->setRecordId($person->getId());
-        $perProperty->setPropertyValue($propertyValue);
-
-        $saved = $perProperty->save();
-        if ($saved) {
-            if (!empty($property->getProPrompt())) {
-                $personProperty = RecordPropertyQuery::create()
-                    ->filterByRecordId($personId)
-                    ->filterByPropertyId($propertyId)
-                    ->findOne();
-                $personProperty->setPropertyValue($propertyValue);
-                if (!$personProperty->save()) {
-                    return $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
-                }
-            }
-
+        } else {
+            $personProperty = new RecordProperty();
+            $personProperty->setPropertyId($property->getProId());
+            $personProperty->setRecordId($person->getId());
+            $personProperty->setPropertyValue($propertyValue);
+            $personProperty->save();
             return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
         }
 
-        $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
-
+        return $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
     });
 
 
