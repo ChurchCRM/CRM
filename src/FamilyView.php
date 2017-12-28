@@ -475,32 +475,39 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                       <span class="time">
                     <?php if ($_SESSION['bNotes'] && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                         ?>
-                        <?php if (isset($item["editLink"])) { ?>
+                        <?php if (isset($item["editLink"])) {
+                            ?>
                             <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
-                        <?php }
-                        if (isset($item["deleteLink"])) { ?>
+                        <?php
+                        }
+                        if (isset($item["deleteLink"])) {
+                            ?>
                             <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
-                        <?php } ?>
+                        <?php
+                        } ?>
                         &nbsp;
                         <?php
                     } ?>
                           <i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
 
-                                    <?php if ($item['slim']) { ?>
+                                    <?php if ($item['slim']) {
+                        ?>
                                         <h4 class="timeline-header">
                                             <?= $item['text'] ?> <?= gettext($item['header']) ?>
                                         </h4>
-                                    <?php } else { ?>
+                                    <?php
+                    } else {
+                        ?>
                                         <h3 class="timeline-header">
                                             <?php if (in_array('headerlink', $item)) {
-                                                ?>
+                            ?>
                                                 <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                                                 <?php
-                                            } else {
-                                                ?>
+                        } else {
+                            ?>
                                                 <?= $item['header'] ?>
                                                 <?php
-                                            } ?>
+                        } ?>
                                         </h3>
 
                                         <div class="timeline-body">
@@ -508,7 +515,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                         </div>
 
                                         <?php
-                                    } ?>
+                    } ?>
                                 </div>
                             </li>
                             <?php
