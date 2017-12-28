@@ -403,7 +403,13 @@ class Person extends BasePerson implements iPhoto
 
         PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->find($con)->delete();
 
-        RecordPropertyQuery::create()->filterByRecordId($this->getId())->find($con)->delete();
+        $prtProb = RecordPropertyQuery::create()->filterByRecordId($this->getId())->find($con);
+        foreach ($prtProb as $propertyRec) {
+            if ($propertyRec->getProperty()->getProClass() == "p") {
+                $prtProb->delete($con);
+            }
+        }
+
 
         NoteQuery::create()->filterByPerson($this)->find($con)->delete();
 
