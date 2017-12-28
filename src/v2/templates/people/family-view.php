@@ -163,29 +163,29 @@ $familyAddress = $family->getAddress();
                     <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
                             class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
                     <a class="btn btn-app bg-olive"
-                       href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>"><i
+                       href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
                             class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
                     <?php if (($previous_id > 0)) {
                         ?>
                         <a class="btn btn-app"
-                           href="<?= SystemURLs::getRootPath() ?>/FamilyView.php?FamilyID=<?= $previous_id ?>"><i
+                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
                                 class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
                         <?php
                     } ?>
                     <a class="btn btn-app btn-danger" role="button"
-                       href="<?= SystemURLs::getRootPath() ?>/FamilyList.php"><i
+                       href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
                             class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
                     <?php if (($next_id > 0)) {
                         ?>
                         <a class="btn btn-app" role="button"
-                           href="<?= SystemURLs::getRootPath() ?>/FamilyView.php?FamilyID=<?= $next_id ?>"><i
+                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
                                 class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
                         <?php
                     } ?>
                     <?php if ($_SESSION['bDeleteRecords']) {
                         ?>
                         <a class="btn btn-app bg-maroon"
-                           href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?= $family->getId() ?>"><i
+                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
                                 class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
                         <?php
                     } ?>
@@ -195,7 +195,7 @@ $familyAddress = $family->getAddress();
                     if ($_SESSION['bNotes']) {
                         ?>
                         <a class="btn btn-app"
-                           href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>"><i
+                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
                                 class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                         <?php
                     } ?>
@@ -299,7 +299,7 @@ $familyAddress = $family->getAddress();
                                             </span>
                                             </a>
 
-                                            <a href="PersonEditor.php?PersonID=<?= $person->getId() ?>" class="table-link">
+                                            <a href="../../index.php" class="table-link">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
@@ -558,7 +558,7 @@ $familyAddress = $family->getAddress();
                         <div>
                             <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
 
-                            <form method="post" action="PropertyAssign.php?FamilyID=<?= $iFamilyID ?>">
+                            <form method="post" action="../../index.php">
                                 <div class="row">
                                     <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
                                         <select name="PropertyID" class="form-control">
@@ -674,11 +674,11 @@ $familyAddress = $family->getAddress();
                                             </td>
                                             <td>
                                                 <a
-                                                    href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Edit") ?></a>
+                                                    href="../../index.php"><?= gettext("Edit") ?></a>
                                             </td>
                                             <td>
                                                 <a
-                                                    href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Delete") ?></a>
+                                                    href="../../index.php"><?= gettext("Delete") ?></a>
                                             </td>
                                             <td>
                                                 <?= $aut_DateLastEdited ?>&nbsp;
@@ -694,7 +694,7 @@ $familyAddress = $family->getAddress();
                             } ?>
                             <p align="center">
                                 <a class="SmallText"
-                                   href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Add a new automatic payment") ?></a>
+                                   href="../../index.php"><?= gettext("Add a new automatic payment") ?></a>
                             </p>
                         </div>
                     </div>
@@ -702,7 +702,7 @@ $familyAddress = $family->getAddress();
                 <div role="tab-pane fade" class="tab-pane" id="pledges">
                     <div class="main-box clearfix">
                         <div class="main-box-body clearfix">
-                            <form method="post" action="FamilyView.php?FamilyID=<?= $iFamilyID ?>">
+                            <form method="post" action="../../index.php">
                                 <input type="checkbox" name="ShowPledges"
                                        value="1" <?php if ($_SESSION['sshowPledges']) {
                                     echo " checked";
@@ -802,11 +802,11 @@ $familyAddress = $family->getAddress();
                                                 </td>
                                                 <td>
                                                     <a
-                                                        href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
+                                                        href="../../index.php">Edit</a>
                                                 </td>
                                                 <td>
                                                     <a
-                                                        href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+                                                        href="../../index.php">Delete</a>
                                                 </td>
                                                 <td>
                                                     <?= $plg_DateLastEdited ?>&nbsp;
@@ -827,9 +827,9 @@ $familyAddress = $family->getAddress();
 
                             <p align="center">
                                 <a class="SmallText"
-                                   href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Pledge"><?= gettext("Add a new pledge") ?></a>
+                                   href="../../index.php"><?= gettext("Add a new pledge") ?></a>
                                 <a class="SmallText"
-                                   href="PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>&amp;PledgeOrPayment=Payment"><?= gettext("Add a new payment") ?></a>
+                                   href="../../index.php"><?= gettext("Add a new payment") ?></a>
                             </p>
 
                             <?php
@@ -840,7 +840,7 @@ $familyAddress = $family->getAddress();
 
                             <p align="center">
                                 <a class="SmallText"
-                                   href="CanvassEditor.php?FamilyID=<?= $fam_ID ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
+                                   href="../../index.php"><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
                             </p>
                         </div>
                     </div>

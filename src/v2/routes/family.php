@@ -28,7 +28,7 @@ function viewFamilyNotFound(Request $request, Response $response, array $args)
 
 function viewFamily(Request $request, Response $response, array $args)
 {
-    $renderer = new PhpRenderer('templates/');
+    $renderer = new PhpRenderer('templates/people/');
 
     $familyId = $args["id"];
     $family = FamilyQuery::create()->findPk($familyId);
