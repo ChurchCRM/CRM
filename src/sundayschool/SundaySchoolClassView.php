@@ -224,9 +224,9 @@ require '../Include/Header.php';
           <tr>
           <td>
             <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
-                alt="User Image" class="user-image initials-image" width="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px" height="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px" />
+                alt="User Image" class="user-image initials-image" style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px !; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; max-width:none" />
           </td>
-          <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['firstName'].', '.$child['LastName'] ?></a></td>
+          <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'].', '.$child['firstName'] ?></a></td>
           <td><?= $birthDate ?> </td>
           <td data-birth-date='<?= ($hideAge ? '' : $birthDateDate->format('Y-m-d')) ?>'></td>
           <td><?= $child['kidEmail'] ?></td>
