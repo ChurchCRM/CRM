@@ -2,17 +2,15 @@
 
 
 use ChurchCRM\PersonQuery;
-use ChurchCRM\PersonPropertyQuery;
+use ChurchCRM\RecordProperty;
+use ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\PropertyQuery;
-
+use ChurchCRM\Slim\Middleware\MenuOptionsRoleAuthMiddleware;
 
 $app->group('/properties', function() {
 
     $this->post('/persons/assign', function($request, $response, $args) {
-        if (!$_SESSION['user']->isAdmin()) {
-            return $response->withStatus(401);
-        }
- 
+
         $data = $request->getParsedBody();
         $personId = empty($data['PersonId']) ? null : $data['PersonId'];
         $propertyId = empty($data['PropertyId']) ? null : $data['PropertyId'];
@@ -23,9 +21,9 @@ $app->group('/properties', function() {
         if (!$person || !$property) {
             return $response->withStatus(404, gettext('The record could not be found.'));
         }
-        
-        $personProperty = PersonPropertyQuery::create()
-            ->filterByPersonId($personId)
+
+        $personProperty = RecordPropertyQuery::create()
+            ->filterByRecordId($personId)
             ->filterByPropertyId($propertyId)
             ->findOne();
 
@@ -41,13 +39,16 @@ $app->group('/properties', function() {
                 return $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
             }
         }
+        $perProperty = new RecordProperty();
+        $perProperty->setPropertyId($property->getProId());
+        $perProperty->setRecordId($person->getId());
+        $perProperty->setPropertyValue($propertyValue);
 
-        $person->addProperty($property);
-        $saved = $person->save();
+        $saved = $perProperty->save();
         if ($saved) {
             if (!empty($property->getProPrompt())) {
-                $personProperty = PersonPropertyQuery::create()
-                    ->filterByPersonId($personId)
+                $personProperty = RecordPropertyQuery::create()
+                    ->filterByRecordId($personId)
                     ->filterByPropertyId($propertyId)
                     ->findOne();
                 $personProperty->setPropertyValue($propertyValue);
@@ -62,36 +63,33 @@ $app->group('/properties', function() {
         $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
 
     });
-    
-    
+
+
     $this->delete('/persons/unassign', function($request, $response, $args) {
-        if (!$_SESSION['user']->isAdmin()) {
-            return $response->withStatus(401);
-        }
-        
+
         $data = $request->getParsedBody();
         $personId = empty($data['PersonId']) ? null : $data['PersonId'];
         $propertyId = empty($data['PropertyId']) ? null : $data['PropertyId'];
 
-        $personProperty = PersonPropertyQuery::create()
-            ->filterByPersonId($personId)
+        $personProperty = RecordPropertyQuery::create()
+            ->filterByRecordId($personId)
             ->filterByPropertyId($propertyId)
-            ->findOne();        
-        
+            ->findOne();
+
         if ($personProperty == null) {
             return $response->withStatus(404, gettext('The record could not be found.'));
         }
-        
+
         $personProperty->delete();
         if ($personProperty->isDeleted()) {
             return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
         } else {
-           return $response->withJson(['success' => false, 'msg' => gettext('The property could not be unassigned.')]); 
+           return $response->withJson(['success' => false, 'msg' => gettext('The property could not be unassigned.')]);
         }
 
     });
 
-});
+})->add(new MenuOptionsRoleAuthMiddleware());
 
 
 
