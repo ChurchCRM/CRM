@@ -68,7 +68,7 @@ extract(mysqli_fetch_array($rsPerson));
 $person = PersonQuery::create()->findPk($iPersonID);
 
 if (empty($person)) {
-    Redirect('members/404.php?type=Person');
+    header('Location: '. SystemURLs::getRootPath() .'/v2/person/not-found?id='. $iPersonID);
     exit;
 }
 
