@@ -208,14 +208,14 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 </div>
                 <h3 class="profile-username text-center">
                     <?php if ($person->isMale()) {
-    ?>
+                        ?>
                         <i class="fa fa-male"></i>
                         <?php
-} elseif ($person->isFemale()) {
-        ?>
+                    } elseif ($person->isFemale()) {
+                        ?>
                         <i class="fa fa-female"></i>
                         <?php
-    } ?>
+                    } ?>
                     <?= $person->getFullName() ?></h3>
 
                 <p class="text-muted text-center">
@@ -234,10 +234,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     } ?>
                 </p>
                 <?php if ($bOkToEdit) {
-                        ?>
+                    ?>
                     <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
                     <?php
-                    } ?>
+                } ?>
             </div>
             <!-- /.box-body -->
         </div>
@@ -268,24 +268,24 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               } ?>
             </span></li>
                     <?php if (!empty($formattedMailingAddress)) {
-                  ?>
+                        ?>
                         <li><i class="fa-li fa fa-home"></i><?php echo gettext('Address'); ?>: <span>
             <a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
               <?= $formattedMailingAddress ?>
             </a>
             </span></li>
                         <?php
-              }
+                    }
                     if ($dBirthDate) {
                         ?>
                         <li>
                             <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>:
                             <span><?= $dBirthDate ?></span>
                             <?php if (!$person->hideAge()) {
-                            ?>
+                                ?>
                                 (<span data-birth-date="<?= $person->getBirthDate()->format('Y-m-d') ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
                                 <?php
-                        } ?>
+                            } ?>
                         </li>
                         <?php
                     }
@@ -373,19 +373,19 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     <div class="col-lg-9 col-md-9 col-sm-9">
         <div class="box box-primary box-body">
             <?php if ($per_ID == $_SESSION['user']->getPersonId()) {
-                        ?>
+                ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"><i class="fa fa-cog"></i> <?= gettext("Change Settings") ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
                 <?php
-                    } ?>
+            } ?>
             <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
             <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
             <?php if ($_SESSION['bNotes']) {
-                        ?>
+                ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
                 <?php
-                    }
+            }
             if ($_SESSION['bManageGroups']) {
                 ?>
                 <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
@@ -437,7 +437,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                         <!-- timeline item -->
                         <?php foreach ($timelineService->getForPerson($iPersonID) as $item) {
-                          ?>
+                            ?>
                             <li>
                                 <!-- timeline icon -->
                                 <i class="fa <?= $item['style'] ?>"></i>
@@ -447,14 +447,14 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                                     <h3 class="timeline-header">
                                         <?php if (in_array('headerlink', $item)) {
-                              ?>
+                                            ?>
                                             <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                                             <?php
-                          } else {
-                              ?>
+                                        } else {
+                                            ?>
                                             <?= $item['header'] ?>
                                             <?php
-                          } ?>
+                                        } ?>
                                     </h3>
 
                                     <div class="timeline-body">
@@ -462,36 +462,36 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                     </div>
 
                                     <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
-                              ?>
+                                        ?>
                                         <div class="timeline-footer">
                                             <?php if ($item['editLink'] != '') {
-                                  ?>
+                                                ?>
                                                 <a href="<?= $item['editLink'] ?>">
                                                     <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                                                 </a>
                                                 <?php
-                              }
-                              if ($item['deleteLink'] != '') {
-                                  ?>
+                                            }
+                                            if ($item['deleteLink'] != '') {
+                                                ?>
                                                 <a href="<?= $item['deleteLink'] ?>">
                                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </a>
                                                 <?php
-                              } ?>
+                                            } ?>
                                         </div>
                                         <?php
-                          } ?>
+                                    } ?>
                                 </div>
                             </li>
                             <?php
-                      } ?>
+                        } ?>
                         <!-- END timeline item -->
                     </ul>
                 </div>
                 <div role="tab-pane fade" class="tab-pane" id="family">
 
                     <?php if ($person->getFamId() != '') {
-                          ?>
+                        ?>
                         <table class="table user-list table-hover">
                             <thead>
                             <tr>
@@ -504,7 +504,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                             </thead>
                             <tbody>
                             <?php foreach ($person->getOtherFamilyMembers() as $familyMember) {
-                              $tmpPersonId = $familyMember->getId(); ?>
+                                $tmpPersonId = $familyMember->getId(); ?>
                                 <tr>
                                     <td>
 
@@ -521,11 +521,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                     </td>
                                     <td>
                                         <?php $tmpEmail = $familyMember->getEmail();
-                              if ($tmpEmail != '') {
-                                  ?>
+                                        if ($tmpEmail != '') {
+                                            ?>
                                             <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
                                             <?php
-                              } ?>
+                                        } ?>
                                     </td>
                                     <td style="width: 20%;">
                                         <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
@@ -535,7 +535,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     </span>
                                         </a>
                                         <?php if ($bOkToEdit) {
-                                  ?>
+                                            ?>
                                             <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
                       <span class="fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
@@ -549,15 +549,15 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                       </span>
                                             </a>
                                             <?php
-                              } ?>
+                                        } ?>
                                     </td>
                                 </tr>
                                 <?php
-                          } ?>
+                            } ?>
                             </tbody>
                         </table>
                         <?php
-                      } ?>
+                    } ?>
                 </div>
                 <div role="tab-pane fade" class="tab-pane" id="groups">
                     <div class="main-box clearfix">
@@ -617,7 +617,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                             <div class="box-footer">
                                                 <code>
                                                     <?php if ($_SESSION['bManageGroups']) {
-                                                ?>
+                                                        ?>
                                                         <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa fa-list"></i></a>
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
@@ -628,17 +628,17 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                                             <ul class="dropdown-menu" role="menu">
                                                                 <li><a  class="changeRole" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
                                                                 <?php if ($grp_hasSpecialProps) {
-                                                    ?>
+                                                                    ?>
                                                                     <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
                                                                     <?php
-                                                } ?>
+                                                                } ?>
                                                             </ul>
                                                         </div>
                                                         <div class="btn-group">
                                                             <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-o"></i></button>
                                                         </div>
                                                         <?php
-                                            } ?>
+                                                    } ?>
                                                 </code>
                                             </div>
                                             <!-- /.box-footer-->
@@ -714,23 +714,26 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                                             style="width:100%" data-placeholder="Select ...">
                                                         <option disabled selected> -- <?= gettext('select an option') ?> -- </option>
                                                         <?php
-                                                        $assignedPropertiesArray = $assignedProperties->getArrayCopy('ProId');
+                                                        $assignedPropertiesArray = [];
+                                                        foreach ($assignedProperties as $assignedProperty) {
+                                                            array_push($assignedPropertiesArray, $assignedProperty->getPropertyId());
+                                                        }
                                                         while ($aRow = mysqli_fetch_array($rsProperties)) {
                                                             extract($aRow);
                                                             $attributes = "value=\"{$pro_ID}\" ";
                                                             if (!empty($pro_Prompt)) {
-                                                                if (!empty($assignedPropertiesArray[$pro_ID])) {
-                                                                    $pro_Value = $assignedPropertiesArray[$pro_ID]->getPersonProperties()[0]->getPropertyValue();
-                                                                } else {
-                                                                    $pro_Value = '';
+                                                                $pro_Value = '';
+                                                                foreach ($assignedProperties as $assignedProperty) {
+                                                                    if ($assignedProperty->getPropertyId() == $pro_ID) {
+                                                                        $pro_Value = $assignedProperty->getPropertyValue();
+                                                                    }
                                                                 }
                                                                 $attributes .= "data-pro_Prompt=\"{$pro_Prompt}\" data-pro_Value=\"{$pro_Value}\" ";
                                                             }
 
-                                                            if (!empty($assignedPropertiesArray[$pro_ID])) {
+                                                            $optionText = $pro_Name;
+                                                            if (in_array($pro_ID, $assignedPropertiesArray)) {
                                                                 $optionText = $pro_Name . ' (' . gettext('assigned') . ')';
-                                                            } else {
-                                                                $optionText = $pro_Name;
                                                             }
                                                             echo "<option {$attributes}>{$optionText}</option>";
                                                         } ?>
@@ -848,7 +851,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                         <!-- note item -->
                         <?php foreach ($timelineService->getNotesForPerson($iPersonID) as $item) {
-                                                            ?>
+                            ?>
                             <li>
                                 <!-- timeline icon -->
                                 <i class="fa <?= $item['style'] ?>"></i>
@@ -858,14 +861,14 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                                     <h3 class="timeline-header">
                                         <?php if (in_array('headerlink', $item)) {
-                                                                ?>
+                                            ?>
                                             <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                                             <?php
-                                                            } else {
-                                                                ?>
+                                        } else {
+                                            ?>
                                             <?= $item['header'] ?>
                                             <?php
-                                                            } ?>
+                                        } ?>
                                     </h3>
 
                                     <div class="timeline-body">
@@ -873,29 +876,29 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                     </div>
 
                                     <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
-                                                                ?>
+                                        ?>
                                         <div class="timeline-footer">
                                             <?php if ($item['editLink'] != '') {
-                                                                    ?>
+                                                ?>
                                                 <a href="<?= $item['editLink'] ?>">
                                                     <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                                                 </a>
                                                 <?php
-                                                                }
-                                                                if ($item['deleteLink'] != '') {
-                                                                    ?>
+                                            }
+                                            if ($item['deleteLink'] != '') {
+                                                ?>
                                                 <a href="<?= $item['deleteLink'] ?>">
                                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </a>
                                                 <?php
-                                                                } ?>
+                                            } ?>
                                         </div>
                                         <?php
-                                                            } ?>
+                                    } ?>
                                 </div>
                             </li>
                             <?php
-                                                        } ?>
+                        } ?>
                         <!-- END timeline item -->
                     </ul>
                 </div>

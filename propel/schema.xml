@@ -297,7 +297,7 @@
         <foreign-key foreignTable="group_grp">
             <reference local="p2g2r_grp_ID" foreign="grp_ID"/>
         </foreign-key>
-         
+
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -729,7 +729,7 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-    
+
      <table name="kioskdevice_kdev" idMethod="native" phpName="KioskDevice" description="This contains a list of all (un)registered kiosk devices">
       <column name="kdev_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
       <column name="kdev_GUIDHash" phpName="GUIDHash" type="VARCHAR" size="36" description="SHA256 Hash of the GUID stored in the kiosk's cookie"/>
@@ -742,8 +742,8 @@
         <index-column name="kdev_ID"/>
       </index>
      </table>
-     
-     
+
+
     <table name="kioskassginment_kasm" idMethod="native" phpName="KioskAssignment">
       <column name="kasm_ID" phpName="Id" type="INTEGER" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
       <column name="kasm_kdevId" phpName="KioskId" type="INTEGER" size="9" />
@@ -756,7 +756,7 @@
       <foreign-key foreignTable="kioskdevice_kdev">
         <reference local="kasm_kdevId" foreign="kdev_ID"/>
       </foreign-key>
-      
+
       <foreign-key foreignTable="events_event">
         <reference local="kasm_EventId" foreign="event_id"/>
       </foreign-key>
@@ -775,17 +775,13 @@
         </vendor>
     </table>
 
-    <table name="record2property_r2p" idMethod="native" phpName="PersonProperty" isCrossRef="true" description="This table indicates which persons, families, or groups are assigned specific properties and what the values of those properties are.">
+    <table name="record2property_r2p" idMethod="native" phpName="RecordProperty" isCrossRef="true" description="This table indicates which persons, families, or groups are assigned specific properties and what the values of those properties are.">
         <column name="r2p_pro_ID" phpName="PropertyId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
-        <column name="r2p_record_ID" phpName="PersonId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+        <column name="r2p_record_ID" phpName="RecordId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
         <column name="r2p_Value" phpName="PropertyValue" type="LONGVARCHAR" required="true"  defaultValue=""/>
 
         <foreign-key foreignTable="property_pro" description="This contains the definition of all person, family, and group properties">
             <reference local="r2p_pro_ID" foreign="pro_ID"/>
-        </foreign-key>
-
-        <foreign-key foreignTable="person_per">
-            <reference local="r2p_record_ID" foreign="per_ID"/>
         </foreign-key>
 
         <vendor type="mysql">
