@@ -732,7 +732,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         }
 
         $optionText = $pro_Name;
-        if (in_array($pro_ID,$assignedPropertiesArray)) {
+        if (in_array($pro_ID, $assignedPropertiesArray)) {
             $optionText = $pro_Name . ' (' . gettext('assigned') . ')';
         }
         echo "<option {$attributes}>{$optionText}</option>";
