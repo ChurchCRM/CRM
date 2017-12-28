@@ -3,7 +3,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
-use ChurchCRM\dto\Classification;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
@@ -87,7 +86,14 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                       <br/>
                   </li>
                   <li class="list-group-item">
-                    <b>Classification:</b> <?= cation::getName($person->getClsId()) ?>
+                    <?php
+                    $classification = "";
+                    $cls = ListOptionQuery::create()->filterById(1)->filterByOptionId($person->getClsId())->findOne();
+                    if (!empty($cls)) {
+                        $classification = $cls->getOptionName();
+                    }
+                    ?>
+                    <b>Classification:</b> <?= $classification ?>
                   </li>
                   <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) {?>
                   <li class="list-group-item">

@@ -25,7 +25,6 @@ use ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\Classification;
 
 function CompareDistance($elem1, $elem2)
 {
@@ -89,7 +88,10 @@ function FamilyInfoByDistance($iFamily)
 $sPageTitle = gettext('Family Geographic Utilities');
 
 // Create array with Classification Information (lst_ID = 1)
-$classifications = Classification::getAll();
+$classifications = ListOptionQuery::create()
+    ->filterById(1)
+    ->orderByOptionSequence()
+    ->find();
 
 unset($aClassificationName);
 $aClassificationName[0] = 'Unassigned';
