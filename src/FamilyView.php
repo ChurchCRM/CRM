@@ -96,7 +96,7 @@ $aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQLI_BOTH);
 $family = FamilyQuery::create()->findPk($iFamilyID);
 
 if (empty($family)) {
-    Redirect('members/404.php');
+    header('Location: '. SystemURLs::getRootPath() .'/v2/family/not-found?id='. $iFamilyID);
     exit;
 }
 

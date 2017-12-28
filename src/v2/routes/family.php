@@ -16,8 +16,7 @@ $app->group('/family', function () {
 
 function viewFamilyNotFound(Request $request, Response $response, array $args)
 {
-    $renderer = new PhpRenderer('templates/');
-
+    $renderer = new PhpRenderer('templates/people/');
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'memberType' => "Family",
@@ -49,4 +48,3 @@ function viewFamily(Request $request, Response $response, array $args)
     return $renderer->render($response, 'family-view.php', $pageArgs);
 
 }
-
