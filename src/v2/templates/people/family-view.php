@@ -3,6 +3,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\Classification;
 
 require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 
@@ -353,14 +354,7 @@ $familyAddress = $family->getAddress();
                                                 <br/>
                                             </li>
                                             <li class="list-group-item">
-                                                <?php
-                                                $classification = "";
-                                                /*$cls = ListOptionQuery::create()->filterById(1)->filterByOptionId($person->getClsId())->findOne();
-                                                if (!empty($cls)) {
-                                                    $classification = $cls->getOptionName();
-                                                }
-                                                */ ?>
-                                                <b>Classification:</b> <?= $classification ?>
+                                                <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
                                             </li>
                                             <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) { ?>
                                                 <li class="list-group-item">
