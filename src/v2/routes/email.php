@@ -5,13 +5,29 @@ use Slim\Http\Response;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\MailChimpService;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
 $app->group('/email', function () {
     $this->get('/debug', 'testEmailConnection')->add(new AdminRoleAuthMiddleware());
+    $this->get('/dashboard', 'getEmailDashboard');
 });
 
+
+function getEmailDashboard(Request $request, Response $response, array $args) {
+    $renderer = new PhpRenderer('templates/email/');
+    $mailchimp = new MailChimpService();
+
+    $pageArgs = [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('eMail Dashboard'),
+        'isMailChimpActive' => $mailchimp->isActive(),
+        'mailChimpLists' => $mailchimp->getLists()
+    ];
+
+    return $renderer->render($response, 'dashboard.php', $pageArgs);
+}
 
 function testEmailConnection(Request $request, Response $response, array $args)
 {
