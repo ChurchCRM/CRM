@@ -44,7 +44,7 @@ function testEmailConnection(Request $request, Response $response, array $args)
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => "Debug Email Connection",
+        'sPageTitle' => gettext("Debug Email Connection"),
         'mailer' => $mailer,
         'message' => $message
     ];
