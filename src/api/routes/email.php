@@ -22,7 +22,7 @@ $app->group('/emails', function () {
 function getEmailDupes(Request $request, Response $response, array $p_args)
 {
     $connection = Propel::getConnection();
-    $dupEmailsSQL = "select email from emails_duplicate;";
+    $dupEmailsSQL = "SELECT email FROM emails_duplicate;";
     $statement = $connection->prepare($dupEmailsSQL);
     $statement->execute();
     $dupEmails = $statement->fetchAll();
