@@ -16,8 +16,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3><i class="fa fa-warning text-yellow"></i> <?= gettext("Oops!") . " " . strtoupper($memberType) . " " . $id . " " . gettext("Not Found") ?></h3>
 
         <p>
-            <?= gettext("We could not find the member(s) you were looking for.") ?>
-            <?= gettext("Meanwhile, you may")?> <a href="<?= SystemURLs::getRootPath() ?>../../index.php"> <?= gettext("return to member dashboard") ?></a>
+            <?= gettext("We could not find the person(s) you were looking for.") ?>
+            <?= gettext("Meanwhile, you may")?> <a href="<?= SystemURLs::getRootPath() ?>/PeopleDashboard.php"> <?= gettext("return to People Dashboard") ?></a>
         </p>
     </div>
 </div>
