@@ -443,42 +443,48 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <i class="fa <?= $item['style'] ?>"></i>
 
                 <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
-
-                  <h3 class="timeline-header">
-                    <?php if (in_array('headerlink', $item)) {
+                      <span class="time">
+                    <?php if ($_SESSION['bNotes'] && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
             ?>
-                      <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                        <?php if (isset($item["editLink"])) {
+                ?>
+                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
+                        <?php
+            }
+            if (isset($item["deleteLink"])) {
+                ?>
+                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
+                        <?php
+            } ?>
+                        &nbsp;
+                        <?php
+        } ?>
+                  <i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+
+                    <?php if ($item['slim']) {
+            ?>
+                        <h4 class="timeline-header">
+                            <?= $item['text'] ?> <?= gettext($item['header']) ?>
+                        </h4>
                     <?php
         } else {
             ?>
+                    <h3 class="timeline-header">
+                    <?php if (in_array('headerlink', $item)) {
+                ?>
+                      <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                    <?php
+            } else {
+                ?>
                       <?= $item['header'] ?>
                     <?php
-        } ?>
+            } ?>
                   </h3>
 
                   <div class="timeline-body">
                       <pre style="line-height: 1.2;"><?= $item['text'] ?></pre>
                   </div>
 
-                  <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
-            ?>
-                    <div class="timeline-footer">
-                      <?php if ($item['editLink'] != '') {
-                ?>
-                        <a href="<?= $item['editLink'] ?>">
-                          <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
-                        </a>
-                      <?php
-            }
-            if ($item['deleteLink'] != '') {
-                ?>
-                        <a href="<?= $item['deleteLink'] ?>">
-                          <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                        </a>
-                      <?php
-            } ?>
-                    </div>
                   <?php
         } ?>
                 </div>
@@ -636,7 +642,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                             </div>
                             <div class="btn-group">
                              <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-o"></i></button>
-                            </div>		                          
+                            </div>
                           <?php
                       } ?>
                         </code>
