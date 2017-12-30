@@ -124,7 +124,7 @@ $app->group('/families', function () {
                 throw new \Exception($email->getError());
             }
         } else {
-            $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
+            $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " ". gettext("not found"));
         }
         return $response;
     });
