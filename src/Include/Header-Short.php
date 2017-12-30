@@ -22,10 +22,7 @@ ob_start();
 <html>
 
 <head>
-  <?php
-  require 'Header-HTML-Scripts.php';
-  Header_head_metatag();
-  ?>
+  <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
 <body>
