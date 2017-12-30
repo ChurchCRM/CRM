@@ -40,10 +40,7 @@ $MenuFirst = 1;
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <?php
-  require 'Header-HTML-Scripts.php';
-  Header_head_metatag();
-  ?>
+  <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
 <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
@@ -108,9 +105,9 @@ $MenuFirst = 1;
                 <table border=0 width="100%">
                 <tr style="border-bottom: 1pt solid white;">
                 <td valign="middle" width=110>
-                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">                
+                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
                 </td>
-                <td valign="middle" align="left" >                
+                <td valign="middle" align="left" >
                   <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>" class="item_link">
                       <p ><i class="fa fa-home"></i> <?= gettext("Profile") ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php" class="item_link">
@@ -147,12 +144,12 @@ $MenuFirst = 1;
                 <a href="https://gitter.im/ChurchCRM/CRM" target="_blank" title="<?= gettext('Developer Chat') ?>">
                   <i class="fa fa-commenting-o"></i> <?= gettext('Developer Chat') ?>
                 </a>
-              </li>              
+              </li>
               <li class="hidden-xxs">
                 <a href="https://github.com/ChurchCRM/CRM/wiki/Contributing" target="_blank" title="<?= gettext('Contributing') ?>">
                   <i class="fa fa-github"></i> <?= gettext('Contributing') ?>
                 </a>
-              </li>              
+              </li>
             </ul>
           </li>
           <?php
