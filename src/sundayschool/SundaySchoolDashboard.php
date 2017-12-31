@@ -5,6 +5,7 @@ require '../Include/Functions.php';
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\MiscUtils;
 
 $dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
@@ -213,8 +214,8 @@ require '../Include/Header.php';
           extract($child);
 
           $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
-          $birthDate = FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
-          $birthDateDate = BirthDate($birthYear, $birthMonth, $birthDay, $hideAge);
+          $birthDate = MiscUtils::FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+          $birthDateDate = MiscUtils::BirthDate($birthYear, $birthMonth, $birthDay, $hideAge);
 
           echo '<tr>';
           echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
