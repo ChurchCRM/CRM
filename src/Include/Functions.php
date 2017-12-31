@@ -27,8 +27,8 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Basic security: If the UserID isn't set (no session), redirect to the login page
     if (!isset($_SESSION['iUserID'])) {
-        if (SystemURLs::isAccessibleURL(substr($_SERVER['REQUEST_URI'],1))) {
-          $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'],1));
+        if (SystemURLs::isAccessibleURL(substr($_SERVER['REQUEST_URI'], 1))) {
+            $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
         }
         Redirect('Login.php'.$LoginLocation);
         exit;
@@ -37,10 +37,11 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Check for login timeout.  If login has expired, redirect to login page
     if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-          if (SystemURLs::isAccessibleURL(substr($_SERVER['REQUEST_URI'],1))) {
-            $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'],1));
-          }
-          Redirect('Login.php'.$LoginLocation);          exit;
+            if (SystemURLs::isAccessibleURL(substr($_SERVER['REQUEST_URI'], 1))) {
+                $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
+            }
+            Redirect('Login.php'.$LoginLocation);
+            exit;
         } else {
             $_SESSION['tLastOperation'] = time();
         }
