@@ -1126,7 +1126,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     //Display the row
     echo '<tr class="'.$sRowClass.'">'; ?>
 	</td>
-    <td><img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $per_ID ?>/thumbnail" class="initials-image direct-chat-img " style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px" /> </td>
+    <td style="padding-bottom:5px"><img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $per_ID ?>/thumbnail" class="initials-image direct-chat-img " style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px" /> </td>
 	<td>
 	    <a href="PersonView.php?PersonID=<?= $per_ID ?>" >
 	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) ?>
