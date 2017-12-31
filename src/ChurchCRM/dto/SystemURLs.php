@@ -103,4 +103,32 @@ class SystemURLs
     {
       return self::$CSPNonce;
     }
+    
+    public static function isAccessibleURL($sRelativeURL) {
+      // this is copied from Functions.php::RedirectURL
+      // with less-abrasive termination action
+      // and should eventually replace all instances of that function
+
+      // Test if file exists before redirecting.  May need to remove
+      // query string first.
+      $iQueryString = strpos($sRelativeURL, '?');
+      if ($iQueryString) {
+          $sPathExtension = mb_substr($sRelativeURL, 0, $iQueryString);
+      } else {
+          $sPathExtension = $sRelativeURL;
+      }
+
+      // The idea here is to get the file path into this form:
+      //     $sFullPath = $sDocumentRoot . $sRootPath . $sPathExtension
+      // The Redirect URL is then in this form:
+      //     $sRedirectURL = $sRootPath . $sPathExtension
+      $sFullPath = str_replace('\\', '/', SystemURLs::getDocumentRoot().'/'.$sPathExtension);
+
+      // With the query string removed we can test if file exists
+      if (file_exists($sFullPath) && is_readable($sFullPath)) {
+          return true;
+      } else {
+          return false;
+      }
+    }
 }

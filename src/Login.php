@@ -124,7 +124,13 @@ if (isset($_POST['User'])) {
         $systemService = new SystemService();
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         NotificationService::updateNotifications();
-        Redirect('Menu.php');
+        $redirectLocation = $_SESSION['location'];
+        if (isset($redirectLocation) && SystemURLs::isAccessibleURL($redirectLocation)) {
+          Redirect($redirectLocation);
+        }
+        else {
+          Redirect('Menu.php');
+        }
         exit;
     }
 } elseif (isset($_GET['username'])) {
@@ -168,7 +174,7 @@ session_start() ;
 $_SESSION['iLoginType'] = $type;
 $_SESSION['username'] = $urlUserName;
 $_SESSION['iUserID'] = $id;
-
+$_SESSION['location'] = InputUtils::FilterString(urldecode($_GET['location']));
 if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
