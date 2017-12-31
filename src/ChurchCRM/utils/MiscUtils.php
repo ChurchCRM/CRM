@@ -75,98 +75,64 @@ class MiscUtils {
   
   public static function FormatAge($Month, $Day, $Year, $Flags)
   {
-      if (($Flags & 1)) { //||!$_SESSION['bSeePrivacyData']
+       if ($Flags || is_null($Year) || $Year == '') {
           return;
       }
+      
+      $birthDate = MiscUtils::BirthDate($Year, $Month, $Day);
+      $ageSuffix = gettext('Unknown');
+      $ageValue = 0;
 
-      if ($Year > 0) {
-          if ($Year == date('Y')) {
-              $monthCount = date('m') - $Month;
-              if ($Day > date('d')) {
-                  $monthCount--;
-              }
-              if ($monthCount == 1) {
-                  return gettext('1 m old');
-              } else {
-                  return $monthCount.' '.gettext('m old');
-              }
-          } elseif ($Year == date('Y') - 1) {
-              $monthCount = 12 - $Month + date('m');
-              if ($Day > date('d')) {
-                  $monthCount--;
-              }
-              if ($monthCount >= 12) {
-                  return gettext('1 yr old');
-              } elseif ($monthCount == 1) {
-                  return gettext('1 m old');
-              } else {
-                  return $monthCount.' '.gettext('m old');
-              }
-          } elseif ($Month > date('m') || ($Month == date('m') && $Day > date('d'))) {
-              return date('Y') - 1 - $Year.' '.gettext('yrs old');
-          } else {
-              return date('Y') - $Year.' '.gettext('yrs old');
-          }
+      $now = date_create('today');
+      $age = date_diff($now,$birthDate);
+
+      if ($age->y < 1) {
+        $ageValue = $age->m;
+        if ($age->m > 1) {
+          $ageSuffix = gettext('mos old');
+        } else {
+          $ageSuffix = gettext('mo old');
+        }
       } else {
-          return gettext('Unknown');
+        $ageValue = $age->y;
+        if ($age->y > 1) {
+          $ageSuffix = gettext('yrs old');
+        } else {
+          $ageSuffix = gettext('yr old');
+        }
       }
-  }
+
+      return $ageValue. " ".$ageSuffix;
+    }
 
   // Format a BirthDate
   // Optionally, the separator may be specified.  Default is YEAR-MN-DY
   public static function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
   {
-      if ($bFlags == 1 || $per_BirthYear == '') {  //Person Would Like their Age Hidden or BirthYear is not known.
-          $birthYear = '1000';
-      } else {
-          $birthYear = $per_BirthYear;
+      $birthDate = MiscUtils::BirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
+      if (!$birthDate) {
+        return false;
       }
-
-      if ($per_BirthMonth > 0 && $per_BirthDay > 0 && $birthYear != 1000) {
-          if ($per_BirthMonth < 10) {
-              $dBirthMonth = '0'.$per_BirthMonth;
-          } else {
-              $dBirthMonth = $per_BirthMonth;
-          }
-          if ($per_BirthDay < 10) {
-              $dBirthDay = '0'.$per_BirthDay;
-          } else {
-              $dBirthDay = $per_BirthDay;
-          }
-
-          $dBirthDate = $dBirthMonth.$sSeparator.$dBirthDay;
-          if (is_numeric($birthYear)) {
-              $dBirthDate = $birthYear.$sSeparator.$dBirthDate;
-              if (checkdate($dBirthMonth, $dBirthDay, $birthYear)) {
-                  $dBirthDate = FormatDate($dBirthDate);
-                  if (mb_substr($dBirthDate, -6, 6) == ', 1000') {
-                      $dBirthDate = str_replace(', 1000', '', $dBirthDate);
-                  }
-              }
-          }
-      } elseif (is_numeric($birthYear) && $birthYear != 1000) {  //Person Would Like Their Age Hidden
-          $dBirthDate = $birthYear;
-      } else {
-          $dBirthDate = '';
+      if ($bFlags || is_null($per_BirthYear) || $per_BirthYear == '')
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));  
       }
-
-      return $dBirthDate;
+      else
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
+      }
   }
   
-  public static function BirthDate($year, $month, $day, $hideAge)
+  public static function BirthDate($year, $month, $day)
   {
-      if (!is_null($day) && $day != '' &&
-      !is_null($month) && $month != ''
-    ) {
-          $birthYear = $year;
-          if ($hideAge) {
-              $birthYear = 1900;
-          }
-
-          return date_create($birthYear.'-'.$month.'-'.$day);
+     if (!is_null($day) && $day != '' && !is_null($month) && $month != '') {
+        if (is_null($year) || $year == '')
+        {
+          $year = 1900;
+        }
+        return date_create($year . '-' . $month . '-' . $day);
       }
-
-      return date_create();
+      return false;
   }
   
 }
