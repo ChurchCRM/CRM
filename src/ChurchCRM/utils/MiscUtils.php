@@ -41,38 +41,7 @@ class MiscUtils {
     //die();
     return time() + $cacheLength ;
   }
-  
-  //
-  // Formats an age suffix: age in years, or in months if less than one year old
-  //
-  public static function FormatAgeSuffix($birthDate, $Flags)
-  {
-      if ($Flags == 1) {
-          return '';
-      }
 
-      $ageSuffix = gettext('Unknown');
-
-      $now = new DateTime();
-      $age = $now->diff($birthDate);
-
-      if ($age->y < 1) {
-          if ($age->m > 1) {
-              $ageSuffix = gettext('mos old');
-          } else {
-              $ageSuffix = gettext('mo old');
-          }
-      } else {
-          if ($age->y > 1) {
-              $ageSuffix = gettext('yrs old');
-          } else {
-              $ageSuffix = gettext('yr old');
-          }
-      }
-
-      return $ageSuffix;
-  }
-  
   public static function FormatAge($Month, $Day, $Year, $Flags)
   {
        if ($Flags || is_null($Year) || $Year == '') {
