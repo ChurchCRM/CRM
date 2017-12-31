@@ -126,10 +126,9 @@ if (isset($_POST['User'])) {
         NotificationService::updateNotifications();
         $redirectLocation = $_SESSION['location'];
         if (isset($redirectLocation) && SystemURLs::isAccessibleURL($redirectLocation)) {
-          Redirect($redirectLocation);
-        }
-        else {
-          Redirect('Menu.php');
+            Redirect($redirectLocation);
+        } else {
+            Redirect('Menu.php');
         }
         exit;
     }
