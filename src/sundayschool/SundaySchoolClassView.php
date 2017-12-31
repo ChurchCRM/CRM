@@ -197,6 +197,7 @@ require '../Include/Header.php';
     <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>
+        <th></th>
         <th><?= gettext('Name') ?></th>
         <th><?= gettext('Birth Date') ?></th>
         <th><?= gettext('Age') ?></th>
@@ -223,9 +224,9 @@ require '../Include/Header.php';
           <tr>
           <td>
             <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
-                alt="User Image" class="user-image initials-image" width="30" height="30" />
-            <a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['firstName'].', '.$child['LastName'] ?></a>
+                alt="User Image" class="user-image initials-image" style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px !; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; max-width:none" />
           </td>
+          <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'].', '.$child['firstName'] ?></a></td>
           <td><?= $birthDate ?> </td>
           <td data-birth-date='<?= ($hideAge ? '' : $birthDateDate->format('Y-m-d')) ?>'></td>
           <td><?= $child['kidEmail'] ?></td>
