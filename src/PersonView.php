@@ -235,7 +235,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         </p>
         <?php if ($bOkToEdit) {
         ?>
-          <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
+          <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block" id="EditPerson"><b><?php echo gettext('Edit'); ?></b></a>
         <?php
     } ?>
       </div>
@@ -279,8 +279,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     if ($dBirthDate) {
         ?>
             <li>
-              <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>:
-              <span><?= $dBirthDate ?></span>
+              <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>: <?= $dBirthDate ?>
               <?php if (!$person->hideAge()) {
             ?>
               (<span></span><?=$person->getAge() ?>)
