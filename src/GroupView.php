@@ -417,6 +417,7 @@ require 'Include/Header.php';
             </div>
             <script nonce="<?= SystemURLs::getCSPNonce() ?>">
               window.CRM.currentGroup = <?= $iGroupID ?>;
+              window.CRM.iProfilePictureListSize = <?= SystemConfig::getValue('iProfilePictureListSize') ?>;
               var dataT = 0;
               $(document).ready(function () {
                 $('#isGroupActive').prop('checked', <?= $thisGroup->isActive()? 'true': 'false' ?>).change();

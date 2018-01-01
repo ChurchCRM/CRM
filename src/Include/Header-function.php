@@ -37,17 +37,6 @@ function Header_system_notifications()
     }
 }
 
-function Header_head_metatag()
-{
-    global $sMetaRefresh, $sPageTitle;
-
-    if (strlen($sMetaRefresh) > 0) {
-        echo $sMetaRefresh;
-    } ?>
-    <title>ChurchCRM: <?= $sPageTitle ?></title>
-    <?php
-}
-
 function Header_modals()
 {
     ?>

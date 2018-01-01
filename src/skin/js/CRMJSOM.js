@@ -46,7 +46,7 @@
         }
       });
     }
-    
+
     window.CRM.cart={
       'empty' : function (callback)
       {
@@ -84,11 +84,11 @@
       },
       'emptytoFamily' : function ()
       {
-          
+
       },
       'emptytoEvent' : function ()
       {
-          
+
       },
       'addPerson' : function (Persons, callback)
       {
@@ -102,7 +102,7 @@
         {
           callback(data);
         }
-        });        
+        });
       },
       'removePerson' : function (Persons, callback)
       {
@@ -115,7 +115,7 @@
           if(callback)
           {
             callback(data);
-          } 
+          }
         });
       },
       'addFamily' : function (FamilyID, callback)
@@ -144,7 +144,7 @@
             {
               callback(data);
             }
-            
+
         });
       },
       'removeGroup' : function (GroupID, callback)
@@ -159,7 +159,7 @@
             {
               callback(data);
             }
-            
+
         });
       },
       'refresh' : function () {
@@ -179,7 +179,7 @@
               <li id="showWhenCartNotEmpty">\
                   <ul class="menu">\
                       <li>\
-                          <a href="CartView.php">\
+                          <a href="' + window.CRM.root+ '/CartView.php">\
                               <i class="fa fa-shopping-cart text-green"></i>' + i18next.t("View Cart") + '\
                           </a>\
                       </li>\
@@ -194,24 +194,22 @@
                           </a>\
                       </li>\
                       <li>\
-                          <a href="CartToFamily.php">\
+                          <a href="' + window.CRM.root+ '/CartToFamily.php">\
                               <i class="fa fa fa-users text-info"></i>' + i18next.t("Empty Cart to Family") + '\
                           </a>\
                       </li>\
                       <li>\
-                          <a href="CartToEvent.php">\
+                          <a href="' + window.CRM.root+ '/"CartToEvent.php">\
                               <i class="fa fa fa-ticket text-info"></i>' + i18next.t("Empty Cart to Event") + '\
                           </a>\
                       </li>\
                       <li>\
-                          <a href="MapUsingGoogle.php?GroupID=0">\
+                          <a href=' + window.CRM.root+ '/MapUsingGoogle.php?GroupID=0">\
                               <i class="fa fa-map-marker text-info"></i>' + i18next.t("Map Cart") + '\
                           </a>\
                       </li>\
                   </ul>\
-              </li>\
-                        <!--li class="footer"><a href="#">' + i18next.t("View all") + '</a></li-->\
-                    '
+              </li>'
         }
           else {
             cartDropdownMenu = '\
@@ -253,7 +251,7 @@
         });
       }
     };
-    
+
     window.CRM.kiosks = {
         assignmentTypes: {
             "1":"Event Attendance",
@@ -274,7 +272,7 @@
           return window.CRM.APIRequest({
             "path":"kiosks/allowRegistration",
             "method":"POST"
-          })  
+          })
         },
         accept: function (id)
         {
@@ -315,7 +313,7 @@
           })
         }
     }
-    
+
     window.CRM.events = {
        getFutureEventes: function()
         {
@@ -328,19 +326,19 @@
           });
         }
     };
-    
-    window.CRM.groups = {      
+
+    window.CRM.groups = {
       'get': function() {
         return  window.CRM.APIRequest({
           path:"groups/",
           method:"GET"
-        }); 
+        });
       },
       'getRoles': function(GroupID) {
         return window.CRM.APIRequest({
           path:"groups/"+GroupID+"/roles",
           method:"GET"
-        }); 
+        });
       },
       'selectTypes': {
         'Group': 1,
@@ -362,7 +360,7 @@
              }
           };
           initFunction = function() {};
-          
+
           if (selectOptions.Type & window.CRM.groups.selectTypes.Group)
           {
             options.title = i18next.t("Select Group");
@@ -381,7 +379,7 @@
               selectionCallback({"RoleID": $("#targetRoleSelection option:selected").val()});
             };
           }
-          
+
           if (selectOptions.Type === window.CRM.groups.selectTypes.Role)
           {
             if (!selectOptions.GroupID)
@@ -431,14 +429,14 @@
               data: groupsList
             });
 
-            $groupSelect2.on("select2:select", function (e) { 
+            $groupSelect2.on("select2:select", function (e) {
                var targetGroupId = $("#targetGroupSelection option:selected").val();
                $parent = $("#targetRoleSelection").parent();
                $("#targetRoleSelection").empty();
                window.CRM.groups.getRoles(targetGroupId).done(function(rdata){
                  rolesList = $.map(rdata.ListOptions, function (item) {
                     var o = {
-                      text: item.OptionName,
+                      text: i18next.t(item.OptionName),// this is for the Teacher and Student role
                       id: item.OptionId
                     };
                     return o;
@@ -490,7 +488,7 @@
             if (result)
             {
               var newGroup = {'groupName': result};
-        
+
               $.ajax({
                 method: "POST",
                 url: window.CRM.root + "/api/groups/",               //call the groups api handler located at window.CRM.root
@@ -502,14 +500,14 @@
                   if(callbackM)
                   {
                     callbackM(data);
-                  }                
+                  }
               });
             }
            }
         });
       }
     };
-    
+
     window.CRM.system = {
       'runTimerJobs' : function () {
         if (window.CRM.suppressBackgroundAPIRequests) {
@@ -521,17 +519,17 @@
         });
       }
     };
-    
+
     window.CRM.dashboard = {
       renderers: {
         EventsCounters: function (data) {
           document.getElementById('BirthdateNumber').innerText = data.Birthdays;
           document.getElementById('AnniversaryNumber').innerText = data.Anniversaries;
           document.getElementById('EventsNumber').innerText = data.Events;
-        }, 
+        },
         FamilyCount: function (data) {
           var dashBoardFam = document.getElementById('familyCountDashboard');
-          
+
           if (dashBoardFam) { // we have to test if we are on the dashboard or not
             dashBoardFam.innerText = data.familyCount;
             latestFamiliesTable = $('#latestFamiliesDashboardItem').DataTable({
@@ -595,9 +593,9 @@
           if (dashBoardStatsSundaySchool) {// We have to check if we are on the dashboard menu
             dashBoardStatsSundaySchool.innerText = data.sundaySchoolClasses;
           }
-          
+
           var dashBoardGroupsCountDashboard = document.getElementById('groupsCountDashboard');
-          
+
           if (dashBoardGroupsCountDashboard) {// We have to check if we are on the dashboard menu
 	          dashBoardGroupsCountDashboard.innerText = data.groups;
 	        }

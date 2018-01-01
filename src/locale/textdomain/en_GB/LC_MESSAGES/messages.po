@@ -15,9 +15,9 @@ msgstr ""
 msgid "State"
 msgstr "County"
 
-#: AutoPaymentEditor.php:924 BackupDatabase.php:63 CSVExport.php:110
-#: CSVImport.php:220 CartToFamily.php:261 DirectoryReports.php:257
-#: FamilyEditor.php:688 PersonEditor.php:905 Register.php:46
+#: AutoPaymentEditor.php:924 CSVExport.php:110 CSVImport.php:220
+#: CartToFamily.php:261 DirectoryReports.php:257 FamilyEditor.php:688
+#: PersonEditor.php:905 Register.php:46
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29
 #, fuzzy
@@ -58,9 +58,9 @@ msgstr "City, Postcode"
 msgid "Cell Phone"
 msgstr "Mobile Phone"
 
-#: ChurchCRM/Reports/PDF_Directory.php:318
-#: ChurchCRM/Reports/PDF_Directory.php:394
-#: ChurchCRM/Reports/PDF_Directory.php:451 Reports/DirectoryReport.php:291
+#: ChurchCRM/Reports/PDF_Directory.php:319
+#: ChurchCRM/Reports/PDF_Directory.php:395
+#: ChurchCRM/Reports/PDF_Directory.php:452 Reports/DirectoryReport.php:291
 #: Reports/GroupReport.php:129
 msgid "Cell"
 msgstr "Mobile"

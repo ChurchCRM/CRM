@@ -293,7 +293,7 @@ foreach ($allMonths as $mKey => $mVal) {
               <?= FormatDate($aEventStartDateTime[$row], 1) ?>
             </td>
             <td>
-              <?= ($aEventStatus[$row] != 0 ? 'No' : 'Yes') ?>
+              <?= ($aEventStatus[$row] != 0 ? _('No') : _('Yes')) ?>
             </td>
 
           </tr>
