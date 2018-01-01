@@ -28,5 +28,7 @@ require __DIR__.'/../Include/slim/error-handler.php';
 require __DIR__.'/routes/family.php';
 require __DIR__.'/routes/person.php';
 
+require __DIR__.'/routes/email.php';
+
 // Run app
 $app->run();
