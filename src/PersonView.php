@@ -488,6 +488,12 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                   <?php
         } ?>
                 </div>
+              </li>
+            <?php
+    } ?>
+            <!-- END timeline item -->
+          </ul>
+                </div>
                 <div role="tab-pane fade" class="tab-pane" id="family">
 
                     <?php if ($person->getFamId() != '') {
