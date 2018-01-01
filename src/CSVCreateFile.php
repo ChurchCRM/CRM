@@ -499,7 +499,7 @@ if ($sFormat == 'addtocart') {
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                            $age = MiscUtils::FormatAge($per_BirthMonth,$per_BirthDay,$per_BirthYear , 0);
+                            $age = MiscUtils::FormatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, 0);
                         } else {
                             $age = '';
                         }
