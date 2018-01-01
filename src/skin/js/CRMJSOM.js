@@ -622,14 +622,17 @@
     }
 
     $(document).ajaxError(function (evt, xhr, settings,errortext) {
-      if (errortext === "Forbidden"){
-        window.location = window.CRM.root + "/Login.php";
-        return;
-      }
       if(errortext !== "abort") {
         try {
             var CRMResponse = JSON.parse(xhr.responseText);
-            window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
+            if (CRMResponse.message === i18next.t("No logged in user")){
+              window.location = window.CRM.root + "/Login.php";
+              return;
+            }
+            else
+            {
+              window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
+            }
         } catch(err) {
           window.CRM.DisplayErrorMessage(settings.url,{"message":errortext});
         }
