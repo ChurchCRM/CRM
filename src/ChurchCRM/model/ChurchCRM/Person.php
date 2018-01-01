@@ -460,9 +460,6 @@ class Person extends BasePerson implements iPhoto
         return false;
       }
 
-      $ageSuffix = gettext('Unknown');
-      $ageValue = 0;
-
       $now = date_create('today');
       $age = date_diff($now,$birthDate);
 
