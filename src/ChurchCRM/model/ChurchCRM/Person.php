@@ -46,21 +46,39 @@ class Person extends BasePerson implements iPhoto
     {
         return $this->getFlags() == 1 || $this->getBirthYear() == '' || $this->getBirthYear() == '0';
     }
-
-    public function getBirthDate()
+    
+    private function getBirthDate()
     {
         if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
             !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
         ) {
             $birthYear = $this->getBirthYear();
-            if ($this->hideAge()) {
-                $birthYear = 1900;
+            if ($birthYear == '')
+            {
+              $birthYear = 1900;
             }
-
             return date_create($birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
         }
+        return false;
+        
+    
+    }
 
-        return date_create();
+    public function getFormattedBirthDate()
+    {
+      $birthDate = $this->getBirthDate();
+      if (!$birthDate) {
+        return false;
+      }
+      if ($this->hideAge())
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));  
+      }
+      else
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
+      }
+     
     }
 
     public function getViewURI()
@@ -419,38 +437,39 @@ class Person extends BasePerson implements iPhoto
       $this->getPhoto()->refresh();
       return parent::postSave($con);
     }
-    
-    
-    /* Philippe Logel 2017 */
+
     public function getAge()
     {
-       $birthD = $this->getBirthDate();
+      $birthDate = $this->getBirthDate();
    
-       if ($this->hideAge() == 1) 
-       {
-            return '';
-       }
+      if ($this->hideAge()) 
+      {
+        return false;
+      }
 
-       $ageSuffix = gettext('Unknown');
+      $ageSuffix = gettext('Unknown');
+      $ageValue = 0;
 
-       $now = date_create('today');
-       $age = date_diff($now,$birthD);
+      $now = date_create('today');
+      $age = date_diff($now,$birthDate);
 
-       if ($age->y < 1) {
-         if ($age->m > 1) {
-           $ageSuffix = gettext('mos old');
-         } else {
-           $ageSuffix = gettext('mo old');
-         }
-       } else {
-         if ($age->y > 1) {
-           $ageSuffix = gettext('yrs old');
-         } else {
-           $ageSuffix = gettext('yr old');
-         }
-       }
+      if ($age->y < 1) {
+        $ageValue = $age->m;
+        if ($age->m > 1) {
+          $ageSuffix = gettext('mos old');
+        } else {
+          $ageSuffix = gettext('mo old');
+        }
+      } else {
+        $ageValue = $age->y;
+        if ($age->y > 1) {
+          $ageSuffix = gettext('yrs old');
+        } else {
+          $ageSuffix = gettext('yr old');
+        }
+      }
 
-       return $age->y." ".$ageSuffix;
+      return $ageValue. " ".$ageSuffix;
     }
     
     /* Philippe Logel 2017 */

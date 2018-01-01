@@ -1223,7 +1223,7 @@ require 'Include/Header.php';
     </div>
   <?php
                         } ?>
-    <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
+    <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
     <?php if ($_SESSION['bAddRecords']) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
                         } ?>

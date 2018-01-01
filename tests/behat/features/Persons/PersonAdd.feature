@@ -3,7 +3,7 @@ Feature: AddPerson
   As a User
   I am able to enter data into the Person Editor
 
-  Scenario: Entering a new Person
+  Scenario: Entering a new Person With Various Birthdate Requirements
     Given I am authenticated as "admin" using "changeme"
     And I am on "/PersonEditor.php"
     Then I should see "Personal Info"
@@ -17,7 +17,7 @@ Feature: AddPerson
     And I fill in "Twitter" with "test"
     And I fill in "LinkedIn" with "test"
 
-    And I press "PersonSubmit"
+    And I click the "#PersonSaveButton" element
     Then I should see "Person Profile"
     Then I should see "Bob Barker"
     Then I should see "About Me"
@@ -25,3 +25,22 @@ Feature: AddPerson
     Then I should see "Facebook"
     Then I should see "Twitter"
     Then I should see "LinkedIn"
+    And I should not see "Birthday"
+
+    Then I click the "#EditPerson" element
+    And I fill in "BirthMonth" with "03"
+    And I fill in "BirthDay" with "04"
+    And I click the "#PersonSaveButton" element
+    Then I should see "Birth Date: 03/04"
+
+    Then I click the "#EditPerson" element
+    And I fill in "BirthYear" with "1992"
+    And I click the "#PersonSaveButton" element
+    Then I should see "Birth Date: 03/04/1992"
+    And I should see "yrs old"
+
+    Then I click the "#EditPerson" element
+    And I fill in "HideAge" with "checked"
+    And I click the "#PersonSaveButton" element
+    Then I should see "Birth Date: 03/04"
+    And I should not see "yrs old"

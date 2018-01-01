@@ -130,7 +130,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
 
-$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
+$dBirthDate = $person->getFormattedBirthDate();
 
 $sFamilyInfoBegin = '<span style="color: red;">';
 $sFamilyInfoEnd = '</span>';
@@ -235,7 +235,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
         </p>
         <?php if ($bOkToEdit) {
         ?>
-          <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
+          <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block" id="EditPerson"><b><?php echo gettext('Edit'); ?></b></a>
         <?php
     } ?>
       </div>
@@ -279,11 +279,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
     if ($dBirthDate) {
         ?>
             <li>
-              <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>:
-              <span><?= $dBirthDate ?></span>
+              <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>: <?= $dBirthDate ?>
               <?php if (!$person->hideAge()) {
             ?>
-              (<span data-birth-date="<?= $person->getBirthDate()->format('Y-m-d') ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
+              (<span></span><?=$person->getAge() ?>)
               <?php
         } ?>
             </li>
@@ -523,7 +522,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                   <?= $familyMember->getFamilyRoleName() ?>
                 </td>
                 <td>
-                  <?= FormatBirthDate($familyMember->getBirthYear(), $familyMember->getBirthMonth(), $familyMember->getBirthDay(), '-', $familyMember->getFlags()); ?>
+                  <?= $familyMember->getFormattedBirthDate(); ?>
                 </td>
                 <td>
                   <?php $tmpEmail = $familyMember->getEmail();
