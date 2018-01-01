@@ -314,6 +314,9 @@ $familyAddress = $family->getAddress();
                                             </span>
                                             </a>
                                         </p>
+                                        <li class="list-group">
+                                            <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
+                                        </li>
 
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
@@ -351,27 +354,7 @@ $familyAddress = $family->getAddress();
                                                 <?php } else { ?>
                                                     <?= $person->getBirthDate()->format("M d Y") ?>
                                                 <?php } ?>
-                                                <br/>
                                             </li>
-                                            <li class="list-group-item">
-                                                <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
-                                            </li>
-                                            <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) { ?>
-                                                <li class="list-group-item">
-                                                    <h4>Groups</h4>
-                                                    <?php foreach ($person->getPerson2group2roleP2g2rs() as $groupMembership) {
-                                                        if ($groupMembership->getGroup() != null) {
-                                                            $listOption = ""; // ListOptionQuery::create()->filterById($groupMembership->getGroup()->getRoleListId())->filterByOptionId($groupMembership->getRoleId())->findOne()->getOptionName();
-                                                            ?>
-                                                            <b><?= $groupMembership->getGroup()->getName() ?></b>: <span
-                                                                class="pull-right"><?= $listOption ?></span><br/>
-                                                            <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                                </li>
-                                            <?php } ?>
-
                                         </ul>
 
                                     </div>
