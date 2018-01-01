@@ -496,7 +496,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <div role="tab-pane fade" class="tab-pane" id="family">
 
           <?php if ($person->getFamId() != '') {
-        ?>
+                          ?>
           <table class="table user-list table-hover">
             <thead>
             <tr>
@@ -509,7 +509,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             </thead>
             <tbody>
             <?php foreach ($person->getOtherFamilyMembers() as $familyMember) {
-            $tmpPersonId = $familyMember->getId(); ?>
+                              $tmpPersonId = $familyMember->getId(); ?>
               <tr>
                 <td>
 
@@ -526,11 +526,11 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 </td>
                 <td>
                   <?php $tmpEmail = $familyMember->getEmail();
-            if ($tmpEmail != '') {
-                ?>
+                              if ($tmpEmail != '') {
+                                  ?>
                     <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
                   <?php
-            } ?>
+                              } ?>
                 </td>
                 <td style="width: 20%;">
                   <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
