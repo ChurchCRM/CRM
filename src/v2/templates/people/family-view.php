@@ -38,7 +38,7 @@ $familyAddress = $family->getAddress();
                         <i class="fa fa-info"></i>
                         <h3 class="box-title"><?= $family->getName() ?></h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" id="edit-family-name"><i
+                            <button type="button" class="btn btn-box-tool edit-family"><i
                                     class="fa fa-edit"></i>
                             </button>
                         </div>
@@ -134,7 +134,7 @@ $familyAddress = $family->getAddress();
                         <i class="fa fa-id-badge"></i>
                         <h3 class="box-title"><?= gettext("Metadata") ?></h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" id="edit-family-data"><i
+                            <button type="button" class="btn btn-box-tool edit-family"><i
                                     class="fa fa-edit"></i>
                             </button>
                         </div>
@@ -224,7 +224,7 @@ $familyAddress = $family->getAddress();
                         <i class="fa fa-map"></i>
                         <h3 class="box-title"><?= gettext("Address") ?></h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" id="edit-family-address"><i
+                            <button type="button" class="btn btn-box-tool edit-family"><i
                                     class="fa fa-edit"></i>
                             </button>
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -519,275 +519,10 @@ $familyAddress = $family->getAddress();
                 </ul>
             </div>
         </div>
-
-
-
     </div>
 </div>
 
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="nav-tabs-custom">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <?php if ($_SESSION['bFinance']) {
-                    ?>
-                    <li role="presentation" class="active"><a href="#finance" aria-controls="finance" role="tab"
-                                               data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
-                    <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab"
-                                               data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
-                    <?php
-                } ?>
-
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-
-
-                <?php if ($_SESSION['bFinance']) {
-                ?>
-                <div role="tab-pane fade" class="tab-pane" id="finance">
-                    <div class="main-box clearfix">
-                        <div class="main-box-body clearfix">
-                            <?php if (mysqli_num_rows($rsAutoPayments) > 0) {
-                                ?>
-                                <table cellpadding="5" cellspacing="0" width="100%">
-
-                                    <tr class="TableHeader">
-                                        <td><?= gettext("Type") ?></td>
-                                        <td><?= gettext("Next payment date") ?></td>
-                                        <td><?= gettext("Amount") ?></td>
-                                        <td><?= gettext("Interval (months)") ?></td>
-                                        <td><?= gettext("Fund") ?></td>
-                                        <td><?= gettext("Edit") ?></td>
-                                        <td><?= gettext("Delete") ?></td>
-                                        <td><?= gettext("Date Updated") ?></td>
-                                        <td><?= gettext("Updated By") ?></td>
-                                    </tr>
-
-                                    <?php
-
-                                    $tog = 0;
-
-                                    //Loop through all automatic payments
-                                    while ($aRow = mysqli_fetch_array($rsAutoPayments)) {
-                                        $tog = (!$tog);
-
-                                        extract($aRow);
-
-                                        $payType = "Disabled";
-                                        if ($aut_EnableBankDraft) {
-                                            $payType = "Bank Draft";
-                                        }
-                                        if ($aut_EnableCreditCard) {
-                                            $payType = "Credit Card";
-                                        }
-
-                                        //Alternate the row style
-                                        if ($tog) {
-                                            $sRowClass = "RowColorA";
-                                        } else {
-                                            $sRowClass = "RowColorB";
-                                        } ?>
-
-                                        <tr class="<?= $sRowClass ?>">
-                                            <td>
-                                                <?= $payType ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $aut_NextPayDate ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $aut_Amount ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $aut_Interval ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= gettext($fundName) ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <a
-                                                    href="../../index.php"><?= gettext("Edit") ?></a>
-                                            </td>
-                                            <td>
-                                                <a
-                                                    href="../../index.php"><?= gettext("Delete") ?></a>
-                                            </td>
-                                            <td>
-                                                <?= $aut_DateLastEdited ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
-                                            </td>
-                                        </tr>
-                                        <?php
-                                    } ?>
-                                </table>
-                                <?php
-                            } ?>
-                            <p align="center">
-                                <a class="SmallText"
-                                   href="../../index.php"><?= gettext("Add a new automatic payment") ?></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div role="tab-pane fade" class="tab-pane" id="pledges">
-                    <div class="main-box clearfix">
-                        <div class="main-box-body clearfix">
-                            <form method="post" action="../../index.php">
-                                <input type="checkbox" name="ShowPledges"
-                                       value="1" <?php if ($_SESSION['sshowPledges']) {
-                                    echo " checked";
-                                } ?>><?= gettext("Show Pledges") ?>
-                                <input type="checkbox" name="ShowPayments"
-                                       value="1" <?php if ($_SESSION['sshowPayments']) {
-                                    echo " checked";
-                                } ?>><?= gettext("Show Payments") ?>
-                                <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
-                                <?php
-                                $showSince = "";
-                                if ($_SESSION['sshowSince'] != null) {
-                                    $showSince = $_SESSION['sshowSince']->format('Y-m-d');
-                                } ?>
-                                <input type="text" class="date-picker" Name="ShowSinceDate"
-                                       value="<?= $showSince ?>" maxlength="10" id="ShowSinceDate" size="15">
-                                <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?>
-                                       name="UpdatePledgeTable"
-                                       style="font-size: 8pt;">
-                            </form>
-
-                            <table id="pledge-payment-table" class="table table-condensed dt-responsive" width="100%">
-                                <thead>
-                                <tr>
-                                    <th><?= gettext("Pledge or Payment") ?></th>
-                                    <th><?= gettext("Fund") ?></th>
-                                    <th><?= gettext("Fiscal Year") ?></th>
-                                    <th><?= gettext("Date") ?></th>
-                                    <th><?= gettext("Amount") ?></th>
-                                    <th><?= gettext("NonDeductible") ?></th>
-                                    <th><?= gettext("Schedule") ?></th>
-                                    <th><?= gettext("Method") ?></th>
-                                    <th><?= gettext("Comment") ?></th>
-                                    <th><?= gettext("Edit") ?></th>
-                                    <th><?= gettext("Delete") ?></th>
-                                    <th><?= gettext("Date Updated") ?></th>
-                                    <th><?= gettext("Updated By") ?></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                <?php
-                                $tog = 0;
-
-                                if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments']) {
-                                    //Loop through all pledges
-                                    while ($aRow = mysqli_fetch_array($rsPledges)) {
-                                        $tog = (!$tog);
-
-                                        $plg_FYID = "";
-                                        $plg_date = "";
-                                        $plg_amount = "";
-                                        $plg_schedule = "";
-                                        $plg_method = "";
-                                        $plg_comment = "";
-                                        $plg_plgID = 0;
-                                        $plg_DateLastEdited = "";
-                                        $plg_EditedBy = "";
-
-                                        extract($aRow);
-
-                                        //Display the pledge or payment if appropriate
-                                        if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
-                                                ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
-                                            ) &&
-                                            ($_SESSION['sshowSince'] == "" || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['sshowSince'])
-                                        ) {
-                                            ?>
-
-                                            <tr>
-                                                <td>
-                                                    <?= $plg_PledgeOrPayment ?>&nbsp;
-                                                </td>
-                                                <td>
-                                                    <?= $fundName ?>&nbsp;
-                                                </td>
-                                                <td>
-                                                    <?= MakeFYString($plg_FYID) ?>&nbsp;
-                                                </td>
-                                                <td>
-                                                    <?= $plg_date ?>&nbsp;
-                                                </td>
-                                                <td align=center>
-                                                    <?= $plg_amount ?>&nbsp;
-                                                </td>
-                                                <td align=center>
-                                                    <?= $plg_NonDeductible ?>&nbsp;
-                                                </td>
-                                                <td>
-                                                    <?= $plg_schedule ?>&nbsp;
-                                                </td>
-                                                <td>
-                                                    <?= $plg_method ?>&nbsp;
-                                                </td>
-                                                <td>
-                                                    <?= $plg_comment ?>&nbsp;
-                                                </td>
-                                                <td>
-                                                    <a
-                                                        href="../../index.php">Edit</a>
-                                                </td>
-                                                <td>
-                                                    <a
-                                                        href="../../index.php">Delete</a>
-                                                </td>
-                                                <td>
-                                                    <?= $plg_DateLastEdited ?>&nbsp;
-                                                </td>
-                                                <td>
-                                                    <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
-                                                </td>
-                                            </tr>
-                                            <?php
-                                        }
-                                    }
-                                } // if bShowPledges
-
-                                ?>
-
-                                </tbody>
-                            </table>
-
-                            <p align="center">
-                                <a class="SmallText"
-                                   href="../../index.php"><?= gettext("Add a new pledge") ?></a>
-                                <a class="SmallText"
-                                   href="../../index.php"><?= gettext("Add a new payment") ?></a>
-                            </p>
-
-                            <?php
-                            } ?>
-
-                            <?php if ($_SESSION['bCanvasser']) {
-                            ?>
-
-                            <p align="center">
-                                <a class="SmallText"
-                                   href="../../index.php"><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            <?php
-            } ?>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
 
@@ -823,14 +558,20 @@ $familyAddress = $family->getAddress();
     </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-        url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
-        maxPhotoSize: window.CRM.maxUploadSize,
-        photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
-        photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
-        done: function (e) {
-            location.reload();
-        }
+    $(document).ready(function () {
+        window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
+            url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+            maxPhotoSize: window.CRM.maxUploadSize,
+            photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+            photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
+            done: function (e) {
+                location.reload();
+            }
+        });
+
+        $(".edit-family").click(function () {
+            window.location.href = window.CRM.root + '/FamilyEditor.php?FamilyID=' + window.CRM.currentFamily;
+        });
     });
 </script>
 <!-- Photos end -->
