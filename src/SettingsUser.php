@@ -17,10 +17,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 

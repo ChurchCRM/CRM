@@ -12,9 +12,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 

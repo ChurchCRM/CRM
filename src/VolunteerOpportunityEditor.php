@@ -11,13 +11,14 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have proper permission
 // For now ... require $bAdmin
 // Future ... $bManageVol
 
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -56,7 +57,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
     if (!$_SESSION['bDeleteRecords']) {
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 
@@ -118,7 +119,7 @@ if (($sAction == 'ConfDelete') && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
     if (!$_SESSION['bDeleteRecords']) {
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 

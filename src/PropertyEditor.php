@@ -13,10 +13,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have property and classification editing permission
 if (!$_SESSION['bMenuOptions']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -47,7 +48,7 @@ switch ($sType) {
         break;
 
     default:
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
         break;
 }
@@ -91,7 +92,7 @@ if (isset($_POST['Submit'])) {
         RunQuery($sSQL);
 
         //Route back to the list
-        Redirect('PropertyList.php?Type='.$sType);
+        RedirectUtils::Redirect('PropertyList.php?Type='.$sType);
     }
 } else {
     if ($iPropertyID != 0) {
