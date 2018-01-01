@@ -5,6 +5,7 @@ require '../Include/Functions.php';
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\MiscUtils;
 
 $dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
@@ -213,9 +214,8 @@ require '../Include/Header.php';
           extract($child);
 
           $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
-          $birthDate = FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
-          $birthDateDate = BirthDate($birthYear, $birthMonth, $birthDay, $hideAge);
-
+          $birthDate = MiscUtils::FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+        
           echo '<tr>';
           echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
           echo '	<span class="fa-stack">';
@@ -225,7 +225,7 @@ require '../Include/Header.php';
           echo '<td>'.$firstName.'</td>';
           echo '<td>'.$LastName.'</td>';
           echo '<td>'.$birthDate.'</td>';
-          echo "<td data-birth-date='".($hideAge ? '' : $birthDateDate->format('Y-m-d'))."'></td>";
+          echo "<td>".MiscUtils::FormatAge($birthMonth, $birthDay, $birthYear, $hideAge)."</td>";
           echo '<td>'.$Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip.'</td>';
           echo '</tr>';
       }
