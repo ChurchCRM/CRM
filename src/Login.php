@@ -164,7 +164,7 @@ if (empty($urlUserName)) {
 }
 
 if (isset($_SESSION['location'])) {
-  $LocationFromSession = $_SESSION['location'];
+    $LocationFromSession = $_SESSION['location'];
 }
 
 // we destroy the session
@@ -179,12 +179,12 @@ $_SESSION['username'] = $urlUserName;
 $_SESSION['iUserID'] = $id;
 $LocationFromGet = InputUtils::FilterString(urldecode($_GET['location']));
 
-if(isset($LocationFromSession) && $LocationFromSession != ''){
-  $_SESSION['location'] = $LocationFromSession;
+if (isset($LocationFromSession) && $LocationFromSession != '') {
+    $_SESSION['location'] = $LocationFromSession;
 }
 
-if (isset($LocationFromGet) && $LocationFromGet != ''){
-  $_SESSION['location'] = $LocationFromGet;
+if (isset($LocationFromGet) && $LocationFromGet != '') {
+    $_SESSION['location'] = $LocationFromGet;
 }
 if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
