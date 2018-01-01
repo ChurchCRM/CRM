@@ -11,6 +11,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\Classification;
 
 //Set the page title
 $sPageTitle = gettext('View on Map');
@@ -72,10 +73,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
         }
 
         //Markericons list
-        $icons = ListOptionQuery::create()
-        ->filterById(1)
-        ->orderByOptionSequence()
-        ->find();
+        $icons = Classification::getAll();
 
         $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
         array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification?>
@@ -269,7 +267,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                 if (plotArray[i].Thumbnail.length > 0) {
                     //contentString += "<div class='image-container'><p class='text-center'><a href='" + imghref + "'>";
                     contentString += "<div class='image-container'><a href='" + imghref + "'>";
-                    contentString += "<img class='profile-user-img img-responsive img-circle' border='1' src='" + plotArray[i].Thumbnail + "'></a></div>";
+                    contentString += "<img class='profile-user-img img-responsive img-circle' border='1' src='" + plotArray[i].Thumbnail + "' style='width:" + <?= SystemConfig::getValue('iProfilePictureListSize') ?> + "px; height:" + <?= SystemConfig::getValue('iProfilePictureListSize') ?> + "px'></a></div>" ;
                 }
 
                 //Add marker and infowindow

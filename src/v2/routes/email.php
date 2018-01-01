@@ -14,7 +14,6 @@ $app->group('/email', function () {
     $this->get('/dashboard', 'getEmailDashboard');
 });
 
-
 function getEmailDashboard(Request $request, Response $response, array $args) {
     $renderer = new PhpRenderer('templates/email/');
     $mailchimp = new MailChimpService();
@@ -60,7 +59,7 @@ function testEmailConnection(Request $request, Response $response, array $args)
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => "Debug Email Connection",
+        'sPageTitle' => gettext("Debug Email Connection"),
         'mailer' => $mailer,
         'message' => $message
     ];
