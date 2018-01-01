@@ -74,9 +74,9 @@ $familyAddress = $family->getAddress();
                 <div class="box box-primary">
                     <div class="box-header">
                         <i class="fa fa-id-badge"></i>
-                        <h3 class="box-title"><?= gettext("Properties") ?></h3>
+                        <h3 class="box-title"><?= gettext("Metadata") ?></h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" id="edit-family-properties"><i
+                            <button type="button" class="btn btn-box-tool" id="edit-family-data"><i
                                     class="fa fa-edit"></i>
                             </button>
                         </div>
@@ -283,11 +283,11 @@ $familyAddress = $family->getAddress();
                             <div class="col-sm-4">
                                 <div class="box box-primary">
                                     <div class="box-body box-profile">
-                                        <img class="profile-user-img img-responsive img-circle initials-image"
-                                             src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
-
-                                        <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
-
+                                        <a href="<?= $person->getViewURI()?>" ?>
+                                            <img class="profile-user-img img-responsive img-circle initials-image"
+                                                 src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
+                                            <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
+                                        </a>
                                         <p class="text-muted text-center"><i
                                                 class="fa fa-fw fa-<?= ($person->isMale() ? "male" : "female") ?>"></i> <?= $person->getFamilyRoleName() ?>
                                         </p>
@@ -347,13 +347,8 @@ $familyAddress = $family->getAddress();
                                                 <?php } ?>
                                                 <i class="fa fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
-                                                <?php if ($person->hideAge()) { ?>
-                                                    <?= $person->getBirthDate()->format("M d") ?>
-                                                    <i class="fa fa-fw fa-eye-slash"
-                                                       title="<?= gettext("Age Hidden") ?>"></i>
-                                                <?php } else { ?>
-                                                    <?= $person->getBirthDate()->format("M d Y") ?>
-                                                <?php } ?>
+                                                <?= $person->getFormattedBirthDate()?>  <?= $person->getAge()?>
+                                                </i>
                                             </li>
                                         </ul>
 
@@ -371,9 +366,13 @@ $familyAddress = $family->getAddress();
     <div class="col-lg-6">
         <div class="box">
             <div class="box-header">
-                <i class="fa fa-history"></i>
-                <h3 class="box-title"><?= gettext("Timeline") ?></h3>
+                <i class="fa fa-hashtag"></i>
+                <h3 class="box-title"><?= gettext("Properties") ?></h3>
                 <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                            class="fa fa-plus"></i>
+                    </button>
+
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                             class="fa fa-minus"></i>
                     </button>
@@ -383,75 +382,6 @@ $familyAddress = $family->getAddress();
                 </div>
             </div>
             <div class="box-body">
-                <ul class="timeline">
-                    <!-- timeline time label -->
-                    <li class="time-label"><span class="bg-teal"><?= $curYear ?></span></li>
-                    <!-- /.timeline-label -->
-
-                    <!-- timeline item -->
-                    <?php foreach ($familyTimeline as $item) {
-                        if ($curYear != $item['year']) {
-                            $curYear = $item['year']; ?>
-                            <li class="time-label"><span class="bg-green"><?= $curYear ?></span></li>
-                            <?php
-                        } ?>
-                        <li>
-                            <!-- timeline icon -->
-                            <i class="fa <?= $item['style'] ?>"></i>
-                            <div class="timeline-item">
-                                <span class="time">
-                                    <?php if ($sessionUser->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
-                                    ?>
-                                        <?php if (isset($item["editLink"])) { ?>
-                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
-                                        <?php }
-                                        if (isset($item["deleteLink"])) { ?>
-                                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
-                                        <?php } ?>
-                                        &nbsp;
-                                    <?php
-                                } ?>
-                                <i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
-                                <?php if ($item['slim']) { ?>
-                                    <h4 class="timeline-header">
-                                        <?= $item['text'] ?> <?= gettext($item['header']) ?>
-                                    </h4>
-                                <?php } else { ?>
-                                    <h3 class="timeline-header">
-                                        <?php if (in_array('headerlink', $item)) {
-                                            ?>
-                                            <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <?= gettext($item['header']) ?>
-                                            <?php
-                                        } ?>
-                                    </h3>
-
-                                    <div class="timeline-body">
-                                        <pre><?= $item['text'] ?></pre>
-                                    </div>
-
-
-
-                                <?php } ?>
-                            </div>
-                        </li>
-                        <?php
-                    } ?>
-                    <!-- END timeline item -->
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="row">
-    <div role="tab-pane fade" class="tab-pane" id="properties">
-        <div class="main-box clearfix">
-            <div class="main-box-body clearfix">
                 <?php
                 $sAssignedProperties = ",";
 
@@ -564,8 +494,87 @@ $familyAddress = $family->getAddress();
                 } ?>
             </div>
         </div>
+        <div class="box">
+            <div class="box-header">
+                <i class="fa fa-history"></i>
+                <h3 class="box-title"><?= gettext("Timeline") ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                            class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                            class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <ul class="timeline">
+                    <!-- timeline time label -->
+                    <li class="time-label"><span class="bg-teal"><?= $curYear ?></span></li>
+                    <!-- /.timeline-label -->
+
+                    <!-- timeline item -->
+                    <?php foreach ($familyTimeline as $item) {
+                        if ($curYear != $item['year']) {
+                            $curYear = $item['year']; ?>
+                            <li class="time-label"><span class="bg-green"><?= $curYear ?></span></li>
+                            <?php
+                        } ?>
+                        <li>
+                            <!-- timeline icon -->
+                            <i class="fa <?= $item['style'] ?>"></i>
+                            <div class="timeline-item">
+                                <span class="time">
+                                    <?php if ($sessionUser->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                                    ?>
+                                        <?php if (isset($item["editLink"])) { ?>
+                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
+                                        <?php }
+                                        if (isset($item["deleteLink"])) { ?>
+                                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
+                                        <?php } ?>
+                                        &nbsp;
+                                    <?php
+                                } ?>
+                                <i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+                                <?php if ($item['slim']) { ?>
+                                    <h4 class="timeline-header">
+                                        <?= $item['text'] ?> <?= gettext($item['header']) ?>
+                                    </h4>
+                                <?php } else { ?>
+                                    <h3 class="timeline-header">
+                                        <?php if (in_array('headerlink', $item)) {
+                                            ?>
+                                            <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <?= gettext($item['header']) ?>
+                                            <?php
+                                        } ?>
+                                    </h3>
+
+                                    <div class="timeline-body">
+                                        <pre><?= $item['text'] ?></pre>
+                                    </div>
+
+
+
+                                <?php } ?>
+                            </div>
+                        </li>
+                        <?php
+                    } ?>
+                    <!-- END timeline item -->
+                </ul>
+            </div>
+        </div>
+
+
+
     </div>
 </div>
+
 
 <div class="row">
     <div class="col-lg-12">
