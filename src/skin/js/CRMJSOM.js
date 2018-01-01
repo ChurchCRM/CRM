@@ -163,6 +163,9 @@
         });
       },
       'refresh' : function () {
+        if (window.CRM.suppressBackgroundAPIRequests) {
+          return false;
+        }
         window.CRM.APIRequest({
           method: 'GET',
           path:"cart/"
@@ -247,7 +250,6 @@
           }
         });
       }
-
     };
 
     window.CRM.kiosks = {
@@ -508,6 +510,9 @@
 
     window.CRM.system = {
       'runTimerJobs' : function () {
+        if (window.CRM.suppressBackgroundAPIRequests) {
+          return false;
+        }
         $.ajax({
           url: window.CRM.root + "/api/timerjobs/run",
           type: "POST"
@@ -602,6 +607,9 @@
         }
       },
       refresh: function () {
+        if (window.CRM.suppressBackgroundAPIRequests) {
+          return false;
+        }
         window.CRM.APIRequest({
           method: 'GET',
           path: 'dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
@@ -617,7 +625,14 @@
       if(errortext !== "abort") {
         try {
             var CRMResponse = JSON.parse(xhr.responseText);
-            window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
+            if (CRMResponse.message === i18next.t("No logged in user")){
+              window.location = window.CRM.root + "/Login.php";
+              return;
+            }
+            else
+            {
+              window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
+            }
         } catch(err) {
           window.CRM.DisplayErrorMessage(settings.url,{"message":errortext});
         }

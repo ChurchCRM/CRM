@@ -25,17 +25,17 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 //
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
+
+    $redirectURL = false;
     // Basic security: If the UserID isn't set (no session), redirect to the login page
     if (!isset($_SESSION['iUserID'])) {
-        Redirect('Login.php');
-        exit;
+        $redirectURL = 'Login.php';
     }
 
     // Check for login timeout.  If login has expired, redirect to login page
     if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-            Redirect('Login.php');
-            exit;
+            $redirectURL = 'Login.php';
         } else {
             $_SESSION['tLastOperation'] = time();
         }
@@ -43,10 +43,15 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
 
     // If this user needs to change password, send to that page
     if ($_SESSION['bNeedPasswordChange'] && !isset($bNoPasswordRedirect)) {
-        Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
+        $redirectURL = 'UserPasswordChange.php?PersonID='.$_SESSION['iUserID'];
+    }
+    if ($redirectURL && $_SERVER['SCRIPT_FILENAME'] == SystemURLs::getDocumentRoot() . "/api/index.php") {
+        http_response_code(403);
+        exit;
+    } elseif ($redirectURL) {
+        Redirect($redirectURL);
         exit;
     }
-
     // Check if https is required
 
   // Note: PHP has limited ability to access the address bar
