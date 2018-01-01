@@ -177,8 +177,8 @@ class SundaySchoolService
                 fam.fam_Email famEmail, fam.fam_Address1 Address1, fam.fam_Address2 Address2, fam.fam_City city, fam.fam_State state, fam.fam_Zip zip
 
               from list_lst lst, person_per kid, family_fam fam
-                left Join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 and dad.per_fmr_ID = 1
-                left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and mom.per_fmr_ID = 2,`group_grp` grp, `person2group2role_p2g2r` person_grp
+                left Join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 and ( dad.per_fmr_ID = 1 or dad.per_fmr_ID = 2)
+                left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and (mom.per_fmr_ID = 1 or mom.per_fmr_ID = 2),`group_grp` grp, `person2group2role_p2g2r` person_grp
 
             where kid.per_fam_id = fam.fam_ID and grp.grp_ID = '.$groupId."
               and fam.fam_DateDeactivated is null
