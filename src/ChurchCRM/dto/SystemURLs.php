@@ -125,7 +125,7 @@ class SystemURLs
       $sFullPath = str_replace('\\', '/', SystemURLs::getDocumentRoot().'/'.$sPathExtension);
 
       // With the query string removed we can test if file exists
-      if (file_exists($sFullPath) && is_readable($sFullPath)) {
+      if (substr($sPathExtension,0,3) =="v2/" || file_exists($sFullPath) && is_readable($sFullPath)) {
           return true;
       } else {
           return false;
