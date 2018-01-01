@@ -597,92 +597,6 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
   }
 }
 
-function FormatAge($Month, $Day, $Year, $Flags)
-{
-    if (($Flags & 1)) { //||!$_SESSION['bSeePrivacyData']
-        return;
-    }
-
-    if ($Year > 0) {
-        if ($Year == date('Y')) {
-            $monthCount = date('m') - $Month;
-            if ($Day > date('d')) {
-                $monthCount--;
-            }
-            if ($monthCount == 1) {
-                return gettext('1 m old');
-            } else {
-                return $monthCount.' '.gettext('m old');
-            }
-        } elseif ($Year == date('Y') - 1) {
-            $monthCount = 12 - $Month + date('m');
-            if ($Day > date('d')) {
-                $monthCount--;
-            }
-            if ($monthCount >= 12) {
-                return gettext('1 yr old');
-            } elseif ($monthCount == 1) {
-                return gettext('1 m old');
-            } else {
-                return $monthCount.' '.gettext('m old');
-            }
-        } elseif ($Month > date('m') || ($Month == date('m') && $Day > date('d'))) {
-            return date('Y') - 1 - $Year.' '.gettext('yrs old');
-        } else {
-            return date('Y') - $Year.' '.gettext('yrs old');
-        }
-    } else {
-        return gettext('Unknown');
-    }
-}
-
-function BirthDate($year, $month, $day, $hideAge)
-{
-    if (!is_null($day) && $day != '' &&
-    !is_null($month) && $month != ''
-  ) {
-        $birthYear = $year;
-        if ($hideAge) {
-            $birthYear = 1900;
-        }
-
-        return date_create($birthYear.'-'.$month.'-'.$day);
-    }
-
-    return date_create();
-}
-
-//
-// Formats an age suffix: age in years, or in months if less than one year old
-//
-function FormatAgeSuffix($birthDate, $Flags)
-{
-    if ($Flags == 1) {
-        return '';
-    }
-
-    $ageSuffix = gettext('Unknown');
-
-    $now = new DateTime();
-    $age = $now->diff($birthDate);
-
-    if ($age->y < 1) {
-        if ($age->m > 1) {
-            $ageSuffix = gettext('mos old');
-        } else {
-            $ageSuffix = gettext('mo old');
-        }
-    } else {
-        if ($age->y > 1) {
-            $ageSuffix = gettext('yrs old');
-        } else {
-            $ageSuffix = gettext('yr old');
-        }
-    }
-
-    return $ageSuffix;
-}
-
 // Returns a string of a person's full name, formatted as specified by $Style
 // $Style = 0  :  "Title FirstName MiddleName LastName, Suffix"
 // $Style = 1  :  "Title FirstName MiddleInitial. LastName, Suffix"
@@ -1421,46 +1335,7 @@ function formatNumber($iNumber, $sMode = 'integer')
   }
 }
 
-// Format a BirthDate
-// Optionally, the separator may be specified.  Default is YEAR-MN-DY
-function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
-{
-    if ($bFlags == 1 || $per_BirthYear == '') {  //Person Would Like their Age Hidden or BirthYear is not known.
-        $birthYear = '1000';
-    } else {
-        $birthYear = $per_BirthYear;
-    }
 
-    if ($per_BirthMonth > 0 && $per_BirthDay > 0 && $birthYear != 1000) {
-        if ($per_BirthMonth < 10) {
-            $dBirthMonth = '0'.$per_BirthMonth;
-        } else {
-            $dBirthMonth = $per_BirthMonth;
-        }
-        if ($per_BirthDay < 10) {
-            $dBirthDay = '0'.$per_BirthDay;
-        } else {
-            $dBirthDay = $per_BirthDay;
-        }
-
-        $dBirthDate = $dBirthMonth.$sSeparator.$dBirthDay;
-        if (is_numeric($birthYear)) {
-            $dBirthDate = $birthYear.$sSeparator.$dBirthDate;
-            if (checkdate($dBirthMonth, $dBirthDay, $birthYear)) {
-                $dBirthDate = FormatDate($dBirthDate);
-                if (mb_substr($dBirthDate, -6, 6) == ', 1000') {
-                    $dBirthDate = str_replace(', 1000', '', $dBirthDate);
-                }
-            }
-        }
-    } elseif (is_numeric($birthYear) && $birthYear != 1000) {  //Person Would Like Their Age Hidden
-        $dBirthDate = $birthYear;
-    } else {
-        $dBirthDate = '';
-    }
-
-    return $dBirthDate;
-}
 
 function FilenameToFontname($filename, $family)
 {
