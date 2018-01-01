@@ -18,6 +18,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\dto\Classification;
 
 $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
@@ -44,9 +45,8 @@ if ($sFormat == 'rollup') {
 }
 
 //Get membership classes
-$rsMembershipClasses = ListOptionQuery::create()->filterByID('1')->orderByOptionId()->find();
 $memberClass = array(0);
-foreach ($rsMembershipClasses as $Member) {
+foreach (Classification::getAll() as $Member) {
     $memberClass[] = $Member->getOptionName();
 }
 
@@ -342,7 +342,7 @@ if ($sFormat == 'addtocart') {
 
     header('Content-type: text/x-csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
     header('Content-Disposition: attachment; filename=churchcrm-export-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
-    
+
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
     if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
         echo "\xEF\xBB\xBF";
