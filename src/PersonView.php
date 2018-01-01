@@ -130,7 +130,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     $aSecurityType[$lst_OptionID] = $lst_OptionName;
 }
 
-$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
+$dBirthDate = $person->getFormattedBirthDate();
 
 $sFamilyInfoBegin = '<span style="color: red;">';
 $sFamilyInfoEnd = '</span>';
@@ -227,31 +227,31 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     </a>
                 </p>
 
-                <p class="text-muted text-center">
-                    <?= gettext($sClassName);
-                    if ($per_MembershipDate) {
-                        echo gettext(' Since:').' '.FormatDate($per_MembershipDate, false);
-                    } ?>
-                </p>
-                <?php if ($bOkToEdit) {
-                        ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block"><b><?php echo gettext('Edit'); ?></b></a>
-                    <?php
-                    } ?>
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
+        <p class="text-muted text-center">
+          <?= gettext($sClassName);
+    if ($per_MembershipDate) {
+        echo gettext(' Since:').' '.FormatDate($per_MembershipDate, false);
+    } ?>
+        </p>
+        <?php if ($bOkToEdit) {
+        ?>
+          <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block" id="EditPerson"><b><?php echo gettext('Edit'); ?></b></a>
+        <?php
+    } ?>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
 
-        <!-- About Me Box -->
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title text-center"><?php echo gettext('About Me'); ?></h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <ul class="fa-ul">
-                    <li><i class="fa-li fa fa-group"></i><?php echo gettext('Family:'); ?> <span>
+    <!-- About Me Box -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title text-center"><?php echo gettext('About Me'); ?></h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <ul class="fa-ul">
+          <li><i class="fa-li fa fa-group"></i><?php echo gettext('Family:'); ?> <span>
               <?php
               if ($fam_ID != '') {
                   ?>
@@ -276,68 +276,67 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
             </span></li>
                         <?php
               }
-                    if ($dBirthDate) {
-                        ?>
-                        <li>
-                            <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>:
-                            <span><?= $dBirthDate ?></span>
-                            <?php if (!$person->hideAge()) {
-                            ?>
-                                (<span data-birth-date="<?= $person->getBirthDate()->format('Y-m-d') ?>"></span> <?=FormatAgeSuffix($person->getBirthDate(), $per_Flags) ?>)
-                                <?php
-                        } ?>
-                        </li>
-                        <?php
-                    }
-                    if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') { /* Friend Date can be hidden - General Settings */ ?>
-                        <li><i class="fa-li fa fa-tasks"></i><?= gettext('Friend Date') ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
-                        <?php
-                    }
-                    if ($sCellPhone) {
-                        ?>
-                        <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext('Mobile Phone') ?>: <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
-                        <?php
-                    }
-                    if ($sHomePhone) {
-                        ?>
-                        <li><i class="fa-li fa fa-phone"></i><?= gettext('Home Phone') ?>: <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
-                        <?php
-                    }
-                    if ($sEmail != '') {
-                        ?>
-                        <li><i class="fa-li fa fa-envelope"></i><?= gettext('Email') ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
-                        <?php if ($mailchimp->isActive()) {
-                            ?>
-                            <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
-                            <?php
-                        }
-                    }
-                    if ($sWorkPhone) {
-                        ?>
-                        <li><i class="fa-li fa fa-phone"></i><?= gettext('Work Phone') ?>: <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
-                        <?php
-                    } ?>
-                    <?php if ($per_WorkEmail != '') {
-                        ?>
-                        <li><i class="fa-li fa fa-envelope"></i><?= gettext('Work/Other Email') ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
-                        <?php if ($mailchimp->isActive()) {
-                            ?>
-                            <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
-                            <?php
-                        }
-                    }
+    if ($dBirthDate) {
+        ?>
+            <li>
+              <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>: <?= $dBirthDate ?>
+              <?php if (!$person->hideAge()) {
+            ?>
+              (<span></span><?=$person->getAge() ?>)
+              <?php
+        } ?>
+            </li>
+          <?php
+    }
+    if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') { /* Friend Date can be hidden - General Settings */ ?>
+            <li><i class="fa-li fa fa-tasks"></i><?= gettext('Friend Date') ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
+          <?php
+    }
+    if ($sCellPhone) {
+        ?>
+            <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext('Mobile Phone') ?>: <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
+          <?php
+    }
+    if ($sHomePhone) {
+        ?>
+            <li><i class="fa-li fa fa-phone"></i><?= gettext('Home Phone') ?>: <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
+            <?php
+    }
+    if ($sEmail != '') {
+        ?>
+            <li><i class="fa-li fa fa-envelope"></i><?= gettext('Email') ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
+            <?php if ($mailchimp->isActive()) {
+            ?>
+              <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
+            <?php
+        }
+    }
+    if ($sWorkPhone) {
+        ?>
+            <li><i class="fa-li fa fa-phone"></i><?= gettext('Work Phone') ?>: <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
+          <?php
+    } ?>
+          <?php if ($per_WorkEmail != '') {
+        ?>
+            <li><i class="fa-li fa fa-envelope"></i><?= gettext('Work/Other Email') ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
+            <?php if ($mailchimp->isActive()) {
+            ?>
+              <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
+              <?php
+        }
+    }
 
-                    if ($per_FacebookID > 0) {
-                        ?>
-                        <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?>"><?= gettext('Facebook') ?></a></span></li>
-                        <?php
-                    }
+    if ($per_FacebookID > 0) {
+        ?>
+              <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?>"><?= gettext('Facebook') ?></a></span></li>
+          <?php
+    }
 
-                    if (strlen($per_Twitter) > 0) {
-                        ?>
-                        <li><i class="fa-li fa fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>"><?= gettext('Twitter') ?></a></span></li>
-                        <?php
-                    }
+    if (strlen($per_Twitter) > 0) {
+        ?>
+              <li><i class="fa-li fa fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>"><?= gettext('Twitter') ?></a></span></li>
+          <?php
+    }
 
                     if (strlen($per_LinkedIn) > 0) {
                         ?>
@@ -496,45 +495,45 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 </div>
                 <div role="tab-pane fade" class="tab-pane" id="family">
 
-                    <?php if ($person->getFamId() != '') {
-                          ?>
-                        <table class="table user-list table-hover">
-                            <thead>
-                            <tr>
-                                <th><span><?= gettext('Family Members') ?></span></th>
-                                <th class="text-center"><span><?= gettext('Role') ?></span></th>
-                                <th><span><?= gettext('Birthday') ?></span></th>
-                                <th><span><?= gettext('Email') ?></span></th>
-                                <th>&nbsp;</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach ($person->getOtherFamilyMembers() as $familyMember) {
-                              $tmpPersonId = $familyMember->getId(); ?>
-                                <tr>
-                                    <td>
+          <?php if ($person->getFamId() != '') {
+        ?>
+          <table class="table user-list table-hover">
+            <thead>
+            <tr>
+              <th><span><?= gettext('Family Members') ?></span></th>
+              <th class="text-center"><span><?= gettext('Role') ?></span></th>
+              <th><span><?= gettext('Birthday') ?></span></th>
+              <th><span><?= gettext('Email') ?></span></th>
+              <th>&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($person->getOtherFamilyMembers() as $familyMember) {
+            $tmpPersonId = $familyMember->getId(); ?>
+              <tr>
+                <td>
 
-                                        <img style="width:40px; height:40px;display:inline-block" src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
-                                        <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
+                 <img style="width:40px; height:40px;display:inline-block" src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
+                  <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
 
-                                    </td>
-                                    <td class="text-center">
-                                        <?= $familyMember->getFamilyRoleName() ?>
-                                    </td>
-                                    <td>
-                                        <?= FormatBirthDate($familyMember->getBirthYear(), $familyMember->getBirthMonth(), $familyMember->getBirthDay(), '-', $familyMember->getFlags()); ?>
-                                    </td>
-                                    <td>
-                                        <?php $tmpEmail = $familyMember->getEmail();
-                              if ($tmpEmail != '') {
-                                  ?>
-                                            <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
-                                            <?php
-                              } ?>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
+                </td>
+                <td class="text-center">
+                  <?= $familyMember->getFamilyRoleName() ?>
+                </td>
+                <td>
+                  <?= $familyMember->getFormattedBirthDate(); ?>
+                </td>
+                <td>
+                  <?php $tmpEmail = $familyMember->getEmail();
+            if ($tmpEmail != '') {
+                ?>
+                    <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
+                  <?php
+            } ?>
+                </td>
+                <td style="width: 20%;">
+                  <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
                     <span class="fa-stack">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -560,12 +559,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                 </tr>
                                 <?php
                           } ?>
-
-                              </ul>
-                            </div>
-                            <div class="btn-group">
-                             <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-o"></i></button>
-                            </div>
+            </tbody>
+          </table>
                           <?php
                       } ?>
                 </div>

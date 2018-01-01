@@ -382,8 +382,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                                 </td>
                                 <td>
-                                    <?= FormatBirthDate($person->getBirthYear(),
-                                        $person->getBirthMonth(), $person->getBirthDay(), "-", $person->getFlags()) ?>
+                                    <?= $person->getFormattedBirthDate() ?>
                                 </td>
                                 <td>
                                     <?php $tmpEmail = $person->getEmail();
