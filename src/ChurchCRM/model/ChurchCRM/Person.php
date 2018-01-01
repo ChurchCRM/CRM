@@ -257,7 +257,7 @@ class Person extends BasePerson implements iPhoto
 
     public function getPhoto()
     {
-      if (!$this->photo) 
+      if (!$this->photo)
       {
         $this->photo = new Photo("Person",  $this->getId());
       }
@@ -419,20 +419,33 @@ class Person extends BasePerson implements iPhoto
             $user->delete($con);
         }
 
-        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->find($con)->delete();
+        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->delete($con);
 
-        PersonPropertyQuery::create()->filterByPerson($this)->find($con)->delete();
+        PropertyQuery::create()
+            ->filterByProClass("p")
+            ->useRecordPropertyQuery()
+            ->filterByRecordId($this->getId())
+            ->delete($con);
 
-        NoteQuery::create()->filterByPerson($this)->find($con)->delete();
+        NoteQuery::create()->filterByPerson($this)->delete($con);
 
         return parent::preDelete($con);
     }
-    
+
+    public function getProperties() {
+        $personProperties = PropertyQuery::create()
+            ->filterByProClass("p")
+            ->useRecordPropertyQuery()
+            ->filterByRecordId($this->getId())
+            ->find();
+        return $personProperties;
+    }
+
     public function getNumericCellPhone()
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
-    
+
     public function postSave(ConnectionInterface $con = null) {
       $this->getPhoto()->refresh();
       return parent::postSave($con);
@@ -470,8 +483,9 @@ class Person extends BasePerson implements iPhoto
       }
 
       return $ageValue. " ".$ageSuffix;
+
     }
-    
+
     /* Philippe Logel 2017 */
     public function getFullNameWithAge()
     {

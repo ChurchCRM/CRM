@@ -719,23 +719,26 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                     style="width:100%" data-placeholder="Select ...">
                                 <option disabled selected> -- <?= gettext('select an option') ?> -- </option>
                                 <?php
-                                $assignedPropertiesArray = $assignedProperties->getArrayCopy('ProId');
+                                $assignedPropertiesArray = [];
+                                foreach ($assignedProperties as $assignedProperty) {
+                                    array_push($assignedPropertiesArray, $assignedProperty->getPropertyId());
+                                }
     while ($aRow = mysqli_fetch_array($rsProperties)) {
         extract($aRow);
         $attributes = "value=\"{$pro_ID}\" ";
         if (!empty($pro_Prompt)) {
-            if (!empty($assignedPropertiesArray[$pro_ID])) {
-                $pro_Value = $assignedPropertiesArray[$pro_ID]->getPersonProperties()[0]->getPropertyValue();
-            } else {
-                $pro_Value = '';
+            $pro_Value = '';
+            foreach ($assignedProperties as $assignedProperty) {
+                if ($assignedProperty->getPropertyId() == $pro_ID) {
+                    $pro_Value = $assignedProperty->getPropertyValue();
+                }
             }
             $attributes .= "data-pro_Prompt=\"{$pro_Prompt}\" data-pro_Value=\"{$pro_Value}\" ";
         }
 
-        if (!empty($assignedPropertiesArray[$pro_ID])) {
+        $optionText = $pro_Name;
+        if (in_array($pro_ID, $assignedPropertiesArray)) {
             $optionText = $pro_Name . ' (' . gettext('assigned') . ')';
-        } else {
-            $optionText = $pro_Name;
         }
         echo "<option {$attributes}>{$optionText}</option>";
     } ?>
