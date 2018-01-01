@@ -283,7 +283,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
               <span><?= $dBirthDate ?></span>
               <?php if (!$person->hideAge()) {
             ?>
-              (<span data-birth-date=""></span><?=$person->getAge() ?>)
+              (<span></span><?=$person->getAge() ?>)
               <?php
         } ?>
             </li>

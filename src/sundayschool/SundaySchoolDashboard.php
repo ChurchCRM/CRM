@@ -215,8 +215,7 @@ require '../Include/Header.php';
 
           $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
           $birthDate = MiscUtils::FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
-          $birthDateDate = MiscUtils::BirthDate($birthYear, $birthMonth, $birthDay, $hideAge);
-
+        
           echo '<tr>';
           echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
           echo '	<span class="fa-stack">';
@@ -226,7 +225,7 @@ require '../Include/Header.php';
           echo '<td>'.$firstName.'</td>';
           echo '<td>'.$LastName.'</td>';
           echo '<td>'.$birthDate.'</td>';
-          echo "<td data-birth-date='".($hideAge ? '' : $birthDateDate->format('Y-m-d'))."'></td>";
+          echo "<td>".MiscUtils::FormatAge($birthMonth, $birthDay, $birthYear, $hideAge)."</td>";
           echo '<td>'.$Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip.'</td>';
           echo '</tr>';
       }

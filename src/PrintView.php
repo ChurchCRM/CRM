@@ -366,8 +366,7 @@ if ($fam_ID) {
 			<td>
 				<?= $sFamRole ?>&nbsp;
 			</td>
-			<td data-birth-date="<?= $per_Flags == 1 ? '' : date_create($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay)->format('Y-m-d') ?>">
-			</td>
+      <td><?= MiscUtils::FormatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) ?></td>
 		</tr>
 	<?php
             }

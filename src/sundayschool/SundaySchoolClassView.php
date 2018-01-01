@@ -220,8 +220,7 @@ require '../Include/Header.php';
       foreach ($thisClassChildren as $child) {
           $hideAge = $child['flags'] == 1 || $child['birthYear'] == '' || $child['birthYear'] == '0';
           $birthDate = MiscUtils::FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']);
-          $birthDateDate = MiscUtils::BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge); ?>
-
+          ?>
           <tr>
           <td>
             <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
@@ -229,7 +228,7 @@ require '../Include/Header.php';
           </td>
           <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'].', '.$child['firstName'] ?></a></td>
           <td><?= $birthDate ?> </td>
-          <td data-birth-date='<?= ($hideAge ? '' : $birthDateDate->format('Y-m-d')) ?>'></td>
+          <td><?= MiscUtils::FormatAge($child['birthMonth'], $child['birthDay'],$child['birthYear'], $child['flags']) ?></td>
           <td><?= $child['kidEmail'] ?></td>
           <td><?= $child['mobilePhone'] ?></td>
           <td><?= $child['homePhone'] ?></td>
