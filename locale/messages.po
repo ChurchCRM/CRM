@@ -10,7 +10,11 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2018-01-01 23:45+0000\n"
+=======
+"POT-Creation-Date: 2018-01-01 23:46+0000\n"
+>>>>>>> 4f9ed9ff6b96bdc23464a7bf35c3d83e4570f863
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +28,13 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2018-01-01T23:45:15.787Z\n"
 "PO-Revision-Date: 2018-01-01T23:45:15.787Z\n"
+=======
+"POT-Creation-Date: 2018-01-01T23:46:44.827Z\n"
+"PO-Revision-Date: 2018-01-01T23:46:44.827Z\n"
+>>>>>>> 4f9ed9ff6b96bdc23464a7bf35c3d83e4570f863
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:260

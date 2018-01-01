@@ -16,6 +16,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\ISTAddressLookup;
+use ChurchCRM\Utils\RedirectUtils;
 
 function XMLparseIST($xmlstr, $xmlfield)
 {
@@ -38,7 +39,7 @@ function XMLparseIST($xmlstr, $xmlfield)
 
 // If user is not admin, redirect to the menu.
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 

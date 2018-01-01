@@ -13,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Get the Order, ID, Mode, and Action from the querystring
 if (array_key_exists('Order', $_GET)) {
@@ -27,7 +28,7 @@ switch ($mode) {
     case 'famroles':
     case 'classes':
         if (!$_SESSION['bMenuOptions']) {
-            Redirect('Menu.php');
+            RedirectUtils::Redirect('Menu.php');
             exit;
         }
         break;
@@ -35,7 +36,7 @@ switch ($mode) {
     case 'grptypes':
     case 'grproles':
         if (!$_SESSION['bManageGroups']) {
-            Redirect('Menu.php');
+            RedirectUtils::Redirect('Menu.php');
             exit;
         }
         break;
@@ -43,12 +44,12 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     if (!$_SESSION['bAdmin']) {
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
         break;
     default:
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         break;
 }
 
@@ -79,7 +80,7 @@ switch ($mode) {
         $sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = ".$listID;
         $rsTemp = RunQuery($sSQL);
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+            RedirectUtils::Redirect('Menu.php');
             break;
         }
 
@@ -159,10 +160,10 @@ switch ($sAction) {
 
     // If no valid action was specified, abort
     default:
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         break;
 }
 
 // Reload the option manager page
-Redirect("OptionManager.php?mode=$mode&ListID=$listID");
+RedirectUtils::Redirect("OptionManager.php?mode=$mode&ListID=$listID");
 exit;

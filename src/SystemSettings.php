@@ -17,10 +17,11 @@ use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -75,7 +76,7 @@ if (isset($_POST['save'])) {
         SystemConfig::setValueById($id, $value);
         next($type);
     }
-    Redirect("SystemSettings.php?saved=true");
+    RedirectUtils::Redirect("SystemSettings.php?saved=true");
 }
 
 if (isset($_GET['saved'])) {
