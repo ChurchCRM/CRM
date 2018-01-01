@@ -20,10 +20,11 @@ require "../Include/ReportFunctions.php";
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Security
 if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
-    Redirect("Menu.php");
+    RedirectUtils::Redirect("Menu.php");
     exit;
 }
 
@@ -53,7 +54,7 @@ if (!$iDepositSlipID && array_key_exists('iCurrentDeposit', $_SESSION)) {
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 // If no DepositSlipId, redirect to the menu
 if ((!$_SESSION['bAdmin'] && $bCSVAdminOnly && $output != "pdf") || !$iDepositSlipID) {
-    Redirect("Menu.php");
+    RedirectUtils::Redirect("Menu.php");
     exit;
 }
 

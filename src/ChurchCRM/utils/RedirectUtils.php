@@ -35,6 +35,7 @@ class RedirectUtils {
   }
 
   public static function Redirect($sRelativeURL) {
+    // Convert a relative URL into an absolute URL and redirect the browser there.
     $sRedirectURL = self::RedirectURL($sRelativeURL);
     header('Location: '.$sRedirectURL);
     exit;

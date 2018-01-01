@@ -18,10 +18,11 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_Directory;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Check for Create Directory user permission.
 if (!$bCreateDirectory) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 

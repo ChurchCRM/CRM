@@ -15,6 +15,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -27,14 +28,14 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Basic security: If the UserID isn't set (no session), redirect to the login page
     if (!isset($_SESSION['iUserID'])) {
-        Redirect('Login.php');
+        RedirectUtils::Redirect('Login.php');
         exit;
     }
 
     // Check for login timeout.  If login has expired, redirect to login page
     if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-            Redirect('Login.php');
+            RedirectUtils::Redirect('Login.php');
             exit;
         } else {
             $_SESSION['tLastOperation'] = time();
@@ -43,7 +44,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
 
     // If this user needs to change password, send to that page
     if ($_SESSION['bNeedPasswordChange'] && !isset($bNoPasswordRedirect)) {
-        Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
+        RedirectUtils::Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
         exit;
     }
 
@@ -165,45 +166,6 @@ if (isset($_POST['BulkAddToCart'])) {
 //
 // Some very basic functions that all scripts use
 //
-
-// Convert a relative URL into an absolute URL and return absolute URL.
-function RedirectURL($sRelativeURL)
-{
-    // Test if file exists before redirecting.  May need to remove
-    // query string first.
-    $iQueryString = strpos($sRelativeURL, '?');
-    if ($iQueryString) {
-        $sPathExtension = mb_substr($sRelativeURL, 0, $iQueryString);
-    } else {
-        $sPathExtension = $sRelativeURL;
-    }
-
-    // The idea here is to get the file path into this form:
-    //     $sFullPath = $sDocumentRoot . $sRootPath . $sPathExtension
-    // The Redirect URL is then in this form:
-    //     $sRedirectURL = $sRootPath . $sPathExtension
-    $sFullPath = str_replace('\\', '/', SystemURLs::getDocumentRoot().'/'.$sPathExtension);
-
-    // With the query string removed we can test if file exists
-    if (file_exists($sFullPath) && is_readable($sFullPath)) {
-        return SystemURLs::getRootPath().'/'.$sRelativeURL;
-    } else {
-        $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n"
-      ."\$sPathExtension = $sPathExtension<br>\n"
-      ."\$sDocumentRoot = ".SystemURLs::getDocumentRoot()."<br>\n"
-      .'$sRootPath = ' .SystemURLs::getRootPath()."<br>\n";
-
-        die($sErrorMessage);
-    }
-}
-
-// Convert a relative URL into an absolute URL and redirect the browser there.
-function Redirect($sRelativeURL)
-{
-    $sRedirectURL = RedirectURL($sRelativeURL);
-    header('Location: '.$sRedirectURL);
-    exit;
-}
 
 // Returns the current fiscal year
 function CurrentFY()

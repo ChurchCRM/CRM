@@ -13,11 +13,12 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -71,7 +72,7 @@ elseif (isset($_GET['FamilyID']) && $_SESSION['bEditRecords']) {
 
 // Somebody tried to call the script with no options
 else {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -79,7 +80,7 @@ else {
 if (isset($_GET['Confirmed'])) {
     $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_record_ID = '.$iRecordID.' AND r2p_pro_ID = '.$iPropertyID;
     RunQuery($sSQL);
-    Redirect($sBackPage);
+    RedirectUtils::Redirect($sBackPage);
     exit;
 }
 

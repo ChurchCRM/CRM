@@ -17,6 +17,7 @@ use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\PasswordChangeEmail;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $bAdminOtherUser = false;
 $bAdminOther = false;
@@ -79,9 +80,9 @@ if (isset($_POST['Submit'])) {
 
             // Route back to the list
             if (array_key_exists('FromUserList', $_GET) and $_GET['FromUserList'] == 'True') {
-                Redirect('UserList.php');
+                RedirectUtils::Redirect('UserList.php');
             } else {
-                Redirect('Menu.php');
+                RedirectUtils::Redirect('Menu.php');
             }
         }
     }
@@ -149,9 +150,9 @@ if (isset($_POST['Submit'])) {
 
             // Route back to the list
             if ($_GET['FromUserList'] == 'True') {
-                Redirect('UserList.php');
+                RedirectUtils::Redirect('UserList.php');
             } else {
-                Redirect('Menu.php');
+                RedirectUtils::Redirect('Menu.php');
             }
         }
     }
