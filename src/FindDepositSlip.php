@@ -13,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
@@ -21,7 +22,7 @@ $sPageTitle = gettext('Deposit Listing');
 
 // Security: User must have finance permission to use this form
 if (!$_SESSION['bFinance']) {
-    Redirect('index.php');
+    RedirectUtils::Redirect('index.php');
     exit;
 }
 

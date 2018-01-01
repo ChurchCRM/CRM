@@ -4,6 +4,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\UserQuery;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!empty($_SESSION['iUserID'])) {
     if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == '')) {
@@ -31,5 +32,5 @@ $_COOKIE = [];
 $_SESSION = [];
 session_destroy();
 
-Redirect('Login.php');
+RedirectUtils::Redirect('Login.php');
 exit;
