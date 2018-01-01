@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\PropertyQuery;
 
 $app->group('/family', function () {
     $this->get('/not-found', 'viewFamilyNotFound');
@@ -40,10 +41,13 @@ function viewFamily(Request $request, Response $response, array $args)
 
     $timelineService = new TimelineService();
 
+    $allFamilyProperties = PropertyQuery::create()->findByProClass("f");
+
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'family' => $family,
-        'familyTimeline' => $timelineService->getForFamily($family->getId())
+        'familyTimeline' => $timelineService->getForFamily($family->getId()),
+        'allFamilyProperties' => $allFamilyProperties
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);
