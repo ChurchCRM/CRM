@@ -230,9 +230,6 @@ $familyAddress = $family->getAddress();
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                    class="fa fa-times"></i>
-                            </button>
                         </div>
                     </div>
                     <div class="box-body">
@@ -275,9 +272,7 @@ $familyAddress = $family->getAddress();
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                    class="fa fa-times"></i>
-                            </button>
+
                         </div>
                     </div>
                     <div class="box-body">
@@ -364,15 +359,12 @@ $familyAddress = $family->getAddress();
                 <div class="box-tools pull-right">
                     <?php if ($sessionUser->isEditRecordsEnabled()) { ?>
                     <button type="button" class="btn btn-box-tool"><i
-                            class="fa fa-plus"></i>
+                            class="fa fa-plus-circle"></i>
                     </button>
                     <?php } ?>
 
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                             class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                            class="fa fa-times"></i>
                     </button>
                 </div>
             </div>
@@ -451,9 +443,6 @@ $familyAddress = $family->getAddress();
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                             class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                            class="fa fa-times"></i>
                     </button>
                 </div>
             </div>
