@@ -70,7 +70,65 @@ $familyAddress = $family->getAddress();
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
+                <div class="col-lg-8">
+                    <div class="box">
+                        <br/>
+                        <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
+                                class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
+                        <a class="btn btn-app bg-olive"
+                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                                class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
+                        <?php if (($previous_id > 0)) {
+                            ?>
+                            <a class="btn btn-app"
+                               href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                                    class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
+                            <?php
+                        } ?>
+                        <a class="btn btn-app btn-danger" role="button"
+                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                                class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
+                        <?php if (($next_id > 0)) {
+                            ?>
+                            <a class="btn btn-app" role="button"
+                               href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                                    class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
+                            <?php
+                        } ?>
+                        <?php if ($_SESSION['bDeleteRecords']) {
+                            ?>
+                            <a class="btn btn-app bg-maroon"
+                               href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                                    class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
+                            <?php
+                        } ?>
+
+
+                        <?php
+                        if ($_SESSION['bNotes']) {
+                            ?>
+                            <a class="btn btn-app"
+                               href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                                    class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
+                            <?php
+                        } ?>
+                        <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
+                                class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
+
+
+                        <?php if ($bOkToEdit) {
+                            ?>
+                            <button class="btn btn-app bg-orange" id="activateDeactivate">
+                                <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo((empty($fam_DateDeactivated) ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                            </button>
+                            <?php
+                        } ?>
+                    </div>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="box box-primary">
                     <div class="box-header">
                         <i class="fa fa-id-badge"></i>
@@ -157,63 +215,7 @@ $familyAddress = $family->getAddress();
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="box">
-                    <br/>
-                    <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
-                            class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
-                    <a class="btn btn-app bg-olive"
-                       href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
-                            class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
-                    <?php if (($previous_id > 0)) {
-                        ?>
-                        <a class="btn btn-app"
-                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
-                                class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
-                        <?php
-                    } ?>
-                    <a class="btn btn-app btn-danger" role="button"
-                       href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
-                            class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
-                    <?php if (($next_id > 0)) {
-                        ?>
-                        <a class="btn btn-app" role="button"
-                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
-                                class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
-                        <?php
-                    } ?>
-                    <?php if ($_SESSION['bDeleteRecords']) {
-                        ?>
-                        <a class="btn btn-app bg-maroon"
-                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
-                                class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
-                        <?php
-                    } ?>
 
-
-                    <?php
-                    if ($_SESSION['bNotes']) {
-                        ?>
-                        <a class="btn btn-app"
-                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
-                                class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
-                        <?php
-                    } ?>
-                    <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
-                            class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
-
-
-                    <?php if ($bOkToEdit) {
-                        ?>
-                        <button class="btn btn-app bg-orange" id="activateDeactivate">
-                            <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo((empty($fam_DateDeactivated) ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
-                        </button>
-                        <?php
-                    } ?>
-                </div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-lg-12">
@@ -294,24 +296,15 @@ $familyAddress = $family->getAddress();
 
                                         <p class="text-center">
                                             <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
-                                            </span>
+                                                <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-cart-plus"></i></button>
                                             </a>
 
                                             <a href="../../index.php" class="table-link">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                            </span>
+                                                <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
                                             </a>
                                             <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                                data-person_id="<?= $person->getId() ?>" data-view="family">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                            </span>
+                                                <button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
                                             </a>
                                         </p>
                                         <li class="list-group">
@@ -369,9 +362,11 @@ $familyAddress = $family->getAddress();
                 <i class="fa fa-hashtag"></i>
                 <h3 class="box-title"><?= gettext("Properties") ?></h3>
                 <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                    <?php if ($sessionUser->isEditRecordsEnabled()) { ?>
+                    <button type="button" class="btn btn-box-tool"><i
                             class="fa fa-plus"></i>
                     </button>
+                    <?php } ?>
 
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                             class="fa fa-minus"></i>
@@ -383,9 +378,9 @@ $familyAddress = $family->getAddress();
             </div>
             <div class="box-body">
                 <?php
-                $sAssignedProperties = ",";
+                $familyProperties = $family->getProperties();
 
-                if (mysqli_num_rows($rsAssignedProperties) == 0) {
+                if (empty($familyProperties->count())) {
                     ?>
                     <br>
                     <div class="alert alert-warning">
@@ -394,92 +389,47 @@ $familyAddress = $family->getAddress();
                     </div>
                     <?php
                 } else {
-                    //Yes, start the table
-                    echo "<table width=\"100%\" cellpadding=\"4\" cellspacing=\"0\">";
-                    echo "<tr class=\"TableHeader\">";
-                    echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Type") . "</b></td>";
-                    echo "<td width=\"15%\" valign=\"top\"><b>" . gettext("Name") . "</b></td>";
-                    echo "<td valign=\"top\"><b>" . gettext("Value") . "</b></td>";
-
-                    if ($bOkToEdit) {
-                        echo "<td width=\"10%\" valign=\"top\"><b>" . gettext("Edit Value") . "</td>";
-                        echo "<td valign=\"top\"><b>" . gettext("Remove") . "</td>";
-                    }
-
-                    echo "</tr>";
-
-                    $last_pro_prt_ID = "";
-                    $bIsFirst = true;
-
-                    //Loop through the rows
-                    while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                        $pro_Prompt = "";
-                        $r2p_Value = "";
-
-                        extract($aRow);
-
-                        if ($pro_prt_ID != $last_pro_prt_ID) {
-                            echo "<tr class=\"";
-                            if ($bIsFirst) {
-                                echo "RowColorB";
-                            } else {
-                                echo "RowColorC";
-                            }
-                            echo "\"><td><b>" . $prt_Name . "</b></td>";
-
-                            $bIsFirst = false;
-                            $last_pro_prt_ID = $pro_prt_ID;
-                            $sRowClass = "RowColorB";
-                        } else {
-                            echo "<tr class=\"" . $sRowClass . "\">";
-                            echo "<td valign=\"top\">&nbsp;</td>";
-                        }
-
-                        echo "<td valign=\"center\">" . $pro_Name . "</td>";
-                        echo "<td valign=\"center\">" . $r2p_Value . "&nbsp;</td>";
-
-                        if ($bOkToEdit) {
-                            if (strlen($pro_Prompt) > 0) {
-                                echo "<td valign=\"center\"><a href=\"PropertyAssign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Edit Value") . "</a></td>";
-                            } else {
-                                echo "<td>&nbsp;</td>";
-                            }
-
-                            echo "<td valign=\"center\"><a href=\"PropertyUnassign.php?FamilyID=" . $iFamilyID . "&amp;PropertyID=" . $pro_ID . "\">" . gettext("Remove") . "</a></td>";
-                        }
-
-                        echo "</tr>";
-
-                        //Alternate the row style
-                        $sRowClass = AlternateRowStyle($sRowClass);
-
-                        $sAssignedProperties .= $pro_ID . ",";
-                    }
-
-                    //Close the table
-                    echo "</table>";
-                }
-                if ($bOkToEdit) {
                     ?>
-                    <div class="alert alert-info">
-                        <div>
-                            <h4><strong><?= gettext("Assign a New Property") ?>:</strong></h4>
+                    <table class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
+                    <tr>
+                        <th></th>
+                        <th><?= gettext("Name") ?></th>
+                        <th><?= gettext("Value") ?></th>
+                    </tr>
 
-                            <form method="post" action="../../index.php">
+                    <?php
+                    //Loop through the rows
+                    foreach ($familyProperties as $familyProperty) {?>
+                        <tr>
+                            <td>
+                            <?php if ($sessionUser->isEditRecordsEnabled()) {
+                                if (!empty($familyProperty->getProperty()->getProPrompt())) { ?>
+                                    <a href="<?=SystemURLs::getRootPath()?>/PropertyAssign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
+                                <?php } ?>
+                                <a href="<?=SystemURLs::getRootPath()?>/PropertyUnassign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a></td>
+                            <?php } ?>
+                            </td>
+                            <td><?= $familyProperty->getProperty()->getProName() ?></td>
+                            <td><b><?= $familyProperty->getPropertyValue() ?></b></td>
+                        </tr>
+
+                    <?php } ?>
+                    </table>
+                <?php } ?>
+                <p/>
+                <?php if ($sessionUser->isEditRecordsEnabled()) { ?>
+                    <div class="hide" id="family-add-property">
+                        <div>
+                            <strong><?= gettext("Assign a New Property") ?>:</strong>
+                            <p/>
+                            <form method="post" action="<?=SystemURLs::getRootPath()?>/index.php">
                                 <div class="row">
                                     <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
                                         <select name="PropertyID" class="form-control">
-                                            <option selected disabled> -- <?= gettext('select an option') ?>
-                                                --
-                                            </option>
-                                            <?php
-                                            while ($aRow = mysqli_fetch_array($rsProperties)) {
-                                                extract($aRow);
-                                                //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                                if (strlen(strstr($sAssignedProperties, "," . $pro_ID . ",")) == 0) {
-                                                    echo "<option value=\"" . $pro_ID . "\">" . $pro_Name . "</option>";
-                                                }
-                                            } ?>
+                                            <option selected disabled> -- <?= gettext('select an option') ?>--</option>
+                                            <?php foreach ($allFamilyProperties as $property) { ?>
+                                                <option value="<?= $property->getProId()?>"><?= $property->getProName()?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
