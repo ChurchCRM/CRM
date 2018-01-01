@@ -19,8 +19,23 @@ Closes
 #### How should the automated tests treat this?
 
 #### Questions:
-- [ ] Is there a related website / article to substantiate / explain this change?
-- [ ] Does the development wiki need an update?
-- [ ] Does the user documentation wiki need an update?
-- [ ] Does this add new dependencies?
-- [ ] Does this need to add new data to the demo database
+- Is there a related website / article to substantiate / explain this change?
+  -  [ ] Yes - Link:
+  -  [ ] No
+
+- Does the development wiki need an update?
+  -  [ ] Yes - Link:
+  -  [ ] No
+
+- Does the user documentation wiki need an update?
+  -  [ ] Yes - Link:
+  -  [ ] No
+
+- Does this add new dependencies?
+  -  [ ] Yes
+  -  [ ] No
+
+- Does this need to add new data to the demo database
+  -  [ ] Yes
+  -  [ ] No
+
