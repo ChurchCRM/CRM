@@ -18,6 +18,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -42,7 +44,7 @@ if ($iPersonID > 0) {
     extract(mysqli_fetch_array($rsPerson));
 
     if (mysqli_num_rows($rsPerson) == 0) {
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 
@@ -52,11 +54,11 @@ if ($iPersonID > 0) {
         ($_SESSION['bEditSelf'] && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['iFamID'])
     )
     ) {
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 } elseif (!$_SESSION['bAddRecords']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 // Get Field Security List Matrix
@@ -172,6 +174,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (array_key_exists('updateBirthYear', $_POST)) {
         $iupdateBirthYear = InputUtils::LegacyFilterInput($_POST['updateBirthYear'], 'int');
     }
+
+    $iFacebook = InputUtils::FilterInt($_POST['Facebook']);
+    $sTwitter = InputUtils::FilterString($_POST['Twitter']);
+    $sLinkedIn = InputUtils::FilterString($_POST['LinkedIn']);
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
     $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
@@ -315,7 +321,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iPersonID < 1) {
             $iEnvelope = 0;
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags )
+            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_FacebookID, per_Twitter, per_LinkedIn)
 			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
@@ -331,6 +337,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
 
             $sSQL .= ', '.$per_Flags;
+            $sSQL .= ', '. $iFacebook;
+            $sSQL .= ', "'. $sTwitter.'"';
+            $sSQL .= ', "'. $sLinkedIn.'"';
             $sSQL .= ')';
 
             $bGetKeyBack = true;
@@ -358,6 +367,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             $sSQL .= ', per_Flags='.$per_Flags;
 
+            $sSQL .= ', per_FacebookID='. $iFacebook;
+            $sSQL .= ', per_Twitter="'. $sTwitter.'"';
+            $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
+
             $sSQL .= ' WHERE per_ID = '.$iPersonID;
 
             $bGetKeyBack = false;
@@ -365,7 +378,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         //Execute the SQL
         RunQuery($sSQL);
-       
+
 
         $note = new Note();
         $note->setEntered($_SESSION['iUserID']);
@@ -379,8 +392,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Created'));
             $note->setType('create');
-            
-            
+
+
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
                 $NotificationEmail = new NewPersonOrFamilyEmail($person);
@@ -394,7 +407,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $note->setType('edit');
         }
         $note->save();
-        
+
         $photo = new Photo("Person", $iPersonID);
         $photo->refresh();
 
@@ -421,13 +434,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($sPreviousPage != '') {
             $sPreviousPage = str_replace(';', '&', $sPreviousPage);
-            Redirect($sPreviousPage.$iPersonID);
+            RedirectUtils::Redirect($sPreviousPage.$iPersonID);
         } elseif (isset($_POST['PersonSubmit'])) {
             //Send to the view of this person
-            Redirect('PersonView.php?PersonID='.$iPersonID);
+            RedirectUtils::Redirect('PersonView.php?PersonID='.$iPersonID);
         } else {
             //Reload to editor to add another record
-            Redirect('PersonEditor.php');
+            RedirectUtils::Redirect('PersonEditor.php');
         }
     }
 
@@ -474,6 +487,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iClassification = $per_cls_ID;
         $iViewAgeFlag = $per_Flags;
 
+        $iFacebookID = $per_FacebookID;
+        $sTwitter = $per_Twitter;
+        $sLinkedIn = $per_LinkedIn;
+
         $sPhoneCountry = SelectWhichInfo($sCountry, $fam_Country, false);
 
         $sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $bNoFormat_HomePhone);
@@ -492,6 +509,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyWorkPhone = strlen($fam_WorkPhone);
         $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
+
+        $bFacebookID = $per_FacebookID != 0;
+        $bTwitter =  strlen($per_Twitter);
+        $bLinkedIn = strlen($per_LinkedIn);
 
         $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
         $rsCustomData = RunQuery($sSQL);
@@ -531,6 +552,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iClassification = '0';
         $iViewAgeFlag = 0;
         $sPhoneCountry = '';
+
+        $iFacebookID = 0;
+        $sTwitter = '';
+        $sLinkedIn = '';
+
 
         $sHomePhone = '';
         $sWorkPhone = '';
@@ -992,7 +1018,7 @@ require 'Include/Header.php';
                         </div>
                         <input type="text" name="CellPhone"
                                value="<?= htmlentities(stripslashes($sCellPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                               maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask>
+                               maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell')?>"' data-mask>
                         <br><input type="checkbox" name="NoFormat_CellPhone"
                                    value="1" <?php if ($bNoFormat_CellPhone) {
                             echo ' checked';
@@ -1039,6 +1065,60 @@ require 'Include/Header.php';
                         } ?>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="FacebookID">
+                        <?php
+                        if ($bFacebookID) {
+                            echo '<span style="color: red;">'.gettext('Facebook').':</span></td>';
+                        } else {
+                            echo gettext('Facebook').':</td>';
+                        }
+                        ?>
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-facebook"></i>
+                        </div>
+                        <input type="text" name="Facebook"
+                               value="<?= htmlentities(stripslashes($iFacebookID), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               maxlength="100" class="form-control">
+                        <?php if ($sFacebookError) {
+                            ?><font color="red"><?php echo $sFacebookError ?></font><?php
+                        } ?>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="Twitter"><?= gettext('Twitter') ?>:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-twitter"></i>
+                        </div>
+                        <input type="text" name="Twitter"
+                               value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               maxlength="100" class="form-control">
+                        <?php if ($sTwitterError) {
+                            ?><font
+                            color="red"><?php echo $sTwitterError ?></font></td><?php
+                        } ?>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                      <label for="LinkedIn"><?= gettext('LinkedIn') ?>:</label>
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-linkedin"></i>
+                          </div>
+                          <input type="text" name="LinkedIn"
+                                 value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                                 maxlength="100" class="form-control">
+                          <?php if ($sLinkedInError) {
+                            ?><font
+                              color="red"><?php echo $sLinkedInError ?></font></td><?php
+                        } ?>
+                      </div>
+                  </div>
             </div>
         </div>
     </div>
@@ -1144,19 +1224,15 @@ require 'Include/Header.php';
     </div>
   <?php
                         } ?>
-    <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
+    <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
     <?php if ($_SESSION['bAddRecords']) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
                         } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"
-           onclick="javascript:document.location='<?php if (strlen($iPersonID) > 0) {
-                            echo 'PersonView.php?PersonID='.$iPersonID;
-                        } else {
-                            echo 'SelectList.php?mode=person';
-                        } ?>';">
+           onclick="javascript:document.location='SelectList.php?mode=person';">
 </form>
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 	$(function() {
 		$("[data-mask]").inputmask();
 	});

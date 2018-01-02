@@ -15,10 +15,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bEditRecords']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -99,7 +100,7 @@ if (isset($_POST['GroupPropSubmit'])) {
         RunQuery($sSQL);
 
         // Return to the Person View
-        Redirect('PersonView.php?PersonID='.$iPersonID);
+        RedirectUtils::Redirect('PersonView.php?PersonID='.$iPersonID);
     }
 } else {
     // First Pass

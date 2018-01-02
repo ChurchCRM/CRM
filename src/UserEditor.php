@@ -19,18 +19,20 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-use ChurchCRM\dto\SystemConfig;
+
 use ChurchCRM\UserQuery;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Emails\NewAccountEmail;
 use ChurchCRM\User;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -73,10 +75,10 @@ if (isset($_POST['save']) && $iPersonID > 0) {
     if (strlen($sUserName) < 3) {
         if ($NewUser == false) {
             //Report error for current user creation
-            Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
+            RedirectUtils::Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         } else {
             //Report error for new user creation
-            Redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
+            RedirectUtils::Redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         }
     } else {
         if (isset($_POST['AddRecords'])) {
@@ -153,7 +155,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $email->send();
                 } else {
                     // Set the error text for duplicate when new user
-                    Redirect('UserEditor.php?NewPersonID=' . $PersonID . '&ErrorText=Login already in use, please select a different login!');
+                    RedirectUtils::Redirect('UserEditor.php?NewPersonID=' . $PersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             } else {
                 if ($undupCount == 0) {
@@ -164,7 +166,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $user->createTimeLineNote("updated");
                 } else {
                     // Set the error text for duplicate when currently existing
-                    Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
+                    RedirectUtils::Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             }
         }
@@ -312,7 +314,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
         next($type);
     }
 
-    Redirect('UserList.php');
+    RedirectUtils::Redirect('UserList.php');
     exit;
 }
 
@@ -568,7 +570,7 @@ require 'Include/Header.php';
 </div>
 <!-- /.box -->
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     $(document).ready(function () {
         $("#personSelect").select2();
     });

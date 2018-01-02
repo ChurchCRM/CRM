@@ -22,6 +22,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -347,7 +348,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 }
 
 if ($_GET['familyId']) {
-    Redirect('FamilyView.php?FamilyID='.$_GET['familyId'].'&PDFEmailed='.$familyEmailSent);
+    RedirectUtils::Redirect('FamilyView.php?FamilyID='.$_GET['familyId'].'&PDFEmailed='.$familyEmailSent);
 } else {
-    Redirect('FamilyList.php?AllPDFsEmailed='.$familiesEmailed);
+    RedirectUtils::Redirect('FamilyList.php?AllPDFsEmailed='.$familiesEmailed);
 }

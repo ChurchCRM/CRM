@@ -13,6 +13,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 $iDonatedItemID = InputUtils::LegacyFilterInputArr($_GET, 'DonatedItemID', 'int');
 $linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
@@ -89,14 +91,14 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     if (isset($_POST['DonatedItemSubmit'])) {
         // Check for redirection to another page after saving information: (ie. DonatedItemEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-            Redirect($linkBack);
+            RedirectUtils::Redirect($linkBack);
         } else {
             //Send to the view of this DonatedItem
-            Redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
+            RedirectUtils::Redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
         }
     } elseif (isset($_POST['DonatedItemSubmitAndAdd'])) {
         //Reload to editor to add another record
-        Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+        RedirectUtils::Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     }
 } else {
 
@@ -170,14 +172,14 @@ require 'Include/Header.php';
                             <label><?= gettext('Item') ?>:</label>
                             <input type="text" name="Item" id="Item" value="<?= $sItem ?>" class="form-control">
                         </div>
-                        
+
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="Multibuy" value="1" <?= $bMultibuy ? 'checked' : ''; ?>>
                                 <?= gettext('Sell to everyone'); ?> (<?= gettext('Multiple items'); ?>)
                             </label>
                         </div>
-                        
+
                         <div class="form-group">
                             <label><?= gettext('Donor'); ?>:</label>
                             <select name="Donor" id="Donor" class="form-control select2">
@@ -196,34 +198,34 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
 ?>
                             </select>
                         </div>
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     $(document).ready(function() {
     $("#Donor").select2();
 });
 </script>
-                        
+
                         <div class="form-group">
                             <label><?= gettext('Title') ?>:</label>
                             <input type="text" name="Title" id="Title" value="<?= htmlentities($sTitle) ?>" class="form-control"/>
                         </div>
-                        
+
                         <div class="form-group">
                             <label><?= gettext('Estimated Price') ?>:</label>
                             <input type="text" name="EstPrice" id="EstPrice" value="<?= $nEstPrice ?>" class="form-control">
                         </div>
-                        
+
                         <div class="form-group">
                             <label><?= gettext('Material Value') ?>:</label>
                             <input type="text" name="MaterialValue" id="MaterialValue" value="<?= $nMaterialValue ?>" class="form-control">
                         </div>
-                        
+
                         <div class="form-group">
                             <label><?= gettext('Minimum Price') ?>:</label>
                             <input type="text" name="MinimumPrice" id="MinimumPrice" value="<?= $nMinimumPrice ?>" class="form-control">
                         </div>
-                        
+
                     </div>
-                    
+
                     <div class="col-md-4 col-xs-6">
                         <div class="form-group">
                             <label><?= gettext('Buyer') ?>:</label>
@@ -248,12 +250,12 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
 
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label><?= gettext('Final Price') ?>:</label>
                             <input type="text" name="SellPrice" id="SellPrice" value="<?= $nSellPrice ?>" class="form-control">
                         </div>
-                        
+
                         <div class="form-group">
                             <label><?= gettext('Replicate item') ?></label>
                             <div class="input-group">
@@ -264,29 +266,29 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                                 </span>
                             </div>
                         </div>
-                        
+
                     </div>
-                    
+
                     <div class="col-md-6 col-md-offset-2 col-xs-12">
                         <div class="form-group">
                             <label><?= gettext('Description') ?>:</label>
                             <textarea name="Description" rows="5" cols="90" class="form-control"><?= htmlentities($sDescription) ?></textarea>
                         </div>
-                        
+
                         <div class="form-group">
                             <label><?= gettext('Picture URL') ?>:</label>
                             <textarea name="PictureURL" rows="1" cols="90" class="form-control"><?= htmlentities($sPictureURL) ?></textarea>
                         </div>
-                        
+
                         <?php if ($sPictureURL != ''): ?>
                             <div class="form-group"><img src="<?= htmlentities($sPictureURL) ?>"/></div>
                         <?php endif; ?>
-                        
+
                     </div>
-                    
+
                 </div> <!-- row -->
             </div>
-            
+
             <div class="form-group text-center">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="DonatedItemSubmit">
                 <?php if ($_SESSION['bAddRecords']): ?>
@@ -295,7 +297,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                 <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel"
                 onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'Menu.php'; ?>';">
             </div>
-            
+
         </div>
     </div>
 </form>

@@ -15,11 +15,13 @@ require 'Include/Functions.php';
 use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bNotes']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -52,7 +54,7 @@ if (isset($_POST['Submit'])) {
 
     //Assign all variables locally
     $iNoteID = InputUtils::LegacyFilterInput($_POST['NoteID'], 'int');
-    $sNoteText = InputUtils::LegacyFilterInput($_POST['NoteText'], 'htmltext');
+    $sNoteText = InputUtils::FilterHTML($_POST['NoteText'], 'htmltext');
 
     //If they didn't check the private box, set the value to 0
     if (isset($_POST['Private'])) {
@@ -89,7 +91,7 @@ if (isset($_POST['Submit'])) {
         }
 
         //Send them back to whereever they came from
-        Redirect($sBackPage);
+        RedirectUtils::Redirect($sBackPage);
     }
 } else {
     //Are we adding or editing?
@@ -105,7 +107,6 @@ if (isset($_POST['Submit'])) {
         $iFamilyID = $dbNote->getFamId();
     }
 }
-
 require 'Include/Header.php';
 
 ?>
@@ -117,7 +118,7 @@ require 'Include/Header.php';
         <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
         <input type="hidden" name="FamilyID" value="<?= $iFamilyID ?>">
         <input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
-        <textarea name="NoteText" style="width: 100%" rows="10"><?= $sNoteText ?></textarea>
+        <textarea id="NoteText" name="NoteText" style="width: 100%;min-height: 300px;" rows="40"><?= $sNoteText ?></textarea>
         <?= $sNoteTextError ?>
       </p>
 
@@ -135,4 +136,14 @@ require 'Include/Header.php';
 
   </p>
 </form>
+
 <?php require 'Include/Footer.php' ?>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  CKEDITOR.replace('NoteText',{
+    customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor/note_editor_config.js',
+    language : window.CRM.lang
+  });
+</script>

@@ -15,10 +15,11 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();
-$_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
+$_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 
 //
 // Basic security checks:
@@ -27,14 +28,14 @@ $_SESSION['sSoftwareInstalledVersion'] = $systemService->getInstalledVersion();
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Basic security: If the UserID isn't set (no session), redirect to the login page
     if (!isset($_SESSION['iUserID'])) {
-        Redirect('Login.php');
+        RedirectUtils::Redirect('Login.php');
         exit;
     }
 
     // Check for login timeout.  If login has expired, redirect to login page
     if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-            Redirect('Login.php');
+            RedirectUtils::Redirect('Login.php');
             exit;
         } else {
             $_SESSION['tLastOperation'] = time();
@@ -43,7 +44,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
 
     // If this user needs to change password, send to that page
     if ($_SESSION['bNeedPasswordChange'] && !isset($bNoPasswordRedirect)) {
-        Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
+        RedirectUtils::Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
         exit;
     }
 
@@ -137,27 +138,10 @@ if (isset($_GET['ProfileImageUploadedError'])) {
     $sGlobalMessageClass = 'danger';
 }
 
-// Are they adding a person to the Cart?
-if (isset($_GET['AddToPeopleCart'])) {
-    AddToPeopleCart(InputUtils::LegacyFilterInput($_GET['AddToPeopleCart'], 'int'));
-    $sGlobalMessage = gettext('Selected record successfully added to the Cart.');
-}
-
-if (isset($_GET['AddFamilyToPeopleCart'])) {
-    AddFamilyToPeopleCart(InputUtils::LegacyFilterInput($_GET['AddFamilyToPeopleCart'], 'int'));
-    $sGlobalMessage = gettext('Family successfully added to the Cart.');
-}
-
 // Are they removing a person from the Cart?
 if (isset($_GET['RemoveFromPeopleCart'])) {
     RemoveFromPeopleCart(InputUtils::LegacyFilterInput($_GET['RemoveFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Selected record successfully removed from the Cart.');
-}
-
-// Are they emptying their cart?
-if (isset($_GET['Action']) && ($_GET['Action'] == 'EmptyCart')) {
-    $_SESSION['aPeopleCart'] = [];
-    $sGlobalMessage = gettext('Your cart has been successfully emptied').".";
 }
 
 if (isset($_POST['BulkAddToCart'])) {
@@ -182,45 +166,6 @@ if (isset($_POST['BulkAddToCart'])) {
 //
 // Some very basic functions that all scripts use
 //
-
-// Convert a relative URL into an absolute URL and return absolute URL.
-function RedirectURL($sRelativeURL)
-{
-    // Test if file exists before redirecting.  May need to remove
-    // query string first.
-    $iQueryString = strpos($sRelativeURL, '?');
-    if ($iQueryString) {
-        $sPathExtension = mb_substr($sRelativeURL, 0, $iQueryString);
-    } else {
-        $sPathExtension = $sRelativeURL;
-    }
-
-    // The idea here is to get the file path into this form:
-    //     $sFullPath = $sDocumentRoot . $sRootPath . $sPathExtension
-    // The Redirect URL is then in this form:
-    //     $sRedirectURL = $sRootPath . $sPathExtension
-    $sFullPath = str_replace('\\', '/', SystemURLs::getDocumentRoot().'/'.$sPathExtension);
-
-    // With the query string removed we can test if file exists
-    if (file_exists($sFullPath) && is_readable($sFullPath)) {
-        return SystemURLs::getRootPath().'/'.$sRelativeURL;
-    } else {
-        $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n"
-      ."\$sPathExtension = $sPathExtension<br>\n"
-      ."\$sDocumentRoot = ".SystemURLs::getDocumentRoot()."<br>\n"
-      .'$sRootPath = ' .SystemURLs::getRootPath()."<br>\n";
-
-        die($sErrorMessage);
-    }
-}
-
-// Convert a relative URL into an absolute URL and redirect the browser there.
-function Redirect($sRelativeURL)
-{
-    $sRedirectURL = RedirectURL($sRelativeURL);
-    header('Location: '.$sRedirectURL);
-    exit;
-}
 
 // Returns the current fiscal year
 function CurrentFY()
@@ -410,103 +355,6 @@ function ChopLastCharacter($sText)
     return mb_substr($sText, 0, strlen($sText) - 1);
 }
 
-function AddToPeopleCart($sID)
-{
-    // make sure the cart array exists
-    if (isset($_SESSION['aPeopleCart'])) {
-        if (!in_array($sID, $_SESSION['aPeopleCart'], false)) {
-            $_SESSION['aPeopleCart'][] = $sID;
-        }
-    } else {
-        $_SESSION['aPeopleCart'][] = $sID;
-    }
-}
-
-function AddArrayToPeopleCart($aIDs)
-{
-    if (is_array($aIDs)) { // Make sure we were passed an array
-        foreach ($aIDs as $value) {
-            AddToPeopleCart($value);
-        }
-    }
-}
-
-// Add group to cart
-function AddGroupToPeopleCart($iGroupID)
-{
-    //Get all the members of this group
-    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
-    'WHERE p2g2r_grp_ID = '.$iGroupID;
-    $rsGroupMembers = RunQuery($sSQL);
-
-    //Loop through the recordset
-    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
-        extract($aRow);
-
-        //Add each person to the cart
-        AddToPeopleCart($p2g2r_per_ID);
-    }
-}
-
-function AddFamilyToPeopleCart($iFamID)
-{
-    $sSQL = 'SELECT per_ID from person_per where per_fam_id = '.$iFamID;
-    $rsFamilyMembers = RunQuery($sSQL);
-
-    //Loop through the recordset
-    while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
-        extract($aRow);
-
-        //Add each person to the cart
-        AddToPeopleCart($per_ID);
-    }
-}
-
-function IntersectArrayWithPeopleCart($aIDs)
-{
-    if (isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
-        $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'], $aIDs);
-    }
-}
-
-function RemoveFromPeopleCart($sID)
-{
-    // make sure the cart array exists
-    // we can't remove anybody if there is no cart
-    if (isset($_SESSION['aPeopleCart'])) {
-        unset($aTempArray); // may not need this line, but make sure $aTempArray is empty
-    $aTempArray[] = $sID; // the only element in this array is the ID to be removed
-    $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aTempArray);
-    }
-}
-
-function RemoveArrayFromPeopleCart($aIDs)
-{
-    // make sure the cart array exists
-    // we can't remove anybody if there is no cart
-    if (isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
-        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aIDs);
-    }
-}
-
-// Remove group from cart
-function RemoveGroupFromPeopleCart($iGroupID)
-{
-    //Get all the members of this group
-    $sSQL = 'SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
-    'WHERE p2g2r_grp_ID = '.$iGroupID;
-    $rsGroupMembers = RunQuery($sSQL);
-
-    //Loop through the recordset
-    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
-        extract($aRow);
-
-        //remove each person from the cart
-        RemoveFromPeopleCart($p2g2r_per_ID);
-    }
-}
-
-
 function change_date_for_place_holder($string)
 {
     return ((strtotime($string) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($string)):strtotime($string));
@@ -526,7 +374,6 @@ function FormatDateOutput()
     
     return $fmt;
 }
-
 
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
@@ -710,92 +557,6 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
     default:
       return $sPhoneNumber;
   }
-}
-
-function FormatAge($Month, $Day, $Year, $Flags)
-{
-    if (($Flags & 1)) { //||!$_SESSION['bSeePrivacyData']
-        return;
-    }
-
-    if ($Year > 0) {
-        if ($Year == date('Y')) {
-            $monthCount = date('m') - $Month;
-            if ($Day > date('d')) {
-                $monthCount--;
-            }
-            if ($monthCount == 1) {
-                return gettext('1 m old');
-            } else {
-                return $monthCount.' '.gettext('m old');
-            }
-        } elseif ($Year == date('Y') - 1) {
-            $monthCount = 12 - $Month + date('m');
-            if ($Day > date('d')) {
-                $monthCount--;
-            }
-            if ($monthCount >= 12) {
-                return gettext('1 yr old');
-            } elseif ($monthCount == 1) {
-                return gettext('1 m old');
-            } else {
-                return $monthCount.' '.gettext('m old');
-            }
-        } elseif ($Month > date('m') || ($Month == date('m') && $Day > date('d'))) {
-            return date('Y') - 1 - $Year.' '.gettext('yrs old');
-        } else {
-            return date('Y') - $Year.' '.gettext('yrs old');
-        }
-    } else {
-        return gettext('Unknown');
-    }
-}
-
-function BirthDate($year, $month, $day, $hideAge)
-{
-    if (!is_null($day) && $day != '' &&
-    !is_null($month) && $month != ''
-  ) {
-        $birthYear = $year;
-        if ($hideAge) {
-            $birthYear = 1900;
-        }
-
-        return date_create($birthYear.'-'.$month.'-'.$day);
-    }
-
-    return date_create();
-}
-
-//
-// Formats an age suffix: age in years, or in months if less than one year old
-//
-function FormatAgeSuffix($birthDate, $Flags)
-{
-    if ($Flags == 1) {
-        return '';
-    }
-
-    $ageSuffix = gettext('Unknown');
-
-    $now = new DateTime();
-    $age = $now->diff($birthDate);
-
-    if ($age->y < 1) {
-        if ($age->m > 1) {
-            $ageSuffix = gettext('mos old');
-        } else {
-            $ageSuffix = gettext('mo old');
-        }
-    } else {
-        if ($age->y > 1) {
-            $ageSuffix = gettext('yrs old');
-        } else {
-            $ageSuffix = gettext('yr old');
-        }
-    }
-
-    return $ageSuffix;
 }
 
 // Returns a string of a person's full name, formatted as specified by $Style
@@ -1536,46 +1297,7 @@ function formatNumber($iNumber, $sMode = 'integer')
   }
 }
 
-// Format a BirthDate
-// Optionally, the separator may be specified.  Default is YEAR-MN-DY
-function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
-{
-    if ($bFlags == 1 || $per_BirthYear == '') {  //Person Would Like their Age Hidden or BirthYear is not known.
-        $birthYear = '1000';
-    } else {
-        $birthYear = $per_BirthYear;
-    }
 
-    if ($per_BirthMonth > 0 && $per_BirthDay > 0 && $birthYear != 1000) {
-        if ($per_BirthMonth < 10) {
-            $dBirthMonth = '0'.$per_BirthMonth;
-        } else {
-            $dBirthMonth = $per_BirthMonth;
-        }
-        if ($per_BirthDay < 10) {
-            $dBirthDay = '0'.$per_BirthDay;
-        } else {
-            $dBirthDay = $per_BirthDay;
-        }
-
-        $dBirthDate = $dBirthMonth.$sSeparator.$dBirthDay;
-        if (is_numeric($birthYear)) {
-            $dBirthDate = $birthYear.$sSeparator.$dBirthDate;
-            if (checkdate($dBirthMonth, $dBirthDay, $birthYear)) {
-                $dBirthDate = FormatDate($dBirthDate);
-                if (mb_substr($dBirthDate, -6, 6) == ', 1000') {
-                    $dBirthDate = str_replace(', 1000', '', $dBirthDate);
-                }
-            }
-        }
-    } elseif (is_numeric($birthYear) && $birthYear != 1000) {  //Person Would Like Their Age Hidden
-        $dBirthDate = $birthYear;
-    } else {
-        $dBirthDate = '';
-    }
-
-    return $dBirthDate;
-}
 
 function FilenameToFontname($filename, $family)
 {

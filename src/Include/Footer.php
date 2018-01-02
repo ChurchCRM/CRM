@@ -6,7 +6,7 @@
  *  description : footer that appear on the bottom of all pages
  *
  *  http://www.churchcrm.io/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
+ *  Copyright 2001-2002 Phillip Hullquist, Deane Barker, Philippe Logel
   *
  ******************************************************************************/
 
@@ -265,8 +265,8 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/fullcalendar/fullcalendar.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
 
@@ -280,27 +280,23 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/fastclick/fastclick.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/bootstrap-toggle/bootstrap-toggle.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/fullcalendar.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootbox/bootbox.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fastclick/fastclick.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-toggle/bootstrap-toggle.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= $localeInfo->getLocale() ?>.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-validator/validator.min.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Tooltips.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/i18next/i18next.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= $localeInfo->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/bootstrap-validator/validator.min.js"></script>
-
-
-
 
 <?php if (isset($sGlobalMessage)) {
         ?>
-    <script>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $("document").ready(function () {
             showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");
         });
@@ -308,21 +304,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     <?php
     } ?>
 
-<?php if ($_SESSION['bAdmin']) {
-        ?>
-    <script>
-        ((window.gitter = {}).chat = {}).options = {
-            room: 'churchcrm/crm',
-            activationElement: false
-        };
-    </script>
-    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-    <?php
-    }
-
-include_once('analyticstracking.php');
-?>
-
+<?php  include_once('analyticstracking.php'); ?>
 </body>
 </html>
 <?php

@@ -13,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
 $iFundRaiserID = InputUtils::LegacyFilterInputArr($_GET, 'FundRaiserID');
@@ -78,10 +79,10 @@ if (isset($_POST['FundRaiserSubmit'])) {
 
         if (isset($_POST['FundRaiserSubmit'])) {
             if ($linkBack != '') {
-                Redirect($linkBack);
+                RedirectUtils::Redirect($linkBack);
             } else {
                 //Send to the view of this FundRaiser
-                Redirect('FundRaiserEditor.php?linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID);
+                RedirectUtils::Redirect('FundRaiserEditor.php?linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID);
             }
         }
     }

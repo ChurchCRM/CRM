@@ -43,14 +43,10 @@ $(document).ready(function () {
   $(".personSearch").on("select2:select", function (e) {
       window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:window.CRM.currentGroup},function(selection){
         window.CRM.groups.addPerson(window.CRM.currentGroup, e.params.data.objid,selection.RoleID).done(function (data) {
-          var person = data.Person2group2roleP2g2rs[0];
-          var node = window.CRM.DataTableAPI.row.add(person).node();
-          window.CRM.DataTableAPI.rows().invalidate().draw(true);
           $(".personSearch").val(null).trigger('change');
-          window.CRM.DataTableAPI.ajax.reload();
+          window.CRM.DataTableAPI.ajax.reload();/* we reload the data no need to add the person inside the dataTable */
         });
-      })
-      
+      });
   });
 
   $("#deleteSelectedRows").click(function () {
@@ -83,7 +79,7 @@ $(document).ready(function () {
             });
           });
         }
-       }
+      }
     });
 
   });
@@ -96,18 +92,7 @@ $(document).ready(function () {
                       return val.PersonId;
                     })
       };
-      $.ajax({
-        type: 'POST',
-        url: window.CRM.root + '/api/cart/',
-        dataType: 'json',
-        contentType: "application/json",
-        data: JSON.stringify(selectedPersons)
-      }).done(function(data) {
-          if ( data.status == "success" )
-          {
-            location.reload();
-          }
-      });
+      window.CRM.cart.addPerson(selectedPersons.Persons);
     }
 
   });
@@ -141,6 +126,9 @@ $(document).ready(function () {
     });
   });
 
+  $("#AddGroupMembersToCart").click(function () {
+    window.CRM.cart.addGroup($(this).data("groupid"));
+  })
 
   $(document).on("click", ".changeMembership", function (e) {
     var PersonID = $(e.currentTarget).data("personid");
@@ -183,7 +171,7 @@ function initDataTable() {
         title: i18next.t('Name'),
         data: 'PersonId',
         render: function (data, type, full, meta) {
-          return '<img src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+          return '<img src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image" style="width:' + window.CRM.iProfilePictureListSize + 'px; height:' + window.CRM.iProfilePictureListSize + 'px"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
         }
       },
       {
@@ -216,7 +204,7 @@ function initDataTable() {
       },
       {
         width: 'auto',
-        title: i18next.t('ZIP'),
+        title: i18next.t('Zip Code'),
         data: 'Person.Zip'
       },
       {
@@ -226,7 +214,7 @@ function initDataTable() {
       },
       {
         width: 'auto',
-        title: i18next.t('E-mail'),
+        title: i18next.t('Email'),
         data: 'Person.Email'
       }
     ],
@@ -240,23 +228,23 @@ function initDataTable() {
   $.extend(DataTableOpts,window.CRM.plugin.DataTable);
   window.CRM.DataTableAPI = $("#membersTable").DataTable(DataTableOpts);
 
-    $('#isGroupActive').change(function() {
-        $.ajax({
-            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/active/' + $(this).prop('checked'),
-            dataType: 'json', // what type of data do we expect back from the server
-            encode: true
-        });
+  $('#isGroupActive').change(function () {
+    $.ajax({
+      type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+      url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/active/' + $(this).prop('checked'),
+      dataType: 'json', // what type of data do we expect back from the server
+      encode: true
     });
+  });
 
-    $('#isGroupEmailExport').change(function() {
-        $.ajax({
-            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/email/export/' + $(this).prop('checked'),
-            dataType: 'json', // what type of data do we expect back from the server
-            encode: true
-        });
+  $('#isGroupEmailExport').change(function () {
+    $.ajax({
+      type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+      url: window.CRM.root + '/api/groups/' + window.CRM.currentGroup + '/settings/email/export/' + $(this).prop('checked'),
+      dataType: 'json', // what type of data do we expect back from the server
+      encode: true
     });
+  });
 
   $(document).on('click', '.groupRow', function () {
     $(this).toggleClass('selected');

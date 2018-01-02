@@ -22,24 +22,10 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 //Get the GroupID out of the querystring
 $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
-
-//Do they want to add this group to their cart?
-if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'AddGroupToCart') {
-    //Get all the members of this group
-    $sSQL = 'SELECT per_ID FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = '.$iGroupID;
-    $rsGroupMembers = RunQuery($sSQL);
-
-    //Loop through the recordset
-    while ($aRow = mysqli_fetch_array($rsGroupMembers)) {
-        extract($aRow);
-
-        //Add each person to the cart
-        AddToPeopleCart($per_ID);
-    }
-}
 
 //Get the data on this group
 $thisGroup = ChurchCRM\GroupQuery::create()->findOneById($iGroupID);
@@ -93,10 +79,12 @@ require 'Include/Header.php';
       if ($thisGroup->getHasSpecialProps()) {
           echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID='.$thisGroup->getId().'"><i class="fa fa-list-alt"></i>'.gettext('Edit Group-Specific Properties Form').'</a>';
       }
-    }
-    echo '<a class="btn btn-app" href="GroupView.php?Action=AddGroupToCart&amp;GroupID='.$thisGroup->getId().'"><i class="fa fa-users"></i>'.gettext('Add Group Members to Cart').'</a>';
+    }?>
 
-    echo '<a class="btn btn-app" href="MapUsingGoogle.php?GroupID='.$thisGroup->getId().'"><i class="fa fa-map-marker"></i>'.gettext('Map this group').'</a>';
+    <a class="btn btn-app" id="AddGroupMembersToCart" data-groupid="<?= $thisGroup->getId() ?>"><i class="fa fa-users"></i><?= gettext('Add Group Members to Cart') ?></a>
+    <a class="btn btn-app" href="MapUsingGoogle.php?GroupID=<?= $thisGroup->getId() ?>"><i class="fa fa-map-marker"></i><?= gettext('Map this group') ?></a>
+
+    <?php
 
 // Email Group link
 // Note: This will email entire group, even if a specific role is currently selected.
@@ -192,7 +180,7 @@ require 'Include/Header.php';
         if ($bEmailMailto) { // Does user have permission to email groups
             // Display link
             echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>'.gettext('Text Group').'</a>';
-            echo '<script>function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
+            echo '<script nonce="'. SystemURLs::getCSPNonce() .'">function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
         }
     }
     ?>
@@ -427,8 +415,9 @@ require 'Include/Header.php';
                 </form>
               </div>
             </div>
-            <script>
+            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
               window.CRM.currentGroup = <?= $iGroupID ?>;
+              window.CRM.iProfilePictureListSize = <?= SystemConfig::getValue('iProfilePictureListSize') ?>;
               var dataT = 0;
               $(document).ready(function () {
                 $('#isGroupActive').prop('checked', <?= $thisGroup->isActive()? 'true': 'false' ?>).change();
@@ -464,6 +453,6 @@ require 'Include/Header.php';
                 });
               });
             </script>
-            <script src="skin/js/GroupView.js" type="text/javascript"></script>
+            <script src="skin/js/GroupView.js" ></script>
 
             <?php require 'Include/Footer.php' ?>
