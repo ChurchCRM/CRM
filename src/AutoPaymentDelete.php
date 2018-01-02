@@ -13,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Confirm Delete Automatic payment');
@@ -24,16 +25,16 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if (strlen($iAutID) > 0) {
     if (!$_SESSION['bEditRecords']) {
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
     $sSQL = "SELECT '' FROM autopayment_aut WHERE aut_ID = ".$iAutID;
     if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 } elseif (!$_SESSION['bAddRecords']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -43,10 +44,10 @@ if (isset($_POST['Delete'])) {
     //Execute the SQL
     RunQuery($sSQL);
     if ($linkBack != '') {
-        Redirect($linkBack);
+        RedirectUtils::Redirect($linkBack);
     }
 } elseif (isset($_POST['Cancel'])) {
-    Redirect($linkBack);
+    RedirectUtils::Redirect($linkBack);
 }
 
 require 'Include/Header.php';
