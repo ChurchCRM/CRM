@@ -1,5 +1,42 @@
 # Changelog
 
+## 2.9.4 (01/01/2018)
+
+#### Enhancements:
+
+- [**enhancement**][**UI**] Enable customization of profile picture sizes [#3796](https://github.com/ChurchCRM/CRM/issues/3796)
+- [**Backend System**][**enhancement**][**Feature: Emails**] SMTP debug is ugly [#3514](https://github.com/ChurchCRM/CRM/issues/3514)
+
+#### Core Functionality
+
+- [**Feature: Members**][**Web Report**] Birthday not shown if missing year or "Hide Age" [#3804](https://github.com/ChurchCRM/CRM/issues/3804)
+- [**development**][**Feature: Members**] Create APIs for Country List and State List  [#3781](https://github.com/ChurchCRM/CRM/issues/3781)
+- [**Backend System**][**enhancement**][**Feature: Emails**] SMTP debug is ugly [#3514](https://github.com/ChurchCRM/CRM/issues/3514)
+- [**build**][**Configuration**] When updating the demo sites, import the demo data [#1709](https://github.com/ChurchCRM/CRM/issues/1709)
+- [**Configuration**] Add Family/Person/Group Properties to demo/testing site data [#1708](https://github.com/ChurchCRM/CRM/issues/1708)
+- [**bug**][**Feature: Sunday School**] Sunday School Class View - Parent Info [#1399](https://github.com/ChurchCRM/CRM/issues/1399)
+- [**Feature: Financial**][**please address comments**][**Web Report**] Deleting deposit does not deprecate delete payments [#1238](https://github.com/ChurchCRM/CRM/issues/1238)
+
+#### Localization:
+
+- [**Localization**] 2.9.2 lose some translated terms. [#3705](https://github.com/ChurchCRM/CRM/issues/3705)
+- [**Localization**][**Web Report**] Directory report - single person household birthday does not follow  system format [#2340](https://github.com/ChurchCRM/CRM/issues/2340)
+
+#### Bug fixes:
+
+- [**bug**][**Feature: Sunday School**] Sunday School Class View - Parent Info [#1399](https://github.com/ChurchCRM/CRM/issues/1399)
+
+#### Inner Beauty:
+
+- [**development**] New Home for Slim MVC Pages [#3819](https://github.com/ChurchCRM/CRM/issues/3819)
+- [**development**][**Feature: Members**] Create APIs for Country List and State List  [#3781](https://github.com/ChurchCRM/CRM/issues/3781)
+- [**Backend System**][**enhancement**][**Feature: Emails**] SMTP debug is ugly [#3514](https://github.com/ChurchCRM/CRM/issues/3514)
+- [**build**][**Configuration**] When updating the demo sites, import the demo data [#1709](https://github.com/ChurchCRM/CRM/issues/1709)
+- [**development**] System Settings GZIP name why is it needed [#1412](https://github.com/ChurchCRM/CRM/issues/1412)
+- [**development**] Review mailtrap.io [#1246](https://github.com/ChurchCRM/CRM/issues/1246)
+
+---
+
 ## 2.9.3 (24/12/2017)
 
 #### Enhancements:
@@ -474,10 +511,6 @@
 - [**Feature: Events**][**Feature: Sunday School**][**New Feature Request**] Event enhancement request [#1291](https://github.com/ChurchCRM/CRM/issues/1291)
 - [**API**][**development**][**Feature: Events**] Events API [#1144](https://github.com/ChurchCRM/CRM/issues/1144)
 - [**enhancement**][**Feature: Members**][**Feature: Sunday School**] Improve parent / child sign in [#812](https://github.com/ChurchCRM/CRM/issues/812)
-
-#### Localization:
-
-- [**Localization**][**Web Report**] Directory report - single person household birthday does not follow  system format [#2340](https://github.com/ChurchCRM/CRM/issues/2340)
 
 #### Bug fixes:
 
