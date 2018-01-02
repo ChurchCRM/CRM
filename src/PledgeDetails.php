@@ -11,6 +11,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Electronic Transaction Details');
@@ -22,13 +23,13 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 // Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if (!$_SESSION['bFinance']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
 //Is this the second pass?
 if (isset($_POST['Back'])) {
-    Redirect($linkBack);
+    RedirectUtils::Redirect($linkBack);
 }
 
 $sSQL = 'SELECT * FROM pledge_plg WHERE plg_plgID = '.$iPledgeID;
