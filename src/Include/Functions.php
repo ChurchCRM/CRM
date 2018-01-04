@@ -33,11 +33,10 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     }
     
     try {
-      $_SESSION['user']->reload();
-    }
-    catch (\Exception $exc) {
-      RedirectUtils::Redirect('Login.php');
-      exit;
+        $_SESSION['user']->reload();
+    } catch (\Exception $exc) {
+        RedirectUtils::Redirect('Login.php');
+        exit;
     }
     
 
