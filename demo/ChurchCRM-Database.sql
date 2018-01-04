@@ -544,7 +544,7 @@ CREATE TABLE `events_event` (
   `inactive` int(1) NOT NULL DEFAULT '0',
   `event_typename` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `event_grpid` mediumint(9) DEFAULT NULL,
-  `event_publicly_visible` tinyint(1) DEFAULT NULL,
+  `event_publicly_visible` BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (`event_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
