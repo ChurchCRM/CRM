@@ -28,7 +28,7 @@
         "Localization:": ["Localization"],
         "Performance:": ["Performance"],
         "Bug fixes:": ["bug", "P0 - Urgent"],
-        "Inner Beauty:": ["development","build", "Backend System"]
+        "Inner Beauty:": ["development","build", "Backend System", "Code Smell"]
     },
     "ignoreIssuesWith": ["wontfix","duplicate","norepro"]
 }
