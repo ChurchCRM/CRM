@@ -542,6 +542,7 @@
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
         <column name="event_typename" phpName="TypeName" type="VARCHAR" size="40" required="true" defaultValue=""/>
         <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
+        <column name="event_publicly_visible" phpName="PubliclyVisible" type="BOOLEAN" />
         <foreign-key foreignTable="group_grp">
             <reference local="event_grpid" foreign="grp_ID"/>
         </foreign-key>

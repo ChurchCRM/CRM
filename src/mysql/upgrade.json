@@ -167,7 +167,8 @@
             "2.9.4"
         ],
         "scripts": [
-            "/mysql/upgrade/2.10.0-email-dup.sql"],
+          "/mysql/upgrade/2.10.0.sql"
+        ],
         "dbVersion": "2.10.0"
     }
 }

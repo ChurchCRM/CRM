@@ -272,6 +272,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndMins = $aEndTimeTokens[1];
     $iEventStatus = $inactive;
     $nEventGroupId = $event_grpid;
+    $bEventPubliclyVisible = $event_publicly_visible;
 
     $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
     //        echo $cvSQL;
@@ -324,6 +325,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndMins = $sEventEndDateTime->format('i');
     $iEventStatus = $_POST['EventStatus'];
     $nEventGroupId = $_POST['EventGroup'];
+    $bEventPubliclyVisible = $_POST['EventPubliclyVisible'] == "true";
 
     $iNumCounts = $_POST['NumAttendCounts'];
     $nCnts = $iNumCounts;
@@ -355,7 +357,8 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
                      `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
                      `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
-                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."';";
+                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."',
+                     `event_publicly_visible` = ".($bEventPubliclyVisible ? 'true' : 'false').";";
             RunQuery($sSQL);
             $iEventID = mysqli_insert_id($cnInfoCentral);
             for ($c = 0; $c < $iNumCounts; $c++) {
@@ -380,7 +383,8 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
                      `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
                      `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
-                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."'".
+                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."',
+                     `event_publicly_visible` = ".($bEventPubliclyVisible ? 'true' : 'false').
                     " WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
             //            echo $sSQL;
             RunQuery($sSQL);
@@ -504,6 +508,15 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
             <?php
             } ?>
       </select>
+    </td>
+
+  </tr>
+  <tr>
+    <td class="LabelColumn"><span style="color: red">*</span>
+      <?= gettext('Event Publicly Visible') ?>:
+    </td>
+    <td class="TextColumn">
+      <input type="checkbox" name="EventPubliclyVisible" value="true" <?= ($bEventPubliclyVisible ? "checked":"") ?>/>
     </td>
 
   </tr>
