@@ -27,10 +27,19 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Basic security: If the UserID isn't set (no session), redirect to the login page
-    if (!isset($_SESSION['iUserID'])) {
+    if (!isset($_SESSION['user'])) {
         RedirectUtils::Redirect('Login.php');
         exit;
     }
+    
+    try {
+      $_SESSION['user']->reload();
+    }
+    catch (\Exception $exc) {
+      RedirectUtils::Redirect('Login.php');
+      exit;
+    }
+    
 
     // Check for login timeout.  If login has expired, redirect to login page
     if (SystemConfig::getValue('iSessionTimeout') > 0) {
