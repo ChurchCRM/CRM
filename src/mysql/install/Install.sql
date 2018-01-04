@@ -246,6 +246,7 @@ CREATE TABLE `events_event` (
   `inactive` int(1) NOT NULL default '0',
   `event_typename` varchar(40) NOT NULL default '',
   `event_grpid` mediumint(9),
+  `event_publicly_visible` BOOLEAN,
 
   PRIMARY KEY  (`event_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;

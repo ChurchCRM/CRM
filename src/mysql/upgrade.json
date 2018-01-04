@@ -166,7 +166,9 @@
             "2.9.3",
             "2.9.4"
         ],
-        "scripts": [],
+        "scripts": [
+          "/mysql/upgrade/2.10.0-calendar-public-toggle.sql"
+        ],
         "dbVersion": "2.10.0"
     }
 }

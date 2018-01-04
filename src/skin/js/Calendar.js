@@ -202,6 +202,12 @@
               +'</td>'
             +'</tr>'
             +'<tr>'
+              +"<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Publicly Visible') + ":</td>"
+              +'<td class="TextColumn">'
+                +'<input type="checkbox" id="EventPubliclyVisible" />'
+              +'</td>'
+            +'</tr>'
+            +'<tr>'
               +"<td class='LabelColumn' id='ATTENDENCES'>" + i18next.t('Attendance Counts') + "</td>"
               +'<td class="TextColumn" colspan="3">'
                 +'<table>'
@@ -352,6 +358,7 @@
               var e = document.getElementById("EventGroup");
               var EventGroupID = e.options[e.selectedIndex].value;
               var EventGroupType = e.options[e.selectedIndex].title;// we get the type of the group : personal or group for future dev
+              var EventPubliclyVisible = $("form #EventPubliclyVisible").prop('checked');
                              
               var Total =  $('form #Total').val();
               var Members = $('form #Members').val();
@@ -365,7 +372,7 @@
               window.CRM.APIRequest({
                     method: 'POST',
                     path: 'events/',
-                    data: JSON.stringify({"evntAction":'createEvent',"eventTypeID":eventTypeID,"EventGroupType":EventGroupType,"EventTitle":EventTitle,"EventDesc":EventDesc,"EventGroupID":EventGroupID,"Total":Total,"Members":Members,"Visitors":Visitors,"EventCountNotes":EventCountNotes,"eventPredication":eventPredication,"start":moment(start).format(),"end":moment(end).format()})
+                    data: JSON.stringify({"evntAction":'createEvent',"eventTypeID":eventTypeID,"EventGroupType":EventGroupType,"EventTitle":EventTitle,"EventDesc":EventDesc,"EventGroupID":EventGroupID,"EventPubliclyVisible":EventPubliclyVisible,"Total":Total,"Members":Members,"Visitors":Visitors,"EventCountNotes":EventCountNotes,"eventPredication":eventPredication,"start":moment(start).format(),"end":moment(end).format()})
               }).done(function(data) {                   
                 $('#calendar').fullCalendar('renderEvent', data, true); // stick? = true             
                 $('#calendar').fullCalendar('unselect');              

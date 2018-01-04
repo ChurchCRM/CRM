@@ -78,6 +78,7 @@ $app->group('/events', function () {
          $event->setType($input->eventTypeID);
          $event->setTypeName($eventTypeName);
          $event->setDesc($input->EventDesc);
+         $event->setPubliclyVisible($input->EventPubliclyVisible);
          
          if ($input->EventGroupID>0)
            $event->setGroupId($input->EventGroupID);  
