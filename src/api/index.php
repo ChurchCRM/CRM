@@ -71,6 +71,7 @@ require __DIR__.'/routes/system.php';
 
 require __DIR__.'/routes/dashboard.php';
 
+require __DIR__.'/routes/email.php';
 require __DIR__.'/routes/geocoder.php';
 
 require __DIR__.'/routes/public.php';

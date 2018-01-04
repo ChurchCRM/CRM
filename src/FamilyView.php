@@ -165,6 +165,10 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
     window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
+<div class="alert alert-info">
+    <strong><a href="/v2/family/<?= $iFamilyID ?>/view"><?= gettext("Try our the Beta family view") ?></a> </strong>
+</div>
+
 <?php if (!empty($fam_DateDeactivated)) {
     ?>
     <div class="alert alert-warning">
@@ -177,7 +181,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
         <div class="box box-primary">
             <div class="box-body">
                 <div class="image-container">
-                    <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
+                    <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" class="img-responsive profile-user-img profile-family-img"/>
                     <?php if ($bOkToEdit): ?>
                         <div class="after">
                             <div class="buttons">
@@ -991,20 +995,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 });
             });
 
-            $("#deletePhoto").click(function () {
-                $.ajax({
-                    type: "POST",
-                    url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
-                    encode: true,
-                    dataType: 'json',
-                    data: {
-                        "_METHOD": "DELETE"
-                    }
-                }).done(function (data) {
-                    location.reload();
-                });
-            });
-
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
                 url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
                 maxPhotoSize: window.CRM.maxUploadSize,
@@ -1018,14 +1008,6 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
             contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function (success) {
                 if (success) {
                     $("#view-larger-image-btn").removeClass('hide');
-
-                    $("#view-larger-image-btn").click(function () {
-                        bootbox.alert({
-                            title: "<?= gettext('Family Photo') ?>",
-                            message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
-                            backdrop: true
-                        });
-                    });
                 }
             });
 
