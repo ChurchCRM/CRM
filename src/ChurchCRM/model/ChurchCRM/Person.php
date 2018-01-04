@@ -46,7 +46,7 @@ class Person extends BasePerson implements iPhoto
     {
         return $this->getFlags() == 1 || $this->getBirthYear() == '' || $this->getBirthYear() == '0';
     }
-    
+
     private function getBirthDate()
     {
         if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
@@ -60,8 +60,8 @@ class Person extends BasePerson implements iPhoto
             return date_create($birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
         }
         return false;
-        
-    
+
+
     }
 
     public function getFormattedBirthDate()
@@ -72,13 +72,13 @@ class Person extends BasePerson implements iPhoto
       }
       if ($this->hideAge())
       {
-        return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));  
+        return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));
       }
       else
       {
         return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
       }
-     
+
     }
 
     public function getViewURI()
@@ -454,14 +454,11 @@ class Person extends BasePerson implements iPhoto
     public function getAge()
     {
       $birthDate = $this->getBirthDate();
-   
-      if ($this->hideAge()) 
+
+      if ($this->hideAge())
       {
         return false;
       }
-
-      $ageSuffix = gettext('Unknown');
-      $ageValue = 0;
 
       $now = date_create('today');
       $age = date_diff($now,$birthDate);
