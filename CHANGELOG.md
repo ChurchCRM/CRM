@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.10.0 (04/01/2018)
+
+#### Core Functionality
+
+- [**API**][**Feature: Events**] Add "Expose via API" to Events Schema [#3032](https://github.com/ChurchCRM/CRM/issues/3032)
+
+#### Bug fixes:
+
+- [**P0 - Urgent**][**Security**] A deleted with an active session user may still navigate  [#3846](https://github.com/ChurchCRM/CRM/issues/3846)
+
+#### Inner Beauty:
+
+- [**development**] RecordProperty is mapped as PersonProperty [#3806](https://github.com/ChurchCRM/CRM/issues/3806)
+- [**build**][**development**][**Platform: Deprecated**][**Platform: Self-Hosted**][**Platform: Shared Hosting**] Address .htaccess files for PHP 7 [#1165](https://github.com/ChurchCRM/CRM/issues/1165)
+
+---
+
 ## 2.9.4 (01/01/2018)
 
 #### Enhancements:
