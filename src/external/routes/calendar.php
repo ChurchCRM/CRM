@@ -18,6 +18,7 @@ $app->group('/calendar', function () {
         $max_events = InputUtils::FilterInt($params['max']);
 
         $events = ChurchCRM\EventQuery::create()
+                ->filterByPubliclyVisible(true)
                 ->orderByStart(Criteria::ASC);
 
         if($start_date) {
