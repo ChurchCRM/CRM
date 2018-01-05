@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.10.1 (05/01/2018)
+
+#### Core Functionality
+
+- [**bug/regression**][**Installation / Upgrade**][**Platform: Database**] Can't restore 2.10.0 database backup [#3856](https://github.com/ChurchCRM/CRM/issues/3856)
+- [**Installation / Upgrade**][**Platform: Database**][**Platform: Self-Hosted**][**Platform: Shared Hosting**][**please address comments**] Fatal error when upgrading to 2.9.1 [#3642](https://github.com/ChurchCRM/CRM/issues/3642)
+
+---
+
 ## 2.10.0 (04/01/2018)
 
 #### Core Functionality

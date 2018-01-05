@@ -167,15 +167,16 @@
             "2.9.4"
         ],
         "scripts": [
-          "/mysql/upgrade/2.10.0.sql"
+            "/mysql/upgrade/2.10.0.sql"
         ],
         "dbVersion": "2.10.0"
     },
     "current": {
-      "versions": [
-        "2.10.0"
-      ],
-      "scripts": [],
-      "dbVersion":"2.10.1"
+        "versions": [
+            "2.10.0",
+            "2.10.1"
+        ],
+        "scripts": [],
+        "dbVersion": "2.10.2"
     }
 }
