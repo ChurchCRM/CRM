@@ -3,7 +3,7 @@
 -- Host: localhost	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	5.7.20-0ubuntu0.16.04.1
--- Date: Wed, 03 Jan 2018 22:28:28 -0500
+-- Date: Thu, 04 Jan 2018 23:07:38 -0500
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -218,7 +218,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','2018-01-03 22:27:47'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(20142,'bHSTSEnable','');
+INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','2018-01-04 23:07:37'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(20142,'bHSTSEnable','');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -556,7 +556,7 @@ CREATE TABLE `events_event` (
 LOCK TABLES `events_event` WRITE;
 /*!40000 ALTER TABLE `events_event` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `events_event` VALUES (1,2,'Sunday School Class Changes','This is when the students move to new classes','','2016-11-20 12:30:00','2016-11-20 13:30:00',0,'Sunday School',NULL,FALSE),(2,1,'Christmas Service','christmas service','','2016-12-24 22:30:00','2016-12-25 01:30:00',0,'Church Service',NULL,FALSE),(3,2,'Summer Camp','Summer Camp','','2017-06-06 09:30:00','2017-06-11 09:30:00',0,'Sunday School',NULL,FALSE);
+INSERT INTO `events_event` VALUES (1,2,'Sunday School Class Changes','This is when the students move to new classes','','2016-11-20 12:30:00','2016-11-20 13:30:00',0,'Sunday School',NULL,0),(2,1,'Christmas Service','christmas service','','2016-12-24 22:30:00','2016-12-25 01:30:00',0,'Church Service',NULL,0),(3,2,'Summer Camp','Summer Camp','','2017-06-06 09:30:00','2017-06-11 09:30:00',0,'Sunday School',NULL,0);
 /*!40000 ALTER TABLE `events_event` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1597,7 +1597,7 @@ CREATE TABLE `version_ver` (
   `ver_update_end` datetime DEFAULT NULL,
   PRIMARY KEY (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1607,7 +1607,7 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'2.4.0','2016-11-19 20:14:23',NULL),(2,'2.5.0','2017-01-15 19:40:28','2017-01-15 19:40:28'),(3,'2.6.0','2017-02-11 13:15:10','2017-02-11 13:15:10'),(4,'2.7.0','2017-04-15 17:17:37','2017-04-15 17:17:37'),(5,'2.8.0','2017-07-16 16:34:11','2017-07-16 16:34:11'),(6,'2.8.6','2017-07-16 16:34:11','2017-07-16 16:34:11'),(7,'2.9.0','2017-12-03 18:26:20','2017-12-03 18:26:20'),(8,'2.9.1','2017-12-03 18:26:20','2017-12-03 18:26:20'),(9,'2.9.2','2017-12-03 18:26:20','2017-12-03 22:26:20'),(10,'2.9.3','2017-12-18 00:42:32','2017-12-18 00:42:32'),(11,'2.9.4','2017-12-25 14:19:34','2017-12-25 14:19:34'),(12,'2.10.0','2018-01-01 19:25:33','2018-01-01 19:25:33');
+INSERT INTO `version_ver` VALUES (1,'2.4.0','2016-11-19 20:14:23',NULL),(2,'2.5.0','2017-01-15 19:40:28','2017-01-15 19:40:28'),(3,'2.6.0','2017-02-11 13:15:10','2017-02-11 13:15:10'),(4,'2.7.0','2017-04-15 17:17:37','2017-04-15 17:17:37'),(5,'2.8.0','2017-07-16 16:34:11','2017-07-16 16:34:11'),(6,'2.8.6','2017-07-16 16:34:11','2017-07-16 16:34:11'),(7,'2.9.0','2017-12-03 18:26:20','2017-12-03 18:26:20'),(8,'2.9.1','2017-12-03 18:26:20','2017-12-03 18:26:20'),(9,'2.9.2','2017-12-03 18:26:20','2017-12-03 22:26:20'),(10,'2.9.3','2017-12-18 00:42:32','2017-12-18 00:42:32'),(11,'2.9.4','2017-12-25 14:19:34','2017-12-25 14:19:34'),(12,'2.10.0','2018-01-01 19:25:33','2018-01-01 19:25:33'),(13,'2.10.1','2018-01-04 23:07:32','2018-01-04 23:07:32');
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1670,47 +1670,6 @@ SET autocommit=0;
 UNLOCK TABLES;
 COMMIT;
 
---
--- Stand-In structure for view `email_count`
---
-
-DROP TABLE IF EXISTS `email_count`;
-/*!50001 DROP VIEW IF EXISTS `email_count`*/;
-CREATE TABLE IF NOT EXISTS `email_count` (
-`email` varchar(100)
-,`total` bigint(21)
-);
---
--- Stand-In structure for view `email_list`
---
-
-DROP TABLE IF EXISTS `email_list`;
-/*!50001 DROP VIEW IF EXISTS `email_list`*/;
-CREATE TABLE IF NOT EXISTS `email_list` (
-`email` varchar(100)
-,`type` varchar(11)
-,`id` mediumint(9) unsigned
-);
---
--- View structure for view `email_count`
---
-
-DROP TABLE IF EXISTS `email_count`;
-/*!50001 DROP VIEW IF EXISTS `email_count`*/;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `email_count` AS select `email_list`.`email` AS `email`,count(0) AS `total` from `email_list` group by `email_list`.`email` */;
-
---
--- View structure for view `email_list`
---
-
-DROP TABLE IF EXISTS `email_list`;
-/*!50001 DROP VIEW IF EXISTS `email_list`*/;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `email_list` AS select `family_fam`.`fam_Email` AS `email`,'family' AS `type`,`family_fam`.`fam_ID` AS `id` from `family_fam` where ((`family_fam`.`fam_Email` is not null) and (`family_fam`.`fam_Email` <> '')) union select `person_per`.`per_Email` AS `email`,'person_home' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_Email` is not null) and (`person_per`.`per_Email` <> '')) union select `person_per`.`per_WorkEmail` AS `email`,'person_work' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_WorkEmail` is not null) and (`person_per`.`per_WorkEmail` <> '')) */;
-
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -1720,4 +1679,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Wed, 03 Jan 2018 22:28:28 -0500
+-- Dump completed on: Thu, 04 Jan 2018 23:07:38 -0500
