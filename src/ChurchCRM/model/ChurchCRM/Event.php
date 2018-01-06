@@ -5,6 +5,7 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Event as BaseEvent;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
+use dto\SystemConfig;
 
 /**
  * Skeleton subclass for representing a row from the 'events_event' table.
@@ -58,5 +59,17 @@ class Event extends BaseEvent
       return SystemURLs::getRootPath()."EventEditor.php?calendarAction=".$this->getID();
     else 
       return '';
+  }
+  
+  public function toVEVENT() {
+    $now = new \DateTime();
+        
+    return "BEGIN:VEVENT\n".
+          "UID:".$this->getId()."@".dto\ChurchMetaData::getChurchName()."\n".
+          "DTSTAMP:".$now->setTimezone(new \DateTimeZone("UTC"))->format('Ymd\THis\Z')."\n".
+          "DTSTART:".$this->getStart()->setTimezone(new \DateTimeZone("UTC"))->format('Ymd\THis\Z')."\n".
+          "DTEND:".$this->getEnd()->setTimezone(new \DateTimeZone("UTC"))->format('Ymd\THis\Z')."\n".
+          "SUMMARY:".$this->getTitle()."\n".
+          "END:VEVENT\n";
   }
 }
