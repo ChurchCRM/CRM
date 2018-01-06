@@ -4,7 +4,7 @@
 
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\iCal;
 use ChurchCRM\Slim\Middleware\PublicCalendarAPIMiddleware;
 
 $app->group('/public/calendar', function () {
@@ -18,24 +18,9 @@ function getJSON ($request, $response, $args) {
 }
 
 function getICal ($request, $response, $args) {
-  $events = getPublicEvents($request);
-
-  $CalendarICS = "BEGIN:VCALENDAR\r\n".
-                 "VERSION:2.0\r\n".
-                 "PRODID:-//ChurchCRM/CRM//NONSGML v".$_SESSION['sSoftwareInstalledVersion']."//EN\r\n".
-                 "CALSCALE:GREGORIAN\r\n".
-                 "METHOD:PUBLISH\r\n".
-                 "X-WR-CALNAME:".ChurchMetaData::getChurchName()."\r\n".
-                 "X-WR-CALDESC:\r\n";
-
-  foreach($events as $event)
-  {
-    $CalendarICS .= $event->toVEVENT();
-  }
-  $CalendarICS .="END:VCALENDAR";
-
+  $CalendarICS = new iCal(getPublicEvents($request));
   $body = $response->getBody();
-  $body->write($CalendarICS);
+  $body->write($CalendarICS->toString());
 
   return $response->withHeader('Content-type','text/calendar; charset=utf-8')
      ->withHeader('Content-Disposition','attachment; filename=calendar.ics');;
@@ -65,6 +50,6 @@ function getPublicEvents($request){
   if ($max_events) {
     $events->limit($max_events);
   }
-
+  
   return $events->find();
 }
