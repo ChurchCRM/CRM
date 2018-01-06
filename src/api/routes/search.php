@@ -86,7 +86,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						foreach ($addresses as $address) {
 							$elt = ['id'=>$id++,
 									'text'=>$address->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-									'uri'=>SystemURLs::getRootPath().$address->getViewURI()
+									'uri'=>$address->getViewURI()
 							];
 					
 							array_push($data, $elt);
@@ -129,7 +129,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 								$searchArray=[
 								"id" => $id++,
 								"text" => $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-								"uri" => SystemURLs::getRootPath().$family->getViewURI()
+								"uri" => $family->getViewURI()
 							];
 					
 							array_push($data,$searchArray);
