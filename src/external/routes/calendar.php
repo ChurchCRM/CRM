@@ -5,49 +5,41 @@
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Slim\Middleware\PublicCalendarAPIMiddleware;
 
 $app->group('/calendar', function () {
-    $this->get('/events', function ($request, $response, $args) {
-        if (!ChurchCRM\dto\SystemConfig::getBooleanValue("bEnableExternalCalendarAPI"))
-        {
-          throw new \Exception(gettext("External Calendar API is disabled")  , 400);
-        }
-        
-        $events = getEvents($request);
-        return $response->withJson($events->toArray());
+    $this->get('/events', 'getJSON');
+    $this->get('/ics','getICal');
+})->add(new \ChurchCRM\Slim\Middleware\PublicCalendarAPIMiddleware());
 
-    });
-    
-    $this->get('/ics', function ($request, $response, $args) {
-        if (!ChurchCRM\dto\SystemConfig::getBooleanValue("bEnableExternalCalendarAPI"))
-        {
-          throw new \Exception(gettext("External Calendar API is disabled")  , 400);
-        }
-        
-        $events = getEvents($request);
-        
-        $CalendarICS = "BEGIN:VCALENDAR\r\n".
-                       "VERSION:2.0\r\n".
-                       "PRODID:-//ChurchCRM/CRM//NONSGML v".$_SESSION['sSoftwareInstalledVersion']."//EN\r\n".
-                       "CALSCALE:GREGORIAN\r\n".
-                       "METHOD:PUBLISH\r\n".
-                       "X-WR-CALNAME:".ChurchMetaData::getChurchName()."\r\n".
-                       "X-WR-CALDESC:\r\n";
-        
-        foreach($events as $event)
-        {
-          $CalendarICS .= $event->toVEVENT();
-        }
-        $CalendarICS .="END:VCALENDAR";
-        
-        $body = $response->getBody();
-        $body->write($CalendarICS);
-        
-        return $response->withHeader('Content-type','text/calendar; charset=utf-8')
-          ->withHeader('Content-Disposition','attachment; filename=calendar.ics');;
+function getJSON ($request, $response, $args) {
+  $events = getEvents($request);
+  return $response->withJson($events->toArray());
+}
 
-    });
-});
+function getICal ($request, $response, $args) {
+  $events = getEvents($request);
+
+  $CalendarICS = "BEGIN:VCALENDAR\r\n".
+                 "VERSION:2.0\r\n".
+                 "PRODID:-//ChurchCRM/CRM//NONSGML v".$_SESSION['sSoftwareInstalledVersion']."//EN\r\n".
+                 "CALSCALE:GREGORIAN\r\n".
+                 "METHOD:PUBLISH\r\n".
+                 "X-WR-CALNAME:".ChurchMetaData::getChurchName()."\r\n".
+                 "X-WR-CALDESC:\r\n";
+
+  foreach($events as $event)
+  {
+    $CalendarICS .= $event->toVEVENT();
+  }
+  $CalendarICS .="END:VCALENDAR";
+
+  $body = $response->getBody();
+  $body->write($CalendarICS);
+
+  return $response->withHeader('Content-type','text/calendar; charset=utf-8')
+     ->withHeader('Content-Disposition','attachment; filename=calendar.ics');;
+}
 
 function getEvents($request){
   $params = $request->getQueryParams();
