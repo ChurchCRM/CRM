@@ -12,25 +12,9 @@ $app->group('/calendar', function () {
         {
           throw new \Exception(gettext("External Calendar API is disabled")  , 400);
         }
-
-        $params = $request->getQueryParams();
-        $start_date = DateTime::createFromFormat("Y-m-d",$params['start']);
-        $start_date->setTime(0,0,0);
-        $max_events = InputUtils::FilterInt($params['max']);
-
-        $events = ChurchCRM\EventQuery::create()
-                ->filterByPubliclyVisible(true)
-                ->orderByStart(Criteria::ASC);
-
-        if($start_date) {
-          $events->filterByStart($start_date,  Criteria::GREATER_EQUAL);
-        }
-
-        if ($max_events) {
-          $events->limit($max_events);
-        }
         
-        return $response->withJson($events->find()->toArray());
+        $events = getEvents($request);
+        return $response->withJson($events->toArray());
 
     });
     
@@ -39,33 +23,18 @@ $app->group('/calendar', function () {
         {
           throw new \Exception(gettext("External Calendar API is disabled")  , 400);
         }
-
-        $params = $request->getQueryParams();
-        $start_date = DateTime::createFromFormat("Y-m-d",$params['start']);
-        $start_date->setTime(0,0,0);
-        $max_events = InputUtils::FilterInt($params['max']);
-
-        $events = ChurchCRM\EventQuery::create()
-                ->filterByPubliclyVisible(true)
-                ->orderByStart(Criteria::ASC);
-
-        if($start_date) {
-          $events->filterByStart($start_date,  Criteria::GREATER_EQUAL);
-        }
-
-        if ($max_events) {
-          $events->limit($max_events);
-        }
         
-        $CalendarICS = "BEGIN:VCALENDAR\n".
-                       "VERSION:2.0\n".
-                       "PRODID:-//ChurchCRM/CRM//NONSGML v".$_SESSION['sSoftwareInstalledVersion']."//EN\n".
-                       "CALSCALE:GREGORIAN\n".
-                       "METHOD:PUBLISH\n".
-                       "X-WR-CALNAME:".ChurchMetaData::getChurchName()."\n".
-                       "X-WR-TIMEZONE:".ChurchMetaData::getChurchTimeZone()."\n".
-                       "X-WR-CALDESC:\n";
-        foreach($events->find() as $event)
+        $events = getEvents($request);
+        
+        $CalendarICS = "BEGIN:VCALENDAR\r\n".
+                       "VERSION:2.0\r\n".
+                       "PRODID:-//ChurchCRM/CRM//NONSGML v".$_SESSION['sSoftwareInstalledVersion']."//EN\r\n".
+                       "CALSCALE:GREGORIAN\r\n".
+                       "METHOD:PUBLISH\r\n".
+                       "X-WR-CALNAME:".ChurchMetaData::getChurchName()."\r\n".
+                       "X-WR-CALDESC:\r\n";
+        
+        foreach($events as $event)
         {
           $CalendarICS .= $event->toVEVENT();
         }
@@ -79,3 +48,31 @@ $app->group('/calendar', function () {
 
     });
 });
+
+function getEvents($request){
+  $params = $request->getQueryParams();
+  if (isset($params['start']))
+  {
+    $start_date = DateTime::createFromFormat("Y-m-d",$params['start']);
+  }
+  else
+  {
+    $start_date = new DateTime();
+  }
+  $start_date->setTime(0,0,0);
+  $max_events = InputUtils::FilterInt($params['max']);
+
+  $events = ChurchCRM\EventQuery::create()
+          ->filterByPubliclyVisible(true)
+          ->orderByStart(Criteria::ASC);
+
+  if($start_date) {
+    $events->filterByStart($start_date,  Criteria::GREATER_EQUAL);
+  }
+
+  if ($max_events) {
+    $events->limit($max_events);
+  }
+
+  return $events->find();
+}
