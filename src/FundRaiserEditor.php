@@ -61,7 +61,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
             $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES ('.
             "'".$dDate."','".$sTitle."','".$sDescription."',".$_SESSION['iUserID'].",'".date('YmdHis')."')";
             $bGetKeyBack = true;
-            // Existing record (update)
+        // Existing record (update)
         } else {
             $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".$_SESSION['iUserID'].", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
             $bGetKeyBack = false;
