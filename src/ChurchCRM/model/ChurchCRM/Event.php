@@ -59,6 +59,4 @@ class Event extends BaseEvent
     else 
       return '';
   }
-  
-
 }

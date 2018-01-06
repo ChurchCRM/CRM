@@ -9,6 +9,7 @@
 namespace ChurchCRM\dto;
 use ChurchCRM\Event;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Service\SystemService;
 use Propel\Runtime\Collection\ObjectCollection;
 
 Class iCal {
@@ -20,7 +21,7 @@ Class iCal {
     $this->eventsArray = $Events;
     $this->icsHeader =  "BEGIN:VCALENDAR\r\n".
                     "VERSION:2.0\r\n".
-                    "PRODID:-//ChurchCRM/CRM//NONSGML v".$_SESSION['sSoftwareInstalledVersion']."//EN\r\n".
+                    "PRODID:-//ChurchCRM/CRM//NONSGML v".SystemService::getInstalledVersion()."//EN\r\n".
                     "CALSCALE:GREGORIAN\r\n".
                     "METHOD:PUBLISH\r\n".
                     "X-WR-CALNAME:".ChurchMetaData::getChurchName()."\r\n".
