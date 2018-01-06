@@ -63,12 +63,13 @@ class Event extends BaseEvent
   
   public function toVEVENT() {
     $now = new \DateTime();
+    $UTC = new \DateTimeZone("UTC");
         
     return "BEGIN:VEVENT\r\n".
           "UID:".$this->getId()."@".dto\ChurchMetaData::getChurchName()."\r\n".
-          "DTSTAMP:".$now->setTimezone(new \DateTimeZone("UTC"))->format('Ymd\THis\Z')."\r\n".
-          "DTSTART:".$this->getStart()->setTimezone(new \DateTimeZone("UTC"))->format('Ymd\THis\Z')."\r\n".
-          "DTEND:".$this->getEnd()->setTimezone(new \DateTimeZone("UTC"))->format('Ymd\THis\Z')."\r\n".
+          "DTSTAMP:".$now->setTimezone($UTC)->format('Ymd\THis\Z')."\r\n".
+          "DTSTART:".$this->getStart()->setTimezone($UTC)->format('Ymd\THis\Z')."\r\n".
+          "DTEND:".$this->getEnd()->setTimezone($UTC)->format('Ymd\THis\Z')."\r\n".
           "SUMMARY:".$this->getTitle()."\r\n".
           "END:VEVENT\r\n";
   }
