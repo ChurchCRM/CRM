@@ -7,18 +7,18 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Slim\Middleware\PublicCalendarAPIMiddleware;
 
-$app->group('/calendar', function () {
+$app->group('/public/calendar', function () {
     $this->get('/events', 'getJSON');
     $this->get('/ics','getICal');
-})->add(new \ChurchCRM\Slim\Middleware\PublicCalendarAPIMiddleware());
+})->add(new PublicCalendarAPIMiddleware());
 
 function getJSON ($request, $response, $args) {
-  $events = getEvents($request);
+  $events = getPublicEvents($request);
   return $response->withJson($events->toArray());
 }
 
 function getICal ($request, $response, $args) {
-  $events = getEvents($request);
+  $events = getPublicEvents($request);
 
   $CalendarICS = "BEGIN:VCALENDAR\r\n".
                  "VERSION:2.0\r\n".
@@ -41,7 +41,7 @@ function getICal ($request, $response, $args) {
      ->withHeader('Content-Disposition','attachment; filename=calendar.ics');;
 }
 
-function getEvents($request){
+function getPublicEvents($request){
   $params = $request->getQueryParams();
   if (isset($params['start']))
   {
