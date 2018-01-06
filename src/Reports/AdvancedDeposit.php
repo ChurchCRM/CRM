@@ -882,7 +882,7 @@ if ($output == 'pdf') {
     $pdf->FinishPage($page);
     $pdf->Output('DepositReport-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 
-    // Output a text file
+// Output a text file
 // ##################
 } elseif ($output == 'csv') {
 
