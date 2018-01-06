@@ -66,9 +66,9 @@ class Event extends BaseEvent
         
     return "BEGIN:VEVENT\n".
           "UID:".$this->getId()."@".dto\ChurchMetaData::getChurchName()."\n".
-          "DTSTAMP:".$now->setTimezone(new \DateTimeZone("UTC"))->format('Ymd\THis\Z')."\n".
-          "DTSTART:".$this->getStart()->setTimezone(new \DateTimeZone("UTC"))->format('Ymd\THis\Z')."\n".
-          "DTEND:".$this->getEnd()->setTimezone(new \DateTimeZone("UTC"))->format('Ymd\THis\Z')."\n".
+          "DTSTAMP:".$now->format('Ymd\THis\Z')."\n".
+          "DTSTART:".$this->getStart()->format('Ymd\THis\Z')."\n".
+          "DTEND:".$this->getEnd()->format('Ymd\THis\Z')."\n".
           "SUMMARY:".$this->getTitle()."\n".
           "END:VEVENT\n";
   }

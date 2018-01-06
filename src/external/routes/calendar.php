@@ -4,6 +4,7 @@
 
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\ChurchMetaData;
 
 $app->group('/calendar', function () {
     $this->get('/events', function ($request, $response, $args) {
@@ -58,8 +59,12 @@ $app->group('/calendar', function () {
         
         $CalendarICS = "BEGIN:VCALENDAR\n".
                        "VERSION:2.0\n".
-                       "PRODID:-//ChurchCRM/CRM//NONSGML v".$_SESSION['sSoftwareInstalledVersion']."//EN\n";
-                      
+                       "PRODID:-//ChurchCRM/CRM//NONSGML v".$_SESSION['sSoftwareInstalledVersion']."//EN\n".
+                       "CALSCALE:GREGORIAN\n".
+                       "METHOD:PUBLISH\n".
+                       "X-WR-CALNAME:".ChurchMetaData::getChurchName()."\n".
+                       "X-WR-TIMEZONE:".ChurchMetaData::getChurchTimeZone()."\n".
+                       "X-WR-CALDESC:\n";
         foreach($events->find() as $event)
         {
           $CalendarICS .= $event->toVEVENT();
