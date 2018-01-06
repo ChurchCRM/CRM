@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace ChurchCRM\dto;
+    namespace ChurchCRM\dto;
 use ChurchCRM\Event;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Service\SystemService;
