@@ -477,31 +477,32 @@ function handleEventSelect(start, end) {
 ;
 
 function handleEventRender(event, element, view) {
-      groupFilterID = window.groupFilterID;
-      EventTypeFilterID = window.EventTypeFilterID;
+  groupFilterID = window.groupFilterID;
+  EventTypeFilterID = window.EventTypeFilterID;
 
-      if (event.hasOwnProperty('type')) {
-        if (event.type == 'event'
-                && (groupFilterID == 0 || (groupFilterID > 0 && groupFilterID == event.groupID))
-                && (EventTypeFilterID == 0 || (EventTypeFilterID > 0 && EventTypeFilterID == event.eventTypeID))) {
-          return true;
-        } else if (event.type == 'event'
-                && ((groupFilterID > 0 && groupFilterID != event.groupID)
-                        || (EventTypeFilterID > 0 && EventTypeFilterID != event.eventTypeID))) {
+  if (event.hasOwnProperty('type')) {
+    if (event.type == 'event'
+            && (groupFilterID == 0 || (groupFilterID > 0 && groupFilterID == event.groupID))
+            && (EventTypeFilterID == 0 || (EventTypeFilterID > 0 && EventTypeFilterID == event.eventTypeID))) {
+      return true;
+    } else if (event.type == 'event'
+            && ((groupFilterID > 0 && groupFilterID != event.groupID)
+                    || (EventTypeFilterID > 0 && EventTypeFilterID != event.eventTypeID))) {
+      return false;
+    } else if ((event.allDay || event.type != 'event')) {// we are in a allDay event          
+      if (event.type == 'anniversary' && anniversary == true || event.type == 'birthday' && birthday == true) {
+        var evStart = moment(view.intervalStart).subtract(1, 'days');
+        var evEnd = moment(view.intervalEnd).subtract(1, 'days');
+        if (!event.start.isAfter(evStart) || event.start.isAfter(evEnd)) {
           return false;
-        } else if ((event.allDay || event.type != 'event')) {// we are in a allDay event          
-          if (event.type == 'anniversary' && anniversary == true || event.type == 'birthday' && birthday == true) {
-            var evStart = moment(view.intervalStart).subtract(1, 'days');
-            var evEnd = moment(view.intervalEnd).subtract(1, 'days');
-            if (!event.start.isAfter(evStart) || event.start.isAfter(evEnd)) {
-              return false;
-            }
-          } else {
-            return false;
-          }
         }
+      } else {
+        return false;
       }
-    };
+    }
+  }
+}
+;
 $(document).ready(function () {
 
   //
@@ -523,6 +524,6 @@ $(document).ready(function () {
     eventLimit: withlimit, // allow "more" link when too many events
     locale: window.CRM.lang,
     events: window.CRM.root + '/api/calendar/events',
-    eventRender: handleEventRender 
+    eventRender: handleEventRender
   });
 });
