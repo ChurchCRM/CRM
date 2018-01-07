@@ -475,28 +475,8 @@ function handleEventSelect(start, end) {
   $("#ATTENDENCES").parents("tr").hide();
 }
 ;
-$(document).ready(function () {
 
-  //
-  // initialize the calendar
-  // -----------------------------------------------------------------
-  $('#calendar').fullCalendar({
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay,listMonth'
-    },
-    height: 500,
-    selectable: isModifiable,
-    editable: isModifiable,
-    eventDrop: handleEventDrop,
-    eventResize: handleEventResize,
-    selectHelper: true,
-    select: handleEventSelect,
-    eventLimit: withlimit, // allow "more" link when too many events
-    locale: window.CRM.lang,
-    events: window.CRM.root + '/api/calendar/events',
-    eventRender: function (event, element, view) {
+function handleEventRender(event, element, view) {
       groupFilterID = window.groupFilterID;
       EventTypeFilterID = window.EventTypeFilterID;
 
@@ -521,6 +501,28 @@ $(document).ready(function () {
           }
         }
       }
-    }
+    };
+$(document).ready(function () {
+
+  //
+  // initialize the calendar
+  // -----------------------------------------------------------------
+  $('#calendar').fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay,listMonth'
+    },
+    height: 500,
+    selectable: isModifiable,
+    editable: isModifiable,
+    eventDrop: handleEventDrop,
+    eventResize: handleEventResize,
+    selectHelper: true,
+    select: handleEventSelect,
+    eventLimit: withlimit, // allow "more" link when too many events
+    locale: window.CRM.lang,
+    events: window.CRM.root + '/api/calendar/events',
+    eventRender: handleEventRender 
   });
 });
