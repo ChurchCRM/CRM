@@ -8803,7 +8803,7 @@ msgstr "Nueva Familia Agregada"
 msgid "Church Greeter"
 msgstr "Recibidor de Personas"
 
-#: external/routes/calendar.php:12
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:14
 msgid "External Calendar API is disabled"
 msgstr "API de calendario externo está deshabilitado"
 
@@ -9331,4 +9331,72 @@ msgstr "Oops!"
 #: v2/templates/people/not-found-view.php:20
 msgid "Meanwhile, you may"
 msgstr "Mientras tanto, podría"
+
+#: BackupDatabase.php:50
+msgid "Database Only (.sql)"
+msgstr "Solo Base de Datos (.sql)"
+
+#: BackupDatabase.php:51
+msgid "Database and Photos (.tar.gz)"
+msgstr "Base de Datos y Fotos (.tar.gz)"
+
+#: ChurchCRM/Slim/Middleware/AdminRoleAuthMiddleware.php:16
+msgid "User must be an Admin"
+msgstr "Usuario debe ser un Admin"
+
+#: ChurchCRM/Slim/Middleware/AuthMiddleware.php:18
+msgid "No logged in user"
+msgstr "No hay usuario conectado"
+
+#: ChurchCRM/dto/SystemConfig.php:224
+msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
+msgstr "Establecer el tamaño estándar de la imagen de perfil  en pixeles para ser usada en listas de personas, 85 pixeles por defecto."
+
+#: api/routes/families.php:127
+msgid "not found"
+msgstr "no encontrado"
+
+#: api/routes/groups.php:128
+msgid "Deleted from group"
+msgstr "Borrado del grupo"
+
+#: api/routes/groups.php:160
+msgid "Added to group"
+msgstr "Agregado al grupo"
+
+#: v2/templates/people/not-found-view.php:19
+msgid "We could not find the person(s) you were looking for."
+msgstr "No pudimos encontrar a las personas que usted estaba buscando."
+
+#: v2/templates/people/not-found-view.php:20
+msgid "return to People Dashboard"
+msgstr "volver al Dashboard de Personas"
+
+#: ChurchCRM/Slim/Middleware/MenuOptionsRoleAuthMiddleware.php:16
+msgid "User must have MenuOptions permission"
+msgstr "Usuario debe tener permiso MenuOptions"
+
+#: EventEditor.php:516
+msgid "Event Publicly Visible"
+msgstr "Evento Públicamente Visible"
+
+#: FamilyView.php:169
+msgid "Try our the Beta family view"
+msgstr "Pruebe la Beta de vista de familia"
+
+#: v2/routes/email.php:57
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "Servidor SMTP no ha sido configurado, por favor visite la página de ajustes"
+
+#: v2/routes/email.php:62
+msgid "Debug Email Connection"
+msgstr "Depurar Conexión de Email"
+
+#: v2/templates/people/family-view.php:29
+msgid "This Family is Deactivated"
+msgstr "Esta Familia está Desactivada"
+
+#: v2/templates/people/family-view.php:135
+msgid "Metadata"
+msgstr "Metadata"
 
