@@ -166,7 +166,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 </script>
 
 <div class="alert alert-info">
-    <strong><a href="/v2/family/<?= $iFamilyID ?>/view"><?= gettext("Try our the Beta family view") ?></a> </strong>
+    <strong><a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>/view"><?= gettext("Try our the Beta family view") ?></a> </strong>
 </div>
 
 <?php if (!empty($fam_DateDeactivated)) {

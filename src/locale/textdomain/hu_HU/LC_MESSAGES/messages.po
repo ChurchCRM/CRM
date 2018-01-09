@@ -163,6 +163,10 @@ msgstr "Email"
 msgid "Credit Card"
 msgstr "Hitelkártya"
 
+#: AutoPaymentEditor.php:956
+msgid "Vanco Credit Card Method"
+msgstr "Vanco Hitelkártya Metódus"
+
 #: AutoPaymentEditor.php:965
 msgid "Expiration Month"
 msgstr "Lejárati hónap"
@@ -186,6 +190,10 @@ msgstr "Bankszámlaszám"
 #: BackupDatabase.php:32 Include/Footer.php:178
 msgid "Backup Database"
 msgstr "Backup Database"
+
+#: BackupDatabase.php:38
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Ez az eszköz segít neked mauális biztonsági mentést csinálni a ChurchCRM adatbázisról."
 
 #: BackupDatabase.php:42
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
@@ -249,6 +257,14 @@ msgstr "Kötelező"
 #, fuzzy
 msgid "Middle Name"
 msgstr "Középső név"
+
+#: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
+#: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
+#: PersonEditor.php:906 Register.php:46
+#: external/templates/registration/family-register.php:51
+#: external/templates/verify/enter-info.php:29
+msgid "Zip"
+msgstr "Irányítószám"
 
 #: CSVExport.php:117
 #, fuzzy
@@ -1264,6 +1280,10 @@ msgstr "Type"
 msgid "Fiscal Year"
 msgstr "Költségvetési év"
 
+#: ElectronicPaymentList.php:198
+msgid "Next Date"
+msgstr "Következő dátum"
+
 #: ElectronicPaymentList.php:199 FamilyView.php:658 FamilyView.php:767
 #: PledgeEditor.php:714 SelectDelete.php:219
 msgid "Amount"
@@ -1391,6 +1411,10 @@ msgstr "Esemény Prédikáció"
 #, fuzzy
 msgid "Event Status"
 msgstr "Event Állapot"
+
+#: EventEditor.php:590
+msgid "Return to Events"
+msgstr "Vissza az eseményekhez"
 
 #: EventNames.php:150
 msgid "EVENT TYPE NAME"

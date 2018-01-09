@@ -1,7 +1,7 @@
 ALTER TABLE `events_event` 
   ADD COLUMN `event_publicly_visible` BOOLEAN DEFAULT FALSE AFTER `event_grpid`;
 
-DROP VIEW email_list;
+DROP VIEW IF EXISTS email_list;
 CREATE VIEW email_list AS
     SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != '' 
     UNION 
@@ -10,6 +10,6 @@ CREATE VIEW email_list AS
     SELECT per_WorkEmail AS email, 'person_work' AS type, per_id AS id FROM person_per WHERE per_WorkEmail IS NOT NULL AND per_WorkEmail != '';
     
     
-DROP VIEW email_count;    
+DROP VIEW IF EXISTS email_count; 
 CREATE VIEW email_count AS    
     SELECT email, COUNT(*) AS total FROM email_list group by email;

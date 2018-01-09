@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-04 16:00+0000\n"
+"POT-Creation-Date: 2018-01-09 23:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-01-04T16:00:25.648Z\n"
-"PO-Revision-Date: 2018-01-04T16:00:25.648Z\n"
+"POT-Creation-Date: 2018-01-09T23:20:59.829Z\n"
+"PO-Revision-Date: 2018-01-09T23:20:59.829Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:230
@@ -1504,6 +1504,10 @@ msgstr ""
 
 #: ChurchCRM/Slim/Middleware/MenuOptionsRoleAuthMiddleware.php:16
 msgid "User must have MenuOptions permission"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:14
+msgid "External Calendar API is disabled"
 msgstr ""
 
 #: ChurchCRM/dto/Cart.php:23 ChurchCRM/dto/Cart.php:82
@@ -7313,10 +7317,6 @@ msgstr ""
 
 #: email/MailChimpMissingReport.php:23
 msgid "People not in Mailchimp"
-msgstr ""
-
-#: external/routes/calendar.php:12
-msgid "External Calendar API is disabled"
 msgstr ""
 
 #: external/routes/password.php:65
