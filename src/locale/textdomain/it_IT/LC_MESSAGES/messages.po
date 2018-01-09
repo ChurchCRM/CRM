@@ -636,9 +636,13 @@ msgid "Check to confirm"
 msgstr "Spunta per Confermare"
 
 #: CanvassAutomation.php:139
-#, fuzzy
 msgid "Assign Canvassers"
-msgstr "Buste assegnate:"
+msgstr "Assegna Consulenti"
+
+#. Please check the english phrase
+#: CanvassAutomation.php:143
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "Assegna casualmente consulenti alle famiglie. I consulenti sono presi da &quot;Promotori&quot; Grouppo."
 
 #: CanvassAutomation.php:150
 #, fuzzy
@@ -647,16 +651,27 @@ msgstr "Assegna ruolo"
 
 #: CanvassAutomation.php:161
 msgid "Clear Canvasser Assignments"
-msgstr "Cancella canvasser Assegnazioni"
+msgstr "Cancella Assegnazioni Consulente"
+
+#: CanvassAutomation.php:165
+msgid "Clear all the canvasser assignments for all families."
+msgstr "Cancella le assegnazioni del consulente a tutte le famiglie"
+
+#: CanvassAutomation.php:165
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "Nota importante: questo perderà qualsiasi assegnazione di consulenza che sono state fatte a mano."
 
 #: CanvassAutomation.php:172
 msgid "Enable Canvass for All Families"
-msgstr "Abilita Canvass per tutte le famiglie"
+msgstr "Abilità Consulente per tutte le famiglie"
+
+#: CanvassAutomation.php:176
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "abilità &quot;OK per Consulente&;quot; campo per tutte le Famiglie."
 
 #: CanvassAutomation.php:183
-#, fuzzy
 msgid "Disable Canvass for All Families"
-msgstr "Visualizza tutte le famiglie"
+msgstr "Disabilita Consulente per tutte le Famiglie"
 
 #: CanvassAutomation.php:194
 msgid "Briefing Sheets"
@@ -701,56 +716,51 @@ msgstr "Critico"
 
 #: CanvassEditor.php:210 Reports/CanvassReports.php:347
 msgid "Insightful"
-msgstr "Ipocrisia"
+msgstr "Perspicace"
 
 #: CanvassEditor.php:215 Reports/CanvassReports.php:347
-#, fuzzy
 msgid "Financial"
-msgstr "Finanza"
+msgstr "Finanziario"
 
 #: CanvassEditor.php:220
 msgid "Suggestions"
 msgstr "Suggerimenti"
 
 #: CanvassEditor.php:225
-#, fuzzy
 msgid "Not Interested"
-msgstr "Data inserita"
+msgstr "Non interessato"
 
 #: CanvassEditor.php:232
 msgid "Why Not Interested?"
-msgstr "Why Not Interessato?"
+msgstr "Perché non sei interessato?"
 
 #: CartToEvent.php:50 CartToEvent.php:83
-#, fuzzy
 msgid "Add Cart to Event"
-msgstr "Aggiungi il contenitore al gruppo"
+msgstr "Aggiungi carrello al gruppo"
 
 #: CartToEvent.php:57
-#, fuzzy
 msgid "Select the event to which you would like to add your cart"
-msgstr "Seleziona il gruppo a cui vorresti aggiungere gli elementi nel contenitore"
+msgstr "Seleziona l'evento a cui desideri aggiungere il carrello"
 
 #: CartToEvent.php:84
 msgid "OR"
 msgstr "OPPURE"
 
 #: CartToEvent.php:85 Checkin.php:105 ListEvents.php:344
-#, fuzzy
 msgid "Add New Event"
-msgstr "Aggiungi nuova persona"
+msgstr "Aggiungi Nuovo Evento"
 
 #: CartToEvent.php:92 CartToFamily.php:325 CartToGroup.php:101
 msgid "Your cart is empty!"
-msgstr "Il contenitore è vuoto!"
+msgstr "Il carrello è vuoto!"
 
 #: CartToFamily.php:84
 msgid "No family name entered!"
-msgstr "Nessuna famiglia inserita!"
+msgstr "Nessun nome di famiglia inserito!"
 
 #: CartToFamily.php:123
 msgid "Add Cart to Family"
-msgstr "Aggiungi il contenitore alla famiglia"
+msgstr "Aggiungi carrello alla Famiglia"
 
 #: CartToFamily.php:155 CartView.php:270 Checkin.php:311
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
@@ -789,9 +799,8 @@ msgid "If adding a new family, enter data below."
 msgstr "Se stai aggiungendo una nuova famiglia, inserisci i dati qua sotto."
 
 #: CartToFamily.php:216
-#, fuzzy
 msgid "Use address/contact data from"
-msgstr "Per l'indirizzo/i contatti, usa i dati da"
+msgstr "Usa indirizzo/dati di contatto da"
 
 #: CartToFamily.php:220
 msgid "Only the new data below"
@@ -817,13 +826,11 @@ msgid "Add Cart to Group"
 msgstr "Aggiungi il contenitore al gruppo"
 
 #: CartToGroup.php:66
-#, fuzzy
 msgid "Select the group to which you would like to add your cart"
-msgstr "Seleziona il gruppo a cui vorresti aggiungere gli elementi nel contenitore"
+msgstr "Selezionare il gruppo a cui si desidera aggiungere il carrello"
 
 #: CartToGroup.php:70 GroupReports.php:43 PersonToGroup.php:62
 #: sundayschool/SundaySchoolReports.php:186
-#, fuzzy
 msgid "Select Group"
 msgstr "Seleziona il gruppo"
 
@@ -837,86 +844,78 @@ msgstr "Aggiungi al gruppo"
 
 #: CartView.php:20
 msgid "View Your Cart"
-msgstr "Visualizza il contenitore"
+msgstr "Visualizza il carrello"
 
 #: CartView.php:28
 msgid "You have no items in your cart."
-msgstr "Non hai elementi nel contenitore."
+msgstr "Non hai elementi nel carrello."
 
 #: CartView.php:37
-#, fuzzy
 msgid "Back to Menu"
-msgstr "Torna alla scheda personale"
+msgstr "Torna al Menu"
 
 #: CartView.php:71
 msgid "Go To Labels"
-msgstr "Vai a etichette"
+msgstr "Vai alle Etichette"
 
 #: CartView.php:87
 msgid "Empty Cart"
-msgstr "Svuota contenitore"
+msgstr "Svuota carrello"
 
 #: CartView.php:90
 msgid "Empty Cart to Group"
-msgstr "Svuota contenitore nel gruppo"
+msgstr "Svuota carrello nel gruppo"
 
 #: CartView.php:96
 msgid "Empty Cart to Family"
-msgstr "Svuota contenitore nella famiglia"
+msgstr "Svuota carrello nella famiglia"
 
 #: CartView.php:100
-#, fuzzy
 msgid "Empty Cart to Event"
-msgstr "Svuota contenitore nel gruppo"
+msgstr "Svuota carrello nell' evento"
 
 #: CartView.php:109
-#, fuzzy
 msgid "Map Cart"
-msgstr "Contenitore"
+msgstr "Mappa Carrello"
 
 #: CartView.php:111
-#, fuzzy
 msgid "Name Tags"
-msgstr "Nome"
+msgstr "Nome Etichette"
 
 #: CartView.php:145
-#, fuzzy
 msgid "Email Cart"
-msgstr "Email inviata"
+msgstr "Email Carrello"
 
 #: CartView.php:146 GroupView.php:139
 #: sundayschool/SundaySchoolClassView.php:101
-#, fuzzy
 msgid "Email (BCC)"
-msgstr "Email"
+msgstr "Email (copia nascosta)"
 
 #: CartView.php:176
-#, fuzzy
 msgid "Create Directory From Cart"
-msgstr "Crea directory"
+msgstr "Creare elenco da carrello"
 
 #: CartView.php:200 CartView.php:242
 msgid "Generate Labels"
-msgstr "Crea le etichette"
+msgstr "Genera etichette"
 
 #: CartView.php:208
+#, fuzzy
 msgid "Bulk Mail Presort"
-msgstr "Bulk ordinamento preliminare posta"
+msgstr "Ordinamento preliminare posta di massa"
 
 #: CartView.php:217
 #, fuzzy
 msgid "Quiet Presort"
-msgstr "Directory dei rapporti"
+msgstr "Ordinamento preliminare silenzioso"
 
 #: CartView.php:263
-#, fuzzy
 msgid "Your cart contains"
-msgstr "Il contenitore è vuoto!"
+msgstr "Il tuo carrello contiene"
 
 #: CartView.php:263
-#, fuzzy
 msgid "persons from"
-msgstr "Persona dal gruppo"
+msgstr "persone da"
 
 #: CartView.php:273 CartView.php:331 EditEventTypes.php:166 FamilyView.php:554
 #: FamilyView.php:596 GroupView.php:293 GroupView.php:334 PersonView.php:681
@@ -936,65 +935,66 @@ msgstr "Sì"
 msgid "No"
 msgstr "No"
 
+#: Include/Header.php:145 Include/Header.php:146
+msgid "Developer Chat"
+msgstr "Chat per Sviluppatori"
+
 #: Checkin.php:15
 msgid "Event Checkin"
 msgstr "Evento Checkin"
 
 #: Checkin.php:75
-#, fuzzy
 msgid "Select the event to which you would like to check people in for"
-msgstr "Seleziona il gruppo a cui vorresti aggiungere gli elementi nel contenitore"
+msgstr "Selezionare l'evento a cui si desidera effettuare il check in per le persone"
 
 #: CartToEvent.php:68 Checkin.php:84
-#, fuzzy
 msgid "Select Event"
-msgstr "Seleziona stagione"
+msgstr "Seleziona Evento"
 
 #: external/templates/verify/verify-family-info.php:152
 msgid "Verify"
 msgstr "Verificare"
 
 #: Checkin.php:172
-#, fuzzy
 msgid "Add Visitor"
-msgstr "Aggiungi al contenitore"
+msgstr "Aggiungi Visitatore"
 
 #: Checkin.php:165
 #, fuzzy
 msgid "CheckIn"
-msgstr "Assegno"
+msgstr "Check-In"
 
 #: Checkin.php:273 Checkin.php:366
 #, fuzzy
 msgid "CheckOut"
-msgstr "Assegno"
+msgstr "Check-Out"
 
 #: Checkin.php:312
 msgid "Checked In Time"
-msgstr "Controllato In Time"
+msgstr "Data di Registrazione"
 
 #: Checkin.php:313
 msgid "Checked In By"
-msgstr "Archiviato da"
+msgstr "Registrato da"
 
 #: Checkin.php:314
-#, fuzzy
 msgid "Checked Out Time"
-msgstr "Assegno numero:"
+msgstr "Ora del Check-Out"
 
 #: Checkin.php:315
+#, fuzzy
 msgid "Checked Out By"
-msgstr "Estratto da"
+msgstr "Registrato da"
 
 #: Checkin.php:316 EditEventAttendees.php:44 EventNames.php:267
 #: ListEvents.php:205 PersonView.php:628
 #, fuzzy
 msgid "Action"
-msgstr "Opzione"
+msgstr "Azione"
 
 #: EditEventAttendees.php:84
 msgid "No Attendees Assigned to Event"
-msgstr "Nessun partecipante assegnati all&#39;evento"
+msgstr "Nessun partecipante assegnato all'evento"
 
 #: Checkin.php:455 Include/Functions.php:1406 Reports/CanvassReports.php:241
 #: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
@@ -1010,9 +1010,8 @@ msgid "(No assigned family)"
 msgstr "(Nessuna famiglia assegnata)"
 
 #: ConvertIndividualToFamily.php:39
-#, fuzzy
 msgid "Convert Individuals to Families"
-msgstr "Aggiungi persone al contenitore"
+msgstr "Converti Individui a Famiglie"
 
 #: ConvertIndividualToFamily.php:137
 msgid "Convert Next"
@@ -1023,9 +1022,12 @@ msgid "Convert All"
 msgstr "Converti tutto"
 
 #: DepositSlipEditor.php:50
-#, fuzzy
 msgid "Deposit Slip Number: "
-msgstr "Massimo numero di buste:"
+msgstr "Numero di versamento del deposito: ␣"
+
+#: DepositSlipEditor.php:72
+msgid "Deposit Details: "
+msgstr "Dettagli del deposito: ␣"
 
 #: DepositSlipEditor.php:89
 msgid "Close deposit slip (remember to press Save)"
@@ -1039,18 +1041,21 @@ msgstr "Deposito Relazione slittamento"
 msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
 msgstr "Nota importante: le transazioni fallite verranno eliminati permanantly quando la ricevuta di deposito è chiuso."
 
+#: DepositSlipEditor.php:111
+msgid "Deposit Summary: "
+msgstr "Riepilogo deposito: ␣"
+
 #: DepositSlipEditor.php:144
 msgid "Payments on this deposit slip:"
 msgstr "I pagamenti su questo ricevuta di deposito:"
 
 #: DepositSlipEditor.php:149 eGive.php:267
 msgid "Import eGive"
-msgstr "Importazione eGive"
+msgstr "Importa eDare"
 
 #: DepositSlipEditor.php:151
-#, fuzzy
 msgid "Add Payment"
-msgstr "Aggiungi una nuova"
+msgstr "Aggiungi Pagamento"
 
 #: DepositSlipEditor.php:155
 msgid "Load Authorized Transactions"

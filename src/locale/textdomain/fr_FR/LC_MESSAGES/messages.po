@@ -8765,7 +8765,7 @@ msgstr "Nouvelle Famille ajoutée"
 msgid "Church Greeter"
 msgstr "Personne d'accueil"
 
-#: external/routes/calendar.php:12
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:14
 msgid "External Calendar API is disabled"
 msgstr "API calendrier externe désactivé"
 
