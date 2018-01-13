@@ -133,7 +133,6 @@ if (isset($_POST['User'])) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
-        
     }
 } elseif (isset($_GET['username'])) {
     $urlUserName = $_GET['username'];
