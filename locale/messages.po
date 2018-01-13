@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-09 23:20+0000\n"
+"POT-Creation-Date: 2018-01-13 04:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,11 +24,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-01-09T23:20:59.829Z\n"
-"PO-Revision-Date: 2018-01-09T23:20:59.829Z\n"
+"POT-Creation-Date: 2018-01-13T04:22:46.772Z\n"
+"PO-Revision-Date: 2018-01-13T04:22:46.772Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:230
+#: Include/Functions.php:233
 msgid "Cannot execute query."
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 #: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
 #: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
 #: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:852 Include/Functions.php:905
+#: Include/Functions.php:855 Include/Functions.php:908
 #: Include/Header-function.php:317 MapUsingGoogle.php:96
 #: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
 #: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
@@ -135,7 +135,7 @@ msgstr ""
 
 #: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:78
 #: EditEventAttendees.php:33 FamilyView.php:766 FindFundRaiser.php:236
-#: FundRaiserEditor.php:164 Include/Functions.php:93 PledgeEditor.php:518
+#: FundRaiserEditor.php:164 Include/Functions.php:96 PledgeEditor.php:518
 #: SelectDelete.php:218
 msgid "Date"
 msgstr ""
@@ -350,7 +350,7 @@ msgstr ""
 msgid "Encrypt backup file with a password?"
 msgstr ""
 
-#: BackupDatabase.php:55 Login.php:218 Login.php:296 UserList.php:58
+#: BackupDatabase.php:55 Login.php:236 Login.php:314 UserList.php:58
 msgid "Password"
 msgstr ""
 
@@ -1008,7 +1008,7 @@ msgstr ""
 
 #: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
 #: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
-#: Include/Functions.php:895 PersonEditor.php:977 PersonEditor.php:1001
+#: Include/Functions.php:898 PersonEditor.php:977 PersonEditor.php:1001
 #: PersonEditor.php:1025
 msgid "Do not auto-format"
 msgstr ""
@@ -1124,7 +1124,7 @@ msgstr ""
 msgid "persons from"
 msgstr ""
 
-#: CartView.php:263 Include/Functions.php:113
+#: CartView.php:263 Include/Functions.php:116
 msgid "families"
 msgstr ""
 
@@ -1135,14 +1135,14 @@ msgid "Remove"
 msgstr ""
 
 #: CartView.php:294 CartView.php:314 DonationFundEditor.php:177
-#: FinancialReports.php:295 Include/Functions.php:682
-#: Include/Functions.php:766 ListEvents.php:296 Reports/ConfirmReport.php:227
+#: FinancialReports.php:295 Include/Functions.php:685
+#: Include/Functions.php:769 ListEvents.php:296 Reports/ConfirmReport.php:227
 msgid "Yes"
 msgstr ""
 
 #: CartView.php:307 CartView.php:316 DonationFundEditor.php:180
-#: FinancialReports.php:296 Include/Functions.php:684
-#: Include/Functions.php:767 ListEvents.php:296 Reports/ConfirmReport.php:229
+#: FinancialReports.php:296 Include/Functions.php:687
+#: Include/Functions.php:770 ListEvents.php:296 Reports/ConfirmReport.php:229
 msgid "No"
 msgstr ""
 
@@ -1227,7 +1227,7 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: Checkin.php:455 Include/Functions.php:1406 Reports/CanvassReports.php:241
+#: Checkin.php:455 Include/Functions.php:1409 Reports/CanvassReports.php:241
 #: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr ""
@@ -1243,7 +1243,7 @@ msgstr ""
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
 #: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:52
-#: FamilyEditor.php:1017 Include/Functions.php:768 PeopleDashboard.php:336
+#: FamilyEditor.php:1017 Include/Functions.php:771 PeopleDashboard.php:336
 #: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
 msgid "Unknown"
 msgstr ""
@@ -1304,7 +1304,7 @@ msgstr ""
 msgid "Your ChurchCRM Account was Deleted."
 msgstr ""
 
-#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:214
+#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:232
 msgid "Email/Username"
 msgstr ""
 
@@ -1475,7 +1475,7 @@ msgstr ""
 msgid "from file"
 msgstr ""
 
-#: ChurchCRM/Service/SystemService.php:95
+#: ChurchCRM/Service/SystemService.php:96
 msgid ""
 "As part of the restore, external backups have been disabled.  If you wish to "
 "continue automatic backups, you must manuall re-enable the "
@@ -2954,7 +2954,8 @@ msgstr ""
 msgid "Month"
 msgstr ""
 
-#: ElectronicPaymentList.php:212 FamilyEditor.php:947 Include/Functions.php:97
+#: ElectronicPaymentList.php:212 FamilyEditor.php:947
+#: Include/Functions.php:100
 msgid "Year"
 msgstr ""
 
@@ -4040,7 +4041,7 @@ msgstr ""
 msgid "Fundraiser Listing"
 msgstr ""
 
-#: FindFundRaiser.php:75 FindFundRaiser.php:235 Include/Functions.php:99
+#: FindFundRaiser.php:75 FindFundRaiser.php:235 Include/Functions.php:102
 #: PaddleNumEditor.php:167 PaddleNumList.php:53
 msgid "Number"
 msgstr ""
@@ -4081,7 +4082,7 @@ msgstr ""
 msgid "Create New Fund Raiser"
 msgstr ""
 
-#: FundRaiserEditor.php:52 Include/Functions.php:1119 PledgeEditor.php:318
+#: FundRaiserEditor.php:52 Include/Functions.php:1122 PledgeEditor.php:318
 msgid "Not a valid date"
 msgstr ""
 
@@ -4660,155 +4661,155 @@ msgstr ""
 msgid "task(s)"
 msgstr ""
 
-#: Include/Functions.php:92
+#: Include/Functions.php:95
 msgid "True / False"
 msgstr ""
 
-#: Include/Functions.php:94
+#: Include/Functions.php:97
 msgid "Text Field (50 char)"
 msgstr ""
 
-#: Include/Functions.php:95
+#: Include/Functions.php:98
 msgid "Text Field (100 char)"
 msgstr ""
 
-#: Include/Functions.php:96
+#: Include/Functions.php:99
 msgid "Text Field (long)"
 msgstr ""
 
-#: Include/Functions.php:98
+#: Include/Functions.php:101
 msgid "Season"
 msgstr ""
 
-#: Include/Functions.php:100
+#: Include/Functions.php:103
 msgid "Person from Group"
 msgstr ""
 
-#: Include/Functions.php:101
+#: Include/Functions.php:104
 msgid "Money"
 msgstr ""
 
-#: Include/Functions.php:102
+#: Include/Functions.php:105
 msgid "Phone Number"
 msgstr ""
 
-#: Include/Functions.php:103
+#: Include/Functions.php:106
 msgid "Custom Drop-Down List"
 msgstr ""
 
-#: Include/Functions.php:109
+#: Include/Functions.php:112
 msgid "Thank you for registering your ChurchCRM installation."
 msgstr ""
 
-#: Include/Functions.php:113
+#: Include/Functions.php:116
 msgid "PDFs successfully emailed "
 msgstr ""
 
-#: Include/Functions.php:118
+#: Include/Functions.php:121
 msgid "PDF successfully emailed to family members."
 msgstr ""
 
-#: Include/Functions.php:120
+#: Include/Functions.php:123
 msgid "Failed to email PDF to family members."
 msgstr ""
 
-#: Include/Functions.php:127
+#: Include/Functions.php:130
 msgid "Group successfully added to the Cart."
 msgstr ""
 
-#: Include/Functions.php:133
+#: Include/Functions.php:136
 msgid "Group successfully removed from the Cart."
 msgstr ""
 
-#: Include/Functions.php:137
+#: Include/Functions.php:140
 msgid "Profile Image successfully removed."
 msgstr ""
 
-#: Include/Functions.php:141
+#: Include/Functions.php:144
 msgid "Profile Image successfully updated."
 msgstr ""
 
-#: Include/Functions.php:145
+#: Include/Functions.php:148
 msgid "Profile Image upload Error."
 msgstr ""
 
-#: Include/Functions.php:152
+#: Include/Functions.php:155
 msgid "Selected record successfully removed from the Cart."
 msgstr ""
 
-#: Include/Functions.php:170
+#: Include/Functions.php:173
 msgid "item(s) added to the Cart."
 msgstr ""
 
-#: Include/Functions.php:195
+#: Include/Functions.php:198
 msgid "Select Fiscal Year"
 msgstr ""
 
-#: Include/Functions.php:424
+#: Include/Functions.php:427
 msgid "pm"
 msgstr ""
 
-#: Include/Functions.php:429
+#: Include/Functions.php:432
 msgid "am"
 msgstr ""
 
-#: Include/Functions.php:750
+#: Include/Functions.php:753
 msgid "Invalid Editor ID!"
 msgstr ""
 
-#: Include/Functions.php:805
+#: Include/Functions.php:808
 msgid "Select Season"
 msgstr ""
 
-#: Include/Functions.php:810
+#: Include/Functions.php:813
 msgid "Winter"
 msgstr ""
 
-#: Include/Functions.php:815
+#: Include/Functions.php:818
 msgid "Spring"
 msgstr ""
 
-#: Include/Functions.php:820
+#: Include/Functions.php:823
 msgid "Summer"
 msgstr ""
 
-#: Include/Functions.php:825
+#: Include/Functions.php:828
 msgid "Fall"
 msgstr ""
 
-#: Include/Functions.php:922
+#: Include/Functions.php:925
 msgid "Error: Invalid Editor ID!"
 msgstr ""
 
-#: Include/Functions.php:1131
+#: Include/Functions.php:1134
 msgid "Invalid Year"
 msgstr ""
 
-#: Include/Functions.php:1134
+#: Include/Functions.php:1137
 msgid "Out of range: Allowable values are 1901 to 2155"
 msgstr ""
 
-#: Include/Functions.php:1147 Include/Functions.php:1163
+#: Include/Functions.php:1150 Include/Functions.php:1166
 msgid "Invalid Number"
 msgstr ""
 
-#: Include/Functions.php:1150
+#: Include/Functions.php:1153
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr ""
 
-#: Include/Functions.php:1166
+#: Include/Functions.php:1169
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr ""
 
-#: Include/Functions.php:1316
+#: Include/Functions.php:1319
 msgid " Bold Italic"
 msgstr ""
 
-#: Include/Functions.php:1319
+#: Include/Functions.php:1322
 msgid " Italic"
 msgstr ""
 
-#: Include/Functions.php:1321
+#: Include/Functions.php:1324
 msgid " Bold"
 msgstr ""
 
@@ -5107,31 +5108,31 @@ msgid ""
 "administrator."
 msgstr ""
 
-#: Login.php:181 Login.php:231
+#: Login.php:199 Login.php:249
 msgid "Login"
 msgstr ""
 
-#: Login.php:194 Login.php:256
+#: Login.php:212 Login.php:274
 msgid "Please Login"
 msgstr ""
 
-#: Login.php:199 Login.php:264
+#: Login.php:217 Login.php:282
 msgid "Your previous session timed out.  Please login again."
 msgstr ""
 
-#: Login.php:223
+#: Login.php:241
 msgid "I forgot my password"
 msgstr ""
 
-#: Login.php:239
+#: Login.php:257
 msgid "Register a new Family"
 msgstr ""
 
-#: Login.php:307
+#: Login.php:325
 msgid "Enter your password to retrieve your session"
 msgstr ""
 
-#: Login.php:310
+#: Login.php:328
 msgid "Or sign in as a different user"
 msgstr ""
 
@@ -6541,7 +6542,7 @@ msgstr ""
 msgid "No Restore Running"
 msgstr ""
 
-#: RestoreDatabase.php:63 api/routes/database.php:26
+#: RestoreDatabase.php:63 api/routes/database.php:34
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr ""
 
@@ -7180,6 +7181,10 @@ msgstr ""
 
 #: api/routes/cart.php:67
 msgid "Your cart has been successfully emptied"
+msgstr ""
+
+#: api/routes/database.php:78
+msgid "The database has been cleared."
 msgstr ""
 
 #: api/routes/families.php:127
