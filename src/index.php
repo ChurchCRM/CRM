@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-header ("CRM: would redirect");
+header("CRM: would redirect");
 
 if (file_exists('Include/Config.php')) {
     require_once 'Include/Config.php';
