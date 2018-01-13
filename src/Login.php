@@ -125,8 +125,14 @@ if (isset($_POST['User'])) {
         $systemService = new SystemService();
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         NotificationService::updateNotifications();
-        RedirectUtils::Redirect('Menu.php');
-        exit;
+        $redirectLocation = $_SESSION['location'];
+        if (isset($redirectLocation)) {
+            RedirectUtils::Redirect($redirectLocation);
+            exit;
+        } else {
+            RedirectUtils::Redirect('Menu.php');
+            exit;
+        }
     }
 } elseif (isset($_GET['username'])) {
     $urlUserName = $_GET['username'];
@@ -159,6 +165,10 @@ if (empty($urlUserName)) {
     }
 }
 
+if (isset($_SESSION['location'])) {
+    $LocationFromSession = $_SESSION['location'];
+}
+
 // we destroy the session
 session_destroy();
 
@@ -169,7 +179,15 @@ session_start() ;
 $_SESSION['iLoginType'] = $type;
 $_SESSION['username'] = $urlUserName;
 $_SESSION['iUserID'] = $id;
+$LocationFromGet = InputUtils::FilterString(urldecode($_GET['location']));
 
+if (isset($LocationFromSession) && $LocationFromSession != '') {
+    $_SESSION['location'] = $LocationFromSession;
+}
+
+if (isset($LocationFromGet) && $LocationFromGet != '') {
+    $_SESSION['location'] = $LocationFromGet;
+}
 if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
               ->findOneByID($_SESSION['iUserID']);
