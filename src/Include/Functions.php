@@ -45,9 +45,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Check for login timeout.  If login has expired, redirect to login page
     if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-            if (SystemURLs::isAccessibleURL(substr($_SERVER['REQUEST_URI'], 1))) {
-                $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
-            }
+            $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
             RedirectUtils::Redirect('Login.php'.$LoginLocation);
             exit;
         } else {
