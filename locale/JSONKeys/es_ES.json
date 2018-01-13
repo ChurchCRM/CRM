@@ -2224,4 +2224,17 @@
     "Database and Photos (.tar.gz)": "Base de Datos y Fotos (.tar.gz)",
     "User must be an Admin": "Usuario debe ser un Admin",
     "No logged in user": "No hay usuario conectado",
-    "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels.": "Establecer el tamaño estándar de la imagen de perfil  en pixeles para ser usada en listas d
+    "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels.": "Establecer el tamaño estándar de la imagen de perfil  en pixeles para ser usada en listas de personas, 85 pixeles por defecto.",
+    "not found": "no encontrado",
+    "Deleted from group": "Borrado del grupo",
+    "Added to group": "Agregado al grupo",
+    "We could not find the person(s) you were looking for.": "No pudimos encontrar a las personas que usted estaba buscando.",
+    "return to People Dashboard": "volver al Dashboard de Personas",
+    "User must have MenuOptions permission": "Usuario debe tener permiso MenuOptions",
+    "Event Publicly Visible": "Evento Públicamente Visible",
+    "Try our the Beta family view": "Pruebe la Beta de vista de familia",
+    "SMTP Host is not setup, please visit the settings page": "Servidor SMTP no ha sido configurado, por favor visite la página de ajustes",
+    "Debug Email Connection": "Depurar Conexión de Email",
+    "This Family is Deactivated": "Esta Familia está Desactivada",
+    "Metadata": "Metadata"
+}
