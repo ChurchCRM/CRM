@@ -729,7 +729,7 @@ require 'Include/Header.php';
                 <tr>
                   <td class="TextColumn"><?= $fun_name ?></td>
                   <td class="TextColumn">
-                    <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= $nAmount[$fun_id] ?>"><br>
+                    <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] : "") ?>"><br>
                     <font color="red"><?= $sAmountError[$fun_id] ?></font>
                   </td>
                   <?php
