@@ -23,9 +23,10 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!SystemService::isDBCurrent()) {
-    Redirect('SystemDBUpdate.php');
+    RedirectUtils::Redirect('SystemDBUpdate.php');
     exit;
 }
 
@@ -126,11 +127,13 @@ if (isset($_POST['User'])) {
         NotificationService::updateNotifications();
         $redirectLocation = $_SESSION['location'];
         if (isset($redirectLocation) && SystemURLs::isAccessibleURL($redirectLocation)) {
-            Redirect($redirectLocation);
+            RedirectUtils::Redirect($redirectLocation);
+            exit;
         } else {
-            Redirect('Menu.php');
+            RedirectUtils::Redirect('Menu.php');
+            exit;
         }
-        exit;
+        
     }
 } elseif (isset($_GET['username'])) {
     $urlUserName = $_GET['username'];

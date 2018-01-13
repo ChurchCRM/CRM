@@ -4,6 +4,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\UserQuery;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!empty($_SESSION['iUserID'])) {
     if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == '')) {
@@ -17,19 +18,21 @@ if (!empty($_SESSION['iUserID'])) {
     }
 
     $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
-    $currentUser->setShowPledges($_SESSION['sshowPledges']);
-    $currentUser->setShowPayments($_SESSION['sshowPayments']);
-    $currentUser->setShowSince($_SESSION['sshowSince']);
-    $currentUser->setDefaultFY($_SESSION['idefaultFY']);
-    $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
-
-    $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
-    $currentUser->save();
+    if (!empty($currentUser)) {
+        $currentUser->setShowPledges($_SESSION['sshowPledges']);
+        $currentUser->setShowPayments($_SESSION['sshowPayments']);
+        $currentUser->setShowSince($_SESSION['sshowSince']);
+        $currentUser->setDefaultFY($_SESSION['idefaultFY']);
+        $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
+    
+        $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
+        $currentUser->save();
+    }
 }
 
 $_COOKIE = [];
 $_SESSION = [];
 session_destroy();
 
-Redirect('Login.php');
+RedirectUtils::Redirect('Login.php');
 exit;

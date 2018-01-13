@@ -23,7 +23,7 @@ use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 class Family extends BaseFamily implements iPhoto
 {
     private $photo;
-    
+
     public function getAddress()
     {
         $address = [];
@@ -114,7 +114,7 @@ class Family extends BaseFamily implements iPhoto
   public function getSpousePeople() {
     return $this->getPeopleByRole("sDirRoleSpouse");
   }
-  
+
   public function getAdults() {
     return array_merge($this->getHeadPeople(),$this->getSpousePeople());
   }
@@ -234,7 +234,7 @@ class Family extends BaseFamily implements iPhoto
 
     public function getPhoto()
     {
-      if (!$this->photo) 
+      if (!$this->photo)
       {
         $this->photo = new Photo("Family",  $this->getId());
       }
@@ -270,14 +270,14 @@ class Family extends BaseFamily implements iPhoto
       }
       return false;
     }
-    
+
     public function verify()
     {
         $this->createTimeLineNote('verify');
     }
 
     public function getFamilyString($booleanIncludeHOH=true)
-    {    
+    {
       $HoH = [];
       if ($booleanIncludeHOH) {
         $HoH = $this->getHeadPeople();
@@ -292,7 +292,7 @@ class Family extends BaseFamily implements iPhoto
         foreach ($HoH as $person) {
           array_push($HoHs, $person->getFirstName());
         }
-        
+
         return $this->getName(). ": " . join(",", $HoHs) . " - " . $this->getAddress();
       }
       else
@@ -319,14 +319,14 @@ class Family extends BaseFamily implements iPhoto
             }
         }
     }
-    
+
     public function toArray()
     {
       $array = parent::toArray();
       $array['FamilyString']=$this->getFamilyString();
       return $array;
     }
-    
+
     public function toSearchArray()
     {
       $searchArray=[
@@ -335,5 +335,17 @@ class Family extends BaseFamily implements iPhoto
           "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
       ];
       return $searchArray;
+    }
+
+    public function isActive() {
+        return empty($this->getDateDeactivated());
+    }
+
+    public function getProperties() {
+        return PropertyQuery::create()
+            ->filterByProClass("f")
+            ->useRecordPropertyQuery()
+            ->filterByRecordId($this->getId())
+            ->find();
     }
 }

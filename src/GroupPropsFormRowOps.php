@@ -13,10 +13,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
 if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -33,7 +34,7 @@ extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false) {
-    Redirect('GroupView.php?GroupID='.$iGroupID);
+    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
 }
 
 switch ($sAction) {
@@ -85,10 +86,10 @@ switch ($sAction) {
 
     // If no valid action was specified, abort and return to the GroupView
     default:
-        Redirect('GroupView.php?GroupID='.$iGroupID);
+        RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
         break;
 }
 
 // Reload the Form Editor page
-Redirect('GroupPropsFormEditor.php?GroupID='.$iGroupID);
+RedirectUtils::Redirect('GroupPropsFormEditor.php?GroupID='.$iGroupID);
 exit;

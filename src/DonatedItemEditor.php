@@ -14,6 +14,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 $iDonatedItemID = InputUtils::LegacyFilterInputArr($_GET, 'DonatedItemID', 'int');
 $linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
@@ -69,7 +70,7 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
 		VALUES ('.$iCurrentFundraiser.",'".$sItem."','".$bMultibuy."','".$iDonor."','".$iBuyer."','".html_entity_decode($sTitle)."','".html_entity_decode($sDescription)."','".$nSellPrice."','".$nEstPrice."','".$nMaterialValue."','".$nMinimumPrice."','".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."'";
         $sSQL .= ','.$_SESSION['iUserID'].",'".date('YmdHis')."')";
         $bGetKeyBack = true;
-        // Existing record (update)
+    // Existing record (update)
     } else {
         $sSQL = 'UPDATE donateditem_di SET di_FR_ID = '.$iCurrentFundraiser.", di_Item = '".$sItem."', di_multibuy = '".$bMultibuy."', di_donor_ID = ".$iDonor.', di_buyer_ID = '.$iBuyer.", di_title = '".html_entity_decode($sTitle)."', di_description = '".html_entity_decode($sDescription)."', di_sellprice = '".$nSellPrice."', di_estprice = '".$nEstPrice."', di_materialvalue = '".$nMaterialValue."', di_minimum = '".$nMinimumPrice."', di_picture = '".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."', di_EnteredBy=".$_SESSION['iUserID'].", di_EnteredDate = '".date('YmdHis')."'";
         $sSQL .= ' WHERE di_ID = '.$iDonatedItemID;
@@ -90,14 +91,14 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     if (isset($_POST['DonatedItemSubmit'])) {
         // Check for redirection to another page after saving information: (ie. DonatedItemEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-            Redirect($linkBack);
+            RedirectUtils::Redirect($linkBack);
         } else {
             //Send to the view of this DonatedItem
-            Redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
+            RedirectUtils::Redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
         }
     } elseif (isset($_POST['DonatedItemSubmitAndAdd'])) {
         //Reload to editor to add another record
-        Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+        RedirectUtils::Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     }
 } else {
 

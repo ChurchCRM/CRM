@@ -158,14 +158,26 @@
         ],
         "dbVersion": "2.9.0"
     },
-    "current": {
+    "pre-2.10.0": {
         "versions": [
             "2.9.0",
             "2.9.1",
             "2.9.2",
-            "2.9.3"
+            "2.9.3",
+            "2.9.4"
+        ],
+        "scripts": [
+            "/mysql/upgrade/2.10.0.sql"
+        ],
+        "dbVersion": "2.10.0"
+    },
+    "current": {
+        "versions": [
+            "2.10.0",
+            "2.10.1",
+            "2.10.2"
         ],
         "scripts": [],
-        "dbVersion": "2.9.4"
+        "dbVersion": "2.10.3"
     }
 }

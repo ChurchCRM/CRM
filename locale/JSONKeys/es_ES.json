@@ -976,9 +976,6 @@
     "Select Fiscal Year": "Seleccionar Año Fiscal",
     "pm": "pm",
     "am": "am",
-    "1 m old": "1 mes",
-    "m old": "meses",
-    "1 yr old": "1 año",
     "yrs old": "años",
     "Invalid Editor ID!": "Id. de Editor Inválido",
     "Select Season": "seleccione temporada",
@@ -2222,5 +2219,9 @@
     "records(s) successfully deleted from the selected Group.": "registros exitosamente borrados del Grupo seleccionado.",
     "Not Found": "No Encontrado",
     "Oops!": "Oops!",
-    "Meanwhile, you may": "Mientras tanto, podría"
-}
+    "Meanwhile, you may": "Mientras tanto, podría",
+    "Database Only (.sql)": "Solo Base de Datos (.sql)",
+    "Database and Photos (.tar.gz)": "Base de Datos y Fotos (.tar.gz)",
+    "User must be an Admin": "Usuario debe ser un Admin",
+    "No logged in user": "No hay usuario conectado",
+    "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels.": "Establecer el tamaño estándar de la imagen de perfil  en pixeles para ser usada en listas d

@@ -20,6 +20,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent']) {
     header('Location: Menu.php');
@@ -65,7 +66,7 @@ if (isset($_POST['Action'])) {
           $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".InputUtils::LegacyFilterInput($theID)."','".InputUtils::LegacyFilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
           RunQuery($sSQL);
       }
-    Redirect('EventNames.php'); // clear POST
+    RedirectUtils::Redirect('EventNames.php'); // clear POST
     break;
 
     case 'DELETE':
