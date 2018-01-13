@@ -29,9 +29,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Basic security: If the UserID isn't set (no session), redirect to the login page
 
     if (!isset($_SESSION['user'])) {
-        if (SystemURLs::isAccessibleURL(substr($_SERVER['REQUEST_URI'], 1))) {
-            $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
-        }
+        $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
         RedirectUtils::Redirect('Login.php'.$LoginLocation);
         exit;
     }

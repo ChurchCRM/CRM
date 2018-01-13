@@ -126,7 +126,7 @@ if (isset($_POST['User'])) {
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         NotificationService::updateNotifications();
         $redirectLocation = $_SESSION['location'];
-        if (isset($redirectLocation) && SystemURLs::isAccessibleURL($redirectLocation)) {
+        if (isset($redirectLocation)) {
             RedirectUtils::Redirect($redirectLocation);
             exit;
         } else {
