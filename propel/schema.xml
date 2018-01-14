@@ -884,7 +884,7 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-    
+  
     <table name="calendars" idMethod="native" phpName="Calendar"  description="">
       <column name="calendar_id" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
       <column name="name" phpName="Name" type="VARCHAR" size="99" required="true"/>
