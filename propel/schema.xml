@@ -541,10 +541,24 @@
         <column name="event_end" phpName="End" type="TIMESTAMP" required="true"/>
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
         <column name="event_typename" phpName="TypeName" type="VARCHAR" size="40" required="true" defaultValue=""/>
-        <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
+        <column name="location_id" phpName="LocationId" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="event_publicly_visible" phpName="PubliclyVisible" type="BOOLEAN" />
-        <foreign-key foreignTable="group_grp">
-            <reference local="event_grpid" foreign="grp_ID"/>
+        
+        <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
+            <reference local="primary_contact_person_id" foreign="per_ID"/>
+        </foreign-key>
+        
+        <foreign-key foreignTable="person_per" 
+                    skipSql = "true"
+                    name="SecondaryContact" 
+                    refPhpName="SecondaryContactPerson"
+                    defaultJoin= "Criteria::LEFT_JOIN">
+            <reference local="secondary_contact_person_id" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="locations">
+            <reference local="location_id" foreign="location_id"/>
         </foreign-key>
         <index name="event_txt">
             <index-column name="event_text"/>
@@ -835,6 +849,41 @@
         <unique name="p2vo_ID">
             <unique-column name="p2vo_ID"/>
         </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    
+    <table name="event_audience" idMethod="native" phpName="EventAudience" isCrossRef="true" description="This is a join-table to link an event with a prospective audience for the purpose of advertising / outreach">
+        <column name="event_id" phpName="EventId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+        <column name="group_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+        
+        <foreign-key foreignTable="events_event">
+          <reference local="event_id" foreign="event_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="group_grp">
+          <reference local="group_id" foreign="grp_ID"/>
+        </foreign-key>
+
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    
+    <table name="locations" idMethod="native" phpName="Location"  description="This is a table for storing all physical locations (Church Offices, Events, etc) ">
+        <column name="location_id" phpName="LocationId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+        <column name="location_typeID" phpName="LocationType" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"/>
+        <column name="location_name" type="VARCHAR" size="256" required="true" defaultValue="" descripton="Location Name (e.g 'Main Campus')"/>
+        <column name="location_address" type="VARCHAR" size="45" required="true" defaultValue="" />
+        <column name="location_city" type="VARCHAR" size="45" required="true" defaultValue="" />
+        <column name="location_state" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_zip" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_country" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_phone" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_email" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_timzezone" type="VARCHAR" size="45" required="true" defaultValue="" />
+
+
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>

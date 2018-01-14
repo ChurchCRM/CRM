@@ -29,7 +29,35 @@ $app->group('/events', function () {
                 ->find();
         return $response->write($Events->toJSON());
     });
-   
+    
+    $this->get('/{id}/primarycontact', function ($request, $response, $args) {
+        $Contact= EventQuery::create()
+                ->findOneById($args['id'])
+                ->getPersonRelatedByPrimaryContactPersonId();
+        return $response->write($Contact->toJSON());
+    });
+    
+    $this->get('/{id}/secondarycontact', function ($request, $response, $args) {
+        $Contact= EventQuery::create()
+                ->findOneById($args['id'])
+                ->getPersonRelatedBySecondaryContactPersonId();
+        return $response->write($Contact->toJSON());
+    });
+    
+    $this->get('/{id}/location', function ($request, $response, $args) {
+        $Location= EventQuery::create()
+                ->findOneById($args['id'])
+                ->getLocation();
+        return $response->write($Location->toJSON());
+    });
+    
+    $this->get('/{id}/audience', function ($request, $response, $args) {
+        $Location= EventQuery::create()
+                ->findOneById($args['id'])
+                ->getEventAudiencesJoinGroup();
+        return $response->write($Location->toJSON());
+    });
+
     $this->get('/notDone', function ($request, $response, $args) {
         $Events= EventQuery::create()
                  ->filterByEnd(new DateTime(),  Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL)

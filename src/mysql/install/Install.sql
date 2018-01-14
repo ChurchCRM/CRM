@@ -1290,7 +1290,7 @@ CREATE TABLE `tokens` (
   PRIMARY KEY (`token`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `church_location` (
+CREATE TABLE `locations` (
   `location_id` INT NOT NULL,
   `location_typeId` INT NOT NULL,
   `location_name` VARCHAR(256) NOT NULL,
