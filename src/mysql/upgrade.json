@@ -173,10 +173,12 @@
     },
     "current": {
         "versions": [
+          "2.10.2",
           "2.10.3"
         ],
         "scripts": [
-          "/mysql/upgrade/2.11.0.sql"
+          "/mysql/upgrade/2.11.0.sql",
+          "/mysql/upgrade/2.11.0.php"
         ],
         "dbVersion": "2.11.0"
     }

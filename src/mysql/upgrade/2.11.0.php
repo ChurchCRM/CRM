@@ -2,7 +2,7 @@
 
 use ChurchCRM\Event;
 use ChurchCRM\Calendar;
-use ChurchCRM\dto\SystemConfig;
+
 
 $publicEventsQuery = "SELECT * FROM events_event where event_publicly_visible = TRUE";
 
