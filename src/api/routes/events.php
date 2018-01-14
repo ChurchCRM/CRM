@@ -42,7 +42,7 @@ function getAllEvents($request, Response $response, $args) {
   if ($Events) {
     return $response->write($Events->toJSON());
   }
-  return $response->withStatus(400);
+  return $response->withStatus(404);
 }
 
 function getEventPrimaryContact($request, $response, $args) {
@@ -64,7 +64,7 @@ function getEventSecondaryContact($request, $response, $args) {
   if ($Contact) {
     return $response->write($Contact->toJSON());
   }
-  return $response->withStatus(400);
+  return $response->withStatus(404);
 }
 
 function getEventLocation($request, $response, $args) {
@@ -74,7 +74,7 @@ function getEventLocation($request, $response, $args) {
   if ($Location) {
     return $response->write($Location->toJSON());
   }
-  return $response->withStatus(400);
+  return $response->withStatus(404);
 }
 
 function getEventAudience($request, $response, $args) {
@@ -84,7 +84,7 @@ function getEventAudience($request, $response, $args) {
   if ($Audience) {
     return $response->write($Audience->toJSON());
   }
-  return $response->withStatus(400);
+  return $response->withStatus(404);
 }
 
 function getEventsNotDone($request, $response, $args) {
@@ -94,7 +94,7 @@ function getEventsNotDone($request, $response, $args) {
   if ($Events) {
     return $response->write($Events->toJSON());
   }
-  return $response->withStatus(400);
+  return $response->withStatus(404);
 }
 
 function getEventsNumbers($request, $response, $args) {
@@ -116,7 +116,7 @@ function getEventsCalendars($request, $response, $args) {
   if ($return) {
     return $response->withJson($return);
   }
-  return $response->withStatus(400);
+  return $response->withStatus(404);
 }
 
 function newOrUpdateEvent($request, $response, $args) {
