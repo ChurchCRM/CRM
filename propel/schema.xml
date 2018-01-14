@@ -884,6 +884,36 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
+  
+    <table name="calendars" idMethod="native" phpName="Calendar"  description="">
+      <column name="calendar_id" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+      <column name="name" phpName="Name" type="VARCHAR" size="99" required="true"/>
+      <column name="accesstoken" phpName="AccessToken" type="VARCHAR" size="99"/>
+  
+      <foreign-key foreignTable="tokens">
+        <reference local="accesstoken" foreign="token"/>
+      </foreign-key>
+        
+      <vendor type="mysql">
+          <parameter name="Engine" value="InnoDB"/>
+      </vendor>
+    </table>
+    
+    <table name="calendar_events" idMethod="native" phpName="CalendarEvents" isCrossRef="true" description="This is a join-table to link an event with a calendar">
+      <column name="calendar_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>  
+      <column name="event_id" phpName="EventId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+      
+      <foreign-key foreignTable="calendars">
+        <reference local="calendar_id" foreign="calendar_id"/>
+      </foreign-key>
+      <foreign-key foreignTable="events_event">
+        <reference local="event_id" foreign="event_id"/>
+      </foreign-key>
+
+      <vendor type="mysql">
+          <parameter name="Engine" value="InnoDB"/>
+      </vendor>
+    </table>
 
     <!--
  <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
