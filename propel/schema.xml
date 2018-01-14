@@ -550,7 +550,7 @@
             <reference local="primary_contact_person_id" foreign="per_ID"/>
         </foreign-key>
         
-        <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
+        <foreign-key foreignTable="person_per" name="SecondaryContact" refPhpName="SecondaryContactPerson" skipSql = "true">
             <reference local="secondary_contact_person_id" foreign="per_ID"/>
         </foreign-key>
         <foreign-key foreignTable="locations">
