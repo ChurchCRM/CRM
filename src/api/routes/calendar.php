@@ -3,22 +3,30 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Service\CalendarService;
+use ChurchCRM\CalendarQuery;
+use ChurchCRM\EventQuery;
 
-$app->group('/calendar', function () {
-    $this->get('/events', 'getEvents');
+$app->group('/calendars', function () {
+    $this->get('','getCalendars');
+    $this->get('/','getCalendars');
+    $this->get('/{id}/events', 'getEvents');
 });
 
-
-/**
- * A method that does the work to handle getting an issue via REST API.
- *
- * @param \Slim\Http\Request $p_request   The request.
- * @param \Slim\Http\Response $p_response The response.
- * @param array $p_args Arguments
- * @return \Slim\Http\Response The augmented response.
- */
-function getEvents(Request $request, Response $response, array $p_args ) {
+function getCalendars(Request $request, Response $response, array $p_args ) {
     $params = $request->getQueryParams();
-    $clanderService = new CalendarService();
-    return $response->withJson($clanderService->getEvents($params['start'], $params['end']));
+    $Calendars = CalendarQuery::create()
+            ->find();
+    return $response->withJson($Calendars->toJSON());
+}
+
+
+function getEvents(Request $request, Response $response, array $p_args ) {
+  $Calendar = CalendarQuery::create()->findOneById($p_args['id']);
+  if ($Calendar) {
+    $Events = EventQuery::create()
+          ->filterByCalendar($Calendar)
+          ->find();
+    return $response->withJson($Events->toJSON());
+  }
+
 }
