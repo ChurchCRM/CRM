@@ -14,10 +14,13 @@ $app->group('/calendars', function () {
 });
 
 function getCalendars(Request $request, Response $response, array $p_args ) {
-    $params = $request->getQueryParams();
-    $Calendars = CalendarQuery::create()
-            ->find();
+  $params = $request->getQueryParams();
+  $Calendars = CalendarQuery::create()
+          ->find();
+  if ($Calendars) 
+  {
     return $response->withJson($Calendars->toJSON());
+  }
 }
 
 
@@ -27,7 +30,9 @@ function getEvents(Request $request, Response $response, array $p_args ) {
     $Events = EventQuery::create()
           ->filterByCalendar($Calendar)
           ->find();
-    return $response->withJson($Events->toJSON());
+    if ($Events) {
+      return $response->withJson($Events->toJSON());
+    }
   }
 
 }
