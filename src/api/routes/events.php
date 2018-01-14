@@ -20,6 +20,8 @@ use ChurchCRM\EventCounts;
 use ChurchCRM\Service\CalendarService;
 use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\Utils\InputUtils;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/events', function () {
 
@@ -34,45 +36,65 @@ $app->group('/events', function () {
   $this->post('/', 'newOrUpdateEvent');
 });
 
-function getAllEvents($request, $response, $args) {
+function getAllEvents($request, Response $response, $args) {
   $Events = EventQuery::create()
           ->find();
-  return $response->write($Events->toJSON());
+  if ($Events) {
+    return $response->write($Events->toJSON());
+  }
+  return $response->withStatus(400);
 }
 
 function getEventPrimaryContact($request, $response, $args) {
-  $Contact = EventQuery::create()
-          ->findOneById($args['id'])
-          ->getPersonRelatedByPrimaryContactPersonId();
-  return $response->write($Contact->toJSON());
+  $Event = EventQuery::create()
+          ->findOneById($args['id']);
+  if ($Event) {
+    $Contact = $Event->getPersonRelatedByPrimaryContactPersonId();
+    if($Contact) { 
+      return $response->write($Contact->toJSON());
+    }
+  }
+  return $response->withStatus(404);
 }
 
 function getEventSecondaryContact($request, $response, $args) {
   $Contact = EventQuery::create()
           ->findOneById($args['id'])
           ->getPersonRelatedBySecondaryContactPersonId();
-  return $response->write($Contact->toJSON());
+  if ($Contact) {
+    return $response->write($Contact->toJSON());
+  }
+  return $response->withStatus(400);
 }
 
 function getEventLocation($request, $response, $args) {
   $Location = EventQuery::create()
           ->findOneById($args['id'])
           ->getLocation();
-  return $response->write($Location->toJSON());
+  if ($Location) {
+    return $response->write($Location->toJSON());
+  }
+  return $response->withStatus(400);
 }
 
 function getEventAudience($request, $response, $args) {
-  $Location = EventQuery::create()
+  $Audience = EventQuery::create()
           ->findOneById($args['id'])
           ->getEventAudiencesJoinGroup();
-  return $response->write($Location->toJSON());
+  if ($Audience) {
+    return $response->write($Audience->toJSON());
+  }
+  return $response->withStatus(400);
 }
 
 function getEventsNotDone($request, $response, $args) {
   $Events = EventQuery::create()
           ->filterByEnd(new DateTime(), Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL)
           ->find();
-  return $response->write($Events->toJSON());
+  if ($Events) {
+    return $response->write($Events->toJSON());
+  }
+  return $response->withStatus(400);
 }
 
 function getEventsNumbers($request, $response, $args) {
@@ -91,8 +113,10 @@ function getEventsCalendars($request, $response, $args) {
 
     array_push($return, $values);
   }
-
-  return $response->withJson($return);
+  if ($return) {
+    return $response->withJson($return);
+  }
+  return $response->withStatus(400);
 }
 
 function newOrUpdateEvent($request, $response, $args) {
