@@ -245,6 +245,9 @@ CREATE TABLE `events_event` (
   `event_end` datetime NOT NULL,
   `inactive` int(1) NOT NULL default '0',
   `event_typename` varchar(40) NOT NULL default '',
+  `location_id` INT DEFAULT NULL,
+  `primary_contact_person_id` INT DEFAULT NULL,
+  `secondary_contact_person_id` INT DEFAULT NULL,
   `event_grpid` mediumint(9),
   `event_publicly_visible` BOOLEAN DEFAULT FALSE,
 
@@ -257,6 +260,16 @@ CREATE TABLE `events_event` (
 
 
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `event_audience`
+--
+
+CREATE TABLE `event_audience` (
+  `event_id` INT NOT NULL,
+  `group_id` INT NOT NULL,
+  PRIMARY KEY (`event_id`,`group_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
 -- Table structure for table `event_attend`

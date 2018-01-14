@@ -550,11 +550,7 @@
             <reference local="primary_contact_person_id" foreign="per_ID"/>
         </foreign-key>
         
-        <foreign-key foreignTable="person_per" 
-                    skipSql = "true"
-                    name="SecondaryContact" 
-                    refPhpName="SecondaryContactPerson"
-                    defaultJoin= "Criteria::LEFT_JOIN">
+        <foreign-key foreignTable="person_per" name="SecondaryContact" refPhpName="SecondaryContactPerson" skipSql = "true">
             <reference local="secondary_contact_person_id" foreign="per_ID"/>
         </foreign-key>
         <foreign-key foreignTable="locations">
@@ -888,7 +884,7 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-    
+  
     <table name="calendars" idMethod="native" phpName="Calendar"  description="">
       <column name="calendar_id" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" autoIncrement="true" required="true"  primaryKey="true"/>
       <column name="name" phpName="Name" type="VARCHAR" size="99" required="true"/>
