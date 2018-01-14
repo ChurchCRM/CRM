@@ -12,7 +12,6 @@ CREATE TABLE `event_audience` (
   PRIMARY KEY (`event_id`,`group_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-
 DROP TABLE IF EXISTS `calendars`;
 CREATE TABLE `calendars` (
   `calendar_id` INT NOT NULL,
