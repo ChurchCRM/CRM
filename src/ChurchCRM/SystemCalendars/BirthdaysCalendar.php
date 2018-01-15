@@ -39,7 +39,11 @@ class BirthdaysCalendar implements SystemCalendar {
     Foreach($people as $person) {
       $birthday = new Event();
       $birthday->setTitle(gettext("Birthday: ".$person->getFullName()));
-      $birthday->setStart($person->getFormattedBirthDate());
+      $year = date('Y');
+      $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
+      $events->push(clone $birthday);
+      $year -= 1;
+      $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
       $events->push($birthday);
     }
    
