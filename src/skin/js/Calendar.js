@@ -274,15 +274,15 @@ window.NewCalendarEventModal = {
     window.CRM.APIRequest({
     method: 'GET',
     path: 'events/types',
-  }).done(function (eventTypes) {
-    console.log(eventTypes);
+  }).done(function (data) {
+    eventTypes=data.EventTypes;
     var elt = document.getElementById("eventType");
     var len = eventTypes.length;
 
     for (i = 0; i < len; ++i) {
       var option = document.createElement("option");
-      option.text = eventTypes[i].name;
-      option.value = eventTypes[i].eventTypeID;
+      option.text = eventTypes[i].Name;
+      option.value = eventTypes[i].Id;
       elt.appendChild(option);
     }
 
