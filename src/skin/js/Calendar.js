@@ -340,6 +340,7 @@ function getCalendarFilterElement(calendar,type) {
 
 function registerCalendarSelectionEvents() {
   $(document).on
+  
   $(document).on("click",".calendarSelectionBox", function(event) {
     console.log("box checked");
     var endpoint;
@@ -372,6 +373,7 @@ function initializeFilterSettings() {
       console.log(calendar);
       $("#userCalendars").append(getCalendarFilterElement(calendar,"user"))
     });
+    $("#userCalendars .calendarSelectionBox").click();
   });
  
   window.CRM.APIRequest({
@@ -383,6 +385,8 @@ function initializeFilterSettings() {
       console.log(calendar);
       $("#systemCalendars").append(getCalendarFilterElement(calendar,"system"))
     });
+    
+    $("#systemCalendars .calendarSelectionBox").click();
   });
   
   registerCalendarSelectionEvents();
