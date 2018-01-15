@@ -31,9 +31,6 @@ $app->group('/events', function () {
   $this->get('/{id}/secondarycontact', 'getEventSecondaryContact');
   $this->get('/{id}/location', 'getEventLocation');
   $this->get('/{id}/audience', 'getEventAudience');
-  $this->get('/notDone', 'getEventsNotDone');
-  $this->get('/numbers', 'getEventsNumbers');
-  $this->get('/calendars', 'getEventsCalendars');
   $this->post('/', 'newOrUpdateEvent');
 });
 
@@ -86,38 +83,6 @@ function getEventAudience($request, $response, $args) {
           ->getEventAudiencesJoinGroup();
   if ($Audience) {
     return $response->write($Audience->toJSON());
-  }
-  return $response->withStatus(404);
-}
-
-function getEventsNotDone($request, $response, $args) {
-  $Events = EventQuery::create()
-          ->filterByEnd(new DateTime(), Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL)
-          ->find();
-  if ($Events) {
-    return $response->write($Events->toJSON());
-  }
-  return $response->withStatus(404);
-}
-
-function getEventsNumbers($request, $response, $args) {
-  $response->withJson(MenuEventsCount::getNumberEventsOfToday());
-}
-
-function getEventsCalendars($request, $response, $args) {
-  $eventTypes = EventTypesQuery::Create()
-          ->orderByName()
-          ->find();
-
-  $return = [];
-  foreach ($eventTypes as $eventType) {
-    $values['eventTypeID'] = $eventType->getID();
-    $values['name'] = $eventType->getName();
-
-    array_push($return, $values);
-  }
-  if ($return) {
-    return $response->withJson($return);
   }
   return $response->withStatus(404);
 }
