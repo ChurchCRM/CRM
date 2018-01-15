@@ -140,7 +140,7 @@ window.moveEventModal = {
   }
 };
 
-window.NewCalendarEventModal = {
+window.NewEventModal = {
   readDOMNewEvent: function() {
     var e = document.getElementById("eventType");
       var eventTypeID = e.options[e.selectedIndex].value;
@@ -176,7 +176,7 @@ window.NewCalendarEventModal = {
         };
   },
   saveButtonCallback: function() {
-    var Event = window.NewCalendarEventModal.readDOMNewEvent();
+    var Event = window.NewEventModal.readDOMNewEvent();
     console.log(Event);
     return;
       window.CRM.APIRequest({
@@ -204,7 +204,7 @@ window.NewCalendarEventModal = {
     return {
       label: i18next.t("Save"),
       className: "btn btn-primary pull-left",
-      callback: window.NewCalendarEventModal.saveButtonCallback
+      callback: window.NewEventModal.saveButtonCallback
     };
   },
   getCloseButton: function() {
@@ -253,8 +253,8 @@ window.NewCalendarEventModal = {
   },
   configureModalUIElements: function(start,end) {
     // we add the calendars
-    window.NewCalendarEventModal.loadCalendars();
-    window.NewCalendarEventModal.loadEventTypes();
+    window.NewEventModal.loadCalendars();
+    window.NewEventModal.loadEventTypes();
     if (!start.hasTime())
     {
       start.hour(8);
@@ -309,20 +309,20 @@ window.NewCalendarEventModal = {
     $("#ATTENDENCES").parents("tr").hide();
   },
   getNewEventModal: function(start,end) {
-    window.NewCalendarEventModal.modal = bootbox.dialog({
+    window.NewEventModal.modal = bootbox.dialog({
       message: BootboxContent(),
       title: i18next.t("Event Creation"),
       buttons: [
-        window.NewCalendarEventModal.getSaveButton(),
-        window.NewCalendarEventModal.getCloseButton()
+        window.NewEventModal.getSaveButton(),
+        window.NewEventModal.getCloseButton()
       ],
       show: false,
       onEscape: function () {
-        window.NewCalendarEventModal.modal.modal("hide");
+        window.NewEventModal.modal.modal("hide");
       }
     });
-    window.NewCalendarEventModal.modal.modal("show");
-    window.NewCalendarEventModal.configureModalUIElements(start,end);
+    window.NewEventModal.modal.modal("show");
+    window.NewEventModal.configureModalUIElements(start,end);
   }
 };
 
@@ -342,7 +342,7 @@ function initializeCalendar() {
     eventDrop: window.moveEventModal.handleEventDrop,
     eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,
-    select: window.NewCalendarEventModal.getNewEventModal,
+    select: window.NewEventModal.getNewEventModal,
     locale: window.CRM.lang
   });
 };
