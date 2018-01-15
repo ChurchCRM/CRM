@@ -17,6 +17,7 @@ class FullCalendarEvent {
   public $title;
   public $start;
   public $backgroundColor;
+  public $textColor;
   public $end;
   public $allDay;
   public $url;
@@ -29,9 +30,9 @@ class FullCalendarEvent {
         $this->title = $CRMEvent->getTitle();
         $this->start = $CRMEvent->getStart("c");
         $this->end = $CRMEvent->getEnd("c");
-        $this->allDay = $false;
+        $this->allDay =  ( $CRMEvent->getEnd() == $null ? true:false);
         $this->id = $CRMEvent->getId();
         $this->backgroundColor = "#".$CRMCalendar->getBackgroundColor();
-        $this->foregroundColor = "#".$CRMCalendar->getForegroundColor();
+        $this->textColor = "#".$CRMCalendar->getForegroundColor();
   }
 }
