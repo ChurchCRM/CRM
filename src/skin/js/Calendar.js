@@ -3,7 +3,7 @@ function BootboxContent() {
   var frm_str = '<form id="some-form">'
           + '<table class="table">'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Select your event type') + "</td>"
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Type') + ":</td>"
           + '<td colspan="3" class="TextColumn">'
           + '<select type="text" id="eventType" value="39"  width="100%" style="width: 100%">'
           //+"<option value='0' >" + i18next.t("Personal") + "</option>"
@@ -31,20 +31,14 @@ function BootboxContent() {
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Group') + ":</td>"
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
           + '<td class="TextColumn">'
-          + '<select type="text" id="EventGroup" value="39" width="100%" style="width: 100%">'
+          + '<select type="text" multiple="multiple" id="PinnedCalendars" value="39" width="100%" style="width: 100%">'
           + '</select>'
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Publicly Visible') + ":</td>"
-          + '<td class="TextColumn">'
-          + '<input type="checkbox" id="EventPubliclyVisible" />'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn' id='ATTENDENCES'>" + i18next.t('Attendance Counts') + "</td>"
+          + "<td class='LabelColumn' id='ATTENDENCES'>" + i18next.t('Attendance Counts') + ":</td>"
           + '<td class="TextColumn" colspan="3">'
           + '<table>'
           + '<tr>'
@@ -74,7 +68,7 @@ function BootboxContent() {
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Sermon') + '<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  width="100%" style="width: 100%"></textarea></td>'
+          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Description') + '<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  width="100%" style="width: 100%"></textarea></td>'
           + '</tr>'
           //+'<tr>'
           //+'<td class="LabelColumn"><span style="color: red">*</span>Statut de l&#39;événement:</td>'
@@ -90,43 +84,48 @@ function BootboxContent() {
 }
 
 
-function handleEventDrop(event, delta, revertFunc) {
-  if (event.type == 'event') {
-    bootbox.confirm({
-      title: i18next.t("Move Event") + "?",
-      message: i18next.t("Are you sure about this change?") + "\n" + event.title + " " + i18next.t("will be dropped."),
-      buttons: {
+window.moveEventModal = {
+  getButtons: function() {
+    return  {
         cancel: {
           label: '<i class="fa fa-times"></i> ' + i18next.t("Cancel")
         },
         confirm: {
           label: '<i class="fa fa-check"></i> ' + i18next.t("Confirm")
         }
-      },
-      callback: function (result) {
-        if (result == true)// only event can be drag and drop, not anniversary or birthday
-        {
-          window.CRM.APIRequest({
-            method: 'POST',
-            path: 'events/',
-            data: JSON.stringify({"evntAction": 'moveEvent', "eventID": event.eventID, "start": event.start.format()})
-          }).done(function (data) {
-            // now we can create the event
-            $('#calendar').fullCalendar('removeEvents', event._id);// delete old one
-            $('#calendar').fullCalendar('renderEvent', data, true); // add the new one
-            $('#calendar').fullCalendar('unselect');
-          });
-        } else {
-          revertFunc();
-        }
-        console.log('This was logged in the callback: ' + result);
-      }
+    };
+  },
+  modalCallBack: function(result) {
+    if(result === true) {
+    window.CRM.APIRequest({
+      method: 'POST',
+      path: 'events/',
+      data: JSON.stringify({"evntAction": 'moveEvent', "eventID": event.eventID, "start": event.start.format()})
+    }).done(function (data) {
+      // now we can create the event
+      $('#calendar').fullCalendar('removeEvents', event._id);// delete old one
+      $('#calendar').fullCalendar('renderEvent', data, true); // add the new one
+      $('#calendar').fullCalendar('unselect');
     });
   } else {
-    revertFunc();
+     window.moveEventModal.revertFunc();
+   }
+    
+  },
+  handleEventDrop: function (event, delta, revertFunc) {
+    originalStart = event.start.clone().subtract(delta).format("dddd, MMMM Do YYYY, h:mm:ss a");
+    newStart = event.start.format("dddd, MMMM Do YYYY, h:mm:ss a");
+    window.moveEventModal.revertFunc = revertFunc;
+    bootbox.confirm({
+      title: i18next.t("Move Event") + "?",
+      message: i18next.t("Are you sure you want to move") +" " + event.title + " " + i18next.t("from") + "<br/>" +
+       originalStart + "<br/>" + 
+        i18next.t("to") + "<br/>" +  newStart,
+      buttons: window.moveEventModal.getButtons(),
+      callback: window.moveEventModal.modalCallBack
+    });
   }
-}
-;
+};
 
 function handleEventResize(event, delta, revertFunc) {
   if (event.type == 'event') {
@@ -174,10 +173,7 @@ window.NewCalendarEventModal = {
       var EventTitle = $('form #EventTitle').val();
       var EventDesc = $('form #EventDesc').val();
 
-      var e = document.getElementById("EventGroup");
-      var EventGroupID = e.options[e.selectedIndex].value;
-      var EventGroupType = e.options[e.selectedIndex].title;// we get the type of the group : personal or group for future dev
-      var EventPubliclyVisible = $("form #EventPubliclyVisible").prop('checked');
+      var eventCalendars = $("#PinnedCalendars").val();
 
       var Total = $('form #Total').val();
       var Members = $('form #Members').val();
@@ -192,11 +188,9 @@ window.NewCalendarEventModal = {
       return {
           "evntAction": 'createEvent',
           "eventTypeID": eventTypeID,
-          "EventGroupType": EventGroupType,
           "EventTitle": EventTitle,
           "EventDesc": EventDesc,
-          "EventGroupID": EventGroupID,
-          "EventPubliclyVisible": EventPubliclyVisible,
+          "eventCalendars": eventCalendars,
           "Total": Total,
           "Members": Members,
           "Visitors": Visitors,
@@ -247,26 +241,20 @@ window.NewCalendarEventModal = {
   loadCalendars: function() {
     window.CRM.APIRequest({
       method: 'GET',
-      path: 'groups/calendars',
-    }).done(function (groups) {
-      var elt = document.getElementById("EventGroup");
-      var len = groups.length;
-
-      // We add the none option
-      var option = document.createElement("option");
-      option.text = i18next.t("None");
-      option.value = 0;
-      option.title = "";
-      elt.appendChild(option);
-
+      path: 'calendars',
+    }).done(function (data) {
+      var calendars = data.Calendars;
+      var elt = document.getElementById("PinnedCalendars");
+      var len = calendars.length;
+      
       for (i = 0; i < len; ++i) {
         var option = document.createElement("option");
         // there is a groups.type in function of the new plan of schema
-        option.text = groups[i].name;
-        option.title = groups[i].type;
-        option.value = groups[i].groupID;
+        option.text = calendars[i].Name;
+        option.value = calendars[i].Id;
         elt.appendChild(option);
       }
+      
 
     });
   },
@@ -312,6 +300,8 @@ window.NewCalendarEventModal = {
       startDate: start.format("YYYY-MM-DD h:mm A"),
       endDate: end.format("YYYY-MM-DD h:mm A")
     });
+    
+    $("#PinnedCalendars").select2();
 
     // this will ensure that image and table can be focused
     $(document).on('focusin', function (e) {
@@ -374,14 +364,13 @@ function initializeCalendar() {
     height: 600,
     selectable: calendarJSArgs.isModifiable,
     editable: calendarJSArgs.isModifiable,
-    eventDrop: handleEventDrop,
+    eventDrop: window.moveEventModal.handleEventDrop,
     eventResize: handleEventResize,
     selectHelper: true,
     select: window.NewCalendarEventModal.getNewEventModal,
     locale: window.CRM.lang
   });
 };
-
 
 function getCalendarFilterElement(calendar,type) {
   return "<div>" + 
