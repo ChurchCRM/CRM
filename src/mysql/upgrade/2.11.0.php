@@ -32,3 +32,13 @@ if (count($PublicEvents) > 0) {
   
   
 }
+
+
+$publicEventsQuery = "ALTER TABLE `events_event` "
+        . "DROP COLUMN `event_publicly_visible`, "
+        . "DROP COLUMN `event_grpid`";
+
+$statement = $connection->prepare($publicEventsQuery);
+$statement->execute();
+
+

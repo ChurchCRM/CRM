@@ -248,9 +248,6 @@ CREATE TABLE `events_event` (
   `location_id` INT DEFAULT NULL,
   `primary_contact_person_id` INT DEFAULT NULL,
   `secondary_contact_person_id` INT DEFAULT NULL,
-  `event_grpid` mediumint(9),
-  `event_publicly_visible` BOOLEAN DEFAULT FALSE,
-
   PRIMARY KEY  (`event_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
 

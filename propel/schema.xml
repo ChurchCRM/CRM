@@ -544,8 +544,7 @@
         <column name="location_id" phpName="LocationId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
-        <column name="event_publicly_visible" phpName="PubliclyVisible" type="BOOLEAN" />
-        
+                
         <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
             <reference local="primary_contact_person_id" foreign="per_ID"/>
         </foreign-key>
