@@ -1,173 +1,3 @@
-var anniversary = true;
-var birthday = true;
-var withlimit = false;
-
-var birthD = localStorage.getItem("birthday");
-if (birthD != null)
-{
-  if (birthD == 'checked') {
-    birthday = true;
-  } else {
-    birthday = false;
-  }
-
-  $('#isBirthdateActive').prop('checked', birthday);
-}
-
-var ann = localStorage.getItem("anniversary");
-if (ann != null)
-{
-  if (ann == 'checked') {
-    anniversary = true;
-  } else {
-    anniversary = false;
-  }
-
-  $('#isAnniversaryActive').prop('checked', anniversary);
-}
-
-var wLimit = localStorage.getItem("withlimit");
-if (wLimit != null)
-{
-  if (wLimit == 'checked') {
-    withlimit = true;
-  } else {
-    withlimit = false;
-  }
-
-  $('#isWithLimit').prop('checked', withlimit);
-}
-
-
-$("#isBirthdateActive").on('change', function () {
-  var _val = $(this).is(':checked') ? 'checked' : 'unchecked';
-
-  if (_val == 'checked') {
-    birthday = true;
-  } else {
-    birthday = false;
-  }
-  $('#calendar').fullCalendar('refetchEvents');
-
-  localStorage.setItem("birthday", _val);
-});
-
-$("#isAnniversaryActive").on('change', function () {
-  var _val = $(this).is(':checked') ? 'checked' : 'unchecked';
-  if (_val == 'checked') {
-    anniversary = true;
-  } else {
-    anniversary = false;
-  }
-
-  $('#calendar').fullCalendar('refetchEvents');
-
-  localStorage.setItem("anniversary", _val);
-});
-
-$("#isWithLimit").on('change', function () {
-  var _val = $(this).is(':checked') ? 'checked' : 'unchecked';
-  if (_val == 'checked') {
-    withlimit = true;
-  } else {
-    withlimit = false;
-  }
-
-  var options = $('#calendar').fullCalendar('getView').options;
-  options.eventLimit = withlimit;
-  $('#calendar').fullCalendar('destroy');
-  $('#calendar').fullCalendar(options);
-
-  localStorage.setItem("withlimit", _val);
-});
-
-window.groupFilterID = 0;
-window.EventTypeFilterID = 0;
-
-localStorage.setItem("groupFilterID", groupFilterID);
-localStorage.setItem("EventTypeFilterID", EventTypeFilterID);
-
-$("#EventGroupFilter").on('change', function () {
-  var e = document.getElementById("EventGroupFilter");
-  window.groupFilterID = e.options[e.selectedIndex].value;
-
-  $('#calendar').fullCalendar('refetchEvents');
-
-  if (window.groupFilterID == 0)
-    $("#ATTENDENCES").parents("tr").hide();
-
-  localStorage.setItem("groupFilterID", groupFilterID);
-});
-
-
-$("#EventTypeFilter").on('change', function () {
-  var e = document.getElementById("EventTypeFilter");
-  window.EventTypeFilterID = e.options[e.selectedIndex].value;
-
-  $('#calendar').fullCalendar('refetchEvents');
-
-  localStorage.setItem("EventTypeFilterID", EventTypeFilterID);
-});
-
-// I have to do this because EventGroup isn't yet present when you load the page the first time
-$(document).on('change', '#EventGroup', function () {
-  var e = document.getElementById("EventGroup");
-  var _val = e.options[e.selectedIndex].value;
-
-  if (_val == 0)
-    $("#ATTENDENCES").parents("tr").hide();
-  else
-    $("#ATTENDENCES").parents("tr").show();
-
-  localStorage.setItem("groupFilterID", groupFilterID);
-});
-
-function addEventTypes()
-{
-  window.CRM.APIRequest({
-    method: 'GET',
-    path: 'events/calendars',
-  }).done(function (eventTypes) {
-    var elt = document.getElementById("eventType");
-    var len = eventTypes.length;
-
-    for (i = 0; i < len; ++i) {
-      var option = document.createElement("option");
-      option.text = eventTypes[i].name;
-      option.value = eventTypes[i].eventTypeID;
-      elt.appendChild(option);
-    }
-
-  });
-}
-
-function addCalendars()
-{
-  window.CRM.APIRequest({
-    method: 'GET',
-    path: 'groups/calendars',
-  }).done(function (groups) {
-    var elt = document.getElementById("EventGroup");
-    var len = groups.length;
-
-    // We add the none option
-    var option = document.createElement("option");
-    option.text = i18next.t("None");
-    option.value = 0;
-    option.title = "";
-    elt.appendChild(option);
-
-    for (i = 0; i < len; ++i) {
-      var option = document.createElement("option");
-      // there is a groups.type in function of the new plan of schema
-      option.text = groups[i].name;
-      option.title = groups[i].type;
-      option.value = groups[i].groupID;
-      elt.appendChild(option);
-    }
-
-  });
-}
 
 function BootboxContent() {
   var frm_str = '<form id="some-form">'
@@ -476,54 +306,88 @@ function handleEventSelect(start, end) {
 }
 ;
 
-function handleEventRender(event, element, view) {
-  groupFilterID = window.groupFilterID;
-  EventTypeFilterID = window.EventTypeFilterID;
 
-  if (event.hasOwnProperty('type')) {
-    if (event.type == 'event'
-            && (groupFilterID == 0 || (groupFilterID > 0 && groupFilterID == event.groupID))
-            && (EventTypeFilterID == 0 || (EventTypeFilterID > 0 && EventTypeFilterID == event.eventTypeID))) {
-      return true;
-    } else if (event.type == 'event'
-            && ((groupFilterID > 0 && groupFilterID != event.groupID)
-                    || (EventTypeFilterID > 0 && EventTypeFilterID != event.eventTypeID))) {
-      return false;
-    } else if ((event.allDay || event.type != 'event')) {// we are in a allDay event          
-      if (event.type == 'anniversary' && anniversary == true || event.type == 'birthday' && birthday == true) {
-        var evStart = moment(view.intervalStart).subtract(1, 'days');
-        var evEnd = moment(view.intervalEnd).subtract(1, 'days');
-        if (!event.start.isAfter(evStart) || event.start.isAfter(evEnd)) {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
-  }
-}
-;
-$(document).ready(function () {
 
+function initializeCalendar() {
   //
   // initialize the calendar
   // -----------------------------------------------------------------
-  $('#calendar').fullCalendar({
+  window.CRM.fullcalendar =  $('#calendar').fullCalendar({
     header: {
       left: 'prev,next today',
       center: 'title',
       right: 'month,agendaWeek,agendaDay,listMonth'
     },
-    height: 500,
-    selectable: isModifiable,
-    editable: isModifiable,
+    height: 600,
+    selectable: calendarJSArgs.isModifiable,
+    editable: calendarJSArgs.isModifiable,
     eventDrop: handleEventDrop,
     eventResize: handleEventResize,
     selectHelper: true,
     select: handleEventSelect,
-    eventLimit: withlimit,
-    locale: window.CRM.lang,
-    events: window.CRM.root + '/api/events/fullcalendar',
-    eventRender: handleEventRender
+    locale: window.CRM.lang
   });
+};
+
+
+function getCalendarFilterElement(calendar,type) {
+  return "<div>" + 
+         "<input type='checkbox' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>"+ 
+         "<label for='"+calendar.Name+"'>"+calendar.Name+"</label>";
+}
+
+function registerCalendarSelectionEvents() {
+  $(document).on
+  $(document).on("click",".calendarSelectionBox", function(event) {
+    console.log("box checked");
+    var endpoint;
+    if($(this).data('calendartype') === "user") {
+      endpoint="/api/calendars/"
+    }
+    else if($(this).data('calendartype') === "system")
+    {
+      endpoint="/api/systemcalendars/"
+    }
+    if($(this).is(":checked")){
+      var eventSourceURL = window.CRM.root+endpoint+$(this).data("calendarid")+"/fullcalendar";
+      window.CRM.fullcalendar.fullCalendar("addEventSource",eventSourceURL);
+    }
+    else {
+      var eventSourceURL = window.CRM.root+endpoint+$(this).data("calendarid")+"/fullcalendar";
+      window.CRM.fullcalendar.fullCalendar("removeEventSource",eventSourceURL);
+    }
+  })
+}
+
+function initializeFilterSettings() {
+  
+  window.CRM.APIRequest({
+    method: 'GET',
+    path: 'calendars',
+  }).done(function (calendars) {
+    window.asdf=calendars;
+    $.each(calendars.Calendars,function(idx,calendar) {
+      console.log(calendar);
+      $("#userCalendars").append(getCalendarFilterElement(calendar,"user"))
+    });
+  });
+ 
+  window.CRM.APIRequest({
+    method: 'GET',
+    path: 'systemcalendars',
+  }).done(function (calendars) {
+    window.asdf=calendars;
+    $.each(calendars.Calendars,function(idx,calendar) {
+      console.log(calendar);
+      $("#systemCalendars").append(getCalendarFilterElement(calendar,"system"))
+    });
+  });
+  
+  registerCalendarSelectionEvents();
+  
+};
+
+$(document).ready(function () {
+  initializeCalendar();
+  initializeFilterSettings();
 });

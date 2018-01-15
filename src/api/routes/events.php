@@ -22,13 +22,11 @@ use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\Utils\InputUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\dto\FullCalendarEvent;
 
 $app->group('/events', function () {
 
   $this->get('/', 'getAllEvents');
   $this->get('', 'getAllEvents');
-  $this->get('/fullcalendar', 'getFullCalendarEvents');
   $this->get('/{id}/primarycontact', 'getEventPrimaryContact');
   $this->get('/{id}/secondarycontact', 'getEventSecondaryContact');
   $this->get('/{id}/location', 'getEventLocation');
@@ -48,24 +46,7 @@ function getAllEvents($request, Response $response, $args) {
   return $response->withStatus(404);
 }
 
-function getFullCalendarEvents($request, Response $response, $args) {
-  $start = $request->getQueryParam("start","");
-  $end = $request->getQueryParam("end","");
-  $Events = EventQuery::create()
-          ->filterByStart(array("min"=>$start))
-          ->filterByEnd(array("max"=>$end))
-          ->find();
-  if ($Events) {
-    $formattedEvents = [];
-    foreach ($Events as $event){
-      $fce = new FullCalendarEvent();
-        $fce->createFromEvent($event);
-      array_push($formattedEvents, $fce );
-    }
-    return $response->write(json_encode($formattedEvents));
-  }
-  return $response->withStatus(404);
-}
+
 
 function getEventPrimaryContact($request, $response, $args) {
   $Event = EventQuery::create()

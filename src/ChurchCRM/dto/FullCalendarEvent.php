@@ -5,6 +5,7 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Event;
 use ChurchCRM\Person;
 use ChurchCRM\Family;
+use ChurchCRM\Calendar;
 
 
 class FullCalendarEvent {
@@ -24,19 +25,13 @@ class FullCalendarEvent {
   public function __construct() {
     return $this;
   }
-  public function createFromEvent(Event $CRMEvent) {
+  public function createFromEvent(Event $CRMEvent, Calendar $CRMCalendar) {
         $this->title = $CRMEvent->getTitle();
         $this->start = $CRMEvent->getStart("c");
         $this->end = $CRMEvent->getEnd("c");
         $this->allDay = $false;
         $this->id = $CRMEvent->getId();
-  }
-  
-  public function createAnniversaryFromFamily(Family $CRMFamily) {
-    
-  }
-  
-  public function createBirthdayFromPerson(Person $CRMPerson) {
-    
+        $this->backgroundColor = "#".$CRMCalendar->getBackgroundColor();
+        $this->foregroundColor = "#".$CRMCalendar->getForegroundColor();
   }
 }
