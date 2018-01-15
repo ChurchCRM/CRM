@@ -22,6 +22,7 @@ class FullCalendarEvent {
   public $allDay;
   public $url;
   public $id;
+  public $editable;
   
   public function __construct() {
     return $this;
@@ -34,5 +35,6 @@ class FullCalendarEvent {
         $this->id = $CRMEvent->getId();
         $this->backgroundColor = "#".$CRMCalendar->getBackgroundColor();
         $this->textColor = "#".$CRMCalendar->getForegroundColor();
+        $this->editable = $CRMEvent->isEditable();
   }
 }

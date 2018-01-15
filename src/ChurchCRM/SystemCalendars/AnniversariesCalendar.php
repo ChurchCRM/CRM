@@ -39,6 +39,7 @@ class AnniversariesCalendar implements SystemCalendar {
             ->find();
     Foreach($families as $family) {
       $anniversary = new Event();
+      $anniversary->setEditable(false);
       $anniversary->setTitle(gettext("Anniversary: ".$family->getFamilyString()));
       $year = date('Y');
       $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());

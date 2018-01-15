@@ -38,6 +38,7 @@ class BirthdaysCalendar implements SystemCalendar {
             ->find();
     Foreach($people as $person) {
       $birthday = new Event();
+      $birthday->setEditable(false);
       $birthday->setTitle(gettext("Birthday: ".$person->getFullName()));
       $year = date('Y');
       $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());

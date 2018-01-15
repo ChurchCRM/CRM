@@ -165,90 +165,95 @@ function handleEventResize(event, delta, revertFunc) {
   }
 }
 ;
-function handleEventSelect(start, end) {
 
-  var modal = bootbox.dialog({
-    message: BootboxContent(),
-    title: i18next.t("Event Creation"),
-    buttons: [
-      {
-        label: i18next.t("Save"),
-        className: "btn btn-primary pull-left",
-        callback: function () {
-          var e = document.getElementById("eventType");
-          var eventTypeID = e.options[e.selectedIndex].value;
+window.NewCalendarEventModal = {
+  saveButtonCallback: function() {
+      var e = document.getElementById("eventType");
+      var eventTypeID = e.options[e.selectedIndex].value;
 
-          var EventTitle = $('form #EventTitle').val();
-          var EventDesc = $('form #EventDesc').val();
+      var EventTitle = $('form #EventTitle').val();
+      var EventDesc = $('form #EventDesc').val();
 
-          var e = document.getElementById("EventGroup");
-          var EventGroupID = e.options[e.selectedIndex].value;
-          var EventGroupType = e.options[e.selectedIndex].title;// we get the type of the group : personal or group for future dev
-          var EventPubliclyVisible = $("form #EventPubliclyVisible").prop('checked');
+      var e = document.getElementById("EventGroup");
+      var EventGroupID = e.options[e.selectedIndex].value;
+      var EventGroupType = e.options[e.selectedIndex].title;// we get the type of the group : personal or group for future dev
+      var EventPubliclyVisible = $("form #EventPubliclyVisible").prop('checked');
 
-          var Total = $('form #Total').val();
-          var Members = $('form #Members').val();
-          var Visitors = $('form #Visitors').val();
-          var EventCountNotes = $('form #EventCountNotes').val();
+      var Total = $('form #Total').val();
+      var Members = $('form #Members').val();
+      var Visitors = $('form #Visitors').val();
+      var EventCountNotes = $('form #EventCountNotes').val();
 
-          var eventPredication = CKEDITOR.instances['eventPredication'].getData();//$('form #eventPredication').val();
-          var dateRange = $('#EventDateRange').val().split(" - ");
-          var start = moment(dateRange[0]).format();
-          var end = moment(dateRange[1]).format();
-          var add = false;
+      var eventPredication = CKEDITOR.instances['eventPredication'].getData();//$('form #eventPredication').val();
+      var dateRange = $('#EventDateRange').val().split(" - ");
+      var start = moment(dateRange[0]).format();
+      var end = moment(dateRange[1]).format();
+      var add = false;
 
-          window.CRM.APIRequest({
-            method: 'POST',
-            path: 'events/',
-            data: JSON.stringify({
-              "evntAction": 'createEvent',
-              "eventTypeID": eventTypeID,
-              "EventGroupType": EventGroupType,
-              "EventTitle": EventTitle,
-              "EventDesc": EventDesc,
-              "EventGroupID": EventGroupID,
-              "EventPubliclyVisible": EventPubliclyVisible,
-              "Total": Total,
-              "Members": Members,
-              "Visitors": Visitors,
-              "EventCountNotes": EventCountNotes,
-              "eventPredication": eventPredication,
-              "start": start,
-              "end": end
-            })
-          }).done(function (data) {
-            $('#calendar').fullCalendar('renderEvent', data, true); // stick? = true             
-            $('#calendar').fullCalendar('unselect');
-            add = true;
-            modal.modal("hide");
+      window.CRM.APIRequest({
+        method: 'POST',
+        path: 'events/',
+        data: JSON.stringify({
+          "evntAction": 'createEvent',
+          "eventTypeID": eventTypeID,
+          "EventGroupType": EventGroupType,
+          "EventTitle": EventTitle,
+          "EventDesc": EventDesc,
+          "EventGroupID": EventGroupID,
+          "EventPubliclyVisible": EventPubliclyVisible,
+          "Total": Total,
+          "Members": Members,
+          "Visitors": Visitors,
+          "EventCountNotes": EventCountNotes,
+          "eventPredication": eventPredication,
+          "start": start,
+          "end": end
+        })
+      }).done(function (data) {
+        $('#calendar').fullCalendar('renderEvent', data, true); // stick? = true             
+        $('#calendar').fullCalendar('unselect');
+        add = true;
+        modal.modal("hide");
 
-            var box = bootbox.dialog({message: i18next.t("Event was added successfully.")});
+        var box = bootbox.dialog({message: i18next.t("Event was added successfully.")});
 
-            setTimeout(function () {
-              // be careful not to call box.hide() here, which will invoke jQuery's hide method
-              box.modal('hide');
-            }, 1000);
-            return true;
-          });
+        setTimeout(function () {
+          // be careful not to call box.hide() here, which will invoke jQuery's hide method
+          box.modal('hide');
+        }, 1000);
+        return true;
+      });
 
-          return add;
-        }
-      },
-      {
-        label: i18next.t("Close"),
-        className: "btn btn-default pull-left",
-        callback: function () {
-          console.log("just do something on close");
-        }
+      return add;
+  },  
+  getSaveButton: function() {
+    return {
+      label: i18next.t("Save"),
+      className: "btn btn-primary pull-left",
+      callback: window.NewCalendarEventModal.saveButtonCallback
+    };
+  },
+  getCloseButton: function() {
+    return {
+      label: i18next.t("Close"),
+      className: "btn btn-default pull-left"
+    };
+  },
+  getNewEventModal: function() {
+    window.NewCalendarEventModal.modal = bootbox.dialog({
+      message: BootboxContent(),
+      title: i18next.t("Event Creation"),
+      buttons: [
+        window.NewCalendarEventModal.getSaveButton(),
+        window.NewCalendarEventModal.getCloseButton()
+      ],
+      show: false,
+      onEscape: function () {
+        modal.modal("hide");
       }
-    ],
-    show: false,
-    onEscape: function () {
-      modal.modal("hide");
-    }
-  });
+    });
 
-  modal.modal("show");
+  window.NewCalendarEventModal.modal.modal("show");
 
   // we add the calendars
   addCalendars();
@@ -303,10 +308,8 @@ function handleEventSelect(start, end) {
   });
 
   $("#ATTENDENCES").parents("tr").hide();
-}
-;
-
-
+  }
+};
 
 function initializeCalendar() {
   //
@@ -324,7 +327,7 @@ function initializeCalendar() {
     eventDrop: handleEventDrop,
     eventResize: handleEventResize,
     selectHelper: true,
-    select: handleEventSelect,
+    select: window.NewCalendarEventModal.getNewEventModal,
     locale: window.CRM.lang
   });
 };

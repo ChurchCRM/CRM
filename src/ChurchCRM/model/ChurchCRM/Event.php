@@ -18,6 +18,22 @@ use ChurchCRM\dto\SystemURLs;
 class Event extends BaseEvent
 {
   
+  private $editable;
+  
+  public function isEditable()
+  {
+    return $this->editable;
+  }
+  
+  public function setEditable($editable) {
+    $this->editable = $editable;
+  }
+  
+  public function __construct() {
+    parent::__construct();
+    $this->editable = true;
+  }
+  
   public function checkInPerson($PersonId)
   {    
     $AttendanceRecord = EventAttendQuery::create()
