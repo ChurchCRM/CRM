@@ -239,6 +239,61 @@ window.NewCalendarEventModal = {
       className: "btn btn-default pull-left"
     };
   },
+  configureModalUIElements: function() {
+    // we add the calendars
+    addCalendars();
+    addEventTypes();
+    if (!start.hasTime())
+    {
+      start.hour(8);
+      start.minute(0);
+      end.hour(8);
+      end.minute(30);
+      end.day(end.day() - 1);
+    }
+    $('#EventDateRange').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      linkedCalendars: true,
+      showDropdowns: true,
+      locale: {
+        format: 'YYYY-MM-DD h:mm A'
+      },
+      minDate: 1 / 1 / 1900,
+      startDate: start.format("YYYY-MM-DD h:mm A"),
+      endDate: end.format("YYYY-MM-DD h:mm A")
+    });
+
+    // this will ensure that image and table can be focused
+    $(document).on('focusin', function (e) {
+      e.stopImmediatePropagation();
+    });
+
+    $('#EventTitle').on('click', function () {
+      if (this.defaultValue == i18next.t("Calendar Title")) {
+        this.defaultValue = '';
+        this.style.color = '#000';
+      }
+      ;
+    });
+
+    $('#EventDesc').on('click', function () {
+      if (this.defaultValue == i18next.t("Calendar description")) {
+        this.defaultValue = '';
+        this.style.color = '#000';
+      }
+      ;
+    });
+
+    // this will create the toolbar for the textarea
+    CKEDITOR.replace('eventPredication', {
+      customConfig: window.CRM.root + '/skin/js/ckeditor/calendar_event_editor_config.js',
+      language: window.CRM.lang,
+      width: '100%'
+    });
+
+    $("#ATTENDENCES").parents("tr").hide();
+  },
   getNewEventModal: function() {
     window.NewCalendarEventModal.modal = bootbox.dialog({
       message: BootboxContent(),
@@ -249,65 +304,11 @@ window.NewCalendarEventModal = {
       ],
       show: false,
       onEscape: function () {
-        modal.modal("hide");
+        window.NewCalendarEventModal.modal.modal("hide");
       }
     });
-
-  window.NewCalendarEventModal.modal.modal("show");
-
-  // we add the calendars
-  addCalendars();
-  addEventTypes();
-  if (!start.hasTime())
-  {
-    start.hour(8);
-    start.minute(0);
-    end.hour(8);
-    end.minute(30);
-    end.day(end.day() - 1);
-  }
-  $('#EventDateRange').daterangepicker({
-    timePicker: true,
-    timePickerIncrement: 30,
-    linkedCalendars: true,
-    showDropdowns: true,
-    locale: {
-      format: 'YYYY-MM-DD h:mm A'
-    },
-    minDate: 1 / 1 / 1900,
-    startDate: start.format("YYYY-MM-DD h:mm A"),
-    endDate: end.format("YYYY-MM-DD h:mm A")
-  });
-
-  // this will ensure that image and table can be focused
-  $(document).on('focusin', function (e) {
-    e.stopImmediatePropagation();
-  });
-
-  $('#EventTitle').on('click', function () {
-    if (this.defaultValue == i18next.t("Calendar Title")) {
-      this.defaultValue = '';
-      this.style.color = '#000';
-    }
-    ;
-  });
-
-  $('#EventDesc').on('click', function () {
-    if (this.defaultValue == i18next.t("Calendar description")) {
-      this.defaultValue = '';
-      this.style.color = '#000';
-    }
-    ;
-  });
-
-  // this will create the toolbar for the textarea
-  CKEDITOR.replace('eventPredication', {
-    customConfig: window.CRM.root + '/skin/js/ckeditor/calendar_event_editor_config.js',
-    language: window.CRM.lang,
-    width: '100%'
-  });
-
-  $("#ATTENDENCES").parents("tr").hide();
+    window.NewCalendarEventModal.modal.modal("show");
+    window.NewCalendarEventModal.configureModalUIElements();
   }
 };
 
