@@ -99,13 +99,10 @@ window.moveEventModal = {
     if(result === true) {
     window.CRM.APIRequest({
       method: 'POST',
-      path: 'events/',
-      data: JSON.stringify({"evntAction": 'moveEvent', "eventID": event.eventID, "start": event.start.format()})
+      path: 'events/'+window.moveEventModal.event.id+"/time",
+      data: JSON.stringify({"startTime": window.moveEventModal.event.start.format(),"endTime": window.moveEventModal.event.end.format()})
     }).done(function (data) {
-      // now we can create the event
-      $('#calendar').fullCalendar('removeEvents', event._id);// delete old one
-      $('#calendar').fullCalendar('renderEvent', data, true); // add the new one
-      $('#calendar').fullCalendar('unselect');
+        console.log("event moved");
     });
   } else {
      window.moveEventModal.revertFunc();
@@ -116,6 +113,7 @@ window.moveEventModal = {
     originalStart = event.start.clone().subtract(delta).format("dddd, MMMM Do YYYY, h:mm:ss a");
     newStart = event.start.format("dddd, MMMM Do YYYY, h:mm:ss a");
     window.moveEventModal.revertFunc = revertFunc;
+    window.moveEventModal.event = event;
     bootbox.confirm({
       title: i18next.t("Move Event") + "?",
       message: i18next.t("Are you sure you want to move") +" " + event.title + " " + i18next.t("from") + "<br/>" +

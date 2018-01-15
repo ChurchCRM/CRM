@@ -32,6 +32,7 @@ $app->group('/events', function () {
   $this->get('/{id}/secondarycontact', 'getEventSecondaryContact');
   $this->get('/{id}/location', 'getEventLocation');
   $this->get('/{id}/audience', 'getEventAudience');
+  $this->post('/{id}/time', 'setEventTime');
   $this->post('/', 'newOrUpdateEvent');
 });
 
@@ -96,6 +97,21 @@ function getEventAudience($request, $response, $args) {
     return $response->write($Audience->toJSON());
   }
   return $response->withStatus(404);
+}
+
+function setEventTime ($request, Response $response, $args) {
+  $input = (object) $request->getParsedBody();
+
+  $event = EventQuery::Create()
+    ->findOneById($args['id']);
+  if(!$event) {
+    return $response->withStatus(404);
+  }
+  $event->setStart($input->startTime);
+  $event->setEnd($input->endTime);
+  $event->save();
+  return $response->withJson(array("status"=>"success"));
+  
 }
 
 function newOrUpdateEvent($request, $response, $args) {
