@@ -14,7 +14,7 @@ if (count($PublicEvents) > 0) {
   $PublicCalendar = new Calendar();
   $PublicCalendar->setName(gettext("Public Calendar"));
   $PublicCalendar->setBackgroundColor("00AA00");
-  $PublicCalendar->setForegroundColor("000000");
+  $PublicCalendar->setForegroundColor("FFFFFF");
   $PublicCalendar->save();
   
   foreach ($PublicEvents as $PublicEvent) {
@@ -43,7 +43,7 @@ if (count($PrivateEvents) > 0) {
   $PrivateCalendar = new Calendar();
   $PrivateCalendar->setName(gettext("Private Calendar"));
   $PrivateCalendar->setBackgroundColor("0000AA");
-  $PrivateCalendar->setForegroundColor("000000");
+  $PrivateCalendar->setForegroundColor("FFFFFF");
   $PrivateCalendar->save();
   
   foreach ($PrivateEvents as $PrivateEvent) {
