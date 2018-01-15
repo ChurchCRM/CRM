@@ -333,7 +333,9 @@ function initializeCalendar() {
 function getCalendarFilterElement(calendar,type) {
   return "<div>" + 
          "<input type='checkbox' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>"+ 
-         "<label for='"+calendar.Name+"'>"+calendar.Name+"</label>";
+         "<label for='"+calendar.Name+"'>"+calendar.Name+"</label>"+
+         "<div style='display:inline-block; padding-left:5px; padding-right:5px; float:right; color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>" +
+         "</div>";
 }
 
 function registerCalendarSelectionEvents() {
