@@ -167,8 +167,8 @@ function handleEventResize(event, delta, revertFunc) {
 ;
 
 window.NewCalendarEventModal = {
-  saveButtonCallback: function() {
-      var e = document.getElementById("eventType");
+  readDOMNewEvent: function() {
+    var e = document.getElementById("eventType");
       var eventTypeID = e.options[e.selectedIndex].value;
 
       var EventTitle = $('form #EventTitle').val();
@@ -189,11 +189,7 @@ window.NewCalendarEventModal = {
       var start = moment(dateRange[0]).format();
       var end = moment(dateRange[1]).format();
       var add = false;
-
-      window.CRM.APIRequest({
-        method: 'POST',
-        path: 'events/',
-        data: JSON.stringify({
+      return {
           "evntAction": 'createEvent',
           "eventTypeID": eventTypeID,
           "EventGroupType": EventGroupType,
@@ -208,7 +204,16 @@ window.NewCalendarEventModal = {
           "eventPredication": eventPredication,
           "start": start,
           "end": end
-        })
+        };
+  },
+  saveButtonCallback: function() {
+    var Event = window.NewCalendarEventModal.readDOMNewEvent();
+    console.log(Event);
+    return;
+      window.CRM.APIRequest({
+        method: 'POST',
+        path: 'events/',
+        data: JSON.stringify(Event)
       }).done(function (data) {
         $('#calendar').fullCalendar('renderEvent', data, true); // stick? = true             
         $('#calendar').fullCalendar('unselect');
@@ -239,10 +244,54 @@ window.NewCalendarEventModal = {
       className: "btn btn-default pull-left"
     };
   },
-  configureModalUIElements: function() {
+  loadCalendars: function() {
+    window.CRM.APIRequest({
+      method: 'GET',
+      path: 'groups/calendars',
+    }).done(function (groups) {
+      var elt = document.getElementById("EventGroup");
+      var len = groups.length;
+
+      // We add the none option
+      var option = document.createElement("option");
+      option.text = i18next.t("None");
+      option.value = 0;
+      option.title = "";
+      elt.appendChild(option);
+
+      for (i = 0; i < len; ++i) {
+        var option = document.createElement("option");
+        // there is a groups.type in function of the new plan of schema
+        option.text = groups[i].name;
+        option.title = groups[i].type;
+        option.value = groups[i].groupID;
+        elt.appendChild(option);
+      }
+
+    });
+  },
+  loadEventTypes: function() {
+    window.CRM.APIRequest({
+    method: 'GET',
+    path: 'events/types',
+  }).done(function (eventTypes) {
+    console.log(eventTypes);
+    var elt = document.getElementById("eventType");
+    var len = eventTypes.length;
+
+    for (i = 0; i < len; ++i) {
+      var option = document.createElement("option");
+      option.text = eventTypes[i].name;
+      option.value = eventTypes[i].eventTypeID;
+      elt.appendChild(option);
+    }
+
+  });
+  },
+  configureModalUIElements: function(start,end) {
     // we add the calendars
-    addCalendars();
-    addEventTypes();
+    window.NewCalendarEventModal.loadCalendars();
+    window.NewCalendarEventModal.loadEventTypes();
     if (!start.hasTime())
     {
       start.hour(8);
@@ -294,7 +343,7 @@ window.NewCalendarEventModal = {
 
     $("#ATTENDENCES").parents("tr").hide();
   },
-  getNewEventModal: function() {
+  getNewEventModal: function(start,end) {
     window.NewCalendarEventModal.modal = bootbox.dialog({
       message: BootboxContent(),
       title: i18next.t("Event Creation"),
@@ -308,7 +357,7 @@ window.NewCalendarEventModal = {
       }
     });
     window.NewCalendarEventModal.modal.modal("show");
-    window.NewCalendarEventModal.configureModalUIElements();
+    window.NewCalendarEventModal.configureModalUIElements(start,end);
   }
 };
 

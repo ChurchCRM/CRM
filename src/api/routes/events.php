@@ -13,7 +13,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Base\EventQuery;
-use ChurchCRM\Base\EventTypesQuery;
+use ChurchCRM\Base\EventTypeQuery;
 use ChurchCRM\Event;
 use ChurchCRM\EventCountsQuery;
 use ChurchCRM\EventCounts;
@@ -27,12 +27,23 @@ $app->group('/events', function () {
 
   $this->get('/', 'getAllEvents');
   $this->get('', 'getAllEvents');
+  $this->get("/types","getEventTypes");  
   $this->get('/{id}/primarycontact', 'getEventPrimaryContact');
   $this->get('/{id}/secondarycontact', 'getEventSecondaryContact');
   $this->get('/{id}/location', 'getEventLocation');
   $this->get('/{id}/audience', 'getEventAudience');
   $this->post('/', 'newOrUpdateEvent');
 });
+
+function getEventTypes($request, Response $response, $args) {
+  $EventTypes = EventTypeQuery::Create()
+          ->orderByName()
+          ->find();
+  if ($EventTypes) {
+    return $response->write($EventTypes->toJSON());
+  }
+  return $response->withStatus(404);
+}
 
 function getAllEvents($request, Response $response, $args) {
   $Events = EventQuery::create()
@@ -96,7 +107,7 @@ function newOrUpdateEvent($request, $response, $args) {
     $EventGroupType = $input->EventGroupType; // for futur dev : personal or group
 
     if ($input->eventTypeID) {
-      $type = EventTypesQuery::Create()
+      $type = EventTypeQuery::Create()
               ->findOneById($input->eventTypeID);
       $eventTypeName = $type->getName();
     }
