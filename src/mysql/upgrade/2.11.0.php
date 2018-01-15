@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\Event;
+use ChurchCRM\EventQuery;
 use ChurchCRM\Calendar;
 
 
@@ -16,7 +16,7 @@ if (count($PublicEvents) > 0) {
   $PublicCalendar->save();
 
   foreach ($PublicEvents as $PublicEvent) {
-    $w = new Event();
+    $w = EventQuery::Create() ->findOneById($PublicEvent['event_id']);
     $w->setType($PublicEvent['event_type']);
     $w->setTitle($PublicEvent['event_title']);
     $w->setDesc($PublicEvent['event_desc']);
