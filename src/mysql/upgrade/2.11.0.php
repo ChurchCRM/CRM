@@ -16,7 +16,7 @@ if (count($PublicEvents) > 0) {
   $PublicCalendar->setBackgroundColor("00AA00");
   $PublicCalendar->setForegroundColor("000000");
   $PublicCalendar->save();
-
+  
   foreach ($PublicEvents as $PublicEvent) {
     $w = EventQuery::Create() ->findOneById($PublicEvent['event_id']);
     $w->setType($PublicEvent['event_type']);
@@ -30,9 +30,35 @@ if (count($PublicEvents) > 0) {
     $w->addCalendar($PublicCalendar);
     $w->save();
   }
+}
+
+$privateEventsQuery = "SELECT * FROM events_event where event_publicly_visible = FALSE";
+
+$statement = $connection->prepare($privateEventsQuery);
+$statement->execute();
+$PrivateEvents = $statement->fetchAll();
+
+
+if (count($PrivateEvents) > 0) {
+  $PrivateCalendar = new Calendar();
+  $PrivateCalendar->setName(gettext("Private Calendar"));
+  $PrivateCalendar->setBackgroundColor("0000AA");
+  $PrivateCalendar->setForegroundColor("000000");
+  $PrivateCalendar->save();
   
-  
-  
+  foreach ($PrivateEvents as $PrivateEvent) {
+    $w = EventQuery::Create() ->findOneById($PrivateEvent['event_id']);
+    $w->setType($PrivateEvent['event_type']);
+    $w->setTitle($PrivateEvent['event_title']);
+    $w->setDesc($PrivateEvent['event_desc']);
+    $w->setText($PrivateEvent['event_text']);
+    $w->setStart($PrivateEvent['event_start']);
+    $w->setEnd($PrivateEvent['event_end']);
+    $w->setInActive($PrivateEvent['inactive']);
+    $w->setTypeName($PrivateEvent['event_typename']);
+    $w->addCalendar($PrivateCalendar);
+    $w->save();
+  }
 }
 
 
