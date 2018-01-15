@@ -122,46 +122,23 @@ window.moveEventModal = {
       buttons: window.moveEventModal.getButtons(),
       callback: window.moveEventModal.modalCallBack
     });
-  }
-};
-
-function handleEventResize(event, delta, revertFunc) {
-  if (event.type == 'event') {
+  },
+  handleEventResize: function (event, delta, revertFunc) {
+    start = event.start.format("dddd, MMMM Do YYYY, h:mm:ss a");
+    originalEnd = event.end.clone().subtract(delta).format("dddd, MMMM Do YYYY, h:mm:ss a");
+    newEnd = event.end.format("dddd, MMMM Do YYYY, h:mm:ss a");
+    window.moveEventModal.revertFunc = revertFunc;
+    window.moveEventModal.event = event;
     bootbox.confirm({
       title: i18next.t("Resize Event") + "?",
-      message: i18next.t("Are you sure about this change?") + "\n" + event.title + " " + i18next.t("will be dropped."),
-      buttons: {
-        cancel: {
-          label: '<i class="fa fa-times"></i> ' + i18next.t("Cancel")
-        },
-        confirm: {
-          label: '<i class="fa fa-check"></i> ' + i18next.t("Confirm")
-        }
-      },
-      callback: function (result) {
-        if (result == true)// only event can be drag and drop, not anniversary or birthday
-        {
-          window.CRM.APIRequest({
-            method: 'POST',
-            path: 'events/',
-            data: JSON.stringify({"evntAction": 'resizeEvent', "eventID": event.eventID, "end": event.end.format()})
-          }).done(function (data) {
-            // now we can create the event
-            $('#calendar').fullCalendar('removeEvents', event._id);// delete old one
-            $('#calendar').fullCalendar('renderEvent', data, true); // add the new one
-            $('#calendar').fullCalendar('unselect');
-          });
-        } else {
-          revertFunc();
-        }
-        console.log('This was logged in the callback: ' + result);
-      }
+      message: i18next.t("Are you sure you want to change the end time for ") +" " + event.title + " " + i18next.t("from") + "<br/>" +
+       originalEnd + "<br/>" + 
+        i18next.t("to") + "<br/>" +  newEnd,
+      buttons: window.moveEventModal.getButtons(),
+      callback: window.moveEventModal.modalCallBack
     });
-  } else {
-    revertFunc();
   }
-}
-;
+};
 
 window.NewCalendarEventModal = {
   readDOMNewEvent: function() {
@@ -363,7 +340,7 @@ function initializeCalendar() {
     selectable: calendarJSArgs.isModifiable,
     editable: calendarJSArgs.isModifiable,
     eventDrop: window.moveEventModal.handleEventDrop,
-    eventResize: handleEventResize,
+    eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,
     select: window.NewCalendarEventModal.getNewEventModal,
     locale: window.CRM.lang
