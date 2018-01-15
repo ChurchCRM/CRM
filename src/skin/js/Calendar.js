@@ -521,9 +521,9 @@ $(document).ready(function () {
     eventResize: handleEventResize,
     selectHelper: true,
     select: handleEventSelect,
-    eventLimit: withlimit,
+    eventLimit: withlimit, // allow "more" link when too many events
     locale: window.CRM.lang,
-    events: window.CRM.root + '/api/events/fullcalendar',
+    events: window.CRM.root + '/api/calendar/events',
     eventRender: handleEventRender
   });
 });
