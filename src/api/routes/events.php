@@ -22,6 +22,7 @@ use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\Utils\InputUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\CalendarQuery;
 
 $app->group('/events', function () {
 
@@ -34,8 +35,12 @@ $app->group('/events', function () {
   $this->get('/{id}/secondarycontact', 'getEventSecondaryContact');
   $this->get('/{id}/location', 'getEventLocation');
   $this->get('/{id}/audience', 'getEventAudience');
+  
+  $this->post('/', 'newEvent');
+  $this->post('', 'newEvent');
+  $this->post('/{id}', 'updateEvent');
   $this->post('/{id}/time', 'setEventTime');
-  $this->post('/', 'newOrUpdateEvent');
+  
 });
 
 function getAllEvents($request, Response $response, $args) {
@@ -98,7 +103,7 @@ function getEventLocation($request, $response, $args) {
   return $response->withStatus(404);
 }
 
-function getEventAudience($request, $response, $args) {
+function getEventAudience($request, Response $response, $args) {
   $Audience = EventQuery::create()
           ->findOneById($args['id'])
           ->getEventAudiencesJoinGroup();
@@ -108,6 +113,43 @@ function getEventAudience($request, $response, $args) {
   return $response->withStatus(404);
 }
 
+function newEvent($request, $response, $args) {
+  $input = (object) $request->getParsedBody();
+  $eventTypeName = "";
+  
+  //fetch all related event objects before committing this event.
+  $type = EventTypeQuery::Create()
+          ->findOneById($input->eventTypeID);
+  if (!$type)
+  {
+    return $response->withStatus(400)->withJSON(array("status"=>"invalid event type id"));
+  }
+
+  $calendars = CalendarQuery::create()
+          ->filterById($input->eventCalendars)
+          ->find();
+  if (count($calendars) != count($input->eventCalendars)){
+    return $response->withStatus(400)->withJSON(array("status"=>"invalid calendar pinning"));
+  }
+  
+  // we have event type and pined calendars.  now create the event.
+  $event = new Event;
+  $event->setTitle($input->EventTitle);
+  $event->setType($type);
+  $event->setDesc($input->EventDesc);
+  $event->setStart(str_replace("T", " ", $input->start));
+  $event->setEnd(str_replace("T", " ", $input->end));
+  $event->setText(InputUtils::FilterHTML($input->eventPredication));
+  $event->setCalendars($calendars);
+  $event->save();
+
+  return $response->withJSON(array("status"=>"success"));
+}
+
+function updateEvent($request, $response, $args) {
+  $input = (object) $request->getParsedBody();
+  
+}
 function setEventTime ($request, Response $response, $args) {
   $input = (object) $request->getParsedBody();
 
@@ -123,105 +165,31 @@ function setEventTime ($request, Response $response, $args) {
   
 }
 
-function newOrUpdateEvent($request, $response, $args) {
-  $input = (object) $request->getParsedBody();
 
-  if (!strcmp($input->evntAction, 'createEvent')) {
-    $eventTypeName = "";
+function unusedSetEventAttendance() {
+  if ($input->Total > 0 || $input->Visitors || $input->Members) {
+    $eventCount = new EventCounts;
+    $eventCount->setEvtcntEventid($event->getID());
+    $eventCount->setEvtcntCountid(1);
+    $eventCount->setEvtcntCountname('Total');
+    $eventCount->setEvtcntCountcount($input->Total);
+    $eventCount->setEvtcntNotes($input->EventCountNotes);
+    $eventCount->save();
 
-    $EventGroupType = $input->EventGroupType; // for futur dev : personal or group
+    $eventCount = new EventCounts;
+    $eventCount->setEvtcntEventid($event->getID());
+    $eventCount->setEvtcntCountid(2);
+    $eventCount->setEvtcntCountname('Members');
+    $eventCount->setEvtcntCountcount($input->Members);
+    $eventCount->setEvtcntNotes($input->EventCountNotes);
+    $eventCount->save();
 
-    if ($input->eventTypeID) {
-      $type = EventTypeQuery::Create()
-              ->findOneById($input->eventTypeID);
-      $eventTypeName = $type->getName();
-    }
-
-    $event = new Event;
-    $event->setTitle($input->EventTitle);
-    $event->setType($input->eventTypeID);
-    $event->setTypeName($eventTypeName);
-    $event->setDesc($input->EventDesc);
-    $event->setPubliclyVisible($input->EventPubliclyVisible);
-
-    if ($input->EventGroupID > 0)
-      $event->setGroupId($input->EventGroupID);
-
-    $event->setStart(str_replace("T", " ", $input->start));
-    $event->setEnd(str_replace("T", " ", $input->end));
-    $event->setText(InputUtils::FilterHTML($input->eventPredication));
-    $event->save();
-
-    if ($input->Total > 0 || $input->Visitors || $input->Members) {
-      $eventCount = new EventCounts;
-      $eventCount->setEvtcntEventid($event->getID());
-      $eventCount->setEvtcntCountid(1);
-      $eventCount->setEvtcntCountname('Total');
-      $eventCount->setEvtcntCountcount($input->Total);
-      $eventCount->setEvtcntNotes($input->EventCountNotes);
-      $eventCount->save();
-
-      $eventCount = new EventCounts;
-      $eventCount->setEvtcntEventid($event->getID());
-      $eventCount->setEvtcntCountid(2);
-      $eventCount->setEvtcntCountname('Members');
-      $eventCount->setEvtcntCountcount($input->Members);
-      $eventCount->setEvtcntNotes($input->EventCountNotes);
-      $eventCount->save();
-
-      $eventCount = new EventCounts;
-      $eventCount->setEvtcntEventid($event->getID());
-      $eventCount->setEvtcntCountid(3);
-      $eventCount->setEvtcntCountname('Visitors');
-      $eventCount->setEvtcntCountcount($input->Visitors);
-      $eventCount->setEvtcntNotes($input->EventCountNotes);
-      $eventCount->save();
-    }
-
-    $realCalEvnt = $this->CalendarService->createCalendarItem('event', $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(), $event->getId(), $event->getType(), $event->getGroupId()); // only the event id sould be edited and moved and have custom color
-
-    return $response->withJson(array_filter($realCalEvnt));
-  } else if ($input->evntAction == 'moveEvent') {
-    $event = EventQuery::Create()
-            ->findOneById($input->eventID);
-
-
-    $oldStart = new DateTime($event->getStart('Y-m-d H:i:s'));
-    $oldEnd = new DateTime($event->getEnd('Y-m-d H:i:s'));
-
-    $newStart = new DateTime(str_replace("T", " ", $input->start));
-
-    if ($newStart < $oldStart) {
-      $interval = $oldStart->diff($newStart);
-      $newEnd = $oldEnd->add($interval);
-    } else {
-      $interval = $newStart->diff($oldStart);
-      $newEnd = $oldEnd->sub($interval);
-    }
-
-    $event->setStart($newStart->format('Y-m-d H:i:s'));
-    $event->setEnd($newEnd->format('Y-m-d H:i:s'));
-    $event->save();
-
-    $realCalEvnt = $this->CalendarService->createCalendarItem('event', $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(), $event->getId(), $event->getType(), $event->getGroupId()); // only the event id sould be edited and moved and have custom color
-
-    return $response->withJson(array_filter($realCalEvnt));
-  } else if (!strcmp($input->evntAction, 'retriveEvent')) {
-    $event = EventQuery::Create()
-            ->findOneById($input->eventID);
-
-    $realCalEvnt = $this->CalendarService->createCalendarItem('event', $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(), $event->getId(), $event->getType(), $event->getGroupId()); // only the event id sould be edited and moved and have custom color
-
-    return $response->withJson(array_filter($realCalEvnt));
-  } else if (!strcmp($input->evntAction, 'resizeEvent')) {
-    $event = EventQuery::Create()
-            ->findOneById($input->eventID);
-
-    $event->setEnd(str_replace("T", " ", $input->end));
-    $event->save();
-
-    $realCalEvnt = $this->CalendarService->createCalendarItem('event', $event->getTitle(), $event->getStart('Y-m-d H:i:s'), $event->getEnd('Y-m-d H:i:s'), $event->getEventURI(), $event->getId(), $event->getType(), $event->getGroupId()); // only the event id sould be edited and moved and have custom color
-
-    return $response->withJson(array_filter($realCalEvnt));
+    $eventCount = new EventCounts;
+    $eventCount->setEvtcntEventid($event->getID());
+    $eventCount->setEvtcntCountid(3);
+    $eventCount->setEvtcntCountname('Visitors');
+    $eventCount->setEvtcntCountcount($input->Visitors);
+    $eventCount->setEvtcntNotes($input->EventCountNotes);
+    $eventCount->save();
   }
 }

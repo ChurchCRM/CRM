@@ -161,7 +161,6 @@ window.NewEventModal = {
       var end = moment(dateRange[1]).format();
       var add = false;
       return {
-          "evntAction": 'createEvent',
           "eventTypeID": eventTypeID,
           "EventTitle": EventTitle,
           "EventDesc": EventDesc,
@@ -177,25 +176,15 @@ window.NewEventModal = {
   },
   saveButtonCallback: function() {
     var Event = window.NewEventModal.readDOMNewEvent();
-    console.log(Event);
-    return;
       window.CRM.APIRequest({
         method: 'POST',
-        path: 'events/',
+        path: 'events',
         data: JSON.stringify(Event)
       }).done(function (data) {
-        $('#calendar').fullCalendar('renderEvent', data, true); // stick? = true             
-        $('#calendar').fullCalendar('unselect');
-        add = true;
-        modal.modal("hide");
-
-        var box = bootbox.dialog({message: i18next.t("Event was added successfully.")});
-
-        setTimeout(function () {
-          // be careful not to call box.hide() here, which will invoke jQuery's hide method
-          box.modal('hide');
-        }, 1000);
-        return true;
+        $(window.CRM.fullcalendar.fullCalendar("getEventSources")).each(function(idx,obj) {
+          console.log(obj);
+          window.CRM.fullcalendar.fullCalendar("refetchEventSources", obj);
+        });
       });
 
       return add;
