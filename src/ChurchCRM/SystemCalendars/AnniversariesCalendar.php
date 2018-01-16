@@ -32,36 +32,24 @@ class AnniversariesCalendar implements SystemCalendar {
   }
     
   public function getEvents() {
-    $events = new ObjectCollection();
-    $events->setModel("ChurchCRM\\Event");
     $families = FamilyQuery::create()
             ->filterByWeddingdate('', Criteria::NOT_EQUAL)
             ->find();
-    Foreach($families as $family) {
-      $anniversary = new Event();
-      $anniversary->setId($family->getId());
-      $anniversary->setEditable(false);
-      $anniversary->setTitle(gettext("Anniversary: ".$family->getFamilyString()));
-      $year = date('Y');
-      $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
-      $events->push(clone $anniversary);
-      $year -= 1;
-      $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
-      $events->push($anniversary);
-    }
-   
-    return $events;
-            
+    return $this->familyCollectionToEvents($families);       
   }
   
   public function getEventById($Id) {
-    $events = new ObjectCollection();
-    $events->setModel("ChurchCRM\\Event");
     $families = FamilyQuery::create()
             ->filterByWeddingdate('', Criteria::NOT_EQUAL)
             ->filterById($Id)
             ->find();
-    Foreach($families as $family) {
+    return $this->familyCollectionToEvents($families);  
+  }
+  
+  private function familyCollectionToEvents(ObjectCollection $Families){
+    $events = new ObjectCollection();
+    $events->setModel("ChurchCRM\\Event");
+    Foreach($Families as $family) {
       $anniversary = new Event();
       $anniversary->setId($family->getId());
       $anniversary->setEditable(false);
@@ -73,8 +61,6 @@ class AnniversariesCalendar implements SystemCalendar {
       $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
       $events->push($anniversary);
     }
-   
     return $events;
-            
   }
 }

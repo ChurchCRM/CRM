@@ -31,36 +31,24 @@ class BirthdaysCalendar implements SystemCalendar {
   }
     
   public function getEvents() {
-    $events = new ObjectCollection();
-    $events->setModel("ChurchCRM\\Event");
     $people = PersonQuery::create()
             ->filterByBirthDay('', \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
             ->find();
-    Foreach($people as $person) {
-      $birthday = new Event();
-      $birthday->setId($person->getId());
-      $birthday->setEditable(false);
-      $birthday->setTitle(gettext("Birthday: ".$person->getFullName()));
-      $year = date('Y');
-      $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
-      $events->push(clone $birthday);
-      $year -= 1;
-      $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
-      $events->push($birthday);
-    }
-   
-    return $events;
-            
+    return $this->peopleCollectionToEvents($people);       
   }
   
   public function getEventById($Id) {
-    $events = new ObjectCollection();
-    $events->setModel("ChurchCRM\\Event");
     $people = PersonQuery::create()
             ->filterByBirthDay('', \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
             ->filterById($Id)
             ->find();
-    Foreach($people as $person) {
+    return $this->peopleCollectionToEvents($people);  
+  }
+  
+  private function peopleCollectionToEvents(ObjectCollection $People) {
+    $events = new ObjectCollection();
+    $events->setModel("ChurchCRM\\Event");
+    Foreach($People as $person) {
       $birthday = new Event();
       $birthday->setId($person->getId());
       $birthday->setEditable(false);
@@ -72,8 +60,6 @@ class BirthdaysCalendar implements SystemCalendar {
       $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
       $events->push($birthday);
     }
-   
     return $events;
-            
   }
 }
