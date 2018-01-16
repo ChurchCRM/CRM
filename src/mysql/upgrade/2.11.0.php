@@ -19,14 +19,6 @@ if (count($PublicEvents) > 0) {
   
   foreach ($PublicEvents as $PublicEvent) {
     $w = EventQuery::Create() ->findOneById($PublicEvent['event_id']);
-    $w->setType($PublicEvent['event_type']);
-    $w->setTitle($PublicEvent['event_title']);
-    $w->setDesc($PublicEvent['event_desc']);
-    $w->setText($PublicEvent['event_text']);
-    $w->setStart($PublicEvent['event_start']);
-    $w->setEnd($PublicEvent['event_end']);
-    $w->setInActive($PublicEvent['inactive']);
-    $w->setTypeName($PublicEvent['event_typename']);
     $w->addCalendar($PublicCalendar);
     $w->save();
   }
@@ -48,14 +40,6 @@ if (count($PrivateEvents) > 0) {
   
   foreach ($PrivateEvents as $PrivateEvent) {
     $w = EventQuery::Create() ->findOneById($PrivateEvent['event_id']);
-    $w->setType($PrivateEvent['event_type']);
-    $w->setTitle($PrivateEvent['event_title']);
-    $w->setDesc($PrivateEvent['event_desc']);
-    $w->setText($PrivateEvent['event_text']);
-    $w->setStart($PrivateEvent['event_start']);
-    $w->setEnd($PrivateEvent['event_end']);
-    $w->setInActive($PrivateEvent['inactive']);
-    $w->setTypeName($PrivateEvent['event_typename']);
     $w->addCalendar($PrivateCalendar);
     $w->save();
   }
