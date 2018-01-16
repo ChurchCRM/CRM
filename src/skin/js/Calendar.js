@@ -299,7 +299,83 @@ window.NewEventModal = {
 };
 
 window.displayEventModal = {
-  renderEvent: function(event) {
+  getBootboxContent: function (event){ 
+    var calendarPinnings ='';
+    $.each(event.CalendarEventss,function (idx,obj) {
+      console.log(obj);
+      calendarPinnings += "<li>"+obj.Calendar.Name+"</li>";
+    });
+    console.log(calendarPinnings);
+    var frm_str = '<table class="table">'
+          + '<tr>'
+          + "<td><span style='color: red'>*</span>" + i18next.t('Event Type') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
+          + '<p>' + event.Type + "</p>" 
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Desc') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
+          + '<p>' + event.Desc + "</p>" 
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + '<td class="LabelColumn"><span style="color: red">*</span>'
+          + i18next.t("Date Range") + ':'
+          + '</td>'
+          + '<td class="TextColumn">'
+          + '<p>'+new moment(event.Start).format()+ " - " + new moment(event.End).format() +'</p>' 
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
+          + '<td class="TextColumn">'
+          + '<ul>'
+          + calendarPinnings
+          + "</li>"
+          + '</select>'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn' id='ATTENDENCES'>" + i18next.t('Attendance Counts') + ":</td>"
+          + '<td class="TextColumn" colspan="3">'
+          + '<table>'
+          + '<tr>'
+          + "<td><strong>" + i18next.t("Total") + ":&nbsp;</strong></td>"
+          + '<td>'
+          + '<input type="text" id="Total" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td><strong>" + i18next.t("Members") + ":&nbsp;</strong></td>"
+          + '<td>'
+          + '<input type="text" id="Members" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
+          + ' </td>'
+          + '</tr>'
+          + ' <tr>'
+          + "<td><strong>" + i18next.t("Visitors") + ":&nbsp;</strong></td>"
+          + '<td>'
+          + '<input type="text" id="Visitors" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td><strong>" + i18next.t('Attendance Notes: ') + " &nbsp;</strong></td>"
+          + '<td><input type="text" id="EventCountNotes" value="" class="form-control">'
+          + '</td>'
+          + '</tr>'
+          + '</table>'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Description') + '<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  width="100%" style="width: 100%"></textarea></td>'
+          + '</tr>'
+          + '</table>'
+          + '</form>';
+    var object = $('<div/>').html(frm_str).contents();
+
+    return object
+  },
+  getDisplayEventModal: function(event) {
     if (event.source.url.match(/systemcalendar/g))
     {
       path = "systemcalendars/"+event.source.id+"/events/"+event.id;
@@ -312,20 +388,16 @@ window.displayEventModal = {
       method: 'GET',
       path: path,
     }).done(function (data) {
-      $("#displayEventModal").text("asdf");
+      var bootboxmessage = window.displayEventModal.getBootboxContent(data.Events[0]);
+      window.displayEventModal.modal = bootbox.dialog({
+        title: data.Title,
+        message: bootboxmessage,
+        show: true,
+        onEscape: function () {
+          window.displayEventModal.modal.modal("hide");
+        }
+      });
     });
-  },
-  getDisplayEventModal: function(event) {
-    window.displayEventModal.modal = bootbox.dialog({
-      title: i18next.t(event.title),
-      message:  "<div id='displayEventModal'></div>",
-      show: false,
-      onEscape: function () {
-        window.displayEventModal.modal.modal("hide");
-      }
-    });
-    window.displayEventModal.renderEvent(event);
-    window.displayEventModal.modal.modal("show");
   }
 }
 
