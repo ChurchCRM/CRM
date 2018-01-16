@@ -390,7 +390,7 @@ window.displayEventModal = {
     }).done(function (data) {
       var bootboxmessage = window.displayEventModal.getBootboxContent(data.Events[0]);
       window.displayEventModal.modal = bootbox.dialog({
-        title: data.Title,
+        title: data.Events[0].Title,
         message: bootboxmessage,
         show: true,
         onEscape: function () {
