@@ -1,89 +1,3 @@
-
-function BootboxContent() {
-  var frm_str = '<form id="some-form">'
-          + '<table class="table">'
-          + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Type') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + '<select type="text" id="eventType" value="39"  width="100%" style="width: 100%">'
-          //+"<option value='0' >" + i18next.t("Personal") + "</option>"
-          + '</select>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Title') + ":</td>"
-          + '<td colspan="1" class="TextColumn">'
-          + "<input type='text' id='EventTitle' value='" + i18next.t("Calendar Title") + "' size='30' maxlength='100' class='form-control'  width='100%' style='width: 100%' required>"
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Desc') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + "<textarea id='EventDesc' rows='4' maxlength='100' class='form-control'  width='100%' style='width: 100%' required >" + i18next.t("Calendar description") + "</textarea>"
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + '<td class="LabelColumn"><span style="color: red">*</span>'
-          + i18next.t("Date Range") + ':'
-          + '</td>'
-          + '<td class="TextColumn">'
-          + '<input type="text" name="EventDateRange" value="" maxlength="10" id="EventDateRange" size="50" class="form-control" width="100%" style="width: 100%" required>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
-          + '<td class="TextColumn">'
-          + '<select type="text" multiple="multiple" id="PinnedCalendars" value="39" width="100%" style="width: 100%">'
-          + '</select>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn' id='ATTENDENCES'>" + i18next.t('Attendance Counts') + ":</td>"
-          + '<td class="TextColumn" colspan="3">'
-          + '<table>'
-          + '<tr>'
-          + "<td><strong>" + i18next.t("Total") + ":&nbsp;</strong></td>"
-          + '<td>'
-          + '<input type="text" id="Total" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td><strong>" + i18next.t("Members") + ":&nbsp;</strong></td>"
-          + '<td>'
-          + '<input type="text" id="Members" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
-          + ' </td>'
-          + '</tr>'
-          + ' <tr>'
-          + "<td><strong>" + i18next.t("Visitors") + ":&nbsp;</strong></td>"
-          + '<td>'
-          + '<input type="text" id="Visitors" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td><strong>" + i18next.t('Attendance Notes: ') + " &nbsp;</strong></td>"
-          + '<td><input type="text" id="EventCountNotes" value="" class="form-control">'
-          + '</td>'
-          + '</tr>'
-          + '</table>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Description') + '<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  width="100%" style="width: 100%"></textarea></td>'
-          + '</tr>'
-          //+'<tr>'
-          //+'<td class="LabelColumn"><span style="color: red">*</span>Statut de l&#39;événement:</td>'
-          //+'<td colspan="3" class="TextColumn">'
-          //+'<input type="radio" name="EventStatus" value="0" checked/> Actif      <input type="radio" name="EventStatus" value="1" /> Inactif    </td>'
-          //+'</tr>'
-          + '</table>'
-          + '</form>';
-
-  var object = $('<div/>').html(frm_str).contents();
-
-  return object
-}
-
-
 window.moveEventModal = {
   getButtons: function() {
     return  {
@@ -141,11 +55,81 @@ window.moveEventModal = {
 };
 
 window.NewEventModal = {
+  getBootboxContent: function() {
+    var frm_str = '<form id="some-form">'
+          + '<table class="table">'
+          + '<tr>'
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Type') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
+          + '<select type="text" id="eventType" value="39"  width="100%" style="width: 100%">'
+          + '</select>'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Desc') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
+          + "<textarea id='EventDesc' rows='4' maxlength='100' class='form-control'  width='100%' style='width: 100%' required >" + i18next.t("Calendar description") + "</textarea>"
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + '<td class="LabelColumn"><span style="color: red">*</span>'
+          + i18next.t("Date Range") + ':'
+          + '</td>'
+          + '<td class="TextColumn">'
+          + '<input type="text" name="EventDateRange" value="" maxlength="10" id="EventDateRange" size="50" class="form-control" width="100%" style="width: 100%" required>'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
+          + '<td class="TextColumn">'
+          + '<select type="text" multiple="multiple" id="PinnedCalendars" value="39" width="100%" style="width: 100%">'
+          + '</select>'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn' id='ATTENDENCES'>" + i18next.t('Attendance Counts') + ":</td>"
+          + '<td class="TextColumn" colspan="3">'
+          + '<table>'
+          + '<tr>'
+          + "<td><strong>" + i18next.t("Total") + ":&nbsp;</strong></td>"
+          + '<td>'
+          + '<input type="text" id="Total" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td><strong>" + i18next.t("Members") + ":&nbsp;</strong></td>"
+          + '<td>'
+          + '<input type="text" id="Members" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
+          + ' </td>'
+          + '</tr>'
+          + ' <tr>'
+          + "<td><strong>" + i18next.t("Visitors") + ":&nbsp;</strong></td>"
+          + '<td>'
+          + '<input type="text" id="Visitors" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td><strong>" + i18next.t('Attendance Notes: ') + " &nbsp;</strong></td>"
+          + '<td><input type="text" id="EventCountNotes" value="" class="form-control">'
+          + '</td>'
+          + '</tr>'
+          + '</table>'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Description') + '<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  width="100%" style="width: 100%"></textarea></td>'
+          + '</tr>'
+          + '</table>'
+          + '</form>';
+    var object = $('<div/>').html(frm_str).contents();
+
+    return object
+  },
   readDOMNewEvent: function() {
     var e = document.getElementById("eventType");
       var eventTypeID = e.options[e.selectedIndex].value;
 
-      var EventTitle = $('form #EventTitle').val();
+      var EventTitle = $('#EventTitle').val();
       var EventDesc = $('form #EventDesc').val();
 
       var eventCalendars = $("#PinnedCalendars").val();
@@ -185,9 +169,8 @@ window.NewEventModal = {
           console.log(obj);
           window.CRM.fullcalendar.fullCalendar("refetchEventSources", obj);
         });
+        window.NewEventModal.modal.modal("hide");
       });
-
-      return add;
   },  
   getSaveButton: function() {
     return {
@@ -273,7 +256,7 @@ window.NewEventModal = {
     });
 
     $('#EventTitle').on('click', function () {
-      if (this.defaultValue == i18next.t("Calendar Title")) {
+      if (this.defaultValue == i18next.t("Event Title")) {
         this.defaultValue = '';
         this.style.color = '#000';
       }
@@ -299,8 +282,8 @@ window.NewEventModal = {
   },
   getNewEventModal: function(start,end) {
     window.NewEventModal.modal = bootbox.dialog({
-      message: BootboxContent(),
-      title: i18next.t("Event Creation"),
+      message: window.NewEventModal.getBootboxContent,
+      title: "<input type='text' id='EventTitle' value='" + i18next.t("Event Title") + "' size='30' maxlength='100' class='form-control'  width='100%' style='width: 100%' required>",
       buttons: [
         window.NewEventModal.getSaveButton(),
         window.NewEventModal.getCloseButton()
