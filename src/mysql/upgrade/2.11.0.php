@@ -4,35 +4,36 @@ use ChurchCRM\EventQuery;
 use ChurchCRM\Calendar;
 
 
-$publicEventsQuery = "SELECT * FROM events_event where event_publicly_visible = TRUE";
+$EventsQuery = "SELECT * FROM events_event";
 
-$statement = $connection->prepare($publicEventsQuery);
+$statement = $connection->prepare($EventsQuery);
 $statement->execute();
-$PublicEvents = $statement->fetchAll();
+$Events = $statement->fetchAll();
 
-if (count($PublicEvents) > 0) {
-  $PublicCalendar = new Calendar();
-  $PublicCalendar->setName(gettext("Public Calendar"));
-  $PublicCalendar->save();
+$PublicCalendar = new Calendar();
+$PublicCalendar->setName(gettext("Public Calendar"));
+$PublicCalendar->setBackgroundColor("00AA00");
+$PublicCalendar->setForegroundColor("FFFFFF");
+$PublicCalendar->save();
 
-  foreach ($PublicEvents as $PublicEvent) {
-    $w = EventQuery::Create() ->findOneById($PublicEvent['event_id']);
-    $w->setType($PublicEvent['event_type']);
-    $w->setTitle($PublicEvent['event_title']);
-    $w->setDesc($PublicEvent['event_desc']);
-    $w->setText($PublicEvent['event_text']);
-    $w->setStart($PublicEvent['event_start']);
-    $w->setEnd($PublicEvent['event_end']);
-    $w->setInActive($PublicEvent['inactive']);
-    $w->setTypeName($PublicEvent['event_typename']);
-    $w->addCalendar($PublicCalendar);
+$PrivateCalendar = new Calendar();
+$PrivateCalendar->setName(gettext("Private Calendar"));
+$PrivateCalendar->setBackgroundColor("0000AA");
+$PrivateCalendar->setForegroundColor("FFFFFF");
+$PrivateCalendar->save();
+
+if (count($Events) > 0) {
+  foreach ($Events as $Event) {
+    $w = EventQuery::Create() ->findOneById($Event['event_id']);
+    if ($Event['event_publicly_visible']){
+      $w->addCalendar($PublicCalendar);
+    }
+    else {
+      $w->addCalendar($PrivateCalendar);
+    }
     $w->save();
   }
-  
-  
-  
 }
-
 
 $publicEventsQuery = "ALTER TABLE `events_event` "
         . "DROP COLUMN `event_publicly_visible`, "
@@ -40,5 +41,3 @@ $publicEventsQuery = "ALTER TABLE `events_event` "
 
 $statement = $connection->prepare($publicEventsQuery);
 $statement->execute();
-
-
