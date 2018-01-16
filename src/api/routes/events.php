@@ -28,6 +28,8 @@ $app->group('/events', function () {
   $this->get('/', 'getAllEvents');
   $this->get('', 'getAllEvents');
   $this->get("/types","getEventTypes");  
+  $this->get('/{id}', 'getEvent');
+  $this->get('/{id}/', 'getEvent');
   $this->get('/{id}/primarycontact', 'getEventPrimaryContact');
   $this->get('/{id}/secondarycontact', 'getEventSecondaryContact');
   $this->get('/{id}/location', 'getEventLocation');
@@ -35,6 +37,15 @@ $app->group('/events', function () {
   $this->post('/{id}/time', 'setEventTime');
   $this->post('/', 'newOrUpdateEvent');
 });
+
+function getAllEvents($request, Response $response, $args) {
+  $Events = EventQuery::create()
+          ->find();
+  if ($Events) {
+    return $response->write($Events->toJSON());
+  }
+  return $response->withStatus(404);
+}
 
 function getEventTypes($request, Response $response, $args) {
   $EventTypes = EventTypeQuery::Create()
@@ -46,16 +57,14 @@ function getEventTypes($request, Response $response, $args) {
   return $response->withStatus(404);
 }
 
-function getAllEvents($request, Response $response, $args) {
-  $Events = EventQuery::create()
-          ->find();
-  if ($Events) {
-    return $response->write($Events->toJSON());
+function getEvent($request, Response $response, $args) {
+  $Event = EventQuery::Create()
+          ->findOneById($args['id']);
+  if ($Event) {
+    return $response->write($Event->toJSON());
   }
   return $response->withStatus(404);
 }
-
-
 
 function getEventPrimaryContact($request, $response, $args) {
   $Event = EventQuery::create()

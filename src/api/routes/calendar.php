@@ -22,6 +22,7 @@ $app->group('/systemcalendars', function () {
     $this->get('','getSystemCalendars');
     $this->get('/','getSystemCalendars');
     $this->get('/{id}/events', 'getSystemCalendarEvents');
+    $this->get('/{id}/events/{eventid}', 'getSystemCalendarEventById');
     $this->get('/{id}/fullcalendar', 'getSystemCalendarFullCalendarEvents');
 });
 
@@ -41,6 +42,18 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
       return $response->withJson($Calendar->toJSON());
     }
 }
+
+function getSystemCalendarEventById(Request $request, Response $response, array $args ) {
+    $Calendar = SystemCalendars::getCalendarById($args['id']);
+
+    if ($Calendar) {
+      $event=  $Calendar->getEventById($args['eventid']);
+      echo $event->toJSON();
+      die();
+      return $response->withJson($Calendar->toJSON());
+    }
+}
+
 
 
 function getSystemCalendarFullCalendarEvents($request, Response $response, $args) {

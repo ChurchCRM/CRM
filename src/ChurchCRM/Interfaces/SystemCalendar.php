@@ -10,4 +10,5 @@ interface SystemCalendar {
   public function getForegroundColor();  
   public function getBackgroundColor(); 
   public function getEvents();
+  public function getEventById($Id);
 }

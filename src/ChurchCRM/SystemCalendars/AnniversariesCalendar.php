@@ -39,6 +39,31 @@ class AnniversariesCalendar implements SystemCalendar {
             ->find();
     Foreach($families as $family) {
       $anniversary = new Event();
+      $anniversary->setId($family->getId());
+      $anniversary->setEditable(false);
+      $anniversary->setTitle(gettext("Anniversary: ".$family->getFamilyString()));
+      $year = date('Y');
+      $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
+      $events->push(clone $anniversary);
+      $year -= 1;
+      $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
+      $events->push($anniversary);
+    }
+   
+    return $events;
+            
+  }
+  
+  public function getEventById($Id) {
+    $events = new ObjectCollection();
+    $events->setModel("ChurchCRM\\Event");
+    $families = FamilyQuery::create()
+            ->filterByWeddingdate('', Criteria::NOT_EQUAL)
+            ->filterById($Id)
+            ->find();
+    Foreach($families as $family) {
+      $anniversary = new Event();
+      $anniversary->setId($family->getId());
       $anniversary->setEditable(false);
       $anniversary->setTitle(gettext("Anniversary: ".$family->getFamilyString()));
       $year = date('Y');

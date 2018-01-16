@@ -326,6 +326,37 @@ window.NewEventModal = {
   }
 };
 
+window.displayEventModal = {
+  renderEvent: function(event) {
+    if (event.source.url.match(/systemcalendar/g))
+    {
+      path = "systemcalendars/"+event.source.id+"/events/"+event.id;
+    }
+    else
+    {
+      path = "events/"+event.id;
+    }
+    window.CRM.APIRequest({
+      method: 'GET',
+      path: path,
+    }).done(function (data) {
+      $("#displayEventModal").text("asdf");
+    });
+  },
+  getDisplayEventModal: function(event) {
+    window.displayEventModal.modal = bootbox.dialog({
+      title: i18next.t(event.title),
+      message:  "<div id='displayEventModal'></div>",
+      show: false,
+      onEscape: function () {
+        window.displayEventModal.modal.modal("hide");
+      }
+    });
+    window.displayEventModal.renderEvent(event);
+    window.displayEventModal.modal.modal("show");
+  }
+}
+
 function initializeCalendar() {
   //
   // initialize the calendar
@@ -343,6 +374,7 @@ function initializeCalendar() {
     eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,
     select: window.NewEventModal.getNewEventModal,
+    eventClick: window.displayEventModal.getDisplayEventModal,
     locale: window.CRM.lang
   });
 };
@@ -370,11 +402,11 @@ function registerCalendarSelectionEvents() {
     }
     if($(this).is(":checked")){
       var eventSourceURL = window.CRM.root+endpoint+$(this).data("calendarid")+"/fullcalendar";
-      window.CRM.fullcalendar.fullCalendar("addEventSource",eventSourceURL);
+      window.CRM.fullcalendar.fullCalendar("addEventSource",{id: $(this).data("calendarid"), url: eventSourceURL});
     }
     else {
       var eventSourceURL = window.CRM.root+endpoint+$(this).data("calendarid")+"/fullcalendar";
-      window.CRM.fullcalendar.fullCalendar("removeEventSource",eventSourceURL);
+      window.CRM.fullcalendar.fullCalendar("removeEventSource",{id: $(this).data("calendarid"), url: eventSourceURL});
     }
   })
 }
