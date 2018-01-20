@@ -53,8 +53,8 @@ function getEventTypes($request, Response $response, $args) {
 
 function getEvent($request, Response $response, $args) {
   $Event = EventQuery::Create()
-          ->joinWithCalendarEvents()
-          ->useCalendarEventsQuery()
+          ->joinWithCalendarEvent()
+          ->useCalendarEventQuery()
             ->joinWithCalendar()
           ->endUse()
           ->findById($args['id']);
