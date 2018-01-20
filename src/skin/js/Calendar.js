@@ -54,7 +54,7 @@ window.moveEventModal = {
   }
 };
 
-window.NewEventModal = {
+window.NewOrEditEventModal = {
   getBootboxContent: function() {
     var frm_str = '<form id="some-form">'
           + '<table class="table">'
@@ -159,7 +159,7 @@ window.NewEventModal = {
         };
   },
   saveButtonCallback: function() {
-    var Event = window.NewEventModal.readDOMNewEvent();
+    var Event = window.NewOrEditEventModal.readDOMNewEvent();
       window.CRM.APIRequest({
         method: 'POST',
         path: 'events',
@@ -169,14 +169,14 @@ window.NewEventModal = {
           console.log(obj);
           window.CRM.fullcalendar.fullCalendar("refetchEventSources", obj);
         });
-        window.NewEventModal.modal.modal("hide");
+        window.NewOrEditEventModal.modal.modal("hide");
       });
   },  
   getSaveButton: function() {
     return {
       label: i18next.t("Save"),
       className: "btn btn-primary pull-left",
-      callback: window.NewEventModal.saveButtonCallback
+      callback: window.NewOrEditEventModal.saveButtonCallback
     };
   },
   getCloseButton: function() {
@@ -225,8 +225,8 @@ window.NewEventModal = {
   },
   configureModalUIElements: function(start,end) {
     // we add the calendars
-    window.NewEventModal.loadCalendars();
-    window.NewEventModal.loadEventTypes();
+    window.NewOrEditEventModal.loadCalendars();
+    window.NewOrEditEventModal.loadEventTypes();
     if (!start.hasTime())
     {
       start.hour(8);
@@ -280,28 +280,69 @@ window.NewEventModal = {
 
     $("#ATTENDENCES").parents("tr").hide();
   },
+  configureEditModalUIElements: function(event) {
+   $("#PinnedCalendars").val(event.)
+  },
   getNewEventModal: function(start,end) {
-    window.NewEventModal.modal = bootbox.dialog({
-      message: window.NewEventModal.getBootboxContent,
+    window.NewOrEditEventModal.mode='new';
+    window.NewOrEditEventModal.modal = bootbox.dialog({
+      message: window.NewOrEditEventModal.getBootboxContent,
       title: "<input type='text' id='EventTitle' value='" + i18next.t("Event Title") + "' size='30' maxlength='100' class='form-control'  width='100%' style='width: 100%' required>",
       buttons: [
-        window.NewEventModal.getSaveButton(),
-        window.NewEventModal.getCloseButton()
+        window.NewOrEditEventModal.getSaveButton(),
+        window.NewOrEditEventModal.getCloseButton()
       ],
       show: false,
       onEscape: function () {
-        window.NewEventModal.modal.modal("hide");
+        window.NewOrEditEventModal.modal.modal("hide");
       }
     });
-    window.NewEventModal.modal.modal("show");
-    window.NewEventModal.configureModalUIElements(start,end);
+    window.NewOrEditEventModal.modal.modal("show");
+    window.NewOrEditEventModal.configureModalUIElements(start,end);
+  },
+  getEditEventModal: function(event) {
+    window.NewOrEditEventModal.mode='edit';
+    window.getEventDataFromFullCalendar(event).done(function (data) {
+      var event = data.Events[0];
+      window.NewOrEditEventModal.modal = bootbox.dialog({
+        message: window.NewOrEditEventModal.getBootboxContent,
+        title: "<input type='text' id='EventTitle' value='" + event.Title + "' size='30' maxlength='100' class='form-control'  width='100%' style='width: 100%' required>",
+        buttons: [
+          window.NewOrEditEventModal.getSaveButton(),
+          window.NewOrEditEventModal.getCloseButton()
+        ],
+        show: false,
+        onEscape: function () {
+          window.NewOrEditEventModal.modal.modal("hide");
+        }
+      });
+      window.NewOrEditEventModal.modal.modal("show");
+      window.NewOrEditEventModal.configureEditModalUIElements(event);
+      window.NewOrEditEventModal.configureModalUIElements(moment(event.Start),moment(event.End));
+      
+    });
   }
+};
+
+window.getEventDataFromFullCalendar =  function(fullCalendarEvent) {
+   if (fullCalendarEvent.source.url.match(/systemcalendar/g))
+    {
+      path = "systemcalendars/"+event.source.id+"/events/"+event.id;
+    }
+    else
+    {
+      path = "events/"+fullCalendarEvent.id;
+    }
+    return window.CRM.APIRequest({
+      method: 'GET',
+      path: path,
+    });
 };
 
 window.displayEventModal = {
   getBootboxContent: function (event){ 
     var calendarPinnings ='';
-    $.each(event.CalendarEventss,function (idx,obj) {
+    $.each(event.CalendarEvents,function (idx,obj) {
       console.log(obj);
       calendarPinnings += "<li>"+obj.Calendar.Name+"</li>";
     });
@@ -337,37 +378,7 @@ window.displayEventModal = {
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn' id='ATTENDENCES'>" + i18next.t('Attendance Counts') + ":</td>"
-          + '<td class="TextColumn" colspan="3">'
-          + '<table>'
-          + '<tr>'
-          + "<td><strong>" + i18next.t("Total") + ":&nbsp;</strong></td>"
-          + '<td>'
-          + '<input type="text" id="Total" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td><strong>" + i18next.t("Members") + ":&nbsp;</strong></td>"
-          + '<td>'
-          + '<input type="text" id="Members" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
-          + ' </td>'
-          + '</tr>'
-          + ' <tr>'
-          + "<td><strong>" + i18next.t("Visitors") + ":&nbsp;</strong></td>"
-          + '<td>'
-          + '<input type="text" id="Visitors" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td><strong>" + i18next.t('Attendance Notes: ') + " &nbsp;</strong></td>"
-          + '<td><input type="text" id="EventCountNotes" value="" class="form-control">'
-          + '</td>'
-          + '</tr>'
-          + '</table>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Description') + '<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  width="100%" style="width: 100%"></textarea></td>'
+          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Text') + '<p>'+ event.Text + '</p></td>'
           + '</tr>'
           + '</table>'
           + '</form>';
@@ -375,24 +386,38 @@ window.displayEventModal = {
 
     return object
   },
+  getButtons: function () {
+    buttons =  [];
+    if (calendarJSArgs.isModifiable) {
+      buttons.push({
+        label: i18next.t("Edit"),
+        className: "btn btn-success",
+        callback: function(){
+          window.NewOrEditEventModal.getEditEventModal(window.displayEventModal.event);
+        }
+      });
+    }
+    if (calendarJSArgs.isModifiable) {
+      buttons.push({
+        label: i18next.t("Delete"),
+        className: "btn btn-danger pull-left"
+      });
+    }
+    buttons.push({
+      label: i18next.t("Close"),
+      className: "btn btn-default pull-right"
+    });
+    return buttons;
+  },
   getDisplayEventModal: function(event) {
-    if (event.source.url.match(/systemcalendar/g))
-    {
-      path = "systemcalendars/"+event.source.id+"/events/"+event.id;
-    }
-    else
-    {
-      path = "events/"+event.id;
-    }
-    window.CRM.APIRequest({
-      method: 'GET',
-      path: path,
-    }).done(function (data) {
+   window.displayEventModal.event = event;
+   window.getEventDataFromFullCalendar(event).done(function (data) {
       var bootboxmessage = window.displayEventModal.getBootboxContent(data.Events[0]);
       window.displayEventModal.modal = bootbox.dialog({
         title: data.Events[0].Title,
         message: bootboxmessage,
         show: true,
+        buttons: window.displayEventModal.getButtons(),
         onEscape: function () {
           window.displayEventModal.modal.modal("hide");
         }
@@ -417,7 +442,7 @@ function initializeCalendar() {
     eventDrop: window.moveEventModal.handleEventDrop,
     eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,
-    select: window.NewEventModal.getNewEventModal,
+    select: window.NewOrEditEventModal.getNewEventModal,
     eventClick: window.displayEventModal.getDisplayEventModal,
     locale: window.CRM.lang
   });
@@ -461,9 +486,7 @@ function initializeFilterSettings() {
     method: 'GET',
     path: 'calendars',
   }).done(function (calendars) {
-    window.asdf=calendars;
     $.each(calendars.Calendars,function(idx,calendar) {
-      console.log(calendar);
       $("#userCalendars").append(getCalendarFilterElement(calendar,"user"))
     });
     $("#userCalendars .calendarSelectionBox").click();
@@ -473,12 +496,9 @@ function initializeFilterSettings() {
     method: 'GET',
     path: 'systemcalendars',
   }).done(function (calendars) {
-    window.asdf=calendars;
     $.each(calendars.Calendars,function(idx,calendar) {
-      console.log(calendar);
       $("#systemCalendars").append(getCalendarFilterElement(calendar,"system"))
     });
-    
     $("#systemCalendars .calendarSelectionBox").click();
   });
   
