@@ -77,7 +77,7 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
         $sSQL = 'INSERT INTO paddlenum_pn (pn_fr_ID, pn_Num, pn_per_ID)
 		         VALUES ('.$iCurrentFundraiser.",'".$iNum."','".$iPerID."')";
         $bGetKeyBack = true;
-        // Existing record (update)
+    // Existing record (update)
     } else {
         $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = '.$iCurrentFundraiser.", pn_Num = '".$iNum."', pn_per_ID = '".$iPerID."'";
         $sSQL .= ' WHERE pn_ID = '.$iPaddleNumID;
