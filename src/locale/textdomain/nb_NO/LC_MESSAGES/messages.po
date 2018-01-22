@@ -8,7 +8,7 @@ msgstr ""
 "Language: nb\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:230
+#: Include/Functions.php:233
 msgid "Cannot execute query."
 msgstr "Kan ikke utføre spørringen."
 
@@ -71,7 +71,7 @@ msgstr "Lagre"
 #: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
 #: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
 #: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:852 Include/Functions.php:905
+#: Include/Functions.php:855 Include/Functions.php:908
 #: Include/Header-function.php:317 MapUsingGoogle.php:96
 #: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
 #: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
@@ -763,7 +763,7 @@ msgstr "(Bruk tekstboksen for andre land enn USA og Canada)"
 
 #: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
 #: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
-#: Include/Functions.php:895 PersonEditor.php:977 PersonEditor.php:1001
+#: Include/Functions.php:898 PersonEditor.php:977 PersonEditor.php:1001
 #: PersonEditor.php:1025
 msgid "Do not auto-format"
 msgstr "Ikke auto-format"
@@ -876,14 +876,14 @@ msgid "Remove"
 msgstr "Fjern"
 
 #: CartView.php:294 CartView.php:314 DonationFundEditor.php:177
-#: FinancialReports.php:295 Include/Functions.php:682
-#: Include/Functions.php:766 ListEvents.php:296 Reports/ConfirmReport.php:227
+#: FinancialReports.php:295 Include/Functions.php:685
+#: Include/Functions.php:769 ListEvents.php:296 Reports/ConfirmReport.php:227
 msgid "Yes"
 msgstr "Ja"
 
 #: CartView.php:307 CartView.php:316 DonationFundEditor.php:180
-#: FinancialReports.php:296 Include/Functions.php:684
-#: Include/Functions.php:767 ListEvents.php:296 Reports/ConfirmReport.php:229
+#: FinancialReports.php:296 Include/Functions.php:687
+#: Include/Functions.php:770 ListEvents.php:296 Reports/ConfirmReport.php:229
 msgid "No"
 msgstr "Ingen"
 
@@ -941,7 +941,7 @@ msgstr "Handling"
 msgid "No Attendees Assigned to Event"
 msgstr "Ingen deltakere Assigned til Event"
 
-#: Checkin.php:455 Include/Functions.php:1406 Reports/CanvassReports.php:241
+#: Checkin.php:455 Include/Functions.php:1409 Reports/CanvassReports.php:241
 #: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr "Medlem"
@@ -1296,7 +1296,8 @@ msgstr "Bank"
 msgid "Month"
 msgstr "Måned"
 
-#: ElectronicPaymentList.php:212 FamilyEditor.php:947 Include/Functions.php:97
+#: ElectronicPaymentList.php:212 FamilyEditor.php:947
+#: Include/Functions.php:100
 msgid "Year"
 msgstr "År"
 
@@ -1613,7 +1614,7 @@ msgstr "Velg Rolle"
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
 #: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:52
-#: FamilyEditor.php:1017 Include/Functions.php:768 PeopleDashboard.php:336
+#: FamilyEditor.php:1017 Include/Functions.php:771 PeopleDashboard.php:336
 #: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
 msgid "Unknown"
 msgstr "Ukjent"
@@ -1770,7 +1771,7 @@ msgstr "Pantsette eller betaling"
 
 #: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:78
 #: EditEventAttendees.php:33 FamilyView.php:766 FindFundRaiser.php:236
-#: FundRaiserEditor.php:164 Include/Functions.php:93 PledgeEditor.php:518
+#: FundRaiserEditor.php:164 Include/Functions.php:96 PledgeEditor.php:518
 #: SelectDelete.php:218
 msgid "Date"
 msgstr "Dato"
@@ -2054,7 +2055,7 @@ msgstr "Neste side"
 msgid "Display:"
 msgstr "Skjerm:"
 
-#: FindFundRaiser.php:75 FindFundRaiser.php:235 Include/Functions.php:99
+#: FindFundRaiser.php:75 FindFundRaiser.php:235 Include/Functions.php:102
 #: PaddleNumEditor.php:167 PaddleNumList.php:53
 msgid "Number"
 msgstr "Nummer"
@@ -2443,15 +2444,15 @@ msgstr "Ugyldig brukernavn eller passord"
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "For mange mislykkede pålogginger: kontoen din har blitt låst. Ta kontakt med en administrator."
 
-#: Login.php:194 Login.php:256
+#: Login.php:212 Login.php:274
 msgid "Please Login"
 msgstr "Vennligst Logg inn"
 
-#: BackupDatabase.php:55 Login.php:218 Login.php:296 UserList.php:58
+#: BackupDatabase.php:55 Login.php:236 Login.php:314 UserList.php:58
 msgid "Password"
 msgstr "Passord"
 
-#: Login.php:181 Login.php:231
+#: Login.php:199 Login.php:249
 msgid "Login"
 msgstr "Logg"
 
@@ -3614,51 +3615,51 @@ msgstr "Tilordnet konvolutt nummer til alle familier med minst ett medlem."
 msgid "Assigned envelope numbers to all families."
 msgstr "Tilordnet konvolutt nummer til alle familier."
 
-#: Include/Functions.php:92
+#: Include/Functions.php:95
 msgid "True / False"
 msgstr "True / False"
 
-#: Include/Functions.php:94
+#: Include/Functions.php:97
 msgid "Text Field (50 char)"
 msgstr "Tekstfelt (50 tegn)"
 
-#: Include/Functions.php:95
+#: Include/Functions.php:98
 msgid "Text Field (100 char)"
 msgstr "Tekstfelt (100 tegn)"
 
-#: Include/Functions.php:96
+#: Include/Functions.php:99
 msgid "Text Field (long)"
 msgstr "Tekstfelt (lang)"
 
-#: Include/Functions.php:98
+#: Include/Functions.php:101
 msgid "Season"
 msgstr "Årstid"
 
-#: Include/Functions.php:100
+#: Include/Functions.php:103
 msgid "Person from Group"
 msgstr "Person fra gruppen"
 
-#: Include/Functions.php:101
+#: Include/Functions.php:104
 msgid "Money"
 msgstr "Penger"
 
-#: Include/Functions.php:102
+#: Include/Functions.php:105
 msgid "Phone Number"
 msgstr "Telefonnummer"
 
-#: Include/Functions.php:103
+#: Include/Functions.php:106
 msgid "Custom Drop-Down List"
 msgstr "Custom Rullegardinliste"
 
-#: Include/Functions.php:127
+#: Include/Functions.php:130
 msgid "Group successfully added to the Cart."
 msgstr "Gruppen er lagt til handlevognen."
 
-#: Include/Functions.php:133
+#: Include/Functions.php:136
 msgid "Group successfully removed from the Cart."
 msgstr "Gruppe fjernet fra handlekurven."
 
-#: Include/Functions.php:152
+#: Include/Functions.php:155
 msgid "Selected record successfully removed from the Cart."
 msgstr "Valgte posten slettet fra Cart."
 
@@ -3667,83 +3668,83 @@ msgstr "Valgte posten slettet fra Cart."
 msgid "Your cart has been successfully emptied"
 msgstr "Handlekurven har blitt tømt"
 
-#: Include/Functions.php:170
+#: Include/Functions.php:173
 msgid "item(s) added to the Cart."
 msgstr "element (er) lagt i handlevognen."
 
-#: Include/Functions.php:195
+#: Include/Functions.php:198
 msgid "Select Fiscal Year"
 msgstr "Velg Regnskapsår"
 
-#: Include/Functions.php:424
+#: Include/Functions.php:427
 msgid "pm"
 msgstr "pm"
 
-#: Include/Functions.php:429
+#: Include/Functions.php:432
 msgid "am"
 msgstr "am"
 
-#: Include/Functions.php:750
+#: Include/Functions.php:753
 msgid "Invalid Editor ID!"
 msgstr "Ugyldig Editor ID!"
 
-#: Include/Functions.php:805
+#: Include/Functions.php:808
 msgid "Select Season"
 msgstr "Velg Season"
 
-#: Include/Functions.php:810
+#: Include/Functions.php:813
 msgid "Winter"
 msgstr "Vinter"
 
-#: Include/Functions.php:815
+#: Include/Functions.php:818
 msgid "Spring"
 msgstr "Vår"
 
-#: Include/Functions.php:820
+#: Include/Functions.php:823
 msgid "Summer"
 msgstr "Sommer"
 
-#: Include/Functions.php:825
+#: Include/Functions.php:828
 msgid "Fall"
 msgstr "Høst"
 
-#: Include/Functions.php:922
+#: Include/Functions.php:925
 msgid "Error: Invalid Editor ID!"
 msgstr "Feil: Ugyldig Editor ID!"
 
-#: FundRaiserEditor.php:52 Include/Functions.php:1119 PledgeEditor.php:318
+#: FundRaiserEditor.php:52 Include/Functions.php:1122 PledgeEditor.php:318
 msgid "Not a valid date"
 msgstr "Ikke en gyldig dato"
 
-#: Include/Functions.php:1131
+#: Include/Functions.php:1134
 msgid "Invalid Year"
 msgstr "Ugyldig år"
 
-#: Include/Functions.php:1134
+#: Include/Functions.php:1137
 msgid "Out of range: Allowable values are 1901 to 2155"
 msgstr "Utenfor rekkevidde: Tillatte verdier er 1901-2155"
 
-#: Include/Functions.php:1147 Include/Functions.php:1163
+#: Include/Functions.php:1150 Include/Functions.php:1166
 msgid "Invalid Number"
 msgstr "Ugyldig nummer"
 
-#: Include/Functions.php:1150
+#: Include/Functions.php:1153
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr "Tallet er for stort. Må være mellom -2147483648 og 2147483647"
 
-#: Include/Functions.php:1166
+#: Include/Functions.php:1169
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pengene beløp for stor. Maksimum er $ 999,999,999.99"
 
-#: Include/Functions.php:1316
+#: Include/Functions.php:1319
 msgid " Bold Italic"
 msgstr "Fet Kursiv"
 
-#: Include/Functions.php:1319
+#: Include/Functions.php:1322
 msgid " Italic"
 msgstr "Kursiv"
 
-#: Include/Functions.php:1321
+#: Include/Functions.php:1324
 msgid " Bold"
 msgstr "Fet"
 

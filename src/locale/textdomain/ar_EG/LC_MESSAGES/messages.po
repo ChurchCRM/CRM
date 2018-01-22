@@ -8,7 +8,7 @@ msgstr ""
 "Language: ar\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:230
+#: Include/Functions.php:233
 msgid "Cannot execute query."
 msgstr "لا يمكن تنفيذ طلب البحث."
 
@@ -71,7 +71,7 @@ msgstr "حفظ"
 #: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
 #: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
 #: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:852 Include/Functions.php:905
+#: Include/Functions.php:855 Include/Functions.php:908
 #: Include/Header-function.php:317 MapUsingGoogle.php:96
 #: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
 #: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
@@ -719,7 +719,7 @@ msgstr "(استخدم مربع نص للبلدان عدا الولايات ال�
 
 #: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
 #: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
-#: Include/Functions.php:895 PersonEditor.php:977 PersonEditor.php:1001
+#: Include/Functions.php:898 PersonEditor.php:977 PersonEditor.php:1001
 #: PersonEditor.php:1025
 msgid "Do not auto-format"
 msgstr "عدم التنسيق التلقائي"
@@ -821,14 +821,14 @@ msgid "Remove"
 msgstr "إزالة"
 
 #: CartView.php:294 CartView.php:314 DonationFundEditor.php:177
-#: FinancialReports.php:295 Include/Functions.php:682
-#: Include/Functions.php:766 ListEvents.php:296 Reports/ConfirmReport.php:227
+#: FinancialReports.php:295 Include/Functions.php:685
+#: Include/Functions.php:769 ListEvents.php:296 Reports/ConfirmReport.php:227
 msgid "Yes"
 msgstr "نعم"
 
 #: CartView.php:307 CartView.php:316 DonationFundEditor.php:180
-#: FinancialReports.php:296 Include/Functions.php:684
-#: Include/Functions.php:767 ListEvents.php:296 Reports/ConfirmReport.php:229
+#: FinancialReports.php:296 Include/Functions.php:687
+#: Include/Functions.php:770 ListEvents.php:296 Reports/ConfirmReport.php:229
 msgid "No"
 msgstr "لا"
 
@@ -861,7 +861,7 @@ msgstr "الخروج"
 msgid "Action"
 msgstr "عمل"
 
-#: Checkin.php:455 Include/Functions.php:1406 Reports/CanvassReports.php:241
+#: Checkin.php:455 Include/Functions.php:1409 Reports/CanvassReports.php:241
 #: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr "الأعضاء"
@@ -1209,7 +1209,8 @@ msgstr "حساب"
 msgid "Month"
 msgstr "شهر"
 
-#: ElectronicPaymentList.php:212 FamilyEditor.php:947 Include/Functions.php:97
+#: ElectronicPaymentList.php:212 FamilyEditor.php:947
+#: Include/Functions.php:100
 msgid "Year"
 msgstr "سنة"
 
