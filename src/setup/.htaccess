@@ -6,5 +6,10 @@ RewriteEngine On
 #
 # RewriteBase /
 
+<IfModule mod_php5.c>
+   php_value short_open_tag On
+   php_value always_populate_raw_post_data -1
+</IfModule>
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [QSA,L]
