@@ -3,12 +3,11 @@
 namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\LocaleInfo;
-use Geocoder\Provider\BingMaps\BingMaps;
-use Geocoder\Provider\GoogleMaps\GoogleMaps;
-use Geocoder\StatefulGeocoder;
-use Http\Adapter\Guzzle6\Client;
-use Geocoder\Query\GeocodeQuery;
+use Geocoder\Exception\NoResult;
+use Geocoder\Provider\BingMaps;
+use Geocoder\Provider\GoogleMaps;
+use Ivory\HttpAdapter\CurlHttpAdapter;
+use ChurchCRM\Utils\LoggerUtils;
 
 class GeoUtils
 {
@@ -17,34 +16,37 @@ class GeoUtils
     {
 
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
 
-        $provider = null;
-        $adapter = new Client();
+        $geoCoder = null;
+        $curl = new CurlHttpAdapter();
 
         $lat = 0;
         $long = 0;
+
         try {
             switch (SystemConfig::getValue("sGeoCoderProvider")) {
                 case "GoogleMaps":
-                    $provider = new GoogleMaps($adapter, null, null, true, SystemConfig::getValue("sGoogleMapKey"));
+                    $geoCoder = new GoogleMaps($curl, null, null, true, SystemConfig::getValue("sGoogleMapKey"));
                     break;
                 case "BingMaps":
-                    $provider = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));
+                    $geoCoder = new BingMaps($curl, SystemConfig::getValue("sBingMapKey"));
                     break;
-            }
-            $logger->debug("Using: Geo Provider -  ". $provider->getName());
-            $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
-            $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
-            $logger->debug("We have " . $result->count() . " results");
-            if (!empty($result)) {
-                $firstResult = $result->get(0);
-                $coordinates = $firstResult->getCoordinates();
-                $lat = $coordinates->getLatitude();
-                $long = $coordinates->getLongitude();
             }
         } catch (\Exception $exception) {
             $logger->warn("issue creating geoCoder " . $exception->getMessage());
+        }
+
+        if (!empty($geoCoder)) {
+            try {
+                $addressCollection = $geoCoder->geocode($address);
+                $geoAddress = $addressCollection->first();
+                if (!empty($geoAddress)) {
+                    $lat = $geoAddress->getLatitude();
+                    $long = $geoAddress->getLongitude();
+                }
+            } catch (\Exception $exception) {
+                $logger->warn("issue getting geoCoder " . $exception->getMessage());
+            }
         }
 
         return array(
@@ -54,23 +56,6 @@ class GeoUtils
 
     }
 
-    public static function DrivingDistanceMatrix($address1, $address2)
-    {
-        $logger = LoggerUtils::getAppLogger();
-        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
-        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
-        $url = $url . "language=" . $localeInfo->getShortLocale();
-        $url = $url . "&origins=" . urlencode($address1);
-        $url = $url . "&destinations=" . urlencode($address2);
-        $logger->debug($url);
-        $gMapsResponse = file_get_contents($url);
-        $details = json_decode($gMapsResponse, TRUE);
-        $matrixElements = $details['rows'][0]['elements'][0];
-        return array(
-            'distance' => $matrixElements['distance']['text'],
-            'duration' => $matrixElements['duration']['text']
-        );
-    }
 
     // Function takes latitude and longitude
     // of two places as input and returns the
