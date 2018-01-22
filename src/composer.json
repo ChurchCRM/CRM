@@ -41,9 +41,7 @@
         "phpmailer/phpmailer": "5.2.*",
         "verot/class.upload.php": "dev-master",
         "ifsnop/mysqldump-php": "2.*",
-        "php-http/message": "1.6.0",
-        "geocoder-php/google-maps-provider": "4.1.0",
-        "geocoder-php/bing-maps-provider": "4.0.0",
+        "willdurand/geocoder": "3.3.2",
         "mustache/mustache": "~2.5",
         "nexmo/client": "@beta",
         "slim/http-cache": "^0.4.0"
@@ -61,6 +59,11 @@
         "packagist": {
             "url": "https://packagist.org",
             "type": "composer"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "5.6.0"
         }
     }
 }
