@@ -7,5 +7,10 @@
       "behat/mink-extension": "*",
       "behat/mink-browserkit-driver": "*",
       "novaway/common-contexts": "~2.0"
+    },
+    "config": {
+        "platform": {
+            "php": "5.6.0"
+        }
     }
 }

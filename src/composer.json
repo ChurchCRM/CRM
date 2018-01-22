@@ -62,5 +62,10 @@
             "url": "https://packagist.org",
             "type": "composer"
         }
+    },
+    "config": {
+        "platform": {
+            "php": "5.6.0"
+        }
     }
 }
