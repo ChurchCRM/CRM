@@ -71,4 +71,4 @@ deploy:
   on:
     all_branches: true
     php: 7.0
-    condition: "$TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH = 'develop'"
+    condition: "$TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH = 'master-2.x'"
