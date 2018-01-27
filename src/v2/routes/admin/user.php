@@ -5,12 +5,13 @@ use Slim\Http\Response;
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\UserQuery;
+use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
 $app->group('/admin/user', function () {
     $this->get('/{id}/apikey', 'viewAPIKey');
     $this->get('/{id}/apikey/', 'viewAPIKey');
     $this->get('/not-found', 'viewUserNotFound');
-});
+})->add(new AdminRoleAuthMiddleware());
 
 function viewUserNotFound(Request $request, Response $response, array $args)
 {
