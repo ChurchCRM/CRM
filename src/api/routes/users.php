@@ -6,15 +6,13 @@ use ChurchCRM\UserConfigQuery;
 use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\Emails\AccountDeletedEmail;
 use ChurchCRM\Emails\UnlockedEmail;
+use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\User;
 
 $app->group('/users', function () {
 
     $this->post('/{userId:[0-9]+}/password/reset', function ($request, $response, $args) {
-        if (!$_SESSION['user']->isAdmin()) {
-            return $response->withStatus(401);
-        }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
             $password = $user->resetPasswordToRandom();
@@ -33,9 +31,6 @@ $app->group('/users', function () {
     });
 
     $this->post('/{userId:[0-9]+}/login/reset', function ($request, $response, $args) {
-        if (!$_SESSION['user']->isAdmin()) {
-            return $response->withStatus(401);
-        }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
             $user->setFailedLogins(0);
@@ -52,9 +47,6 @@ $app->group('/users', function () {
     });
 
     $this->delete('/{userId:[0-9]+}', function ($request, $response, $args) {
-        if (!$_SESSION['user']->isAdmin()) {
-            return $response->withStatus(401);
-        }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
             $userConfig =  UserConfigQuery::create()->findPk($user->getId());
@@ -71,4 +63,4 @@ $app->group('/users', function () {
             return $response->withStatus(404);
         }
     });
-});
+})->add(new AdminRoleAuthMiddleware());
