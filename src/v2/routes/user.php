@@ -7,11 +7,11 @@ use Slim\Views\PhpRenderer;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
-$app->group('/admin/user', function () {
+$app->group('/user', function () {
     $this->get('/not-found', 'viewUserNotFound');
     $this->get('/{id}', 'viewUser');
     $this->get('/{id}/', 'viewUser');
-})->add(new AdminRoleAuthMiddleware());
+});
 
 function viewUserNotFound(Request $request, Response $response, array $args)
 {
@@ -30,8 +30,13 @@ function viewUserNotFound(Request $request, Response $response, array $args)
 function viewUser(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/admin/');
-
+    $curUser = $_SESSION['user'];
     $userId = $args["id"];
+
+    if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
+        return $response->withStatus(401);
+    }
+
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {

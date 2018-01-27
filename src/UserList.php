@@ -65,7 +65,7 @@ require 'Include/Header.php';
                     <td>
                         <a href="UserEditor.php?PersonID=<?= $user->getId() ?>"><i class="fa fa-pencil"
                                                                                    aria-hidden="true"></i></a>&nbsp;&nbsp;
-                        <a href="v2/admin/user/<?= $user->getId() ?>"><i class="fa fa-eye"
+                        <a href="v2/user/<?= $user->getId() ?>"><i class="fa fa-eye"
                                                                                    aria-hidden="true"></i></a>&nbsp;&nbsp;
                         <?php if ($user->getId() != $_SESSION['user']->getId()) {
     ?>
