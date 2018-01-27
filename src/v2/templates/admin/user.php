@@ -45,4 +45,21 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<script >
+    $("#regenApiKey").click(function () {
+        $.ajax({
+            type: 'GET',
+            url: window.CRM.root + '/api/users/<?= $user->getId()?>/apikey/regen'
+        })
+            .done(function (data, textStatus, xhr) {
+                if (xhr.status == 200) {
+                    $("#apiKey").val (data.apiKey);
+                } else {
+                    showGlobalMessage(i18next.t("Failed generate a new API Key"), "danger")
+                }
+            });
+    });
+
+</script>
+
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
