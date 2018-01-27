@@ -63,4 +63,16 @@ $app->group('/users', function () {
             return $response->withStatus(404);
         }
     });
+
+    $this->get('/{userId:[0-9]+}/apikey/regen', function ($request, $response, $args) {
+        $user = UserQuery::create()->findPk($args['userId']);
+        if (!is_null($user)) {
+            $user->setApiKey(User::randomApiKey());
+            $user->save();
+            $user->createTimeLineNote("api-key-regen");
+            return $response->withStatus(200)->withJson(["apiKey" => $user->getApiKey()]);
+        } else {
+            return $response->withStatus(404);
+        }
+    });
 })->add(new AdminRoleAuthMiddleware());
