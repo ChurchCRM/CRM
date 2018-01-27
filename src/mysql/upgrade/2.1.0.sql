@@ -43,7 +43,3 @@ INSERT INTO note_nte
 
 -- 'sFPDF_PATH', 'vendor/fpdf17'
 DELETE FROM config_cfg WHERE cfg_id IN (4);
-
-ALTER TABLE user_usr
-  ADD COLUMN usr_apiKey VARCHAR(255) AFTER usr_UserName,
-	ADD UNIQUE INDEX `usr_apiKey_unique` (`usr_apiKey` ASC);
