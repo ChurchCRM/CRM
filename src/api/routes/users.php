@@ -64,15 +64,22 @@ $app->group('/users', function () {
         }
     });
 
-    $this->get('/{userId:[0-9]+}/apikey/regen', function ($request, $response, $args) {
-        $user = UserQuery::create()->findPk($args['userId']);
-        if (!is_null($user)) {
-            $user->setApiKey(User::randomApiKey());
-            $user->save();
-            $user->createTimeLineNote("api-key-regen");
-            return $response->withStatus(200)->withJson(["apiKey" => $user->getApiKey()]);
-        } else {
-            return $response->withStatus(404);
-        }
-    });
+
 })->add(new AdminRoleAuthMiddleware());
+
+$app->get('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response, $args) {
+    $curUser = $_SESSION['user'];
+    $userId = $args['userId'];
+    if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
+        return $response->withStatus(401);
+    }
+    $user = UserQuery::create()->findPk($userId);
+    if (!is_null($user)) {
+        $user->setApiKey(User::randomApiKey());
+        $user->save();
+        $user->createTimeLineNote("api-key-regen");
+        return $response->withStatus(200)->withJson(["apiKey" => $user->getApiKey()]);
+    } else {
+        return $response->withStatus(404);
+    }
+});
