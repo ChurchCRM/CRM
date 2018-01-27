@@ -31,7 +31,7 @@ class AuthMiddleware {
             }
 
 
-            return $next( $request, $response )->withHeader( "CRM_USER_ID", $this->user->getId())->withHeader("uri", $uri);
+            return $next( $request, $response )->withHeader( "CRM_USER_ID", $this->user->getId());
         }
         return $next( $request, $response );
     }
