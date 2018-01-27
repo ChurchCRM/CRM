@@ -17,7 +17,7 @@ $app->group('/family', function () {
 
 function viewFamilyNotFound(Request $request, Response $response, array $args)
 {
-    $renderer = new PhpRenderer('templates/people/');
+    $renderer = new PhpRenderer('templates/common/');
 
   $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
