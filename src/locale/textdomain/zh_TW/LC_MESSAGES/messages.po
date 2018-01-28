@@ -8,7 +8,7 @@ msgstr ""
 "Language: zh-TW\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:230
+#: Include/Functions.php:233
 msgid "Cannot execute query."
 msgstr "無法執行查詢。"
 
@@ -71,7 +71,7 @@ msgstr "保存"
 #: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
 #: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
 #: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:852 Include/Functions.php:905
+#: Include/Functions.php:855 Include/Functions.php:908
 #: Include/Header-function.php:317 MapUsingGoogle.php:96
 #: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
 #: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
@@ -775,7 +775,7 @@ msgstr "（美國和加拿大以外的國家使用的文本框）"
 
 #: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
 #: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
-#: Include/Functions.php:895 PersonEditor.php:977 PersonEditor.php:1001
+#: Include/Functions.php:898 PersonEditor.php:977 PersonEditor.php:1001
 #: PersonEditor.php:1025
 msgid "Do not auto-format"
 msgstr "不要自動格式"
@@ -887,14 +887,14 @@ msgid "Remove"
 msgstr "清除"
 
 #: CartView.php:294 CartView.php:314 DonationFundEditor.php:177
-#: FinancialReports.php:295 Include/Functions.php:682
-#: Include/Functions.php:766 ListEvents.php:296 Reports/ConfirmReport.php:227
+#: FinancialReports.php:295 Include/Functions.php:685
+#: Include/Functions.php:769 ListEvents.php:296 Reports/ConfirmReport.php:227
 msgid "Yes"
 msgstr "是"
 
 #: CartView.php:307 CartView.php:316 DonationFundEditor.php:180
-#: FinancialReports.php:296 Include/Functions.php:684
-#: Include/Functions.php:767 ListEvents.php:296 Reports/ConfirmReport.php:229
+#: FinancialReports.php:296 Include/Functions.php:687
+#: Include/Functions.php:770 ListEvents.php:296 Reports/ConfirmReport.php:229
 msgid "No"
 msgstr "沒有"
 
@@ -952,7 +952,7 @@ msgstr "行動"
 msgid "No Attendees Assigned to Event"
 msgstr "沒有分配給事件的參加者"
 
-#: Checkin.php:455 Include/Functions.php:1406 Reports/CanvassReports.php:241
+#: Checkin.php:455 Include/Functions.php:1409 Reports/CanvassReports.php:241
 #: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr "成員"
@@ -1306,7 +1306,8 @@ msgstr "銀行"
 msgid "Month"
 msgstr "月"
 
-#: ElectronicPaymentList.php:212 FamilyEditor.php:947 Include/Functions.php:97
+#: ElectronicPaymentList.php:212 FamilyEditor.php:947
+#: Include/Functions.php:100
 msgid "Year"
 msgstr "年"
 
@@ -1626,7 +1627,7 @@ msgstr "選擇角色"
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
 #: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:52
-#: FamilyEditor.php:1017 Include/Functions.php:768 PeopleDashboard.php:336
+#: FamilyEditor.php:1017 Include/Functions.php:771 PeopleDashboard.php:336
 #: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
 msgid "Unknown"
 msgstr "未知"
@@ -1783,7 +1784,7 @@ msgstr "質押或付款"
 
 #: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:78
 #: EditEventAttendees.php:33 FamilyView.php:766 FindFundRaiser.php:236
-#: FundRaiserEditor.php:164 Include/Functions.php:93 PledgeEditor.php:518
+#: FundRaiserEditor.php:164 Include/Functions.php:96 PledgeEditor.php:518
 #: SelectDelete.php:218
 msgid "Date"
 msgstr "日期"
@@ -2066,7 +2067,7 @@ msgstr "下一頁"
 msgid "Display:"
 msgstr "顯示方式："
 
-#: FindFundRaiser.php:75 FindFundRaiser.php:235 Include/Functions.php:99
+#: FindFundRaiser.php:75 FindFundRaiser.php:235 Include/Functions.php:102
 #: PaddleNumEditor.php:167 PaddleNumList.php:53
 msgid "Number"
 msgstr "數"
@@ -2450,15 +2451,15 @@ msgstr "無效的登錄名或密碼"
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "太多次失敗登錄您的帳戶已被鎖定。請與管理員聯繫。"
 
-#: Login.php:194 Login.php:256
+#: Login.php:212 Login.php:274
 msgid "Please Login"
 msgstr "請登錄"
 
-#: BackupDatabase.php:55 Login.php:218 Login.php:296 UserList.php:58
+#: BackupDatabase.php:55 Login.php:236 Login.php:314 UserList.php:58
 msgid "Password"
 msgstr "密碼"
 
-#: Login.php:181 Login.php:231
+#: Login.php:199 Login.php:249
 msgid "Login"
 msgstr "註冊"
 
@@ -3605,51 +3606,51 @@ msgstr "信封號碼的所有家庭至少有一名成員。"
 msgid "Assigned envelope numbers to all families."
 msgstr "信封所有家庭的數字。"
 
-#: Include/Functions.php:92
+#: Include/Functions.php:95
 msgid "True / False"
 msgstr "真/假"
 
-#: Include/Functions.php:94
+#: Include/Functions.php:97
 msgid "Text Field (50 char)"
 msgstr "文本字段（50字符）"
 
-#: Include/Functions.php:95
+#: Include/Functions.php:98
 msgid "Text Field (100 char)"
 msgstr "文本字段（100字符）"
 
-#: Include/Functions.php:96
+#: Include/Functions.php:99
 msgid "Text Field (long)"
 msgstr "文本字段（長）"
 
-#: Include/Functions.php:98
+#: Include/Functions.php:101
 msgid "Season"
 msgstr "季節"
 
-#: Include/Functions.php:100
+#: Include/Functions.php:103
 msgid "Person from Group"
 msgstr "從組人"
 
-#: Include/Functions.php:101
+#: Include/Functions.php:104
 msgid "Money"
 msgstr "錢"
 
-#: Include/Functions.php:102
+#: Include/Functions.php:105
 msgid "Phone Number"
 msgstr "電話號碼"
 
-#: Include/Functions.php:103
+#: Include/Functions.php:106
 msgid "Custom Drop-Down List"
 msgstr "自定義下拉列表"
 
-#: Include/Functions.php:127
+#: Include/Functions.php:130
 msgid "Group successfully added to the Cart."
 msgstr "集團已成功添加到購物車。"
 
-#: Include/Functions.php:133
+#: Include/Functions.php:136
 msgid "Group successfully removed from the Cart."
 msgstr "集團成功地從車中取出。"
 
-#: Include/Functions.php:152
+#: Include/Functions.php:155
 msgid "Selected record successfully removed from the Cart."
 msgstr "成功地從購物車中刪除選定的記錄。"
 
@@ -3658,83 +3659,83 @@ msgstr "成功地從購物車中刪除選定的記錄。"
 msgid "Your cart has been successfully emptied"
 msgstr "您的購物車已成功清空。"
 
-#: Include/Functions.php:170
+#: Include/Functions.php:173
 msgid "item(s) added to the Cart."
 msgstr "（S）項添加到購物車。"
 
-#: Include/Functions.php:195
+#: Include/Functions.php:198
 msgid "Select Fiscal Year"
 msgstr "選擇會計年度"
 
-#: Include/Functions.php:424
+#: Include/Functions.php:427
 msgid "pm"
 msgstr "下午"
 
-#: Include/Functions.php:429
+#: Include/Functions.php:432
 msgid "am"
 msgstr "我"
 
-#: Include/Functions.php:750
+#: Include/Functions.php:753
 msgid "Invalid Editor ID!"
 msgstr "無效的編輯器ID！"
 
-#: Include/Functions.php:805
+#: Include/Functions.php:808
 msgid "Select Season"
 msgstr "選擇季節"
 
-#: Include/Functions.php:810
+#: Include/Functions.php:813
 msgid "Winter"
 msgstr "冬季"
 
-#: Include/Functions.php:815
+#: Include/Functions.php:818
 msgid "Spring"
 msgstr "春天"
 
-#: Include/Functions.php:820
+#: Include/Functions.php:823
 msgid "Summer"
 msgstr "夏天"
 
-#: Include/Functions.php:825
+#: Include/Functions.php:828
 msgid "Fall"
 msgstr "下降"
 
-#: Include/Functions.php:922
+#: Include/Functions.php:925
 msgid "Error: Invalid Editor ID!"
 msgstr "錯誤：無效的編輯器ID！"
 
-#: FundRaiserEditor.php:52 Include/Functions.php:1119 PledgeEditor.php:318
+#: FundRaiserEditor.php:52 Include/Functions.php:1122 PledgeEditor.php:318
 msgid "Not a valid date"
 msgstr "不是有效的日期"
 
-#: Include/Functions.php:1131
+#: Include/Functions.php:1134
 msgid "Invalid Year"
 msgstr "無效的年份"
 
-#: Include/Functions.php:1134
+#: Include/Functions.php:1137
 msgid "Out of range: Allowable values are 1901 to 2155"
 msgstr "超出範圍：允許的值是1901到2155"
 
-#: Include/Functions.php:1147 Include/Functions.php:1163
+#: Include/Functions.php:1150 Include/Functions.php:1166
 msgid "Invalid Number"
 msgstr "無效的號碼"
 
-#: Include/Functions.php:1150
+#: Include/Functions.php:1153
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr "數字太大。必須是介於-2147483648和2147483647"
 
-#: Include/Functions.php:1166
+#: Include/Functions.php:1169
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "貨幣量過於龐大。最大999999999.99美元"
 
-#: Include/Functions.php:1316
+#: Include/Functions.php:1319
 msgid " Bold Italic"
 msgstr "粗體斜體"
 
-#: Include/Functions.php:1319
+#: Include/Functions.php:1322
 msgid " Italic"
 msgstr "斜體"
 
-#: Include/Functions.php:1321
+#: Include/Functions.php:1324
 msgid " Bold"
 msgstr "膽大"
 

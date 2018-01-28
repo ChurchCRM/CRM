@@ -8,7 +8,7 @@ msgstr ""
 "Language: es\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:230
+#: Include/Functions.php:233
 msgid "Cannot execute query."
 msgstr "No se puede ejecutar la búsqueda."
 
@@ -71,7 +71,7 @@ msgstr "Guardar"
 #: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
 #: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
 #: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:852 Include/Functions.php:905
+#: Include/Functions.php:855 Include/Functions.php:908
 #: Include/Header-function.php:317 MapUsingGoogle.php:96
 #: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
 #: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
@@ -820,7 +820,7 @@ msgstr "(Use el cuadro de texto para otros países fuera de EE.UU. y Canadá)"
 
 #: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
 #: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
-#: Include/Functions.php:895 PersonEditor.php:977 PersonEditor.php:1001
+#: Include/Functions.php:898 PersonEditor.php:977 PersonEditor.php:1001
 #: PersonEditor.php:1025
 msgid "Do not auto-format"
 msgstr "No aplicar Auto Formato"
@@ -930,14 +930,14 @@ msgid "Remove"
 msgstr "Remover"
 
 #: CartView.php:294 CartView.php:314 DonationFundEditor.php:177
-#: FinancialReports.php:295 Include/Functions.php:682
-#: Include/Functions.php:766 ListEvents.php:296 Reports/ConfirmReport.php:227
+#: FinancialReports.php:295 Include/Functions.php:685
+#: Include/Functions.php:769 ListEvents.php:296 Reports/ConfirmReport.php:227
 msgid "Yes"
 msgstr "Sí"
 
 #: CartView.php:307 CartView.php:316 DonationFundEditor.php:180
-#: FinancialReports.php:296 Include/Functions.php:684
-#: Include/Functions.php:767 ListEvents.php:296 Reports/ConfirmReport.php:229
+#: FinancialReports.php:296 Include/Functions.php:687
+#: Include/Functions.php:770 ListEvents.php:296 Reports/ConfirmReport.php:229
 msgid "No"
 msgstr "No"
 
@@ -998,7 +998,7 @@ msgstr "Acción"
 msgid "No Attendees Assigned to Event"
 msgstr "No hay Participantes Asignados a Evento"
 
-#: Checkin.php:455 Include/Functions.php:1406 Reports/CanvassReports.php:241
+#: Checkin.php:455 Include/Functions.php:1409 Reports/CanvassReports.php:241
 #: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr "Miembro"
@@ -1394,7 +1394,8 @@ msgstr "Vanco ACH"
 msgid "Month"
 msgstr "Mes"
 
-#: ElectronicPaymentList.php:212 FamilyEditor.php:947 Include/Functions.php:97
+#: ElectronicPaymentList.php:212 FamilyEditor.php:947
+#: Include/Functions.php:100
 msgid "Year"
 msgstr "Año"
 
@@ -1770,7 +1771,7 @@ msgstr "Seleccione Rol"
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
 #: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:52
-#: FamilyEditor.php:1017 Include/Functions.php:768 PeopleDashboard.php:336
+#: FamilyEditor.php:1017 Include/Functions.php:771 PeopleDashboard.php:336
 #: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
 msgid "Unknown"
 msgstr "Desconocido"
@@ -1982,7 +1983,7 @@ msgstr "Promesa o Pago"
 
 #: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:78
 #: EditEventAttendees.php:33 FamilyView.php:766 FindFundRaiser.php:236
-#: FundRaiserEditor.php:164 Include/Functions.php:93 PledgeEditor.php:518
+#: FundRaiserEditor.php:164 Include/Functions.php:96 PledgeEditor.php:518
 #: SelectDelete.php:218
 msgid "Date"
 msgstr "Fecha"
@@ -2303,7 +2304,7 @@ msgstr "Hoja Siguiente"
 msgid "Display:"
 msgstr "Mostrar"
 
-#: FindFundRaiser.php:75 FindFundRaiser.php:235 Include/Functions.php:99
+#: FindFundRaiser.php:75 FindFundRaiser.php:235 Include/Functions.php:102
 #: PaddleNumEditor.php:167 PaddleNumList.php:53
 msgid "Number"
 msgstr "Número"
@@ -2756,19 +2757,19 @@ msgstr "Usuario o contraseña no válidos"
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Demasiado accesos inválidos: su cuenta ha sido bloqueada. Póngase en contacto con el administrador."
 
-#: Login.php:194 Login.php:256
+#: Login.php:212 Login.php:274
 msgid "Please Login"
 msgstr "Ingrese"
 
-#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:214
+#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:232
 msgid "Email/Username"
 msgstr "Email/Usuario"
 
-#: BackupDatabase.php:55 Login.php:218 Login.php:296 UserList.php:58
+#: BackupDatabase.php:55 Login.php:236 Login.php:314 UserList.php:58
 msgid "Password"
 msgstr "Contraseña"
 
-#: Login.php:181 Login.php:231
+#: Login.php:199 Login.php:249
 msgid "Login"
 msgstr "Ingresar"
 
@@ -4141,79 +4142,79 @@ msgstr "Derechos de autor"
 msgid "All rights reserved"
 msgstr "Todos los derechos reservados"
 
-#: Include/Functions.php:92
+#: Include/Functions.php:95
 msgid "True / False"
 msgstr "Verdadero / Falso"
 
-#: Include/Functions.php:94
+#: Include/Functions.php:97
 msgid "Text Field (50 char)"
 msgstr "Campo de Texto (50 caracteres)"
 
-#: Include/Functions.php:95
+#: Include/Functions.php:98
 msgid "Text Field (100 char)"
 msgstr "Campo de Texto (100 caracteres)"
 
-#: Include/Functions.php:96
+#: Include/Functions.php:99
 msgid "Text Field (long)"
 msgstr "Campo de Texto (largo)"
 
-#: Include/Functions.php:98
+#: Include/Functions.php:101
 msgid "Season"
 msgstr "Estación"
 
-#: Include/Functions.php:100
+#: Include/Functions.php:103
 msgid "Person from Group"
 msgstr "Persona del grupo"
 
-#: Include/Functions.php:101
+#: Include/Functions.php:104
 msgid "Money"
 msgstr "moneda"
 
-#: Include/Functions.php:102
+#: Include/Functions.php:105
 msgid "Phone Number"
 msgstr "Teléfono"
 
-#: Include/Functions.php:103
+#: Include/Functions.php:106
 msgid "Custom Drop-Down List"
 msgstr "Lista Desplegable Personalizada"
 
-#: Include/Functions.php:109
+#: Include/Functions.php:112
 msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Gracias por registrar su instalación de ChurchCRM."
 
-#: Include/Functions.php:113
+#: Include/Functions.php:116
 msgid "PDFs successfully emailed "
 msgstr "PDFs enviados exitosamente "
 
-#: Include/Functions.php:118
+#: Include/Functions.php:121
 msgid "PDF successfully emailed to family members."
 msgstr "PDF enviado exitosamente a todos los miembros de la familia."
 
-#: Include/Functions.php:120
+#: Include/Functions.php:123
 msgid "Failed to email PDF to family members."
 msgstr "Falla al enviar PDF a los miembros de la familia."
 
-#: Include/Functions.php:127
+#: Include/Functions.php:130
 msgid "Group successfully added to the Cart."
 msgstr "Grupo exitosamente añadido al Separador"
 
-#: Include/Functions.php:133
+#: Include/Functions.php:136
 msgid "Group successfully removed from the Cart."
 msgstr "Grupo exitosamente removido del Separador"
 
-#: Include/Functions.php:137
+#: Include/Functions.php:140
 msgid "Profile Image successfully removed."
 msgstr "Imagen de Perfil removida exitosamente."
 
-#: Include/Functions.php:141
+#: Include/Functions.php:144
 msgid "Profile Image successfully updated."
 msgstr "Imagen de Perfil actializada exitosamente."
 
-#: Include/Functions.php:145
+#: Include/Functions.php:148
 msgid "Profile Image upload Error."
 msgstr "Error al subir la Imagen de Perfil."
 
-#: Include/Functions.php:152
+#: Include/Functions.php:155
 msgid "Selected record successfully removed from the Cart."
 msgstr "Registro seleccionado removido del Separador"
 
@@ -4222,19 +4223,19 @@ msgstr "Registro seleccionado removido del Separador"
 msgid "Your cart has been successfully emptied"
 msgstr "Su Separador ha sido exitosamente vaciado"
 
-#: Include/Functions.php:170
+#: Include/Functions.php:173
 msgid "item(s) added to the Cart."
 msgstr "item(s) añadidos al Separador"
 
-#: Include/Functions.php:195
+#: Include/Functions.php:198
 msgid "Select Fiscal Year"
 msgstr "Seleccionar Año Fiscal"
 
-#: Include/Functions.php:424
+#: Include/Functions.php:427
 msgid "pm"
 msgstr "pm"
 
-#: Include/Functions.php:429
+#: Include/Functions.php:432
 msgid "am"
 msgstr "am"
 
@@ -4242,67 +4243,67 @@ msgstr "am"
 msgid "yrs old"
 msgstr "años"
 
-#: Include/Functions.php:750
+#: Include/Functions.php:753
 msgid "Invalid Editor ID!"
 msgstr "Id. de Editor Inválido"
 
-#: Include/Functions.php:805
+#: Include/Functions.php:808
 msgid "Select Season"
 msgstr "seleccione temporada"
 
-#: Include/Functions.php:810
+#: Include/Functions.php:813
 msgid "Winter"
 msgstr "Invierno"
 
-#: Include/Functions.php:815
+#: Include/Functions.php:818
 msgid "Spring"
 msgstr "Primavera"
 
-#: Include/Functions.php:820
+#: Include/Functions.php:823
 msgid "Summer"
 msgstr "Verano"
 
-#: Include/Functions.php:825
+#: Include/Functions.php:828
 msgid "Fall"
 msgstr "Otoño"
 
-#: Include/Functions.php:922
+#: Include/Functions.php:925
 msgid "Error: Invalid Editor ID!"
 msgstr "Error: Id. de Editor inválido!"
 
-#: FundRaiserEditor.php:52 Include/Functions.php:1119 PledgeEditor.php:318
+#: FundRaiserEditor.php:52 Include/Functions.php:1122 PledgeEditor.php:318
 msgid "Not a valid date"
 msgstr "No es una fecha válida"
 
-#: Include/Functions.php:1131
+#: Include/Functions.php:1134
 msgid "Invalid Year"
 msgstr "Año Inválido"
 
-#: Include/Functions.php:1134
+#: Include/Functions.php:1137
 msgid "Out of range: Allowable values are 1901 to 2155"
 msgstr "Fuera de rango: Valores permitidos entre 1901 y 2155"
 
-#: Include/Functions.php:1147 Include/Functions.php:1163
+#: Include/Functions.php:1150 Include/Functions.php:1166
 msgid "Invalid Number"
 msgstr "Número inválido"
 
-#: Include/Functions.php:1150
+#: Include/Functions.php:1153
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr "Número demasiado largo, debe ser entre -2147483648 y 2147483647"
 
-#: Include/Functions.php:1166
+#: Include/Functions.php:1169
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Monto de dinero muy grande. Máximo es $999999999.99"
 
-#: Include/Functions.php:1316
+#: Include/Functions.php:1319
 msgid " Bold Italic"
 msgstr "negritas itálico"
 
-#: Include/Functions.php:1319
+#: Include/Functions.php:1322
 msgid " Italic"
 msgstr "Itálico"
 
-#: Include/Functions.php:1321
+#: Include/Functions.php:1324
 msgid " Bold"
 msgstr "Negritas"
 
@@ -5275,11 +5276,11 @@ msgstr "Limpiar Todos los Fondos"
 msgid "Deposit Comment"
 msgstr "Comentario de Depósito"
 
-#: Login.php:199 Login.php:264
+#: Login.php:217 Login.php:282
 msgid "Your previous session timed out.  Please login again."
 msgstr "Su sesión previa ha expirado. Por favor ingrese nuevamente."
 
-#: Login.php:239
+#: Login.php:257
 msgid "Register a new Family"
 msgstr "Registrar una nueva Familia"
 
@@ -7890,7 +7891,7 @@ msgstr "Chino - Taiwán"
 msgid "Maximum upload size"
 msgstr "Máximo tamaño de carga"
 
-#: RestoreDatabase.php:63 api/routes/database.php:26
+#: RestoreDatabase.php:63 api/routes/database.php:34
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "El archivo seleccionado excede el máximo tamaño de carga del servidor de"
 
@@ -7948,7 +7949,7 @@ msgstr "Familia Desactivada"
 msgid "Activated the Family"
 msgstr "Familia Activada"
 
-#: CartView.php:263 Include/Functions.php:113
+#: CartView.php:263 Include/Functions.php:116
 msgid "families"
 msgstr "familias"
 
@@ -8478,7 +8479,7 @@ msgstr "Enlace de Restablecimiento de Contraseña"
 msgid "Reset Password"
 msgstr "Restablecer Contraseña"
 
-#: ChurchCRM/Service/SystemService.php:95
+#: ChurchCRM/Service/SystemService.php:96
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
 msgstr "Como parte de la restauración, respaldos externos han sido inhabilitados. Si desea continuar con respaldos automáticos, debe rehabilitarlos manualmente con la opción bEnableExternalBackupTarget."
 
@@ -8538,7 +8539,7 @@ msgstr "Activar Nuevo Registro de Quiosco"
 msgid "Active Kiosks"
 msgstr "Activar Quioscos"
 
-#: Login.php:223
+#: Login.php:241
 msgid "I forgot my password"
 msgstr "Olvidé mi contraseña"
 
@@ -9283,11 +9284,11 @@ msgstr "Establecer el sistema de cifrado a usar - ssl (deprecado) o tls"
 msgid "Lock"
 msgstr "bloquear"
 
-#: Login.php:307
+#: Login.php:325
 msgid "Enter your password to retrieve your session"
 msgstr "Ingrese su contraseña para obtener su sesión"
 
-#: Login.php:310
+#: Login.php:328
 msgid "Or sign in as a different user"
 msgstr "O ingresar como un usuario diferente"
 
