@@ -397,7 +397,15 @@ window.displayEventModal = {
     if (calendarJSArgs.isModifiable) {
       buttons.push({
         label: i18next.t("Delete"),
-        className: "btn btn-danger pull-left"
+        className: "btn btn-danger pull-left",
+        callback: function() {
+          window.CRM.APIRequest({
+            method: "DELETE",
+            path: "events/"+window.displayEventModal.event.id
+          }).done(function() {
+            
+          });
+        }
       });
     }
     buttons.push({
