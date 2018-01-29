@@ -67,7 +67,7 @@ $app->group('/users', function () {
 
 })->add(new AdminRoleAuthMiddleware());
 
-$app->get('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response, $args) {
+$app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response, $args) {
     $curUser = $_SESSION['user'];
     $userId = $args['userId'];
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {

@@ -48,7 +48,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script >
     $("#regenApiKey").click(function () {
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: window.CRM.root + '/api/users/<?= $user->getId()?>/apikey/regen'
         })
             .done(function (data, textStatus, xhr) {
