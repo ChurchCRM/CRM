@@ -1136,6 +1136,7 @@ CREATE TABLE `user_usr` (
   `usr_defaultFY` mediumint(9) NOT NULL default '10',
   `usr_currentDeposit` mediumint(9) NOT NULL default '0',
   `usr_UserName` varchar(50) default NULL,
+  `usr_apiKey` VARCHAR(255) default NULL,
   `usr_EditSelf` tinyint(1) unsigned NOT NULL default '0',
   `usr_CalStart` date default NULL,
   `usr_CalEnd` date default NULL,
@@ -1151,6 +1152,7 @@ CREATE TABLE `user_usr` (
   `usr_Canvasser` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
+  UNIQUE KEY `usr_apiKey` (`usr_apiKey`),
   KEY `usr_per_ID` (`usr_per_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
@@ -1336,13 +1338,13 @@ CREATE TABLE `church_location_role` (
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE VIEW email_list AS
-    SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != '' 
-    UNION 
-    SELECT per_email AS email, 'person_home' AS type, per_id AS id FROM person_per WHERE per_email IS NOT NULL AND per_email != '' 
-    UNION 
+    SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != ''
+    UNION
+    SELECT per_email AS email, 'person_home' AS type, per_id AS id FROM person_per WHERE per_email IS NOT NULL AND per_email != ''
+    UNION
     SELECT per_WorkEmail AS email, 'person_work' AS type, per_id AS id FROM person_per WHERE per_WorkEmail IS NOT NULL AND per_WorkEmail != '';
-    
-CREATE VIEW email_count AS    
+
+CREATE VIEW email_count AS
     SELECT email, COUNT(*) AS total FROM email_list group by email;
 
 update version_ver set ver_update_end = now();
