@@ -15,8 +15,6 @@ window.moveEventModal = {
       method: 'POST',
       path: 'events/'+window.moveEventModal.event.id+"/time",
       data: JSON.stringify({"startTime": window.moveEventModal.event.start.format(),"endTime": window.moveEventModal.event.end.format()})
-    }).done(function (data) {
-        console.log("event moved");
     });
   } else {
      window.moveEventModal.revertFunc();
@@ -166,7 +164,6 @@ window.NewOrEditEventModal = {
         data: JSON.stringify(Event)
       }).done(function (data) {
         $(window.CRM.fullcalendar.fullCalendar("getEventSources")).each(function(idx,obj) {
-          console.log(obj);
           window.CRM.fullcalendar.fullCalendar("refetchEventSources", obj);
         });
         window.NewOrEditEventModal.modal.modal("hide");
@@ -281,7 +278,8 @@ window.NewOrEditEventModal = {
     $("#ATTENDENCES").parents("tr").hide();
   },
   configureEditModalUIElements: function(event) {
-   $("#PinnedCalendars").val(event.)
+   $("#PinnedCalendars").val([1]);
+   //todo: make this work!
   },
   getNewEventModal: function(start,end) {
     window.NewOrEditEventModal.mode='new';
@@ -317,8 +315,9 @@ window.NewOrEditEventModal = {
         }
       });
       window.NewOrEditEventModal.modal.modal("show");
-      window.NewOrEditEventModal.configureEditModalUIElements(event);
+      
       window.NewOrEditEventModal.configureModalUIElements(moment(event.Start),moment(event.End));
+      window.NewOrEditEventModal.configureEditModalUIElements(event);
       
     });
   }
@@ -343,10 +342,8 @@ window.displayEventModal = {
   getBootboxContent: function (event){ 
     var calendarPinnings ='';
     $.each(event.CalendarEvents,function (idx,obj) {
-      console.log(obj);
       calendarPinnings += "<li>"+obj.Calendar.Name+"</li>";
     });
-    console.log(calendarPinnings);
     var frm_str = '<table class="table">'
           + '<tr>'
           + "<td><span style='color: red'>*</span>" + i18next.t('Event Type') + ":</td>"
@@ -460,7 +457,6 @@ function registerCalendarSelectionEvents() {
   $(document).on
   
   $(document).on("click",".calendarSelectionBox", function(event) {
-    console.log("box checked");
     var endpoint;
     if($(this).data('calendartype') === "user") {
       endpoint="/api/calendars/"
