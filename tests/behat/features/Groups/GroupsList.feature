@@ -21,12 +21,13 @@ Feature: Groups List
     And I wait for AJAX to finish
     Then I should see "Church Admin"
 
-  Scenario: Add group memeber to cart
+  Scenario: Add group member to cart
     Given I am authenticated as "admin" using "changeme"
     And I am on "GroupView.php?GroupID=1"
     And I click the ".groupRow" element
     Then I should see "Add (1) Members to Cart"
     And I click the "#addSelectedToCart" element
+    And I wait for AJAX to finish
     And I reload the page
     Then I should see "1" in the "#iconCount" element
 

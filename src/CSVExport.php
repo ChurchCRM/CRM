@@ -13,9 +13,11 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\RedirectUtils;
+
 // If user does not have CSV Export permission, redirect to the menu.
 if (!$bExportCSV) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -161,6 +163,11 @@ require 'Include/Header.php';
             <input type="checkbox" name="Age" value="1">
           </div>
 
+          <div class="col-md-4">
+            <label><?= gettext('Classification') ?>:</label>
+            <input type="checkbox" name="PrintMembershipStatus" value="1">
+          </div>
+          
           <div class="col-md-4">
             <label><?= gettext('Family Role') ?>:</label>
             <input type="checkbox" name="PrintFamilyRole" value="1">

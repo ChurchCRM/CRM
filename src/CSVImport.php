@@ -17,9 +17,11 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 /**
@@ -975,8 +977,10 @@ function GetAge($Month, $Day, $Year)
 </div>
 </div>
 
-<script>
-$(".columns").select2();
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  $(document).ready(function(){
+    $(".columns").select2();
+  });
 </script>
 
 <?php

@@ -24,8 +24,13 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('Church Event Editor');
+
+if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent']) {
+    header('Location: Menu.php');
+}
 
 $sAction = 'Create Event';
 require 'Include/Header.php';
@@ -267,6 +272,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndMins = $aEndTimeTokens[1];
     $iEventStatus = $inactive;
     $nEventGroupId = $event_grpid;
+    $bEventPubliclyVisible = $event_publicly_visible;
 
     $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
     //        echo $cvSQL;
@@ -319,6 +325,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndMins = $sEventEndDateTime->format('i');
     $iEventStatus = $_POST['EventStatus'];
     $nEventGroupId = $_POST['EventGroup'];
+    $bEventPubliclyVisible = $_POST['EventPubliclyVisible'] == "true";
 
     $iNumCounts = $_POST['NumAttendCounts'];
     $nCnts = $iNumCounts;
@@ -345,24 +352,25 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
                      `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
                      `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
-                     `event_text` = '".InputUtils::LegacyFilterInput($sEventText)."',
+                     `event_text` = '".InputUtils::FilterHTML($sEventText)."',
                      `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
                      `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
                      `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
                      `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
-                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."';";
+                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."',
+                     `event_publicly_visible` = ".($bEventPubliclyVisible ? 'true' : 'false').";";
             RunQuery($sSQL);
             $iEventID = mysqli_insert_id($cnInfoCentral);
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
                 $sSQL = "INSERT eventcounts_evtcnt
-											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
-											 VALUES
-											 ('".InputUtils::LegacyFilterInput($iEventID)."',
-											  '".InputUtils::LegacyFilterInput($aCountID[$c])."',
-												'".InputUtils::LegacyFilterInput($aCountName[$c])."',
-												'".InputUtils::LegacyFilterInput($aCount[$c])."',
-												'".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                       (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
+                       VALUES
+                       ('".InputUtils::LegacyFilterInput($iEventID)."',
+                        '".InputUtils::LegacyFilterInput($aCountID[$c])."',
+                        '".InputUtils::LegacyFilterInput($aCountName[$c])."',
+                        '".InputUtils::LegacyFilterInput($aCount[$c])."',
+                        '".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
                 RunQuery($sSQL);
             }
         } else {
@@ -370,25 +378,26 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
                      `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
                      `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
-                     `event_text` = '".InputUtils::LegacyFilterInput($sEventText)."',
+                     `event_text` = '".InputUtils::FilterHTML($sEventText)."',
                      `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
                      `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
                      `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
                      `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
-                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."'".
+                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."',
+                     `event_publicly_visible` = ".($bEventPubliclyVisible ? 'true' : 'false').
                     " WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
             //            echo $sSQL;
             RunQuery($sSQL);
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
                 $sSQL = "INSERT eventcounts_evtcnt
-											 (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
-											 VALUES
-											 ('".InputUtils::LegacyFilterInput($iEventID)."',
-											  '".InputUtils::LegacyFilterInput($aCountID[$c])."',
-												'".InputUtils::LegacyFilterInput($aCountName[$c])."',
-												'".InputUtils::LegacyFilterInput($aCount[$c])."',
-												'".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                       (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
+                       VALUES
+                       ('".InputUtils::LegacyFilterInput($iEventID)."',
+                        '".InputUtils::LegacyFilterInput($aCountID[$c])."',
+                        '".InputUtils::LegacyFilterInput($aCountName[$c])."',
+                        '".InputUtils::LegacyFilterInput($aCount[$c])."',
+                        '".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
                 RunQuery($sSQL);
             }
         }
@@ -401,20 +410,20 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 ?>
 
 <div class='box'>
-	<div class='box-header'>
-		<h3 class='box-title'>
-			<?= ($EventExists == 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ').$iEventID ?>
-		</h3>
-	</div>
-	<div class='box-header'>
-		<?php
+  <div class='box-header'>
+    <h3 class='box-title'>
+      <?= ($EventExists == 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ').$iEventID ?>
+    </h3>
+  </div>
+  <div class='box-header'>
+    <?php
         if ($iErrors != 0) {
             echo "<div class='alert alert-danger'>".gettext('There were ').$iErrors.gettext(' errors. Please see below').'</div>';
         } else {
             echo '<div>'.gettext('Items with a ').'<span style="color: red">*</span>'.gettext(' are required').'</div>';
         }
         ?>
-	</div>
+  </div>
 
 <form method="post" action="EventEditor.php" name="EventsEditor">
 <input type="hidden" name="EventID" value="<?= ($iEventID) ?>">
@@ -427,25 +436,25 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Type') ?>:</td>
     <td colspan="3" class="TextColumn">
-			<select name='EN_tyid' class='form-control' id='event_type_id'>
-				<option><?= gettext('Select your event type'); ?></option>
-				<?php
+      <select name='EN_tyid' class='form-control' id='event_type_id' width='100%' style='width: 100%'>
+        <option><?= gettext('Select your event type'); ?></option>
+        <?php
                     $sSQL = 'SELECT * FROM event_types';
             $rsEventTypes = RunQuery($sSQL);
             while ($aRow = mysqli_fetch_array($rsEventTypes)) {
                 extract($aRow);
                 echo "<option value='".$type_id."' >".$type_name.'</option>';
             } ?>
-			</select>
-			<?php if ($bEventTypeError) {
+      </select>
+      <?php if ($bEventTypeError) {
                 echo '<div><span style="color: red;">'.gettext('You must pick an event type.').'</span></div>';
             } ?>
-			<script type="text/javascript">
-				$('#event_type_id').on('change', function(e) {
-					e.preventDefault();
-					document.forms.EventsEditor.submit();
-				});
-			</script>
+      <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
+        $('#event_type_id').on('change', function(e) {
+          e.preventDefault();
+          document.forms.EventsEditor.submit();
+        });
+      </script>
     </td>
   </tr>
 
@@ -464,13 +473,13 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Title') ?>:</td>
     <td colspan="1" class="TextColumn">
-      <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control' required>
+      <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control' width="100%" style="width: 100%" required>
     </td>
   </tr>
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Desc') ?>:</td>
     <td colspan="3" class="TextColumn">
-      <textarea name="EventDesc" rows="4" maxlength="100" class='form-control' required><?= ($sEventDesc) ?></textarea>
+      <textarea name="EventDesc" rows="4" maxlength="100" class='form-control' required width="100%" style="width: 100%"><?= ($sEventDesc) ?></textarea>
     </td>
   </tr>
   <tr>
@@ -479,18 +488,18 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     </td>
     <td class="TextColumn">
       <input type="text" name="EventDateRange" value=""
-             maxlength="10" id="EventDateRange" size="50" class='form-control' required>
+             maxlength="10" id="EventDateRange" size="50" class='form-control' width="100%" style="width: 100%" required>
     </td>
 
   </tr>
-  
+
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span>
       <?= gettext('Event Group') ?>:
     </td>
     <td class="TextColumn">
-      <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>">
-         <option value="0" <?= ($nEventGroupId == 0 ? "Selected":"") ?>>None</option>
+      <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>" width="100%" style="width: 100%">
+         <option value="0" <?= ($nEventGroupId == 0 ? "Selected":"") ?>><?= gettext("None") ?></option>
         <?php
           $groups=  ChurchCRM\Base\GroupQuery::create()->find();
             foreach ($groups as $group) {
@@ -499,6 +508,15 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
             <?php
             } ?>
       </select>
+    </td>
+
+  </tr>
+  <tr>
+    <td class="LabelColumn"><span style="color: red">*</span>
+      <?= gettext('Event Publicly Visible') ?>:
+    </td>
+    <td class="TextColumn">
+      <input type="checkbox" name="EventPubliclyVisible" value="true" <?= ($bEventPubliclyVisible ? "checked":"") ?>/>
     </td>
 
   </tr>
@@ -539,8 +557,9 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
   </tr>
 
   <tr>
-    <td class="LabelColumn"><?= gettext('Event Sermon') ?>:</td>
-    <td colspan="3" class="TextColumn"><textarea name="EventText" rows="5" cols="80" class='form-control'><?= ($sEventText) ?></textarea></td>
+    <td colspan="4" class="TextColumn"><?= gettext('Event Sermon') ?>:<br>
+    	<textarea id="#EventText" name="EventText" rows="5" cols="70" class='form-control'><?= ($sEventText) ?></textarea>
+    </td>
   </tr>
 
   <tr>
@@ -556,7 +575,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
   </tr>
 
   <tr>
-		<td></td>
+    <td></td>
     <td><input type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary"></td>
   </tr>
 <?php
@@ -567,7 +586,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 
 <div>
   <a href="ListEvents.php" class='btn btn-default'>
-    <i class='glyphicon glyphicon-chevron-left'></i>
+    <i class='fa fa-chevron-left'></i>
     <?= gettext('Return to Events') ?>
   </a>
 </div>
@@ -575,7 +594,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 $eventStart = $sEventStartDate.' '.$iEventStartHour.':'.$iEventStartMins;
 $eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
 ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $( document ).ready(function() {
         var startDate = moment("<?= $eventStart?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
         var endDate = moment("<?= $eventEnd?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
@@ -596,3 +615,13 @@ $eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
 </script>
 
 <?php require 'Include/Footer.php' ?>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  CKEDITOR.replace('EventText',{
+    customConfig: '<?= SystemURLs::getRootPath() ?>/skin/js/ckeditor/event_editor_config.js',
+    language : window.CRM.lang,
+    width : '100%'
+  });
+</script>

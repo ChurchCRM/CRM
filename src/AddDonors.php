@@ -15,6 +15,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $linkBack = '';
 if (array_key_exists('linkBack', $_GET)) {
@@ -34,7 +35,7 @@ if ($iFundRaiserID > 0) {
     // Set current fundraiser
     $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 } else {
-    redirect($linkBack);
+    RedirectUtils::Redirect($linkBack);
 }
 
 // Get all the people listed as donors for this fundraiser
@@ -66,4 +67,4 @@ while ($donorRow = mysqli_fetch_array($rsDonors)) {
         $extraPaddleNum = $extraPaddleNum + 1;
     }
 }
-redirect($linkBack);
+RedirectUtils::Redirect($linkBack);

@@ -16,10 +16,11 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have add records permission
 if (!$_SESSION['bAddRecords']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -114,7 +115,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
         $sGlobalMessage = $iCount.' records(s) successfully added to selected Family.';
 
-        Redirect('FamilyView.php?FamilyID='.$iFamilyID.'&Action=EmptyCart');
+        RedirectUtils::Redirect('FamilyView.php?FamilyID='.$iFamilyID.'&Action=EmptyCart');
     }
 }
 

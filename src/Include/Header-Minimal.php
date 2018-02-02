@@ -9,6 +9,7 @@
  *  Copyright 2003 Chris Gebhardt
   *
  ******************************************************************************/
+require_once 'Header-Security.php';
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

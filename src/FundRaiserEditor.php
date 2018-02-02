@@ -13,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
 $iFundRaiserID = InputUtils::LegacyFilterInputArr($_GET, 'FundRaiserID');
@@ -60,7 +61,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
             $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES ('.
             "'".$dDate."','".$sTitle."','".$sDescription."',".$_SESSION['iUserID'].",'".date('YmdHis')."')";
             $bGetKeyBack = true;
-            // Existing record (update)
+        // Existing record (update)
         } else {
             $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".$_SESSION['iUserID'].", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
             $bGetKeyBack = false;
@@ -78,10 +79,10 @@ if (isset($_POST['FundRaiserSubmit'])) {
 
         if (isset($_POST['FundRaiserSubmit'])) {
             if ($linkBack != '') {
-                Redirect($linkBack);
+                RedirectUtils::Redirect($linkBack);
             } else {
                 //Send to the view of this FundRaiser
-                Redirect('FundRaiserEditor.php?linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID);
+                RedirectUtils::Redirect('FundRaiserEditor.php?linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID);
             }
         }
     }

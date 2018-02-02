@@ -20,11 +20,13 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\UserQuery;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -62,6 +64,8 @@ require 'Include/Header.php';
                 <tr>
                     <td>
                         <a href="UserEditor.php?PersonID=<?= $user->getId() ?>"><i class="fa fa-pencil"
+                                                                                   aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <a href="v2/user/<?= $user->getId() ?>"><i class="fa fa-eye"
                                                                                    aria-hidden="true"></i></a>&nbsp;&nbsp;
                         <?php if ($user->getId() != $_SESSION['user']->getId()) {
     ?>
@@ -111,7 +115,7 @@ require 'Include/Header.php';
 </div>
 <!-- /.box -->
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
     $(document).ready(function () {
         $("#user-listing-table").DataTable(window.CRM.plugin.dataTable);
     });

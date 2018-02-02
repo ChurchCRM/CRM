@@ -23,8 +23,6 @@
 
 </body>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/ShowAge.js"></script>
-
 </html>
 <?php
 

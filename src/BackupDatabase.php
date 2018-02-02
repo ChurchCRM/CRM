@@ -14,26 +14,18 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
 if (strtoupper(mb_substr(PHP_OS, 0, 3)) === 'WIN') {
     die('The Backup Utility will not work on a Windows based Server');
-}
-
-if (SystemConfig::getValue('sGZIPname')) {
-    $hasGZIP = true;
-}
-if (SystemConfig::getValue('sZIPname')) {
-    $hasZIP = true;
-}
-if (SystemConfig::getValue('sPGPname')) {
-    $hasPGP = true;
 }
 
 // Set the page title and include HTML header
@@ -55,24 +47,15 @@ require 'Include/Header.php';
         <BR><BR>
         <form method="post" action="<?= sRootPath ?>/api/database/backup" id="BackupDatabase">
         <?= gettext('Select archive type') ?>:
-        <?php if ($hasGZIP) {
-    ?><input type="radio" name="archiveType" value="0"><?= gettext('GZip') ?><?php
-} ?>
-        <!--<?php if ($hasZIP) {
-        ?><input type="radio" name="archiveType" value="1"><?= gettext('Zip') ?><?php
-    } ?>-->
-        <input type="radio" name="archiveType" value="2" checked><?= gettext('Uncompressed') ?>
-        <input type="radio" name="archiveType" value="3" checked><?= gettext('tar.gz (Include Photos)') ?>
+        <input type="radio" name="archiveType" value="2" checked><?= gettext('Database Only (.sql)') ?>
+        <input type="radio" name="archiveType" value="3" checked><?= gettext('Database and Photos (.tar.gz)') ?>
         <BR><BR>
-        <?php if ($hasPGP) {
-        ?>
         <input type="checkbox" name="encryptBackup" value="1"><?= gettext('Encrypt backup file with a password?') ?>
         &nbsp;&nbsp;&nbsp;
         <?= gettext('Password') ?>:<input type="password" name="pw1">
         <?= gettext('Re-type Password') ?>:<input type="password" name="pw2">
         <BR><span id="passworderror" style="color: red"></span><BR><BR>
-        <?php
-    } ?>
+
         <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate and Download Backup').'"' ?>>
         <input type="button" class="btn btn-primary" id="doRemoteBackup" <?= 'value="'.gettext('Generate and Ship Backup to External Storage').'"' ?>>
 
@@ -87,7 +70,7 @@ require 'Include/Header.php';
      </div>
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 
 function doBackup(isRemote)
 {
@@ -156,7 +139,7 @@ function doBackup(isRemote)
     });
   }
 }
-  
+
 $('#doBackup').click(function(event) {
   event.preventDefault();
   doBackup (0);

@@ -17,10 +17,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -42,7 +43,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Event.';
 
-    Redirect('CartView.php?Action=EmptyCart&Message=aMessage&iCount='.$iCount.'&iEID='.$iEventID);
+    RedirectUtils::Redirect('CartView.php?Action=EmptyCart&Message=aMessage&iCount='.$iCount.'&iEID='.$iEventID);
 }
 
 // Set the page title and include HTML header
