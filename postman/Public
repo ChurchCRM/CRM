@@ -25,7 +25,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"firstName\": \"Jon\",\n\t\"lastName\": \"Smith\",\n\t\"middleName\": \"Ray\",\n\t\"email\" : \"me@domain.com\",\n\t\"title\": \"Da Man\",\n\t\"address1\" : \"123 Main St\",\n\t\"address2\" : \"Unit 10\",\n\t\"city\": \"Seattle\",\n\t\"countryCode\": \"US\",\n\t\"zip\": \"98121\",\n\t\"state\": \"WA\",\n\t\"genderCode\" : 1,\n\t\"workEmail\": \"me@work.com\",\n\t\"cellPhone\" : \"(555) 123 - 4567\",\n\t\"workPhone\" : \"(555) 123 - 9967\",\n\t\"homePhone\" : \"(455) 212 - 2342\"\n}"
+							"raw": "{\n\t\"FirstName\": \"Jon\",\n\t\"LastName\": \"Smith\",\n\t\"MiddleName\": \"Ray\",\n\t\"Email\" : \"me@domain.com\",\n\t\"Title\": \"Da Man\",\n\t\"Address1\" : \"123 Main St\",\n\t\"Address2\" : \"Unit 10\",\n\t\"City\": \"Seattle\",\n\t\"Country\": \"US\",\n\t\"Zip\": \"98121\",\n\t\"State\": \"WA\",\n\t\"Gender\" : 1,\n\t\"BirthDay\": \"1\",\n\t\"BirthMonth\": \"1\",\n\t\"BirthYear\": \"2000\",\n\t\"WorkEmail\": \"me@work.com\",\n\t\"CellPhone\" : \"(555) 123 - 4567\",\n\t\"WorkPhone\" : \"(555) 123 - 9967\",\n\t\"HomePhone\" : \"(455) 212 - 2342\"\n}"
 						},
 						"description": ""
 					},
@@ -36,8 +36,17 @@
 					"request": {
 						"url": "{{host}}/api/public/register/family",
 						"method": "POST",
-						"header": [],
-						"body": {},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\": \"Smith\",\n\t\"Address1\" : \"123 Main St\",\n\t\"Address2\" : \"Unit 10\",\n\t\"City\": \"Seattle\",\n\t\"Country\": \"US\",\n\t\"Zip\": \"98121\",\n\t\"State\": \"WA\",\n\t\"Email\": \"me@work.com\",\n\t\"CellPhone\" : \"(555) 123 - 4567\",\n\t\"WorkPhone\" : \"(555) 123 - 9967\",\n\t\"HomePhone\" : \"(455) 212 - 2342\"\n}"
+						},
 						"description": ""
 					},
 					"response": []
