@@ -17,7 +17,21 @@ function registerFamily(Request $request, Response $response, array $args)
 {
     $body = json_decode($request->getBody());
     $family = new Family();
-    return $response->withStatus(401);
+    $family->setName($body->name);
+    $family->setAddress1($body->address1);
+    $family->setAddress2($body->address2);
+    $family->setCity($body->city);
+    $family->setZip($body->zip);
+    $family->setState($body->state);
+    $family->setCountry($body->countryCode);
+    $family->setEmail($body->email);
+    $family->setCellPhone($body->cellPhone);
+    $family->setWorkPhone($body->workPhone);
+    $family->setHomePhone($body->homePhone);
+    $family->setEnteredBy(Person::SELF_REGISTER);
+    $family->setDateEntered(new \DateTime());
+    $family->save();
+    return $response->write($family->toJSON());
 }
 
 function registerPerson(Request $request, Response $response, array $args)
