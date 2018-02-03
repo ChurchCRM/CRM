@@ -4,8 +4,8 @@
 
 echo "Scanning composer for vulnerabilities"
 cd tests
-php security-checker.phar security:check /vagrant/src/composer.lock
-php security-checker.phar security:check /vagrant/tests/composer.lock
+#php security-checker.phar security:check /vagrant/src/composer.lock
+#php security-checker.phar security:check /vagrant/tests/composer.lock
 
 
 SingleTest=./behat/features/$1
