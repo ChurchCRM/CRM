@@ -28,15 +28,18 @@ use ChurchCRM\Utils\LoggerUtils;
 
 function system_failure($message, $header = 'Setup failure')
 {
+    if (!SystemConfig::isInitialized()) {
+        SystemConfig::init();
+    }
     require 'Include/HeaderNotLoggedIn.php'; ?>
-    <div class='container'>
-        <h3>ChurchCRM – <?= _($header) ?></h3>
-        <div class='alert alert-danger text-center' style='margin-top: 20px;'>
-            <?= gettext($message) ?>
-        </div>
-    </div>
-    <?php
-    require 'Include/FooterNotLoggedIn.php';
+  <div class='container'>
+      <h3>ChurchCRM – <?= _($header) ?></h3>
+      <div class='alert alert-danger text-center' style='margin-top: 20px;'>
+          <?= gettext($message) ?>
+      </div>
+  </div>
+  <?php
+  require 'Include/FooterNotLoggedIn.php';
     exit();
 }
 
