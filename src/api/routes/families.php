@@ -170,7 +170,7 @@ $app->group('/families', function () {
                 $note->setText(gettext('Activated the Family'));
             }
             $note->setType('edit');
-            $note->setEntered($_SESSION['iUserID']);
+            $note->setEntered($_SESSION['user']->getId());
             $note->save();
         }
         return $response->withJson(['success' => true]);
