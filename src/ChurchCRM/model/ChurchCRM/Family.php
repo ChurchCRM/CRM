@@ -182,7 +182,7 @@ class Family extends BaseFamily implements iPhoto
                 break;
             case "verify":
                 $note->setText(gettext('Family Data Verified'));
-                $note->setEnteredBy($_SESSION['iUserID']);
+                $note->setEnteredBy($_SESSION['user']->getId());
                 break;
             case "verify-link":
               $note->setText(gettext('Verification email sent'));
