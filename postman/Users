@@ -1,0 +1,31 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Users",
+		"_postman_id": "ad3f794b-8573-809d-e627-684880a23607",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User: API Key Regen",
+			"request": {
+				"url": "{{host}}/api/users/1/apikey/regen",
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "F1AM1JElA69TP6AjYT5NRwxq53NgZFguwH8ngByHxxqdtQmhAh",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "login and get api token back"
+			},
+			"response": []
+		}
+	]
+}
