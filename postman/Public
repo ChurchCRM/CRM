@@ -8,6 +8,130 @@
 	},
 	"item": [
 		{
+			"name": "Register",
+			"description": "",
+			"item": [
+				{
+					"name": "Register: Person",
+					"request": {
+						"url": "{{host}}/api/public/register/person",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"Jon\",\n\t\"lastName\": \"Smith\",\n\t\"middleName\": \"Ray\",\n\t\"email\" : \"me@domain.com\",\n\t\"title\": \"Da Man\",\n\t\"address1\" : \"123 Main St\",\n\t\"address2\" : \"Unit 10\",\n\t\"city\": \"Seattle\",\n\t\"countryCode\": \"US\",\n\t\"zip\": \"98121\",\n\t\"state\": \"WA\",\n\t\"genderCode\" : 1,\n\t\"workEmail\": \"me@work.com\",\n\t\"cellPhone\" : \"(555) 123 - 4567\",\n\t\"workPhone\" : \"(555) 123 - 9967\",\n\t\"homePhone\" : \"(455) 212 - 2342\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Register: Family",
+					"request": {
+						"url": "{{host}}/api/public/register/family",
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data",
+			"description": "",
+			"item": [
+				{
+					"name": "Public Data: Countries",
+					"request": {
+						"url": "{{host}}/api/public/data/countries",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Public Data: US States",
+					"request": {
+						"url": "{{host}}/api/public/data/countries/us/states",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Public Data: Canadian Provices",
+					"request": {
+						"url": "{{host}}/api/public/data/countries/ca/states",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Calendar",
+			"description": "",
+			"item": [
+				{
+					"name": "Public Calendar: Events",
+					"request": {
+						"url": "{{host}}/api/public/calendar/events",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Public Calendar: ICS",
+					"request": {
+						"url": "{{host}}/api/public/calendar/events",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"url": "{{host}}/api/public/user/admin/login",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"changeme\"\n}"
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Public Echo",
 			"request": {
 				"url": "{{host}}/api/public/echo",
@@ -15,61 +139,6 @@
 				"header": [],
 				"body": {},
 				"description": "Return Echo message"
-			},
-			"response": []
-		},
-		{
-			"name": "Public Calendar: Events",
-			"request": {
-				"url": "{{host}}/api/public/calendar/events",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Public Calendar: ICS",
-			"request": {
-				"url": "{{host}}/api/public/calendar/events",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Public Data: Countries",
-			"request": {
-				"url": "{{host}}/api/public/data/countries",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Public Data: US States",
-			"request": {
-				"url": "{{host}}/api/public/data/countries/us/states",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Public Data: Canadian Provices",
-			"request": {
-				"url": "{{host}}/api/public/data/countries/ca/states",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
 			},
 			"response": []
 		}
