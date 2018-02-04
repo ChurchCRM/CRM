@@ -13,7 +13,7 @@ Feature: Groups List
     
   Scenario: Add a member to a group
     Given I am authenticated as "admin" using "changeme"
-    And I am on "GroupView.php?GroupID=1"
+    And I am on "/GroupView.php?GroupID=1"
     And I fill in select2 input "addGroupMember" with "admin" and select "Church Admin"
     And I wait for AJAX to finish
     Then I should see "Select Role"
@@ -23,7 +23,7 @@ Feature: Groups List
 
   Scenario: Add group member to cart
     Given I am authenticated as "admin" using "changeme"
-    And I am on "GroupView.php?GroupID=1"
+    And I am on "/GroupView.php?GroupID=1"
     And I click the ".groupRow" element
     Then I should see "Add (1) Members to Cart"
     And I click the "#addSelectedToCart" element
@@ -33,7 +33,7 @@ Feature: Groups List
 
   Scenario: Copy a member to a different group
     Given I am authenticated as "admin" using "changeme"
-    And I am on "GroupView.php?GroupID=1"
+    And I am on "/GroupView.php?GroupID=1"
     And I click the ".groupRow" element
     Then I should see "Add (1) Members to Cart"
     And I click the "#buttonDropdown" element
@@ -45,7 +45,7 @@ Feature: Groups List
 
   Scenario: Move a member to a different group
     Given I am authenticated as "admin" using "changeme"
-    And I am on "GroupView.php?GroupID=1"
+    And I am on "/GroupView.php?GroupID=1"
     And I click the ".groupRow" element
     Then I should see "Add (1) Members to Cart"
     And I click the "#buttonDropdown" element
