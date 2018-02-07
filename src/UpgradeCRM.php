@@ -21,7 +21,7 @@ require 'Include/HeaderNotLoggedIn.php';
 Header_modals();
 Header_body_scripts();
 if (version_compare(PHP_VERSION, '7.0.0', '<')){
-  system_failure('Application updates are disabled.  This installation is running on a deprecated version of PHP: '. PHP_VERSION);
+  system_failure(gettext('Application updates are disabled.  This installation is running on a deprecated version of PHP').": ". PHP_VERSION);
 }
 
 ?>

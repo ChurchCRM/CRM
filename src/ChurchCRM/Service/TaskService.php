@@ -42,8 +42,7 @@ class TaskService
             new PersonClassificationDataCheck(),
             new PersonRoleDataCheck(),
             new UpdateFamilyCoordinatesTask(),
-            new CheckUploadSizeTask(),
-            
+            new CheckUploadSizeTask()
         ];
     }
 

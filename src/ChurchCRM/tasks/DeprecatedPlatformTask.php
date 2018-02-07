@@ -26,12 +26,12 @@ class DeprecatedPlatformTask implements iTask
 
   public function getTitle()
   {
-    return gettext('Application updates are disabled.  This installation is running on a deprecated version of PHP: '. PHP_VERSION);
+    return gettext('Application updates are disabled.  This installation is running on a deprecated version of PHP').": ". PHP_VERSION;
   }
 
   public function getDesc()
   {
-    return gettext('Application updates are disabled.  This installation is running on a deprecated version of PHP: '. PHP_VERSION);
+    return gettext('Application updates are disabled.  This installation is running on a deprecated version of PHP').": ". PHP_VERSION;
   }
 
 }

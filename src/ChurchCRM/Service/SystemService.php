@@ -420,7 +420,7 @@ class SystemService
     public function doUpgrade($zipFilename, $sha1)
     {
       if (version_compare(PHP_VERSION, '7.0.0', '<')){
-        throw new \Exception('Application updates are disabled.  This installation is running on a deprecated version of PHP: '. PHP_VERSION);
+        throw new \Exception(gettext('Application updates are disabled.  This installation is running on a deprecated version of PHP').": ". PHP_VERSION);
       }
         ini_set('max_execution_time', 60);
         if ($sha1 == sha1_file($zipFilename)) {
