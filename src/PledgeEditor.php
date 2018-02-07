@@ -258,14 +258,14 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     $nonZeroFundAmountEntered = 0;
     foreach ($fundId2Name as $fun_id => $fun_name) {
         //$fun_active = $fundActive[$fun_id];
-        $nAmount[$fun_id] = InputUtils::LegacyFilterInput($_POST[$fun_id.'_Amount']);
-        $sComment[$fun_id] = InputUtils::LegacyFilterInput($_POST[$fun_id.'_Comment']);
+        $nAmount[$fun_id] = InputUtils::FilterFloat($_POST[$fun_id.'_Amount']);
+        $sComment[$fun_id] = InputUtils::FilterString($_POST[$fun_id.'_Comment']);
         if ($nAmount[$fun_id] > 0) {
             ++$nonZeroFundAmountEntered;
         }
 
         if ($bEnableNonDeductible) {
-            $nNonDeductible[$fun_id] = InputUtils::LegacyFilterInput($_POST[$fun_id.'_NonDeductible']);
+            $nNonDeductible[$fun_id] = InputUtils::FilterFloat($_POST[$fun_id.'_NonDeductible']);
             //Validate the NonDeductible Amount
             if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
                 $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
@@ -736,7 +736,7 @@ require 'Include/Header.php';
                     if ($bEnableNonDeductible) {
                         ?>
                       <td class="TextColumn">
-                        <input   type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= $nNonDeductible[$fun_id]?>" />
+                        <input   type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] : "") ?>" />
                         <br>
                         <font color="red"><?= $sNonDeductibleError[$fun_id]?></font>
                       </td>
