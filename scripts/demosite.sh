@@ -26,9 +26,6 @@ if [ -f $file  ]; then
 
   echo -n "Current branch is: $publishBranch"
 
-  if  ! [[ $publishBranch == "master"  ]]; then
-    publishBranch="other"
-  fi
   echo "**************************************"
   echo "Beginning to publish demosite"
   echo "Publishing ZipArchive: $file"
