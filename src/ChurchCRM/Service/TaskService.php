@@ -16,6 +16,7 @@ use ChurchCRM\Tasks\PersonClassificationDataCheck;
 use ChurchCRM\Tasks\PersonRoleDataCheck;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 use ChurchCRM\Tasks\CheckUploadSizeTask;
+use ChurchCRM\Tasks\DeprecatedPlatformTask;
 
 class TaskService
 {
@@ -29,6 +30,7 @@ class TaskService
 
         $this->taskClasses = [
             new PrerequisiteCheckTask(),
+            new DeprecatedPlatformTask(),
             new ChurchNameTask(),
             new ChurchAddress(),
             new EmailTask(),
