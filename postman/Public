@@ -1,0 +1,77 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Public",
+		"_postman_id": "c7030a72-1bc3-fdd8-3a1e-ad30da344875",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public Echo",
+			"request": {
+				"url": "{{host}}/api/public/echo",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Return Echo message"
+			},
+			"response": []
+		},
+		{
+			"name": "Public Calendar: Events",
+			"request": {
+				"url": "{{host}}/api/public/calendar/events",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Public Calendar: ICS",
+			"request": {
+				"url": "{{host}}/api/public/calendar/events",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Public Data: Countries",
+			"request": {
+				"url": "{{host}}/api/public/data/countries",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Public Data: US States",
+			"request": {
+				"url": "{{host}}/api/public/data/countries/us/states",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Public Data: Canadian Provices",
+			"request": {
+				"url": "{{host}}/api/public/data/countries/ca/states",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

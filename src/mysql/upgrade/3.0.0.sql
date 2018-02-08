@@ -1,4 +1,4 @@
-ALTER TABLE `events_event` 
+ALTER TABLE `events_event`
   ADD COLUMN `location_id` INT DEFAULT NULL AFTER `event_typename`,
   ADD COLUMN `primary_contact_person_id` INT DEFAULT NULL AFTER `location_id`,
   ADD COLUMN `secondary_contact_person_id` INT DEFAULT NULL AFTER `location_id`;
@@ -33,3 +33,7 @@ CREATE TABLE `calendar_events` (
 
 DROP TABLE IF EXISTS `locations`;
 RENAME TABLE church_location TO locations;
+
+ALTER TABLE user_usr
+  ADD COLUMN usr_apiKey VARCHAR(255) AFTER usr_UserName,
+	ADD UNIQUE INDEX `usr_apiKey_unique` (`usr_apiKey` ASC);

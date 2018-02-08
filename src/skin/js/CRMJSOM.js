@@ -410,6 +410,7 @@
               };
               return o;
             });
+            $('#targetGroupSelection').parents('.bootbox').removeAttr('tabindex');
             $groupSelect2 = $("#targetGroupSelection").select2({
               data: groupsList
             });

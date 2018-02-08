@@ -24,6 +24,9 @@ $app->add(new AuthMiddleware());
 // Set up
 require __DIR__.'/../Include/slim/error-handler.php';
 
+// admin routes
+require __DIR__ . '/routes/user.php';
+
 // people routes
 require __DIR__.'/routes/family.php';
 require __DIR__.'/routes/person.php';

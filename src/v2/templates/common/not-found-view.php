@@ -17,7 +17,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         <p>
             <?= gettext("We could not find the person(s) you were looking for.") ?>
-            <?= gettext("Meanwhile, you may")?> <a href="<?= SystemURLs::getRootPath() ?>/PeopleDashboard.php"> <?= gettext("return to People Dashboard") ?></a>
+            <?= gettext("Meanwhile, you may")?> <a href="<?= SystemURLs::getRootPath() ?>../../index.php"> <?= gettext("return to People Dashboard") ?></a>
         </p>
     </div>
 </div>
