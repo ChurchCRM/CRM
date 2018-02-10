@@ -118,8 +118,7 @@ function Header_body_scripts()
                     }
                 }
             },
-            currentUser: <?= json_encode($_SESSION['user']->toArray()); ?>
-            ,
+            currentUser: <?= json_encode($_SESSION['user']->toArray()); ?>,
             PageName:"<?= $_SERVER['PHP_SELF']?>"
         };
     </script>
