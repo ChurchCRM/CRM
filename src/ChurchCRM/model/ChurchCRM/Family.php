@@ -150,15 +150,18 @@ class Family extends BaseFamily implements iPhoto
 
   public function getEmails() {
     $emails = array();
+    if (!(empty($this->getEmail()))) {
+        array_push($emails, $this->getEmail());
+    }
     foreach ($this->getPeople() as $person) {
-      $email = $person->getEmail();
-      if ($email != null) {
-        array_push($emails, $email);
-      }
-      $email = $person->getWorkEmail();
-      if ($email != null) {
-        array_push($emails, $email);
-      }
+        $email = $person->getEmail();
+        if ($email != null) {
+            array_push($emails, $email);
+        }
+        $email = $person->getWorkEmail();
+        if ($email != null) {
+            array_push($emails, $email);
+        }
     }
     return $emails;
   }
