@@ -127,7 +127,7 @@ $app->group('/groups', function () {
                 $note = new Note();
                 $note->setText(gettext("Deleted from group"). ": " . $group->getName());
                 $note->setType("group");
-                $note->setEntered($_SESSION['iUserID']);
+                $note->setEntered($_SESSION['user']->getId());
                 $note->setPerId($person->getId());
                 $note->save();
             }
@@ -159,7 +159,7 @@ $app->group('/groups', function () {
         $note = new Note();
         $note->setText(gettext("Added to group"). ": " . $group->getName());
         $note->setType("group");
-        $note->setEntered($_SESSION['iUserID']);
+        $note->setEntered($_SESSION['user']->getId());
         $note->setPerId($person->getId());
         $note->save();
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
