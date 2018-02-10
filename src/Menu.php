@@ -377,7 +377,7 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
                         <?php foreach ($latestMembers as $person) {
-    ?>
+                            ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                     <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
@@ -387,7 +387,7 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-}
+                        }
                         ?>
                     </ul>
                     <!-- /.users-list -->
