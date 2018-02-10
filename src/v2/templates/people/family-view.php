@@ -94,7 +94,7 @@ $familyAddress = $family->getAddress();
                         if ($_SESSION['bNotes']) {
                             ?>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                               href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>"><i
                                     class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                             <?php
                         } ?>
