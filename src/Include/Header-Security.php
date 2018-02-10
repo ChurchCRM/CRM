@@ -21,10 +21,8 @@ $csp = array(
     "connect-src 'self'",
     "report-uri ".SystemURLs::getRootPath()."/api/system/csp-report"
 );
-
 if (SystemConfig::getBooleanValue("bHSTSEnable")) {
     header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
 }
-
 header('X-Frame-Options: SAMEORIGIN');
 header("Content-Security-Policy-Report-Only:".join(";", $csp));
