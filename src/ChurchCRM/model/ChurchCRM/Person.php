@@ -9,6 +9,7 @@ use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use DateTime;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -24,6 +25,7 @@ class Person extends BasePerson implements iPhoto
 
     const SELF_REGISTER = -1;
     const SELF_VERIFY = -2;
+    private $photo;
 
     public function getFullName()
     {
@@ -45,20 +47,38 @@ class Person extends BasePerson implements iPhoto
         return $this->getFlags() == 1 || $this->getBirthYear() == '' || $this->getBirthYear() == '0';
     }
 
-    public function getBirthDate()
+    private function getBirthDate()
     {
         if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
             !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
         ) {
             $birthYear = $this->getBirthYear();
-            if ($this->hideAge()) {
-                $birthYear = 1900;
+            if ($birthYear == '')
+            {
+              $birthYear = 1900;
             }
-
             return date_create($birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
         }
+        return false;
 
-        return date_create();
+
+    }
+
+    public function getFormattedBirthDate()
+    {
+      $birthDate = $this->getBirthDate();
+      if (!$birthDate) {
+        return false;
+      }
+      if ($this->hideAge())
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));
+      }
+      else
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
+      }
+
     }
 
     public function getViewURI()
@@ -90,7 +110,7 @@ class Person extends BasePerson implements iPhoto
 
     public function postInsert(ConnectionInterface $con = null)
     {
-      $this->createTimeLineNote(true);
+      $this->createTimeLineNote('create');
       if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
       {
         $NotificationEmail = new NewPersonOrFamilyEmail($this);
@@ -102,24 +122,29 @@ class Person extends BasePerson implements iPhoto
 
     public function postUpdate(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote(false);
+      if (!empty($this->getDateLastEdited())) {
+        $this->createTimeLineNote('edit');
+      }
     }
 
-    private function createTimeLineNote($new)
+    private function createTimeLineNote($type)
     {
         $note = new Note();
         $note->setPerId($this->getId());
+        $note->setType($type);
+        $note->setDateEntered(new DateTime());
 
-        if ($new) {
-            $note->setText(gettext('Created'));
-            $note->setType('create');
-            $note->setEnteredBy($this->getEnteredBy());
-            $note->setDateEntered($this->getDateEntered());
-        } else {
-            $note->setText(gettext('Updated'));
-            $note->setType('edit');
-            $note->setEnteredBy($this->getEditedBy());
-            $note->setDateLastEdited($this->getDateLastEdited());
+         switch ($type) {
+            case "create":
+              $note->setText(gettext('Created'));
+              $note->setEnteredBy($this->getEnteredBy());
+              $note->setDateEntered($this->getDateEntered());
+              break;
+            case "edit":
+              $note->setText(gettext('Updated'));
+              $note->setEnteredBy($this->getEditedBy());
+              $note->setDateEntered($this->getDateLastEdited());
+              break;
         }
 
         $note->save();
@@ -198,15 +223,15 @@ class Person extends BasePerson implements iPhoto
                 $lng = $latLng['Longitude'];
             }
         } else {
-        	// Philippe Logel : this is usefull when a person don't have a family : ie not an address
-        	if (!empty($this->getFamily()))
-        	{
-				if (!$this->getFamily()->hasLatitudeAndLongitude()) {
-					$this->getFamily()->updateLanLng();
-				}
-				$lat = $this->getFamily()->getLatitude();
-				$lng = $this->getFamily()->getLongitude();
-			}
+         // Philippe Logel : this is usefull when a person don't have a family : ie not an address
+         if (!empty($this->getFamily()))
+         {
+    if (!$this->getFamily()->hasLatitudeAndLongitude()) {
+     $this->getFamily()->updateLanLng();
+    }
+    $lat = $this->getFamily()->getLatitude();
+    $lng = $this->getFamily()->getLongitude();
+   }
         }
         return array(
             'Latitude' => $lat,
@@ -230,39 +255,13 @@ class Person extends BasePerson implements iPhoto
         return false;
     }
 
-    private function getPhoto()
+    public function getPhoto()
     {
-
-      $photo = new Photo("Person",  $this->getId());
-       if (!$photo->isPhotoLocal() && $this->getEmail() != '') {
-           if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
-               $photo->loadFromGoogle($this->getEmail());
-           }
-            if (!$photo->isPhotoRemote() && SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
-               $photo->loadFromGravatar($this->getEmail());
-           }
-       }
-       return $photo;
-    }
-
-    public function getPhotoBytes()
-    {
-        return $this->getPhoto()->getPhotoBytes();
-    }
-
-    public function getPhotoURI()
-    {
-        return $this->getPhoto()->getPhotoURI();
-    }
-
-    public function getThumbnailBytes()
-    {
-        return $this->getPhoto()->getThumbnailBytes();
-    }
-
-    public function getThumbnailURI()
-    {
-        return $this->getPhoto()->getThumbnailURI();
+      if (!$this->photo)
+      {
+        $this->photo = new Photo("Person",  $this->getId());
+      }
+      return $this->photo;
     }
 
     public function setImageFromBase64($base64)
@@ -279,21 +278,6 @@ class Person extends BasePerson implements iPhoto
         }
         return false;
 
-    }
-
-    public function isPhotoLocal()
-    {
-        return $this->getPhoto()->isPhotoLocal();
-    }
-
-    public function isPhotoRemote()
-    {
-        return $this->getPhoto()->isPhotoRemote();
-    }
-
-    public function getPhotoContentType()
-    {
-        return $this->getPhoto()->getPhotoContentType();
     }
 
     /**
@@ -435,17 +419,74 @@ class Person extends BasePerson implements iPhoto
             $user->delete($con);
         }
 
-        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->find($con)->delete();
+        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->delete($con);
 
-        PersonPropertyQuery::create()->filterByPerson($this)->find($con)->delete();
+        PropertyQuery::create()
+            ->filterByProClass("p")
+            ->useRecordPropertyQuery()
+            ->filterByRecordId($this->getId())
+            ->delete($con);
 
-        NoteQuery::create()->filterByPerson($this)->find($con)->delete();
+        NoteQuery::create()->filterByPerson($this)->delete($con);
 
         return parent::preDelete($con);
     }
-    
+
+    public function getProperties() {
+        $personProperties = PropertyQuery::create()
+            ->filterByProClass("p")
+            ->useRecordPropertyQuery()
+            ->filterByRecordId($this->getId())
+            ->find();
+        return $personProperties;
+    }
+
     public function getNumericCellPhone()
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
+
+    public function postSave(ConnectionInterface $con = null) {
+      $this->getPhoto()->refresh();
+      return parent::postSave($con);
+    }
+
+    public function getAge()
+    {
+      $birthDate = $this->getBirthDate();
+
+      if ($this->hideAge())
+      {
+        return false;
+      }
+
+      $now = date_create('today');
+      $age = date_diff($now,$birthDate);
+
+      if ($age->y < 1) {
+        $ageValue = $age->m;
+        if ($age->m > 1) {
+          $ageSuffix = gettext('mos old');
+        } else {
+          $ageSuffix = gettext('mo old');
+        }
+      } else {
+        $ageValue = $age->y;
+        if ($age->y > 1) {
+          $ageSuffix = gettext('yrs old');
+        } else {
+          $ageSuffix = gettext('yr old');
+        }
+      }
+
+      return $ageValue. " ".$ageSuffix;
+
+    }
+
+    /* Philippe Logel 2017 */
+    public function getFullNameWithAge()
+    {
+       return $this->getFullName()." ".$this->getAge();
+    }
+
 }

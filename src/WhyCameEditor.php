@@ -18,6 +18,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 $iPerson = InputUtils::LegacyFilterInput($_GET['PersonID']);
@@ -42,7 +43,7 @@ if (isset($_POST['Submit'])) {
         $sSQL = 'INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs)
 				VALUES ('.$iPerson.', "'.$tJoin.'", "'.$tCome.'", "'.$tSuggest.'", "'.$tHearOfUs.'")';
 
-        // Existing record (update)
+    // Existing record (update)
     } else {
         $sSQL = 'UPDATE whycame_why SET why_join = "'.$tJoin.'", why_come = "'.$tCome.'", why_suggest = "'.$tSuggest.'", why_hearOfUs = "'.$tHearOfUs.'" WHERE why_per_ID = '.$iPerson;
     }
@@ -53,10 +54,10 @@ if (isset($_POST['Submit'])) {
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-            Redirect($linkBack);
+            RedirectUtils::Redirect($linkBack);
         } else {
             //Send to the view of this pledge
-            Redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
+            RedirectUtils::Redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
         }
     }
 } else {

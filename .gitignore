@@ -27,20 +27,8 @@ src/Images/Person
 #skins
 src/skin/external
 src/skin/adminlte
-src/skin/font-awesome
-src/skin/ionicons
-src/skin/fullcalendar
-src/skin/moment
-src/skin/fastclick
 src/skin/churchcrm.min.css.map
 src/skin/churchcrm.min.css
-src/skin/jquery-photo-uploader
-src/skin/randomcolor
-src/skin/bootbox
-src/skin/bootstrap-toggle
-src/skin/bootstrap-validator
-src/skin/jquery-ui
-src/skin/i18next
 
 #locale files
 src/locale/datatables

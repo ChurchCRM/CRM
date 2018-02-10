@@ -24,9 +24,9 @@ use ChurchCRM\dto\SystemURLs;
   <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js" ></script>
 
   <!-- Bootbox -->
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/bootbox/bootbox.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootbox/bootbox.min.js"></script>
 
-  <script>
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(function () {
       $('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',

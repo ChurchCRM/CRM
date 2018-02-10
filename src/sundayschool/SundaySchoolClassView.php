@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 
 $sundaySchoolService = new SundaySchoolService();
 
@@ -112,7 +113,7 @@ require '../Include/Header.php';
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
     <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i
         class="fa fa-user-plus"></i><?= gettext('Add Students') ?> </a>
-        
+
 	<a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fa fa-pencil"></i><?= gettext("Edit this Class") ?></a>
   </div>
 </div>
@@ -130,8 +131,7 @@ require '../Include/Header.php';
         <div class="box box-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?></h4>
-            <img data-name="<?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?>"
-                  data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $teacher['per_ID'] ?>/thumbnail"
+            <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $teacher['per_ID'] ?>/thumbnail"
                   alt="User Image" class="user-image initials-image" width="85" height="85" />
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
                 class="fa fa-envelope"></i> <?= gettext('Send Message') ?></a>
@@ -198,6 +198,7 @@ require '../Include/Header.php';
     <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>
+        <th></th>
         <th><?= gettext('Name') ?></th>
         <th><?= gettext('Birth Date') ?></th>
         <th><?= gettext('Age') ?></th>
@@ -218,18 +219,15 @@ require '../Include/Header.php';
 
       foreach ($thisClassChildren as $child) {
           $hideAge = $child['flags'] == 1 || $child['birthYear'] == '' || $child['birthYear'] == '0';
-          $birthDate = FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']);
-          $birthDateDate = BirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge); ?>
-
+          $birthDate = MiscUtils::FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']); ?>
           <tr>
           <td>
-            <img data-name="<?= $child['firstName'].' '.$child['LastName'] ?>"
-                data-src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
-                alt="User Image" class="user-image initials-image" width="30" height="30" />
-            <a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['firstName'].', '.$child['LastName'] ?></a>
+            <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
+                alt="User Image" class="user-image initials-image" style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px !; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; max-width:none" />
           </td>
+          <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'].', '.$child['firstName'] ?></a></td>
           <td><?= $birthDate ?> </td>
-          <td data-birth-date='<?= ($hideAge ? '' : $birthDateDate->format('Y-m-d')) ?>'></td>
+          <td><?= MiscUtils::FormatAge($child['birthMonth'], $child['birthDay'], $child['birthYear'], $child['flags']) ?></td>
           <td><?= $child['kidEmail'] ?></td>
           <td><?= $child['mobilePhone'] ?></td>
           <td><?= $child['homePhone'] ?></td>
@@ -325,16 +323,15 @@ function implodeUnique($array, $withQuotes)
 </div><!-- /.modal -->
 
 <!-- FLOT CHARTS -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.min.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"
-        type="text/javascript"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"></script>
 
-<script type="text/javascript" charset="utf-8">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {
 
     var dataTable = $('.data-table').DataTable(window.CRM.plugin.dataTable);

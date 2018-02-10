@@ -139,6 +139,9 @@ namespace ChurchCRM
 
       private static function query($sql, $mysqli)
       {
+          if (preg_match("/DEFINER\s*=.*@.*/", $sql)) {
+              return;
+          }
           if (!$query = $mysqli->query($sql)) {
               throw new \Exception("Cannot execute request to the database {$sql}: ".$mysqli->error);
           }

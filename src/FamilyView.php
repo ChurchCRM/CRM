@@ -19,6 +19,7 @@ use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -42,7 +43,7 @@ if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Actio
         $family->activate();
     }
     $family->save();
-    Redirect("FamilyView.php?FamilyID=" . $_POST['FID']);
+    RedirectUtils::Redirect("FamilyView.php?FamilyID=" . $_POST['FID']);
     exit;
 }
 // Get the list of funds
@@ -84,96 +85,103 @@ $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS Entere
 $rsFamily = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsFamily));
 
-if ($iFamilyID == $fam_ID) {
-
 // Get the lists of custom person fields
-    $sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
-    $rsFamCustomFields = RunQuery($sSQL);
+$sSQL = "SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order";
+$rsFamCustomFields = RunQuery($sSQL);
 
-    // Get the custom field data for this person.
-    $sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
-    $rsFamCustomData = RunQuery($sSQL);
-    $aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQLI_BOTH);
+// Get the custom field data for this person.
+$sSQL = "SELECT * FROM family_custom WHERE fam_ID = " . $iFamilyID;
+$rsFamCustomData = RunQuery($sSQL);
+$aFamCustomData = mysqli_fetch_array($rsFamCustomData, MYSQLI_BOTH);
 
-    $family = FamilyQuery::create()->findPk($iFamilyID);
+$family = FamilyQuery::create()->findPk($iFamilyID);
 
-    //Get the pledges for this family
-    $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
-         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName,
-         a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible,
-         plg_GroupKey
-		 FROM pledge_plg
-		 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
-		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-		 WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
-    $rsPledges = RunQuery($sSQL);
+if (empty($family)) {
+    header('Location: '. SystemURLs::getRootPath() .'/v2/family/not-found?id='. $iFamilyID);
+    exit;
+}
 
-    //Get the automatic payments for this family
-    $sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
-                   a.Per_LastName AS EnteredLastName,
-                   b.fun_Name AS fundName
-		 FROM autopayment_aut
-		 LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
-		 LEFT JOIN donationfund_fun b ON aut_Fund = b.fun_ID
-		 WHERE aut_famID = " . $iFamilyID . " ORDER BY autopayment_aut.aut_NextPayDate";
-    $rsAutoPayments = RunQuery($sSQL);
+//Get the pledges for this family
+$sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
+     plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName,
+     a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName, plg_NonDeductible,
+     plg_GroupKey
+     FROM pledge_plg
+     LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
+     LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
+     WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
+$rsPledges = RunQuery($sSQL);
 
-    //Get the Properties assigned to this Family
-    $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
-		FROM record2property_r2p
-		LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
-		LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-		WHERE pro_Class = 'f' AND r2p_record_ID = " . $iFamilyID .
-    " ORDER BY prt_Name, pro_Name";
-    $rsAssignedProperties = RunQuery($sSQL);
+//Get the automatic payments for this family
+$sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
+               a.Per_LastName AS EnteredLastName,
+               b.fun_Name AS fundName
+     FROM autopayment_aut
+     LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
+     LEFT JOIN donationfund_fun b ON aut_Fund = b.fun_ID
+     WHERE aut_famID = " . $iFamilyID . " ORDER BY autopayment_aut.aut_NextPayDate";
+$rsAutoPayments = RunQuery($sSQL);
 
-    //Get all the properties
-    $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'f' ORDER BY pro_Name";
-    $rsProperties = RunQuery($sSQL);
+//Get the Properties assigned to this Family
+$sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
+    FROM record2property_r2p
+    LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
+    LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
+    WHERE pro_Class = 'f' AND r2p_record_ID = " . $iFamilyID .
+" ORDER BY prt_Name, pro_Name";
+$rsAssignedProperties = RunQuery($sSQL);
 
-    //Get classifications
-    $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
-    $rsClassifications = RunQuery($sSQL);
+//Get all the properties
+$sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'f' ORDER BY pro_Name";
+$rsProperties = RunQuery($sSQL);
 
-    // Get Field Security List Matrix
-    $sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
-    $rsSecurityGrp = RunQuery($sSQL);
+//Get classifications
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence";
+$rsClassifications = RunQuery($sSQL);
 
-    while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-        extract($aRow);
-        $aSecurityType[$lst_OptionID] = $lst_OptionName;
-    }
+// Get Field Security List Matrix
+$sSQL = "SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence";
+$rsSecurityGrp = RunQuery($sSQL);
 
-    //Set the spacer cell width
-    $iTableSpacerWidth = 10;
+while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
+    extract($aRow);
+    $aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
 
-    // Format the phone numbers
-    $sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
-    $sWorkPhone = ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy);
-    $sCellPhone = ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy);
+//Set the spacer cell width
+$iTableSpacerWidth = 10;
 
-    $sFamilyEmails = array();
+// Format the phone numbers
+$sHomePhone = ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy);
+$sWorkPhone = ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy);
+$sCellPhone = ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy);
 
-    $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID']))); ?>
-<script>
+$sFamilyEmails = array();
+
+$bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
+
+?>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentFamily = <?= $iFamilyID ?>;
 </script>
 
+<div class="alert alert-info">
+    <strong><a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>/view"><?= gettext("Try our the Beta family view") ?></a> </strong>
+</div>
+
 <?php if (!empty($fam_DateDeactivated)) {
-        ?>
+    ?>
     <div class="alert alert-warning">
         <strong><?= gettext(" This Family is Deactivated") ?> </strong>
     </div>
     <?php
-    } ?>
+} ?>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-4">
         <div class="box box-primary">
             <div class="box-body">
                 <div class="image-container">
-                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
-                         data-name="<?= $family->getName() ?>" alt=""
-                         class="initials-image img-rounded img-responsive profile-user-img profile-family-img"/>
+                    <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" class="img-responsive profile-user-img profile-family-img"/>
                     <?php if ($bOkToEdit): ?>
                         <div class="after">
                             <div class="buttons">
@@ -185,12 +193,10 @@ if ($iFamilyID == $fam_ID) {
                                    title="<?= gettext("Upload Photo") ?>">
                                     <i class="fa fa-camera"></i>
                                 </a>&nbsp;
-                                <?php if ($family->isPhotoLocal()): ?>
-                                    <a href="#" data-toggle="modal" data-target="#confirm-delete-image"
-                                       title="<?= gettext("Delete Photo") ?>">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="#" data-toggle="modal" data-target="#confirm-delete-image"
+                                   title="<?= gettext("Delete Photo") ?>">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -204,7 +210,7 @@ if ($iFamilyID == $fam_ID) {
     } ?>
                 <hr/>
                 <ul class="fa-ul">
-                    <li><i class="fa-li glyphicon glyphicon-home"></i><?= gettext("Address") ?>:<span>
+                    <li><i class="fa-li fa fa-home"></i><?= gettext("Address") ?>:<span>
 					<a
                             href="http://maps.google.com/?q=<?= $family->getAddress() ?>"
                             target="_blank"><?= $family->getAddress() ?></a></span><br>
@@ -267,7 +273,7 @@ if ($iFamilyID == $fam_ID) {
                                 <span><?= $fam_Email ?></span></a></li>
                         <?php if ($mailchimp->isActive()) {
             ?>
-                            <li><i class="fa-li glyphicon glyphicon-send"></i><?= gettext("Email") ?>:
+                            <li><i class="fa-li fa fa-send"></i><?= gettext("Email") ?>:
                                 <span><?= $mailchimp->isEmailInMailChimp($fam_Email) ?></span>
                                 </a></li>
                             <?php
@@ -281,7 +287,7 @@ if ($iFamilyID == $fam_ID) {
             if ($type_ID == 11) {
                 $fam_custom_Special = $sPhoneCountry;
             }
-            echo "<li><i class=\"fa-li glyphicon glyphicon-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
+            echo "<li><i class=\"fa-li fa fa-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
         }
     } ?>
                 </ul>
@@ -324,9 +330,8 @@ if ($iFamilyID == $fam_ID) {
                                 class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                     <?php
                 } ?>
-                <a class="btn btn-app"
-                   href="FamilyView.php?FamilyID=<?= $iFamilyID ?>&AddFamilyToPeopleCart=<?= $iFamilyID ?>"> <i
-                            class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
+                <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $iFamilyID ?>"> <i
+                        class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
 
 
                 <?php if ($bOkToEdit) {
@@ -359,8 +364,8 @@ if ($iFamilyID == $fam_ID) {
                     ?>
                             <tr>
                                 <td>
-                                    <img data-src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
-                                         data-name="<?= $person->getFullName() ?>" width="40" height="40"
+                                    <img src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                         width="40" height="40"
                                          class="initials-image img-circle"/>
                                     <a href="<?= $person->getViewURI() ?>"
                                        class="user-link"><?= $person->getFullName() ?> </a>
@@ -378,8 +383,7 @@ if ($iFamilyID == $fam_ID) {
                                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                                 </td>
                                 <td>
-                                    <?= FormatBirthDate($person->getBirthYear(),
-                                        $person->getBirthMonth(), $person->getBirthDay(), "-", $person->getFlags()) ?>
+                                    <?= $person->getFormattedBirthDate() ?>
                                 </td>
                                 <td>
                                     <?php $tmpEmail = $person->getEmail();
@@ -390,7 +394,7 @@ if ($iFamilyID == $fam_ID) {
                     } ?>
                                 </td>
                                 <td style="width: 20%;">
-                                    <a href="FamilyView.php?FamilyID=<?= $person->getId() ?>&AddToPeopleCart=<?= $person->getId() ?>">
+                                    <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
                                         <span class="fa-stack">
                                             <i class="fa fa-square fa-stack-2x"></i>
                                             <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -472,44 +476,48 @@ if ($iFamilyID == $fam_ID) {
                                 <i class="fa <?= $item['style'] ?>"></i>
 
                                 <div class="timeline-item">
-                                    <span class="time"><i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
-
-                                    <h3 class="timeline-header">
-                                        <?php if (in_array('headerlink', $item)) {
+                      <span class="time">
+                    <?php if ($_SESSION['bNotes'] && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                         ?>
-                                            <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
-                                            <?php
-                    } else {
-                        ?>
-                                            <?= gettext($item['header']) ?>
-                                            <?php
-                    } ?>
-                                    </h3>
-
-                                    <div class="timeline-body">
-                                        <?= $item['text'] ?>
-                                    </div>
-
-                                    <?php if (($_SESSION['bNotes']) && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
-                        ?>
-                                        <div class="timeline-footer">
-                                            <?php if (isset($item["editLink"])) {
+                        <?php if (isset($item["editLink"])) {
                             ?>
-                                                <a href="<?= $item["editLink"] ?>">
-                                                    <button type="button" class="btn btn-primary"><i
-                                                                class="fa fa-edit"></i></button>
-                                                </a>
-                                                <?php
+                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
+                        <?php
                         }
                         if (isset($item["deleteLink"])) {
                             ?>
-                                                <a href="<?= $item["deleteLink"] ?>">
-                                                    <button type="button" class="btn btn-danger"><i
-                                                                class="fa fa-trash"></i></button>
-                                                </a>
+                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
+                        <?php
+                        } ?>
+                        &nbsp;
+                        <?php
+                    } ?>
+                          <i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+
+                                    <?php if ($item['slim']) {
+                        ?>
+                                        <h4 class="timeline-header">
+                                            <?= $item['text'] ?> <?= gettext($item['header']) ?>
+                                        </h4>
+                                    <?php
+                    } else {
+                        ?>
+                                        <h3 class="timeline-header">
+                                            <?php if (in_array('headerlink', $item)) {
+                            ?>
+                                                <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                                                <?php
+                        } else {
+                            ?>
+                                                <?= $item['header'] ?>
                                                 <?php
                         } ?>
+                                        </h3>
+
+                                        <div class="timeline-body">
+                                            <pre style="line-height: 1.2;"><?= $item['text'] ?></pre>
                                         </div>
+
                                         <?php
                     } ?>
                                 </div>
@@ -950,29 +958,10 @@ if ($iFamilyID == $fam_ID) {
         </div>
     </div>
 
-    <?php
-} else {
-        ?>
-        <div class="error-page">
-            <h2 class="headline text-yellow">404</h2>
-
-            <div class="error-content">
-                <h3><i class="fa fa-warning text-yellow"></i> <?= gettext("Oops! Family not found.") ?></h3>
-
-                <p>
-                    <?= gettext("We could not find the family you were looking for.<br>Meanwhile, you may") ?> <a
-                            href="/MembersDashboard.php"><?= gettext("return to member dashboard") ?></a>
-                </p>
-            </div>
-        </div>
-        <?php
-    } ?>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.js"
-            type="text/javascript"></script>
-    <link href="<?= SystemURLs::getRootPath() ?>/skin/jquery-photo-uploader/PhotoUploader.css" rel="stylesheet">
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" type="text/javascript"></script>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" type="text/javascript"></script>
-    <script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" ></script>
+    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
         var dataT = 0;
         $(document).ready(function () {
@@ -1006,25 +995,11 @@ if ($iFamilyID == $fam_ID) {
                 });
             });
 
-            $("#deletePhoto").click(function () {
-                $.ajax({
-                    type: "POST",
-                    url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
-                    encode: true,
-                    dataType: 'json',
-                    data: {
-                        "_METHOD": "DELETE"
-                    }
-                }).done(function (data) {
-                    location.reload();
-                });
-            });
-
             window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
                 url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
                 maxPhotoSize: window.CRM.maxUploadSize,
-                photoHeight: 400,
-                photoWidth: 400,
+                photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+                photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
                 done: function (e) {
                     location.reload();
                 }
@@ -1033,14 +1008,6 @@ if ($iFamilyID == $fam_ID) {
             contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function (success) {
                 if (success) {
                     $("#view-larger-image-btn").removeClass('hide');
-
-                    $("#view-larger-image-btn").click(function () {
-                        bootbox.alert({
-                            title: "<?= gettext('Family Photo') ?>",
-                            message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/families/' + window.CRM.currentFamily + '/photo" />',
-                            backdrop: true
-                        });
-                    });
                 }
             });
 

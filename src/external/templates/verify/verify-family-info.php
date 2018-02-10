@@ -3,6 +3,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\Classification;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
@@ -18,11 +19,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
   </div>
   <div class="box box-info" id="verifyBox">
     <div class="panel-body">
-      <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200"
-           data-name="<?= $family->getName() ?>"
-           <?php if ( $family->getThumbnailBytes() != FALSE ) { ?>
-           src="data:image/png;base64,<?= base64_encode($family->getThumbnailBytes()) ?>"
-           <?php } ?>>
+      <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200" src="data:image/png;base64,<?= base64_encode($family->getPhoto()->getThumbnailBytes()) ?>" >
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
@@ -59,13 +56,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
           <div class="col-md-3 col-sm-4">
             <div class="box box-primary">
               <div class="box-body box-profile">
-                 <img class="profile-user-img img-responsive img-circle initials-image"
-                      data-name="<?= $person->getFullName() ?>"
-                       <?php if ( $person->getThumbnailBytes() != FALSE)
-                        {?>
-                      src="data:image/png;base64,<?= base64_encode($person->getThumbnailBytes()) ?>">
-                        <?php } ?>
-
+                 <img class="profile-user-img img-responsive img-circle initials-image" src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
 
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
 
@@ -86,19 +77,17 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                       <?php }  if (!empty($person->getWorkEmail()))  { ?>
                     <i class="fa fa-fw fa-envelope-o" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
                       <?php }  ?>
-                    <i class="fa fa-fw fa-birthday-cake"
-                       title="Birthday"></i><?= $person->getBirthDate()->format("M d Y") ?> <?php if ($person->hideAge()) { ?>
-                      <i class="fa fa-fw fa-eye-slash" title="<?= gettext("Age Hidden")?>"></i><?php } ?><br/>
+                    <i class="fa fa-fw fa-birthday-cake" title="<?= gettext("Birthday")?>"></i>
+                      <?php if ($person->hideAge()) { ?>
+                          <?= $person->getBirthDate()->format("M d") ?>
+                          <i class="fa fa-fw fa-eye-slash" title="<?= gettext("Age Hidden")?>"></i>
+                      <?php } else {?>
+                          <?= $person->getBirthDate()->format("M d Y") ?>
+                      <?php } ?>
+                      <br/>
                   </li>
                   <li class="list-group-item">
-                    <?php
-                    $classification = "";
-                    $cls = ListOptionQuery::create()->filterById(1)->filterByOptionId($person->getClsId())->findOne();
-                    if (!empty($cls)) {
-                        $classification = $cls->getOptionName();
-                    }
-                    ?>
-                    <b>Classification:</b> <?= $classification ?>
+                    <b>Classification:</b> <?= cation::getName($person->getClsId()) ?>
                   </li>
                   <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) {?>
                   <li class="list-group-item">
@@ -126,9 +115,8 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
   </div>
 
 
-  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>"></script>
-
-  <script>
+  <script  src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>"></script>
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     <?php if ($doShowMap) { ?>
       var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
     <?php } else { ?>
@@ -206,8 +194,6 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
 </style>
 
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/randomcolor/randomColor.js"></script>
-<script src="<?= SystemURLs::getRootPath(); ?>/skin/js/initial.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyVerify.js"></script>
 
 <?php

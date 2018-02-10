@@ -18,6 +18,10 @@ class Cart
   public static function AddPerson($PersonID)
   {
     self::CheckCart();
+    if (!is_numeric($PersonID))
+    {
+      throw new \Exception (gettext("PersonID for Cart must be numeric"),400);
+    }
     if ($PersonID !== null && !in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
       array_push($_SESSION['aPeopleCart'], $PersonID);
     }
@@ -34,6 +38,10 @@ class Cart
   
   public static function AddGroup($GroupID)
   {
+    if (!is_numeric($GroupID))
+    {
+      throw new \Exception (gettext("GroupID for Cart must be numeric"),400);
+    }
     $GroupMembers = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($GroupID)
             ->find();
@@ -45,6 +53,10 @@ class Cart
   
   public static function AddFamily($FamilyID)
   {
+    if (!is_numeric($FamilyID))
+    {
+      throw new \Exception (gettext("FamilyID for Cart must be numeric"),400);
+    }
     $FamilyMembers = PersonQuery::create()
             ->filterByFamId($FamilyID)
             ->find();
@@ -65,6 +77,10 @@ class Cart
   {
     // make sure the cart array exists
     // we can't remove anybody if there is no cart
+    if (!is_numeric($PersonID))
+    {
+      throw new \Exception (gettext("PersonID for Cart must be numeric"),400);
+    }
     if (isset($_SESSION['aPeopleCart'])) {
       $aTempArray[] = $PersonID; // the only element in this array is the ID to be removed
       $_SESSION['aPeopleCart'] = array_values(array_diff($_SESSION['aPeopleCart'], $aTempArray));
@@ -82,6 +98,10 @@ class Cart
   
   public static function RemoveGroup($GroupID)
   {
+    if (!is_numeric($GroupID))
+    {
+      throw new \Exception (gettext("GroupID for Cart must be numeric"),400);
+    }
     $GroupMembers = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($GroupID)
             ->find();
@@ -131,19 +151,39 @@ class Cart
   public static function EmptyToGroup($GroupID,$RoleID)
   {
     $iCount = 0;
-    $Group = GroupQuery::create()->findOneById($GroupID);
-    while ($element = each($_SESSION['aPeopleCart'])) {
+
+    $group = GroupQuery::create()->findOneById($GroupID);
+    
+    if($RoleID == 0)
+    {
+      $RoleID = $group->getDefaultRole();
+    }
+    
+    while ($element = each($_SESSION['aPeopleCart'])) {      
       $personGroupRole = Person2group2roleP2g2rQuery::create()
         ->filterByGroupId($GroupID)
         ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
-        ->filterByRoleId($RoleID)
         ->findOneOrCreate()
-        ->setPersonId($_SESSION['aPeopleCart'][$element['key']])
         ->setRoleId($RoleID)
-        ->setGroupId($GroupID)
-        ->save();
+        ->save();	
+        
+      /*
+      This part of code should be done 
+    	*/	
+    	// Check if this group has special properties
+      /*      $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = '.$iGroupID;
+            $rsTemp = RunQuery($sSQL);
+            $rowTemp = mysqli_fetch_row($rsTemp);
+            $bHasProp = $rowTemp[0];
+
+            if ($bHasProp == 'true') {
+                $sSQL = 'INSERT INTO groupprop_'.$iGroupID." (per_ID) VALUES ('".$iPersonID."')";
+                RunQuery($sSQL);
+            }	*/
+			
       $iCount += 1;
     }
+    
     $_SESSION['aPeopleCart'] = [];
   }
   

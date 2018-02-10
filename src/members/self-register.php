@@ -13,6 +13,8 @@ require '../Include/Functions.php';
 $sPageTitle = gettext('Families Self Registration');
 require '../Include/Header.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 ?>
 
 <div class="row">
@@ -31,7 +33,7 @@ require '../Include/Header.php';
 </div>
 
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
         $("#families").DataTable({
             "language": {
@@ -41,6 +43,11 @@ require '../Include/Header.php';
                 url: window.CRM.root + "/api/families/self-register",
                 dataSrc: 'families'
             },
+            "dom": window.CRM.plugin.dataTable.dom,
+            "tableTools": {
+                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
+            },
+            responsive: true,
             columns: [
                 {
                     title: i18next.t('Family Id'),

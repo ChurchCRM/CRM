@@ -58,7 +58,7 @@ class AppIntegrityService
       'PHP EXIF'                                  => extension_loaded('exif'),
       'PHP iconv'                                 => extension_loaded('iconv'),
       'Mcrypt'                                    => extension_loaded('mcrypt'),
-      'Mod Rewrite'                               => AppIntegrityService::hasModRewrite('mod_rewrite'),
+      'Mod Rewrite'                               => AppIntegrityService::hasModRewrite(),
       'GD Library for image manipulation'         => (extension_loaded('gd') && function_exists('gd_info')),
       'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
       'cURL'                                      => function_exists('curl_version'),
@@ -104,15 +104,42 @@ class AppIntegrityService
 
   public static function hasModRewrite()
   {
-      $check = AppIntegrityService::hasApacheModule('mod_rewrite');
+    // mod_rewrite can be tricky to detect properly.
+    // First check if it's loaded as an apache module
+    // Second check (if supported) if apache cli lists the module
+    // Third, finally try calling a known invalid URL on this installation
+    //   and check for a header that would only be present if .htaccess was processed.
+    //   This header comes from index.php (which is the target of .htaccess for invalid URLs)
+    
+    $check = AppIntegrityService::hasApacheModule('mod_rewrite');
 
-      if (!$check && function_exists('shell_exec')) {
-          $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
+    if (!$check && function_exists('shell_exec')) {
+        $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
+    }
+
+    if ( function_exists('curl_version')) {
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_URL, $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID"); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        curl_setopt($ch, CURLOPT_HEADER, 1);
+        curl_setopt($ch, CURLOPT_NOBODY, 1);
+        $output = curl_exec($ch); 
+        curl_close($ch);      
+        $headers=array();
+        $data=explode("\n",$output);
+        $headers['status']=$data[0];
+        array_shift($data);
+        foreach($data as $part){
+            if (strpos($part, ":"))
+            {
+              $middle=explode(":",$part);
+              $headers[trim($middle[0])] = trim($middle[1]);
+            }
+        }
+        $check =  $headers['CRM'] == "would redirect";      
       }
 
       return $check;
   }
-
 }
-
 ?>

@@ -11,6 +11,7 @@
  ******************************************************************************/
 
 require_once 'Header-function.php';
+require_once 'Header-Security.php';
 
 // Turn ON output buffering
 ob_start();
@@ -21,10 +22,7 @@ ob_start();
 <html>
 
 <head>
-  <?php
-  require 'Header-HTML-Scripts.php';
-  Header_head_metatag();
-  ?>
+  <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
 <body>

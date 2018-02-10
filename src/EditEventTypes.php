@@ -183,7 +183,7 @@ if ($numCounts) {
 
 <div>
   <a href="EventNames.php" class='btn btn-default'>
-    <i class='glyphicon glyphicon-chevron-left'></i>
+    <i class='fa fa-chevron-left'></i>
     <?= gettext('Return to Event Types') ?>
   </a>
 </div>

@@ -2,10 +2,10 @@
 
 namespace ChurchCRM;
 
-use ChurchCRM\Base\PersonPropertyQuery as BasePersonPropertyQuery;
+use ChurchCRM\Base\Calendar as BaseCalendar;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'record2property_r2p' table.
+ * Skeleton subclass for representing a row from the 'calendars' table.
  *
  *
  *
@@ -14,7 +14,7 @@ use ChurchCRM\Base\PersonPropertyQuery as BasePersonPropertyQuery;
  * long as it does not already exist in the output directory.
  *
  */
-class PersonPropertyQuery extends BasePersonPropertyQuery
+class Calendar extends BaseCalendar
 {
 
 }

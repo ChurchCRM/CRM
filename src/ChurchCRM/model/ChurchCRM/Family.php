@@ -22,6 +22,7 @@ use ChurchCRM\Emails\NewPersonOrFamilyEmail;
  */
 class Family extends BaseFamily implements iPhoto
 {
+    private $photo;
 
     public function getAddress()
     {
@@ -113,7 +114,7 @@ class Family extends BaseFamily implements iPhoto
   public function getSpousePeople() {
     return $this->getPeopleByRole("sDirRoleSpouse");
   }
-  
+
   public function getAdults() {
     return array_merge($this->getHeadPeople(),$this->getSpousePeople());
   }
@@ -231,10 +232,13 @@ class Family extends BaseFamily implements iPhoto
         return $this->getName() . ' Family';
     }
 
-    private function getPhoto()
+    public function getPhoto()
     {
-      $photo = new Photo("Family",  $this->getId());
-      return $photo;
+      if (!$this->photo)
+      {
+        $this->photo = new Photo("Family",  $this->getId());
+      }
+      return $this->photo;
     }
 
     public function deletePhoto()
@@ -253,23 +257,6 @@ class Family extends BaseFamily implements iPhoto
       }
       return false;
     }
-
-    public function getPhotoBytes() {
-      return $this->getPhoto()->getPhotoBytes();
-    }
-
-    public function getPhotoURI() {
-      return $this->getPhoto()->getPhotoURI();
-    }
-
-    public function getThumbnailBytes() {
-      return $this->getPhoto()->getThumbnailBytes();
-    }
-
-    public function getThumbnailURI() {
-       return $this->getPhoto()->getThumbnailURI();
-    }
-
     public function setImageFromBase64($base64) {
       if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
         $note = new Note();
@@ -284,25 +271,13 @@ class Family extends BaseFamily implements iPhoto
       return false;
     }
 
-    public function isPhotoLocal() {
-      return $this->getPhoto()->isPhotoLocal();
-    }
-
-    public function isPhotoRemote() {
-      return $this->getPhoto()->isPhotoRemote();
-    }
-
-    public function getPhotoContentType() {
-      return $this->getPhoto()->getPhotoContentType();
-    }
-
     public function verify()
     {
         $this->createTimeLineNote('verify');
     }
 
     public function getFamilyString($booleanIncludeHOH=true)
-    {    
+    {
       $HoH = [];
       if ($booleanIncludeHOH) {
         $HoH = $this->getHeadPeople();
@@ -317,7 +292,7 @@ class Family extends BaseFamily implements iPhoto
         foreach ($HoH as $person) {
           array_push($HoHs, $person->getFirstName());
         }
-        
+
         return $this->getName(). ": " . join(",", $HoHs) . " - " . $this->getAddress();
       }
       else
@@ -344,14 +319,14 @@ class Family extends BaseFamily implements iPhoto
             }
         }
     }
-    
+
     public function toArray()
     {
       $array = parent::toArray();
       $array['FamilyString']=$this->getFamilyString();
       return $array;
     }
-    
+
     public function toSearchArray()
     {
       $searchArray=[
@@ -360,5 +335,17 @@ class Family extends BaseFamily implements iPhoto
           "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
       ];
       return $searchArray;
+    }
+
+    public function isActive() {
+        return empty($this->getDateDeactivated());
+    }
+
+    public function getProperties() {
+        return PropertyQuery::create()
+            ->filterByProClass("f")
+            ->useRecordPropertyQuery()
+            ->filterByRecordId($this->getId())
+            ->find();
     }
 }

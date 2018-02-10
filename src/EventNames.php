@@ -19,6 +19,8 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent']) {
     header('Location: Menu.php');
@@ -64,7 +66,7 @@ if (isset($_POST['Action'])) {
           $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".InputUtils::LegacyFilterInput($theID)."','".InputUtils::LegacyFilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
           RunQuery($sSQL);
       }
-    Redirect('EventNames.php'); // clear POST
+    RedirectUtils::Redirect('EventNames.php'); // clear POST
     break;
 
     case 'DELETE':
@@ -330,7 +332,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) != 'NEW') {
     }
 ?>
 
-<script type="text/javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function () {
 //Added by @saulowulhynek to translation of datatable nav terms
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);

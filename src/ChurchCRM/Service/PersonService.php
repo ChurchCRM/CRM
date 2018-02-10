@@ -48,15 +48,6 @@ class PersonService
         return $return;
     }
 
-    public function getPersonsJSON($persons)
-    {
-        if ($persons) {
-            return '{"Persons": '.json_encode($persons).'}';
-        } else {
-            return false;
-        }
-    }
-
     public function getPeopleEmailsAndGroups()
     {
         $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_ID, group_grp.grp_Name, lst_OptionName

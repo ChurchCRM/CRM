@@ -23,6 +23,7 @@ $(document).ready(function () {
         dataT.row.add(data);                                //add the group data to the existing DataTable
         dataT.rows().invalidate().draw(true);               //redraw the dataTable
         $("#groupName").val(null);
+        dataT.ajax.reload();// PL : We should reload the table after we add a group so the button add to group is disabled
       });
     }
     else {
@@ -31,12 +32,12 @@ $(document).ready(function () {
   });
 
   dataT = $("#groupsTable").DataTable({
-  	"initComplete": function( settings, json ) {
-   	 	if (window.groupSelect != null)
-   	 	{
-   	 		dataT.search(window.groupSelect).draw();
-   	 	}
-  	},
+    "initComplete": function( settings, json ) {
+        if (window.groupSelect != null)
+        {
+          dataT.search(window.groupSelect).draw();
+        }
+    },
     "language": {
       "url": window.CRM.plugin.dataTable.language.url
     },
@@ -67,7 +68,8 @@ $(document).ready(function () {
         title:i18next.t( 'Group Cart Status'),
         searchable: false,
         render: function (data, type, full, meta) {
-          return '<span class="cartStatusButton" data-groupid="' + full.Id + '">'+i18next.t("Checking Cart Status")+'</span>';
+          // we add the memberCount, so we could disable the button Add All
+          return '<span class="cartStatusButton" data-groupid="' + full.Id + '" data-memberCount="'+ full.memberCount +'">'+i18next.t("Checking Cart Status")+'</span>';
 
         }
       },
@@ -78,13 +80,13 @@ $(document).ready(function () {
         defaultContent: "",
         searchable: true,
         render: function (data, type, full, meta) {
-		  if (data)
-		  {
-          	return data;
+      if (data)
+      {
+            return data;
           }
           else
           {
-          	return i18next.t('Unassigned');
+            return i18next.t('Unassigned');
           }
         }
       }
@@ -92,11 +94,18 @@ $(document).ready(function () {
   }).on('draw.dt', function () {
     $(".cartStatusButton").each(function (index, element) {
       var objectID = $(element).data("groupid");
+      var numberOfMembers = $(element).data("membercount"); // PL : we know the number of members
+      
+      var activLink = '';
+      if (numberOfMembers == 0){
+        activLink=' disabled'; // PL : We disable the button Add All when there isn't any member in the group
+      }
+      
       if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
-        $(element).html(i18next.t("All members of this group are in the cart")+"<a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger\"  href=\"GroupList.php?RemoveGroupFromPeopleCart=" + objectID + "\">" + i18next.t("Remove all") + "</a>");
+        $(element).html("<span>"+i18next.t("All members of this group are in the cart")+"</span><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-danger \" id=\"removeGroupFromCart\" data-groupid=\"" + objectID + "\">" + i18next.t("Remove all") + "</a>");
       }
       else {
-        $(element).html(i18next.t("Not all members of this group are in the cart")+"<br><a onclick=\"saveScrollCoordinates()\" class=\"btn btn-primary\" href=\"GroupList.php?AddGroupToPeopleCart=" + objectID + "\">" + i18next.t("Add all") + "</a>");
+        $(element).html("<span>"+i18next.t("Not all members of this group are in the cart")+"</span><a onclick=\"saveScrollCoordinates()\" id=\"AddGroupToCart\" class=\"btn btn-primary"+activLink+"\" data-groupid=\"" + objectID + "\">" + i18next.t("Add all") + "</a>");
       }
     });
   });
@@ -105,4 +114,27 @@ $(document).ready(function () {
        dataT.search(this.value).draw();
        localStorage.setItem("groupSelect",this.selectedIndex);
   });
+  
+  $(document).on("click","#AddGroupToCart",function(link){
+    var groupid = link.toElement.dataset.groupid;
+    var parent = $(this).parent().find("span");
+    window.CRM.cart.addGroup(groupid,function(data){
+        link.target.id = "removeGroupFromCart";
+        link.target.className = "btn btn-danger";
+        link.target.innerText = i18next.t("Remove all");
+        parent.text(i18next.t("All members of this group are in the cart"));
+    });
+  });
+  
+  $(document).on("click","#removeGroupFromCart",function(link){
+    var groupid = link.toElement.dataset.groupid;
+    var parent = $(this).parent().find("span");
+    window.CRM.cart.removeGroup(groupid,function(data){
+        link.target.id = "AddGroupToCart";    
+        link.target.className = "btn btn-primary";
+        link.target.innerText = i18next.t("Add all");
+        parent.text(i18next.t("Not all members of this group are in the cart"));
+    });
+  });
+
 });

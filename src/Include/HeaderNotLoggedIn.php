@@ -1,6 +1,8 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
 
+require_once 'Header-Security.php';
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -25,7 +27,7 @@ use ChurchCRM\dto\SystemURLs;
 </head>
 <body class="hold-transition login-page">
 
-  <script language="javascript" type="text/javascript">
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     window.CRM = {
       root: "<?= SystemURLs::getRootPath() ?>"
     };

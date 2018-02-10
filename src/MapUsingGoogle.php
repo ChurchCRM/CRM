@@ -11,6 +11,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\Classification;
 
 //Set the page title
 $sPageTitle = gettext('View on Map');
@@ -35,7 +36,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
         if (SystemConfig::getValue('sGoogleMapKey') == '') {
             ?>
         <div class="callout callout-warning">
-            <?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?>
+          <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?></a>
         </div>
         <?php
         }
@@ -72,10 +73,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
         }
 
         //Markericons list
-        $icons = ListOptionQuery::create()
-        ->filterById(1)
-        ->orderByOptionSequence()
-        ->find();
+        $icons = Classification::getAll();
 
         $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
         array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification?>
@@ -135,7 +133,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
         </div>
     </div> <!--Box-->
 
-    <script type="text/javascript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
         var churchloc = {
             lat: <?= ChurchMetaData::getChurchLatitude() ?>,
             lng: <?= ChurchMetaData::getChurchLongitude() ?>};
@@ -196,7 +194,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                     //this helps to add head people persons details: otherwise doesn't seems to populate
                     $class = $family->getHeadPeople()[0];
                     $family->getHeadPeople()[0];
-                    $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/thumbnail';
+                    $photoFileThumb = SystemURLs::getRootPath() . '/api/families/' . $family->getId() . '/photo';
                     $arr['ID'] = $family->getId();
                     $arr['Name'] = $family->getName();
                     $arr['Salutation'] = $family->getSaluation();
@@ -269,7 +267,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                 if (plotArray[i].Thumbnail.length > 0) {
                     //contentString += "<div class='image-container'><p class='text-center'><a href='" + imghref + "'>";
                     contentString += "<div class='image-container'><a href='" + imghref + "'>";
-                    contentString += "<img data-name='" + plotArray[i].Name + " ' class='profile-user-img img-responsive img-circle' border='1' data-src='" + plotArray[i].Thumbnail + "'></a></div>";
+                    contentString += "<img class='profile-user-img img-responsive img-circle' border='1' src='" + plotArray[i].Thumbnail + "' style='width:" + <?= SystemConfig::getValue('iProfilePictureListSize') ?> + "px; height:" + <?= SystemConfig::getValue('iProfilePictureListSize') ?> + "px'></a></div>" ;
                 }
 
                 //Add marker and infowindow

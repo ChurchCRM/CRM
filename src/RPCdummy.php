@@ -3,6 +3,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
 
 $mode = $_GET['mode'];
 $data = InputUtils::LegacyFilterInput($_GET['data'], 'int');
@@ -10,7 +11,7 @@ $data = InputUtils::LegacyFilterInput($_GET['data'], 'int');
 
 <html>
   <head>
-    <script language="JavaScript">
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 <?php
 // Select the appropriate Javascript routine..
 switch ($mode) {

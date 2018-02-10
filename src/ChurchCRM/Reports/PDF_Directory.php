@@ -3,6 +3,7 @@
 namespace ChurchCRM\Reports;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\MiscUtils;
 
 class PDF_Directory extends ChurchInfoReport
 {
@@ -78,6 +79,7 @@ class PDF_Directory extends ChurchInfoReport
         $sContact = sprintf("%s\n%s, %s  %s\n\n%s\n\n", SystemConfig::getValue('sChurchAddress'), SystemConfig::getValue('sChurchCity'), SystemConfig::getValue('sChurchState'), SystemConfig::getValue('sChurchZip'), SystemConfig::getValue('sChurchPhone'));
         $this->MultiCell(197, 10, $sContact, 0, 'C');
         $this->Cell(10);
+        $sDirectoryDisclaimer = iconv('UTF-8', 'ISO-8859-1', $sDirectoryDisclaimer);
         $this->MultiCell(197, 10, $sDirectoryDisclaimer, 0, 'C');
         $this->AddPage();
     }
@@ -268,15 +270,10 @@ class PDF_Directory extends ChurchInfoReport
     
     public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
     {
-      if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $formatString = SystemConfig::getValue("sDateFormatShort");
-            if (!$per_BirthYear || $per_Flags) {  // if the year is not present, or the user does not want year shown
-              $formatString =  preg_replace('/(\W?[C|g|Y|y]\W?)/i', '', $formatString); //remove any Year data from the format string
-            }
-            return  date($formatString, mktime(0,0,0,$per_BirthMonth,$per_BirthDay,$per_BirthYear));
-        } else {
-            return '';
-        }
+      if ($bDirBirthday ) {
+        return MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "/", $per_Flags);
+      }
+      return '';
     }
 
     // This function formats the string for the family info

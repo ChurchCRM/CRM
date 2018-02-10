@@ -166,7 +166,7 @@ class PDF_Attendance extends ChurchInfoReport
 						$nw = $width*$factor;
 						$nh = $yIncrement;
 				
-						$this->Image($imgList[$row], $nameX-$nw , $y, $nw,$nh,'PNG');
+						$this->Image($imgList[$row], $nameX-$nw , $y, $nw,$nh,'JPG');
 					}
 				}
 			  

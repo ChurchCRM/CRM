@@ -19,6 +19,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\MiscUtils;
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
@@ -86,7 +87,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 // Format the BirthDate
-$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
+$dBirthDate = MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
 //if ($per_BirthMonth > 0 && $per_BirthDay > 0)
 //{
 //	$dBirthDate = $per_BirthMonth . "/" . $per_BirthDay;
@@ -138,7 +139,7 @@ if ($personSheet) {
     echo "<table>";
     echo "	<tr>";
     echo "	<td  style=\"padding:5px;\">";
-    $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $personSheet->getPhotoURI());
+    $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $personSheet->getPhoto()->getPhotoURI());
     
     echo "<img src=\"".$imgName."\"/>";
     echo "</td><td>";
@@ -365,8 +366,7 @@ if ($fam_ID) {
 			<td>
 				<?= $sFamRole ?>&nbsp;
 			</td>
-			<td data-birth-date="<?= $per_Flags == 1 ? '' : date_create($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay)->format('Y-m-d') ?>">
-			</td>
+      <td><?= MiscUtils::FormatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) ?></td>
 		</tr>
 	<?php
             }

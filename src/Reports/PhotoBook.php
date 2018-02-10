@@ -128,7 +128,7 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->currentY += 10;
         foreach ($groupRoleMemberships as $roleMembership) {
             $person = $roleMembership->getPerson();
-            $this->drawPersonBlock($person->getFullName(), $person->getPhotoURI());
+            $this->drawPersonBlock($person->getFullName(), $person->getPhoto()->getPhotoURI());
             if ($this->currentX + $this->personMarginL + $this->personImageWidth + $this->personMarginR  >= $this->GetPageWidth() - $this->pageMarginR) { //can we fit another on the page?
                 $this->currentY += 50;
                 $this->currentX = $this->pageMarginL;
