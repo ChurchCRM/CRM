@@ -4,6 +4,8 @@
 use ChurchCRM\Group;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\Note;
 
 $app->group('/groups', function () {
     $this->get('/', function () {        
@@ -116,11 +118,18 @@ $app->group('/groups', function () {
     $this->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
-        $group = GroupQuery::create()->findOneById($groupID);
+        $person = PersonQuery::create()->findPk($userID);
+        $group = GroupQuery::create()->findPk($groupID);
         $groupRoleMemberships = $group->getPerson2group2roleP2g2rs();
         foreach ($groupRoleMemberships as $groupRoleMembership) {
-            if ($groupRoleMembership->getPersonId() == $userID) {
+            if ($groupRoleMembership->getPersonId() == $person->getId()) {
                 $groupRoleMembership->delete();
+                $note = new Note();
+                $note->setText(gettext("Deleted from group"). ": " . $group->getName());
+                $note->setType("group");
+                $note->setEntered($_SESSION['iUserID']);
+                $note->setPerId($person->getId());
+                $note->save();
             }
         }
         echo json_encode(['success' => 'true']);
@@ -129,8 +138,9 @@ $app->group('/groups', function () {
     $this->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
+        $person = PersonQuery::create()->findPk($userID);
         $input = (object) $request->getParsedBody();
-        $group = GroupQuery::create()->findOneById($groupID);
+        $group = GroupQuery::create()->findPk($groupID);
         $p2g2r = Person2group2roleP2g2rQuery::create()
           ->filterByGroupId($groupID)
           ->filterByPersonId($userID)
@@ -146,6 +156,12 @@ $app->group('/groups', function () {
                 
         $group->addPerson2group2roleP2g2r($p2g2r);
         $group->save();
+        $note = new Note();
+        $note->setText(gettext("Added to group"). ": " . $group->getName());
+        $note->setType("group");
+        $note->setEntered($_SESSION['iUserID']);
+        $note->setPerId($person->getId());
+        $note->save();
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->filterByPersonId($input->PersonID)

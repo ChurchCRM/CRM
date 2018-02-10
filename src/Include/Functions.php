@@ -15,6 +15,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -26,15 +27,26 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Basic security: If the UserID isn't set (no session), redirect to the login page
-    if (!isset($_SESSION['iUserID'])) {
-        Redirect('Login.php');
+
+    if (!isset($_SESSION['user'])) {
+        $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
+        RedirectUtils::Redirect('Login.php'.$LoginLocation);
         exit;
     }
+    
+    try {
+        $_SESSION['user']->reload();
+    } catch (\Exception $exc) {
+        RedirectUtils::Redirect('Login.php');
+        exit;
+    }
+    
 
     // Check for login timeout.  If login has expired, redirect to login page
     if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-            Redirect('Login.php');
+            $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
+            RedirectUtils::Redirect('Login.php'.$LoginLocation);
             exit;
         } else {
             $_SESSION['tLastOperation'] = time();
@@ -43,7 +55,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
 
     // If this user needs to change password, send to that page
     if ($_SESSION['bNeedPasswordChange'] && !isset($bNoPasswordRedirect)) {
-        Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
+        RedirectUtils::Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
         exit;
     }
 
@@ -165,45 +177,6 @@ if (isset($_POST['BulkAddToCart'])) {
 //
 // Some very basic functions that all scripts use
 //
-
-// Convert a relative URL into an absolute URL and return absolute URL.
-function RedirectURL($sRelativeURL)
-{
-    // Test if file exists before redirecting.  May need to remove
-    // query string first.
-    $iQueryString = strpos($sRelativeURL, '?');
-    if ($iQueryString) {
-        $sPathExtension = mb_substr($sRelativeURL, 0, $iQueryString);
-    } else {
-        $sPathExtension = $sRelativeURL;
-    }
-
-    // The idea here is to get the file path into this form:
-    //     $sFullPath = $sDocumentRoot . $sRootPath . $sPathExtension
-    // The Redirect URL is then in this form:
-    //     $sRedirectURL = $sRootPath . $sPathExtension
-    $sFullPath = str_replace('\\', '/', SystemURLs::getDocumentRoot().'/'.$sPathExtension);
-
-    // With the query string removed we can test if file exists
-    if (file_exists($sFullPath) && is_readable($sFullPath)) {
-        return SystemURLs::getRootPath().'/'.$sRelativeURL;
-    } else {
-        $sErrorMessage = 'Fatal Error: Cannot access file: '.$sFullPath."<br>\n"
-      ."\$sPathExtension = $sPathExtension<br>\n"
-      ."\$sDocumentRoot = ".SystemURLs::getDocumentRoot()."<br>\n"
-      .'$sRootPath = ' .SystemURLs::getRootPath()."<br>\n";
-
-        die($sErrorMessage);
-    }
-}
-
-// Convert a relative URL into an absolute URL and redirect the browser there.
-function Redirect($sRelativeURL)
-{
-    $sRedirectURL = RedirectURL($sRelativeURL);
-    header('Location: '.$sRedirectURL);
-    exit;
-}
 
 // Returns the current fiscal year
 function CurrentFY()
@@ -595,92 +568,6 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
     default:
       return $sPhoneNumber;
   }
-}
-
-function FormatAge($Month, $Day, $Year, $Flags)
-{
-    if (($Flags & 1)) { //||!$_SESSION['bSeePrivacyData']
-        return;
-    }
-
-    if ($Year > 0) {
-        if ($Year == date('Y')) {
-            $monthCount = date('m') - $Month;
-            if ($Day > date('d')) {
-                $monthCount--;
-            }
-            if ($monthCount == 1) {
-                return gettext('1 m old');
-            } else {
-                return $monthCount.' '.gettext('m old');
-            }
-        } elseif ($Year == date('Y') - 1) {
-            $monthCount = 12 - $Month + date('m');
-            if ($Day > date('d')) {
-                $monthCount--;
-            }
-            if ($monthCount >= 12) {
-                return gettext('1 yr old');
-            } elseif ($monthCount == 1) {
-                return gettext('1 m old');
-            } else {
-                return $monthCount.' '.gettext('m old');
-            }
-        } elseif ($Month > date('m') || ($Month == date('m') && $Day > date('d'))) {
-            return date('Y') - 1 - $Year.' '.gettext('yrs old');
-        } else {
-            return date('Y') - $Year.' '.gettext('yrs old');
-        }
-    } else {
-        return gettext('Unknown');
-    }
-}
-
-function BirthDate($year, $month, $day, $hideAge)
-{
-    if (!is_null($day) && $day != '' &&
-    !is_null($month) && $month != ''
-  ) {
-        $birthYear = $year;
-        if ($hideAge) {
-            $birthYear = 1900;
-        }
-
-        return date_create($birthYear.'-'.$month.'-'.$day);
-    }
-
-    return date_create();
-}
-
-//
-// Formats an age suffix: age in years, or in months if less than one year old
-//
-function FormatAgeSuffix($birthDate, $Flags)
-{
-    if ($Flags == 1) {
-        return '';
-    }
-
-    $ageSuffix = gettext('Unknown');
-
-    $now = new DateTime();
-    $age = $now->diff($birthDate);
-
-    if ($age->y < 1) {
-        if ($age->m > 1) {
-            $ageSuffix = gettext('mos old');
-        } else {
-            $ageSuffix = gettext('mo old');
-        }
-    } else {
-        if ($age->y > 1) {
-            $ageSuffix = gettext('yrs old');
-        } else {
-            $ageSuffix = gettext('yr old');
-        }
-    }
-
-    return $ageSuffix;
 }
 
 // Returns a string of a person's full name, formatted as specified by $Style
@@ -1421,46 +1308,7 @@ function formatNumber($iNumber, $sMode = 'integer')
   }
 }
 
-// Format a BirthDate
-// Optionally, the separator may be specified.  Default is YEAR-MN-DY
-function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
-{
-    if ($bFlags == 1 || $per_BirthYear == '') {  //Person Would Like their Age Hidden or BirthYear is not known.
-        $birthYear = '1000';
-    } else {
-        $birthYear = $per_BirthYear;
-    }
 
-    if ($per_BirthMonth > 0 && $per_BirthDay > 0 && $birthYear != 1000) {
-        if ($per_BirthMonth < 10) {
-            $dBirthMonth = '0'.$per_BirthMonth;
-        } else {
-            $dBirthMonth = $per_BirthMonth;
-        }
-        if ($per_BirthDay < 10) {
-            $dBirthDay = '0'.$per_BirthDay;
-        } else {
-            $dBirthDay = $per_BirthDay;
-        }
-
-        $dBirthDate = $dBirthMonth.$sSeparator.$dBirthDay;
-        if (is_numeric($birthYear)) {
-            $dBirthDate = $birthYear.$sSeparator.$dBirthDate;
-            if (checkdate($dBirthMonth, $dBirthDay, $birthYear)) {
-                $dBirthDate = FormatDate($dBirthDate);
-                if (mb_substr($dBirthDate, -6, 6) == ', 1000') {
-                    $dBirthDate = str_replace(', 1000', '', $dBirthDate);
-                }
-            }
-        }
-    } elseif (is_numeric($birthYear) && $birthYear != 1000) {  //Person Would Like Their Age Hidden
-        $dBirthDate = $birthYear;
-    } else {
-        $dBirthDate = '';
-    }
-
-    return $dBirthDate;
-}
 
 function FilenameToFontname($filename, $family)
 {

@@ -19,10 +19,11 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -280,7 +281,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 // Construct the form
 ?>
 
-<script language="javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 function confirmDeleteField( Field ) {
 	var answer = confirm (<?= "'".gettext('Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!')."'" ?>)
 	if ( answer )

@@ -17,10 +17,12 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_Directory;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Check for Create Directory user permission.
 if (!$bCreateDirectory) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -251,7 +253,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         }
 
         if ($bDirBirthday && $per_BirthMonth && $per_BirthDay) {
-            $pdf->sRecordName .= " ". date(SystemConfig::getValue("sDateFormatNoYear"), mktime(0, 0, 0, $per_BirthMonth, $per_BirthDay, $per_BirthYear));
+            $pdf->sRecordName .= " ". MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "/", $per_Flags);
         }
 
         SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);

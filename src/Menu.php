@@ -9,6 +9,7 @@
 *
 *  Additional Contributors:
 *  2006 Ed Davis
+*  2017 Philippe Logel
 *
 
 ******************************************************************************/
@@ -22,12 +23,10 @@ use ChurchCRM\Service\FinancialService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\MenuEventsCount;
 
 $financialService = new FinancialService();
 $dashboardService = new DashboardService();
-$personCount = $dashboardService->getPersonCount();
-$familyCount = $dashboardService->getFamilyCount();
-$groupStats = $dashboardService->getGroupStats();
 //Last edited active families
 $updatedFamilies = $dashboardService->getUpdatedFamilies(10);
 //Newly added active families
@@ -37,19 +36,142 @@ $updatedMembers = $dashboardService->getUpdatedMembers(12);
 //Newly added members from Active families
 $latestMembers = $dashboardService->getLatestMembers(12);
 
+
+$depositData = false;  //Determine whether or not we should display the deposit line graph
+if ($_SESSION['bFinance']) {
+    $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
+    if (count($deposits) > 0) {
+        $depositData = $deposits->toJSON();
+    }
+}
+
 // Set the page title
 $sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
 
 require 'Include/Header.php';
-?>
+
+$showBanner = SystemConfig::getValue("bEventsOnDashboardPresence");
+
+$peopleWithBirthDays = MenuEventsCount::getBirthDates();
+$Anniversaries = MenuEventsCount::getAnniversaries();
+$peopleWithBirthDaysCount = MenuEventsCount::getNumberBirthDates();
+$AnniversariesCount = MenuEventsCount::getNumberAnniversaries();
+
+
+if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
+    ?>
+    <div class="alert alert-info alert-dismissible bg-purple disabled color-palette" id="Menu_Banner">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="color:#fff;">&times;</button>
+
+    <?php
+    if ($peopleWithBirthDaysCount > 0) {
+        ?>
+        <h4 class="alert-heading"><?= gettext("Birthdates of the day") ?></h4>
+        <p>
+        <div class="row">
+
+      <?php
+        $new_row = false;
+        $count_people = 0;
+
+        {
+            foreach ($peopleWithBirthDays as $peopleWithBirthDay) {
+                if ($new_row == false) {
+                    ?>
+
+                    <div class="row">
+                <?php
+                    $new_row = true;
+                } ?>
+                <div class="col-sm-3">
+                <label class="checkbox-inline">
+                    <a href="<?= $peopleWithBirthDay->getViewURI()?>" class="btn btn-link" style="text-decoration: none"><?= $peopleWithBirthDay->getFullNameWithAge() ?></a>
+                </label>
+                </div>
+              <?php
+                $count_people+=1;
+                $count_people%=4;
+                if ($count_people == 0) {
+                    ?>
+                    </div>
+                    <?php $new_row = false;
+                }
+            }
+
+            if ($new_row == true) {
+                ?>
+                </div>
+            <?php
+            }
+          } ?>
+
+        </div>
+        </p>
+    <?php
+    } ?>
+
+    <?php if ($AnniversariesCount > 0) {
+        if ($peopleWithBirthDaysCount > 0) {
+            ?>
+            <hr>
+    <?php
+        } ?>
+
+        <h4 class="alert-heading"><?= gettext("Anniversaries of the day")?></h4>
+        <p>
+        <div class="row">
+
+    <?php
+        $new_row = false;
+        $count_people = 0;
+
+        foreach ($Anniversaries as $Anniversary) {
+            if ($new_row == false) {
+                ?>
+                <div class="row">
+
+                <?php $new_row = true;
+            } ?>
+            <div class="col-sm-3">
+            <label class="checkbox-inline">
+              <a href="<?= $Anniversary->getViewURI() ?>" class="btn btn-link" style="text-decoration: none"><?= $Anniversary->getFamilyString() ?></a>
+            </label>
+            </div>
+
+            <?php
+            $count_people+=1;
+            $count_people%=4;
+            if ($count_people == 0) {
+                ?>
+                </div>
+            <?php
+                $new_row = false;
+            }
+        }
+
+        if ($new_row == true) {
+            ?>
+            </div>
+        <?php
+        } ?>
+
+        </div>
+        </p>
+    <?php
+    } ?>
+  </div>
+
+<?php
+}?>
+
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>
-                    <?= $familyCount['familyCount'] ?>
+                <h3 id="familyCountDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('Families') ?>
@@ -67,8 +189,8 @@ require 'Include/Header.php';
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>
-                    <?= $personCount['personCount'] ?>
+                <h3 id="peopleStatsDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('People') ?>
@@ -86,8 +208,8 @@ require 'Include/Header.php';
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>
-                    <?= $groupStats['sundaySchoolClasses'] ?>
+                <h3 id="groupStatsSundaySchool">
+                   0
                 </h3>
                 <p>
                     <?= gettext('Sunday School Classes') ?>
@@ -105,8 +227,8 @@ require 'Include/Header.php';
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>
-                  <?= $groupStats['groups'] - $groupStats['sundaySchoolClasses']  ?>
+                <h3 id="groupsCountDashboard">
+                  0
                 </h3>
                 <p>
                     <?= gettext('Groups') ?>
@@ -180,8 +302,8 @@ require 'Include/Header.php';
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class="dataTable table table-striped table-condensed" id="latestFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -221,8 +343,8 @@ require 'Include/Header.php';
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class=" dataTable table table-striped table-condensed" id="updatedFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -231,18 +353,6 @@ require 'Include/Header.php';
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($updatedFamilies as $family) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
-                                </td>
-                                <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -267,17 +377,17 @@ require 'Include/Header.php';
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
                         <?php foreach ($latestMembers as $person) {
-                            ?>
+    ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                     <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
-                                         width="85" height="85"/><br/>
+                                         width="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px" height="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px"/><br/>
                                     <?= $person->getFullName() ?></a>
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-                        }
+}
                         ?>
                     </ul>
                     <!-- /.users-list -->
@@ -306,7 +416,7 @@ require 'Include/Header.php';
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                     <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
-                                         width="85" height="85"/><br/>
+                                         width="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px" height="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px"/><br/>
                                     <?= $person->getFullName() ?></a>
                                 <span
                                     class="users-list-date"><?= date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
@@ -322,7 +432,23 @@ require 'Include/Header.php';
     </div>
 </div>
 
-<script src="/skin/js/Menu.js"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?> src="/skin/js/Menu.js"></script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  var timeOut = <?= SystemConfig::getValue("iEventsOnDashboardPresenceTimeOut")*1000 ?>;
+
+  $(document).ready (function(){
+    $("#myWish").click(function showAlert() {
+        $("#Menu_Banner").alert();
+        window.setTimeout(function () {
+            $("#Menu_Banner").alert('close'); }, timeOut);
+       });
+    });
+
+    $("#Menu_Banner").fadeTo(timeOut, 500).slideUp(500, function(){
+    $("#Menu_Banner").slideUp(500);
+});
+</script>
 
 
 <?php

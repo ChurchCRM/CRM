@@ -14,11 +14,12 @@ require 'Include/Functions.php';
 
 use ChurchCRM\NoteQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bNotes']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -49,7 +50,7 @@ if (isset($_GET['Confirmed'])) {
     $note->delete();
 
     //Send back to the page they came from
-    Redirect($sReroute);
+    RedirectUtils::Redirect($sReroute);
 }
 
 require 'Include/Header.php';

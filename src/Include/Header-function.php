@@ -18,17 +18,10 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\GroupQuery;
-use ChurchCRM\Group;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\ListOptionQuery;
-use ChurchCRM\ListOption;
 use ChurchCRM\MenuConfigQuery;
-use ChurchCRM\MenuConfig;
 use ChurchCRM\UserConfigQuery;
-use ChurchCRM\UserConfig;
-use ChurchCRM\EventQuery;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\FamilyQuery;
 
 function Header_system_notifications()
 {
@@ -42,17 +35,6 @@ function Header_system_notifications()
         </div>
         <?php
     }
-}
-
-function Header_head_metatag()
-{
-    global $sMetaRefresh, $sPageTitle;
-
-    if (strlen($sMetaRefresh) > 0) {
-        echo $sMetaRefresh;
-    } ?>
-    <title>ChurchCRM: <?= $sPageTitle ?></title>
-    <?php
 }
 
 function Header_modals()
@@ -123,6 +105,7 @@ function Header_body_scripts()
             maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
+            iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {
                    "language": {
@@ -138,7 +121,8 @@ function Header_body_scripts()
             currentUser:
               <?php
                 echo json_encode($_SESSION['user']->toArray()); ?>
-            
+            ,
+            PageName:"<?= $_SERVER['PHP_SELF']?>"
         };
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
@@ -162,7 +146,7 @@ function GetSecuritySettings()
     $aSecurityListPrimal[] = 'bCanvasser';
     $aSecurityListPrimal[] = 'bAddEvent';
     $aSecurityListPrimal[] = 'bSeePrivacyData';
-    
+
     $ormSecGrpLists = UserConfigQuery::Create()
                         ->filterByPeronId(0)
                         ->filterByCat('SECURITY')
@@ -174,27 +158,27 @@ function GetSecuritySettings()
     }
 
     asort($aSecurityListPrimal);
-    
+
     $aSecurityListFinal = array('bALL');
     for ($i = 0; $i < count($aSecurityListPrimal); $i++) {
         if (array_key_exists($aSecurityListPrimal[$i], $_SESSION) && $_SESSION[$aSecurityListPrimal[$i]]) {
             $aSecurityListFinal[] = $aSecurityListPrimal[$i];
         } elseif ($aSecurityListPrimal[$i] == 'bAddEvent' && $_SESSION['bAdmin']) {
-            +          $aSecurityListFinal[] = 'bAddEvent';
+            $aSecurityListFinal[] = 'bAddEvent';
         }
     }
-    
+
     return $aSecurityListFinal;
 }
 
 function addMenu($menu)
 {
     global $security_matrix;
-    
+
     $ormMenus = MenuConfigQuery::Create()
                         ->filterByParent('%'.$menu.'%', Criteria::LIKE)
                         ->filterByActive(1);
-    
+
     $firstTime = 1;
     for ($i = 0; $i < count($security_matrix); $i++) {
         if ($firstTime) {
@@ -204,12 +188,12 @@ function addMenu($menu)
         }
         $firstTime = 0;
     }
-    
+
     $ormMenus->orderBySortOrder()
                         ->find();
-    
+
     $item_cnt = count($ormMenus);
-    
+
     $idx = 1;
     $ptr = 1;
     foreach ($ormMenus as $ormMenu) {
@@ -224,64 +208,11 @@ function addMenu($menu)
     }
 }
 
-function getNumberEventOfToday()
-{
-    /* get ponctual event */
-    $activeEvents = EventQuery::create()
-          ->filterByStart(array('min' => 'today'))
-          ->filterByEnd(array('max' => 'tomorrow'))
-          ->find();
-    $cnt = count($activeEvents);
-  
-    /* get event with large range */
-    $activeEvents = EventQuery::create()
-          ->filterByStart(array('max' => 'today'))
-          ->filterByEnd(array('min' => 'tomorrow'))
-          ->find();
-          
-    $cnt += count($activeEvents);
-
-    return $cnt;
-}
-
-function getNumberBirthDate()
-{
-    $peopleWithBirthDays = PersonQuery::create()
-        ->filterByBirthMonth(date('m'))
-        ->filterByBirthDay(date('d'))
-        ->find();
-
-    return count($peopleWithBirthDays);
-}
-
-function getNumberAnniversary()
-{
-    $Anniversaries = FamilyQuery::create()
-          ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
-          ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
-          ->find();
-      
-    $curDay = date('d');
-    $curMonth = date('m');
-  
-    $cnt = 0;
-  
-    foreach ($Anniversaries as $anniversary) {
-        if ($anniversary->getWeddingMonth() == $curMonth && $curDay == $anniversary->getWeddingDay()) {
-            $cnt += 1;
-        }
-    }
-
-    return $cnt;
-}
-
-
-
 function addMenuItem($ormMenu, $mIdx)
 {
     global $security_matrix;
     $maxStr = 25;
-    
+
     $link = ($ormMenu->getURI() == '') ? '' : SystemURLs::getRootPath() . '/' . $ormMenu->getURI();
     $text = $ormMenu->getStatus();
     if (!is_null($ormMenu->getSessionVar())) {
@@ -301,7 +232,7 @@ function addMenuItem($ormMenu, $mIdx)
         $ormItemCnt = MenuConfigQuery::Create()
                         ->filterByParent('%'.$ormMenu->getName().'%', Criteria::LIKE)
                         ->filterByActive(1);
-    
+
         $firstTime = 1;
         for ($i = 0; $i < count($security_matrix); $i++) {
             if ($firstTime) {
@@ -311,23 +242,30 @@ function addMenuItem($ormMenu, $mIdx)
             }
             $firstTime = 0;
         }
-        
+
         $ormItemCnt->orderBySortOrder()
                         ->find();
-    
+
         $numItems = count($ormItemCnt);
     }
     if (!($ormMenu->getMenu()) || ($numItems > 0)) {
         if ($link) {
             if ($ormMenu->getName() == 'calendar') {
-                echo "<li><a href='".SystemURLs::getRootPath() . '/' . $ormMenu->getURI()."'>";
-                echo "<i class='fa fa-calendar'></i><span>".gettext($ormMenu->getContent());
-                echo "<span class='pull-right-container'>";
-                echo "<small class='label pull-right bg-blue'>".getNumberAnniversary()."</small>";// mariage
-                echo "<small class='label pull-right bg-red'>".getNumberBirthDate()."</small>";// anniversaire
-                echo "<small class='label pull-right bg-yellow'>".getNumberEventOfToday()."</small>";// événemt
-                echo "</span>";
-                echo "</span></a></li>";
+                ?>
+                <li>
+                  <a href="<?= SystemURLs::getRootPath() . '/' . $ormMenu->getURI() ?>">
+                  <i class='fa fa-calendar'></i>
+                  <span>
+                    <?= gettext($ormMenu->getContent()) ?>
+                    <span class='pull-right-container'>
+                       <small class='label pull-right bg-blue' id='AnniversaryNumber'>0</small>
+                      <small class='label pull-right bg-red' id='BirthdateNumber'>0</small>
+                      <small class='label pull-right bg-yellow' id='EventsNumber'>0</small>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            <?php
             } elseif ($ormMenu->getName() != 'sundayschool-dash' && $ormMenu->getName() != 'listgroups') { // HACK to remove the sunday school 2nd dashboard and groups
                 echo "<li><a href='$link'>";
                 if ($ormMenu->getIcon() != '') {
@@ -343,42 +281,42 @@ function addMenuItem($ormMenu, $mIdx)
                 }
             } elseif ($ormMenu->getName() == 'listgroups') {
                 echo "<li><a href='" . SystemURLs::getRootPath() . "/GroupList.php'><i class='fa fa-angle-double-right'></i>" . gettext('List Groups') . '</a></li>';
-                                                
+
                 $listOptions = ListOptionQuery::Create()
                     ->filterById(3)
                     ->orderByOptionName()
                     ->find();
-                                                            
+
                 foreach ($listOptions as $listOption) {
                     if ($listOption->getOptionId() != 4) {// we avoid the sundaySchool, it's done under
                         $groups=GroupQuery::Create()
                             ->filterByType($listOption->getOptionId())
                             ->orderByName()
                             ->find();
-                                            
+
                         if (count($groups)>0) {// only if the groups exist : !empty doesn't work !
                             echo "<li><a href='#'><i class='fa fa-user-o'></i>" . $listOption->getOptionName(). '</a>';
                             echo '<ul class="treeview-menu">';
-                        
+
                             foreach ($groups as $group) {
                                 $str = $group->getName();
                                 if (strlen($str)>$maxStr) {
                                     $str = substr($str, 0, $maxStr-3)." ...";
                                 }
-                                        
+
                                 echo "<li><a href='" . SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $group->getID() . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
                             }
                             echo '</ul></li>';
                         }
                     }
                 }
-                                
+
                 // now we're searching the unclassified groups
                 $groups=GroupQuery::Create()
                             ->filterByType(0)
                             ->orderByName()
                             ->find();
-                                
+
                 if (count($groups)>0) {// only if the groups exist : !empty doesn't work !
                     echo "<li><a href='#'><i class='fa fa-user-o'></i>" . gettext("Unassigned"). '</a>';
                     echo '<ul class="treeview-menu">';
@@ -397,7 +335,7 @@ function addMenuItem($ormMenu, $mIdx)
             }
             echo '<span>' . gettext($ormMenu->getContent()) . "</span>\n";
             echo "<i class=\"fa fa-angle-left pull-right\"></i>\n";
-          
+
             if ($ormMenu->getName() == 'deposit') {
                 echo '<small class="badge pull-right bg-green">' . $_SESSION['iCurrentDeposit'] . "</small>\n";
             } ?>  </a>
@@ -411,7 +349,7 @@ function addMenuItem($ormMenu, $mIdx)
               LEFT JOIN group_grp ON group_grp.grp_ID = record2property_r2p.r2p_record_ID
               WHERE pro_Class = 'g' AND grp_Type = '4' AND prt_Name = 'MENU' ORDER BY pro_Name, grp_Name ASC";
             $rsAssignedProperties = RunQuery($sSQL);
-                
+
             //Get the sunday groups not assigned by properties
             $sSQL = "SELECT grp_ID , grp_Name,prt_Name,pro_prt_ID
                   FROM group_grp
@@ -420,11 +358,11 @@ function addMenuItem($ormMenu, $mIdx)
                   LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
                   WHERE ((record2property_r2p.r2p_record_ID IS NULL) OR (propertytype_prt.prt_Name != 'MENU')) AND grp_Type = '4' ORDER BY grp_Name ASC";
             $rsWithoutAssignedProperties = RunQuery($sSQL);
-                
-                    
+
+
             if ($ormMenu->getName() == 'sundayschool') {
                 echo "<li><a href='" . SystemURLs::getRootPath() . "/sundayschool/SundaySchoolDashboard.php'><i class='fa fa-angle-double-right'></i>" . gettext('Dashboard') . '</a></li>';
-                                                
+
                 $property = '';
                 while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
                     if ($aRow[pro_Name] != $property) {
@@ -434,30 +372,30 @@ function addMenuItem($ormMenu, $mIdx)
 
                         echo '<li><a href="#"><i class="fa fa-user-o"></i><pan>'.$aRow[pro_Name].'</span></a>';
                         echo '<ul class="treeview-menu">';
-                        
+
 
                         $property = $aRow[pro_Name];
                     }
-                            
+
                     $str = gettext($aRow[grp_Name]);
                     if (strlen($str)>$maxStr) {
                         $str = substr($str, 0, $maxStr-3)." ...";
                     }
-                                                    
+
                     echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " .$str. '</a></li>';
                 }
-                        
+
                 if (!empty($property)) {
                     echo '</ul></li>';
                 }
-                    
+
                 // the non assigned group to a group property
                 while ($aRow = mysqli_fetch_array($rsWithoutAssignedProperties)) {
                     $str = gettext($aRow[grp_Name]);
                     if (strlen($str)>$maxStr) {
                         $str = substr($str, 0, $maxStr-3)." ...";
                     }
-                                        
+
                     echo "<li><a href='" . SystemURLs::getRootPath() . '/sundayschool/SundaySchoolClassView.php?groupId=' . $aRow[grp_ID] . "'><i class='fa fa-angle-double-right'></i> " . $str . '</a></li>';
                 }
             }

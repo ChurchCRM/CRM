@@ -10,6 +10,8 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\ListOptionQuery;
 
 // Set the page title
 $sPageTitle = gettext('People Dashboard');
@@ -21,7 +23,7 @@ $personCount = $dashboardService->getPersonCount();
 $personStats = $dashboardService->getPersonStats();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
-$demographicStats = $dashboardService->getDemographic();
+$demographicStats = ListOptionQuery::create()->filterByID('2')->find();
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
         where fam_ID =per_fam_ID and fam_DateDeactivated is  null
@@ -296,21 +298,97 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <th style="width: 40px"><?= gettext('Count') ?></th>
           </tr>
             <?php foreach ($demographicStats as $demStat) {
-            ?>
-            <tr>
-                <td>
-                    <a href="SelectList.php?mode=person&Gender=<?= $demStat['gender'] ?>&FamilyRole=<?= $demStat['role'] ?>"><?= gettext($demStat['key']) ?></a>
-                </td>
-              <td>
-                <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar progress-bar-success"
-                       style="width: <?= round($demStat['value'] / $personCount['personCount'] * 100) ?>%"></div>
-                </div>
-              </td>
-              <td><span class="badge bg-green"><?= $demStat['value'] ?></span></td>
-            </tr>
-          <?php
-        } ?>
+            $countMale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(1)->count();
+            $countFemale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(2)->count();
+            $countUnknown = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(0)->count();
+            $demStatId = $demStat->getOptionID();
+            $demStatName = $demStat->getOptionName();
+            $genPop = PersonQuery::create()->count();
+            if ($countMale != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Male') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countMale / $genPop) * 100)?>%" title="<?= round(($countMale / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countMale ?></span></td>
+</tr>
+<?php
+            }
+            if ($countFemale != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countFemale / $genPop) * 100)?>%" title="<?= round(($countFemale / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countFemale ?></span></td>
+</tr>
+<?php
+            }
+            if ($countUnknown != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=0&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Unknown') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknown / $genPop) * 100)?>%" title="<?= round(($countUnknown / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countUnknown ?></span></td>
+</tr>
+              <?php
+            }
+        }
+            $countUnknownMale = PersonQuery::create()->filterByFmrId(0)->filterByGender(1)->count();
+            $countUnknownFemale = PersonQuery::create()->filterByFmrId(0)->filterByGender(2)->count();
+            $countUnknwonRoleUnknownGender = PersonQuery::create()->filterByFmrId(0)->filterByGender(0)->count();
+
+            $genPop = PersonQuery::create()->count();
+            if ($countUnknownMale != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Male') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownMale / $genPop) * 100)?>%" title="<?= round(($countUnknownMale / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countUnknownMale ?></span></td>
+</tr>
+              <?php
+            }
+            if ($countUnknownFemale != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Female') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownFemale / $genPop) * 100)?>%" title="<?= round(($countUnknownFemale / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countUnknownFemale ?></span></td>
+</tr>
+<?php
+            }
+            if ($countUnknwonRoleUnknownGender != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=0&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Unknown') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%" title="<?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countUnknwonRoleUnknownGender ?></span></td>
+</tr>
+<?php
+            }
+              ?>
         </table>
       </div>
     </div>
@@ -335,7 +413,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <th style="width: 40px"><?= gettext('Count') ?></th>
         </tr>
         <?php foreach ($personStats as $key => $value) {
-            ?>
+                  ?>
           <tr>
             <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
             <td>
@@ -347,7 +425,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
         <?php
-        } ?>
+              } ?>
       </table>
       <!-- /.box-body-->
     </div>
@@ -370,7 +448,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </div>
 
 <!-- this page specific inline scripts -->
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
         //-------------
         //- PIE CHART -
@@ -378,13 +456,13 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         // Get context with jQuery - using jQuery's .get() method.
         var PieData = [
             <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
-            if ($row['per_Gender'] == 1) {
-                echo '{value: ' . $row['numb'] . ' , color: "#003399", highlight: "#3366ff", label: "' . gettext('Men') . '" },';
-            }
-            if ($row['per_Gender'] == 2) {
-                echo '{value: ' . $row['numb'] . ' , color: "#9900ff", highlight: "#ff66cc", label: "' . gettext('Women') . '"},';
-            }
-        }
+                  if ($row['per_Gender'] == 1) {
+                      echo '{value: ' . $row['numb'] . ' , color: "#003399", highlight: "#3366ff", label: "' . gettext('Men') . '" },';
+                  }
+                  if ($row['per_Gender'] == 2) {
+                      echo '{value: ' . $row['numb'] . ' , color: "#9900ff", highlight: "#ff66cc", label: "' . gettext('Women') . '"},';
+                  }
+              }
             while ($row = mysqli_fetch_array($rsKidsGender)) {
                 if ($row['per_Gender'] == 1) {
                     echo '{value: ' . $row['numb'] . ' , color: "#3399ff", highlight: "#99ccff", label: "' . gettext('Boys') . '"},';

@@ -111,7 +111,6 @@ class User extends BaseUser
         return $password;
     }
 
-
     public static function randomPassword()
     {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -122,6 +121,18 @@ class User extends BaseUser
             $pass[] = $alphabet[$n];
         }
         return implode($pass); //turn the array into a string
+    }
+
+    public static function randomApiKey()
+    {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $apiKey = array(); //remember to declare $apiKey as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 50; $i++) {
+            $n = rand(0, $alphaLength);
+            $apiKey[] = $alphabet[$n];
+        }
+        return implode($apiKey); //turn the array into a string
     }
 
     public function postInsert(ConnectionInterface $con = null)

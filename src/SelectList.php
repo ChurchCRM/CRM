@@ -22,6 +22,7 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\InputUtils;
 
@@ -386,31 +387,13 @@ if (array_key_exists('PersonProperties', $_GET)) {
 
 $sRedirect = mb_substr($sRedirect, 0, -5); // Chop off last &amp;
 
-// If AddToCart submit button was used, run the query, add people to cart, and view cart
-if (array_key_exists('AddAllToCart', $_GET)) {
-    $rsPersons = RunQuery($sSQL);
-    while ($aRow = mysqli_fetch_row($rsPersons)) {
-        AddToPeopleCart($aRow[0]);
-    }
-} elseif (array_key_exists('IntersectCart', $_GET)) {
-    $rsPersons = RunQuery($sSQL);
-    while ($aRow = mysqli_fetch_row($rsPersons)) {
-        $aItemsToProcess[] = $aRow[0];
-    }
 
-    if (array_key_exists('aPeopleCart', $_SESSION)) {
-        $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'], $aItemsToProcess);
-    }
-} elseif (array_key_exists('RemoveFromCart', $_GET)) {
-    $rsPersons = RunQuery($sSQL);
-    while ($aRow = mysqli_fetch_row($rsPersons)) {
-        $aItemsToProcess[] = $aRow[0];
-    }
-
-    if (array_key_exists('aPeopleCart', $_SESSION)) {
-        $_SESSION['aPeopleCart'] = array_diff($_SESSION['aPeopleCart'], $aItemsToProcess);
-    }
+$peopleIDArray = array();
+$rsPersons = RunQuery($sSQL);
+while ($aRow = mysqli_fetch_row($rsPersons)) {
+    array_push($peopleIDArray, intval($aRow[0]));
 }
+
 
 // Get the total number of persons
 $rsPer = RunQuery($sSQL);
@@ -500,6 +483,11 @@ $rsLetters = RunQuery($sSQL);
 
 require 'Include/Header.php';
 ?>
+<script nonce="<?= SystemURLs::getCSPNonce()?>">
+  var listPeople=<?= json_encode($peopleIDArray)?>;
+</script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/SelectList.js"></script>
+
 <div class="box box-primary">
     <div class="box-header">
         <?= gettext('Filter and Cart') ?>
@@ -771,10 +759,9 @@ if ($iMode == 1) {
 } ?>
 
 <input type="button" class="btn" value="<?= gettext('Clear Filters') ?>" onclick="javascript:document.location='SelectList.php?mode=<?= $sMode ?>&amp;Sort=<?= $sSort ?>&amp;type=<?= $iGroupTypeMissing ?>'"><BR><BR>
-<input name="AddAllToCart" type="submit" class="btn btn-primary" value="<?= gettext('Add to Cart') ?>">&nbsp;
+<a id="AddAllToCart" class="btn btn-primary" ><?= gettext('Add All to Cart') ?></a>
 <input name="IntersectCart" type="submit" class="btn btn-warning" value="<?= gettext('Intersect with Cart') ?>">&nbsp;
-<input name="RemoveFromCart" type="submit" class="btn btn-danger" value="<?= gettext('Remove from Cart') ?>">
-
+<a id="RemoveAllFromCart" class="btn btn-danger" ><?= gettext('Remove All from Cart') ?></a>
 </td></tr>
 </table></form>
 	</div>
@@ -785,7 +772,12 @@ if ($iMode == 1) {
     </div>
 	<div class="box-body">
 <?php
-
+// Display record count
+if ($Total == 1) {
+    echo '<p align = "center">' . $Total . gettext(" record returned") . '</p>';
+} else {
+    echo '<p align = "center">' . $Total . gettext(" records returned") . '</p>';
+}
 // Create Sort Links
 echo '<div align="center">';
 echo "<a href=\"SelectList.php?mode=$sMode&amp;type=$iGroupTypeMissing&amp;Filter=$sFilter&amp;Classification=$iClassificationStr&amp;FamilyRole=$iFamilyRoleStr&amp;Gender=$iGenderStr&amp;grouptype=$iGroupTypeStr&amp;groupid=$iGroupIDStr&amp;grouproleid=$iRoleIDStr&amp;PersonProperties=$iPersonPropertyStr";
@@ -1134,7 +1126,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     //Display the row
     echo '<tr class="'.$sRowClass.'">'; ?>
 	</td>
-    <td><img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $per_ID ?>/thumbnail" class="initials-image direct-chat-img " width="10px" height="10px" /> </td>
+    <td style="padding-bottom:5px"><img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $per_ID ?>/thumbnail" class="initials-image direct-chat-img " style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px" /> </td>
 	<td>
 	    <a href="PersonView.php?PersonID=<?= $per_ID ?>" >
 	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) ?>
@@ -1196,7 +1188,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 	<td>
 	<?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
         ?>
-      <a class="AddToPeopleCart" data-personid="<?= $per_ID ?>">
+      <a class="AddToPeopleCart" data-cartpersonid="<?= $per_ID ?>">
 		<span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -1206,7 +1198,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 	<?php
     } else {
         ?>
-    <a class="RemoveFromPeopleCart" data-personid="<?= $per_ID ?>">
+    <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $per_ID ?>">
 		<span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i class="fa fa-remove fa-stack-1x fa-inverse"></i>

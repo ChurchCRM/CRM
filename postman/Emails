@@ -1,0 +1,22 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Emails",
+		"_postman_id": "4450a545-489d-284f-b871-0196c8e8331b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Email - Dups ",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CSVCreateFile.php
@@ -15,6 +16,10 @@ require 'Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\ListOptionQuery;
+use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\dto\Classification;
+use ChurchCRM\Utils\RedirectUtils;
 
 $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
@@ -38,6 +43,12 @@ if ($sFormat == 'default') {
 if ($sFormat == 'rollup') {
     $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
     $rsFamCustomFields = RunQuery($sSQL);
+}
+
+//Get membership classes
+$memberClass = array(0);
+foreach (Classification::getAll() as $Member) {
+    $memberClass[] = $Member->getOptionName();
 }
 
 //Get family roles
@@ -198,7 +209,7 @@ if ($sFormat == 'addtocart') {
         extract($aRow);
         AddToPeopleCart($per_ID);
     }
-    Redirect('CartView.php');
+    RedirectUtils::Redirect('CartView.php');
 } else {
     // Build the complete SQL statement
 
@@ -279,6 +290,9 @@ if ($sFormat == 'addtocart') {
         if (!empty($_POST['Age'])) {
             $headerString .= '"'.InputUtils::translate_special_charset("Age").'"'.$delimiter;
         }
+        if (!empty($_POST['PrintMembershipStatus'])) {
+            $headerString .= '"'.InputUtils::translate_special_charset("Classification").'"'.$delimiter;
+        }
         if (!empty($_POST['PrintFamilyRole'])) {
             $headerString .= '"'.InputUtils::translate_special_charset("Family Role").'"'.$delimiter;
         }
@@ -329,7 +343,7 @@ if ($sFormat == 'addtocart') {
 
     header('Content-type: text/x-csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
     header('Content-Disposition: attachment; filename=churchcrm-export-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
-    
+
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
     if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
         echo "\xEF\xBB\xBF";
@@ -486,8 +500,7 @@ if ($sFormat == 'addtocart') {
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                            $birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
-                            $age = FormatAgeSuffix($birthDate, 0);
+                            $age = MiscUtils::FormatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, 0);
                         } else {
                             $age = '';
                         }
@@ -495,6 +508,9 @@ if ($sFormat == 'addtocart') {
                         $sString .= '"'.$delimiter.'"'.$age;
                     }
 
+                    if (isset($_POST['PrintMembershipStatus'])) {
+                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($memberClass[$per_cls_ID]);
+                    }
                     if (isset($_POST['PrintFamilyRole'])) {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($familyRoles[$per_fmr_ID]);
                     }

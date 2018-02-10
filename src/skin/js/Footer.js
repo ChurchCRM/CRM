@@ -39,7 +39,16 @@ $("document").ready(function(){
     $(".maxUploadSize").text(window.CRM.maxUploadSize);
   
     $(document).on("click", ".emptyCart", function (e) {
-      window.CRM.cart.empty();
+      window.CRM.cart.empty(function(data){
+        console.log(data.cartPeople);
+        $(data.cartPeople).each(function(index,data){
+          personButton = $("a[data-cartpersonid='" + data + "']");
+          $(personButton).addClass("AddToPeopleCart");
+          $(personButton).removeClass("RemoveFromPeopleCart");
+          $('span i:nth-child(2)',personButton).removeClass("fa-remove");
+          $('span i:nth-child(2)',personButton).addClass("fa-cart-plus");
+        });
+      });
     });
     
     $(document).on("click", "#emptyCartToGroup", function (e) {
@@ -48,7 +57,7 @@ $("document").ready(function(){
     
     $(document).on("click",".RemoveFromPeopleCart", function(){
       clickedButton = $(this);
-      window.CRM.cart.removePerson([clickedButton.data("personid")],function()
+      window.CRM.cart.removePerson([clickedButton.data("cartpersonid")],function()
       {
         $(clickedButton).addClass("AddToPeopleCart");
         $(clickedButton).removeClass("RemoveFromPeopleCart");
@@ -59,16 +68,19 @@ $("document").ready(function(){
     
     $(document).on("click",".AddToPeopleCart", function(){
       clickedButton = $(this);
-      window.CRM.cart.addPerson([clickedButton.data("personid")],function()
+      window.CRM.cart.addPerson([clickedButton.data("cartpersonid")],function()
       {
         $(clickedButton).addClass("RemoveFromPeopleCart");
         $(clickedButton).removeClass("AddToPeopleCart");
-        $('span i:nth-child(2)',clickedButton).addClass("fa-remove ");
-        $('span i:nth-child(2)',clickedButton).removeClass("fa-cart-plus ");
+        $('span i:nth-child(2)',clickedButton).addClass("fa-remove");
+        $('span i:nth-child(2)',clickedButton).removeClass("fa-cart-plus");
       });
     });
     
     window.CRM.cart.refresh();
+    window.CRM.dashboard.refresh();
+    DashboardRefreshTimer=setInterval(window.CRM.dashboard.refresh, window.CRM.iDasbhoardServiceIntervalTime * 1000);
+
 });
 
 function showGlobalMessage(message, callOutClass) {
@@ -76,3 +88,21 @@ function showGlobalMessage(message, callOutClass) {
     $("#globalMessageCallOut").addClass("callout-"+callOutClass);
     $("#globalMessage").show("slow");
 }
+
+function suspendSession(){
+  $.ajax({
+        method: 'HEAD',
+        url: window.CRM.root + "/api/session/lock",
+        statusCode: {
+          200: function() {
+            window.open(window.CRM.root + "/Login.php");
+          },
+          404: function() {
+            window.CRM.DisplayErrorMessage(url, {message: error});
+          },
+          500: function() {
+            window.CRM.DisplayErrorMessage(url, {message: error});
+          }
+        }
+      });
+};

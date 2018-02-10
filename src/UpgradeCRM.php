@@ -6,11 +6,14 @@ $bSuppressSessionTests = true;
 require 'Include/Functions.php';
 require_once 'Include/Header-function.php';
 
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
+
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
 if (!$_SESSION['bAdmin']) {
-    Redirect('index.php');
+    RedirectUtils::Redirect('index.php');
     exit;
 }
 
@@ -78,7 +81,7 @@ Header_body_scripts();
     </li>
   </ul>
 </div>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
  $("#doBackup").click(function(){
    $("#status1").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
    $.ajax({

@@ -13,18 +13,19 @@
  *
  ******************************************************************************/
 
-use ChurchCRM\PersonQuery;
-
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
 if (!$_SESSION['bDeleteRecords']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -44,7 +45,7 @@ if (!empty($_GET['mode'])) {
 }
 
 if (isset($_GET['CancelFamily'])) {
-    Redirect("FamilyView.php?FamilyID=$iFamilyID");
+    RedirectUtils::Redirect("FamilyView.php?FamilyID=$iFamilyID");
     exit;
 }
 
@@ -117,7 +118,7 @@ if (isset($_GET['Confirmed'])) {
     }
 
     // Redirect back to the family listing
-    Redirect('FamilyList.php');
+    RedirectUtils::Redirect('FamilyList.php');
 }
 
 

@@ -32,6 +32,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						filterByFirstName($searchLikeString, Criteria::LIKE)->
 							_or()->filterByLastName($searchLikeString, Criteria::LIKE)->
 							_or()->filterByEmail($searchLikeString, Criteria::LIKE)->
+              _or()->filterByWorkEmail($searchLikeString, Criteria::LIKE)->
 							_or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
@@ -85,7 +86,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 						foreach ($addresses as $address) {
 							$elt = ['id'=>$id++,
 									'text'=>$address->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-									'uri'=>SystemURLs::getRootPath().$address->getViewURI()
+									'uri'=>$address->getViewURI()
 							];
 					
 							array_push($data, $elt);
@@ -113,6 +114,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
           $families = FamilyQuery::create()->
           		filterByName("%$query%", Criteria::LIKE)->
               _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
+              _or()->filterByEmail($searchLikeString, Criteria::LIKE) ->
 							_or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
 							_or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
               limit(SystemConfig::getValue("bSearchIncludeFamiliesMax"))->find();
@@ -127,7 +129,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
 								$searchArray=[
 								"id" => $id++,
 								"text" => $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-								"uri" => SystemURLs::getRootPath().$family->getViewURI()
+								"uri" => $family->getViewURI()
 							];
 					
 							array_push($data,$searchArray);

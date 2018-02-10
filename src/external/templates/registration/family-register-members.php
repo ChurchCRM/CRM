@@ -135,7 +135,9 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
     </div>
 
   </form>
-  <script nonce="<?= SystemURLs::getCSPNonce() ?>" type="text/javascript">
+
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
+
     $(function () {
       $(".inputDatePicker").datepicker({
         autoclose: true

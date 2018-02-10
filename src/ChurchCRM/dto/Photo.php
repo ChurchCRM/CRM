@@ -219,20 +219,17 @@ class Photo {
     $retstr = "";
     if ($this->photoType == "Person")
     {
-      $fullNameArr = explode(" ",PersonQuery::create()->findOneById($this->id)->getFullName());
+      $fullNameArr = PersonQuery::create()->select(array('FirstName','LastName'))->findOneById($this->id);
       foreach ($fullNameArr as $name)
       {
-        $retstr .= substr($name, 0,1);
+        $retstr .= strtoupper(substr($name, 0,1));
       }
 
     }
     elseif ($this->photoType == "Family" )
     {
-      $fullNameArr = explode(" ",  FamilyQuery::create()->findOneById($this->id)->getName());
-      foreach ($fullNameArr as $name)
-      {
-        $retstr .= substr($name, 0,1);
-      }
+      $fullNameArr = FamilyQuery::create()->findOneById($this->id)->getName();
+        $retstr .= strtoupper(substr($fullNameArr, 0,1));
     }
     return $retstr;
   }

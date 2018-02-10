@@ -16,10 +16,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups permission
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -51,7 +52,7 @@ require 'Include/Header.php';
     <span id="restoreNextStep"></span>
   </div>
 </div>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $('#restoredatabase').submit(function (event) {
     event.preventDefault();
 

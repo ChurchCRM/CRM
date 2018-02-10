@@ -30,7 +30,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                     <span class="fa fa-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input name="email" type="text" class="form-control" placeholder="<?= gettext("email") ?>" required>
+                    <input name="email" type="text" class="form-control" placeholder="<?= gettext("Email") ?>" required>
                     <span class="fa fa-user form-control-feedback"></span>
                 </div>
                 <div class="row">

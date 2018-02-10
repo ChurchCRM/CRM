@@ -3,11 +3,12 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\PersonCustomMasterQuery;
+use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
 $app->group('/system/custom-fields', function () {
     $this->get('/person', 'getPersonFieldsByType');
     $this->get('/person/', 'getPersonFieldsByType');
-});
+})->add(new AdminRoleAuthMiddleware());
 
 
 /**

@@ -16,10 +16,12 @@ require 'Include/Functions.php';
 use ChurchCRM\DonationFund;
 use ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be administrator to use this page
 if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -108,7 +110,7 @@ for ($row = 0; $row < $donationFunds->count(); $row++) {
 // Construct the form
 ?>
 
-<script language="javascript">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 
 function confirmDeleteFund( Fund ) {
 var answer = confirm (<?= '"'.gettext('Are you sure you want to delete this fund?').'"' ?>)

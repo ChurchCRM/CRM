@@ -1,30 +1,10 @@
 <?php
-/*******************************************************************************
- *
- *  filename    : Dashboard.php
- *  last change : 2014-11-29
- *  website     : http://www.churchcrm.io
- *  copyright   : Copyright 2014
- *
 
-
-
-
- *
- ******************************************************************************/
-
-require '../Include/Config.php';
-require '../Include/Functions.php';
-
-use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\dto\SystemURLs;
 
-$mailchimp = new MailChimpService();
+require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-//Set the page title
-$sPageTitle = gettext('eMail Dashboard');
-
-require '../Include/Header.php';
 ?>
 <div class="row">
   <div class="col-lg-4 col-md-2 col-sm-2">
@@ -39,7 +19,7 @@ require '../Include/Header.php';
         <br/><br/>
 
         <p class="text-center">
-          <a class="btn btn-app" href="MemberEmailExport.php">
+          <a class="btn btn-app" href="../../../email/MemberEmailExport.php">
             <i class="fa fa-file-o"></i> <?= gettext('Generate') ?>
           </a>
         </p>
@@ -48,10 +28,9 @@ require '../Include/Header.php';
   </div>
 </div>
 
-<?php if ($mailchimp->isActive()) {
-    $mcLists = $mailchimp->getLists(); ?>
+<?php if ($isMailChimpActive) {  ?>
   <div class="row">
-    <?php foreach ($mcLists as $list) {
+    <?php foreach ($mailChimpLists as $list) {
         ?>
       <div class="col-lg-4 col-md-2 col-sm-2">
         <div class="box">
@@ -82,7 +61,7 @@ require '../Include/Header.php';
         </div>
         <div class="box-body">
           <ul>
-            <li><a href="MailChimpMissingReport.php"><?= gettext('Missing emails report') ?> </a> (slow)</li>
+            <li><a href="../../../email/MailChimpMissingReport.php"><?= gettext('Missing emails report') ?> </a> (slow)</li>
           </ul>
         </div>
       </div>
@@ -96,7 +75,7 @@ require '../Include/Header.php';
       <div class="box box-body">
         <div class="alert alert-danger alert-dismissible">
           <h4><i class="fa fa-ban"></i> MailChimp <?= gettext('is not configured') ?></h4>
-          <?= gettext('Please update the') ?> MailChimp <?= gettext('API key in Setting->') ?><a href="../SystemSettings.php"><?= gettext('Edit General Settings') ?></a>,
+          <?= gettext('Please update the') ?> MailChimp <?= gettext('API key in Setting->') ?><a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Edit General Settings') ?></a>,
           <?= gettext('then update') ?> sMailChimpApiKey. <?= gettext('For more info see our ') ?><a href="<?= SystemURLs::getSupportURL() ?>"> MailChimp <?= gettext('support docs.') ?></a>
         </div>
       </div>
@@ -105,5 +84,5 @@ require '../Include/Header.php';
 <?php
     }
 
-require '../Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
 ?>

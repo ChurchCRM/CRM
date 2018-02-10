@@ -6,20 +6,21 @@
  *  description : page header used for most pages
  *
  *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
-
+ *  Copyright 2017 Philippe Logel
  ******************************************************************************/
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\Service\TaskService;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (!SystemService::isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-    Redirect('SystemDBUpdate.php');
+    RedirectUtils::Redirect('SystemDBUpdate.php');
     exit;
 }
 
-use ChurchCRM\Service\TaskService;
 
 $taskService = new TaskService();
 
@@ -40,10 +41,7 @@ $MenuFirst = 1;
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <?php
-  require 'Header-HTML-Scripts.php';
-  Header_head_metatag();
-  ?>
+  <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
 <body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
@@ -103,22 +101,28 @@ $MenuFirst = 1;
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
             </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
-                <p><?= $_SESSION['user']->getName() ?></p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>"
-                     class="btn btn-default btn-flat"><?= gettext('Profile') ?></a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" id="signout"
-                     class="btn btn-default btn-flat"><?= gettext('Sign out') ?></a>
-                </div>
+            <ul class="hidden-xxs dropdown-menu">
+              <li class="user-header" id="yourElement" style="height:205px">
+                <table border=0 width="100%">
+                <tr style="border-bottom: 1pt solid white;">
+                <td valign="middle" width=110>
+                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
+                </td>
+                <td valign="middle" align="left" >
+                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>" class="item_link">
+                      <p ><i class="fa fa-home"></i> <?= gettext("Profile") ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php" class="item_link">
+                      <p ><i class="fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
+                      <p ><i class="fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>
+                  <a href="Login.php?session=Lock" class="item_link">
+                      <p ><i class="fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link">
+                      <p ><i class="fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
+                </td>
+                </tr>
+                </table>
+                <p style="color:#fff"><b><?= $_SESSION['user']->getName() ?></b></p>
               </li>
             </ul>
           </li>
@@ -141,12 +145,12 @@ $MenuFirst = 1;
                 <a href="https://gitter.im/ChurchCRM/CRM" target="_blank" title="<?= gettext('Developer Chat') ?>">
                   <i class="fa fa-commenting-o"></i> <?= gettext('Developer Chat') ?>
                 </a>
-              </li>              
+              </li>
               <li class="hidden-xxs">
                 <a href="https://github.com/ChurchCRM/CRM/wiki/Contributing" target="_blank" title="<?= gettext('Contributing') ?>">
                   <i class="fa fa-github"></i> <?= gettext('Contributing') ?>
                 </a>
-              </li>              
+              </li>
             </ul>
           </li>
           <?php
