@@ -550,5 +550,47 @@ $familyAddress = $family->getAddress();
     });
 </script>
 <!-- Photos end -->
+<div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"
+                    id="confirm-verify-label"><?= gettext("Request Family Info Verification") ?></h4>
+            </div>
+            <div class="modal-body">
+                <b><?= gettext("Select how do you want to request the family information to be verified") ?></b>
+                <p>
+                    <?php if (count($family->getEmails()) > 0) {
+                    ?>
+                <p><?= gettext("You are about to email copy of the family information in pdf to the following emails") ?>
+                <ul>
+                    <?php foreach ($family->getEmails() as $tmpEmail) { ?>
+                        <li><?= $tmpEmail ?></li>
+                    <?php } ?>
+                </ul>
+                </p>
+            </div>
+            <?php
+            } ?>
+            <div class="modal-footer text-center">
+                <?php if (count($family->getEmails()) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
+                    ?>
+                    <button type="button" id="onlineVerify"
+                            class="btn btn-warning warning"><i
+                            class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
+                    </button>
+                    <?php
+                } ?>
+                <button type="button" id="verifyDownloadPDF"
+                        class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
+                <button type="button" id="verifyNow"
+                        class="btn btn-success"><i class="fa fa-check"></i> <?= gettext("Verified In Person") ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
