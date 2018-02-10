@@ -1,0 +1,259 @@
+{
+	"info": {
+		"name": "Public",
+		"_postman_id": "c7030a72-1bc3-fdd8-3a1e-ad30da344875",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"description": "",
+			"item": [
+				{
+					"name": "Register: Person",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\": 3,\n  \"FirstName\": \"Jon\",\n  \"LastName\": \"Smith\",\n  \"MiddleName\": \"Ray\",\n  \"Email\" : \"me@domain.com\",\n  \"Title\": \"Da Man\",\n  \"Address1\" : \"123 Main St\",\n  \"Address2\" : \"Unit 10\",\n  \"City\": \"Seattle\",\n  \"Country\": \"US\",\n  \"Zip\": \"98121\",\n  \"State\": \"WA\",\n  \"Gender\" : 1,\n  \"BirthDay\": \"1\",\n  \"BirthMonth\": \"1\",\n  \"BirthYear\": \"2000\",\n  \"WorkEmail\": \"me@work.com\",\n  \"CellPhone\" : \"(555) 123 - 4567\",\n  \"WorkPhone\" : \"(555) 123 - 9967\",\n  \"HomePhone\" : \"(455) 212 - 2342\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/public/register/person",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"register",
+								"person"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Register: Family",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Name\": \"Smith\",\n  \"Address1\" : \"123 Main St\",\n  \"Address2\" : \"Unit 10\",\n  \"City\": \"Seattle\",\n  \"Country\": \"US\",\n  \"Zip\": \"98121\",\n  \"State\": \"WA\",\n  \"Email\": \"me@work.com\",\n  \"CellPhone\" : \"(555) 123 - 4567\",\n  \"WorkPhone\" : \"(555) 123 - 9967\",\n  \"HomePhone\" : \"(455) 212 - 2342\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/public/register/family",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"register",
+								"family"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data",
+			"description": "",
+			"item": [
+				{
+					"name": "Public Data: Countries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/public/data/countries",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"data",
+								"countries"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Public Data: US States",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/public/data/countries/us/states",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"data",
+								"countries",
+								"us",
+								"states"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Public Data: Canadian Provices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/public/data/countries/ca/states",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"data",
+								"countries",
+								"ca",
+								"states"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Calendar",
+			"description": "",
+			"item": [
+				{
+					"name": "Public Calendar: Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/public/calendar/events",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"calendar",
+								"events"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Public Calendar: ICS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/public/calendar/events",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"calendar",
+								"events"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userName\": \"admin\",\n  \"password\": \"changeme\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/public/user/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"user",
+								"login"
+							]
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Public Echo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{host}}/api/public/echo",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"public",
+						"echo"
+					]
+				},
+				"description": "Return Echo message"
+			},
+			"response": []
+		}
+	]
+}
