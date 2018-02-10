@@ -10,6 +10,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\GeoUtils;
 use DateTime;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Utils\LoggerUtils;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -87,7 +88,7 @@ class Family extends BaseFamily implements iPhoto
         {
           $NotificationEmail = new NewPersonOrFamilyEmail($this);
           if (!$NotificationEmail->send()) {
-            $logger->warn($NotificationEmail->getError());
+              LoggerUtils::getAppLogger()->warn(gettext("New Family Notification Email Error"). " :". $NotificationEmail->getError());
           }
         }
     }
