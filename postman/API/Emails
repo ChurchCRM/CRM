@@ -1,0 +1,63 @@
+{
+	"info": {
+		"name": "Events",
+		"_postman_id": "63572015-07fc-49f5-dc24-a21e16409773",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Events",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "SwDPMNFswLdt4tQDRoYOmPqBU3fE47HMsbr6OXobysusMbVtpJ"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{host}}/api/events/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"events",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Events: get by Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "SGNtn8Z8Db3hNqXh7c6uKO9tHs0d1FnIc23pZRntTfAxwnEtqA"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{host}}/api/calendars/3/events",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"calendars",
+						"3",
+						"events"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
