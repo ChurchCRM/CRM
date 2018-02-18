@@ -2,6 +2,7 @@
 /* contributor Philippe Logel */
 
 // Person APIs
+use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\Photo;
@@ -19,31 +20,31 @@ $app->group('/persons', function () {
       _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
       _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
           limit(15)->find();
-        
+
         $id = 1;
-        
-        $return = [];        
+
+        $return = [];
         foreach ($people as $person) {
             $values['id'] = $id++;
             $values['objid'] = $person->getId();
             $values['text'] = $person->getFullName();
             $values['uri'] = $person->getViewURI();
-            
+
             array_push($return, $values);
         }
-        
-        return $response->withJson($return);    
+
+        return $response->withJson($return);
     });
-    
+
     $this->get('/numbers', function ($request, $response, $args) {
-      return $response->withJson(MenuEventsCount::getNumberBirthDates());       
+      return $response->withJson(MenuEventsCount::getNumberBirthDates());
     });
 
     $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
       $res=$this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
       $photo = new Photo("Person",$args['personId']);
       return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
-      
+
     });
 
     $this->get('/{personId:[0-9]+}/thumbnail', function ($request, $response, $args) {
@@ -92,6 +93,15 @@ $app->group('/persons', function () {
 
         return $response->withJSON(array("status" => "success"));
 
+    });
+
+    $this->get('/self-register', function ($request, $response, $args) {
+        $people = PersonQuery::create()
+            ->filterByEnteredBy(Person::SELF_REGISTER)
+            ->orderByDateEntered(Criteria::DESC)
+            ->limit(100)
+            ->find();
+        return $response->withJSON(['people' => $people->toArray()]);
     });
 
 });
