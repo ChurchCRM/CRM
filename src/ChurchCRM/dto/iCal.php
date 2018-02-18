@@ -17,14 +17,14 @@ Class iCal {
   private $icsHeader;
   private $eventsArray;
 
-  public function __construct(ObjectCollection$Events) {
+  public function __construct(ObjectCollection $Events, $CalendarName) {
     $this->eventsArray = $Events;
     $this->icsHeader =  "BEGIN:VCALENDAR\r\n".
                     "VERSION:2.0\r\n".
                     "PRODID:-//ChurchCRM/CRM//NONSGML v".SystemService::getInstalledVersion()."//EN\r\n".
                     "CALSCALE:GREGORIAN\r\n".
                     "METHOD:PUBLISH\r\n".
-                    "X-WR-CALNAME:".ChurchMetaData::getChurchName()."\r\n".
+                    "X-WR-CALNAME:".$CalendarName."\r\n".
                     "X-WR-CALDESC:\r\n";
   }
   
