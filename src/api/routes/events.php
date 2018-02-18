@@ -30,6 +30,8 @@ $app->group('/events', function () {
   $this->post('/{id}', 'updateEvent');
   $this->post('/{id}/time', 'setEventTime');
   
+  $this->delete("/{id}", 'deleteEvent');
+  
 });
 
 function getAllEvents($request, Response $response, $args) {
@@ -53,6 +55,10 @@ function getEventTypes($request, Response $response, $args) {
 
 function getEvent($request, Response $response, $args) {
   $Event = EventQuery::Create()
+          ->joinWithEventType()
+          ->useEventTypeQuery()
+            ->select("Name")
+          ->endUse()
           ->joinWithCalendarEvent()
           ->useCalendarEventQuery()
             ->joinWithCalendar()
@@ -186,4 +192,16 @@ function unusedSetEventAttendance() {
     $eventCount->setEvtcntNotes($input->EventCountNotes);
     $eventCount->save();
   }
+}
+
+function deleteEvent ($request, $response, $args) {
+  $input = (object) $request->getParsedBody();
+
+  $event = EventQuery::Create()
+    ->findOneById($args['id']);
+  if(!$event) {
+    return $response->withStatus(404);
+  }
+  $event->delete();
+  return $response->withJson(array("status"=>"success"));
 }

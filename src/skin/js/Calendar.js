@@ -163,9 +163,7 @@ window.NewOrEditEventModal = {
         path: 'events',
         data: JSON.stringify(Event)
       }).done(function (data) {
-        $(window.CRM.fullcalendar.fullCalendar("getEventSources")).each(function(idx,obj) {
-          window.CRM.fullcalendar.fullCalendar("refetchEventSources", obj);
-        });
+        window.CRM.refreshAllFullCalendarSources();
         window.NewOrEditEventModal.modal.modal("hide");
       });
   },  
@@ -338,6 +336,12 @@ window.getEventDataFromFullCalendar =  function(fullCalendarEvent) {
     });
 };
 
+window.CRM.refreshAllFullCalendarSources = function () {
+  $(window.CRM.fullcalendar.fullCalendar("getEventSources")).each(function(idx,obj) {
+    window.CRM.fullcalendar.fullCalendar("refetchEventSources", obj);
+  });
+}
+
 window.displayEventModal = {
   getBootboxContent: function (event){ 
     var calendarPinnings ='';
@@ -403,7 +407,7 @@ window.displayEventModal = {
             method: "DELETE",
             path: "events/"+window.displayEventModal.event.id
           }).done(function() {
-            
+            window.CRM.refreshAllFullCalendarSources();
           });
         }
       });
