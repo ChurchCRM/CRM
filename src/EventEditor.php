@@ -378,7 +378,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
                      `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."'".
                     " WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
-                        echo $sSQL;
+            echo $sSQL;
             RunQuery($sSQL);
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
