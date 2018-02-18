@@ -443,36 +443,36 @@ window.calendarPropertiesModal = {
       icsURL =  window.CRM.fullURL + "api/public/calendar/"+calendar.AccessToken+"/ics";
       jsonURL =  window.CRM.fullURL + "api/public/calendar/"+calendar.AccessToken+"/events";
     }
-    var frm_str = '<table class="table">'
+    var frm_str = '<form id="some-form"><table class="table" style="table-layout:fixed;width:100%">'
           + '<tr>'
           + "<td>" + i18next.t('Access Token') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + '<input id="AccessToken" class="form-control" type="text" readonly value="' + calendar.AccessToken + '"></p>'
+          + '<td colspan="3">'
+          + '<input id="AccessToken" class="form-control" type="text" readonly value="' + calendar.AccessToken + '"/>'
           + '<a id="NewAccessToken" class="btn btn-warning"><i class="fa fa-repeat"></i>' + i18next.t("New Access Token") + '</a>'
           + '</td>'
           + '</tr>'
           + '<tr>'
           + "<td class='LabelColumn'>" + i18next.t('ICS URL') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + '<a href="'+icsURL+'">'+icsURL+'</p>'
+          + '<td colspan="3" style="word-wrap: break-word;">'
+          + '<span ><a href="'+icsURL+'">'+icsURL+'</a></span>'
           + '</td>'
           + '</tr>'
           + '<tr>'
           + "<td class='LabelColumn'>" + i18next.t('JSON URL') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-           + '<a href="'+jsonURL+'">'+jsonURL+'</p>'
+          + '<td colspan="3" style="word-wrap: break-word;">'
+          + '<span ><a href="'+jsonURL+'">'+jsonURL+'</a></span>'
           + '</td>'
           + '</tr>'
           + '<tr>'
           + "<td class='LabelColumn'>" + i18next.t('Foreground Color') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
+          + '<td >'
           + '<p>' + calendar.ForegroundColor + "</p>" 
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + '<td class="LabelColumn"><span style="color: red">*</span>' + i18next.t("Background Color") + ':'
+          + '<td class="LabelColumn">' + i18next.t("Background Color") + ':'
           + '</td>'
-          + '<td  colspan="3" class="TextColumn">'
+          + '<td  >'
           + '<p>'+ calendar.BackgroundColor +'</p>' 
           + '</td>'
           + '</tr>'
@@ -480,7 +480,7 @@ window.calendarPropertiesModal = {
           + '</form>';
     var object = $('<div/>').html(frm_str).contents();
 
-    return object
+    return object;
   },
   getButtons: function () {
     buttons =  [];
