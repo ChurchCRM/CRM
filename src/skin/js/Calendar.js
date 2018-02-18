@@ -435,6 +435,76 @@ window.displayEventModal = {
   }
 }
 
+window.calendarPropertiesModal = {
+  getBootboxContent: function (calendar){ 
+    var icsURL = '';
+    var jsonURL = '';
+    if (calendar.AccessToken){
+      icsURL =  window.CRM.fullURL + "api/public/calendar/"+calendar.AccessToken+"/ics";
+      jsonURL =  window.CRM.fullURL + "api/public/calendar/"+calendar.AccessToken+"/events";
+    }
+    var frm_str = '<table class="table">'
+          + '<tr>'
+          + "<td><span style='color: red'>*</span>" + i18next.t('Access Token') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
+          + '<input id="apiKey" class="form-control" type="text" readonly value="' + calendar.AccessToken + '"></p>'
+          + '<a id="regenApiKey" class="btn btn-warning"><i class="fa fa-repeat"></i>Regen API Key </a>'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('ICS URL') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
+          + '<a href="'+icsURL+'">'+icsURL+'</p>'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('JSON URL') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
+           + '<a href="'+jsonURL+'">'+jsonURL+'</p>'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Foreground Color') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
+          + '<p>' + calendar.ForegroundColor + "</p>" 
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + '<td class="LabelColumn"><span style="color: red">*</span>' + i18next.t("Background Color") + ':'
+          + '</td>'
+          + '<td  colspan="3" class="TextColumn">'
+          + '<p>'+ calendar.BackgroundColor +'</p>' 
+          + '</td>'
+          + '</tr>'
+          + '</table>'
+          + '</form>';
+    var object = $('<div/>').html(frm_str).contents();
+
+    return object
+  },
+  getButtons: function () {
+    buttons =  [];
+    buttons.push({
+      label: i18next.t("Close"),
+      className: "btn btn-default pull-right"
+    });
+    return buttons;
+  },
+  show: function(calendar) {
+    
+    var bootboxmessage = window.calendarPropertiesModal.getBootboxContent(calendar);
+    window.calendarPropertiesModal.modal = bootbox.dialog({
+      title: calendar.Name,
+      message: bootboxmessage,
+      show: true,
+      buttons: window.calendarPropertiesModal.getButtons(),
+      onEscape: function () {
+        window.calendarPropertiesModal.modal.modal("hide");
+      }
+    });
+  }
+}
+
 function initializeCalendar() {
   //
   // initialize the calendar
@@ -461,7 +531,9 @@ function getCalendarFilterElement(calendar,type) {
   return "<div>" + 
          "<input type='checkbox' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>"+ 
          "<label for='"+calendar.Name+"'>"+calendar.Name+"</label>"+
-         "<div style='display:inline-block; padding-left:5px; padding-right:5px; float:right; color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>" +
+         "<div style='float:right;'>"+
+         "<div style='display:inline-block; padding-left:5px; padding-right:5px; color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>"+
+         (type === "user"  ? "<div style='display:inline-block; padding-left:5px; padding-right:5px;'><i class='calendarproperties fa fa-eye' aria-hidden='true' data-calendarid='"+calendar.Id+"' ></i></div>" :"") +
          "</div>";
 }
 
@@ -485,7 +557,19 @@ function registerCalendarSelectionEvents() {
       var eventSourceURL = window.CRM.root+endpoint+$(this).data("calendarid")+"/fullcalendar";
       window.CRM.fullcalendar.fullCalendar("removeEventSource",{id: $(this).data("calendarid"), url: eventSourceURL});
     }
-  })
+  });
+  
+  $(document).on("click",".calendarproperties", function(event) {
+    window.CRM.APIRequest({
+      method: 'GET',
+      path: 'calendars/'+$(this).data("calendarid"),
+    }).done(function (data) {
+      var calendar = data.Calendars[0];
+      console.log(calendar);
+      window.calendarPropertiesModal.show(calendar);
+    });
+    
+  });
 }
 
 function initializeFilterSettings() {

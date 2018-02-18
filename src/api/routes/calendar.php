@@ -13,6 +13,7 @@ use Propel\Runtime\Collection\ObjectCollection;
 $app->group('/calendars', function () {
     $this->get('','getUserCalendars');
     $this->get('/','getUserCalendars');
+    $this->get('/{id}','getUserCalendars');
     $this->get('/{id}/events', 'UserCalendar');
     $this->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
 });
@@ -69,10 +70,13 @@ function getSystemCalendarFullCalendarEvents($request, Response $response, $args
 }
 
 
-function getUserCalendars(Request $request, Response $response, array $p_args ) {
-  $params = $request->getQueryParams();
-  $Calendars = CalendarQuery::create()
-          ->find();
+function getUserCalendars(Request $request, Response $response, array $args ) {
+  $CalendarQuery = CalendarQuery::create();
+  if (isset($args['id']))
+  {
+    $CalendarQuery->filterById($args['id']);
+  }
+  $Calendars = $CalendarQuery->find();
   if ($Calendars) 
   {
     return $response->write($Calendars->toJSON());

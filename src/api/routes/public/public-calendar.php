@@ -36,7 +36,7 @@ function getICal ($request, $response, $args) {
 
 function getCalendar(Request $request) {
   $CAT = $request->getAttribute("route")->getArgument("CalendarAccessToken");
-  if(empty($CAT))
+  if(empty(trim($CAT)))
   {
     throw new \Exception("Missing calendar access token");
   }
