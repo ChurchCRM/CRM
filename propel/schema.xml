@@ -895,14 +895,14 @@
     <table name="calendars" idMethod="native" phpName="Calendar"  description="">
       <column name="calendar_id" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" autoIncrement="true" required="true"  primaryKey="true"/>
       <column name="name" phpName="Name" type="VARCHAR" size="99" required="true"/>
-      <column name="accesstoken" phpName="AccessToken" type="VARCHAR" size="99"/>
+      <column name="accesstoken" phpName="AccessToken" type="VARCHAR" size="255"/>
       <column name="backgroundColor" phpName="BackgroundColor" type="VARCHAR" size="6"/>
       <column name="foregroundColor" phpName="ForegroundColor" type="VARCHAR" size="6"/>
 
-      <foreign-key foreignTable="tokens">
-        <reference local="accesstoken" foreign="token"/>
-      </foreign-key>
-
+      <unique name="accesstoken">
+        <unique-column name="accesstoken"/>
+      </unique>
+        
       <vendor type="mysql">
           <parameter name="Engine" value="InnoDB"/>
       </vendor>
