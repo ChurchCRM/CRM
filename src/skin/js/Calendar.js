@@ -394,7 +394,7 @@ window.displayEventModal = {
         label: i18next.t("Edit"),
         className: "btn btn-success",
         callback: function(){
-          window.location = window.CRM.root + "/EventEditor.php"
+          window.location = window.CRM.root + "/ListEvents.php"
         }
       });
     }
