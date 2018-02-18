@@ -16,6 +16,7 @@ $app->group('/calendars', function () {
     $this->get('/{id}','getUserCalendars');
     $this->get('/{id}/events', 'UserCalendar');
     $this->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
+    $this->post('/{id}/NewAccessToken', 'NewAccessToken');
 });
 
 
@@ -125,4 +126,20 @@ function EventsObjectCollectionToFullCalendar(ObjectCollection $Events, Calendar
     array_push($formattedEvents, $fce );
   }
   return $formattedEvents;
+}
+
+function NewAccessToken($request, Response $response, $args) {
+  
+  if (!isset($args['id']))
+  {
+    throw new \Exception(gettext("Missing calendar id"));
+  }
+  $Calendar = CalendarQuery::create()
+              ->findOneById($args['id']);
+  if (!$Calendar) {
+    throw new \Exception (gettext("Invalid Calendar id"));
+  }
+  $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
+  $Calendar->save();
+  return $Calendar->toJSON();
 }

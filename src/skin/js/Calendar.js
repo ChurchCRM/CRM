@@ -445,26 +445,26 @@ window.calendarPropertiesModal = {
     }
     var frm_str = '<table class="table">'
           + '<tr>'
-          + "<td><span style='color: red'>*</span>" + i18next.t('Access Token') + ":</td>"
+          + "<td>" + i18next.t('Access Token') + ":</td>"
           + '<td colspan="3" class="TextColumn">'
-          + '<input id="apiKey" class="form-control" type="text" readonly value="' + calendar.AccessToken + '"></p>'
-          + '<a id="regenApiKey" class="btn btn-warning"><i class="fa fa-repeat"></i>Regen API Key </a>'
+          + '<input id="AccessToken" class="form-control" type="text" readonly value="' + calendar.AccessToken + '"></p>'
+          + '<a id="NewAccessToken" class="btn btn-warning"><i class="fa fa-repeat"></i>' + i18next.t("New Access Token") + '</a>'
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('ICS URL') + ":</td>"
+          + "<td class='LabelColumn'>" + i18next.t('ICS URL') + ":</td>"
           + '<td colspan="3" class="TextColumn">'
           + '<a href="'+icsURL+'">'+icsURL+'</p>'
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('JSON URL') + ":</td>"
+          + "<td class='LabelColumn'>" + i18next.t('JSON URL') + ":</td>"
           + '<td colspan="3" class="TextColumn">'
            + '<a href="'+jsonURL+'">'+jsonURL+'</p>'
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Foreground Color') + ":</td>"
+          + "<td class='LabelColumn'>" + i18next.t('Foreground Color') + ":</td>"
           + '<td colspan="3" class="TextColumn">'
           + '<p>' + calendar.ForegroundColor + "</p>" 
           + '</td>'
@@ -491,7 +491,7 @@ window.calendarPropertiesModal = {
     return buttons;
   },
   show: function(calendar) {
-    
+    window.calendarPropertiesModal.calendar = calendar;
     var bootboxmessage = window.calendarPropertiesModal.getBootboxContent(calendar);
     window.calendarPropertiesModal.modal = bootbox.dialog({
       title: calendar.Name,
@@ -501,6 +501,16 @@ window.calendarPropertiesModal = {
       onEscape: function () {
         window.calendarPropertiesModal.modal.modal("hide");
       }
+    });
+    $("#NewAccessToken").click(window.calendarPropertiesModal.newAccessToken);
+  },
+  newAccessToken: function() {
+    window.CRM.APIRequest({
+      method: 'POST',
+      path: 'calendars/'+window.calendarPropertiesModal.calendar.Id+"/NewAccessToken",
+    }).done(function (newcalendar) {
+      $(window.calendarPropertiesModal.modal).find(".bootbox-body").html(window.calendarPropertiesModal.getBootboxContent(newcalendar));
+      $("#NewAccessToken").click(window.calendarPropertiesModal.newAccessToken);
     });
   }
 }
@@ -538,7 +548,6 @@ function getCalendarFilterElement(calendar,type) {
 }
 
 function registerCalendarSelectionEvents() {
-  $(document).on
   
   $(document).on("click",".calendarSelectionBox", function(event) {
     var endpoint;
