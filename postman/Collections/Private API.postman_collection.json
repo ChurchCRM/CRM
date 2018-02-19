@@ -1,0 +1,250 @@
+{
+	"info": {
+		"name": "Private API",
+		"_postman_id": "e5c9b4e3-3210-1813-3905-62f317f135ed",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User: API Key Regen",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "F1AM1JElA69TP6AjYT5NRwxq53NgZFguwH8ngByHxxqdtQmhAh"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/users/1/apikey/regen",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"apikey",
+								"regen"
+							]
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "User",
+									"value": "admin\n",
+									"type": "text"
+								},
+								{
+									"key": "Password",
+									"value": "changeme",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/login.php",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"login.php"
+							]
+						},
+						"description": "Login as a standard user and establish a session."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Events: get by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "SGNtn8Z8Db3hNqXh7c6uKO9tHs0d1FnIc23pZRntTfAxwnEtqA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/calendars/3/events",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"calendars",
+								"3",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/events/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"events",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Public Calendar Access Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/calendars/1/NewAccessToken",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"calendars",
+								"1",
+								"NewAccessToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "SwDPMNFswLdt4tQDRoYOmPqBU3fE47HMsbr6OXobysusMbVtpJ"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/events/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"events",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Database",
+			"item": [
+				{
+					"name": "Database - Reset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "PRLlNXNShOwwlxhkOKYzRobBAl5f0B4OiEZVsCEzh2Vto4D4Es"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/user1/api/reset",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"user1",
+								"api",
+								"reset"
+							]
+						},
+						"description": "Drops all DB tables and rebuilds them.\nMust have Admin role"
+					},
+					"response": []
+				},
+				{
+					"name": "Database - Clear People",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "fin48waG4rIWwfLvTstDr8ZJtP6aNdSTm7NjsNPm6n0rtKNd37"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/database/people/clear",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"database",
+								"people",
+								"clear"
+							]
+						},
+						"description": "Clear all people in the system.\nMust have Admin role"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

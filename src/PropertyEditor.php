@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have property and classification editing permission
-if (!$_SESSION['bMenuOptions']) {
+if (!$_SESSION['user']->isMenuOptionsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

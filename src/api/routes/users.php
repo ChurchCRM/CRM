@@ -1,14 +1,13 @@
 <?php
 
 // Users APIs
-use ChurchCRM\UserQuery;
-use ChurchCRM\UserConfigQuery;
-use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\Emails\AccountDeletedEmail;
+use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\Emails\UnlockedEmail;
 use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\User;
+use ChurchCRM\UserConfigQuery;
+use ChurchCRM\UserQuery;
 
 $app->group('/users', function () {
 
@@ -49,7 +48,7 @@ $app->group('/users', function () {
     $this->delete('/{userId:[0-9]+}', function ($request, $response, $args) {
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
-            $userConfig =  UserConfigQuery::create()->findPk($user->getId());
+            $userConfig = UserConfigQuery::create()->findPk($user->getId());
             if (!is_null($userConfig)) {
                 $userConfig->delete();
             }

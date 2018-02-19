@@ -57,7 +57,7 @@ $sSQL .= ", aut_AccountVanco=\"$sVancoPaymentBankDraft\"";
 $sSQL .= ", aut_ExpMonth=\"$sVancoExpMonth\"";
 $sSQL .= ", aut_ExpYear=\"$sVancoExpYear\"";
 $sSQL .= ', aut_DateLastEdited="'.date('YmdHis').'"';
-$sSQL .= ', aut_EditedBy='.$_SESSION['iUserID'];
+$sSQL .= ', aut_EditedBy='.$_SESSION['user']->getId();
 $sSQL .= " WHERE aut_ID=$iVancoAutID";
 
 $resultArr = [];

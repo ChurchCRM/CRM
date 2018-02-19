@@ -44,7 +44,7 @@ $MenuFirst = 1;
   <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
-<body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
+<body class="hold-transition <?= $_SESSION['user']->getStyle() ?> sidebar-mini">
 <?php
   Header_system_notifications();
  ?>
@@ -54,7 +54,7 @@ $MenuFirst = 1;
   Header_modals();
   Header_body_scripts();
 
-  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/persons/'.$_SESSION['iUserID'].'/thumbnail';
+  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/persons/'.$_SESSION['user']->getId().'/thumbnail';
   $MenuFirst = 1;
   ?>
 

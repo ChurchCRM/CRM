@@ -8,7 +8,6 @@ class SystemServiceTest extends PHPUnit_Framework_TestCase
     public function getBackupArray($type)
     {
         $_SESSION = [];
-        $_SESSION['bAdmin'] = true;
         $params = new StdClass();
         $params->iArchiveType = $type;
         $results = $this->SystemService->getDatabaseBackup($params);
@@ -19,7 +18,6 @@ class SystemServiceTest extends PHPUnit_Framework_TestCase
     public function testBackupTypes()
     {
         $_SESSION = [];
-        $_SESSION['bAdmin'] = true;
         $this->SystemService = new SystemService();
     //test GZip Backup
     $results = $this->getBackupArray(0);

@@ -5,7 +5,7 @@ use ChurchCRM\Service\SystemService;
 
 $app->group('/register', function () {
     $this->post('', function ($request, $response, $args) {
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
 
         $registrationData = new \stdClass();
         $registrationData->sName = SystemConfig::getValue('sChurchName');
@@ -31,9 +31,9 @@ $app->group('/register', function () {
             throw new \Exception('Unable to reach the registration server', 500);
         }
 
-    // =Turn off the registration flag so the menu option is less obtrusive
-    SystemConfig::setValue('bRegistered', '1');
+        // =Turn off the registration flag so the menu option is less obtrusive
+        SystemConfig::setValue('bRegistered', '1');
 
-        return $response->withJson(['status'=>'success']);
+        return $response->withJson(['status' => 'success']);
     });
 });
