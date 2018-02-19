@@ -9,6 +9,7 @@ use ChurchCRM\EventQuery;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
 use Propel\Runtime\Collection\ObjectCollection;
+use ChurchCRM\Slim\Middleware\AddEventsRoleAuthMiddleware;
 
 $app->group('/calendars', function () {
     $this->get('','getUserCalendars');
@@ -16,7 +17,7 @@ $app->group('/calendars', function () {
     $this->get('/{id}','getUserCalendars');
     $this->get('/{id}/events', 'UserCalendar');
     $this->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
-    $this->post('/{id}/NewAccessToken', 'NewAccessToken');
+    $this->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
 });
 
 

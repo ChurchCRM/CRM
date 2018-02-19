@@ -12,6 +12,7 @@ use ChurchCRM\Utils\InputUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\CalendarQuery;
+use ChurchCRM\Slim\Middleware\AddEventsRoleAuthMiddleware;
 
 $app->group('/events', function () {
 
@@ -25,12 +26,12 @@ $app->group('/events', function () {
   $this->get('/{id}/location', 'getEventLocation');
   $this->get('/{id}/audience', 'getEventAudience');
   
-  $this->post('/', 'newEvent');
-  $this->post('', 'newEvent');
-  $this->post('/{id}', 'updateEvent');
-  $this->post('/{id}/time', 'setEventTime');
+  $this->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
+  $this->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
+  $this->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware());
+  $this->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
   
-  $this->delete("/{id}", 'deleteEvent');
+  $this->delete("/{id}", 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
   
 });
 
