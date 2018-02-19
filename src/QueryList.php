@@ -41,7 +41,7 @@ require 'Include/Header.php';
                     extract($aRow);
 
                     // Filter out finance-related queries if the user doesn't have finance permissions
-                    if ($_SESSION['bFinance'] || !in_array($qry_ID, $aFinanceQueries)) {
+                    if ($_SESSION['user']->isFinanceEnabled() || !in_array($qry_ID, $aFinanceQueries)) {
                         // Display the query name and description
                         echo '<a href="QueryView.php?QueryID='.$qry_ID.'">'.gettext($qry_Name).'</a>:';
                         echo '<br>';

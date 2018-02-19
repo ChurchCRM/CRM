@@ -20,7 +20,7 @@ $year = $today['year'];
 require 'Include/Header.php';
 ?>
   <!-- ./col -->
-  <?php if ($_SESSION['bFinance']) {
+  <?php if ($_SESSION['user']->isFinanceEnabled()) {
     ?>
 <div class="row">
     <div class="col-lg-12">

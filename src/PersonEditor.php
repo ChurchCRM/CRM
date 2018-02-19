@@ -353,7 +353,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $sSQL .= 'NULL';
             }
 
-            if ($_SESSION['bFinance']) {
+            if ($_SESSION['user']->isFinanceEnabled()) {
                 $sSQL .= ', per_Envelope = '.$iEnvelope;
             }
 

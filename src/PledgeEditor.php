@@ -89,7 +89,7 @@ if ($sGroupKey) {
         $fund2PlgIds[$oneFundID] = $onePlgID;
 
         // Security: User must have Finance permission or be the one who entered this record originally
-        if (!($_SESSION['bFinance'] || $_SESSION['user']->getId() == $aRow['plg_EditedBy'])) {
+        if (!($_SESSION['user']->isFinanceEnabled() || $_SESSION['user']->getId() == $aRow['plg_EditedBy'])) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }

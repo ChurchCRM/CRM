@@ -52,7 +52,7 @@ if (isset($_GET['CancelFamily'])) {
 $DonationMessage = '';
 
 // Move Donations from 1 family to another
-if ($_SESSION['bFinance'] && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
+if ($_SESSION['user']->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
     $today = date('Y-m-d');
     $sSQL = "UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
 		plg_DateLastEdited ='$today', plg_EditedBy='" . $_SESSION['user']->getId()
@@ -139,11 +139,11 @@ require 'Include/Header.php';
         $rsDonations = RunQuery($sSQL);
         $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
 
-        if ($bIsDonor && !$_SESSION['bFinance']) {
+        if ($bIsDonor && !$_SESSION['user']->isFinanceEnabled()) {
             // Donations from Family. Current user not authorized for Finance
             echo '<p class="LargeText">' . gettext('Sorry, there are records of donations from this family. This family may not be deleted.') . '<br><br>';
             echo '<a href="FamilyView.php?FamilyID=' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
-        } elseif ($bIsDonor && $_SESSION['bFinance']) {
+        } elseif ($bIsDonor && $_SESSION['user']->isFinanceEnabled()) {
             // Donations from Family. Current user authorized for Finance.
             // Select another family to move donations to.
             echo '<p class="LargeText">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';

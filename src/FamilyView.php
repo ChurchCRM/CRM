@@ -50,7 +50,7 @@ if ($_SESSION['user']->isDeleteRecordsEnabled() && !empty($_POST['FID']) && !emp
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
 
-if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['bFinance']) {
+if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['user']->isFinanceEnabled()) {
     $_SESSION['sshowPledges'] = isset($_POST["ShowPledges"]);
     $_SESSION['sshowPayments'] = isset($_POST["ShowPayments"]);
     $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d", InputUtils::LegacyFilterInput($_POST["ShowSinceDate"]));
@@ -437,7 +437,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                                           data-toggle="tab"><?= gettext("Timeline") ?></a></li>
                 <li role="presentation"><a href="#properties" aria-controls="properties" role="tab"
                                            data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
-                <?php if ($_SESSION['bFinance']) {
+                <?php if ($_SESSION['user']->isFinanceEnabled()) {
                     ?>
                     <li role="presentation"><a href="#finance" aria-controls="finance" role="tab"
                                                data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
@@ -643,7 +643,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                         </div>
                     </div>
                 </div>
-                <?php if ($_SESSION['bFinance']) {
+                <?php if ($_SESSION['user']->isFinanceEnabled()) {
         ?>
                 <div role="tab-pane fade" class="tab-pane" id="finance">
                     <div class="main-box clearfix">
