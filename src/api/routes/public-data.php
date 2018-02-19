@@ -1,10 +1,9 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
-use ChurchCRM\Service\CalendarService;
 use ChurchCRM\data\Countries;
 use ChurchCRM\data\States;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/public/data', function () {
     $this->get('/countries', 'getCountries');
@@ -14,11 +13,13 @@ $app->group('/public/data', function () {
 });
 
 
-function getCountries(Request $request, Response $response, array $args ) {
+function getCountries(Request $request, Response $response, array $args)
+{
     return $response->withJson(Countries::getAll());
 }
 
-function getStates(Request $request, Response $response, array $args ) {
+function getStates(Request $request, Response $response, array $args)
+{
     $states = new States($args['countryCode']);
     return $response->withJson($states->getAll());
 }

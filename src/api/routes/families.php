@@ -1,7 +1,9 @@
 <?php
 
 /* Contributors Philippe Logel */
+
 // Routes
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Emails\FamilyVerificationEmail;
@@ -16,7 +18,6 @@ use ChurchCRM\TokenQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\dto\ChurchMetaData;
 
 $app->group('/families', function () {
     $this->get('/{familyId:[0-9]+}', function ($request, $response, $args) {
@@ -124,7 +125,7 @@ $app->group('/families', function () {
                 throw new \Exception($email->getError());
             }
         } else {
-            $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " ". gettext("not found"));
+            $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " " . gettext("not found"));
         }
         return $response;
     });

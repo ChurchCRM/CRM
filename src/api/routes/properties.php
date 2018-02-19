@@ -2,14 +2,14 @@
 
 
 use ChurchCRM\PersonQuery;
+use ChurchCRM\PropertyQuery;
 use ChurchCRM\RecordProperty;
 use ChurchCRM\RecordPropertyQuery;
-use ChurchCRM\PropertyQuery;
 use ChurchCRM\Slim\Middleware\MenuOptionsRoleAuthMiddleware;
 
-$app->group('/properties', function() {
+$app->group('/properties', function () {
 
-    $this->post('/persons/assign', function($request, $response, $args) {
+    $this->post('/persons/assign', function ($request, $response, $args) {
 
         $data = $request->getParsedBody();
         $personId = empty($data['PersonId']) ? null : $data['PersonId'];
@@ -51,7 +51,7 @@ $app->group('/properties', function() {
     });
 
 
-    $this->delete('/persons/unassign', function($request, $response, $args) {
+    $this->delete('/persons/unassign', function ($request, $response, $args) {
 
         $data = $request->getParsedBody();
         $personId = empty($data['PersonId']) ? null : $data['PersonId'];
@@ -70,7 +70,7 @@ $app->group('/properties', function() {
         if ($personProperty->isDeleted()) {
             return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
         } else {
-           return $response->withJson(['success' => false, 'msg' => gettext('The property could not be unassigned.')]);
+            return $response->withJson(['success' => false, 'msg' => gettext('The property could not be unassigned.')]);
         }
 
     });
