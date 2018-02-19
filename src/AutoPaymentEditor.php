@@ -117,7 +117,7 @@ if ($iAutID <= 0) {  // Need to create the record so there is a place to store t
         "'" . $tAccount . "'," .
         "'" . 1 . "'," .
         "'" . date('YmdHis') . "'," .
-        $_SESSION['iUserID'] .
+        $_SESSION['user']->getId() .
         ')';
     RunQuery($sSQL);
 
@@ -199,7 +199,7 @@ if (isset($_POST['Submit'])) {
         "aut_Route	='" . $tRoute . "'," .
         "aut_Account	='" . $tAccount . "'," .
         "aut_DateLastEdited	='" . date('YmdHis') . "'," .
-        'aut_EditedBy	=' . $_SESSION['iUserID'] .
+        'aut_EditedBy	=' . $_SESSION['user']->getId() .
         ' WHERE aut_ID = ' . $iAutID;
     RunQuery($sSQL);
 

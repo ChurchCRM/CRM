@@ -24,7 +24,7 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if (strlen($iAutID) > 0) {
-    if (!$_SESSION['bEditRecords']) {
+    if (!$_SESSION['user']->isEditRecordsEnabled()) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
@@ -33,7 +33,7 @@ if (strlen($iAutID) > 0) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
-} elseif (!$_SESSION['bAddRecords']) {
+} elseif (!$_SESSION['user']->isDeleteRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

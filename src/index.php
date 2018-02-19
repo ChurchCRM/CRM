@@ -28,7 +28,7 @@ function endsWith($haystack, $needle)
     return $needle === '' || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
 }
 
-$hasSession = isset($_SESSION['iUserID']);
+$hasSession = isset($_SESSION['user']);
 $redirectTo = ($hasSession) ? '/menu' : '/login';
 
 // Get the current request path and convert it into a magic filename

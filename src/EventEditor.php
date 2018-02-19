@@ -28,7 +28,7 @@ use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('Church Event Editor');
 
-if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent']) {
+if (!$_SESSION['user']->isAddEvent()) {
     header('Location: Menu.php');
 }
 

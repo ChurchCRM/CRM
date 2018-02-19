@@ -19,7 +19,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 
-if (!$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isAdmin()) {
     header('Location: Menu.php');
 }
 $sPageTitle = gettext('Edit Event Types');
