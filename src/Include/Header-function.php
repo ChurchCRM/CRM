@@ -94,7 +94,7 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $localeInfo;
+    global $localeInfo, $nonce;
     $systemService = new SystemService(); ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
@@ -118,6 +118,7 @@ function Header_body_scripts()
                     }
                 }
             },
+            currentUser: <?= json_encode($_SESSION['user']->toArray()); ?>,
             PageName:"<?= $_SERVER['PHP_SELF']?>"
         };
     </script>

@@ -36,6 +36,7 @@ $updatedMembers = $dashboardService->getUpdatedMembers(12);
 //Newly added members from Active families
 $latestMembers = $dashboardService->getLatestMembers(12);
 
+
 $depositData = false;  //Determine whether or not we should display the deposit line graph
 if ($_SESSION['bFinance']) {
     $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
@@ -43,7 +44,6 @@ if ($_SESSION['bFinance']) {
         $depositData = $deposits->toJSON();
     }
 }
-
 
 // Set the page title
 $sPageTitle = gettext('Welcome to').' '. ChurchMetaData::getChurchName();
@@ -269,28 +269,24 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
     </div><!-- ./col -->
 </div><!-- /.row -->
 
-<?php
-if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
-?>
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="box box-info">
-            <div class="box-header">
-                <i class="fa fa-money"></i>
-                <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
-                <div class="box-tools pull-right">
-                    <div id="deposit-graph" class="chart-legend"></div>
-                </div>
-            </div><!-- /.box-header -->
-            <div class="box-body">
-                <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
-            </div>
-            </div>
-    </div>
+<div id="depositSummaryChart" style="display:none">
+  <div class="row"> 
+          <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="box box-info">
+                  <div class="box-header">
+                      <i class="ion ion-cash"></i>
+                      <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
+                      <div class="box-tools pull-right">
+                          <div id="deposit-graph" class="chart-legend"></div>
+                      </div>
+                  </div><!-- /.box-header -->
+                  <div class="box-body">
+                      <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
+                  </div>
+               </div>
+          </div>
+   </div>
 </div>
-<?php
-                  }  //END IF block for Finance permissions to include HTML for Deposit Chart
-?>
 
 <div class="row">
     <div class="col-lg-6">
@@ -316,6 +312,18 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
+                        <?php foreach ($latestFamilies as $family) {
+                      ?>
+                            <tr>
+                                <td>
+                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
+                                </td>
+                                <td><?= $family->getAddress() ?></td>
+                                <td><?=  date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
+                            </tr>
+                            <?php
+                  }
+                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -369,7 +377,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
                         <?php foreach ($latestMembers as $person) {
-    ?>
+                            ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                     <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
@@ -379,7 +387,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-}
+                        }
                         ?>
                     </ul>
                     <!-- /.users-list -->
@@ -424,43 +432,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     </div>
 </div>
 
-<!-- this page specific inline scripts -->
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-<?php
-if ($depositData) { // If the user has Finance permissions, then let's display the deposit line chart
-?>
-    //---------------
-    //- LINE CHART  -
-    //---------------
-    var lineDataRaw = <?= $depositData ?>;
-
-    var lineData = {
-        labels: [],
-        datasets: [
-            {
-                data: []
-            }
-        ]
-    };
-
-
-  $( document ).ready(function() {
-    $.each(lineDataRaw.Deposits, function(i, val) {
-        lineData.labels.push(moment(val.Date).format("MM-DD-YY"));
-        lineData.datasets[0].data.push(val.totalAmount);
-    });
-    options = {
-      responsive:true,
-      maintainAspectRatio:false
-    };
-    var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
-    var lineChart = new Chart(lineChartCanvas).Line(lineData,options);
-
-  });
-<?php
-                        }  //END IF block for Finance permissions to include JS for Deposit Chart
-?>
-</script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?> src="/skin/js/Menu.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   var timeOut = <?= SystemConfig::getValue("iEventsOnDashboardPresenceTimeOut")*1000 ?>;

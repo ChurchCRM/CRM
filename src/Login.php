@@ -14,6 +14,7 @@ require 'Include/Config.php';
 $bSuppressSessionTests = true; // DO NOT MOVE
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\UserQuery;
@@ -264,6 +265,7 @@ require 'Include/HeaderNotLoggedIn.php';
 <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+
 <div class="lockscreen-wrapper" id="Lock">
     <div class="login-logo">
         Church<b>CRM</b>
@@ -358,6 +360,10 @@ require 'Include/HeaderNotLoggedIn.php';
         } ?>
 </script>
 <script>
+
+<script type="text/javascript" src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+
     var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
     function $buo_f() {
         var e = document.createElement("script");

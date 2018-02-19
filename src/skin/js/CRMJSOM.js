@@ -2,30 +2,30 @@
  * ChurcmCRM JavaScript Object Model Initailizaion Script
  */
 
-    window.CRM.APIRequest = function(options) {
-      if (!options.method)
-      {
-        options.method="GET"
-      }
-      options.url=window.CRM.root+"/api/"+options.path;
-      options.dataType = 'json';
-      options.contentType =  "application/json";
-      return $.ajax(options);
+  window.CRM.APIRequest = function(options) {
+    if (!options.method)
+    {
+      options.method="GET"
     }
-
-    window.CRM.DisplayErrorMessage = function(endpoint, error) {
-
-      message = "<p>" + i18next.t("Error making API Call to") + ": " + endpoint +
-        "</p><p>" + i18next.t("Error text") + ": " + error.message;
-      if (error.trace)
-      {
-        message += "</p>" + i18next.t("Stack Trace") + ": <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
-      }
-      bootbox.alert({
-        title:  i18next.t("ERROR"),
-        message: message
-      });
-    };
+    options.url=window.CRM.root+"/api/"+options.path;
+    options.dataType = 'json';
+    options.contentType =  "application/json";
+    return $.ajax(options);
+  }
+    
+  window.CRM.DisplayErrorMessage = function(endpoint, error) {
+    
+    message = "<p>" + i18next.t("Error making API Call to") + ": " + endpoint +
+      "</p><p>" + i18next.t("Error text") + ": " + error.message;
+    if (error.trace)
+    {
+      message += "</p>" + i18next.t("Stack Trace") + ": <pre>"+JSON.stringify(error.trace, undefined, 2)+"</pre>";
+    }
+    bootbox.alert({
+      title:  i18next.t("ERROR"),
+      message: message
+    });
+  };
 
     window.CRM.VerifyThenLoadAPIContent = function(url) {
       var error = i18next.t("There was a problem retrieving the requested object");
@@ -46,8 +46,8 @@
         }
       });
     }
+    window.CRM.cart = {
 
-    window.CRM.cart={
       'empty' : function (callback)
       {
         window.CRM.APIRequest({
@@ -310,8 +310,9 @@
           }).done(function(data){
           })
         }
-    }
 
+    };
+    
     window.CRM.events = {
        getFutureEventes: function()
         {
@@ -506,6 +507,16 @@
         });
       }
     };
+    
+    window.CRM.deposits = {
+      'getSummaryData': function() {
+         return  window.CRM.APIRequest({
+          path:"deposits/summarydata",
+          type:"GET"
+        })
+      }
+    }
+    
 
     window.CRM.system = {
       'runTimerJobs' : function () {
@@ -635,4 +646,4 @@
         var day = new Date();
         var id = day.getTime();
         eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left = 100,top = 50');");
-    }
+      }
