@@ -1,14 +1,13 @@
 {
 	"info": {
-		"name": "Public",
-		"_postman_id": "c7030a72-1bc3-fdd8-3a1e-ad30da344875",
+		"name": "Public API",
+		"_postman_id": "04713c93-cd10-c0ef-aa9e-697ccbd00ee6",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Register",
-			"description": "",
 			"item": [
 				{
 					"name": "Register: Person",
@@ -35,8 +34,7 @@
 								"register",
 								"person"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -65,8 +63,35 @@
 								"register",
 								"family"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Persons: Self-Register",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "95eFlpi5dW0QJ0WAAOU4lqVp2QLrHSVGN1bYgjTj6T1ESM6irQ"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						"description": null
+						"url": {
+							"raw": "{{host}}/api/persons/self-register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"persons",
+								"self-register"
+							]
+						}
 					},
 					"response": []
 				}
@@ -74,14 +99,16 @@
 		},
 		{
 			"name": "Data",
-			"description": "",
 			"item": [
 				{
 					"name": "Public Data: Countries",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/public/data/countries",
 							"host": [
@@ -93,8 +120,7 @@
 								"data",
 								"countries"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -103,7 +129,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/public/data/countries/us/states",
 							"host": [
@@ -117,8 +146,7 @@
 								"us",
 								"states"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -127,7 +155,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/public/data/countries/ca/states",
 							"host": [
@@ -141,25 +172,23 @@
 								"ca",
 								"states"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Calendar",
-			"description": "",
+			"name": "Calendars",
 			"item": [
 				{
-					"name": "Public Calendar: Events",
+					"name": "Public Calendar: Events (JSON)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "{{host}}/api/public/calendar/events",
+							"raw": "{{host}}/api/public/calendar/{{CalendarAccessToken}}/events",
 							"host": [
 								"{{host}}"
 							],
@@ -167,6 +196,7 @@
 								"api",
 								"public",
 								"calendar",
+								"{{CalendarAccessToken}}",
 								"events"
 							]
 						},
@@ -175,13 +205,13 @@
 					"response": []
 				},
 				{
-					"name": "Public Calendar: ICS",
+					"name": "Public Calendar: Events (ICS)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "{{host}}/api/public/calendar/events",
+							"raw": "{{host}}/api/public/calendar/{{CalendarAccessToken}}/ICS",
 							"host": [
 								"{{host}}"
 							],
@@ -189,12 +219,35 @@
 								"api",
 								"public",
 								"calendar",
-								"events"
+								"{{CalendarAccessToken}}",
+								"ICS"
 							]
 						},
 						"description": ""
 					},
 					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8dbccaa9-885a-4430-959b-5fd664a50d7c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "40e1aad7-3a8d-4e6d-97e8-6e55abaefb8e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -203,7 +256,7 @@
 			"description": "",
 			"item": [
 				{
-					"name": "Login",
+					"name": "Public API Login",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -239,7 +292,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{host}}/api/public/echo",
 					"host": [
@@ -254,6 +310,28 @@
 				"description": "Return Echo message"
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b562f04a-d73c-4ec5-872a-2790a3632630",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "11d76ead-be8c-40d8-8016-98381cb94701",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
