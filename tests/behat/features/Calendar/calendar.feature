@@ -5,5 +5,5 @@ Feature: Calendar
 
   Scenario: Open the calendar
     Given I am authenticated as "admin" using "changeme"
-    And  I am on "/calendar.php"
-    Then I should see "Church Calendar"
+    And  I am on "/v2/calendar"
+    Then I should see "Calendar"

@@ -39,7 +39,7 @@ CREATE TABLE `menuconfig_mcf` (
 
 INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`, `icon`) VALUES
   (1, 'root', '', 1, 'Main', 'Main', '', '', 'bAll', NULL, 0, 0, NULL, 1, 0, NULL),
-  (2, 'calendar', 'root', 0, 'Calendar', 'Calendar', 'calendar.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, 'fa-calendar'),
+  (2, 'calendar', 'root', 0, 'Calendar', 'Calendar', 'v2/calendar', '', 'bAll', NULL, 0, 0, NULL, 1, 1, 'fa-calendar'),
 
   (10, 'people', 'root', 1, 'People', 'People', '', 'People', 'bAll', NULL, 0, 0, NULL, 1, 2, 'fa-users'),
   (11, 'membdash', 'people', 0, 'Dashboard', 'Dashboard', 'PeopleDashboard.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 1, NULL),

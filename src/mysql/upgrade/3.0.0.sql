@@ -14,10 +14,13 @@ CREATE TABLE `event_audience` (
 
 DROP TABLE IF EXISTS `calendars`;
 CREATE TABLE `calendars` (
-  `calendar_id` INT NOT NULL,
+  `calendar_id` INT NOT NULL auto_increment,
   `name` VARCHAR(128) NOT NULL,
-  `accesstoken` VARCHAR(99),
-  PRIMARY KEY (`calendar_id`)
+  `accesstoken` VARCHAR(255),
+  `foregroundColor` VARCHAR(6),
+  `backgroundColor` VARCHAR(6),
+  PRIMARY KEY (`calendar_id`),
+  UNIQUE KEY `accesstoken` (`accesstoken`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 

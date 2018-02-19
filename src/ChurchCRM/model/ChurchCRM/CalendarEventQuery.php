@@ -2,10 +2,10 @@
 
 namespace ChurchCRM;
 
-use ChurchCRM\Base\CalendarEvents as BaseCalendarEvents;
+use ChurchCRM\Base\CalendarEventQuery as BaseCalendarEventQuery;
 
 /**
- * Skeleton subclass for representing a row from the 'calendar_events' table.
+ * Skeleton subclass for performing query and update operations on the 'calendar_events' table.
  *
  * This is a join-table to link an event with a calendar
  *
@@ -14,7 +14,7 @@ use ChurchCRM\Base\CalendarEvents as BaseCalendarEvents;
  * long as it does not already exist in the output directory.
  *
  */
-class CalendarEvents extends BaseCalendarEvents
+class CalendarEventQuery extends BaseCalendarEventQuery
 {
 
 }
