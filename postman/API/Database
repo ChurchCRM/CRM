@@ -18,18 +18,44 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "{{host}}/api/user1/api/reset",
+					"raw": "{{host}}/api/database/reset",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"user1",
-						"api",
+						"database",
 						"reset"
 					]
 				},
 				"description": "Drops all DB tables and rebuilds them.\nMust have Admin role"
+			},
+			"response": []
+		},
+		{
+			"name": "Database - Clear People",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "fin48waG4rIWwfLvTstDr8ZJtP6aNdSTm7NjsNPm6n0rtKNd37"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{host}}/api/database/people/clear",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"database",
+						"people",
+						"clear"
+					]
+				},
+				"description": "Clear all people in the system.\nMust have Admin role"
 			},
 			"response": []
 		}
