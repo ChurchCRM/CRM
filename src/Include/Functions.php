@@ -54,7 +54,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     }
 
     // If this user needs to change password, send to that page
-    if ($_SESSION['bNeedPasswordChange'] && !isset($bNoPasswordRedirect)) {
+    if ($_SESSION['user']->getNeedPasswordChange() && !isset($bNoPasswordRedirect)) {
         RedirectUtils::Redirect('UserPasswordChange.php?PersonID='.$_SESSION['user']->getId());
         exit;
     }
