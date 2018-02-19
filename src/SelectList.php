@@ -117,7 +117,7 @@ $_SESSION['bSearchFamily'] = ($sMode != 'person');
 
 if (array_key_exists('Number', $_GET)) {
     $_SESSION['SearchLimit'] = InputUtils::LegacyFilterInput($_GET['Number'], 'int');
-    $tmpUser = UserQuery::create()->findPk($_SESSION['iUserID']);
+    $tmpUser = UserQuery::create()->findPk($_SESSION['user']->getId());
     $tmpUser->setSearchLimit($_SESSION['SearchLimit']);
     $tmpUser->save();
 }

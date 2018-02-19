@@ -178,7 +178,7 @@ if ($per_Envelope > 0) {
 $iTableSpacerWidth = 10;
 
 $bOkToEdit = ($_SESSION['bEditRecords'] ||
-    ($_SESSION['bEditSelf'] && $per_ID == $_SESSION['iUserID']) ||
+    ($_SESSION['bEditSelf'] && $per_ID == $_SESSION['user']->getId()) ||
     ($_SESSION['bEditSelf'] && $per_fam_ID == $_SESSION['iFamID'])
 );
 

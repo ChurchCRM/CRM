@@ -50,7 +50,7 @@ if ($iPersonID > 0) {
 
     if (!(
         $_SESSION['bEditRecords'] ||
-        ($_SESSION['bEditSelf'] && $iPersonID == $_SESSION['iUserID']) ||
+        ($_SESSION['bEditSelf'] && $iPersonID == $_SESSION['user']->getId()) ||
         ($_SESSION['bEditSelf'] && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['iFamID'])
     )
     ) {
@@ -302,7 +302,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
             $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
-					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['iUserID'].')';
+					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['user']->getId().')';
             //Execute the SQL
             RunQuery($sSQL);
             //Get the key back
@@ -328,7 +328,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             } else {
                 $sSQL .= 'NULL';
             }
-            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['iUserID'].',';
+            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['user']->getId().',';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -357,7 +357,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $sSQL .= ', per_Envelope = '.$iEnvelope;
             }
 
-            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['iUserID'].', per_FriendDate =';
+            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['user']->getId().', per_FriendDate =';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -381,7 +381,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
 
         $note = new Note();
-        $note->setEntered($_SESSION['iUserID']);
+        $note->setEntered($_SESSION['user']->getId());
         // If this is a new person, get the key back and insert a blank row into the person_custom table
         if ($bGetKeyBack) {
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';

@@ -18,7 +18,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-$iPersonID = $_SESSION['iUserID'];
+$iPersonID = $_SESSION['user']->getId();
 
 // Save Settings
 if (isset($_POST['save'])) {

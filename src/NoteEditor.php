@@ -79,14 +79,14 @@ if (isset($_POST['Submit'])) {
             $note->setPrivate($bPrivate);
             $note->setText($sNoteText);
             $note->setType('note');
-            $note->setEntered($_SESSION['iUserID']);
+            $note->setEntered($_SESSION['user']->getId());
             $note->save();
         } else {
             $note = NoteQuery::create()->findPk($iNoteID);
             $note->setPrivate($bPrivate);
             $note->setText($sNoteText);
             $note->setDateLastEdited(new DateTime());
-            $note->setEditedBy($_SESSION['iUserID']);
+            $note->setEditedBy($_SESSION['user']->getId());
             $note->save();
         }
 

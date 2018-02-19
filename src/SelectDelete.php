@@ -55,12 +55,12 @@ $DonationMessage = '';
 if ($_SESSION['bFinance'] && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
     $today = date('Y-m-d');
     $sSQL = "UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
-		plg_DateLastEdited ='$today', plg_EditedBy='" . $_SESSION['iUserID']
+		plg_DateLastEdited ='$today', plg_EditedBy='" . $_SESSION['user']->getId()
         . "' WHERE plg_FamID='$iFamilyID'";
     RunQuery($sSQL);
 
     $sSQL = "UPDATE egive_egv SET egv_famID='$iDonationFamilyID',
-		egv_DateLastEdited ='$today', egv_EditedBy='" . $_SESSION['iUserID']
+		egv_DateLastEdited ='$today', egv_EditedBy='" . $_SESSION['user']->getId()
         . "' WHERE egv_famID='$iFamilyID'";
     RunQuery($sSQL);
 
