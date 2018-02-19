@@ -160,7 +160,7 @@ function GetSecuritySettings()
     for ($i = 0; $i < count($aSecurityListPrimal); $i++) {
         if (array_key_exists($aSecurityListPrimal[$i], $_SESSION) && $_SESSION[$aSecurityListPrimal[$i]]) {
             $aSecurityListFinal[] = $aSecurityListPrimal[$i];
-        } elseif ($aSecurityListPrimal[$i] == 'bAddEvent' && $_SESSION['bAdmin']) {
+        } elseif ($aSecurityListPrimal[$i] == 'bAddEvent' && $_SESSION['user']->isAdmin()) {
             $aSecurityListFinal[] = 'bAddEvent';
         }
     }

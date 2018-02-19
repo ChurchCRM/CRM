@@ -70,9 +70,6 @@ if (isset($_POST['User'])) {
         // Set the pagination Search Limit
         $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 
-        // If user has administrator privilege, override other settings and enable all permissions.
-        $_SESSION['bAdmin'] = $currentUser->isAdmin();
-
         $_SESSION['bAddRecords'] = $currentUser->isAddRecordsEnabled();
         $_SESSION['bEditRecords'] = $currentUser->isEditRecordsEnabled();
         $_SESSION['bDeleteRecords'] = $currentUser->isDeleteRecordsEnabled();

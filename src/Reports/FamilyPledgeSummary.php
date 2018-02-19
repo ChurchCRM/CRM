@@ -68,7 +68,7 @@ if (array_key_exists('only_owe', $_POST)) {
 }
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
+if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

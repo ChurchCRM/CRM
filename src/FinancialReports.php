@@ -312,7 +312,7 @@ if ($sReportType == '') {
         echo '<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>';
     }
 
-    if ((($_SESSION['bAdmin'] && $bCSVAdminOnly) || !$bCSVAdminOnly)
+    if ((($_SESSION['user']->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
         && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers')) {
         echo '<tr><td class=LabelColumn>'.gettext('Output Method:').'</td>';
         echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>PDF";

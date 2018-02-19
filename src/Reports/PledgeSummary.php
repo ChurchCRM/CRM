@@ -28,7 +28,7 @@ $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
+if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
