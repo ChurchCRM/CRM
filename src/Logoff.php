@@ -13,9 +13,6 @@ if (!empty($_SESSION['user'])) {
     if (!isset($_SESSION['sshowPayments']) || ($_SESSION['sshowPayments'] == '')) {
         $_SESSION['sshowPayments'] = 0;
     }
-    if (!isset($_SESSION['bSearchFamily']) || ($_SESSION['bSearchFamily'] == '')) {
-        $_SESSION['bSearchFamily'] = 0;
-    }
 
     $currentUser = UserQuery::create()->findPk($_SESSION['user']->getId());
     if (!empty($currentUser)) {
@@ -25,7 +22,6 @@ if (!empty($_SESSION['user'])) {
         $currentUser->setDefaultFY($_SESSION['idefaultFY']);
         $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
 
-        $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
         $currentUser->save();
     }
 }

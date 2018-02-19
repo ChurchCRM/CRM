@@ -112,13 +112,11 @@ switch ($sMode) {
         break;
 }
 
-// Save default search mode
-$_SESSION['bSearchFamily'] = ($sMode != 'person');
-
 if (array_key_exists('Number', $_GET)) {
     $_SESSION['SearchLimit'] = InputUtils::LegacyFilterInput($_GET['Number'], 'int');
     $tmpUser = UserQuery::create()->findPk($_SESSION['user']->getId());
     $tmpUser->setSearchLimit($_SESSION['SearchLimit']);
+    $tmpUser->setSearchfamily($sMode != 'person');
     $tmpUser->save();
 }
 

@@ -89,9 +89,6 @@ if (isset($_POST['User'])) {
         $_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
         $_SESSION['iCurrentDeposit'] = $currentUser->getCurrentDeposit();
 
-        // Search preference
-        $_SESSION['bSearchFamily'] = $currentUser->getSearchfamily();
-
         $systemService = new SystemService();
         $_SESSION['latestVersion'] = $systemService->getLatestRelese();
         NotificationService::updateNotifications();
