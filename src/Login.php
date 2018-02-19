@@ -64,42 +64,18 @@ if (isset($_POST['User'])) {
 
         $_SESSION['user'] = $currentUser;
 
-        // Set the User's family id in case EditSelf is enabled
-        $_SESSION['iFamID'] = $currentUser->getPerson()->getFamId();
-
         // Set the pagination Search Limit
         $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 
-        $_SESSION['bAddRecords'] = $currentUser->isAddRecordsEnabled();
-        $_SESSION['bEditRecords'] = $currentUser->isEditRecordsEnabled();
-        $_SESSION['bDeleteRecords'] = $currentUser->isDeleteRecordsEnabled();
         $_SESSION['bMenuOptions'] = $currentUser->isMenuOptionsEnabled();
         $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
         $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
-        $_SESSION['bNotes'] = $currentUser->isNotesEnabled();
-        $_SESSION['bEditSelf'] = $currentUser->isEditSelfEnabled();
-        $_SESSION['bCanvasser'] = $currentUser->isCanvasserEnabled();
-
-        // Set the FailedLogins
-        $_SESSION['iFailedLogins'] = $currentUser->getFailedLogins();
-
-        // Set the LoginCount
-        $_SESSION['iLoginCount'] = $currentUser->getLoginCount();
-
-        // Set the Last Login
-        $_SESSION['dLastLogin'] = $currentUser->getLastLogin();
-
-        // Set the Style Sheet
-        $_SESSION['sStyle'] = $currentUser->getStyle();
 
         // Create the Cart
         $_SESSION['aPeopleCart'] = [];
 
         // Create the variable for the Global Message
         $_SESSION['sGlobalMessage'] = '';
-
-        // Set whether or not we need a password change
-        $_SESSION['bNeedPasswordChange'] = $currentUser->getNeedPasswordChange();
 
         // Initialize the last operation time
         $_SESSION['tLastOperation'] = time();

@@ -132,16 +132,9 @@ $security_matrix = GetSecuritySettings();
 function GetSecuritySettings()
 {
     $aSecurityListPrimal[] = 'bAdmin';
-    $aSecurityListPrimal[] = 'bAddRecords';
-    $aSecurityListPrimal[] = 'bEditRecords';
-    $aSecurityListPrimal[] = 'bDeleteRecords';
     $aSecurityListPrimal[] = 'bMenuOptions';
     $aSecurityListPrimal[] = 'bManageGroups';
-    $aSecurityListPrimal[] = 'bFinance';
-    $aSecurityListPrimal[] = 'bNotes';
     $aSecurityListPrimal[] = 'bCommunication';
-    $aSecurityListPrimal[] = 'bCanvasser';
-    $aSecurityListPrimal[] = 'bAddEvent';
     $aSecurityListPrimal[] = 'bSeePrivacyData';
 
     $ormSecGrpLists = UserConfigQuery::Create()
