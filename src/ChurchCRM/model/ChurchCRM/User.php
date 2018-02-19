@@ -38,6 +38,11 @@ class User extends BaseUser
         return $this->getPerson()->getFullName();
     }
 
+    public function isAddEvent() 
+    {
+      return $this->isAdmin() || $_SESSION['bAddEvent'];
+    }
+    
     public function isAddRecordsEnabled()
     {
         return $this->isAdmin() || $this->isAddRecords();

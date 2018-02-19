@@ -389,7 +389,7 @@ window.displayEventModal = {
   },
   getButtons: function () {
     buttons =  [];
-    if (calendarJSArgs.isModifiable) {
+    if (window.CRM.calendarJSArgs.isModifiable) {
       buttons.push({
         label: i18next.t("Edit"),
         className: "btn btn-success",
@@ -398,7 +398,7 @@ window.displayEventModal = {
         }
       });
     }
-    if (calendarJSArgs.isModifiable) {
+    if (window.CRM.calendarJSArgs.isModifiable) {
       buttons.push({
         label: i18next.t("Delete"),
         className: "btn btn-danger pull-left",
@@ -526,8 +526,8 @@ function initializeCalendar() {
       right: 'month,agendaWeek,agendaDay,listMonth'
     },
     height: 600,
-    selectable: calendarJSArgs.isModifiable,
-    editable: calendarJSArgs.isModifiable,
+    selectable: window.CRM.calendarJSArgs.isModifiable,
+    editable: window.CRM.calendarJSArgs.isModifiable,
     eventDrop: window.moveEventModal.handleEventDrop,
     eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,

@@ -25,6 +25,6 @@ function getCalendar(Request $request, Response $response, array $args) {
 
 function getCalendarJSArgs() {
   return array( 
-      'isModifiable' => (($_SESSION['bAddEvent'] || $_SESSION['bAdmin']) ? "true" : "false" )
+      'isModifiable' => $_SESSION['user']->isAddEvent()
   );
 }

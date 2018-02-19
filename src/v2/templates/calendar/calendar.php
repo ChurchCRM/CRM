@@ -40,7 +40,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  var calendarJSArgs = <?= json_encode($calendarJSArgs) ?>;
+  window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs) ?>;
 </script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
