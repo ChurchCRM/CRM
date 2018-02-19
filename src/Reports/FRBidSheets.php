@@ -19,7 +19,7 @@ $iCurrentFundraiser = $_GET['CurrentFundraiser'];
 class PDF_FRBidSheetsReport extends ChurchInfoReport
 {
     // Constructor
-    public function PDF_FRBidSheetsReport()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
         $this->leftX = 10;

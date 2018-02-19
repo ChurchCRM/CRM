@@ -22,7 +22,7 @@ $curY = 0;
 class PDF_FRCatalogReport extends ChurchInfoReport
 {
     // Constructor
-    public function PDF_FRCatalogReport()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
         $this->leftX = 10;
