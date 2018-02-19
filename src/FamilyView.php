@@ -868,7 +868,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                             <?php
     } ?>
 
-                            <?php if ($_SESSION['bCanvasser']) {
+                            <?php if ($_SESSION['user']->isCanvasserEnabled()) {
         ?>
 
                             <p align="center">

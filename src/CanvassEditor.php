@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have canvasser permission to use this form
-if (!$_SESSION['bCanvasser']) {
+if (!$_SESSION['user']->isCanvasserEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

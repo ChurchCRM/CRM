@@ -152,7 +152,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $nEnvelope = "'0'";
     }
 
-    if ($_SESSION['bCanvasser']) { // Only take modifications to this field if the current user is a canvasser
+    if ($_SESSION['user']->isCanvasserEnabled()) { // Only take modifications to this field if the current user is a canvasser
         $bOkToCanvass = isset($_POST['OkToCanvass']);
         $iCanvasser = 0;
         if (array_key_exists('Canvasser', $_POST)) {
@@ -345,7 +345,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         "fam_DateLastEdited='".date('YmdHis')."',".
                         'fam_EditedBy = '.$_SESSION['user']->getId().','.
                         'fam_SendNewsLetter = '.$bSendNewsLetterString;
-            if ($_SESSION['bCanvasser']) {
+            if ($_SESSION['user']->isCanvasserEnabled()) {
                 $sSQL .= ', fam_OkToCanvass = '.$bOkToCanvassString.
                                     ", fam_Canvasser = '".$iCanvasser."'";
             }
@@ -812,7 +812,7 @@ require 'Include/Header.php';
 			<?php
                             } /* Wedding date can be hidden - General Settings */ ?>
 			<div class="row">
-				<?php if ($_SESSION['bCanvasser']) { // Only show this field if the current user is a canvasser?>
+				<?php if ($_SESSION['user']->isCanvasserEnabled()) { // Only show this field if the current user is a canvasser?>
 					<div class="form-group col-md-4">
 						<label><?= gettext('Ok To Canvass') ?>: </label><br/>
 						<input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) {
