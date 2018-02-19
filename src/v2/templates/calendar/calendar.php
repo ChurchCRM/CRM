@@ -22,9 +22,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="box-header with-border">
         <h3 class="box-title"><?= gettext('User Calendars') ?></h3>
       </div>
-      <div class="box-body" id="userCalendars">
-
-
+      <div class="box-body" >
+        <div id="userCalendars" class="container-fluid"></div>
       </div>
      </div>
   </div>
@@ -33,7 +32,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="box-header with-border">
         <h3 class="box-title"><?= gettext('System Calendars') ?></h3>
       </div>
-      <div class="box-body" id="systemCalendars">
+      <div class="box-body">
+        <div  id="systemCalendars" class="container-fluid"></div>
       </div>
      </div>
   </div>

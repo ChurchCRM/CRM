@@ -540,13 +540,15 @@ function initializeCalendar() {
 };
 
 function getCalendarFilterElement(calendar,type) {
-  return "<div>" + 
-         "<input type='checkbox' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>"+ 
-         "<label for='"+calendar.Name+"'>"+calendar.Name+"</label>"+
-         "<div style='float:right;'>"+
-         "<div style='display:inline-block; padding-left:5px; padding-right:5px; color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>"+
-         (type === "user"  ? "<div style='display:inline-block; padding-left:5px; padding-right:5px;'><i class='calendarproperties fa fa-eye' aria-hidden='true' data-calendarid='"+calendar.Id+"' ></i></div>" :"") +
-         "</div>";
+  return "<div class='row'>" + 
+          "<div class='col-xs-1' style='padding-left:5px; padding-right:5px;'>" +
+            "<input type='checkbox' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>"+ 
+          "</div>"+
+          "<div class='col-xs-7' style='padding-left:5px; padding-right:5px;' ><label for='"+calendar.Name+"'>"+calendar.Name+"</label></div>"+
+          "<div class='col-xs-4' style='padding-left:5px; padding-right:5px;'>"+
+            "<div style='display:inline-block; padding-left:5px; padding-right:5px; color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>"+
+            (type === "user"  ? "<div style='display:inline-block; padding-left:5px; padding-right:5px;'><i class='calendarproperties fa fa-eye' aria-hidden='true' data-calendarid='"+calendar.Id+"' ></i></div>" :"") +
+        "</div>";
 }
 
 function registerCalendarSelectionEvents() {
