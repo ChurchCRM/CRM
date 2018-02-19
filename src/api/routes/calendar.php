@@ -37,10 +37,7 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
     $Calendar = SystemCalendars::getCalendarById($args['id']);
 
     if ($Calendar) {
-      $events=  $Calendar->getEvents();
-      
-      echo $events->toJSON();
-      die();
+      $events = $Calendar->getEvents();
       return $response->withJson($Calendar->toJSON());
     }
 }
@@ -50,8 +47,6 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 
     if ($Calendar) {
       $event=  $Calendar->getEventById($args['eventid']);
-      echo $event->toJSON();
-      die();
       return $response->withJson($Calendar->toJSON());
     }
 }
@@ -132,12 +127,12 @@ function NewAccessToken($request, Response $response, $args) {
   
   if (!isset($args['id']))
   {
-    throw new \Exception(gettext("Missing calendar id"));
+    return $response->withStatus(400)->withJson(array("status"=>gettext("Invalid request: Missing calendar id")));
   }
   $Calendar = CalendarQuery::create()
               ->findOneById($args['id']);
   if (!$Calendar) {
-    throw new \Exception (gettext("Invalid Calendar id"));
+    return $response->withStatus(404)->withJson(array("status"=>gettext("Not Found: Unknown calendar id").": ".$args['id']));
   }
   $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
   $Calendar->save();

@@ -327,7 +327,7 @@ CREATE TABLE `calendars` (
   `foregroundColor` VARCHAR(6),
   `backgroundColor` VARCHAR(6),
   PRIMARY KEY (`calendar_id`),
-  UNIQUE KEY `accesstoken` (`accesstoken`),
+  UNIQUE KEY `accesstoken` (`accesstoken`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 

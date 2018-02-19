@@ -20,6 +20,11 @@ class Event extends BaseEvent
   
   private $editable;
   
+  public function __construct() {
+    parent::__construct();
+    $this->editable = true;
+  }
+  
   public function isEditable()
   {
     return $this->editable;
@@ -27,11 +32,6 @@ class Event extends BaseEvent
   
   public function setEditable($editable) {
     $this->editable = $editable;
-  }
-  
-  public function __construct() {
-    parent::__construct();
-    $this->editable = true;
   }
   
   public function checkInPerson($PersonId)

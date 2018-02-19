@@ -7,6 +7,7 @@ use ChurchCRM\PersonQuery;
 use Propel\Runtime\Collection\ObjectCollection;
 use ChurchCRM\Event;
 use ChurchCRM\Calendar;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class BirthdaysCalendar implements SystemCalendar {
  
@@ -32,14 +33,14 @@ class BirthdaysCalendar implements SystemCalendar {
     
   public function getEvents() {
     $people = PersonQuery::create()
-            ->filterByBirthDay('', \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+            ->filterByBirthDay('', Criteria::NOT_EQUAL)
             ->find();
     return $this->peopleCollectionToEvents($people);       
   }
   
   public function getEventById($Id) {
     $people = PersonQuery::create()
-            ->filterByBirthDay('', \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+            ->filterByBirthDay('', Criteria::NOT_EQUAL)
             ->filterById($Id)
             ->find();
     return $this->peopleCollectionToEvents($people);  
@@ -52,7 +53,7 @@ class BirthdaysCalendar implements SystemCalendar {
       $birthday = new Event();
       $birthday->setId($person->getId());
       $birthday->setEditable(false);
-      $birthday->setTitle(gettext("Birthday: ".$person->getFullName()));
+      $birthday->setTitle(gettext("Birthday").": ".$person->getFullName());
       $year = date('Y');
       $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
       $events->push(clone $birthday);

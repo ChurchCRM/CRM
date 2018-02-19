@@ -53,7 +53,7 @@ class AnniversariesCalendar implements SystemCalendar {
       $anniversary = new Event();
       $anniversary->setId($family->getId());
       $anniversary->setEditable(false);
-      $anniversary->setTitle(gettext("Anniversary: ".$family->getFamilyString()));
+      $anniversary->setTitle(gettext("Anniversary").": ".$family->getFamilyString());
       $year = date('Y');
       $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
       $events->push(clone $anniversary);
