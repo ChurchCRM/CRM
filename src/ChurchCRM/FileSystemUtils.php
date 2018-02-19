@@ -2,7 +2,10 @@
 
 namespace ChurchCRM
 {
-  class FileSystemUtils
+
+    use ChurchCRM\Utils\LoggerUtils;
+
+    class FileSystemUtils
   {
       public static function recursiveRemoveDirectory($directory, $retainParentFolderAndFiles=false)
       {
@@ -36,6 +39,17 @@ namespace ChurchCRM
               }
           } elseif (file_exists($src)) {
               copy($src, $dst);
+          }
+      }
+
+      public static function clearFiles($path, $extArray)
+      {
+          foreach ($extArray as $ext) {
+              LoggerUtils::getAppLogger()->info($path . "*." . $ext);
+              foreach (GLOB($path . "*." . $ext) AS $filename) {
+                  LoggerUtils::getAppLogger()->info($filename);
+                  UNLINK($filename);
+              }
           }
       }
   }
