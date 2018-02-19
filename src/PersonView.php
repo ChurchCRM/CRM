@@ -395,7 +395,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
                 <?php
             }
-            if ($_SESSION['bAdmin']) {
+            if ($_SESSION['user']->isAdmin()) {
                 if (!$person->isUser()) {
                     ?>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Make User') ?></a>

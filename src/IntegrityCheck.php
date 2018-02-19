@@ -10,7 +10,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Integrity Check Results');
-if (!$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isAdmin()) {
     RedirectUtils::Redirect('index.php');
     exit;
 }

@@ -17,7 +17,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // For now ... require $bAdmin
 // Future ... $bManageVol
 
-if (!$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

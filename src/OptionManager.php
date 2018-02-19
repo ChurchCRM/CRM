@@ -42,7 +42,7 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     case 'securitygrp':
-        if (!$_SESSION['bAdmin']) {
+        if (!$_SESSION['user']->isAdmin()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
