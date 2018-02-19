@@ -247,7 +247,7 @@ class Person extends BasePerson implements iPhoto
                 $note = new Note();
                 $note->setText(gettext("Profile Image Deleted"));
                 $note->setType("photo");
-                $note->setEntered($_SESSION['iUserID']);
+                $note->setEntered($_SESSION['user']->getId());
                 $note->setPerId($this->getId());
                 $note->save();
                 return true;
@@ -271,7 +271,7 @@ class Person extends BasePerson implements iPhoto
             $note = new Note();
             $note->setText(gettext("Profile Image uploaded"));
             $note->setType("photo");
-            $note->setEntered($_SESSION['iUserID']);
+            $note->setEntered($_SESSION['user']->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setPerId($this->getId());
             $note->save();

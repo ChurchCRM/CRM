@@ -127,7 +127,7 @@ if (isset($_POST['Submit'])) {
         $tWhyNotInterested = $can_WhyNotInterested;
     } else {
         // Set some default values
-        $iCanvasser = $_SESSION['iUserID'];
+        $iCanvasser = $_SESSION['user']->getId();
         $dDate = date('Y-m-d');
 
         $dDate = '';

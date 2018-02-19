@@ -190,7 +190,7 @@ class Family extends BaseFamily implements iPhoto
                 break;
             case "verify-link":
               $note->setText(gettext('Verification email sent'));
-              $note->setEnteredBy($_SESSION['iUserID']);
+              $note->setEnteredBy($_SESSION['user']->getId());
               break;
         }
 
@@ -253,7 +253,7 @@ class Family extends BaseFamily implements iPhoto
           $note = new Note();
           $note->setText(gettext("Profile Image Deleted"));
           $note->setType("photo");
-          $note->setEntered($_SESSION['iUserID']);
+          $note->setEntered($_SESSION['user']->getId());
           $note->setPerId($this->getId());
           $note->save();
           return true;
@@ -266,7 +266,7 @@ class Family extends BaseFamily implements iPhoto
         $note = new Note();
         $note->setText(gettext("Profile Image uploaded"));
         $note->setType("photo");
-        $note->setEntered($_SESSION['iUserID']);
+        $note->setEntered($_SESSION['user']->getId());
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setFamId($this->getId());
         $note->save();

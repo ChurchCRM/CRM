@@ -54,7 +54,7 @@ $MenuFirst = 1;
   Header_modals();
   Header_body_scripts();
 
-  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/persons/'.$_SESSION['iUserID'].'/thumbnail';
+  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/persons/'.$_SESSION['user']->getId().'/thumbnail';
   $MenuFirst = 1;
   ?>
 

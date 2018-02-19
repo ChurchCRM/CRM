@@ -318,7 +318,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         $sEmail."',".
                         $dWeddingDate.",'".
                         date('YmdHis')."',".
-                        $_SESSION['iUserID'].','.
+                        $_SESSION['user']->getId().','.
                         $bSendNewsLetterString.','.
                         $bOkToCanvassString.",'".
                         $iCanvasser."',".
@@ -343,7 +343,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         'fam_WeddingDate='.$dWeddingDate.','.
                         'fam_Envelope='.$nEnvelope.','.
                         "fam_DateLastEdited='".date('YmdHis')."',".
-                        'fam_EditedBy = '.$_SESSION['iUserID'].','.
+                        'fam_EditedBy = '.$_SESSION['user']->getId().','.
                         'fam_SendNewsLetter = '.$bSendNewsLetterString;
             if ($_SESSION['bCanvasser']) {
                 $sSQL .= ', fam_OkToCanvass = '.$bOkToCanvassString.
@@ -409,7 +409,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 								$iFamilyID,
 								$aRoles[$iCount],
 								'".date('YmdHis')."',
-								".$_SESSION['iUserID'].",
+								".$_SESSION['user']->getId().",
 								$aGenders[$iCount],
 								$aBirthDays[$iCount],
 								$aBirthMonths[$iCount],
@@ -421,7 +421,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->setPerId($dbPersonId);
                     $note->setText(gettext('Created via Family'));
                     $note->setType('create');
-                    $note->setEntered($_SESSION['iUserID']);
+                    $note->setEntered($_SESSION['user']->getId());
                     $note->save();
                     $sSQL = 'INSERT INTO person_custom (per_ID) VALUES ('
                                 .$dbPersonId.')';
@@ -462,7 +462,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->setPerId($aPersonIDs[$iCount]);
                     $note->setText(gettext('Updated via Family'));
                     $note->setType('edit');
-                    $note->setEntered($_SESSION['iUserID']);
+                    $note->setEntered($_SESSION['user']->getId());
                     $note->save();
                 }
             }
