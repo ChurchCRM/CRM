@@ -90,7 +90,7 @@ if (!Cart::HasPeople()) {
                 <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
             <?php
         }
-        if ($_SESSION['bAddRecords']) {
+        if ($_SESSION['user']->isAddRecordsEnabled()) {
             ?>
             <a href="CartToFamily.php" class="btn btn-app"><i
                         class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>

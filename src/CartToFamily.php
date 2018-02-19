@@ -19,7 +19,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have add records permission
-if (!$_SESSION['bAddRecords']) {
+if (!$_SESSION['user']->isAddRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

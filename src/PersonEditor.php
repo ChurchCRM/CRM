@@ -57,7 +57,7 @@ if ($iPersonID > 0) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
-} elseif (!$_SESSION['bAddRecords']) {
+} elseif (!$_SESSION['user']->isAddRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -1225,7 +1225,7 @@ require 'Include/Header.php';
   <?php
                         } ?>
     <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
-    <?php if ($_SESSION['bAddRecords']) {
+    <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
                         } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"

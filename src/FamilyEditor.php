@@ -44,7 +44,7 @@ if ($iFamilyID > 0) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
-} elseif (!$_SESSION['bAddRecords']) {
+} elseif (!$_SESSION['user']->isAddRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -1113,7 +1113,7 @@ require 'Include/Header.php';
     echo '<input type="hidden" Name="UpdateBirthYear" value="'.$UpdateBirthYear.'">';
 
     echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save').'" Name="FamilySubmit"> ';
-    if ($_SESSION['bAddRecords']) {
+    if ($_SESSION['user']->isAddRecordsEnabled()) {
         echo ' <input type="submit" class="btn btn-info" value="'.gettext('Save and Add').'" name="FamilySubmitAndAdd"> ';
     }
     echo ' <input type="button" class="btn" value="'.gettext('Cancel').'" Name="FamilyCancel"';

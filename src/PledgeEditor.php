@@ -685,7 +685,7 @@ require 'Include/Header.php';
     <?php if (!$dep_Closed) {
         ?>
         <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
-        <?php if ($_SESSION['bAddRecords']) {
+        <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
             echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
         } ?>
           <?php

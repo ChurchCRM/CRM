@@ -291,7 +291,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
 
             <div class="form-group text-center">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="DonatedItemSubmit">
-                <?php if ($_SESSION['bAddRecords']): ?>
+                <?php if ($_SESSION['user']->isAddRecordsEnabled()): ?>
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
                 <?php endif; ?>
                 <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel"
