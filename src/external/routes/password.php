@@ -18,28 +18,6 @@ if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
             return $renderer->render($response, 'enter-username.php', ['sRootPath' => SystemURLs::getRootPath()]);
         });
 
-        $this->post('/reset/{username}', function ($request, $response, $args) {
-            $userName = $args['username'];
-            if (!empty($userName)) {
-                $user = UserQuery::create()->findOneByUserName(strtolower(trim($userName)));
-                if (!empty($user) && !empty($user->getEmail())) {
-                    $token = new Token();
-                    $token->build("password", $user->getId());
-                    $token->save();
-                    $email = new ResetPasswordTokenEmail($user, $token->getToken());
-                    if (!$email->send()) {
-                        $this->Logger->error($email->getError());
-                    }
-                    return $response->withStatus(200)->withJson(['status' => "success"]);
-                } else {
-                    $this->Logger->error("Password reset for user " . $userName . " found no user");
-                }
-            } else {
-                $this->Logger->error("Password reset for user with no username");
-            }
-            return $response->withStatus(404);
-        });
-
         $this->get('/set/{token}', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates/password/');
             $token = TokenQuery::create()->findPk($args['token']);
