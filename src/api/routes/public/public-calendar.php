@@ -24,7 +24,7 @@ function getJSON ($request, $response) {
 
 function getICal ($request, $response, $args) {
   $calendar = getCalendar($request);
-  $calendarName = ChurchMetaData::getChurchName().": ".$calendar->getName();
+  $calendarName = $calendar->getName().": ".ChurchMetaData::getChurchName();
   $events = getEvents($request, $calendar);
   $CalendarICS = new iCal($events, $calendarName);
   $body = $response->getBody();
