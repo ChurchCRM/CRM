@@ -64,13 +64,11 @@ $('#clear-people').click(function (event) {
         },
         callback: function (result) {
             if(result) {
-                $.ajax({
-                    type: 'DELETE',
-                    url: window.CRM.root + '/api/database/people/clear',
-                    dataType: 'json',
-                    success: function (data, status, xmlHttpReq) {
-                        location.reload();
-                    }
+                window.CRM.APIRequest({
+                    method: 'DELETE',
+                    path: 'database/people/clear',
+                }).done(function (eventTypes) {
+                    showGlobalMessage(i18next.t('Data Cleared Successfully!'), "success");
                 });
             }
         }
