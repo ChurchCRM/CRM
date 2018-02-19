@@ -9,7 +9,7 @@ $app->group('/systemupgrade', function () {
     });
 
     $this->post('/doupgrade', function ($request, $response, $args) {
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $upgradeResult = $this->SystemService->doUpgrade($input->fullPath, $input->sha1);
         echo json_encode($upgradeResult);
     });

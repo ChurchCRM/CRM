@@ -21,7 +21,7 @@ use ChurchCRM\Utils\RedirectUtils;
 $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['bFinance']) {
+if (!$_SESSION['user']->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

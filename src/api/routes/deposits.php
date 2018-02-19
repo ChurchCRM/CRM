@@ -7,7 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 
 $app->group('/deposits', function () {
     $this->post('', function ($request, $response, $args) {
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $deposit = new Deposit();
         $deposit->setType($input->depositType);
         $deposit->setComment($input->depositComment);
@@ -27,7 +27,7 @@ $app->group('/deposits', function () {
 
     $this->post('/{id:[0-9]+}', function ($request, $response, $args) {
         $id = $args['id'];
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $thisDeposit = DepositQuery::create()->findOneById($id);
         $thisDeposit->setType($input->depositType);
         $thisDeposit->setComment($input->depositComment);
@@ -51,8 +51,8 @@ $app->group('/deposits', function () {
 
     $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
         $id = $args['id'];
-    //echo DepositQuery::create()->findOneById($id)->toCSV();
-    header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-'.$id.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
+        //echo DepositQuery::create()->findOneById($id)->toCSV();
+        header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
         echo ChurchCRM\PledgeQuery::create()->filterByDepid($id)
             ->joinDonationFund()->useDonationFundQuery()
             ->withColumn('DonationFund.Name', 'DonationFundName')
@@ -81,6 +81,6 @@ $app->group('/deposits', function () {
             ->find()
             ->toArray();
         return $response->withJSON($Pledges);
-        
+
     });
 });

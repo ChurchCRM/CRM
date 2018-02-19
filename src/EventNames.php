@@ -22,7 +22,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent']) {
+if (!$_SESSION['user']->isAddEvent()) {
     header('Location: Menu.php');
 }
 

@@ -18,7 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
-if (!$_SESSION['bEditRecords']) {
+if (!$_SESSION['user']->isEditRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -175,6 +175,6 @@ if (mysqli_num_rows($rsPropList) == 0) {
   <?php
     } ?>
 
-<?php 
+<?php
 require 'Include/Footer.php';
 ?>

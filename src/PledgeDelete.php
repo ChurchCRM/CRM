@@ -23,7 +23,7 @@ $sGroupKey = InputUtils::LegacyFilterInput($_GET['GroupKey'], 'string');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (!$_SESSION['bAddRecords']) {
+if (!$_SESSION['user']->isDeleteRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

@@ -22,7 +22,7 @@ use ChurchCRM\Utils\RedirectUtils;
 $groupService = new GroupService();
 
 // Security: User must have Manage Groups & Roles permission
-if (!$_SESSION['bManageGroups']) {
+if (!$_SESSION['user']->isManageGroupsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -74,7 +74,7 @@ require 'Include/Header.php';
     </tr>
     <tr>
       <td class="LabelColumn"><?= gettext('Select Role') ?>:</td>
-      <td class="TextColumn"> 
+      <td class="TextColumn">
         <select name="GroupRole" id="GroupRole">
           <option><?= gettext('No Group Selected') ?></option>
         </select>

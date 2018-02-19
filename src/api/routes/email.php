@@ -1,8 +1,8 @@
 <?php
 
-use Propel\Runtime\Propel;
-use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
+use ChurchCRM\PersonQuery;
+use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

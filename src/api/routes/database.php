@@ -1,23 +1,23 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
-use Propel\Runtime\Propel;
-use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Service\SystemService;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
+use ChurchCRM\dto\Photo;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\FamilyCustomQuery;
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\FileSystemUtils;
+use ChurchCRM\NoteQuery;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonCustomQuery;
-use ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\FamilyCustomQuery;
-use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\PersonVolunteerOpportunityQuery;
+use ChurchCRM\Service\SystemService;
+use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 use ChurchCRM\UserQuery;
-use ChurchCRM\NoteQuery;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\Photo;
-use ChurchCRM\FileSystemUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 // Routes
 

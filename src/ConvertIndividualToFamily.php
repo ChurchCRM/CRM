@@ -26,7 +26,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -40,7 +40,7 @@ $sPageTitle = gettext('Convert Individuals to Families');
 
 require 'Include/Header.php';
 
-$iUserID = $_SESSION['iUserID'];
+$curUserId = $_SESSION['user']->getId();
 
 // find the family ID so we can associate to person record
 $sSQL = 'SELECT MAX(fam_ID) AS iFamilyID FROM family_fam';
@@ -86,7 +86,7 @@ while ($aRow = mysqli_fetch_array($rsList)) {
                 $per_Country."','".
                 $per_HomePhone."',".
                 'NOW()'.",'".
-                $iUserID."')";
+                $curUserId."')";
 
     echo '<br>'.$sSQL;
     // RunQuery to add family record
@@ -117,7 +117,7 @@ while ($aRow = mysqli_fetch_array($rsList)) {
             '    per_Country=NULL,'.
             '    per_HomePhone=NULL,'.
             '    per_DateLastEdited=NOW(),'.
-            "    per_EditedBy='$iUserID' ".
+            "    per_EditedBy='$curUserId' ".
             "WHERE per_ID='$per_ID'";
 
     echo '<br>'.$sSQL;

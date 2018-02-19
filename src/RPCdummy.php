@@ -26,7 +26,7 @@ switch ($mode) {
 
   case Envelope2Address:
     // Security check
-    if (!$_SESSION['bFinance']) {
+    if (!$_SESSION['user']->isFinanceEnabled()) {
         exit;
     }
 
