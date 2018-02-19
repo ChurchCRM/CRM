@@ -1,14 +1,13 @@
 {
 	"info": {
 		"name": "Private API",
-		"_postman_id": "1e566155-d1a9-d2f8-9e7f-21f51c37fbd7",
+		"_postman_id": "e5c9b4e3-3210-1813-3905-62f317f135ed",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Users",
-			"description": "",
 			"item": [
 				{
 					"name": "User: API Key Regen",
@@ -52,13 +51,11 @@
 								{
 									"key": "User",
 									"value": "admin\n",
-									"description": "",
 									"type": "text"
 								},
 								{
 									"key": "Password",
 									"value": "changeme",
-									"description": "",
 									"type": "text"
 								}
 							]
@@ -80,7 +77,6 @@
 		},
 		{
 			"name": "Events",
-			"description": "",
 			"item": [
 				{
 					"name": "Events: get by Id",
@@ -139,7 +135,10 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/calendars/1/NewAccessToken",
 							"host": [
@@ -151,8 +150,7 @@
 								"1",
 								"NewAccessToken"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -188,7 +186,6 @@
 		},
 		{
 			"name": "Database",
-			"description": "",
 			"item": [
 				{
 					"name": "Database - Reset",
@@ -217,6 +214,33 @@
 							]
 						},
 						"description": "Drops all DB tables and rebuilds them.\nMust have Admin role"
+					},
+					"response": []
+				},
+				{
+					"name": "Database - Clear People",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "fin48waG4rIWwfLvTstDr8ZJtP6aNdSTm7NjsNPm6n0rtKNd37"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/database/people/clear",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"database",
+								"people",
+								"clear"
+							]
+						},
+						"description": "Clear all people in the system.\nMust have Admin role"
 					},
 					"response": []
 				}
