@@ -6,7 +6,7 @@ require 'Include/Functions.php';
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!empty($_SESSION['iUserID'])) {
+if (!empty($_SESSION['user'])) {
     if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == '')) {
         $_SESSION['sshowPledges'] = 0;
     }
@@ -17,14 +17,14 @@ if (!empty($_SESSION['iUserID'])) {
         $_SESSION['bSearchFamily'] = 0;
     }
 
-    $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
+    $currentUser = UserQuery::create()->findPk($_SESSION['user']->getId());
     if (!empty($currentUser)) {
         $currentUser->setShowPledges($_SESSION['sshowPledges']);
         $currentUser->setShowPayments($_SESSION['sshowPayments']);
         $currentUser->setShowSince($_SESSION['sshowSince']);
         $currentUser->setDefaultFY($_SESSION['idefaultFY']);
         $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
-    
+
         $currentUser->setSearchfamily($_SESSION['bSearchFamily']);
         $currentUser->save();
     }
