@@ -24,7 +24,7 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!$_SESSION['bMenuOptions']) {
+        if (!$_SESSION['user']->isMenuOptionsEnabled()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }

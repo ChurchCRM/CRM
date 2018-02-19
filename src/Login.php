@@ -64,7 +64,6 @@ if (isset($_POST['User'])) {
 
         $_SESSION['user'] = $currentUser;
 
-        $_SESSION['bMenuOptions'] = $currentUser->isMenuOptionsEnabled();
         $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
         $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
 
