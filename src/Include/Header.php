@@ -44,7 +44,7 @@ $MenuFirst = 1;
   <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
-<body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
+<body class="hold-transition <?= $_SESSION['user']->getStyle() ?> sidebar-mini">
 <?php
   Header_system_notifications();
  ?>
