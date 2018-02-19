@@ -67,9 +67,6 @@ if (isset($_POST['User'])) {
         // Set the User's family id in case EditSelf is enabled
         $_SESSION['iFamID'] = $currentUser->getPerson()->getFamId();
 
-        // Set the UserID
-        $_SESSION['iUserID'] = $currentUser->getPersonId();
-
         // Set the pagination Search Limit
         $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 
@@ -142,8 +139,8 @@ $id = 0;
 $type ="";
 
 // we hold down the last id
-if (isset($_SESSION['iUserID'])) {
-    $id = $_SESSION['iUserID'];
+if (isset($_SESSION['user'])) {
+    $id = $_SESSION['user']->getId();
 }
 
 // we hold down the last type of login : lock or nothing
@@ -178,7 +175,6 @@ session_start() ;
     // we restore only this part
 $_SESSION['iLoginType'] = $type;
 $_SESSION['username'] = $urlUserName;
-$_SESSION['iUserID'] = $id;
 $LocationFromGet = InputUtils::FilterString(urldecode($_GET['location']));
 
 if (isset($LocationFromSession) && $LocationFromSession != '') {
@@ -190,7 +186,7 @@ if (isset($LocationFromGet) && $LocationFromGet != '') {
 }
 if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
-              ->findOneByID($_SESSION['iUserID']);
+              ->findOneByID($_SESSION['user']->getId());
 } else {
     $type = $_SESSION['iLoginType'] = "";
 }
