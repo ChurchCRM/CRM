@@ -45,9 +45,8 @@ namespace ChurchCRM
       public static function clearFiles($path, $extArray)
       {
           foreach ($extArray as $ext) {
-              LoggerUtils::getAppLogger()->info($path . "*." . $ext);
+              LoggerUtils::getAppLogger()->info('Deleting files: '. $path . "*." . $ext);
               foreach (GLOB($path . "*." . $ext) AS $filename) {
-                  LoggerUtils::getAppLogger()->info($filename);
                   UNLINK($filename);
               }
           }
