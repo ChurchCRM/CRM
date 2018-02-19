@@ -34,7 +34,7 @@ if (array_key_exists('FamilyID', $_GET)) {
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
-    if (!($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->isEditSelfEnabled() && ($iFamilyID == $_SESSION['iFamID'])))) {
+    if (!($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->isEditSelfEnabled() && ($iFamilyID == $_SESSION['user']->getPerson()->getFamId())))) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }

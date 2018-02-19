@@ -158,7 +158,7 @@ $sCellPhone = ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy);
 
 $sFamilyEmails = array();
 
-$bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->isEditSelfEnabled() && ($iFamilyID == $_SESSION['iFamID'])));
+$bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->isEditSelfEnabled() && ($iFamilyID == $_SESSION['user']->getPerson()->getFamId())));
 
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

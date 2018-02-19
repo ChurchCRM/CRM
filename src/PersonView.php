@@ -179,7 +179,7 @@ $iTableSpacerWidth = 10;
 
 $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
     ($_SESSION['user']->isEditSelfEnabled() && $per_ID == $_SESSION['user']->getId()) ||
-    ($_SESSION['user']->isEditSelfEnabled() && $per_fam_ID == $_SESSION['iFamID'])
+    ($_SESSION['user']->isEditSelfEnabled() && $per_fam_ID == $_SESSION['user']->getPerson()->getFamId())
 );
 
 ?>

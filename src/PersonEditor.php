@@ -51,7 +51,7 @@ if ($iPersonID > 0) {
     if (!(
         $_SESSION['user']->isEditRecordsEnabled() ||
         ($_SESSION['user']->isEditSelfEnabled() && $iPersonID == $_SESSION['user']->getId()) ||
-        ($_SESSION['user']->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['iFamID'])
+        ($_SESSION['user']->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['user']->getPerson()->getFamId())
     )
     ) {
         RedirectUtils::Redirect('Menu.php');
