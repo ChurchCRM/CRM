@@ -104,8 +104,8 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
     $logger->info("Families deleted");
 
     // Delete Family Photos
-    FileSystemUtils::clearFiles(SystemURLs::getImagesRoot() . "/Family/", Photo::getValidExtensions());
-    FileSystemUtils::clearFiles(SystemURLs::getImagesRoot() . "/Family/thumbnails/", Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . "/Family/", Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . "/Family/thumbnails/", Photo::getValidExtensions());
     $logger->info("family photos deleted");
 
     Person2group2roleP2g2rQuery::create()->deleteAll($connection);
@@ -124,8 +124,8 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
     $logger->info("Persons aide from person logged in deleted");
 
     // Delete Person Photos
-    FileSystemUtils::clearFiles(SystemURLs::getImagesRoot() . "/Person/", Photo::getValidExtensions());
-    FileSystemUtils::clearFiles(SystemURLs::getImagesRoot() . "/Person/thumbnails/", Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . "/Person/", Photo::getValidExtensions());
+    FileSystemUtils::deleteFiles(SystemURLs::getImagesRoot() . "/Person/thumbnails/", Photo::getValidExtensions());
 
     $logger->info("people photos deleted");
 
