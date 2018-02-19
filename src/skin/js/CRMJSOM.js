@@ -312,19 +312,6 @@
         }
     }
 
-    window.CRM.events = {
-       getFutureEventes: function()
-        {
-          //this could probably be done better, as this option may present a race condition by
-          //populating a window variable with future events that future elements may rely on
-          window.CRM.APIRequest({
-            "path":"events/notDone"
-          }).done(function(data){
-            window.CRM.events.futureEvents=data.Events;
-          });
-        }
-    };
-
     window.CRM.groups = {
       'get': function() {
         return  window.CRM.APIRequest({

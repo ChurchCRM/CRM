@@ -76,7 +76,7 @@ require __DIR__.'/routes/geocoder.php';
 
 require __DIR__.'/routes/public.php';
 require __DIR__.'/routes/public-data.php';
-require __DIR__.'/routes/public-calendar.php';
+require __DIR__.'/routes/public/public-calendar.php';
 require __DIR__.'/routes/public/public-user.php';
 
 // Run app

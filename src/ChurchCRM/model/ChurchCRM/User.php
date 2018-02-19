@@ -5,6 +5,8 @@ namespace ChurchCRM;
 use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\Utils\MiscUtils;
+
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
  *
@@ -35,6 +37,11 @@ class User extends BaseUser
     public function getFullName()
     {
         return $this->getPerson()->getFullName();
+    }
+
+    public function isAddEvent()
+    {
+      return $this->isAdmin() || $_SESSION['bAddEvent'];
     }
 
     public function isAddRecordsEnabled()
@@ -125,14 +132,7 @@ class User extends BaseUser
 
     public static function randomApiKey()
     {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $apiKey = array(); //remember to declare $apiKey as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-        for ($i = 0; $i < 50; $i++) {
-            $n = rand(0, $alphaLength);
-            $apiKey[] = $alphabet[$n];
-        }
-        return implode($apiKey); //turn the array into a string
+        return MiscUtils::randomToken();
     }
 
     public function postInsert(ConnectionInterface $con = null)
