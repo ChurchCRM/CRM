@@ -64,9 +64,6 @@ if (isset($_POST['User'])) {
 
         $_SESSION['user'] = $currentUser;
 
-        // Set the pagination Search Limit
-        $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
-
         $_SESSION['bMenuOptions'] = $currentUser->isMenuOptionsEnabled();
         $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
         $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
