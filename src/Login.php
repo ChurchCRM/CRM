@@ -85,7 +85,7 @@ if (isset($_POST['User'])) {
         $_SESSION['iCurrentDeposit'] = $currentUser->getCurrentDeposit();
 
         $systemService = new SystemService();
-        $_SESSION['latestVersion'] = $systemService->getLatestRelese();
+        $_SESSION['latestVersion'] = $systemService->getLatestRelease();
         NotificationService::updateNotifications();
         $redirectLocation = $_SESSION['location'];
         if (isset($redirectLocation)) {
