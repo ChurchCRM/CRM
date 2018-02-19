@@ -19,7 +19,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords']) {
+if (!$_SESSION['bManageGroups'] && !$_SESSION['user']->isEditRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -36,7 +36,7 @@ if (isset($_POST['PropertyID'])) {
 }
 
 // Is there a PersonID in the querystring?
-if (isset($_GET['PersonID']) && $_SESSION['bEditRecords']) {
+if (isset($_GET['PersonID']) && $_SESSION['user']->isEditRecordsEnabled()) {
     $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
@@ -66,7 +66,7 @@ elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
 }
 
 // Is there a FamilyID in the querystring?
-elseif (isset($_GET['FamilyID']) && $_SESSION['bEditRecords']) {
+elseif (isset($_GET['FamilyID']) && $_SESSION['user']->isEditRecordsEnabled()) {
     $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;

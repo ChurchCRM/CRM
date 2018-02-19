@@ -49,7 +49,7 @@ if ($iPersonID > 0) {
     }
 
     if (!(
-        $_SESSION['bEditRecords'] ||
+        $_SESSION['user']->isEditRecordsEnabled() ||
         ($_SESSION['bEditSelf'] && $iPersonID == $_SESSION['user']->getId()) ||
         ($_SESSION['bEditSelf'] && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['iFamID'])
     )

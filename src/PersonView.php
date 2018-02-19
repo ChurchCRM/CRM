@@ -37,7 +37,7 @@ if (array_key_exists('RemoveVO', $_GET)) {
     $iRemoveVO = InputUtils::LegacyFilterInput($_GET['RemoveVO'], 'int');
 }
 
-if (isset($_POST['VolunteerOpportunityAssign']) && $_SESSION['bEditRecords']) {
+if (isset($_POST['VolunteerOpportunityAssign']) && $_SESSION['user']->isEditRecordsEnabled()) {
     $volIDs = $_POST['VolunteerOpportunityIDs'];
     if ($volIDs) {
         foreach ($volIDs as $volID) {
@@ -47,7 +47,7 @@ if (isset($_POST['VolunteerOpportunityAssign']) && $_SESSION['bEditRecords']) {
 }
 
 // Service remove-volunteer-opportunity (these links set RemoveVO)
-if ($iRemoveVO > 0 && $_SESSION['bEditRecords']) {
+if ($iRemoveVO > 0 && $_SESSION['user']->isEditRecordsEnabled()) {
     RemoveVolunteerOpportunity($iPersonID, $iRemoveVO);
 }
 
@@ -177,7 +177,7 @@ if ($per_Envelope > 0) {
 
 $iTableSpacerWidth = 10;
 
-$bOkToEdit = ($_SESSION['bEditRecords'] ||
+$bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
     ($_SESSION['bEditSelf'] && $per_ID == $_SESSION['user']->getId()) ||
     ($_SESSION['bEditSelf'] && $per_fam_ID == $_SESSION['iFamID'])
 );
@@ -787,7 +787,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                 echo '<tr class="TableHeader">';
                                 echo '<th>'.gettext('Name').'</th>';
                                 echo '<th>'.gettext('Description').'</th>';
-                                if ($_SESSION['bEditRecords']) {
+                                if ($_SESSION['user']->isEditRecordsEnabled()) {
                                     echo '<th>'.gettext('Remove').'</th>';
                                 }
                                 echo '</tr>';
@@ -805,7 +805,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                     echo '<td>'.$vol_Name.'</a></td>';
                                     echo '<td>'.$vol_Description.'</a></td>';
 
-                                    if ($_SESSION['bEditRecords']) {
+                                    if ($_SESSION['user']->isEditRecordsEnabled()) {
                                         echo '<td><a class="SmallText" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
                                     }
 
@@ -818,7 +818,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                 echo '</table>';
                             } ?>
 
-                            <?php if ($_SESSION['bEditRecords'] && $rsVolunteerOpps->num_rows): ?>
+                            <?php if ($_SESSION['user']->isEditRecordsEnabled() && $rsVolunteerOpps->num_rows): ?>
                                 <div class="alert alert-info">
                                     <div>
                                         <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>

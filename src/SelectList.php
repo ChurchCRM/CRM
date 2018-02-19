@@ -1051,7 +1051,7 @@ foreach ($aPersonCol5 as $s) {
 }
 echo '</select></th><th>';
 
-if ($_SESSION['bEditRecords']) {
+if ($_SESSION['user']->isEditRecordsEnabled()) {
     echo gettext('Edit');
 }
 
@@ -1174,7 +1174,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     } ?>
 	</td>
     <td>
-	<?php if ($_SESSION['bEditRecords']) {
+	<?php if ($_SESSION['user']->isEditRecordsEnabled()) {
         ?>
 		<a href="PersonEditor.php?PersonID=<?= $per_ID ?>">
 		    <span class="fa-stack">
