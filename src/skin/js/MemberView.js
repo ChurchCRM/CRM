@@ -67,7 +67,7 @@ $('#clear-people').click(function (event) {
                 window.CRM.APIRequest({
                     method: 'DELETE',
                     path: 'database/people/clear',
-                }).done(function (eventTypes) {
+                }).done(function (data) {
                     showGlobalMessage(i18next.t('Data Cleared Successfully!'), "success");
                 });
             }
