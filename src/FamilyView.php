@@ -35,7 +35,7 @@ if (!empty($_GET['FamilyID'])) {
 }
 
 //Deactivate/Activate Family
-if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Action'])) {
+if ($_SESSION['user']->isDeleteRecordsEnabled() && !empty($_POST['FID']) && !empty($_POST['Action'])) {
     $family = FamilyQuery::create()->findOneById($_POST['FID']);
     if ($_POST['Action'] == "Deactivate") {
         $family->deactivate();
@@ -50,10 +50,11 @@ if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Actio
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
 
-if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['bFinance']) {
+if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['user']->isFinanceEnabled()) {
     $_SESSION['sshowPledges'] = isset($_POST["ShowPledges"]);
     $_SESSION['sshowPayments'] = isset($_POST["ShowPayments"]);
-    $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d", InputUtils::LegacyFilterInput($_POST["ShowSinceDate"]));
+    $_SESSION['user']->setShowSince(InputUtils::LegacyFilterInput($_POST["ShowSinceDate"]));
+    $_SESSION['user']->save();
 }
 
 $dSQL = "SELECT fam_ID FROM family_fam order by fam_Name";
@@ -158,7 +159,7 @@ $sCellPhone = ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy);
 
 $sFamilyEmails = array();
 
-$bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
+$bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->isEditSelfEnabled() && ($iFamilyID == $_SESSION['user']->getPerson()->getFamId())));
 
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -315,7 +316,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                 class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
                     <?php
     } ?>
-                <?php if ($_SESSION['bDeleteRecords']) {
+                <?php if ($_SESSION['user']->isDeleteRecordsEnabled()) {
         ?>
                     <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
                                 class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
@@ -324,7 +325,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 <br/>
 
                 <?php
-                if ($_SESSION['bNotes']) {
+                if ($_SESSION['user']->isNotesEnabled()) {
                     ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
                                 class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
@@ -437,7 +438,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                                           data-toggle="tab"><?= gettext("Timeline") ?></a></li>
                 <li role="presentation"><a href="#properties" aria-controls="properties" role="tab"
                                            data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
-                <?php if ($_SESSION['bFinance']) {
+                <?php if ($_SESSION['user']->isFinanceEnabled()) {
                     ?>
                     <li role="presentation"><a href="#finance" aria-controls="finance" role="tab"
                                                data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
@@ -477,7 +478,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 
                                 <div class="timeline-item">
                       <span class="time">
-                    <?php if ($_SESSION['bNotes'] && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                    <?php if ($_SESSION['user']->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                         ?>
                         <?php if (isset($item["editLink"])) {
                             ?>
@@ -643,7 +644,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                         </div>
                     </div>
                 </div>
-                <?php if ($_SESSION['bFinance']) {
+                <?php if ($_SESSION['user']->isFinanceEnabled()) {
         ?>
                 <div role="tab-pane fade" class="tab-pane" id="finance">
                     <div class="main-box clearfix">
@@ -747,8 +748,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                 <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
                                 <?php
                                 $showSince = "";
-        if ($_SESSION['sshowSince'] != null) {
-            $showSince = $_SESSION['sshowSince']->format('Y-m-d');
+        if ($_SESSION['user']->getShowSince() != null) {
+            $showSince = $_SESSION['user']->getShowSince()->format('Y-m-d');
         } ?>
                                 <input type="text" class="date-picker" Name="ShowSinceDate"
                                        value="<?= $showSince ?>" maxlength="10" id="ShowSinceDate" size="15">
@@ -801,7 +802,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
                                                 ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
                                             ) &&
-                                            ($_SESSION['sshowSince'] == "" || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['sshowSince'])
+                                            (empty($_SESSION['user']->getShowSince()) || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['user']->getShowSince())
                                         ) {
                     ?>
 
@@ -868,7 +869,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                             <?php
     } ?>
 
-                            <?php if ($_SESSION['bCanvasser']) {
+                            <?php if ($_SESSION['user']->isCanvasserEnabled()) {
         ?>
 
                             <p align="center">

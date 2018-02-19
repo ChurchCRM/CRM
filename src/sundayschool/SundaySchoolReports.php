@@ -62,7 +62,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     $allroles = InputUtils::LegacyFilterInput($_POST['allroles']);
     $withPictures = InputUtils::LegacyFilterInput($_POST['withPictures']);
     
-    $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
+    $currentUser = UserQuery::create()->findPk($_SESSION['user']->getId());
     $currentUser->setCalStart($dFirstSunday);
     $currentUser->setCalEnd($dLastSunday);
     $currentUser->setCalNoSchool1($dNoSchool1);
@@ -125,7 +125,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
 } else {
     $iFYID = $_SESSION['idefaultFY'];
     $iGroupID = 0;
-    $currentUser = UserQuery::create()->findPk($_SESSION['iUserID']);
+    $currentUser = UserQuery::create()->findPk($_SESSION['user']->getId());
     
     if ($currentUser->getCalStart() != null) {
         $dFirstSunday = $currentUser->getCalStart()->format('Y-m-d');

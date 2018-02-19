@@ -31,7 +31,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
-if (!$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

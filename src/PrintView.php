@@ -56,7 +56,7 @@ $sSQL = $sSQL.'FROM note_nte ';
 $sSQL = $sSQL.'LEFT JOIN person_per a ON nte_EnteredBy = a.per_ID ';
 $sSQL = $sSQL.'LEFT JOIN person_per b ON nte_EditedBy = b.per_ID ';
 $sSQL = $sSQL.'WHERE nte_per_ID = '.$iPersonID.' ';
-$sSQL = $sSQL.'AND (nte_Private = 0 OR nte_Private = '.$_SESSION['iUserID'].')';
+$sSQL = $sSQL.'AND (nte_Private = 0 OR nte_Private = '.$_SESSION['user']->getId().')';
 $rsNotes = RunQuery($sSQL);
 
 // Get the Groups this Person is assigned to
@@ -140,7 +140,7 @@ if ($personSheet) {
     echo "	<tr>";
     echo "	<td  style=\"padding:5px;\">";
     $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $personSheet->getPhoto()->getPhotoURI());
-    
+
     echo "<img src=\"".$imgName."\"/>";
     echo "</td><td>";
     echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
@@ -347,9 +347,9 @@ if ($fam_ID) {
             while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
                 $per_BirthYear = '';
                 $agr_Description = '';
-                
+
                 extract($aRow);
-                
+
                 // Alternate the row style
                 $sRowClass = AlternateRowStyle($sRowClass)
 
@@ -485,7 +485,7 @@ if (mysqli_num_rows($rsAssignedProperties) == 0) {
     echo '</table>';
 }
 
-if ($_SESSION['bNotes']) {
+if ($_SESSION['user']->isNotesEnabled()) {
     echo '<p><b>'.gettext('Notes:').'</b></p>';
 
     // Loop through all the notes

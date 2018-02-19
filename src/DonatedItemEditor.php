@@ -68,11 +68,11 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     if (strlen($iDonatedItemID) < 1) {
         $sSQL = 'INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_picture, di_EnteredBy, di_EnteredDate)
 		VALUES ('.$iCurrentFundraiser.",'".$sItem."','".$bMultibuy."','".$iDonor."','".$iBuyer."','".html_entity_decode($sTitle)."','".html_entity_decode($sDescription)."','".$nSellPrice."','".$nEstPrice."','".$nMaterialValue."','".$nMinimumPrice."','".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."'";
-        $sSQL .= ','.$_SESSION['iUserID'].",'".date('YmdHis')."')";
+        $sSQL .= ','.$_SESSION['user']->getId().",'".date('YmdHis')."')";
         $bGetKeyBack = true;
     // Existing record (update)
     } else {
-        $sSQL = 'UPDATE donateditem_di SET di_FR_ID = '.$iCurrentFundraiser.", di_Item = '".$sItem."', di_multibuy = '".$bMultibuy."', di_donor_ID = ".$iDonor.', di_buyer_ID = '.$iBuyer.", di_title = '".html_entity_decode($sTitle)."', di_description = '".html_entity_decode($sDescription)."', di_sellprice = '".$nSellPrice."', di_estprice = '".$nEstPrice."', di_materialvalue = '".$nMaterialValue."', di_minimum = '".$nMinimumPrice."', di_picture = '".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."', di_EnteredBy=".$_SESSION['iUserID'].", di_EnteredDate = '".date('YmdHis')."'";
+        $sSQL = 'UPDATE donateditem_di SET di_FR_ID = '.$iCurrentFundraiser.", di_Item = '".$sItem."', di_multibuy = '".$bMultibuy."', di_donor_ID = ".$iDonor.', di_buyer_ID = '.$iBuyer.", di_title = '".html_entity_decode($sTitle)."', di_description = '".html_entity_decode($sDescription)."', di_sellprice = '".$nSellPrice."', di_estprice = '".$nEstPrice."', di_materialvalue = '".$nMaterialValue."', di_minimum = '".$nMinimumPrice."', di_picture = '".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."', di_EnteredBy=".$_SESSION['user']->getId().", di_EnteredDate = '".date('YmdHis')."'";
         $sSQL .= ' WHERE di_ID = '.$iDonatedItemID;
         echo '<br><br><br><br><br><br>'.$sSQL;
         $bGetKeyBack = false;
@@ -291,7 +291,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
 
             <div class="form-group text-center">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="DonatedItemSubmit">
-                <?php if ($_SESSION['bAddRecords']): ?>
+                <?php if ($_SESSION['user']->isAddRecordsEnabled()): ?>
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
                 <?php endif; ?>
                 <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel"

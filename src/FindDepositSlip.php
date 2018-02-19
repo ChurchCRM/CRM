@@ -21,7 +21,7 @@ $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 $sPageTitle = gettext('Deposit Listing');
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['bFinance']) {
+if (!$_SESSION['user']->isFinanceEnabled()) {
     RedirectUtils::Redirect('index.php');
     exit;
 }
@@ -100,12 +100,12 @@ require 'Include/Header.php';
         cancel : {
           label: '<?= gettext("Close"); ?>'
         },
-        confirm: { 
+        confirm: {
           label: '<?php echo gettext("Delete"); ?>'
         }
       },
       callback: function ( result ) {
-        if ( result ) 
+        if ( result )
         {
           $.each(deletedRows, function (index, value) {
             $.ajax({

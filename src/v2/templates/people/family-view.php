@@ -91,7 +91,7 @@ $familyAddress = $family->getAddress();
 
 
                         <?php
-                        if ($_SESSION['bNotes']) {
+                        if ($_SESSION['user']->isNotesEnabled()) {
                             ?>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>"><i

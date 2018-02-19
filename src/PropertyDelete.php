@@ -15,7 +15,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!$_SESSION['bMenuOptions']) {
+if (!$_SESSION['user']->isMenuOptionsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

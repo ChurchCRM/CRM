@@ -21,7 +21,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups permission
-if (!$_SESSION['bManageGroups']) {
+if (!$_SESSION['user']->isManageGroupsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -83,7 +83,7 @@ require 'Include/Header.php';
         <div class="row">
           <div class="col-sm-3">
             <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
-            <?php 
+            <?php
                         if ($thisGroup->isSundaySchool()) {
                             $hide = "style=\"display:none;\"";
                         } else {
@@ -100,7 +100,7 @@ require 'Include/Header.php';
                       echo ' selected';
                   }
                   echo '>'.$groupType->getOptionName().'</option>';
-              } ?>              
+              } ?>
             </select>
             <?php
                                 if ($thisGroup->isSundaySchool()) {
