@@ -23,7 +23,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 
 //Security
-if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isFinanceEnabled()) {
     RedirectUtils::Redirect("Menu.php");
     exit;
 }
@@ -46,7 +46,7 @@ $iDepositSlipID = 0;
 if (array_key_exists("deposit", $_POST)) {
     $iDepositSlipID = InputUtils::LegacyFilterInput($_POST["deposit"], "int");
 }
-    
+
 if (!$iDepositSlipID && array_key_exists('iCurrentDeposit', $_SESSION)) {
     $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 }
