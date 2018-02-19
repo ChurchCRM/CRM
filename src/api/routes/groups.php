@@ -3,33 +3,32 @@
 // Routes
 use ChurchCRM\Group;
 use ChurchCRM\GroupQuery;
+use ChurchCRM\Note;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Note;
 
 $app->group('/groups', function () {
-    $this->get('/', function () {        
+    $this->get('/', function () {
         echo GroupQuery::create()->find()->toJSON();
     });
-    
+
     // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
     $this->get('/calendars', function ($request, $response, $args) {
         $groups = GroupQuery::Create()
-          ->orderByName()
-          ->find();
-          
-        $return = [];        
+            ->orderByName()
+            ->find();
+
+        $return = [];
         foreach ($groups as $group) {
             $values['type'] = 'group';
             $values['groupID'] = $group->getID();
             $values['name'] = $group->getName();
-            
+
             array_push($return, $values);
         }
-        
-        return $response->withJson($return);    
+
+        return $response->withJson($return);
     });
-    
 
 
     $this->get('/groupsInCart', function () {
@@ -44,7 +43,7 @@ $app->group('/groups', function () {
     });
 
     $this->post('/', function ($request, $response, $args) {
-        $groupSettings = (object) $request->getParsedBody();
+        $groupSettings = (object)$request->getParsedBody();
         $group = new Group();
         if ($groupSettings->isSundaySchool) {
             $group->makeSundaySchool();
@@ -56,7 +55,7 @@ $app->group('/groups', function () {
 
     $this->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
         $group->setName($input->groupName);
         $group->setType($input->groupType);
@@ -76,7 +75,7 @@ $app->group('/groups', function () {
     $this->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         GroupQuery::create()->findOneById($groupID)->delete();
-        echo json_encode(['status'=>'success']);
+        echo json_encode(['status' => 'success']);
     });
 
     $this->get('/{groupID:[0-9]+}/members', function ($request, $response, $args) {
@@ -84,29 +83,27 @@ $app->group('/groups', function () {
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->findByGroupId($groupID);
-        
-            
+
+
         // we loop to find the information in the family to add adresses etc ...
-        foreach ($members as $member)
-        {
-        	$p = $member->getPerson();
-					$fam = $p->getFamily();   
-			
-					// Philippe Logel : this is usefull when a person don't have a family : ie not an address
-					if (!empty($fam))
-					{
-						$p->setAddress1 ($fam->getAddress1());
-						$p->setAddress2 ($fam->getAddress2());
-			
-						$p->setCity($fam->getCity());
-						$p->setState($fam->getState());
-						$p->setZip($fam->getZip());    
-					}    	
+        foreach ($members as $member) {
+            $p = $member->getPerson();
+            $fam = $p->getFamily();
+
+            // Philippe Logel : this is usefull when a person don't have a family : ie not an address
+            if (!empty($fam)) {
+                $p->setAddress1($fam->getAddress1());
+                $p->setAddress2($fam->getAddress2());
+
+                $p->setCity($fam->getCity());
+                $p->setState($fam->getState());
+                $p->setZip($fam->getZip());
+            }
         }
-        
+
         echo $members->toJSON();
     });
-    
+
     $this->get('/{groupID:[0-9]+}/events', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
@@ -125,7 +122,7 @@ $app->group('/groups', function () {
             if ($groupRoleMembership->getPersonId() == $person->getId()) {
                 $groupRoleMembership->delete();
                 $note = new Note();
-                $note->setText(gettext("Deleted from group"). ": " . $group->getName());
+                $note->setText(gettext("Deleted from group") . ": " . $group->getName());
                 $note->setType("group");
                 $note->setEntered($_SESSION['user']->getId());
                 $note->setPerId($person->getId());
@@ -134,30 +131,27 @@ $app->group('/groups', function () {
         }
         echo json_encode(['success' => 'true']);
     });
-    
+
     $this->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $group = GroupQuery::create()->findPk($groupID);
         $p2g2r = Person2group2roleP2g2rQuery::create()
-          ->filterByGroupId($groupID)
-          ->filterByPersonId($userID)
-          ->findOneOrCreate();
-        if($input->RoleID)
-        {
-          $p2g2r->setRoleId($input->RoleID);
+            ->filterByGroupId($groupID)
+            ->filterByPersonId($userID)
+            ->findOneOrCreate();
+        if ($input->RoleID) {
+            $p2g2r->setRoleId($input->RoleID);
+        } else {
+            $p2g2r->setRoleId($group->getDefaultRole());
         }
-        else
-        {
-          $p2g2r->setRoleId($group->getDefaultRole());
-        }
-                
+
         $group->addPerson2group2roleP2g2r($p2g2r);
         $group->save();
         $note = new Note();
-        $note->setText(gettext("Added to group"). ": " . $group->getName());
+        $note->setText(gettext("Added to group") . ": " . $group->getName());
         $note->setType("group");
         $note->setEntered($_SESSION['user']->getId());
         $note->setPerId($person->getId());
@@ -182,7 +176,7 @@ $app->group('/groups', function () {
     $this->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        $input = (object) $request->getParsedBody();
+        $input = (object)$request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
         if (isset($input->groupRoleName)) {
             $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
