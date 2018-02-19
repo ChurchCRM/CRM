@@ -84,7 +84,7 @@ if ($output == 'pdf') {
     class PDF_ZeroGivers extends ChurchInfoReport
     {
         // Constructor
-        public function PDF_ZeroGivers()
+        public function __construct()
         {
             parent::__construct('P', 'mm', $this->paperFormat);
             $this->SetFont('Times', '', 10);

@@ -184,7 +184,7 @@ if ($output == 'pdf') {
     class PDF_TaxReport extends ChurchInfoReport
     {
         // Constructor
-        public function PDF_TaxReport()
+        public function __construct()
         {
             parent::__construct('P', 'mm', $this->paperFormat);
             $this->SetFont('Times', '', 10);

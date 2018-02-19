@@ -176,7 +176,7 @@ while ($row = mysqli_fetch_array($rsFunds)) {
 class PDF_FamilyPledgeSummaryReport extends ChurchInfoReport
 {
     // Constructor
-    public function PDF_FamilyPledgeSummaryReport()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
 
