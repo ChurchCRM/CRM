@@ -45,7 +45,7 @@ require '../Include/Header.php';
     <h3 class="box-title"><?= gettext('Functions') ?></h3>
   </div>
   <div class="box-body">
-    <?php if ($_SESSION['bManageGroups']) {
+    <?php if ($_SESSION['user']->isManageGroupsEnabled()) {
     ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
           class="fa fa-plus-square"></i><?= gettext('Add New Class') ?></button>
@@ -215,7 +215,7 @@ require '../Include/Header.php';
 
           $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
           $birthDate = MiscUtils::FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
-        
+
           echo '<tr>';
           echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
           echo '	<span class="fa-stack">';
@@ -235,7 +235,7 @@ require '../Include/Header.php';
     </table>
   </div>
 </div>
-<?php if ($_SESSION['bManageGroups']) {
+<?php if ($_SESSION['user']->isManageGroupsEnabled()) {
           ?>
   <div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label"
        aria-hidden="true">

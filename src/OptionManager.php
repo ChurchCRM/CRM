@@ -33,7 +33,7 @@ switch ($mode) {
     case 'grptypes':
     case 'grproles':
     case 'groupcustom':
-        if (!$_SESSION['bManageGroups']) {
+        if (!$_SESSION['user']->isManageGroupsEnabled()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }

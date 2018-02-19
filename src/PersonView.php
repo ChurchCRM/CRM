@@ -385,7 +385,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
                 <?php
                     }
-            if ($_SESSION['bManageGroups']) {
+            if ($_SESSION['user']->isManageGroupsEnabled()) {
                 ?>
                 <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
                 <?php
@@ -626,7 +626,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                                             } ?>
                                             <div class="box-footer">
                                                 <code>
-                                                    <?php if ($_SESSION['bManageGroups']) {
+                                                    <?php if ($_SESSION['user']->isManageGroupsEnabled()) {
                                                 ?>
                                                         <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa fa-list"></i></a>
                                                         <div class="btn-group">

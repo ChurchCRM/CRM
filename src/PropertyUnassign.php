@@ -17,7 +17,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bManageGroups'] && !$_SESSION['user']->isEditRecordsEnabled()) {
+if (!$_SESSION['user']->isManageGroupsEnabled() && !$_SESSION['user']->isEditRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -41,7 +41,7 @@ if (isset($_GET['PersonID']) && $_SESSION['user']->isEditRecordsEnabled()) {
 }
 
 // Is there a GroupID in the querystring?
-elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
+elseif (isset($_GET['GroupID']) && $_SESSION['user']->isManageGroupsEnabled()) {
     $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
