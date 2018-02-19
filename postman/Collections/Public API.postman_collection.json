@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "Public API",
-		"_postman_id": "04713c93-cd10-c0ef-aa9e-697ccbd00ee6",
+		"_postman_id": "f46adc1f-8ac0-c4d1-f65a-2d9801f71ff5",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -186,7 +186,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/public/calendar/{{CalendarAccessToken}}/events",
 							"host": [
@@ -199,8 +202,7 @@
 								"{{CalendarAccessToken}}",
 								"events"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -209,7 +211,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/public/calendar/{{CalendarAccessToken}}/ICS",
 							"host": [
@@ -222,8 +227,7 @@
 								"{{CalendarAccessToken}}",
 								"ICS"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -253,7 +257,6 @@
 		},
 		{
 			"name": "User",
-			"description": "",
 			"item": [
 				{
 					"name": "Public API Login",
@@ -279,6 +282,37 @@
 								"public",
 								"user",
 								"login"
+							]
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				},
+				{
+					"name": "Public API: Password Reset Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userName\": \"tony.wade@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/public/user/password/reset",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"user",
+								"password",
+								"reset"
 							]
 						},
 						"description": "login and get api token back"
