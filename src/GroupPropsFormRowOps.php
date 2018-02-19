@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
-if (!$_SESSION['bManageGroups']) {
+if (!$_SESSION['user']->isManageGroupsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

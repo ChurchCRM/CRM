@@ -12,7 +12,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
-if (!$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isAdmin()) {
     RedirectUtils::Redirect('index.php');
     exit;
 }
