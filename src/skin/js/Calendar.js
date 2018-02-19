@@ -529,6 +529,7 @@ function initializeCalendar() {
     selectable: window.CRM.calendarJSArgs.isModifiable,
     editable: window.CRM.calendarJSArgs.isModifiable,
     eventStartEditable: window.CRM.calendarJSArgs.isModifiable,
+    eventDurationEditable: window.CRM.calendarJSArgs.isModifiable,
     eventDrop: window.moveEventModal.handleEventDrop,
     eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,
