@@ -5,7 +5,8 @@ namespace ChurchCRM;
 use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
-use Utils\MiscUtils;
+use ChurchCRM\Utils\MiscUtils;
+
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
  *
@@ -38,11 +39,11 @@ class User extends BaseUser
         return $this->getPerson()->getFullName();
     }
 
-    public function isAddEvent() 
+    public function isAddEvent()
     {
       return $this->isAdmin() || $_SESSION['bAddEvent'];
     }
-    
+
     public function isAddRecordsEnabled()
     {
         return $this->isAdmin() || $this->isAddRecords();
