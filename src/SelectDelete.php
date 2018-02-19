@@ -24,7 +24,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bDeleteRecords']) {
+if (!$_SESSION['user']->isDeleteRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

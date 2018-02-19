@@ -35,7 +35,7 @@ if (!empty($_GET['FamilyID'])) {
 }
 
 //Deactivate/Activate Family
-if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Action'])) {
+if ($_SESSION['user']->isDeleteRecordsEnabled() && !empty($_POST['FID']) && !empty($_POST['Action'])) {
     $family = FamilyQuery::create()->findOneById($_POST['FID']);
     if ($_POST['Action'] == "Deactivate") {
         $family->deactivate();
@@ -315,7 +315,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                 class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
                     <?php
     } ?>
-                <?php if ($_SESSION['bDeleteRecords']) {
+                <?php if ($_SESSION['user']->isDeleteRecordsEnabled()) {
         ?>
                     <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
                                 class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>

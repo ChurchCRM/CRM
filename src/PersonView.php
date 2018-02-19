@@ -390,7 +390,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
                 <?php
             }
-            if ($_SESSION['bDeleteRecords']) {
+            if ($_SESSION['user']->isDeleteRecordsEnabled()) {
                 ?>
                 <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
                 <?php

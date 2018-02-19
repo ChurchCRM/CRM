@@ -56,7 +56,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
 
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    if (!$_SESSION['bDeleteRecords']) {
+    if (!$_SESSION['user']->isDeleteRecordsEnabled()) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
@@ -118,7 +118,7 @@ if (($sAction == 'ConfDelete') && $iOpp > 0) {
 
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    if (!$_SESSION['bDeleteRecords']) {
+    if (!$_SESSION['user']->isDeleteRecordsEnabled()) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
