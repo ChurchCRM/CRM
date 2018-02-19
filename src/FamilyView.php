@@ -53,7 +53,8 @@ $rsFunds = RunQuery($sSQL);
 if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['user']->isFinanceEnabled()) {
     $_SESSION['sshowPledges'] = isset($_POST["ShowPledges"]);
     $_SESSION['sshowPayments'] = isset($_POST["ShowPayments"]);
-    $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d", InputUtils::LegacyFilterInput($_POST["ShowSinceDate"]));
+    $_SESSION['user']->setShowSince(InputUtils::LegacyFilterInput($_POST["ShowSinceDate"]));
+    $_SESSION['user']->save();
 }
 
 $dSQL = "SELECT fam_ID FROM family_fam order by fam_Name";
@@ -747,8 +748,8 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                 <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
                                 <?php
                                 $showSince = "";
-        if ($_SESSION['sshowSince'] != null) {
-            $showSince = $_SESSION['sshowSince']->format('Y-m-d');
+        if ($_SESSION['user']->getShowSince() != null) {
+            $showSince = $_SESSION['user']->getShowSince()->format('Y-m-d');
         } ?>
                                 <input type="text" class="date-picker" Name="ShowSinceDate"
                                        value="<?= $showSince ?>" maxlength="10" id="ShowSinceDate" size="15">
@@ -801,7 +802,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
                                                 ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
                                             ) &&
-                                            ($_SESSION['sshowSince'] == "" || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['sshowSince'])
+                                            (empty($_SESSION['user']->getShowSince()) || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['user']->getShowSince())
                                         ) {
                     ?>
 

@@ -18,7 +18,6 @@ if (!empty($_SESSION['user'])) {
     if (!empty($currentUser)) {
         $currentUser->setShowPledges($_SESSION['sshowPledges']);
         $currentUser->setShowPayments($_SESSION['sshowPayments']);
-        $currentUser->setShowSince($_SESSION['sshowSince']);
         $currentUser->setDefaultFY($_SESSION['idefaultFY']);
         $currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
 

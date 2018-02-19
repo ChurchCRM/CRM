@@ -85,7 +85,6 @@ if (isset($_POST['User'])) {
         // Pledge and payment preferences
         $_SESSION['sshowPledges'] = $currentUser->getShowPledges();
         $_SESSION['sshowPayments'] = $currentUser->getShowPayments();
-        $_SESSION['sshowSince'] = $currentUser->getShowSince();
         $_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
         $_SESSION['iCurrentDeposit'] = $currentUser->getCurrentDeposit();
 
