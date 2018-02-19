@@ -379,7 +379,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                     } ?>
             <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
             <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
-            <?php if ($_SESSION['bNotes']) {
+            <?php if ($_SESSION['user']->isNotesEnabled()) {
                         ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
@@ -448,7 +448,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
 
                 <div class="timeline-item">
                       <span class="time">
-                    <?php if ($_SESSION['bNotes'] && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                    <?php if ($_SESSION['user']->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                               ?>
                         <?php if (isset($item["editLink"])) {
                                   ?>
@@ -885,7 +885,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                                         <?= $item['text'] ?>
                                     </div>
 
-                                    <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
+                                    <?php if (($_SESSION['user']->isNotesEnabled()) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
                                                                 ?>
                                         <div class="timeline-footer">
                                             <?php if ($item['editLink'] != '') {

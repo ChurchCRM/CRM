@@ -485,7 +485,7 @@ if (mysqli_num_rows($rsAssignedProperties) == 0) {
     echo '</table>';
 }
 
-if ($_SESSION['bNotes']) {
+if ($_SESSION['user']->isNotesEnabled()) {
     echo '<p><b>'.gettext('Notes:').'</b></p>';
 
     // Loop through all the notes

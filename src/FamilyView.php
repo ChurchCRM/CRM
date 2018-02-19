@@ -324,7 +324,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['bEditSelf
                 <br/>
 
                 <?php
-                if ($_SESSION['bNotes']) {
+                if ($_SESSION['user']->isNotesEnabled()) {
                     ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
                                 class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
@@ -477,7 +477,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['bEditSelf
 
                                 <div class="timeline-item">
                       <span class="time">
-                    <?php if ($_SESSION['bNotes'] && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                    <?php if ($_SESSION['user']->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                         ?>
                         <?php if (isset($item["editLink"])) {
                             ?>

@@ -20,7 +20,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bNotes']) {
+if (!$_SESSION['user']->isNotesEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
