@@ -31,11 +31,9 @@ require __DIR__ . '/../Include/slim/error-handler.php';
 
 // people routes
 require __DIR__ . '/routes/search.php';
-require __DIR__ . '/routes/persons.php';
 require __DIR__ . '/routes/roles.php';
 require __DIR__ . '/routes/properties.php';
 require __DIR__ . '/routes/users.php';
-require __DIR__ . '/routes/families.php';
 require __DIR__ . '/routes/groups.php';
 
 
@@ -58,6 +56,9 @@ require __DIR__ . '/routes/dashboard.php';
 
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/geocoder.php';
+
+require __DIR__ . '/routes/people/people-families.php';
+require __DIR__ . '/routes/people/people-persons.php';
 
 // finance routes
 require __DIR__ . '/routes/finance/finance-deposits.php';
