@@ -28,38 +28,24 @@ $app->add(new AuthMiddleware());
 require __DIR__ . '/dependencies.php';
 require __DIR__ . '/../Include/slim/error-handler.php';
 
-
-// people routes
-require __DIR__ . '/routes/search.php';
-require __DIR__ . '/routes/roles.php';
-require __DIR__ . '/routes/users.php';
-require __DIR__ . '/routes/groups.php';
-
-// other
-
-//cart
-require __DIR__ . '/routes/cart.php';
-
-require __DIR__ . '/routes/kiosks.php';
-
-
-require __DIR__ . '/routes/dashboard.php';
-
-require __DIR__ . '/routes/email.php';
-require __DIR__ . '/routes/geocoder.php';
-
-require __DIR__ . '/routes/people/people-families.php';
-require __DIR__ . '/routes/people/people-persons.php';
-require __DIR__ . '/routes/people/people-properties.php';
-
 // calendar
 require __DIR__ . '/routes/calendar/events.php';
 require __DIR__ . '/routes/calendar/calendar.php';
 
-
 // finance routes
 require __DIR__ . '/routes/finance/finance-deposits.php';
 require __DIR__ . '/routes/finance/finance-payments.php';
+
+// People (families / persons)
+require __DIR__ . '/routes/people/people-families.php';
+require __DIR__ . '/routes/people/people-persons.php';
+require __DIR__ . '/routes/people/people-properties.php';
+
+// Public
+require __DIR__ . '/routes/public/public.php';
+require __DIR__ . '/routes/public/public-data.php';
+require __DIR__ . '/routes/public/public-calendar.php';
+require __DIR__ . '/routes/public/public-user.php';
 
 // system routes
 require __DIR__ . '/routes/system/system.php';
@@ -70,10 +56,16 @@ require __DIR__ . '/routes/system/system-register.php';
 require __DIR__ . '/routes/system/system-timerjobs.php';
 require __DIR__ . '/routes/system/system-upgrade.php';
 
-require __DIR__ . '/routes/public/public.php';
-require __DIR__ . '/routes/public/public-data.php';
-require __DIR__ . '/routes/public/public-calendar.php';
-require __DIR__ . '/routes/public/public-user.php';
+// other
+require __DIR__ . '/routes/cart.php';
+require __DIR__ . '/routes/dashboard.php';
+require __DIR__ . '/routes/email.php';
+require __DIR__ . '/routes/geocoder.php';
+require __DIR__ . '/routes/groups.php';
+require __DIR__ . '/routes/kiosks.php';
+require __DIR__ . '/routes/roles.php';
+require __DIR__ . '/routes/search.php';
+require __DIR__ . '/routes/users.php';
 
 // Run app
 $app->run();
