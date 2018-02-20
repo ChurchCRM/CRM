@@ -51,9 +51,6 @@ require __DIR__ . '/routes/calendar.php';
 //timer jobs
 require __DIR__ . '/routes/timerjobs.php';
 
-//self-upgrade tasks
-require __DIR__ . '/routes/systemupgrade.php';
-
 //registration
 require __DIR__ . '/routes/register.php';
 
@@ -64,14 +61,16 @@ require __DIR__ . '/routes/kiosks.php';
 
 require __DIR__ . '/routes/events.php';
 
-require __DIR__ . '/routes/custom-fields.php';
 
-require __DIR__ . '/routes/system.php';
 
 require __DIR__ . '/routes/dashboard.php';
 
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/geocoder.php';
+
+require __DIR__ . '/routes/system/system.php';
+require __DIR__ . '/routes/system/system-custom-fields.php';
+require __DIR__ . '/routes/system/system-upgrade.php';
 
 require __DIR__ . '/routes/public/public.php';
 require __DIR__ . '/routes/public/public-data.php';
