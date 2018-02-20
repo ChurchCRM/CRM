@@ -38,9 +38,6 @@ require __DIR__ . '/routes/users.php';
 require __DIR__ . '/routes/families.php';
 require __DIR__ . '/routes/groups.php';
 
-// finance routes
-require __DIR__ . '/routes/deposits.php';
-require __DIR__ . '/routes/payments.php';
 
 // other
 require __DIR__ . '/routes/calendar.php';
@@ -49,7 +46,6 @@ require __DIR__ . '/routes/calendar.php';
 require __DIR__ . '/routes/timerjobs.php';
 
 //registration
-require __DIR__ . '/routes/register.php';
 
 //cart
 require __DIR__ . '/routes/cart.php';
@@ -58,18 +54,21 @@ require __DIR__ . '/routes/kiosks.php';
 
 require __DIR__ . '/routes/events.php';
 
-
-
 require __DIR__ . '/routes/dashboard.php';
 
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/geocoder.php';
+
+// finance routes
+require __DIR__ . '/routes/finance/finance-deposits.php';
+require __DIR__ . '/routes/finance/finance-payments.php';
 
 // system routes
 require __DIR__ . '/routes/system/system.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-database.php';
 require __DIR__ . '/routes/system/system-issues.php';
+require __DIR__ . '/routes/system/system-register.php';
 require __DIR__ . '/routes/system/system-upgrade.php';
 
 require __DIR__ . '/routes/public/public.php';
