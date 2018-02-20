@@ -28,8 +28,6 @@ $app->add(new AuthMiddleware());
 require __DIR__ . '/dependencies.php';
 require __DIR__ . '/../Include/slim/error-handler.php';
 
-// system routes
-require __DIR__ . '/routes/issues.php';
 
 // people routes
 require __DIR__ . '/routes/search.php';
@@ -67,9 +65,11 @@ require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/geocoder.php';
 
+// system routes
 require __DIR__ . '/routes/system/system.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-database.php';
+require __DIR__ . '/routes/system/system-issues.php';
 require __DIR__ . '/routes/system/system-upgrade.php';
 
 require __DIR__ . '/routes/public/public.php';
