@@ -515,6 +515,76 @@ window.calendarPropertiesModal = {
   }
 }
 
+window.newCalendarModal = {
+  getBootboxContent: function (calendar){ 
+    var frm_str = '<form id="some-form"><table class="table" style="table-layout:fixed;width:100%">'
+          + '<tr>'
+          + "<td>" + i18next.t('Calendar Name') + ":</td>"
+          + '<td colspan="3">'
+          + '<input id="calendarName" class="form-control" type="text"  />'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td>" + i18next.t('Foreground Color') + ":</td>"
+          + '<td colspan="3">'
+          + '<input id="ForegroundColor" class="form-control" type="text" placeholder="FFFFFF"  />'
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td>" + i18next.t('Background Color') + ":</td>"
+          + '<td colspan="3">'
+          + '<input id="BackgroundColor" class="form-control" type="text" placeholder="000000" />'
+          + '</td>'
+          + '</tr>'
+          + '</table>'
+          + '</form>';
+    var object = $('<div/>').html(frm_str).contents();
+
+    return object;
+  },
+  getButtons: function () {
+    buttons =  [];
+    buttons.push({
+      label: i18next.t("Save"),
+      className: "btn btn-primary pull-left",
+      callback: window.newCalendarModal.saveButtonCallback
+    })
+    buttons.push({
+      label: i18next.t("Close"),
+      className: "btn btn-default pull-right"
+    });
+   
+    return buttons;
+  },
+  saveButtonCallback: function() {
+   
+    var newCalendar = {
+      Name: $("#calendarName").val(),
+      ForegroundColor: $("#ForegroundColor").val(),
+      BackgroundColor: $("#BackgroundColor").val()
+    }
+    window.CRM.APIRequest({
+      method:"POST",
+      path: "calendars",
+      data: JSON.stringify(newCalendar)
+    }).done(function(data){
+      initializeFilterSettings()
+    });
+  },
+  show: function() {
+    var bootboxmessage = window.newCalendarModal.getBootboxContent();
+    window.calendarPropertiesModal.modal = bootbox.dialog({
+      title: i18next.t("New Calendar"),
+      message: bootboxmessage,
+      show: true,
+      buttons: window.newCalendarModal.getButtons(),
+      onEscape: function () {
+        window.calendarPropertiesModal.modal.modal("hide");
+      }
+    });
+  }
+}
+
 function initializeCalendar() {
   //
   // initialize the calendar
@@ -591,6 +661,7 @@ function initializeFilterSettings() {
     method: 'GET',
     path: 'calendars',
   }).done(function (calendars) {
+    $("#userCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
       $("#userCalendars").append(getCalendarFilterElement(calendar,"user"))
     });
@@ -601,6 +672,7 @@ function initializeFilterSettings() {
     method: 'GET',
     path: 'systemcalendars',
   }).done(function (calendars) {
+    $("#systemCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
       $("#systemCalendars").append(getCalendarFilterElement(calendar,"system"))
     });
@@ -608,6 +680,10 @@ function initializeFilterSettings() {
   });
   
   registerCalendarSelectionEvents();
+  
+  $("#newCalendarButton").click(function() {
+    window.newCalendarModal.show();
+  });
   
 };
 

@@ -18,6 +18,7 @@ $app->group('/calendars', function () {
     $this->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
     $this->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
     $this->post('/', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
+    $this->post('', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
 });
 
 
