@@ -17,6 +17,7 @@ $app->group('/calendars', function () {
     $this->get('/{id}/events', 'UserCalendar');
     $this->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
     $this->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
+    $this->post('/', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
 });
 
 
@@ -141,4 +142,16 @@ function NewAccessToken($request, Response $response, $args)
     $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
     $Calendar->save();
     return $Calendar->toJSON();
+}
+
+function NewCalendar(Request $request, Response $response, $args)
+{
+  $input = (object)$request->getParsedBody();
+  $Calendar = new Calendar();
+  $Calendar->setName($input->Name);
+  $Calendar->setForegroundColor($input->ForegroundColor);
+  $Calendar->setBackgroundColor($input->BackgroundColor);
+  $Calendar->save();
+  return $response->withJson($Calendar->toArray());
+  
 }

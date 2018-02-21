@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "Private API",
-		"_postman_id": "e5c9b4e3-3210-1813-3905-62f317f135ed",
+		"_postman_id": "70aad139-d95b-94c5-a998-233780d8a294",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -155,6 +155,34 @@
 					"response": []
 				},
 				{
+					"name": "New Calendar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\":\"New Calendar\",\n\t\"ForegroundColor\":\"FFFFFF\",\n\t\"BackgroundColor\":\"000000\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/calendars/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"calendars",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get All Events",
 					"request": {
 						"method": "GET",
@@ -227,7 +255,10 @@
 								"value": "fin48waG4rIWwfLvTstDr8ZJtP6aNdSTm7NjsNPm6n0rtKNd37"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/database/people/clear",
 							"host": [
