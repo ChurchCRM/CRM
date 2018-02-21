@@ -678,16 +678,14 @@ function initializeFilterSettings() {
     });
     $("#systemCalendars .calendarSelectionBox").click();
   });
-  
-  registerCalendarSelectionEvents();
-  
+
   $("#newCalendarButton").click(function() {
     window.newCalendarModal.show();
   });
-  
 };
 
 $(document).ready(function () {
   initializeCalendar();
   initializeFilterSettings();
+  registerCalendarSelectionEvents();
 });
