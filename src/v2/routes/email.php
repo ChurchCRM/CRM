@@ -1,20 +1,21 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use Slim\Http\Request;
+use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
 $app->group('/email', function () {
     $this->get('/debug', 'testEmailConnection')->add(new AdminRoleAuthMiddleware());
     $this->get('/dashboard', 'getEmailDashboard');
 });
 
-function getEmailDashboard(Request $request, Response $response, array $args) {
+function getEmailDashboard(Request $request, Response $response, array $args)
+{
     $renderer = new PhpRenderer('templates/email/');
     $mailchimp = new MailChimpService();
 

@@ -2,7 +2,7 @@
 
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Slim\Middleware\MenuOptionsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Role\MenuOptionsRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

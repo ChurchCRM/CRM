@@ -4,7 +4,7 @@
 use ChurchCRM\Emails\AccountDeletedEmail;
 use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\Emails\UnlockedEmail;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
 use ChurchCRM\User;
 use ChurchCRM\UserConfigQuery;
 use ChurchCRM\UserQuery;

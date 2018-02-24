@@ -1,11 +1,10 @@
 <?php
 
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\UserQuery;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
 $app->group('/user', function () {
     $this->get('/not-found', 'viewUserNotFound');
@@ -40,7 +39,7 @@ function viewUser(Request $request, Response $response, array $args)
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/admin/user/not-found?id=".$args["id"]);
+        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/admin/user/not-found?id=" . $args["id"]);
     }
 
     $pageArgs = [

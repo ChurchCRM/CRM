@@ -1,10 +1,9 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware;
+namespace ChurchCRM\Slim\Middleware\Role;
 
-use ChurchCRM\Slim\Middleware\Role\BaseAuthRoleMiddleware;
-
-class AdminRoleAuthMiddleware extends BaseAuthRoleMiddleware {
+class AdminRoleAuthMiddleware extends BaseAuthRoleMiddleware
+{
 
     function hasRole()
     {
