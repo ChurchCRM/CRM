@@ -6,8 +6,8 @@ use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/emails', function () {
-    $this->get('/duplicates', 'getEmailDupes');
+$app->group('/persons', function () {
+    $this->get('/duplicate/emails', 'getEmailDupes');
 });
 
 

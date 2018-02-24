@@ -191,6 +191,6 @@ $app->group('/families', function () {
 
             return $response->withJson($geoLocationInfo);
         }
-        return $response->withStatus(404, gettext("FamilyId".  ": " . $familyId . " " . gettext("not found"));
+        return $response->withStatus(404, gettext("FamilyId".  ": " . $familyId . " " . gettext("not found")));
     });
 });
