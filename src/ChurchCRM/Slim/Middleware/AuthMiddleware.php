@@ -27,7 +27,7 @@ class AuthMiddleware {
             }
 
             if (empty($this->user)) {
-                return $response->withStatus(401)->withJson(["message" => gettext('No logged in user')]);
+                return $response->withStatus(401, gettext('No logged in user'));
             }
 
 

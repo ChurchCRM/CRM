@@ -244,11 +244,11 @@ $app->group('/groups', function () {
                 $group->setActive($flag);
                 $group->save();
             } else {
-                return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid group id']);
+                return $response->withStatus(500, gettext('invalid group id'));
             }
             return $response->withJson(['status' => "success"]);
         } else {
-            return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid status value']);
+            return $response->withStatus(500, gettext('invalid status value'));
         }
     });
 
@@ -261,11 +261,11 @@ $app->group('/groups', function () {
                 $group->setIncludeInEmailExport($flag);
                 $group->save();
             } else {
-                return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid group id']);
+                return $response->withStatus(500, gettext('invalid group id'));
             }
             return $response->withJson(['status' => "success"]);
         } else {
-            return $response->withStatus(500)->withJson(['status' => "error", 'reason' => 'invalid export value']);
+            return $response->withStatus(500, gettext('invalid export value'));
         }
     });
 });

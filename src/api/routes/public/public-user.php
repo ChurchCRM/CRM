@@ -48,8 +48,8 @@ function userPasswordReset(Request $request, Response $response, array $args)
             }
             return $response->withStatus(200)->withJson(['status' => "success"]);
         } else {
-            return $response->withStatus(404)->withJson(["Error" => gettext("User") . " [" . $userName . "] ". gettext("no found or user without an email")]);
+            return $response->withStatus(404, gettext("User") . " [" . $userName . "] ". gettext("no found or user without an email"));
         }
     }
-    return $response->withStatus(401)->withJson(["Error" => gettext("UserName not set")]);
+    return $response->withStatus(401, gettext("UserName not set"));
 }
