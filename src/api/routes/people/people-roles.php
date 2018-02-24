@@ -8,7 +8,9 @@ use Slim\Http\Response;
 
 $app->group('/persons', function () {
     $this->get('/roles', 'getAllRoles');
+    $this->get('/roles/', 'getAllRoles');
     $this->post('/role', 'setPersonRole');
+    $this->post('/role/', 'setPersonRole');
 });
 
 
