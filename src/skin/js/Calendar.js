@@ -55,32 +55,32 @@ window.moveEventModal = {
 window.NewOrEditEventModal = {
   getBootboxContent: function() {
     var frm_str = '<form id="some-form">'
-          + '<table class="table">'
+          + '<table class="table modal-table">'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Type') + ":</td>"
+          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Event Type') + ":</td>"
           + '<td colspan="3" class="TextColumn">'
-          + '<select type="text" id="eventType" value="39"  width="100%" style="width: 100%">'
+          + '<select type="text" id="eventType" value="39"  >'
           + '</select>'
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Desc') + ":</td>"
+          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Event Desc') + ":</td>"
           + '<td colspan="3" class="TextColumn">'
-          + "<textarea id='EventDesc' rows='4' maxlength='100' class='form-control'  width='100%' style='width: 100%' required >" + i18next.t("Calendar description") + "</textarea>"
+          + "<textarea id='EventDesc' rows='4' maxlength='100' class='form-control' required >" + i18next.t("Calendar description") + "</textarea>"
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + '<td class="LabelColumn"><span style="color: red">*</span>'
+          + '<td class="LabelColumn"><span class="required-field">*</span>'
           + i18next.t("Date Range") + ':'
           + '</td>'
-          + '<td class="TextColumn">'
-          + '<input type="text" name="EventDateRange" value="" maxlength="10" id="EventDateRange" size="50" class="form-control" width="100%" style="width: 100%" required>'
+          + '<td colspan="3" class="TextColumn">'
+          + '<input type="text" name="EventDateRange" id="EventDateRange" class="form-control"  required>'
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
-          + '<td class="TextColumn">'
-          + '<select type="text" multiple="multiple" id="PinnedCalendars" value="39" width="100%" style="width: 100%">'
+          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
+          + '<select type="text" multiple="multiple" id="PinnedCalendars" value="39" >'
           + '</select>'
           + '</td>'
           + '</tr>'
@@ -91,19 +91,19 @@ window.NewOrEditEventModal = {
           + '<tr>'
           + "<td><strong>" + i18next.t("Total") + ":&nbsp;</strong></td>"
           + '<td>'
-          + '<input type="text" id="Total" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
+          + '<input type="text" id="Total"  class="form-control"  >'
           + '</td>'
           + '</tr>'
           + '<tr>'
           + "<td><strong>" + i18next.t("Members") + ":&nbsp;</strong></td>"
           + '<td>'
-          + '<input type="text" id="Members" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
+          + '<input type="text" id="Members" value="0" size="8" class="form-control"  >'
           + ' </td>'
           + '</tr>'
           + ' <tr>'
           + "<td><strong>" + i18next.t("Visitors") + ":&nbsp;</strong></td>"
           + '<td>'
-          + '<input type="text" id="Visitors" value="0" size="8" class="form-control"  width="100%" style="width: 100%">'
+          + '<input type="text" id="Visitors" value="0" size="8" class="form-control"  >'
           + '</td>'
           + '</tr>'
           + '<tr>'
@@ -115,7 +115,7 @@ window.NewOrEditEventModal = {
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Description') + '<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  width="100%" style="width: 100%"></textarea></td>'
+          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Description') + '<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  ></textarea></td>'
           + '</tr>'
           + '</table>'
           + '</form>';
@@ -170,13 +170,13 @@ window.NewOrEditEventModal = {
   getSaveButton: function() {
     return {
       label: i18next.t("Save"),
-      className: "btn btn-primary pull-left",
+      className: "btn btn-primary pull-right",
       callback: window.NewOrEditEventModal.saveButtonCallback
     };
   },
-  getCloseButton: function() {
+  getCancelButton: function() {
     return {
-      label: i18next.t("Close"),
+      label: i18next.t("Cancel"),
       className: "btn btn-default pull-left"
     };
   },
@@ -242,8 +242,7 @@ window.NewOrEditEventModal = {
       startDate: start.format("YYYY-MM-DD h:mm A"),
       endDate: end.format("YYYY-MM-DD h:mm A")
     });
-    
-    $("#PinnedCalendars").select2();
+    $("#PinnedCalendars").select2({ width: '100%' });
 
     // this will ensure that image and table can be focused
     $(document).on('focusin', function (e) {
@@ -283,10 +282,10 @@ window.NewOrEditEventModal = {
     window.NewOrEditEventModal.mode='new';
     window.NewOrEditEventModal.modal = bootbox.dialog({
       message: window.NewOrEditEventModal.getBootboxContent,
-      title: "<input type='text' id='EventTitle' value='" + i18next.t("Event Title") + "' size='30' maxlength='100' class='form-control'  width='100%' style='width: 100%' required>",
+      title: "<input type='text' id='EventTitle' value='" + i18next.t("Event Title") + "' size='30' maxlength='100' class='form-control' required>",
       buttons: [
         window.NewOrEditEventModal.getSaveButton(),
-        window.NewOrEditEventModal.getCloseButton()
+        window.NewOrEditEventModal.getCancelButton()
       ],
       show: false,
       onEscape: function () {
@@ -302,10 +301,10 @@ window.NewOrEditEventModal = {
       var event = data.Events[0];
       window.NewOrEditEventModal.modal = bootbox.dialog({
         message: window.NewOrEditEventModal.getBootboxContent,
-        title: "<input type='text' id='EventTitle' value='" + event.Title + "' size='30' maxlength='100' class='form-control'  width='100%' style='width: 100%' required>",
+        title: "<input type='text' id='EventTitle' value='" + event.Title + "' size='30' maxlength='100' class='form-control'   required>",
         buttons: [
           window.NewOrEditEventModal.getSaveButton(),
-          window.NewOrEditEventModal.getCloseButton()
+          window.NewOrEditEventModal.getCancelButton()
         ],
         show: false,
         onEscape: function () {
@@ -348,30 +347,30 @@ window.displayEventModal = {
     $.each(event.CalendarEvents,function (idx,obj) {
       calendarPinnings += "<li>"+obj.Calendar.Name+"</li>";
     });
-    var frm_str = '<table class="table">'
+    var frm_str = '<table class="table modal-table">'
           + '<tr>'
-          + "<td><span style='color: red'>*</span>" + i18next.t('Event Type') + ":</td>"
+          + "<td><span class='required-field'>*</span>" + i18next.t('Event Type') + ":</td>"
           + '<td colspan="3" class="TextColumn">'
           + '<p>' + event.Type + "</p>" 
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Event Desc') + ":</td>"
+          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Event Desc') + ":</td>"
           + '<td colspan="3" class="TextColumn">'
           + '<p>' + event.Desc + "</p>" 
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + '<td class="LabelColumn"><span style="color: red">*</span>'
+          + '<td class="LabelColumn"><span class="required-field">*</span>'
           + i18next.t("Date Range") + ':'
           + '</td>'
-          + '<td class="TextColumn">'
+          + '<td colspan="3" class="TextColumn">'
           + '<p>'+new moment(event.Start).format()+ " - " + new moment(event.End).format() +'</p>' 
           + '</td>'
           + '</tr>'
           + '<tr>'
-          + "<td class='LabelColumn'><span style='color: red'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
-          + '<td class="TextColumn">'
+          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
+          + '<td colspan="3" class="TextColumn">'
           + '<ul>'
           + calendarPinnings
           + "</li>"
@@ -413,7 +412,7 @@ window.displayEventModal = {
       });
     }
     buttons.push({
-      label: i18next.t("Close"),
+      label: i18next.t("Cancel"),
       className: "btn btn-default pull-right"
     });
     return buttons;
@@ -443,7 +442,7 @@ window.calendarPropertiesModal = {
       icsURL =  window.CRM.fullURL + "api/public/calendar/"+calendar.AccessToken+"/ics";
       jsonURL =  window.CRM.fullURL + "api/public/calendar/"+calendar.AccessToken+"/events";
     }
-    var frm_str = '<form id="some-form"><table class="table" style="table-layout:fixed;width:100%">'
+    var frm_str = '<form id="some-form"><table class="table modal-table">'
           + '<tr>'
           + "<td>" + i18next.t('Access Token') + ":</td>"
           + '<td colspan="3">'
@@ -453,13 +452,13 @@ window.calendarPropertiesModal = {
           + '</tr>'
           + '<tr>'
           + "<td class='LabelColumn'>" + i18next.t('ICS URL') + ":</td>"
-          + '<td colspan="3" style="word-wrap: break-word;">'
+          + '<td colspan="3">'
           + '<span ><a href="'+icsURL+'">'+icsURL+'</a></span>'
           + '</td>'
           + '</tr>'
           + '<tr>'
           + "<td class='LabelColumn'>" + i18next.t('JSON URL') + ":</td>"
-          + '<td colspan="3" style="word-wrap: break-word;">'
+          + '<td colspan="3">'
           + '<span ><a href="'+jsonURL+'">'+jsonURL+'</a></span>'
           + '</td>'
           + '</tr>'
@@ -485,7 +484,7 @@ window.calendarPropertiesModal = {
   getButtons: function () {
     buttons =  [];
     buttons.push({
-      label: i18next.t("Close"),
+      label: i18next.t("Cancel"),
       className: "btn btn-default pull-right"
     });
     return buttons;
@@ -517,7 +516,7 @@ window.calendarPropertiesModal = {
 
 window.newCalendarModal = {
   getBootboxContent: function (calendar){ 
-    var frm_str = '<form id="some-form"><table class="table" style="table-layout:fixed;width:100%">'
+    var frm_str = '<form id="some-form"><table class="table modal-table">'
           + '<tr>'
           + "<td>" + i18next.t('Calendar Name') + ":</td>"
           + '<td colspan="3">'
@@ -546,12 +545,12 @@ window.newCalendarModal = {
     buttons =  [];
     buttons.push({
       label: i18next.t("Save"),
-      className: "btn btn-primary pull-left",
+      className: "btn btn-primary pull-right",
       callback: window.newCalendarModal.saveButtonCallback
     })
     buttons.push({
-      label: i18next.t("Close"),
-      className: "btn btn-default pull-right"
+      label: i18next.t("Cancel"),
+      className: "btn btn-default pull-left"
     });
    
     return buttons;
@@ -610,14 +609,14 @@ function initializeCalendar() {
 };
 
 function getCalendarFilterElement(calendar,type) {
-  return "<div class='row'>" + 
-          "<div class='col-xs-1' style='padding-left:5px; padding-right:5px;'>" +
+  return "<div class='row calendar-filter-row'>" + 
+          "<div class='col-xs-1'>" +
             "<input type='checkbox' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>"+ 
           "</div>"+
-          "<div class='col-xs-7' style='padding-left:5px; padding-right:5px;' ><label for='"+calendar.Name+"'>"+calendar.Name+"</label></div>"+
-          "<div class='col-xs-4' style='padding-left:5px; padding-right:5px;'>"+
-            "<div style='display:inline-block; padding-left:5px; padding-right:5px; color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>"+
-            (type === "user"  ? "<div style='display:inline-block; padding-left:5px; padding-right:5px;'><i class='calendarproperties fa fa-eye' aria-hidden='true' data-calendarid='"+calendar.Id+"' ></i></div>" :"") +
+          "<div class='col-xs-7'><label for='"+calendar.Name+"'>"+calendar.Name+"</label></div>"+
+          "<div class='col-xs-4'>"+
+            "<div class='calendar-filter-text' style=' color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>"+
+            (type === "user"  ? "<div class='calendar-filter-text'><i class='calendarproperties fa fa-eye' aria-hidden='true' data-calendarid='"+calendar.Id+"' ></i></div>" :"") +
         "</div>";
 }
 

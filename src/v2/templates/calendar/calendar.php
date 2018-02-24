@@ -25,8 +25,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="box-body" >
         <div id="userCalendars" class="container-fluid"></div>
       </div>
-      <div style="text-align: center">
-        <span id="newCalendarButton"><?= gettext("Add New Calendar") ?></span>
+      <div class="strike">
+        <span id="newCalendarButton"><i class="fa fa-plus-circle"></i></span>
       </div>
      </div>
   </div>
