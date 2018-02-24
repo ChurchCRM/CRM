@@ -18,30 +18,15 @@ use ChurchCRM\TokenQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/families', function () {
-    $this->get('/{familyId:[0-9]+}', function ($request, $response, $args) {
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        return $response->withJSON($family->toJSON());
-    });
+
+    $this->get('/search/{query}', 'searchFamilies');
 
     $this->get('/numbers', function ($request, $response, $args) {
         return $response->withJson(MenuEventsCount::getNumberAnniversaries());
-    });
-
-
-    $this->get('/search/{query}', function ($request, $response, $args) {
-        $query = $args['query'];
-        $results = [];
-        $q = FamilyQuery::create()
-            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
-            ->limit(15)
-            ->find();
-        foreach ($q as $family) {
-            array_push($results, $family->toSearchArray());
-        }
-
-        return $response->withJSON(json_encode(["Families" => $results]));
     });
 
     $this->get('/self-register', function ($request, $response, $args) {
@@ -77,9 +62,10 @@ $app->group('/families', function () {
     });
 
 
-    $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
-        $scanString = $args['scanString'];
-        echo $this->FinancialService->getMemberByScanString($scanString);
+
+    $this->get('/{familyId:[0-9]+}', function ($request, $response, $args) {
+        $family = FamilyQuery::create()->findPk($args['familyId']);
+        return $response->withJSON($family->toJSON());
     });
 
     $this->get('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
@@ -193,4 +179,67 @@ $app->group('/families', function () {
         }
         return $response->withStatus(404, gettext("FamilyId".  ": " . $familyId . " " . gettext("not found")));
     });
+
+
+    $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
+        $scanString = $args['scanString'];
+        echo $this->FinancialService->getMemberByScanString($scanString);
+    });
+
+
+
 });
+
+function xxxx(Request $request, Response $response, array $p_args)
+{
+
+}function xxxx333(Request $request, Response $response, array $p_args)
+{
+
+}function x(Request $request, Response $response, array $p_args)
+{
+
+}function x33(Request $request, Response $response, array $p_args)
+{
+
+}function x3(Request $request, Response $response, array $p_args)
+{
+
+}function x3xxx(Request $request, Response $response, array $p_args)
+{
+
+}function x2(Request $request, Response $response, array $p_args)
+{
+
+}function x1(Request $request, Response $response, array $p_args)
+{
+
+
+}function xxx(Request $request, Response $response, array $p_args)
+{
+
+}function xxx333(Request $request, Response $response, array $p_args)
+{
+
+}function xd(Request $request, Response $response, array $p_args)
+{
+
+}function xx(Request $request, Response $response, array $p_args)
+{
+
+}
+
+function searchFamilies(Request $request, Response $response, array $p_args)
+{
+    $query = $args['query'];
+    $results = [];
+    $q = FamilyQuery::create()
+        ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+        ->limit(15)
+        ->find();
+    foreach ($q as $family) {
+        array_push($results, $family->toSearchArray());
+    }
+
+    return $response->withJSON(["Families" => $results]);
+}
