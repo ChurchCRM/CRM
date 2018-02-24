@@ -131,12 +131,12 @@ function NewAccessToken($request, Response $response, $args)
 {
 
     if (!isset($args['id'])) {
-        return $response->withStatus(400)->withJson(array("status" => gettext("Invalid request: Missing calendar id")));
+        return $response->withStatus(400, gettext("Invalid request: Missing calendar id"));
     }
     $Calendar = CalendarQuery::create()
         ->findOneById($args['id']);
     if (!$Calendar) {
-        return $response->withStatus(404)->withJson(array("status" => gettext("Not Found: Unknown calendar id") . ": " . $args['id']));
+        return $response->withStatus(404, gettext("Not Found: Unknown calendar id") . ": " . $args['id']);
     }
     $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
     $Calendar->save();

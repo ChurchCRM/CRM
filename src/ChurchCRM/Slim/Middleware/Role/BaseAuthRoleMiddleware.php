@@ -18,7 +18,7 @@ abstract class BaseAuthRoleMiddleware
     {
         $this->user = $_SESSION['user'];
         if (empty($this->user) || !$this->hasRole()) {
-            return $response->withStatus(401)->withJson(["message" => $this->noRoleMessage()]);
+            return $response->withStatus(401, $this->noRoleMessage());
         }
         return $next($request, $response);
     }
