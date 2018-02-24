@@ -25,9 +25,7 @@ $app->group('/families', function () {
 
     $this->get('/search/{query}', 'searchFamilies');
 
-    $this->get('/numbers', function ($request, $response, $args) {
-        return $response->withJson(MenuEventsCount::getNumberAnniversaries());
-    });
+    $this->get('/numbers', 'getFamilyAnniversariesCount');
 
     $this->get('/self-register', function ($request, $response, $args) {
         $families = FamilyQuery::create()
@@ -224,17 +222,17 @@ function xxxx(Request $request, Response $response, array $p_args)
 }function xd(Request $request, Response $response, array $p_args)
 {
 
-}function xx(Request $request, Response $response, array $p_args)
+}function getFamilyAnniversariesCount(Request $request, Response $response, array $p_args)
 {
-
+    return $response->withJson(MenuEventsCount::getNumberAnniversaries());
 }
 
-function searchFamilies(Request $request, Response $response, array $p_args)
+function searchFamilies(Request $request, Response $response, array $args)
 {
     $query = $args['query'];
     $results = [];
     $q = FamilyQuery::create()
-        ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+        ->filterByName("%$query%", Criteria::LIKE)
         ->limit(15)
         ->find();
     foreach ($q as $family) {
