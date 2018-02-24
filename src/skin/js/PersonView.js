@@ -1,19 +1,19 @@
 $(document).ready(function () {
-  
+
   $('.changeRole').click(function(event) {
     var GroupID = $(this).data("groupid");
     window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:GroupID},function(selection){
       window.CRM.groups.addPerson(GroupID,window.CRM.currentPersonID,selection.RoleID).done(function(){
         location.reload();
       })
-      
+
     });
   });
 
   $(".groupRemove").click(function(event){
     var targetGroupID = event.currentTarget.dataset.groupid;
     var targetGroupName = event.currentTarget.dataset.groupname;
-    
+
     bootbox.confirm({
       message: i18next.t("Are you sure you want to remove this person's membership from") + " " + targetGroupName + "?",
       buttons: {
@@ -34,7 +34,7 @@ $(document).ready(function () {
             function(){
               location.reload()
             }
-          ); 
+          );
         }
       }
     });
@@ -48,7 +48,7 @@ $(document).ready(function () {
       );
     });
   });
-  
+
     $("#input-person-properties").on("select2:select", function (event) {
         promptBox = $("#prompt-box");
         promptBox.removeClass('form-group').html('');
@@ -95,7 +95,7 @@ $(document).ready(function () {
             PersonId: thisLink.data('person_id'),
             PropertyId: thisLink.data('property_id')
         };
-        var url = window.CRM.root + '/api/properties/persons/unassign';
+        var url = window.CRM.root + '/api/persons/properties';
 
         bootbox.confirm(i18next.t('Are you sure you want to unassign this property?'), function (result) {
             if (result) {
@@ -114,14 +114,14 @@ $(document).ready(function () {
         });
 
     });
-    
+
     $('#edit-role-btn').click(function (event) {
         event.preventDefault();
         var thisLink = $(this);
         var personId = thisLink.data('person_id');
         var familyRoleId = thisLink.data('family_role_id');
         var familyRole = thisLink.data('family_role');
-        
+
         $.ajax({
             type: 'GET',
             dataType: 'json',
@@ -133,13 +133,13 @@ $(document).ready(function () {
                         if (data[i].OptionId == familyRoleId) {
                             continue;
                         }
-                        
+
                         roles[roles.length] = {
                             text: data[i].OptionName,
                             value: data[i].OptionId
                         };
                     }
-                    
+
                     bootbox.prompt({
                         title:i18next.t( 'Change role'),
                         inputType: 'select',
@@ -150,7 +150,7 @@ $(document).ready(function () {
                                     type: 'POST',
                                     data: { personId: personId, roleId: result },
                                     dataType: 'json',
-                                    url: window.CRM.root + '/api/roles/persons/assign',
+                                    url: window.CRM.root + '/api/persons/properties',
                                     success: function (data, status, xmlHttpReq) {
                                         if (data.success) {
                                             location.reload();
@@ -158,16 +158,16 @@ $(document).ready(function () {
                                     }
                                 });
                             }
-                            
+
                         }
                     });
-                    
+
                 }
             }
         });
-        
+
     });
-    
-    
-    
+
+
+
 });

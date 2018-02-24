@@ -716,7 +716,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                                     <div>
                                         <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
 
-                                        <form method="post" action="<?= SystemURLs::getRootPath(). '/api/properties/persons/assign' ?>" id="assign-property-form">
+                                        <form method="post" action="<?= SystemURLs::getRootPath(). '/api/persons/properties' ?>" id="assign-property-form">
                                             <input type="hidden" name="PersonId" value="<?= $person->getId() ?>" >
                                             <div class="row">
                                                 <div class="form-group col-xs-12 col-md-7">
