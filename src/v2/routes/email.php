@@ -4,7 +4,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
 use PHPMailer\PHPMailer\PHPMailer;
 use Slim\Http\Request;
 use Slim\Http\Response;
