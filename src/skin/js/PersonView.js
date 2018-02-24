@@ -125,7 +125,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: window.CRM.root + '/api/roles/all',
+            url: window.CRM.root + '/api/persons/roles',
             success: function (data, status, xmlHttpReq) {
                 if (data.length) {
                     roles = [{text: familyRole, value: ''}];
