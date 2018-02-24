@@ -2,6 +2,7 @@
 
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Slim\Middleware\MenuOptionsRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -9,8 +10,8 @@ use Slim\Http\Response;
 $app->group('/persons', function () {
     $this->get('/roles', 'getAllRoles');
     $this->get('/roles/', 'getAllRoles');
-    $this->post('/role', 'setPersonRole');
-    $this->post('/role/', 'setPersonRole');
+    $this->post('/role', 'setPersonRole')->add(new MenuOptionsRoleAuthMiddleware());
+    $this->post('/role/', 'setPersonRole')->add(new MenuOptionsRoleAuthMiddleware());
 });
 
 
