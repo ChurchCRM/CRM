@@ -447,7 +447,7 @@ window.calendarPropertiesModal = {
           + "<td>" + i18next.t('Access Token') + ":</td>"
           + '<td colspan="3">'
           + '<input id="AccessToken" class="form-control" type="text" readonly value="' + calendar.AccessToken + '"/>'
-          + '<a id="NewAccessToken" class="btn btn-warning"><i class="fa fa-repeat"></i>' + i18next.t("New Access Token") + '</a>'
+          + (window.CRM.calendarJSArgs.isModifiable ? '<a id="NewAccessToken" class="btn btn-warning"><i class="fa fa-repeat"></i>' + i18next.t("New Access Token") + '</a>' :  '')
           + '</td>'
           + '</tr>'
           + '<tr>'
@@ -678,13 +678,27 @@ function initializeFilterSettings() {
     $("#systemCalendars .calendarSelectionBox").click();
   });
 
-  $("#newCalendarButton").click(function() {
-    window.newCalendarModal.show();
-  });
+ 
 };
 
+function initializeNewCalendarButton(){
+  if (window.CRM.calendarJSArgs.isModifiable) {
+    var newCalendarButton = '<div class="strike">'+
+      '<span id="newCalendarButton"><i class="fa fa-plus-circle"></i></span>'+
+    '</div>';
+    
+     $("#userCalendars").after(newCalendarButton);
+  }
+   $("#newCalendarButton").click(function() {
+    window.newCalendarModal.show();
+  });
+ 
+}
+
 $(document).ready(function () {
+  //window.CRM.calendarJSArgs.isModifiable = false;
   initializeCalendar();
   initializeFilterSettings();
+  initializeNewCalendarButton();
   registerCalendarSelectionEvents();
 });

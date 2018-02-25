@@ -10,6 +10,11 @@
     display: inline-block;
 }
 
+.strike:hover {
+  font-size: 22px;
+  color: lime;
+}
+
 .strike > span:before,
 .strike > span:after {
     content: "";
@@ -17,7 +22,7 @@
     top: 50%;
     width: 9999px;
     height: 1px;
-    background: red;
+    background: grey;
 }
 
 .strike > span:before {
