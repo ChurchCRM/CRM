@@ -514,8 +514,17 @@ window.calendarPropertiesModal = {
   }
 }
 
+function fieldError(inputField) {
+  var p = $(inputField).parent().find("p .form-field-error")
+  if (p.length === 0){
+     p =  $("<p class='form-field-error'>");
+     $(inputField).parent().append(p);
+  }
+  $(p).text(i18next.t("Invalid Entry"));
+}
+
 window.newCalendarModal = {
-  getBootboxContent: function (calendar){ 
+  getBootboxContent: function (){ 
     var frm_str = '<form id="some-form"><table class="table modal-table">'
           + '<tr>'
           + "<td>" + i18next.t('Calendar Name') + ":</td>"
@@ -555,8 +564,28 @@ window.newCalendarModal = {
    
     return buttons;
   },
+  validateNewCalendar: function() {
+    var status = true;
+    if (!$("#calendarName").val()){
+      fieldError($("#calendarName"));
+      status = false;
+    }
+    if (!$("#ForegroundColor").val()){
+      fieldError($("#ForegroundColor"));
+      status = false;
+    }
+    if (!$("#BackgroundColor").val()){
+      fieldError($("#BackgroundColor"));
+      status = false;
+    }
+    return status;
+  },
   saveButtonCallback: function() {
-   
+    $(".form-field-error").remove();
+    if (!window.newCalendarModal.validateNewCalendar())
+    {
+      return false;
+    }
     var newCalendar = {
       Name: $("#calendarName").val(),
       ForegroundColor: $("#ForegroundColor").val(),
