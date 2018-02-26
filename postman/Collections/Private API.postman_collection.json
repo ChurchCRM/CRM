@@ -1,14 +1,13 @@
 {
 	"info": {
 		"name": "Private API",
-		"_postman_id": "e5c9b4e3-3210-1813-3905-62f317f135ed",
+		"_postman_id": "36c47ef2-598b-a903-e4d0-e65dbcb4dee5",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Calendars",
-			"description": "",
 			"item": [
 				{
 					"name": "Events",
@@ -120,7 +119,7 @@
 					],
 					"_postman_isSubFolder": true
 				},
-        {
+				{
 					"name": "New Calendar",
 					"request": {
 						"method": "POST",
@@ -147,37 +146,59 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Calendar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/calendars/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"calendars",
+								"4"
+							]
+						}
+					},
+					"response": []
 				}
-      ]
+			]
 		},
 		{
 			"name": "Cart",
-			"description": "",
 			"item": []
 		},
 		{
 			"name": "Dashboard",
-			"description": "",
 			"item": []
 		},
 		{
 			"name": "Emails",
-			"description": "",
 			"item": []
 		},
 		{
 			"name": "Finance",
-			"description": "",
 			"item": [
 				{
 					"name": "Deposits",
-					"description": "",
 					"item": [],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Payments",
-					"description": "",
 					"item": [],
 					"_postman_isSubFolder": true
 				}
@@ -185,32 +206,26 @@
 		},
 		{
 			"name": "Geocoder",
-			"description": "",
 			"item": []
 		},
 		{
 			"name": "Groups",
-			"description": "",
 			"item": []
 		},
 		{
 			"name": "Kiosks",
-			"description": "",
 			"item": []
 		},
 		{
 			"name": "People",
-			"description": "",
 			"item": [
 				{
 					"name": "Persons",
-					"description": "",
 					"item": [],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Families",
-					"description": "",
 					"item": [],
 					"_postman_isSubFolder": true
 				}
@@ -218,16 +233,13 @@
 		},
 		{
 			"name": "Search",
-			"description": "",
 			"item": []
 		},
 		{
 			"name": "System",
-			"description": "",
 			"item": [
 				{
 					"name": "Upgrade",
-					"description": "",
 					"item": [],
 					"_postman_isSubFolder": true
 				},
@@ -274,7 +286,10 @@
 										"value": "fin48waG4rIWwfLvTstDr8ZJtP6aNdSTm7NjsNPm6n0rtKNd37"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/database/people/clear",
 									"host": [
@@ -296,7 +311,6 @@
 				},
 				{
 					"name": "Issues",
-					"description": "",
 					"item": [],
 					"_postman_isSubFolder": true
 				}
