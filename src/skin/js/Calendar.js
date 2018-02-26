@@ -434,6 +434,18 @@ window.displayEventModal = {
   }
 }
 
+function deleteCalendar(){
+  console.log(window.calendarPropertiesModal.calendar);
+  window.CRM.APIRequest({
+      method:"DELETE",
+      path: "calendars/"+window.calendarPropertiesModal.calendar.Id
+    }).done(function(data){
+      var eventSourceURL = window.CRM.root+"/api/calendars/"+$(this).data("calendarid")+"/fullcalendar";
+      window.CRM.fullcalendar.fullCalendar("removeEventSource",{id: window.calendarPropertiesModal.calendar.Id, url: eventSourceURL});
+      initializeFilterSettings();
+    });
+}
+
 window.calendarPropertiesModal = {
   getBootboxContent: function (calendar){ 
     var icsURL = '';
@@ -487,6 +499,13 @@ window.calendarPropertiesModal = {
       label: i18next.t("Cancel"),
       className: "btn btn-default pull-right"
     });
+    if (window.CRM.calendarJSArgs.isModifiable) {
+      buttons.push({
+      label: i18next.t("Delete Calendar"),
+      className: "btn btn-danger pull-left",
+      callback: deleteCalendar
+    });
+    }
     return buttons;
   },
   show: function(calendar) {
@@ -685,6 +704,7 @@ function registerCalendarSelectionEvents() {
 
 function initializeFilterSettings() {
   
+  window.CRM.fullcalendar.fullCalendar( 'removeEventSources');
   window.CRM.APIRequest({
     method: 'GET',
     path: 'calendars',
@@ -706,6 +726,8 @@ function initializeFilterSettings() {
     });
     $("#systemCalendars .calendarSelectionBox").click();
   });
+  
+  
 
  
 };
