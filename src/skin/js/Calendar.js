@@ -460,6 +460,7 @@ window.calendarPropertiesModal = {
           + '<td colspan="3">'
           + '<input id="AccessToken" class="form-control" type="text" readonly value="' + calendar.AccessToken + '"/>'
           + (window.CRM.calendarJSArgs.isModifiable ? '<a id="NewAccessToken" class="btn btn-warning"><i class="fa fa-repeat"></i>' + i18next.t("New Access Token") + '</a>' :  '')
+          + (window.CRM.calendarJSArgs.isModifiable && calendar.AccessToken != null ? '<a id="DeleteAccessToken" class="btn btn-danger"><i class="fa fa-trash-o"></i>' + i18next.t("Delete Access Token") + '</a>' :  '')
           + '</td>'
           + '</tr>'
           + '<tr>'
@@ -521,11 +522,23 @@ window.calendarPropertiesModal = {
       }
     });
     $("#NewAccessToken").click(window.calendarPropertiesModal.newAccessToken);
+    $("#DeleteAccessToken").click(window.calendarPropertiesModal.deleteAccessToken);
+    
   },
   newAccessToken: function() {
     window.CRM.APIRequest({
       method: 'POST',
       path: 'calendars/'+window.calendarPropertiesModal.calendar.Id+"/NewAccessToken",
+    }).done(function (newcalendar) {
+      $(window.calendarPropertiesModal.modal).find(".bootbox-body").html(window.calendarPropertiesModal.getBootboxContent(newcalendar));
+      $("#NewAccessToken").click(window.calendarPropertiesModal.newAccessToken);
+      $("#DeleteAccessToken").click(window.calendarPropertiesModal.deleteAccessToken);
+    });
+  },
+  deleteAccessToken: function() {
+    window.CRM.APIRequest({
+      method: 'DELETE',
+      path: 'calendars/'+window.calendarPropertiesModal.calendar.Id+"/AccessToken",
     }).done(function (newcalendar) {
       $(window.calendarPropertiesModal.modal).find(".bootbox-body").html(window.calendarPropertiesModal.getBootboxContent(newcalendar));
       $("#NewAccessToken").click(window.calendarPropertiesModal.newAccessToken);

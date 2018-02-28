@@ -20,6 +20,7 @@ $app->group('/calendars', function () {
     $this->get('/{id}/events', 'UserCalendar');
     $this->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
     $this->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
+    $this->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(new AddEventsRoleAuthMiddleware());
     
 });
 
@@ -145,6 +146,21 @@ function NewAccessToken($request, Response $response, $args)
     $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
     $Calendar->save();
     return $Calendar->toJSON();
+}
+
+function DeleteAccessToken($request, Response $response, $args)
+{
+  if (!isset($args['id'])) {
+    return $response->withStatus(400)->withJson(array("status" => gettext("Invalid request: Missing calendar id")));
+  }
+  $Calendar = CalendarQuery::create()
+      ->findOneById($args['id']);
+  if (!$Calendar) {
+    return $response->withStatus(404)->withJson(array("status" => gettext("Not Found: Unknown calendar id") . ": " . $args['id']));
+  }
+  $Calendar->setAccessToken(null);
+  $Calendar->save();
+  return $Calendar->toJSON();
 }
 
 function NewCalendar(Request $request, Response $response, $args)
