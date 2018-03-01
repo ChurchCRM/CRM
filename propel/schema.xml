@@ -556,11 +556,11 @@
         <column name="location_id" phpName="LocationId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
-                
+
         <foreign-key foreignTable="event_types" name="EventType" refPhpName="EventType">
             <reference local="event_type" foreign="type_id"/>
         </foreign-key>
-        
+
         <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
             <reference local="event_type" foreign="per_ID"/>
         </foreign-key>
@@ -914,14 +914,14 @@
       <unique name="accesstoken">
         <unique-column name="accesstoken"/>
       </unique>
-        
+
       <vendor type="mysql">
           <parameter name="Engine" value="InnoDB"/>
       </vendor>
     </table>
-    
+
     <table name="calendar_events" idMethod="native" phpName="CalendarEvent" isCrossRef="true" description="This is a join-table to link an event with a calendar">
-      <column name="calendar_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>  
+      <column name="calendar_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
       <column name="event_id" phpName="EventId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
 
       <foreign-key foreignTable="calendars">
