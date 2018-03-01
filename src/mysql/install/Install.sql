@@ -330,6 +330,9 @@ CREATE TABLE `calendars` (
   UNIQUE KEY `accesstoken` (`accesstoken`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+INSERT INTO `calendars` (`calendar_id`,`name`,`accesstoken`,`foregroundColor`,`backgroundColor`) VALUES
+ (1,"Public Calendar",NULL,"FFFFFF","00AA00"),
+ (2,"Private Calendar",NULL,"FFFFFF","0000AA");
 
 # This is a join-table to link an event with a calendar
 CREATE TABLE `calendar_events` (
