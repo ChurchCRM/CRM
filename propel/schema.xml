@@ -69,6 +69,14 @@
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: per_firstname, validator: NotNull}" />
+            <parameter name="rule2" value="{column: per_firstname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule3" value="{column: per_lastname, validator: NotNull}" />
+            <parameter name="rule4" value="{column: per_lastname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule5" value="{column: per_email, validator: NotNull}" />
+            <parameter name="rule6" value="{column: per_email, validator: Email}" />
+        </behavior>
     </table>
     <table name="whycame_why" idMethod="native" phpName="WhyCame" description="This contains the comments related to why people came">
         <column name="why_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true"
@@ -147,6 +155,10 @@
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: fam_name, validator: NotNull}" />
+            <parameter name="rule2" value="{column: fam_name, validator: Length, options: {max: 50}}" />
+        </behavior>
     </table>
     <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
         <column name="fam_custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
@@ -544,11 +556,11 @@
         <column name="location_id" phpName="LocationId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
-                
+
         <foreign-key foreignTable="event_types" name="EventType" refPhpName="EventType">
             <reference local="event_type" foreign="type_id"/>
         </foreign-key>
-        
+
         <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
             <reference local="event_type" foreign="per_ID"/>
         </foreign-key>
@@ -902,14 +914,14 @@
       <unique name="accesstoken">
         <unique-column name="accesstoken"/>
       </unique>
-        
+
       <vendor type="mysql">
           <parameter name="Engine" value="InnoDB"/>
       </vendor>
     </table>
-    
+
     <table name="calendar_events" idMethod="native" phpName="CalendarEvent" isCrossRef="true" description="This is a join-table to link an event with a calendar">
-      <column name="calendar_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>  
+      <column name="calendar_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
       <column name="event_id" phpName="EventId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
 
       <foreign-key foreignTable="calendars">
