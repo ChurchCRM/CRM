@@ -99,6 +99,7 @@ function Header_body_scripts()
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
             root: "<?= SystemURLs::getRootPath() ?>",
+            fullURL:"<?= SystemURLs::getURL() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
@@ -131,16 +132,9 @@ $security_matrix = GetSecuritySettings();
 function GetSecuritySettings()
 {
     $aSecurityListPrimal[] = 'bAdmin';
-    $aSecurityListPrimal[] = 'bAddRecords';
-    $aSecurityListPrimal[] = 'bEditRecords';
-    $aSecurityListPrimal[] = 'bDeleteRecords';
     $aSecurityListPrimal[] = 'bMenuOptions';
     $aSecurityListPrimal[] = 'bManageGroups';
-    $aSecurityListPrimal[] = 'bFinance';
-    $aSecurityListPrimal[] = 'bNotes';
     $aSecurityListPrimal[] = 'bCommunication';
-    $aSecurityListPrimal[] = 'bCanvasser';
-    $aSecurityListPrimal[] = 'bAddEvent';
     $aSecurityListPrimal[] = 'bSeePrivacyData';
 
     $ormSecGrpLists = UserConfigQuery::Create()
@@ -159,7 +153,7 @@ function GetSecuritySettings()
     for ($i = 0; $i < count($aSecurityListPrimal); $i++) {
         if (array_key_exists($aSecurityListPrimal[$i], $_SESSION) && $_SESSION[$aSecurityListPrimal[$i]]) {
             $aSecurityListFinal[] = $aSecurityListPrimal[$i];
-        } elseif ($aSecurityListPrimal[$i] == 'bAddEvent' && $_SESSION['bAdmin']) {
+        } elseif ($aSecurityListPrimal[$i] == 'bAddEvent' && $_SESSION['user']->isAdmin()) {
             $aSecurityListFinal[] = 'bAddEvent';
         }
     }

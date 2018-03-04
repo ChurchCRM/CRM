@@ -26,11 +26,6 @@ if [ -f $file  ]; then
 
   echo -n "Current branch is: $publishBranch"
 
-  if  ! [[ $publishBranch == "develop" ||  $publishBranch == "master"  ]]; then
-    echo -n "Current branch is not master or develop. Enter branch to emulate:  (develop)"
-    read publishBranch
-    publishBranch=${publishBranch:-develop}
-  fi
   echo "**************************************"
   echo "Beginning to publish demosite"
   echo "Publishing ZipArchive: $file"

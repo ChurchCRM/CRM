@@ -8,7 +8,7 @@ msgstr ""
 "Language: de\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:230
+#: Include/Functions.php:233
 msgid "Cannot execute query."
 msgstr "Abfrage kann nicht ausgeführt werden."
 
@@ -21,24 +21,24 @@ msgstr "Bestätigen sie das automatische Löschen der Zahlung"
 #: DonationFundEditor.php:183 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
 #: EventNames.php:302 FamilyCustomFieldsEditor.php:324
-#: FamilyCustomFieldsEditor.php:382 FamilyView.php:662 FamilyView.php:714
-#: FamilyView.php:773 FamilyView.php:910 FindDepositSlip.php:104
+#: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
+#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:104
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
-#: PersonView.php:935 PledgeDelete.php:53 PropertyList.php:65
+#: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:39 PropertyTypeList.php:60
-#: PropertyTypeList.php:62 v2/templates/people/family-view.php:543
+#: PropertyTypeList.php:62 v2/templates/people/family-view.php:529
 msgid "Delete"
 msgstr "Löschen"
 
 #: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
 #: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
 #: DirectoryReports.php:286 DonatedItemEditor.php:297 EventNames.php:231
-#: FamilyEditor.php:1119 FamilyView.php:909 FinancialReports.php:69
+#: FamilyEditor.php:1119 FamilyView.php:910 FinancialReports.php:69
 #: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
 #: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:934
+#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
 #: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
 #: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
 #: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
@@ -46,7 +46,7 @@ msgstr "Löschen"
 #: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:542
+#: v2/templates/people/family-view.php:528
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -62,7 +62,7 @@ msgstr "Einstellungen für das automatische Zahlen"
 #: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
 #: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
 #: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:217
+#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:216
 #: WhyCameEditor.php:104
 msgid "Save"
 msgstr "Speichern"
@@ -71,12 +71,12 @@ msgstr "Speichern"
 #: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
 #: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
 #: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:852 Include/Functions.php:905
-#: Include/Header-function.php:317 MapUsingGoogle.php:96
+#: Include/Functions.php:855 Include/Functions.php:908
+#: Include/Header-function.php:311 MapUsingGoogle.php:96
 #: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
 #: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
 #: PrintView.php:275 SelectDelete.php:156 SelectList.php:35 SelectList.php:45
-#: SelectList.php:61 SelectList.php:1101 SelectList.php:1172
+#: SelectList.php:61 SelectList.php:1098 SelectList.php:1169
 #: SystemSettings.php:214 eGive.php:341
 msgid "Unassigned"
 msgstr "nicht zugeordnet"
@@ -94,10 +94,9 @@ msgid "Payment interval (months)"
 msgstr "Zahlungsintervall (Monate)"
 
 #: AutoPaymentEditor.php:867 CartToGroup.php:74 EditEventTypes.php:86
-#: EditEventTypes.php:98 EventEditor.php:502 EventNames.php:106
-#: EventNames.php:118 EventNames.php:163 GroupReports.php:47
-#: GroupReports.php:142 PersonToGroup.php:66 calendar.php:72 calendar.php:82
-#: sundayschool/SundaySchoolReports.php:190
+#: EditEventTypes.php:98 EventNames.php:106 EventNames.php:118
+#: EventNames.php:163 GroupReports.php:47 GroupReports.php:142
+#: PersonToGroup.php:66 sundayschool/SundaySchoolReports.php:190
 msgid "None"
 msgstr "Keine"
 
@@ -140,10 +139,10 @@ msgstr "Tel."
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
-#: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:271
-#: FamilyView.php:276 FamilyView.php:358 GroupReports.php:127
+#: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:272
+#: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
-#: PersonView.php:506 PrintView.php:295 Reports/CanvassReports.php:243
+#: PersonView.php:511 PrintView.php:295 Reports/CanvassReports.php:243
 #: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
 #: Reports/ConfirmReportEmail.php:191 Reports/ConfirmReportEmail.php:209
 #: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
@@ -152,8 +151,8 @@ msgstr "Tel."
 #: external/templates/verify/verify-family-info.php:76
 #: sundayschool/SundaySchoolClassView.php:89
 #: sundayschool/SundaySchoolClassView.php:205
-#: v2/templates/people/family-view.php:188
-#: v2/templates/people/family-view.php:328 menuconfig_mcf.php:15
+#: v2/templates/people/family-view.php:174
+#: v2/templates/people/family-view.php:314 menuconfig_mcf.php:15
 #: queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr "Email"
@@ -376,8 +375,8 @@ msgstr "Nicht filtern"
 
 #: CSVExport.php:328 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
 #: FamilyEditor.php:990 PeopleDashboard.php:310 PeopleDashboard.php:355
-#: PersonEditor.php:630 PrintView.php:245 PrintView.php:364 SelectList.php:558
-#: SelectList.php:1143
+#: PersonEditor.php:630 PrintView.php:245 PrintView.php:364 SelectList.php:555
+#: SelectList.php:1140
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
 msgid "Male"
@@ -385,8 +384,8 @@ msgstr "Mann"
 
 #: CSVExport.php:329 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
 #: FamilyEditor.php:993 PeopleDashboard.php:323 PeopleDashboard.php:368
-#: PersonEditor.php:633 PrintView.php:248 PrintView.php:364 SelectList.php:564
-#: SelectList.php:1144
+#: PersonEditor.php:633 PrintView.php:248 PrintView.php:364 SelectList.php:561
+#: SelectList.php:1141
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
 msgid "Female"
@@ -452,7 +451,7 @@ msgid "Ignore this Field"
 msgstr "Ignoriere dieses Feld"
 
 #: CSVExport.php:72 CSVImport.php:210 DonatedItemEditor.php:208
-#: FindFundRaiser.php:237 FundRaiserEditor.php:169 FundRaiserEditor.php:195
+#: FindFundRaiser.php:236 FundRaiserEditor.php:169 FundRaiserEditor.php:195
 #: PersonEditor.php:637
 msgid "Title"
 msgstr "Titel"
@@ -474,39 +473,39 @@ msgstr "Nummer des Spendenumschlags"
 
 #: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
-#: FamilyList.php:46 FamilyView.php:253 GroupReports.php:124
+#: FamilyList.php:46 FamilyView.php:254 GroupReports.php:124
 #: PersonEditor.php:961 PersonEditor.php:963 PersonView.php:302
 #: PrintView.php:200 Reports/ConfirmReport.php:135
-#: Reports/ConfirmReportEmail.php:140 SelectList.php:968 SelectList.php:969
-#: SelectList.php:1044
+#: Reports/ConfirmReportEmail.php:140 SelectList.php:965 SelectList.php:966
+#: SelectList.php:1041
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
 #: external/templates/verify/verify-family-info.php:27
 #: external/templates/verify/verify-family-info.php:70
 #: sundayschool/SundaySchoolClassView.php:207
-#: v2/templates/people/family-view.php:167
-#: v2/templates/people/family-view.php:313 queryparameteroptions_qpo.php:8
+#: v2/templates/people/family-view.php:153
+#: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr "Tel. Privat"
 
 #: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
-#: FamilyEditor.php:749 FamilyView.php:259 GroupReports.php:125
+#: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
 #: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
 #: PrintView.php:205 Reports/ConfirmReport.php:239
-#: Reports/ConfirmReportEmail.php:238 SelectList.php:971 SelectList.php:972
-#: SelectList.php:1044 external/templates/verify/verify-family-info.php:72
-#: v2/templates/people/family-view.php:174
-#: v2/templates/people/family-view.php:318
+#: Reports/ConfirmReportEmail.php:238 SelectList.php:968 SelectList.php:969
+#: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
+#: v2/templates/people/family-view.php:160
+#: v2/templates/people/family-view.php:304
 msgid "Work Phone"
 msgstr "Tel. Geschäftlich"
 
 #: CSVExport.php:137 CSVImport.php:225 CartToFamily.php:301
-#: FamilyEditor.php:759 FamilyView.php:265 PersonEditor.php:1009
+#: FamilyEditor.php:759 FamilyView.php:266 PersonEditor.php:1009
 #: PersonEditor.php:1011 PersonView.php:297 PrintView.php:210
-#: SelectList.php:974 SelectList.php:975 SelectList.php:1044
+#: SelectList.php:971 SelectList.php:972 SelectList.php:1041
 #: external/templates/verify/verify-family-info.php:74
-#: v2/templates/people/family-view.php:181
-#: v2/templates/people/family-view.php:323
+#: v2/templates/people/family-view.php:167
+#: v2/templates/people/family-view.php:309
 msgid "Mobile Phone"
 msgstr "Mobiltel."
 
@@ -521,9 +520,9 @@ msgid "Birth Date"
 msgstr "Geburtstag"
 
 #: CSVImport.php:230 CartToFamily.php:211 DirectoryReports.php:173
-#: FamilyEditor.php:805 FamilyView.php:240
+#: FamilyEditor.php:805 FamilyView.php:241
 #: external/templates/verify/verify-family-info.php:34
-#: v2/templates/people/family-view.php:154
+#: v2/templates/people/family-view.php:140
 msgid "Wedding Date"
 msgstr "Hochzeitstag:"
 
@@ -570,7 +569,7 @@ msgstr "Import ausführen"
 msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "Fehler: Die hochgeladene CSV Datei existiert nicht mehr!"
 
-#: CSVImport.php:821
+#: 
 msgid "Data Cleared Successfully!"
 msgstr "Datenlöschen war erfolgreich."
 
@@ -578,27 +577,27 @@ msgstr "Datenlöschen war erfolgreich."
 msgid "Please select the confirmation checkbox"
 msgstr "Bitte bestätigen auswählen"
 
-#: CSVImport.php:832
+#: CSVImport.php:812
 msgid "Upload CSV File"
 msgstr "CSV Datei hochladen"
 
-#: CSVImport.php:843 CSVImport.php:850 CSVImport.php:861
+#: CSVImport.php:822
 msgid "Clear Persons and Families"
 msgstr "Personen und Familien löschen"
 
-#: CSVImport.php:855
+#: 
 msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
 msgstr "Achtung! Bitte wählen sie diese Option nicht, wenn sie eine exisitierende Datenbank ergänzen wollen.<br/>"
 
-#: CSVImport.php:856
+#: 
 msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
 msgstr "Bitte nur benutzen, wenn sie mit der ursprünglichen Bericht unzufrieden sind. Alle Personen- und Mitgliederdaten werden gelöscht!"
 
-#: CSVImport.php:872
+#: CSVImport.php:829
 msgid "Data import successful."
 msgstr "Datenimport war erfolgreich."
 
-#: CSVImport.php:872
+#: CSVImport.php:829
 msgid "persons were imported"
 msgstr "Personen wurden importiert"
 
@@ -768,18 +767,18 @@ msgstr "Korb zur Familie hinzufügen"
 #: DonationFundEditor.php:150 DonationFundEditor.php:213
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:174
 #: EventNames.php:263 FamilyCustomFieldsEditor.php:320
-#: FamilyCustomFieldsEditor.php:434 FamilyList.php:44 FamilyView.php:549
+#: FamilyCustomFieldsEditor.php:434 FamilyList.php:44 FamilyView.php:550
 #: GeoPage.php:357 GroupEditor.php:73 GroupPropsFormEditor.php:285
 #: GroupPropsFormEditor.php:397 GroupView.php:255 GroupView.php:288
 #: PersonCustomFieldsEditor.php:311 PersonCustomFieldsEditor.php:442
-#: PersonView.php:678 PersonView.php:783 PrintView.php:338 PrintView.php:464
+#: PersonView.php:683 PersonView.php:788 PrintView.php:338 PrintView.php:464
 #: PropertyEditor.php:149 PropertyList.php:60 PropertyTypeEditor.php:96
 #: PropertyTypeList.php:34 Reports/CanvassReports.php:69
 #: Reports/CanvassReports.php:237 Reports/FRBidSheets.php:88
-#: SelectList.php:991 UserList.php:54 VolunteerOpportunityEditor.php:75
+#: SelectList.php:988 UserList.php:54 VolunteerOpportunityEditor.php:75
 #: VolunteerOpportunityEditor.php:354 VolunteerOpportunityEditor.php:421
 #: sundayschool/SundaySchoolClassView.php:202
-#: v2/templates/people/family-view.php:388 queryparameteroptions_qpo.php:4
+#: v2/templates/people/family-view.php:374 queryparameteroptions_qpo.php:4
 msgid "Name"
 msgstr "Name"
 
@@ -814,7 +813,7 @@ msgstr "(Benutze die Textbox für Länder äußerhalb der USA und Canada)"
 
 #: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
 #: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
-#: Include/Functions.php:895 PersonEditor.php:977 PersonEditor.php:1001
+#: Include/Functions.php:898 PersonEditor.php:977 PersonEditor.php:1001
 #: PersonEditor.php:1025
 msgid "Do not auto-format"
 msgstr "Nicht automatisch formatieren"
@@ -842,7 +841,7 @@ msgstr "Wähle die Gruppe"
 msgid "No Group Selected"
 msgstr "Keine Gruppe ausgewählt"
 
-#: CartToGroup.php:92 PersonToGroup.php:86 SelectList.php:1221
+#: CartToGroup.php:92 PersonToGroup.php:86 SelectList.php:1218
 msgid "Add to Group"
 msgstr "Zur Gruppe hinzufügen"
 
@@ -920,21 +919,21 @@ msgstr "Ihr Korb enthält"
 msgid "persons from"
 msgstr "Person aus"
 
-#: CartView.php:273 CartView.php:331 EditEventTypes.php:166 FamilyView.php:554
-#: FamilyView.php:596 GroupView.php:293 GroupView.php:334 PersonView.php:681
-#: PersonView.php:699 PersonView.php:786 PersonView.php:804
+#: CartView.php:273 CartView.php:331 EditEventTypes.php:166 FamilyView.php:555
+#: FamilyView.php:597 GroupView.php:293 GroupView.php:334 PersonView.php:686
+#: PersonView.php:704 PersonView.php:791 PersonView.php:809
 msgid "Remove"
 msgstr "Entfernen"
 
 #: CartView.php:294 CartView.php:314 DonationFundEditor.php:177
-#: FinancialReports.php:295 Include/Functions.php:682
-#: Include/Functions.php:766 ListEvents.php:296 Reports/ConfirmReport.php:227
+#: FinancialReports.php:295 Include/Functions.php:685
+#: Include/Functions.php:769 ListEvents.php:296 Reports/ConfirmReport.php:227
 msgid "Yes"
 msgstr "Ja"
 
 #: CartView.php:307 CartView.php:316 DonationFundEditor.php:180
-#: FinancialReports.php:296 Include/Functions.php:684
-#: Include/Functions.php:767 ListEvents.php:296 Reports/ConfirmReport.php:229
+#: FinancialReports.php:296 Include/Functions.php:687
+#: Include/Functions.php:770 ListEvents.php:296 Reports/ConfirmReport.php:229
 msgid "No"
 msgstr "Nein"
 
@@ -988,7 +987,7 @@ msgid "Checked Out By"
 msgstr "Abgemeldet durch"
 
 #: Checkin.php:316 EditEventAttendees.php:44 EventNames.php:267
-#: ListEvents.php:205 PersonView.php:628
+#: ListEvents.php:205 PersonView.php:633
 msgid "Action"
 msgstr "Aktion"
 
@@ -996,7 +995,7 @@ msgstr "Aktion"
 msgid "No Attendees Assigned to Event"
 msgstr "Es sind keine Besucher der Veranstaltung zugewiesen"
 
-#: Checkin.php:455 Include/Functions.php:1406 Reports/CanvassReports.php:241
+#: Checkin.php:455 Include/Functions.php:1409 Reports/CanvassReports.php:241
 #: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
 msgid "Member"
 msgstr "Mitglied"
@@ -1094,22 +1093,23 @@ msgstr "Informationen zum Einfügen"
 #: CSVExport.php:97 CSVImport.php:217 CSVImport.php:218 CartToFamily.php:235
 #: CartToFamily.php:240 CartView.php:271 DirectoryReports.php:172
 #: DirectoryReports.php:246 FamilyEditor.php:664 FamilyEditor.php:668
-#: FamilyList.php:45 FamilyView.php:213 GeoPage.php:358 GroupReports.php:123
+#: FamilyList.php:45 FamilyView.php:214 GeoPage.php:358 GroupReports.php:123
 #: Menu.php:314 Menu.php:343 PersonEditor.php:831 PersonEditor.php:847
 #: PersonView.php:272 Register.php:43 Reports/ConfirmReportEmail.php:125
-#: Reports/ConfirmReportEmail.php:130 api/routes/search.php:99
+#: Reports/ConfirmReportEmail.php:130 api/routes/search.php:97
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35
-#: v2/templates/people/family-view.php:225
+#: v2/templates/people/family-view.php:211
 msgid "Address"
 msgstr "Adresse"
 
-#: ChurchCRM/Service/CalendarService.php:18 DirectoryReports.php:174
-#: FamilyView.php:357 PersonView.php:505 Reports/ConfirmReport.php:184
+#: ChurchCRM/Service/CalendarService.php:16
+#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:56 DirectoryReports.php:174
+#: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
 #: Reports/ConfirmReportEmail.php:210
 #: external/templates/verify/verify-family-info.php:80
-#: v2/templates/people/family-view.php:337
+#: v2/templates/people/family-view.php:323
 msgid "Birthday"
 msgstr "Geburtstag:"
 
@@ -1232,7 +1232,7 @@ msgstr "Endpreis"
 msgid "Replicate item"
 msgstr "Eintrag abgleichen."
 
-#: DonatedItemEditor.php:264 FindFundRaiser.php:228
+#: DonatedItemEditor.php:264 FindFundRaiser.php:227
 #: external/templates/password/enter-username.php:36
 msgid "Go"
 msgstr "Geh zu"
@@ -1241,7 +1241,7 @@ msgstr "Geh zu"
 #: DonationFundEditor.php:221 EditEventAttendees.php:34
 #: FundRaiserEditor.php:174 GroupEditor.php:79 GroupPropsFormEditor.php:286
 #: GroupPropsFormEditor.php:410 GroupView.php:256 ListEvents.php:206
-#: PersonView.php:784 PropertyTypeEditor.php:104
+#: PersonView.php:789 PropertyTypeEditor.php:104
 #: VolunteerOpportunityEditor.php:76 VolunteerOpportunityEditor.php:355
 #: VolunteerOpportunityEditor.php:429
 msgid "Description"
@@ -1274,12 +1274,12 @@ msgstr "Ungültiges Feld oder Auwahlt. Änderungen nicht gespeichert! Bitte korr
 msgid "No funds have been added yet"
 msgstr "Bisher wurden keine Fonds hinzugefügt"
 
-#: DonationFundEditor.php:152 EventEditor.php:570 GroupView.php:217
+#: DonationFundEditor.php:152 EventEditor.php:534 GroupView.php:217
 #: KioskManager.php:30 ListEvents.php:210
 msgid "Active"
 msgstr "Aktiv"
 
-#: DonationFundEditor.php:196 EventEditor.php:579 EventNames.php:234
+#: DonationFundEditor.php:196 EventEditor.php:543 EventNames.php:234
 #: FamilyCustomFieldsEditor.php:404 GroupPropsFormEditor.php:368
 #: OptionManager.php:367 PersonCustomFieldsEditor.php:407
 #: VolunteerOpportunityEditor.php:403
@@ -1302,7 +1302,7 @@ msgstr "Veranstaltungsarten bearbeiten"
 msgid "Edit Event Type"
 msgstr "Veranstaltungsart bearbeiten"
 
-#: EditEventTypes.php:131 EventEditor.php:437 EventEditor.php:465
+#: EditEventTypes.php:131 EventEditor.php:429 EventEditor.php:457
 #: EventNames.php:262 ListEvents.php:207
 msgid "Event Type"
 msgstr "Veranstaltungsart"
@@ -1316,7 +1316,7 @@ msgstr "Gespeicherter Name"
 msgid "Recurrence Pattern"
 msgstr "Wiederholungsmuster"
 
-#: EditEventTypes.php:157 EventEditor.php:525 EventNames.php:266
+#: EditEventTypes.php:157 EventEditor.php:489 EventNames.php:266
 #: ListEvents.php:208
 msgid "Attendance Counts"
 msgstr "Teilnehmerzahl"
@@ -1335,25 +1335,25 @@ msgstr "Neue elektronische Zahlmethode hinzufügen"
 
 #: AutoPaymentEditor.php:801
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
-#: ElectronicPaymentList.php:195 FamilyView.php:204 FinancialReports.php:303
-#: Include/Footer.php:53 PersonEditor.php:796 PersonView.php:417
+#: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
+#: Include/Footer.php:53 PersonEditor.php:796 PersonView.php:422
 #: PledgeEditor.php:508 PrintView.php:259 PropertyAssign.php:73
 #: PropertyEditor.php:43 PropertyList.php:28 PropertyTypeEditor.php:90
-#: PropertyTypeList.php:55 SelectList.php:1040
+#: PropertyTypeList.php:55 SelectList.php:1037
 #: external/templates/registration/family-register-done.php:28
 msgid "Family"
 msgstr " Familie"
 
 #: ElectronicPaymentList.php:196 FamilyCustomFieldsEditor.php:319
-#: FamilyCustomFieldsEditor.php:421 FamilyView.php:548 FamilyView.php:656
+#: FamilyCustomFieldsEditor.php:421 FamilyView.php:549 FamilyView.php:657
 #: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
 #: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
-#: PersonCustomFieldsEditor.php:429 PersonView.php:677 PropertyEditor.php:129
+#: PersonCustomFieldsEditor.php:429 PersonView.php:682 PropertyEditor.php:129
 #: SelectDelete.php:215
 msgid "Type"
 msgstr "Typ"
 
-#: AutoPaymentEditor.php:847 ElectronicPaymentList.php:197 FamilyView.php:765
+#: AutoPaymentEditor.php:847 ElectronicPaymentList.php:197 FamilyView.php:766
 #: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:217
 #: sundayschool/SundaySchoolReports.php:205 queryparameters_qrp.php:18
 msgid "Fiscal Year"
@@ -1363,13 +1363,13 @@ msgstr "Steuerjahr"
 msgid "Next Date"
 msgstr "Nächster Termin"
 
-#: ElectronicPaymentList.php:199 FamilyView.php:658 FamilyView.php:767
+#: ElectronicPaymentList.php:199 FamilyView.php:659 FamilyView.php:768
 #: PledgeEditor.php:714 SelectDelete.php:219
 msgid "Amount"
 msgstr "Betrag"
 
-#: AutoPaymentEditor.php:864 ElectronicPaymentList.php:201 FamilyView.php:660
-#: FamilyView.php:764 FinancialReports.php:302 SelectDelete.php:216
+#: AutoPaymentEditor.php:864 ElectronicPaymentList.php:201 FamilyView.php:661
+#: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:216
 msgid "Fund"
 msgstr "Fonds"
 
@@ -1386,16 +1386,17 @@ msgstr "Konto"
 msgid "Month"
 msgstr "Monat"
 
-#: ElectronicPaymentList.php:212 FamilyEditor.php:947 Include/Functions.php:97
+#: ElectronicPaymentList.php:212 FamilyEditor.php:947
+#: Include/Functions.php:100
 msgid "Year"
 msgstr "Jahr"
 
 #: ElectronicPaymentList.php:218 ElectronicPaymentList.php:283
-#: EventNames.php:294 FamilyView.php:208 FamilyView.php:661 FamilyView.php:710
-#: FamilyView.php:772 FindFundRaiser.php:234 FindFundRaiser.php:242
+#: EventNames.php:294 FamilyView.php:209 FamilyView.php:662 FamilyView.php:711
+#: FamilyView.php:773 FindFundRaiser.php:233 FindFundRaiser.php:241
 #: ListEvents.php:224 PersonView.php:238 PropertyList.php:64
 #: PropertyList.php:105 PropertyTypeList.php:38 PropertyTypeList.php:58
-#: SelectList.php:1055
+#: SelectList.php:1052
 msgid "Edit"
 msgstr "Edit"
 
@@ -1424,7 +1425,7 @@ msgstr "Zurück zum Berichtsmenü"
 msgid "There "
 msgstr "Es befinden sich"
 
-#: EventAttendance.php:100 EventEditor.php:474
+#: EventAttendance.php:100 EventEditor.php:466
 msgid "Event Title"
 msgstr "Veranstaltungsbezeichnung"
 
@@ -1460,60 +1461,60 @@ msgstr "Es gibt keine Einträge"
 msgid "Create Event"
 msgstr "Event erstellen"
 
-#: EventEditor.php:415
+#: EventEditor.php:407
 msgid "Create a new Event"
 msgstr "Neues Event erstellen"
 
-#: EventEditor.php:415
+#: EventEditor.php:407
 msgid "Editing Event ID: "
 msgstr "Edit Event ID:"
 
-#: EventEditor.php:421
+#: EventEditor.php:413
 msgid " errors. Please see below"
 msgstr "Fehler. Siehe unten"
 
-#: EventEditor.php:423
+#: EventEditor.php:415
 #, fuzzy
 msgid "Items with a "
 msgstr "Objekte im Korb:"
 
-#: EventEditor.php:423
+#: EventEditor.php:415
 #, fuzzy
 msgid " are required"
 msgstr "Dieser Wert wird benötigt."
 
-#: EventEditor.php:440
+#: EventEditor.php:432
 msgid "Select your event type"
 msgstr "Eventtyp auswählen"
 
-#: EventEditor.php:450
+#: EventEditor.php:442
 msgid "You must pick an event type."
 msgstr "Es muss ein Eventtyp ausgewählt werden."
 
-#: EventEditor.php:480
+#: EventEditor.php:472
 #, fuzzy
 msgid "Event Desc"
 msgstr "Veranstaltungsbeschreibung"
 
-#: EventEditor.php:530
+#: EventEditor.php:494
 msgid "No Attendance counts recorded"
 msgstr "Keine Besucherzahlen eingegeben"
 
-#: EventEditor.php:548
+#: EventEditor.php:512
 msgid "Attendance Notes: "
 msgstr "Besucher Notizen:"
 
-#: EventEditor.php:560
+#: EventEditor.php:524
 #, fuzzy
 msgid "Event Sermon"
 msgstr "Predigt"
 
-#: EventEditor.php:566
+#: EventEditor.php:530
 #, fuzzy
 msgid "Event Status"
 msgstr "Veranstaltungsstatus"
 
-#: EventEditor.php:590
+#: EventEditor.php:554
 msgid "Return to Events"
 msgstr "Zurück zu den Events"
 
@@ -1699,10 +1700,10 @@ msgstr "Briefumschlag Informationen"
 msgid "Custom Fields"
 msgstr "Benutzerdefinierte Felder"
 
-#: FamilyEditor.php:920 FamilyView.php:355 PersonView.php:503
+#: FamilyEditor.php:920 FamilyView.php:356 PersonView.php:508
 #: PrintView.php:335
 #: external/templates/registration/family-register-members.php:20
-#: v2/templates/people/family-view.php:270
+#: v2/templates/people/family-view.php:256
 msgid "Family Members"
 msgstr "Familienmitglieder"
 
@@ -1722,8 +1723,8 @@ msgstr "Mittleres"
 msgid "Last"
 msgstr "Letztes"
 
-#: FamilyEditor.php:944 FamilyView.php:356 OptionManager.php:60
-#: OptionManager.php:93 PersonView.php:504 PrintView.php:340 PrintView.php:393
+#: FamilyEditor.php:944 FamilyView.php:357 OptionManager.php:60
+#: OptionManager.php:93 PersonView.php:509 PrintView.php:340 PrintView.php:393
 #: Reports/CanvassReports.php:239 Reports/GroupReport.php:102
 msgid "Role"
 msgstr "Rolle"
@@ -1743,8 +1744,8 @@ msgstr "Rolle auswählen"
 
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
-#: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:52
-#: FamilyEditor.php:1017 Include/Functions.php:768 PeopleDashboard.php:336
+#: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:62
+#: FamilyEditor.php:1017 Include/Functions.php:771 PeopleDashboard.php:336
 #: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
 msgid "Unknown"
 msgstr "Unbekannt"
@@ -1801,7 +1802,7 @@ msgstr "Dezember"
 msgid "Unk"
 msgstr "Unk"
 
-#: FamilyList.php:30 FamilyView.php:311 v2/templates/people/family-view.php:90
+#: FamilyList.php:30 FamilyView.php:312 v2/templates/people/family-view.php:83
 msgid "Family List"
 msgstr "Familienliste"
 
@@ -1809,8 +1810,8 @@ msgstr "Familienliste"
 msgid "Add Family"
 msgstr "Familie hinzufügen"
 
-#: ChurchCRM/model/ChurchCRM/Family.php:174
-#: ChurchCRM/model/ChurchCRM/Person.php:139 FamilyList.php:49 Menu.php:315
+#: ChurchCRM/model/ChurchCRM/Family.php:178
+#: ChurchCRM/model/ChurchCRM/Person.php:140 FamilyList.php:49 Menu.php:315
 #: PersonEditor.php:393
 msgid "Created"
 msgstr "Erstellt"
@@ -1823,170 +1824,170 @@ msgstr "Editiert"
 msgid "Family View"
 msgstr "Familienansicht"
 
-#: FamilyView.php:222
+#: FamilyView.php:223
 msgid " of church<br>"
 msgstr " der Kirche<br>"
 
-#: FamilyView.php:228
+#: FamilyView.php:229
 msgid "Latitude/Longitude"
 msgstr "Breitengrad/Längengrad"
 
-#: FamilyEditor.php:875 FamilyView.php:246 ManageEnvelopes.php:166
-#: PledgeEditor.php:525 v2/templates/people/family-view.php:160
+#: FamilyEditor.php:875 FamilyView.php:247 ManageEnvelopes.php:166
+#: PledgeEditor.php:525 v2/templates/people/family-view.php:146
 msgid "Envelope Number"
 msgstr "Nr. des Briefumschlags"
 
-#: FamilyView.php:301 v2/templates/people/family-view.php:77
+#: FamilyView.php:302 v2/templates/people/family-view.php:77
 msgid "Verify Info"
 msgstr "Bestätige die Information"
 
-#: FamilyView.php:303 v2/templates/people/family-view.php:80
+#: FamilyView.php:304 v2/templates/people/family-view.php:80
 msgid "Add New Member"
 msgstr "Neues Mitglied anlegen"
 
-#: FamilyView.php:307 v2/templates/people/family-view.php:85
+#: FamilyView.php:308
 msgid "Previous Family"
 msgstr "Letzte Familie"
 
-#: FamilyView.php:315 v2/templates/people/family-view.php:95
+#: FamilyView.php:316
 msgid "Next Family"
 msgstr "Nächste Familie"
 
-#: FamilyView.php:321 v2/templates/people/family-view.php:102
+#: FamilyView.php:322 v2/templates/people/family-view.php:88
 msgid "Delete this Family"
 msgstr "Diese Familie löschen"
 
-#: FamilyView.php:193 PersonView.php:199
+#: FamilyView.php:194 PersonView.php:199
 #: v2/templates/people/family-view.php:58
 msgid "Upload Photo"
 msgstr "Foto hochladen"
 
-#: FamilyView.php:197 PersonView.php:202
+#: FamilyView.php:198 PersonView.php:202
 #: v2/templates/people/family-view.php:62
 msgid "Delete Photo"
 msgstr "Foto löschen"
 
-#: FamilyView.php:330 PersonView.php:385
-#: v2/templates/people/family-view.php:112
+#: FamilyView.php:331 PersonView.php:385
+#: v2/templates/people/family-view.php:98
 msgid "Add a Note"
 msgstr "Notiz hinzufügen"
 
-#: FamilyView.php:334 v2/templates/people/family-view.php:116
+#: FamilyView.php:335 v2/templates/people/family-view.php:102
 msgid "Add All Family Members to Cart"
 msgstr "Alle Familienmitglieder zum Wagen hinzufügen"
 
-#: FamilyView.php:437 PersonView.php:416
-#: v2/templates/people/family-view.php:442
+#: FamilyView.php:438 PersonView.php:421
+#: v2/templates/people/family-view.php:428
 msgid "Timeline"
 msgstr "Zeitstrahl"
 
-#: FamilyView.php:443
+#: FamilyView.php:444
 msgid "Automatic Payments"
 msgstr "Automatische Zahlung"
 
-#: FamilyView.php:445
+#: FamilyView.php:446
 msgid "Pledges and Payments"
 msgstr "Zusagen und Zahlungen"
 
-#: FamilyView.php:541 PersonView.php:671 PrintView.php:460
-#: v2/templates/people/family-view.php:380
+#: FamilyView.php:542 PersonView.php:676 PrintView.php:460
+#: v2/templates/people/family-view.php:366
 msgid "No property assignments."
 msgstr "Keine Eigenschaften festgelegt:"
 
-#: FamilyView.php:550 GroupView.php:289 PersonView.php:679 PrintView.php:465
+#: FamilyView.php:551 GroupView.php:289 PersonView.php:684 PrintView.php:465
 #: PropertyAssign.php:176 SystemSettings.php:140
-#: v2/templates/people/family-view.php:389
+#: v2/templates/people/family-view.php:375
 msgid "Value"
 msgstr "Wert"
 
-#: FamilyView.php:553 FamilyView.php:591 GroupView.php:292 GroupView.php:328
+#: FamilyView.php:554 FamilyView.php:592 GroupView.php:292 GroupView.php:328
 msgid "Edit Value"
 msgstr "Wert bearbeiten"
 
-#: FamilyView.php:614 PersonView.php:712
-#: v2/templates/people/family-view.php:415
+#: FamilyView.php:615 PersonView.php:717
+#: v2/templates/people/family-view.php:401
 #, fuzzy
 msgid "Assign a New Property"
 msgstr "Neue Eingenschaft festlegen"
 
-#: FamilyView.php:635 GroupView.php:366 PersonView.php:751 PersonView.php:837
-#: PropertyAssign.php:185 SelectList.php:1063
-#: v2/templates/people/family-view.php:429
+#: FamilyView.php:636 GroupView.php:366 PersonView.php:756 PersonView.php:842
+#: PropertyAssign.php:185 SelectList.php:1060
+#: v2/templates/people/family-view.php:415
 msgid "Assign"
 msgstr "Festlegen"
 
-#: FamilyView.php:657
+#: FamilyView.php:658
 msgid "Next payment date"
 msgstr "Nächster Zahlungstermin"
 
-#: FamilyView.php:659
+#: FamilyView.php:660
 msgid "Interval (months)"
 msgstr "Interval (Monaten)"
 
-#: FamilyView.php:663 FamilyView.php:774 SelectDelete.php:223
+#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:223
 msgid "Date Updated"
 msgstr "Aktualisiert am"
 
-#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:224
+#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:224
 msgid "Updated By"
 msgstr "Aktualisiert durch"
 
-#: FamilyView.php:730
+#: FamilyView.php:731
 msgid "Add a new automatic payment"
 msgstr "Eine regelmäßige Zahlung hinzufügen"
 
-#: FamilyView.php:742
+#: FamilyView.php:743
 msgid "Show Pledges"
 msgstr "Zeige Zusagen"
 
-#: FamilyView.php:746
+#: FamilyView.php:747
 msgid "Show Payments"
 msgstr "Zahlungen anzeigen"
 
-#: FamilyView.php:747
+#: FamilyView.php:748
 msgid "Since"
 msgstr "Seit"
 
-#: FamilyView.php:755 MemberRoleChange.php:116 PropertyAssign.php:187
+#: FamilyView.php:756 MemberRoleChange.php:116 PropertyAssign.php:187
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: FamilyView.php:763
+#: FamilyView.php:764
 msgid "Pledge or Payment"
 msgstr "Zusage oder Zahlung"
 
 #: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:78
-#: EditEventAttendees.php:33 FamilyView.php:766 FindFundRaiser.php:236
-#: FundRaiserEditor.php:164 Include/Functions.php:93 PledgeEditor.php:518
+#: EditEventAttendees.php:33 FamilyView.php:767 FindFundRaiser.php:235
+#: FundRaiserEditor.php:164 Include/Functions.php:96 PledgeEditor.php:518
 #: SelectDelete.php:218
 msgid "Date"
 msgstr "Datum"
 
-#: FamilyView.php:768
+#: FamilyView.php:769
 msgid "NonDeductible"
 msgstr "nichtabzugsfähig"
 
-#: FamilyView.php:769 SelectDelete.php:220
+#: FamilyView.php:770 SelectDelete.php:220
 msgid "Schedule"
 msgstr "Termin"
 
-#: FamilyView.php:770 SelectDelete.php:221
+#: FamilyView.php:771 SelectDelete.php:221
 msgid "Method"
 msgstr "Methode"
 
-#: FamilyView.php:771 PledgeEditor.php:722 SelectDelete.php:222
+#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:222
 msgid "Comment"
 msgstr "Kommentar"
 
-#: FamilyView.php:863
+#: FamilyView.php:864
 msgid "Add a new pledge"
 msgstr "Eine neue Spendenzusage hinzufügen"
 
-#: FamilyView.php:865
+#: FamilyView.php:866
 msgid "Add a new payment"
 msgstr "Eine neue Zahlung hinzufügen"
 
-#: FamilyView.php:876
+#: FamilyView.php:877
 msgid " Canvass Entry"
 msgstr "Aktionseintrag"
 
@@ -1994,23 +1995,23 @@ msgstr "Aktionseintrag"
 msgid "Close"
 msgstr "Schließen"
 
-#: DepositSlipEditor.php:219 FamilyView.php:898 FindDepositSlip.php:94
-#: PersonView.php:924 PledgeDelete.php:19
-#: v2/templates/people/family-view.php:530
+#: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
+#: PersonView.php:929 PledgeDelete.php:19
+#: v2/templates/people/family-view.php:516
 msgid "Confirm Delete"
 msgstr "Löschen bestätigen"
 
-#: FamilyView.php:902 PersonView.php:928
-#: v2/templates/people/family-view.php:534
+#: FamilyView.php:903 PersonView.php:933
+#: v2/templates/people/family-view.php:520
 msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr "Du löschst das Profilbild. Der Vorgang kann nicht rückgängig gemacht werden."
 
-#: FamilyView.php:904 PersonView.php:930
-#: v2/templates/people/family-view.php:536
+#: FamilyView.php:905 PersonView.php:935
+#: v2/templates/people/family-view.php:522
 msgid "Do you want to proceed?"
 msgstr "Möchten Sie fortfahren?"
 
-#: FamilyView.php:931
+#: FamilyView.php:932 v2/templates/people/family-view.php:567
 msgid "You are about to email copy of the family information in pdf to the following emails"
 msgstr "Sie sind dabei, Familieninformationen als PDF-Kopie zu den folgenden Adressen zu schicken"
 
@@ -2263,23 +2264,23 @@ msgstr "Filter anwenden"
 msgid "Date End"
 msgstr "Endtermin"
 
-#: FindFundRaiser.php:90 SelectList.php:761
+#: FindFundRaiser.php:90 SelectList.php:758
 msgid "Clear Filters"
 msgstr "Filter löschen"
 
-#: FindFundRaiser.php:146 SelectList.php:810
+#: FindFundRaiser.php:145 SelectList.php:807
 msgid "Previous Page"
 msgstr "letzter Seite"
 
-#: FindFundRaiser.php:188 SelectList.php:851
+#: FindFundRaiser.php:187 SelectList.php:848
 msgid "Next Page"
 msgstr "Nächste Seite"
 
-#: FindFundRaiser.php:220 SelectList.php:924
+#: FindFundRaiser.php:219 SelectList.php:921
 msgid "Display:"
 msgstr "Anzeigen:"
 
-#: FindFundRaiser.php:75 FindFundRaiser.php:235 Include/Functions.php:99
+#: FindFundRaiser.php:75 FindFundRaiser.php:234 Include/Functions.php:102
 #: PaddleNumEditor.php:167 PaddleNumList.php:53
 msgid "Number"
 msgstr "Nummer"
@@ -2398,7 +2399,7 @@ msgstr "Länge"
 msgid "Add to Cart"
 msgstr "Zum Korb hinzufügen"
 
-#: GeoPage.php:421 SelectList.php:763
+#: GeoPage.php:421 SelectList.php:760
 msgid "Intersect with Cart"
 msgstr "Vom Korb trennen"
 
@@ -2605,7 +2606,7 @@ msgstr "Gruppenspezifische Einstellungen"
 msgid "Disabled for this group."
 msgstr "Ausgeschaltet für diese Gruppe."
 
-#: FamilyView.php:439 GroupView.php:276 PersonView.php:419 PrintView.php:449
+#: FamilyView.php:440 GroupView.php:276 PersonView.php:424 PrintView.php:449
 #, fuzzy
 msgid "Assigned Properties"
 msgstr "Eigenschaften festlegen"
@@ -2679,19 +2680,19 @@ msgstr "Ungültiges Passwort"
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Zu viele fehlgeschlagene Anmeldungen: Dein Konto wurde gesperrt. Melde dich bei dem Administrator."
 
-#: Login.php:194 Login.php:256
+#: Login.php:173 Login.php:235
 msgid "Please Login"
 msgstr "Bitte anmelden"
 
-#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:214
+#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:193
 msgid "Email/Username"
 msgstr "Email/Benutzername"
 
-#: BackupDatabase.php:55 Login.php:218 Login.php:296 UserList.php:58
+#: BackupDatabase.php:55 Login.php:197 Login.php:275 UserList.php:58
 msgid "Password"
 msgstr "Passwort"
 
-#: Login.php:181 Login.php:231
+#: Login.php:160 Login.php:210
 msgid "Login"
 msgstr "Anmelden"
 
@@ -2774,11 +2775,11 @@ msgstr "Familienorte"
 msgid "Update All Family Coordinates"
 msgstr "Alle Familienkoordinaten aktualisieren"
 
-#: Include/Footer.php:124 PersonView.php:420
+#: Include/Footer.php:124 PersonView.php:425
 msgid "Volunteer Opportunities"
 msgstr "Möglichkeiten zur Freiwilligenarbeit"
 
-#: Menu.php:177 PeopleDashboard.php:137 api/routes/search.php:142
+#: Menu.php:177 PeopleDashboard.php:137 api/routes/search.php:138
 #: members/online-pending-verify.php:24 members/self-register.php:24
 #: members/self-verify-updates.php:24
 #: sundayschool/SundaySchoolDashboard.php:104
@@ -3065,19 +3066,19 @@ msgstr "Benutzer erstellen"
 msgid "Edit User"
 msgstr "Benutzer bearbeiten"
 
-#: PersonView.php:409
+#: PersonView.php:414
 msgid "List Members"
 msgstr "Mitgliederliste"
 
-#: PersonView.php:576 PrintView.php:388
+#: PersonView.php:581 PrintView.php:388
 msgid "No group assignments."
 msgstr "Keine Gruppe festgelegt."
 
-#: PersonView.php:634
+#: PersonView.php:639
 msgid "Change Role"
 msgstr "Rolle ändern"
 
-#: PersonView.php:637
+#: PersonView.php:642
 msgid "Update Properties"
 msgstr "Eigenschaften aktualisieren"
 
@@ -3085,11 +3086,11 @@ msgstr "Eigenschaften aktualisieren"
 msgid "Assign New Group"
 msgstr "Neue Gruppe zuweisen"
 
-#: PersonView.php:776
+#: PersonView.php:781
 msgid "No volunteer opportunity assignments."
 msgstr "Keine ehrenamtlichen Tätigkeiten erfasst."
 
-#: PersonView.php:819
+#: PersonView.php:824
 #, fuzzy
 msgid "Assign a New Volunteer Opportunity"
 msgstr "Neue ehrenamtliche Aufgabe festlegen"
@@ -3223,7 +3224,7 @@ msgstr "Druckergerechte Ansicht"
 msgid "Age"
 msgstr "Alter"
 
-#: PersonView.php:418 PrintView.php:377
+#: PersonView.php:423 PrintView.php:377
 #, fuzzy
 msgid "Assigned Groups"
 msgstr "Festgelegte Gruppe"
@@ -3355,7 +3356,7 @@ msgstr "Neuen Eigenschaftstyp hinzufügen"
 msgid "Class"
 msgstr "Klasse"
 
-#: PropertyTypeList.php:36 v2/templates/people/family-view.php:358
+#: PropertyTypeList.php:36 v2/templates/people/family-view.php:344
 msgid "Properties"
 msgstr "Einstellungen"
 
@@ -3553,80 +3554,80 @@ msgstr "Nur den Familieneintrag löschen"
 msgid "Delete Family Record AND Family Members"
 msgstr "Lösche Familieneinträge und Familienmitglieder"
 
-#: SelectList.php:144
+#: SelectList.php:141
 msgid "Person Listing"
 msgstr "Auflistung der Personen"
 
-#: SelectList.php:175 menuconfig_mcf.php:13
+#: SelectList.php:172 menuconfig_mcf.php:13
 msgid "Group Assignment Helper"
 msgstr "Gruppen Assistent"
 
-#: SelectList.php:493
+#: SelectList.php:490
 msgid "Filter and Cart"
 msgstr "Filtern und dem Wagen hinzufügen"
 
-#: SelectList.php:503
+#: SelectList.php:500
 msgid "Show people <b>not</b> in this group type:"
 msgstr "Leute anzeigen, die <b>nicht</b>in diesem Gruppentyp sind:"
 
-#: SelectList.php:519
+#: SelectList.php:516
 #, fuzzy
 msgid "Sort order"
 msgstr "Sortierungsart"
 
-#: SelectList.php:523
+#: SelectList.php:520
 msgid "By Name"
 msgstr "Nach Namen"
 
-#: SelectList.php:526
+#: SelectList.php:523
 msgid "By Family"
 msgstr "Nach Familie"
 
-#: SelectList.php:532
+#: SelectList.php:529
 msgid "By Newest Entries"
 msgstr "Nach Neueintritt"
 
-#: SelectList.php:535
+#: SelectList.php:532
 msgid "By Recently Edited"
 msgstr "Nach kürzlich geändert"
 
-#: SelectList.php:541
+#: SelectList.php:538
 msgid "Apply Filter"
 msgstr "Filter anwenden"
 
-#: SelectList.php:552
+#: SelectList.php:549
 msgid "Male & Female"
 msgstr "männlich & weiblich"
 
-#: SelectList.php:573
+#: SelectList.php:570
 msgid "All Classifications"
 msgstr "Alle Einordnungen"
 
-#: SelectList.php:599
+#: SelectList.php:596
 msgid "All Family Roles"
 msgstr "Alle Rollen in der Familie:"
 
-#: SelectList.php:625
+#: SelectList.php:622
 msgid "All Contact Properties"
 msgstr "Alle Eigenschaften von Kontakten"
 
-#: SelectList.php:657
+#: SelectList.php:654
 msgid "All Group Types"
 msgstr "Alle Gruppentypen"
 
-#: SelectList.php:697
+#: SelectList.php:694
 msgid "All Groups"
 msgstr "Alle Gruppen"
 
-#: SelectList.php:746
+#: SelectList.php:743
 msgid "All Roles"
 msgstr "Alle Rollen"
 
-#: SelectList.php:787
+#: SelectList.php:784
 msgid "View All"
 msgstr "Alle anschauen"
 
-#: SelectList.php:1058
+#: SelectList.php:1055
 msgid "Cart"
 msgstr "Korb"
 
@@ -3673,11 +3674,11 @@ msgstr "Kalenderjahr"
 msgid "US Address Verification"
 msgstr "US Adressüberprüfung"
 
-#: UserList.php:123
+#: UserList.php:125
 msgid "User Delete Confirmation"
 msgstr "Bestätigung Benutzer löschen"
 
-#: UserList.php:125
+#: UserList.php:127
 msgid "Please confirm removal of user status from:"
 msgstr "Bitte bestätige die Entfernung des Benutzerstatus von:"
 
@@ -3694,7 +3695,8 @@ msgstr "Notiz: Änderungen werden erst bei dem nächsten Login wirksam."
 msgid "Person to Make User"
 msgstr "Personen zu Benutzern machen"
 
-#: UserEditor.php:364
+#: UserEditor.php:364 api/routes/public/public-user.php:51
+#: v2/templates/admin/user.php:10
 #, fuzzy
 msgid "User"
 msgstr "Benutzer"
@@ -3813,44 +3815,44 @@ msgstr "Du musst dein Passwort ändern (war aber ein guter Versuch!)"
 msgid "Your new password is too similar to your old one.  Be more creative!"
 msgstr "Das neue Passwort ist dem Alten zu ähnlich. Bitte etwas kreativer!"
 
-#: UserPasswordChange.php:167
+#: UserPasswordChange.php:166
 msgid "User Password Change"
 msgstr "Benutzerpasswort ändern"
 
-#: UserPasswordChange.php:175
+#: UserPasswordChange.php:174
 msgid "Your account record indicates that you need to change your password before proceding."
 msgstr "Deine Kontoaufzeichnung zeigt, dass du dein Passwort ändern musst bevor es weiter gehen kann."
 
-#: UserPasswordChange.php:187
+#: UserPasswordChange.php:186
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Gib dein aktuelles Pass"
 
-#: UserPasswordChange.php:187
+#: UserPasswordChange.php:186
 msgid "characters in length."
 msgstr "Stellen lang sein."
 
-#: UserPasswordChange.php:189
+#: UserPasswordChange.php:188
 msgid "Enter a new password for this user."
 msgstr "Gib ein neues Passwort für diesen Benutzer ein."
 
-#: UserPasswordChange.php:200
+#: UserPasswordChange.php:199
 #, fuzzy
 msgid "Old Password"
 msgstr "Altes Passwort"
 
 #: ChurchCRM/Emails/users/NewAccountEmail.php:30
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:206
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:205
 #, fuzzy
 msgid "New Password"
 msgstr "Neues Passwort"
 
-#: UserPasswordChange.php:210
+#: UserPasswordChange.php:209
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Passwort bestätigen"
 
-#: UserList.php:168
+#: UserList.php:170
 #, fuzzy
 msgid "Please confirm the password reset of this user"
 msgstr "Bitte bestätige die Zurücksetzung des PW dieses Benutzers"
@@ -3962,160 +3964,160 @@ msgstr "Zugewiesene Umschlagnummer an alle Familien mit mindestens einem Mitglie
 msgid "Assigned envelope numbers to all families."
 msgstr "Zugewiesene Umschlagsnummer an alle Familien."
 
-#: Include/Functions.php:92
+#: Include/Functions.php:95
 msgid "True / False"
 msgstr "Wahr/Falsch"
 
-#: Include/Functions.php:94
+#: Include/Functions.php:97
 msgid "Text Field (50 char)"
 msgstr "Textfeld (50 Zeichen)"
 
-#: Include/Functions.php:95
+#: Include/Functions.php:98
 msgid "Text Field (100 char)"
 msgstr "Textfeld (100 Zeichen)"
 
-#: Include/Functions.php:96
+#: Include/Functions.php:99
 msgid "Text Field (long)"
 msgstr "Textfeld (lang)"
 
-#: Include/Functions.php:98
+#: Include/Functions.php:101
 msgid "Season"
 msgstr "Jahreszeit"
 
-#: Include/Functions.php:100
+#: Include/Functions.php:103
 msgid "Person from Group"
 msgstr "Person der Gruppe"
 
-#: Include/Functions.php:101
+#: Include/Functions.php:104
 msgid "Money"
 msgstr "Geld"
 
-#: Include/Functions.php:102
+#: Include/Functions.php:105
 msgid "Phone Number"
 msgstr "Tel. Nummer"
 
-#: Include/Functions.php:103
+#: Include/Functions.php:106
 msgid "Custom Drop-Down List"
 msgstr "Benutzersdefiniert Drop-Down Liste"
 
-#: Include/Functions.php:118
+#: Include/Functions.php:121
 msgid "PDF successfully emailed to family members."
 msgstr "Das PDF wurde der Familie erfolgreich gemailt."
 
-#: Include/Functions.php:120
+#: Include/Functions.php:123
 msgid "Failed to email PDF to family members."
 msgstr "Das PDF konnte der Familie nicht zugestellt werden."
 
-#: Include/Functions.php:127
+#: Include/Functions.php:130
 msgid "Group successfully added to the Cart."
 msgstr "Gruppe wurde erfolgreich dem Korb hinzugefügt."
 
-#: Include/Functions.php:133
+#: Include/Functions.php:136
 msgid "Group successfully removed from the Cart."
 msgstr "Gruppe wurde erfolgreich aus dem Korb entfernt."
 
-#: Include/Functions.php:137
+#: Include/Functions.php:140
 msgid "Profile Image successfully removed."
 msgstr "Profilbild erfolgreich gelöscht."
 
-#: Include/Functions.php:141
+#: Include/Functions.php:144
 msgid "Profile Image successfully updated."
 msgstr "Profilbild erfolgreich aktualisiert."
 
-#: Include/Functions.php:145
+#: Include/Functions.php:148
 msgid "Profile Image upload Error."
 msgstr "Profilbild konnte nicht hochgeladen werden."
 
-#: Include/Functions.php:152
+#: Include/Functions.php:155
 msgid "Selected record successfully removed from the Cart."
 msgstr "Ausgewhälte Aufzeichnung wurde erfolgreich aus dem Korb entfernt."
 
-#: api/routes/cart.php:67
+#: api/routes/cart.php:56
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Der Korb wurde erfogreich geleert"
 
-#: Include/Functions.php:170
+#: Include/Functions.php:173
 msgid "item(s) added to the Cart."
 msgstr "Dem Korb hinzugefügte(s)  Objekt(e) "
 
-#: Include/Functions.php:195
+#: Include/Functions.php:198
 msgid "Select Fiscal Year"
 msgstr "Steuerjahr auswählen"
 
-#: Include/Functions.php:424
+#: Include/Functions.php:427
 msgid "pm"
 msgstr "pm"
 
-#: Include/Functions.php:429
+#: Include/Functions.php:432
 msgid "am"
 msgstr "abends"
 
-#: ChurchCRM/model/ChurchCRM/Person.php:476 ChurchCRM/utils/MiscUtils.php:68
+#: ChurchCRM/model/ChurchCRM/Person.php:477 ChurchCRM/utils/MiscUtils.php:78
 msgid "yrs old"
 msgstr "Jahre alt"
 
-#: Include/Functions.php:750
+#: Include/Functions.php:753
 msgid "Invalid Editor ID!"
 msgstr "Ungültige Editor ID!"
 
-#: Include/Functions.php:805
+#: Include/Functions.php:808
 msgid "Select Season"
 msgstr "Jahreszeit"
 
-#: Include/Functions.php:810
+#: Include/Functions.php:813
 msgid "Winter"
 msgstr "Winter"
 
-#: Include/Functions.php:815
+#: Include/Functions.php:818
 msgid "Spring"
 msgstr "Frühling"
 
-#: Include/Functions.php:820
+#: Include/Functions.php:823
 msgid "Summer"
 msgstr "Sommer"
 
-#: Include/Functions.php:825
+#: Include/Functions.php:828
 msgid "Fall"
 msgstr "Herbst"
 
-#: Include/Functions.php:922
+#: Include/Functions.php:925
 msgid "Error: Invalid Editor ID!"
 msgstr "Fehler: Ungültige Editor ID!"
 
-#: FundRaiserEditor.php:52 Include/Functions.php:1119 PledgeEditor.php:318
+#: FundRaiserEditor.php:52 Include/Functions.php:1122 PledgeEditor.php:318
 msgid "Not a valid date"
 msgstr "Kein gültiges Datum"
 
-#: Include/Functions.php:1131
+#: Include/Functions.php:1134
 msgid "Invalid Year"
 msgstr "Ungültiges Jahr"
 
-#: Include/Functions.php:1134
+#: Include/Functions.php:1137
 msgid "Out of range: Allowable values are 1901 to 2155"
 msgstr "Außerhalb der Grenzen: Erlaubt sind Werte zwischen 1901 bis 2155"
 
-#: Include/Functions.php:1147 Include/Functions.php:1163
+#: Include/Functions.php:1150 Include/Functions.php:1166
 msgid "Invalid Number"
 msgstr "Ungültige Nummer"
 
-#: Include/Functions.php:1150
+#: Include/Functions.php:1153
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr "Nummer zu groß. Muss zwischen -2147483648 und 2147483647 liegen."
 
-#: Include/Functions.php:1166
+#: Include/Functions.php:1169
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Geldbetrag zu hoch. Höchstens EUR 999999999.99"
 
-#: Include/Functions.php:1316
+#: Include/Functions.php:1319
 msgid " Bold Italic"
 msgstr "Fett Kursiv"
 
-#: Include/Functions.php:1319
+#: Include/Functions.php:1322
 msgid " Italic"
 msgstr "Kursiv"
 
-#: Include/Functions.php:1321
+#: Include/Functions.php:1324
 msgid " Bold"
 msgstr "Fett"
 
@@ -4151,7 +4153,7 @@ msgstr "Einige Grundinformationen (wie Serverversion und Browser Header) werden 
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr "Keine persönlichen Daten werden mitgeschickt, es sei denn Du fügst sie hinzu."
 
-#: Include/Header-function.php:360 Include/Header.php:188 menuconfig_mcf.php:5
+#: Include/Header-function.php:354 Include/Header.php:188 menuconfig_mcf.php:5
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -4239,10 +4241,10 @@ msgstr "Freundschaft"
 msgid "City, State, Zip"
 msgstr "Stadt, Bundesland, Postleitzahl"
 
-#: FamilyEditor.php:781 FamilyView.php:233 Reports/ConfirmReport.php:140
+#: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:140
 #: Reports/ConfirmReportEmail.php:145
 #: external/templates/verify/verify-family-info.php:39
-#: v2/templates/people/family-view.php:147
+#: v2/templates/people/family-view.php:133
 msgid "Send Newsletter"
 msgstr "Newsletter zuschicken"
 
@@ -4535,7 +4537,7 @@ msgstr "Erstelle Besucherliste"
 msgid "System Users"
 msgstr "Systembenutzer"
 
-#: menuconfig_mcf.php:3
+#: v2/routes/calendar.php:22 menuconfig_mcf.php:3
 msgid "Calendar"
 msgstr "Kalender"
 
@@ -4791,15 +4793,16 @@ msgstr "Wiederherstellung läuft. Bitte warte."
 msgid "Family Members:"
 msgstr "Familienmitglieder:"
 
-#: ChurchCRM/Service/CalendarService.php:17
+#: ChurchCRM/Service/CalendarService.php:15
 msgid "Event"
 msgstr "Ereignis"
 
-#: ChurchCRM/Service/CalendarService.php:19 calendar.php:58
+#: ChurchCRM/Service/CalendarService.php:17
+#: ChurchCRM/SystemCalendars/AnniversariesCalendar.php:56
 msgid "Anniversary"
 msgstr "Jahrestag"
 
-#: PersonView.php:421 SettingsIndividual.php:100 SettingsUser.php:87
+#: PersonView.php:426 SettingsIndividual.php:100 SettingsUser.php:87
 #: UserEditor.php:480
 msgid "Notes"
 msgstr "Notizen"
@@ -4846,7 +4849,7 @@ msgstr "CSV Import"
 msgid "Comment:"
 msgstr "Kommentar:"
 
-#: ChurchCRM/model/ChurchCRM/Person.php:478 ChurchCRM/utils/MiscUtils.php:70
+#: ChurchCRM/model/ChurchCRM/Person.php:479 ChurchCRM/utils/MiscUtils.php:80
 msgid "yr old"
 msgstr "jahre alt"
 
@@ -4866,7 +4869,7 @@ msgstr "Alle"
 msgid "Family Map"
 msgstr "Familienkarte"
 
-#: Menu.php:234 PeopleDashboard.php:200 api/routes/search.php:181
+#: Menu.php:234 PeopleDashboard.php:200 api/routes/search.php:173
 #: menuconfig_mcf.php:11
 msgid "Groups"
 msgstr "Gruppen"
@@ -4971,7 +4974,7 @@ msgstr "Letzte Integritätsprüfung"
 msgid "Main"
 msgstr "Haupt"
 
-#: Include/Header-function.php:279 menuconfig_mcf.php:12
+#: Include/Header-function.php:273 menuconfig_mcf.php:12
 msgid "List Groups"
 msgstr "Liste Gruppen"
 
@@ -5035,7 +5038,7 @@ msgstr "Spezielle Familienfelder editieren"
 msgid "Edit Custom Person Fields"
 msgstr "Spezielle Menscheneigenschaften editieren"
 
-#: SelectList.php:978 SelectList.php:982 SelectList.php:1044
+#: SelectList.php:975 SelectList.php:979 SelectList.php:1041
 #: queryparameteroptions_qpo.php:5
 msgid "Zip Code"
 msgstr "PLZ"
@@ -5100,7 +5103,8 @@ msgstr "Personen nach Eigenschaft"
 msgid "Advanced Search"
 msgstr "Expertensuche"
 
-#: query_qry.php:8 query_qry.php:47
+#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:31 query_qry.php:8
+#: query_qry.php:47
 msgid "Birthdays"
 msgstr "Geburtstage"
 
@@ -5824,7 +5828,7 @@ msgid "Family Member(s)"
 msgstr "Familienmitglieder"
 
 #: external/templates/verify/verify-family-info.php:78
-#: v2/templates/people/family-view.php:333
+#: v2/templates/people/family-view.php:319
 msgid "Work Email"
 msgstr "Arbeitsmail"
 
@@ -5836,7 +5840,7 @@ msgstr "Alter versteckt"
 msgid "Visit our Site"
 msgstr "Besuche unsere Seite"
 
-#: FamilyView.php:953
+#: FamilyView.php:954 v2/templates/people/family-view.php:587
 msgid "PDF Report"
 msgstr "PDF Bericht"
 
@@ -5920,7 +5924,7 @@ msgstr "Chinesisch (Taiwan)"
 msgid "Maximum upload size"
 msgstr "Maximale Uploadgröße"
 
-#: RestoreDatabase.php:63 api/routes/database.php:26
+#: RestoreDatabase.php:63 api/routes/system/system-database.php:45
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Die Datei überschreitet die maximale Dateigröße"
 
@@ -5928,27 +5932,27 @@ msgstr "Die Datei überschreitet die maximale Dateigröße"
 msgid "Please ensure this what you want to do.</p>"
 msgstr "Bitte stelle sicher, dass Du dies tun möchtest.<p>"
 
-#: FamilyView.php:175
+#: FamilyView.php:176
 msgid " This Family is Deactivated"
 msgstr " Diese Familie ist deaktiviert."
 
-#: FamilyView.php:340 v2/templates/people/family-view.php:122
+#: FamilyView.php:341 v2/templates/people/family-view.php:108
 msgid " this Family"
 msgstr " diese Familie"
 
-#: FamilyView.php:970
+#: FamilyView.php:972
 msgid "Confirm Deactivation"
 msgstr "Bestätige die Deaktivierung"
 
-#: FamilyView.php:970
+#: FamilyView.php:972
 msgid "Confirm Activation"
 msgstr "Bestätige die Aktivierung"
 
-#: FamilyView.php:972
+#: FamilyView.php:974
 msgid "Please confirm deactivation of family"
 msgstr "Bitte bestätige die Deaktivierung der Familie"
 
-#: FamilyView.php:975
+#: FamilyView.php:977
 msgid "Please confirm activation of family"
 msgstr "Bitte bestätige die Aktivierung der Familie"
 
@@ -5976,25 +5980,27 @@ msgstr "Aus dem Wagen entfernen"
 msgid "Family Member"
 msgstr "Familienmitglieder"
 
-#: FamilyView.php:620 PersonView.php:720 QueryView.php:318
-#: v2/templates/people/family-view.php:421
+#: FamilyView.php:621 PersonView.php:725 QueryView.php:318
+#: v2/templates/people/family-view.php:407
 msgid "select an option"
 msgstr "eine Option wählen"
 
-#: api/routes/cart.php:64
+#: api/routes/cart.php:53
 msgid "Your cart is empty"
 msgstr "Der Wagen ist leer."
 
-#: api/routes/properties.php:22 api/routes/properties.php:66
-#: api/routes/roles.php:32
+#: api/routes/people/people-properties.php:22
+#: api/routes/people/people-properties.php:66
+#: api/routes/people/people-roles.php:31
 msgid "The record could not be found."
 msgstr "Der Datensatz konnte nicht gefunden werden."
 
-#: api/routes/properties.php:32
+#: api/routes/people/people-properties.php:32
 msgid "The property is already assigned."
 msgstr "Diese Eigenschaft ist schon zugewiesen."
 
-#: api/routes/properties.php:37 api/routes/properties.php:47
+#: api/routes/people/people-properties.php:37
+#: api/routes/people/people-properties.php:47
 msgid "The property is successfully assigned."
 msgstr "Die Eigenschaft wurde zugewiesen."
 
@@ -6022,7 +6028,7 @@ msgstr "Account entsperrt "
 msgid "Part"
 msgstr "Teil"
 
-#: FamilyView.php:189 PersonView.php:196
+#: FamilyView.php:190 PersonView.php:196
 #: v2/templates/people/family-view.php:52
 msgid "View Photo"
 msgstr "Zeige Foto"
@@ -6031,7 +6037,7 @@ msgstr "Zeige Foto"
 msgid "Family Photo"
 msgstr "Familienfoto"
 
-#: GroupView.php:213 calendar.php:53
+#: GroupView.php:213
 msgid "Quick Settings"
 msgstr "Schnelle Einstellungen"
 
@@ -6043,11 +6049,11 @@ msgstr "Status"
 msgid "Email export"
 msgstr "Email Export"
 
-#: GroupView.php:218 calendar.php:57 calendar.php:58 calendar.php:59
+#: GroupView.php:218
 msgid "Include"
 msgstr "Hinzufügen"
 
-#: GroupView.php:218 calendar.php:57 calendar.php:58 calendar.php:59
+#: GroupView.php:218
 msgid "Exclude"
 msgstr "Herausnehmen"
 
@@ -6071,7 +6077,7 @@ msgstr "Zeige auf Karte"
 msgid "Legend"
 msgstr "Legende"
 
-#: PersonView.php:741
+#: PersonView.php:746
 msgid "assigned"
 msgstr "Zugewiesen"
 

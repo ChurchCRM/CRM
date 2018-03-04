@@ -20,7 +20,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -546,7 +546,7 @@ if (isset($_POST['DoImport'])) {
 
             // Finish up the person_per SQL..
             $sSQLpersonData .= $iClassID.",'".addslashes($sCountry)."',";
-            $sSQLpersonData .= "'".date('YmdHis')."',".$_SESSION['iUserID'];
+            $sSQLpersonData .= "'".date('YmdHis')."',".$_SESSION['user']->getId();
             $sSQLpersonData .= ')';
 
             $sSQLpersonFields .= 'per_cls_ID, per_Country, per_DateEntered, per_EnteredBy';
@@ -624,7 +624,7 @@ if (isset($_POST['DoImport'])) {
                                      '"'.$per_CellPhone.'", '.
                                      '"'.$per_Email.'",'.
                                      '"'.date('YmdHis').'",'.
-                                     '"'.$_SESSION['iUserID'].'");';
+                                     '"'.$_SESSION['user']->getId().'");';
                     RunQuery($sSQL);
 
                     $sSQL = 'SELECT LAST_INSERT_ID()';
@@ -635,7 +635,7 @@ if (isset($_POST['DoImport'])) {
                     $note->setFamId($famid);
                     $note->setText(gettext('Imported'));
                     $note->setType('create');
-                    $note->setEntered($_SESSION['iUserID']);
+                    $note->setEntered($_SESSION['user']->getId());
                     $note->save();
                     $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('".$famid."')";
                     RunQuery($sSQL);
@@ -708,7 +708,7 @@ if (isset($_POST['DoImport'])) {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Imported'));
             $note->setType('create');
-            $note->setEntered($_SESSION['iUserID']);
+            $note->setEntered($_SESSION['user']->getId());
             $note->save();
             if ($bHasCustom) {
                 $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('".$iPersonID."')";
@@ -804,26 +804,6 @@ if (isset($_POST['DoImport'])) {
     }
 }
 
-// clear person and families if not happy with previous import.
-$sClear = '';
-if (isset($_POST['Clear'])) {
-    if (isset($_POST['chkClear'])) {
-        $sSQL = 'TRUNCATE `family_fam`;';
-        RunQuery($sSQL);
-        $sSQL = 'TRUNCATE `person_per`;';
-        RunQuery($sSQL);
-        $sSQL = 'TRUNCATE `person_custom`;';
-        RunQuery($sSQL);
-        $sSQL = 'TRUNCATE `family_custom`;';
-        RunQuery($sSQL);
-        $sSQL = "INSERT INTO person_per VALUES (1,NULL,'ChurchCRM',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0000,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',0,0,NULL,0);";
-        RunQuery($sSQL);
-        $sClear = gettext('Data Cleared Successfully!');
-    } else {
-        $sClear = gettext('Please select the confirmation checkbox');
-    }
-}
-
 if ($iStage == 1) {
     // Display the select file form?>
         <p style="color: red"> <?= $csvError ?></p>
@@ -839,31 +819,8 @@ if ($iStage == 1) {
         <h3 class="box-title"><?= gettext('Clear Data')?></h3>
         </div>
         <div class="box-body">
-        <form method="post" action="CSVImport.php" enctype="multipart/form-data">
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#clearPersons"><?= gettext('Clear Persons and Families') ?></button>
-        <!-- Modal -->
-        <div class="modal fade" id="clearPersons" tabindex="-1" role="dialog" aria-labelledby="clearPersons" aria-hidden="true">
-            <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="upload-Image-label"><?= gettext('Clear Persons and Families') ?></h4>
-                        </div>
-                        <div class="modal-body">
-                        <span style="color: red">
-                            <?php
-                            echo gettext('Warning!  Do not select this option if you plan to add to an existing database.<br/>');
-    echo gettext('Use only if unsatisfied with initial import.  All person and member data will be destroyed!'); ?><br><br>
-                            <span style="color:black">I Understand &nbsp;<input type="checkbox" name="chkClear"></span>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button name="Clear" type="submit" class="btn btn-danger"><?= gettext('Clear Persons and Families') ?></button>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </p></form>
+        <button type="button" class="btn btn-danger" id="clear-people"><?= gettext('Clear Persons and Families') ?></button>
+    </p>
     <?php
     echo $sClear;
 }
@@ -982,7 +939,7 @@ function GetAge($Month, $Day, $Year)
     $(".columns").select2();
   });
 </script>
-
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
 <?php
 require 'Include/Footer.php';
 ?>

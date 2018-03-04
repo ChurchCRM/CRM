@@ -22,7 +22,7 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
 
 // Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (!$_SESSION['bFinance']) {
+if (!$_SESSION['user']->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

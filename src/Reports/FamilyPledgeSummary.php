@@ -18,7 +18,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -68,7 +68,7 @@ if (array_key_exists('only_owe', $_POST)) {
 }
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
+if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -176,7 +176,7 @@ while ($row = mysqli_fetch_array($rsFunds)) {
 class PDF_FamilyPledgeSummaryReport extends ChurchInfoReport
 {
     // Constructor
-    public function PDF_FamilyPledgeSummaryReport()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
 

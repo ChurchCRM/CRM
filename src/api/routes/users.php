@@ -1,20 +1,17 @@
 <?php
 
 // Users APIs
-use ChurchCRM\UserQuery;
-use ChurchCRM\UserConfigQuery;
-use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\Emails\AccountDeletedEmail;
+use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\Emails\UnlockedEmail;
-use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 use ChurchCRM\User;
+use ChurchCRM\UserConfigQuery;
+use ChurchCRM\UserQuery;
 
 $app->group('/users', function () {
 
     $this->post('/{userId:[0-9]+}/password/reset', function ($request, $response, $args) {
-        if (!$_SESSION['user']->isAdmin()) {
-            return $response->withStatus(401);
-        }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
             $password = $user->resetPasswordToRandom();
@@ -33,9 +30,6 @@ $app->group('/users', function () {
     });
 
     $this->post('/{userId:[0-9]+}/login/reset', function ($request, $response, $args) {
-        if (!$_SESSION['user']->isAdmin()) {
-            return $response->withStatus(401);
-        }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
             $user->setFailedLogins(0);
@@ -52,12 +46,9 @@ $app->group('/users', function () {
     });
 
     $this->delete('/{userId:[0-9]+}', function ($request, $response, $args) {
-        if (!$_SESSION['user']->isAdmin()) {
-            return $response->withStatus(401);
-        }
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {
-            $userConfig =  UserConfigQuery::create()->findPk($user->getId());
+            $userConfig = UserConfigQuery::create()->findPk($user->getId());
             if (!is_null($userConfig)) {
                 $userConfig->delete();
             }
@@ -71,4 +62,23 @@ $app->group('/users', function () {
             return $response->withStatus(404);
         }
     });
+
+
+})->add(new AdminRoleAuthMiddleware());
+
+$app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response, $args) {
+    $curUser = $_SESSION['user'];
+    $userId = $args['userId'];
+    if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
+        return $response->withStatus(401);
+    }
+    $user = UserQuery::create()->findPk($userId);
+    if (!is_null($user)) {
+        $user->setApiKey(User::randomApiKey());
+        $user->save();
+        $user->createTimeLineNote("api-key-regen");
+        return $response->withStatus(200)->withJson(["apiKey" => $user->getApiKey()]);
+    } else {
+        return $response->withStatus(404);
+    }
 });

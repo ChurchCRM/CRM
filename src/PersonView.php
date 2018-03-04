@@ -37,7 +37,7 @@ if (array_key_exists('RemoveVO', $_GET)) {
     $iRemoveVO = InputUtils::LegacyFilterInput($_GET['RemoveVO'], 'int');
 }
 
-if (isset($_POST['VolunteerOpportunityAssign']) && $_SESSION['bEditRecords']) {
+if (isset($_POST['VolunteerOpportunityAssign']) && $_SESSION['user']->isEditRecordsEnabled()) {
     $volIDs = $_POST['VolunteerOpportunityIDs'];
     if ($volIDs) {
         foreach ($volIDs as $volID) {
@@ -47,7 +47,7 @@ if (isset($_POST['VolunteerOpportunityAssign']) && $_SESSION['bEditRecords']) {
 }
 
 // Service remove-volunteer-opportunity (these links set RemoveVO)
-if ($iRemoveVO > 0 && $_SESSION['bEditRecords']) {
+if ($iRemoveVO > 0 && $_SESSION['user']->isEditRecordsEnabled()) {
     RemoveVolunteerOpportunity($iPersonID, $iRemoveVO);
 }
 
@@ -177,9 +177,9 @@ if ($per_Envelope > 0) {
 
 $iTableSpacerWidth = 10;
 
-$bOkToEdit = ($_SESSION['bEditRecords'] ||
-    ($_SESSION['bEditSelf'] && $per_ID == $_SESSION['iUserID']) ||
-    ($_SESSION['bEditSelf'] && $per_fam_ID == $_SESSION['iFamID'])
+$bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
+    ($_SESSION['user']->isEditSelfEnabled() && $per_ID == $_SESSION['user']->getId()) ||
+    ($_SESSION['user']->isEditSelfEnabled() && $per_fam_ID == $_SESSION['user']->getPerson()->getFamId())
 );
 
 ?>
@@ -379,23 +379,23 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                     } ?>
             <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
             <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
-            <?php if ($_SESSION['bNotes']) {
+            <?php if ($_SESSION['user']->isNotesEnabled()) {
                         ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
                 <?php
                     }
-            if ($_SESSION['bManageGroups']) {
+            if ($_SESSION['user']->isManageGroupsEnabled()) {
                 ?>
                 <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
                 <?php
             }
-            if ($_SESSION['bDeleteRecords']) {
+            if ($_SESSION['user']->isDeleteRecordsEnabled()) {
                 ?>
                 <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
                 <?php
             }
-            if ($_SESSION['bAdmin']) {
+            if ($_SESSION['user']->isAdmin()) {
                 if (!$person->isUser()) {
                     ?>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Make User') ?></a>
@@ -403,8 +403,13 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                 } else {
                     ?>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
+                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
                     <?php
                 }
+            } elseif ($person->isUser() && $person->getId() == $_SESSION["user"]->getId()) {
+                ?>
+                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
+            <?php
             } ?>
             <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
         </div>
@@ -443,7 +448,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
 
                 <div class="timeline-item">
                       <span class="time">
-                    <?php if ($_SESSION['bNotes'] && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                    <?php if ($_SESSION['user']->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                               ?>
                         <?php if (isset($item["editLink"])) {
                                   ?>
@@ -621,7 +626,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                             } ?>
                                             <div class="box-footer">
                                                 <code>
-                                                    <?php if ($_SESSION['bManageGroups']) {
+                                                    <?php if ($_SESSION['user']->isManageGroupsEnabled()) {
                                                 ?>
                                                         <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa fa-list"></i></a>
                                                         <div class="btn-group">
@@ -782,7 +787,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                 echo '<tr class="TableHeader">';
                                 echo '<th>'.gettext('Name').'</th>';
                                 echo '<th>'.gettext('Description').'</th>';
-                                if ($_SESSION['bEditRecords']) {
+                                if ($_SESSION['user']->isEditRecordsEnabled()) {
                                     echo '<th>'.gettext('Remove').'</th>';
                                 }
                                 echo '</tr>';
@@ -800,7 +805,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                     echo '<td>'.$vol_Name.'</a></td>';
                                     echo '<td>'.$vol_Description.'</a></td>';
 
-                                    if ($_SESSION['bEditRecords']) {
+                                    if ($_SESSION['user']->isEditRecordsEnabled()) {
                                         echo '<td><a class="SmallText" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID='.$per_ID.'&RemoveVO='.$vol_ID.'">'.gettext('Remove').'</a></td>';
                                     }
 
@@ -813,7 +818,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                 echo '</table>';
                             } ?>
 
-                            <?php if ($_SESSION['bEditRecords'] && $rsVolunteerOpps->num_rows): ?>
+                            <?php if ($_SESSION['user']->isEditRecordsEnabled() && $rsVolunteerOpps->num_rows): ?>
                                 <div class="alert alert-info">
                                     <div>
                                         <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>
@@ -880,7 +885,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] ||
                                         <?= $item['text'] ?>
                                     </div>
 
-                                    <?php if (($_SESSION['bNotes']) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
+                                    <?php if (($_SESSION['user']->isNotesEnabled()) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
                                                                 ?>
                                         <div class="timeline-footer">
                                             <?php if ($item['editLink'] != '') {

@@ -19,7 +19,7 @@ require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop
 
 class SystemService
 {
-    public function getLatestRelese()
+    public function getLatestRelease()
     {
         $client = new Client();
         $release = null;
@@ -89,6 +89,7 @@ class SystemService
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
         $restoreResult->UpgradeStatus = UpgradeService::upgradeDatabaseVersion();
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
+        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
         SystemConfig::setValue('bEnableExternalBackupTarget', '0');
@@ -109,10 +110,10 @@ class SystemService
         mkdir($backup->backupDir,0750,true);
         $backup->headers = [];
         $backup->params = $params;
-        
+
         $safeFileName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName'));
         $baseFileName = "$backup->backupDir/" . $safeFileName . "-";
-        
+
         $backup->saveTo = $baseFileName . date(SystemConfig::getValue("sDateFilenameFormat"));
         $backup->SQLFile = $baseFileName . "Database.sql";
 

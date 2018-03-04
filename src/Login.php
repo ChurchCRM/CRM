@@ -64,48 +64,14 @@ if (isset($_POST['User'])) {
 
         $_SESSION['user'] = $currentUser;
 
-        // Set the User's family id in case EditSelf is enabled
-        $_SESSION['iFamID'] = $currentUser->getPerson()->getFamId();
-
-        // Set the UserID
-        $_SESSION['iUserID'] = $currentUser->getPersonId();
-
-        // Set the pagination Search Limit
-        $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
-
-        // If user has administrator privilege, override other settings and enable all permissions.
-        $_SESSION['bAdmin'] = $currentUser->isAdmin();
-
-        $_SESSION['bAddRecords'] = $currentUser->isAddRecordsEnabled();
-        $_SESSION['bEditRecords'] = $currentUser->isEditRecordsEnabled();
-        $_SESSION['bDeleteRecords'] = $currentUser->isDeleteRecordsEnabled();
-        $_SESSION['bMenuOptions'] = $currentUser->isMenuOptionsEnabled();
         $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
         $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
-        $_SESSION['bNotes'] = $currentUser->isNotesEnabled();
-        $_SESSION['bEditSelf'] = $currentUser->isEditSelfEnabled();
-        $_SESSION['bCanvasser'] = $currentUser->isCanvasserEnabled();
-
-        // Set the FailedLogins
-        $_SESSION['iFailedLogins'] = $currentUser->getFailedLogins();
-
-        // Set the LoginCount
-        $_SESSION['iLoginCount'] = $currentUser->getLoginCount();
-
-        // Set the Last Login
-        $_SESSION['dLastLogin'] = $currentUser->getLastLogin();
-
-        // Set the Style Sheet
-        $_SESSION['sStyle'] = $currentUser->getStyle();
 
         // Create the Cart
         $_SESSION['aPeopleCart'] = [];
 
         // Create the variable for the Global Message
         $_SESSION['sGlobalMessage'] = '';
-
-        // Set whether or not we need a password change
-        $_SESSION['bNeedPasswordChange'] = $currentUser->getNeedPasswordChange();
 
         // Initialize the last operation time
         $_SESSION['tLastOperation'] = time();
@@ -115,18 +81,20 @@ if (isset($_POST['User'])) {
         // Pledge and payment preferences
         $_SESSION['sshowPledges'] = $currentUser->getShowPledges();
         $_SESSION['sshowPayments'] = $currentUser->getShowPayments();
-        $_SESSION['sshowSince'] = $currentUser->getShowSince();
         $_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
         $_SESSION['iCurrentDeposit'] = $currentUser->getCurrentDeposit();
 
-        // Search preference
-        $_SESSION['bSearchFamily'] = $currentUser->getSearchfamily();
-
         $systemService = new SystemService();
-        $_SESSION['latestVersion'] = $systemService->getLatestRelese();
+        $_SESSION['latestVersion'] = $systemService->getLatestRelease();
         NotificationService::updateNotifications();
-        RedirectUtils::Redirect('Menu.php');
-        exit;
+        $redirectLocation = $_SESSION['location'];
+        if (isset($redirectLocation)) {
+            RedirectUtils::Redirect($redirectLocation);
+            exit;
+        } else {
+            RedirectUtils::Redirect('Menu.php');
+            exit;
+        }
     }
 } elseif (isset($_GET['username'])) {
     $urlUserName = $_GET['username'];
@@ -136,8 +104,8 @@ $id = 0;
 $type ="";
 
 // we hold down the last id
-if (isset($_SESSION['iUserID'])) {
-    $id = $_SESSION['iUserID'];
+if (isset($_SESSION['user'])) {
+    $id = $_SESSION['user']->getId();
 }
 
 // we hold down the last type of login : lock or nothing
@@ -159,6 +127,10 @@ if (empty($urlUserName)) {
     }
 }
 
+if (isset($_SESSION['location'])) {
+    $LocationFromSession = $_SESSION['location'];
+}
+
 // we destroy the session
 session_destroy();
 
@@ -168,11 +140,18 @@ session_start() ;
     // we restore only this part
 $_SESSION['iLoginType'] = $type;
 $_SESSION['username'] = $urlUserName;
-$_SESSION['iUserID'] = $id;
+$LocationFromGet = InputUtils::FilterString(urldecode($_GET['location']));
 
+if (isset($LocationFromSession) && $LocationFromSession != '') {
+    $_SESSION['location'] = $LocationFromSession;
+}
+
+if (isset($LocationFromGet) && $LocationFromGet != '') {
+    $_SESSION['location'] = $LocationFromGet;
+}
 if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
-              ->findOneByID($_SESSION['iUserID']);
+              ->findOneByID($_SESSION['user']->getId());
 } else {
     $type = $_SESSION['iLoginType'] = "";
 }

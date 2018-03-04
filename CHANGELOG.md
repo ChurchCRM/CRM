@@ -1,5 +1,24 @@
 # Changelog
 
+## 2.10.3 (13/01/2018)
+
+#### Enhancements:
+
+- [**Backend System**][**Security**][**UI**][**enhancement**] Redirect to correct page after login [#377](https://github.com/ChurchCRM/CRM/issues/377)
+
+#### Core Functionality
+
+- [**Documentation**][**Feature: Financial**][**Feature: Reports**] Fiscal Year [#3882](https://github.com/ChurchCRM/CRM/issues/3882)
+- [**Feature: Events**][**UI**][**Web Report**] New Event does not allow time input [#3873](https://github.com/ChurchCRM/CRM/issues/3873)
+- [**Installation / Upgrade**] Blank Page on Installatuon or Error 500 [#3754](https://github.com/ChurchCRM/CRM/issues/3754)
+
+#### Inner Beauty:
+
+- [**development**] Need a NPM task to quickly reset dev database [#3732](https://github.com/ChurchCRM/CRM/issues/3732)
+- [**Backend System**][**Security**][**UI**][**enhancement**] Redirect to correct page after login [#377](https://github.com/ChurchCRM/CRM/issues/377)
+
+---
+
 ## 2.10.2 (06/01/2018)
 
 #### Core Functionality

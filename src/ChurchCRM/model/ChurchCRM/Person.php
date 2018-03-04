@@ -9,6 +9,7 @@ use ChurchCRM\dto\Photo;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 
 /**
@@ -115,7 +116,7 @@ class Person extends BasePerson implements iPhoto
       {
         $NotificationEmail = new NewPersonOrFamilyEmail($this);
         if (!$NotificationEmail->send()) {
-          $logger->warn($NotificationEmail->getError());
+            LoggerUtils::getAppLogger()->warn(gettext("New Person Notification Email Error"). " :". $NotificationEmail->getError());
         }
       }
     }
@@ -241,12 +242,12 @@ class Person extends BasePerson implements iPhoto
 
     public function deletePhoto()
     {
-        if ($_SESSION['bAddRecords'] || $bOkToEdit) {
+        if ($_SESSION['user']->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
                 $note = new Note();
                 $note->setText(gettext("Profile Image Deleted"));
                 $note->setType("photo");
-                $note->setEntered($_SESSION['iUserID']);
+                $note->setEntered($_SESSION['user']->getId());
                 $note->setPerId($this->getId());
                 $note->save();
                 return true;
@@ -266,11 +267,11 @@ class Person extends BasePerson implements iPhoto
 
     public function setImageFromBase64($base64)
     {
-        if ($_SESSION['bAddRecords'] || $bOkToEdit) {
+        if ($_SESSION['user']->isEditRecordsEnabled()) {
             $note = new Note();
             $note->setText(gettext("Profile Image uploaded"));
             $note->setType("photo");
-            $note->setEntered($_SESSION['iUserID']);
+            $note->setEntered($_SESSION['user']->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setPerId($this->getId());
             $note->save();

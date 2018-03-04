@@ -1,0 +1,371 @@
+{
+	"info": {
+		"name": "Public API",
+		"_postman_id": "f46adc1f-8ac0-c4d1-f65a-2d9801f71ff5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "Register: Person",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\": 3,\n  \"FirstName\": \"Jon\",\n  \"LastName\": \"Smith\",\n  \"MiddleName\": \"Ray\",\n  \"Email\" : \"me@domain.com\",\n  \"Title\": \"Da Man\",\n  \"Address1\" : \"123 Main St\",\n  \"Address2\" : \"Unit 10\",\n  \"City\": \"Seattle\",\n  \"Country\": \"US\",\n  \"Zip\": \"98121\",\n  \"State\": \"WA\",\n  \"Gender\" : 1,\n  \"BirthDay\": \"1\",\n  \"BirthMonth\": \"1\",\n  \"BirthYear\": \"2000\",\n  \"WorkEmail\": \"me@work.com\",\n  \"CellPhone\" : \"(555) 123 - 4567\",\n  \"WorkPhone\" : \"(555) 123 - 9967\",\n  \"HomePhone\" : \"(455) 212 - 2342\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/public/register/person",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"register",
+								"person"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register: Family",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Name\": \"Smith\",\n  \"Address1\" : \"123 Main St\",\n  \"Address2\" : \"Unit 10\",\n  \"City\": \"Seattle\",\n  \"Country\": \"US\",\n  \"Zip\": \"98121\",\n  \"State\": \"WA\",\n  \"Email\": \"me@work.com\",\n  \"CellPhone\" : \"(555) 123 - 4567\",\n  \"WorkPhone\" : \"(555) 123 - 9967\",\n  \"HomePhone\" : \"(455) 212 - 2342\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/public/register/family",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"register",
+								"family"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Persons: Self-Register",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "95eFlpi5dW0QJ0WAAOU4lqVp2QLrHSVGN1bYgjTj6T1ESM6irQ"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/persons/self-register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"persons",
+								"self-register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data",
+			"item": [
+				{
+					"name": "Public Data: Countries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/public/data/countries",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"data",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Public Data: US States",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/public/data/countries/us/states",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"data",
+								"countries",
+								"us",
+								"states"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Public Data: Canadian Provices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/public/data/countries/ca/states",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"data",
+								"countries",
+								"ca",
+								"states"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Calendars",
+			"item": [
+				{
+					"name": "Public Calendar: Events (JSON)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/public/calendar/{{CalendarAccessToken}}/events",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"calendar",
+								"{{CalendarAccessToken}}",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Public Calendar: Events (ICS)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/public/calendar/{{CalendarAccessToken}}/ICS",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"calendar",
+								"{{CalendarAccessToken}}",
+								"ICS"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8dbccaa9-885a-4430-959b-5fd664a50d7c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "40e1aad7-3a8d-4e6d-97e8-6e55abaefb8e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Public API Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userName\": \"admin\",\n  \"password\": \"changeme\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/public/user/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"user",
+								"login"
+							]
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				},
+				{
+					"name": "Public API: Password Reset Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userName\": \"tony.wade@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/public/user/password/reset",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"user",
+								"password",
+								"reset"
+							]
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Public Echo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/public/echo",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"public",
+						"echo"
+					]
+				},
+				"description": "Return Echo message"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b562f04a-d73c-4ec5-872a-2790a3632630",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "11d76ead-be8c-40d8-8016-98381cb94701",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

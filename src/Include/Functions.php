@@ -27,23 +27,26 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Basic security: If the UserID isn't set (no session), redirect to the login page
+
     if (!isset($_SESSION['user'])) {
-        RedirectUtils::Redirect('Login.php');
+        $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
+        RedirectUtils::Redirect('Login.php'.$LoginLocation);
         exit;
     }
-    
+
     try {
         $_SESSION['user']->reload();
     } catch (\Exception $exc) {
         RedirectUtils::Redirect('Login.php');
         exit;
     }
-    
+
 
     // Check for login timeout.  If login has expired, redirect to login page
     if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-            RedirectUtils::Redirect('Login.php');
+            $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
+            RedirectUtils::Redirect('Login.php'.$LoginLocation);
             exit;
         } else {
             $_SESSION['tLastOperation'] = time();
@@ -51,8 +54,8 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     }
 
     // If this user needs to change password, send to that page
-    if ($_SESSION['bNeedPasswordChange'] && !isset($bNoPasswordRedirect)) {
-        RedirectUtils::Redirect('UserPasswordChange.php?PersonID='.$_SESSION['iUserID']);
+    if ($_SESSION['user']->getNeedPasswordChange() && !isset($bNoPasswordRedirect)) {
+        RedirectUtils::Redirect('UserPasswordChange.php?PersonID='.$_SESSION['user']->getId());
         exit;
     }
 
@@ -371,15 +374,15 @@ function change_date_for_place_holder($string)
 function FormatDateOutput()
 {
     $fmt = SystemConfig::getValue("sDateFormatLong");
-    
+
     $fmt = str_replace("/", " ", $fmt);
-    
+
     $fmt = str_replace("-", " ", $fmt);
-    
+
     $fmt = str_replace("d", "%d", $fmt);
     $fmt = str_replace("m", "%B", $fmt);
     $fmt = str_replace("Y", "%Y", $fmt);
-    
+
     return $fmt;
 }
 
@@ -418,7 +421,7 @@ function FormatDate($dDate, $bWithTime = false)
     ."DATE_FORMAT('$dDate', '%k') as h, "
     ."DATE_FORMAT('$dDate', ':%i') as m";
     extract(mysqli_fetch_array(RunQuery($sSQL)));
-    
+
 
     if ($h > 11) {
         $sAMPM = gettext('pm');
@@ -431,11 +434,11 @@ function FormatDate($dDate, $bWithTime = false)
             $h = 12;
         }
     }
-        
+
     $fmt = FormatDateOutput();
-        
+
     setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));
-    
+
     if ($bWithTime) {
         return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
     } else {
@@ -1112,7 +1115,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
         // this part will work with each date format
         // Philippe logel
         $data = InputUtils::FilterDate($data);
-        
+
       if (strlen($data) > 0) {
           $dateString = parseAndValidateDate($data);
           if ($dateString === false) {
@@ -1651,7 +1654,7 @@ function requireUserGroupMembership($allowedRoles = null)
     if (!$allowedRoles) {
         throw new Exception('Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.');
     }
-    if ($_SESSION[$allowedRoles] || $_SESSION['bAdmin']) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
+    if ($_SESSION[$allowedRoles] || $_SESSION['user']->isAdmin()) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
         return true;
     } elseif (is_array($allowedRoles)) {  //sometimes we might have an array of allowed roles.
         foreach ($allowedRoles as $role) {

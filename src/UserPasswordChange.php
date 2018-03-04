@@ -26,13 +26,13 @@ $sOldPasswordError = false;
 $sNewPasswordError = false;
 
 // Get the PersonID out of the querystring if they are an admin user; otherwise, use session.
-if ($_SESSION['bAdmin'] && isset($_GET['PersonID'])) {
+if ($_SESSION['user']->isAdmin() && isset($_GET['PersonID'])) {
     $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
-    if ($iPersonID != $_SESSION['iUserID']) {
+    if ($iPersonID != $_SESSION['user']->getId()) {
         $bAdminOtherUser = true;
     }
 } else {
-    $iPersonID = $_SESSION['iUserID'];
+    $iPersonID = $_SESSION['user']->getId();
 }
 
 // Was the form submitted?
@@ -66,10 +66,10 @@ if (isset($_POST['Submit'])) {
             $curUser->updatePassword($sNewPassword1);
             $curUser->setNeedPasswordChange(false);
             $curUser->save();
-            $curUser->createTimeLineNote("password-changed-admin");
             // Set the session variable so they don't get sent back here
-            $_SESSION['bNeedPasswordChange'] = false;
+            $_SESSION['user'] = $curUser;
 
+            $curUser->createTimeLineNote("password-changed-admin");
 
             if (!empty($curUser->getEmail())) {
                 $email = new PasswordChangeEmail($curUser, $sNewPassword1);
@@ -144,9 +144,8 @@ if (isset($_POST['Submit'])) {
             $curUser->updatePassword($sNewPassword1);
             $curUser->setNeedPasswordChange(false);
             $curUser->save();
+            $_SESSION['user'] = $curUser;
             $curUser->createTimeLineNote("password-changed");
-            // Set the session variable so they don't get sent back here
-            $_SESSION['bNeedPasswordChange'] = false;
 
             // Route back to the list
             if ($_GET['FromUserList'] == 'True') {
@@ -167,7 +166,7 @@ if (isset($_POST['Submit'])) {
 $sPageTitle = gettext('User Password Change');
 require 'Include/Header.php';
 
-if ($_SESSION['bNeedPasswordChange']) {
+if ($_SESSION['user']->getNeedPasswordChange()) {
     ?>
     <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
