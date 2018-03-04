@@ -44,6 +44,11 @@ class Menu
     {
         $peopleMenu = new MenuItem(gettext("People"), "", 'bAll',  'fa-users');
         $peopleMenu->addSubMenu(new MenuItem(gettext("Dashboard"), "PeopleDashboard.php"));
+        $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Person"), "PersonEditor.php", "bAddRecords"));
+        $peopleMenu->addSubMenu(new MenuItem(gettext("View All Persons"), "SelectList.php?mode=person"));
+        $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Family"), "FamilyEditor.php", "bAddRecords"));
+        $peopleMenu->addSubMenu(new MenuItem(gettext("View Active Families"), "FamilyList.php"));
+        $peopleMenu->addSubMenu(new MenuItem(gettext("View Inactive Families"), "FamilyList.php?mode=inactive"));
         return $peopleMenu;
     }
 
