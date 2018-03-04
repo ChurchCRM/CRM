@@ -8,16 +8,16 @@ class MenuItem
 {
     private $name;
     private $uri;
-    private $securityGroup;
+    private $hasPermission;
     private $icon;
     private $subItems = [];
     private $counters = [];
 
-    public function __construct($name, $uri, $securityGroup = "bAll", $icon = "")
+    public function __construct($name, $uri, $hasPermission = true, $icon = "")
     {
         $this->name = $name;
         $this->uri = $uri;
-        $this->securityGroup = $securityGroup;
+        $this->hasPermission = $hasPermission;
         $this->icon = $icon;
     }
 
@@ -27,7 +27,8 @@ class MenuItem
         array_push($this->subItems, $menuItem);
     }
 
-    public function addCounter(MenuCounter $counter) {
+    public function addCounter(MenuCounter $counter)
+    {
         array_push($this->counters, $counter);
     }
 
@@ -39,7 +40,8 @@ class MenuItem
         return '';
     }
 
-    public function setIcon($icon) {
+    public function setIcon($icon)
+    {
         $this->icon = $icon;
     }
 
@@ -58,21 +60,24 @@ class MenuItem
         return !empty($this->subItems);
     }
 
-    public function getSubItems() {
+    public function getSubItems()
+    {
         return $this->subItems;
     }
 
-    public function getCounters() {
+    public function getCounters()
+    {
         return $this->counters;
     }
 
-    public function hasCounters() {
+    public function hasCounters()
+    {
         return !empty($this->counters);
     }
 
     public function isVisible()
     {
-        return $this->securityGroup == "bAll";
+        return $this->hasPermission;
     }
 
 }
