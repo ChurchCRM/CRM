@@ -24,7 +24,9 @@ class MenuItem
 
     public function addSubMenu(MenuItem $menuItem)
     {
-        $menuItem->setIcon("fa-angle-double-right");
+        if (empty($menuItem->getIcon())) {
+            $menuItem->setIcon("fa-angle-double-right");
+        }
         array_push($this->subItems, $menuItem);
     }
 
