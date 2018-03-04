@@ -120,6 +120,7 @@ class Menu
         $depositsMenu->addSubMenu(new MenuItem(gettext("View All Deposits"), "FinancialReports.php", SessionUser::getUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("Deposit Reports"), "FinancialReports.php", SessionUser::getUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("Edit Deposit Slip"), "DepositSlipEditor.php", SessionUser::getUser()->isFinanceEnabled()));
+        $depositsMenu->addCounter(new MenuCounter("iCurrentDeposit", "bg-green", $_SESSION['iCurrentDeposit']));
         return $depositsMenu;
     }
 
