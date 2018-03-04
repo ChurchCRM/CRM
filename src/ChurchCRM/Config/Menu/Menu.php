@@ -74,7 +74,7 @@ class Menu
 
         foreach ($listOptions as $listOption) {
             if ($listOption->getOptionId() != 4) {// we avoid the sundaySchool, it's done under
-                $tmpMenu = self::addGroupSubMenus($listOption->getOptionName(), $listOption->getOptionId());
+                $tmpMenu = self::addGroupSubMenus($listOption->getOptionName(), $listOption->getOptionId(), "GroupView.php?GroupID=");
                 if (!empty($tmpMenu)) {
                     $groupMenu->addSubMenu($tmpMenu);
                 }
@@ -82,7 +82,7 @@ class Menu
         }
 
         // now we're searching the unclassified groups
-        $tmpMenu = self::addGroupSubMenus(gettext("Unassigned"), 0);
+        $tmpMenu = self::addGroupSubMenus(gettext("Unassigned"), 0, "GroupView.php?GroupID=");
         if (!empty($tmpMenu)) {
             $groupMenu->addSubMenu($tmpMenu);
         }
@@ -95,7 +95,7 @@ class Menu
         $sundaySchoolMenu = new MenuItem(gettext("Sunday School"), "", true, 'fa-child');
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext("Dashboard"), "sundayschool/SundaySchoolDashboard.php"));
         // now we're searching the unclassified groups
-        $tmpMenu = self::addGroupSubMenus(gettext("Classes"), 4);
+        $tmpMenu = self::addGroupSubMenus(gettext("Classes"), 4, "sundayschool/SundaySchoolClassView.php?groupId=");
         if (!empty($tmpMenu)) {
             $sundaySchoolMenu->addSubMenu($tmpMenu);
         }
@@ -146,13 +146,13 @@ class Menu
     }
 
 
-    private static function addGroupSubMenus($menuName, $groupId)
+    private static function addGroupSubMenus($menuName, $groupId, $viewURl)
     {
         $groups = GroupQuery::Create()->filterByType($groupId)->orderByName()->find();
         if (!$groups->isEmpty()) {
             $unassignedGroups = new MenuItem($menuName, "", true, "fa-tag");
             foreach ($groups as $group) {
-                $unassignedGroups->addSubMenu(new MenuItem($group->getName(), "GroupView.php?GroupID=" . $group->getID(), true, "fa-user-o"));
+                $unassignedGroups->addSubMenu(new MenuItem($group->getName(), $viewURl . $group->getID(), true, "fa-user-o"));
             }
             return $unassignedGroups;
         }
