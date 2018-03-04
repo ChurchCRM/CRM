@@ -44,9 +44,9 @@ class MenuRenderer
                 <i class="fa <?= $menuItem->getIcon() ?>"></i>
                 <span>
                     <?= $menuItem->getName() ?>
+                    <i class="fa fa-angle-left pull-right"></i>
                     <?php self::renderMenuCounters($menuItem) ?>
                 </span>
-                <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
             <?php foreach ($menuItem->getSubItems() as $menuSubItem) {
