@@ -29,20 +29,29 @@ class Menu
         return array(
             "Dashboard" => new MenuItem(gettext("Dashboard"), "Menu.php", 'bAll', 'fa-dashboard'),
             "Calendar" => self::getCalendarMenu(),
-            "People" => self::getPeopleMenu()
+            "People" => self::getPeopleMenu(),
+            "Groups" => self::getGroupMenu(),
+            "SundaySchool" => self::getSundaySchoolMenu(),
+            "Email" => new MenuItem(gettext("Email"), "v2/email/dashboard", 'bAll', 'fa-envelope'),
+            "Events" => self::getEventsMenu(),
+            "Deposits" => self::getDepositsMenu(),
+            "Fundraiser" => self::getFundraisersMenu(),
+            "Reports" => self::getReportsMenu(),
         );
     }
 
-    private static function getCalendarMenu() {
+    private static function getCalendarMenu()
+    {
         $calendarMenu = new MenuItem(gettext("Calendar"), "v2/calendar", 'bAll', 'fa-calendar');
-        $calendarMenu->addCounter(new MenuCounter("AnniversaryNumber" , "bg-blue"));
-        $calendarMenu->addCounter(new MenuCounter("BirthdateNumber" , "bg-red"));
-        $calendarMenu->addCounter(new MenuCounter("EventsNumber" , "bg-yellow"));
+        $calendarMenu->addCounter(new MenuCounter("AnniversaryNumber", "bg-blue"));
+        $calendarMenu->addCounter(new MenuCounter("BirthdateNumber", "bg-red"));
+        $calendarMenu->addCounter(new MenuCounter("EventsNumber", "bg-yellow"));
         return $calendarMenu;
     }
+
     private static function getPeopleMenu()
     {
-        $peopleMenu = new MenuItem(gettext("People"), "", 'bAll',  'fa-users');
+        $peopleMenu = new MenuItem(gettext("People"), "", 'bAll', 'fa-users');
         $peopleMenu->addSubMenu(new MenuItem(gettext("Dashboard"), "PeopleDashboard.php"));
         $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Person"), "PersonEditor.php", "bAddRecords"));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View All Persons"), "SelectList.php?mode=person"));
@@ -52,4 +61,59 @@ class Menu
         return $peopleMenu;
     }
 
+    private static function getGroupMenu()
+    {
+        $groupMenu = new MenuItem(gettext("Groups"), "", 'bAll', 'fa-tag');
+        $groupMenu->addSubMenu(new MenuItem(gettext("List Groups"), "GroupList.php"));
+        $groupMenu->addSubMenu(new MenuItem(gettext("Group Assignment Helper"), "SelectList.php?mode=groupassign"));
+        return $groupMenu;
+    }
+
+    private static function getSundaySchoolMenu()
+    {
+        $sundaySchoolMenu = new MenuItem(gettext("Sunday School"), "", 'bAll', 'fa-child');
+        $sundaySchoolMenu->addSubMenu(new MenuItem(gettext("Dashboard"), "sundayschool/SundaySchoolDashboard.php"));
+        return $sundaySchoolMenu;
+    }
+
+    private static function getEventsMenu()
+    {
+        $eventsMenu = new MenuItem(gettext("Events"), "", 'bAll', 'fa-ticket');
+        $eventsMenu->addSubMenu(new MenuItem(gettext("Add Church Event"), "EventEditor.php"));
+        $eventsMenu->addSubMenu(new MenuItem(gettext("List Church Events"), "ListEvents.php"));
+        $eventsMenu->addSubMenu(new MenuItem(gettext("List Event Types"), "EventNames.php"));
+        $eventsMenu->addSubMenu(new MenuItem(gettext("Check-in and Check-out"), "Checkin.php"));
+        return $eventsMenu;
+    }
+
+    private static function getDepositsMenu()
+    {
+        $depositsMenu = new MenuItem(gettext("Deposit"), "", 'bFinance', 'fa-bank');
+        $depositsMenu->addSubMenu(new MenuItem(gettext("Envelope Manager"), "ManageEnvelopes.php", "bAdmin"));
+        $depositsMenu->addSubMenu(new MenuItem(gettext("View All Deposits"), "FinancialReports.php", "bFinance"));
+        $depositsMenu->addSubMenu(new MenuItem(gettext("Deposit Reports"), "FinancialReports.php", "bFinance"));
+        $depositsMenu->addSubMenu(new MenuItem(gettext("Edit Deposit Slip"), "DepositSlipEditor.php", "bFinance"));
+        return $depositsMenu;
+    }
+
+
+    private static function getFundraisersMenu()
+    {
+        $fundraiserMenu = new MenuItem(gettext("Fundraiser"), "", 'bAll', 'fa-money');
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext("Create New Fundraiser"), "FundRaiserEditor.php?FundRaiserID=-1"));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext("View All Fundraisers"), "FindFundRaiser.php"));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext("Edit Fundraiser"), "FundRaiserEditor.php"));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext("Add Donors to Buyer List"), "AddDonors.php"));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext("View Buyers"), "PaddleNumList.php"));
+
+        return $fundraiserMenu;
+    }
+
+    private static function getReportsMenu()
+    {
+        $reportsMenu = new MenuItem(gettext("Data/Reports"), "", 'bAll', 'fa-file-pdf-o');
+        $reportsMenu->addSubMenu(new MenuItem(gettext("Reports Menu"), "ReportList.php"));
+        $reportsMenu->addSubMenu(new MenuItem(gettext("Query Menu"), "QueryList.php"));
+        return $reportsMenu;
+    }
 }
