@@ -11,6 +11,7 @@
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\TaskService;
@@ -183,12 +184,7 @@ $MenuFirst = 1;
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li>
-          <a href="<?= SystemURLs::getRootPath() ?>/Menu.php">
-            <i class="fa fa-dashboard"></i> <span><?= gettext('Dashboard') ?></span>
-          </a>
-        </li>
-        <?php addMenu('root'); ?>
+        <?php MenuRenderer::RenderMenu(); ?>
       </ul>
     </section>
   </aside>

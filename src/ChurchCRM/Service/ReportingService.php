@@ -32,27 +32,6 @@ class ReportingService
         return $returnObject;
     }
 
-    public function search($searchTerm)
-    {
-        global $cnInfoCentral;
-        $fetch = 'SELECT * from query_qry WHERE qry_Name LIKE \'%'.InputUtils::LegacyFilterInput($searchTerm).'%\' LIMIT 15';
-        $result = mysqli_query($cnInfoCentral, $fetch);
-        $reports = [];
-        while ($row = mysqli_fetch_array($result)) {
-            $row_array['id'] = $row['qry_ID'];
-            $row_array['displayName'] = $row['qry_Name'];
-            $row_array['uri'] = $this->getViewURI($row['qry_ID']);
-            array_push($reports, $row_array);
-        }
-
-        return $reports;
-    }
-
-    public function getViewURI($Id)
-    {
-        return SystemURLs::getRootPath().'/ReportList.php';
-    }
-
     public function getReportJSON($reports)
     {
         if ($reports) {

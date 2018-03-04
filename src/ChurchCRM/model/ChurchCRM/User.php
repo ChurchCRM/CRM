@@ -41,7 +41,7 @@ class User extends BaseUser
 
     public function isAddEvent()
     {
-      return $this->isAdmin() || $_SESSION['bAddEvent'];
+      return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
     public function isAddRecordsEnabled()
@@ -177,5 +177,20 @@ class User extends BaseUser
         }
 
         $note->save();
+    }
+
+    public function isEnabledSecurity($securityConfigName){
+        $aSecurityListPrimal = [];
+        $ormSecGrpLists = UserConfigQuery::Create()
+            ->filterByPeronId($this->getId())
+            ->filterByPermission(true)
+            ->filterByCat('SECURITY')
+            ->find();
+
+        foreach ($ormSecGrpLists as $ormSecGrpList) {
+            array_push($aSecurityListPrimal, $ormSecGrpList->getName());
+        }
+
+        return in_array($aSecurityListPrimal, $securityConfigName);
     }
 }
