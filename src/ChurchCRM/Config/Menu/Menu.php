@@ -110,6 +110,7 @@ class Menu
         $eventsMenu->addSubMenu(new MenuItem(gettext("List Church Events"), "ListEvents.php"));
         $eventsMenu->addSubMenu(new MenuItem(gettext("List Event Types"), "EventNames.php"));
         $eventsMenu->addSubMenu(new MenuItem(gettext("Check-in and Check-out"), "Checkin.php"));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('Event Attendance Reports'), "EventAttendance.php"));
         return $eventsMenu;
     }
 
@@ -141,7 +142,7 @@ class Menu
     private static function getReportsMenu()
     {
         $reportsMenu = new MenuItem(gettext("Data/Reports"), "", true, 'fa-file-pdf-o');
-        $reportsMenu->addSubMenu(new MenuItem(gettext("Reports Menu"), "ReportList.php"));
+        $reportsMenu->addSubMenu(new MenuItem(gettext('Canvass Automation'), "CanvassAutomation.php"));
         $reportsMenu->addSubMenu(new MenuItem(gettext("Query Menu"), "QueryList.php"));
         return $reportsMenu;
     }
