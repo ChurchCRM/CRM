@@ -2,7 +2,6 @@
 
 namespace ChurchCRM;
 
-
 class SessionUser
 {
     /**
@@ -17,5 +16,4 @@ class SessionUser
     {
         self::getUser()->isAdmin();
     }
-
 }
