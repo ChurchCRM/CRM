@@ -452,7 +452,7 @@ class Person extends BasePerson implements iPhoto
       return parent::postSave($con);
     }
 
-    public function getAge()
+    public function getAge($now)
     {
       $birthDate = $this->getBirthDate();
 
@@ -460,8 +460,9 @@ class Person extends BasePerson implements iPhoto
       {
         return false;
       }
-
-      $now = date_create('today');
+      if (empty($now)) {
+        $now = date_create('today');
+      }
       $age = date_diff($now,$birthDate);
 
       if ($age->y < 1) {
