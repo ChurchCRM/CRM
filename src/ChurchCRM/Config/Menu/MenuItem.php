@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 
 class MenuItem
 {
+    private $maxNameStr = 25;
     private $name;
     private $uri;
     private $hasPermission;
@@ -34,6 +35,7 @@ class MenuItem
 
     public function getURI()
     {
+        //Review SessionVar stuff
         if (!empty($this->uri)) {
             return SystemURLs::getRootPath() . "/" . $this->uri;
         }
@@ -47,6 +49,9 @@ class MenuItem
 
     public function getName()
     {
+        if (strlen($this->name) > $this->maxNameStr) {
+            return substr($this->name, 0, $this->maxNameStr - 3) . " ...";
+        }
         return $this->name;
     }
 
