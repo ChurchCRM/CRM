@@ -47,7 +47,11 @@ class MenuRenderer
             </a>
             <ul class="treeview-menu">
             <?php foreach ($menuItem->getSubItems() as $menuSubItem) {
-                self::renderMenuItem($menuSubItem);
+                if ($menuSubItem->isMenu()) {
+                    self::renderSubMenuItem($menuSubItem);
+                } else {
+                    self::renderMenuItem($menuSubItem);
+                }
             } ?>
             </ul>
         </li>
