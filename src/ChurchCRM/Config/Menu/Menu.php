@@ -3,6 +3,8 @@
 namespace ChurchCRM\Config\Menu;
 
 use ChurchCRM\Config;
+use ChurchCRM\GroupQuery;
+use ChurchCRM\ListOptionQuery;
 use ChurchCRM\SessionUser;
 
 class Menu
@@ -67,6 +69,24 @@ class Menu
         $groupMenu = new MenuItem(gettext("Groups"), "", true, 'fa-tag');
         $groupMenu->addSubMenu(new MenuItem(gettext("List Groups"), "GroupList.php"));
         $groupMenu->addSubMenu(new MenuItem(gettext("Group Assignment Helper"), "SelectList.php?mode=groupassign"));
+
+        $listOptions = ListOptionQuery::Create()->filterById(3)->orderByOptionSequence()->find();
+
+        foreach ($listOptions as $listOption) {
+            if ($listOption->getOptionId() != 4) {// we avoid the sundaySchool, it's done under
+                $tmpMenu = self::addGroupSubMenus($listOption->getOptionName(), $listOption->getOptionId());
+                if (!empty($tmpMenu)) {
+                    $groupMenu->addSubMenu($tmpMenu);
+                }
+            }
+        }
+
+        // now we're searching the unclassified groups
+        $tmpMenu = self::addGroupSubMenus(gettext("Unassigned"), 0);
+        if (!empty($tmpMenu)) {
+            $groupMenu->addSubMenu($tmpMenu);
+        }
+
         return $groupMenu;
     }
 
@@ -74,6 +94,12 @@ class Menu
     {
         $sundaySchoolMenu = new MenuItem(gettext("Sunday School"), "", true, 'fa-child');
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext("Dashboard"), "sundayschool/SundaySchoolDashboard.php"));
+        // now we're searching the unclassified groups
+        $tmpMenu = self::addGroupSubMenus(gettext("Classes"), 4);
+        if (!empty($tmpMenu)) {
+            $sundaySchoolMenu->addSubMenu($tmpMenu);
+        }
+
         return $sundaySchoolMenu;
     }
 
@@ -117,4 +143,19 @@ class Menu
         $reportsMenu->addSubMenu(new MenuItem(gettext("Query Menu"), "QueryList.php"));
         return $reportsMenu;
     }
+
+
+    private static function addGroupSubMenus($menuName, $groupId)
+    {
+        $groups = GroupQuery::Create()->filterByType($groupId)->orderByName()->find();
+        if (!$groups->isEmpty()) {
+            $unassignedGroups = new MenuItem($menuName, "", true, "fa-tag");
+            foreach ($groups as $group) {
+                $unassignedGroups->addSubMenu(new MenuItem($group->getName(), "GroupView.php?GroupID=" . $group->getID(), true, "fa-user-o"));
+            }
+            return $unassignedGroups;
+        }
+        return null;
+    }
+
 }
