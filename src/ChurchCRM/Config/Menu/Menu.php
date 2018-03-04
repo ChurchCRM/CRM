@@ -133,6 +133,7 @@ class Menu
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("Edit Fundraiser"), "FundRaiserEditor.php"));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("Add Donors to Buyer List"), "AddDonors.php"));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("View Buyers"), "PaddleNumList.php"));
+        $fundraiserMenu->addCounter(new MenuCounter("iCurrentFundraiser", "bg-blue", $_SESSION['iCurrentFundraiser']));
 
         return $fundraiserMenu;
     }
