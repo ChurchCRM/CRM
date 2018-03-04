@@ -3,6 +3,7 @@
 namespace ChurchCRM\Config\Menu;
 
 use ChurchCRM\Config;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\SessionUser;
@@ -35,7 +36,7 @@ class Menu
             "People" => self::getPeopleMenu(),
             "Groups" => self::getGroupMenu(),
             "SundaySchool" => self::getSundaySchoolMenu(),
-            "Email" => new MenuItem(gettext("Email"), "v2/email/dashboard", true, 'fa-envelope'),
+            "Email" => new MenuItem(gettext("Email"), "v2/email/dashboard", SystemConfig::getBooleanValue("bEnabledEmail"), 'fa-envelope'),
             "Events" => self::getEventsMenu(),
             "Deposits" => self::getDepositsMenu(),
             "Fundraiser" => self::getFundraisersMenu(),
@@ -45,7 +46,7 @@ class Menu
 
     private static function getCalendarMenu()
     {
-        $calendarMenu = new MenuItem(gettext("Calendar"), "v2/calendar", true, 'fa-calendar');
+        $calendarMenu = new MenuItem(gettext("Calendar"), "v2/calendar", SystemConfig::getBooleanValue("bEnabledCalendar"), 'fa-calendar');
         $calendarMenu->addCounter(new MenuCounter("AnniversaryNumber", "bg-blue"));
         $calendarMenu->addCounter(new MenuCounter("BirthdateNumber", "bg-red"));
         $calendarMenu->addCounter(new MenuCounter("EventsNumber", "bg-yellow"));
@@ -92,7 +93,7 @@ class Menu
 
     private static function getSundaySchoolMenu()
     {
-        $sundaySchoolMenu = new MenuItem(gettext("Sunday School"), "", true, 'fa-child');
+        $sundaySchoolMenu = new MenuItem(gettext("Sunday School"), "", SystemConfig::getBooleanValue("bEnabledSundaySchool"), 'fa-child');
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext("Dashboard"), "sundayschool/SundaySchoolDashboard.php"));
         // now we're searching the unclassified groups
         $tmpMenu = self::addGroupSubMenus(gettext("Classes"), 4, "sundayschool/SundaySchoolClassView.php?groupId=");
@@ -105,7 +106,7 @@ class Menu
 
     private static function getEventsMenu()
     {
-        $eventsMenu = new MenuItem(gettext("Events"), "", true, 'fa-ticket');
+        $eventsMenu = new MenuItem(gettext("Events"), "", SystemConfig::getBooleanValue("bEnabledEvents"), 'fa-ticket');
         $eventsMenu->addSubMenu(new MenuItem(gettext("Add Church Event"), "EventEditor.php", SessionUser::getUser()->isAddEvent()));
         $eventsMenu->addSubMenu(new MenuItem(gettext("List Church Events"), "ListEvents.php"));
         $eventsMenu->addSubMenu(new MenuItem(gettext("List Event Types"), "EventNames.php"));
@@ -116,7 +117,7 @@ class Menu
 
     private static function getDepositsMenu()
     {
-        $depositsMenu = new MenuItem(gettext("Deposit"), "", SessionUser::getUser()->isFinanceEnabled(), 'fa-bank');
+        $depositsMenu = new MenuItem(gettext("Deposit"), "", SystemConfig::getBooleanValue("bEnabledFinance") && SessionUser::getUser()->isFinanceEnabled(), 'fa-bank');
         $depositsMenu->addSubMenu(new MenuItem(gettext("Envelope Manager"), "ManageEnvelopes.php", SessionUser::getUser()->isAdmin()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("View All Deposits"), "FindDepositSlip.php", SessionUser::getUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("Deposit Reports"), "FinancialReports.php", SessionUser::getUser()->isFinanceEnabled()));
@@ -128,7 +129,7 @@ class Menu
 
     private static function getFundraisersMenu()
     {
-        $fundraiserMenu = new MenuItem(gettext("Fundraiser"), "", true, 'fa-money');
+        $fundraiserMenu = new MenuItem(gettext("Fundraiser"), "", SystemConfig::getBooleanValue("bEnabledFundraiser"), 'fa-money');
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("Create New Fundraiser"), "FundRaiserEditor.php?FundRaiserID=-1"));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("View All Fundraisers"), "FindFundRaiser.php"));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("Edit Fundraiser"), "FundRaiserEditor.php"));
