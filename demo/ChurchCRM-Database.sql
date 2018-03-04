@@ -3,7 +3,7 @@
 -- Host: localhost	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	5.7.21-0ubuntu0.16.04.1
--- Date: Sun, 04 Mar 2018 16:44:53 -0500
+-- Date: Sun, 04 Mar 2018 16:58:13 -0500
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -969,6 +969,32 @@ UNLOCK TABLES;
 COMMIT;
 
 --
+-- Table structure for table `menu_links`
+--
+
+DROP TABLE IF EXISTS `menu_links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menu_links` (
+  `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`linkId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu_links`
+--
+
+LOCK TABLES `menu_links` WRITE;
+/*!40000 ALTER TABLE `menu_links` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `menu_links` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+--
 -- Table structure for table `multibuy_mb`
 --
 
@@ -1763,4 +1789,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sun, 04 Mar 2018 16:44:53 -0500
+-- Dump completed on: Sun, 04 Mar 2018 16:58:13 -0500
