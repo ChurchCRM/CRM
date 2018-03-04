@@ -39,14 +39,17 @@ class MenuRenderer
     private static function renderSubMenuItem(MenuItem $menuItem)
     {
         ?>
-        <li>
-            <a href="<?= $menuItem->getURI() ?>">
-                <i class='fa <?= $menuItem->getIcon() ?>'></i>
-                <span>
-                    <?= $menuItem->getName() ?> - Menu
-                    <?php self::renderMenuCounters($menuItem) ?>
-                </span>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa <?= $menuItem->getIcon() ?>"></i>
+                <span><?= $menuItem->getName() ?></span>
+                <i class="fa fa-angle-left pull-right"></i>
             </a>
+            <ul class="treeview-menu">
+            <?php foreach ($menuItem->getSubItems() as $menuSubItem) {
+                self::renderMenuItem($menuSubItem);
+            } ?>
+            </ul>
         </li>
         <?php
     }
@@ -58,7 +61,8 @@ class MenuRenderer
             ?>
             <span class='pull-right-container'>
                 <?php foreach ($menuItem->getCounters() as $counter) { ?>
-                    <small class='label pull-right <?= $counter->getCss() ?>' id='<?= $counter->getName() ?>'><?= $counter->getInitValue() ?></small>
+                    <small class='label pull-right <?= $counter->getCss() ?>'
+                           id='<?= $counter->getName() ?>'><?= $counter->getInitValue() ?></small>
                 <?php } ?>
             </span>
             <?php

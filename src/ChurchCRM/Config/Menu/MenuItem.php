@@ -23,6 +23,7 @@ class MenuItem
 
     public function addSubMenu(MenuItem $menuItem)
     {
+        $menuItem->setIcon("fa-angle-double-right");
         array_push($this->subItems, $menuItem);
     }
 
@@ -38,6 +39,10 @@ class MenuItem
         return '';
     }
 
+    public function setIcon($icon) {
+        $this->icon = $icon;
+    }
+
     public function getName()
     {
         return $this->name;
@@ -51,6 +56,10 @@ class MenuItem
     public function isMenu()
     {
         return !empty($this->subItems);
+    }
+
+    public function getSubItems() {
+        return $this->subItems;
     }
 
     public function getCounters() {
