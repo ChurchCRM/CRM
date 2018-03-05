@@ -27,7 +27,7 @@ function Header_system_notifications()
             <?php foreach (NotificationService::getNotifications() as $notification) { ?>
             $.notify({
                 icon: 'fa fa-bell',
-                message: '<b><?= $notification->title?></b>',
+                message: '<?= $notification->title?>',
                 url: '<?= $notification->link ?>'
             },{
                 delay: 10000,
