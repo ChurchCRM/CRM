@@ -24,7 +24,8 @@ function Header_system_notifications()
     if (NotificationService::hasActiveNotifications()) {
         ?>
         <script>
-            <?php foreach (NotificationService::getNotifications() as $notification) { ?>
+            <?php foreach (NotificationService::getNotifications() as $notification) {
+            ?>
             $.notify({
                 icon: 'fa fa-bell',
                 message: '<?= $notification->title?>',
@@ -37,7 +38,8 @@ function Header_system_notifications()
                     align: 'left'
                 }
             });
-            <?php } ?>
+            <?php
+        } ?>
         </script>
         <?php
     }
