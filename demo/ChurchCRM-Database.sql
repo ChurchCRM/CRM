@@ -3,7 +3,7 @@
 -- Host: localhost	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	5.7.21-0ubuntu0.16.04.1
--- Date: Sun, 04 Mar 2018 16:58:13 -0500
+-- Date: Sun, 04 Mar 2018 16:44:53 -0500
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -239,7 +239,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','2018-03-04 16:42:58'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(20142,'bHSTSEnable','');
+INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','2018-03-04 17:08:08'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(20142,'bHSTSEnable','');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -259,7 +259,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Closed` tinyint(1) NOT NULL DEFAULT '0',
   `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Bank',
   PRIMARY KEY (`dep_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=0;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=0;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,6 +269,7 @@ CREATE TABLE `deposit_dep` (
 LOCK TABLES `deposit_dep` WRITE;
 /*!40000 ALTER TABLE `deposit_dep` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `deposit_dep` VALUES (1,'2018-02-11','',NULL,0,'Bank'),(2,'2018-02-18','',NULL,0,'Bank'),(3,'2018-02-25','',NULL,0,'Bank'),(4,'2018-03-04','',NULL,0,'Bank'),(5,'2018-03-11','',NULL,0,'Bank');
 /*!40000 ALTER TABLE `deposit_dep` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -326,7 +327,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`fun_ID`),
   UNIQUE KEY `fun_ID` (`fun_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -336,7 +337,7 @@ CREATE TABLE `donationfund_fun` (
 LOCK TABLES `donationfund_fun` WRITE;
 /*!40000 ALTER TABLE `donationfund_fun` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget');
+INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget'),(2,'true','New Building Fund',''),(3,'true','Music Ministry','');
 /*!40000 ALTER TABLE `donationfund_fun` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -969,32 +970,6 @@ UNLOCK TABLES;
 COMMIT;
 
 --
--- Table structure for table `menu_links`
---
-
-DROP TABLE IF EXISTS `menu_links`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `menu_links` (
-  `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`linkId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `menu_links`
---
-
-LOCK TABLES `menu_links` WRITE;
-/*!40000 ALTER TABLE `menu_links` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `menu_links` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
---
 -- Table structure for table `multibuy_mb`
 --
 
@@ -1283,7 +1258,7 @@ CREATE TABLE `pledge_plg` (
   `plg_NonDeductible` decimal(8,2) NOT NULL,
   `plg_GroupKey` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`plg_plgID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1293,6 +1268,7 @@ CREATE TABLE `pledge_plg` (
 LOCK TABLES `pledge_plg` WRITE;
 /*!40000 ALTER TABLE `pledge_plg` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `pledge_plg` VALUES (1,13,22,'2018-03-04',30.00,'Once','CASH','','2018-03-04',1,'Payment',1,1,NULL,NULL,'',0,0,0,0.00,'cash|0|13|1|2018-03-04'),(2,13,22,'2018-03-04',20.00,'Once','CASH','','2018-03-04',1,'Payment',2,1,NULL,NULL,'',0,0,0,0.00,'cash|0|13|1|2018-03-04'),(3,13,22,'2018-03-04',100.00,'Once','CASH','','2018-03-04',1,'Payment',3,1,NULL,NULL,'',0,0,0,0.00,'cash|0|13|1|2018-03-04'),(4,14,22,'2018-03-04',100.00,'Once','CHECK','','2018-03-04',1,'Payment',1,1,127,NULL,'',0,0,0,0.00,'127|0|14|1|2018-03-04'),(5,20,22,'2018-03-04',500.00,'Once','CHECK','','2018-03-04',1,'Payment',1,2,100,NULL,'',0,0,0,0.00,'100|0|20|1|2018-03-04'),(6,20,22,'2018-03-04',100.00,'Once','CHECK','','2018-03-04',1,'Payment',2,2,100,NULL,'',0,0,0,0.00,'100|0|20|1|2018-03-04'),(7,20,22,'2018-03-04',100.00,'Once','CHECK','','2018-03-04',1,'Payment',3,2,100,NULL,'',0,0,0,0.00,'100|0|20|1|2018-03-04'),(8,20,22,'2018-03-04',25.00,'Once','CHECK','','2018-03-04',1,'Payment',1,3,5532,NULL,'',0,0,0,0.00,'5532|0|20|1|2018-03-04'),(9,20,22,'2018-03-04',25.00,'Once','CHECK','','2018-03-04',1,'Payment',2,3,5532,NULL,'',0,0,0,0.00,'5532|0|20|1|2018-03-04'),(10,20,22,'2018-03-04',25.00,'Once','CHECK','','2018-03-04',1,'Payment',3,3,5532,NULL,'',0,0,0,0.00,'5532|0|20|1|2018-03-04'),(11,1,22,'2018-03-04',300.00,'Once','CHECK','','2018-03-04',1,'Payment',1,3,773,NULL,'',0,0,0,0.00,'773|0|1|1|2018-03-04'),(12,1,22,'2018-03-04',26.00,'Once','CHECK','','2018-03-04',1,'Payment',2,3,773,NULL,'',0,0,0,0.00,'773|0|1|1|2018-03-04'),(13,1,22,'2018-03-04',20.00,'Once','CHECK','','2018-03-04',1,'Payment',3,3,773,NULL,'',0,0,0,0.00,'773|0|1|1|2018-03-04'),(14,9,22,'2018-03-04',50.00,'Once','CASH','','2018-03-04',1,'Payment',1,4,NULL,NULL,'',0,0,0,0.00,'cash|0|9|1|2018-03-04'),(15,6,22,'2018-03-04',100.00,'Once','CASH','','2018-03-04',1,'Payment',1,5,NULL,NULL,'',0,0,0,0.00,'cash|0|6|1|2018-03-04'),(16,6,22,'2018-03-04',20.00,'Once','CASH','','2018-03-04',1,'Payment',3,5,NULL,NULL,'',0,0,0,0.00,'cash|0|6|1|2018-03-04'),(17,10,22,'2018-03-04',90.00,'Once','CASH','','2018-03-04',1,'Payment',1,5,NULL,NULL,'',0,0,0,0.00,'cash|0|10|1|2018-03-04'),(18,10,22,'2018-03-04',140.00,'Once','CASH','','2018-03-04',1,'Payment',2,5,NULL,NULL,'',0,0,0,0.00,'cash|0|10|1|2018-03-04'),(19,10,22,'2018-03-04',95.00,'Once','CASH','','2018-03-04',1,'Payment',3,5,NULL,NULL,'',0,0,0,0.00,'cash|0|10|1|2018-03-04');
 /*!40000 ALTER TABLE `pledge_plg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1746,8 +1722,8 @@ COMMIT;
 DROP TABLE IF EXISTS `email_count`;
 /*!50001 DROP VIEW IF EXISTS `email_count`*/;
 CREATE TABLE IF NOT EXISTS `email_count` (
-`email` varchar(100)
-,`total` bigint(21)
+   `email` varchar(100)
+  ,`total` bigint(21)
 );
 --
 -- Stand-In structure for view `email_list`
@@ -1756,9 +1732,9 @@ CREATE TABLE IF NOT EXISTS `email_count` (
 DROP TABLE IF EXISTS `email_list`;
 /*!50001 DROP VIEW IF EXISTS `email_list`*/;
 CREATE TABLE IF NOT EXISTS `email_list` (
-`email` varchar(100)
-,`type` varchar(11)
-,`id` mediumint(9) unsigned
+   `email` varchar(100)
+  ,`type` varchar(11)
+  ,`id` mediumint(9) unsigned
 );
 --
 -- View structure for view `email_count`
@@ -1767,8 +1743,8 @@ CREATE TABLE IF NOT EXISTS `email_list` (
 DROP TABLE IF EXISTS `email_count`;
 /*!50001 DROP VIEW IF EXISTS `email_count`*/;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `email_count` AS select `email_list`.`email` AS `email`,count(0) AS `total` from `email_list` group by `email_list`.`email` */;
+  /*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
+  /*!50001 VIEW `email_count` AS select `email_list`.`email` AS `email`,count(0) AS `total` from `email_list` group by `email_list`.`email` */;
 
 --
 -- View structure for view `email_list`
@@ -1777,8 +1753,8 @@ DROP TABLE IF EXISTS `email_count`;
 DROP TABLE IF EXISTS `email_list`;
 /*!50001 DROP VIEW IF EXISTS `email_list`*/;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `email_list` AS select `family_fam`.`fam_Email` AS `email`,'family' AS `type`,`family_fam`.`fam_ID` AS `id` from `family_fam` where ((`family_fam`.`fam_Email` is not null) and (`family_fam`.`fam_Email` <> '')) union select `person_per`.`per_Email` AS `email`,'person_home' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_Email` is not null) and (`person_per`.`per_Email` <> '')) union select `person_per`.`per_WorkEmail` AS `email`,'person_work' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_WorkEmail` is not null) and (`person_per`.`per_WorkEmail` <> '')) */;
+  /*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
+  /*!50001 VIEW `email_list` AS select `family_fam`.`fam_Email` AS `email`,'family' AS `type`,`family_fam`.`fam_ID` AS `id` from `family_fam` where ((`family_fam`.`fam_Email` is not null) and (`family_fam`.`fam_Email` <> '')) union select `person_per`.`per_Email` AS `email`,'person_home' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_Email` is not null) and (`person_per`.`per_Email` <> '')) union select `person_per`.`per_WorkEmail` AS `email`,'person_work' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_WorkEmail` is not null) and (`person_per`.`per_WorkEmail` <> '')) */;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1789,4 +1765,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sun, 04 Mar 2018 16:58:13 -0500
+-- Dump completed on: Sun, 04 Mar 2018 17:14:19 -0500
