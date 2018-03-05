@@ -58,6 +58,7 @@ require __DIR__ . '/routes/system/system-issues.php';
 require __DIR__ . '/routes/system/system-register.php';
 require __DIR__ . '/routes/system/system-timerjobs.php';
 require __DIR__ . '/routes/system/system-upgrade.php';
+require __DIR__ . '/routes/system/system-custom-menu.php';
 
 // other
 require __DIR__ . '/routes/cart.php';
