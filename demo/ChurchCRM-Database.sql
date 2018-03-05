@@ -1722,8 +1722,8 @@ COMMIT;
 DROP TABLE IF EXISTS `email_count`;
 /*!50001 DROP VIEW IF EXISTS `email_count`*/;
 CREATE TABLE IF NOT EXISTS `email_count` (
-`email` varchar(100)
-,`total` bigint(21)
+   `email` varchar(100)
+  ,`total` bigint(21)
 );
 --
 -- Stand-In structure for view `email_list`
@@ -1732,9 +1732,9 @@ CREATE TABLE IF NOT EXISTS `email_count` (
 DROP TABLE IF EXISTS `email_list`;
 /*!50001 DROP VIEW IF EXISTS `email_list`*/;
 CREATE TABLE IF NOT EXISTS `email_list` (
-`email` varchar(100)
-,`type` varchar(11)
-,`id` mediumint(9) unsigned
+   `email` varchar(100)
+  ,`type` varchar(11)
+  ,`id` mediumint(9) unsigned
 );
 --
 -- View structure for view `email_count`
@@ -1743,8 +1743,8 @@ CREATE TABLE IF NOT EXISTS `email_list` (
 DROP TABLE IF EXISTS `email_count`;
 /*!50001 DROP VIEW IF EXISTS `email_count`*/;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `email_count` AS select `email_list`.`email` AS `email`,count(0) AS `total` from `email_list` group by `email_list`.`email` */;
+  /*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
+  /*!50001 VIEW `email_count` AS select `email_list`.`email` AS `email`,count(0) AS `total` from `email_list` group by `email_list`.`email` */;
 
 --
 -- View structure for view `email_list`
@@ -1753,8 +1753,8 @@ DROP TABLE IF EXISTS `email_count`;
 DROP TABLE IF EXISTS `email_list`;
 /*!50001 DROP VIEW IF EXISTS `email_list`*/;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `email_list` AS select `family_fam`.`fam_Email` AS `email`,'family' AS `type`,`family_fam`.`fam_ID` AS `id` from `family_fam` where ((`family_fam`.`fam_Email` is not null) and (`family_fam`.`fam_Email` <> '')) union select `person_per`.`per_Email` AS `email`,'person_home' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_Email` is not null) and (`person_per`.`per_Email` <> '')) union select `person_per`.`per_WorkEmail` AS `email`,'person_work' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_WorkEmail` is not null) and (`person_per`.`per_WorkEmail` <> '')) */;
+  /*!50013 DEFINER=`churchcrm`@`%` SQL SECURITY DEFINER */
+  /*!50001 VIEW `email_list` AS select `family_fam`.`fam_Email` AS `email`,'family' AS `type`,`family_fam`.`fam_ID` AS `id` from `family_fam` where ((`family_fam`.`fam_Email` is not null) and (`family_fam`.`fam_Email` <> '')) union select `person_per`.`per_Email` AS `email`,'person_home' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_Email` is not null) and (`person_per`.`per_Email` <> '')) union select `person_per`.`per_WorkEmail` AS `email`,'person_work' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_WorkEmail` is not null) and (`person_per`.`per_WorkEmail` <> '')) */;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

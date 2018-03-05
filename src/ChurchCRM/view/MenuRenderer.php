@@ -25,7 +25,7 @@ class MenuRenderer
     {
         ?>
         <li>
-            <a href="<?= $menuItem->getURI() ?>">
+            <a href="<?= $menuItem->getURI() ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?>>
                 <i class='fa <?= $menuItem->getIcon() ?>'></i>
                 <span>
                     <?= $menuItem->getName() ?>
