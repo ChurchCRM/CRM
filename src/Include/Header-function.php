@@ -33,8 +33,8 @@ function Header_system_notifications()
                 delay: 50000,
                 type: 'danger',
                 placement: {
-                    from: 'top',
-                    align: 'center'
+                    from: 'bottom',
+                    align: 'right'
                 }
             });
             <?php } ?>
