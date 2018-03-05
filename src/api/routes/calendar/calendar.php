@@ -12,11 +12,16 @@ use Slim\Http\Response;
 
 $app->group('/calendars', function () {
     $this->get('', 'getUserCalendars');
+    $this->post('', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
     $this->get('/', 'getUserCalendars');
+    $this->post('/', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
     $this->get('/{id}', 'getUserCalendars');
+    $this->delete('/{id}', 'deleteUserCalendar');
     $this->get('/{id}/events', 'UserCalendar');
     $this->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
     $this->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
+    $this->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(new AddEventsRoleAuthMiddleware());
+    
 });
 
 
@@ -141,4 +146,45 @@ function NewAccessToken($request, Response $response, $args)
     $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
     $Calendar->save();
     return $Calendar->toJSON();
+}
+
+function DeleteAccessToken($request, Response $response, $args)
+{
+  if (!isset($args['id'])) {
+    return $response->withStatus(400)->withJson(array("status" => gettext("Invalid request: Missing calendar id")));
+  }
+  $Calendar = CalendarQuery::create()
+      ->findOneById($args['id']);
+  if (!$Calendar) {
+    return $response->withStatus(404)->withJson(array("status" => gettext("Not Found: Unknown calendar id") . ": " . $args['id']));
+  }
+  $Calendar->setAccessToken(null);
+  $Calendar->save();
+  return $Calendar->toJSON();
+}
+
+function NewCalendar(Request $request, Response $response, $args)
+{
+  $input = (object)$request->getParsedBody();
+  $Calendar = new Calendar();
+  $Calendar->setName($input->Name);
+  $Calendar->setForegroundColor($input->ForegroundColor);
+  $Calendar->setBackgroundColor($input->BackgroundColor);
+  $Calendar->save();
+  return $response->withJson($Calendar->toArray());
+  
+}
+
+function deleteUserCalendar(Request $request, Response $response, $args)
+{
+   if (!isset($args['id'])) {
+        return $response->withStatus(400)->withJson(array("status" => gettext("Invalid request: Missing calendar id")));
+    }
+    $Calendar = CalendarQuery::create()
+        ->findOneById($args['id']);
+    if (!$Calendar) {
+        return $response->withStatus(404)->withJson(array("status" => gettext("Not Found: Unknown calendar id") . ": " . $args['id']));
+    }
+    $Calendar->delete();
+    return $response->withJson(array("status"=>"success"));
 }
