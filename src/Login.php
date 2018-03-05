@@ -141,8 +141,8 @@ session_start() ;
 $_SESSION['iLoginType'] = $type;
 $_SESSION['username'] = $urlUserName;
 $LocationFromGet = InputUtils::FilterString(urldecode($_GET['location']));
-if (substr($LocationFromGet,0,1) == "/") {
-  $LocationFromGet = substr($LocationFromGet,1);
+if (substr($LocationFromGet, 0, 1) == "/") {
+    $LocationFromGet = substr($LocationFromGet, 1);
 }
 
 if (isset($LocationFromSession) && $LocationFromSession != '') {
