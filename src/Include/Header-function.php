@@ -31,7 +31,7 @@ function Header_system_notifications()
                 message: '<?= $notification->title?>',
                 url: '<?= $notification->link ?>'
             },{
-                delay: 10000,
+                delay: 4000,
                 type: 'danger',
                 placement: {
                     from: 'bottom',
