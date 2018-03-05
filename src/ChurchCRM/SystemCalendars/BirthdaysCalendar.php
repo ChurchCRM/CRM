@@ -56,7 +56,7 @@ class BirthdaysCalendar implements SystemCalendar {
       $year = date('Y');
       $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
       $age = $person->getAge($birthday->getStart());
-      $birthday->setTitle(gettext("Birthday") . ": " . $person->getFullName() . ( $age ? "(".$age.")" : '' ));
+      $birthday->setTitle(gettext("Birthday") . ": " . $person->getFullName() . ( $age ? " (".$age.")" : '' ));
       $events->push($birthday);
     }
     return $events;
