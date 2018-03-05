@@ -8,10 +8,11 @@ use ChurchCRM\dto\ChurchMetaData;
 use Mustache_Engine;
 use Mustache_Loader_FilesystemLoader;
 use Monolog\Logger;
+use PHPMailer\PHPMailer\PHPMailer;
 
 abstract class BaseEmail
 {
-    /** @var \PHPMailer */
+    /** @var PHPMailer */
     protected $mail;
     protected $mustache;
 
@@ -34,7 +35,7 @@ abstract class BaseEmail
     private function setConnection()
     {
 
-        $this->mail = new \PHPMailer();
+        $this->mail = new PHPMailer();
         $this->mail->IsSMTP();
         $this->mail->CharSet = 'UTF-8';
         $this->mail->Timeout = intval(SystemConfig::getValue("iSMTPTimeout"));
