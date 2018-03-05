@@ -3,7 +3,7 @@
 -- Host: localhost	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	5.7.21-0ubuntu0.16.04.1
--- Date: Mon, 19 Feb 2018 17:11:49 -0500
+-- Date: Sun, 04 Mar 2018 16:44:53 -0500
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -239,7 +239,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','2018-02-19 17:11:35'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(20142,'bHSTSEnable','');
+INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','2018-03-04 17:08:08'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(20142,'bHSTSEnable','');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -259,7 +259,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Closed` tinyint(1) NOT NULL DEFAULT '0',
   `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Bank',
   PRIMARY KEY (`dep_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=0;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=0;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,6 +269,7 @@ CREATE TABLE `deposit_dep` (
 LOCK TABLES `deposit_dep` WRITE;
 /*!40000 ALTER TABLE `deposit_dep` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `deposit_dep` VALUES (1,'2018-02-11','',NULL,0,'Bank'),(2,'2018-02-18','',NULL,0,'Bank'),(3,'2018-02-25','',NULL,0,'Bank'),(4,'2018-03-04','',NULL,0,'Bank'),(5,'2018-03-11','',NULL,0,'Bank');
 /*!40000 ALTER TABLE `deposit_dep` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -326,7 +327,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`fun_ID`),
   UNIQUE KEY `fun_ID` (`fun_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -336,7 +337,7 @@ CREATE TABLE `donationfund_fun` (
 LOCK TABLES `donationfund_fun` WRITE;
 /*!40000 ALTER TABLE `donationfund_fun` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget');
+INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget'),(2,'true','New Building Fund',''),(3,'true','Music Ministry','');
 /*!40000 ALTER TABLE `donationfund_fun` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -763,7 +764,7 @@ CREATE TABLE `group_grp` (
   PRIMARY KEY (`grp_ID`),
   UNIQUE KEY `grp_ID` (`grp_ID`),
   KEY `grp_ID_2` (`grp_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -773,7 +774,7 @@ CREATE TABLE `group_grp` (
 LOCK TABLES `group_grp` WRITE;
 /*!40000 ALTER TABLE `group_grp` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `group_grp` VALUES (1,4,13,2,'Angels class',NULL,0,1,1),(2,4,14,2,'Class 1-3',NULL,0,1,1),(3,4,15,2,'Class 4-5',NULL,0,1,1),(4,4,16,2,'Class 6-7',NULL,0,1,1),(5,4,17,2,'High School Class',NULL,0,1,1),(6,4,18,2,'Youth Meeting',NULL,0,1,1),(7,0,19,1,'Boys Scouts',NULL,0,1,1),(8,0,20,1,'Girl Scouts',NULL,0,0,0),(9,0,21,1,'Church Board',NULL,0,1,0);
+INSERT INTO `group_grp` VALUES (1,4,13,2,'Angels class',NULL,0,1,1),(2,4,14,2,'Class 1-3',NULL,0,1,1),(3,4,15,2,'Class 4-5',NULL,0,1,1),(4,4,16,2,'Class 6-7',NULL,0,1,1),(5,4,17,2,'High School Class',NULL,0,1,1),(6,4,18,2,'Youth Meeting',NULL,0,1,1),(7,0,19,1,'Boys Scouts',NULL,0,1,1),(8,0,20,1,'Girl Scouts',NULL,0,0,0),(9,0,21,1,'Church Board',NULL,0,1,0),(10,1,22,1,'Worship Service','',0,1,1);
 /*!40000 ALTER TABLE `group_grp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -929,7 +930,7 @@ CREATE TABLE `list_lst` (
 LOCK TABLES `list_lst` WRITE;
 /*!40000 ALTER TABLE `list_lst` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `list_lst` VALUES (1,1,1,'Member'),(1,2,2,'Regular Attender'),(1,3,3,'Guest'),(1,5,4,'Non-Attender'),(1,4,5,'Non-Attender (staff)'),(2,1,1,'Head of Household'),(2,2,2,'Spouse'),(2,3,3,'Child'),(2,4,4,'Other Relative'),(2,5,5,'Non Relative'),(3,1,1,'Ministry'),(3,2,2,'Team'),(3,3,3,'Bible Study'),(3,4,4,'Sunday School Class'),(4,1,1,'True / False'),(4,2,2,'Date'),(4,3,3,'Text Field (50 char)'),(4,4,4,'Text Field (100 char)'),(4,5,5,'Text Field (Long)'),(4,6,6,'Year'),(4,7,7,'Season'),(4,8,8,'Number'),(4,9,9,'Person from Group'),(4,10,10,'Money'),(4,11,11,'Phone Number'),(4,12,12,'Custom Drop-Down List'),(5,1,1,'bAll'),(5,2,2,'bAdmin'),(5,3,3,'bAddRecords'),(5,4,4,'bEditRecords'),(5,5,5,'bDeleteRecords'),(5,6,6,'bMenuOptions'),(5,7,7,'bManageGroups'),(5,8,8,'bFinance'),(5,9,9,'bNotes'),(5,10,10,'bCommunication'),(5,11,11,'bCanvasser'),(10,1,1,'Teacher'),(10,2,2,'Student'),(11,1,1,'Member'),(12,1,1,'Teacher'),(12,2,2,'Student'),(13,1,1,'Teacher'),(13,2,2,'Student'),(14,1,1,'Teacher'),(14,2,2,'Student'),(15,1,1,'Teacher'),(15,2,2,'Student'),(16,1,1,'Teacher'),(16,2,2,'Student'),(17,1,1,'Teacher'),(17,2,2,'Student'),(18,1,1,'Teacher'),(18,2,2,'Student'),(19,1,1,'Member'),(20,1,1,'Member'),(21,1,1,'Member'),(3,5,5,'Scouts');
+INSERT INTO `list_lst` VALUES (1,1,1,'Member'),(1,2,2,'Regular Attender'),(1,3,3,'Guest'),(1,5,4,'Non-Attender'),(1,4,5,'Non-Attender (staff)'),(2,1,1,'Head of Household'),(2,2,2,'Spouse'),(2,3,3,'Child'),(2,4,4,'Other Relative'),(2,5,5,'Non Relative'),(3,1,1,'Ministry'),(3,2,2,'Team'),(3,3,3,'Bible Study'),(3,4,4,'Sunday School Class'),(4,1,1,'True / False'),(4,2,2,'Date'),(4,3,3,'Text Field (50 char)'),(4,4,4,'Text Field (100 char)'),(4,5,5,'Text Field (Long)'),(4,6,6,'Year'),(4,7,7,'Season'),(4,8,8,'Number'),(4,9,9,'Person from Group'),(4,10,10,'Money'),(4,11,11,'Phone Number'),(4,12,12,'Custom Drop-Down List'),(5,1,1,'bAll'),(5,2,2,'bAdmin'),(5,3,3,'bAddRecords'),(5,4,4,'bEditRecords'),(5,5,5,'bDeleteRecords'),(5,6,6,'bMenuOptions'),(5,7,7,'bManageGroups'),(5,8,8,'bFinance'),(5,9,9,'bNotes'),(5,10,10,'bCommunication'),(5,11,11,'bCanvasser'),(10,1,1,'Teacher'),(10,2,2,'Student'),(11,1,1,'Member'),(12,1,1,'Teacher'),(12,2,2,'Student'),(13,1,1,'Teacher'),(13,2,2,'Student'),(14,1,1,'Teacher'),(14,2,2,'Student'),(15,1,1,'Teacher'),(15,2,2,'Student'),(16,1,1,'Teacher'),(16,2,2,'Student'),(17,1,1,'Teacher'),(17,2,2,'Student'),(18,1,1,'Teacher'),(18,2,2,'Student'),(19,1,1,'Member'),(20,1,1,'Member'),(21,1,1,'Member'),(3,5,5,'Scouts'),(22,1,1,'Member');
 /*!40000 ALTER TABLE `list_lst` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -965,46 +966,6 @@ LOCK TABLES `locations` WRITE;
 /*!40000 ALTER TABLE `locations` DISABLE KEYS */;
 SET autocommit=0;
 /*!40000 ALTER TABLE `locations` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
---
--- Table structure for table `menuconfig_mcf`
---
-
-DROP TABLE IF EXISTS `menuconfig_mcf`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `menuconfig_mcf` (
-  `mid` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `parent` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `ismenu` tinyint(1) NOT NULL,
-  `content_english` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `content` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `uri` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `statustext` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `security_grp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `session_var` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `session_var_in_text` tinyint(1) NOT NULL,
-  `session_var_in_uri` tinyint(1) NOT NULL,
-  `url_parm_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL,
-  `sortorder` tinyint(3) NOT NULL,
-  `icon` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `menuconfig_mcf`
---
-
-LOCK TABLES `menuconfig_mcf` WRITE;
-/*!40000 ALTER TABLE `menuconfig_mcf` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `menuconfig_mcf` VALUES (1,'root','',1,'Main','Main','','','bAll',NULL,0,0,NULL,1,0,NULL),(2,'calendar','root',0,'Calendar','Calendar','v2/calendar','','bAll',NULL,0,0,NULL,1,1,'fa-calendar'),(10,'people','root',1,'People','People','','People','bAll',NULL,0,0,NULL,1,2,'fa-users'),(11,'membdash','people',0,'Dashboard','Dashboard','PeopleDashboard.php','','bAddRecords',NULL,0,0,NULL,1,1,NULL),(12,'newperson','people',0,'Add New Person','Add New Person','PersonEditor.php','','bAddRecords',NULL,0,0,NULL,1,2,NULL),(13,'viewperson','people',0,'View All Persons','View All Persons','SelectList.php?mode=person','','bAll',NULL,0,0,NULL,1,3,NULL),(14,'newfamily','people',0,'Add New Family','Add New Family','FamilyEditor.php','','bAddRecords',NULL,0,0,NULL,1,4,NULL),(15,'viewfamily','people',0,'View Active Families','View Active Families','FamilyList.php','','bAll',NULL,0,0,NULL,1,5,NULL),(16,'viewfamilyinactive','people',0,'View Inactive Families','View Inactive Families','FamilyList.php?mode=inactive','','bAll',NULL,0,0,NULL,1,6,NULL),(20,'groups','root',1,'Groups','Groups','','','bAll',NULL,0,0,NULL,1,3,'fa-tag'),(21,'listgroups','groups',0,'List Groups','List Groups','GroupList.php','','bAll',NULL,0,0,NULL,1,1,NULL),(24,'assigngroup','groups',0,'Group Assignment Helper','Group Assignment Helper','SelectList.php?mode=groupassign','','bAll',NULL,0,0,NULL,1,4,NULL),(30,'sundayschool','root',1,'Sunday School','Sunday School','','','bAll',NULL,0,0,NULL,1,4,'fa-child'),(31,'sundayschool-dash','sundayschool',0,'Dashboard','Dashboard','sundayschool/SundaySchoolDashboard.php','','bAll',NULL,0,0,NULL,1,2,NULL),(40,'email','root',0,'Email','Email','v2/email/dashboard','','bAll',NULL,0,0,NULL,1,5,'fa-envelope'),(50,'events','root',1,'Events','Events','','Events','bAll',NULL,0,0,NULL,1,6,'fa-ticket'),(51,'listevent','events',0,'List Church Events','List Church Events','ListEvents.php','List Church Events','bAll',NULL,0,0,NULL,1,1,NULL),(52,'addevent','events',0,'Add Church Event','Add Church Event','EventEditor.php','Add Church Event','bAddEvent',NULL,0,0,NULL,1,2,NULL),(53,'eventype','events',0,'List Event Types','List Event Types','EventNames.php','','bAdmin',NULL,0,0,NULL,1,3,NULL),(54,'eventcheckin','events',0,'Check-in and Check-out','Check-in and Check-out','Checkin.php','','bAll',NULL,0,0,NULL,1,4,NULL),(60,'deposit','root',1,'Deposit','Deposit','','','bFinance',NULL,0,0,NULL,1,7,'fa-bank'),(61,'envelopmgr','deposit',0,'Envelope Manager','Envelope Manager','ManageEnvelopes.php','','bAdmin',NULL,0,0,NULL,1,1,NULL),(63,'viewdeposit','deposit',0,'View All Deposits','View All Deposits','FindDepositSlip.php','','bFinance',NULL,0,0,NULL,1,3,NULL),(64,'depositreport','deposit',0,'Deposit Reports','Deposit Reports','FinancialReports.php','','bFinance',NULL,0,0,NULL,1,4,NULL),(65,'depositslip','deposit',0,'Edit Deposit Slip','Edit Deposit Slip','DepositSlipEditor.php','','bFinance','iCurrentDeposit',1,1,'DepositSlipID',1,5,NULL),(70,'fundraiser','root',1,'Fundraiser','Fundraiser','','','bAll',NULL,0,0,NULL,1,8,'fa-money'),(71,'viewfundraiser','fundraiser',0,'View All Fundraisers','View All Fundraisers','FindFundRaiser.php','','bAll',NULL,0,0,NULL,1,1,NULL),(72,'newfundraiser','fundraiser',0,'Create New Fundraiser','Create New Fundraiser','FundRaiserEditor.php?FundRaiserID=-1','','bAll',NULL,0,0,NULL,1,2,NULL),(73,'editfundraiser','fundraiser',0,'Edit Fundraiser','Edit Fundraiser','FundRaiserEditor.php','','bAll','iCurrentFundraiser',1,1,'FundRaiserID',1,3,NULL),(74,'viewbuyers','fundraiser',0,'View Buyers','View Buyers','PaddleNumList.php','','bAll','iCurrentFundraiser',1,1,'FundRaiserID',1,4,NULL),(75,'adddonors','fundraiser',0,'Add Donors to Buyer List','Add Donors to Buyer List','AddDonors.php','','bAll','iCurrentFundraiser',1,1,'FundRaiserID',1,5,NULL),(80,'report','root',1,'Data/Reports','Data/Reports','','','bAll',NULL,0,0,NULL,1,9,'fa-file-pdf-o'),(81,'reportmenu','report',0,'Reports Menu','Reports Menu','ReportList.php','','bAll',NULL,0,0,NULL,1,1,NULL),(82,'querymenu','report',0,'Query Menu','Query Menu','QueryList.php','','bAll',NULL,0,0,NULL,1,2,NULL);
-/*!40000 ALTER TABLE `menuconfig_mcf` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
@@ -1297,7 +1258,7 @@ CREATE TABLE `pledge_plg` (
   `plg_NonDeductible` decimal(8,2) NOT NULL,
   `plg_GroupKey` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`plg_plgID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1307,6 +1268,7 @@ CREATE TABLE `pledge_plg` (
 LOCK TABLES `pledge_plg` WRITE;
 /*!40000 ALTER TABLE `pledge_plg` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `pledge_plg` VALUES (1,13,22,'2018-03-04',30.00,'Once','CASH','','2018-03-04',1,'Payment',1,1,NULL,NULL,'',0,0,0,0.00,'cash|0|13|1|2018-03-04'),(2,13,22,'2018-03-04',20.00,'Once','CASH','','2018-03-04',1,'Payment',2,1,NULL,NULL,'',0,0,0,0.00,'cash|0|13|1|2018-03-04'),(3,13,22,'2018-03-04',100.00,'Once','CASH','','2018-03-04',1,'Payment',3,1,NULL,NULL,'',0,0,0,0.00,'cash|0|13|1|2018-03-04'),(4,14,22,'2018-03-04',100.00,'Once','CHECK','','2018-03-04',1,'Payment',1,1,127,NULL,'',0,0,0,0.00,'127|0|14|1|2018-03-04'),(5,20,22,'2018-03-04',500.00,'Once','CHECK','','2018-03-04',1,'Payment',1,2,100,NULL,'',0,0,0,0.00,'100|0|20|1|2018-03-04'),(6,20,22,'2018-03-04',100.00,'Once','CHECK','','2018-03-04',1,'Payment',2,2,100,NULL,'',0,0,0,0.00,'100|0|20|1|2018-03-04'),(7,20,22,'2018-03-04',100.00,'Once','CHECK','','2018-03-04',1,'Payment',3,2,100,NULL,'',0,0,0,0.00,'100|0|20|1|2018-03-04'),(8,20,22,'2018-03-04',25.00,'Once','CHECK','','2018-03-04',1,'Payment',1,3,5532,NULL,'',0,0,0,0.00,'5532|0|20|1|2018-03-04'),(9,20,22,'2018-03-04',25.00,'Once','CHECK','','2018-03-04',1,'Payment',2,3,5532,NULL,'',0,0,0,0.00,'5532|0|20|1|2018-03-04'),(10,20,22,'2018-03-04',25.00,'Once','CHECK','','2018-03-04',1,'Payment',3,3,5532,NULL,'',0,0,0,0.00,'5532|0|20|1|2018-03-04'),(11,1,22,'2018-03-04',300.00,'Once','CHECK','','2018-03-04',1,'Payment',1,3,773,NULL,'',0,0,0,0.00,'773|0|1|1|2018-03-04'),(12,1,22,'2018-03-04',26.00,'Once','CHECK','','2018-03-04',1,'Payment',2,3,773,NULL,'',0,0,0,0.00,'773|0|1|1|2018-03-04'),(13,1,22,'2018-03-04',20.00,'Once','CHECK','','2018-03-04',1,'Payment',3,3,773,NULL,'',0,0,0,0.00,'773|0|1|1|2018-03-04'),(14,9,22,'2018-03-04',50.00,'Once','CASH','','2018-03-04',1,'Payment',1,4,NULL,NULL,'',0,0,0,0.00,'cash|0|9|1|2018-03-04'),(15,6,22,'2018-03-04',100.00,'Once','CASH','','2018-03-04',1,'Payment',1,5,NULL,NULL,'',0,0,0,0.00,'cash|0|6|1|2018-03-04'),(16,6,22,'2018-03-04',20.00,'Once','CASH','','2018-03-04',1,'Payment',3,5,NULL,NULL,'',0,0,0,0.00,'cash|0|6|1|2018-03-04'),(17,10,22,'2018-03-04',90.00,'Once','CASH','','2018-03-04',1,'Payment',1,5,NULL,NULL,'',0,0,0,0.00,'cash|0|10|1|2018-03-04'),(18,10,22,'2018-03-04',140.00,'Once','CASH','','2018-03-04',1,'Payment',2,5,NULL,NULL,'',0,0,0,0.00,'cash|0|10|1|2018-03-04'),(19,10,22,'2018-03-04',95.00,'Once','CASH','','2018-03-04',1,'Payment',3,5,NULL,NULL,'',0,0,0,0.00,'cash|0|10|1|2018-03-04');
 /*!40000 ALTER TABLE `pledge_plg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1629,7 +1591,7 @@ CREATE TABLE `user_usr` (
 LOCK TABLES `user_usr` WRITE;
 /*!40000 ALTER TABLE `user_usr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2018-02-19 17:11:33',18,0,1,1,1,1,1,1,1,1,1,580,9,10,'skin-blue',0,0,'2016-01-01',22,0,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0),(3,'598e1814d6b8493f2ad688c634c8b22bb31ac7539b3f79438b91aab2470f574f',0,'2017-12-23 19:03:25',8,0,1,1,1,1,1,0,0,1,0,NULL,NULL,10,'skin-green',0,0,'2016-01-01',21,0,'tony.wade@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0),(76,'e57a2fc7529930d46edee4d20ee17e70001fd51a267c11768f9a0dc6dab2fdc1',1,'2016-11-19 16:10:16',2,0,0,0,0,1,0,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'leroy.larson@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(95,'ea1a2d06bbb09a6ea84f918fdb18ac17615365afa5ff09ac73eaf6e68cb5352f',1,'2016-11-19 16:09:53',1,6,1,1,0,0,0,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
+INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2018-03-04 16:42:52',19,0,1,1,1,1,1,1,1,1,1,580,9,10,'skin-blue',0,0,'2016-01-01',22,0,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0),(3,'598e1814d6b8493f2ad688c634c8b22bb31ac7539b3f79438b91aab2470f574f',0,'2017-12-23 19:03:25',8,0,1,1,1,1,1,0,0,1,0,NULL,NULL,10,'skin-green',0,0,'2016-01-01',21,0,'tony.wade@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0),(76,'e57a2fc7529930d46edee4d20ee17e70001fd51a267c11768f9a0dc6dab2fdc1',1,'2016-11-19 16:10:16',2,0,0,0,0,1,0,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'leroy.larson@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(95,'ea1a2d06bbb09a6ea84f918fdb18ac17615365afa5ff09ac73eaf6e68cb5352f',1,'2016-11-19 16:09:53',1,6,1,1,0,0,0,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1803,4 +1765,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Mon, 19 Feb 2018 17:11:50 -0500
+-- Dump completed on: Sun, 04 Mar 2018 17:14:19 -0500

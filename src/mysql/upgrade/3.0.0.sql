@@ -38,3 +38,5 @@ RENAME TABLE church_location TO locations;
 ALTER TABLE user_usr
   ADD COLUMN usr_apiKey VARCHAR(255) AFTER usr_UserName,
 	ADD UNIQUE INDEX `usr_apiKey_unique` (`usr_apiKey` ASC);
+
+DROP TABLE IF EXISTS menuconfig_mcf;

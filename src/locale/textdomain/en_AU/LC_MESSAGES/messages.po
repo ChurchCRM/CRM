@@ -17,24 +17,24 @@ msgstr "Unable to execute query"
 #: DonationFundEditor.php:183 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
 #: EventNames.php:302 FamilyCustomFieldsEditor.php:324
-#: FamilyCustomFieldsEditor.php:382 FamilyView.php:662 FamilyView.php:714
-#: FamilyView.php:773 FamilyView.php:910 FindDepositSlip.php:104
+#: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
+#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:104
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
-#: PersonView.php:935 PledgeDelete.php:53 PropertyList.php:65
+#: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:39 PropertyTypeList.php:60
-#: PropertyTypeList.php:62 v2/templates/people/family-view.php:543
+#: PropertyTypeList.php:62 v2/templates/people/family-view.php:529
 msgid "Delete"
 msgstr "Delete"
 
 #: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
 #: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
 #: DirectoryReports.php:286 DonatedItemEditor.php:297 EventNames.php:231
-#: FamilyEditor.php:1119 FamilyView.php:909 FinancialReports.php:69
+#: FamilyEditor.php:1119 FamilyView.php:910 FinancialReports.php:69
 #: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
 #: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:934
+#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
 #: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
 #: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
 #: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
@@ -42,7 +42,7 @@ msgstr "Delete"
 #: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:542
+#: v2/templates/people/family-view.php:528
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -54,7 +54,7 @@ msgstr "Cancel"
 #: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
 #: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
 #: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:217
+#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:216
 #: WhyCameEditor.php:104
 msgid "Save"
 msgstr "Save"
@@ -64,20 +64,19 @@ msgstr "Save"
 #: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
 #: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
 #: Include/Functions.php:855 Include/Functions.php:908
-#: Include/Header-function.php:317 MapUsingGoogle.php:96
+#: Include/Header-function.php:311 MapUsingGoogle.php:96
 #: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
 #: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
 #: PrintView.php:275 SelectDelete.php:156 SelectList.php:35 SelectList.php:45
-#: SelectList.php:61 SelectList.php:1101 SelectList.php:1172
+#: SelectList.php:61 SelectList.php:1098 SelectList.php:1169
 #: SystemSettings.php:214 eGive.php:341
 msgid "Unassigned"
 msgstr "Unassigned"
 
 #: AutoPaymentEditor.php:867 CartToGroup.php:74 EditEventTypes.php:86
-#: EditEventTypes.php:98 EventEditor.php:502 EventNames.php:106
-#: EventNames.php:118 EventNames.php:163 GroupReports.php:47
-#: GroupReports.php:142 PersonToGroup.php:66 calendar.php:72 calendar.php:82
-#: sundayschool/SundaySchoolReports.php:190
+#: EditEventTypes.php:98 EventNames.php:106 EventNames.php:118
+#: EventNames.php:163 GroupReports.php:47 GroupReports.php:142
+#: PersonToGroup.php:66 sundayschool/SundaySchoolReports.php:190
 msgid "None"
 msgstr "None"
 

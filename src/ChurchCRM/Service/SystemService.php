@@ -88,7 +88,6 @@ class SystemService
         }
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
         $restoreResult->UpgradeStatus = UpgradeService::upgradeDatabaseVersion();
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
