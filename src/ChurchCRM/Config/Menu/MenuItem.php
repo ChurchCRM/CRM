@@ -11,6 +11,7 @@ class MenuItem
     private $uri;
     private $hasPermission;
     private $icon;
+    private $external = false;
     private $subItems = [];
     private $counters = [];
 
@@ -39,7 +40,11 @@ class MenuItem
     {
         //Review SessionVar stuff
         if (!empty($this->uri)) {
-            return SystemURLs::getRootPath() . "/" . $this->uri;
+            if (filter_var($this->uri, FILTER_VALIDATE_URL) === FALSE) {
+                return SystemURLs::getRootPath() . "/" . $this->uri;
+            }
+            $this->external = true;
+            return $this->uri;
         }
         return '';
     }
@@ -55,6 +60,14 @@ class MenuItem
             return substr($this->name, 0, $this->maxNameStr - 3) . " ...";
         }
         return $this->name;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isExternal()
+    {
+        return $this->external;
     }
 
     public function getIcon()
