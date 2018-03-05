@@ -83,7 +83,7 @@
         <column name="linkId" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
         <column name="linkName" phpName="Name" type="VARCHAR" size="50"/>
-        <column name="linkUri" phpName="Url" type="VARCHAR" size="500"/>
+        <column name="linkUri" phpName="Uri" type="VARCHAR" size="500"/>
         <column name="linkOrder" phpName="Order" type="SMALLINT"/>
         <index name="linkId">
             <index-column name="linkId"/>
