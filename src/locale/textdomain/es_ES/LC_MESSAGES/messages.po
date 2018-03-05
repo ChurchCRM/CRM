@@ -9346,7 +9346,7 @@ msgid "User must have MenuOptions permission"
 msgstr "Usuario debe tener permiso MenuOptions"
 
 #: FamilyView.php:170
-msgid "Try our the Beta family view"
+msgid "Try out the Beta family view"
 msgstr "Pruebe la Beta de vista de familia"
 
 #: v2/routes/email.php:57
