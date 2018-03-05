@@ -10,6 +10,19 @@
       options.url=window.CRM.root+"/api/"+options.path;
       options.dataType = 'json';
       options.contentType =  "application/json";
+      if(! options.suppressError) {
+        options.error = function (evt, xhr, settings,errortext) {
+          if(errortext !== "abort") {
+            try {
+                var CRMResponse = JSON.parse(xhr.responseText);
+                window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
+            } catch(err) {
+              window.CRM.DisplayErrorMessage(settings.url,{"message":errortext});
+            }
+          }
+        };
+      }
+    
       return $.ajax(options);
     }
 
@@ -593,6 +606,7 @@
         window.CRM.APIRequest({
           method: 'GET',
           path: 'dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
+          suppressError: true
         }).done(function (data) {
           for (var key in data) {
             window["CRM"]["dashboard"]["renderers"][key](data[key]);
@@ -600,17 +614,6 @@
         });
       }
     }
-
-    $(document).ajaxError(function (evt, xhr, settings,errortext) {
-      if(errortext !== "abort") {
-        try {
-            var CRMResponse = JSON.parse(xhr.responseText);
-            window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
-        } catch(err) {
-          window.CRM.DisplayErrorMessage(settings.url,{"message":errortext});
-        }
-      }
-    });
 
     function LimitTextSize(theTextArea, size) {
         if (theTextArea.value.length > size) {

@@ -27,7 +27,24 @@ $("document").ready(function(){
             processResults: function (data, params) {
               return {results: data};
             },
-            cache: true
+            cache: true,
+            error: function (evt, xhr, settings,errortext) {
+              try {
+                var CRMResponse = JSON.parse(xhr.responseText);
+              } catch(err) {
+                var CRMResponse = null;
+              }
+              console.log(xhr);
+              console.log(CRMResponse);
+              console.log(evt);
+              console.log(settings);
+              if(CRMResponse) {
+                 window.CRM.DisplayErrorMessage(json.stringify(xhr), CRMResponse);
+              }
+              else{
+                window.CRM.DisplayErrorMessage(settings.url,{"message":errortext});
+              }
+            }
         }
     });
     $(".multiSearch").on("select2:select",function (e) { window.location.href= e.params.data.uri;});
