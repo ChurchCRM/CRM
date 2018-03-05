@@ -78,6 +78,23 @@
             <parameter name="rule6" value="{column: per_email, validator: Email}" />
         </behavior>
     </table>
+
+    <table name="menu_links" idMethod="native" phpName="MenuLink">
+        <column name="linkId" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="linkName" phpName="Name" type="VARCHAR" size="50"/>
+        <column name="linkUri" phpName="url" type="VARCHAR" size="50"/>
+        <index name="linkId">
+            <index-column name="linkId"/>
+        </index>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: linkName, validator: NotNull}" />
+            <parameter name="rule2" value="{column: linkName, validator: Length, options: {max: 50}}" />
+            <parameter name="rule3" value="{column: linkUri, validator: NotNull}" />
+            <parameter name="rule4" value="{column: linkUri, validator: Length, options: {max: 50}}" />
+        </behavior>
+    </table>
+
     <table name="whycame_why" idMethod="native" phpName="WhyCame" description="This contains the comments related to why people came">
         <column name="why_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true"
                 required="true"/>
