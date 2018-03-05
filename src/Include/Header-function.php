@@ -30,11 +30,11 @@ function Header_system_notifications()
                 message: '<b><?= $notification->title?></b>',
                 url: '<?= $notification->link ?>'
             },{
-                delay: 50000,
+                delay: 10000,
                 type: 'danger',
                 placement: {
                     from: 'bottom',
-                    align: 'right'
+                    align: 'left'
                 }
             });
             <?php } ?>
