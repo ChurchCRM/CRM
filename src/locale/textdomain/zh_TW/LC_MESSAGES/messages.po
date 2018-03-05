@@ -68,16 +68,16 @@ msgid "Save"
 msgstr "保存"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
-#: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
-#: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:855 Include/Functions.php:908
-#: Include/Header-function.php:311 MapUsingGoogle.php:96
-#: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
-#: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
-#: PrintView.php:275 SelectDelete.php:156 SelectList.php:35 SelectList.php:45
-#: SelectList.php:61 SelectList.php:1098 SelectList.php:1169
-#: SystemSettings.php:214 eGive.php:341
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:88 DirectoryReports.php:82
+#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
+#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: Include/CountryDropDown.php:6 Include/Functions.php:855
+#: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
+#: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
+#: PersonEditor.php:1137 PrintView.php:265 PrintView.php:275
+#: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
+#: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
+#: eGive.php:341
 msgid "Unassigned"
 msgstr "未分配"
 
@@ -135,7 +135,7 @@ msgid "Phone"
 msgstr "電話"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 CartView.php:272
+#: CartToFamily.php:311 CartView.php:272 ChurchCRM/Config/Menu/Menu.php:40
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
@@ -152,8 +152,7 @@ msgstr "電話"
 #: sundayschool/SundaySchoolClassView.php:89
 #: sundayschool/SundaySchoolClassView.php:205
 #: v2/templates/people/family-view.php:174
-#: v2/templates/people/family-view.php:314 menuconfig_mcf.php:15
-#: queryparameteroptions_qpo.php:13
+#: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr "電子郵件"
 
@@ -559,10 +558,6 @@ msgstr "錯誤：上傳的CSV文件不再存在！"
 msgid "Data Cleared Successfully!"
 msgstr "數據成功地清除了！"
 
-#: CSVImport.php:823
-msgid "Please select the confirmation checkbox"
-msgstr "請選擇確認複選框"
-
 #: CSVImport.php:812
 msgid "Upload CSV File"
 msgstr "上傳CSV文件"
@@ -587,7 +582,7 @@ msgstr "數據導入成功。"
 msgid "persons were imported"
 msgstr "人進口"
 
-#: CanvassAutomation.php:21 ReportList.php:39
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:148
 msgid "Canvass Automation"
 msgstr "拉票活動自動化"
 
@@ -1094,7 +1089,7 @@ msgid "Address"
 msgstr "地址"
 
 #: ChurchCRM/Service/CalendarService.php:16
-#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:56 DirectoryReports.php:174
+#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:59 DirectoryReports.php:174
 #: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
 #: Reports/ConfirmReportEmail.php:210
@@ -1989,7 +1984,7 @@ msgstr "確認刪除"
 msgid "Do you want to proceed?"
 msgstr "您想繼續嗎？"
 
-#: FinancialReports.php:35 ReportList.php:29
+#: FinancialReports.php:35
 msgid "Financial Reports"
 msgstr "財務報告"
 
@@ -2166,7 +2161,7 @@ msgstr "匯款時："
 msgid "Sort Data by:"
 msgstr "通過對數據進行排序："
 
-#: FinancialReports.php:301 menuconfig_mcf.php:21
+#: ChurchCRM/Config/Menu/Menu.php:122 FinancialReports.php:301
 msgid "Deposit"
 msgstr "存款"
 
@@ -2693,7 +2688,7 @@ msgstr "密碼"
 msgid "Login"
 msgstr "註冊"
 
-#: ManageEnvelopes.php:21 menuconfig_mcf.php:22
+#: ChurchCRM/Config/Menu/Menu.php:123 ManageEnvelopes.php:21
 msgid "Envelope Manager"
 msgstr "信封經理"
 
@@ -2755,7 +2750,7 @@ msgstr "更新所有家庭坐標"
 msgid "Families"
 msgstr "家庭"
 
-#: Menu.php:196 PeopleDashboard.php:158 menuconfig_mcf.php:4
+#: ChurchCRM/Config/Menu/Menu.php:60 Menu.php:196 PeopleDashboard.php:158
 msgid "People"
 msgstr "人"
 
@@ -3426,10 +3421,6 @@ msgstr "質押提醒報告"
 msgid "Report Menu"
 msgstr "報告菜單"
 
-#: ReportList.php:40
-msgid "Automated support for conducting an every-member canvass."
-msgstr "自動進行的每名成員組成的遊說支持。"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "從這個家庭的所有捐款已被移動到另一個家庭。"
@@ -3487,7 +3478,7 @@ msgstr "刪除家庭記錄及家庭成員的"
 msgid "Person Listing"
 msgstr "人上市"
 
-#: SelectList.php:172 menuconfig_mcf.php:13
+#: ChurchCRM/Config/Menu/Menu.php:74 SelectList.php:172
 msgid "Group Assignment Helper"
 msgstr "集團轉讓助手"
 
@@ -4349,10 +4340,6 @@ msgid "Filter Settings"
 msgstr "過濾器設定"
 
 #: 
-msgid "Calendar Title"
-msgstr "行事曆主題"
-
-#: 
 msgid "Calendar description"
 msgstr "行事曆描述"
 
@@ -4364,7 +4351,7 @@ msgstr "個人"
 msgid "Visitors"
 msgstr "受訪者"
 
-#: Include/Header.php:117 PersonView.php:376
+#: Include/Header.php:118 PersonView.php:376
 msgid "Change Settings"
 msgstr "更變設定\n"
 ""
@@ -4405,11 +4392,11 @@ msgstr "現運作軟件版本"
 msgid "Upgrade database"
 msgstr "資料庫升級"
 
-#: Include/Header.php:130
+#: Include/Header.php:131
 msgid "Help & Support"
 msgstr "幫助及支援"
 
-#: Include/Header.php:119
+#: Include/Header.php:120
 msgid "Lock"
 msgstr "鎖"
 

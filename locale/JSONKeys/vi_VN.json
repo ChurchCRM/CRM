@@ -81,7 +81,6 @@
     "Perform Import": "Thực hiện nhập vào",
     "ERROR: the uploaded CSV file no longer exists!": "LỖI: tập tin CSV tải lên không còn tồn tại!",
     "Data Cleared Successfully!": "Dữ liệu đã xóa thành công!",
-    "Please select the confirmation checkbox": "Vui lòng chọn các ô xác nhận",
     "Upload CSV File": "Tải lên tập tin CSV",
     "Clear Persons and Families": "Xóa sạch thành viên và gia đình",
     "Warning!  Do not select this option if you plan to add to an existing database.<br/>": "Cảnh báo! Không chọn vào tùy chọn này nếu bạn có kế hoạch thêm vào một cơ sở dữ liệu hiện có.<br/>",
