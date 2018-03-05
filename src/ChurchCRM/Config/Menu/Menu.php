@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\SessionUser;
+use ChurchCRM\MenuLinkQuery;
 
 class Menu
 {
@@ -41,6 +42,7 @@ class Menu
             "Deposits" => self::getDepositsMenu(),
             "Fundraiser" => self::getFundraisersMenu(),
             "Reports" => self::getReportsMenu(),
+            "Custom" => self::getCustomMenu(),
         );
     }
 
@@ -160,6 +162,15 @@ class Menu
             return $unassignedGroups;
         }
         return null;
+    }
+
+    private static function getCustomMenu() {
+        $menu = new MenuItem(gettext("Links"), "", SystemConfig::getBooleanValue("bEnabledMenuLinks"), 'fa-link');
+        $menuLinks = MenuLinkQuery::create()->orderByOrder()->find();
+        foreach ($menuLinks as $link) {
+            $menu->addSubMenu(new MenuItem($link->getName(), $link->getUri()));
+        }
+        return $menu;
     }
 
 }
