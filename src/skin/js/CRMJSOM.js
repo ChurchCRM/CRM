@@ -10,15 +10,12 @@
       options.url=window.CRM.root+"/api/"+options.path;
       options.dataType = 'json';
       options.contentType =  "application/json";
-      if( options.suppressErrorDialog !== true ) {
-        options.beforeSend = function(jqXHR, settings) {
-          jqXHR.url = settings.url;
-        }
-        options.error = function(jqXHR, textStatus, errorThrown) {
-          window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown);
-        }
+      options.beforeSend = function(jqXHR, settings) {
+        jqXHR.url = settings.url;
       }
-    
+      options.error = function(jqXHR, textStatus, errorThrown) {
+        window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+      }
       return $.ajax(options);
     }
 
@@ -512,17 +509,22 @@
           suppressErrorDialog: true
         });
       },
-      'handlejQAJAXError': function (jqXHR, textStatus, errorThrown) {
+      'handlejQAJAXError': function (jqXHR, textStatus, errorThrown, suppressErrorDialog) {
+        if (jqXHR.status === 401) {
+          window.location = window.CRM.root + "/Login.php?location="+window.location.pathname;
+        }
         try {
           var CRMResponse = JSON.parse(jqXHR.responseText);
         } catch(err) {
           var errortext = textStatus + " " + errorThrown;
         }
-        if(CRMResponse) {
-           window.CRM.DisplayErrorMessage(jqXHR.url, CRMResponse);
-        }
-        else{
-          window.CRM.DisplayErrorMessage(jqXHR.url,{"message":errortext});
+        if (suppressErrorDialog !== true) {
+          if(CRMResponse) {
+             window.CRM.DisplayErrorMessage(jqXHR.url, CRMResponse);
+          }
+          else{
+            window.CRM.DisplayErrorMessage(jqXHR.url,{"message":errortext});
+          }
         }
       }
     };
