@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-05 02:52+0000\n"
+"POT-Creation-Date: 2018-03-05 07:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-03-05T02:52:46.628Z\n"
-"PO-Revision-Date: 2018-03-05T02:52:46.628Z\n"
+"POT-Creation-Date: 2018-03-05T07:05:42.556Z\n"
+"PO-Revision-Date: 2018-03-05T07:05:42.556Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:233
@@ -4719,6 +4719,10 @@ msgstr ""
 msgid "All rights reserved"
 msgstr ""
 
+#: Include/Footer.php:27
+msgid "Follow up on Twitter"
+msgstr ""
+
 #: Include/Footer.php:57 OptionManager.php:63 PeopleDashboard.php:285
 msgid "Family Roles"
 msgstr ""
@@ -4770,7 +4774,7 @@ msgstr ""
 msgid "Edit Donation Funds"
 msgstr ""
 
-#: Include/Footer.php:147 v2/templates/email/dashboard.php:78
+#: Include/Footer.php:147 v2/templates/email/dashboard.php:73
 msgid "Edit General Settings"
 msgstr ""
 
@@ -7793,15 +7797,15 @@ msgstr ""
 msgid "Create PhotoBook"
 msgstr ""
 
-#: v2/routes/email.php:23
+#: v2/routes/email.php:24
 msgid "eMail Dashboard"
 msgstr ""
 
-#: v2/routes/email.php:57
+#: v2/routes/email.php:58
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr ""
 
-#: v2/routes/email.php:62
+#: v2/routes/email.php:63
 msgid "Debug Email Connection"
 msgstr ""
 
@@ -7838,75 +7842,71 @@ msgstr ""
 msgid "return to People Dashboard"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:13
+#: v2/templates/email/dashboard.php:12
+msgid "Email Functions"
+msgstr ""
+
+#: v2/templates/email/dashboard.php:15
 msgid "Email Export"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:16
-msgid "You can import the generated CSV file to external email system."
+#: v2/templates/email/dashboard.php:17
+msgid "Debug"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:18
-msgid "import subscribers to a list."
-msgstr ""
-
-#: v2/templates/email/dashboard.php:23
-msgid "Generate"
-msgstr ""
-
-#: v2/templates/email/dashboard.php:38
+#: v2/templates/email/dashboard.php:29
 msgid "List"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:43
+#: v2/templates/email/dashboard.php:34
 msgid "Members:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:44
+#: v2/templates/email/dashboard.php:35
 msgid "Campaigns:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:45
+#: v2/templates/email/dashboard.php:36
 msgid "Unsubscribed count:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:46
+#: v2/templates/email/dashboard.php:37
 msgid "Unsubscribed count since last send:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:47
+#: v2/templates/email/dashboard.php:38
 msgid "Cleaned count:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:48
+#: v2/templates/email/dashboard.php:39
 msgid "Cleaned count since last send:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:64
+#: v2/templates/email/dashboard.php:56
 msgid "Missing emails report"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:77
+#: v2/templates/email/dashboard.php:71
 msgid "is not configured"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:78
+#: v2/templates/email/dashboard.php:72
 msgid "Please update the"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:78
+#: v2/templates/email/dashboard.php:72
 msgid "API key in Setting->"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:74
 msgid "then update"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:74
 msgid "For more info see our "
 msgstr ""
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:75
 msgid "support docs."
 msgstr ""
 
