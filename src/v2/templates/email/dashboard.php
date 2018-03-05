@@ -53,7 +53,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="box-body">
                     <ul>
                         <li>
-                            <a href="../../../email/MailChimpMissingReport.php"><?= gettext('Missing emails report') ?> </a>
+                            <a href="<?= SystemURLs::getRootPath()?>/email/MailChimpMissingReport.php"><?= gettext('Missing emails report') ?> </a>
                             (slow)
                         </li>
                     </ul>
@@ -67,7 +67,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="row">
         <div class="col-lg-12 col-md-7 col-sm-3">
             <div class="box box-body">
-                <div class="alert alert-danger alert-dismissible">
+                <div class="alert alert-warning">
                     <h4><i class="fa fa-ban"></i> MailChimp <?= gettext('is not configured') ?></h4>
                     <?= gettext('Please update the') ?> MailChimp <?= gettext('API key in Setting->') ?><a
                         href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Edit General Settings') ?></a>,
