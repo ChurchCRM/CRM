@@ -1291,6 +1291,7 @@ CREATE TABLE `menu_links` (
   `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
+  `linkOrder` INT NOT NULL,
   PRIMARY KEY (`linkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
