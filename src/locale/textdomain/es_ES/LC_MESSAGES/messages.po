@@ -9411,3 +9411,153 @@ msgstr "Metadata"
 msgid "The database has been cleared."
 msgstr "La base de datos ha sido limpiada."
 
+#: ChurchCRM/Slim/Middleware/AddEventsRoleAuthMiddleware.php:16
+msgid "User must have bAddEvent permissions"
+msgstr "Usuario debe tener permisos de bAddEvent"
+
+#: ChurchCRM/SystemCalendars/AnniversariesCalendar.php:31
+msgid "Anniversaries"
+msgstr "Aniversarios"
+
+#: ChurchCRM/model/ChurchCRM/Family.php:91
+msgid "New Family Notification Email Error"
+msgstr "Error en Notificación por Email de Nueva Familia"
+
+#: ChurchCRM/model/ChurchCRM/Person.php:119
+msgid "New Person Notification Email Error"
+msgstr "Error en Notificación por Email de Nueva Persona"
+
+#: PersonView.php:406 PersonView.php:411
+msgid "View User"
+msgstr "Ver Usuario"
+
+#: api/routes/calendar/calendar.php:139 api/routes/calendar/calendar.php:154
+#: api/routes/calendar/calendar.php:181
+msgid "Invalid request: Missing calendar id"
+msgstr "Solicitud inválida: Falta id de calendario"
+
+#: api/routes/calendar/calendar.php:144 api/routes/calendar/calendar.php:159
+#: api/routes/calendar/calendar.php:186
+msgid "Not Found: Unknown calendar id"
+msgstr "No Encontrado: Id de calendario desconocido"
+
+#: api/routes/public/public-calendar.php:48
+msgid "Invalid calendar access token"
+msgstr "Token de acceso de calendario inválido"
+
+#: api/routes/public/public-user.php:51
+msgid "no found or user without an email"
+msgstr "no encontrado o usuario no tiene email"
+
+#: api/routes/public/public-user.php:54
+msgid "UserName not set"
+msgstr "Nombre de Usuario no establecido"
+
+#: api/routes/system/system-database.php:135
+msgid "The people and families has been cleared from the database."
+msgstr "Las personas y familias han sido limpiadas de la base de datos"
+
+#: members/self-register.php:13
+msgid "Self Registrations"
+msgstr "Auto Registros"
+
+#: mysql/upgrade/3.0.0.php:14
+msgid "Public Calendar"
+msgstr "Calendario Público"
+
+#: mysql/upgrade/3.0.0.php:20
+msgid "Private Calendar"
+msgstr "Calendario Privado"
+
+#: v2/templates/admin/user.php:20
+msgid "Username"
+msgstr "Nombre de Usuario"
+
+#: v2/templates/calendar/calendar.php:23
+msgid "User Calendars"
+msgstr "Calendarios de Usuario"
+
+#: v2/templates/calendar/calendar.php:33
+msgid "System Calendars"
+msgstr "Calendarios de Sistema"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "Está seguro de que desea moverse"
+
+#: 
+msgid "from"
+msgstr "desde"
+
+#: 
+msgid "to"
+msgstr "hasta"
+
+#: 
+msgid "Are you sure you want to change the end time for "
+msgstr "Está seguro de que desea cambiar la hora final por "
+
+#: 
+msgid "Pinned Calendars"
+msgstr "Calendarios Anclados"
+
+#: 
+msgid "Event Description"
+msgstr "Descripción de Evento"
+
+#: 
+msgid "Event Text"
+msgstr "Texto de Evento"
+
+#: 
+msgid "Access Token"
+msgstr "Token de Acceso"
+
+#: 
+msgid "New Access Token"
+msgstr "Nuevo Token de Acceso"
+
+#: 
+msgid "Delete Access Token"
+msgstr "Borrar Token de Acceso"
+
+#: 
+msgid "ICS URL"
+msgstr "URL de ICS"
+
+#: 
+msgid "JSON URL"
+msgstr "URL de JSON"
+
+#: 
+msgid "Foreground Color"
+msgstr "Color de Primero Plano"
+
+#: 
+msgid "Background Color"
+msgstr "Color de Fondo"
+
+#: 
+msgid "Delete Calendar"
+msgstr "Borrar Calendario"
+
+#: 
+msgid "Invalid Entry"
+msgstr "Entrada Inválida"
+
+#: 
+msgid "Calendar Name"
+msgstr "Nombre de Calendario"
+
+#: 
+msgid "New Calendar"
+msgstr "Nuevo Calendario"
+
+#: 
+msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "Alerta: bEnableExternalCalendarAPI deshabilitado, pero algunos calendarios tienen token de acceso"
+
+#: 
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr "Para que los calendarios puedan ser compartidos, el ajuste bEnableExternalCalendarAPI debe estar habilitado, además el calendario debe tener un token de acceso específico"
+
