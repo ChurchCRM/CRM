@@ -3665,7 +3665,7 @@ msgid "Family View"
 msgstr ""
 
 #: FamilyView.php:170
-msgid "Try our the Beta family view"
+msgid "Try out the Beta family view"
 msgstr ""
 
 #: FamilyView.php:176
