@@ -45,7 +45,6 @@ function system_failure($message, $header = 'Setup failure')
 
 function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort = "3306")
 {
-
     return [
         'dsn' => 'mysql:host=' . $sSERVERNAME . ';port='.$dbPort.';dbname=' . $sDATABASE,
         'user' => $sUSER,
