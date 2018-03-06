@@ -9,6 +9,7 @@
 
 // Database connection constants
 $sSERVERNAME = '||DB_SERVER_NAME||';
+$dbPort = '||DB_SERVER_PORT||';
 $sUSER = '||DB_USER||';
 $sPASSWORD = '||DB_PASSWORD||';
 $sDATABASE = '||DB_NAME||';

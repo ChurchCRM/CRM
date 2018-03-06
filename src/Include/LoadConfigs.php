@@ -43,8 +43,13 @@ function system_failure($message, $header = 'Setup failure')
     exit();
 }
 
-function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort = '3306')
+function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort)
 {
+    /* Backward compatibility - default database port to 3306 if not defined */
+    if (!isset($dbPort)) {
+        $dbPort = '3306';
+    }
+
     return [
         'dsn' => 'mysql:host=' . $sSERVERNAME . ';port='.$dbPort.';dbname=' . $sDATABASE,
         'user' => $sUSER,
