@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
+use PHPMailer\PHPMailer\PHPMailer;
 
 $app->group('/email', function () {
     $this->get('/debug', 'testEmailConnection')->add(new AdminRoleAuthMiddleware());
@@ -32,7 +33,7 @@ function testEmailConnection(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/email/');
 
-    $mailer = new \PHPMailer();
+    $mailer = new PHPMailer();
     $message = "";
 
     if (!empty(SystemConfig::getValue("sSMTPHost")) && !empty(ChurchMetaData::getChurchEmail())) {

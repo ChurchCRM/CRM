@@ -68,16 +68,16 @@ msgid "Save"
 msgstr "Ruaj"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
-#: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
-#: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:855 Include/Functions.php:908
-#: Include/Header-function.php:311 MapUsingGoogle.php:96
-#: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
-#: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
-#: PrintView.php:275 SelectDelete.php:156 SelectList.php:35 SelectList.php:45
-#: SelectList.php:61 SelectList.php:1098 SelectList.php:1169
-#: SystemSettings.php:214 eGive.php:341
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:88 DirectoryReports.php:82
+#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
+#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: Include/CountryDropDown.php:6 Include/Functions.php:855
+#: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
+#: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
+#: PersonEditor.php:1137 PrintView.php:265 PrintView.php:275
+#: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
+#: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
+#: eGive.php:341
 msgid "Unassigned"
 msgstr "Pacaktuara"
 
@@ -135,7 +135,7 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 CartView.php:272
+#: CartToFamily.php:311 CartView.php:272 ChurchCRM/Config/Menu/Menu.php:40
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
@@ -152,8 +152,7 @@ msgstr "Telefon"
 #: sundayschool/SundaySchoolClassView.php:89
 #: sundayschool/SundaySchoolClassView.php:205
 #: v2/templates/people/family-view.php:174
-#: v2/templates/people/family-view.php:314 menuconfig_mcf.php:15
-#: queryparameteroptions_qpo.php:13
+#: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr "Email"
 
@@ -514,10 +513,6 @@ msgstr "GABIM: fotografia ngarkuar CSV nuk ekziston më!"
 msgid "Data Cleared Successfully!"
 msgstr "Të dhënat pastruar me sukses!"
 
-#: CSVImport.php:823
-msgid "Please select the confirmation checkbox"
-msgstr "Ju lutemi zgjidhni checkbox konfirmimit"
-
 #: CSVImport.php:812
 msgid "Upload CSV File"
 msgstr "Ngarkoni CSV dokumentit"
@@ -542,7 +537,7 @@ msgstr "Të dhënat e importit të suksesshme."
 msgid "persons were imported"
 msgstr "persona janë importuar"
 
-#: CanvassAutomation.php:21 ReportList.php:39
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:148
 msgid "Canvass Automation"
 msgstr "Automatizimi anketim"
 
@@ -1033,7 +1028,7 @@ msgid "Address"
 msgstr "Adresa"
 
 #: ChurchCRM/Service/CalendarService.php:16
-#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:56 DirectoryReports.php:174
+#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:59 DirectoryReports.php:174
 #: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
 #: Reports/ConfirmReportEmail.php:210
@@ -1776,7 +1771,7 @@ msgstr " Diskutoj Hyrja"
 msgid "Confirm Delete"
 msgstr "Konfirmo Fshij"
 
-#: FinancialReports.php:35 ReportList.php:29
+#: FinancialReports.php:35
 msgid "Financial Reports"
 msgstr "Raportet financiare"
 
@@ -1943,7 +1938,7 @@ msgstr "Remitencat Shqip:"
 msgid "Sort Data by:"
 msgstr "Rendit dhënave nga:"
 
-#: FinancialReports.php:301 menuconfig_mcf.php:21
+#: ChurchCRM/Config/Menu/Menu.php:122 FinancialReports.php:301
 msgid "Deposit"
 msgstr "Depozitë"
 
@@ -2377,7 +2372,7 @@ msgstr "Fjalekalmi"
 msgid "Login"
 msgstr "Hyrje"
 
-#: ManageEnvelopes.php:21 menuconfig_mcf.php:22
+#: ChurchCRM/Config/Menu/Menu.php:123 ManageEnvelopes.php:21
 msgid "Envelope Manager"
 msgstr "Zarf Menaxher"
 
@@ -2429,7 +2424,7 @@ msgstr "Mundësitë vullnetare"
 msgid "Families"
 msgstr "Familjet"
 
-#: Menu.php:196 PeopleDashboard.php:158 menuconfig_mcf.php:4
+#: ChurchCRM/Config/Menu/Menu.php:60 Menu.php:196 PeopleDashboard.php:158
 msgid "People"
 msgstr "Njerëz"
 
@@ -3040,10 +3035,6 @@ msgstr "Zotimi Reminder Raporti"
 msgid "Report Menu"
 msgstr "Raporti Menu"
 
-#: ReportList.php:40
-msgid "Automated support for conducting an every-member canvass."
-msgstr "Automated mbështetjen për kryerjen e një pëlhurë çdo anëtarësh."
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Të gjitha donacionet nga kjo familje janë zhvendosur në një familje tjetër."
@@ -3096,7 +3087,7 @@ msgstr "Fshij Record familjare dhe anëtarët e familjes"
 msgid "Person Listing"
 msgstr "Person Listing"
 
-#: SelectList.php:172 menuconfig_mcf.php:13
+#: ChurchCRM/Config/Menu/Menu.php:74 SelectList.php:172
 msgid "Group Assignment Helper"
 msgstr "Grupi Caktimi Helper"
 
@@ -3868,23 +3859,23 @@ msgstr "Krijo Pjesëmarrja Sheet"
 msgid "Members"
 msgstr "Anëtarët"
 
-#: menuconfig_mcf.php:6
+#: ChurchCRM/Config/Menu/Menu.php:62
 msgid "Add New Person"
 msgstr "Shto person i ri"
 
-#: menuconfig_mcf.php:7
+#: ChurchCRM/Config/Menu/Menu.php:63
 msgid "View All Persons"
 msgstr "Shiko të gjitha Persona"
 
-#: menuconfig_mcf.php:8
+#: ChurchCRM/Config/Menu/Menu.php:64
 msgid "Add New Family"
 msgstr "Shto Family re"
 
-#: ChurchCRM/dto/SystemConfig.php:244 menuconfig_mcf.php:16
+#: ChurchCRM/Config/Menu/Menu.php:111 ChurchCRM/dto/SystemConfig.php:252
 msgid "Events"
 msgstr "Ngjarje"
 
-#: FundRaiserEditor.php:31 menuconfig_mcf.php:26
+#: ChurchCRM/Config/Menu/Menu.php:134 FundRaiserEditor.php:31
 msgid "Fundraiser"
 msgstr "Fondesh"
 
@@ -3892,7 +3883,7 @@ msgstr "Fondesh"
 msgid "Deposit Type"
 msgstr "Lloji Depozita"
 
-#: ChurchCRM/dto/SystemConfig.php:236
+#: ChurchCRM/dto/SystemConfig.php:244
 msgid "Report Settings"
 msgstr "Raporti Cilësimet"
 

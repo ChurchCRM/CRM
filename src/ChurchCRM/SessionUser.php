@@ -14,6 +14,6 @@ class SessionUser
 
     public static function isAdmin()
     {
-        self::getUser()->isAdmin();
+        return self::getUser()->isAdmin();
     }
 }
