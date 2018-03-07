@@ -1,11 +1,11 @@
 <?php
 
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
-use Slim\Http\Request;
-use Slim\Http\Response;
 use ChurchCRM\MenuLink;
 use ChurchCRM\MenuLinkQuery;
+use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 use ChurchCRM\Utils\ORMUtils;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 
 $app->group('/system/menu', function () {

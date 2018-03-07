@@ -14,12 +14,12 @@ $connection->exec($sqlEvents);
 
 $logger->info("Dropped events_event INDEX");
 
-$statement = $connection->prepare("SHOW TABLES");
+$statement = $connection->prepare("SHOW FULL TABLES WHERE Table_Type = 'BASE TABLE'");
 $statement->execute();
 $dbTablesSQLs = $statement->fetchAll();
 
 foreach ($dbTablesSQLs as $dbTable) {
-
+  
     $alterSQL = "ALTER TABLE " . $dbTable[0] . " ENGINE=InnoDB;";
     $logger->info("Upgrade: " . $alterSQL);
     $dbAlterStatement = $connection->exec($alterSQL);
