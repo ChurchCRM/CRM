@@ -78,7 +78,7 @@ $app->group('/persons', function () {
          */
         $sessionUser = $_SESSION['user'];
         if (!$sessionUser->isDeleteRecordsEnabled()) {
-            return $response->withStatus(401);
+            return $response->withStatus(403);
         }
         $personId = $args['personId'];
         if ($sessionUser->getId() == $personId) {

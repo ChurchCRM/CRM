@@ -108,8 +108,7 @@ function verifyFamily(Request $request, Response $response, array $args)
             $family->createTimeLineNote("verify-link");
             $response = $response->withStatus(200);
         } else {
-            LoggerUtils::getAppLogger()->error($email->getError());
-            throw new \Exception($email->getError());
+            $response = $response->withStatus(404, gettext("FamilyId"). ": " . $familyId . " ". gettext("email send error"));
         }
     } else {
         $response = $response->withStatus(404, gettext("FamilyId") . " " . $familyId . " " . gettext("not found"));

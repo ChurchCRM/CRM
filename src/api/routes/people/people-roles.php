@@ -6,14 +6,12 @@ use ChurchCRM\Slim\Middleware\Role\MenuOptionsRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-
 $app->group('/persons', function () {
     $this->get('/roles', 'getAllRoles');
     $this->get('/roles/', 'getAllRoles');
     $this->post('/role', 'setPersonRole')->add(new MenuOptionsRoleAuthMiddleware());
     $this->post('/role/', 'setPersonRole')->add(new MenuOptionsRoleAuthMiddleware());
 });
-
 
 function getAllRoles(Request $request, Response $response, array $p_args)
 {
@@ -24,7 +22,7 @@ function getAllRoles(Request $request, Response $response, array $p_args)
 function setPersonRole(Request $request, Response $response, array $p_args)
 {
     if (!$_SESSION['user']->isEditRecordsEnabled()) {
-        return $response->withStatus(401);
+        return $response->withStatus(403);
     }
 
     $data = $request->getParsedBody();

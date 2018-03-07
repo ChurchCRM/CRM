@@ -33,7 +33,7 @@ function viewUser(Request $request, Response $response, array $args)
     $userId = $args["id"];
 
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
-        return $response->withStatus(401);
+        return $response->withStatus(403);
     }
 
     $user = UserQuery::create()->findPk($userId);
