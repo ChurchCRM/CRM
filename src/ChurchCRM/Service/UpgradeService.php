@@ -46,6 +46,9 @@ class UpgradeService
                       } elseif (pathinfo($scriptName, PATHINFO_EXTENSION) == "php") {
                           require_once ($scriptName);
                       }
+                      else {
+                        throw new \Exception(gettext("Invalid upgrade file specified").": " . $scriptName);
+                      }
                   }
                   if (!$errorFlag) {
                       $version->setUpdateEnd(new \DateTime());
