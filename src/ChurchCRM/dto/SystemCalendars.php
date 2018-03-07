@@ -3,6 +3,7 @@
 namespace ChurchCRM\dto;
 use ChurchCRM\SystemCalendars\BirthdaysCalendar;
 use ChurchCRM\SystemCalendars\AnniversariesCalendar;
+use ChurchCRM\SystemCalendars\HolidayCalendar;
 use ChurchCRM\Interfaces\SystemCalendar;
 use Propel\Runtime\Collection\ObjectCollection;
 use ChurchCRM\Calendar;
@@ -13,6 +14,7 @@ class SystemCalendars {
     $calendars = [];
     array_push($calendars, new BirthdaysCalendar());
     array_push($calendars, new AnniversariesCalendar());
+    array_push($calendars, new HolidayCalendar());
     return $calendars;
   }
   
