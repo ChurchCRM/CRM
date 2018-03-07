@@ -17,7 +17,7 @@ $app->group('/', function () {
 
     $this->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
         $required = ChurchCRM\Service\AppIntegrityService::getApplicationPrerequisites();
-        return $response->withStatus(200)->withJson($required);
+        return $response->withJson($required);
     });
 
     $this->post('', function ($request, $response, $args) {

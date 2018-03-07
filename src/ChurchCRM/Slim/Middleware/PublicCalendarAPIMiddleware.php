@@ -17,7 +17,7 @@ class PublicCalendarAPIMiddleware
     public function __invoke(Request $request, Response $response, callable $next)
     {
         if (!SystemConfig::getBooleanValue("bEnableExternalCalendarAPI")) {
-            return $response->withStatus(403)->withJson(["message" => gettext("External Calendar API is disabled")]);
+            return $response->withStatus(403, gettext("External Calendar API is disabled"));
         }
         
         $CAT = $request->getAttribute("route")->getArgument("CalendarAccessToken");

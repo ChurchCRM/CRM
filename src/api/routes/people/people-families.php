@@ -125,7 +125,7 @@ $app->group('/families', function () {
                 throw new \Exception($email->getError());
             }
         } else {
-            $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " " . gettext("not found"));
+            $response = $response->withStatus(404, gettext("FamilyId") . " " . $familyId . " " . gettext("not found"));
         }
         return $response;
     });
@@ -137,7 +137,7 @@ $app->group('/families', function () {
             $family->verify();
             $response = $response->withStatus(200);
         } else {
-            $response = $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
+            $response = $response->withStatus(404, gettext("FamilyId"). ": " . $familyId . " ". gettext("not found"));
         }
         return $response;
     });
@@ -191,6 +191,6 @@ $app->group('/families', function () {
 
             return $response->withJson($geoLocationInfo);
         }
-        return $response->withStatus(404)->getBody()->write("familyId: " . $familyId . " not found");
+        return $response->withStatus(404, gettext("FamilyId").  ": " . $familyId . " " . gettext("not found"));
     });
 });
