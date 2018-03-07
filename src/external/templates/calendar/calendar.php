@@ -10,7 +10,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/fullcalendar.min.js"></script>
 <div class="register-box" style="width: 100%; margin-top:5px;">
     <div class="register-logo">
-      <a href="<?= SystemURLs::getRootPath() ?>"><?=  ChurchMetaData::getChurchName() ?></a>: <?= $calendarName ?></h1>
+      <a href="<?= SystemURLs::getRootPath() ?>/"><?=  ChurchMetaData::getChurchName() ?></a>: <?= $calendarName ?></h1>
       <p></p>
     </div>
     <div class="row">
