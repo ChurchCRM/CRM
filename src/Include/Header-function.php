@@ -23,7 +23,7 @@ function Header_system_notifications()
 {
     if (NotificationService::hasActiveNotifications()) {
         ?>
-        <script>
+        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             <?php foreach (NotificationService::getNotifications() as $notification) {
             ?>
             $.notify({
