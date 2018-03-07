@@ -19,13 +19,13 @@ $app->group('/users', function () {
             $user->createTimeLineNote("password-reset");
             $email = new ResetPasswordEmail($user, $password);
             if ($email->send()) {
-                return $response->withStatus(200)->withJson(['status' => "success"]);
+                return $response->withStatus(200);
             } else {
                 $this->Logger->error($email->getError());
                 throw new \Exception($email->getError());
             }
         } else {
-            return $response->withStatus(404);
+            return $response->withStatus(404, gettext("Bad userId"));
         }
     });
 
@@ -39,9 +39,9 @@ $app->group('/users', function () {
             if (!$email->send()) {
                 $this->Logger->warn($email->getError());
             }
-            return $response->withStatus(200)->withJson(['status' => "success"]);
+            return $response->withStatus(200);
         } else {
-            return $response->withStatus(404);
+            return $response->withStatus(404, gettext("Bad userId"));
         }
     });
 
@@ -57,9 +57,9 @@ $app->group('/users', function () {
             if (!$email->send()) {
                 $this->Logger->warn($email->getError());
             }
-            return $response->withStatus(200)->withJson(['status' => "success"]);
+            return $response->withStatus(200);
         } else {
-            return $response->withStatus(404);
+            return $response->withStatus(404, gettext("Bad userId"));
         }
     });
 
@@ -70,15 +70,15 @@ $app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response,
     $curUser = $_SESSION['user'];
     $userId = $args['userId'];
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
-        return $response->withStatus(401);
+        return $response->withStatus(403);
     }
     $user = UserQuery::create()->findPk($userId);
     if (!is_null($user)) {
         $user->setApiKey(User::randomApiKey());
         $user->save();
         $user->createTimeLineNote("api-key-regen");
-        return $response->withStatus(200)->withJson(["apiKey" => $user->getApiKey()]);
+        return $response->withJson(["apiKey" => $user->getApiKey()]);
     } else {
-        return $response->withStatus(404);
+        return $response->withStatus(404, gettext("Bad userId"));
     }
 });

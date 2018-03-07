@@ -17,22 +17,30 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\GroupQuery;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\ListOptionQuery;
 use ChurchCRM\MenuConfigQuery;
-use ChurchCRM\UserConfigQuery;
 
 function Header_system_notifications()
 {
     if (NotificationService::hasActiveNotifications()) {
         ?>
-        <div class="systemNotificationBar">
+        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+            <?php foreach (NotificationService::getNotifications() as $notification) {
+            ?>
+            $.notify({
+                icon: 'fa fa-bell',
+                message: '<?= $notification->title?>',
+                url: '<?= $notification->link ?>'
+            },{
+                delay: 4000,
+                type: 'danger',
+                placement: {
+                    from: 'bottom',
+                    align: 'left'
+                }
+            });
             <?php
-            foreach (NotificationService::getNotifications() as $notification) {
-                echo "<a href=\"" . $notification->link . "\">" . $notification->title . "</a>";
-            } ?>
-        </div>
+        } ?>
+        </script>
         <?php
     }
 }

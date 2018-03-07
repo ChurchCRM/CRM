@@ -152,6 +152,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-show-password/bootstrap-show-password.min.js'],
                         dest: 'src/skin/external/bootstrap-show-password'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-notify/bootstrap-notify.min.js'],
+                        dest: 'src/skin/external/bootstrap-notify'
                     }
                 ]
             }
@@ -187,7 +194,7 @@ module.exports = function (grunt) {
               },
               files: {
                   'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
-              }  
+              }
             },
         },
         compress: {
