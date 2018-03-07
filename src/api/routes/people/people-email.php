@@ -6,8 +6,8 @@ use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/emails', function () {
-    $this->get('/duplicates', 'getEmailDupes');
+$app->group('/persons', function () {
+    $this->get('/duplicate/emails', 'getEmailDupes');
 });
 
 
@@ -40,11 +40,12 @@ function getEmailDupes(Request $request, Response $response, array $p_args)
         foreach ($dbFamilies as $family) {
             array_push($families, ["id" => $family->getId(), "nane" => $family->getName()]);
         }
-        $emails[$email] = [
+        array_push($emails, [
+            "email" => $email,
             "people" => $people,
             "families" => $families
-        ];
+        ]);
     }
 
-    return $response->withJson($emails);
+    return $response->withJson(["emails" => $emails]);
 }
