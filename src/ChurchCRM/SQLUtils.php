@@ -19,7 +19,7 @@ namespace ChurchCRM
           $sql = '';
           
           if (!$fileHandle) {
-              throw new \Exception("Unable to open file: " . $fileName);
+              throw new \Exception(gettext("Unable to open file").": " . $fileName);
           }
 
           while (!feof($fileHandle)) {

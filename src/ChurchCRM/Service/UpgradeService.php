@@ -26,14 +26,13 @@ class UpgradeService
         }
 
         //the database isn't at the current version.  Start the upgrade
-        try
-        {
+        try {
           $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
           $dbUpdates = json_decode($dbUpdatesFile, true);
           $errorFlag = false;
           $connection = Propel::getConnection();
           foreach ($dbUpdates as $dbUpdate) {
-            try{
+            try {
               if (in_array(SystemService::getDBVersion(), $dbUpdate['versions'])) {
                   $version = new Version();
                   $version->setVersion($dbUpdate['dbVersion']);
@@ -44,7 +43,7 @@ class UpgradeService
                       $logger->info("Upgrade DB - " . $scriptName);
                       if (pathinfo($scriptName, PATHINFO_EXTENSION) == "sql") {
                           SQLUtils::sqlImport($scriptName, $connection);
-                      } else {
+                      } elseif (pathinfo($scriptName, PATHINFO_EXTENSION) == "php") {
                           require_once ($scriptName);
                       }
                   }
@@ -55,17 +54,17 @@ class UpgradeService
               }
             }
             catch (\Exception $exc) {
-              $logger->error(gettext("Unable to execute upgrade").": ".$scriptName.": ".$exc->getMessage());
+              $logger->error(gettext("Failure executing upgrade script").": ".$scriptName.": ".$exc->getMessage());
               throw $exc;
             }
           }
-          // always rebuild the menu
+          // always rebuild the views
           SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
 
           return true;
         }
         catch (\Exception $exc){
-           $logger->error(gettext("Unable to execute database upgrade").": " . $exc->getMessage());
+           $logger->error(gettext("Databse upgrade failed").": " . $exc->getMessage());
            throw $exc; //allow the method requesting the upgrade to handle this failure also.
         }
     }
