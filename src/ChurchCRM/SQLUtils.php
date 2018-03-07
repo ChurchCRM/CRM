@@ -18,8 +18,8 @@ namespace ChurchCRM
           $isMultiLineComment = false;
           $sql = '';
           
-          if (!$fileHandle) { 
-            throw new \Exception("Unable to open file: " . $fileName);
+          if (!$fileHandle) {
+              throw new \Exception("Unable to open file: " . $fileName);
           }
 
           while (!feof($fileHandle)) {
