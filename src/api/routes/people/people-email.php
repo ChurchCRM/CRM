@@ -38,7 +38,7 @@ function getEmailDupes(Request $request, Response $response, array $p_args)
         $families = [];
         $dbFamilies = FamilyQuery::create()->findByEmail($email);
         foreach ($dbFamilies as $family) {
-            array_push($families, ["id" => $family->getId(), "nane" => $family->getName()]);
+            array_push($families, ["id" => $family->getId(), "name" => $family->getName()]);
         }
         array_push($emails, [
             "email" => $email,
