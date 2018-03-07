@@ -27,7 +27,12 @@ $("document").ready(function(){
             processResults: function (data, params) {
               return {results: data};
             },
-            cache: true
+            cache: true,
+            beforeSend: function(jqXHR, settings)
+            {
+             jqXHR.url = settings.url;
+            },
+            error:  window.CRM.system.handlejQAJAXError
         }
     });
     $(".multiSearch").on("select2:select",function (e) { window.location.href= e.params.data.uri;});
