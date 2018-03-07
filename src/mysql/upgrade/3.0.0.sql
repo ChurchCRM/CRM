@@ -40,3 +40,12 @@ ALTER TABLE user_usr
 	ADD UNIQUE INDEX `usr_apiKey_unique` (`usr_apiKey` ASC);
 
 DROP TABLE IF EXISTS menuconfig_mcf;
+
+DROP TABLE IF EXISTS `menu_links`;
+CREATE TABLE `menu_links` (
+  `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
+  `linkOrder` INT NOT NULL,
+  PRIMARY KEY (`linkId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
