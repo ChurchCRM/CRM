@@ -19,7 +19,7 @@ $app->group('/users', function () {
             $user->createTimeLineNote("password-reset");
             $email = new ResetPasswordEmail($user, $password);
             if ($email->send()) {
-                return $response->withStatus(200)->withJson(['status' => "success"]);
+                return $response->withStatus(200);
             } else {
                 $this->Logger->error($email->getError());
                 throw new \Exception($email->getError());
@@ -39,7 +39,7 @@ $app->group('/users', function () {
             if (!$email->send()) {
                 $this->Logger->warn($email->getError());
             }
-            return $response->withStatus(200)->withJson(['status' => "success"]);
+            return $response->withStatus(200);
         } else {
             return $response->withStatus(404);
         }
@@ -57,7 +57,7 @@ $app->group('/users', function () {
             if (!$email->send()) {
                 $this->Logger->warn($email->getError());
             }
-            return $response->withStatus(200)->withJson(['status' => "success"]);
+            return $response->withStatus(200);
         } else {
             return $response->withStatus(404);
         }
@@ -77,7 +77,7 @@ $app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response,
         $user->setApiKey(User::randomApiKey());
         $user->save();
         $user->createTimeLineNote("api-key-regen");
-        return $response->withStatus(200)->withJson(["apiKey" => $user->getApiKey()]);
+        return $response->withJson(["apiKey" => $user->getApiKey()]);
     } else {
         return $response->withStatus(404);
     }

@@ -46,7 +46,7 @@ function userPasswordReset(Request $request, Response $response, array $args)
             if (!$email->send()) {
                 $logger->error($email->getError());
             }
-            return $response->withStatus(200)->withJson(['status' => "success"]);
+            return $response->withStatus(200);
         } else {
             return $response->withStatus(404, gettext("User") . " [" . $userName . "] ". gettext("no found or user without an email"));
         }
