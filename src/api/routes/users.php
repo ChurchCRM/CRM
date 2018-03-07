@@ -25,7 +25,7 @@ $app->group('/users', function () {
                 throw new \Exception($email->getError());
             }
         } else {
-            return $response->withStatus(404);
+            return $response->withStatus(404, gettext("Bad userId"));
         }
     });
 
@@ -41,7 +41,7 @@ $app->group('/users', function () {
             }
             return $response->withStatus(200);
         } else {
-            return $response->withStatus(404);
+            return $response->withStatus(404, gettext("Bad userId"));
         }
     });
 
@@ -59,7 +59,7 @@ $app->group('/users', function () {
             }
             return $response->withStatus(200);
         } else {
-            return $response->withStatus(404);
+            return $response->withStatus(404, gettext("Bad userId"));
         }
     });
 
@@ -70,7 +70,7 @@ $app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response,
     $curUser = $_SESSION['user'];
     $userId = $args['userId'];
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
-        return $response->withStatus(401);
+        return $response->withStatus(403);
     }
     $user = UserQuery::create()->findPk($userId);
     if (!is_null($user)) {
@@ -79,6 +79,6 @@ $app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response,
         $user->createTimeLineNote("api-key-regen");
         return $response->withJson(["apiKey" => $user->getApiKey()]);
     } else {
-        return $response->withStatus(404);
+        return $response->withStatus(404, gettext("Bad userId"));
     }
 });

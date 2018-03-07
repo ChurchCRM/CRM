@@ -24,7 +24,7 @@ function userLogin(Request $request, Response $response, array $args)
             if ($user->isPasswordValid($password)) {
                 return $response->withJson(["apiKey" => $user->getApiKey()]);
             } else {
-                return $response->withStatus(401);
+                return $response->withStatus(401, gettext('Invalid User/Password'));
             }
         }
     }
@@ -51,5 +51,5 @@ function userPasswordReset(Request $request, Response $response, array $args)
             return $response->withStatus(404, gettext("User") . " [" . $userName . "] ". gettext("no found or user without an email"));
         }
     }
-    return $response->withStatus(401, gettext("UserName not set"));
+    return $response->withStatus(400, gettext("UserName not set"));
 }

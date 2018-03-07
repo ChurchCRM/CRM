@@ -35,7 +35,7 @@ function addMenu(Request $request, Response $response, array $args)
         $link->save();
         return $response->withJson($link->toArray());
     }
-    return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
+    return $response->withStatus(400)->withJson(["error" => gettext("Validation Error"),
         "failures" => ORMUtils::getValidationErrors($link->getValidationFailures())]);
 }
 
