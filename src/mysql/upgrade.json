@@ -114,7 +114,6 @@
             "2.6.3"
         ],
         "scripts": [
-            "/mysql/upgrade/rebuild_nav_menus.sql",
             "/mysql/upgrade/2.7.0.sql"
         ],
         "dbVersion": "2.7.0"
