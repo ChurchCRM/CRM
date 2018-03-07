@@ -1284,9 +1284,6 @@ CREATE TABLE `church_location_role` (
 -- Table structure for table `menu_links`
 --
 
-DROP TABLE IF EXISTS `menu_links`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu_links` (
   `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1294,18 +1291,6 @@ CREATE TABLE `menu_links` (
   `linkOrder` INT NOT NULL,
   PRIMARY KEY (`linkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `menu_links`
---
-
-LOCK TABLES `menu_links` WRITE;
-/*!40000 ALTER TABLE `menu_links` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `menu_links` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
 
 CREATE VIEW email_list AS
     SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != ''
