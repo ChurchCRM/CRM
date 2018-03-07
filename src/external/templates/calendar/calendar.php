@@ -1,6 +1,5 @@
 <?php
-use ChurchCRM\data\Countries;
-use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
@@ -9,17 +8,23 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment-with-locales.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/fullcalendar.min.js"></script>
-<div class="row">
-  <div class="col-lg-10">
-    <div class="box box-info">
-        <div class="box-body no-padding">
-            <!-- THE CALENDAR -->
-            <div id="calendar"></div>
-        </div>
-        <!-- /.box-body -->
+<div class="register-box" style="width: 100%; margin-top:5px;">
+    <div class="register-logo">
+      <a href="<?= SystemURLs::getRootPath() ?>"><?=  ChurchMetaData::getChurchName() ?></a>: <?= $calendarName ?></h1>
+      <p></p>
     </div>
-    <!-- /. box -->
-  </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-info">
+            <div class="box-body no-padding">
+                <!-- THE CALENDAR -->
+                <div id="calendar"></div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /. box -->
+      </div>
+    </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 window.CRM.fullcalendar =  $('#calendar').fullCalendar({

@@ -13,5 +13,6 @@ $app->group('/calendars', function () {
 function serveCalendarPage ($request, $response) {
   $renderer = new PhpRenderer('templates/calendar/');
   $eventSource = SystemURLs::getRootPath()."/api/public/calendar/".$request->getAttribute("route")->getArgument("CalendarAccessToken")."/fullcalendar";
-  return $renderer->render($response, 'calendar.php', ['eventSource' => $eventSource]);
+  $calendarName = $request->getAttribute("calendar")->getName();
+  return $renderer->render($response, 'calendar.php', ['eventSource' => $eventSource, 'calendarName'=> $calendarName]);
 }
