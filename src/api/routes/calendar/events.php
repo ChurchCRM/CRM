@@ -125,14 +125,14 @@ function newEvent($request, $response, $args)
     $type = EventTypeQuery::Create()
         ->findOneById($input->eventTypeID);
     if (!$type) {
-        return $response->withStatus(400)->withJSON(array("status" => "invalid event type id"));
+        return $response->withStatus(400, gettext("invalid event type id"));
     }
 
     $calendars = CalendarQuery::create()
         ->filterById($input->eventCalendars)
         ->find();
     if (count($calendars) != count($input->eventCalendars)) {
-        return $response->withStatus(400)->withJSON(array("status" => "invalid calendar pinning"));
+        return $response->withStatus(400, gettext("invalid calendar pinning"));
     }
 
     // we have event type and pined calendars.  now create the event.
