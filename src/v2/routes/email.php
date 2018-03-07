@@ -1,21 +1,23 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
-use Slim\Views\PhpRenderer;
 use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 use PHPMailer\PHPMailer\PHPMailer;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Views\PhpRenderer;
 
 $app->group('/email', function () {
     $this->get('/debug', 'testEmailConnection')->add(new AdminRoleAuthMiddleware());
     $this->get('/dashboard', 'getEmailDashboard');
+    $this->get('/duplicate', 'getDuplicateEmails');
 });
 
-function getEmailDashboard(Request $request, Response $response, array $args) {
+function getEmailDashboard(Request $request, Response $response, array $args)
+{
     $renderer = new PhpRenderer('templates/email/');
     $mailchimp = new MailChimpService();
 
@@ -66,4 +68,10 @@ function testEmailConnection(Request $request, Response $response, array $args)
     ];
 
     return $renderer->render($response, 'debug.php', $pageArgs);
+}
+
+function getDuplicateEmails(Request $request, Response $response, array $args)
+{
+    $renderer = new PhpRenderer('templates/email/');
+    return $renderer->render($response, 'duplicate.php');
 }
