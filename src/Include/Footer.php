@@ -124,11 +124,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
                             <i class="fa fa-cog"></i> <?= _('Volunteer Opportunities') ?>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php">
-                            <i class="fa fa-cog"></i> <?= _('Edit Donation Funds') ?>
-                        </a>
-                    </li>
                     <?php
     } ?>
             </ul>

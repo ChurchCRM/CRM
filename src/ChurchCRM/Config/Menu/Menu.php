@@ -120,11 +120,16 @@ class Menu
     private static function getDepositsMenu()
     {
         $depositsMenu = new MenuItem(gettext("Deposit"), "", SystemConfig::getBooleanValue("bEnabledFinance") && SessionUser::getUser()->isFinanceEnabled(), 'fa-bank');
-        $depositsMenu->addSubMenu(new MenuItem(gettext("Envelope Manager"), "ManageEnvelopes.php", SessionUser::getUser()->isAdmin()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("View All Deposits"), "FindDepositSlip.php", SessionUser::getUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("Deposit Reports"), "FinancialReports.php", SessionUser::getUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("Edit Deposit Slip"), "DepositSlipEditor.php", SessionUser::getUser()->isFinanceEnabled()));
         $depositsMenu->addCounter(new MenuCounter("iCurrentDeposit", "bg-green", $_SESSION['iCurrentDeposit']));
+        
+        $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::getUser()->isAdmin());
+        $adminMenu->addSubMenu(new MenuItem(gettext("Envelope Manager"), "ManageEnvelopes.php", SessionUser::getUser()->isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Donation Funds"), "DonationFundEditor.php", SessionUser::getUser()->isAdmin()));
+
+        $depositsMenu->addSubMenu($adminMenu);
         return $depositsMenu;
     }
 
