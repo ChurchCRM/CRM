@@ -36,10 +36,10 @@ $isAdmin = $_SESSION['user']->isAdmin();
             <br/><br/>
             <ul class="control-sidebar-menu">
                 <?php foreach ($tasks as $task) {
-        $taskIcon = 'fa-info bg-green';
-        if ($task['admin']) {
-            $taskIcon = 'fa-lock bg-yellow-gradient';
-        } ?>
+    $taskIcon = 'fa-info bg-green';
+    if ($task['admin']) {
+        $taskIcon = 'fa-lock bg-yellow-gradient';
+    } ?>
                     <!-- Task item -->
                     <li>
                         <a href="<?= $task['link'] ?>">
@@ -53,7 +53,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
                     </li>
                     <!-- end task item -->
                     <?php
-    } ?>
+} ?>
             </ul>
             <!-- /.control-sidebar-menu -->
 
