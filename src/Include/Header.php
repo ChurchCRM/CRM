@@ -160,7 +160,7 @@ $MenuFirst = 1;
           ?>
           <li class="dropdown settings-dropdown">
             <a href="#" data-toggle="control-sidebar" title="<?= gettext('Your tasks') ?>">
-              <i class="fa fa-gears"></i>
+              <i class="fa fa-tasks"></i>
               <span class="label label-danger"><?= $taskSize ?></span>
             </a>
           </li>

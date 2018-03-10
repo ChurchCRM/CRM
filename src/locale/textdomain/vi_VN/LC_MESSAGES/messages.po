@@ -1986,7 +1986,7 @@ msgstr "Thêm gia đình mới"
 msgid "Events"
 msgstr "Sự kiện"
 
-#: v2/templates/email/dashboard.php:13
+#: v2/templates/email/dashboard.php:15
 msgid "Email Export"
 msgstr "Email xuất ra"
 
@@ -2049,7 +2049,7 @@ msgstr "Ghi chú"
 msgid "Reports"
 msgstr "Báo cáo"
 
-#: v2/templates/email/dashboard.php:43
+#: v2/templates/email/dashboard.php:34
 msgid "Members:"
 msgstr "Thành viên:"
 
