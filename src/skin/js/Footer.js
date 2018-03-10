@@ -107,9 +107,25 @@ $("document").ready(function(){
 });
 
 function showGlobalMessage(message, callOutClass) {
-    $("#globalMessageText").text(message);
-    $("#globalMessageCallOut").addClass("callout-"+callOutClass);
-    $("#globalMessage").show("slow");
+    var icon = "exclamation-triangle";
+    if (callOutClass === "success") {
+        icon = "check";
+    }
+    $.notify({
+        icon: 'fa fa-' + icon,
+        message: message
+    }, {
+        delay: 5000,
+        type: callOutClass,
+        placement: {
+            from: "top",
+            align: "right"
+        },
+        offset: {
+            x: 15,
+            y: 60
+        }
+    });
 }
 
 function suspendSession(){
