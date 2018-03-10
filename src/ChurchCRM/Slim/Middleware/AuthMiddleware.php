@@ -5,7 +5,7 @@ namespace ChurchCRM\Slim\Middleware;
 use ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\Service\SystemService;
+use ChurchCRM\dto\SystemConfig;
 
 class AuthMiddleware {
 
@@ -26,7 +26,7 @@ class AuthMiddleware {
                 $_SESSION['user'] = $this->user;
             }
 
-            if (empty($this->user)) {
+            if (!$this->isUserSessionValid($request)) {
                 return $response->withStatus(401, gettext('No logged in user'));
             }
 
@@ -35,6 +35,25 @@ class AuthMiddleware {
         }
         return $next( $request, $response );
     }
+    
+    private function isUserSessionValid(Request $request) {
+      if (empty($this->user)) {
+        return false;
+      }
+      if (SystemConfig::getValue('iSessionTimeout') > 0) {
+        if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
+           return false;
+        } else {
+          if(!$this->isBackgroundRequest( $request->getUri()->getPath()))
+          {
+            //Only update tLastOperation if the request was an actual user request.  
+            //Background requests should not update tLastOperation
+            $_SESSION['tLastOperation'] = time();
+          }
+        }
+      }
+      return true;
+    }
 
     private function isPublic($path) {
         $pathAry = explode("/", $path);
@@ -42,5 +61,13 @@ class AuthMiddleware {
             return true;
         }
         return false;
+    }
+    
+    private function isBackgroundRequest($path) {
+      $pathAry = explode("/", $path);
+      if (!empty($path) && ($pathAry[0] === "run" || $pathAry[0] === "dashboard")) {
+          return true;
+      }
+      return false;
     }
 }
