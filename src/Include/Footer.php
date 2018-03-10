@@ -50,20 +50,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
     <div class="tab-content">
         <!-- Home tab content -->
         <div class="tab-pane" id="control-sidebar-settings-other-tab">
-            <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Group') ?></h4>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PropertyList.php?Type=g">
-                        <i class="fa fa-cog"></i> <?= _('Group Properties') ?>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= SystemURLs::getRootPath() ?>/OptionManager.php?mode=grptypes">
-                        <i class="fa fa-cog"></i> <?= _('Edit Group Types') ?>
-                    </a>
-                </li>
-            </ul>
-            <br/>
             <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Other') ?></h4>
             <ul class="control-sidebar-menu">
                 <li>

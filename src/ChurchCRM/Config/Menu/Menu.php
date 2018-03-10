@@ -100,6 +100,12 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
+        $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::getUser()->isAdmin());
+        $adminMenu->addSubMenu(new MenuItem(gettext("Group Properties"), "PropertyList.php?Type=g", SessionUser::getUser()->isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Group Types"), "OptionManager.php?mode=grptypes", SessionUser::getUser()->isAdmin()));
+
+        $groupMenu->addSubMenu($adminMenu);
+
         return $groupMenu;
     }
 
