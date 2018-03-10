@@ -18,11 +18,11 @@ class HolidayCalendar implements SystemCalendar {
   }
 
   public function getBackgroundColor() {
-    return "000000";
+    return "6dfff5";
   }
   
   public function getForegroundColor() {
-    return "FFFFFF";
+    return "000000";
   }
 
   public function getId() {
@@ -34,8 +34,7 @@ class HolidayCalendar implements SystemCalendar {
   }
     
   public function getEvents() {
-    $yasholidays = Yasumi::create('USA',2018);
-    $holidays = new \Yasumi\Filters\OfficialHolidaysFilter($yasholidays->getIterator());
+    $holidays = Yasumi::create('USA',2018);
     $events = new ObjectCollection();
     $events->setModel("ChurchCRM\\Event");
    
