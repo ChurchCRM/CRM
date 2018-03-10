@@ -37,22 +37,22 @@ class AuthMiddleware {
     }
 
     private function isUserSessionValid(Request $request) {
-        if (empty($this->user)) {
-            return false;
+      if (empty($this->user)) {
+        return false;
+      }
+      if (SystemConfig::getValue('iSessionTimeout') > 0) {
+        if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
+           return false;
+        } else {
+          if(!$this->isBackgroundRequest( $request->getUri()->getPath()))
+          {
+            //Only update tLastOperation if the request was an actual user request.
+            //Background requests should not update tLastOperation
+            $_SESSION['tLastOperation'] = time();
+          }
         }
-        if (SystemConfig::getValue('iSessionTimeout') > 0) {
-            if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-                return false;
-            } else {
-                if(!$this->isBackgroundRequest( $request->getUri()->getPath()))
-                {
-                    //Only update tLastOperation if the request was an actual user request.
-                    //Background requests should not update tLastOperation
-                    $_SESSION['tLastOperation'] = time();
-                }
-            }
-        }
-        return true;
+      }
+      return true;
     }
 
     private function isPublic($path) {
@@ -64,10 +64,10 @@ class AuthMiddleware {
     }
 
     private function isBackgroundRequest($path) {
-        $pathAry = explode("/", $path);
-        if (!empty($path) && ($pathAry[0] === "run" || $pathAry[0] === "dashboard")) {
-            return true;
-        }
-        return false;
+      $pathAry = explode("/", $path);
+      if (!empty($path) && ($pathAry[0] === "run" || $pathAry[0] === "dashboard")) {
+          return true;
+      }
+      return false;
     }
 }
