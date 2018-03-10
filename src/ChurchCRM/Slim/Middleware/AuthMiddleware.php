@@ -18,24 +18,21 @@ class AuthMiddleware {
             $this->apiKey = $request->getHeader("x-api-key");
             if (!empty($this->apiKey)) {
                 $this->user = UserQuery::create()->findOneByApiKey($this->apiKey);
-
+            } else if (!$this->isUserSessionValid($request)) {
+                return $response->withStatus(401, gettext('No logged in user'));
             }
+
             if (empty($this->user)) {
                 $this->user = $_SESSION['user'];
             } else {
                 $_SESSION['user'] = $this->user;
             }
 
-            if (!$this->isUserSessionValid($request)) {
-                return $response->withStatus(401, gettext('No logged in user'));
-            }
-
-
             return $next( $request, $response )->withHeader( "CRM_USER_ID", $this->user->getId());
         }
         return $next( $request, $response );
     }
-    
+
     private function isUserSessionValid(Request $request) {
       if (empty($this->user)) {
         return false;
@@ -46,7 +43,7 @@ class AuthMiddleware {
         } else {
           if(!$this->isBackgroundRequest( $request->getUri()->getPath()))
           {
-            //Only update tLastOperation if the request was an actual user request.  
+            //Only update tLastOperation if the request was an actual user request.
             //Background requests should not update tLastOperation
             $_SESSION['tLastOperation'] = time();
           }
@@ -62,7 +59,7 @@ class AuthMiddleware {
         }
         return false;
     }
-    
+
     private function isBackgroundRequest($path) {
       $pathAry = explode("/", $path);
       if (!empty($path) && ($pathAry[0] === "run" || $pathAry[0] === "dashboard")) {
