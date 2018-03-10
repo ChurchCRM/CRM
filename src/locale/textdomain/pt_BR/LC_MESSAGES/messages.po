@@ -4238,7 +4238,7 @@ msgstr "Erro de depósito"
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Erro fatal no eGive API datastream: &#39;"
 
-#: v2/routes/email.php:23
+#: v2/routes/email.php:24
 msgid "eMail Dashboard"
 msgstr "Painel de E-mails"
 
@@ -4986,7 +4986,7 @@ msgstr "Eventos"
 msgid "Fundraiser"
 msgstr "Campanha"
 
-#: v2/templates/email/dashboard.php:13
+#: v2/templates/email/dashboard.php:15
 msgid "Email Export"
 msgstr "Exportar e-mail"
 
@@ -4994,7 +4994,7 @@ msgstr "Exportar e-mail"
 msgid "Generate"
 msgstr "Gerar"
 
-#: v2/templates/email/dashboard.php:38
+#: v2/templates/email/dashboard.php:29
 #, fuzzy
 msgid "List"
 msgstr "Lista"
@@ -5260,27 +5260,27 @@ msgstr "Backup baixado, copiado ou removido do sistema"
 msgid "You can import the generated CSV file to external email system."
 msgstr "Você pode importar um arquivo CSV gerado a um sistema de e-mail externo."
 
-#: v2/templates/email/dashboard.php:44
+#: v2/templates/email/dashboard.php:35
 msgid "Campaigns:"
 msgstr "Campanhas:"
 
-#: v2/templates/email/dashboard.php:45
+#: v2/templates/email/dashboard.php:36
 msgid "Unsubscribed count:"
 msgstr "Contador de desinscrição"
 
-#: v2/templates/email/dashboard.php:46
+#: v2/templates/email/dashboard.php:37
 msgid "Unsubscribed count since last send:"
 msgstr "Desinscritos desde o último envio"
 
-#: v2/templates/email/dashboard.php:47
+#: v2/templates/email/dashboard.php:38
 msgid "Cleaned count:"
 msgstr "Contadores zerados:"
 
-#: v2/templates/email/dashboard.php:48
+#: v2/templates/email/dashboard.php:39
 msgid "Cleaned count since last send:"
 msgstr "Contador desde o último envio:"
 
-#: v2/templates/email/dashboard.php:64
+#: v2/templates/email/dashboard.php:56
 msgid "Missing emails report"
 msgstr "Relatório de e-mails perdidos\n"
 ""
@@ -5363,27 +5363,27 @@ msgstr "Participantes do evento ID:"
 msgid "import subscribers to a list."
 msgstr "inscritos importados para a lista."
 
-#: v2/templates/email/dashboard.php:77
+#: v2/templates/email/dashboard.php:71
 msgid "is not configured"
 msgstr "não está configurado"
 
-#: v2/templates/email/dashboard.php:78
+#: v2/templates/email/dashboard.php:72
 msgid "Please update the"
 msgstr "Por favor, atualize o"
 
-#: v2/templates/email/dashboard.php:78
+#: v2/templates/email/dashboard.php:72
 msgid "API key in Setting->"
 msgstr "chave da API em Configurações->"
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:74
 msgid "then update"
 msgstr "então atualize"
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:74
 msgid "For more info see our "
 msgstr "Para mais informações veja nosso "
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:75
 msgid "support docs."
 msgstr "documentos suportados"
 
@@ -5620,11 +5620,11 @@ msgstr "Data de início:"
 msgid "End Date: "
 msgstr "Data de término:"
 
-#: v2/templates/email/dashboard.php:43
+#: v2/templates/email/dashboard.php:34
 msgid "Members:"
 msgstr "Membros:"
 
-#: Include/Footer.php:147 v2/templates/email/dashboard.php:78
+#: Include/Footer.php:147 v2/templates/email/dashboard.php:73
 msgid "Edit General Settings"
 msgstr "Editar Configurações Gerais"
 
